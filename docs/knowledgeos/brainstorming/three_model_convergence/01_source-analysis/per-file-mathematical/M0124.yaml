@@ -1,0 +1,109 @@
+sequence: M0124
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-163000_factorized-evaluation-model-not-an-fde-state-model.md
+title: "Factorized Evaluation Model, Not an FDE State Model: References Two New Experimental Data Points, E12 (Reason Alone Has 10 Distinct Values Over 21 Conditions but Does NOT Encode the Complete State, Failing to Distinguish Satisfied/Unsatisfied) and E13 (a Reason->(locus,modality) Factorization Tested, Adequate for Required Distinctions While Collapsing Three Not-Required Ones), Refines the Implementation to Evaluation(p)=Standing(p) x Boundary(p) x Context x Provenance, and Closes With the Formal HPA Approval Ruling for KR-CONTR-FDE-2026-09 -- 'APPROVED -- READY FOR IMPLEMENTATION', Not Yet an Execution Report"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "reacts to two new experimental data points (E12, E13, referenced but not fully detailed in this document) to refine M0123's implementation design, then closes with the formal HPA Supervisory Ruling approving KR-CONTR-FDE-2026-09 for implementation -- an approval, not an execution report; the final results table in Part 6.2 is an expected-result template (all placeholders), not actual measured data"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0124
+importance: high
+confidence: high
+about: >
+  Refines the FDE-inspired implementation design in light of two new experimental results (E12,
+  E13) referenced but not independently detailed as their own documents in this pass: E12 found
+  that Reason alone has ten distinct values over twenty-one tested conditions but does NOT encode
+  the complete state -- specifically, reason alone FAILS to distinguish the Satisfied/Unsatisfied
+  pair, demonstrating that neither Standing-only nor Reason-only is adequate on its own, only
+  Standing+Reason together is a candidate worth testing. E13 tested a further factorization of
+  Reason into (locus, modality), finding (value, locus, modality) adequate for the tested required
+  distinctions while ALSO collapsing three distinctions the required set did not actually demand --
+  motivating a design where alternative representations (FlatReason, LocusModalityReason,
+  StructuredBoundary) are supported and compared as R1 ~=_{R_req} R2 rather than picking one
+  representation as intrinsically "better."
+
+  **REFINES THE IMPLEMENTATION TO A CLEAN FOUR-FACTOR MODEL**: Evaluation(p) = Standing(p) x
+  Boundary(p) x Context x Provenance, explicitly keeping Standing(p)=(S+,S-) free of any embedded
+  Reason field (rejecting record Standing(positive,negative,reason) as mixing two distinct
+  dimensions), with Boundary(facet,condition) kept as a separate, still-experimental-vocabulary
+  structure (facets: observation/interpretation/evidence/theory/scope; conditions: unobservable/
+  insufficient-evidence/underdetermined/not-assessed/...).
+
+  **PROPOSES A CONCRETE MVP OF SIX COMPONENTS**: (A) Standing(S+,S-) representation; (B)
+  Boundary(facet,condition); (C) Evaluation(standing,boundary,context,provenance); (D) four
+  adapters (Classical/K3/FDE/Structured) implementing a shared EvaluationModel interface; (E) a
+  distinction-preservation comparison engine; (F) a witness generator producing auditable
+  collapse records (situationA, situationB, representation, identicalRepresentation,
+  requiredDistinction) rather than a bare pass/fail score.
+
+  **REINFORCES THE Contr-AS-DETECTOR DISCIPLINE**: implements fdeConflict(Standing) as
+  FDEConflictDetector, explicitly not labeled Contr, then tests FDEConflict(p) =?= Contr(p) across
+  the required distinction set -- "Priest establishes that FDE can represent a glut/both condition,
+  but that does not establish that KnowledgeOS epistemic contradiction is identical to that
+  semantic condition."
+
+  **ADDS A COMPOSITION-TESTING REQUIREMENT NOT PREVIOUSLY THIS EXPLICIT**: proposes testing
+  Evidence -> Assessment -> Standing -> Composition -> Evaluation as a pipeline, with the
+  composition rule itself treated as an experimental candidate (not selected in advance), tested
+  against single evidence, contradictory evidence, supersession, source weighting, and temporal
+  separation -- explicitly preparing the later composition experiment (KR-COMP-2026-09).
+
+  **SHARPENS THE ARCHITECTURAL BOUNDARY FDE!=Zero**: presents the pipeline Evidence->Assessment->
+  Standing->{Boundary/Reason, Composition}->Evaluation->Zero, with the explicit inequality chain
+  "FDE-like Standing != Boundary != Zero," since "FDE's neither cannot tell us WHY a proposition
+  has no support."
+
+  **CLOSES WITH THE FORMAL HPA SUPERVISORY RULING**, "KR-CONTR-FDE-2026-09 -- Implementation
+  Protocol," Status "APPROVED -- READY FOR IMPLEMENTATION" (not an execution report): specifies the
+  full directory structure (fourteen numbered scenario files, four model adapters, evaluators,
+  invariants, witnesses, results, verdict.md), the four-adapter value table (Classical {T,F}; K3
+  {T,F,U}; FDE {T,F,B,N}; Structured (S+,S-,Reason,Provenance,Context)), the fourteen scenarios
+  with named purposes, a measurement protocol asking "what is the minimum representation required
+  to preserve all distinctions" rather than counting states, SIX NON-NEGOTIABLE RULES (no kernel
+  promotion; no Theory v1.3; no enumeration as ontology; FDE is a candidate not the answer;
+  separation is the metric; countermodels are required for every collapsed distinction), a
+  seventeen-section output-artifact template, and a FINAL RESULTS TABLE that is an EXPECTED-RESULT
+  TEMPLATE (Classical/K3 all-fail placeholders, FDE preserving only contradiction, Structured
+  preserving everything) -- explicitly a design target, not measured execution data, since the
+  ruling's own status is "READY FOR IMPLEMENTATION," not "EXECUTED."
+introduces:
+  - concept: "E12's finding: Reason alone (10 distinct values over 21 conditions) does not encode the complete state and fails to distinguish Satisfied/Unsatisfied -- neither Standing-only nor Reason-only is adequate alone"
+  - concept: "E13's finding: a Reason->(locus,modality) factorization is adequate for required distinctions but also collapses three not-required distinctions, motivating support for alternative interchangeable representations compared via R1 ~=_{R_req} R2"
+  - concept: "The refined four-factor Evaluation(p) = Standing(p) x Boundary(p) x Context x Provenance model, with Standing kept explicitly free of any embedded Reason field"
+  - concept: "The explicit composition-testing requirement treating the composition rule itself as an experimental candidate, not selected in advance"
+defines: []
+refines:
+  - concept: "M0119/M0120/M0123's KR-CONTR-FDE proposal and implementation design, refined here in light of E12/E13"
+  - concept: "The Contr-as-detector discipline (M0123), reaffirmed via FDEConflictDetector tested against Contr rather than assumed identical"
+contradicts: []
+repeats:
+  - concept: "M0120's fourteen test scenarios and the distinction-preservation-not-value-count framing, restated here in the formal implementation ruling"
+bridge_candidates:
+  - concept: "The E12/E13 experimental results, referenced here but not independently detailed as their own documents in this pass -- a candidate site to locate their full write-ups if they appear elsewhere in the corpus"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0124 as refining the KR-CONTR-FDE implementation in light of two new experimental data points (E12: reason alone is inadequate, failing to distinguish Satisfied/Unsatisfied; E13: a locus/modality reason factorization is adequate but over-collapses), landing on Evaluation(p)=Standing(p) x Boundary(p) x Context x Provenance, and closing with the formal HPA ruling 'APPROVED -- READY FOR IMPLEMENTATION' for KR-CONTR-FDE-2026-09 (not yet an execution report)."
+anchor_test:
+  anchor: "M0119/M0120/M0123's KR-CONTR-FDE proposal and implementation design"
+  supports_dimension: "Incorporates genuine new experimental evidence (E12, E13) to refine the evaluation-factorization design and delivers the formal implementation-approval ruling"
+  refines_or_contradicts: "refines (M0119, M0120, M0123)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "E12: 'reason has 10 distinct values over 21 conditions; it does not encode the complete state; reason alone fails to distinguish the Satisfied/Unsatisfied pair' -- a concrete, specific negative result showing reason alone is insufficient, not merely asserted but measured."
+  - "E13: '(value,locus,modality) adequate for the tested required distinctions, while collapsing three distinctions that the required set did not demand' -- demonstrates that adequacy for the declared requirements does not imply the representation is otherwise lossless, a subtle and important qualification."
+undefined_concepts:
+  - "The full experimental design and execution details of E12 and E13 -- referenced only by their summary findings in this document, not independently located as their own files in this pass"
+open_questions:
+  - "Whether E12 and E13 correspond to independently-documented experiments elsewhere in the corpus, and if so, whether they appear later in this reconstruction's sequence."
+  - "Whether KR-CONTR-FDE-2026-09 was actually executed following this approval, and if so what the measured (not template) final results table showed."
+tier2_triggered: true
+tier2_reason: "Introduces two genuine new experimental data points (E12, E13) refining the evaluation-factorization design with concrete negative/qualified-positive results, and delivers the formal, comprehensive implementation-approval ruling for the confirmed research priority -- though it remains an approval, not an execution report."

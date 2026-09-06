@@ -1,0 +1,43 @@
+sequence: 51
+path: docs/knowledgeos/brainstorming/20260818-213516-lcom4-multi-language-binding.md
+title: LCOM4 Multi-Language Binding Architecture (conversational transcript)
+date: 2026-08-18
+bytes: 13972
+doc_type: implementation-architecture discussion for a code-cohesion metric tool
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [governance]
+source_role: IMPLEMENTATION
+canonical_source: null
+
+status: SR
+maturity: developing
+importance: low
+
+introduces: []
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge]
+open_questions: []
+
+depends_on: []
+extends: []
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: []
+connects_to: [47, 49, 50]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: "Pure implementation-architecture content for a code-quality tool; no theoretical relevance to G/M/C1-strategic/C2 questions."

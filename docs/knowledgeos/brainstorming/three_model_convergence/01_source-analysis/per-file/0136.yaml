@@ -1,0 +1,95 @@
+sequence: "0136"
+path: docs/knowledgeos/brainstorming/20260822-140939-knowledgeos-semantic-compiler-architecture-research-extraction.md
+title: "Semantic Compiler formalized as 7-phase pipeline; source claims kernel/architecture 'complete' (not adopted); detailed unverified performance tables presented without the benchmark 0135 promised"
+date: "2026-08-22"
+bytes: 24000
+model:
+  primary: c1
+  secondary: [g, m]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0135"
+importance: high
+confidence: high
+about: >
+  A polished, "implementation-ready" consolidation of the Semantic Compiler idea into a numbered
+  7-phase pipeline (Lexer/Parser/Context Binding/Type Checking/Evidence Linking/Reasoning-Validation/
+  Expression Generation), an expanded KIR example (adds a "godel-encoded-structure" fingerprint field
+  and a lifecycle/history sub-object), and a fleshed-out "Semantic Interpretation Context" bounded-
+  context proposal with an explicit In-Scope/Out-of-Scope table. The file explicitly asserts "The
+  kernel is complete. The architecture is complete. Proceed to P4" -- an overclaim this reconstruction
+  does NOT adopt (every dimension remains `candidate` per the registry; MD-016's maturity ceiling is
+  unaffected by source-internal confidence). The file also presents extensive, detailed speed/accuracy/
+  hardware/cost tables labeled "Theoretical Projection," but does NOT deliver the actual CPU-only
+  benchmark that 0135 explicitly promised in its self-correction -- a discipline-relevant observation.
+
+introduces:
+  - "Formal 7-phase Semantic Compiler pipeline (numbered PHASE 1-7), consolidating 0135's informal
+    six-phase sketch -- a presentational/organizational refinement"
+  - "KIR example expanded with a 'godel-encoded-structure' fingerprint field and an explicit
+    lifecycle/history sub-object (Draft->Review->Approved with timestamps) -- elaborates, does not
+    replace, the KIR representation already logged at 0135"
+  - "'Semantic Interpretation Context' given an explicit In-Scope/Out-of-Scope table and Input/Output/
+    Uses/Enforces dependency block -- the most concrete DDD-bounded-context proposal so far in response
+    to 0134's prompt, still unadopted (this file is not a DDD refinement session, just a proposal)"
+  - "Explicit claim: 'The kernel is complete. The architecture is complete. Proceed to P4.' -- an
+    overclaim NOT adopted by this reconstruction; contradicts the candidate-only status every
+    dimension actually holds in the registry (none has advanced past semantic_definition/
+    architecturally-grounded per MD-016's maturity ceiling)"
+  - "Detailed but unverified speed/accuracy/hardware/cost tables (e.g. '82-85% accuracy,' '2-5 sec/page,'
+    '$500-1,000 hardware cost') labeled 'Theoretical Projection,' presented without running the actual
+    CPU-only benchmark that 0135 explicitly promised as the next step -- flagged as a discipline
+    regression relative to 0135's self-correction, not adopted as measured fact"
+
+defines: []
+
+refines:
+  - "Consolidates (does not extend) the KIR/pipeline/bounded-context proposals already introduced at
+    0135 into a more polished presentation"
+
+contradicts:
+  - "'The kernel is complete' contradicts the registry's own status_chain discipline (MD-018): no
+    dimension has advanced past `candidate`, and this reconstruction does not adopt source-internal
+    declarations of completeness as evidence of maturity-stage advancement"
+
+repeats:
+  - {concept: "Semantic Compiler pipeline, KIR, Karaka role mapping, Semantic Interpretation Context", canonical_source: "0135", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+registry_updates:
+  - "None -- no dimension/representation status change. The 'kernel complete' claim is explicitly
+    NOT adopted; every tracked dimension remains `candidate`"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Source claims completeness; this reconstruction records but does not adopt that claim."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "'The kernel is complete. The architecture is complete. Proceed to P4.' -- a strong source-internal
+    completeness claim, explicitly NOT adopted; recorded here precisely so a later file cannot silently
+    treat this as an already-settled premise"
+  - "0135 promised an actual CPU-only benchmark before making further speed/accuracy claims; 0136 does
+    not deliver that benchmark and instead presents more detailed (still labeled theoretical) numbers --
+    a discipline regression worth tracking, distinct from 0135's own explicit self-correction"
+
+undefined_concepts: []
+open_questions:
+  - "Whether any later file actually runs the promised benchmark and reports real measured numbers, or
+    whether the 'theoretical projection' tables get treated as if measured in subsequent files -- watch
+    closely, given the corpus's own stated Confidence≠Truth / LLM-plausibility-trap discipline"
+
+tier2_triggered: true
+tier2_reason: >
+  Explicit unadopted "kernel/architecture complete" claim requiring active non-adoption, plus an
+  unfulfilled-benchmark-promise discipline observation relative to 0135.

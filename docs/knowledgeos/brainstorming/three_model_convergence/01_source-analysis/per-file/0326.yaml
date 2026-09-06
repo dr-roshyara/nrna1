@@ -1,0 +1,62 @@
+sequence: 326
+path: docs/knowledgeos/brainstorming/kernel/20260825-180828-knowledge-as-discriminate-select-decide-capability.md
+title: "Knowledge as Discriminate/Select/Decide Capability"
+date: "2026-08-25"
+bytes: 3828
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 326
+importance: high
+confidence: high
+about: >
+  A short direct-continuation refinement note following 0325 (Brachman & Levesque), replacing a proposed
+  'correct/incorrect' knowledge criterion with a stronger three-part capability model: knowledge enables a
+  participant to DISCRIMINATE among competing possibilities, SELECT relevant/trustworthy information, and
+  DECIDE/act. Explicitly keeps Truth/Knowledge/Selection/Decision as four distinct, non-identical things
+  that knowledge merely enables. Grounds the model in Brachman & Levesque's operational claim that a
+  knowledge base is useful because reasoning can reach conclusions not explicitly stored, and their
+  distinction between logically guaranteed entailments and plausible non-entailing assumptions. Proposes
+  three task-specific (not universal) probability measurements D(K), S(K), A(K), and closes with a clean
+  Kernel-boundary restatement: 'the Kernel preserves the structures that enable discrimination; reasoning
+  regimes perform the discrimination.'
+introduces:
+  - concept: "Refined knowledge-capability triad, replacing a rejected 'correct/incorrect' formulation: DISCRIMINATE (correct/incorrect/plausible/uncertain) / SELECT (relevant/reliable information) / DECIDE (what to believe/do) -- all descending from KNOWLEDGE"
+  - concept: "Explicit four-way non-identity chain: Truth != Knowledge != Selection != Decision -- 'knowledge can enable these activities without making them identical'; worked incident-response example (Information: server reachable -> Knowledge: combined with topology/history/dependencies -> Selection: this observation is relevant -> Decision: investigate network path first)"
+  - concept: "Refined definition: 'Knowledge is a capacity for epistemic discrimination: the capacity to distinguish relevant possibilities, evaluate information and infer consequences within a bounded projection of the Knowledge Space' plus 'Knowledge permits selection of information according to context, purpose, evidence and inferential consequences' -- explicitly said to fit the corpus's earlier 'capacity' idea better than 'capacity to write information'"
+  - concept: "Three task-specific (not universal) probability measurements: D(K)=Pr(selects correct/relevant hypothesis|K), S(K)=Pr(selects relevant information|K), A(K)=Pr(appropriate decision|K) -- grounded in Brachman & Levesque's warning that a reasoning system may be sound/incomplete/deliberately approximate depending on task, and that computational reasoning and logical truth are not identical"
+  - concept: "Extended pipeline: Infinite Knowledge Space -> Information -> Knowledge (discrimination) -> [select, infer, reject] -> decide -> act"
+  - concept: "Consolidated working definition: 'Knowledge is not merely possession of information. It is a factive epistemic capacity/state that allows a participant to discriminate among possibilities, select relevant information, form and evaluate commitments, infer consequences, revise its position, and support decisions within a bounded projection of an unbounded Knowledge Space'"
+  - concept: "Clean Kernel-boundary restatement: 'the Kernel preserves the structures that enable discrimination; reasoning regimes perform the discrimination' -- a compact companion to 0322/0324/0325's Representation-Reasoning/Epistemic-Model Separation principles"
+defines: []
+refines:
+  - concept: "0325's Brachman & Levesque-derived Knowledge Representation Hypothesis and knowledge-level/symbol-level separation"
+    refinement: "Directly extended into a discriminate/select/decide capability model and three task-specific measurements, kept explicitly distinct from a universal knowledge score"
+  - concept: "0322/0324's capacity-as-observe/represent/distinguish/relate/infer/assess/preserve/communicate/act definitions"
+    refinement: "Compressed into a sharper three-verb formulation (discriminate/select/decide) explicitly said to fit the corpus's original capacity intuition better than prior versions"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - concept: "Incident-response worked example (server reachability -> topology/history knowledge -> relevance selection -> investigate-network-path decision) -- a general IT-operations domain connection, alongside the corpus's recurring election/governance domain examples"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: Kernel-structure-synthesis family -- record the discriminate/select/decide capability model and D(K)/S(K)/A(K) task-specific measurements as a compact further deepening of the candidate-9 lineage's capacity/measurement toolkit (0322/0324/0325)."
+anchor_test:
+  anchor: "0325's Knowledge Representation Hypothesis and capacity formalizations; 0322/0324's Representation-Reasoning Separation and measurement-vector work"
+  supports_dimension: "Engineering KnowledgeOS: compact refinement of the capacity concept into a discriminate/select/decide model with task-specific (not universal) measurements"
+  refines_or_contradicts: "refines 0325 (extends the Knowledge Representation Hypothesis into a capability model), refines 0322/0324 (sharper capacity formulation)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether D(K)/S(K)/A(K) are ever operationalized against real KnowledgeOS episodes, consistent with the corpus's still-pending Merricks-test and falsification-testing commitments"
+tier2_triggered: false
+tier2_reason: "Short direct-continuation refinement note (not a new-source landmark): sharpens the capacity concept into a discriminate/select/decide triad with three task-specific measurements, directly extending 0325 without introducing a new primary source or major architectural reversal."

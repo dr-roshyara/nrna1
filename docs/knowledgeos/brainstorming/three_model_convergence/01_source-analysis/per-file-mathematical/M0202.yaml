@@ -1,0 +1,74 @@
+sequence: M0202
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-092008_frozen-contract-is-coherent.md
+title: "Implementation refinement of M0201's auditor: a closed-form N_viol formula from fiber counts, a canonicalized-equality contract for structured R/Q objects, an explicit transformation registry addition to trace WHICH operation caused information loss, and epsilon-tolerant (not floating-point-exact) entropy comparison for n*"
+date: "20260903-092008"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0202
+importance: high
+confidence: high
+about: >
+  An implementation-level refinement of M0201's frozen 12-phase audit contract, confirming it
+  "coherent enough to proceed to implementation" while correcting one genuine implementation risk
+  (implicit Python object equality for structured R/Q values) and adding a closed-form combinatorial
+  identity for N_viol computation, a transformation-registry schema addition, and a numerical-
+  tolerance refinement for the n* determination — all while reiterating (for the third time in this
+  thread) the discipline against treating k=1/k=2/k=3/irreducible as R1..R5 levels, and insisting the
+  actual corpus must be inspected before any mapping parser is written.
+introduces:
+  - "A closed-form combinatorial identity for N_viol, replacing an implied O(pairs) implementation: for an R-fiber with Q-value counts c_{r,q1},...,c_{r,qk}, the number of conflicting unordered pairs is V_r=Σ_{a<b}c_{r,qa}c_{r,qb}=[(Σ_q c_{r,q})²−Σ_q c_{r,q}²]/2, and N_viol=Σ_r V_r — avoiding repeated q_list.count(q_val) calls and making the statistic's structural meaning explicit"
+  - "A canonicalized-equality implementation contract: 'R_n equality := canonicalized representation equality' and 'Q equality := canonicalized inquiry-state equality,' explicitly replacing reliance on implicit Python object equality/hashability — necessary because the KR-ZERO corpus may contain structured (non-trivially-hashable) objects"
+  - "An explicit canonical_n_star() method specification using epsilon-tolerant entropy comparison (abs(H_Q_given_R)<=epsilon with a documented tolerance) rather than floating-point exact equality — while noting that for an exact finite categorical calculation, entropy should theoretically evaluate to exactly zero whenever every empirical fiber has a single Q, so the tolerance is a numerical-robustness safeguard, not a concession that zero is merely approximate"
+  - "An explicit transformation-registry schema addition (T5_definition...T1_definition, or a registry with transformation_id/input_level/output_level/transformation_definition/source_provenance/reconstruction_status) — motivated by the observation that otherwise 'we can measure that R5→R4 lost information without being able to establish what operation actually caused the loss,' explicitly flagged as 'crucial for the later mechanism experiment'"
+  - "A consolidated final execution architecture diagram: Actual KR-ZERO Corpus → Schema Discovery → Denominator Reconciliation → Q Independence Audit → R5..R1 Reconstruction Audit (branching OBSERVED/UNOBSERVED→NULL) → KR-REP-DATASET → Level Metrics → n* → Boundary Diagnosis"
+defines:
+  - "V_r=[(Σ_q c_{r,q})²−Σ_q c_{r,q}²]/2 — the closed-form per-fiber violation count"
+refines:
+  - "M0201's audit specification: confirmed coherent, with the N_viol computation, equality semantics, and n* tolerance made implementation-precise"
+contradicts: []
+repeats:
+  - "The k=1/k=2/k=3/irreducible≠R1..R5 warning, now stated for a third time across this sub-thread (M0198/M0201/M0202) — the repetition itself suggests this is the single most emphasized guard in the entire representation-reduction sub-thread"
+  - "The audit-before-implement discipline ('I would not yet write the mapping parser from the specification alone... inspect the actual KR-ZERO corpus')"
+bridge_candidates:
+  - "Whether the closed-form N_viol identity and canonicalized-equality contract were ever actually implemented and run against the real corpus"
+mathematical_content: >
+  Delivers a genuine, non-trivial combinatorial identity (V_r via count-based sums-of-squares rather
+  than pairwise enumeration) that materially simplifies and speeds up the N_viol computation
+  specified at M0201 — the clearest piece of new mathematical content in this implementation-review
+  document.
+gita_content: null
+kernel_content: >
+  A disciplined implementation-correctness pass over M0201's specification, adding the transformation
+  registry needed to eventually explain WHY information is lost at each reduction stage (not merely
+  THAT it is lost) — directly serving the thread's eventual "mechanism experiment" ambitions.
+registry_updates:
+  - "New closed-form N_viol identity (count-based, avoiding pairwise enumeration)"
+  - "New canonicalized-equality implementation contract for structured R/Q comparison"
+  - "New transformation-registry schema addition, needed to trace the causal source of information loss at each reduction stage"
+anchor_test:
+  anchor: false
+  supports_dimension: "Closed-form N_viol identity; canonicalized-equality contract; transformation-registry addition; epsilon-tolerant n* entropy comparison"
+  refines_or_contradicts: "refines (M0201's audit specification, made implementation-precise)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"V_r = Σ_{a<b} c_{r,qa}c_{r,qb} = [(Σ_q c_{r,q})² − Σ_q c_{r,q}²]/2\""
+  - "\"We can measure that R5→R4 lost information without being able to establish what operation actually caused the loss. That is crucial for the later mechanism experiment.\""
+undefined_concepts: []
+open_questions:
+  - "Was this implementation refinement (closed-form N_viol, canonicalized equality, transformation registry) ever actually applied to a real audit run?"
+tier2_triggered: false
+tier2_reason: >
+  Genuine but incremental implementation-level refinement of M0201's already-recorded specification;
+  the closed-form N_viol identity is a real mathematical contribution but narrow in scope, and the
+  remaining content (equality canonicalization, transformation registry, epsilon tolerance) are
+  implementation-correctness improvements rather than new theoretical or empirical findings — filed
+  at importance=high rather than critical, tier2 not separately triggered.

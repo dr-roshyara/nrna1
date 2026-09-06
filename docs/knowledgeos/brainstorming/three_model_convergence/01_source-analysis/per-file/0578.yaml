@@ -1,0 +1,238 @@
+sequence: 578
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-182534_step-025c-evidence-aggregation-algebra.md
+title: "LANDMARK: Requirements-First Derivation of an Evidence Aggregation Algebra — Eight Labeled Experiments (A-H) and Seven Falsification Tests Deriving Required Algebraic Properties (Idempotency, Commutativity, Associativity, Contextuality) Before Any Framework Is Chosen; Bayesian/Dempster-Shafer/Fuzzy-Logic/Weighted-Scoring Each Explicitly Evaluated and Rejected as 'Candidate, Not Selected'; the Three-Layer Evidence≠Assessment≠Inference Distinction Named 'One of the Strongest Refinements Produced by 25C'; Verdict '25C — CONDITIONAL PASS' With Six Named Unresolved Sub-Problems (C1-C6); Opens Step 25C.1 (Compare Candidate Evidence Algebras) With the Explicit Prediction That the Final Answer Will Not Be One Universal Algebra but a Composable Combination"
+date: "2026-08-27"
+bytes: 17377
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the first concrete attack on the narrowed U1-U6 research agenda opened at 0577, directly executing 'Step 25C -- Evidence Aggregation Algebra'"
+source_role: PRIMARY_RESEARCH
+canonical_source: 578
+importance: critical
+confidence: high
+about: >
+  Opens "Step 25C — Evidence Aggregation Algebra," explicitly framed as "one of the most important
+  mathematical points in the entire KnowledgeOS experiment." Delivers the governing question: "given
+  multiple pieces of evidence, how can KnowledgeOS combine them into an assessment without double-counting,
+  losing uncertainty, or manufacturing certainty?" Reaffirms 0577's closing methodological commitment:
+  "I will deliberately not choose Bayesian probability, Dempster-Shafer, fuzzy logic, weighted scoring, or
+  another framework yet. First we derive the properties that any valid KnowledgeOS evidence algebra must
+  satisfy" -- a disciplined requirements-first, framework-later derivation strategy sustained rigorously
+  throughout the entire file.
+
+  **Delivers the file's foundational semantic-clarity principle**: a bare `Assess(H,E_1)=0.8` is rejected
+  outright because "the number 0.8 has no defined semantics" -- it could mean probability, confidence,
+  source reliability, evidence strength, or decision readiness, all genuinely different things -- yielding
+  the rule **`No numerical value without defined semantics`**. Delivers a first experimental seven-
+  dimension Assessment decomposition `Assessment(H,E)=(R,D,T,A,I,C,U)` (relevance, directness, temporal
+  fit, authenticity, independence, consistency, uncertainty), explicitly an "experimental decomposition,"
+  not final. Delivers a qualitative four-value evidence-support relation
+  `Support(E,H)∈{Support,Challenge,Neutral,Unknown}`, deliberately qualitative at first.
+
+  **Delivers the file's central formal deliverable -- eight labeled experiments (A through H), each
+  deriving a specific required algebraic property**:
+
+  (A) duplicate evidence requires **Idempotency** (`x⊕x=x` for semantically duplicate evidence,
+  `Aggregate(E_1,E_1,H)=Aggregate(E_1,H)`);
+  (B) independent corroboration requires that genuinely independent evidence NOT collapse the same way
+  (`x⊕y≠x`), delivering **`Evidence identity and evidence independence are different`**;
+  (C) dependent (copied) evidence requires an explicit `Dep(E_2,E_1)` relation, with effective independent
+  information closer to `{E_1}` than `{E_1,E_2}` -- directly reconfirming 0573's/0574's/0576's evidence-
+  dependency findings within this new algebraic framing;
+  (D) contradiction requires that a naive weighted average (`Support(H)=0.5`) be REJECTED in favor of an
+  explicit `Conflict(H)` state with both `Support(H)>0` and `Challenge(H)>0` simultaneously representable
+  -- delivering **`Conflict≠Uncertainty`**, "extremely important";
+  (E) stale evidence requires `TemporalFit(E,H,t)`, evaluated relative to `QuestionTime`, reconfirming and
+  formalizing the corpus's established temporal-relevance theory within this evidence-algebra context;
+  (F) evidence reliability requires **`Reliability≠Relevance`**: a highly reliable source can report
+  evidence entirely irrelevant to a given hypothesis, so reliability and relevance must remain distinct
+  dimensions;
+  (G) an authentic-but-later-falsified administrator claim delivers **`Authenticity≠Correctness`**,
+  extending 0562's/0573's `Authenticity≠Truth` finding with a fresh worked scenario;
+  (H) AI-generated evidence explicitly rejects the naive shortcut `Reliability=0` for all LLM output as
+  "too simplistic" -- an LLM can produce useful extraction, transformation, interpretation, hypothesis, OR
+  hallucination, requiring the system to represent HOW the AI output was produced
+  (`AIOutput→Transformation→SourceArtifact`), with the underlying artifact carrying the actual evidential
+  weight -- a more nuanced AI-evidence treatment than the corpus's earlier blanket
+  `LLMOutput⇒CandidateAssertion` framing.
+
+  **Delivers the file's central new formal result -- aggregation must operate over evidence LINEAGE, not
+  evidence COUNT**: worked through a three-hop Source→LLM-summary→Human-report chain demonstrating that
+  three apparent evidence items may constitute only one underlying evidence lineage -- **"a major result,"**
+  extending 0573's/0576's evidence-dependence findings into a formal aggregation requirement.
+
+  **Delivers three additional required algebraic properties, each carefully qualified**: **Commutativity**
+  (`E_1⊕E_2=E_2⊕E_1` for order-independent evidence aggregation, with any genuine order-dependence required
+  to arise explicitly from temporal semantics, never implementation accident); **Associativity**
+  (`(E_1⊕E_2)⊕E_3=E_1⊕(E_2⊕E_3)`, flagged as necessary for tractable distributed computation); and a
+  crucial **contextuality qualification** on both properties -- since temporally-scoped evidence must be
+  evaluated relative to a query context, the true aggregation object is not simply `E_1⊕E_2` but
+  `Aggregate(E_1,E_2|QueryContext)` where QueryContext includes Time, Scope, and Goal -- "the algebra is
+  contextual."
+
+  **Delivers a first candidate non-scalar aggregated-evidence structure**
+  `ℰ(H)=(S_H,C_H,U_H,L_H)` (supporting evidence lineage, challenging evidence lineage, unresolved/uncertain
+  evidence, dependency/lineage structure), explicitly "not yet a scalar score," worked through a concrete
+  RollbackAvailable example contrasting a bare `Confidence=0.62` against the much more useful qualitative
+  statement "supported by two independent observations; challenged by one current failed test."
+
+  **Delivers an important architectural concession and its careful resolution**: acknowledges that Sārathi
+  will eventually need numerical comparisons (`Risk(A_1)<Risk(A_2)`), but resolves this via a clean
+  three-stage pipeline **`Evidence Algebra→Assessment Representation→Decision Model`**, explicitly rejected
+  in favor of a naive `Evidence→OneUniversalScore` collapse.
+
+  **Delivers the file's central formal deliverable -- a rigorous, individually justified evaluation of four
+  candidate mathematical frameworks, each explicitly marked "Candidate, not selected"**:
+
+  Bayesian updating (`P(H|E_1,...,E_n)`) is credited for handling sequential evidence naturally, but
+  criticized for NOT eliminating the dependency problem -- naive conditional-independence assumptions
+  (`P(E_1,E_2|H)=P(E_1|H)P(E_2|H)`) risk double-counting correlated evidence; "Bayesian mathematics does
+  not eliminate the dependency problem. It makes the dependency model explicit";
+
+  Dempster-Shafer belief/plausibility (`Bel(H)≠Pl(H)`) is credited for representing epistemic uncertainty
+  without forcing a precise probability, but flagged as still struggling with conflict handling and source
+  dependence;
+
+  Fuzzy logic (`μ_H(x)∈[0,1]`) is credited for representing linguistic concepts like "highly ready," but
+  explicitly warned `FuzzyMembership` does not automatically mean `Probability`, useful only for some
+  semantic domains, never a universal evidence algebra;
+
+  Weighted scoring (`Score(H)=Σw_ie_i`) is credited only for computational ease, then sharply criticized
+  across five named failure points (arbitrary weights; difficulty representing dependence; conflict
+  disappearing into an average; unclear calibration; `0.8` having no intrinsic epistemic meaning) --
+  **`Useful engineering heuristic≠Universal epistemic algebra`**.
+
+  **Delivers the file's central architectural conclusion from this comparison**: KnowledgeOS should NOT
+  choose a single universal mathematical framework, but should instead have a five-layer stack
+  (`Evidence Representation→Evidence Dependency/Lineage→Assessment Algebra→Statistical/Logical Inference
+  →Decision Model`), with different bounded contexts permitted to use different inference mechanisms --
+  directly extending the corpus's recurring "no universal formula, typed pluggable methods" architectural
+  pattern (previously confirmed at 0545/0546, 0554, 0556, 0561, 0563, 0577), applied here specifically and
+  concretely to the imminent evidence-aggregation-framework decision.
+
+  **Delivers a corresponding four-context DDD proposal** (Evidence Context: evidence/provenance; Assessment
+  Context: support/challenge/reliability/uncertainty; Statistical Context: probability/distribution/
+  calibration; Decision Context: risk/utility/constraints), each communicating through explicit contracts
+  -- "a strong DDD result," explicitly rejecting a monolithic `KnowledgeConfidenceService` that decides
+  everything.
+
+  **Delivers seven concrete falsification tests, each with an expected result and an explicit failure
+  criterion**: order-independence (identical assessment regardless of evidence-arrival order under the same
+  temporal context); duplication (exact triplicated identical evidence must NOT strengthen support,
+  explicitly `FAIL` if it does); dependency (a derived/copied evidence item must not inflate effective
+  independent evidence count); contradiction (must yield `Conflict(H)=True`, explicitly forbidding a bare
+  `Confidence(H)=0.5` with conflict information discarded); irrelevant evidence (adding wholly unrelated
+  evidence must leave the assessment of `H` semantically unchanged, "otherwise irrelevant information
+  contaminates knowledge"); stale evidence (the same evidence item must yield genuinely different
+  assessments at different query times, "proves assessment is query-relative"); and the file's climactic
+  falsification test -- **"stronger evidence does not necessarily mean higher readiness"** (Rollback
+  moving from Unknown to Failed via better evidence while readiness DECREASES), formalizing
+  **`EvidenceStrength≠GoalUtility`** as a required architectural separation, directly reconfirming the
+  corpus's central `MoreKnowledge⇏MoreReadiness` finding once more, now explicitly framed as an algebraic
+  requirement the evidence-aggregation mathematics itself must satisfy.
+
+  **Delivers the file's culminating formal deliverable -- a provisional Assessment-state structure**
+  `𝒜(H|C,t)=(Support,Challenge,Uncertainty,Dependency,TemporalFit,Provenance)`, with a separate inference
+  function `Inference(𝒜,M)→Result` mapping this state to a decision-relevant quantity under an explicitly
+  selected mathematical model `M` -- "much cleaner than making assessment itself a probability."
+
+  **Delivers the file's single most significant architectural refinement, explicitly named as such --
+  a formal three-layer separation**: Layer 1 Evidence state `ℰ` ("what information do we have?"); Layer 2
+  Epistemic assessment `𝒜` ("what does that information support/challenge, and how?"); Layer 3 Inference
+  `ℐ` ("what follows under a specified reasoning model?") -- formalized as
+  **`Evidence≠Assessment≠Inference`**, explicitly called **"one of the strongest refinements produced by
+  25C."** Delivers the resulting clean architectural home for LLM output within this three-layer
+  structure: an LLM may `Extract(Document)→CandidateEvidence` or `Interpret(Evidence)→CandidateAssertion`,
+  but the kernel mandates `Candidate→Assessment→Inference→Commitment` -- "the LLM does not own the
+  epistemic algebra. That is exactly what we want."
+
+  **Delivers Step 25C's verdict**: **"25C — CONDITIONAL PASS,"** with the file's own carefully-stated
+  self-assessment of what the "key achievement" actually was: explicitly NOT selecting a probability
+  framework, but rather discovering that KnowledgeOS requires a layered evidence algebra -- delivering the
+  current candidate pipeline `Evidence→Evidence Graph→Assessment→Inference→Decision`, with
+  Time/Context/Provenance/Dependency as first-class parameters throughout.
+
+  **Delivers the file's central formal deliverable -- six named, sharply localized unresolved sub-problems
+  (C1-C6)**: C1 Evidence dependency (how to calculate independent informational contribution precisely);
+  C2 Support aggregation (how independent evidence should combine); C3 Conflict (how support and challenge
+  should mathematically coexist); C4 Uncertainty (choosing among Probability, Belief/Plausibility,
+  Intervals, Sets, or Qualitative states for different situations); C5 Calibration (whether a stated
+  `P(H)=0.8` actually behaves like a genuine 80% probability empirically); C6 Decision conversion (how
+  epistemic assessment formally becomes Risk/Utility/Decision) -- a further narrowing of 0577's broader
+  U1-U6 agenda specifically for evidence aggregation.
+
+  **Closes by proposing "Step 25C.1 — Compare Candidate Evidence Algebras,"** explicitly rejecting
+  intuition-based framework selection in favor of a structured comparative experiment: running the SAME
+  evidence scenarios through all four candidate frameworks (Bayesian vs. Dempster-Shafer vs.
+  Qualitative/Set-Based vs. Weighted Scoring) against an eleven-item explicit requirements checklist
+  (duplicate/dependent/conflicting/missing/stale/heterogeneous/LLM-derived/sequential evidence,
+  calibration, explainability, computational cost). Delivers the file's closing methodological principle:
+  "the winner should not be 'the mathematically fanciest framework.' It should be the framework -- or
+  combination of frameworks -- that satisfies the KnowledgeOS invariants with the fewest unacceptable
+  assumptions," together with an explicit predictive hypothesis stated in advance of the comparison: "I
+  suspect the final answer will not be one universal algebra. It may be a composable epistemic mathematics
+  in which qualitative state, provenance/dependency graphs, statistical models and decision mathematics
+  each do the job they are actually suited for" -- a bold, falsifiable prediction the corpus's own future
+  work can be checked against. As with the entire 25A/25B/25C sub-arc so far, this file delivers no report
+  of actual executed code; the derivation remains rigorous hand-worked mathematical/architectural reasoning.
+introduces:
+  - concept: "The disciplined requirements-first, framework-later methodology sustained rigorously across an entire file: deriving required algebraic properties (idempotency, commutativity, associativity, contextuality) from concrete adversarial experiments before evaluating any candidate mathematical framework"
+  - concept: "'No numerical value without defined semantics' — a bare confidence figure like 0.8 is rejected outright until it is clear which of several genuinely different quantities (probability, confidence, reliability, evidence strength, readiness) it actually represents"
+  - concept: "Aggregation must operate over evidence lineage, not evidence count — extending the corpus's evidence-dependence findings into a formal algebraic requirement, worked through a three-hop Source→LLM-summary→Human-report chain"
+  - concept: "A rigorous, individually justified rejection of four candidate mathematical evidence-aggregation frameworks (Bayesian, Dempster-Shafer, Fuzzy logic, Weighted scoring), each evaluated on its specific merits and specific failure modes against derived KnowledgeOS requirements, rather than dismissed by assertion"
+  - concept: "Weighted scoring formally distinguished as a useful engineering heuristic but not a universal epistemic algebra, with five named specific failure points"
+  - concept: "The formal three-layer separation Evidence≠Assessment≠Inference, explicitly named the strongest single refinement produced by this experiment, giving the LLM a clean, bounded architectural role that never includes owning the epistemic algebra itself"
+  - concept: "Seven concrete falsification tests for any candidate evidence algebra, each with an explicit expected result and failure criterion, including the climactic 'stronger evidence does not necessarily mean higher readiness' test formalizing EvidenceStrength≠GoalUtility"
+  - concept: "'Step 25C.1 — Compare Candidate Evidence Algebras', proposing a structured, requirements-driven comparative experiment across four frameworks rather than intuition-based selection, with an explicit advance prediction that the eventual answer will be a composable combination rather than one universal algebra"
+defines:
+  - concept: "Provisional multi-dimensional Assessment decomposition (experimental)"
+    definition: "Assessment(H,E)=(R,D,T,A,I,C,U) — relevance, directness, temporal fit, authenticity, independence, consistency, uncertainty"
+  - concept: "Non-scalar aggregated-evidence structure"
+    definition: "ℰ(H)=(S_H,C_H,U_H,L_H) — supporting evidence lineage, challenging evidence lineage, unresolved/uncertain evidence, dependency/lineage structure — deliberately not a scalar score"
+  - concept: "Provisional Assessment-state structure (culminating, contextual)"
+    definition: "𝒜(H|C,t)=(Support,Challenge,Uncertainty,Dependency,TemporalFit,Provenance), paired with a separate inference function Inference(𝒜,M)→Result under an explicitly chosen model M"
+  - concept: "The three-layer epistemic separation"
+    definition: "Layer 1 Evidence state ℰ ('what information do we have?'); Layer 2 Epistemic assessment 𝒜 ('what does it support/challenge, and how?'); Layer 3 Inference ℐ ('what follows under a specified reasoning model?') — Evidence≠Assessment≠Inference"
+refines:
+  - concept: "The recurring 'no universal formula, typed pluggable methods' architectural pattern (0545/0546, 0554, 0556, 0561, 0563, 0577)"
+    refinement: "Applied concretely and rigorously to the specific, imminent decision of which evidence-aggregation mathematical framework to adopt, via an individually justified evaluation of four named candidates rather than an abstract restatement of the pattern"
+  - concept: "0573's/0574's/0576's evidence-dependence and evidence-lineage findings (NumberOfSources≠AmountOfIndependentEvidence, EvidenceCount≠IndependentEvidenceCount)"
+    refinement: "Elevated into a formal required algebraic property of the evidence-aggregation operator itself: aggregation must operate over evidence lineage, not evidence count, worked through a fresh three-hop chain example"
+  - concept: "0562's/0573's Authenticity≠Truth finding"
+    refinement: "Extended with a fresh worked scenario yielding the closely related but distinct Authenticity≠Correctness, emphasizing that even a genuine, sincere author can be later contradicted by stronger evidence"
+  - concept: "The corpus's earlier blanket LLM-output treatment (LLMOutput⇒CandidateAssertion, never CommittedKnowledge)"
+    refinement: "Refined into a more nuanced treatment acknowledging LLM output can represent useful extraction, transformation, interpretation, or hypothesis — not only hallucination — requiring the system to represent HOW the AI output was produced rather than uniformly discounting it"
+  - concept: "0568's/0576's/0577's central MoreKnowledge⇏MoreReadiness finding"
+    refinement: "Reconfirmed a further time as an explicit required property of the evidence-aggregation algebra itself (falsification test: 'stronger evidence does not necessarily mean higher readiness'), formalized as EvidenceStrength≠GoalUtility"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25C.1 — Compare Candidate Evidence Algebras' is executed as its own dedicated corpus file, and critically, whether the file's own advance prediction (a composable combination rather than one universal algebra) is confirmed or refuted by the actual comparison"
+  - "Trace whether the six named C1-C6 unresolved sub-problems are addressed sequentially in subsequent files"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the requirements-first evidence-algebra derivation methodology, the eight labeled experiments (A-H) deriving idempotency/independence/dependency/conflict/temporal-fit/reliability/authenticity/AI-evidence requirements, and 'aggregation must operate over evidence lineage, not evidence count.'"
+  - "dimension-registry.md: record the individually justified rejection of Bayesian/Dempster-Shafer/Fuzzy-logic/Weighted-scoring as 'candidate, not selected,' the five-layer evidence architecture and four-context DDD proposal, and the seven falsification tests including 'stronger evidence does not necessarily mean higher readiness' (EvidenceStrength≠GoalUtility)."
+  - "dimension-registry.md: record the three-layer Evidence≠Assessment≠Inference separation ('one of the strongest refinements produced by 25C'), the verdict '25C — CONDITIONAL PASS,' the six C1-C6 unresolved sub-problems, and 'Step 25C.1 — Compare Candidate Evidence Algebras' as the next research phase, with its explicit advance prediction of a composable (not universal) final answer."
+anchor_test:
+  anchor: "0577's opening of Step 25C with its explicit refusal to prematurely select an evidence-aggregation framework; 0562's evidence-independence and Authenticity/Authority theory; 0573's/0574's/0576's evidence-dependence and lineage findings; the recurring no-universal-formula architectural pattern; 0568's/0576's/0577's MoreKnowledge⇏MoreReadiness finding"
+  supports_dimension: "LANDMARK delivering the corpus's most rigorous single instance of requirements-first mathematical derivation — deriving required algebraic properties for an evidence-aggregation operator from eight concrete adversarial experiments before evaluating any candidate framework, then individually and specifically justifying the rejection of four named mathematical frameworks (Bayesian, Dempster-Shafer, Fuzzy logic, Weighted scoring) rather than dismissing them abstractly. Delivers seven concrete falsification tests with explicit pass/fail criteria, directly reusable once code exists, and the corpus's single most significant architectural refinement to date regarding evidence itself: the formal three-layer Evidence≠Assessment≠Inference separation, explicitly self-identified by the file as its strongest produced result and giving the LLM a clean, permanently bounded architectural role. Reconfirms the central MoreKnowledge⇏MoreReadiness finding as a required property the evidence algebra itself must satisfy, and closes with a genuinely falsifiable advance prediction (a composable rather than universal final algebra) for the next concrete comparative experiment"
+  refines_or_contradicts: "directly executes Step 25C as opened at 0577; individually evaluates and rejects four candidate frameworks against requirements derived from fresh adversarial experiments; extends 0573's/0574's/0576's evidence-lineage findings into a formal algebraic property; extends 0562's/0573's Authenticity≠Truth into Authenticity≠Correctness; refines the corpus's blanket LLM-output treatment into a more nuanced provenance-based one; reconfirms MoreKnowledge⇏MoreReadiness as an algebraic requirement; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The individually justified, specific evaluation of each of the four candidate frameworks — crediting Bayesian updating for sequential-evidence handling while identifying its exact dependency-assumption risk; crediting Dempster-Shafer for representing epistemic uncertainty while flagging its conflict-handling weakness; crediting fuzzy logic for linguistic concepts while denying it a probabilistic interpretation; crediting weighted scoring only for computational ease while listing five specific failure points — is directly checkable, substantive mathematical reasoning distinct from a generic 'we should not pick one universal formula' restatement, demonstrating genuine engagement with each framework's actual properties."
+  - "The seven falsification tests, each specifying a concrete evidence scenario, an expected result, and an explicit failure criterion (e.g. duplication test: 'if the support becomes stronger merely because the same evidence was ingested three times: FAIL'), are directly checkable and immediately reusable as an actual property-based test suite once code exists, representing some of the corpus's most implementation-ready verification artifacts."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25C.1 — Compare Candidate Evidence Algebras' is executed as its own dedicated corpus file, and whether the file's own advance prediction (a composable combination rather than one universal algebra) is confirmed or refuted"
+  - "Whether the six C1-C6 unresolved sub-problems are addressed sequentially in subsequent files"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's most rigorous single instance of requirements-first mathematical derivation to date — systematically deriving required algebraic properties for an evidence-aggregation operator (idempotency, independence-vs-identity, dependency, conflict-preservation, temporal-fit, reliability-vs-relevance, authenticity-vs-correctness, nuanced AI-evidence treatment, lineage-not-count aggregation, commutativity, associativity, contextuality) from eight concrete adversarial experiments, THEN individually and specifically evaluating and rejecting four named candidate mathematical frameworks (Bayesian, Dempster-Shafer, Fuzzy logic, Weighted scoring) against those derived requirements rather than dismissing them abstractly. Delivers seven concrete, immediately implementable falsification tests with explicit pass/fail criteria, and the corpus's single most significant refinement to date regarding evidence representation itself: the formal three-layer Evidence≠Assessment≠Inference separation, explicitly self-identified as the strongest result this experiment produced, giving the LLM a permanently clean and bounded architectural role. Reconfirms the central MoreKnowledge⇏MoreReadiness finding as a formal required property of the evidence algebra itself, and closes with a genuinely falsifiable advance prediction — that the eventual answer will be a composable combination of frameworks rather than one universal algebra — setting up a concrete, checkable test for the next research phase, Step 25C.1."

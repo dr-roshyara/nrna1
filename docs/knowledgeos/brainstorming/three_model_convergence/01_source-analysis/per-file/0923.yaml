@@ -1,0 +1,167 @@
+sequence: 923
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260831-001927_step_282_claude-execution-prompt-residual-gap-closure-gate.md
+title: "CLAUDE EXECUTION PROMPT -- STEP 282: Theory-Criticality and Residual-Gap Closure Gate -- A Fully Operationalized, Highly Elaborated Adversarial-Verifier System Prompt Delivering Eight Theory-Criticality Criteria (TC-1..TC-8), an Eight-Code Gap-Classification System, a Ten-Item Residual-Gap Register, Twenty-One Required Falsification Tests (F1..F21, Extending F1..F13 From Earlier Files), a Twelve-Artifact Deliverable List, and a Seven-Symbol Evidence-Traceability Code -- Not Itself the Execution, But by Far the Most Detailed Operationalization of the Step-282 Mandate in This Sub-Arc"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "an execution-prompt/system-prompt artifact rather than a research finding per se, but introducing substantial new formal apparatus"
+source_role: PRIMARY_RESEARCH
+canonical_source: 923
+importance: critical
+confidence: medium
+about: >
+  Opens as a direct instruction ("For Claude, I would make Step 282 an execution mandate, not a request to
+  merely write a report... Use the following prompt verbatim") delivering a complete, self-contained
+  system-prompt artifact intended to be handed to an executing AI agent to actually PERFORM Step 282,
+  rather than merely commissioning it as files 0921/0922 did.
+
+  **§0 Governing Rule** restates the central question boxed **`Is there anything left that the theory
+  itself must solve?`** via the sequence `Identify→Classify→Test→Falsify→Close or Escalate`.
+
+  **§1** mandates reading the full corpus, the original Step 282 spec, the Step 281 execution report, its
+  supervisory review, and inspecting the actual implementation repository before any conclusion --
+  "do not trust previous reports merely because they say PASS, CLOSED, or CONFIRMED."
+
+  **§2** lists twelve provisional Step-281 inputs (`K,Σ,Q_t,O_core`, Identity, Equality, Evidence, History,
+  Replay, Provenance, Lineage, Transformation `T`) as "established candidates, not unquestionable axioms,"
+  reopenable only on concrete contradiction.
+
+  **§3 delivers THE FILE'S CENTRAL NEW FORMAL APPARATUS: EIGHT THEORY-CRITICALITY CRITERIA (`TC-1`-`TC-8`)**
+  -- Semantic definition / Type closure / Identity-equality / Transformation closure / Invariant
+  preservation / Mandatory distinguishability / Falsifiability / Internal consistency -- a residual gap is
+  theory-critical ONLY if its unresolved state prevents at least one of these eight, explicitly refusing
+  "important to production" as a criterion.
+
+  **§4 delivers a NEW EIGHT-CODE PRIMARY GAP-CLASSIFICATION SYSTEM**: `F` Formal / `C` Computational / `E`
+  Empirical / `M` Measurement / `G` Governance / `N` Normative / `S` Scope / `U` Undetermined-blocked --
+  refining and extending the corpus's many earlier closure-vocabulary schemes (this reconstruction's
+  eighth-or-so distinct scheme tracked across files 0904/0906/0908-0910/0915/0919/0920/0921) with a new
+  M/S/U triad not present in most predecessors.
+
+  **§5 delivers a TEN-ITEM RESIDUAL-GAP REGISTER carried forward from Step 281**: `T-3` probability, `T-4`
+  non-identifiability, `I-1` 15/24 unobserved constructs, `I-2` circular dependency, `I-3` no `Authorize()`
+  runtime, `E-1` Level-4-vs-Level-5 evidence, `E-2` no multi-node deployment, `E-3` no measurement executor,
+  `G-P1` policy runtime, `Q_t` replayability/serialization -- with an explicit instruction to search for
+  NEW gaps exposed by Step 281 rather than assume completeness.
+
+  **§6** delivers a rigorous per-gap analysis template (all eight `TC` criteria scored PASS/FAIL/N/A, plus
+  theory-critical YES/NO, primary classification, evidence level, falsification performed, result, required
+  action) -- directly reusable and more granular than any prior per-item template in this sub-arc.
+
+  **§§7-16** deliver detailed individual test protocols for each of the ten register items (T-3
+  probability-necessity test via the removal counterfactual "if probability is removed... does any
+  mandatory construct become undefined?"; T-4 non-identifiability via an explicit `K_1≠K_2` but
+  `K_1≈_{O_core}K_2` counterexample construction; I-1/E-1 real-environment observability with an explicit
+  five-level evidence scale `L1`-`L5` and "never upgrade L4 evidence to L5"; I-2 dependency-cycle test
+  distinguishing definitional/operational/runtime/governance/reference dependency; I-3 `Authorize_formal`
+  vs `Authorize_runtime`; E-2 multi-node execution; E-3 `MeasurementModel` vs `MeasurementExecutor`; G-P1
+  the `GovernancePolicy∉K` vs `KnowledgeAboutPolicy∈K` distinction; Q_t replay/serialization identity
+  tests; and a mandatory Policy/Knowledge separation test).
+
+  **§17 restates the four-symbol closure-dimension scheme** (`FC≠CC≠EC≠GC`) with the explicit invalid-
+  inference guards `FC∧CC⇏EC` and `FC∧CC⇏GC`.
+
+  **§18 delivers SEVEN NAMED, NUMBERED FALSIFICATION TESTS `F14`-`F21`** (Theory-criticality / Non-
+  identifiability / Policy-knowledge separation / Inquiry replay / Inquiry serialization identity /
+  Dependency-cycle / Closure-category / Probability-necessity) -- the numbering `F14`-`F21` implies at
+  least thirteen earlier-numbered falsification tests (`F1`-`F13`) exist elsewhere in the corpus, not
+  directly encountered as a consolidated list by this reconstruction to date, constituting a further
+  instance of the referenced-but-unseen-material pattern.
+
+  **§19** delivers a DDD Boundary Test across four named bounded contexts (Knowledge/Governance/History-
+  Provenance/Measurement) with the explicit four-way distinction boxed **`Mathematical Object ≠ DDD Entity
+  ≠ Aggregate ≠ Database Representation`**.
+
+  **§20** forbids the phrase "no contradictions remain" without active contradiction testing across ten
+  named construct-pairs.
+
+  **§21** delivers the Human Decision Boundary criterion (Normative classification permitted only when
+  corpus, mathematics, execution, AND empirical evidence all cannot determine it), with an explicit
+  per-decision record template and the instruction "do not ask 'which one do you prefer?'"
+
+  **§22 delivers the three-verdict decision procedure** (A/B/C, matching but formalizing 0921/0922's
+  outcomes with explicit boolean conditions on `FC,CC,EC,GC`).
+
+  **§23 delivers a TWELVE-ARTIFACT REQUIRED DELIVERABLE LIST** (`01-THEORY-CRITICALITY-REGISTER.md` through
+  `12-STEP-282-SUPERVISORY-VERDICT.md`) -- the first genuinely file-level deliverable specification
+  encountered in this sub-arc, suggesting the corpus's own production process may (or was intended to)
+  generate a cluster of twelve distinct named files for Step 282, none of which have yet appeared
+  individually in this reconstruction's sequential pass.
+
+  **§24 delivers A NEW SEVEN-SYMBOL EVIDENCE-TRACEABILITY CODE** (`[D]` Derived / `[F]` Formal / `[E]`
+  Executed / `[R]` Real-environment / `[N]` Normative / `[I]` Inferred / `[U]` Unresolved) -- yet another
+  distinct evidence-classification vocabulary, differing from the file's own §9 five-level L1-L5 scale and
+  from 0904's six-value scheme and 0915's/0919's seven-level hierarchies -- a further instance of this
+  sub-arc's closure-vocabulary proliferation, now spanning roughly eight to nine distinct, only partially
+  reconciled schemes.
+
+  **§25 delivers the Anti-Bias Rule**: "You are the adversarial verifier, not a completion engine,"
+  explicitly forbidding forcing either a positive-closure or an open-theory verdict.
+
+  **§26** explicitly forbids preselecting Step 283 before the verdict is reached.
+
+  **§27** delivers an eleven-category Final Supervisory Report template (A-K).
+
+  **§28 Final Command** closes with an explicit, forceful execution directive: "Execute Step 282 now. Do
+  not merely describe how Step 282 should be executed... Actually inspect the corpus, inspect the
+  implementation, execute the tests that are feasible..." followed by six explicit "do not promote X into
+  Y" anti-conflation warnings and the boxed final objective **`Determine whether anything remains that the
+  theory itself must solve.`**, closing "STEP 282 — EXECUTE."
+introduces:
+  - concept: "TC-1 through TC-8: the eight theory-criticality criteria (Semantic definition, Type closure, Identity/equality, Transformation closure, Invariant preservation, Mandatory distinguishability, Falsifiability, Internal consistency)"
+  - concept: "The F/C/E/M/G/N/S/U eight-code primary gap-classification system"
+  - concept: "The ten-item residual-gap register (T-3, T-4, I-1, I-2, I-3, E-1, E-2, E-3, G-P1, Q_t) inherited from Step 281"
+  - concept: "F14-F21, the seven newly-listed falsification tests, implying an unseen F1-F13 set elsewhere in the corpus"
+  - concept: "The [D]/[F]/[E]/[R]/[N]/[I]/[U] seven-symbol evidence-traceability code, a further distinct evidence-classification vocabulary"
+  - concept: "The twelve-artifact required deliverable list (01-THEORY-CRITICALITY-REGISTER.md through 12-STEP-282-SUPERVISORY-VERDICT.md)"
+  - concept: "The DDD Boundary Test and its four-way Mathematical Object ≠ DDD Entity ≠ Aggregate ≠ Database Representation distinction"
+  - concept: "The Human Decision Boundary criterion for Normative classification (corpus AND mathematics AND execution AND empirical evidence must all fail to determine it)"
+defines:
+  - concept: "Theory-critical (formal definition via TC-1..TC-8)"
+    definition: "A residual gap is theory-critical if and only if its unresolved state prevents at least one of eight named closure properties: the construct cannot be unambiguously defined (TC-1), lacks a well-defined type (TC-2), cannot be distinguished/compared per the theory (TC-3), a required transformation cannot be formally defined (TC-4), a required invariant cannot be stated or preserved (TC-5), two states the theory must distinguish cannot be represented (TC-6), the theory cannot state what evidence would refute a claimed property (TC-7), or the unresolved item creates an actual formal contradiction (TC-8). Explicitly NOT theory-critical merely because a construct is important to production or implementation"
+  - concept: "The probability-necessity counterfactual test (§7)"
+    definition: "To determine whether probability is a genuine foundational dependency of KnowledgeOS rather than an incidental vocabulary borrowing, ask: if probability were entirely removed from the foundational theory, would any mandatory KnowledgeOS construct become undefined? If no, probability belongs to a specialized measurement/statistical model layered atop the core theory, not to the core theory itself -- and the mere presence of words like 'uncertainty,' 'confidence,' 'likelihood,' 'probability,' or 'reliability' in the corpus is explicitly insufficient grounds to introduce probability as foundational"
+refines:
+  - concept: "0921's/0922's three-outcome A/B/C stopping decision"
+    refinement: "FORMALIZED with explicit boolean conditions on the four-symbol closure vector (FC, CC, EC, GC): B requires FC=TRUE and no theory-critical gap while at least one of CC/EC/GC remains incomplete; C requires all four TRUE with actual evidence for each"
+  - concept: "The recurring closure-vocabulary proliferation (0904, 0906, 0908-0910, 0915, 0919, 0920, 0921)"
+    refinement: "FURTHER EXTENDED by two more distinct schemes introduced in this single file (the eight-code F/C/E/M/G/N/S/U classification, and the seven-symbol [D]/[F]/[E]/[R]/[N]/[I]/[U] traceability code) -- now the sub-arc's most vocabulary-dense single artifact, with at least nine distinct, only partially cross-referenced classification schemes accumulated across this reconstruction's tracking"
+  - concept: "0919's/0920's/0921's L4/L5(/L6) evidence-hierarchy discipline"
+    refinement: "RESTATED with a slightly different five-level L1-L5 scale in this file's own §9 (conceptual/formal/controlled-implementation/independent-executable-reference/real-KnowledgeOS-observation), distinct in granularity from 0915's/0919's seven-level hierarchies -- yet another minor inconsistency in the evidence-level numbering across sibling files"
+contradicts: []
+repeats:
+  - "§17's FC/CC/EC/GC restatement repeats 0919's/0921's/0922's four-symbol closure vector without new content beyond the explicit invalid-inference guards."
+bridge_candidates:
+  - "The twelve individually-named artifacts this file specifies (01-THEORY-CRITICALITY-REGISTER.md through 12-STEP-282-SUPERVISORY-VERDICT.md) -- watch whether any of these exact filenames or their content are directly encountered later in the corpus."
+  - "The unseen F1-F13 falsification-test set implied by this file's F14-F21 numbering."
+  - "Whether the actual Step 282 execution result (following this exact prompt) is ever encountered, delivering a genuine verdict A/B/C with the required twelve artifacts."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the TC-1..TC-8 theory-criticality criteria as the sub-arc's most precise, directly reusable formal definition of when a gap is genuinely theory-critical versus merely an implementation/empirical/governance concern."
+  - "dimension-registry.md: record the further extension of the closure-vocabulary proliferation (now approaching nine distinct schemes) as an accumulating finding relevant to this reconstruction's own eventual terminology-reconciliation work at the §29-gated synthesis stage."
+  - "dimension-registry.md: record the twelve-artifact deliverable list and the F1-F13/F14-F21 falsification-test split as open bridge candidates to watch for in subsequent files."
+anchor_test:
+  anchor: "0921's/0922's corrected Step 282 mandate and three-outcome A/B/C decision; the corpus's recurring closure-vocabulary proliferation (0904, 0906, 0908-0910, 0915, 0919, 0920)"
+  supports_dimension: "Fully operationalizes the mandate into an executable adversarial-verifier prompt with formal TC-1-8 criteria, an eight-code classification system, and boolean closure conditions. Further extends the closure-vocabulary proliferation with two additional distinct schemes"
+  refines_or_contradicts: "formalizes and operationalizes 0921/0922's mandate; further extends (without reconciling) the closure-vocabulary proliferation"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§18's explicit numbering 'F14-F21' is directly checkable evidence that an earlier, unseen F1-F13 falsification-test set exists somewhere in the corpus."
+  - "§23's twelve explicitly named artifact filenames are directly checkable against later files in the corpus by exact filename or title match."
+  - "§7's explicit removal-counterfactual test for probability necessity is directly checkable against file 0920's own T-3 resolution (which reached the same NOT-REQUIRED conclusion via a similar but not identical argument)."
+undefined_concepts: []
+open_questions:
+  - "Whether the twelve required artifacts (01-THEORY-CRITICALITY-REGISTER.md through 12-STEP-282-SUPERVISORY-VERDICT.md) are ever produced and encountered as individual files."
+  - "Whether the unseen F1-F13 falsification tests are ever encountered as a consolidated list elsewhere in the corpus."
+  - "Whether the actual Step-282 execution result following this exact prompt is ever encountered, and whether its verdict matches the already-reached T-3/T-4 resolutions in file 0920."
+tier2_triggered: true
+tier2_reason: "Introduces substantial new formal apparatus (TC-1..TC-8 theory-criticality criteria, an eight-code gap-classification system, a seven-symbol evidence-traceability code, twenty-one falsification tests referencing an unseen F1-F13 set, and a twelve-artifact deliverable specification) not previously seen in this sub-arc, and further extends the already-tracked closure-vocabulary-proliferation finding. Classified importance critical; confidence medium given this is a prompt/mandate artifact rather than a delivered execution result, and given reliance on unseen referenced material (F1-F13, the Step-281 execution report, the Step-281 supervisory review)."

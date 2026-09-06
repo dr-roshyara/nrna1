@@ -1,0 +1,67 @@
+==============================================================================
+T-A  PRIMITIVE-LEVEL COMPARISON
+==============================================================================
+  ratified K_t primitives (8): ['Action', 'Entity', 'Event', 'Observation', 'Policy', 'Proposition', 'Relation', 'State']
+  verification K = (A, R)            : ['Assertion', 'Relation']
+  ... A expanded to its fields       : ['Context', 'Entity', 'Evidence', 'Proposition', 'Provenance', 'Relation', 'Time']
+
+  SHARED            (3): ['Entity', 'Proposition', 'Relation']
+  RATIFIED-ONLY     (5): ['Action', 'Event', 'Observation', 'Policy', 'State']
+  VERIFICATION-ONLY (4): ['Context', 'Evidence', 'Provenance', 'Time']
+
+  Of the ratified-only primitives, the verification lane declares these EXTERNAL to K:
+    ['Action', 'Event', 'Policy']
+  And these are simply ABSENT from the verification lane:
+    ['Observation', 'State']
+
+==============================================================================
+T-B  MODEL DISCRIMINATION (A-F)
+==============================================================================
+  A  K_t = (A,R,Sigma,...) complete      REFUTED  ratified K_t contains Action/Event/Policy, which the verification lane puts OUTSIDE K
+  B  K_t = (A,R), rest external          REFUTED  contradicts FA-4: ratified K_t is 'state over 8 primitives', not 2
+  C  (A,R) = pi_K(K_t) projection        HOLDS    every VERIFICATION-ONLY item is a FIELD of an assertion, not a new primitive
+  D  K_t = pi_knowledge(S_t)             HOLDS    compatible with C; differs only in which object is called primary
+  E  S_t = (K_t,E_t,H_t,G_t,Q_t) layered HOLDS    compatible with C; names the complement of the projection
+  F  separate products                   REFUTED  REFUTED: 'Relation' and 'Proposition' are shared primitives; a common referent exists
+
+==============================================================================
+T-C  IS THE PROJECTION WELL-DEFINED?  (the decisive test)
+==============================================================================
+    pi(Action      ) = DROPPED (external)
+    pi(Entity      ) = -> E inside P
+    pi(Event       ) = DROPPED (external)
+    pi(Observation ) = -> e (evidence) AFTER Qualify
+    pi(Policy      ) = DROPPED (external)
+    pi(Proposition ) = -> P inside Assertion
+    pi(Relation    ) = -> R directly
+    pi(State       ) = -> the carrier itself
+
+  Every ratified primitive has an image or an explicit drop:  TOTAL = True
+  BUT one image is CONDITIONAL:
+    pi(Observation) -> e   requires Qualify : Observation x Policy -> Evidence
+    Qualify HAS NO BODY in the corpus (1 undefined hit, Step 170).
+
+  => pi is DEFINABLE but NOT COMPUTABLE.
+     The projection exists as a structure and cannot be evaluated.
+     *** This is the precise reconciliation result. ***
+
+==============================================================================
+T-D  SUFFICIENCY / IDENTITY / REPLAY (T1,T2,T6)
+==============================================================================
+  T1 sufficiency : (A,R) cannot carry Action/Event/Policy  -> INSUFFICIENT for K_t's role
+  T2 identity    : id = H(P,e,c,t,Pi) is defined for assertions; K_t has NO identity rule -> ASYMMETRIC
+  T6 replay      : K_t = fold(delta,H,K_0) needs Action+Event, which (A,R) excludes
+                   -> replay is expressible in K_t and NOT in (A,R) alone
+
+==============================================================================
+T-E  ACTION != RESULT  (D285-5)
+==============================================================================
+  delta(K0,o1) = ['a1', 'a2']
+  delta(K0,o2) = ['a1', 'a2']
+  states equal? True    operations equal? False
+  => delta(K,o1)=delta(K,o2) does NOT imply o1=o2 :  CONFIRMED, REQUIRED
+     (if ids hash Pi, the assertions differ -- but then the STATES differ too,
+      so the property must be stated over SEMANTIC equality, not structural.)
+
+  Under SEMANTIC equality (ignore id, Pi): states ARE equal, operations differ.
+  => the property is REQUIRED and holds only under semantic equality. Typed result.

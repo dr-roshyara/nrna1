@@ -1,0 +1,77 @@
+sequence: 627
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-103922_step-046-learning-stability-self-correction-feedback-safety-and-epistemic-control.md
+title: "CORPUS-INTEGRITY ANOMALY — 'Step 46' Exists Only as a Fourteen-Line Announcement Stub (645 Bytes, vs. the Established ~20-25KB Per-Step Norm), Reproducing Verbatim the Preview Text Already Given at 0626's Close, With None of Its Seven Named Sub-Topics (LearningStability/FeedbackAmplification/SelfCorrection/EpistemicDrift/ModelCollapse/FeedbackLoops/Human-External-Anchors) or Any Falsification Experiments/Verdict Actually Delivered — the Corpus's First Genuinely Incomplete/Truncated Step File"
+date: "2026-08-28"
+bytes: 645
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "an announcement-only stub, not a content-delivery file — reproduces 0626's closing preview text verbatim with no independent substantive content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 627
+importance: high
+confidence: high
+about: >
+  **CORPUS-INTEGRITY ANOMALY, first of its kind in this reconstruction's full processing history through
+  627 files**: this file, titled "Step 46 — Learning Stability, Self-Correction, Feedback Safety and
+  Epistemic Control," contains only fourteen lines (645 bytes) -- roughly 3% of the typical 20-25KB size
+  established by every "Step N" file since the corpus's plain-numbered sequence began at 0605. Its entire
+  content is a verbatim (near-identical) reproduction of the closing preview text already given at the end
+  of 0626 (Step 45): the framing question `"How do we ensure that KnowledgeOS improves through learning
+  rather than amplifying its own errors?"`, the same seven named sub-topics
+  (`LearningStability, FeedbackAmplification, SelfCorrection, EpistemicDrift, ModelCollapse, FeedbackLoops,
+  Human/External Anchors`), and the same closing framing question
+  `"What prevents an autonomous KnowledgeOS from becoming confidently wrong?"`, described as "a critical
+  architectural question before we declare the adaptive architecture complete."
+
+  **None of the seven named sub-topics receives any actual formal treatment in this file.** There is no
+  mathematical development, no worked example, no falsification-experiment section, and no "STEP 46 —
+  PASS/FAIL" verdict -- every one of these elements has appeared in every substantive "Step N" file since
+  Step 26 (0605) without exception. This file reads as an announcement/table-of-contents fragment that was
+  apparently either (a) truncated before its substantive content was generated, (b) accidentally saved as a
+  separate short file distinct from its intended full-length continuation, or (c) a genuine placeholder
+  left by the corpus's own authors pending a later fuller treatment that may or may not appear under this
+  exact title later in the corpus. This reconstruction does not adjudicate which explanation is correct;
+  it records the anomaly and its evidentiary basis precisely.
+
+  This is recorded as a **high-importance corpus-integrity finding**, not a critical content contribution:
+  the file supplies no new formal knowledge, dimension, or principle beyond what 0626 already stated in its
+  own closing preview. The substantive treatment of "learning stability, self-correction, feedback safety,
+  and epistemic control" -- the actual architectural question of whether an autonomous KnowledgeOS can
+  avoid becoming confidently wrong -- **remains unanswered as of this file** and must be tracked as an
+  outstanding open item: either a later file (under this title or a renumbered one) delivers the promised
+  content, or the corpus genuinely never completes this specific topic, which would itself be a significant
+  finding about the corpus's own limits.
+introduces: []
+defines: []
+refines:
+  - concept: "0626's (Step 45) closing preview of Step 46's central question and seven named sub-topics"
+    refinement: "Reproduced verbatim/near-verbatim without any independent substantive development — this file adds no new content beyond restating what 0626 already previewed"
+contradicts: []
+repeats:
+  - "This file's entire content substantially duplicates 0626's own closing preview text (the Step-46 framing question, the seven named sub-topics, and the closing 'confidently wrong' question), without adding any new formal development."
+bridge_candidates:
+  - "PRIORITY: track whether a later file in the corpus (under the title 'Step 46' again, a renumbered variant, or folded into a subsequent step) actually delivers the substantive treatment of LearningStability, FeedbackAmplification, SelfCorrection, EpistemicDrift, ModelCollapse, FeedbackLoops, and Human/External Anchors that this stub file only announces. If no later file ever does so, record this as a genuine, permanent gap in the corpus's own self-declared research program — the central question of whether an autonomous KnowledgeOS can avoid becoming confidently wrong would then remain formally unanswered despite being explicitly flagged by the corpus itself as critical before declaring the adaptive architecture complete."
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: record the CORPUS-INTEGRITY ANOMALY — file 0627 ('Step 46') is a 645-byte announcement stub, not a substantive content file, reproducing 0626's own closing preview verbatim with none of its seven named sub-topics or any falsification/verdict content actually delivered. Flagged for priority tracking: does a later file complete this topic, or does it remain a permanent, self-acknowledged gap in the corpus's research program?"
+anchor_test:
+  anchor: "0626's (Step 45) closing preview text and its own explicit framing of Step 46 as 'a critical architectural question before we declare the adaptive architecture complete'; the established ~20-25KB size and full falsification/verdict structure norm for every substantive 'Step N' file since 0605"
+  supports_dimension: "This file supplies no dimension support of its own; it is a corpus-integrity anomaly record rather than a content contribution. Its evidentiary value lies entirely in the directly checkable fact that its size (645 bytes) and structure (no mathematical development, no falsification experiments, no verdict) deviate sharply and unambiguously from every one of the twenty-plus preceding 'Step N' files processed in this reconstruction, and that its text is substantially identical to 0626's own closing preview rather than an independent elaboration of it"
+  refines_or_contradicts: "reproduces 0626's closing preview without extending it; does not contradict any prior finding; represents a first-of-its-kind structural anomaly (an incomplete/stub Step file) rather than a title collision, topic-overlap, or renumbering event of the kinds previously observed and confirmed in this corpus (25N/25C, 0618/0597)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The file's total size (645 bytes, 14 lines) is directly checkable against the established norm of roughly 19,000-25,000 bytes and 1,600-2,200 lines for every substantive 'Step N' file since 0605 (0619 at 22,984 bytes, 0623 at 19,087 bytes, 0624 at 23,969 bytes, 0625 at 24,470 bytes, 0626 at 22,604 bytes) — an unambiguous, order-of-magnitude size deviation rather than a borderline or subjective judgment."
+  - "A line-by-line comparison shows this file's entire content — the framing question, the seven named sub-topics, and the closing 'confidently wrong' question — is substantially identical to the text already given as the closing preview of the immediately preceding file (0626), with no additional mathematical notation, worked example, falsification experiment, or verdict box appearing anywhere in this file."
+undefined_concepts: []
+open_questions:
+  - "Whether a later file in the corpus (under this exact title, a renumbered variant, or folded into a subsequent step) ever delivers the substantive treatment of LearningStability, FeedbackAmplification, SelfCorrection, EpistemicDrift, ModelCollapse, FeedbackLoops, and Human/External Anchors that this stub only announces, or whether this represents a permanent, self-acknowledged gap in the corpus's own declared research program"
+tier2_triggered: true
+tier2_reason: "CORPUS-INTEGRITY ANOMALY of high importance for this reconstruction's own tracking obligation: this is the first genuinely incomplete/stub 'Step N' file encountered anywhere in the corpus through 627 files processed, deviating by roughly an order of magnitude from the established per-step size and structural norm (no mathematical development, no falsification experiments, no verdict), while substantially duplicating the immediately preceding file's (0626) closing preview text rather than delivering independent content. The corpus itself explicitly frames this step's substantive question — whether an autonomous KnowledgeOS can avoid becoming confidently wrong — as critical before the adaptive architecture can be declared complete, making the absence of any actual treatment here a directly trackable, high-priority open item rather than a minor bookkeeping curiosity."

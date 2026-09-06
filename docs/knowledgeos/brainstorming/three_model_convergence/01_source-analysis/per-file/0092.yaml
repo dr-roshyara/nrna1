@@ -1,0 +1,142 @@
+sequence: "0092"
+path: docs/knowledgeos/brainstorming/20260822-0218-tarka-shastra-nyaya-epistemology-research-extraction.md
+title: "Tarka Shastra and Nyaya Epistemology: Research Extraction for KnowledgeOS"
+date: "2026-08-22"
+bytes: 23540
+
+model:
+  primary: g
+  secondary: [x, m, c1]
+
+source_role: INDEPENDENT_RESEARCH
+canonical_source: null
+
+importance: critical
+confidence: high
+
+about: >
+  A rigorously-cited external-literature review (Stanford Encyclopedia of Philosophy, academic
+  Indology sources, a 2026 Zenodo paper on fine-tuning LLMs on Navya-Nyaya methodology) of classical
+  Indian formal logic and epistemology: the four Pramāṇas, the five-membered syllogism, Tarka as
+  reductio ad absurdum, and the Vedic authority-constrains-reason principle. Maps nearly every concept
+  explicitly onto existing KnowledgeOS/C1 principles with argued rationale. ⭐ First appearance of
+  "Mokṣa" in the primary corpus (in a comparative-goals table cell, not elaborated).
+
+introduces:
+  - "Four Pramāṇas specified: Pratyakṣa (Perception, direct sensory experience, 'the primary and most
+    fundamental source'), Anumāna (Inference, via invariable concomitance/vyāpti), Upamāna (Comparison/
+    analogy), Śabda (Testimony/reliable verbal authority) -- a genuine specification beyond 0087's
+    general Pramāṇa quartet (Pramātā/Pramāṇa/Prameya/Pramā), which named the KNOWING-PROCESS roles;
+    this file names the four TYPES of valid knowledge-generating process itself"
+  - "Five-membered syllogism (Nyāya-Parārthānumāna): Pratijñā (Proposition) / Hetu (Reason) /
+    Udāharaṇa (Example, universal rule + concrete instance) / Upanaya (Application to the specific
+    case) / Nigamana (Conclusion) -- a genuine, ancient, formally rigorous inference structure, with
+    two named validity requirements: Pakṣadharmatā (the reason must actually be present in the
+    subject) and Vyāpti (invariable concomitance between reason and conclusion)"
+  - "Tarka defined as 'Pramāṇa-anugrahaka' -- an ASSISTANT to the pramāṇas, explicitly NOT an
+    independent knowledge source (Apramāṇa): functions as reductio ad absurdum (prasaṅga), testing
+    competing claims by showing absurd consequences, without itself producing knowledge"
+  - "Five named types of fallacious Tarka (a genuine formal fallacy taxonomy): Pramanabadhita
+    (contradicted by valid knowledge sources), Atmasraya (self-dependency/circular), Anyonyasraya
+    (mutual dependency), Cakrakasraya (circular dependency chain), Anavastha (infinite regress)"
+  - "Six-Phase Navya-Nyaya reasoning methodology (2026 AI implementation, cited with reported results):
+    Samshaya (doubt analysis, 5 taxonomic categories) -> Pramana (evidence grounding) -> Pancha Avayava
+    (5-member syllogism construction) -> Tarka (counterfactual testing) -> Hetvabhasa (5-type fallacy
+    detection) -> Nirnaya (ascertainment: definitive knowledge vs hypothesis). Reported: '100% semantic
+    correctness (10/10 examples)... dissociation between semantic correctness (100%) and format
+    adherence (40%) suggests models internalize reasoning content even when strict schema compliance
+    fails' -- a real, citable, empirical AI-reasoning result, not metaphor"
+  - "Śaṅkarācārya's warning against 'duṣ-tarka' (corrupt/futile reasoning): 'reason (tarka) must serve
+    scripture (śruti), not replace it' -- an independently (Vedic-)sourced argument for Authority
+    constraining Reason, explicitly mapped onto Evidence!=Authority/Assessment!=Authority"
+  - "Nyāya's iterative 4-phase cognitive cycle: pramā (valid cognition) -> saṃśaya (structured doubt)
+    -> siddhānta/avayava/nirṇaya (theory construction/evaluation) -> vāda/jalpa/vitaṇḍā (formalized
+    discourse: truth-seeking/competitive/destructive debate) -> back to 1"
+  - "⭐ First appearance of 'Mokṣa' (liberation) in the primary corpus -- in a single comparative-table
+    cell (Tarka Shastra's stated Goal, vs Western epistemic logic's Truth/justification/consistency),
+    NOT elaborated doctrinally. Buddhi/guṇas/purification remain entirely unseen even here"
+  - "TARKA-001..005 candidate invariants: Pramana Grounding (strong candidate), Vyapti Confirmation
+    (candidate), Tarka as Assistant (strong candidate), Structured Doubt (candidate), Authority
+    Constraint on Reason (strong candidate) -- a SEVENTH unreconciled candidate-invariant ID scheme"
+  - "Explicit rejections: 'Tarka as kernel primitive' = Rejected/None; 'Nyaya as complete architecture'
+    = Rejected/Dangerous -- the same self-limiting discipline as every prior extraction-prompt response"
+
+defines: []
+
+refines:
+  - "0087's Pramāṇa quartet: specified further with the four canonical pramāṇa TYPES (perception/
+    inference/comparison/testimony), not merely the four knowing-roles"
+  - "0089/0090/0091's Evidence!=Authority/Assessment!=Authority family: independently reinforced via
+    the dustarka/Śaṅkarācārya argument, sourced from real external Indology scholarship rather than
+    this corpus's own continuous conversational arc -- a qualitatively different, externally-cited
+    form of corroboration"
+
+contradicts: []
+
+repeats:
+  - concept: "UNKNOWN as first-class epistemic state"
+    canonical_source: "0081"
+    novelty: low
+  - concept: "Evidence != Authority"
+    canonical_source: "0014"
+    novelty: low
+
+bridge_candidates:
+  - "The five-membered syllogism (Pratijñā/Hetu/Udāharaṇa/Upanaya/Nigamana) as a possible bridge to a
+    future M-model formal reasoning-chain representation -- structural resemblance to AGM's formal
+    postulates (0088) only, no connecting work done between the two systems by any document yet"
+  - "Tarka's five fallacy types (Pramanabadhita/Atmasraya/Anyonyasraya/Cakrakasraya/Anavastha) as a
+    possible bridge to a future formal contradiction-detection mechanism -- structural resemblance to
+    TMS/AGM contradiction-handling (0088) only, not yet connected by evidence"
+
+mathematical_content: true
+gita_content: true
+kernel_content: true
+
+# MD-014 anchor_test against 0087 (Minimal_Kernel_Candidate_0087)
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Authority Separation", "Evidence Integrity", "Unknown Preservation"]
+  refines_or_contradicts: >
+    No new dimension proposed, no contradiction of 0087's count -- reinforces three existing
+    dimensions via GENUINELY INDEPENDENT external scholarship (Stanford Encyclopedia of Philosophy,
+    academic Indology sources), qualitatively different from 0089-0091's same-conversational-arc
+    elaboration, though still produced on the same 2026-08-22 date/research effort.
+  alternative_minimal_kernel: null
+  supplies_math_semantics: true    # the five-membered syllogism with Pakṣadharmatā/Vyāpti validity
+                                     # requirements is genuine formal logic, comparable in rigor to
+                                     # 0088's AGM postulates, though not symbolically notated here
+  supplies_operator_or_transition: true   # the 5-step syllogism and 6-phase methodology are formal
+                                            # reasoning PROCEDURES, not state-transition operators
+                                            # with a signature, but the closest thing to one from this
+                                            # region's Gita/Vedanta-adjacent material
+  connects_pramana_vedanta_gita_to_c1c2: true   # extensive, argued mapping throughout (every Nyāya
+                                                   # concept explicitly compared to a named C1 principle)
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false   # worsened: a SEVENTH scheme (TARKA-n)
+
+key_evidence:
+  - "Real, citable, empirical AI-reasoning result (2026 Zenodo paper: 100% semantic correctness on a
+    6-phase Navya-Nyaya-derived methodology) -- among the most rigorously evidenced single claims in
+    the corpus, alongside 0088's AGM citations"
+  - "First 'Mokṣa' appearance in 91+ files of primary corpus, unelaborated"
+  - "The most systematic, externally-scholarly-sourced mapping of Indian logic onto existing C1
+    principles yet produced -- every one of the file's 5 candidate invariants is explicitly tested
+    against a named existing KnowledgeOS distinction, not proposed in isolation"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether the five-membered syllogism or the six-phase Navya-Nyaya methodology is ever taken up as
+    an actual reasoning-engine design later in the corpus (per the Kernel-vs-Reasoning-Engine boundary
+    established at 0091, this would belong to a Reasoning Engine, not the Kernel itself)"
+  - "Whether Mokṣa reappears later with doctrinal elaboration, or remains a single unexplained mention"
+
+tier2_triggered: true
+tier2_reason: >
+  First appearance of "Mokṣa" in the primary corpus; genuinely rigorous, externally-cited classical
+  Indian formal logic (five-membered syllogism, Pramāṇa taxonomy, Tarka fallacy types) mapped
+  extensively and with argument (not resemblance alone) onto existing C1 principles -- satisfying the
+  anchor_test's Pramāṇa/Vedanta/Gita-to-C1/C2 connection criterion from genuinely independent scholarly
+  sourcing, a qualitatively stronger form of corroboration than the same-conversational-arc material at
+  0089-0091. A seventh unreconciled candidate-invariant ID scheme is also introduced.

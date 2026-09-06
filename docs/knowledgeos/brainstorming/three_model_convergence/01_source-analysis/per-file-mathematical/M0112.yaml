@@ -1,0 +1,96 @@
+sequence: M0112
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-142217_the-frozen-model-what-is-settled-and-where-the-artifacts-are.md
+title: "The Frozen Model -- Updated Sibling of M0106 (Same Master Reference), Reflecting the R1 Factivity Decision and Cross-Referencing M0111 as Its Companion Trajectory -- A THIRD Instance of the File-Timestamp-vs-Logical-Order Anomaly (M0105, M0110): This File's Raw Timestamp (142217) Is EARLIER Than M0106's (142901), Yet Its Content Is Strictly NEWER (Post-R1) Than M0106's (Pre-R1, Factivity Still Shown OPEN)"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "near-verbatim sibling of M0106 ('The Frozen Model' master reference) -- Parts 0-3, most of Part 4, and Parts 5.1-5.4 and 6 are identical or near-identical to M0106 -- but this version reflects the R1 factivity decision (Factivity removed from the OPEN list, marked DECIDED-R1, removed from the sequential queue) and adds a new Part 5b explicitly cross-referencing M0111 ('the-development-of-the-model...') as its companion trajectory document; despite containing this later, post-decision content, this file's own raw timestamp (142217) is EARLIER than M0106's (142901), which still shows Factivity as OPEN -- a third concrete instance of the file-timestamp-vs-true-content-order anomaly already flagged at M0105 and M0110, this time affecting the corpus's own two 'authoritative snapshot' reference documents"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0112
+importance: critical
+confidence: high
+about: >
+  Restates M0106's full "Frozen Model" master reference verbatim in Parts 0-3 (BASELINE/FROZEN/
+  PROPOSED glossary; Theory v1.2's four constitutive moves; FR-001 in full quantified detail
+  including the exact regime parameters and the six-row packing-vs-measured table; the three-level
+  Identity/Distinguishability/Family-structure distinction; the FR-001 register; the five standing
+  consequences C-1 through C-5) and most of Part 4 (the recurring projection-destroys-structure
+  diagnosis table; the load-bearing established results including the 420/10,000 factivity witness,
+  13-vs-8 kernel minimality over 16,384 subsets, the Zero chain 1,620,000-assignment derivation, the
+  winner's-curse 0.00->0.61 figure, the channel-independence 0.75%/99.3% result, the 1,491/1,793
+  (83%) unordered-progress-claims figure, the 37/41 unsupported typed-facet-distinctions figure, and
+  the 11-live-category-violations figure) and Parts 5.1-5.4 (the full docs/knowledgeos/research/
+  artifact inventory: kernel-reduction/ 22 files, theory-v1.1-simulation/ 14 files, theory-v1.2-
+  simulation/ 22 files, code module inventory, 61 JSON results, reproduction commands) and Part 6
+  (usage guidance) -- ALL ALREADY RECORDED IN THIS RECONSTRUCTION'S M0106 ENTRY.
+
+  **THE SUBSTANTIVE DIFFERENCES FROM M0106**: (1) Part 1's status table now reads "Factivity |
+  DECIDED -- R1 (governance, after this snapshot): K_t -> A_t; Knows -> True external/factive;
+  Verification separate. No longer open" -- where M0106 read simply "Factivity | OPEN." (2) Part
+  4.4's "what is open" list DROPS Factivity entirely (M0106's list began "Factivity · Contr and the
+  fourth value..."; this version begins "Contr and the fourth value..."). (3) The queue statement
+  changes from M0106's "Queue, unchanged: Factivity -> Contr -> >=" to this version's "Queue: Contr
+  -> >= -- Factivity is decided (R1)" -- Factivity removed from the sequential chain since it is
+  resolved, not merely reprioritized. (4) A NEW "Part 5b -- Companion: the development history"
+  section explicitly names and cross-references "20260902-150331_the-development-of-the-model-how-
+  it-was-built-what-changed.md" (M0111) as this document's companion trajectory, instructing
+  "read the snapshot for state; read the trajectory for how and why" -- a cross-reference absent
+  from M0106 entirely. (5) Part 6's queue line updates to match: "the queue is Contr -> >=
+  (Factivity decided -- R1)."
+
+  **THE THIRD LOG-ORDERING ANOMALY IN THIS CLUSTER**: M0106 and M0112 are two versions of the same
+  reference document, differing specifically in whether they reflect the R1 factivity decision.
+  M0112 (this file) reflects R1; M0106 does not. Yet M0112's own raw file timestamp (142217) is
+  EARLIER than M0106's (142901) -- the file containing NEWER, post-decision content carries an
+  OLDER timestamp than the file containing STALE, pre-decision content. This is the third concrete
+  instance of the file-timestamp-vs-true-content-order mismatch this reconstruction has flagged in
+  this specific document cluster (following M0105's premature quotient-construction proposal and
+  M0110 Part 1's review-that-produced-M0109's-corrections), and the most direct one yet, since it
+  affects the corpus's own two candidate "authoritative snapshot" documents rather than a research
+  proposal and its critique. The most likely explanation, consistent with M0111's own Part 7.4
+  listing ("this document" [M0111, the trajectory] and referring to "…142217_the-frozen-model-…"
+  [M0112] as "the snapshot," with no mention of M0106 at all): M0112 is the corpus's genuinely
+  canonical, maintained snapshot (edited in place after R1 was decided, without its filename or
+  original creation timestamp changing), while M0106 is a stale COPY (per its own filename,
+  "copy-of-the-frozen-model-reference-duplicate") taken at an earlier logical moment but written to
+  disk, or timestamped, later -- i.e. M0106's own filename honestly advertises its copy status,
+  which this reconstruction's M0106 record did not previously connect to this specific staleness
+  finding.
+introduces:
+  - concept: "The R1-reflecting update to the Frozen Model reference: Factivity marked DECIDED-R1 and removed from both the open-items list and the sequential queue"
+  - concept: "The explicit Part 5b cross-reference naming M0111 as this document's companion trajectory, absent from M0106"
+  - concept: "The third concrete instance of the file-timestamp-vs-logical-content-order anomaly in this document cluster, this time affecting the corpus's own two 'authoritative snapshot' documents (M0106 stale/pre-R1, M0112 current/post-R1)"
+defines: []
+refines:
+  - concept: "M0106's Frozen Model master reference, updated here to reflect the R1 factivity decision and explicitly paired with M0111's trajectory"
+contradicts:
+  - concept: "M0106's Part 1 status table ('Factivity | OPEN') and Part 4.4 queue statement ('Factivity -> Contr -> >='), both superseded here by the R1-decided status -- despite M0112's earlier raw timestamp"
+repeats:
+  - concept: "The entirety of M0106's Parts 0-3, most of Part 4, and Parts 5.1-5.4 and 6 -- see M0106's own record for the full analysis of FR-001, the projection-destroys-structure table, the load-bearing established results, and the artifact inventory, all restated here near-verbatim"
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0112 as the R1-updated sibling of M0106, differing specifically in reflecting the Factivity=R1 decision and adding an explicit Part 5b cross-reference to M0111 as its companion trajectory -- flagging a third file-timestamp-vs-content-order anomaly in this cluster, since M0112's earlier raw timestamp (142217) paradoxically carries newer content than M0106's later timestamp (142901). All content shared with M0106 is not re-recorded in full; see M0106's own dimension-registry entry."
+anchor_test:
+  anchor: "M0106 (the stale sibling of this document) and M0111 (this document's named companion trajectory)"
+  supports_dimension: "Confirms and dates the R1 factivity decision's propagation into the corpus's own canonical snapshot document, and surfaces a third instance of this cluster's recurring file-timestamp-vs-content-order anomaly"
+  refines_or_contradicts: "refines (M0106, M0111); contradicts (M0106's stale Factivity=OPEN status and queue statement)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "M0112's Part 1: 'Factivity | DECIDED -- R1 (governance, after this snapshot)' versus M0106's Part 1: 'Factivity | OPEN' -- the two documents' single most consequential content difference, directly traceable to the R1 governance act reported in M0110/M0111."
+  - "M0112's new Part 5b explicitly names M0111 by its exact filename as 'the trajectory,' a cross-reference wholly absent from M0106 -- confirming M0112 and M0111 were maintained as a deliberately paired snapshot/trajectory set, while M0106 stands outside that pairing."
+  - "M0112's own filename carries no 'copy'/'duplicate' marker, while M0106's filename explicitly self-identifies as 'copy-of-the-frozen-model-reference-duplicate' -- consistent with M0112 being the maintained original and M0106 being an acknowledged (stale) copy, despite the manifest's checksum tool finding them non-identical and both PRIMARY."
+undefined_concepts: []
+open_questions:
+  - "Whether M0106 was ever updated to reflect the R1 decision elsewhere, or whether it stands permanently as the stale pre-R1 copy this record identifies it as."
+tier2_triggered: true
+tier2_reason: "Surfaces a third concrete instance of this document cluster's recurring file-timestamp-vs-logical-content-order anomaly, this time affecting the corpus's own two candidate 'authoritative snapshot' documents (M0106 stale, M0112 current) -- directly relevant to how this reconstruction and the eventual reclassification pass should weigh file timestamps as an ordering signal within this specific cluster."

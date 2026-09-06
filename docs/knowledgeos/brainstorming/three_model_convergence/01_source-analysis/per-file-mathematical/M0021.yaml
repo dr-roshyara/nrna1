@@ -1,0 +1,110 @@
+sequence: M0021
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-212400_reading-the-book-as-a-knowledge-theory-not-a-summary-of-hindu-philosophy.md
+title: "Reading the Book as a Knowledge Theory, Not a Summary of Hindu Philosophy: a Six-Level Data-to-Realization Hierarchy From Roopa Pai's Vedas/Upanishads for Children, the Oral-Transmission Knowledge-Integrity Architecture, and a Careful Gita-Only Jnana Definition That Explicitly Refuses Kshetrajna=Observer-Random-Variable"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: g
+  secondary: b
+  secondary_note: "the KR-SIM lane's own Gita/Vedic-material extraction, run as a distinct sub-lane within the mathematical_ideas_that_can_be_implemented/ corpus, parallel to (but independent of) this reconstruction's own main-corpus Gita thread; delivers explicit anti-collapse discipline against merging Upanishadic and Gita-only definitions, and against mapping Gita terms directly onto the mathematical model's variables"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0021
+importance: high
+confidence: high
+about: >
+  Two-part document. Part 1 reconstructs a "Knowledge Theory" from Roopa Pai's popular
+  interpretive book "The Vedas and Upanishads for Children" -- explicitly flagged as "first and
+  foremost a reconstruction of how the BOOK presents their view of knowledge, not a claim that
+  every formulation is a literal doctrine of every Vedic/Upanishadic school." Part 2 restricts to
+  the Bhagavad Gita itself (13.1-11, 18.20-22) for a more careful jnana definition, explicitly kept
+  SEPARATE from Part 1's Upanishadic reconstruction.
+
+  **PART 1 DELIVERS A SIX-LEVEL DATA-TO-REALIZATION HIERARCHY**: Data (something received, e.g. a
+  word) -> Information (organized representation, e.g. "Atman is Brahman" as a memorized sentence)
+  -> Understanding (knowing what it means) -> Knowledge (understanding supported by inquiry and
+  experience) -> Wisdom (knowing how to live according to it) -> Realization (directly
+  knowing/being the truth) -- with the book's own central claim "Knowledge != information" as the
+  organizing thesis (true knowledge combines intelligence, instinct, intuition, wisdom, empathy,
+  and understanding of shared participation in the Supreme Energy, per the book's Aitareya
+  discussion).
+
+  **DELIVERS THE ORAL-TRANSMISSION KNOWLEDGE-INTEGRITY ARCHITECTURE AS A GENUINELY NEW
+  KNOWLEDGEOS-RELEVANT FINDING**: the Vedic tradition's elaborate mechanisms for preserving exact
+  wording/sound/tone/sequence across purely oral transmission (multiple Patha recitation patterns
+  functioning as redundancy/corruption-detection mechanisms) is explicitly framed as "an ancient
+  knowledge-integrity architecture": Source -> Guru -> Student -> Memorization -> Multiple
+  representations -> Cross-checking -> Recitation -> Next generation -- a concrete historical
+  precedent for multi-representation integrity-checking, distinct from anything in M0001-M0020's
+  mathematical apparatus.
+
+  **DELIVERS THREE EXPLICITLY SEPARATED KNOWLEDGE PROBLEMS**: Problem A Integrity (did we preserve
+  the knowledge correctly); Problem B Meaning (do we understand what it means); Problem C
+  Realization (have we verified/transformed ourselves through it) -- "preservation is not the same
+  as knowledge," a clean three-way non-collapse directly relevant to KnowledgeOS's own
+  provenance/semantics/verification separation.
+
+  **PART 2 DELIVERS A CAREFUL, GITA-ONLY JNANA DEFINITION**, explicitly bounded [GITA] and NOT
+  merged with Part 1's Upanishadic reconstruction: "Jnana is disciplined discernment of reality by
+  a qualified knower, including discernment of the field and the knower and insight into their
+  underlying truth" (reconstructed from Gita 13.1-11 and 18.20-22, explicitly flagged as synthesis,
+  not a literal single-verse quotation). Key structural points: Kshetra != Kshetrajna (the field vs
+  the knower of the field) as "probably the most fundamental epistemological distinction in the
+  Gita"; knowledge (13.7-11) is defined to INCLUDE the qualities/condition of the knower (humility,
+  non-violence, patience, detachment, etc.), not merely correct propositional content -- "Knowledge
+  != information alone... includes the epistemic condition of the knower"; Chapter 18's sattvic
+  knowledge recognizes undivided reality within apparent multiplicity (many phenomena -> discern
+  relationships -> understand underlying unity).
+
+  **DELIVERS AN EXPLICIT REFUSAL TO MERGE THE TWO RECONSTRUCTIONS OR MAP GITA TERMS ONTO THE
+  MATHEMATICAL MODEL**: "this is Gita-derived synthesis, not a literal sentence from the Gita...
+  this is different from the definition extracted from the Upanishadic book... we should not yet
+  merge these into one model" -- and, comparing three parallel structures (Gita: Kshetra->
+  Kshetrajna->Jnana; mathematical model: X->Y_t->Pi_t->K_t; information-theoretic model: X->Y->
+  Information->Semantic discrimination), explicitly: "we must not yet say that Kshetrajna =
+  observer random variable, or Buddhi = estimator, or jnana = posterior distribution. Those would
+  be unjustified identifications." This is a clean, native instance of exactly this
+  reconstruction's own resemblance-!=-identity discipline, applied here to the Gita/mathematics
+  boundary specifically, structurally identical to M0005's Atman/Persistent-Identity boundary and
+  M0020's Atman-NOT-EQUIV-I finding.
+
+  **NOTES STRUCTURAL CONVERGENCE WITHOUT CLAIMING IDENTITY**: known/field != knowing/knower, and
+  raw-experience/information -> discrimination -> knowledge, appear across all three compared
+  structures -- consistent with, and reinforcing, M0020's own convergence-matrix findings, though
+  this document reaches the same conclusion independently via a direct Gita-textual reading rather
+  than M0020's cross-model tabulation.
+introduces:
+  - concept: "The six-level Data->Information->Understanding->Knowledge->Wisdom->Realization hierarchy, from Roopa Pai's Upanishadic reconstruction"
+  - concept: "The oral-transmission knowledge-integrity architecture (Source->Guru->Student->Memorization->Multiple representations->Cross-checking->Recitation->Next generation), with Patha recitation-pattern redundancy as a historical multi-representation integrity-check precedent"
+  - concept: "Three explicitly separated knowledge problems: Integrity (preservation correctness), Meaning (understanding), Realization (verification/transformation)"
+  - concept: "The Gita-only jnana definition (13.1-11, 18.20-22): disciplined discernment of reality by a qualified knower, including discernment of field/knower and insight into their underlying truth, explicitly bounded [GITA]"
+  - concept: "Knowledge (per Gita 13.7-11) explicitly includes the epistemic CONDITION of the knower (humility, detachment, etc.), not merely correct propositional content"
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Kshetra!=Kshetrajna and the general field/knower distinction, already established in this reconstruction's main-corpus Gita thread and independently restated in M0020's comparison table -- restated here via direct textual reconstruction rather than cross-model tabulation"
+bridge_candidates:
+  - "The explicit refusal to identify Kshetrajna with an observer random variable, Buddhi with an estimator, or jnana with a posterior distribution is a clean, native instance of this reconstruction's own resemblance-!=-identity discipline, structurally identical to M0005's Atman/Persistent-Identity boundary and M0020's Atman-NOT-EQUIV-I finding -- a third independent within-pass instance of the same discipline applied to Gita/mathematics specifically."
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0021 as the KR-SIM lane's own Gita/Vedic-material sub-lane, delivering a six-level Upanishadic knowledge hierarchy, an oral-transmission knowledge-integrity architecture (Patha redundancy), and a careful Gita-only jnana definition that explicitly refuses to identify Kshetrajna/Buddhi/jnana with the mathematical model's observer/estimator/posterior-distribution -- a third independent within-pass instance of this reconstruction's own resemblance-!=-identity discipline."
+anchor_test:
+  anchor: "This reconstruction's own resemblance-!=-identity discipline, already independently instantiated in this pass by M0005 (Atman/Persistent-Identity) and M0020 (Atman-NOT-EQUIV-I)"
+  supports_dimension: "A third independent within-pass instance, applied to Kshetrajna/Buddhi/jnana specifically, refusing to identify them with the mathematical model's observer/estimator/posterior-distribution"
+  refines_or_contradicts: "neither -- independent parallel instance of the same discipline"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'We must not yet say that Kshetrajna = observer random variable, or Buddhi = estimator, or jnana = posterior distribution. Those would be unjustified identifications' -- a third independent within-pass instance of this reconstruction's own anti-collapse discipline."
+  - "'This is Gita-derived synthesis, not a literal sentence from the Gita... this is different from the definition extracted from the Upanishadic book... we should not yet merge these into one model' -- an explicit refusal to merge two of the KR-SIM lane's own Gita-adjacent reconstructions, modeling the same discipline internally."
+undefined_concepts: []
+open_questions:
+  - "Whether this document's oral-transmission knowledge-integrity architecture (Patha redundancy) is later formalized or connected to KnowledgeOS's own provenance/multi-representation-checking apparatus elsewhere in this pass."
+tier2_triggered: true
+tier2_reason: "Delivers a genuinely new KnowledgeOS-relevant historical precedent (oral-transmission knowledge-integrity architecture), a careful Gita-only jnana definition, and a third independent within-pass instance of this reconstruction's own resemblance-!=-identity discipline applied specifically to the Gita/mathematics boundary -- warrants a full tier-2 record despite being non-mathematical in content."

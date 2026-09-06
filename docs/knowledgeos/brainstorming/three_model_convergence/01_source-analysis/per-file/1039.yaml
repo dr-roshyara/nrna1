@@ -1,0 +1,91 @@
+sequence: 1039
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-288/exec/t288_audits.py
+title: "t288_audits.py -- Step 288 Mathematical Audits A-J: A Genuinely Executable Script Confirming Exactly 32 (Not 'At Most 32') Distinct Partitions for This Construction, Demonstrating Structural Equality Is NOT a Congruence w.r.t. Hidden Provenance, and Executing the Canonicalization-Ambiguity and id/Mutable-State Contradictions Concretely"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a genuinely executable Python script for Step 288's mandate section 19, delivering ten labeled audits (A-J) with explicit scope-limit disclaimers"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1039
+importance: normal
+confidence: high
+about: >
+  "Step 288 mathematical audits A-J (mandate section 19)," a genuinely executable script confirming the
+  already-tracked 2240-state Σ construction and delivering ten labeled, disciplined audits, each explicitly
+  scoped to "constructions defined in this file," never the corpus's own relations.
+
+  **A/B/C**: confirms `≈_X` is reflexive/symmetric/transitive for all 32 subsets `X` (exhaustive, not
+  sampled), with the reason stated formally: "`~_X` is the pullback of equality along `π_X`; kernel of a
+  function is always an equivalence relation."
+
+  **D**: confirms the containment/refinement lattice theorem (`π_X` factors through `π_Y` when `X⊆Y`) on a
+  sample, with an explicit disclaimer that the sample is illustrative, not the evidence -- "the theorem, not
+  the sample, is the evidence."
+
+  **E DELIVERS A GENUINELY PRECISE REFINEMENT of the already-tracked '32 candidate projections, at most 32
+  distinct relations' finding (files 1031, 1036-1037)**: for THIS SPECIFIC construction (no degenerate axis,
+  every axis has ≥2 values), all 32 subsets induce genuinely DISTINCT partitions -- "'at most 32 distinct
+  relations' is EXACT here: exactly 32." This confirms the already-tracked hedge was correctly cautious in
+  general, while showing the actual Q4A axis set happens not to trigger the degeneracy the hedge protected
+  against.
+
+  **G DELIVERS A CONCRETE TOY DEMONSTRATION that structural equality is NOT a congruence** with respect to a
+  hidden component (provenance) not represented in `Σ` -- matching the already-tracked corpus claims at
+  "258.10" and "258.15" (`TraceOrigin`), explicitly labeled "a demonstration of the corpus's claim on a toy
+  model, NOT a proof about KnowledgeOS's real relations."
+
+  **H delivers a concrete, executed demonstration of the already-tracked canonicalization-ambiguity and `id`/
+  mutable-`e.state` findings**: hash equality depends on key ordering unless canonicalized; a locale-ambiguous
+  date string ("03/04/2026") resolves to different values under `en-GB` vs `en-US`, unresolvable by any
+  serialization -- "normalization is itself epistemic... canonicalization must follow evidence. Structural
+  equality inherits an UNBOUND PARAMETER"; and a concrete execution of the `id=H(P,e,c,t,Π)`-over-mutable-
+  state contradiction, confirming "every R-edge pointing at [the old id] now dangles: `StructuralValid`
+  VIOLATED: CONFIRMED."
+
+  **I and J deliver two further general cautions**: agreement on a finite sample is not evidence of
+  extensional equality (a toy counterexample); and composition of two equivalence relations is NOT in general
+  an equivalence relation -- "relations must not be composed casually," recorded as a warning rather than a
+  corpus finding.
+
+  **Closes with an explicit, disciplined scope-limit statement**: "None of it establishes anything about the
+  corpus's own `=`,`≡`,`≈`,`≅_λ`,`≅_I`,`≅_H` or `Continuity`. Those have no decision procedures to test."
+introduces:
+  - concept: "The precise refinement that, for the specific Q4A axis construction (no degenerate axis), exactly 32 (not merely at most 32) distinct partitions are induced by the 32 axis subsets"
+  - concept: "A concrete, executed toy demonstration that structural equality on the visible part of a state is not a congruence with respect to a hidden provenance component, matching corpus claims 258.10/258.15"
+  - concept: "A concrete, executed demonstration of the id/mutable-e.state contradiction: withdrawal changes the identity hash, leaving dangling references, confirmed as a StructuralValid violation"
+  - concept: "The general caution that composition of two equivalence relations is not itself generally an equivalence relation, and relations must not be composed casually"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked '32 candidate projections, at most 32 distinct relations' hedge (files 1031, 1036-1037)"
+    refinement: "REFINED for the specific Q4A construction: exactly 32 distinct partitions are induced, since no axis is degenerate -- confirming the hedge was correctly cautious in general while showing this particular case reaches the maximum"
+  - concept: "This reconstruction's already-tracked corpus claim that structural equality is not a congruence (258.10/258.15, cited abstractly in file 1037)"
+    refinement: "GIVEN A CONCRETE, EXECUTED TOY DEMONSTRATION for the first time"
+  - concept: "This reconstruction's already-tracked id/mutable-e.state contradiction (file 1006)"
+    refinement: "GIVEN A CONCRETE, EXECUTED DEMONSTRATION for the first time, confirming the dangling-reference consequence directly"
+contradicts: []
+repeats:
+  - "Substantially executes and confirms already-tracked findings (files 1006, 1031, 1036-1038); its distinctive contributions are the exactly-32 refinement and the concrete executed demonstrations of the congruence-failure and id-contradiction findings."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the exactly-32-distinct-partitions refinement for the specific Q4A axis construction, and the concrete executed demonstrations of the structural-equality-not-a-congruence and id/mutable-state-contradiction findings."
+anchor_test:
+  anchor: "This reconstruction's already-tracked 32-projections hedge, the structural-equality-congruence-failure claim, and the id/mutable-state contradiction (files 1006, 1031, 1036-1038)"
+  supports_dimension: "Executes concrete, disciplined demonstrations confirming and refining these already-tracked findings"
+  refines_or_contradicts: "confirms and refines prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The script is directly executable and its printed output constitutes the actual evidentiary record for every audit A-J."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "A genuinely executable, disciplined script confirming and refining already-tracked findings (exactly-32 partitions, concrete demonstrations of congruence failure and the id-contradiction) with explicit, consistent scope-limit disclaimers throughout. Classified importance normal given its confirmatory character; confidence high given its executable, directly reproducible nature."

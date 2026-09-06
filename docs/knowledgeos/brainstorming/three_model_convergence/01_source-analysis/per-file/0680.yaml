@@ -1,0 +1,185 @@
+sequence: 680
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-122408_step-095-privacy-information-boundaries-and-controlled-knowledge.md
+title: "Step 95 CONFIRMED as Genuinely New, Highly Practically Relevant Corpus Territory — CanAct≠CanKnow, Need-to-Know/Purpose Limitation, Data Minimization, Inference Attacks, a Correctly-Applied Information-Flow Confidentiality Lattice, Differential Privacy Correctly and Precisely Stated (ε-DP) With Privacy-Budget Composition, an Explicitly Acknowledged (Not Papered-Over) Right-to-Deletion vs. Audit-Retention Governance Tension, and — Most Significantly for Real Production AI Systems — the Authorization-Must-Constrain-Retrieval-Not-Just-Filter-After-the-Fact Principle Reframing RAG Architecture Itself (Query→Identity→Purpose→Policy→AuthorizedRetrieval→Evidence→Context); Eleven New Invariants, Zero Exact-Name Collisions; Verdict 'STEP 95 — PASS'; Closes Opening Step 96 — Learning, Adaptation and Model Evolution, a Direct Coherent Continuation"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 95 -- Privacy, Information Boundaries and Controlled Knowledge', opened at 0679's close; CONFIRMS the provisional new-territory assessment made at 0679"
+source_role: PRIMARY_RESEARCH
+canonical_source: 680
+importance: critical
+confidence: high
+about: >
+  **CONFIRMS the new-territory assessment from 0679.** Opens with the central distinction
+  `Permission to Act≠Permission to Know` (`CanAct(A,x)⇏CanKnow(A,k)`, confirmed via a manager-authorized-to-
+  approve-but-not-see-salary-details experiment, PASS). Delivers a formal information-access model
+  `Access(A,K,C)` and Knowledge classification (`Public, Internal, Confidential, Restricted`), confirmed via
+  a clearance-mismatch experiment (PASS), with the crucial and correctly-reasoned caveat that classification
+  alone is insufficient -- **Need-to-know formalized** (`Need(A,K,Q)` for purpose `Q`, confirmed via a
+  same-clearance-wrong-purpose experiment, PASS), crystallizing **`Purpose limitation`**:
+  `Access=f(Identity, Role, Classification, Purpose, Need, Context, Time)`, significantly stronger than
+  role-based access alone.
+
+  Delivers Temporal access (`Auth(A,K,t_1)⇏Auth(A,K,t_2)`, confirmed via a revoked-access-date experiment,
+  PASS) and **Data minimization** formally required (an exact date of birth exposed when only an age-range
+  threshold was needed, confirmed via a dedicated experiment, PASS), with the important and correctly-
+  reasoned caveat that **derived information can also leak** -- a sufficiently narrow salary band uniquely
+  determining the raw salary, confirmed via a dedicated experiment (`PrivacyLeak` -- PASS). Delivers
+  Inference attacks formally represented (`K_1,...,K_n⇒K̂`, an investigation inferred from access-log/
+  workflow-state side signals without any direct disclosure, confirmed via a dedicated experiment, PASS),
+  crystallizing privacy as "a property of information flow," not merely direct disclosure.
+
+  **Delivers the file's first central formal deliverable -- a correctly-applied information-flow
+  confidentiality lattice**: `Public⊑Internal⊑Confidential⊑Restricted`, with `PermittedFlow(Label(K_1),
+  Label(K_2))` required before any information transformation, confirmed via a restricted-content-
+  accidentally-embedded-in-a-public-artifact experiment (`InformationFlowViolation`/`IllegalFlow` -- PASS×2),
+  and Sanitization explicitly requiring an approved, validated transformation rather than automatic
+  reclassification (confirmed via a dedicated experiment, PASS) -- this is standard, correctly-applied
+  information-security lattice theory (Bell-LaPadula-adjacent, though not explicitly named as such), a
+  genuinely new formal tool for the corpus.
+
+  **Delivers the file's second and most currently significant central formal deliverable -- AI-specific
+  output-control and context-security, directly and precisely addressing a real, actively important
+  production LLM/RAG security concern not previously this concretely addressed**: an AI agent with access to
+  `K_restricted` incorrectly producing a `Public`-labeled summary in response to "summarize everything you
+  know," confirmed via a dedicated experiment (`InformationDisclosure` -- PASS), motivating extended
+  Knowledge lineage (`Source→Evidence→Knowledge→Inference→AIOutput`) with inherited classification
+  constraints, confirmed via a paraphrased-but-still-sensitive-summary experiment (PASS), and
+  `Classification(K)=f(Classification(E_1),...,Transformation)` -- a summary combining public and restricted
+  sources cannot automatically inherit the public classification, confirmed via a dedicated experiment
+  (PASS).
+
+  **Delivers the file's third central formal deliverable -- Differential privacy correctly and precisely
+  stated, genuinely new classical privacy-theory content**: `P(M(D)∈S)≤e^ε P(M(D')∈S)` for neighboring
+  datasets, confirmed via a dedicated experiment (PASS), with Privacy budget composition correctly applied
+  (`ε_total≤∑ε_i`, a worked example showing 100 releases at `ε=0.1` each accumulating to `ε_total≤10`,
+  confirmed via a dedicated experiment, PASS), crystallizing `Privacy≠one isolated query` and motivating
+  `HistoryOfDisclosures` tracking as a temporal-state concern.
+
+  **Delivers the file's fourth central formal deliverable -- an explicitly acknowledged, unresolved
+  governance tension between audit retention and privacy deletion, intellectually honest rather than
+  papered over**: "Auditability may require ImmutableHistory. Privacy policy may require Deletion. These
+  cannot always both be satisfied naively... KnowledgeOS must not hide the conflict," confirmed via a
+  dedicated experiment correctly requiring `GovernanceConflict` escalation to an explicit retention/legal
+  policy rather than a silent default resolution (PASS) -- directly and genuinely extending the corpus's
+  established discipline of surfacing rather than silently resolving governance conflicts (0645, 0664).
+  Delivers Deletion propagation across derived artifacts (a deleted source record whose AI-generated summary
+  still contains identifying details, confirmed via a dedicated experiment, `Privacy lifecycle has not
+  completed` -- PASS) and Identity/event-semantics separation as a practical minimization technique
+  (confirmed via a dedicated experiment, PASS).
+
+  Delivers Contextual, multi-factor access (`Access=f(A,K,P,t,C,R)` including device-trust and risk,
+  confirmed via an untrusted-device-blocking-otherwise-permitted-access experiment, PASS) and Purpose-bound
+  knowledge (evidence collected for a security investigation reused for employee-performance ranking,
+  confirmed via a dedicated experiment, PASS).
+
+  **Delivers the file's fifth and most architecturally consequential central formal deliverable --
+  `Authorization should constrain retrieval, not merely final presentation`, a precise and currently
+  critical RAG-architecture security principle**: filtering restricted content only after full retrieval is
+  explicitly identified as unsafe because the restricted information has already entered the AI agent's
+  processing environment (confirmed via a dedicated experiment, PASS), motivating policy-aware retrieval
+  `Retrieve(Q,A,P)` rather than bare `Retrieve(Q)` (confirmed via a differential-retrieval-result-by-actor
+  experiment, PASS), crystallizing **the reframed RAG architecture itself**: `Query→Identity→Purpose→
+  Policy→AuthorizedRetrieval→Evidence→Context`, replacing ordinary `Query→VectorSearch→Context` -- explicitly
+  declared "a major architectural consequence" and directly relevant to a genuine, actively discussed
+  security gap in real production retrieval-augmented AI systems.
+
+  Delivers Embeddings explicitly identified as potentially sensitive representations in their own right (a
+  restricted document's embedding remaining searchable in a public index, confirmed via a dedicated
+  experiment, PASS), directly and genuinely extending 0673's `Embeddings are never authoritative knowledge`
+  principle with a complementary privacy-specific caution: embeddings must also be access-controlled, not
+  merely epistemically demoted. Delivers `PrivacyPolicy≠PrivacyEvidence` (a bare compliance claim without
+  information-flow testing correctly judged insufficiently assured, confirmed via a dedicated experiment,
+  PASS) and Privacy testing (10,000 automated unauthorized-access-path attempts, correctly framed as
+  evidence, not universal proof, confirmed via a dedicated experiment, PASS), directly and genuinely
+  extending the corpus's established test-versus-proof discipline (0674, 0676) into the privacy-testing
+  domain specifically.
+
+  **Delivers the file's sixth and capstone formal deliverable -- the Knowledge boundary object and the
+  AI context window formally reframed as simultaneously an epistemic and security boundary**:
+  `KnowledgeBoundary(A,t,P)` (dynamic across authority/purpose/policy/classification changes, confirmed via
+  a context-exceeding-the-authorized-boundary experiment, PASS), crystallized as `Context=
+  EpistemicBoundary+SecurityBoundary` -- what an agent receives determines both what it can know and what it
+  can potentially disclose, with the confidentiality boundary explicitly identified as crossed at retrieval/
+  context-construction time, not merely at output time (confirmed via a dedicated experiment, PASS) --
+  directly and genuinely synthesizing 0673's information-bottleneck framing with this file's own security
+  discipline into one unified concept.
+
+  **Delivers eleven new named invariants, NONE of which are exact-name matches to any previously tracked
+  invariant** (a genuinely clean file for this specific tracking dimension): `I_{InformationAuthorization}`,
+  `I_{PurposeLimitation}`, `I_{DataMinimization}`, `I_{InformationFlow}`, `I_{DerivedProtection}`, `I_
+  {AuthorizedRetrieval}`, `I_{PrivacyComposition}`, `I_{TemporalPrivacy}`, `I_{DeletionPropagation}`, `I_
+  {AuditPrivacy}`, `I_{AIContextBoundary}`.
+
+  Delivers Step 95's verdict **"STEP 95 — PASS,"** with the significant extension: "security and privacy =
+  who may act + who may know + what may flow + for what purpose + at what time," and the important AI-
+  specific architectural reframing: the architecture should not be `Agent→RAG→EverythingAgentCanRetrieve`
+  but `Agent→Identity→Purpose→Policy→AuthorizedKnowledgeBoundary→Retrieval→Reasoning→ControlledOutput→
+  AuthorizedAction` -- "a very different architecture from ordinary AI applications."
+
+  **Closes with a direct, coherent continuation into "Step 96 — Learning, Adaptation and Model Evolution"**
+  (not a flagged collision candidate -- explicitly and correctly signaled as the natural next question once
+  privacy/security protections are established): "how can KnowledgeOS evolve without losing the
+  correctness, provenance, authority, privacy and invariants we have established?", previewing learning,
+  feedback, model evolution, concept drift, policy evolution, schema evolution, backward compatibility,
+  versioning, and continuous assurance, crystallized as "how can KnowledgeOS change itself without silently
+  changing what the organization means by truth, authority, decision, and governance?" No actual code
+  execution reported in this file.
+introduces:
+  - concept: "CONFIRMED genuinely new corpus territory: CanAct≠CanKnow, need-to-know/purpose limitation, a correctly-applied information-flow confidentiality lattice, and differential privacy correctly and precisely stated with privacy-budget composition"
+  - concept: "An explicitly acknowledged, unresolved governance tension between audit retention and privacy deletion — intellectually honest rather than papered over, extending the corpus's established discipline of surfacing rather than silently resolving governance conflicts"
+  - concept: "The Authorization-must-constrain-retrieval-not-just-filter-after principle, reframing RAG architecture itself (Query→Identity→Purpose→Policy→AuthorizedRetrieval→Evidence→Context) — a precise and currently critical production AI-security insight"
+  - concept: "Embeddings identified as potentially sensitive representations requiring access control, complementing (not duplicating) 0673's embeddings-never-authoritative epistemic caution with a distinct privacy-specific one"
+  - concept: "The Knowledge boundary object and Context=EpistemicBoundary+SecurityBoundary, synthesizing 0673's information-bottleneck framing with this file's security discipline"
+  - concept: "Eleven new invariants with ZERO exact-name collisions"
+defines:
+  - concept: "Permission to Act≠Permission to Know (CanAct(A,x)⇏CanKnow(A,k))"
+    definition: "An actor authorized to perform an action is not automatically authorized to access all information relevant to that action; action authorization and information authorization are independent dimensions requiring separate evaluation"
+  - concept: "Authorization should constrain retrieval, not merely final presentation"
+    definition: "Restricting an AI agent's visible output after it has already retrieved and processed restricted information is insufficient, because the confidentiality boundary is crossed the moment restricted data enters the agent's processing context, regardless of whether it is later filtered from the final response; access policy should instead constrain what is retrieved in the first place (Retrieve(Q,A,P) rather than bare Retrieve(Q))"
+  - concept: "Context=EpistemicBoundary+SecurityBoundary"
+    definition: "The context window an AI agent receives simultaneously determines what the agent can epistemically reason about (extending the corpus's information-bottleneck framing) and what it can potentially disclose (a security boundary); both dimensions must be jointly managed by authorized, purpose-aware retrieval rather than treating context construction as a purely epistemic concern"
+  - concept: "PrivacyPolicy≠PrivacyEvidence"
+    definition: "A stated policy claiming that sensitive information is protected is not, by itself, evidence that protection is actually enforced; privacy claims require empirical testing (e.g. automated unauthorized-access-path attempts) analogous to the corpus's established test-versus-proof discipline, and such testing remains evidence, never universal proof"
+refines:
+  - concept: "0645's/0664's discipline of surfacing rather than silently resolving governance conflicts"
+    refinement: "Directly and genuinely extended into the specific and practically important audit-retention-versus-privacy-deletion tension, explicitly and intellectually honestly acknowledged as unresolved by the mathematical model alone, requiring explicit governance/legal policy"
+  - concept: "0673's Embeddings are never authoritative knowledge"
+    refinement: "Complemented (not duplicated) by a distinct privacy-specific caution: embeddings can also leak sensitive information and require access control, addressing a different failure mode (confidentiality) from 0673's epistemic-authority concern"
+  - concept: "0673's information-bottleneck framing for AI context windows"
+    refinement: "Directly and genuinely extended and unified with this file's security discipline into Context=EpistemicBoundary+SecurityBoundary, a single concept serving both epistemic and confidentiality purposes"
+  - concept: "0674's/0676's test-versus-proof discipline (property-based testing is evidence, never formal proof)"
+    refinement: "Directly and genuinely extended into privacy testing specifically (automated unauthorized-access-path testing as evidence, not universal proof)"
+  - concept: "0679's provenance-as-security-mechanism discipline"
+    refinement: "Directly and genuinely extended into information-flow classification specifically, via Classification(K)=f(Classification(E_1),...,Transformation) for derived/composite knowledge artifacts"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Confirm whether 0681 (Step 96 — Learning, Adaptation and Model Evolution) is indeed the coherent continuation this file's own text signals, consistent with the established pattern of explicitly-signaled continuations in this span reliably resolving as genuine deepenings — this territory (concept drift, model evolution, schema evolution) may substantially overlap the corpus's much earlier adaptive-learning treatment (Steps 37-45 arc, 'Adaptive Learning' closing with 'Evidence immutable, interpretations evolve'), worth verifying directly rather than assuming either outcome."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CONFIRMATION that Step 95 delivers genuinely new, highly practically relevant privacy/information-flow content — CanAct≠CanKnow, need-to-know/purpose limitation, a correctly-applied information-flow confidentiality lattice, differential privacy correctly stated with privacy-budget composition, and an explicitly acknowledged audit-retention-versus-privacy-deletion governance tension."
+  - "dimension-registry.md: record the currently significant Authorization-should-constrain-retrieval-not-just-filter-after principle reframing RAG architecture itself; embeddings identified as sensitive representations requiring access control (complementing 0673); and Context=EpistemicBoundary+SecurityBoundary synthesizing 0673's information-bottleneck framing with security."
+  - "dimension-registry.md: record eleven new invariants with zero exact-name collisions; verdict 'STEP 95 — PASS'; and the flagged bridge candidate for Step 96 (Learning, Adaptation and Model Evolution) — worth checking against the corpus's much earlier Adaptive Learning treatment (Steps 37-45 arc) given the topical proximity of concept drift/model evolution."
+anchor_test:
+  anchor: "0679's provisional new-territory assessment; 0645's/0664's discipline of surfacing governance conflicts; 0673's Embeddings-never-authoritative principle and information-bottleneck framing; 0674's/0676's test-versus-proof discipline; 0679's provenance-as-security-mechanism discipline; the corpus's much earlier Adaptive Learning treatment (Steps 37-45 arc)"
+  supports_dimension: "CONFIRMS genuinely new corpus content with several precisely stated, currently important, and correctly-reasoned results: a correctly-applied information-flow confidentiality lattice, correctly-stated differential privacy with privacy-budget composition, and — most significantly — the Authorization-should-constrain-retrieval principle directly addressing a genuine, actively important security gap in real production retrieval-augmented AI systems (many real systems retrieve broadly then filter, which this file correctly identifies as unsafe). Delivers an intellectually honest, explicitly acknowledged governance tension (audit retention versus privacy deletion) rather than a false resolution, directly consistent with the corpus's established discipline of surfacing rather than silently resolving genuine conflicts. Genuinely and non-duplicatively extends several prior corpus disciplines (0673's embeddings caution and information-bottleneck framing, 0674's/0676's test-versus-proof discipline, 0679's provenance-as-security-mechanism framing) into the privacy-specific domain. The one flagged open question — whether Step 96's learning/adaptation content overlaps the corpus's much earlier Adaptive Learning treatment from the Steps 37-45 arc — is appropriately left open pending direct comparison, consistent with this reconstruction's discipline"
+  refines_or_contradicts: "confirms 0679's new-territory assessment; directly and genuinely extends 0645's/0664's conflict-surfacing discipline, 0673's embeddings caution and information-bottleneck framing, 0674's/0676's test-versus-proof discipline, and 0679's provenance-as-security-mechanism framing; no contradiction found; introduces no new invariant-naming collisions; flags a comparison point for Step 96 against the corpus's much earlier Adaptive Learning treatment, pending confirmation"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The correctly-stated differential-privacy formula (§95.32, P(M(D)∈S)≤e^ε P(M(D')∈S)) and the correctly-applied privacy-budget composition bound (§95.34-95.35, ε_total≤∑ε_i, worked through a 100-release example) are directly checkable, mathematically correct classical privacy-theory results not present anywhere in this reconstruction's prior records, confirming genuine substantive novelty."
+  - "The retrieval-versus-post-retrieval-filtering experiment (§95.51-95.52, an AI agent forbidden from seeing a restricted repository but exposed to it during retrieval before final-prompt filtering, correctly identified as unsafe because the confidentiality boundary was crossed at context construction) is directly checkable, concrete evidence of a precisely stated and currently important production-AI-security principle directly relevant to real-world RAG-system design flaws."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 96's actual content (0681), once read, substantially overlaps the corpus's much earlier Adaptive Learning treatment (part of the Steps 37-45 arc, closing with 'Evidence immutable, interpretations evolve') as a further collision candidate, or delivers a genuinely distinct deepening specific to model/schema/policy evolution and continuous assurance."
+tier2_triggered: true
+tier2_reason: "CONFIRMS genuinely new, highly practically relevant corpus content: CanAct≠CanKnow, a correctly-applied information-flow confidentiality lattice, correctly-stated differential privacy with privacy-budget composition, and an intellectually honest, explicitly acknowledged audit-retention-versus-privacy-deletion governance tension. Most significantly, delivers the Authorization-should-constrain-retrieval principle directly addressing a genuine, currently important security gap in real production RAG/LLM systems, reframing the architecture itself. Eleven new invariants introduce zero exact-name collisions. Flags a comparison point for Step 96 against the corpus's much earlier Adaptive Learning treatment. Verdict 'STEP 95 — PASS.'"

@@ -1,0 +1,233 @@
+sequence: 771
+path: docs/knowledgeos/brainstorming/phase_measure_theory/how_to_combine/20260828-233241_step_combine_combine-prompt-6.md
+title: "GN-43 EXTENSION -- Mathematical/Statistical/Computational Verification (EXCEPTIONAL META-LEVEL FINDING, continuing 0755-0764/0769-0770): 'READ / VERIFY / FALSIFY -- DO NOT REPAIR' -- One of the Most Rigorous Single Epistemic-Discipline Documents in the Entire Corpus, a Twenty-Six-Section Formal Audit Protocol Explicitly Banning the Word 'Validated,' Explicitly Forbidding Incorporation of DeepSeek Material, and Delivering the Sharp Distinction 'A Kernel Must Not Be Confused With a Bounded-Context or Architectural Kernel' (Directly Addressing the Corpus-Wide Kernel-Terminology Collision) -- Finally Explains PF-4 (a Ten-Criteria Design vs. a Seven-Outcome Executed Matrix) -- Introduces PF-9 (Governance Compression), AF-F-1 Through AF-F-6, and GN-27 -- Closes: 'Mathematical Correctness≠Mathematical Completeness≠Computational Possibility≠Computational Realization≠Statistical Validity≠Architectural Authorization≠Book-Level Explanation'"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "pure mathematical/statistical/computational governance-verification protocol; no direct Gita content, though it operationalizes the same rigorous epistemic-honesty discipline this corpus applies throughout to Gita-derived material"
+source_role: PRIMARY_RESEARCH
+canonical_source: 771
+importance: critical
+confidence: high
+about: >
+  Titled "GN-43 EXTENSION — Mathematical/Statistical/Computational Verification," subtitled "READ / VERIFY
+  / FALSIFY — DO NOT REPAIR." Explicitly adds a second, independent verification track (Mathematical/
+  Statistical/Computational/Formal-consistency) alongside an already-running "Book-Driven Architecture
+  Verification Protocol." States its purpose precisely: NOT to make the mathematics look elegant, but to
+  determine whether KnowledgeOS's mathematical claims are well-defined, logically derived, statistically
+  justified where applicable, computationally meaningful, algorithmically computable where claimed,
+  numerically stable where relevant, consistent with the architecture, and honestly represented in the
+  Edition-2 book.
+
+  **§1 Governance Boundary**: strictly a verification task. Extensive MAY list (read/derive/calculate/
+  test/simulate/construct counterexamples/run symbolic and numerical checks/implement independent
+  reference calculations/compare formulations/inspect executable implementations/classify/report). **An
+  even more extensive MUST-NOT list, critically including**: must not modify v0.2, Final Architecture,
+  `BA-1…BA-6`, `BA-ED2`, Edition 1, or Edition-2 book chapters; must not repair mathematical definitions in
+  place; must not silently replace formulas; must not resolve `OQ-1…12`; must not promote a mathematical
+  hypothesis to architecture; must not introduce a new mathematical object as architecture; **must not
+  incorporate DeepSeek**; must not create v0.3. "If something is mathematically wrong, report it... DO NOT
+  FIX IT." Delivers the required workflow: `DISCOVER→FORMALIZE→CHECK→ATTACK→CLASSIFY→TRACE→REPORT→
+  GOVERNANCE DISPOSITION`.
+
+  **§2 Scope**: audits (A) ratified v0.2, (B) Final Architecture, (C) already-produced Edition-2 chapters,
+  (D) **Production Findings `PF-1…PF-9`** (one more than the `PF-1..8` (minus PF-4) named at 0769/0770 --
+  `PF-9` is introduced explicitly), (E) **Architecture Findings `AF-F-1…AF-F-6`**, a distinct, previously
+  unseen finding series, and (F) the underlying source documents justifying those claims.
+
+  **§3 delivers twenty-five required mathematical audit questions** applied to every mathematical object
+  or formula (well-defined? domain/codomain defined? variables typed? operators defined? assumptions
+  stated? internal consistency? conclusion follows from premises? derivation complete? uniqueness/
+  existence/totality established where implied? finite/countable/infinite/unspecified? computable?
+  algorithm specified? termination guaranteed? complexity? approximation vs. exact computation confused?
+  numerical issues relevant? stochastic assumptions explicit? statistical interpretation legitimate?
+  causal claims drawn from correlational/statistical quantities? probability/confidence/support/warrant/
+  epistemic-status incorrectly treated as synonyms? metrics actually metrics? operators actually operators
+  of the claimed mathematical kind?), with the explicit governing caution: "do not assume that a symbol
+  such as 'distance', 'probability', 'measure', 'distribution', 'operator', 'projection', 'kernel', or
+  'entropy' has its mathematical textbook meaning merely because that name is used."
+
+  **§4 delivers a ten-item formal object inventory** to be audited at minimum: `EC=η(G,IdealState)`;
+  `Zero(K,EC)`; the Zero source representation (nine-valued satisfaction set, per-requirement vector,
+  Missing vs. Unknown, source-level `EC_G=(R_G,Γ_G)`); `KnowledgeState K_t` (eight primitives,
+  `K_{t+1}=Learn(K_t,Observations_t,Events_t,Policies_t,Outcomes_t)`); the epistemic status system
+  (Candidate/Supported/Accepted/Committed, source-level branched alternatives); the Decision Contract
+  (six-tuple ratified form, source-level seven-tuple refinement, Hoare-style formulations, admissibility
+  conjunctions); the Authorization relation; a governance algebra; the Evidence model (dependency
+  structure, corroboration, duplicate invariance, EXP-01 operators/properties); and any metric, distance,
+  probability, entropy, KL divergence, integration, measure, distribution, topology, or operator
+  formulation appearing anywhere in the existing material.
+
+  **§5-6 (Definition and Derivation Audits)** deliver a required per-object definition table (Object/
+  Domain/Codomain/Definition complete?/Variables typed?/Assumptions/Computable?/Evidence) with explicit
+  disallowed unsupported claims ("Zero is a function" without domain/codomain/semantics; "EC is total"
+  without totality conditions; "K_t is a state" without content/equality specification), and a six-value
+  derivation classification (`VALID DERIVATION/VALID BUT INCOMPLETE/RECONSTRUCTABLE/HEURISTIC/INVALID/NOT
+  ESTABLISHED`) with the sharp caution: "'intuitively plausible' is NOT a valid mathematical status... a
+  derivation may be architecturally useful and still be mathematically unproven."
+
+  **§7-16 deliver ten specialized audit protocols**, each with precise required checks: **Computability**
+  (reference algorithm/complexity/approximation-error/non-computable-domain-restriction/NOT ESTABLISHED,
+  distinguishing "an LLM can produce a textual answer" from "the formal function is computable with
+  specified semantics"); **Statistical** (probability space, random variables, distributions, independence/
+  conditional independence, sampling, likelihood, posterior, calibration, confidence-vs-probability,
+  support-vs-probability, epistemic-vs-statistical confidence, duplicate/dependent evidence effects,
+  base-rate assumptions, aggregation validity -- specifically auditing any
+  `P(Proposition)=Support(Proposition)/total support` formulation with "do NOT assume this is a valid
+  epistemic probability merely because it produces numbers in [0,1]... if not, classify it as a heuristic
+  scoring model rather than probability"); **Metric-Space** (the four metric axioms -- non-negativity,
+  identity of indiscernibles, symmetry, triangle inequality -- with the explicit instruction "do not rename
+  it to make it pass" if reclassified as dissimilarity/pseudo-metric/directed distance/weighted score);
+  **Measure/Integration** (measurable space, sigma algebra, measure, measurable function, integrability,
+  explicitly distinguishing "this can be represented as an integral" from "measure theory is required by
+  the architecture" -- the latter needing architectural evidence, a direct, precise instance of the exact
+  discipline this reconstruction's own governing corpus, `phase_measure_theory/`, was originally named for
+  and has tracked since its earliest processed files); **Bayesian** (prior/likelihood/posterior/
+  conditioning/independence/update equation/normalization, "pay particular attention to double-counting
+  dependent evidence"); **Entropy/KL** ("do NOT automatically interpret entropy='epistemic uncertainty' or
+  KL divergence='knowledge gap' without establishing the mapping"); **Topology** (worked example: a claim
+  such as `Zero:Ω→∂Ω` requires Ω and ∂Ω to be mathematically defined, else "classify as a mathematical
+  analogy/hypothesis, not a formal result"); **Operator** (worked examples `Z:Ω→∂Ω`, `L:Ω→P(Ω)`,
+  `S:Ω×∂Ω→G`, `T:Ω→Ω`, checking domains/codomains/closure/deterministic-vs-stochastic/composability/
+  existence/uniqueness -- "do not accept notation merely because it is elegant"); **Category-Theoretic/
+  Functional-Analysis Claims**: a strict type/definition audit for projections, kernels, functors, Hilbert
+  spaces, etc., **explicitly delivering "a kernel must not be confused with a bounded-context or
+  architectural kernel"** -- a direct, precise instance of exactly the multi-sense "Kernel" terminology
+  collision this reconstruction has tracked as an unresolved notation-proliferation issue across dozens of
+  prior primary-corpus files.
+
+  **§16 delivers "EXP-01 Recheck"**: independently reproduce the EXP-01 reasoning rather than merely
+  rereading its verdict, comparing an independently-derived result against the historical verdict, with
+  the explicit instruction "the historical CSV discrepancy must remain under its **`GN-27`** adjudication"
+  -- a previously unseen governance-ruling reference. **Finally explains `PF-4`**, whose absence from the
+  named production-findings list at 0769 this reconstruction had flagged as unexplained: "the design
+  apparently specifies ten criteria A–J plus Calibration, while the executed matrix contains seven reported
+  outcomes and includes a 'Bounded [0,1]' column not obviously matching the designed criteria" -- requiring
+  determination of whether the historical experiment is correctly represented, the executed subset
+  sufficient for the published conclusion, the negative conclusion follows only from tested properties, and
+  whether any stronger claim would be invalid.
+
+  **§17 delivers "Source-vs-Synthesis Mathematics"**: a required `SOURCE FORM→RATIFIED SYNTHESIS→
+  EDITION-2 EXPLANATION` traceability chain applied to PF-1/PF-5 (Zero compression), PF-6 (status
+  compression), PF-7 (DC six→seven tuple), PF-8 (selector compression), and **`PF-9` (governance
+  compression, named here for the first time)**, asking "did the synthesis preserve the mathematical
+  properties it relies on? A compression is not automatically wrong. It becomes a formal problem if
+  information lost by the compression is required to preserve a claimed invariant, transition, or
+  computation."
+
+  **§18-19 deliver "Computational Reference Implementations"** (small independent test implementations,
+  explicitly "TESTING TOOLS ONLY," never written into the KnowledgeOS repository unless separately
+  authorized) and **"Counterexample Search"** (an extensive required edge-case list: empty set, singleton,
+  duplicate evidence, contradictory evidence, dependent evidence, missing values, conflicting statuses,
+  zero probabilities, infinite/unbounded cases, malformed inputs, policy changes, ambiguous propositions,
+  multiple equally valid decisions), with the precise caution "a single counterexample does not necessarily
+  invalidate the architecture, but it does invalidate the universal claim under the tested assumptions.
+  Record scope precisely."
+
+  **§20 delivers "Architectural Alignment,"** an eight-value classification that must never be collapsed:
+  `MATHEMATICALLY CORRECT+ARCHITECTURALLY ALIGNED / +ARCHITECTURALLY ONLY INTERPRETIVE /
+  MATHEMATICALLY INCOMPLETE / MATHEMATICALLY INVALID / COMPUTATIONALLY UNREALIZED / COMPUTATIONALLY
+  POSSIBLE BUT UNSPECIFIED / ARCHITECTURALLY UNAUTHORIZED / NOT ESTABLISHED`, with the explicit examples
+  "a formula may be mathematically valid but not part of the architecture," "an architectural object may be
+  well-defined conceptually but have no computable realization," "a computation may work but compute a
+  different quantity than the formula claims."
+
+  **§21 delivers "Special Audit of the Book"**: scans completed Edition-2 Part III chapters for specific
+  epistemically-loaded phrases (`"therefore," "hence," "must," "is equivalent to," "can be computed," "is a
+  metric," "is a probability," "is Bayesian," "proves," "guarantees," "optimal," "minimal," "complete,"
+  "unique"`) to determine "whether the source actually supports the strength of the statement. Flag
+  epistemic inflation" -- a genuinely valuable, directly applicable prose-auditing technique.
+
+  **§22 delivers the required deliverable and its twenty-six-section report structure** (Executive
+  Summary through Recommended Governance Actions), to be written to
+  `analysis/mathematical-verification-report.md` (plus, if needed, small reproducibility test artifacts
+  under `analysis/mathematical-tests/`) -- confirmed via this reconstruction's own earlier directory
+  listing of `docs/knowledgeos/reviews/synthesis/` (0756) that an `analysis/` directory exists in that
+  confirmed synthesis output location.
+
+  **§23 delivers a five-tier severity taxonomy** (`CRITICAL/HIGH/MEDIUM/LOW/OBSERVATION`, each precisely
+  defined). **§24 delivers "NO SILENT REPAIR," explicitly flagged "the most important rule"**: any
+  discovered error (incorrect equation, invalid derivation, invalid metric, invalid probability
+  interpretation, impossible computation, wrong codomain, hidden assumption, counterexample, statistical
+  error) must never be corrected in place, only reported through a strict eight-field template (WHAT IS
+  WRONG / WHY / COUNTEREXAMPLE-CALCULATION / SOURCE / AFFECTED ARCHITECTURE / AFFECTED BOOK CHAPTER /
+  SEVERITY / POSSIBLE REPAIR [explicitly optional and "clearly non-authoritative"]).
+
+  **§25 delivers the required final verdict vocabulary**, fifteen precisely defined terms spanning
+  mathematical soundness, computability, statistical validity, and architectural alignment -- with the
+  explicit, absolute instruction: **"never use 'validated'."** **§26 delivers the final stop condition**:
+  after the audit, STOP -- explicitly forbidding rewriting chapters, modifying formulas or architecture,
+  resolving OQs, incorporating DeepSeek, creating v0.3, or approving any mathematical theory. **Closes
+  with the file's capstone epistemic-dimension separation**: "the final report must make a clear
+  distinction between mathematical correctness, mathematical completeness, computational possibility,
+  computational realization, statistical validity, architectural authorization, and book-level explanation"
+  -- seven genuinely distinct dimensions that must never be collapsed into one another, arguably the
+  single most rigorous, precisely articulated epistemic-discipline capstone anywhere in this entire
+  reconstruction. No actual code execution, repository inspection, or independently-verified filesystem
+  claim is made by THIS reconstruction regarding whether this audit was ever actually carried out or what
+  it found -- the protocol itself is recorded faithfully as a governance instruction, not as an executed
+  audit.
+introduces:
+  - concept: "GN-43 EXTENSION -- the complete, twenty-six-section Mathematical/Statistical/Computational Verification protocol"
+  - concept: "'READ / VERIFY / FALSIFY — DO NOT REPAIR' and the explicit prohibition on incorporating DeepSeek material during this audit"
+  - concept: "PF-9 (governance compression) and AF-F-1 through AF-F-6, previously unseen finding series"
+  - concept: "The final explanation of PF-4 (ten-criteria design vs. seven-outcome executed matrix, including an unexplained 'Bounded [0,1]' column)"
+  - concept: "GN-27, referenced as the governing adjudication for the historical EXP-01 CSV discrepancy"
+  - concept: "'A kernel must not be confused with a bounded-context or architectural kernel' -- directly addressing the corpus-wide Kernel-terminology collision"
+  - concept: "The explicit measure-theory discipline distinguishing 'this can be represented as an integral' from 'measure theory is required by the architecture'"
+  - concept: "The eight-value Architectural Alignment classification and the fifteen-term final verdict vocabulary, with 'validated' explicitly banned"
+  - concept: "'NO SILENT REPAIR' and its strict eight-field error-reporting template"
+  - concept: "The capstone seven-dimension separation: mathematical correctness≠completeness≠computational possibility≠realization≠statistical validity≠architectural authorization≠book-level explanation"
+defines:
+  - concept: "'A kernel must not be confused with a bounded-context or architectural kernel'"
+    definition: "The term 'kernel' carries at least two entirely distinct senses in this project's own vocabulary -- a precise mathematical/category-theoretic object (e.g. the kernel of a linear map, satisfying specific formal properties) and an architectural/DDD term of art (e.g. a shared kernel bounded context, or the 'KnowledgeOS Kernel' as a named architectural component) -- and a formal mathematical audit must never let the architectural usage silently satisfy or substitute for the mathematical usage's required properties, or vice versa"
+  - concept: "The 'measure theory is represented vs. required' distinction"
+    definition: "Observing that some quantity or aggregation in the architecture CAN be expressed using measure-theoretic notation (an integral, a measure) does not by itself establish that measure theory is architecturally REQUIRED -- the latter, stronger claim needs its own independent architectural evidence and must not be assumed merely because a representation happens to exist"
+  - concept: "NO SILENT REPAIR"
+    definition: "During a verification/audit task, discovering that a mathematical claim, derivation, definition, or computation is wrong, incomplete, or invalid must never lead directly to fixing it in place -- the finding must instead be reported through a structured template naming exactly what is wrong, why, the counterexample or calculation demonstrating it, its source, what architecture and book content it affects, its severity, and only optionally a clearly-labeled non-authoritative suggested repair, leaving the actual repair decision to a separate, later governance act"
+refines:
+  - concept: "0769's eight named production findings, with PF-4 conspicuously absent and unexplained"
+    refinement: "PF-4 is finally explained here: a mismatch between a ten-criteria (A-J plus Calibration) experimental design and a seven-outcome executed results matrix, including an unaccounted-for 'Bounded [0,1]' column -- resolving this reconstruction's own previously-flagged open item about PF-4's absence"
+  - concept: "0770's GN-42 (Edition 2 may explain but not expand the architecture)"
+    refinement: "A parallel, independently-scoped governance ruling (GN-43 EXTENSION) applies the identical explain-not-expand discipline to a second, mathematical/statistical/computational verification track, with an even more precise and extensive set of explicit prohibitions and required reporting templates"
+  - concept: "0762's DeepSeek provenance caution and 0769's DeepSeek research-intake protocol"
+    refinement: "Directly and explicitly reinforced within this file's own MUST-NOT list ('must not incorporate DeepSeek') and final stop condition ('do not incorporate DeepSeek') -- confirming the DeepSeek-intake discipline established at 0762/0769 remains actively enforced in this later governance document"
+  - concept: "This reconstruction's own extensively tracked measure-theory arc (the corpus's own phase_measure_theory/ directory name and its many early files)"
+    refinement: "Given a precise, formal articulation of exactly the discipline this reconstruction has applied informally throughout: a representation using measure-theoretic language is not automatically evidence that measure theory is architecturally required -- the two claims must be kept explicitly separate"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read the remaining how_to_combine/ file (halfway-point-progress-review) and the numerous confirmed later external_research/ hpa-* files with high attention: check whether the mathematical-verification-report.md was actually produced, what findings it reached (particularly regarding EXP-01's independent recheck and PF-4's disposition), and whether any CRITICAL/HIGH-severity mathematical findings were surfaced."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record GN-43 EXTENSION as one of the most rigorous single epistemic-discipline documents in the entire corpus -- a twenty-six-section formal mathematical/statistical/computational audit protocol, explicitly banning the word 'validated' and mandating strict evidence/interpretation/verdict separation throughout."
+  - "dimension-registry.md: record the final explanation of PF-4 (ten-criteria design vs. seven-outcome executed matrix), resolving this reconstruction's own previously-flagged open item about its unexplained absence from the PF-1..8 list at 0769."
+  - "dimension-registry.md: record 'a kernel must not be confused with a bounded-context or architectural kernel' as a direct, precise instance of this reconstruction's extensively tracked Kernel-terminology collision, and the parallel measure-theory representation-vs-requirement distinction as directly resonant with this reconstruction's own governing corpus name and discipline."
+  - "dimension-registry.md: record PF-9 (governance compression), AF-F-1 through AF-F-6, and GN-27 as newly introduced identifiers requiring eventual reconciliation against the reconstruction's extensive tracked notation proliferation."
+anchor_test:
+  anchor: "0769's/0770's PF-1..8 findings and GN-42; 0762's DeepSeek provenance caution; this reconstruction's own governing epistemic discipline and its own corpus name (phase_measure_theory/); the reconstruction's extensively tracked Kernel-terminology collision"
+  supports_dimension: "Delivers one of the most rigorous single epistemic-discipline documents in the entire corpus: a twenty-six-section formal mathematical/statistical/computational verification protocol with an extensive MUST-NOT list (explicitly including DeepSeek incorporation), a fifteen-term verdict vocabulary explicitly banning 'validated,' a strict NO-SILENT-REPAIR reporting discipline, and a capstone seven-dimension separation between mathematical correctness, completeness, computability, realization, statistical validity, architectural authorization, and book-level explanation. Finally explains the previously-unexplained PF-4 finding. Delivers a direct, precise instance of the Kernel-terminology collision this reconstruction has tracked throughout, and a measure-theory representation-vs-requirement distinction directly resonant with this reconstruction's own governing corpus name. Introduces PF-9, AF-F-1..AF-F-6, and GN-27 as new identifiers for eventual reconciliation"
+  refines_or_contradicts: "directly extends 0769's/0770's governance framework with a parallel, independently-scoped verification track; resolves the previously-open PF-4 question; reinforces (does not contradict) 0762's/0769's DeepSeek-exclusion discipline; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit statement 'a kernel must not be confused with a bounded-context or architectural kernel' is directly quotable evidence of a precise, formal instance of this reconstruction's extensively tracked multi-sense Kernel-terminology collision, addressed here at the level of formal mathematical audit discipline rather than casual usage."
+  - "The explicit final instruction 'never use validated' in the required verdict vocabulary is directly quotable evidence of the file's uncompromising epistemic-honesty discipline, exceeding even most of this reconstruction's own previously-tracked anti-overclaiming principles in its explicitness."
+  - "§16's explicit statement of PF-4's content ('the design apparently specifies ten criteria A–J plus Calibration, while the executed matrix contains seven reported outcomes and includes a Bounded [0,1] column not obviously matching the designed criteria') is directly checkable evidence resolving this reconstruction's own previously-flagged open item about PF-4's unexplained absence at 0769."
+undefined_concepts:
+  - "The exact content and provenance of GN-27 (the adjudication governing the historical EXP-01 CSV discrepancy) is referenced but not explained in this file."
+  - "AF-F-1 through AF-F-6 (Architecture Findings) are named as an audit-scope item but their specific content is not given in this file."
+open_questions:
+  - "Whether the mathematical-verification-report.md required by this protocol was ever actually produced, and if so, what CRITICAL/HIGH-severity findings (if any) it surfaced regarding v0.2's mathematical claims."
+  - "What GN-27's actual content is, and what the six AF-F findings (AF-F-1 through AF-F-6) specifically concern."
+  - "Whether the EXP-01 independent recheck confirmed or diverged from the historical verdict, and what disposition PF-4 ultimately received."
+tier2_triggered: true
+tier2_reason: "EXCEPTIONAL META-LEVEL FINDING (continuing 0755-0764/0769-0770): one of the most rigorous single epistemic-discipline documents in the entire corpus -- a twenty-six-section formal mathematical/statistical/computational verification protocol with an extensive MUST-NOT list, a verdict vocabulary explicitly banning 'validated,' a strict NO-SILENT-REPAIR discipline, and a capstone seven-dimension separation between mathematical/computational/statistical/architectural claim types. Finally explains the previously-unexplained PF-4 finding. Delivers a direct, precise instance of the Kernel-terminology collision this reconstruction has tracked throughout, and a measure-theory discipline directly resonant with this reconstruction's own governing corpus name (phase_measure_theory/). Introduces PF-9, AF-F-1..AF-F-6, and GN-27 as new identifiers for eventual reconciliation."

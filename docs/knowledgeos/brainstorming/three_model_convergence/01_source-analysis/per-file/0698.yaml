@@ -1,0 +1,212 @@
+sequence: 698
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-123718_step-113-knowledgeos-semantic-core-reconstruction.md
+title: "Step 113 -- Delivers the Reconstruction's Richest Semantic-Core Falsification Exercise: an Explicit Ten-Question Falsification Checklist, Systematic Testing of Ten Candidate Concepts (Evidence/Observation/Claim/Decision/Authority/Action/Verification/Finding/Rule/Architecture), Artifact≠Evidence as a Semantic Transformation, Three Competing Architectural Identity Models (EvidenceAuthority/EvidenceAggregator/EvidenceProcessingPlatform), a Formal Semantic-Core-Minimality Principle (Core_minimal=argmin(Model) Subject to Model⊢ObservedBehavior, 'A Powerful Anti-Overengineering Principle'), Systematic Removal-Experiment Validation of 0697's Semantic-Core Test, the Graph-Not-Pipeline Refinement of the Semantic-Truth Hierarchy, and the Reconstruction's Most Precise Formulation of Its Central Tension Yet: 'CurrentAuthoritativeKnowledge' vs. 'TopKSimilarDocuments' -- Opens Step 114 -- Semantic Core Evidence Test With an Explicit STRICT Evidentiary Standard ('Every Non-Unknown Cell Must Have Evidence')"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 113 -- KnowledgeOS Semantic Core Reconstruction', explicitly framed at 0697's close as 'the deepest question so far'; delivers the reconstruction's richest and most rigorous semantic-core falsification exercise yet, systematically testing ten candidate concepts against an explicit ten-question checklist"
+source_role: PRIMARY_RESEARCH
+canonical_source: 698
+importance: critical
+confidence: high
+about: >
+  **Delivers the reconstruction's first explicit "falsification principle"**, naming the Popperian discipline
+  this corpus has implicitly followed throughout: for each proposed semantic-core concept, ask ten questions
+  (does it exist? stable identity? defined meaning? lifecycle/state? invariants? relationships? identifiable
+  ownership? persisted/represented? implemented behavior? verified?) -- "if most answers are 'no', the
+  concept should not be treated as part of the actual semantic core." This is applied systematically to TEN
+  candidate concepts across the file: Evidence, Observation, Claim, Decision, Authority, Action,
+  Verification, Finding, Rule, and Architecture.
+
+  **Delivers `Artifact≠Evidence` as a precisely reasoned semantic transformation, not mere renaming**: a
+  Git commit is an artifact; it becomes evidence only when a verification process establishes its
+  evidentiary role for a specific claim (PASS×2), directly extending 0688's/0691's evidence-formalization
+  discipline. Delivers a genuinely valuable three-way architectural-identity distinction for how KnowledgeOS
+  might actually relate to evidence: `EvidenceAuthority` (KnowledgeOS defines evidence semantics) vs
+  `EvidenceAggregator` (KnowledgeOS merely collects evidence) vs `EvidenceProcessingPlatform` (KnowledgeOS
+  processes but does not own evidence semantics) -- "the implementation must tell us which one is real,"
+  extending 0697's who-owns-the-meaning discipline into a concrete three-model taxonomy.
+
+  Delivers Observation formally distinguished from Claim (an uninterpreted runtime event remains
+  `Observation`, never automatically `Claim`, PASS), extending 0688's inference-provenance discipline, and
+  Decision reconfirmed distinct from Recommendation (an agent's "Architecture Board should approve this"
+  remaining `Recommendation`, PASS), directly restating the corpus's central Recommendation≠Decision family.
+  **Delivers `Authority=(Actor,Role,Scope,Rule,Validity)` with the precisely reasoned caution that
+  administrative identity does not automatically imply semantic authority** (a user literally named `admin`
+  is NOT automatically `ArchitectureAuthority`, PASS), directly extending 0687's authority-cannot-be-
+  inferred-from-names caution into identity/role-naming specifically.
+
+  Delivers Action formalized (`Action=(Actor,Intent,Target,Change,Time,Authorization)`) with incomplete
+  agent-identity attribution correctly yielding `PARTIAL` action provenance, extending 0690's agent-
+  attribution discipline. Delivers Verification formally distinguished from both Evidence and mere Test
+  (`Test≠Verification unless the semantic model explicitly treats it that way`, PASS), directly extending
+  0691's/0693's verification-strength disciplines with a precise conceptual boundary. **Delivers `TestFailure
+  ≠Finding without interpretation`**, a precisely reasoned and currently applicable caution against naive
+  automatic escalation: a failed test may indicate infrastructure failure, test flakiness, developer error,
+  or an actual conformance violation, and cannot be classified without further investigation (PASS),
+  directly extending 0682's/0684's finding-formalization discipline. Delivers the important circularity
+  caution for Architecture-as-knowledge: "KnowledgeOS may MANAGE architectural knowledge without
+  architecture itself being the semantic root of all knowledge" -- a subtle, valuable methodological caution
+  against conflating the reconstruction tool with its own subject matter.
+
+  Delivers cross-cutting Provenance with the precisely reasoned principle that **identical content from
+  different sources is not semantically equivalent**: two knowledge objects with identical text, one
+  sourced from the Architecture Board and one from an LLM, cannot be treated as equivalent solely because
+  their content matches (PASS), directly reinforcing 0697's `True≠Authoritative` from a provenance-specific
+  angle. Delivers cross-cutting TemporalValidity with the important, precisely stated consequence for
+  retrieval architecture: an agent retrieving a superseded rule "should not treat it as current authoritative
+  knowledge... this is why semantic retrieval needs more than vector similarity" (PASS), directly extending
+  0673's/0680's embeddings-never-authoritative discipline into retrieval-freshness specifically.
+
+  **Delivers a genuinely valuable, formally stated Semantic-core-minimality principle -- an Occam's-razor-
+  style anti-overengineering discipline applied specifically to domain modeling**: `Core_{minimal}=
+  argmin(Model)` subject to `Model⊢ObservedBehavior` -- if all current behavior is explainable using
+  `Artifact+Observation+Decision+Evidence`, introducing a separate `Claim` entity "provides no explanatory
+  value... do not introduce it merely for conceptual elegance" (PASS), directly extending the corpus's
+  anti-over-engineering discipline (echoing 0685's/0686's "model integrity" observation) with a formally
+  precise minimality criterion, a genuinely novel methodological contribution to this reconstruction.
+
+  Delivers Semantic core reframed against a feature catalog (search/embeddings/governance/audit are
+  capabilities; the semantic core asks what concepts give those capabilities coherent meaning, e.g. search
+  supports `Retrieve(KnowledgeObject)`, governance supports `Authorize(KnowledgeObject)`, audit supports
+  `Prove(Action)`), directly extending 0697's semantic-core-test heuristic. **Delivers a systematic,
+  rigorous application of 0697's own semantic-core-test heuristic across four independent removal
+  experiments**: removing vector search leaves identity/provenance intact (`PASS`, `SupportingCandidate`
+  confirmed); removing provenance causes "semantic integrity" to "degrade significantly" (`PASS`, `CORE`
+  confirmed); removing authority semantics causes recommendations and decisions to "become
+  indistinguishable... governance semantics collapse" (`PASS`, `CORE` confirmed); removing temporal validity
+  makes "knowledge freshness/integrity... unreliable" (`PASS`, `CORE` confirmed) -- this is the first place
+  in this reconstruction where a previously-stated heuristic (0697's semantic-core test) is worked through
+  systematically across multiple concepts rather than asserted once, a genuine methodological deepening.
+
+  Delivers six candidate semantic-core invariants labeled `S1`-`S6` -- **note the labeling-scheme variance:
+  this is the reconstruction's first use of an `S`-prefixed (rather than `I_{Name}`-prefixed) invariant
+  notation**, each a compact restatement/synthesis of already-tracked invariants rather than genuinely new
+  content: `S1` (`EveryAuthoritativeDecision→Authority`, restating the I_AuthorityBinding/I_GovernanceAuthority
+  family), `S2` (`EveryMaterialClaim→Provenance`, restating I_SemanticProvenance), `S3`
+  (`EveryVerification→Evidence`, restating the I_EvidenceDistinction family), `S4`
+  (`EveryAgentAction→AgentIdentity`, restating I_AgentAttribution), `S5`
+  (`CurrentKnowledge→TemporalValidity`, restating I_TemporalKnowledge), `S6`
+  (`Projection→AuthoritativeSource`, restating I_AuthorityBoundary/Projection≠Ownership) -- all explicitly
+  qualified as "hypotheses until implementation evidence confirms them," consistent with the corpus's
+  epistemic-honesty discipline; this is a notation-scheme observation rather than a confirmed invariant-name
+  collision, since these carry different symbolic names from their tracked predecessors while restating
+  equivalent substance.
+
+  **Delivers a semantic-truth hierarchy with an important, precisely reasoned graph-not-pipeline
+  refinement**: `RawData→Observation→Evidence→Claim→Decision` with `Authority` determining bindingness is
+  explicitly NOT a strictly linear pipeline -- a `Decision` can itself become `Evidence` for a later
+  decision, and an `Observation` can directly trigger a `Finding` without first becoming a `Claim` -- "the
+  correct model is a graph, not a pipeline," a genuinely valuable refinement against oversimplifying the
+  corpus's own epistemic-firewall family into a rigid sequence. Delivers the most complete and precise
+  consolidated semantic graph in this reconstruction (`Authority→^{authorizes}Decision→^{produces}Action→
+  ^{creates}Observation→^{supports}Claim→^{supportedBy}Evidence`), explicitly labeled "a target semantic
+  model, not yet a claim about the actual code."
+
+  Delivers the decisive per-edge reconstruction test (for every relationship in the target graph, ask
+  whether it is actually represented via foreign key/API relation/event/domain object/metadata/graph edge/
+  workflow/test/runtime record), with two concrete experiments: no relationship at all correctly yielding a
+  `SemanticGap` (PASS), and a relationship existing only in Markdown prose correctly classified a
+  `DocumentedRelationship`, never a `MachineReadableSemanticRelationship` (PASS) -- directly extending
+  0693's/0694's naming/documentation-proves-nothing family into relationship-verification specifically, with
+  a concrete illustrative machine-readable schema fragment (`decision.supporting_evidence[]`,
+  `decision.authority`, `decision.effective_from`, `decision.supersedes`) -- explicitly hypothetical
+  ("whether these exact structures exist is an implementation question").
+
+  **Delivers the reconstruction's most precise and memorable formulation of its central tension yet --
+  `CurrentAuthoritativeKnowledge` versus `TopKSimilarDocuments`**: reframing semantic retrieval from "find
+  documents mentioning X" to "find authoritative decisions concerning X, their supporting evidence, current
+  validity, and unresolved findings" (`Find(Decision,subject=X,validNow=True,authority=ArchitectureBoard)`
+  with `Include(Evidence,Findings,SupersededDecisions)`), with the crisp closing distinction: "an agent
+  should ideally receive `CurrentAuthoritativeKnowledge` rather than `TopKSimilarDocuments`. The latter is
+  useful retrieval infrastructure. The former is a knowledge operating model" -- directly and precisely
+  crystallizing 0673's/0680's/0688's/0697's embeddings/RAG-boundary and semantic-core disciplines into a
+  single, concrete, currently reusable query-design contrast.
+
+  Delivers Step 113's verdict, continuing the calibrated methodology-only pattern with unusually precise
+  formal phrasing: "We have now defined a falsifiable semantic-core model... `TargetSemanticCore=Defined`,
+  `ActualSemanticCore=To Be Reconstructed`."
+
+  **Closes by opening "Step 114 — Semantic Core Evidence Test,"** proposing the most granular conformance-
+  test matrix format in this reconstruction (an eight-concept × seven-column table: Concept, Code, Schema,
+  API, Tests, Runtime, Owner, Verdict), with an explicitly STRICT evidentiary standard stated for the first
+  time in this arc: **"Every non-unknown cell must have evidence"** -- framing the outcome as determining
+  whether KnowledgeOS is "a true semantic knowledge platform" or "an engineering/AI platform whose knowledge
+  model is still emerging," closing with "that distinction is now testable." No actual code execution,
+  repository inspection, or verified filesystem/semantic-relationship claim is reported anywhere in this
+  file.
+introduces:
+  - concept: "The reconstruction's first explicit 'falsification principle': a ten-question checklist systematically applied to test whether each candidate semantic-core concept genuinely exists in the implementation"
+  - concept: "Artifact≠Evidence as a semantic transformation, with three competing architectural-identity models for KnowledgeOS's relationship to evidence: EvidenceAuthority / EvidenceAggregator / EvidenceProcessingPlatform"
+  - concept: "Administrative identity does not automatically imply semantic authority (admin≠ArchitectureAuthority)"
+  - concept: "TestFailure≠Finding without interpretation — a failed test may be infrastructure failure, flakiness, developer error, or an actual violation"
+  - concept: "The circularity caution: KnowledgeOS may manage architectural knowledge without architecture itself being the semantic root of all knowledge"
+  - concept: "Identical content from different sources is not semantically equivalent — provenance-specific reinforcement of True≠Authoritative"
+  - concept: "A formally stated Semantic-core-minimality principle: Core_minimal=argmin(Model) subject to Model⊢ObservedBehavior — a powerful anti-overengineering principle for domain modeling"
+  - concept: "Systematic, multi-experiment validation of 0697's semantic-core test heuristic across four removal experiments (vector search, provenance, authority, temporal validity)"
+  - concept: "S1-S6 candidate semantic-core invariants — a notation-scheme variance (S-prefixed rather than I_Name-prefixed) restating/synthesizing already-tracked invariants rather than introducing genuinely new substance"
+  - concept: "The graph-not-pipeline refinement of the semantic-truth hierarchy: Decision can become Evidence for a later decision; Observation can trigger a Finding without first becoming a Claim"
+  - concept: "The reconstruction's most precise formulation of its central tension yet: CurrentAuthoritativeKnowledge vs. TopKSimilarDocuments"
+  - concept: "Opens Step 114 — Semantic Core Evidence Test with an explicit STRICT evidentiary standard: every non-unknown cell must have evidence"
+defines:
+  - concept: "Artifact≠Evidence"
+    definition: "A raw artifact (a document, a commit, a log line) is not itself evidence; it becomes evidence only through a semantic transformation in which a verification process or the system explicitly establishes its evidentiary role in supporting or constraining a specific claim"
+  - concept: "The three evidence-architecture models (EvidenceAuthority / EvidenceAggregator / EvidenceProcessingPlatform)"
+    definition: "Three mutually exclusive hypotheses for how a system actually relates to evidence: EvidenceAuthority (the system itself defines what counts as valid evidence and enforces evidentiary rules), EvidenceAggregator (the system merely collects and stores evidence from elsewhere without owning its semantics), EvidenceProcessingPlatform (the system transforms/processes evidence — e.g. indexing, embedding — without owning or defining its meaning); only implementation evidence can determine which model actually describes a given system"
+  - concept: "Core_minimal=argmin(Model) subject to Model⊢ObservedBehavior (semantic-core minimality)"
+    definition: "The correct semantic-core model for a system is the SMALLEST set of domain concepts sufficient to explain all currently observed behavior; introducing an additional domain concept that adds no explanatory power over already-established concepts, purely for conceptual elegance or architectural completeness, violates this minimality principle and should be avoided"
+  - concept: "CurrentAuthoritativeKnowledge vs. TopKSimilarDocuments"
+    definition: "A genuine knowledge operating system answers queries with CurrentAuthoritativeKnowledge — authoritative decisions on a subject, their supporting evidence, current temporal validity, and unresolved findings — rather than merely TopKSimilarDocuments, which is useful retrieval infrastructure but does not itself constitute a knowledge operating model"
+refines:
+  - concept: "0688's/0691's evidence-formalization discipline"
+    refinement: "Directly and precisely extended via Artifact≠Evidence as an explicit semantic transformation, and a three-model taxonomy for evidence-architecture identity"
+  - concept: "0687's authority-cannot-be-inferred-from-names caution"
+    refinement: "Directly extended into identity/role-naming specifically: an administrative user identity does not automatically confer semantic authority"
+  - concept: "0682's/0684's finding-formalization discipline"
+    refinement: "Directly and precisely extended: a test failure requires interpretation before being classified as a governance finding"
+  - concept: "0697's True≠Authoritative principle"
+    refinement: "Directly reinforced from a provenance-specific angle: identical content from different sources (Architecture Board vs. LLM) is not semantically equivalent"
+  - concept: "0673's/0680's embeddings-never-authoritative discipline"
+    refinement: "Directly and genuinely extended into retrieval-freshness (temporal validity must gate what an agent treats as current) and crystallized into the CurrentAuthoritativeKnowledge-vs-TopKSimilarDocuments contrast"
+  - concept: "the corpus's anti-over-engineering discipline (echoing 0685's/0686's model-integrity observation)"
+    refinement: "Directly and formally extended with a precise minimality criterion (Core_minimal=argmin(Model) subject to Model⊢ObservedBehavior)"
+  - concept: "0697's semantic-core-test heuristic"
+    refinement: "Directly and rigorously extended: systematically applied across four independent removal experiments rather than asserted once"
+  - concept: "0693's/0694's naming/documentation-proves-nothing family"
+    refinement: "Directly extended into relationship-verification specifically: a relationship existing only in Markdown prose is documented, not machine-readable semantic structure"
+  - concept: "the corpus's epistemic-firewall family (Evidence≠Inference≠Decision≠Authority)"
+    refinement: "Refined via the graph-not-pipeline caution: the family's members are not a strict linear sequence — Decision can become Evidence for a later decision, Observation can directly produce a Finding"
+  - concept: "0687's/0688's/0692's/0693's/0694's already-tracked invariants (governance/authority/evidence/agent-attribution/temporal-knowledge/authority-boundary families)"
+    refinement: "Compactly restated/synthesized as six S1-S6 candidate invariants using a NEW S-prefixed notation, distinct from the corpus's established I_{Name} convention — a notation-scheme observation, not a confirmed name collision"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0699 (Step 114 — Semantic Core Evidence Test) with calibrated vigilance for whether the corpus attempts (even hypothetically) to actually populate the promised eight-concept evidence matrix under its own newly stated STRICT standard ('every non-unknown cell must have evidence'), or continues the established methodology-only pattern."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the file's most valuable and genuinely novel contributions: the explicit falsification-principle naming, Artifact≠Evidence with the three-model evidence-architecture taxonomy, the formally stated semantic-core-minimality principle (Core_minimal=argmin(Model)), the systematic multi-experiment validation of the semantic-core test, the graph-not-pipeline refinement, and the CurrentAuthoritativeKnowledge-vs-TopKSimilarDocuments formulation."
+  - "dimension-registry.md: record the S1-S6 invariant notation-scheme variance (S-prefixed rather than I_Name-prefixed), each restating an already-tracked invariant rather than introducing new substance -- flagged as a naming-convention observation, not a collision."
+  - "dimension-registry.md: record continuation of the calibrated methodology-only pattern; flag Step 114 (0699) for whether it attempts genuine (even hypothetical) application of its own stated strict evidentiary standard."
+anchor_test:
+  anchor: "0697's who-owns-the-meaning discipline and semantic-core-test heuristic; the corpus's central Recommendation≠Decision family; 0687's authority-cannot-be-inferred-from-names caution; 0682's/0684's finding-formalization discipline; 0673's/0680's embeddings-never-authoritative discipline; 0688's/0691's evidence-formalization discipline; 0693's/0694's naming/documentation-proves-nothing family; the corpus's epistemic-firewall family; 0685's/0686's model-integrity/anti-overengineering observation; the corpus's established I_{Name} invariant-naming convention"
+  supports_dimension: "Delivers the reconstruction's richest and most rigorous semantic-core falsification exercise, naming the corpus's implicit falsificationist methodology explicitly for the first time and systematically applying it across ten candidate concepts. Delivers several genuinely valuable, precisely reasoned, and in some cases genuinely novel principles: Artifact≠Evidence with a three-model evidence-architecture taxonomy, a formally stated semantic-core-minimality principle (a clean Occam's-razor formalization not seen elsewhere in this reconstruction), rigorous systematic (rather than single-instance) validation of the semantic-core test across four removal experiments, the graph-not-pipeline refinement of the epistemic-firewall family, and the reconstruction's most precise formulation yet of its central tension (CurrentAuthoritativeKnowledge vs. TopKSimilarDocuments). Introduces a notation-scheme variance (S1-S6) restating already-tracked invariants under a new naming convention rather than genuinely new content. Continues the calibrated methodology-only pattern with unusually precise formal phrasing, and closes with the sharpest, most strictly stated evidentiary standard proposed anywhere in this arc for Step 114"
+  refines_or_contradicts: "directly and genuinely extends 0697's who-owns-the-meaning discipline and semantic-core-test heuristic, the corpus's central Recommendation≠Decision family, 0687's authority-cannot-be-inferred-from-names caution, 0682's/0684's finding-formalization discipline, 0673's/0680's embeddings-never-authoritative discipline, 0688's/0691's evidence-formalization discipline, and 0693's/0694's naming/documentation-proves-nothing family; refines (without contradicting) the corpus's epistemic-firewall family via the graph-not-pipeline caution; formally extends 0685's/0686's anti-overengineering observation into a precise minimality criterion; restates (under a new S-prefixed notation, not a name collision) several already-tracked invariants; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§113.40-113.41's semantic-core-minimality formalization (`Core_minimal=argmin(Model)` subject to `Model⊢ObservedBehavior`, with the worked example that adding a separate Claim entity when Artifact+Observation+Decision+Evidence already explains all behavior 'provides no explanatory value') is a directly checkable, formally precise, and genuinely novel methodological contribution to this reconstruction."
+  - "§113.44-113.47's four systematic removal experiments (vector search, provenance, authority, temporal validity), each explicitly concluding whether semantic integrity survives or degrades, is directly checkable evidence of a rigorous, multi-instance validation of 0697's previously single-instance semantic-core-test heuristic."
+  - "§113.58-113.59's CurrentAuthoritativeKnowledge-vs-TopKSimilarDocuments contrast, with a concrete Find()/Include() query syntax example, is a directly quotable, precisely reasoned, and currently applicable formulation distinguishing a genuine knowledge operating system from mere document-retrieval infrastructure."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 114's actual content (0699), once read, attempts genuine (even hypothetical) application of its own stated strict evidentiary standard ('every non-unknown cell must have evidence') to even one candidate concept, or continues the established pattern of proposing methodology while deferring application."
+tier2_triggered: true
+tier2_reason: "Delivers the reconstruction's richest and most rigorous semantic-core falsification exercise, explicitly naming the corpus's implicit falsificationist methodology for the first time and systematically applying it across ten candidate concepts. Delivers several genuinely valuable and in places genuinely novel principles: Artifact≠Evidence with a three-model evidence-architecture taxonomy, a formally stated semantic-core-minimality principle, rigorous multi-experiment validation of the semantic-core test, the graph-not-pipeline refinement of the epistemic-firewall family, and the reconstruction's most precise formulation yet of its central tension (CurrentAuthoritativeKnowledge vs. TopKSimilarDocuments). Introduces a notation-scheme variance (S1-S6) restating already-tracked invariants. Closes with the sharpest, most strictly stated evidentiary standard proposed anywhere in this arc for Step 114."

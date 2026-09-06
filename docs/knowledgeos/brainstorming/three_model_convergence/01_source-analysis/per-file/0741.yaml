@@ -1,0 +1,246 @@
+sequence: 741
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-131618_step-153-knowledgeos-architecture-registry.md
+title: "Step 153 -- MAJOR SYNTHESIS MILESTONE: Delivers the First Genuinely Concrete YAML Registry Schema in the Reconstruction, 'Prefer Allowlists' (Default-Deny Security Discipline Applied to Architecture Dependencies), the Architecture Graph≠Knowledge Graph Distinction, a Three-Level (Registry/Implementation/Runtime) Assurance Model and the Architecture Assurance Pyramid, 'No Duplicated Architecture Memory' With Concrete .claude/.codex File-Path Examples, Six Named Drift Categories, REG-001 Through REG-007, and 'Self-Governing Architecture' -- Opens Step 154, the KnowledgeOS Self-Assurance Engine"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 153 -- KnowledgeOS Architecture Registry', promised at 0740's close; delivers the reconstruction's first genuinely concrete, syntactically realistic YAML configuration schema, directly connecting the Constitution's abstract rules (0740) to an actually implementable machine-readable declaration, with several genuinely valuable and currently applicable architecture-governance principles"
+source_role: PRIMARY_RESEARCH
+canonical_source: 741
+importance: critical
+confidence: high
+about: >
+  Opens positioning the Registry as the missing machine-readable layer between Constitution and repository:
+  `Architecture→Constitution→Registry→Implementation→Observation→Evidence→Verification` — "this is where
+  KnowledgeOS begins to become genuinely self-describing and self-assuring." Delivers Registry-vs-Database
+  (`Registry=what MAY exist/how it MAY depend` vs. `Database=what DOES exist/current state`) and
+  Registry-vs-Constitution, worked through a complete four-stage example chain (Constitution rule→Registry
+  declaration→Implementation violating it→Verification FAIL) directly demonstrating 0740's entire assurance
+  chain end-to-end for the first time with concrete artifacts at every stage.
+
+  **Delivers the reconstruction's first genuinely concrete, syntactically realistic YAML configuration
+  schema**, spanning a twelve-section top-level Registry structure (`contexts/modules/aggregates/concepts/
+  ports/adapters/contracts/events/persistence/dependencies/rules/metadata/`), Registry metadata (`id,
+  version, status, effectiveFrom`), and a worked Bounded Context Registry declaring seven contexts with
+  stable IDs (`BC-GOV, BC-KNOW, BC-EVID, BC-ASSURE, BC-AGENT, BC-ACTION, BC-AUTH` — notably expanding the
+  five-context ownership model from 0722 with Agent, Action, and Authorization now declared as separate
+  bounded contexts), each carrying an explicit status (`CANDIDATE/CONFIRMED/DEPRECATED/RETIRED`, "a
+  candidate context should not automatically be treated as an established architectural boundary").
+
+  Delivers Module Registry entries (`id, context, layer, status`) and a seven-value Layer classification
+  (`domain, application, port, adapter, infrastructure, api, projection`), with worked YAML dependency
+  declarations (both allowed and forbidden variants). **Delivers "prefer allowlists," a genuinely valuable,
+  precisely reasoned security-engineering principle applied to architecture-dependency enforcement**
+  (§153.11): `AllowedDependencies` are safer than enumerating forbidden ones, because a new, unanticipated
+  dependency then automatically fails until explicitly permitted (`Unknown→FAIL`) rather than being silently
+  allowed by omission (`Unknown→implicitly allowed`) — directly applying the classical default-deny (rather
+  than default-allow) security principle to software-architecture governance for the first time in the
+  reconstruction.
+
+  Delivers Aggregate Registry declarations (`root, consistencyBoundary`) with associated invariant lists,
+  explicitly enabling "the architecture checker to verify the existence of corresponding tests" — `Architecture
+  →Executable Assurance`. **Delivers Domain concept registry with a concrete five-value Authority
+  classification** (`AUTHORITATIVE, OBSERVATIONAL, DERIVED, CANDIDATE, NON_AUTHORITATIVE`), worked through
+  a five-row table (`Recommendation=NON_AUTHORITATIVE, Observation=OBSERVATIONAL, Evidence=AUTHORITATIVE
+  record, Verification=AUTHORITATIVE assurance result, Graph node=DERIVED`) — directly consolidating and
+  making machine-checkable the reconstruction's scattered epistemic-status work (0698/0711/0722/0739's
+  three-tier truth taxonomy) into one concrete, registry-declarable classification.
+
+  Delivers Port Registry (`NexusPort` with explicit operations, "the domain depends on `NexusPort` not
+  `NexusClient`"), Adapter Registry (binding an implementation to its port, with explicit adapter-isolation
+  rules — an adapter may depend on the vendor SDK internally but must not expose vendor DTOs outside the
+  adapter boundary), Contract Registry and Event Registry (both versioned, owner-attributed), and
+  Persistence Registry (declaring authority per store, enabling detection of "accidental authority
+  duplication"). Delivers a Projection declaration with an explicit `rebuildable` attribute, directly
+  operationalizing 0727's/0734's/0737's/0740's graph-rebuildability discipline into a concrete registry
+  field.
+
+  Delivers the Registry rule model connecting directly back to 0740's Constitution (worked YAML for
+  `ARCH-DOM-001, ARCH-AUTH-001, ARCH-EVID-001`), a Checker Registry with an explicit `deterministic:
+  true|false` declaration — **a checker marked `deterministic:false` (e.g. using LLM interpretation)
+  "cannot silently serve as an authoritative deterministic verifier"** — and Rule applicability/scope
+  declarations preventing overly broad checking.
+
+  **Delivers the Architecture Graph vs. Knowledge Graph distinction, a genuinely important, precisely
+  reasoned conceptual split not previously made this cleanly** (§153.28-153.30): the Architecture Graph
+  answers "how is the software supposed to be structured?" (derived from the Registry, describing the
+  platform itself); the Knowledge Graph (the Assurance Graph established since 0716) answers "what do we
+  know about engineering subjects and their relationships?" (describing the engineering world) — "they can
+  eventually coexist. They should not be conflated" — a meaningful new bifurcation of what had previously
+  been treated as a single graph concept.
+
+  Delivers Registry validation (five concrete integrity checks: `NoDuplicateContextID, NoUnknownOwner,
+  NoCircularForbiddenDependency, EveryPortHasOwner, EveryAdapterImplementsDeclaredPort`) with a worked
+  REGISTRY-001/002/003 pass/fail example set, and Implementation discovery (`ObservedArchitecture` produced
+  by scanning the repository's directories/packages/imports/APIs/events/dependencies). Delivers the central
+  conformance operation `Compare(Declared,Observed)`, a worked six-category conformance result, and
+  **Drift detection worked through a concrete "six months later" maintenance scenario** (a forbidden
+  dependency silently added to `assurance.domain`, detected by CI as `ArchitectureDrift`), with a Drift
+  lifecycle and a full worked Architecture Finding (`findingId, ruleId, subject, observedState,
+  expectedState, evidenceId, severity`).
+
+  **Delivers Remediation discipline, precisely preserving the anti-hallucination boundary at the
+  remediation-suggestion layer specifically** (§153.39-153.40): a Finding may carry an AI-generated
+  `remediationHint` (e.g. "introduce `NexusPort` and move the vendor dependency into `NexusAdapter`"), but
+  "the Finding itself is generated deterministically" — the correct division is `Deterministic
+  checker→Architecture Finding→AI→Remediation proposal`, explicitly never `AI→"Architecture looks fine"`
+  as sufficient assurance on its own. Delivers the Agent remediation loop
+  (`Agent→Change→Architecture Check→{PASS→continue, FAIL→Finding→Agent→Correct}`), "this is where
+  KnowledgeOS becomes an engineering feedback system," directly operationalizing 0740's "critical AI
+  engineering pattern" (`Observe→Reason→Change→Verify→Correct`) into a concrete architecture-specific loop.
+
+  Delivers Architecture exceptions with a worked YAML exception schema and the precise temporal rule
+  `Violation+ValidException⇒Allowed` vs. `Violation+ExpiredException⇒FAIL`, extending into **Temporal
+  architecture — "architecture is not simply `A`. It is `A(t)`"** — depending on active version, effective
+  date, exceptions, and migrations, directly extending 0736's bitemporal discipline into architecture-
+  versioning terms. Delivers Architecture-version referencing on Verification records
+  (`ruleVersion=1.3, architectureVersion=1.0`) and **the most complete single reproducibility formula in the
+  reconstruction**: `Verification=f(Code,Evidence,RuleVersion,ArchitectureVersion,Context)`.
+
+  Delivers the Registry living under version control alongside source code and tests ("this makes
+  architecture evolution reviewable"), a Registry change lifecycle (`Proposal→Architecture Change→Registry
+  Update→Architecture Review→Verification→Approval→Effective Version`), and **"Registry is not an
+  implementation shortcut," an explicit anti-pattern warning against `allowedDependencies: "*"`** — "the
+  Registry should make architectural intent MORE explicit, not less." Delivers a Minimum Registry v1 scope
+  (ten items) and **a complete, concrete worked minimal-Registry YAML example** spanning architecture
+  metadata, four contexts, three modules with explicit `allowedDependencies`, and one rule — the most
+  complete single concrete configuration artifact in the entire reconstruction, immediately followed by a
+  worked seven-check Registry-verification integrity report.
+
+  **Delivers a Two-level, then Three-level assurance model, explicitly extending the reconstruction's layered
+  verification discipline**: Level 1 `Verify(Registry)` (registry correctness — "if the Registry itself is
+  invalid, conformance results are meaningless"); Level 2 `Verify(Implementation against Registry)` (code
+  conformance); Level 3 Runtime behavior conformance — `Architecture→Implementation→Runtime`, each
+  independently verifiable, worked through a concrete three-layer example (registry rule→implementation
+  reference→runtime `BLOCK` behavior, all three separately tested). **Delivers "the Architecture Assurance
+  Pyramid," a clean four-layer visual capstone model** (`Runtime Behavior→Implementation Conformance→
+  Architecture Registry→Constitution`), "the architecture assurance stack."
+
+  **Delivers KnowledgeOS self-description, a precise anti-hallucination application specifically for the
+  platform's own architecture self-knowledge**: answering "what is your architecture?" by querying the
+  `ArchitectureRegistry` directly, explicitly "not by asking an LLM to summarize documentation" — exposed
+  via a concrete `GET Architecture` endpoint. **Delivers a genuinely valuable worked Architecture-Context-
+  for-agents example**: an agent asking "where should I implement the Nexus assurance checker?" receives a
+  structured architectural placement answer (`boundedContext, module, port, adapter, architecturalRules`)
+  — "the agent no longer needs to infer repository architecture from thousands of files" — explicitly named
+  "the deeper purpose" of the Registry: becoming "a high-confidence architectural context source for
+  agents" (`ArchitectureRegistry→ContextService→Agent`), "this dramatically reduces architecture
+  hallucination." Delivers an eight-step Architecture-aware coding workflow (`Task→Get Architecture
+  Context→Identify bounded context→Identify allowed dependency path→Implement→Run architecture checker→Run
+  tests→Produce evidence`).
+
+  **Delivers "no duplicated architecture memory," reconfirming the pointer-layer principle with the
+  reconstruction's most concrete, directly named file-path illustration**: explicitly rejecting a scenario
+  where `.claude/memory/architecture.md`, `.codex/memory/architecture.md`, `docs/architecture.md`, and
+  `wiki/architecture.md` "all independently claim architectural authority," in favor of one
+  `Authoritative Architecture Registry→Context Service→{Claude,Codex}` — "local documentation can explain or
+  cache information, but authority remains centralized." Delivers the precise Registry-vs-documentation
+  direction: `Registry→Generated/curated documentation`, never the reverse.
+
+  **Delivers Architecture drift formalized** (`Drift=Difference(DeclaredArchitecture,ObservedArchitecture)`)
+  **with six named drift categories, a more granular taxonomy specifically for architecture-registry drift
+  than 0692's/0701's prior general drift taxonomies**: `STRUCTURAL` (dependency violation), `SEMANTIC`
+  (wrong ownership), `CONTRACTUAL` (API/event mismatch), `RUNTIME` (expected enforcement absent),
+  `TEMPORAL` (expired exception), `DOCUMENTARY` (declared architecture not reflected in docs), with the
+  first four explicitly flagged "especially important." Delivers a worked Architecture assurance summary
+  result (`47 PASS, 1 WARNING, 0 BLOCKING`) feeding into the same `Evidence→Verification→Finding` chain as
+  every other assurance result in the reconstruction.
+
+  **Delivers "self-governing architecture," a genuinely significant capstone statement**: "KnowledgeOS is
+  no longer merely a system that stores engineering knowledge. It can become a system that describes,
+  governs, observes, verifies, and records its own engineering architecture. That is the beginning of a
+  genuinely self-assuring engineering platform" — directly consolidating and crystallizing 0740's
+  Self-hosting/Constitutional-self-assurance principle.
+
+  **Delivers `REG-001` through `REG-007`, seven new registry-specific invariants**: every bounded context
+  has a unique identifier; every module has exactly one declared owner; every external adapter implements a
+  declared port; every blocking architecture rule has a deterministic checker; every projection declares
+  its authority status and rebuildability; architecture versions are immutable once effective; architecture
+  exceptions have explicit scope and expiry. Delivers a thirteen-item checkbox Architecture Registry v1
+  Definition of Done.
+
+  Delivers Step 153's verdict as five precisely stated one-line definitions forming the complete assurance
+  chain: `Constitution=what must be true`; `Registry=what architecture we declare`;
+  `Implementation=what we built`; `Observation=what actually exists`;
+  `Verification=whether implementation conforms` — collapsing into the full boxed chain
+  `Constitution→Registry→Implementation→Observation→Evidence→Verification→Finding→Governance`.
+
+  **Closes by opening "Step 154 — KnowledgeOS Self-Assurance Engine,"** promising the component that
+  actually executes the Registry rules against the real repository and runtime, posing three increasingly
+  powerful questions (is the declared architecture internally valid? does the implementation conform? does
+  the running system actually enforce the invariants?) — `Static Architecture→Code Conformance→Runtime
+  Assurance` — explicitly stating "this is where the existing deterministic-checking approach becomes a
+  first-class KnowledgeOS capability rather than a collection of independent scripts," directly and
+  concretely relevant to this reconstruction's own governing repository's actual deterministic-checking
+  practices. No actual code execution, repository inspection, or verified filesystem/architecture claim
+  reported anywhere in this file; every YAML schema, worked example, and invariant remains an unimplemented
+  specification, though this file's registry examples are syntactically concrete enough to be nearly
+  directly adoptable as an actual configuration format.
+introduces:
+  - concept: "The reconstruction's first genuinely concrete, syntactically realistic YAML Registry schema"
+  - concept: "'Prefer allowlists' -- default-deny security discipline applied to architecture-dependency enforcement"
+  - concept: "The Architecture Graph≠Knowledge Graph distinction"
+  - concept: "A three-level (Registry/Implementation/Runtime) assurance model and the Architecture Assurance Pyramid"
+  - concept: "KnowledgeOS self-description via the Registry, and the worked Architecture-Context-for-agents example"
+  - concept: "'No duplicated architecture memory' with concrete .claude/.codex file-path illustrations"
+  - concept: "Six named architecture-drift categories"
+  - concept: "REG-001 through REG-007"
+  - concept: "'Self-governing architecture'"
+  - concept: "Opens Step 154 -- KnowledgeOS Self-Assurance Engine"
+defines:
+  - concept: "'Prefer allowlists'"
+    definition: "When declaring which modules a domain component may depend on, an explicit allowlist (AllowedDependencies) is architecturally safer than an explicit forbidden-list, because any new, previously-unanticipated dependency then fails by default until explicitly permitted (Unknown→FAIL), rather than silently succeeding because it was never named as forbidden (Unknown→implicitly allowed) -- the standard default-deny security principle applied to architecture-dependency governance"
+  - concept: "Architecture Graph vs. Knowledge Graph"
+    definition: "The Architecture Graph, derived from the Architecture Registry, describes how KnowledgeOS itself is structured (contexts, modules, dependencies, ports, adapters); the Knowledge Graph (the Assurance Graph established at 0716) describes what is known about the engineering subjects KnowledgeOS governs (e.g. Nexus, its decisions, its evidence); the two may eventually coexist but must never be conflated, since one describes the platform and the other describes the world the platform governs"
+  - concept: "The Architecture Assurance Pyramid"
+    definition: "A four-layer verification stack -- Constitution (what must be true) at the base, Architecture Registry (what we declare) above it, Implementation Conformance (does the code match the registry) above that, and Runtime Behavior (does the running system actually enforce it) at the top -- each layer independently verifiable, together forming the complete architecture assurance model"
+refines:
+  - concept: "0740's C-001..C-040 Constitution and its abstract architectural rules"
+    refinement: "Given a concrete, machine-readable YAML expression for the first time, directly connecting Constitution rules to actual registry declarations and worked conformance-check examples"
+  - concept: "0716's Assurance Graph"
+    refinement: "Precisely distinguished from a newly introduced, separate Architecture Graph describing KnowledgeOS's own module structure rather than the engineering subjects it governs"
+  - concept: "0727's/0734's/0737's/0740's graph-rebuildability discipline"
+    refinement: "Operationalized into a concrete registry field: every projection declares an explicit rebuildable attribute"
+  - concept: "the corpus's long-tracked pointer-layer principle"
+    refinement: "Given its most concrete, directly named file-path illustration to date (.claude/memory/architecture.md, .codex/memory/architecture.md, docs/architecture.md, wiki/architecture.md all rejected as independent authorities)"
+  - concept: "0692's/0701's prior general drift taxonomies"
+    refinement: "Given a more granular, architecture-registry-specific six-category taxonomy (STRUCTURAL/SEMANTIC/CONTRACTUAL/RUNTIME/TEMPORAL/DOCUMENTARY)"
+  - concept: "0740's Self-hosting principle and Constitutional self-assurance"
+    refinement: "Crystallized into the precise capstone statement 'self-governing architecture' -- KnowledgeOS as a system that describes, governs, observes, verifies, and records its own engineering architecture"
+  - concept: "0740's 'critical AI engineering pattern' (Observe→Reason→Change→Verify→Correct)"
+    refinement: "Operationalized into a concrete Agent remediation loop specifically for architecture violations"
+  - concept: "0736's bitemporal discipline"
+    refinement: "Extended into architecture-versioning terms specifically via 'architecture is A(t), not simply A' and the reproducibility formula Verification=f(Code,Evidence,RuleVersion,ArchitectureVersion,Context)"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0742 (Step 154 — KnowledgeOS Self-Assurance Engine) with high attention: check whether it delivers concrete checker-implementation-level detail (e.g. actual static-analysis algorithm sketches) connecting the Registry's declared rules to genuinely executable verification logic, and whether it addresses runtime (not just static) architecture enforcement concretely."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the reconstruction's first genuinely concrete YAML Registry schema, 'prefer allowlists' (default-deny security discipline applied to architecture governance), and the Architecture Graph≠Knowledge Graph distinction -- a meaningful new bifurcation of the reconstruction's graph concept."
+  - "dimension-registry.md: record the three-level assurance model and Architecture Assurance Pyramid, the worked Architecture-Context-for-agents example ('dramatically reduces architecture hallucination'), 'no duplicated architecture memory' with concrete .claude/.codex file-path illustrations, six named drift categories, and REG-001 through REG-007."
+  - "dimension-registry.md: record 'self-governing architecture' as a genuinely significant capstone statement, and flag this file's concrete registry YAML examples as directly adoptable reference material for the eventual §29-gated canonical synthesis."
+anchor_test:
+  anchor: "0740's C-001..C-040 Constitution; 0716's Assurance Graph; 0727's/0734's/0737's/0740's graph-rebuildability discipline; the corpus's pointer-layer principle; 0692's/0701's prior drift taxonomies; 0740's Self-hosting principle and 'critical AI engineering pattern'; 0736's bitemporal discipline"
+  supports_dimension: "Delivers the reconstruction's first genuinely concrete, syntactically realistic YAML configuration schema, directly connecting 0740's abstract Constitution rules to an actually implementable machine-readable declaration. Delivers several genuinely valuable and currently applicable architecture-governance principles: 'prefer allowlists' (default-deny security discipline), the Architecture Graph≠Knowledge Graph distinction (a meaningful new bifurcation), a three-level assurance model with the Architecture Assurance Pyramid, and a worked Architecture-Context-for-agents example directly reducing architecture hallucination. Delivers 'no duplicated architecture memory' with the most concrete file-path illustration of the pointer-layer principle in the reconstruction, six named drift categories, REG-001 through REG-007, and the significant capstone statement 'self-governing architecture.' Closes with a well-motivated continuation into Step 154's promised Self-Assurance Engine, directly relevant to this reconstruction's own governing repository's actual deterministic-checking practices"
+  refines_or_contradicts: "directly and substantially extends 0740's C-001..C-040 Constitution, 0716's Assurance Graph, 0727's/0734's/0737's/0740's graph-rebuildability discipline, the corpus's pointer-layer principle, 0692's/0701's prior drift taxonomies, 0740's Self-hosting principle, and 0736's bitemporal discipline; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§153.52's complete worked minimal-Registry YAML example (architecture metadata, four contexts, three modules with explicit allowedDependencies, one rule) is directly checkable evidence of the most concrete single configuration artifact produced anywhere in the reconstruction."
+  - "§153.65's explicit rejection of .claude/memory/architecture.md, .codex/memory/architecture.md, docs/architecture.md, and wiki/architecture.md all independently claiming architectural authority is directly quotable evidence of the pointer-layer principle's most concrete file-path-level illustration in the reconstruction."
+  - "§153.11's explicit reasoning for 'prefer allowlists' (Unknown→FAIL vs. Unknown→implicitly allowed) is directly checkable evidence of a precise, currently applicable security-engineering principle (default-deny) newly applied to software-architecture dependency governance."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 154's actual content (0742), once read, delivers concrete checker-implementation-level detail (e.g. actual static-analysis algorithm sketches or pseudocode) connecting the Registry's declared rules to genuinely executable verification logic."
+  - "Whether the newly introduced Architecture Graph (distinct from the Assurance/Knowledge Graph) is picked up and further developed in subsequent files, or remains a single-file conceptual distinction."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the reconstruction's first genuinely concrete, syntactically realistic YAML Registry schema, directly connecting 0740's abstract Constitution rules to an actually implementable machine-readable declaration. Delivers 'prefer allowlists' (default-deny security discipline), the Architecture Graph≠Knowledge Graph distinction, a three-level assurance model with the Architecture Assurance Pyramid, and a worked Architecture-Context-for-agents example directly reducing architecture hallucination. Delivers 'no duplicated architecture memory' with the most concrete file-path illustration of the pointer-layer principle in the reconstruction, six named drift categories, REG-001 through REG-007, and the significant capstone statement 'self-governing architecture.' Opens Step 154's well-motivated Self-Assurance Engine continuation."

@@ -1,0 +1,94 @@
+sequence: "0104"
+path: docs/knowledgeos/brainstorming/20260822-0258-knowledgeos-abhava-absence-structured-knowledge-lens.md
+title: "KnowledgeOS extraction — Abhāva (structured absence) lens"
+date: "2026-08-22"
+bytes: 9339
+model:
+  primary: g
+  secondary: [x, c1]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0094"
+importance: critical
+confidence: high
+about: >
+  Deep engagement with Abhāva (absence) ontology from Nyāya-Vaiśeṣika, distinguishing FOUR precise
+  types of absence (Prāgabhāva/prior, Pradhvaṃsābhāva/posterior-after-cessation, Atyantābhāva/absolute,
+  Anyonyābhāva/mutual-difference). Explicitly and disciplinedly refuses to add "Absence" as a naive 7th
+  flat dimension, instead proposing it as a sub-structure of the existing Unknown/Presence split -- a
+  genuine refinement of Unknown Preservation, not a new dimension-count inflation event.
+
+introduces:
+  - "Four typed-absence categories (real Sanskrit ontology, precise and distinct): Prāgabhāva (prior
+    absence -- not yet existing), Pradhvaṃsābhāva (posterior absence -- destroyed/ceased),
+    Atyantābhāva (absolute/eternal absence -- impossible), Anyonyābhāva (mutual absence -- difference
+    between two things). Each given a worked KnowledgeOS example (not excerpted in full here)"
+  - "⭐ Disciplined non-inflation: 'Add: Absence Dimension. NOT a seventh dimension. Rather: a dual
+    state' -- Knowledge State = Presence OR Structured-Absence OR Unknown, with Absence itself
+    sub-typed (never-existed / destroyed / impossible / different). A rare instance of a file
+    explicitly REFUSING to add a flat dimension where every precedent (0089-0100) would have invited
+    one -- worth noting as a positive counter-example to the anchor's ongoing reshaping churn"
+  - "Updated epistemic-state model: Present / Absent(typed) / Unknown(Investigation) -- a genuine
+    refinement of the True/False/Unknown vocabulary already tracked (0081's DeepSeek finding, C-10),
+    adding structured absence as a third parallel branch"
+  - "This file's own 'existing invariants' list: Identity, Evidence, Authority, Context, Temporal,
+    Unknown -- SIX items, notably OMITTING Transformation (present in 0087's original six and in most
+    later reshapings) -- a data point for the anchor's ongoing instability, not itself flagged by the
+    source"
+  - "Deepest extraction: 'a trustworthy knowledge system must know the SHAPE of ignorance' -- distinct
+    from merely knowing THAT something is unknown"
+
+defines: []
+
+refines:
+  - "Unknown Preservation (registry entry): refined with the four-way Abhāva typology -- absence is not
+    monolithic; UNKNOWN and ABSENT are distinguished, and ABSENT itself has four distinct types. This
+    is the sharpest refinement of Unknown Preservation in the corpus so far"
+
+contradicts: []
+
+repeats:
+  - concept: "UNKNOWN as first-class, not FALSE"
+    canonical_source: "0081"
+    novelty: low
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "Unknown Preservation entry: refined with the four Abhāva types (Prāgabhāva/Pradhvaṃsābhāva/
+    Atyantābhāva/Anyonyābhāva), the most precise typed-absence structure found in the corpus"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Unknown Preservation"]
+  refines_or_contradicts: >
+    Refines rather than reshapes: explicitly declines to add a 7th dimension, instead sub-typing
+    Unknown/Absence. This file's own six-item 'existing invariants' list omits Transformation, a data
+    point for anchor instability not flagged by the source itself.
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true   # H-KOS-Abhava-001/H-KOS-Boundary-001 reuse H-KOS-*
+
+key_evidence:
+  - "A rare disciplined non-inflation event: explicit refusal to add a flat 7th dimension where every
+    precedent would have invited one"
+  - "The sharpest, most precisely-typed absence/negation structure in the corpus (four distinct
+    Sanskrit-sourced absence types, not a single undifferentiated 'unknown' flag)"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether the four-way Abhāva typology is picked up formally by any later file, or remains this
+    file's own contribution"
+
+tier2_triggered: true
+tier2_reason: >
+  Sharpest refinement yet of Unknown Preservation (four precisely-typed absence categories), and a
+  rare, positive disciplined-non-inflation event (explicitly refusing a naive 7th-dimension addition) --
+  directly relevant to the registry and to the ongoing anchor-reshaping-churn tracking.

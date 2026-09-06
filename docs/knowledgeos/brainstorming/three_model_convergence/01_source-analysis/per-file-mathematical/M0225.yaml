@@ -1,0 +1,101 @@
+sequence: M0225
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-120003_review-of-the-corrected-artifact.md
+title: "RESOLVES the long-tracked 1475/1496 denominator discrepancy (two robustness variants of the same experiment, not separate confusions) and freezes the corrected KR-ZERO-ORDER result — THEN opens a striking new X3 experimental design proposing to use the SAME REPOSITORY'S OWN PublicDigit voting-platform schema (votes/results/candidacies) as a research carrier, directly touching the platform's constitutional voter-anonymity invariant, with three new verification gates (VG-8 strengthened, VG-9 pre-existing-axis integrity, VG-10 explicit carrier definition) before implementation is permitted"
+date: "20260903-120003"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0225
+importance: critical
+confidence: high
+about: >
+  Two concatenated adjudications. The first reviews a corrected KR-ZERO-ORDER result and, in doing
+  so, RESOLVES a corpus-count discrepancy this reconstruction has tracked since M0198/M0200/M0212:
+  the 1475 and 1496 figures are not unreconciled confusions but two deliberate robustness variants
+  of the same experiment (all-contracts vs. excluding-a-cancelling-contract), with the higher-order
+  phenomenon surviving (and slightly strengthening under) the correction. The second reviews a new
+  proposed experiment, X3, which — remarkably — proposes to use THIS SAME REPOSITORY'S own
+  PublicDigit voting-platform production schema (the votes/results/candidacies tables this
+  reconstruction's own project CLAUDE.md governs) as an independently-motivated experimental carrier
+  for the Zero-algebra/representation-reduction research programme, subject to three new
+  verification gates before implementation may proceed.
+introduces:
+  - "RESOLUTION of the long-tracked 1475/1496 denominator discrepancy (flagged unreconciled at M0198/M0200/M0212): these are two deliberate robustness-check variants of the SAME KR-ZERO-ORDER experiment — 'All contracts' (N=1475: k=1:1327, k=2:25, k=3:6, irreducible:117/7.93%) versus 'Excluding cancelling [contract]' (N=1496: k=1:1337, k=2:17, k=3:15, irreducible:127/8.49%) — the higher-order/irreducible strata SURVIVE removal of the problematic contract and, if anything, become MORE visible, giving 'a legitimate robustness-supported empirical finding rather than merely an observation from one parameterization'"
+  - "A precise, indexed irreducibility witness: D=[a,a,b,b], all four singleton removals Zero=true, but Zero({0,1})=false while Zero({0,2})=true — a clean counterexample to any model Zero(S)=f(Zero(x1),...,Zero(xn)), and more generally a constraint on any representation storing only independent proper-subset Zero-status"
+  - "A wording discipline correction: 'three INDEPENDENT occurrences' (FR-001, KR-ZERO-GROUP G5, KR-ZERO-ORDER) corrected to 'three DISTINCT CONSTRUCTIONS exhibit the same obstruction shape' — avoiding an unearned claim of statistical/experimental independence — the underlying pattern (local/pairwise information → insufficient → higher-order structure) is confirmed as 'a research hypothesis generator, not yet a theorem'"
+  - "A refined canonical KR-ZERO status ledger (14 rows) explicitly separating what survives correction (singleton-dominance ~90%, higher-order existence, triple-requiring cases, ~8% irreducible, transformation-dependence, context-dependence, non-monotone k, unary-independent-status insufficiency — all [EXP]) from what does NOT survive as established (set-carrier ruled out [WITHDRAWN], three Zero 'types' as laws [NOT ESTABLISHED], local→higher-order obstruction universality [NOT ESTABLISHED], Zero-defines-preservation-boundary [NOT SUPPORTED])"
+  - "STRIKING NEW EXPERIMENTAL PROPOSAL, X3: rather than designing an artificial carrier (as X1/X2 apparently did), X3 proposes exploiting an ALREADY-EXISTING architectural redundancy in a real production system: votes.candidate_01..60 (denormalized columns) versus results rows (normalized) — reframing the epistemic status from 'here is another artificial carrier to demonstrate my hypothesis' to 'here is an existing representation pair whose independently motivated structure creates an opportunity to test the hypothesis'"
+  - "The 11 traced invariants required for X3, each requiring an auditable migration source (domain-derived constraint, not experiment-designed assumption): I-ANON, I-HASH, I-SLOT, I-NOVOTE, I-CAST, I-REQ, I-SCOPE, I-CAND, I-RESULT, I-CODE, I-SLUG — with the explicit principle 'domain-derived constraint ≠ experiment-designed constraint'"
+  - "A CRITICAL DOMAIN-SPECIFIC DISCOVERY directly touching this repository's own constitutional anonymity invariant (per this project's own CLAUDE.md/ADR-T11: 'votes table has NO user_id column'): candidacies.user_id IS legitimate (it identifies the CANDIDATE, not the voter) — so the correct invariant is 'no path from vote to voter identity,' NOT the naive, over-broad 'no user_id anywhere around voting data' — a naive anonymization rule could otherwise destroy valid candidate lineage; VG-7 must preserve results→candidacies→user_id (candidate lineage) while preventing votes→voter_identity (anonymity) — a direct, concrete application of this repository's own domain discipline to the abstract KR-SIM research thread"
+  - "Explicit unresolved-parameter discipline: selection mode, turnout, cast_at distribution, metadata/device-fingerprint population, and candidates-per-post must be explicit swept experimental factors, NOT silently chosen defaults — 'choosing them silently would amount to choosing the experiment's answer'"
+  - "VG-8 STRENGTHENED (directly addressing KR-REP-REDUCTION's H-B defect, M0219/M0222 — the earlier experiment never generated actual contract failure): requires BOTH ∃θ: C_k(θ)=0 (contract-failing region) AND ∃θ': C_k(θ')=1 (contract-preserving region) within the declared parameter sweep — 'you want both sides of the boundary... otherwise, if every parameter setting gives C_k=0, you technically have contract failure, but no meaningful transition'"
+  - "VG-9 (new): Pre-existing-axis integrity — the votes→results representational redundancy and its semantics must be demonstrably derived from migration/schema history and NOT introduced, modified, or optimized for KR-ALGEBRA-X3 — explicitly guarding against the circularity 'experiment wants reduction → experiment defines redundancy → experiment discovers reduction'"
+  - "VG-10 (new): explicit mathematical carrier definition — the production schema itself is NOT automatically the mathematical carrier; X3 must explicitly define the experimental representation object derived from that schema (e.g. X3=(ballots,candidate relations,result representation,provenance,temporal state,...)), distinguishing 'production representation' from 'mathematical carrier' to prevent 'real production carrier' from becoming a rhetorical rather than formal claim"
+  - "A final governance principle for the whole research programme: 'existing evidence constrains the next experiment; the next experiment does not retroactively validate the existing evidence' — X3 must be treated as a NEW falsification/extension experiment, never as confirmation of the already-frozen KR-ZERO result"
+defines:
+  - "VG-8 (strengthened): ∃θ∈Θ: C_k(θ)=0 AND ∃θ'∈Θ: C_k(θ')=1 — both contract-failing and contract-preserving regions required"
+  - "VG-9: Pre-existing-axis integrity for the votes/results reduction axis"
+  - "VG-10: Explicit experimental-carrier definition distinguishing production schema from mathematical carrier"
+refines:
+  - "M0198/M0200/M0212's tracked denominator discrepancy: RESOLVED as two deliberate robustness variants (1475 all-contracts, 1496 excluding-cancelling), not an unexplained inconsistency"
+  - "M0221's Dimension-A(context)-vs-Dimension-B(determination-order) distinction: confirmed and preserved, with 'Type 2 is the centre' explicitly rejected as an unearned finding"
+  - "M0219/M0222's KR-REP-REDUCTION H-B defect (never generated contract failure): directly addressed by VG-8's strengthened both-sides-of-the-boundary requirement for X3"
+contradicts:
+  - "The reviewed document's residual older claim 'element-wise transformations yield k=1 or 0%' — explicitly superseded by the mechanism experiment's own element-wise irreducible witnesses under P9_balance, and corrected to 'relationality is neither necessary nor sufficient'"
+  - "The claim 'proves higher-order interaction exists for n≤6' — softened to 'demonstrates empirically within the tested generator/design for n≤6,' since k>3 remains open and n≤6 is a design bound, not a proof"
+repeats:
+  - "The established carrier-narrowing discipline ('set + independent element-wise eliminability insufficient' ≠ 'set ruled out'), restated and reconfirmed here"
+bridge_candidates:
+  - "Whether X3 (the votes/results production-schema experiment) was ever actually implemented, and whether VG-8/VG-9/VG-10 were satisfied at specification validation"
+  - "Whether the votes/results redundancy's pre-existing (non-experiment-motivated) status was ever formally audited against the actual PublicDigit migration history"
+mathematical_content: >
+  Resolves a real corpus-bookkeeping discrepancy (two robustness variants, not confusion) and
+  introduces a rigorous three-gate (VG-8 strengthened, VG-9, VG-10) specification-validation
+  framework for an experiment whose carrier is an independently-motivated real production system
+  rather than an artificially designed one — a genuinely new methodological pattern for this thread.
+gita_content: null
+kernel_content: >
+  A structurally significant document on two fronts: it closes a long-open corpus-integrity question
+  for the Zero-algebra thread, and it proposes (with careful circularity guards) using this very
+  repository's own production voting-platform schema as an experimental carrier — directly engaging
+  the platform's constitutional anonymity invariant (votes have no path to voter identity, though
+  candidacies legitimately carry user_id for candidate lineage) as a concrete real-world test case
+  for the abstract KnowledgeOS representation-reduction theory.
+registry_updates:
+  - "RESOLVED: the 1475/1496 denominator discrepancy is two robustness variants (all-contracts vs. excluding-cancelling), not an unexplained inconsistency"
+  - "New X3 experimental proposal: uses the repository's OWN PublicDigit votes/results/candidacies schema as an independently-motivated carrier"
+  - "New domain-specific finding: candidacies.user_id is legitimate (candidate identity); the correct invariant is 'no path from vote to voter identity,' not 'no user_id anywhere'"
+  - "New verification gates VG-8 (strengthened, both-sides-of-boundary), VG-9 (pre-existing-axis integrity), VG-10 (explicit carrier definition) — X3 not yet cleared for implementation"
+  - "New governance principle: existing evidence constrains the next experiment; the next experiment never retroactively validates existing evidence"
+anchor_test:
+  anchor: true
+  supports_dimension: "Resolved 1475/1496 discrepancy; X3 production-schema carrier proposal; candidacies.user_id/anonymity finding; VG-8/VG-9/VG-10 gates"
+  refines_or_contradicts: "refines (resolves the tracked denominator discrepancy; extends the KR-REP-REDUCTION H-B defect correction into a new gate); contradicts (the residual element-wise-transformations claim, superseded by the mechanism experiment's own counterexamples)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"All contracts: N=1475, irreducible 117/7.93%; Excluding cancelling: N=1496, irreducible 127/8.49%\" — resolving the tracked denominator discrepancy"
+  - "\"No path from vote to voter identity — not: no user_id anywhere around voting data. That is a materially different constraint.\""
+  - "\"VG-8: ∃θ: C_k(θ)=0 AND ∃θ': C_k(θ')=1\" — the strengthened both-sides-of-the-boundary gate"
+  - "\"Existing evidence constrains the next experiment; the next experiment does not retroactively validate the existing evidence.\""
+undefined_concepts:
+  - "The precise mathematical carrier object X3 must define (e.g. X3=(ballots,candidate relations,result representation,provenance,temporal state,...)) — sketched but not yet formalized"
+open_questions:
+  - "Was X3 ever implemented, and did VG-8/VG-9/VG-10 pass at specification validation?"
+  - "Was the votes/results redundancy's pre-existing (non-circular) status ever formally audited?"
+tier2_triggered: true
+tier2_reason: >
+  Resolves a genuine, long-tracked corpus-count discrepancy (1475/1496, unreconciled since M0198/
+  M0200/M0212) as two deliberate robustness variants rather than an unexplained inconsistency, and
+  introduces a structurally novel experimental design (X3) proposing to use this same repository's
+  own PublicDigit production voting-platform schema as an independently-motivated research carrier —
+  including a concrete, domain-specific finding directly engaging the platform's constitutional
+  voter-anonymity invariant — with three new, carefully circularity-guarded verification gates
+  before implementation is permitted.

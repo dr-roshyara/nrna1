@@ -1,0 +1,18 @@
+================================================================================================
+INVARIANT PRESERVATION under Repair B (Q_t is OUTSIDE K)
+================================================================================================
+  PRESERVED  Identity           id = H(P,e,c,t,Π); Q_t not an input -> unchanged
+  PRESERVED  Equality           K=(𝒜,ℛ); Q_t not a component -> equality untouched
+  PRESERVED  Lineage            ℛ unchanged by Q_t
+  PRESERVED  Replay             Replay folds over K only
+  PRESERVED  Transformation     T signature unchanged; Ask is a SEPARATE operation
+  PRESERVED  K-minimality       ΔR lives OUTSIDE K: |components of K| still 2 (𝒜,ℛ)
+  PRESERVED  StructuralValid    no new conjunct required
+  PRESERVED  Sigma derivation   Σ still a function of e alone
+
+  ALL PRESERVED = True
+
+  WHY: Repair B adds Q_t ALONGSIDE K, not inside it. Because no component of K changed, every
+  invariant defined over K is preserved by construction rather than by re-proof.
+  COST, stated: Q_t must itself be replayable and serializable. Ask(p) becomes a recorded event in
+  History — NOT a K-transformation. This is an addition to the EVENT vocabulary, not to K.

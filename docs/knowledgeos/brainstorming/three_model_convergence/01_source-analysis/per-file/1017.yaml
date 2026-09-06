@@ -1,0 +1,102 @@
+sequence: 1017
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-203836_step_286_reviewer-sequencing-286-ontology-then-287-invariants-both-research-only.md
+title: "Reviewer -- Sequencing Step 286 (Ontology) Then 287 (Invariants), Both Research-Only: Converges the Corpus's Three-Way Roadmap-Naming Conflict Toward One Scheme (287=Invariants, D288=Decision-Procedure Closure), and Introduces a NEW, Quantified Five-Axis Epistemic-State Structure ('Q4A', Sigma=(A,S,R,V,C), '2240 States') -- a Further Addition to the Already-Tracked Sigma-Representation Inconsistency"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a sequencing decision reviewing 'the new findings in 06-08 and the D288 scope' (files 1006-1008, 1005), converging the roadmap naming toward one scheme"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1017
+importance: critical
+confidence: high
+about: >
+  Reviews "the new findings in 06-08 and the D288 scope" and delivers a sequencing decision: Step 286
+  (Ontology) and Step 287 (Invariants ℐ) should BOTH be written now, as RESEARCH ONLY (not canonical), while
+  "D288 · Decision Procedures" remains governance-dependent closure, "Scoped, not executed" (already tracked,
+  file 1005) -- and a fourth row, "Canonical Ontology," is explicitly "Not yet promotable."
+
+  **THIS SEQUENCING CONVERGES THIS RECONSTRUCTION'S ALREADY-TRACKED THREE-WAY ROADMAP-NAMING CONFLICT
+  (files 1002/1005 vs 1010 vs 1012) TOWARD ONE ADOPTED SCHEME**: 287 = Invariants ℐ (matching file 1012's
+  scheme, not file 1010's "287=Qualify+Equality"), and "D288" is retained as the separate name for the
+  decision-procedure-closure work (matching files 1002/1005), effectively demoting file 1010's alternative
+  287/288 content-pairing. The research chain diagrammed: `285 (verification/projection) → 286 (Ontology) →
+  287 (Invariants) → 288 (Decision-Procedure Closure: ≡/≈/≅_λ/Qualify)`.
+
+  **INTRODUCES A GENUINELY NEW, QUANTIFIED MATHEMATICAL STRUCTURE, CITING A NEW CORPUS SOURCE ("THE Q-SERIES,
+  Q4A")**: a five-axis epistemic state `Σ=(A,S,R,V,C)` with **"2240 states"** -- a specific cardinality this
+  reconstruction has not previously seen for any Σ formulation -- plus a componentwise transition function
+  `Σ_new=T(Σ_old,E)` and a candidate PRODUCT-ORDER structure for `K_{t+1}≻K_t`:
+  `Σ_1⪯Σ_2 ⟺ A_1⪯_A A_2 ∧ S_1⪯_S S_2 ∧ R_1⪯_R R_2 ∧ V_1⪯_V V_2 ∧ C_1⪯_C C_2`. **This is a further, materially
+  more elaborated addition to this reconstruction's already-tracked, escalating Σ-representation
+  inconsistency** (previously tracked formulations: `Σ_min`, `Σ=(A,S,R,V,C)` without cardinality, `Σ=
+  (Direction,Strength)`, `Σ-A`, `Σ={Sattva,Rajas,Tamas}`, `Θ_t`/`Mode_t`) -- notably, the five-letter
+  labeling `(A,S,R,V,C)` matches one already-tracked prior formulation, but this file is the first to supply
+  its exact state-count (2240) and a concrete product-order candidate.
+
+  **DELIVERS A GENUINELY IMPORTANT DISCIPLINED WARNING against silently canonicalizing this new structure**:
+  "286 must not freeze `Σ` as the final KnowledgeOS epistemic ontology merely because Q4A supplies it. The
+  strongest current statement is: the corpus contains a five-dimensional epistemic-state construction with
+  explicit componentwise transition functions. This establishes a substantially richer candidate epistemic-
+  state ontology than the previously assumed `Σ₀`, but does NOT by itself establish that this construction
+  is the canonical KnowledgeOS state model." Cites an already-existing corpus repair,
+  `Σ=(A,𝒫({Sup,Ref}),R,V,C)`, which "must remain DERIVED/candidate, not corpus-canonical, exactly as your
+  Step 08 correctly says" -- a further cross-reference to the not-yet-encountered "Step 08" bridge candidate.
+
+  **Delivers the file's central epistemic-discipline distinction**: "The structure permits this invariant"
+  vs. "KnowledgeOS has adopted this invariant" -- Step 287 must keep these separate.
+
+  **Details Step 287's proposed "Invariant ℐ Research & Derivation Audit" methodology**: extract every
+  corpus-stated invariant; classify as axiom/law/constraint/non-collapse-law/transition-invariant/type-
+  invariant/equality-related-invariant; derive further invariants only when mechanical; mark each as
+  `CORPUS`/`DERIVED`/`CANDIDATE`/`NORMATIVE`/`BLOCKED`; explicitly test dependency on `≡`,`≈`,`≅_λ`,
+  `Qualify`,`Π`, the canonical-K choice, and Σ's unresolved component orders.
+
+  **Closes with the required status line for both new steps**: "RESEARCH ARTIFACT — corpus reconstruction;
+  normative promotion explicitly prohibited," and reaffirms the standing stop-gate (no new Sanskrit
+  expansion, no invented equality procedure, no invented `Qualify`, no silent promotion of `Π`/`Σ`/the
+  candidate order into architecture). Recommends Step 286 precede Step 287, since invariants should be
+  derived against the newly reconstructed ontology, not the older 8-component model.
+introduces:
+  - concept: "The convergence of the three-way roadmap-naming conflict toward one adopted scheme: 287=Invariants, D288=Decision-Procedure Closure"
+  - concept: "The new 'Q-series'/'Q4A' corpus reference, supplying a quantified five-axis epistemic state Sigma=(A,S,R,V,C) with exactly 2240 states, a transition function Sigma_new=T(Sigma_old,E), and a candidate product-order structure"
+  - concept: "The disciplined warning against silently canonicalizing the Q4A Sigma structure, with the precise strongest-defensible statement of what it does and does not establish"
+  - concept: "The Invariant Ilocated Research and Derivation Audit methodology for Step 287, with its five-way classification (CORPUS/DERIVED/CANDIDATE/NORMATIVE/BLOCKED) and explicit dependency-testing checklist"
+  - concept: "The epistemic-discipline distinction: 'the structure permits this invariant' versus 'KnowledgeOS has adopted this invariant'"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked three-way roadmap-naming conflict (files 1002/1005, 1010, 1012)"
+    refinement: "PARTIALLY CONVERGED: this file adopts the 287=Invariants naming (matching file 1012) and retains D288 as the separate decision-procedure-closure name (matching files 1002/1005), implicitly demoting file 1010's alternative 287=Qualify+Equality pairing -- though not explicitly resolving the conflict as a governance act"
+  - concept: "This reconstruction's already-tracked, escalating Sigma-representation inconsistency (at least seven prior formulations tracked)"
+    refinement: "FURTHER EXTENDED with a materially more elaborated eighth-or-later formulation: a quantified 2240-state five-axis structure with an explicit transition function and product-order candidate, explicitly flagged as not-yet-canonical"
+contradicts: []
+repeats:
+  - "The D288 scoped-not-executed status and the standing stop-gate substantially repeat content already documented via files 1002-1003, 1005, 1014; this file's distinctive contributions are the roadmap convergence, the new Q4A Sigma structure, and the detailed Step-287 audit methodology."
+bridge_candidates:
+  - "The 'Q-series'/'Q4A' source document supplying the 2240-state five-axis epistemic-state structure -- not yet directly encountered."
+  - "'Step 08' (referenced as correctly treating the Sigma repair as DERIVED/candidate) -- the same bridge candidate already named in file 1012, still not directly encountered."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the roadmap-naming convergence toward 287=Invariants/D288=Decision-Procedure-Closure, and the new Q4A Sigma=(A,S,R,V,C) 2240-state structure as a further addition to the escalating Sigma-representation inconsistency."
+  - "dimension-registry.md: record the disciplined warning against canonicalizing Q4A's Sigma structure, and the CORPUS/DERIVED/CANDIDATE/NORMATIVE/BLOCKED invariant classification scheme for Step 287."
+anchor_test:
+  anchor: "This reconstruction's already-tracked roadmap-naming conflict (files 1002/1005, 1010, 1012) and the escalating Sigma-representation inconsistency"
+  supports_dimension: "Partially converges the roadmap-naming conflict and further extends the Sigma inconsistency with a new, quantified, more elaborated formulation"
+  refines_or_contradicts: "refines (converges) the naming conflict; extends (does not resolve) the Sigma inconsistency"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The 2240-state cardinality and the Sigma=(A,S,R,V,C) formulation are directly checkable against this reconstruction's own earlier per-file records for the same five-letter labeling, if a prior occurrence exists, and against the not-yet-encountered Q4A source document."
+undefined_concepts: []
+open_questions:
+  - "The original 'Q-series'/'Q4A' source document, not yet directly encountered."
+  - "Whether this reconstruction's own earlier per-file records already documented a Sigma=(A,S,R,V,C) formulation without the 2240-state cardinality, which this file would then extend rather than introduce fresh."
+tier2_triggered: true
+tier2_reason: "Converges this reconstruction's already-tracked three-way roadmap-naming conflict toward one scheme, and introduces a genuinely new, quantified five-axis epistemic-state structure (2240 states) that further extends the already-tracked, escalating Sigma-representation inconsistency, with a disciplined warning against premature canonicalization. Classified importance critical and confidence high given the concrete, quotable, and directly cross-checkable nature of these findings."

@@ -1,0 +1,129 @@
+sequence: "0197"
+path: docs/knowledgeos/brainstorming/kernel/20260824-020936-chalmers-conscious-mind-research-extraction-protocol-rerun.md
+title: "Chalmers's The Conscious Mind reprocessed strictly through the 0191 extraction protocol (nineteen KOS-CHALMERS-001..019 findings with explicit STATUS tags) -- substantially the same substance as 0195's 33 DDD lessons, but the first full end-to-end demonstration of the protocol's format, including its explicit preserve-contradictions requirement (four named challenges A-D)"
+date: "2026-08-24"
+bytes: 24000
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0195"
+importance: medium
+confidence: high
+about: >
+  An explicit re-run of the Chalmers extraction (0195), this time strictly following the 0191 protocol's
+  format (source-fact -> distinction -> argument -> KnowledgeOS-relevance -> research-question -> status,
+  with AUTHOR-SAYS separated from RESEARCHER-INFERENCE) rather than the earlier "thematic DDD analysis"
+  style. The corrective framing is explicit: "your correction is important... what you are asking for is
+  the same research-extraction method we established before." Produces nineteen numbered findings
+  (KOS-CHALMERS-001 through 019), each individually typed (SOURCE DISTINCTION / SOURCE ARGUMENT / SOURCE
+  CONCEPT / SOURCE BOUNDARY / SOURCE RELATION / SOURCE FAILURE CASE / SOURCE LIMIT) and STATUS-tagged
+  (e.g. "SOURCE DISTINCTION -> STRONG RESEARCH PRINCIPLE," "SOURCE CONCEPT -> MAJOR KNOWLEDGEOS
+  ARCHITECTURE CANDIDATE"). Substance is overwhelmingly the same as 0195's 33 DDD lessons -- phenomenal!=
+  psychological consciousness generalized to domain-meaning!=functional-role!=implementation; explication
+  before explanation; functional explanation!=semantic explanation (the explanatory gap as a legitimate,
+  preservable knowledge state, not a defect to eliminate); supervenience as vocabulary for typed dependency
+  strength; logical-vs-natural-possibility mapped to architecturally-permitted/required vs. currently-
+  implemented/observed; the bridging-principle/epistemic-lever concept (again called "arguably the single
+  most valuable extraction... for KnowledgeOS"); coherence-is-not-identity and coherence-as-epistemic-
+  lever; functional-organization-more-precise-than-behavioral-equivalence; granularity-dependent
+  equivalence claims; organizational invariance reframed as an architecture-substitution-survival question;
+  implementation-realizes-organization; simulation!=realization (again motivating a PROPOSED/OBSERVED/
+  REALIZED-VERIFIED three-state distinction); a reusable "does the replacement equivalence claim actually
+  hold" review checklist (external/behavioral/functional/semantic/invariant-respecting equivalence, framed
+  as directly applicable to migration-claim review); and "don't mistake a constraint for a complete theory"
+  reinforcing Kernel minimalism. The genuinely new element beyond 0195 is an explicit, sharper restatement
+  of Chalmers's own anti-overreach discipline (finding #21, unnumbered in the CH-series): his conclusion is
+  weaker than functional-organization=consciousness -- it is "naturally sufficient for" without "reductively
+  explaining," which the source elevates into a general modeling principle stronger than "don't conflate
+  concepts": "a relation of determination does not automatically imply a relation of identity" -- explicitly
+  distinguished from mere non-collapse and applied to Domain-invariant-determines-behavior!=domain-invariant-
+  equals-implementation-mechanism, Architecture-constrains-implementation!=architecture-equals-implementation,
+  and test-supports-invariant!=test-equals-invariant. Also newly explicit: a ten-step formalized agent
+  discipline (Identify-concept -> Separate-levels -> Explicate -> Model -> Trace-realization -> Collect-
+  evidence -> Identify-bridge -> Check-coherence -> Check-invariance -> State-the-gap) as a candidate
+  "KnowledgeOS epistemic operating model." Explicitly demonstrates the protocol's preserve-contradictions
+  requirement with four named, deliberately unresolved challenges: (A) functional organization vs. semantic
+  meaning (can an abstraction determine behavior without constituting meaning? -- kept as an open
+  distinction, not forced to one answer); (B) coherence vs. explanation (a coherent model can be extremely
+  well supported without being complete -- coherent != complete); (C) implementation vs. realization
+  (formal-model correspondence to implementation does not by itself establish genuine realization, without
+  evidence); (D) invariance vs. accidental properties (surviving substitution does not automatically make
+  every preserved property a fundamental invariant -- requires governance criteria). Closes with a final
+  extraction table (CH-001..019, mirroring but renumbering the earlier KOS-CHALMERS series) and explicitly
+  reiterates that nothing here should yet change KnowledgeOS architecture -- findings are added to the
+  research corpus pending cross-book convergence, with BridgingPrinciple/CoherenceAssessment/Realization
+  again flagged as the three most important candidates.
+
+introduces:
+  - "A sharper, elevated restatement of nonreductive functionalism as a general modeling principle: 'a
+    relation of determination does not automatically imply a relation of identity' -- explicitly stronger
+    than a bare non-collapse warning, applied to three worked domain-invariant/architecture/test examples"
+  - "A ten-step formalized agent discipline (Identify-concept/Separate-levels/Explicate/Model/Trace-
+    realization/Collect-evidence/Identify-bridge/Check-coherence/Check-invariance/State-the-gap) explicitly
+    proposed as a candidate KnowledgeOS epistemic operating model"
+  - "Four explicitly preserved, deliberately unresolved contradictions/challenges (A-D), the clearest
+    concrete demonstration yet of the 0191 protocol's mandatory preserve-contradictions/avoid-false-
+    convergence discipline being actually followed rather than merely stated"
+  - "A migration/replacement-claim review checklist (external/behavioral/functional/semantic/invariant-
+    respecting equivalence) explicitly framed as directly applicable to reviewing real migration claims"
+
+defines: []
+
+refines:
+  - "Substantially re-derives 0195's 33 DDD lessons in the strict 0191 protocol format -- the first full
+    end-to-end demonstration in this reading stretch of a single source being processed twice: once as
+    thematic DDD analysis (0195), once as formal protocol-conformant extraction (this file), confirming the
+    protocol produces materially the same substantive findings via a different organizing discipline"
+
+contradicts: []
+
+repeats:
+  - {concept: "Conceptual distinction precedes functional modeling / explication before explanation", canonical_source: "0195", novelty: none}
+  - {concept: "BridgingPrinciple / epistemic lever as the single most valuable extraction", canonical_source: "0195", novelty: none}
+  - {concept: "CoherenceAssessment: coherence is evidence, not identity", canonical_source: "0195", novelty: none}
+  - {concept: "Simulation != realization; Proposed/Observed/Realized-Verified three-state distinction", canonical_source: "0195", novelty: none}
+  - {concept: "Equivalence claims require explicit scope/granularity", canonical_source: "0195", novelty: none}
+  - {concept: "Organizational invariance reframed as architecture-substitution-survival test", canonical_source: "0195", novelty: none}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- explicitly declines to change KnowledgeOS architecture; findings added to research corpus
+    pending cross-book convergence, consistent with 0195's discipline"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Reprocesses 0195's substance through the formal 0191 protocol; the determination-does-not-imply-identity elevation and the four preserved contradictions are the only genuinely new elements."
+  alternative_minimal_kernel: "none -- restates 0195's small strong-candidate Kernel list (Identity/Relation/Claim/Evidence/Provenance/Scope/State/Transition/Validity) unchanged"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Demonstrates that the same source (Chalmers), processed once informally (0195) and once strictly
+    through the 0191 protocol (this file), converges on materially the same substantive findings --
+    evidence that the protocol's format discipline does not change substance, only organization and
+    provenance rigor. Useful confirmation for weighting the reliability of future protocol-conformant
+    extractions in this reading stretch"
+  - "The four explicitly preserved contradictions (A-D) are the clearest concrete demonstration yet of the
+    corpus's own preserve-contradictions/avoid-false-convergence discipline (mandated at 0191) being
+    actually exercised rather than merely stated as a rule"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the four preserved challenges (A-D) are ever formally resolved once cross-book convergence
+    analysis begins"
+
+tier2_triggered: false
+tier2_reason: >
+  Substantially repeats 0195's substance in a different organizing format; the determination-does-not-
+  imply-identity elevation and the four preserved contradictions are noted but do not independently warrant
+  Tier 2, given the extensive overlap with the immediately preceding file.

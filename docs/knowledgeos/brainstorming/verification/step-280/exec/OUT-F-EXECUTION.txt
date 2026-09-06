@@ -1,0 +1,19 @@
+ID    VERDICT  LVL  DESCRIPTION                       OBSERVED
+------------------------------------------------------------------------------------------------------------------------
+F1    PASS     4    Policy-free transition            UNKNOWN(NoApplicablePolicy)
+F2    PASS     4    Authority-free                    DENY(NoAuthority)
+F3    PASS     4    Policy conflict                   CONFLICT(incompatible)
+F4    PASS     4    Authority conflict                DENY(AuthorityConflict)
+F4b   PASS     4    Authority conflict w/ precedence  PASS(PrecedenceResolved:A1)
+F5    PASS     4    Missing policy                    UNKNOWN(NoApplicablePolicy)
+F6    PASS     4    Expired policy                    Applicable(t_e)=False; Applicable(t_e+1m)=False
+F7    PASS     4    Revoked authority                 at t0=PASS(Permit:AR); at t1=DENY(NoAuthority)
+F8    PASS     4    Unauthorized policy mutation      direct mutation raised=True (FrozenInstanceError); r
+F9    PASS     4    Active policy integrity           error='duplicate version identity'; stored before=1 
+F10   PASS     4    Historical policy replay          PolicyAt(2026-03)=v1; PolicyAt(2026-08)=v2; verdict_
+F11   PASS     4    Overlapping policy conflict       classification=CONFLICT; PolicyAt(overlap)=CONFLICT(
+F12   PASS     3    Governance propagation            tau_c=5; stale=0
+F13   PASS     4    Rule independence                 r2(x=1)=PASS; r2(x=999)=PASS
+------------------------------------------------------------------------------------------------------------------------
+  {'PASS': 14}
+  Level>=4 (substantive empirical): 13 / 14

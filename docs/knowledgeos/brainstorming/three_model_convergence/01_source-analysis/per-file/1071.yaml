@@ -1,0 +1,77 @@
+sequence: 1071
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-290/07-step-261-gate-audit.md
+title: "07 -- Step 261 SS261.23 Impact (Step 290 mandate SS8): Reconfirms the Already-Tracked Two-Block Gate Structure (Equality Block vs Representation Block, file 1052/1062) Is UNCHANGED by N-1A, and Delivers the Disciplined Finding That Withdrawing the 'Corpus Contradiction' Ground Does NOT Weaken the Gate -- Removing a False Reason From a Conclusion With Other Sufficient Grounds Leaves the Conclusion Standing"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the seventh numbered Step-290 artifact, re-auditing the Step-261 gate in light of the N-1A resolution -- explicitly reconfirmed, not rewritten"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1071
+importance: major
+confidence: high
+about: >
+  "07 — Step 261 §261.23 Impact (mandate §8) — reconfirmed, not rewritten." Directly asks whether the newly-
+  established N-1A resolution (files 1063-1067, this reconstruction's dominant recent content) satisfies any
+  of the already-tracked six `261.23` conditions (file 1052/1062).
+
+  **CONFIRMS NO -- NOT ONE OF THE SIX**: walks each condition (observation set closure, operation registry
+  closure, provenance placement, assertion semantics, temporal semantics, identity semantics) and confirms
+  N-1A is irrelevant to all six -- it classifies the register, it does not close `𝒪_K`, does not touch `N-4`,
+  Decision 3/`N-2`, is orthogonal to the representation block, and adds nothing beyond the already-tracked
+  `I_48` narrowing (file 1038) for identity semantics. **Reconfirms, unchanged, the already-tracked Step-289
+  two-block structure**: "equality block = conditions 1,2,3,6 · representation block = conditions 4,5."
+
+  **DELIVERS THE GENUINELY IMPORTANT DISCIPLINED FINDING ABOUT WHAT N-1A CONTRIBUTES**: "It removes a FALSE
+  REASON for the gate, and leaves every TRUE reason intact." Names precisely what Steps 288-289 had
+  (over-)added: "a SEVENTH ground for the gate: 'the register is self-contradictory, so selecting a kernel
+  would be selecting over an undefined term.' THAT GROUND IS WITHDRAWN." Lays out the gate's remaining
+  grounds after this withdrawal: the six `261.23` conditions (still all six intact, 0 of 6 resolved), the
+  `{≡}` unique minimal cut (intact, "better evidenced" per file 1069's 3-necessary-cycle correction), and `=`
+  not being a congruence (intact, EXECUTED, already tracked). The withdrawn `≡`/`≈` contradiction ground is
+  explicitly struck through in the table. **Delivers the sharp epistemic-integrity point**: "The gate does
+  NOT weaken. Removing an over-stated ground from a conclusion that has other sufficient grounds leaves the
+  conclusion standing and the reasoning honest. REPORTING IT AS A WEAKENING WOULD BE AS WRONG AS HAVING
+  CLAIMED THE CONTRADICTION." This is a rare and disciplined meta-level correction: acknowledging an
+  overclaim without over-correcting into an equally wrong underclaim.
+
+  **DELIVERS AN EXPLICIT ANTI-CONFLATION WARNING FOR DOWNSTREAM READERS**: "Resolving equality would NOT
+  close the `261.23` gate -- conditions 4 and 5 are a separate block. And `N-1` does not resolve equality --
+  it resolves only whether the register is self-contradictory. Two levels of 'not enough', and neither
+  should be collapsed into the other."
+
+  Confirms the STATUS block: ESTABLISHED N-1A satisfies 0 of 6; the two-block structure reconfirmed; one
+  over-stated ground removed with the gate intact · NORMATIVE all six conditions · DEFERRED any release.
+introduces:
+  - concept: "The disciplined finding that withdrawing an over-stated ground (the equiv/approx contradiction) from a multiply-grounded conclusion (the Step-261 gate) does not weaken the conclusion, since the remaining grounds are independently sufficient -- and that reporting the withdrawal as a weakening would itself be an equal and opposite epistemic error"
+  - concept: "The explicit two-level anti-conflation warning: N-1A resolving the contradiction-status of the register is not the same as resolving equality itself, and resolving equality would not by itself close the representation half of the gate"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Step-261/261.23 six-condition gate and its two-block structure (files 1041, 1052, 1062)"
+    refinement: "RECONFIRMED, EXPLICITLY UNCHANGED by the N-1A resolution: N-1A is irrelevant to all six conditions; the gate's grounds are reorganized (one over-stated ground withdrawn, all others intact) without any weakening of the gate's conclusion"
+contradicts: []
+repeats:
+  - "Reconfirms the already-tracked six-condition gate, its two-block structure, the {equiv} minimal-cut ground, and the non-congruence-of-= ground, all previously established across files 1041/1052/1062/1069."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the reconfirmation that N-1A satisfies 0 of the 6 Step-261 gate conditions, the withdrawal of the seventh (contradiction-based) ground without weakening the gate's conclusion, and the explicit two-level anti-conflation warning distinguishing register-consistency resolution from equality resolution."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step-261/261.23 six-condition gate and two-block structure (files 1041, 1052, 1062)"
+  supports_dimension: "Reconfirms the gate is unchanged by the N-1A resolution, with one over-stated ground withdrawn and all sufficient grounds intact"
+  refines_or_contradicts: "refines (reconfirms with precision) the prior tracked finding"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The six-condition table and two-block structure are directly checkable against files 1041, 1052, and 1062's already-documented versions for exact consistency of the reconfirmation."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers a disciplined, meta-level correction confirming that withdrawing an over-stated ground (the equiv/approx contradiction) from the already-tracked Step-261 gate does not weaken the gate's conclusion, since independently sufficient grounds remain intact, plus an explicit two-level anti-conflation warning for downstream readers. Classified importance major and confidence high given the rigor and direct connection to prior tracked findings."

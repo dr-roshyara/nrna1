@@ -1,0 +1,37 @@
+
+==============================================================================
+SO-EXP-04  Can K=(A,R) express the invariants the corpus mandates?
+==============================================================================
+  invariant                                          source                      F1     F2     F3     F4     F5     F6
+  --------------------------------------------------------------------------------------------------------------------
+  I1  Merge preserves provenance association         265.11 (boxed)              no     no     no     no    YES    YES
+  I2  Reject leaves the object IN K                  256.11                     YES    YES    YES    YES    YES    YES
+  I3  Withdraw leaves the object IN K                256.12                     YES    YES    YES    YES    YES    YES
+  I4  Provenance is preserved (never empty)          265 placement matrix        no     no     no    YES    YES    YES
+  I5  Supersession relation is recorded in the state 256.8 / 257.13              no     no     no    YES    YES    YES
+  I6  Split preserves lineage to the origin          265.12                      no     no     no    YES    YES    YES
+
+  (YES = the invariant's truth value is determined by that abstraction)
+
+  EXPRESSIBLE in the terminal K=(A,R):   5/6
+     + I2  Reject leaves the object IN K
+     + I3  Withdraw leaves the object IN K
+     + I4  Provenance is preserved (never empty)
+     + I5  Supersession relation is recorded in the state
+     + I6  Split preserves lineage to the origin
+  INEXPRESSIBLE in the terminal K=(A,R): 1/6
+     - I1  Merge preserves provenance association
+
+  DERIVED RESULT.  The terminal model expresses 5 of the 6 mandated
+  invariants located.  The failure is confined to ONE structural cause:
+
+      a merged (or split) object carries a SINGLE provenance slot, so it cannot
+      record that it derives from TWO sources.
+
+  s265.19's own proposed repair already fixes it: A = (id,P,e,c,t,pi) where
+  pi is a provenance REFERENCE, plus ResolveProvenance: PI -> ProvenanceObject.
+  A set-valued or relation-backed pi makes I1 and I6 expressible with no other
+  change to the model.
+
+  This is an ENGINEERING CONSEQUENCE of a corpus-stated invariant, not a
+  normative choice.

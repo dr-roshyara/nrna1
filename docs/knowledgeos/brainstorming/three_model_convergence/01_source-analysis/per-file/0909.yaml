@@ -1,0 +1,141 @@
+sequence: 909
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-221629_step_278_policy-authority-integration-and-executable-semantics-v2.md
+title: "Step 278 (v2) -- Policy-Authority Integration: Identical to File 0908 for Its First 2145 Lines, Then Appends a Full 'SUPERVISORY REVIEW' (Senior Mathematician / Senior Statistician / Senior DDD Architect Panel) That DOWNGRADES 0908's Own 'FORMAL POLICY/AUTHORITY SEMANTICS: CLOSED' Ruling to 'CONDITIONALLY ACCEPTED... Formal Closure: CONDITIONAL -- Requires Corrections' -- Delivers Twelve Severity-Rated Corrections (Four HIGH: Statistical-Model Operationalization, Executable Falsification-Test Specs, Measurement-Evidence Integration, Calibration Model) and Splits 'Formally Specified' From 'Formally Closed' as a Fifth Granular Level Within the FC Symbol"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: c1
+  secondary: m1
+  secondary_note: "the appended review's statistical-integration and calibration-model critiques (§3.1-3.3) are genuinely statistical content; the DDD/formalization critiques are m1"
+source_role: PRIMARY_RESEARCH
+canonical_source: 909
+importance: critical
+confidence: medium
+about: >
+  **The first 2145 lines are byte-identical to file 0908** (confirmed via `diff`: zero differences through
+  that point). **The file then appends roughly 470 additional lines** constituting a full structured
+  "SUPERVISORY REVIEW: REVISED STEP 278," explicitly attributed to a "Senior Mathematician · Senior
+  Statistician · Senior DDD Architect" review panel -- **directly reviewing and ultimately DOWNGRADING
+  0908's own closing HPA Ruling** ("STEP 278 — FORMAL POLICY/AUTHORITY SEMANTICS: CLOSED") to boxed
+  **`Step 278 is CONDITIONALLY ACCEPTED with required corrections`** and, in the Final Statement, boxed
+  **`Formal Closure: CONDITIONAL — requires corrections`** -- a further, directly observable instance of
+  this corpus's recurring overclaim-then-correction cycle (after 0891/0892, 0906's internal two-version
+  self-correction, and 0908's own opening self-correction of "the earlier Step 278 formulation"), this time
+  delivered as an explicit structured peer review with severity ratings rather than a narrative
+  self-correction.
+
+  **Part 1 (§1.1-§1.5) confirms what the reviewed document (0908) gets right**: the four closure dimensions
+  (FC/CC/EC/GC); the mature Conditional Verdict with its five resolution strategies ("computationally
+  meaningful"); the Constitutional Authority root recommendation ("a defensible normative recommendation");
+  the Governance-Policy-vs-Knowledge-About-Policy distinction ("resolves the ontology error"); the concrete
+  DDD bounded-context/aggregate model ("sufficiently concrete for implementation").
+
+  **Part 2 (§2.1-§2.9) delivers nine specific, severity-rated gaps in 0908's formalization**: the Policy
+  evaluation function `Evaluate_π:(K,E,C,A)→V_π` defines the verdict STRUCTURE but never specifies the
+  evaluation ALGORITHM (severity MEDIUM, with a concrete recommended pseudocode loop over `π.Rules`); the
+  `Combine` function's truth table never specifies how CONDITION MERGING works when both `PolicyVerdict`
+  and `AuthorityVerdict` are `Conditional` (MEDIUM, recommending `conditions=union(conditions_from_both)`);
+  **the statistical measurement model exists in isolation and is never integrated with policy evaluation**
+  -- `P(θ>c∣X)≥q` is stated but never operationalized into an actual rule structure (severity **HIGH**,
+  recommending an explicit `StatisticalRule=(Estimand,Threshold,ProbabilityThreshold,MeasurementModel)`
+  type and an `EvaluateStatisticalRule` procedure); Policy versioning never specifies version numbering,
+  identity, or history-querying mechanics (MEDIUM); the eventual-consistency model is "too abstract,"
+  lacking a specified propagation mechanism, latency, consistency boundary, or inconsistency-detection
+  method (MEDIUM); **the F1-F13 falsification tests are not executable** -- they state expected verdicts
+  but never specify HOW each test is set up, executed, or scored pass/fail (severity **HIGH**, with a
+  worked executable-test-specification template for F1); the five DDD invariants `G-I1`-`G-I5` are defined
+  but never operationalized (no specified enforcement location or violation-handling behavior, MEDIUM); the
+  closure matrix conflates "Formally Specified" (a definition merely exists) with "Formally Closed" (the
+  definition is complete and internally consistent) -- **delivering a fifth, more granular level within
+  the `FC` symbol itself** (severity LOW, "the terminology is still imprecise"); and Step 279's deliverables
+  are correctly named but underspecified, with a recommended concrete nine-item deliverable list (MEDIUM).
+
+  **Part 3 (§3.1-§3.3) delivers three further statistical/mathematical gaps, all rated HIGH severity**:
+  the measurement model is "not connected to the evidence model from earlier steps" -- recommending an
+  explicit `Measurement=(Evidence,Estimand,Model,Uncertainty)` structure linking the two; the Rule
+  Independence model (from 0908's §24-26) is defined but "not used in policy evaluation" -- recommending
+  an `EvaluateRuleSet` procedure that evaluates each strongly-connected-component of the rule-dependency
+  graph together before combining results; and **there is no calibration model for probabilistic
+  policies** -- `P(θ>c∣X)≥q` is stated without any specification of how the underlying probability is
+  calibrated or how that calibration is verified, recommending an explicit
+  `Calibration=(Model,ValidationData,CalibrationMetric)` structure with a `CalibrationVerified` predicate
+  -- "probabilistic policies require calibration," directly extending the corpus's standing measurement/
+  probability discipline with a genuinely new, statistically substantive requirement not previously
+  raised anywhere in this reconstruction's sequential pass.
+
+  **Part 4 delivers a consolidated twelve-row severity-rated correction table** (4 HIGH, 7 MEDIUM, 1 LOW).
+
+  **Part 5 delivers a six-category assessment table**: Structure ✅ Strong; Formalization 🟡 Good
+  (evaluation algorithm missing); Statistical 🟡 Partial (model exists but not integrated); DDD 🟡 Good
+  (invariants not enforced); Empirical 🔴 Weak (falsification tests not executable); Completeness 🟡
+  Conditional (formally specified but not closed) -- concluding boxed **`Step 278 is CONDITIONALLY
+  ACCEPTED with required corrections`**, explicitly naming the four missing pieces as the policy evaluation
+  algorithm, statistical model integration, executable falsification tests, and invariant operationalization.
+
+  **Part 6 delivers the final supervisory ruling**: "Step 278 is CONDITIONALLY ACCEPTED... incomplete in
+  twelve specific areas," mandating all twelve corrections before Step 278 can be considered complete, and
+  designating the next required artifact as **"Step 278 Final — Policy–Authority Integration with
+  Corrections"** (a file this reconstruction has not yet encountered), only after which Step 279 should
+  proceed. The final boxed statement explicitly downgrades 0908's own closing claim: boxed **`Formal
+  Closure: CONDITIONAL — requires corrections`** (not `CLOSED` as 0908 itself had ruled), with Computational
+  Closure still `PENDING Step 279`, Empirical Closure still `PENDING Step 280`, and Governance Closure
+  still `PENDING normative ratification` -- reiterating boxed **`The theory is NOT COMPLETE`**.
+introduces:
+  - concept: "The appended structured Supervisory Review (Senior Mathematician/Statistician/DDD Architect panel), directly downgrading 0908's own 'FORMAL POLICY/AUTHORITY SEMANTICS: CLOSED' ruling to 'CONDITIONALLY ACCEPTED... Formal Closure: CONDITIONAL'"
+  - concept: "Nine severity-rated formalization gaps in 0908's document (§2.1-§2.9): missing evaluation algorithm, missing condition-merging in Combine, unintegrated statistical model, incomplete versioning identity, too-abstract eventual-consistency mechanism, non-executable falsification tests, unoperationalized DDD invariants, Formally-Specified-vs-Formally-Closed terminology confusion, underspecified Step 279 deliverables"
+  - concept: "Three further HIGH-severity statistical/mathematical gaps (§3.1-§3.3): measurement-evidence disconnection, unoperationalized rule independence, and the entirely new requirement for a calibration model for probabilistic policies"
+  - concept: "The fifth, more granular closure level: Formally Specified (a definition exists) vs Formally Closed (the definition is complete and consistent), splitting the FC symbol from 0908's four-symbol taxonomy"
+  - concept: "The consolidated twelve-row severity-rated correction table (4 HIGH / 7 MEDIUM / 1 LOW)"
+  - concept: "The six-category assessment table (Structure/Formalization/Statistical/DDD/Empirical/Completeness)"
+  - concept: "The designation of an unencountered next artifact, 'Step 278 Final — Policy–Authority Integration with Corrections'"
+defines:
+  - concept: "Calibration requirement for probabilistic policies"
+    definition: "A newly-raised, genuinely substantive statistical requirement: any policy rule of the form P(θ>c∣X)≥q (a probabilistic threshold rule) is incomplete without an explicit specification of how the underlying probability model was CALIBRATED -- i.e. how well its stated probabilities match observed outcome frequencies -- and how that calibration is independently VERIFIED. The recommended structure is Calibration=(Model, ValidationData, CalibrationMetric), with a CalibrationVerified predicate (CalibrationMetric≤threshold). Without this, a probabilistic policy rule's threshold q could be applied to an uncalibrated or miscalibrated probability estimate, silently producing systematically wrong Permit/Deny decisions despite the rule's superficially rigorous probabilistic form -- extending the corpus's standing Measurement≠Probability discipline with a concrete verification obligation specific to governance-facing probabilistic rules"
+  - concept: "Formally Specified vs Formally Closed"
+    definition: "A finer-grained split within the FC (Formal Closure) symbol from 0908's four-symbol taxonomy: Formally Specified means merely that a definition for a construct exists somewhere in the text (a symbol, a type, a signature); Formally Closed means that definition is additionally COMPLETE (covers all required cases) and INTERNALLY CONSISTENT (its parts do not contradict each other or leave gaps an adversarial reader could exploit). The review's central complaint is that 0908's closure matrix marks many foundations 'Formally Closed' when they have in fact only reached 'Formally Specified' -- e.g. the Policy evaluation function's type signature is specified, but since its actual evaluation algorithm is undefined, it cannot yet be called formally closed in the stronger sense"
+refines:
+  - concept: "0908's four-symbol closure taxonomy FC/CC/EC/GC"
+    refinement: "SPLIT further by this review's Formally-Specified-vs-Formally-Closed distinction, adding a fifth granular level nested within FC specifically -- 0908's own closure matrix is criticized for conflating the two"
+  - concept: "0908's HPA Ruling ('STEP 278 — FORMAL POLICY/AUTHORITY SEMANTICS: CLOSED')"
+    refinement: "DIRECTLY DOWNGRADED by this review's final statement ('Formal Closure: CONDITIONAL — requires corrections'), a further explicit instance of the corpus's recurring overclaim-then-correction cycle, this time via structured peer review rather than narrative self-correction"
+  - concept: "0908's statistical measurement model for policy evaluation (§22-23) and Rule Independence model (§24-26)"
+    refinement: "BOTH CRITIQUED as defined-but-not-operationalized: the measurement model needs an explicit StatisticalRule type and evaluation procedure plus a genuinely new calibration-verification requirement; the rule-independence model needs an explicit strongly-connected-component evaluation procedure connecting it to actual policy evaluation"
+  - concept: "0908's thirteen falsification tests F1-F13"
+    refinement: "CRITIQUED as stated but non-executable -- delivering a concrete worked executable-test-specification template (Setup/Execute/Expected/Pass-if) that Step 278's eventual final version would need to apply to all thirteen tests"
+contradicts:
+  - concept: "0908's closing HPA Ruling that formal Policy/Authority semantics are CLOSED"
+    detail: "This review's Final Statement explicitly reclassifies formal closure as CONDITIONAL, requiring twelve specific corrections before the CLOSED designation would be warranted -- a direct downgrade of 0908's own concluding claim within the same overall document"
+repeats:
+  - concept: "0908's entire content through its own HPA Ruling"
+    detail: "The first 2145 lines of this file are byte-identical to file 0908's full content; only the appended supervisory review (roughly 470 additional lines) is new"
+bridge_candidates:
+  - "Read whichever file corresponds to 'Step 278 Final — Policy–Authority Integration with Corrections,' the next artifact this review explicitly designates, addressing all twelve identified issues before Step 279 may proceed."
+  - "Watch for whether the calibration-model requirement for probabilistic policies is ever addressed anywhere later in the corpus, since this is a genuinely new statistical requirement not previously raised."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the calibration-model requirement for probabilistic policies as a genuinely new, substantive statistical gap not previously identified anywhere in this reconstruction's sequential pass, directly relevant to any future probabilistic-policy design."
+  - "dimension-registry.md: record the Formally-Specified-vs-Formally-Closed distinction as a further refinement nested within the FC symbol of 0908's four-symbol taxonomy."
+  - "dimension-registry.md: note the direct downgrade of 0908's own 'CLOSED' HPA Ruling to 'CONDITIONAL' within this same file cluster, as a further instance of the corpus's recurring overclaim-then-correction cycle."
+anchor_test:
+  anchor: "0908's four-symbol closure taxonomy, statistical measurement model, Rule Independence model, and thirteen falsification tests; 0906's internal two-version self-correction cycle; 0891's/0892's earlier overclaim-then-partial-correction pattern"
+  supports_dimension: "Directly downgrades 0908's own closing 'CLOSED' claim via a structured peer review, extending the corpus's recurring overclaim-then-correction pattern into a new form (explicit reviewer panel with severity ratings). Delivers a genuinely new calibration-model requirement extending the standing measurement/probability discipline. Splits the FC symbol into Formally-Specified vs Formally-Closed sub-levels"
+  refines_or_contradicts: "directly contradicts and downgrades 0908's own HPA Ruling; extends 0908's measurement and rule-independence models with concrete operationalization requirements; refines the FC symbol from 0908's taxonomy"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The review's Part 5.2 explicit statement ('Step 278 is CONDITIONALLY ACCEPTED with required corrections') directly contradicts 0908's own closing boxed claim ('STEP 278 — FORMAL POLICY/AUTHORITY SEMANTICS: CLOSED'), directly checkable evidence of the downgrade."
+  - "§3.3's explicit critique ('P(θ>c∣X)≥q... does not specify how the probability is calibrated or how calibration is verified... Severity: HIGH') is directly checkable evidence of the genuinely new calibration-model requirement."
+  - "§2.6's worked executable-test-specification template for F1 (Setup/Execute/Expected/Pass-if), contrasted against 0908's original bare 'Expected: Unknown(NoApplicablePolicy)' statement, is directly checkable evidence of the non-executability gap in the original falsification tests."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 278 Final — Policy–Authority Integration with Corrections,' the review's explicitly designated next artifact, is ever encountered in this reconstruction's sequential pass."
+  - "Whether the calibration-model requirement for probabilistic policies is ever addressed anywhere later in the corpus."
+  - "Whether the twelve identified corrections are ever fully incorporated, or whether the Policy/Authority branch's development continues with these gaps unaddressed."
+tier2_triggered: true
+tier2_reason: "Delivers a structured peer-review downgrade of 0908's own closure claim, twelve severity-rated formalization gaps including a genuinely new calibration-model requirement for probabilistic policies, and a finer-grained split of the FC symbol into Formally-Specified vs Formally-Closed. Classified importance critical and tier2-triggered; confidence medium reflecting the file's largely duplicate structure and the designated-but-unencountered next artifact."

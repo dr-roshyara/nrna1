@@ -1,0 +1,50 @@
+sequence: 426
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-134120_using-the-gita-differently-from-an-ordinary-research-source.md
+title: "Duplicate of 0425's Part 2 (Four-Level Source-Engagement Discipline, Krishna Lens, Gita Source-Text Request)"
+date: "2026-08-26"
+bytes: 5217
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "identical to 0425's Part 2 material"
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 425
+importance: low
+confidence: high
+about: >
+  Byte-for-byte duplicate (confirmed via diff, zero output) of 0425's Part 2 content -- the four-level
+  source-engagement discipline (Source fact / Lens observation / Conceptual inference / KnowledgeOS
+  hypothesis), the new Krishna Lens, the lens-may-produce-a-question rule, the proposed Gita-passage
+  tracking matrix, and the explicit request for the authoritative Bhagavad Gita source text. This file
+  extracts exactly the non-duplicated tail of 0425 (that file's lines 515-752) as a standalone document,
+  without 0425's Part 1 (the Knower=Human / Knowledge-Understanding-KnowledgeOS material). Recorded minimally
+  per the established cross-file duplicate protocol; not self-declared in the filename but confirmed
+  byte-identical to the corresponding span via diff.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "0425's Part 2 in its entirety: the four-level source-engagement discipline, the Krishna Lens, the lens-may-produce-a-question rule, the proposed tracking matrix, and the Gita source-text request"
+    canonical_source: 425
+    novelty: "none -- byte-identical to 0425's lines 515-752, verified via diff"
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "0425"
+  supports_dimension: "Cross-file duplicate of 0425's Part 2; no independent evidentiary weight"
+  refines_or_contradicts: "none -- duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "NOT TRIGGERED -- byte-identical duplicate of 0425's Part 2 content, confirmed via diff; not self-declared in the filename but verified"

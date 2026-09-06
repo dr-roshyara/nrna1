@@ -1,0 +1,66 @@
+sequence: 15
+path: docs/knowledgeos/KnowledgeOS_Independent_Review_Phase_B.md
+title: KnowledgeOS — Independent First-Principles Review (Phase B)
+date: 2026-08-02
+bytes: 14837
+doc_type: blind independent review + scored convergence/divergence comparison
+
+primary_model_initial: meta_research
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - every conclusion being compared (kernel list, EKP ownership, product primacy, frozen context map) is a C1 object
+  - no epistemic-lineage vocabulary present
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [engineering_knowledgeos, ddd, evidence, contradiction, validation, governance]
+
+status: RF
+maturity: developing
+importance: high
+
+introduces:
+  - double_independent_derivation_as_corroboration_standard
+  - method_cross_validation_distinct_from_conclusion_convergence
+  - generalization_error_diagnosed_precisely
+  - disposition_scoreboard_reproduced_sharpened_corrected_new
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 15th consecutive file
+  - session_simulated   # role separation; no formal criterion for simulated vs real
+  - register_complete   # D-3's proposed rule; no completeness criterion given
+  - reproduced_vs_sharpened   # the scoreboard's own categories, not formally distinguished
+open_questions:
+  - IR1 mint CAP-001 authorization or explain the register gap
+  - IR2 dispose E-1 the EKP consumption model falsification
+  - IR3 amend the frozen Phase-02 map for the R-63/R-64 boundary
+  - IR4 acknowledge session-simulated role separation in governance text
+  - IR5 formally retire the 0-traversals generalization
+
+depends_on: [8]
+extends: [8]
+refines: [1, 4, 11]
+renames: []
+contradicts: [1, 4, 11]    # corrects the track's OWN repeated claim, cited across 4 prior files
+supersedes: []             # supersedes the generalized "0 traversals" claim, factual correction of record
+repeats: [8, 9]
+connects_to: [1, 4, 8, 9, 10, 11]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Falsifies the corpus's own most heavily-repeated claim ("0 traversals", asserted across at least
+  six prior documents in this track, four of them already in the read prefix) with a precisely
+  diagnosed mechanism - illicit generalization from a narrow true premise (EAD-1's claim about ONE
+  arrow, PublicDigit->PKS) to a false general one (the whole return path). Also supplies the
+  corpus's first independent-replication event for a kernel-membership list, strengthening
+  confidence in the artifact list while leaving the standing minimality critique (0008, 0011)
+  completely untouched. The strongest corpus-internal precedent yet for the §41 falsification
+  discipline this research must apply to its own repeated interim claims.

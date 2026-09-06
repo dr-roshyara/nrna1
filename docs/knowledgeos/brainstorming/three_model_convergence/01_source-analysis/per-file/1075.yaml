@@ -1,0 +1,83 @@
+sequence: 1075
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/exec/t291_bootstrap.py
+title: "t291_bootstrap.py -- Step 291 Bootstrap Re-Audit: Re-Runs the Already-Tracked Step-289 Dependency-Graph Cut Analysis (File 1052) With O, T, and O_K Explicitly SEPARATED as Three Distinct Nodes (Per 259.7's Five-Way Operation Classification), Correcting a Potential Conflation the Earlier Graph May Have Made"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "executable Python script opening the Step-291 package, a direct methodological refinement of the Step-289 bootstrap-cut analysis"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1075
+importance: major
+confidence: high
+about: >
+  `t291_bootstrap.py` — an executable Python dependency-graph script re-auditing the already-tracked Step-289
+  bootstrap-cut analysis (file 1052), with one explicit, mandate-driven KEY CHANGE: "O, T and O_K are
+  SEPARATE nodes (mandate §2: 'Do not assume that O, O_K and T are identical')." This directly follows from
+  and formalizes the already-tracked file-1068 finding that `𝒪_K` relates to `Σ`-level observation
+  operations, a subset/kind of the broader operation set `𝒪`.
+
+  **INTRODUCES A NEWLY-CITED CORPUS BASIS FOR THE THREE-WAY SEPARATION**: `259.7` gives a FIVE-WAY operation
+  classification (state-transformations | assessments | governance | audit/history | OBSERVATION operations)
+  and explicitly states "Not every operation has the form `T:K→K`"; `259.8` separates the state-transforming
+  operations (which enter "the primary congruence test") from Assess and Authorize (which "get DIFFERENT
+  tests"). This yields: `𝒯 ⊂ 𝒪` (kind 1 of 5); `𝒪_K` relates to kind 5 (observation operations) — THREE
+  distinct objects, not one conflated node as an earlier (Step-289) graph may have modelled.
+
+  **REBUILDS THE FULL DEPENDENCY-GRAPH EDGE LIST (42 audited edges, matching Step-289's edge count, file
+  1052) WITH THE THREE-WAY SEPARATION**, re-including all already-tracked structural edges (congruence per
+  `258.9`, minimality per `259`, the quotient/state relation per `258.12`, identity per `195.16`/`258.2`,
+  Decision-3/`Pi` per `254/261.8`, per-operation bindings per `261.19`, canonicalization per `38.85`, merge
+  idempotence per `25J.45`, the `261.23` six-condition kernel-gate edges, `Qualify`/`π_K` per `285`) plus TWO
+  NEW EDGES specific to the Assess/Authorize distinction from `259.8`: `equiv→assess_det`
+  ("`K_1==K_2⟹Assess(K_1,x)=Assess(K_2,x)`") and `O→assess_det` ("Assess is kind 2 of `O`").
+
+  **DELIVERS EXPLICIT SCRIPT-LEVEL METHODOLOGICAL SAFEGUARDS DIRECTLY RESPONDING TO STEP 289'S OWN
+  SELF-DIAGNOSED BUG (file 1052's "definitional artifact" fix, already tracked)**: an exhaustive minimal-cut
+  search restricted to a defined `RESOLVABLE` node set (mirroring Step 289's methodology); explicit
+  degeneracy checks on zero-results (mandate §18: "could 'cut {O}→False' be vacuous?", checking non-emptiness
+  and per-node cycle-membership counts); and a final scope-limiting disclaimer echoing Step-289's own
+  disciplined closing note: "SCOPE: conclusions hold for THIS audited edge list. No `O`, `T` or `O_K` is
+  proposed."
+
+  This is executable script content (not yet run/read as output in this record — the corresponding output
+  file, if the established step-288/289/290 pattern holds, is expected as a subsequent sequence). The script
+  itself is the primary evidentiary artifact of this file: it directly re-examines whether the already-
+  tracked `{equiv}` unique minimal bootstrap cut (files 1052, 1069) survives once `O`, `T`, and `O_K` are
+  properly separated rather than potentially conflated.
+introduces:
+  - concept: "The explicit three-way separation of O (the general operation set), T (state-transforming operations, a subset of O per 259.7's kind 1), and O_K (observation operations, kind 5 of O) as three distinct dependency-graph nodes, replacing a potential conflation in the Step-289 graph"
+  - concept: "The newly-cited corpus basis for this separation: 259.7's five-way operation classification and 259.8's distinction between the primary congruence test (state-transforming operations) and the different tests applied to Assess and Authorize"
+  - concept: "Two new dependency edges specific to Assess: equiv-determinism (K1==K2 implies Assess(K1,x)=Assess(K2,x), per 259.8) and O-to-assess_det (Assess is kind 2 of O, per 259.7)"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Step-289 dependency-graph edge list and minimal-cut methodology (file 1052)"
+    refinement: "RE-AUDITED with O, T, and O_K explicitly separated into three distinct nodes rather than potentially conflated, directly building on the file-1068 finding that O_K is a Sigma-level construct distinct from the general operation set O and the transformation subset T"
+contradicts: []
+repeats:
+  - "Re-includes, with the three-way separation applied, the great majority of already-tracked structural edges from Step-289's dependency graph (file 1052): congruence, minimality, quotient/state, identity, Decision-3/Pi, per-operation bindings, canonicalization, merge idempotence, the 261.23 kernel-gate conditions, and Qualify/pi_K."
+bridge_candidates:
+  - "259.7 and 259.8 -- newly cited as the corpus basis for the O/T/O_K three-way operation classification; not previously tracked in this reconstruction's depth beyond passing references to 259 as blocking T's closure (file 1052)."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Step-291 re-audit's key methodological change (O/T/O_K explicitly separated per 259.7's five-way operation classification), the two new Assess-specific edges, and the disciplined degeneracy-check/scope-disclaimer safeguards directly responding to Step-289's own self-diagnosed graph-modelling bug."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step-289 dependency-graph cut analysis and {equiv} minimal-cut result (file 1052)"
+  supports_dimension: "Re-audits this result with O, T, and O_K explicitly separated as three distinct nodes, directly testing whether the minimal cut survives a corrected graph model"
+  refines_or_contradicts: "refines (methodologically corrects) the prior tracked graph model"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The 42-edge dependency list and the O/T/O_K separation are directly checkable against file 1052's already-read Step-289 script for exact structural comparison; the script's own printed output (expected as a subsequent sequence) will confirm whether {equiv} remains the unique minimal cut under the corrected model."
+undefined_concepts: []
+open_questions:
+  - "Whether the {equiv} minimal cut (established in files 1052 and 1069) survives once O, T, and O_K are properly separated, or whether the correction reveals a different minimal cut -- to be confirmed by this script's execution output, expected as a subsequent primary-corpus sequence."
+tier2_triggered: true
+tier2_reason: "Delivers a direct, disciplined methodological re-audit of the already-tracked Step-289 bootstrap-cut dependency graph, explicitly separating O, T, and O_K per a newly-cited corpus basis (259.7/259.8's five-way operation classification), which may affect the already-tracked {equiv} unique minimal-cut result. Classified importance major (methodological refinement of a critical prior finding, pending its own output confirmation) and confidence high given the disciplined, well-evidenced construction."

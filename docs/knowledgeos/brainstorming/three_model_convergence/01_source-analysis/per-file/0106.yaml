@@ -1,0 +1,98 @@
+sequence: "0106"
+path: docs/knowledgeos/brainstorming/20260822-0915-knowledgeos-p4-constitutional-invariant-map-launch-prompt.md
+title: "KnowledgeOS P4 — Constitutional Invariant Consolidation and Kernel Definition (launch prompt)"
+date: "2026-08-22"
+bytes: 8222
+model:
+  primary: meta
+  secondary: [c1]
+source_role: META
+canonical_source: null
+importance: high
+confidence: high
+about: >
+  Purely a PROMPT TEMPLATE for a future session (timestamp jumps ~6 hours from 0105, same day) to
+  execute the long-deferred "Constitutional Invariant Map v1.0" -- fill-in-the-blank tables and
+  sentence templates throughout, NO actual content executed. Declares "the research phase is
+  considered complete" as its OWN premise -- explicitly NOT adopted by this reconstruction, which
+  knows ~1050 files remain in the primary corpus. A methodological flag: the "Final Gate" section
+  pre-scripts its own expected answer ("Has research ended? Expected answer: Yes.").
+
+introduces:
+  - "Explicit P4/P5 pipeline restated: Research Exploration -> Invariant Consolidation -> Constitutional
+    Invariant Map (P4) -> Evidence Validation (P5) -> Kernel Definition"
+  - "Rule 1 'No new research concepts' -- explicit discipline for the future session to consolidate
+    only, not invent"
+  - "'Expected Registered Invariants' outline (placeholder, not filled): Identity Family
+    (Representation!=Identity, Expression!=Meaning, Context Preservation -- CONTEXT NESTED UNDER
+    IDENTITY, i.e. treatment B/merge, a further data point for the Context tracking), Evidence Family,
+    Authority Family, Transformation Family, Temporal Family, Reasoning Family, Contradiction Family,
+    Agent Family -- 8 top-level families, none populated with actual content in this document"
+  - "Part 5 'Mathematical Lens Consolidation' template: a placeholder table classifying Topology/Type
+    Theory/Temporal Logic as 'Lens', Lattice Theory as 'Candidate mechanism', Category Theory as
+    'Research lens' -- explicit instruction 'Do NOT implement mathematics, only classify usefulness'"
+  - "Part 6 LLM-comparison placeholder table (Generate text/Preserve identity/Maintain provenance/
+    Explain reasoning/Handle contradiction/Revise beliefs/Maintain epistemic state) -- 'avoid marketing
+    language, use engineering differences'"
+  - "⭐ Methodological flag: 'Final Gate' pre-scripts its own expected answer -- 'Has research ended?
+    Expected answer: Yes. Research phase complete.' A future session is being told what to conclude
+    before being asked the question -- in tension with genuine open inquiry, though framed as prompt
+    design rather than presented as a finding"
+  - "Closing instruction: 'Do not make KnowledgeOS bigger. Make it clearer... the smallest set of
+    constitutional rules that allow trustworthy knowledge evolution' -- consistent restraint framing"
+
+defines: []
+
+refines:
+  - "Confirms, once again, that no file so far has actually PRODUCED a populated Constitutional
+    Invariant Map -- 0084/0085/0090/0091/0105 all proposed or partially reproduced one; this file is
+    the most complete TEMPLATE yet, still unexecuted"
+
+contradicts: []
+
+repeats:
+  - concept: "Kernel-vs-Reasoning-Engine boundary"
+    canonical_source: "0091"
+    novelty: none
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "Context entry: sixth-plus data point -- this template nests 'Context Preservation' under
+    'Identity Family' (treatment B/merge), though as a template, not an executed analysis"
+  - "WATCH MARKER (extends 0105's): confirms the actual P4 execution has not yet occurred as of 0106;
+    continue watching for whether a later file executes this template"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "A template only, not itself a reshaping -- structurally signals Context-under-Identity (treatment B)."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "Explicit self-declared research-completeness premise, NOT adopted by this reconstruction (MD-004:
+    provisional until the full 1,155-file primary corpus is read)"
+  - "A pre-scripted 'expected answer' to a supposedly open question -- a methodological pattern worth
+    continued tracking, distinct from a source-content finding"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether a later file actually executes this P4 prompt and produces a populated Constitutional
+    Invariant Map -- if so, it requires very careful scrutiny per the 0105 watch marker"
+
+tier2_triggered: true
+tier2_reason: >
+  Confirms the long-deferred Constitutional Invariant Map remains unexecuted (most complete template
+  yet); flags a pre-scripted "expected answer" methodological pattern; and the source's own declaration
+  that "research has ended" is explicitly NOT adopted by this reconstruction, which is a load-bearing
+  MD-004 discipline point worth recording precisely rather than silently passing over.

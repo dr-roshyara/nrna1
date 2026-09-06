@@ -1,0 +1,147 @@
+sequence: "0182"
+path: docs/knowledgeos/brainstorming/kernel/20260824-004343-review-of-deepseek-tractatus-extraction-entity-claim-status-distinction.md
+title: "Companion adjudication of 0179's raw Tractatus extraction (attributed to DeepSeek): eleven named KOS-L1..L11 architectural laws, a refined Entity/Claim/Relationship kernel model, an explicit 8/9/6.5-out-of-10 scored verdict, and a three-book (Quine+Wittgenstein+Memory) convergence synthesis"
+date: "2026-08-24"
+bytes: 19000
+model:
+  primary: c1
+  secondary: []
+source_role: CRITICAL_REVIEW
+canonical_source: "0182"
+importance: critical
+confidence: high
+about: >
+  The companion adjudication to 0179's raw Tractatus extraction (explicitly attributed here to DeepSeek,
+  confirming the corpus's recurring raw-report-then-adjudication pattern already seen at 0165->0166 and the
+  Kimi/DeepSeek/Perplexity reports->0168). Opens with an explicit mixed verdict: "the extraction contains
+  several genuinely important architectural discoveries, but it also makes some philosophical claims too
+  literally. We should extract the architectural invariants, not turn Wittgenstein's ontology into the
+  KnowledgeOS ontology." Ranks each of 0179's findings by KnowledgeOS value (thing!=fact, name!=proposition,
+  sense!=truth, saying!=showing, and logical-operation!=domain-object rated Very-high-to-Extremely-high;
+  "knowledge is always propositional" rated explicitly Too-strong; Wittgenstein's atomism, the "mystical" as
+  a Kernel category, and the exact Tractarian truth-function theory all rated Do-not-adopt). Central
+  refinement: explicitly REJECTS DeepSeek's literal claim that "the Kernel's fundamental unit should be the
+  proposition, not the entity," replacing it with a three-way Entity/Claim/Relationship model (Entity =
+  something referred to; Claim = something asserted about something; Evidence supports/challenges the
+  Claim; Authority determines epistemic standing) -- making Claim/Assertion a genuinely new first-class
+  kernel-adjacent concept, distinct from and more precise than the six-dimension candidate stated at 0180.
+  Elevates 0179's sense-vs-truth distinction to "probably the strongest extraction," producing a concrete
+  worked KnowledgeOS record structure (Entity+Claim+Evidence+Authority+Status) and a richer two-axis status
+  model (MEANING STATUS: well-formed/ambiguous/ill-formed/undefined; EPISTEMIC STATUS: unknown/hypothesis/
+  proposed/supported/established/contested/rejected/superseded/withdrawn) explicitly replacing a bare true/
+  false boolean. Reframes 0179's saying-vs-showing distinction pragmatically (not as literal Kernel
+  entities) into "some system properties should be enforced structurally rather than represented as
+  ordinary knowledge claims" -- directly supporting a Kernel-invariants-vs-knowledge-records separation.
+  Reframes the logical-operations-are-not-objects point into an explicit anti-ontology-inflation warning
+  against creating AND/OR/NOT/IMPLIES as domain entities. Explicitly declines DeepSeek's stronger claim that
+  "logical form cannot in principle be represented" (modern systems obviously CAN represent structure/
+  schemas), replacing it with the more defensible "don't confuse the representation's schema with the
+  reality it represents." Elevates the representational-limits question into a named "Representational
+  Boundary Awareness" requirement (known/unknown/unresolved/unsupported/out-of-scope/not-expressible-in-
+  current-schema), with a worked example of KnowledgeOS declining to answer a moral-preference question by
+  stating "no governed criterion exists" rather than hallucinating. Renames 0179's/DeepSeek's "anti-reasoner
+  for language" concept architecturally as "Epistemic Boundary Guard," detecting ill-formed claims,
+  ambiguous references, undefined entities, unsupported assertions, category errors, operation-treated-as-
+  object, retrieval-treated-as-truth, missing evidence, authority mismatch, and out-of-schema representation.
+  Explicitly synthesizes three consecutive lens files (0178 Quine: representation!=meaning; 0179/this-file
+  Wittgenstein: thing/claim/sense/truth distinctions; 0180 Memory: retrieval/memory!=epistemic-truth) into
+  one funnel diagram converging on KnowledgeOS's meaning/evidence/authority->epistemic-state pipeline, with
+  Zero cutting across all three. Produces eleven named candidate architectural laws KOS-L1..L11 (Reference!=
+  Assertion, Meaning!=Truth, Retrieval!=Knowledge, Relevance!=Authority, Absence!=Negation, Transformation!=
+  Replacement, Evidence!=Claim, Structure!=Content, Operation!=Object, Boundary!=Failure, and Epistemic-
+  Status-Is-Not-Semantic-Content). Closes with an explicit numeric self-assessment of DeepSeek's extraction:
+  8/10 as philosophical extraction, 9/10 as a source of architectural questions, only 6.5/10 as direct
+  architecture guidance (over-translates philosophy into implementation prescriptions in places) -- the
+  first explicit numeric scoring of a source's extraction quality seen in the corpus's reading order.
+
+introduces:
+  - "Eleven named candidate architectural laws KOS-L1..L11: Reference!=Assertion, Meaning!=Truth, Retrieval!
+    =Knowledge, Relevance!=Authority, Absence!=Negation, Transformation!=Replacement, Evidence!=Claim,
+    Structure!=Content, Operation!=Object, Boundary!=Failure, and (added separately as a capstone)
+    Epistemic-Status-Is-Not-Semantic-Content"
+  - "A refined three-way Entity/Claim/Relationship kernel model explicitly rejecting DeepSeek's literal
+    proposition-only-primitive claim: Entity (referent) -> Claim (assertion about the referent) ->
+    Evidence (supports/challenges) -> Authority (determines standing) -> Epistemic State, with a concrete
+    worked example record structure"
+  - "A two-axis status model separating MEANING STATUS (well-formed/ambiguous/ill-formed/undefined) from
+    EPISTEMIC STATUS (unknown/hypothesis/proposed/supported/established/contested/rejected/superseded/
+    withdrawn), explicitly replacing a bare true/false boolean"
+  - "'Representational Boundary Awareness' as a named requirement: KnowledgeOS must be able to state 'no
+    governed criterion exists for this judgment' rather than fabricating an answer when a question falls
+    outside its representational schema -- a concrete anti-hallucination behavior specification"
+  - "'Epistemic Boundary Guard' as the architectural renaming of the Tractatus 'anti-reasoner for language'
+    concept, with a ten-item detection list (ill-formed claim, ambiguous reference, undefined entity,
+    unsupported assertion, category error, operation-treated-as-object, retrieval-treated-as-truth, missing
+    evidence, authority mismatch, out-of-schema representation)"
+  - "First explicit numeric quality scoring of a source extraction in the corpus's reading order (8/10
+    philosophical, 9/10 architectural-questions, 6.5/10 direct-guidance) -- a new evaluative discipline not
+    seen in earlier adjudication files (0166, 0168, 0175)"
+  - "A three-file lens-convergence synthesis diagram explicitly chaining 0178 (Quine: representation!=
+    meaning) -> 0179 (Wittgenstein: thing/claim/sense/truth) -> 0180 (Memory: retrieval/memory!=epistemic-
+    truth) into one funnel converging on KnowledgeOS's meaning/evidence/authority pipeline, with Zero
+    cutting across all three -- the first file to explicitly name and diagram this three-book convergence"
+
+defines:
+  - "Eleven KOS-L1..L11 candidate architectural laws (see introduces) -- PROPOSED only, not adjudicated or
+    admitted by this reconstruction; a fifth locally-numbered candidate-law series after 0173's KOS-EPI,
+    0174's KOS-CT, 0176's KOS-DP, and 0178's local C-1..C-6/W-1..W-5"
+
+refines:
+  - "Directly adjudicates and substantially reworks 0179's raw Tractatus extraction, rejecting its
+    strongest literal claims (proposition-as-sole-primitive, logical-form-cannot-in-principle-be-
+    represented) while elevating its sense-vs-truth distinction to primary importance"
+  - "Explicitly synthesizes 0178 (Quine), 0179 (Tractatus), and 0180 (Managing Memory) into one convergent
+    architectural funnel -- the first file to name this three-book convergence explicitly"
+  - "Extends the six-dimension kernel candidate stated at 0180 with a more precise Claim/Assertion layer
+    distinguishing referent-identification from assertion-making"
+
+contradicts:
+  - "Explicitly rejects 0179's/DeepSeek's claim that Kernel's fundamental unit should be the proposition
+    rather than the entity, and rejects the stronger claim that logical form cannot in principle be
+    represented -- both logged as over-translations of Wittgenstein's philosophy into architecture"
+
+repeats:
+  - {concept: "Zero-lens absence/unknown must not collapse into false/negation", canonical_source: "0180", novelty: low}
+  - {concept: "Anti-ontology-inflation discipline (useful concept != kernel entity)", canonical_source: "0178", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- eleven KOS-L1..L11 laws explicitly PROPOSED/candidate only, consistent with the corpus's
+    external-insight -> candidate -> EKS/PKS/AIP-validation -> constitutional-law discipline"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Refines the six-dimension kernel candidate (0180) with a more precise Entity/Claim/Relationship model and a two-axis meaning/epistemic status split; explicitly rejects two of 0179's stronger literal claims."
+  alternative_minimal_kernel: "Entity/Claim/Relationship + Evidence + Authority + Epistemic State model -- a refinement of, not a replacement for, the six-dimension candidate stated at 0180"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Confirms the corpus's recurring raw-extraction-then-companion-adjudication pattern for a fourth
+    instance (0165->0166, Kimi/DeepSeek/Perplexity->0168, and now 0179->0182), with explicit DeepSeek
+    attribution -- strengthens this reconstruction's confidence that this is a structural feature of the
+    corpus's own production process, not a coincidence"
+  - "The three-book convergence diagram (Quine/Wittgenstein/Memory -> KnowledgeOS) is the first explicit,
+    named synthesis of consecutive lens files in this stretch -- worth tracking whether a fourth book joins
+    this convergence chain or whether the chain closes here"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the eleven KOS-L1..L11 laws are ever consolidated with the corpus's other locally-numbered
+    candidate series (KOS-EPI, KOS-CT, KOS-DP) into one unified adjudication pack"
+  - "Whether a fourth book extends the Quine/Wittgenstein/Memory convergence chain"
+
+tier2_triggered: true
+tier2_reason: >
+  Eleven new named KOS-L architectural laws; explicit rejection of two of DeepSeek's stronger literal
+  claims; a refined Entity/Claim/Relationship kernel model; first explicit numeric source-quality scoring;
+  first named three-book lens-convergence synthesis.

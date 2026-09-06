@@ -1,0 +1,201 @@
+sequence: 823
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-105816_step_196_the-authority-responsibility-model.md
+title: "Step 196 -- The Authority-Responsibility Model (MAJOR SYNTHESIS MILESTONE, delivers 0822's promised authority boundary test, CONTINUES I-series to I54): Delivers Identity≠Role≠Permission≠Responsibility≠Authority and the Constitutional Inequality Permission(a,o)⇏Authority(a,o) -- Delivers DatabaseState≠GovernanceTruth and the Refined Transition Tuple With Authority -- Delivers Authority as Scoped, Non-Global, Temporally Versioned, and Provenance-Bearing (Delegation Chains, I52) -- Delivers 'AI Execution Capability Must Not Imply Governance Authority' and Determination=Assessment+AuthorizedActor+ValidProcedure -- Delivers the Strongest Chapter-4 Lesson Yet: Knowledge Transmission≠Authority Transmission, With the Dangerous Authority_new>Knowledge_new Epistemic-Gap Warning -- Delivers I53 (Revocation≠HistoricalErasure) and I54 (Separation of Duties) and Forbids Circular Self-Granted Authority -- Delivers the Complete Determination Tuple and 'No Semantic Elevation Without an Explicit Transition' as a Candidate Central Axiom -- Opens Step 197's Invariant-Conservation System (I1..I54)"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily DDD/mathematical governance-authority formalization; re-invokes all four Gita chapter lenses once more for authority/responsibility/knowledge-transmission distinctions, without new Gita textual content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 823
+importance: critical
+confidence: high
+about: >
+  Directly continues 0822, opening "we established Identity≠Name, Identity≠Role, Identity≠Permission, and
+  now we need to establish another boundary," boxed: **`Authority≠Technical Access`**.
+
+  **§196.1-196.6 delivers five foundational concepts** (Identity/Role/Permission/Responsibility/Authority)
+  each answering a distinct question (who/what function/what can technically be done/what is one
+  accountable for/whose determination is binding), worked through an Architecture-Board example.
+
+  **§196.7-196.9 delivers the file's central constitutional inequality**, boxed:
+  **`Permission(a,o)⇏Authority(a,o)`** -- worked through an administrator with database UPDATE permission
+  who nonetheless lacks approval authority -- and **`DatabaseState≠GovernanceTruth`**: a database column
+  reading `status=APPROVED` is merely evidence of a state representation, not proof the underlying
+  transition was actually authorized.
+
+  **§196.10-196.13 delivers the refined transition tuple**, boxed:
+  **`τ=(S_1,S_2,Rule,Witness,Actor,Authority,Time)`**, the `Authorized(a,τ,C,t)` predicate, and the stronger
+  compound validity condition, boxed: **`ValidTransition=Authorization∧EvidenceSufficiency∧Preconditions∧
+  InvariantPreservation`**, crystallized: **"authority is necessary but not sufficient."**
+
+  **§196.14-196.16 delivers `Authority≠Correctness`** via a six-item list of ways an authorized approval
+  can still be invalid (incomplete evidence, violated rule, out-of-scope action, expired authority, wrong
+  entity, obsolete information), directly refuting "the responsible person approved it, therefore it is
+  valid." Delivers **authority as scoped and non-global**, boxed `Authority(a,C,O,t)`, worked through
+  distinct bounded contexts (`Authority_A(a)≠Authority_B(a)`).
+
+  **§196.17-196.22 delivers authority as temporally versioned** (expiring at `T_e` unless renewed,
+  connecting directly to Step 193's bitemporal work) and **the `AuthorityGrant` tuple**
+  (`Actor,Scope,Capability,ValidFrom,ValidUntil,GrantingAuthority`), "not merely an RBAC table... a
+  governed fact." Delivers **authority provenance and delegation chains**
+  (`Board→ChiefArchitect→Architect`) and the scope-containment rule for delegation, crystallized as
+  **`I52`: delegated authority must not exceed the scope, duration, or nature of the authority from which
+  it derives**.
+
+  **§196.23-196.26 delivers the file's central AI-governance finding**, boxed: **`AI execution capability
+  must not imply governance authority`** -- an AI with `Permission(writeProposal)=true` does not thereby
+  acquire `Authority(approveArchitecture)`. Delivers AI epistemic-actor outputs (Observation/Classification/
+  Hypothesis/Recommendation/CandidateDecision) as distinct from `AuthorizedDetermination`, and refines the
+  arc's Evidence→Assessment→Determination pipeline by adding authority as a condition, boxed:
+  **`Determination=Assessment+AuthorizedActor+ValidProcedure`**.
+
+  **§196.27 delivers `Expertise≠Authority`**: an expert can supply evidence/assessment while an authorized
+  body determines, without requiring the authorized body to itself possess the expertise.
+
+  **§196.28-196.34 re-walks all four Gita chapters once more for authority**: Chapter 1 recasts the
+  decision question as "who is responsible for acting, under which obligation, with what authority?";
+  Chapter 2 delivers **`PersonIdentity≠InstitutionalIdentity`** (Board membership changes; institutional
+  role persists) and institutional identity as its own domain entity connected via `actsFor`; Chapter 3
+  delivers `Authority↛Action` directly, requiring an explicit decision/policy transition; **Chapter 4
+  delivers what the file itself flags as possibly "one of the strongest Chapter 4 architectural lessons"**:
+  knowledge transmission does not imply authority transmission, boxed:
+  **`Transmission(Knowledge)≠Transmission(Authority)`**, warning of the dangerous situation
+  `Authority_new>Knowledge_new` where a new generation inherits an institutional authority role while
+  having incomplete historical knowledge.
+
+  **§196.35-196.39 delivers the epistemic-gap warning formalized**, boxed:
+  **`Gap(a)=AuthorityScope(a)-KnowledgeCoverage(a)`** (explicitly conceptual, not literal subtraction), and
+  **`DecisionRisk=f(AuthorityScope,KnowledgeQuality,EvidenceCompleteness,Uncertainty)`**, connecting to an
+  uncertainty threshold `U(P|E)≤U_max` triggering escalation. Delivers **the deterministic-assurance
+  principle**, boxed: **`Assurance(d)=AuthorityValid∧EvidencePresent∧RequiredReviewCompleted∧
+  PolicySatisfied`**, explicitly preferred over asking an AI "is this decision okay?" Delivers **the
+  file's AI-engineering principle**, boxed: **`AI may expand the epistemic search space; governance
+  determines the authoritative state`**.
+
+  **§196.40-196.42 delivers a dedicated authority graph** `G_A=(V,E_A)` (edges: grants/delegates/actsFor/
+  revokes/constrains, again explicitly conceptual, not a graph-database mandate) and **authority
+  revocation as non-retroactive**, boxed: **`Revocation≠HistoricalErasure`**, crystallized as
+  **`I53`: authority changes affect future authorization but do not retroactively invalidate historically
+  authorized transitions unless an explicit domain rule requires it**.
+
+  **§196.43-196.47 delivers separation of responsibility and authority** (`Responsibility(Architect)≠
+  Authority(Architect,Approve)`) and separation of duties (`Proposer≠Approver`), crystallized as
+  **`I54`: where separation of duties is required, the same actor must not satisfy mutually exclusive
+  governance roles for the same transition**. Delivers **evidence-supplier/validity-determiner
+  independence** (reducing confirmation bias and circularity) and **explicitly forbids circular
+  self-granted authority**, `Grant(A,A)` normally invalid absent an explicit domain rule permitting
+  self-constituting authority -- directly extending 0821's circular-justification prohibition into the
+  authority domain.
+
+  **§196.48-196.52 delivers authority lineage as an eight-question provenance checklist** and **the
+  complete determination tuple**, boxed:
+  **`D=(Claim,Evidence,Assessment,Actor,Role,Authority,Rule,Scope,Time,Lineage)`**. **Delivers the
+  architecture's accumulated six major dimensions** (Identity/Time/Evidence/Causality/EpistemicStatus/
+  Authority, with Governance and Action as transition mechanisms) and **the unified authoritative
+  transition**, boxed: **`τ:S_t→[Actor,Authority]{Evidence,Model,Rule}→S_{t+1}`**, valid only under the
+  compound condition **`Preconditions∧EvidenceSufficient∧AuthorityValid∧PolicySatisfied∧
+  InvariantPreserved`**, crystallized into **the architecture's core mathematical object**, boxed:
+  **`ValidTransition(τ)=P(τ)∧E(τ)∧A(τ)∧R(τ)∧I(τ)`**.
+
+  **§196.53-196.54 delivers the file's capstone convergence**: five forbidden implicit-elevation patterns
+  listed together for the first time (`Claim→AuthoritativeTruth`; `Recommendation→Decision`;
+  `TechnicalPermission→GovernanceAuthority`; `Similarity→Identity`; `Correlation→Causation`), explicitly
+  noting "how many of our earlier boundaries converge here," crystallized as **a candidate central axiom of
+  KnowledgeOS**, boxed: **`No semantic elevation without an explicit transition`**, worked through five
+  paired non-implications (Observation⇏Evidence; Evidence⇏Knowledge; Knowledge⇏Authority;
+  Recommendation⇏Decision; Decision⇏Outcome).
+
+  **§196.55 delivers the Step 196 verdict**: the authority test "passes and strengthens the architecture,"
+  five boxed results: **`Identity≠Role≠Permission≠Responsibility≠Authority`**; **`Authority≠Truth`**;
+  **`Authority≠Correctness`**; **`Technical access≠Governance legitimacy`**; and most importantly
+  **`Every semantic elevation must be represented as an explicit, governed, lineage-preserving
+  transition`**.
+
+  **Closes opening "Step 197 — the next boundary: invariants and conservation,"** noting the accumulated
+  invariant set `I_1,...,I_54` and reframing the central question from "what concepts exist?" to "can we
+  define a mathematical system in which these concepts remain consistent under arbitrary valid
+  transitions?", boxed: **`State+Transition+Invariant+Conservation`**, previewing conservation properties
+  (`Lineage_before⊆Lineage_after` unless archived; Identity must not disappear on representation change;
+  Evidence must not silently disappear on status change) as "the most important mathematical step yet." No
+  actual repository implementation occurs within this file itself.
+introduces:
+  - concept: "The five foundational concepts Identity/Role/Permission/Responsibility/Authority, each answering a distinct question"
+  - concept: "The central constitutional inequality Permission(a,o)⇏Authority(a,o)"
+  - concept: "DatabaseState≠GovernanceTruth"
+  - concept: "The refined transition tuple with Authority, the Authorized(a,τ,C,t) predicate, and the compound ValidTransition condition"
+  - concept: "Authority≠Correctness via a six-item list of ways an authorized approval can still be invalid"
+  - concept: "Authority as scoped and non-global across bounded contexts, Authority(a,C,O,t)"
+  - concept: "Authority as temporally versioned (expiring at T_e), and the AuthorityGrant tuple as a governed fact, not merely RBAC"
+  - concept: "Authority provenance and delegation chains, with the scope-containment rule for delegation -- Invariant I52"
+  - concept: "'AI execution capability must not imply governance authority'; AI epistemic-actor outputs distinct from AuthorizedDetermination"
+  - concept: "Determination=Assessment+AuthorizedActor+ValidProcedure"
+  - concept: "Expertise≠Authority"
+  - concept: "PersonIdentity≠InstitutionalIdentity, and institutional identity as its own domain entity connected via actsFor"
+  - concept: "The strongest-yet Chapter 4 lesson: Transmission(Knowledge)≠Transmission(Authority), with the Authority_new>Knowledge_new epistemic-gap danger"
+  - concept: "Gap(a)=AuthorityScope(a)-KnowledgeCoverage(a) and DecisionRisk=f(AuthorityScope,KnowledgeQuality,EvidenceCompleteness,Uncertainty)"
+  - concept: "The deterministic-assurance principle Assurance(d)=AuthorityValid∧EvidencePresent∧RequiredReviewCompleted∧PolicySatisfied"
+  - concept: "'AI may expand the epistemic search space; governance determines the authoritative state'"
+  - concept: "The dedicated authority graph G_A with grants/delegates/actsFor/revokes/constrains edges"
+  - concept: "Authority revocation as non-retroactive, Revocation≠HistoricalErasure -- Invariant I53"
+  - concept: "Separation of responsibility and authority, and separation of duties (Proposer≠Approver) -- Invariant I54"
+  - concept: "Evidence-supplier/validity-determiner independence, and the explicit prohibition of circular self-granted authority Grant(A,A)"
+  - concept: "Authority lineage as an eight-question provenance checklist, and the complete determination tuple D"
+  - concept: "The architecture's accumulated six major dimensions (Identity/Time/Evidence/Causality/EpistemicStatus/Authority) with Governance and Action as transition mechanisms"
+  - concept: "The unified authoritative transition and the core mathematical object ValidTransition(τ)=P∧E∧A∧R∧I"
+  - concept: "The capstone convergence of five forbidden implicit-elevation patterns, and the candidate central axiom 'no semantic elevation without an explicit transition'"
+  - concept: "The Step 196 verdict's five boxed results"
+  - concept: "Step 197's opening: the invariant-conservation system State+Transition+Invariant+Conservation over I1..I54"
+defines:
+  - concept: "Authority (as distinct from Identity/Role/Permission/Responsibility)"
+    definition: "Authority answers 'whose determination is recognized as binding for a particular domain decision?' -- it is categorically stronger than Permission (what an actor can technically execute), Role (what function an actor performs), Identity (who or what is acting), and Responsibility (what an actor is accountable for); an actor can hold any combination of the other four without thereby holding Authority, and Authority itself must be scoped to a context and operation, temporally bounded, and traceable to a granting source"
+  - concept: "'No semantic elevation without an explicit transition'"
+    definition: "A candidate central axiom of KnowledgeOS stating that no artifact may silently move to a stronger epistemic or governance category (Observation to Evidence, Evidence to Knowledge, Knowledge to Authority, Recommendation to Decision, Decision to Outcome, and by extension Permission to Authority, Similarity to Identity, or Correlation to Causation) without passing through an explicit, governed, lineage-preserving transition that performs the validation the elevation requires"
+  - concept: "The Authority_new>Knowledge_new epistemic-gap danger"
+    definition: "A named failure mode in which a successor actor or institution inherits an institutional authority role (via knowledge transmission or organizational continuity) without inheriting the historical knowledge that originally justified exercising that authority responsibly -- formalized conceptually as Gap(a)=AuthorityScope(a)-KnowledgeCoverage(a), a warning condition rather than a literal computation, that should trigger review or escalation rather than being silently tolerated"
+refines:
+  - concept: "0822's closing proposal of the authority boundary test (Authority≠Identity≠Role≠Permission≠Responsibility) and its three-tier AI/Engineer/Board example"
+    refinement: "DELIVERED IN FULL: the five foundational concepts, the constitutional Permission⇏Authority inequality, the scoped/temporal/delegated authority model, and the Step 196 verdict directly confirming the architecture prevents technical access from becoming epistemic authority ('technical access≠governance legitimacy')"
+  - concept: "0813's provisional ten-axiom constitution M1-M10 and 0814's 'the Kernel is not the sovereign' separation-of-powers result"
+    refinement: "Extended with a concrete governance mechanism: the AuthorityGrant/delegation-chain model and the scope-containment rule for delegation, giving the separation-of-powers result an explicit, checkable structural form"
+  - concept: "0821's explicit naming and forbidding of circular justification (Decision→Claim→Evidence→Decision)"
+    refinement: "Directly extended into the authority domain: Grant(A,A) (an actor granting itself authority without external basis) is forbidden absent an explicit domain rule permitting self-constituting authority, generalizing the acyclicity requirement from justification graphs to authority-grant graphs"
+  - concept: "The arc's authority-cannot-manufacture-truth family (0813's statistical-confidence version, 0821's causal-inference version)"
+    refinement: "Extended with two further members: Authority≠Correctness (a six-item catalogue of ways an authorized approval can still be invalid) and Authority≠Truth, both delivered as explicit boxed results in the Step 196 verdict"
+  - concept: "0808's I1-I14 through 0822's I48-I51 invariant series"
+    refinement: "DIRECTLY EXTENDED as I52-I54, a twelfth consecutive instance of correct invariant-series continuity spanning 0808 through 0823"
+  - concept: "0822's five-graph federation (Identity/Temporal/Epistemic/Causal/Governance)"
+    refinement: "A sixth graph structure is introduced here (the Authority graph G_A), but the file frames the architecture's accumulation differently as 'six major dimensions' (Identity/Time/Evidence/Causality/EpistemicStatus/Authority) with Governance and Action as transition mechanisms rather than explicitly re-stating the five-graph-federation vocabulary -- the graph/dimension taxonomy remains not fully reconciled across files"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 197's actual invariant-conservation formalization (State+Transition+Invariant+Conservation) over the accumulated I1-I54 set."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record 'AI execution capability must not imply governance authority' as a directly applicable, sharply stated AI-governance principle."
+  - "dimension-registry.md: record the strongest-yet Chapter 4 lesson (Transmission(Knowledge)≠Transmission(Authority), with the Authority_new>Knowledge_new epistemic-gap danger) as a named, reusable organizational-risk pattern."
+  - "dimension-registry.md: record the capstone convergence of five forbidden implicit-elevation patterns and the candidate central axiom 'no semantic elevation without an explicit transition' as the arc's most complete boundary-convergence statement to date."
+  - "dimension-registry.md: record the graph/dimension taxonomy inconsistency (0822's five-graph federation vs. 0823's six-dimension framing with a separate Authority graph) as an explicit open reconciliation question."
+anchor_test:
+  anchor: "0822's closing proposal of the authority boundary test; 0813's/0814's constitutional-authority and separation-of-powers results; 0821's circular-justification prohibition; the arc's authority-cannot-manufacture-truth family; the I1-I51 invariant series; 0822's five-graph federation"
+  supports_dimension: "Delivers the full authority boundary test directly answering 0822's closing question, confirming the architecture prevents technical access from becoming epistemic authority. Extends the constitutional-authority/separation-of-powers results with a concrete delegation-chain and scope-containment mechanism. Extends the circular-justification prohibition into the authority domain (Grant(A,A) forbidden). Extends the authority-cannot-manufacture-truth family with Authority≠Correctness and Authority≠Truth. Correctly extends the I-series to I54, a twelfth consecutive positive continuity instance. Introduces a sixth graph structure (Authority) while reframing the accumulation as six dimensions rather than explicitly reconciling with 0822's five-graph-federation vocabulary, leaving the taxonomy question open. Delivers the capstone convergence of five forbidden implicit-elevation patterns into a candidate central axiom. Opens Step 197's invariant-conservation system, promising the arc's most mathematically ambitious treatment yet"
+  refines_or_contradicts: "directly delivers and extends 0822's closing proposal; extends 0813's/0814's constitutional-authority results; extends 0821's circular-justification prohibition; extends the authority-cannot-manufacture-truth family; correctly extends the I-series; introduces a sixth graph without explicitly reconciling the five/six graph-vs-dimension taxonomy; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "§196.7-196.9's worked administrator/database example (Permission(Admin,UpdateDecision)=true but not Authority(Admin,ApproveArchitecture)=true), immediately generalized to DatabaseState≠GovernanceTruth, is directly checkable evidence of the file's central constitutional inequality applied to a concrete, realistic governance failure mode."
+  - "§196.34's explicit self-flagging 'this may be one of the strongest Chapter 4 architectural lessons' for Transmission(Knowledge)≠Transmission(Authority), paired with the Authority_new>Knowledge_new danger, is directly quotable evidence of a named, reusable organizational-risk pattern with clear real-world applicability (e.g. institutional succession, AI system handoffs)."
+  - "§196.53's explicit list of five forbidden implicit-elevation patterns (Claim→AuthoritativeTruth, Recommendation→Decision, TechnicalPermission→GovernanceAuthority, Similarity→Identity, Correlation→Causation) followed by 'notice how many of our earlier boundaries converge here' is directly checkable evidence of a genuine cross-file synthesis rather than an isolated new claim."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 197's invariant-conservation system (State+Transition+Invariant+Conservation over I1..I54) was ever actually formalized, and whether it succeeds or reveals a conservation-law violation among the accumulated invariants."
+  - "Whether the graph/dimension taxonomy is ever reconciled: 0822's five-graph federation (Identity/Temporal/Epistemic/Causal/Governance) versus 0823's six-major-dimensions framing (Identity/Time/Evidence/Causality/EpistemicStatus/Authority) with a separately introduced Authority graph G_A -- the count and vocabulary still do not fully align."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the full authority boundary test directly answering 0822's closing question, confirming Authority≠Technical Access and completing the Identity≠Role≠Permission≠Responsibility≠Authority chain. Delivers the constitutional Permission⇏Authority inequality and DatabaseState≠GovernanceTruth. Delivers authority as scoped, non-global, temporally versioned, and provenance-bearing via delegation chains (I52). Delivers 'AI execution capability must not imply governance authority' and refines Determination to include AuthorizedActor and ValidProcedure. Delivers the arc's strongest-yet Chapter 4 lesson (knowledge transmission≠authority transmission, with the Authority_new>Knowledge_new epistemic-gap danger). Delivers I53 (revocation≠historical erasure) and I54 (separation of duties) and explicitly forbids circular self-granted authority, extending 0821's circular-justification prohibition. Delivers the complete determination tuple and the capstone convergence of five forbidden implicit-elevation patterns into a candidate central axiom, 'no semantic elevation without an explicit transition.' Correctly extends the I-series to I54, a twelfth consecutive positive continuity instance. Opens Step 197's invariant-conservation system, promising the arc's most mathematically ambitious treatment yet."

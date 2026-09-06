@@ -1,0 +1,194 @@
+sequence: 493
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-223053_what-we-are-actually-validating.md
+title: "LANDMARK: Bhagavad-gītā Chapter 3 (Karma-yoga) as Architecture Validation Exposes Normative State, Role/Duty/Authority/Intention/Agency as Missing First-Class Concepts; Five-Way Gap Taxonomy; 'Δ=∅⇒Success' Rejected a Second Way; Q16-19 Flagged for Revision Before Q20"
+date: "2026-08-26"
+bytes: 36688
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "explicitly disciplined non-collapse framing throughout: 'we are NOT claiming Bhagavad-gītā = formal specification of KnowledgeOS'; theological propositions (agency-to-material-nature, faculty hierarchy) are consistently treated as architectural metaphors, never encoded as engineering facts"
+source_role: PRIMARY_RESEARCH
+canonical_source: 493
+importance: critical
+confidence: high
+about: >
+  Treats the uploaded "Bhagavad-gītā As It Is," Chapter 3 (Karma-yoga, verses 1-9,15,20-31,35-43 and
+  purports), as a disciplined architecture-validation test case for the entire KnowledgeOS theory just
+  closed at 0491/reviewed at 0492 -- explicitly NOT claiming the Gita is a formal specification, but asking
+  "can our model faithfully represent the epistemic situation, reasoning process, conflict, guidance and
+  action without losing important distinctions?" Central conclusion: "Chapter 3 strongly validates the
+  architecture, but it also exposes several places where our formal model is still incomplete" -- forcing
+  Purpose, Normative Authority, Role/Duty, Agency, Motivation, Guidance, and Action Consequence to become
+  first-class concepts.
+
+  **Corrects Question's minimal form**: Arjuna's problem is not "what is karma-yoga?" but conflicting
+  interpretations + uncertain action + personal purpose + a request for decisive determination -- expands
+  Q=(Intent,Context,Purpose,Alternatives,Uncertainty,DecisionNeed). **Proves Purpose was never optional**:
+  Meaning(Action)=f(Action,Actor,Role,Purpose,Intention,Context,NormativeAuthority) -- Action≠ActionMeaning.
+  **The single most important discovery of the file**: introduces **Normative State N_t** (duties,
+  permissions, prohibitions, obligations, principles, authoritative instructions, role-based norms) as
+  distinct from Ideal State -- IdealState≠NormativeState (Ideal describes what the desired state should
+  look like; Normative describes what an actor ought to do under norms). **Extends the discrepancy model**
+  with Δ_N (Normative discrepancy: unknown duty, conflicting duties, misunderstood obligation, action
+  inconsistent with duty, insufficient authority, role-vs-desired-action conflict). **Reconfirms and refines
+  Conflict-is-relational (Q16)**: Conflict∉Σ_A holds, refined to
+  Conflict=(A_i,A_j,Interpretation,Context,NormativeFramework,Status), and introduces
+  **PerceivedConflict≠ActualConflict** (Arjuna sees two instructions as contradictory; Krishna's response
+  reveals their actual relation) -- a four-way Conflict taxonomy {Apparent,Actual,Resolved,Unresolved} with
+  ConflictAssessment:(A_i,A_j,C)->{Apparent,Actual,Undetermined}. **Reconfirms Support⊥Resolution (Q16)**
+  via MoreEvidence⇏Resolution -- Arjuna's problem is not insufficient evidence but insufficient integration
+  of principles. **Introduces Synthesis as a missing sixth Resolution strategy**: Synthesis(A_1,A_2,
+  Context)->A_3, distinct from ordinary inference (worked example: Knowledge vs. Action reconstructed into
+  Knowledge+RightlyOrientedAction=Karma-yoga, not a simple choose-A-or-B) -- Strategy={Evidence,
+  Reinterpretation,Synthesis,Prioritization,Acceptance,Deferral}. Reconfirms the Clarification invariant
+  (InsufficientSemanticDetermination⇏Assumption, first proposed at 0492) via Arjuna's explicit request for
+  determination rather than silent inference. **Introduces a five-component actor state**
+  State_Arjuna=(K,U,N,D,E) with E as a separate AffectiveState (emotional/psychological), explicitly NOT
+  folded into the Knowledge State -- a new DDD boundary (Inquiry/Knowledge/Understanding/
+  NormativeReasoning/Decision/Action/AffectiveContext as distinct concerns). **Validates the multidimensional
+  epistemic state via the text's own senses<mind<intelligence<self hierarchy**, but explicitly REJECTS
+  turning this into another universal epistemic ladder (reusing the corpus's prior rejection of
+  Unknown<Observed<Confirmed<Resolved) -- HierarchyOfFaculties≠EpistemicConfidence. **Introduces a
+  CognitiveCapability dimension** {Perception,Interpretation,Reasoning,Judgment,Orientation}, explicitly
+  kept OUT of Σ_A and assigned to a new **Actor State**:
+  ActorState=(Role,Capabilities,KnowledgeAccess,Authority,Purpose,Commitments,AffectiveContext) --
+  KnowledgeState≠ActorState, with Action=f(Knowledge,Actor,Role,Purpose,Norms,Authority). **Introduces
+  Agency as a distinct concern**: ActionExecution≠AgencyAttribution (grounded structurally, not
+  theologically, in the text's doer/material-nature distinction), decomposing Action into
+  (Actor,Operation,Purpose,Authority,Context,Execution,Outcome,Attribution) -- who performed vs. who
+  authorized vs. who caused vs. who is responsible are explicitly not identical. **Introduces Role->Duty as
+  mandatory** (grounded in the text's prescribed-duty/own-duty-vs-another's-duty framework), and
+  **Duty≠Goal** as a fourth non-collapsing normative concept alongside Goal/Constraint/Ideal. **Formalizes a
+  Normative Model**: N=(Roles,Duties,Obligations,Permissions,Prohibitions,Principles,Authority);
+  NormativeAssessment(A,N,C)->{Compliant,Violating,Undetermined,Conflicting}. **Introduces Authority as
+  distinct from Evidence and Source**: Authority≠Evidence; Source≠Authority (a source may provide evidence
+  without normative authority) -- Source->Evidence, Authority->Norm, Policy->DecisionRule as three
+  non-synonymous governance primitives. **Corrects Sārathi's signature**: from Sārathi(K,I,Δ)->Action to
+  Sārathi:(K,U,N,Δ,P,Role)->Guidance, with Guidance≠Decision≠Action as three distinct stages (guidance may
+  produce a decision, which may authorize an action). Restates Zero/Lord/Sārathi as architectural metaphors
+  only, never literal theological equivalences (Zero=Diagnose, Lord=Reason/Synthesize/Orient, Sārathi=Guide).
+  **Extends the central loop** to Question->Intent->Context->Knowledge->Understanding->
+  NormativeAssessment->Discrepancy->Guidance->Decision->Action->Outcome->Observation, explicitly cyclic:
+  S_{t+1}=T(S_t,Action_t,Outcome_t,Observation_{t+1}) -- "KnowledgeOS is not merely Knowledge->Action. It is
+  a closed epistemic control loop." **Introduces Trajectory as first-class**:
+  Trajectory=(State_0,Transition_1,...,State_n), broader than History/Provenance/Lineage. **Extends
+  Epistemic Lineage** (introduced at 0492) to include normative assessment, guidance, decision, action, and
+  outcome: Observation->Assertion->Understanding->NormativeAssessment->Guidance->Decision->Action->
+  Outcome->Observation. **Reconfirms ObservableAction≠SemanticAction** (same observable action, different
+  semantic status depending on orientation -- attachment-to-results vs. duty-oriented action) and introduces
+  **Intention≠Purpose** as a fifth non-collapsing normative-adjacent concept (worked contrast: Purpose=fulfil
+  duty vs. Intention=obtain personal gain, same action). **Introduces ExemplaryBehavior and a
+  NormPropagation model** (LeaderAction->FollowerBehavior via Example, not mere Rule->Compliance), suggesting
+  a new Governance/Normative-Influence bounded context. **Introduces OptimalGuidance≠MaximumInformation**
+  and **LearningReady/Readiness(Actor,Knowledge,Context)** as a relation (not a property of knowledge
+  itself), grounded in the text's "do not disturb the learner" principle. **Reconfirms Knowledge≠
+  Understanding via CorrectFacts⇏CorrectDecision** -- explicitly named "perhaps the most important
+  validation of the entire KnowledgeOS concept." Formalizes Understanding:
+  U=(ConceptualModel,Relations,Implications,NormativeMeaning,DecisionConsequences,Uncertainty). **Extends
+  the discrepancy model a second time** to Δ=(Δ_E,Δ_U,Δ_N,Δ_D,Δ_Decision), and separately derives a
+  **five-way Gap taxonomy**: Epistemic/Understanding/Normative/Decision/Domain, reworking the Arjuna example
+  as Δ_0=(Δ_E,Δ_U,Δ_N,Δ_Decision,Δ_A) (A=affective). **Rejects the prior "After Moral Resolution -> Δ=∅"
+  Arjuna-example claim a second, independent way** (after 0488's Discrepancy≠Deficiency-based correction):
+  even after moral/normative understanding, uncertainty/risk/incomplete-domain-knowledge/emotional-
+  difficulty/consequences may remain -- Resolution≠Δ=∅; DecisionReady(Δ,P) may hold despite Δ≠∅ --
+  "CompleteKnowledge is unnecessary for action." Proposes a full Chapter-3-derived architecture diagram
+  (Purpose->Question/Inquiry->Semantics->Knowledge->{Understanding,Normative,Domain} States->Zero->
+  Discrepancy->Lord->Sārathi->Decision->Action->Outcome->Observation, closing the loop). **Proposes a new
+  ten-component complete operational state**: 𝒳_t=(Q_t,K_t,U_t,N_t,X_t,A_t,D_t,G_t,Δ_t,H_t), with
+  𝒳_{t+1}=T(𝒳_t,Event_t,Policy_t). Crystallizes two new master invariants: **"Knowledge does not determine
+  Action by itself"** (Action=f(Knowledge,Understanding,Norms,Role,Purpose,Intention,Authority,Context,
+  Decision)) and **"Action does not prove Understanding"** (Knowledge⇏Understanding⇏Decision⇏Action, each
+  transition requiring its own semantics). Closes with a 19-row validation matrix (13 "Validated"/"Strongly
+  validated" rows, 5 rows flagged "Needs extension" or "Major missing concept": Action, Agency, Norms, Role,
+  Authority) and a fourteen-item freeze list (Purpose, Role, Duty, NormativeState, Authority, Intention,
+  Agency, ActorState, LearningReadiness, Synthesis, PerceivedConflict, DecisionGap, NormativeGap, plus the
+  refined Δ tuple). Delivers the file's deepest conclusion: KnowledgeOS was originally conceived as a
+  Knowledge State model but is "actually" an **Epistemic-Normative-Decision-Action System**, whose central
+  problem is reframed as "how does an agent move from an imperfect understanding of a situation, through
+  knowledge, interpretation, norms, discrepancy and guidance, to an authorized action -- while preserving
+  epistemic provenance and without confusing knowledge, recommendation and decision?" Closes explicitly
+  declining to proceed to "Question 20," recommending instead that Questions 16-19 and the complete-state
+  definition be revised first to incorporate the normative and agency dimensions -- a numbering that
+  diverges from the corpus's actual Q1-Q24 sequence already closed at 0491, indicating this file may
+  represent an earlier or parallel draft state relative to the just-processed 0483-0492 arc (a corpus-
+  sequencing observation, not a content contradiction).
+introduces:
+  - concept: "Normative State N_t introduced as a fifth fundamental state, explicitly distinct from Ideal State: IdealState≠NormativeState (what the desired state should look like vs. what an actor ought to do under norms)"
+  - concept: "Δ_N (Normative discrepancy) added to the discrepancy model: unknown duty, conflicting duties, misunderstood obligation, action inconsistent with duty, insufficient authority, role-vs-desired-action conflict"
+  - concept: "PerceivedConflict≠ActualConflict, with a four-way Conflict taxonomy {Apparent,Actual,Resolved,Unresolved} and a ConflictAssessment function distinguishing them"
+  - concept: "Synthesis introduced as a sixth Resolution strategy, distinct from ordinary inference: Synthesis(A_1,A_2,Context)->A_3, producing a higher-order concept rather than choosing between alternatives"
+  - concept: "Actor State introduced as a first-class object distinct from Knowledge State: ActorState=(Role,Capabilities,KnowledgeAccess,Authority,Purpose,Commitments,AffectiveContext); KnowledgeState≠ActorState"
+  - concept: "AffectiveState introduced as a separate contextual state, explicitly kept OUT of the Knowledge State (emotional/psychological dimension of an actor)"
+  - concept: "CognitiveCapability dimension {Perception,Interpretation,Reasoning,Judgment,Orientation} introduced and explicitly excluded from Σ_A, assigned instead to the Actor State"
+  - concept: "HierarchyOfFaculties≠EpistemicConfidence: the text's senses<mind<intelligence<self ordering is explicitly NOT converted into a universal epistemic ladder, reusing the corpus's prior rejection of a single confidence hierarchy"
+  - concept: "Agency introduced as distinct from execution: ActionExecution≠AgencyAttribution, with Action decomposed into (Actor,Operation,Purpose,Authority,Context,Execution,Outcome,Attribution) -- performer≠authorizer≠causer≠responsible-party in general"
+  - concept: "Role->Duty made mandatory; Duty≠Goal established as a fourth non-collapsing normative concept alongside Goal/Constraint/IdealState"
+  - concept: "Normative Model formalized: N=(Roles,Duties,Obligations,Permissions,Prohibitions,Principles,Authority); NormativeAssessment(A,N,C)->{Compliant,Violating,Undetermined,Conflicting}"
+  - concept: "Authority formally distinguished from Evidence and Source: Authority≠Evidence; Source≠Authority; Source->Evidence, Authority->Norm, Policy->DecisionRule kept as three non-synonymous governance primitives"
+  - concept: "Sārathi's signature corrected: Sārathi:(K,U,N,Δ,P,Role)->Guidance, not directly ->Action; Guidance≠Decision≠Action established as three distinct stages"
+  - concept: "Trajectory introduced as first-class: Trajectory=(State_0,Transition_1,...,State_n), broader than History/Provenance/Lineage"
+  - concept: "Epistemic Lineage (from 0492) extended to include normative assessment, guidance, decision, action, and outcome stages"
+  - concept: "Intention≠Purpose established as a fifth non-collapsing normative-adjacent concept (same action, different intention possible)"
+  - concept: "ExemplaryBehavior and a NormPropagation model (LeaderAction->FollowerBehavior via Example) introduced, suggesting a new Governance/Normative-Influence bounded context"
+  - concept: "OptimalGuidance≠MaximumInformation and Readiness(Actor,Knowledge,Context) introduced as a relation (LearningReady), distinct from DecisionReady"
+  - concept: "Five-way Gap taxonomy derived: Epistemic/Understanding/Normative/Decision/Domain gaps, each with a distinct definition"
+  - concept: "'After Moral Resolution -> Δ=∅' Arjuna-example claim rejected a second, independent way (via normative/affective/risk residue rather than 0488's Discrepancy≠Deficiency route): Resolution≠Δ=∅; 'CompleteKnowledge is unnecessary for action'"
+  - concept: "Ten-component complete operational state 𝒳_t=(Q_t,K_t,U_t,N_t,X_t,A_t,D_t,G_t,Δ_t,H_t) proposed, with 𝒳_{t+1}=T(𝒳_t,Event_t,Policy_t)"
+  - concept: "Two master invariants crystallized: 'Knowledge does not determine Action by itself' and 'Action does not prove Understanding' (Knowledge⇏Understanding⇏Decision⇏Action)"
+  - concept: "KnowledgeOS reframed at the deepest level from a Knowledge State model to an Epistemic-Normative-Decision-Action System"
+defines:
+  - concept: "Normative State (N_t)"
+    definition: "N_t represents duties, permissions, prohibitions, obligations, principles, authoritative instructions, and role-based norms -- distinct from the Ideal State, which describes the desired state's content rather than an actor's normative obligations"
+  - concept: "Actor State"
+    definition: "ActorState=(Role,Capabilities,KnowledgeAccess,Authority,Purpose,Commitments,AffectiveContext) -- the formal representation of the Knower/agent, distinct from the Knowledge State they hold"
+  - concept: "Action (extended)"
+    definition: "Action=(Actor,Operation,Purpose,Authority,Context,Execution,Outcome,Attribution) -- distinguishing who performed, who authorized, who caused, and who is responsible as potentially different parties/relations"
+  - concept: "Understanding (U, formal)"
+    definition: "U=(ConceptualModel,Relations,Implications,NormativeMeaning,DecisionConsequences,Uncertainty) -- 'what it means, implies and requires in this context,' distinct from Knowledge ('what is represented')"
+  - concept: "Five-way Gap taxonomy"
+    definition: "Epistemic gap (we don't know), Understanding gap (we know facts but not their meaning), Normative gap (we don't know what ought to be done), Decision gap (we know enough facts but can't determine the decision), Domain gap (reality doesn't match the desired state)"
+refines:
+  - concept: "0482's Q16 Conflict-as-relation and Support≠Truth/Resolution corrections"
+    refinement: "Reconfirmed and refined: Conflict gains a NormativeFramework component and a PerceivedConflict≠ActualConflict distinction; Support⊥Resolution reconfirmed via a Synthesis-requiring worked example rather than mere evidence accumulation"
+  - concept: "0485/0488's Discrepancy model (Δ_E,Δ_U,Δ_D)"
+    refinement: "Extended twice within this file: first to (Δ_E,Δ_U,Δ_N,Δ_D,Δ_Decision), then reworked into a five-way Gap taxonomy (Epistemic/Understanding/Normative/Decision/Domain) applied to a revised Arjuna example"
+  - concept: "0488's rejection of the Arjuna example's 'Δ_3=∅' claim (via Discrepancy≠Deficiency)"
+    refinement: "The same conclusion (Resolution≠Δ=∅) is independently re-derived here via a completely different route -- normative/affective/risk residue after moral resolution -- rather than the deficiency-vs-discrepancy distinction, constituting independent convergent validation of the same correction"
+  - concept: "0483/0484's Sārathi=Guidance-not-authority and Guidance≠Authorization≠Execution≠Transition discipline"
+    refinement: "Extended with a corrected Sārathi signature (K,U,N,Δ,P,Role)->Guidance and the explicit Guidance≠Decision≠Action chain, adding Role and Normative State as new required inputs"
+  - concept: "0492's Epistemic Lineage, Question/Intent State, and master-invariant crystallization"
+    refinement: "Epistemic Lineage extended with normative/guidance/decision/action/outcome stages; the Question object gains Alternatives and DecisionNeed fields; a second, complementary master invariant pair is crystallized here (Knowledge⇏Action; Action⇏Understanding), alongside 0492's single 'never silently convert...' invariant"
+contradicts:
+  - concept: "This file's own closing framing relative to 0486/0491's already-completed Question 20/24 (this file declines to move to 'Question 20,' implying Questions 16-19 are still open)"
+    contradiction: "A sequencing/numbering divergence, not a content contradiction: this file's internal question-numbering (referencing Q16-19 as still needing revision before 'Q20') does not match the corpus's actual processed sequence in which Q20 (0486) through Q24 (0491) and a retrospective (0492) have already been completed and closed -- recorded as a corpus-integrity observation, since the file's substantive content (Normative State, Actor State, Agency, etc.) does not conflict with anything in 0483-0492, it simply appears to originate from a different point in the source material's own internal chronology or a parallel draft branch"
+repeats: []
+bridge_candidates:
+  - "0492 and 0493 independently propose overlapping but non-identical extensions to the 'complete state' (0492: seven new first-class states including QuestionState/InvestigationState/EpistemicLineage/Policy; 0493: a ten-component 𝒳_t including Normative State N_t and Actor State A_t, absent from 0492's list) -- a future canonical-theory pass should reconcile these two parallel extension proposals into one unified state-catalog rather than treating them as independent contributions"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Normative State N_t as a fifth fundamental state (IdealState≠NormativeState), the Δ_N normative discrepancy component, and PerceivedConflict≠ActualConflict with its four-way Conflict taxonomy."
+  - "dimension-registry.md: record Synthesis as a sixth Resolution strategy, Actor State and AffectiveState as new first-class objects distinct from Knowledge State, Agency (ActionExecution≠AgencyAttribution), and Role->Duty/Duty≠Goal/Authority≠Evidence as new normative-governance distinctions."
+  - "dimension-registry.md: record the corrected Sārathi signature (Guidance≠Decision≠Action), Trajectory as first-class, the extended Epistemic Lineage, Intention≠Purpose, the five-way Gap taxonomy, the second independent rejection of 'Δ=∅ after moral resolution,' the ten-component 𝒳_t state, and the two crystallized master invariants (Knowledge does not determine Action; Action does not prove Understanding)."
+anchor_test:
+  anchor: "0482's Q16 Conflict-as-relation/Support≠Resolution discipline; 0485/0488's Discrepancy model and its rejection of 'Δ=∅ after resolution'; 0483/0484's Sārathi=Guidance-not-authority discipline; 0492's Epistemic Lineage and master-invariant crystallization; 0420-0425's prior Bhagavad Gita engagement arc"
+  supports_dimension: "LANDMARK: uses Bhagavad-gītā Chapter 3 (Karma-yoga) as a disciplined architecture-validation test case (explicitly not a formal-specification claim) that exposes Normative State, Role/Duty/Authority/Intention/Agency, Actor State, and Synthesis as missing first-class concepts; independently re-derives (via a different route than 0488) the rejection of 'Δ=∅ after moral resolution'; corrects Sārathi's signature to require Role and Normative State inputs while preserving Guidance≠Decision≠Action; extends Epistemic Lineage and introduces Trajectory as first-class; delivers a five-way Gap taxonomy and a ten-component complete operational state 𝒳_t; and crystallizes two complementary master invariants (Knowledge does not determine Action by itself; Action does not prove Understanding) that reframe KnowledgeOS from a Knowledge State model into an Epistemic-Normative-Decision-Action System"
+  refines_or_contradicts: "refines 0482's Conflict/Support discipline, 0485/0488's discrepancy model, and 0483/0484's Sārathi discipline; independently reconfirms 0488's rejection of an empty-discrepancy resolution claim via a different argument; diverges in question-numbering from the corpus's actual closed Q1-Q24 sequence (0449-0491) -- a sequencing observation, not a content contradiction; overlaps with but does not contradict 0492's parallel state-catalog extension, flagged as a bridge_candidate for future reconciliation"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The independent, second-route rejection of the Arjuna example's 'Δ=∅ after moral resolution' claim -- this time via residual normative/affective/risk discrepancy rather than 0488's Discrepancy≠Deficiency distinction -- is convergent validation from two structurally different arguments that a resolved crisis need not drive all discrepancy to zero, strengthening the corpus's confidence in Resolution≠Δ=∅ as a robust finding rather than an artifact of one particular formalization."
+  - "The 19-row validation matrix explicitly flags five theory components (Action, Agency, Norms, Role, Authority) as 'Needs extension' or 'Major missing concept,' giving the clearest itemized accounting yet of exactly which parts of the closed 24-question theory the Gita test case found insufficient."
+undefined_concepts: []
+open_questions:
+  - "Whether the ten-component 𝒳_t=(Q_t,K_t,U_t,N_t,X_t,A_t,D_t,G_t,Δ_t,H_t) proposed here is reconciled with 0492's seven-item state-catalog extension into one unified model"
+  - "Whether the corpus's actual Q1-Q24 sequence (already closed at 0491) is retroactively revised to incorporate Normative State/Actor State/Agency, per this file's explicit recommendation to revise Q16-19 before any further question numbering"
+  - "Whether the proposed Governance/Normative-Influence bounded context (from ExemplaryBehavior/NormPropagation) is integrated with 0492's nine-context DDD decomposition"
+  - "The apparent chronological/numbering divergence between this file's internal Q16-19-before-Q20 framing and the corpus's actual already-closed Q20-Q24 sequence -- whether this reflects an earlier draft, a parallel branch, or a source-corpus ordering artifact"
+tier2_triggered: true
+tier2_reason: "Uses Bhagavad-gītā Chapter 3 as a disciplined, explicitly non-literal architecture-validation exercise that exposes Normative State, Role/Duty/Authority/Intention/Agency, Actor State, and Synthesis as missing first-class concepts across the entire closed 24-question KnowledgeOS theory; independently re-derives, via an argument route distinct from 0488, the rejection of the 'Δ=∅ after moral resolution' Arjuna-example claim, providing convergent validation of Resolution≠Δ=∅; corrects Sārathi's function signature to require Role and Normative State while preserving the corpus's Guidance≠Decision≠Action discipline; introduces a five-way Gap taxonomy (Epistemic/Understanding/Normative/Decision/Domain), a Trajectory-as-first-class concept, and a ten-component complete operational state 𝒳_t; and crystallizes two complementary master invariants (Knowledge does not determine Action by itself; Action does not prove Understanding) that explicitly reframe the entire KnowledgeOS project from a Knowledge State model into an Epistemic-Normative-Decision-Action System -- while also surfacing a corpus-sequencing observation (its internal Q16-19-before-Q20 framing diverges from the already-closed Q20-Q24 sequence at 0486-0491)."

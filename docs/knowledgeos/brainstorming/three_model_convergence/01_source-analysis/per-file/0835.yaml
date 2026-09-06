@@ -1,0 +1,188 @@
+sequence: 835
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-011110_step_207_context-contracts.md
+title: "Step 207 -- Context Contracts (PHASE-C-CAPSTONE MILESTONE, delivers 0834's promised Context Contracts, FOURTH CONSECUTIVE FILE WITH NO NEW I-SERIES NUMBER): Delivers the Formal Contract C_{A→B}=(I,M,V,P,G,F,L) and APIContract⊊SemanticContract -- Delivers All Six KnowledgeOS-Loop Contracts (O→E, E→A, A→G, G→D, D→X, X→O) Each With Named Semantic Concerns and 'Number Without Semantic Definition Is Not Knowledge' -- Delivers Relation Type as First-Class (Supports≠Causes≠Authorizes≠DerivedFrom≠Supersedes) and KnowledgeGraph≠KnowledgeOS -- Delivers 'Backward Compatible Schema⇏Backward Compatible Meaning' -- Delivers 'Failure to Conclude≠Failure of the Knowledge System' and the Contract Design Objective Minimize Coupling Subject to Semantic Sufficiency -- Delivers Provenance Is a Prerequisite for Trustworthy Explanation, Not a Substitute for Explanation -- Delivers AI_can(x)⇏AI_may(x) as 'One of the Strongest Governance Implications of the Entire Model' -- Delivers 'New Knowledge May Change Future Decisions Without Rewriting Past Decisions' and the Retrospective-Judgment Distinction WasDecisionValidAt(t)? vs WouldWeMakeDecisionNow? -- Opens Step 208's Semantic Contract Algebra, Posing the Central Assurance Question: Can a Chain of Individually Valid Transformations Produce an Invalid or Misleading Conclusion?"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily DDD/mathematical semantic-contract formalization; briefly re-invokes the Chapter 4 lens once more for agency/discernment and the historical-decision-immutability principle, without new Gita textual content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 835
+importance: critical
+confidence: high
+about: >
+  Directly executes the task proposed at 0834's close, opening "how can one bounded context use another
+  context's knowledge without importing or corrupting its internal model? The answer is the semantic
+  contract" -- explicitly framing the move from "Context Map" to boxed **`Contractual Architecture`**.
+
+  **§207.1-207.2 delivers the formal contract definition**, boxed:
+  **`C_{A→B}=(I,M,V,P,G,F,L)`** (identity/meaning/version/preconditions/guarantees/failure-semantics/
+  lineage), explicitly "considerably more than an API schema," crystallized: **`APIContract⊊
+  SemanticContract`** -- worked through a concrete `POST /assessment {"status":"SUPPORTED"}` example that
+  fails to convey what "SUPPORTED" means, under which model, based on which evidence, or whether it is
+  authoritative.
+
+  **§207.3-207.18 derives all six KnowledgeOS-loop contracts** in turn, each with its own semantic
+  concern: Evidence→Assessment (Assessment must know the evidence VERSION it assessed, not merely
+  `Latest(E_1)`, "one of the most important reproducibility rules we have derived"; evidence revision
+  triggers `ReassessmentRequested`, never silent retroactive reinterpretation); Assessment→Governance
+  (Governance consumes a qualified epistemic result, never Assessment's internal model; a raw
+  `Confidence=0.91` must never be silently interpreted as `ApprovalProbability`, crystallized: **`Number
+  without semantic definition is not knowledge`**; every assessment output must expose epistemic status,
+  not merely a score); Governance→Decision (`Policy→Decision` explicitly does not mean `Policy=Decision`,
+  preserving human/organizational judgment; the decision's `AuthorityRef` is version-pinned so historical
+  decisions remain interpretable after authority changes); Decision→Execution (Execution receives an
+  `AuthorizedAction` instruction, not the whole Decision aggregate; reaffirms `DecisionApproved⇒
+  ExecutionPermitted/Requested`, never `ExecutionSuccessful`); Execution→Observation
+  (`ExecutionResult≠Outcome`, worked through `HTTP=200` while the business outcome may still be wrong);
+  Observation→Evidence (closes the loop, `K_{t+1}=Update(K_t,O_{t+1})`, "how KnowledgeOS learns without
+  rewriting its past").
+
+  **§207.19-207.23 delivers the complete semantic cycle**, boxed:
+  **`O→E→A→G→D→X→O'`**, explicitly noting the six arrows carry six DIFFERENT semantic relation types
+  (qualification/derivation; epistemic inference; informational input; normative decision context;
+  authorization/action instruction; observation of consequence), crystallized as **relation type becoming
+  first-class**: a relationship is formalized as `R=(Source,Target,Type,Evidence,Validity,Time)`, with six
+  named candidate relation types (`DerivedFrom`/`SupportsAssessment`/`InformsGovernance`/
+  `ConstrainsDecision`/`AuthorizesAction`/`ProducesObservation`), explicitly warning that a generic
+  `relatedTo` graph edge "is almost useless for rigorous reasoning" because
+  `Supports≠Causes≠Authorizes≠DerivedFrom≠Supersedes` -- "critical for AI reasoning." Delivers a formal
+  semantic graph `G_K=(V,R)` over the nine core vocabulary terms, immediately disciplined: boxed
+  **`KnowledgeGraph≠KnowledgeOS`** -- the graph is only a representation of semantic relationships;
+  KnowledgeOS additionally requires state, transitions, governance, execution, lineage, and invariants.
+
+  **§207.24-207.26 delivers contract versioning** (`Version(C)`, consumers must not silently reinterpret
+  old messages under new semantics) and **the file's central schema-versus-semantics result**: identical
+  JSON schemas across versions can carry incompatible meaning, boxed: **`Backward compatible schema⇏
+  Backward compatible meaning`**, "especially important for AI systems." Delivers a proposed
+  contract-failure taxonomy (`ContractViolation`/`MissingEvidence`/`InvalidVersion`/`UnauthorizedRequest`/
+  `PolicyConflict`/`UnavailableDependency`/`ExecutionFailure`), explicitly "the exact taxonomy remains to
+  be derived."
+
+  **§207.27-207.31 delivers "failure is information"**: an assessment that cannot conclude due to
+  insufficient evidence is not necessarily a system failure but a legitimate `KnowledgeStatus=
+  InsufficientEvidence`, crystallized as **"an extremely important principle"**, boxed: **`Failure to
+  conclude≠failure of the knowledge system`**. Re-confirms `Unknown≠Refuted`/`Uncertain≠False` once more
+  as "basic epistemic discipline... major software consequences," worked through a concrete bad-versus-
+  good design contrast (`assessmentValid=true/false` versus `AssessmentStatus+Uncertainty+Basis+
+  Validity`). Delivers **the information-preserving contract requirement**
+  (`I_needed(G)⊆Information(C_{A→G})`, but `Information(C_{A→G})≪Information(A)`), crystallized as
+  **`Contract=Minimal sufficient semantic projection`** and the design objective, boxed:
+  **`Minimize coupling subject to semantic sufficiency`**, explicitly "a much better optimization target
+  than simply minimizing payload size."
+
+  **§207.32-207.36 delivers the provenance graph** (`P=(V,E_P)`, giving a decision an explicit path
+  `E_1→A_1→G_1→D`, "explainability without requiring an AI model to 'remember' its reasoning") and **the
+  provenance-versus-explanation distinction**, crystallized: **`Provenance is a prerequisite for
+  trustworthy explanation, not a substitute for explanation`** (a provenance graph can exist without a
+  human-readable explanation; a generated explanation can exist without reliable provenance, "which is
+  dangerous"). Delivers the concrete AI architecture consequence: an AI-generated Assessment must retain
+  `ModelVersion`/`Prompt-InstructionVersion`/`EvidenceReferences`/`Context`/`Output`/
+  `Uncertainty-Confidence`/`ValidationResult`, explicitly clarified as NOT requiring exposed hidden
+  chain-of-thought -- only "auditable input/output provenance." Delivers **`Actor(D)≠AI`** unless
+  governance explicitly grants autonomous decision authority, "must never be inferred merely from
+  technical capability."
+
+  **§207.37 delivers the Chapter 4 agency lens once more**: Knowledge distinguished from Agency, Capability
+  from Authority, crystallized as what the file itself calls **"one of the strongest governance
+  implications of the entire model"**, boxed: **`AI_can(x)⇏AI_may(x)`**.
+
+  **§207.38-207.39 delivers a full contract matrix table** (all six loop edges with named semantic
+  relation and main concern) and **the contract invariant**, boxed:
+  **`I_C=Identity∧Version∧SemanticIntegrity∧Provenance∧TemporalValidity`**.
+
+  **§207.40-207.43 delivers "the old state / new state" insight a further time**: a decision made under
+  `Assessment^{v1}` must never be silently mutated as though based on `Assessment^{v2}`; a new assessment
+  triggers `Reconsideration`/`NewDecision` rather than retroactive rewriting, crystallized as **"one of the
+  strongest architectural consequences of the Chapter 4 lens"**, boxed: **`New knowledge may change future
+  decisions without rewriting past decisions`**. Delivers **the retrospective-judgment distinction**,
+  boxed: `WasDecisionValidAt(t)?` versus `WouldWeMakeDecisionNow?` (`Valid(D,t)` may hold while
+  `Valid(D,t+1)` under changed knowledge/policy does not, "this does not necessarily mean the historical
+  decision was erroneous"), crystallized as **"a very strong governance principle"**: boxed:
+  **`Historical validity must be evaluated against the knowledge, policy, and authority applicable at that
+  time`**.
+
+  **§207.44 delivers the Step 207 verdict**: six named PASS/CONSISTENT sub-verdicts spanning DDD,
+  Mathematics, Statistics, Governance, AI (explicitly: "inference does not silently acquire authority"),
+  and the Gita Chapter 1-4 lens, reaffirming five compact inequalities including `Unknown≠False`.
+
+  **Closes opening "Step 208 — Semantic Contract Algebra,"** posing contract composition
+  (`C_2∘C_1` for `C_1:E→A`, `C_2:A→G`) and a full list of composition properties to investigate
+  (information preservation/semantic loss/version compatibility/monotonicity/contradiction/uncertainty
+  propagation/provenance preservation), crystallized into the arc's central assurance question, boxed:
+  **`Can a chain of individually valid transformations produce an invalid or misleading conclusion?`**,
+  explicitly named "central to the entire KnowledgeOS architecture -- and to our statistical/AI assurance
+  model." No actual repository implementation occurs within this file itself, and **no new numbered
+  invariant is introduced -- the fourth consecutive file (0832-0835) without an I-series addition**,
+  despite the newly-introduced `I_C` contract-invariant formula (a distinct, non-numbered naming
+  convention) and several other strong candidate principles.
+introduces:
+  - concept: "The formal contract definition C_{A→B}=(I,M,V,P,G,F,L), and APIContract⊊SemanticContract"
+  - concept: "All six KnowledgeOS-loop contracts (O→E, E→A, A→G, G→D, D→X, X→O), each with a distinct named semantic concern"
+  - concept: "'Number without semantic definition is not knowledge,' and the requirement that assessment output expose epistemic status, not merely a score"
+  - concept: "Relation type as first-class (R=(Source,Target,Type,Evidence,Validity,Time)), with six named candidate relation types, and the danger of a generic 'relatedTo' edge"
+  - concept: "The formal semantic graph G_K=(V,R), and KnowledgeGraph≠KnowledgeOS"
+  - concept: "Contract versioning, and 'backward compatible schema⇏backward compatible meaning'"
+  - concept: "'Failure to conclude≠failure of the knowledge system,' with a concrete bad/good design contrast"
+  - concept: "The information-preserving contract requirement, 'Contract=Minimal sufficient semantic projection,' and 'minimize coupling subject to semantic sufficiency'"
+  - concept: "The provenance graph and 'provenance is a prerequisite for trustworthy explanation, not a substitute for explanation'"
+  - concept: "The concrete AI-architecture provenance requirement (ModelVersion/Prompt-InstructionVersion/EvidenceReferences/Context/Output/Uncertainty/ValidationResult), explicitly not requiring exposed chain-of-thought"
+  - concept: "Actor(D)≠AI unless governance explicitly grants autonomous decision authority"
+  - concept: "AI_can(x)⇏AI_may(x), self-flagged as one of the strongest governance implications of the entire model"
+  - concept: "The full contract matrix table across all six loop edges, and the contract invariant I_C"
+  - concept: "'New knowledge may change future decisions without rewriting past decisions,' self-flagged as one of the strongest Chapter-4-lens consequences"
+  - concept: "The retrospective-judgment distinction WasDecisionValidAt(t)? vs. WouldWeMakeDecisionNow?, and 'historical validity must be evaluated against the knowledge, policy, and authority applicable at that time'"
+  - concept: "The Step 207 verdict's six named sub-verdicts"
+  - concept: "Step 208's opening: Semantic Contract Algebra, and the central assurance question of whether a chain of individually valid transformations can produce an invalid or misleading conclusion"
+defines:
+  - concept: "The semantic contract"
+    definition: "A formal specification of how one bounded context may consume another's semantic output without importing or corrupting its internal model, C_{A→B}=(Identity,Meaning,Version,Preconditions,Guarantees,FailureSemantics,Lineage) -- strictly a superset of a technical API schema, since an API contract only specifies data shape while a semantic contract additionally specifies what the data MEANS, under which model, based on which evidence, at what time, under which epistemic criteria, and whether the result is authoritative for governance purposes; consumers are entitled only to the minimal sufficient semantic projection the contract promises, never the producing context's full internal state"
+  - concept: "'Backward compatible schema⇏backward compatible meaning'"
+    definition: "Two versions of a data structure can be byte-for-byte identical in their JSON schema (the same field names and types, e.g. status:'APPROVED' in both v1 and v2) while the underlying semantic meaning of that value has changed between versions -- so schema-level backward compatibility checks (as commonly performed by API tooling) are insufficient to guarantee that a consumer correctly interprets a message, and semantic compatibility must be verified independently of, and in addition to, schema compatibility, a distinction the file flags as especially important for AI systems that may otherwise silently reinterpret old data under new semantic assumptions"
+  - concept: "The retrospective-judgment distinction"
+    definition: "Two categorically different questions that must never be conflated when evaluating a past decision: 'was this decision valid at the time it was made?' (Valid(D,t), evaluated against the knowledge, policy, and authority that existed at time t) versus 'would we make this same decision now?' (WouldWeMakeDecisionNow?, evaluated against today's knowledge, policy, and authority) -- a decision can be genuinely valid at t while the same decision would no longer be made at t+1 purely because the information state has since changed, and this divergence does not by itself mean the original historical decision was erroneous; historical validity must always be judged against the epistemic and governance conditions applicable at the time the decision was made, never retroactively against later knowledge"
+refines:
+  - concept: "0834's closing proposal of Step 207's Context Contracts task across six loop-edge contracts, each specified via eight named dimensions"
+    refinement: "DELIVERED IN FULL: all six contracts are derived in turn with concrete example fields, a full contract matrix table, and the formal contract invariant I_C, directly fulfilling and exceeding the eight-dimension specification originally proposed (adding relation-type-as-first-class, the semantic graph G_K, and the provenance/explanation distinction beyond what was listed)"
+  - concept: "0831's/0833's Decision Basis composite B_D=(AssessmentRef,PolicyRef,AuthorityRef,ContextRef) and 0821's/0823's authority-versioning family"
+    refinement: "Directly extended into the concrete Governance→Decision and Decision→Execution contracts, with an explicit new rule that Decision's AuthorityRef must be version-pinned so historical decisions remain interpretable after authority changes -- giving the earlier abstract composite a concrete cross-context transport mechanism"
+  - concept: "0806's/0821's evidence-independence and 'relationship claims are themselves knowledge claims' family, and 0834's introduction of relation type as important for bounded-context boundaries"
+    refinement: "Extended into a formal, typed relationship object R=(Source,Target,Type,Evidence,Validity,Time) with six concretely named candidate relation types, explicitly warning against the generic, semantically-empty 'relatedTo' edge -- the arc's most concrete graph-typing proposal to date, directly relevant to the still-unreconciled graph/dimension taxonomy question tracked since 0813/0819/0821/0822/0823"
+  - concept: "0813's/0814's/0824's deterministic-assurance family and 0827's Level 1/Level 2/Level 3 epistemic-discipline device"
+    refinement: "Extended with 'provenance is a prerequisite for trustworthy explanation, not a substitute for explanation' -- a new, sharply-stated corollary distinguishing two forms of AI trustworthiness (traceable provenance vs. generated explanation) that the arc had not previously separated this explicitly"
+  - concept: "0808's I1-I14 through 0831's I75 invariant series (last extended at 0831; 0832, 0833, 0834 introduced none)"
+    refinement: "STILL NOT EXTENDED -- a fourth consecutive file (0832-0835) without a new I-series number, despite the newly-introduced I_C contract-invariant formula using a distinct, non-numbered naming convention (subscript C for 'contract' rather than a sequential integer), reinforcing that this is a sustained pattern rather than a passing anomaly, worth flagging with high priority for the eventual canonical synthesis"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 208's actual Semantic Contract Algebra, directly answering whether a chain of individually valid transformations can produce an invalid or misleading conclusion -- a HIGH-PRIORITY bridge candidate given its explicit framing as central to the entire KnowledgeOS architecture and to the statistical/AI assurance model."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record 'backward compatible schema⇏backward compatible meaning' as a directly applicable, high-value API/AI-integration caution, extending the arc's semantic-elevation discipline into the versioning domain."
+  - "dimension-registry.md: record the typed relationship object R=(Source,Target,Type,Evidence,Validity,Time) with six named candidate relation types as the arc's most concrete graph-typing proposal, directly relevant to the unreconciled graph/dimension taxonomy question."
+  - "dimension-registry.md: record 'provenance is a prerequisite for trustworthy explanation, not a substitute for explanation' as a sharply-stated, directly applicable AI-trustworthiness distinction."
+  - "dimension-registry.md: record that this is the FOURTH CONSECUTIVE file (0832-0835) without a new numbered invariant -- now a firmly sustained pattern across the entire Phase-B/Phase-C DDD-derivation run, worth flagging with high priority for the eventual canonical synthesis to determine whether invariant-cataloguing has been deliberately paused during applied derivation work."
+anchor_test:
+  anchor: "0834's closing proposal of Step 207's Context Contracts task; 0831's/0833's Decision Basis composite; 0813's/0814's/0824's deterministic-assurance family; 0827's Level 1/2/3 discipline; the still-unreconciled graph/dimension taxonomy question; the I1-I75 invariant series"
+  supports_dimension: "Delivers the full Context Contracts derivation directly answering 0834's closing question, deriving all six loop-edge contracts with concrete fields, a contract matrix, and the formal contract invariant I_C, substantially exceeding the originally-proposed eight-dimension specification. Extends the Decision Basis composite into concrete cross-context transport mechanisms with version-pinned authority references. Delivers the arc's most concrete graph-typing proposal to date (typed relationships with six named types), directly relevant to the unreconciled graph/dimension taxonomy question. Delivers 'backward compatible schema⇏backward compatible meaning' as a sharp, currently-applicable API/AI-integration safeguard. Delivers 'provenance is a prerequisite for trustworthy explanation, not a substitute for explanation,' extending the deterministic-assurance and epistemic-discipline families. Delivers AI_can(x)⇏AI_may(x), self-flagged as one of the model's strongest governance implications. For a fourth consecutive file, introduces zero new numbered invariants -- now a firmly established pattern across the entire applied-DDD-derivation run (0832-0835), worth flagging with high priority. Opens Step 208's well-posed Semantic Contract Algebra task, explicitly central to the entire KnowledgeOS architecture and its statistical/AI assurance model"
+  refines_or_contradicts: "directly delivers and exceeds 0834's closing proposal; extends the Decision Basis composite into concrete transport mechanisms; extends the evidence-independence/relationship-claims family with concrete relation typing; extends the deterministic-assurance and epistemic-discipline families; does not extend the I-series for a fourth consecutive file (no contradiction, firmly established pattern); no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§207.5's explicit rule 'Assessment_t→EvidenceRef(E_1,v1), not Assessment_t→Latest(E_1),' immediately named 'one of the most important reproducibility rules we have derived,' is directly checkable evidence of the arc's conservation/historical-immutability discipline given a concrete, implementable contract-level realization."
+  - "§207.25's worked example of an identical JSON schema (status:'APPROVED') across two versions with genuinely different meaning, immediately crystallized as Backward compatible schema⇏Backward compatible meaning, is directly checkable evidence of a subtle but high-value distinction with clear real-world API-versioning applicability."
+  - "§207.42's explicit worked distinction (Valid(D,t) may hold while Valid(D,t+1) under changed knowledge/policy does not, 'this does not necessarily mean the historical decision was erroneous'), immediately followed by the governance principle that historical validity must be judged against the conditions applicable at the time, is directly checkable evidence of a mature, non-obvious governance safeguard against unfair retroactive judgment of past decisions."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 208's actual Semantic Contract Algebra was ever delivered, and whether it resolves the central assurance question of whether a chain of individually valid transformations can produce an invalid or misleading conclusion."
+  - "Whether the newly-introduced typed relationship object R and its six candidate relation types are ever reconciled with the still-unresolved graph/dimension taxonomy question (five-graph federation at 0822 vs. six/seven-dimension framings at 0823/0824)."
+  - "Whether the sustained zero-new-invariant pattern (now four consecutive files, 0832-0835) continues, reverses, or is ever explicitly explained/justified by the corpus itself in a later file."
+tier2_triggered: true
+tier2_reason: "PHASE-C-CAPSTONE MILESTONE: delivers the full Context Contracts derivation directly answering 0834's closing question, deriving all six KnowledgeOS-loop contracts with concrete example fields, a complete contract matrix, and the formal contract invariant I_C -- substantially exceeding the originally-proposed eight-dimension specification. Delivers 'number without semantic definition is not knowledge' and the requirement that assessment output expose epistemic status rather than a bare score. Delivers relation type as first-class, the arc's most concrete graph-typing proposal to date, directly relevant to the unreconciled graph/dimension taxonomy question. Delivers KnowledgeGraph≠KnowledgeOS and 'backward compatible schema⇏backward compatible meaning,' a sharp, currently-applicable API/AI-integration safeguard. Delivers 'failure to conclude≠failure of the knowledge system' and the design objective 'minimize coupling subject to semantic sufficiency.' Delivers 'provenance is a prerequisite for trustworthy explanation, not a substitute for explanation,' and AI_can(x)⇏AI_may(x), self-flagged as one of the strongest governance implications of the entire model. Delivers 'new knowledge may change future decisions without rewriting past decisions' and the retrospective-judgment distinction (WasDecisionValidAt(t)? vs. WouldWeMakeDecisionNow?), a mature safeguard against unfair retroactive judgment. For a FOURTH CONSECUTIVE file (0832-0835), introduces zero new numbered invariants despite substantial new content, now a firmly established pattern across the entire applied-DDD-derivation run, worth flagging with high priority for the eventual canonical synthesis. Opens Step 208's Semantic Contract Algebra, explicitly framed as central to the entire KnowledgeOS architecture and its statistical/AI assurance model."

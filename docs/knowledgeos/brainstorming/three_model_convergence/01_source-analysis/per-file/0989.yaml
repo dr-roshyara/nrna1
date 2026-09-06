@@ -1,0 +1,102 @@
+sequence: 989
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-190114_step_287_reviewer-b-equality-identity-semantics-observability-research-mandate.md
+title: "Reviewer B -- Equality/Identity/Semantics/Observability Research Mandate: The Full Fifteen-Section Commissioning Prompt for the Equality-Hierarchy Research Programme This Reconstruction Has ALREADY SEEN EXECUTED (Files 0982-0985), Directly Resolving the Long-Tracked Bridge Candidate '256.21' (Command Not-Equal Transformation, Boxed)"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a second reviewer's ('Reviewer B') full research-mandate prompt, commissioning the equality/identity/semantics/observability research pass this reconstruction has already seen executed via files 0982-0985 (D285-5/D285-6 equality work)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 989
+importance: critical
+confidence: high
+about: >
+  A second reviewer's response, identifying D285-5 (Action/Result Formal Test) as exposing "a formal-method
+  problem about equality itself" and delivering, as its main content, a full FIFTEEN-SECTION research-mandate
+  prompt intended for "the next Claude/Research session" -- this reconstruction has ALREADY SEEN this exact
+  research pass EXECUTED, via files 0982-0985 (the D285-6 equality-defect self-correction, the seven-named
+  query classes for observational equality, the structural/semantic/observational three-way test).
+
+  **Opens with the key methodological insight**: not merely `δ(K,o₁)=δ(K,o₂)⇏o₁=o₂`, but **"a formal
+  property involving equality is meaningless until the equality relation is explicitly typed"** -- restates
+  the three equality levels (structural: `Π` inside identity, vacuous antecedent; semantic: the load-bearing
+  formulation; observational: not yet formally defined by D285-5) and the corpus hierarchy `history⊊
+  structural⊊semantic`.
+
+  **DIRECTLY RESOLVES THE LONG-TRACKED BRIDGE CANDIDATE "§256.21"**: cited in §1.9 of the embedded prompt as
+  establishing **`Command ≠ Transformation`** as "a corpus-derived distinction" -- confirming this is a
+  genuine, already-boxed corpus result, now directly quotable, though its own full derivation is still not
+  encountered.
+
+  **The embedded fifteen-section research prompt** (§1 Research Context through §15 Programme Discipline)
+  delivers: RQ1-RQ4 (history/structural/semantic/observational equality, each demanding corpus citation, not
+  invention); §4 a formal hierarchy test (`history⊆structural⊆semantic`, strictness not assumed); §5 a
+  revalidation table (TRUE/FALSE/VACUOUS/UNDEFINED, "do not collapse these categories"); §6 an injectivity
+  precision-check (injective in `o` vs `(K,o)` vs modulo semantic/observational equivalence); §7 an identity-
+  collision question separating operation/authority-act/state/event/provenance identity; §8 explicit
+  connections to D285-1/-2/-4/-5/-7, R3-R5, H-K06/H-K08/H-K11/H-K16, with an explicit prohibition on
+  reopening already-destroyed hypotheses (Θ-algebra, universal knower, Knowledge Ātma, Jñāna→Knowledge)
+  "unless a formal dependency is discovered"; §9 the independence test methodology; **§10 delivers a clean
+  three-question separation directly useful for future synthesis**: "What is an operation? / What state
+  results from an operation? / When are two resulting states considered equal?" -- explicitly warning the
+  next pass "must not solve Question C merely by repeating Question A or B"; §11 the full evidence-discipline
+  vocabulary (`[S]/[C]/[P]/[R]/[H]/CORPUS/DERIVED/EXECUTED/IMPLEMENTATION/NORMATIVE`); §12 an eight-point
+  falsification-first requirement (actively try to destroy the semantic-equality result); §13 seven output
+  artifacts (E1-E7, ending in a research-verdict grade restricted to `R6/R5/R4/R2/RX/OPEN`); §14 the single
+  closing research question ("is equality itself a missing formal primitive of KnowledgeOS, or does the
+  existing corpus already contain enough typed structure to derive it?"); §15 the standing research-
+  discipline prohibitions (no canonical selection, no Constitution modification, no assuming Sañjaya=Ω is
+  canonical, no assuming semantic equality already exists merely because D285-5 uses the notation).
+
+  **Closes with the file's own justification**: warns that "`semantic equality` becomes an unstated research
+  primitive simply because D285-5 needs it... would repeat exactly the kind of error the programme has been
+  designed to prevent," and proposes the clean distinction "operation identity ≠ result identity ≠ state
+  identity ≠ equality relation" as the next research target -- **this reconstruction can confirm, having
+  already read files 0982-0985, that this exact mandate WAS subsequently executed and its central question
+  substantively answered** (semantic and observational equality were formally specified via named query
+  classes in file 0982, and the D285-6 equality defect was found and corrected).
+introduces:
+  - concept: "The full quoted corpus reference '§256.21', establishing Command≠Transformation as a corpus-derived (not merely research) distinction -- resolving this reconstruction's long-tracked bridge candidate"
+  - concept: "The explicit three-question separation: What is an operation? / What state results from an operation? / When are two resulting states considered equal? -- a clean methodological tool for future synthesis work"
+  - concept: "The eight-point falsification-first requirement demanding active attempts to destroy the semantic-equality result before accepting it"
+  - concept: "The seven-artifact (E1-E7) output specification and the restricted research-verdict grade vocabulary (R6/R5/R4/R2/RX/OPEN)"
+defines: []
+refines:
+  - concept: "The D285-5 action/result equality finding, already tracked via this reconstruction's earlier files"
+    refinement: "REFRAMED as exposing a deeper formal-method problem (equality relations must be explicitly typed), commissioning the dedicated equality-research pass this reconstruction has already seen executed (files 0982-0985)"
+  - concept: "This reconstruction's long-tracked bridge candidate '§256.21' (Command≠Transformation, boxed)"
+    refinement: "DIRECTLY QUOTED AND CONFIRMED as a corpus-derived distinction, resolving the bridge candidate, though its own original derivation site remains unencountered"
+  - concept: "Files 0982-0985's already-documented equality-hierarchy research (structural/semantic/observational equality, the D285-6 self-correction)"
+    refinement: "REVEALED TO HAVE BEEN GENUINELY COMMISSIONED by this exact fifteen-section mandate, confirming the disciplined kernel-track's commissioning-to-execution pipeline (already observed once for file 0984/D285-x) held again for the equality-research sub-track"
+contradicts: []
+repeats:
+  - "The three-level equality analysis (structural/semantic/observational) and the history⊊structural⊊semantic hierarchy substantially repeat content this reconstruction has already documented via files 0982-0985; this file's distinctive contribution is the full commissioning-prompt structure and the direct resolution of the §256.21 bridge candidate."
+bridge_candidates:
+  - "The original derivation site of corpus reference '§256.21' (Command≠Transformation) -- watch for whether this reconstruction directly encounters it."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the direct resolution of the long-tracked '§256.21' bridge candidate (Command≠Transformation, corpus-derived)."
+  - "dimension-registry.md: record the confirmed commissioning-to-execution pipeline for the equality-research sub-track: this fifteen-section mandate genuinely produced the equality findings already documented via files 0982-0985."
+  - "dimension-registry.md: record the reusable three-question separation (operation/result/equality) and the eight-point falsification-first discipline as directly applicable methodological tools."
+anchor_test:
+  anchor: "Files 0982-0985's already-documented equality-hierarchy findings; this reconstruction's long-tracked '§256.21' bridge candidate"
+  supports_dimension: "Directly resolves the §256.21 bridge candidate and confirms the genuine commissioning-to-execution pipeline for the equality-research sub-track"
+  refines_or_contradicts: "confirms (is the genuine commissioning predecessor of) files 0982-0985's findings; resolves the bridge candidate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The mandate's RQ1-RQ4 and E1-E7 artifact specifications are directly checkable, one-to-one, against files 0982's/0985's own executed equality findings for consistency."
+  - "The '§256.21' citation (Command≠Transformation) is directly quotable and checkable against any future direct encounter with that corpus location."
+undefined_concepts: []
+open_questions:
+  - "The original derivation site of corpus reference §256.21."
+  - "Whether the full seven-artifact E1-E7 output specification was produced as a distinct, named set of files, or folded into the D285-5/D285-6/D285-8 artifacts this reconstruction has already documented."
+tier2_triggered: true
+tier2_reason: "Directly resolves the long-tracked '§256.21' bridge candidate and confirms the genuine commissioning-to-execution pipeline for the equality-research sub-track this reconstruction has already documented via files 0982-0985. Classified importance critical and confidence high given the direct, quotable, cross-checkable content and its role as the sub-track's originating mandate."

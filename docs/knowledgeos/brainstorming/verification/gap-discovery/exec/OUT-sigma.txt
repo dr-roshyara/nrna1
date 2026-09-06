@@ -1,0 +1,64 @@
+
+==========================================================================
+EXP-21  Which situations must be distinguished?  (decision-signature method)
+==========================================================================
+  10 situations -> 10 distinct decision signatures
+
+  => The theory must be able to separate 10 situations.  Any Sigma with
+     fewer than 10 values CANNOT carry the decisions listed above; any Sigma
+     with more must justify the extra value by a decision no other value carries.
+
+==========================================================================
+EXP-22  Are the required distinctions ONE axis or SEVERAL?
+==========================================================================
+  underlying fact  ->  decisions that read it
+    asked          -> ['is out of scope (never asked)', 'must be shown as a gap']
+    authority      -> ['may be used in a decision', 'was refused by an authority']
+    evidence       -> ['is contradicted by evidence', 'may be used in a decision', 'must be investigated further', 'must be shown as a gap', 'must trigger a conflict process']
+    supersession   -> ['may be used in a decision', 'points at a replacement']
+    validity       -> ['may be used in a decision', 'requires re-validation']
+
+  Distinct underlying facts: ['asked', 'authority', 'evidence', 'supersession', 'validity']   (5 of them)
+
+  A SINGLE status enum must encode the cross-product of every fact any decision
+  reads.  Cross-product size (worst case) = product of the arities:
+      asked(2) x evidence(4: none/support/refute/both) x authority(3: none/accept/reject)
+      x supersession(2) x validity(2)  =  96 states.
+  => A one-dimensional Sigma is provably inadequate: it would need 96 values.
+     The distinctions are NOT one axis.  They are at least FIVE orthogonal facts.
+
+==========================================================================
+EXP-23  Minimal axis decomposition -- which axes are irreducible?
+==========================================================================
+  keep all             classes=9   harmful collisions=1
+        ['one supporting item', 'meets the policy bar']
+  drop 'asked'         classes=8   harmful collisions=2
+        ['never asked', 'asked, nothing found']
+        ['one supporting item', 'meets the policy bar']
+  drop 'evidence'      classes=6   harmful collisions=1
+        ['asked, nothing found', 'one supporting item', 'meets the policy bar', 'refuting evidence', 'both directions']
+  drop 'authority'     classes=7   harmful collisions=1
+        ['one supporting item', 'meets the policy bar', 'support + accepted', 'support + rejected']
+  drop 'supersession'  classes=8   harmful collisions=2
+        ['one supporting item', 'meets the policy bar']
+        ['support + accepted', 'replaced by a newer']
+  drop 'validity'      classes=8   harmful collisions=2
+        ['one supporting item', 'meets the policy bar']
+        ['support + accepted', 'was valid, now expired']
+
+  => Every axis whose removal produces a HARMFUL collision is IRREDUCIBLE:
+     dropping it makes two situations identical that a required decision must
+     separate.  This is the necessity demonstration the mandate asks for, and it
+     is produced WITHOUT choosing any vocabulary.
+
+  CONSEQUENCE FOR THE CORPUS'S VOCABULARY DEBATE:
+     Unknown / Supported / Refuted / Conflicted  read the EVIDENCE axis.
+     Accepted / Rejected                         read the AUTHORITY axis.
+     Superseded                                  reads the SUPERSESSION axis.
+     Invalidated / Stale                         read the VALIDITY axis.
+     Contested                                   reads a SIXTH fact (an open
+                                                 process) that none of the above
+                                                 situations models -- see the doc.
+  Putting these nine words in ONE enum conflates four independent axes.  That is
+  the real finding; the vocabulary question is downstream of it and does not need
+  a human decision yet.

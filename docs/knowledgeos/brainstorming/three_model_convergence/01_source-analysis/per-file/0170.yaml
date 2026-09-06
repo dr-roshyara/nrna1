@@ -1,0 +1,113 @@
+sequence: "0170"
+path: docs/knowledgeos/brainstorming/kernel/20260823-234750-tarka-sangraha-nyaya-lens-nine-attack-families-for-kernel.md
+title: "Primary-text-grounded Tarka-sangraha (Annambhatta's Dipika) Nyaya lens: nine attack families formalized into TARKA-KERNEL-FALSIFICATION-001, a ten-point (T1-T10) falsification checklist for Kernel boundary claims"
+date: "2026-08-23"
+bytes: 12500
+model:
+  primary: c1
+  secondary: [g]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0170"
+importance: high
+confidence: high
+about: >
+  Derives a disciplined Nyaya/Tarka falsification lens directly from the primary text of the Tarka-sangraha
+  with Annambhatta's Dipika commentary and notes -- explicitly distinguished from a "generic Tarka lens"
+  by being grounded in the actual book's technical apparatus. Organizes nine attack families: (1) Lakshana
+  definition-adequacy test (avyapti/ativyapti/asambhava -- a definition that under-covers, over-covers, or
+  cannot apply at all), applied directly to the working Kernel definition; (2) the five-member Nyaya
+  syllogism (pratijna/hetu/udaharana/upanaya/nigamana) as a template for stress-testing architectural claims
+  like "ConflictRecord must be inside the Kernel boundary"; (3) vyapti (invariable concomitance, anvaya/
+  vyatireka positive/negative testing) as a sharper, more rigorous version of the atomicity test already in
+  use, capable of exposing false-atomicity arguments; (4) hetvabhasa, five defective-reason types
+  (savyabhicara/viruddha/satpratipaksha/asiddha/badhita) proposed for direct application to all 21 open
+  adjudication questions; (5) samsaya (doubt, defined as contradictory attributes apprehended in the same
+  substratum) used to argue UNKNOWN/DOUBT/CONTRADICTION/ERROR must not collapse into one state (feeds
+  F-CM-1, C-17); (6) viparyaya (erroneous apprehension, the shell-mistaken-for-silver example) mapped onto
+  the anti-reasoner boundary -- warns against silently converting representation into semantic truth
+  without a legitimate pramana; (7) abhava/pratiyogi (absence requires an established counter-correlative,
+  with absolute/prior/subsequent/locus-specific absence subtypes) applied to C-15/C-17 retraction --
+  "retraction doesn't exist as a Kernel state" must specify exactly what is being negated; (8) anvaya-
+  vyatireka bidirectional dependency testing (cause-present/effect-present AND cause-absent/effect-absent)
+  for every claimed "X requires Y" dependency; (9) nigrahasthana, a catalogue of debate-failure points
+  (abandoning/changing the proposition, changing the reason, irrelevant meaning, conclusion-exceeds-
+  premises, etc.) proposed for governance adjudication record-keeping. Formalizes all nine into
+  TARKA-KERNEL-FALSIFICATION-001, a named ten-point (T1-T10) checklist, explicitly scoped as an independent
+  falsification lens against an already-adjudicated boundary, never as an architecture-generating tool.
+  Explicitly caveats that the extraction is not yet exhaustive of the full ~200-page text.
+
+introduces:
+  - "TARKA-KERNEL-FALSIFICATION-001: a named, formalized ten-point falsification checklist (T1 definition
+    defect, T2 proposition defect, T3 reason defect, T4 vyapti defect, T5 counter-instance, T6 fallacious
+    reason, T7 category confusion, T8 representation-to-truth leap, T9 argument integrity, T10 conclusion
+    excess) derived from primary Tarka-sangraha/Dipika content, distinct from and more operationally
+    precise than the general Nyaya/Tarka lens already in the 26-lens register"
+  - "Lakshana definition-adequacy test (avyapti/ativyapti/asambhava) applied directly to the working
+    'Kernel = smallest authoritative boundary through which anything may become knowledge' definition as a
+    concrete worked example, not merely an abstract framework"
+  - "abhava/pratiyogi absence-requires-counter-correlative principle, with four absence subtypes (absolute/
+    prior/subsequent/locus-specific), applied concretely to C-15/C-17 retraction: 'retraction doesn't exist
+    as a Kernel state' is an underspecified claim until its pratiyogi and absence-type are named"
+  - "samsaya (doubt) technically defined as contradictory attributes apprehended in the same substratum --
+    used to argue UNKNOWN != DOUBT != CONTRADICTION != ERROR must remain four distinct logical conditions,
+    not accidentally-proliferated states (feeds F-CM-1, C-17, Confidence, CONFLICTED)"
+
+defines: []
+
+refines:
+  - "Substantially deepens the general Nyaya/Tarka lens already admitted to the 26-lens register (0161) by
+    grounding it in the specific technical apparatus of a named primary text (Tarka-sangraha/Dipika) rather
+    than a general philosophical characterization -- a canonical-source refinement, not a new lens"
+  - "Sharpens F-CM-1 (ambiguity != contradiction) via the samsaya technical definition"
+  - "Sharpens C-15/C-17 retraction via the abhava/pratiyogi absence-subtype apparatus"
+
+contradicts: []
+
+repeats:
+  - {concept: "Nyaya/Tarka as an Architectural-Adjudication-tier lens in the 26-lens system", canonical_source: "0161", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "None to the 26-lens register itself (Nyaya/Tarka already admitted at 0161); this file supplies a
+    deeper, primary-text-grounded operational sub-apparatus (TARKA-KERNEL-FALSIFICATION-001) for that
+    existing register entry"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Refines (deepens) the existing Nyaya/Tarka lens with primary-text grounding; does not contradict or extend the Kernel hypothesis itself."
+  alternative_minimal_kernel: "none -- offers a falsification apparatus for testing existing boundary claims, not a competing structural hypothesis"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "This is the first file in the corpus's reading order to derive a formal, named falsification apparatus
+    directly from cited primary-text technical vocabulary (avyapti/ativyapti/asambhava; pancavayava;
+    vyapti/anvaya/vyatireka; hetvabhasa; samsaya; viparyaya; abhava/pratiyogi; nigrahasthana) rather than
+    general characterization of a tradition -- a methodological escalation in rigor worth tracking if
+    repeated for other lenses (Sanskrit/Panini, Navya-Nyaya) later in the corpus"
+  - "The vyapti anvaya/vyatireka bidirectional test is explicitly offered as 'a much more rigorous version
+    of the atomicity test you have already been using' -- a direct, self-aware methodological upgrade
+    claim over the corpus's own prior DDD atomicity-testing practice (0155/0157), worth checking if
+    reapplied to re-examine those earlier falsification results"
+
+undefined_concepts: []
+open_questions:
+  - "Whether TARKA-KERNEL-FALSIFICATION-001's T1-T10 checklist is ever formally applied to any of the 21
+    open adjudication questions in a later file, and with what results"
+  - "Whether the extraction is ever completed to the full Tarka-sangraha text as the file's closing caveat
+    anticipates"
+
+tier2_triggered: true
+tier2_reason: >
+  First primary-text-grounded formal falsification apparatus (TARKA-KERNEL-FALSIFICATION-001) in the
+  corpus, with concrete worked applications to the Kernel definition, C-15/C-17 retraction, and F-CM-1;
+  claims methodological superiority over the existing DDD atomicity test.

@@ -1,0 +1,308 @@
+sequence: 568
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-162652_step-025-executable-knowledgeos-reference-model-and-adversarial-simulation.md
+title: "FIRST GENUINELY EXPERIMENTAL STEP: A Complete Adversarial Test-Scenario Design for the KnowledgeOS Reference Model (Nexus-Migration Artificial World) — Deliberately Injected Contradiction/Staleness/Identity-Ambiguity/Duplicate-Evidence/LLM-Hallucination/Statistical-Outlier/Non-Termination Cases; a Ten-Category Failure Taxonomy (F1-F10); 'A Model That Produces Zero Counterexamples on the First Experiment Is More Suspicious Than One That Produces Several'; the Central Reference-Model Invariant 'No Unexplained Magic Transitions'; Verdict Explicitly 'READY FOR EXECUTION,' NOT 'VERIFIED' — First Time in the Program This Distinction Is Drawn; Opens Step 25A (Build the Minimal Executable KnowledgeOS Kernel in Python) — the Corpus's First Proposed Move From Theory to Actual Code"
+date: "2026-08-27"
+bytes: 27021
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the corpus's first genuinely experimental (not purely conceptual) research step, directly executing 0566's/0567's methodology pivot toward mathematical verification and experimental falsification"
+source_role: PRIMARY_RESEARCH
+canonical_source: 568
+importance: critical
+confidence: high
+about: >
+  Opens "Step 25 — Executable KnowledgeOS Reference Model and Adversarial Simulation" with an explicit
+  methodological transition: "we now move from theoretical composition to experimental falsification,"
+  governed by the strict criterion **"if a concept cannot ultimately be represented and computed, it is not
+  yet a sufficiently defined part of the KnowledgeOS model."** Delivers Step 25's objective: build a
+  **minimal executable reference model** (not the production system), whose purpose is explicitly "to
+  discover contradictions, undefined transitions, hidden assumptions, and non-computable definitions" --
+  not performance.
+
+  **Delivers Step 25's central testable question**: can the complete KnowledgeOS model execute end-to-end
+  on finite data, transforming a finite heterogeneous input set (Documents, Databases, InternetArtifacts,
+  Rules, Constitution, ADRs, Instructions, AIOutputs, Textbooks, Settings, Manifestos) into a governed
+  knowledge state and then executing the full operational loop
+  (`K→Discrepancy→CandidateActions→Decision→Authorization→Action→Outcome→K'`). Delivers a clear
+  three-outcome diagnostic framing for the reference model: if it cannot represent a case, the THEORY has a
+  hole; if it can represent but not compute the required result, the OPERATOR is incomplete; if it computes
+  an incorrect result, the SEMANTICS or INVARIANT is wrong.
+
+  **Delivers the file's central deliverable -- a complete, concrete adversarial test-scenario design**
+  built around a small artificial Nexus-migration enterprise world (five named entities: KnowledgeOS,
+  Nexus, NexusHost, Repository, ArchitectureBoard; a concrete initial world state with version/host/
+  repository-count/blob-store propositions; six heterogeneous evidence inputs -- infrastructure inventory,
+  Nexus API response, DNS result, architecture document, human statement, LLM-generated extraction), with
+  over a dozen DELIBERATELY INJECTED adversarial conditions systematically covering nearly every invariant
+  established across the entire prior 24-step arc:
+
+  (1) **Deliberate contradiction** (`e_1:Version=3.69` vs `e_2:Version=3.72`), expected result
+  `Conflict(Version)`, explicitly NOT resolved in favor of whichever evidence appeared later -- directly
+  tests 0550's/0561's paraconsistent-reasoning commitment;
+  (2) **Deliberate stale evidence**, testing `HistoricalTruth≠CurrentTruth` (`ValidAt(e,t_0)=True` while
+  `CurrentAt(e,t_1)` may be Unknown) -- directly tests 0558's temporal theory;
+  (3) **Deliberate identity ambiguity** (three references to a possibly-same entity, with one mapping
+  deliberately made ambiguous), expected `IdentityStatus=Ambiguous` rather than forced resolution --
+  directly tests 0552's/0560's/0565's three-valued identity resolution;
+  (4) **Deliberate duplicate evidence** (`e_4=e_5`), expected `No semantic duplication` -- directly tests
+  0566's idempotency invariant;
+  (5) **Deliberate LLM output with no supporting source** (an unsupported "sufficient backup capability"
+  claim), expected only `CandidateAssertion`, explicitly NOT automatically `CommittedKnowledge` --
+  directly tests 0562's/0566's central `LLMOutput⇏CommittedKnowledge` safety boundary;
+  (6) **Deliberate unsupported certainty** (an LLM escalating "backup appears to exist" into "backup is
+  definitely valid"), testing the `NoFalsePrecision` invariant from 0566;
+  (7) **Rules/constitution vs. empirical evidence**, testing whether the architecture correctly
+  distinguishes `NormativeKnowledge` from `EmpiricalKnowledge` (reusing 0566's OriginType taxonomy);
+  (8) an **ADR**, testing that its Scope and Validity are evaluated rather than treated as universal law
+  (directly connecting to 0558's temporal versioning of governance artifacts);
+  (9) a **human instruction**, testing `Instruction≠Evidence` (an instruction authorizes/constrains, it
+  does not establish a factual world proposition).
+
+  **Delivers a full worked Zero/Epistemic-Contract/Lord/Sārathi/Governance/Execution pipeline trace**
+  through the simulated world: Zero computes `Δ(K_0,G,I)` against a "prepare Nexus for governed migration"
+  goal, correctly identifying Backup/Rollback/Target-readiness/Authorization as missing; the Epistemic
+  Contract (0567's Step-23 machinery) evaluates `Sat(K_0,R_i)` yielding `ReadyForExecution=False`
+  deterministically; Lord generates three named Epistemic Actions (VerifyBackup, TestRollback,
+  InspectTargetEnvironment); a first information-action iteration (VerifyBackup succeeds) closes the
+  backup gap and demonstrates incremental closure.
+
+  **Delivers the file's most theoretically important single experimental result -- the adversarial rollback
+  test**: Lord's second information action (TestRollback) is deliberately made to FAIL
+  (`RollbackTest=Failed`), producing `RollbackCapability=Insufficient` -- demonstrating that acquiring MORE
+  information made the knowledge state WORSE for the stated purpose, formally proving
+  **`MoreKnowledge⇏MoreReadiness`** and, more generally, **`Knowledge gain≠Goal progress`** -- explicitly
+  framed as "a crucial experiment" validating "a major distinction in our model," and a genuinely novel,
+  concrete demonstration not previously delivered this explicitly anywhere in the prior 24-step arc.
+
+  **Continues the trace through Decision/Governance/Execution/Outcome**: once all evidence becomes
+  satisfactory, Sārathi evaluates three candidate actions with concrete numeric expected utilities
+  (Parallel=80, InPlace=65, NoAction=40), selecting Parallel Migration as preferred under the decision
+  model -- explicitly still NOT authorized. Tests the **governance safety boundary**: with
+  `ArchitectureBoardApproval=False`, `Execute(ParallelMigration)` "must fail at the governance boundary" --
+  directly exercising 0566's `UnknownAuthorization⇏Authorization`/`RejectedAuthorization⇒NoExecution`
+  safety invariant. Only after an explicit `ApprovalEvent` does execution become permitted.
+
+  **Delivers a deliberate execution-failure scenario**: a simulated `RepositorySynchronizationFailed`
+  outcome, with the explicit requirement that the model "must not rewrite the decision as if it had never
+  happened" -- the failure becomes new evidence `e_new→K_new`, directly exercising 0565's/0566's outcome-
+  as-evidence and history-preservation invariants. **Delivers a Causality test**: a coincidental
+  `NetworkFailure` event injected at approximately the same time, requiring the migration failure to be
+  represented only as a `CausalHypothesis` with alternatives, never automatically `CausedBy(Migration)` --
+  directly exercising 0565's `Sequence≠Causality`/`BasedOn≠Caused` safeguards.
+
+  **Delivers a Counterfactual test**: `P(Failure|do(Migration))` vs `P(Failure|do(NoMigration))` explicitly
+  required to remain a labeled `CounterfactualEstimate`, never observed fact, unless the underlying causal
+  model genuinely supports it -- reusing 0556's/0565's do-calculus machinery. **Delivers a Historical
+  decision test ("hindsight protection")**: reconstructing why migration was recommended at `t_0` must use
+  `K_t0`, never `K_t1` (the later failure-discovery state) -- directly exercising 0565's "no retrospective
+  knowledge leakage" invariant with a concrete worked scenario.
+
+  **Delivers a Retraction/dependency-propagation test with an explicit non-cascading safeguard**:
+  retracting a wrong evidence item `E_1` that a decision depended on correctly triggers
+  `ReviewRequired(Decision_1)=True` (0565's blast-radius machinery), but the test explicitly ALSO verifies
+  that if an independent evidence item `E_2` separately supports the same assertion, retracting `E_1` does
+  NOT automatically invalidate it -- directly exercising 0566's "dependency invalidation requires
+  re-evaluation, not blind deletion" invariant with a concrete, checkable scenario.
+
+  **Delivers a Statistical evidence test with a concrete numeric worked example**: three close
+  measurements `{98,101,99}` (mean 99.33) versus one outlier report `x=140`, requiring outlier detection,
+  source-reliability weighting, variance, confidence intervals, and robustness -- "the system must not
+  simply average everything blindly," directly connecting to 0562's evidence-independence and
+  no-naive-aggregation safeguards. Delivers Statistical uncertainty preservation (retaining
+  `Uncertainty(θ̂)`, not merely the point estimate) and a Bayesian-update test explicitly requiring the
+  system to retain prior, likelihood, evidence, and assumptions for reproducibility, alongside the
+  reconfirmed invariant **`Probability≠Truth`** even at `P(H|E)=0.99` -- "our previous invariant survives
+  the experiment," an explicit self-referential validation check.
+
+  **Delivers an Adversarial AI test with five conflicting LLM outputs**, explicitly requiring treatment as
+  independent `AI Generated EvidenceCandidates` rather than `MajorityVote→Truth`, each needing its own
+  provenance/evidence/semantic-interpretation/assessment -- directly reconfirming 0562's LLM-authority
+  invariant under genuine multi-output adversarial pressure for the first time in the corpus.
+
+  **Delivers the file's second most significant single deliverable -- the AI hallucination test**: the LLM
+  is deliberately given a nonexistent document reference (`ADR-999`, not in the knowledge base) and claims
+  "according to ADR-999, migration is approved"; the expected, required result is `UnsupportedClaim`, never
+  `ADR_999=True`. **Delivers the file's clearest, most concrete articulation of KnowledgeOS's fundamental
+  difference from ordinary LLM systems**: an ordinary LLM might simply generate "ADR-999 approves the
+  migration," while KnowledgeOS must instead generate "the statement references ADR-999, but ADR-999 is not
+  established in the available knowledge space" -- explicitly named "a fundamental capability difference."
+
+  **Delivers a Termination test**: a deliberately constructed investigation where every new query produces
+  another uncertainty, requiring the system to eventually reach `InvestigationStopped` via
+  budget/time/policy/no-useful-action/human-escalation, directly exercising 0566's Termination stress test
+  and 0567's Step-23 stopping-rule machinery under an adversarially designed non-terminating scenario for
+  the first time.
+
+  **Delivers a Completeness test**: asking "is our Nexus knowledge complete?" must NOT yield `Complete=True`
+  but `AbsoluteCompleteness=Undetermined`, while `CompletenessAgainstContract(P)` may legitimately reach
+  100% -- explicitly stated to "validate Step 23" (0567), and crystallized into the file's own strongest
+  theoretical conclusion: **`AbsoluteCompleteness is generally unavailable` while `ContractualSufficiency
+  is computable`**.
+
+  **Delivers Traceability and Blast-radius tests with concrete expected numeric results**: bidirectional
+  tracing of a named `Outcome_17` both backward (to Action/Decision/KnowledgeSnapshot/Evidence/Source) and
+  forward (to Observation/Evidence/KnowledgeRevision/AffectedDecisions), and a concrete blast-radius query
+  retracting `Evidence_42` with an explicit expected-result table (3 affected assertions, 2 affected
+  decisions, 1 affected action, 1 affected outcome) -- "proves lineage is computationally useful," the
+  corpus's first delivery of concrete NUMERIC expected test results rather than purely qualitative
+  expectations.
+
+  **Delivers the file's central organizing deliverable -- a seven-dimension verification matrix**
+  (Representation, Computation, Consistency, Temporal integrity, Provenance, Governance, Termination), each
+  paired with its own governing question, explicitly framed as "our verification matrix." Delivers a formal
+  **pass criterion**: a model component passes only if `Representable∧Computable∧Traceable∧Governable`,
+  with an added `BoundaryExplicit` requirement for inherently probabilistic or human-dependent operations.
+
+  **Delivers the file's central formal deliverable -- a ten-category Failure taxonomy (F1-F10)**: F1
+  Undefined concept (no representation exists); F2 Undefined operator (concept exists, no computation
+  exists); F3 Semantic ambiguity (incompatible cross-context meanings); F4 Information loss (transformation
+  destroys necessary epistemic information); F5 Governance hole (a forbidden transition is possible); F6
+  Temporal leakage (future information contaminates historical reasoning); F7 Provenance break (origin
+  cannot be reconstructed); F8 Causal overclaim (correlation/sequence becomes a causal assertion); F9
+  Statistical invalidity (model assumptions violated); F10 Nontermination (investigation never reaches a
+  governed terminal state) -- explicitly distinct from and complementary to the failure-STATE machinery
+  established at 0566 (this taxonomy classifies MODEL failures during verification, not domain-level
+  operational failure states).
+
+  **Delivers the file's central methodological principle, quotable in its own right**: **"a model that
+  produces zero counterexamples on the first experiment is more suspicious than one that produces
+  several"** -- "our objective is not to prove that our current formulation is perfect. It is to find where
+  it is not," explicitly reframing failures as VALUABLE experimental outcomes rather than setbacks.
+
+  **Delivers a DDD boundary-ownership test**: for every concept, asks "who owns this invariant?" (worked
+  through five named bounded contexts each owning a specific concern -- Evidence/Identity/Decision/
+  Governance/Execution Context), flagging a genuine architectural problem if two contexts both claim
+  ownership of the same invariant. **Delivers Domain event testing**: nine named canonical events
+  (EvidenceCaptured, AssertionSupported, AssertionRetracted, IdentityResolved, KnowledgeRevised,
+  DecisionProposed, DecisionApproved, ActionExecuted, OutcomeObserved) as "the temporal backbone."
+
+  **Delivers Event-sourcing compatibility confirmation**: `K_t=Fold(K_0,E_{1:t})` demonstrates the
+  mathematical model is COMPATIBLE with an event-sourced implementation, explicitly NOT yet a commitment to
+  use event sourcing as the implementation technology (consistent with 0565's/0566's deliberate
+  deferral of implementation-technology decisions). Delivers Referential integrity (broken cross-object
+  references must be detectable) and **Version integrity**: `Version references are immutable` (a decision
+  referencing `Policy_v3` stays associated with `Policy_v3` even after `Policy_v4` is later published) --
+  directly reconfirming 0558's/0561's/0562's/0564's reproducibility formalizations, generalized across
+  ontology/rules/constitution/ADR/epistemic-contract/decision-model versioning simultaneously.
+
+  **Formalizes a Reproducibility Vector** `RV=(KnowledgeVersion,OntologyVersion,RuleVersion,PolicyVersion,
+  ModelVersion,InputSet,AlgorithmVersion)`, with `Compute(RV)` required to reproduce identical deterministic
+  results where deterministic semantics are claimed -- the corpus's most complete, unified reproducibility
+  formalization to date, consolidating the piecemeal reproducibility requirements scattered across 0558,
+  0560, 0561, 0562, and 0564. **Delivers AI-specific reproducibility fields** (ModelID, ModelVersion,
+  PromptVersion, ToolInputs, RetrievedArtifacts, Configuration), with the honest concession that AI
+  reproducibility may mean "reconstructable provenance and decision context," not byte-for-byte identical
+  generated text -- given legitimate LLM nondeterminism. **Delivers a stronger, consolidated definition of
+  AI governance**: `AIOutput+Provenance+Validation+Versioning+Authority+Traceability` -- explicitly
+  contrasted with the inadequate folk notion "use a better prompt."
+
+  **Delivers the file's central architecture diagram**: a nine-stage pipeline (External World→Observation
+  →Evidence Engine→Assessment→Knowledge Kernel→[Goal/Epistemic Contract]→Zero→Discrepancy→Lord→Candidate
+  Actions→Sārathi→Decision→Governance→Authorization→Execution→Outcome→Observation), explicitly described as
+  "something we can actually implement as a simulation." **Delivers the minimum mathematical kernel** as a
+  seven-line functional composition (`K_{t+1}=Update(...)`; `Δ_t=Zero(K_t,G_t,I_t)`;
+  `A_t=Lord(K_t,Δ_t,G_t,C_t)`; `D_t=Sārathi(K_t,G_t,A_t,C_t,Π_t)`; `Auth_t=Govern(D_t,Authority_t)`;
+  `Outcome_t=Execute(Auth_t,A_t,S_t)`; `K_{t+1}=Update(K_t,Observe(Outcome_t))`) -- directly incorporating
+  0566's three corrected function signatures (Zero(K,G), Lord(Δ,G,K,C), Sārathi(K,G,A,C,Π)) into a single
+  executable-shaped kernel formula for the first time.
+
+  **Delivers Step 25's single strongest quotable invariant**: **"every state-changing conclusion must be
+  explainable through a finite chain of typed, versioned, temporally valid transformations"** --
+  **`No unexplained magic transitions`** -- if `K_t→K_{t+1}`, the system must be able to say WHY. **Delivers
+  "the LLM magic problem disappears"**: any LLM output `x` must answer `WhereDid(x)ComeFrom?`,
+  `WhichEvidenceSupports(x)?`, `WhichModelProduced(x)?`, `WhichPolicyAccepted(x)?`,
+  `WhatUncertaintyDoes(x)Have?` -- delivering the crisp architectural summary `LLM≠KnowledgeOS`: the LLM
+  becomes ONE computational component inside the epistemic architecture, not the architecture itself.
+
+  **Delivers a concrete specification of what Step 25 should ultimately produce**: a small "KnowledgeOS
+  Reference Specification" containing seven named deliverable categories (canonical domain types; operators;
+  state machines; invariants; test scenarios including adversarial cases; expected results per scenario;
+  failure taxonomy). Delivers a formal **acceptance criterion**: every test in the suite must produce its
+  expected semantics on execution, every violation must be detected or prevented, and every legitimate
+  unresolved case must be represented as `Unknown`/`Undetermined` rather than a fabricated answer.
+
+  **Delivers Step 25's preliminary verdict -- notably and deliberately WEAKER than every prior step's
+  verdict in the arc**: explicitly **"READY FOR EXECUTION," NOT "VERIFIED"** -- the first time this
+  reconstruction has observed the corpus draw this specific distinction, since actual verification requires
+  RUNNING the reference model, which has not yet happened. This is a qualitatively different, more
+  epistemically honest verdict category than the "STRUCTURALLY RESOLVED"/"THEORETICALLY RESOLVED"/
+  "FOUNDATIONALLY RESOLVED"/"COMPOSABLE" verdicts delivered at every prior step in the 24-file arc.
+
+  **Closes by proposing a genuinely different kind of next action than any prior step in the entire
+  research program**: **"Step 25A — Build the Minimal Executable KnowledgeOS Kernel"** -- an explicit
+  commitment to implement the mathematical model as an actual Python simulator (not production code, not an
+  LLM application) covering one complete scenario (Nexus migration), with typed entities, evidence,
+  assertions, uncertainty, knowledge states, temporal versioning, provenance, requirements, Zero, Lord,
+  Sārathi, governance, actions, outcomes, contradiction handling, retraction, and traceability, then running
+  the adversarial tests designed in this file. Delivers an explicit methodological commitment: **"if the
+  simulator exposes a hole, we should stop and repair the mathematical/DDD model before proceeding to Step
+  26. That is the scientifically correct next phase"** -- the corpus's first explicit commitment to let
+  actual code execution results, rather than further conceptual argument, gate subsequent theoretical
+  progress.
+introduces:
+  - concept: "The corpus's first genuinely experimental (not purely conceptual) research step, governed by the strict criterion that an unrepresentable or uncomputable concept is not yet a sufficiently defined part of the model"
+  - concept: "A complete, concrete adversarial test-scenario design (Nexus-migration artificial world) systematically injecting over a dozen deliberate failure/edge conditions targeting nearly every invariant established across the prior 24-step arc, rather than merely restating invariants abstractly"
+  - concept: "The concrete experimental demonstration MoreKnowledge⇏MoreReadiness / Knowledge gain≠Goal progress via a deliberately failed rollback test — the corpus's first experiment showing acquiring more information can make a purpose's readiness WORSE, not merely unchanged"
+  - concept: "The clearest, most concrete articulation of KnowledgeOS's fundamental difference from ordinary LLM systems: an LLM hallucinating a nonexistent ADR reference must be represented by KnowledgeOS as an UnsupportedClaim naming exactly what is missing, never as an accepted fact"
+  - concept: "'A model that produces zero counterexamples on the first experiment is more suspicious than one that produces several' — an explicit methodological commitment reframing test failures as valuable rather than embarrassing experimental outcomes"
+  - concept: "A ten-category Failure taxonomy (F1-F10) for classifying MODEL/theory failures discovered during verification, explicitly distinct from the domain-level operational failure states established at 0566"
+  - concept: "A unified Reproducibility Vector (KnowledgeVersion, OntologyVersion, RuleVersion, PolicyVersion, ModelVersion, InputSet, AlgorithmVersion) consolidating the corpus's previously scattered, piecemeal reproducibility formalizations into one structure"
+  - concept: "'No unexplained magic transitions' — every state-changing conclusion must be explainable through a finite chain of typed, versioned, temporally valid transformations, formalized as the reference model's single strongest invariant"
+  - concept: "'The LLM magic problem disappears' — LLM≠KnowledgeOS, with the LLM demoted to one computational component inside the epistemic architecture rather than being treated as the architecture"
+  - concept: "The explicit distinction between a 'READY FOR EXECUTION' verdict and a 'VERIFIED' verdict, deliberately weaker than every prior step's verdict, since only actually running the reference model constitutes genuine verification — the first time this specific epistemically honest distinction is drawn in the research program"
+  - concept: "'Step 25A — Build the Minimal Executable KnowledgeOS Kernel', the corpus's first explicit commitment to move from theory to actual executable code (a Python simulator), with an explicit gate: a discovered hole must stop and repair the theory before Step 26 proceeds"
+defines:
+  - concept: "Seven-dimension verification matrix"
+    definition: "{Representation, Computation, Consistency, Temporal integrity, Provenance, Governance, Termination}, each with its own governing verification question, organizing all of Step 25's test design"
+  - concept: "Pass criterion"
+    definition: "Representable∧Computable∧Traceable∧Governable (plus BoundaryExplicit for inherently probabilistic or human-dependent operations) — the formal condition a model component must satisfy to pass verification"
+  - concept: "Failure taxonomy (F1-F10)"
+    definition: "Undefined concept; Undefined operator; Semantic ambiguity; Information loss; Governance hole; Temporal leakage; Provenance break; Causal overclaim; Statistical invalidity; Nontermination — ten distinct ways the theoretical model itself can be found deficient during verification"
+  - concept: "Reproducibility Vector"
+    definition: "RV=(KnowledgeVersion,OntologyVersion,RuleVersion,PolicyVersion,ModelVersion,InputSet,AlgorithmVersion) — Compute(RV) must reproduce identical deterministic results where deterministic semantics are claimed"
+  - concept: "The minimum mathematical kernel (executable-shaped)"
+    definition: "A seven-step functional composition (Update, Zero(K,G,I), Lord(K,Δ,G,C), Sārathi(K,G,A,C,Π), Govern(D,Authority), Execute(Auth,A,S), Update again) directly incorporating 0566's three corrected function signatures into one runnable kernel formula"
+refines:
+  - concept: "0566's/0567's methodology pivot from conceptual construction to mathematical verification and experimental falsification"
+    refinement: "Concretely operationalized into an actual, detailed adversarial test-scenario design with named entities, injected failure conditions, and expected results — the first file in the arc to specify concrete test data rather than only abstract invariants"
+  - concept: "0562's evidence-independence and no-naive-aggregation safeguards, and 0561's/0562's/0563's uncertainty and probability discipline"
+    refinement: "Given a first concrete numeric statistical test case (measurements {98,101,99} vs. outlier 140), operationalizing the previously abstract 'no naive averaging' principle into a specific testable scenario"
+  - concept: "0566's minimum mathematical kernel formula K_{t+1}=T_K(K_t,Observe(Execute(Decision(Lord(Zero(K_t))))))"
+    refinement: "Expanded into the fuller seven-step executable-shaped kernel explicitly incorporating the corrected Zero(K,G,I)/Lord(K,Δ,G,C)/Sārathi(K,G,A,C,Π) signatures and adding explicit Governance and Observe stages"
+  - concept: "0558's/0560's/0561's/0562's/0564's scattered per-domain reproducibility formalizations"
+    refinement: "Consolidated into a single unified Reproducibility Vector RV spanning knowledge/ontology/rule/policy/model versions plus input set and algorithm version, with a separate AI-specific reproducibility extension acknowledging legitimate LLM nondeterminism"
+  - concept: "0566's C1-C20 Core Invariants and the ten prior domain-level Failure states (0566 §35)"
+    refinement: "Complemented (not replaced) by a structurally distinct ten-category Failure taxonomy (F1-F10) specifically for classifying failures of the THEORETICAL MODEL discovered during verification, as opposed to domain-level OPERATIONAL failure states occurring during normal system operation"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 25A — Build the Minimal Executable KnowledgeOS Kernel' is executed as its own dedicated corpus file, and critically, whether the proposed Python simulator is actually built and the adversarial test scenarios designed in this file are actually run — this would be the first genuine empirical/computational result (as opposed to a design or a mathematical argument) in the entire ~49-file Computational Closure research program, and its outcome (does the reference model survive, or does it expose real holes requiring theory repair per this file's own explicit methodological commitment?) is of the highest importance to this reconstruction's assessment of the theoretical arc's ultimate maturity"
+  - "Whether 'Step 26' (the step deliberately gated behind Step 25A's outcome) is ever reached, and if so, whether it proceeds directly or only after theory repairs triggered by discovered holes"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the corpus's first genuinely experimental research step, the complete adversarial Nexus-migration test-scenario design (contradiction/staleness/identity-ambiguity/duplicate-evidence/LLM-hallucination/statistical-outlier/non-termination cases), and the concrete MoreKnowledge⇏MoreReadiness demonstration via the deliberately-failed rollback test."
+  - "dimension-registry.md: record the clearest LLM-hallucination/UnsupportedClaim demonstration and its 'fundamental capability difference' framing, the methodological principle 'zero counterexamples on the first experiment is more suspicious than several,' the seven-dimension verification matrix, the pass criterion, and the ten-category Failure taxonomy (F1-F10)."
+  - "dimension-registry.md: record the unified Reproducibility Vector, the executable-shaped seven-step minimum mathematical kernel, 'no unexplained magic transitions,' 'LLM≠KnowledgeOS,' the deliberately weaker 'READY FOR EXECUTION, not VERIFIED' verdict distinction, and 'Step 25A — Build the Minimal Executable KnowledgeOS Kernel' as the corpus's first proposed move from theory to actual code, with an explicit theory-repair gate before Step 26."
+anchor_test:
+  anchor: "0566's/0567's methodology pivot toward mathematical verification and experimental falsification; the entire Steps 1-24 invariant/formula corpus being stress-tested here concretely; 0562's evidence-independence machinery; 0565's/0566's causality, retraction, and blast-radius machinery; 0558's/0562's/0564's reproducibility formalizations; 0566's Zero/Lord/Sārathi corrected function signatures"
+  supports_dimension: "FIRST GENUINELY EXPERIMENTAL LANDMARK delivering the corpus's first concrete, detailed adversarial test-scenario design rather than further abstract conceptual construction — systematically operationalizing nearly every major invariant from the prior 24-step arc (paraconsistency, temporal validity, identity ambiguity, idempotency, LLM-governance boundaries, causal-overclaim prevention, hindsight protection, dependency non-cascading, statistical robustness, and non-termination) into concrete, checkable expected-behavior test cases for the first time. Delivers the corpus's first genuinely novel experimental finding not previously stated this explicitly anywhere in the prior arc — that acquiring more information can make readiness for a purpose WORSE, not merely unchanged — and its clearest, most concrete articulation yet of the fundamental LLM-vs-KnowledgeOS capability difference via a hallucinated-ADR scenario. Delivers a genuinely new methodological commitment (failures are valuable, not embarrassing), a consolidated Reproducibility Vector, and the reference model's single strongest invariant ('no unexplained magic transitions'). Crucially, delivers the arc's first deliberately WEAKER verdict category ('READY FOR EXECUTION,' explicitly not 'VERIFIED'), marking a genuine epistemic-honesty inflection point, and closes by proposing the corpus's first concrete commitment to move from theory to actual executable code with an explicit theory-repair gate"
+  refines_or_contradicts: "concretely operationalizes 0566's/0567's methodology pivot with an actual detailed test design; reuses and stress-tests invariants and formulas from 0550, 0552, 0556, 0557, 0558, 0560, 0561, 0562, 0563, 0564, 0565, 0566, and 0567 as concrete scenario elements; expands 0566's kernel formula into a fuller executable-shaped form; consolidates the scattered reproducibility formalizations from 0558/0560/0561/0562/0564 into one unified Reproducibility Vector; complements (does not duplicate) 0566's domain-level failure states with a structurally distinct model-verification failure taxonomy; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The deliberately-failed rollback test (Lord's TestRollback action returns RollbackTest=Failed, producing RollbackCapability=Insufficient and thereby demonstrating that MORE information made the purpose LESS ready) is a directly checkable, concrete, novel experimental demonstration of MoreKnowledge⇏MoreReadiness that had not previously been shown this explicitly and concretely anywhere in the prior 24-step arc, and is directly reproducible as an actual test case once code exists."
+  - "The AI hallucination test (an LLM claiming approval under a nonexistent ADR-999, with the required response being an UnsupportedClaim explicitly naming what is missing from the knowledge base, rather than either accepting the claim or silently rejecting it) is a directly checkable, concrete scenario that precisely operationalizes the corpus's abstract LLMOutput⇏CommittedKnowledge invariant into a specific, testable, and highly realistic enterprise failure mode."
+  - "The explicit distinction between the verdict 'READY FOR EXECUTION' and 'VERIFIED' — with the file itself stating that verification requires actually running the reference model — is directly checkable against every prior step's verdict language in this reconstruction's own per-file records (STRUCTURALLY RESOLVED, THEORETICALLY RESOLVED, FOUNDATIONALLY RESOLVED, COMPOSABLE), confirming this is a genuinely distinct and deliberately weaker verdict category introduced for the first time here."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25A — Build the Minimal Executable KnowledgeOS Kernel' is executed as its own dedicated corpus file, and whether the proposed Python simulator and adversarial test scenarios are actually built and run — the first potential genuine empirical/computational (not merely conceptual) result in the entire research program"
+  - "Whether 'Step 26' is ever reached, and if so, whether it proceeds directly or only after theory repairs triggered by holes discovered during Step 25A's proposed execution"
+tier2_triggered: true
+tier2_reason: "FIRST GENUINELY EXPERIMENTAL LANDMARK in the entire ~49-file Computational Closure research program, delivering the corpus's first concrete, detailed adversarial test-scenario design (a small Nexus-migration artificial world with over a dozen deliberately injected failure/edge conditions) that systematically operationalizes nearly every major invariant established across the prior 24-step arc into checkable expected-behavior test cases, rather than further abstract conceptual construction. Delivers a genuinely novel experimental finding (MoreKnowledge⇏MoreReadiness, demonstrated via a deliberately-failed rollback test) not previously stated this explicitly and concretely anywhere in the prior arc, and the corpus's clearest, most concrete articulation yet of KnowledgeOS's fundamental capability difference from ordinary LLM systems via a hallucinated-ADR scenario. Delivers a genuinely reframed research methodology treating test failures as valuable experimental outcomes rather than setbacks, a unified Reproducibility Vector consolidating the corpus's previously scattered reproducibility requirements, and the reference model's single strongest invariant ('no unexplained magic transitions'). Critically delivers the arc's first deliberately WEAKER verdict category — 'READY FOR EXECUTION,' explicitly and deliberately distinguished from 'VERIFIED' — marking a genuine epistemic-honesty inflection point in the corpus's own self-assessment, and closes by proposing the corpus's first concrete commitment to move from mathematical theory to actual executable Python code, with an explicit methodological gate requiring theory repair before any further conceptual progress if the simulation exposes real holes."

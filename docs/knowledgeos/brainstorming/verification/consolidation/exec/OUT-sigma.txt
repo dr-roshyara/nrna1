@@ -1,0 +1,67 @@
+============================================================================
+A1  Sigma0 = P({Support,Refute}) = {0,1}^2 ?
+============================================================================
+  |P(S)| = 4  states = ['Unknown', 'Supported', 'Refuted', 'Conflict']
+  bijection with {0,1}^2 : True  -> CONFIRMED (a powerset of a 2-set is 2^2)
+  NOTE: this is TRUE BY CONSTRUCTION once you posit exactly two independent
+        predicates. The mathematical content is the CHOICE OF TWO, not the 4.
+
+============================================================================
+A2  Are the four valuations DISTINGUISHABLE by a mandatory operation?
+============================================================================
+  collapse Unknown   ~Refuted    -> BREAKS: UNKNOWN != FALSE (42x) / Unknown != Absent (19x)
+  collapse Unknown   ~Conflict   -> BREAKS: empty != ContradictoryEvidence (271.21, verbatim)
+  collapse Supported ~Conflict   -> BREAKS: UNRESOLVED != INVALID (9x)
+  collapse Refuted   ~Conflict   -> BREAKS: insufficiency is not refutation (03-06 chapter)
+  collapse Supported ~Refuted    -> BREAKS: trivially distinct (polarity)
+  collapse Unknown   ~Supported  -> BREAKS: trivially distinct (polarity)
+  => all 4 required. MINIMALITY CONFIRMED relative to these laws.
+
+============================================================================
+A3  Is CONTRADICTION derivable, or independently stored?
+============================================================================
+  Conflict = {Support,Refute} is DERIVED from the evidence polarity set.
+  => contradiction WITHIN one assertion's evidence is derivable.  CONFIRMED.
+  BUT: contradiction BETWEEN two assertions (A1 contradicts A2) is a RELATION,
+       not an evidence pattern. Sigma0 cannot express it: Sigma0 is unary.
+  => 272B's 'Conflict' and the corpus's R_contradicts are DIFFERENT OBJECTS.
+     TESTED: assertion c1='tls=1.3', c2='tls=1.2', each with one supporting item.
+     Sigma0(c1)=Supported  Sigma0(c2)=Supported  <- both Supported,
+     while (c1,c2,contradicts) holds. Sigma0 is BLIND to it, as (dir,str) was.
+     *** THE REDUCTION DID NOT FIX THE Sigma-blind-to-R DEFECT. ***
+
+============================================================================
+A4  Is OR-merge compatible with RETRACT?
+============================================================================
+  merge(Supported, Refuted) = Conflict  (union: monotone, idempotent, commutative)
+  RETRACT test: withdraw the refuting item from Conflict.
+    Conflict -\ Refute = Supported  -- requires SUBTRACTION
+  => union is a JOIN-semilattice op (monotone); retract is NON-monotone.
+     They are compatible ONLY IF Sigma is DERIVED from the evidence set each
+     time. If Sigma were STORED as a lattice element, retract could not undo a
+     join without extra information.  *** THIS IS A PROOF ABOUT D-4: ***
+     OR-merge + retract TOGETHER FORCE Sigma to be DERIVED, not stored.
+
+============================================================================
+A5  Does Gamma belong outside Sigma?
+============================================================================
+  10 constructed (Sigma,Gamma) cells were all meaningful (earlier pass).
+  Decisive corpus case, 271.20: 'epistemically well-supported but
+  administratively rejected' -> (Supported, Rejected).
+  Sigma0 has 4 states; a lossless single vocabulary needs >= 4*|Gamma|.
+  => Gamma OUTSIDE Sigma. CONFIRMED, and 272B's Sigma _|_ Lambda _|_ Gamma agrees.
+
+============================================================================
+A6  Is MISSINGNESS representable by Sigma0?
+============================================================================
+  'never asked'          -> no assertion exists -> Sigma0 is UNDEFINED (no carrier)
+  'asked, no evidence'   -> assertion exists, e={} -> Sigma0 = Unknown
+  'insufficient evidence'-> assertion exists, e!={} -> Sigma0 = Supported (!!)
+  'not applicable'       -> no representation at all
+
+  => Sigma0 maps THREE distinct epistemic situations onto {undefined, Unknown,
+     Supported}. 'never asked' has NO Sigma value because it has no assertion;
+     'insufficient' is INDISTINGUISHABLE from 'supported' because Sigma0 has no
+     sufficiency axis (Q was dropped from the ratified 6-tuple).
+  *** MISSINGNESS IS NOT REPRESENTABLE BY Sigma0. It needs D_t + a sufficiency
+      predicate. 272B does not claim otherwise -- but nor does it close it. ***

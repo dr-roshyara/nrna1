@@ -1,0 +1,206 @@
+sequence: 844
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-014501_step_216_freeze-the-method-before-we-reconstruct.md
+title: "Step 216 -- Freeze the Method Before We Reconstruct, PLUS Step 217 -- The Actual Reconstruction Protocol, BOTH WITHIN ONE FILE (a corpus file-boundary quirk: two logically distinct numbered steps share a single source file; DEFERRAL STILL CONTINUES -- neither step actually executes the Steps-1-182 reconstruction): Delivers the Five-Layer Epistemic Pipeline S→E→I→A→T With the Explicit Non-Reversal Rule T↛S, A↛E (Except During Explicit Verification) -- Delivers Discovery≠Verification as Two Legitimate but Distinct Directions -- Delivers the Confirmation-Bias Guard Audit(I)=Support(I)+Contradiction(I) -- Delivers the Most Carefully Disciplined Krishna Treatment Yet (Mechanism-Focused: 'the System Does Not Need to Be Krishna') -- Delivers a Formal Three-Label Gita-Relationship Taxonomy (P1 Historical Influence / P2 Conceptual Correspondence / P3 Retrospective Interpretation) With a Dedicated Philosophical Evidence Ledger Schema -- Delivers a Parallel Mathematical-Claim Taxonomy (Definition/Identity/Derivation/Model/Approximation/Heuristic) and 'Mathematical Notation≠Mathematical Proof' -- Delivers Four Distinct Architecture Layers (Conceptual/Logical/Physical/Implementation) Each Requiring Its Own Evidence -- Delivers the Architecture-Decision-Quality Tuple AD=(P,E,C,A,R,T) and the Pareto-Architecture / No-Unique-Optimum Framing -- Delivers the 'Assurance Budget' Concept (AssuranceInvestment∝Risk×Consequence) and 'AI Generates; Deterministic Mechanisms Constrain' -- Delivers Step 216's Seven-Statement Reconstruction Constitution -- Delivers Step 217's Eight-Pass Reconstruction Protocol (Extraction→Separation→Contradiction Detection→Pattern Discovery→Invariant Extraction→Architecture Mapping→Historical Synthesis→Book Synthesis) With the Crucial Stopping Rule ('UNKNOWN -- Insufficient Evidence' Rather Than Inventing) -- Delivers the Bidirectional Traceability Quality Criterion -- Closes With the Explicit Verdict 'RECONSTRUCT THE RECORD,' Reframing the Entire Project's Guiding Question From 'What Architecture Should We Invent Next?' to 'What Has the Evidence Already Taught Us?'"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily methodological/procedural formalization for a retrospective self-audit; delivers the most carefully disciplined Krishna-metaphor treatment yet and a formal Gita-relationship taxonomy, without new Gita textual content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 844
+importance: critical
+confidence: high
+about: >
+  A single source file containing two consecutively-numbered but logically distinct steps -- **Step 216
+  "Freeze the Method Before We Reconstruct"** and **Step 217 "The Actual Reconstruction Protocol"** -- a
+  confirmed file-boundary quirk in the corpus (distinct from the earlier Step-208/209 timestamp-order
+  inversion at 0836/0837, this time two step numbers simply co-occur within one file). Continues the
+  deferral pattern established at 0842-0843: this file, too, is entirely methodological, delivering
+  progressively more detailed procedure for the still-unexecuted Steps-1-182 reconstruction rather than
+  performing it.
+
+  **Step 216 (§216.1-216.9) delivers the five-layer epistemic pipeline**, boxed:
+  **`S→E→I→A→T`** (Source/Evidence/Interpretation/Architecture/Synthesis), with the explicit non-reversal
+  rule: **`T↛S`** and **`A↛E`** unless explicitly performing verification. Delivers **Discovery versus
+  Verification as two legitimate, distinct directions** (`Evidence→Architecture` asks what emerged;
+  `Architecture→Evidence` asks whether a claim is supported) that "must be labeled separately." Delivers
+  **the confirmation-bias guard**, boxed: **`Audit(I)=Support(I)+Contradiction(I)`** -- Claude must
+  actively search for evidence against a favored hypothesis, not only for it. Delivers **the requirement
+  that contradictory evidence initially survive intact** (`{A,¬A}` preserved, investigated via
+  Context/Time/Version/Scope/Definition before determining whether the contradiction is real) and
+  **versioned truth** (`Claim(Context,Time)`, `A(t_1)=True` coexisting with `A(t_2)=False` without either
+  record being "wrong"). Re-connects to Chapter 4 once more: `State_{t_2}⊉Knowledge_{t_1}`, boxed:
+  **`CurrentArchitecture≠ArchitectureHistory`** -- "the book needs both."
+
+  **§216.9 delivers the most carefully disciplined Krishna treatment yet**: the metaphor is reduced to
+  `ChangingManifestations+ContinuityOfKnowledge`, translated engineering-wise as
+  `ChangingStates+HistoricalLineage`, explicitly: **"the system does not need to 'be Krishna.'"** The
+  engineering question becomes purely mechanism-focused ("what mechanism preserves continuity of knowledge
+  when the current state changes?"), with a concrete candidate-mechanism list (version history, immutable
+  events, provenance, snapshots, decision records, lineage, contextual metadata) whose actual adoption
+  "must be established from the evidence and requirements" -- the most thoroughly de-mythologized
+  treatment of this recurring lens found in the arc so far.
+
+  **§216.10-216.13 delivers the file's central Gita-integration formalization: a mandatory three-label
+  relationship taxonomy** for every philosophical connection: **P1 Historical influence** (evidence shows
+  the philosophical idea genuinely influenced the engineering reasoning); **P2 Conceptual correspondence**
+  (technical and philosophical concepts independently exhibit meaningful structural similarity, with
+  neither causing the other); **P3 Retrospective interpretation** (the connection was recognized only
+  after the fact), explicitly: "these must not be conflated," worked through two concrete labeled examples
+  (`Identity≠State` recognized only later as resonating with Chapter 2 → `GitaRelation=P3`, "completely
+  legitimate... may make the intellectual story more interesting"; a Chapter-4 discussion that actually
+  caused the introduction of historical lineage → `GitaRelation=P1`, "a different historical claim and
+  requires evidence"). Delivers **the dedicated Philosophical Evidence Ledger schema** (seven fields:
+  Gita Chapter/Concept/Technical analogue/Relationship/Historical evidence/Architectural consequence/
+  Caveat), explicitly designed to "prevent both underusing and overusing the philosophical material" --
+  directly operationalizing the three-outcome question posed at 0843 into a per-item labeling mechanism.
+
+  **§216.14-216.16 delivers a parallel mathematical-claim taxonomy**
+  (`M∈{Definition,Identity,Derivation,Model,Approximation,Heuristic}`), crystallized: boxed
+  **`Mathematical notation≠mathematical proof`** -- worked through concrete contrasts (`Gap=Target-Current`
+  as a conceptual model, not a theorem; `ΔT=T_target△T_actual` as a precise set-theoretic construction) --
+  and a parallel discipline for statistical claims, requiring `Population,Sample,Assumption,Method,
+  Uncertainty` to always accompany any statistical conclusion (`ObservedFrequency⇏UnderlyingProbability`
+  absent an inference model).
+
+  **§216.17-216.19 delivers the DDD reconstruction layer**: an extraction chain
+  `Domain→Subdomain→BoundedContext→Aggregate→Entity→ValueObject→Invariant→DomainEvent`, paired with the
+  explicit warning "do not retrofit DDD terminology onto every piece of software" (a database table is
+  not automatically an Aggregate; a class is not automatically an Entity; a message is not automatically a
+  Domain Event -- "the evidence must support the classification"). Delivers **four distinct architecture
+  layers** (Conceptual/Logical/Physical/Implementation), each requiring its own independent evidence,
+  worked through a concrete traceability example (Concept: "evidence must be traceable" → Logical:
+  "Evidence Registry" → Physical: "Repository/service/database" → Implementation: "actual classes,
+  tables, APIs, tests"). Delivers the **implementation truth test** (Where?/How?/How was it verified? --
+  else `Status=Unknown`) and the **target architecture test** (Why?/Which invariant?/Which evidence?/What
+  tradeoff? -- else "an architectural preference rather than a justified design").
+
+  **§216.21-216.26 delivers the architecture-decision-quality tuple**, boxed:
+  **`AD=(P,E,C,A,R,T)`** (Problem/Evidence/Constraints/Alternatives/Rationale/Trade-offs), explicitly
+  stronger than "we chose X because it is better." Delivers **the objective-function/Pareto-architecture
+  framing**: architecture as `A*=argmax_A U(A)` subject to `Constraints(A)`, with `U(A)` explicitly
+  multi-dimensional (`Correctness,Traceability,Governability,Maintainability,Performance,Cost,
+  Flexibility`), "therefore there may be no unique optimum," delivering **a Pareto frontier of candidate
+  architectures**, "much more honest than declaring one architecture universally superior." Delivers
+  **KnowledgeOS's own actual multi-objective function**, boxed: **`KnowledgeIntegrity+
+  EngineeringVelocity+Governance+Evidence+AI Assurance`**, explicitly conflicting objectives requiring
+  explicit trade-off documentation.
+
+  **§216.26-216.30 delivers the "assurance budget" concept**: `B=Time+Money+Complexity+HumanAttention`,
+  with `AssuranceInvestment∝Risk×Consequence`, "more realistic than attempting maximal assurance
+  everywhere." Delivers **risk-weighted invariants** (`Priority(I_i)=Risk(I_i)×Impact(I_i)`) and a
+  four-level criticality scale with proportionally scaled verification mechanisms (Critical requires
+  AutomatedTest+StaticCheck+RuntimeEvidence+GovernanceReview; low-impact needs only a unit test). Delivers
+  the file's central AI/deterministic-assurance boundary, self-flagged **"one of the most important
+  architectural boundaries in KnowledgeOS,"** boxed: **`AI generates; Deterministic mechanisms
+  constrain`**, with human governance explicitly preserved via `AI→Candidate→DeterministicValidation→
+  Human/GovernedDecision`, "preventing two extremes: AI unchecked, and human checks everything manually."
+
+  **§216.31 delivers Step 216's seven-statement "reconstruction constitution"**, each individually boxed:
+  Evidence precedes interpretation; Interpretation precedes architectural synthesis; Architectural claims
+  retain provenance; Contradictions are preserved before resolution; Historical states are not overwritten
+  by current understanding; Philosophical analogy is not technical evidence; AI interpretation is not
+  primary evidence.
+
+  **Step 217 (§217, unnumbered subsections) delivers the actual eight-pass reconstruction protocol** for
+  processing the saved Steps-1-182 material: Pass 1 Extraction (read everything, extract Facts/
+  Observations/Experiments/Decisions/Questions, explicitly "do not synthesize"); Pass 2 Separation
+  (classify each item `F/D/P/U` and by discipline -- technical/mathematical/DDD/AI/governance/
+  philosophical/editorial); Pass 3 Contradiction detection (find conflicting claim pairs, "do not resolve
+  automatically"); Pass 4 Pattern discovery (`RepeatedEvidence→CandidatePattern`); Pass 5 Invariant
+  extraction (promote a pattern to an invariant only via `Pattern→[evidence+reasoning]→Invariant`); Pass 6
+  Architecture mapping (`Invariant→BoundedContext→Component→Mechanism→Test`); Pass 7 Historical synthesis
+  (reconstruct `t_1→t_2→...→t_n`, showing how understanding evolved); Pass 8 Book synthesis (only then
+  produce `Chapter→Section→Argument→Evidence→Architecture`).
+
+  **§217.1 delivers the crucial stopping rule**: Claude must stop synthesis whenever evidence is
+  insufficient and explicitly write **"UNKNOWN — insufficient evidence"** rather than inventing an
+  explanation, "this one rule will dramatically improve the quality of the final work."
+
+  **§217.2 delivers the final quality criterion**: full bidirectional traceability, boxed both directions:
+  **`BookClaim→ArchitecturalPrinciple→Derivation→Evidence→SourceArtifact`** and
+  **`Invariant→Implementation→Verification→Evidence`** -- "if both directions work, we have... an
+  auditable intellectual and engineering history."
+
+  **Delivers the Step 217 verdict**: the methodology is now complete; the next task is explicitly
+  non-theoretical, boxed: **`RECONSTRUCT THE RECORD`**. Only after that reconstruction should the corpus
+  decide what becomes "Step 218," what merges, what is rejected. **Delivers the file's single most
+  consequential reframing**: "we are no longer asking, 'what architecture should we invent next?' We are
+  asking, 'what architecture has the evidence already taught us -- and where does the evidence still tell
+  us that we do not know?'" No actual repository implementation, and no actual execution of the Steps-1-182
+  reconstruction, occurs within this file itself -- the deferral pattern first observed at 0842 now spans
+  three consecutive files (0842/0843/0844) of increasingly detailed but still-unexecuted planning.
+introduces:
+  - concept: "The five-layer epistemic pipeline S→E→I→A→T with the explicit non-reversal rule (T↛S, A↛E except during verification)"
+  - concept: "Discovery vs. Verification as two legitimate but distinct, separately-labeled directions"
+  - concept: "The confirmation-bias guard Audit(I)=Support(I)+Contradiction(I)"
+  - concept: "The requirement that contradictory evidence {A,¬A} initially survive intact before investigation"
+  - concept: "Versioned truth, Claim(Context,Time), and CurrentArchitecture≠ArchitectureHistory"
+  - concept: "The most thoroughly de-mythologized Krishna treatment yet: 'the system does not need to be Krishna,' reduced to a pure mechanism-selection engineering question"
+  - concept: "The mandatory three-label Gita-relationship taxonomy P1 (Historical influence) / P2 (Conceptual correspondence) / P3 (Retrospective interpretation), worked through two concrete labeled examples"
+  - concept: "The dedicated seven-field Philosophical Evidence Ledger schema"
+  - concept: "The parallel mathematical-claim taxonomy (Definition/Identity/Derivation/Model/Approximation/Heuristic), and 'mathematical notation≠mathematical proof'"
+  - concept: "The statistical-claim discipline requiring Population/Sample/Assumption/Method/Uncertainty"
+  - concept: "The DDD extraction chain with the explicit warning against retrofitting DDD terminology onto arbitrary software"
+  - concept: "Four distinct architecture layers (Conceptual/Logical/Physical/Implementation), each requiring independent evidence"
+  - concept: "The implementation truth test (Where?/How?/How was it verified?) and the target architecture test (Why?/Which invariant?/Which evidence?/What tradeoff?)"
+  - concept: "The architecture-decision-quality tuple AD=(P,E,C,A,R,T)"
+  - concept: "The objective-function/Pareto-architecture framing, with U(A) explicitly multi-dimensional and no unique optimum"
+  - concept: "KnowledgeOS's own actual multi-objective function (KnowledgeIntegrity+EngineeringVelocity+Governance+Evidence+AI Assurance)"
+  - concept: "The 'assurance budget' concept and AssuranceInvestment∝Risk×Consequence"
+  - concept: "Risk-weighted invariants Priority(I_i)=Risk(I_i)×Impact(I_i), and criticality-scaled verification mechanisms"
+  - concept: "'AI generates; Deterministic mechanisms constrain,' self-flagged one of the most important architectural boundaries in KnowledgeOS"
+  - concept: "Step 216's seven-statement reconstruction constitution"
+  - concept: "Step 217's eight-pass reconstruction protocol (Extraction/Separation/Contradiction detection/Pattern discovery/Invariant extraction/Architecture mapping/Historical synthesis/Book synthesis)"
+  - concept: "The crucial stopping rule: write 'UNKNOWN — insufficient evidence' rather than inventing"
+  - concept: "The final bidirectional-traceability quality criterion"
+  - concept: "The Step 217 verdict 'RECONSTRUCT THE RECORD' and the reframing from 'what should we invent?' to 'what has the evidence taught us?'"
+defines:
+  - concept: "The three-label Gita-relationship taxonomy (P1/P2/P3)"
+    definition: "A mandatory classification for every philosophical connection drawn between a Gita chapter and a technical/architectural concept, preventing both underuse and overuse of the philosophical material: P1 Historical influence means genuine evidence exists that the philosophical reflection actually influenced the engineering reasoning at the time (a strong historical claim requiring supporting evidence); P2 Conceptual correspondence means the technical and philosophical concepts independently exhibit a meaningful structural similarity without either having caused the other; P3 Retrospective interpretation means the connection was only noticed after the technical concept already existed, which is explicitly legitimate and does not diminish the connection's interest -- these three labels must never be conflated, since presenting a P3 retrospective connection as though it were P1 historical influence would misrepresent the actual intellectual history"
+  - concept: "The five-layer epistemic pipeline and its non-reversal rule"
+    definition: "Reconstruction work should pass through five explicit layers -- Source (S, what was actually written/generated/coded/observed), Evidence (E(S), what the source establishes), Interpretation (I(E), what meaning can reasonably be derived), Architecture (A(I), what architectural principle follows), and Synthesis (T(A), how this contributes to the overall theory) -- and later layers must never be used to retroactively rewrite earlier ones: a later theory T must not rewrite an earlier source S (T↛S), and an architectural claim A must not be treated as though it were itself evidence E, except when explicitly performing a labeled verification pass (Architecture→Evidence, asking whether the evidence actually supports a claim, as opposed to Discovery's Evidence→Architecture, asking what architecture the evidence produced)"
+refines:
+  - concept: "0843's closing proposal of Step 216 as 'do the reconstruction before continuing,' and its explicit deferral pending real artifact availability"
+    refinement: "STILL NOT EXECUTED: this file (combining Step 216 and Step 217) delivers progressively more detailed and rigorous METHODOLOGY -- the five-layer pipeline, the non-reversal rule, the confirmation-bias guard, the Gita/mathematical/statistical/DDD claim taxonomies, the eight-pass protocol, and the stopping rule -- but still does not apply any of it to real Steps-1-182 artifacts, extending the deferral pattern to a third consecutive file (0842/0843/0844) with each file adding more procedural rigor without yet performing the audit"
+  - concept: "The arc's recurring Krishna/Atma/Chapter-4 re-engagement family (now at least thirteen prior instances, most recently 0843's naming-and-forbidding of 'Krishna is the system's memory')"
+    refinement: "Given its most thoroughly de-mythologized treatment yet: rather than merely forbidding one specific literalizing sentence (as 0843 did), this file reduces the entire metaphor to a pure engineering mechanism-selection question with a concrete candidate list, explicitly stating 'the system does not need to be Krishna' -- the discipline has progressed from correcting individual overreaching claims to reframing the entire inquiry non-mythologically from the outset"
+  - concept: "0843's three named possible historical outcomes for the Gita's actual role (retrospective analogy/genuine influence/independent convergence)"
+    refinement: "DIRECTLY OPERATIONALIZED into the formal, mandatory P1/P2/P3 per-connection labeling system with its own dedicated Philosophical Evidence Ledger schema -- converting 0843's three abstract possible outcomes into a concrete, applicable classification mechanism that must be used for every individual philosophical connection encountered during the actual reconstruction"
+  - concept: "0838's/0839's/0840's criticality-classification and mechanism-selection work (C0-C4 invariant criticality, criticality-driven mechanism selection)"
+    refinement: "Extended with the explicit 'assurance budget' resource-constraint framing (B=Time+Money+Complexity+HumanAttention) and the formal risk-weighted-priority function Priority(I)=Risk×Impact, giving the earlier criticality classification an explicit resource-allocation rationale rather than treating verification effort as unlimited"
+  - concept: "The arc's recurring deterministic-assurance/AI-boundary family (0813's/0814's/0821's/0836's/0839's authority-cannot-manufacture-truth results)"
+    refinement: "Crystallized into its most compact single-sentence form yet, self-flagged one of the most important architectural boundaries in KnowledgeOS: 'AI generates; deterministic mechanisms constrain,' paired with the explicit anti-extremes framing (neither AI-unchecked nor human-checks-everything)"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting the actual execution of the eight-pass reconstruction protocol against real Steps-1-182 artifacts -- now a MAXIMUM-PRIORITY bridge candidate across a fourth consecutive file's worth of deferred planning, since the corpus has explicitly declared the methodology 'complete' and the next task 'no longer theoretical.' Watch closely whether the next file actually performs Pass 1 (Extraction) or whether forward theoretical generation resumes under a renumbered or renamed step instead."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the confirmed file-boundary quirk (Steps 216 and 217 sharing a single source file) as a distinct corpus-navigation anomaly from the earlier Step-208/209 timestamp-order inversion (0836/0837)."
+  - "dimension-registry.md: record the mandatory three-label Gita-relationship taxonomy (P1/P2/P3) and its dedicated Philosophical Evidence Ledger schema as the arc's most concrete, directly applicable mechanism yet for disciplined philosophy-technology integration -- a candidate best-practice for any project blending philosophical/conceptual lenses with formal engineering work."
+  - "dimension-registry.md: record 'AI generates; deterministic mechanisms constrain' as the most compact single-sentence crystallization yet of the arc's recurring deterministic-assurance/AI-boundary family."
+  - "dimension-registry.md: record that the deferral of the Steps-1-182 reconstruction execution now spans THREE consecutive files (0842/0843/0844), each adding more procedural detail without performing the audit -- flag as a HIGH-PRIORITY pattern to watch resolve (or fail to resolve) in the immediately following file(s)."
+anchor_test:
+  anchor: "0843's closing deferral of the Steps-1-182 reconstruction and its three possible Gita-role outcomes; the recurring Krishna/Chapter-4 re-engagement family; 0838's/0839's/0840's criticality-classification work; the arc's deterministic-assurance/AI-boundary family"
+  supports_dimension: "Delivers substantially more rigorous methodology across two combined steps (216 and 217) -- the five-layer epistemic pipeline with its explicit non-reversal rule, the confirmation-bias guard, and the eight-pass reconstruction protocol with a decisive stopping rule -- while STILL not executing the promised Steps-1-182 audit, extending the deferral to a third consecutive file. Directly operationalizes 0843's three abstract Gita-role outcomes into the concrete, mandatory P1/P2/P3 labeling taxonomy with its own dedicated evidence-ledger schema, the arc's most applicable philosophy-integration mechanism to date. Gives the recurring Krishna/Chapter-4 lens its most thoroughly de-mythologized treatment yet, reframing the entire inquiry as a pure engineering mechanism-selection question from the outset rather than correcting individual overreaching claims after the fact. Extends the criticality-classification work with an explicit resource-constrained 'assurance budget' framing. Crystallizes the deterministic-assurance/AI-boundary family into its most compact form yet: 'AI generates; deterministic mechanisms constrain.' Delivers the crucial stopping rule (write UNKNOWN rather than invent) and full bidirectional traceability as the final quality criterion, closing with the explicit verdict 'RECONSTRUCT THE RECORD' and a maximum-priority reframing of the entire project's guiding question"
+  refines_or_contradicts: "extends but does not resolve 0843's deferral (now three consecutive files); directly operationalizes 0843's three Gita-role outcomes into a concrete taxonomy; extends the Krishna/Chapter-4 re-engagement family with its most de-mythologized treatment; extends the criticality-classification and deterministic-assurance families; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§216.9's explicit statement 'the system does not need to be Krishna,' immediately followed by a purely mechanistic candidate list (version history, immutable events, provenance, snapshots, decision records, lineage, contextual metadata) whose adoption 'must be established from the evidence and requirements,' is directly checkable evidence of the most thoroughly de-mythologized handling of this recurring lens found anywhere in the tracked re-engagement history."
+  - "§216.11-216.12's two fully worked, oppositely-labeled examples (Identity≠State as a legitimate P3 retrospective connection; a Chapter-4-caused introduction of historical lineage as a P1 historical-influence claim requiring evidence) is directly checkable evidence that the P1/P2/P3 taxonomy is genuinely usable and discriminating, not merely a nominal classification scheme."
+  - "The file's own explicit verdict language ('the next task is no longer theoretical... RECONSTRUCT THE RECORD') paired with the fact that this is the THIRD consecutive file to declare the methodology essentially complete without performing the actual audit is directly checkable evidence of a deferral pattern this reconstruction must track as an open, high-priority question rather than assume resolved."
+undefined_concepts: []
+open_questions:
+  - "Whether the eight-pass reconstruction protocol (Extraction through Book synthesis) was ever actually executed against real Steps-1-182 artifacts in a subsequent file, given that this is now the third consecutive file (0842/0843/0844) to plan the audit without performing it."
+  - "Whether the P1/P2/P3 Gita-relationship taxonomy, once/if actually applied, reveals predominantly P1 (historical influence), P2 (independent convergence), or P3 (retrospective interpretation) connections across the real corpus -- directly resolving 0843's three named possible outcomes."
+tier2_triggered: true
+tier2_reason: "Delivers substantially more rigorous reconstruction methodology across two combined logical steps (216 and 217) within a single source file (a confirmed file-boundary quirk): the five-layer epistemic pipeline with an explicit non-reversal rule, Discovery vs. Verification as distinct directions, the confirmation-bias guard, and the requirement that contradictory evidence survive intact before resolution. Delivers the arc's most thoroughly de-mythologized Krishna treatment yet, reframing the entire lens as a pure mechanism-selection engineering question from the outset. Delivers the mandatory three-label P1/P2/P3 Gita-relationship taxonomy with its own dedicated Philosophical Evidence Ledger schema, directly operationalizing 0843's three abstract historical-outcome possibilities into a concrete, applicable per-connection classification mechanism -- the arc's most practically reusable philosophy-integration discipline to date. Delivers parallel mathematical- and statistical-claim taxonomies, four distinct architecture layers each requiring independent evidence, the architecture-decision-quality tuple, Pareto-architecture framing, the 'assurance budget' concept, risk-weighted invariant prioritization, and 'AI generates; deterministic mechanisms constrain' as the most compact crystallization yet of the recurring deterministic-assurance family. Delivers Step 216's seven-statement reconstruction constitution and Step 217's eight-pass reconstruction protocol with a decisive stopping rule (write UNKNOWN rather than invent) and full bidirectional traceability as the final quality criterion. Closes with the explicit verdict 'RECONSTRUCT THE RECORD' and the project's most consequential reframing yet -- but STILL DOES NOT EXECUTE the promised audit, extending the deferral pattern to a third consecutive file, now a maximum-priority open question for the immediately following file(s)."

@@ -1,0 +1,44 @@
+sequence: 62
+path: docs/knowledgeos/brainstorming/20260819-220924-spring-di-principle-for-kos.md
+title: Spring DI Principle Applied to KnowledgeOS (dependency injection / composition root pattern)
+date: 2026-08-19
+bytes: 26406
+
+model:
+  primary: c1
+  secondary: [governance]
+
+source_role: IMPLEMENTATION
+canonical_source: null
+
+importance: low
+confidence: high
+
+about: >
+  Applies dependency-injection/composition-root/hexagonal-architecture patterns to KnowledgeOS
+  (Capability Providers, Domain Ports, Capability Adapters), extracting the architectural principle
+  rather than Spring's implementation. Mostly implementation-pattern detail.
+
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: mechanism_records_does_not_create_authority
+    canonical_source: 18
+    novelty: none   # restated as "DI != Authority Resolution"
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence:
+  - "'DI != Authority Resolution. DI assembles capability. Governance establishes legitimacy.'"
+
+undefined_concepts: [knowledge]
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: "Mostly implementation-pattern content; the one governance distinction restates an already-established principle, no new bridge or structural finding."

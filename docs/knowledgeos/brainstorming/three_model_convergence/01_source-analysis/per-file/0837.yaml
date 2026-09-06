@@ -1,0 +1,200 @@
+sequence: 837
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-011829_step_208_semantic-contract-algebra.md
+title: "Step 208 -- Semantic Contract Algebra (RESOLVES 0836's FLAGGED NUMBERING GAP -- this IS the promised Step 208, but its file timestamp (20260830-011829) is CHRONOLOGICALLY AFTER Step 209's file 0836 (20260830-011729), so the corpus's own step-number order and its file-authoring order DIVERGE at exactly this point -- CONFIRMED CORPUS QUIRK, not a reconstruction error; SIXTH CONSECUTIVE FILE WITH NO NEW I-SERIES NUMBER): Delivers the Central Negative Result 'If Every Individual Transformation Is Valid, Is the Entire Chain Necessarily Valid? No' -- Delivers Semantic Sufficiency S_B⊆I(C(A)) and the Sufficient-Statistic Analogy, Explicitly Disciplined as Analogy Not Identity -- Delivers 'The Objective Is Not Zero Information Loss. The Objective Is Zero Loss of Relevant Meaning' -- Delivers Semantic Integrity as Non-Compositional (Locally Valid but Globally Invalid) With a Fully Worked Governance-Losing-Uncertainty Example -- Delivers the NEWLY NAMED ANTI-PATTERN 'Booleanization' (Collapsing a Multidimensional Epistemic State Into a Boolean) -- Delivers 'KnowledgeOS Must Support Non-Monotonic Knowledge Evolution' -- Delivers 'Provenance Must Be Closed Under Semantic Transformation' -- Delivers Proposition as a Genuine New Addition to the Semantic Cycle Diagram, and Evidence≠Claim -- Delivers a SECOND, PARTIALLY OVERLAPPING Four-Truths Taxonomy (Epistemic/Normative/Decisional/Operational Truth) Distinct From 0827's Four Types of Truth -- Delivers the Four-Layer Architecture (Epistemic=Evidence+Assessment; Normative=Policy+Authority; Decisional=Decision; Operational=Execution+Observation) -- Delivers a Provisional Contract Safety Theorem (Semantic Sufficiency+Provenance Preservation+Temporal Validity⇒Contract Safety), Explicitly Not a Formally Proven Theorem -- Delivers a Nine-Question Architecture Review Method -- Opens (a Preview of) Step 209's Invariant Algebra, Fully Delivered in 0836"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily mathematical/statistical semantic-contract composition formalization (borrowing sufficient-statistic and monotonicity concepts from statistics); briefly re-invokes the Chapter 4 lens once more for knowledge/action/judgment separation, without new Gita textual content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 837
+importance: critical
+confidence: high
+about: >
+  Directly executes the task proposed at 0835's close, opening "we have reached an important point: the
+  architecture is no longer only about objects and boundaries. We now need to understand whether meaning
+  survives as information crosses boundaries" -- posing the central question boxed:
+  **`If every individual transformation is valid, is the entire chain necessarily valid?`**, answered
+  immediately: **`No`** -- "one of the most important findings for KnowledgeOS." **This file resolves the
+  numbering gap flagged at 0836**: it IS the promised Step 208, but its file timestamp
+  (20260830-011829) is later than Step 209's file 0836 (20260830-011729) -- confirming the corpus's own
+  step-number order and its actual file-authoring/timestamp order diverge at exactly this point, a genuine
+  corpus quirk rather than a reconstruction gap. Content-wise this file substantively precedes 0836's Step
+  209 in the argument (its own closing section previews the Local/CrossContext/Global invariant chain that
+  0836 develops in full), even though it was read second in this sequential pass.
+
+  **§208.1-208.5 delivers contracts as composable transformations** (`C_{E→A}:E→A_I`, chained into
+  `C_chain=C_3∘C_2∘C_1`) and **the core semantic-sufficiency definition**, boxed:
+  **`Semantic Sufficiency: S_B⊆I(C(A))`** (the receiving context's legitimate-responsibility information
+  must be contained in what the contract delivers), paired with **the minimal-sufficient-contract
+  principle**, boxed: **`S_B⊆I(C(A))≪I(A)`** -- expose the minimum necessary to preserve legitimate
+  meaning, never the whole source model.
+
+  **§208.6-208.7 delivers the sufficient-statistic analogy**, boxed:
+  **`Semantic Contract ~ Sufficient Representation`**, explicitly and carefully disciplined -- "an analogy,
+  not a claim that DDD contracts are literally sufficient statistics" -- and **sufficiency as purpose-
+  dependent**, boxed: **`Sufficiency is purpose dependent`** (`Suff(C,B,Task)`), worked through a concrete
+  example: an Assessment→Governance contract sufficient for eligibility determination but insufficient for
+  statistical model reproduction.
+
+  **§208.8-208.13 delivers semantic projection** (`π_{A→G}`, required to preserve identity/version/
+  epistemic-status/uncertainty/validity/provenance-reference while intentionally discarding raw evidence/
+  internal model details) and **projection composition** (`π_2∘π_1`), delivering the conceptual semantic-
+  loss measure `L(C)=I_required-I_preserved` (explicitly not treated as a literal numeric quantity absent a
+  defined information measure), and **the file's central distinction**: not all information loss is
+  harmful (`Loss_raw>0⇏Loss_semantic>0`), crystallized: boxed **`The objective is not zero information
+  loss. The objective is zero loss of relevant meaning`**. Delivers **semantic integrity as
+  non-compositional**, boxed: **`SI(C_1)=True∧SI(C_2)=True⇏SI(C_2∘C_1)=True`** unless relevant semantic
+  dependencies are explicitly preserved, crystallized as the file's key architectural result:
+  **`locally valid but globally invalid`** -- "exactly why a distributed architecture can produce wrong
+  decisions even when every individual service appears correct."
+
+  **§208.14-208.16 delivers a fully worked concrete example**: Evidence carrying
+  `result=0.91,uncertainty=0.08,sampleSize=1200,model=v7,validity=2026-08` correctly flows into
+  Assessment, but Governance receives only `{status=Supported,confidence=0.91}`, silently losing
+  `uncertainty`, `modelVersion`, `validityPeriod` -- "if Governance needs these to determine eligibility,
+  the contract is semantically insufficient." **Delivers the newly-named anti-pattern**, boxed:
+  **`Booleanization`**: "collapsing a multidimensional epistemic state into a Boolean when the receiving
+  domain requires more information," worked through three explicit invalid collapses
+  (`Unknown→False`, `Uncertain→False`, `Conditional→True`).
+
+  **§208.17-208.18 delivers monotonicity versus non-monotonicity**: a naive monotonic assumption
+  (`Knowledge(E_1)→Knowledge(E_2)` for `E_1⊆E_2`) fails in real epistemic systems where new evidence can
+  invalidate prior conclusions, crystallized: boxed **`KnowledgeOS must support non-monotonic knowledge
+  evolution`**, worked through a concrete `A_1=Supported→A_2=Conflicted/Refuted` scenario, explicitly not
+  meaning `A_1` "was invalidly generated" -- rather `Knowledge_{t_2}≠Knowledge_{t_1}`.
+
+  **§208.19-208.21 re-connects to Chapter 4 once more**: `CurrentAssessment≠HistoricalAssessment` and
+  `NewKnowledge≠RetroactiveKnowledge`, delivering the two-question historical-truth device (`Belief_now`
+  versus `Justification_t`), crystallized: boxed **`Current truth assessment≠Historical decision
+  justification`**. Delivers **contract temporal validity** (`C(t)`, `[t_start,t_end)` reference windows,
+  worked through a versioned Policy example -- a 2026 assessment referencing `Policy^{v3}` is never
+  rewritten by a later policy version).
+
+  **§208.22-208.23 delivers contradiction propagation** across contracts (boxed: `Contradiction is a
+  knowledge state, not necessarily an exception`) and its statistical analogue: two materially disagreeing
+  estimates `θ̂_1,θ̂_2` should not force a silent "pick one" resolution but may legitimately propagate as
+  `Conflict`/`ModelDisagreement`, "much more scientifically defensible."
+
+  **§208.24-208.26 delivers the formal contract composition rule**, boxed: composition `C_2∘C_1` is
+  semantically valid only if **`S_C⊆Preserve(C_2∘C_1)`** -- "the formal core of our contract algebra" --
+  and **provenance composition**: `P(G)=P(A)∪P(E)`, crystallized: boxed **`Provenance must be closed
+  under semantic transformation`**, with provenance loss explicitly named a form of semantic loss.
+
+  **§208.27-208.29 delivers a stronger Knowledge/artifact definition**, boxed:
+  **`KnowledgeArtifact=(Content,Meaning,Provenance,Validity,Version,EpistemicStatus)`**, and **the full
+  semantic-status transformation chain**, boxed: **`Data→Information→Evidence→Assessment→
+  KnowledgeClaim`**, explicitly warning against collapsing these into one generic "Knowledge" object.
+  Delivers **`Evidence≠Claim`** (evidence supports a claim; a claim is a proposition carrying its own
+  epistemic status).
+
+  **§208.30-208.32 delivers the richer semantic cycle diagram, introducing `Proposition` as a genuine new
+  node** between Evidence and Assessment (Evidence supports Proposition; Proposition is assessed by
+  Assessment) -- "evidence does not automatically become a conclusion. It supports a proposition that can
+  then be assessed." Delivers the formal proposition object `P(x,t,c)` and **`Evidence→[supports/
+  refutes]→Proposition`** as "more rigorous than `Evidence→Truth`." Delivers **`Probability of
+  proposition≠truth value of proposition`** as a statistical restatement.
+
+  **§208.33-208.36 re-invokes the Chapter 4 knowledge/action lens once more**, delivering
+  `Knowledge→Judgment→Action` and `Assessment≠Decision≠Action` as both good DDD and "a strong epistemic
+  safeguard." Delivers **a second, partially overlapping four-truths taxonomy** distinct from 0827's
+  earlier four types of truth (Observational/Historical/Epistemic/Governance): here, **Epistemic truth**
+  ("what is supported?"), **Normative truth** ("what is permitted/required?"), **Decisional truth** ("what
+  was decided?"), and **Operational truth** ("what happened?"), crystallized: boxed **`They must not be
+  represented by one generic status`**. Delivers **the four-layer architecture**, boxed:
+  **`Epistemic=Evidence+Assessment; Normative=Policy+Authority; Decisional=Decision;
+  Operational=Execution+Observation`**, explicitly named "one of the strongest architectural structures in
+  our work."
+
+  **§208.37-208.38 delivers a provisional contract safety theorem**, boxed: **`Semantic Sufficiency+
+  Provenance Preservation+Temporal Validity⇒Contract Safety`**, immediately and honestly disciplined: "a
+  provisional architectural theorem, not a mathematically proven theorem in the formal-methods sense."
+  Delivers **a nine-question architecture review method** (what meaning enters/leaves the boundary; what is
+  intentionally/accidentally discarded; can the result be traced backward; can historical version be
+  reconstructed; can uncertainty/contradiction survive; can authorization be distinguished from inference),
+  explicitly "a much stronger architecture review method" than merely asking "does the API work?"
+
+  **§208.39 delivers the Step 208 verdict**: five named PASS/STRONG/STRONG CONSISTENCY sub-verdicts across
+  DDD, Mathematics, Statistics, Governance, and the Gita Chapter 1-4 lens.
+
+  **Closes with a preview of "Step 209 — Invariant Algebra"** -- the same content 0836 was read as
+  delivering in full one file earlier in this sequential pass -- introducing Local vs. Cross-Context
+  invariants and the chain `Local Invariants→CrossContext Invariants→Global Assurance Properties`. No
+  actual repository implementation occurs within this file itself, and **no new numbered invariant is
+  introduced -- a sixth consecutive file (0832-0837, counting the out-of-numeric-order 0836) without an
+  I-series addition**, despite delivering two newly-named anti-patterns (Booleanization, joining 0836's
+  Semantic Laundering) and a provisional formal theorem.
+introduces:
+  - concept: "The central negative result: individually valid transformations do not guarantee a valid chain (No)"
+  - concept: "Semantic sufficiency S_B⊆I(C(A)) and the minimal-sufficient-contract principle S_B⊆I(C(A))≪I(A)"
+  - concept: "The sufficient-statistic analogy, explicitly disciplined as analogy not identity, and sufficiency as purpose-dependent (Suff(C,B,Task))"
+  - concept: "Semantic projection and projection composition, and the conceptual semantic-loss measure L(C)=I_required-I_preserved"
+  - concept: "'The objective is not zero information loss. The objective is zero loss of relevant meaning' (Loss_raw>0⇏Loss_semantic>0)"
+  - concept: "Semantic integrity as non-compositional: SI(C_1)∧SI(C_2)⇏SI(C_2∘C_1), 'locally valid but globally invalid'"
+  - concept: "The newly-named anti-pattern Booleanization: collapsing a multidimensional epistemic state into a Boolean"
+  - concept: "'KnowledgeOS must support non-monotonic knowledge evolution,' with a worked Supported→Conflicted/Refuted scenario"
+  - concept: "The two-question historical-truth device (Belief_now vs. Justification_t), and 'current truth assessment≠historical decision justification'"
+  - concept: "Contract temporal validity C(t) with explicit [t_start,t_end) reference windows"
+  - concept: "'Contradiction is a knowledge state, not necessarily an exception,' with a statistical Conflict/ModelDisagreement analogue"
+  - concept: "The formal contract composition rule S_C⊆Preserve(C_2∘C_1), 'the formal core of our contract algebra'"
+  - concept: "Provenance composition P(G)=P(A)∪P(E), and 'provenance must be closed under semantic transformation'"
+  - concept: "The stronger KnowledgeArtifact definition and the Data→Information→Evidence→Assessment→KnowledgeClaim status chain"
+  - concept: "Evidence≠Claim"
+  - concept: "Proposition introduced as a genuine new node in the semantic cycle, between Evidence and Assessment"
+  - concept: "The formal proposition object P(x,t,c) and Evidence→[supports/refutes]→Proposition as more rigorous than Evidence→Truth"
+  - concept: "Probability of proposition≠truth value of proposition"
+  - concept: "A second, partially overlapping four-truths taxonomy (Epistemic/Normative/Decisional/Operational truth), distinct from 0827's earlier four types of truth"
+  - concept: "The four-layer architecture: Epistemic=Evidence+Assessment; Normative=Policy+Authority; Decisional=Decision; Operational=Execution+Observation"
+  - concept: "The provisional contract safety theorem: Semantic Sufficiency+Provenance Preservation+Temporal Validity⇒Contract Safety, explicitly not a formally proven theorem"
+  - concept: "The nine-question architecture review method"
+  - concept: "The Step 208 verdict's five named sub-verdicts"
+  - concept: "The preview of Step 209's Local/CrossContext/Global invariant chain (fully delivered in 0836)"
+defines:
+  - concept: "Booleanization"
+    definition: "A newly-named anti-pattern occurring when a contract or transformation collapses a multidimensional epistemic state (e.g. Supported/Uncertain/Conflicted/Conditional) into a single Boolean value the receiving domain treats as complete, when the domain actually requires the finer-grained distinctions -- examples given include Unknown→False, Uncertain→False, and Conditional→True, all potentially invalid collapses; distinct from but complementary to 0836's Semantic Laundering (which concerns a claim's apparent strength increasing without justification), Booleanization specifically concerns dimensional/informational collapse that destroys the receiving context's ability to make a properly qualified decision"
+  - concept: "Locally valid but globally invalid (semantic non-compositionality)"
+    definition: "The file's central negative architectural result: two semantic contracts can each individually satisfy their own semantic-sufficiency and semantic-integrity requirements (SI(C_1)=True, SI(C_2)=True) while their composition SI(C_2∘C_1) fails to preserve what the final receiving context actually needs, because information relevant three steps downstream may be silently discarded at an earlier, individually-correct step -- directly explaining, at the level of formal semantic contracts, why a distributed architecture composed entirely of individually-correct services can nonetheless produce a wrong overall decision"
+  - concept: "The provisional contract safety theorem"
+    definition: "A candidate (explicitly not formally proven) architectural theorem stating that a composed chain of contracts is 'safe' for a given responsibility R_C if three conditions jointly hold: Semantic Sufficiency (the composed chain preserves everything R_C legitimately needs, S_{R_C}⊆Preserve(C_2∘C_1)), Provenance Preservation (the chain's provenance is at least as rich as R_C requires, Provenance(C)⊇RequiredProvenance(R_C)), and Temporal Validity (the versions and time windows referenced remain historically accurate) -- explicitly labeled a 'provisional architectural theorem, not a mathematically proven theorem in the formal-methods sense,' preserving the arc's continued epistemic discipline against overclaiming formal rigor it has not yet earned"
+refines:
+  - concept: "0835's closing proposal of Step 208's Semantic Contract Algebra task, and its central assurance question (can a chain of individually valid transformations produce an invalid or misleading conclusion?)"
+    refinement: "DELIVERED IN FULL, answering the central question definitively: No, individually valid transformations do not guarantee a valid chain, formalized via the semantic-sufficiency/semantic-integrity non-compositionality result and demonstrated through a fully worked concrete example (Governance losing uncertainty/modelVersion/validityPeriod)"
+  - concept: "0827's four distinct types of 'truth' (Observational/Historical/Epistemic/Governance)"
+    refinement: "PARTIALLY OVERLAPPING but not identical: this file's four-truths taxonomy (Epistemic/Normative/Decisional/Operational) shares the 'Epistemic' category but replaces Observational/Historical/Governance with Normative/Decisional/Operational -- flagged as a genuine terminology-proliferation instance the eventual canonical synthesis must reconcile, since both taxonomies are independently motivated and neither explicitly references or supersedes the other"
+  - concept: "0834's/0836's context-mapping and invariant-hierarchy work"
+    refinement: "Directly complements 0836's invariant hierarchy by supplying the semantic-projection/contract-composition mechanics that make cross-context invariant preservation concretely checkable (via the nine-question review method), rather than merely stated as required"
+  - concept: "0808's I1-I14 through 0831's I75 invariant series (0832-0836 introduced none)"
+    refinement: "STILL NOT EXTENDED -- a sixth file in the sequence (counting 0836's out-of-order Step 209) without a new numbered invariant, despite delivering two newly-named anti-patterns (Booleanization here, Semantic Laundering in 0836) that read as strong invariant/anti-pattern-catalog candidates, further reinforcing that named-pattern cataloguing appears to have replaced sequential I-numbering during this phase of the corpus"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "0836 (already processed, out of step-number order) delivers Step 209's Invariant Algebra in full; this file's own brief Step 209 preview is therefore already answered. The next unread file should be checked for whether it continues from 0836's Step 210 proposal (the Invariant Verification Matrix) or introduces a further out-of-order step."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record 'Booleanization' as a second newly-named major anti-pattern (alongside 0836's Semantic Laundering), together forming a nascent anti-pattern catalog for KnowledgeOS-style architectures."
+  - "dimension-registry.md: record the confirmed corpus quirk that Step 208's file timestamp is later than Step 209's file timestamp (0837 dated 20260830-011829 vs. 0836 dated 20260830-011729) -- the corpus's logical step order and its file-authoring order diverge here, resolved as a genuine corpus characteristic, not a reconstruction gap."
+  - "dimension-registry.md: record the second, partially overlapping four-truths taxonomy (Epistemic/Normative/Decisional/Operational) as a terminology-proliferation instance requiring reconciliation with 0827's earlier four-truths taxonomy in the eventual canonical synthesis."
+  - "dimension-registry.md: record the provisional contract safety theorem (Semantic Sufficiency+Provenance Preservation+Temporal Validity⇒Contract Safety) as the arc's clearest example yet of an honestly-labeled 'provisional theorem,' distinct from a formally proven one."
+anchor_test:
+  anchor: "0835's closing proposal of Step 208's Semantic Contract Algebra task and its central assurance question; 0827's four types of truth; 0836's invariant hierarchy and Semantic Laundering; the I1-I75 invariant series"
+  supports_dimension: "Delivers the full Semantic Contract Algebra directly and definitively answering 0835's central assurance question (No, a chain of individually valid transformations is not automatically valid), formalized as semantic-integrity non-compositionality and demonstrated through a fully worked concrete failure example. Delivers a second newly-named anti-pattern (Booleanization) complementing 0836's Semantic Laundering. Delivers a genuinely new node (Proposition) added to the semantic cycle diagram, sharpening Evidence→Assessment into the more rigorous Evidence→[supports/refutes]→Proposition→Assessment chain. Delivers a second, only partially overlapping four-truths taxonomy that the eventual canonical synthesis must reconcile against 0827's earlier one -- a genuine, trackable terminology-proliferation instance. Delivers an honestly-labeled provisional (not formally proven) contract safety theorem, preserving the arc's continued epistemic discipline. Resolves 0836's flagged numbering-gap question by confirming this file IS Step 208, with its file timestamp genuinely later than Step 209's -- a confirmed corpus quirk. Does not extend the I-series (sixth consecutive file in sequence without a new number, no contradiction). Its own Step 209 preview is already superseded by 0836's fuller treatment, read one file earlier in this pass"
+  refines_or_contradicts: "directly answers 0835's central assurance question; overlaps only partially with 0827's four-truths taxonomy (flagged for reconciliation, not a direct contradiction); complements 0836's invariant hierarchy; confirms and resolves 0836's flagged numbering gap as a genuine corpus quirk; does not extend the I-series; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§208.14's fully worked concrete example (Evidence with five fields, Assessment correctly reducing to three, Governance receiving only two and silently losing uncertainty/modelVersion/validityPeriod) is directly checkable evidence of the semantic non-compositionality result applied to a realistic scenario rather than stated only abstractly."
+  - "The file timestamp `20260830-011829` for this Step 208 file, compared against 0836's Step 209 file timestamp `20260830-011729` (exactly one hour earlier), is directly checkable evidence resolving 0836's flagged open question: Step 208 does exist, but was authored after Step 209 in the corpus's own file-creation order, despite Step 208 logically preceding Step 209 in the argument."
+  - "§208.37's explicit self-labeling 'a provisional architectural theorem, not a mathematically proven theorem in the formal-methods sense,' immediately following the boxed Contract Safety implication, is directly checkable evidence of continued epistemic discipline even while presenting the file's most formally theorem-like result."
+undefined_concepts: []
+open_questions:
+  - "Whether the second four-truths taxonomy introduced here (Epistemic/Normative/Decisional/Operational) is ever explicitly reconciled with 0827's earlier four types of truth (Observational/Historical/Epistemic/Governance) anywhere later in the corpus, or whether both remain permanently distinct, unreconciled classification schemes."
+  - "Whether the confirmed step-number-vs-file-timestamp divergence at Steps 208/209 recurs elsewhere in the corpus's non-linear layout, and whether this reconstruction's sequential (filename/timestamp-based) read-through will encounter further such inversions."
+tier2_triggered: true
+tier2_reason: "RESOLVES A FLAGGED OPEN QUESTION and delivers a capstone-level Semantic Contract Algebra: directly and definitively answers 0835's central assurance question (individually valid transformations do not guarantee a valid chain), formalized as semantic non-compositionality ('locally valid but globally invalid') and demonstrated through a fully worked failure example. Delivers a second newly-named major anti-pattern, Booleanization, complementing 0836's Semantic Laundering. Delivers Proposition as a genuine new node sharpening the semantic cycle, and 'the objective is not zero information loss, the objective is zero loss of relevant meaning.' Delivers a second, only partially overlapping four-truths taxonomy that must be reconciled with 0827's in the eventual canonical synthesis -- a genuine, now-tracked terminology-proliferation instance. Delivers the four-layer architecture, self-flagged as 'one of the strongest architectural structures in our work,' and an honestly-labeled provisional (not formally proven) contract safety theorem. CONFIRMS AND RESOLVES 0836's flagged numbering-gap open question: this file IS Step 208, but its file timestamp is genuinely later than Step 209's file (0836), a confirmed corpus quirk rather than a reconstruction error. Does not extend the I-series for a sixth consecutive file in the sequence. Its own brief Step 209 preview is already superseded by 0836's fuller treatment, read one file earlier in this pass."

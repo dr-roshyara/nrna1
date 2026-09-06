@@ -1,0 +1,82 @@
+sequence: 10
+path: docs/knowledgeos/2026-08-02-knowledgeos-strategic-boundary-consolidation.md
+title: KnowledgeOS — Strategic Boundary Consolidation
+date: 2026-08-02
+bytes: 23119
+doc_type: strategic discovery report / consolidation (six objectives; three corrections accepted)
+
+primary_model_initial: engineering_knowledgeos
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - every object handled is C1 - EKS/PKS lineage, product binding, portability, extraction boundary, capability families, runtime adapters
+  - "the word 'kernel' occurs once, as 'Reference Architecture (kernel)', denoting a DRAFT platform document: Kernel_engineering, not C2"
+  - zero occurrences of knowledge state, K_t, dimension, value, Buddhi, operator, purification, Moksha
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+confidence: high
+secondary_models: [ddd, domain_model, governance, evidence, provenance, contradiction, validation]
+
+status: DR
+maturity: developing
+importance: high
+
+introduces:
+  - two_extraction_blocker_classes        # case-law dilution ; coupling at the boundary
+  - three_bootstrap_responsibilities      # R-A pks n=0 ; R-B engineering n=1 ; R-C software n=0
+  - orthogonality_of_ownership_and_responsibility_classification
+  - three_architectural_levels            # repository / product / subsystem
+  - per_arrow_evidence_status_on_a_context_map
+  - per_candidate_promotion_trigger
+defines:
+  - nine_admissible_boundary_criteria     # CLOSED set with explicit exclusivity clause
+  - bootstrap_responsibilities_R_A_R_B_R_C
+  - case_law_dilution
+  - coupling_at_the_boundary
+hypotheses:
+  - the_nine_criteria_apply_without_a_certified_release   # OQ-S1, untested
+  - a_generator_could_occupy_the_pks_generator_slot       # n=0; OQ-S4 asks if it is even a component
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 10th consecutive file
+  - kernel             # used once, for a DRAFT document
+  - case_law           # the primary blocker class, characterised only by proportion
+  - reusable           # used interchangeably with portable and extractable
+  - domain             # the object of the whole adjudication; criteria given, term not defined
+  - certified          # the SD-1 gate turns on it; no certification procedure stated
+open_questions:
+  - OQ-S1 can the nine criteria be consumed without SD-1's certified release
+  - OQ-S2 do strategic and tactical methods belong on the same side of the platform line
+  - OQ-S3 is genesis a governance gap or a separate lifecycle
+  - OQ-S4 is PKS Generator a component or a role
+  - OQ-S5 do the two blocker classes need a detection instrument
+
+depends_on: [8]
+extends: [9]
+refines: [1, 8]
+renames: []
+contradicts: [8]     # refutes F-3 outright; corrects the verdict's scope
+supersedes: []       # supersedes the claim "there is no strategic-DDD method"
+repeats: [1, 5, 9]
+connects_to: [1, 5, 6, 8, 9]
+
+bridges: [c1_to_c2]
+bridge_evidence:
+  - "CANDIDATE ONLY, NOT AN IDENTITY. The nine criteria form a closed admissibility mechanism -
+     admissible justifications enumerated, exclusivity clause ('no other justification is
+     sufficient'), plus a rejection protocol. §25 asks the same shape of question of C2: who
+     determines whether an operation is allowed, and how are 'exists' / 'admissible' / 'correct' /
+     'true' kept apart. This C1 artifact instantiates that separation for a SEAM, not an operation.
+     Whether the corpus later DERIVES C2 admissibility from this mechanism or independently
+     re-invents a similar shape is undecidable at seq 10 and must not be assumed."
+
+tier2_triggered: true
+tier2_reason: >
+  States the corpus's first CLOSED and EXCLUSIVE admissibility criterion set (nine criteria, "no
+  other justification is sufficient", with inadmissible justifications named by example); refutes a
+  prior finding of its own lineage (F-3) on repository evidence; and produces a two-class structural
+  result about portability (case-law dilution vs coupling at the boundary) that explains why the
+  vocabulary-based test failed. Also records a gap between the stated existential promotion rule and
+  the stricter rule actually applied.

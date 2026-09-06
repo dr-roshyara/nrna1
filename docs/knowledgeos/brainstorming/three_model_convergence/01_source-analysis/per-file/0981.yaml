@@ -1,0 +1,87 @@
+sequence: 981
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-184644_step_285_hpa-supervisory-review-d285-5-accepted-and-d285x-template-mandate.md
+title: "HPA Supervisory Review: D285-5 -- Action/Result Formal Test -- ACCEPTED AS WRITTEN AND MANDATED AS THE TEMPLATE FOR ALL D285-x ARTIFACTS -- Formalizes the Seven-Section Required Structure (Property Statement/Trivial-vs-Substantive/Execution/Qualification/Equality Specification/Independence/Classification) and Elevates 'A Property Stated Without Naming Its Equality Relation Is Not a Well-Formed Proposition' to a First-Class Methodological Principle -- References a New 'Five-Equality Hierarchy'"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "supervisory review formally accepting and templating the already-documented D285-5 semantic-equality finding"
+source_role: PRIMARY_RESEARCH
+canonical_source: 981
+importance: normal
+confidence: high
+about: >
+  A supervisory review of "D285-5 — Action/Result Formal Test" (the artifact already fully documented in
+  this reconstruction's tracking via files 0974's T-E script finding, 0979's H-K06/H-K07 re-execution, and
+  0980's R4 consolidation), opening "This is an exemplary artifact. It demonstrates exactly the
+  methodological discipline that Steps 285–286 require," formally **ACCEPTING it "as written"** and
+  mandating it **"should serve as the template for all D285-x tests."**
+
+  **§2 delivers THE FILE'S CENTRAL METHODOLOGICAL PRINCIPLE, ELEVATED TO FIRST-CLASS STATUS**: boxed **"A
+  property stated without naming its equality relation is not a well-formed proposition"** -- directly
+  generalizing the semantic-vs-structural-equality distinction this reconstruction has tracked since file
+  0974 into a universal rule for all future D285-x formal work, delivering a three-row equality-comparison
+  table (Structural/**Semantic**/Observational) and explicitly linking the property to a genuine
+  implementation failure mode ("the `grantId` collision — 'a silent loss of an authority act'") this
+  reconstruction has not previously encountered by this specific name.
+
+  **§2 references "THE FIVE-EQUALITY HIERARCHY"** as an already-established framework this artifact
+  exemplifies avoiding an error against -- a further, previously-unnamed formal apparatus (a five-level
+  equality taxonomy) this reconstruction has not yet directly encountered in full, worth tracking as a
+  bridge candidate.
+
+  **§4 delivers THE MANDATED SEVEN-SECTION TEMPLATE STRUCTURE** every future D285-x artifact must follow:
+  (1) Property Statement; (2) Trivial vs Substantive; (3) Execution; (4) Qualification; (5) Equality
+  Specification; (6) Independence; (7) Classification -- directly formalizing, into a reusable document
+  template, the disciplined methodology this reconstruction has already observed being genuinely applied
+  across files 0973-0980.
+
+  **§5 restates the Independence Principle** (Gītā→hypothesis vs. KnowledgeOS→hypothesis independently,
+  verdict "Gītā confirms a pre-existing KnowledgeOS principle... stronger than claiming KnowledgeOS was
+  derived from the Gītā") -- consistent with, and further reinforcing, file 0980's own central meta-finding.
+
+  **§7 delivers a five-item "Next Steps" list**: adopt this template, execute remaining D285-x tests using
+  this format, ensure each test specifies its equality relation, document independence for each property,
+  classify each property using R0-RX.
+introduces:
+  - concept: "The formal, elevated principle: 'a property stated without naming its equality relation is not a well-formed proposition'"
+  - concept: "The mandated seven-section D285-x template structure (Property Statement/Trivial-vs-Substantive/Execution/Qualification/Equality Specification/Independence/Classification)"
+  - concept: "A reference to 'the five-equality hierarchy,' a previously-unnamed formal equality taxonomy this reconstruction has not yet directly encountered in full"
+  - concept: "The 'grantId collision' implementation failure mode ('a silent loss of an authority act'), a previously-unnamed concrete motivating example for the semantic-equality requirement"
+defines: []
+refines:
+  - concept: "File 0974's T-E semantic-equality finding and file 0979's/0980's re-confirmations of it"
+    refinement: "FORMALLY ACCEPTED and elevated into a first-class, generalized methodological principle and a mandated template structure for all future D285-x artifacts"
+contradicts: []
+repeats:
+  - "Restates the Gita-vs-KnowledgeOS-independence finding already established in files 0973/0979/0980 without new content in that specific passage."
+bridge_candidates:
+  - "The 'five-equality hierarchy' -- watch for whether this reconstruction directly encounters its full definition elsewhere in the corpus."
+  - "The 'grantId collision' implementation failure -- watch for whether this specific incident is documented in more detail elsewhere."
+  - "Whether the mandated seven-section D285-x template is actually followed for all subsequent D285-x artifacts."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal elevation of the equality-naming principle and the mandated seven-section D285-x template as directly reusable methodological artifacts for this reconstruction's own eventual synthesis assessment of the kernel-track's formal rigor."
+  - "dimension-registry.md: record the new bridge candidates 'the five-equality hierarchy' and 'the grantId collision' for future encounter."
+anchor_test:
+  anchor: "File 0974's T-E semantic-equality finding; files 0979's/0980's Independence-Principle findings"
+  supports_dimension: "Formally accepts and elevates the semantic-equality finding into a first-class methodological principle and mandated template, directly reinforcing the disciplined kernel-track lineage"
+  refines_or_contradicts: "formalizes and elevates (does not contradict) the already-established findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The boxed principle 'a property stated without naming its equality relation is not a well-formed proposition' is directly checkable against file 0974's own T-E script output for the formalization finding."
+undefined_concepts: []
+open_questions:
+  - "The full definition of 'the five-equality hierarchy.'"
+  - "The specifics of the 'grantId collision' implementation failure."
+  - "Whether the mandated D285-x template is actually followed for all subsequent artifacts."
+tier2_triggered: false
+tier2_reason: "Formalizes and templates an already-documented finding (files 0974/0979/0980) without introducing a qualitatively new substantive result, though it does elevate a useful methodological principle and reference two new bridge-candidate concepts. Classified importance normal, tier2 not triggered; confidence high given the artifact's transparent, well-reasoned content."

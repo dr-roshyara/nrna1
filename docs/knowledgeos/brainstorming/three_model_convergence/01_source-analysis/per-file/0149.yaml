@@ -1,0 +1,49 @@
+sequence: "0149"
+path: docs/knowledgeos/brainstorming/kernel/20260823-110305-f1-f5-closes-domain-discovery-gap-duplicate.md
+title: "Verbatim duplicate of 0148's third segment (F-1..F-5 conclusion) -- confirmed byte-identical via diff"
+date: "2026-08-23"
+bytes: 15000
+model:
+  primary: c1
+  secondary: []
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: "0148"
+importance: low
+confidence: high
+about: >
+  Confirmed via diff to be byte-identical to the last 345 lines of file 0148 (the F-1..F-5 conclusion
+  segment). The filename itself flags "duplicate." No new content.
+
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - {concept: "entire file content (F-1..F-5 conclusion, KnowledgeCore vocabulary, 9-item MUST-EXIST table)", canonical_source: "0148", novelty: none}
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- verbatim duplicate, already fully logged at 0148 / Ledger Entry 48"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; verbatim duplicate."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: >
+  Confirmed verbatim duplicate of 0148's third segment; no new content.

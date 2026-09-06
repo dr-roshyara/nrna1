@@ -1,0 +1,246 @@
+sequence: 585
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-183746_step-025g-formal-lord-algebra-choosing-the-next-action.md
+title: "LANDMARK: Lord Formally Defined — 'Lord = Governed Action Selection Over Knowledge and Zero,' Explicitly NOT 'an Intelligent AI Agent'; a Two-Stage Feasibility-Then-Preference Algorithm Deliberately Using arg-prefer Over a Partial Preference Relation Rather Than arg-max Over a Collapsed Score; RootGap Analysis Applied to Action Targeting ('Graph Reasoning, Not LLM Intuition'); 'NoAction Is Preferable to an Unjustified Action' (DoNothing as an Explicit First-Class Action); Six Falsification Tests, All PASS, Including 'LLM Recommendation Cannot Override Zero/Contract'; a Rich Structured DecisionState Output Carrying Full Reasoning Provenance; Verdict '25G — PASS'; Lord Confirmed Computable on a Normal PC Without an LLM; Opens Step 25H (Formal Sārathi Algebra) — Testing Whether the Entire KnowledgeOS Loop Is Now Computationally Closed"
+date: "2026-08-27"
+bytes: 20036
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 25G -- Formal Lord Algebra: Choosing the Next Action', the sub-step committed at 0584 marking the transition from a formalized epistemic model to a computable agent architecture"
+source_role: PRIMARY_RESEARCH
+canonical_source: 585
+importance: critical
+confidence: high
+about: >
+  Opens "Step 25G — Formal Lord Algebra: Choosing the Next Action," announcing "the architecture must
+  become agentically computable," and posing the governing question: "given everything currently known,
+  what should happen next?" -- explicitly framed as needing to be answered "without allowing Lord to
+  become an uncontrolled LLM planner." Delivers Lord's first formal signature
+  `Lord(K_t,Z_t,G,C)→a_t`, immediately flagged "still too vague."
+
+  **Reconfirms the Epistemic/Operational action split established at 0577/0581** (`q:K_t→K_{t+1}` vs.
+  `a:W_t→W_{t+1}`, `Action=EpistemicAction∪OperationalAction`), then delivers the file's foundational
+  safety boundary: **`Lord selects; Governance authorizes; Executor executes`**, explicitly contrasted with
+  the unsafe pattern `LLM→Shell`. Delivers a formal, explicitly bounded candidate action space `𝒜(K_t)`
+  (Lord cannot select outside it).
+
+  **Delivers the file's first architectural correction**: a naive `a*=argmax_{a∈𝒜}VOI(a)` is explicitly
+  rejected as insufficient, since VOI alone omits authorization, safety, cost, urgency, dependencies, and
+  reversibility. **Delivers a non-scalar action utility vector**
+  `A=(Purpose,ExpectedGain,Cost,Risk,Urgency,Reversibility,Authorization,Dependencies,Deadline)`,
+  explicitly resisting premature collapse into `Score(A)=0.83`, directly extending the corpus's now
+  well-established anti-collapse discipline (0561/0563/0578/0581/0582) into the action-selection layer.
+
+  **Delivers the file's central formal deliverable -- a disciplined two-stage algorithm**: first
+  `𝒜_feasible={a∈𝒜|Feasible(a,K,C)}` (removing impossible/unauthorized actions), then
+  `a*=Select(𝒜_feasible,Objective)` (choosing among what remains) -- `Feasibility→Optimization`, worked
+  through two contrasting concrete Nexus examples (a feasible restore test vs. an infeasible migration
+  blocked by unknown rollback status).
+
+  **Delivers RootGap analysis applied directly to Lord's action targeting**, reusing 0583's RootGap concept
+  in a new context: a three-level dependency chain (`BackupExists→RestoreValidated→RollbackVerified`)
+  demonstrates that Lord should target the ROOT cause of a downstream gap rather than the surface symptom
+  -- "this is graph reasoning, not LLM intuition," a concrete, sharpened re-application of 0583's
+  requirement-dependency machinery specifically to action selection.
+
+  **Delivers a careful information-action-value treatment**: distinguishes expected from guaranteed action
+  outcomes (`Outcome(q)={e_1,...,e_n}`), formalizes a classical statistical `EU(q)`/`VOI(q)` decision-
+  theoretic formula (explicitly labeled "an optional specialized engine, not part of the epistemic
+  kernel," directly reconfirming 0580's/0584's kernel-vs-specialized-engine separation), and delivers the
+  file's key methodological insight -- **a qualitative preference ordering may be the correct DEFAULT
+  when probabilities are unavailable**: `Prefer(a_1,a_2|K,G,C)` yielding `a_1≻a_2`, `a_2≻a_1`, or
+  `a_1∼a_2`, explicitly preferred over manufacturing an unjustified numerical score --
+  **`KnowledgeOS should not manufacture probabilities`**.
+
+  **Delivers a genuinely new escalation condition**: **`IndeterminatePreference→HumanDecision`** -- when
+  two candidate actions are formally equally defensible (`a_1∼a_2`) and no governed tie-breaking criterion
+  exists, Lord escalates to a human rather than arbitrarily selecting -- directly extending 0584's
+  Unresolved-governance-escalation principle into the action-selection layer specifically.
+
+  **Delivers formal Safety and Authorization gates**: `Safety(a,K,C)` (worked example: a migration
+  requiring `RollbackVerified=True` is unsafe while rollback status remains `Unknown`) and
+  `Authorized(a,C)` (worked example: an AI technically CAPABLE of executing a destructive shell command is
+  nonetheless never AUTHORIZED to), formalized as **`Capability≠Authority`** -- a sharp, memorable
+  restatement of the corpus's central AI-boundary discipline specifically for the action layer. Delivers
+  Reversibility as an explicit action attribute, with the general preference
+  `LowRisk+HighReversibility` for epistemic exploration where possible.
+
+  **Delivers the file's preliminary default Lord policy, stated in plain language then formalized**:
+  "prefer the least risky authorized action that maximally reduces decision-critical Zero, subject to
+  cost, dependencies and deadlines," formalized deliberately as
+  `a*=argprefer_{a∈𝒜}[GapReduction,Safety,Authorization,Cost,Urgency,Reversibility]` -- explicitly using
+  `argprefer` rather than `argmax Score`, since the corpus "has not yet established that these dimensions
+  can legitimately be collapsed."
+
+  **Delivers five labeled worked experiments, each producing a specific, checkable Lord behavior**: (1)
+  two independent gaps with two independently sufficient actions correctly yield `a_1∼a_2` (a valid tie,
+  resolvable by secondary criteria or human sequencing preference); (2) a single action resolving TWO gaps
+  simultaneously correctly dominates a narrower single-gap action (`GapReduction(a_3)>GapReduction(a_1)⇒
+  a_3≻a_1`), "exactly the kind of planning optimization we want"; (3) high information value paired with
+  high risk (an in-production rollback test) is correctly excluded at the FEASIBILITY stage before
+  optimization is even reached when policy prohibits it -- delivering the file's central safety principle
+  **`HighInformationValue cannot override governance`**; (4) a mandatory governance action (obtaining
+  Architecture Board approval) generating almost no new factual information is nonetheless correctly
+  prioritized via its distinct `GovernanceValue`, reconfirming and sharpening 0581's/0583's
+  `InformationGain≠KnowledgeGain≠DecisionValue` separation into `Lord optimizes knowledge AND assurance,
+  not merely information`; (5) an executed epistemic action generating genuine new evidence closes the
+  full observation loop.
+
+  **Delivers the formal Lord loop**: `K_t→Zero_t→CandidateActions_t→Select→Execute→Observe→K_{t+1}`,
+  explicitly named "the operational heart of KnowledgeOS." **Delivers Lord's own termination requirement**
+  (a genuine risk of endless investigation, directly connecting to 0577's Epistemic Stopping Conditions
+  S1-S6 and 0567's/0583's readiness/sufficiency machinery), formalized as a five-state termination algebra
+  `𝒯={Completed,Blocked,Escalated,Abandoned,Expired}`, each precisely defined.
+
+  **Delivers the file's central architectural-safety principle, explicitly named "subtle" and worked
+  through two contrasting cases**: **`DoNothing∈ActionSpace`** -- when the goal is already satisfied, or
+  when an action's risk exceeds its benefit, `NoActionRequired`/`DoNothing` is itself a legitimate, valid
+  Lord output, "prevents the agent from acting merely because it is capable of acting." Delivers the
+  resulting strong safety invariant: **`NoAction is preferable to an unjustified action`**, especially when
+  Authorization or Safety remains unresolved -- a genuinely important, concretely-stated AI-safety
+  principle for any autonomous agent architecture.
+
+  **Delivers a precise, four-role LLM-boundary restatement specifically for the action layer**:
+  **`LLM proposes; Lord evaluates; Governance authorizes; Executor acts`**, with every LLM-generated
+  candidate required to pass through `ValidateActionContract` before entering feasibility evaluation.
+
+  **Delivers the file's confirmation that Lord CAN be fully deterministic given a sufficiently defined
+  action space and preference model**, via an explicit nine-step deterministic selection algorithm in
+  pseudocode (remove unauthorized actions; remove unsafe actions; remove dependency-violating actions;
+  remove expired actions; rank by decision-critical gap reduction; apply cost/risk preferences; apply
+  deadline; select if unique winner; escalate or apply a declared tie-breaker otherwise). Delivers a direct
+  reconfirmation of 0584's central insight applied specifically to Lord: **"the hard part again is
+  semantics"** -- computing preference is easy once Risk/Cost/Urgency/GapReduction are precisely defined by
+  the relevant domain; DEFINING them correctly is the genuinely hard part.
+
+  **Delivers Lord's decision policy formalized as an explicit, domain-specific, pluggable parameter**:
+  `SelectAction(K,Z,G,C,P)`, directly paralleling the corpus's established `Inference(K,M)` pattern for
+  reasoning-model pluggability (0579/0580/0581) -- "Model and Policy are explicit. This prevents hidden
+  reasoning" -- a clean architectural analogy explicitly drawn by the file itself between the reasoning
+  layer and the decision layer.
+
+  **Delivers the file's central formal deliverable -- the formal Lord operator**:
+  `L(K,Z,G,C,P)→DecisionState`, with `DecisionState` formalized as a rich structured record
+  `(SelectedAction,RejectedActions,Reasons,Assumptions,Policy,Confidence/Indeterminacy,
+  RequiredAuthorization)` -- explicitly NOT a bare action string, "it contains the reasoning provenance,"
+  worked through a fully populated concrete example output (goal, current Zero, four candidate actions
+  with individual feasibility determinations, the selected action, an explicit stated reason, the
+  authorization result, and the expected next state) -- "that is a real computational agent state," the
+  corpus's most complete single worked Lord output example produced anywhere in the arc.
+
+  **Delivers the file's central formal deliverable -- six falsification tests, ALL PASS**: a hallucinated,
+  unauthorized firewall-change proposal is correctly rejected; an already-satisfied goal correctly yields
+  `NoActionRequired`; conflicted evidence correctly yields `ResolveConflict` rather than proceeding to
+  migration; a fully-blocked action space correctly yields `Blocked/Escalated` rather than an invented
+  action; equally-good candidate actions correctly yield `HumanDecisionRequired`; and, most notably, an
+  LLM's strong operational recommendation ("execute migration now") is correctly overridden by an unmet
+  blocking contract requirement, delivering the file's climactic safety statement:
+  **`LLM recommendation cannot override Zero/Contract`**.
+
+  **Delivers the file's headline redefinition of Lord itself, explicitly self-identified as "the most
+  important result"**: Lord is redefined NOT as "an intelligent AI agent" but precisely as
+  **`Governed Action Selection over Knowledge and Zero`**, with the explicit closing clarification "AI is
+  an implementation aid, not the definition" -- the sharpest, most consequential reframing of Lord's true
+  identity anywhere in the corpus, directly paralleling the analogous redefinitions already delivered for
+  Zero (0582, "directed epistemic discrepancy operator") and governance (0584, "the kernel does not
+  require extraordinary computing power").
+
+  **Delivers a direct reconfirmation of 0584's normal-PC computability finding, applied specifically to
+  Lord**: "is Lord computable on a normal PC? Yes," backed by an eight-item list of ordinary computational
+  workloads (graph traversal, candidate generation, constraint filtering, dependency analysis, rule
+  evaluation, preference comparison, scheduling, state transitions) -- "a basic Lord without an LLM could
+  run comfortably on an ordinary PC." Delivers a precise statement of where AI genuinely earns its keep:
+  UNSTRUCTURED candidate-generation problems (worked example: "read 500 documents and propose possible
+  investigations"), with the resulting candidates still required to pass through the fully deterministic
+  `GovernedLord` selection mechanism -- "precisely the architecture we want."
+
+  **Delivers the file's consolidated formal loop notation**:
+  `K_t--[Zero]-->Z_t--[Lord]-->a_t--[Authorization]-->a_t*--[Execution]-->W_{t+1}--[Observation]-->
+  E_{t+1}--[Assimilation]-->K_{t+1}`, with the explicit closing note "every arrow has a definable
+  computational responsibility" -- the corpus's cleanest, most fully-annotated single-loop notation to
+  date.
+
+  **Delivers Step 25G's verdict**: **"25G — PASS,"** with the file's own summarizing architectural
+  principle: "Lord is a governed action-selection mechanism operating over KnowledgeState, Zero, available
+  actions, constraints and decision policies. LLMs may generate candidates, but cannot bypass feasibility,
+  governance, or epistemic constraints." Delivers a nine-stage consolidated architecture summary
+  (`Input→Evidence→Knowledge→Contract→Zero→Lord→Action→Observation→Knowledge`, with Inference and
+  Governance cross-cutting throughout).
+
+  **Closes by identifying the one remaining architectural layer that cannot be avoided**: "who or what
+  converts Lord's selected action into an actual decision, especially when multiple legitimate actions
+  have different business consequences?" **Opens "Step 25H — Formal Sārathi Algebra: Decision, Utility,
+  Risk, and Action Authorization,"** explicitly drawing the final, cleanest distinction between the two
+  remaining reasoning-engine components: `Lord: "what should we investigate/do next?"` versus
+  `Sārathi: "given what we know and the possible consequences, what decision should we make?"`, posing the
+  file's climactic closing question -- explicitly framed as testing whether the ENTIRE KnowledgeOS loop is
+  now computationally closed, the highest-stakes remaining open question of the entire research program.
+  As with the whole 25A-25G sub-arc, no report of actual executed code appears; this remains rigorous
+  symbolic/architectural reasoning throughout.
+introduces:
+  - concept: "The disciplined two-stage feasibility-then-preference selection algorithm for Lord, formalized as A_feasible={a∈A|Feasible(a,K,C)} then a*=Select(A_feasible,Objective), replacing a rejected naive VOI-maximization-only formulation"
+  - concept: "RootGap analysis applied specifically to Lord's action targeting, reusing 0583's requirement-dependency machinery to let Lord target root causes rather than surface symptoms — 'graph reasoning, not LLM intuition'"
+  - concept: "The deliberate use of a qualitative partial preference relation (Prefer(a1,a2), yielding ≻/≺/∼) as the correct DEFAULT for action selection when probabilities are unavailable, explicitly preferred over manufacturing an unjustified numerical score"
+  - concept: "IndeterminatePreference→HumanDecision, a genuinely new escalation condition when two candidate actions are formally tied with no governed tie-breaker, extending 0584's Unresolved-governance-escalation principle into action selection"
+  - concept: "Capability≠Authority formalized sharply for the action layer, worked through a concrete destructive-shell-command example an AI is technically able but never authorized to execute"
+  - concept: "'HighInformationValue cannot override governance' — a dangerous-but-informative action is correctly excluded at the feasibility stage before optimization is even reached, when policy prohibits it"
+  - concept: "'NoAction is preferable to an unjustified action' — DoNothing formalized as a first-class member of the action space, explicitly preventing an agent from acting merely because it is capable of acting"
+  - concept: "'LLM recommendation cannot override Zero/Contract', the climactic result of a falsification test where a strongly LLM-recommended operational action is correctly overridden by an unmet blocking contract requirement"
+  - concept: "The headline redefinition of Lord, explicitly self-identified as 'the most important result': Lord = Governed Action Selection over Knowledge and Zero, not 'an intelligent AI agent' — AI is an implementation aid, not the definition"
+  - concept: "The formal Lord operator L(K,Z,G,C,P)→DecisionState, with DecisionState formalized as a rich structured record carrying full reasoning provenance rather than a bare selected-action string"
+  - concept: "'Step 25H — Formal Sārathi Algebra: Decision, Utility, Risk, and Action Authorization', the next and final planned reasoning-engine component, explicitly testing whether the entire KnowledgeOS loop is now computationally closed"
+defines:
+  - concept: "Action utility vector (non-scalar, deliberately)"
+    definition: "A=(Purpose,ExpectedGain,Cost,Risk,Urgency,Reversibility,Authorization,Dependencies,Deadline) — explicitly resisting premature collapse into a scalar Score(A)"
+  - concept: "Preliminary default Lord policy"
+    definition: "a*=argprefer_{a∈A}[GapReduction,Safety,Authorization,Cost,Urgency,Reversibility] — prefer the least risky authorized action that maximally reduces decision-critical Zero, subject to cost, dependencies, and deadlines"
+  - concept: "Termination algebra for Lord"
+    definition: "T={Completed,Blocked,Escalated,Abandoned,Expired} — five precisely-defined states preventing infinite investigation loops"
+  - concept: "Formal Lord operator"
+    definition: "L(K,Z,G,C,P)→DecisionState, where DecisionState=(SelectedAction,RejectedActions,Reasons,Assumptions,Policy,Confidence/Indeterminacy,RequiredAuthorization) — a full reasoning-provenance record, not a bare action"
+refines:
+  - concept: "0577's qualitative EpistemicAction/OperationalAction distinction and 0581's formalized q/a operators"
+    refinement: "Directly reused as the foundational action taxonomy for Lord's entire formal treatment, with Lord's own selection process formalized on top of these two established categories"
+  - concept: "0583's RootGap concept, originally derived for requirement-dependency analysis within the Epistemic Contract"
+    refinement: "Directly reapplied to action selection specifically — Lord should target the root cause of a dependency chain rather than its downstream symptoms, a concrete, sharpened re-application in a new context"
+  - concept: "0557's/0567's/0581's Value of Information (VOI) machinery"
+    refinement: "Explicitly reclassified as 'an optional specialized engine, not part of the epistemic kernel' when quantitative and reformulated as a qualitative preference relation by default when probabilities are unavailable — a further concrete instance of the kernel-vs-specialized-engine architectural separation"
+  - concept: "0581's/0583's InformationGain≠KnowledgeGain≠DecisionValue separation"
+    refinement: "Sharpened into 'Lord optimizes knowledge AND assurance, not merely information', worked through a concrete mandatory-but-low-information governance action example (obtaining Architecture Board approval)"
+  - concept: "0561's/0563's/0578's/0581's/0582's recurring anti-collapse discipline"
+    refinement: "Extended directly and explicitly to Lord's own action-selection formula, using argprefer over a partial preference relation rather than argmax over a collapsed scalar score"
+  - concept: "0584's central insight 'the real bottleneck is not CPU' / Semantic vs Computational unresolved"
+    refinement: "Directly reapplied specifically to Lord: the hard part is precisely defining Risk/Cost/Urgency/GapReduction, not computing preference once they are defined"
+  - concept: "0579's/0580's/0581's Inference(K,M)-style pluggable-model architecture for reasoning"
+    refinement: "Directly paralleled for the decision layer via SelectAction(K,Z,G,C,P), with the file explicitly drawing the analogy between pluggable reasoning models and pluggable decision policies"
+  - concept: "0562's/0566's/0577's/0583's/0584's recurring LLM-governance boundary (LLMOutput⇒Candidate, never automatically binding/committed/authorized)"
+    refinement: "Given its climactic, most concretely tested instance yet: an LLM's strongly-worded operational recommendation is directly and explicitly overridden by an unmet contract requirement in a falsification test, delivering the sharp closing statement 'LLM recommendation cannot override Zero/Contract'"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25H — Formal Sārathi Algebra: Decision, Utility, Risk, and Action Authorization' is executed as its own dedicated corpus file, and critically, whether it succeeds in formalizing Sārathi and thereby closes the entire KnowledgeOS loop computationally — this is the highest-stakes remaining open question of the entire research program, since Sārathi is explicitly framed as the final planned reasoning-engine component"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the two-stage feasibility-then-preference Lord selection algorithm, the non-scalar action utility vector, RootGap analysis reapplied to action targeting, and the qualitative preference relation Prefer(a1,a2) as the correct default over a manufactured numerical score."
+  - "dimension-registry.md: record IndeterminatePreference→HumanDecision, Capability≠Authority, 'HighInformationValue cannot override governance,' 'NoAction is preferable to an unjustified action' (DoNothing as a first-class action), the five-state termination algebra, and 'LLM recommendation cannot override Zero/Contract.'"
+  - "dimension-registry.md: record the headline redefinition 'Lord = Governed Action Selection over Knowledge and Zero, not an intelligent AI agent,' the formal Lord operator L(K,Z,G,C,P)→DecisionState with full reasoning provenance, six falsification tests all PASS, the verdict '25G — PASS,' Lord's confirmed normal-PC computability, and 'Step 25H — Formal Sārathi Algebra' as the next (final planned) research phase, testing whether the entire KnowledgeOS loop is now computationally closed."
+anchor_test:
+  anchor: "0584's transition-marking closing ('where we begin to turn KnowledgeOS from an epistemic model into an actual computable agent architecture'); 0577's/0581's Epistemic/Operational action distinction; 0583's RootGap concept; 0580's/0584's kernel-vs-specialized-engine separation; the recurring anti-collapse discipline and LLM-governance boundary"
+  supports_dimension: "LANDMARK delivering the corpus's first complete, rigorous formalization of Lord, directly paralleling the treatment Zero received at 0582 and governance received at 0584. Delivers the headline, self-identified 'most important result' of the file — Lord redefined precisely as 'Governed Action Selection over Knowledge and Zero,' explicitly not 'an intelligent AI agent,' with AI demoted to an implementation aid rather than the definition. Delivers a genuinely disciplined two-stage feasibility-then-preference selection algorithm using a deliberately non-collapsed preference relation, a concrete reapplication of the RootGap concept to action targeting, and several new, concrete AI-safety principles (Capability≠Authority, HighInformationValue cannot override governance, NoAction is preferable to an unjustified action, LLM recommendation cannot override Zero/Contract) each grounded in a specific worked falsification test. Delivers a rich, fully structured DecisionState output carrying complete reasoning provenance rather than a bare action string, and directly reconfirms 0584's central computability finding specifically for Lord (computable on a normal PC without an LLM). Closes by opening the research program's final planned reasoning-engine component, Sārathi, framed as the step that will determine whether the entire KnowledgeOS loop is now genuinely computationally closed"
+  refines_or_contradicts: "directly executes Step 25G as opened at 0584; reuses 0577's/0581's Epistemic/Operational action taxonomy; reapplies 0583's RootGap concept to action targeting; extends 0580's/0584's kernel-vs-specialized-engine separation to VOI specifically; sharpens 0581's/0583's InformationGain≠KnowledgeGain≠DecisionValue separation; extends the recurring anti-collapse discipline and LLM-governance boundary to their most concretely tested instances yet; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked, fully-populated DecisionState example output (goal, Zero state, four candidate actions with individual feasibility determinations, the selected action with an explicit stated reason, authorization result, and expected next state) is directly checkable, concrete evidence of the corpus's most complete Lord output example produced anywhere in the research program, immediately reusable as an implementation-ready specification."
+  - "The falsification test explicitly overriding a strongly-worded LLM operational recommendation ('execute migration now') with an unmet blocking contract requirement, yielding the concrete result 'LLM recommendation cannot override Zero/Contract', is directly checkable, concrete evidence that the corpus's AI-governance boundary principle survives a genuinely adversarial pressure scenario rather than only being stated abstractly."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25H — Formal Sārathi Algebra: Decision, Utility, Risk, and Action Authorization' is executed as its own dedicated corpus file, and critically, whether it succeeds in formalizing Sārathi and thereby closes the entire KnowledgeOS loop computationally"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first complete, rigorous formalization of Lord, directly paralleling the analogous treatment Zero received at 0582 and governance conflict received at 0584. Delivers the file's headline, explicitly self-identified 'most important result' — Lord redefined precisely as 'Governed Action Selection over Knowledge and Zero,' not 'an intelligent AI agent,' with AI demoted to an implementation aid rather than the definition, the sharpest and most consequential such reframing anywhere in the corpus. Delivers a genuinely disciplined two-stage feasibility-then-preference selection algorithm using a deliberately non-collapsed qualitative preference relation rather than a manufactured numerical score, a concrete, novel reapplication of 0583's RootGap concept specifically to action targeting, and several new, concrete AI-safety principles (Capability≠Authority, HighInformationValue cannot override governance, NoAction is preferable to an unjustified action, LLM recommendation cannot override Zero/Contract), each grounded in and confirmed by a specific worked falsification test rather than stated only abstractly. Delivers a rich, fully structured DecisionState output carrying complete reasoning provenance rather than a bare action string, directly reconfirms 0584's central normal-PC computability finding specifically for Lord, and closes by opening the research program's final planned reasoning-engine component — Sārathi — explicitly framed as the step that will determine whether the entire KnowledgeOS loop is now genuinely, fully computationally closed, the highest-stakes remaining open question of the entire research program."

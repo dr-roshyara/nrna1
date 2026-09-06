@@ -1,0 +1,62 @@
+sequence: "0125"
+path: docs/knowledgeos/brainstorming/20260822-120638-knowledgeos-math-music-lens-extraction-harmonic-knowledge.md
+title: "KnowledgeOS Gödel+Hofstadter+Music/Math lens -- Harmonic Knowledge Principle (mechanism, not kernel)"
+date: "2026-08-22"
+bytes: 8092
+model:
+  primary: m
+  secondary: [x]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0124"
+importance: medium
+confidence: high
+about: >
+  Formalizes 0124's free-form Fourier/Hofstadter essay into the standard 8-lens extraction format.
+  Genuine new concrete proposal: "Semantic Frequency Profile" (every claim tagged with Concept/Context/
+  Assumptions/Evidence, since the same word carries a different "knowledge signal" per community).
+  Closes with the "Harmonic Knowledge Principle" explicitly classified "Wisdom mechanism, not kernel
+  dimension."
+
+introduces:
+  - "'Semantic Frequency Profile': every claim SHALL carry Concept+Context+Assumptions+Evidence (e.g.
+    'AI' in Engineering context = performance-optimization assumptions + benchmark evidence; 'AI' in
+    Ethics context = human-impact assumptions + social-study evidence) -- a concrete extension of the
+    Context/Semantic-Boundary-Precision cluster, cross-referenced not merged"
+  - "'Harmonic Knowledge Principle': 'a knowledge object is not defined only by its content, but by the
+    structured relationships, contexts, histories, and perspectives that give the content meaning.'
+    Explicitly classified 'Wisdom mechanism... Not: Kernel dimension... Role: explains semantic
+    integration'"
+
+defines: []
+refines:
+  - "Restates 0124's Fourier findings in the standard extraction format; Semantic Frequency Profile
+    extends the Context/Semantic-Boundary-Precision cluster with a concrete field-tagging proposal"
+contradicts: []
+repeats:
+  - {concept: "Fourier/Hofstadter self-reference analysis", canonical_source: "0124", novelty: low}
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates:
+  - "Semantic Boundary Precision / Context cluster: 'Semantic Frequency Profile' added as a related
+    concrete proposal, not merged"
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "No reshaping; extends the Context/Semantic-Boundary cluster."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Concrete field-tagging proposal (Semantic Frequency Profile) for the Context/Semantic-Boundary
+    territory, more operational than most prior proposals in this cluster"
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Concrete Semantic Frequency Profile proposal extending the Context/Semantic-Boundary-Precision
+  cluster; otherwise formalizes 0124's already-logged findings.

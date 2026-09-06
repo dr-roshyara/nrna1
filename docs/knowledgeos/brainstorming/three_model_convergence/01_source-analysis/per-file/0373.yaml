@@ -1,0 +1,87 @@
+sequence: 373
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260825-234727_better-formulation-of-the-position.md
+title: "F=(p,v) Fact-Pairing; Probability Belongs to the Determination-State Not the Proposition; Logic-Then-Probability Layering; Logical-Strength-Before-Epistemic-Assignment Research Question"
+date: "2026-08-25"
+bytes: 5657
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 373
+importance: high
+confidence: high
+about: >
+  A direct continuation and refinement of 0372's V(p)/Reason-vs-Reasoning discussion, single layer, no
+  duplication. Introduces a fact-pairing notation F=(p,v), where p is the proposition and v is the current
+  epistemic assessment -- worked example F1=("Nexus is version 3.69", 0.85), with 0.85 explicitly NOT yet
+  meaning probability, only an unresolved/graded epistemic state. Restates the corpus's Reason-before-
+  probability discipline (0372) via a concrete example: given observations O1,O2,O3 and existing facts
+  F1,F2, a reasoning structure R:(O1,O2,F1,F2)->p is first established and its strength assessed BEFORE
+  any probability is assigned (P(p|O1,O2,O3,F1,F2,R) only if the regime is probabilistic) -- crystallized
+  as Facts+Evidence -> Reasoning/Logic -> Epistemic Assessment -> Probabilistic Value, explicitly NOT simply
+  Facts -> Probability. Introduces the pivotal clarification that a "probabilistic fact" F_i=(p_i,P_i) IS
+  possible, but crucially "the probability belongs to the STATE OF OUR DETERMINATION of the fact, not to
+  the proposition itself" -- worked example: "the server is running Nexus 3.69" is not itself "85% true";
+  rather, given available evidence and reasoning at time t, the current ASSESSMENT is 0.85 under a chosen
+  probabilistic model, and this assessment can change (P_t(p)=0.85 -> P_{t+1}(p)=0.97 or 0.20) without the
+  underlying proposition itself having changed -- "the underlying proposition hasn't necessarily changed;
+  our epistemic state has changed." Formalizes p != E_t(p) != P_t(p) (proposition vs. epistemic evaluation
+  vs. one regime-specific probabilistic representation of that evaluation), reconfirming Knowledge !=
+  Probability while explicitly allowing "Knowledge may contain probabilistically assessed facts." Refines
+  the Logic-then-Probability layering via a concrete example: F1:A with P(A)=0.9, R:A=>B; logic supplies the
+  RELATIONSHIP A->B, but the probabilistic regime must separately determine how uncertainty PROPAGATES
+  (P(B|A,...)), explicitly NOT automatically P(B)=0.9, since "additional assumptions may be required" --
+  reaffirming why the logic lens must be applied BEFORE the probabilistic lens. Produces a layered pipeline
+  diagram (OBSERVATIONS -> EVIDENCE -> FACT/PROPOSITION -> LOGICAL STRUCTURE ["why does this follow?"] ->
+  EPISTEMIC ASSESSMENT -> [Deterministic 0/1 | Probabilistic 0...1] -> KNOWLEDGE STATE), explicitly keeping
+  "epistemic assessment" as the general concept with probability as one regime-specific realization.
+  Restates the ideal-vs-actual distinction using E_t(p) notation (E_t(p) in {0,1} ideal; E_t(p) in (0,1)
+  actual, because available evidence/reasoning do not fully resolve the proposition), giving the "try our
+  best" principle a precise convergence-target reformulation: E-hat_t(p) -> E_t*(p). Closes with a sharpened
+  next research question: "How do we determine the logical strength of the reasoning supporting a fact
+  before assigning an epistemic/probabilistic state to that fact?", naming SIX convergent research areas
+  (formal logic, argumentation theory, Bayesian inference, fuzzy/many-valued logic, evidence theory,
+  measurement theory) to be compared, and explicitly testing whether the sequence Proposition -> Reasoning
+  structure -> Epistemic state -> Probability is universal or whether some cases require a DIFFERENT
+  ordering -- named as "the mathematical question worth attacking" next.
+introduces:
+  - concept: "Fact-pairing notation F=(p,v): a fact pairs a proposition p with its current epistemic assessment v, worked example F1=('Nexus is version 3.69', 0.85) where 0.85 does NOT yet mean probability, only an unresolved/graded epistemic state"
+  - concept: "Pivotal clarification that probability belongs to the STATE OF DETERMINATION of a fact, not to the proposition itself: 'the server is running Nexus 3.69' is not itself '85% true' -- rather the current ASSESSMENT (given evidence/reasoning at time t) is 0.85, and this assessment can shift (0.85->0.97 or 0.20) without the proposition itself changing, since 'our epistemic state has changed,' not the world"
+  - concept: "Three-level formalization p != E_t(p) != P_t(p): the proposition itself, its epistemic evaluation at time t, and one regime-specific probabilistic representation of that evaluation -- reconfirming Knowledge != Probability while explicitly permitting 'Knowledge may contain probabilistically assessed facts'"
+  - concept: "Concrete logic-before-probability worked counterexample: F1:A with P(A)=0.9 and R:A=>B does NOT automatically yield P(B)=0.9 -- logic supplies the relationship, the probabilistic regime must separately determine uncertainty propagation, requiring additional assumptions"
+  - concept: "Layered pipeline diagram OBSERVATIONS->EVIDENCE->FACT/PROPOSITION->LOGICAL STRUCTURE->EPISTEMIC ASSESSMENT->[Deterministic|Probabilistic]->KNOWLEDGE STATE, with epistemic assessment retained as the general concept and probability as one regime-specific realization"
+  - concept: "Sharpened research question: how do we determine the logical strength of reasoning supporting a fact BEFORE assigning an epistemic/probabilistic state, naming six convergent research areas (formal logic, argumentation theory, Bayesian inference, fuzzy/many-valued logic, evidence theory, measurement theory) and explicitly testing whether Proposition->Reasoning->Epistemic-state->Probability is a universal ordering or case-dependent"
+defines: []
+refines:
+  - concept: "0372's Reasoning(=Logic)-vs-V(p) separation and the V(p)=0.8 interpretation-underdetermination question"
+    refinement: "Given a cleaner fact-pairing notation F=(p,v) and the pivotal clarification that probability attaches to the STATE OF DETERMINATION rather than the proposition -- resolving 0372's open interpretation question in the direction of 'assessment of the proposition,' not 'property of the proposition'"
+  - concept: "0372's Facts+Evidence+Rules -[Logic]-> Conclusion / V(B)=f(V(A),V(A=>B)) open question"
+    refinement: "Given a concrete worked counterexample (P(A)=0.9, A=>B, P(B)!=0.9 automatically) demonstrating WHY f is nontrivial and additional assumptions are required, without yet resolving f itself"
+  - concept: "0366's K_t*/K-hat_t and 0372's V_t*(p)/V-hat_t(p) ideal-vs-actual gap formalizations"
+    refinement: "Restated with E_t(p) notation (E-hat_t(p) -> E_t*(p) convergence target), consolidating the same principle under a third, slightly different notational choice -- functionally equivalent, not a new finding"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the F=(p,v) fact-pairing notation and the pivotal clarification that probability attaches to the state of determination, not the proposition, as a refinement of 0372's V(p) interpretation-underdetermination question."
+  - "dimension-registry.md: record the concrete logic-before-probability worked counterexample (P(A)=0.9, A=>B, P(B)!=0.9 automatically) as evidence for why logic must be applied before the probabilistic regime."
+anchor_test:
+  anchor: "0372's Reasoning-vs-V(p) separation, V(p) interpretation-underdetermination question, and ideal-vs-actual gap formalization; 0371's Fact-Determination answer"
+  supports_dimension: "Mathematical model, refining and consolidating rather than introducing a fundamentally new direction: clarifies that probability attaches to the epistemic state of determination rather than the proposition itself, via a cleaner F=(p,v) notation and a concrete logic-before-probability worked counterexample, restating the ideal-vs-actual gap under a third notational variant (E_t(p))"
+  refines_or_contradicts: "refines 0372 (resolves the V(p) interpretation question toward 'assessment of the proposition'); refines 0372's open value-propagation question with a concrete counterexample; restates 0366/0372's ideal-vs-actual gap formalization under new notation, no new finding there"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether the six named convergent research areas (formal logic, argumentation theory, Bayesian inference, fuzzy/many-valued logic, evidence theory, measurement theory) are pursued in sequence in later files"
+  - "Whether the Proposition->Reasoning->Epistemic-state->Probability ordering is ever shown to fail in some case, requiring a different ordering as explicitly anticipated"
+tier2_triggered: false
+tier2_reason: "NOT TRIGGERED -- a direct, single-layer refinement of 0372's Reasoning-vs-V(p) discussion, introducing the F=(p,v) fact-pairing notation and the pivotal probability-attaches-to-determination-not-proposition clarification, but without a qualitatively new landmark finding beyond 0372's already-established distinctions."

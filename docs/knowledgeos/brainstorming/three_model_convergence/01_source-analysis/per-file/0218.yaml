@@ -1,0 +1,54 @@
+sequence: 218
+path: docs/knowledgeos/brainstorming/kernel/20260824-111730-knowledge-aggregate-too-large-correction-and-synthesis-handover.md
+title: "Knowledge Aggregate Too Large — Correction and Synthesis Handover"
+date: "2026-08-24"
+bytes: 5100
+model:
+  primary: c1
+  secondary: null
+source_role: CRITICAL_REVIEW
+canonical_source: 216
+importance: medium
+confidence: high
+about: >
+  A short condensed handover/summary message accompanying 0216's full synthesis document (referenced
+  here via a "sandbox:/mnt/data/..." download link to "KnowledgeOS_Epistemic_Architecture_Synthesis_
+  DDD_2026-08-24.md" -- almost certainly 0216 itself or its immediate source artifact). States the
+  correction explicitly and concisely: "The research was right about the invariants, but the earlier
+  KnowledgeAggregate was too large as a literal DDD aggregate." Restates 0216's KnowledgeClaim/Evidence/
+  Determination/Authority decomposition, the eight-context logical architecture, and the 15 named
+  techniques in condensed form, with one explicit new discipline statement not spelled out as crisply in
+  0216 itself.
+introduces:
+  - concept: "Explicit discipline restatement: philosophy and books provide distinctions and falsification questions, not automatic architecture law; the research corpus explicitly says not to promote philosophical terminology directly into the Kernel"
+  - concept: "Principal-architect verdict condensed to one sentence: the books do not tell us to build a bigger KnowledgeOS, they tell us to build a smaller, sharper, more explicit one"
+defines: []
+refines:
+  - concept: "0216's full synthesis (KnowledgeClaim/Evidence/Determination/Authority decomposition, eight bounded contexts, 15 named techniques)"
+    refinement: "Condensed restatement with one crisper discipline statement (philosophy supplies falsification questions, not architecture law) not as explicitly foregrounded in 0216 itself."
+contradicts: []
+repeats:
+  - concept: "Entire architectural content of 0216 (God-Aggregate rejection, KnowledgeClaim/Evidence/Determination/Authority split, eight-context architecture, 15 named techniques)"
+    canonical_source: 216
+    novelty: low
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0216"
+  supports_dimension: "Engineering KnowledgeOS model -- condensed restatement/handover of 0216's synthesis"
+  refines_or_contradicts: "refines/condenses 0216; no new substantive content"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether the referenced sandbox download artifact is identical to 0216's file or a distinct earlier/later draft -- not verifiable from this corpus alone."
+tier2_triggered: false
+tier2_reason: "Condensed handover/summary of 0216's already-recorded synthesis; no substantively new architectural content beyond one sharper discipline statement, captured in this record's introduces field."

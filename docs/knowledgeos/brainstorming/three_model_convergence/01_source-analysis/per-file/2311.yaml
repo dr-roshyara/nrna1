@@ -1,0 +1,43 @@
+sequence: 2311
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260901-025500_step_286_change-the-mathematical-foundation-duplicate.md
+title: "DUPLICATE of file 2309 (byte-identical, confirmed via md5sum)"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "duplicate"
+source_role: DUPLICATE
+canonical_source: 2309
+importance: low
+confidence: high
+about: >
+  Byte-identical duplicate of file 2309 ("Change the Mathematical Foundation: the Subset Model Cannot
+  Express Dimension Change"), confirmed via md5sum comparison. Filename itself explicitly flags "duplicate".
+  No independent analysis performed; see 2309 for full record. Canonical source is 2309.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - "Byte-identical duplicate of file 2309, confirmed via md5sum."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "n/a — duplicate"
+  supports_dimension: "n/a"
+  refines_or_contradicts: "n/a"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Confirmed byte-identical duplicate of file 2309; not independently analyzed."

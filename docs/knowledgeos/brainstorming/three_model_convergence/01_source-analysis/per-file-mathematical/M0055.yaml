@@ -1,0 +1,138 @@
+sequence: M0055
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-102241_experiment-g-satc-evaluation-semantics-repair-and-closure-test.md
+title: "Experiment G -- Sat_c Evaluation Semantics Repair and Closure Test: a Rigorous Not-Yet-Executed Protocol (ID Mismatch: Titled 'Experiment G' but Assigned ID KR-SIM-2026-09-02-E) Making Eval_c the Primary Research Object, Introducing the OPEN-vs-U Epistemic-Category Distinction and the Truth-Orthogonal-to-Closure Notation, Followed by a Confirmed 'Experiment H' Execution That Re-Orders the Research Sequence and Downgrades 'Zero Is the Theory's Closure Predicate' to a Tested-Model-Only Claim, Then Proposes a Third, Differently-Labeled Experiment (KR-SIM-2026-09-02-G, Reusing the Letter G for Different Content)"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c1
+  secondary_note: "delivers the most rigorous single experimental protocol in the pass (Experiment G/E: 6 phases, 10 negative tests, 8 discipline rules, 8 stop conditions), then confirms a further executed experiment (H) whose findings re-order the research sequence yet again and correct an overreaching prior verdict about Zero's theoretical status"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0055
+importance: critical
+confidence: high
+about: >
+  **CORPUS-INTEGRITY NAMING MISMATCH**: the document's own heading is "EXPERIMENT G -- SAT_c /
+  EPISTEMIC EVALUATION SEMANTICS," but its declared Experiment ID is "KR-SIM-2026-09-02-E" -- a
+  letter/ID mismatch. Later in the same document, a genuinely DIFFERENT proposed experiment
+  ("Contradiction and Epistemic Status Semantic Closure") is explicitly named "KR-SIM-2026-09-02-G,"
+  REUSING the letter G for unrelated content. Flagged as a corpus-integrity issue for the eventual
+  reclassification pass, alongside the earlier G1-G9/G1-G10 registry-naming collision (M0049).
+
+  **PART 1 -- THE REWRITTEN EXPERIMENT PROMPT (not itself confirmed executed within this document)**:
+  makes **Eval_c(K_t,r,Gamma_t) -> EVal_c the primary research object**, demoting Sat_c to a
+  possible projection (Sat_c := value o Eval_c, "do not assume this equivalence") -- directly
+  implementing M0053's own recommended reframing. Introduces an explicit **six-level distinction**
+  (semantic specification / candidate evaluator / implementation / experimental observation /
+  theoretical derivation / governance decision) that must never be collapsed -- richer than any
+  prior classification-discipline statement in the pass.
+
+  **DELIVERS A NINE-ITEM REASON VOCABULARY** (UNOBSERVED, UNINTERPRETED, UNDERDETERMINED,
+  INSUFFICIENT_PROVENANCE, NO_EVALUATOR, NO_ORDERING, NO_TEMPORAL_SEMANTICS, DELTA_UNDEFINED,
+  UNOBSERVABLE), consolidating M0052's three-branch (epistemic/theory/world) U taxonomy into named
+  leaves while explicitly refusing exhaustiveness ("if another reason is required, report it as a
+  discovered candidate").
+
+  **INTRODUCES THE OPEN-vs-U EPISTEMIC-CATEGORY DISTINCTION, LATER CONFIRMED CRITICAL BY EXPERIMENT
+  H**: for the p-and-not-p contradiction case, "the critical question is not which value should D
+  receive -- it is: does the existing theory contain enough semantics to determine what D means? If
+  not, the correct result is [OPEN], not U invented by convention." This distinguishes OPEN (the
+  THEORY has not specified enough to evaluate at all) from U (the evaluator ran and returned
+  undetermined) -- a genuinely new, sharper epistemic category than the pass's prior U-taxonomies.
+
+  **INTRODUCES THE TRUTH-ORTHOGONAL-TO-CLOSURE NOTATION**: "if no existing semantic component
+  legitimately establishes truth... record Truth ⟂ Closure" -- using an orthogonality symbol rather
+  than mere non-implication, a slightly stronger and more precise statement than M0051/M0052's
+  Zero-does-not-imply-Truth findings.
+
+  **DELIVERS PHASE D1, SEPARATING FOUR DISTINCT ZERO-CONSEQUENCE CLAIMS**: Zero=>Truth, Zero=>
+  Knowledge, Zero=>Decision-readiness, Zero=>No-remaining-epistemic-work -- "these are distinct
+  claims. Do not conflate them," a further decomposition beyond the single Closure!=Truth finding
+  (M0052/M0051), recognizing that "no more epistemic work" and "the knowledge is true" and "ready to
+  decide" are three separately-testable claims that collapsing Zero would otherwise conflate.
+
+  **DELIVERS TEN REQUIRED NEGATIVE (FALSIFICATION-SEEKING) TESTS N1-N10**: Eval_c is total; three
+  values are sufficient; every U has a valid reason; the eight classes are mutually independent; the
+  eight classes are exhaustive; Kleene conjunction is appropriate; operational evaluation is
+  well-founded; Zero implies truth; Zero_reasoned is merely another spelling of Zero_weak; supplying
+  evaluators automatically makes Sat canonical -- with the explicit rule "a failed negative test is
+  a result, not a problem to repair away," the clearest single falsification-first discipline
+  statement in the pass.
+
+  **PART 2 -- CONFIRMS A FURTHER EXECUTED EXPERIMENT ("H -- Repair Phase and Re-ordered Re-run")**:
+  reports that PB-2's strongest candidate repair (R_b, delegating content contradiction to
+  Sat_consistency) is explicitly NOT adopted, because Sat_consistency itself remains undefined --
+  "Sat_content(K,r)=Sat_consistency(K,r) for contradictory content would be premature theory
+  selection, not an experimentally established result." PB-3 remains open (three structural U-
+  sources is "a promising model," not proven exhaustive). PB-5 has "stratification" as the dominant
+  candidate, but its underlying measure/stratification semantics remain theory-unestablished.
+  Zero_strict=>Zero_reasoned=>Zero_weak is now classified [DERIVED] (a logical relation following
+  from the definitions themselves, an upgrade from M0052's "experimentally supported" status), but
+  this is explicitly NOT the same as which Zero interpretation KnowledgeOS should normatively adopt.
+
+  **RE-ORDERS THE RESEARCH SEQUENCE A SECOND TIME**: from "repair -> evaluators -> Zero" to "semantic
+  foundation -> repair -> evaluation -> closure," inserting TWO new prerequisite experiments before
+  even reaching Eval_c/Sat_c: **Experiment I (Contradiction/Consistency Semantics)**, testing a
+  four-row truth table (p-only, not-p-only, neither, both) with the OPEN-vs-U distinction as its
+  central question; **Experiment II (Epistemic Status Order)**, testing whether the theory actually
+  supports an ordering such as UNKNOWN < HYPOTHESIZED < DETERMINED < CORROBORATED, explicitly "do not
+  assume this ordering"; only then **Experiment III (Evaluation Semantics)** and **Experiment IV
+  (Zero Closure)**.
+
+  **DELIVERS AN IMPORTANT SCOPE-LIMITING CORRECTION TO A PRIOR VERDICT**: "Zero is the closure
+  predicate of the whole theory" is judged "too strong given the evidence currently available" --
+  revised to "in the tested v1.2 model, Zero functions as the candidate closure predicate through
+  which adequacy and downstream decision conditions are evaluated. Whether Zero is canonically the
+  theory's closure construct remains OPEN" -- explicitly guarding against "a simulator convenience
+  silently becoming a theoretical primitive."
+
+  **PROPOSES THE NEXT EXPERIMENT EXPLICITLY MISLABELED "KR-SIM-2026-09-02-G"**: "Contradiction and
+  Epistemic Status Semantic Closure" -- reusing the letter G already claimed (with a mismatched ID)
+  by Part 1's own "Experiment G" prompt, for entirely different content (contradiction/consistency
+  and epistemic-status-order semantics, not evaluation-semantics repair).
+introduces:
+  - concept: "The six-level distinction (semantic specification/candidate evaluator/implementation/experimental observation/theoretical derivation/governance decision), never to be collapsed"
+  - concept: "The nine-item reason vocabulary, consolidating the three-branch U taxonomy into named leaves while explicitly refusing exhaustiveness"
+  - concept: "The OPEN-vs-U epistemic-category distinction: OPEN means the theory has not specified enough to evaluate at all; U means an evaluator ran and returned undetermined"
+  - concept: "The Truth-orthogonal-to-Closure notation (Truth perp Closure), sharper than mere non-implication"
+  - concept: "Phase D1's four-way separation of distinct Zero-consequence claims (Truth/Knowledge/Decision-readiness/No-remaining-work)"
+  - concept: "The ten required negative (falsification-seeking) tests N1-N10, with the explicit rule that a failed negative test is itself a result"
+  - concept: "The re-ordered research sequence (semantic foundation -> repair -> evaluation -> closure), inserting Experiments I (Contradiction/Consistency) and II (Epistemic Status Order) before Eval_c/Sat_c work resumes"
+  - concept: "The scope-limiting correction: Zero as tested-model closure predicate, not necessarily the theory's canonical closure construct"
+defines: []
+refines:
+  - concept: "M0053's Eval_c(K_t,r,Gamma_t) proposal, now embedded as the primary object of a fully-specified experimental protocol"
+  - concept: "M0052's three-branch U taxonomy, consolidated into a nine-item named reason vocabulary"
+  - concept: "M0052's Zero_strict=>Zero_reasoned=>Zero_weak finding, upgraded from experimentally-supported to [DERIVED] (a logical relation from definitions), while explicitly separating that from the normative choice among them"
+  - concept: "M0051/M0052's Zero-does-not-imply-Truth finding, decomposed into four separately-testable Zero-consequence claims (Phase D1)"
+contradicts:
+  - concept: "An earlier (unrecorded in this pass, referenced only implicitly) verdict stating 'Zero is the closure predicate of the whole theory' -- explicitly judged too strong and revised to a tested-model-only claim"
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0055 as delivering the most rigorous single experimental protocol in the pass (Eval_c as primary object, nine-item reason vocabulary, OPEN-vs-U distinction, Truth-perp-Closure notation, ten negative tests), plus a confirmed further experiment (H) that re-orders the research sequence, upgrades the Zero-implication-chain to [DERIVED], and corrects an overreaching claim about Zero's theoretical status. Flags a naming mismatch: 'Experiment G' assigned ID -E, then a different experiment later claims the ID -G."
+anchor_test:
+  anchor: "M0053's Eval_c proposal and M0052's Zero_strict=>Zero_reasoned=>Zero_weak/Closure!=Truth findings"
+  supports_dimension: "Embeds Eval_c as the primary object of a rigorous protocol, upgrades the Zero-implication-chain to [DERIVED], and decomposes the Closure!=Truth finding into four separately-testable claims"
+  refines_or_contradicts: "refines (M0051, M0052, M0053)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'The critical question is not which value should D receive. It is: does the existing theory contain enough semantics to determine what D means? If not, the correct result is [OPEN], not U invented by convention' -- a precise, actionable distinction between theory-incompleteness (OPEN) and evaluated-undeterminedness (U), sharper than any prior U-taxonomy in the pass."
+  - "'Zero is the closure predicate of the whole theory' judged 'too strong given the evidence currently available' and revised to a tested-model-only claim -- an explicit, dated self-correction against premature theory-level generalization from a simulation result."
+  - "The document's own heading ('EXPERIMENT G') carries ID 'KR-SIM-2026-09-02-E', while its own later section proposes a different experiment under ID 'KR-SIM-2026-09-02-G' -- a direct, checkable letter/ID mismatch within a single document."
+undefined_concepts:
+  - "The precise stratification semantics proposed as the dominant PB-5 well-foundedness candidate -- named as dominant among tested candidates, not itself derived or fully specified"
+  - "The precise epistemic-status ordering (if any) the theory actually supports -- named as Experiment II's question, not answered"
+open_questions:
+  - "Whether Experiments I (Contradiction/Consistency Semantics) and II (Epistemic Status Order), and the differently-labeled 'KR-SIM-2026-09-02-G' (Contradiction and Epistemic Status Semantic Closure), are later executed and reported."
+  - "Whether the E/G experiment-ID mismatch is ever corrected or reconciled anywhere later in the corpus."
+tier2_triggered: true
+tier2_reason: "Delivers the most rigorous single experimental protocol in the pass (Eval_c as primary object, nine-item reason vocabulary, OPEN-vs-U distinction, ten negative tests), confirms a further executed experiment that upgrades a key implication chain to [DERIVED] status while correcting an overreaching prior claim about Zero, and surfaces a genuine experiment-ID naming collision. Critical importance and full tier-2 treatment unambiguously warranted."

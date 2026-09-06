@@ -1,0 +1,124 @@
+sequence: M0129
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-175308_todo-landscape-after-the-current-adjudicated-state.md
+title: "TODO Landscape After the Current Adjudicated State: Reveals KR-COMP-SEP-2026-09 (Composition-Separation Experiment) Was Executed -- Excludes 'union', 'strict', and 'last-wins' Composition Rules, Narrows Survivors to 'majority' and 'intraframe-only' (With a Third Operator Explicitly 'Not Excluded'), Establishes phi (Frame) Superset-Of {time,context} but Leaves Frame's Semantic Identity Undefined, Proposes a New Non-Evidential Semantic-Invariance Criterion Unifying C6/C7, and Reframes the ENTIRE Remaining Research Programme Around the Single Highest-Value Open Question: 'What Is a Frame, Semantically?'"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "reveals and consolidates a further executed experiment, KR-COMP-SEP-2026-09 (composition-separation), not directly present as its own document in this pass but referenced and summarized in detail here -- delivers a genuinely reframed critical path for the entire remaining KnowledgeOS research programme, centered on a single newly-identified highest-value open question"
+source_role: ADJUDICATION
+canonical_source: M0129
+importance: critical
+confidence: high
+about: >
+  Consolidates the results of KR-COMP-SEP-2026-09 into a revised, seventeen-item TODO landscape
+  (color-coded 4 DECISION-REQUIRED / 6 OPEN-DEPENDENT / 5 OPEN / 2 BLOCKED), explicitly stating
+  "the old linear A -> B -> C -> ... list is no longer accurate."
+
+  **NEW EXPERIMENTAL RESULTS FROM KR-COMP-SEP-2026-09**: composition-rule candidates "union" and
+  "strict" are EXCLUDED, "last-wins" is EXCLUDED, leaving only two surviving tested candidates,
+  "majority" (aggregate across frames) and "intraframe-only" (refuse frame-free aggregation) --
+  with NO rule yet selected, and a third, unnamed composition operator explicitly "not excluded"
+  by the decision record. The frame variable phi is established to satisfy phi superset-of-or-equal
+  {time, context} for every successful tested combination, but the experiment did NOT establish
+  what a frame actually IS semantically (candidates: semantic context, evidence partition,
+  evaluation context, temporal/contextual coordinate, or something else) -- explicitly judged
+  "currently more fundamental than choosing the aggregation rule." The composition record
+  additionally establishes a scoped lifecycle result, "supersession ~ temporal separation," for the
+  specific tested composition witnesses, while explicitly leaving retirement/retraction/expiration
+  outside that tested case untouched. Confirms the composition record explicitly finds NO kernel
+  implications from either surviving composition option (majority or intraframe-only).
+
+  **PROPOSES A NEW UNIFYING NON-EVIDENTIAL SEMANTIC-INVARIANCE CRITERION**: E ~_non-evidential E'
+  implies Eval(E)=Eval(E') is identified as the common principle underlying two previously separate
+  ad-hoc criteria, C6 (permutation/order invariance) and C7 (frame-refinement invariance) -- if
+  ratified as a general semantic criterion, C6 and C7 become INSTANCES of it rather than
+  independent ad-hoc rules, explicitly flagged as the highest-priority open decision because it
+  "directly affects whether majority is admissible at all."
+
+  **NAMES R_req (THE REQUIRED-DISTINCTION UNIVERSE) AS A RECURRING, NOW-EXPLICIT DEPENDENCY**:
+  notes R_req "has now repeatedly determined experimental outcomes: FDE evaluation, E12, E13, phi,
+  composition" -- meaning every major result across this entire research stretch (M0119-M0129) has
+  been implicitly scoped to whatever R_req happened to be assumed, and "until this is settled,
+  claims of adequacy remain scoped to the current tested distinction set" -- a significant
+  methodological caveat retroactively applied to the whole preceding line of results.
+
+  **IDENTIFIES A NEW REQUIRED BOUNDARY VOCABULARY ITEM CONDITIONAL ON THE CROSS-FRAME DECISION**:
+  if intraframe-only (or another refusal/unresolved mechanism) is selected, a new boundary
+  condition "cross-frame-divergence" becomes load-bearing, requiring NoEvidence != CrossFrame
+  Divergence != Underdetermined != TheoryIncomplete as a genuinely new non-collapse distinction not
+  previously named in this pass's Zero/boundary vocabulary.
+
+  **DELIVERS A REVISED CRITICAL-PATH DIAGRAM**: R_req (decision) -> Non-evidential invariance
+  (decision) -> phi semantics (decision) -> Cross-frame meaning (decision) -> Evaluation model/
+  Boundary -> {Contr, Zero, Determination} -> Composition -> delta -> Kernel candidates ->
+  Ratification -> Theory v1.3 -- explicitly noting Projection/Invariant, identity/equality, and
+  Lifecycle should continue as PARALLEL research lanes rather than waiting for the entire semantic
+  lane to resolve first.
+
+  **REFRAMES THE ENTIRE REMAINING RESEARCH PROGRAMME**: "we have now moved from 'find the correct
+  composition rule' to 'determine what semantic commitments are legitimate before a composition
+  rule can even be selected.' And the immediate highest-value unresolved issue is therefore: what
+  is a frame, semantically? -- because that determines whether the objection to majority is merely
+  a cost we knowingly accept, or a violation of a fundamental invariance principle." Notes the
+  underlying decision record itself "essentially arrives at this boundary: C7 exposes majority's
+  dependence on recording resolution, while intraframe-only introduces a different semantic cost;
+  neither can be selected without an explicit prior commitment."
+
+  Reaffirms, unchanged: Kernel remains BLOCKED/NOT SELECTABLE ("no semantic mechanism enters the
+  kernel merely because it is useful"); Theory v1.2 remains unchanged, no v1.3; Contr remains
+  undefined (FDEConflictDetector != Contr and Contr != Satisfied remain [PROP] pending I11);
+  Evaluation = Standing x Boundary/Reason x Context x Provenance remains the strongest tested
+  candidate shape but explicitly "FDE is not adopted... Standing is not a KnowledgeOS primitive...
+  Boundary vocabulary is not adopted"; Zero remains undefined, explicitly "Zero != Standing" and
+  cannot be determined from Standing alone, deferred until evaluation/boundary semantics stabilize;
+  Determination remains OPEN pending the cross-frame-divergence policy decision (majority permits
+  determination, intraframe-only blocks it, a third mechanism might preserve unresolved divergence
+  explicitly); ==_sem remains OPEN but explicitly not itself refuted (family-level complexity was
+  what failed in the distinguishability experiments, not semantic equivalence per se).
+introduces:
+  - concept: "The KR-COMP-SEP-2026-09 composition-rule exclusion results: union, strict, and last-wins all excluded; majority and intraframe-only survive as tested candidates, with a third unnamed operator explicitly not excluded"
+  - concept: "The phi (frame) superset-of {time,context} partial characterization result, with frame's full semantic identity left explicitly undefined and flagged as more fundamental than the aggregation-rule question"
+  - concept: "The proposed unifying non-evidential semantic-invariance criterion subsuming C6 (permutation invariance) and C7 (frame-refinement invariance) as instances"
+  - concept: "The explicit naming of R_req as a recurring, retroactively-scoping dependency across FDE evaluation, E12, E13, phi, and composition"
+  - concept: "The new candidate boundary condition 'cross-frame-divergence,' required if intraframe-only or another refusal mechanism is selected"
+  - concept: "The scoped lifecycle result 'supersession ~ temporal separation' for the tested composition witnesses"
+  - concept: "The reframed critical-path diagram and the identification of 'what is a frame, semantically?' as the single highest-value open question"
+defines: []
+refines:
+  - concept: "M0109/M0113's ten-group TODO register, substantially revised here into a seventeen-item landscape reflecting the composition-experiment results"
+  - concept: "M0127's Contr/Zero completion, here explicitly kept separate from the still-unresolved Composition/frame-semantics question"
+  - concept: "The corpus's established capability!=kernel-primitive discipline, reaffirmed via the composition record's explicit no-kernel-implications finding"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - concept: "The full KR-COMP-SEP-2026-09 experiment writeup, referenced and summarized here but not directly located as its own document in this pass -- a candidate to locate if it appears later or in the adjacent research/ tree"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0129 as revealing the executed KR-COMP-SEP-2026-09 composition-separation experiment (excludes union/strict/last-wins composition rules, narrows survivors to majority/intraframe-only, establishes phi superset-of {time,context} while leaving frame's semantic identity undefined), naming R_req as a recurring retroactive dependency across five prior results, identifying a new required boundary condition (cross-frame-divergence), proposing a unifying non-evidential semantic-invariance criterion for C6/C7, and reframing the entire remaining research programme around the single highest-value open question 'what is a frame, semantically?'"
+anchor_test:
+  anchor: "M0127's Contr/Zero completion, the corpus's established capability!=kernel-primitive discipline, and the Zero Lens boundary-vocabulary work"
+  supports_dimension: "Confirms genuine continued research progress into the Composition question recommended repeatedly across M0116-M0128, with real, narrowing experimental exclusions and a clearly reframed critical path"
+  refines_or_contradicts: "refines (M0109, M0113, M0127, the established capability!=kernel-primitive discipline)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'Union' and 'strict' composition rules excluded, 'last-wins' excluded, leaving only 'majority' and 'intraframe-only' as tested survivors with a third operator explicitly not excluded -- a genuine, narrowing experimental result, not merely a proposal."
+  - "'R_req has now repeatedly determined experimental outcomes: FDE evaluation, E12, E13, phi, composition... until this is settled, claims of adequacy remain scoped to the current tested distinction set' -- a significant, retroactively-applied methodological caveat covering the entire M0119-M0129 research stretch."
+  - "'We have now moved from find the correct composition rule to determine what semantic commitments are legitimate before a composition rule can even be selected' -- a genuine, consequential reframing of the entire remaining research programme's priority order."
+undefined_concepts:
+  - "What a frame (phi) actually is semantically -- explicitly named as the single highest-value open question, not resolved here"
+  - "The identity of the third, unnamed composition operator explicitly 'not excluded' by the decision record"
+open_questions:
+  - "Whether KR-COMP-SEP-2026-09's full writeup exists elsewhere in the corpus or the adjacent research/ tree, and whether it can be located to verify this document's summary."
+  - "Whether the non-evidential semantic-invariance criterion unifying C6/C7 was ever formally ratified."
+  - "Whether the 'what is a frame, semantically?' question was subsequently resolved."
+tier2_triggered: true
+tier2_reason: "Reveals a further executed experiment (KR-COMP-SEP-2026-09) with genuine narrowing results (excluding three of four candidate composition rules), names a previously-implicit recurring dependency (R_req) that retroactively scopes five prior results, identifies a new required boundary condition, and delivers a consequential reframing of the entire remaining research programme's critical path around a single newly-identified highest-value question. Comfortably meets the tier-2 bar."

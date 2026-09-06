@@ -1,0 +1,159 @@
+sequence: 543
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-140919_step-002-what-does-it-mean-for-two-evidence-items-to-be-the-same.md
+title: "LANDMARK: Four-Way Identity≠Semantic-Equivalence≠Same-Observation≠Independence Separation Fully Worked Through Seven Cases; DERIVATION_CONFLICT Distinguished From Independent-Observation Contradiction (Two Evidence Items From One Source Disagreeing Is Not the Same Kind of Conflict as Two Independent Sources Disagreeing); CommonCause≠SameObservation≠AutomaticDependence; Multi-Relational (Non-Enum) Evidence Relationship Model; Fact-About-Provenance vs. Inference-About-Provenance"
+date: "2026-08-27"
+bytes: 11004
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 0541's named 'Step 2' (the Evidence Identity/Equivalence Calculus tested with concrete examples), sharpening 0540's earlier abstract treatment with seven fully worked cases"
+source_role: PRIMARY_RESEARCH
+canonical_source: 543
+importance: critical
+confidence: high
+about: >
+  Opens with a sharp motivating warning: "two statements can look identical while representing different
+  observations, or look different while representing the same underlying observation." Establishes the
+  file's foundational four-way separation, extending 0540's treatment: `Identity≠Semantic
+  Equivalence≠Same Observation≠Independence` -- "these must remain separate."
+
+  **Formalizes four relations precisely**: Identity (`e_1=_Ie_2`, literal same evidence object, established
+  via `ID(e)=Hash(canonical(e))` or a stable acquisition identifier -- explicitly noting hash equality
+  establishes same canonical representation but never that two independently acquired observations are the
+  same real-world event); Semantic equivalence (`e_1=_Pe_2`, same proposition under a specified semantic
+  interpretation -- "propositional equivalence, not evidential identity"); Observation equivalence
+  (`e_1=_Oe_2`, same underlying real-world observation/event, via `Underlying(e)=o`); Dependency
+  (`e_1≺e_2`, e_2 was produced using e_1); plus Operational independence (`e_1⊥_ρe_2`, relative to a
+  declared policy, per 0541).
+
+  **Delivers the file's critical governing invariant**: `SemanticEquivalent(e_1,e_2)⇏SameObservation
+  (e_1,e_2)` -- worked through the case that a simple deduplication algorithm would wrongly destroy: an API
+  reading and a separate filesystem inspection both reporting "Nexus=3.69" are semantically equivalent but
+  derive from genuinely different acquisition events, so they must both be allowed to contribute as
+  corroborating evidence -- "semantic equivalence must NOT imply deduplication," a critical invariant.
+
+  **Works through seven fully concrete test cases (A-G)** with explicit formal outcomes: (A) Exact
+  duplicate (identical API record imported twice) -> one contribution; (B) Same observation, different
+  representation (raw API response vs. an extracted JSON field) -> not identical but `=_O`-equivalent, one
+  underlying observation; (C) LLM transformation of a source -> semantically equivalent and dependent, the
+  LLM output is explicitly "not independent evidence," it is "a derived representation"; (D) Two LLMs
+  reading the same document -> `CommonSource`, correctly defaulting to `Independence=Unknown` under a
+  conservative policy rather than assumed independence; (E) Two genuinely independent measurements (API vs.
+  filesystem) with the same proposition but different underlying observations -> both contribute, giving
+  "Same proposition + different independent observation = corroboration"; (F) Same source, different times
+  (identical value reported at 09:00 and 15:00) -> NOT the same observation despite the same proposition,
+  crystallized as `Same proposition≠same observation`; (G) -- the file's most consequential and genuinely
+  novel case -- Different values, same underlying source: a document states "Nexus 3.69" while an LLM
+  extraction from that SAME document incorrectly states "Nexus 3.70," so both derive from one source
+  (`D≺e_1`, `D≺e_2`) yet are NOT semantically equivalent to each other. This is explicitly identified as
+  "contradictory derived assertions," categorically distinct from "contradictory independent
+  observations" -- a genuinely new refinement to the corpus's Conflict theory, distinguishing a conflict
+  arising from disagreement about REALITY (multiple truly independent sources disagreeing) from a conflict
+  arising from disagreement about INTERPRETATION of one single source. Proposes a structured
+  `DERIVATION_CONFLICT` conflict type carrying explicit fields (underlying source, count of independent
+  observations vs. count of derived interpretations), "much more informative than simply saying 'two
+  sources disagree.'"
+
+  **Formalizes an evidence lineage graph** `G_E=(V,L)` with seven named provenance-edge types (DerivedFrom,
+  ExtractedFrom, TransformedFrom, SummarizedFrom, CopiedFrom, ObservedFrom, ReviewedFrom), and introduces
+  `Root(e)` -- the set of upstream acquisition events an evidence object ultimately derives from -- noting
+  `Root(e_1)=Root(e_2)` should not automatically imply non-independence.
+
+  **Delivers an important qualifying nuance on Root/common-source reasoning**: a shared ROOT is not the
+  only source of correlation -- two sensors triggered by one common real-world weather event share a common
+  CAUSE, yet may still be genuinely useful independent measurements, crystallized as `CommonCause≠
+  SameObservation` and `CommonCause≠AutomaticDependence` -- explicitly acknowledging this pushes the problem
+  into statistical dependence, which "must remain policy/model dependent" rather than resolvable from
+  provenance structure alone.
+
+  **Delivers a major representational refinement**: the relationship between two evidence objects should
+  NEVER be forced into a single mutually-exclusive enum (IDENTICAL/SAME_OBSERVATION/DERIVED/
+  SEMANTICALLY_EQUIVALENT/COMMON_SOURCE/INDEPENDENT/CONTRADICTORY/UNKNOWN); instead these are independent,
+  co-existing relational dimensions (worked example: `e_1->e_2` with Identity:false,
+  SemanticEquivalent:true, SameObservation:true, Derived:true, Independent:false, all simultaneously true or
+  false). Formalizes this as a **multi-relational graph** `G_E=(V,L_1,...,L_n)` with distinct named layers
+  (Identity, PropositionalEquivalence, ObservationIdentity, Dependency, CommonSource, Contradiction),
+  "much more mathematically appropriate than one 'evidence similarity score.'"
+
+  **Delivers three new DDD domain concepts, explicitly kept separate from `Evidence` itself**:
+  `EvidenceLineage` (where did this evidence come from?), `EvidenceRelation` (how does it relate to another
+  evidence object?), and `EvidenceEquivalence` (do these represent the same proposition or observation?).
+
+  **Delivers a formal governing law set**: `SemanticEquivalent(e_1,e_2)⇏SameObservation(e_1,e_2)`;
+  `SameObservation(e_1,e_2)⇒NonIndependent(e_1,e_2)`; while `SemanticEquivalent(e_1,e_2)∧
+  Independent(e_1,e_2)` is perfectly valid and constitutes genuine corroboration.
+
+  **Delivers a three-tier computability classification for evidence relations**: Deterministically
+  computable (exact identity, cryptographic hash equality, explicit provenance, parent-child relationships,
+  acquisition IDs, timestamps, source identifiers, transformation records); Algorithmically inferable
+  (semantic equivalence, copied content, common source, likely same observation, likely contradiction); Not
+  universally decidable (metaphysical sameness of observations, absolute independence, truth, semantic
+  equivalence in every possible context) -- requiring every inferred relation to carry an explicit status
+  `{Confirmed, Inferred, Proposed, Unknown}`.
+
+  **Delivers a major architectural principle**: Fact about provenance versus Inference about provenance --
+  worked example ("LLM input=Document D" is a deterministic fact; "LLM output semantically represents
+  proposition P" is an inference requiring an LLM or semantic model) -- "KnowledgeOS should never silently
+  promote the second into the first."
+
+  **Closes Step 2 with a consolidated model**: `Evidence+Lineage+Relations+Equivalence+Dependency+
+  Assessment`, replacing the naive `Evidence+Score` model, "a substantial improvement." **Opens "Step 3"**:
+  given a set of evidence objects and their relationships, how does KnowledgeOS construct an Evidence
+  Assessment without double-counting, losing contradictions, or inventing certainty? Formalizes
+  `ℰ,G_E,P,C,ρ->EA` and names the next concrete task: constructing the "Evidence Assessment Algebra" FROM
+  these now-rigorously-established relations, rather than choosing an aggregation formula first as earlier
+  attempts had done.
+introduces:
+  - concept: "Four formally distinct evidence relations: Identity (=_I), Semantic equivalence (=_P), Observation equivalence (=_O), and Dependency (≺), each requiring separate mathematical treatment"
+  - concept: "The critical invariant that semantic equivalence must NOT imply deduplication: two independently-acquired observations expressing the same proposition (e.g. an API reading and a filesystem inspection) must both count as evidence, not collapse into one"
+  - concept: "Seven fully worked evidence-relationship test cases (exact duplicate, same-observation-different-representation, LLM transformation, common-source LLM outputs, independent corroborating measurements, same-source-different-times, and the novel same-source-different-values case), each with an explicit formal outcome"
+  - concept: "DERIVATION_CONFLICT as a categorically distinct conflict type from independent-observation contradiction: two derived interpretations of ONE source disagreeing (e.g. a correct document reading vs. an incorrect LLM extraction of the same document) is a different kind of conflict than two genuinely independent sources disagreeing, and should be reported with structured fields distinguishing the count of independent observations from the count of derived interpretations"
+  - concept: "Root(e), the set of upstream acquisition events an evidence object ultimately derives from, and the qualification that shared Root alone does not automatically imply non-independence"
+  - concept: "CommonCause≠SameObservation and CommonCause≠AutomaticDependence: two sensors triggered by one shared real-world cause (e.g. a weather event) may still be genuinely useful independent measurements — pushing residual correlation concerns into statistical (not provenance-structural) dependence"
+  - concept: "A multi-relational (non-enum) evidence-relationship model: relations like Identity/SemanticEquivalent/SameObservation/Derived/Independent are independent, co-existing dimensions rather than mutually exclusive categories, formalized as a multi-layer relational graph G_E=(V,L_1,...,L_n)"
+  - concept: "Three new DDD domain concepts kept separate from Evidence itself: EvidenceLineage, EvidenceRelation, EvidenceEquivalence"
+  - concept: "A three-tier computability classification for evidence relations (Deterministically computable / Algorithmically inferable / Not universally decidable), requiring every inferred relation to carry an explicit Confirmed/Inferred/Proposed/Unknown status"
+  - concept: "Fact about provenance vs. Inference about provenance: a strict architectural principle that deterministic provenance facts must never be silently promoted to include the epistemic weight of an inferred semantic judgment"
+defines:
+  - concept: "Identity (=_I), Semantic equivalence (=_P), Observation equivalence (=_O)"
+    definition: "Identity: literal same evidence object (established via hash or stable acquisition ID). Semantic equivalence: two evidence objects express the same proposition under a specified interpretation. Observation equivalence: two evidence objects derive from the same underlying real-world acquisition event (Underlying(e_1)=Underlying(e_2))"
+  - concept: "DERIVATION_CONFLICT"
+    definition: "A conflict type where two derived interpretations of the SAME underlying source disagree (e.g. one correct reading and one incorrect LLM extraction of one document), categorically distinct from a conflict between genuinely independent observations, carrying explicit fields for the underlying source and separate counts of independent observations vs. derived interpretations"
+  - concept: "Root(e)"
+    definition: "The set of upstream acquisition events from which an evidence object ultimately derives, used to detect shared lineage but not by itself sufficient to establish non-independence (a shared Root does not automatically imply dependence, nor does a shared real-world Cause)"
+refines:
+  - concept: "0540's Identity≠Equivalence≠Independence separation and its provisional theorem"
+    refinement: "Extended to a formal four-relation system (adding explicit Observation equivalence as its own relation, distinct from both semantic equivalence and identity) and fully worked through seven concrete test cases with explicit outcomes, sharpening 0540's more abstract treatment"
+  - concept: "0532's Conflict object C=(P_1,P_2,Rule,Context,Status) and the corpus's general contradiction-preservation discipline"
+    refinement: "Given a genuinely new sub-classification: DERIVATION_CONFLICT (interpretation disagreement about one source) formally distinguished from ordinary independent-observation contradiction, with structured fields making the distinction explicit and auditable rather than reported as an undifferentiated 'sources disagree' conflict"
+  - concept: "0541's CommonAncestor⇒Independent≠Confirmed finding"
+    refinement: "Extended with a further nuance distinguishing shared evidentiary Root (in the evidence graph) from shared real-world Cause (in the domain itself), showing the latter does not automatically imply the former's conservative treatment applies"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 3' (constructing the Evidence Assessment Algebra directly from the now-established relation set, rather than choosing an aggregation formula first) is executed as its own file, potentially superseding or reconciling with 0536-0538's earlier formula-first attempts"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the four-way Identity/Semantic-equivalence/Same-observation/Independence separation, the critical semantic-equivalence-must-not-imply-deduplication invariant, and the seven fully worked test cases."
+  - "dimension-registry.md: record DERIVATION_CONFLICT as a distinct conflict type separating interpretation disagreement about one source from genuine independent-observation contradiction, and CommonCause≠SameObservation≠AutomaticDependence."
+  - "dimension-registry.md: record the multi-relational (non-enum) evidence-relationship model, the three new DDD concepts (EvidenceLineage/EvidenceRelation/EvidenceEquivalence), the three-tier computability classification, and the Fact-about-provenance vs. Inference-about-provenance architectural principle."
+anchor_test:
+  anchor: "0540's Identity/Equivalence/Independence separation and provisional theorem; 0541's Operational Independence Test and CommonAncestor finding; the corpus's Conflict=(A_i,A_j,Rule,Context,Status) structure"
+  supports_dimension: "LANDMARK sharpening of the corpus's Evidence identity/equivalence theory into a formal four-relation system, worked through seven fully concrete test cases with explicit outcomes. Its most significant new contribution is the DERIVATION_CONFLICT distinction — separating a conflict arising from two derived readings of one source from a conflict between genuinely independent observations, a categorization not previously present anywhere in the corpus's Conflict theory. Also delivers a non-enum, multi-relational representation of evidence relationships, a three-tier computability classification, and a Fact-vs-Inference-about-provenance architectural principle governing what KnowledgeOS may treat as deterministic versus inferred"
+  refines_or_contradicts: "extends and sharpens 0540's Identity/Equivalence/Independence separation with concrete worked cases; introduces a genuinely new sub-classification (DERIVATION_CONFLICT) into the corpus's established Conflict theory (0492/0532); extends 0541's CommonAncestor finding with the CommonCause distinction; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Case G (a document correctly stating 'Nexus 3.69' vs. an LLM incorrectly extracting 'Nexus 3.70' from that same document) is a directly checkable, concrete demonstration that a conflict between two assertions can arise purely from interpretation error on one source, rather than genuine disagreement among independent observations — a distinction with immediate practical consequences for how a conflict-detection subsystem should report and prioritize its findings."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 3' (the Evidence Assessment Algebra constructed directly from the established relation set) is executed as its own dedicated corpus file"
+  - "Whether the DERIVATION_CONFLICT vs. independent-observation-contradiction distinction is later integrated into the corpus's broader Conflict/Coherence formalization (0492) as a first-class sub-type"
+tier2_triggered: true
+tier2_reason: "LANDMARK sharpening of the corpus's evidence-identity theory delivering a formally rigorous four-relation system (Identity/Semantic-equivalence/Observation-equivalence/Dependency) worked through seven fully concrete test cases, including a genuinely novel and practically consequential distinction — DERIVATION_CONFLICT, separating interpretation disagreement about a single source from contradiction between genuinely independent observations, not previously present anywhere in the corpus's Conflict theory. Also delivers the CommonCause≠SameObservation≠AutomaticDependence nuance extending the prior file's common-ancestry finding, a non-enum multi-relational representation of evidence relationships replacing a single mutually-exclusive category scheme, a three-tier computability classification for evidence relations, and a Fact-about-provenance vs. Inference-about-provenance architectural principle — collectively the corpus's most concrete and implementation-ready treatment yet of what it actually means for two pieces of evidence to be 'the same.'"

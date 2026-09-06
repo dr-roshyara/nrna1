@@ -1,0 +1,354 @@
+Yes. This is the **right consolidation outcome**, and I would treat the corpus as being at a good stopping point at 0094.
+
+The most important result is not any individual candidate; it is the new **grounding classification** in `dimension-registry.md`. That gives you a much stronger discriminator between:
+
+* architecture actually evidenced by EKS/PKS/AIP,
+* architectural hypotheses,
+* philosophical correspondence,
+* and attractive but currently unsupported concepts.
+
+I particularly agree with keeping **H-KOS-Relation-001 at stage 3**. The pair-by-pair audit apparently gives it genuine explanatory power, but the fact that it makes only one differential prediction—Context instability—means there is not yet enough evidence to promote it. That is exactly the kind of result the programme should preserve rather than prematurely resolve.
+
+The **three Context treatments should remain unresolved**. The consolidation correctly turns them into competing falsifiable claims instead of silently selecting one.
+
+The Mokṣa result should likewise remain a **negative corpus observation**, not be overinterpreted as a philosophical refutation.
+
+And the operational cleanup being kept separate from the research conclusions is important. It prevents control-plane hygiene from accidentally becoming epistemic evidence.
+
+## What I would instruct Claude to do next
+
+I would **not ask it to continue reading 0095 yet**.
+
+First, ask for a controlled review of the consolidation artifact itself. The objective should be to test whether the consolidation has faithfully represented the evidence—not to generate another theory.
+
+You can give Claude this prompt:
+
+# REVIEW INSTRUCTION — CHECKPOINT 0080–0094 CONSOLIDATION
+
+## Role
+
+Act as the Principal Knowledge Architect and adversarial research reviewer for the KnowledgeOS/EKS/PKS corpus.
+
+The research corpus is intentionally PAUSED at file 0094.
+
+Do **not** continue source discovery beyond 0094.
+
+Do **not** introduce new philosophical concepts.
+
+Do **not** promote any candidate.
+
+The purpose of this pass is to independently audit the consolidation that was just completed.
+
+---
+
+## Authoritative scope
+
+Review only:
+
+* `01_source-analysis/checkpoint-0080-0094-consolidation.md`
+* `dimension-registry.md`
+* MD-014
+* MD-015
+* MD-016
+* the relevant source files within 0080–0094
+* the current session log
+* `.claude/CONTEXT.md`
+* the existing registry/index artifacts required to verify numbering and state
+
+The corpus state must remain untouched.
+
+The reading position must remain at 0094.
+
+---
+
+# 1. Audit the consolidation claims
+
+For each of the eight consolidation claims below, determine:
+
+1. Is it directly supported by the source corpus?
+2. Is it an inference?
+3. If inference, is the inference explicitly marked?
+4. Is any stronger claim accidentally embedded in the wording?
+5. Does the cited evidence actually support the stated conclusion?
+
+Do not merely confirm. Try to falsify each claim.
+
+### Claims
+
+1. The three Context treatments are genuinely distinct claims and none is currently selected.
+2. H-KOS-Relation-001 has explanatory power only for the identified derivation-type collapses.
+3. H-KOS-Relation-001 does not currently explain the authority-type collapses.
+4. H-KOS-Relation-001 makes Context instability a differential prediction against the flat-dimension treatment.
+5. The Mokṣa/Purification result is a negative corpus observation, not a general refutation.
+6. The 19 registry entries are correctly deduplicated and classified.
+7. The maturity ceiling remains stage 3 because no candidate has yet demonstrated both a formal operator and invariant-preservation behavior.
+8. The 0094 boundary and the eight unreconciled ID schemes are correctly recorded.
+
+For every claim, record:
+
+`SUPPORTED | PARTIALLY SUPPORTED | INFERENCE | UNSUPPORTED | CONTRADICTED`
+
+with the exact evidence location.
+
+---
+
+# 2. Audit H-KOS-Relation-001 adversarially
+
+This is the highest-leverage candidate and therefore requires the strongest skepticism.
+
+Reconstruct the pair-by-pair audit from the source evidence.
+
+For every claimed collapse, classify it as:
+
+* derivation-type,
+* authority-type,
+* identity-type,
+* provenance-type,
+* semantic/equality-type,
+* other.
+
+Then ask:
+
+> Does H-KOS-Relation-001 actually explain the observed behavior, or does it merely provide a vocabulary that can describe it?
+
+This distinction is critical.
+
+A relationship interpretation must NOT be promoted merely because it is capable of redescribing an existing observation.
+
+Identify the strongest case FOR the hypothesis and the strongest case AGAINST it.
+
+Then determine whether the hypothesis has a genuinely differential prediction.
+
+The current candidate claim is:
+
+> Context instability is predicted by the relation interpretation but not by the flat-dimension interpretation.
+
+Verify this directly.
+
+If the flat-dimension model can also predict Context instability, mark the differential-prediction claim as failed.
+
+If it cannot, preserve the differential prediction—but do not promote the hypothesis.
+
+---
+
+# 3. Audit the three Context treatments
+
+Construct a strict comparison:
+
+| Treatment | Exact source | Formal meaning | Evidence | Counterevidence | Testable prediction | Status |
+| --------- | ------------ | -------------- | -------- | --------------- | ------------------- | ------ |
+
+The three treatments are:
+
+1. flat dimension
+2. merged into Identity
+3. delimiter-boundary
+
+Do not reconcile them.
+
+Do not select one.
+
+Determine whether they are genuinely mutually incompatible or merely different abstractions of the same underlying construct.
+
+If that distinction cannot currently be established, say so explicitly.
+
+---
+
+# 4. Audit the registry grounding classification
+
+For all 19 entries:
+
+* verify the assigned grounding category;
+* verify the source trail;
+* distinguish:
+
+  * actual EKS/PKS/AIP architectural evidence,
+  * derived architectural constraints,
+  * philosophical correspondence,
+  * reframing hypotheses,
+  * mixed evidence,
+  * contested/ungrounded candidates.
+
+Look specifically for philosophical concepts that have accidentally acquired architectural authority merely because they appear in the registry.
+
+The registry must remain a research instrument, not an architecture catalogue.
+
+---
+
+# 5. Audit the maturity ceiling
+
+Verify the claim:
+
+> No candidate has progressed beyond maturity stage 3 because no candidate has yet demonstrated both a formal operator and invariant-preservation test.
+
+Check this against every registry entry.
+
+If even one candidate has already satisfied those conditions, identify it.
+
+Otherwise preserve the ceiling.
+
+Do not invent an operator or invariant test merely to advance a candidate.
+
+---
+
+# 6. Audit the Mokṣa/Purification ruling
+
+Verify exactly what source 0094 says.
+
+Separate:
+
+* what the source explicitly rules;
+* what that ruling means for the correspondence table;
+* what it does NOT establish.
+
+Do not turn:
+
+> "Research Only"
+
+into:
+
+> "philosophically false"
+
+or:
+
+> "irrelevant to all future research."
+
+The finding should remain scoped to the corpus's architectural relevance classification.
+
+---
+
+# 7. Audit registry and numbering integrity
+
+Verify independently:
+
+* 19 dimension-registry entries;
+* the eight unreconciled ID schemes;
+* MD-014/015/016;
+* existing candidate-ID collisions;
+* whether any identifier has been silently renamed;
+* whether any historical identifier has been overwritten;
+* whether the 0094 checkpoint is reproducibly recoverable.
+
+Do not renumber anything.
+
+Do not repair collisions unless explicitly authorized by governance.
+
+Report collisions separately from research findings.
+
+---
+
+# 8. Audit epistemic status language
+
+Search the consolidation and registry for accidental promotion language.
+
+Specifically flag uses of:
+
+* canonical
+* derived
+* established
+* proven
+* required
+* primitive
+* architecture
+* invariant
+* operator
+* necessary
+* sufficient
+
+where the underlying evidence only supports:
+
+* candidate,
+* hypothesis,
+* correspondence,
+* constraint,
+* interpretation,
+* or research-only status.
+
+This is a language-integrity audit.
+
+---
+
+# 9. Audit the stopping decision
+
+Determine whether stopping at 0094 is methodologically justified.
+
+The test is:
+
+> Would reading 0095– onward materially improve the validity of the current consolidation before the unresolved candidate landscape has been audited?
+
+If YES, explain why.
+
+If NO, confirm that consolidation is the correct stopping boundary.
+
+Do not continue reading merely because additional material exists.
+
+---
+
+# 10. Produce a discrepancy register
+
+Create:
+
+`01_source-analysis/checkpoint-0080-0094-review.md`
+
+with:
+
+| ID | Finding | Severity | Source | Current statement | Required correction |
+| -- | ------- | -------- | ------ | ----------------- | ------------------- |
+
+Severity:
+
+* CRITICAL — changes a research conclusion
+* HIGH — changes evidentiary status
+* MEDIUM — changes interpretation
+* LOW — wording/traceability
+* NONE — independently confirmed
+
+Do not silently modify the consolidation.
+
+If a correction is required, record it first.
+
+---
+
+# 11. Final verdict
+
+End with exactly one of:
+
+### `CONSOLIDATION VERIFIED`
+
+Meaning:
+
+* no material contradiction found;
+* all major claims are properly scoped;
+* no candidate was accidentally promoted;
+* 0094 remains the correct stopping boundary.
+
+OR
+
+### `CONSOLIDATION REQUIRES CORRECTION`
+
+Meaning:
+
+* one or more material discrepancies exist.
+
+If correction is required, list only the minimum necessary corrections.
+
+---
+
+# Hard constraints
+
+1. Do not read beyond 0094.
+2. Do not add new philosophical source material.
+3. Do not create new architectural primitives.
+4. Do not promote H-KOS-Relation-001.
+5. Do not resolve the three Context treatments.
+6. Do not resolve candidate-ID collisions.
+7. Do not change the corpus state.
+8. Do not silently edit previous findings.
+9. Do not use philosophical correspondence as architectural evidence.
+10. Preserve the distinction:
+
+`source evidence → interpretation → hypothesis → falsification → independent derivation → usefulness → architecture → governance`
+
+The purpose of this pass is **verification of the consolidation, not advancement of the theory**.
+
+This is the pass I would run **before opening 0095**. If it returns `CONSOLIDATION VERIFIED`, then the next research step can safely be designed around the remaining unresolved questions rather than carrying forward hidden errors.

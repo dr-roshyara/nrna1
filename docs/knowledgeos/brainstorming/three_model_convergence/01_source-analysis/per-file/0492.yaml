@@ -1,0 +1,215 @@
+sequence: 492
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-221512_reality-observation-representation-and-knowledge-missing-distinction.md
+title: "LANDMARK RETROSPECTIVE: Formal Proposition, Evidence, Clarification, Question-State, Investigation-State, and Epistemic-Lineage Objects Introduced; Nine DDD Bounded Contexts Proposed; Seven-Layer Architecture; Q25-Q36 Launched; Master Invariant Crystallized (Never Silently Convert Observation/Hypothesis/Candidate/Recommendation/Inference Into Knowledge)"
+date: "2026-08-26"
+bytes: 26191
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the Bhīṣma-sees/is-a-person/is-grandfather-of example is reused to ground the Observation≠Interpretation≠Assertion≠Knowledge chain"
+source_role: PRIMARY_RESEARCH
+canonical_source: 492
+importance: critical
+confidence: high
+about: >
+  A comprehensive retrospective and gap-closing review of the ENTIRE 24-question programme just closed at
+  0491 ("from Arjuna's initial question... to finally presentation"), delivering roughly three dozen
+  corrections/additions across 37 numbered sections, review-only (no paired worked-example this time).
+  Central conclusion: "the theory is conceptually coherent, but it is not yet mathematically closed or
+  DDD-complete... the biggest risk is that several concepts are still being used at two different
+  abstraction levels."
+
+  **Foundational chain refined**: X_t(domain)->O_t(observation)->R_t(semantic reconstruction)->
+  A_t(assertion)->K_t(knowledge state), replacing the too-simple Reality->Observation->Knowledge --
+  Observation≠Interpretation≠Assertion≠Knowledge (worked via Bhīṣma: seeing him is observation; "he is a
+  person" is interpretation; "he is Arjuna's grandfather" is assertion; only with provenance+epistemic
+  qualification does it enter K_t). **Formalizes Observation for the first time in the corpus**:
+  O=(Subject,Payload,Source,Time,Context,Provenance); Observed(x)⇏True(x). **Formalizes Proposition**,
+  named "one of the biggest missing mathematical pieces": P=a semantically evaluable claim about
+  entities/relationships/states/events; Proposition≠Assertion; Assertion=Proposition+EpistemicQualification+
+  Provenance. **Further disambiguates Dimension** into five non-collapsing categories: Entity Type,
+  Dimension/Attribute, Relationship Type, Value, Predicate (worked example: Person(Bhishma) is an entity
+  type, Role(Bhishma)=Commander is a dimension, GrandfatherOf(Bhishma,Arjuna) is a relationship -- three
+  different semantic structures). **Formally separates Relationship from Dimension**:
+  Relationship=(Entity_1,RelationshipType,Entity_2), not (Entity_1,Entity_2,Dimension,Value), with
+  relationships themselves carrying attributes (source, temporal validity, confidence, context).
+  **Corrects Dimension Discovery≠Parsing**: parsing is merely an input capability to the fuller pipeline
+  Intent->StructuralAnalysis->SemanticReconstruction->ContextInterpretation->DomainModel->
+  CandidateDimensions->Observation->DimensionDiscovery. **Reinterprets the "Sanskrit lens" non-literally**:
+  it represents the requirement that natural language be reconstructed into semantic roles/relations, not
+  that Sanskrit grammar itself must be implemented -- formalized as Parser_S (Structural Language Analysis)
+  and Parser_M (Semantic Reconstruction). **Introduces a missing Clarification operation**: Intent(Q) ->
+  {CandidateIntent if sufficiently interpretable, ClarificationRequired if underdetermined};
+  Clarify(Q,K,C)->Q'; establishes the invariant InsufficientSemanticDetermination⇏Assumption -- Sārathi must
+  sometimes ask "what do you mean?" rather than hallucinating a dimension model. **Elevates the Unknown
+  taxonomy to a fundamental principle**: Unknown≠Absent≠NotApplicable≠NotObserved≠NotYetInvestigated
+  (worked examples: Version=UNKNOWN≠ABSENT; SecurityStatus=NOT_ASSESSED≠SAFE). **Corrects Coherence with a
+  subtle but important distinction**: a Knowledge State containing contradictory assertions from different
+  sources need not be Coherent(K)=False -- it can represent Conflict(K)=C while remaining
+  WellFormed(K)=True -- separating Representational coherence (can the state represent what is
+  known/unknown/conflicting?) from Logical consistency (can all accepted propositions simultaneously hold?)
+  -- Coherent≠Consistent. **Introduces a six-way Conflict taxonomy**: {Logical, Epistemic, Normative,
+  Temporal, Contextual, Semantic}, preventing Zero from treating every disagreement as the same phenomenon.
+  **Extends Q16's Support≠Truth/Resolution with Support≠Probability**: "strong evidence" does not
+  mathematically mean P(True)=0.95 unless a probabilistic model is explicitly defined. **Flags Uncertainty
+  as still lacking formal semantics**: UncertaintyType≠UncertaintyMagnitude, since "uncertainty" may mean
+  lack-of-information, ambiguity, source-variance, probability, confidence, or epistemic indeterminacy --
+  six distinct, currently-conflated meanings. **Splits Validity into TemporalValidity(A,t) and
+  EpistemicStatus(A)** as separate concerns: StrongSupport⇏Current (a fact can be strongly supported but
+  temporally expired). **Formalizes Evidence for the first time as a full object**:
+  Evidence=(Source,Content,Relevance,Reliability,Time,Provenance), with an EvidenceRelation(A,E) that may
+  support/weaken/contradict/qualify/contextualize an assertion -- Evidence≠Support (Support is a
+  relation/assessment, not the evidence itself). **Requires Inference to carry provenance**:
+  A_3=Inference(A_1,A_2,...,Rule,Assumptions,Provenance), essential for KnowledgeOS to answer "why do you
+  believe this?" **Warns against Zero becoming a "god object"**: Zero≠UniversalValidator -- Zero narrowly
+  detects epistemic boundaries/deficiencies relevant to state and purpose; schema/type/policy/security
+  validation belongs to specific domain validators, with Zero aggregating only their epistemic
+  consequences. Restates Lord's boundary (LordCandidate≠Knowledge, LordCandidate≠Evidence) and Sārathi's
+  boundary (SārathiRecommendation≠Decision, SārathiAction≠HumanAuthorization) as constitutional invariants.
+  **Distinguishes IdealState≠Goal≠Constraint≠DecisionCriterion** as four non-collapsing concepts (what must
+  be known / what is wanted / what must[not] be true / what must be satisfied to decide). Restates
+  Discrepancy≠MetricDistance (reusing 0485/0488's non-metric proof) and extends it to a four-way
+  Severity≠Priority≠Distance≠Risk separation (worked contrast: a large-discrepancy/low-risk gap vs. a
+  small-discrepancy/critical-risk gap). Restates DecisionReady≠Complete (reusing 0490) and Presentation≠
+  Knowledge/Decision (reusing 0491). **Introduces Epistemic Lineage** Lineage(A): a full traceable chain
+  Observation->Interpretation->Assertion->Evidence->Inference->DerivedAssertion->Conflict->Resolution->
+  Decision, enabling "why is this in the decision?" queries -- named "one of the most valuable capabilities
+  of KnowledgeOS." **Introduces a Question/Intent State object**: Q=(Intent,Entities,Constraints,Context,
+  Purpose,Completeness,Ambiguity), feeding both DimensionDiscovery and Clarification. **Introduces an
+  Investigation State object**: Investigation=(Question,Target,Strategy,Evidence,Status,Provenance) with a
+  nine-value status taxonomy (Proposed/Accepted/Queued/Running/Waiting/EvidenceFound/
+  EvidenceInsufficient/Completed/Abandoned) -- "KnowledgeOS is not merely a knowledge repository. It is an
+  epistemic investigation system." **Expands the "complete state" catalog** with seven newly-named
+  first-class states not previously tracked separately: QuestionState, ObservationState, EvidenceState,
+  InvestigationState, DecisionCriteria, EpistemicLineage, Policy. **Delivers the corpus's most complete DDD
+  bounded-context decomposition to date**: nine explicit bounded contexts -- Inquiry, Observation,
+  Knowledge, Epistemic Assurance, Investigation, Reasoning/Exploration, Guidance, Decision, Presentation --
+  explicitly rejecting "one enormous domain model." **Raises the aggregate-boundary question** (what can
+  change atomically?), proposing Question/Observation/Assertion/Investigation/Conflict/Resolution/Decision
+  as candidate aggregates rather than one giant KnowledgeOS aggregate. **Requires identity/versioning**:
+  AssertionId≠AssertionVersion; assertions versioned (A^(1),A^(2),A^(3)) rather than mutated invisibly, for
+  auditability. **Distinguishes KnowledgeAccumulation≠MonotonicInference**: evidence accumulation can be
+  monotonic (Evidence_{t+1}⊇Evidence_t) while epistemic conclusions remain non-monotonic (new evidence can
+  invalidate a prior inference) -- KnowledgeOS must support revision without destroying historical lineage.
+  **Sketches belief-revision semantics** as an explicit workflow: PreviousAssertion->ContradictingEvidence->
+  Conflict->Resolution->CurrentAcceptedAssertion, rather than silent overwrite. **Names "the deepest
+  mathematical missing point"**: the algebra of state transitions itself -- S_{t+1}=T(S_t,Operation,Policy,
+  Evidence), required to have determinism (where appropriate), provenance preservation, invariant
+  preservation, authorization, reversibility/compensation, and versioning -- "where the theory becomes an
+  actual formal system rather than a conceptual ontology." **Proposes a seven-layer foundational
+  architecture** (1 World/Observation, 2 Semantic Reconstruction, 3 Knowledge Representation, 4 Reasoning &
+  Investigation, 5 Epistemic Assurance, 6 Guidance & Orchestration, 7 Human Decision & Presentation) with a
+  single central-loop equation: Intent->SemanticReconstruction->DimensionDiscovery->Observation->Knowledge->
+  EpistemicAssurance->Discrepancy->Investigation->Guidance->DecisionReadiness->Presentation->Knower (then
+  repeats) -- explicitly the corpus's cleanest top-level layering to date. **Launches a renumbered twelve-
+  question research programme, Q25 through Q36**, explicitly declining "another abstract mathematical
+  formula" in favor of closing architectural gaps: Q25 Question/Intent State; Q26 Semantic Reconstruction;
+  Q27 Dimension Discovery (parser/context/domain-model/Zero/Lord cooperation); Q28 Clarification (when to
+  ask rather than assume); Q29 Evidence (formal support/provenance model); Q30 Inference (formal derived-
+  knowledge semantics); Q31 Investigation (gaps becoming executable epistemic work); Q32 Decision Readiness
+  (precise incomplete-but-sufficient criteria); Q33 Epistemic Lineage (traceability to observations/
+  evidence/rules); Q34 DDD bounded contexts and aggregates (where theory becomes architecture); Q35
+  transition laws (S_{t+1}=T(S_t,o,pi)); Q36 the formal assurance model (which invariants are mechanically
+  verifiable). Closes with a numeric verdict (Conceptually very strong; Mathematically coherent but not
+  closed; DDD-wise rich but boundaries/aggregates not yet formally derived), a five-item highest-priority
+  missing-piece list (Observation->Proposition->Assertion; Question/Intent->SemanticReconstruction->
+  DimensionDiscovery; Evidence->Inference->EpistemicLineage; Gap/Conflict->Investigation->DecisionReadiness;
+  KnowledgeOSConcepts->BoundedContexts->Aggregates->StateTransitions), and crystallizes **one master
+  invariant intended to govern the entire theory**: "KnowledgeOS must never silently convert an observation,
+  interpretation, hypothesis, candidate, recommendation, or inference into established knowledge" --
+  explicitly named "the missing backbone of the theory," tying together the parser, Dimension Discovery,
+  Zero, Lord, Sārathi, epistemic state, evidence, discrepancy, decision readiness, and presentation into one
+  unifying principle.
+introduces:
+  - concept: "Foundational chain refined to X_t(domain)->O_t(observation)->R_t(semantic reconstruction)->A_t(assertion)->K_t(knowledge state), with Observation≠Interpretation≠Assertion≠Knowledge as a formal invariant"
+  - concept: "Observation formalized for the first time: O=(Subject,Payload,Source,Time,Context,Provenance); Observed(x)⇏True(x)"
+  - concept: "Proposition formalized for the first time (named one of the biggest missing mathematical pieces): a semantically evaluable claim; Proposition≠Assertion; Assertion=Proposition+EpistemicQualification+Provenance"
+  - concept: "Dimension further disambiguated into five non-collapsing categories: Entity Type, Dimension/Attribute, Relationship Type, Value, Predicate"
+  - concept: "Relationship formally separated from Dimension: Relationship=(Entity_1,RelationshipType,Entity_2), carrying its own attributes (source, temporal validity, confidence, context)"
+  - concept: "Dimension Discovery≠Parsing: parsing is an input capability to a fuller Intent->StructuralAnalysis->SemanticReconstruction->ContextInterpretation->DomainModel->CandidateDimensions->Observation pipeline"
+  - concept: "The 'Sanskrit lens' reinterpreted non-literally: reconstructing natural language into semantic roles/relations, not implementing Sanskrit grammar itself; formalized as Parser_S (structural) and Parser_M (semantic)"
+  - concept: "Clarification operation introduced: Intent(Q)->{CandidateIntent, ClarificationRequired}; Clarify(Q,K,C)->Q'; new invariant InsufficientSemanticDetermination⇏Assumption"
+  - concept: "Unknown taxonomy elevated to a fundamental principle: Unknown≠Absent≠NotApplicable≠NotObserved≠NotYetInvestigated"
+  - concept: "Coherent≠Consistent: a Knowledge State can coherently represent contradictory evidence (Conflict(K)=C, WellFormed(K)=True) without being logically consistent, separating Representational coherence from Logical consistency"
+  - concept: "Six-way Conflict taxonomy introduced: {Logical, Epistemic, Normative, Temporal, Contextual, Semantic}"
+  - concept: "Support≠Probability added to Q16's Support≠Truth/Resolution: strong evidence does not mathematically imply a specific probability without an explicit probabilistic model"
+  - concept: "Uncertainty flagged as still lacking formal semantics: UncertaintyType≠UncertaintyMagnitude, with six conflated candidate meanings named (information-lack, ambiguity, source-variance, probability, confidence, epistemic indeterminacy)"
+  - concept: "Validity split into TemporalValidity(A,t) and EpistemicStatus(A): StrongSupport⇏Current"
+  - concept: "Evidence formalized for the first time as a full object: Evidence=(Source,Content,Relevance,Reliability,Time,Provenance); EvidenceRelation(A,E)∈{support,weaken,contradict,qualify,contextualize}; Evidence≠Support"
+  - concept: "Inference required to carry provenance: A_3=Inference(A_1,A_2,...,Rule,Assumptions,Provenance), enabling 'why do you believe this?' traceability"
+  - concept: "Zero≠UniversalValidator: Zero narrowed to epistemic-boundary/deficiency detection, with schema/type/policy/security validation delegated to domain validators whose findings Zero aggregates"
+  - concept: "IdealState≠Goal≠Constraint≠DecisionCriterion: four previously-conflatable concepts formally separated"
+  - concept: "Severity≠Priority≠Distance≠Risk: a four-way separation extending 0485/0488/0489's discrepancy/priority discipline"
+  - concept: "Epistemic Lineage introduced: Lineage(A), a full traceable Observation->Interpretation->Assertion->Evidence->Inference->DerivedAssertion->Conflict->Resolution->Decision chain"
+  - concept: "Question/Intent State object introduced: Q=(Intent,Entities,Constraints,Context,Purpose,Completeness,Ambiguity)"
+  - concept: "Investigation State object introduced: Investigation=(Question,Target,Strategy,Evidence,Status,Provenance) with a nine-value status taxonomy"
+  - concept: "Seven new first-class states added to the 'complete state' catalog: QuestionState, ObservationState, EvidenceState, InvestigationState, DecisionCriteria, EpistemicLineage, Policy"
+  - concept: "Nine explicit DDD bounded contexts proposed (Inquiry, Observation, Knowledge, Epistemic Assurance, Investigation, Reasoning/Exploration, Guidance, Decision, Presentation), explicitly rejecting one giant KnowledgeOS aggregate"
+  - concept: "Aggregate-boundary question raised, with Question/Observation/Assertion/Investigation/Conflict/Resolution/Decision proposed as candidate aggregates"
+  - concept: "Identity/versioning requirement: AssertionId≠AssertionVersion; assertions versioned (A^(1),A^(2),A^(3)) rather than mutated invisibly"
+  - concept: "KnowledgeAccumulation≠MonotonicInference: evidence accumulation can be monotonic while epistemic conclusions remain non-monotonic (revisable by new evidence)"
+  - concept: "Belief-revision workflow sketched: PreviousAssertion->ContradictingEvidence->Conflict->Resolution->CurrentAcceptedAssertion"
+  - concept: "The algebra of state transitions named as the deepest still-missing mathematical piece: S_{t+1}=T(S_t,Operation,Policy,Evidence), requiring determinism/provenance-preservation/invariant-preservation/authorization/reversibility/versioning"
+  - concept: "Seven-layer foundational architecture proposed (World/Observation through Human Decision & Presentation) with a single central-loop equation spanning the entire theory"
+  - concept: "Twelve-question research programme launched, Q25 through Q36, explicitly reprioritizing architectural gap-closing over further abstract mathematics"
+  - concept: "Master invariant crystallized: KnowledgeOS must never silently convert an observation, interpretation, hypothesis, candidate, recommendation, or inference into established knowledge -- named the theory's missing backbone"
+defines:
+  - concept: "Observation (O)"
+    definition: "O=(Subject,Payload,Source,Time,Context,Provenance); Observed(x)⇏True(x)"
+  - concept: "Proposition (P)"
+    definition: "A semantically evaluable claim about entities, relationships, states, or events (e.g. IsOnBattlefield(Bhishma)); Proposition≠Assertion; Assertion=Proposition+EpistemicQualification+Provenance"
+  - concept: "Relationship (formal)"
+    definition: "Relationship=(Entity_1,RelationshipType,Entity_2), a first-class structure distinct from Dimension, itself carrying attributes (source, temporal validity, confidence/support, context)"
+  - concept: "Evidence (formal, first full object)"
+    definition: "Evidence=(Source,Content,Relevance,Reliability,Time,Provenance); EvidenceRelation(A,E) may support/weaken/contradict/qualify/contextualize an assertion A; Evidence≠Support"
+  - concept: "Epistemic Lineage (Lineage(A))"
+    definition: "The full traceable derivation chain of an assertion: Observation->Interpretation->Assertion->Evidence->Inference->DerivedAssertion->Conflict->Resolution->Decision, enabling 'why is this in the decision?' queries"
+  - concept: "Question/Intent State (Q)"
+    definition: "Q=(Intent,Entities,Constraints,Context,Purpose,Completeness,Ambiguity), feeding DimensionDiscovery and Clarification"
+  - concept: "Investigation State"
+    definition: "Investigation=(Question,Target,Strategy,Evidence,Status,Provenance), Status∈{Proposed,Accepted,Queued,Running,Waiting,EvidenceFound,EvidenceInsufficient,Completed,Abandoned}"
+  - concept: "Master invariant (theory backbone)"
+    definition: "KnowledgeOS must never silently convert an observation, interpretation, hypothesis, candidate, recommendation, or inference into established knowledge"
+refines:
+  - concept: "0482's Q16 epistemic-state discipline (Support≠Truth≠Resolution)"
+    refinement: "Extended with Support≠Probability, since strong evidence does not mathematically imply a specific probability without an explicitly defined probabilistic model"
+  - concept: "0485/0488's Discrepancy≠MetricDistance non-symmetry proof"
+    refinement: "Restated and extended into a four-way Severity≠Priority≠Distance≠Risk separation with a fresh worked counter-example"
+  - concept: "0483/0484's Guidance≠Authorization≠Execution≠Transition and Lord/Sārathi non-authority discipline"
+    refinement: "Restated as constitutional invariants (LordCandidate≠Knowledge/Evidence; SārathiRecommendation≠Decision; SārathiAction≠HumanAuthorization) and extended into a Clarification operation preventing Sārathi from silently assuming missing context"
+  - concept: "0472/0492-adjacent Coherence≠Truth discipline (Q8) and 0488's Coherence-as-Finding reframing"
+    refinement: "Further refined into Coherent≠Consistent, distinguishing Representational coherence (can represent conflicting evidence) from Logical consistency (all accepted propositions simultaneously hold)"
+  - concept: "0490/0491's DecisionReady≠Complete and Presentation≠Knowledge/Decision invariants"
+    refinement: "Restated as part of a comprehensive retrospective, situating them within the newly-proposed seven-layer architecture and nine bounded contexts"
+  - concept: "0410's D_t=∪-over-lenses architectural justification and 0411/0413's Zero/Lord canonical invariant catalogs"
+    refinement: "Extended with the explicit warning Zero≠UniversalValidator, narrowing Zero's scope to avoid becoming a DDD god-object as the theory's invariant catalogs have grown"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal Observation and Proposition objects (first full definitions in the corpus), the Relationship/Dimension separation, and Dimension Discovery≠Parsing with the Sanskrit lens reinterpreted non-literally."
+  - "dimension-registry.md: record the Clarification operation, the Unknown taxonomy, Coherent≠Consistent, the six-way Conflict taxonomy, Support≠Probability, and the formal Evidence object (Evidence≠Support)."
+  - "dimension-registry.md: record Epistemic Lineage, Question/Intent State, Investigation State, the nine proposed DDD bounded contexts, the seven-layer foundational architecture, the Q25-Q36 research programme launch, and the master invariant (never silently convert observation/hypothesis/candidate/recommendation/inference into knowledge)."
+anchor_test:
+  anchor: "The entire closed 24-question programme (0449-0491); Q16's epistemic-state discipline (0482); 0485/0488's Discrepancy≠MetricDistance; 0483/0484's Lord/Sārathi non-authority discipline; Q8's Coherence≠Truth discipline; 0410/0411/0413's multi-lens/Zero/Lord canonical catalogs"
+  supports_dimension: "LANDMARK RETROSPECTIVE: closes out the 24-question programme with roughly three dozen corrections/additions, most consequentially formalizing Observation and Proposition as full objects for the first time, separating Relationship from Dimension, correcting Dimension Discovery≠Parsing with a non-literal reinterpretation of the Sanskrit lens, introducing a Clarification operation and Question/Investigation/Epistemic-Lineage states, refining Coherent≠Consistent and a six-way Conflict taxonomy, formalizing Evidence as a full object, proposing the corpus's most complete nine-context DDD decomposition and a seven-layer foundational architecture, launching a renumbered Q25-Q36 research programme explicitly prioritizing architectural gap-closing over further mathematics, and crystallizing one master invariant -- never silently convert observation/hypothesis/candidate/recommendation/inference into knowledge -- as the theory's backbone"
+  refines_or_contradicts: "refines Q16's epistemic-state discipline, 0485/0488's discrepancy/metric work, 0483/0484's Lord/Sārathi non-authority discipline, Q8's coherence-vs-truth discipline, and 0410/0411/0413's lens/invariant catalogs; no unresolved contradiction, this file is purely additive/corrective synthesis"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The single crystallized master invariant -- 'KnowledgeOS must never silently convert an observation, interpretation, hypothesis, candidate, recommendation, or inference into established knowledge' -- is the corpus's most compact and complete statement yet of the epistemic discipline (MD-017-consonant) that has recurred piecemeal across dozens of files (Lord≠Knowledge, Sārathi≠Decision, Observed⇏True, Candidate≠Assertion, etc.) throughout this entire reconstruction."
+undefined_concepts: []
+open_questions:
+  - "Questions Q25 through Q36 -- launched here as a renumbered twelve-item research programme, none yet answered"
+  - "Whether the nine proposed DDD bounded contexts and candidate aggregates (Question/Observation/Assertion/Investigation/Conflict/Resolution/Decision) are formally adopted or further revised in later files"
+  - "Whether the seven-layer foundational architecture supersedes or coexists with the prior four-family lens taxonomy (0370) and the multi-lens D_t=∪ justification (0410)"
+  - "Whether the algebra of state transitions (S_{t+1}=T(S_t,Operation,Policy,Evidence)) named here as 'the deepest missing mathematical point' receives a dedicated treatment, given Q35 is positioned late in the new programme"
+tier2_triggered: true
+tier2_reason: "Comprehensive retrospective closing the entire 24-question programme with roughly three dozen corrections/additions: formalizes Observation and Proposition as full mathematical objects for the first time in the corpus; formally separates Relationship from Dimension and corrects Dimension Discovery≠Parsing with a non-literal reinterpretation of the long-running Sanskrit lens; introduces a missing Clarification operation and three new first-class states (Question/Intent, Investigation, Epistemic Lineage); refines Coherent≠Consistent and introduces a six-way Conflict taxonomy; formalizes Evidence as a full object distinct from Support; delivers the corpus's most complete nine-context DDD bounded-context decomposition and a seven-layer foundational architecture with a single central-loop equation; launches a renumbered twelve-question research programme (Q25-Q36) that explicitly reprioritizes architectural gap-closing over further abstract mathematics; and crystallizes one master invariant -- never silently convert observation/hypothesis/candidate/recommendation/inference into established knowledge -- as the explicit backbone tying together the entire theory built across 0449-0491."

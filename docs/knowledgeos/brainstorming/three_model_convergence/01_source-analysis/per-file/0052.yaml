@@ -1,0 +1,66 @@
+sequence: 52
+path: docs/knowledgeos/brainstorming/20260819-092449-research-on-role-separation.md
+title: External Research on Role Separation (Perplexity review vs NIST/ISO/W3C/DDD)
+date: 2026-08-19
+bytes: 55141
+doc_type: external-literature validation of the six-role model, sourced to NIST/ISO/W3C/DDD standards
+
+primary_model_initial: meta_research
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [engineering_knowledgeos, ddd, governance, evidence, provenance]
+source_role: CRITICAL_REVIEW
+canonical_source: 50
+
+status: DR
+maturity: established        # for the capability/bounded-context/stewardship distinction
+importance: high
+
+introduces:
+  - capability_vs_bounded_context_vs_stewardship_distinction
+  - ten_criterion_bounded_context_promotion_test
+  - role_to_context_anti_pattern
+  - nine_ne_distinction_summary   # role!=capability, capability!=context, responsibility!=authority, etc.
+defines:
+  - capability_definition
+  - bounded_context_definition
+  - stewardship_definition
+hypotheses:
+  - per_capability_external_pattern_suggestions   # C-5/C-10/C-14/C-19, explicitly not ownership recommendations
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge, control_pattern]
+open_questions:
+  - ten_question_po_arb_decision_framework_unresolved_per_capability
+
+depends_on: [50]
+extends: [50]
+refines: [50]
+renames: []
+contradicts: []
+supersedes: []
+repeats: []
+connects_to: [47, 48, 49, 50]
+
+bridges: []
+bridge_candidates:
+  - "MD-012 bridge_candidate, NOT a confirmed bridge: this is the FOURTH independent point where the
+     brainstorming/-proper track converges with the separately-tracked root-level material's
+     discipline (careful != distinctions; capability-vs-bounded-context caution matching 0020's D-5
+     demotion and H-CAT-1), reached via completely independent evidence (external standards here vs
+     internal repository artifacts there). Suggestive of a possible shared lineage or convergent
+     methodology; NOT proof. The alternative (independent convergence on shared DDD literature)
+     remains equally live per MD-012's explicit caution against inferring track identity from content
+     convergence alone."
+
+tier2_triggered: true
+tier2_reason: >
+  Delivers a rigorous, externally-sourced (NIST/ISO/W3C/DDD standards) capability-vs-bounded-context-
+  vs-stewardship distinction with a checkable ten-criterion promotion test, and directly corrects an
+  anti-pattern the IMMEDIATELY PRECEDING file (0050) was visibly tempted toward - the clearest
+  prevented error (vs. committed-then-corrected) anywhere in either track. Constitutes the fourth
+  independent cross-track convergence data point, recorded per MD-012 as bridge_candidate evidence
+  only, explicitly not confirmed as a shared lineage or methodology.

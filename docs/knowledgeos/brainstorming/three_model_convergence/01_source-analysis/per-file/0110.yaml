@@ -1,0 +1,99 @@
+sequence: "0110"
+path: docs/knowledgeos/brainstorming/20260822-103624-aip-s5-review-lane-instruction-vedic-zero-lens.md
+title: "Zero/Neutrality lens added to Vedic extraction -- second executed P5 decision (+ unrelated concatenated governance snippet)"
+date: "2026-08-22"
+bytes: 9013
+model:
+  primary: g
+  secondary: [x, c1]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+importance: high
+confidence: high
+about: >
+  Two unrelated pieces concatenated in one file: (1) a brief genuine C1 governance-session instruction
+  (S5 architecture review lane, workflow KOS-AIP-GOV-STATE-DURABILITY-ADR, DV-1..DV-7 correction
+  review) -- flagged as a corpus-assembly artifact, not analyzed further, out of scope for this
+  philosophical-lens tracking; (2) the substantive content: adding a "Zero / Neutrality" lens across 8
+  sub-topics, closing with the corpus's SECOND executed P5-style decision, again disciplined-negative,
+  introducing a new status category: "Foundational Meta-Principle" (explains why the kernel dimensions
+  exist, is neither a new dimension nor a kernel object).
+
+introduces:
+  - "Governance snippet (flagged, not analyzed): session identity claude-code-session:a8ce5a39, lane
+    S5-architecture-dv-correction-review, workflow KOS-AIP-GOV-STATE-DURABILITY-ADR, reading order
+    G-KOS-GOV-STATE-DURABILITY-DV-CORRECTION-READING-ORDER -- genuine C1 engineering-governance
+    content, unrelated to the philosophical lens work, concatenated at the top of this file"
+  - "Zero applied across 8 sub-lenses: Representation!=Identity, Context, Evidence (incl. 'Authority
+    collapse'), Contradiction Management, Transformation-without-identity-loss, Agent/Knower, LLM
+    difference -- each reinforcing an already-tracked candidate, none proposing new ones"
+  - "'Zero and Context': reframes Context via a mathematical-origin/reference-frame metaphor ('fast
+    compared to what?') -- classified 'Context Dimension - Supporting mechanism', reinforcing rather
+    than proposing a new Context treatment"
+  - "⭐ Second executed P5 decision (after 0108): 'Zero should NOT become a new constitutional article...
+    It is the architectural attitude behind all rules.' New status category introduced: 'Foundational
+    Meta-Principle' -- explicitly NOT a new dimension, NOT a kernel object, NOT implementation; its
+    role is 'explains why the existing 8 dimensions must exist'"
+  - "Final Extraction Matrix with Zero (8 rows), each source pattern mapped to Kernel/Kernel-support/
+    Mechanism/Character/Foundational-principle -- Zero alone gets 'Foundational principle', distinct
+    from every other row's classification"
+
+defines: []
+
+refines:
+  - "Reinforces, via a 'meta-principle' framing, the discipline already modeled at 0084's Zero
+    treatment (candidate, not dimension) -- this file goes further, giving that discipline an explicit
+    STATUS CATEGORY NAME ('Foundational Meta-Principle') rather than just a negative classification"
+
+contradicts: []
+
+repeats:
+  - concept: "Zero as neutral/non-distorting reference, not a kernel dimension"
+    canonical_source: "0084"
+    novelty: low
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "Context entry: one more reinforcing correspondence (Zero-as-reference-frame), not a new treatment"
+  - "No new kernel-level registry entries warranted"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Evidence Integrity", "Agency"]
+  refines_or_contradicts: >
+    No reshaping -- second consecutive file (after 0108) demonstrating disciplined restraint rather
+    than adding to the reshaping churn. Introduces a genuinely new STATUS CATEGORY ("Foundational
+    Meta-Principle") worth tracking as a possible addition to the MD-018 status_chain/grounding
+    taxonomy, though not adopted as such here.
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Second consecutive disciplined-restraint file (after 0108) -- two in a row, suggesting the
+    corpus's own research process may be entering a genuine consolidation phase rather than continued
+    expansion, worth watching in subsequent files"
+  - "A concatenated, unrelated C1 governance-session snippet -- evidence of how this corpus was
+    assembled (likely multiple conversation threads/exports merged), not itself analyzed as content"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether 'Foundational Meta-Principle' as a status category recurs in later files, or is a one-off
+    naming choice"
+  - "Whether the pattern of disciplined P5 rejections (0108, 0110) continues or reverts to expansion"
+
+tier2_triggered: true
+tier2_reason: >
+  Second consecutive executed P5-style decision, introducing a genuinely new status category
+  ("Foundational Meta-Principle") distinct from Kernel/Mechanism/Architecture -- relevant to the
+  MD-018 status_chain/grounding taxonomy. Also flags an unrelated concatenated governance snippet as a
+  corpus-assembly observation.

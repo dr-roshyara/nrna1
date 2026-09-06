@@ -1,0 +1,44 @@
+sequence: 48
+path: docs/knowledgeos/brainstorming/_misc/20260821-150830-diagram.png
+title: KnowledgeOS AI Engineering Platform — role/system diagram
+date: 2026-08-21
+bytes: 52029
+doc_type: image - C4-context-style architecture diagram
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [governance, domain_model]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+status: SR
+maturity: developing
+importance: medium
+
+introduces:
+  - first_named_knowledgeos_ai_engineering_platform_in_primary_corpus
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge]
+open_questions: []
+
+depends_on: [47]
+extends: [47]
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: [47]
+connects_to: [47]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: "Confirming diagram, no new formal/mathematical/Gita/Kernel content beyond 0047."

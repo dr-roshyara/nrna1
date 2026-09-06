@@ -1,0 +1,146 @@
+
+==============================================================================
+ATTACK 1 — Are Support and Refute INDEPENDENT?
+==============================================================================
+  Test: is R derivable from S (or vice versa) under any corpus rule?
+  A derivation would exist only if the theory forbade some (S,R) pair.
+  corpus rules located that constrain (S,R) jointly: NONE
+  272A.3.1-3.3 argue Unknown/Supported/Refuted separately; no rule links S to R.
+  Counter-check: is (1,1) forbidden anywhere?  272A.4 REQUIRES it (Conflict).
+  VERDICT: SURVIVES — no derivation of one from the other exists; but note this is absence of a constraint, not a proof of independence.
+
+==============================================================================
+ATTACK 2 — Are all four valuations REALIZABLE?
+==============================================================================
+  (0,0) never asked / no qualified evidence          -> realizable
+  (1,0) one qualified supporting item                 -> realizable
+  (0,1) one qualified refuting item                   -> realizable
+  (1,1) qualified support AND qualified refutation    -> ?
+  The reviewer's sharpest point: is (1,1) a PERSISTENT STATE or an
+  OPERATION-LEVEL CONDITION detected transiently by DetectContradiction?
+
+  Executed discriminator: can a system in (1,1) PERSIST across a step in which
+  no operation is applied?  Under 272B, Sigma is a function of the evidence set,
+  and an evidence set can contain both polarities indefinitely (nothing forces
+  resolution). Under an operation-level reading, (1,1) would have to be resolved
+  before the next transition, which no corpus rule requires.
+  corpus rule forcing resolution of a contradiction before the next step: NONE FOUND
+  VERDICT: SURVIVES — (1,1) is realizable and persistent; Resolve is optional (272A.9 places Resolution OUTSIDE Sigma, so nothing forces it).
+
+==============================================================================
+ATTACK 3 — Are the four OBSERVATIONALLY DISTINGUISHABLE?
+==============================================================================
+  distinct decision signatures: 4/4
+    (0, 0) -> (False, False, False, False)
+    (0, 1) -> (False, True, False, True)
+    (1, 0) -> (True, False, False, True)
+    (1, 1) -> (True, True, True, True)
+  VERDICT: SURVIVES — 4/4 distinct; no two states merge.
+
+==============================================================================
+ATTACK 4 — Can Conflict be a DERIVED predicate rather than a state?
+==============================================================================
+  Conflict(x) := S(x) AND R(x).  This is total, decidable, and needs no
+  storage beyond (S,R).  So Conflict is NOT a fourth primitive.
+  VERDICT: **LANDS** — Conflict is a DERIVED valuation, not a primitive state. 272B's own 'power set' formulation is correct; its 'four states' phrasing is not.
+  CONSEQUENCE: the primitives are TWO predicates, not four states. Any
+  implementation storing a 4-valued enum has stored a derived quantity.
+
+==============================================================================
+ATTACK 5 — Can FEWER than four information states suffice?
+==============================================================================
+  3-state (merge Conflict into Refuted)      harmful collisions=1  REFUTED
+       merges [(0, 1), (1, 1)] which differ on: ['qualified support exists', 'open a conflict process']
+  3-state (merge Conflict into Unknown)      harmful collisions=1  REFUTED
+       merges [(0, 0), (1, 1)] which differ on: ['qualified support exists', 'qualified refutation exists', 'open a conflict process', 'question settled either way']
+  2-state (settled / unsettled)              harmful collisions=1  REFUTED
+       merges [(1, 0), (0, 1), (1, 1)] which differ on: ['qualified support exists', 'qualified refutation exists', 'open a conflict process']
+  VERDICT: SURVIVES — every reduction below 4 loses a mandatory distinction.
+
+==============================================================================
+ATTACK 6 — Does MISSINGNESS leak into (0,0)?
+==============================================================================
+  three situations the reviewer names, mapped through Sigma_0:
+    never asked                            -> (0,0) Unknown
+    asked, no evidence obtained            -> (0,0) Unknown
+    evidence obtained but insufficient     -> (0,0) Unknown
+  All three collapse. 272B ANTICIPATES this and places missingness OUTSIDE
+  Sigma (272A.5: 'required information, not a value of the epistemic status').
+  VERDICT: **LANDS as a boundary obligation, not a refutation** — Sigma_0 is correct ONLY IF missingness is represented elsewhere. That carrier is not specified.
+
+==============================================================================
+ATTACK 7/8 — Does LIFECYCLE or GOVERNANCE ever change epistemic meaning?
+==============================================================================
+  Test the reviewer's own executable form of orthogonality: hold two axes
+  fixed and vary the third.
+  Sigma x Lambda x Gamma combinations constructed: 8
+    ('Supported', 'Active', 'Authorized')
+    ('Supported', 'Active', 'Unauthorized')
+    ('Supported', 'Superseded', 'Authorized')
+    ('Supported', 'Superseded', 'Unauthorized')
+    ... all 8 constructible; none is logically excluded by any corpus rule found.
+  Does superseding an assertion change whether evidence supports it? NO.
+  Does revoking authorization change whether evidence supports it?     NO.
+  VERDICT: SURVIVES as a SEPARATION PRINCIPLE; the reviewer is right that 'perp' overstates it — 8/8 combinations constructible is evidence, not a theorem.
+
+==============================================================================
+ATTACK 9 — Is OR-MERGE mandated, or merely convenient?  *** THE DECISIVE ONE ***
+==============================================================================
+  272B: sigma1 |_| sigma2 = (s1 OR s2, r1 OR r2)
+
+  ATTACK: OR-merge is MONOTONE. Test it against RETRACTION, which is in
+  272B's own O_sem = {Assert, Retract, Supersede, ...}.
+
+  evidence [('e1', 'S'), ('e2', 'R')] -> Sigma = (1, 1)  (Conflict)
+  Retract(e2); evidence [('e1', 'S')] -> Sigma should be (1, 0)  (Supported)
+
+  If Sigma is STORED and merged with OR: state stays (1, 1) (Conflict) FOREVER —
+  OR is monotone, so no merge can ever clear the R bit.
+  If Sigma is DERIVED from the evidence set: state correctly becomes (1, 0).
+
+  VERDICT: **LANDS — and it decides D-4.** OR-merge is correct ONLY IF Sigma is DERIVED from the evidence set. A STORED Sigma under OR-merge cannot recover from Retract, contradicting 272B's own operation set.
+
+==============================================================================
+ATTACK 10 — Can the EXISTING structure represent the four valuations?
+==============================================================================
+  A = (id, P, e, c, t, Pi) already carries an evidence field `e`.
+  If each evidence item carries a polarity, (S,R) is COMPUTABLE from `e` with
+  NO new state: S = any(polarity=support), R = any(polarity=refute).
+  Required addition: a polarity on the evidence link. Nothing else.
+  VERDICT: SURVIVES — and cheaply: Sigma needs ONE new field (polarity on the evidence link), not a new state component.
+
+==============================================================================
+SUMMARY
+==============================================================================
+  attacks executed : 10  (7 and 8 share one verdict key)
+  attacks that LAND: [4, 6, 9]
+
+  [1] SURVIVES — no derivation of one from the other exists; but note this is absence of a constraint, not a proof of independence.
+
+  [2] SURVIVES — (1,1) is realizable and persistent; Resolve is optional (272A.9 places Resolution OUTSIDE Sigma, so nothing forces it).
+
+  [3] SURVIVES — 4/4 distinct; no two states merge.
+
+  [4] **LANDS** — Conflict is a DERIVED valuation, not a primitive state. 272B's own 'power set' formulation is correct; its 'four states' phrasing is not.
+
+  [5] SURVIVES — every reduction below 4 loses a mandatory distinction.
+
+  [6] **LANDS as a boundary obligation, not a refutation** — Sigma_0 is correct ONLY IF missingness is represented elsewhere. That carrier is not specified.
+
+  [7] SURVIVES as a SEPARATION PRINCIPLE; the reviewer is right that 'perp' overstates it — 8/8 combinations constructible is evidence, not a theorem.
+
+  [9] **LANDS — and it decides D-4.** OR-merge is correct ONLY IF Sigma is DERIVED from the evidence set. A STORED Sigma under OR-merge cannot recover from Retract, contradicting 272B's own operation set.
+
+  [10] SURVIVES — and cheaply: Sigma needs ONE new field (polarity on the evidence link), not a new state component.
+
+  OVERALL: Sigma_min ~= {0,1}^2 SURVIVES as a construction, and NO COUNTERMODEL
+  WAS FOUND for the four valuations. Three attacks land, and none of them refutes
+  the structure -- they refute three CLAIMS ABOUT it:
+
+    A4  'four states' is wrong phrasing; Conflict is a DERIVED valuation.
+    A6  Sigma_0 is correct only if missingness has a carrier, which is unspecified.
+    A9  OR-merge forces Sigma to be DERIVED, not stored -- this ANSWERS D-4.
+
+  Therefore: the word 'proven' is not yet earned for MINIMALITY (the generators
+  Support/Refute are argued, not derived from a closed operation set), but the
+  structure is now falsification-tested and survived 10 attacks.

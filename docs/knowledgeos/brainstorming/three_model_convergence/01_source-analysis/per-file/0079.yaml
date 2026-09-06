@@ -1,0 +1,73 @@
+sequence: 79
+path: docs/knowledgeos/brainstorming/20260821-2325-complex-numbers-in-knowledgeos-modeling-tool.md
+title: Complex Numbers as a KnowledgeOS Modeling Tool (research hypothesis)
+date: 2026-08-21
+bytes: 9081
+
+model:
+  primary: c1
+  secondary: [mathematics, knowledge_state, knowledge_dimension, knowledge_value, invariants]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: critical
+confidence: high
+
+about: >
+  FIRST MATHEMATICAL CONTENT IN THE CORPUS (after 78 consecutive files with none): proposes complex
+  numbers (K = S + iA: semantic + i*authority) and a 5-dimensional vector [S,E,A,P,T] to represent a
+  "knowledge state," explicitly framed as an untested research hypothesis with a stated
+  falsification test, and explicitly disciplined against mathematics preceding domain discovery.
+
+introduces:
+  - complex_valued_knowledge_state   # K = S + iA, K = C + iT, K = M + iA (three candidate forms)
+  - knowledge_conflict_as_complex_difference   # delta_K = delta_S + i*delta_A, links to R-CONFLICT (0061)
+  - temporal_knowledge_trajectory   # K(t) = M(t) + iA(t), dK/dt considered conceptually only
+  - five_dimensional_knowledge_state_vector   # K = [S, E, A, P, T]^T
+  - mathematics_below_applications_above_domain_kernel_layering
+  - domain_before_mathematics_ordering_discipline
+
+defines:
+  - knowledge_state_as_complex_number_candidate
+  - knowledge_state_as_vector_candidate
+
+refines:
+  - concept: r_conflict_domain_invariant
+    canonical_source: 61
+    change: "conflict resolution invariant (preserve provenance/sequence/reconstruction) -> conflict DECOMPOSED into semantic-conflict and authority-conflict dimensions via delta_K"
+
+contradicts: []
+repeats: []
+
+bridge_candidates:
+  - "The 5-vector [S,E,A,P,T] and the K=S+iA complex form are C1-side candidate answers to §18's
+     Knowledge Value Model question (is a value a scalar, vector, or richer structure? - explicitly
+     answered NOT scalar here). Recorded as the C1 reference point to check any later Model-B or
+     Model-C2 knowledge-state construction against for actual structural inheritance, not lexical
+     resemblance. NOT a confirmed bridge - no Model B or C2 material exists yet to connect to."
+
+mathematical_content: true   # FIRST occurrence in the corpus
+gita_content: false
+kernel_content: true   # "Domain Kernel" vs "Semantic Mathematics" layer distinction in §8
+
+key_evidence:
+  - "'K = S + iA' where S=semantic state, A=authority state - explicit complex-number knowledge-state representation"
+  - "'we should not create a domain concept merely because mathematics gives us an elegant representation' - explicit anti-mathematization discipline"
+  - "'record this as a research hypothesis, not an architecture decision' + a stated falsification test"
+  - "K = [S,E,A,P,T]^T - five-dimensional generalization, complex numbers recast as a 2D projection of it"
+
+undefined_concepts: [knowledge, semantic_state]
+open_questions:
+  - "can the semantic and authority states of real EKS/PKS artifacts be represented without losing domain meaning - the stated falsification test, not yet run"
+
+tier2_triggered: true
+tier2_reason: >
+  FIRST mathematical content anywhere in the corpus (78 consecutive files in this pass, plus the
+  39-file adjacent root-level set, all with zero mathematical content until now). Proposes a
+  complex-valued and a 5-dimensional-vector representation of "knowledge state," explicitly as an
+  untested hypothesis with a stated falsification test and explicit discipline against mathematics
+  preceding domain discovery. Directly engages §16/§18's mathematical-foundation and knowledge-value
+  questions (scalar vs richer structure - answered here: not scalar). Recorded as a bridge_candidate
+  reference point for later comparison, not a confirmed bridge, since no independent Model B or C2
+  material exists yet in the corpus to connect it to.

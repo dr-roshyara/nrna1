@@ -1,0 +1,199 @@
+sequence: 732
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-130748_step-145-golden-trace-specification.md
+title: "Step 145 -- MAJOR SYNTHESIS MILESTONE, DECISIVELY CONFIRMS the Maximum-Priority Concreteness Test: Delivers a Complete, Fully-IDed Worked Golden Trace (GT-NEXUS-001, D-001→P-001→R-001→CTX-001→REC-001→A-001→AUTH-001→EX-001→E-002→V-002→F-001), an Actual Property-Graph Schema With Typed Edges, a Gherkin-Style GIVEN/WHEN/THEN Acceptance Test (the First Executable-Test-Format Artifact in the Reconstruction), Five Named Failure Paths (F1-F5), and 28 New Directly-Checkable Invariants Across Five New Notation Families (GT/GG/GE/GC/GA) -- Reframes KnowledgeOS as 'A State-Transition System' -- Opens Step 146, Golden Trace → Domain Model, the Natural Tactical-DDD Formalization of This Now-Concrete Specification"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 145 -- Golden Trace Specification', the promised first executable KnowledgeOS reference architecture flagged with maximum priority at 0731's close; decisively confirms and exceeds that promise -- delivers a complete, fully-IDed worked scenario with an actual graph schema and an executable-test-format (Gherkin) acceptance criterion, the most concrete artifact produced anywhere in the reconstruction, at the cost of further extending the invariant-notation-proliferation pattern with five additional distinct series"
+source_role: PRIMARY_RESEARCH
+canonical_source: 732
+importance: critical
+confidence: high
+about: >
+  Opens declaring the shift "from the roadmap to the first executable architectural specification," and
+  the Golden Trace's stated purpose: "not intended to describe every KnowledgeOS workflow... a reference
+  scenario that forces the important architectural boundaries to work together." Delivers the scenario
+  objective ("an agent must determine whether a planned engineering change to Nexus can proceed under the
+  applicable governance and technical constraints," deliberately read-only/no-production-mutation for the
+  first implementation), six logical actors (Human/Agent/KnowledgeOS/Governance/Engineering system/
+  Assurance), and a stable scenario identifier `GT-NEXUS-001`, explicitly "useful because the Golden Trace
+  itself becomes an architectural test artifact."
+
+  **Delivers a complete, fully-IDed worked trace, the single most concrete artifact produced anywhere in
+  the reconstruction**: from an initial state (`Decision D-001, Policy P-001, Rule R-001, Subject
+  NEXUS-001`, each with a full field-level schema — e.g. `Decision{status=EFFECTIVE, scope=Nexus,
+  validFrom=T1, authority=Architecture Governance}`), through the agent's `TaskRequest`, the Context
+  Service's construction of `ContextPackage` (`ContextID=CTX-001`), the agent's `Recommendation`
+  (`RecommendationID=REC-001`, explicitly noting "the exact storage of chain-of-thought is deliberately not
+  prescribed... we need the decision/provenance metadata, not necessarily private internal reasoning" — a
+  precise, pragmatic scoping decision), a verification request resolving `RuleID→Checker`, checker
+  execution through a `NexusAdapter`, an `Observation` (`version=X, observedAt=T2, source=Nexus`, "not
+  automatically knowledge... evidence of observed state"), `Evidence E-001`, `Verification V-001` (with
+  explicit `PASS/FAIL/UNKNOWN` verdict support and a worked UNKNOWN example: `Reason=source unavailable`,
+  "very different from PASS... also different from FAIL"), a second agent recommendation, an `ActionRequest
+  A-001` for the deliberately low-risk `ReadNexusConfiguration`, `Authorization AUTH-001` (a full record,
+  never a bare boolean: `decision/actor/action/scope/authority/validity/conditions`), `Execution EX-001`
+  producing `Evidence E-002`, a second `Verification V-002` on that newly captured evidence
+  ("demonstrates that actions themselves can produce assurance evidence"), and — on `FAIL` — `Finding
+  F-001` routed back into Governance for `Disposition` (`REMEDIATE/EXCEPTION/RISK ACCEPTED`).
+
+  **Delivers the same trace expressed as an actual property-graph schema with typed edges** (§145.32):
+  `[D-001]-governs->[P-001]-establishes->[R-001]-appliesTo->[NEXUS-001]-verifiedBy->[V-001]-supportedBy->
+  [E-001]`, `[CTX-001]-contains->{D-001,P-001,R-001,E-001}`, `[REC-001]-basedOn->[CTX-001]`,
+  `[A-001]-requestedBy->[REC-001]`, `[A-001]-authorizedBy->[AUTH-001]`, `[A-001]-executedAs->[EX-001]`,
+  `[EX-001]-produced->[E-002]`, `[E-002]-evaluatedBy->[V-002]`, `[V-002]-raises->[F-001]` — "now the graph
+  has genuine semantic value," the first genuinely concrete, directly implementable graph schema in the
+  reconstruction rather than an abstract diagram.
+
+  Delivers the minimum identity set (fourteen named ID types: `DecisionID, PolicyID, RuleID, SubjectID,
+  ContextID, AgentID, SessionID, RecommendationID, ActionID, AuthorizationID, ExecutionID, EvidenceID,
+  VerificationID, FindingID`) and, distinctly, a correlation `TraceID` (`GT-NEXUS-001`) — precisely
+  distinguished from entity-level IDs (`TraceID≠ActionID`, `TraceID≠EvidenceID`): the trace represents the
+  whole workflow, the action one operation inside it. Delivers a thirteen-event operational-history sequence
+  and an appropriately calibrated non-commitment on event sourcing: "this does NOT require full event
+  sourcing... reconstructable lifecycle transitions" can be implemented via "state+audit records; domain
+  events; outbox; event sourcing" depending on actual requirements, directly extending 0725's/0728's
+  event-sourcing-agnosticism.
+
+  **Delivers the Golden Trace temporal model, a genuinely valuable, precisely reasoned discipline**: four
+  distinct timestamp types (`createdAt, effectiveAt, observedAt, executedAt`), "these should not be
+  collapsed into one generic timestamp," worked through a concrete five-timestamp scenario
+  (`Policy effective:T1, Agent context:T2, Observation:T3, Action executed:T4, Verification:T5`) enabling
+  the temporal-validity question "was `Knowledge(T2)` still valid when `Action(T4)` occurred?", formalized
+  as deterministic preconditions (`Policy.validAt(T4)?`, `Authorization.validAt(T4)?`,
+  `Context.validAt(T4)?`).
+
+  **Delivers five explicitly named failure paths (F1 through F5), each with a worked mini-flow**: F1
+  Context unavailable (`ContextRequest→UNAVAILABLE`, with the platform invariant "for high-risk actions:
+  `NoContext⇒NoExecution`"); F2 Rule fails (`Verification→FAIL`, "the agent cannot simply override the
+  failure"); F3 Evidence unavailable (`Verification→UNKNOWN`, with the explicit platform invariant
+  "`UNKNOWN≠PASS`"); F4 Authorization denied (`ActionRequest→DENY`, "execution must not occur through the
+  governed path... mechanically enforceable"); F5 Execution failure (`Authorized→ExecutionFailed`, "authorization
+  does not imply successful execution").
+
+  **Delivers twenty-eight new, directly checkable invariants across five distinct new notation families**
+  — the largest single-file invariant expansion in the reconstruction, though it further extends the
+  ongoing invariant-notation-proliferation pattern: `GT-001` through `GT-008` (Golden Trace invariants,
+  e.g. `Action.contextID≠null`, `Action.authorizationID≠null`, "a denied action cannot execute," "agent
+  memory cannot become authoritative merely through use"); `GG-001` through `GG-005` (Graph invariants,
+  e.g. "every verification points to a rule," "every finding is traceable to verification"); `GE-001`
+  through `GE-005` (Evidence invariants, e.g. "evidence cannot silently change after verification");
+  `GC-001` through `GC-005` (Context invariants, e.g. "context does not itself become a competing source of
+  truth"); `GA-001` through `GA-005` (Agent invariants, e.g. "agent recommendation is distinguishable from
+  action," "Claude and Codex consume the same semantic contract"). This brings the reconstruction's total
+  count of distinct invariant-notation families to at least fourteen (A/C/K/S/AFR/AAI/PLP/CM/IR/LA/RA/
+  KOS-ARCH/AF/now GT-GG-GE-GC-GA), a pattern this analysis continues to flag for eventual reconciliation
+  rather than treat as a new finding each time.
+
+  **Delivers a complete Gherkin-style GIVEN/WHEN/THEN acceptance test, the first executable-test-format
+  artifact produced anywhere in the reconstruction** (§145.52): `GIVEN` an effective governance decision,
+  applicable policy, applicable rule, known Nexus subject; `WHEN` the agent requests governed context,
+  `THEN` context is returned with identity and provenance; `WHEN` verification is requested, `THEN` the
+  checker executes, evidence is captured, verification is recorded; `WHEN` a read-only action is requested
+  and authorization is granted, `THEN` the action executes and evidence is captured; `WHEN` verification
+  fails, `THEN` a finding is created and governance disposition becomes possible — "this is now a testable
+  architecture." This is a genuinely significant format shift: previous files delivered diagrams and
+  boxed-formula invariants; this is the reconstruction's first artifact expressed in a directly executable
+  test-authoring convention (BDD/Gherkin) that a real test suite could adopt with minimal translation.
+
+  Delivers "Golden Trace as architecture baseline" (once implemented, every future capability should be
+  able to answer "how does this capability fit into the Golden Trace model?", or its inclusion in the core
+  architecture should be questioned) and "the Golden Trace also exposes missing concepts" — twelve concepts
+  needing explicit treatment (`Task, Context, Recommendation, Action, Authorization, Execution, Observation,
+  Evidence, Verification, Finding, Disposition, Trace`), several of which (`Task`, `Execution`,
+  `Disposition`, `Trace`) were not explicit first-class objects in 0724's finalized eighteen-object domain
+  model, **directly extending and revising that model** with an updated five-group semantic model
+  (Governance: Decision/Policy/Exception/Disposition; Knowledge: Claim/KnowledgeState/Context; Assurance:
+  Rule/Verification/Finding; Evidence: Observation/Evidence/Provenance; Agent: Agent/Session/Task/
+  Recommendation/Action/Authorization/Execution; plus the cross-context Assurance Graph).
+
+  Delivers two strict lifecycle-separation chains explicitly reaffirmed as essential:
+  `Observation→Evidence→Verification→Finding` (never collapsed) and `Task→Recommendation→Action→
+  Authorization→Execution` (never collapsed) — "this separation is essential for governed agents."
+
+  **Delivers the file's central reframing statement — KnowledgeOS as "a state-transition system"**
+  (§145.58): "at this point the architecture is no longer simply: Knowledge+AI+Governance. It is becoming a
+  state-transition system: `Expectation→Context→Reasoning→Authorization→Execution→Evidence→Verification→
+  Disposition`. This is the central behavioral model of KnowledgeOS" — a precise, memorable capstone
+  characterization directly consolidating the entire Steps 120-145 arc.
+
+  Delivers Step 145's verdict, the Golden Trace's key defining property: "every material engineering action
+  can be reconstructed from authority+context+agent+authorization+execution+evidence+verification. That is
+  the architectural definition of a governed engineering action."
+
+  **Closes by opening "Step 146 — Golden Trace → Domain Model,"** the natural next tactical-DDD step: moving
+  from "architecture concepts" to "implementable domain model" by formalizing the Golden Trace's discovered
+  objects into Aggregates/Entities/Value Objects/Domain Events/Invariants, posing the key questions of
+  transaction-boundary placement, which relationships belong inside an aggregate versus only in the graph,
+  and — most importantly — "what each Aggregate is allowed to change," explicitly framed to avoid
+  "collapsing the bounded contexts back into one giant KnowledgeOS object model." No actual code execution,
+  repository inspection, or verified filesystem/architecture claim reported anywhere in this file; the
+  entire Golden Trace remains a fully-specified but unimplemented target scenario using the confirmed-
+  fictional Nexus placeholder (0698).
+introduces:
+  - concept: "The complete, fully-IDed worked Golden Trace GT-NEXUS-001 -- the single most concrete artifact in the reconstruction"
+  - concept: "The actual property-graph schema with typed edges for the trace"
+  - concept: "The correlation TraceID, precisely distinguished from entity-level IDs"
+  - concept: "The Golden Trace temporal model (four distinct timestamp types, deterministic validity preconditions)"
+  - concept: "Five explicitly named failure paths (F1-F5), including NoContext⇒NoExecution and UNKNOWN≠PASS as platform invariants"
+  - concept: "Twenty-eight new directly checkable invariants across five new notation families (GT/GG/GE/GC/GA)"
+  - concept: "The first Gherkin-style GIVEN/WHEN/THEN executable acceptance test in the reconstruction"
+  - concept: "'Golden Trace as architecture baseline' -- a fit-test for all future capabilities"
+  - concept: "Four newly explicit first-class objects (Task, Execution, Disposition, Trace) extending 0724's domain model"
+  - concept: "KnowledgeOS reframed as 'a state-transition system'"
+  - concept: "Opens Step 146 -- Golden Trace → Domain Model"
+defines:
+  - concept: "TraceID vs. entity IDs"
+    definition: "A TraceID (e.g. GT-NEXUS-001) identifies an entire logical workflow instance and is shared by every record participating in it, while entity-level IDs (ActionID, EvidenceID, etc.) identify individual objects within that workflow -- the two identity types must never be conflated"
+  - concept: "NoContext⇒NoExecution"
+    definition: "For high-risk governed actions, if KnowledgeOS cannot produce authoritative context, the action must not proceed -- context unavailability is itself a blocking condition, not merely a degraded-quality warning"
+  - concept: "UNKNOWN≠PASS (Golden Trace platform invariant)"
+    definition: "When a verification's evidence is insufficient or unavailable, the resulting UNKNOWN verdict must never be reinterpreted by an agent as an implicit PASS; this must be enforced as a platform invariant, not left to agent judgment"
+  - concept: "Golden Trace as architecture baseline"
+    definition: "Once the Golden Trace is implemented, it becomes the reference implementation against which every future KnowledgeOS capability is fit-tested: a capability that cannot be located within the Golden Trace's state-transition model should have its inclusion in the core architecture questioned"
+refines:
+  - concept: "0731's promise of the first executable reference architecture"
+    refinement: "Decisively confirmed and exceeded -- delivered with concrete field-level schemas, a full worked trace with actual stable IDs at every step, an implementable graph schema, and an executable-test-format acceptance criterion"
+  - concept: "0724's finalized eighteen-object canonical domain model"
+    refinement: "Directly extended with four newly explicit first-class objects surfaced by the Golden Trace exercise (Task, Execution, Disposition, Trace) not present in the earlier model"
+  - concept: "0725's/0728's event-sourcing-agnosticism"
+    refinement: "Directly reconfirmed at the concrete trace level: reconstructable lifecycle transitions are the requirement, not a specific persistence mechanism"
+  - concept: "0716's/0727's context-hashing/integrity discipline"
+    refinement: "Operationalized into a concrete worked ContextID/ContextVersion example within the actual trace"
+  - concept: "the corpus's Unknown-preservation discipline (0693/0699/0708/AFR-10)"
+    refinement: "Given its most concrete platform-invariant statement yet: UNKNOWN≠PASS, worked through an actual failure-path example (Nexus unreachable)"
+  - concept: "the reconstruction's ongoing invariant-notation-proliferation pattern"
+    refinement: "Extended by five further distinct series (GT/GG/GE/GC/GA), the largest single-file invariant expansion in the reconstruction, further underscoring the need for eventual reconciliation at the canonical synthesis stage"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0733 (Step 146 — Golden Trace → Domain Model) with continued high attention: check whether the tactical-DDD formalization (aggregates, value objects, transaction boundaries) is genuinely derived from this file's now-concrete Golden Trace objects, and whether the newly surfaced objects (Task, Execution, Disposition, Trace) receive their own aggregate/value-object classification."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the complete, fully-IDed worked Golden Trace GT-NEXUS-001 and its property-graph schema -- the single most concrete artifact in the reconstruction -- plus the correlation TraceID distinction and the temporal model (four timestamp types)."
+  - "dimension-registry.md: record the five named failure paths (NoContext⇒NoExecution, UNKNOWN≠PASS as platform invariants), the twenty-eight new invariants across the GT/GG/GE/GC/GA series, and the reconstruction's first Gherkin-style executable acceptance test."
+  - "dimension-registry.md: record KnowledgeOS reframed as 'a state-transition system' and the four newly explicit first-class objects (Task, Execution, Disposition, Trace) extending 0724's eighteen-object domain model -- flagged as primary candidate reference artifacts for the eventual §29-gated canonical synthesis."
+anchor_test:
+  anchor: "0731's promised first executable reference architecture; 0724's eighteen-object domain model; 0725's/0728's event-sourcing-agnosticism; 0716's/0727's context-integrity discipline; the corpus's Unknown-preservation discipline; the reconstruction's ongoing invariant-notation-proliferation pattern; 0698's confirmed-fictional Nexus placeholder"
+  supports_dimension: "MAJOR SYNTHESIS MILESTONE: decisively confirms and exceeds 0731's promise of the first executable reference architecture -- delivers a complete, fully-IDed worked trace with concrete field-level schemas at every step, an actual implementable property-graph schema, five named failure paths with explicit platform invariants (NoContext⇒NoExecution, UNKNOWN≠PASS), and the reconstruction's first Gherkin-style executable acceptance test. Delivers the largest single-file invariant expansion (twenty-eight new rules across five notation families), directly extends 0724's domain model with four newly surfaced first-class objects, and crystallizes the memorable reframing of KnowledgeOS as 'a state-transition system.' Closes with a well-motivated continuation into Step 146's natural tactical-DDD formalization of this now-concrete specification"
+  refines_or_contradicts: "directly and substantially confirms and extends 0731's promised executable reference architecture, 0724's eighteen-object domain model, 0725's/0728's event-sourcing-agnosticism, 0716's/0727's context-integrity discipline, and the corpus's Unknown-preservation discipline; no contradiction found; extends (further underscoring the need for eventual reconciliation of) the reconstruction's ongoing invariant-notation-proliferation pattern"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§145.31-145.32's complete worked Golden Trace with concrete stable IDs at every step (D-001 through F-001), immediately followed by its full property-graph rendering with typed edges, is directly checkable evidence of the reconstruction's single most concrete, implementable specification artifact."
+  - "§145.52's complete GIVEN/WHEN/THEN acceptance test is directly quotable evidence of the reconstruction's first artifact expressed in an actual executable-test-authoring format (BDD/Gherkin), a genuine format shift from prior diagram/formula-only artifacts."
+  - "§145.44's explicit boxed statement 'UNKNOWN≠PASS' and §145.42's 'NoContext⇒NoExecution' are directly checkable evidence of platform invariants stated precisely enough to be directly implemented as guard conditions in real code, without further interpretation."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 146's actual content (0733), once read, delivers genuine aggregate/value-object/transaction-boundary decisions specifically for the Golden Trace's now-concrete objects, or reverts to more abstract DDD discussion."
+  - "Whether the twenty-eight new GT/GG/GE/GC/GA invariants, or any of the reconstruction's many other invariant-notation families, are ever explicitly consolidated or cross-referenced anywhere later in the corpus, or whether the eventual §29-gated canonical synthesis will be the first point of reconciliation."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: decisively confirms and exceeds the promised first executable reference architecture. Delivers a complete, fully-IDed worked Golden Trace with concrete field-level schemas, an actual implementable property-graph schema, five named failure paths with explicit platform invariants (NoContext⇒NoExecution, UNKNOWN≠PASS), and the reconstruction's first Gherkin-style executable acceptance test. Delivers the largest single-file invariant expansion (twenty-eight new rules across five notation families) and extends 0724's domain model with four newly surfaced first-class objects. Crystallizes KnowledgeOS as 'a state-transition system.' Opens Step 146's well-motivated tactical-DDD continuation."

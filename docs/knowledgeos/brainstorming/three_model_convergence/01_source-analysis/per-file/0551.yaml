@@ -1,0 +1,192 @@
+sequence: 551
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-152413_step-011-uncertainty-propagation-and-derived-knowledge.md
+title: "LANDMARK: Uncertainty Propagation Fully Formalized as a Contract, Not a Formula — Marginal Confidence Does Not Determine Joint Confidence (No Naive Confidence Multiplication); Provenance Propagation Declared Universal While Numerical Uncertainty Propagation Is Calculus-Dependent; Inference as Gap-Discovery (KnowledgeOS Can Infer What It Needs to Know in Order to Infer); Ten Canonical U1-U10 Invariants; Opens Step 12 (Identity, Entity Resolution, Semantic Equivalence) — CORPUS-INTEGRITY NOTE: 'Step 10' Is Never Produced as Its Own File, Its Content Substantially Absorbed Here"
+date: "2026-08-27"
+bytes: 19164
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "opens as 'Step 11' with no intervening 'Step 10 — Inference and Derivation' file ever appearing in the corpus despite being explicitly named as next at 0550's close; this file's own content substantially delivers what Step 10 promised (deterministic/statistical/abductive inference typing, inference sufficiency/completeness, missing-premise gap discovery), suggesting Step 10's content was folded into this file rather than genuinely skipped, though no file bears the Step-10 label itself"
+source_role: PRIMARY_RESEARCH
+canonical_source: 551
+importance: critical
+confidence: high
+about: >
+  Opens as "Step 11 -- Uncertainty Propagation and Derived Knowledge," with an explicit statistician's
+  warning against a common error: `A_1,A_2⇒A_3` does NOT mean A_3 "inherits the same confidence" as its
+  premises -- the epistemic quality of a derived proposition depends on the inference type, the premises'
+  own dependency structure, and the inference rule's own uncertainty. NOTABLE CORPUS-INTEGRITY OBSERVATION:
+  0550 explicitly named "Step 10 -- Inference and Derivation" as the immediately following research phase,
+  yet no file in the manifest carries that label; this file (numbered Step 11) substantially delivers much
+  of what Step 10 promised (typing deterministic vs. statistical vs. abductive inference, inference
+  sufficiency/completeness, missing-premise-driven gap discovery), suggesting its content was absorbed here
+  rather than genuinely omitted from the corpus, though a dedicated Step-10 file itself was never produced.
+
+  **Formalizes the propagation function** `Σ_derived=Propagate_ρ(Σ_premises,Rule,Method,Dependency,
+  Context)` and delivers **six formally distinct sources of uncertainty** (Premise, Inference, Model,
+  Measurement, Semantic, Context uncertainty) -- `Uncertainty≠one universal quantity` -- reformulating the
+  established `U` component of Σ as an explicit vector
+  `U_A=(U_source,U_measurement,U_semantic,U_inference,U_model,U_context)`, "more rigorous than
+  `U_A=0.3`."
+
+  **Delivers the file's central methodological finding**: the propagation function depends fundamentally on
+  the inference METHOD -- standard error propagation applies to a deterministic arithmetic transformation
+  (`y=2x` giving `σ_y=2σ_x`), but cannot be applied to an abductive inference ("x is probably caused by
+  y"), which requires a categorically different treatment -- `PropagationFunction depends on
+  InferenceMethod`. **Distinguishes deterministic derivation** (`Deterministic rule⇏uncertain premises` --
+  the rule can be perfectly certain while its inputs remain epistemically uncertain) **from statistical
+  inference** (an estimate and its standard error must both be preserved -- `Estimate=10.2`,
+  `Uncertainty=0.4` -- never collapsed to the point estimate alone).
+
+  **Delivers the file's single most important statistical result**: given `P(A)=0.9` and `P(B)=0.9`, the
+  joint probability `P(A∧B)` CANNOT be determined from the marginals alone -- it is 0.81 if independent,
+  0.9 if perfectly dependent, and other values under other dependence structures -- crystallized as
+  `Marginal confidence does not determine joint confidence`, explicitly named "a major reason KnowledgeOS
+  cannot use naive confidence multiplication." Grounds this in a first-order statistical propagation
+  formula (`Var(Y)≈JΣ_XJ^T`, Jacobian and covariance matrix), noting "covariance matters," directly mapping
+  onto the corpus's established evidence-dependency model.
+
+  **Delivers the file's central architectural consequence**: KnowledgeOS must preserve DEPENDENCY
+  structure, not merely confidence SCORES -- worked contrast between a naive representation (two bare
+  confidence numbers) and the required representation (two confidences plus an explicit
+  `Dependency(A_1,A_2)∈{Independent,Dependent,Unknown}` relation) -- "one of the strongest architectural
+  consequences of the theory." **Confirms derived knowledge must retain its full dependency graph**
+  (`Basis(A_3)={A_1,A_2}`), so retracting a premise triggers `Reassess(A_3)`, never automatic retraction
+  ("follows directly from Step 9"). Formalizes abstract, deliberately non-universal Support- and
+  Uncertainty-propagation functions (`S_3=PropagateSupport_ρ(...)`, `U_3=PropagateUncertainty_ρ(...)`),
+  worked through three genuinely different candidate combination rules (min, product, a general dependency-
+  aware function) with no universal formula among them -- "the kernel stores uncertainty semantics; the
+  calculus performs uncertainty propagation."
+
+  **Introduces the standard aleatory/epistemic uncertainty distinction** into KnowledgeOS's model
+  (`U=(U_aleatory,U_epistemic)` when relevant), noting KnowledgeOS primarily deals with epistemic
+  uncertainty (lack of knowledge) but may encounter genuine aleatory variability in statistical domains.
+
+  **Delivers inference sufficiency and completeness formally**: for a rule `R:A_1∧A_2->A_3`,
+  `Complete(R,Γ)=False` means A_3 cannot be deductively derived (an LLM may still hypothesize it, but must
+  never label the hypothesis a deterministic derivation), worked through a concrete infrastructure example
+  (a missing restore-test premise leaves "operationally recoverable" unresolved, even with a confirmed
+  backup-configuration premise). **Delivers the file's most elegant and consequential new capability**:
+  partial derivation as a GAP-DISCOVERY mechanism -- a missing premise produces `Candidate(A_3)` plus an
+  explicit `MissingPremise(A_2)`, which directly generates a discrepancy `Δ_missing_premise` that Lord can
+  search evidence to resolve, yielding the feedback loop `Inference->MissingPremise->Discrepancy->
+  EvidenceAcquisition` -- "KnowledgeOS doesn't simply infer knowledge. It can infer what it needs to know in
+  order to infer the desired knowledge. That is a much stronger capability."
+
+  **Addresses uncertainty propagation through inference chains and LLM chains**: notes inference depth can
+  affect epistemic reliability but through no single universal formula (probabilistic graphical models,
+  deterministic entailment chains, and defeasible-rule chains where intermediate conclusions may later be
+  defeated, all behave differently); worked through a concrete Document->LLM-extraction->A_1->LLM-
+  interpretation->A_2->LLM-synthesis->A_3 chain, delivering the file's key theoretical result: **Provenance
+  propagation is universal; numerical uncertainty propagation is calculus-dependent** -- KnowledgeOS must
+  ALWAYS preserve the full epistemic lineage of a derived assertion, but is only required to perform
+  quantitative uncertainty propagation when the selected calculus actually supports it -- "this does not
+  mean its uncertainty must be numerically multiplied. It means its epistemic lineage must be preserved."
+
+  **Delivers a refined derived-epistemic-state formalization** `Σ_D=F_ρ(Σ_1,...,Σ_n,R,D,C)` explicitly
+  recording `Acquisition=Derived` plus the specific method (Deduction/Rule, StatisticalInference/Model, or
+  LLMInterpretation/Model), and addresses validity propagation (`Validity(A_2)⊆∩_i Validity(A_i)` across
+  multiple premises, policy-dependent in detail), temporal propagation (a fact valid only in 2024-2025 must
+  not silently become current in 2026 via derivation), and conflict propagation (a derived assertion
+  inheriting `DependsOnContested(A_3,A_1)` need NOT automatically itself become Contested --
+  `Propagation of dependency ≠ automatic propagation of status`).
+
+  **Formalizes a transitive dependency closure operator** `D*(A)=∪_{x∈D(A)}({x}∪D*(x))`, computable for
+  finite acyclic derivation graphs, and explicitly addresses the harder cyclic case: cycles require an
+  explicit fixpoint or cycle policy rather than naive recursive support amplification, connecting to
+  standard fixpoint semantics (`K*=T(K*)`) and the monotonic-rule-system property
+  (`K_1⊆K_2⇒T(K_1)⊆T(K_2)`) that guarantees well-behaved iterative closure, explicitly noting
+  non-monotonic reasoning may lack this property and then requires explicit revision semantics.
+
+  **Delivers a computational conclusion directly answering the corpus's original computability concern**:
+  uncertainty and derivation ARE computable when the evidence graph is finite, inference rules are
+  explicit, dependency relationships are represented, the selected calculus is computationally defined, and
+  uncertainty semantics are specified -- but "there is no universal algorithm for arbitrary natural-language
+  inference," requiring a firm distinction between computable kernel operations and AI-assisted semantic
+  interpretation. **Delivers a formal "KnowledgeOS computational contract"**: every computationally
+  asserted result must declare its inference method and derivation basis
+  (`Derived(A)⇒(Method(A),Premises(A),Rule/Model(A),Version(A))`); if these are unavailable,
+  `Status(A)≠DeterministicallyDerived`.
+
+  **Delivers the complete assertion representation** `A=(P,E,Σ,Ω,D,Π,Ctx,τ)` integrating epistemic state
+  Σ, governance state Ω, and an explicit dependency graph D as first-class components. **Delivers the
+  file's central formal deliverable -- ten canonical Step-11 principles (U1-U10)**: U1 Preserve uncertainty
+  (derived knowledge must not silently become certain); U2 Method dependence; U3 Dependency dependence; U4
+  Provenance is universal; U5 Unknown dependency remains unknown (`Unknown≠Independent`); U6 Revision
+  triggers reassessment; U7 Missing premises remain gaps; U8 Statistical semantics are preserved; U9 LLM
+  inference is typed (`LLMOutput≠DeterministicDerivation`); U10 No artificial confidence amplification
+  (derived chains must not manufacture independent evidence merely through repetition).
+
+  **Delivers Step 11's verdict**: THEORETICALLY RESOLVED AT THE FRAMEWORK LEVEL, with the key insight
+  crystallized as "KnowledgeOS does not need one universal uncertainty formula. It needs a universal
+  uncertainty CONTRACT" -- Origin + Method + Dependency + Provenance + UncertaintySemantics + Validity --
+  with the selected calculus determining the actual numerical or qualitative propagation.
+
+  **Consolidates "where we are after Step 11"**: the fullest single pipeline statement yet --
+  `Input->Evidence->Relations->Assessment->Acceptance->KnowledgeState->Discrepancy->CandidateAction->
+  NewEvidence->Inference->DerivedKnowledge->UncertaintyPropagation->RevisedKnowledgeState`, explicitly
+  noting "provenance is preserved across the entire chain."
+
+  **Closes by opening "Step 12 -- Identity, Entity Resolution, and Semantic Equivalence"**, motivated by two
+  concrete worked puzzles: whether "Nexus," "Nexus Repository," "Nexus3," "nexus3.dgverlag.de," "the
+  artifact repository," and "the old Nexus server" denote one entity or six; and whether "production Nexus
+  = 3.69," "Nexus is running 3.69," and "the repository server uses version 3.69" are the same proposition,
+  equivalent propositions, related propositions, or merely similar statements -- explicitly framed as
+  "deceptively simple, but... fundamental."
+introduces:
+  - concept: "Six formally distinct sources of uncertainty (Premise, Inference, Model, Measurement, Semantic, Context), reformulating the corpus's Uncertainty component as a vector rather than a scalar"
+  - concept: "PropagationFunction depends on InferenceMethod: deterministic arithmetic propagation (e.g. standard error formulas) cannot be applied to abductive or other non-arithmetic inferences"
+  - concept: "Marginal confidence does not determine joint confidence: P(A∧B) cannot be derived from P(A) and P(B) alone without a dependency/covariance model, forbidding naive confidence multiplication as a KnowledgeOS default"
+  - concept: "The architectural requirement to preserve dependency structure (Independent/Dependent/Unknown), not merely bare confidence scores, for every pair of related assertions"
+  - concept: "Inference sufficiency (Complete(R,Γ)) formally distinguishing deductively-derivable conclusions from LLM-hypothesized ones"
+  - concept: "Partial derivation as a gap-discovery mechanism: a missing premise generates a discrepancy that feeds directly into Lord's evidence-acquisition search, giving KnowledgeOS the capability to infer what it needs to know in order to infer what it wants to know"
+  - concept: "Provenance propagation declared universal (always required) while numerical uncertainty propagation is declared calculus-dependent (only required when the selected calculus supports it) — a major theoretical result cleanly separating epistemic lineage preservation from quantitative uncertainty mathematics"
+  - concept: "A transitive dependency closure operator D*(A) for finite acyclic derivation graphs, with cyclic inference explicitly requiring fixpoint or cycle policy rather than naive recursive amplification"
+  - concept: "The KnowledgeOS computational contract: every derived assertion must declare its inference method, premises, rule/model, and version, or it cannot be labeled deterministically derived"
+  - concept: "Ten canonical Step-11 invariants (U1-U10) governing uncertainty propagation and derived knowledge"
+  - concept: "'Step 12 — Identity, Entity Resolution, and Semantic Equivalence' as the corpus's next named research phase, motivated by concrete multi-name entity and multi-phrasing proposition puzzles"
+defines:
+  - concept: "Uncertainty vector (U_A)"
+    definition: "(U_source, U_measurement, U_semantic, U_inference, U_model, U_context) — a multidimensional decomposition of an assertion's uncertainty, replacing a single scalar and allowing each origin of uncertainty to be tracked and reasoned about separately"
+  - concept: "The uncertainty contract (vs. formula)"
+    definition: "The kernel-level requirement that every derived assertion carry Origin, Method, Dependency, Provenance, UncertaintySemantics, and Validity information — the actual numerical or qualitative propagation calculation is left to a pluggable calculus, never fixed in the kernel"
+  - concept: "Provenance propagation is universal; numerical uncertainty propagation is calculus-dependent"
+    definition: "Every derivation must always preserve its full causal/derivational lineage regardless of calculus choice, but quantitative combination of uncertainty values (e.g. via a specific formula) is only performed when the chosen assessment calculus defines how to do so"
+refines:
+  - concept: "0550's closing directive naming 'Step 10 — Inference and Derivation'"
+    refinement: "Substantially executed (deterministic/statistical/abductive inference typing, inference sufficiency, missing-premise gap discovery) within this file labeled 'Step 11,' with no dedicated Step-10 file ever appearing in the corpus — a notable numbering gap/absorption flagged as a corpus-integrity observation"
+  - concept: "0533-0545's Evidence-theory determinism and no-naive-aggregation findings"
+    refinement: "Extended into a rigorous statistical argument (P(A∧B) undetermined by marginals alone) proving, not merely asserting, why naive confidence multiplication is unsound for KnowledgeOS"
+  - concept: "0548's dependency-propagation-as-reassessment finding"
+    refinement: "Extended from the Knowledge-State-transition layer to the derived-knowledge/uncertainty-propagation layer, with the identical principle (reassess, don't automatically retract) now applied to derived assertions whose premises are revised"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "CORPUS-INTEGRITY: confirm whether a dedicated 'Step 10 — Inference and Derivation' file genuinely does not exist anywhere in the primary corpus (a numbering gap), or whether it was simply not captured in this reconstruction's manifest ordering — this file's content substantially delivers what Step 10 promised, suggesting deliberate consolidation rather than data loss, but this should be explicitly confirmed"
+  - "Trace whether 'Step 12 — Identity, Entity Resolution, and Semantic Equivalence' is executed as its own dedicated corpus file"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the six-source uncertainty vector, PropagationFunction's dependence on InferenceMethod, and the rigorous statistical proof that marginal confidence does not determine joint confidence (forbidding naive confidence multiplication)."
+  - "dimension-registry.md: record the dependency-preservation architectural requirement, inference sufficiency/completeness, partial derivation as a gap-discovery mechanism (Inference->MissingPremise->Discrepancy->EvidenceAcquisition), and the major theoretical result that provenance propagation is universal while numerical uncertainty propagation is calculus-dependent."
+  - "dimension-registry.md: record the transitive dependency closure operator, the cyclic-inference fixpoint requirement, the KnowledgeOS computational contract, the ten canonical U1-U10 invariants, and 'Step 12 — Identity, Entity Resolution, and Semantic Equivalence' as the next named research phase, plus the corpus-integrity note about the apparently absorbed/missing 'Step 10' file."
+anchor_test:
+  anchor: "0550's Step-9 conclusion naming Step 10; 0533-0545's Evidence-theory determinism and aggregation findings; 0548's dependency-propagation-as-reassessment principle"
+  supports_dimension: "LANDMARK complete formalization of uncertainty propagation for derived knowledge, delivering a rigorous statistical proof (not mere assertion) that marginal confidence cannot determine joint confidence, a clean and consequential separation of universal provenance propagation from calculus-dependent numerical uncertainty propagation, and a genuinely elegant new capability (inference-as-gap-discovery, letting KnowledgeOS determine what it needs to know in order to infer what it wants to know). Also surfaces a corpus-integrity observation: the immediately preceding file's named 'Step 10' phase never appears as its own dedicated file, its content instead substantially absorbed into this 'Step 11' file"
+  refines_or_contradicts: "substantially executes 0550's named Step-10 content within a file labeled Step 11 (an apparent numbering gap, not a contradiction); rigorously extends 0533-0545's aggregation-caution findings with a formal statistical proof; extends 0548's dependency-propagation principle to the derived-knowledge layer; no substantive contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The P(A)=0.9, P(B)=0.9 joint-probability example, worked out numerically for both the independent case (0.81) and the perfectly-dependent case (0.9), is a directly checkable mathematical proof — not merely an assertion — that naive confidence multiplication is fundamentally unsound without an explicit dependency model."
+  - "The inference-as-gap-discovery feedback loop (Inference->MissingPremise->Discrepancy->EvidenceAcquisition) is a concrete, directly implementable mechanism directly extending and unifying the corpus's established Zero/Lord/Sārathi evidence-acquisition machinery with its inference/derivation layer for the first time."
+undefined_concepts: []
+open_questions:
+  - "CORPUS-INTEGRITY QUESTION: does a dedicated 'Step 10 — Inference and Derivation' file exist anywhere in the primary corpus, or was its content genuinely folded into this 'Step 11' file without ever receiving its own file?"
+  - "Whether 'Step 12 — Identity, Entity Resolution, and Semantic Equivalence' is executed as its own dedicated corpus file, resolving the multi-name-entity and multi-phrasing-proposition puzzles posed at this file's close"
+tier2_triggered: true
+tier2_reason: "LANDMARK complete formalization of uncertainty propagation and derived knowledge, delivering the corpus's most rigorous statistical argument to date (a directly checkable numerical proof that marginal confidence cannot determine joint confidence, forbidding naive confidence multiplication), a major and cleanly-stated theoretical separation between universal provenance propagation and calculus-dependent numerical uncertainty propagation, and a genuinely elegant new architectural capability unifying the inference/derivation layer with the established evidence-acquisition machinery (a missing premise becomes a discrepancy Lord can search to resolve, letting KnowledgeOS infer what it needs to know in order to infer what it wants to know). Delivers ten canonical governing invariants (U1-U10) and a formal computational contract for derived assertions. Also surfaces a significant corpus-integrity observation: the explicitly named 'Step 10 — Inference and Derivation' phase from the immediately preceding file never appears as its own dedicated file, its substantive content instead absorbed into this file labeled 'Step 11' — a numbering gap worth confirming rather than assuming is simple drafting error."

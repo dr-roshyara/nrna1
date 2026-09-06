@@ -1,0 +1,93 @@
+sequence: M0260
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-113500_theory-07-the-bridge-programme-negative-result.md
+title: "Theory 07 — The Bridge Programme: a Stable Negative: the full consolidated three-experiment Bridge programme (BRIDGE-01/02/03), delivering for the first time in this pass the complete BRIDGE-03 protocol and results (nine calibrated redundancy regimes; an elegant mathematical explanation for why flattening the redundancy distribution FAILS to raise informative strata; record count identified as the actual effective lever; population size ruled out; the BRIDGE-02 borderline cell definitively closed as noise at 0.000000 exactly) plus a genuinely important structural finding that adequacy SATURATES (67 dead cells invariant across all nine regimes, a property of the adequacy definition itself, not the generator) and a final precisely-refutable standing conjecture that no Zero/preservation bridge exists for read-disjoint (Π,Q)"
+date: "20260904-113500"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0260
+importance: critical
+confidence: high
+about: >
+  Document 07 of the 15-document consolidated theory series, sourced from
+  KR-BRIDGE-01/02/03-RESULTS-2026-09.md and KR-BRIDGE-01-AUDIT-2026-09.md. The single most
+  comprehensive Bridge-programme consolidation in the corpus, restating BRIDGE-01/02 with several
+  previously-unrecorded refinements (a withdrawn single-mechanism BRIDGE-01 explanation; exact
+  BRIDGE-02 numbers) and delivering, for the first time in this pass, the FULL BRIDGE-03 protocol
+  and results — a nine-regime commissioned re-run designed to raise statistical power, which
+  revealed why flattening the redundancy distribution structurally cannot help, identified record
+  count as the actual effective lever, and definitively closed BRIDGE-02's one remaining borderline
+  cell as exact noise. Also reveals a genuinely important structural finding — adequacy SATURATES,
+  making 67 of the tested (T,Q) cells permanently uninformative regardless of sampling — and closes
+  with a precisely stated, refutable standing conjecture.
+introduces:
+  - "The master three-hypothesis framework for the entire Bridge programme: H1 (no bridge — Zero carries no information about Adequate); H2 (a conditional bridge exists for some (Π,Q)); H3 (if H2, Zero predicts INadequacy specifically where T is redundancy-removing)"
+  - "BRIDGE-01 restated with exact figures — T_C_dedup RD=-0.291, pooled RD=-0.363, dissolving under stratification: 'within the tested deduplication regime, redundancy behaves as a common cause of Zero occurrence and of inadequacy' — with an explicit tightened-scope caveat (one informative stratum, one carrier, one Π, one Q, one principal Zero-producing transformation) forbidding a general causal-law reading"
+  - "A previously-unrecorded [DEFECT] from the BRIDGE-01 audit: a label mismatch on T_B (the pre-registered classification 'lossy' did not match observed behaviour) plus a single-informative-stratum limit — both recorded rather than repaired, 'per the rule that a pre-registered label is a classification to be tested, never a definition to be adjusted after the fact'"
+  - "A previously-unrecorded WITHDRAWN single-mechanism explanation for BRIDGE-01's exact RD=0 finding: the Zero-count is constant at r=1 but varies at r=2 (6 or 8) — 'the exact RD=0 has TWO DIFFERENT CAUSES, not one'"
+  - "Exact figures for BRIDGE-02's two self-caught instrument failures: (1) the wrong marginal-RD adjudication that would have falsely reported 'H2 SUPPORTED, 27/27 cells replicate' — 'that is a false positive by construction... twenty-seven relabelled cells re-found the confounder, not a bridge'; (2) the unsound read-disjointness gate — the one substantial effect in the entire grid (Π_value_set|Q_argmax_ntags|T_D_relational) carried MH-RD=-0.155, replicating at -0.152 across 4 strata, but was INADMISSIBLE because T_D ranks within tag group so rank=f(v,tag), making Π's fallback-to-rank effectively read tag — 'under the naive gate this experiment would have reported a conditional bridge'"
+  - "The corrected gate found to be STILL unsound, caught by perturbation test rather than code review: T_C_dedup selects survivors by v, so surviving src/tag/t columns AND the record count depend on v — hence Π_arity (which declares NO field reads at all) effectively reads v, forcing ten further exclusions — yielding the two boxed principles: 'Admissibility is a property of the TRIPLE (Π,Q,T), never of the pair' and 'Declaration is not verification'"
+  - "Final exact BRIDGE-02 result accounting: 112 cells total, 14 excluded by gate, 67 no informative stratum, 15 RD_within=0, 2 non-replicating, surviving 14 → substantive-on-both-splits 0, borderline 1, negligible 13 — cells actually searched: 31 of 112; H1 not refuted — 12 of 14 survivors had no stratum whose 95% CI excluded zero"
+  - "THE FULL, PREVIOUSLY UNRECORDED KR-BRIDGE-03 PROTOCOL AND RESULTS — commissioned specifically to change the generator's redundancy distribution and re-run with more informative strata, via nine regimes calibrated by measurement"
+  - "A genuinely elegant mathematical explanation for why flattening the redundancy distribution does NOT increase informative strata (73→75, negligible): at r=0 (all values distinct) Zero never fires, so (a+b)=0; at r=3 (all values equal) Zero always fires, so (c+d)=0 — 'flattening moves mass into the deterministic extremes. It buys strata that cannot be informative by construction'"
+  - "Identification of the actual effective lever: RECORD COUNT — n_rec 4→6 gives informative strata 73→233 (more multiplicity partitions, 5→9, more genuinely mixed strata) — while population size is explicitly ruled out as a lever (73/74/70 at n=1500/4000/8000), 'checked rather than assumed, because adequacy is population-dependent by construction'"
+  - "The 13×-power BRIDGE-03 result table: BRIDGE-02 baseline (~30 informative strata, 14 surviving cells, 0 substantive, 1 borderline) vs. R1-uniform (388 informative strata, 1 surviving cell, 0 substantive, 0 borderline) vs. R8-flattened (396 informative strata, 1 surviving cell, 0 substantive, 0 borderline) — H1 still not refuted at 13× the informative-stratum count"
+  - "Definitive closure of BRIDGE-02's one remaining borderline cell as exact noise: Π_value_set|Q_argmax_ntags|T_B_lossy carried MH-RD -0.0159/-0.0091 on 2 strata in BRIDGE-02; at 12 strata under BRIDGE-03 it returns EXACTLY 0.000000 on both splits in both regimes"
+  - "A GENUINELY IMPORTANT STRUCTURAL FINDING: '67 dead cells, in every one of the nine regimes. The count did not move by one' — broken down by Q (Q_source_set 16, Q_tag_set 16, Q_max_value 15, Q_argmax_ntags 10, Q_majtag_total 10) — CAUSE: adequacy SATURATES — for most (T,Q) pairs the transformation either fully preserves Q or fully destroys it, leaving no Adequate/Inadequate variation (25-31 of 35 (T,Q) combinations sit at exactly 0.00 or 1.00) — 'this is a property of the adequacy DEFINITION, not of the generator. Nine regimes are the evidence. The remaining lever is the (T,Q) design: transformations that partially preserve each Q'"
+  - "The final standing conjecture, precisely refutable: [CONJ] No Zero/preservation bridge exists for read-disjoint (Π,Q) — refutation condition explicitly stated: a single substantive, replicating, gate-clean cell, i.e. |MH-RD|≥0.01 on BOTH splits, with the level-aware gate passed and at least one stratum CI excluding zero — 'stated as a conjecture, with its refutation condition attached, so it can be attacked rather than hardening into an assumption. It is not a law and must not be cited as one: three experiments, one carrier family, 31 of 112 cells searchable'"
+defines: []
+refines:
+  - "M0229's BRIDGE-01 finding: adds the previously-unrecorded T_B label-mismatch defect and the withdrawn single-mechanism explanation"
+  - "M0233's BRIDGE-02 finding: gives final exact numbers for both self-caught instrument failures and the complete cell-accounting breakdown"
+contradicts:
+  - "The naive BRIDGE-02 marginal-RD adjudication that would have reported 'H2 SUPPORTED, 27/27 cells replicate' — explicitly declared a false positive by construction"
+  - "The naive read-disjointness gate (checked on the pair (Π,Q) or via mere declaration): both explicitly shown insufficient and replaced by triple-based, empirically-verified admissibility"
+  - "Any implicit assumption that flattening a redundancy distribution or growing the population would raise statistical power: both explicitly refuted with mechanism-level explanations"
+repeats:
+  - "The already-established KR-ZERO⊥KR-REP-REDUCTION conclusion (M0229) and the general anti-circularity/read-disjointness discipline, both consolidated here as part of the Bridge programme's final register"
+bridge_candidates:
+  - "Whether any further Bridge-programme experiment (BRIDGE-04 or later) was ever commissioned to redesign the (T,Q) pairing specifically to avoid adequacy saturation, per this document's own identified remaining lever"
+mathematical_content: >
+  A complete, previously-unrecorded BRIDGE-03 protocol and results across nine calibrated
+  redundancy regimes; an exact mechanistic explanation for why flattening a redundancy distribution
+  cannot raise informative strata (mass moves into deterministic extremes); identification of
+  record count (not population size) as the effective lever for informative-stratum count; a
+  structural saturation finding explaining 67 permanently uninformative (T,Q) cells; a final
+  precisely-refutable standing conjecture with an explicit quantitative refutation threshold.
+gita_content: null
+kernel_content: null
+registry_updates:
+  - "Full BRIDGE-03 protocol and results: nine redundancy regimes, flattening-fails-by-construction explanation, record-count-is-the-lever finding, population-size-is-not-a-lever finding"
+  - "Definitive closure of BRIDGE-02's one borderline cell as exact noise (0.000000 at 12 strata)"
+  - "Adequacy-saturation structural finding: 67 dead cells invariant across all nine regimes, a property of the adequacy definition, not the generator"
+  - "Withdrawn single-mechanism explanation for BRIDGE-01's exact RD=0 (two different causes, not one)"
+  - "Final standing [CONJ]: no Zero/preservation bridge for read-disjoint (Π,Q), with an explicit quantitative refutation threshold (|MH-RD|≥0.01, both splits, gate-clean, ≥1 stratum CI excluding zero)"
+anchor_test:
+  anchor: true
+  supports_dimension: "Full BRIDGE-03 protocol and results; flattening-fails-by-construction mechanistic explanation; record-count-is-the-lever finding; adequacy-saturation structural finding; definitive borderline-cell closure; final precisely-refutable standing conjecture"
+  refines_or_contradicts: "refines (M0229/M0233's BRIDGE-01/02 findings, given exact final numbers and previously-unrecorded defects/withdrawals); contradicts (naive marginal-RD adjudication; pairwise read-disjointness gates; flattening/population-size as levers for statistical power)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Flattening moves mass into the deterministic extremes. It buys strata that cannot be informative by construction.\""
+  - "\"At 12 strata it returns exactly 0.000000 on both splits in both regimes.\""
+  - "\"67 dead cells, in every one of the nine regimes. The count did not move by one... this is a property of the adequacy DEFINITION, not of the generator.\""
+  - "\"It is not a law and must not be cited as one: three experiments, one carrier family, 31 of 112 cells searchable.\""
+undefined_concepts: []
+open_questions:
+  - "Was a further Bridge experiment ever commissioned specifically redesigning (T,Q) pairing to avoid adequacy saturation?"
+tier2_triggered: true
+tier2_reason: >
+  Delivers the full, previously unrecorded BRIDGE-03 protocol and results (nine redundancy
+  regimes), a genuinely elegant mechanistic explanation for why flattening the redundancy
+  distribution structurally cannot raise power, the identification of record count as the actual
+  effective lever, definitive closure of BRIDGE-02's one remaining borderline cell as exact noise,
+  and a structurally important adequacy-saturation finding explaining 67 permanently uninformative
+  cells — the most comprehensive single Bridge-programme consolidation in the corpus.

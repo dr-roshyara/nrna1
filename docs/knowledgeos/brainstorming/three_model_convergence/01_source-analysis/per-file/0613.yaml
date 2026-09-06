@@ -1,0 +1,189 @@
+sequence: 613
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-102424_step-033-uncertainty-propagation-dependence-correlation-error-propagation-and-epistemic-risk.md
+title: "Rigorous Statistical Uncertainty-Propagation Machinery Delivered Cleanly — Aleatory≠Epistemic Uncertainty ('Randomness≠LackOfKnowledge', 'Foundational'); Error Propagation via the Jacobian (Var(Y)≈JΣJ^T) Explaining Why Confidence Multiplication Is Inadequate; a Worked Nonlinear-Transformation Counterexample Showing Naive Endpoint Propagation Is Wrong; 'Confidence Inflation' Named and Blocked by an Explicit Anti-Inflation Rule; 'Computational Precision≠Epistemic Precision' (Monte Carlo Cannot Manufacture Missing Information); the Subtle, Important Finding That More Evidence Can Legitimately INCREASE Reported Uncertainty ('Lower Reported Uncertainty Is Not Always Evidence of Better Knowledge'); Ten Numbered Architectural Principles; Verdict 'STEP 33 — PASS'; a Five-Step Progression Recap (Steps 29-33); Opens Step 34 (Information Acquisition and Value of Information) — FINALLY the Landing Point for the Resource-Allocation/Next-Best-Information Topic Originally Deferred at 0609, 0610, and 0611"
+date: "2026-08-28"
+bytes: 26265
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 33 -- Uncertainty Propagation, Dependence, Correlation, Error Propagation and Epistemic Risk', opened cleanly at 0612's close with no renumbering collision, directly closing one of 0611's three explicitly flagged open formalization items"
+source_role: PRIMARY_RESEARCH
+canonical_source: 613
+importance: critical
+confidence: high
+about: >
+  Opens Step 33 directly executing 0612's close, delivering the file's central rejection: the naive
+  multiplicative shortcut `Confidence_{total}=Confidence_1×Confidence_2×Confidence_3` is "generally
+  wrong," with the correct propagation depending on what the uncertainty represents and the dependencies
+  between quantities. Delivers a foundational seven-type uncertainty taxonomy (Measurement, Sampling,
+  Parameter, Model, Prediction, Epistemic, Aleatory), and the file's central formal separation, explicitly
+  called "foundational": **`Randomness≠LackOfKnowledge`** -- Aleatory variability (inherent process
+  variation) formally distinguished from Epistemic uncertainty (incomplete knowledge), worked through a
+  concrete traffic-variability-vs.-unknown-traffic-distribution example.
+
+  **Delivers the file's central formal deliverable -- rigorous error propagation via the Jacobian**:
+  `Var(Y)≈JΣJ^T` for `Y=f(X_1,...,X_n)`, explicitly identified as immediately exposing why naive
+  independent multiplication of confidence values is inadequate. Delivers the covariance identity
+  `Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y)`, formalizing **`Dependence matters`**. Delivers the corpus's evidence-
+  duplication problem grounded in explicit covariance terms (`E_1=f(S)`, `E_2=g(S)` sharing source `S`
+  implies `E_1⊥̸E_2`), and **the file's central architectural result**: **`Provenance→DependenceStructure→
+  CorrectUncertaintyPropagation`**, explicitly named "a major result" -- provenance is not merely for audit
+  but mathematically necessary for correct uncertainty combination.
+
+  Delivers Bayesian updating explicitly typed and non-universal (requiring a valid probabilistic model,
+  never the default inference engine), and Frequentist uncertainty preserved as a genuinely distinct
+  framework, directly reconfirming 0606's `ConfidenceInterval≠CredibleInterval` separation. Delivers
+  Interval uncertainty and Set-valued uncertainty as legitimate non-probabilistic representations
+  (`Bounded≠ProbabilisticallySpecified`), and a formal `PartiallyIdentified` status
+  (`θ∈Θ_I`), explicitly "stronger than simply saying 'uncertain.'" Delivers a worked deterministic-
+  interval-propagation example (`10≤X≤20, Y=2X⇒20≤Y≤40`) and a formal Dependency graph/correlation matrix
+  treatment, worked through a concrete common-calibration-error example (`Cov(X_1,X_2)>0`).
+
+  Delivers Model uncertainty formally distinguished from Parameter uncertainty, with Model averaging
+  explicitly requiring a genuine probabilistic model over models (never automatic), and Structural
+  uncertainty (whether a relationship exists at all) formally distinguished from parameter uncertainty.
+  Delivers Causal uncertainty reconfirming `Association≠Causation` ("prevents another major AI reasoning
+  error") and formal `CausalIdentifiability` for competing causal-graph structures.
+
+  **Delivers a rigorous worked counterexample demonstrating naive interval propagation through nonlinear
+  functions is genuinely wrong**: for `Y=X²`, `X∈[-2,3]`, naive endpoint transformation
+  (`[(-2)²,3²]=[4,9]`) is INCORRECT -- the true range is `[0,9]` (since `X=0` is achievable within the
+  interval) -- demonstrating mathematical transformations must respect the actual structure of the
+  uncertainty, not merely its boundary values. Delivers formal Monte Carlo propagation as computationally
+  feasible for well-specified probabilistic models, paired with **the file's key epistemic caution,
+  explicitly elevated to a new principle**: **`Computational precision≠Epistemic precision`** -- Monte
+  Carlo sampling from an unjustified distribution produces precise-looking results that remain
+  fundamentally unjustified; simulation cannot manufacture missing information.
+
+  **Delivers the file's second central formal deliverable -- "Confidence Inflation" explicitly named and
+  formally blocked**: a worked cascading-confidence-increase example (`0.8→0.9→0.95` across
+  evidence/inference/decision stages with no corresponding new justification), formalizing the Anti-
+  inflation rule: **`CertaintyIncrease requires Evidence or ValidInference`** -- LLM reasoning alone can
+  never justify a certainty increase. Delivers a formal five-value `UncertaintyType` enum
+  (`U_{prob},U_{interval},U_{set},U_{qualitative},U_{unknown}`), with Illegal uncertainty conversion
+  explicitly forbidden (`Interval↛Probability` without an explicit modeling assumption), reconfirmed as
+  "epistemic type safety again," directly connecting to 0612's type-safety machinery.
+
+  Delivers Assumption formalized as a first-class object with its own dependency-graph node, and formal
+  Sensitivity analysis (local, via partial derivatives, and global, via variance decomposition),
+  identifying which assumptions dominate a conclusion's fragility and thereby prioritizing validation
+  targets. Delivers formal `EpistemicRisk` (`Risk(D)=E[Loss(D,Y)]`, extended to include model uncertainty
+  itself), with `Risk≠Uncertainty` (`Risk=f(Uncertainty,Consequences)`), worked through a concrete same-
+  probability-different-risk example (a 1% failure probability being negligible for a harmless experiment
+  but unacceptable for a catastrophic system).
+
+  Delivers a formal decision-theoretic loss/expected-loss framework and Robust decision-making (worst-case
+  optimization over a set of plausible distributions `𝒫` when no single probability model is sufficiently
+  justified). Delivers the reconfirmed principle that partial knowledge can support action --
+  **`DecisionQuality depends on required epistemic resolution`**, not perfect knowledge -- and
+  `RequiredEvidence=f(DecisionCriticality)`, explicitly connecting DDD (criticality), statistics
+  (uncertainty), and governance (required assurance) as three cooperating, non-overlapping ownership
+  domains. Delivers an explicitly domain-specific `UncertaintyBudget` (`U(D)≤U_{max}(Context,Decision)`,
+  never a universal threshold).
+
+  **Delivers the file's most subtle and important single epistemic-honesty result, worked through a
+  careful example**: additional evidence can legitimately INCREASE reported uncertainty when it reveals a
+  previously-unknown source of variation or model oversimplification, explicitly NOT classified as worse
+  knowledge -- formalized as **`Lower reported uncertainty is not always evidence of better knowledge`**,
+  with the explicit design preference **`AccurateUncertainty over ArtificialCertainty`**. Delivers
+  `EvidenceQuality≠ZeroUncertainty`, reconfirming that irreducible aleatory variance can persist even under
+  perfect measurement.
+
+  **Delivers ten labeled falsification experiments (A-J), ALL PASS**: same-source evidence naively treated
+  as independent (`DependenceDetected`/`IndependenceUnknown` expected); an interval silently converted to a
+  uniform distribution (`InvalidConversion`); an unknown distribution fed to Monte Carlo
+  (`NoSimulation` unless explicitly specified); correlated inputs treated as independent
+  (`DependenceWarning`); an unsupported LLM confidence jump (`UnsupportedCertaintyIncrease`); new evidence
+  legitimately increasing reported uncertainty (correctly not auto-classified as worse); a low-probability
+  but catastrophic-consequence decision correctly flagged as potentially unacceptable; disagreeing models
+  correctly mapped to decision sensitivity; an invalidated assumption correctly triggering
+  `Closure(A_1)` impact analysis; a genuinely exact deterministic transformation correctly yielding zero
+  output uncertainty only when both the function and its inputs are truly exact.
+
+  **Delivers Step 33's verdict**: **"STEP 33 — PASS,"** with **ten formally numbered architectural
+  principles**: (1) Uncertainty is typed; (2) Dependence is first-class (evidence independence must never
+  be assumed merely from separate record identity); (3) Precision is not knowledge
+  (`ComputationalPrecision≠EpistemicPrecision`); (4) Certainty cannot be manufactured (requires evidence,
+  valid inference, or explicit model assumption); (5) Unknown distributions remain unknown
+  (`UnknownDistribution≠UniformDistribution`); (6) Model uncertainty is real uncertainty
+  (`ParameterUncertainty≠ModelUncertainty`); (7) Risk is consequence-weighted uncertainty; (8) Evidence
+  can reduce OR reveal uncertainty (`KnowledgeImprovement≠AlwaysLowerUncertainty`); (9) Uncertainty must
+  propagate through dependencies with no universal multiplication rule; (10) Critical decisions require
+  explicit epistemic thresholds, with exceeded thresholds barring automatic execution.
+
+  Delivers the corpus's most complete uncertainty-annotated architecture diagram to date, a four-component
+  schematic uncertainty decomposition (`U_D=U_{measurement}+U_{sampling}+U_{model}+U_{state}`, explicitly
+  not always additive but conceptually powerful), and a formal "KnowledgeOS epistemic contract":
+  transformations must preserve uncertainty semantics, source, dependencies, and type -- they may change
+  the uncertainty, but never silently.
+
+  **Delivers a self-reflective five-step progression recap**, explicitly framed as "a coherent progression
+  rather than a collection of disconnected ideas": Step 29 (Consistency) → Step 30 (External Validation) →
+  Step 31 (Formalization) → Step 32 (Epistemic Algebra) → Step 33 (Uncertainty Propagation).
+
+  **Closes cleanly, with no renumbering collision, directly resolving the long-tracked question of where
+  the resource-allocation/Next-Best-Information topic would finally land**: originally proposed as "Step
+  31" at 0609, deferred to a future "Step 32" at 0610, then bypassed a second time at 0611 in favor of a
+  differently-numbered Epistemic Algebra step -- it now finally appears as **"Step 34 — Information
+  Acquisition and Value of Information,"** targeting the formula
+  `VOI(I)=ExpectedLoss_{without I}-ExpectedLoss_{with I}-Cost(I)`, explicitly emphasizing "information has
+  value only insofar as it can change or improve a decision." No actual code execution reported.
+introduces:
+  - concept: "Aleatory≠Epistemic uncertainty, formalized as Randomness≠LackOfKnowledge, explicitly called foundational"
+  - concept: "Rigorous error propagation via the Jacobian (Var(Y)≈JΣJ^T), explicitly identified as the mathematical reason naive confidence multiplication is inadequate"
+  - concept: "A worked nonlinear-transformation counterexample (Y=X² over [-2,3]) proving naive endpoint interval propagation gives the wrong answer ([4,9] instead of the correct [0,9])"
+  - concept: "'Confidence Inflation' explicitly named and formally blocked by the Anti-inflation rule: CertaintyIncrease requires Evidence or ValidInference, never LLM reasoning alone"
+  - concept: "Computational precision≠Epistemic precision, elevated to a new principle preventing Monte Carlo simulation from manufacturing missing information"
+  - concept: "The subtle, important epistemic-honesty finding that new evidence can legitimately increase reported uncertainty, formalized as 'lower reported uncertainty is not always evidence of better knowledge'"
+  - concept: "Ten formally numbered architectural principles synthesizing the entire uncertainty-propagation treatment"
+  - concept: "The explicit five-step progression recap (Steps 29-33) framing the corpus's recent trajectory as a coherent, self-aware mathematical sequence rather than disconnected topics"
+  - concept: "'Step 34 — Information Acquisition and Value of Information', the final landing point for the resource-allocation/Next-Best-Information topic first proposed at 0609 and twice deferred/renumbered since"
+defines:
+  - concept: "Error propagation via the Jacobian"
+    definition: "For Y=f(X_1,...,X_n), Var(Y)≈JΣJ^T where J is the Jacobian of partial derivatives and Σ is the covariance matrix of the inputs — explaining precisely why independent multiplication of scalar confidence values fails whenever the underlying inputs are correlated or the function is nonlinear"
+  - concept: "Confidence Inflation"
+    definition: "The dangerous pattern where a chain of AI-driven transformations (evidence→inference→decision) produces a final confidence figure exceeding what the underlying evidence and valid inference actually warrant, without any legitimate new justification at each step"
+  - concept: "Lower reported uncertainty is not always evidence of better knowledge"
+    definition: "New evidence can legitimately reveal a previously-unmodeled source of variation, correctly increasing the reported uncertainty; this increase reflects better-calibrated knowledge, not degraded epistemic quality, and must not be treated as a regression"
+  - concept: "KnowledgeOS epistemic contract"
+    definition: "For any transformation f:X→Y, UncertaintySemantics(Y)=Transform(UncertaintySemantics(X),Assumptions(f),Model(f)) — the uncertainty representation may legitimately change across a transformation, but it must never change silently or without an explicit, traceable rationale"
+refines:
+  - concept: "0611's third and final explicitly flagged open formalization item (formal uncertainty propagation)"
+    refinement: "Directly and substantively closed via rigorous error-propagation mathematics (the Jacobian formalism, the nonlinear-transformation counterexample, and the ten numbered architectural principles), completing the resolution of all three items 0611 had left open (the other two — complete paraconsistent inference semantics and computational complexity — remain untouched here)"
+  - concept: "0606's ConfidenceInterval≠CredibleInterval frequentist/Bayesian preservation"
+    refinement: "Directly reconfirmed and extended: Bayesian updating and frequentist uncertainty are both preserved as distinct, non-interchangeable frameworks, each requiring its own explicit provenance and assumptions rather than being silently conflated"
+  - concept: "0609's/0610's/0611's twice-deferred and twice-renumbered resource-allocation/Next-Best-Information topic"
+    refinement: "Finally and cleanly lands as 'Step 34 — Information Acquisition and Value of Information', resolving a bridge candidate this reconstruction has tracked since 0610"
+  - concept: "0612's epistemic type-safety machinery (SemanticTypeCompatibility, UnsafeCast forbidden)"
+    refinement: "Directly extended into the uncertainty layer specifically: an interval-to-probability conversion without an explicit distributional assumption is reconfirmed as 'epistemic type safety again', the same discipline applied to a new dimension"
+  - concept: "0578's/0592's/0599's/0602's/0606's recurring evidence-independence discipline"
+    refinement: "Given a rigorous statistical grounding via explicit covariance terms (Cov(X_1,X_2)>0 for shared calibration error), formalizing the corpus's long-standing qualitative independence caution as a genuine quantitative propagation problem"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 34 — Information Acquisition and Value of Information' is executed as its own file cleanly, and whether it succeeds in deriving a principled NextBestEpistemicAction using the VOI(I)=ExpectedLoss_without_I-ExpectedLoss_with_I-Cost(I) formula, finally delivering the resource-allocation/prioritization capability first proposed at 0609."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Aleatory≠Epistemic uncertainty (Randomness≠LackOfKnowledge), the Jacobian-based error propagation formalism explaining why confidence multiplication fails, the worked nonlinear-transformation counterexample (Y=X² over [-2,3]), and 'Confidence Inflation' with its Anti-inflation rule."
+  - "dimension-registry.md: record Computational precision≠Epistemic precision, PartiallyIdentified as a formal status stronger than 'uncertain', the illegal Interval→Probability conversion (epistemic type safety extended to uncertainty), and the subtle epistemic-honesty finding that new evidence can legitimately increase reported uncertainty."
+  - "dimension-registry.md: record the ten numbered architectural principles, the five-step progression recap (Steps 29-33), the ten-test falsification suite (ALL PASS), verdict 'STEP 33 — PASS,' the KnowledgeOS epistemic contract, and Step 34's opening — the final landing point for the resource-allocation/Next-Best-Information topic tracked since 0609/0610/0611."
+anchor_test:
+  anchor: "0612's clean opening of Step 33, directly closing one of 0611's three explicitly flagged open formalization items; 0606's ConfidenceInterval≠CredibleInterval preservation; 0609's/0610's/0611's twice-deferred resource-allocation topic; 0612's epistemic type-safety machinery; the recurring evidence-independence discipline across the corpus"
+  supports_dimension: "Delivers a rigorous, statistically well-grounded resolution of one of the corpus's three explicitly flagged open formalization items (formal uncertainty propagation), with genuine mathematical substance — the Jacobian-based error-propagation formalism precisely explains why naive confidence multiplication fails, and the worked nonlinear-transformation counterexample (Y=X² over an interval spanning zero) is a concrete, checkable demonstration that naive endpoint propagation genuinely produces the wrong answer, not merely an imprecise one. Delivers a named, formally blocked failure mode ('Confidence Inflation') directly relevant to a common and dangerous AI-system behavior. Delivers a subtle, important epistemic-honesty result — that new evidence can legitimately increase reported uncertainty and this should not be misread as a regression — extending the corpus's established honesty discipline into a genuinely counterintuitive but statistically correct direction. Cleanly resolves the long-tracked question of where the twice-deferred resource-allocation/Next-Best-Information topic (originally proposed at 0609) would finally land, opening Step 34 with no further renumbering collision, suggesting the corpus's numbering has genuinely stabilized after the two earlier renumbering events"
+  refines_or_contradicts: "directly and substantively closes one of 0611's three explicitly flagged open formalization items (formal uncertainty propagation); reconfirms and extends 0606's frequentist/Bayesian preservation discipline; finally resolves the twice-deferred resource-allocation topic tracked since 0609/0610/0611 by opening Step 34 cleanly; extends 0612's epistemic type-safety machinery into the uncertainty-conversion layer specifically; gives the corpus's recurring evidence-independence discipline a rigorous quantitative (covariance-based) grounding; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked nonlinear-transformation counterexample (Y=X² for X∈[-2,3], where naive endpoint transformation gives the incorrect range [4,9] instead of the correct [0,9] because X=0 lies within the interval) is directly checkable, concrete mathematical evidence — not merely an assertion — that interval-uncertainty propagation through nonlinear functions requires genuine mathematical care rather than a shortcut, directly supporting the file's broader claim that uncertainty propagation cannot be handled by naive formulas."
+  - "The explicit finding that new evidence revealing a previously-unmodeled source of variation can legitimately increase reported uncertainty, formalized as 'lower reported uncertainty is not always evidence of better knowledge,' is directly checkable, subtle evidence of genuine statistical sophistication — a counterintuitive but well-established principle in calibrated forecasting that most naive AI confidence-reporting systems would incorrectly treat as a degradation."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 34 — Information Acquisition and Value of Information' is executed as its own dedicated corpus file, and whether it succeeds in delivering the resource-allocation/Next-Best-Information capability first proposed at 0609 and twice deferred since"
+tier2_triggered: true
+tier2_reason: "Delivers a rigorous, statistically well-grounded resolution of one of the corpus's three explicitly flagged open formalization items (formal uncertainty propagation), with genuine mathematical substance including a Jacobian-based error-propagation formalism and a concrete, checkable counterexample demonstrating naive interval propagation through nonlinear functions is genuinely wrong, not merely imprecise. Delivers a named, formally blocked AI-system failure mode ('Confidence Inflation') and a subtle, statistically sophisticated epistemic-honesty result — new evidence can legitimately increase reported uncertainty without this representing a regression — extending the corpus's established honesty discipline in a genuinely counterintuitive but correct direction. Cleanly and finally resolves the long-tracked question of where the resource-allocation/Next-Best-Information topic (originally proposed at 0609, twice deferred/renumbered since) would land, opening Step 34 with no further renumbering collision, suggesting the corpus's step-numbering has genuinely stabilized."

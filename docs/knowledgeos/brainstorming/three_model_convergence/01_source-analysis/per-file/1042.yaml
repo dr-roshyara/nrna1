@@ -1,0 +1,97 @@
+sequence: 1042
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-288/02-IDENTITY-REGISTER.md
+title: "02 -- Identity Register (Step 288 SS5): The Definitive Eleven-Kind Identity Matrix, Formally Verdicting id=H(P,e,c,t,Pi) as 'A Hash-Based Implementation Suggestion That Is Internally Inconsistent -- Not a Definition,' and Delivering the New Operational-Identity Criterion (Correct but Inapplicable, Since It Quantifies Over the Still-Unenumerated Operation Space)"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the second numbered Step-288 artifact, delivering the definitive identity-focused register, investigated independently of equality per the mandate"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1042
+importance: critical
+confidence: high
+about: >
+  "02 — Identity Register (mandate §5 · identity investigated INDEPENDENTLY of equality)."
+
+  **§5.1 delivers the definitive eleven-identity-kind x twelve-question matrix** (Entity, Assertion, State
+  `K_t`, History, Event, Operation, Authority-act, Policy, Provenance, Record, Knowledge-artifact `KAID`),
+  the most comprehensive identity analysis in this reconstruction's entire tracking. **Score: only 2 of 11
+  are established** (Assertion -- with the already-tracked live mutable-state contradiction; Provenance), **5
+  of 11 are wholly absent** (State, Event, Operation, Authority-act, Policy).
+
+  **§5.2 delivers two orthogonal identity axes**: by LEVEL (`EntityID≠KAID≠RecordID`) and by KIND (the eleven
+  rows), with `25S.43`'s clarification that `KAID↔EntityID` is itself "an explicit, versioned semantic
+  relationship -- not an equality, a relation requiring its own semantics."
+
+  **§5.3 DELIVERS THE MANDATE'S DEFINITIVE FORMAL VERDICT ON `id=H(P,e,c,t,Π)`**: "Which is it: an
+  established state identity definition, a candidate construction, a hash-based implementation suggestion, or
+  something else?" -- Boxed answer: **"A hash-based IMPLEMENTATION SUGGESTION that is internally inconsistent
+  -- NOT A DEFINITION."** Delivers the evidence in explicit strength order: (1) EXECUTED (file 1039's own
+  demonstration, cross-referenced as "06§H"): withdrawal changes the id, dangling `ℛ`-edges violate
+  `StructuralValid`'s own no-dangling clause; (2) EXECUTED (file 1039, "06§H"): canonicalization-dependence
+  (key-order flips the hash); (3) CORPUS, ruling against this construction BEFORE it existed -- introduces two
+  NEW corpus loci, **"258.2"** (boxed "Identity persistence ≠ value equality -- exactly what Revision
+  requires") and **"258.18"** (the `(id=1,Proposed)` vs `(id=1,Accepted)` example, boxed "Identity alone
+  cannot define Knowledge-State semantics"). Classification: **"CORPUS PRINCIPLE vs LATER CONSTRUCTION
+  CONFLICT -- a governance matter, not an engineering fix,"** with the candidate repair (projecting mutable
+  `state` out of `id`) explicitly "not adopted, not recommended as architecture."
+
+  **§5.4 confirms `I_48`'s context-scoping as "the one place the equality/identity problem admits a real
+  narrowing,"** already tracked (file 1038), while reiterating the unbound-parameter caveat.
+
+  **§5.5 delivers the complete identity-orthogonality summary**: identity⊥lineage (`195.24`), identity⊥
+  provenance (`261.9`, cross-referencing file 1041's new locus), `SameState⇏SameEntity`,
+  `SemanticEquivalent⇏SameEntity`, `Similarity≠Identity`, `Reference≠Entity`.
+
+  **§5.6 DELIVERS A GENUINELY NEW CRITERION FOR "WHEN DOES IDENTITY MATTER?"**: a formal operational-relevance
+  test, `OperationalIdentity(x)⟺∃T∈𝒯: changing id(x) can change T(K,c)` (`258.20`), generalized to any
+  property `p` via `Relevant(p)` (`258.21`) -- but explicitly caveated: **"Both quantify over `𝒯`, which is
+  unenumerated. The criterion is correct and inapplicable"** -- a precise instance of the already-tracked
+  pattern (files 1008, 1035, 1038) where a genuinely well-posed formal criterion is rendered unusable by the
+  still-unenumerated operation/transformation space.
+
+  **§5.7 delivers `38.76`'s boxed principle "Identity is itself knowledge,"** requiring its own status
+  machinery (`IdentityStatus∈{Unknown,Candidate,Probable,Confirmed,Rejected,Contextual}`), reiterating the
+  already-tracked `Closure(Identity)`/`AffectedKnowledge(x)` gap and the `G_I`-separate-graph structural
+  tension with the kernel's reduced `ℛ`.
+introduces:
+  - concept: "The definitive eleven-identity-kind x twelve-question matrix, the most comprehensive identity analysis in this reconstruction's tracking, scoring only 2 of 11 kinds as established"
+  - concept: "The definitive formal verdict that id=H(P,e,c,t,Pi) is not a definition but an internally inconsistent implementation suggestion, with two new corpus loci (258.2, 258.18) ruling against it before it existed"
+  - concept: "The new OperationalIdentity criterion (258.20-21): identity matters exactly when some mandatory transition distinguishes states differing only in identity, correct in form but inapplicable pending operation-space enumeration"
+defines:
+  - term: "OperationalIdentity(x)"
+    definition: "A criterion for when identity matters: there exists a transition T in the (still unenumerated) transition set such that changing x's identity can change the outcome of T -- correct in form, currently inapplicable"
+refines:
+  - concept: "This reconstruction's already-tracked id/mutable-e.state contradiction (files 1006, 1037, 1039)"
+    refinement: "FORMALIZED into the mandate's definitive verdict ('not a definition, an inconsistent implementation suggestion'), with two further corpus loci (258.2, 258.18) grounding the corpus's own prior objection"
+  - concept: "This reconstruction's already-tracked five-notion identity matrix (files 1006, 1035)"
+    refinement: "SUPERSEDED by the far more comprehensive eleven-kind x twelve-question matrix, scoring only 2 of 11 as established"
+contradicts: []
+repeats:
+  - "Substantially consolidates and completes already-tracked identity findings (files 1006, 1035, 1037-1038, 1041); this file's distinctive contributions are the eleven-kind comprehensive matrix, the definitive id-formula verdict, and the new OperationalIdentity criterion."
+bridge_candidates:
+  - "'258.2', '258.17-21' -- new corpus loci for identity-persistence and operational-relevance criteria; not yet directly encountered."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the definitive eleven-kind identity matrix and the formal verdict that id=H(P,e,c,t,Pi) is not a definition, grounded in corpus loci 258.2 and 258.18."
+  - "dimension-registry.md: record the new OperationalIdentity criterion (258.20-21) as a correct-but-inapplicable formal test for identity relevance, pending operation-space enumeration."
+anchor_test:
+  anchor: "This reconstruction's already-tracked id/mutable-state contradiction and five-notion identity matrix (files 1006, 1035, 1037-1038)"
+  supports_dimension: "Delivers the definitive, comprehensive completion of these findings via the eleven-kind matrix and the formal id-formula verdict"
+  refines_or_contradicts: "confirms and completes prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The eleven-kind matrix and the id-formula verdict are directly checkable against files 1006, 1035, 1037-1039's own already-documented findings for consistency."
+undefined_concepts: []
+open_questions:
+  - "The full content of corpus loci 258.2 and 258.17-21, not yet directly encountered."
+tier2_triggered: true
+tier2_reason: "Delivers the definitive, comprehensive eleven-kind identity matrix and the mandate's formal verdict that id=H(P,e,c,t,Pi) is not a definition but an internally inconsistent implementation suggestion, grounded in two new corpus loci, plus a genuinely new OperationalIdentity criterion. Classified importance critical and confidence high given its role as the canonical, comprehensive identity-register document for the entire equality/identity research programme."

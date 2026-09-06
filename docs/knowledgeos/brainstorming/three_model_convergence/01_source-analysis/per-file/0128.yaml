@@ -1,0 +1,84 @@
+sequence: "0128"
+path: docs/knowledgeos/brainstorming/20260822-122927-logic-in-classical-indian-philosophy-sep-source.md
+title: "Stanford Encyclopedia of Philosophy -- 'Logic in Classical Indian Philosophy' (raw primary source, 856 lines)"
+date: "2026-08-22"
+bytes: 47000
+model:
+  primary: g
+  secondary: []
+source_role: FOUNDATIONAL
+canonical_source: null
+importance: medium
+confidence: high
+about: >
+  The actual SEP scholarly article (Gillon, first published 2011, rev. 2023-08-23) underlying several
+  earlier derivative files' Nyāya/tri-rūpa-hetu/hetvābhāsa citations (0092, 0096, 0100, 0127). Covers
+  preclassical Buddhist debate/reasoning texts (Yamaka, Kathā-vatthu, Milinda-pañha), the classical-period
+  emergence of the canonical syllogism (Caraka-saṃhitā through Vasubandhu), fallacy/rejoinder taxonomies,
+  and Dignāga's culminating formalization (svārtha-/parārtha-anumāna, hetu-cakra "wheel of reasons" 3x3
+  matrix, tri-rūpa-hetu, Dharmakīrti's pervasion-grounding problem). Zero KnowledgeOS/kernel framing --
+  a pure academic reference text, not a derivative extraction.
+
+introduces:
+  - "Direct textual grounding, for the first time in the corpus, of the primary scholarly source behind
+    the Nyāya/hetvābhāsa/tri-rūpa-hetu thread that multiple prior files (0092/0096/0100/0127) summarized
+    or cited secondhand"
+  - "Dignāga's hetu-cakra (wheel of reasons): a 3x3 matrix classifying a reason's occurrence in
+    subject-like/subject-unlike things into good vs. bad syllogisms -- a more precise formal structure
+    than any prior derivative summary captured"
+  - "The scholarly debate on whether Dignāga's canonical syllogism is inductive, deductive, or
+    defeasible (Hayes vs. Oetke vs. the article's own deductive-validity reading) -- not previously
+    surfaced in derivative files"
+  - "Dharmakīrti's unresolved problem of how a universal major premise is known at all (causation/
+    identity relations proposed, both noted as ultimately unsuccessful) -- a genuine open epistemological
+    gap in the classical source tradition itself, not previously surfaced"
+
+defines: []
+
+refines:
+  - "Confirms and deepens (does not contradict) the corpus's existing 'Fallacy Detection', 'Reasoning
+    Provenance', and 'Vyāpti/Rule Preservation' registry entries with their actual primary-source basis"
+
+contradicts: []
+
+repeats:
+  - {concept: "tri-rūpa-hetu (three forms of reason), hetvābhāsa (specious reasons), pramāṇa", canonical_source: "0092", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+registry_updates:
+  - "No new kernel/dimension entries -- pure primary-source reference text with no KnowledgeOS framing
+    of its own; strengthens evidentiary grounding of already-registered dimensions only"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; supplies scholarly grounding, not a KnowledgeOS claim."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "This is the actual primary academic source (SEP article) that has been cited/summarized at one
+    remove by several earlier corpus files -- its appearance in full lets the research verify the
+    fidelity of those derivative summaries against the original scholarly text"
+  - "The hetu-cakra 3x3 matrix and the Dignāga induction/deduction/defeasibility scholarly debate are
+    genuinely new content not previously present in any derivative file read so far"
+
+undefined_concepts: []
+open_questions:
+  - "Whether any later derivative file's characterization of tri-rūpa-hetu or hetvābhāsa should be
+    checked against this primary text for fidelity (epistemic, not corpus-integrity, question)"
+
+tier2_triggered: true
+tier2_reason: >
+  The corpus's underlying primary academic source, previously only cited secondhand, appears here in
+  full for the first time -- a provenance-grounding event worth flagging even though it introduces no
+  new KnowledgeOS content itself.

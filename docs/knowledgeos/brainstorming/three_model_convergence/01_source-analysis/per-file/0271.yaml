@@ -1,0 +1,67 @@
+sequence: 271
+path: docs/knowledgeos/brainstorming/kernel/20260825-113938-ontological-reduction-and-non-redundancy-model-research-direction.md
+title: "Ontological Reduction and Non-Redundancy Model: Research Direction"
+date: "2026-08-25"
+bytes: 13500
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 271
+importance: critical
+confidence: high
+about: >
+  Direct, single-threaded continuation of 0270's Non-Redundant Work Principle: explicitly notes Merricks'
+  own criterion is qualitative, not quantitative, and formalizes a seven-dimension quantitative Kernel-
+  primitivehood model (Identity Necessity, Non-Redundant Work, Reconstruction Loss, Temporal Irreducibility,
+  Provenance Irreducibility, Governance/Transaction Necessity, Projection Equivalence/deterministic
+  derivability), a three-class classification (Fundamental/Derived/Projection), a 20-candidate test list,
+  and a three-experiment elimination protocol (structural/behavioral/governance) to empirically resolve
+  whether Assertion is a genuine Kernel primitive or a deterministic projection of Agent+Proposition+
+  Context+Event+Provenance. Explicitly frames the contribution as 'a falsifiable method for discovering
+  the model', not yet the model itself, and proposes a five-phase research sequence to execute it.
+introduces:
+  - concept: "Explicit critique that Merricks' Non-Redundant Work Principle (0270) is qualitative -- Merricks gives no numerical metric for 'non-redundant causal power' -- motivating a quantification research direction named 'KnowledgeOS Ontological Reduction & Non-Redundancy Model'"
+  - concept: "Ontological-analysis pipeline: Candidate Concept -> Ontological Analysis [Identity need, Non-redundancy, Reconstruction] -> Quantified Score -> classification into Kernel / Derived / Projection"
+  - concept: "Seven quantitative dimensions defined for any candidate concept X: Identity Necessity I(X) [0-5 scale, no-independent-identity to impossible-to-reconstruct-without-identity]; Non-Redundant Work N(X) [the Merricks-inspired 'most important metric' -- what operation becomes impossible/materially-ambiguous if X disappears]; Reconstruction Loss R(X) [proportion of required capabilities lost after removing X, worked illustrative estimates: Topic=100%, Summary=100%, CurrentKnowledgeState=95%, Assertion=maybe 40-70%, Proposition=maybe 30-60%, Evidence=potentially very high, explicitly flagged as unknown/to-be-experimentally-determined]; Temporal Irreducibility T(X) [can temporal history be reconstructed without X]; Provenance Irreducibility P(X) [can provenance be reconstructed without X]; Governance/Transaction Necessity G(X) [the dimension explicitly identified as MISSING from Merricks but essential to KnowledgeOS -- must X be independently governed/versioned/challenged/authorized/preserved/committed]; Projection Equivalence / deterministic derivability D(X) [can X = f(A,B,C,D) for a deterministic, lossless f; if so X is likely derived, not fundamental]"
+  - concept: "First quantitative Kernel-candidacy model: K(X) = w_I*I(X) + w_N*N(X) + w_R*R(X) + w_T*T(X) + w_P*P(X) + w_G*G(X), with explicit refusal to assign weights yet ('choosing weights too early would be a mistake' -- evidence must be collected first); refined with D(X): K(X) is proportional to 1-D(X)"
+  - concept: "Three-class candidacy classification scheme: Class 1 Fundamental (high N, high R, high T/P/G, low D -- candidate: Assertion); Class 2 Derived domain object (moderate N, moderate R, high D -- candidate: Knowledge State); Class 3 Projection (low N, low R, very high D -- candidates: Topic, Summary, Dashboard, Answer, Current View, Knowledge Graph View)"
+  - concept: "20-candidate test list for the experiment (Assertion, Proposition, Evidence, Observation, Source, Agent, Context, Assessment, Challenge, Supersession, Knowledge State, Topic, Summary, Answer, Question, Document, Provenance, Authority, Temporal Scope, Knowledge Graph)"
+  - concept: "Three-experiment elimination protocol per candidate: Experiment A Structural elimination (remove X from the data model, can we reconstruct the same information?); Experiment B Behavioral elimination (remove X from the domain model, can we still create/modify/challenge/assess/supersede/reconstruct/audit?); Experiment C Governance elimination (remove X from the governance model, can we still determine who/what/when/why/under-which-authority/with-which-evidence?); combined Loss(X) = L_s + L_b + L_g -- explicitly framed as 'much more concrete than philosophical argument'"
+  - concept: "Concrete application of the protocol to the corpus's central open question (is Assertion fundamental?): an eight-item elimination checklist (provenance/temporal-history/challenge/supersession/assessment/replay/deterministic-reconstruction/governance survival after removing Assertion) -- if all fail to survive, strong evidence Assertion IS a Kernel primitive; if instead Assertion proves to be a deterministic projection of Agent+Proposition+Context+Event+Provenance with all behavior intact, Assertion is probably NOT fundamental -- either outcome explicitly framed as 'a major architectural discovery'"
+  - concept: "Explicit scope discipline: will NOT research further general ontology (enough philosophy already gathered to formulate the hypothesis); will NOT freeze Assertion Aggregate / Knowledge Aggregate / Knowledge State / Knowledge Graph, since these are exactly the concepts that must be subjected to the reduction test"
+  - concept: "Five-phase research sequence: Phase 1 (Merricks -> Non-Redundant Work Principle -> candidate metric), Phase 2 (KnowledgeOS candidates -> elimination experiments -> reconstruction loss), Phase 3 (Quantification: I/N/R/T/P/G/D), Phase 4 (Cluster candidates -> Kernel/Derived/Projection), Phase 5 (Architecture consequence -> rebuild the Kernel only from surviving primitives)"
+  - concept: "Explicit self-assessment of the contribution's status: 'we have not yet found the concrete model, but we have found a falsifiable method for discovering the model' -- a template results table (Concept x I/N/R/T/P/G/D x Classification, all cells currently '?') proposed as the target artifact of the next research phase, described as potentially 'the first genuinely quantifiable KnowledgeOS ontology model'"
+defines: []
+refines:
+  - concept: "0270's Non-Redundant Work Principle"
+    refinement: "Formalizes the qualitative criterion into seven measurable dimensions and an explicit (currently unweighted) scoring model K(X), directly addressing the gap 0270 itself flagged (Merricks gives no numerical metric)"
+  - concept: "0268/0269's central open question (is Assertion the universal identity-bearing Kernel center?)"
+    refinement: "Converts the question from a philosophical/intuitive judgment into a concrete, falsifiable three-experiment elimination protocol with an explicit eight-item checklist applied directly to Assertion"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: note this file as the quantification companion to 0270's Non-Redundant Work Principle -- deepens candidate 5's internal investigation (0268/0269/0270) with a concrete, falsifiable measurement protocol; still no resolution of whether Assertion is fundamental, and still no new Kernel-structure candidate."
+anchor_test:
+  anchor: "0270's Non-Redundant Work Principle; 0268/0269's Assertion-as-Kernel-primitive open question"
+  supports_dimension: "Mathematical/statistical model directly quantifying an Engineering-KnowledgeOS architectural question: a seven-dimension scoring model and a three-experiment elimination protocol to empirically resolve Kernel-primitive status"
+  refines_or_contradicts: "refines/quantifies 0270's principle; converts the open Assertion question into a testable protocol; no contradiction"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "The weights w_I, w_N, w_R, w_T, w_P, w_G in K(X) are explicitly left unassigned, and no formal method for assigning them is proposed"
+  - "No concrete numeric values are actually computed for any candidate in this file -- the illustrative Reconstruction Loss percentages are explicitly flagged as estimates 'not known yet'"
+open_questions:
+  - "Whether the proposed 20-candidate elimination experiment (structural/behavioral/governance) is ever actually executed in a later file, producing real I/N/R/T/P/G/D values"
+  - "Whether the resulting classification ever resolves the Assertion-fundamentality question one way or the other"
+tier2_triggered: true
+tier2_reason: "Formalizes 0270's qualitative Non-Redundant Work Principle into the corpus's first genuinely quantitative Kernel-primitivehood model: seven measurable dimensions, an explicit (unweighted) scoring function, a three-class classification scheme, a 20-candidate test list, and a concrete three-experiment elimination protocol applied directly to the corpus's central open question (is Assertion fundamental?) -- explicitly self-described as a falsifiable discovery METHOD rather than a resolved model."

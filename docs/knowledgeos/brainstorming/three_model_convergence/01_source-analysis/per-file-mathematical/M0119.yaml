@@ -1,0 +1,151 @@
+sequence: M0119
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-160601_priest-non-classical-logic-tools-for-contr-zero-identity.md
+title: "Priest's Non-Classical Logic: Formal Tools for Contr, Zero, and Identity -- A Disciplined External-Literature Extraction That INDEPENDENTLY REINFORCES FR-001's Mathematical Necessity (Equivalence Relations Must Be Reflexive/Symmetric/Transitive, Explaining Why H/~_Lambda Failed), EXTERNALLY VALIDATES the Hilbert-Space Rejection via Priest's Own 'Semantics Do Not Come Free' Methodological Coda, Introduces a Representative-Invariance Requirement for Future ==_sem Work, Separates FDE's Truth/Falsity Dimension From KnowledgeOS's Zero-Boundary Dimension, Distinguishes Local Contradiction From Global Explosion, and Proposes the Concrete KR-CONTR-FDE-2026-09 Next Experiment -- With an Exemplary Eleven-Item 'What NOT to Take From Priest' Discipline List"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c
+  secondary: b
+  secondary_note: "an exceptionally disciplined external-literature extraction from Graham Priest's An Introduction to Non-Classical Logic, executing M0118's step-1 recommendation -- notable for independently reinforcing two of the corpus's own experimentally-derived findings (FR-001's transitivity requirement; the Hilbert-space rejection's 'elegance does not imply validity' principle) from an authoritative external source, rather than merely supplying new candidate vocabulary"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0119
+importance: critical
+confidence: high
+about: >
+  Extracts Priest's non-classical logic (paraconsistency, gaps/gluts, FDE, extension/anti-
+  extension, designated values, relevant logic, possible-world/non-normal-world semantics, tense
+  logic, free logic, equivalence relations, tableaux/countermodels, and a methodological coda),
+  classifying each concept's KnowledgeOS relevance in a full executive table, and maintaining
+  exemplary [EXT]->[PROP] discipline throughout: "the important result is NOT 'KnowledgeOS should
+  use Priest's logic.' The book gives us several formal tools and methodological constraints."
+
+  **INDEPENDENTLY REINFORCES FR-001's MATHEMATICAL NECESSITY FROM AN EXTERNAL AUTHORITATIVE
+  SOURCE**: Priest reviews equivalence relations, requiring reflexivity/symmetry/TRANSITIVITY for a
+  quotient to exist -- "Priest does not merely give us a definition. He gives us the mathematical
+  reason why our previous idea H/~_Lambda failed... this reinforces FR-001 rather than reopening
+  it." This is a genuine external, independent corroboration of the corpus's own experimentally-
+  derived non-transitivity finding (M0103/M0104/M0106), not a new discovery but a valuable
+  cross-validation from formal logic itself.
+
+  **INTRODUCES A NEW REPRESENTATIVE-INVARIANCE REQUIREMENT FOR ==_sem, NOT PREVIOUSLY RECORDED**:
+  Priest warns that defining a property F([x]) iff G(x) on an equivalence class requires proving x
+  ~ y implies (G(x) iff G(y)), else the definition depends on which representative was selected --
+  yielding the candidate invariant "R1 ==_sem R2 => F(R1)=F(R2) for every property F claimed to be
+  defined on semantic equivalence classes," explicitly flagged as "a very strong candidate for our
+  future Projection/Invariant lane."
+
+  **EXTERNALLY VALIDATES THE HILBERT-SPACE REJECTION VIA PRIEST'S OWN METHODOLOGICAL CODA**:
+  "semantics do not come free" -- the notions used in a semantic construction need independent
+  intelligibility, and mathematical well-definedness does not entail semantic adequacy:
+  WellDefined(M) does not imply SemanticallyAdequate(M); FormalElegance(M) does not imply
+  KnowledgeOSValidity(M) -- explicitly connected: "this is directly relevant to our rejected
+  Hilbert-space claims. Hilbert space can be mathematically elegant. That does not mean
+  KnowledgeState==HilbertVector. This book strongly reinforces that discipline." A genuine
+  independent, authoritative external validation of the corpus's own already-established M0107/
+  M0108/M0115 Hilbert-space refutation.
+
+  **SHARPLY SEPARATES FDE'S TRUTH/FALSITY DIMENSION FROM KNOWLEDGEOS'S ZERO-BOUNDARY DIMENSION**:
+  FDE answers "what is the truth/falsity status of a proposition?" (via independent support(P)/
+  support(not-P) dimensions, giving the four values 1/0/b/n); KnowledgeOS Zero asks "why is this
+  proposition not adequately determined?" -- these are DIFFERENT dimensions, illustrated with a
+  worked example where the same FDE value (0,0, "neither") can arise from two entirely different
+  KnowledgeOS situations (no assessment performed vs. fundamentally unobservable) -- giving
+  FDE_status(P) != ZeroBoundary(P), "strongly confirming something we already discovered
+  experimentally: evaluation status and boundary reason must not be collapsed." Proposes keeping
+  Evaluation(p)=(S+,S-) and Boundary(p)=(Facet,Condition,Context,Provenance) as two orthogonal
+  layers, compatible with the existing Zero Lens candidate.
+
+  **DISTINGUISHES LOCAL CONTRADICTION FROM GLOBAL EXPLOSION**: Priest's paraconsistency principle
+  (Contr(p,not-p) does not imply for-all-Q, Q) is proposed as a candidate: Contr(p) => LocalConflict
+  (p) but NOT => GlobalInvalidity -- directly addressing the KnowledgeOS worry that a single
+  contradiction (e.g. two conflicting evidence reports about a port number) should not derail the
+  entire knowledge state, illustrated with a worked example (conflicting evidence about a Nexus
+  port should not cause every other claim about the system to become derivable/invalid).
+
+  **PROPOSES A CONCRETE NEXT EXPERIMENT, KR-CONTR-FDE-2026-09**, comparing four models (A Classical
+  {T,F}; B K3 {T,F,U}; C FDE {T,F,B,N}; D Structured (S+,S-,Reason,Provenance,Context)) against
+  fourteen named test scenarios (positive/negative evidence, direct contradiction, no evidence, not
+  assessed, unobservable, underdetermined, conflicting sources, superseded evidence, scope
+  exclusion, temporal conflict, contradictory rules/observations/interpretations), with the crucial
+  measurement explicitly framed as "which distinctions are preserved" and "which distinct
+  KnowledgeOS situations collapse to the same representation" rather than "which model has the
+  highest number of states" -- explicitly positioned as "a direct continuation of KR-ZERO and
+  FR-001."
+
+  **REINFORCES THE FACTIVITY/R1 DECISION**: Priest's careful separation of semantic truth from
+  designation supports keeping Represented!=True and Designated!=True, so "our R1 decision remains
+  conceptually sound" (E_t -> Gamma -> A_t with Knows(p) => True(p) as a separate factive concept),
+  though "Priest does not solve our factivity problem."
+
+  **RAISES A META-LEVEL METHODOLOGICAL QUESTION**: "what logic are you using to define your logic?"
+  -- non-classical logics' own semantics are typically explained via informal/classical
+  reasoning, raising the question of what guarantees the meta-level reasoning's validity;
+  recommends future theory artifacts explicitly separate Object Language / Semantic Layer /
+  Meta-language / Meta-theory / Verification Procedure -- relevant to any future claim that
+  "KnowledgeOS kernel is formally complete" or "reduction is proven minimal."
+
+  Reinterprets several further Priest concepts as candidate (not adopted) research directions:
+  gap-vs-glut as formal justification for the Zero Lens's already-established discipline against
+  collapsing Unknown/Absent/Contradiction into one value; extension/anti-extension as a candidate
+  ClaimStanding(positiveSupport[],negativeSupport[]) structure; NoSupport(P)!=Support(not-P) as a
+  formal confirmation of the Zero Lens's "absence is not negation" principle; supervaluation/
+  resolution (K_t -> R(K_t), admissible resolutions) as compatible with the existing set-valued
+  Determination(Q) subseteq H_Q model; possible-world semantics reinterpreted as admissible
+  epistemic alternatives W_Q (not metaphysical worlds); relevant logic's ternary Rxyz relation as a
+  candidate Rel(E,H,Q,C) evidence-relevance relation, EXPLICITLY NOTING Priest himself warns
+  against overclaiming the information-flow interpretation -- "almost a perfect example of our
+  [PROP] discipline"; free logic's domain-vs-existing-objects distinction (D vs E subseteq D) as a
+  candidate formalization for Zero's absence/nonexistence/unobservable categories; tense logic as
+  candidate vocabulary for the Lifecycle lane (Truth(p,t) vs Standing(p,t) as distinct relations).
+
+  **DELIVERS A FULL THREE-TIER CLASSIFICATION** (eleven [EXT] strong external results; eight [PROP]
+  KnowledgeOS hypotheses; seven [NEG] things explicitly not supported) and an ELEVEN-ITEM "what NOT
+  to take from Priest" list (FDE!=KnowledgeOS-logic; four-truth-values!=four-Zero-states;
+  paraconsistency!=kernel; dialetheism!=epistemology; FDE-does-not-solve-factivity; Zero!=fourth-
+  FDE-value; Unknown!=neither-true-nor-false-too-strong; Contradiction!=both-true-and-false-not-
+  necessarily-equivalent-to-epistemic-contradiction; possible-worlds!=Knowledge-Space; relevant-
+  logic-does-not-prove-evidence-relevance; many-valued-logic-does-not-give-correct-ontology),
+  concluding: "Theory v1.2 remains unchanged. Contr remains the next experiment. FDE becomes a
+  major external candidate for that experiment -- not the answer."
+introduces:
+  - concept: "The representative-invariance requirement for ==_sem: R1==_sem R2 => F(R1)=F(R2) for every property F claimed defined on semantic equivalence classes -- a new candidate invariant for the Projection/Invariant lane"
+  - concept: "The explicit sharp separation of FDE's truth/falsity dimension from KnowledgeOS's Zero-boundary dimension, with a worked example showing the same FDE value can arise from two entirely different KnowledgeOS situations"
+  - concept: "The local-vs-global contradiction distinction: Contr(p) => LocalConflict(p) but NOT => GlobalInvalidity"
+  - concept: "The concrete KR-CONTR-FDE-2026-09 experiment design comparing four models against fourteen scenarios, framed around which distinctions are preserved rather than state count"
+  - concept: "The methodological regress question 'what logic are you using to define your logic?' and the proposed Object-Language/Semantic-Layer/Meta-language/Meta-theory/Verification-Procedure separation for future theory artifacts"
+defines: []
+refines:
+  - concept: "FR-001 (M0103/M0104/M0106), independently reinforced here from an external authoritative source (Priest's equivalence-relation requirements)"
+  - concept: "The Hilbert-space rejection (M0107/M0108/M0115), independently validated here via Priest's own 'semantics do not come free' methodological coda"
+  - concept: "The Zero Lens's already-established Unknown!=Absent!=Contradiction discipline, given a formal gap-vs-glut justification"
+  - concept: "The R1 factivity decision (M0110/M0111/M0112), reaffirmed here via the semantic-truth-vs-designation separation"
+  - concept: "M0114/M0116's KR-CONTR-2026-09 line, extended here with a concrete FDE-based follow-on experiment design"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0119 as a disciplined Priest non-classical-logic extraction that independently reinforces FR-001 (equivalence-relation transitivity requirement) and the Hilbert-space rejection ('semantics do not come free') from an external authoritative source, introduces a representative-invariance requirement for ==_sem, sharply separates FDE's truth/falsity dimension from KnowledgeOS's Zero-boundary dimension, distinguishes local contradiction from global explosion, and proposes the concrete KR-CONTR-FDE-2026-09 experiment -- maintaining an exemplary eleven-item 'what NOT to take' discipline list."
+anchor_test:
+  anchor: "FR-001 (M0103/M0104/M0106), the Hilbert-space rejection (M0107/M0108/M0115), the Zero Lens's Unknown!=Absent discipline, R1 (M0110/M0111/M0112), and M0114/M0116's KR-CONTR line"
+  supports_dimension: "Provides genuine external, independent corroboration of two of the corpus's own major experimentally-derived findings, while supplying well-disciplined new candidate structures for the confirmed research priority (Contr/Zero) without overclaiming"
+  refines_or_contradicts: "refines (FR-001, M0107/M0108/M0115, the Zero Lens work, R1, M0114/M0116)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'Priest does not merely give us a definition. He gives us the mathematical reason why our previous idea H/~_Lambda failed' -- a genuine external, authoritative corroboration of FR-001's non-transitivity finding, not a new claim but a valuable independent cross-check."
+  - "'Hilbert space can be mathematically elegant. That does not mean KnowledgeState==HilbertVector. This book strongly reinforces that discipline' -- explicit, direct external validation of the corpus's own Hilbert-space refutation via Priest's independently-stated methodological principle."
+  - "The worked example showing (support(P)=0, support(not-P)=0) can mean either 'nobody has assessed it' or 'the port is fundamentally unobservable' -- concretely demonstrates why FDE's truth-value dimension cannot substitute for KnowledgeOS's boundary-reason dimension, a rigorous formal argument rather than an assertion."
+undefined_concepts:
+  - "Whether the proposed EpistemicEvaluation = TruthFalsitySupport x BoundaryCondition x Context x Provenance factorization is minimal, sufficient, or semantically correct -- explicitly left open"
+open_questions:
+  - "Whether KR-CONTR-FDE-2026-09 was ever executed, and if so which of the four models (Classical/K3/FDE/Structured) best preserved the fourteen tested distinctions."
+  - "Whether the representative-invariance requirement for ==_sem was ever formally incorporated into the Projection/Invariant lane's work."
+tier2_triggered: true
+tier2_reason: "Delivers genuine, independent external corroboration of two of the corpus's most significant experimentally-derived findings (FR-001's transitivity requirement, the Hilbert-space rejection's elegance-does-not-imply-validity principle) from an authoritative external logic text, introduces a new formal representative-invariance requirement for future semantic-equivalence work, and proposes a concrete, well-designed follow-on experiment -- while maintaining exemplary discipline against overclaiming external literature as KnowledgeOS answers. Comfortably meets the tier-2 bar."

@@ -1,0 +1,46 @@
+sequence: 778
+path: docs/knowledgeos/brainstorming/phase_measure_theory/how_to_combine/20260829-002041_step_combine_halfway-point-progress-review.md
+title: "Step Combine -- Halfway Point Progress Review -- SKIPPED per explicit user instruction (this session, 2026-09-03: \"you can ignore how_to_combine folder\")"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "not analyzed in detail per explicit user instruction"
+source_role: PRIMARY_RESEARCH
+canonical_source: 778
+importance: none
+confidence: high
+about: >
+  User explicitly instructed mid-session (2026-09-03): "you can ignore how_to_combine folder." This file
+  and all subsequent files under phase_measure_theory/how_to_combine/ are therefore recorded with a
+  minimal skip entry rather than full analysis, per direct user instruction overriding the standing
+  full-read discipline for this specific subdirectory. File was briefly read before the instruction arrived
+  (a book-production status update: Edition 2 Part III at 8/10 chapters, remaining work roadmap) but is not
+  analyzed further.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: record that how_to_combine/ files are skipped from this point forward per explicit user instruction (2026-09-03)."
+anchor_test:
+  anchor: "N/A -- skipped per user instruction"
+  supports_dimension: "N/A"
+  refines_or_contradicts: "N/A"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "skipped per explicit user instruction, not analyzed"

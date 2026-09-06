@@ -1,0 +1,161 @@
+sequence: "0173"
+path: docs/knowledgeos/brainstorming/kernel/20260824-000400-shieber-external-epistemic-lens-knowledge-is-not-one-thing.md
+title: "Shieber's epistemology (third Western analytic source) extracted into ten named KOS-EPI-01..10 domain invariants and a candidate seven-concept Kernel model (KnowledgeClaim/Evidence/Grounding/Derivation/Source/Lineage/KnowledgeAssessment) -- the most DDD-actionable synthesis of the Williamson-Audi-Shieber arc"
+date: "2026-08-24"
+bytes: 16500
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0173"
+importance: critical
+confidence: high
+about: >
+  Third and most DDD-actionable installment of a deliberate short Western-analytic-epistemology research
+  arc (following Williamson at 0171, Audi at 0172), applying Stuart Shieber's epistemology as an external
+  lens through eight established KnowledgeOS lenses (DDD, epistemology, evidence/provenance, deterministic
+  assurance, governance/authority, temporal knowledge, AI-agent/distributed cognition, observation-to-
+  knowledge lifecycle) with the explicit discipline "we do not implement epistemology, we extract domain
+  truths that improve our model." Key extractions, each mapped to a concrete DDD consequence: (1)
+  know-how/knowledge-wh/knowledge-that trichotomy -> Knowledge is not one domain object; the central object
+  should be named KnowledgeClaim, not bare Knowledge; (2) claim-vs-state-of-affairs separation -> a
+  KOS-EPI-01 kernel invariant, "a claim is an assertion about a state of affairs, not the state of affairs
+  itself" -- rejects both "Document -> Truth" and "AI output -> Knowledge" collapses; (3) evidence-does-not-
+  constitute-truth (a true belief can rest on poor evidence; excellent evidence can still be wrong) ->
+  KOS-EPI-02; (4) the basing relation -- evidence must actually explain why a belief is held, not merely be
+  attached -- formalized as a first-class Grounding relationship (Evidence -BASIS_FOR-> Claim) rather than
+  a bare evidenceIds[] list -> KOS-EPI-03; (5) coherentism useful for graph modeling but coherence does not
+  establish truth (a perfectly coherent belief set can still fail to correspond to reality) -> KOS-EPI-05,
+  directly producing an "AI hallucination graph" rule: an AI-generated derivation chain A->B->C->D that the
+  same AI then reviews as "mutually consistent" is one epistemic lineage, not four independent
+  confirmations -- Independent Support must be distinguished from Derived Support; (6) foundationalism
+  contributes a traceable-anchor requirement (every derivation chain traceable to originating grounds)
+  without committing the Kernel to a tree-only structure -- the Kernel should be graph-shaped, supporting
+  grounding/derivation/support/contradiction/contextual/provenance/temporal edge types simultaneously; (7)
+  externalism (the stopped-clock example: true+evidence+basing can still be insufficient if the producing
+  process is unreliable) -> KOS-EPI-04, requiring an explicit Process-Reliability/Assurance concern distinct
+  from Epistemic Grounding, motivating a KnowledgeAssessment domain concept rather than a boolean
+  isKnowledge flag; (8) memory-as-preservative-but-fallible-source (confabulation risk) -> "persistence of
+  a claim is not proof of persistence of its validity," reinforcing temporal-determinism/supersession work;
+  (9) forgotten-evidence case (a justified belief can persist even after the agent no longer remembers the
+  original evidence) -> KOS-EPI-07, requiring KnowledgeOS to externalize epistemic memory rather than
+  depending on agent recall; (10) source-monitoring failure (humans are poor at remembering belief sources)
+  -> KOS-EPI-06, requiring provenance to be automatic/immutable/machine-readable/queryable rather than
+  self-reported; (11) testimony requiring a reliably-accurate producing process -> AI agent output modeled
+  as Testimony/Proposal until independently assessed, never directly as Knowledge; (12) socially distributed
+  cognition (modern knowledge production divided across people/tools/organizations, participants may not
+  know why the overall process succeeds) -> a major reframing: KnowledgeOS should model epistemic
+  PROCESSES, not epistemic documents, and Agent/Platform/Knowledge/Governance contexts each carry only
+  bounded local understanding -> KOS-EPI-09; (13) social-network information propagation (repeated claims
+  via one lineage are not independent evidence) -> KOS-EPI-10, motivating explicit Source vs. SourceLineage
+  domain distinction; (14) performative know-how (skilled action without full articulability) -> a candidate
+  future Declarative/Procedural/Operational-Know-How knowledge split, explicitly not merged into the Claim
+  aggregate; (15) perception-as-mediated-not-unmediated -> reinforces Observation != Reality as a first-
+  class domain boundary. Concludes with a candidate seven-concept Kernel model (KnowledgeClaim, Evidence,
+  Grounding, Derivation, Source, Lineage, KnowledgeAssessment, cross-cut by Context/Time/Identity), an
+  explicit list of concepts deliberately excluded from the Kernel (ConfidenceScore, TruthScore, universal
+  ReliabilityScore, Foundationalism/Coherentism-as-aggregates, Belief, Mind, Consciousness,
+  SubjectiveExperience, generic Trust, generic AIKnowledge, a universal KnowledgeGraph aggregate), and a
+  combined Audi+Williamson+Shieber kernel sketch distinguishing the Kernel proper from an outer
+  "KnowledgeOS Platform" layer (Observation/Assurance/Governance/Review/AI-Engineering/Retrieval/Workflow/
+  Knowledge-Delivery).
+
+introduces:
+  - "Ten named KOS-EPI-01..10 candidate domain invariants: claim/reality separation, evidence/truth
+    separation, basing (explicit Evidence-BASIS_FOR->Claim relation, not a bare reference list), process-
+    matters (epistemic evaluation must consider the producing process, not just proposition/evidence),
+    coherence-is-not-truth, provenance-must-be-externalized, historical-evidence-survives-forgetting,
+    source-reliability-is-a-process-property, distributed-cognition-requires-system-level-provenance,
+    independent-support-requires-lineage-awareness"
+  - "A candidate seven-concept KnowledgeOS Kernel conceptual model: KnowledgeClaim (ClaimId/Content/
+    Context/Lifecycle/Status), Evidence (EvidenceId/Kind/ContentReference/CapturedAt/SourceRef), Grounding
+    (the basing relation as a first-class semantic relationship, not a reference list), Derivation
+    (Inputs/Method/Output/Conditions, incorporating 0172's Audi inference-as-transmission extraction),
+    Source (Identity/Type/Provenance/Qualification), Lineage (the path information travelled through),
+    KnowledgeAssessment (the domain act of evaluating a claim against evidence/derivation/process-
+    assurance/contradictions/context/temporal-validity), cross-cut by Context/Time/Identity"
+  - "An 'AI hallucination graph' rule directly operationalizing 0172's artificial-coherence warning: a
+    self-generated derivation chain that the same agent then reviews as mutually consistent is one
+    epistemic lineage, not independent confirmation -- requires the Kernel to distinguish Independent
+    Support from Derived Support"
+  - "EpistemicStatus explicitly rejected as a boolean or single enum -- proposed as multi-dimensional
+    (evidentially strong / operationally verified / governance accepted / temporally obsolete can all hold
+    simultaneously), kept as 'a domain concept under investigation,' not frozen"
+  - "An explicit Kernel-exclusion list: ConfidenceScore, TruthScore, universal ReliabilityScore,
+    Foundationalism/Coherentism as aggregates, Belief-as-primary-domain-object, Mind, Consciousness,
+    SubjectiveExperience, generic Trust, generic AIKnowledge, a universal KnowledgeGraph aggregate --
+    classified as analytical lenses/policies/infrastructure concerns, not kernel domain objects"
+  - "A reframing of KnowledgeOS's own self-definition: 'not fundamentally a repository of knowledge... an
+    epistemic infrastructure for producing, grounding, assessing, preserving, challenging, and governing
+    engineering knowledge' -- offered as a stronger DDD bounded-context boundary statement than the
+    Knowledge+Evidence+Governance+AI framing used earlier in the corpus"
+
+defines:
+  - "Ten KOS-EPI-01..10 candidate invariants (see introduces) -- PROPOSED by the source, not yet adjudicated
+    or admitted to any governance register by this reconstruction"
+
+refines:
+  - "Synthesizes and operationalizes both 0171 (Williamson) and 0172 (Audi) into concrete DDD constructs --
+    explicitly incorporates the Audi inference/transmission extraction into the Derivation concept and
+    implicitly incorporates Williamson's robustness/temporal concerns into KnowledgeAssessment's temporal-
+    validity dimension"
+  - "Restates and formalizes ADR-KOS-KERNEL-001's (0167) exclusion discipline with a concrete, longer
+    exclusion list specific to epistemic/AI concepts (ConfidenceScore, TruthScore, Belief, Mind, etc.)"
+
+contradicts: []
+
+repeats:
+  - {concept: "Artificial/same-source coherence is not independent corroboration", canonical_source: "0172", novelty: low}
+  - {concept: "Observation != Reality as a first-class domain boundary", canonical_source: "0087", novelty: low}
+
+bridge_candidates:
+  - "The seven-concept candidate Kernel model (KnowledgeClaim/Evidence/Grounding/Derivation/Source/Lineage/
+    KnowledgeAssessment) is structurally comparable to, yet independently derived from, the
+    KnowledgeAggregate+ConflictRecord+VerificationPort hypothesis tracked since 0165/0167 -- worth
+    cross-referencing when/if the Kernel Boundary Discovery cycle produces a converged model, as a test of
+    whether two independently-argued minimal-boundary proposals actually agree in substance or merely in
+    naming discipline"
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- explicitly a bounded external-lens research artifact ('we do not implement epistemology, we
+    extract domain truths'), not a governance-register admission; KOS-EPI-01..10 are PROPOSED candidates only"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Refines the Observation != Reality boundary and the anti-self-corroboration principle with named, concrete DDD constructs; does not contradict the existing Kernel hypothesis."
+  alternative_minimal_kernel: "Seven-concept KnowledgeClaim/Evidence/Grounding/Derivation/Source/Lineage/KnowledgeAssessment model -- a genuinely distinct, independently-derived minimal-boundary candidate worth comparing against the KnowledgeAggregate+ConflictRecord+VerificationPort hypothesis"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "This file is the most DDD-actionable output of the three-file Williamson-Audi-Shieber Western-
+    epistemology arc, producing a genuinely distinct minimal-Kernel candidate (seven concepts) independent
+    of the KnowledgeAggregate+ConflictRecord+VerificationPort hypothesis tracked since 0165/0167 -- worth
+    flagging for eventual cross-model comparison (gated until full corpus read per section 29) as a
+    structural convergence/divergence test case"
+  - "The KOS-EPI-01..10 invariant set is the first in this reading stretch to be numbered and named in a
+    governance-register-ready format (KOS-EPI-NN) despite not being admitted -- worth watching whether this
+    numbering scheme is picked up or reconciled with the corpus's existing C-numbered adjudication questions"
+
+undefined_concepts: []
+open_questions:
+  - "Whether KOS-EPI-01..10 are ever formally adjudicated or merged with the existing 21-question C-number
+    adjudication pack"
+  - "Whether the seven-concept KnowledgeClaim/Evidence/Grounding/Derivation/Source/Lineage/
+    KnowledgeAssessment model is ever explicitly compared against the KnowledgeAggregate+ConflictRecord+
+    VerificationPort hypothesis, and if so which (if either) prevails"
+  - "Whether the Western-epistemology arc continues with a fourth source or closes here"
+
+tier2_triggered: true
+tier2_reason: >
+  Ten named KOS-EPI-01..10 candidate invariants; a genuinely distinct seven-concept minimal-Kernel
+  candidate independently derived from the tracked KnowledgeAggregate hypothesis; an operationalized
+  AI-hallucination-graph rule; the most concrete DDD synthesis of the three-file Western-epistemology arc.

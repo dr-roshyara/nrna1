@@ -1,0 +1,47 @@
+sequence: 319
+path: docs/knowledgeos/brainstorming/kernel/falsification/README.md
+title: "falsification/ README — Kernel Attacks, Reserved (Phase G Not Started)"
+date: "2026-08-25"
+bytes: 1072
+model:
+  primary: c1
+  secondary: null
+source_role: CRITICAL_REVIEW
+canonical_source: 316
+importance: medium
+confidence: high
+about: >
+  Directory README, part of the four-file group recorded together at 0316. Declares falsification/ empty,
+  Phase G not started. Confirms this reconstruction's own file 0284 as the corpus's one real self-attack
+  and 20260823-234750 (tarka: nine attack families) as the reusable imported adversarial instrument.
+  Minimal record per the standing instruction on readme-type files; full content captured at 0316.
+introduces: []
+defines: []
+refines:
+  - concept: "0311's S-4 self-falsification finding and this reconstruction's own file 0284"
+    refinement: "Confirms 0284 as the corpus's one real self-attack, deliberately left in place among sources (full content recorded at 0316)"
+contradicts: []
+repeats:
+  - concept: "Full content of this README group"
+    canonical_source: 316
+    novelty: none
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0316 (primary record of this README group)"
+  supports_dimension: "See 0316"
+  refines_or_contradicts: "see 0316"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Minimal treatment per standing instruction on readme-type files; full content recorded at 0316."

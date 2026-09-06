@@ -1,0 +1,44 @@
+sequence: 713
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-125203_step-127-knowledgeos-domain-bounded-context-test.md
+title: "DUPLICATE of 0712 (Step 127 — KnowledgeOS Domain/Bounded-Context Test) — verified via full diff, sole difference a single typo fix ('brsng'→'bring')"
+date: "2026-08-28"
+bytes: 19396
+model:
+  primary: c1
+  secondary: g1
+source_role: DUPLICATE
+canonical_source: 712
+importance: skip
+confidence: high
+about: >
+  Verified byte-for-byte near-duplicate of 0712 via full `diff`: identical 1580-line content except a single
+  word typo correction in the opening sentence ("We now brsng the DDD lens back" → "We now bring the DDD
+  lens back"). No new substantive content. Per standing instruction ("leave duplicate files, just ignore
+  them"), this record is minimal; canonical analysis lives at 0712.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - "0712 in its entirety (verified via full diff — one-word typo fix only)."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "0712"
+  supports_dimension: "N/A — duplicate"
+  refines_or_contradicts: "none; verified duplicate of 0712"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Full `diff` of 0712 and 0713 shows a single 3c3 hunk: 'brsng'→'bring', confirming duplicate status rather than requiring full independent analysis."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Verified duplicate; no new content beyond 0712."

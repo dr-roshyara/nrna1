@@ -1,0 +1,131 @@
+sequence: M0127
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-175306_kr-contr-fde-2026-09-external-writeup.md
+title: "KR-CONTR-FDE-2026-09 -- Contradiction, Evaluation Domain and Zero: COMPLETE EXECUTION WRITEUP Delivering the Definitive Verdict for the Long-Tracked TODO Group B (Contr) Research Line -- STATUS C, STRUCTURED EVALUATION REQUIRED; KERNEL VERDICT K2, New Semantic Representation Required OUTSIDE the Kernel. Structured (S+,S-,Reason,Provenance,Context,Condition) Preserves 12/14 Scenarios (Both Remaining Collapses Explicitly ACCEPTABLE, Distinguished by Reason/Provenance) Versus Classical 2/14, K3 6/14, FDE 8/14 -- Refutes the 'Fourth-Value Magic' Hypothesis Outright: 'The Problem Is Not the Number of Values -- It Is the Type of Representation'"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "the apparent completion of the entire Contr/Zero research line confirmed as priority-1 across M0109-M0126 -- a fully detailed, per-scenario-specific execution writeup (in contrast to M0124's bare placeholder result table), delivering a definitive decision-gate status and kernel verdict, five worked countermodels, and a complete set of candidate formal definitions"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0127
+importance: critical
+confidence: high
+about: >
+  Reports the complete KR-CONTR-FDE-2026-09 result: "an FDE-inspired two-channel semantic
+  representation CAN preserve the distinctions required by KnowledgeOS Contr and Zero, BUT ONLY IF
+  the representation maintains separate channels for evaluation result (S+,S-) and boundary
+  metadata (Reason, Provenance, Context, Condition)." Reports collapse rates across all four models
+  against fourteen scenarios: Classical {T,F} collapses 12/14 (85.7%); K3 {T,F,U} collapses 8/14
+  (57.1%); FDE {T,F,B,N} collapses 6/14 (42.9%); Structured (S+,S-,Reason,Provenance,Context)
+  collapses only 2/14 (14.3%) -- and both remaining collapses are explicitly judged ACCEPTABLE,
+  not failures: C1 (No-Evidence vs Not-Assessed, both (0,0), distinguished by Reason -- "epistemic
+  state" vs "procedural state," a genuine semantic category not requiring distinct S+/S- values)
+  and C2 (five distinct contradiction types -- direct contradiction, conflicting sources,
+  contradictory rules/observations/interpretations -- all (1,1), correctly distinguished by
+  Reason/Provenance rather than requiring additional value-channel distinctions, since "a value
+  channel should not be overloaded with type distinctions that belong in the boundary metadata").
+
+  **DELIVERS FIVE DETAILED COUNTERMODELS**, each showing exactly what a simpler model loses:
+  (1) Classical collapses direct contradiction to an error/undefined state (bottom), losing the
+  ability to distinguish genuine contradiction from logical impossibility or evaluation failure;
+  (2) K3 collapses direct contradiction to Unknown, losing the distinction between genuine
+  contradiction and ordinary epistemic uncertainty; (3) FDE collapses distinct contradiction TYPES
+  (direct contradiction vs conflicting sources) to the single value Both, losing the "why" of the
+  contradiction that matters for choosing a resolution strategy (further observation vs authority
+  weighting); (4) K3/FDE both collapse "no evidence after exhaustive search" (which may itself
+  inform belief) and "not yet assessed" (which cannot) onto the same value; (5) Classical/K3/FDE
+  all collapse "current evidence supports p" and "superseded evidence once supported p" onto the
+  same value T, losing the temporal status critical for knowledge lifecycle.
+
+  **DELIVERS A DEFINITIVE DECISION-GATE VERDICT**: Status C -- STRUCTURED EVALUATION REQUIRED
+  (Value + Reason + Provenance), explicitly REFUTING THE "FOURTH-VALUE MAGIC" HYPOTHESIS OUTRIGHT:
+  "the experiment refutes the hypothesis that a fourth value (B or C) is sufficient. The problem is
+  not the number of values -- it is the type of representation. Values alone cannot carry boundary
+  metadata." And a Kernel Verdict: K2 -- new semantic representation required, but explicitly
+  OUTSIDE the kernel: "the structured representation must exist outside the kernel. The kernel
+  should continue to operate on the existing v1.2 components. The structured representation is a
+  semantic layer over the kernel, not a replacement for it." Recommends NOT adopting FDE as
+  KnowledgeOS logic (useful reference model only) and recommends proceeding next to TODO C (the
+  progress-ordering >= problem).
+
+  **DELIVERS A COMPLETE SET OF CANDIDATE FORMAL DEFINITIONS**: Standing(p) = (S+(p), S-(p), R(p),
+  P(p), Ctx(p), Cond(p)); Contr(p) iff S+(p)=1 and S-(p)=1, with contradiction TYPE distinguished by
+  R(p) in {Direct, Source, Rule, Observation, Interpretation}; ZeroLens(K_t) = the set of p whose
+  Standing shows S+=0 or S-=0 or R="Unknown"-family, examining the boundary of what is not
+  established; Adequate(R,Q) iff D_Q subseteq Preserved(R) (restating the already-established
+  Adequacy Principle, here explicitly verified rather than merely asserted); and a DELIBERATELY
+  STRONG semantic-equivalence definition requiring complete structural identity across all six
+  Standing components (S+,S-,R,P,Ctx,Cond) simultaneously -- explicitly justified as "deliberately
+  strong... this ensures no silent collapse," a notably more conservative equivalence criterion
+  than any previously recorded in this pass.
+
+  **NAMES A NEW STANDING INVARIANT**: "Value-Boundary Separation" -- S+/S- channels carry only
+  standing; boundary metadata carries reasons for standing; Reason(standing) != standing (Reason is
+  not a value channel); "no silent collapse" (if two scenarios have different meanings, their
+  representation must differ; if S+/S- are identical, boundary metadata must differ) -- with FDE
+  explicitly cited as violating this invariant by collapsing contradiction type into a single value
+  B, and K3 violating it by collapsing absence into a single value U.
+
+  **PROPOSES A MINIMUM FOUR-COMPONENT BOUNDARY STRUCTURE AND A PARTIAL TAXONOMY**: Boundary_t =
+  (Reason_t, Provenance_t, Context_t, Condition_t), with named candidate value sets for each
+  (Reason in {Evidence, Authority, Logic, Temporal, Scope, Assessment, Interpretation, Conflict};
+  Provenance in {Observed, Inferred, Reported, Calculated, Assumed, ...}; Context in {Current,
+  Stale, Expired, Unknown, Obsolete}; Condition in {InScope, OutOfScope, Conditional,
+  Unconditional, Principle}) -- explicitly left OPEN as to formal completeness (Section 13.1-13.4:
+  reason/provenance/context/condition types "need formal definition and completeness proof").
+
+  **DISCUSSES A CANDIDATE (NOT ADOPTED) THEORY v1.3 MAPPING**: notes the structured standing
+  representation could populate the C_t (Conflict) component of the eleven-component K_t structure
+  seen in M0125/M0126 -- explicitly marked "a candidate -- not an architectural decision," and
+  Theory v1.2 remains unchanged and unmodified by this experiment.
+
+  **LEAVES FIVE CATEGORIES OF ITEMS EXPLICITLY OPEN**: formalization of the four boundary-type
+  taxonomies with completeness proofs; standing-vs-reason interaction rules (when can standing
+  change without reason changing, and vice versa); Zero's operational semantics (invocation
+  interface, output, computational cost); boundary adequacy verification (are the four boundary
+  dimensions themselves sufficient); and two explicit hypotheses about N_eff independence
+  ("does structured standing affect N_eff? Hypothesis: No" / "does boundary metadata affect
+  N_eff? Hypothesis: No" -- both stated as hypotheses to be tested, not established facts).
+introduces:
+  - concept: "The complete, per-scenario-specific KR-CONTR-FDE-2026-09 result: Classical 12/14 collapse, K3 8/14, FDE 6/14, Structured 2/14 (both collapses explicitly judged acceptable)"
+  - concept: "The definitive decision-gate verdict Status C (Structured Evaluation Required) and Kernel Verdict K2 (new semantic representation required, outside the kernel), with the fourth-value-magic hypothesis explicitly refuted"
+  - concept: "Five worked countermodels demonstrating precisely what Classical/K3/FDE each lose relative to the structured representation"
+  - concept: "The deliberately strong semantic-equivalence definition requiring complete structural identity across all six Standing components simultaneously, explicitly justified against silent collapse"
+  - concept: "The named Value-Boundary Separation invariant (Reason != Value, no silent collapse), with FDE and K3 identified as concretely violating it"
+  - concept: "The candidate minimum four-component Boundary_t=(Reason,Provenance,Context,Condition) structure with partial named value-set taxonomies, explicitly left open as to completeness"
+defines: []
+refines:
+  - concept: "M0119/M0120/M0123/M0124's KR-CONTR-FDE design and protocol, here brought to a complete, definitive execution result"
+  - concept: "The already-established Adequacy Principle and Invariant Custody Principle (M0098/M0099), both explicitly restated and applied here as verified/formal definitions"
+  - concept: "The corpus's established TODO Group B (Contr) status, now updated from OPEN/NEXT-EXPERIMENT to [EXP]/experiment-complete-with-candidate-representation"
+contradicts: []
+repeats:
+  - concept: "M0124's already-recorded protocol design (four models, fourteen scenarios, six non-negotiable rules), here executed rather than merely specified"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0127 as the complete, definitive execution writeup for KR-CONTR-FDE-2026-09, delivering Status C (Structured Evaluation Required) and Kernel Verdict K2 (new semantic representation required, outside the kernel) -- Structured (S+,S-,Reason,Provenance,Context,Condition) preserves 12/14 scenarios versus Classical 2/14, K3 6/14, FDE 8/14, with five worked countermodels and a full set of candidate formal definitions including a deliberately strong semantic-equivalence criterion. Explicitly refutes the fourth-value-magic hypothesis and recommends proceeding next to TODO C (the progress-ordering >= problem)."
+anchor_test:
+  anchor: "M0114/M0116's original KR-CONTR-2026-09 line, M0119/M0120's FDE-focused reframing, and M0123/M0124's implementation design"
+  supports_dimension: "Delivers the apparent definitive completion of the entire confirmed priority-1 Contr/Zero research line, with a concrete, per-scenario-specific quantified result and a clear decision-gate/kernel verdict"
+  refines_or_contradicts: "refines (M0114, M0116, M0119, M0120, M0123, M0124, M0098/M0099's Adequacy/Custody principles)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'The experiment refutes the hypothesis that a fourth value (B or C) is sufficient. The problem is not the number of values -- it is the type of representation' -- a direct, decisive refutation of the naive 'add a fourth value' intuition this entire research line has been carefully guarding against since M0114."
+  - "The five countermodels (contradiction-as-error vs contradiction-as-Both vs contradiction-with-type; no-evidence vs not-assessed; current vs superseded) each identify a SPECIFIC, concrete distinction lost by a simpler model, not merely an abstract collapse count."
+  - "The deliberately strong six-component semantic-equivalence definition, explicitly justified 'to ensure no silent collapse,' is a genuinely new, more conservative criterion than any semantic-equivalence proposal recorded elsewhere in this pass."
+undefined_concepts:
+  - "Whether the four boundary-type taxonomies (Reason, Provenance, Context, Condition) are complete -- explicitly left open pending formal completeness proofs"
+open_questions:
+  - "Whether TODO C (the progress-ordering >= problem), recommended here as the next priority, was subsequently taken up."
+  - "Whether the candidate Theory v1.3 mapping (structured standing populating the C_t component of the eleven-component K_t structure from M0125/M0126) was ever formally adjudicated, especially given this reconstruction's own flagged discrepancy between that K_t structure and the corpus's more extensively-tracked K_t=Gamma(E_t,Q,C,EC) model."
+tier2_triggered: true
+tier2_reason: "Delivers the apparent definitive completion of the entire confirmed priority-1 Contr/Zero research line with a concrete, per-scenario quantified result, five specific worked countermodels, a decisive refutation of the fourth-value-magic hypothesis, and a genuinely new, more conservative semantic-equivalence criterion. Comfortably meets the tier-2 bar as one of the most consequential documents in this specific research thread."

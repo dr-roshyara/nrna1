@@ -1,0 +1,194 @@
+sequence: 667
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-121413_step-082-uncertainty-propagation.md
+title: "Step 82 Delivers Genuinely Rigorous New Quantitative Uncertainty-Propagation Mathematics Not Previously in the Corpus at This Precision — Exact Variance-Propagation Formulas (Independent Sum, Covariance-Adjusted, Scalar Multiplication), the Delta Method for Nonlinear Transformations With a Correctly Worked Y=X^2 Example, Asymmetric-Distribution Caution (Y=e^X), Monte-Carlo Decision-Uncertainty Simulation, Bayesian Model Averaging P(D)=∑P(D|M)P(M), the Standard Aleatory/Epistemic Uncertainty Distinction (Genuinely Clarifying Terminology Beyond 0647's World/Parameter/Model Trichotomy), First-Class Governed Assumption Objects, an Uncertainty-Impact-Propagation Graph, and Decision Robustness Formalized as ∀u∈𝒰:D(u)=A; THREE Further Explicit, Correctly-Attributed Backward Cross-References (Evidence-Independence, 'Links Step 75 and Step 82,' 'Connects Directly to Step 76') Extending the Positive Self-Reference Run to a Seventh Consecutive File; Seven New Invariants, Zero Exact-Name Collisions; Verdict 'STEP 82 — PASS'; Closes Opening Step 83 — Temporal Reasoning, Flagged as a LIKELY SEVENTH COLLISION Given Near-Verbatim Vocabulary Overlap With Already-Established Temporal-Epistemics Content at 0648, 0657, and 0661"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 82 -- Uncertainty Propagation', opened at 0666's close as an explicit continuation flagged for comparison against the corpus's prior Bayesian/uncertainty machinery"
+source_role: PRIMARY_RESEARCH
+canonical_source: 667
+importance: critical
+confidence: high
+about: >
+  **CONFIRMS genuinely new, rigorous quantitative content, resolving the comparison flagged at 0666**:
+  unlike the corpus's earlier, more conceptual uncertainty treatments (0642's Bayesian foundation with
+  genuine numeric calculations, 0647's World/Parameter/Model uncertainty trichotomy, 0653's epistemic-limit
+  taxonomy), this file delivers precise, formally correct error-propagation mathematics not previously
+  present at this level of formula-level rigor: `σ_Y=σ_X` for `Y=X+c` (confirmed via a dedicated experiment,
+  PASS); `σ_Y=|a|σ_X` for scalar multiplication (`X=100±5, a=2 ⇒ Y=200±10`, confirmed PASS); independent-
+  variance addition `σ_Z=√(σ_X²+σ_Y²)` (correctly worked `X=100±3, Y=50±4 ⇒ Z=150±5`, confirmed PASS); and
+  the crucial covariance-adjusted formula `Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y)` (with negative correlation
+  permitting partial cancellation via `Var(X-Y)=Var(X)+Var(Y)-2Cov(X,Y)`), explicitly and correctly cross-
+  referencing the corpus's established independence discipline ("this connects directly to our previous
+  evidence-independence work," §82.9) -- a further explicit, correctly-attributed backward cross-reference.
+
+  **Delivers the file's first central formal deliverable -- the delta method for nonlinear uncertainty
+  propagation, correctly stated and worked**: `Var(Y)≈[f'(E[X])]²Var(X)` for `Y=f(X)`, correctly worked
+  through `Y=X²` (`X=10±1 ⇒ σ_Y≈20`, confirmed via a false-precision-rejection experiment showing the
+  corpus's own established discipline against unjustified precision -- PASS), with an important asymmetric-
+  distribution caution: `Y=e^X` applied to symmetric `X=0±2` produces a genuinely asymmetric output
+  distribution, making `Mean±σ` representation invalid, confirmed via a dedicated experiment (PASS) --
+  motivating full distribution-level representation `P(Y)=∫P(Y|X)P(X)dX` when mean/variance alone loses
+  material information (confirmed via a same-mean-variance-different-distribution experiment, PASS). This is
+  genuinely rigorous, correctly-stated statistical mathematics (the delta method is standard, and its
+  application here is mathematically sound) not present in the corpus's prior uncertainty treatments.
+
+  Delivers Bayesian updating with mandatory provenance (`Belief_0→Evidence→Belief_1`, not overwriting the
+  prior; confirmed via a provenance-loss experiment and a multi-step belief-revision-reconstruction
+  experiment, both PASS), directly and genuinely extending 0652's `K_{t+1}=Revision(K_t,E_new)` belief-
+  revision discipline with concrete numeric Bayesian tracking. Delivers `Confidence≠Probability` (an
+  uncalibrated LLM "confidence=0.95" must not be silently stored as `P(H)=0.95`, confirmed via a dedicated
+  experiment, PASS) and Calibration formally distinguished from raw confidence (a model claiming 90%
+  confidence but only 65% historically correct -- `ConfidenceCalibrationProblem` -- confirmed via a
+  dedicated experiment, PASS).
+
+  **Delivers the file's second central formal deliverable -- decision-boundary sensitivity and probability
+  intervals**: small shifts in `P(H)` near a decision threshold `θ` can flip the decision (confirmed via a
+  boundary-crossing experiment, PASS), motivating `DecisionUndetermined` when a probability interval
+  straddles the decision boundary (confirmed via a dedicated experiment, PASS) rather than false certainty.
+  Delivers Monte Carlo decision-uncertainty simulation (`P(D=A)≈(1/N)∑1[D_i=A]`), confirmed via a 10,000-
+  simulation worked example (72%/28% split, PASS), and Model uncertainty formalized via Bayesian model
+  averaging (`P(D)=∑_m P(D|M_m)P(M_m)`), confirmed via a two-plausible-models experiment (PASS), with
+  Parameter uncertainty explicitly distinguished from Model uncertainty (confirmed via an incomplete-risk-
+  estimate experiment, PASS) -- directly and genuinely extending 0647's uncertainty-type discipline with
+  concrete model-averaging mathematics not previously specified.
+
+  **Delivers the file's third central formal deliverable -- the standard Aleatory/Epistemic uncertainty
+  distinction**, correctly and precisely stated (intrinsic stochastic variability versus lack-of-knowledge
+  uncertainty), confirmed via a mislabeled-uncertainty-source experiment (PASS) and a residual-aleatory-
+  uncertainty experiment (more data cannot eliminate genuinely stochastic demand variability, PASS) --
+  **this genuinely refines the corpus's own established but non-standard World/Parameter/Model uncertainty
+  trichotomy (0647) using the field's actual standard terminology (aleatory/epistemic)**, a valuable
+  terminological alignment rather than a duplicative re-derivation, since it maps cleanly onto but
+  linguistically clarifies the earlier framework: aleatory≈World-intrinsic-variability, epistemic≈
+  Parameter/Model-structure ignorance.
+
+  Delivers an Uncertainty budget/decomposition principle (`Uncertainty(D)=U_1+U_2+...` with interaction
+  terms, directing observation priority toward the dominant uncertainty source, confirmed via a dominant-
+  parameter-identification experiment, PASS), **explicitly and correctly re-invoking Value of Information**
+  ("this links Step 75 and Step 82," §82.46, `VOI=ExpectedImprovement-CostOfInformation`, confirmed via a
+  comparative-investigation-value experiment, PASS) -- a second explicit, correctly-attributed backward
+  cross-reference in this file.
+
+  **Delivers the file's fourth central formal deliverable -- uncertainty propagation through causal models,
+  directly extending 0658's `I_CausalUncertainty`**: an estimated causal effect `β=0.5±0.1` must not be
+  treated as exact (confirmed via a causal-uncertainty-loss experiment, PASS), with Structural causal
+  uncertainty explicitly distinguished from numerical parameter uncertainty (an unverified
+  no-unmeasured-confounding assumption exposing `AssumptionRisk`, confirmed via a dedicated experiment,
+  PASS), motivating first-class governed `Assumption(A)` objects with an explicit status lifecycle
+  (`Supported, Unverified, Contradicted`), confirmed via an assumption-contradiction-triggers-decision-
+  reconsideration experiment (PASS).
+
+  **Delivers the file's fifth central formal deliverable -- a full uncertainty-impact-propagation graph
+  capability**: `O_1→K_1→M→P→D` traced explicitly so that a revoked or unreliable observation's downstream
+  effects can be discovered (`Impact(O_i)`, confirmed via a dedicated experiment identifying affected
+  downstream artifacts, PASS, and a worked example identifying 47 downstream claims and 12 affected
+  decisions from one revoked source, confirmed via a `RevalidationWorkflow` experiment, PASS), directly and
+  genuinely extending 0647's/0663's impact-analysis discipline into the uncertainty-propagation domain
+  specifically.
+
+  Delivers an explicit rejection of naive confidence-multiplication across pipeline stages (`0.9×0.9×0.9`
+  without defined semantics -- `UnsupportedProbabilityCalculation` -- confirmed via a dedicated experiment,
+  PASS), and the crisply stated **`Precision≠Accuracy`** with a `Representational precision must not exceed
+  epistemically justified precision` design principle, confirmed via a qualitative-input-becoming-false-
+  numeric-precision experiment (`"likely"→P=0.8734`, `FalsePrecision`, PASS) and a high-numerical-precision-
+  low-predictive-accuracy experiment (`87.3421%` predicted vs. `52%` historically calibrated, PASS).
+
+  **Delivers the file's sixth central formal deliverable -- Decision robustness formally strengthened
+  beyond expected-value optimization**: a decision is robust only if it remains optimal across an entire
+  specified uncertainty set (`∀u∈𝒰: D(u)=A`), explicitly and correctly distinguished from the weaker
+  `D(E[u])=A` (expected-value-only) criterion, confirmed via a robust-versus-fragile-under-plausible-
+  parameters experiment (PASS) -- **explicitly and correctly cross-referencing 0660's decision-function
+  formulation** ("this connects directly to Step 76," §82.70), enriching it to
+  `Decision=f(Knowledge, Uncertainty, DecisionModel, Policy, Context)` -- a third explicit, correctly-
+  attributed backward cross-reference in this file alone.
+
+  Delivers a full uncertainty-aware pipeline (`Observation→Evidence→Knowledge→Model→Prediction→Decision`
+  paired with `U_O→U_K→U_M→U_P→U_D`), with the central non-monotonicity clarification: uncertainty need not
+  monotonically increase through the pipeline, but every transformation must preserve uncertainty's
+  semantics. **Delivers seven new named invariants, NONE of which are exact-name matches to any previously
+  tracked invariant**: `I_{UncertaintyPreservation}`, `I_{Dependence}`, `I_{ModelUncertainty}`,
+  `I_{Calibration}`, `I_{EpistemicPrecision}`, `I_{DecisionSensitivity}`, `I_{UncertaintyImpact}`.
+
+  Delivers Step 82's verdict **"STEP 82 — PASS,"** with the synthesizing conclusion "KnowledgeOS cannot
+  merely store confidence. It needs a mathematically meaningful uncertainty model and must preserve that
+  uncertainty through transformations," explicitly connecting `Statistics+Bayesian inference+Causal
+  reasoning+Decision theory+Governance+Software architecture` into one coherent mathematical system, and
+  reconfirming `WorldModel≠ValueModel≠PolicyModel≠ExecutionModel` (a fourth term, `ExecutionModel`, added to
+  0660's three-term formula).
+
+  **Closes by identifying temporal reasoning as the next boundary, previewing vocabulary that substantially
+  and near-verbatim overlaps the corpus's already-established temporal-epistemics content**: "event time vs
+  processing time," "validity intervals," "temporal provenance," "historical reconstruction," "policy
+  effective dates" -- **this is a LIKELY SEVENTH collision candidate**, since this reconstruction's own
+  records confirm 0648 already delivered `Event time≠Processing time` (`t_e<t_p`) and `ValidTime≠
+  RecordedTime`, and 0661 already delivered governance-artifact `ValidFrom`/`ValidUntil` effective-dating
+  (directly matching "policy effective dates" here), and 0657 already delivered `IdentityValidityAtTime`.
+  Opens "Step 83 -- [Temporal Reasoning]," posing "what did we legitimately know, and what were we
+  authorized to do, at that exact point in time?" No actual code execution reported in this file. This
+  should be directly confirmed once 0668 is read, following the established pattern of this span where most
+  flagged comparisons (0664 vs. 0625, 0666 vs. 0648/0653) resolved as genuine, non-duplicative deepenings
+  rather than true collisions.
+introduces:
+  - concept: "CONFIRMED genuinely new, rigorous quantitative uncertainty-propagation mathematics — exact variance-propagation formulas, the delta method for nonlinear transformations with a correctly worked example, asymmetric-distribution caution, and Monte-Carlo decision-uncertainty simulation, none previously present in the corpus at this formula-level precision"
+  - concept: "The standard Aleatory/Epistemic uncertainty distinction, genuinely clarifying (via standard field terminology) rather than merely restating 0647's World/Parameter/Model uncertainty trichotomy"
+  - concept: "First-class governed Assumption objects with an explicit status lifecycle (Supported/Unverified/Contradicted), and a full uncertainty-impact-propagation graph capability (Impact(O_i)) extending the corpus's impact-analysis discipline into uncertainty tracing specifically"
+  - concept: "Decision robustness formally strengthened beyond expected-value optimization (∀u∈𝒰:D(u)=A), directly extending 0660's decision-function formulation"
+  - concept: "THREE further explicit, correctly-attributed backward cross-references within a single file (evidence-independence, Value of Information/Step 75, Step 76's decision function) — extending the strong positive self-reference run to a seventh consecutive file"
+  - concept: "Seven new invariants with ZERO exact-name collisions"
+  - concept: "A flagged LIKELY seventh collision candidate: Step 83's temporal-reasoning preview near-verbatim overlaps already-established temporal-epistemics content at 0648, 0657, and 0661"
+defines:
+  - concept: "Precision≠Accuracy / Representational precision must not exceed epistemically justified precision"
+    definition: "A system can output a numerically precise value (e.g. 87.3421%) that is nonetheless badly wrong (e.g. only 52% historically calibrated); the number of significant digits displayed must never exceed what the underlying evidence quality actually justifies, and qualitative source uncertainty ('likely') must never be silently converted into unjustified numeric precision"
+  - concept: "Decision robustness (∀u∈𝒰:D(u)=A)"
+    definition: "A decision is robust, not merely expected-value-optimal, if it remains the selected action across the entire specified plausible-uncertainty set, not merely at the point estimate/expected value of the uncertain parameters — a strictly stronger and more defensible criterion than D(E[u])=A"
+  - concept: "Structural causal uncertainty"
+    definition: "Uncertainty in a causal estimate can arise not only from numerical parameter imprecision (σ_β) but from unverified structural assumptions about the causal model itself (e.g. no unmeasured confounding); these two sources of uncertainty are qualitatively different and must both be exposed as AssumptionRisk when unverified"
+refines:
+  - concept: "0666's flagged comparison against the corpus's Bayesian/uncertainty machinery (0642, 0643, 0647, 0653)"
+    refinement: "CONFIRMED as genuinely new, rigorous content: this file delivers precise formula-level error-propagation mathematics (delta method, covariance-adjusted variance, asymmetric-distribution caution) not previously present at this level of specificity, resolving the flagged comparison in favor of legitimate new mathematical contribution"
+  - concept: "The corpus's evidence-independence discipline (0649, 0655, 0666)"
+    refinement: "EXPLICITLY AND CORRECTLY CROSS-REFERENCED ('this connects directly to our previous evidence-independence work'), applied to the specific mathematical mechanism of covariance-adjusted variance propagation"
+  - concept: "0659's (Step 75's) Value of Information machinery"
+    refinement: "EXPLICITLY AND CORRECTLY CROSS-REFERENCED ('this links Step 75 and Step 82'), extended into an uncertainty-budget/decomposition framework directing observation priority toward dominant uncertainty sources"
+  - concept: "0660's (Step 76's) Decision=f(Knowledge,DecisionModel,Policy,Context) formulation"
+    refinement: "EXPLICITLY AND CORRECTLY CROSS-REFERENCED ('this connects directly to Step 76'), enriched with an explicit Uncertainty term"
+  - concept: "0647's World/Parameter/Model uncertainty trichotomy"
+    refinement: "Genuinely refined and terminologically clarified via the standard Aleatory/Epistemic distinction, mapping cleanly onto but linguistically improving the earlier non-standard framework"
+  - concept: "0647's/0663's impact-analysis discipline (Affected≠Invalid, dependency-aware impact tracing)"
+    refinement: "Directly and genuinely extended into uncertainty-specific impact propagation via the Impact(O_i) capability and the worked revoked-source example (47 claims, 12 decisions affected)"
+  - concept: "0658's I_CausalUncertainty invariant"
+    refinement: "Directly and genuinely extended with concrete propagation mechanics (β=0.5±0.1 must not be treated as exact) and the new structural-versus-numerical causal-uncertainty distinction"
+  - concept: "0648's Event time≠Processing time, ValidTime≠RecordedTime; 0657's IdentityValidityAtTime; 0661's ValidFrom/ValidUntil governance-artifact effective-dating"
+    refinement: "LIKELY SUBSTANTIALLY OVERLAPPED, NOT YET CONFIRMED: Step 83's opening preview names near-identical vocabulary (event time vs processing time, validity intervals, policy effective dates) to this already-established temporal-epistemics content across three prior files; flagged as a likely seventh collision candidate pending direct comparison once 0668 is read"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "HIGH PRIORITY: read Step 83's actual file (0668) and directly compare its temporal-reasoning content against 0648's Event time≠Processing time/ValidTime≠RecordedTime, 0657's IdentityValidityAtTime, and 0661's ValidFrom/ValidUntil governance effective-dating — the near-verbatim vocabulary overlap in this file's own closing preview makes a genuine collision more likely here than at the previous several (mostly resolved-as-genuine-deepening) comparison points in this span."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CONFIRMATION that Step 82 delivers genuinely new, rigorous quantitative uncertainty-propagation mathematics (exact variance-propagation formulas, the delta method, asymmetric-distribution caution, Monte-Carlo decision simulation, Bayesian model averaging) not previously present in the corpus at this formula-level precision, resolving the comparison flagged at 0666."
+  - "dimension-registry.md: record the standard Aleatory/Epistemic uncertainty distinction as a genuine terminological refinement of 0647's World/Parameter/Model trichotomy; first-class governed Assumption objects; the uncertainty-impact-propagation graph (Impact(O_i)) extending 0647's/0663's impact-analysis discipline; and Decision robustness formally strengthened (∀u∈𝒰:D(u)=A) extending 0660's decision function."
+  - "dimension-registry.md: record THREE further explicit, correctly-attributed backward cross-references in this single file (evidence-independence, Step 75's VOI, Step 76's decision function) — a seventh consecutive well-self-referencing file; seven new invariants with zero exact-name collisions; and the flagged LIKELY seventh collision candidate — Step 83's temporal-reasoning preview near-verbatim overlapping already-established content at 0648, 0657, and 0661."
+anchor_test:
+  anchor: "0666's flagged comparison against the corpus's Bayesian/uncertainty machinery; the corpus's evidence-independence discipline; 0659's Value of Information; 0660's decision-function formulation; 0647's uncertainty-type trichotomy; 0647's/0663's impact-analysis discipline; 0658's I_CausalUncertainty; 0648's/0657's/0661's temporal-epistemics content"
+  supports_dimension: "CONFIRMS, with rigorous and formally correct new quantitative mathematics (exact variance-propagation formulas, a correctly-worked delta-method example, an asymmetric-distribution caution grounded in genuine statistical theory), that this file resolves the comparison flagged at 0666 in favor of substantial new mathematical contribution rather than duplication. Delivers three further explicit, correctly-attributed backward cross-references within a single file, extending the strong positive self-reference run to a seventh consecutive file and further reinforcing that the dense Steps-65-75 collision cluster was a bounded, localized episode. Genuinely and usefully refines 0647's non-standard uncertainty-type terminology via the field-standard aleatory/epistemic distinction. At the same time, this file's own closing preview of Step 83 uses near-verbatim vocabulary matching already-established temporal-epistemics content across three separate prior files (0648, 0657, 0661), making this reconstruction's flagged seventh collision candidate more likely to be confirmed as genuine overlap than the several prior comparisons in this span that resolved favorably — this should be verified directly rather than assumed, consistent with this reconstruction's discipline"
+  refines_or_contradicts: "confirms and resolves 0666's flagged comparison in favor of genuine new mathematical content; explicitly and correctly cross-references the corpus's evidence-independence discipline, 0659's VOI, and 0660's decision function; genuinely refines 0647's uncertainty-type terminology; directly extends 0647's/0663's impact-analysis discipline and 0658's causal-uncertainty invariant; flags, with elevated likelihood given near-verbatim vocabulary overlap, a seventh collision candidate against 0648's/0657's/0661's temporal-epistemics content; no contradiction found; introduces no new invariant-naming collisions"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The correctly-worked delta-method example (§82.14, Y=X², X=10±1, σ_Y≈2(10)(1)=20, i.e. Y≈100±20) and the covariance-adjusted variance formula (§82.9-82.11, Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y) and its negative-correlation counterpart) are directly checkable, mathematically correct results not present anywhere in this reconstruction's prior records at this level of formula-level specificity, confirming this file's genuine quantitative novelty."
+  - "The exact quoted cross-reference phrases 'this connects directly to our previous evidence-independence work' (§82.9), 'this links Step 75 and Step 82' (§82.46), and 'this connects directly to Step 76' (§82.70) are three directly checkable, concrete instances of correctly-attributed backward self-reference within a single file, extending the positive-counter-example run established at 0662 through seven consecutive files."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 83's actual content (0668), once read, substantially overlaps 0648's Event time≠Processing time/ValidTime≠RecordedTime, 0657's IdentityValidityAtTime, and 0661's ValidFrom/ValidUntil governance effective-dating as a confirmed seventh collision, or delivers a genuinely distinct temporal-reasoning treatment despite the near-verbatim preview vocabulary."
+tier2_triggered: true
+tier2_reason: "CONFIRMS genuinely new, rigorous quantitative uncertainty-propagation mathematics (exact variance-propagation formulas, a correctly-worked delta-method example, an asymmetric-distribution caution, Monte-Carlo decision simulation, Bayesian model averaging) not previously present in the corpus at this formula-level precision, resolving the comparison flagged at 0666. Delivers three further explicit, correctly-attributed backward cross-references within a single file, extending the positive self-reference run to a seventh consecutive file. Genuinely refines 0647's uncertainty-type terminology via the standard aleatory/epistemic distinction. Flags a LIKELY seventh collision candidate — Step 83's temporal-reasoning preview near-verbatim overlaps already-established content at 0648/0657/0661 — for direct confirmation at 0668. Verdict 'STEP 82 — PASS.'"

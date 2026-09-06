@@ -1,0 +1,177 @@
+sequence: "0201"
+path: docs/knowledgeos/brainstorming/kernel/20260824-023136-nyaya-vaisesika-indian-logic-and-atomism-extraction.md
+title: "Arthur Berriedale Keith's Indian Logic and Atomism (1921) mined for Nyaya-Vaisesika epistemology, a third distinct Nyaya academic source (after 0170's Tarka-sangraha and 0177's Dasti-Phillips Nyaya-sutra): thirty-eight KOS-NYAYA-001..038 findings, Vaisesika ontology (samavaya/abhava), debate-governance principles, and an explicit three-way Williamson+Nyaya+Chalmers synthesis pipeline reinforcing the move toward formal/technical research"
+date: "2026-08-24"
+bytes: 32000
+model:
+  primary: c1
+  secondary: [g]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0201"
+importance: high
+confidence: high
+about: >
+  A third distinct Nyaya-related academic source in the corpus's reading order (after 0170's Tarka-
+  sangraha/Dipika extraction and 0177's Dasti & Phillips Nyaya-sutra Selections, identified by name at
+  0188's Appendix A) -- Arthur Berriedale Keith's *Indian Logic and Atomism: An Exposition of the Nyaya and
+  Vaicesika Systems* (1921), a secondary historical exposition rather than a primary translated text.
+  Explicitly frames the extraction as targeting "not the Vaisheshika atomism itself" but "the Nyaya theory
+  of knowledge, proof, inference, error, debate, categories, relations, and the discipline of establishing
+  claims." Produces thirty-eight numbered KOS-NYAYA-001..038 findings. Substantially overlaps and deepens
+  material already tracked at 0170/0177 (vyapti/invariable-concomitance requiring positive AND negative
+  instances not mere repeated observation, five-member syllogism, error-as-misplacement-not-absence-of-
+  cognition, testimony-as-a-distinct-epistemic-route). Genuinely new content beyond 0170/0177: (1)
+  knower/cognition/known as three irreducibly distinct elements (KnowledgeSubject->KnowledgeProcess->
+  Cognition->KnowledgeObject), explicitly warning against collapsing KnowledgeClaim/KnowledgeEvent/
+  KnowledgeSubject/KnowledgeObject; (2) private inference-for-oneself vs. communicated inference-for-
+  another as a formal Nyaya distinction, mapped onto InternalInference vs. Justification -- an agent may
+  internally arrive at a conclusion but KnowledgeOS requires an externally reproducible justification,
+  called "a huge connection to deterministic AI assurance"; (3) the five-member syllogism (proposition/
+  reason/example-concomitance/application/conclusion) formalized into a Justification object, with the
+  example explicitly analyzed as a semantic/epistemic BRIDGE between general principle and concrete
+  application (directly resonant with, though independently derived from, Chalmers's bridging-principle
+  concept); (4) a logical-error taxonomy distinguishing deficiency (nyuna, omission), redundancy (adhika,
+  excess), and tenet-deviation as three structurally distinct argument-failure modes, applied concretely to
+  architecture documentation (an ADR missing a governing assumption vs. authority duplicated across three
+  locations vs. an implementation violating an accepted principle); (5) an explicit debate-governance
+  principle -- criticism must respect the opponent's own accepted premises (one cannot fault a Buddhist
+  school for not using the Nyaya five-member syllogism if it recognizes a different structure), directly
+  mapped onto evaluating an external/foreign bounded context by its own internal rules before mapping to
+  one's own model for comparison, explicitly flagged as strong cross-source convergence with Williamson's
+  neutral-semantic-mapping work (0199); (6) truth-seeking discourse explicitly distinguished from victory-
+  oriented discourse (Nyaya's own classification of fraud/futile-objections/cavilling/wrangling as
+  characteristics of the latter), mapped onto a candidate AI-agent-governance objective distinction
+  (establish_best_supported_claim vs. defend_current_proposal); (7) hypothetical adoption as a legitimate
+  reasoning technique -- temporarily accepting an opponent's position without endorsing it, deriving its
+  consequences, and using those consequences argumentatively -- mapped onto "architecture counterfactual
+  analysis" via a HypotheticalArgument object; (8) Vaisesika's categorial ontology (Substance/Quality/
+  Activity/Generality/Particularity/Inherence/Non-existence) used not for its specific seven categories but
+  for the general principle that "an ontology needs both entities and the relations that explain how
+  entities belong together," with samavaya (inherence, a relation between things that cannot exist
+  separately) singled out as a concrete worked example of a named, non-generic relation type, reinforcing a
+  broader argument against flat/untyped "depends-on" edges; (9) abhava (non-existence/negation) recognized
+  as a full Vaisesika category with explicit relational structure to a positive counterpart and substrate
+  -- motivating a fully-fledged AbsenceAssertion object (expected_object/observed_scope/expectation_source/
+  observation_time/evidence) as a substantial deepening of the corpus's existing Zero-lens "absence is
+  informative" work, now grounded in an explicit primary-tradition ontological category rather than only an
+  architectural heuristic; (10) an explicit criticism of the Nyaya-Vaisesika causal theory itself (Keith's
+  own scholarly assessment that the system inadequately handles conjunction of multiple causes and complex
+  causal systems), turned into a researcher-inference warning against choosing an elegant ontology that
+  cannot represent real multi-causal structures, explicitly connected to Williamson's simplicity-is-not-
+  mere-entity-count principle (0199); (11) the system's own historical evolution through commentary,
+  criticism, Buddhist interaction, and syncretism used as direct evidence for treating knowledge itself as
+  historical (original-claim->interpretation->criticism->revision->current-formulation), motivating a
+  KnowledgeObject history model (current_version/predecessors/successors/interpretations/criticisms/
+  supersession); (12) an explicit epistemic-status vocabulary for historical/reconstructive uncertainty
+  (Known/Probable/Contested/Uncertain/Reconstructed/Unknown) grounded in Keith's own repeated preface
+  warnings that "absolutely certain results cannot always be achieved" in reconstructing these systems --
+  the source's own epistemic humility directly modeled as a KnowledgeOS status taxonomy; (13) an explicit
+  self-referential provenance discipline applied to the extraction itself: Keith (1921) recorded as
+  "historical secondary exposition" / "interpretive reconstruction," explicitly NOT "canonical
+  representation of Nyaya itself." Produces a twenty-six-row "don't-collapse" distinction matrix (the
+  largest such matrix in this reading stretch), a nine-item DDD translation (candidate Epistemology bounded
+  context with KnowledgeClaim/Inference/Evidence/Argument/Cognition/Validation/Dispute aggregates,
+  EpistemicBasis/ValidityStatus/Scope/Assumption/Counterexample/Provenance value objects, and eight named
+  domain events), and a ten-question "Nyaya-inspired epistemic checklist" for AI agent architecture
+  investigation. Closes with an explicit three-source synthesis diagram combining Chalmers (bridge-across-
+  levels), Nyaya (justification-of-inference), and Williamson (theory-comparison) into one unified
+  Reality->Evidence->Bridge->Claim->Reason->Invariant->Application/Counterexample->Conclusion->Theory->
+  Consequences->Theory-Comparison->Governed-Status pipeline, explicitly called "a serious candidate
+  conceptual architecture for KnowledgeOS... not yet the implementation architecture." Restates and
+  reinforces 0200's move-toward-formal/technical-research recommendation as its own closing conclusion, a
+  fourth instance of this recommendation appearing in this reading stretch.
+
+introduces:
+  - "Private inference-for-oneself vs. communicated inference-for-another as a formal epistemic distinction,
+    mapped onto InternalInference vs. Justification -- directly connecting deterministic AI assurance to a
+    classical reproducibility requirement (can another reasoner reproduce the inference?)"
+  - "A three-way logical-error taxonomy (deficiency/redundancy/tenet-deviation) applied concretely to
+    architecture documentation failure modes"
+  - "The debate-governance principle 'criticism must respect the opponent's accepted premises,' explicitly
+    flagged as strong cross-source convergence with Williamson's neutral-semantic-mapping work (0199)"
+  - "Truth-seeking vs. victory-oriented discourse as a formal Nyaya classification, mapped onto a candidate
+    AI-agent governance objective distinction (establish-best-supported-claim vs. defend-current-proposal)"
+  - "Hypothetical adoption (temporarily accepting an unendorsed position to derive its consequences) as a
+    legitimate reasoning technique, mapped onto architecture counterfactual analysis via a
+    HypotheticalArgument object"
+  - "Samavaya (inherence) as a concrete worked example of a named, non-generic ontological relation type,
+    directly supporting the corpus's recurring argument against flat/untyped dependency edges"
+  - "A fully-fledged AbsenceAssertion object (expected_object/observed_scope/expectation_source/
+    observation_time/evidence) grounded in the Vaisesika abhava category, substantially deepening the
+    corpus's Zero-lens absence-is-informative work with an explicit primary-tradition ontological basis"
+  - "An epistemic-status vocabulary (Known/Probable/Contested/Uncertain/Reconstructed/Unknown) directly
+    modeled on Keith's own preface warnings about the limits of historical reconstruction -- the source's
+    own epistemic humility turned into a proposed KnowledgeOS status taxonomy"
+  - "An explicit three-source (Chalmers/Nyaya/Williamson) synthesis pipeline, the most complete cross-book
+    convergence diagram produced in this reading stretch to date"
+  - "A twenty-six-row 'don't-collapse' distinction matrix, the largest single such matrix encountered in
+    this reading stretch"
+
+defines: []
+
+refines:
+  - "Deepens the already-admitted Nyaya/Tarka lens (0161, refined at 0170 and 0177) with a third distinct
+    academic source (Keith 1921) -- a secondary historical exposition rather than a primary text, requiring
+    its own provenance discipline explicitly applied within the file itself"
+  - "Extends 0170's vyapti/invariable-concomitance treatment with the explicit positive-AND-negative-
+    instance requirement and suspected-discrepancy handling, more operationally detailed than 0170's
+    version"
+  - "Directly connects to and extends Williamson's simplicity-is-not-mere-entity-count principle (0199) via
+    the causal-complexity criticism, and to Chalmers's bridging-principle concept via the example-as-bridge
+    reading of the five-member syllogism"
+  - "A fourth instance in this reading stretch of the explicit move-toward-formal/technical-research
+    recommendation (after 0134, 0187, 0200), restating rather than extending that redirection"
+
+contradicts: []
+
+repeats:
+  - {concept: "Vyapti/invariable concomitance, five-member syllogism, error-as-misplacement", canonical_source: "0170", novelty: low}
+  - {concept: "Doubt/testimony as distinct epistemic routes; default-trust/certification framing", canonical_source: "0177", novelty: low}
+  - {concept: "Move toward formal/technical research over further philosophical reading", canonical_source: "0200", novelty: none}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "None -- explicitly scoped as adding to the research vocabulary, not the Kernel; explicitly lists what
+    must NOT be extracted (Vaisesika atoms, Nyaya soul theory, cosmology, theology, specific historical
+    dating claims) as belonging to the source-knowledge layer only"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Deepens the existing Nyaya/Tarka lens with a third academic source; explicitly reinforces (does not extend) the move toward formal/technical research already recommended at 0134/0187/0200."
+  alternative_minimal_kernel: "none -- offers a candidate Epistemology bounded context (KnowledgeClaim/Inference/Evidence/Argument/Cognition/Validation/Dispute) as research vocabulary, explicitly not a Kernel proposal"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Third distinct Nyaya academic source in the corpus's reading order (Keith 1921, after Tarka-sangraha/
+    Dipika at 0170 and Dasti-Phillips at 0177), each independently arriving at compatible but not identical
+    formalizations of the same tradition -- worth tracking whether these three sources are ever explicitly
+    cross-referenced or reconciled with each other"
+  - "Fourth instance of the explicit move-toward-formal/technical-research recommendation (0134, 0187,
+    0200, this file) -- a strong, repeated, source-internal signal that the corpus's own process considers
+    the philosophical-reading phase over-extended relative to formal/empirical validation, worth weighing
+    heavily when this reconstruction assesses the overall trajectory of the 0144-0201 stretch"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the three distinct Nyaya sources (0170, 0177, this file) are ever explicitly cross-referenced
+    or reconciled with each other in a later file"
+  - "Whether the explicit three-source (Chalmers/Nyaya/Williamson) synthesis pipeline is ever formally
+    developed further or tested against real DDD/architecture scenarios as this file's own closing
+    paragraph recommends"
+
+tier2_triggered: true
+tier2_reason: >
+  Third distinct Nyaya academic source; genuinely new debate-governance and hypothetical-reasoning
+  principles; a fully-fledged AbsenceAssertion object grounded in Vaisesika ontology; the most complete
+  cross-book synthesis pipeline in this stretch; a fourth reinforcement of the move-toward-formal-research
+  recommendation.

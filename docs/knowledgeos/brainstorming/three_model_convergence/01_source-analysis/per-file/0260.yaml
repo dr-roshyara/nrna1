@@ -1,0 +1,81 @@
+sequence: 260
+path: docs/knowledgeos/brainstorming/kernel/20260824-164746-cosmology-article-worlds-perspectives-processes-and-transitions.md
+title: "Cosmology Article: Worlds, Perspectives, Processes, and Transitions"
+date: "2026-08-24"
+bytes: 14000
+model:
+  primary: g1
+  secondary: c1
+source_role: PRIMARY_RESEARCH
+canonical_source: 260
+importance: critical
+confidence: high
+about: >
+  Continuation of the 0257-0259 pramana/logic sub-arc: extracts a modal dimension from a multiverse-themed
+  cosmology article, again explicitly rejecting the source's "Hinduism predicted the multiverse" and
+  physics-correspondence claims via the Zero lens. Introduces WorldState (actual/historical/possible/
+  hypothetical/counterfactual/predicted) as a missing dimension of the Knowledge State model, modal Zero
+  (Z_M, invariant across plausible worlds), EKI-08 Modal Integrity (possible must never silently become
+  actual -- flagged as especially important for LLM-generated knowledge, which linguistically collapses
+  plausible/coherent/possible/predicted/generated into observed/true/actual/happened/known), a combined
+  epistemic-status x modal-status claim object incorporating pramana, and a statistical treatment of
+  possible worlds as an updatable probability distribution over W. Proposes a ten-lens closed-loop process
+  diagram and a further Knowledge-vector formulation (Structure x EpistemicStatus x Time x Perspective x
+  Modality x Provenance), deepening the corpus's open Knowledge-vector reconciliation problem to at least
+  seven variants.
+introduces:
+  - concept: "WorldState = {actual, historical, possible, hypothetical, counterfactual, predicted} as a missing dimension of the Knowledge State model, distinguishing e.g. current architecture (A->B->C) from possible/proposed/counterfactual/historical alternatives (A->D->C, A->E->F, A->B->G, A->B)"
+  - concept: "Modal Zero Z_M(K) = invariant across plausible worlds, extending Z_R (invariant across representations) and Z_T (invariant across time); worked example: an architectural invariant ('evidence publication must remain replayable') surviving across Kafka/RabbitMQ/sync-API/other-event-bus alternative worlds"
+  - concept: "ArchitecturalInvariant = property preserved across admissible transformations: I(S)=I(T(S)) for all admissible T -- Shani+Zero combined into a near-formal testable definition"
+  - concept: "Dhatu-lens state-vs-transformation distinction deepened into a first-class semantic-construct list: State, Relation, Transformation, Constraint, Invariant, Evidence, Possibility, Perspective, Time -- a knowledge graph of Entity-relation-Entity alone is declared incomplete"
+  - concept: "Purnam-derived Local<->Global structure question: which global invariants must every bounded context preserve? Worked example: Evidence/Governance/Architecture contexts each differ locally but each must preserve provenance, temporal integrity, epistemic status, identity, traceability -- candidate system-wide epistemic invariants"
+  - concept: "Ganesha-lens five-way distinction: Reality != WorldModel != KnowledgeState != PossibleWorld != Narrative, with an explicit pipeline Reality -> Observation -> Knowledge State -> World Model -> Possible Worlds, and the principle 'a possible world is not evidence that reality is that way'"
+  - concept: "EKI-08 Modal Integrity: Possible(P) does not imply Actual(P); simulation/hypothesis/prediction/counterfactual states must never silently become observed fact -- extends 0258's EKI-1..7"
+  - concept: "LLM-collapse warning: generative AI linguistically tends to collapse Plausible=Observed, Coherent=True, Possible=Actual, Predicted=Happened, Generated=Known; preserving these distinctions is proposed as one of the strongest justifications for the KnowledgeOS platform itself"
+  - concept: "Combined status model: Epistemic status E(P) in {supported,refuted,contradictory,undetermined} and Modal status M(P) in {actual,possible,hypothetical,counterfactual,predicted} as two orthogonal dimensions that must not be collapsed, worked example combining a counterfactual+supported architectural claim"
+  - concept: "Fuller claim object combining pramana + epistemic status + modal status + temporal state + evidence + defeaters + assumptions + provenance -- described as 'getting close to an actual epistemic data model'"
+  - concept: "Possible worlds as a probability distribution: W={w1,...,wn} plausible future states, P(Wi|E) updated to P(Wi|E,E') on new evidence, giving a precise Bayesian interpretation of K_t -> K_{t+1} as epistemic-state update (Bayesian methods framed as one possible implementation, not the definition of knowledge)"
+  - concept: "Decomposed knowledge-change: delta-K = delta-E + delta-I + delta-U + delta-M + delta-Z (evidence/inference/uncertainty/modal/invariant-structure changes); worked example where hypothesis-space contraction (four possible worlds narrowing to one dominant) represents major knowledge gain despite little new stored information"
+  - concept: "Redefinition of Learning: not 'adding facts' but 'epistemically justified transformation of the space of possible models' -- can add possibilities, eliminate possibilities, discover contradictions, or increase uncertainty (when prior certainty was unjustified); all four framed as potential knowledge improvement"
+  - concept: "Ten-lens closed-loop process diagram: Zero(invariant) <-> Dhatu(transformation) / Temporal(change) -> Ganesha(definition) -> Pramana(epistemic origin) -> Leonardo(missing assumptions) -> Logic(epistemic state) -> Krishna(decision utility) -> Shani(invariant preservation) -> Hofstadter(self-knowledge), with the statistical lens wrapping the whole loop"
+  - concept: "Further Knowledge-vector formulation: KnowledgeState = Structure x EpistemicStatus x Time x Perspective x Modality x Provenance"
+defines: []
+refines:
+  - concept: "0258's EKI-1..7 epistemic invariants"
+    refinement: "Adds EKI-08 Modal Integrity as an eighth invariant, extending the set into the modal (possible/actual) dimension"
+  - concept: "0259's catuskoti epistemic-state work and the broader pramana claim-object thread (0257/0258)"
+    refinement: "Combines epistemic status with a newly-introduced orthogonal modal-status dimension into a fuller claim object; explicitly states the two dimensions must not be collapsed"
+  - concept: "The corpus's Zero lens (invariant across representations, then across time)"
+    refinement: "Extends Zero with a third variant, modal Zero (invariant across plausible worlds), continuing the same pattern established for temporal Zero"
+  - concept: "The corpus's open Knowledge-vector reconciliation problem (0247/0253/0254/0255/0259)"
+    refinement: "Adds a seventh independently-motivated vector formulation (Structure x EpistemicStatus x Time x Perspective x Modality x Provenance), further deepening the unresolved family"
+contradicts: []
+repeats:
+  - concept: "Statistics measures epistemic support, is not the definition of knowledge itself"
+    canonical_source: 258
+    novelty: none
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: extend the Knowledge-Vector-family unresolved_equivalence entry (just added at 0259) with a seventh variant from this file: KnowledgeState=Structure x EpistemicStatus x Time x Perspective x Modality x Provenance."
+  - "dimension-registry.md: note EKI-08 Modal Integrity as an extension of 0258's EKI-1..7 set, within the same open invariant-numbering-scheme-reconciliation question already tracked."
+anchor_test:
+  anchor: "0258's EKI-1..7; 0259's catuskoti epistemic-state work; the corpus's Zero lens (Z_R, Z_T); the open Knowledge-vector reconciliation problem"
+  supports_dimension: "Gita/philosophical model (cosmology/multiverse source) directly extending the mathematical/statistical model with a modal-logic/possible-worlds dimension (probability distributions over possible worlds, Bayesian update interpretation)"
+  refines_or_contradicts: "refines/extends EKI set, Zero lens, and pramana claim-object thread; adds to (does not resolve) the Knowledge-vector reconciliation problem; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "No formal criteria given for what counts as an 'admissible transformation T' in the ArchitecturalInvariant = I(S)=I(T(S)) formulation"
+open_questions:
+  - "Whether the ten-lens closed-loop diagram in this file (Zero/Dhatu/Temporal/Ganesha/Pramana/Leonardo/Logic/Krishna/Shani/Hofstadter + statistical) is the corpus's final stabilized lens vocabulary or continues to evolve"
+  - "Whether EKI-08 and the prior EKI-1..7 are ever reconciled with other invariant-numbering schemes noted throughout the corpus"
+tier2_triggered: true
+tier2_reason: "Introduces a full modal dimension (WorldState, modal Zero, EKI-08 Modal Integrity, an explicit LLM-collapse warning framed as a core platform justification), combines it with the epistemic-status dimension into a fuller claim object, gives possible-worlds a Bayesian statistical treatment with a delta-K decomposition, redefines Learning as epistemic space-transformation, and adds a seventh unreconciled Knowledge-vector formulation."

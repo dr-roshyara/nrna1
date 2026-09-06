@@ -1,0 +1,82 @@
+sequence: 341
+path: docs/knowledgeos/brainstorming/kernel/refinement_phase/20260825-192549_this-is-exactly-the-behaviour-we-want.md
+title: "Session 1's First Document-by-Document Transition: K-M0 -> K-M1, Contradiction C-K1 Opened"
+date: "2026-08-25"
+bytes: 5368
+model:
+  primary: c1
+  secondary: null
+source_role: CRITICAL_REVIEW
+canonical_source: 341
+importance: high
+confidence: high
+about: >
+  Direct continuation of 0338's Session-1 governance instruction: approves the first executed document-
+  by-document extraction step under the new differential procedure. Starting model K-M0 (Knowledge as a
+  relationship of knower/object/evidence/justification/reasoning/context/conclusion, matching 0337 Part
+  2's K-2) is extended by one new document into K-M1 (Knowledge as accumulated durable understanding
+  produced through Observation -> Recommendation -> Decision -> Outcome -> Assessment -> Knowledge),
+  correctly classified as an EXTEND (M2-tier) event rather than being absorbed into K-M0. Explicitly
+  approves that Session 1 did NOT reconcile K-M0 and K-M1, opening the corpus's first tracked research
+  contradiction C-K1 (relationship vs. durable-understanding-via-decision-lifecycle) and leaving it
+  OPEN. Explicitly approves that Session 1 stopped short of promoting Decision/Outcome/Assessment/
+  Recommendation/Observation into Kernel-candidate status, formalizing a five-level escalation ladder
+  (research model -> potential domain concept -> potential architectural implication -> formal
+  adjudication -> possibly Kernel) and confirming the extraction is currently only at the first two
+  levels. Flags the word 'durable' as a potentially important but not-yet-temporal claim, generating a
+  new open question (what exactly persists if knowledge is durable but knowledge evolves?) with seven
+  candidate answers, none selected. Records a corpus-provenance meta-rule (research corpus != current
+  architecture != constitutional authority) derived from an EKS architecture baseline's low evidence-
+  priority ranking of brainstorming/proposals. Issues a formal continuation protocol to Session 1 with
+  explicit per-document stopping conditions (new-model->create-and-stop; confirmation->record-and-
+  continue; contradiction->record-without-resolving-and-stop; no-new-information->record-and-continue)
+  and a five-category provenance-tagging discipline (source-derived/project-original/interpretation/
+  hypothesis/architectural-implication).
+introduces:
+  - concept: "K-M0 (Session 1's working starting model, matching this reconstruction's own tracked K-2/'knowledge as relationship' finding from 0337 Part 2): Knowledge = relationship(knower, object, evidence, justification, reasoning, context, conclusion)"
+  - concept: "K-M1 (the first document-driven extension of K-M0): Knowledge as accumulated durable understanding produced through a chain Observation -> Recommendation -> Decision -> Outcome -> Assessment -> Knowledge, with observation explicitly distinguished from knowledge in the source document"
+  - concept: "Explicit approval of the EXTEND classification (labeled M2-tier event) for K-M1 rather than absorbing the new material into K-M0 -- 'exactly the behavior we wanted,' confirming the one-document-at-a-time differential method (established at 0338) works as intended on its first real test"
+  - concept: "C-K1, the corpus's first explicitly tracked open research contradiction in this governance strand: 'Is Knowledge fundamentally a relationship, or is it an accumulated durable understanding produced through a decision/assessment lifecycle -- or are these two descriptions of different dimensions of the same thing?' -- explicitly kept OPEN, not reconciled, 'much more valuable than immediately deciding that one model is right'"
+  - concept: "Five-level escalation ladder for research findings: Research model -> potential domain concept -> potential architectural implication -> formal adjudication -> possibly Kernel -- explicit confirmation that the extraction is currently only at the first two levels, and explicit approval that Session 1 stopped short of inferring 'therefore Decision, Outcome and Assessment belong in the Kernel'"
+  - concept: "The 'durable' finding: the source document's phrase 'durable engineering understanding' is flagged as potentially important but NOT YET a temporal model; new open question generated: 'if Knowledge is durable but knowledge can evolve, what exactly persists?' with seven candidate answers explicitly left unselected (identity, relationship, proposition, historical record, justification, understanding, knowledge object) -- flagged as a possible future connection to the corpus's own 'knowledge is associated with time' intuition, pending further document evidence"
+  - concept: "Corpus-provenance meta-rule, derived from an observation that 'the original EKS architecture baseline' places brainstorming/proposals at low evidence priority: 'the research corpus can discover possibilities without becoming architectural authority' -- formalized as Research corpus != Current architecture != Constitutional authority"
+  - concept: "Explicit decision NOT to resolve C-K1 now: the next document may support K-M0, support K-M1, introduce a third model, reveal the two are orthogonal, or falsify one -- 'C-K1 stays OPEN'"
+  - concept: "Formal continuation protocol issued to Session 1, with explicit per-document stopping conditions: if a document materially changes the model -> create K-M2 and STOP; if it only confirms existing concepts -> record confirmation and continue; if it introduces a contradiction -> record it without resolving it and STOP; if it adds no material conceptual information -> record and continue (M0-equivalent). Also reiterates: do not promote any research finding into KnowledgeOS law; do not treat Decision/Outcome/Assessment/Recommendation/Observation as Kernel elements"
+  - concept: "Five-category provenance-tagging discipline for all future extraction entries: source-derived, project-original, interpretation, hypothesis, architectural implication -- to be maintained strictly across the ongoing document-by-document extraction"
+defines: []
+refines:
+  - concept: "0337 Part 2's K-2 (Phase 1 relationship conception) and K-3 (Phase 1 justified state evolution) models"
+    refinement: "K-M0 directly instantiates K-2 as the Session 1 working starting model; K-M1's Observation->Recommendation->Decision->Outcome->Assessment chain is a new, more operationally detailed variant not identical to K-3's simpler 'justified state evolution,' opening a genuinely new contradiction (C-K1) rather than simply re-confirming a known K-model"
+  - concept: "0338's differential extraction procedure (add/contradict/refine/invalidate relative to the existing concept map) and its six-layer target"
+    refinement: "First live execution of the procedure: confirmed working via the K-M0->K-M1 EXTEND classification, with an explicit formal per-document stopping-condition protocol now specified for all future steps"
+  - concept: "0338's Session-1/Session-2 non-contamination rule"
+    refinement: "Reinforced via the corpus-provenance meta-rule (research corpus != architecture != constitutional authority) and the explicit refusal to promote any research finding into KnowledgeOS law at this stage"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record K-M0/K-M1/C-K1 as the first live instance of the Session-1 document-by-document extraction method (established at 0338), tracking the corpus's own internal Knowledge-concept research history separately from this reconstruction's own K-1..K-11 cross-reference."
+  - "dimension-registry.md: record the five-level escalation ladder and the five-category provenance-tagging discipline as further methodology additions to the Session-1/Session-2 governance strand."
+anchor_test:
+  anchor: "0337 Part 2's K-2/K-3 models and eleven-model catalog; 0338's differential extraction procedure and Session-1/Session-2 separation"
+  supports_dimension: "Governance/methodology strand: first live execution of the document-by-document Knowledge-concept extraction method, opening the corpus's first explicitly tracked contradiction (C-K1: relationship vs. durable-understanding-lifecycle) and formalizing a per-document stopping-condition protocol and provenance-tagging discipline for all future steps"
+  refines_or_contradicts: "refines 0337 Part 2 (K-M0 instantiates K-2; K-M1 is a new variant distinct from K-3); refines 0338 (first live test of its procedure, now with an explicit stopping-condition protocol)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "The specific source document that produced K-M1 -- referenced only as 'Document 1,' not identified by filename or timestamp in this file"
+  - "The referenced 'original EKS architecture baseline' and its evidence-priority ranking of brainstorming/proposals -- not itself included in this file"
+open_questions:
+  - "What exactly persists if knowledge is durable but knowledge evolves -- seven candidates listed, none selected"
+  - "Whether C-K1 (relationship vs. durable-understanding-lifecycle) is ever resolved, refined, or shown to be orthogonal in a later document"
+  - "Whether K-M2, K-M3, etc. are produced in subsequent files as this reconstruction's sequential pass continues"
+tier2_triggered: true
+tier2_reason: "First live execution of the Session-1 document-by-document extraction method (established at 0338): approves the K-M0->K-M1 EXTEND transition, opens the corpus's first explicitly tracked contradiction C-K1 (relationship vs. durable-understanding-via-decision-lifecycle), formalizes a five-level escalation ladder confirming the extraction has not yet reached architectural implications, flags the 'durable' claim as a new open temporal question, and issues a formal per-document stopping-condition protocol plus a five-category provenance-tagging discipline governing all future extraction steps."

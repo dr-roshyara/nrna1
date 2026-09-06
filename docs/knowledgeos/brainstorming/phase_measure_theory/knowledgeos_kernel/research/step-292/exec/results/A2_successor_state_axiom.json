@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "experiment_id": "KR-REITER-2026-09",
+  "source": "Reiter 2001, Knowledge in Action",
+  "source_role": "[EXT] independent formal-methods source -- NEVER an authority",
+  "theory": "v1.2 UNCHANGED",
+  "adopted": "nothing",
+  "deterministic": true,
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "claim": "F' = gamma+ \u2228 (F \u2227 \u00acgamma-)",
+ "deterministic": true,
+ "persistence_unmentioned_fluent_unchanged": true,
+ "conflicting_effects_from_F_false": [
+  "F"
+ ],
+ "conflicting_effects_from_F_true": [
+  "F"
+ ],
+ "conflict_resolved_silently_in_favour_of_gamma_plus": true,
+ "finding": "when gamma+ and gamma- both name F, the SSA yields F TRUE with no signal that the effect axioms were inconsistent. The frame solution PRESUPPOSES consistent effect axioms; it does not detect their inconsistency."
+}

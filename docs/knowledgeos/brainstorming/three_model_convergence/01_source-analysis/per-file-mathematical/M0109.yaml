@@ -1,0 +1,148 @@
+sequence: M0109
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-143500_knowledgeos-complete-todo-register-revised.md
+title: "KnowledgeOS -- Complete TODO Register (Revised): The Authoritative Ten-Group (A-J) Dependency-Graph Roadmap for All Remaining Research, Explicitly REPRIORITIZING the Queue From the Previously-Stated 'Factivity -> Contr -> >=' to 'Contr(1) -> Factivity(2) -> >=(3)' Since 'Factivity Does NOT Block Contr', Formalizing Projection/Invariant (M0098/M0099) as a Parallel Foundational Lane Not Dependent on delta, Introducing a New Quantified Factivity-Externalization Result ('88.25% Survival Rate'), and Reaffirming Kernel = NOT SELECTABLE Pending the Load-Bearing Subset of A-I"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "the authoritative, governance-ratified whole-programme roadmap consolidating and superseding an implicit prior TODO register -- explicitly lists six corrections applied, most consequentially reordering the research priority queue from the previously-stated Factivity->Contr->>= (seen in M0103/M0104/M0106/M0108) to Contr(priority 1)->Factivity(priority 2)->>=(priority 3), on the explicit grounds that Factivity does NOT block Contr and Contr is testable independently"
+source_role: ADJUDICATION
+canonical_source: M0109
+importance: critical
+confidence: high
+about: >
+  Declares "the KnowledgeOS programme has reached a structural milestone. The broad conceptual
+  space has been explored. The remaining work is concentrated around a small number of load-
+  bearing semantic decisions," listing six corrections applied to a prior (unnamed, presumably
+  earlier) TODO register: (1) Factivity does NOT block Contr -- contradiction semantics can be
+  investigated independently; (2) Composition separated from Reduction as a distinct concern; (3)
+  Projection/Invariant established as a parallel foundational lane, NOT dependent on delta; (4)
+  ==_sem reframed as a candidate prerequisite for reduction, not an already-established foundation;
+  (5) Kernel selection reframed as depending on whichever subset of TODO groups A-I proves
+  load-bearing, not mechanically on every group; (6) N_eff permanently placed off the critical
+  path, per FR-001.
+
+  **EXPLICITLY REPRIORITIZES THE RESEARCH QUEUE**: whereas M0103/M0104/M0106/M0108 all state the
+  queue as "Factivity -> Contr -> >=," this document's own Priority Order table places Contr FIRST
+  (Priority 1, "immediate next experiment"), Factivity SECOND (Priority 2, "decision track, can
+  proceed in parallel"), and >= THIRD (Priority 3) -- justified by the explicit dependency note
+  under Group B: "Contr is the immediate next experiment. It does NOT depend on Factivity." This is
+  presented as one of the six corrections, not as an unexplained reversal.
+
+  **FORMALIZES TEN TODO GROUPS (A-J)**, each with a Status/Type/Dependency header, a governing
+  question, background, sub-TODOs, and (where applicable) candidate resolutions:
+
+  GROUP A -- Factivity (DECISION, does not block Contr): "does KnowledgeOS claim truth, or only
+  epistemic warrant?" Four sub-TODOs (A1-A4: define knowledge without internal truth; decide
+  factivity; locate factivity as mathematical-property/external-assumption/architectural-boundary/
+  not-required; choose among three candidate resolutions). THE THREE CANDIDATES: Rename (A_t =
+  Attributed State, Knows external -- "honest but semantically weaker"); Externalize (factivity
+  verified outside the kernel, kernel emits claims -- cites a NEW QUANTIFIED RESULT: "88.25%
+  survival rate measurable under tested conditions," explicitly marked "an experimental result, not
+  an architectural recommendation"); Hybrid (kernel emits attributed states, some factive some not
+  -- "most complex but most expressive").
+
+  GROUP B -- Contr (EXPERIMENT, does not depend on Factivity, PRIORITY 1): "can contradiction be
+  represented without confusing it with uncertainty, absence, insufficient evidence, or theory
+  incompleteness?" Four candidates (Fourth Value C added to the codomain; Delegate-to-Consistency,
+  which "makes content depend on a blocked class"; Exclusive-by-Construction, which "silently loses
+  the contradiction"; Structured Evaluation EVal=(value,reason,provenance), "most expressive; keeps
+  contradiction distinct"). States the real question as "determine the minimum evaluation domain
+  required -- then C may emerge, or may not. Do not let the simulator force the theory to supply a
+  value merely because the simulator needs one" -- a disciplined methodological warning against
+  reverse-engineering theory from implementation convenience.
+
+  GROUP C -- >= (DECISION/DEFINITION, conceptual analysis can begin independently): "how does
+  KnowledgeOS order epistemic progress?" Cites 1,491 claims specifying no ordering (matching
+  M0099/M0106's already-sourced figure) and the Linga-Yoni finding that generation != progress.
+  Five sub-TODOs (define what is ordered; define x>=y explicitly; determine order type -- preorder/
+  partial/total/preference/dominance/admissibility; keep admissibility != ranking != selection
+  explicit since scalar ranking can manufacture uniqueness; define multiple orderings for accuracy/
+  coverage/decision/robustness separately). Real question: "there may be no universal total
+  ordering. Progress may be multi-dimensional."
+
+  GROUP D -- ==_sem (DEFINITION, candidate prerequisite not established foundation): eight
+  sub-TODOs (semantic contract scope; identity scope; context/temporal/provenance sensitivity;
+  observational-vs-semantic-vs-operational equivalence types; decidability; identity relationship).
+  Real question: "equivalence + required invariants + observability + adequacy + operational
+  preservation may all be needed" for reduction -- not equivalence alone.
+
+  GROUP E -- delta (DEFINITION, static semantics can be studied independently): signature, causes,
+  composition, and closure semantics (reaffirming ClosureEvent != ClosureState).
+
+  GROUP F -- Lifecycle/Retirement (DEFINITION, related to delta but separate): retirement,
+  retraction, supersession, expiration, and the explicit warning "don't assume these are states --
+  investigate relations/events, not automatically a state machine."
+
+  GROUP G -- Composition (REDUCTION, separate from Reduction proper): evaluation/transition/
+  structure composition.
+
+  GROUP H -- Projection/Invariant Framework (RESEARCH, parallel foundational lane, not dependent on
+  delta): five sub-TODOs formalizing M0098/M0099's Structure->Projection->Induced-Equivalence->
+  Information-Loss->Invariant-Preservation->Adequacy chain, invariant custody, and the Adequacy
+  Principle, with the real question "this may be the mathematical foundation of the entire
+  KnowledgeOS kernel."
+
+  GROUP I -- Reduction (REDUCTION, depends on ==_sem, Composition, Invariant framework): defining
+  reduction criteria, applying the Adequacy Principle, identifying invariant-bearing distinctions,
+  and determining whether a minimal rich structure actually exists.
+
+  GROUP J -- Kernel Selection (REDUCTION+GOVERNANCE, depends on the load-bearing subset of A-I):
+  reaffirms "Kernel = NOT SELECTABLE" as the verdict (not merely "unfinished"), with the explicit
+  statement "kernel selection depends on the subset of A-I that is demonstrated to be semantically
+  load-bearing. Some TODOs may eventually be shown not to belong in the kernel at all... Kernel
+  Selection blocks Theory v1.3."
+
+  **PRESENTS A REVISED DEPENDENCY GRAPH**: a Semantic Lane (Factivity/Contr/>= -> Evaluation
+  Semantics) running in parallel with a Structural Lane (Projection/Invariant and ==_sem ->
+  Reduction -> {delta, Lifecycle, Composition}) converging at Kernel Selection -> Theory v1.3?,
+  with N_eff explicitly annotated as permanently off this critical path.
+
+  **DELIVERS A FULL PRIORITY-ORDER TABLE (1-10)** and a "WHAT NOT TO DO" TABLE (seven items:
+  continuing the N_eff formula hunt; making Factivity block Contr; making Yoni/Linga architecture;
+  making Gita concepts into primitives; implementing the eight Sat classes prematurely; selecting
+  the kernel yet; creating Theory v1.3 yet) -- a consolidated, actionable anti-pattern list drawing
+  together discipline established across many prior documents in this pass.
+introduces:
+  - concept: "The explicit reprioritized research queue: Contr(1) -> Factivity(2) -> >=(3), superseding the previously-stated Factivity->Contr->>= ordering, justified by Factivity-does-not-block-Contr"
+  - concept: "The ten-group (A-J) TODO taxonomy with six explicit type categories (DECISION/EXPERIMENT/DEFINITION/REDUCTION/GOVERNANCE/RESEARCH) and a full dependency graph"
+  - concept: "The new quantified factivity-externalization result: '88.25% survival rate measurable under tested conditions,' explicitly marked experimental not architectural"
+  - concept: "The methodological warning against letting simulator implementation needs force a theoretical value into existence (Group B's 'do not let the simulator force the theory to supply a value merely because the simulator needs one')"
+  - concept: "The consolidated seven-item 'What NOT to Do' anti-pattern list"
+defines: []
+refines:
+  - concept: "M0098/M0099's Projection/Invariant/Adequacy framework, formalized here as TODO Group H, a parallel foundational research lane"
+  - concept: "The corpus's previously-stated Factivity->Contr->>= queue (M0103, M0104, M0106, M0108), explicitly reordered here to Contr->Factivity->>="
+  - concept: "M0099/M0106's already-sourced '1,491 claims specify no ordering' figure, reused here for Group C"
+  - concept: "M0102's whole-programme status consolidation, here converted into an actionable, dependency-graphed roadmap"
+contradicts:
+  - concept: "The queue order Factivity->Contr->>= stated in M0103, M0104, M0106, and M0108 -- explicitly superseded here (not silently, but as one of six named corrections) by Contr->Factivity->>="
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0109 as the authoritative ten-group (A-J) TODO register and dependency-graph roadmap for all remaining KnowledgeOS research, explicitly reprioritizing the queue from Factivity->Contr->>= to Contr->Factivity->>= (Factivity does not block Contr), formalizing the Projection/Invariant framework as Group H (a parallel lane not dependent on delta), and introducing a new quantified factivity-externalization result (88.25% survival rate)."
+anchor_test:
+  anchor: "The corpus's previously-stated Factivity->Contr->>= queue (M0103, M0104, M0106, M0108), M0098/M0099's Projection/Invariant framework, and M0102's whole-programme status consolidation"
+  supports_dimension: "The authoritative, most actionable roadmap document for the entire remaining research programme, explicitly correcting the prior queue ordering with a stated justification rather than silently drifting"
+  refines_or_contradicts: "refines (M0098, M0099, M0102, M0106); contradicts (the Factivity->Contr->>= queue order stated in M0103/M0104/M0106/M0108, explicitly superseded here)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'Factivity does NOT block Contr -- Contradiction semantics can be investigated independently' listed as Key Correction #1, directly reordering the priority table to place Contr (Priority 1) ahead of Factivity (Priority 2) -- an explicit, justified queue revision rather than an unexplained drift."
+  - "'88.25% survival rate measurable (under tested conditions)' for the Externalize factivity option -- a new, precisely-quantified experimental figure not previously recorded in this pass, explicitly flagged as experimental result rather than architectural recommendation."
+  - "'Do not let the simulator force the theory to supply a value merely because the simulator needs one' -- a precise, quotable methodological principle directly applicable to the Contr/fourth-value decision and generalizable across the whole research programme."
+undefined_concepts:
+  - "The precise experiment or provenance behind the '88.25% survival rate' figure for the Externalize factivity option -- cited without a traceable source in this document"
+open_questions:
+  - "Whether the reprioritized Contr experiment (Group B, Priority 1) was executed, and with which of the four candidate resolutions (Fourth Value / Delegate-to-Consistency / Exclusive-by-Construction / Structured Evaluation) selected or rejected."
+  - "The source experiment behind the 88.25% survival rate figure."
+tier2_triggered: true
+tier2_reason: "The authoritative, most actionable whole-programme roadmap in this pass, explicitly and justifiably reprioritizing the previously-stated research queue, formalizing the Projection/Invariant framework as an independent research lane, and introducing a new quantified factivity result -- a genuine governance-level consolidation meeting the tier-2 bar both for its methodological content and its explicit correction of an earlier-stated priority order."

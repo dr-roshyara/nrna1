@@ -1,0 +1,229 @@
+sequence: 653
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-120543_step-069-computability-state-space-and-executable-knowledge.md
+title: "Step 69 Delivers the Corpus's Clearest and Most Explicit Computability Verdict — 'Yes, the Core KnowledgeOS Architecture Is Computable,' With a Rigorous Five-Way Dimension Separation (Computable≠Decidable≠Identifiable≠ComputationallyFeasible≠EpistemicallyValid), a Formal EpistemicLimit Taxonomy, the Halting Problem Invoked Directly, State-Space Explosion (2^100) Resolved via Symbolic Delegation, a Local-First Architectural Principle Definitively Answering the Long-Running 'Normal PC' Question — Yet STILL Delivers Zero Actually-Executed Code (All 'Experiments' Remain Purely Conceptual/Boxed-PASS); Closes by Proposing a Second, Distinct Eight-Primitive Minimal Kernel in Step 70, Directly Inviting Reconciliation Against 0630's Earlier Eight-Primitive Kernel"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 69 -- Computability, State Space and Executable Knowledge', opened cleanly at 0652's close as the corpus's most explicit statement yet that a computability/executability reckoning was imminent"
+source_role: PRIMARY_RESEARCH
+canonical_source: 653
+importance: critical
+confidence: high
+about: >
+  **Directly and substantively answers the highest-priority bridge_candidate flagged at 0652**, opening with
+  the explicit question "can the architecture we have derived actually be executed?" and immediately
+  answering: **"Yes, the core KnowledgeOS architecture is computable"** -- but qualifying that the answer
+  requires precision about which computations are meant. **This is the corpus's clearest, most explicit,
+  and most rigorously argued treatment of computability/executability to date**, directly and definitively
+  closing the long-running "normal PC" question first raised at 0630/0637 and partially addressed at 0648.
+  **However -- and this is the single most important tracked finding of this file -- despite explicitly
+  promising to move "from the mathematical semantics of KnowledgeOS toward the question that matters for
+  implementation," this file delivers ZERO actually-executed code**: every one of its fifteen numbered
+  "experiments" remains a purely conceptual/mathematical thought experiment yielding a boxed `PASS`, exactly
+  matching the corpus's established pattern since Steps 51-55 of specifying rather than executing. The
+  corpus's single most significant open tracked question (whether genuine executed code ever appears)
+  therefore REMAINS UNRESOLVED even after this file's explicit, direct engagement with computability.
+
+  Delivers `Architecture≠Algorithm` (a semantic architecture can define contracts for `Knowledge, Evidence,
+  Inference, Causality, Decision` without mandating one universal algorithm per operation), and a Finite
+  representation requirement (`x∈Σ*`, every artifact must have a finite string representation -- JSON,
+  database records, graph nodes, event records, hashes). Delivers a formal KnowledgeOS state-transition
+  model `S_{t+1}=T(S_t,e_t)`, explicitly declared "executable" and storage-technology-agnostic (relational,
+  event-sourced, graph, immutable-artifact, or projection-based), confirmed via a finite-state-transition
+  experiment (PASS).
+
+  Delivers state transitions formally required to preserve the corpus's accumulated invariant catalog
+  (`I_Type, I_Provenance, I_Causal, I_Authorization, I_Conflict`), via a typed transition function
+  `T:S×E→S∪Error` that yields `Error` (specifically `EpistemicTypeError`) when an event would violate an
+  invariant, confirmed via an invalid-transition experiment (an unvalidated `Prediction→VerifiedFact`
+  attempt correctly rejected -- PASS) -- directly and explicitly connecting the corpus's entire invariant
+  program (Steps 48, 64, 65, 67, 68) to a concrete computational enforcement mechanism for the first time.
+  Crystallizes the important architectural point that "the architecture does not require an AI to
+  'understand' every rule" -- some rules are deterministic pattern checks, motivating a formal
+  **Deterministic assurance / probabilistic reasoning separation** (`AI reasoning + Deterministic
+  assurance`), confirmed via a probabilistic-output-with-deterministic-validation experiment (an AI
+  probability claim `P(p)=0.82` validated deterministically for range, model version, and provenance --
+  PASS).
+
+  **Delivers the file's first central formal deliverable -- a direct, explicit, and definitive answer to the
+  corpus's long-running "Normal PC question"**: ordinary graph traversal, schema validation, type checking,
+  provenance checking, hash verification, event processing, rule evaluation, and moderate statistical
+  analysis are all explicitly declared "not inherently distributed computations," with concrete complexity
+  estimates (`O(V+E)` graph traversal for organizational-scale graphs of `V=1,000,000, E=5,000,000` remains
+  "not mathematically impossible on a single machine"; indexed lookups achieve `O(log n)` or near-constant
+  behavior), confirmed via a provenance-lookup experiment (PASS). Delivers a precise contrast set of
+  genuinely expensive operations (Bayesian inference, large-graph inference, optimization, Monte Carlo
+  simulation, LLM inference, high-dimensional causal inference), crystallized as **"expensive" is not the
+  same as "uncomputable"** and a formal three-class complexity taxonomy (Class A -- easy/ordinary
+  `O(n)`/`O(n log n)`; Class B -- expensive but computable `O(n^2)`/`O(n^3)`/bounded-exponential; Class C --
+  not generally computable).
+
+  **Delivers the file's second central formal deliverable -- `Computability≠Feasibility`**: a problem can
+  have a known algorithm requiring `10^100` operations, making it mathematically computable but practically
+  infeasible, confirmed via a feasible-versus-computable experiment (PASS). Delivers a formal
+  `ComputationalProfile=(Time, Memory, DataVolume, ModelSize, Parallelism)` metadata concept enabling the
+  architecture to decide deployment location (`Local, Parallel, Distributed, ExternalService`), crystallized
+  as **`SemanticArchitecture should not depend on ComputationalDeployment`** (the same invariant-validation
+  operation should produce the same semantic result on a laptop, server, or distributed worker), confirmed
+  via a deployment-independence experiment (PASS) -- directly and explicitly extending the corpus's
+  established `OperationalHealth≠EpistemicValidity` (0647) discipline into the deployment-infrastructure
+  dimension specifically.
+
+  **Delivers the file's third central formal deliverable -- state-space explosion formally confronted and
+  resolved via symbolic delegation, not brute-force enumeration**: for `n=100` binary variables, the state
+  space `2^100≈1.27×10^30` is explicitly acknowledged as unenumerable, confirmed via a state-space-
+  enumeration experiment (`ComputationallyInfeasible` for full enumeration, but the symbolic representation
+  remains manageable -- PASS), motivating the important architectural point that KnowledgeOS should
+  represent `CurrentState` and `Constraints` symbolically (SAT/SMT, constraint solving, symbolic algebra,
+  optimization) rather than materializing every theoretical state, crystallized as **`KnowledgeOS should not
+  become a UniversalSolver`** -- it should define the `SemanticContract` and delegate specialized
+  computation to appropriate external engines, confirmed via a solver-delegation experiment (an
+  `OptimizationProblem` delegated to an external solver, with KnowledgeOS validating the returned solution
+  and its provenance -- PASS), delivering a clean three-branch architecture diagram (`KnowledgeOS → {Rule
+  Engine, Statistics, AI/ML} → Validated Result`).
+
+  **Delivers the file's fourth central formal deliverable -- Decidability formally invoked via the halting
+  problem**: "will this arbitrary program eventually terminate?" is explicitly identified as the halting
+  problem, with no algorithm solving it correctly for all programs, crystallized as
+  `UniversalTerminationCheck is not computable` -- but this explicitly does NOT invalidate KnowledgeOS,
+  which instead must represent `Unknown`/`UndecidableUnderCurrentModel` rather than fabricate a universal
+  answer, confirmed via an undecidable-request experiment (PASS). This directly and explicitly reinforces
+  0648's (Step 66) epistemic-limitation discipline, now extended into a formal six-member
+  `EpistemicLimit={Unknown, Uncertain, Unobservable, NonIdentified, Infeasible, Undecidable}` taxonomy
+  explicitly required never to collapse into a single generic `error` state, confirmed via a limitation-
+  classification experiment preserving each distinct semantic reason (PASS).
+
+  Delivers Termination as an operational requirement, with AI multi-agent workflows (`Agent_A→Agent_B→
+  Agent_C→Agent_A`) explicitly identified as a new looping danger requiring `CycleDetected`/
+  `ExecutionBudgetExceeded` controls, confirmed via an agent-cycle experiment (PASS) and a bounded-reasoning
+  experiment (`MaxSteps=20` correctly yielding `ReasoningTimeout` rather than infinite execution -- PASS),
+  with a formal `ExecutionBudget=(MaxSteps, MaxTime, MaxTokens, MaxCost, MaxDepth)` concept directly and
+  explicitly connected to local-PC feasibility -- "a bounded agent workflow can run locally."
+
+  **Delivers the file's fifth central formal deliverable -- Soundness versus Completeness formally
+  distinguished, with an explicit preference for soundness in high-integrity contexts**: a reasoning system
+  can be Sound (everything it derives is valid) without being Complete (it may fail to find everything
+  derivable), crystallized as **`FalsePositive may be more dangerous than FalseNegative`**, motivating a
+  preference for soundness in high-integrity transformations, confirmed via a sound-but-incomplete-
+  validator experiment (a validator checking only known invariant violations correctly yields
+  `ValidatedUnderRules`, not `AbsolutelyCorrect` -- PASS), crystallizing an important epistemic-honesty
+  reformulation: never claim "the validator passed, therefore reality is correct," only "the artifact
+  satisfies the specified validation rules." Delivers a formal verification boundary distinguishing
+  universally-quantified proof (`∀x∈D: I(x)`) from finite testing (`I(x_1),...,I(x_n)`), confirmed via a
+  finite-test-extrapolation experiment (1000 successful tests do not license an AI's claim of universal
+  correctness -- Rejected -- PASS), and a five-level Testing/assurance hierarchy (`ExampleTest, PropertyTest,
+  InvariantTest, ModelCheck, FormalProof` / `Observed, Tested, InvariantValidated, FormallyVerified`),
+  confirmed via an assurance-inflation experiment (unit-test-passing component incorrectly labeled
+  `FormallyVerified` -- Rejected -- PASS) -- directly and explicitly extending the corpus's established
+  anti-scalar, no-single-truth-score discipline into the formal-verification-assurance dimension
+  specifically.
+
+  **Delivers Step 69's central computability theorem**: "KnowledgeOS core semantics are computable because
+  its artifacts, states, transitions, and invariants can be represented finitely," paired with the essential
+  qualifying theorem: "not every question posed to KnowledgeOS will be decidable, identifiable, or
+  computationally feasible." **Delivers the file's sixth and most consequential central deliverable -- the
+  definitive "Normal PC" conclusion**: for the core KnowledgeOS software, a normal PC suffices for knowledge
+  graph operations, event processing, provenance, type checking, deterministic assurance, workflow
+  orchestration, moderate statistical computation, local databases, and small/medium AI models; large-scale
+  model training or very large inference workloads are explicitly separated out as "a separate computational
+  concern." Crystallized as **`SemanticComplexity≠HardwareRequirement`** -- the architecture's conceptual
+  richness does not imply supercomputer-scale hardware; actual hardware requirements are instead driven by
+  `DataVolume, GraphSize, QueryRate, ModelSize, InferenceLatency, TrainingRequirement, Concurrency`.
+  Delivers the explicit **`Local-First, Distributed-When-Necessary`** architectural principle: implement the
+  core on a developer workstation, benchmark actual performance, and distribute only observed bottlenecks --
+  explicitly framed as architecturally attractive because it allows testing the mathematical model without
+  first building a massive platform.
+
+  Delivers Step 69's verdict **"STEP 69 — PASS,"** with the central conclusion "KnowledgeOS is computationally
+  realizable," paired with an explicit five-way dimension separation that becomes this file's single most
+  important formal contribution: **`Computable≠Decidable≠Identifiable≠ComputationallyFeasible≠
+  EpistemicallyValid`** -- unifying and cleanly separating five previously scattered corpus concerns
+  (computability from this file; decidability from this file; identifiability from 0648's
+  Observable→Identifiable→Computable hierarchy; feasibility from this file's `Computability≠Feasibility`;
+  epistemic validity from the corpus's entire epistemic-firewall program) into one coherent five-dimension
+  frame -- directly extending and refining 0648's three-boundary `Observable→Identifiable→Computable`
+  hierarchy into a five-dimension separation.
+
+  **Closes by proposing the next concrete question -- the smallest executable KnowledgeOS kernel**, and,
+  notably, PROPOSES A CONCRETE CANDIDATE MINIMAL KERNEL directly within its own closing text: `Artifact +
+  Type + Provenance + Event + Invariant + State + Transformation + Policy` (eight primitives), explicitly
+  distinct from and NOT explicitly reconciled against 0630's earlier eight-primitive kernel reduction
+  (Step 49's LANDMARK "frozen eight-primitive kernel," per this reconstruction's records). Opens "Step 70 —
+  The Minimal KnowledgeOS Kernel," explicitly framed as "the first point at which we can seriously begin
+  mapping the mathematics into an actual KnowledgeOS software architecture rather than continuing to add
+  abstract mathematical concepts indefinitely" -- itself another explicit self-aware admission that the
+  corpus has so far continued "adding abstract mathematical concepts" without yet producing actual software
+  architecture or executable code. No actual code execution reported in this file (all "experiments" are
+  conceptual PASS assessments, not run computations). No corpus-integrity content collision detected in this
+  file's own content, though a new potential inter-file collision is flagged (0653's proposed 8-primitive
+  kernel versus 0630's earlier 8-primitive kernel).
+introduces:
+  - concept: "The corpus's clearest, most explicit, and most rigorously argued computability verdict to date, directly and definitively answering the long-running 'normal PC' question — yet still delivering zero actually-executed code, the single most important tracked finding of this file"
+  - concept: "A five-way dimension separation (Computable≠Decidable≠Identifiable≠ComputationallyFeasible≠EpistemicallyValid), unifying and extending 0648's three-boundary Observable→Identifiable→Computable hierarchy"
+  - concept: "A formal state-transition model S_{t+1}=T(S_t,e_t) with typed error handling (T:S×E→S∪Error), for the first time connecting the corpus's entire invariant program to a concrete computational enforcement mechanism"
+  - concept: "State-space explosion (2^100) explicitly confronted and resolved via symbolic delegation rather than brute-force enumeration, crystallized as KnowledgeOS should not become a UniversalSolver"
+  - concept: "The halting problem directly invoked to formally motivate a six-member EpistemicLimit taxonomy, extending 0648's epistemic-limitation discipline"
+  - concept: "Soundness≠Completeness with an explicit high-integrity preference for soundness (FalsePositive more dangerous than FalseNegative), extending the corpus's anti-scalar discipline into formal-verification assurance"
+  - concept: "The definitive Local-First, Distributed-When-Necessary architectural principle and SemanticComplexity≠HardwareRequirement, closing the normal-PC question with a clear practical conclusion"
+  - concept: "A second, distinct eight-primitive minimal-kernel proposal in Step 70's opening, not yet reconciled against 0630's earlier eight-primitive kernel — a new corpus-integrity bridge_candidate"
+defines:
+  - concept: "Architecture≠Algorithm"
+    definition: "A semantic architecture can define contracts for Knowledge, Evidence, Inference, Causality, and Decision without mandating one universal algorithm per operation, allowing different computational implementations to satisfy the same semantic contract"
+  - concept: "Computability≠Feasibility"
+    definition: "A problem can have a known terminating algorithm (mathematically computable) while requiring an astronomically large number of operations (e.g. 10^100), making it practically infeasible despite being formally computable"
+  - concept: "SemanticArchitecture should not depend on ComputationalDeployment"
+    definition: "The same semantic operation (e.g. invariant validation) must produce the same semantic result whether executed on a laptop, server, or distributed worker, given deterministic implementation and equivalent inputs"
+  - concept: "KnowledgeOS should not become a UniversalSolver"
+    definition: "Rather than materializing or brute-force-enumerating exponential state spaces, KnowledgeOS should represent state and constraints symbolically and delegate specialized computation (SAT/SMT, optimization, statistics, AI/ML) to appropriate external engines, validating their results and provenance"
+  - concept: "EpistemicLimit taxonomy"
+    definition: "Unknown, Uncertain, Unobservable, NonIdentified, Infeasible, and Undecidable are six semantically distinct reasons an answer may be unavailable, each with different meanings and different remedies; they must never collapse into one generic error state"
+  - concept: "Soundness≠Completeness (with explicit preference for soundness)"
+    definition: "A sound reasoning system only derives valid conclusions but may fail to find everything derivable (incomplete); since a false positive may be more dangerous than a false negative in high-integrity contexts, KnowledgeOS should prefer soundness, and a validator passing only means the artifact satisfies specified rules, never that reality itself is proven correct"
+  - concept: "SemanticComplexity≠HardwareRequirement / Local-First, Distributed-When-Necessary"
+    definition: "The conceptual richness of the KnowledgeOS architecture does not imply supercomputer-scale hardware; actual hardware needs are driven by data volume, graph size, query rate, model size, and concurrency, not by architectural complexity — implying a practical strategy of building the core locally first and distributing only observed bottlenecks"
+refines:
+  - concept: "0648's Observable→Identifiable→Computable three-boundary hierarchy"
+    refinement: "Extended into a five-dimension separation (Computable≠Decidable≠Identifiable≠ComputationallyFeasible≠EpistemicallyValid), unifying computability and decidability concerns from this file with identifiability from 0648, feasibility as a newly distinguished dimension, and epistemic validity from the corpus's entire epistemic-firewall program"
+  - concept: "0648's five-way epistemic-state taxonomy (Unknown/Uncertain/Ambiguous/Non-identifiable/Unobservable)"
+    refinement: "Extended into a six-member EpistemicLimit taxonomy adding Infeasible and Undecidable, directly motivated by this file's halting-problem and state-space-explosion discussions"
+  - concept: "0647's OperationalHealth≠EpistemicValidity"
+    refinement: "Directly extended into the deployment-infrastructure dimension specifically via SemanticArchitecture should not depend on ComputationalDeployment"
+  - concept: "The corpus's established anti-scalar, no-single-truth-score discipline (multiple prior steps)"
+    refinement: "Directly extended into formal-verification assurance specifically via the five-level testing/assurance hierarchy and the explicit rejection of assurance-level inflation (unit-tested≠FormallyVerified)"
+  - concept: "0630's/0637's/0648's long-running 'normal PC' question"
+    refinement: "Definitively and explicitly answered: the core KnowledgeOS architecture is computable and does not require supercomputer-scale hardware, crystallized as Local-First, Distributed-When-Necessary — this closes the specific normal-PC framing even though the broader executable-code question remains open"
+  - concept: "0630's Step 49 LANDMARK eight-primitive kernel reduction"
+    refinement: "POTENTIALLY DUPLICATED OR SUPERSEDED, NOT YET RECONCILED: this file's closing text proposes a second, differently-composed eight-primitive kernel (Artifact+Type+Provenance+Event+Invariant+State+Transformation+Policy) for Step 70, without cross-referencing or reconciling against 0630's earlier eight-primitive kernel — flagged as a new corpus-integrity bridge_candidate requiring comparison once Step 70's file is read"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "HIGHEST PRIORITY, NEW: compare Step 70's (0654's) actual eight-primitive kernel content directly against 0630's (Step 49's) earlier eight-primitive kernel reduction — are these the same kernel restated, a refinement, or a genuinely divergent second reduction? This is a new corpus-integrity question requiring explicit reconciliation, distinct from the already-tracked 0618/0597 collision."
+  - "CONTINUING, UNRESOLVED: whether ANY file in the remaining corpus ever reports genuinely executed/running code — this file explicitly promised to move toward 'the question that matters for implementation' and delivered a rigorous computability theory answer but zero executed code, so the question remains fully open and should be tracked with undiminished priority into Step 70 and beyond, especially given Step 70's explicit self-description as 'the first point at which we can seriously begin mapping the mathematics into an actual KnowledgeOS software architecture.'"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the corpus's clearest computability verdict ('yes, computable') with the critical caveat that zero actual code is executed in this file either; the five-way dimension separation (Computable≠Decidable≠Identifiable≠ComputationallyFeasible≠EpistemicallyValid) extending 0648's three-boundary hierarchy; and the formal state-transition model S_{t+1}=T(S_t,e_t) connecting the invariant program to computational enforcement for the first time."
+  - "dimension-registry.md: record state-space explosion (2^100) resolved via symbolic delegation (KnowledgeOS should not become a UniversalSolver); the halting problem directly invoked, extending 0648's epistemic-limitation discipline into a six-member EpistemicLimit taxonomy; Soundness≠Completeness with an explicit high-integrity preference for soundness; and the definitive Local-First/SemanticComplexity≠HardwareRequirement resolution of the long-running normal-PC question."
+  - "dimension-registry.md: record the NEW, unreconciled corpus-integrity flag — a second, differently-composed eight-primitive minimal kernel proposed in this file's closing text for Step 70, not yet compared against 0630's earlier eight-primitive kernel reduction; and the file's own explicit admission that the corpus has so far continued 'adding abstract mathematical concepts' without yet producing actual software architecture."
+anchor_test:
+  anchor: "0652's closing framing of Step 69's computability question; 0648's Observable→Identifiable→Computable hierarchy and five-way epistemic-state taxonomy; 0630's/0637's long-running normal-PC question; 0630's Step 49 eight-primitive kernel reduction; the corpus's established anti-scalar discipline; the single most significant open tracked question across the entire session (whether genuine executed code ever appears)"
+  supports_dimension: "Directly and substantively answers 0652's opening computability question with a rigorous, well-argued, and genuinely novel five-way dimension separation, correctly grounded in standard computability theory (the halting problem, state-space explosion, soundness/completeness) rather than loose analogy. Delivers a definitive, clearly-reasoned practical conclusion to the corpus's long-running normal-PC question (Local-First, Distributed-When-Necessary; SemanticComplexity≠HardwareRequirement), closing a specific long-open thread with real content. Most significantly, this file's own explicit framing ('the question that matters for implementation') combined with its actual delivery (a further theoretical/architectural treatment, zero executed code) provides the clearest and most directly checkable evidence yet that the corpus's central self-imposed test — genuine executability — remains unmet even at the point of its most explicit engagement with the topic; the file's own closing self-description of Step 70 as 'the first point at which we can seriously begin mapping the mathematics into an actual KnowledgeOS software architecture' is itself a direct admission of this gap. Additionally surfaces a new, previously undetected corpus-integrity question: a second eight-primitive kernel proposed without reconciliation against the earlier Step 49 kernel"
+  refines_or_contradicts: "directly and substantively answers 0652's computability question; extends 0648's Observable→Identifiable→Computable hierarchy into a five-way separation; extends 0648's epistemic-state taxonomy into EpistemicLimit; definitively resolves the normal-PC question first raised at 0630/0637; extends 0647's OperationalHealth≠EpistemicValidity and the corpus's anti-scalar discipline; leaves the corpus's single most significant open question (genuine executed code) explicitly unresolved despite direct engagement; flags a NEW, not-yet-reconciled potential collision between this file's proposed Step 70 kernel and 0630's earlier eight-primitive kernel"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The file's own opening explicitly promises to move 'from the mathematical semantics of KnowledgeOS toward the question that matters for implementation,' yet all fifteen of its numbered experiments (§69.5 through §69.55) remain purely conceptual, each yielding only a boxed PASS assessment of a thought experiment rather than output from any actually-run code — this is directly checkable, concrete evidence that the corpus's central self-imposed executability test remains unmet even in the file most explicitly framed around it."
+  - "The file's own closing text (§69.63-Step 70 opening) proposes a concrete candidate eight-primitive kernel (Artifact+Type+Provenance+Event+Invariant+State+Transformation+Policy) without cross-referencing 0630's earlier eight-primitive kernel reduction from Step 49, directly and checkably raising a new, previously undetected corpus-integrity reconciliation question distinct from the already-tracked 0618/0597 collision."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 70's actual minimal-kernel content, once read, will explicitly reconcile its eight primitives against 0630's earlier eight-primitive kernel from Step 49, and if so, whether the two are found to be the same kernel restated, a refinement, or a genuinely divergent second reduction requiring adjudication."
+  - "Whether Step 70 (explicitly self-described as the point where mathematics begins mapping into actual software architecture) will finally deliver genuine executable code, or continue the established pattern of specifying architecture without executing it."
+tier2_triggered: true
+tier2_reason: "Directly and substantively answers 0652's computability question with a rigorous, correctly-grounded five-way dimension separation and a definitive resolution of the corpus's long-running normal-PC question. Most significantly, provides the clearest and most directly checkable evidence yet — via the file's own explicit framing versus its actual conceptual-only delivery — that the corpus's central self-imposed executability test remains unmet even at its most direct point of engagement with the topic. Additionally surfaces a new, previously undetected corpus-integrity reconciliation question (a second eight-primitive kernel proposed without cross-reference to 0630's earlier one). Verdict 'STEP 69 — PASS.'"

@@ -1,0 +1,198 @@
+sequence: M0077
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-122338_what-eleven-experiments-established-a-synthesis.md
+title: "What Eleven Experiments Established -- a Synthesis: the Capstone Consolidation of the Entire Sat_c/Zero/Boundary/Kernel Experimental Arc (M0051-M0064), Delivering a Single Structural Diagnosis ('the Programme Repeatedly Defined a Projection and Asked It to Do the Work of the Structure It Projects From') Underlying Five Independent Failures Including the Factivity-Impossibility Theorem (420/10,000 Concrete Violations), Upgrading the Zero-Chain to Fully Proven [DEF] Status (1,620,000 Exhaustive Assignments, 0 Counterexamples), a Rigorous Statistical Self-Audit of the Whole Programme's Own Methodology, and Six Recorded Self-Corrections"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: x
+  secondary: b
+  secondary_note: "the capstone synthesis of eleven experiments run 2026-09-01/02 (KR-2026-09-01 kernel reduction, the Theory v1.1 simulation, and the nine-step v1.2 chain -B through -I) -- consolidates and closes almost the entire M0051-M0076 experimental arc with concrete final numbers, a unifying structural diagnosis, and an authoritative kernel-question verdict; explicitly non-canonical ('nothing here is canonical KnowledgeOS architecture, and nothing below promotes any prior result')"
+source_role: SYNTHESIS
+canonical_source: M0077
+importance: critical
+confidence: high
+about: >
+  Synthesizes eleven experiments (KR-2026-09-01 kernel reduction; the KR-SIM Theory v1.1
+  simulation; and the nine-step v1.2 chain B/C/D/E/F/G/I/H/-I) into ONE unifying structural
+  diagnosis: **"the programme has repeatedly defined a projection and then asked it to do the work
+  of the structure it projects from"** -- shown to be the SAME mistake underlying five apparently
+  distinct failures: Eval_c -> EVal / Sat_c:=value-o-Eval_c (broke at -G: nine evaluation situations
+  collapse into U); the boundary B / Zero<=>Delta=empty (broke at -B: three non-equivalent
+  readings; -G's D-0: a contradictory state closes); B again / Gap (broke at I: Gap=pi_Q(B),
+  attribute-lossy in kind and remediability); ZeroLens / DetectGap (broke at -A: derivable 12/12;
+  I: recoverable as pi_Q(ZeroLens(...))); the epistemic state E_t / K_t=Gamma(E_t,...) (broke at
+  v1.1: Gamma cannot be factive, because its domain excludes truth). "This is a structural
+  diagnosis, not a metaphor."
+
+  **CONFIRMS AND QUANTIFIES THE FACTIVITY-IMPOSSIBILITY THEOREM WITH CONCRETE NUMBERS**: DEF-1
+  factivity and K=Gamma(E,Q,C,EC) are jointly unsatisfiable [EXP] -- two worlds differing in truth
+  produce a bit-identical epistemic state, so Gamma (a function of E alone) necessarily returns the
+  same K, true in one world and false in the other. Reproduced at scale: **420 violations out of
+  10,000 paired worlds**. This is the KR-SIM lane's OWN independent confirmation of the exact
+  factivity-impossibility finding this reconstruction has already tracked from main-corpus files
+  2321/2324/2328 and from M0001's own founding thesis -- now with concrete experimental numbers.
+  Explicitly notes what is NOT established: "that KnowledgeOS should be non-factive."
+
+  **UPGRADES THE ZERO-CHAIN TO FULLY PROVEN [DEF] STATUS**: Zero_strict => Zero_reasoned =>
+  Zero_weak, "proved in two lines and machine-checked over 1,620,000 assignments including EVERY
+  choice of which reason-buckets close: 0 counterexamples" -- a genuine upgrade beyond M0052/M0055's
+  own "experimentally supported"/[DERIVED] status, now exhaustively verified rather than merely
+  observed over a handful of test cases, and confirmed independent of the reason-partition (which
+  has itself been revised twice).
+
+  **QUANTIFIES THE VALUE-PROJECTION'S INFORMATION LOSS PRECISELY**: T, F, C, UNDEFINED each receive
+  exactly ONE distinct evaluation situation; **U receives NINE**, spanning [OPEN]/[PROP]/[NEG]
+  statuses -- the exact distinction the theory most needs (epistemic insufficiency vs theory
+  incompleteness vs context absence vs world unobservability) is precisely what the projection
+  destroys.
+
+  **QUANTIFIES BLOCKED-CLASS CONTAGION**: under Kleene conjunction with five of eight evaluator
+  classes undefined, every composite requirement of arity >= 4 is permanently U; supplying three
+  candidate evaluators HALVED low-arity contagion but changed NOTHING at arity >= 7; the residual
+  blockage is attributable to exactly TWO classes (status: succeq undefined; consistency: Contr
+  undefined).
+
+  **UNIFIES THE TWO REMAINING BLOCKERS INTO ONE DECISION**: succeq (epistemic-status ordering) and
+  Contr (contradiction predicate) are shown NOT independent -- "the only contradiction repair that
+  is total, three-valued and preserves absence!=negation routes Sat_content through
+  Sat_consistency, and Contr carries the fourth-value question. Four open items are one decision."
+
+  **DELIVERS A RIGOROUS STATISTICAL SELF-AUDIT OF THE WHOLE PROGRAMME'S OWN METHODOLOGY (Part III)**:
+  "model uncertainty dominates sampling uncertainty by a wide margin, and the programme's
+  instruments were calibrated the wrong way round." Across 150,000 randomized trials, EXACTLY ONE
+  non-vacuous result was produced; seven of eleven experiments used no randomization at all and
+  produced MORE. Four dated methodological self-corrections: (S-1) vacuity is mandatory -- removing
+  Validate drove a guard-activation rate to 0.00, meaning "no failures" actually meant "cannot
+  fail"; (S-2) a published "95% CI [.5847,.6040]" was WRONG because the outcome given the world and
+  operator set is deterministic (conditional rate exactly 1.0000) -- only the generator's own
+  guard-activation rate was genuinely sampled, and "the corrected statement is stronger than the
+  published one"; (S-3) fifteen test arms shared one world stream, an exactly PAIRED design (10,000
+  worlds x 15 arms), not 150,000 independent observations -- reporting independent-binomial
+  intervals over a paired design was the error; (S-4) identical failure sets across five seeds shows
+  determinism given a seed, establishing neither universal-seed robustness nor robustness to
+  generator specification. Concludes randomized testing is the wrong instrument for semantic
+  discrimination; the three approaches that actually produced results were 2 worlds (factivity
+  theorem), 1,620,000 exhaustive assignments (Zero chain), and 2^11 exhaustive facet subsets (two
+  minimal typing sets).
+
+  **CONFIRMS THE CONSTITUTIONAL FOUR-LAYER SEPARATION HELD UNDER PRESSURE (D-1)**: the ban on
+  "philosophy -> mathematics -> primitive -> DDD object -> architecture" held; Buddhi/Sarathi/Zero
+  remained lenses; the Gita tiering (M0064) placed ZERO new primitives; "corroboration != derivation
+  is doing real work" -- an explicit confirmation that this pass's own anti-reification discipline
+  (M0057-M0076) actually functioned as intended under adversarial pressure, not merely as a stated
+  aspiration.
+
+  **DELIVERS THREE ADDITIONAL DOMAIN-DESIGN FINDINGS (D-2 through D-4)**: the theory's declared
+  distinctions are operationally real under adversarial test (zero fabrications in 10,000 trials);
+  three notions of necessity (formal/functional/domain) genuinely disagree for Discriminate/Select/
+  Revise, "collapsing them would have produced a confident and wrong kernel"; invariant custody can
+  shrink while cardinality shrinks (eliminating Challenge moved custody of "a verdict must be
+  challengeable" from one operator to two) -- "cardinality minimization is blind to this."
+
+  **DELIVERS SIX FURTHER PROCESS FINDINGS (I-1 through I-6)**: TEN notation collisions, the worst
+  being E denoting both Evidence and EpistemicState "inside the very correction whose purpose is to
+  separate them" (also P/K/H/I each collide three times) -- confirming and quantifying the
+  notation-collision problem M0045/M0049/M0058 repeatedly flagged; specification defects (Sat_
+  content's non-totality, an incomplete reason vocabulary, non-well-founded operational evaluation)
+  are invisible until adversarially attacked and "would have been concealed by implementation";
+  OVER-specification is as dangerous as under-specification -- the typed facet vocabulary has **37
+  of 41 distinctions doing no work** on the motivating suite, "a vocabulary large enough to separate
+  anything separates nothing"; a **corpus-hygiene finding directly relevant to this reconstruction's
+  own concerns**: a derived analysis lane wrote its output into the primary corpus (325 files, all
+  one day), with a hard-coded folder-list exclusion rule unable to see a lane created after it was
+  written -- "provenance should be a property of the artifact, not its directory," and "the primary
+  corpus grew ~1.7% during a single session"; measuring before repairing biases the measurement
+  (contagion at arity 3 understated 0.643 vs corrected 0.821); and the status vocabulary itself
+  needs one more term, unable to express "refuted as reading A, surviving as reading B" (exactly
+  Zero's own situation).
+
+  **DELIVERS THE AUTHORITATIVE KERNEL-QUESTION VERDICT**: "the kernel cannot be selected, and the
+  reason is not that the work is unfinished... a kernel selected now would be a selection of a
+  representation, disguised as a discovery about knowledge."
+
+  **REFRAMES THE RESEARCH DIRECTION**: ABANDON "define the projection, then try to recover the
+  structure from it"; ADOPT "define the structure, then derive the projection" -- with all five
+  failures from Part I recast as instances of the abandoned direction.
+
+  **PROPOSES THE NEXT FOUR EXPERIMENTS IN STRICT ORDER**: N-1 decide factivity (a DECISION, not an
+  experiment -- R1/rename-K_t and R2/externalize-factivity are behaviorally identical; R3 does not
+  repair anything; R2 makes measurable that 88.25% of the kernel's claims survived external
+  verification; the remaining choice is architectural: "may any KnowledgeOS component assert
+  Knows?"); N-2 define Contr and the fourth value together (unblocks both consistency and content;
+  any codomain extension must extend the Zero readings in the same step or closure silently
+  swallows the new value); N-3 define succeq (with Contr, the entire residual contagion); N-4 test
+  the 37 unsupported typed distinctions or drop them.
+
+  **DELIVERS AN EXPLICIT 'WHAT TO STOP DOING' LIST**: stop running large randomized simulations;
+  stop implementing before the specification survives adversarial attack; stop supplying missing
+  semantics as test fixtures (confirming that two evaluators were retracted as corpus-unsupported,
+  and had manufactured a Zero separation that vanished when they were removed); stop treating
+  cross-lane agreement (DetectGap's non-primitive status, confirmed by two lanes) as derivation.
+
+  **REOPENS THE FOUNDATIONAL QUESTION**: "What mathematical structure must an epistemic state
+  preserve under all admissible representations and transitions?" -- concluding the original kernel
+  question ("which operators belong to the kernel") is downstream of at least four prior questions
+  (the type of K_t, semantic equivalence, the contradiction predicate, the status ordering): "the
+  kernel question is not hard because the answer is elusive. It is hard because it was asked
+  first."
+
+  **DELIVERS A FULL APPENDIX TABLE OF ALL ELEVEN EXPERIMENTS** with IDs and one-line surviving
+  results, confirming this reconstruction's own tracked findings across M0030/M0037 (kernel
+  reduction), M0051 (factivity witness), M0055 (Zero chain derived), M0057 (value-o-Eval lossy 9->1,
+  D-0), and M0064 (boundary closure repairs D-0 6/6, Gita tiering 0 new primitives) -- plus TWO
+  experiments (-H "boundary separation," -I "typed vocabulary") whose detailed reports this pass has
+  not yet directly encountered under those exact names, confirming M0067's earlier citation of
+  "Experiment H" findings was accurate.
+
+  **RECORDS SIX SELF-CORRECTIONS ACROSS THE CHAIN**: two evaluators retracted as corpus-unsupported;
+  a Zero separation that was an artifact of them; a sequencing violation that biased a measurement;
+  a confidence interval on the wrong quantity; a parsimony test that measured the wrong thing; and a
+  minimal repair presented as THE minimal repair -- "each was found by a later experiment attacking
+  an earlier one, which is the only reason to run them in a chain."
+introduces:
+  - concept: "The unifying structural diagnosis: the programme repeatedly defined a projection and asked it to do the work of the structure it projects from, shown to be the same failure mode underlying five apparently distinct breakdowns"
+  - concept: "The quantified factivity-impossibility confirmation (420/10,000 paired-world violations), independently reproducing this reconstruction's own already-tracked main-corpus finding"
+  - concept: "The Zero chain's upgrade to fully proven [DEF] status via exhaustive machine verification (1,620,000 assignments, 0 counterexamples)"
+  - concept: "The precise quantification of value-projection information loss (U receives nine distinct evaluation situations versus one each for T/F/C/UNDEFINED)"
+  - concept: "The unification of the status-ordering and contradiction-predicate blockers into a single decision"
+  - concept: "The four statistical methodology self-corrections (vacuity mandatory, interval-on-wrong-quantity, paired-vs-independent design, seed-reproducibility-is-not-robustness)"
+  - concept: "The corpus-hygiene finding that provenance should be a property of the artifact, not its directory, directly relevant to this reconstruction's own corpus-count and cross-lane tracking concerns"
+  - concept: "The N-1 through N-4 ordered next-experiment sequence, with N-1 (factivity) reframed as an architectural decision rather than an experiment"
+  - concept: "The reopened foundational question: what mathematical structure must an epistemic state preserve under all admissible representations and transitions"
+defines: []
+refines:
+  - concept: "M0051's factivity-impossibility finding (CE-1), now quantified at 420/10,000 and explicitly connected to the KR-SIM lane's own methodology"
+  - concept: "M0055's Zero_strict=>Zero_reasoned=>Zero_weak [DERIVED] classification, upgraded to fully proven [DEF] via exhaustive verification"
+  - concept: "M0057/M0064's boundary-preserves-what-codomain-destroys finding, now quantified (9 conditions, all collapsing to U) and confirmed to block all four Zero readings identically under all three contradiction models"
+  - concept: "M0045/M0049/M0058's repeatedly-flagged notation-collision concern, now quantified (ten collisions, worst being E=Evidence/EpistemicState)"
+  - concept: "M0055/M0056's retracted-evaluator finding, confirmed as one of the programme's own recorded self-corrections"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "The corpus-hygiene finding (a derived analysis lane's output written into the primary corpus, with a hard-coded exclusion rule blind to lanes created after it was written, the primary corpus growing ~1.7% in one session) is directly relevant to this reconstruction's own already-flagged corpus-count discrepancy (M0035: three conflicting figures for the primary corpus size) -- worth cross-checking at MD-004."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0077 as the capstone synthesis of the entire eleven-experiment Sat_c/Zero/Boundary/kernel arc -- delivers a unifying structural diagnosis (projection-for-structure substitution) underlying five failures, quantifies the factivity-impossibility theorem (420/10,000) and the Zero chain's exhaustive proof (1,620,000 assignments, 0 counterexamples), a rigorous statistical self-audit of the programme's own methodology, ten quantified notation collisions, a corpus-hygiene finding directly relevant to this reconstruction's own corpus-count concerns, an authoritative kernel-question verdict, and an ordered four-experiment forward plan (N-1 through N-4)."
+anchor_test:
+  anchor: "The entire M0051-M0076 Sat_c/Zero/Boundary/kernel experimental arc, and M0035's own flagged corpus-count discrepancy"
+  supports_dimension: "Consolidates and quantifies almost every finding from that arc under one unifying structural diagnosis, and surfaces a corpus-hygiene finding directly bearing on this reconstruction's own corpus-count tracking"
+  refines_or_contradicts: "refines (M0030, M0037, M0051, M0052, M0055, M0057, M0058, M0064)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'The programme has repeatedly defined a projection and then asked it to do the work of the structure it projects from' -- a single structural diagnosis unifying five independently-discovered failures across the entire experimental arc, presented as 'a structural diagnosis, not a metaphor.'"
+  - "'P10 fails at .5944, 95% CI [.5847,.6040]' published, then shown WRONG: the outcome given the world and operator set is deterministic (conditional rate exactly 1.0000); only the generator's guard-activation rate was genuinely sampled -- 'the corrected statement is stronger than the published one,' a dated, concrete statistical self-correction."
+  - "'A kernel selected now would be a selection of a representation, disguised as a discovery about knowledge' -- the clearest single verdict statement on the kernel question across the entire pass."
+undefined_concepts:
+  - "The precise content of experiments -H ('boundary separation') and -I ('typed vocabulary') beyond their one-line appendix summaries -- their full reports have not yet been directly encountered in this pass under those names"
+open_questions:
+  - "Whether the N-1 through N-4 ordered experiment sequence (factivity decision, Contr/fourth-value, succeq, the 37 unsupported typed distinctions) is executed in the files following this document."
+  - "Whether the corpus-hygiene finding here (primary corpus growing ~1.7% in one session, provenance-as-directory-property error) connects to or explains part of the three-way corpus-count discrepancy this reconstruction flagged at M0035."
+tier2_triggered: true
+tier2_reason: "The capstone synthesis of the entire eleven-experiment Sat_c/Zero/Boundary/kernel arc -- unifies five independent failures under one structural diagnosis, quantifies the factivity-impossibility theorem and the Zero chain's exhaustive proof with concrete numbers, delivers a rigorous statistical self-audit with four dated methodological self-corrections, surfaces a corpus-hygiene finding directly relevant to this reconstruction's own tracked concerns, and closes with an authoritative kernel-question verdict and an ordered forward experiment plan. Critical importance and full tier-2 treatment unambiguously warranted."

@@ -1,0 +1,153 @@
+sequence: M0101
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-135445_review-of-kr-neff-be-careful-with-n-eff-is-real.md
+title: "Review of KR-NEFF -- Be Careful With 'N_eff Is Real': A Genuinely Executed Effective-Hypothesis-Complexity Experiment (N_eff Approx 9, 51, 202, 941 for |H|=1000 Under Varying Dependence Structure), Confirming |H| Is Not an Adequate Complexity Measure, Retracting an Apparent Closed Form N_eff=n(1-rho)^2 After Widening the Test Domain, Showing Dependence Affects Downstream Validation/Determination Rates, a Validation-Channel-Independence Result (0.0075 vs 0.9928 Decoy-Detection Probability), and a Speculative Unification Hypothesis Linking N_eff to the Unresolved Semantic-Equivalence Problem and M0098's Projection/Invariant-Preservation Line"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "reviews a genuinely EXECUTED experiment (KR-NEFF, distinct from but related to M0095/M0097's proposed KR-M2O candidate-multiplicity line) with real quantified numerical results -- a partial confirmation that some execution of the candidate-multiplicity/effective-complexity research programme actually occurred, though not necessarily the full KR-M2O-2026-09-02 protocol M0097 specified; the reviewer corrects several ontologizing overclaims in the executed report while endorsing its central empirical findings"
+source_role: ADJUDICATION
+canonical_source: M0101
+importance: critical
+confidence: high
+about: >
+  Reviews the executed KR-NEFF experiment, which held raw candidate count fixed at |H|=1000 while
+  varying dependence structure and obtained N_eff approximately 940.6, 201.9, 51.1, 9.0 for
+  increasingly dependent hypothesis spaces -- with a clean confirming comparison: |H|=1000 in 50
+  groups produces essentially identical threshold behavior and N_eff to |H|=50 fully-independent
+  candidates. Confirms as a strong [EXP] result: "|H| is not an adequate measure of hypothesis-
+  space complexity."
+
+  **CORRECTS THE ONTOLOGIZING PHRASE "N_eff IS REAL"**: proposes instead "[EXP] An effective
+  multiplicity measure is empirically meaningful under the tested calibration regime," explicitly
+  listing seven factors (null model, test statistic, dependence structure, target error criterion,
+  hypothesis equivalence, evidence channel, decision loss) any of which could yield a DIFFERENT
+  effective-complexity notion -- "there could be multiple effective-complexity notions," not one
+  uniquely correct universal object.
+
+  **ENDORSES THE RETRACTED CLOSED-FORM SEARCH AS "EXCELLENT SCIENCE"**: an initially-found apparent
+  law N_eff approx n(1-rho)^2 on a narrow grid was retracted after widening the domain produced
+  ratios 0.34 to 3.10 -- reframed not as "we failed to find a formula" but as "a locally good
+  empirical approximation was demonstrated not to be a general law," yielding the new
+  methodological invariant "good fit on a narrow design space =/=> structural law," explicitly
+  recommended for the research-methodology registry.
+
+  **PROPOSES THE NEXT MATHEMATICAL QUESTION**: not another closed-form search, but "what
+  equivalence relation on hypotheses makes two candidate spaces epistemically equivalent?" --
+  defining H_i ~_Lambda H_j iff indistinguishable with respect to observables relevant to a
+  specified regime Lambda, giving |H/~_Lambda| as a first-approximation candidate for effective
+  complexity (explicitly NOT adopted as N_eff, merely "a research direction"), and noting this
+  "would connect beautifully to our unresolved ==_sem [semantic equivalence] -- that may be more
+  fundamental than N_eff itself."
+
+  **HIGHLIGHTS A SECOND MAJOR RESULT (Section 3)**: holding |H|=1000 fixed and varying group count
+  from 1000 (fully independent) to 10 (highly dependent) shows admit/validate/unique-determination
+  rates change substantially (.487/.206/.468 at 1000 groups versus .899/.789/.855 at 10 groups) --
+  meaning the multiplicity effect is NOT confined to statistical screening but propagates through
+  Complexity(H) -> Admissibility -> Validation -> Determination, giving the sharper formulation
+  "hypothesis-space dependence structure can affect downstream epistemic determination even when
+  candidate count is fixed" -- explicitly stronger than "more hypotheses require more evidence."
+  Carefully separates [EXP] "dependence structure affects determination rate" from [PROP]
+  "dependence structure is a component of effective hypothesis complexity."
+
+  **REPORTS A VALIDATION-CHANNEL-INDEPENDENCE RESULT**: P(detect decoy | same channel) = 0.0075
+  versus P(detect decoy | independent channel) = 0.9928 -- confirming "validation independence must
+  be defined relative to the evidence channel," proposing ValidationContext = (Channel, Evidence,
+  Model, Population, Time, Standard, ...) with Channel_selection != Channel_validation as one
+  possible requirement for genuine independent validation. Endorses the schema rule "every
+  validation step must declare its evidence channel" as a candidate architectural rule, but adds
+  the crucial distinction "channel declaration != channel independence" (a declaration states
+  Channel(V)=c; it does not prove Independent(Channel(V),Channel(S))), proposing a richer
+  ChannelRelation(c1,c2) taking values {same, independent-under-stated-assumptions, partially-
+  dependent, unknown, causally-coupled}.
+
+  **REVISES THE Selection FORMALIZATION**: previously Selection = f(Discriminate, Validate,
+  Determine); now proposed as Select(H,E,M,S,Lambda), explicitly incorporating the candidate-
+  space/evidence-channel structure Lambda -- "selection cannot be evaluated independently of the
+  structure of the candidate space and evidence channels," marked [PROP].
+
+  **SHARPENS THE Linga's Millions METAPHOR FURTHER**: replaces "many candidates -> selection -> one
+  survivor" with the useful abstraction "multiplicity + competition + dependence + selection
+  pressure," since the experiments show many-candidates -> {0,1,>1} survivors, more candidates does
+  not imply better outcome, and candidate dependence changes epistemic burden -- "a significant
+  improvement in our treatment of the philosophical source."
+
+  **ADDS THREE NEW CANDIDATE INVARIANTS TO THE RESEARCH REGISTRY**: (1) |H| not-equivalent
+  effective-epistemic-complexity(H), with the N_eff approx 9/51/202/941 evidence; (2) same
+  candidate count does not imply same evidential burden; (3) validation independence is a property
+  of evidence-channel RELATIONS, not of the validation label.
+
+  **MAINTAINS EXPLICIT DISCIPLINE AGAINST PREMATURE ADOPTION**: agrees completely with three
+  refusals already recorded in the executed report -- do not add candidate_count to Theory v1.2; do
+  not add N_eff=n(1-rho)^2 as a formula; do not promote N_eff to a canonical KnowledgeOS primitive;
+  do not modify v1.2.
+
+  **CORRECTS A "QUEUE LOGIC" OVERCLAIM**: rejects the claim that N_eff necessarily "feeds an
+  admissibility function that presupposes >=" as not yet established, distinguishing two
+  independent paths: Statistical admissibility (N_eff -> Multiplicity Control -> Threshold, not
+  requiring a general epistemic ordering) versus Epistemic admissibility (N_eff -> Assessment ->
+  >= -> Admissibility, requiring the unresolved ordering) -- "N_eff and >= should remain related
+  but independent research problems until demonstrated otherwise."
+
+  **PROPOSES A SPECULATIVE UNIFICATION HYPOTHESIS**: suspects the effective-complexity research
+  line (N_eff, this document) and the Structure->Projection->Information-Loss->Invariant-
+  Preservation research line (M0098/M0099) "will eventually meet at semantic equivalence /
+  indistinguishability, because effective multiplicity is fundamentally asking: how many genuinely
+  distinguishable alternatives does the epistemic system actually have? That is a much deeper
+  question than 'how many hypotheses did we generate?'" -- explicitly marked as a suspicion, not a
+  proven connection.
+
+  Final verdict: "KR-NEFF: PASS, with strong research value," citing two genuinely new findings
+  (raw candidate count is inadequate; the effect propagates beyond admissibility into validation
+  and determination) and one important negative (N_eff cannot yet be reduced to the tested closed
+  form), recommending the next step be a structural experiment on distinguishability/equivalence
+  of hypotheses under a specified evidence-and-observation regime, connecting N_eff directly to
+  ==_sem.
+introduces:
+  - concept: "The executed KR-NEFF quantitative result: N_eff approx 9.0/51.1/201.9/940.6 for |H|=1000 under increasingly dependent hypothesis-space structures, with a clean 1000-in-50-groups vs 50-independent confirming comparison"
+  - concept: "The methodological invariant: good fit on a narrow design space does not imply a structural law (from the retracted N_eff=n(1-rho)^2 closed-form search)"
+  - concept: "The candidate equivalence relation H_i ~_Lambda H_j (indistinguishable under regime Lambda) and |H/~_Lambda| as a first-approximation candidate for effective complexity, explicitly linked to the unresolved ==_sem problem"
+  - concept: "The Complexity(H) -> Admissibility -> Validation -> Determination propagation result, showing dependence structure affects downstream stages even at fixed candidate count"
+  - concept: "The validation-channel-independence quantitative result (0.0075 vs 0.9928 decoy-detection probability) and the proposed ValidationContext/ChannelRelation apparatus"
+  - concept: "The revised Select(H,E,M,S,Lambda) formalization incorporating candidate-space/evidence-channel structure"
+  - concept: "Three new candidate invariants for the research registry (|H| not-equivalent effective complexity; same count does not imply same burden; validation independence is a channel-relation property)"
+  - concept: "The speculative unification hypothesis linking N_eff/effective-complexity to the M0098/M0099 structure-projection-invariant line via semantic equivalence"
+defines: []
+refines:
+  - concept: "M0095/M0097's candidate-multiplicity/selection-bias research line, here advanced with a genuinely executed, quantified experiment"
+  - concept: "The corpus's unresolved ==_sem (semantic equivalence) problem, given a new candidate connection via hypothesis indistinguishability"
+  - concept: "The already-established Selection!=Validation!=Determination non-collapse discipline, refined with a channel-relative validation-independence criterion"
+  - concept: "M0098/M0099's structure-projection-invariant-preservation line, speculatively connected here to the effective-complexity line"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - concept: "The speculative unification of N_eff/effective-complexity with M0098/M0099's projection/invariant-preservation framework at semantic equivalence -- a candidate site for the eventual reclassification pass to assess whether this connection was ever formally pursued"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0101 as reviewing the genuinely EXECUTED KR-NEFF experiment (N_eff approx 9/51/202/941 for |H|=1000 under varying dependence), confirming |H| is not an adequate complexity measure, retracting an apparent closed form after widening the test domain, showing dependence propagates into validation/determination rates, delivering a validation-channel-independence quantitative result, and proposing a speculative unification of N_eff with the corpus's unresolved semantic-equivalence problem and M0098/M0099's projection/invariant-preservation line."
+anchor_test:
+  anchor: "M0095/M0097's candidate-multiplicity/selection-bias research line, and M0098/M0099's structure-projection-invariant-preservation framework"
+  supports_dimension: "Delivers a genuinely executed, quantified experimental result advancing the candidate-multiplicity research line, with careful ontological restraint and a plausible (explicitly speculative) unification hypothesis connecting two major research threads via semantic equivalence"
+  refines_or_contradicts: "refines (M0095, M0097, M0098, M0099)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "N_eff approximately 940.6, 201.9, 51.1, 9.0 for |H|=1000 under increasingly dependent hypothesis spaces, with a clean confirming comparison (1000-in-50-groups matches 50-independent) -- a genuinely executed, quantified experimental result, not merely a proposed protocol."
+  - "The retracted closed form (N_eff approx n(1-rho)^2, ratio 0.34 to 3.10 on a widened domain) directly exemplifies the corpus's own established discipline of retracting overreach when adversarial testing fails it -- explicitly praised as 'excellent science.'"
+  - "P(detect decoy | same channel)=0.0075 vs P(detect decoy | independent channel)=0.9928 -- a striking, well-designed quantitative demonstration that validation independence must be channel-relative."
+undefined_concepts:
+  - "The precise formal definition of the regime Lambda in H_i ~_Lambda H_j -- named and motivated but not fully specified"
+  - "Whether KR-NEFF is a renamed/narrowed execution of M0097's KR-M2O-2026-09-02 protocol or an independently-designed related experiment -- the relationship between the two experiment IDs is not clarified in this document"
+open_questions:
+  - "Whether the proposed structural experiment (distinguishability/equivalence of hypotheses under a specified evidence-and-observation regime) connecting N_eff to ==_sem was ever executed."
+  - "Whether the speculative unification of N_eff with M0098/M0099's projection/invariant-preservation line was ever formally pursued or remains an unexplored suspicion."
+  - "The exact relationship between KR-NEFF and M0097's KR-M2O-2026-09-02 protocol (same experiment under a different name, a narrower follow-on, or an independent design)."
+tier2_triggered: true
+tier2_reason: "Reports a genuinely executed, quantified experiment with real numerical results advancing the corpus's candidate-multiplicity research line, demonstrates disciplined retraction of an overreached closed-form claim, delivers a striking validation-channel-independence result, and proposes a plausible (explicitly speculative) unification connecting two major open research threads via semantic equivalence. Comfortably meets the tier-2 bar."

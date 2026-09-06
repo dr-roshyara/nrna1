@@ -1,0 +1,74 @@
+sequence: 1091
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/exec/t291_transcript.txt
+title: "t291_transcript.txt -- Full Execution Transcript for the Step-291 Package: CLOSES FILE 1090'S FLAGGED OPEN QUESTION -- AUDIT B Confirms the {equiv} Minimal Cut Remains UNIQUE Even Over the Full Unrestricted 29-Node Universe, So the Programme's Most Load-Bearing Result Survives Its Own Scope Self-Audit Intact (Not a Scope Overclaim); Also Shows a Minor Formatting Bug Caught and Immediately Fixed Inline"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the raw execution transcript for the entire Step-291 exec package, including AUDIT B's output"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1091
+importance: major
+confidence: high
+about: >
+  `t291_transcript.txt` — the raw, full execution transcript for the entire Step-291 executable-script
+  package (`t291_bootstrap.py`, `t291_omega_tau_audit.py`, `t291_equality.py`, the §10 N-4-audit, and
+  `t291b_graph_universe.py`, already-tracked as files 1075-1077, 1090). Reproduces exactly the printed output
+  already summarized in this reconstruction's per-file records for those scripts.
+
+  **DEFINITIVELY CLOSES FILE 1090'S FLAGGED OPEN QUESTION**: AUDIT B's printed output confirms "FVS over the
+  UNRESTRICTED universe (all 29 nodes) — a DIFFERENT question: size-1 cuts: ['equiv'] count: 1 -> unique:
+  True." **The already-tracked `{equiv}` minimal-cut result SURVIVES its own scope self-audit intact**: the
+  uniqueness claim was NOT a scope overclaim after all -- `{equiv}` is genuinely the unique minimal feedback-
+  vertex-set whether the search is restricted to the 13 decision-resolvable nodes or run over the full,
+  unrestricted 29-node universe. This is a positive, confirming result for the research programme's single
+  most load-bearing prior finding, directly resolving the concern file 1090's own script logic anticipated
+  ("uniqueness was claimed without stating the candidate set").
+
+  **DELIVERS A MINOR, TRANSPARENTLY-VISIBLE FORMATTING BUG, CAUGHT AND IMMEDIATELY FIXED INLINE**: the
+  transcript shows a Python `TypeError` in `t291_equality.py`'s f-string formatting (`X={sorted(X) if X else
+  '{}':<22}`, attempting to apply a string format-spec to a list), followed immediately by the corrected
+  re-run producing the already-tracked 32/2/30 output (file 1077). This is a small implementation-level bug
+  (not a substantive research error) but is left visible in the raw transcript rather than silently edited
+  out, consistent with this reconstruction's already-tracked disciplined practice of retaining buggy runs
+  alongside corrected ones for auditability (already-tracked, file 1089's "both graphs retained in the
+  transcripts so the audit is auditable").
+
+  Otherwise reproduces, without material deviation, the already-tracked printed content of files 1075-1077
+  and 1090: the 29-node/44-edge/3-cycle bootstrap-cut confirmation; the `𝒪`-glyph-collision and enumeration-
+  vs-closure findings; the 32/2/30 re-verification and merge-join audit; the seven-source-node/leverage
+  measurement for the N-4 downgrade; and AUDIT B's full graph-universe reconstruction with its explicit
+  edge-generation rules.
+introduces:
+  - concept: "The confirmed, positive resolution of file 1090's AUDIT B self-audit: the already-tracked {equiv} unique minimal bootstrap cut survives testing over the full unrestricted 29-node universe, not merely the restricted 13-node candidate set -- the uniqueness claim was not a scope overclaim"
+  - concept: "The minor formatting bug in t291_equality.py's print statement, caught and immediately fixed inline in the same execution run, left visible in the raw transcript rather than silently corrected"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked AUDIT B self-audit and its flagged open question (file 1090)"
+    refinement: "RESOLVED WITH A POSITIVE RESULT: the {equiv} minimal cut remains unique over the full 29-node universe, confirming the already-tracked uniqueness claim held sufficient scope precision after all"
+contradicts: []
+repeats:
+  - "Reproduces, as raw execution output, the already-tracked printed content of files 1075, 1076, 1077, and 1090 without material deviation beyond the minor formatting bug and its immediate fix."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the positive resolution of AUDIT B's self-audit -- the {equiv} unique minimal bootstrap cut survives testing over the full unrestricted 29-node universe, confirming this research programme's single most load-bearing result held sufficient scope precision -- and the minor formatting bug caught and fixed inline."
+anchor_test:
+  anchor: "This reconstruction's already-tracked AUDIT B self-audit and its flagged open question about the {equiv} minimal cut's scope precision (file 1090)"
+  supports_dimension: "Confirms with executed evidence that the {equiv} unique minimal cut survives the full-universe self-audit, resolving the flagged open question with a positive result"
+  refines_or_contradicts: "refines (confirms) the prior tracked finding"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The AUDIT B unique-cut confirmation and the minor formatting-bug/immediate-fix are both directly visible as raw printed output in this transcript file, providing the executed evidence for files 1075-1077 and 1090's already-tracked script analyses."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Closes file 1090's flagged open question with a positive, confirming result: the {equiv} unique minimal bootstrap cut -- this research programme's single most load-bearing prior finding -- survives testing over the full unrestricted 29-node universe, not merely the restricted candidate set. Classified importance major and confidence high given the definitive, executed nature of this confirmation."

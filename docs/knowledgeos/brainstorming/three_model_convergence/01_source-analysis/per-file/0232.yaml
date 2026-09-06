@@ -1,0 +1,64 @@
+sequence: 232
+path: docs/knowledgeos/brainstorming/kernel/20260824-142630-session-handover-package-for-book-extraction-and-ddd-analysis.md
+title: "Session Handover Package for Book Extraction and DDD Analysis"
+date: "2026-08-24"
+bytes: 33000
+model:
+  primary: c1
+  secondary: null
+source_role: FOUNDATIONAL
+canonical_source: 232
+importance: high
+confidence: high
+about: >
+  A self-contained session-handover package (prompt instructions + Knowledge Transfer Document) for
+  continuing the Elements of Statistical Learning extraction (0228/0231) in a fresh session, since "this
+  session has become too long." A second, more formal instance of the extraction-protocol pattern first
+  seen at 0191 (Research Extraction Agent prompt). Formalizes the source-discipline four-category
+  classification (SOURCE FACT / SOURCE INTERPRETATION / KNOWLEDGEOS TRANSFER / ARCHITECTURAL HYPOTHESIS),
+  nine analysis lenses, a 20-point per-method analysis structure, and an explicit stop condition
+  (do not proceed from book analysis to architecture redesign without a separate assignment). Largely
+  consolidates and re-presents content already recorded from 0228/0231 (EP-01..16 catalogue, epistemic
+  hierarchy, critical distinctions) rather than introducing substantial new domain content, but adds a
+  formal eight-principle candidate set (P-01..P-08) distinct from the EP-numbered techniques.
+introduces:
+  - concept: "Four-category source-discipline classification: [SOURCE FACT] / [SOURCE INTERPRETATION] / [KNOWLEDGEOS TRANSFER] / [ARCHITECTURAL HYPOTHESIS], explicitly must not be conflated -- a second formal instance of this extraction discipline (cf. 0191's similar but differently-worded ladder)"
+  - concept: "Nine-lens extraction protocol: DDD, Zero, Leonardo, Epistemic/Knowledge, Evidence & Provenance, Deterministic Assurance, Governance/Sovereignty, Architecture, AI Engineering/Agent -- each with a defined question set"
+  - concept: "Twenty-point per-method analysis template (source location/category, what the book says, problem solved, mechanism, assumptions, strengths, weaknesses, failure modes, assessment mechanism, nine lens applications, KnowledgeOS transfer, transfer risk, and a five-way recommendation: ADOPT/ADAPT/INVESTIGATE/RECORD ONLY/REJECT -- a five-way scheme distinct from 0228's four-way ADOPT/ADAPT/REJECT/UNKNOWN and this file's own later five-way ADOPT/ADAPT/INVESTIGATE/RECORD-ONLY/REJECT)"
+  - concept: "Eight formal candidate principles P-01..P-08 (Constituted Inference, Evidence Separation, Complexity Control, Sufficient Evidence, Stability Matters, Method Is Not Authority, Derived Structures Remain Derived, Simpler When Equivalent) -- explicitly NOT yet constitutional, held as research candidates"
+  - concept: "Thirteen critical KnowledgeOS distinctions consolidated into one list (Observation!=Representation, Evidence!=Inference, Inference!=Prediction, Prediction!=Fact, Pattern!=Domain-Truth, Similarity!=Identity, Correlation!=Causation, Model-Agreement!=Truth, Confidence!=Assurance, Statistical-Significance!=Practical-Significance, Derived-Structure!=Canonical-Knowledge, Algorithm!=Domain-Capability, Method!=Authority)"
+  - concept: "Explicit output order (11 parts: Executive Synthesis / Source Facts / Concept Extraction / DDD Analysis / Lens Analysis / Transferability Matrix / Candidate Principles / Candidate Methods / What NOT to Import / Open Questions / Knowledge Transfer Package) and a 12-item self-check quality test before concluding"
+  - concept: "Handover principle stated as the single most important cross-session instruction: 'Extract first. Interpret second. Transfer third. Architect last.'"
+defines: []
+refines:
+  - concept: "0191's Research Extraction Agent prompt template"
+    refinement: "A second, independently-worded instance of the same two-session extraction-then-architecture discipline, with a differently structured (nine-lens, twenty-point, four-category) protocol -- not cross-referenced to 0191."
+  - concept: "0228's EP-numbered technique catalogue and 0231's EP-00..16 catalogue"
+    refinement: "Re-presents the same sixteen EP-numbered techniques with value ratings (Very High/High/Medium-High), and adds eight separately-numbered P-01..P-08 candidate principles not present in either prior file."
+contradicts: []
+repeats:
+  - concept: "Epistemic hierarchy Observation->Representation->Pattern->Inference->Prediction->Decision->Knowledge-Claim; regularization/sparsity/cross-validation/bootstrap/ensembles/boosting/clustering/graphical-models/FDR reasoning patterns"
+    canonical_source: 228
+    novelty: none
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0191's extraction-protocol template; 0228/0231's Elements-of-Statistical-Learning catalogues"
+  supports_dimension: "Engineering KnowledgeOS model -- methodology/protocol artifact largely consolidating already-recorded content, with a formal P-01..P-08 principle set as its main new contribution"
+  refines_or_contradicts: "refines/consolidates 0228/0231; a second independent instance of 0191's extraction-protocol pattern"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether this handover package's prompt is ever actually fed into a fresh session, and if so whether that session's output appears later in the corpus"
+  - "Whether P-01..P-08 are ever reconciled with 0228's KOS-ML-01..12 and 0231's EP-00..16 into one cumulative principle/technique vocabulary"
+tier2_triggered: true
+tier2_reason: "Methodology/protocol artifact largely re-presenting already-recorded Statistical Learning extraction content (0228/0231) in a formalized handover package; recorded at high rather than critical importance since its primary new contribution -- the P-01..P-08 candidate principle set and a second independent extraction-protocol instance -- is process rather than domain content."

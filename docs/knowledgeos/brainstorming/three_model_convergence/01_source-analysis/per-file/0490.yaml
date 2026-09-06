@@ -1,0 +1,134 @@
+sequence: 490
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-185636_question-23-when-to-stop-investigating-and-present-a-decision.md
+title: "LANDMARK: DecisionReady≠Stop; ForcedStop⇏DecisionReady — Four Terminal Investigation States; Hard-Gates-Plus-Optional-Scoring Replaces the Compensable Readiness Scalar; Decision Made Explicit as a Fourth Parameter (D)"
+date: "2026-08-26"
+bytes: 28606
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the Arjuna example is corrected to ask 'sufficient for which decision?' rather than declaring blanket readiness once Knowledge/Understanding/Domain are each labeled sufficient"
+source_role: PRIMARY_RESEARCH
+canonical_source: 490
+importance: critical
+confidence: high
+about: >
+  Answers Question 23 (posed at 0489's close): how does KnowledgeOS know when to stop investigating and
+  present a decision-ready state?
+
+  **Part A (initial answer)** proposes a decision-ready state as "sufficiently complete, coherent, and
+  adequate for the current purpose," a Boolean ShouldStop(S_t,P_t,C_t,Policy_t) defined as
+  Sufficient(S_t,P_t) OR BudgetExhausted OR UrgencyThreshold OR PolicyStop, detailed Knowledge/Understanding/
+  Domain sufficiency criteria (e.g. 𝒟_I⊆𝒟_K, all critical values known, Coherent(K_t)=True), a Diminishing
+  Returns criterion (ExpectedValue(NextInvestigation)<Cost(NextInvestigation)), a weighted Readiness scalar
+  Readiness=w_K·K_c+w_U·U_d+w_C·C_r+w_Ul·(1-U_l)+w_D·D_i+w_R·R_t compared against a threshold, a decision
+  tree, and an Arjuna example concluding "Knowledge sufficient, Understanding sufficient, Domain
+  sufficient -> STOP."
+
+  **Part B (critical review) delivers the file's central and most important correction**:
+  **DecisionReady≠ShouldStop**, and specifically **ForcedStop⇏DecisionReady** -- the original OR-formula is
+  "too permissive," since it implies exhausting a budget or reaching urgency can itself make a state
+  "decision-ready," which is "not mathematically or epistemically correct" (worked example: "we have
+  insufficient evidence, but the meeting starts in five minutes" -- the system must stop, but is NOT
+  decision-ready). **Makes the decision itself an explicit fourth parameter**: Sufficient(S_t,P,D), not
+  merely Sufficient(S_t,P_t), since the same Knowledge State can be sufficient for one decision and
+  insufficient for another (worked contrast: "Who is on the opposing side?" vs. "Should I fight?" vs. "What
+  is the morally correct action?" -- Ready(S_t,D_1)⇏Ready(S_t,D_2)). **Introduces the Decision Sufficiency
+  Boundary (DSB(P,D,C))**: the Ideal State must define the MINIMUM conditions for a responsible decision, not
+  "everything that could possibly be known" -- otherwise investigation could become infinite; DecisionReady
+  iff K_t⊨DSB(P,D,C). **Corrects the "all critical values known" requirement as too strong**: some values may
+  remain genuinely unknown while the decision stays valid, since the uncertainty may be decision-irrelevant
+  (worked example: not knowing whether a probability is 17% or 18% when both lead to the same decision) --
+  Unknown≠NotDecisionReady; instead DecisionRelevantUncertainty(S_t,D)<=T_D, a policy-defined tolerance.
+  **Refines Conflict acceptance into three cases**: Resolved, Accepted (Knower explicitly accepts the
+  unresolved conflict), and Active-and-decision-critical (which forces DecisionReady=False regardless of
+  acceptance elsewhere) -- "acceptance cannot automatically mean readiness." **The file's largest
+  mathematical correction**: rejects the weighted Readiness scalar as compensable and therefore unsafe (worked
+  example: Knowledge=95%, Understanding=95%, Conflict Resolution=95% but a critical unresolved safety
+  conflict present -- the weighted average could still yield Readiness=0.9 and incorrectly declare
+  readiness) -- replaces it with **hard gates (non-negotiable, e.g. Coherent(K_t), NoDecisionCriticalConflict,
+  CriticalEvidenceSatisfied, CriticalDimensionsSatisfied) conjoined with soft criteria**:
+  DecisionReady=⋀G_i∧SoftCriteriaSatisfied; only after all hard gates pass may an optional confidence score
+  be derived. Restructures Readiness itself from a scalar to a structured triple
+  (HardGates,SoftIndicators,RemainingDeficiencies), reiterating Q19/Q22's "structured state is fundamental;
+  scalar measurements are derived" discipline. **Corrects Diminishing Returns via decision theory**: replaces
+  the naive ExpectedValue<Cost comparison with the Expected Value of Sample/Study Information (EVSI) concept
+  -- EVSI(a)=E[decision quality after information]-decision quality now -- explicitly flagged as "an optional
+  decision-theoretic mechanism, not a universal mathematical truth." **Corrects urgency-driven stopping**:
+  "Not sufficient + Urgent = STOP" must produce Status=ForcedStopNotReady, never DecisionReady=True.
+  **Introduces four terminal investigation states** replacing the Boolean ShouldStop: Decision Ready,
+  Continue Investigation, Forced Stop-Not Ready, and Unresolvable (required knowledge cannot currently be
+  obtained/resolved) -- InvestigationStatus∈{Ready,Continue,ForcedStop,Unresolvable}. **Corrects Sārathi's
+  output from a binary Stop-or-Continue to a six-valued DecisionPosture**: {Proceed, Investigate,
+  ProceedWithCaveats, Defer, Escalate, UnableToDecide}, "much closer to the actual role of Sārathi." Corrects
+  the Arjuna example to ask "sufficient for which decision?" rather than declaring blanket readiness merely
+  because Knowledge/Understanding/Domain are each labeled sufficient in the abstract. Closes with a revised
+  mathematical model (Decision Sufficiency DS(S_t,P,D,C); Hard gates G(S_t,P,D,C)=⋀G_i; Remaining
+  decision-relevant discrepancy Δ_D(S_t,P,D); DecisionReady=G∧Acceptable(Δ_D); Investigation Value
+  VOI(a|S_t,P,D,C); Continue iff ¬DecisionReady∧VOI(a*)>Cost(a*)∧¬ForcedStop; the frozen invariant
+  ForcedStop⇏DecisionReady), nine revised core invariants, a numeric verdict (Conceptual 8->9.5,
+  Mathematical 6.5->9, DDD 7.5->9.5 post-correction), and states the central architectural insight
+  "KnowledgeOS does not decide when 'enough knowledge' exists in the abstract... [but] whether enough
+  decision-relevant knowledge exists for this Knower, this purpose, this context, and this decision" as the
+  culmination of the Q19->Q22->Q23 progression: Discrepancy->Findings->Resolution Opportunities->
+  Prioritization->Investigation->Decision Sufficiency->Decision Posture -- explicitly framed as the point
+  "where the theory is becoming a genuine epistemic operating model for KnowledgeOS, rather than merely a
+  collection of knowledge-management concepts." Sets up **Question 24: how does KnowledgeOS present the
+  decision-ready state to the Knower?**
+introduces:
+  - concept: "DecisionReady≠ShouldStop, and specifically ForcedStop⇏DecisionReady -- a system can be forced to stop investigating (budget, urgency) without ever becoming decision-ready"
+  - concept: "The decision itself (D) made an explicit fourth parameter of sufficiency and readiness: Sufficient(S_t,P,D), DecisionReady(S_t,D,P,C) -- Ready(S_t,D_1)⇏Ready(S_t,D_2)"
+  - concept: "Decision Sufficiency Boundary DSB(P,D,C): the Ideal State's minimum conditions for a responsible decision, distinguished from 'everything that could possibly be known,' preventing infinite investigation"
+  - concept: "Unknown≠NotDecisionReady: some values may remain genuinely unknown while the decision stays valid, provided the uncertainty is decision-irrelevant within a policy-defined tolerance T_D"
+  - concept: "Conflict acceptance refined into three cases (Resolved, Accepted, Active-and-decision-critical), with the third forcing DecisionReady=False regardless of acceptance status elsewhere"
+  - concept: "Compensable weighted Readiness scalar rejected as unsafe (a critical unresolved safety conflict could be averaged away by otherwise-high scores); replaced by hard gates (non-negotiable) conjoined with soft criteria: DecisionReady=⋀G_i∧SoftCriteriaSatisfied"
+  - concept: "Readiness restructured from a scalar in [0,1] to a structured triple (HardGates,SoftIndicators,RemainingDeficiencies), extending Q19/Q22's structured-state-is-fundamental discipline"
+  - concept: "Diminishing Returns reframed via Expected Value of Sample Information (EVSI), explicitly flagged as an optional decision-theoretic mechanism, not a universal mathematical truth"
+  - concept: "Four terminal investigation states replacing a Boolean ShouldStop: Decision Ready, Continue Investigation, Forced Stop-Not Ready, Unresolvable"
+  - concept: "Sārathi's output corrected from binary Stop-or-Continue to a six-valued DecisionPosture: {Proceed, Investigate, ProceedWithCaveats, Defer, Escalate, UnableToDecide}"
+  - concept: "Question 24 launched: how does KnowledgeOS present the decision-ready state to the Knower?"
+defines:
+  - concept: "DecisionReady (final, corrected)"
+    definition: "DecisionReady(S_t,D,P,C) iff HardGates(S_t,D,P,C) AND AcceptableRemainingUncertainty(S_t,D,P,C) -- knowledge/understanding relevant to a SPECIFIC decision satisfy that decision's mandatory epistemic, coherence, contextual, and domain constraints, with remaining deficiencies either decision-irrelevant or explicitly policy-acceptable"
+  - concept: "Decision Sufficiency Boundary (DSB)"
+    definition: "DSB(P,D,C): the minimum conditions under which a decision D may responsibly be made for purpose P in context C; DecisionReady iff K_t⊨DSB(P,D,C)"
+  - concept: "Four terminal investigation states (InvestigationStatus)"
+    definition: "Ready (decision criteria satisfied), Continue (further investigation warranted), ForcedStop (must stop but not ready -- budget/urgency exhausted), Unresolvable (required knowledge cannot currently be obtained/resolved)"
+refines:
+  - concept: "0489's Finding≠Action and Resolution Opportunity discipline, and its policy-parameter/hard-vs-soft distinction groundwork"
+    refinement: "Extended into a full hard-gates-plus-soft-scoring architecture for decision readiness, directly citing Q19/Q22's 'structured state is fundamental; scalar measurements are derived' principle as the governing precedent"
+  - concept: "0476's three-way Ideal State split (I^K,I^U,I^D) and 0484's Candidate/Approved Ideal State distinction"
+    refinement: "Connected explicitly: Q23 warns that treating the Ideal State as a blanket completeness target (rather than a decision-specific Decision Sufficiency Boundary) risks turning it into 'everything that could possibly be known,' making investigation potentially infinite"
+  - concept: "0488's Sufficient/Adequate(S_t,P) predicate, introduced as independent of discrepancy emptiness"
+    refinement: "Extended with an explicit fourth parameter D (the specific decision), and formalized into a hard-gate/soft-criteria structure rather than left as a bare predicate"
+contradicts:
+  - concept: "This file's own Part A (Boolean ShouldStop formula that treats budget/urgency exhaustion as equivalent to decision-readiness; compensable weighted Readiness scalar; binary Sārathi Stop-or-Continue output)"
+    contradiction: "Part B explicitly and directly corrects each of these as its central review findings; superseded within the same file, no contradiction remains unresolved"
+repeats: []
+bridge_candidates:
+  - "0488's Sufficient/Adequate(S_t,P) predicate and this file's DecisionReady(S_t,D,P,C)/Decision Sufficiency Boundary form one continuous thread on purpose-and-decision-relative adequacy; a future canonical-theory pass should trace 0485->0488->0489->0490 as the corpus's unified account of comparison, discrepancy, prioritization, and decision-readiness"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record DecisionReady≠ShouldStop and the frozen invariant ForcedStop⇏DecisionReady, the decision D made an explicit fourth sufficiency parameter, and the Decision Sufficiency Boundary DSB(P,D,C) replacing blanket Ideal-State completeness as the readiness target."
+  - "dimension-registry.md: record the compensable weighted Readiness scalar rejected in favor of hard-gates-plus-soft-criteria (DecisionReady=⋀G_i∧SoftCriteriaSatisfied), Unknown≠NotDecisionReady with a policy-defined decision-relevant-uncertainty tolerance, and Conflict acceptance refined into Resolved/Accepted/Active-decision-critical."
+  - "dimension-registry.md: record the four terminal investigation states (Ready/Continue/ForcedStop/Unresolvable) replacing a Boolean ShouldStop, Sārathi's output corrected to a six-valued DecisionPosture, and Question 24's launch (presenting the decision-ready state to the Knower)."
+anchor_test:
+  anchor: "0488's Sufficient/Adequate(S_t,P) predicate; 0489's Resolution Opportunity/prioritization architecture and hard-vs-soft policy discipline; 0476/0484's Ideal State structure and Candidate/Approved split; Q19/Q22's structured-state-is-fundamental principle"
+  supports_dimension: "LANDMARK: establishes DecisionReady≠ShouldStop with the frozen invariant ForcedStop⇏DecisionReady, makes the specific decision D an explicit fourth parameter of sufficiency/readiness (Ready(S_t,D_1)⇏Ready(S_t,D_2)), introduces the Decision Sufficiency Boundary DSB(P,D,C) as the minimum-not-maximal target of investigation, rejects the compensable weighted Readiness scalar in favor of non-negotiable hard gates plus optional soft scoring, corrects Unknown≠NotDecisionReady via a policy-defined decision-relevant-uncertainty tolerance, replaces a Boolean ShouldStop with four terminal investigation states, and corrects Sārathi's output to a six-valued DecisionPosture -- culminating the Q19->Q22->Q23 progression into what the file itself calls 'a genuine epistemic operating model for KnowledgeOS'"
+  refines_or_contradicts: "refines 0488's Sufficient/Adequate predicate, 0489's hard-vs-soft policy discipline, and 0476/0484's Ideal State architecture; Part B directly supersedes Part A's own compensable-scalar and forced-stop-as-readiness claims within the same file, with no unresolved contradiction remaining"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The compensable-readiness-scalar counter-example (Knowledge=95%, Understanding=95%, Conflict Resolution=95%, but a critical unresolved safety conflict present, yielding a misleadingly high weighted average of 0.9) is the corpus's clearest concrete demonstration yet of why non-negotiable hard gates must precede any soft scoring in a decision-readiness architecture."
+undefined_concepts: []
+open_questions:
+  - "Question 24 (how does KnowledgeOS present the decision-ready state to the Knower?) -- launched here, not yet answered"
+  - "How the Decision Sufficiency Boundary DSB(P,D,C) is formally derived or authorized (by whom, under what governance process) for a given decision D -- not yet specified"
+  - "Whether the four terminal investigation states (Ready/Continue/ForcedStop/Unresolvable) and the six-valued DecisionPosture are consistently adopted as the corpus's standard vocabulary in later files"
+tier2_triggered: true
+tier2_reason: "Establishes DecisionReady≠ShouldStop with the frozen invariant ForcedStop⇏DecisionReady, correcting a significant epistemic error (treating forced termination as equivalent to genuine decision-readiness); makes the specific decision D an explicit fourth parameter of sufficiency and readiness, formally decoupling readiness-for-one-decision from readiness-for-another; introduces the Decision Sufficiency Boundary DSB(P,D,C) as a minimum-not-maximal investigation target, preventing the Ideal State from degenerating into an infinite completeness requirement; rejects a compensable weighted Readiness scalar in favor of non-negotiable hard gates plus optional soft scoring, with a concrete worked counter-example showing the compensable version could mask a critical unresolved safety conflict; corrects Unknown≠NotDecisionReady via a policy-defined decision-relevant-uncertainty tolerance; replaces a Boolean ShouldStop with four terminal investigation states and Sārathi's binary output with a six-valued DecisionPosture; and explicitly frames the result as the culmination of the Q19->Q22->Q23 progression into a genuine epistemic operating model."

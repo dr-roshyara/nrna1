@@ -1,0 +1,99 @@
+sequence: "0139"
+path: docs/knowledgeos/brainstorming/20260822-143421-semantic-compiler-kernel-boundary-refinement-kos-ev.md
+title: "Kernel-boundary correction (KOS-EV is not the kernel); Zero/Gödel operationalized; second (toy) simulation finds 0% contradiction handling; third 'stop researching' declaration"
+date: "2026-08-22"
+bytes: 27000
+model:
+  primary: c1
+  secondary: [g, m]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0138"
+importance: high
+confidence: high
+about: >
+  Two linked turns. (1) Corrects an unshown prior document's premature "STAGE 2: KNOWLEDGEOS KERNEL
+  (KOS-EV)" label -- the kernel is the DDD-identified domain/constitutional core, KOS-EV is only an
+  enforcement mechanism at its boundary; adds a 9th benchmark dimension (Semantic Non-Collapse, tied to
+  Navya-Nyāya coextension-without-identity); operationally redefines Zero ("refusal to introduce
+  epistemic commitment without sufficient semantic grounds") and Gödel ("Representation of claim ≠
+  Proof of claim ≠ Epistemic admission; KIR exists does NOT mean Knowledge exists"); explicitly declares
+  "I would freeze this research direction... stop adding philosophical lenses" -- a third source-internal
+  "research is done" declaration (after 0134's phase-closure and implicitly 0136's "kernel complete").
+  (2) Reports a second, explicitly-caveated "controlled toy simulation" (KOS-SCB v0.2, 1,000 synthetic
+  cases): 80.0% overall invariance, 66.7% expression equivalence, 100% semantic distinction/context/
+  transformation/temporal, **0% contradiction handling**, 80% abstention -- with contradiction handling's
+  failure explicitly read as GOOD architectural evidence (contradiction belongs to KnowledgeOS's
+  epistemic layer, not the semantic compiler).
+
+introduces:
+  - "9th benchmark dimension: Semantic Non-Collapse (materially different expressions must NOT converge
+    to the same KIR) -- the complement of semantic invariance, explicitly tied to the Navya-Nyāya
+    coextension-without-identity lens"
+  - "Operational (not metaphysical) redefinition of Zero: 'refusal to introduce epistemic commitment
+    without sufficient semantic grounds' -- four concrete UNKNOWN-triggering conditions given (cannot
+    establish equivalence / cannot establish distinction / context insufficient / multiple
+    interpretations remain)"
+  - "Operational redefinition of Gödel for this architecture: Representation ≠ Proof ≠ Epistemic
+    admission; 'KIR exists does not mean Knowledge exists' -- crisper restatement of the already-tracked
+    Gödel boundary, not a new claim"
+  - "Second simulation (KOS-SCB v0.2, explicitly labeled 'controlled toy simulation... not evidence
+    that a production compiler will achieve these numbers'): 0% contradiction handling read as a
+    genuine, useful negative result validating the two-stage (Semantic Compiler / KnowledgeOS) boundary
+    -- the compiler should NOT be extended to handle contradiction itself"
+  - "Five renamed success criteria replacing generic 'accuracy': Semantic Invariance, Semantic
+    Non-Collapse, Epistemic Non-Invention, Identity Preservation, Contradiction Integrity"
+  - "Proposed 'semantic family' benchmark corpus structure: each family = one meaning with ~10 expression
+    variants (active/passive/reordered/paraphrase/German/formal/ambiguous/altered), tested for
+    CONVERGE/SEPARATE/ABSTAIN rather than flat accuracy"
+
+defines: []
+
+refines:
+  - "Corrects (does not merely repeat) the KOS-EV/kernel conflation implied at 0135-0138 -- kernel
+    remains the DDD-identified constitutional core; KOS-EV is enforcement machinery at its boundary"
+  - "Strengthens Similarity≠Identity/Non-Collapse and Confidence≠Truth threads with a concrete
+    (if toy-simulated) computational demonstration"
+
+contradicts: []
+
+repeats:
+  - {concept: "semantic vs epistemic accuracy split, KOS-SCB/KOS-EV boundary, UNKNOWN state", canonical_source: "0138", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: true
+gita_content: false
+kernel_content: false
+
+registry_updates:
+  - "None -- refinements captured here only; no dimension/representation status change"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Unknown Preservation", "Identity Preservation"]
+  refines_or_contradicts: "Refines the KOS-EV/kernel boundary and Zero/Gödel operational definitions; no new dimension."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "0% contradiction handling in a toy simulation, explicitly read as GOOD evidence for the two-stage
+    architecture rather than a defect to patch -- a disciplined interpretation of a negative result"
+  - "Third source-internal 'research is done, stop extracting, start measuring' declaration in this
+    stretch (after 0134, implicitly 0136) -- a recurring meta-pattern worth continued tracking: the
+    corpus repeatedly declares closure without the flow actually stopping"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the proposed 'real' (non-toy, non-simulated) KOS-SCB v0.2 experiment with genuine semantic
+    families is ever actually built and run, as distinct from the two simulations reported so far
+    (0137's real 4-and-120-case prototype vs. 0139's explicitly-toy 1,000-case simulation)"
+
+tier2_triggered: true
+tier2_reason: >
+  New benchmark dimension (Semantic Non-Collapse), operational redefinitions of Zero and Gödel, a
+  disciplined reading of a 0%-contradiction-handling negative result, and a third phase-closure
+  declaration worth tracking as a recurring meta-pattern.

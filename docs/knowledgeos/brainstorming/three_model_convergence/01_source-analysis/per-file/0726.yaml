@@ -1,0 +1,162 @@
+sequence: 726
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-130007_step-139-knowledgeos-context-map-and-integration-contracts.md
+title: "Step 139 -- Delivers the Formal KnowledgeOS Context Map (Nine Upstream/Downstream Relationships), Largely Consolidating Prior-Established Anti-Corruption-Layer Discipline (Kubernetes/Nexus/Git/CI-CD), With Several Genuinely Novel Contributions: the TOCTOU (Time-of-Check≠Time-of-Use) Security Principle Applied to Agent Authorization, 'Anti-Corruption Layers Everywhere? No' (a Precisely Reasoned Anti-Overengineering Nuance), IR-01 and CM-01 Through CM-04 (Four New Context-Map Invariants, With CM-04 Yet Again Re-Codifying the Pointer-Layer Principle), the Open-Host-Service Pattern, and a Four-Category Contract Model With Detailed Request/Response Schemas -- Opens Step 140, From Context Map to Component Architecture"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 139 -- KnowledgeOS Context Map & Integration Contracts', promised at 0725's close; delivers the formal DDD context map with nine characterized upstream/downstream relationships, largely consolidating the Anti-Corruption-Layer discipline established since 0687, while contributing several genuinely novel elements -- most significantly the TOCTOU security principle applied to agent action authorization, a precisely reasoned anti-overengineering nuance on ACL usage, and four new numbered context-map invariants"
+source_role: PRIMARY_RESEARCH
+canonical_source: 726
+importance: critical
+confidence: high
+about: >
+  Poses the central DDD question ("how do independently owned models cooperate without sharing or
+  corrupting each other's semantics?") and delivers a nine-row Context relationship table characterizing
+  each upstream/downstream pair with DDD terminology (Governance→Knowledge: Published language/governed
+  contract; Governance→Assurance: policy/rule derivation; Knowledge→Assurance: conformity input;
+  Engineering→Evidence: observation capture; Evidence→Knowledge: evidence-backed claims;
+  Assurance→Governance: findings/disposition; KnowledgeOS→Agents: open host service/API; Agents→
+  Engineering: tool/action contract; External systems→KnowledgeOS: Anti-Corruption Layer), explicitly
+  labeled "architectural hypotheses" pending implementation validation. Largely consolidates the
+  Anti-Corruption-Layer discipline established across 0687/0697/0712/0714/0717/0721 with concrete worked
+  examples for Kubernetes (`Deployment/metadata/spec/status`→`RuntimeObservation`), Nexus, Git, CI/CD
+  (`CI=PASS↛Architecture=CONFORMANT`), and Monitoring (`Metric≠Governance`), and reconfirms Assurance≠
+  Governance-disposition (Assurance identifies, Governance decides) via the closed governance loop
+  `Policy→Rule→Verification→Finding→Governance→Decision→Policy`.
+
+  **Delivers the file's most significant genuinely novel contribution — the TOCTOU (Time-of-Check≠
+  Time-of-Use) security principle, precisely applied to agent action authorization** (§139.35-139.36),
+  borrowed directly from classical security-engineering literature and not previously stated in the
+  reconstruction: if authorization is granted at `t_1` but execution occurs at `t_2`, the authorization's
+  conditions may have changed in between; therefore authorization must carry explicit `Validity` and,
+  potentially, `RevalidateAtExecution` — "this is especially important for production" high-risk actions.
+  This is among the most technically precise, currently and broadly applicable security-engineering
+  principles delivered anywhere in the reconstruction, directly relevant to any real agentic-system design
+  regardless of whether KnowledgeOS itself is ever built.
+
+  **Delivers "Anti-Corruption Layers everywhere? No," a precisely reasoned anti-overengineering nuance**
+  (§139.45-139.48) refining the reconstruction's ACL discipline for the first time with calibrated
+  guidance: an ACL is warranted only where an external model would otherwise contaminate the domain model;
+  for simple technical infrastructure, a plain Adapter may suffice — worked through three graded examples:
+  Git may need only a simple `GitAdapter` since its natural model already resembles `CommitReference` (no
+  large ACL required); Kubernetes genuinely needs a full ACL given its much richer domain model (preventing
+  `PodSpec`/`DeploymentStatus` leakage); Nexus needs only a `NexusRepositoryReference` unless Nexus
+  repository management is itself a KnowledgeOS business capability.
+
+  **Delivers `IR-01`** ("Integration Rule"), a new distinctly-named invariant: "external system models must
+  not become KnowledgeOS domain concepts unless KnowledgeOS owns the corresponding business invariant."
+  **Delivers `CM-01` through `CM-04`, four new numbered context-map invariants** (a further distinct
+  notation family): CM-01 (no bounded context may directly mutate another's authoritative state); CM-02
+  (every cross-context relationship must have an explicit semantic contract); CM-03 (external system models
+  terminate at integration boundaries unless explicitly adopted as domain concepts); CM-04 ("agent-specific
+  representations must not become cross-context authority" — explicitly self-described: "this formalizes
+  the Claude/Codex pointer-layer principle inside the broader architecture" — yet another (at least the
+  sixth or seventh distinct) codification of the same recurring pointer-layer principle, extending the
+  ongoing invariant-notation-proliferation pattern (A1/AFR-24/AAI-01-family/PLP-01/now CM-04)).
+
+  Delivers the Assurance-Graph-as-`CrossContextProjection` reconfirmation (directly consistent with 0725's
+  finding) and the precise distinction `AssuranceGraph≠IntegrationBus` — "the graph represents
+  relationships. APIs/events implement communication," preventing the graph from becoming "a technical
+  dumping ground."
+
+  **Delivers the Open Host Service pattern explicitly applied to KnowledgeOS's relationship with its
+  agents** (§139.23-139.24): KnowledgeOS exposes stable contracts (context retrieval, knowledge queries,
+  evidence submission, action requests, verification requests) so that Claude, Codex, and any future agent
+  become downstream consumers of one shared contract rather than each learning internal implementation
+  details directly — a precise, standard DDD pattern name applied for the first time to this specific
+  architectural relationship. Delivers a layered Contract stack (`Governance Contract→Knowledge Contract→
+  Assurance Contract→Agent Contract→Tool Contract→External System Contract`), Contract ownership (each
+  contract has exactly one owner; KnowledgeOS must not redefine `KubernetesAPI`'s or `NexusAPI`'s own
+  contracts), and Contract versioning/backward compatibility (`Agent_old→KnowledgeOS_new` compatibility
+  rules, "especially important if Claude/Codex integrations evolve independently").
+
+  Delivers four contract categories with detailed conceptual request/response schemas: Query
+  (`GetGovernedContext`, with `ContextRequest`/`ContextPackage` fields, explicit Context scoping —
+  `RelevantKnowledge(task,scope,time)`, never `AllKnowledge`, "for relevance, security, token efficiency,
+  correctness" — and Historical-context support via `ContextRequest(t=t_action)` for audit reconstruction);
+  Command (`RequestAction`, with an `ActionRequest` schema and a semantically rich `AuthorizationResult`
+  carrying `ALLOW/DENY/REQUIRES_APPROVAL/ALLOW_WITH_CONDITIONS` states, explicitly never a bare boolean);
+  Evidence (`SubmitEvidence`, with an `EvidenceSubmission` schema); and Verification (`RequestVerification`,
+  with `VerificationRequest`/`VerificationResult` schemas explicitly requiring both Rule-version and
+  Checker-version tracking for reproducibility — "otherwise reproducibility becomes weak").
+
+  Delivers a precise summary of the three increasingly specific architecture views produced across the
+  reconstruction's recent arc — Semantic model (what concepts exist?, 0724), Behavioral model (how do
+  concepts change?, 0725), and Context map (how do bounded contexts cooperate?, this file) — together
+  forming "the DDD foundation of KnowledgeOS."
+
+  Delivers Step 139's verdict, reconfirming the fundamental relationship
+  (`Governance→Knowledge→Assurance→Engineering→Evidence→Knowledge`) and the agent relationship
+  (`Agents→KnowledgeOS→GovernedContext→AuthorizedEngineeringAction`), with the Assurance Graph providing
+  `CrossContextTraceability`.
+
+  **Closes by opening "Step 140 — From Context Map to Component Architecture,"** promising to translate the
+  DDD model into logical components — which belong inside KnowledgeOS, which are external, which are
+  application services/adapters/projections, where the Assurance Graph and agent adapters physically live,
+  where deterministic assurance executes, and which boundaries might eventually justify separate deployables
+  versus a modular monolith — promising the "KnowledgeOS Logical Component Architecture," "the bridge from
+  the DDD model to an implementable architecture." This appears positioned to revisit and add component-level
+  granularity to 0717's earlier Logical Architecture. No actual code execution, repository inspection, or
+  verified filesystem/architecture claim reported anywhere in this file; every relationship, contract, and
+  worked example remains a target-architecture hypothesis.
+introduces:
+  - concept: "The formal nine-row KnowledgeOS Context relationship table (upstream/downstream, DDD relationship type)"
+  - concept: "TOCTOU (Time-of-Check≠Time-of-Use) applied precisely to agent action authorization"
+  - concept: "'Anti-Corruption Layers everywhere? No' -- a precisely reasoned, graded ACL-usage nuance"
+  - concept: "IR-01 -- external system models must not become domain concepts unless KnowledgeOS owns the invariant"
+  - concept: "CM-01 through CM-04 -- four new context-map invariants (CM-04 re-codifying the pointer-layer principle again)"
+  - concept: "The Open Host Service pattern applied to KnowledgeOS's relationship with Claude/Codex/future agents"
+  - concept: "The layered Contract stack and four contract categories (Query/Command/Evidence/Verification) with detailed schemas"
+  - concept: "Opens Step 140 -- From Context Map to Component Architecture"
+defines:
+  - concept: "TOCTOU in agent authorization"
+    definition: "An authorization decision made at time t_1 (TimeOfCheck) may no longer reflect the conditions present when the authorized action is actually executed at time t_2 (TimeOfUse); to prevent acting on stale authorization, the authorization object must carry explicit validity bounds and, for high-risk/production actions, be revalidated immediately before execution rather than trusted indefinitely"
+  - concept: "'ACLs everywhere? No'"
+    definition: "An Anti-Corruption Layer is warranted only where an external system's domain model would otherwise leak into and contaminate KnowledgeOS's own domain model; where the external system's natural representation is already simple and stable (e.g. a Git commit reference), a plain technical adapter suffices without a full translation layer -- ACL usage should be proportional to actual semantic risk, not applied uniformly for architectural purity"
+  - concept: "Open Host Service (applied to KnowledgeOS)"
+    definition: "KnowledgeOS exposes a small set of stable, versioned contracts (context retrieval, knowledge queries, evidence submission, action requests, verification requests) that any agent harness (Claude, Codex, or a future agent) consumes as a downstream client, rather than each harness learning and depending on KnowledgeOS's internal implementation details directly"
+refines:
+  - concept: "0687's/0697's/0712's/0714's/0717's/0721's Anti-Corruption-Layer discipline"
+    refinement: "Given a precise, graded usage nuance ('ACLs everywhere? No') distinguishing when a full ACL is warranted (Kubernetes) from when a simple adapter suffices (Git), calibrating ACL application to actual semantic risk rather than applying it uniformly"
+  - concept: "the corpus's long-tracked pointer-layer principle (0687-0725, now spanning A1/AFR-24/AAI-01-family/PLP-01)"
+    refinement: "Re-codified yet again as CM-04, extending the reconstruction's ongoing invariant-notation-proliferation pattern without reconciling the prior codifications"
+  - concept: "0717's Logical Architecture"
+    refinement: "Positioned to be given finer component-level granularity in the promised Step 140, following this file's context-map-level (not yet component-level) specification"
+  - concept: "0725's Assurance-Graph-as-projection finding"
+    refinement: "Directly reconfirmed and extended with the precise distinction AssuranceGraph≠IntegrationBus"
+  - concept: "the corpus's technical-capability≠organizational-authority family"
+    refinement: "Extended into a concrete security-engineering mechanism (TOCTOU-aware revalidation) rather than only a static architectural principle"
+contradicts: []
+repeats:
+  - "Substantially consolidates the Anti-Corruption-Layer discipline and Governance/Knowledge/Assurance/Engineering/Evidence relationship flow already established across 0687, 0697, 0712, 0714, 0717, and 0721, rather than introducing an entirely new context-mapping framework."
+bridge_candidates:
+  - "Read 0727 (Step 140 — From Context Map to Component Architecture) with standard attention: check whether it delivers genuinely new component-level granularity beyond 0717's earlier Logical Architecture, and whether the recurring pointer-layer-principle notation proliferation (now including CM-04) is ever addressed or reconciled anywhere in the corpus."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the TOCTOU (Time-of-Check≠Time-of-Use) security principle applied to agent action authorization -- a technically precise, broadly applicable contribution not previously stated in the reconstruction."
+  - "dimension-registry.md: record 'Anti-Corruption Layers everywhere? No' (a graded ACL-usage nuance), IR-01, and CM-01..CM-04 (four new context-map invariants, CM-04 re-codifying the pointer-layer principle), plus the Open Host Service pattern and the four-category contract model with detailed schemas."
+  - "dimension-registry.md: note this file largely consolidates prior-established Anti-Corruption-Layer discipline rather than introducing an extensively new context-mapping framework, with TOCTOU and the ACL-usage nuance as its standout original contributions."
+anchor_test:
+  anchor: "0687's/0697's/0712's/0714's/0717's/0721's Anti-Corruption-Layer discipline; 0717's Logical Architecture; 0725's Assurance-Graph-as-projection finding; the corpus's long-tracked pointer-layer principle and its notation proliferation; the corpus's technical-capability≠authority family"
+  supports_dimension: "Delivers the formal KnowledgeOS Context Map with a nine-row characterized relationship table, largely consolidating the Anti-Corruption-Layer discipline established across many prior files. Contributes several genuinely novel, technically precise elements: the TOCTOU security principle applied to agent action authorization (among the most broadly and currently applicable contributions in the reconstruction), a precisely reasoned graded 'ACLs everywhere? No' nuance, IR-01, and four new CM-01..CM-04 context-map invariants. Applies the Open Host Service DDD pattern explicitly to KnowledgeOS's agent relationship for the first time, with a detailed four-category contract model. Extends the pointer-layer-principle notation-proliferation pattern once more via CM-04 without reconciliation. Closes with a well-motivated continuation into Step 140's promised component-level architecture"
+  refines_or_contradicts: "directly and substantially extends 0687's/0697's/0712's/0714's/0717's/0721's Anti-Corruption-Layer discipline, 0717's Logical Architecture, 0725's Assurance-Graph-as-projection finding, and the corpus's technical-capability≠authority family; no contradiction found; extends (without reconciling) the corpus's pointer-layer-principle notation-proliferation pattern"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§139.35-139.36's explicit TOCTOU statement ('TimeOfCheck≠TimeOfUse... authorization should carry Validity, potentially RevalidateAtExecution... especially important for production') is directly quotable evidence of a technically precise, broadly applicable security-engineering principle not previously stated in the reconstruction."
+  - "§139.45-139.48's graded worked ACL examples (Git needs only a simple adapter; Kubernetes needs a full ACL; Nexus needs only a reference) is directly checkable evidence of a precisely reasoned, calibrated refinement of the reconstruction's prior, more uniformly stated Anti-Corruption-Layer discipline."
+  - "§139.57's explicit self-description of CM-04 ('this formalizes the Claude/Codex pointer-layer principle inside the broader architecture') is directly quotable evidence of the ongoing invariant-notation-proliferation pattern for this specific principle, now spanning at least six distinct codifications across the reconstruction."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 140's actual content (0727), once read, delivers genuinely new component-level granularity beyond 0717's earlier Logical Architecture, or largely restates it at the context-map level already covered here."
+  - "Whether the pointer-layer-principle notation proliferation (A1, AFR-24, the AAI-01 family, PLP-01, now CM-04) is ever explicitly addressed, consolidated, or reconciled anywhere later in the corpus, or remains a permanently scattered pattern requiring resolution only at the eventual §29-gated canonical synthesis stage."
+tier2_triggered: true
+tier2_reason: "Delivers the formal KnowledgeOS Context Map, largely consolidating prior Anti-Corruption-Layer discipline. Contributes the TOCTOU security principle applied to agent action authorization -- among the most technically precise, broadly applicable contributions in the reconstruction -- plus a precisely reasoned graded ACL-usage nuance, IR-01, and four new CM-01..CM-04 context-map invariants (CM-04 re-codifying the pointer-layer principle yet again). Applies the Open Host Service pattern explicitly to KnowledgeOS's agent relationship with a detailed four-category contract model. Opens Step 140's well-motivated component-architecture continuation."

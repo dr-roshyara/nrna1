@@ -1,0 +1,67 @@
+sequence: 644
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-114426_step-046-learning-stability-self-correction-feedback-safety-and-epistemic-control-duplicate.md
+title: "CONFIRMED EXACT DUPLICATE of 0627 (the 'Step 46' Incomplete Stub) — Byte-Identical (645 Bytes, 14 Lines, Zero Diff), Filename Self-Labeled '-duplicate' by the Corpus's Own Authors; Does NOT Resolve the Step-46 Corpus-Integrity Anomaly — It Confirms the Stub Was a Genuine, Recurring Artifact From the Original Authoring Process, Not a Chronologically Earlier Draft Later Completed Elsewhere"
+date: "2026-08-28"
+bytes: 645
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "byte-identical duplicate of 0627's stub, confirmed via diff (zero output); appears out of strict chronological position relative to its own topic (arriving after Step 61 rather than near Step 46/47), reinforcing that this is a filesystem-level duplicate rather than a resumed or expanded treatment"
+source_role: PRIMARY_RESEARCH
+canonical_source: 627
+importance: low
+confidence: high
+about: >
+  **CONFIRMED EXACT DUPLICATE of 0627** ("Step 46" incomplete announcement stub): byte-for-byte identical
+  content (645 bytes, 14 lines), a direct `diff` against 0627's source file produces zero output, and the
+  corpus's own filename explicitly and unambiguously self-labels this as "-duplicate." This is the second
+  such filename-confirmed duplicate encountered in this reconstruction (after 0634, an exact duplicate of
+  0633/Step 52).
+
+  **This file does NOT resolve the Step-46 corpus-integrity anomaly first flagged at 0627**: it does not
+  supply any of the seven sub-topics the original stub only announced (`LearningStability,
+  FeedbackAmplification, SelfCorrection, EpistemicDrift, ModelCollapse, FeedbackLoops, Human/External
+  Anchors`), no mathematical development, no falsification experiments, and no verdict -- it is simply a
+  second copy of the identical incomplete text. Its position in the corpus's sequential numbering is also
+  notable: it appears here, after file 0643 (Step 61), far downstream of both the original stub (0627,
+  preceding Step 47/0628) and the file that substantively absorbed Step 46's intended content under a
+  different title (0628, Step 47). This confirms the earlier working hypothesis recorded at 0627/0628: the
+  Step-46 stub was a genuine artifact of the corpus's original authoring/duplication process (the same
+  short fragment saved or referenced twice at different points in the corpus), not a chronologically
+  earlier draft that was later completed and reappeared here in finished form. The corpus's own declared
+  research program therefore still lacks any dedicated, substantive treatment of the seven Step-46 sub-
+  topics under that specific title -- the content gap that 0628 practically closed under the renumbered
+  title "Step 47" remains the only resolution on record for that specific topic area.
+introduces: []
+defines: []
+refines:
+  - concept: "0627's (Step 46) incomplete announcement stub and its corpus-integrity finding"
+    refinement: "Confirmed as a recurring, exact duplicate rather than a resumed or expanded treatment -- the stub's content gap remains unresolved under this specific title, with 0628 (Step 47) remaining the only practical resolution on record"
+contradicts: []
+repeats:
+  - "Byte-for-byte identical duplicate of 0627's full stub content — see 0627.yaml for the complete corpus-integrity finding, and 0628.yaml for the file that substantively absorbed the intended Step-46 content under the renumbered title Step 47."
+bridge_candidates:
+  - "No new bridge candidates — this file reconfirms, rather than advances, the tracked open item from 0627/0628 regarding whether any file ever delivers substantive Step-46 content under that specific title. Given this second appearance is also an unexpanded stub, the working conclusion is that no such dedicated file exists in the corpus; the topic's substantive treatment lives at 0628 (Step 47) under a different title."
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: record that 0644 is a second, confirmed exact duplicate of the 0627 Step-46 stub, appearing far downstream (after Step 61) rather than near its own topic area, reinforcing that the Step-46 gap is a genuine, unresolved corpus artifact rather than a chronologically deferred draft — no new substantive content."
+anchor_test:
+  anchor: "0627 (the original Step-46 stub and its corpus-integrity finding); 0628 (Step 47, which substantively absorbed the intended content under a different title)"
+  supports_dimension: "Delivers no new content of its own; its evidentiary value is entirely in confirming, via exact duplication and its markedly displaced position in the corpus's sequence, that the Step-46 gap identified at 0627 remains genuinely unresolved rather than merely appearing to be so due to incomplete reading — a second independent data point supporting the same conclusion"
+  refines_or_contradicts: "identical to 0627; no refinement, extension, or contradiction of substantive content; reinforces (does not newly establish) the corpus-integrity finding already recorded at 0627"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "A direct `diff` command between this file and 0627's source file produces zero output, and both report identical byte counts (645) and line counts (14) via `wc`, directly and mechanically confirming exact duplication."
+  - "This file's position in the corpus's sequential numbering — arriving after Step 61 (0643) rather than adjacent to Steps 46-47 (0627-0628) — is directly checkable evidence that it is a filesystem-level duplicate encountered later in the read order, not a resumed or completed version of the original stub's content."
+undefined_concepts: []
+open_questions:
+  - "Whether any file anywhere else in the remaining corpus ever delivers a dedicated, substantive treatment of the seven Step-46 sub-topics under that specific title, given that this second encounter confirms the stub's content gap remains unresolved as of this file"
+tier2_triggered: false
+tier2_reason: "Confirmed exact byte-for-byte duplicate of 0627's incomplete Step-46 stub, self-labeled '-duplicate' in its own filename by the corpus's authors, appearing far downstream of its own topic area. Delivers no new content; reinforces rather than newly establishes the corpus-integrity finding already recorded at 0627, with 0628 (Step 47) remaining the only substantive resolution on record for the underlying topic."

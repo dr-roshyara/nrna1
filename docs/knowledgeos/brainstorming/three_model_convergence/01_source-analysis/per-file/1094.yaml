@@ -1,0 +1,78 @@
+sequence: 1094
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/REFINED-STEP-290.md
+title: "REFINED STEP 290 -- N-1 equiv/approx Adjudication: The Fourth Living-Document Synthesis (Companion to Files 1088/1089/1093), Consolidating the Already-Tracked N-1A Resolution, and Delivering the Valuable Closing Insight That 'Overclaiming a FAULT' Is the Mirror Image of the Programme's Standing 'Overclaiming a RESULT' Hazard"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the fourth living-document synthesis (companion to REFINED-STEP-288/289/291, files 1088/1089/1093), for Step 290's N-1 adjudication, scope N-1 ONLY"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1094
+importance: major
+confidence: high
+about: >
+  `REFINED-STEP-290.md` — "N-1 — `≡`/`≈` ADJUDICATION," scope "N-1 ONLY," verdict "`N-1A — DISTINCT`... and
+  the 'corpus contradiction' reported by Steps 288–289 is WITHDRAWN." The fourth and final living-document
+  synthesis in this trio/quartet (alongside files 1088, 1089, 1093), consolidating this reconstruction's
+  already exhaustively-tracked N-1 resolution (files 1063-1073) into a single self-contained document.
+
+  **SUBSTANTIALLY RECONFIRMS THE ALREADY-TRACKED N-1A FINDINGS**: the corpus/candidate distinction (`261.21`/
+  `258.8` self-label as candidates, not assertions); the nine-registers-in-two-notations finding (`261.1` vs
+  `261.20`/`261.25`, six-for-six, already tracked file 1065); the eight-question definition-comparison audit
+  (Q1-Q8, already tracked file 1067); the UNDECIDABLE-FROM-CURRENT-CORPUS distinguishability verdict (already
+  tracked file 1066); the `≈_X` audit and its "degenerate endpoint" terminology correction (already tracked
+  files 1068, 1077, 1083); the independent congruence basis (`258.9`, already tracked file 1069); the
+  declaration-vs-derivation fork (already tracked file 1070); the `261.23` zero-of-six impact finding
+  (already tracked file 1071); the formal N-1A classification with all four alternatives rejected (already
+  tracked file 1072); and the G-67 withdrawal with its N-1′ replacement (already tracked file 1072-1073).
+
+  **DELIVERS ONE GENUINELY VALUABLE NEW CLOSING META-OBSERVATION**: the self-check log tallies "Three
+  corrections, all mine, all in the same direction: I over-read a documented openness as a defect," and
+  closes with a precise, disciplined characterization of a NEW failure-direction category: "THE PROGRAMME'S
+  STANDING HAZARD HAS BEEN OVERCLAIMING; THIS WAS ITS MIRROR IMAGE -- OVER-CLAIMING A FAULT, which inflates
+  URGENCY exactly as an overclaimed result inflates PROGRESS." This is a genuinely important addition to this
+  reconstruction's already-tracked catalogue of the programme's self-correction patterns: it distinguishes
+  two symmetric but opposite failure directions (overclaiming a positive RESULT, already tracked as the
+  programme's dominant hazard across files 1057-1058, 1077, 1083; and overclaiming a NEGATIVE FAULT/defect,
+  this file's own G-67 mis-scoring being the paradigm instance) as two faces of the same underlying
+  discipline failure -- directly complementing the already-tracked Audit G finding (file 1092) that count
+  errors in this programme have run in both directions (understating a defect vs. overstating a result).
+
+  **DELIVERS ONE MORE DISCIPLINED CLARIFICATION NOT PREVIOUSLY STATED THIS PRECISELY**: the boxed
+  "before-STOP" warning that N-1A must not be over-read: "N-1A RESOLVES THE TAXONOMY/REGISTER QUESTION, NOT
+  THE EQUALITY-CONTRACT QUESTION. A later step could read `N-1A = DISTINCT` as '`≡≠≈` has been mathematically
+  demonstrated.' IT HAS NOT." This is a precise, forward-looking guard against a plausible future misreading
+  of the programme's own resolved finding.
+introduces:
+  - concept: "The precise meta-observation that overclaiming a FAULT (inflating urgency) is the exact mirror image of the programme's standing hazard of overclaiming a RESULT (inflating progress) -- two symmetric but opposite failure directions of the same underlying discipline"
+  - concept: "The explicit forward-looking guard against a plausible future misreading of N-1A: it resolves the taxonomy/register question, not the equality-contract question, and must never be read as having mathematically demonstrated equiv does not equal approx"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked N-1A resolution and G-67 withdrawal (files 1063-1073)"
+    refinement: "CONSOLIDATED into a single living document, with the genuinely valuable closing meta-observation that the G-67 mis-scoring was an instance of a new, named failure-direction category (overclaiming a fault) that mirrors the programme's already-tracked overclaiming-a-result hazard"
+contradicts: []
+repeats:
+  - "Substantially reproduces the already-tracked N-1A resolution, definition comparison, distinguishability audit, congruence-independence finding, declaration-vs-derivation fork, 261.23 impact finding, and G-67 withdrawal from files 1063-1073."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the new failure-direction category (overclaiming a fault, the mirror image of overclaiming a result) and the explicit forward-looking guard against misreading N-1A as a mathematical demonstration of equiv-not-equal-approx."
+anchor_test:
+  anchor: "This reconstruction's already-tracked N-1A resolution and G-67 withdrawal (files 1063-1073)"
+  supports_dimension: "Consolidates this resolution into a living document and delivers a genuinely valuable new meta-observation naming a symmetric failure-direction category"
+  refines_or_contradicts: "refines (consolidates and adds meta-level characterization to) the prior tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The N-1A resolution and G-67 withdrawal are directly checkable against files 1063-1073's own already-documented findings for exact substantive consistency."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Consolidates the already exhaustively-tracked N-1A resolution into a self-contained living document, delivering one genuinely valuable new meta-observation (overclaiming a fault as the mirror image of overclaiming a result) and an explicit forward-looking guard against a plausible future misreading of N-1A. Classified importance major (a consolidation with one notable new meta-level insight, rather than a fresh critical finding) and confidence high given the disciplined, well-evidenced nature of the synthesis."

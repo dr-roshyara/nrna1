@@ -1,0 +1,120 @@
+sequence: M0110
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-150900_agreement-with-the-todo-register-and-queue.md
+title: "Agreement With the TODO Register and Queue: TWO CONCATENATED DOCUMENTS -- Part 1 Is (by Content) the Review That Produced M0109's Six 'Key Corrections Applied' Despite Carrying a LATER File Timestamp Than M0109 Itself (a Second Instance of the M0105-Style Log-Ordering Anomaly); Part 2 Reports the ACTUAL RESOLUTION of TODO Group A (Factivity): R1 SELECTED -- K_t Renamed to A_t (AttributedState), Knows->Truth Kept Externally Factive, With an Explicit Evidence!=Decision Discipline (R1/R2 Were Experimentally Behaviorally Identical; the Experimental Lane Could Not Adjudicate; a Separate Governance Act Selected R1)"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "a single file containing two documents: Part 1 systematically reviews an (unrevised) TODO register and proposes, section by section, essentially every correction that appears as 'Key Corrections Applied' in M0109 -- strong content evidence that Part 1 logically PRECEDES M0109 in the true conversation despite this file's later timestamp (150900 vs M0109's 143500), a second concrete instance of the log-ordering anomaly first flagged at M0105; Part 2, after an isolated '# review' break, is unrelated in topic and reports the actual resolution of the Factivity decision (TODO Group A) as R1, with careful evidence-vs-decision discipline"
+source_role: ADJUDICATION
+canonical_source: M0110
+importance: critical
+confidence: high
+about: >
+  PART 1 (the review that produced M0109's corrections, lines 1-480): agrees with an
+  (unspecified, presumably pre-revision) TODO register's overall structure but explicitly declines
+  to approve it unchanged, proposing systematically -- group by group -- essentially every
+  correction that appears in M0109 as an already-applied "Key Correction": rejects "Factivity must
+  be resolved BEFORE Contr" and "Contr depends on Factivity" as too strong, citing the established
+  Truth-perp-Closure separation and proposing the reordered dependency picture (Factivity, Contr,
+  and >= all feeding later semantic/kernel decisions in parallel, with Contr as the immediate next
+  experiment); flags the "88.25% survival rate" figure as risking turning "an experimental result
+  into an architectural recommendation" unless explicitly tied to a scoped experiment; approves >=
+  as OPEN but not strictly blocked on A+B being fully closed; corrects "semantic equivalence is the
+  foundation of kernel reduction" to "a candidate prerequisite for certain forms of kernel
+  reduction," since equivalence + required invariants + observability + adequacy + operational
+  preservation may all be needed; separates delta (state transition) from lifecycle/history
+  semantics, noting the document already keeps them apart (G separate), which is good; identifies
+  "the biggest structural correction" as separating Composition from Reduction (originally combined
+  as "F -- Composition/Reduction" in the pre-revision document), proposing F=Composition semantics,
+  G=Projection/Invariant/Reduction, H=Lifecycle instead, and rejecting the claimed delta-dependency
+  for reduction as unestablished; reinforces Lifecycle should investigate relations/events not
+  automatically a state machine (ClosureEvent!=ClosureState); proposes MOVING the Projection/
+  Invariant framework EARLIER in the dependency chain as a parallel foundational lane feeding D, E,
+  F, and kernel reduction, rather than appearing serially after F and G; corrects "Kernel selection
+  depends on A-H" to "depends on the subset of A-H that is demonstrated to be semantically load-
+  bearing"; and introduces a five-type TODO taxonomy (DECISION/EXPERIMENT/DEFINITION/REDUCTION/
+  GOVERNANCE -- M0109's own six-type taxonomy adds a sixth, RESEARCH). Concludes "APPROVED WITH
+  STRUCTURAL CORRECTIONS," with the immediate next action "B -- Contradiction/Evaluation Domain/
+  Zero experiment," and Factivity explicitly "a decision track that should be resolved explicitly,
+  but should not artificially block the contradiction experiment." EVERY ONE OF THESE PROPOSED
+  CORRECTIONS APPEARS, ALREADY APPLIED, IN M0109 -- strong content evidence this document logically
+  precedes M0109 despite its later file timestamp, a second concrete instance of the M0105-style
+  log/conversation-ordering anomaly, flagged here rather than resolved.
+
+  PART 2 (after the isolated "# review" heading, lines 481-571, unrelated topic): reviews a
+  separate "The Development of the Model" trajectory document and identifies it as now STALE on
+  one specific point: **THE FACTIVITY DECISION (TODO GROUP A) HAS BEEN RESOLVED**. "R1 has now been
+  selected: rename K_t -> A_t (AttributedState), while retaining Knows(a,p,c,t) -> True(p,c,t) as
+  an external/factive assertion and keeping Verification separate." This directly resolves TODO
+  Group A from M0109 (previously "OPEN -- DECISION REQUIRED," listing Rename/Externalize/Hybrid as
+  candidates) in favor of the Rename option specifically.
+
+  **APPLIES A CAREFUL EVIDENCE-VERSUS-DECISION DISCIPLINE**: explicitly states the historical
+  account should NOT be rewritten -- "the trajectory correctly records that R1 and R2 were
+  experimentally behaviorally identical and that the experimental lane therefore could not
+  adjudicate between them. That historical fact remains valid. The new decision belongs AFTER the
+  historical experiment, not inside it." Proposes the precise sequencing: "Experiment -> R1/R2
+  behavioral equivalence -> experimental lane cannot adjudicate -> human governance decision -> R1
+  selected," preserving "evidence != decision" as the crucial distinction -- the R1 selection was
+  a GOVERNANCE act, not something the experiment itself could determine.
+
+  **UPDATES THE CURRENT RESEARCH POSITION TREE**: Factivity DECIDED:R1 (K_t->A_t, Knows->Truth
+  externally factive, Verification separate); Contr+evaluation-domain = NEXT RESEARCH EXPERIMENT;
+  >=, ==_sem/identity, delta, lifecycle/retirement, composition/reduction all still OPEN; Kernel
+  still NOT SELECTABLE. Explicitly clarifies "R1 does not mean that the downstream theory is now
+  solved. It removes the specific unsatisfiable attribution/factivity formulation as a blocker. The
+  remaining semantic questions -- especially Contr and the meaning/domain of evaluation -- still
+  have to be earned."
+
+  **REAFFIRMS A GOVERNING PRINCIPLE MATCHING THIS RECONSTRUCTION'S OWN STANDING DISCIPLINE**: "the
+  strongest statement made must never exceed the strength of the available evidence" -- cited
+  as the reviewed document's own "central methodological conclusion," which "should remain the
+  governing principle."
+
+  **MAKES A THREE-WAY DISTINCTION TO PREVENT FUTURE MISREADING**: corrects the reviewed
+  trajectory's claim "exactly one structural object was added (B...). The kernel gained nothing" by
+  distinguishing (a) experimental structural additions (B is the only one), (b) governance
+  decisions affecting model vocabulary (R1 changes the representation from K_t to A_t), and (c) the
+  kernel itself (still unchanged/not selected) -- "that prevents a future reader from interpreting
+  'nothing was added' as 'nothing subsequently changed through governance.'"
+introduces:
+  - concept: "The RESOLVED Factivity decision: R1 selected (K_t renamed to A_t/AttributedState; Knows->Truth kept externally factive; Verification kept separate), directly answering TODO Group A from M0109"
+  - concept: "The precise evidence-vs-decision sequencing discipline: Experiment -> behavioral-equivalence finding -> experimental-lane-cannot-adjudicate -> human governance decision -> R1 selected, keeping 'evidence != decision' explicit"
+  - concept: "The three-way distinction (experimental structural additions / governance vocabulary decisions / kernel changes) preventing conflation of 'nothing added experimentally' with 'nothing changed via governance'"
+defines: []
+refines:
+  - concept: "M0109's TODO Group A (Factivity), here resolved to the Rename option (R1) via an explicit governance act, distinct from the underlying experimental finding of R1/R2 behavioral equivalence"
+  - concept: "M0109's overall structure, which (per Part 1's content) appears to be the direct product of this document's own proposed corrections"
+contradicts: []
+repeats:
+  - concept: "Part 1 restates, point for point, the six corrections that appear already-applied in M0109 (Contr independent of Factivity; >= not strictly blocked on A+B; ==_sem as candidate prerequisite not foundation; Composition separated from Reduction; Projection/Invariant as a parallel lane; Kernel selection depends on the load-bearing subset)"
+bridge_candidates:
+  - concept: "Part 1's proposed corrections versus M0109's already-applied corrections, as clear evidence of the true conversation order within this specific cluster, for the eventual reclassification pass to sequence correctly alongside the M0105 anomaly"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0110 as containing two documents -- Part 1, which (despite a later file timestamp) is by content the review that directly produced M0109's six 'Key Corrections Applied,' a second concrete instance of the M0105-style log-ordering anomaly; and Part 2, which reports the actual RESOLUTION of the Factivity decision (TODO Group A) as R1 -- K_t renamed to A_t, Knows->Truth kept externally factive -- via an explicit governance act distinct from the underlying R1/R2 behavioral-equivalence experimental finding, with a careful evidence!=decision discipline and a three-way experimental/governance/kernel distinction."
+anchor_test:
+  anchor: "M0109's TODO register (whose corrections Part 1 appears to have produced) and the corpus's established R1/R2 behavioral-equivalence finding for factivity"
+  supports_dimension: "Resolves TODO Group A (Factivity) to a specific selected option (R1) via a disciplined governance act kept explicitly separate from the underlying experimental finding, and provides direct content evidence of a second log-ordering anomaly in this document cluster"
+  refines_or_contradicts: "refines (M0109, and the corpus's factivity/R1-R2 experimental work)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Every specific correction Part 1 proposes (Contr-independent-of-Factivity, >=-not-strictly-blocked, ==_sem-as-candidate-prerequisite, Composition-separated-from-Reduction, Projection/Invariant-as-parallel-lane, Kernel-selection-depends-on-load-bearing-subset) appears, already applied, as one of M0109's six named 'Key Corrections Applied' -- strong, specific content evidence of the true conversation order within this document cluster."
+  - "'R1 has now been selected: rename K_t -> A_t (AttributedState)... Evidence != decision' -- a concrete, disciplined resolution of a previously-open TODO group, explicitly kept separate from the experimental finding that merely established R1/R2's behavioral equivalence."
+  - "'The strongest statement made must never exceed the strength of the available evidence' -- the reviewed document's own governing principle, reaffirmed here, striking in its near-verbatim match to this reconstruction's own standing project discipline."
+undefined_concepts:
+  - "The identity/location of the pre-revision TODO register Part 1 reviews, and of the separate 'Development of the Model' trajectory document Part 2 reviews -- neither independently numbered or located in this pass"
+open_questions:
+  - "Whether the Contr experiment (now confirmed as the immediate next research item following the R1 factivity resolution) was ever executed, and with which candidate resolution selected."
+  - "Whether R1's specific consequences (K_t renamed to A_t throughout the theory, Verification kept separate) were propagated consistently through subsequent documents in this pass."
+tier2_triggered: true
+tier2_reason: "Resolves a previously-open TODO group (Factivity) to a specific selected option via a disciplined governance act explicitly kept separate from the underlying experimental finding, and provides concrete content evidence of a second log-ordering anomaly in this document cluster (following M0105), directly relevant to how this reconstruction should sequence and trust file-timestamp ordering in the eventual global-reclassification pass."

@@ -1,0 +1,211 @@
+sequence: 557
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-155652_step-015-decision-theory-and-action-selection.md
+title: "CAPSTONE LANDMARK: Sārathi Fully Formalized as a Policy-Governed Decision Function — 'Best Action≠Action That Merely Reduces Discrepancy Most'; Value of Information (EVSI) Rigorously Formalized; Pareto Optimality Preferred Over Pretending to Know an Organization's Utility Weights; 'Zero Detects; Lord Proposes; Sārathi Decides' (the Cleanest Three-Lens Differentiation in the Corpus); Human Decisions as First-Class Divergence Events; Failed Actions Are Epistemic Events; Fourteen Canonical DE1-DE14 Invariants; Opens Step 16 (Temporal Knowledge, Events, State Evolution)"
+date: "2026-08-27"
+bytes: 19296
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 0556's named 'Step 15,' delivering the corpus's mathematically most complete and final definition of Sārathi as a policy-governed decision function"
+source_role: PRIMARY_RESEARCH
+canonical_source: 557
+importance: critical
+confidence: high
+about: >
+  Directly executes 0556's closing "Step 15 -- Decision Theory, Value of Information, Action Selection, and
+  Sārathi," opening with the point at which "the three-lens architecture becomes mathematically
+  operational": Zero identifies discrepancy, Lord generates candidate remedies, and Sārathi "must now
+  determine what should happen next." Delivers the file's crucial corrective principle: `Best action ≠
+  action that merely reduces discrepancy most`, since a real action carries cost, risk, reversibility,
+  authority requirements, information value, and downstream consequences.
+
+  **Reconfirms `Knowledge≠Action` and `Recommendation≠Execution`**, worked through the distinction between
+  "changing the firewall rule is likely to solve the discrepancy" and "change the firewall rule" -- an
+  explicit governance boundary separating the two. **Formalizes Action as a structured domain object**
+  `a=(Intent,Preconditions,Effects,Cost,Risk,Reversibility,Authority,EvidenceRequirements,Context)`, with
+  preconditions evaluated against `K_t` (`Executable(a)=False` if a critical precondition is unknown,
+  unless governance explicitly permits proceeding), and effects modeled as a possibly-uncertain state
+  transition `Transition_a(X_t)->X_{t+1}`.
+
+  **Delivers standard expected-utility reasoning** `EU(a)=Σ_i P(o_i|a,K_t)U(o_i)`, then delivers the
+  file's foundational insight that information itself has decision value: an action like inspecting
+  firewall logs may have zero direct operational effect yet substantially reduce uncertainty.
+  **Rigorously formalizes the Expected Value of Sample Information**,
+  `EVSI(q)=𝔼_r[max_a EU(a|K_{t+1}(r))] - max_a EU(a|K_t)`, and delivers a simpler KnowledgeOS-level
+  approximation, `VOI(q)=ExpectedDecisionImprovement(q)-Cost(q)`, with a candidate-investigation ranking
+  rule `q*=argmax_q VOI(q)` subject to `Risk(q)≤RiskLimit`.
+
+  **Redefines Lord's role with full mathematical precision**: `Lord:(K_t,I_t,Δ_t)->𝒜_t`, "generate
+  candidate actions and investigations that have high expected value for reducing relevant uncertainty,
+  discrepancy, or decision risk," with each candidate annotated by ExpectedBenefit, Cost, Risk, VOI, and
+  Reversibility. **Formalizes Sārathi as a genuine decision function**,
+  `Sārathi:(K_t,I_t,Δ_t,𝒜_t,ρ)->Decision`, with a six-value decision vocabulary
+  `Decision∈{Execute,Investigate,Defer,Reject,Escalate,RequestApproval}`. **Delivers a crucial authority
+  boundary**: even when KnowledgeOS concludes a production firewall change is the best action, if its
+  authority belongs to the Architecture Board, Sārathi must output `RequestApproval(a)`, never
+  `Execute(a)` -- `Decision capability≠Execution authority`.
+
+  **Formalizes decision feasibility** `Feasible(a,K_t,ρ)=Preconditions∧Authority∧Constraints∧Safety`,
+  restricting the decision set to `𝒜^{feasible}⊆𝒜`, and a constrained optimization formulation
+  `a*=argmax_{a∈𝒜^{feasible}} EU(a)` subject to risk and cost ceilings. **Delivers the file's key
+  theoretical caution**: there is no universal utility function -- `UtilityFunction is policy/purpose
+  dependent` (cost may dominate for one organization, safety for another, time-to-recovery during an
+  incident), "following the same principle established for thresholds." **Delivers multi-objective decision
+  making** over a named objective set (Cost, Risk, Time, Quality, Compliance, Security, Availability),
+  represented as a vector utility with a policy-defined aggregation function.
+
+  **Delivers the file's central methodological recommendation for genuinely irreducible tradeoffs --
+  Pareto optimality**: rather than forcing a single scalar utility, Sārathi can compute the Pareto frontier
+  `𝒫={a | ∄b:b≻a}` and present the resulting non-dominated candidates to a human decision-maker, "often
+  better than pretending the system knows the organization's exact utility weights." Worked through a
+  concrete five-action comparison table (inspect logs, ask owner, run test, change firewall, do nothing)
+  showing that neither a naive cost-minimizer (choosing "do nothing") nor a naive discrepancy-eliminator
+  (choosing "change firewall") captures the genuinely preferable choice -- inspecting logs, which has high
+  information value at low risk -- "precisely what we want Sārathi to capture."
+
+  **Introduces the classical exploration-versus-exploitation distinction** into KnowledgeOS's decision
+  model, and formalizes sequential decision making explicitly (`a_2=f(K_{t+1})`, not one-shot
+  optimization), with a state-action-transition model `(K_t,a_t,o_t)->K_{t+1}=Update(K_t,a_t,o_t)`
+  connecting action directly back into the epistemic loop. Delivers "the complete Sārathi loop" diagram
+  spanning Current Knowledge -> Zero -> Discrepancy -> Lord -> Candidate Actions -> Sārathi ->
+  {Investigate, Execute, Defer, Escalate, Reject} -> Action/Observation -> New Evidence -> Knowledge State.
+
+  **Reconfirms action outcomes are evidence** (`Action->Observation->Evidence->Knowledge`, "closes the
+  loop"), and delivers the file's most consequential engineering-relevant finding: **failed actions are
+  also knowledge**, worked through a failed firewall connectivity test producing genuine evidence
+  (`FirewallTestFailed`) rather than mere operational failure -- "failure is an epistemic event," "very
+  important for engineering systems." **Formalizes Action provenance** via a fully-specified `ActionEvent`
+  object (Actor, Action, Intent, KnowledgeState, Policy, Timestamp, Outcome, Evidence), enabling
+  KnowledgeOS to answer both "why was this action taken?" and "what happened after it?"
+
+  **Delivers explicit, first-class modeling of human decisions**: when a human overrides Sārathi's
+  recommendation, choosing `a_2` instead of the recommended `a_1`, this is explicitly NOT treated as an
+  error but as a new `HumanDecision` event carrying decision-maker, authority, rationale, knowledge state,
+  accepted risks, and the selected action -- "KnowledgeOS records the divergence." **Delivers a crucial
+  statement on where human agency belongs**, explicitly rejecting any implied `AI->Action` shortcut in
+  favor of `Knowledge->Recommendation->Human/GovernanceDecision->AuthorizedAction`, with automation existing
+  only where explicitly authorized.
+
+  **Formalizes Decision Rationale** as a constructible explanation `Why(a)?` drawn from {Purpose,
+  Discrepancy, Evidence, ExpectedOutcome, Risk, Cost, Constraints, Policy}, worked through a concrete
+  example sentence explicitly contrasted with the unacceptable baseline "the AI recommended it." **Delivers
+  `DecisionConfidence≠EvidenceSupport`**: a decision can simultaneously carry high expected utility, high
+  uncertainty, low risk, and strong evidence -- genuinely distinct dimensions that a useful decision report
+  must expose rather than collapse into one number.
+
+  **Introduces Regret** (`Regret(a)=Utility(a*)-Utility(a)`, and expected regret under uncertainty),
+  explicitly classified as a policy-level decision criterion rather than a fundamental epistemic property.
+  **Delivers robust decision making under model uncertainty**: when the probabilities themselves are
+  uncertain (e.g. "what if our causal model is wrong?"), Sārathi can prefer a minimax-style robust criterion
+  `min_{M∈ℳ}U(a,M)`, remaining safe across multiple plausible causal models rather than trusting a single
+  point estimate. **Formalizes multiple possible worlds** `𝒲={w_1,...,w_n}` consistent with current
+  knowledge, with a robust action defined as one whose outcomes remain acceptable across many plausible
+  worlds -- "connects beautifully to our Ideal State and causal models."
+
+  **Delivers "Sārathi therefore needs epistemic humility"**: unknown world state implies uncertain outcome,
+  and KnowledgeOS must never manufacture a single confident future merely because an LLM can describe one --
+  it must preserve the full set of possible outcomes explicitly. Worked through a concrete unresolved-cause
+  scenario (Nexus failure with an unresolved cause) where a high-risk restart is correctly deprioritized in
+  favor of low-risk, high-information-value inspection actions unless urgency overrides the policy --
+  "risk-aware epistemic action selection."
+
+  **Delivers the file's central formal deliverable -- the fully specified Sārathi function**:
+  `S_t=𝒟_ρ(K_t,I_t(P),Δ_t^P,𝒜_t,R_t,Auth_t,C_t)`, returning
+  `Decision∈{Execute,Investigate,Defer,Escalate,Reject,RequestApproval}`. **Delivers the corpus's cleanest
+  three-lens mathematical differentiation to date**: `Zero(K,I)->Δ` ("what is missing, inconsistent,
+  uncertain, or deficient?"); `Lord(K,I,Δ)->𝒜` ("what could reduce the relevant discrepancy or
+  uncertainty?"); `Sārathi(K,I,Δ,𝒜,ρ)->Decision` ("given purpose, risk, authority and constraints, what
+  should happen next?") -- "no longer merely metaphorical. It is a coherent computational architecture."
+  Delivers the summary architectural invariant "Zero detects; Lord proposes; Sārathi decides," alongside
+  "Decision does not imply Execution" and "Execution produces Evidence," completing the feedback loop.
+  Delivers a full action lifecycle (Candidate -> Evaluated -> Feasible -> Recommended -> Approved ->
+  Executed -> Observed -> Evaluated, with terminal states Rejected, Cancelled, Failed, Succeeded, Expired,
+  Superseded), explicitly domain states, not epistemic ones.
+
+  **Delivers the file's central formal invariant deliverable -- fourteen canonical Step-15 invariants
+  (DE1-DE14)**: DE1 Action≠Knowledge; DE2 Recommendation≠Execution; DE3 Decision≠Authority; DE4 Authority is
+  explicitly governed; DE5 Information acquisition is itself an action; DE6 Information has decision value;
+  DE7 Action outcomes become evidence; DE8 Action failure can produce knowledge; DE9 Utility is
+  purpose/policy dependent; DE10 Risk and uncertainty are not interchangeable; DE11 Unknown outcomes must
+  remain representable; DE12 Human decisions remain first-class decision events; DE13 Every consequential
+  decision retains its decision basis; DE14 (flagged particularly important) Execution changes the domain
+  state; observation changes the knowledge state.
+
+  **Delivers Step 15's verdict**: THEORETICALLY RESOLVED AT THE FRAMEWORK LEVEL, delivering the corpus's
+  canonical, final definition of Sārathi -- "the policy-governed decision mechanism that selects or
+  escalates actions under uncertainty, based on purpose, discrepancy, expected consequences, information
+  value, risk, authority, and constraints" -- explicitly NOT "the AI that decides what to do,"
+  "fundamental" as a distinction. Consolidates the complete reasoning loop
+  (`K_t --Zero--> Δ_t --Lord--> 𝒜_t --Sārathi--> Decision_t --Authority--> Action_t --World--> Outcome_t
+  --Observation--> Evidence_{t+1} --Assessment--> K_{t+1}`), "a genuine closed epistemic-action loop."
+
+  **Delivers a major architectural self-assessment**: KnowledgeOS has crossed from "Knowledge Management +
+  Reasoning" to "Knowledge + Reasoning + Discrepancy Detection + Decision Support + Governed Action Loop,"
+  "much closer to an epistemic operating system." **Identifies one major remaining missing mathematical
+  component**: the world changes continuously WITHOUT KnowledgeOS acting (documents change, systems change,
+  people change decisions, policies change, deployments happen, external events happen), requiring a formal
+  model of Time, Events, State Evolution, and Change.
+
+  **Closes by opening "Step 16 -- Temporal Knowledge, Events, State Evolution, and Knowledge Versioning"**,
+  posing the central question of how KnowledgeOS distinguishes what was true, believed, valid, or required
+  at one time from another, explicitly noting that the temporal-validity component `τ` had been introduced
+  early in the arc but never fully formalized.
+introduces:
+  - concept: "The corrective principle that the best action is not the one that merely reduces discrepancy most, since real actions carry cost, risk, reversibility, authority requirements, and information value"
+  - concept: "Action formalized as a structured domain object with explicit preconditions evaluated against current knowledge, blocking execution when a critical precondition remains unknown absent explicit governance override"
+  - concept: "Rigorous Value of Information theory: the Expected Value of Sample Information (EVSI) and a simpler policy-level VOI approximation, giving Lord a mathematically grounded way to rank candidate investigations"
+  - concept: "The fully mathematically specified Sārathi decision function S_t=𝒟_ρ(K_t,I_t(P),Δ_t^P,𝒜_t,R_t,Auth_t,C_t) returning a six-value decision vocabulary"
+  - concept: "Decision capability≠Execution authority: Sārathi may correctly conclude an action is optimal yet still be required to request approval rather than execute, when authority for that action lies elsewhere"
+  - concept: "Pareto optimality as the recommended treatment for genuinely irreducible multi-objective tradeoffs, presenting non-dominated candidates to a human decision-maker rather than forcing a false single utility score"
+  - concept: "The corpus's cleanest three-lens mathematical differentiation: Zero detects, Lord proposes, Sārathi decides — no longer a metaphor but a coherent computational architecture with distinct function signatures for each"
+  - concept: "Failed actions treated as genuine epistemic events, producing real evidence rather than mere operational failure records"
+  - concept: "Human decisions modeled as first-class HumanDecision events (not errors) when a human overrides a system recommendation, with the divergence itself recorded"
+  - concept: "The explicit rejection of any AI->Action architectural shortcut, in favor of Knowledge->Recommendation->Human/GovernanceDecision->AuthorizedAction, with automation existing only where explicitly authorized"
+  - concept: "DecisionConfidence≠EvidenceSupport: expected utility, uncertainty, risk, and evidential support are genuinely distinct dimensions of a decision that must not be collapsed into one number"
+  - concept: "Robust decision making under model uncertainty via multiple possible worlds and a minimax-style robustness criterion, remaining safe across plausible alternative models rather than trusting one point estimate"
+  - concept: "Fourteen canonical Step-15 invariants (DE1-DE14) governing decision theory and action selection"
+  - concept: "'Step 16 — Temporal Knowledge, Events, State Evolution, and Knowledge Versioning' as the corpus's next named research phase, addressing the continuously changing world independent of KnowledgeOS's own actions"
+defines:
+  - concept: "Sārathi (final formal definition)"
+    definition: "S_t=𝒟_ρ(K_t,I_t(P),Δ_t^P,𝒜_t,R_t,Auth_t,C_t) -> Decision∈{Execute,Investigate,Defer,Escalate,Reject,RequestApproval} — the policy-governed decision mechanism selecting or escalating actions under uncertainty, based on purpose, discrepancy, expected consequences, information value, risk, authority, and constraints"
+  - concept: "Expected Value of Sample Information (EVSI)"
+    definition: "EVSI(q)=𝔼_r[max_a EU(a|K_{t+1}(r))] - max_a EU(a|K_t) — the rigorous decision-theoretic value of performing an information-gathering action q before committing to a final decision"
+  - concept: "ActionEvent"
+    definition: "(Actor, Action, Intent, KnowledgeState, Policy, Timestamp, Outcome, Evidence) — the mandatory provenance record for every executed action, enabling reconstruction of both why an action was taken and what happened afterward"
+refines:
+  - concept: "0556's closing directive naming Step 15 and its Zero->Lord->Sārathi architecture"
+    refinement: "Fully executed: delivers rigorous Value-of-Information theory, a complete formal Sārathi decision function, Pareto-optimal multi-objective handling, and the corpus's cleanest three-lens mathematical differentiation"
+  - concept: "0553's purpose-specific Ideal State I_t(P_r) and 0546/0547's Lord evidence-acquisition optimization"
+    refinement: "Unified into a single coherent decision function taking purpose-specific discrepancy, candidate actions, risk state, authority, and constraints as explicit inputs"
+  - concept: "0556's causal-model robustness concerns (competing causal models retained without premature selection)"
+    refinement: "Extended into a formal robust decision-making criterion (multiple possible worlds, minimax utility) allowing Sārathi to select actions that remain acceptable across plausible alternative causal models"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 16 — Temporal Knowledge, Events, State Evolution, and Knowledge Versioning' is executed as its own dedicated corpus file, finally fully formalizing the temporal-validity component τ introduced early in the arc but never completed"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the corrective principle that best action≠maximal discrepancy reduction, the formal Action object, Value of Information theory (EVSI and the simpler VOI approximation), and the fully specified Sārathi decision function."
+  - "dimension-registry.md: record Decision capability≠Execution authority, Pareto optimality for irreducible multi-objective tradeoffs, the corpus's cleanest three-lens differentiation (Zero detects/Lord proposes/Sārathi decides), and failed actions as genuine epistemic events."
+  - "dimension-registry.md: record first-class HumanDecision modeling, the explicit rejection of any AI->Action shortcut, DecisionConfidence≠EvidenceSupport, robust decision making under multiple possible worlds, the fourteen canonical DE1-DE14 invariants, and 'Step 16 — Temporal Knowledge, Events, State Evolution, and Knowledge Versioning' as the next named research phase."
+anchor_test:
+  anchor: "0556's Step-15 directive and Zero->Lord->Sārathi architecture; 0553's purpose-specific Ideal State; 0546/0547's Value-of-Evidence machinery; 0556's causal-model robustness concerns"
+  supports_dimension: "CAPSTONE LANDMARK delivering the corpus's mathematically final and most complete formalization of Sārathi as a genuine policy-governed decision function, unifying rigorous decision theory (expected utility, Value of Information, Pareto optimality, robust decision-making under model uncertainty) with the corpus's established evidence, discrepancy, and causal-reasoning machinery. Delivers the cleanest three-lens mathematical differentiation in the entire corpus, explicit first-class treatment of human override decisions, a firm rejection of any AI-decides-and-acts shortcut, and the crucial finding that failed actions themselves constitute genuine epistemic events — closing the corpus's active epistemic-action loop into a single coherent, auditable architecture"
+  refines_or_contradicts: "directly and fully executes 0556's Step-15 directive; unifies 0553's purpose-specific Ideal State and 0546/0547's Lord evidence-acquisition machinery into the final Sārathi decision function; extends 0556's causal-model-robustness concerns into a formal robust decision-making criterion; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The five-action comparison table (inspect logs, ask owner, run test, change firewall, do nothing), explicitly contrasting a naive cost-minimizer, a naive discrepancy-eliminator, and a proper decision system's correct choice (inspecting logs for its high information value at low risk), is a directly checkable demonstration that Sārathi's decision function produces meaningfully different — and better — outcomes than either simplistic alternative."
+  - "The explicit modeling of human override as a first-class HumanDecision event (rather than an error or an ignored recommendation) is a concrete, checkable architectural commitment distinguishing this design from systems that treat AI recommendations as ground truth to be either obeyed or silently discarded."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 16 — Temporal Knowledge, Events, State Evolution, and Knowledge Versioning' is executed as its own dedicated corpus file, finally fully formalizing the temporal-validity component τ"
+  - "Whether the fourteen DE1-DE14 invariants are ever cross-referenced against the corpus's other independently-numbered invariant schemes from this same research program in a future canonical reference"
+tier2_triggered: true
+tier2_reason: "CAPSTONE LANDMARK delivering the corpus's mathematically final and most complete formalization of Sārathi, integrating rigorous decision theory (expected utility maximization, Value of Information via EVSI, Pareto optimality for irreducible tradeoffs, robust decision-making under causal-model uncertainty) directly with the corpus's established evidence, discrepancy, and causal-reasoning architecture. Delivers the cleanest and most explicit three-lens mathematical differentiation anywhere in the corpus (Zero/Lord/Sārathi each given a distinct, precisely-typed function signature), a crucial authority boundary distinguishing decision capability from execution authority, explicit first-class treatment of human decision divergence, a firm architectural rejection of any AI-decides-and-acts shortcut in favor of governed human authorization, and the important engineering-relevant finding that failed actions constitute genuine epistemic events in their own right. Closes with fourteen canonical governing invariants and identifies the corpus's next necessary research direction — formalizing time, events, and state evolution — as the one major missing component preventing KnowledgeOS from being a complete epistemic operating system."

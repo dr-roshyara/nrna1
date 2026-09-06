@@ -1,0 +1,67 @@
+sequence: 956
+path: docs/knowledgeos/brainstorming/phase_measure_theory/external_research/20260831-170040_hpa-analysis-gita-chapter-12-bhakti-yoga-and-the-final-synthesis-of-knowled.md
+title: "HPA Analysis: Gita Chapter 12 -- Bhakti Yoga and the Final Synthesis of Knowledge -- Repeats the 'Missing Architecture -- Solved' Heading Pattern (Files 0943/0946) But Applied to Locally-Scoped Sub-Problems (Epistemic Trust Model, Knower-Source Relationship, Epistemic Virtues) Rather Than the Main Track's Named Definition/Architecture/Derivation Gaps -- A Milder Instance, Since It Does Not Directly Claim to Resolve the Specific Technical Requirements Files 0941/0944 Established"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "Gita per-chapter review repeating the 'Solved' heading pattern for locally-scoped sub-problems"
+source_role: PRIMARY_RESEARCH
+canonical_source: 956
+importance: normal
+confidence: low
+about: >
+  Continues the per-chapter Gita review series covering Chapter 12 (Bhakti Yoga -- the path of devotion,
+  the qualities of the devotee), following the now-standard five-subsection verse-range structure.
+
+  **§Part 3, TITLED "THE MISSING ARCHITECTURE — SOLVED," REPEATS THE HEADING PATTERN OF FILES 0943 AND
+  0946**, but applies it to three LOCALLY-SCOPED sub-problems this file itself defines rather than the main
+  Step-NNN track's specifically-named Definition/Architecture/Derivation gaps: "The Epistemic Trust Model —
+  Solved" (via a Bhakti=Trust+Surrender+Non-attachment framing), "The Knower-Source Relationship — Solved"
+  (via `A_t→𝒦_supreme` through Trust), and "The Epistemic Virtues — Solved" (a list of qualities drawn from
+  verses 13-20). **THIS IS A MILDER INSTANCE THAN FILES 0943/0946**: it does not explicitly invoke or claim
+  to resolve the main track's precisely-specified Definition/Architecture/Derivation gap requirements (the
+  twelve/seventeen-field construct registry, the formal transformation algebra, the derivation-chain
+  minimality proofs) -- instead it claims to solve narrower, self-defined "problems" that are themselves
+  primarily philosophical/relational framings without an established prior specification against which
+  completeness could be checked. This reconstruction still notes the recurring "— Solved" heading pattern
+  and the same underlying uncritical self-certification tendency (§5.1's verdict table again marks all
+  three "✅ Solved"), but treats this instance as a lower-severity variant of the pattern given its narrower,
+  self-contained scope.
+
+  §Part 5 delivers the familiar all-✅ Supervisory Verdict. Closes "Next: STEP 285 — CANONICAL THEORY
+  RECONCILIATION," matching files 0946's, 0947's, 0949's, and 0954's convergent designation.
+introduces:
+  - concept: "A milder variant of the '-- Solved' heading pattern, applied to self-defined, locally-scoped sub-problems (Epistemic Trust Model, Knower-Source Relationship, Epistemic Virtues) rather than the main track's specifically-named Definition/Architecture/Derivation gaps"
+defines: []
+refines:
+  - concept: "Files 0943's and 0946's severe '-- Solved' heading pattern applied to the main track's named gaps"
+    refinement: "A MILDER RECURRENCE: this file uses the identical heading formula but applies it to narrower, self-defined problems rather than directly claiming resolution of the main track's precisely-specified technical requirements -- confirming the '-- Solved' heading and uncritical all-checkmark verdict is a general stylistic tendency of this per-chapter sub-series, not confined to its most severe instances"
+contradicts: []
+repeats:
+  - "The all-checkmark Supervisory Verdict pattern and the 'Next: Step 285' designation repeat files 0946/0947/0949/0954 without new structural content."
+bridge_candidates:
+  - "Whether further chapters continue this milder '-- Solved' heading pattern for other self-defined sub-problems."
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: record this as a milder recurrence of the '-- Solved' heading pattern (files 0943, 0946), applied here to self-defined sub-problems rather than the main track's named gaps -- confirming the pattern's general stylistic prevalence across this sub-series at varying severity levels."
+anchor_test:
+  anchor: "Files 0943's and 0946's severe '-- Solved' heading pattern"
+  supports_dimension: "Repeats the heading pattern in a milder form, applied to narrower self-defined sub-problems rather than the main track's specifically-named gaps"
+  refines_or_contradicts: "confirms the pattern's general stylistic prevalence at a lower severity"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The three '-- Solved' subsection headings in §Part 3 are directly checkable against the absence of any reference to the main track's specific Gate-2/Gate-3/derivation-chain requirements, distinguishing this instance's narrower scope from files 0943's/0946's more severe claims."
+undefined_concepts: []
+open_questions:
+  - "Whether further chapters continue this milder pattern for additional self-defined sub-problems."
+tier2_triggered: false
+tier2_reason: "A milder recurrence of an already-documented stylistic pattern, applied to narrower self-defined sub-problems rather than the main track's precisely-specified open gaps -- contributes no qualitatively new finding requiring escalated flagging. Classified importance normal, tier2 not triggered."

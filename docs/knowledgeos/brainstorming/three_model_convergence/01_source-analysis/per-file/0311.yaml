@@ -1,0 +1,83 @@
+sequence: 311
+path: docs/knowledgeos/brainstorming/kernel/classification/dependency-map.md
+title: "Kernel Corpus — Dependency & Response-Chain Map (Phase B)"
+date: "2026-08-25"
+bytes: 5754
+model:
+  primary: c1
+  secondary: null
+source_role: CRITICAL_REVIEW
+canonical_source: 311
+importance: critical
+confidence: high
+about: >
+  A landmark corpus-wide META-ANALYSIS artifact ('Phase B' of a formal classification exercise) covering
+  all 141 documents in docs/knowledgeos/brainstorming/kernel/ -- the entire directory this research thread
+  has been reading sequentially since seq 0202ish. Independently confirms and gives precise structure to
+  many findings this reconstruction has tracked manually: the near-total absence of explicit cross-document
+  linking (1/141 documents cite another by ID -- the corpus's own 0284/130514 critique file), the duplicate-
+  file pattern (12 copies identified, meeting or slightly exceeding this reconstruction's own count of 10
+  verified so far), the exact Knowledge-Space-formal reading chain this reconstruction independently
+  tracked (Floridi->Dretske->Fagin->Gardenfors->Searle), three specific chronology-inversion anomalies
+  (timestamps that do not match logical/authoring order), and an ABRUPT, UNDOCUMENTED methodological shift
+  at 20260823-2250 from a 'kernel-internal' region (the K-1/god-aggregate admission/consistency-boundary
+  work) to a 'source-extraction' region (one book per document) -- precisely the K-1-cycle-vs-lens-sub-arc
+  boundary this reconstruction inferred from vocabulary alone. Flags 0266 (this reconstruction's 'Principal
+  Architect Review' landmark) as a convergence point at risk of being mistaken for architecture, and 0284
+  (the Fagin critique) as one of only four genuine self-falsification events in the entire 141-document
+  corpus. References a companion Phase A census (00_CENSUS.md, not yet read) containing cluster/
+  contradiction-register findings T-1 through T-7.
+introduces:
+  - concept: "Headline structural finding: the kernel/ corpus (141 documents) is almost entirely UNLINKED -- only 1 of 141 documents cites another corpus document by explicit ID (20260825-130514, this reconstruction's file 0284); 43/141 (30%) carry backward-reference PHRASING without naming a document ('the previous book', 'my earlier model'); 98/141 (70%) have no backward reference of any kind"
+  - concept: "Dependency in this corpus is IMPLICIT AND POSITIONAL: a document's referent is recoverable only from chronological adjacency, and that recovery FAILS wherever a duplicate re-save sits between a document and its antecedent (12 such copies identified by the companion census), a session boundary intervenes, or timestamps invert the logical order -- explicitly characterized as 'a property of the capture process, not of the reasoning', and 'the single largest obstacle to Phase D [cluster reading]'"
+  - concept: "Eleven reconstructed response chains (content-based, not link-based), including: Fagin chain 125708->130514->130932->132329 [this reconstruction's 0282->0284->0285->0286] explicitly named 'the only fully-linked chain in the corpus' (extraction->critique->acceptance->source-verification); McGinn chain 115235->120122->120514 [0273->0276->0278]; Merricks chain 113718->113938->114640 [0270->0271->0272]; Knowledge-Space-formal chain 120319->122752->124325->125708->133456->155035 [0277->0280->0281->0282->0287->0293], matching this reconstruction's own independently-tracked Floridi/Dretske/Fagin/Gardenfors/Searle sequence exactly; Knowledge-definition chain 160023->160637->155510 [0294 confirmed as the third link]; plus six further chains (Aggregate-size T-1, Chalmers, Astrom, ESL/PRML 'the longest chain', Statistics, Evidence) not yet reached by this reconstruction's sequential pass"
+  - concept: "Highest backward-reference density ranking: 130932 (16 hits, this reconstruction's 0285), 032219 (14, not yet reached), 132329 (7, this reconstruction's 0286), 005850 (7, not yet reached) -- 'the first three are all in the Fagin chain, the corpus's only well-linked region'"
+  - concept: "Three documented chronology-inversion anomalies where mtime (used as the census's document ID) does NOT match logical/authoring order: (1) 20260824-161931/162039 [this reconstruction's 0252/0253] -- 161931 says 'I would refine the previous model' and refers to the chakra-mapping that 162039 PRESENTS, meaning the response is timestamped 68 seconds BEFORE what it answers, directly corroborating this reconstruction's own earlier-summarized finding that 0252 corrects 0253 despite 0253's later sequence position; (2) 20260823-225443/230117/233040 -- 233040 is the research commission that should OPEN the Chinese-lens thread but is timestamped LAST of the three; (3) 20260824-152415 -- the Zero Lens is DEFINED here despite being in continuous use since 20260823-230117, a ~17-hour lag between first use and definition (cited as census finding T-6); explicit reading rule proposed: 'mtime is a save time, not an authoring order; where a chain's logic and its timestamps disagree, the content wins'"
+  - concept: "S-1 structural observation: the corpus has TWO DISTINCT REGIONS with an ABRUPT, UNDOCUMENTED methodological join -- documents up to 20260823-1236 are 'kernel-internal' (admission/aggregate/consistency-boundary work, dense in ADMIT/AGGR/INVAR vocabulary -- matching this reconstruction's tracked K-1/god-aggregate cycle, 0144-0170); everything from 20260823-2250 onward is 'source-extraction' (one book per document) -- 'nothing explains the shift in method', independently confirming this reconstruction's own bridge_candidate hypothesis (first flagged at 0273/0277) from the manifest-structure side rather than the content-vocabulary side"
+  - concept: "S-2: extraction documents are near-independent -- each book extraction responds to its predecessor at most rhetorically ('more important than the previous book') and rarely revises it; 'they accumulate rather than converge', which the companion census gives as the reason only 38 of 141 documents reach K3/K4 maturity"
+  - concept: "S-3: the corpus's genuine CONVERGENCE points are the SYNTHESIS documents, not the extractions -- named: 010419, 111317, 112051, 123630, 20260825-103542 [this reconstruction's file 0266, the landmark 'Principal Architect Review']; these synthesis documents are ALSO, per census finding T-7, 'the documents most at risk of being read as architecture' -- a direct external confirmation of this reconstruction's own MD-017 caution around 0266's status"
+  - concept: "S-4: every genuine self-falsification in the corpus is LATE or EXTERNAL -- named: 114530, 234750, 094638, 130514 [this reconstruction's file 0284, the Fagin critique]; 'the corpus attacks itself rarely, and mostly via an imported instrument (tarka attack families, a Daoist challenge, an outside critique)' -- only FOUR genuine falsification events identified across all 141 documents"
+  - concept: "Explicit scope disclaimer distinguishing this Phase B artifact from later phases: 'no merit ranking, no cluster reading (Phase D), no synthesis (Phase E), no Zero pass (Phase F). Chains in section 2 are reconstructions offered for confirmation, not established provenance -- the corpus did not record its own links, so every chain here is inference from content'"
+  - concept: "Reference to a companion 'Phase A census' artifact (../00_CENSUS.md), not yet read by this reconstruction, explicitly containing clusters, a contradiction register, and numbered findings T-1 through T-7 (T-1 aggregate-size convergence, T-6 the Zero-Lens definition-lag finding, T-7 the synthesis-documents-at-risk-of-being-read-as-architecture finding)"
+defines: []
+refines:
+  - concept: "0273's initially-inferred bridge_candidate to the earlier K-1/god-aggregate cycle (later confirmed structurally at 0277 via literal terminology reuse)"
+    refinement: "Independently confirms the SAME bridge from a completely different angle -- formal manifest/timestamp structure rather than shared vocabulary -- giving it a precise boundary timestamp (20260823-1236 to 20260823-2250) and explicitly characterizing the join as abrupt and undocumented, strengthening rather than merely repeating the earlier finding"
+  - concept: "0252/0253's already-tracked non-linear-capture/reversed-correction pattern"
+    refinement: "Independently confirms this exact pair as a chronology-inversion anomaly with a precise 68-second measurement, via the companion analysis's own methodology rather than this reconstruction's own inference"
+  - concept: "0266's status as a landmark synthesis file"
+    refinement: "Independently corroborates 0266's outsized importance (named explicitly as one of five corpus-wide convergence points) while also externally validating this reconstruction's own MD-017 caution that such synthesis documents risk being mistaken for adopted architecture"
+  - concept: "0284's status as a rigorous, externally-sourced critique"
+    refinement: "Independently confirms 0284 as one of only four genuine self-falsification events in the entire 141-document corpus, and as the corpus's sole example of a fully-linked, explicit-citation response chain"
+  - concept: "This reconstruction's own duplicate-file tracking (ten verified instances through 0292)"
+    refinement: "The companion census's count of 'twelve such copies' suggests one or two further duplicate instances remain to be encountered later in the kernel/ directory, beyond what this reconstruction has verified so far"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "CONFIRMS (independently, via manifest/timestamp structure) the bridge between the K-1/god-aggregate cycle and the source-extraction sub-arc already tracked as a bridge_candidate since 0273 and structurally confirmed at 0277 -- this file gives it a precise timestamp boundary (20260823-1236 / 20260823-2250) not previously available to this reconstruction."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this Phase B dependency map as independent, structural (manifest/timestamp-based) confirmation of the K-1-cycle bridge, the 0252/0253 chronology inversion, 0266's landmark-synthesis status, and 0284's status as the corpus's primary self-falsification event -- upgrading several of this reconstruction's own content-based inferences to externally-corroborated findings."
+  - "dimension-registry.md: note the companion 'Phase A census' (00_CENSUS.md) as an important adjacent artifact not yet read, likely to contain further corpus-wide structural findings (T-1 through T-7) directly relevant to the ongoing Kernel-structure-synthesis and Knowledge-vector-proliferation tracking."
+anchor_test:
+  anchor: "0273/0277's K-1-cycle bridge; 0252/0253's chronology-inversion pattern; 0266's landmark-synthesis status; 0284's critique; this reconstruction's own duplicate-file count (ten verified)"
+  supports_dimension: "Cross-cutting corpus meta-analysis independently and structurally confirming multiple findings this reconstruction has tracked via content alone -- a rare case of an in-corpus artifact directly validating the reconstruction's own research method"
+  refines_or_contradicts: "refines/confirms the K-1-cycle bridge, the 0252/0253 anomaly, 0266's status, and 0284's status; no contradiction; suggests 1-2 further duplicate-file instances remain to be found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Explicit two-pass method disclosed (explicit intra-corpus ID citation; backward-reference phrasing detection), with quantified results (1/141, 43/141, 98/141) and specific document-ID evidence for every claim"
+undefined_concepts:
+  - "The referenced companion artifact 00_CENSUS.md (Phase A) is not available to this reconstruction yet -- its cluster/contradiction-register/T-1..T-7 content is cited but not independently verifiable from this file alone"
+open_questions:
+  - "Whether the companion Phase A census (00_CENSUS.md) will be encountered later in the sequential pass, and what its full T-1 through T-7 findings contain"
+  - "Whether the 1-2 additional duplicate-file instances implied by the census's count of twelve (versus this reconstruction's ten verified) will be encountered and confirmed later in the kernel/ directory"
+  - "Whether Phases D (cluster reading), E (synthesis), and F (Zero pass) of this classification exercise are ever produced as further artifacts"
+tier2_triggered: true
+tier2_reason: "A landmark corpus-wide meta-analysis independently confirming, via manifest/timestamp structure rather than content inference, several major findings this reconstruction has tracked throughout the session: the K-1-cycle-to-source-extraction bridge (with a precise boundary timestamp), the 0252/0253 chronology inversion, 0266's landmark-synthesis status (and its risk of being mistaken for architecture), and 0284's status as one of only four genuine self-falsification events in the entire 141-document corpus. Also reveals the corpus is almost entirely unlinked (1/141 explicit citations), reconstructs eleven content-based response chains including the exact Knowledge-Space-formal sequence this reconstruction independently tracked, and references an unread companion Phase A census likely to contain further structurally significant findings."

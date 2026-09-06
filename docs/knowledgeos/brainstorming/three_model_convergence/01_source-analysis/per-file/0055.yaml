@@ -1,0 +1,51 @@
+sequence: 55
+path: docs/knowledgeos/brainstorming/20260819-104823-four-session-role-model-refinement.md
+title: Four-Session Role Model Refinement (conversational transcript)
+date: 2026-08-19
+bytes: 24775
+
+model:
+  primary: c1
+  secondary: [governance, ddd]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: low
+confidence: high
+
+about: >
+  Refines 0047/0050's role model: the four sessions are role-bound ASSIGNMENTS resolved from
+  authoritative workflow state, not fixed sequential identities tied to a terminal; Governance is
+  restated as a three-part control plane (Intake/Authorization, Routing/Registration, Closure)
+  rather than "step 1."
+
+introduces:
+  - sessions_as_role_bound_assignments_not_identities
+  - session_assignment_resolver_pattern   # terminal asks the machine what role it's authorized as
+  - governance_as_three_part_control_plane   # intake, routing, closure
+
+defines: []
+refines:
+  - concept: governance_role
+    canonical_source: 47
+    change: "'gatekeeper'/'step 1' -> three-part control plane appearing at multiple lifecycle points"
+contradicts: []
+repeats:
+  - concept: role_vs_workflow_state_machine_distinction
+    canonical_source: 47
+    novelty: low
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence:
+  - "identity is not inferred from terminal/PID/TTY/hostname; executionContext is RECORDED, not identity"
+undefined_concepts: [knowledge]
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: "Real C1 governance refinement extending 0047/0050 cleanly; no formal/math/Gita/Kernel content."

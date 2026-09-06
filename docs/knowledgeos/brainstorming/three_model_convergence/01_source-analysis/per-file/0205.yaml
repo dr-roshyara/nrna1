@@ -1,0 +1,165 @@
+sequence: "0205"
+path: docs/knowledgeos/brainstorming/kernel/20260824-030300-freedman-statistical-models-no-inference-without-explicit-basis.md
+title: "David Freedman's Statistical Models and Causal Inference mined as an epistemic-assurance/research-methodology source (not a statistics textbook): a formal Assumption/AssumptionLedger object, a five-rung Claim Maturity Ladder (Observed->Causal), a CausalIdentificationAssessment gate, RivalExplanation and EvidenceConvergence patterns, and ten named architectural invariants"
+date: "2026-08-24"
+bytes: 24000
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0205"
+importance: high
+confidence: high
+about: >
+  Extracts David Freedman's Statistical Models and Causal Inference (essays warning that statistical
+  sophistication cannot substitute for research design, subject-matter knowledge, relevant data, and
+  empirical testing) explicitly not as a statistics source but as "an epistemic discipline for preventing a
+  system from turning models, correlations, assumptions, or fluent explanations into unjustified
+  knowledge" -- ranked by its own final table as more important for KnowledgeOS than the preceding Human-AI
+  Interaction book (0204). Central architectural principle: "No inference without an explicit inferential
+  basis" -- Data->Observation->Interpretation->Inference->Claim must never collapse into Data->AI-says-X->
+  Knowledge=X. Reinforces Observation-vs-Inference as distinct epistemic objects with a worked example
+  ("teams using pattern X had fewer incidents" is an observation; "pattern X reduces incidents" is a causal
+  claim). Proposes an explicit Inference object (question/conclusion/evidence/observations/method/
+  assumptions/mechanism/rival_explanations/limitations/validation/confidence/authority/provenance) with
+  Inference != Evidence != Observation != Claim as a fundamental separation. Elevates Assumption to a
+  first-class object -- "probably the most important architectural addition" -- with a schema (statement/
+  type/justification/evidence/testability/status/consequence_if_false/scope) and a six-state status
+  vocabulary (SUPPORTED/PARTIALLY_SUPPORTED/UNSUPPORTED/UNTESTED/UNTESTABLE/CONTRADICTED), organized into an
+  AssumptionLedger per model. Elevates "we can't tell from the data available" (the book's own core lesson,
+  per its editors) into a first-class KnowledgeOS outcome vocabulary (SUPPORTED/REFUTED/INCONCLUSIVE/
+  INSUFFICIENT_EVIDENCE/NOT_IDENTIFIABLE), explicitly framing NOT_IDENTIFIABLE as successful epistemic
+  processing, not failure. Elevates RivalExplanation to a first-class object (hypothesis/supporting_
+  evidence/contradicting_evidence/tests/status/unresolved_questions), reframing a Claim's structure to carry
+  supporting AND contradicting evidence, observations, inferences, assumptions, rival explanations,
+  validation, scope, and uncertainty together. Proposes an EvidenceConvergence pattern (claim supported by
+  multiple independent evidence types -- direct/indirect/quantitative/qualitative/experimental/
+  observational/case-based/mechanistic/temporal/comparative -- with claim status calculated from the
+  STRUCTURE of the argument, not an LLM confidence number). Reframes Anomaly as a generative architectural
+  event (Observation->Anomaly-detected->Research-Question->New-Hypothesis->Investigation), extending the
+  corpus's Observation concept into a bridge between Knowledge and Research, illustrated with a worked AI-
+  Engineering example (an agent's policy-inconsistent recommendation becomes an anomaly, a research question
+  about the retrieval pipeline, and new knowledge about validity filtering). Explicitly rejects quantitative-
+  data-automatically-dominates-qualitative-evidence, motivating an eight-value Evidence type taxonomy
+  (quantitative/qualitative/documentary/observational/experimental/experiential/expert/computational) and
+  validating domain/subject-matter expertise as knowledge that can determine inference validity, assumption
+  plausibility, confounder existence, and model appropriateness -- not merely supplementary documentation.
+  Proposes a ResearchDesign object (research_question/population/observations/comparison/intervention/
+  natural_variation/confounders/rival_explanations/measurement/analysis_method/validation/limitations,
+  grounded in Snow's cholera work as an example of natural-experiment rigor). Extracts "method != truth" --
+  sophisticated methods (regression adjustment, logistic regression, propensity scores, robust standard
+  errors) do not rescue a bad model, motivating a Method->Analysis->Result->Validation->InferenceStatus
+  pipeline and a concrete "[CAUSAL-INFERENCE-GATE]" nine-question AI-Engineering-Platform guard (research
+  design? mechanism? assumptions? confounders? rival explanations tested? causal pathway identifiable?
+  observational-or-experimental? validation? scope of inference?) that BLOCKs or DOWNGRADEs an AI causal
+  claim to a mere association claim if the answers are unavailable. Extracts "diagnostics are not proof" --
+  model diagnostics cannot have general power against all alternatives and cannot validate basic regression
+  assumptions from data alone, motivating a precise verification-result semantics distinction (PASS meaning
+  "specified invariant satisfied," never "model is correct" or "system is trustworthy"). Proposes a
+  CausalIdentificationAssessment gate (mechanism-specified? / confounders-addressed? / rival-pathways-
+  excluded? / research-design-adequate? -> IDENTIFIED/PARTIALLY_IDENTIFIED/NOT_IDENTIFIED/UNKNOWN) and an
+  explicit five-value association-vs-causation semantic ladder that LLMs must not silently promote across
+  (ASSOCIATION/CORRELATION/TEMPORAL_ASSOCIATION/MECHANISTIC_INFERENCE/CAUSAL_CLAIM). Produces a five-rung
+  Claim Maturity Ladder (OBSERVED->DESCRIPTIVE->ASSOCIATIVE->EXPLANATORY->CAUSAL, each rung requiring
+  progressively stronger evidence/identification), explicitly proposed as the basis for policy-driven
+  epistemic governance -- a claim typed CAUSAL automatically requires ResearchDesign/AssumptionLedger/
+  RivalExplanationAnalysis/IdentificationAssessment/EvidenceConvergence/Validation, while a DESCRIPTIVE
+  claim requires much less. Explicitly rejects an anti-statistics over-reading ("models are instruments,
+  not authorities," not "statistical models are bad"), listing ten legitimate mechanism types (statistics/
+  ML/Bayesian-models/regression/causal-models/simulation/LLMs/expert-judgment/qualitative-research/case-
+  studies) none of which gets automatic epistemic authority from mathematical sophistication alone. Produces
+  a full architectural diagram (Observations+Sources->Evidence[Qualitative/Quantitative]->Inference
+  [Assumptions/Rival-Explanations/Mechanisms]->Validation/Testing->Identification-Status->Claim
+  [Supported/Inconclusive]) and an AI-Platform-above-KnowledgeOS diagram with the explicit governing
+  principle "the AI Platform can generate an inference, but KnowledgeOS determines what epistemic status
+  that inference has." Produces fifteen candidate new domain objects (Observation/Evidence/Inference/Claim/
+  Assumption/Model/ResearchQuestion/ResearchDesign/Mechanism/RivalExplanation/Confounder/Validation/
+  IdentificationAssessment/Anomaly/Uncertainty), explicitly noting some may already exist under different
+  names -- "I would not automatically create duplicates; the important thing is the conceptual separation."
+  Produces ten named architectural invariants (Evidence!=Inference, Inference!=Truth, a-model-does-not-
+  validate-its-own-assumptions, association!=causation, a-method's-successful-execution!=validity-of-its-
+  conclusion, unresolved-alternatives-reduce-claim-strength, Unknown-is-a-valid-epistemic-outcome,
+  qualitative-evidence-is-legitimate-when-sourced-and-contextualized, subject-matter-knowledge-is-part-of-
+  inference-validity-not-mere-documentation, a-validation-gate-only-establishes-what-it-was-designed-to-
+  establish). Closes by explicitly connecting back to 0204's Human-AI Collaboration finding: Freedman
+  explains WHY AI should not replace human judgment -- judgment is required to select the question, data,
+  assumptions, mechanism, confounders, alternatives, and method, and to determine what a result actually
+  establishes -- reframing the architecture's starting point from "AI -> answer" to "Question -> Research
+  framing -> Evidence -> Method -> Inference -> Challenge -> Validation -> Claim."
+
+introduces:
+  - "A first-class Assumption object with a six-state status vocabulary, organized into an
+    AssumptionLedger per model -- called probably the most important architectural addition from the book"
+  - "An UNKNOWN/NOT_IDENTIFIABLE outcome elevated to a successful (not failed) epistemic processing result,
+    grounded in the book's own core lesson 'we can't tell from the data available'"
+  - "A five-rung Claim Maturity Ladder (Observed/Descriptive/Associative/Explanatory/Causal) driving
+    policy-based governance requirements proportional to claim strength"
+  - "A concrete nine-question '[CAUSAL-INFERENCE-GATE]' AI-Engineering-Platform guard that blocks or
+    downgrades unsupported causal claims from an AI agent"
+  - "A CausalIdentificationAssessment gate (IDENTIFIED/PARTIALLY_IDENTIFIED/NOT_IDENTIFIED/UNKNOWN) and a
+    five-value association-vs-causation semantic ladder LLMs must not silently promote across"
+  - "The precise verification-result semantics distinction: PASS means 'specified invariant satisfied,'
+    never 'model is correct' or 'system is trustworthy' -- a directly actionable assurance-engine rule"
+  - "Ten named architectural invariants, the cleanest, most compact invariant list produced in this reading
+    stretch, directly compatible with the corpus's existing assurance direction"
+  - "A RivalExplanation object and an EvidenceConvergence pattern where claim status is computed from
+    argument STRUCTURE (multiple independent evidence types converging) rather than a bare confidence score"
+
+defines: []
+
+refines:
+  - "Directly extends the corpus's existing Evidence/Claim/Assessment epistemic model (0173, 0185, 0202)
+    with a formal Assumption object and Rival-Explanation apparatus not previously this concretely specified"
+  - "Extends 0202/0203/0204's AI-output-is-not-domain-truth boundary with a concrete, gate-based enforcement
+    mechanism specific to causal claims"
+  - "Directly explains WHY 0204's human-authority-over-AI principle holds: judgment is required precisely at
+    the points (question framing, assumption selection, confounder identification) that this file formalizes"
+
+contradicts: []
+
+repeats:
+  - {concept: "Unknown/inconclusive as a first-class, legitimate epistemic state, not a failure", canonical_source: "0087", novelty: low}
+  - {concept: "AI output must not silently become domain authority", canonical_source: "0202", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- explicitly frames the fifteen candidate objects and ten invariants as architectural
+    principles/research corpus additions, noting some concepts may already exist under different names and
+    should not be duplicated"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Extends the Evidence/Claim/Assessment epistemic model with formal Assumption and RivalExplanation apparatus; directly explains the rationale behind 0204's human-authority principle."
+  alternative_minimal_kernel: "none -- explicitly frames its fifteen objects as candidate conceptual separations, not a competing Kernel structure, noting overlap with existing concepts should not be duplicated"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "The ten named invariants and the CAUSAL-INFERENCE-GATE are among the most directly actionable,
+    concretely implementable outputs of the entire book-extraction stretch -- worth prioritizing if this
+    reconstruction's eventual synthesis phase seeks concrete AI-assurance rules ready for adoption"
+  - "Explicitly continues (rather than restarts) the technical-pivot trilogy's momentum (0202-0204) into
+    formal epistemic methodology, partially fulfilling 0200's 35%-formal-mathematical weighting recommendation
+    though the content remains more methodological-statistical than purely mathematical-formal"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the fifteen candidate domain objects are ever reconciled with the corpus's existing (already-
+    tracked) Evidence/Claim/Assessment vocabulary to avoid duplication, as the file itself cautions"
+  - "Whether the CAUSAL-INFERENCE-GATE or the Claim Maturity Ladder are ever formally adopted into the AI
+    Engineering Platform's assurance architecture"
+
+tier2_triggered: true
+tier2_reason: >
+  Ten cleanly-stated, directly actionable architectural invariants; a concrete CAUSAL-INFERENCE-GATE
+  assurance mechanism; a five-rung Claim Maturity Ladder driving policy-based governance; direct
+  continuation of the technical-pivot trilogy's momentum into formal epistemic methodology.

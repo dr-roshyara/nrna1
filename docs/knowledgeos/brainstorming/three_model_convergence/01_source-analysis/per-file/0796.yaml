@@ -1,0 +1,178 @@
+sequence: 796
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-013701_step_171_the-authority-responsibility-evidence-matrix.md
+title: "Step 171 -- The Authority-Responsibility-Evidence Matrix (MAJOR SYNTHESIS MILESTONE, delivers 0795's promised governance test): Five Distinct Roles (Initiator/Producer/Verifier/DecisionMaker/Executor/AccountableOwner) and Five Orthogonal Predicates Identity≠Capability≠Responsibility≠Authority≠Accountability -- Delivers the Full Transition-Matrix Table, the PromotionRule(S_i,S_{i+1}) Formalism, Normal-vs-Emergency-Path Separation, Contextual Independence (TechnicalIndependence/OrganizationalIndependence/EpistemicIndependence), and the Transition Contract Valid(T)=Preconditions∧EvidenceSufficient∧AuthorityValid∧TemporalConstraints∧VerificationSatisfied -- CULMINATES IN THE TWO-DIMENSIONAL MODEL (EPISTEMIC FLOW × GOVERNANCE FLOW) AND THE PROFOUND CONSEQUENCE 'KNOWLEDGEOS IS NOT MERELY AN INFORMATION FLOW; IT IS AN INFORMATION FLOW CONSTRAINED BY AUTHORITY' -- Delivers Historical Authority (CurrentAuthority≠HistoricalAuthority) via a Further Chapter-4 Connection -- Opens Step 172's Six-Scenario Separation-of-Duties Falsification Experiment"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily DDD/governance-modeling synthesis; briefly re-invokes 'your earlier Chapter 4 insight' to motivate historical authority, without new Gita textual engagement"
+source_role: PRIMARY_RESEARCH
+canonical_source: 796
+importance: critical
+confidence: high
+about: >
+  Directly continues 0795, opening "Step 171 asks a different question: who is allowed to cause each
+  transition, who is responsible for its correctness, and what evidence makes the transition legitimate?
+  This is where the mathematical/epistemic model meets DDD and governance."
+
+  **§171.1-171.3 delivers five distinct lifecycle roles** (Initiator, Producer, Verifier, DecisionMaker,
+  Executor, AccountableOwner -- explicitly noting they "may sometimes be held by the same person or
+  system... but that must be an explicit domain decision, not an accidental consequence of
+  implementation"), and **three distinct predicates for actor `a` and action `x`**: `Cap(a,x)`, `Resp(a,x)`,
+  `Auth(a,x)`, delivering `Responsibility⇏Authority` and `Authority⇏Capability` alongside the
+  already-established `Capability⇏Authority`, worked via a system-administrator example (`Cap=true,
+  Auth=false, Resp=true` simultaneously) -- `Cap≠Auth≠Resp`.
+
+  **§171.4-171.5 delivers the transition matrix**: a six-question role table (who initiates/produces/
+  verifies/authorizes-decides/executes/remains accountable), and the full eight-transition table (each with
+  its primary concern and typical authority question), explicitly noting "the exact actors remain
+  domain-specific. The structure does not."
+
+  **§171.8-171.10 delivers the promotion-rule formalism**, `PromotionRule(S_i,S_{i+1})`, worked concretely
+  for `Assessment→EstablishedKnowledge` (`EvidenceSufficient∧MethodValid∧RequiredReviewComplete`),
+  explicitly preferred over the unnecessarily absolute "AI cannot create knowledge."
+
+  **§171.13-171.18 delivers a DDD ubiquitous-language warning**: if a domain language collapses Determine/
+  Decide/Authorize/Execute into a single word like "Approve," "that ambiguity will eventually become an
+  architectural defect." Delivers `Decision→Authorization` as a separately governed transition, the
+  `Auth=⟨Actor,Action,Scope,Policy,ValidityPeriod⟩` structure (explicitly "considerably stronger than
+  `approved=true`"), `Execute(a,x,t)⇒ValidAuthorization(a,x,t)`, and **normal-path/emergency-path
+  separation** as a named governance-modeling discipline: an emergency path must be modeled as an explicit
+  exception (`EmergencyCondition→EmergencyAuthority→Execution→RetrospectiveReview`), never by weakening the
+  normal-path `AuthorizationRequired` invariant -- "an exception is not the absence of governance. It is a
+  different governance path."
+
+  **§171.19-171.23 delivers the single-point-of-trust analysis promised at 0795's close**, applied to
+  `Actor=A` performing `Generate→Verify→Approve→Execute`, and **contextual independence**:
+  `TechnicalIndependence` vs. `OrganizationalIndependence` vs. `EpistemicIndependence` kept distinct (a
+  verifier can be technically separate but organizationally dependent, or the same automated verifier can
+  be genuinely independent of a human producer for a deterministic predicate), directly extending 0793's
+  "three-agent problem" statistical-correlation discipline to the producer/verifier relationship (`P=V`
+  does not automatically invalidate verification for low-risk deterministic checks). Delivers the boxed
+  formula **`RequiredSeparation=f(Risk,Authority,Domain,ControlObjective)`**, explicitly not
+  `RequiredSeparation=always` -- "this prevents overengineering."
+
+  **§171.24 delivers the full Authority-Responsibility matrix table** across all eight lifecycle stages
+  (Observation through Outcome), explicitly marked "deliberately generic... we must later instantiate it
+  for each actual bounded context" -- directly fulfilling the matrix Step 171 was opened to construct.
+
+  **§171.25-171.28 delivers a sharp AI-accountability discipline**: "we should never model `AI=
+  accountable` merely because AI performed the action" -- `AI→TechnicalActor` while `AccountableHuman/
+  Organization` is modeled separately -- and **`Delegation≠AccountabilityTransfer`** ("a system may
+  delegate execution while retaining accountability").
+
+  **§171.29-171.33 delivers `Identity≠Authority`, `Auth(A,x)⇏Accountable(A,x)`, and
+  `Accountable(A,x)⇏Correct(x)`** ("accountability concerns responsibility, not epistemic truth"),
+  crystallizing a five-predicate relation system (Identity/Capability/Authority/Responsibility/
+  Accountability) that "a mature KnowledgeOS architecture should resist representing... as `role=admin`."
+
+  **§171.34-171.35 delivers the transition contract** `T=⟨SourceState,TargetState,Preconditions,Producer,
+  Verifier,Authority,Evidence,Time,Accountability⟩` and its validity formula `Valid(T)=Preconditions∧
+  EvidenceSufficient∧AuthorityValid∧TemporalConstraints∧VerificationSatisfied`, framed as "the beginning of
+  a constitutional model" expressed as invariants (`I_1`-`I_5`, e.g. "evidence must have provenance,"
+  "consequential decisions must have identifiable authority") rather than technology prescriptions.
+
+  **§171.36-171.40 delivers a falsification pass on the authority model itself**: a tiny low-risk
+  application's `if user.isAdmin(): execute()` may be sufficient without a sophisticated Authority domain
+  (`AuthorityModelComplexity∝GovernanceComplexity`), and Decision/Authorization may legitimately collapse
+  into a single UI transaction ("approve and execute") without eliminating their conceptual distinction --
+  crystallizing **`ConceptualSeparation≠PhysicalSeparation`** as a recurring theme, and the boxed central
+  architectural rule: **"do not derive domain boundaries directly from technical component boundaries"** --
+  `DomainMeaning→Invariants→Boundaries→Architecture→Technology`, explicitly warning against premature
+  microservice decomposition (Evidence Service/Knowledge Service/Decision Service/... as separate services
+  before establishing bounded contexts).
+
+  **§171.41-171.43 culminates in the two-dimensional model**: the epistemic flow
+  (Observation→Evidence→Knowledge→Determination→Decision→Authorization→Execution→Outcome) intersecting
+  with the governance flow (Producer→Verifier→DecisionMaker→Authorizer→Executor→AccountableOwner),
+  visualized as two intersecting-but-distinct ASCII flow diagrams, "that intersection is the governance
+  architecture." Delivers **the file's capstone, doubly boxed**: **"KnowledgeOS is not merely an
+  information flow. It is an information flow constrained by authority"** and **"governance is not merely
+  a set of approvals. It is the control structure governing epistemic and operational transitions."**
+
+  **§171.44-171.46 re-invokes "your earlier Chapter 4 insight"** to motivate **historical authority**:
+  since current state does not contain all previous state, `Authority_current` cannot tell us
+  `Authority_past` -- delivering `Authority(t)` as temporal, **`CurrentAuthority≠HistoricalAuthority`**,
+  and the temporal authorization invariant `Execution(a,x,t)⇒ValidAuthority(a,x,t)`, explicitly not
+  `ValidAuthority(a,x,t_now)`.
+
+  **§171.47 delivers the Step 171 verdict**: two boxed structural conclusions -- the five-predicate
+  orthogonality (`Identity≠Capability≠Responsibility≠Authority≠Accountability`) and the reaffirmed
+  six-stage lifecycle chain -- "the two structures must meet without being collapsed."
+
+  **Closes opening "Step 172 — The Separation-of-Duties Falsification Experiment,"** proposing an actual
+  architectural experiment across **six concrete named scenarios** (A: one human performs everything; B:
+  AI assesses, human verifies and approves; C: AI produces and verifies, human authorizes; D: automated
+  deterministic verifier establishes compliance, governance board decides; E: emergency execution bypasses
+  normal authorization; F: a later observation contradicts the knowledge used for an earlier decision),
+  each to be tested against "does the architecture remain coherent?" -- with an explicit methodological
+  commitment: **"if it fails in any scenario, we do not patch the example -- we revise the model."** No
+  actual repository implementation occurs within this file itself; every role, predicate, and matrix entry
+  remains a conceptual specification pending Step 172's scenario tests.
+introduces:
+  - concept: "Five distinct lifecycle roles: Initiator, Producer, Verifier, DecisionMaker, Executor, AccountableOwner"
+  - concept: "The three-predicate distinction Cap(a,x)/Resp(a,x)/Auth(a,x), extending Capability⇏Authority with Responsibility⇏Authority and Authority⇏Capability"
+  - concept: "The PromotionRule(S_i,S_{i+1}) formalism, worked concretely for Assessment→EstablishedKnowledge"
+  - concept: "Normal-path/emergency-path separation as an explicit governance-modeling discipline ('an exception is a different governance path, not the absence of governance')"
+  - concept: "Contextual independence: TechnicalIndependence vs. OrganizationalIndependence vs. EpistemicIndependence"
+  - concept: "RequiredSeparation=f(Risk,Authority,Domain,ControlObjective), explicitly rejecting RequiredSeparation=always"
+  - concept: "The full Authority-Responsibility matrix table across all eight lifecycle stages"
+  - concept: "AI accountability discipline: AI→TechnicalActor while AccountableHuman/Organization is modeled separately; Delegation≠AccountabilityTransfer"
+  - concept: "The five-predicate relation system Identity/Capability/Authority/Responsibility/Accountability, and Identity≠Authority, Auth⇏Accountable, Accountable⇏Correct"
+  - concept: "The transition contract T=⟨SourceState,TargetState,Preconditions,Producer,Verifier,Authority,Evidence,Time,Accountability⟩ and its validity formula"
+  - concept: "ConceptualSeparation≠PhysicalSeparation as a recurring theme; the central rule 'do not derive domain boundaries directly from technical component boundaries'"
+  - concept: "The two-dimensional model: epistemic flow intersecting with governance flow"
+  - concept: "The capstone: 'KnowledgeOS is not merely an information flow. It is an information flow constrained by authority'"
+  - concept: "Historical authority: Authority(t), CurrentAuthority≠HistoricalAuthority, the temporal authorization invariant"
+  - concept: "Step 172's opening: the six-scenario separation-of-duties falsification experiment, with the methodological commitment to revise the model rather than patch a failing example"
+defines:
+  - concept: "The three orthogonal actor predicates Cap/Resp/Auth"
+    definition: "For actor a and action x: Cap(a,x) means a can technically perform x; Resp(a,x) means a is responsible for the relevant result or process; Auth(a,x) means a is legitimately permitted to perform x -- these are three logically independent relations (a system administrator may have Cap=true and Resp=true for a deployment while Auth=false because approval is missing), so none can substitute for another in an architecture's authority model"
+  - concept: "The two-dimensional epistemic/governance model"
+    definition: "The KnowledgeOS lifecycle has two intersecting but non-identical structures: the epistemic flow (Observation→Evidence→Knowledge→Determination→Decision→Authorization→Execution→Outcome, answering what changes and what is known) and the governance flow (Producer→Verifier→DecisionMaker→Authorizer→Executor→AccountableOwner, answering who is entitled and responsible) -- their intersection at each lifecycle stage constitutes the actual governance architecture, and collapsing the two dimensions into one loses essential structure"
+  - concept: "Normal-path/emergency-path separation"
+    definition: "When a domain permits exceptional execution (e.g. emergency deployment bypassing normal authorization), the architecture must model it as an explicit, separately governed exception path (EmergencyCondition→EmergencyAuthority→Execution→RetrospectiveReview) rather than weakening the normal path's AuthorizationRequired invariant to accommodate it -- an exception is not an absence of governance but a different, still-governed path"
+refines:
+  - concept: "0795's opening of Step 171 and its proposed Authority-Responsibility-Evidence matrix / single-point-of-trust smell test"
+    refinement: "DELIVERED: the full transition matrix, the Authority-Responsibility matrix table across all eight stages, the single-point-of-trust analysis with contextual independence dimensions, and the two-dimensional epistemic/governance model with its capstone consequence"
+  - concept: "0793's evidence-independence graph and 'the three-agent problem' (correlated agent outputs are not independent confirmations)"
+    refinement: "Directly extended from the evidence/agent-corroboration domain to the producer/verifier relationship: if the same actor produces and verifies evidence (P=V), 'the verification is not independent evidence,' with the same underlying statistical-correlation discipline now applied to organizational role design rather than only to multi-agent evidence assessment"
+  - concept: "0793's Capability(a,x)⇏Authority(a,x)"
+    refinement: "Extended into a full three-predicate system by adding Responsibility⇏Authority and Authority⇏Capability, worked through a concrete system-administrator example showing all three predicates can hold different truth values simultaneously for the same actor and action"
+  - concept: "0795's temporal-justification invariant Decision(D)⇒Basis(D,t_D) and its Chapter-4-motivated Temporal assurance dimension"
+    refinement: "Directly extended from decision-basis reconstructibility to authority itself: CurrentAuthority≠HistoricalAuthority, Execution(a,x,t)⇒ValidAuthority(a,x,t) rather than ValidAuthority(a,x,t_now) -- the same Chapter-4-derived architectural lesson (current state does not contain complete prior state) reapplied to a new domain concept (authority) rather than merely restated"
+  - concept: "This reconstruction's long-tracked over-engineering-prevention discipline (0790, 0794)"
+    refinement: "Extended via the falsification pass on the authority model itself (a tiny application's if user.isAdmin() may be sufficient) and the explicit formula RequiredSeparation=f(Risk,Authority,Domain,ControlObjective) rather than a universal separation-of-duties mandate -- directly continuing 0794's 'use the weakest mechanism that provides the required assurance' meta-law into the governance-role design space"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 172's actual six-scenario separation-of-duties falsification experiment and its coherence verdicts for scenarios A-F."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the two-dimensional epistemic-flow/governance-flow model and its capstone 'KnowledgeOS is not merely an information flow. It is an information flow constrained by authority' as one of the arc's most quotable architectural conclusions."
+  - "dimension-registry.md: record the extension of the evidence-independence/three-agent-problem discipline from multi-agent evidence corroboration to the producer/verifier organizational-role relationship, with contextual independence (Technical/Organizational/Epistemic) as the reconciling formalism."
+  - "dimension-registry.md: record 'do not derive domain boundaries directly from technical component boundaries' and ConceptualSeparation≠PhysicalSeparation as directly applicable DDD-discipline principles, explicitly warning against premature microservice decomposition."
+  - "dimension-registry.md: record the six named falsification scenarios (A-F) opening Step 172, with the explicit methodological commitment to revise the model rather than patch a failing example -- directly consistent with 0794's falsification discipline."
+anchor_test:
+  anchor: "0795's opening of Step 171 and its proposed Authority-Responsibility-Evidence matrix / single-point-of-trust test; 0793's evidence-independence graph and Capability≠Authority; 0794's over-engineering-prevention discipline and falsification methodology"
+  supports_dimension: "Delivers the full Authority-Responsibility matrix table directly answering 0795's closing question, plus a rigorous three-predicate (Cap/Resp/Auth) and eventually five-predicate (Identity/Capability/Authority/Responsibility/Accountability) relation system. Extends 0793's evidence-independence/three-agent-problem discipline from multi-agent evidence corroboration to the producer/verifier organizational-role relationship via contextual independence. Delivers normal/emergency-path separation and the transition contract as directly applicable governance-modeling patterns. Culminates in the two-dimensional epistemic/governance model and its capstone consequence. Continues 0794's falsification discipline and over-engineering-prevention meta-law by falsifying the authority model's own necessity via a minimal counterexample. Directly extends 0795's Chapter-4-motivated temporal-justification invariant to historical authority. Opens Step 172's six concrete falsification scenarios with an explicit commitment to revise rather than patch, maintaining the arc's disciplined methodology"
+  refines_or_contradicts: "directly delivers and extends 0795's opening of Step 171; extends 0793's evidence-independence discipline to a new domain (producer/verifier roles); extends 0793's Capability≠Authority into a full multi-predicate system; extends 0795's Chapter-4-motivated temporal discipline to authority; continues 0794's falsification methodology and over-engineering-prevention meta-law; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§171.24's full Authority-Responsibility matrix table across all eight lifecycle stages is directly checkable evidence that the file delivers precisely what Step 171 was opened to construct."
+  - "§171.43's doubly-boxed capstone 'KnowledgeOS is not merely an information flow. It is an information flow constrained by authority' / 'governance is not merely a set of approvals. It is the control structure governing epistemic and operational transitions' is directly quotable evidence of the file's central architectural conclusion."
+  - "§171.36-171.40's falsification pass on the authority model itself (the tiny-application counterexample, RequiredSeparation=f(...), ConceptualSeparation≠PhysicalSeparation, and the boxed 'do not derive domain boundaries directly from technical component boundaries') is directly checkable evidence of the file continuing 0794's genuine falsification discipline rather than merely constructing more machinery."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 172's six named scenarios (A-F) were ever actually run, and whether any were found to break the architecture's coherence, triggering the promised model revision rather than a patch."
+  - "Whether the eventual per-bounded-context instantiation of the generic Authority-Responsibility matrix (explicitly deferred at §171.24) was ever carried out for KnowledgeOS's actual established bounded contexts (Evidence/Knowledge/Determination/Decision/Governance/Action, per 0787)."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the full Authority-Responsibility matrix table directly answering 0795's closing question, plus a rigorous multi-predicate relation system (eventually Identity/Capability/Authority/Responsibility/Accountability, all pairwise non-implying). Extends 0793's evidence-independence/three-agent-problem discipline from multi-agent evidence corroboration to the producer/verifier organizational-role relationship via a new contextual-independence formalism. Delivers normal/emergency-path separation and the transition contract as directly applicable governance patterns. Culminates in the two-dimensional epistemic/governance model and its widely quotable capstone consequence. Continues 0794's falsification discipline by falsifying the authority model's own necessity, and extends 0795's Chapter-4-motivated temporal discipline to historical authority. Opens Step 172's six concrete falsification scenarios with an explicit, disciplined methodological commitment."

@@ -1,0 +1,178 @@
+sequence: 655
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-120653_step-071-compositional-correctness-of-knowledgeos.md
+title: "Step 71 CONFIRMED as a Substantial, Largely Unacknowledged Re-Derivation of Already-Processed Corpus Territory — Contract Composition Re-Derives 0654's Own Post(X_1)⇒Pre(X_2) Rule From One File Earlier; Invariant-Preservation/Induction and the Compositionality Theorem-Candidate Substantially Retread 0640's (Step 58's) Already-Processed LANDMARK Compositionality Content; a New Invariant I_EvidenceIndependence Is Substantively the Same Claim as 0649's I_EpistemicIndependence Under a Different Name, With the Near-Identical 'Five Agents Summarize One Document' Worked Example; Zero Cross-References to 0640, 0649, or 0654 Appear Anywhere in This File; Delivers Genuinely New Material (C_context as a Fifth Compositional Dimension, DDD Anti-Corruption-Layer Mapping, Agent Composition Through Governed Artifacts, Dependency-Aware Incremental Recomputation, Internal≠External Correctness) Alongside the Retread; Verdict 'STEP 71 — PASS'; Closes by Opening an Untitled 'Step 72' Whose Explicitly Previewed Scope (Concurrency, RaceConditions, Versioning, OptimisticConcurrency, EventOrdering, DistributedConsistency) Is a NEAR-CERTAIN Direct Collision With 0641's Already-Processed Step 59 (Concurrency and Interleaving Calculus, Which Already Delivered Lamport Clocks, ConcurrencyPolicy=f(DomainOperation,Invariant), and I_Concurrency)"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 71 -- Compositional Correctness of KnowledgeOS', opened at 0654's close, but its content is confirmed via direct comparison to substantially overlap 0640's (Step 58's) and 0649's (Step 65's) already-processed content, with zero cross-reference to either"
+source_role: PRIMARY_RESEARCH
+canonical_source: 655
+importance: critical
+confidence: high
+about: >
+  **CONFIRMS, via direct content comparison, the topic-overlap concern flagged at 0654**: Step 71 opens
+  testing "can locally correct components compose into a globally trustworthy system?" and immediately
+  re-derives, largely from scratch and without cross-reference, the SAME contract-composition rule
+  (`Post(X_1)⇒Pre(X_2)`) that 0654 (Step 70, the immediately preceding file) had already established one
+  file earlier as its own "Design by Contract" / "Composition" machinery (0654's §70.28-70.40). This file's
+  §71.1-71.5 (Contract composition, incompatible-contracts experiment, contract-strengthening rule "a
+  component may only promise what its postconditions actually establish") is a near-total restatement of
+  0654's own immediately preceding content, presented as if freshly derived.
+
+  **Delivers a compositionality/invariant-induction treatment substantially overlapping 0640's (Step 58's)
+  already-processed LANDMARK Compositionality content**: this file's Invariant preservation (`I(S)∧Pre_X⇒
+  I(X(S))`), inductive-correctness argument (`I(S_0)∧∀t:I(S_t)⇒I(S_{t+1})⇒∀t:I(S_t)`), and Compositional
+  correctness theorem candidate (`∀i: Post_i⇒Pre_{i+1} ∧ I_i⇒I_{i+1} ∧ P_{i+1}⊇P_i ∧ Meaning_i≅Meaning_{i+1}
+  ⇒ I_workflow=True`) occupy substantially the same conceptual territory as 0640's own "provisional
+  KnowledgeOS Compositionality Principle" theorem-candidate with its six explicit preconditions -- **neither
+  file cross-references the other**. Unlike 0640, this file discovers no new genuine "FAILURE DETECTED"
+  result (all eighteen of its experiments return plain PASS), making this file read, on direct comparison, as
+  a re-derivation and partial restatement of 0640's already-established compositionality machinery rather
+  than a new adversarial discovery in the same vein -- though it does layer genuinely new material on top
+  (see below), consistent with, though less clearly a "deliberate deepening" than, the previously confirmed
+  0645/0646 Step-63 case, because no explicit signal of intentional continuation appears in this file's own
+  text.
+
+  **Delivers a new invariant, `I_{EvidenceIndependence}`** ("correlated or derived evidence must not be
+  counted as independent confirmation") **that is substantively the identical claim as 0649's
+  `I_{EpistemicIndependence}`** ("derived artifacts cannot be counted as independent evidence of their own
+  ancestry") under a different name, confirmed via a near-identical worked example: this file's Experiment 8
+  ("one source produces `E_1`; five AI agents independently summarize `E_1`; the system counts 6 independent
+  sources; expected `DependencyDetected`/`EffectiveEvidenceCount≈1`") is structurally and substantively the
+  same scenario as 0649's own "one false claim reproduced by ten agents, apparent 11 agreements corrected to
+  ≈1 independent source" knowledge-poisoning experiment. **This file makes zero reference to 0649, its
+  `I_EpistemicIndependence` invariant, its `AgentCount≠EvidenceCount` headline result, or its dependency-
+  vector machinery**, despite re-deriving essentially the same conclusion via essentially the same example --
+  this is the clearest, most directly checkable instance of unacknowledged content repetition detected in
+  this reconstruction to date, more concrete than the still-open 0618/0597 collision (which involved
+  resemblance across models, not a near-identical worked example within the same numbered-step sequence).
+
+  Despite this substantial retread, the file DOES deliver genuinely new material not previously established:
+  **Internal correctness versus External validity** (`Correct_internal≠True_world`), worked through a
+  flawlessly-implemented-wrong-model example (software correctly implements `Y=2X` while reality is
+  `Y=3X`), confirmed via a dedicated experiment (PASS) -- a precise and useful new distinction extending the
+  corpus's `OperationalHealth≠EpistemicValidity` (0647) family into the model-validity dimension
+  specifically. Delivers an explicit DDD Anti-corruption-layer mapping for cross-context integration
+  (`ExternalSystem→Adapter→Translation→Kernel`), confirmed via a direct-object-sharing experiment (context
+  violation correctly rejected -- PASS) and an external-mutation experiment (an integration bypassing
+  transformation/provenance correctly rejected -- PASS), directly and explicitly grounding the corpus's
+  bounded-context discipline in the specific, named DDD pattern for the first time. Delivers a five-
+  dimension compositional-correctness formula `C_global=C_contract∧C_invariant∧C_provenance∧C_epistemic∧
+  C_context`, with `C_context` (semantic meaning must remain valid crossing bounded-context boundaries)
+  explicitly added as a fifth dimension beyond the four the file initially proposes, confirmed via a
+  context-breaking-integration experiment (type/schema/provenance preserved but meaning changed --
+  `GlobalCompositionInvalid` -- PASS).
+
+  Delivers uncertainty-propagation composition (`σ_Z^2=σ_X^2+σ_Y^2` for independent components,
+  `+2Cov(X,Y)` for correlated ones), confirmed via an ignored-correlation experiment (PASS), directly
+  connecting statistical variance propagation to the file's provenance/dependency discipline. Delivers
+  Failure containment (`Failure containment`: a local epistemic failure should remain local unless the
+  dependency graph establishes downstream impact), confirmed via a failed-intermediate-step experiment
+  (`Blocked` rather than silent continuation -- PASS), directly and explicitly connected to 0652's
+  contradiction-propagation work ("connects directly to our contradiction work"). Delivers Dependency-aware
+  incremental recomputation (`Recompute the affected subgraph, not the entire knowledge base`), confirmed
+  via an incremental-recomputation experiment (PASS) -- directly and explicitly extending 0647's
+  `Affected≠Invalid`/impact-analysis discipline into a genuine computational-efficiency principle.
+
+  **Delivers Agent composition formalized as governed-artifact-mediated, not implicit-trust-mediated**:
+  "agents communicate through governed artifacts, not through implicit trust," confirmed via an agent-
+  disagreement experiment (`Conflict` rather than overwrite -- PASS, directly extending 0652's `Conflict`
+  discipline into multi-agent workflows) and a heterogeneous-agents experiment (agents built on different
+  LLMs remain workflow-compatible via shared contracts, not shared cognition -- PASS), crystallizing that
+  "the platform can survive `Model_A→Model_B→Model_C` changing over time" because "the knowledge semantics
+  remain stable" -- confirmed via a model-replacement experiment requiring `ModelVersion` as part of
+  provenance (PASS), directly extending 0647's Model lineage discipline.
+
+  Delivers Step 71's deeper synthesis result: "global assurance = composed local contracts + invariant
+  preservation + provenance + semantic translation + dependency control," and a Unified boundary model
+  reframing bounded contexts as simultaneously `SemanticBoundary + InvariantBoundary + OwnershipBoundary +
+  FailureBoundary`, explicitly claiming a "powerful convergence" across DDD, formal methods, distributed
+  systems, and knowledge engineering vocabularies (`BoundedContext`/`InvariantBoundary`/`FailureBoundary`/
+  `SemanticBoundary`).
+
+  Delivers Step 71's verdict **"STEP 71 — PASS,"** with the central principle "correct components do not
+  automatically make a correct system." **Closes by opening an unnumbered-heading "Step 72" (the file's own
+  section header reads only "Step 72 — The next fundamental question," omitting a topic subtitle unlike
+  every other step in the corpus)**, explicitly framing the next question as "how does epistemic correctness
+  behave under concurrency?" and previewing exactly: `Concurrency, RaceConditions, Versioning,
+  OptimisticConcurrency, EventOrdering, DistributedConsistency, ConcurrentClaims`, and posing "can two
+  independently correct agents produce different but simultaneously valid knowledge states?" **This preview
+  is a NEAR-CERTAIN direct topic collision with 0641's already-processed Step 59 ("Concurrency and
+  Interleaving Calculus"), which this reconstruction's own records confirm already delivered: Lamport
+  clocks, partial-versus-total order, snapshot isolation, optimistic-concurrency `ConcurrencyConflict`
+  detection on version mismatch, `ConcurrencyPolicy=f(DomainOperation,Invariant)`, a nine-row concurrency
+  matrix, a new `I_{Concurrency}` safety invariant, and the `AuthoritativeOperationalState` versus
+  `AlternativeKnowledgeState` distinction** -- i.e., essentially the exact same named concepts (concurrency,
+  race conditions, event ordering, optimistic concurrency, distributed consistency) this reconstruction
+  already recorded as fully and maturely delivered fourteen sequence-numbers/eleven step-numbers earlier.
+  This is now the THIRD flagged unreconciled topic-collision/overlap candidate in the corpus (after
+  0618/0597, and after 0654's Step-70/Step-71-and-0640 flag now substantially confirmed by this file), and
+  the closing preview of "Step 72" makes a fourth, even more directly named collision (Step 72 vs. Step 59)
+  highly likely pending confirmation once 0656 is read. No actual code execution reported in this file.
+introduces:
+  - concept: "CONFIRMED (via direct textual comparison): this file's contract-composition machinery is a near-total restatement of 0654's own immediately-preceding Design-by-Contract/composition content, presented without cross-reference as freshly derived"
+  - concept: "CONFIRMED (via direct textual comparison): this file's invariant-preservation/inductive-correctness/compositionality-theorem content substantially overlaps 0640's already-processed LANDMARK Step 58 Compositionality Principle, with no new FAILURE DETECTED result and no cross-reference to 0640"
+  - concept: "CONFIRMED (via direct textual and example-level comparison): the new invariant I_EvidenceIndependence is substantively identical to 0649's I_EpistemicIndependence, confirmed via a near-identical worked example (agents summarizing one shared document), with zero cross-reference to 0649 — the clearest, most directly checkable content-repetition instance in this reconstruction to date"
+  - concept: "A fifth compositional-correctness dimension, C_context, added to the file's own initial four-dimension formula, requiring semantic meaning preservation across bounded-context boundaries"
+  - concept: "Internal correctness≠External validity, extending 0647's OperationalHealth≠EpistemicValidity family into the model-validity dimension"
+  - concept: "An explicit DDD anti-corruption-layer mapping for the KnowledgeOS kernel boundary, and a Unified boundary model reframing bounded contexts as SemanticBoundary+InvariantBoundary+OwnershipBoundary+FailureBoundary"
+  - concept: "A NEAR-CERTAIN new topic collision: the closing preview of an unusually untitled 'Step 72' names almost exactly 0641's already-processed Step 59 (Concurrency and Interleaving Calculus) vocabulary — the fourth flagged collision candidate in the corpus, pending direct confirmation at 0656"
+defines:
+  - concept: "Correct_internal≠True_world"
+    definition: "A system can be internally correct (it faithfully implements its specified model and rules) while its underlying model or assumptions are externally wrong relative to reality (e.g. flawlessly implementing Y=2X when the true relationship is Y=3X); model correctness must separately include assumption validity, empirical validation, and applicability-domain scoping, not merely code correctness"
+  - concept: "C_global=C_contract∧C_invariant∧C_provenance∧C_epistemic∧C_context"
+    definition: "Global compositional assurance requires five simultaneously satisfied dimensions: interfaces compose (contract), rules remain true (invariant), ancestry remains traceable (provenance), semantic status is not improperly strengthened (epistemic), and meaning remains valid across bounded-context boundaries (context) — a direct extension of the file's own initial four-dimension formula"
+  - concept: "Failure containment"
+    definition: "A local epistemic failure or component failure should remain local and not silently propagate as if successful; it should only affect downstream artifacts that the dependency graph actually establishes as dependent, directly connecting the corpus's contradiction-propagation discipline (0652) to component-level failure handling"
+  - concept: "Agents communicate through governed artifacts, not through implicit trust"
+    definition: "Multi-agent workflows should not require agents to trust one another's internal cognition or reasoning process; instead, agents interact solely through typed, contract-governed artifacts, allowing heterogeneous agents (built on different underlying models) to remain workflow-compatible via shared semantic contracts rather than shared implementation"
+refines:
+  - concept: "0654's (Step 70's) Design-by-Contract transformation composition (Post(X_1)⇒Pre(X_2))"
+    refinement: "SUBSTANTIALLY RE-DERIVED WITHOUT CROSS-REFERENCE, one file later: this file's §71.1-71.5 restates the same composition rule and contract-strengthening principle 0654 had already established, rather than building on or citing it directly"
+  - concept: "0640's (Step 58's) LANDMARK Compositionality Principle theorem-candidate and invariant-preservation machinery"
+    refinement: "SUBSTANTIALLY OVERLAPPED, NOT CROSS-REFERENCED: this file's invariant-preservation, inductive-correctness argument, and compositional-correctness theorem candidate occupy largely the same territory as 0640's own theorem-candidate, without discovering a new genuine failure or acknowledging the earlier treatment — flagged as a confirmed, though not fully adjudicated, retread rather than an explicit deliberate deepening"
+  - concept: "0649's I_EpistemicIndependence invariant and its 'agents summarizing one shared document' worked example"
+    refinement: "SUBSTANTIALLY DUPLICATED UNDER A NEW NAME (I_EvidenceIndependence), confirmed via a near-identical worked example, with zero cross-reference — the clearest content-repetition instance confirmed in this reconstruction to date"
+  - concept: "0647's OperationalHealth≠EpistemicValidity and Model lineage disciplines"
+    refinement: "Directly extended via Correct_internal≠True_world (model-validity dimension) and the model-replacement-requires-ModelVersion-in-provenance experiment"
+  - concept: "0652's Conflict/contradiction-propagation discipline"
+    refinement: "Directly and explicitly extended into multi-agent workflow disagreement (agent disagreement correctly yields Conflict, not overwrite) and into component-failure containment ('this connects directly to our contradiction work')"
+  - concept: "0641's (Step 59's) already-processed Concurrency and Interleaving Calculus content (Lamport clocks, ConcurrencyPolicy=f(DomainOperation,Invariant), I_Concurrency, AuthoritativeOperationalState vs AlternativeKnowledgeState)"
+    refinement: "NEAR-CERTAIN UPCOMING COLLISION, NOT YET CONFIRMED: this file's closing preview of an untitled 'Step 72' names almost exactly the same concurrency vocabulary 0641 already delivered in full; pending direct confirmation once 0656 (Step 72's actual file) is read"
+contradicts: []
+repeats:
+  - "0654 (contract-composition machinery, Post(X_1)⇒Pre(X_2), near-total restatement one file later)"
+  - "0640 (Compositionality Principle / invariant-preservation theorem-candidate, substantially overlapping territory, no new FAILURE DETECTED result)"
+  - "0649 (I_EpistemicIndependence, substantively duplicated as I_EvidenceIndependence under a near-identical worked example)"
+bridge_candidates:
+  - "HIGHEST PRIORITY, NEAR-CERTAIN: read Step 72's actual file (0656) and directly confirm whether it substantially duplicates 0641's (Step 59's) already-processed Concurrency and Interleaving Calculus content (Lamport clocks, ConcurrencyPolicy=f(DomainOperation,Invariant), I_Concurrency, AuthoritativeOperationalState vs AlternativeKnowledgeState) — this file's closing preview makes the collision highly likely; confirming it would establish the corpus's first THREE-WAY confirmed instance of a numbered step substantially re-deriving already-processed content across three distinct step-pairs (Step70/71, Step58/71, Step59/72) within an eleven-step span, a materially different and more serious pattern than the earlier, more clearly deliberate 0645/0646 deepening."
+  - "CARRIED FORWARD: whether this reconstruction's eventual §29 cross-model synthesis needs to treat the Step 65-72 span as exhibiting a genuine loss of internal consistency/memory within the c1/g1 model line specifically (as opposed to earlier steps in the corpus, which more reliably cross-referenced and explicitly built on prior steps) — this file is the third and clearest data point for that broader methodological concern, after 0654's kernel divergence and this file's own triple overlap."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CONFIRMED near-total restatement of 0654's contract-composition machinery one file later; the CONFIRMED substantial overlap with 0640's LANDMARK Compositionality Principle (no new failure discovered, no cross-reference); and the CONFIRMED substantive duplication of 0649's I_EpistemicIndependence as I_EvidenceIndependence via a near-identical worked example — the clearest content-repetition instance in this reconstruction to date."
+  - "dimension-registry.md: record the genuinely new material this file does contribute — C_context as a fifth compositional dimension, Correct_internal≠True_world, the DDD anti-corruption-layer mapping, Failure containment connecting to 0652's contradiction work, dependency-aware incremental recomputation extending 0647's impact-analysis discipline, and Agents communicate through governed artifacts extending 0652's Conflict discipline into multi-agent workflows."
+  - "dimension-registry.md: record the NEAR-CERTAIN fourth collision candidate — this file's closing preview of an unusually untitled 'Step 72' names almost exactly 0641's already-processed Step 59 Concurrency vocabulary; flag as highest priority for direct confirmation at 0656, and flag the emerging broader pattern of the c1/g1 model line substantially re-deriving already-processed content across three distinct step-pairs within an eleven-step span."
+anchor_test:
+  anchor: "0654's Design-by-Contract composition machinery (established one file earlier); 0640's (Step 58's) LANDMARK Compositionality Principle; 0649's (Step 65's) I_EpistemicIndependence and its worked example; 0641's (Step 59's) already-processed Concurrency and Interleaving Calculus content; 0647's OperationalHealth≠EpistemicValidity and impact-analysis disciplines; 0652's Conflict/contradiction discipline"
+  supports_dimension: "Provides the clearest, most directly checkable, and most concentrated evidence in this entire reconstruction that the corpus's c1/g1 model line has begun substantially re-deriving already-processed content without cross-reference, across not one but three distinct prior files (0654, 0640, 0649) within a single new file, plus a near-certain fourth upcoming collision (against 0641) previewed in its own closing text. This is qualitatively different from and more serious than the previously confirmed 0645/0646 case (which the file's own text explicitly signaled as an intentional deepening) and the still-open 0618/0597 case (which involves resemblance across different source models, not a near-identical worked example within the same continuous step sequence). At the same time, the file is not pure repetition: it layers genuinely new, well-motivated material (C_context, Correct_internal≠True_world, the DDD anti-corruption-layer mapping, dependency-aware incremental recomputation, agent composition through governed artifacts) on top of the retread, consistent with this reconstruction's discipline of never converting a confirmed resemblance into an unqualified verdict of pure duplication — the retread and the genuine novelty coexist within the same file and must both be recorded precisely"
+  refines_or_contradicts: "substantially and confirmedly overlaps 0654's contract-composition machinery, 0640's Compositionality Principle, and 0649's I_EpistemicIndependence, all without cross-reference; directly and genuinely extends 0647's OperationalHealth≠EpistemicValidity/impact-analysis disciplines and 0652's Conflict discipline; strongly and near-certainly previews a fourth collision against 0641's Concurrency content, pending confirmation at 0656; no contradiction found; this file's own content collision status (with 0654/0640/0649) is CONFIRMED, not merely flagged, a stronger classification than every prior open bridge_candidate in this reconstruction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Direct textual comparison: this file's §71.1-71.5 (contract composition, Post(X_1)⇒Pre(X_2), contract-strengthening rule) is structurally and substantively near-identical to 0654's own §70.28-70.40 (Typed transformation contract, composition, Post(X_1)⇒Pre(X_2)), established just one file earlier in the same continuous step sequence, with no cross-reference from this file back to 0654."
+  - "Direct example-level comparison: this file's Experiment 8 (§71.25, one source E_1 summarized by five AI agents, system incorrectly counts 6 independent sources, expected DependencyDetected/EffectiveEvidenceCount≈1) is structurally and substantively the same scenario as 0649's knowledge-poisoning-through-repetition experiment (one false claim reproduced by ten agents, apparent 11 agreements corrected to ≈1 independent source), confirming the new invariant I_EvidenceIndependence is substantively identical to 0649's already-established I_EpistemicIndependence under a different name, with zero cross-reference to 0649 anywhere in this file."
+  - "This file's closing preview of 'Step 72' (§72, itself irregularly titled with no topic subtitle, unlike every other numbered step in the corpus) names Concurrency, RaceConditions, Versioning, OptimisticConcurrency, EventOrdering, DistributedConsistency, and ConcurrentClaims — directly and near-exactly matching the vocabulary this reconstruction's own 0641 record already confirms was fully and maturely delivered under Step 59 (Concurrency and Interleaving Calculus): Lamport clocks, partial/total order, ConcurrencyPolicy=f(DomainOperation,Invariant), I_Concurrency, and AuthoritativeOperationalState vs AlternativeKnowledgeState."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 72's actual content (0656), once read, confirms the near-certain collision with 0641's Step 59 Concurrency content, and if so, whether it is framed by the corpus's own text as a deliberate re-derivation, an unacknowledged repetition, or contains genuinely new concurrency-specific material not covered at 0641."
+  - "Whether this reconstruction's eventual §29 cross-model synthesis should treat Steps 65-72 as exhibiting a systematic loss of internal step-to-step memory/consistency within the c1/g1 model line, given three confirmed overlaps (0654, 0640, 0649) plus one near-certain fourth (0641) concentrated within an eleven-step span, as distinct from the earlier corpus's more reliable practice of explicit cross-referencing."
+tier2_triggered: true
+tier2_reason: "Provides the clearest, most directly checkable, and most concentrated evidence in this entire reconstruction of substantial unacknowledged content repetition — three distinct confirmed overlaps (0654's contract composition, 0640's Compositionality Principle, 0649's I_EpistemicIndependence via a near-identical worked example) within a single file, plus a near-certain fourth collision (against 0641's Concurrency content) previewed in its own closing text. This is a qualitatively new and more serious finding than the corpus's prior, more clearly deliberate deepening (0645/0646) or the still-open cross-model resemblance (0618/0597). Simultaneously delivers genuinely new, well-motivated architectural material (C_context, Correct_internal≠True_world, the DDD anti-corruption-layer mapping, dependency-aware incremental recomputation, agent composition through governed artifacts) that must be recorded alongside the retread rather than dismissed by it. Verdict 'STEP 71 — PASS.'"

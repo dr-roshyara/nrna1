@@ -1,0 +1,80 @@
+sequence: 5
+path: docs/knowledgeos/KnowledgeOS_Architecture_Fitness_Assessment.md
+title: KnowledgeOS — Architecture Fitness Assessment
+date: 2026-08-02
+bytes: 17829
+doc_type: fitness assessment against a declared fitness function (does the architecture support `knowledgeos init`)
+
+primary_model_initial: kernel_ddd
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+confidence: medium
+# medium: the "kernel" enumerated in §7 is the PORTABILITY kernel (domain-free AND binding-free
+# AND evidence-free), not an epistemic Kernel with state and operators. Whether this file is a
+# Model C ancestor or a separate engineering-platform strand is not decidable at seq 5.
+primary_model_initial_historical: kernel_ddd   # RETIRED value (MD-006); preserved, not rewritten
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - §7 'which belong inside the KnowledgeOS kernel' enumerates ES standards, EEP, protocols, templates — engineering artifacts
+  - membership criterion is portability (Tier-1), explicitly NOT epistemic necessity
+  - no knowledge state, K_t, dimension, value, Buddhi, operator or purification content
+secondary_models: [kernel, governance, evidence, validation, ddd, invariants]
+
+status: DR
+maturity: developing
+importance: high
+
+introduces:
+  - three_gap_kinds_architectural_governance_evidence
+  - enforcement_as_fifth_maturity_dimension
+  - maturity_is_not_enforcement
+  - boundary_trigger_advisory_control_taxonomy
+  - adoptable_by_habit_never_by_mechanism
+  - kernel_membership_enumeration
+  - specification_is_not_implementation
+  - decomposition_without_materialization
+defines:
+  - boundary_control      # must never happen; permissions.deny; n=19; ENFORCED
+  - trigger_control       # ask the engineer; permissions.ask; n=22; ENFORCED
+  - advisory_control      # mentions it and proceeds; hooks/scripts; n=16; NOT enforced
+  - kernel_membership     # extensional list of Tier-1 (domain-free & binding-free & evidence-free) artifacts
+hypotheses:
+  - genesis_may_not_be_the_platforms_responsibility
+  - sd1_question_is_testable_by_one_bootstrap_rerun
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 5th consecutive file
+  - kernel             # members enumerated; the kernel itself never defined; no removal test given
+  - enforcement        # defined by mechanism, not as a concept
+  - genesis
+  - maturity           # L0-L4 used without stated criteria per level
+open_questions:
+  - OQ-S1 is SD-1 a product binding or a platform rule (named highest leverage)
+  - OQ-S3 does genesis belong to the platform at all
+  - OQ-S4 is PKS Generator a component or a role
+  - "E-1: PKS generation n=0"
+  - "E-2: operational learning 0 traversals"
+  - "E-3: capability evolution 0 promotions"
+  - should knowledgeos init exist at all before charter gate 4
+
+depends_on: [1]
+extends: [1]
+refines: [1]           # splits undifferentiated "evidence gaps" into 3 kinds with 3 resolution mechanisms
+renames: []            # flags "Capability Runtime" as a misnomer; explicitly does NOT rename
+contradicts: [5]       # falsifies its OWN headline finding "0 of 11 enforcing", in place
+supersedes: []
+repeats: [1]
+connects_to: [3, 6]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Draws the reading order's FIRST kernel membership boundary (§7); states the first definition with
+  a mechanical realisation and a counted population (BOUNDARY/TRIGGER/ADVISORY = 19/22/16); and
+  falsifies its own headline finding in place, replacing it with a strictly stronger and better
+  located claim. Carries a structural tension for Model C: enforcement lives outside the layer
+  where governance lives.

@@ -1,0 +1,55 @@
+sequence: 249
+path: docs/knowledgeos/brainstorming/kernel/20260824-160637-knowledge-as-a-continuously-changing-body-of-facts.md
+title: "Knowledge as a Continuously Changing Body of Facts"
+date: "2026-08-24"
+bytes: 8500
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 249
+importance: medium
+confidence: high
+about: >
+  A concise direct continuation of 0247, formalizing knowledge as a continuously evolving temporal state
+  K(t) rather than a static object, and explicitly distinguishing Fact from Knowledge (a fact can exist
+  unobserved by anyone; it is not thereby knowledge for anyone). Largely consolidates temporal-knowledge
+  concepts already present in the corpus (0225's HSMM state-duration work, 0235's knowledge-as-trajectory)
+  rather than introducing wholly new architecture.
+introduces:
+  - concept: "K(t) = f(O_<=t, E_<=t, C_<=t): knowledge as a function of cumulative observations, evidence, and contextual interpretation up to time t -- explicitly a continuously evolving state, not a document"
+  - concept: "Fact != Knowledge: a fact can exist (e.g. an unobserved physical event) without being knowledge for anyone -- Knowledge = Facts/claims + Evidence + Justification + Context + Temporal validity + Relationships, all of which can change, hence Knowledge = K(t)"
+  - concept: "Old facts are not deleted but transition to historical status: Valid(F,t1)=true, Valid(F,t2)=false or Status(F,t2)=historical -- worked example: 'system uses Architecture A' (valid t0-t1) -> migration -> 'Architecture B' (valid t2-now), preserving the trajectory rather than overwriting"
+  - concept: "Davidson invariance reframed temporally: distinguish what changes (representation/language/measurement/interpretation/model) from what remains invariant (relationships/truth-conditions/structural-properties) across a knowledge trajectory"
+  - concept: "Reframed research question: not 'how much knowledge does a system contain?' but 'what is the current state of its continuously evolving body of justified facts, and how did that state change over time?' -- knowledge as a temporal state machine/trajectory, not a static repository"
+defines: []
+refines:
+  - concept: "0247's Knowledge Vector (T,J,R,A,S,C,U) and time-indexed knowledge decay principle"
+    refinement: "Sharpens the time-indexing into an explicit functional form K(t)=f(O,E,C) and adds the Fact!=Knowledge distinction and the non-deletion/historical-status trajectory principle not spelled out in 0247."
+  - concept: "0225's HSMM three-layer state architecture and 0235's knowledge-as-trajectory principle"
+    refinement: "Reconfirms the same trajectory-not-snapshot principle from a different (epistemological, not mathematical) angle."
+contradicts: []
+repeats:
+  - concept: "Knowledge should be studied as a trajectory, not a versioned collection of snapshots"
+    canonical_source: 235
+    novelty: none
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0247's Knowledge Vector; 0225/0235's trajectory-based knowledge state work"
+  supports_dimension: "Mathematical/statistical model -- consolidates temporal-knowledge concepts already established elsewhere in the corpus into an explicit K(t) functional form"
+  refines_or_contradicts: "refines 0247; reconfirms 0225/0235"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Medium-importance direct continuation of 0247, mostly consolidating and formalizing temporal-knowledge concepts (K(t), Fact!=Knowledge, non-deletion/historical-status trajectory) already present elsewhere in the corpus (0225, 0235) rather than introducing substantially new architecture."

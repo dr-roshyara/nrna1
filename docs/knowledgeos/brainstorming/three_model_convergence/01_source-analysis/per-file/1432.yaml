@@ -1,0 +1,44 @@
+sequence: 1432
+path: docs/knowledgeos/brainstorming/KnowledgeOS_Knowledge_Modeling_Knowledge_Transfer_Phase1_Measure_Theory.odt
+title: "DUPLICATE (format variant) of the already-analyzed KnowledgeOS Knowledge Transfer (Phase 1, Measure Theory) foundational origin document (file 1431, .docx)"
+date: "2026-08-25"
+bytes: 62403
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "same-content alternate-format duplicate (.odt vs .docx), same filename stem, same mtime day, minimal record per standing duplicate-file convention"
+source_role: DUPLICATE
+canonical_source: 1431
+importance: minor
+confidence: high
+about: >
+  Same filename stem, same directory, adjacent creation timestamp (23:53 vs 23:52) as the already fully
+  analyzed `.docx` at sequence 1431 -- an OpenDocument-format export/save of the identical "Knowledge Transfer
+  for New Session" foundational origin document. Per standing convention, duplicate/format-variant files
+  receive a minimal record pointing to the canonical analysis rather than re-extraction and re-analysis.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - "Full content duplicate (alternate ODT export) of file 1431's already-comprehensively-analyzed content."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "File 1431's already-comprehensive analysis"
+  supports_dimension: "None beyond confirming the duplicate exists in two file formats"
+  refines_or_contradicts: "duplicate, no independent content"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Duplicate format-variant of already-analyzed file 1431; no independent tier-2 content."

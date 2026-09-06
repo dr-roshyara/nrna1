@@ -1,0 +1,89 @@
+sequence: 2229
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260831-202101_step_287_reviewer-step-287-invariants-research-only-derivability-audit-triplicate.md
+title: "Step 287 Invariants Research-Only Derivability Audit -- A Related but Non-Identical Second-Pass Discussion Delivering the Precise Origin of the DERIVED/CORPUS-SUPPORTED/CONDITIONALLY-DERIVED/NORMATIVE/G1-OPEN/REFUTED Six-Way Classification Vocabulary Used Pervasively Throughout the Entire Already-Tracked Research Programme"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a related but non-identical companion to file 2228 despite its filename's 'triplicate' label, delivering the precise origin of the CORPUS-SUPPORTED/NORMATIVE/G1 classification vocabulary"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2229
+importance: major
+confidence: high
+about: >
+  "STEP 287 · Invariants ℐ — Candidate Invariants, Derivability, Dependencies and Open Conditions," status
+  "RESEARCH ARTIFACT — NOT NORMATIVE / NOT ARCHITECTURE." Despite its filename's "triplicate" label, this is
+  NOT byte-identical to the already-tracked companion file 2228 (confirmed via checksum) -- a related, second-
+  pass discussion of the same Step-287 scoping question, driven this time explicitly from the already-tracked
+  D288-scope decision rather than directly from the invariant-research mandate.
+
+  **DELIVERS THE PRECISE ORIGIN OF THE SIX-WAY CLASSIFICATION VOCABULARY THIS RECONSTRUCTION HAS TRACKED
+  BEING USED PERVASIVELY THROUGHOUT THE ENTIRE RESEARCH PROGRAMME**: `DERIVED` / `CORPUS-SUPPORTED` /
+  `CONDITIONALLY DERIVED` / `NORMATIVE` / `G1 OPEN` / `REFUTED`, explicitly framed as "consistent with the
+  four-way gap discipline you just adopted." This is the exact terminology this reconstruction has
+  encountered attached to hundreds of already-tracked findings throughout the entire equality and Gītā
+  research arc (already-tracked `CORPUS-SUPPORTED` for `I-V`, files 1104/1109/1111; `NORMATIVE` for dozens of
+  register items throughout files 1072-1112; `G1` for the already-tracked irreducible `Qualify` gap
+  throughout the entire arc) -- confirming these terms of art originate as a single coherent six-way
+  taxonomy rather than independently coined labels.
+
+  **DELIVERS THE ORIGINAL STATUS-SEQUENCE TABLE** for Steps 285-288 as of this document's writing (285
+  "Research completed with explicit limitations"; 286 "Can be written as a research/ontology artifact"; 287
+  "Research/derivability analysis -- not yet normative closure"; 288 "Scoped, not executed"; later steps
+  "Normative kernel/formal invariants -- only after the required decisions"), confirming the disciplined
+  sequencing already-tracked throughout the Step 285-291 chronology.
+
+  **DELIVERS A PRECISE, DISCIPLINED FRAMING FOR EQUALITY-DEPENDENT INVARIANTS**, already-tracked as a
+  standing requirement throughout the equality arc (`§13` of the companion file 2228): "if we encounter
+  something of the form `K_1≡K_2⟹P(K_1)=P(K_2)`, we CANNOT call that a final invariant until the semantics of
+  `≡` are fixed... any invariant relying upon observational equality must CARRY THAT PARAMETER... provenance-
+  sensitive invariants... must remain conditional until 'relevant provenance' is formally specified."
+
+  **DELIVERS THE PRECISE, DISCIPLINED RESEARCH-CHAIN STATEMENT**, explicitly warning against the alternative
+  bad path: "`Ontology→Candidate Invariants→Derivability Audit→Dependency on Equality/Qualification→D288`
+  rather than: `Ontology→Invent Invariants→Declare them canonical`. The second path would violate the current
+  research discipline." Delivers the precise instruction: "STEP 287 should NOT SOLVE D288. Instead, it should
+  EXPOSE WHICH INVARIANTS ARE BLOCKED BY D288 AND EXACTLY WHY."
+
+  Confirms, consistent with the already-tracked companion file 2228, that D288's own material establishes
+  several foundations remain unresolved (`≡` no decision procedure; `≈` observation set `𝒬` not fixed;
+  `≅_λ` provenance-relevance predicate not fixed; `Qualify` a genuine `G1` gap; `𝒪` unenumerated; the ratified
+  eight primitives not yet demonstrated minimal against the operation space) -- the same blocker set already
+  extensively tracked throughout the entire equality research arc.
+introduces:
+  - concept: "The precise origin of the six-way classification vocabulary (DERIVED/CORPUS-SUPPORTED/CONDITIONALLY-DERIVED/NORMATIVE/G1-OPEN/REFUTED) that this reconstruction has observed applied pervasively throughout the entire equality and Gita research programme, confirming these are a single coherent taxonomy rather than independently coined terms"
+  - concept: "The original status-sequence table for Steps 285-288, confirming the disciplined sequencing already tracked throughout the Step 285-291 chronology"
+defines:
+  - term: "The six-way classification taxonomy"
+    definition: "DERIVED (follows from ratified definitions), CORPUS-SUPPORTED (explicitly present but not formally derived), CONDITIONALLY DERIVED (follows only if an unresolved decision is chosen), NORMATIVE (requires governance), G1 OPEN (cannot presently be derived, required machinery absent), REFUTED (contradicted by established evidence)"
+refines:
+  - concept: "This reconstruction's already-tracked pervasive use of CORPUS-SUPPORTED, NORMATIVE, and G1 classification terms throughout the entire equality and Gita research programme"
+    refinement: "TRACED TO THEIR PRECISE ORIGIN as a single coherent six-way classification taxonomy, explicitly tied to the already-tracked four-way gap discipline"
+  - concept: "This reconstruction's already-tracked companion Step-287 invariants mandate (file 2228)"
+    refinement: "COMPLEMENTED by a related, non-identical second-pass discussion driven from the D288-scope decision, delivering the classification-vocabulary origin not present in file 2228"
+contradicts: []
+repeats:
+  - "Substantially overlaps in conclusion and blocker enumeration with the already-tracked companion file 2228 (Step 287 should be research not canonical; the same equality/Qualify/O blocker set), while introducing the distinct six-way classification vocabulary as new content."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as the precise origin of the six-way CORPUS-SUPPORTED/NORMATIVE/G1-OPEN classification vocabulary used pervasively throughout this reconstruction's entire tracked research programme."
+anchor_test:
+  anchor: "This reconstruction's pervasive already-tracked use of CORPUS-SUPPORTED/NORMATIVE/G1 classification labels throughout the entire research programme"
+  supports_dimension: "Traces this vocabulary to its precise origin as a single coherent six-way taxonomy"
+  refines_or_contradicts: "refines (grounds at the origin) the prior tracked usage"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The six-way classification vocabulary is directly checkable against files 1104, 1109, and 1111's own already-documented CORPUS-SUPPORTED/NORMATIVE/G1 usage for exact consistency of this origin grounding."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers the precise origin of the six-way classification vocabulary (DERIVED/CORPUS-SUPPORTED/CONDITIONALLY-DERIVED/NORMATIVE/G1-OPEN/REFUTED) this reconstruction has observed applied pervasively throughout the entire equality and Gita research programme, confirming these terms of art originate as a single coherent taxonomy. Substantially overlaps with the already-tracked companion file 2228 in conclusion but is not byte-identical, delivering this classification-vocabulary origin as genuinely new content. Classified importance major and confidence high given the terminological-origin significance despite the substantial content overlap with file 2228."

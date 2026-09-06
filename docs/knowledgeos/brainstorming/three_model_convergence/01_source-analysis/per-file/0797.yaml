@@ -1,0 +1,169 @@
+sequence: 797
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-013920_step_172_separation-of-duties-falsification-experiment.md
+title: "Step 172 -- Separation-of-Duties Falsification Experiment (MAJOR SYNTHESIS MILESTONE, delivers 0796's promised six-scenario test): All Six Experiments A-F PASS, but Each Genuinely Refines the Model -- Delivers the New Architecture Law 'ActorSeparation Is Not Itself the Invariant. RoleSeparation Is.' -- Delivers 'This Is Better Than Human in the Loop' (the Real Question Is at Which Transition Human Authority Is Required and What Exactly the Human Establishes), Control Points CP1-CP6, and the Descriptive/Normative Distinction -- Delivers the Two-Worlds Model (Epistemic World vs. Operational/Governance World) Bridged by Determination→Decision -- Delivers Experiment F's Profound History-Preservation Result (HistoricalTruth≠CurrentTruth, the System Must Not Rewrite History) -- Opens Step 173's Bounded-Context Discovery Experiment With an Explicit Merge-Test Methodology"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily DDD/governance falsification synthesis; explicitly names Experiment F's result as validating 'the Chapter 4 insight' and 'one of the strongest architectural consequences we have obtained from the Chapter 4 lens,' without new Gita textual engagement"
+source_role: PRIMARY_RESEARCH
+canonical_source: 797
+importance: critical
+confidence: high
+about: >
+  Directly continues 0796, opening "we now test the model against the six scenarios defined in Step 171.
+  The purpose is not to demonstrate that our architecture works in friendly examples. The purpose is to
+  find where it breaks."
+
+  **Experiment A (one human does everything, §172.1)**: result "no architectural violation by itself" --
+  the architecture does not require different actors per transition, only that semantic roles be
+  distinguished; `Producer=Verifier=DecisionMaker=Authorizer=Executor=A` may be valid for low-risk domains,
+  invalid where `RequiredIndependence=High`, `Valid(A)=f(DomainRisk,GovernancePolicy)`. Delivers the first
+  boxed finding: **"separation of duties is a policy constraint, not a universal domain invariant."**
+
+  **Experiment B (AI produces, human verifies/decides/authorizes, §172.2)**: "one of the most natural
+  KnowledgeOS configurations." Result: "the architecture handles this cleanly. The AI remains a producer of
+  an epistemic artifact, not automatically its authority" -- `AIOutput` only becomes `Verified(Assessment)`
+  through human verification, only then potentially promotable to `Knowledge`.
+
+  **Experiment C (AI produces AND verifies; human authorizes, §172.3-172.4)**: the harder case. Delivers
+  the reframe **"the question is not: is the verifier AI? The real question is: what assurance does the
+  verifier provide, and is AI verification accepted by the applicable policy?"** -- for deterministic
+  properties (`Hash(A)=Hash(B)`) an automated verifier may be stronger than a human; for interpretive
+  judgments ("this architecture is compliant") the required regime may be much stronger. Delivers
+  `ValidVerifier(v,c)` depending on `Method,Scope,Risk,Evidence,Policy`, explicitly rejecting the blanket
+  rule `AI verifier=invalid` as arbitrary.
+
+  **Experiment D (automated deterministic verification feeding a governance decision, §172.5-172.6)**:
+  "the architecture strongly supports this. It demonstrates why `Verification≠HumanApproval`" -- delivers
+  `VerificationMechanism` and `DecisionAuthority` as independent dimensions: "a machine can verify. A human
+  or governance body can decide. That is not contradictory."
+
+  **Experiment E (emergency execution bypassing normal authorization, §172.7-172.8)**: survives only when
+  modeled as `EmergencyCondition→EmergencyAuthorization→Execution→RetrospectiveReview`, never as an
+  unexplained bypass -- reconfirms and extends 0796's normal/emergency-path discipline: **`Exception≠
+  AbsenceOfRule`**, `Governance_normal` vs. `Governance_emergency` as two distinct, both-governed paths.
+
+  **Experiment F (later evidence contradicts earlier knowledge, §172.9-172.14) is explicitly named "the
+  most important experiment."** At `t_1`, `K_1` grounds `D_1`/`Decision_1`/`Action_1`; at `t_2>t_1`, new
+  evidence `E_2` yields `K_2≢K_1`. Delivers the central finding: this does **not** invalidate `Decision_1`
+  -- `ValidityAt(t_1)≠ValidityAt(t_2)`, `Justified(D_1,t_1)` may remain true while
+  `CurrentValidity(K_1,t_2)=false`. Explicitly named as **validating "the Chapter 4 insight"** and
+  delivering **"one of the strongest architectural consequences we have obtained from the Chapter 4
+  lens"**: boxed `CurrentKnowledge≠HistoricalKnowledge` and `Supersession≠Deletion`. Further distinguishes
+  Case 1 (new evidence changes an incomplete-but-reasonable conclusion, `Superseded`) from Case 2 (evidence
+  shows `K_1` was actually invalid, `Invalidated`) as non-identical knowledge-lifecycle outcomes. Delivers
+  the profound rule **the system must not rewrite history**: a later-invalidated `K_1` must remain recorded
+  as `D_1`'s actual historical basis (`D_1→[basedOn]→K_1`, `K_1→[invalidatedBy]→E_2`), "if historically it
+  was based on `K_1`... that would create a false history" -- crystallized as **`HistoricalTruth≠
+  CurrentTruth`**, both required to be supported by "a mature knowledge system."
+
+  **§172.15-172.16 delivers the consolidated six-experiment results table** (all six PASS, each with a
+  named architectural finding) and the file's central new law: **boxed "ActorSeparation is not itself the
+  invariant. RoleSeparation is,"** meaning a single actor may hold several roles, but the architecture must
+  still know those roles are semantically distinct.
+
+  **§172.17-172.21 applies this directly and extensively to AI agents** ("particularly important for our
+  AI Engineering Platform"): a single AI agent may technically inspect/reason/generate/test/modify/report,
+  but the architecture must not therefore treat `Generate=Verify=Approve=Execute` -- `AI.Generate` does not
+  imply `AI.Verify`, which does not imply `AI.Authorize`. Models `Actor∈{Human,AI,System,ExternalSystem}`
+  under the same transition contract ("AI becomes a new kind of actor participating in an existing governed
+  lifecycle"), while flagging AI's distinguishing feature as introduced `Uncertainty`, requiring explicit
+  `Confidence/Uncertainty/Evidence/Method/Verification` handling -- but explicitly rejecting the assumption
+  that every AI output requires a human, via `RequiredControl=f(Risk,Impact,Uncertainty,DomainPolicy)` and a
+  low-consequence/high-consequence transition classification. **Delivers a sharp, directly practical
+  critique**: **"this is better than 'human in the loop.' The phrase is too vague. The real question is: at
+  which transition is human authority required, and what exactly does the human establish?"** --
+  distinguishing `HumanVerification` from `HumanAuthorization` from `HumanDecision`.
+
+  **§172.22-172.26 delivers control points** `CP_1`-`CP_6` (`EvidenceQualified` through
+  `OutcomeVerified`), each ideally a deterministic `Predicate(x)∈{PASS,FAIL}`, explicitly preferring an
+  honest `Uncertain` state over a pretended `PASS` where determinism is impossible. Delivers the
+  **statistical boundary** (`P(H|E)` supplies an input to `DecisionRule(P(H|E))`, never automatically
+  becomes the rule itself) and **the descriptive/normative distinction**: inferential reasoning
+  (`E→K`, "what is the case?") versus normative reasoning (`K,D_t→Decision`, "what should we do?"),
+  "these must not be confused."
+
+  **§172.27-172.28 delivers the two-worlds model**: the Epistemic world (`Observation→Evidence→Knowledge→
+  Determination`) and the Operational/governance world (`Decision→Authorization→Execution→Outcome`),
+  boxed **`Determination→Decision`** as the explicit bridge "where factual conclusions meet organizational
+  intent" -- suggesting (not yet freezing) seven bounded-context candidates.
+
+  **§172.29-172.30 delivers the falsification result**: the six experiments did not falsify the central
+  model but exposed three necessary refinements (RoleSeparation≠ActorSeparation; historical state must be
+  preserved where historical justification matters; Verification/Decision/Authorization must remain
+  conceptually distinct even when co-implemented), crystallized into the Step 172 conclusion, boxed:
+  **"a governed knowledge system does not require different actors for every transition; it requires
+  explicit semantic roles, applicable control rules, and reconstructible consequential transitions" --
+  "a much more mature principle than simple 'separation of duties.'"**
+
+  **Closes opening "Step 173 — The Bounded-Context Discovery Experiment,"** proposing to test each
+  candidate bounded context against `Language+Invariant+Lifecycle+Ownership+ChangePressure` and then
+  **deliberately attempt to merge contexts**: "if merging does not create semantic conflict, we should not
+  split. If merging destroys invariants or creates ambiguous language, the boundary becomes justified" --
+  an explicit, falsification-oriented bounded-context discovery methodology. No actual repository
+  implementation occurs within this file itself; every experiment and control point remains a conceptual
+  test pending Step 173's actual bounded-context work.
+introduces:
+  - concept: "The six-experiment falsification results table (A-F, all PASS, each with a named architectural finding)"
+  - concept: "'Separation of duties is a policy constraint, not a universal domain invariant' (Experiment A)"
+  - concept: "The reframe 'the question is not: is the verifier AI? The real question is: what assurance does the verifier provide, and is AI verification accepted by the applicable policy?' (Experiment C)"
+  - concept: "VerificationMechanism and DecisionAuthority as independent dimensions; Verification≠HumanApproval (Experiment D)"
+  - concept: "Experiment F, 'the most important experiment': ValidityAt(t_1)≠ValidityAt(t_2), CurrentKnowledge≠HistoricalKnowledge, Supersession≠Deletion, explicitly validating 'the Chapter 4 insight'"
+  - concept: "The system must not rewrite history: HistoricalTruth≠CurrentTruth, D_1→[basedOn]→K_1 preserved even after K_1 is invalidated"
+  - concept: "The new architecture law: 'ActorSeparation is not itself the invariant. RoleSeparation is.'"
+  - concept: "'This is better than human in the loop': the real question is at which transition human authority is required and what exactly the human establishes"
+  - concept: "Control points CP1-CP6, each ideally a deterministic PASS/FAIL predicate, preferring honest Uncertain over pretended PASS"
+  - concept: "The descriptive/normative distinction: inferential reasoning (what is the case?) vs. normative reasoning (what should we do?)"
+  - concept: "The two-worlds model: Epistemic world vs. Operational/governance world, bridged by Determination→Decision"
+  - concept: "The Step 172 conclusion: a governed knowledge system requires explicit semantic roles, applicable control rules, and reconstructible transitions -- not different actors per transition"
+  - concept: "Step 173's opening: the bounded-context discovery experiment via Language+Invariant+Lifecycle+Ownership+ChangePressure, tested by deliberate context-merging"
+defines:
+  - concept: "RoleSeparation≠ActorSeparation"
+    definition: "A single actor (human or AI) may legitimately perform several roles across a transition chain (e.g. generate, verify, and execute), and this alone is not an architectural violation -- what the architecture actually requires is that those roles remain semantically distinguished internally (the system must still know 'this action was performed in the Verifier role, this one in the Executor role'), so that role-specific invariants, evidence, and accountability can still be tracked even when role and actor happen to coincide"
+  - concept: "The 'better than human in the loop' principle"
+    definition: "The common phrase 'human in the loop' is too vague to serve as an architectural control because it does not specify which transition requires human involvement or what exactly the human's involvement establishes; the more precise architectural question distinguishes HumanVerification (a human confirms a predicate holds) from HumanAuthorization (a human grants permission to proceed) from HumanDecision (a human exercises organizational judgment) as three distinct, independently specifiable control requirements"
+  - concept: "The two-worlds model bridged by Determination→Decision"
+    definition: "The KnowledgeOS lifecycle separates into an Epistemic world (Observation→Evidence→Knowledge→Determination, answering 'what is the case') and an Operational/governance world (Decision→Authorization→Execution→Outcome, answering 'what should we do and what happened'), with the Determination→Decision transition serving as the explicit bridge where factual/epistemic conclusions meet organizational intent -- this split is offered as a candidate basis for eventual bounded-context boundaries, not yet frozen"
+refines:
+  - concept: "0796's opening of Step 172 and its six named falsification scenarios (A-F)"
+    refinement: "DELIVERED: all six scenarios worked through in full, each surviving but yielding a genuine architectural refinement rather than a trivial pass, consolidated into a results table and three named necessary refinements"
+  - concept: "0796's normal-path/emergency-path separation discipline"
+    refinement: "Directly re-applied and confirmed in Experiment E, with the sharpened restatement Exception≠AbsenceOfRule and the explicit Governance_normal/Governance_emergency dual-path framing"
+  - concept: "0795's temporal-justification invariant (Decision(D)⇒Basis(D,t_D)) and 0794's Krishna/Atma-Chapter-4-derived CurrentActorState≠CompleteSystemHistory discipline"
+    refinement: "Experiment F delivers the concrete worked demonstration these two earlier principles were building toward: a decision justified at t_1 remains justified at t_1 even when its underlying knowledge is later superseded or invalidated at t_2, explicitly named 'one of the strongest architectural consequences we have obtained from the Chapter 4 lens' -- the clearest, most concrete instance yet of the Chapter-4-derived discipline actually determining an architectural verdict rather than merely motivating a dimension"
+  - concept: "0793's AI-as-participant principle and 0796's AI-accountability discipline"
+    refinement: "Extended into a full worked AI-agent role-boundary analysis (Generate/Verify/Approve/Execute kept non-implying for AI specifically) and the RequiredControl=f(Risk,Impact,Uncertainty,DomainPolicy) formula, explicitly rejecting both extremes (AI verifier=invalid, and every-AI-output-requires-a-human) in favor of a graduated, policy-governed model"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 173's actual bounded-context discovery experiment and its context-merging tests applied to the seven candidate contexts named at 0797's close (Evidence/Knowledge/Determination/Decision-Governance/Authorization/Execution/Outcome-Observation)."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Experiment F ('the most important experiment') and its result HistoricalTruth≠CurrentTruth / 'the system must not rewrite history' as the clearest, most concrete instance yet of the corpus's Chapter-4-derived discipline actually determining a worked architectural verdict."
+  - "dimension-registry.md: record 'ActorSeparation is not itself the invariant. RoleSeparation is' as the file's central new architecture law, directly applicable to this reconstruction's own multi-agent operating context."
+  - "dimension-registry.md: record 'this is better than human in the loop' as a sharply stated, directly practical critique of a common but underspecified AI-governance phrase, distinguishing HumanVerification/HumanAuthorization/HumanDecision."
+  - "dimension-registry.md: record the two-worlds model (Epistemic vs. Operational/governance, bridged by Determination→Decision) and control points CP1-CP6 as the arc's latest consolidated architectural vocabulary, still explicitly provisional pending Step 173's bounded-context work."
+anchor_test:
+  anchor: "0796's six named falsification scenarios (A-F) and its single-point-of-trust/independence analysis; 0794's disciplined Chapter-4 Krishna/Atma engagement and CurrentActorState≠CompleteSystemHistory; 0795's temporal-justification invariant; 0793's AI-as-participant principle"
+  supports_dimension: "Delivers all six named falsification scenarios worked through in full with a genuine architectural finding each, consolidated into a results table and three necessary refinements. Delivers the central new law RoleSeparation≠ActorSeparation. Experiment F delivers the clearest, most concrete worked demonstration of the corpus's Chapter-4-derived discipline determining an actual architectural verdict (a decision justified at t_1 remains justified even after its knowledge basis is later invalidated), directly fulfilling what 0794's and 0795's Chapter-4 invocations were building toward. Delivers a sharp, directly practical critique of 'human in the loop' and a full worked AI-agent role-boundary analysis extending 0793's AI-as-participant principle and 0796's AI-accountability discipline. Delivers the two-worlds model and control points CP1-CP6 as the arc's latest architectural vocabulary. Opens Step 173's bounded-context discovery experiment with an explicit, falsification-oriented merge-test methodology, maintaining the arc's disciplined approach throughout"
+  refines_or_contradicts: "directly delivers and extends 0796's six named scenarios; directly re-applies and confirms 0796's normal/emergency-path discipline; delivers the concrete worked payoff of 0794's/0795's Chapter-4-derived discipline; extends 0793's AI-as-participant principle and 0796's AI-accountability discipline into a full worked analysis; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§172.9-172.14's fully worked Experiment F (K_1→D_1→Decision_1→Action_1 at t_1, contradicted by E_2 at t_2, yielding K_2≢K_1 without invalidating Justified(D_1,t_1)), explicitly named 'the most important experiment' and 'one of the strongest architectural consequences we have obtained from the Chapter 4 lens,' is directly quotable evidence of the Chapter-4 discipline determining a concrete worked verdict."
+  - "§172.16's boxed law 'ActorSeparation is not itself the invariant. RoleSeparation is' is directly quotable evidence of the file's central architectural conclusion."
+  - "§172.21's explicit statement 'this is better than human in the loop... the real question is: at which transition is human authority required, and what exactly does the human establish?' is directly quotable evidence of a sharply stated, directly practical AI-governance critique."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 173's bounded-context discovery experiment and its context-merging tests were ever actually carried out against the seven candidate contexts named at 0797's close, and whether the result reconciles with 0787's earlier DDD aggregate/bounded-context classification (Evidence/Knowledge as Strong BC Candidates, Decision folded into Governance)."
+  - "Whether control points CP1-CP6 were ever mapped onto this reconstruction's own repository artifacts (hooks, gates, session-bootstrap.php) as a concrete instantiation, extending 0781's/0793's earlier real-repository-grounding observations."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers all six named falsification scenarios (A-F) worked through in full, each surviving but yielding a genuine architectural refinement, consolidated into a results table and three necessary refinements. Delivers the central new architecture law 'ActorSeparation is not itself the invariant. RoleSeparation is.' Experiment F delivers the clearest, most concrete worked demonstration yet of the corpus's Chapter-4-derived discipline determining an actual architectural verdict, explicitly named 'the most important experiment' and 'one of the strongest architectural consequences' obtained from that lens. Delivers a sharp, directly practical critique of the vague 'human in the loop' phrase, a full worked AI-agent role-boundary analysis, control points CP1-CP6, the descriptive/normative distinction, and the two-worlds model bridged by Determination→Decision. Opens Step 173's bounded-context discovery experiment with an explicit, falsification-oriented merge-test methodology."

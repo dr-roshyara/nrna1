@@ -1,0 +1,96 @@
+sequence: "0142"
+path: docs/knowledgeos/brainstorming/kernel/20260822-161933-snf-formula-research-review-and-measurement-framework.md
+title: "External SNF research grounding (NSID, SAIT, KG-NF); FCR/FDR formalized; 'SNF equality -> Knowledge identity forbidden'; fourth unencountered-artifact reference ('Port Contract')"
+date: "2026-08-22"
+bytes: 46000
+model:
+  primary: m
+  secondary: [c1]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0141"
+importance: critical
+confidence: high
+about: >
+  First file in this reading stretch located under docs/knowledgeos/brainstorming/kernel/ rather than
+  the flat root. Three turns. (1) External research grounding for the SNF formula: NSID (Normalized
+  Semantic Information Distance, from a cited 2026 Semantic Algorithmic Information Theory paper),
+  knowledge-graph normalization (1NF/2NF/3NF-KG), competing semantic-entropy definitions, and a
+  hash-based (URDNA2015) alternative to raw Gödel numbering -- proposes one large combined SNF formula.
+  (2) A rigorous internal rejection of that combined formula as over-prescriptive; redefines SNF at a
+  higher abstraction (SNF(E,C) = N_S(M(E,C))), demotes the Gödel/hash idea to a mere "Fingerprint" (not
+  semantic proof), and formalizes 0141's asymmetric-risk argument into two independent metrics: FCR
+  (False Collapse Rate) and FDR (False Divergence Rate). (3) A "Senior Mathematical Review" that
+  formally validates each of the 7 refined metrics property-by-property (boundedness, monotonicity,
+  etc.) and issues a final accept/reject table.
+
+introduces:
+  - "FCR (False Collapse Rate, P(SNF(Ei)~SNF(Ej) | Ei not-equiv Ej)) and FDR (False Divergence Rate, the
+    mirror case) as two independent, formally defined conditional-probability metrics -- FCR named 'the
+    most critical metric for KnowledgeOS,' formalizing 0141's asymmetric-collision-risk argument"
+  - "New architectural prohibition: 'SNF equality -> Knowledge identity is forbidden' -- a sharper
+    operational restatement of the already-tracked Representation≠Identity/Vāṇī principle, not a new
+    claim"
+  - "Transformation classification: T^preserve / T^alter / T^ambiguous -- meaning-changing
+    transformations must be measured via D_sep/FCR, not graded as failures of T_preserve"
+  - "SNF redefined at a higher abstraction level (SNF(E,C) = N_S(M(E,C))) explicitly to keep the SNF
+    representation 'replaceable' behind a stable measurement interface -- rejects the earlier
+    over-prescriptive combined formula from within the same file"
+  - "External research citations (NSID, SAIT/STMS, KG-NF 1NF/2NF/3NF) -- all explicitly deferred as
+    research candidates, not adopted into SNF's definition"
+
+defines: []
+
+refines:
+  - "Formalizes (does not merely repeat) 0141's non-collapse-as-hard-gate argument into two named,
+    independently measurable rates (FCR/FDR) with formal conditional-probability definitions and
+    property tables"
+  - "Demotes the Gödel-fingerprint idea from 0141/earlier files to 'Fingerprint (hash), not semantic
+    proof' -- a precision correction consistent with, not contradicting, the corpus's ongoing Gödel
+    boundary thread"
+
+contradicts:
+  - "Rejects, within the same file, its own first-turn proposal of one combined prescriptive SNF formula"
+
+repeats:
+  - {concept: "hard-gate non-collapse principle, semantic vs. structural distance distinction", canonical_source: "0141", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: true
+gita_content: false
+kernel_content: false
+
+registry_updates:
+  - "Ledger Entry 45 addendum: FCR/FDR formalization, the 'SNF equality -> Knowledge identity forbidden'
+    prohibition, and the fourth unencountered-artifact reference ('Port Contract')"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation"]
+  refines_or_contradicts: "Refines the SNF/KIR measurement thread with formal FCR/FDR metrics; internally rejects its own first-turn proposal."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "FCR/FDR is a genuinely rigorous, formally-defined pair of metrics directly usable regardless of
+    whether SNF itself is ever adopted -- independent mathematical value"
+  - "DISCREPANCY NOTE (continuation, not escalated): confident reference to a 'Port Contract' as an
+    already-established governing artifact ('the port contract already recognizes collision rate as a
+    critical failure metric') -- the fourth such unencountered-artifact reference (after Constitution
+    v1.0, Reference Architecture v1.0, Reference Architecture v1.1 DDD decision). This file is the first
+    read from the kernel/ subdirectory rather than the flat root, so these documents may simply be
+    encountered later in strict sequential order -- not treated as a contradiction requiring escalation."
+
+undefined_concepts: []
+open_questions:
+  - "Whether a 'Port Contract' document (and the other three previously-flagged unencountered artifacts)
+    will actually be encountered later in the kernel/ subdirectory read order"
+
+tier2_triggered: true
+tier2_reason: >
+  Rigorous FCR/FDR metric formalization, a new named architectural prohibition, and the fourth instance
+  of a recurring unencountered-artifact reference pattern now tied to a directory-context shift.

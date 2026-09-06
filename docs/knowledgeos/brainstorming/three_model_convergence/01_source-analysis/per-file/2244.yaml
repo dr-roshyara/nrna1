@@ -1,0 +1,130 @@
+sequence: 2244
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-234046_step_291_reviewer-do-not-freeze-291-status-logic-and-overstatement-corrections.md
+title: "Reviewer 'Do Not Freeze 291' -- Status-Logic and Overstatement Corrections: Confirms the Executed Step 291 (22 named/8 typed/0 bodies operations, 261.23 0-resolved/2-partial/4-failed) Already Tracked at Files 1082-1084, and Delivers the Standing 'Claim-Level Type Discipline' Rule"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "reviewer's 'do not freeze yet' audit of the actual executed Step 291 artifact, grounding this reconstruction's already-tracked Step-291 arc (files 1082-1084) at a second primary-source vantage point, plus a proposed standing programme-wide discipline rule"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2244
+importance: critical
+confidence: high
+about: >
+  A reviewer's verdict "Do not freeze Step 291 yet — the core result is strong and largely correct, but
+  there are several places where the document still overstates what the evidence establishes or mixes
+  different kinds of closure. The most important issue is not the mathematics of the 𝒪/𝒯 analysis. It is
+  the status logic and propagation discipline." This document confirms, at a second primary-source vantage
+  point, this reconstruction's already-tracked Step-291 arc (files 1082-1084: "22 named/8 typed/0 bodies/0
+  identities/0 ratified" operation registry audit, "0 resolved/2 partial/4 failed" 261.23 gate audit, the
+  {≡}-unique-minimal-cut dependency-graph finding, and the join-semilattice-not-established correction).
+
+  **WHAT THE REVIEWER APPROVES (retains as-is)**: 𝒪/𝒯/𝒪_K as distinct objects; 𝒯⊆𝒪 retained; the five-kind
+  operation classification (from Steps 259/277) kept distinct from actual membership — "classification
+  closed ≠ mandatory membership closed"; ≡_K definable without a closed 𝒪_K while extension/totality/
+  decidability/canonicality remain open; {≡} as the unique size-1 cut with 𝒪/𝒯 confirmed not cycle members;
+  the derivable/engineering/normative three-way separation; the retraction of the earlier "N-4 is the
+  earliest act" claim (matching this reconstruction's already-tracked file-1084 downgrade to "highest-
+  leverage root among 7"); the final conservative statement (five-kind classification + eight typed
+  signatures + 𝒯⊆𝒪 established, but mandatory membership/semantic bodies/identity/ratification not).
+
+  **SEVEN NAMED AUDIT ISSUES (A-G), each with a literal prompt instruction**:
+
+  Issue A — operation-closure taxonomy needs sharper separation (9 distinct closure dimensions: kind-
+  classification/𝒪-membership/𝒯-membership/signatures/semantic-bodies/identity/ratification/𝒪_K-extension/
+  𝒪_core), warning "𝒪 classification closed" must not be misread as "the operation model is closed."
+
+  Issue B — the "3 cycles, {≡} unique size-1 cut over 13 resolvable nodes" result needs the exact graph
+  universe stated (the document separately mentions "29 nodes, 44 edges" — the relationship between the
+  29-node full graph and the 13-node decision graph must be made explicit), explicitly citing Step 289's
+  prior prerequisite-vs-cycle-member distortion (the already-tracked correction from files 2237/2239) as
+  the precedent this must not repeat.
+
+  Issue C — "N-4/earliest act" remains structurally too prominent in §15-17 despite being formally withdrawn;
+  requires a five-way distinction (graph-theoretic necessity / derivational prerequisite / governance
+  dependency / independent normative decision / suggested execution order / mere analytical leverage) —
+  "do not infer E from A-D... the final text must not call N-4 'the next step' unless externally supported."
+
+  Issue D — Step 261 §261.23's six conditions need explicit dependency classification (equality-dependent:
+  1,2,3,6 vs representation-dependent: 4,5 — matching the already-tracked file-2239 split), then formally
+  proving/disproving "N-4 resolution reduces the 261.23 stop condition" — reviewer's own answer: "not
+  directly."
+
+  Issue E — the identity "forced" claim (id=H(P,e,c,t,Π) re-keys on withdrawal, "repair is forced") needs
+  scoping across 5 non-equivalent possible meanings of "forced" (construction failure / stability necessity /
+  historical-identity necessity / replacement-mechanism necessity / repair-uniqueness / governance
+  authorization) — "this would prevent Step 291 from repeating exactly the kind of 'derivable ⇒ one specific
+  architecture' leap the programme has been eliminating."
+
+  Issue F — the "22 named, 8 typed, 0 bodies, 0 identity, 0 ratified" operation count needs a completeness
+  audit — the document itself names 5 additional prose-only operations without registry entries, so "22
+  named operations" must not become "the complete operation universe."
+
+  **SPECIAL CALLOUT**: correctly confirms Step 291 already records "(𝕂,merge,∅) as a join-semilattice is
+  NOT ESTABLISHED, and retraction actually REFUTES monotone growth for the full 𝕂" — but proposes Audit G to
+  search the ENTIRE corpus for six named stale propagation patterns (𝕂-join-semilattice, merge-monotone,
+  knowledge-only-grows, K_{t+1}⪰K_t, Σ-order-induces-K-order, PureClaimSetUnion-properties-transfer-to-𝕂),
+  classified VALID(scoped)/REFUTED(if-asserted-for-full-𝕂)/NOT-ESTABLISHED/SUPERSEDED/DERIVED — "do not allow
+  a valid algebraic result on a restricted carrier to be generalized to the KnowledgeOS carrier."
+
+  **DELIVERS A GENUINELY VALUABLE STANDING RULE PROPOSAL — "§X CLAIM-LEVEL TYPE DISCIPLINE"**: names eight
+  concrete already-encountered instances of the same recurring error class (a true statement at level A
+  silently promoted to level B): Σ-order→K-order, PureClaimSetUnion→𝕂, candidate→assertion, dependency→cycle
+  membership, classification→membership, derivable repair→unique implementation, bounded family→selected
+  relation, formula exists→decision procedure. Requires every headline result to record SOURCE CARRIER /
+  TARGET CARRIER / SOURCE STATUS / TARGET STATUS / INFERENCE RULE, rejecting any inference changing carrier/
+  semantic-level/speech-act status without explicit derivation. Explicitly recommends this "should become a
+  standing programme invariant, not merely a Step-291 correction."
+
+  Consolidates all seven audits (plus the type-discipline addition) into one "REVIEW MANDATE — REFINED STEP
+  291 vNext" prompt with 14 mandatory outputs (A-N) and a nine-item forbidden-conversion list (e.g.
+  "graph leverage"→"next action"; "classification closed"→"membership closed"), explicitly forbidding the
+  reviewer/researcher from recommending N-4 or N-1′ — "the purpose is audit and classification, not
+  decision-making." Final test: "if two reasonable readers could derive different answers, Step 291 is not
+  ready to freeze."
+
+  Overall verdict: "Step 291 is substantively good, but I would not approve it as frozen yet... the strongest
+  result is actually the methodological one: the programme is becoming better at distinguishing a
+  mathematical result from the level at which that result was obtained... do not let Step 291 turn '𝒪
+  classification is closed' into 'the operation model is closed,' or '{≡} is the graph cut' into 'therefore
+  Governance should decide ≡ next.'"
+introduces:
+  - concept: "The standing 'Claim-Level Type Discipline' rule proposal, recommended as a programme-wide invariant (not merely a Step-291 fix), listing eight concrete instances of the same recurring carrier/level-promotion error class already encountered across this reconstruction's tracked equality arc"
+  - concept: "The explicit relationship question between Step 291's '29 nodes, 44 edges' full graph and its '13 resolvable nodes' decision graph -- not yet resolved in this reconstruction's tracked coverage of files 1082-1084"
+  - concept: "The five-way necessity/dependency/leverage/priority/sequencing distinction (Issue C) for auditing 'earliest act' language, directly extending the already-tracked prerequisite≠cycle-member discipline"
+defines:
+  - concept: "Nine-dimension operation-closure taxonomy: kind-classification/O-membership/T-membership/signatures/semantic-bodies/identity/ratification/O_K-extension/O_core (Issue A)"
+  - concept: "Six-way order/algebra propagation-audit classification: VALID(scoped)/REFUTED(full-K)/NOT ESTABLISHED/SUPERSEDED/DERIVED (Issue G)"
+refines:
+  - concept: "This reconstruction's already-tracked Step-291 arc (files 1082-1084: operation registry audit, 261.23 gate audit, dependency graph, N-4 downgrade)"
+    refinement: "CONFIRMED at a second independent primary-source vantage point (a 'do not freeze' review of the actual artifact), while flagging seven specific overstatement risks not resolved in this reconstruction's prior downstream-only coverage"
+  - concept: "This reconstruction's already-tracked join-semilattice-not-established correction and the prerequisite≠cycle-member discipline (files 2237, 2239)"
+    refinement: "EXTENDED via Audit G's corpus-wide propagation-search requirement and Issue B's explicit graph-universe-reconstruction requirement, both citing the same underlying discipline"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Whether a REFINED-STEP-291 'vNext' artifact incorporating this reviewer's consolidated 14-output audit mandate is directly encountered later in the sequential read -- this reconstruction's already-tracked file-1084 'vNext meta-audit' (8 lettered sub-audits) may already be that response; direct comparison against this document's 7-issue (A-G) + type-discipline structure would confirm or refine that connection."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as confirming the already-tracked Step-291 arc (files 1082-1084) at a second primary-source vantage point, and as the founding source of the standing 'Claim-Level Type Discipline' rule proposal recommended as a programme-wide invariant."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step-291 arc (files 1082-1084) and its vNext meta-audit"
+  supports_dimension: "Confirms the arc at a second primary-source vantage point and delivers the standing Claim-Level Type Discipline rule; raises the open question of whether the already-tracked vNext meta-audit is this document's own response"
+  refines_or_contradicts: "refines (confirms and extends with a new standing-rule proposal)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The '22 named, 8 typed, 0 bodies, 0 identity, 0 ratified' and '0 resolved/2 partial/4 failed' figures are directly checkable against this reconstruction's already-tracked file-1082-1084 coverage of the executed Step-291 artifact for exact traceability."
+undefined_concepts: []
+open_questions:
+  - "Whether the already-tracked vNext meta-audit (file 1084, 8 lettered sub-audits) is the direct response to this document's seven-issue (A-G) plus type-discipline consolidated review mandate, and if so, how the lettering schemes correspond."
+  - "Whether the exact relationship between the '29-node/44-edge' full dependency graph and the '13-resolvable-node' decision graph (Issue B) is resolved anywhere in this reconstruction's already-tracked coverage or later in the sequential read."
+tier2_triggered: true
+tier2_reason: "Confirms the already-extensively-tracked Step-291 arc (files 1082-1084) at a second independent primary-source vantage point, and delivers a genuinely valuable standing rule proposal (Claim-Level Type Discipline) recommended for the entire programme, plus seven concrete overstatement-risk audits with literal follow-up prompts. Classified importance critical given the direct connective grounding and the significance of the proposed standing discipline rule."

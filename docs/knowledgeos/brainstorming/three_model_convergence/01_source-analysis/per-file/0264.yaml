@@ -1,0 +1,90 @@
+sequence: 264
+path: docs/knowledgeos/brainstorming/kernel/20260824-171203-tractatus-centenary-edition-reality-to-knowledge-claim-chain.md
+title: "Tractatus Centenary Edition: Reality-to-Knowledge-Claim Chain"
+date: "2026-08-24"
+bytes: 24000
+model:
+  primary: g1
+  secondary: c1
+source_role: PRIMARY_RESEARCH
+canonical_source: 264
+importance: critical
+confidence: high
+about: >
+  A significant pivot: direct first-hand engagement with the actual uploaded Centenary Edition of
+  Wittgenstein's Tractatus Logico-Philosophicus (not a secondary interpretive article, the pattern for
+  every file since 0247). Extracts a Reality->StateOfAffairs->Fact->Picture->Proposition->TruthConditions
+  ->Inference->KnowledgeClaim chain, formalizes Proposition != Knowledge, proposes a ten-layer KnowledgeOS
+  ontology, connects the Tractatus's truth-function/probability remarks to an entropy-based knowledge-gain
+  definition K(P)=1-H(P|E), and derives an eleven-item not-knowledge taxonomy plus a nine-question semantic
+  hygiene gate. Explicitly and directly falsifies a prior source's claim (from the article underlying 0259)
+  that the Tractatus establishes Hindu four-valued logic or quantum logic -- 'the uploaded book does not
+  support that interpretation' -- a clean instance of MD-017 discipline correcting an over-claim via
+  primary-source verification.
+introduces:
+  - concept: "Reality -> State of Affairs -> Fact -> Picture/Model -> Proposition -> Truth Conditions -> Inference -> Knowledge Claim chain, extracted from Tractatus 1.x-2.x ('the world is all that is the case'; 'the world is the totality of facts, not of things'); KnowledgeOS should model claims about states of affairs, not documents"
+  - concept: "Proposition != Knowledge, grounded directly in the Tractatus text: one can understand a proposition without knowing whether it is true; Knowledge Claim = Proposition + Correspondence with reality + Evidence/justification + Validity conditions"
+  - concept: "Ten-layer KnowledgeOS ontology: Object, State of affairs, Fact/observation, Proposition, Knowledge claim, Inference, Belief/hypothesis, Question, Contradiction, Unknown -- explicitly stronger than 'knowledge=documents' or 'knowledge=facts'"
+  - concept: "Picture theory (Tractatus 2.1x) translated to Representation != Reality, with an explicit LLM-generated-knowledge warning: syntactic proposition quality tells us almost nothing about whether the corresponding fact obtains -- extends 0260's LLM-collapse warning to representation-vs-reality specifically"
+  - concept: "Extraction pipeline: text -> propositions -> entities/objects -> relations -> states of affairs -> truth conditions -> evidence -> consistency -> knowledge state, with a worked YAML example (subject/predicate/object triples that are NOT yet knowledge until who/when/basis/observability/reproducibility/cross-source-agreement questions are answered)"
+  - concept: "Structure principle from Tractatus 3.14 (only facts, not name-lists, can express sense): 'knowledge is not a bag of concepts, it is structured relationships constrained by reality' -- directly compatible with DDD"
+  - concept: "Self-declared-synthesis seven-tier Data->Information->Proposition->Claim->EvidenceBackedClaim->Knowledge->CertifiedKnowledge hierarchy, distinct in terminal point (Certified Knowledge, not Wisdom) from the corpus's Wisdom-maturation cluster (0117/0209/0247/0262)"
+  - concept: "Tractatus 5.15's truth-function/probability connection formalized as an entropy-based knowledge-gain definition: K(P)=1-H(P|E), delta-K = H(P)-H(P|E) = uncertainty before evidence minus uncertainty after -- self-declared as the research's own synthesis, not a Tractatus claim, but directly grounded in the text's truth-ground/probability remarks; reinforces 0259's epistemic-entropy work"
+  - concept: "Multi-dimensional evidence combination, explicitly rejecting naive averaging: K=f(E,R,C,T,I,S) [empirical support, reproducibility, consistency, temporal validity, independence of evidence, source reliability]; worked YAML knowledge_state schema; principle 'confidence should be an output, not the definition of knowledge' -- reinforces 0263's logical-state/confidence separation"
+  - concept: "Nine-question semantic hygiene gate (syntactically meaningful? terms defined? entities identifiable? relations well-typed? describes a possible state? evidence exists? evidence applicable? internally consistent? temporally valid?) gating claim admission as knowledge"
+  - concept: "Eleven-item not-knowledge taxonomy: UNKNOWN, UNVERIFIED, AMBIGUOUS, ILL-TYPED, OUTDATED, CONTRADICTED, HYPOTHESIS, OPINION, SPECULATION, NON-EMPIRICAL, NON-TESTABLE -- explicit principle 'not knowledge does not mean false'"
+  - concept: "Explicit rejection of a prior source's claim (the article underlying 0259) that the Tractatus establishes Hindu four-valued or quantum logic -- verified directly against the primary text and found unsupported; independently, KnowledgeOS proposes its own eight-state epistemic vocabulary (TRUE/FALSE/UNKNOWN/UNRESOLVED/CONTRADICTED/CONTEXTUAL/OUTDATED/NOT-APPLICABLE) and S(P,t,c) as a function of time and context, echoing 0259's EpistemicState(P,t,c,s)"
+  - concept: "'Limits of my language mean the limits of my world' (Tractatus 5.6) reinterpreted as an anti-hallucination governance principle: a knowledge system cannot legitimately claim knowledge outside what its ontology/evidence space can express; if entity/relation/observation/evidence/time/context cannot be represented, the system must return UNREPRESENTABLE/INSUFFICIENTLY SPECIFIED rather than manufacture a claim"
+  - concept: "Tractatus's decimal-numbered logical-tree structure (seven cardinal propositions as root, subordinate propositions branching) proposed as an architectural model: KnowledgeOS should store a knowledge graph of propositions and their epistemic relationships (supporting claim/derived claim/qualification/contradiction/temporal revision), with documents/observations attached as evidence, NOT store knowledge primarily as documents"
+  - concept: "16-row Tractatus-concept-to-KnowledgeOS-interpretation mapping table (World->Domain reality, Object->Domain entity, State of affairs->Possible domain configuration, Fact->Established observation/state, Picture->Representation/model, Proposition->Knowledge claim, Logical form->Ontological/semantic structure, Truth possibility->Possible state space, Truth-function->Derived logical relation, Inference->Knowledge derivation, Language->Knowledge representation, Limits of language->Ontology/evidence boundary, Tautology->Non-informative claim, Contradiction->Incompatible knowledge claims, Probability->Degree of support/uncertainty, Showing-vs-saying->Structural properties vs explicit claims)"
+  - concept: "Relational warning from 'the world is the totality of facts, not of things': against Entity->attributes->documents modeling, for ENTITY+RELATION+STATE+TIME+CONTEXT+EVIDENCE -> FACT/CLAIM -- 'knowledge lives in the configuration, not in the objects'"
+  - concept: "Tractatus 5.135-5.136's rejection of arbitrary inference between situations, distinguishing logical necessity from causal assumption, mapped to an AI engineering rule: OBSERVED/DERIVED/CORRELATED/CAUSALLY-ESTABLISHED/HYPOTHESIZED must not be silently collapsed -- directly connects to the corpus's already-tracked 0205/0208 causal-claim-maturity unresolved_equivalence"
+  - concept: "Closing candidate equations: Knowledge = MeaningfulClaim + RealityCorrespondence + Evidence + ValidInference + Context + TemporalValidity; KnowledgeState = f(evidence, uncertainty, consistency, reproducibility, time, context) -- two further Knowledge-vector-family formulations"
+  - concept: "Reframed inverse-statistical direction: instead of generating knowledge, infer the remaining state space of what could still be true after accounting for all observations and constraints -- framed as potentially a fundamentally different architecture from RAG or ordinary knowledge graphs"
+defines: []
+refines:
+  - concept: "0259's epistemic entropy H(K)=-sum p_i log p_i"
+    refinement: "Reframes as a knowledge-GAIN measure specifically, K(P)=1-H(P|E), delta-K=H(P)-H(P|E), grounded directly in Tractatus 5.15's truth-function/probability connection rather than a free-standing statistical proposal"
+  - concept: "0263's logical-state/confidence separation"
+    refinement: "Reinforces via 'confidence should be an output, not the definition of knowledge', and adds a six-factor combination function K=f(E,R,C,T,I,S) explicitly rejecting naive averaging of heterogeneous evidence"
+  - concept: "0257/0258/0261/0263's not-knowledge/negative-knowledge taxonomies"
+    refinement: "Adds an eleven-item taxonomy (UNKNOWN through NON-TESTABLE) via an independent route (Tractatus semantic-hygiene gate), a further sibling in the corpus's recurring pattern of independently-produced discrete epistemic-status vocabularies"
+  - concept: "The article underlying 0259 (claims Tractatus supports Hindu four-valued/quantum logic)"
+    refinement: "Directly falsifies via primary-source verification: 'the uploaded book does not support that interpretation' -- a clean MD-017 correction, not merely non-adoption but active refutation"
+  - concept: "0205/0208's causal-claim-maturity taxonomies (already an unresolved_equivalence entry)"
+    refinement: "Adds a fifth related distinction (OBSERVED/DERIVED/CORRELATED/CAUSALLY-ESTABLISHED/HYPOTHESIZED) grounded in Tractatus 5.135-5.136, explicitly connected by the source itself to the existing causal-inference thread"
+contradicts:
+  - concept: "The Medium-article claim (underlying 0259) that the Tractatus establishes or anticipates Hindu four-valued logic or quantum logic"
+    source: "the article cited/summarized at 0259"
+    resolution: "Falsified by direct primary-source reading; recorded as a correction, not merely a non-adoption"
+repeats:
+  - concept: "Epistemic state as a function of time and context, S(P,t,c)"
+    canonical_source: 259
+    novelty: none
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: extend the Knowledge-Vector-family unresolved_equivalence entry with two further variants: Knowledge=MeaningfulClaim+RealityCorrespondence+Evidence+ValidInference+Context+TemporalValidity, and KnowledgeState=f(evidence,uncertainty,consistency,reproducibility,time,context)."
+  - "dimension-registry.md: NEW unresolved_equivalence entry for the not-knowledge/negative-knowledge taxonomy family: 0257's 11-row Knowledge-vs-not-knowledge table, 0258's 7-tier negative-knowledge taxonomy, 0261's 8-category not-knowledge taxonomy, and this file's 11-item not-knowledge taxonomy -- four independently-produced, overlapping-but-not-identical discrete vocabularies, same pattern as the corpus's existing 0093/0094/0096/0100/0144/0145/0150/0151 status-vocabulary family, tracked separately since this proliferation concerns NEGATIVE/absent knowledge specifically."
+  - "dimension-registry.md: note the direct falsification of the Tractatus/Hindu-logic claim underlying 0259, as a positive instance of the corpus's own MD-017 discipline (not itself an unresolved_equivalence, a correction)."
+anchor_test:
+  anchor: "0259's epistemic entropy and EpistemicState(P,t,c,s); 0263's L/C separation; 0205/0208's causal-maturity taxonomies; the not-knowledge taxonomy family"
+  supports_dimension: "Mathematical/statistical model AND Western-analytic-philosophy model converging directly (Tractatus's own truth-function/probability remarks) on an entropy-based knowledge-gain formalization -- a genuine primary-source bridge, not a secondary-article analogy"
+  refines_or_contradicts: "refines entropy/confidence-separation/not-knowledge-taxonomy/causal-maturity threads; directly CONTRADICTS (falsifies) the 0259-underlying article's Tractatus/Hindu-logic claim"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Direct quotations from the Tractatus (numbered propositions 1.x, 2.x, 3.14, 5.15, 5.135-5.136, 5.6) cited as primary-source grounding for each extraction, distinguished throughout from the research's own synthetic additions"
+undefined_concepts:
+  - "No formal criteria given for how 'independence of evidence' (I) would be measured in the K=f(E,R,C,T,I,S) combination function"
+open_questions:
+  - "Whether this file's seven-tier Data->CertifiedKnowledge hierarchy is ever explicitly compared against the corpus's Wisdom-maturation cluster (0117/0209/0247/0262) despite both spanning similar Data-to-Knowledge territory with different terminal points"
+  - "Whether the anti-hallucination 'limits of language' governance principle is ever formalized as an implementable KnowledgeOS constraint"
+tier2_triggered: true
+tier2_reason: "First direct primary-source engagement with a canonical Western analytic-philosophy text in this sub-arc (not a secondary interpretive article); grounds an entropy-based knowledge-gain formula, a six-factor evidence-combination function, an anti-hallucination governance principle, and a knowledge-graph-not-documents architectural argument directly in Tractatus propositions; explicitly falsifies a prior source's Tractatus/Hindu-logic claim via primary-source verification -- a model instance of MD-017 discipline; adds two Knowledge-vector variants and opens a new tracked not-knowledge-taxonomy-proliferation family."

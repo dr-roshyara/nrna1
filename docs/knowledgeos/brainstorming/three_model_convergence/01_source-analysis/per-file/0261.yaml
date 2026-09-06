@@ -1,0 +1,76 @@
+sequence: 261
+path: docs/knowledgeos/brainstorming/kernel/20260824-164817-cosmological-world-model-lens-for-knowledge-claims.md
+title: "Cosmological World-Model Lens for Knowledge Claims"
+date: "2026-08-24"
+bytes: 13500
+model:
+  primary: g1
+  secondary: c1
+source_role: PRIMARY_RESEARCH
+canonical_source: 261
+importance: critical
+confidence: high
+about: >
+  Fifth file in the 0257-0261 sub-arc: extracts a World-Model lens from a second cosmology article,
+  introducing the explicit ontology/world-model dimension W_t missing from the prior claim-object work.
+  Formalizes K_t = f(O_<=t, E_<=t, I_<=t, W_t) -- two agents with identical observations can reach different
+  knowledge under different world models. Adds epistemic recurrence/genealogy (knowledge trajectory is not
+  linear; rejected hypotheses can be reopened), a Leonardo-lens model-robustness test (does a conclusion
+  survive across W1..Wn?), Bayesian model averaging, a knowledge-fragility/sensitivity metric, an
+  eight-category not-knowledge taxonomy including "model artifact" (assumption disguised as conclusion),
+  and a revised ten-component Knowledge State vector KS_t=(P,E,M,L,W,R,U,D,Z,tau). Independently proposes
+  its own "EKI-08" (Epistemic Type Preservation), directly colliding in ID with 0260's differently-defined
+  EKI-08 (Modal Integrity) -- a corpus-integrity naming collision, flagged here.
+introduces:
+  - concept: "World Model W_t as an explicit missing dimension: K_t = f(O_<=t, E_<=t, I_<=t, W_t); two agents with identical observations O can derive different knowledge under different world models W -- worked example diagram (Observation -> World Model A/B -> Inference A/B -> Knowledge A/B)"
+  - concept: "Knowledge requires an ontology/world model: a proposition (e.g. 'Service A caused failure B') is not semantically self-sufficient -- it presupposes concepts of Service/Failure/causes/identity-through-time/a causal model"
+  - concept: "Purnam-derived holism lens connected to Hofstadter: Meaning(x) != Properties(x) alone; Meaning(x) = f(Properties(x), Relations(x), Context(x), W) -- LocalMeaning(x) vs SystemMeaning(x,W); strengthens the corpus's prior 'store relationships, not isolated objects' conclusion"
+  - concept: "Epistemic recurrence/genealogy: knowledge trajectory is not linear (K0->K1->K2->K3) but can loop -- old hypotheses return, decisions are revisited, evidence is reinterpreted; distinguishes chronological time from epistemic trajectory; worked example H1(t1) -> Rejected(H1,t2) -> Reopened(H1,t5) -> Revised(H1,t6); principle: 'never overwrite epistemic history merely because the current state changed'"
+  - concept: "Pramana-lens self-application to the source: distinguishes textual quotation != philosophical interpretation != historical assertion != scientist's personal opinion != physical theory != empirically established result, as applied to the article's own claims (e.g. a physicist's 'most probable' opinion is testimony, not established cosmology)"
+  - concept: "EKI-08 -- Epistemic Type Preservation (independently proposed, NOT the same as 0260's EKI-08 Modal Integrity -- an ID collision, not a content merge): no transformation may silently promote interpretation/analogy/testimony/hypothesis/model into observation or established fact; worked example: ancient-text -> interpretation -> structural analogy -> modern-scientific-analogy must never silently become ancient-text -> scientific discovery"
+  - concept: "Leonardo lens sharpened into model-criticism: 'what world model must be true for this conclusion to follow?' -- test claim C under alternative models W1..Wn; conclusions surviving many reasonable models are more ROBUST; model robustness proposed as a quantitative property"
+  - concept: "Observation = O(R,P) vs Interpretation = I(O,W): perspective P (where am I observing from) is distinguished from world model W (what do I believe reality's structure to be) -- two previously conflated dimensions"
+  - concept: "Zero as structural intersection across models: Z = intersection_i Structure(I_i) over models/perspectives/times/representations -- proposed as one of the strongest candidates for 'robust knowledge'"
+  - concept: "Bayesian model averaging: P(C|E) = sum_i P(C|E,W_i) P(W_i|E); knowledge-fragility/sensitivity metric Sensitivity(C,W) -- does the conclusion collapse when one assumption changes; a claim surviving many models is epistemically stronger than one supported under only a narrow model"
+  - concept: "Eight-category not-knowledge/knowledge-status taxonomy: Fact candidate, Inference, Model-dependent conclusion, Speculation, Analogy, Contradiction, Unknown, Model artifact (an 'assumption disguised as conclusion' -- Leonardo should explicitly search for this)"
+  - concept: "Full epistemic pipeline: Reality -> Observation -> Pramana lens -> Claim -> Ganesha lens -> World-Model lens -> Leonardo lens -> Logic lens (T/F/Both/Undetermined) -> Statistical lens -> Shani lens -> Zero lens -> Knowledge State Kt -> Time lens (Kt->Kt+1->Kt+2, with recurrence loop) -> Hofstadter lens -> Meta-knowledge"
+  - concept: "Revised ten-component Knowledge State vector KS_t = (P,E,M,L,W,R,U,D,Z,tau) [proposition, evidence, epistemic method/pramana, logical status, world model, representations/perspectives, uncertainty, defeaters, invariant structure, temporal/genealogical state] -- an eighth independently-motivated Knowledge-vector-family formulation, this one explicitly identified as a REVISION of 0259's nine-component KS with W added"
+  - concept: "Two closing candidate foundational principles: 'No conclusion without its model context' and 'No claim without its epistemic lineage' (the latter restating 0258's EP-01 no-epistemic-shortcut idea)"
+defines: []
+refines:
+  - concept: "0259's nine-component KS=(P,E,M,T,U,D,R,Z,tau) vector"
+    refinement: "Explicitly revises KS by adding a tenth component W (world model), replacing the corpus's implicit assumption of a single shared world model across all claims"
+  - concept: "The Zero lens (Z_R representational, Z_T temporal, Z_M modal from 0260)"
+    refinement: "Generalizes Zero as an explicit structural intersection across models/perspectives/times/representations, unifying the prior Zero variants under one formula (Z = intersection_i Structure(I_i))"
+  - concept: "0258's EP-01 'no epistemic shortcut'"
+    refinement: "Restates as 'no claim without its epistemic lineage', paired with a new sibling principle 'no conclusion without its model context'"
+contradicts: []
+repeats:
+  - concept: "Statistics doesn't answer 'what is knowledge', it estimates support/comparison quantities"
+    canonical_source: 258
+    novelty: none
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: extend the Knowledge-Vector-family unresolved_equivalence entry with an eighth variant: KS_t=(P,E,M,L,W,R,U,D,Z,tau), an explicit revision of 0259's nine-component KS adding world-model W."
+  - "dimension-registry.md: NEW finding -- EKI-08 ID COLLISION. 0260 defines EKI-08 = Modal Integrity (possible must never become actual); this file (0261) independently defines EKI-08 = Epistemic Type Preservation (interpretation must never become observation). Same ID, two different files, two unrelated meanings, within three files of each other in the same sub-arc -- a sharper instance of the corpus's already-tracked pattern of independently-produced, unreconciled discrete-status/ID vocabularies (see the 0093/0094/0096/0100/0144/0145/0150/0151 unresolved_equivalence entry), now extended to invariant IDENTIFIERS themselves, not just status vocabularies. Recorded as a distinct new unresolved_equivalence-adjacent finding, not merged into either invariant's content."
+anchor_test:
+  anchor: "0259's KS vector; 0260's Zero variants and EKI-08 Modal Integrity; 0258's EP-01"
+  supports_dimension: "Gita/philosophical model (world-model/ontology lens) directly extending the mathematical/statistical model with Bayesian model averaging and a sensitivity/fragility metric"
+  refines_or_contradicts: "refines/revises KS, generalizes Zero, restates EP-01; the EKI-08 label ITSELF collides with 0260 (identifier conflict, not a claim conflict)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "No formal criteria given for the Zero-as-intersection formula (Z = intersection_i Structure(I_i)) beyond the qualitative statement that it is 'not literally set intersection in every implementation'"
+open_questions:
+  - "Whether the EKI-08 naming collision (Modal Integrity vs. Epistemic Type Preservation) is ever noticed and resolved within the corpus itself, or whether both continue to be cited under the same ID"
+  - "Whether the now-eight unreconciled Knowledge-vector variants converge, and whether KS_t=(P,E,M,L,W,R,U,D,Z,tau) becomes the corpus's stable working formula going forward"
+tier2_triggered: true
+tier2_reason: "Introduces the World-Model dimension W as a formally missing variable in the prior claim-object work, generalizes Zero as cross-model structural intersection, adds Bayesian model averaging and a knowledge-fragility metric, an eight-category not-knowledge taxonomy, and a revised ten-component Knowledge State vector; also surfaces a direct EKI-08 identifier collision against 0260, a new and sharper instance of the corpus's recurring unreconciled-numbering-scheme pattern."

@@ -1,0 +1,196 @@
+sequence: 728
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-130122_step-141-deployment-and-runtime-architecture.md
+title: "Step 141 -- Delivers Genuinely Substantial New Deployment/Runtime Architecture Content: Five Execution Zones, Offline-Behavior States (ONLINE/DEGRADED/OFFLINE) With Policy-Driven Disposition, the Transactional-Outbox Pattern for Reliable Cross-Context Event Propagation, Execution-Isolation/Credential Architecture With the Sharp 'Why Shared Credentials Are Dangerous' Principle, a Four-Tier Trust-Zone Classification, a Concrete Disaster-Recovery Data-Criticality Framework, and Platform Self-Assurance ('KnowledgeOS Also Assures Itself') -- Delivers RA-01 Through RA-05 -- Opens Step 142, Current-State Runtime Archaeology, the Fifth Iteration of the Reconstruction's Recurring Empirical-Engagement Promise Cycle"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 141 -- Deployment & Runtime Architecture', promised at 0727's close; delivers the most substantial, genuinely novel operational/deployment content since the 0717-0721 arc, addressing concerns (offline behavior, credential isolation, trust zones, disaster recovery, platform self-assurance) not previously treated this concretely anywhere in the reconstruction, before opening a fifth iteration of the recurring empirical-engagement promise cycle"
+source_role: PRIMARY_RESEARCH
+canonical_source: 728
+importance: critical
+confidence: high
+about: >
+  Opens reframing the transition from Logical to Deployment architecture around the question "where does
+  each responsibility actually execute, and where does its authoritative state live?" rather than a
+  premature Kubernetes-first framing. **Delivers a five-zone runtime topology, a clean, concrete taxonomy
+  not previously delivered this specifically**: Zone A (Agent workstation — Claude/Codex operate here),
+  Zone B (KnowledgeOS — governed knowledge/assurance/orchestration), Zone C (Engineering systems —
+  Git/CI/build), Zone D (Runtime infrastructure — Kubernetes/Nexus/services), Zone E
+  (Evidence/persistence — where authoritative KnowledgeOS state and evidence are retained), "these zones
+  have different trust and ownership characteristics." **Delivers the local repository framed precisely as
+  `EdgeContext`** (instructions, pointers, local engineering state, temporary working state), explicitly
+  never the authoritative KnowledgeOS database.
+
+  **Delivers Offline-behavior semantics, a genuinely valuable, concrete operational consideration not
+  previously addressed in the reconstruction** (§141.5-141.6): three connectivity states
+  (`ONLINE/DEGRADED/OFFLINE`), with disposition explicitly policy-driven — low-risk actions may proceed
+  under `OfflineExecution`, while high-risk governed actions require `Offline→NoExecution`. This addresses a
+  real practical gap most purely theoretical KnowledgeOS discussions would miss: what an agent should
+  actually do when disconnected from the governance platform.
+
+  Delivers Stateless-vs-Stateful component separation (Context API/query services/adapters/orchestration
+  vs. Governance/Knowledge/Evidence/Verification-history/Action-records/Graph-projection state) and a
+  three-store persistence boundary (Transactional/Immutable/Projection), with graph-database justification
+  explicitly conditioned on workload evidence rather than assumed: "a dedicated graph database becomes
+  attractive when relationship traversal is a dominant workload and graph complexity becomes difficult to
+  manage relationally... that is an implementation decision, not a DDD requirement."
+
+  **Delivers the transactional-outbox pattern for reliable cross-context event propagation, a mature,
+  precisely explained, directly implementable architectural mechanism** (§141.14-141.18): without an
+  outbox, a domain transaction can succeed while event publication silently fails, leaving the graph stale;
+  with an outbox, the domain-state write and the outbox record commit atomically before a separate publisher
+  propagates the event to the graph projection — "this provides much stronger consistency," explicitly
+  recommended as attractive because "it provides reliable graph/event propagation without requiring Kafka
+  from day one." Reconfirms Graph-freshness discipline (`EventuallyConsistent` is acceptable only when the
+  authoritative source is clearly identified) and the critical distinction "never use `StaleGraph` as proof
+  of `CurrentAuthority`."
+
+  Delivers Assurance-execution topology showing the same `FitnessRule` verified by multiple mechanisms
+  (Local/CI/Central checkers) converging on one `Verification→Graph`, reinforcing `RuleID` stability across
+  changing `CheckerImplementation` versions. Delivers Local-vs-CI-vs-Production assurance distinctions: local
+  checks give rapid developer feedback but are not automatically authoritative (they become supporting
+  `Evidence`); CI produces reproducible, fully attributed evidence (`Environment/Pipeline/Commit/Checker/
+  Result` fields); production/runtime verification closes the gap between `CodeState` and `RuntimeState`.
+  Delivers the full nine-stage deployment pipeline (`Knowledge/Decision→Implementation→Commit→CI→
+  Verification→Artifact→Deployment→Runtime Observation→Post-deployment Verification`) and Deployment
+  authorization (the deployment mechanism receives an `AuthorizedAction`, never a bare `AgentRequest`).
+
+  **Delivers Execution isolation and credential architecture, with the file's sharpest, most currently and
+  broadly applicable security-engineering contribution — "why shared credentials are dangerous"**
+  (§141.27-141.29): the agent should never hold unrestricted credentials to target systems
+  (`Agent→Tool→Authorization→ScopedCredential`, "this limits blast radius"), with `AgentIdentity`
+  explicitly distinguished from `ExecutionCredential`. The concrete illustrative scenario: if Claude and
+  Codex both use a shared credential (e.g. `nexus-admin`), the runtime can know "somebody changed Nexus" but
+  cannot establish which agent, action, or session performed it — `SharedCredential→WeakAccountability`.
+  This is among the most directly implementable, generally applicable multi-agent security principles in
+  the entire reconstruction, independent of whether KnowledgeOS itself is ever built. Delivers the Agent
+  identity chain (`AgentID/SessionID/ActionID`, with explicit traceability `A81→S42→AgentID`) and Human
+  delegation (`Agent-actingFor→Human/Role`, explicitly `actingFor≠automatically authorized`, requiring the
+  authorization system to independently evaluate whether the delegation permits the specific action).
+
+  **Delivers a four-tier Trust-zone classification, the most concrete security-architecture-relevant trust
+  taxonomy in the reconstruction** (§141.33): Lower Trust (agent workstation, local files, agent memory,
+  generated context), Medium Trust (agent gateway, context service, tool adapters), Higher Trust
+  (governance, authoritative knowledge, authorization, evidence), External Authority (Git, Kubernetes,
+  Nexus, IAM, production systems) — explicitly caveated that the exact classification must ultimately
+  reflect real enterprise security architecture. This directly and precisely reframes the long-tracked
+  pointer-layer principle in classical security-zone terms for the first time: `.claude/memory/` and
+  `AGENTS.md` are placed explicitly within the Lower Trust zone (`Memory→Context` but `Memory↛Authority`),
+  giving the recurring principle its most concrete security-architectural grounding to date.
+
+  **Delivers a concrete Disaster-recovery data-criticality framework, a mature, directly actionable
+  operational-resilience contribution not previously delivered this specifically** (§141.37-141.38): data
+  classified as Critical (governance state, authorization, evidence, verification history), Important
+  (knowledge, graph projections, registry), or Rebuildable (derived context packages, caches, search
+  indexes), with an explicit recovery-priority sequence (`Authoritative State→Evidence→Events/Outbox→Graph
+  Projection→Search/Cache`) and the sharp distinguishing statement: "if the graph disappears: Rebuild. If
+  the authoritative state disappears: `CriticalIncident`." Delivers Audit-retention policy placement
+  (Decision/Verification/Evidence all requiring explicit, organizationally-determined retention).
+
+  **Delivers Platform self-assurance, a genuinely important maturity concept extending 0709's self-
+  verification-vs-self-governance discipline into operational/platform-health terms specifically**
+  (§141.40-141.42): KnowledgeOS itself must be observable (context generation, authorization, verification,
+  evidence ingestion, graph projection, agent activity) and must eventually verify its own health through
+  deterministic checks (`GraphProjectionLag<threshold`, `OutboxBacklog<threshold`, `EvidenceIntegrity=PASS`,
+  `AuthorizationService=HEALTHY`) — "KnowledgeOS assures engineering systems... KnowledgeOS also assures
+  itself. That is an important maturity step," posing the second-order question "can we trust KnowledgeOS
+  itself?"
+
+  Delivers a three-stage runtime-topology maturity model (local-tooling-only → developer/central-platform/
+  external-systems → developer-CI-runtime/KnowledgeOS/AssuranceGraph/continuous-assurance) and **"do not
+  centralize everything immediately," an explicit, precisely reasoned anti-pattern warning**: moving every
+  script, hook, memory file, and check to a central server "would increase coupling and reduce developer
+  autonomy" — instead `LocalFastPath+CentralGovernedPath`, with the precise refinement `LocalPASS≠FinalPASS`
+  (local verification becomes supporting evidence for high-risk operations, never the final authoritative
+  result on its own).
+
+  **Delivers `RA-01` through `RA-05`, five new runtime-architecture invariants** (a further distinct
+  numbered series): RA-01 (authoritative governance/evidence state must not depend on agent-local filesystem
+  state — yet another pointer-layer-principle restatement); RA-02 (high-risk actions must execute through an
+  authorization-aware boundary); RA-03 (external runtime systems remain authoritative for their own
+  operational state); RA-04 (derived projections such as the Assurance Graph must be rebuildable from
+  authoritative state — formally reconfirming 0727's rebuildability finding); RA-05 (local agent tooling may
+  accelerate engineering but must not silently bypass central governance requirements).
+
+  Delivers the most complete single consolidated deployment-architecture diagram in the reconstruction, and
+  Step 141's verdict: "KnowledgeOS should be centralized where authority, evidence, and cross-context
+  coordination matter; local where speed, developer workflow, and agent integration matter" — `Local Agent
+  Edge + Central Governed Platform + External System Authority`, with the Assurance Graph connecting the
+  resulting evidence and state.
+
+  **Closes by opening "Step 142 — Current-State Runtime Archaeology,"** the fifth iteration of the
+  reconstruction's recurring empirical-engagement promise cycle (following the unfulfilled 0717→0718→
+  0719→0721 arc), now specifically targeting runtime/deployment topology: an eight-question per-mechanism
+  inspection checklist (where does it run? who owns it? what state does it persist? what external systems
+  does it call? what evidence does it produce? what happens when KnowledgeOS is unavailable? what is
+  authoritative? what is merely local convenience?), explicitly declaring "this is the point where we should
+  stop saying 'KnowledgeOS should...' and start producing statements of the form CURRENT/TARGET/DELTA." Per
+  the 0694 calibrating meta-finding, this promise is recorded without escalating framing, though its
+  specific focus (runtime topology rather than general architecture) distinguishes it from the earlier arc.
+  No actual code execution, repository inspection, or verified filesystem/architecture claim reported
+  anywhere in this file; every zone, pattern, and worked example remains a target-architecture
+  specification.
+introduces:
+  - concept: "The five-zone runtime topology (Agent workstation/KnowledgeOS/Engineering/Runtime infrastructure/Evidence-persistence)"
+  - concept: "Offline-behavior semantics (ONLINE/DEGRADED/OFFLINE) with policy-driven disposition"
+  - concept: "The transactional-outbox pattern for reliable cross-context event propagation"
+  - concept: "Execution isolation and credential architecture, with 'why shared credentials are dangerous'"
+  - concept: "The four-tier Trust-zone classification, giving the pointer-layer principle its most concrete security-architectural grounding"
+  - concept: "The Disaster-recovery data-criticality framework (Critical/Important/Rebuildable)"
+  - concept: "Platform self-assurance -- 'KnowledgeOS also assures itself'"
+  - concept: "'Do not centralize everything immediately' and LocalPASS≠FinalPASS"
+  - concept: "RA-01 through RA-05 -- five new runtime-architecture invariants"
+  - concept: "Opens Step 142 -- Current-State Runtime Archaeology, the fifth iteration of the recurring empirical-engagement promise cycle"
+defines:
+  - concept: "Why shared credentials are dangerous"
+    definition: "If multiple agents (e.g. Claude and Codex) execute actions through the same shared credential against an external system, the system can observe that a change occurred but cannot attribute it to a specific agent, action, or session -- SharedCredential produces WeakAccountability; each agent action should instead flow through a scoped, temporary, individually-attributable credential derived from an authorization decision"
+  - concept: "Trust zones"
+    definition: "A four-tier classification of runtime components by trust level: Lower Trust (agent workstation, local files, agent memory, generated context), Medium Trust (agent gateway, context service, tool adapters), Higher Trust (governance, authoritative knowledge, authorization, evidence), and External Authority (Git, Kubernetes, Nexus, IAM, production systems) -- giving the pointer-layer principle a concrete security-architecture grounding by placing agent-local artifacts explicitly in the lowest trust tier"
+  - concept: "Disaster-recovery data criticality"
+    definition: "KnowledgeOS data should be classified as Critical (governance state, authorization, evidence, verification history -- loss is a critical incident), Important (knowledge, graph projections, registry), or Rebuildable (derived context packages, caches, search indexes -- can simply be regenerated from authoritative state), determining backup priority and recovery sequencing"
+  - concept: "Platform self-assurance"
+    definition: "Beyond assuring the engineering systems it governs, KnowledgeOS must eventually be able to verify its own operational health through deterministic checks (e.g. graph-projection lag, outbox backlog, evidence integrity, authorization-service health) -- an important maturity step distinct from, but complementary to, the constitutional self-verification-vs-self-governance boundary established earlier in the reconstruction"
+refines:
+  - concept: "0727's Graph rebuildability finding"
+    refinement: "Formally reconfirmed as RA-04, and given a concrete recovery-priority sequence within the broader disaster-recovery data-criticality framework"
+  - concept: "the corpus's long-tracked pointer-layer principle and its notation proliferation"
+    refinement: "Given its most concrete security-architectural grounding to date via explicit placement of .claude/memory/ and AGENTS.md within a four-tier trust-zone classification, and restated once more as RA-01/RA-05"
+  - concept: "0709's self-verification-vs-self-governance discipline"
+    refinement: "Extended into operational/platform-health terms specifically via 'platform self-assurance' -- a distinct maturity dimension from the constitutional self-verification discipline"
+  - concept: "the corpus's technical-capability≠organizational-authority family and TOCTOU (0726)"
+    refinement: "Extended into concrete credential-architecture mechanics via the AgentIdentity≠ExecutionCredential distinction and the shared-credential-danger principle"
+  - concept: "the 0717-0721 mode-change arc and the 0694 calibrating meta-finding"
+    refinement: "Extended by a fifth iteration (Step 142), this time specifically targeting runtime/deployment topology rather than general architecture"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0729 (Step 142 — Current-State Runtime Archaeology) with calibrated attention per the 0694 meta-finding: this is the fifth iteration of the reconstruction's recurring empirical-engagement promise cycle (after the unfulfilled 0717-0721 arc); determine whether it is fulfilled (even partially) or extends the promise-then-defer pattern once more, this time for runtime/deployment topology specifically."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the five-zone runtime topology, Offline-behavior semantics (ONLINE/DEGRADED/OFFLINE), the transactional-outbox pattern, and the four-tier Trust-zone classification -- the most concrete security-architecture grounding of the pointer-layer principle to date."
+  - "dimension-registry.md: record 'why shared credentials are dangerous,' the Disaster-recovery data-criticality framework, Platform self-assurance ('KnowledgeOS also assures itself'), 'do not centralize everything immediately,' and RA-01 through RA-05."
+  - "dimension-registry.md: flag Step 142 (0729) as the fifth iteration of the recurring empirical-engagement promise cycle, this time specifically for runtime/deployment topology -- track per the 0694 calibrating meta-finding without escalating framing."
+anchor_test:
+  anchor: "0727's Graph rebuildability finding; the corpus's long-tracked pointer-layer principle and its notation proliferation; 0709's self-verification-vs-self-governance discipline; the corpus's technical-capability≠authority family and 0726's TOCTOU principle; the 0717-0721 mode-change arc and the 0694 calibrating meta-finding"
+  supports_dimension: "Delivers substantially new, genuinely valuable operational/deployment architecture content not previously treated this concretely: a five-zone runtime topology, offline-behavior semantics, the transactional-outbox pattern, execution-isolation/credential architecture with the sharp and broadly applicable 'why shared credentials are dangerous' principle, a four-tier trust-zone classification giving the pointer-layer principle its most concrete security grounding to date, a disaster-recovery data-criticality framework, and platform self-assurance. Delivers five new RA-01..RA-05 runtime invariants. This file is markedly more novel than the immediately preceding 0725-0727 tactical/context-mapping files, addressing real operational concerns (offline behavior, credential blast radius, disaster recovery) that a purely conceptual DDD treatment would likely miss. Closes by opening a fifth iteration of the reconstruction's recurring empirical-engagement promise cycle, appropriately flagged for calibrated (not escalating) tracking"
+  refines_or_contradicts: "directly and substantially extends 0727's Graph rebuildability finding, the corpus's pointer-layer principle, 0709's self-verification-vs-self-governance discipline, the corpus's technical-capability≠authority family, and 0726's TOCTOU principle; no contradiction found; extends (without resolving) the ongoing invariant-notation-proliferation pattern via RA-01..RA-05"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§141.29's worked shared-credential scenario ('the runtime may know somebody changed Nexus... but it cannot reliably establish which agent/action/session performed it... SharedCredential→WeakAccountability') is directly quotable evidence of a sharp, broadly and currently applicable multi-agent security principle."
+  - "§141.33's four-tier trust-zone diagram, explicitly placing .claude/memory/ and AGENTS.md within the Lower Trust zone, is directly checkable evidence of the pointer-layer principle's most concrete security-architectural grounding across the entire reconstruction."
+  - "§141.37-141.38's explicit Critical/Important/Rebuildable data classification with the distinguishing statement 'if the graph disappears: Rebuild. If the authoritative state disappears: CriticalIncident' is directly checkable evidence of a mature, directly actionable disaster-recovery framework not previously delivered this concretely."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 142's actual content (0729), once read, delivers genuine runtime-archaeology findings (even partial, even a single concretely inspected mechanism), or extends the reconstruction's established promise-then-defer pattern for a fifth time."
+  - "Whether the RA-01..RA-05 invariant series is ever cross-referenced with, or reconciled into, the AFR-01..AFR-36/CM-01..CM-04/IR-01/LA-01/ADR-KOS-01..05 families produced across Steps 128-141."
+tier2_triggered: true
+tier2_reason: "Delivers substantially new, genuinely valuable operational/deployment architecture content not previously treated this concretely: five execution zones, offline-behavior semantics, the transactional-outbox pattern, credential architecture with the sharp 'why shared credentials are dangerous' principle, a four-tier trust-zone classification (the pointer-layer principle's most concrete security grounding to date), a disaster-recovery data-criticality framework, and platform self-assurance. Delivers RA-01 through RA-05. Markedly more novel than the immediately preceding tactical files, addressing real operational concerns a purely conceptual treatment would miss. Opens a fifth iteration of the reconstruction's recurring empirical-engagement promise cycle, flagged for calibrated tracking."

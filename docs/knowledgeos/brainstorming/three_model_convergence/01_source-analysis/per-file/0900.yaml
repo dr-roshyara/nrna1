@@ -1,0 +1,199 @@
+sequence: 900
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-204917_step_271_policy-semantic-minimality-and-assessment-boundary.md
+title: "Step 271 -- Policy Semantic Minimality and Assessment Boundary: Delivers the Formal, EXPLICITLY FALSIFIABLE Boundary Hypothesis H_271 (KnowledgeOS Core Defines Only Semantic Interfaces; Policy/Measurement Regimes Stay External Unless Evidence Forces a Universal Structure) With Five Named Falsification Conditions and Eight Concrete Required Experiments (P1-P8) -- Delivers 'Policy Notin Identity(K)' and 'K and Pi Are Different Ontological Categories' via Two Decisive Diagnostic Questions, the Orthogonality Test Separating Epistemic From Governance Status, and Reaffirms Graph-Independence Neq Statistical-Independence -- Opens Step 272's Reapplication of the K-Minimality Method to Sigma"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: c1
+  secondary_note: "the numerical-assessment/independence/reliability audit content is genuinely statistical; the boundary-hypothesis and DDD-architecture content is m1"
+source_role: PRIMARY_RESEARCH
+canonical_source: 900
+importance: critical
+confidence: high
+about: >
+  Opens sharpening Step 270's audit direction into a precise boundary question: not "can we define Policy?"
+  but boxed **`What is the minimum semantic interface between Knowledge State, Policy, Evidence and
+  Assessment?`** -- explicitly rejecting the tempting `K=(Assertions,Evidence,Policy,Assessment,Σ,…)`
+  everything-in-one-tuple construction.
+
+  **§271.2 delivers a tentative four-layer architecture diagram** (Policy→Assessment←Evidence→Epistemic
+  result→Knowledge State K), explicitly flagged "must not yet be treated as canonical" pending
+  determination of which arrows are genuine semantic dependencies versus mere architectural arrangement.
+
+  **§271.3-271.5 delivers two decisive diagnostic questions and their consequences**: (1) can two identical
+  Knowledge States be assessed differently under different policies? If `K_1=K_2` but `Assess(K_1,π_1)≠
+  Assess(K_1,π_2)`, then boxed **`Policy∉Identity(K)`** -- `K` represents what the system knows, `π`
+  represents the regime under which that knowledge is evaluated; (2) can the same evidence produce
+  different assessments? If so, Assessment is `P×E×C×Π→A`, making Policy a genuine semantic parameter of
+  Assessment -- but explicitly warns against the resulting over-inference `π∈K`: the correct
+  interpretation is `Assessment_π(P,E,C)` (a changed evaluation regime, not a changed evaluated object) --
+  boxed **`K and π are different ontological categories`**.
+
+  **§271.6-271.9 delivers "Policy as an interpretation regime"**: `⟦π⟧_A:P×E×C→A` and
+  `⟦π⟧_T:K×Op×Authority⇀K×Outcome` -- boxed **`Policy is identified by its semantic effect on mandatory
+  operations`**, its internal representation left open. Delivers a relative semantic-equivalence relation
+  for policies (`π_1≡π_2` iff behaviorally indistinguishable across `𝒪_A` and `𝒪_T`), directly mirroring
+  the earlier state-minimality methodology, worked via a concrete example (two syntactically different
+  policy rules inducing identical behavior are NOT distinguished by the theory) -- boxed **`semantic
+  equality≠textual equality`**. Delivers the minimality principle boxed **`Do not place internal structure
+  into a foundational object merely because an implementation might find it useful`**.
+
+  **§271.10-271.11 reaffirms Evidence≠Assessment≠Inference and delivers Assessment≠Truth**:
+  `Assessment(P,E,C,π)=Strong` does not imply `P=True` without a separate, explicit inference rule.
+
+  **§271.12-271.17 delivers the file's sharpest independent statistical audit content**, largely
+  reaffirming and sharpening 0898's parallel corrections: challenges the multiplicative aggregation
+  `S=R×Rel×Cur×I` for lacking a derivation ("classify AggregationFunction as derived / mandated / empirical
+  / configurable / design choice"); **reaffirms boxed `Graph independence≠Statistical independence`**
+  (a dependency graph provides structural information, not a probability space, so `I(e)=1/(1+d(e))` must
+  be classified a structural score absent a statistical derivation); delivers a THREE-WAY separation of
+  concepts previously conflated: Structural dependency `D(e_1,e_2)`, Statistical independence
+  `P(E_1∩E_2)=P(E_1)P(E_2)`, and Independence score `I_s(e_1,e_2)∈[0,1]` -- "not interchangeable... exactly
+  the kind of distinction a senior statistician must enforce"; delivers boxed **`[0,1] is not a semantic
+  type`** for reliability-style scores (could be probability, normalized score, expert rating, empirical
+  estimate, confidence level, or heuristic -- "the number alone does not tell us"); delivers a required
+  measurement-metadata record `(Name, Domain, Codomain, Scale, Interpretation, Operations)` for every
+  numeric assessment component before arithmetic is licensed; explicitly declines to overcorrect --
+  numerical assessment remains allowed, "the theory must simply avoid claiming `Score=Probability` without
+  a probability model."
+
+  **§271.18-271.20 investigates the Assessment→Σ mapping and delivers the ORTHOGONALITY TEST**: the
+  mapping `Map_π(A)→Σ` may itself be policy-dependent, so `Σ` cannot be treated as policy-independent
+  unless policy is explicitly included in the assessment context; notes the corpus's many status-like
+  terms (Supported/Refuted/Unknown/Conflicted/Contested/Superseded/Invalidated/Accepted/Rejected) "cannot
+  all automatically be members of one set `Σ`," proposing (but explicitly NOT finalizing) a decomposition
+  into `EpistemicAssessment`/`LifecycleStatus`/`GovernanceStatus`; **delivers the orthogonality test
+  proper**: a proposition epistemically `Supported` while administratively `Rejected` demonstrates the two
+  dimensions "cannot be represented by one scalar status without information loss" -- boxed **`Epistemic
+  and Governance status must be tested as orthogonal dimensions`**.
+
+  **§271.21-271.23 delivers three further discriminating tests**: contradiction (`∅≠
+  ContradictoryEvidence` -- no evidence and conflicting evidence must not collapse to the same result);
+  missingness (`Missing≠False` -- a policy requiring `r≥0.8` cannot automatically evaluate a missing `r`
+  as failing); and a candidate three-valued policy decision space `{Permit,Deny,Undetermined}`, explicitly
+  "a candidate, not a final decision," pending corpus confirmation that `Undetermined` is actually
+  required.
+
+  **§271.24 delivers a replay/history consequence**: boxed **`Replayability requires semantic policy
+  identity`** -- History must retain enough to reconstruct `π_t`, but this does NOT require storing the
+  entire policy inside `K` -- `History⊇PolicyReference` suffices, directly extending 0894's/0897's
+  external-reference placement pattern a third time.
+
+  **§271.25-271.27 delivers a clean architectural boundary diagram and the file's central hypothesis
+  framing**: `KnowledgeOS Core` (Knowledge State, Assertion, Relation, Identity, History, Transformation
+  interface, Evidence interface, Assessment interface, invariants) vs. `External semantic regimes` (policy
+  rules, measurement models, statistical models, domain-specific thresholds, assessment criteria,
+  governance rules) -- explicitly "must remain a hypothesis until the corpus audit confirms it." Notes
+  this boundary, if confirmed, "would significantly reduce the kernel" by resolving several apparent
+  contradictions at once (numerical formulas needn't be canonical; probability needn't be universally
+  required; Policy stays external but typed).
+
+  **§271.28-271.29 delivers the candidate minimal interface**: `Assessment:(P,E,C,π)→A` and
+  `T:(K,o,π,α)⇀(K',Outcome)`, specifying only TYPE CONTRACTS AND INVARIANTS, not internal implementation
+  of `π` or `A` -- explicitly "this is not yet closure," listing six symbols still unresolved
+  (`A=?, Σ=?, Π=?, EvalPolicy=?, Assessment→Σ=?, Evidence→Assessment=?`).
+
+  **§271.30-271.31 delivers the file's most methodologically valuable contribution: FORMAL BOUNDARY
+  HYPOTHESIS `H_271`, explicitly labeled `HYPOTHESIS`, not theorem**: "KnowledgeOS should define Policy
+  and Assessment at the semantic interface level, while allowing domain-specific policy and measurement
+  regimes to provide their internal evaluation semantics, unless the historical corpus demonstrates that a
+  universal internal structure is required." **Delivers five explicit, checkable falsification criteria**
+  that would falsify `H_271`: (1) all policies necessarily share a common formal structure; (2) all
+  assessments require one universal mathematical scoring model; (3) Policy identity must be part of
+  Knowledge State identity; (4) a universal probability model is required; (5) domain-specific policy
+  differences cannot be represented through an external regime -- "any such evidence would force expansion
+  of the core."
+
+  **§271.32 delivers EIGHT concrete required experiments (P1-P8)**: same-K-different-policy;
+  same-evidence-different-policy (testing `Assess_1≠Assess_2`); syntactically-different-but-behaviorally-
+  equivalent policies; missing policy input; conflicting policy rules (`Permit∧Deny`); numerical score
+  without probability (does the implementation treat a score as a probability or a bounded value?);
+  contradictory evidence (`E^+∪E^-`); replay after a policy change (`π_1→π_2`, replaying an operation
+  performed under `π_1`).
+
+  **§271.33 delivers a seventeen-row mandatory classification matrix** (Knowledge State, Assertion,
+  Evidence, Assessment, Policy, Rule, Authority, Authorization, Epistemic Status, Governance Status,
+  Reliability, Independence, Probability, Uncertainty, Provenance, Lineage, History), each to be scored
+  Core-primitive?/External-regime?/Representation?/Derived?/Normative?/Empirically-tested? -- currently
+  entirely unfilled ("?").
+
+  **The Step 271 verdict**: boxed **`Policy and Assessment should currently be treated as semantic
+  interfaces, not prematurely fixed internal mathematical structures`** -- explicitly clarified as NOT
+  declaring Policy external to the KnowledgeOS architecture, but requiring "Policy semantics must be
+  specified to the extent required by the core, while its internal rule/measurement regime remains
+  extensible unless evidence forces a universal structure."
+
+  **§271.35 delivers a twenty-row current-closure-status table** (mostly green for the established `K`/
+  History/Transformation-interface core, mixed-to-red for Policy-internal-structure/conflict-semantics,
+  Assessment-semantics/numerical-assessment, statistical-independence, probability, and `Σ`).
+
+  **Closes opening "Step 272,"** explicitly declining another Policy-focused step and instead reapplying
+  "the same rigorous minimality method that produced the strongest result for `K`" to `Σ`: derive the
+  minimum epistemic-status structure from distinguishability, contradiction, missingness, evidence
+  assessment, supersession, and inference, "while explicitly separating epistemic state from lifecycle and
+  governance state" -- with the promise that a successful Step 272 would let `Policy→Assessment→Σ` be
+  revisited "as one coherent semantic chain rather than three independently invented models."
+introduces:
+  - concept: "The formal boundary hypothesis H_271 (KnowledgeOS Core defines only semantic interfaces; policy/measurement regimes stay external unless corpus evidence forces a universal structure), explicitly labeled HYPOTHESIS not theorem"
+  - concept: "Five explicit, checkable falsification criteria for H_271"
+  - concept: "Eight concrete required experiments (P1-P8) for testing the Policy/Assessment boundary"
+  - concept: "The two decisive diagnostic questions establishing Policy∉Identity(K) and 'K and π are different ontological categories'"
+  - concept: "Policy semantic equivalence relative to a declared operation set, and semantic equality≠textual equality"
+  - concept: "The three-way separation of Structural dependency / Statistical independence / Independence score, sharpening 0898's GraphDistance≠StatisticalIndependence correction"
+  - concept: "[0,1] is not a semantic type -- a bounded real number requires an explicit interpretation before arithmetic is licensed"
+  - concept: "The orthogonality test separating epistemic status from governance status via a concrete Supported-but-Rejected example"
+  - concept: "∅≠ContradictoryEvidence and Missing≠False as two further discriminating tests"
+  - concept: "The candidate three-valued policy decision space {Permit,Deny,Undetermined}, explicitly not finalized"
+  - concept: "Replayability requires semantic policy identity, via History⊇PolicyReference rather than storing the full policy in K"
+  - concept: "The KnowledgeOS Core vs External semantic regimes architectural boundary, explicitly a hypothesis pending audit"
+  - concept: "The candidate minimal interface specifying only type contracts and invariants for Assessment and Transformation, not internal Policy/Assessment implementation"
+  - concept: "Opens Step 272 — deriving the minimum epistemic-status structure for Σ via the same K-minimality method"
+defines:
+  - concept: "Formal boundary hypothesis H_271, with explicit falsification criteria"
+    definition: "A scientifically disciplined hypothesis-statement format: H_271 claims KnowledgeOS should define Policy and Assessment only at the semantic-interface level (type contracts and invariants for how they participate in mandatory operations), leaving their internal rule/measurement/scoring structure to domain-specific external regimes -- UNLESS the historical corpus demonstrates a universal internal structure is actually required. The hypothesis is explicitly falsifiable, with five named conditions any one of which would refute it: (1) all KnowledgeOS policies necessarily sharing one common formal structure, (2) all assessments requiring one universal mathematical scoring model, (3) Policy identity being required as part of Knowledge State identity, (4) a universal probability model being required, or (5) domain-specific policy differences being unrepresentable through an external regime. This format -- explicit hypothesis label, explicit falsification criteria, explicit required experiments to test it (§271.32's P1-P8) -- is a model instance of the falsificationist discipline this research programme has repeatedly endorsed (e.g. 0862's, 0888's, 0895's legitimate-negative-result framings), applied here prospectively rather than retrospectively"
+  - concept: "The orthogonality test (epistemic vs governance status)"
+    definition: "A concrete diagnostic construction demonstrating that epistemic assessment and governance/administrative status must be modeled as independent (orthogonal) dimensions rather than collapsed into a single scalar status value: a proposition P can simultaneously be epistemically well-supported (EpistemicStatus(P)=Supported, based on evidence) while being administratively rejected (GovernanceStatus(P)=Rejected, based on a governance decision unrelated to the evidence quality) -- or epistemically Unknown while governance-status AcceptedForInvestigation. If such combined states are meaningful within KnowledgeOS (which the test assumes without yet fully proving), then no single-scalar Σ can represent both without losing information, forcing at least a two-dimensional (epistemic × governance) status representation"
+refines:
+  - concept: "0897's Policy congruence criterion and Minimality(Π|𝒪_π)"
+    refinement: "SHARPENED into the two decisive diagnostic questions (§271.3-271.4) that operationalize exactly what the congruence criterion is meant to test, and extended with the semantic-equality≠textual-equality worked example making the abstract congruence relation concretely graspable"
+  - concept: "0898's GraphDistance≠StatisticalIndependence correction"
+    refinement: "SHARPENED into a full three-way conceptual separation (Structural dependency / Statistical independence / Independence score), giving the single pairwise inequality a complete taxonomic structure"
+  - concept: "0894's/0897's external-reference placement pattern (provenance reference, policy reference both external to K, with only a stable reference retained)"
+    refinement: "REAPPLIED a third time for Policy replay specifically: History⊇PolicyReference is sufficient for replayability without embedding the full policy inside either K or a Policy-specific state slot"
+  - concept: "The corpus's status-vocabulary proliferation (Supported/Refuted/Unknown/Conflicted/Contested/Superseded/Invalidated/Accepted/Rejected)"
+    refinement: "Explicitly flagged (not yet resolved) as likely requiring decomposition into separate EpistemicAssessment/LifecycleStatus/GovernanceStatus dimensions rather than one Σ set -- directly setting up Step 272's promised minimality derivation"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read Step 272 next, expecting the promised minimum epistemic-status (Σ) structure derived via distinguishability from contradiction, missingness, evidence assessment, supersession, and inference, with the epistemic/lifecycle/governance separation tested rather than assumed."
+  - "Watch for whether any of the eight required experiments (P1-P8) are ever actually executed against real or synthetic KnowledgeOS data anywhere later in the corpus."
+  - "Watch for whether H_271 is ever confirmed, refined, or falsified by later evidence."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal boundary hypothesis H_271 with its five falsification criteria and eight required experiments as a model instance of prospective falsificationist methodology, directly reusable for the gated (§29) canonical Kernel synthesis's own architecture decisions."
+  - "dimension-registry.md: record the orthogonality test (epistemic vs governance status) as a concrete, reusable diagnostic for the eventual Σ/status-space design."
+  - "dimension-registry.md: record the three-way Structural-dependency/Statistical-independence/Independence-score separation as a refined, directly reusable statistical taxonomy."
+anchor_test:
+  anchor: "0897's Policy congruence criterion; 0898's GraphDistance≠StatisticalIndependence correction; 0894's/0897's external-reference placement pattern; the corpus's status-vocabulary proliferation tracked since early in the reconstruction"
+  supports_dimension: "Operationalizes 0897's abstract congruence criterion into two concrete decisive diagnostic questions. Sharpens 0898's independence correction into a full three-way taxonomy. Extends the external-reference placement pattern a third time for Policy replay. Sets up Step 272's promised resolution of the long-running status-vocabulary proliferation via the orthogonality test"
+  refines_or_contradicts: "operationalizes 0897's congruence criterion; sharpens 0898's independence correction; extends 0894's/0897's external-placement pattern; motivates but does not yet resolve the status-vocabulary proliferation"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§271.7-271.8's worked example (two textually different policy rules, 'only an authorised reviewer may approve' vs 'approval requires reviewer authority,' behaviorally indistinguishable) is directly checkable evidence for semantic equality≠textual equality."
+  - "§271.20's explicit orthogonality-test construction (Supported epistemically, Rejected governance-wise) is directly checkable evidence for the orthogonality finding."
+  - "§271.31's five explicitly enumerated falsification criteria for H_271 are directly checkable evidence of the hypothesis's genuine falsifiability, distinguishing it from an unfalsifiable architectural preference."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 272 genuinely delivers the promised minimum epistemic-status derivation for Σ, testing rather than assuming the epistemic/lifecycle/governance separation."
+  - "Whether any of the eight required experiments (P1-P8) are ever actually executed anywhere later in the corpus."
+  - "Whether H_271 is ever confirmed, refined, or falsified by subsequent evidence in the corpus."
+tier2_triggered: true
+tier2_reason: "Delivers a formally falsifiable boundary hypothesis (H_271) with explicit falsification criteria and required experiments -- a model instance of prospective falsificationist methodology -- plus the orthogonality test separating epistemic from governance status, a sharpened three-way independence taxonomy, and two decisive diagnostic questions establishing Policy∉Identity(K). Classified importance critical and tier2-triggered."

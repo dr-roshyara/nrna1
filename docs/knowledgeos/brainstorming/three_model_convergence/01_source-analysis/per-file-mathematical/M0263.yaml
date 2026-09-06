@@ -1,0 +1,88 @@
+sequence: M0263
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-115000_theory-10-experimental-methodology-and-falsification.md
+title: "Theory 10 — Experimental Methodology and Falsification Engineering: the master methodology consolidation, every rule traced to a specific origin failure — reveals TWO PREVIOUSLY UNRECORDED EXPERIMENTS (KR-ZOOM-03, KR-ZOOM-OUT-01) whose post-hoc estimand/population choices had to be rejected despite crossing the significance floor, a dated experimental-protocol freeze (2026-09-05) introducing a new Estimand Non-Degeneracy Preflight (O-F*) gate, a genuinely important provenance-check-discriminates finding (the same check both dissolved a prior 'case J' finding AND strengthened the interaction-order finding), and a SECOND instance of verbatim wording matching this actual project's own real CLAUDE.md engineering discipline ('engineering supplies evidence and never accepts its own work')"
+date: "20260904-115000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0263
+importance: critical
+confidence: high
+about: >
+  Document 10 of the 15-document consolidated theory series: "a negative result is worth exactly
+  what its methodology is worth. This document is the methodology — assembled from what actually
+  caught errors, not from what sounded rigorous. Every rule below exists because a specific failure
+  produced it." Consolidates the corpus's entire methodological apparatus into a rule set with named
+  origins, and reveals two previously unrecorded experiments (KR-ZOOM-03, KR-ZOOM-OUT-01) whose
+  post-hoc estimand and population choices were rejected on principle despite promising numbers, a
+  dated 2026-09-05 protocol freeze with a new formal preflight gate, and a genuinely important
+  finding that the corpus's own provenance-verification check is a real discriminating instrument
+  rather than a one-directional debunking tool.
+introduces:
+  - "Pre-registration Amendment A1 (labels are pre-registered classifications, never silently redefined to match observed behaviour — origin: KR-BRIDGE-01's T_B label mismatch) and NEW Amendment A2: 'do not tune the generator to balance cells. Natural imbalance is evidence' — origin: a badly-imbalanced four-way table whose imbalance was itself the finding, and would have been destroyed by balancing"
+  - "A consolidated 10-control checklist (A-I plus A1), each control paired with exactly what specific failure mode it catches (broken adequacy test; always-adequate test; accidental value-dependence; blind design; insensitive instrument; vacuous/saturating predicate; decorative gate; inert Π; inert Q; wrong provenance map) — Control A1 (provenance verified by perturbation) reconfirmed as 'the one that earned its place this cycle... it failed twice on maps I had written by reading the code. Code review caught neither failure'"
+  - "A NEW named rule (3.3), traced to a concrete origin: 'replication must constrain magnitude, not only sign' — origin: 'a sign-only rule certified 14 cells whose effects were |RD|≈0.001 and whose CIs all covered zero' — same sign ⇏ replicated, directly explaining why BRIDGE-02's surviving-but-substantively-empty cells (Document 07) needed a magnitude floor, not just a sign check"
+  - "An honest effect-size-floor disclosure norm: at n~10^5, |RD| of 0.001 is 'detectable and meaningless'; a substantive floor is required, and when declared AFTER first inspection (as BRIDGE-02's 0.01 floor was), this must be stated in the artifact rather than concealed, with the floor used as a reporting tier, not a filter"
+  - "A GENUINELY IMPORTANT finding demonstrating the corpus's provenance-verification check is a real discriminating instrument, not merely a debunking device: the SAME check that DISSOLVED a previously-unrecorded finding — 'KR-ZERO-GROUP case J' — revealing it as a property of cancelling contracts, not of Zero, ALSO CONFIRMED AND STRENGTHENED the interaction-order finding (which came out HIGHER without the cancelling contract) — 'that contrast is the evidence that the check is a real instrument rather than a way of disbelieving inconvenient results'"
+  - "An identity/reproducibility hygiene rule with a specific origin detail: experiment IDs must be canonical, with collisions eliminated not documented, but retired IDs survive as legacy aliases — origin: 'KR-CONTR-2026-09 was issued twice, both legitimately'"
+  - "A formally DATED experimental protocol freeze (2026-09-05): the pipeline Hypothesis→Estimand→O-F*→Population→Calibration→Control→Freeze→Execution→Adjudication — introducing a NEW formal gate, O-F* (Estimand Non-Degeneracy Preflight, verification/zero-algebra/METHODOLOGY-2026-09/): every quantity declared variable must have a pre-execution variation witness under the frozen computation — 'class reachability ⇏ estimand variability' — run BEFORE the freeze because its failure is a reason to rewrite the estimand while rewriting is still legitimate"
+  - "A hard rule: 'no analysis-dependent choice of estimand or population. Ever.' — with calibration required as a SEPARATE PASS with its own gate, inspected before the analysis code runs at all; its output may change the generator but may NOT be seen alongside outcomes"
+  - "TWO explicit research-governance safeguards, deliberately distinguished from KnowledgeOS theory claims: 'Observed diagnostic ⇏ new primary estimand' and 'Observed convergence ⇏ theory promotion' — 'they matter more, not less, as the experiments get sophisticated enough to generate convincing-looking artifacts'"
+  - "TWO PREVIOUSLY UNRECORDED EXPERIMENTS, each a named origin for the above safeguards, each costing a result that had to be rejected on principle despite crossing the significance floor: KR-ZOOM-03 — a directed diagnostic (+0.123/+0.134, above floor) appeared only AFTER the undirected estimand had returned BORDERLINE, and 'could not be adopted'; KR-ZOOM-OUT-01 — a conditional population (E5=0.182/0.185, above floor; M1 collapsing 0.634→0.002) appeared only AFTER the unconditional result and 'could not be adopted,' with the additional finding that the calibration-gate failure itself (0.294 vs 0.30) 'was invisible until every outcome had been seen — because calibration and analysis ran in one pass'"
+  - "A concrete stratification-not-filtering rule drawn from KR-ZOOM-OUT-01: 'stratify; do not conditionally filter. A population filter can hide the stratum that explains the result' — in that experiment the NULL stratum (63% no-determination) silently became the apparent 'winner' M1 — 'had the stratum sizes been a reported quantity, the artifact would have been visible immediately rather than at audit'"
+  - "The final governance order, restated as part of the method itself: EXPERIMENT→AUDIT→ADJUDICATION→THEORY v1.3, 'no shortcuts. An experiment does not adjudicate itself. Engineering supplies evidence and never accepts its own work — evidence, recommendation and authority stay separate' — A SECOND INSTANCE (after M0262's) of wording verbatim-matching this actual project's own real CLAUDE.md standing rule (EP-02: 'engineering supplies evidence and never accepts its own work')"
+defines:
+  - "O-F* — the Estimand Non-Degeneracy Preflight gate, run before any experimental freeze"
+refines:
+  - "Nearly every prior methodological finding across the corpus (T_B label mismatch, KR-BRIDGE-02's marginal-RD false positive, the provenance-triple requirement, the H-C misclassification): consolidated here into a single named rule set with explicit origins"
+contradicts: []
+repeats:
+  - "The already-established falsification-tests/positive-control/train-test-split reproducibility norms (KR-REP-REDUCTION), consolidated here as part of the identity/reproducibility hygiene table"
+bridge_candidates:
+  - "Whether the full protocols/writeups for KR-ZOOM-03 and KR-ZOOM-OUT-01 exist elsewhere in the corpus"
+  - "Whether the previously-unrecorded 'KR-ZERO-GROUP case J' finding (dissolved by provenance-checking) has its own protocol document elsewhere in the corpus"
+  - "Whether this document's and M0262's verbatim matches to this project's own real CLAUDE.md rules (the epistemic-strength rule, and now the engineering-evidence-never-self-accepting rule) are intentional or coincidental — a pattern now confirmed across two separate documents"
+mathematical_content: >
+  A formal experimental-protocol pipeline with a new Estimand Non-Degeneracy Preflight (O-F*) gate;
+  quantitative details for two previously unrecorded experiments (KR-ZOOM-03, KR-ZOOM-OUT-01)
+  illustrating post-hoc-selection rejection despite passing significance floors; a demonstration
+  that a provenance-verification check can both dissolve and strengthen findings, establishing it
+  as a genuine discriminating instrument.
+gita_content: null
+kernel_content: null
+registry_updates:
+  - "Two previously unrecorded experiments: KR-ZOOM-03 (rejected directed diagnostic) and KR-ZOOM-OUT-01 (rejected conditional population, invisible calibration-gate failure, hidden null-stratum artifact)"
+  - "New formal O-F* Estimand Non-Degeneracy Preflight gate, part of a dated (2026-09-05) frozen experimental protocol"
+  - "Provenance check confirmed as a genuine two-directional discriminating instrument (dissolved KR-ZERO-GROUP case J; strengthened the interaction-order finding)"
+  - "Second instance of verbatim CLAUDE.md rule-matching wording ('engineering supplies evidence and never accepts its own work')"
+anchor_test:
+  anchor: true
+  supports_dimension: "Two previously unrecorded experiments (KR-ZOOM-03, KR-ZOOM-OUT-01); new O-F* preflight gate; provenance-check-as-genuine-instrument finding; second verbatim CLAUDE.md rule match"
+  refines_or_contradicts: "refines (consolidates the corpus's entire methodological apparatus, tracing every rule to a specific named origin failure)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Do not tune the generator to balance cells. Natural imbalance is evidence.\""
+  - "\"That contrast is the evidence that the check is a real instrument rather than a way of disbelieving inconvenient results.\""
+  - "\"Had the stratum sizes been a reported quantity, the artifact would have been visible immediately rather than at audit.\""
+  - "\"Engineering supplies evidence and never accepts its own work.\""
+undefined_concepts: []
+open_questions:
+  - "Do full protocols for KR-ZOOM-03/KR-ZOOM-OUT-01 exist elsewhere in the corpus?"
+  - "Does 'KR-ZERO-GROUP case J' have its own protocol document elsewhere?"
+  - "Are the two now-confirmed verbatim CLAUDE.md rule matches (M0262, M0263) intentional or coincidental?"
+tier2_triggered: true
+tier2_reason: >
+  Reveals two previously unrecorded experiments (KR-ZOOM-03, KR-ZOOM-OUT-01) with specific
+  quantitative near-miss findings that were rejected on methodological principle, a new dated
+  formal preflight gate (O-F*), a genuinely important demonstration that the provenance-check is a
+  real two-directional discriminating instrument, and a second confirmed instance of verbatim
+  wording matching this project's own real engineering-discipline rules — core methodology
+  reference material for this consolidated theory series.

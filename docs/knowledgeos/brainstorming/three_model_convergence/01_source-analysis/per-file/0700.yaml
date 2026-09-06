@@ -1,0 +1,226 @@
+sequence: 700
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-124203_step-115-semantic-graph-reconstruction.md
+title: "Step 115 -- Delivers the Reconstruction's Most Complete Relationship Vocabulary (Eleven Controlled Terms) and Its First Explicit Technical-Edge-vs-Semantic-Edge Distinction -- Delivers a Genuinely Novel Anti-Fabrication Check (Evidence.timestamp≤Decision.timestamp 'Where Appropriate' -- a Decision Justified by Evidence That Postdates It Flagged as a Provenance Inconsistency) -- Delivers the Three-Graph-Layers Model (Fact/Knowledge/Reasoning, 'Must Not Be Silently Merged') and a Fourth Diagnostic Outcome Case (Multiple Coexisting Semantic Models, G1∪G2∪G3, Indicating Fragmentation) -- Directly and Explicitly Self-References the Pointer-Layer Architecture as Its Own Fragmentation Test Case -- Explicitly Acknowledges Diminishing Returns From Further Conceptual Elaboration ('The Next Phase Must Become Evidence Execution') -- Opens Step 116 -- Actual KnowledgeOS Graph Extraction With a Concrete Object/Relationship Record Schema and a 'Semantic Gap Matrix'"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 115 -- Semantic Graph Reconstruction', promised at 0699's close; delivers a systematic, edge-by-edge walkthrough of the target semantic graph (still entirely hypothetical) with several genuinely valuable refinements, and explicitly acknowledges that further conceptual elaboration has reached diminishing returns"
+source_role: PRIMARY_RESEARCH
+canonical_source: 700
+importance: high
+confidence: high
+about: >
+  Delivers `RelatedTo≠meaningful relationship` (co-location of a `Decision` and `Evidence` record in one
+  database does not establish `supports`, PASS), directly extending 0693's/0697's/0698's/0699's relationship-
+  semantics-versus-structure disciplines, and **the reconstruction's most complete controlled relationship
+  vocabulary** -- eleven terms (`supports`, `contradicts`, `derivedFrom`, `implements`, `verifies`,
+  `authorizes`, `produces`, `supersedes`, `dependsOn`, `governs`, `observedAt`) -- with the mature,
+  non-imperialistic caution that "the actual implementation may use different terminology. We should map
+  existing terms rather than force this vocabulary onto the system," extending 0687's/0689's/0693's/0695's/
+  0696's/0697's edge-type families into their most complete form yet.
+
+  **Delivers the file's first explicit `Semantic edge≠Technical edge` distinction**: `ServiceA→Database` is a
+  technical dependency; `Evidence→^{supports}Decision` is a semantic relationship; "KnowledgeOS must
+  preserve both, but they should not be conflated" (a foreign key correctly identified as establishing only
+  a `TechnicalRelation`, with domain semantics required to establish whether it means `supports`, `owns`, or
+  `derivedFrom`, PASS×2), directly extending 0691's/0696's technical-versus-domain distinctions into the
+  edge-type level specifically.
+
+  Delivers the full end-to-end traceability chain (`Authority→Decision→Action→Observation→Evidence`, closing
+  via `Evidence→Claim→Decision`) with `TechnicalTraceability≠DecisionTraceability` (a Git commit changing
+  architecture with no linked architecture decision correctly yielding strong technical history but unknown
+  organizational traceability, PASS), directly extending 0691's/0696's component-versus-context distinctions
+  into traceability specifically, and an explicit self-cross-reference connecting a deployment/runtime
+  version-drift example directly to "Step 107's drift model" (0692).
+
+  Delivers `informs≠authorizes` for Claim→Decision (evidence/claims can support a decision without having
+  authority to make it, restating the corpus's Recommendation≠Decision family precisely for the claim-to-
+  decision edge specifically), Authority inferred only from username correctly yielding `AuthorityTrace=Weak`
+  (extending 0687's naming-proves-nothing family), and Decision→Knowledge with the important
+  machine-readability distinction (a PDF-only approved decision retrievable by search but not confirmed
+  machine-readable knowledge, PASS), directly extending 0698's machine-readable-semantics discipline.
+
+  Delivers Supersession (`Decision_1→^{supersededBy}Decision_2`, missing supersession links correctly
+  flagged `DRIFT CANDIDATE`) and Contradiction (`A→^{contradicts}B`) with a concrete illustrative failure
+  case directly restating 0682's/0697's `Conflict is knowledge` principle: two disagreeing architecture
+  sources with the system retaining only the newest document, correctly flagged as potential loss of
+  historical conflict information (`OBS`) -- a valuable, precisely reasoned illustration of what happens
+  when that principle is NOT followed. Delivers Provenance formalized as a graph lineage chain
+  (`Claim→^{derivedFrom}Evidence→^{derivedFrom}Observation→^{observedAt}Runtime`), the clearest lineage-
+  chain formalization in this reconstruction, and an Agent-generated-knowledge origin taxonomy
+  (`HumanGenerated/SystemGenerated/AgentGenerated/Imported`), directly extending 0690's/0696's/0697's
+  agent-generated-knowledge disciplines with explicit provenance-origin categories.
+
+  Delivers three concrete, genuinely useful graph-path query examples ("Why is this rule authoritative?",
+  "What evidence supports this architecture?", "What changed because of this decision?"), directly extending
+  0698's `Find()/Include()` query reframing with explicit traversal paths, and refines `GraphCompleteness`
+  (a simple edge-coverage ratio) into the more useful **`CriticalPathCompleteness`** -- "if one critical edge
+  is missing, the entire governance trace may be broken" (a missing single `Decision→Action` edge with all
+  nodes otherwise present correctly yielding an incomplete end-to-end trace, PASS) -- directly extending
+  0699's Vector>Scalar and edge-priority-over-count principles.
+
+  **Delivers three precisely reasoned Graph consistency rules, one of them genuinely novel to this
+  reconstruction**: (1) Temporal consistency -- a superseded decision must not remain marked current
+  indefinitely (both v1 and v2 marked current simultaneously correctly flagged a
+  `TemporalConsistencyViolation`, PASS); (2) Authority consistency -- an authority approving a decision after
+  its own authority has expired correctly flagged a governance violation (PASS), extending 0687's/0689's
+  authority-temporal-bounding discipline; and (3) **Evidence consistency, a genuinely novel anti-fabrication
+  check**: `Evidence.timestamp≤Decision.timestamp` "where appropriate" -- a decision claiming to be based on
+  a runtime observation that actually occurred six months AFTER the decision was made correctly flagged as a
+  "provenance inconsistency" (PASS) -- this is, in effect, a temporal-causality check against retroactively
+  fabricated or post-hoc-rationalized justifications for decisions, a precisely reasoned and currently
+  applicable governance-integrity check not seen in this exact form elsewhere in this reconstruction.
+
+  Delivers Agent-query reframing consistent with 0698's/0699's retrieval discipline ("traverse authoritative
+  architecture decisions... include supporting evidence and current validity" rather than "what do you think
+  the architecture is?") and an explicit Agent-reasoning-boundary division of labor: the agent performs
+  `Traversal+Interpretation+Recommendation`; KnowledgeOS provides `AuthoritativeGraph+Evidence` -- preserving
+  `Knowledge≠Reasoning`. Delivers explicit Inference representation (`Inference→^{basedOn}Evidence`, an
+  agent's invented, unevidenced relationship claim correctly remaining an `Inference`, never a `Fact`, PASS).
+
+  **Delivers a genuinely valuable new organizing framework -- the Three graph layers**: Layer 1 (Fact graph
+  -- `ObservedReality`), Layer 2 (Knowledge graph -- interpreted/validated knowledge), Layer 3 (Reasoning
+  graph -- AI/human inferences), with the explicit requirement that "these must not be silently merged" -- a
+  clean three-tier synthesis of several previously-scattered corpus distinctions (Observation vs. Claim vs.
+  Inference) into a single layered architectural model, directly extending and consolidating the corpus's
+  epistemic-firewall family. Delivers `Inference≠Authority` (restating the Agent≠Authority family precisely
+  for graph-edge proposals) and Graph-mutation governance (`ReadGraph` vs. `ProposeGraphChange` vs.
+  `AuthorizeGraphChange`, an agent-discovered relationship correctly remaining a `CandidateEdge`, never a
+  silently-created `AuthoritativeEdge`, PASS), directly extending 0687's/0692's/0693's governance-of-change
+  disciplines into graph-structure mutation specifically, with edge deletions requiring recorded
+  justification (an unexplained edge deletion correctly flagged a potential knowledge-integrity problem,
+  PASS), extending 0684's/0687's audit-trail disciplines.
+
+  Delivers the complete closed-loop formulation (`Knowledge→Decision→Action→Observation→Evidence→
+  UpdatedKnowledge`), self-declared "the strongest formulation yet of the 'Operating System' metaphor,"
+  directly consolidating 0699's feedback loop.
+
+  **Delivers a fourth diagnostic outcome case, extending 0696's/0698's/0699's three-outcome diagnostic
+  families with a genuinely useful refinement**: alongside Explicit (`ActualGraph≈TargetGraph`), Partial
+  (`ActualGraph⊂TargetGraph`), and Implicit (`ActualGraph≈DerivedFromArtifacts`), a fourth case --
+  Fragmented, where multiple distinct semantic models coexist without reconciliation (`ActualGraph=G_1∪G_2∪
+  G_3`) -- "the last case would indicate fragmentation," directly extended into a Graph-fragmentation test
+  with no common identity or translation between two subsystems' evidence representations correctly
+  constituting semantic fragmentation.
+
+  **Delivers a directly self-referential (though still illustrative, not empirically checked) test case
+  explicitly naming the corpus's own long-tracked pointer-layer architecture as its target**: "Claude memory
+  contains architecture evidence. KnowledgeOS contains separate architecture evidence. Neither references
+  the other. Expected: `KnowledgeDuplication`. Result: `DRIFT CANDIDATE`. **This directly tests the
+  pointer-layer architecture from earlier steps.**" -- the most explicit self-identification anywhere in
+  this reconstruction of a specific illustrative experiment as directly testing the Claude/Codex/.claude/
+  .codex pointer-layer principle first previewed at 0687 and directly engaged (though never empirically
+  resolved) at 0690, 0693, 0695, and 0697.
+
+  Delivers Graph identity requirements (`KnowledgeObjectID` with multiple `Projections` referencing one ID,
+  extending 0691's/0693's/0697's identity-stability and projection-versus-ownership disciplines) and
+  Identity fragmentation (the same decision appearing in three systems under three different IDs with no
+  cross-reference, extending 0696's/0697's semantic-fragmentation family).
+
+  No explicit new named invariants section appears in this file, consistent with the recent methodology-
+  heavy run.
+
+  **Delivers Step 115's verdict with an unusually direct, self-aware acknowledgment of the corpus's own
+  methodological limit**: "STEP 115 — SEMANTIC GRAPH MODEL: PASS. But the actual graph has not yet been
+  proven... **We have now reached the point where continuing to invent conceptual entities would provide
+  diminishing value. The next phase must become evidence execution.**" This is a more explicit and pointed
+  self-diagnosis than the recurring calibrated-pattern verdicts of 0685-0699, directly acknowledging that
+  further conceptual elaboration is no longer the productive path forward.
+
+  **Closes by opening "Step 116 — Actual KnowledgeOS Graph Extraction,"** proposing a concrete Object record
+  schema (identity/type/source/representation/owner/lifecycle/authority/evidence) and Relationship record
+  schema (source/target/type/evidence/confidence/status), with the target deliverable explicitly named a
+  **"semantic gap matrix"** (`TargetEdge→ActualEdge→Evidence→Gap`), closing with the aspiration "that is the
+  point where we can stop asking whether KnowledgeOS could be a Knowledge Operating System and start
+  determining, with evidence, how much of that operating model already exists today" -- renewing the
+  established promise pattern once more. No actual code execution, repository inspection, or verified
+  filesystem/relationship claim is reported anywhere in this file.
+introduces:
+  - concept: "The reconstruction's most complete controlled relationship vocabulary (eleven terms), with the mature caution to map existing terminology rather than impose this vocabulary"
+  - concept: "The first explicit Semantic-edge≠Technical-edge distinction"
+  - concept: "TechnicalTraceability≠DecisionTraceability: a Git commit's existence establishes technical history but not organizational traceability without an explicit decision link"
+  - concept: "A genuinely novel anti-fabrication check: Evidence.timestamp≤Decision.timestamp (where appropriate) — a decision justified by evidence that postdates it is flagged as a provenance inconsistency"
+  - concept: "The Three graph layers model (Fact/Knowledge/Reasoning), which must not be silently merged"
+  - concept: "CriticalPathCompleteness refining GraphCompleteness: a single missing critical edge can break an entire end-to-end governance trace"
+  - concept: "A fourth diagnostic outcome case (Fragmented: multiple coexisting semantic models, G1∪G2∪G3) extending the corpus's three-outcome diagnostic families"
+  - concept: "The most explicit self-referential test case in this reconstruction, directly naming the pointer-layer architecture as its own fragmentation test"
+  - concept: "An explicit, self-aware acknowledgment that further conceptual elaboration has reached diminishing returns: 'the next phase must become evidence execution'"
+  - concept: "Opens Step 116 — Actual KnowledgeOS Graph Extraction with a concrete Object/Relationship record schema and a 'semantic gap matrix'"
+defines:
+  - concept: "Semantic edge≠Technical edge"
+    definition: "A technical dependency (e.g. ServiceA→Database) and a semantic relationship (e.g. Evidence→supports→Decision) are both real and both must be preserved by a knowledge system, but they answer different questions (how the system is built vs. what the knowledge means) and must not be conflated when reconstructing or reasoning about the system"
+  - concept: "Evidence consistency (temporal-causality anti-fabrication check)"
+    definition: "For a claimed supports relationship Evidence→Decision, the evidence's timestamp should generally not postdate the decision's timestamp; a decision claiming to be justified by evidence that did not yet exist at the time of the decision indicates a provenance inconsistency — potentially a retroactively fabricated or post-hoc-rationalized justification"
+  - concept: "The Three graph layers (Fact/Knowledge/Reasoning)"
+    definition: "Layer 1 (Fact graph) represents observed reality directly; Layer 2 (Knowledge graph) represents interpreted and validated knowledge; Layer 3 (Reasoning graph) represents AI or human inferences drawn from the other layers — these three layers must remain distinguishable and must not be silently merged into one undifferentiated graph"
+  - concept: "CriticalPathCompleteness"
+    definition: "Rather than measuring overall graph completeness as a simple ratio of observed to expected edges, identify the specific critical path (e.g. Authority→Decision→Action→Observation) required for a given assurance claim; a single missing edge on that critical path breaks the entire end-to-end trace regardless of how complete the rest of the graph is"
+refines:
+  - concept: "0693's/0697's/0698's/0699's relationship-semantics-versus-structure disciplines"
+    refinement: "Directly extended with the reconstruction's most complete controlled relationship vocabulary and the explicit caution to map, not impose, terminology"
+  - concept: "0691's/0696's technical-versus-domain distinctions"
+    refinement: "Directly extended into the edge-type level specifically via Semantic edge≠Technical edge"
+  - concept: "0691's/0696's component-versus-context distinctions"
+    refinement: "Directly extended into traceability specifically via TechnicalTraceability≠DecisionTraceability"
+  - concept: "0692's architecture drift model"
+    refinement: "Directly and explicitly cross-referenced: a deployment/runtime version mismatch is identified as the same phenomenon as Step 107's drift model"
+  - concept: "the corpus's Recommendation≠Decision family"
+    refinement: "Directly restated for the Claim→Decision edge specifically: informs≠authorizes"
+  - concept: "0687's naming-proves-nothing family"
+    refinement: "Directly restated: authority inferred only from a username yields a weak authority trace"
+  - concept: "0698's machine-readable-semantics discipline"
+    refinement: "Directly extended: a PDF-only decision is retrievable but not confirmed machine-readable knowledge"
+  - concept: "0682's/0697's Conflict-is-knowledge principle"
+    refinement: "Directly restated with a concrete negative illustration: retaining only the newest of two disagreeing sources risks losing historical conflict information"
+  - concept: "0690's/0696's/0697's agent-generated-knowledge disciplines"
+    refinement: "Directly extended with an explicit four-category provenance-origin taxonomy (HumanGenerated/SystemGenerated/AgentGenerated/Imported)"
+  - concept: "0698's Find()/Include() query reframing and 0699's Vector>Scalar/edge-priority principles"
+    refinement: "Directly extended with concrete traversal-path query examples and the CriticalPathCompleteness refinement"
+  - concept: "0687's/0689's authority-temporal-bounding discipline"
+    refinement: "Directly extended into graph-consistency rule form: an expired authority cannot validly authorize a later decision"
+  - concept: "the corpus's epistemic-firewall family (Evidence≠Inference≠Decision≠Authority)"
+    refinement: "Directly and genuinely consolidated into the Three graph layers model (Fact/Knowledge/Reasoning), which must not be silently merged"
+  - concept: "the corpus's Agent≠Authority family"
+    refinement: "Directly restated for graph-edge proposals specifically: Inference≠Authority, ReadGraph≠ProposeGraphChange≠AuthorizeGraphChange"
+  - concept: "0684's/0687's audit-trail disciplines"
+    refinement: "Directly extended into graph-mutation auditing: an unexplained edge deletion is a knowledge-integrity risk"
+  - concept: "0696's/0698's/0699's three-outcome diagnostic families"
+    refinement: "Directly extended with a fourth outcome case (Fragmented: multiple coexisting semantic models)"
+  - concept: "0687's/0690's/0693's/0695's/0697's previewed and repeatedly-engaged-but-never-empirically-resolved pointer-layer principle"
+    refinement: "Given its most explicit self-referential test-case framing yet: this file directly and explicitly identifies its own Claude/KnowledgeOS-duplication illustration as testing that exact principle"
+  - concept: "0691's/0693's/0697's identity-stability and projection-versus-ownership disciplines"
+    refinement: "Directly extended into graph identity requirements (stable KnowledgeObjectID with multiple projections)"
+  - concept: "the calibrated methodology-only pattern (0692-0699)"
+    refinement: "Continued, but with an unusually direct self-aware acknowledgment that further conceptual elaboration has reached diminishing returns and 'the next phase must become evidence execution'"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0701 (Step 116 — Actual KnowledgeOS Graph Extraction) with calibrated vigilance, specifically for whether the corpus's own explicit acknowledgment of diminishing conceptual returns at 0700's close translates into any actual shift toward genuine empirical engagement, or continues the established pattern."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the file's most valuable and in one case genuinely novel contributions: the eleven-term relationship vocabulary, Semantic-edge≠Technical-edge, TechnicalTraceability≠DecisionTraceability, the novel Evidence-timestamp anti-fabrication check, the Three-graph-layers model, CriticalPathCompleteness, and the fourth (Fragmented) diagnostic outcome case."
+  - "dimension-registry.md: record the most explicit self-referential test case in this reconstruction, directly naming the pointer-layer architecture (0687/0690/0693/0695/0697) as this file's own fragmentation test target."
+  - "dimension-registry.md: record the file's unusually direct self-aware verdict acknowledging diminishing returns from further conceptual elaboration ('the next phase must become evidence execution'); flag Step 116 (0701) for whether this translates into any shift in the established methodology-only pattern."
+anchor_test:
+  anchor: "0693's/0697's/0698's/0699's relationship-semantics disciplines; 0691's/0696's technical-versus-domain distinctions; 0692's architecture drift model; the corpus's Recommendation≠Decision family; 0687's naming-proves-nothing family; 0698's machine-readable-semantics discipline; 0682's/0697's Conflict-is-knowledge principle; the corpus's epistemic-firewall family; 0696's/0698's/0699's three-outcome diagnostic families; the pointer-layer principle (0687/0690/0693/0695/0697); the calibrated methodology-only pattern (0692-0699)"
+  supports_dimension: "Delivers a systematic, edge-by-edge semantic-graph reconstruction methodology with several genuinely valuable principles coherently extending prior corpus disciplines, and one genuinely novel contribution: the Evidence-timestamp anti-fabrication check (Evidence.timestamp≤Decision.timestamp), a temporal-causality safeguard against retroactively justified decisions not seen elsewhere in this reconstruction. Delivers the reconstruction's most complete relationship vocabulary, the first explicit technical-versus-semantic-edge distinction, a valuable Three-graph-layers consolidating model, and a fourth (Fragmented) diagnostic outcome case extending prior three-outcome families. Most notably, delivers the most explicit self-referential test case anywhere in this reconstruction, directly naming the long-tracked pointer-layer architecture as its own illustrative fragmentation test. Delivers an unusually direct, self-aware verdict explicitly acknowledging that further conceptual elaboration has reached diminishing returns, distinct in tone from the recurring calibrated-pattern verdicts of 0685-0699"
+  refines_or_contradicts: "directly and genuinely extends 0693's/0697's/0698's/0699's relationship-semantics disciplines, 0691's/0696's technical-versus-domain distinctions, 0692's architecture drift model (explicit cross-reference), the corpus's Recommendation≠Decision family, 0687's naming-proves-nothing family, 0698's machine-readable-semantics discipline, 0682's/0697's Conflict-is-knowledge principle, 0690's/0696's/0697's agent-generated-knowledge disciplines, 0698's/0699's query-reframing and Vector>Scalar principles, 0687's/0689's authority-temporal-bounding discipline, the corpus's epistemic-firewall family, the corpus's Agent≠Authority family, 0684's/0687's audit-trail disciplines, 0696's/0698's/0699's three-outcome diagnostic families, and 0691's/0693's/0697's identity-stability disciplines; directly and explicitly engages (without resolving) the pointer-layer principle; no contradiction found; no new invariants introduced, so no collision risk"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§115.49-115.50's Evidence-consistency experiment (a decision claiming to be based on a runtime observation that actually occurred six months after the decision, correctly flagged a 'provenance inconsistency') is a directly checkable, precisely reasoned, and genuinely novel temporal-causality anti-fabrication check distinct from anything delivered earlier in this reconstruction."
+  - "§115.66's explicit statement -- 'Claude memory contains architecture evidence. KnowledgeOS contains separate architecture evidence... This directly tests the pointer-layer architecture from earlier steps' -- is direct, checkable evidence that this file consciously and explicitly frames one of its illustrative experiments as targeting this reconstruction's own long-tracked, never-empirically-resolved pointer-layer principle."
+  - "§115.70's verdict text -- 'We have now reached the point where continuing to invent conceptual entities would provide diminishing value. The next phase must become evidence execution' -- is a directly quotable, unusually self-aware methodological acknowledgment distinct in tone from the more formulaic verdicts of the preceding fourteen files (0685-0699)."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 116's actual content (0701), once read, reflects any shift in the corpus's own established methodology-only pattern given this file's explicit self-acknowledgment of diminishing conceptual returns, or continues the pattern unchanged."
+tier2_triggered: true
+tier2_reason: "Delivers a systematic, edge-by-edge semantic-graph reconstruction methodology with several genuinely valuable principles and one genuinely novel contribution: the Evidence-timestamp anti-fabrication check (a temporal-causality safeguard against retroactively justified decisions). Delivers the reconstruction's most complete relationship vocabulary, the first explicit technical-versus-semantic-edge distinction, a valuable Three-graph-layers consolidating model, and a fourth (Fragmented) diagnostic outcome case. Delivers the most explicit self-referential test case anywhere in this reconstruction, directly naming the pointer-layer architecture as its own fragmentation test. Delivers an unusually direct, self-aware verdict acknowledging diminishing returns from further conceptual elaboration."

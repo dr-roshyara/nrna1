@@ -1,0 +1,145 @@
+sequence: 402
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-103508_a-dimension-is-an-aspect-along-which-a-state-is-characterized.md
+title: "Twelve Open Questions Organized into Four Categories (Object/Extraction/Establishment/Evolution); Six-Phase Prioritized Research Programme; Three-Lens Disagreement-Detection Methodology"
+date: "2026-08-26"
+bytes: 8280
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "organizes the Sanskrit/Paninian lens as Phase 2 of a six-phase research programme, and proposes comparing it against conventional NLP parsing and the corpus's own dimension lens"
+source_role: PRIMARY_RESEARCH
+canonical_source: 402
+importance: critical
+confidence: high
+about: >
+  A landmark consolidation file, the natural formalization successor to 0392's twenty-two-question catalog,
+  reorganizing the corpus's accumulated open questions from the 0389-0401 dimension/semantic/epistemology
+  arc into TWELVE explicit questions grouped under FOUR CATEGORIES, followed by an explicit SIX-PHASE
+  prioritized research programme and a concrete THREE-LENS empirical disagreement-detection experiment.
+  Opens with the now-familiar self-discipline move: "stop adding new concepts temporarily and define the
+  research questions that remain open."
+
+  CATEGORY A -- What exactly is the object we are modelling? (1) What is a "state"? -- unresolved boundary
+  question (technical properties? relationships? environment? dependencies? applicable rules? organizational
+  decisions? all of these?); (2) What is a dimension? -- restates the working definition ("an aspect along
+  which a state can be characterized") but poses six sharp sub-questions not previously assembled together:
+  can every fact be a dimension? can a dimension itself have dimensions? are dimensions hierarchical? are
+  relationships dimensions? can a dimension be DERIVED rather than observed? can a dimension become relevant
+  without being explicitly named? -- explicitly named "probably one of the most important unresolved
+  questions"; (3) What is the "ideal observed state" I-hat_t precisely? -- five candidate meanings restated
+  (theoretically complete state / expected state / target state / reference-derived state / state
+  reconstructed from all available knowledge), needing clarification before mathematical use.
+
+  CATEGORY B -- How do we extract knowledge? (4) What is the smallest semantic unit? -- reconfirms 0399/0400's
+  finding that sentence=dimension is too coarse, restates the Sentence->Claim->Dimension->Value chain and
+  the candidate Assertion=Subject+Dimension+Value+Context, explicitly flagged as needing testing against
+  real documents (not yet the resolved 0400 candidate, treated here as still provisional); (5) What exactly
+  does the Sanskrit/Paninian lens contribute? -- explicitly demoted from philosophical to EXPERIMENTAL
+  investigation, listing eight target extraction roles (subject/object/agent/instrument/source/context/
+  relationship/action/semantic-role) and restating the key tested principle Expression->SemanticStructure
+  (not Expression=Meaning), with an explicit requirement to determine WHICH Sanskrit grammatical principles
+  are genuinely useful versus merely analogical; (6) How does a sentence become a dimension/value? --
+  reconfirms the Observed-value versus Derived-value distinction via the Nexus version/outdated worked pair,
+  named "a major unresolved point."
+
+  CATEGORY C -- How do we establish knowledge? (7) What makes an extracted statement Knowledge? -- restates
+  0397's epistemic-conditions list (truth/factivity, evidence, belief, justification, entitlement,
+  recognitional ability, testimony, safety/anti-luck) and crystallizes the key unresolved question as
+  Correct-determination =?= Knowledge, explicitly stating "we currently have no reason to assume they are
+  identical"; (8) How do we represent uncertainty? -- reconfirms the two fundamentally different uncertainty
+  types (known-dimension-uncertain-value versus unknown-dimension), crystallized memorably as "we don't know
+  what we don't know," requiring separate mathematical treatment for each; (9) How do probability and logic
+  interact? -- reconfirms Knowledge!=Probability while posing the extraction-order question (Observation->
+  Probability->Determination versus Observation->Logic->Determination versus cases requiring both), and
+  distinguishes FOUR separate uncertainty targets: probability-of-a-value, probability-that-a-dimension-is-
+  relevant, confidence-in-extraction, and uncertainty-about-the-model-itself -- consolidating scattered
+  probability-scoping findings from across 0374-0400 into one four-item list.
+
+  CATEGORY D -- How does Knowledge evolve? (10) What exactly is a Knowledge State Transition? -- restates
+  the NewInformation->NewDimension->Recalculation->Comparison->NewKnowledge chain (0396) and poses the
+  sharpened preservation question (what must be preserved from K_t to reconstruct why K_{t+1} differs?),
+  with a candidate substrate Evidence+Dimensions+Values+Relationships+Rules+Time+Provenance explicitly
+  flagged as "not yet established as the minimum"; (11) How do contradictions work? -- reconfirms
+  K={Claim_A,Claim_B,Conflict} as a legitimate knowledge state (0395/0396's Conflict-is-Knowledge), posing
+  five unresolved sub-questions (what constitutes a conflict; can contradictions coexist; how is conflicting
+  evidence represented; how does later evidence change a conflict; how does an owner decision relate to a
+  conflict); (12) How does Knowledge relate to decisions? -- restates the Knowledge->Determination->Decision
+  chain and the owner-decision-as-new-information/dimension finding (0396), posing the sharp unresolved
+  question of what a decision IS in the knowledge model, with six candidate ontological categories (fact/
+  dimension/governance-assertion/constraint/reference-state/action).
+
+  Delivers the file's central methodological contribution: an explicit SIX-PHASE PRIORITIZED RESEARCH
+  PROGRAMME, deliberately NOT researching all twelve questions simultaneously: Phase 1 ONTOLOGY (State->
+  Dimension->Value->Relation); Phase 2 SEMANTIC EXTRACTION (Expression->SemanticStructure->Dimension/Value,
+  investigating the Sanskrit/Paninian lens plus parser/AST approaches, directly building on 0400/0401);
+  Phase 3 EPISTEMOLOGY (SemanticAssertion->Evidence->Determination->Knowledge, investigating Pritchard/
+  Millar/Haddock/testimony/entitlement/safety, building on 0397); Phase 4 DYNAMICS (K_t->K_{t+1} with new
+  dimensions, new information, recalculation, contradictions, temporal validity, building on 0393-0396);
+  Phase 5 MATHEMATICS, explicitly deferred until AFTER the preceding four phases -- "what mathematical
+  structure represents all of this?" (graphs, state spaces, probability, logic, lattices, temporal models,
+  or something not yet identified); Phase 6 KERNEL, explicitly deferred until last -- "what is the smallest
+  KnowledgeOS unit that must be preserved?" -- this explicit phase ordering formalizes and generalizes the
+  corpus's recurring pre-Kernel-design discipline (0382/0391/0392) into a concrete six-stage sequence with
+  Mathematics deliberately placed second-to-last, a striking departure from the corpus's earlier
+  mathematics-first instincts (0327-0340).
+
+  Closes by proposing the corpus's next concrete research experiment be LINGUISTIC, not architectural: take
+  one real Nexus document and process every sentence through a full ten-stage pipeline (Sentence->Tokens->
+  Syntax->Semantic-roles->Claims->Dimensions->Values->Relations->Evidence->Derived-determinations),
+  explicitly proposing to examine WHERE THE MODEL BREAKS as more informative than continuing to define
+  "knowledge" abstractly. Specifies a concrete THREE-LENS COMPARISON METHODOLOGY applied to the SAME
+  sentences: (1) Conventional NLP/AST parsing; (2) Sanskrit/Paninian semantic-role lens; (3) the corpus's
+  own dimension/value/state lens -- explicitly predicting "the places where all three disagree will probably
+  reveal the real unresolved structure of KnowledgeOS," a genuine empirical disagreement-detection
+  methodology directly structurally parallel to 0358's cross-regime Intersection Method, but newly applied
+  specifically at the semantic-extraction layer rather than the epistemic-determination layer.
+introduces:
+  - concept: "Twelve explicit open research questions consolidated under four named categories (A: object being modeled; B: extraction; C: establishment; D: evolution) -- the corpus's most systematically categorized open-questions inventory since 0392's flat twenty-two-item list"
+  - concept: "Six explicit sharp sub-questions about the nature of 'dimension' assembled together for the first time: can every fact be a dimension? can a dimension have dimensions (hierarchy)? are relationships dimensions? can a dimension be derived rather than observed? can a dimension become relevant without being explicitly named?"
+  - concept: "Four-item consolidated uncertainty-scoping list: probability-of-a-value, probability-that-a-dimension-is-relevant, confidence-in-extraction, and uncertainty-about-the-model-itself -- unifying scattered probability-scoping findings from 0374-0400 into one explicit inventory"
+  - concept: "Six candidate ontological categories for what a DECISION is within the knowledge model: fact, dimension, governance assertion, constraint, reference state, or action -- the corpus's first explicit enumeration of decision-ontology candidates"
+  - concept: "Explicit SIX-PHASE prioritized research programme (Ontology -> Semantic Extraction -> Epistemology -> Dynamics -> Mathematics -> Kernel), deliberately placing Mathematics second-to-last and Kernel strictly last -- formalizing and generalizing the corpus's recurring pre-Kernel-design discipline (0382/0391/0392) into one concrete ordered sequence, a striking departure from the corpus's earlier mathematics-first research instincts (0327-0340)"
+  - concept: "Concrete proposed LINGUISTIC (not architectural) next experiment: process one real document through a full ten-stage Sentence->Tokens->Syntax->Semantic-roles->Claims->Dimensions->Values->Relations->Evidence->Derived-determinations pipeline, examining where the model breaks"
+  - concept: "Three-lens comparison methodology applied to the SAME sentences (Conventional NLP/AST parsing vs. Sanskrit/Paninian semantic-role lens vs. the corpus's own dimension/value/state lens), predicting that cross-lens DISAGREEMENT will reveal KnowledgeOS's real unresolved structure -- structurally parallel to 0358's cross-regime Intersection Method, newly applied at the semantic-extraction layer"
+defines: []
+refines:
+  - concept: "0392's twenty-two-item flat Q1-Q22 open-questions catalog"
+    refinement: "Reorganized into a tighter, twelve-item, four-category structure specifically reflecting the 0389-0401 dimension/semantic/epistemology research arc, with several questions consolidated or sharpened (e.g. the six dimension-sub-questions, the four-item uncertainty-scoping list)"
+  - concept: "0382/0391/0392's recurring pre-Kernel-design discipline and informal self-corrections against premature Kernel-tuple-writing"
+    refinement: "Formalized into an explicit, named six-phase research programme with strict ordering, placing Mathematics fifth (not first) and Kernel sixth (strictly last) -- the most concrete procedural discipline statement in the corpus to date"
+  - concept: "0358's cross-regime Intersection Method (Kernel Candidate ~= intersection over regimes of Requirements(R))"
+    refinement: "Given a structurally parallel but newly-targeted instantiation: a three-lens (NLP/Sanskrit/dimension-model) disagreement-detection methodology applied specifically to the semantic-extraction layer, rather than the epistemic-determination layer"
+  - concept: "0397's Correct-determination-vs-Knowledge distinction"
+    refinement: "Crystallized into the explicit formula Correct-determination=?=Knowledge with the direct statement 'we currently have no reason to assume they are identical'"
+  - concept: "0399/0400's smallest-semantic-unit resolution (semantically resolved assertion + minimum context)"
+    refinement: "Treated here as still PROVISIONAL and requiring testing against real documents, rather than fully settled -- an interesting discrepancy with 0400's own more confident framing ('a much stronger candidate'), suggesting this file may represent a slightly earlier or more cautious checkpoint in the same research thread"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the twelve-question, four-category reorganization of the corpus's open-questions inventory, superseding 0392's flat twenty-two-item catalog for the specific dimension/semantic/epistemology arc."
+  - "dimension-registry.md: record the explicit six-phase prioritized research programme (Ontology->Semantic-Extraction->Epistemology->Dynamics->Mathematics->Kernel) as the corpus's most concrete procedural discipline statement to date, with Mathematics deliberately deferred to fifth position."
+  - "dimension-registry.md: record the three-lens (NLP/Sanskrit/dimension-model) disagreement-detection methodology as a new, semantic-extraction-layer instantiation of 0358's cross-regime Intersection Method."
+anchor_test:
+  anchor: "0392's twenty-two-item Q1-Q22 catalog; 0382/0391's pre-Kernel-design discipline; 0358's Intersection Method; 0397's Correct-determination-vs-Knowledge distinction; 0399/0400's smallest-semantic-unit research; 0401's three-stream convergence"
+  supports_dimension: "Mathematical/architectural/linguistic model, landmark consolidation: reorganizes the corpus's accumulated 0389-0401 open questions into twelve items under four categories, formalizes a six-phase prioritized research programme deliberately deferring Mathematics and Kernel design to the end, and proposes a concrete three-lens (conventional-NLP/Sanskrit-Paninian/dimension-model) empirical disagreement-detection experiment structurally parallel to 0358's Intersection Method but newly targeted at the semantic-extraction layer"
+  refines_or_contradicts: "refines 0392 (tighter, categorized question set); formalizes 0382/0391's informal pre-Kernel discipline into an explicit six-phase sequence; extends 0358's Intersection Method to a new layer; refines 0397 (crystallizes Correct-determination=?=Knowledge); treats 0399/0400's smallest-semantic-unit resolution as still provisional, a minor tension with 0400's more confident framing"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "Whether the Assertion=Subject+Dimension+Value+Context candidate (treated here as still provisional) is the same as or distinct from 0400's more confidently-stated Knowledge Unit candidate (semantically resolved assertion + minimum context) -- not explicitly reconciled"
+open_questions:
+  - "Whether the six-phase research programme is followed in the stated strict order in subsequent files"
+  - "Whether the proposed linguistic experiment (one real document through the ten-stage pipeline) is ever executed"
+  - "Whether the three-lens (NLP/Sanskrit/dimension-model) disagreement-detection experiment is ever run, and what disagreements it surfaces"
+  - "Whether the twelve consolidated questions are individually resolved as the six-phase programme proceeds"
+tier2_triggered: true
+tier2_reason: "Landmark consolidation file reorganizing the corpus's 0389-0401 open-questions inventory into twelve items under four explicit categories (object/extraction/establishment/evolution), formalizing a six-phase prioritized research programme (Ontology->Semantic-Extraction->Epistemology->Dynamics->Mathematics->Kernel) that deliberately defers both Mathematics and Kernel design to the end -- the corpus's most concrete procedural discipline statement to date, a striking departure from its earlier mathematics-first instincts (0327-0340). Proposes a concrete three-lens (conventional-NLP/Sanskrit-Paninian/dimension-model) empirical disagreement-detection experiment structurally parallel to 0358's cross-regime Intersection Method but newly targeted at the semantic-extraction layer, predicting that cross-lens disagreement will reveal KnowledgeOS's real unresolved structure."

@@ -1,0 +1,210 @@
+sequence: 622
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-103429_step-041-epistemic-sufficiency-decision-preconditions-and-assurance-composition.md
+title: "The Corpus's Decision-Sufficiency Layer — Sufficient(K,d) Formally Decision-Specific, Never Universal; a Full Kleene-Style Three-Valued Epistemic Logic (T/F/U) With Worked Conjunction/Disjunction Truth Tables; 'Sufficiency≠Certainty' Self-Named 'Perhaps the Most Important Result of Step 41'; Minimal Sufficient Evidence Sets Formalized as NP-Hard Set Cover; the Critical AI-Governance Principle 'Human-in-the-Loop≠Independent Human Validation'; Assurance Formally Composed by Explicit Policy-Defined Modes (AND/OR/Threshold/Weighted/Conditional/IndependentProbabilistic), Never Naive Averaging; Assurance Formally Time-Bounded and Expiring; Verdict 'STEP 41 — PASS'; Opens Step 42 (Assurance Composition, Invariants, Safety Gates and Formal Decision Contracts) — AND A NOTABLE METHODOLOGY OBSERVATION: 0621's JUST-PROPOSED FOUR-ARTIFACT REQUIREMENT (MATH+DDD+SOFTWARE+TEST) IS NOT FORMALLY ADOPTED HERE AS A STRUCTURED DELIVERABLE"
+date: "2026-08-28"
+bytes: 21361
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 41 -- Epistemic Sufficiency, Decision Preconditions, Assurance Composition and the Mathematics of Enough Knowledge', opened cleanly at 0620's close (0621 was an intervening review/verdict meta-document, not a numbered content step) and directly and substantively fulfills the five-condition AND-composition worked example 0620 previewed"
+source_role: PRIMARY_RESEARCH
+canonical_source: 622
+importance: critical
+confidence: high
+about: >
+  Opens Step 41 directly executing 0620's close, posing "when is there enough trustworthy knowledge to make
+  a decision?" -- explicitly distinct from asking whether a claim is true. **Delivers the file's foundational
+  distinction**: `Knowledge` vs. `Knowledge sufficient for a purpose`, formalized as `Sufficient(K,d)`,
+  explicitly **decision-specific, never universal** (`Sufficient(K,d_1)` does not imply
+  `Sufficient(K,d_2)`, worked `P(SystemHealthy)=0.95` sufficient-for-low-risk but insufficient-for-safety-
+  critical example). Delivers formal Decision preconditions `Pre(d)={p_1,...,p_n}` (worked
+  `{IdentityConfirmed, CurrentStateKnown, SecurityValidated, GovernanceApproved}`, directly reusing 0620's
+  own preview example) and the formal `Necessary≠Sufficient` distinction (`SecurityValidated` necessary but
+  not sufficient without `TestingPassed/ArchitectureApproved/RollbackAvailable`).
+
+  **Delivers the file's first central formal deliverable -- Conjunctive assurance with an explicit weakest-
+  link property**: `Sufficient(d)=A∧B∧C∧D`; if any one mandatory condition is `False`, `Sufficient=False`
+  regardless of how many others passed ("it does not matter that 75% of the conditions passed"). Delivers
+  a precise, concrete caution against averaging assurance scores (worked `0.99, 0.99, 0.10` example
+  averaging to a misleadingly reassuring `0.693` when the low-assurance critical condition should be
+  decisive), and the recurring principle **`Mathematical composition requires semantic assumptions`**.
+  Delivers Assurance reformalized as a structured object
+  (`Claim, Evidence, Method, Context, Time, Uncertainty, Validation, Scope`) rather than a bare scalar,
+  reconfirming the corpus's established anti-scalar discipline, together with a concrete, executable-
+  governance-style `EvidenceRequirement(d)` worked example (a Production Deployment requirement block
+  listing Identity/Architecture/Security/Tests/Rollback/Governance conditions).
+
+  **Delivers the file's second central formal deliverable -- a full, formally worked three-valued
+  (Kleene-style) epistemic logic** `𝕃_3={T,F,U}` for Knowledge sufficiency
+  (`KS(K,d)∈{True,False,Unknown}`), with complete conjunction and disjunction truth tables making explicit
+  that `Unknown` must never silently collapse into `True` or `False` -- the corpus's most explicit, fully
+  tabulated formal logic system to date, extending (rather than merely asserting) the recurring
+  `Unknown≠False` principle. Delivers formal Decision gates (`Gate(d,K)∈{Pass,Fail,Blocked,Unknown}`) and
+  **`GatePass≠Authorization`**, explicitly noted as reinforcing Step 40's `Optimal≠Authorized` distinction.
+
+  Delivers Assurance composition requiring an explicit composition rule (`Assurance(d)=Compose(A_1,A_2,
+  A_3)`), with probabilistic multiplication (`P(A_1∧A_2)=P(A_1)P(A_2)`) permitted only under justified
+  independence (`A_1⊥A_2`), **explicitly citing Step 37's (0617) lesson that independence cannot simply be
+  assumed**, and the danger of common-source dependent evidence producing severe overconfidence
+  (`Evidence correlation must be represented`).
+
+  **Delivers the file's third central formal deliverable -- Minimal Sufficient Evidence Sets formalized as
+  an NP-hard Set Cover problem**: for OR-of-AND decision requirements (`A∧B` OR `C∧D`, two sufficient sets
+  `S_1={A,B}`, `S_2={C,D}`), the minimal evidence-selection problem
+  (`S^*=argmin_S Cost(S)` subject to full requirement coverage) is explicitly identified as
+  **`NP-hard`** (Minimum Set Cover), reconfirming the corpus's now-recurring "computationally feasible
+  without every optimization being exact" discipline via greedy approximation, and explicitly connected to
+  Step 35's (0615) resource-allocation machinery. Delivers the important caveat `Minimal≠Weakest` -- minimal
+  subject to sufficiency, not minimal evidence volume.
+
+  Delivers Assurance redundancy/diversity as a deliberate safety-efficiency tradeoff
+  (`Efficiency↔AssuranceRedundancy`), `AssuranceBudget(d)` as a further resource-allocation instance, and
+  decision-specific, governance-justified evidence thresholds (`Threshold(d)`, never arbitrary). Delivers
+  Risk-adjusted sufficiency (`Risk(d|K)≤R_max`) and a principled Epistemic stopping rule --
+  **explicitly unifying three separate corpus steps into one pipeline**: Step 34 (0614, what should we
+  learn), Step 35 (0615, where should we spend resources), Step 41 (this file, when do we have enough) --
+  **`Acquire→Allocate→Stop`**.
+
+  **Delivers the file's fourth central formal deliverable, self-described as "perhaps the most important
+  result of Step 41"**: **`Sufficiency≠Certainty`** -- KnowledgeOS does not need `P(Truth)=1`, only
+  `DecisionRequirementsSatisfied` (worked `P(MigrationSuccess)=0.97` example, sufficient for one risk
+  tolerance, insufficient for a stricter `R_max≥0.999`). Delivers **`Uncertainty≠Risk`** as a further
+  precise distinction (a highly uncertain but low-cost decision can have low risk; a relatively certain
+  event can be high-impact). Delivers robust sufficiency under model-family uncertainty
+  (`sup_{P∈𝒫}Risk_P(d)≤R_max`), directly reconfirming 0617's distributionally-robust decision framing, and
+  the important governance caution that KnowledgeOS must surface `ModelDisagreement` across a plural model
+  set `ℳ={M_1,...,M_k}` rather than silently selecting the most favorable model.
+
+  Delivers **Ensemble agreement explicitly noted as not proof**, reconfirming the corpus's established
+  `CommonCause` discipline (0592, 0617) -- ten models agreeing does not establish truth if they share
+  assumptions. **Delivers the file's fifth central formal deliverable, a critical AI-governance
+  principle**: **`Human-in-the-loop≠Independent human validation`** -- a human reviewer who merely reads
+  and agrees with AI output without independently examining the underlying source evidence does not create
+  genuinely independent assurance; true independent review requires the human to examine `SourceEvidence`
+  directly. Delivers a formal `Independence(A_i,A_j)` assurance-independence matrix
+  (`True/False/Unknown`), parallel to but three-valued relative to 0617's four-value independence enum.
+
+  Delivers a formal, policy-defined Assurance composition-mode taxonomy
+  (`AND, OR, Threshold, Weighted, Conditional, IndependentProbabilistic`), with the mode determined by
+  decision policy rather than fixed universally, formalized as
+  `Assurance(d)=Compose(A_1,...,A_n,Policy_d)`, together with the DDD-boundary-preserving distinction
+  **`Policy is not mathematics`** -- mathematics evaluates whether a policy's requirements are satisfied;
+  it does not decide what those requirements should be, which remains governance/bounded-context-owned.
+
+  Delivers Decision-precondition temporal lifecycle (`Unknown→Satisfied/Failed`, `Satisfied→Stale`) and
+  **Stale assurance** as a formally time-bounded concept (`ValidFrom/ValidUntil`, `Valid(A,t)`), with the
+  important, concrete distinction that a test passing yesterday (`TestPassed(t_1)`) does not automatically
+  prove today's production state (`CurrentStateValidated(t_2)`).
+
+  **Delivers twelve labeled falsification experiments (1-12), ALL PASS**: all mandatory preconditions
+  satisfied correctly yielding `Sufficient=True`; one false mandatory precondition correctly yielding
+  `Sufficient=False`; one unknown mandatory precondition correctly yielding `Unknown` or policy-defined
+  blocking; a low-confidence non-critical item correctly not automatically blocking the decision; a
+  common-source pair correctly avoiding unjustified probabilistic multiplication; ten AI agents echoing one
+  source correctly not counted as ten independent paths; human review of AI output without source
+  examination correctly not classified independent; expired validation correctly becoming `Stale` and
+  potentially blocking; an OR-of-AND requirement correctly satisfiable by either sufficient set; 80%
+  coverage of mandatory requirements correctly not yielding an arbitrary "80% assured" pass; identical
+  evidence correctly producing different sufficiency outcomes for a low-risk vs. safety-critical decision;
+  no-further-positive-VOI correctly triggering investigation stop.
+
+  **Delivers Step 41's verdict — "STEP 41 — PASS,"** self-described as "one of the most important steps so
+  far," formally separating `Knowledge` from `DecisionSufficiency`. **Delivers seven core numbered
+  principles** (enough knowledge is always relative to decision/context/risk/policy; certainty is not
+  required for justified action; decision sufficiency must be explicitly defined, not inferred from one
+  confidence score; mandatory assurance conditions compose structurally, not by naive averaging; evidence
+  independence must be justified; assurance expires; policy defines what is sufficient, mathematics
+  evaluates whether sufficiency is satisfied).
+
+  Delivers a complete, updated end-to-end decision-chain diagram (Evidence→Claims→Validation→Assurance
+  Objects→Decision Preconditions→[Satisfied/Unknown]→Sufficiency Test/Investigate→Decision Gate→
+  [PASS/BLOCK/FAIL]→Authorization/Investigate/Reject→Action→Outcome→Meta-Validation), and the file's own
+  self-assessment that KnowledgeOS is now closer to **"Evidence-based decision assurance"** than to merely
+  "a system that stores knowledge and helps AI agents reason."
+
+  **Delivers a candidate software-concept noun list** (`Evidence, Claim, Assertion, Identity, Context,
+  Provenance, Validation, Assurance, Precondition, Policy, DecisionGate, Conflict, Investigation,
+  Observation, Outcome`) with the **explicit caution not to immediately turn each noun into a class** --
+  DDD must first discover `BoundedContexts, Aggregates, Entities, ValueObjects, Commands, DomainEvents,
+  Policies, Invariants`.
+
+  **NOTABLE METHODOLOGY OBSERVATION (tracked corpus-integrity/process finding)**: 0621's landmark review
+  explicitly recommended that every step from 41 onward deliver four distinct artifacts -- a mathematical
+  definition, a DDD interpretation, a software abstraction, and executable falsification tests. This file
+  (Step 41) does **not** structure itself around that four-part deliverable: it delivers the mathematical
+  definition and the same established prose-narrated, hand-verified falsification-experiment format as
+  every prior step; DDD/software considerations appear only as brief inline remarks (§41.51-41.52, §41.79)
+  rather than as a dedicated, separately labeled artifact, and the falsification experiments remain
+  narrative rather than genuinely executable. This is recorded here as an observed gap between a just-made
+  methodological recommendation and its immediate next-file execution, not adjudicated as either a failure
+  or an abandonment -- it may still be operationalized more fully in a subsequent step.
+
+  **Closes by identifying the next mathematical problem -- proving a decision gate cannot authorize an
+  invalid state**: **"how can we prove that a decision gate itself cannot authorize an invalid state?"**
+  **Opens "Step 42 — Assurance Composition, Invariants, Safety Gates and Formal Decision Contracts,"**
+  cleanly, with no renumbering collision, explicitly framed as the transition point "from epistemic
+  reasoning toward formally constrained executable governance," and "the point where the mathematical
+  architecture begins to map extremely directly into the software architecture of KnowledgeOS." No actual
+  code execution reported. No corpus-integrity topic collision detected for this file's substantive content.
+introduces:
+  - concept: "Sufficient(K,d) formally decision-specific, never universal — sufficiency for one decision never implies sufficiency for another"
+  - concept: "A full, worked Kleene-style three-valued epistemic logic (T/F/U) for knowledge sufficiency, with complete conjunction and disjunction truth tables — the corpus's most explicit formal three-valued logic to date"
+  - concept: "Sufficiency≠Certainty, self-described as perhaps the most important result of Step 41 — decision requirements satisfied, not P(Truth)=1"
+  - concept: "Minimal Sufficient Evidence Sets formalized as NP-hard Set Cover, directly connecting to Step 35's resource-allocation machinery and the corpus's approximation-over-exactness discipline"
+  - concept: "Human-in-the-loop≠Independent human validation, a critical, concretely worked AI-governance principle distinguishing genuine independent review from mere agreement with AI output"
+  - concept: "A policy-defined assurance composition-mode taxonomy (AND/OR/Threshold/Weighted/Conditional/IndependentProbabilistic), with Policy is not mathematics preserving the DDD boundary between governance-owned requirements and mathematics-owned evaluation"
+  - concept: "A notable methodology-tracking observation: 0621's just-proposed four-artifact requirement (Math/DDD/Software/Test) is not formally adopted as a structured deliverable in this immediately following step"
+defines:
+  - concept: "Sufficient(K,d)"
+    definition: "A decision-specific predicate over available knowledge K and decision d, distinct from truth or certainty; satisfying it for one decision carries no implication for any other decision"
+  - concept: "𝕃_3={T,F,U} for knowledge sufficiency"
+    definition: "A three-valued epistemic logic in which Unknown is a first-class truth value with its own conjunction/disjunction behavior, never silently collapsed into True or False"
+  - concept: "MinimalSufficientSet(d) as NP-hard Set Cover"
+    definition: "The problem of selecting a minimum-cost evidence set that jointly covers all of a decision's requirements is formally equivalent to Minimum Set Cover, an NP-hard problem, addressed in practice via greedy approximation rather than exact optimization"
+  - concept: "Human-in-the-loop≠Independent human validation"
+    definition: "A human reviewer merely reading and agreeing with an AI's output, without independently examining the underlying source evidence, does not constitute an independent assurance path; genuine independent human validation requires direct examination of source evidence"
+  - concept: "Policy is not mathematics"
+    definition: "Mathematics evaluates whether a governance-defined decision policy's requirements are satisfied by available knowledge; it does not determine what those requirements should be, preserving the DDD boundary between governance ownership and epistemic evaluation"
+refines:
+  - concept: "0620's (Step 40) five-condition AND-composition preview example"
+    refinement: "Directly and fully formalized: the same Pre(d)={IdentityConfirmed,CurrentStateKnown,SecurityValidated,GovernanceApproved} example is reused and given complete weakest-link and three-valued-logic treatment"
+  - concept: "0617's (Step 37) independence-cannot-be-assumed discipline and CommonCause concept (also reconfirmed at 0592)"
+    refinement: "Directly and explicitly cited ('we learned in Step 37 that independence cannot simply be assumed') and reapplied to assurance composition and ensemble-agreement evaluation specifically"
+  - concept: "0620's (Step 40) Optimal≠Authorized principle"
+    refinement: "Directly reconfirmed via GatePass≠Authorization, explicitly noted as reinforcing Step 40"
+  - concept: "0615's (Step 35) resource-allocation and portfolio-optimization machinery"
+    refinement: "Directly connected to minimal-evidence-set selection (Set Cover) and assurance-budget allocation as further instances of the same resource-allocation problem class"
+  - concept: "0614's (Step 34) and 0615's (Step 35) decision-theoretic machinery"
+    refinement: "Explicitly unified into a single three-step pipeline (Acquire→Allocate→Stop): what to learn (34), where to spend resources (35), when to stop (41)"
+  - concept: "0621's just-proposed four-artifact methodology (Mathematics/DDD/Software/Test)"
+    refinement: "Not formally adopted as a structured deliverable in this immediately following step, despite brief inline DDD/software remarks — recorded as a tracked observation, not an adjudicated failure"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Track whether Step 42 (Assurance Composition, Invariants, Safety Gates and Formal Decision Contracts) or any later step ever formally adopts 0621's proposed four-artifact structure (explicit, separately labeled Mathematical definition / DDD interpretation / Software abstraction / Executable falsification tests sections), or whether the corpus continues its established single-track mathematics-and-narrative-falsification pattern throughout."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Sufficient(K,d) as formally decision-specific; the full Kleene-style three-valued epistemic logic with worked truth tables; the weakest-link conjunctive-assurance principle with the explicit averaging-danger example; and Assurance reformalized as a structured object rather than a scalar."
+  - "dimension-registry.md: record Sufficiency≠Certainty (self-described as perhaps the most important Step-41 result), Uncertainty≠Risk, Minimal Sufficient Evidence Sets formalized as NP-hard Set Cover, and the critical AI-governance principle Human-in-the-loop≠Independent human validation."
+  - "dimension-registry.md: record the policy-defined assurance composition-mode taxonomy with Policy is not mathematics preserving the DDD boundary, Assurance's temporal validity/staleness treatment, twelve falsification experiments (ALL PASS), seven core numbered principles, verdict 'STEP 41 — PASS', and the tracked methodology observation that 0621's four-artifact proposal was not formally adopted as a structured deliverable in this step."
+anchor_test:
+  anchor: "0620's (Step 40) five-condition AND-composition preview and Optimal≠Authorized principle; 0617's (Step 37) independence-cannot-be-assumed discipline; 0615's (Step 35) resource-allocation machinery; 0614's (Step 34) VOI/active-learning machinery; 0621's just-proposed four-artifact methodology recommendation"
+  supports_dimension: "Delivers a rigorous, cleanly organized formalization of decision-sufficiency directly and fully executing the question 0620 explicitly deferred, reusing and completing 0620's own worked five-condition preview example. Delivers a genuinely important, fully worked formal three-valued logic (the corpus's most explicit truth-table treatment of Unknown to date), directly operationalizing the recurring Unknown≠False principle rather than merely restating it. Delivers a precisely worded, self-consciously flagged 'most important result' (Sufficiency≠Certainty) that meaningfully advances the corpus's core epistemic-safety argument. Correctly and explicitly identifies minimal-evidence-set selection as NP-hard Set Cover, connecting cleanly to the corpus's established resource-allocation and approximation-over-exactness disciplines. Delivers a concrete, memorable, and practically important AI-governance principle (Human-in-the-loop≠Independent human validation) directly relevant to any real AI-assisted decision system, extending the corpus's independence-must-be-justified discipline into human-review specifically. Notably, however, this file does not adopt the four-artifact deliverable structure 0621 had just proposed one file earlier — a directly checkable methodology-tracking finding worth carrying forward rather than silently ignoring, since it bears on whether the corpus's own periodic self-audits produce lasting changes to its working method or remain aspirational"
+  refines_or_contradicts: "directly and fully executes 0620's five-condition preview example and reconfirms its Optimal≠Authorized principle via GatePass≠Authorization; explicitly cites and reapplies 0617's independence discipline; directly connects to and unifies 0614's and 0615's decision-theoretic machinery into one Acquire→Allocate→Stop pipeline; does NOT adopt 0621's just-proposed four-artifact methodology as a structured deliverable, a directly observable gap between recommendation and immediate execution; no contradiction found in substantive content; no corpus-integrity topic collision detected"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The full Kleene-style three-valued conjunction and disjunction truth tables (nine rows each, explicitly tabulated for {T,F,U}) are directly checkable, concrete evidence of a genuinely rigorous formal-logic deliverable, distinguishable from the corpus's earlier, less formally worked references to three-valued or non-classical reasoning (e.g. 0607's/0620's paraconsistency discussions, which described the principle without a full truth table)."
+  - "The explicit worked numeric example (Assurance(A)=0.99, Assurance(B)=0.99, Assurance(C)=0.10, averaging to a misleadingly reassuring 0.693) is directly checkable, concrete evidence of a genuinely important and practically applicable caution against naive assurance aggregation, with direct relevance to any real decision-gate implementation that might otherwise average heterogeneous assurance scores."
+  - "The absence of any explicitly labeled 'DDD interpretation,' 'Software abstraction,' or 'Executable falsification tests' section in this file, immediately following 0621's explicit recommendation that every step from 41 onward include exactly these four artifacts, is directly checkable by comparing this file's actual structure against 0621's stated recommendation — supporting the tracked methodology observation rather than resting on inference alone."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 42 or any later step ever formally adopts 0621's proposed four-artifact structure (explicit Mathematical/DDD/Software/Test sections), or whether the corpus continues its single-track mathematics-and-narrative-falsification pattern throughout the remainder of the research program"
+tier2_triggered: true
+tier2_reason: "Delivers a rigorous, cleanly organized formalization of decision-sufficiency directly and fully executing the question 0620 explicitly deferred, reusing and completing 0620's own worked preview example. Delivers a genuinely important, fully worked formal three-valued logic (the corpus's most explicit truth-table treatment of Unknown to date). Delivers a precisely worded, self-consciously flagged 'most important result' (Sufficiency≠Certainty). Correctly identifies minimal-evidence-set selection as NP-hard Set Cover, connecting cleanly to established resource-allocation disciplines. Delivers a concrete, practically important AI-governance principle (Human-in-the-loop≠Independent human validation). Notably does not adopt the four-artifact deliverable structure 0621 had just proposed one file earlier — a directly checkable methodology-tracking finding worth carrying forward as an open item for this reconstruction, bearing on whether the corpus's periodic self-audits produce lasting changes to its own working method."

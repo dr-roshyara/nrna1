@@ -1,0 +1,123 @@
+sequence: 452
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-163735_the-investigation-is-progressive.md
+title: "LANDMARK: Progressive Investigation Principle — Investigation Depth Not Predetermined but Dynamically Emergent (Six Explicit Levels); Zero+Lord Made Operational (Not Merely Descriptive); Sārathi Reframed as 'Dynamic Investigation Guide'; KnowledgeOS Needs an Investigation Loop, Not a Single Observation Engine"
+date: "2026-08-26"
+bytes: 9350
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "derives the progressive-investigation architecture directly from the Chapter 1 Arjuna narrative sequence"
+source_role: PRIMARY_RESEARCH
+canonical_source: 452
+importance: critical
+confidence: high
+about: >
+  A landmark architectural file crystallizing a central observation from 0451's case study -- "Arjuna did
+  not initially ask a complex question. The complexity emerged from the dimensions revealed by the first
+  observation" -- into a full Progressive Investigation architecture for KnowledgeOS. Models investigation
+  as Q_0 -> O_0 -> D_1,D_2,D_3,... -> Q_1,Q_2,Q_3,..., with the initial question ("who are the people I must
+  fight?") revealing seven dimensions (person, side, relationship, family, teacher, social role, moral
+  relationship) that themselves generate entirely new questions -- explicitly "much more sophisticated than
+  Question -> Search -> Answer."
+
+  Delivers the file's central formal contribution: an explicit **six-level investigation-depth model**
+  (Level 0, initial observation answering the original purpose; Level 1, dimension discovery -- the
+  observation reveals additional dimensions such as enemy/relative/teacher/grandfather/friend/son/kinsman;
+  Level 2, relationship investigation -- the question shifts from "who are they?" to "what is my
+  relationship with them?"; Level 3, consequence investigation -- "if I kill them, what happens to family,
+  duty, tradition, society?"; Level 4, ideal-state investigation -- "what should I actually consider the
+  desired/ideal outcome?", where Arjuna's original determination is directly challenged; Level 5, decision
+  investigation -- "given everything now known, what should I do?", where Arjuna explicitly requests
+  Krishna's guidance). Crystallizes this into a named **Progressive Investigation Principle**: "the depth of
+  investigation is not predetermined by the initial question. It is dynamically determined by the dimensions
+  and relationships discovered during observation," formalized as Depth_{t+1}=f(D_new,R_new,Uncertainty_t,
+  DecisionContext), with the explicit architectural consequence that KnowledgeOS must never decide upfront
+  "this is a Level-3 investigation" -- investigation depth must emerge from discovered knowledge.
+
+  Reframes "dimension" as potentially "a new axis of inquiry" that opens entirely new regions of the
+  knowledge space, illustrated with a worked chain (Person -> Relationship -> Duty -> Consequence -> Ideal ->
+  Action), explicitly connecting this to the corpus's established infinite-space hypothesis. Makes the Zero
+  and Lord Lenses concretely OPERATIONAL rather than merely descriptive for the first time in this precise
+  form: Zero(K_t) -> MissingDimension -> FurtherInquiry (worked example: detecting "relationship dimension
+  not assessed" yields "the current answer is insufficient because an unassessed dimension may materially
+  affect the purpose," rather than simply "answer found"); and Lord and Zero explicitly paired as Zero ->
+  Gap while Lord -> PossibleDimension, worked via a concrete Bhisma example (Lord Lens suggests candidate
+  dimensions relationship/duty/authority/history/consequence; Zero Lens asks which of these remain
+  unassessed), after which the Sarathi decides how to guide the Knower through the investigation.
+
+  Gives the Sarathi role a more precise operational characterization: not simply "answer the question" but
+  **"a dynamic investigation guide"**, following a six-stage internal process (current epistemic state ->
+  what has been discovered -> what dimensions are now relevant -> what remains unresolved -> what should be
+  investigated next -> has the Knower reached decision sufficiency?). Uses this to explain, at an
+  architectural level, why Krishna does not immediately answer Arjuna in Chapter 1: the full causal chain is
+  Arjuna observes -> new dimensions appear -> his knowledge changes -> his uncertainty increases -> his
+  conceptual model becomes inadequate -> he asks deeper questions -> Krishna begins guidance, rather than a
+  simple question-answer exchange.
+
+  Formalizes all of this as a named **Progressive Investigation Principle**: an observation may reveal
+  dimensions not part of the original inquiry; newly revealed dimensions may create new questions, alter
+  existing interpretations, increase uncertainty, and require deeper levels of investigation -- formalized as
+  Q_t -> O_t -> D_new -> Q_{t+1}, with Q_{t+1} != Q_t in the general case, and
+  Investigation_{t+1}=f(K_t,D_new,Z_t,I_t,P_t). Derives a significant architectural consequence: KnowledgeOS
+  should NOT be built around a single "Observation Engine" producing one final answer, but instead requires
+  an explicit **investigation loop** (Question -> Observation -> Dimension Discovery -> Zero/Lord Lens ->
+  {more investigation needed? Yes -> new question -> new observation | No -> Guidance -> Knower}), explicitly
+  named "a substantially different architecture from a conventional analytics system."
+
+  Closes by sharpening the newly-launched Question 2 (What is a Dimension?) into a more precise prior
+  question before attempting a definition: "when an observation reveals something that was not represented
+  before, what exactly has been discovered?" -- offering four candidates (a new dimension, a new value of an
+  existing dimension, a new relationship, a new statement, or potentially all four at different levels),
+  using the Bhisma example to sharpen the stakes: "Bhisma did not suddenly become a new person. What changed
+  was the KNOWLEDGE STRUCTURE around the person" -- explicitly proposed as the first sub-question of
+  Dimension, to be answered by the human's own understanding before Gita/lens testing, per 0449's
+  established methodology.
+introduces:
+  - concept: "Progressive Investigation Principle: investigation depth is not predetermined by the initial question but dynamically emerges from the dimensions and relationships discovered during observation, formalized as Depth_{t+1}=f(D_new,R_new,Uncertainty_t,DecisionContext)"
+  - concept: "Six explicit investigation levels: Level 0 (initial observation), Level 1 (dimension discovery), Level 2 (relationship investigation), Level 3 (consequence investigation), Level 4 (ideal-state investigation), Level 5 (decision investigation) -- each with a distinct characteristic question"
+  - concept: "Zero and Lord Lenses made concretely operational: Zero(K_t)->MissingDimension->FurtherInquiry (an unassessed dimension makes the current answer explicitly insufficient, not merely incomplete); Lord->PossibleDimension paired with Zero->Gap to jointly drive further investigation"
+  - concept: "Sarathi reframed as 'a dynamic investigation guide' with an explicit six-stage internal decision process, rather than a simple answer-provider"
+  - concept: "Named Progressive Investigation Principle: Q_t->O_t->D_new->Q_{t+1}, with Q_{t+1}!=Q_t in the general case, and Investigation_{t+1}=f(K_t,D_new,Z_t,I_t,P_t)"
+  - concept: "Architectural requirement for an explicit investigation loop (not a single Observation Engine): Question->Observation->Dimension Discovery->Zero/Lord Lens->{more investigation | Guidance}, 'a substantially different architecture from a conventional analytics system'"
+  - concept: "Sharper prior question before defining Dimension: when an observation reveals something new, is it a new dimension, a new value, a new relationship, or a new statement (or all four at different levels)? -- worked via the Bhisma 'knowledge structure changed, not the person' example"
+defines:
+  - concept: "Depth_{t+1}"
+    definition: "f(D_new,R_new,Uncertainty_t,DecisionContext): investigation depth as a dynamically emergent function of newly discovered dimensions, relationships, current uncertainty, and decision context, never predetermined by the initial question"
+refines:
+  - concept: "0451's Chapter 1 case study and its observation that Arjuna's complexity emerged from dimensions revealed by his first observation"
+    refinement: "Generalized into a full six-level investigation-depth model and a named Progressive Investigation Principle applicable to any KnowledgeOS inquiry, not merely the Arjuna case"
+  - concept: "0411's Zero-as-meta-lens formalization and 0413/0414/0424's Lord Lens contract"
+    refinement: "Given a concrete operational pairing: Zero identifies the gap, Lord proposes candidate dimensions to fill it, jointly driving further investigation rather than merely diagnosing"
+  - concept: "0430/0433/0441's Krishna/Sarathi guidance characterization"
+    refinement: "Reframed specifically as 'a dynamic investigation guide' with an explicit six-stage internal process, sharpening the corpus's prior more abstract Sarathi function descriptions"
+  - concept: "0449's twenty-phase research programme's Question 2 (Dimension)"
+    refinement: "Sharpened into a more precise prior sub-question (dimension vs. value vs. relationship vs. statement discovery), to be resolved before the general definition of Dimension itself"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Progressive Investigation Principle and the six-level investigation-depth model as a major new architectural contribution."
+  - "dimension-registry.md: record the operationalization of Zero and Lord as an active investigation-driving pair (Zero->Gap, Lord->PossibleDimension), and the Sarathi reframing as 'dynamic investigation guide.'"
+  - "dimension-registry.md: record the architectural requirement for an explicit investigation loop rather than a single Observation Engine, and the sharpened prior sub-question for Question 2 (Dimension vs Value vs Relationship vs Statement discovery)."
+anchor_test:
+  anchor: "0451's Chapter 1 Arjuna case study; 0411's Zero-as-meta-lens formalization; 0413/0414/0424's Lord Lens contract; 0430/0433/0441's Krishna/Sarathi characterizations; 0449's twenty-phase programme"
+  supports_dimension: "LANDMARK architectural contribution generalizing 0451's case-study observation into a full Progressive Investigation architecture: a named Progressive Investigation Principle with a six-level investigation-depth model, an operational Zero+Lord pairing that actively drives further inquiry rather than merely diagnosing gaps, a Sarathi role reframed as a dynamic investigation guide, and an explicit requirement for an investigation-loop architecture rather than a single-shot observation engine. Sharpens the newly-launched Question 2 (Dimension) into a more precise prior sub-question"
+  refines_or_contradicts: "refines 0451's case study into a general architectural principle; refines the corpus's Zero and Lord Lens formulations into an operational pairing; refines the Krishna/Sarathi guidance characterization into a dynamic-investigation-guide role; refines 0449's Question 2 into a sharper prior sub-question; no contradiction"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Bhagavad-gita As It Is, Chapter 1 (Arjuna's request to see those with whom he must contend, and the subsequent progressive deepening of his epistemic crisis) -- continues directly from 0427/0429/0430/0450/0451's reading of the same chapter"
+undefined_concepts: []
+open_questions:
+  - "Whether Question 2's sharpened prior sub-question (is a newly-discovered thing a new dimension, value, relationship, or statement, or all four at different levels?) is resolved in the immediately following file"
+  - "Whether the six-level investigation-depth model is formally integrated into the corpus's consolidated mathematical KnowledgeOS architecture (0446/0447)"
+  - "Whether the investigation-loop architectural requirement is developed into a concrete KnowledgeOS implementation design in a later file"
+tier2_triggered: true
+tier2_reason: "Landmark architectural contribution generalizing 0451's Chapter 1 observation into a full Progressive Investigation Principle with an explicit six-level investigation-depth model, an operationalized Zero+Lord pairing that actively drives further inquiry, a Sarathi role reframed as a dynamic investigation guide, and an explicit requirement that KnowledgeOS be built as an investigation loop rather than a single-shot observation engine -- a substantive new architectural pattern not previously formalized in this reconstruction's sequential pass."

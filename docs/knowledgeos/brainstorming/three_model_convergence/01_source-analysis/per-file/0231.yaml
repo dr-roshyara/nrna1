@@ -1,0 +1,70 @@
+sequence: 231
+path: docs/knowledgeos/brainstorming/kernel/20260824-141924-elements-of-statistical-learning-source-versus-interpretation.md
+title: "Elements of Statistical Learning — Source Versus Interpretation"
+date: "2026-08-24"
+bytes: 44000
+model:
+  primary: c1
+  secondary: g1
+source_role: PRIMARY_RESEARCH
+canonical_source: 231
+importance: high
+confidence: high
+about: >
+  A parallel/companion extraction from the same Elements of Statistical Learning source as 0228, applying
+  Zero + Leonardo + DDD explicitly (rather than 0228's fact/interpretation split). Substantially overlaps
+  0228's content (cross-validation leakage, regularization, bootstrap, ensembles, clustering, FDR) but
+  organizes it differently: six conceptual subdomains, a Zero-gate sequence G0-G9, and a 17-item EP-00..16
+  technique catalogue -- a DIFFERENT numbering/organization scheme from 0228's twelve KOS-ML invariants,
+  not cross-referenced to it. Explicitly labeled "Book Extraction Round 1," with a stricter Adopt/Adapt/
+  Research/Reject pass proposed as the next step.
+introduces:
+  - concept: "Six conceptual subdomains reorganizing the book's methods: Representation (feature/kernel/basis/latent), Inference (model/estimator/loss/parameter), Model Control (regularization/shrinkage/sparsity/pruning), Assessment (CV/bootstrap/bias/variance/optimism), Aggregation (bagging/boosting/stacking), Structure Discovery (clustering/PCA/graphical-models/PageRank/association-rules)"
+  - concept: "InferenceProblem domain object (question/target/observations/representation/objective/loss/constraints/evaluation-protocol) and Zero Principle Z-SL-01: an inference problem must be constituted before a method can be selected"
+  - concept: "Representation Principle: a representation is a deliberate transformation of observations for a defined inference purpose; it must not silently become the observation itself (Observation != Representation, worked example: 'architecture review rejected' admits radically different representations)"
+  - concept: "DecisionObjective concept: a model is not intrinsically good, only good relative to a stated objective (accuracy vs. minimize-false-negatives vs. minimize-catastrophic-mistakes vs. interpretability-subject-to-error) -- model selection is subordinate to the decision objective"
+  - concept: "One-standard-error rule reframed as an engineering principle: choose the simplest strategy statistically indistinguishable from the best-measured one, not the absolute best-measured configuration (worked example: 17-step strategy at 97.1% vs. 5-step strategy at 96.8%, within an accepted uncertainty band)"
+  - concept: "Inference Flexibility Ladder (deterministic rule -> linear/additive -> structured nonlinear -> ensemble -> fully flexible/LLM), giving a controlled-increase-in-flexibility vocabulary rather than a binary rules-vs-LLM choice"
+  - concept: "Decision Margin (from SVM): distance from a decision boundary, not merely which side -- strongly-admissible vs. strongly-inadmissible vs. borderline ACCEPT should not be treated identically"
+  - concept: "DerivedStructure vs. Canonical Knowledge boundary: a Cluster/embedding/PCA-projection is DerivedStructure (= Representation+Method+Parameters+EvidenceSnapshot with provenance), never allowed to silently overwrite canonical Observation/Evidence/Decision -- an explicit anti-corruption boundary"
+  - concept: "Zero-gate sequence G0-G9 (Problem Constitution / Target Definition / Representation Adequacy / Objective-Loss Definition / Evidence Sufficiency / Method Applicability / Complexity Control / Independent Assessment / Stability Assessment / Governance Admissibility)"
+  - concept: "MethodSelector domain service: takes InferenceProblem+Representation+Loss+Constraints+EvidenceProfile+AssuranceRequirement+CostBudget, returns CandidateMethods+Rationale+ExpectedTradeoffs -- never a bare model name"
+  - concept: "Seventeen-item EP-00..16 technique catalogue (EP-00 Method Is Not Authority as the meta-principle, plus Problem Constitution/Representation Analysis/Loss-Based Selection/Complexity Regularization/Sparse Evidence Selection/Bias-Variance Analysis/Independent Assessment/Bootstrap Stability/Ensemble Stability/Residual-Driven Refinement/Decision Margin/Hierarchical Discovery/Graph Centrality/Latent-Factor Discovery/Dimensional Compression/Multiple-Discovery Control)"
+  - concept: "Epistemic hierarchy that must not collapse: Observation -> Representation -> Pattern -> Inference -> Prediction -> Decision -> Knowledge Claim, each transition governed by distinct epistemic rules (embedding != observation, cluster != domain, prediction != fact, high-confidence-inference != validated-knowledge, model-agreement != truth)"
+  - concept: "PageRank reframed for KnowledgeOS: evidence/claim/decision centrality as structural importance, explicitly centrality != truth"
+  - concept: "InferenceEvidence role lifecycle: Source Evidence -> Training Evidence -> Selection Evidence -> Validation Evidence -> Test Evidence as distinct roles requiring explicit representation, not one undifferentiated 'data' pool"
+  - concept: "Boosting's residual-driven refinement pattern bounded by an explicit stop condition (iteration budget/evidence budget/loss threshold/assurance threshold), explicitly warned against becoming uncontrolled agent self-revision ('agent keeps reasoning until it likes the answer')"
+defines: []
+refines:
+  - concept: "0228's cross-validation leakage / KOS-ML invariant catalogue from the same source book"
+    refinement: "Reorganizes largely overlapping content (leakage, regularization, bootstrap, ensembles, FDR) into six subdomains and a differently-numbered EP-00..16 catalogue, without cross-referencing 0228's KOS-ML-01..12 scheme -- a further instance of the corpus's non-linear, multi-thread capture pattern producing two independently-numbered extractions from the same source."
+contradicts: []
+repeats:
+  - concept: "Cross-validation leakage example (3% reported vs 50% true error); Evidence Separation Principle; regularization as complexity control; bootstrap as stability measure; FDR as discovery-error control"
+    canonical_source: 228
+    novelty: none
+bridge_candidates:
+  - "0228's KOS-ML-01..12 vs. this file's EP-00..16 -- two independently-numbered candidate-invariant/technique catalogues drawn from the SAME source book, covering substantially overlapping ground but never cross-referencing each other. Flagged for the eventual cross-model comparison phase as a reconciliation candidate, not logged as unresolved_equivalence (same source, same continuous research arc per MD-012, not independent corroboration)."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0228 (same source book, differently-organized extraction)"
+  supports_dimension: "Mathematical/statistical model -- companion extraction reorganizing overlapping content into six subdomains and a Zero-gate sequence, with a few genuinely new items (Decision Margin, one-standard-error rule, DerivedStructure boundary, MethodSelector service)"
+  refines_or_contradicts: "refines/reorganizes 0228; no contradiction; unreconciled duplicate numbering scheme"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Worked one-standard-error example (17-step 97.1% vs. 5-step 96.8% strategies) grounding the 'choose the simplest statistically-indistinguishable option' principle in a concrete KnowledgeOS-flavored scenario"
+undefined_concepts:
+  - "No reconciliation given between this file's EP-00..16 and 0228's KOS-ML-01..12, despite covering nearly identical source material"
+open_questions:
+  - "Whether EP-00..16 and KOS-ML-01..12 are ever merged into one cumulative catalogue in a later file"
+  - "Whether the proposed stricter per-technique Adopt/Adapt/Research/Reject pass (explicitly named as the next step) is ever conducted"
+tier2_triggered: true
+tier2_reason: "High-value companion extraction from the same source as 0228, reorganized around six subdomains and a Zero-gate sequence (G0-G9); most novel additions are the Decision Margin concept, the one-standard-error engineering rule, and the DerivedStructure/Canonical-Knowledge anti-corruption boundary; flagged as an unreconciled duplicate-numbering instance of the corpus's recurring non-linear capture pattern."

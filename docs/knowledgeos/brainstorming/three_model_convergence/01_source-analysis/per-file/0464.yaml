@@ -1,0 +1,111 @@
+sequence: 464
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-173211_question-5-comparing-and-challenging-assertions-v2.md
+title: "LANDMARK: Question 4A Properly Resolved — Five-Dimensional Epistemic State Σ=(Acquisition,Support,Resolution,Validity,Conflict), 2240-State Space, Per-Dimension Transitions, and the Grandfather/Enemy Tension Correctly Modeled as a Conflict-Dimension (Normative, Not Logical) State"
+date: "2026-08-26"
+bytes: 24214
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the Bhishma grandfather/enemy worked example is now correctly resolved via the Conflict dimension alone, explicitly distinguishing normative from logical conflict, per 0462's discipline"
+source_role: PRIMARY_RESEARCH
+canonical_source: 464
+importance: critical
+confidence: high
+about: >
+  Shares its first 429 lines byte-identically with 0463 (the Compare/Challenge formalization for
+  Assertions -- verified via `diff`, identical through line 429) but diverges from that point to deliver a
+  genuinely new, disciplined resolution of **Question 4A** (launched at 0462's close: "What exactly is an
+  Epistemic State?"), correcting both corpus-integrity tensions flagged at 0463.
+
+  **The resolution**: explicitly rejects the previously-assumed single scalar Sigma in {Unknown,
+  Hypothesized, Assumed, Inferred, Observed, Confirmed, Conflicting, Unresolved, Rejected, ABSENT} as
+  insufficient, giving four concrete reasons -- Observed describes acquisition mode not evaluation;
+  Confirmed describes evaluation not acquisition; Conflicting describes a relationship not a state;
+  Unresolved describes a status not a state -- concluding these are different **dimensions**, not positions
+  on one axis. Formalizes **Epistemic State as a five-dimensional vector**:
+  Sigma = (Acquisition, Support, Resolution, Validity, Conflict), with each dimension given a complete,
+  concrete value set: **Acquisition** in {Observed, Reported, Inferred, Calculated, Assumed, Hypothesized,
+  Unknown} (7 values); **Support** in {None, Weak, Moderate, Strong, Very Strong} (5 values, with numeric
+  bands 0, (0,0.3), [0.3,0.6), [0.6,0.9), [0.9,1]); **Resolution** in {Open, In Progress, Resolved,
+  Unresolvable} (4 values); **Validity** in {Current, Stale, Expired, Unknown} (4 values); **Conflict** in
+  {None, Potential, Active, Resolved} (4 values). Computes the full state space size
+  |S| = 7x5x4x4x4 = 2240 possible epistemic-state combinations -- the corpus's most concrete, enumerated
+  epistemic-state space to date.
+
+  Defines a per-dimension transition function Sigma_new = T(Sigma_old, E), with T decomposed into five
+  independent sub-functions T_A, T_S, T_R, T_V, T_C (one per dimension), and a worked three-step transition
+  sequence (Assumed/None/Open/Current/None -> Observed/Strong/Resolved/Current/None via direct observation
+  -> .../Active via contradictory report -> .../Resolved via conflict resolution). Extends Zero, Lord, and
+  Sārathi to operate **per-dimension** rather than on a single scalar Sigma: Zero asks a distinct diagnostic
+  question per dimension (acquisition reliability, support sufficiency, resolution status, currency,
+  conflict presence); Lord suggests alternatives per dimension; Sārathi gives per-dimension next-step
+  guidance (seek direct observation, find additional evidence, investigate the unresolved aspect, recheck,
+  resolve the conflict).
+
+  **Correctly resolves the Bhīṣma grandfather/enemy worked example this time**, directly repairing 0463's
+  flagged corpus-integrity tension: "Bhīṣma is Arjuna's grandfather" reaches Sigma_1 =
+  (Observed,Strong,Resolved,Current,None); the new proposition "Bhīṣma is Arjuna's enemy" independently
+  reaches an identical acquisition/support/resolution/validity profile, and the tension between the two is
+  now correctly localized **entirely within the Conflict dimension** (updated to Active on both assertions),
+  never treated as a logical contradiction on Acquisition/Support/Resolution/Validity. The narrative
+  explicitly states "Arjuna realizes the conflict is normative, not logical," and the Conflict dimension is
+  subsequently marked Resolved once the moral-conflict proposition is formed -- correctly applying 0462's
+  Logical!=Normative-Conflict distinction that 0463's own worked example had failed to apply. This directly
+  answers 0463's flagged corpus-integrity observation #1 within the very next file.
+
+  Formalizes the complete model: Sigma=(A,S,R,V,C) with each component's value set restated, the transition
+  function T decomposed per-dimension, and the state-space size 2240 restated. Closes with the core
+  invariants (Epistemic State is multidimensional; Acquisition != Support != Resolution != Validity !=
+  Conflict; evidence can change one or more dimensions independently) and confirms all seven concepts
+  formalized so far (Proposition, Assertion, Epistemically Accepted, Evidence, Comparison, Challenge,
+  Epistemic State), proposing **Question 5 -- How do we update and preserve Assertions?** as the next
+  research target (renumbering what 0463 had called Question 5 -- Compare/Challenge -- since Question 4A's
+  resolution now precedes it, consistent with 0462's original sequencing intent).
+introduces:
+  - concept: "Five-dimensional Epistemic State formalized: Σ=(Acquisition,Support,Resolution,Validity,Conflict), with concrete value sets per dimension (7x5x4x4x4) and a total state-space size of 2240"
+  - concept: "Per-dimension transition function T decomposed into five independent sub-functions T_A,T_S,T_R,T_V,T_C, replacing a single scalar Σ_new=Transition(Σ_old,Evidence)"
+  - concept: "Zero/Lord/Sārathi extended to operate per-dimension of the five-dimensional Epistemic State, each with a distinct diagnostic question or guidance action per dimension"
+  - concept: "Correct resolution of the Bhīṣma grandfather/enemy tension: localized entirely within the Conflict dimension (None->Active->Resolved), explicitly narrated as normative rather than logical, directly repairing 0463's flagged corpus-integrity tension"
+  - concept: "Question 5 renumbered/refocused to 'How do we update and preserve Assertions?', since Question 4A's resolution now properly precedes the Compare/Challenge material inherited from 0463"
+defines:
+  - concept: "Epistemic State (five-dimensional, final)"
+    definition: "Σ=(Acquisition,Support,Resolution,Validity,Conflict), where Acquisition∈{Observed,Reported,Inferred,Calculated,Assumed,Hypothesized,Unknown}, Support∈{None,Weak,Moderate,Strong,VeryStrong}, Resolution∈{Open,InProgress,Resolved,Unresolvable}, Validity∈{Current,Stale,Expired,Unknown}, Conflict∈{None,Potential,Active,Resolved}"
+  - concept: "Epistemic State Space"
+    definition: "𝒮 = Acquisition × Support × Resolution × Validity × Conflict, with |𝒮| = 7×5×4×4×4 = 2240 possible states"
+refines:
+  - concept: "0462's discovery that Epistemic State may be multidimensional (Acquisition x Support x Resolution x Validity, four dimensions, no concrete value sets)"
+    refinement: "Fully formalized into five named dimensions (adding Conflict as a fifth, independent axis), each given a complete concrete value set, a computed 2240-state space, and per-dimension transition functions"
+  - concept: "0463's naive worked example treating the grandfather/enemy tension as a logical Contradiction"
+    refinement: "Corrected: the tension is now modeled entirely within the Conflict dimension, explicitly narrated as normative rather than logical, resolving 0463's flagged corpus-integrity observation #1"
+  - concept: "0462's recommendation that Question 4A be resolved before Question 5"
+    refinement: "Fulfilled: this file properly resolves Question 4A before restating and building on the Compare/Challenge (Question 5, per 0463's numbering) material, resolving 0463's flagged corpus-integrity observation #2"
+contradicts: []
+repeats:
+  - "Lines 1-429 are byte-identical to 0463's lines 1-429 (the Compare/Challenge formalization for Assertions), confirmed via diff -- a shared-prefix fork, not a full duplicate, since the remainder (from line 430) is substantially new content properly resolving Question 4A."
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the landmark five-dimensional Epistemic State formalization Σ=(Acquisition,Support,Resolution,Validity,Conflict), its 2240-state space, and per-dimension transition functions."
+  - "dimension-registry.md: record the corrected Bhīṣma grandfather/enemy resolution (Conflict-dimension-only, normative not logical), repairing 0463's flagged tension."
+  - "dimension-registry.md: record Question 5 refocused to Update/Preserve of Assertions."
+anchor_test:
+  anchor: "0462's multidimensional Epistemic State discovery and Question 4A launch; 0463's flagged corpus-integrity tensions (naive grandfather/enemy contradiction; bypassed Question 4A)"
+  supports_dimension: "LANDMARK: properly resolves Question 4A with a fully concrete five-dimensional Epistemic State (Acquisition/Support/Resolution/Validity/Conflict, 2240-state space) and per-dimension transition functions, directly repairing both corpus-integrity tensions flagged at 0463 -- the grandfather/enemy tension is now correctly modeled as a Conflict-dimension-only, normative (not logical) state"
+  refines_or_contradicts: "refines and repairs 0462's four-dimensional hypothesis and 0463's flawed worked example; resolves both of 0463's flagged corpus-integrity observations within the very next file"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Reuses and corrects the Bhīṣma grandfather/enemy worked example from 0461/0462/0463, this time resolving it properly via the isolated Conflict dimension"
+undefined_concepts: []
+open_questions:
+  - "Whether the five-dimensional Epistemic State (with its 2240-state space) is later reconciled with the corpus's various prior Σ epistemic-status enumerations (0454/0457/0459/0461/0462)"
+  - "How Update and Preserve (the refocused Question 5) are formalized in subsequent files"
+  - "Whether Evidence Independence/Correlation (flagged as required at 0462) are addressed alongside the per-dimension transition functions introduced here"
+tier2_triggered: true
+tier2_reason: "Landmark, fully concrete resolution of Question 4A: formalizes Epistemic State as a five-dimensional vector (Acquisition/Support/Resolution/Validity/Conflict) with a computed 2240-state space and per-dimension transition functions, directly repairing both corpus-integrity tensions flagged at the immediately preceding file (0463) -- the naive grandfather/enemy contradiction and the bypassed Question 4A sequencing."

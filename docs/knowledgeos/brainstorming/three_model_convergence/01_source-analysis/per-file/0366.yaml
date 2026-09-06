@@ -1,0 +1,210 @@
+sequence: 366
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260825-233107_knowledge-qualification-problem-research-framework.md
+title: "Perplexity's Knowledge Qualification Framework, Critiqued; Ideal Knowledge State K_t*; Deduction/Induction/Abduction as Extraction Mechanisms; Epistemic-vs-Normative Justification Hierarchy; Fact-Comparison-Closure Pipeline"
+date: "2026-08-25"
+bytes: 63248
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 366
+importance: critical
+confidence: high
+about: >
+  A large, landmark, multi-layer file (four content sections, one of which -- lines 1707-2195 -- is
+  intra-file self-duplicated at lines 2198-2686, the SEVENTH instance of the pattern first seen at 0267,
+  repeated at 0343/0354/0360/0362/0365).
+
+  SECTION 1 (lines 1-426, "Knowledge Qualification Problem: Research Framework") is explicitly an
+  externally-produced document (labeled "Perplexity" in Section 2's critique -- the corpus's first named
+  external-AI-tool contribution, distinct from the corpus's own internal voice). It formalizes the
+  "Knowledge Qualification Problem": given an extraction I_<=t -[E]-> K-hat_t, what qualification function
+  Phi: K-hat_t -> {Knowledge, Not-Knowledge} determines validity? States four "key distinctions" already
+  established by the corpus (Probability!=Knowledge-Qualification; Knowledge!=Complete-Knowledge;
+  Correctness!=Completeness; three-way Reality/Evidence/Interpretation-change), a ten-item candidate-
+  criteria table (Truth/Evidence/Justification/Source/Observer/Temporal-Validity/Reliability/Safety/
+  Capability/Authority, each UNRESOLVED), a research sequence (Knowledge Space->State->Element->
+  Information->Extraction->Qualification->Correctness/Completeness->Temporal-Change->Identity/Continuity->
+  Minimal-Unit->Kernel), a four-phase methodology (philosophical/mathematical/empirical/integration), and
+  an "Evidence Boundary" table explicitly classifying Knowledge-Space-as-measurable-space
+  (Omega,F)/Knowledge-State-as-measure(mu_A,t)/Knowledge-Element-as-measurable-region as "Strong
+  Mathematical Evidence." Closes with explicit governance markers: "DO NOT DESIGN THE KERNEL. DO NOT CHANGE
+  ITS BOUNDARY. DO NOT INTRODUCE NEW DOMAIN CONCEPTS. CHALLENGE THE ARCHITECTURE; DO NOT BECOME ITS
+  ARCHITECT."
+
+  SECTION 2 (lines 427-1026, "# analysis") is the corpus's own internal-voice critique of Section 1,
+  performing a significant category-error correction: REJECTS Section 1's classification of Knowledge-
+  Space=(Omega,F)/Knowledge-State=mu_A,t/Knowledge-Element=measurable-region as "Strong Mathematical
+  Evidence," downgrading it to "candidate mathematical representation requiring investigation" -- noting
+  that defining K_t=mu_A,t would "quietly put probability/measure back into the ontology," directly
+  undoing the corpus's own Knowledge!=Probability correction. Challenges the binary qualification function
+  Phi in {0,1} as likely too crude, proposing a richer Status(k,t,C) structured epistemic state instead.
+  Challenges the ten-item candidate-criteria list for conflating properties that may belong to DIFFERENT
+  LAYERS (Truth concerns K<->R; Evidence concerns I->K; Source concerns provenance; Authority concerns
+  institutional legitimacy; Reliability concerns the extraction mechanism; Temporal-validity concerns K(t))
+  rather than being simply conjoined as Knowledge=Truth+Evidence+Source+Authority+... Proposes a revised
+  fourteen-stage research sequence explicitly moving "Knowledge Space" LATER (since its structure has not
+  actually been established, contra Section 1's ordering), and a four-stream methodology (Epistemology /
+  Phenomenology-Knowledge-representation / Mathematics / Empirical-cases) replacing Section 1's four
+  phases, explicitly to avoid forcing mathematics onto the phenomenon too early. Challenges "Complete
+  Knowledge = full set of all knowledge" as needing relativization to time/domain/scope/context/purpose
+  (Complete(K,t,D,S,C)), worked example: "Nexus is running version 3.69" complete for one question,
+  incomplete for another. Reaffirms the temporal Reality/Evidence/Interpretation-change three-way
+  distinction as "actually very good." Integrates the "Gauss insight" (extraction as best-available
+  approximation from incomplete information) as central, posing convergence conditions (under what
+  conditions does K-hat_t -> K_t, and under what conditions can it never converge?) as a genuinely open
+  research question. Closes with an explicit keep/challenge ledger and a one-step-more-fundamental
+  reformulation of the qualification question centering on the NATURE OF EXTRACTION ITSELF.
+
+  SECTION 3 (lines 1027-1706, no header) introduces the IDEAL KNOWLEDGE STATE K_t* -- not "all Knowledge in
+  the universe" but the state that would be sufficient, at time t and within scope, to answer all
+  LEGITIMATE questions raisable at that point, formalized via a relevant-question-space Q_t^D and a
+  Coverage(K,t,D) measurability concept. Establishes the working model K-hat_t subset-of K_t* subset-of
+  K-script (explicitly flagged as hypothesis), and reformulates "try our best" precisely: K-hat_t = best
+  attainable extraction from I_<=t, with gap Delta_t = K_t* - K-hat_t representing what is missing --
+  explicitly noting K_t* CANNOT be directly observed (otherwise it would not be "ideal"), a genuine research
+  problem. Carefully distinguishes an expected-value framing E[K_t|I_<=t] (valid only if K_t can legitimately
+  be modeled as a random variable, NOT yet assumed) from the safer K-hat_t=Estimator(K_t*|I_<=t) framing that
+  keeps ontology separate from probability machinery. Introduces the pivotal Knowledge-extraction!=
+  information-aggregation distinction via REASONING: extraction includes DEDUCTION (A, A->B, therefore B),
+  and non-deductive ABDUCTION (server-responds-on-port-8081 -> best-explanation Nexus-is-running is not
+  deductively valid), alongside INDUCTION -- three genuinely distinct extraction mechanisms producing
+  potentially different candidate Knowledge (K_D, K_A, K_P from deduction/abduction/probabilistic inference
+  respectively), posing the combination question as "a much richer problem." Explicitly argues Probability
+  and Logic must COEXIST (not OR) because they answer different epistemic questions (logical necessity vs.
+  degree-of-support vs. observational support vs. argumentative attack/defense). Reformulates Knowledge
+  Qualification as "what makes an extracted state sufficiently justified relative to K_t*?" with eight
+  candidate dimensions (Correctness/Completeness/Consistency/Evidence/Logical-support/Argument-strength/
+  Uncertainty/Temporal-validity), explicitly NOT yet decided as necessary. Introduces ANSWERABILITY as a
+  candidate alternative definition of Knowledge sufficiency: K_t* should be able to provide a JUSTIFIED
+  answer to every q in Q_t^D, where "Unknown"/"Insufficient evidence"/"Multiple explanations remain
+  possible" are themselves valid, valuable answers -- "knowing that we cannot answer a question may itself
+  be part of Knowledge." Closes by reformulating the next research question as understanding K_t* and the
+  conditions under which K-hat_t approximates it, through answerability/correctness/completeness/evidence/
+  logical-consequence/argument-strength/uncertainty/temporal-validity -- "exactly where measure theory,
+  probability, logic and argumentation begin to meet."
+
+  SECTION 4 (lines 1707-2195, duplicated verbatim at 2198-2686) introduces an EPISTEMIC-VERSUS-NORMATIVE
+  JUSTIFICATION dichotomy: epistemic support (Evidence->Claim, "why should we believe?") versus normative/
+  legal justification (Rule/Principle->Decision, "why is this legitimate?") -- worked example distinguishing
+  "the system was changed on Tuesday" (log-supported) from "the system MAY be changed" (requires
+  policy/mandate/law). Proposes a five-level normative hierarchy Evidence->Manifesto->Documentation->Rules->
+  Law->Human/Natural-Principles, refined into a two-branch tree (EPISTEMIC: evidence/observation/argument/
+  logic; NORMATIVE: principles/manifesto/documentation/rules/law/human-natural-principles). Distinguishes
+  Manifesto (a declared principle set M={m1,...,mn} justifying decisions WITHIN its own normative system,
+  explicitly Manifesto!=Evidence) from Documentation (a CARRIER of justification -- what happened/decided/
+  why/which-rule/who-authorized/which-evidence -- but not itself the justification, Document -> Evidence/
+  Decision/Rule/Provenance). Formalizes Rule/Law justification chains (Decision<-Rule<-Policy<-Law) as
+  structurally DIFFERENT justification graphs from evidential chains (Claim<-Observation<-Evidence).
+  Treats the proposed final normative level ("natural laws of humanity") as an unresolved research question
+  with three candidate meanings explicitly disambiguated (A: physical natural laws; B: natural-law
+  philosophy -- dignity/justice/rights/moral-constraints/human-flourishing; C: universal human-existence/
+  social-cooperation constraints) -- refusing to adopt any pending clarification. Generalizes to a
+  justification-authority-levels chain J_0->J_1->J_2->J_3->J_4 (each level justifying the one below),
+  connecting directly to K_t*'s answerability requirement: answering "why should we accept this?" requires
+  exposing a JUSTIFICATION CHAIN (Claim<-Evidence<-Observation, or Decision<-Rule<-Policy<-Law, or even
+  Law<-Fundamental-Human-Principle) -- formalized as "Answerability requires justification traceability."
+  Produces a richer, three-branch ideal-state definition: for factual questions Q_f->Claim->Evidence->
+  Reasoning; for normative questions Q_n->Decision->Rule->Policy/Law->Principle; for uncertain questions
+  Q_u->Candidates->Probability->Uncertainty. Closes with the pivotal open research question: are Evidence/
+  Logic/Probability/Argumentation/Normative-justification mechanisms for producing ONE kind of Knowledge
+  State, or fundamentally DIFFERENT kinds of epistemic states requiring a MULTI-REGIME epistemic model
+  rather than one universal representation? -- explicitly naming epistemic logic, argumentation theory,
+  Bayesian inference, formal methods, deontic logic, legal reasoning, and measurement theory as the
+  necessary convergent research areas before any Kernel decision.
+
+  SECTION 5 (lines 2688-3206) concretizes justification into a FACT-BASED comparison-and-closure model,
+  the file's most operational proposal: predetermined facts F_t and rules R_t justify a claim via
+  (F_t,R_t)|-K (worked example: System-A-deployed + If-A-then-configuration-X-required -> configuration-X-
+  required), explicitly emphasizing the rule pre-exists extraction ("the extraction process does not
+  arbitrarily decide what constitutes a valid argument"). Distinguishes Evidence (the bridge O_t->E->F,
+  answering "why is this fact supported by what was observed?") from Justification (answering "why does
+  this fact/rule combination support the resulting Knowledge?"). Introduces the pivotal COMPARISON
+  mechanism: Knowledge is not necessarily a stored object but can be DERIVED from comparing a current
+  observed situation S_t against accumulated facts F_<=t -- formalized as (F_<=t,S_t)-[Comparison]->
+  Delta_t, then (Delta_t,F_<=t,R_t)-[Reasoning]->K_t (worked example: Nexus-version=3.69 compared against
+  Production-requires-3.70+ derives "the current system does not satisfy the production version
+  requirement," a piece of KNOWLEDGE not directly observed). Reformulates the ideal Knowledge state via a
+  logical CLOSURE operation: K_t* = Cn_Rt(S_t union F_<=t) (Cn = consequence/closure under applicable
+  rules), explicitly noting this avoids needing an expected-value formalization. Relocates probability to
+  an EARLIER stage of the pipeline -- O_t -> P(F_i|O_t) -> F-hat_t (probabilistic FACT extraction) feeding
+  into deterministic logical closure, rather than governing Knowledge itself -- "probability handles
+  uncertainty in extracting/establishing facts; logic/rules handle consequences of established facts," an
+  explicit clean division of responsibility. Reformulates "try our best" once more: K-hat_t =
+  Closure(S_t,F-hat_<=t,R_t) != K_t* because F-hat_<=t (available facts) is necessarily incomplete/uncertain,
+  NOT because logic itself is imperfect -- an important attribution correction. Closes with a full seven-
+  stage research-chain diagram (REALITY/CURRENT-SITUATION -> OBSERVATION -> EVIDENCE -> FACT -> [CURRENT
+  SITUATION, EXISTING FACTS] -> COMPARISON -> PREDETERMINED RULES -> LOGIC -> JUSTIFICATION -> KNOWLEDGE)
+  and names the corpus's new, narrower next research question: "What is a Fact, how is a Fact established
+  from evidence, how is its temporal validity maintained, and what minimum information is required to
+  distinguish a Fact from an observation, claim, hypothesis, or derived Knowledge?" -- explicitly proposed
+  as the key that unlocks Knowledge -> Knowledge Unit -> Kernel.
+introduces:
+  - concept: "The corpus's first NAMED external-AI-tool contribution (Perplexity), explicitly distinguished by name from the corpus's own internal analytical voice, and subjected to the same category-error scrutiny as any other source"
+  - concept: "Ideal Knowledge State K_t*: not 'all Knowledge in the universe' but the state sufficient, at time t within scope, to answer all LEGITIMATE questions in a relevant-question-space Q_t^D, with a Coverage(K,t,D) measurability concept and the working (hypothesis-flagged) containment K-hat_t subset-of K_t* subset-of K-script"
+  - concept: "Explicit unobservability of the ideal state: K_t* cannot be directly observed (otherwise it would not be 'ideal'), making the gap Delta_t=K_t*-K-hat_t itself a genuine open research problem, not merely a definitional convenience"
+  - concept: "Careful separation of an expected-value framing E[K_t|I_<=t] (valid ONLY IF K_t can legitimately be modeled as a random variable, explicitly not yet assumed) from a safer Estimator(K_t*|I_<=t) framing that keeps ontology separate from probability machinery"
+  - concept: "Deduction/Induction/Abduction as three genuinely distinct Knowledge-extraction mechanisms (not information aggregation), each potentially producing different candidate Knowledge (K_D, K_A, K_P) requiring a combination method -- worked deductive example (A, A->B |- B) and worked abductive example (port-8081-response -> best-explanation Nexus-is-running, not deductively valid)"
+  - concept: "Explicit Probability+Logic-must-coexist (not OR) principle: they answer genuinely different epistemic questions (logical necessity / degree-of-support / observational support / argumentative attack-defense), requiring the KnowledgeOS architecture to potentially support multiple epistemic functions simultaneously"
+  - concept: "Answerability as a candidate alternative definition of Knowledge sufficiency: K_t* should provide a JUSTIFIED answer to every legitimate question, where 'Unknown'/'Insufficient evidence'/'Multiple explanations remain possible' are themselves valid Knowledge -- 'knowing that we cannot answer a question may itself be part of Knowledge'"
+  - concept: "Epistemic-versus-Normative justification dichotomy: Evidence->Claim (epistemic, 'why believe?') versus Rule/Principle->Decision (normative, 'why legitimate?'), explicitly NOT identical -- worked contrast between a log-supported factual claim and a policy/mandate/law-requiring permissive claim"
+  - concept: "Manifesto (a declared principle set M={m1,...,mn} justifying decisions WITHIN its own normative system, explicitly Manifesto!=Evidence) distinguished from Documentation (a CARRIER of justification -- what/why/which-rule/who-authorized/which-evidence -- not itself the justification: Document -> Evidence/Decision/Rule/Provenance), a distinction explicitly flagged as important for the Kernel (preserve the justification RELATIONSHIP, not simply 'a document')"
+  - concept: "Structurally distinct justification graphs: evidential chains (Claim<-Observation<-Evidence) versus normative chains (Decision<-Rule<-Policy<-Law), generalized to a justification-authority-level chain J_0->J_1->...->J_4, connecting directly to K_t*'s answerability requirement via 'Answerability requires justification traceability'"
+  - concept: "Explicit three-way disambiguation of an unresolved 'natural laws of humanity' final normative level: (A) physical natural laws; (B) natural-law philosophy (dignity/justice/rights/moral-constraints/flourishing); (C) universal human-existence/social-cooperation constraints -- refused adoption pending clarification, treated as a research hypothesis about 'the highest-order normative layer,' not a mathematical fact"
+  - concept: "Multi-regime epistemic model open question: are Evidence/Logic/Probability/Argumentation/Normative-justification mechanisms for ONE Knowledge State, or fundamentally different epistemic states requiring KnowledgeOS to represent MULTIPLE regimes together -- explicitly naming epistemic logic, argumentation theory, Bayesian inference, formal methods, deontic logic, legal reasoning, and measurement theory as the convergent research areas needed before any Kernel decision"
+  - concept: "Fact-based comparison-and-closure Knowledge model: (F_t,R_t)|-K (predetermined facts/rules justify claims, the rule pre-exists extraction); Evidence as the bridge O_t->E->F; the pivotal COMPARISON mechanism (F_<=t,S_t)-[Comparison]->Delta_t then (Delta_t,F_<=t,R_t)-[Reasoning]->K_t, demonstrating Knowledge need not be a stored object but can be DERIVED from comparing current situation against accumulated facts (worked example: derived Knowledge 'system does not satisfy production version requirement' not directly observed)"
+  - concept: "Ideal Knowledge state reformulated as a logical CLOSURE: K_t* = Cn_Rt(S_t union F_<=t), avoiding the need for an expected-value formalization, giving logic a clean architectural role"
+  - concept: "Probability relocated to an EARLIER pipeline stage: O_t -> P(F_i|O_t) -> F-hat_t (probabilistic FACT extraction), feeding deterministic logical closure -- explicit clean division: 'probability handles uncertainty in extracting/establishing facts; logic/rules handle consequences of established facts'"
+  - concept: "Attribution correction to the 'try our best' gap: K-hat_t=Closure(S_t,F-hat_<=t,R_t) != K_t* arises because AVAILABLE FACTS are incomplete/uncertain, NOT because logic/reasoning itself is imperfect -- separating the source of approximation error from the reasoning mechanism"
+  - concept: "New, narrower next-research-question superseding the Knowledge-Qualification-Problem framing: 'What is a Fact, how is a Fact established from evidence, how is its temporal validity maintained, and what minimum information is required to distinguish a Fact from an observation, claim, hypothesis, or derived Knowledge?' -- explicitly proposed as the key unlocking Knowledge -> Knowledge Unit -> Kernel"
+defines: []
+refines:
+  - concept: "0363's twelve-item finding register and Necessary-for-computation != Necessary-for-storage minimality distinction"
+    refinement: "The Perplexity document's Knowledge-Space=(Omega,F)/Knowledge-State=measure classification is explicitly DOWNGRADED from 'Strong Mathematical Evidence' to 'candidate mathematical representation requiring investigation,' reinforcing 0363's own refusal to freeze any single mathematical ontology for Knowledge"
+  - concept: "0362/0363's research pipeline sequencing (REALITY->...->KERNEL)"
+    refinement: "Revised to move Knowledge Space LATER in the sequence (since its structure is unestablished), and further concretized via the Fact-based comparison-and-closure pipeline (REALITY->OBSERVATION->EVIDENCE->FACT->COMPARISON->RULES->LOGIC->JUSTIFICATION->KNOWLEDGE), the corpus's most operationally concrete extraction pipeline to date"
+  - concept: "0364's inverse-problem/Gauss-principle framing and 0365's Knowledge-extraction-vs-storage distinction"
+    refinement: "The 'try our best' gap is re-attributed twice: first to K-hat_t!=K_t* generally (unobservable ideal state), then specifically to incomplete/uncertain FACTS rather than imperfect logic -- sharpening the source of approximation error"
+  - concept: "0360's Belief-banning and Observation->Information->Representation->Epistemic-Evaluation model"
+    refinement: "Extended with a parallel Evidence->Fact bridge and a Fact->Comparison->Reasoning->Knowledge pipeline, giving the abstract Representation/Epistemic-Evaluation stages concrete logical-closure semantics via Cn_Rt(S_t union F_<=t)"
+  - concept: "0362's four-way and 0363's seven-way temporal obsolescence taxonomies (Reality/Evidence/Interpretation/Evaluation-changed)"
+    refinement: "Explicitly reaffirmed as 'actually very good,' with no further expansion in this file -- functions as confirmation rather than revision"
+contradicts:
+  - concept: "Section 1's (Perplexity's) classification of Knowledge-Space=(Omega,F)/Knowledge-State=measure as 'Strong Mathematical Evidence'"
+    source: "Section 2's internal-voice critique within this same file"
+    resolution: "Explicitly downgraded to 'candidate mathematical representation requiring investigation,' with an explicit warning that adopting it would 'quietly put probability/measure back into the ontology,' undoing the corpus's Knowledge!=Probability correction -- an intra-file corrective critique, structurally similar to Layer 2's correction of Layer 1 in 0364"
+repeats:
+  - concept: "Section 4's content (lines 1707-2195) is byte-identical intra-file self-duplicated at lines 2198-2686"
+    canonical_source: 366
+    novelty: "none -- corpus-integrity finding, seventh instance of the intra-file self-duplication pattern (0267, 0343, 0354, 0360, 0362, 0365, 0366)"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Perplexity-authored Knowledge Qualification Framework and its internal-voice correction (Knowledge-Space=(Omega,F) downgraded from Strong Mathematical Evidence to candidate hypothesis) as the corpus's first named external-AI-tool contribution subjected to the same scrutiny as any primary source."
+  - "dimension-registry.md: record the Ideal Knowledge State K_t* (answerability-based, Coverage(K,t,D), explicitly unobservable) as a major new formal target for extraction, alongside the Deduction/Induction/Abduction extraction-mechanism distinction and the Probability+Logic-coexistence principle."
+  - "dimension-registry.md: record the Epistemic-vs-Normative justification dichotomy (Manifesto/Documentation/Rules/Law/Human-Principles hierarchy, J_0->J_4 justification-authority chain) as a new cross-cutting research dimension, with the multi-regime-epistemic-model question left explicitly open."
+  - "dimension-registry.md: record the Fact-based comparison-and-closure pipeline (K_t*=Cn_Rt(S_t union F_<=t), probability relocated to fact-extraction) as the corpus's most operationally concrete extraction model to date, and the sharpened 'What is a Fact?' research question superseding the Knowledge Qualification Problem framing."
+  - "dimension-registry.md: record this file's intra-file self-duplication (Section 4) as the seventh instance of the 0267/0343/0354/0360/0362/0365 pattern."
+anchor_test:
+  anchor: "0358's Pritchard engagement; 0359/0360's KST engagement; 0361-0365's Knowledge-Space/State/Unit/Kernel hierarchy, ten-step pipeline, and multi-source extraction generalization; 0363's landmark synthesis; 0364's inverse-problem reframing"
+  supports_dimension: "Mathematical/architectural model, landmark and unusually rich: introduces and critiques the corpus's first named external-AI-tool contribution, formalizes the Ideal Knowledge State K_t* with an explicit unobservability caveat, distinguishes Deduction/Induction/Abduction as genuinely different extraction mechanisms requiring Probability+Logic coexistence, opens an Epistemic-vs-Normative justification dichotomy with a disambiguated natural-law question, and closes with the corpus's most operationally concrete Fact-based comparison-and-closure extraction pipeline, superseding the Knowledge Qualification Problem with a sharper 'What is a Fact?' question"
+  refines_or_contradicts: "refines 0363 (downgrades a Strong-Mathematical-Evidence classification to hypothesis, reinforcing 0363's own minimality caution); refines 0362/0363 (revises pipeline sequencing, moves Knowledge Space later); refines 0364/0365 (re-attributes the 'try our best' approximation gap to incomplete facts, not imperfect logic); intra-file self-corrects (Section 2 vs Section 1) and intra-file self-repeats (Section 4, seventh 0267-pattern instance)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "The exact identity/provenance of the 'Perplexity' document (Section 1) beyond its explicit AI-tool label -- not a book or named academic source, but a distinct external-AI research contribution the corpus's internal voice treats as one more source to critique"
+  - "Which of the three disambiguated 'natural laws of humanity' meanings (physical / natural-law-philosophy / universal-human-constraints) is actually intended -- explicitly left for future clarification"
+open_questions:
+  - "Whether K_t* (ideal Knowledge state) is ever formally related to K-script (Knowledge Space) beyond the hypothesis-flagged containment K-hat_t subset-of K_t* subset-of K-script"
+  - "Whether the multi-regime-epistemic-model question (one Knowledge State vs. fundamentally different epistemic states) is ever resolved, or whether KnowledgeOS adopts a multi-regime architecture by default"
+  - "Whether the sharpened 'What is a Fact?' research question is pursued as the corpus's next major research thread, and whether it supersedes or merges with 0363's RQ1-RQ5"
+  - "Whether the Fact-based closure model K_t*=Cn_Rt(S_t union F_<=t) is ever tested against a concrete worked multi-fact example beyond the Nexus-version illustration"
+tier2_triggered: true
+tier2_reason: "Large, landmark, five-section file (one section, the seventh instance of the corpus's recurring intra-file self-duplication pattern). Introduces and internally critiques the corpus's first named external-AI-tool contribution (Perplexity), formalizes the Ideal Knowledge State K_t* with an explicit unobservability caveat and an answerability-based sufficiency criterion, distinguishes Deduction/Induction/Abduction as genuinely different extraction mechanisms requiring an explicit Probability+Logic coexistence principle, opens a major Epistemic-vs-Normative justification dichotomy with a carefully disambiguated 'natural laws of humanity' question and a multi-regime-epistemic-model open question, and closes with the corpus's most operationally concrete Fact-based comparison-and-closure extraction pipeline (K_t*=Cn_Rt(S_t union F_<=t)), superseding the Knowledge Qualification Problem with a sharper 'What is a Fact?' research question."

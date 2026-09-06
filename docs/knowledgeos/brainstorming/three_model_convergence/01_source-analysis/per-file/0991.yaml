@@ -1,0 +1,102 @@
+sequence: 991
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/exec/e_equality.py
+title: "e_equality.py -- The Actual Executable Script for Reviewer B's E3/E4/E5/E6 Mandate, Discovering a FOURTH Corpus Equality Relation ('Provenance-Sensitive,' Step 246) and Formally DEMOTING the 'history⊊structural⊊semantic' Hierarchy From CORPUS to a Verification-Lane-Only DERIVED Construct, While Correcting D285-5's Own Non-Injectivity Claim as Overclaimed"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a genuinely executable Python script directly implementing Reviewer B's (file 0989) E3/E4/E5/E6 mandate against corpus reference Step 246"
+source_role: PRIMARY_RESEARCH
+canonical_source: 991
+importance: critical
+confidence: high
+about: >
+  A genuinely executable Python script (a qualitatively significant artifact, continuing the pattern first
+  seen in files 0974/0982) directly implementing Reviewer B's mandate (file 0989) sections E3 (hierarchy
+  test), E4 (D285-5 revalidation), E5 (injectivity precision), E6 (identity-boundary separation).
+
+  **DISCOVERS AND NAMES A FOURTH CORPUS EQUALITY RELATION NOT PREVIOUSLY TRACKED BY THIS RECONSTRUCTION**,
+  citing a NEW corpus reference **"Step 246" / "[CORPUS 246]"**: the corpus defines FOUR relations, not
+  three -- (A) structural `=` (byte/structurally identical), (B) semantic `==` ("encode the same knowledge
+  semantics"), (C) observational `~` (every permitted observation gives the same result), and **(D)
+  provenance-sensitive `=_lam`** (content AND relevant provenance equivalent) -- quoting the corpus directly:
+  **"These are not interchangeable."** This directly extends this reconstruction's already-tracked
+  three-level equality analysis (files 0982-0990) with a fourth, corpus-native relation.
+
+  **E4 executes the concrete witness** (two `Assert` operations differing only in provenance metadata `Π`,
+  "origin:scan" vs "origin:vendor") against all four relations: structural FALSE (Π inside id, different
+  sets); semantic SUBSTANTIVE-BUT-QUALIFIED ("equal IF Π is discarded -- but that CHOICE is Decision 3,
+  OPEN" -- a new corpus decision-point reference); observational holds under cardinality-only observation;
+  provenance-sensitive FALSE by construction (explicitly compares Π).
+
+  **E3 DELIVERS A GENUINELY IMPORTANT FORMAL DOWNGRADE**: tests whether the long-repeated corpus hierarchy
+  `history⊊structural⊊semantic` is itself CORPUS or DERIVED, concluding: **"'history' equality is NOT among
+  [the corpus's four relations]... the HIERARCHY is a verification-lane construct (DERIVED), not CORPUS."**
+  What IS actually testable from the corpus's own four relations: `structural⊊semantic` is WITNESSED (strict,
+  via the executed example); `provenance⊆semantic` holds BY DEFINITION (D is defined as semantic+Π);
+  observational is "NOT comparable without fixing the permitted-observation set."
+
+  **E5 DELIVERS A SUBSTANTIVE CORRECTION TO D285-5'S OWN CENTRAL CLAIM**: explicitly rejects "delta is
+  non-injective" and "delta is non-injective in o" as overclaims; the precise, defensible statement is only
+  "there EXIST `o1≠o2` and a state `K0` such that `δ(K0,o1)==_semantic δ(K0,o2)` under a semantic projection
+  that DISCARDS Π" -- **"non-injectivity MODULO a chosen semantic quotient... NOT a property of δ. It is a
+  property of δ COMPOSED WITH that quotient. Under the corpus's relation D (provenance-sensitive), the same δ
+  IS injective on this witness."** Concludes: "D285-5 does not establish non-injectivity of δ."
+
+  **E6 DELIVERS A SELF-CORRECTION**: separates D285-5's property (an equivalence-relation/quotient choice on
+  states) from the previously-mentioned `grantId` collision (an ID-ASSIGNMENT defect on a different object,
+  authority acts) as genuinely different layers, concluding "D285-5 does NOT imply a general identity rule
+  for authority acts. Citing it as motivation for typing `humanActRef` is an OVERREACH. **(Correction to my
+  own R5.)**" -- a further disciplined self-correction in the pattern already established by files 0982's/
+  0985's reflexive corrections.
+introduces:
+  - concept: "'Step 246' / '[CORPUS 246]' -- a new corpus reference defining FOUR equality relations (structural, semantic, observational, provenance-sensitive), explicitly stated as not interchangeable"
+  - concept: "The fourth equality relation, provenance-sensitive '=_lam', combining semantic equivalence with provenance (Pi) equivalence"
+  - concept: "'Decision 3 (254)' -- a new corpus reference naming the OPEN decision of whether provenance Pi should be discarded under semantic equality"
+  - concept: "The formal downgrade of the 'history⊊structural⊊semantic' hierarchy from CORPUS status to a verification-lane-only DERIVED construct"
+  - concept: "The precise, non-overclaimed statement of D285-5's actual result: non-injectivity MODULO a chosen semantic quotient, not a property of delta itself"
+defines:
+  - term: "provenance-sensitive equality (=_lam)"
+    definition: "Two states are provenance-sensitive equal iff they are semantically equal AND their provenance sets (Pi values) are equal -- the fourth of the corpus's four named equality relations (Step 246)"
+refines:
+  - concept: "This reconstruction's already-tracked three-level equality analysis (structural/semantic/observational, files 0982-0990)"
+    refinement: "EXTENDED with a fourth, corpus-native relation (provenance-sensitive), directly quoting corpus reference Step 246's explicit statement that all four are non-interchangeable"
+  - concept: "The long-repeated corpus hierarchy claim 'history⊊structural⊊semantic'"
+    refinement: "FORMALLY DOWNGRADED from CORPUS to DERIVED (verification-lane-only) status; only structural⊊semantic is actually witnessed from the corpus's own four relations"
+  - concept: "D285-5's own central non-injectivity claim (already tracked via files 0973-0980, 0987-0990)"
+    refinement: "CORRECTED as an overclaim: the precise result is non-injectivity modulo a chosen semantic quotient, not a property of delta itself; under the provenance-sensitive relation delta IS injective on the same witness"
+  - concept: "This reconstruction's already-tracked open humanActRef/authority-act identity issue (referenced in file 0988's §12)"
+    refinement: "EXPLICITLY WARNED AGAINST as motivated by D285-5, which the script's author corrects as their own overreach (Correction to my own R5) -- the grantId collision is a genuinely separate, ID-assignment-layer problem"
+contradicts:
+  - concept: "D285-5's original framing of non-injectivity as a direct property of delta"
+    contradicted_by: "This script's E5 finding that non-injectivity holds only modulo a specific semantic quotient, and that delta is injective under the corpus's provenance-sensitive relation on the same witness"
+repeats: []
+bridge_candidates:
+  - "'Step 246' / '[CORPUS 246]' -- the original corpus location defining the four equality relations; watch for direct encounter."
+  - "'Decision 3 (254)' -- the open corpus decision on whether provenance should be discarded under semantic equality; watch for direct encounter or resolution."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the discovery of a FOURTH corpus equality relation (provenance-sensitive, Step 246), extending this reconstruction's already-tracked three-level equality analysis."
+  - "dimension-registry.md: record the formal downgrade of the 'history⊊structural⊊semantic' hierarchy from CORPUS to DERIVED (verification-lane-only) status."
+  - "dimension-registry.md: record the corrected, non-overclaimed statement of D285-5's central result: non-injectivity modulo a chosen semantic quotient, not a property of delta itself -- and the self-correction that the grantId collision does not motivate typing humanActRef."
+anchor_test:
+  anchor: "This reconstruction's already-tracked D285-5 non-injectivity claim and the history/structural/semantic equality hierarchy (files 0973-0990)"
+  supports_dimension: "Executes a genuine, cross-checkable correction to both: the hierarchy is downgraded to DERIVED status, and non-injectivity is shown to hold only modulo a chosen quotient, not as a property of delta itself"
+  refines_or_contradicts: "refines and partially contradicts (corrects) the prior overclaimed statements"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The script is directly executable and its print statements constitute the actual evidentiary record; running it reproduces the exact claimed results (structural FALSE, semantic qualified-TRUE, provenance FALSE, hierarchy downgrade, injectivity-modulo-quotient finding)."
+undefined_concepts: []
+open_questions:
+  - "The original corpus location of 'Step 246' and 'Decision 3 (254)', not yet directly encountered."
+  - "Whether Decision 3 (whether to discard provenance under semantic equality) is ever formally resolved later in the corpus."
+tier2_triggered: true
+tier2_reason: "A genuinely executable script delivering a substantive, cross-checkable correction to two already-tracked findings: it discovers a fourth corpus equality relation (provenance-sensitive) and formally downgrades the long-repeated equality hierarchy from CORPUS to DERIVED status, while correcting D285-5's own non-injectivity claim as an overclaim. Classified importance critical and confidence high given the executable, directly reproducible nature of the evidence."

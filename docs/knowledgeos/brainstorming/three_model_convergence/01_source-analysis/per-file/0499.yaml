@@ -1,0 +1,151 @@
+sequence: 499
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-083550_where-does-a-chatgpt-like-llm-get-its-information.md
+title: "LANDMARK: Source Plane vs. Knowledge Plane vs. Epistemic Engine Architecture; Three Non-Conflatable Information Pathways (Model/Retrieval/KnowledgeOS Knowledge); Retrieval Reformalized as a Goal-Directed Epistemic Operation (Zero→Gap→Sārathi→Retrieval); Three Numbered Constitutional Invariants for Sources; First Real External Citations (OpenAI Documentation)"
+date: "2026-08-27"
+bytes: 27204
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "Part B is an affirming elaboration/formalization of Part A rather than a corrective review; it numbers Part A's principles as three Constitutional Invariants and adds a comparison table, without disagreeing with any claim"
+source_role: PRIMARY_RESEARCH
+canonical_source: 499
+importance: critical
+confidence: high
+about: >
+  Answers "where does a ChatGPT-like LLM get its information?" and uses the answer to derive a
+  fundamentally different retrieval/ingestion architecture for KnowledgeOS. Notably the first file in this
+  arc to cite real, specific external sources with footnotes (three OpenAI documentation pages on model
+  training data sources, the "not a database" framing, and ChatGPT Search), rather than reasoning purely
+  conceptually or from the Bhagavad-gītā/Vedic corpus.
+
+  **Identifies two LLM information mechanisms**: (A) information learned during training -- the model
+  adjusts parameters to learn patterns; OpenAI explicitly describes its models as learning machines rather
+  than databases, so the model holds learned representations, not a KnowledgeOS-style explicit Knowledge
+  State; (B) information retrieved at inference time (e.g. ChatGPT Search), explicitly noted as "much closer
+  to what KnowledgeOS needs" than pure parametric knowledge. **Rejects the naive RAG architecture**
+  (Documents->Chunk->Embedding->VectorDB->RAG->LLM) as "useful, but... not KnowledgeOS" -- it bypasses the
+  epistemic model entirely. **Establishes the file's central distinction**: Document≠Knowledge; Document≠
+  Evidence -- a document is an information-bearing SOURCE from which observations and candidate assertions
+  may be constructed; it can PROVIDE evidence for an assertion but is not itself evidence, worked via a
+  Document->DocumentSource->Observation->CandidateAssertion->Evidence->KnowledgeState pipeline.
+
+  **Introduces a three-plane architecture**: the Source Plane (documents/APIs/Git -- answers "where did this
+  information come from?"), the Knowledge Plane (entities/assertions/dimensions/relations -- answers "what
+  do we currently represent as knowledge?"), and the Epistemic Engine (Zero/Lord/Sārathi -- answers "how
+  justified, complete, current and coherent is that knowledge?"), both planes feeding the shared Epistemic
+  Engine. **Makes Source Connectors a first-class platform capability**, naming sixteen concrete connector
+  types (File System, PDF, DOCX, XLSX, Markdown, Git, GitLab, GitHub, Confluence, SharePoint, Jira,
+  Databases, REST APIs, Web, Email, Enterprise repositories), explicitly requiring them to produce controlled
+  ingestion events rather than dumping content into a vector database. **Delivers a detailed nine-stage
+  ingestion pipeline**: External Source->Source Connector->Raw Artifact->Document Parser->Structural
+  Model->Semantic Parser->Observations->Candidate Assertions->Evidence Objects->Knowledge State Update->
+  {Zero,Lord}->Sārathi, reconnecting the corpus's long-standing C-parser/Sanskrit-parser intuition to a
+  concrete example (extracting Entity/Dimension/Value candidates from "Nexus Repository Manager version
+  3.69.0 is running on RHEL 9.8"), with the explicit discipline that KnowledgeOS "should not immediately
+  declare these facts to be true knowledge" -- every candidate assertion carries Source/Location/ObservedAt/
+  ExtractionMethod metadata pending epistemic evaluation. **Contrasts RAG's single question ("which chunks
+  are relevant to this question?") against a twelve-step richer KnowledgeOS sequence** (what is the
+  question -> what dimensions does it imply -> what knowledge is required -> which sources may contain it ->
+  what observations can be extracted -> what assertions can be constructed -> what evidence supports them ->
+  do they conflict -> are they current -> are they contextual -> what gaps remain -> what to investigate
+  next). **Reformalizes Retrieval itself as a goal-directed epistemic operation**:
+  Retrieve(Q,K_t,I_t,C)->EvidenceCandidates, replacing the naive Retrieve(Query)->Documents, "the retrieval
+  system knows why it is retrieving," worked via a Nexus-migration example that discovers twelve relevant
+  dimensions (version, repository topology, blob stores, storage, network, firewall, DNS, certificates,
+  backup, authentication, dependencies, operational constraints) before retrieving documents specifically
+  for those dimensions. **Delivers the file's most powerful architectural insight**: Zero can DRIVE
+  retrieval -- Zero identifies specific gaps (backup verification, firewall rules, certificate ownership)
+  against a partially-populated Knowledge State, and Sārathi then generates a targeted investigation/
+  retrieval plan (search infrastructure docs for backup configuration; search network docs for firewall
+  rules; search certificate inventory) -- crystallized as **Zero->Gap->Sārathi->Retrieval**, "the retrieval
+  engine becomes part of the investigation loop." Extends the corpus's closed-loop architecture diagram to
+  include Source Retrieval as an explicit stage within the Zero/Lord/Sārathi cycle, naming the result an
+  "epistemic retrieval loop," "much more interesting than RAG." **Establishes LLM Output≠Knowledge**:
+  LLM Output->CandidateInterpretation, which must then pass through KnowledgeOS's epistemic processing
+  before becoming knowledge -- the LLM remains valuable for language understanding, semantic reconstruction,
+  document interpretation, hypothesis generation, inference, summarization, question generation, planning,
+  code generation, and explanation, but "does not become the authoritative knowledge store."
+  **Formalizes three non-conflatable information pathways**: Path A (Model knowledge -- implicit,
+  non-traceable, non-governed, from training data->foundation model->learned parameters->LLM response);
+  Path B (External retrieval -- explicit, traceable, but ungoverned, from sources->retrieval->evidence->
+  KnowledgeOS); Path C (KnowledgeOS accumulated knowledge -- explicit, traceable, governed, versioned, from
+  observations+evidence+assertions+relationships+epistemic states+history->Knowledge State) -- "the three
+  should not be conflated." **Addresses the enterprise 'memory' problem**: an LLM's learned parameters are
+  not a suitable enterprise knowledge system; KnowledgeOS instead maintains K_t as an explicit, versioned,
+  traceable Knowledge State, worked via a fully fleshed-out concrete Assertion object (A-10291, Nexus
+  version, with Subject/Dimension/Value/Evidence/Source/ObservedAt/Acquisition/Support/Uncertainty/
+  Validity/Provenance fields) -- "that is something an LLM alone does not provide." Crystallizes three key
+  architectural principles: "Sources provide information; KnowledgeOS constructs governed knowledge from
+  it." / "LLMs interpret; KnowledgeOS evaluates and governs." / "Retrieval supplies evidence candidates; it
+  does not automatically create knowledge." Presents a final connection architecture (Source Layer /
+  Cognitive Layer / Action Layer all feeding a shared Knowledge State -> Zero/Lord/Sārathi) and closes
+  rejecting "build KnowledgeOS as our own RAG" in favor of Source Fabric + Semantic Reconstruction +
+  Knowledge State + Epistemic Engine + Investigation Engine + AI Models -- "RAG becomes merely one
+  retrieval mechanism inside KnowledgeOS, rather than the foundation of KnowledgeOS itself."
+
+  **Part B** (an enthusiastic, fully affirming elaboration of Part A, not a corrective review) reorganizes
+  Part A's findings into a formal comparison table for the three pathways with an explicit "critical error"
+  warning (LLM Response≠KnowledgeOS Knowledge; Retrieved Document≠KnowledgeOS Knowledge; Training Data≠
+  KnowledgeOS Knowledge), and -- its one genuinely new contribution -- **formally numbers three
+  "Constitutional Invariants for Sources" for the first time**: Invariant 1 (Source≠Knowledge), Invariant 2
+  (LLM Output≠Knowledge), Invariant 3 (Retrieval≠Knowledge Creation), escalating Part A's principles into
+  named governance vocabulary. Closes with a clean side-by-side RAG-vs-KnowledgeOS pipeline comparison and
+  the summary statement: "KnowledgeOS is an epistemic investigation system, not a question-answering
+  system."
+introduces:
+  - concept: "First real external citations in this arc: three specific OpenAI documentation pages (training data sources, the 'not a database' framing, ChatGPT Search) grounding claims about LLM information sources in cited fact rather than pure conceptual reasoning"
+  - concept: "Document≠Knowledge; Document≠Evidence: a document is an information-bearing source from which observations and candidate assertions may be constructed, not knowledge or evidence itself"
+  - concept: "Three-plane architecture: Source Plane (provenance), Knowledge Plane (current representation), and Epistemic Engine (justification/completeness/currency/coherence assessment), both planes feeding the shared Epistemic Engine"
+  - concept: "Source Connectors established as a first-class platform capability, with sixteen named connector types, required to produce controlled ingestion events rather than dumping content into a vector database"
+  - concept: "Nine-stage ingestion pipeline: External Source->Source Connector->Raw Artifact->Document Parser->Structural Model->Semantic Parser->Observations->Candidate Assertions->Evidence Objects->Knowledge State Update->{Zero,Lord}->Sārathi"
+  - concept: "Retrieval reformalized as a goal-directed epistemic operation: Retrieve(Q,K_t,I_t,C)->EvidenceCandidates, replacing the naive Retrieve(Query)->Documents"
+  - concept: "Zero->Gap->Sārathi->Retrieval: Zero-identified gaps directly drive Sārathi-generated targeted retrieval/investigation plans, making retrieval part of the investigation loop rather than a standalone query mechanism -- named the 'epistemic retrieval loop'"
+  - concept: "LLM Output≠Knowledge: LLM outputs are Candidate Interpretations requiring KnowledgeOS epistemic processing before becoming knowledge, regardless of the LLM's continuing value for language understanding, hypothesis generation, and other cognitive tasks"
+  - concept: "Three non-conflatable information pathways: Path A (implicit Model knowledge from training), Path B (explicit but ungoverned External retrieval), Path C (explicit, traceable, governed KnowledgeOS accumulated knowledge)"
+  - concept: "Three numbered Constitutional Invariants for Sources (Part B): Invariant 1 Source≠Knowledge, Invariant 2 LLM Output≠Knowledge, Invariant 3 Retrieval≠Knowledge Creation"
+defines:
+  - concept: "Source Plane"
+    definition: "The architectural layer answering 'where did this information come from?' -- documents, APIs, Git, and other raw sources, distinct from the Knowledge Plane"
+  - concept: "Knowledge Plane"
+    definition: "The architectural layer answering 'what do we currently represent as knowledge?' -- entities, assertions, dimensions, relations, distinct from the Source Plane and evaluated by the Epistemic Engine"
+  - concept: "Retrieve (goal-directed, corrected)"
+    definition: "Retrieve(Q,K_t,I_t,C)->EvidenceCandidates -- a retrieval operation parameterized by the current question, Knowledge State, Ideal State, and context, so the system knows WHY it is retrieving, not merely which chunks match a query"
+  - concept: "Three information pathways (A/B/C)"
+    definition: "Path A: Training data->Foundation model->Learned parameters->LLM response (implicit model knowledge). Path B: Sources->Retrieval->Evidence->KnowledgeOS (explicit external knowledge, ungoverned until processed). Path C: Observations+Evidence+Assertions+Relationships+EpistemicStates+History->Knowledge State (governed organizational knowledge)"
+refines:
+  - concept: "0498's LLM-as-epistemic-instrument reframing and its 'LLM Output≠Knowledge'-adjacent discipline"
+    refinement: "Made architecturally concrete: LLM Output->Candidate Interpretation is now embedded within a full nine-stage ingestion pipeline and a three-pathway information model, with the Constitutional Invariant Source≠Knowledge added alongside LLM Output≠Knowledge"
+  - concept: "0497's 'AI-agent epistemic substrate' and Ideal-State/discrepancy-driven decision-support positioning"
+    refinement: "Extended specifically into the retrieval/ingestion layer: Zero's gap detection against the Ideal State now directly drives Sārathi's retrieval planning, giving the corpus's abstract Zero/Lord/Sārathi discipline a concrete ingestion-pipeline application for the first time"
+  - concept: "0492's Evidence formal object (Evidence=(Source,Content,Relevance,Reliability,Time,Provenance)) and Epistemic Lineage"
+    refinement: "Directly applied and extended into a fully worked concrete Assertion instance (A-10291) with the complete field set (Subject/Dimension/Value/Evidence/Source/ObservedAt/Acquisition/Support/Uncertainty/Validity/Provenance), demonstrating the abstract object model in a realistic enterprise scenario"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: record the Source Plane / Knowledge Plane / Epistemic Engine three-plane architecture, Document≠Knowledge/Document≠Evidence, and Source Connectors as a first-class platform capability with a nine-stage ingestion pipeline."
+  - "dimension-registry.md: record Retrieval reformalized as a goal-directed epistemic operation (Retrieve(Q,K_t,I_t,C)->EvidenceCandidates), the Zero->Gap->Sārathi->Retrieval epistemic retrieval loop, and LLM Output≠Knowledge with the three non-conflatable information pathways (Model/Retrieval/KnowledgeOS knowledge)."
+  - "dimension-registry.md: record the three numbered Constitutional Invariants for Sources (Source≠Knowledge, LLM Output≠Knowledge, Retrieval≠Knowledge Creation) and the first use of real external citations (OpenAI documentation) in this arc."
+anchor_test:
+  anchor: "0498's LLM-as-epistemic-instrument reframing and AI Model ⊂ KnowledgeOS inversion; 0497's Ideal-State/discrepancy-driven decision-support positioning; 0492's Evidence formal object and Epistemic Lineage"
+  supports_dimension: "LANDMARK: introduces a three-plane architecture (Source Plane / Knowledge Plane / Epistemic Engine) with Document≠Knowledge/Document≠Evidence as the founding distinction; establishes Source Connectors and a nine-stage ingestion pipeline as first-class platform capabilities; reformalizes Retrieval as a goal-directed epistemic operation and crystallizes Zero->Gap->Sārathi->Retrieval as an 'epistemic retrieval loop' that makes Zero's gap detection directly drive targeted retrieval, giving the corpus's abstract Zero/Lord/Sārathi discipline its first concrete ingestion-pipeline application; formalizes three non-conflatable information pathways (Model/Retrieval/KnowledgeOS knowledge) and, in Part B, three numbered Constitutional Invariants for Sources; and is the first file in this arc to cite real external documentation (OpenAI) rather than reasoning purely conceptually"
+  refines_or_contradicts: "refines 0498's LLM-as-epistemic-instrument discipline, 0497's Ideal-State-driven positioning, and 0492's Evidence/Epistemic Lineage objects into a concrete ingestion/retrieval architecture; no contradiction; Part B is a fully affirming elaboration of Part A"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The Zero->Gap->Sārathi->Retrieval worked example (Zero identifies backup-verification/firewall-rules/certificate-ownership gaps against a partially populated Knowledge State; Sārathi generates targeted document-search actions for each) is the corpus's clearest concrete demonstration yet of the abstract Zero/Lord/Sārathi lens architecture directly driving a real information-retrieval mechanism."
+  - "The fully worked Assertion object (A-10291) with a complete provenance/epistemic-status field set is the corpus's most concrete illustration yet of what a single governed knowledge item actually looks like in an enterprise scenario, directly grounding many prior abstract Evidence/Assertion definitions (0492 onward)."
+undefined_concepts: []
+open_questions:
+  - "Whether the sixteen named Source Connector types and the nine-stage ingestion pipeline are ever prototyped or implemented, given the corpus's continuing conditional/aspirational framing throughout this product-positioning arc"
+  - "Whether the three Constitutional Invariants for Sources (Part B) are formally integrated with the corpus's other invariant-numbering schemes (INV-KOS at 0408, ZI-01..10 at 0411, LL-01..12 at 0416) into one unified catalog"
+  - "Whether the 'epistemic retrieval loop' is ever tested against a genuine multi-source ingestion scenario beyond the illustrative Nexus-migration example"
+tier2_triggered: true
+tier2_reason: "Introduces a three-plane architecture (Source Plane / Knowledge Plane / Epistemic Engine) founded on Document≠Knowledge/Document≠Evidence, establishing Source Connectors and a nine-stage ingestion pipeline as first-class platform capabilities; reformalizes Retrieval as a goal-directed epistemic operation Retrieve(Q,K_t,I_t,C)->EvidenceCandidates and crystallizes Zero->Gap->Sārathi->Retrieval as an 'epistemic retrieval loop,' giving the corpus's abstract Zero/Lord/Sārathi lens architecture its first concrete, worked application to information retrieval; formalizes three non-conflatable information pathways (implicit Model knowledge, ungoverned External retrieval, governed KnowledgeOS accumulated knowledge) and, in Part B, three formally numbered Constitutional Invariants for Sources; and is the first file in this entire arc to ground its claims in real, specifically cited external documentation (OpenAI) rather than purely conceptual or Gita-derived reasoning -- directly extending 0497/0498's product-positioning work with concrete ingestion-layer architecture."

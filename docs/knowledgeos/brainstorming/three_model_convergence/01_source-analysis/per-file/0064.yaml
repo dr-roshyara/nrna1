@@ -1,0 +1,38 @@
+sequence: 64
+path: docs/knowledgeos/brainstorming/20260820-123902-kos-design-patterns.md
+title: KnowledgeOS Design Patterns Catalogue (GoF patterns rated for relevance)
+date: 2026-08-20
+bytes: 14637
+
+model:
+  primary: c1
+  secondary: []
+
+source_role: IMPLEMENTATION
+canonical_source: null
+
+importance: low
+confidence: high
+
+about: "GoF design-pattern catalogue for KnowledgeOS, subordinated to DDD boundaries; reuses 0063's modular-monolith Kernel sense consistently."
+
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: modular_monolith_kernel
+    canonical_source: 63
+    novelty: none
+
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true   # reuses 0063's sense, not a new collision
+
+key_evidence: []
+undefined_concepts: [knowledge]
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: "Pure GoF pattern-selection guidance; reuses 0063's Kernel sense consistently, no new theoretical content."

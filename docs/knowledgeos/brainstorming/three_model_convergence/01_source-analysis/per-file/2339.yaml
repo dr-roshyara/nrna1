@@ -1,0 +1,76 @@
+sequence: 2339
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/06_operation-registry-audit.md
+title: "Step-292/06 — Operation Registry: 'A Shape Without Members Is Not a Registry' -- Reiter's (Name, Precondition, Positive-Effects, Negative-Effects) Registry Entry Shape Is Formally Supported, but Step 291's Own Audit Shows Signatures 8/22, Bodies 0/22, Identity 0/22, Ratification 0/22 All Open; Four of Six Placement Questions (Authority/Provenance/Identity-Equality/Observation/Qualification) Cannot Be Placed"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "delivers the precise numeric state of the already-tracked Step 291 operation-registry audit (signatures 8/22, bodies/identity/ratification 0/22) and a five-item inside-vs-outside-the-transition placement table for Authority/Provenance/Identity-Equality/Observation/Qualification"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2339
+importance: high
+confidence: high
+about: >
+  Tests Reiter's basic-action-theory registry shape against the already-tracked Step 291 operation-
+  registry audit (already-tracked-elsewhere in this reconstruction's earlier-project material, referenced
+  extensively throughout files 2298-2321 of this window's Gītā thread).
+
+  **DELIVERS WHAT REITER SUPPORTS**: "[EXT] a basic action theory is exactly a registry: for each action,
+  a precondition axiom (Poss) and effect axioms (γ⁺,γ⁻), plus unique names and S_0. A4 verifies that Poss
+  functions as a gate: a non-executable history is rejected at its first violating prefix, not repaired."
+  "[EXP] the shape (name, precondition, positive effects, negative effects) is formally supported. This
+  is the most directly transferable structure in the source."
+
+  **DELIVERS THE PRECISE STEP-291 REGISTRY FRACTIONS, BLOCKING ADOPTION**: "Step 291 already audited the
+  operation registry independently, and its verdict stands: membership, signatures (8/22), bodies
+  (0/22), identity (0/22) and ratification (0/22) are all OPEN. Reiter supplies the SHAPE of a registry
+  entry. Step 291 established that KnowledgeOS does not yet know its MEMBERSHIP, its signatures, or its
+  bodies. A shape without members is not a registry. [NEG] Reiter does not close step 291's gaps, and
+  must not be cited as closing them." This is the most precise numeric quantification of Step 291's
+  operation-registry state this reconstruction has yet encountered (8 of 22 candidate operations have a
+  signature; 0 of 22 have a body, an identity treatment, or ratification).
+
+  **DELIVERS A FIVE-ITEM INSIDE-VS-OUTSIDE-THE-TRANSITION PLACEMENT TABLE**, explicitly on corpus
+  evidence, not on Reiter: Authority -- OUTSIDE (R1 put verification outside; governance acts are not
+  state transitions); Provenance -- INSIDE the state, OUTSIDE the transition rule (must survive the
+  transition per KR-CONTR-EVAL's indispensable boundary component, but does not gate it); Identity/
+  Equality -- UNRESOLVED, cannot be placed (≡_sem is OPEN; placing it now would decide it by
+  implication); Observation -- UNRESOLVED (OPEN in v1.2, see 07); Qualification -- UNRESOLVED (P4
+  refuted the Poss identification -- confirming this reconstruction's already-tracked file 2335 Poss≠
+  Qualify finding via a distinct experiment label, P4). "Four of six cannot be placed. Recording that is
+  the result; guessing would be the error."
+introduces:
+  - concept: "The precise Step-291 operation-registry fractions: signatures 8/22, bodies 0/22, identity 0/22, ratification 0/22"
+  - concept: "The explicit principle 'a shape without members is not a registry', distinguishing a formally supported entry SHAPE from an unresolved MEMBERSHIP question"
+  - concept: "The five-item inside/outside-the-transition placement table (Authority/Provenance/Identity-Equality/Observation/Qualification), with four of five items unplaceable"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Step 291 operation-registry OPEN status (referenced throughout files 2298-2321)"
+    refinement: "GIVEN THE PRECISE NUMERIC STATE for the first time in this reconstruction's tracking: 8/22 signatures, 0/22 bodies/identity/ratification"
+  - concept: "This reconstruction's already-tracked file 2335 Poss≠Qualify refutation"
+    refinement: "CONFIRMED via a distinct experiment label (P4), reaffirming the negative result under independent naming"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "'P4' (the experiment refuting the Poss=Qualify identification) -- referenced by label only; not included in this file, likely part of the same step-292 exec/results package."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering the precise Step-291 operation-registry fractions (8/22 signatures, 0/22 bodies/identity/ratification) and a five-item inside/outside-transition placement table with four of five items unplaceable."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step 291 operation-registry OPEN status and the file 2335 Poss≠Qualify finding"
+  supports_dimension: "Delivers the precise numeric quantification of Step 291's registry state and confirms Poss≠Qualify under an independent experiment label"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers the precise numeric quantification of Step 291's operation-registry state (8/22 signatures, 0/22 bodies/identity/ratification), the explicit 'shape without members is not a registry' principle, and a five-item placement table with four of five items unplaceable. Classified importance high given the incremental precision beyond this reconstruction's already-tracked Step 291 material."

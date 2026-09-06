@@ -1,0 +1,169 @@
+sequence: 884
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-185734_step_255_state-history-congruence-and-counterexample-catalogue.md
+title: "Step 255 -- State/History Congruence and Counterexample Catalogue: Delivers a Formal TEN-CLASS COUNTEREXAMPLE CATALOGUE (Only Class I, External Provenance at t=0, Formally Established -- the Other Nine Remain Conditional/Candidate), Delivers 'Replayability!=State Sufficiency,' a THREE-TYPE HISTORY-DEPENDENCE CLASSIFICATION (Intrinsic/Transformation-Context/Audit) Resolving the Apparent Provenance Contradiction (Non-Reconstructibility From History(T) Does NOT Imply Provenance Must Be Inside K -- It May Belong to K, H, or an External Audit Substrate), and 'the Coarsest Sufficient Abstraction' -- a Mathematically Precise Reformulation of Minimality as the Coarsest Operationally-Valid Equivalence -- Narrows 0883's Provenance REQUIRES-USER-DECISION Into a Sharper, More Testable Question -- Opens Step 256's Formal Operation Signature Registry"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: c1
+  secondary_note: "the ten counterexample classes are worked through DDD-flavored scenarios (authority, evidence, conflict, merge, policy), while the formal congruence/minimality apparatus is the primary mathematical contribution"
+source_role: PRIMARY_RESEARCH
+canonical_source: 884
+importance: critical
+confidence: high
+about: >
+  Continues directly from 0883, formalizing the state-history congruence criterion boxed
+  **`F∘T̂=T∘F`** and the induced equivalence `H_1∼_FH_2⟺F(H_1)=F(H_2)`, requiring this equivalence to be
+  preserved by every mandatory transformation (the "history-congruence condition"). **§255.2 delivers a
+  crisp distinction**: replay (`Replay(H)=K`) asks a weaker question than congruence (whether currently-
+  identical-looking histories will continue to be treated identically by every future legal operation),
+  boxed **`Replayability≠State Sufficiency`** -- a state can be perfectly replayable while still omitting
+  information required for future transformations.
+
+  **§255.3-255.13 delivers a formal TEN-CLASS COUNTEREXAMPLE CATALOGUE**, systematically working through
+  scenarios where two histories collapse to the same content-only state (`F(H_1)=F(H_2)`) but a
+  mandatory operation could plausibly distinguish them: Class I, external provenance at `t=0`
+  (restating 0883's decisive counterexample, the ONLY class formally established); Class II, epistemic
+  standing (`p` accepted vs. merely proposed, conditional pending a frozen status vocabulary); Class III,
+  authority (an asserted-by-authorized-actor vs. unauthorized-actor scenario, conditional); Class IV,
+  evidence (`e_1≠e_2` supporting the same `p`, conditional); Class V, conflict history (a previously
+  contested `¬p`, candidate); Class VI, transformation lineage (`p_0→p_1` vs. bare `p_1`, distinguishable
+  via `Supersede`/`ExplainOrigin`); Class VII, withdrawal/reintroduction history (candidate); Class VIII,
+  merge history (`p_1→p` vs. `p_2→p`, distinguishable if merged provenance is preserved); Class IX,
+  policy regime (delivering the important nuance that policy relevance does NOT prove `Policy⊆K` --
+  boxed **`Policy relevance does not prove Policy⊆K`**, it proves only that policy context must be
+  available to the transformation via `T:K×Policy→K`); Class X, time-dependent semantics (similarly
+  showing `T:K×Time×Policy→K` suffices without requiring `Time⊆K`, crystallized boxed
+  **`semantic dependency≠state membership`**).
+
+  **§255.14 delivers a consolidated ten-row counterexample taxonomy** (Counterexample source/Lost
+  information), explicitly noting these do not all have the same architectural consequence -- some
+  belong in `K`, others in `T`'s parameters, others in `H`, others in an external governance service.
+
+  **§255.15 delivers a genuinely useful new THREE-TYPE HISTORY-DEPENDENCE CLASSIFICATION**: Type I,
+  Intrinsic state dependence (the information is part of what the current knowledge state MEANS, e.g.
+  proposition + epistemic standing, likely belonging inside the semantic state); Type II, Transformation-
+  context dependence (affects how a transformation is evaluated without being part of knowledge content
+  itself, e.g. Policy, where `T(K,Π)` may suffice); Type III, Audit/history dependence (required for
+  reconstruction, explanation, or accountability without necessarily altering knowledge identity, e.g.
+  Provenance -- "this is precisely the unresolved KnowledgeOS question").
+
+  **§255.16 delivers a genuinely important resolution of an apparent contradiction**: the finding that
+  Provenance cannot be reconstructed from `History(T)` in the general case (0883's counterexample) does
+  NOT logically imply `Provenance⊆K`. Three possibilities remain live: `P⊆K`, `P⊆H`, or
+  `P⊆ExternalAudit`. The formal, cleaner conclusion is boxed
+  **`P must be preserved somewhere if provenance semantics are required`** -- narrower and stronger than
+  the earlier framing.
+
+  **§255.17-255.21 delivers a clean formal proposition/converse pair for state sufficiency** (if a
+  corresponding `T` exists for every `T̂∈𝒯` satisfying the commuting condition, `F` is sufficient;
+  otherwise not) and, crucially, **the file's most elegant mathematical contribution: "the coarsest
+  sufficient abstraction."** Defines `H_1≡H_2` iff no mandatory operation can distinguish them, and
+  proposes the IDEAL target boxed **`F(H_1)=F(H_2)⟺H_1≡H_2`** -- "two histories should have the same
+  Knowledge State exactly when they are indistinguishable by all semantically relevant future
+  operations." This reframes minimality entirely: boxed **`K should encode exactly the distinctions
+  required by future semantics`**, giving **`Minimality=coarsest operationally valid equivalence`** --
+  substantially more precise than field-counting minimization.
+
+  **§255.22-255.23 delivers the properly-qualified sufficient-statistic analogy** (consistent with
+  0875's own careful qualification) and a DDD reframing: "the Aggregate boundary must retain every piece
+  of information required to enforce its invariants and execute its domain behaviors correctly," but
+  this does not mean every contextual concept belongs inside the Aggregate -- boxed
+  **`Aggregate sufficiency≠everything the domain knows`**.
+
+  **§255.24 delivers a clean layered-architecture diagram** synthesizing the arc's findings (Governance
+  Context/Policy/Authority feeding into Knowledge State, through Transformation `T` to a New State, with
+  a separate Lineage/Audit/Provenance branch), explicitly "the structural hypothesis now supported by the
+  congruence analysis," not final.
+
+  **§255.25 narrows 0883's first REQUIRES-USER-DECISION question into a sharper, more directly testable
+  form**: not "is provenance part of Knowledge?" but boxed
+  **`Does any mandatory KnowledgeOS operation distinguish histories solely because of their
+  provenance?`** -- only once such an operation is concretely identified does the further question of
+  WHERE provenance belongs (K, H, or external audit) become actionable.
+
+  **§255.26-255.28 identifies the operation inventory as "the next major bottleneck"**: only four of the
+  nine candidate operations (`Add, Remove, Revise, Transform, Supersede, Merge, Split, Reject,
+  Withdraw`) have typed signatures in the latest formal pass, so `𝒯` "is not yet formally closed,"
+  preventing a complete congruence proof; delivers an important methodological warning against
+  constructing counterexamples using operations whose own semantics are undefined, since that would
+  demonstrate vocabulary ambiguity rather than genuine mathematical insufficiency. Delivers a ten-row
+  counterexample-strength table confirming only Class I is "formally established," the rest
+  "conditional" or "candidate."
+
+  **§255.29 delivers an explicit, disciplined PROVEN/NOT-PROVEN ledger**: proven -- content-only state
+  insufficient as a universal abstraction; `History(T)` insufficient as universal provenance
+  reconstruction; state sufficiency must be tested through congruence; minimality equals preserving
+  exactly the distinctions relevant to mandatory operations; NOT proven -- full history must be part of
+  Knowledge State; provenance must be part of Knowledge State; any particular tuple is the final `K`.
+
+  **§255.30-255.31 delivers the revised kernel target** (`K*`=minimal sufficient state abstraction
+  subject to congruence for all `T∈𝒯`, preserving every distinction affecting identity/admissibility/
+  epistemic-status/transformation/required-provenance/required-history/governance-sensitive-behavior) and
+  a SIX-GATE STATUS CHECKPOINT: Gate A State abstraction 🟡; Gate B Congruence 🟡 (formal criterion
+  established, one strong counterexample exists); Gate C Provenance 🟡 (non-reconstructible, location
+  unresolved); Gate D Operation set 🔴 (not completely typed); Gate E Minimality 🔴 (not proven); Gate F
+  Equality 🔴 (cannot be finalized before the state abstraction is fixed).
+
+  **Closes opening "Step 256 — Formal Operation Signature Registry,"** proposing a complete registry
+  with eleven fields per operation (Name/Domain/Codomain/Preconditions/Postconditions/Required-State-
+  Information/Provenance-Dependence/Policy-Dependence/History-Dependence/Determinism/Computability),
+  "only then can we systematically execute `H_1∼H_2` against every operation." Delivers the file's final
+  synthesis boxed **`KnowledgeOS Kernel=Minimal Sufficient State Abstraction+Typed Transformation
+  Semantics`**, with **`congruence before minimality`** and **`operation registry before final K`**.
+introduces:
+  - concept: "The formal history-congruence condition and the induced equivalence ∼_F"
+  - concept: "Replayability≠State Sufficiency -- congruence is a strictly stronger requirement than replay"
+  - concept: "The formal ten-class counterexample catalogue (external provenance, epistemic standing, authority, evidence, conflict history, transformation lineage, withdrawal/reintroduction, merge history, policy regime, time-dependent semantics), only Class I formally established"
+  - concept: "Policy relevance does not prove Policy⊆K; semantic dependency≠state membership"
+  - concept: "THE THREE-TYPE HISTORY-DEPENDENCE CLASSIFICATION: Intrinsic state dependence / Transformation-context dependence / Audit-history dependence"
+  - concept: "THE RESOLUTION of the apparent provenance contradiction: non-reconstructibility from History(T) does not imply Provenance⊆K -- three live possibilities (K, H, or external audit)"
+  - concept: "THE COARSEST-SUFFICIENT-ABSTRACTION formalization: F(H1)=F(H2)⟺H1≡H2, redefining minimality as the coarsest operationally valid equivalence"
+  - concept: "The DDD reframing: Aggregate sufficiency≠everything the domain knows"
+  - concept: "The narrowed, more testable provenance REQUIRES-USER-DECISION question: does any mandatory operation distinguish histories solely because of provenance?"
+  - concept: "The operation-inventory bottleneck: only four of nine candidate operations have typed signatures"
+  - concept: "The explicit proven/not-proven ledger and the six-gate status checkpoint"
+  - concept: "Step 256's opening: the formal operation signature registry with eleven fields per operation"
+defines:
+  - concept: "The three-type history-dependence classification"
+    definition: "A refinement of the earlier binary in-K-or-not framing for candidate kernel information, distinguishing three genuinely different relationships a piece of historical information can have to the current knowledge state: Type I, Intrinsic state dependence, where the information is constitutive of what the current knowledge state actually MEANS (e.g. a proposition together with its epistemic standing) and therefore likely belongs inside the semantic state itself; Type II, Transformation-context dependence, where the information affects how a transformation should be evaluated without itself being part of the knowledge content (e.g. an applicable policy, which can instead be supplied as an external parameter to the transformation function, T(K,Π), rather than stored inside K); and Type III, Audit/history dependence, where the information is needed for reconstruction, explanation, or accountability purposes but does not necessarily change what the current knowledge state itself means (e.g. provenance) -- explicitly flagged as remaining KnowledgeOS's central unresolved question of where such information should actually be stored"
+  - concept: "The coarsest-sufficient-abstraction target"
+    definition: "A precise mathematical reformulation of what a minimal Knowledge State abstraction should achieve, replacing the vague goal of 'the smallest number of fields' with an exact equivalence-theoretic target: define H_1≡H_2 to mean that no mandatory KnowledgeOS operation can ever distinguish the two histories. The ideal state abstraction F should then satisfy F(H_1)=F(H_2) if and only if H_1≡H_2 -- collapsing exactly the histories that are truly indistinguishable under every semantically relevant future operation, and no more. Minimality is then defined as achieving the COARSEST such equivalence that remains a genuine congruence for the mandatory transformation set -- a materially stronger and more precise target than counting or minimizing the number of named fields in a candidate tuple"
+refines:
+  - concept: "0883's decisive provenance-at-t=0 counterexample and its first REQUIRES-USER-DECISION question"
+    refinement: "The counterexample is directly reused as 'Class I' of a now-systematic ten-class catalogue, and the associated user-decision question ('is provenance part of Knowledge?') is sharpened into the more directly testable and narrower question of whether any mandatory operation distinguishes histories SOLELY due to provenance -- a genuine methodological refinement making the open question more concretely actionable"
+  - concept: "0875's commutative-diagram criterion (F∘T̂=T∘F) and 0870's/0872's minimality-relative-to-transformation-language insight"
+    refinement: "Both are directly synthesized and sharpened into the single coarsest-sufficient-abstraction target (F(H1)=F(H2)⟺H1≡H2), unifying the congruence criterion and the relativity-to-𝒯 insight into one precise mathematical definition of minimality"
+  - concept: "0866's D-06 lossy-compression concern and the ongoing kernel-primitiveness investigation"
+    refinement: "Resolved into the concrete three-type history-dependence classification, giving a systematic, reusable framework for deciding whether any specific candidate piece of information belongs in the state, in the transformation parameters, or in an external audit substrate"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 256's actual formal operation signature registry (eleven fields per operation, covering the nine named candidate transformations), and watch whether it finally completes the typing of the five currently-untyped operations."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record THE COARSEST-SUFFICIENT-ABSTRACTION target (F(H1)=F(H2)⟺H1≡H2) as the reconstruction's most mathematically precise formalization of kernel minimality to date -- directly relevant to the eventual gated (§29) canonical Kernel synthesis."
+  - "dimension-registry.md: record the three-type history-dependence classification (Intrinsic/Transformation-context/Audit) as a directly reusable framework for classifying any candidate kernel information, resolving the apparent provenance contradiction (non-reconstructibility from History(T) does not force Provenance⊆K)."
+  - "dimension-registry.md: record the sharpened, narrower provenance REQUIRES-USER-DECISION question (does any mandatory operation distinguish histories solely by provenance?) as directly superseding the broader framing from 0883."
+anchor_test:
+  anchor: "0883's decisive provenance counterexample and first REQUIRES-USER-DECISION question; 0875's commutative-diagram criterion; 0870's/0872's minimality-relativity insight; 0866's D-06 lossy-compression concern"
+  supports_dimension: "Systematizes 0883's decisive counterexample into a full ten-class catalogue, sharpens its associated user-decision question into a more directly testable form, and synthesizes 0875's congruence criterion with 0870's/0872's minimality-relativity insight into the single, mathematically precise coarsest-sufficient-abstraction target. Delivers the genuinely useful three-type history-dependence classification resolving the apparent provenance contradiction"
+  refines_or_contradicts: "extends and sharpens 0883's counterexample and user-decision question; synthesizes 0875's and 0870's/0872's prior findings into one precise target; resolves an apparent tension in the provenance discussion without contradicting prior findings"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§255.14's ten-row counterexample taxonomy and §255.28's parallel ten-row strength table, both showing only one entry (external provenance) as formally established and the remaining nine as conditional/candidate, is directly checkable evidence of a disciplined, non-uniform classification rather than an asserted blanket conclusion."
+  - "§255.16's explicit three-way possibility list (P⊆K, P⊆H, P⊆ExternalAudit) directly following the non-reconstructibility finding is directly checkable evidence that the file correctly separates the (proven) non-reconstructibility claim from the (unproven) location claim."
+  - "§255.20's explicit boxed equivalence F(H1)=F(H2)⟺H1≡H2 is directly checkable, precise mathematical evidence of the coarsest-sufficient-abstraction reformulation of minimality."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 256's actual formal operation signature registry is genuinely constructed for all nine named candidate operations."
+  - "Whether the narrowed provenance question (does any mandatory operation distinguish histories solely by provenance?) is ever concretely answered once the operation registry is complete."
+tier2_triggered: true
+tier2_reason: "Delivers a formal ten-class counterexample catalogue, the genuinely useful three-type history-dependence classification resolving an apparent contradiction about provenance, and the mathematically precise coarsest-sufficient-abstraction reformulation of minimality -- synthesizing and sharpening several of this reconstruction's own prior findings (0866, 0870, 0872, 0875, 0883) into cleaner, more actionable forms. Classified importance critical and tier2-triggered."

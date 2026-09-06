@@ -1,0 +1,100 @@
+sequence: "0158"
+path: docs/knowledgeos/brainstorming/kernel/20260823-123619-kernel-domain-discovery-twelve-questions-across-all-lenses.md
+title: "Round 10: KnowledgeClaim-as-Aggregate-Root hypothesis; critique's many-to-many evidence-sharing stress test argues structurally against evidence-in-aggregate; Kernel reframed as possible process boundary; Round 11 scenario matrix commissioned"
+date: "2026-08-23"
+bytes: 42000
+model:
+  primary: c1
+  secondary: [g, m]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0157"
+importance: high
+confidence: high
+about: >
+  Round 10, apparently authored by Kimi (uses the FACT/DDD-Interpretation/Speculative-Hypothesis tiering
+  from 0153). Re-answers the 12 fundamental questions, proposing KnowledgeClaim as the Aggregate Root
+  (possibly event-sourced) with 10 named constitutional invariants and four candidate aggregate-boundary
+  models (Minimal State / Immutable Snapshot / Event-Sourced Stream / Dual Aggregate). The critique-voice
+  again declines to accept the aggregate conclusion, contributing a genuinely new structural argument: a
+  many-to-many evidence-sharing stress test showing Evidence cannot live inside any single claim's
+  aggregate if it supports/contradicts multiple claims simultaneously. Reframes the Kernel as possibly a
+  process/capability boundary rather than a data structure at all, and commissions a scenario-based
+  Round 11 with an explicit decision matrix.
+
+introduces:
+  - "Many-to-many evidence-sharing stress test: Evidence E1 supporting Claim A, Claim B, and
+    contradicting Claim C simultaneously means E1 cannot structurally live inside any single claim's
+    aggregate -- the strongest concrete (non-philosophical) DDD argument yet against evidence-in-
+    aggregate designs"
+  - "'Dharma identifies what must be protected; DDD determines where that protection belongs' --
+    separates constitutional-obligation language from aggregate-boundary determination, correcting a
+    recurring conflation across the cycle"
+  - "Corrects an unjustified 'coherence implies event sourcing' inference from the Ṛta lens"
+  - "Clean Śiva-Śakti invariant/becoming split: Śiva = identity, admission provenance, original
+    grounding; Śakti = epistemic state, confidence, contestations, supersession, reconciliation"
+  - "Kernel reframed as a possible PROCESS/CAPABILITY boundary (threshold/passage) rather than a
+    data-structure aggregate at all -- a genuinely different ontological category than every prior
+    round's framing"
+  - "Resolves an internal contradiction in the source (Candidate declared 'not a domain concept' yet
+    KnowledgeClaim derived from Candidate) by placing Candidate in an upstream bounded context outside
+    KnowledgeOS proper"
+  - "Reframed master research question: 'Where does epistemic accountability become a domain fact, and
+    what is the smallest boundary that can enforce that transition without becoming the authority for
+    interpretation or truth?'"
+  - "Round 11 commissioned: Cross-Lens Aggregate Falsification Round organized around 20 concrete
+    scenarios (not concepts), with an explicit scenario x {must-be-atomic/may-be-independent/boundary-
+    implication} decision matrix, reversing the prior concept-first-then-classify order"
+
+defines: []
+
+refines:
+  - "Advances (does not merely repeat) the aggregate-boundary question with a concrete structural
+    counterexample (evidence sharing) rather than another round of abstract classification"
+
+contradicts:
+  - "Rejects 'KnowledgeClaim is automatically the Aggregate Root' and 'event sourcing is the absolute
+    minimum' as unestablished, for at least the third consecutive round"
+
+repeats:
+  - {concept: "10 constitutional invariants restate F-1..F-5 law, Candidate≠Knowledge, evidence-reference vs content", canonical_source: "0157", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "Ledger Entry 48/49 addendum (Round 10) added: the evidence-sharing structural argument, the
+    process-boundary reframing, and the Round 11 scenario-matrix commission"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Evidence Integrity"]
+  refines_or_contradicts: "Advances the falsification thread with a concrete structural argument; rejects the KnowledgeClaim-aggregate conclusion again."
+  alternative_minimal_kernel: "KnowledgeClaim as Aggregate Root (event-sourced) -- proposed, rejected as unestablished"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "The many-to-many evidence-sharing stress test is a concrete, constructible counterexample rather
+    than a philosophical argument -- structurally the strongest single piece of evidence against a
+    monolithic KnowledgeClaim aggregate produced anywhere in the ten-round cycle so far"
+  - "The Kernel-as-process-boundary reframing (rather than data structure) is a genuinely new ontological
+    category not previously considered in this cycle, worth tracking independently of which aggregate
+    model eventually wins"
+
+undefined_concepts: []
+open_questions:
+  - "Whether Round 11's scenario matrix is executed and whether it resolves the evidence-in-aggregate
+    question definitively"
+  - "Whether 'Kernel as process boundary' (vs. data-structure aggregate) is pursued further"
+
+tier2_triggered: true
+tier2_reason: >
+  A genuinely new, concrete structural counterexample (many-to-many evidence sharing) against
+  evidence-in-aggregate designs, and a new ontological reframing of the Kernel as a possible process
+  boundary rather than a data structure.

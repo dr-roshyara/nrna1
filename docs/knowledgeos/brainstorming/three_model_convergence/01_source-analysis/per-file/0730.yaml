@@ -1,0 +1,176 @@
+sequence: 730
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-130247_step-143-current-to-target-architecture-delta.md
+title: "Step 143 -- MAJOR SYNTHESIS MILESTONE: Delivers a Genuinely Concrete, Twenty-Work-Package, Six-Phase-Sequenced Evolution Roadmap From the Existing KnowledgeOS/EKS Ecosystem to the Target Architecture -- Delivers 'The Loop Is More Important Than the Graph,' a Seven-Item Consolidated Anti-Pattern Checklist, Three Sharp 'This Is NOT X' Clarifications, and KOS-ARCH-001 Through KOS-ARCH-004 -- Proposes a SECOND, Partially Overlapping 'Architecture Constitution' (Seven Rules) Without Cross-Referencing 0705's Original C1-C7 -- Opens Step 144 by NAMING THE FIRST CONCRETE VERTICAL SLICE (Governed Decision→Rule→Agent Context→Action→Evidence→Verification→Finding), the Reconstruction's First Genuinely Minimal, Buildable Proof-of-Concept Scope"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 143 -- Current → Target Architecture Delta', promised at 0729's close; delivers the reconstruction's most genuinely concrete, actionable evolution roadmap to date -- twenty sequenced work packages organized into six dependency-ordered phases, a consolidated anti-pattern checklist, and the first named minimal vertical-slice proof of concept -- among the most practically significant synthesis milestones in the entire Steps 120-143 arc"
+source_role: PRIMARY_RESEARCH
+canonical_source: 730
+importance: critical
+confidence: high
+about: >
+  Opens rejecting "rewrite KnowledgeOS" in favor of `Existing mechanisms→Explicit semantic contracts→
+  Governed engineering system`, then delivers the seven-category delta classification
+  (`KEEP/STRENGTHEN/FORMALIZE/CONNECT/CONSTRAIN/INTRODUCE/RETIRE`) and a nineteen-row Master delta map — the
+  most complete single consolidated Current/Target/Transformation table in the reconstruction, covering
+  every major capability from repository agent integration through temporal knowledge.
+
+  **Delivers twenty concrete, individually named Work Packages, the reconstruction's most genuinely
+  actionable roadmap format to date**: WP1 Preserve the Agent Edge (explicitly `KEEP` the repository-local
+  agent integration, do not centralize `.claude/`/`.codex/`/`AGENTS.md`); WP2 Formalize the Pointer Layer
+  (with `KOS-ARCH-001`: "agent-local instructions may reference authoritative knowledge but must not
+  redefine it" — yet another distinct codification of the pointer-layer principle); WP3 Establish Knowledge
+  Authority, delivering **a genuinely valuable correction against a naive linear authority ranking**: "we
+  should therefore avoid simplistic `AUTHORITATIVE>EVERYTHING`. Instead: `AuthorityType=f(Context,
+  ClaimType)`" — worked through concrete dimension-specific examples (Kubernetes authoritative for current
+  pod state; Governance authoritative for organizational policy; Git authoritative for repository history;
+  KnowledgeOS authoritative only for a governed claim's lifecycle) — a precise refinement of the
+  reconstruction's authority discipline; WP4 Formalize Governance (the document becomes a representation of
+  governed knowledge, reversing the usual document-first relationship); WP5 Formalize Rules (give existing
+  checker scripts stable `Rule` identities distinct from their implementation, e.g. `check_nexus_version.sh`
+  becomes `Rule:NEXUS_VERSION_COMPLIANCE` with `Checker=Implementation`); WP6 Connect Checks to Governance
+  (worked example transforming "Nexus check failed" into the governance-grade assertion
+  `Verification(V42) against Rule(R17:v3) which implements Policy(P8) established by Decision(D42)`); WP7
+  Formalize Evidence; WP8 Connect Session Logging (worked concrete example: `Agent=Codex, Session=S182,
+  Recommendation=R44, Action=A91, Commit=abc123, Evidence=E77`); WP9 Introduce the Assurance Graph (reconfirmed
+  as `Projection`, never `MasterDatabase`, with node/edge identity schemes); WP10 Introduce the Governed
+  Context Service; WP11 Formalize Action Authorization (with `KOS-ARCH-002`: "a governed material action
+  must not bypass its applicable authorization policy"); WP12 Introduce Temporal Semantics (`ValidFrom/
+  ValidUntil`, `Context(t_2)` vs. `Context(now)`); WP13 Establish Provenance (with `KOS-ARCH-003`: "every
+  authoritative or assurance-relevant assertion must have discoverable provenance," explicitly clarifying
+  "discoverable" does not require storing raw source inside KnowledgeOS — a reference suffices); WP14 Build
+  the Assurance Loop; WP15 Establish Finding Disposition (six outcomes: Remediate/Accept Risk/Grant
+  Exception/Change Policy/False Positive/Investigate); WP16 Separate Human and Agent Authority
+  (`Capability≠Authorization`); WP17 Normalize Claude and Codex (a seven-step shared interaction model `GET
+  CONTEXT→REASON→RECOMMEND→REQUEST ACTION→AUTHORIZE→EXECUTE→REPORT EVIDENCE`, with `KOS-ARCH-004`: "no agent
+  implementation may receive a privileged semantic path unavailable to equivalent governed agents without an
+  explicit policy reason" — explicitly "the formal version of the Claude/Codex symmetry principle"); WP18
+  External-System Boundary (named ports: `GitPort/NexusPort/KubernetesPort`); WP19 Platform Self-Assurance
+  (reconfirming 0728's finding: `KnowledgeOS→assures→KnowledgeOS`); and WP20 Architecture Constitution.
+
+  **Delivers the file's most significant clarifying statement — "the loop is more important than the
+  graph"** (§143.33): "the graph makes the loop navigable. But the real architectural capability is:
+  closed-loop engineering assurance" — a genuinely important corrective reprioritization, explicitly placing
+  the operational `Expectation→Rule→Check→Evidence→Verification→Finding→Disposition→Expectation` loop above
+  the Assurance Graph's navigability as the true architectural center, refining the emphasis several prior
+  files (0716 especially) had placed on the graph itself.
+
+  **Notably proposes a SECOND, only partially overlapping "Architecture Constitution" (WP20, §143.42),
+  without ever cross-referencing 0705's originally ratified C1-C7 Constitution by name**: seven newly worded
+  rules (one authoritative owner per semantic concept; no cross-context direct mutation; agent-local
+  knowledge non-authoritative unless promoted; material actions require governed authorization;
+  deterministically verifiable properties should use deterministic assurance; evidence must be
+  provenance-aware; derived projections must be rebuildable). Comparing content against 0705's C1
+  (Provenance), C2 (Authority), C3 (Epistemic Separation), C4 (Temporal Validity), C5 (Deterministic
+  Assurance), C6 (Traceability), C7 (Feedback): this new set overlaps substantially (Rule 1≈C2, Rule 3≈the
+  pointer-layer/A-series, Rule 5≈C5, Rule 6≈C1) but also introduces genuinely new items not present in C1-C7
+  (Rule 2 no-cross-context-mutation, Rule 4 authorization-required, Rule 7 rebuildability/RA-04) — **this is
+  a notable non-reconciliation for the eventual §29-gated canonical synthesis**: two independently-produced
+  seven-item "constitution" candidates exist in the reconstruction (0705's ratified C1-C7, and this file's
+  proposed WP20 set), never explicitly merged or cross-referenced, extending the corpus's broader pattern of
+  invariant-notation proliferation (A/C/K/S/AFR/AAI/PLP/CM/IR/LA/RA/KOS-ARCH) to the constitutional level
+  itself.
+
+  Delivers the six-phase, dependency-ordered Evolution sequence (explicitly "we should not implement all
+  twenty work packages simultaneously"): Phase 1 Authority+Identity (foundational — "without these, the
+  graph will merely connect ambiguous objects"); Phase 2 Knowledge+Governance; Phase 3 Evidence+Assurance;
+  Phase 4 Graph+Context (explicitly sequenced only after "the underlying semantics are stable"); Phase 5
+  Authorization+Action; Phase 6 Self-Assurance. Delivers the most complete single transformation-architecture
+  diagram in the reconstruction, unifying Current-state elements through Formalization, Relationship, the
+  Assurance Graph, Governed Context, Governed Agent, Authorized Action, Evidence, Verification, and back to
+  Governance.
+
+  **Delivers "what should NOT be done," a concrete, consolidated seven-item anti-pattern checklist**
+  (§143.52), synthesizing many prior individually-scattered cautions into one list for the first time: do
+  not rewrite everything; do not make everything a microservice; do not make the graph the database of
+  everything; do not put all knowledge into agent memory; do not let LLM judgment replace deterministic
+  checks; do not allow agents to bypass authorization; do not copy external system models into the domain.
+
+  **Delivers three sharp, memorable "this is NOT X" clarifying negative definitions of KnowledgeOS**
+  (§143.54-143.56): "KnowledgeOS is therefore not a document-management project" (`Documents→Machine-
+  addressable semantic knowledge`, never merely `Documents→BetterDocuments`); "nor is it an AI chatbot
+  project" (`AI Agent→Governed Engineering Actor`, never `Chatbot→BetterChatbot`); "nor is it merely a
+  compliance engine" (`Compliance→Continuous Engineering Assurance`, spanning architecture, development, CI,
+  deployment, runtime, evidence, and governance). Delivers the Final delta principle, the most concise
+  single-sentence description in the reconstruction: "KnowledgeOS evolves from a collection of
+  AI-engineering knowledge and governance mechanisms into a governed semantic engineering platform."
+
+  Delivers Step 143's verdict: "the most important changes are NOT technological. They are semantic:
+  Authority, Identity, Provenance, Relationships, Verification, Authorization" — once these are explicit,
+  "the existing Claude/Codex tooling, registry, deterministic checks, hooks, session logging and engineering
+  integrations can be progressively connected rather than replaced."
+
+  **Closes by opening "Step 144 — KnowledgeOS Evolution Roadmap," promising a ten-item implementation-grade
+  planning framework** (architecture workstreams, dependencies, MVP boundary, immediate-vs-deferred,
+  migration candidates, untouched mechanisms, acceptance criteria, architecture fitness tests, the first
+  vertical slice), and, most significantly, **names the reconstruction's first concrete, genuinely minimal,
+  buildable proof-of-concept scope**: "`Governed Decision→Rule→Agent Context→Action→Evidence→Verification→
+  Finding`" — explicitly proposed as "the reference implementation against which the rest of KnowledgeOS can
+  be evolved," a decisively narrower and more concrete commitment than any prior file's promise, since it
+  names a single end-to-end scenario rather than the full architecture. No actual code execution, repository
+  inspection, or verified filesystem/architecture claim reported anywhere in this file; every work package,
+  phase, and worked example remains a target-architecture specification, though the roadmap format itself is
+  the most directly actionable planning artifact produced in the reconstruction to date.
+introduces:
+  - concept: "The twenty-item Work Package roadmap (WP1-WP20), the reconstruction's most genuinely actionable planning artifact to date"
+  - concept: "'The loop is more important than the graph' -- reprioritizing closed-loop assurance above graph navigability"
+  - concept: "The six-phase, dependency-ordered Evolution sequence"
+  - concept: "The seven-item consolidated 'what should NOT be done' anti-pattern checklist"
+  - concept: "Three sharp 'this is NOT X' clarifying negative definitions of KnowledgeOS"
+  - concept: "KOS-ARCH-001 through KOS-ARCH-004"
+  - concept: "A SECOND, only partially overlapping proposed 'Architecture Constitution' (WP20), never cross-referenced against 0705's C1-C7"
+  - concept: "Opens Step 144 by naming the first concrete, minimal vertical-slice proof of concept"
+defines:
+  - concept: "Dimension-specific authority (WP3's correction)"
+    definition: "Authority is not a single linear ranking (AUTHORITATIVE>EVERYTHING); AuthorityType=f(Context,ClaimType), meaning different systems are authoritative for different kinds of claims within their own domain (Kubernetes for current pod state, Governance for organizational policy, Git for repository history, KnowledgeOS only for a governed claim's own lifecycle) -- no single global authority hierarchy applies uniformly across all claim types"
+  - concept: "'The loop is more important than the graph'"
+    definition: "The Assurance Graph's primary value is making the closed-loop engineering-assurance cycle (Expectation→Rule→Check→Evidence→Verification→Finding→Disposition→Expectation) navigable; the operational loop itself, not the graph's relationship structure, is KnowledgeOS's true architectural center"
+  - concept: "The vertical-slice proof of concept"
+    definition: "Rather than building the full KnowledgeOS architecture horizontally across all bounded contexts simultaneously, prove the entire governed-engineering lifecycle end-to-end with one minimal real scenario (Governed Decision→Rule→Agent Context→Action→Evidence→Verification→Finding), then use that as the reference implementation against which the rest of the platform evolves"
+refines:
+  - concept: "0716's original Assurance Graph emphasis"
+    refinement: "Reprioritized via 'the loop is more important than the graph': the graph is valuable for navigability, but the closed-loop assurance cycle is the true architectural center"
+  - concept: "0705's ratified C1-C7 Constitution"
+    refinement: "A second, partially overlapping but not identical seven-rule constitution proposed at WP20 without cross-reference -- a notable non-reconciliation flagged for the eventual §29-gated canonical synthesis"
+  - concept: "the corpus's authority-precedence discipline (0690/0710/0729)"
+    refinement: "Corrected against oversimplification into a single linear ranking via AuthorityType=f(Context,ClaimType), with concrete dimension-specific worked examples"
+  - concept: "the corpus's long-tracked pointer-layer principle and its extensive notation proliferation (A1/AFR-24/AAI-01-family/PLP-01/CM-04/RA-01)"
+    refinement: "Restated once more as KOS-ARCH-001, extending the proliferation pattern into yet another distinct notation family"
+  - concept: "0717's/0718's/0721's/0729's varying delta-category taxonomies"
+    refinement: "Consolidated into the file's own seven-category classification (KEEP/STRENGTHEN/FORMALIZE/CONNECT/CONSTRAIN/INTRODUCE/RETIRE), applied comprehensively across a nineteen-row master delta map"
+  - concept: "many prior individually-scattered anti-pattern cautions across the Steps 120-143 arc"
+    refinement: "Consolidated for the first time into one concrete seven-item 'what should NOT be done' checklist"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0731 (Step 144 — KnowledgeOS Evolution Roadmap) with high attention: this file's own explicit naming of a concrete first vertical slice (Governed Decision→Rule→Agent Context→Action→Evidence→Verification→Finding) is the sharpest, most concrete implementation commitment the reconstruction has produced -- check whether Step 144 delivers a genuinely detailed implementation plan for that specific slice, or reverts to the established pattern of further abstract architecture. Also check whether WP20's proposed second constitution is ever explicitly reconciled with 0705's C1-C7."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the twenty-item Work Package roadmap (WP1-WP20), the six-phase dependency-ordered Evolution sequence, and 'the loop is more important than the graph' -- a genuinely important reprioritization of the reconstruction's central architectural emphasis."
+  - "dimension-registry.md: record the seven-item consolidated anti-pattern checklist, three sharp 'this is NOT X' clarifications, KOS-ARCH-001..004, and -- as a notable non-reconciliation -- WP20's second, partially overlapping 'Architecture Constitution' never cross-referenced against 0705's ratified C1-C7."
+  - "dimension-registry.md: flag this file's named first concrete vertical slice (Governed Decision→Rule→Agent Context→Action→Evidence→Verification→Finding) as a primary candidate reference artifact for the eventual §29-gated canonical synthesis and any future implementation planning."
+anchor_test:
+  anchor: "0716's Assurance Graph emphasis; 0705's ratified C1-C7 Constitution; the corpus's authority-precedence discipline (0690/0710/0729); the corpus's pointer-layer-principle notation proliferation; 0717's/0718's/0721's/0729's delta-category taxonomy variants; the 0694 calibrating meta-finding"
+  supports_dimension: "Delivers the reconstruction's most genuinely concrete, actionable evolution roadmap to date: twenty individually named, sequenced work packages organized into six dependency-ordered phases, directly usable as an implementation-planning reference. Delivers the genuinely important reprioritization 'the loop is more important than the graph,' a consolidated seven-item anti-pattern checklist, and three sharp clarifying negative definitions of KnowledgeOS. Notably proposes a second, only partially overlapping Architecture Constitution without reconciling it against 0705's ratified C1-C7 -- a significant open item for the eventual canonical synthesis. Closes by naming the reconstruction's first genuinely minimal, concrete vertical-slice proof of concept, a decisively narrower and more actionable commitment than any prior file's architecture-wide promises"
+  refines_or_contradicts: "directly and substantially extends 0716's Assurance Graph emphasis (reprioritizing it), the corpus's authority-precedence discipline, and the corpus's pointer-layer-principle notation proliferation; does NOT contradict but also does NOT reconcile 0705's ratified C1-C7 Constitution with its own newly proposed WP20 rule set -- a notable non-reconciliation; consolidates (rather than merely repeating) many prior individually-scattered anti-pattern cautions and delta-taxonomy variants"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§143.33's explicit statement 'the graph makes the loop navigable. But the real architectural capability is: closed-loop engineering assurance' is directly quotable evidence of a genuinely significant reprioritization of the reconstruction's central architectural emphasis, away from the Assurance Graph itself and toward the operational loop it serves."
+  - "§143.42's seven newly worded 'Architecture Constitution' rules, compared directly against 0705's ratified C1-C7 (Provenance/Authority/Epistemic Separation/Temporal Validity/Deterministic Assurance/Traceability/Feedback), shows substantial but incomplete overlap with no cross-reference to the earlier set -- directly checkable evidence of a notable non-reconciliation between two independently-produced constitutional artifacts."
+  - "§144's opening line naming the specific vertical slice 'Governed Decision→Rule→Agent Context→Action→Evidence→Verification→Finding' as 'the reference implementation against which the rest of KnowledgeOS can be evolved' is directly quotable evidence of the reconstruction's first genuinely minimal, concrete, buildable implementation commitment."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 144's actual content (0731), once read, delivers a genuinely detailed implementation plan for the named vertical slice (Governed Decision→Rule→Agent Context→Action→Evidence→Verification→Finding), or reverts to the established pattern of further abstract architecture discussion."
+  - "Whether WP20's proposed second 'Architecture Constitution' is ever explicitly reconciled with, merged into, or formally distinguished from 0705's ratified C1-C7 Constitution anywhere later in the corpus -- this should be flagged prominently for the eventual §29-gated canonical synthesis."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the reconstruction's most genuinely concrete, actionable evolution roadmap to date -- twenty sequenced work packages organized into six dependency-ordered phases. Delivers the significant reprioritization 'the loop is more important than the graph,' a consolidated anti-pattern checklist, and three sharp clarifying negative definitions of KnowledgeOS. Notably proposes a second, partially overlapping Architecture Constitution without reconciling it against 0705's ratified C1-C7 -- a significant open item flagged for the eventual canonical synthesis. Closes by naming the reconstruction's first genuinely minimal, concrete vertical-slice proof of concept."

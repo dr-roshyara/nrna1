@@ -1,0 +1,90 @@
+sequence: 1008
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/D285-7-KERNEL-CONSEQUENCE-MATRIX.md
+title: "D285-7 -- Kernel Consequence Matrix: The Actual Canonical Artifact Delivering the Full Five-Candidate K-to-Kernel Consequence Trace and the New Finding That the Operation Space 𝒪 Has Never Been Enumerated Against the Ratified 8 Primitives -- Not Minimality, But Non-Enumeration, Is Why 𝒪_core Cannot Close"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual D285-7 artifact, the canonical source for the already-tracked '𝒪 never enumerated against the ratified 8 primitives' finding"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1008
+importance: critical
+confidence: high
+about: >
+  The actual D285-7 artifact, tracing the fixed dependency `K→𝓘→𝒪→δ→Kernel` per candidate state model.
+
+  **Delivers the full five-candidate consequence matrix for the first time**: K-1 (`K_t`, ratified) --
+  invariants `I-1...I-12` ratified, Action is a primitive so operations are inside the vocabulary, replay
+  expressible, but "`𝒪` never enumerated against these primitives"; K-2 (`(𝒜,ℛ)`) -- invariants derived and
+  unratified, `𝒪_sem` 19 candidates/5 families "not minimal" (new corpus citation "272A §27"), the commit case
+  has no carrier ("`Γ` derived"), replay NOT expressible, commit is a no-op; K-3 (`(A,R,Σ,E_L)`) -- **`Σ`
+  stored contradicts the retract/OR-merge proof, so `Σ` must be derived, causing K-3 to "collapse toward
+  K-2"** (a genuinely new finding not previously captured); K-6 (`𝒦=(K,H)`) -- adds replay invariants and a
+  `Replay` operation class, `fold(δ,H,K_0)`, "restores replay — the minimal repair to K-2"; K-7 (Zero
+  layering `Ω/D_t/K_t/Z_t`) -- adds non-collapse laws and `Ask`/dimension-recognition operations, "the only
+  candidate expressing missingness," but presupposes undefined `Ω`.
+
+  **Delivers the layering diagram (already tracked in outline, now in full canonical form)**: `K_t (governance
+  anchor, replay-capable) --π_K[DEFINABLE, NOT COMPUTABLE, blocked on Qualify]--> (𝒜,ℛ) (epistemic sub-state,
+  replay-INcapable) --+H--> 𝒦=(K,H) (restores replay); --+D_t--> expresses missingness; --+Σ derived (never
+  stored)--> proven, not chosen.`
+
+  **DELIVERS THE FILE'S CENTRAL "NEW FINDING OF THIS STEP"**: "`𝒪` cannot be settled at either level until it
+  is enumerated against a STATED primitive set. `272A` enumerated 19 operations against the verification
+  lane's vocabulary; NOBODY has enumerated `𝒪` against the ratified 8 primitives — and that, NOT MINIMALITY,
+  is why `𝒪_core` cannot close." This is the canonical source for this reconstruction's already-tracked
+  finding (files 0993, 0999, 1003, 1005) that operation-space enumeration is one of D288's/the programme's two
+  genuine remaining open fronts.
+
+  **Restates the already-tracked four-line scope resolution** and delivers the sharpened D285-7 conclusion:
+  "Minimality has NOT been demonstrated, because the operation space has not been enumerated against the
+  ratified 8-primitive state model. `𝒪_sem`'s 19 operations were enumerated against the VERIFICATION-LANE
+  vocabulary only. Against the ratified 8 primitives, `𝒪` is UNKNOWN."
+
+  **Template §4 explicitly disclaims any selection function**: "The matrix is a dependency trace, not a
+  selection. It ranks nothing and selects nothing." **Template §5**: no equality asserted -- "an implication,
+  not an identity." **Template §7**: architectural `R6` for the layering; unresolved flagged explicitly as
+  the `𝒪`-non-enumeration finding, "the real reason `𝒪_core` cannot close."
+introduces:
+  - concept: "The full five-candidate (K-1,K-2,K-3,K-6,K-7) consequence matrix tracing invariants, operations, delta, and kernel verdict for each"
+  - concept: "The new finding that K-3's stored Sigma contradicts the already-ratified retract/OR-merge proof, forcing Sigma to be derived and causing K-3 to collapse toward K-2"
+  - concept: "'272A §27' -- the specific corpus citation for the finding that the 19 operations of O_sem are not minimal"
+  - concept: "K-7's Ask and dimension-recognition operations, and its status as the only candidate expressing missingness (via D_t)"
+  - concept: "The canonical statement of the central finding: O has never been enumerated against the ratified 8 primitives -- non-enumeration, not minimality, is why O_core cannot close"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked 'O never enumerated' finding (files 0993, 0999, 1003, 1005)"
+    refinement: "GROUNDED in its canonical D285-7 source, with the full five-candidate consequence matrix now directly confirmed"
+  - concept: "This reconstruction's already-tracked K-3 candidate (file 1006's D285-1 table)"
+    refinement: "FURTHER SPECIFIED: K-3's stored Sigma contradicts the retract/OR-merge proof, forcing collapse toward K-2 -- a genuinely new consequence-level finding for K-3 not previously captured"
+  - concept: "This reconstruction's already-tracked K-6 (replay restoration) and K-7 (Zero-layering, missingness) candidates"
+    refinement: "GROUNDED with their full invariant/operation/delta consequences: K-6 restores replay via fold(delta,H,K_0); K-7 alone expresses missingness via D_t"
+contradicts: []
+repeats:
+  - "The layering diagram and the four-line scope resolution substantially repeat content already documented via files 0999, 1003, 1005, 1007; this file's distinctive contribution is being the canonical D285-7 source with the complete five-candidate consequence matrix and the K-3 collapse finding."
+bridge_candidates:
+  - "'272A §27' -- the original corpus location for the O_sem-not-minimal finding; watch for direct encounter."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the complete five-candidate kernel-consequence matrix (K-1/K-2/K-3/K-6/K-7) as the canonical grounding for the already-tracked O-non-enumeration finding, including the new K-3-collapses-toward-K-2 finding."
+anchor_test:
+  anchor: "This reconstruction's already-tracked O-non-enumeration finding and K-candidate comparisons (files 0993, 0999, 1003, 1005-1006)"
+  supports_dimension: "Grounds all prior findings in the canonical D285-7 source, with the complete five-candidate consequence matrix and a new K-3 collapse finding"
+  refines_or_contradicts: "confirms and grounds prior findings; adds a new consequence-level finding for K-3"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The five-candidate consequence matrix is directly checkable against files 0993/0999/1003/1005-1007's own already-documented findings for consistency."
+undefined_concepts: []
+open_questions:
+  - "The original corpus location of '272A §27'."
+  - "Whether the operation space O is ever subsequently enumerated against the ratified 8 primitives."
+tier2_triggered: true
+tier2_reason: "The actual canonical D285-7 artifact delivering the complete five-candidate kernel-consequence matrix and the central finding that operation-space non-enumeration, not minimality, is why O_core cannot close -- plus a new K-3 collapse-toward-K-2 finding. Classified importance critical and confidence high given its role as the source for one of the programme's two genuine remaining open research fronts."

@@ -1,0 +1,74 @@
+sequence: 258
+path: docs/knowledgeos/brainstorming/kernel/20260824-164447-scientific-attitude-four-properties-as-knowledge-candidate-rules.md
+title: "Scientific Attitude: Four Properties as Knowledge-Candidate Rules"
+date: "2026-08-24"
+bytes: 12500
+model:
+  primary: g1
+  secondary: c1
+source_role: PRIMARY_RESEARCH
+canonical_source: 258
+importance: critical
+confidence: high
+about: >
+  Direct continuation of 0257's pramana work: extracts a "scientific attitude" four-property structure
+  (universality/verifiability/repeatability/refutability) from a comparative-religion source, explicitly
+  isolating the useful epistemic-quality-conditions structure from the source's unsupported historical/
+  religious-comparison claims (itself an explicit Leonardo-lens self-application). Combines this with the
+  0257 pramana taxonomy into a nine-lens synthesis producing a KnowledgeCandidate formula, a nine-stage
+  Knowledge Lifecycle, seven Epistemic Knowledge Invariants (EKI-1..7), a refutation-as-first-class-object
+  model (Support vs Defeaters), a seven-tier negative-knowledge taxonomy, and a proposed new constitutional
+  principle EP-01 'No epistemic shortcut' with a concrete falsifiable engineering test.
+introduces:
+  - concept: "KnowledgeCandidate = Claim + Evidence + Verification + Reproducibility + Refutability (extending claim+source with quality conditions: universality, verifiability, repeatability, refutability/falsifiability)"
+  - concept: "Pramana vs verification/refutation distinction: Pramana describes the ROUTE to knowledge (how did we know); verification/refutation describes how the resulting claim is TESTED -- two orthogonal epistemic dimensions"
+  - concept: "Nine-stage Knowledge Lifecycle: Observe -> Propose -> Justify -> Verify -> Challenge -> Replicate -> Accept/Qualify/Reject -> Monitor -> Re-evaluate, with K_t --new evidence--> K_{t+1} (knowledge never permanently approved)"
+  - concept: "Seven Epistemic Knowledge Invariants (Shani lens): EKI-1 Evidence integrity (a claim cannot strengthen without corresponding evidence), EKI-2 Provenance integrity, EKI-3 Temporal integrity (current claim cannot rewrite historical validity), EKI-4 Refutability (testable claims must expose what could falsify them), EKI-5 Uncertainty preservation (lack of evidence cannot silently become certainty), EKI-6 Perspective separation (interpretation cannot be stored as observation), EKI-7 Authority separation (authority cannot substitute for evidence where empirical verification is required) -- explicitly identified as close to the corpus's existing constitutional invariants"
+  - concept: "Ganesha-lens conceptual distinctions: ScientificMethod != Science; Evidence != Knowledge; Knowledge != Certainty"
+  - concept: "Krishna-lens cross-domain utility claim: the epistemic mechanism (Claim -> Method of knowing -> Evidence -> Verification -> Challenge -> Revision) generalizes across engineering/scientific/organizational/AI-generated/architectural/governance/historical knowledge -- domain changes, mechanism remains"
+  - concept: "Zero-lens ten-point extraction stripped of all religious/comparative labels: claims require grounds; different grounds have different epistemic status; direct observation is distinct from inference; testimony is distinct from observation; claims should be challengeable where appropriate; evidence can overturn interpretation; knowledge can remain uncertain; knowledge can change; debate can improve understanding; a method must expose its own limitations"
+  - concept: "Dhatu/generative-lens reframing: knowledge as process not object; K_{t+1} = T(K_t, E_t, Q_t) where T is an epistemic transformation function over current knowledge, new evidence, and critical questions"
+  - concept: "Statistical-lens claim vector C=(E,P,R,V,F,U) [evidence coverage, provenance quality, reproducibility, verification strength, falsifiability, uncertainty], with P(C|E) and likelihood ratio LR=P(E|C)/P(E|not-C); explicit statement that the statistical layer measures epistemic SUPPORT, does not define knowledge itself"
+  - concept: "Refutation as a first-class object: KnowledgeState(C,t) conceptually composed of Support(C,t) and Defeaters(C,t) as two explicit, separately-tracked sides, not a single collapsed claim+supporting-evidence model"
+  - concept: "Seven-tier negative-knowledge taxonomy (deepening 0257's Anupalabdhi work): Known, Unknown, Unknown-but-testable, Currently unobservable, Contradicted, Underdetermined, Potentially unknowable (explicit fundamental epistemic boundary) -- explicitly framed as a major improvement over binary true/false"
+  - concept: "Unified 15-stage synthesis diagram: Reality -> Observation -> Pramana lens (perception/inference/testimony) -> Claim -> Critical thinking (assumptions/alternatives/defeaters) -> Evaluation (evidence/uncertainty/provenance) -> Knowledge State -> Time (K(t)->K(t+1)->K(t+2)) -> Meta-knowledge -> Zero (invariant structure)"
+  - concept: "Working definition of knowledge: a temporally situated, evidence-grounded, epistemically traceable state of justified claims and relationships, together with the uncertainty, assumptions, perspectives, and potential defeaters that qualify those claims; explicitly NOT identical to its linguistic representation, source, probability, or authority"
+  - concept: "Proposed constitutional principle EP-01 'No epistemic shortcut': system must not silently collapse source->claim->truth; must preserve source->observation/testimony->epistemic method->inference->claim->evaluation->current knowledge status; concrete engineering test: can KnowledgeOS reconstruct WHY it currently considers a proposition to be knowledge? If not, a conclusion was stored, not a knowledge state."
+defines: []
+refines:
+  - concept: "0257's pramana taxonomy and Anupalabdhi absence-evidence formalization"
+    refinement: "Combines pramana (route to knowledge) with a distinct verification/refutation quality-testing dimension; deepens negative-knowledge from a single absence concept to a seven-tier taxonomy including 'potentially unknowable' as an explicit epistemic boundary"
+  - concept: "The corpus's existing constitutional-invariant discipline (Evidence Integrity, Evidence-vs-Evaluation boundary)"
+    refinement: "Restates as seven explicit EKI invariants and proposes a new candidate principle (EP-01 no epistemic shortcut) with a concrete falsifiability test, self-identified as close to already-adopted constitutional invariants -- not claimed as newly adopted, flagged as candidate"
+contradicts: []
+repeats:
+  - concept: "Authority != Truth / Authority cannot substitute for evidence"
+    canonical_source: 222
+    novelty: none
+  - concept: "Interpretation must not be stored as observation (Evidence-records-what-was-observed vs Evaluation-determines-what-it-means)"
+    canonical_source: 257
+    novelty: none
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: note 0258 as a direct continuation/deepening of 0257's pramana-Evidence-Integrity correspondence, adding a distinct verification/refutation quality dimension and a candidate constitutional principle (EP-01, self-identified as candidate, not adopted); no new unresolved_equivalence -- correspondence-reinforcing, same as 0257."
+anchor_test:
+  anchor: "0257's pramana/Anupalabdhi formalization; the corpus's existing constitutional-invariant set"
+  supports_dimension: "Gita/philosophical model directly extending an architecturally-grounded corpus dimension (Evidence Integrity / epistemic invariants) with a candidate new principle"
+  refines_or_contradicts: "refines/extends 0257 and the corpus's constitutional-invariant discipline; proposes (does not adopt) EP-01"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "EP-01 label collides in form (not necessarily in meaning) with other EP/ER-numbered rule identifiers used elsewhere in the broader project's engineering-process vocabulary -- flagged only as a naming-collision risk, not a content conflict, since this is a candidate KnowledgeOS-internal principle, not a claim about the project's engineering process"
+open_questions:
+  - "Whether EKI-1..7 are ever formally reconciled/merged with the corpus's other invariant-numbering schemes (e.g. any prior INV-n or ADR-T-style invariant IDs) noted throughout the corpus as an open reconciliation problem"
+  - "Whether the proposed EP-01 'no epistemic shortcut' principle is later adopted, revised, or superseded in subsequent files"
+tier2_triggered: true
+tier2_reason: "Major nine-lens synthesis directly continuing 0257: combines pramana with a scientific-method quality-conditions structure, produces a nine-stage knowledge lifecycle, seven Epistemic Knowledge Invariants, a refutation-as-first-class-object model, a seven-tier negative-knowledge taxonomy, and proposes a new candidate constitutional principle (EP-01 no epistemic shortcut) with a concrete falsifiable engineering test."

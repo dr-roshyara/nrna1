@@ -1,0 +1,217 @@
+sequence: 912
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-225058_step_272b_minimum-epistemic-status-structure-derivation.md
+title: "Step 272A (file titled 272B) -- Derivation of the Minimum Epistemic-Status Structure: A LANDMARK, GENUINELY RIGOROUS MINIMALITY PROOF -- Sigma_min = P({Support,Refute}) is-isomorphic-to {0,1}^2 = {Unknown,Supported,Refuted,Conflict}, Derived From the Power Set of Two Independently Necessary Epistemic Predicates and PROVEN Minimal via Exhaustive Deletion Tests, With a Derived Join-Semilattice Merge Operation and the Formal Separation Sigma-perp-Lambda-perp-Gamma (Epistemic/Lifecycle/Governance) -- ACCEPTED WITHOUT REQUIRED CORRECTIONS by the Appended Senior-Mathematician/Statistician/DDD-Architect Supervisory Review, a Rare Positive Outcome in This File Cluster -- Note: Reuses the F272A-1 Through F272A-6 Test-ID Labels for Entirely Different Tests Than File 0911, a Direct ID Collision"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: c1
+  secondary_note: "the power-set/product-lattice construction and the join-semilattice merge operation are genuinely rigorous discrete mathematics; c1-relevant for its explicit no-probability-required discipline"
+source_role: PRIMARY_RESEARCH
+canonical_source: 912
+importance: critical
+confidence: high
+about: >
+  **Note on filename/header discrepancy**: this file is named with "step_272b" in its path, but its own
+  internal header labels itself "STEP 272A — Derivation of the Minimum Epistemic-Status Structure,"
+  explicitly framing itself as "the formal completion of Step 272A" (file 0911), "not as a replacement for
+  Step 272" -- i.e. this file completes 0911's operation-universe derivation with the promised `Σ`
+  minimality proof 0911 had explicitly deferred.
+
+  **§272A.1-§272A.2 reframes the question correctly**: not "which status enum should KnowledgeOS use?" but
+  boxed **`What distinctions must an epistemic representation preserve so that the mandatory semantic
+  operations remain well-defined and no epistemically relevant distinction is lost?`** -- delivering the
+  formal indistinguishability criterion `σ_1≡_Eσ_2⟺∀o∈O_E,∀x∈X_o:Obs_o(σ_1,x)=Obs_o(σ_2,x)`, **explicitly
+  the same criterion structure used for `K`-equivalence throughout files 0888-0890, now applied to `Σ`** --
+  a genuine methodological consistency the appended review specifically praises.
+
+  **§272A.3.1-§272A.3.3 individually derives Unknown, Supported, and Refuted as each necessary**, with
+  careful non-collapse caveats at each step: `Unknown≠Refuted`; `Supported` does not mean `p=True` (records
+  "the current evidential position, not metaphysical truth"); `Refuted≠False` in the ontological sense.
+
+  **§272A.4 delivers the file's decisive forcing argument for a fourth state**: given `E^+⊨p` and
+  `E^-⊨¬p` simultaneously, a three-state `{Unknown,Supported,Refuted}` model has NO LOSSLESS
+  REPRESENTATION -- collapsing to either `Supported` or `Refuted` alone destroys information that
+  `DetectContradiction` and `Resolve` operationally require -- boxed **`Conflict required`**, "a
+  mathematical necessity under the mandatory operation set."
+
+  **§272A.5-§272A.10 delivers a battery of exclusion results, each carefully distinguishing "required
+  information exists somewhere" from "must be a primitive value of `Σ` itself"**: Missingness (`Missing(p)`
+  vs. `Unknown(p)` -- causal histories differ, `NoObservation≠ObservationButInsufficient` -- required
+  information, but "precisely where the earlier formulations risked overloading `Σ`," it need not be a
+  primitive `Σ` value, belonging instead to the evidence/observation layer); Supersession
+  (`Superseded∉Σ`, a lifecycle relationship over time, not a current epistemic-status answer); Governance
+  (`Authorized∉Σ`, `Approved∉Σ`, since epistemic support and governance approval can diverge in either
+  direction); Contested (potentially derivable from `Conflict+Assessment+Authority/Context`, "the
+  minimality test does not establish Contested as primitive"); Resolution (`Resolution∉Σ_minimal`, an
+  investigation-process state distinct from the proposition's own status); Validity (`Validity∉Σ_minimal`,
+  temporal/contextual semantics -- a stale assertion can remain epistemically `Supported`).
+
+  **§272A.11-§272A.13 delivers the file's central mathematical construction and formal minimality proof**:
+  a twelve-row distinguishability table narrows the candidate to boxed **`Σ_0={Unknown,Supported,Refuted,
+  Conflict}`**; then, rather than treating these as four arbitrary labels, delivers boxed **`Σ_0(p)=
+  (S(p),R(p))`** where `S,R∈{0,1}` independently encode presence of qualified support and qualified
+  refutation -- giving boxed **`Σ_0≅{0,1}^2`**, a genuine mathematical construction rather than a proposed
+  vocabulary. **Delivers a full, exhaustive DELETION-BASED MINIMALITY PROOF**: removing `Unknown` leaves
+  `(0,0)` unrepresentable; removing `Supported` leaves `(1,0)` unrepresentable; removing `Refuted` leaves
+  `(0,1)` unrepresentable; removing `Conflict` leaves `(1,1)` unrepresentable, destroying
+  `DetectContradiction`'s output -- each individually invalid, giving boxed **`∣Σ_0∣≥4`**, and since four
+  states are jointly sufficient, boxed **`∣Σ_0∣=4`** exactly -- "the four-state structure is minimal with
+  respect to these distinctions."
+
+  **§272A.14-§272A.16 delivers three further non-collapse and non-overreach results**: `Supported≡
+  QualifiedSupport>0` and `Refuted≡QualifiedRefutation>0` (not truth-value claims -- "`Σ_0` is an
+  epistemic assessment structure, not a truth-value algebra"); Uncertainty explicitly does NOT require a
+  fifth primitive status -- `Supported_low-confidence` and `Supported_high-confidence` need not be
+  different epistemic categories, uncertainty can instead be an associated assessment value without
+  increasing `Σ`'s cardinality; and boxed **`Σ_0 does not require probability`** -- `Supported` does not
+  imply `P(p)>0.5`, reaffirming "do not introduce probability merely because uncertainty exists," directly
+  continuing the corpus's standing probability discipline (0893/0895/0898/0900/0903/0908).
+
+  **§272A.17 delivers what this file itself calls "a major result of the derivation"**: the full
+  four-dimensional separation boxed **`State(p)=(Σ_E(p), Λ(p), Γ(p), Context(p))`** (Epistemic, Lifecycle,
+  Governance, Context) replacing "one overloaded status enum" -- consolidating and formalizing the
+  individual exclusion results from §272A.5-272A.10 into a single unified architectural conclusion.
+
+  **§272A.18-§272A.19 delivers the Assessment≠Σ distinction and resolves an earlier circularity concern**:
+  `Σ_E=Result(Assess(...))`, not `Σ_E=Assess(...)` itself (Assessment is the PROCESS, `Σ_E` is its
+  RESULT); and boxed **`Σ_0 is structural; Assessment_π is policy-dependent`** -- "policy does not define
+  what the four logical combinations are. Policy determines how evidence is qualified and assessed into
+  those combinations" -- directly resolving the earlier Policy/Σ circularity concern this reconstruction
+  has tracked since files 0897/0900/0903.
+
+  **§272A.20-§272A.21 delivers the algebraic structure and a derived MERGE OPERATION**: `Σ_0≅𝟐×𝟐` as a
+  genuine PRODUCT LATTICE with the natural componentwise partial order (`Unknown` as bottom, `Conflict` as
+  top); and a candidate epistemic merge boxed **`σ_1⊔σ_2=(s_1∨s_2, r_1∨r_2)`** -- a coherent
+  JOIN-SEMILATTICE (OR-combination) structure, with the worked truth table (`Unknown⊔Supported=Supported`,
+  `Supported⊔Refuted=Conflict`, `Conflict⊔anything=Conflict`) -- explicitly flagged as "a derived candidate
+  algebra, not yet proof that all KnowledgeOS merge semantics must use it. That must be tested against the
+  actual corpus and implementation."
+
+  **§272A.22-§272A.24 delivers three further refinements**: Conflict resolution as its own separate
+  operation `Resolve:Conflict×Evidence×Context×Policy→Σ'` rather than automatic collapse -- "this preserves
+  information rather than hiding disagreement"; Inference does NOT automatically propagate `Conflict`
+  status between related propositions unless explicit inference semantics establish that propagation --
+  boxed **`Σ alone does not define inference`**; and a seven-way taxonomy of WHY two evidence objects might
+  appear to conflict (opposite propositions, different dimensions, different contexts, different validity
+  intervals, supersession, invalidity, genuine semantic contradiction), explicitly requiring
+  `DetectContradiction` to operate on semantic propositions under context/validity conditions rather than
+  flagging conflict merely because raw values differ.
+
+  **§272A.25 delivers the formal Proposition `272A-P1`**, the file's central stated theorem: given the
+  mandatory operations `{Support,Refute,Assess,DetectContradiction,Resolve,Query}` and the four required
+  distinguishability results, "the minimal epistemic-status representation has four distinguishable
+  states," boxed **`Σ_min≅{0,1}^2`** with the explicit `(0,0)=Unknown, (1,0)=Supported, (0,1)=Refuted,
+  (1,1)=Conflict` mapping.
+
+  **§272A.26 delivers an explicit, deliberately extensive NOT-ESTABLISHED list**: `Contested` as
+  primitive; `Superseded` as an epistemic state; `Stale/Expired` as epistemic states; `Authorized/Approved`
+  as epistemic states; any probability distribution over `Σ`; any numerical confidence score; the complete
+  `Assess_π` function; exact policy semantics; the implementation representation -- "this is intentional."
+
+  **§272A.27 delivers the revised canonical architecture** (Evidence→Qualification→Assessment→Epistemic
+  `Σ`, with separate Lifecycle `Λ` and Governance `Γ` boxes) and the crucial result boxed
+  **`Σ⊥Λ⊥Γ`** -- explicitly clarifying `⊥` here "means distinct semantic dimensions, not statistical
+  independence" (a deliberate notational reuse the file itself disambiguates, distinct from the corpus's
+  earlier statistical-independence usages of similar symbols).
+
+  **§272A.28 delivers TEN FALSIFICATION TESTS labeled `F272A-1` through `F272A-10`** (Unknown
+  distinguishability, Refutation distinguishability, Contradiction preservation, Lifecycle orthogonality,
+  Governance orthogonality, Missingness separation, Uncertainty separation, Policy independence of the
+  status space, Merge preserving Conflict rather than arbitrary selection, Inference not treating `Σ`
+  itself as the inference rule) -- **NOTABLY REUSING THE `F272A-1` THROUGH `F272A-6` LABELS FOR ENTIRELY
+  DIFFERENT TESTS THAN FILE 0911's OWN six falsification requirements** (0911's F272A-1 through F272A-6
+  concerned missing/redundant operations, category errors, hidden dependencies, and governance/historical
+  contamination for the OPERATION universe, whereas this file's identically-labeled tests concern the
+  EPISTEMIC-STATUS structure specifically) -- a direct test-ID collision within the same nominal "Step
+  272A" label, worth flagging for the eventual synthesis's own invariant/ID reconciliation work.
+
+  **§272A.29-§272A.31 delivers the final result summary, supervisory verdict, and the critical consequence
+  for Step 272**: reaffirms `Σ_min≅{0,1}^2={Unknown,Supported,Refuted,Conflict}`, `Lifecycle⊄Σ`,
+  `Governance⊄Σ`, `Missingness≢Unknown`, `Uncertainty≢a fifth primitive status`, and "Policy determines
+  assessment, not the cardinality of the primitive status space"; delivers a five-category status
+  assessment (Mathematical: DERIVED conditional on the stated operation/distinction set; DDD: STRONG;
+  Statistical: OPEN FOR MEASUREMENT MODEL, "no unjustified probability or numerical confidence has been
+  introduced"; Computational: NOT YET EMPIRICALLY CLOSED; Policy: EXTERNAL/DEPENDENT); and delivers the
+  critical consequence for the (still not directly encountered) Step 272 proper: it should NOT invent
+  another `Σ` model but instead perform independent corpus/implementation verification and falsification
+  against this derived candidate, with the decisive question "does the real KnowledgeOS domain contain any
+  mandatory operation or empirical case that requires a fifth primitive epistemic state?"
+
+  **Delivers the "Final HPA finding," the file's most elegant single formulation**: boxed **`Σ_min=
+  𝒫({Support,Refute})≅{0,1}^2`** -- the four states arising from the power set of two independently
+  necessary epistemic predicates, "not that we have found four convenient labels... but that removing any
+  one of the four combinations destroys a mandatory distinction. This gives us an actual minimality
+  argument rather than another proposed vocabulary."
+
+  **The file then appends a full SUPERVISORY REVIEW** (Senior Mathematician · Senior Statistician · Senior
+  DDD Architect, "Status: ACCEPTED — FOUNDATIONAL DERIVATION COMPLETE") -- **a genuinely positive, rare
+  outcome in this file cluster (unlike the Step 278 cycle's twelve required corrections)**: the review
+  independently validates every individual derivation step in a twelve-row table (all marked ✅ Correct),
+  confirms the minimality proof is genuine ("this is a genuine minimality proof, not merely a proposed
+  vocabulary"), confirms the explicit non-claims list is "methodologically correct," delivers a six-
+  category assessment table (Derivation/Minimality/Algebra/Separation/Honesty/Completeness) with EVERY
+  category rated ✅, and concludes with an unqualified HPA Ruling: "Step 272A is ACCEPTED as the
+  foundational derivation of `Σ_min`," designating "Next: STEP 273 — KNOWLEDGE-STATE SUFFICIENCY AND
+  MINIMALITY" (the file this reconstruction already encountered as file 0902), directly confirming this
+  derivation's role as a genuine upstream input feeding the already-recorded Step 273 work.
+introduces:
+  - concept: "The genuinely rigorous, exhaustively deletion-proven Σ_min≅{0,1}^2 minimality result, superseding all prior competing Σ candidates ({Unknown,Supported,Refuted}, Σ=(A,S,R,V,C), Σ=(D,S))"
+  - concept: "The power-set construction Σ_min=𝒫({Support,Refute}), giving the four states a genuine mathematical derivation rather than an arbitrary label list"
+  - concept: "Conflict as a mathematical necessity (not a design choice), forced by the E^+⊨p, E^-⊨¬p simultaneity case"
+  - concept: "The full four-dimensional State(p)=(Σ_E(p),Λ(p),Γ(p),Context(p)) separation, consolidating all individual epistemic/lifecycle/governance exclusion results"
+  - concept: "Assessment≠Σ (process vs result) and the resolution of the Policy/Σ circularity concern: Σ_0 is structural, Assessment_π is policy-dependent"
+  - concept: "The product-lattice algebraic structure Σ_0≅2×2 and the derived join-semilattice merge operation σ_1⊔σ_2=(s_1∨s_2,r_1∨r_2)"
+  - concept: "The seven-way taxonomy of reasons two evidence objects might appear to conflict without genuine semantic contradiction"
+  - concept: "A direct test-ID collision: F272A-1 through F272A-6 reused for entirely different tests than file 0911's own six falsification requirements under the same nominal label"
+  - concept: "The rare, genuinely positive supervisory-review outcome (ACCEPTED without required corrections), contrasting with the Step 278 cycle's twelve mandatory corrections"
+  - concept: "Confirmation that this derivation feeds directly into the already-encountered Step 273 (file 0902)"
+defines:
+  - concept: "Σ_min as the power set of two independent epistemic predicates"
+    definition: "The minimal epistemic-status structure is derived as Σ_min=𝒫({Support,Refute})≅{0,1}^2, where S(p)∈{0,1} and R(p)∈{0,1} independently encode whether proposition p currently has qualified evidential support and qualified evidential refutation, respectively. The four resulting combinations map to: (0,0)=Unknown (no qualified support or refutation exists); (1,0)=Supported (qualified support exists, no refutation); (0,1)=Refuted (qualified refutation exists, no support); (1,1)=Conflict (both qualified support and qualified refutation exist simultaneously). This is proven minimal (not merely proposed) via an exhaustive deletion test: removing any one of the four combinations leaves that specific (S,R) pattern unrepresentable, and each pattern is independently required by a mandatory operation (Assess, Support, Refute, or DetectContradiction respectively) -- giving |Σ_min|=4 as both necessary and sufficient under the stated mandatory operation set"
+  - concept: "The derived join-semilattice merge operation for epistemic status"
+    definition: "A candidate algebraic combination rule for merging two independently-derived epistemic states σ_1=(s_1,r_1) and σ_2=(s_2,r_2): σ_1⊔σ_2=(s_1∨s_2, r_1∨r_2), i.e. componentwise logical OR. This produces intuitive, checkable results: merging Unknown with any determinate state yields that determinate state (identity element behavior); merging Supported with Refuted yields Conflict (rather than arbitrarily picking one, preserving the disagreement as information); merging any state with Conflict yields Conflict (Conflict is the top element, absorbing); and merging a state with itself is idempotent. This gives Σ_0 the structure of a bounded join-semilattice with Unknown as bottom and Conflict as top, though the file explicitly flags this as 'a derived candidate algebra, not yet proof that all KnowledgeOS merge semantics must use it'"
+refines:
+  - concept: "The corpus's entire Σ-investigation lineage (0891's contested Assertion=(id,P,e,c,t,Π) framing, 0892's Q14/CB-2 reference, 0900's orthogonality test, 0902's three explicit competing models, 0903's five-type decomposition hypothesis and rejection of three named unacceptable shortcuts)"
+    refinement: "RESOLVED with a genuine, positively-reviewed minimality proof -- this is the first file in the entire Σ-investigation thread to deliver an actual mathematical derivation (the power-set construction with exhaustive deletion proof) rather than a hypothesis, candidate model, or further open decomposition question, directly fulfilling the target 0903's §275.35 had articulated ('EpistemicState=the minimum formally typed information required to distinguish epistemic outcomes under the canonical operations')"
+  - concept: "0903's five-type decomposition hypothesis (StatusLikeInformation=Epistemic⊕Lifecycle⊕Governance⊕Temporal⊕Provenance)"
+    refinement: "SUBSTANTIALLY CONFIRMED with a genuine mathematical result: this file's State(p)=(Σ_E(p),Λ(p),Γ(p),Context(p)) formalization directly corresponds to (a slightly consolidated form of) 0903's hypothesized five-way split, now backed by an actual minimality proof for the Epistemic component specifically"
+  - concept: "0897's/0900's Policy-external-to-K findings and the Policy/Σ circularity concern"
+    refinement: "RESOLVED via the Σ_0-is-structural/Assessment_π-is-policy-dependent distinction -- policy determines HOW evidence maps into the four fixed logical combinations, never WHAT those combinations are, directly closing the circularity concern these earlier files had left open"
+  - concept: "0911's six falsification requirements (F272A-1 through F272A-6) for the operation universe"
+    refinement: "INADVERTENTLY ID-COLLIDED, not extended -- this file reuses the identical F272A-1 through F272A-6 labels for entirely different Σ-specific tests, extending only with F272A-7 through F272A-10 as genuinely new additions"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Confirm this derivation's role as direct input to file 0902 (Step 273), which the appended review explicitly designates as the next step -- cross-check whether 0902's own K_c=(A,R,Σ,E_L) treatment is consistent with this file's Σ_min={Unknown,Supported,Refuted,Conflict} result."
+  - "Watch for whether any of the ten falsification tests (F272A-1 through F272A-10, this file's numbering) are ever actually executed against real or synthetic KnowledgeOS data."
+  - "Reconcile the F272A-1 through F272A-6 ID collision between this file and file 0911 in any eventual invariant/test-ID reconciliation pass."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Σ_min=𝒫({Support,Refute})≅{0,1}^2={Unknown,Supported,Refuted,Conflict} as the corpus's single most rigorous, positively-reviewed mathematical result for the epistemic-status question, directly resolving the long-running Σ-investigation thread (0891-0903) for the gated (§29) canonical Kernel synthesis."
+  - "dimension-registry.md: record the derived join-semilattice merge operation and the product-lattice algebraic structure as directly reusable formal machinery."
+  - "dimension-registry.md: record the resolution of the Policy/Σ circularity concern (Σ_0 structural, Assessment_π policy-dependent) as closing an open question tracked since 0897/0900/0903."
+  - "dimension-registry.md: flag the F272A-1 through F272A-6 test-ID collision between this file and file 0911 as an open item for the eventual invariant/ID reconciliation pass."
+anchor_test:
+  anchor: "The entire Σ-investigation lineage (0891, 0892, 0900, 0902, 0903); 0897's/0900's Policy/Σ circularity concern; 0911's operation-universe derivation and its F272A-1 through F272A-6 test IDs; 0893's/0895's/0898's/0900's/0903's/0908's standing probability discipline"
+  supports_dimension: "Resolves the entire Σ-investigation lineage with a genuine, positively-reviewed minimality proof, directly fulfilling 0903's own articulated target. Substantially confirms 0903's five-type decomposition hypothesis with an actual mathematical result for the Epistemic component. Resolves the Policy/Σ circularity concern from 0897/0900. Reaffirms the standing no-probability-without-a-model discipline. Creates (rather than resolves) a test-ID collision with 0911"
+  refines_or_contradicts: "resolves and substantially confirms the prior Σ-investigation lineage (0891-0903); resolves the Policy/Σ circularity concern; reaffirms the probability discipline; collides (does not extend) 0911's F272A test-ID scheme"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§272A.4's explicit worked construction (E^+⊨p and E^-⊨¬p simultaneously, forcing a fourth state to avoid lossy collapse to either Supported or Refuted alone) is directly checkable evidence for Conflict being a mathematical necessity, not a design preference."
+  - "§272A.13's exhaustive four-case deletion proof (removing each of Unknown/Supported/Refuted/Conflict individually leaves a specific (S,R) combination unrepresentable) is directly checkable evidence of a genuine, complete minimality proof rather than an assertion."
+  - "The appended review's §2.1 twelve-row step-by-step validation table, with every single row independently marked ✅ Correct, is directly checkable evidence of the derivation's genuine, thoroughly-scrutinized soundness -- a notably more positive review outcome than the Step 278 cycle's twelve mandatory corrections."
+undefined_concepts: []
+open_questions:
+  - "Whether any of the ten falsification tests (F272A-1 through F272A-10 in this file's own numbering) are ever actually executed against real or synthetic KnowledgeOS data."
+  - "Whether the F272A-1 through F272A-6 test-ID collision between this file and file 0911 is ever explicitly noticed and reconciled anywhere later in the corpus."
+  - "Whether 0902's (already-encountered) Step 273 treatment of K_c=(A,R,Σ,E_L) is fully consistent with this file's Σ_min derivation, given 0902 was read before this file in this reconstruction's sequential pass despite this file being its logical predecessor."
+tier2_triggered: true
+tier2_reason: "Delivers a landmark, genuinely rigorous, exhaustively-proven minimality result for the epistemic-status structure (Σ_min=𝒫({Support,Refute})≅{0,1}^2), resolving the corpus's entire long-running Σ-investigation lineage with a positively-reviewed mathematical derivation rather than a further candidate or hypothesis. Delivers a derived join-semilattice merge operation, resolves the standing Policy/Σ circularity concern, and flags a test-ID collision with file 0911. Classified importance critical and tier2-triggered; confidence high reflecting the derivation's genuine rigor and the review's unqualified acceptance."

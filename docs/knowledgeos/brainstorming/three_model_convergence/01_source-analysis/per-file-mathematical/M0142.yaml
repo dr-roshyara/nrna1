@@ -1,0 +1,82 @@
+sequence: M0142
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180011_review-yes1.md
+title: "Review of the Description Logic Handbook extraction (M0141): disciplined adjudication"
+date: "20260902-180011"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0142
+importance: critical
+confidence: high
+about: >
+  The adjudication review of M0141's DL Handbook extraction, following the identical
+  extraction→adjudication pattern established for Brachman & Levesque (M0136→M0138). Separates
+  formally-supported DL results from KnowledgeOS-specific derivations from rejected over-translations,
+  and proposes a new K_t^T/K_t^A (terminological/assertional) structural split for the knowledge
+  state itself.
+introduces:
+  - "New candidate structural split for K_t: K_t=(K_t^T,K_t^A), terminological/schema-level knowledge vs. assertional/domain-instance knowledge — explicitly 'adopting the distinction, without adopting the identity' with DL's TBox/ABox"
+  - "Candidate requirement-subsumption relation r1⪯_R r2 (intended meaning: every situation satisfying r1 also satisfies r2), explicitly split from formal semantic subsumption C⊑_S D — 'Subsumption gives us the formal shape of the missing ⪰ lane, but not its KnowledgeOS semantics'"
+  - "Cons_S(K) ⟺ ∃I.I⊨_S K as a candidate lower-level consistency predicate, explicitly separated from Contr: 'DL Consistency ≠ KnowledgeOS Contr' — Contr remains a higher-level relation depending on context/time/provenance/status/boundary"
+  - "Reasoning-service family 𝔉_S={Cons,Instance,Subsumption,Classification,Retrieval,Realization} as a candidate decomposition of Eval_c, replacing 'Sat = one universal evaluator'"
+  - "Gap*(K,r)={H | K∪H⊨r ∧ K⊭r} restated as a research candidate for a stronger Gap definition (identical in substance to M0138/M0141's minimal-support-completion idea, now given its own boxed name)"
+  - "A revised, more granular dependency graph (§24): Representation → {T/A split, Identity/≡sem} → Reasoning → {Subsumption, Consistency, Classification} → Derivation → Evaluation → {Standing, Boundary, Context} → Contr → Zero → Determination → Decision → δ → K(t+1), with Explanation/Abduction branching from Reasoning rather than inserted into the determination chain"
+  - "Recommended new research artifact KR-DL-2026-09 (Description Logic Integration and Theory Gap Closure), with a THREE-category classification (A formally supported / B KnowledgeOS derivations / C not established) — structurally identical to KR-KRR-2026-09's four-section pattern but collapsed to three categories"
+  - "Closing methodological principle: 'Do not make Knowledge a single monolithic object' — Represented→Derived→Evaluated→Determined as the theory's core sequence, with truth/authority/provenance/context/time as orthogonal constraints"
+defines: []
+refines:
+  - "M0141's TBox=ℛ_req, ABox=K_t^E, InstanceChecking=Sat mappings: all explicitly downgraded from 'identity' to 'formal modelling hypothesis' — the DL extraction's own over-translation corrected in the same way M0138 corrected M0136's Sat=Entailment"
+  - "The already-established Contr research line (KR-CONTR through M0127): Cons_S≠Contr is a NEW explicit boundary statement not previously phrased this way, though consistent with the corpus's own established finding that flat/value-based contradiction models are insufficient"
+  - "Zero (open-world reasoning): reinforces Unknown≠False / NoEvidence≠EvidenceOfAbsence via DL's open-world semantics — same substance as M0138-M0140's CWA-comparator discussion, now sourced from a second independent DL-specific argument rather than the general KR&R one"
+  - "The dependency-chain/pipeline family (M0135's four-way separation, M0137's chain, M0140's typed pipeline): a FOURTH independently-drawn dependency graph, more granular than the prior three, not yet reconciled against them"
+contradicts: []
+repeats:
+  - "The extraction→adjudication→artifact-recommendation pattern from M0136→M0138→M0139, now repeated for M0141→M0142→(recommended KR-DL-2026-09, not yet located)"
+  - "Boundary≠FrameAxiom, δ=Succ_S research-framework-only status — identical to M0138-M0141"
+bridge_candidates:
+  - "Whether KR-DL-2026-09 was ever actually created as its own document (paralleling KR-KRR-2026-09/M0139) — not yet located in this reconstruction's sequence"
+  - "Whether the K_t=(K_t^T,K_t^A) split is ever reconciled with the corpus's other K_t-related open items (the R1 K_t→A_t retirement, the unresolved twenty action/duty/authority invariants from M0125/M0126/M0131) — not cross-checked here"
+  - "Whether this document's more granular dependency graph (§24) is ever reconciled against M0137's dependency chain or M0140's typed pipeline — four independently-drawn versions now exist in this reconstruction's read order with no explicit unification"
+mathematical_content: >
+  Restates C⊑D subsumption, ∃I.I⊨K consistency, K∪H⊨r∧K⊭r minimal-gap, and Cn_S(K)→K^{I,S} — all as
+  candidate KnowledgeOS research directions rather than new derivations; the K_t=(K_t^T,K_t^A) split
+  and r1⪯_R r2 relation are the two genuinely new (if still [PROP]-only) structural proposals in this
+  document.
+gita_content: null
+kernel_content: >
+  Extends the now-recurring extraction→adjudication pattern to a second external source (DL Handbook)
+  with the same disciplined three/four-way separation (established/candidate/adoptable/rejected), and
+  proposes the corpus's first explicit terminological/assertional split for the knowledge-state symbol
+  itself.
+registry_updates:
+  - "Second complete extraction→adjudication instance in this reconstruction's read order (M0136→M0138 for Brachman&Levesque; M0141→M0142 for DL Handbook), confirming this is a repeatable, disciplined review methodology rather than a one-off"
+  - "Fourth independently-drawn dependency-graph/pipeline variant (after M0135, M0137, M0140) — not yet reconciled against the prior three"
+  - "First explicit K_t^T/K_t^A structural split proposal for the knowledge-state symbol"
+anchor_test:
+  anchor: true
+  supports_dimension: "K_t structural split (T/A), ⪰ (split into semantic subsumption vs requirement ordering), Contr (Cons_S≠Contr boundary), Zero (open-world reinforcement), dependency-graph proliferation"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Those are useful hypotheses, but they are NOT derivations from DL.\" — the document's own stated critical correction of M0141"
+  - "\"DL Consistency ≠ KnowledgeOS Contr ... DL gives us a valuable lower-level consistency test.\""
+  - "\"Do not make 'Knowledge' a single monolithic object.\" — the closing methodological principle"
+undefined_concepts:
+  - "The exact semantic characteristics requirements would need to have for r1⪯_R r2 to be established as equal to C⊑_S D — left as a precondition, not specified"
+open_questions:
+  - "Was KR-DL-2026-09 ever created as a formal artifact, paralleling KR-KRR-2026-09?"
+  - "How do the four independently-drawn dependency graphs (M0135, M0137, M0140, this document) relate to each other — supersession, parallel-thread artifacts, or genuine disagreement?"
+tier2_triggered: true
+tier2_reason: >
+  Confirms the extraction→adjudication pattern is repeatable across a second external source;
+  proposes a genuinely new K_t^T/K_t^A structural split not yet reconciled with the corpus's other
+  K_t-related open items; and adds a fourth independently-drawn dependency graph to a family that
+  now needs explicit reconciliation at the global-reclassification pass.

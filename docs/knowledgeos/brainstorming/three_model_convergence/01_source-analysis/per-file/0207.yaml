@@ -1,0 +1,78 @@
+sequence: 207
+path: docs/knowledgeos/brainstorming/kernel/20260824-032219-eks-current-architecture-baseline-reconstruction.md
+title: "EKS Current Architecture Baseline"
+date: "2026-08-24"
+bytes: 55197
+model:
+  primary: c1
+  secondary: null
+source_role: FOUNDATIONAL
+canonical_source: 207
+importance: critical
+confidence: high
+about: >
+  A full "architecture archaeology" reconstruction of the CURRENT (as-implemented) Engineering
+  Knowledge System (EKS), explicitly distinguished from any future/target KnowledgeOS Kernel
+  architecture. Not philosophical or mathematical research — a descriptive baseline of what
+  actually exists in the repository's implementation, tests, persistence, ADRs and governance
+  records, using an eight-level evidence hierarchy (implementation > tests > persistence > ADRs
+  > docs > diagrams > proposals > historical context) and an explicit classification vocabulary
+  (CURRENT / IMPLEMENTED-BUT-IMPLICIT / PARTIAL / DOCUMENTED-ONLY / HISTORICAL / PROPOSED / UNKNOWN).
+introduces:
+  - concept: "Evidence hierarchy for architecture reconstruction (8-level priority: implementation > tests > persistence > ADR > docs > diagrams > proposals > historical)"
+  - concept: "Classification vocabulary: CURRENT / IMPLEMENTED-BUT-IMPLICIT / PARTIAL / DOCUMENTED-ONLY / HISTORICAL / PROPOSED / UNKNOWN"
+  - concept: "Engineering Activity -> Evidence -> Observation -> Assessment/Recommendation -> Human Decision -> Engineering Outcome -> Effectiveness Evidence -> Knowledge -> Future Engineering Activity (organizational-memory loop)"
+  - concept: "Five architectural layers: Engineering Governance / Engineering Knowledge / Engineering Workflow / Observation Runtime / Developer Activity"
+  - concept: "Recommendation -> Decision -> Outcome -> Assessment -> Effectiveness/Evidence workflow chain (most mature current domain model)"
+  - concept: "ObservationTrigger -> ChangeSet -> ObservationRuntime -> Collectors -> Recommendation Engine -> Presentation runtime pipeline"
+  - concept: "Capability/adapter separation principle (e.g. CommitTrigger capability vs. Husky/native-hook/CI adapters)"
+  - concept: "Deferred Architecture Register: Deferred Concept -> Current Invariant -> Activation Criterion -> Evidence Required -> Status"
+  - concept: "Three-Question Staging Principle: can we build it? / should we build it now? / should it join the platform? (orthogonal questions)"
+  - concept: "'Deterministic does not mean demanded' principle"
+  - concept: "Event Payload Principle: events carry references (commit_id, file ref), never embedded source code; repository remains source of truth"
+  - concept: "'Measurement is not knowledge' / 'Measurement is not recommendation' distinction"
+  - concept: "AI-human authority asymmetry: AI produces analysis/recommendation; only humans make architecture/governance/security decisions"
+  - concept: "Bounded-context candidates table (Engineering Knowledge, Architecture Governance, Observation, Recommendation, Engineering Improvement, AI Engineering Platform, Verification) explicitly NOT promoted without further ownership/language/invariant evidence"
+  - concept: "Eight architectural invariants (human authority, evidence-before-evolution, deterministic-precedes-learning, trigger/runtime separation, capability/adapter separation, measurement != knowledge, repository-as-source-of-truth, evidence-gated future evolution)"
+defines: []
+refines:
+  - concept: "KnowledgeOS (as a name)"
+    refinement: "KnowledgeOS is the current name for the evolving engineering knowledge/observation platform emerging from EKS, but historical EKS architecture and a later KnowledgeOS target architecture are explicitly NOT interchangeable."
+contradicts: []
+repeats:
+  - concept: "Human/AI authority asymmetry (AI proposes, human decides)"
+    canonical_source: 204
+    novelty: low
+  - concept: "Evidence-gated architectural evolution / no architecture without an activation event"
+    canonical_source: null
+    novelty: medium
+bridge_candidates:
+  - "Recommendation/Decision/Outcome/Assessment workflow chain as a possible operational analogue of the philosophical Kernel's KnowledgeClaim/Evidence/Grounding/Assessment chain (0173) — logged as unresolved_equivalence only, not merged; this document is a description of an existing IMPLEMENTED system, not a Kernel proposal."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: new unresolved_equivalence candidate — EKS's Recommendation->Decision->Outcome->Assessment->Evidence chain vs. the philosophical-arc Kernel candidates' KnowledgeClaim->Evidence->Grounding->Derivation->Assessment chain (0173/0174/0176). Not merged; different evidence tiers (implemented system vs. philosophical hypothesis)."
+anchor_test:
+  anchor: "K-1 / Kernel-boundary discovery cycle (0144-0170+) and Western-epistemology-arc Kernel candidates (0171-0176)"
+  supports_dimension: "Engineering KnowledgeOS model — supplies the actual current implementation baseline against which any future Kernel candidate must eventually be reconciled or shown compatible"
+  refines_or_contradicts: "neither directly — this document is explicitly scoped as a CURRENT baseline, not a Kernel proposal; it does not reference K-1 or the philosophical Kernel candidates by name"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Eight architectural invariants (Section 48) stated as directly supported by current evidence, not aspirational"
+  - "Explicit historical correction cited: the commit-trigger hook's legacy path once bypassed ObservationRuntime and was later fixed to route through it (Section 20) — genuine implementation-evidence example, not invented"
+  - "Demonstrated live file-save execution trace: 1 file -> LCOM4 + test-presence observation -> 2 recommendations -> ~100ms runtime (Section 19)"
+undefined_concepts:
+  - "Exact persisted Decision taxonomy (ACCEPT/IGNORE/DEFER/FALSE_POSITIVE listed as 'conceptual', explicitly deferred to implementation evidence)"
+  - "Exact PKS/EKS runtime boundary (explicitly listed as UNKNOWN in Section 58)"
+  - "Exact ownership of every workflow concept (explicitly UNKNOWN)"
+open_questions:
+  - "Whether/when the bounded-context candidates in Section 37 are ever promoted to formal bounded contexts with resolved ownership, ubiquitous language and invariants"
+  - "Whether this baseline is ever explicitly reconciled against the philosophical/mathematical Kernel candidate tracks, or remains a permanently separate evidentiary track"
+tier2_triggered: true
+tier2_reason: "Critical foundational architecture-archaeology document reconstructing the actual current EKS implementation baseline (not a Kernel proposal); introduces 15 new structural concepts including the Deferred Architecture Register, the Three-Question Staging Principle, and eight architectural invariants; establishes an explicit evidence hierarchy and classification vocabulary that could govern how future Kernel candidates are eventually checked against real implementation."

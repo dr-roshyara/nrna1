@@ -1,0 +1,85 @@
+sequence: 274
+path: docs/knowledgeos/brainstorming/kernel/20260825-115604-oconnor-persons-and-causes-agency-and-causal-powers.md
+title: "O'Connor's Persons and Causes: Agency and Causal Powers"
+date: "2026-08-25"
+bytes: 30000
+model:
+  primary: c1
+  secondary: g1
+source_role: PRIMARY_RESEARCH
+canonical_source: 274
+importance: critical
+confidence: high
+about: >
+  Sixth consecutive Western-analytic primary source, directly continuing 0273's bridge to the earlier
+  K-1/C-numbered-constraint Kernel cycle (same KnowledgeAssertionRecord/Vani/Godel/Negative-Epistemology
+  vocabulary). Timothy O'Connor's "Persons and Causes" supplies a Person/Object distinction (agency,
+  intentionality, reasons, explanation are not reducible to object+attributes), a Cause-as-relation-not-
+  entity principle, a Capacity/Power bridge between what-something-is and what-something-can-do, and a
+  Reasons-vs-Causes distinction (causation != explanation). A companion "Critical Analysis" section
+  explicitly disciplines all of this: O'Connor's metaphysical categories must become assertion CONTENT, not
+  Kernel PRIMITIVES, mirrored against a McGinn cross-check table (Kernel=logical properties, Content=
+  metaphysical categories). Produces the sub-arc's most fully worked concrete example -- a complete
+  KnowledgeAssertionRecord for "Alice opened the door because she wanted to leave" -- and adds three new
+  non-collapsing pairs (Reason!=Cause, Person!=Object, Explanation!=Event) to the corpus's established
+  discipline chain.
+introduces:
+  - concept: "Person/Object distinction as a QUALITATIVE (not reducible) expansion of the knowledge space: Object has properties/capacities/participates-in-causal-processes; Person additionally has beliefs/desires/reasons/represents-possibilities/forms-intentions/performs-actions/can-be-agent-in-explanations"
+  - concept: "Cause explicitly modeled as a RELATION/DEPENDENCY, not a node/entity type: Person and Object are NODE/ENTITY, Cause is RELATION -- worked examples (Fire-causes-heating, Person-causes-intention, Intention-causes-action, Action-causes-outcome)"
+  - concept: "CAUSAL POWER identified as a missing primitive, following O'Connor's chain: particulars have properties -> properties ground causal capacities -> capacities can be exercised -> effects occur; two distinct instantiations -- event causation (Object->Properties->CausalCapacity->circumstances->Effect) and agency (Person->beliefs/desires/reasons->AgentCapacity->Intention->Action)"
+  - concept: "Capacity/Power as an architectural bridge between WHAT SOMETHING IS and WHAT SOMETHING CAN DO; worked 'person can open the door' example (bodily capability + knowledge-of-door + desire + opportunity -> capacity-to-act -> possible action)"
+  - concept: "Reasons connected into the causal chain: Person believes-X/desires-Y/has-reason-R -> deliberation -> intention -> action; enables KnowledgeOS to represent not just 'what happened' but 'why did it happen' as a distinct knowledge class"
+  - concept: "Candidate fundamental topology: Knowledge Space -> Entities(Objects/Persons/Properties/Relations) + Events(Actions/Changes/States/Occurrences) + Content(Claims/Propositions/Reasons/Intentions), converging through Powers->Causation(causes/enables/prevents) and Aboutness->Truth(evidence) into a shared Explanation node"
+  - concept: "'Knowledge is not a primitive bucket' reinforced with a fully decomposed worked example: 'Alice opened the door because she wanted to leave' -> PERSON(Alice)/EVENT(opening-the-door)/OBJECT(door)/MENTAL-STATE(wanting-to-leave)/REASON(wanting-to-leave)/CAUSAL-EXPLANATORY-RELATION(wanting-to-leave explains opening-the-door)/TRUTH-BEARER(the sentence)/TRUTH-STATUS/EVIDENCE/SOURCE -- knowledge EMERGES from the structured configuration, is not itself a primitive object"
+  - concept: "Three-source convergence explicitly noted: Merricks (Truth!=evidence!=aboutness!=truthmaker) + O'Connor (Cause!=explanation, Person!=object, Reason!=cause, Action!=event-description, Capacity!=actual-exercise) + the corpus's own reconstructible/contextual/governed/evidentially-traceable discipline -> 'Knowledge is not a primitive bucket containing facts. Knowledge is structured intelligibility over different kinds of entities, states, events, relations, reasons, causes, and truth-bearers.'"
+  - concept: "Two intersecting dimensions proposed instead of one hierarchy: Dimension A -- what exists (Particulars: Objects/Persons-Agents/Events/States/Situations vs. Universals/Properties: Properties/Capacities/Powers/Relations); Dimension B -- how things connect (identity/instantiation/part-of/about/causes/enables/prevents/depends-on/explains/supports/intends/believes/desires/acts-on); Knowledge Space = Entities x Relations x States x Claims x Contexts"
+  - concept: "'Person as bridge between ontology and epistemology': a person is simultaneously entity+property-bearer+causal-agent+reason-source+belief-holder+intention-holder+actor+observer+knower+claim-producer; World->perception->Person->[belief/reasoning/intention/decision/action]->World -- 'persons are not merely objects inside Knowledge Space, they are participants that traverse and transform Knowledge Space'"
+  - concept: "Cause vs Explanation flagged as the next major research step: humans ask 'why X', not merely 'what caused X'; KnowledgeOS needs CAUSE and separately EXPLANATION with explicit relationships between them, allowing physical/causal/functional/intentional/reasons/historical/logical explanation types without conflating them"
+  - concept: "Reformulated Knowledge Space hypothesis: 'not primarily a hierarchy of topics; a relational space whose nodes represent entities/events/states/properties/propositions/mental-contents, and whose edges represent identity/instantiation/aboutness/causation/explanation/dependence/support/intention/agency' -- Topics become VIEWS/projections over that space (worked 'Free Will' topic example as a projection over Persons+Actions+Reasons+Intentions+Causes+Possibilities+Responsibility+Time+Truth-claims)"
+  - concept: "22-item 'Knowledge Space Ontological Discovery' candidate list (Persons/Objects/Properties/Events/States/Actions/Agents/Causes/Effects/Powers/Capacities/Reasons/Intentions/Claims/Propositions/Truth/Evidence/Sources/Contexts/Time/Modality/Explanation), each to be tested: is this a primitive entity, a relation, a property, a state, a representation, a perspective, or merely a useful projection?"
+  - concept: "[Critical Analysis companion] Four explicit architectural dangers of importing O'Connor uncritically, each with a correct-response: (1) THE PRIMITIVE TRAP -- O'Connor treats agency as primitive/irreducible; making Person/AgentCausation/Intention/Action Kernel primitives would turn the Kernel into a metaphysical engine; correct response: preserve RECORDS of agency (who asserted what, based on what reasons), do not IMPLEMENT agency; (2) EXPLANATION/CAUSE CONFLATION -- KnowledgeOS cannot be the arbiter of what truly causes/explains what (would be a 'semantic oracle'); correct response: preserve CLAIMS about explanation, not explanations themselves, mirroring Assertion-preserved vs Truth-evaluated-externally; (3) CAPACITY IMPLEMENTATION PROBLEM -- capacities/powers involve counterfactuals/contexts/degrees/interactions and are notoriously hard to formalize; correct response: capacities belong in assertion CONTENT, not Kernel structure; (4) PERSON-AS-BRIDGE OVERREACH -- 'persons traverse and transform Knowledge Space' is philosophically true but architecturally dangerous if read as 'the Kernel should model persons as active transformers'; correct response: preserve records of PARTICIPATION only"
+  - concept: "McGinn cross-check table explicitly separating Kernel-level logical properties from Content-level metaphysical categories: McGinn(Logical)=Identity/Existence/Predication/Necessity/Truth vs O'Connor(Metaphysical)=Persons/Objects/Properties/Powers-Capacities/Causes/Reasons/Intentions/Actions; headline rule: the Kernel preserves McGinn's logical properties (invariant structure of any claim); the Kernel does NOT implement O'Connor's metaphysical categories (they are the CONTENT of claims)"
+  - concept: "Three-layer architectural separation formalized: Kernel Level (McGinn: Identity/Existence/Predication/Necessity/Truth, structural invariants any claim must preserve), Content Level (O'Connor: Persons/Objects/Properties/Powers-Capacities/Causes/Reasons/Intentions/Actions -- explicitly 'as agents/referents/predicated/claimed/asserted/given/reported/described', NOT as Kernel primitives), Explanation Level as an explicit BRIDGE (Causal claims/Reasons claims/Intentional claims/Explanatory claims -- preserved as content, not implemented as Kernel capabilities)"
+  - concept: "Fully worked test case: a concrete KnowledgeAssertionRecord for 'Alice opened the door because she wanted to leave' (id/propositionRef/contextRef/assertedBy/assertedAt/temporalScope/epistemicCommitment/relationRefs[CAUSAL_CLAIM, EXPLANATORY_CLAIM, AGENT_CLAIM, REASON_CLAIM]), paired with an explicit six-item 'what the Kernel should NOT do' list (determine whether Alice actually wanted to leave; determine whether the desire caused the action; determine whether the explanation is true; model agent-causation as a Kernel primitive; treat capacity as a Kernel primitive; treat person differently from object at the Kernel level) and a three-layer outside-the-Kernel specification (Semantic Interpretation / Evaluation / Reasoning, each with concrete sub-tasks)"
+  - concept: "Three O'Connor-revealed structural properties of the Knowledge Space: NOT FLAT (nine distinct ontological regions: Objects/Persons/Events/States/Properties/Powers-Capacities/Causes/Reasons/Explanations); relations NOT UNIFORM (nine distinct relation types: Identity/Instantiation/Causation/AgentCausation/Explanation/Intention/Belief/Desire/Representation); the space HAS DIRECTIONALITY (temporal: Past->Present->Future; explanatory: Cause->Effect [causal] / Reason->Action [intentional] / Ground->Claim [epistemic] / Premise->Conclusion [logical] -- four distinct explanatory-direction types that must not be conflated)"
+  - concept: "New named lens: 'The Persons and Causes Lens' -- question: 'is this entity an object with causal powers, or a person with reasons, intentions, and agency?' -- three usage modes (adversarial lens, content specification, boundary warning)"
+  - concept: "Five-layer separation-of-concerns summary table (Kernel/Assertion-Content/Semantic-Interpretation/Evaluation/Reasoning), each row giving what the layer does and what O'Connor specifically contributes to it"
+  - concept: "Extends the corpus's established non-collapsing-pair discipline chain (Expression!=Meaning [Vani lens], Truth!=Proof [Godel lens], Assertion!=Reality [Negative Epistemology lens]) with three NEW pairs under the Persons-and-Causes lens: Reason!=Cause, Person!=Object, Explanation!=Event"
+defines: []
+refines:
+  - concept: "0272's four-necessity-type distinction and 0273's Logical/Epistemic/Temporal/Structural property classification"
+    refinement: "Adds a fifth practical layer split (Kernel/Content/Semantic-Interpretation/Evaluation/Reasoning) directly operationalizing the same non-collapsing discipline with a concrete worked KnowledgeAssertionRecord example"
+  - concept: "0270's Non-Redundant Work Principle and the ongoing Assertion-primitive question (0268-0271)"
+    refinement: "Supplies a concrete worked KnowledgeAssertionRecord showing Assertion carrying relationRefs to CAUSAL_CLAIM/EXPLANATORY_CLAIM/AGENT_CLAIM/REASON_CLAIM -- directly illustrates (without formally resolving) how an Assertion-centered Kernel would represent O'Connor's categories as content, not structure"
+  - concept: "0273's McGinn logical-properties classification"
+    refinement: "Directly cross-references it in an explicit two-column table, establishing Kernel=McGinn's logical properties vs Content=O'Connor's metaphysical categories as a single coherent Kernel/Content boundary rule"
+contradicts: []
+repeats:
+  - concept: "The Kernel must not become a metaphysical engine/semantic oracle; philosophical distinctions are adversarial lenses, not architectural mandates"
+    canonical_source: 273
+    novelty: none
+bridge_candidates:
+  - "Continues 0273's apparent bridge to the earlier K-1/C-numbered-constraint/Chinese-lens Kernel cycle (same KnowledgeAssertionRecord/Vani/Godel/Negative-Epistemology vocabulary) -- reinforces rather than newly establishes the bridge_candidate flagged at 0273."
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: reinforce the 0273 bridge_candidate note (earlier K-1/C-numbered-constraint cycle vs. 0247-0274 lens-based sub-arc) with this file's continued use of the same vocabulary, and note the new 'Persons and Causes' lens joining the corpus's growing adversarial-lens roster."
+anchor_test:
+  anchor: "0273's McGinn logical/metaphysical classification and Kernel-vs-Content boundary; 0268-0271's Assertion-primitive investigation; the corpus's Expression!=Meaning/Truth!=Proof/Assertion!=Reality discipline chain"
+  supports_dimension: "Western-analytic-philosophy model (O'Connor on agent causation) directly disciplined into the Engineering KnowledgeOS model via an explicit Kernel/Content/Explanation three-layer separation and a fully worked KnowledgeAssertionRecord example"
+  refines_or_contradicts: "refines/extends 0273's McGinn classification and the Assertion-primitive investigation; adds three new non-collapsing pairs to the established discipline chain; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "No formal criteria given for how many/which distinct 'explains' relation subtypes (causal/functional/intentional/reasons/historical/logical) would actually be implemented, beyond naming them as a non-conflatable set"
+open_questions:
+  - "Whether the 22-item Knowledge Space Ontological Discovery candidate list is ever actually tested against the primitive/relation/property/state/representation/perspective/projection question proposed here"
+  - "Whether the newly-named 'Persons and Causes' lens is added to the corpus's frozen/provisional lens stacks (0263's 13-lens freeze, etc.) in a later file"
+tier2_triggered: true
+tier2_reason: "Sixth consecutive Western-analytic primary source, continuing 0273's bridge to the earlier K-1/C-numbered-constraint Kernel cycle. Introduces Person/Object as a qualitative (not reducible) distinction, Cause as relation-not-entity, Capacity as a WHAT-IS/WHAT-CAN-DO bridge, and Reasons!=Causes; its companion Critical Analysis then explicitly disciplines all of this via a McGinn cross-check (Kernel=logical properties, Content=metaphysical categories) and produces the sub-arc's most fully worked concrete KnowledgeAssertionRecord example, adding three new non-collapsing pairs (Reason!=Cause, Person!=Object, Explanation!=Event) to the established discipline chain."

@@ -1,0 +1,195 @@
+sequence: 813
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-021226_step_186_mathematical-validation-of-the-knowledge-state-model.md
+title: "Step 186 -- Mathematical Validation of the Knowledge State Model (CAPSTONE KERNEL-DEFINING MILESTONE, delivers 0812's ten-question validation protocol against the KS_t model): Refines KS Into a Typed-Proposition Model KS=(p,C,T,P,E,A,G), Confirms the Bitemporal T=(T_valid,T_known) and the Correction/Change/Refinement/Recontextualization Typed-Relation Model via Worked Examples -- Delivers 'MathematicalModel≠DomainModel' (Distribution Theory as Analytical Projection Only) and 'Probabilistic Reasoning ∥ Deterministic Epistemic Classification' (Coexistence, Not Replacement) -- Delivers the Sharp AI-Engineering Invariant Provenance(LLM)≠Evidence(h) -- DISCOVERS THE MULTILAYER GRAPH 𝔾=(G_E,G_S,G_T,G_G,G_C) ('Different Relation Semantics Require Different Graph Interpretations') -- DELIVERS THE CANDIDATE FORMAL RULE TransitionAllowed(r)⟺Req(r)⊆Witness(r), EXPLAINING WHY THE KERNEL COULD BE SMALL -- Redefines the Kernel Mathematically as 'Invariant Enforcement Boundary,' Explicitly Listing What It Does NOT Do -- Delivers the Two-Function Split (Semantic Evaluator f_sem, Intelligent/Domain-Specific, vs. Transition Validator f_val, Deterministic) Named 'Exactly the Architecture We Have Been Searching For' -- Reframes the Central Mathematical Object From Knowledge to JustifiedStateTransition -- Delivers a Provisional Ten-Axiom Mathematical Constitution M1-M10 -- Opens Step 187's Four-Relation Authority Model (Capability≠Permission≠Authority≠Responsibility) and the Central Architectural Question 'Can KnowledgeOS Enforce Transitions Without Becoming the Source of Organizational Authority?'"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "delivers the actual mathematical-validation protocol 0812 proposed; purely mathematical/DDD stress-testing content, no new Gita textual engagement, though it explicitly notes its results 'fit remarkably well' with the Gita Chapters 1-4 lens established earlier"
+source_role: PRIMARY_RESEARCH
+canonical_source: 813
+importance: critical
+confidence: high
+about: >
+  Directly continues 0812, opening "we now test the mathematical architecture we derived in Step 185
+  against the architecture we have actually developed. The purpose is not to make the mathematics look
+  sophisticated. The purpose is to find out whether the mathematics exposes contradictions, missing
+  dimensions, or unjustified assumptions in our DDD architecture" -- explicitly stress-testing
+  `KS_t=(I,S,C,T,P,A,G)` against real examples rather than merely admiring it.
+
+  **§186.1-186.4 delivers the first refinement**: the original tuple cannot represent "Nexus 3.69 is
+  currently installed" because it lacks an explicit subject/property structure. Delivers an intermediate
+  refinement `KS=(Sbj,Prop,Val,Ctx,T,P,E,A,G)`, then a cleaner generalization once normative/inferential/
+  causal propositions ("the migration should happen," "probably happened," "happened because of security
+  concerns") are tested: `Val` cannot be a scalar, so the model becomes boxed **`KS=(p,C,T,P,E,A,G)`** with
+  `p∈𝒫` a typed proposition, `Type(p)∈{Observation,Claim,Inference,Determination,Decision,Policy,
+  Recommendation}` -- "these should not inhabit the same unrestricted semantic category."
+
+  **§186.5-186.8 confirms and mathematically hardens two prior qualitative results**: Unknown needs a
+  reason (`E(p)=(Unknown,UReason)`, "supports our Step 184 result"), and Correction/Change/Refinement/
+  Recontextualization/Supersession/Contradiction become a typed `Relation(p_1,p_2)` ("confirms Step 185").
+  Delivers **the bitemporal split hardened into a candidate invariant**, boxed **`T=(T_valid,T_known)`**,
+  worked through a misconfigured-server example (misconfigured `2026-01-01`, discovered `2026-03-01`:
+  `T_valid=[Jan,Mar)`, `T_known=Mar`, with `Reality:Misconfigured` but `OrganizationalKnowledge:Unknown`
+  during Jan-Feb) -- "this is exactly the distinction we need."
+
+  **§186.9-186.11 delivers the file's core methodological guardrail**: distribution theory (`μ_O=Σw_iδ_
+  {t_i}`) is useful "but only for some questions" and explicitly **"not the canonical storage
+  representation. It is an analytical representation,"** boxed: **`DomainModel→[mathematical
+  projection]→MathematicalModel`**, never `MathematicalModel=DomainModel` -- "this prevents mathematical
+  over-engineering." Delivers **Bayesian inference's proper coexistence with deterministic assurance**: an
+  inference `H` with `P(H|E)` belongs to the inference layer; the deterministic KnowledgeOS layer preserves
+  `H` as `Hypothesis` together with its probability, but must never transform `P(H|E)=0.95` into
+  `HistoricalFact`, boxed: **`Probabilistic inference ∥ Deterministic epistemic classification`** --
+  parallel coexistence, not replacement.
+
+  **§186.12-186.15 delivers conflict-as-lineage** (`Conflict(p)={e_1,e_2}` is not a boolean but has a
+  resolution history, `Conflict→[ResolutionEvidence]→Supported`), **the mathematical expression of Zero**
+  hardened into a boxed logical formula: **`¬Evidence(p)⇏¬p`**, and **the sharpest AI-engineering invariant
+  delivered in this file**: for an LLM-generated hypothesis `h` with `E_h=∅`, `Status(h)=Hypothesis`, and
+  crucially the LLM's own generation act is provenance only for *the generation event*, never evidence for
+  *the truth of h*, boxed: **`Provenance(LLM)≠Evidence(h)`** -- "this distinction should become a major
+  AI-engineering invariant."
+
+  **§186.16-186.19 delivers the discovery of a genuinely multilayer knowledge structure**: `Permission≠
+  Authority≠Evidence≠Decision` as four separate relations, then **the discovery that a single "knowledge
+  graph" is architecturally wrong**: at least four (later five) distinct graphs exist -- Evidence graph
+  `G_E` ("what supports what?"), Semantic graph `G_S` ("what means/refines/contradicts what?"), Governance
+  graph `G_G` ("who is authorized to decide what?"), and Causal graph `G_C` ("what caused what?"), later
+  joined by a Temporal graph `G_T`. Delivers the boxed principle **"different relation semantics require
+  different graph interpretations"** (an edge in `G_E` does not imply a corresponding edge in `G_G`, and a
+  governance edge does not imply truth), crystallized into **the multilayer graph object**, boxed:
+  **`𝔾=(G_E,G_S,G_T,G_G,G_C)`** -- explicitly "much more faithful to DDD than a single 'knowledge graph.'"
+
+  **§186.20-186.23 delivers the richer, typed state transition** `KS_t→[(E,S,T,A,G)]→KS_{t+1}` (explicitly
+  kept conceptual, not an implementation interface), **a typed witness** `W=(W_E,W_T,W_A,W_G)`, and
+  **transition-specific witness requirements** worked concretely per transition type (Observation needs
+  `W_E+W_T`; Correction needs `W_E+W_T+Identity`; Determination needs `W_E+W_A+Rule`; Governance Decision
+  needs `W_A+W_G+DecisionRecord`; Recommendation needs `W_E+InferenceModel`) -- explicitly rejecting a
+  single universal witness requirement as unnecessarily rigid. **Delivers the file's central formal
+  breakthrough**, boxed: **`TransitionAllowed(r)⟺Req(r)⊆Witness(r)`** -- "the system does not need to
+  understand the entire domain. It needs to enforce the preconditions of transitions. This begins to
+  explain why the Kernel could be small."
+
+  **§186.24-186.27 delivers the mathematically precise redefinition of the Kernel itself**, boxed:
+  **"Kernel = Invariant Enforcement Boundary"** such that a transition is admitted only when its
+  preconditions are satisfied -- "much stronger than a database abstraction." **Delivers an explicit,
+  disciplined list of what the Kernel does NOT do**: it does not calculate `P(H|E)` and declare truth; does
+  not determine moral/organizational authority; does not interpret domain meaning; does not decide whether
+  an inference is semantically reasonable -- "it verifies that the required declared transition contract is
+  satisfied." **Delivers the two-function architectural split**, explicitly named **"exactly the
+  architecture we have been searching for"**: the semantic evaluator `f_sem(E,p)→Assessment` (intelligent,
+  domain-specific, appropriately the AI's role) versus the transition validator `f_val(Assessment,r)→
+  Allowed/Rejected` (deterministic, appropriately the Kernel's role), crystallized as **the mathematical
+  form of deterministic assurance**, boxed: **`Probabilistic reasoning→Deterministic admission gate`** --
+  "may become one of the strongest foundations of the KnowledgeOS architecture."
+
+  **§186.28-186.29 delivers the Step 186 result**: six boxed "strongly supported" findings (separate
+  temporal dimensions for reality/knowledge; epistemic status distinct from probability; inference must not
+  automatically become fact; evidence/semantics/causality/time/governance as different relation systems;
+  every meaningful transition requires a witness; transition validation can be deterministic even when
+  semantic evaluation is probabilistic). **Delivers the file's single most important reframing**, boxed:
+  the central mathematical object of KnowledgeOS may not be `Knowledge` at all but **`JustifiedStateTransition`**
+  -- KnowledgeOS preserves the full trajectory `KS_0→[W_0]→KS_1→[W_1]→KS_2→...`, not merely the final state
+  `KS_n`, explicitly noted to "fit remarkably well with everything we have discovered from DDD, statistics,
+  deterministic assurance, and the Gita Chapters 1-4 lens" -- a converging-lens observation, not a proof.
+
+  **§186.30 delivers a provisional ten-axiom mathematical constitution**, explicitly labeled candidate, not
+  final: **M1 Identity** (`∃I(p)`); **M2 Temporality** (`T(p)≠∅`); **M3 Provenance**
+  (`Promote(p)⇒P(p)≠∅`); **M4 Epistemic separation** (`Inference(p)≠Fact(p)`); **M5 Historical
+  preservation** (past assertions not rewritten by current knowledge); **M6 Conflict preservation**
+  (`Conflict(p)` must remain representable); **M7 Transition witness** (`KS_i→KS_j⇒Witness_{ij}`); **M8
+  Authority separation** (`Permission≠Authority`); **M9 Probabilistic separation** (`P(H|E)≠
+  HistoricalFact(H)`); **M10 Deterministic admission** (a transition is admitted only when its declared
+  invariants are satisfied).
+
+  **§186.31 delivers an explicit, disciplined self-restraint statement**: "we should not immediately code
+  `KnowledgeState`/`EvidenceDistribution`/`BayesianEngine`/`Kernel`. That would violate our own
+  methodology" -- the mathematics has instead revealed that multiple semantic layers and multiple
+  authorities exist, sharpening (not yet answering) the next question, boxed: **"who owns each
+  transition?"**
+
+  **Closes opening "Step 187 — Authority as a mathematical relation,"** delivering **a four-relation
+  authority model**, boxed: **`Capability≠Permission≠Authority≠Responsibility`**, worked through a layered
+  example (an AI agent's `Capability=writeDatabase`; a service account's `Permission=
+  writeKnowledgeRecord`; neither implying `Authority=approveArchitectureDecision`; and even an authorized
+  person potentially lacking `Responsibility=ownThatDecision`), each modeled as `Capability(a,x)`,
+  `Permission(a,x)`, `Authority(a,x)`, `Responsibility(a,x)` as four distinct relations -- explicitly
+  proposed to answer the file's closing central architectural question, boxed: **"can KnowledgeOS
+  deterministically enforce epistemic and governance transitions without itself becoming the source of
+  organizational authority?"** No actual repository implementation occurs within this file itself; every
+  refined tuple, graph, axiom, and function split remains an explicitly labeled candidate pending Step
+  187's authority-relation formalization.
+introduces:
+  - concept: "The refined typed-proposition Knowledge State KS=(p,C,T,P,E,A,G), p∈𝒫 with Type(p)∈{Observation,Claim,Inference,Determination,Decision,Policy,Recommendation}"
+  - concept: "The hardened bitemporal invariant T=(T_valid,T_known), worked through a misconfigured-server example"
+  - concept: "'MathematicalModel≠DomainModel': DomainModel→[mathematical projection]→MathematicalModel, preventing mathematical over-engineering"
+  - concept: "'Probabilistic reasoning ∥ Deterministic epistemic classification' -- coexistence, not replacement, of Bayesian inference and deterministic assurance"
+  - concept: "Conflict-as-lineage (Conflict→[ResolutionEvidence]→Supported, not a boolean)"
+  - concept: "The formal Zero-lens expression ¬Evidence(p)⇏¬p"
+  - concept: "The sharp AI-engineering invariant Provenance(LLM)≠Evidence(h): an LLM's generation act is provenance for the generation event only, never evidence for the generated content's truth"
+  - concept: "The discovery of a genuinely multilayer knowledge structure: at least five distinct graphs (G_E evidence, G_S semantic, G_T temporal, G_G governance, G_C causal), 'different relation semantics require different graph interpretations'"
+  - concept: "The multilayer graph object 𝔾=(G_E,G_S,G_T,G_G,G_C), explicitly more faithful to DDD than a single knowledge graph"
+  - concept: "Transition-specific typed witnesses (different transition types requiring different witness component combinations, rejecting a single universal requirement)"
+  - concept: "THE CENTRAL FORMAL BREAKTHROUGH: TransitionAllowed(r)⟺Req(r)⊆Witness(r), explaining why the Kernel could be small"
+  - concept: "The mathematically precise Kernel redefinition: 'Invariant Enforcement Boundary,' with an explicit list of what it does NOT do"
+  - concept: "The two-function architectural split: semantic evaluator f_sem (intelligent/domain-specific) vs. transition validator f_val (deterministic), named 'exactly the architecture we have been searching for'"
+  - concept: "The mathematical form of deterministic assurance: 'probabilistic reasoning → deterministic admission gate'"
+  - concept: "The central reframing: the fundamental KnowledgeOS object may be JustifiedStateTransition, not Knowledge -- preserving the full trajectory, not merely the final state"
+  - concept: "The provisional ten-axiom mathematical constitution M1-M10, explicitly candidate, not final"
+  - concept: "The explicit self-restraint statement against premature implementation ('we should not immediately code KnowledgeState/EvidenceDistribution/BayesianEngine/Kernel')"
+  - concept: "Step 187's opening: the four-relation authority model Capability≠Permission≠Authority≠Responsibility, and the central architectural question about KnowledgeOS's own non-sovereignty"
+defines:
+  - concept: "TransitionAllowed(r)⟺Req(r)⊆Witness(r)"
+    definition: "A candidate formal admission rule for the KnowledgeOS Kernel: each transition type r has a required witness-component set Req(r) (drawn from evidence, temporal context, authority, and governance-basis components), and the transition is permitted if and only if the actually-supplied witness for that transition instance is a superset of the required set -- this lets the Kernel enforce structural preconditions without needing to understand or evaluate domain semantics itself, which is offered as the mathematical explanation for why a minimal, domain-agnostic Kernel is architecturally plausible"
+  - concept: "The Kernel as Invariant Enforcement Boundary"
+    definition: "Mathematically, the Kernel is not a knowledge store or a database abstraction but the boundary that admits or rejects proposed state transitions based solely on whether their declared preconditions (witness requirements) are satisfied -- it explicitly does not calculate probabilities and declare truth, does not determine organizational or moral authority, does not interpret domain meaning, and does not judge whether an inference is semantically reasonable; all of that belongs to a separate semantic-evaluation layer, keeping the Kernel small, generic, and deterministic"
+  - concept: "The semantic evaluator / transition validator split (f_sem vs. f_val)"
+    definition: "Two functionally and architecturally distinct roles: f_sem(E,p)→Assessment is the intelligent, domain-specific function that evaluates evidence against a proposition to produce an assessment (appropriately performed by a human, an AI, or a domain-specific rule engine, and legitimately probabilistic or judgment-based); f_val(Assessment,r)→Allowed/Rejected is the deterministic function that checks whether a proposed transition's declared preconditions are met given that assessment (appropriately performed by the Kernel, and never itself judging the assessment's correctness) -- named 'exactly the architecture we have been searching for' because it lets AI participate richly in f_sem while keeping f_val strictly deterministic and auditable"
+  - concept: "JustifiedStateTransition as the central mathematical object"
+    definition: "Reframes KnowledgeOS's fundamental unit of concern away from static Knowledge (a stored state KS_n) toward the full witnessed trajectory of how that state was reached (KS_0→[W_0]→KS_1→[W_1]→...→KS_n) -- the organization's epistemic value lies not in what is currently believed but in the preserved, justified sequence of transitions that produced that belief, directly explaining why reconstruction (0809) and epistemic lineage (throughout the arc) are more fundamental architectural concerns than the current-state snapshot itself"
+refines:
+  - concept: "0812's mathematical architecture proposal and its closing ten-question validation protocol"
+    refinement: "DELIVERED IN FULL: every one of 0812's ten validation questions is explicitly addressed with a worked test (state vector sufficiency, Unknown representability, correction/change distinguishability, historical-knowledge preservation, distribution theory's actual explanatory contribution, Bayesian/deterministic coexistence, conflict representation, no-evidence representability, AI-generated-knowledge admissibility, and authority representability), with the model refined at each step rather than merely confirmed unchanged"
+  - concept: "0811's independently-derived bitemporal model and 0812's formal ℰ⊆T_R×T_K×P grounding"
+    refinement: "Hardened into the explicit candidate invariant T=(T_valid,T_known) and validated against a fresh worked example (the misconfigured server), demonstrating the formal model survives concrete stress-testing rather than remaining only an abstract structure"
+  - concept: "0812's evidence-dependence matrix and single knowledge-graph assumption implicit in earlier files (0793, 0806)"
+    refinement: "Substantially extended: rather than one graph with a dependence-adjustment, the file discovers the graph itself must be multilayer (five distinct typed graphs), a genuinely deeper structural result than merely weighting edges for dependence"
+  - concept: "The arc's recurring 'why should the Kernel be small' implicit assumption (present since early architecture-discussion files but never mathematically justified)"
+    refinement: "GIVEN ITS FIRST RIGOROUS MATHEMATICAL JUSTIFICATION: TransitionAllowed(r)⟺Req(r)⊆Witness(r) explains, for the first time in the arc, precisely why a domain-agnostic, precondition-checking Kernel can remain small while still enforcing meaningful invariants -- previously this was an architectural preference; here it becomes a derived consequence of the witness-based transition model"
+  - concept: "0812's AI-hallucination-prevention information-theoretic derivation ('generation without new evidence cannot constitute epistemic advancement')"
+    refinement: "Complemented with a distinct, equally sharp provenance-specific formulation: Provenance(LLM)≠Evidence(h) -- the earlier result addressed the entropy/information content of generation; this one addresses what an LLM's provenance record can and cannot be used to justify, a genuinely separate (not merely restated) AI-engineering invariant"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 187's actual four-relation authority formalization (Capability/Permission/Authority/Responsibility) and its answer to whether KnowledgeOS can enforce transitions without becoming a source of organizational authority itself."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record TransitionAllowed(r)⟺Req(r)⊆Witness(r) and the Kernel-as-Invariant-Enforcement-Boundary redefinition as the arc's most consequential formal result to date, directly explaining why a minimal Kernel architecture is mathematically plausible rather than merely stylistically preferred."
+  - "dimension-registry.md: record the semantic-evaluator/transition-validator split (f_sem vs. f_val) as a directly implementable architectural pattern, explicitly named 'exactly the architecture we have been searching for.'"
+  - "dimension-registry.md: record the reframing of the central KnowledgeOS object from Knowledge to JustifiedStateTransition as a major conceptual pivot, directly explaining the arc's sustained emphasis on reconstruction and lineage over static knowledge storage."
+  - "dimension-registry.md: record Provenance(LLM)≠Evidence(h) as a sharp, distinct AI-engineering invariant complementing 0812's information-theoretic hallucination-prevention result."
+  - "dimension-registry.md: record the ten-axiom provisional mathematical constitution M1-M10 as a new, explicitly-candidate invariant series -- note for future reconciliation against the I1-I20 series (0808, 0811) and the L1-L8/A-H series (0793-0794)."
+anchor_test:
+  anchor: "0812's mathematical architecture proposal and its closing ten-question validation protocol; the arc's implicit small-Kernel architectural preference; the arc's AI-hallucination-prevention family (0802, 0805, 0810, 0812); the arc's recurring single-knowledge-graph assumption (0793, 0806)"
+  supports_dimension: "Delivers a genuine, worked stress-test against every one of 0812's ten validation questions, refining the model at each step rather than merely rubber-stamping it. Hardens the bitemporal model into a validated candidate invariant. Discovers the knowledge structure must be a multilayer graph, a genuinely deeper structural result than a single dependence-weighted graph. Delivers the arc's first rigorous mathematical justification for why the Kernel can remain small (TransitionAllowed(r)⟺Req(r)⊆Witness(r)), and the resulting Kernel-as-Invariant-Enforcement-Boundary redefinition with an explicit negative specification of what it must not do. Delivers the semantic-evaluator/transition-validator split as a directly implementable pattern separating AI's proper role from the Kernel's proper role. Delivers a major conceptual reframing (JustifiedStateTransition over Knowledge) explaining the arc's sustained lineage emphasis. Delivers a distinct AI-engineering invariant (Provenance(LLM)≠Evidence(h)) complementing 0812's information-theoretic result. Opens Step 187 with a four-relation authority model directly targeting the file's own closing central question"
+  refines_or_contradicts: "directly delivers and extends 0812's validation protocol across all ten questions; hardens 0811's/0812's bitemporal model with a fresh worked example; substantially extends the arc's single-graph assumption into a genuinely multilayer structure; gives the arc's implicit small-Kernel preference its first rigorous mathematical justification; complements (does not restate) 0812's hallucination-prevention result with a distinct provenance-specific invariant; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§186.23-186.24's derivation 'TransitionAllowed(r)⟺Req(r)⊆Witness(r)... this begins to explain why the Kernel could be small,' followed immediately by the Kernel-as-Invariant-Enforcement-Boundary redefinition, is directly checkable evidence of the arc's first rigorous mathematical justification for a minimal-Kernel architecture."
+  - "§186.26-186.27's explicit two-function split (f_sem intelligent/domain-specific vs. f_val deterministic), boxed as 'probabilistic reasoning → deterministic admission gate' and named 'exactly the architecture we have been searching for,' is directly quotable evidence of a concrete, directly implementable architectural pattern."
+  - "§186.29's explicit reframing 'the central mathematical object may not be Knowledge. It may be JustifiedStateTransition,' with the immediate clarification that KnowledgeOS preserves the trajectory KS_0→...→KS_n rather than merely the final state, is directly quotable evidence of a major conceptual pivot in the arc's own self-understanding."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 187's four-relation authority formalization (Capability/Permission/Authority/Responsibility) was ever carried out, and whether it answered the file's closing central question (can KnowledgeOS enforce transitions without becoming a source of organizational authority itself)."
+  - "Whether the ten-axiom provisional mathematical constitution M1-M10 was ever reconciled with the arc's other invariant series (I1-I20 from 0808/0811, L1-L8/A-H from 0793-0794), or promoted from candidate to adopted status."
+tier2_triggered: true
+tier2_reason: "CAPSTONE KERNEL-DEFINING MILESTONE: delivers a genuine worked stress-test against all ten of 0812's validation questions, refining the Knowledge State model into a typed-proposition tuple and hardening the bitemporal invariant against a fresh example. Discovers the knowledge structure must be a multilayer graph (five distinct typed graphs), a genuinely deeper result than a single dependence-weighted graph. Delivers the arc's first rigorous mathematical justification for a minimal Kernel architecture -- TransitionAllowed(r)⟺Req(r)⊆Witness(r) -- and redefines the Kernel as an Invariant Enforcement Boundary with an explicit negative specification. Delivers the semantic-evaluator/transition-validator two-function split, explicitly named the architecture the arc has been searching for. Delivers the major conceptual reframing from Knowledge to JustifiedStateTransition as the central mathematical object, directly explaining the arc's sustained emphasis on lineage and reconstruction. Delivers a distinct AI-engineering invariant (Provenance(LLM)≠Evidence(h)) and a provisional ten-axiom mathematical constitution, explicitly disciplined as candidate, not final. Opens Step 187's four-relation authority model targeting the file's own closing question about KnowledgeOS's non-sovereignty."

@@ -1,0 +1,118 @@
+sequence: 403
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-103946_state-of-knowledge-depends-on-its-known-dimensions.md
+title: "Dimension != Statement Resolved via Conflict Representation; Primitive vs Derived Statement Provenance; Four-Origin Dimension Taxonomy; KnowledgeState_t Seven-Component Tuple"
+date: "2026-08-26"
+bytes: 8071
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "reapplies the Sanskrit/semantic-representation lens to concrete storage-format design"
+source_role: PRIMARY_RESEARCH
+canonical_source: 403
+importance: critical
+confidence: high
+about: >
+  A rich, concrete continuation directly refining 0399/0400/0402's dimension/statement research, proposing
+  K(O,t)=F(D_t,S_t,E_t,R_t,C_t) as a compact current research hypothesis (dimensions known + associated
+  statements + evidence + reasoning/theory + context, all time-indexed). Refines "a dimension is a
+  statement" into "a dimension is a statement-FORM or PROPOSITION that characterizes an aspect of an
+  observation" -- worked three-level example (Dimension:Version, Value:2.69, Statement:Nexus.Version=2.69)
+  establishing that the STATEMENT INSTANTIATES the dimension, not the reverse.
+
+  Formalizes PRIMITIVE versus DERIVED statements with explicitly different provenance structures: a
+  primitive statement S_p is obtained directly from observation/source (provenance: source/observation/
+  time/evidence); a derived statement S_d=f(S1,S2,...,R) is produced from other statements plus a rule
+  (provenance: input-statements/theory-rule/reasoning/derivation) -- worked via the corpus's recurring
+  Nexus-version/outdated example, directly matching "statements can be derived from logic/theory."
+
+  Reapplies the Sanskrit/semantic-representation lens (0400/0401) to concrete STORAGE FORMAT design,
+  proposing the stored KnowledgeOS unit preserve FOUR explicit layers simultaneously: Expression (the raw
+  sentence); Semantic representation (the extracted relation graph, e.g. Nexus-hasVersion->2.69,
+  Nexus-runsOn->RHEL-9.8); Epistemic metadata (source/time/evidence/confidence-uncertainty/observation-
+  method); and, where applicable, Derivation metadata (derived-from statements, applicable rule, result) --
+  explicitly "much richer than an NLP embedding."
+
+  Introduces a FOUR-ORIGIN DIMENSION TAXONOMY not previously assembled: Observed dimension, Derived
+  dimension, Referenced dimension, Decision dimension -- explicitly flagging this as "something we should
+  investigate rather than assume all dimensions are identical," extending 0398's three-type (State/
+  Epistemic/Social) dimension taxonomy with an origin-based cross-cutting classification.
+
+  Consolidates the corpus's Knowledge-State formalization into its most complete SEVEN-COMPONENT tuple to
+  date: KnowledgeState_t = {D_t, S_t, V_t, R_t, E_t, P_t, T_t} (known dimensions, statements, values,
+  relationships/reasoning, evidence, provenance, temporal context), with an explicit update mechanism:
+  S_{t+1}=S_t union {S_new} potentially introducing D_{t+1}=D_t union {D_new}, triggering
+  Recalculate(K_{t+1}) since the new dimension may affect existing statements -- directly connecting to
+  0393/0396's recalculation-not-appending principle.
+
+  Reconfirms and sharpens the corpus's "safe" infinite-dimension statement: KnowledgeOS never claims "these
+  are ALL dimensions" (D_t subset-of D*, D* potentially unbounded); it claims only "these are the dimensions
+  currently identified through the available observations, knowledge, theories and reasoning" -- explicitly
+  named a much safer epistemic posture. Sharpens Observation != Derivation as two explicitly distinct
+  SOURCES OF STATEMENTS feeding one Knowledge State (a logical derivation like A, A=>B therefore B is
+  categorically different from an empirical observation like "Nexus runs version 2.69," which cannot be
+  derived from logic alone and requires an evidence source) -- "this distinction will become extremely
+  important when we design the eventual KnowledgeOS semantic model."
+
+  Produces a consolidated seven-term glossary (Observation, Dimension, Statement, Value, Evidence,
+  Reasoning, Knowledge State), each given a precise one-line working definition, explicitly noted as
+  "becoming a coherent model." Delivers the file's central resolution: poses and answers the question of
+  whether the same observation can have two CONTRADICTORY dimensions simultaneously (worked example:
+  SecurityStatus=COMPLIANT versus SecurityStatus=NON_COMPLIANT, directly recalling 0395/0396's Conflict-is-
+  Knowledge finding) -- resolved by refining the dimension/statement relationship precisely: the DIMENSION
+  itself is simply "SecurityStatus" (the stable aspect), while the two conflicting assertions are COMPETING
+  VALUES/CLAIMS about that one dimension, not two separate dimensions. Formalizes this as Dimension !=
+  Statement, with Statement = Dimension + Value + Context + Epistemic qualification -- explicitly named
+  "the next point we should resolve, because it determines the smallest semantic unit of KnowledgeOS,"
+  directly connecting this resolution to the corpus's ongoing Knowledge-Unit research (0361, 0399, 0400).
+introduces:
+  - concept: "Compact current-hypothesis formula K(O,t)=F(D_t,S_t,E_t,R_t,C_t): a knowledge state about an observation depends on its known dimensions, associated statements, evidence, reasoning/theory, and context, all indexed at time t"
+  - concept: "Dimension refined from 'a statement' to 'a statement-form or proposition that characterizes an aspect,' with the statement explicitly INSTANTIATING the dimension (Dimension:Version + Value:2.69 -> Statement:Nexus.Version=2.69)"
+  - concept: "Primitive versus derived statements with explicitly different provenance structures: S_p (source/observation/time/evidence) versus S_d=f(S1,S2,...,R) (input-statements/theory-rule/reasoning/derivation)"
+  - concept: "Four-layer storage format for a KnowledgeOS unit: Expression (raw sentence) + Semantic representation (relation graph) + Epistemic metadata (source/time/evidence/confidence/observation-method) + Derivation metadata (derived-from/rule/result, if applicable), explicitly richer than an NLP embedding"
+  - concept: "Four-origin dimension taxonomy: Observed / Derived / Referenced / Decision dimensions, explicitly flagged as requiring investigation rather than assumed uniformity -- extending 0398's three-type (State/Epistemic/Social) dimension taxonomy with a cross-cutting origin classification"
+  - concept: "The corpus's most complete seven-component Knowledge-State tuple: KnowledgeState_t={D_t,S_t,V_t,R_t,E_t,P_t,T_t} (dimensions/statements/values/relationships-reasoning/evidence/provenance/temporal-context), with an explicit update-and-recalculation mechanism connecting to 0393/0396's recalculation-not-appending principle"
+  - concept: "Sharpened 'safe' infinite-dimension epistemic posture: KnowledgeOS claims only 'these are the dimensions currently identified through available observations, knowledge, theories and reasoning,' never 'these are all dimensions'"
+  - concept: "Observation != Derivation as two explicitly distinct sources of statements feeding one Knowledge State, with a worked contrast (logical derivation A,A=>B|-B versus empirical observation requiring an evidence source)"
+  - concept: "Consolidated seven-term glossary (Observation/Dimension/Statement/Value/Evidence/Reasoning/Knowledge-State), each given a precise one-line definition"
+  - concept: "Central resolution of the contradictory-dimension puzzle: the dimension itself (e.g. SecurityStatus) is stable, while conflicting assertions are COMPETING VALUES/CLAIMS about that one dimension -- Dimension != Statement, with Statement=Dimension+Value+Context+Epistemic-qualification, explicitly named the determining question for KnowledgeOS's smallest semantic unit"
+defines: []
+refines:
+  - concept: "0395/0396's Conflict-is-Knowledge finding (K={Claim_A,Claim_B,Conflict} as a legitimate knowledge state)"
+    refinement: "Given a precise semantic-unit-level formalization: a conflict is not two competing DIMENSIONS but two competing VALUES/STATEMENTS about ONE stable dimension, resolving an ambiguity latent in the earlier finding's informal 'preserve both' language"
+  - concept: "0399/0400's Claim=(Subject,Dimension,Value,Context,Time) and Semantic Token formalizations"
+    refinement: "Refined into Statement=Dimension+Value+Context+Epistemic-qualification, explicitly positioned as the answer to 'what is the smallest semantic unit of KnowledgeOS,' directly connecting to and advancing 0400's own Knowledge Unit resolution"
+  - concept: "0398's three-type (State/Epistemic/Social) dimension taxonomy"
+    refinement: "Extended with an orthogonal, origin-based four-way classification (Observed/Derived/Referenced/Decision), explicitly flagged as needing independent investigation"
+  - concept: "0393/0396's dimension-interaction/recalculation principle (State_{t+1}=Recalculate(D_{t+1},Information_{t+1}))"
+    refinement: "Given a precise KnowledgeState_t tuple update mechanism: S_{t+1}=S_t union {S_new} potentially introducing D_{t+1}=D_t union {D_new}, explicitly triggering Recalculate(K_{t+1})"
+  - concept: "0400/0401's Semantic Token and storage-format proposals"
+    refinement: "Extended into a concrete four-layer storage format (Expression + Semantic representation + Epistemic metadata + Derivation metadata), the corpus's most complete storage-format proposal to date"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Dimension != Statement resolution (dimension stable, values/statements compete) as a precise semantic-unit-level formalization of 0395/0396's Conflict-is-Knowledge finding."
+  - "dimension-registry.md: record the four-layer storage format (Expression/Semantic-representation/Epistemic-metadata/Derivation-metadata) as the corpus's most complete storage-format proposal to date."
+  - "dimension-registry.md: record the seven-component KnowledgeState_t tuple and the four-origin dimension taxonomy as concrete formal successors to the corpus's ongoing dimension/statement research."
+anchor_test:
+  anchor: "0395/0396's Conflict-is-Knowledge finding; 0398's three-type dimension taxonomy; 0399/0400's smallest-semantic-unit research and Semantic Token formalization; 0393/0396's dimension-interaction/recalculation principle"
+  supports_dimension: "Mathematical/architectural model, concrete resolution: refines Dimension != Statement to precisely resolve the contradictory-dimension puzzle (competing values, not competing dimensions), formalizes primitive-vs-derived statement provenance, proposes a four-layer storage format richer than an NLP embedding, introduces a four-origin dimension taxonomy, and consolidates the corpus's most complete seven-component KnowledgeState_t tuple to date"
+  refines_or_contradicts: "refines 0395/0396 (precise semantic-unit-level resolution of Conflict-is-Knowledge); refines 0399/0400 (Statement=Dimension+Value+Context+Epistemic-qualification as the smallest-semantic-unit answer); refines 0398 (adds an orthogonal origin-based dimension taxonomy); refines 0393/0396 (precise tuple-update-and-recalculation mechanism); refines 0400/0401 (concrete four-layer storage format)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "Whether Statement=Dimension+Value+Context+Epistemic-qualification is the corpus's FINAL answer to the smallest-semantic-unit question, or whether it is further refined -- explicitly named 'the next point we should resolve,' suggesting the question remains open even after this file's proposed resolution"
+open_questions:
+  - "Whether the four-origin dimension taxonomy (Observed/Derived/Referenced/Decision) is ever tested against a worked multi-origin example"
+  - "Whether the seven-component KnowledgeState_t tuple is ever formally reconciled with 0393's K_t^A=(D_t^A,V_t^A,R_t^A,P_t^A) tuple or 0380's abstract state S=(P,C,A,T,K,G,H)"
+  - "Whether Statement=Dimension+Value+Context+Epistemic-qualification is adopted as the final Knowledge Unit, or superseded by a later formulation"
+tier2_triggered: true
+tier2_reason: "Concrete continuation resolving a genuinely important puzzle: whether the same observation can have two contradictory dimensions simultaneously, resolved by refining Dimension != Statement (the dimension is stable; conflicting assertions are competing values/claims about it), giving 0395/0396's Conflict-is-Knowledge finding its most precise semantic-unit-level formalization to date. Introduces a four-layer storage format, a four-origin dimension taxonomy, and the corpus's most complete seven-component KnowledgeState_t tuple, directly advancing the ongoing smallest-semantic-unit research (0361, 0399, 0400)."

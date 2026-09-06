@@ -1,0 +1,143 @@
+sequence: M0052
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-095429_review-of-kr-sim-2026-09-02-d-satc-closure.md
+title: "Review of KR-SIM-2026-09-02-D (Sat_c Closure): Confirms a Second Experiment Execution, Delivering the Sharpest Factivity Diagnosis Yet (A-2: the Entire Sat_c Family Has No Attachment Point for Truth), a Genuine Pre-Implementation Non-Totality Defect (PB-2), a U-Propagation Scaling Law (PB-4), a Well-Foundedness/Dependency-Cycle Problem (PB-5), a New Zero_reasoned Candidate, and the Deepest Result 'Closure Does Not Imply Truth' (C-3)"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c1
+  secondary_note: "confirms a second executed experiment (KR-SIM-2026-09-02-D, following M0051's own corrected Sat_c-first sequence), and its own final status table reuses the term REFUTED -- part of M0050's main-corpus-derived 11-value epistemic-status vocabulary, not the KR-SIM lane's native seven-tag scheme -- a small but genuine sign the two lineages' classification vocabularies are beginning to cross-pollinate"
+source_role: ADJUDICATION
+canonical_source: M0052
+importance: critical
+confidence: high
+about: >
+  Reviews Experiment KR-SIM-2026-09-02-D, confirming M0051's recommended "Sat_c Semantic Closure ->
+  then Zero Closure" sequence was actually executed. Judges the experiment a genuine success not
+  because it closed Sat_c, but because "it demonstrated why Sat_c is not yet closeable, localized
+  the remaining semantic defects, and uncovered a stronger formulation of the factivity problem
+  plus a genuinely new candidate closure notion, Zero_reasoned."
+
+  **DELIVERS A THREE-BRANCH REFINEMENT OF U (A-1)**: distinguishes epistemic U (UNOBSERVED,
+  UNINTERPRETED, UNDERDETERMINED, INSUFFICIENT_PROVENANCE -- unknown to the epistemic agent), theory
+  U (NO_EVALUATOR, NO_ORDERING, NO_TEMPORAL_SEMANTICS, DELTA_UNDEFINED -- not yet semantically
+  defined BY THE THEORY), and world U (UNOBSERVABLE) -- richer than M0051's flat Sat_c/Just_c
+  reason list, and "potentially more important than the eight classes themselves": Sat_governance=U
+  does not mean the system cannot determine governance satisfaction, it means there currently exists
+  no evaluator from which governance satisfaction could be determined at all.
+
+  **DELIVERS THE SHARPEST FACTIVITY DIAGNOSIS YET (A-2, "the strongest finding in this run")**: ALL
+  EIGHT Sat_c classes require no factivity -- "the satisfaction family has no place to attach
+  truth." Even Sat_content=Sat_evidence=...=Sat_operational=top for all eight does NOT entail
+  Truth(K)=true. This reframes the CE-1 factivity/determinacy problem (M0051) from an accidental
+  loss via the Gamma_t evaluation-context parameter into a STRUCTURAL defect: no semantic attachment
+  point for truth exists anywhere in the satisfaction family. Explicitly kept OPEN rather than
+  repaired by immediately adding a Truth requirement class -- "if KnowledgeOS intends satisfaction
+  to support a truth-bearing notion of knowledge, the current satisfaction family contains no
+  semantic attachment point for that relation."
+
+  **DELIVERS A GENUINE PRE-IMPLEMENTATION SPECIFICATION DEFECT (PB-2)**: Sat_content is discovered
+  to be NOT A TOTAL FUNCTION over its claimed domain -- a knowledge state can contain both p and
+  not-p in Content(K), producing top-AND-bot with no defined result in {top,bot,U}. Three candidate
+  repairs are named (add a fourth contradiction value to the codomain; make content evaluation
+  consistency-aware; redefine so explicit negation is not automatically the bot branch) and
+  explicitly NOT chosen among -- "those are different theories. We should not silently choose one."
+
+  **DELIVERS A METHODOLOGICALLY IMPORTANT REASON-VOCABULARY GAP (PB-3)**: the Just_c reason
+  vocabulary declared UNOBSERVED/UNINTERPRETED as the anticipated cases, but the actual adversarial
+  case required UNDERDETERMINED instead -- exposing that "the reason vocabulary was specified from
+  anticipated cases rather than discovered adversarially." Explicitly refuses the easy fix ("not
+  simply add UNDERDETERMINED and close the issue"), instead recording "Reason vocabulary
+  completeness = OPEN" to avoid mistaking one discovered gap for a claim of exhaustiveness.
+
+  **DELIVERS A U-PROPAGATION SCALING LAW UNDER KLEENE CONJUNCTION (PB-4, "probably the most
+  important operational result")**: with five of eight Sat_c classes currently blocked (permanently
+  U), composite requirements of arity 1/2/3/4-8 yield 62.5%/89.3%/98.2%/100% permanent U under
+  Kleene conjunction -- explicitly NOT evidence that Kleene logic is wrong, but evidence that
+  "Kleene conjunction faithfully exposes semantic incompleteness." Explicit discipline: do not
+  repair by weakening the Kleene semantics merely to manufacture more top results.
+
+  **DELIVERS A WELL-FOUNDEDNESS / DEPENDENCY-CYCLE PROBLEM (PB-5)**: Sat_op(K,r)=Sat_kappa(delta(K,
+  o)) can itself be operational, producing Sat_op -> delta -> Sat_op -> delta -> ... with no
+  demonstrated base case -- reframed from "how do we code this recursively" (an implementation
+  question) to "what semantic dependency restrictions make the satisfaction family well-founded"
+  (a theory-level question).
+
+  **INTRODUCES A NEW, FOURTH ZERO-CLOSURE CANDIDATE, Zero_reasoned**: Zero_reasoned iff not-exists
+  bot AND not-exists U_agent-actionable -- demonstrated (via a separating test case) to differ from
+  Zero_weak. Proposes the candidate ordering Zero_strict => Zero_reasoned => Zero_weak, but
+  explicitly cautions this is not yet a general theorem: "the general implication can probably be
+  derived from their definitions, but that derivation should be written explicitly rather than
+  inferred from five examples" -- an explicit refusal to over-generalize from a small test sample.
+
+  **DELIVERS THE DEEPEST RESULT (C-3): Zero DOES NOT IMPLY Truth, more precisely Closure DOES NOT
+  IMPLY Truth**: a worked test case B1 (false knowledge + no actionable epistemic gap) yields both
+  Zero_weak=true AND Zero_reasoned=true simultaneously with the underlying knowledge being false --
+  giving the sharp non-collapse chain epistemic closure != truth != knowledge != authorization !=
+  decision. Explicitly declines the tempting repair (putting factivity into Sat_c immediately),
+  instead posing the sharper research question: "Where, if anywhere, does KnowledgeOS connect
+  epistemic closure with truth-bearing knowledge?"
+
+  **REJECTS THE EXPERIMENT'S OWN PROPOSED IMMEDIATE NEXT STEP**: rather than directly supplying
+  governance/temporal/operational evaluators and re-running (as KR-SIM-2026-09-02-D itself proposed),
+  inserts a mandatory "specification-repair gate" first, addressing PB-2/PB-3/PB-5 -- warning
+  explicitly against the failure pattern "defective Sat specification -> new evaluators -> larger
+  simulation -> more impressive results -> hidden semantic defects."
+
+  **PROPOSES A FIVE-GATE RENAMED NEXT EXPERIMENT**: "Sat_c Specification Repair & Evaluator
+  Completion Experiment" -- Gate 1 (repair PB-2/PB-3/PB-5 as candidate alternatives, not chosen
+  silently), Gate 2 (candidate, not canonical, evaluators for Sat_governance/Sat_temporal/
+  Sat_operational), Gate 3 (re-run the SAME deterministic cases B1-B4, no new random trials), Gate 4
+  (recalculate all four Zero variants: strict/reasoned/weak/Kleene), Gate 5 (ask "what semantic
+  commitment does each Zero reading impose on KnowledgeOS," not "which Zero works" -- keeping the
+  eventual Zero choice a theory/governance decision, not a simulator preference).
+
+  **REUSES THE TERM "REFUTED"** in its final status-freeze table (Zero=>Truth: REFUTED under
+  current candidate semantics) -- part of M0050's main-corpus-derived 11-value epistemic-status
+  vocabulary (ESTABLISHED/DERIVED/BOUNDED/HYPOTHESIS/.../REFUTED/UNKNOWN), not the KR-SIM lane's
+  native seven-tag [DEF]/[AX]/[THM]/[COR]/[EMP]/[ARCH]/[OPEN] scheme -- a small but genuine sign the
+  two lineages' classification vocabularies are beginning to cross-pollinate, worth tracking.
+introduces:
+  - concept: "The three-branch U taxonomy (epistemic U / theory U / world U), refining M0051's flat Sat_c/Just_c reason vocabulary into a structured hierarchy"
+  - concept: "The structural (not accidental) diagnosis of the factivity problem: the entire Sat_c family has no semantic attachment point for truth, regardless of Gamma_t"
+  - concept: "The discovered non-totality of Sat_content under simultaneous p and not-p support, a genuine pre-implementation specification defect (PB-2)"
+  - concept: "The U-propagation scaling law under Kleene conjunction (62.5%/89.3%/98.2%/100% permanent U by arity, given five blocked classes)"
+  - concept: "The well-foundedness/dependency-cycle problem in Sat_op (PB-5), reframed as a theory-level question about semantic dependency restrictions"
+  - concept: "Zero_reasoned, a fourth candidate Zero-closure notion, demonstrated distinct from Zero_weak via a separating case, with a candidate (not proven) ordering Zero_strict=>Zero_reasoned=>Zero_weak"
+  - concept: "The deepest result: Closure does not imply Truth (C-3), sharpening the epistemic-closure/truth/knowledge/authorization/decision non-collapse chain"
+defines: []
+refines:
+  - concept: "M0051's CE-1 factivity/determinacy finding, sharpened from an accidental Gamma_t-related loss into a structural absence of any truth-attachment point across all eight Sat_c classes"
+  - concept: "M0051's Sat_c/Just_c value/justification split, refined into a three-branch (epistemic/theory/world) U taxonomy"
+  - concept: "M0051's three Zero-closure candidates (strict/weak/Kleene), extended with a fourth (Zero_reasoned) and a candidate ordering among them"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Reuse of the term REFUTED (M0050's main-corpus-derived epistemic-status vocabulary) inside a KR-SIM-lane document's own status table -- a small cross-pollination signal worth checking against M0050 at the eventual reclassification stage."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0052 as confirming a second executed experiment (KR-SIM-2026-09-02-D), delivering the structural (not accidental) factivity diagnosis (A-2), a genuine pre-implementation non-totality defect in Sat_content (PB-2), a U-propagation scaling law under Kleene conjunction (PB-4), a well-foundedness problem in Sat_op (PB-5), a new Zero_reasoned closure candidate, and the deepest result of this sub-thread: Closure does not imply Truth (C-3)."
+anchor_test:
+  anchor: "M0051's CE-1 factivity/determinacy finding and its three candidate Zero-closure policies"
+  supports_dimension: "Sharpens CE-1 into a structural (family-wide) truth-attachment absence, and extends the Zero-closure candidate set with Zero_reasoned plus a proposed (unproven) ordering among all four candidates"
+  refines_or_contradicts: "refines (M0051)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'The satisfaction family has no place to attach truth' (A-2) -- confirmed structurally across all eight Sat_c classes, not merely observed as an artifact of one evaluation path, sharpening M0051's CE-1 finding considerably."
+  - "'Sat_content is not actually a total function over its claimed domain' (PB-2) -- a genuine specification defect caught before any implementation was attempted, exactly the class of result this pass's formalize-before-implement discipline is designed to surface."
+  - "Case B1: false knowledge + no actionable epistemic gap yields Zero_weak=true AND Zero_reasoned=true simultaneously -- a concrete, reproducible demonstration that epistemic closure does not entail truth under the current candidate semantics."
+undefined_concepts:
+  - "The precise semantic dependency restrictions that would make the Sat_c family well-founded (PB-5) -- named as the theory-level question, not answered"
+  - "The precise general proof (as opposed to five-example support) for Zero_strict=>Zero_reasoned=>Zero_weak"
+open_questions:
+  - "Whether the proposed 'Sat_c Specification Repair & Evaluator Completion Experiment' (five gates) is later executed and reported."
+  - "Whether 'REFUTED' and other main-corpus-derived status terms continue appearing in later KR-SIM-lane documents, indicating a deepening cross-pollination of the two lineages' classification vocabularies."
+tier2_triggered: true
+tier2_reason: "Confirms a second executed simulation experiment, sharpens the factivity problem into a structural (family-wide) defect, catches a genuine pre-implementation non-totality specification error, derives a U-propagation scaling law, surfaces a well-foundedness problem, introduces a fourth Zero-closure candidate, and delivers the sharpest non-collapse result in this sub-thread (Closure does not imply Truth). Critical importance and full tier-2 treatment unambiguously warranted."

@@ -1,0 +1,174 @@
+sequence: 722
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-125726_step-135-semantic-ownership-matrix.md
+title: "Step 135 -- Delivers the Sixteen-Concept Semantic Ownership Matrix, 'No God Context,' the Authority-vs-Evidence Edge-Type Distinction, and the Genuinely Significant Two-Dimensional KnowledgeState=(EpistemicStatus,AuthorityStatus) Model Precisely Naming 'a Common AI Problem' (LLMs Collapsing LikelyTrue Into Authoritative) -- Delivers AFR-31 (Cross-Context References, Not Shared Mutable Objects), 'Modular Semantic Boundaries Before Microservice Boundaries,' and the Memorable Capstone Hierarchy 'Governance Defines / Knowledge Represents / Assurance Verifies / Engineering Executes / Evidence Proves-Records / Agents Reason-and-Act-Within-These-Boundaries' -- Mostly Consolidates and Cleanly Tabulates Prior Established Principles Rather Than Introducing Extensive New Territory -- Opens Step 136, Ten Worked Bounded-Context Boundary-Test Scenarios"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 135 -- Semantic Ownership Matrix', promised at 0721's close; delivers a comprehensive, well-organized synthesis of semantic ownership across sixteen concepts, mostly consolidating and cleanly tabulating principles already established across the Steps 112/118/120-134 arc, but contributing several genuinely new refinements -- most significantly the two-dimensional KnowledgeState model separating epistemic confidence from organizational authority as independent axes"
+source_role: PRIMARY_RESEARCH
+canonical_source: 722
+importance: critical
+confidence: high
+about: >
+  Opens by distinguishing component ownership (technical execution) from semantic ownership ("which bounded
+  context owns each concept, its invariants, and its authoritative lifecycle?"), illustrated with
+  `Hook≠owner of the rule it executes` and `Claude≠owner of authoritative knowledge`. Delivers the
+  sixteen-concept semantic ownership matrix — the most complete single ownership summary table in the
+  reconstruction (Business Intent, Decision, Policy, Exception, Knowledge Claim, Evidence, Observation,
+  Fitness Rule, Verification, Finding, Recommendation, Action, Agent, Session, Artifact, Runtime State —
+  each with a semantic owner, authority, and main responsibility), explicitly labeled "a target semantic
+  ownership hypothesis" pending validation against the actual implementation.
+
+  Delivers per-concept ownership reasoning largely consolidating prior established distinctions:
+  `Decision≠Policy` (a decision adopts a principle; a policy mandates it for a class of subjects, related via
+  a governed `Decision→Policy` relationship); Exception belongs to Governance because
+  `Policy+Exception→EffectivePolicy`; `Claim≠Decision` (a factual/observational claim about e.g. Nexus's
+  version does not become a governance decision merely because it is recorded); Observation-Evidence-Claim
+  epistemic chain (`Observation→Evidence→Claim`, then `Claim↔ExpectedKnowledge`, with Assurance evaluating
+  `Expected↔Observed`); Fitness Rule requiring identity/version/scope/source-principle/applicability/
+  checker/severity; Verification formalized as `V(R,S,E,t)→Verdict`; `Finding≠Violation` (a finding can
+  originate from FAIL or UNKNOWN, representing non-conformance, insufficient evidence, stale state,
+  suspicious drift, or unresolved ambiguity); the Recommendation lifecycle
+  (`Agent→Recommendation→Review→Decision→Authorization→Action`); Action requiring
+  `Actor+Authorization+Target+Time+Evidence`; `AgentCapability≠GovernanceAuthority`; Session as execution
+  continuity that "should not become the system of record for governance"; Artifact owned by external
+  engineering systems (`GitCommit, NexusArtifact, KubernetesDeployment`), with KnowledgeOS referencing
+  rather than claiming ownership; and Runtime State remaining authoritative to its source system
+  (`Kubernetes` for currently-running pods), with KnowledgeOS recording only a timestamped
+  `Observation(Kubernetes,t)`, "should not pretend its cached value is more current than Kubernetes."
+
+  **Delivers "no god context," an explicit, precisely reasoned rejection of `KnowledgeOS=GodContext`**: if
+  one context owns decisions, runtime, Git, agents, evidence, policies, AND deployments, "the bounded-context
+  model collapses" — KnowledgeOS should instead coordinate semantic relationships while respecting
+  ownership held elsewhere. Delivers a ten-row Authority matrix (mapping questions like "what was decided?"
+  to their owning authority) and refined context-map diagrams placing the agent "inside the engineering
+  interaction loop but outside the authority boundary."
+
+  **Delivers the Authority-edges vs. Evidence-edges distinction, a genuinely valuable graph-typing
+  refinement extending 0716's edge-authority discipline**: authority edges (`governs, authorizes, approves`)
+  are categorically distinct from evidence edges (`supports, observedBy, verifiedBy`) and "should never be
+  conflated," worked through a precise concrete example: evidence `E_42` showing a deployment occurred
+  creates `Deployment-supportedBy→E42`, but explicitly does NOT create `Deployment-authorizedBy→E42` —
+  evidence and authority are different semantic dimensions.
+
+  Delivers Conflicting-evidence handling (`E_1: 3.69.0` vs. `E_2: 3.70.0` → `EvidenceConflict`,
+  `KnowledgeStatus=UNCERTAIN`, "KnowledgeOS should not arbitrarily choose one"), with an explicit, currently
+  applicable AI-constraint statement: an LLM reasoning "3.70.0 is probably the latest, so use that" is
+  flagged as unacceptable epistemic collapse — the correct state must remain `UNKNOWN/CONFLICTED` until
+  resolved by governance/evidence rules, not by an agent's probabilistic guess.
+
+  **Delivers a seven-value Epistemic-status enumeration** (`PROPOSED, SUPPORTED, VERIFIED, AUTHORITATIVE,
+  SUPERSEDED, DISPUTED, UNKNOWN`), extending prior five-value lifecycle enumerations (0698's/0711's
+  `Candidate→Supported→Verified→Authoritative→Superseded`) by adding `DISPUTED` and `UNKNOWN` explicitly.
+
+  **Delivers the file's most significant contribution — the two-dimensional `KnowledgeState=
+  (EpistemicStatus, AuthorityStatus)` model**, a genuinely valuable refinement not previously formalized
+  this precisely in the reconstruction: epistemic confidence (how well-evidenced a claim is) and
+  organizational authority (whether governance has declared it binding) are independent axes, illustrated
+  by two contrasting worked examples — "Nexus runs 3.69.0" is `Epistemic:VERIFIED / Authority:OBSERVATIONAL`
+  (operationally confirmed, but not itself an approved architecture), while "Nexus shall migrate to 3.70.0"
+  is `Epistemic:APPROVED / Authority:GOVERNING` (a binding decision) — "these must not be confused." This
+  directly and precisely names "a common AI problem": "LLMs often collapse `LikelyTrue` into `Authoritative`.
+  KnowledgeOS must explicitly prevent that semantic collapse" — arguably the sharpest, most operationally
+  precise single-sentence statement of this specific AI-governance failure mode in the entire reconstruction.
+  Delivers the corresponding rejection of a single `is_true=true` boolean field in favor of explicit
+  dimensions (`Source, Evidence, Verification, Authority, Validity`).
+
+  Delivers Aggregate boundaries derived directly from the ownership matrix (Governance: Decision/Exception/
+  Policy; Knowledge: KnowledgeClaim; Evidence: EvidenceRecord; Assurance: FitnessRule/Verification/Finding;
+  Agent Platform: AgentSession/AgentAction) and "do not share aggregates" — cross-context references must
+  use stable IDs (`AgentSession→DecisionID`, `Verification→RuleID`) rather than embedding another context's
+  full aggregate. **Delivers AFR-31**: "cross-context relationships use explicit contracts or stable
+  references rather than shared mutable domain objects," extending the AFR catalog to thirty-one rules.
+
+  Delivers "the modular-monolith option remains open" — explicitly reinforcing 0716's/0717's technology-
+  independence discipline: the immediate goal should be "modular semantic boundaries before microservice
+  boundaries," since premature deployment-complexity decisions "could obscure the more important domain
+  problem." Delivers an Ownership test ("which KnowledgeOS bounded context?" forcing semantic precision
+  beyond a bare "KnowledgeOS" answer) worked through four concrete scenario examples (Architecture
+  finding→Assurance; Architecture recommendation→Agent/Application; Architecture decision→Governance even if
+  agent-drafted, since the agent produces only a `DraftRecommendation`; Architecture rule→Assurance for
+  machine-verifiable conformance, but its authority derives from Governance).
+
+  **Delivers the file's memorable capstone hierarchy**, explicitly called "perhaps the clearest formulation
+  of the emerging KnowledgeOS architecture": "Governance defines / Knowledge represents / Assurance
+  verifies / Engineering executes / Evidence proves/records / Agents reason and act within these
+  boundaries." Delivers Step 135's verdict finalizing the core ownership model across five internal contexts
+  (Governance, Knowledge, Evidence, Assurance, AgentPlatform) plus five external systems retaining their own
+  authority (Runtime, Git, Nexus, CI/CD, IAM).
+
+  **Closes by opening "Step 136 — Bounded Context Boundary Tests,"** promising ten realistic worked
+  scenarios (a new architecture decision; an agent discovering a new fact; a deterministic check failing; a
+  governance exception; an agent changing code; a production deployment; conflicting evidence; supersession
+  of a decision; Claude and Codex using the same knowledge; a Nexus migration), each to be traced through
+  `Actor→Command→OwningContext→StateChange→Evidence→Verification→Governance` — "this will expose any
+  remaining boundary violations before we translate the model into the final KnowledgeOS component
+  architecture." This returns to the reconstruction's scenario-based conceptual register rather than
+  renewing an empirical-archaeology promise. No actual code execution, repository inspection, or verified
+  filesystem/architecture claim reported anywhere in this file; every matrix, diagram, and worked example
+  remains a hypothesis about the target and, in places, the current architecture. Overall, this file is
+  primarily a consolidating synthesis of principles established across many prior files (Steps 112, 118,
+  120-134) rather than a source of extensive genuinely new territory, with the two-dimensional KnowledgeState
+  model and the Authority-vs-Evidence edge-typing distinction as its most substantive original contributions.
+introduces:
+  - concept: "The sixteen-concept semantic ownership matrix — the most complete single ownership summary table in the reconstruction"
+  - concept: "'No god context' — explicit rejection of KnowledgeOS=GodContext"
+  - concept: "The Authority-edges vs. Evidence-edges distinction (governs/authorizes/approves vs. supports/observedBy/verifiedBy)"
+  - concept: "The seven-value Epistemic-status enumeration (adds DISPUTED and UNKNOWN to prior five-value lifecycles)"
+  - concept: "The two-dimensional KnowledgeState=(EpistemicStatus,AuthorityStatus) model, precisely naming the 'LikelyTrue collapsed into Authoritative' AI failure mode"
+  - concept: "AFR-31 — cross-context relationships via stable references, not shared mutable domain objects"
+  - concept: "'Modular semantic boundaries before microservice boundaries'"
+  - concept: "The capstone hierarchy: Governance defines / Knowledge represents / Assurance verifies / Engineering executes / Evidence proves-records / Agents reason-and-act-within-boundaries"
+  - concept: "Opens Step 136 — ten worked Bounded Context Boundary Test scenarios"
+defines:
+  - concept: "KnowledgeState (two-dimensional)"
+    definition: "KnowledgeState=(EpistemicStatus, AuthorityStatus) — a knowledge object's degree of evidentiary confidence (PROPOSED/SUPPORTED/VERIFIED/AUTHORITATIVE/SUPERSEDED/DISPUTED/UNKNOWN) is tracked independently from whether it has been declared organizationally binding (e.g. OBSERVATIONAL vs. GOVERNING); a claim can be epistemically VERIFIED while remaining merely observational, and this separation is what prevents an LLM's confident inference from being silently treated as authoritative governance"
+  - concept: "No god context"
+    definition: "KnowledgeOS must not itself own decisions, runtime state, Git, agents, evidence, policies, and deployments all at once — doing so collapses the bounded-context model into a single undifferentiated authority; KnowledgeOS's role is to coordinate semantic relationships across contexts that retain their own ownership, not to absorb every context's authority into itself"
+  - concept: "Authority edges vs. Evidence edges"
+    definition: "A relationship in the domain graph must be typed as either an authority edge (governs/authorizes/approves — establishes organizational binding force) or an evidence edge (supports/observedBy/verifiedBy — establishes epistemic support), and the two types must never be conflated: evidence that a deployment occurred supports the deployment claim but does not authorize it"
+refines:
+  - concept: "0716's edge-authority/evidence-backed-edges discipline"
+    refinement: "Directly extended with an explicit two-category edge-type taxonomy (authority edges vs. evidence edges) and a concrete worked example distinguishing supportedBy from authorizedBy"
+  - concept: "0698's/0711's five-value node epistemic lifecycle (Candidate→Supported→Verified→Authoritative→Superseded)"
+    refinement: "Extended to a seven-value enumeration adding DISPUTED and UNKNOWN, and further refined into a two-axis model separating epistemic status from authority status entirely"
+  - concept: "the corpus's long-standing 'AI collapses inference into authority' family (0699's DelegatedAuthority, 0709's A2, 0714's AgentCapability≠AgentAuthority)"
+    refinement: "Given its sharpest, most operationally precise single-sentence formulation to date: 'LLMs often collapse LikelyTrue into Authoritative. KnowledgeOS must explicitly prevent that semantic collapse'"
+  - concept: "0716's/0717's technology-independence and non-premature-decomposition discipline"
+    refinement: "Directly reinforced via 'modular semantic boundaries before microservice boundaries,' explicitly keeping a modular-monolith implementation option open"
+  - concept: "0714's/0715's/0717's AFR-01..AFR-30 fitness-rule catalog"
+    refinement: "Extended with AFR-31, specifically governing cross-context reference discipline (stable IDs, not shared mutable aggregates)"
+contradicts: []
+repeats:
+  - "Substantially consolidates and cleanly tabulates ownership/boundary principles already established across Steps 112 (0697), 118 (0703), and the 120-134 arc (0705-0721), rather than introducing extensive genuinely new territory."
+bridge_candidates:
+  - "Read 0723 (Step 136 — Bounded Context Boundary Tests) with standard attention: check whether the ten worked scenarios (especially 'Claude and Codex using the same knowledge' and 'a Nexus migration') deliver genuinely new boundary-violation findings or largely restate established distinctions in scenario form, and whether the still-unreconciled three-way candidate-fundamental-unit question (0703/0710/0711) or the pointer-layer notation proliferation (A1/AFR-24/PLP-01) receive any further attention."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the sixteen-concept semantic ownership matrix, 'no god context,' the Authority-vs-Evidence edge-type distinction, and the genuinely significant two-dimensional KnowledgeState=(EpistemicStatus,AuthorityStatus) model with its precise naming of the 'LikelyTrue collapsed into Authoritative' AI failure mode."
+  - "dimension-registry.md: record AFR-31 (catalog now thirty-one rules), 'modular semantic boundaries before microservice boundaries,' and the capstone hierarchy 'Governance defines/Knowledge represents/Assurance verifies/Engineering executes/Evidence proves-records/Agents reason-and-act-within-boundaries.'"
+  - "dimension-registry.md: note this file is primarily a consolidating synthesis of prior-established ownership/boundary principles rather than a major source of new territory, with the two-dimensional KnowledgeState model as its standout original contribution."
+anchor_test:
+  anchor: "0716's edge-authority discipline; 0698's/0711's node epistemic lifecycle; the corpus's 'AI collapses inference into authority' family (0699/0709/0714); 0716's/0717's technology-independence discipline; 0714's/0715's/0717's AFR catalog; 0697's/0703's prior ownership/boundary work"
+  supports_dimension: "Delivers a comprehensive, well-organized semantic ownership synthesis (sixteen-concept matrix, 'no god context,' Authority-vs-Evidence edge typing) that mostly consolidates and cleanly tabulates principles established across many prior files rather than opening extensive new territory. Its standout original contribution is the two-dimensional KnowledgeState=(EpistemicStatus,AuthorityStatus) model, which delivers the sharpest, most operationally precise formulation yet of the recurring 'AI collapses likely-true into authoritative' failure mode. Extends the AFR catalog to thirty-one rules and reinforces the technology-independence/non-premature-decomposition discipline. Closes with a well-motivated, natural continuation into Step 136's ten worked boundary-test scenarios, returning to the reconstruction's scenario-based conceptual register"
+  refines_or_contradicts: "directly and substantially extends 0716's edge-authority discipline, 0698's/0711's node epistemic lifecycle, the corpus's AI-inference-vs-authority family, 0716's/0717's technology-independence discipline, and 0714's/0715's/0717's AFR catalog; no contradiction found; does not further engage the still-open three-way candidate-fundamental-unit question or the pointer-layer notation-proliferation pattern (A1/AFR-24/PLP-01), leaving both open"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§135.30-135.32's two contrasting worked examples ('Nexus runs 3.69.0' = VERIFIED/OBSERVATIONAL vs. 'Nexus shall migrate to 3.70.0' = APPROVED/GOVERNING), followed immediately by the explicit statement 'LLMs often collapse LikelyTrue into Authoritative. KnowledgeOS must explicitly prevent that semantic collapse,' is directly quotable evidence of the file's sharpest and most operationally precise AI-governance contribution."
+  - "§135.24-135.25's worked example (evidence E_42 creates Deployment-supportedBy→E42 but explicitly NOT Deployment-authorizedBy→E42) is directly checkable evidence of a precise, reusable edge-typing discipline extending 0716's evidence-backed-edges concept."
+  - "§135.46's six-line capstone hierarchy, explicitly self-labeled 'perhaps the clearest formulation of the emerging KnowledgeOS architecture,' is directly quotable evidence of the file's own assessment of its most valuable single output."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 136's ten worked scenarios (0723), once read, deliver genuinely new boundary-violation findings, or largely restate established ownership distinctions in narrative/scenario form."
+  - "Whether the two-dimensional KnowledgeState=(EpistemicStatus,AuthorityStatus) model is ever reconciled with, or supersedes, the single-dimension epistemic-status enumerations used in earlier files (0698, 0711), or whether both notations persist independently into the eventual canonical synthesis."
+tier2_triggered: true
+tier2_reason: "Delivers a comprehensive, well-organized semantic ownership synthesis (sixteen-concept matrix, 'no god context,' Authority-vs-Evidence edge typing) that mostly consolidates prior-established principles, with the two-dimensional KnowledgeState=(EpistemicStatus,AuthorityStatus) model as its standout original contribution -- the sharpest formulation yet of the recurring 'AI collapses likely-true into authoritative' failure mode. Extends the AFR catalog to thirty-one rules and delivers a memorable capstone hierarchy. Opens Step 136's well-motivated ten-scenario boundary-test continuation."

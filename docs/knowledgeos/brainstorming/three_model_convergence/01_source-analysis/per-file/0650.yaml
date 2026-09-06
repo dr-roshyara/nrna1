@@ -1,0 +1,205 @@
+sequence: 650
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-120419_step-067-the-epistemic-type-system.md
+title: "Step 67 Delivers a Genuinely Formal Epistemic Type System — Fourteen Semantic Types, Typed Transformation Rules With Preconditions, an Explicit Distinction Between Syntactically Possible and Semantically Admissible, Refinement Types for Probability Invariants, a Typed-Graph (Not Hierarchy) Model, Type≠Status, Non-Monotonic Knowledge Revision, a Boxed 'FAIL' on a God-Object/Universal-Knowledge-Object Design (Distinct in Kind From the Three Prior Epistemic-Independence FAILUREs), Six New Invariants, Verdict 'STEP 67 — PASS'; Closes by Opening Step 68 Into Paraconsistent Reasoning and Belief Revision"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 67 -- The Epistemic Type System', opened cleanly at 0648's close ('Step 67 -- The Epistemic Type System', promised as 'a major transition from mathematical concepts to computable architecture semantics')"
+source_role: PRIMARY_RESEARCH
+canonical_source: 650
+importance: critical
+confidence: high
+about: >
+  Opens Step 67 asking whether the corpus's accumulated semantic-boundary principles
+  (`Observation≠Measurement`, `Measurement≠Fact`, `Fact≠Hypothesis`, `Hypothesis≠CausalClaim`,
+  `Prediction≠Outcome`, `Decision≠Authorization`) "can become a formal type discipline," explicitly framed
+  by analogy to a programming-language type system preventing meaningless operations
+  (`String+DatabaseConnection`). **Delivers exactly the genuinely formal treatment its own framing promised
+  at 0648's close (resolving the corpus's open tracked question about whether Step 67 would be substantive
+  or merely narrative)**: a fourteen-member candidate epistemic type set
+  `𝒯={Observation, Measurement, Evidence, Fact, Claim, Inference, Hypothesis, Prediction, CausalClaim,
+  Counterfactual, Decision, Authorization, Action, Outcome}`, explicitly declared "semantic types, not merely
+  database tables."
+
+  Delivers a formal Type-safety principle (`InvalidEpistemicTransformation⇒Rejected` unless an explicit
+  transformation exists), with typed transformations `f:T_1→T_2` requiring explicit Preconditions rather
+  than acting as unsafe casts -- crystallized via the crucial Cast versus proof distinction: KnowledgeOS
+  should avoid semantic casts (`Measurement as Fact`) in favor of validated transformations
+  (`Measurement --EvidenceValidation--> Evidence`) that produce genuinely new epistemic objects. Confirmed
+  via a matched pair of experiments: unsafe promotion (`cast(Measurement,Fact)` -- Rejected -- PASS) and
+  validated promotion (full validation preconditions met -- EvidenceCreated -- PASS).
+
+  Delivers `Evidence≢Fact` (evidence supporting a proposition does not establish its truth), with a formal
+  typed evidence relation (`Supports(E,p)`, `Contradicts(E,p)`, `Neutral(E,p)`) preferred over embedding
+  truth inside the evidence object, confirmed via an evidence-to-fact-promotion-without-domain-rule
+  experiment (Rejected -- PASS). Delivers a formally typed Claim object with `SupportSet`, `Uncertainty`,
+  `Provenance`, and `Validity` metadata, and Hypothesis formally distinguished as having its own lifecycle
+  (`Proposed→Investigating→Supported` or `Proposed→Refuted`) rather than being a `Claim` with a boolean
+  flag, confirmed via a no-direct-`Proposed→VerifiedFact`-without-validation experiment (PASS).
+
+  Delivers Inference formalized as a derived artifact `I=f(E_1,...,E_n,M)` required to preserve
+  `DerivedFrom`, confirmed via a provenance-destruction experiment (deleted dependency references correctly
+  yield `InvalidProvenance`/`UntraceableInference` rather than silent independent-sourcing -- PASS), directly
+  extending 0649's `I_EpistemicIndependence` discipline into the type-system layer. Reconfirms
+  `Prediction⇏Outcome` via a prediction-immediately-recorded-as-outcome experiment (Rejected -- PASS), and
+  formalizes Outcome as established only via `Prediction --Observation--> OutcomeEvaluation`. Reconfirms
+  `Association⇏CausalClaim` via an invalid-causal-cast experiment (correlation-to-causal-claim, Rejected --
+  PASS), and formally requires Counterfactual objects to preserve `Model`, `Assumptions`, and `Uncertainty`
+  rather than being treated as directly observed, confirmed via a counterfactual-as-observation experiment
+  (Rejected -- PASS). Reconfirms `Knowledge⇏Decision` without decision context (`Objective`, `Constraints`,
+  `Policy`) via a knowledge-alone experiment (`Underdetermined` -- PASS), and reconfirms `Decision⇏
+  Authorization` via a governance-prohibited-decision experiment (Rejected -- PASS), and further delivers
+  `Authorization≢Action` -- an authorization can exist while execution fails (`Authorized=True` but
+  `Executed=False`), confirmed via an authorization-without-execution experiment (PASS).
+
+  **Delivers the file's first central formal deliverable -- the epistemic type graph, explicitly a typed
+  directed graph rather than a linear pipeline**: `Observation→Measurement→Evidence→Claim/Inference→
+  {Hypothesis, Prediction, CausalClaim→Counterfactual}→Knowledge→Decision→Authorization→Action→Outcome`,
+  justified because evidence can support multiple claims, a claim can depend on multiple evidence items, a
+  decision can depend on multiple claims, and one action can produce multiple outcomes -- crystallized as
+  `Directed Typed Provenance Graph`. Delivers formal inference-rule-style type rules (Hoare-style natural-
+  deduction notation: `Measurement(m), Valid(m) ⊢ Evidence(e)`; `Evidence(e), InferenceRule(r) ⊢
+  Inference(i)`; `Knowledge(k), DecisionPolicy(p), Feasible(A) ⊢ Decision(d)`), with an explicitly prohibited
+  invalid rule (`AIOutput(a) ⊢ VerifiedFact(f)` -- no valid epistemic rule establishes this transformation),
+  crystallizing the powerful distinction **`Syntactically possible≠Semantically admissible`**. Delivers a
+  conceptual `TypeCheck(operation,input)→Accept/Reject` function, confirmed via a type-checker experiment
+  correctly accepting `CreateHypothesis(AIOutput)` while rejecting `CreateObservedFact(AIOutput)` (PASS).
+
+  Delivers Refinement types extending simple types with mathematical constraints (`Measurement[Unit=°C]`,
+  `Probability[0≤p≤1]`), with probability-distribution invariants (`Σp_i=1`) becoming machine-checkable,
+  confirmed via an invalid-probability experiment (`P(A)=1.2` -- Rejected -- PASS), paired with an explicit
+  and important caution against over-encoding: **`TypeSystem≠EntireBusinessDomain`** -- the type system
+  should define semantic boundaries and invariant rules, while bounded contexts (e.g. `EvidenceContext`
+  owning `Evidence`, `InferenceContext` owning `Inference`, `DecisionContext` owning `Decision`) own the
+  domain-specific meaning, with the shared kernel kept minimal.
+
+  **Delivers the file's one genuine "FAIL" result -- of a different character from the corpus's three prior
+  "FAILURE DETECTED" epistemic-independence failures (0640×2, 0649×1)**: a shared-model-explosion experiment
+  proposing a single universal `KnowledgeObject` containing observation, evidence, model, decision,
+  authorization, and action fields together is explicitly assessed as `GodObjectRisk` and marked
+  **boxed FAIL** -- an architectural-anti-pattern test failure (correctly designed to fail, confirming the
+  type system's own discipline) rather than a discovered epistemic-independence gap; the corrective principle
+  is `TypedArtifacts` with explicit relationships, never a `UniversalKnowledgeObject`.
+
+  Delivers Type conversion reframed as an auditable Event (`Observation --MeasurementExtraction-->
+  Measurement --Validation--> Evidence --Inference--> Claim`), with formal transformation-provenance fields
+  (`Actor, Method, Version, Inputs, Output, Timestamp, ValidationStatus`), confirmed via a hidden-
+  transformation experiment (missing inference-method record correctly yields `IncompleteProvenance` rather
+  than silent acceptance -- PASS). Delivers Type erasure formally identified as dangerous
+  (`Prediction→GenericText→Fact` chain risk), confirmed via a semantic-type-erasure experiment (plain-text
+  prediction later processed as fact -- Rejected/`TypeUnknown` -- PASS), crystallizing that fields like
+  `EpistemicType`, `Provenance`, `Validity`, and `Source` "are not merely documentation. They are part of the
+  semantic contract."
+
+  **Delivers the file's second central formal deliverable -- non-monotonic knowledge revision, formally
+  distinguishing Type from Status**: knowledge is explicitly shown NOT to form a monotonically increasing
+  set of truths -- new strong contradicting evidence can reduce posterior belief (`P(p)=0.9→P(p|E_contra)
+  =0.2`), confirmed via a contradictory-evidence experiment (belief reduction correctly allowed -- PASS),
+  reframing the fundamental update rule from `K_{t+1}=K_t∪NewFacts` to `K_{t+1}=Update(K_t,E_new)`, formally
+  named `NonMonotonicEpistemicSystem`. Delivers an invalidated-inference experiment (an inference whose
+  supporting evidence is later invalidated correctly triggers `ReviewRequired`, not silent persistence --
+  PASS), and the crisply stated architectural distinction **`Type≠Status`**: a hypothesis's semantic type
+  remains `Hypothesis` even as its lifecycle status becomes `Supported`/`Disputed`/`Invalidated`, confirmed
+  via a type-versus-status experiment (PASS) -- explicitly flagged as "another strong DDD distinction": do
+  not overload a generic `status` field with semantic type information.
+
+  Delivers an explicit rejection of a simple linear type hierarchy in favor of a typed graph
+  (`EpistemicTypeSystem≠SimpleLinearHierarchy`, since `Prediction` and `Observation` are not simply
+  "higher" or "lower" but represent different semantic roles), formalized as a computational-semantics tuple
+  `ℰ=(T,R,I,P)` (types, permitted transformations, invariants, provenance rules), and a full typed
+  operation vocabulary (`observe(), measure(), validate(), infer(), hypothesize(), predict(), intervene(),
+  decide(), authorize(), execute(), evaluate()`), each with typed inputs/outputs (e.g.
+  `predict:Model×Evidence→Prediction`; `authorize:Decision×Policy×Authority→Authorization`), confirmed via
+  an invalid-operation experiment (`authorize(Prediction)` with no decision -- `TypeError` -- PASS),
+  crystallizing `EpistemicTypeError` as a meaningful architectural concept directly analogous to a
+  programming language's `int+file` type error, with five concrete example type-error patterns
+  (`Prediction→Outcome` without observation; `Correlation→CausalClaim` without justification;
+  `AIOutput→VerifiedFact` without validation; `Decision→Authorization` without authority;
+  `Missing→Zero` without explicit semantics) unified under one principle: `Semantic type violation`.
+
+  **Delivers Step 67's central theorem candidate**: "KnowledgeOS should never silently strengthen the
+  epistemic type of an artifact" -- any strengthening transformation must be `Explicit + Validated +
+  Provenanced + Governed`. **Delivers six new named invariants** (`I_1` Type preservation requires explicit
+  transformation; `I_2` Provenance -- transformation outputs retain ancestry; `I_3` No silent promotion --
+  AI output cannot silently become fact; `I_4` No causal promotion -- association cannot silently become
+  causation; `I_5` No prediction promotion -- prediction cannot silently become outcome; `I_6` No decision
+  promotion -- decision cannot silently become authorization), each directly restating and formalizing a
+  principle the corpus has developed narratively across many prior steps, now unified as a coherent named
+  invariant family within a single type-system frame.
+
+  Delivers Step 67's verdict **"STEP 67 — PASS,"** explicitly "a significant milestone" marking the
+  transition "from epistemic concepts to epistemic computational semantics," with a refined architecture
+  description: "KnowledgeOS = a governed, provenance-aware, typed computational system for transforming
+  observations into knowledge, decisions, and controlled actions" -- explicitly emphasizing the word
+  "typed." Delivers a consolidated end-to-end architecture diagram unifying the entire corpus's pipeline
+  (Reality→Observation→Measurement→Evidence→Inference→Knowledge, branching to Prediction/CausalAnalysis, and
+  onward through Decision→Authorization→Action→Outcome→Evaluation→Learning).
+
+  **Closes by identifying the next unavoidable problem -- Conflict**: what happens when `Evidence_1` supports
+  `p` while `Evidence_2` supports `¬p`, both legitimately (different observation times, populations,
+  contexts, competing models, genuine uncertainty, conflicting authorities, or an actual inconsistency in
+  the world)? Opens "Step 68 — Contradiction, Paraconsistency and Knowledge Revision," explicitly framing the
+  test as whether KnowledgeOS can represent `p` and `¬p` simultaneously without the classical logical
+  disaster (`p∧¬p⇒everything is true`), invoking Paraconsistent reasoning and Belief Revision as the next
+  formal machinery to investigate. No actual code execution reported in this file. No corpus-integrity
+  content collision detected.
+introduces:
+  - concept: "A genuinely formal fourteen-member epistemic type set (𝒯), directly answering the corpus's own open tracked question about whether Step 67 would deliver a substantive type system or a further narrative restatement"
+  - concept: "Type transformation rules with explicit preconditions, natural-deduction-style typing rules, and the crystallized Syntactically possible≠Semantically admissible distinction"
+  - concept: "Refinement types for machine-checkable mathematical invariants (probability bounds, distribution normalization), paired with the explicit caution TypeSystem≠EntireBusinessDomain"
+  - concept: "A boxed FAIL result on a God-Object/Universal-KnowledgeObject design — an architectural-anti-pattern test failure, distinct in character from the corpus's three prior epistemic-independence FAILURE DETECTED results"
+  - concept: "Non-monotonic knowledge revision (K_{t+1}=Update(K_t,E_new) rather than pure accumulation) and the crisp Type≠Status distinction"
+  - concept: "The typed-graph-not-hierarchy formalization ℰ=(T,R,I,P) with a full typed epistemic-operation vocabulary and the EpistemicTypeError concept"
+  - concept: "Six new named invariants (I_1..I_6) unifying many prior narratively-developed non-promotion principles into one formal type-preservation family"
+defines:
+  - concept: "Syntactically possible≠Semantically admissible"
+    definition: "A database schema or type system may permit an operation to be constructed (syntactically possible) while the epistemic type system explicitly prohibits it because no valid epistemic transformation rule establishes it (e.g. AIOutput⊢VerifiedFact is syntactically constructible but has no valid derivation)"
+  - concept: "TypeSystem≠EntireBusinessDomain"
+    definition: "The epistemic type system should define semantic boundaries and invariant rules only; encoding every business rule into it recreates the God Object / God Model problem the architecture has been avoiding — domain-specific meaning belongs to the owning bounded context"
+  - concept: "Type≠Status"
+    definition: "An artifact's epistemic type (e.g. Hypothesis) is a separate dimension from its lifecycle status (e.g. Supported, Disputed, Invalidated); a hypothesis remains typed Hypothesis even after being supported, unless an explicit promotion transformation changes its semantic role"
+  - concept: "EpistemicTypeError"
+    definition: "A meaningful architectural concept directly analogous to a programming-language type error (int+file): an attempted epistemic transformation or operation with no valid semantic rule (e.g. authorize(Prediction) with no underlying decision) must be rejected as a type error rather than silently executed"
+  - concept: "GodObjectRisk (this file's FAIL result)"
+    definition: "Combining observation, evidence, model, decision, authorization, and action fields into a single universal KnowledgeObject collapses the typed semantic boundaries the type system exists to enforce; the corrective principle is TypedArtifacts with explicit relationships, never a UniversalKnowledgeObject"
+refines:
+  - concept: "0648's (Step 66) closing proposal to formalize the accumulated vocabulary as an actual type system"
+    refinement: "Directly and substantively fulfilled: this file delivers explicit types, transformation rules with preconditions, refinement-type invariants, a typed-graph model, and a formal EpistemicTypeError concept, resolving the corpus's own open tracked question about whether Step 67 would be genuinely formal"
+  - concept: "The corpus's entire non-promotion discipline (Measurement⇏Fact [0592/0648], Fact⇏CausalExplanation [0594/0624/0642], Prediction⇏Outcome [0630/0637/0647/0648], AIConsensus⇏IndependentEvidence [0649], Decision⇏Authorization [0645])"
+    refinement: "Unified into a single formal invariant family (I_1..I_6) within one coherent type-system frame, rather than remaining a set of separately narratively-developed principles"
+  - concept: "0649's I_EpistemicIndependence and DerivedFrom-preservation discipline"
+    refinement: "Directly extended into the type-system layer via the Inference provenance-destruction experiment (PASS) and the formal transformation-provenance record (Actor, Method, Version, Inputs, Output, Timestamp, ValidationStatus)"
+  - concept: "0637's/0640's/0649's three prior genuine 'FAILURE DETECTED' results"
+    refinement: "Contrasted with this file's own distinct 'FAIL' result: the prior three were discovered epistemic-independence gaps requiring architectural correction, while this file's FAIL is a deliberately designed anti-pattern test (God Object) confirming the type system correctly rejects a known-bad design, not a newly discovered gap in the architecture's own reasoning"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Track whether Step 68 (Contradiction, Paraconsistency and Knowledge Revision) delivers genuinely formal paraconsistent-logic machinery (e.g. a real paraconsistent logic system, dialetheism treatment, or AGM-style belief revision postulates) or remains at the level of architectural principle, continuing the corpus's now-established practice of alternating genuinely formal treatments (Step 65, Step 67) with narrative/architectural ones."
+  - "Track whether the six new Step 67 invariants (I_1..I_6) get reconciled or merged with the corpus's several prior separately-numbered invariant catalogs (0629's twenty-item catalog, 0647's/0649's several named invariants) — the corpus has not yet performed a single unified invariant-numbering reconciliation, which remains an open item for eventual cross-model synthesis under §29."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the genuinely formal epistemic type system (14 types, typed transformation rules with preconditions, natural-deduction-style typing rules, Syntactically possible≠Semantically admissible), directly resolving the corpus's own open question about whether Step 67 would be substantive."
+  - "dimension-registry.md: record refinement types (probability/distribution invariants) with the TypeSystem≠EntireBusinessDomain caution; the boxed FAIL result on GodObjectRisk (distinct in character from the three prior epistemic-independence FAILURE DETECTED results); and Type≠Status as a further 'strong DDD distinction.'"
+  - "dimension-registry.md: record non-monotonic knowledge revision (K_{t+1}=Update(K_t,E_new)); the typed-graph-not-hierarchy formalization ℰ=(T,R,I,P) with the EpistemicTypeError concept; six new named invariants (I_1..I_6) unifying the corpus's non-promotion discipline; and verdict 'STEP 67 — PASS,' explicitly 'a significant milestone.'"
+anchor_test:
+  anchor: "0648's closing proposal to formalize the corpus's vocabulary as an actual type system; the corpus's entire non-promotion discipline across many prior steps; 0649's DerivedFrom/provenance discipline; the corpus's three prior genuine FAILURE DETECTED results (0640×2, 0649×1); the corpus's several prior separately-developed invariant catalogs"
+  supports_dimension: "Directly and substantively fulfills 0648's closing proposal with a genuinely formal type system (fourteen types, typed transformation rules with explicit preconditions, natural-deduction-style typing rules, refinement types with machine-checkable mathematical invariants, a formal typed-graph-not-hierarchy computational-semantics tuple, and a full typed epistemic-operation vocabulary), resolving the corpus's own long-tracked open question about whether Step 67 would deliver substance or further narrative restatement. Unifies the corpus's entire scattered non-promotion discipline (spanning at least six prior steps) into one coherent, formally named invariant family (I_1..I_6) within a single type-system frame — a genuine architectural consolidation, not a restatement. Delivers a novel and useful failure-mode distinction: a deliberately designed anti-pattern test (God Object) correctly marked FAIL, contrasted explicitly against the corpus's three prior genuinely discovered epistemic-independence FAILURE DETECTED results, sharpening the corpus's own vocabulary for what counts as a 'failure' in its verification program. Delivers a precise, DDD-relevant Type≠Status distinction directly useful for real domain modeling, and a correctly reasoned non-monotonic-knowledge-revision treatment consistent with standard belief-revision theory, setting up a well-motivated transition into Step 68's paraconsistency investigation"
+  refines_or_contradicts: "directly and substantively fulfills 0648's closing type-system proposal; unifies and formalizes the corpus's entire prior non-promotion discipline into I_1..I_6; directly extends 0649's DerivedFrom/provenance discipline into the type-system layer; explicitly contrasts its own FAIL result against the corpus's three prior genuine FAILURE DETECTED results, clarifying rather than contradicting the distinction; leaves the corpus's several separately-numbered invariant catalogs still unreconciled (an open bridge_candidate for eventual cross-model synthesis); no corpus-integrity content collision detected"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit fourteen-member type set 𝒯, the natural-deduction-style typing rules (Measurement(m),Valid(m)⊢Evidence(e); Evidence(e),InferenceRule(r)⊢Inference(i); Knowledge(k),DecisionPolicy(p),Feasible(A)⊢Decision(d)), and the explicitly prohibited invalid rule (AIOutput(a)⊢VerifiedFact(f)) are directly checkable, concrete evidence that Step 67 delivers genuine formal type-system machinery rather than a further narrative restatement of prior principles, directly resolving the corpus's own previously tracked open question."
+  - "The God-Object experiment's boxed 'FAIL' result (§67.45), immediately followed by an explicit architectural correction (TypedArtifacts over UniversalKnowledgeObject), is directly checkable, concrete evidence of a failure mode distinct in kind from the corpus's three prior FAILURE DETECTED results: this one is a deliberately designed anti-pattern test confirming the type system's own discipline, not a newly discovered gap in the architecture's reasoning."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 68's paraconsistent-reasoning treatment will deliver genuinely formal machinery (a real paraconsistent logic, dialetheism, or AGM-style belief-revision postulates) or remain at the architectural-principle level, continuing to test the corpus's now-established alternation between genuinely formal and narrative/architectural step types."
+tier2_triggered: true
+tier2_reason: "Directly and substantively fulfills 0648's closing proposal to formalize the corpus's accumulated vocabulary into an actual type system, resolving the corpus's own long-tracked open question about whether Step 67 would deliver genuine formal substance. Unifies the corpus's entire scattered non-promotion discipline into one coherent, formally named invariant family. Delivers a precise, DDD-relevant Type≠Status distinction and a correctly reasoned non-monotonic-knowledge-revision treatment. Delivers a novel failure-mode distinction (a deliberately designed anti-pattern FAIL contrasted against three prior genuinely discovered FAILURE DETECTED results), sharpening the corpus's own verification vocabulary. Verdict 'STEP 67 — PASS,' explicitly 'a significant milestone' marking the transition from epistemic concepts to epistemic computational semantics."

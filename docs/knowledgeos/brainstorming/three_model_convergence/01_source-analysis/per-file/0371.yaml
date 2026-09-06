@@ -1,0 +1,119 @@
+sequence: 371
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260825-234405_extraction-retrieves-material-determination-establishes-warrant.md
+title: "Fact Determination != Fact Extraction; F=D(O,P,M,A,H) Lineage; Five Kinds of Facts; Justification-Ancestry DAG Preventing Circularity; Ganesha Lens Applied to Knowledge-Has-Memory"
+date: "2026-08-25"
+bytes: 12856
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "invokes the Navya-Nyaya relational lens and the Ganesha lens (observation->memory->discrimination->revision->integration)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 371
+importance: critical
+confidence: high
+about: >
+  Intra-file self-duplicated (lines 1-310 byte-identical to lines 312-621, bare "#" marker at the boundary
+  -- the EIGHTH instance of the pattern first seen at 0267, repeated at 0343/0354/0360/0362/0365/0366).
+  Directly answers 0368's declared "What is a Fact?" research focus by introducing a more fundamental
+  distinction than "fact = something observed": FACT DETERMINATION versus FACT EXTRACTION. Rejects the
+  claim "a fact is extracted from previous actions, doings, principles and methods" as risking treating
+  everything historical as fact; instead proposes Past-record -> observation -> interpretation ->
+  determination -> fact, with DETERMINATION explicitly named "an epistemic act" -- illustrated via a
+  worked two-level example: an observed action ("Person X approved Y on date Z") versus a higher-level
+  determined fact ("Approval of Y requires authority X") that is NOT simply extracted from one event but
+  DETERMINED from a body of previously determined actions, principles, decisions and methods. Formalizes
+  fact-as-lineage: F=D(O,P,M,A,H) where O=observations, A=previous actions/doings, P=previously established
+  principles, M=established methods, H=historical determinations, D=the determination process --
+  crystallized as "Extraction retrieves material. Determination establishes what that material warrants
+  asserting," explicitly connected to the corpus's existing expression/interpretation/epistemic-assessment/
+  admission distinction. Introduces a FIVE-KIND FACT TAXONOMY, proposed as necessary before any design work:
+  (A) OBSERVED FACT (Observation->Fact, directly recorded, contingent on observation trustworthiness); (B)
+  HISTORICAL FACT (O1,...,On -> H, repeated/corroborated observations, "already an inference"); (C)
+  PROCEDURAL FACT (extracted from established DOING/method, not documentation -- "when situation S occurs,
+  organization performs action X"); (D) NORMATIVE FACT (Action-X-required/permitted/prohibited-under-
+  condition-S, explicitly FUNDAMENTALLY DIFFERENT from a descriptive "Action X happened" -- normative versus
+  descriptive, extending 0366 Section 4's epistemic-vs-normative-justification dichotomy specifically to the
+  Fact level); (E) DERIVED FACT (F1+F2+F3 -> F4, "where reasoning becomes important"). Models KnowledgeOS as
+  a RECURSIVE EPISTEMIC SYSTEM (a full ASCII diagram: OBSERVATIONS -> previous doings -> determinations ->
+  [ACTIONS, PRINCIPLES, METHODS] -> NEW EVIDENCE -> NEW CLAIM -> DETERMINATION -> FACT), explicitly noting
+  KnowledgeOS accumulates "previous determinations that become evidence for later determinations" -- "a
+  much deeper model" than simple fact-accumulation. Introduces an explicit CIRCULARITY-AVOIDANCE INVARIANT:
+  if F1 was determined using F2 and F2 is later justified using F1, a circular-justification cycle
+  F1->F2->F1 results; therefore every determined fact requires a JUSTIFICATION ANCESTRY, explicitly NOT
+  necessarily a tree but potentially a DIRECTED GRAPH (F1->F3, F2->F3, F3->F4) -- explicitly connected to
+  the Navya-Nyaya relational lens (0370) and the corpus's existing finding that claims/evidence/
+  justification must not be collapsed into one object. Proposes a formal research-hypothesis definition of
+  determination: "Fact determination is the disciplined establishment of a claim as warranted, based on
+  observations and/or previously determined knowledge, under applicable principles, methods, and contextual
+  constraints" -- yielding a clean three-part division: Determination != Extraction; Extraction supplies
+  material; Determination establishes warrant; Admission records the resulting epistemic status -- directly
+  consistent with the corpus's existing evidence/justification/epistemic-determination/knowledge
+  distinction. Poses the recursive-grounding question ("where did the FIRST determinations come from?"),
+  answered via an explicit cycle: Observation -> Evidence -> Determination -> Fact -> Future Evidence -> New
+  Determination -- crystallized as "Knowledge has memory, but memory itself is not knowledge." Explicitly
+  invokes the Ganesha lens (observation -> memory -> discrimination -> revision -> integration, first named
+  at 0370) as "particularly powerful" for this recursive-memory model, and proposes the fundamental research
+  question superseding Candidate->Knowledge: "How does a system move from what happened, to what was
+  determined about what happened, to what can subsequently be used as a basis for determining something
+  else?"
+introduces:
+  - concept: "Fact Determination != Fact Extraction, the direct answer to 0368's declared 'What is a Fact?' research focus: extraction retrieves material; determination establishes what that material warrants asserting; admission records the resulting epistemic status -- a clean three-stage division"
+  - concept: "Fact-as-lineage formalization F=D(O,P,M,A,H): a determined fact is a function of observations, previously established principles, established methods, previous actions/doings, and historical determinations, via a determination process D -- generalizing the simple Observation->Fact model into a recursive, multi-input determination"
+  - concept: "Five-kind fact taxonomy: Observed fact (Observation->Fact); Historical fact (O1,...,On->H, already an inference); Procedural fact (extracted from established doing/method, not documentation); Normative fact (required/permitted/prohibited, explicitly distinguished from descriptive facts -- extends 0366's epistemic-vs-normative dichotomy to the Fact level itself); Derived fact (F1+F2+F3->F4, where reasoning matters)"
+  - concept: "Recursive epistemic system model: KnowledgeOS accumulates 'previous determinations that become evidence for later determinations,' not merely facts -- a full ASCII pipeline (OBSERVATIONS -> previous doings -> determinations -> [ACTIONS,PRINCIPLES,METHODS] -> NEW EVIDENCE -> NEW CLAIM -> DETERMINATION -> FACT)"
+  - concept: "Circularity-avoidance invariant via justification ancestry as a DIRECTED GRAPH (not necessarily a tree): F1->F3, F2->F3, F3->F4, explicitly preventing circular-justification cycles F1->F2->F1 -- connected to the Navya-Nyaya relational lens (0370) and the corpus's claims/evidence/justification non-collapse finding"
+  - concept: "Formal research-hypothesis definition of determination: 'the disciplined establishment of a claim as warranted, based on observations and/or previously determined knowledge, under applicable principles, methods, and contextual constraints'"
+  - concept: "Recursive grounding cycle answering 'where did the first determinations come from?': Observation -> Evidence -> Determination -> Fact -> Future Evidence -> New Determination -- crystallized as 'Knowledge has memory, but memory itself is not knowledge'"
+  - concept: "Explicit invocation of the Ganesha lens (observation->memory->discrimination->revision->integration, introduced at 0370) as the natural formal framework for the recursive-memory model, and the proposed fundamental research question superseding Candidate->Knowledge: how does a system move from what happened, to what was determined about it, to what can subsequently ground further determinations?"
+defines: []
+refines:
+  - concept: "0368's declared 'What is a Fact?' research focus and its seven-way Reality/Observation/Evidence/Fact/Claim/Hypothesis/Derived-Knowledge distinction"
+    refinement: "Directly answered via the Determination!=Extraction distinction, the F=D(O,P,M,A,H) lineage formalization, and the five-kind fact taxonomy (Observed/Historical/Procedural/Normative/Derived), giving 'Fact' its most precise treatment to date in this arc"
+  - concept: "0366 Section 4's Epistemic-vs-Normative justification dichotomy"
+    refinement: "Extended down to the Fact level itself: Normative facts (required/permitted/prohibited) are explicitly distinguished from Observed/descriptive facts, rather than the dichotomy applying only to justification of claims/decisions"
+  - concept: "0370's Navya-Nyaya relational lens and the Claim-supportedBy/justifiedBy/assessedAs/supersedes typed-relation proposal"
+    refinement: "Applied concretely to justification ancestry: a directed graph of determined facts (not a tree), explicitly preventing circular justification -- a concrete worked application of the relational lens introduced one file earlier"
+  - concept: "0370's Ganesha lens (observation->memory->discrimination->revision->integration)"
+    refinement: "Applied for the first time to a concrete architectural model: the recursive Observation->Evidence->Determination->Fact->Future-Evidence->New-Determination cycle, crystallized as 'Knowledge has memory, but memory itself is not knowledge'"
+  - concept: "0365's Knowledge-extraction-vs-Knowledge-storage distinction"
+    refinement: "Given a precise terminological successor at the Fact level: Extraction supplies material, Determination establishes warrant -- sharpening the general extraction-vs-storage architectural principle into a specific epistemic-act distinction"
+contradicts: []
+repeats:
+  - concept: "The file's own content (lines 1-310) is byte-identical intra-file self-duplicated at lines 312-621"
+    canonical_source: 371
+    novelty: "none -- corpus-integrity finding, eighth instance of the intra-file self-duplication pattern (0267, 0343, 0354, 0360, 0362, 0365, 0366, 0371)"
+bridge_candidates:
+  - concept: "Navya-Nyaya relational-identity analysis converging with the justification-ancestry directed-graph model for determined facts"
+    candidates: ["Navya-Nyaya (g1 lineage)", "Graph/relation theory (c1 lineage)"]
+    status: candidate
+  - concept: "Ganesha lens (observation->memory->discrimination->revision->integration) converging with the recursive Observation->Evidence->Determination->Fact->Future-Evidence cycle"
+    candidates: ["Ganesha lens (g1 lineage)", "Recursive epistemic-memory model (c1 lineage)"]
+    status: candidate
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Fact Determination != Fact Extraction distinction and the F=D(O,P,M,A,H) lineage formalization as the corpus's direct answer to 0368's 'What is a Fact?' research focus."
+  - "dimension-registry.md: record the five-kind fact taxonomy (Observed/Historical/Procedural/Normative/Derived) and the Normative-fact extension of 0366's epistemic-vs-normative dichotomy."
+  - "dimension-registry.md: record the justification-ancestry directed-graph circularity-avoidance invariant as a concrete application of 0370's Navya-Nyaya relational lens."
+  - "dimension-registry.md: record the Ganesha-lens application to the recursive Knowledge-has-memory cycle, and two new bridge_candidates (Navya-Nyaya<->justification-ancestry-graph; Ganesha<->recursive-memory-cycle), both candidate."
+anchor_test:
+  anchor: "0368's declared FACT research focus; 0366 Section 4's Epistemic-vs-Normative justification dichotomy; 0370's Navya-Nyaya relational lens and Ganesha lens; 0365's Knowledge-extraction-vs-storage distinction"
+  supports_dimension: "Cross-model convergence candidate (mathematical/architectural + Sanskrit philosophical): directly resolves the corpus's declared FACT research focus via a Determination!=Extraction distinction, a five-kind fact taxonomy, a justification-ancestry directed-graph circularity-avoidance invariant explicitly tied to the Navya-Nyaya relational lens, and a recursive Knowledge-has-memory cycle explicitly tied to the Ganesha lens -- two new MD-017 bridge_candidates recorded, both left candidate"
+  refines_or_contradicts: "refines 0368 (direct answer to the declared Fact research question); refines 0366 (Normative-fact extension of the Epistemic-vs-Normative dichotomy); refines 0370 (concrete applications of the Navya-Nyaya and Ganesha lenses); refines 0365 (Extraction-vs-Determination successor to Extraction-vs-Storage); intra-file self-repeats (eighth 0267-pattern instance)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "The exact formal definition of the determination process D in F=D(O,P,M,A,H) -- named but not mathematically specified"
+open_questions:
+  - "Whether the five-kind fact taxonomy (Observed/Historical/Procedural/Normative/Derived) is ever tested against a worked multi-fact example"
+  - "Whether the justification-ancestry directed-graph is ever formally required as a Kernel-preserved structure"
+  - "Whether the two new bridge_candidates (Navya-Nyaya<->justification-graph; Ganesha<->recursive-memory-cycle) are ever adjudicated beyond candidate status"
+  - "Whether the proposed fundamental research question (what-happened -> what-was-determined -> what-grounds-further-determination) is pursued as the corpus's next major research thread, potentially superseding the Candidate->Knowledge model"
+tier2_triggered: true
+tier2_reason: "Eighth intra-file self-duplication instance (0267/0343/0354/0360/0362/0365/0366 pattern). Directly resolves the corpus's declared 'What is a Fact?' research focus (0368) via a Determination!=Extraction distinction, a fact-as-lineage formalization F=D(O,P,M,A,H), and a five-kind fact taxonomy that extends 0366's epistemic-vs-normative dichotomy down to the Fact level. Introduces a justification-ancestry directed-graph circularity-avoidance invariant and a recursive Knowledge-has-memory cycle, each explicitly tied to a named Sanskrit-tradition lens (Navya-Nyaya, Ganesha) from 0370, producing two new MD-017 bridge_candidates."

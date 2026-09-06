@@ -1,0 +1,103 @@
+sequence: M0027
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-220800_targeted-research-corpus-to-close-remaining-theoretical-gaps.md
+title: "Targeted Research Corpus to Close Remaining Theoretical Gaps: an 11-Gap (A-K), 12-Book, Six-Cluster Reading Roadmap and a 17x6 Gap-Coverage Matrix, With the Explicit Methodological Rule 'We Should Not Expect These Books to Converge -- Find the Strongest Competing Theories'"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "a pure research-planning/methodology document (no new theory of its own), organizing the remaining reading program into named gaps, assigned books, six clusters, a coverage matrix, and a priority reading order -- useful primarily as a map for tracking which named sources actually appear in this pass's later files"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0027
+importance: medium
+confidence: high
+about: >
+  A gap-driven research-planning document (not itself delivering new KnowledgeOS theory): "to
+  answer all the remaining KnowledgeOS theoretical gaps rigorously, I would not read dozens of
+  books. I would build a TARGETED research corpus, where each book is assigned to a specific
+  unresolved gap."
+
+  **NAMES ELEVEN GAPS (A-K) WITH ASSIGNED BOOKS**: A (information->knowledge transition: Audi,
+  Gettier); B (the Knower: Michael Polanyi's explicit/tacit knowledge distinction, "personal
+  knowledge"); C (observation->knowledge, "raw sensory givens are not automatically knowledge":
+  Wilfrid Sellars); D (semantics -- Representation!=Meaning!=Intent: Donald Davidson for language-
+  >meaning->truth, Hans-Georg Gadamer for text+context+interpreter->understanding, explicitly tied
+  to the already-established Vedic finding "perfectly preserved words does not imply preserved
+  meaning," M0023); E (validation: Karl Popper's hypothesis->test->attempted-falsification->
+  survival, with the explicit caveat "not falsified != true"); F (evidence+probability: I.J. Good,
+  to formalize the relationship between E_i and Pi_t); G (knowledge revision: Peter Gardenfors'
+  "Knowledge in Flux" -- belief revision, consistency, contraction); H (contradiction: Gardenfors
+  again, plus Graham Priest's paraconsistent logic as a possibility to INVESTIGATE not assume
+  required); I (causality: Judea Pearl, correlation!=causal-knowledge, X->Y vs P(Y|X)); J
+  (paradigm change / non-monotonic ontology shift: Thomas Kuhn, explicitly framed as
+  Ontology_{t+1}!=Ontology_t, something K_{t+1}=K_t+Delta cannot represent); K (institutional/
+  social knowledge for governance: John Searle, physical-fact vs institutional-fact vs
+  normative-rule).
+
+  **NAMES A THIRTEENTH BOOK EXPLICITLY EXCLUDED FROM THE CORE CORPUS FOR NOW**: Ernst von
+  Glasersfeld / constructivist epistemology ("is knowledge a representation of reality, or a
+  construction useful to an observer?", directly attacking the K_t<->X* relationship) -- flagged
+  as valuable later as a "counter-model," not as core reading.
+
+  **DELIVERS A SIX-CLUSTER ORGANIZATION**: Cluster 1 Nature of Knowledge (Audi, Gettier, Sosa,
+  Polanyi, Sellars); Cluster 2 Meaning (Davidson, Gadamer); Cluster 3 Evidence and Truth (Popper,
+  Good, Pearl); Cluster 4 Dynamics (Gardenfors, Kuhn); Cluster 5 Knower (Polanyi, Sellars, Sosa);
+  Cluster 6 Social Knowledge/Governance (Searle).
+
+  **DELIVERS A 17x6 GAP-COVERAGE MATRIX**, tracking which of {Gita, Dretske, Kallenberg, Shum,
+  Cover-Thomas} already covers each named gap (checkmark/partial/absent) and which new book is
+  assigned to close the remaining coverage -- e.g. "Knower" is uncovered by Kallenberg/Shum/
+  Cover-Thomas, assigned to Polanyi; "Contradiction" is only partially covered by ANY source so
+  far, assigned to Gardenfors/Priest jointly; "Institutional knowledge" is uncovered by everything
+  except a partial Gita signal, assigned to Searle alone.
+
+  **DELIVERS A FIVE-PHASE PRIORITY READING ORDER**: Phase A (Audi, Gettier, Polanyi, Sellars --
+  "attack the core definition of knowledge"); Phase B (Davidson, Gadamer -- meaning/
+  interpretation); Phase C (Popper, Good, Pearl -- evidence/validation/causal knowledge); Phase D
+  (Gardenfors, Kuhn -- K_t->K_t+1 dynamics); Phase E (Searle -- institutional/governance boundary).
+
+  **DELIVERS THE EXPLICIT METHODOLOGICAL RULE**: "we should NOT expect these books to converge. In
+  fact, I want some of them to DISAGREE. The objective is not 'find books that confirm
+  KnowledgeOS.' It is: find the strongest competing theories of knowledge and determine what
+  survives all of them" -- a clean, explicit statement of adversarial/falsification-seeking
+  research design, directly matching this reconstruction's own non-negotiable discipline against
+  seeking confirmation.
+
+  **PROPOSES A FINAL TEN-STAGE CANDIDATE PIPELINE** (still explicitly a hypothesis, not a
+  conclusion): World -> Observation -> Information -> Interpretation -> Discrimination ->
+  Understanding -> Validation -> Knowledge -> Capability -> Action -> new Observation, with K_t =
+  "the purpose-relative epistemic state of a Knower at time t" remaining "a hypothesis to be
+  tested, not a conclusion."
+introduces:
+  - concept: "Eleven named theoretical gaps A-K, each with an explicit assigned book/author"
+  - concept: "The 17x6 gap-coverage matrix tracking which already-read sources (Gita/Dretske/Kallenberg/Shum/Cover-Thomas) cover which gap, and which new book is assigned to close remaining coverage"
+  - concept: "The explicit adversarial research-design rule: seek disagreement among sources, not confirmation, and identify what survives all of them"
+  - concept: "The final ten-stage candidate pipeline (World->Observation->Information->Interpretation->Discrimination->Understanding->Validation->Knowledge->Capability->Action->new Observation), explicitly still a hypothesis"
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "The explicit adversarial-disagreement research-design rule is a clean independent restatement of this reconstruction's own anti-confirmation-seeking discipline, phrased even more directly ('I want some of them to disagree') than earlier instances in this pass."
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0027 as a pure research-planning document (no new theory), naming eleven gaps (A-K) each assigned a specific book, a 17x6 gap-coverage matrix, a five-phase reading order, and the explicit adversarial-disagreement research-design rule -- useful primarily as a map for tracking which of Polanyi/Gettier/Sosa/Sellars/Davidson/Gadamer/Popper/Good/Pearl/Gardenfors/Kuhn/Searle/Priest actually appear in this pass's later files."
+anchor_test:
+  anchor: "This reconstruction's own anti-confirmation-seeking, falsification-first discipline"
+  supports_dimension: "Independently restates the same discipline explicitly ('I want some of them to disagree'), applied to selecting the next reading corpus"
+  refines_or_contradicts: "neither -- pure planning document"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'We should NOT expect these books to converge. In fact, I want some of them to disagree... find the strongest competing theories of knowledge and determine what survives all of them' -- an explicit, unusually direct statement of adversarial research design."
+undefined_concepts: []
+open_questions:
+  - "Which of the twelve named books/authors (Polanyi, Gettier, Sosa, Sellars, Davidson, Gadamer, Popper, Good, Pearl, Gardenfors, Kuhn, Searle, plus Priest and von Glasersfeld) actually appear as dedicated extractions later in this pass, and in what order relative to the five-phase plan given here."
+tier2_triggered: true
+tier2_reason: "Names eleven specific theoretical gaps each mapped to a specific author/book and lays out an explicit adversarial (disagreement-seeking) research design -- worth a tier-2 record as a roadmap for tracking this pass's subsequent reading, though it delivers no new object-level theory itself."

@@ -1,0 +1,45 @@
+sequence: 22
+path: docs/knowledgeos/KnowledgeOS_Engineering_Decision_Model_Validation.md
+title: KnowledgeOS — Engineering Decision Model Validation
+date: 2026-08-03
+bytes: 12389
+doc_type: validation/reconciliation against an existing decision model
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [governance, domain_model, ddd]
+
+status: DR
+maturity: developing
+importance: low
+
+introduces:
+  - viewpoints_as_projections_without_arrows   # minor extension of 0002's projection/attestation to viewpoints
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge]
+open_questions:
+  - U_EDV_1_does_pilot_gated_knowledge_decision_catalog_home_this_programmes_findings
+  - U_EDV_2_decision_model_adoption_test_unevenly_met
+  - U_EDV_3_do_viewpoint_names_enter_the_ubiquitous_language
+
+depends_on: [2, 9, 10]
+extends: [2]
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: [9, 10]
+connects_to: [2, 9, 10]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: "No formal object, operator, contradiction, or Kernel/Gita content; the viewpoints-as-projections idea is a minor application of an existing 0002 construct."

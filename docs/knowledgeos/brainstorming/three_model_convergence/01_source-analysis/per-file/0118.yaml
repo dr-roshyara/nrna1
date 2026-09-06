@@ -1,0 +1,74 @@
+sequence: "0118"
+path: docs/knowledgeos/brainstorming/20260822-112804-knowledgeos-consolidation-review-character-synthesis.md
+title: "KnowledgeOS consolidation review -- character synthesis (clean restatement capstone)"
+date: "2026-08-22"
+bytes: 9416
+model:
+  primary: x
+  secondary: [c1, g]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0105"
+importance: medium
+confidence: high
+about: >
+  A clean, well-organized restatement capstone, largely consolidating already-tracked material: a
+  three-phase evolution narrative (Repository -> Epistemic System -> Constitutional Thinking), five
+  named forbidden collapses (Identity/Meaning/Authority/Observation/Similarity), an "Eight Dimensions"
+  list (Identity/Evidence/Authority/Context/Reasoning/Transformation/Temporal/Contradiction) with Zero
+  again explicitly positioned as supporting meta-principle (not a peer dimension), the four meta-
+  principle cluster restated, and the negative-definition material restated. Closes by deferring to the
+  still-unexecuted P5 kernel-reduction step.
+
+introduces:
+  - "'Similarity Collapse' explicitly attributed to Navya-Nyaya ('Similarity = Identity' forbidden),
+    a cross-reference to 0112's LLM/vector-embedding 'similarity != identity' critique, sourced
+    differently but the same underlying claim"
+  - "Final Architecture Pattern diagram: Reality->Observation->Evidence->{Identity,Context,Agent}->
+    Reasoning->Knowledge State->Historical Evolution->Wisdom, with Zero explicitly labeled 'Supported
+    by: ZERO (Neutral epistemic ground)' beneath the whole stack -- consistent with the established
+    non-dimension treatment of Zero"
+  - "Restated deferral: 'the next step is exactly what your previous P5 prompt defined: reduce this
+    into the smallest constitutional kernel...' -- confirms the P4/P5 execution remains outstanding
+    even after this capstone-style consolidation"
+
+defines: []
+refines: []
+contradicts: []
+
+repeats:
+  - {concept: "forbidden collapse family, eight-dimension list, Zero as meta-principle, negative definition, four meta-principle cluster", canonical_source: "0087", novelty: none}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "No new registry entries -- clean restatement, consistent with the ongoing consolidation-phase pattern"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Evidence Integrity", "Authority Separation", "Transformation Integrity", "Temporal Validity"]
+  refines_or_contradicts: >
+    Restates an 8-item flat list (a further non-identical count/shape among the many already tracked),
+    but explicitly and consistently treats Zero as supporting meta-principle, not a peer item --
+    internally consistent with 0110/0114/0115/0116/0117's established discipline.
+  alternative_minimal_kernel: "An eight-item restatement, not clearly a new shape given how close it is to prior lists."
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Confirms the P4/P5 Constitutional Invariant Map / kernel-reduction step remains unexecuted even
+    after multiple capstone-style consolidation attempts (0105, 0118)"
+
+undefined_concepts: []
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: >
+  Clean, internally consistent restatement of already-tracked material; no genuinely new structure,
+  contradiction, or formalization. Recorded at proportionate (medium) depth per MD-013/MD-019.

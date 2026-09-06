@@ -1,0 +1,102 @@
+sequence: 1073
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-290/09-gap-update.md
+title: "09 -- Gap Update (Step 290 mandate SS12 item 12): The Step-290 Change-Control Capstone -- Formally Records Seven Corrections (C-1..C-7), Withdraws G-67 as 'the only gap this programme has ever withdrawn as not a defect at all', and Delivers a FRESH, SEPARATE Self-Correction to Step 289's Own Join-Semilattice REFUTED Verdict (Corrected to NOT ESTABLISHED, Conflating Two Distinct Claims)"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the ninth numbered Step-290 artifact, the change-control capstone for the entire package"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1073
+importance: critical
+confidence: high
+about: >
+  "09 — Gap Update (mandate §12 item 12)." Delivers the definitive change-control ledger for the entire
+  Step-290 package, seven numbered corrections C-1 through C-7, each with what/why/evidence/class.
+
+  **C-1 THROUGH C-4 FORMALLY RECORD ALREADY-TRACKED CORRECTIONS**: C-1 (the `≡`/`≈` corpus-contradiction
+  claim WITHDRAWN, files 1063-1067), C-2 (`G-67` withdrawn, `N-1′` created, file 1072), C-3 ("N-1 is the
+  earliest legitimate next act" superseded by "`N-4` is," file 1072), C-4 (Step 289's 4 cycles refined to
+  "3 necessary + 1 candidate-dependency," `{≡}` unchanged, file 1069). C-5 and C-6 similarly formalize
+  already-tracked findings (file 1065's nine-registers-in-two-notations finding; file 1068's 30-non-degenerate
+  correction, now explicitly LOCKED "everywhere").
+
+  **C-7 IS A GENUINELY NEW, SEPARATE, IMPORTANT SELF-CORRECTION TO STEP 289 ITSELF (not previously tracked
+  by this reconstruction)**: revisits Step 289's own already-tracked verdict that `(𝕂,merge,∅)` as a
+  join-semilattice is REFUTED for the general knowledge state `𝕂` (via `060 §60.71` and a retraction
+  demonstration, already tracked as a "MAJOR overclaim" catch, file 1058). **Discovers this verdict itself
+  CONFLATED TWO DISTINCT CLAIMS**: "`060 §60.71` says 'NOT PROVEN... we cannot yet assert' → that is NOT
+  ESTABLISHED, not refuted." Separately: "adding knowledge only grows the state" (a claim about STATE
+  EVOLUTION) IS genuinely refuted by retraction (withdrawal shrinks) -- "That stays REFUTED." But: "`merge`
+  may still be monotone even if `retract` is not. Retraction is a DIFFERENT OPERATION. So retraction does not
+  refute the algebraic claim about `merge`." Boxed final split: join-semilattice structure is **NOT
+  ESTABLISHED** (proven only for `PureClaimSetUnion`); the evolution-monotonicity gloss **REMAINS REFUTED**.
+  Delivers the precise diagnostic: "Two claims were conflated into one verdict, and the stronger word was
+  applied to both." And a genuinely disciplined symmetric caution: "the reviewer's lock item 5 -- 'neither
+  should it be upgraded to K is a lattice' -- cuts in the other direction too: NEITHER SHOULD IT BE DOWNGRADED
+  TO REFUTED WHEN THE CORPUS SAYS NOT PROVEN." Confirms the five verification-lane artifacts remain SUPERSEDED
+  (already tracked, file 1058), unchanged.
+
+  **FORMALLY NAMES `G-67` AS "THE ONLY GAP THIS PROGRAMME HAS EVER WITHDRAWN AS NOT A DEFECT AT ALL"** --
+  a historically significant marker for the entire multi-step research programme (Steps 288-290). Creates
+  two new gaps replacing it: `G-76` (Step 261's internal two-notation glyph reuse, already tracked as a
+  diagnosis in file 1065, now formally registered as a documentation-class gap and named "a plausible cause
+  of `G-67`'s misreading") and `G-77` ("`≡` has no independent definition -- two candidates, both borrowing
+  `≈`'s formula, both blocked on `𝒪_K`" -- an explicit restatement of `G-67`'s true, non-contradictory shape).
+
+  **DELIVERS THE NET-POSITION SUMMARY**: 1 gap withdrawn (first ever), 2 gaps added, 0 gaps closed, 7
+  corrections applied source-first (3 of which correct Step 288 or 289 itself), 0 of 6 `261.23` conditions
+  resolved, governance surface has one CRITICAL item removed with `N-4` now the unambiguous root. **Delivers
+  the programme's own closing self-assessment, a genuinely important epistemic statement**: "THE MOST USEFUL
+  THING THIS STEP DID WAS DELETE A FINDING. Steps 288-289 turned a documented openness into a critical
+  defect; `290` turns it back. THE URGENCY WAS MANUFACTURED, and removing it is as much a result as adding a
+  gap would be."
+
+  **CONFIRMS THE STILL-UNREAD FILE LIST IS UNCHANGED FROM STEP 289** (already tracked, file 1058/1062):
+  `025k/l/m/o/t/v/w`, `step-017/022/039/073/203` -- "N-1's scope did not require them, and none bears on the
+  `≡`/`≈` register."
+introduces:
+  - concept: "The seven-item C-1..C-7 change-control ledger formally recording the Step-290 package's corrections, three of which correct Step 288 or 289's own prior findings"
+  - concept: "C-7: a fresh, separate self-correction discovering Step 289's own join-semilattice REFUTED verdict conflated two distinct claims -- state-evolution monotonicity (genuinely refuted by retraction) and merge's algebraic structure (merely NOT ESTABLISHED, not refuted) -- with the disciplined symmetric caution that a NOT PROVEN corpus verdict should be downgraded to REFUTED no more than an unproven claim should be upgraded to an established one"
+  - concept: "The formal naming of G-67 as the only gap this entire multi-step research programme has ever withdrawn as not a defect at all, and its replacement by G-76 (documentation-class: Step 261's internal glyph reuse) and G-77 (formal-class: the true, non-contradictory shape of equiv's missing independent definition)"
+  - concept: "The programme's own closing epistemic self-assessment: deleting a manufactured-urgency finding is as much a genuine research result as adding a new gap would be"
+defines:
+  - term: "G-76"
+    definition: "Step 261 carries one relation register in two notations, and the second notation reuses the equiv glyph for equiv_H/equiv_P, causing equiv to appear to do four distinct jobs -- a documentation-class gap, and a plausible cause of G-67's original misreading"
+  - term: "G-77"
+    definition: "Equiv has no independent definition: only two candidates exist, both borrowing approx's formula, both blocked on the unclosed observation set O_K -- a formal-class restatement of G-67's true, non-contradictory shape"
+refines:
+  - concept: "This reconstruction's already-tracked join-semilattice REFUTED finding for the general knowledge state K (file 1058, tracked as a 'MAJOR overclaim' catch)"
+    refinement: "FURTHER CORRECTED: the REFUTED verdict itself conflated two distinct claims -- the join-semilattice algebraic structure is properly NOT ESTABLISHED (not refuted, per 060 §60.71's 'not proven'), while only the separate state-evolution-monotonicity gloss remains genuinely REFUTED via the retraction demonstration"
+  - concept: "This reconstruction's already-tracked G-67/N-1 governance-item withdrawal (file 1072)"
+    refinement: "FORMALLY LOGGED in the change-control ledger as C-1/C-2, with G-67 explicitly named as the only gap ever withdrawn as not a defect at all in this entire research programme, replaced by G-76 and G-77"
+contradicts:
+  - concept: "This reconstruction's own already-tracked characterization of Step 289's join-semilattice verdict as simply 'REFUTED' (file 1058)"
+    contradicted_by: "This file's discovery that the REFUTED verdict conflated two distinct claims; only the evolution-monotonicity gloss is properly REFUTED, while the algebraic join-semilattice claim is NOT ESTABLISHED"
+repeats:
+  - "C-1 through C-6 formally re-log already-tracked findings from files 1063-1069."
+bridge_candidates:
+  - "025k, 025l, 025m, 025o, 025t, 025v, 025w, step-017, step-022, step-039, step-073, step_203 -- explicitly reconfirmed still unread and out of scope for the equiv/approx register, unchanged from Step 289's own list (files 1058/1062)."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Step-290 seven-item change-control ledger, the fresh C-7 self-correction splitting Step 289's join-semilattice REFUTED verdict into NOT-ESTABLISHED (algebraic structure) and REFUTED (evolution-monotonicity gloss), the formal naming of G-67 as the only gap ever withdrawn as not a defect, its replacement by G-76/G-77, and the programme's closing epistemic self-assessment that deleting a manufactured-urgency finding is itself a genuine result."
+anchor_test:
+  anchor: "This reconstruction's already-tracked join-semilattice REFUTED finding (file 1058) and the N-1/G-67 withdrawal (file 1072)"
+  supports_dimension: "Delivers a fresh, further self-correction splitting the REFUTED verdict into two distinct claims, and formally logs the G-67 withdrawal with its replacement gaps in the change-control ledger"
+  refines_or_contradicts: "refines (further corrects) the prior tracked join-semilattice finding; formally logs (does not further alter) the already-tracked G-67 withdrawal"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The C-7 split (NOT ESTABLISHED vs REFUTED) is directly checkable against file 1058's own already-documented join-semilattice REFUTED characterization and its citation of 060 §60.71 and the retraction demonstration."
+undefined_concepts: []
+open_questions:
+  - "Whether G-76 and G-77, as the formal replacements for the withdrawn G-67, are subsequently acted upon (e.g. whether Step 261's glyph inconsistency is corrected at the source, or whether G-77's independent-definition gap is ever closed)."
+tier2_triggered: true
+tier2_reason: "Delivers the definitive change-control capstone for the Step-290 package, formally recording seven corrections including a genuinely new, separate self-correction (C-7) discovering that Step 289's own join-semilattice REFUTED verdict conflated two distinct claims, plus the historically significant naming of G-67 as the only gap this entire multi-step programme has ever withdrawn as not a defect at all. Classified importance critical and confidence high given the definitive, capstone, and self-correcting nature of this closure."

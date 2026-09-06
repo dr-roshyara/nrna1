@@ -1,0 +1,245 @@
+sequence: 586
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-092308_step-025h-formal-sa-rathi-algebra-decision-utility-risk-and-authorization.md
+title: "CAPSTONE OF THE ZERO/LORD/SĀRATHI TRIO: Sārathi Formally Defined — 'the Governed Decision Function That Evaluates Feasible Alternatives... and Returns Either a Defensible Decision or an Explicit Reason Why Automatic Decision Is Not Justified'; 'Utility Cannot Override Governance'; DecisionFragility as an Explicit Reportable Quality; a Four-Reason Taxonomy for 'the Deepest Result So Far' (Why KnowledgeOS May Not Automate a Decision); Six Falsification Tests, All PASS; 'Yes: the Core Mathematical Architecture Is Computable on a Normal PC. Not Merely Theoretically' (a Thirteen-Row Concept-to-Technology Mapping); THEN THE PIVOTAL TURN — 'the Next True Mathematical Frontier' Explicitly Named 'Atma / Knowledge Identity,' Directly Invoking 'Knowledge Atma' and 'Knower Atma (Human)' as the Corpus's Deepest Unresolved Question; Opens Step 25I (Knowledge Identity Algebra: Observation, Representation, Assertion, Knowledge Atma and Knower Atma)"
+date: "2026-08-28"
+bytes: 19350
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 25H -- Formal Sarathi Algebra: Decision, Utility, Risk and Authorization', the final planned reasoning-engine component committed at 0585, completing the Zero/Lord/Sarathi formal trio and then pivoting explicitly toward the corpus's Vedantic/Atma philosophical thread as the next mathematical frontier; the file's timestamp (20260828, the next day) marks a session boundary relative to 0585 (20260827)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 586
+importance: critical
+confidence: high
+about: >
+  Opens "Step 25H — Formal Sārathi Algebra: Decision, Utility, Risk and Authorization" at a new-day session
+  boundary (timestamp 20260828, following 0585's 20260827), announcing arrival at "the next important
+  boundary": Lord "selects the next useful action" while Sārathi must "determine what decision should be
+  made" -- worked through a concrete contrast (Lord: "perform a restore test" versus Sārathi: "given the
+  resulting knowledge, should we migrate, postpone, change the plan, or stop?").
+
+  **Delivers the file's foundational distinction -- `Decision≠Action`**: a decision set
+  `D={Migrate,Postpone,ChangePlan,Reject}` versus an executable action set (e.g. `{Backup,RestoreTest,
+  FirewallValidation,Approval,Migration}`) for the single decision `Migrate` -- a decision can require
+  MULTIPLE distinct actions. **Delivers the precise, final Lord/Sārathi signature contrast**:
+  `Lord:(K,Z,G,C)→A` ("chooses what to do next to improve the state or advance the process") versus
+  `Sārathi:(K,G,D,C,P)→d` ("chooses which decision is justified given the current knowledge and decision
+  model").
+
+  **Delivers a formal decision-consequence and utility treatment**: `OutcomeModel(d,K)`, a worked utility
+  function `U(o)` with explicit ILLUSTRATIVE numeric values, paired with a crucial governance caution --
+  "these numbers must never be invented by the AI and presented as organizational truth." Delivers the
+  classical `EU(d|K)=Σ_o P(o|d,K)U(o)` expected-utility formula and `d*=argmax_d EU(d|K)` subject to
+  governance/safety, then immediately qualifies it: `Probability is optional` -- when `P(o|d,K)` cannot be
+  reasonably established, KnowledgeOS must not invent it, using instead a qualitative
+  `Preference(d_1,d_2)`/`Dominates(d_1,d_2)` relation (worked "if migration is unauthorized, postponement
+  dominates migration" example, needing no probability).
+
+  **Delivers Decision feasibility as a mandatory pre-utility gate**: `Feasible(d,K,C)`, worked through a
+  concrete example where `RollbackVerified=Unknown` renders `Migrate` infeasible "regardless of how
+  attractive migration appears economically." Delivers the fundamental **`Hard constraint`/`Preference`
+  separation** (`Constraints filter; Utility/preferences select`), and the file's central safety principle,
+  explicitly named to prevent "a dangerous mistake": a worked concrete counterexample
+  (`EU(Migrate)=95>EU(Postpone)=60` but `Authorized(Migrate)=False`) demonstrates that `Migrate` is
+  eliminated BEFORE utility optimization even begins -- **`Utility cannot override governance`**, directly
+  extending 0585's `HighInformationValue cannot override governance` finding into the decision layer.
+
+  **Delivers a formal DecisionModel structure** `(Outcomes,Constraints,Preferences,Utilities,Uncertainty,
+  Policy)` and the operator `Sārathi(K,D,DecisionModel)→DecisionResult`, with the crucial requirement that
+  the output be a rich, structured, AUDITABLE record (Decision, Reason, Blocking requirements,
+  Alternatives with their feasibility, Evidence basis, DecisionModel version, Authorization status) rather
+  than a bare `MIGRATE` string, worked through a fully populated concrete example. Delivers a formal
+  `DecisionProvenance(d)` reproducibility requirement (`K_t+Contract+Policy+Model+Evidence→d`) and
+  **decision time-indexing**: today's `Postpone` and tomorrow's evidence-driven `Migrate` must never
+  rewrite each other -- `Decision_t` remains permanently associated with `K_t`, `Decision_{t+1}`
+  independently calculated from `K_{t+1}`.
+
+  **Delivers a genuinely new formal concept -- Decision Stability/Fragility**: `Stability(d,K)` as
+  sensitivity to plausible knowledge-state changes, worked through a concrete threshold-decision example
+  (`P(Success)=0.91` against a `0.90` migration threshold, where a plausible `0.02` shift would flip the
+  decision), yielding the explicit requirement that Sārathi report **`DecisionFragility=High`**
+  rather than a bare "Migrate" -- a genuinely novel, implementation-relevant decision-quality dimension
+  not previously introduced anywhere in the corpus. Delivers Threshold decisions generally
+  (`P(Success)≥θ`) with `θ` explicitly required to come from governance/domain policy, never invented by
+  AI. **Delivers `Absence of evidence≠evidence of failure`**, carefully distinguished from
+  `Required evidence absent⇒decision may be blocked` -- two genuinely different, non-conflatable
+  statements.
+
+  **Delivers a formal Risk-vs-Uncertainty separation**: `Risk(d)=P(Loss|d,K)×Impact(Loss)` where
+  justified, but explicitly permitting a qualitative `RiskLevel∈{Low,Medium,High,Critical}` fallback when
+  a probabilistic model is unavailable -- **`Risk can be quantitative or qualitative`**. Delivers Decision
+  dominance `d_2⪰d_1` (needing no precise utility numbers when one decision is worse on every
+  criterion) and **Multi-objective decisions with a Pareto set** `𝒫(D)`, explicitly preferring "three
+  decisions are Pareto-optimal; organizational preference is required" over "arbitrary AI selection" --
+  directly reusing 0557's Pareto-optimality machinery for Sārathi's final formalization.
+
+  **Delivers a crucial terminal state, explicitly a legitimate computed result**: `HumanChoiceRequired`,
+  triggered by five named conditions (multiple equally-defensible decisions, undefined utility weights,
+  unresolved governance, irreducible critical uncertainty, or explicitly-mandated human judgment).
+  **Delivers the file's single most important finding, explicitly self-identified as such**: **"perhaps
+  the most important finding in 25H"** -- a computational system does not need to produce a decision in
+  every situation; it needs only to determine `DecisionAvailable` / `DecisionNotComputableFromCurrentKnow
+  ledge` / `HumanDecisionRequired` -- "much more rigorous than pretending every question has an AI
+  answer," directly extending 0584's/0585's escalation-over-invention discipline into the final decision
+  layer.
+
+  **Delivers a formal three-mode Sārathi taxonomy**: Mode 1 Deterministic decision (`K+Rules→d`); Mode 2
+  Model-based decision (`K+Probability+Utility→d`); Mode 3 Human escalation
+  (`K+Constraints→HumanChoiceRequired`), worked through three concrete, contrasting Nexus scenarios each
+  yielding a genuinely different Sārathi output (`Migrate`, `Postpone`, `HumanDecisionRequired`) from
+  three different epistemic conditions.
+
+  **Delivers the LLM role reconfirmed precisely for the decision layer**: `LLM(K,D)→
+  CandidateDecisionReasoning`, validated against Contract/Constraints/Evidence/Policy/Authorization, with
+  the sharp closing statement **"the LLM cannot manufacture Utility or Authority."**
+
+  **Delivers the file's central formal deliverable -- a clean eight-row Sārathi-versus-Lord comparison
+  table**, formalizing the two components' final architectural distinction (main question, input, main
+  concern, output, information-acquisition centrality, utility centrality, governance role, human-
+  escalation role). Delivers **the complete agent loop, explicitly stated to resolve any competitive
+  framing between Lord and Sārathi**: `Knowledge→Zero→Lord→Evidence/Action→Knowledge` (repeating until
+  sufficient knowledge exists), THEN `Knowledge→Sārathi→Decision→Authorization→Execution` -- "Lord and
+  Sārathi are not competing agents. They form a sequence." Delivers a genuinely important feedback
+  discovery: Sārathi can discover mid-evaluation that a decision cannot yet be made (worked "migration
+  decision cannot be made because rollback evidence is insufficient" example), formalized as
+  `Sārathi→KnowledgeGap→Lord`, a real feedback loop routing back into the epistemic side of the
+  architecture.
+
+  **Delivers the file's central architectural deliverable -- the most complete full architecture diagram
+  produced in the entire research program**, spanning `WORLD→Observation→EVIDENCE→KNOWLEDGE STATE`,
+  branching into `EPISTEMIC CONTRACT`/`DECISION MODEL`, through `ZERO→LORD`, converging on `SĀRATHI`
+  (branching to Decide/Escalate/More Knowledge), then `AUTHORIZATION→EXECUTION→WORLD` -- "now the loop is
+  almost complete."
+
+  **Delivers a Sārathi-specific normal-PC computability confirmation** (nine named ordinary computational
+  primitives: constraint satisfaction, rule evaluation, expected utility, preference ordering, Pareto
+  analysis, graph traversal, threshold evaluation, provenance, versioned state), with Large-scale Monte
+  Carlo, Complex Optimization, and Large Causal Models explicitly classified as "optional specialized
+  engines" the Sārathi abstraction itself does not require. Delivers a genuinely important boundary case:
+  a politically-sensitive strategic-risk decision whose utility function depends on an unspecified human
+  value judgment correctly yields `ValueModelUnderspecified` as "a correct result," never a manufactured
+  numerical answer.
+
+  **Delivers the file's central formal deliverable -- "the deepest result so far": a four-reason taxonomy
+  for why KnowledgeOS may not produce an automatic decision**, explicitly declared "fundamentally
+  different failure modes": (1) Missing knowledge (`Zero≠∅`); (2) Conflicting knowledge (`Conflict≠∅`);
+  (3) Missing decision model (`Utility/PreferenceUndefined`); (4) Irreducible human authority
+  (`HumanDecisionRequired`). Delivers the resulting principle **"AI uncertainty" is too vague**, worked
+  through a concrete, vastly more useful three-reason structured explanation contrasted against the bare
+  phrase "the AI is uncertain."
+
+  **Delivers the file's central formal deliverable -- the formal Sārathi operator**
+  `S(K,G,D,M,C)→DecisionResult`, with `DecisionResult` formalized as a five-value result space
+  `{Decision,HumanDecisionRequired,InsufficientKnowledge,GovernanceBlocked,ModelUnderspecified}` --
+  "computationally explicit." Delivers six labeled falsification tests (A-F), ALL PASS: complete/dominant
+  decision resolves cleanly; blocking missing knowledge correctly yields `InsufficientKnowledge`;
+  unresolved governance conflict correctly yields `GovernanceBlocked`; two equally valid decisions with no
+  preference correctly yield `HumanDecisionRequired`; an absent-but-necessary utility model correctly
+  yields `ModelUnderspecified`; and an LLM-recommended unauthorized action is correctly never selected.
+
+  **Delivers Step 25H's verdict, completing the corpus's final formal definition of the entire Zero/Lord/
+  Sārathi reasoning-engine trio**: **"25H — PASS,"** with the file's own complete prose formalization:
+  **"Sārathi is the governed decision function that evaluates feasible alternatives against current
+  knowledge, constraints, consequences and an explicit decision model, and returns either a defensible
+  decision or an explicit reason why automatic decision is not justified."**
+
+  **Delivers the file's headline architectural self-characterization**: the architecture has crossed a
+  major boundary, no longer merely `KnowledgeManagement` but becoming an **`Epistemic Control System`**,
+  enumerated across a complete ten-item capability list spanning observation acquisition through knowledge
+  update after execution.
+
+  **Delivers the file's strongest computability statement in the entire research program**: **"Yes: the
+  core mathematical architecture is computable on a normal PC. Not merely theoretically."** Delivers the
+  corpus's most concrete implementation-realization evidence -- a thirteen-row table mapping every major
+  KnowledgeOS concept (Evidence, Provenance, KnowledgeState, Evidence Graph, Contract, Zero, Lord, Sārathi,
+  Governance, LLM, Internet, Human, Observation) to its corresponding conventional implementation
+  technology (records/objects, metadata+hashes, versioned database, graph/relational relations,
+  rules+structured data, deterministic evaluation, rule/planning engine, decision engine, policy/rule
+  engine, optional inference service, external connector, external authority, event/input pipeline),
+  concluding **"the architecture is engineering-realizable, not dependent on exotic mathematics or
+  hardware."**
+
+  **Delivers the file's pivotal closing turn, of paramount historical significance to this
+  reconstruction's own three-model-convergence mandate**: explicitly names "the next true mathematical
+  frontier" as **`Atma / Knowledge Identity`**, stated to have been "intentionally not solved" throughout
+  the entire prior arc. Poses the deep, previously-unaddressed question of what makes two knowledge
+  objects "the same knowledge," different knowledge, a refinement of the same knowledge, or merely two
+  representations of the same underlying observation -- and states explicitly: **"this is the place where
+  your earlier distinction between Knowledge Atma and Knower Atma (human) becomes mathematically
+  important."** This is the corpus's most direct, substantive, and explicit reconnection of its dense
+  mathematical/DDD formalization arc back to its earlier Gita/Vedanta-inspired philosophical roots --
+  building directly on the increasingly frequent but still passing callbacks at 0567 ("Knowledge Atma"),
+  0582 ("Atman / knowledge ideal state idea"), and 0584 (explicitly naming "Atma" among originally-feared
+  uncomputable terms) -- now culminating in an EXPLICIT COMMITMENT to devote an entire dedicated formal
+  step to Knowledge Atma and Knower Atma specifically, treating them as legitimate, addressable
+  mathematical objects rather than incidental philosophical color.
+
+  **Closes by opening "Step 25I — Knowledge Identity Algebra: Observation, Representation, Assertion,
+  Knowledge Atma and Knower Atma,"** posing four concrete worked equivalence questions
+  (`Document_1≡Document_2?`, `LLMOutput≡HumanAssertion?`, `Observation≡Evidence?`, `Evidence≡Knowledge?`)
+  and the file's climactic central question: **"what is the identity of a Knowledge Atma?"** -- explicitly
+  framed as, if successfully made computable, addressing "one of the deepest remaining conceptual points
+  in the entire KnowledgeOS theory." As with the entire 25A-25H sub-arc, no report of actual executed code
+  appears; this remains rigorous symbolic/architectural reasoning throughout, though this file's
+  computability claims are the most concretely implementation-mapped of the entire program.
+introduces:
+  - concept: "'Decision≠Action' — a single decision (e.g. Migrate) may require multiple distinct executable actions, formally distinguishing Sārathi's output space from Lord's"
+  - concept: "'Utility cannot override governance' — the file's central decision-safety principle, worked through a concrete counterexample where a higher-utility option is eliminated before optimization due to lacking authorization, extending 0585's HighInformationValue-cannot-override-governance finding into the decision layer"
+  - concept: "Decision Stability/Fragility as a genuinely new, implementation-relevant decision-quality dimension — Sārathi should report DecisionFragility=High for threshold-sensitive decisions rather than a bare recommendation"
+  - concept: "The formal Risk-vs-Uncertainty separation, with Risk explicitly permitted to be either quantitative (P(Loss)×Impact) or qualitative (a defined RiskLevel taxonomy), depending on what the organization's risk framework actually supports"
+  - concept: "'HumanChoiceRequired' formalized as a legitimate computed result state with five named triggering conditions, and the file's most important self-identified finding — a computational system need not produce a decision in every situation, only correctly classify why one is or is not currently available"
+  - concept: "A formal four-reason taxonomy for why KnowledgeOS may not automate a decision (missing knowledge, conflicting knowledge, missing decision model, irreducible human authority), explicitly declared fundamentally different failure modes replacing the vague notion of 'AI uncertainty'"
+  - concept: "The formal Sārathi operator's five-value DecisionResult space {Decision,HumanDecisionRequired,InsufficientKnowledge,GovernanceBlocked,ModelUnderspecified}, giving KnowledgeOS a precise, computationally explicit vocabulary for every possible decision-layer outcome"
+  - concept: "The corpus's most complete implementation-mapped computability table — thirteen major KnowledgeOS concepts each mapped to a conventional software-engineering technology, explicitly demonstrating 'engineering-realizable, not dependent on exotic mathematics or hardware'"
+  - concept: "The pivotal, explicit naming of 'Atma / Knowledge Identity' as the corpus's next true mathematical frontier, directly invoking 'Knowledge Atma' and 'Knower Atma (human)' as mathematically important concepts to be formally addressed for the first time, the clearest and most substantive reconnection to the corpus's Vedantic/Gita philosophical roots anywhere in the mathematical sub-arc"
+  - concept: "'Step 25I — Knowledge Identity Algebra: Observation, Representation, Assertion, Knowledge Atma and Knower Atma', explicitly framed as addressing one of the deepest remaining conceptual points in the entire KnowledgeOS theory"
+defines:
+  - concept: "Final Sārathi operator"
+    definition: "S(K,G,D,M,C)→DecisionResult, DecisionResult∈{Decision,HumanDecisionRequired,InsufficientKnowledge,GovernanceBlocked,ModelUnderspecified}"
+  - concept: "DecisionModel"
+    definition: "(Outcomes,Constraints,Preferences,Utilities,Uncertainty,Policy) — the explicit, pluggable decision-evaluation structure feeding Sārathi(K,D,DecisionModel)→DecisionResult"
+  - concept: "Sārathi (complete prose definition)"
+    definition: "The governed decision function that evaluates feasible alternatives against current knowledge, constraints, consequences and an explicit decision model, and returns either a defensible decision or an explicit reason why automatic decision is not justified"
+  - concept: "Decision Stability/Fragility"
+    definition: "Stability(d,K) — sensitivity of a decision outcome to plausible changes in the knowledge state; a threshold-crossing decision under thin margins must be reported as DecisionFragility=High rather than presented as a confident recommendation"
+refines:
+  - concept: "0585's headline redefinition of Lord as 'Governed Action Selection over Knowledge and Zero'"
+    refinement: "Given its precise complementary counterpart: Sārathi is formally and finally distinguished as the governed decision function operating on decision alternatives, consequences, and an explicit decision model — completing the corpus's full formal definition of the Zero/Lord/Sārathi reasoning-engine triad"
+  - concept: "0585's 'HighInformationValue cannot override governance' finding for action selection"
+    refinement: "Directly extended into the decision layer as 'Utility cannot override governance,' with an analogous worked counterexample demonstrating governance elimination occurs before, not after, utility optimization"
+  - concept: "0557's Pareto-optimality machinery for multi-objective decision-making"
+    refinement: "Directly reused for Sārathi's final formalization, explicitly preferred over forcing a single scalar utility across genuinely incommensurable objectives"
+  - concept: "0584's/0585's escalation-over-invention discipline (Unresolved governance, IndeterminatePreference→HumanDecision)"
+    refinement: "Extended into the final decision layer as HumanChoiceRequired and the broader DecisionResult five-value taxonomy, explicitly self-identified as perhaps the most important finding of the entire step"
+  - concept: "0567's 'Knowledge Atma' and 0582's 'Atman / knowledge ideal state' philosophical-thread callbacks, and 0584's explicit naming of 'Atma' among originally-feared uncomputable terms"
+    refinement: "Escalated from passing acknowledgment into an explicit, dedicated commitment: the corpus's next formal research step will directly formalize Knowledge Atma and Knower Atma as legitimate mathematical objects, the clearest and most substantive reconnection of the mathematical/DDD arc to its Vedantic/Gita philosophical roots produced anywhere in the research program"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25I — Knowledge Identity Algebra: Observation, Representation, Assertion, Knowledge Atma and Knower Atma' is executed as its own dedicated corpus file — this is now the single highest-priority file to locate for this reconstruction's three-model-convergence mandate, since it is explicitly committed to formalizing the corpus's Vedantic/Gita-derived Atma concepts within the mathematical/DDD framework for the first time, directly bridging the two previously largely-separate theoretical threads this reconstruction is tasked with comparing"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the completed Zero/Lord/Sārathi trio, Decision≠Action, the final Lord/Sārathi signature contrast, 'Utility cannot override governance,' Decision Stability/Fragility as a new decision-quality dimension, and the Risk-vs-Uncertainty quantitative/qualitative separation."
+  - "dimension-registry.md: record HumanChoiceRequired and the self-identified most important finding (a decision system need not always decide, only correctly classify why), the four-reason taxonomy for non-automatable decisions, the formal five-value DecisionResult space, six falsification tests (all PASS), the verdict '25H — PASS,' and the complete prose definition of Sārathi."
+  - "dimension-registry.md: record the strongest computability statement of the entire program ('Yes: the core mathematical architecture is computable on a normal PC. Not merely theoretically') with its thirteen-row concept-to-technology mapping table, and — of paramount significance — the explicit pivotal naming of 'Atma / Knowledge Identity' as the corpus's next mathematical frontier, directly invoking Knowledge Atma and Knower Atma, opening 'Step 25I — Knowledge Identity Algebra' as the corpus's first dedicated attempt to formalize these concepts."
+anchor_test:
+  anchor: "0585's opening of the Lord/Sārathi split ('Lord: what should we investigate/do next? Sārathi: given what we know and the possible consequences, what decision should we make?'); 0567's/0582's/0584's escalating philosophical-thread callbacks to Atman/Atma; the recurring anti-collapse and LLM-governance-boundary disciplines; 0557's Pareto-optimality machinery"
+  supports_dimension: "CAPSTONE OF THE ZERO/LORD/SĀRATHI TRIO delivering the corpus's final, complete formal definition of Sārathi, directly completing the reasoning-engine architecture whose Zero and Lord components were formalized at 0582 and 0585 respectively. Delivers a genuinely disciplined decision-selection algebra with a new implementation-relevant concept (Decision Stability/Fragility) not previously introduced anywhere in the corpus, a rigorous four-reason taxonomy for non-automatable decisions self-identified as 'the deepest result so far,' and the entire program's strongest, most concretely implementation-mapped computability claim ('Not merely theoretically,' backed by a thirteen-row concept-to-technology table). Most significantly for this reconstruction's own three-model-convergence mandate, the file delivers a pivotal, explicit turn: 'Atma / Knowledge Identity' is named the corpus's next true mathematical frontier, directly invoking 'Knowledge Atma' and 'Knower Atma (human)' as concepts about to receive genuine formal treatment — the clearest, most substantive, and most consequential reconnection anywhere in the research program between its dense mathematical/DDD arc and its earlier Vedantic/Gita-inspired philosophical roots, culminating a pattern of increasingly frequent callbacks (0567, 0582, 0584) into an explicit, dedicated next research commitment"
+  refines_or_contradicts: "directly executes Step 25H as opened at 0585, completing the Zero/Lord/Sārathi trio (0582/0585/0586); extends 0585's HighInformationValue-cannot-override-governance finding into 'Utility cannot override governance'; reuses 0557's Pareto-optimality machinery; extends 0584's/0585's escalation-over-invention discipline into HumanChoiceRequired and the DecisionResult taxonomy; escalates 0567's/0582's/0584's passing Atma callbacks into an explicit, dedicated next-step commitment; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit closing statement 'this is the place where your earlier distinction between Knowledge Atma and Knower Atma (human) becomes mathematically important', immediately followed by opening a dedicated 'Step 25I — Knowledge Identity Algebra: Observation, Representation, Assertion, Knowledge Atma and Knower Atma,' is directly checkable, unambiguous textual evidence that the corpus's authors themselves regard their earlier Vedantic/Gita philosophical vocabulary as a genuine mathematical target, not incidental color — of the highest possible relevance to this reconstruction's own three-model-convergence mandate and requiring immediate priority tracking of the next file."
+  - "The worked concrete counterexample (EU(Migrate)=95>EU(Postpone)=60, but Authorized(Migrate)=False, so Migrate is eliminated before utility optimization) is directly checkable, concrete evidence grounding the file's central 'Utility cannot override governance' safety principle in an inspectable scenario rather than only an abstract assertion."
+  - "The thirteen-row concept-to-conventional-technology mapping table (Evidence→Records/objects, KnowledgeState→Versioned database, Zero→Deterministic evaluation, Sārathi→Decision engine, etc.) is directly checkable, concrete evidence supporting the file's strongest computability claim of the entire research program, distinct from every prior file's more abstract computability discussion."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25I — Knowledge Identity Algebra: Observation, Representation, Assertion, Knowledge Atma and Knower Atma' is executed as its own dedicated corpus file, and critically, how it formally treats Knowledge Atma and Knower Atma within the mathematical/DDD framework — the single highest-priority open question for this reconstruction's three-model-convergence mandate at this point in the corpus"
+tier2_triggered: true
+tier2_reason: "CAPSTONE OF THE ZERO/LORD/SĀRATHI TRIO delivering the corpus's final, complete formal definition of Sārathi, directly completing the entire reasoning-engine architecture alongside Zero (0582) and Lord (0585). Delivers a genuinely disciplined decision-selection algebra with a new, implementation-relevant concept not previously introduced anywhere in the corpus (Decision Stability/Fragility, requiring Sārathi to report when a decision rests on a thin, plausibly-reversible margin), a rigorous four-reason taxonomy for non-automatable decisions explicitly self-identified as 'the deepest result so far,' and the entire program's strongest, most concretely implementation-mapped computability claim yet ('Yes: the core mathematical architecture is computable on a normal PC. Not merely theoretically,' backed by a thirteen-row concept-to-technology mapping table). Most significantly for this reconstruction's own three-model-convergence mandate, the file delivers a pivotal, explicit turn: 'Atma / Knowledge Identity' is directly named the corpus's next true mathematical frontier, explicitly invoking 'Knowledge Atma' and 'Knower Atma (human)' as concepts about to receive genuine, dedicated formal mathematical treatment for the first time — the clearest, most substantive, and most consequential reconnection anywhere in the research program between its dense mathematical/DDD formalization arc and its earlier Vedantic/Gita-inspired philosophical roots, culminating a pattern of increasingly frequent passing callbacks (0567's 'Knowledge Atma', 0582's 'Atman' reference, 0584's explicit naming of 'Atma' among originally-feared uncomputable terms) into an explicit, dedicated next-step research commitment. This makes locating and processing 'Step 25I' the single highest-priority tracking item for the remainder of this reconstruction's autonomous processing."

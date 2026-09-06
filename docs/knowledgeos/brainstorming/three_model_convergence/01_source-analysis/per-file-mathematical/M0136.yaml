@@ -1,0 +1,84 @@
+sequence: M0136
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-175302_extraction-brachman-levesque-knowledge-representation-reasoning.md
+title: "EXTRACTION: Knowledge Representation and Reasoning (Brachman & Levesque, 2004)"
+date: "20260902-175302"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: EXTERNAL_LITERATURE
+  secondary_note: >
+    Disciplined extraction of the standard KR&R textbook (Brachman & Levesque), covering FOL
+    entailment, frames/description logics, default/nonmonotonic reasoning, probability, abduction,
+    situation calculus/planning, and the expressiveness-tractability tradeoff, each mapped explicitly
+    onto KnowledgeOS vocabulary.
+source_role: PRIMARY
+canonical_source: M0136
+importance: critical
+confidence: high
+about: >
+  A comprehensive extraction of foundational AI knowledge-representation theory, proposing the first
+  candidate FORMAL definition of Sat(K_t,r) in this reconstruction's corpus — as classical logical
+  entailment — plus a formal characterization of Zero via "vivid knowledge" (complete+consistent KB)
+  and CWA, and a mapping of δ onto situation-calculus successor-state axioms.
+introduces:
+  - "Candidate formal definition: Sat(K_t,r) ⟺ K_t ⊨ Content(r), i.e. requirement satisfaction as classical logical entailment of the requirement's content by the knowledge base"
+  - "Vivid knowledge: a KB is vivid iff it is a complete and consistent set of literals over some vocabulary — unique satisfying interpretation, entailment reduces to database retrieval — proposed as the formal shape of Zero"
+  - "Closed-World Assumption (CWA) formalized: KB⁺ = KB ∪ {¬p | p atomic, KB⊭p}; KB⊨_C α ⟺ KB⁺⊨α — proposed as Zero's underlying assumption mechanism (unsatisfied requirement ⟹ gap, absent contrary reason)"
+  - "The Knowledge Level vs. Symbol Level distinction (semantics/expressive-adequacy questions vs. data-structure/complexity questions) as a methodological separation KnowledgeOS itself should maintain"
+  - "TELL/ASK interface as the canonical KB architecture: TELL adds a requirement to ℛ_t, ASK determines Sat(K_t,r)"
+  - "Four approaches to default/nonmonotonic reasoning (CWA, circumscription, default logic, autoepistemic logic) as candidate mechanisms for belief retraction under new information"
+  - "Successor state axioms (situation calculus) as a compact single-axiom-per-fluent alternative to enumerating frame axioms — proposed formal shape for δ(K_t,e_t)→K_{t+1}, explicitly connecting 'what does NOT change' to Boundary/Zero/Gap"
+  - "Abduction and prime implicates as a formal shape for diagnosis: minimal explanatory literal sets = minimal gap sets"
+  - "The expressiveness-vs-tractability tradeoff, with 'reasoning by cases' (disjunctive incompleteness) identified as the specific source of intractability that limited languages (Horn, description logics) avoid"
+defines: []
+refines:
+  - "Sat(K_t,r) — the bridge problem independently flagged as unresolved by both M0132 (Gap Theory v1.0) and M0133 (Ziem, external corroboration): this document is the first in the corpus's read order to propose an actual formal candidate (classical entailment), though as a textbook extraction it is a PROPOSAL for adoption, not a KnowledgeOS-internal derivation or proof"
+  - "Zero (frozen: Zero⟺Δ=∅⟺K_t⊨EC_t, M0132): given an independent external-theory characterization via 'vivid knowledge' + CWA, landing on the same non-emptiness/completeness structure as both the internal freeze and Ziem's (M0133) 'satisfied, not empty' framing — a THIRD independent formulation of the same shape"
+  - "δ (transition, long OPEN per M0135's table): proposed candidate formal shape via situation-calculus successor-state axioms — not adopted, a bridge_candidate"
+contradicts: []
+repeats:
+  - "Frame/slot/filler/default-value structure — substantially overlaps M0133's Ziem extraction (both cite Minsky's frames), from the AI/KR&R side rather than the linguistics side; corroborates rather than duplicates"
+bridge_candidates:
+  - "Whether Sat(K_t,r) ⟺ K_t⊨Content(r) is adoptable given KnowledgeOS's own established R1 factivity result (A_t is non-factive attribution, not knowledge) — classical entailment presupposes a model-theoretic semantics for K_t that this reconstruction's tracked research (K_t retired to A_t, M0110-M0112, M0135) may or may not support without further adaptation. Flagged, not resolved."
+  - "Whether δ should be formalized via situation-calculus successor-state axioms, and how this interacts with the still-open composition/token-sensitivity decision tracked through M0127/M0135"
+  - "Whether the four default-reasoning approaches (CWA/circumscription/default-logic/autoepistemic) map onto any of the ten-odd already-tracked gap classes (M0132) or invariant registries (M0125/M0126/M0131) — not cross-checked"
+mathematical_content: >
+  States standard FOL entailment (S⊨α), CWA (KB⁺, KB⊨_C α), default-logic extensions
+  (⟨α:β/δ⟩), Bayes' rule, belief-network factorization, subsumption (d1⊑d2), prime implicates, and
+  situation-calculus successor-state axioms (F(x,do(a,s))≡γ_F(x,a,s)∨(F(x,s)∧¬δ_F(x,a,s))) — all
+  cited as established textbook formalism, not original derivations of this corpus.
+gita_content: null
+kernel_content: >
+  Directly targets three of the corpus's longest-standing OPEN items simultaneously: Sat (a formal
+  candidate), Zero (a third independent corroborating formulation), and δ (a formal candidate via
+  successor-state axioms) — the highest-density single-document hit on open questions in this
+  reconstruction's mathematical-ideas pass so far.
+registry_updates:
+  - "Fifth instance of the cross-domain external-literature corroboration pattern (after M0119 Priest, M0128 Rice, M0130 Shapiro, M0133 Ziem) — first to propose an actual formal Sat(K_t,r) candidate rather than only corroborating an existing finding"
+  - "Third independent formulation of Zero's non-emptiness/completeness structure (internal freeze M0132; Ziem's 'satisfied, not empty' M0133; now vivid-knowledge+CWA here)"
+anchor_test:
+  anchor: true
+  supports_dimension: "Sat(K_t,r) formal definition, Zero (third corroboration), δ transition (candidate formalization)"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"The role of a knowledge representation system... is to calculate entailments of this KB... the entailments of that KB as the beliefs that are only implicitly given.\" — directly cited by the document itself as the source of Sat(K_t,r) ⟺ K_t⊨Content(r)"
+  - "\"A KB to be vivid if and only if it is a complete and consistent set of literals... Zero = the KB is vivid with respect to the requirements.\""
+  - "\"It can be shown that no automated reasoning process for FOL can be both sound and complete in general.\" — flagged implication: practical systems must trade off soundness/completeness"
+undefined_concepts:
+  - "How K_t's (post-R1: A_t's) non-factive attribution semantics would be given a model-theoretic interpretation compatible with classical entailment — not addressed here, left as a bridge_candidate"
+  - "Whether 'Content(r)' (used informally in the Sat translation) has any existing formal definition elsewhere in this corpus — not cross-checked in this record"
+open_questions:
+  - "Is classical entailment the right formalization for Sat given R1's non-factivity finding, or does it require a non-classical (paraconsistent/relevance) logic — connecting to the already-tracked KR-CONTR-FDE research line (M0116-M0127)?"
+  - "Does adopting successor-state axioms for δ conflict with or complement the still-undecided token-blind/token-sensitive composition choice (M0127, M0135)?"
+tier2_triggered: true
+tier2_reason: >
+  Proposes the first formal candidate definition of Sat(K_t,r) in this reconstruction's read order —
+  directly answering a bridge problem independently flagged by two prior documents (M0132, M0133) —
+  and simultaneously offers a third independent corroboration of Zero's structure and a formal
+  candidate for the long-open δ transition, the highest-density hit on open questions seen so far.

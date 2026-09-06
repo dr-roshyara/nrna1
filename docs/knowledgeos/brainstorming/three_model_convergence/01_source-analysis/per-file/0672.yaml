@@ -1,0 +1,194 @@
+sequence: 672
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-121755_step-087-collective-choice-preference-aggregation-and-legitimate-decision.md
+title: "Step 87 Delivers Genuinely New Formal Social-Choice Theory (Arrow's Impossibility Theorem Correctly Summarized, a Worked Condorcet Cycle, Human/AI Voting-Power as an Institutional-Design Choice, Strategic Voting, Agenda Manipulation With FormalAuthority≠EffectiveInfluence, and a Correct Rejection of Naive Probability-Averaging Across Agents) While ALSO Substantially Overlapping 0662's Already-Established Quorum/Veto/Delegation Machinery — Confirmed via a Fifth Exact-Name Invariant Duplicate, I_Delegation, Matching 0662's Own I_Delegation; Delivers the Capstone Six-Term Epistemic-Institutional Hierarchy Truth≠Belief≠Preference≠Recommendation≠Decision≠Authorization, Explicitly Declared 'One of the Most Important Distinctions Established in the Entire Mathematical Sequence'; Eight New Invariants, One Confirmed Duplicate; Verdict 'STEP 87 — PASS'; Closes Opening Step 88 — Information Theory, Flagged for Comparison Against 0643's Already-Established Information-Theoretic Epistemic-Quality Treatment"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 87 -- Collective Choice, Preference Aggregation and Legitimate Decision', opened at 0671's close; CONFIRMS the flagged comparison against 0662 as a MIXED result -- genuinely new formal social-choice content alongside a confirmed exact-name invariant duplicate (I_Delegation) and substantial Quorum/Veto conceptual overlap"
+source_role: PRIMARY_RESEARCH
+canonical_source: 672
+importance: critical
+confidence: high
+about: >
+  **RESOLVES the comparison flagged at 0671 as a MIXED result**: this file delivers substantial genuinely
+  new formal social-choice-theory content not present in 0662's more operational collective-decision-
+  governance treatment, while also substantially overlapping and, in one case, exactly duplicating 0662's
+  already-established mechanism vocabulary.
+
+  **Delivers the file's first central formal deliverable -- Arrow's Impossibility Theorem correctly
+  summarized and applied, the corpus's first explicit engagement with this specific classical social-choice
+  result**: "under its classical assumptions, no rank-order voting system can simultaneously satisfy a set
+  of desirable conditions... when there are at least three alternatives," with the conditions correctly
+  named (unrestricted preferences, non-dictatorship, Pareto consistency, independence of irrelevant
+  alternatives, transitive collective ranking), confirmed via a simultaneous-impossible-requirements
+  experiment (PASS), correctly distilled into the KnowledgeOS lesson "there is no universally perfect
+  preference aggregation mechanism." Delivers a correctly worked Condorcet cycle
+  (`A≻B, B≻C, C≻A` from pairwise majority voting over three agents' rankings, confirmed via a majority-
+  implies-consistent-ranking-assumption experiment, PASS), crystallizing `MajorityDecision≠UniversalTruth`.
+
+  **Delivers the file's second central formal deliverable -- Preference formally separated from Expertise
+  and from Authority, a three-way distinction genuinely sharper than the corpus's prior authority-separation
+  family**: `Preference≠Expertise` (a majority-preferred but technically inferior architecture option
+  incorrectly selected over evidence-favored alternative, confirmed via a dedicated experiment, PASS); the
+  crucial `EpistemicMajorityError` (four engineers' belief `Risk=20` incorrectly overriding one specialist's
+  evidence-backed `Risk=80` purely by headcount, confirmed via a dedicated experiment, PASS) -- correctly
+  and precisely stated that "the number of people holding a belief does not automatically determine its
+  truth probability"; and `Authority≠Expertise` bidirectionally (high expertise without decision authority,
+  and high formal authority without technical expertise, both confirmed via dedicated experiments, PASS),
+  motivating `Expertise, EvidenceQuality, Preference, Authority` to be modeled as four separate dimensions
+  (confirmed via a collapsed-single-weight-value experiment, `SemanticAmbiguity` -- PASS).
+
+  **Delivers the file's third central formal deliverable -- human/AI collective-decision participation
+  formally and carefully distinguished**: `EvidenceContribution≠DecisionAuthority` -- an AI can be
+  epistemically useful (strong technical evidence) without institutional sovereignty (`Authority=0`),
+  confirmed via a dedicated experiment (PASS), with the explicit and correctly-reasoned acknowledgment that
+  "there is no universal mathematical answer" to whether human and AI preferences should carry equal voting
+  power -- "it is an institutional design decision," reconfirming and sharpening `Recommendation≠
+  Authorization` specifically for AI participants (confirmed via an AI-recommendation-overridden-by-human-
+  decision experiment, PASS).
+
+  **Delivers the file's fourth central formal deliverable -- strategic and procedural manipulation of
+  collective choice, genuinely new content extending 0670's/0671's strategic-behavior discipline into the
+  voting/aggregation domain specifically**: Strategic voting (misrepresenting true preference for better
+  personal outcome, confirmed via a dedicated experiment, PASS) and Agenda manipulation (the same underlying
+  preferences producing different winners under different pairwise-comparison orderings, confirmed via a
+  dedicated experiment, PASS), crystallizing **`FormalAuthority≠EffectiveInfluence`** -- an agenda-
+  controlling chair without formal voting rights can still materially shape outcomes through sequencing and
+  information presentation (confirmed via a dedicated experiment, PASS). Delivers Information framing/
+  selection bias as a governance concern (a decision committee shown only favorable evidence, confirmed via
+  a dedicated experiment, PASS), with KnowledgeOS's provenance/evidence-lineage capability explicitly
+  positioned as a structural remedy -- presenting supporting and contradicting evidence together rather than
+  a filtered subset (confirmed via a dedicated experiment, PASS).
+
+  **Delivers the file's fifth central formal deliverable -- epistemic disagreement formally distinguished
+  from preference aggregation, with a correct rejection of naive probability averaging**: two agents'
+  probability estimates (`P(H)=0.9` from strong evidence, `P(H)=0.1` from weak evidence) must not be
+  aggregated by simple averaging to `0.5` (confirmed via a dedicated experiment, `UnsupportedProbability
+  Aggregation` -- PASS), and evidence-quality weights must have genuine probabilistic semantics rather than
+  being invented ad hoc (`Q_A=0.9` incorrectly substituted for `P(E|H)`, confirmed via a dedicated
+  experiment, `SemanticError` -- PASS) -- directly and genuinely extending 0649's/0655's evidence-
+  independence discipline into the specific case of aggregating disagreeing probability estimates across
+  agents, a distinct and valuable extension not previously this concretely addressed.
+
+  Despite this substantial new content, the file also **substantially overlaps 0662's already-established
+  collective-decision-governance machinery, confirmed via a directly checkable fifth exact-name invariant
+  duplication**: this file's `I_{Delegation}` ("delegated authority cannot exceed the authority validly
+  delegated by the delegator") is an EXACT NAME MATCH to 0662's own already-established `I_Delegation`
+  invariant, introduced with zero cross-reference. Beyond the invariant-name match, this file's Delegation/
+  delegation-chain content (§87.29-87.34, `Auth(C)=Auth(A)∩Delegation_{A→B}∩Delegation_{B→C}`) substantially
+  restates 0662's already-established delegation-chain-integrity discipline (`Delegation≠
+  AuthorityCreation`), and this file's Quorum (§87.19-87.21) and Veto (§87.22-87.24) mechanisms substantially
+  overlap 0662's already-established `DecisionProtocol` `Quorum`/`Veto` machinery, though this file does add
+  the useful clarifying framing that "a quorum does not tell us which option is best; it tells us whether
+  sufficient participation exists for the decision mechanism to operate legitimately."
+
+  Delivers a comprehensive Collective decision function
+  (`D*=F(Evidence, Preferences, Expertise, Authority, Constraints, Quorum, Veto, Policy)`, confirmed via a
+  constitutional-constraint-overriding-70%-support experiment, PASS), with `Constitution>Governance>
+  CollectivePreference` reconfirmed, and Decision classification determining aggregation rule
+  (`AggregationRule=f(DecisionType)`, confirmed via a one-size-fits-all-majority-voting experiment, PASS),
+  directly and genuinely extending the corpus's established decision-classification discipline (0659) into
+  the collective-aggregation domain. Delivers Historical collective-decision reconstruction (aggregation
+  rules valid at decision time, confirmed via a rule-retroactivity experiment, `HistoricalDecisionCorruption`
+  -- PASS), directly extending 0668's temporal-reasoning discipline.
+
+  **Delivers the file's capstone synthesis, explicitly declared "one of the most important distinctions
+  established in the entire mathematical sequence"**: a six-term (plus Truth as an independent seventh)
+  epistemic-institutional hierarchy: **`Truth≠Belief≠Preference≠Recommendation≠Decision≠Authorization`**,
+  each formally distinguished (Truth: what is the case; Belief: what an agent believes; Evidence: why we
+  believe it; Preference: what outcome an agent wants; Recommendation: what the model suggests; Decision:
+  what the authorized institution chose; Authorization: what is permitted to be done), confirmed via a
+  collapsed-single-status-field experiment (`SemanticCollapse` -- PASS) and an AI-recommendation-
+  automatically-executed experiment (`UnauthorizedTransition` -- PASS) -- this is a genuine, valuable, and
+  well-earned unification of many previously separately-established corpus distinctions (Decision≠
+  Authorization [0645], Recommendation≠Decision [0659/0669], EvidenceContribution≠DecisionAuthority [this
+  file]) into one coherent, named hierarchy, crystallizing "KnowledgeOS should not merely aggregate answers;
+  it should preserve the institutional semantics of how a decision became legitimate."
+
+  **Delivers eight new named invariants, ONE of which is a CONFIRMED exact-name match to 0662's invariant of
+  the same name**: `I_{Aggregation}`, `I_{AuthorityExpertise}`, `I_{CollectiveConstraint}`, `I_{Quorum}`
+  (not confirmed as an exact prior match, though the underlying Quorum concept was already covered at
+  0662), `I_{Delegation}` (DUPLICATE, see above), `I_{HistoricalAggregation}`, `I_{RecommendationDecision}`,
+  `I_{DecisionAuthorization}` -- continuing the "partial invariant-set collision" pattern (one exact match,
+  seven genuinely distinct or newly-named siblings).
+
+  Delivers Step 87's verdict **"STEP 87 — PASS,"** with the full model loop extended to `Truth→Observation→
+  Evidence→Knowledge/Belief→Causal+Statistical Model→Prediction/Counterfactual→Recommendation→Collective
+  Decision→Authorization→Action→Outcome→Observation`.
+
+  **Closes by identifying information theory as the next boundary**: "how much information do we actually
+  have, and how much information is required to make a reliable decision?", previewing entropy, mutual
+  information, information gain, sufficient statistics, and compression, framed around the practically
+  important production-software question "when we compress, summarize, embed, index, or abstract
+  organizational knowledge, what information is lost — and can that loss change a decision?" Opens
+  "Step 88 -- [Information Theory]." **This should be compared against 0643's already-established
+  information-theoretic epistemic-quality treatment** (genuine entropy/mutual-information/information-gain
+  calculations, `H(0.5)=1 bit`, `H(0.8)≈0.722 bits`), flagged for direct confirmation once 0673 is read --
+  given this file's specific emphasis on compression/summarization/information-sufficiency-for-decisions
+  (a software-engineering-adjacent concern 0643 did not address), a genuine distinct deepening seems
+  plausible rather than a pure collision, consistent with the pattern established across most of this
+  span's flagged comparisons. No actual code execution reported in this file.
+introduces:
+  - concept: "Genuinely new formal social-choice theory: Arrow's Impossibility Theorem correctly summarized (the corpus's first explicit engagement with this classical result) and a worked Condorcet cycle demonstrating non-transitive majority preference"
+  - concept: "Preference≠Expertise and the sharpened EpistemicMajorityError (headcount does not determine truth probability), extending the corpus's authority-separation family with a genuinely new three-way Preference/Expertise/Authority distinction"
+  - concept: "Strategic voting and Agenda manipulation with FormalAuthority≠EffectiveInfluence, extending 0670's/0671's strategic-behavior discipline into the voting/aggregation domain specifically"
+  - concept: "A correct rejection of naive cross-agent probability averaging, extending 0649's/0655's evidence-independence discipline into disagreeing-probability-estimate aggregation specifically"
+  - concept: "CONFIRMED fifth exact-name invariant duplication: I_Delegation matches 0662's own invariant of the same name, with substantial additional overlap in Quorum/Veto/delegation-chain content"
+  - concept: "The capstone Truth≠Belief≠Preference≠Recommendation≠Decision≠Authorization hierarchy, a genuine and valuable unification of many previously separately-established corpus distinctions, explicitly declared one of the sequence's most important results"
+  - concept: "A flagged comparison point: Step 88's information-theory preview against 0643's already-established information-theoretic epistemic-quality treatment"
+defines:
+  - concept: "EpistemicMajorityError"
+    definition: "The number of agents holding a belief does not determine its truth probability; a numerical majority of engineers estimating low risk based on weak collective reasoning must not override a minority specialist's evidence-backed higher risk estimate purely by vote count — epistemic questions require evidence-weighted, not headcount-weighted, resolution"
+  - concept: "FormalAuthority≠EffectiveInfluence"
+    definition: "An agent controlling the agenda, information presentation, or sequencing of a collective decision process can materially shape its outcome even without formal voting rights or decision authority; effective influence over a decision is not fully captured by the formal authority structure alone"
+  - concept: "The Truth≠Belief≠Preference≠Recommendation≠Decision≠Authorization hierarchy"
+    definition: "Seven institutionally and epistemically distinct objects that must never be collapsed into a single generic status field: Truth (what is the case, independent of anyone's knowledge), Belief (what an agent believes), Evidence (why it is believed), Preference (what outcome an agent wants), Recommendation (what a model/analysis suggests), Decision (what the authorized institution has chosen), and Authorization (what is actually permitted to be executed)"
+refines:
+  - concept: "0662's (Step 78's) already-established Delegation≠AuthorityCreation discipline and I_Delegation invariant"
+    refinement: "CONFIRMED SUBSTANTIAL RE-DERIVATION: this file's delegation-chain formalization and its I_Delegation invariant duplicate 0662's already-established content, including an exact-name invariant match, with zero cross-reference"
+  - concept: "0662's already-established Quorum and Veto collective-decision mechanisms"
+    refinement: "Substantially overlapped in mechanism content, though this file adds a useful clarifying reframing (quorum establishes legitimacy of participation, not which option is best) not explicitly stated at 0662"
+  - concept: "0645's Decision≠Authorization, 0659's/0669's Recommendation≠Decision"
+    refinement: "Directly and genuinely unified, alongside this file's own new EvidenceContribution≠DecisionAuthority distinction, into the capstone six-term Truth≠Belief≠Preference≠Recommendation≠Decision≠Authorization hierarchy — a valuable synthesis, not a duplication"
+  - concept: "0649's/0655's evidence-independence discipline"
+    refinement: "Directly and genuinely extended into cross-agent probability-estimate aggregation specifically (rejecting naive averaging of disagreeing P(H) estimates)"
+  - concept: "0670's/0671's strategic-behavior/mechanism-design discipline"
+    refinement: "Directly and genuinely extended into the voting/aggregation domain via Strategic voting and Agenda manipulation"
+  - concept: "0659's decision-classification discipline (Advisory/Automated/Human/Delegated/Emergency)"
+    refinement: "Directly and genuinely extended into collective-decision aggregation-rule selection (AggregationRule=f(DecisionType))"
+  - concept: "0668's temporal-reasoning discipline"
+    refinement: "Directly and genuinely extended into historical collective-decision reconstruction using the aggregation rules valid at decision time"
+  - concept: "0643's already-established information-theoretic epistemic-quality treatment"
+    refinement: "LIKELY RELATED, NOT YET CONFIRMED: Step 88's opening preview (entropy, mutual information, information gain, compression/summarization sufficiency) should be directly compared against 0643's genuine entropy/information-gain calculations once 0673 is read; this file's specific emphasis on compression/summarization-for-production-software suggests a plausible distinct deepening rather than pure collision"
+contradicts: []
+repeats:
+  - "0662 (I_Delegation, exact-name duplicate; Quorum/Veto/delegation-chain mechanism content substantially overlapped)"
+bridge_candidates:
+  - "Read Step 88's actual file (0673) and directly compare against 0643's already-established information-theoretic epistemic-quality treatment (genuine entropy/mutual-information/information-gain calculations) — determine whether Step 88 delivers genuinely new content specific to knowledge compression/summarization sufficiency for production software (a concern 0643 did not address) or substantially retreads 0643's foundational information-theory machinery."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the MIXED resolution of the comparison flagged at 0671 — genuinely new formal social-choice content (Arrow's Impossibility Theorem, Condorcet cycle, Preference≠Expertise≠Authority three-way distinction, strategic voting/agenda manipulation, correct rejection of naive cross-agent probability averaging) alongside a CONFIRMED fifth exact-name invariant duplicate (I_Delegation, matching 0662) and substantial Quorum/Veto/delegation-chain mechanism overlap with 0662."
+  - "dimension-registry.md: record the capstone Truth≠Belief≠Preference≠Recommendation≠Decision≠Authorization hierarchy, explicitly declared one of the sequence's most important results, unifying Decision≠Authorization (0645), Recommendation≠Decision (0659/0669), and this file's new EvidenceContribution≠DecisionAuthority into one coherent named chain."
+  - "dimension-registry.md: record verdict 'STEP 87 — PASS' and the flagged comparison point for Step 88's information-theory preview against 0643's already-established entropy/mutual-information/information-gain treatment, pending confirmation at 0673."
+anchor_test:
+  anchor: "0671's flagged comparison against 0662's collective-decision machinery; 0662's Delegation≠AuthorityCreation and I_Delegation invariant; 0645's Decision≠Authorization; 0659's/0669's Recommendation≠Decision; 0649's/0655's evidence-independence discipline; 0670's/0671's strategic-behavior discipline; 0643's information-theoretic treatment"
+  supports_dimension: "RESOLVES the comparison flagged at 0671 as a genuinely MIXED result — this file delivers substantial, correctly-stated new formal social-choice-theory content (Arrow's theorem, Condorcet cycles, strategic voting, agenda manipulation) not present in 0662's more operational treatment, while simultaneously and confirmedly duplicating 0662's I_Delegation invariant by exact name and substantially overlapping its Quorum/Veto/delegation-chain mechanism content. This mixed result is consistent with this reconstruction's now well-established finding that files in the Steps 65-87 span combine genuine collision with genuine new contribution rather than falling cleanly into either category. The capstone Truth≠Belief≠Preference≠Recommendation≠Decision≠Authorization hierarchy is a genuinely valuable, well-earned synthesis unifying several previously separate corpus distinctions, explicitly and appropriately flagged by the file's own text as one of its most significant results"
+  refines_or_contradicts: "RESOLVES 0671's flagged comparison as mixed: confirms both genuine new content (Arrow's theorem, Condorcet cycle, strategic voting) and a genuine collision (I_Delegation exact-name match, Quorum/Veto overlap) against 0662; directly and genuinely unifies 0645's Decision≠Authorization and 0659's/0669's Recommendation≠Decision into the capstone hierarchy; directly extends 0649's/0655's evidence-independence discipline, 0670's/0671's strategic-behavior discipline, 0659's decision-classification discipline, and 0668's temporal-reasoning discipline; flags a further, not-yet-confirmed comparison point for Step 88 against 0643; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The correctly-stated Arrow's Impossibility Theorem (§87.6, with its five classical conditions correctly named) and the correctly-worked Condorcet cycle (§87.2-87.3, A≻B, B≻C, C≻A from pairwise majority) are directly checkable, mathematically correct social-choice-theory results not present anywhere in this reconstruction's prior records, confirming genuine new content."
+  - "This file's §87.75 invariant I_Delegation ('delegated authority cannot exceed the authority validly delegated by the delegator') shares the identical symbolic name and substantively identical content with 0662's own already-established I_Delegation invariant, directly and mechanically confirming a fifth exact-name invariant duplication in this session's tracked pattern."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 88's actual content (0673), once read, confirms genuinely new information-theory content specific to compression/summarization sufficiency for production software, or substantially retreads 0643's already-established entropy/mutual-information/information-gain machinery."
+tier2_triggered: true
+tier2_reason: "RESOLVES the comparison flagged at 0671 as a genuinely MIXED result: delivers substantial, correctly-stated new formal social-choice-theory content (Arrow's Impossibility Theorem, a worked Condorcet cycle, Preference≠Expertise≠Authority, strategic voting, agenda manipulation, a correct rejection of naive cross-agent probability averaging) while also confirming a fifth exact-name invariant duplication (I_Delegation, matching 0662) plus substantial Quorum/Veto/delegation-chain overlap. Delivers the valuable capstone Truth≠Belief≠Preference≠Recommendation≠Decision≠Authorization hierarchy, explicitly declared one of the sequence's most important results. Flags a further comparison point for Step 88 against 0643's information-theory treatment. Verdict 'STEP 87 — PASS.'"

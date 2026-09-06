@@ -1,0 +1,121 @@
+sequence: M0009
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-201400_not-algebraic-geometry-or-topology-first-they-attack-the-wrong-problem.md
+title: "Not Algebraic Geometry or Topology First -- They Attack the Wrong Problem: a Nine-Field Research-Priority Ranking, the Six-Component Atomic Knowledge Claim k_i=(q_i,v_i,p_i,E_i,t_i,A_i), the Epistemic-Uncertainty-vs-State-Discrepancy Distinction, and the Three Observation/Knowledge-Change Cases"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: b
+  secondary: c1
+  secondary_note: "two-part document: Part 1 is a research-methodology/prioritization essay (which external mathematical fields to study next, and in what order, explicitly arguing against premature algebraic geometry/topology); Part 2 (later the same day) applies Knowledge Space Theory more rigorously to produce the pass's first genuinely six-component atomic knowledge-claim tuple"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0009
+importance: high
+confidence: high
+about: >
+  Part 1 delivers an explicit nine-field research-priority ranking for KnowledgeOS's mathematical
+  foundations, arguing that "algebraic geometry or algebraic topology... attack the wrong gaps"
+  because the theory does not yet have the mathematical object whose topology/geometry would be
+  studied. Ranking: (1) Dynamic Epistemic Logic / belief revision [how K_t changes]; (2) Probability/
+  Measure Theory [how claims are measured]; (3) Information Theory [KL/Jensen-Shannon divergence,
+  cross-entropy, mutual information as candidate D functions for Delta_t=D(K_t,I_t)]; (4)
+  Statistical Decision Theory [a*=argmin_a E[L(a,theta)|K_t] as the first concrete decision rule
+  proposed for KnowledgeOS's Proposal->Decision->Action chain]; (5) Formal/analytic epistemology
+  [justified-true-belief, reliabilism, evidentialism, Bayesian epistemology as HYPOTHESIS sources,
+  explicitly not architectural truth]; (6) Machine Learning [only for "can this representation be
+  operationalized," not "what is knowledge," explicitly warning against letting model architectures
+  dictate ontology]; (7) Game Theory [relevant only once multiple knowers/distributed knowledge
+  enter, explicitly deferred]; (8) Topology [needs the object first]; (9) Algebraic Geometry
+  [last, "only if the emerging mathematics demands it"]. Explicitly instructs: investigate
+  compatibility of these external theories with existing KnowledgeOS concepts, "do not import any
+  theory into KnowledgeOS," and wait for the corpus extraction (the "1,155-file" pass) to finish
+  before letting external theories modify the model.
+
+  **PART 2 DELIVERS THE PASS'S FIRST FULLY SIX-COMPONENT ATOMIC KNOWLEDGE CLAIM**: k_i=
+  (q_i,v_i,p_i,E_i,t_i,A_i) -- proposition/question, observed value, epistemic measurement,
+  evidence, temporal validity, authority/provenance -- explicitly NOT k_i=sentence and explicitly
+  NOT k_i=probability-alone; a genuinely more complete answer to the "what is k_i" question left
+  open through M0001-M0007.
+
+  **DELIVERS THE THREE-WAY 𝒦/K_t/K̂_t DISTINCTION IN KNOWLEDGEOS-SPECIFIC TERMS**: 𝒦 (Knowledge
+  Space, all admissible states) != K_t (underlying/latent actual epistemic state) != K̂_t
+  (measured/extracted state KnowledgeOS currently infers) -- directly imported from KST's
+  latent-state/assessment distinction but given KnowledgeOS-specific interpretation.
+
+  **DELIVERS THE EPISTEMIC-UNCERTAINTY VS STATE-DISCREPANCY NON-COLLAPSE**: U_t(q_i)=f(p_i)
+  (how certain is the measurement) is explicitly NOT the same quantity as D_t=d(K̂_t,I_t) (how far
+  the measured state is from the ideal state) -- with the sharp worked example: high p (0.999) AND
+  large D simultaneously means "we are highly certain that the system is wrong," a genuinely new,
+  previously-unstated distinction in this pass's K_t/I_t/Delta_t apparatus.
+
+  **RESOLVES (PROVISIONALLY) THE RECURRING OBSERVATION-VS-KNOWLEDGE-IDENTITY QUESTION** left open in
+  M0005/M0006/M0007: three explicit cases -- Case A (O_t=O_{t+1}, K_t!=K_{t+1}: new evidence/
+  dimension discovered, observation unchanged); Case B (O_t!=O_{t+1}: the observed thing itself
+  changed); Case C (both). This is the first document in this pass to give a structured, worked
+  answer rather than leaving the question as an open item.
+
+  **REDEFINES Zero WITH AN EXPLICIT ANTI-COLLAPSE CAVEAT**: Zero(K_t,I_t,E_t), with Z_t=0 (i.e.
+  K̂_t equiv I_t on the evaluated dimensions/metric) explicitly NOT implying Truth=1, "because our
+  measurement itself may be uncertain" -- preserving confidence/authority as a distinct axis from
+  contract-satisfaction.
+
+  **DELIVERS THE VARIABLE-DIMENSIONALITY MEASURED STATE**: K̂_t(O)={k_{i,t} | i in D_t(O)}, with
+  |D_t(O)| explicitly NOT fixed -- new dimensions can be discovered by further investigation
+  without the observation itself changing (directly resolving part of Case A above).
+
+  **DELIVERS AN EXPLICIT "WHAT KST CONTRIBUTES vs WHAT KST DOES NOT SOLVE" TABLE**, concluding
+  KnowledgeOS != KST but rather "KST-compatible state mathematics + epistemic semantics + temporal
+  semantics + provenance + governance" -- an explicit non-collapse of an imported formalism into
+  the target theory, naming eleven things KST leaves unsolved (truth, provenance, authority,
+  justification, historical reconstruction, observation identity, institutional knowledge,
+  contextual knowledge, non-monotonic revision, Ideal-State meaning, the atomic knowledge unit
+  itself).
+
+  **REDUCES THE PASS'S ACCUMULATED GAP LIST TO SIX NAMED RESEARCH PROBLEMS (G1-G6)**: G1 Atomic
+  Knowledge (define k_i, atomicity criterion); G2 State space (mathematical structure of 𝔎 -- set
+  system? lattice? measurable space?); G3 Probability (define P(k_i|E_leq_t), separate uncertainty
+  from truth/authority); G4 Ideal State (define I_t(O,C,G) mathematically -- "probably the most
+  important remaining gap"); G5 Distance (define Delta_t=d(K̂_t,I_t), explicitly warning it "may not
+  be Euclidean"); G6 Dynamics (define K_t--T-->K_t+1 and classify transition types: new
+  information/correction/discovery/revision/observation-change/identity-change).
+introduces:
+  - concept: "The nine-field external-mathematics research-priority ranking (DEL/belief revision > probability/measure theory > information theory > statistical decision theory > formal epistemology > ML > game theory > topology > algebraic geometry), with explicit reasons for deferring topology and algebraic geometry until 'the mathematics demands it'"
+  - concept: "The six-component atomic knowledge claim k_i=(q_i,v_i,p_i,E_i,t_i,A_i) -- the pass's first fully-specified answer to 'what is k_i'"
+  - concept: "Epistemic uncertainty U_t(q_i)=f(p_i) as explicitly distinct from state discrepancy D_t=d(K-hat_t,I_t), with the worked example of high-confidence-that-the-system-is-wrong"
+  - concept: "The three observation/knowledge-change cases (A: knowledge changes, observation doesn't; B: observation changes; C: both), provisionally resolving a question left open in M0005-M0007"
+  - concept: "Variable-dimensionality measured state K-hat_t(O)={k_i,t | i in D_t(O)} with |D_t(O)| not fixed"
+  - concept: "a*=argmin_a E[L(a,theta)|K_t] as the first concrete decision rule proposed for KnowledgeOS's Proposal->Decision->Action chain"
+  - concept: "The explicit non-identity 'KnowledgeOS = KST-compatible state mathematics + epistemic semantics + temporal semantics + provenance + governance', with an eleven-item list of what KST does NOT solve"
+  - concept: "The six named research problems G1 (Atomic Knowledge) through G6 (Dynamics), consolidating the pass's accumulated open questions"
+defines: []
+refines:
+  - concept: "M0005/M0006/M0007's K_t/I_t/Delta_t apparatus and unresolved observation-vs-identity question, now given a provisional three-case resolution and a fully six-component atomic-unit definition"
+  - concept: "M0005/M0007's Delta_t=D(K_t,I_t) function, now given concrete candidate forms (KL divergence, Jensen-Shannon divergence, cross-entropy, mutual information, rate-distortion) rather than left as an abstract placeholder"
+contradicts: []
+repeats:
+  - concept: "The Zero(K,G,EC)-as-contract-satisfaction and Knower-owns-frame invariants already established in M0005/M0006, restated here without new argument in the Zero-redefinition section"
+bridge_candidates:
+  - "'Do not import any theory into KnowledgeOS... preserve provenance and keep external theory, corpus evidence, inference, and proposed formalization strictly separate' -- an explicit anti-import/anti-collapse instruction structurally identical to this reconstruction's own hypothesis-never-becomes-definition discipline, this time applied to importing external mathematical/philosophical fields rather than internal corpus concepts."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0009 as delivering the pass's first six-component atomic knowledge claim k_i=(q_i,v_i,p_i,E_i,t_i,A_i), the epistemic-uncertainty-vs-state-discrepancy non-collapse, a provisional three-case resolution of the observation-vs-knowledge-identity question, and a nine-field external-mathematics research-priority ranking that explicitly defers topology/algebraic geometry until the underlying mathematical object exists."
+anchor_test:
+  anchor: "This reconstruction's own anti-import/anti-collapse discipline (hypothesis never silently becomes definition) and M0005-M0007's unresolved observation-vs-knowledge-identity question"
+  supports_dimension: "Delivers a provisional resolution of the observation/knowledge-identity question via three explicit cases, and a concrete six-component atomic unit -- genuine forward progress rather than restatement"
+  refines_or_contradicts: "refines (M0005/M0006/M0007)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The six-component atomic knowledge claim k_i=(q_i,v_i,p_i,E_i,t_i,A_i) is the first fully-specified structure in this pass answering the repeatedly-posed 'what is k_i' question (open since M0005)."
+  - "The worked epistemic-uncertainty-vs-state-discrepancy example (p=0.999 with large D meaning 'highly certain the system is wrong') is a concrete, non-trivial distinction not present in any earlier file of this pass."
+undefined_concepts:
+  - "The precise mathematical structure of 𝔎(O,C,R) (KnowledgeOS's generalized Knowledge Space) -- named but explicitly 'not yet a proven theorem, the strongest candidate formulation'"
+open_questions:
+  - "Whether G1-G6 (the six consolidated research problems) are addressed, in this order or another, later in this pass's chronological corpus."
+tier2_triggered: true
+tier2_reason: "Delivers the pass's first fully-specified six-component atomic knowledge unit, a genuinely new epistemic-uncertainty-vs-state-discrepancy distinction, a provisional resolution of the recurring observation-vs-knowledge-identity question via three explicit cases, and a clear, well-reasoned external-mathematics research-priority ranking with explicit anti-premature-formalization discipline -- substantial forward progress beyond M0005-M0007's repeated open questions."

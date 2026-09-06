@@ -1,0 +1,109 @@
+sequence: "0093"
+path: docs/knowledgeos/brainstorming/20260822-0222-knowledgeos-reasoning-character-after-tarka-analysis.md
+title: "KnowledgeOS Extraction: Reasoning Character After Tarka Analysis"
+date: "2026-08-22"
+bytes: 8900
+
+model:
+  primary: x
+  secondary: [c1, g]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: "0092"
+
+importance: high
+confidence: high
+
+about: >
+  A direct, disciplined elaboration of 0092's Tarka/Nyāya research into five new H-KOS-* candidate
+  invariants (reusing the existing naming convention), a new "Updated KnowledgeOS Cognitive
+  Architecture" pipeline diagram, and an explicit "what Tarka does NOT add" boundary list -- all
+  scoped to the reasoning/validation LAYER, explicitly not the kernel identity layer.
+
+introduces:
+  - "Central reframing: 'KnowledgeOS preserves the conditions under which reasoning can transform
+    evidence into trustworthy knowledge' (extends the prior 'preserves trustworthy knowledge
+    evolution' framing with an explicit reasoning-transformation middle step, rejecting the 'Evidence
+    -> Magic AI -> Truth' black-box pattern)"
+  - "H-KOS-Reasoning-Separation-001: KnowledgeOS SHALL distinguish reasoning that PRODUCES knowledge
+    (Anumāna/Inference Engine) from reasoning that EVALUATES/CHALLENGES/ELIMINATES knowledge (Tarka/
+    Critical Reasoning Engine)"
+  - "H-KOS-Reasoning-Provenance-001: derived knowledge SHALL preserve the reasoning path that produced
+    it (premises, transformation rules, assumptions, conclusion) -- direct engineering translation of
+    the five-membered syllogism's structure"
+  - "H-KOS-Vyapti-001: KnowledgeOS SHALL preserve the logical relationship connecting evidence to
+    conclusion for every derived knowledge object -- called 'perhaps the most architecturally valuable
+    concept' in this file"
+  - "H-KOS-Uncertainty-001: KnowledgeOS SHALL represent uncertainty as a structured epistemic state,
+    not as missing data -- direct extension of Unknown Preservation via Saṃśaya"
+  - "H-KOS-Fallacy-001: KnowledgeOS SHALL detect and preserve invalid reasoning patterns (circular
+    dependency, infinite regress, self-reference) rather than silently accepting their conclusions"
+  - "'Updated KnowledgeOS Cognitive Architecture' pipeline: Knower -> Observation -> Evidence Layer ->
+    Reasoning Layer (Inference/Analogy/Deduction/Abduction) -> Validation Layer (Tarka/Contradiction
+    Check/Fallacy Detection) -> Knowledge State -> Decision Support -- the richest single pipeline
+    diagram so far, explicitly placing 'Knower' at the top (consistent with 0091's Agency addition)"
+  - "Explicit 'What Tarka Does NOT Add' list: no new kernel dimension, no new bounded context, no new
+    storage model, no new authority model, no AI architecture decision"
+  - "P4 Candidate Additions summary table (6 rows, 2 'Strong candidate', 4 'Candidate') -- explicitly
+    deferred pending comparison against EKS/PKS/AIP evidence before promotion"
+
+defines: []
+
+refines:
+  - "0092's TARKA-001..005: restated as H-KOS-* named candidates (reusing the existing scheme, per the
+    positive pattern first seen at 0090) rather than carrying TARKA-n forward -- an implicit
+    consolidation toward H-KOS-* as the corpus's most-reused naming convention, though TARKA-n and
+    H-KOS-* are never explicitly reconciled as the same objects by either document"
+  - "0091's Kernel-vs-Reasoning-Engine boundary: reapplied concretely -- Reasoning Layer and Validation
+    Layer both sit BELOW the Knowledge State in this file's pipeline, consistent with reasoning
+    engines operating inside, not as, the kernel"
+
+contradicts: []
+
+repeats:
+  - concept: "Tarka as assistant to pramanas, not independent knowledge source"
+    canonical_source: "0092"
+    novelty: none
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+# MD-015: registry updates (see 01_source-analysis/dimension-registry.md)
+registry_updates:
+  - "Unknown Preservation: refined via H-KOS-Uncertainty-001 (Saṃśaya as structured, not missing, data)"
+  - "New entries warranted: Reasoning-Separation, Reasoning-Provenance, Vyapti/Rule-Preservation,
+    Fallacy-Detection -- all first appearing at 0092 (as TARKA-n) and restated here as H-KOS-* with no
+    further independent corroboration beyond 0092 itself"
+
+# MD-014 anchor_test against 0087 (Minimal_Kernel_Candidate_0087)
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Unknown Preservation"]
+  refines_or_contradicts: "no dimension-count change; elaborates the Reasoning/Validation layer beneath the kernel, not the kernel's own dimension set"
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true   # restates 0092's argued mapping, not a new independent argument
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true   # positive: consolidates toward H-KOS-* rather than carrying TARKA-n forward
+
+key_evidence:
+  - "Five new candidates, all named within the existing H-KOS-* scheme -- the corpus's clearest
+    instance yet of naming-convention consolidation rather than proliferation"
+  - "Explicit, itemized negative list ('what Tarka does NOT add') -- a clean, checkable scope boundary"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether TARKA-n (0092) and the H-KOS-* restatements here are ever explicitly declared the same
+    candidates by a later file, or remain informally-linked-but-never-reconciled"
+
+tier2_triggered: true
+tier2_reason: >
+  Five new candidate invariants (all reusing the H-KOS-* scheme, a positive naming-discipline signal),
+  a new richest-yet cognitive-architecture pipeline diagram, and a clean explicit negative-scope list --
+  directly extends 0092's findings into concrete, checkable candidates without expanding the kernel's
+  own dimension count, relevant to the dimension-registry (MD-015) and to §18/§23.

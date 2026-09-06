@@ -1,0 +1,46 @@
+sequence: 290
+path: docs/knowledgeos/brainstorming/kernel/20260825-145918-per-agent-projection-divergence-without-divergent-reality-duplicate.md
+title: "Per-Agent Projection Divergence Without Divergent Reality (Duplicate)"
+date: "2026-08-25"
+bytes: 14500
+model:
+  primary: c1
+  secondary: g1
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 289
+importance: low
+confidence: high
+about: >
+  Confirmed byte-identical duplicate of 0289 (diff run, zero differences); filename literally ends
+  '-duplicate.md'. The eighth verified duplicate-file instance in this corpus, following the established
+  duplicate-suffix pattern (0217/0216, 0220/0219, 0236/0235, 0246/0245, 0248/0247, 0250/0249, plus 0267's
+  intra-file self-duplication and 0277's trailing full-file duplicate of 0275). No independent analytical
+  content; canonical record is 0289.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Full content of 0289 (per-agent projection divergence, epistemic orientation, Projection Compatibility Principle, four-way truth-sense separation, six-dimension Progress vector)"
+    canonical_source: 289
+    novelty: none
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "0289 (canonical)"
+  supports_dimension: "None -- duplicate reproduction"
+  refines_or_contradicts: "identical to 0289"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Confirmed verbatim duplicate of 0289 (diff verified byte-identical); no independent content to analyze."

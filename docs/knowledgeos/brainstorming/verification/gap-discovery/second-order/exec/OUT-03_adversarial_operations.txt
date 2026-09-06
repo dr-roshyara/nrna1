@@ -1,0 +1,139 @@
+
+==============================================================================
+SO-EXP-01  CONGRUENCE MATRIX — executing Step 259 s259.9 (17 rows, all 'UNRESOLVED')
+==============================================================================
+  bounded state space: 208 states
+  abstractions: 6   operations: 8   variants: 2
+  cells to compute: 96
+
+
+  ---- operation dependency variant: BLIND (ignores provenance / supersession history) ----
+  abstraction                       Add     Remove     Revise  Transform  Supersede      Merge   Withdraw     Reject
+  ------------------------------------------------------------------------------------------------------------------
+  F1 content-only                  PASS       FAIL       FAIL       FAIL       PASS       FAIL       PASS       PASS
+  F2 content+status                PASS       FAIL       FAIL       FAIL       FAIL       FAIL       FAIL       FAIL
+  F3 id+content+status             PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+  F4 K=(A,R) [TERMINAL]            PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+  F5 K=(A,R)+mergesrc              PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+  F6 full state [control]          PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+
+  ---- operation dependency variant: SENSITIVE (reads provenance / supersession history) ----
+  abstraction                       Add     Remove     Revise  Transform  Supersede      Merge   Withdraw     Reject
+  ------------------------------------------------------------------------------------------------------------------
+  F1 content-only                  PASS       FAIL       FAIL       FAIL       FAIL       FAIL       PASS       PASS
+  F2 content+status                PASS       FAIL       FAIL       FAIL       FAIL       FAIL       FAIL       FAIL
+  F3 id+content+status             PASS       PASS       FAIL       FAIL       FAIL       PASS       PASS       PASS
+  F4 K=(A,R) [TERMINAL]            PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+  F5 K=(A,R)+mergesrc              PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+  F6 full state [control]          PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+
+==============================================================================
+WITNESSES for the TERMINAL model F4 = K=(A,R)
+==============================================================================
+
+  No congruence failure found for F4 in either variant, over this domain.
+
+==============================================================================
+SUMMARY
+==============================================================================
+  [blind    ] F1 content-only            FAILS on ['Remove', 'Revise', 'Transform', 'Merge']
+  [blind    ] F2 content+status          FAILS on ['Remove', 'Revise', 'Transform', 'Supersede', 'Merge', 'Withdraw', 'Reject']
+  [blind    ] F3 id+content+status       CONGRUENT(tested)
+  [blind    ] F4 K=(A,R) [TERMINAL]      CONGRUENT(tested)
+  [blind    ] F5 K=(A,R)+mergesrc        CONGRUENT(tested)
+  [blind    ] F6 full state [control]    CONGRUENT(tested)
+  [sensitive] F1 content-only            FAILS on ['Remove', 'Revise', 'Transform', 'Supersede', 'Merge']
+  [sensitive] F2 content+status          FAILS on ['Remove', 'Revise', 'Transform', 'Supersede', 'Merge', 'Withdraw', 'Reject']
+  [sensitive] F3 id+content+status       FAILS on ['Revise', 'Transform', 'Supersede']
+  [sensitive] F4 K=(A,R) [TERMINAL]      CONGRUENT(tested)
+  [sensitive] F5 K=(A,R)+mergesrc        CONGRUENT(tested)
+  [sensitive] F6 full state [control]    CONGRUENT(tested)
+
+  Per s259.16, every PASS above reads 'no counterexample found in the tested
+  domain', never 'congruence proven'.  Every FAIL is a genuine refutation:
+  a single counterexample suffices.
+
+==============================================================================
+SO-EXP-03  Operation classification per s259.7, then the correct test per class
+==============================================================================
+
+  CLASS 1 — state transformation  (11)
+    Add             [256.2/256.4 ] K x X -> K'
+    Remove          [256.2/256.5 ] K x ID -> K'
+    Revise          [256.2/256.6 ] K x X' -> K'
+    Transform       [256.2/256.7 ] K x P -> K' : the paradigm state transition
+    Supersede       [256.2/256.8 ] K x X x X -> K'
+    Merge           [256.2/256.9 ] K x X x X -> K'
+    Split           [256.2/256.10] K x X -> K'
+    Reject          [256.2/256.11] status change; s256.11: Reject != Remove
+    Withdraw        [256.2/256.12] status change; s256.12: Withdraw != Remove
+    Promote         [259.7       ] status change; == Transform here
+    Reintroduce     [259.7       ] inverse of Withdraw; state-changing
+
+  CLASS 2 — epistemic assessment  (2)
+    Validate        [256.20      ] Validate: K x E -> Result; s256.20 boxes Validate != Transform
+    Assess          [259.7       ] Assess: K x X -> Assessment
+
+  CLASS 3 — governance operation  (1)
+    Authorize       [259.7       ] Actor x Action x Policy -> Decision; s259.7: NOT state closure
+
+  CLASS 4 — audit/history operation  (3)
+    Replay          [259.7       ] reads H, not K
+    EverContested   [first-order ] reads H; a HISTORY predicate
+    RevisionCount   [first-order ] reads H; a HISTORY predicate
+
+==============================================================================
+Only CLASS 1 enters the primary congruence test (s259.8) — running it for F4
+==============================================================================
+  class-1 implemented here : ['Add', 'Remove', 'Revise', 'Transform', 'Supersede', 'Merge', 'Reject', 'Withdraw']
+  class-1 NOT implemented  : ['Split', 'Promote', 'Reintroduce']
+    (Split needs the semantic-preservation invariant s256.10 leaves open;
+     Promote == Transform; Reintroduce is Withdraw's inverse.)
+
+  operation          blind   sensitive
+  ------------------------------------
+  Add                 PASS        PASS
+  Remove              PASS        PASS
+  Revise              PASS        PASS
+  Transform           PASS        PASS
+  Supersede           PASS        PASS
+  Merge               PASS        PASS
+  Reject              PASS        PASS
+  Withdraw            PASS        PASS
+
+  F4 = K=(A,R) congruent for ALL tested class-1 operations: True
+
+==============================================================================
+The test s259.8 prescribes for the OTHER classes, applied
+==============================================================================
+  CLASS 2 — is Assess DETERMINED by F4?  pairs=128  violations=0  => DETERMINED
+
+  CLASS 4 (audit/history) — the decisive correction:
+    EverContested and RevisionCount read HISTORY.  Per s257.32:
+      'History dependence of implementation != history dependence of state
+       semantics.  Only the second disproves state sufficiency.'
+    and s259.8 excludes non-state-transforming operations from the congruence
+    test.  A history-reading QUERY therefore does NOT refute K=(A,R); it shows
+    only that the SYSTEM must retain H somewhere — which s247 and s265 grant.
+
+    => The first-order EXP-3 tested a class-4 predicate against the class-1
+       criterion.  Its arithmetic was correct; its inference was not.
+       CORRECTED HERE.
+
+==============================================================================
+VERDICT OF SO-EXP-03
+==============================================================================
+  Across the full corpus operation vocabulary (17 named operations, five
+  classes), the terminal model K=(A,R):
+    * is congruent for every implemented class-1 operation, both dependency
+      variants, over a 208-state domain;
+    * determines every class-2 assessment reading only state-visible fields;
+    * is not challenged by class-3/4/5, which s259.8 excludes by construction.
+
+  The open remainder of s256.32 is therefore NOT LOAD-BEARING for K: the answer
+  does not vary across the open choice.  A choice that cannot change the answer
+  is not a normative decision that needs making.
+
+  WHAT REMAINS is a different question — SO-EXP-02: congruence is necessary but
+  not sufficient.  The live issue is which INVARIANTS are mandatory and whether
+  K can express them.

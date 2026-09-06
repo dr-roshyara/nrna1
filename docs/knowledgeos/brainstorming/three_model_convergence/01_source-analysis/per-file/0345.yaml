@@ -1,0 +1,117 @@
+sequence: 345
+path: docs/knowledgeos/brainstorming/kernel/classification/contradiction-map.md
+title: "Kernel Corpus Contradiction Map (Phase B, final artifact) -- T-1..T-8 fully resolved-to-standing-status"
+date: "2026-08-25"
+bytes: 13605
+model:
+  primary: c1
+  secondary: g1
+source_role: CRITICAL_REVIEW
+canonical_source: 345
+importance: critical
+confidence: high
+about: >
+  The fourth landmark corpus-wide meta-analysis artifact (companion to 0311/dependency-map, 0329/
+  cluster-map, 0342/00_CENSUS), explicitly the 'Phase B, final artifact.' Applies a rigorous nine-field
+  schema to each of the T-1..T-7 temptations first named at 0311/0342, PLUS a new T-8, systematically
+  determining for each whether it is a genuine contradiction, a same-word conflict, or a definition lag --
+  explicitly still 'resolving nothing, adjudicating no formal Kernel question, C-15 included.' Major
+  findings directly bearing on this reconstruction's own tracked threads: (1) T-1 (the over-large
+  aggregate) is traced to an EVEN EARLIER origin, 20260819-205757, four days before 110248 and OUTSIDE the
+  kernel/ corpus entirely -- confirmed as ORIGINAL Phase-1 project reasoning re-derived three further
+  times, not a Phase-2 rediscovery, now a FOUR-arrival pattern; (2) T-2 (eighth epistemic state)
+  reclassified as 'partly a same-word conflict' -- only 3 of 5 arrivals are genuine extension proposals;
+  (3) T-3 (Knowledge as Kernel primitive) becomes explicitly THREE-WAY with the addition of Williamson's
+  primitivism (162824 = this reconstruction's own 0320) as a genuinely distinct third position that
+  UNDERCUTS rather than mediates between the other two; (4) T-4 (identity primitive-vs-relational) remains
+  genuinely unreconciled, asymmetric (only the ziran challenge is K4); (5) T-5 (plurality-vs-contradiction)
+  confirmed as 'the live F-CM-1a drift occurring inside the corpus,' explicitly NOT reopened here; (6) T-6
+  (Zero Lens definition lag) explicitly reclassified as NOT a contradiction, just a ~17h definition lag;
+  (7) T-7 (research-to-architecture leakage) confirmed genuine and structural. Introduces **T-8** (Is a
+  knowledge projection a measure?) -- this reconstruction's own tracked 0327-vs-0328 pair -- and makes the
+  single most important self-correcting statement in this reconstruction's entire corpus-meta-analysis
+  tracking: 'this pair falsifies my own finding S-4' (0311's claim that the corpus rarely self-attacks and
+  only via imported instruments), explicitly narrowing S-4 to apply only 'up to 2026-08-25 18:10' -- an
+  author's own documented retraction of a prior finding, predating and grounding 0342's later restatement
+  of the same point. Separately identifies terminological-only collisions (the three-sense 'projection'
+  collision matching 0329's own finding exactly, plus a NEW 'agent' collision -- epistemic participant
+  including wires/buffers vs. accountable actor, explicitly 'unresolved -- a wire cannot be accountable,'
+  directly relevant to 0285's Agent-vs-Accountable-Actor split). Contains a MAJOR PROVENANCE FINDING
+  directly examining this reconstruction's own file 0323 (the C-15/Knowledge-Space governance-strand
+  document, source timestamp 171853): tests its claimed attribution to 'your earlier conceptual model'
+  against all thirteen original-region documents and finds the phrase 'Knowledge Space' occurs ZERO times
+  in the original thirteen, while retraction/withdrawal vocabulary is HEAVY -- concluding 0323's Knowledge-
+  Space-projection reframing of C-15 is a cross-generation hypothesis (original retraction thinking
+  combined with later research), explicitly NOT a recovery of an idea the original architecture already
+  contained. Closes with a final tally: five of eight temptations are genuine contradictions (T-3, T-4,
+  T-5, T-7, T-8); of the four non-T-8 genuine ones, only T-4 has a K4 document on one side addressing a
+  constitutional invariant directly.
+introduces:
+  - concept: "Nine-field contradiction schema applied uniformly to every temptation: (1) documents, (2) provenance/generation mode, (3) proposition A, (4) proposition B, (5) conflict type (conceptual/terminological/architectural/constitutional), (6) both-sides-K3/K4?, (7) formal question potentially affected, (8) original-thinking-or-later-research origin, (9) genuine-contradiction-or-same-word-used-differently -- with a four-way provenance stratum tagging ([O] original project thinking, 13 docs all before 20260823-1240; [B] book-derived research; [X] later critique; [A] architectural proposal)"
+  - concept: "T-1 origin pushed FOUR DAYS EARLIER and OUTSIDE the kernel/ corpus: 20260819-205757 (a Phase-1 critique document, tagged [X], predating even the earliest kernel/ document) states the atomicity-not-relatedness aggregate criterion verbatim ('a KnowledgeProduct aggregate is valid only if it owns invariants that must be maintained atomically... not simply a large object graph or a database document'); the god-object correction is now a FOUR-arrival pattern (205757 -> 110248 -> 111730 -> 113243) across six days, all in AGREEMENT with each other -- 'the contradiction is between the corpus and the earlier drawn model,' its significance being the quadruple independent arrival, not disagreement"
+  - concept: "T-2 field-9 reclassification: 'partly a same-word conflict' -- the AMBIGUOUS-as-intent-resolution-outcome documents (103255/104148/104251) are mechanism-altitude and do NOT contradict v1.1 SS9's closed-seven-states rule (already permitted per SS13/<r4>); only catuskoti B/N and the 8-way UNKNOWN are genuine epistemic-state-extension proposals -- 'five arrivals, but only three genuine'"
+  - concept: "T-3 becomes explicitly THREE-WAY with a new Position C: Williamson's primitivism (162824=this reconstruction's 0320) -- 'knowing is primitive and unanalysable; stop reducing knowledge to information+truth+belief+evidence' -- explicitly analyzed as NOT a midpoint between A ('the Kernel is not knowledge') and B ('a Kernel must model the relationship'), but as UNDERCUTTING B by denying that any analysis of knowing is even available to model; field 6 notes neither A nor B side is K4, recorded as three genuinely standing positions"
+  - concept: "T-4 reconfirmed with precise density citation: 094638 (Daoist ziran) carries 'the corpus's highest identity density (170 references)'; asymmetric K-tier finding: 094638 is K4, 115235 is K2, 120122 is K3 -- 'only the challenge is K4'; explicitly connects to INV-KOS-IDENTITY-001 and W:C-8"
+  - concept: "T-5 field-9 finding, precisely locating the F-CM-1a drift: 103542's own worked example ('Service uses Kafka'/'Service does not use Kafka') is actually A/notA (straightforward contradiction), not plural determinacy, yet its own heading files it under 'Contradiction and plurality' -- 'the heading merges them'; explicitly instructed NOT to be reopened here, only recorded"
+  - concept: "T-6 field-9 explicit non-contradiction finding: a ~17-hour gap between first Zero Lens USE (230117) and its formal DEFINITION (152415) is 'not a contradiction... a definition lag,' recorded only because it 'bears on whether pre-152415 Zero conclusions used the same instrument'"
+  - concept: "T-7 field-9 finding, reframed as STRUCTURAL rather than conceptual: 'the conflict is between a document's FORM and its STANDING' -- an ADR draft (232146), a self-described 'proposed target model' (111317), and a proposed architecture (131125) each assert architectural standing through their own textual form regardless of their brainstorming-folder location; 'mitigated only by census SS7's status ladder'; field 7 notes 'all' formal questions are potentially affected since 'an unflagged proposal can be cited into any question'"
+  - concept: "NEW T-8 (dated 2026-08-25 18:10-18:17): 'Is a knowledge projection a measure?' -- this reconstruction's own tracked pair 181038(=0327, proposal: treat Knowledge Space as a measurable space (Omega,F) with a participant's projection as a measure/distribution/field mu indexed by participant/time/regime/context) vs 181719(=0328, attack: 'knowledge projection=measure is probably not right,' 'the central definitions are too loose,' 'one construct cannot be both of the two things the proposal needs it to be') -- explicitly tagged [A]/[X] as 'internally generated, not imported,' the newest thread in the corpus at the time, arriving 7 minutes apart, 'genuine... and correctly so unresolved: the attack is 3 minutes old at time of writing'"
+  - concept: "MAJOR SELF-CORRECTION: 'this pair falsifies my own finding S-4' -- 0311's dependency-map.md claim ('every genuine falsification is late or external... the corpus attacks itself rarely, and mostly via an imported instrument') is explicitly retracted/narrowed by its own author upon encountering T-8: 181719 is 'an internal, self-generated attack on the corpus's own newest proposal, using no imported lens'; S-4 is 'hereby narrowed: it described the corpus up to 2026-08-25 18:10, and no longer holds as a general property' -- this is the documented ORIGIN of the correction that 0342's census later restates as 'five independent K4 refutations in 78 minutes... the clearest counter-example to the earlier S-4 generalisation'"
+  - concept: "Terminological-only collision register (explicitly separated from genuine contradictions to avoid count inflation): the 'projection' collision now has THREE distinct senses (A: CQRS/read-model projection, 024119, 49 hits, 'leads the cluster count' -- matching 0329's own independent finding exactly; B: epistemic projection of a Knowledge Space, 110525/140251/135642; C: measure over (Omega,F), 181038=0327, contested by 181719=0328) with explicit instruction 'do not merge any pair' since 'Sense C is a formalisation of B and may not be valid'"
+  - concept: "Resolved terminological collision: 'C-1' -- W:C-1 (capability-list re-typing, workbook namespace) vs <C-1> (similarity!=identity, v1.1 r3 namespace) -- 'resolved: W:/<> prefixes' (matching 0329's own namespace disambiguation)"
+  - concept: "Resolved terminological collision: 'AMBIGUOUS' -- intent-resolution-outcome (mechanism, 103255/104148/104251) vs proposed epistemic state (T-2 side B) -- 'keep separate; only the second is constitutional'"
+  - concept: "NEW UNRESOLVED terminological collision: 'agent' -- epistemic participant INCLUDING wires/buffers (125708 SS10, matching this reconstruction's own tracked Fagin epistemic-participant material) vs accountable actor (governance model) -- explicitly flagged UNRESOLVED, 'a wire cannot be accountable,' directly bearing on 0285's Agent-vs-Accountable-Actor split (this reconstruction's own tracked distinction)"
+  - concept: "MAJOR PROVENANCE FINDING directly examining this reconstruction's own file 0323 (source timestamp 20260825-171853): 0323 attributes its Knowledge-Space-projection reframing of C-15 to 'your earlier conceptual model' (Knowledge Space potentially unbounded/evolving -> projection at time t); tested against all 13 original-region ([O]) documents: 'knowledge space' occurs 0 times; 'projection' IS present (110950:10, 114530:13, 113645:7) but in a different sense; 'at time t'/'knowledge-at-time' occurs only ONCE (113645); retract/withdraw vocabulary is HEAVY (114358:32, 111647:24, 113410:14, 123619:11, 112855:10); first substantial 'Knowledge Space' appearance anywhere in the corpus is 103542, two days after the original region closed"
+  - concept: "Explicit reading/verdict on the 0323 provenance finding: 'the original region contains a strong retraction thread and no Knowledge Space concept. The Knowledge-Space-projection reading of C-15 is therefore a CROSS-GENERATION HYPOTHESIS -- original retraction thinking combined with later research -- and must be labelled as such. It is NOT a recovery of something the original architecture already contained' -- with an explicit stated limit: absence of the phrase is not proof of absence of the idea, but 'the burden of showing otherwise sits with the claim, not against it'"
+  - concept: "Final tally and closing statement: of eight temptations, FIVE are genuine (T-3, T-4, T-5, T-7, T-8); field-9 reclassified three of the original seven as NOT genuine conceptual contradictions (T-1 agreement-with-recurrence, T-2 partly-same-word, T-6 definition-lag); of the four non-T-8 genuine contradictions (T-3/T-4/T-5/T-7), ONLY T-4 has a K4 document on one side AND addresses a constitutional invariant directly -- the corpus's own self-assessed single highest-stakes unreconciled tension"
+defines: []
+refines:
+  - concept: "0311's dependency-map.md S-4 finding ('every genuine falsification is late or external')"
+    refinement: "EXPLICITLY SELF-RETRACTED/NARROWED by this file (same likely authorship, given 'falsifies my own finding S-4'): S-4 is valid only up to 2026-08-25 18:10, superseded by T-8's internal, non-imported, same-day self-attack -- this file is the documented ORIGIN of the correction 0342's census later restates in summary form"
+  - concept: "0311/0342's secondhand T-1..T-7 citations"
+    refinement: "Given full nine-field detail for the first time in this reconstruction's direct reading, with three of the seven reclassified as non-genuine (T-1/T-2/T-6) upon rigorous field-9 analysis -- a significant downward revision from treating all seven as equally live"
+  - concept: "0329's cluster-map.md three-sense 'projection' vocabulary collision finding (024119 leading at 49 hits)"
+    refinement: "Independently reconfirmed with an added THIRD sense (measure over (Omega,F), this reconstruction's 0327/0328) not present in 0329's version, since this file postdates 0329 and incorporates the Measure Theory thread"
+  - concept: "This reconstruction's own file 0323 (C-15 reframed as knowledge-at-a-time in an evolving Knowledge Space)"
+    refinement: "DIRECTLY CHALLENGED by a rigorous provenance test: 0323's own attribution to 'your earlier conceptual model' is shown NOT supported by the thirteen original-region documents (0 occurrences of 'Knowledge Space'), reclassifying 0323's model as a cross-generation hypothesis rather than a recovered original idea -- this reconstruction's own per-file record for 0323 should be understood as now qualified by this finding"
+  - concept: "0327/0328's Measure-theory-as-projection proposal-and-attack pair"
+    refinement: "Formally registered as T-8 with a complete nine-field analysis, and used as the direct evidentiary basis for retracting 0311's S-4 generalization"
+  - concept: "0285's Agent-vs-Accountable-Actor split"
+    refinement: "Directly connected to a newly registered, still-UNRESOLVED terminological collision ('agent': epistemic participant including wires/buffers vs accountable actor) -- confirming the split was motivated by a genuine, still-open corpus-internal tension, not fully resolved by 0285's own proposal"
+  - concept: "0320's Williamson primitivism"
+    refinement: "Elevated to a formally registered THIRD position in the T-3 (Knowledge-as-Kernel-primitive) contradiction, explicitly analyzed as undercutting rather than mediating the existing two-way dispute"
+contradicts:
+  - concept: "0323's implicit framing that its Knowledge-Space/Projection model recovers or continues 'your earlier conceptual model'"
+    source: "this file's SS4 provenance finding (zero occurrences of 'Knowledge Space' in the 13 original-region documents)"
+    resolution: "Explicitly reclassified as a cross-generation hypothesis, not a recovery of an existing original-architecture concept -- 0323's own attribution claim is shown unsupported by the corpus's own textual evidence"
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: replace/supplement the secondhand T-1..T-7 citations (carried since 0311) with this file's full nine-field detail, including the three field-9 reclassifications (T-1/T-2/T-6 as non-genuine) and the new T-8 entry."
+  - "dimension-registry.md: record the explicit self-retraction of 0311's S-4 finding as an author-documented event (not merely an external observation), with T-8 as its evidentiary basis."
+  - "dimension-registry.md: open a qualification note on this reconstruction's own 0323 record -- its Knowledge-Space/Projection C-15 reframing is shown by the corpus's own provenance test to be a cross-generation hypothesis, not a recovery of original architecture."
+  - "dimension-registry.md: record the new unresolved 'agent' terminological collision (wire/buffer-inclusive epistemic participant vs accountable actor), directly relevant to 0285's Agent-vs-Accountable-Actor split."
+anchor_test:
+  anchor: "0311's dependency-map.md and its S-4 finding; 0329's cluster-map.md and its projection-vocabulary-collision finding; 0342's Phase A census; this reconstruction's own 0323 (C-15 reframing), 0320 (Williamson), 0327/0328 (Measure Theory T-8 pair), 0285 (Agent-vs-Accountable-Actor split)"
+  supports_dimension: "Cross-cutting corpus-internal meta-analysis, the Phase B 'final artifact': systematically resolves the epistemic status of every T-1..T-8 temptation via a rigorous nine-field schema, documents an explicit self-retraction of 0311's S-4 finding with T-8 as evidence, and directly challenges this reconstruction's own 0323 record via a rigorous textual provenance test showing its Knowledge-Space attribution is a cross-generation hypothesis, not a recovery of original architecture"
+  refines_or_contradicts: "refines 0311 (explicit S-4 retraction), refines 0329 (adds a third 'projection' sense), contradicts/qualifies 0323 (provenance test against original-region documents), elevates 0320 to a formal T-3 position, connects to 0285's Agent split via the new 'agent' collision"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "Full content of 20260819-205757 (the newly identified even-earlier T-1 origin, outside the kernel/ corpus entirely) -- not itself encountered by number in this reconstruction's sequential pass, since it predates and sits outside the kernel/ scope this reconstruction is currently reading"
+  - "Full content of the referenced ../../synthesis/EXTRACTION-LEDGER.md DOC-6 -- referenced but not included"
+open_questions:
+  - "Whether 20260819-205757 and the referenced EXTRACTION-LEDGER.md are ever encountered directly in this reconstruction's sequential pass (both appear to be outside the current kernel/-scoped reading, per the corpus's own note that Phase 1 root documents remain uncensused)"
+  - "Whether this reconstruction's own file 0323 should be revisited or annotated given this file's direct provenance challenge to its central claim"
+  - "Whether the unresolved 'agent' (wire-inclusive participant vs accountable actor) collision is ever formally resolved"
+  - "Whether T-4 (the corpus's own self-assessed highest-stakes unreconciled tension) is ever adjudicated"
+tier2_triggered: true
+tier2_reason: "The Phase B 'final artifact,' systematically applying a nine-field schema to fully resolve the epistemic status of T-1 through T-8 (three of the original seven reclassified as non-genuine; a new T-8 registered). Documents an explicit author self-retraction of 0311's S-4 finding, grounded in T-8 as evidence -- the origin of a correction 0342's census later restates. Directly and rigorously challenges this reconstruction's own file 0323 via a textual provenance test against all thirteen original-region documents, showing 0323's central Knowledge-Space attribution claim is unsupported (zero occurrences) and should be reclassified as a cross-generation hypothesis. Registers a new unresolved 'agent' terminological collision directly relevant to 0285's Agent-vs-Accountable-Actor split, and elevates 0320's Williamson primitivism to a formal third position in the Knowledge-as-Kernel-primitive contradiction."

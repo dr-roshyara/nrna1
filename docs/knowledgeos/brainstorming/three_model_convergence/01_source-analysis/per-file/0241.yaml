@@ -1,0 +1,56 @@
+sequence: 241
+path: docs/knowledgeos/brainstorming/kernel/20260824-152751-solution-mindset-decomposition-of-problem-solving-operations.md
+title: "The Solution Mindset — Decomposition into Problem-Solving Operations"
+date: "2026-08-24"
+bytes: 17500
+model:
+  primary: g1
+  secondary: c1
+source_role: PRIMARY_RESEARCH
+canonical_source: 241
+importance: medium
+confidence: high
+about: >
+  Applies the full Zero->Topological->Paninian/Dhatu->Statistical->ML->Shani methodology (0238-0240) to
+  Bashan's self-help book "The Solution Mindset" (ten "superpowers"), proposing to decompose its ten
+  named chapters into a smaller reusable "problem-solving algebra" of semantic operators, tested
+  statistically rather than accepted at face value. Explicitly proposed as a research pipeline, not yet
+  executed ("If we continue with this book, I would make the next artifact...").
+introduces:
+  - concept: "Zero-lens extraction of observable operations underneath the book's ten named 'superpowers': START/CAPTURE/FILTER/CHALLENGE/REDUCE/REVERSE/CONSTRAIN/EXPERIMENT/LEARN/COMPARE/REPEAT"
+  - concept: "Topological reframing: the ten chapters may not be independent things but different transformations of the same underlying problem-solving graph (Problem->Observe->Hypothesis->Action->Observe-Result->{Amplify|Learn->Modify->Action})"
+  - concept: "Problem-solving algebra proposal: a small operator set (OBSERVE/QUESTION/FILTER/REMOVE/REFRAME/CONSTRAIN/ACT/EXPERIMENT/LEARN/AMPLIFY) with a solution strategy as a COMPOSITION of operators rather than selection from a fixed named-methodology list -- different problems require different compositions"
+  - concept: "Three competing hypotheses for testing the author's ten-category taxonomy against discovered statistical structure: A) ten categories are statistically distinct; B) several are manifestations of the same latent mechanism (e.g. Take-a-Chance and Fail-Successfully both reduce to experimentation/learning); C) some categories are actually orthogonal DIMENSIONS (Action/Cognition/Constraint) rather than categories at all"
+  - concept: "Seven candidate invariants I1-I7 for any problem-solving system: Actionability (cannot remain purely conceptual), Feedback (action without learning is insufficient), Reversibility/experimentation (failure must generate information), Evidence skepticism (data cannot automatically become truth), Bounded complexity (adding mechanisms is not automatically progress), Context sensitivity (same method, different results in different contexts), Human agency (creativity treated as human capability, not pure optimization)"
+  - concept: "Explicit connection to KnowledgeOS: the book's Data!=Interpretation!=Action!=Outcome distinction (its 'Question the Data' chapter forbidding data from passing directly into decision-making) maps directly onto the corpus's Observation->Evidence->Interpretation->Decision->Action loop"
+  - concept: "Proposed next artifact: 'The Solution Mindset -- Zero-Lens Structural Extraction v1' -- extract propositions/actions/transformations/constraints/feedback-loops/latent-operators from all ten chapters WITHOUT using the author's ten categories as labels, as a clean dataset for statistical/ML testing"
+defines: []
+refines:
+  - concept: "0240's Zero-first discovery hierarchy and anti-confirmation-bias experimental discipline"
+    refinement: "Applies the same discover-before-labeling discipline to a different domain (self-help problem-solving methodology instead of Sanskrit linguistics), reinforcing it as a domain-independent methodological pattern rather than a linguistics-specific technique."
+contradicts: []
+repeats:
+  - concept: "Data != decision; evidence must pass through skepticism/filters before acting on it"
+    canonical_source: 210
+    novelty: low
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "0238-0240's six/seven-lens framework applied to Sanskrit linguistics"
+  supports_dimension: "Gita/philosophical model (lens methodology) applied to a third, unrelated domain (self-help methodology), reinforcing the domain-independence of the Zero-first discovery discipline"
+  refines_or_contradicts: "refines/extends 0240's methodology; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether the proposed 'Solution Mindset — Zero-Lens Structural Extraction v1' artifact is ever actually produced"
+tier2_triggered: false
+tier2_reason: "Medium-importance third application of the established Zero-lens/topological/statistical methodology to an unrelated self-help book, tangential to core Kernel architecture; its main contribution is reinforcing the discover-before-labeling discipline's domain independence and proposing a problem-solving-as-operator-composition idea, neither yet executed as an actual experiment."

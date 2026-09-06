@@ -1,0 +1,91 @@
+sequence: M0226
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-080000_prompt-kr-bridge-01-zero-preservation.md
+title: "KR-BRIDGE-01-ZERO-PRESERVATION-2026-09: the definitive falsification-oriented bridge experiment between KR-ZERO and KR-REP-REDUCTION — a rigorous four-cell (Zero×Adequate) crossing design, a parallel-not-sequential representation-family requirement (escaping the DPI monotonicity trap), a never-define-Zero-using-Q anti-circularity rule, a six-control battery, ten falsification questions, and four possible outcome classes with 'clean negative result is equally valuable' as an explicit success criterion"
+date: "20260904-080000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0226
+importance: critical
+confidence: high
+about: >
+  The most comprehensive, disciplined experimental design document in the entire Zero-algebra/
+  representation-reduction thread: a 29-section Claude Code/Codex implementation prompt for
+  KR-BRIDGE-01-ZERO-PRESERVATION-2026-09, explicitly designed as a bridge/falsification experiment
+  between the independently-established KR-ZERO and KR-REP-REDUCTION result families — directly
+  attacking the central open question this thread has left unresolved since M0219/M0225 (whether
+  Zero is systematically related to preservation/adequacy at all), with explicit instructions NOT to
+  privilege any hypothesis and to treat a clean negative result as fully successful.
+introduces:
+  - "The central primary research question with four explicit non-privileged hypotheses: H0 (Zero and preservation not systematically related in the tested regime); H1 (Zero associated with preservation under specified conditions); H2 (Zero predictive only under particular transformation/observable/contract configurations); H3 (any apparent relationship explained by a confounding factor) — 'do NOT privilege H1'"
+  - "CRITICAL DESIGN RULE explicitly learned from KR-REP-REDUCTION's limitation (M0219's DPI-derived structural constraint): use a PARALLEL representation family (R_a=T_a(D), R_b=T_b(D), independently generated, neither a deterministic function of the other), NOT only a deterministic sequential chain — because a sequential chain R(n-1)=T(Rn) has H(Q|Rn)≤H(Q|R(n-1)) and therefore CANNOT test non-monotone adequacy, the exact limitation this thread already discovered and now explicitly designs around"
+  - "An explicit anti-circularity rule for the Zero/Q relationship: 'NEVER DEFINE ZERO USING Q' — Zero_{T,Π}(S;D) must use its own declared observable Π, structurally independent of the preservation target Q; defining Zero(S):=Q(D)=Q(E_S(D)) 'would build the desired bridge into the definition' — the clearest, most explicit statement of this circularity guard in the entire thread"
+  - "The FOUR-CELL CROSSING DESIGN, the experiment's central methodological innovation: a 2×2 contingency table {Zero,¬Zero}×{Adequate,Inadequate} = {Z+A, Z-I, NZ+A, NZ-I}, with explicit interpretation — a populated Z-I (Zero+Inadequate) cell would demonstrate Zero is NOT SUFFICIENT for preservation; a populated NZ+A (Non-Zero+Adequate) cell would demonstrate Zero is NOT NECESSARY for preservation; if either cell is empty, the design mandates investigating WHY (generator constraints/contract constraints/transformation design/sample size/mathematical necessity/implementation error) rather than declaring a law"
+  - "A six-control battery required before any interpretation: CONTROL A (known information-preserving representation); CONTROL B (known information-destroying representation); CONTROL C (invertible recoding of the same representation); CONTROL D (a representation where Zero is known to vary independently of Q, if the generator permits); CONTROL E (positive control that the preservation test can detect information loss); CONTROL F (positive control that the Zero test can detect elimination differences)"
+  - "Ten explicit required falsification questions (Q1-Q10): can Zero occur while preservation fails; can preservation hold while Zero fails; does the relationship survive changes in T, in Π, in contract, in redundancy; does determination order predict preservation independently of T/Π/C; does the relationship survive an invertible recoding; is any apparent relationship explained by transformation class or by the preservation target Q itself"
+  - "Four required outcome classes, each with an explicit interpretive boundary: OUTCOME A (no relationship observed — 'Zero remains analytically independent in the tested regime,' explicitly NOT proof of universal independence); OUTCOME B (conditional relationship — do NOT generalize beyond the tested T/Π/C/Q configuration); OUTCOME C (robust relationship, surviving transformations/observables/contracts/controls — the ONLY case in which a formal bridge hypothesis may be proposed for a new experiment); OUTCOME D (design failure — the four-way space cannot be generated or controls fail; do not interpret results theoretically, revise the experiment instead)"
+  - "An explicit reframed success criterion: 'the experiment is NOT successful merely because it finds an association. It is successful if it establishes, with controlled evidence, whether the Zero/preservation bridge is absent, conditional, robust, or currently untestable. A clean negative result is equally valuable.'"
+  - "A hard governance-immutability constraint: DO NOT modify Theory v1.2, KR-ZERO historical results, KR-REP-REDUCTION historical results, kernel operators, production application code/database, or existing governance decisions; if a new finding conflicts with an old statement, record the conflict for adjudication rather than silently rewriting historical artifacts"
+  - "Confounding-analysis requirement: stratify by transformation T, observable Π, contract C, representation family, source structure, and elimination size |S|; report both pooled and stratified relationships, and explicitly forbid reporting an association that disappears after stratification as a general Zero-preservation relationship"
+  - "Explicit T×Π interaction testing requirement, directly citing the already-established finding that Zero behavior is transformation-specific and that mechanism analysis found interaction effects — with an explicit prohibition against resurrecting the already-withdrawn claim 'relational transformations produce higher order; element-wise transformations do not'"
+defines:
+  - "The four-cell crossing table {Z+A, Z-I, NZ+A, NZ-I} for jointly classifying Zero-status and adequacy-status"
+  - "KR-BRIDGE-01-ZERO-PRESERVATION-2026-09 as a named experiment ID, with required audit (KR-BRIDGE-01-AUDIT-2026-09.md) and result (KR-BRIDGE-01-RESULTS-2026-09.md, 22 mandatory sections) artifacts"
+refines:
+  - "M0219/M0225's open Zero-vs-preservation question: converts it into a rigorously falsifiable four-cell experimental design, explicitly designed to avoid privileging any of the four possible relationship hypotheses"
+  - "M0219's sequential-vs-parallel representation-family distinction: operationalized into a hard design requirement (parallel families mandatory for THIS experiment, since only they can test non-monotone relationships)"
+contradicts: []
+repeats:
+  - "The established discipline against assuming a carrier before evidence justifies it, against treating empirical Ĥ=0 as population H=0, against converting [EXP]/[NEG]/[PROP] into stronger claims, and the established multidimensional-reduction discipline — all restated as explicit rules within this prompt"
+bridge_candidates:
+  - "Whether KR-BRIDGE-01 was ever actually executed, and which of the four outcome classes (A/B/C/D) it produced"
+  - "Whether the required KR-BRIDGE-01-AUDIT-2026-09.md and KR-BRIDGE-01-RESULTS-2026-09.md artifacts were ever produced"
+mathematical_content: >
+  Specifies (without yet executing) a rigorous falsification design for the central open question of
+  the entire Zero-algebra/representation-reduction thread — whether Zero and preservation/adequacy
+  are related — via a four-cell crossing design, an anti-circularity rule separating Zero's
+  observable Π from the preservation target Q, and ten explicit falsification questions, directly
+  engineered around the specific limitation (sequential-chain DPI monotonicity) already discovered at
+  M0219.
+gita_content: null
+kernel_content: >
+  The most comprehensive single experimental design in this entire research programme, synthesizing
+  every discipline established across M0189-M0225 (anti-circularity, parallel-vs-sequential
+  representation families, control batteries, stratified confounding analysis, four-way falsification
+  outcomes, immutable historical artifacts) into one unified next-step experiment explicitly designed
+  to resolve — not assume — the Zero/preservation relationship question.
+registry_updates:
+  - "New four-cell (Zero×Adequate) crossing design as the thread's central falsification methodology"
+  - "New explicit anti-circularity rule: never define Zero using Q"
+  - "New parallel-representation-family design requirement, engineered around the DPI-monotonicity limitation discovered at M0219"
+  - "New six-control battery and ten-question falsification checklist"
+  - "New four-outcome-class framework (absent/conditional/robust/untestable) with 'clean negative result is equally valuable' as the explicit success criterion"
+anchor_test:
+  anchor: true
+  supports_dimension: "Four-cell crossing design; anti-circularity rule; parallel-representation requirement; six-control battery; ten falsification questions; four-outcome-class framework"
+  refines_or_contradicts: "refines (converts M0219/M0225's open Zero-vs-preservation question into a rigorous, executable falsification design)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Do NOT define: Zero(S) := Q(D) = Q(E_S(D)). That would build the desired bridge into the definition.\""
+  - "\"Especially important: Zero + Inadequate would directly demonstrate that Zero is not sufficient for preservation. Non-Zero + Adequate would demonstrate that Zero is not necessary for preservation.\""
+  - "\"The experiment is NOT successful merely because it finds an association... A clean negative result is equally valuable.\""
+undefined_concepts: []
+open_questions:
+  - "Was KR-BRIDGE-01 ever executed, and which outcome class (A/B/C/D) did it produce?"
+tier2_triggered: true
+tier2_reason: >
+  Delivers the most comprehensive, rigorously falsification-oriented experimental design in the
+  entire Zero-algebra/representation-reduction thread, introducing a genuinely new four-cell
+  crossing methodology, an explicit anti-circularity rule for the Zero/preservation relationship, a
+  parallel-representation-family requirement specifically engineered around the sequential-chain DPI
+  limitation already discovered at M0219, a six-control battery, and a four-outcome-class framework
+  that treats a clean negative result as fully successful — the definitive next step for resolving
+  this thread's central open question.

@@ -1,0 +1,120 @@
+sequence: "0080"
+path: docs/knowledgeos/brainstorming/20260821-2351-independent-external-research-review-organizational-knowledge-systems.md
+title: "Independent External Research Review: Architectural Foundations for Organizational Knowledge Systems"
+date: "2026-08-21"
+bytes: 83517
+
+model:
+  primary: x
+  secondary: [c1]
+
+source_role: INDEPENDENT_RESEARCH
+canonical_source: null
+
+importance: critical
+confidence: high
+
+about: >
+  An explicitly external-literature research review (W3C PROV, Walsh & Ungson organizational-memory
+  theory, Capilla et al. software-architecture-knowledge-management, Truth Maintenance Systems, Belief
+  Revision) scoped as "not a KnowledgeOS architecture proposal" but an independent evidence base for
+  later comparison against EKS/PKS/AIP. Converges on nine cross-cutting dimensions (Identity,
+  Provenance, Temporality, Authority, Decision-and-Rationale, Lineage, Evidence, Governed-Lifecycle,
+  Integrity-Assurance) as the trustworthy-core of organizational knowledge systems, explicitly
+  demoting knowledge graphs, event sourcing, and the OS/kernel analogy from architecture to
+  inspiration/integration-layer status where evidence does not support them as the kernel itself.
+
+introduces:
+  - "Authority ≠ confidence: authority is organizational (who may treat X as settled), confidence is
+    epistemic (how well-supported X is) — a proposition can be well-supported-but-unauthorized or
+    authorized-but-uncertain"
+  - "Candidate pipeline: Observation -> Evidence -> Claim -> Inference -> Belief -> {confidence,
+    authority} -> Decision (explicitly marked hypothesis, not kernel design)"
+  - "Provenance is not merely metadata: functions simultaneously as governance, trust, and domain
+    information"
+  - "Temporal knowledge distinctions: valid time / transaction time / observation time / decision time
+    / effective time; central question 'what was considered authoritative at time T?'"
+  - "Candidate future state shape: knowledge_state + validity + authority + lineage (explicitly
+    deferred, not designed here)"
+  - "Negative result: Knowledge System != Knowledge Graph (weak evidence graphs ARE the kernel; strong
+    evidence they are an integration/query/semantic layer)"
+  - "Negative result: event history is valuable; event sourcing as an implementation strategy is not
+    universally necessary"
+  - "OS/Linux kernel analogy 'correctly contained': validated as inspiration (stable primitives,
+    minimal trusted core, mechanism-vs-policy, composability), explicitly NOT a literal specification,
+    since knowledge systems lack OS-level deterministic execution and universal semantics"
+  - "Direct answer to 0079's complex-number question: 'possibly as a formal modeling device, but not
+    as the kernel primitive itself unless research and EKS/PKS/AIP comparison demonstrate an actual
+    need' -- redirects toward a multi-dimensional epistemic state (identity, provenance, validity,
+    authority, evidence, confidence, lineage, decision), explicitly keeping complex numbers as
+    research hypothesis, not architecture"
+  - "Closing research question: smallest set of semantic/mechanical primitives that must be
+    universally trustworthy, cross-checked against a Candidate x {External evidence, EKS, PKS, AIP,
+    Cross-cutting?, Kernel candidate?} matrix over 10 candidates (Identity, Provenance, Temporal
+    validity, Authority, Evidence, Decision, Lineage, Lifecycle, Conflict, Assurance) -- 'let EKS/PKS/
+    AIP evidence eliminate candidates, not merely confirm the research'"
+
+defines: []
+
+refines:
+  - "0071's Linux-kernel analogy: sharpened from illustrative-comparison to an explicit
+    inspiration-only boundary, with a stated mechanism (lack of deterministic execution/universal
+    semantics) for why it cannot be a literal specification"
+  - "0014/0018's authority-vs-provenance distinction: now grounded in named external literature
+    (organizational-memory theory) rather than corpus-internal derivation alone"
+
+contradicts:
+  - "0057-family Knowledge Graph Architecture proposals: externally evidenced as integration/query
+    layer, not kernel-level primitive -- a corrective, not a refutation of KG usefulness generally"
+
+repeats:
+  - concept: "provenance as central, non-optional concern"
+    canonical_source: "0061"
+    novelty: low
+  - concept: "authority/standing distinct from evidence strength"
+    canonical_source: "0014"
+    novelty: low
+
+bridge_candidates:
+  - "External Authority-vs-confidence pipeline (Observation->Evidence->Claim->Inference->Belief->
+    {confidence,authority}->Decision) as a possible cross-model bridge to C2's Buddhi/purification
+    epistemic-state language once C2 material with a comparable pipeline is found -- not yet supported
+    by any C2 corpus evidence, recorded as candidate only"
+  - "Candidate kernel_state = knowledge_state + validity + authority + lineage as a possible M (formal)
+    bridge target for a future value-object model -- explicitly deferred by the source document itself,
+    no mathematical formalization exists yet in the corpus to confirm this as more than a naming
+    proposal"
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+key_evidence:
+  - "Nine convergent dimensions ranked by evidence strength (Identity/Provenance/Temporality/Authority/
+    Decision-Rationale/Lineage/Evidence/Governed-Lifecycle/Integrity-Assurance = strong; graphs/AI/RAG/
+    ontologies/workflow-engines/analytics/event-sourcing = weak)"
+  - "Explicit self-limiting scope statement: 'not a KnowledgeOS architecture proposal... an independent
+    evidence base intended for later comparison'"
+  - "10-row comparison matrix template (Candidate x External/EKS/PKS/AIP/Cross-cutting/Kernel-candidate)
+    proposed as the next research step, cells intentionally left as '?' -- not filled in by this
+    document"
+
+undefined_concepts:
+  - "Knowledge (still undefined, 80th consecutive file/reference)"
+  - "'Integrity-Assurance' as a named dimension -- introduced but not itself decomposed further"
+
+open_questions:
+  - "Whether EKS/PKS/AIP actually exhibit the nine dimensions as cross-cutting concerns, or only some
+    of them -- explicitly left as the next research step, matrix cells unfilled"
+  - "Whether kernel_state = knowledge_state+validity+authority+lineage is the right shape, or merely a
+    plausible one -- explicitly deferred by the source"
+
+tier2_triggered: true
+tier2_reason: >
+  Major external-literature synthesis directly relevant to the eventual Kernel investigation (§18/§23):
+  sharpens the authority-vs-confidence distinction with named external grounding, introduces a
+  provenance-as-governance-and-trust (not metadata) claim, a temporal-knowledge-state formula, two
+  negative results narrowing candidate kernel primitives (graphs, event sourcing), a direct answer to
+  0079's complex-number question that redirects the mathematical-modeling question toward a
+  multi-dimensional epistemic state, and a concrete next-research-step matrix design explicitly
+  intended to let evidence eliminate kernel candidates rather than confirm them.

@@ -1,0 +1,64 @@
+sequence: 76
+path: docs/knowledgeos/brainstorming/20260821-2033-what-eks-is-today.md
+title: EKS Current Architecture Baseline
+date: 2026-08-21
+bytes: 46345
+
+model:
+  primary: c1
+  secondary: [ddd, evidence, provenance, invariants, governance]
+
+source_role: FOUNDATIONAL
+canonical_source: 49   # mature continuation of Track 2's Rule/Authority semantic discovery
+
+importance: high
+confidence: high
+
+about: >
+  Rigorous "architecture archaeology" reconstruction of EKS's current state (not a target
+  architecture), with disciplined UNKNOWN/PROPOSED/DOCUMENTED-ONLY status marking throughout.
+  Confirms direct continuity with 0049 (Track 2's Rule/Authority semantic discovery) via near-
+  verbatim principle restatement and explicit citation.
+
+introduces:
+  - twenty_three_section_current_state_baseline
+  - evidence_confidence_register_with_exact_counts   # 20 grants/9 work items/13-of-20 immutable, etc.
+
+defines: []
+refines:
+  - concept: mechanism_records_does_not_create_authority
+    canonical_source: 49
+    change: "'does not create authority' (0049) -> 'does not GRANT authority' (here) - near-verbatim, confirms sub-thread continuity"
+  - concept: rule_semantic_discovery
+    canonical_source: 49
+    change: "cited directly as 'the exploratory Rule Model'; not independently rediscovered"
+
+contradicts: []
+repeats:
+  - concept: knowledge_representation_projection_distinction
+    canonical_source: 13   # root-level I-1, Knowledge != Artifact - intra-C1 convergence, not cross-lens
+    novelty: "independent within C1; marked UNKNOWN for universal implementation rather than assumed"
+
+bridge_candidates: []   # intra-C1 convergence (0013 <-> this file), not a cross-lens relationship
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence:
+  - "'the mechanism records authority; it does not grant authority' - near-verbatim restatement of 0049's principle, 5 days later"
+  - "explicitly refuses to claim 'EKS already has a KnowledgeOS kernel' or 'the exploratory Rule Model is already implemented' - disciplined status marking"
+  - "Knowledge -> Representation -> Presentation/Projection marked UNKNOWN for universal implementation, though DOCUMENTED/INFERRED as a principle"
+
+undefined_concepts: [knowledge]
+open_questions:
+  - "exact EKS bounded-context map: insufficient evidence, marked Unknown"
+  - "universal Knowledge domain model: Unknown/Proposed"
+
+tier2_triggered: true
+tier2_reason: >
+  Confirms direct, near-verbatim continuity with 0049 (Track 2's Rule/Authority semantic discovery),
+  resolving that this is a mature evidence-grounded continuation of the same thread, not independent
+  rediscovery. Also shows intra-C1 convergence with the root-level Knowledge!=Artifact distinction
+  (0013), correctly marked UNKNOWN for universal implementation rather than assumed - a worked
+  instance of exactly the epistemic discipline this research must itself apply.

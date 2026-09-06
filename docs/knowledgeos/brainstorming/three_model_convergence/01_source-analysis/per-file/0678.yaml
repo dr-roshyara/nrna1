@@ -1,0 +1,201 @@
+sequence: 678
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-122208_step-093-reliability-fault-tolerance-and-recovery.md
+title: "Step 93 CONFIRMED as Genuinely New, Rich Corpus Territory — Failure Formalized as a First-Class Transition (Not Outside the Mathematical Model), Recovery as a Transition Bound by the Same Invariants, the Outbox Pattern, Write-Ahead Logging, Event-Sourcing Recovery With a Correct Event-Durability≠Event-Correctness Caveat, RPO/RTO Correctly Named, Fault Injection and Chaos Testing, and Several Precisely Stated Epistemic-Recovery Cautions (Backup≠Truth, RecoveredState≠AutomaticallyCurrentState, Recovery Should Be Monotonic, Never Infer Completion From Absence) Directly Extending the Corpus's Three-Valued Epistemic Logic and Independence Disciplines; Ten New Invariants, Zero Exact-Name Collisions; Verdict 'STEP 93 — PASS,' Redefining Architecture Correctness Across Normal, Concurrent, and Failure Execution Regimes Jointly; Closes Opening Step 94 — Security, Adversarial Behavior and Trust, a Plausibly Distinct Deepening of 0657's Constructive Trust Model Into an Explicitly Adversarial Framing"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 93 -- Reliability, Fault Tolerance and Recovery', opened at 0677's close; CONFIRMS the provisional expectation that this file delivers genuinely new failure/recovery territory not previously addressed in the corpus"
+source_role: PRIMARY_RESEARCH
+canonical_source: 678
+importance: critical
+confidence: high
+about: >
+  **CONFIRMS 0677's provisional expectation of genuinely new territory.** Delivers the central requirement
+  `Failure⇏SemanticCorruption`, with failure explicitly incorporated into the state space
+  (`S_0→^a S_partial→^{failure} S_f`, confirmed via an interrupted-transition experiment, PASS). Delivers
+  Atomic transactions as the classical rollback mechanism (confirmed via a dedicated experiment, PASS), with
+  the important and correctly-reasoned caveat that `TransactionBoundary≠EntireRealWorld` -- a database
+  transaction cannot recall an already-sent external email (confirmed via a dedicated experiment, PASS),
+  motivating the **Outbox pattern** (business state and event-to-publish committed atomically in one local
+  transaction, published to a message broker afterward, confirmed via a dedicated experiment, PASS) --
+  genuinely new, correctly-named, and practically important distributed-systems architecture content.
+
+  Delivers Durability formally distinguished from atomicity (`Commit(S_1)⇒Recover()→S_1`, confirmed via a
+  power-failure-immediately-after-commit experiment, `DurabilityViolation` -- PASS), and **Recovery
+  formalized as a genuine mathematical transition bound by the same invariants as ordinary execution**
+  (`S_{failed}→^{recover} S_{recovered}` required to satisfy `I(S)`, confirmed via an invariant-checking-
+  skipped-during-recovery experiment, PASS) -- "recovery is not merely infrastructure," a genuinely
+  important architectural reframing. Delivers Write-ahead logging (`Log(T)→Apply(T)→Commit`, confirmed via
+  a replay-from-log experiment, PASS) and Event-sourcing-based recovery (`S_n=Fold(E_1,...,E_n)`, confirmed
+  via a corrupted-materialized-state-reconstructed-from-events experiment, PASS), with the crucial and
+  correctly-reasoned caveat **`Event durability≠Event correctness`** -- faithfully replaying an
+  `UnauthorizedApproval` event reproduces the invalid state just as faithfully as a valid one (confirmed via
+  a dedicated experiment, PASS), motivating explicit `Validate(E,S)⇒Append(E)` event validation before
+  acceptance. Delivers Checkpointing for large event histories with required integrity metadata (version,
+  timestamp, source event position, confirmed via a checkpoint-offset-mismatch experiment, PASS).
+
+  **Delivers the file's first central formal deliverable -- retry semantics and exactly-once as a semantic,
+  not transport-level, property**: a lost response causing a legitimate retry to risk double-execution
+  without deduplication (confirmed via a dedicated experiment, PASS), with `f(f(S))=f(S)` idempotency
+  identified as "extremely valuable under retry" (confirmed via a triple-retry-single-effect experiment,
+  PASS), reframed as `ExactlyOnceSemanticEffect` achieved via `CommandID`-based deduplication rather than
+  perfect transport-level exactly-once delivery (confirmed via a dedicated experiment, PASS) -- directly and
+  genuinely extending 0677's idempotency/exactly-once discipline with concrete recovery-specific mechanics.
+
+  **Delivers the file's second central formal deliverable -- partial-failure representation with a strict
+  three-valued discipline**: a four-stage workflow (`A→B→C→D`) with `C` failing and `D` never executing
+  correctly represented with `D=Unknown`, not `D=False` (confirmed via a network-failure-before-response
+  experiment, PASS), explicitly and correctly self-referencing the corpus's established discipline ("this
+  again connects to our three-valued epistemic model," §93.38, a further explicit, correctly-attributed
+  backward cross-reference), crystallizing **`Never infer completion from absence`**.
+
+  Delivers Compensation formally distinguished from perfect rollback (`S_2≠S_0` after compensating an
+  irreversible action, confirmed via a dedicated experiment, PASS), directly and genuinely extending 0677's
+  `Compensation≠PerfectRollback` with required Compensation provenance (`OriginalAction, FailureReason,
+  CompensationAction, ResidualDifference`, confirmed via a dedicated experiment, PASS). **Delivers the
+  file's third central formal deliverable -- Recovery must not erase failure history, formally distinguishing
+  current state from state history**: an audit log showing only the post-recovery valid state, losing
+  forensic evidence that a failure occurred, correctly identified as `InsufficientForensicProvenance`
+  (confirmed via a dedicated experiment, PASS), motivating explicit `CurrentState` versus `StateHistory`
+  preservation. Delivers Failure formalized as a first-class observable knowledge object
+  (`F=(component, time, operation, state, cause?, impact)`, with `cause` explicitly permitted to remain
+  `Unknown`, confirmed via a dedicated experiment, PASS), and root cause formally reframed as a subsequent
+  inference distinct from the original failure observation (`P(Cause=X)=0.8` does not retroactively alter
+  the original observation, confirmed via a dedicated experiment, PASS, crystallizing `Observation≠
+  Hypothesis` in the failure-analysis-specific context).
+
+  **Delivers the file's fourth and most epistemically valuable central formal deliverable -- a precise
+  epistemic discipline for post-recovery knowledge states**: Recovery confidence formally graded
+  (`RecoveryVerified` versus `RecoveryBestEffort`, confirmed via an integrity-check-present-versus-absent
+  experiment, PASS); **`Backup≠Truth`** -- a backup may be stale, incomplete, corrupted, or predate a
+  critical event (confirmed via a restore-from-stale-backup-missing-a-later-critical-decision experiment,
+  PASS); and, most significantly, **`RecoveredState≠AutomaticallyCurrentState`** -- restoring from a `t_0`
+  backup does not automatically establish knowledge of `t_1>t_0` (confirmed via a premature-`Current=True`-
+  self-labeling experiment, PASS), motivating explicit Reconciliation against surviving authoritative
+  systems (confirmed via a version-mismatch-post-recovery experiment, PASS) and the important **Recovery-
+  should-be-monotonic** principle -- recovery must not silently downgrade already-known stronger evidence to
+  a weaker backup-derived value (confirmed via a dedicated experiment showing a `PolicyVersion=105` known
+  from a surviving durable source correctly not overwritten by a `PolicyVersion=100` backup restore, PASS).
+  This is a genuinely new and precisely reasoned epistemic-recovery discipline, directly and coherently
+  extending the corpus's temporal-epistemics, three-valued-logic, and independence disciplines into the
+  specific and practically important post-disaster-recovery context.
+
+  **Delivers the file's fifth central formal deliverable -- disaster recovery formalized with standard,
+  correctly-named industry metrics**: `RPO` (Recovery Point Objective, confirmed via a `5min`-required-
+  versus-`30min`-actual-loss violation experiment, PASS) and `RTO` (Recovery Time Objective, confirmed via a
+  `15min`-required-versus-`2h`-actual violation experiment, PASS), with Recovery assurance formally
+  multi-dimensional (`Correctness+Completeness+Freshness+Provenance+Availability`, not merely "the server
+  came back"). Delivers Failure-domain awareness directly and genuinely extending the corpus's evidence-
+  independence discipline into backup/redundancy architecture specifically: a backup sharing failure
+  infrastructure with its primary is not independent recovery (confirmed via a simultaneous-primary-and-
+  backup-failure experiment, PASS), and correlated replicas sourced from one corrupted origin do not provide
+  independent confirmation (confirmed via a dedicated experiment, PASS).
+
+  **Delivers the file's sixth central formal deliverable -- Fault injection and Chaos testing correctly and
+  precisely introduced**, genuinely new and industry-standard practices not previously named in the corpus:
+  `FailureInjection→Recovery→InvariantCheck` (confirmed via a systematic multi-stage failure-injection
+  experiment requiring the invariant to survive every tested interruption point, PASS) and controlled
+  infrastructure-scale chaos experiments (network partitions, process crashes, delayed/duplicate messages),
+  explicitly and correctly framed as "empirical validation of failure invariants," not chaos for its own
+  sake, confirmed via a dedicated experiment revealing a genuine post-recovery unauthorized-state defect
+  (PASS).
+
+  Delivers the strongest recovery invariant: `I_{Recovery}` (recovery must restore a valid state or
+  explicitly enter a declared degraded/unknown state, never silently fabricate validity), and Degraded state
+  as an explicitly preferable alternative to false certainty (`EvidenceFreshness=Unknown` preferable to
+  `EvidenceFreshness=Current`, confirmed via a dedicated experiment, PASS).
+
+  **Delivers ten new named invariants, NONE of which are exact-name matches to any previously tracked
+  invariant** (a genuinely clean file for this specific tracking dimension): `I_{AtomicRecovery}`, `I_
+  {Durability}`, `I_{RecoveryValidity}`, `I_{FailureHistory}`, `I_{Reconciliation}`, `I_{RecoveryFreshness}`,
+  `I_{RetrySafety}`, `I_{Compensation}`, `I_{FailureEpistemics}`, `I_{RecoveryAssurance}`.
+
+  Delivers Step 93's verdict **"STEP 93 — PASS,"** with the significant architectural conclusion "failure
+  is not outside the mathematical model. Failure is itself a possible transition in the system," extending
+  the state object to `S=(Knowledge, Evidence, Policy, Authority, Decision, Execution, Version, Time,
+  Causality, Health)` and the transition vocabulary to include `Fail, Retry, Rollback, Compensate, Recover,
+  Reconcile` alongside the ordinary `Learn, Infer, Decide, Authorize, Execute`. **Delivers the file's
+  capstone architectural principle -- correctness redefined across three execution regimes jointly**: "a
+  KnowledgeOS invariant must survive not only normal execution, but also concurrency and supported
+  failure/recovery paths," reframing architecture correctness from "the architecture works when everything
+  works" to "the architecture preserves its declared semantics across normal, concurrent, and failure states
+  within its declared assumptions" -- a genuinely valuable, testable strengthening of the corpus's
+  correctness criterion, directly synthesizing this file's own content with 0677's concurrency discipline.
+
+  **Closes by identifying security, adversarial behavior, and trust as the next boundary**: "so far, agents
+  and components have generally been treated as Faulty or Unavailable. But some actors may be Adversarial,"
+  previewing forged evidence, manipulated provenance, authorization bypass, knowledge poisoning, race-
+  condition exploitation, AI agent manipulation, prompt injection, and retrieval corruption, framed around
+  "an AI agent must not be able to manufacture authority merely by producing a convincing statement." Opens
+  "Step 94 -- [Security, Adversarial Behavior and Trust]." **This should be compared against 0657's (Step
+  73's) already-established Identity, Trust and Cryptographic Provenance content**, though the explicitly
+  adversarial framing here (actively malicious actors deliberately attempting to violate invariants, as
+  opposed to 0657's more constructive cryptographic-identity-and-honest-trust-modeling framing) suggests a
+  plausibly distinct security-specific deepening rather than a pure collision, to be confirmed once 0679 is
+  read. No actual code execution reported in this file.
+introduces:
+  - concept: "CONFIRMED genuinely new corpus territory: failure formalized as a first-class transition (not outside the mathematical model), with recovery itself bound by the same invariants as ordinary execution"
+  - concept: "The Outbox pattern, write-ahead logging, and event-sourcing-based recovery with a correct Event-durability≠Event-correctness caveat requiring explicit event validation before acceptance"
+  - concept: "Retry semantics and ExactlyOnceSemanticEffect via CommandID deduplication, directly extending 0677's idempotency discipline with concrete recovery-specific mechanics"
+  - concept: "Never infer completion from absence — strict three-valued partial-failure representation, explicitly and correctly cross-referenced to the corpus's established epistemic-logic discipline"
+  - concept: "A precise epistemic discipline for post-recovery knowledge: Backup≠Truth, RecoveredState≠AutomaticallyCurrentState, and Recovery-should-be-monotonic (never silently downgrading stronger known evidence to a weaker backup-derived value)"
+  - concept: "RPO/RTO correctly named as standard disaster-recovery metrics, and Fault injection/Chaos testing correctly introduced as empirical failure-invariant validation, both genuinely new to the corpus"
+  - concept: "Ten new invariants with ZERO exact-name collisions, and a capstone architectural principle redefining correctness across normal, concurrent, and failure execution regimes jointly"
+  - concept: "A flagged comparison point: Step 94's adversarial-security preview against 0657's constructive trust-model content, plausibly a distinct deepening given the explicitly adversarial (not merely honest-agent) framing"
+defines:
+  - concept: "Failure⇏SemanticCorruption"
+    definition: "The occurrence of a system failure (crash, network partition, message loss) must never, by itself, be permitted to produce a state the mathematical model considers impossible; failure and recovery are themselves transitions in the state space, bound by the same invariants as ordinary operation"
+  - concept: "Event durability≠Event correctness"
+    definition: "An event-sourced system's guarantee that recorded events survive and can be replayed says nothing about whether those events were themselves valid; faithfully replaying an invalid event (e.g. an unauthorized approval) reproduces the invalid state just as reliably as a valid one, requiring explicit event validation (Validate(E,S)⇒Append(E)) before acceptance, not merely durable storage"
+  - concept: "RecoveredState≠AutomaticallyCurrentState"
+    definition: "Restoring system state from a backup or checkpoint taken at time t_0 establishes knowledge only up to t_0; the system must not automatically label itself as reflecting current (t_1>t_0) state until post-recovery synchronization or reconciliation with surviving authoritative sources has occurred"
+  - concept: "Recovery should be monotonic"
+    definition: "When recovering from a backup or checkpoint, if stronger, more current, or more authoritative knowledge survives from another source, recovery must not silently overwrite or downgrade that knowledge with the weaker value found in the backup; recovery should preserve the strongest trustworthy evidence available across all surviving sources, not blindly trust the restored snapshot"
+  - concept: "Never infer completion from absence (recovery-specific instance)"
+    definition: "If a workflow step's outcome is unknown because a failure occurred before its result could be observed (e.g. a network failure before receiving step D's response), the correct status is Unknown, not False — absence of a confirmed result is not evidence that the step failed, extending the corpus's three-valued epistemic logic into partial-workflow-failure representation specifically"
+refines:
+  - concept: "0677's (Step 92's) idempotency/exactly-once discipline"
+    refinement: "Directly and genuinely extended into concrete recovery-specific retry mechanics via CommandID-based deduplication and the reframing of exactly-once as a semantic, not transport-level, guarantee"
+  - concept: "0677's (Step 92's) Compensation≠PerfectRollback"
+    refinement: "Directly and genuinely extended with required Compensation provenance fields (OriginalAction, FailureReason, CompensationAction, ResidualDifference)"
+  - concept: "The corpus's three-valued epistemic logic (0622, 0652, 0666, 0674)"
+    refinement: "EXPLICITLY AND CORRECTLY CROSS-REFERENCED ('this again connects to our three-valued epistemic model'), extended into partial-workflow-failure representation via Never infer completion from absence"
+  - concept: "The corpus's established evidence-independence discipline (0649, 0655, 0660, 0673, 0675)"
+    refinement: "Directly and genuinely extended into backup/redundancy architecture specifically via Failure-domain awareness (a backup sharing failure infrastructure with its primary, or replicas sourced from one corrupted origin, do not constitute independent confirmation)"
+  - concept: "0668's temporal-epistemics discipline and 0666's observation-freshness discipline"
+    refinement: "Directly and genuinely extended into the specific and practically important post-disaster-recovery context via RecoveredState≠AutomaticallyCurrentState and the Recovery-should-be-monotonic principle"
+  - concept: "0677's (Step 92's) concurrency-and-invariant-preservation capstone"
+    refinement: "Directly and genuinely synthesized into a strengthened, three-regime correctness criterion: architecture correctness must hold across normal, concurrent, AND failure/recovery execution jointly, not merely under normal operation"
+  - concept: "0657's (Step 73's) Identity, Trust and Cryptographic Provenance content"
+    refinement: "LIKELY DISTINCT, NOT YET CONFIRMED: Step 94's opening preview explicitly frames adversarial (deliberately malicious) actor behavior, distinct from 0657's more constructive cryptographic-identity-and-honest-trust-modeling framing; flagged for direct comparison once 0679 is read"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read Step 94's actual file (0679) and directly compare its adversarial-security content against 0657's (Step 73's) already-established Identity/Trust/Cryptographic Provenance treatment — determine whether the explicitly adversarial framing (deliberate malicious behavior, knowledge poisoning, prompt injection, retrieval corruption) constitutes a genuinely distinct security-specific deepening or substantially retreads 0657's constructive trust-modeling content."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CONFIRMATION that Step 93 delivers genuinely new failure/recovery territory — failure as a first-class transition bound by the same invariants as ordinary execution, the Outbox pattern, write-ahead logging, event-sourcing recovery with Event durability≠Event correctness, and retry/idempotency mechanics extending 0677's discipline."
+  - "dimension-registry.md: record a precise, genuinely valuable epistemic discipline for post-recovery knowledge — Backup≠Truth, RecoveredState≠AutomaticallyCurrentState, and Recovery-should-be-monotonic — directly extending the corpus's temporal-epistemics, three-valued-logic, and independence disciplines into the disaster-recovery context specifically."
+  - "dimension-registry.md: record RPO/RTO correctly named as standard disaster-recovery metrics, Fault injection/Chaos testing correctly introduced, ten new invariants with zero exact-name collisions, and the capstone architectural principle redefining correctness across normal/concurrent/failure regimes jointly. Flag the comparison point for Step 94's adversarial-security preview against 0657's constructive trust-model content, pending confirmation at 0679."
+anchor_test:
+  anchor: "0677's provisional expectation of new failure/recovery territory; 0677's idempotency and Compensation≠PerfectRollback disciplines; the corpus's three-valued epistemic logic; the corpus's evidence-independence discipline; 0668's/0666's temporal-epistemics and observation-freshness disciplines; 0657's Identity/Trust/Cryptographic Provenance content"
+  supports_dimension: "CONFIRMS genuinely new corpus content with several precisely stated, practically important, and correctly-reasoned results: the Outbox pattern and write-ahead logging (standard, correctly-applied distributed-systems architecture); Event durability≠Event correctness (a genuinely important caution for event-sourced systems); and — most valuably — a coherent, precisely reasoned epistemic discipline for post-recovery knowledge states (Backup≠Truth, RecoveredState≠AutomaticallyCurrentState, Recovery-should-be-monotonic) that directly and non-duplicatively extends several previously established corpus disciplines into the specific and practically significant disaster-recovery context. Correctly introduces standard industry metrics (RPO/RTO) and practices (fault injection, chaos testing) not previously named in the corpus. Delivers a genuinely valuable capstone architectural principle strengthening correctness to span normal, concurrent, and failure regimes jointly. The one flagged open question — whether Step 94's adversarial-security content substantially overlaps 0657's constructive trust-model treatment — is appropriately left open pending direct comparison, consistent with this reconstruction's discipline"
+  refines_or_contradicts: "confirms 0677's provisional new-territory expectation; directly and genuinely extends 0677's idempotency and Compensation≠PerfectRollback disciplines; explicitly and correctly cross-references the corpus's three-valued epistemic logic; directly extends the corpus's evidence-independence discipline and 0668's/0666's temporal-epistemics/observation-freshness disciplines; directly synthesizes 0677's concurrency capstone into a strengthened three-regime correctness criterion; flags, but does not yet confirm, a comparison against 0657's trust-model content for Step 94; no contradiction found; introduces no new invariant-naming collisions"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The RecoveredState≠AutomaticallyCurrentState and Recovery-should-be-monotonic experiments (§93.53-93.59, a backup restored to PolicyVersion=100 correctly failing to overwrite an independently-known, more current PolicyVersion=105) are directly checkable, concrete evidence of a genuinely new and precisely reasoned epistemic-recovery discipline not previously present in this reconstruction's records, extending several established disciplines coherently rather than repeating them."
+  - "The correctly-named and correctly-applied RPO/RTO disaster-recovery metrics (§93.62-93.65) and Fault injection/Chaos testing practices (§93.71-93.74) are directly checkable, standard industry concepts introduced into the corpus for the first time at this level of specificity, confirming genuine substantive novelty."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 94's actual content (0679), once read, confirms itself as a genuinely distinct, adversarial-specific security deepening or substantially overlaps 0657's already-established constructive trust-model content."
+tier2_triggered: true
+tier2_reason: "CONFIRMS genuinely new failure/recovery territory with several precisely stated and practically important results: the Outbox pattern, write-ahead logging, Event durability≠Event correctness, and a coherent, non-duplicative epistemic discipline for post-recovery knowledge (Backup≠Truth, RecoveredState≠AutomaticallyCurrentState, Recovery-should-be-monotonic) directly extending several established corpus disciplines into the disaster-recovery context. Correctly introduces standard industry concepts (RPO/RTO, fault injection, chaos testing) not previously named. Ten new invariants introduce zero exact-name collisions. Delivers a genuinely valuable capstone principle redefining correctness across normal, concurrent, and failure regimes jointly. Flags a comparison point for Step 94's adversarial-security content against 0657's trust-model treatment. Verdict 'STEP 93 — PASS.'"

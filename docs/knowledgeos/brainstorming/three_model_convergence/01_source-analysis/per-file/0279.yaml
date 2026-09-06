@@ -1,0 +1,62 @@
+sequence: 279
+path: docs/knowledgeos/brainstorming/kernel/20260825-121403-recommended-next-research-set-before-freezing-knowledge-space-kernel.md
+title: "Recommended Next Research Set Before Freezing the Knowledge Space Kernel"
+date: "2026-08-25"
+bytes: 15000
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 279
+importance: critical
+confidence: high
+about: >
+  A landmark methodological/roadmap file, not a source extraction: explicitly refuses to freeze the
+  Knowledge Space Kernel on McGinn alone, proposes a seven-book reading program (Floridi, Williamson,
+  Dretske, Fagin/Halpern/Moses/Vardi, Brachman/Levesque, Brandom, Searle), and institutes a CROSS-BOOK-
+  INTERSECTION discipline (Kernel candidates from each book intersected, only survivors become Zero-Lens
+  invariants) as the corrective going forward for exactly the single-source-literalization risk exhibited
+  at 0276/0278 -- a genuine, if forward-looking and not retroactive, response to that tension. Proposes a
+  standardized 19-question Zero-Lens Extraction template for future book engagements, and a three-primitive-
+  dimension hypothesis (Ontological/Semantic/Epistemic spaces, unified by Modal/Temporal structure) as a
+  candidate alternative to a single unified ontology.
+introduces:
+  - concept: "Explicit non-freezing decision: 'I would read more before freezing the Knowledge Space Kernel' -- McGinn 'exposed the logical/metaphysical floor' but does not by itself define what a Knowledge Space is"
+  - concept: "Seven-book recommended research program with stated priority and rationale: (1) Floridi, Philosophy of Information [VERY HIGH] -- Levels of Abstraction, semantic information, veridicality, correctness, symbol grounding, informational structural realism; Zero Lens question: is Knowledge Space fundamentally a space of information, or is information only one layer inside it, with a candidate alternative pipeline Structure->Information->SemanticInformation->Truth->Knowledge; (2) Williamson, Knowledge and Its Limits [VERY HIGH] -- treats knowledge as EXPLANATORILY FUNDAMENTAL rather than reducible to truth+belief+justification, a 'major Zero Lens test' reversing the corpus's assumed bottom-up construction direction into a top-down one (KNOWLEDGE as the source truth/evidence/justification derive from, not their sum); (3) Dretske, Knowledge and the Flow of Information [HIGH] -- derives an information-theoretic account of knowledge/perception/learning/meaning, proposed pipeline SOURCE->INFORMATION->SIGNAL->INTERPRETATION->PROPOSITION->KNOWLEDGE; (4) Fagin/Halpern/Moses/Vardi, Reasoning About Knowledge [HIGH, especially computational] -- epistemic logic, distributed/common knowledge, explicitly developed for distributed systems and AI, worked nested-knowledge example (A knows P / B knows P / A knows B knows P / everyone knows P) mapped to AI Agent/Governance/Architecture/Evidence/Observations, potential formal basis for private/shared/institutional/common/authorized/unknown knowledge categories -- 'probably the book that could most directly connect the philosophical Kernel to the AI Engineering Platform'; (5) Brachman & Levesque, Knowledge Representation and Reasoning [HIGH, after the philosophical books] -- the philosophy-to-AI-KR bridge (first-order logic, resolution, Horn reasoning, inheritance, defaults, uncertainty, expressiveness-vs-tractability), key question 'what has computer science already discovered about representing knowledge, and what did it get wrong by collapsing representation into ontology?'; (6) Brandom, Making It Explicit [HIGH, specialized] -- tests whether knowledge is inherently INFERENTIAL AND NORMATIVE (agents/claims/commitments/justifications/inferences/norms/responsibility/governance) rather than merely representational; (7) Searle, The Construction of Social Reality [later] -- institutional-fact layer (Decision/Requirement/Policy/Authority/Role/Mandate/Approval/GovernanceAct/Constitution depend on collective recognition/status functions), motivating a candidate NATURAL FACT/INSTITUTIONAL FACT/INFERRED FACT/REPRESENTED FACT distinction, explicitly 'not to define the Kernel yet, to challenge the boundary between the world layer and governance/social layer'"
+  - concept: "Recommended non-random reading pipeline: McGinn(logical floor) -> Floridi(information floor) -> Williamson(knowledge floor) -> Dretske(information<->knowledge) -> Fagin-et-al(formal epistemic space) -> Brachman/Levesque(computational space) -> Brandom(social/inferential) -> Searle(institutional layer)"
+  - concept: "METHODOLOGICAL CORRECTION explicitly instituted, directly addressing (forward-looking, not retroactive) the single-source-literalization risk exhibited at 0276/0278: reject mere book summarization; standardize a 19-question 'Zero-Lens Extraction' template per book (what does the author treat as primitive -> Kernel candidates; what does the author explicitly refuse to reduce -> anti-reduction evidence; what distinctions must remain separate -> Kernel invariants; what entities/relations are assumed -> ontological/relational candidates; representation-vs-reality -> boundary detection; what is truth/knowledge/evidence/belief/information/inference/modality/identity -> respective semantics layers; what can be shared between agents -> collective Knowledge Space; what is unknowable -> negative space; what depends on language/minds -> representation/epistemic boundary; what is implementation-specific -> reject from Kernel)"
+  - concept: "CROSS-BOOK-INTERSECTION methodology: Book A -> Kernel Candidates A; Book B -> Kernel Candidates B; Book C -> Kernel Candidates C; -> CROSS-BOOK INTERSECTION -> ZERO-LENS INVARIANTS -> KNOWLEDGE SPACE KERNEL -- explicitly 'much stronger than taking one philosopher's ontology and declaring it our architecture'; only concepts surviving intersection across MULTIPLE independent books become genuine Kernel candidates"
+  - concept: "Three-primitive-dimension hypothesis for Knowledge Space, as an alternative to a single unified ontology: ONTOLOGICAL SPACE (existence/identity/object/property/fact), SEMANTIC SPACE (meaning/proposition/reference/predication/truth), EPISTEMIC SPACE (knowledge/evidence/belief/justification/inference), unified by a shared MODAL/TEMPORAL STRUCTURE; Truth proposed as the bridge between ontological and semantic spaces, while Knowledge/Evidence belong to the epistemic space -- explicitly framed as 'much more powerful than simply Knowledge Graph or Knowledge Ontology'"
+  - concept: "Six-lens naming for the planned reading program (excluding Searle/Brandom from this particular framing): McGinn=Logical Reality, Floridi=Information, Williamson=Knowledge, Dretske=Information Flow, Fagin-et-al=Formal Epistemic Space, Brachman=Computational Representation; final governing question: 'what survives all six lenses when viewed through the Zero Lens? Those survivors are the strongest candidates for the Knowledge Space Kernel.'"
+defines: []
+refines:
+  - concept: "0276/0278's literal single-source (McGinn) Kernel-v0.1 proposals, and the tension flagged against 0273's adversarial-lens-only discipline"
+    refinement: "Institutes a forward-looking methodological correction (cross-book intersection required before any Kernel freezing) that would, if applied, prevent exactly the kind of premature single-source literalization 0276/0278 exhibited -- does not retroactively undo those proposals, which remain candidates pending the cross-book intersection test, but establishes the discipline that should govern their eventual adjudication"
+  - concept: "0268/0269's Assertion-primitive investigation and the six-way Kernel-structure-synthesis family"
+    refinement: "Proposes Williamson's 'knowledge is explanatorily fundamental' thesis as a potential reversal of the entire family's shared assumption (truth+evidence+justification -> knowledge, bottom-up) into a top-down alternative (knowledge as the source these derive from) -- flagged as a major upcoming Zero-Lens test, not yet resolved"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file's cross-book-intersection methodology as the corpus's own forward-looking corrective for the 0276/0278 single-source-literalization tension -- not a resolution of that specific disagreement, but the governing discipline that should adjudicate the six-way Kernel-structure-synthesis family (and any further candidates) once the newly-recommended seven-book program is read."
+anchor_test:
+  anchor: "0273's adversarial-lens-only discipline; 0276/0278's literal McGinn-Kernel proposals and the tension between them; the six-way Kernel-structure-synthesis family; 0268-0271's Assertion-primitive investigation"
+  supports_dimension: "Cross-cutting methodology: institutes a disciplined, multi-source convergence requirement for the Engineering KnowledgeOS Kernel, directly informed by (and correcting) the philosophical-source engagement pattern of this entire sub-arc"
+  refines_or_contradicts: "refines the corpus's Kernel-discovery methodology; proposes Williamson's knowledge-as-fundamental thesis as a potential future reversal of the Assertion-primitive family's shared assumption; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether the seven recommended books (Floridi, Williamson, Dretske, Fagin/Halpern/Moses/Vardi, Brachman/Levesque, Brandom, Searle) are actually read in subsequent files, in the proposed order"
+  - "Whether the cross-book-intersection methodology is ever actually executed once multiple books have been read, and what (if anything) survives the intersection"
+  - "Whether Williamson's 'knowledge is explanatorily fundamental' thesis, once engaged, forces a reversal of the corpus's working truth+evidence+justification=knowledge assumption"
+tier2_triggered: true
+tier2_reason: "A landmark methodological/roadmap file instituting a cross-book-intersection discipline as the corrective for the single-source-literalization tension flagged at 0276/0278: proposes a seven-book research program with explicit priorities and Zero-Lens questions per book, a standardized 19-question extraction template, a three-primitive-dimension (Ontological/Semantic/Epistemic) alternative to a unified ontology, and previews Williamson's radical 'knowledge as explanatorily fundamental' thesis as a potential reversal of the corpus's working assumption about how knowledge relates to truth/evidence/justification."

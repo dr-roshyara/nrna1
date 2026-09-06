@@ -1,0 +1,56 @@
+sequence: 2334
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/01_source-formal-model.md
+title: "Step-292/01 — Reiter's Formal Model, as Extracted: the Exact Axiom Notation Behind File 2332's Already-Tracked Findings"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: none
+  secondary_note: "the detailed formal extraction (exact axiom notation) of Reiter's situation-calculus machinery, whose substantive findings this reconstruction already comprehensively recorded as file 2332; recorded here for the specific formal notation not previously transcribed"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2334
+importance: low
+confidence: high
+about: >
+  `[EXT]` throughout, "extracted, not endorsed." Delivers the exact formal axiom notation underlying
+  Reiter's situation calculus, already substantively summarized in this reconstruction's already-tracked
+  file 2332: ontology table (Situation=finite action sequence/history not state; S_0=initial situation;
+  do(a,s)=successor situation; Fluent=situation-varying predicate/function; Poss(a,s)=possibility gate,
+  not an effect); the four foundational axioms verbatim -- unique names (do(a_1,s_1)=do(a_2,s_2)⊃a_1=a_2
+  ∧s_1=s_2), induction (explicitly flagged SECOND-ORDER: (∀P).P(S_0)∧(∀a,s)[P(s)⊃P(do(a,s))]⊃(∀s)P(s)),
+  subhistory (¬s⊏S_0; s⊏do(a,s')≡s⊑s'), executable(s) (∀a,s*.do(a,s*)⊑s⊃Poss(a,s*)) -- "the system is
+  not fully first-order decidable. Any transfer inherits this"; the successor-state axiom exact formula
+  F(do(a,s))≡γ⁺_F(a,s)∨(F(s)∧¬γ⁻_F(a,s)), explicitly resting on "the causal completeness assumption:
+  the given effect axioms enumerate all the ways a fluent can change -- an assumption about the
+  axiomatiser's knowledge, not a theorem"; regression R[φ] and the regression theorem (a regressable
+  query holds iff its regression holds in the initial theory); and a closing list of the machinery above
+  basic action theories (Golog's Do macro, RGolog interrupts, sequential/concurrent/natural-action
+  situation calculus, sensing/knowledge via accessibility).
+introduces: []
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked file 2332 synthesis of Reiter's machinery"
+    refinement: "GIVEN THE EXACT FORMAL AXIOM NOTATION (unique names, induction, subhistory, executable(s), SSA, regression) underlying that already-tracked summary"
+contradicts: []
+repeats:
+  - "The substantive content (Situation=history not state, SSA resting on causal completeness, regression theorem, second-order induction) is already comprehensively recorded in file 2332; this record captures only the exact formal notation."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "This reconstruction's already-tracked file 2332 synthesis"
+  supports_dimension: "Delivers the exact formal notation underlying the already-tracked synthesis"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "The substantive findings are already comprehensively recorded in file 2332; this document supplies only the exact formal axiom notation, not independently tier-2-worthy."

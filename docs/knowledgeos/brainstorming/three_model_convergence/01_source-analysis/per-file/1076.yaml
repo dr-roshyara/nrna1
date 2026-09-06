@@ -1,0 +1,97 @@
+sequence: 1076
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/exec/t291_omega_tau_audit.py
+title: "t291_omega_tau_audit.py -- Step 291 Omega/Tau Reconciliation and Closure Audit: Discovers a SECOND Genuine Glyph Collision (O Overloaded Across Operation-Family and Observation-Index Meanings, Confirming Step 289's Graph Wrongly Collapsed Three Distinct Objects Into One Cut Candidate) and Precisely Decomposes the equiv_K 'O_K Blocker' (File 1067) Into Six Non-Interchangeable Properties -- Definability Is UNBLOCKED, Only Totality/Decidability/Canonicality/Computability/Operational-Completeness Are"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the second Step-291 executable script, delivering a genuinely important second glyph-collision discovery plus a six-way property decomposition"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1076
+importance: critical
+confidence: high
+about: >
+  `t291_omega_tau_audit.py` — "STEP 291: O/O_K/T reconciliation + closure classification (mandate §2,§5,§6,
+  §7)." Executable Python script reconciling four corpus symbols carrying the `O`/`𝒪` glyph, directly
+  extending the already-tracked file-1075 O/T/O_K three-way separation.
+
+  **DISCOVERS A SECOND, GENUINELY IMPORTANT GLYPH COLLISION, DIRECTLY PARALLELING FILE 1065'S ALREADY-TRACKED
+  `≡` GLYPH-REUSE DIAGNOSIS**: "The glyph 'O' carries TWO meanings: (a) `256.2`/`259.7`/`272A`: the OPERATION
+  FAMILY; (b) `261.5`: the INDEX of `≈` over histories, i.e. OBSERVATIONS. `261.21` then introduces `O_K` for
+  'permitted state observations'. => `O` is OVERLOADED across operations and observations. DOCUMENTARY
+  DEFECT." **DIRECTLY IMPLICATES AND FURTHER CORRECTS THE ALREADY-TRACKED STEP-289 DEPENDENCY GRAPH (file
+  1052)**: "`T⊂O` (`259.7` kind 1). `O_K` relates to kind 5. THREE DISTINCT OBJECTS, WHICH STEP 289'S GRAPH
+  HAD COLLAPSED INTO A SINGLE `{O,T}` CUT CANDIDATE." This is the second time this research programme has
+  found a single overloaded glyph responsible for an earlier step's graph-modelling imprecision (the first
+  being `≡`'s four-job overload, file 1065) -- establishing a recurring, now-named defect pattern of glyph
+  overload silently corrupting formal dependency-graph modelling.
+
+  **DELIVERS A CAREFUL "ENUMERATION VS CLOSURE" DISTINCTION (mandate §7) WITH A CRITICAL FINDING**: audits
+  four possible closure mechanisms (finite enumeration -- PARTIAL, a candidate list of 14 forced/18 upper-
+  bound, never a membership rule; a closed schema -- PRESENT, `259.7`'s five-kind classification with typed
+  signatures, and `277` declares classification CLOSED; a declared admissibility predicate -- "PRESENT IN
+  FORM, ABSENT IN CONTENT -- the predicate is named, not evaluable"; a governance boundary -- "ASSERTED,
+  never discharged"). Boxed critical finding: "'NOT ENUMERATED' != 'NOT CLOSED'. The corpus has a SCHEMA...
+  and `277` declares CLASSIFICATION CLOSED while MINIMALITY OPEN. What is missing is not an enumeration; it
+  is a MEMBERSHIP RULE saying which operations are MANDATORY." This precisely sharpens the corpus's own
+  already-tracked `𝒯 not closed` framing (file 1052/1069) into a specific, named missing artifact.
+
+  **DELIVERS A DISCIPLINED A-E OBSERVATION-UNIVERSE CLASSIFICATION (mandate §6)**, finding case C (semantically
+  bounded, not formally closed) the closest fit for observations, and discovering a genuinely important
+  SELF-REFERENTIAL DEFECT within `261.21` itself: "`261.21` DEFINES `O_K` as 'the closed set of permitted
+  state observations' and then boxes '`O_K` is not yet completely closed'. THE DEFINITION PRESUPPOSES WHAT
+  THE CAVEAT WITHDRAWS. DOCUMENTARY + FORMAL [defect]." Classifies operations closer to case B (schema exists,
+  membership does not).
+
+  **DELIVERS THE MOST IMPORTANT FINDING OF THIS FILE: A PRECISE SIX-WAY DECOMPOSITION OF WHAT `O_K`'S
+  OPENNESS ACTUALLY BLOCKS FOR THE `≡_K` CANDIDATE**, directly refining the already-tracked closing insight of
+  file 1067 ("the blocker is `𝒪_K`, not a contradiction"): DEFINABILITY -- NO, "261.21's formula is
+  WELL-FORMED for any set `O_K`" (i.e. NOT actually blocked); TOTALITY -- YES, needs `O_K`'s extension;
+  DECIDABILITY -- YES, and independently bounded by `012 §35`; CANONICALITY -- YES, "'which `O_K`' is exactly
+  the normative question"; COMPUTABILITY -- YES, needs the extension AND each `O` evaluable; OPERATIONAL
+  COMPLETENESS -- YES, needs `T`'s membership. Boxed precision correction: "The six are NOT interchangeable.
+  `≡_K` is DEFINABLE without closing `O`/`T`; it is not TOTAL, DECIDABLE, CANONICAL or COMPUTABLE without it.
+  Step 289/290 said '`≡` is blocked on `O_K`'. PRECISELY: ITS EXTENSION IS BLOCKED; ITS DEFINITION IS NOT."
+  This is a genuinely important further sharpening of the entire N-1/`O_K`-blocker research arc (files
+  1063-1073), showing that even the disciplined "blocker is `O_K`" formulation itself required one more
+  round of precision: definability was never actually blocked at all.
+introduces:
+  - concept: "The second glyph-collision discovery in this research arc: the O glyph is overloaded between the operation family (256.2/259.7/272A) and the observation-index of approx over histories (261.5), which caused Step 289's dependency graph to wrongly collapse O, T, and O_K into a single {O,T} cut candidate"
+  - concept: "The critical enumeration-vs-closure distinction: the corpus's operation set has a closed classification schema (five kinds, typed signatures, 277) but no membership rule identifying which operations are mandatory -- the missing artifact is a membership rule, not an enumeration"
+  - concept: "The self-referential defect within 261.21 itself: its own definition of O_K as 'the closed set of permitted state observations' presupposes closure that the same section's caveat then withdraws"
+  - concept: "The six-way decomposition of what O_K's openness blocks for the equiv_K candidate: definability is UNBLOCKED (the formula is well-formed for any O_K); totality, decidability, canonicality, computability, and operational completeness ARE blocked -- sharpening file 1067's 'the blocker is O_K' into a precise statement of exactly what is and is not blocked"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Step-289 dependency-graph cut analysis (file 1052) and its already-tracked O/T/O_K separation (file 1075)"
+    refinement: "FURTHER CORRECTED: the O glyph itself is discovered to be overloaded across two distinct meanings (operation family vs observation index), directly explaining why Step 289's graph collapsed three distinct objects (O, T, O_K) into a single {O,T} cut candidate"
+  - concept: "This reconstruction's already-tracked closing insight from file 1067 ('the blocker is O_K, not a contradiction')"
+    refinement: "PRECISELY SHARPENED into a six-way property decomposition: definability of equiv_K is NOT blocked by O_K's openness (the candidate formula is well-formed regardless); only totality, decidability, canonicality, computability, and operational completeness are genuinely blocked"
+  - concept: "This reconstruction's already-tracked T-not-closed / 259-blocks-derivation finding (files 1052, 1070)"
+    refinement: "SHARPENED: the missing artifact is specifically identified as a membership rule (which operations are mandatory), not an enumeration -- the corpus already supplies a closed classification schema (five kinds, typed signatures, per 277)"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "256.2, 272A, 277, 42.9/42.41 -- newly cited corpus loci for the operation-family enumeration and admissibility-predicate discussion, not previously tracked in this reconstruction's depth."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the second glyph-collision discovery (O overloaded between operations and observations, explaining Step 289's graph-collapse error), the enumeration-vs-closure critical finding (missing artifact is a membership rule, not an enumeration), the self-referential defect within 261.21 itself, and the six-way decomposition precisely sharpening the O_K blocker into definability (unblocked) vs totality/decidability/canonicality/computability/operational-completeness (blocked)."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step-289 dependency-graph cut analysis (file 1052), the O/T/O_K separation (file 1075), and the file-1067 closing insight ('the blocker is O_K, not a contradiction')"
+  supports_dimension: "Discovers a second glyph collision directly explaining the graph-collapse error, and precisely sharpens the O_K-blocker framing into a six-way, non-interchangeable property decomposition"
+  refines_or_contradicts: "refines (further corrects and sharpens) both prior tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The O-glyph collision and the six-way property decomposition are directly checkable against files 1052 (Step-289 dependency graph), 1065 (the parallel equiv glyph-reuse diagnosis), and 1067 (the O_K-blocker closing insight) for exact consistency and precision of the correction."
+undefined_concepts: []
+open_questions:
+  - "Whether the corpus subsequently supplies the missing membership rule for T (which operations are mandatory) or resolves the O-glyph documentary defect at the source."
+tier2_triggered: true
+tier2_reason: "Delivers a genuinely important second glyph-collision discovery (O overloaded across operations and observations, directly explaining the Step-289 graph-collapse error) and precisely sharpens the already-tracked O_K-blocker closing insight (file 1067) into a six-way, non-interchangeable property decomposition -- discovering that definability was never actually blocked, only totality/decidability/canonicality/computability/operational-completeness. Classified importance critical and confidence high given the disciplined, well-evidenced, and directly connective nature of these findings."

@@ -1,0 +1,235 @@
+sequence: 694
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-123438_step-109-evidence-based-repository-reconstruction.md
+title: "Step 109 -- RESOLVES 0693's Ten-Category Promise NEGATIVELY for a THIRD Consecutive Promise-Then-Defer Cycle (0692→0693, 0693→0694, and Now 0694→0695) -- CALIBRATING META-FINDING: This Corpus Is a Theoretical Architecture-Design Exploration Without Actual Filesystem/Repository Access, So Every 'We Will Now Use Real Artifacts' Promise Can Structurally Only Ever Produce Further Methodology and Hypothetical Worked Examples, Never Genuine Empirical Repository Facts -- Nonetheless Delivers the Reconstruction's Most Detailed Evidence-Classification Methodology Yet (a Five-Level E0-E5 Evidence-Strength Scale, a Fourteen-Field Component-Inventory Schema, Ten Semantic Component Categories, a Concrete Illustrative Evidence-Ledger Table), the Genuinely Valuable VectorStore≠KnowledgeModel Distinction, Confidence=f(EvidenceDepth,EvidenceIndependence,EvidenceFreshness)≠f(LLMConfidence), NotFound≠DoesNotExist, and the Currently Relevant 'Architectural Mythology' Caution Against Accumulated False 'We Already Have This' Claims in Long-Running Projects -- Opens Step 110 -- KnowledgeOS System Boundary Reconstruction, Renewing the Same Structural Promise Pattern With a Six-Way Artifact-Classification Target (Core/Supporting/External/Agent-Specific/Legacy/Unknown)"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 109 -- Evidence-Based Repository Reconstruction', explicitly promised at 0693's close as ending conceptual-layer invention and beginning actual archaeological examination; on full read, delivers a comprehensive RECONSTRUCTION METHODOLOGY (evidence levels, component schema, archaeology techniques) rather than any populated real-artifact inventory, marking the third consecutive promise-then-defer cycle in this arc"
+source_role: PRIMARY_RESEARCH
+canonical_source: 694
+importance: high
+confidence: high
+about: >
+  **RESOLVES 0693's sharp ten-category promise NEGATIVELY, marking a THIRD consecutive promise-then-defer
+  cycle within the 101-109 arc (0692's promise unfulfilled at 0693; 0693's promise unfulfilled here at
+  0694; and this file itself renews the identical promise once more for Step 110).** Every experiment in
+  this file remains illustrative/hypothetical ("we discover a `knowledge/` directory," "Claude contains an
+  architecture document that differs from the authoritative repository architecture") rather than an actual
+  named-repository scan; the file's own closing verdict is explicit: "the correct implementation verdict is:
+  `KnowledgeOS_{actual}=NotYetFullyMapped`, rather than pretending that the target architecture is already
+  implemented."
+
+  **Calibrating meta-finding for this reconstruction, warranted by the now-established three-cycle pattern**:
+  this brainstorming corpus is a purely theoretical, text-based architecture-design exploration with no
+  actual filesystem or repository access available to the model producing it. Structurally, this means every
+  "we will now use real artifacts" promise within the corpus can only ever be followed by further
+  methodology and hypothetical worked examples -- it is not a discoverable defect awaiting resolution at
+  some future file, but an intrinsic property of the corpus's own production context. This reconstruction's
+  ongoing tracking of the specify-not-execute pattern (since Steps 51-55, tested negatively at 0676, self-
+  admitted explicitly at 0685-0691 and 0693, and now confirmed structurally rather than incidentally at
+  0692-0694) should be read in this light going forward: continued "sharpest promise yet" framing for each
+  subsequent step is unlikely to remain the most useful signal, since the underlying limitation appears
+  architectural to the corpus itself rather than a gap that a later file might close.
+
+  Nonetheless delivers the reconstruction's most detailed EVIDENCE-CLASSIFICATION methodology yet: a
+  five-level evidence-strength scale (`E0` Name only, `E1` Structural evidence, `E2` Implementation
+  evidence, `E3` Verification evidence, `E4` Runtime evidence, `E5` Governance evidence, worked through with
+  five sequential experiments building a component's evidence chain from a bare directory name up to full
+  governance recognition), directly extending 0693's E1-E6 evidence hierarchy with a component-inventory-
+  specific reformulation. Delivers a fourteen-field `ComponentInventory_{actual}` schema (Component ID,
+  Name, Location, Type, Responsibility, Dependencies, Knowledge role, Governance role, Agent role, Runtime
+  role, Evidence, Confidence, Status) and the ten semantic component categories first previewed at 0693's
+  close (Knowledge, Ingestion, Semantic processing, Governance, Agent integration, Assurance, Storage,
+  Runtime infrastructure, Interface, Operational tooling), with the important, precisely reasoned caution
+  that a component may legitimately span multiple categories (e.g. an `AgentGateway` simultaneously being
+  Agent-integration + Security-boundary + API) -- "we should not force artificial classification."
+
+  Delivers Repository topology reconstruction with the important, precisely stated principle that actual
+  repository structure outranks documented structure for implementation-topology claims (documentation
+  describing `knowledge/`/`governance/`/`agents/` while the actual repository contains `app/`/`packages/`/
+  `scripts/` correctly yields the real structure as authoritative for implementation topology, PASS),
+  directly extending 0684's/0687's/0691's runtime/evidence-outranks-documentation discipline into repository-
+  structure archaeology specifically. Delivers System-boundary reconstruction with `RepositoryBoundary≠
+  SystemBoundary` (a Claude harness and a KnowledgeOS backend in separate repositories still potentially
+  constituting one logical ecosystem, PASS) and `Uses(X,Y)⇏Y∈KnowledgeOS` (a generic CI tool used by
+  KnowledgeOS not thereby becoming a KnowledgeOS component, PASS), directly extending 0687's dependency-
+  versus-component distinction. Delivers Component ownership explicitly not inferable from directory
+  location (`governance/` proving nothing about ownership, PASS), directly restating 0687's authority-
+  cannot-be-inferred-from-names principle in the ownership-reconstruction context specifically.
+
+  Delivers Interface reconstruction with `InterfaceDeclared≠InterfaceUsed≠InterfaceObserved` (a
+  `KnowledgeClient` class with no evidence of network communication correctly NOT assumed to be a remote
+  service, PASS), directly extending 0687's/0691's claim-versus-evidence disciplines. **Delivers the
+  genuinely valuable, precisely reasoned `VectorStore≠KnowledgeModel` distinction**: a vector database's
+  existence does not automatically constitute the authoritative KnowledgeOS semantic knowledge store (PASS)
+  -- "a vector store answers what content is semantically similar; KnowledgeOS must additionally answer what
+  does this mean, what supports it, who owns it, what authority does it have" -- directly and precisely
+  extending 0673's/0680's embeddings-never-authoritative discipline into repository-reconstruction
+  specifically, a currently important distinction for any AI-system architecture-archaeology exercise.
+
+  Delivers Schema archaeology (a `decisions` table with `id`/`content` but no provenance relationship,
+  correctly flagged as a potential implementation gap despite documentation claiming provenance support,
+  PASS) and API archaeology (a `POST /knowledge` endpoint accepting only `content`, correctly NOT
+  demonstrating support for provenance/authority/temporal-validity/semantic-type, PASS), both directly
+  extending the corpus's evidence-hierarchy/claim-versus-implementation disciplines into concrete artifact-
+  inspection techniques. Delivers State-machine archaeology (an implementation permitting `status=
+  "approved"` from any prior state correctly flagged as potentially unenforced approval semantics, PASS) and
+  Business-rule archaeology across multiple enforcement layers (validators/policies/authorization/domain
+  services/DB constraints/CI gates/runtime middleware, a database permitting `authority=NULL` despite an
+  architectural non-null requirement correctly flagged as a potential enforcement gap, PASS).
+
+  Delivers Tests reframed as executable architecture evidence (`TestExists` weaker than `TestExecuted`, an
+  architecture test excluded from the CI path correctly flagged as a `VerificationGap`, PASS×2), directly
+  extending 0691's/0692's/0693's verification-strength disciplines. Delivers Agent-harness reconstruction
+  methodology explicitly naming `AGENTS.md`, `.claude/`, and `.codex/` as the inspection targets, with the
+  important caution that a directory literally named `memory` does not automatically constitute
+  authoritative KnowledgeOS memory (PASS) -- directly restating 0687's/0690's illustrative agent-harness
+  cautions -- and a Pointer-layer test (both harnesses referencing the same architecture source correctly
+  yielding strong evidence for the pointer-layer architecture, PASS; a Claude-side architecture document
+  diverging from the authoritative repository architecture correctly yielding `AgentKnowledgeDrift`/`DRIFT`,
+  described as "becoming a concrete finding rather than a theoretical concern" -- still an illustrative,
+  not empirically verified, scenario despite this more assertive framing).
+
+  Delivers Scripts and Hooks explicitly recognized as carrying real architectural weight (a shell script
+  blocking destructive database commands correctly recognized as an actual enforcement mechanism even
+  without a formal service, PASS; a session-change logger correctly yielding `PARTIAL` evidence for agent-
+  action provenance pending completeness/reliability/storage/retention/execution confirmation) --
+  consistent with, and directly extending, 0693's evidence-discovery-methodology naming-proves-nothing
+  principle. Delivers Configuration archaeology with an explicit secrets-safety caution (inspect safely,
+  avoid exposing credentials, directly extending 0687's secret-hygiene principle) and Static-versus-runtime
+  dependency evidence (a source-level import with no corresponding runtime load correctly recorded as
+  `StaticDependency=True`/`RuntimeDependency=NotObserved`, both coexisting without contradiction, PASS),
+  directly extending 0687's/0691's version/evidence-tier disciplines.
+
+  Delivers Data-flow and Control-flow reconstruction, including the file's one explicit `VIOLATION` result
+  (post-hoc authorization for a protected action, PASS-as-anti-pattern, consistent with the established FAIL/
+  VIOLATION convention) and Evidence-chain reconstruction (`Claim→Artifact→Code→Test→Runtime`, an
+  incomplete chain correctly yielding `Chain=Incomplete`, PASS). **Delivers the important, precisely
+  reasoned principle that confidence must derive from evidence properties, never from AI self-report**:
+  `Confidence=f(EvidenceDepth,EvidenceIndependence,EvidenceFreshness)`, explicitly NOT
+  `f(LLMConfidence)` -- directly and genuinely extending 0683's/0684's/0688's/0693's AI-confidence-does-not-
+  establish-truth family into the reconstruction-confidence-scoring context specifically, with Independent-
+  evidence explicitly stronger than repeated documentation (two independent documentation sources both
+  claiming "all agent actions are audited," with no implementation evidence, correctly remaining
+  `Specified/Claimed`, never `Verified`, PASS).
+
+  Delivers five named target reconstruction artifacts (`ActualComponentInventory`, `ActualDependencyGraph`,
+  `ActualDataFlow`, `ActualControlFlow`, `EvidenceLedger`) with a concrete illustrative four-row Evidence
+  Ledger example table (columns: ID, Claim, Evidence, Type, Strength, Status; rows spanning `Partial`,
+  `Confirm`, and two `TBD` entries for an "agent changes are logged" capability) -- itself illustrative
+  rather than a populated real ledger, but a genuinely useful template.
+
+  **Delivers `NotFound≠DoesNotExist` (Negative-evidence discipline)**: a search failing to find a `Decision`
+  class must not conclude `DecisionCapability=False`, since the capability may be represented under
+  different names (workflow records, ADR objects, PASS), directly and precisely extending 0693's naming-
+  proves-nothing-for-evidence-discovery principle with its logical negative-evidence counterpart, and a
+  concrete Semantic-search-strategy listing concept-level search terms for `Decision` (approve/reject/
+  authorize/rationale/resolution/accepted/superseded) and `Evidence` (source/observation/provenance/
+  finding/artifact/verification-result).
+
+  **Delivers a genuinely valuable, currently relevant governance-hygiene principle explicitly named
+  "architectural mythology"**: long-running projects accumulate informal claims like "we already have this,"
+  which may actually mean designed/partially-implemented/prototyped/once-implemented/intended/manually-
+  performed rather than truly operational -- a prior claim of "there is a registry" tested against an
+  actual `registry/` directory found to contain only agent configuration, correctly NOT confirming the
+  original interpretation (PASS) -- directly and genuinely extending the corpus's evidence-skepticism
+  discipline into organizational-memory-accuracy specifically, a precise and currently applicable caution
+  for any long-running engineering project's own accumulated self-narrative.
+
+  Delivers an eight-state Implementation-status vocabulary (`Designed, Prototype, Partial, Implemented,
+  Verified, Operational, Governed, Deprecated`, a prototype-branch feature correctly remaining `Prototype`,
+  never `Operational`, PASS) directly extending 0693's C0-C6 maturity model with additional granularity
+  (`Prototype`, `Deprecated`), and Deprecated-versus-Active distinction for legacy artifacts (an unused
+  legacy synchronization script correctly flagged `LegacyArtifact`, not `CurrentArchitectureComponent`,
+  PASS).
+
+  No explicit new named invariants section appears in this file, consistent with 0692's and 0693's
+  organizational/methodological character.
+
+  **Delivers Step 109's verdict, continuing the self-admission pattern with an explicit acknowledgment of
+  its own methodological (not empirical) status**: "STEP 109 — RECONSTRUCTION METHOD: PASS. But unlike
+  Steps 103-108, this step marks the transition to empirical work. Therefore the correct implementation
+  verdict is: `KnowledgeOS_{actual}=NotYetFullyMapped`, rather than pretending that the target architecture
+  is already implemented."
+
+  **Closes by opening "Step 110 — KnowledgeOS System Boundary Reconstruction,"** renewing the identical
+  structural promise pattern with a six-way artifact classification target (`Core, Supporting, External,
+  Agent-specific, Legacy, Unknown`) and the pointed test "Can we draw the system boundary from evidence
+  rather than from our previous assumptions?" No actual code execution, repository inspection, or verified
+  filesystem/component-inventory claim is reported anywhere in this file.
+introduces:
+  - concept: "RESOLUTION (negative) of 0693's ten-category promise, marking a THIRD consecutive promise-then-defer cycle within the 101-109 arc"
+  - concept: "CALIBRATING META-FINDING: the corpus's promise-then-defer pattern (0692-0694) is structural (this is a theoretical, filesystem-access-free architecture-design exploration), not an incidental gap awaiting resolution at a future file — future 'sharpest promise yet' framing should be applied with this calibration"
+  - concept: "A five-level E0-E5 evidence-strength scale for component-inventory reconstruction, extending 0693's E1-E6 hierarchy"
+  - concept: "A fourteen-field ComponentInventory_actual schema and the ten semantic component categories (multi-category membership explicitly permitted, avoiding forced classification)"
+  - concept: "Actual repository structure outranks documented structure for implementation-topology claims"
+  - concept: "RepositoryBoundary≠SystemBoundary and Uses(X,Y)⇏Y∈KnowledgeOS"
+  - concept: "VectorStore≠KnowledgeModel — a vector database's existence does not constitute the authoritative semantic knowledge store"
+  - concept: "Confidence=f(EvidenceDepth,EvidenceIndependence,EvidenceFreshness), explicitly NOT f(LLMConfidence)"
+  - concept: "NotFound≠DoesNotExist (negative-evidence discipline), with a concrete concept-level semantic-search-term strategy"
+  - concept: "'Architectural mythology' — the currently relevant caution that long-running projects accumulate false 'we already have this' claims requiring explicit re-verification"
+  - concept: "An eight-state Implementation-status vocabulary (Designed through Deprecated), extending 0693's C0-C6 model"
+  - concept: "Opens Step 110 — KnowledgeOS System Boundary Reconstruction, renewing the identical promise pattern with a six-way artifact classification target"
+defines:
+  - concept: "VectorStore≠KnowledgeModel"
+    definition: "The existence of a vector database or embedding index within a system does not, by itself, constitute that system's authoritative semantic knowledge model; a vector store answers questions of semantic similarity, while a genuine knowledge model must additionally represent meaning, support, ownership, and authority"
+  - concept: "Confidence=f(EvidenceDepth,EvidenceIndependence,EvidenceFreshness)"
+    definition: "Confidence in a reconstruction claim about an architectural capability's existence must be derived from properties of the supporting evidence (how deep the evidence chain runs, how independent its sources are, how fresh/current it is) — never from an AI model's self-reported confidence score, which is not itself evidence"
+  - concept: "Architectural mythology"
+    definition: "The accumulated, often-repeated informal belief within a long-running project that a capability 'already exists,' which on investigation may actually correspond to a design intention, a prototype, a partial implementation, a once-implemented-but-since-removed mechanism, or a purely manual process — requiring explicit re-verification against actual artifacts rather than being taken at institutional face value"
+refines:
+  - concept: "0693's E1-E6 evidence hierarchy"
+    refinement: "Directly extended with a component-inventory-specific five-level E0-E5 reformulation, worked through as a sequential evidence-accumulation experiment"
+  - concept: "0693's ten semantic component categories (previewed at its close)"
+    refinement: "Directly delivered with the important multi-category-membership caution, avoiding forced single-category classification"
+  - concept: "0684's/0687's/0691's runtime/evidence-outranks-documentation discipline"
+    refinement: "Directly and genuinely extended into repository-structure archaeology specifically: actual structure outranks documented structure for implementation-topology claims"
+  - concept: "0687's dependency-versus-component distinction and authority-cannot-be-inferred-from-names principle"
+    refinement: "Directly extended into system-boundary reconstruction (RepositoryBoundary≠SystemBoundary, Uses(X,Y)⇏Y∈KnowledgeOS) and component-ownership reconstruction respectively"
+  - concept: "0673's/0680's embeddings-never-authoritative discipline"
+    refinement: "Directly and precisely extended into repository-reconstruction specifically via VectorStore≠KnowledgeModel"
+  - concept: "0687's/0690's illustrative agent-harness cautions"
+    refinement: "Directly restated for AGENTS.md/.claude//.codex/ reconstruction specifically (a directory named 'memory' does not automatically constitute authoritative memory)"
+  - concept: "0687's secret-hygiene principle"
+    refinement: "Directly extended into configuration-archaeology safety practice (inspect safely, avoid exposing credentials)"
+  - concept: "0683's/0684's/0688's/0693's AI-confidence-does-not-establish-truth family"
+    refinement: "Directly and genuinely extended into reconstruction-confidence scoring specifically: Confidence must derive from evidence properties, never from LLM self-report"
+  - concept: "0693's naming-proves-nothing-for-evidence-discovery principle"
+    refinement: "Directly extended with its logical negative-evidence counterpart (NotFound≠DoesNotExist) and a concrete concept-level semantic-search-term strategy"
+  - concept: "the corpus's evidence-skepticism discipline"
+    refinement: "Directly and genuinely extended into organizational-memory-accuracy specifically via the named 'architectural mythology' caution"
+  - concept: "0693's C0-C6 conformance-maturity model"
+    refinement: "Directly extended with additional granularity via an eight-state implementation-status vocabulary (adding Prototype and Deprecated)"
+  - concept: "0685's-0691's central self-admission and 0693's resumption of it"
+    refinement: "DIRECTLY CONTINUED with an explicit self-aware framing distinguishing this file's methodological-transition status from the preceding purely-conceptual steps: 'unlike Steps 103-108, this step marks the transition to empirical work,' yet still concluding 'NotYetFullyMapped'"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0695 (Step 110 — KnowledgeOS System Boundary Reconstruction) with CALIBRATED (not escalating) vigilance: given the now-established three-cycle promise-then-defer pattern (0692-0694) and the structural explanation for it (no actual filesystem access available to this theoretical corpus), continue tracking whether any later step ever breaks this pattern, but without treating each renewed promise as automatically more significant than the last."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the THIRD consecutive promise-then-defer cycle (0692→0693, 0693→0694, 0694→0695) and the CALIBRATING META-FINDING that this pattern is structural to the corpus's theoretical, filesystem-access-free production context, not an incidental gap -- future tracking should moderate 'sharpest promise yet' framing accordingly."
+  - "dimension-registry.md: record the file's most valuable contributions: VectorStore≠KnowledgeModel, Confidence=f(EvidenceDepth,EvidenceIndependence,EvidenceFreshness)≠f(LLMConfidence), NotFound≠DoesNotExist, and the 'architectural mythology' caution against accumulated false 'we already have this' claims."
+  - "dimension-registry.md: record the E0-E5 evidence-strength scale, the fourteen-field component-inventory schema, the ten semantic component categories with multi-category membership, and the eight-state implementation-status vocabulary (extending 0693's C0-C6 model)."
+anchor_test:
+  anchor: "0693's ten-category promise and its predecessors' non-fulfillment pattern (0689/0690, 0692/0693); 0684's/0687's/0691's runtime-outranks-documentation discipline; 0687's dependency-versus-component and authority-cannot-be-inferred-from-names principles; 0673's/0680's embeddings-never-authoritative discipline; 0683's/0684's/0688's/0693's AI-confidence-does-not-establish-truth family; 0693's naming-proves-nothing-for-evidence-discovery principle; the corpus's evidence-skepticism discipline; 0693's C0-C6 conformance-maturity model; the eight-file (0685-0691, 0693) self-admission chain"
+  supports_dimension: "RESOLVES 0693's sharp promise NEGATIVELY, marking a third consecutive promise-then-defer cycle within the 101-109 arc, and warrants a calibrating meta-finding: this pattern is structural to the corpus's theoretical, filesystem-access-free production context rather than an incidental gap a later file might close. Nonetheless delivers the reconstruction's most detailed evidence-classification and component-inventory-reconstruction methodology yet, with several genuinely valuable, precisely reasoned principles that coherently extend prior corpus disciplines: VectorStore≠KnowledgeModel, evidence-derived (never LLM-derived) confidence scoring, NotFound≠DoesNotExist with a concrete semantic-search strategy, and the currently relevant 'architectural mythology' caution against accumulated false institutional claims. No new invariants (consistent with 0692's and 0693's organizational character). Continues the self-admission chain with explicit self-awareness of its own methodological-not-empirical status"
+  refines_or_contradicts: "directly and genuinely extends 0693's evidence hierarchy and component-category preview, 0684's/0687's/0691's runtime-outranks-documentation discipline, 0687's dependency-versus-component and authority-naming principles, 0673's/0680's embeddings-never-authoritative discipline, 0683's/0684's/0688's/0693's AI-confidence family, 0693's naming-proves-nothing-for-evidence-discovery principle, the corpus's evidence-skepticism discipline, and 0693's C0-C6 model; directly continues the eight-file self-admission chain; no contradiction found; no new invariants introduced, so no collision risk"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§109.81's explicit verdict text -- 'unlike Steps 103-108, this step marks the transition to empirical work. Therefore the correct implementation verdict is: KnowledgeOS_actual=NotYetFullyMapped, rather than pretending that the target architecture is already implemented' -- combined with the file's entirely hypothetical experiment set, is direct evidence that 0693's promise remains unfulfilled and that the file itself is self-aware about this distinction."
+  - "The identical structural promise renewed at this file's own close for Step 110 ('Can we draw the system boundary from evidence rather than from our previous assumptions?') -- following the same pattern as 0692's and 0693's promises -- is direct, checkable evidence of a now three-cycle-consistent pattern, supporting the calibrating meta-finding that this is a structural property of the corpus rather than a per-file coincidence."
+undefined_concepts: []
+open_questions:
+  - "Whether any later step in this corpus (beyond 0694) ever breaks the now three-cycle promise-then-defer pattern by delivering genuinely populated, checkable real-artifact findings -- tracked with calibrated rather than escalating vigilance going forward."
+tier2_triggered: true
+tier2_reason: "RESOLVES 0693's sharp promise NEGATIVELY, marking a third consecutive promise-then-defer cycle, and warrants a calibrating meta-finding that this pattern is structural to the corpus's theoretical production context. Delivers the reconstruction's most detailed evidence-classification and component-inventory methodology yet, with several genuinely valuable, precisely reasoned principles (VectorStore≠KnowledgeModel, evidence-derived confidence scoring, NotFound≠DoesNotExist, the 'architectural mythology' caution) that coherently extend prior corpus disciplines. No new invariants. Continues the self-admission chain with explicit self-awareness of its own methodological-not-empirical status."

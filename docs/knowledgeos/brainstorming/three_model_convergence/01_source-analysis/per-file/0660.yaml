@@ -1,0 +1,191 @@
+sequence: 660
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-121008_step-076-multi-objective-decisions-and-governance-of-values.md
+title: "Step 76 CONFIRMED as Substantially New Corpus Territory — Vector-Valued Utility, Pareto Dominance/Frontier, WeightSelection as a Governed Artifact, a Fairness-Definitions Taxonomy With Explicit Cross-Criterion Tradeoffs, and a Formal Hume's-Law Boundary (Is⇏Ought) Never Previously Named in the Corpus; WorldModel≠ValueModel≠PolicyModel Crystallizing Structural (Not Narrative) Explainability, With NarrativeExplanation=Projection not SourceOfTruth; a Partial, Non-Exact Overlap With 0645's Already-Established Objective-Governance Discipline (This File's I_Objective vs. 0645's I_ObjectiveIntegrity — Related but Not a Name Match, Unlike the Session's Three Prior Exact-Name Invariant Duplicates); Verdict 'STEP 76 — PASS'; Closes Opening Step 77 — Governance of the Decision Model, a Direct, Explicitly Signaled Continuation Rather Than a New Collision Candidate"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 76 -- Multi-Objective Decisions and Governance of Values', opened at 0659's close; CONFIRMS the provisional new-territory assessment made at 0659"
+source_role: PRIMARY_RESEARCH
+canonical_source: 660
+importance: critical
+confidence: high
+about: >
+  **CONFIRMS the provisional new-territory assessment from 0659**: Step 76 delivers substantially new
+  mathematical machinery not previously present in this reconstruction's records. Opens by exposing the
+  hidden single-utility assumption of Step 75, replacing it with vector-valued utility
+  `𝐔(a)=(U_1(a),...,U_n(a))` across genuinely conflicting objectives (`Cost, Quality, Risk, CustomerValue,
+  Compliance`). **Delivers the file's first central formal deliverable -- Pareto dominance and the Pareto
+  frontier, genuinely new corpus mathematics**: `A≻B` iff `∀i: U_i(A)≥U_i(B)` and `∃j: U_j(A)>U_j(B)`,
+  confirmed via a dominated-option-elimination experiment (PASS, "mathematically important because some
+  decisions can be simplified without imposing subjective preferences") and a three-alternative Pareto-
+  frontier experiment (no mutual dominance, all three remain -- PASS), crystallizing **`Optimization≠
+  Preference`**: proving an alternative is not dominated is mathematically objective; selecting among
+  Pareto-optimal alternatives requires an irreducible value judgment.
+
+  Delivers Weighted utility (`U(a)=∑w_iU_i(a)`) with the crucial governance insight **`WeightSelection is
+  itself a governed artifact`** -- weights are not mathematical facts but a preference model requiring
+  explicit provenance, confirmed via a hidden-weights experiment (`DecisionModelProvenanceIncomplete` --
+  PASS). Delivers `DecisionModel` formalized as a first-class artifact (`Objectives, Weights, Constraints,
+  RiskPreferences, DecisionRule`), confirmed via an objective-model-versioning experiment (historical
+  decisions retain their relationship to the decision-model version under which they were made -- PASS),
+  yielding the refined decision function `Decision=f(Knowledge, DecisionModel, Policy, Context)`.
+
+  Delivers Value conflict formally distinguished from epistemic/knowledge conflict (`KnowledgeConflict=
+  False` while `PreferenceConflict=True` when stakeholders with identical evidence choose different actions
+  due to differing utilities), confirmed via a value-conflict experiment (PASS), crystallizing an important
+  governance-communication discipline: never state "the mathematically correct decision is X," only "X is
+  optimal under decision model M, given knowledge state K and constraints C," confirmed via an objective-
+  independent-optimality experiment (Rejected -- PASS).
+
+  **Delivers Decision-model authority formally distinguished from decision-execution authority**
+  (`AuthorityToDefineDecisionModel≠AuthorityToExecuteDecision`), confirmed via an unauthorized-objective-
+  change experiment (an AI agent covertly reducing its own risk weight from 0.2 to 0.05 --
+  `UnauthorizedDecisionModelChange` -- PASS) and a related capability-mismatch experiment (an agent
+  authorized to execute but not to modify risk policy attempting the latter -- Denied -- PASS). **This is a
+  partial, non-exact overlap with 0645's already-established `Objective Manipulation` governance-violation
+  discipline and its `I_{ObjectiveIntegrity}` invariant** -- related in substance (both concern illegitimate
+  objective/weight tampering) but this file's own closing invariant is named `I_{Objective}`, NOT an exact
+  match to 0645's `I_ObjectiveIntegrity`, distinguishing this from the session's three prior confirmed
+  EXACT-name invariant duplications (`I_Concurrency`, `I_Causal`/`I_Intervention`, `I_DecisionAuthority`) --
+  this is a genuine deepening/restatement under a distinct but related name, closer in kind to a partial
+  overlap than a confirmed duplicate.
+
+  Delivers a formal Constraint hierarchy (`Physical, Legal, Organizational, Risk, Preference`), confirmed
+  via a preference-treated-as-hard-constraint experiment (a management preference for quality encoded as an
+  absolute requirement, making all cost tradeoffs impossible -- `ModelingError` -- PASS), and a
+  `HardConstraint` versus `SoftPreference` discipline directly and explicitly extending 0645's own already-
+  established `Constraint≠Preference` distinction with a more granular five-category taxonomy.
+
+  **Delivers the file's second central formal deliverable -- Decision robustness/sensitivity analysis,
+  genuinely extending 0645's more general "Decision Sensitivity/Robustness Formalized" treatment with
+  concrete weighted-utility mechanics**: a decision's optimality examined across a weight range
+  (`EU(A)>EU(B)` for `w∈[0.4,0.6]` versus only for `w>0.51`), confirmed via an unstable-decision experiment
+  (`DecisionSensitivity=High` when a marginal weight shift reverses the choice -- PASS) and a robust-versus-
+  fragile experiment (a decision optimal across 80% of plausible model assumptions versus only 10% -- PASS),
+  yielding a `DecisionQuality=(ExpectedUtility, Risk, Uncertainty, Robustness)` object with the explicit
+  caveat `DecisionQuality≠Truth`.
+
+  **Delivers the file's third central formal deliverable -- a Fairness-definitions taxonomy with explicit
+  cross-criterion tradeoffs, genuinely new corpus content**: `EqualOpportunity, DemographicParity,
+  IndividualFairness, MinimaxFairness` explicitly identified as potentially conflicting definitions (not one
+  unified "fairness" concept), confirmed via an incompatible-fairness-criteria experiment
+  (`FairnessTradeoff`, not `Fairness=True` -- PASS) and an undefined-fairness experiment (an AI's bare claim
+  "this recommendation is fair" with no stated criterion -- `UnsupportedNormativeClaim` -- PASS), requiring
+  `FairnessDefinition` and `PolicyVersion` to be explicitly recorded -- this is the corpus's first
+  substantive engagement with algorithmic-fairness theory specifically, a well-known and genuinely important
+  area of AI ethics/governance the corpus had not previously addressed at this level of formal specificity.
+
+  **Delivers the file's fourth and most philosophically significant central formal deliverable -- a formal
+  Hume's-Law boundary, apparently the corpus's first explicit engagement with this specific classical
+  philosophical distinction**: Descriptive/Predictive/Causal/Normative knowledge formally separated
+  ("what is" / "what is likely" / "what changes what" / "what ought to be done"), with KnowledgeOS required
+  never to silently transform Descriptive into Normative, confirmed via a normative-leap experiment (data
+  showing `X>Y`, an AI concluding "X should be preferred" -- `NormativeLeap` -- PASS), crystallized formally
+  as **`Is⇏Ought`** ("an empirical fact does not by itself determine a value judgment") and **`Knowledge≠
+  Preference`** -- this is a directly named, correctly stated instance of Hume's classical is-ought
+  distinction (though the file does not use Hume's name explicitly, the formal structure and framing
+  precisely match the standard philosophical formulation), a genuinely new conceptual tool for this
+  reconstruction to track, extending but formally sharpening the corpus's long-running discipline against
+  silently strengthening epistemic status (0650's `I_3` no-silent-promotion invariant family) into the
+  specifically normative/evaluative dimension.
+
+  Delivers a Decision-governance hierarchy (`Evidence→Knowledge→DecisionModel→Decision→Authorization→
+  Action`), confirmed via a skipping-decision-model experiment (evidence directly generating an executable
+  action -- `GovernanceViolation` -- PASS), and **`WorldModel≠ValueModel≠PolicyModel`** (a causal model
+  describes how the world behaves; a decision model describes how outcomes are valued; a policy model
+  describes what is permitted), confirmed via a model-conflation experiment (mixing causal assumptions,
+  utility weights, legal restrictions, and organizational preferences into one undifferentiated model --
+  `GovernanceOpacity` -- boxed FAIL, continuing the established anti-pattern-FAIL convention).
+
+  **Delivers the file's fifth central formal deliverable -- structural (not narrative) explainability,
+  genuinely valuable architectural synthesis**: a decision's rationale should be machine-reconstructable
+  from its actual dependency structure (`Decision←Knowledge+CausalModel+DecisionModel+Policy`) rather than
+  requiring natural-language interrogation of an LLM, confirmed via an explanation-reconstruction experiment
+  (PASS), crystallized as **`NarrativeExplanation=Projection, not SourceOfTruth`** -- an LLM-generated
+  narrative explanation is a rendering of the canonical structured rationale
+  `R=(Evidence, Models, Policies, Constraints, DecisionRule)`, never itself authoritative evidence, confirmed
+  via a narrative-treated-as-authority experiment (Rejected -- PASS). Delivers a five-dimension Decision
+  auditability framework (`EpistemicAudit, CausalAudit, ValueAudit, PolicyAudit, AuthorityAudit`), confirmed
+  via an incomplete-audit experiment (excellent evidence provenance but missing utility-model record --
+  `AuditIncomplete` -- PASS).
+
+  **Delivers four new named invariants**: `I_{Objective}` (a normative decision must identify the objective/
+  value model under which it is optimal -- related to but not an exact-name match of 0645's
+  `I_ObjectiveIntegrity`), `I_{PreferenceProvenance}` (material preference weights/tradeoffs must have
+  identifiable provenance), `I_{NormativeSeparation}` (descriptive/predictive/causal/normative statements
+  must not be silently substituted), `I_{DecisionRobustness}` (material sensitivity to assumptions should
+  remain visible).
+
+  Delivers Step 76's verdict **"STEP 76 — PASS,"** with the central conclusion that KnowledgeOS must manage
+  not only knowledge about the world but "knowledge about how the organization chooses to act on that
+  knowledge" -- two fundamentally different models, `WorldModel` and `DecisionModel`.
+
+  **Closes by opening "Step 77 — Governance of the Decision Model,"** explicitly and directly signaled as
+  "the next step is deeper still," building directly on this file's own `Decision=f(Knowledge, DecisionModel,
+  Policy)` formulation to ask "who can change the objectives? who can change the weights? who can change the
+  constraints? who can approve a new decision model?" and, most significantly, "how can KnowledgeOS
+  distinguish a change in the world from a change in what the organization wants?" **This is a direct,
+  explicitly signaled continuation of this file's own immediately preceding material, not an unacknowledged
+  collision candidate** -- the clearest example yet in this span of a step properly building on its own
+  immediate predecessor rather than either silently diverging or silently re-deriving unconnected prior
+  content, providing a further positive calibration point (alongside 0657's kernel cross-reference) that the
+  Steps 65-75 repetition pattern is topic-localized rather than a uniform, ongoing degradation. No actual
+  code execution reported in this file.
+introduces:
+  - concept: "CONFIRMED substantially new corpus territory: vector-valued utility, Pareto dominance/frontier, WeightSelection as a governed artifact, and a Fairness-definitions taxonomy with explicit cross-criterion tradeoffs"
+  - concept: "A formal Hume's-Law boundary (Is⇏Ought), apparently the corpus's first explicit engagement with this specific classical philosophical distinction, sharpening the corpus's no-silent-epistemic-strengthening discipline into the normative/evaluative dimension"
+  - concept: "WorldModel≠ValueModel≠PolicyModel and structural (not narrative) explainability, crystallized as NarrativeExplanation=Projection, not SourceOfTruth — a genuinely valuable architectural synthesis"
+  - concept: "A partial, non-exact-name overlap with 0645's Objective Manipulation/I_ObjectiveIntegrity discipline (this file's I_Objective) — distinguished from the session's three prior confirmed EXACT-name invariant duplications, representing a genuine deepening under a related but distinct name"
+  - concept: "A direct, explicitly signaled continuation into Step 77 (Governance of the Decision Model) — a positive counter-example to the Steps-65-75 unacknowledged-collision pattern, alongside 0657's kernel cross-reference"
+defines:
+  - concept: "Optimization≠Preference"
+    definition: "Proving that an alternative is not Pareto-dominated is a mathematically objective fact requiring no value judgment; but selecting a single 'best' choice among multiple Pareto-optimal alternatives requires an irreducible subjective value judgment or governed policy that mathematics alone cannot supply"
+  - concept: "WeightSelection is itself a governed artifact"
+    definition: "The weights used to combine multiple objectives into a scalar utility (w_1,...,w_n) are not mathematical facts derived from the world but a preference model reflecting organizational values; their origin, authority, and version must be recorded as first-class governed provenance, not treated as given constants"
+  - concept: "Is⇏Ought (Hume's-Law boundary)"
+    definition: "An empirical, descriptive fact (what is, or what is statistically associated) does not by itself logically determine a normative conclusion (what ought to be done or preferred); KnowledgeOS must not silently transform a descriptive/predictive/causal statement into a normative one without an explicit value model bridging the gap"
+  - concept: "WorldModel≠ValueModel≠PolicyModel"
+    definition: "A causal/world model describes how reality behaves; a value/decision model describes how outcomes are weighed against each other; a policy model describes what actions are permitted — these are three distinct kinds of models serving different epistemic and governance roles, and conflating them into one undifferentiated model produces GovernanceOpacity"
+  - concept: "NarrativeExplanation=Projection, not SourceOfTruth"
+    definition: "A decision's authoritative rationale is its actual structured dependency record (evidence, causal model, decision model, policy); an LLM-generated natural-language explanation is merely a human-readable rendering (projection) of that structure, never itself an independent source of evidentiary or decision-making authority"
+refines:
+  - concept: "0645's Constraint≠Preference distinction"
+    refinement: "Directly and genuinely extended with a more granular five-category constraint hierarchy (Physical, Legal, Organizational, Risk, Preference), confirmed via a dedicated preference-treated-as-hard-constraint modeling-error experiment not present in 0645's more general treatment"
+  - concept: "0645's Objective Manipulation governance-violation discipline and I_ObjectiveIntegrity invariant"
+    refinement: "PARTIALLY OVERLAPPED under a related but non-identical invariant name (I_Objective, not I_ObjectiveIntegrity) — a genuine deepening/restatement of the same underlying concern (illegitimate objective/weight tampering) rather than a confirmed exact-name duplicate, distinguishing this instance from the session's three prior confirmed EXACT-name invariant collisions"
+  - concept: "0645's 'Decision Sensitivity/Robustness Formalized' treatment"
+    refinement: "Directly and genuinely extended with concrete weighted-utility sensitivity mechanics (decision reversal at specific weight thresholds, percentage-of-plausible-assumptions robustness scoring) not present in 0645's more general treatment"
+  - concept: "0650's I_3 no-silent-promotion invariant family (AI output cannot silently become fact) and the corpus's broader anti-silent-strengthening discipline"
+    refinement: "Directly and genuinely extended into the normative/evaluative dimension via the formal Is⇏Ought boundary and I_NormativeSeparation — descriptive/predictive/causal findings must not silently become normative/prescriptive conclusions, a new and philosophically well-grounded instance of the same underlying architectural principle"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read Step 77's actual file (0661) to confirm it is indeed a direct, coherent continuation of this file's decision-model-governance material (as its own text explicitly signals) rather than an unacknowledged collision with some other prior corpus content — this file's own explicit forward-signaling makes a genuine collision less likely than at prior transitions in this span, but should still be verified."
+  - "Track whether the corpus ever explicitly reconciles this file's I_Objective with 0645's I_ObjectiveIntegrity as the same underlying concern discovered twice under related names, given the partial (not exact) naming overlap — a softer version of the exact-name reconciliation question already open for I_Concurrency, I_Causal, I_Intervention, and I_DecisionAuthority."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CONFIRMATION that Step 76 delivers substantially new corpus mathematics — Pareto dominance/frontier, vector-valued utility, WeightSelection as a governed artifact, and a Fairness-definitions taxonomy with explicit cross-criterion tradeoffs (the corpus's first substantive engagement with algorithmic-fairness theory)."
+  - "dimension-registry.md: record the formal Hume's-Law boundary (Is⇏Ought), apparently the corpus's first explicit engagement with this classical philosophical distinction, extending the corpus's no-silent-epistemic-strengthening discipline into the normative dimension; and WorldModel≠ValueModel≠PolicyModel with structural (not narrative) explainability (NarrativeExplanation=Projection, not SourceOfTruth)."
+  - "dimension-registry.md: record the partial, non-exact-name overlap between this file's I_Objective and 0645's I_ObjectiveIntegrity (distinguished from the session's three prior confirmed EXACT-name invariant duplications); and the direct, explicitly signaled continuation into Step 77, a positive counter-example to the Steps-65-75 unacknowledged-collision pattern alongside 0657's kernel cross-reference."
+anchor_test:
+  anchor: "0659's provisional new-territory assessment; 0645's Constraint≠Preference, Objective Manipulation/I_ObjectiveIntegrity, and Decision Sensitivity/Robustness content; 0650's no-silent-promotion invariant family; the corpus's algorithmic-fairness engagement (new); the Steps-65-75 unacknowledged-collision pattern and its two positive counter-examples (0657, now this file)"
+  supports_dimension: "CONFIRMS the provisional new-territory assessment from 0659 with substantial, genuinely novel mathematical and philosophical content: Pareto dominance/frontier theory (standard multi-objective optimization mathematics, correctly and precisely stated), a fairness-definitions taxonomy directly engaging a well-known and practically important area of AI ethics not previously addressed at this specificity, and a formally correct statement of Hume's is-ought distinction applied specifically and usefully to the AI-recommendation-governance problem. Provides a second positive counter-example (alongside 0657) to the Steps-65-75 unacknowledged-divergence pattern: this file's closing transition into Step 77 is explicitly and coherently signaled as a direct continuation of its own material, not a silent jump into unconnected already-covered territory. The one partial overlap identified (I_Objective vs. 0645's I_ObjectiveIntegrity) is meaningfully less severe than the session's three prior confirmed exact-name invariant duplications, since the names differ and the treatment here is measurably more developed (Pareto/fairness/normative-separation content 0645 did not cover)"
+  refines_or_contradicts: "confirms 0659's provisional new-territory assessment; genuinely and substantially extends 0645's Constraint≠Preference and Decision Sensitivity/Robustness content; partially overlaps (not exact-name duplicates) 0645's Objective Manipulation/I_ObjectiveIntegrity discipline; genuinely extends 0650's no-silent-promotion discipline into the normative dimension; explicitly and coherently signals its own continuation into Step 77; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The Pareto-dominance formalization (§76.2-76.5, A≻B iff ∀i:U_i(A)≥U_i(B) ∧ ∃j:U_j(A)>U_j(B), with a correctly worked three-alternative non-dominated-frontier example) is standard, correctly stated multi-objective-optimization mathematics not present anywhere in this reconstruction's prior records, directly and mechanically confirming this file's substantial mathematical novelty."
+  - "The formal Is⇏Ought statement (§76.35-76.37, with the explicit Descriptive/Predictive/Causal/Normative four-way separation and the normative-leap experiment rejecting 'X>Y therefore X should be preferred') is a precise, correctly structured instance of Hume's classical is-ought distinction, directly and checkably confirming a genuinely new conceptual tool introduced into the corpus at this specific file."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 77's actual content (0661), once read, confirms itself as the direct, coherent continuation this file's own text explicitly signals, and whether it introduces any further exact-name invariant duplications against 0645's or other earlier steps' governance content."
+tier2_triggered: true
+tier2_reason: "CONFIRMS substantially new corpus mathematics and philosophy: Pareto dominance/frontier theory, a fairness-definitions taxonomy engaging real AI-ethics literature, and a formally correct Hume's-Law is-ought boundary — the corpus's first explicit engagement with this classical distinction. Delivers WorldModel≠ValueModel≠PolicyModel and structural explainability (NarrativeExplanation=Projection, not SourceOfTruth), a genuinely valuable architectural synthesis. Provides a second positive counter-example (alongside 0657) to the Steps-65-75 unacknowledged-collision pattern via its own explicitly signaled, coherent continuation into Step 77. The one identified overlap (I_Objective vs. 0645's I_ObjectiveIntegrity) is a partial, non-exact-name deepening, materially less severe than the session's three prior confirmed exact-name invariant duplications. Verdict 'STEP 76 — PASS.'"

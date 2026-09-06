@@ -1,0 +1,75 @@
+sequence: M0243
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-021056_accept-review-as-basis-with-one-mathematical-correction.md
+title: "Acceptance of M0240's four-pass review (8 frozen principles, mostly restated) plus one genuinely new addition: an intermediate Cap_𝔠(K) abstraction — 'contract-distinguishable semantic contribution' — introduced deliberately BEFORE committing to any specific capability representation, avoiding a subtler recurrence of the premature-ontology problem; plus the first fully linearized 13-stage proof dependency graph"
+date: "20260904-021056"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0243
+importance: high
+confidence: high
+about: >
+  A short acceptance pass over M0240's four-pass review, restating its eight core principles as
+  "frozen" (operator-removal≠capability-removal; minimality-is-relative; capability-identity-before-
+  basis; transition-semantics-primary; lossless-is-contract-relative; K_adm/K_sat separation;
+  DDD/mathematical distinction via responsibility projection ρ; empirical/formal parallel tracks —
+  all already recorded at M0240), then adding one genuinely new methodological device: refusing to
+  commit yet to the specific four-field capability representation c=(I_c,O_c,Γ_c,ℐ_c) proposed
+  earlier, in favor of an intermediate, representation-agnostic abstraction Cap_𝔠(K).
+introduces:
+  - "The intermediate abstraction Cap_𝔠(K) — 'the contract-distinguishable semantic contribution' of an implementation K — introduced deliberately as a placeholder BEFORE committing to any specific representation of an individual capability (e.g. the four-field c=(I_c,O_c,Γ_c,ℐ_c) proposed in M0240/M0241), motivated by an explicit question left open on purpose: 'Is a capability itself a behavior, a relation, a transformation class, or an equivalence class of such objects?' — with the explicit warning: 'otherwise we risk replacing the old \"13 operators are primitives\" problem with a subtler version: \"these four fields constitute a capability\"'"
+  - "A revised dependency chain inserting the new abstraction: K→Beh_𝔠(K)→Cap_𝔠(K)→capability equivalence→capability basis — deferring the choice of capability representation until after Cap_𝔠(K) is established"
+  - "The first fully LINEARIZED 13-stage proof dependency graph consolidating the entire apparatus built across M0235-M0241 into one explicit chain: 𝔠_KOS→𝔎_adm→ℳ_K→Tr_K→Obs_𝔠→⊑_𝔠→≡_sem→Cap_𝔠→≡_cap→ℬ→𝔎_adm^{-c}→Irred_sem→K⊨𝔠→MinKer"
+  - "A named first-priority pair for the actual proof work, ahead of everything else: 'contract-relative simulation' and 'semantic identity/equivalence of capabilities' — with the capability basis and minimality theorem explicitly deferred until after those two exist"
+  - "A reaffirmed refusal to start Theory v1.3: the entire review chain (M0240-M0243) is to be frozen as the design specification for KR-KERNEL-EQUIVALENCE-CAPABILITY-PROOF-2026-09, with the explicit framing that the project has now moved from 'discovering what the Kernel might be' to 'proving what minimality means'"
+defines:
+  - "Cap_𝔠(K) — the contract-distinguishable semantic contribution of K, a representation-agnostic intermediate abstraction preceding any specific capability formalism"
+refines:
+  - "M0240/M0241's proposed capability representation c=(I_c,O_c,Γ_c,ℐ_c): not rejected, but deliberately deferred behind a more abstract, representation-neutral Cap_𝔠(K) object, to avoid smuggling a new premature ontology (four named fields) in place of the old one (13 named operators)"
+contradicts: []
+repeats:
+  - "M0240's eight core acceptance principles (operator-removal≠capability-removal; minimality-is-relative; capability-identity-before-basis; transition-semantics-primary; contract-relative lossless; K_adm/K_sat separation; DDD/mathematical distinction via ρ; empirical/formal parallel tracks) — all restated here as 'frozen,' with no independent content beyond the list itself"
+bridge_candidates:
+  - "Whether Cap_𝔠(K) was ever given a concrete formal definition in a subsequent artifact, and whether it superseded or was reconciled with the four-field c=(I_c,O_c,Γ_c,ℐ_c) proposal"
+  - "Whether KR-KERNEL-EQUIVALENCE-CAPABILITY-PROOF-2026-09 was ever actually produced, with 'contract-relative simulation' and 'capability semantic identity/equivalence' as its first two proved objects, per this document's explicit prioritization"
+mathematical_content: >
+  One genuinely new representation-agnostic intermediate abstraction (Cap_𝔠(K)) deferring capability
+  representation choice; a fully linearized 13-stage kernel-minimality proof dependency graph
+  consolidating the entire M0235-M0241 apparatus into a single explicit chain.
+gita_content: null
+kernel_content: >
+  Consolidates and freezes the M0235-M0241 kernel-minimality apparatus as design specification, while
+  adding one further discipline against premature ontology: deferring the specific mathematical
+  representation of "capability" itself behind an abstract placeholder, and naming contract-relative
+  simulation and capability semantic identity as the two objects to prove first.
+registry_updates:
+  - "Cap_𝔠(K) — representation-agnostic intermediate capability abstraction, deferring commitment to any specific capability formalism"
+  - "Fully linearized 13-stage kernel-minimality proof dependency graph"
+  - "Explicit first-priority pair for proof work: contract-relative simulation + capability semantic identity/equivalence"
+anchor_test:
+  anchor: false
+  supports_dimension: "Cap_𝔠(K) representation-agnostic abstraction; linearized 13-stage dependency graph; explicit first-priority proof targets"
+  refines_or_contradicts: "refines (M0240/M0241's capability-representation proposal, deferred behind a more abstract placeholder)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Is a capability itself a behavior, a relation, a transformation class, or an equivalence class of such objects?\""
+  - "\"Otherwise we risk replacing the old '13 operators are primitives' problem with a subtler version: 'these four fields constitute a capability.'\""
+  - "\"|B|=N is never itself the theorem.\""
+undefined_concepts: []
+open_questions:
+  - "Was Cap_𝔠(K) ever given a concrete formal definition?"
+  - "Was KR-KERNEL-EQUIVALENCE-CAPABILITY-PROOF-2026-09 ever produced with the stated first-priority proof order?"
+tier2_triggered: false
+tier2_reason: >
+  Substantially a restatement/acceptance of M0240's already-recorded eight principles; the one new
+  contribution (the representation-agnostic Cap_𝔠(K) abstraction and the fully linearized dependency
+  graph) is a useful consolidation but not independently critical relative to the tier2 escalation
+  already made for M0240.

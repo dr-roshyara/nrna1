@@ -1,0 +1,110 @@
+sequence: "0154"
+path: docs/knowledgeos/brainstorming/kernel/20260823-113410-perplexity-smallest-consistency-boundary-investigation.md
+title: "Round 6: Perplexity CONFIRMED in-text; exhaustive 5-layer domain-discovery pass with EVERY item marked UNRESOLVED; critique reorders priority to 'What is a Knowledge Claim?'; Zero elevated to permanent last-interrogation lens"
+date: "2026-08-23"
+bytes: 68000
+model:
+  primary: c1
+  secondary: [g, m]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0153"
+importance: critical
+confidence: high
+about: >
+  Round 6 of the Kernel-boundary discovery cycle. "Perplexity" is CONFIRMED in-text this round ("This
+  Perplexity round is useful...") -- retroactively resolving 0152's open attribution question; a fourth
+  distinct participant (DeepSeek, Kimi, Perplexity, critique-voice) is now on record. Perplexity produces
+  the most exhaustive and most disciplined non-decision of the cycle: a full 5-layer domain-discovery
+  pass (Domain Concepts, Relationships, Events, Invariants, Boundaries) over roughly 40 candidate items,
+  with EVERY item explicitly marked UNRESOLVED, including the four contested "states"
+  (SUPERSEDED/RECONCILED/CONTESTED/INSUFFICIENT_EVIDENCE, first raised 0151) and whether the six core
+  epistemic concepts require one atomic aggregate boundary at all. The critique-voice identifies a
+  genuine methodological error (DDD categories and Nyāya-relationship framing being treated as
+  competitors rather than compatible), reorders the entire investigation's first question to "What is a
+  Knowledge Claim?", and elevates Zero to a permanent "last-interrogation" lens applied after all others.
+
+introduces:
+  - "Exhaustive 5-layer UNRESOLVED pass: ~11 domain concepts, ~11 relationships, ~10 events, ~9
+    invariants, ~6 boundaries, each cross-analyzed via DDD + Vāṇī + Nyāya + Navya-Nyāya + Viveka +
+    Dharma + Ṛta + Gödel + deterministic-assurance lenses, and explicitly left UNRESOLVED in every case
+    -- the corpus's most disciplined refusal-to-decide instance so far"
+  - "Three candidate Kernel models (Constitutional Distinction-Preservation System / Epistemic Coherence
+    Boundary / Traceable Relationship System), explicitly none selected"
+  - "Methodological correction: DDD Entity/Value-Object/Domain-Event classification and Nyāya-derived
+    'relationship' framing were being treated as mutually exclusive alternatives for the same concept --
+    a category error, since an object can participate in a relationship without itself being one"
+  - "Reordered top-priority question: not 'what is the Kernel?' but 'What is a Knowledge Claim?' -- the
+    domain object whose integrity KnowledgeOS actually protects, argued as logically prior to every
+    downstream Kernel-boundary question"
+  - "Three sub-models proposed specifically for History's ownership (part of the aggregate / a generated
+    record derived from domain events / a separate Provenance-Audit bounded context) -- not resolved"
+  - "Six distinct readings of 'evidence admission' disambiguated (own/register/reference/attest/
+    preserve-identity/evaluate-sufficiency) -- a genuinely useful disambiguation of a term used loosely
+    across all five prior rounds"
+  - "Lens-set explicitly narrowed to five for the next round (DDD, Viveka, Nyāya, Navya-Nyāya,
+    Śiva-Śakti), citing lens proliferation as adding noise rather than reducing uncertainty -- a
+    disciplined methodological self-correction"
+  - "Zero elevated to a PERMANENT, PRIVILEGED 'last-interrogation' lens: applied only after every other
+    lens has produced its model, asking 'What is absent? What was assumed? What cannot be represented?
+    What happens when there is nothing?' -- explicitly tied to an unread P5 finding that 'UNKNOWN versus
+    NOT_EXPRESSED was not successfully represented by any producer'"
+  - "New six-way absence-distinction chain: NO CLAIM ≠ UNKNOWN ≠ INSUFFICIENT_EVIDENCE ≠ ABSTENTION ≠
+    REJECTED ≠ WITHDRAWN -- a further sibling to the Viveka non-collapse list from 0152"
+
+defines: []
+
+refines:
+  - "Directly corrects the category-collapse error running through Perplexity's own worksheet (DDD vs.
+    Nyāya-relationship framing treated as competitors); reprioritizes the investigation's first question"
+
+contradicts:
+  - "Implicitly supersedes the urgency of the SUPERSEDED/RECONCILED/CONTESTED/INSUFFICIENT_EVIDENCE
+    state-vs-event debate (0151/0152) by arguing the prior question (What is a Knowledge Claim?) must be
+    answered first"
+
+repeats:
+  - {concept: "anti-God-Aggregate discipline, Viveka non-collapse principle, Śiva-Śakti continuity/change framing", canonical_source: "0153", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "Ledger Entry 48 Round 6 addendum added: Perplexity confirmed, exhaustive UNRESOLVED pass, the
+    Knowledge-Claim reprioritization, and Zero's elevation to permanent last-interrogation lens"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Unknown Preservation", "Identity Preservation"]
+  refines_or_contradicts: "Reprioritizes the entire Kernel-boundary investigation; explicitly resolves nothing about the Kernel itself."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "The most disciplined non-decision in the corpus's kernel-boundary cycle: ~40 candidate items, all
+    explicitly UNRESOLVED, rather than any premature convergence -- a strong positive instance of the
+    corpus's own restraint discipline being exercised at scale"
+  - "Zero's elevation to a permanent 'last lens' role is a genuine methodological innovation within the
+    source's own research program, not merely another content addition -- it institutionalizes the
+    absence-checking discipline this reconstruction has itself been tracking as a recurring caution
+    since early in the corpus (0085's 'convergence is not validation')"
+  - "Reference to an unread P5 finding ('UNKNOWN vs NOT_EXPRESSED not represented by any producer') --
+    flagged as an open pointer to content not yet encountered in this reading order"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the P5 finding referenced here (UNKNOWN vs NOT_EXPRESSED) will be directly encountered
+    later in the corpus, and what its full context and methodology were"
+  - "Whether Round 7 (the 'What is a Knowledge Claim?' / Zero-last five-lens task) is ever executed"
+
+tier2_triggered: true
+tier2_reason: >
+  Confirmed fourth named-AI participant, the corpus's most disciplined mass-UNRESOLVED domain-discovery
+  pass, a genuine methodological self-correction (category-collapse error identified and fixed), and
+  Zero's elevation to a permanent last-interrogation lens -- a real methodological innovation.

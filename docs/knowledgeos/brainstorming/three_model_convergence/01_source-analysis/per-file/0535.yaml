@@ -1,0 +1,137 @@
+sequence: 535
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-133711_closure-04a-mathematical-laws-of-evidence-assessment.md
+title: "LANDMARK: Computational Closure 4A — Twelve Formal Laws of Evidence Assessment (E1..E12) Genuinely Falsify Part of 0534's Proposed Aggregation Formula via an Adversarial Duplication Attack; Deduplication/Dependency Analysis Proven to Necessarily Precede Aggregation; Signed (Conditional) Monotonicity Replaces Naive Monotonicity; Three Clean DDD Bounded Contexts (Evidence/Assessment/Reasoning)"
+date: "2026-08-27"
+bytes: 12241
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "explicit methodological pivot: 'this time I would deliberately stop adding concepts and test whether the mathematics actually holds' — a disciplined axiomatic stress-test of 0534's just-proposed aggregation formula, directly building on and correcting it"
+source_role: PRIMARY_RESEARCH
+canonical_source: 535
+importance: critical
+confidence: high
+about: >
+  Opens with an explicit methodological shift away from concept-accumulation toward mathematical
+  stress-testing: "Let's go one step further, but this time I would deliberately stop adding concepts and
+  test whether the mathematics actually holds." Poses the file's central question as more fundamental than
+  choosing a formula: "What properties must AssessEvidence() satisfy so that KnowledgeOS behaves
+  predictably when evidence is added, removed, duplicated, contradicted, or reinterpreted?"
+
+  **Formalizes the assessment function** `A_ρ(ℰ_P,C)->EA` (an Evidence Assessment, explicitly NOT a
+  conclusion), barring the shortcut `A_ρ(ℰ_P,C)->P`. **Delivers a structured, non-collapsing Evidence
+  Assessment object** `EA=(S^+,S^-,Q,U,D,C_f,Π)` (support-for, support-against, qualifications,
+  uncertainty, dependency structure, conflict information, provenance), explicitly preserving
+  `Support(P)` and `Support(¬P)` simultaneously rather than reducing to one number.
+
+  **Delivers the corpus's first fully worked twelve-law axiomatic test suite for evidence assessment
+  (E1..E12)**: E1 Determinism (identical evidence+context+policy must yield an identical assessment,
+  forcing any LLM participation to become a governed, reproducible input); E2 Provenance Preservation
+  (every assessment traceable back through the evidential relation, observation, and source, and to its
+  policy — explicitly praised as "one of the strongest parts of DeepSeek's revision"); E3 No Double
+  Counting (dependent evidence's contributions cannot be treated as fully independent, explicitly noted as
+  "stronger than merely multiplying by a depth factor" -- a direct critique of 0534's IndependenceFactor
+  formula); E4 Duplicate Idempotence (`A({e})≈A({e,e})` for the independent-support component -- a
+  genuinely new formal requirement motivated by an explicit adversarial scenario: an attacker submitting
+  the identical observation 1000 times must not be able to manufacture confidence); E5 Corroboration≠
+  Duplication (genuinely independent corroborating evidence SHOULD increase support, unlike a duplicate);
+  E6 Signed/Conditional Monotonicity (rejecting the naive claim `E⊆E'⇒Support(E)≤Support(E')`, since new
+  evidence may contradict old evidence -- replaced with "adding supporting evidence cannot reduce support
+  for P" and "adding contradicting evidence cannot reduce support for ¬P," while total epistemic status may
+  legitimately become MORE uncertain); E7 Conflict Preservation (`Support(P)>0∧Support(¬P)>0⇒
+  ConflictInformation≠∅` -- the weaker side must never be silently discarded, so KnowledgeOS can say "the
+  strongest evidence currently supports P, but contrary evidence exists" rather than flatly "P=true"); E8
+  Context Sensitivity (`A_ρ(E,C_1)≠A_ρ(E,C_2)` is a legitimate, non-erroneous property, worked through a
+  Nexus-version example sufficient for "what version was installed yesterday?" but insufficient for "is
+  Nexus ready for migration?"); E9 Policy Sensitivity (`A_{ρ_1}(E,C)≠A_{ρ_2}(E,C)` is legitimate "policy
+  relativism within a stable mathematical framework," worked through a security-critical policy vs. an
+  operational-inventory policy example); E10 Assessment≠Inference (`EA≠Conclusion`,
+  `Conclusion=Infer(EA,R,C)`, explicitly named "arguably one of the defining architectural properties of
+  KnowledgeOS"); E11 Assessment≠Truth (`StrongEvidence(P)⇏Truth(P)` -- "the system represents the epistemic
+  position of the Knower. It does not magically acquire metaphysical access to reality"); E12
+  Reproducibility (`(E,C,ρ)⇒EA` and `(EA,R,C)⇒Conclusion` must be deterministic, "exactly the property we
+  need for an auditable engineering platform").
+
+  **Delivers the file's central and most consequential result**: subjecting 0534's proposed formula
+  (`WeightedStrength=Reliability×Relevance×Currency×Independence`,
+  `Aggregate=ΣWeightedStrength_i/(1+log n)`) directly to Law E4 (Duplicate Idempotence) reveals a genuine
+  flaw -- adding a duplicate observation changes n, which changes the aggregate denominator and therefore
+  changes the result: "that is actually good in one sense -- it prevents unlimited linear growth -- but it
+  does NOT solve the fundamental duplication problem." The correct fix requires the system to FIRST
+  establish `e_i∼e_j` (evidentially identical/dependent) before aggregating identical or dependent
+  contributions as one, crystallized as an explicit, necessary architectural ORDERING:
+  `Deduplication/Dependency Analysis ≺ Aggregation` -- a genuine axiomatic falsification of part of the
+  immediately preceding file's proposed mathematics, not a restatement.
+
+  **Delivers a corrected, five-stage assessment pipeline**: `E --Normalize--> E*`,
+  `E* --DependencyAnalysis--> G_E`, `(E*,G_E) --QualityAssessment--> Q_E`,
+  `(Q_E,ρ,C) --Aggregation--> EA`, `(EA,ρ,R,C) --Inference--> Conclusion` -- explicitly "significantly
+  stronger than the current DeepSeek model," and produces a full ten-stage architecture diagram (Source ->
+  Observation -> Evidential Relation -> Normalization -> Dependency Analysis -> Quality Assessment ->
+  Evidence Aggregation -> Evidence Assessment -> Inference Rule -> Conclusion).
+
+  **Delivers a clean three-bounded-context DDD structuring**: Evidence Context (Observation,
+  EvidentialRelation, EvidenceGraph) | Assessment Context (QualityAssessment, DependencyAnalysis,
+  EvidenceAssessment, AssessmentPolicy) | Reasoning Context (InferenceRule, Inference, Conclusion) --
+  "much cleaner than a generic 'epistemology' module."
+
+  **Closes by proposing the corpus's next concrete mathematical test**: construct a small test universe
+  and test candidate assessment functions against twelve stress scenarios (duplicate evidence, independent
+  corroboration, dependent corroboration, contradiction, unequal reliability, stale evidence, irrelevant
+  evidence, incomplete evidence, incomparable evidence, policy changes, context changes, evidence removal)
+  before choosing among weighted-deterministic, Bayesian, Dempster-Shafer, possibility-theory, ordinal, or
+  hybrid inference models -- explicitly noting "we do not need external research yet. This part can be
+  derived and tested directly from the formal requirements we've established."
+introduces:
+  - concept: "A structured, non-collapsing Evidence Assessment object EA=(S^+,S^-,Q,U,D,C_f,Π), explicitly preserving simultaneous Support(P) and Support(¬P) rather than reducing to one number"
+  - concept: "The corpus's first fully worked twelve-law axiomatic test suite (E1..E12) for evidence-assessment functions: Determinism, Provenance Preservation, No Double Counting, Duplicate Idempotence, Corroboration≠Duplication, Signed/Conditional Monotonicity, Conflict Preservation, Context Sensitivity, Policy Sensitivity, Assessment≠Inference, Assessment≠Truth, Reproducibility"
+  - concept: "Duplicate Idempotence (Law E4): A({e})≈A({e,e}) for the independent-support component, motivated by an explicit adversarial duplication attack (submitting the same observation 1000 times must not manufacture confidence)"
+  - concept: "Signed/Conditional Monotonicity (Law E6): rejects naive monotonicity in favor of directional guarantees — adding supporting evidence cannot reduce support for P, adding contradicting evidence cannot reduce support for ¬P — while overall epistemic status may legitimately become more uncertain as evidence accumulates"
+  - concept: "Genuine axiomatic falsification of part of 0534's proposed aggregation formula: the logarithmically-dampened AggregateSupport formula changes appropriately under duplication but does not itself detect or prevent duplication, revealing that deduplication/dependency analysis must be a distinct, prior pipeline stage"
+  - concept: "The necessary architectural ordering Deduplication/Dependency Analysis ≺ Aggregation, established as a formal requirement rather than an implementation preference"
+  - concept: "A corrected five-stage assessment pipeline (Normalize -> Dependency Analysis -> Quality Assessment -> Aggregation -> Inference), stronger than 0534's model"
+  - concept: "Three clean DDD bounded contexts for the evidence-to-conclusion pipeline: Evidence Context, Assessment Context, Reasoning Context"
+  - concept: "A twelve-scenario stress-test protocol proposed as the prerequisite to selecting any specific inference formalism (weighted-deterministic, Bayesian, Dempster-Shafer, possibility theory, ordinal, or hybrid)"
+defines:
+  - concept: "Evidence Assessment (EA, structured form)"
+    definition: "(S^+,S^-,Q,U,D,C_f,Π) — support for P, support against P, qualifications, uncertainty, dependency structure, conflict information, and provenance — never collapsed into a single scalar"
+  - concept: "Laws E1-E12 (Mathematical Laws of Evidence Assessment)"
+    definition: "A twelve-item axiomatic specification an evidence-assessment function must satisfy: determinism; provenance preservation; no double counting of dependent evidence; duplicate idempotence; corroboration distinct from duplication; signed/conditional monotonicity; conflict preservation; context sensitivity; policy sensitivity; assessment≠inference; assessment≠truth; reproducibility"
+refines:
+  - concept: "0534's Part 3 resolution (IndependenceFactor=1/(1+depth), logarithmically-dampened AggregateSupport)"
+    refinement: "Subjected to direct axiomatic testing (Law E4) and found insufficient on its own to solve the duplication problem — the aggregation formula's denominator changes appropriately under duplication, but the system must first perform explicit dependency/deduplication analysis before aggregating, establishing a necessary pipeline ordering not present in 0534's formulation"
+  - concept: "0533's EVD-1..EVD-11 and 0534's EVD_1..EVD_14 axiom sets"
+    refinement: "Complemented by an entirely distinct, non-overlapping axiom family (E1-E12) specifically governing the mathematical BEHAVIOR of the assessment function under evidence changes (addition/removal/duplication/contradiction/reinterpretation), rather than the ontological status of evidence itself — a third, functionally distinct axiomatic layer requiring reconciliation alongside the two EVD sets already flagged"
+  - concept: "0492's Discrepancy/Coherence framework and the corpus's general non-collapse discipline"
+    refinement: "Given a precise formal justification via Law E7 (Conflict Preservation): a well-supported claim's contrary evidence must never be silently discarded, however strong the supporting side"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Reconcile three now-distinct axiomatic layers in the corpus's Evidence theory: 0533's EVD-1..11 (ontological status of evidence), 0534's EVD_1..14 (a parallel ontological set from the DeepSeek critique-resolution cycle), and this file's E1..E12 (functional/behavioral laws for the assessment function) — determine whether these should be merged, kept as complementary layers, or reduced"
+  - "Trace whether the proposed twelve-scenario stress-test protocol for candidate aggregation functions is actually executed against concrete formula candidates in a subsequent corpus file"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the twelve-law axiomatic test suite (E1..E12) for evidence-assessment functions, with special emphasis on Duplicate Idempotence (E4) and Signed/Conditional Monotonicity (E6)."
+  - "dimension-registry.md: record the genuine axiomatic falsification of 0534's aggregation formula under the duplication test, and the resulting necessary pipeline ordering Deduplication/Dependency Analysis ≺ Aggregation."
+  - "dimension-registry.md: record the corrected five-stage assessment pipeline, the ten-stage architecture diagram, and the three clean DDD bounded contexts (Evidence/Assessment/Reasoning), plus the proposed twelve-scenario stress-test protocol as the corpus's next concrete mathematical step."
+anchor_test:
+  anchor: "0534's Part 3 aggregation formula and IndependenceFactor; 0533's EVD-1..11 and 0534's EVD_1..14 axiom sets; 0492's Discrepancy/non-collapse discipline"
+  supports_dimension: "LANDMARK mathematical stress-test delivering the corpus's first fully worked twelve-law axiomatic specification for evidence-assessment functions, genuinely falsifying part of the immediately preceding file's proposed aggregation formula (it fails to prevent the duplication attack on its own) and deriving a necessary, non-obvious architectural ordering (deduplication/dependency analysis must precede aggregation) — the sharpest instance yet in the corpus's Computational Closure arc of a concept being subjected to real adversarial mathematical testing rather than merely asserted"
+  refines_or_contradicts: "directly tests and partially falsifies 0534's proposed aggregation formula, correcting it with a necessary pipeline-ordering requirement; introduces a functionally distinct third axiomatic layer alongside the two EVD ontological axiom sets, requiring future reconciliation; reinforces and formally justifies 0492's non-collapse/conflict-preservation discipline via Law E7"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The duplication-attack test against 0534's own proposed formula is a directly checkable, adversarial mathematical demonstration (not a mere assertion) that the formula's denominator changing under duplicate submission is necessary but not sufficient — genuine falsification evidence within the corpus's own research process, immediately following the very file whose formula it tests."
+undefined_concepts: []
+open_questions:
+  - "Whether the proposed twelve-scenario stress-test protocol for candidate aggregation/inference functions is executed against concrete formula candidates in a subsequent file"
+  - "How the three now-distinct Evidence-theory axiomatic layers (0533's EVD-1..11, 0534's EVD_1..14, this file's E1..E12) are ultimately reconciled or organized relative to one another"
+  - "Whether the corrected five-stage pipeline (Normalize->DependencyAnalysis->QualityAssessment->Aggregation->Inference) is adopted as the corpus's canonical Evidence-to-Conclusion architecture going forward"
+tier2_triggered: true
+tier2_reason: "LANDMARK mathematical stress-testing file delivering the corpus's first fully worked twelve-law axiomatic specification (E1..E12) for evidence-assessment functions, most notably Duplicate Idempotence and Signed/Conditional Monotonicity — laws not previously articulated anywhere in the corpus. Crucially, it does not merely propose new theory but genuinely FALSIFIES part of the immediately preceding file's (0534's) proposed aggregation formula via a concrete adversarial duplication test, deriving from that falsification a necessary, non-obvious architectural ordering (deduplication/dependency analysis must precede aggregation) that the prior formula lacked. This is among the sharpest demonstrations yet in the corpus's active Computational Closure research program of genuine mathematical stress-testing driving architectural correction, rather than concept accumulation — directly fulfilling the file's own stated methodological pivot."

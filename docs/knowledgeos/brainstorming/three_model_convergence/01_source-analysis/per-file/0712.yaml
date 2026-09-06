@@ -1,0 +1,176 @@
+sequence: 712
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-125128_step-127-knowledgeos-domain-bounded-context-test.md
+title: "Step 127 -- Delivers a Genuinely Rigorous, Real-DDD-Methodology Bounded-Context Test (Eight Explicit Criteria) Applied to Eight Candidate Concepts, Correctly Demoting Engineering State, Agent Interaction, and Authorization to Supporting/External Status to Prevent KnowledgeOS From Accidentally Recreating Git/Kubernetes/Enterprise-IAM -- Delivers 'Do Not Over-Fragment' Against an Eleven-Noun-Driven-BC Anti-Pattern List, the Domain-Behavior/Verb Test Distinguishing Real Domain Boundaries From CRUD, and the Key DDD Insight That KnowledgeOS May Be an 'Ecosystem of Bounded Contexts' Rather Than One Application -- Delivers the Crystallizing Rule 'KnowledgeOS Should Not Be Decomposed by Nouns; It Should Be Decomposed by Semantic Boundaries' -- Converges on Governance+Knowledge+Evidence+Assurance as the Strongest Candidate Core Domains, Explicitly Held as Candidate Not Confirmed -- Opens Step 128 -- Context Map and Dependency Direction, Explicitly Naming the Dangerous Anti-Pattern to Test For: Infrastructure/Agent→Authority"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 127 -- KnowledgeOS Domain/Bounded-Context Test', promised at 0711's close; delivers a genuinely rigorous DDD analysis applying real strategic-design methodology (Core/Supporting/External classification, domain-verb testing, anti-corruption layers, event ownership) to the five-plus candidate bounded contexts, continuing the high-quality Steps 120-127 synthesis arc with a result directly consistent with classical DDD theory"
+source_role: PRIMARY_RESEARCH
+canonical_source: 712
+importance: critical
+confidence: high
+about: >
+  Delivers the foundational DDD rule `Concept≠BoundedContext` and an explicit eight-criterion DDD test
+  (distinct Ubiquitous Language, business/engineering purpose, meaningful invariants, distinct lifecycle,
+  meaningful consistency boundary, identifiable ownership, explicit contracts, whether separation reduces
+  ambiguity), directly matching classical Evans-style DDD strategic-design methodology and consistent with
+  this repository's own governing DDD-discipline standards.
+
+  Delivers eight candidates systematically tested: **Knowledge** (Strong Candidate, `ConfirmedBC=
+  NotYetEstablished` -- the important ownership caution that `ArchitectureKnowledge` and
+  `OperationalKnowledge` may have different owners, making "Knowledge" potentially too broad for one BC);
+  **Evidence** (Strong Candidate, `ConfirmedBC=Unknown` -- high consumption across Knowledge/Governance/
+  Assurance/Agents does not by itself imply a separate BC); **Governance** (Very Strong BC Candidate, the
+  strongest evidence, given a likely genuine organizational-ownership boundary); **Assurance** (Strong BC
+  Candidate, with the important `Assurance≠Governance` distinction precisely stated: "Assurance determines
+  `Violation=True`. Governance determines what should we do about it" -- directly extending the corpus's
+  Detection≠Authority family into a formal DDD-boundary argument); **Engineering State** (correctly demoted
+  to "Supporting Domain, not necessarily BC" -- "this distinction prevents KnowledgeOS from becoming an
+  accidental replacement for Git, Kubernetes, monitoring, etc."); **Agent Interaction** (correctly demoted to
+  "Supporting Context" -- "is this KnowledgeOS domain semantics or AI infrastructure?", with `AgentIdentity`
+  belonging to KnowledgeOS-facing integration while `PromptManagement` belongs to the agent harness); **Policy**
+  (Candidate, boundary unresolved, with `Policy=What must/should happen` distinguished from
+  `Decision=What was decided in a particular case`); and **Authorization** (correctly identified as "a
+  classic identity/security domain" likely belonging to an existing enterprise IAM/security bounded context
+  rather than KnowledgeOS, with the important anti-pattern warning: "KnowledgeOS should not attempt to
+  recreate `EnterpriseIAM`. Instead: `KnowledgeOS→AuthorizationService`. It consumes authoritative
+  authorization capabilities").
+
+  **Delivers "do not over-fragment," a crucial and precisely reasoned DDD anti-pattern warning directly
+  extending 0696's/0697's DDD-archaeology discipline into bounded-context-count discipline specifically**:
+  an illustrative list of eleven tempting per-noun "BCs" (`KnowledgeBC, EvidenceBC, ClaimBC, DecisionBC,
+  PolicyBC, AuthorityBC, VerificationBC, FindingBC, ObservationBC, ActionBC, AgentBC`) is explicitly
+  rejected as `NounDrivenArchitecture` -- "we explicitly want to avoid that," directly matching this
+  repository's own actual governing DDD/architecture standards against generic/noun-driven decomposition.
+  Delivers the Aggregate boundary test ("which objects must change consistently in one transaction?"),
+  concretely showing `Decision` referencing but not owning `Authority` or `Evidence`, with worked
+  illustrative aggregate schemas for `GovernanceDecision` and `Evidence` demonstrating reference-not-
+  duplication.
+
+  **Delivers the Anti-corruption-layer discipline reconfirmed with two concrete external-system examples**,
+  directly extending 0687's/0697's ACL discipline: Kubernetes (`Deployment ReplicaSet status`→translated to
+  `Observed deployment state`) and, continuing the confirmed-fictional "Nexus" running example (0698),
+  `NexusAsset→ArtifactObservation`. Delivers an Agent anti-corruption boundary precisely stated: Claude's
+  internal concepts (conversation, token, tool call, context window) are explicitly NOT KnowledgeOS domain
+  concepts -- "KnowledgeOS needs `AgentSession` only where agent activity has governance/evidence
+  significance." Delivers the most complete DDD context-map diagram in this reconstruction (`Governance→
+  {consumes evidence}Evidence→{supports}Knowledge→{defines expectation}Assurance→{observes}External
+  Engineering Systems`, with an `Agent Layer` feeding in separately).
+
+  **Delivers the file's central, genuinely significant DDD insight, directly resolving a tension this
+  reconstruction has been building toward across the entire constitution/operating-model/information-model
+  arc**: "KnowledgeOS may not be one bounded context. It may instead be an **Ecosystem of bounded contexts**
+  connected by a common governance/evidence language" -- `KnowledgeOS=BC_1+BC_2+BC_3+Integration`, rather
+  than `KnowledgeOS=OneHugeApplication` -- with the appropriately epistemically humble alternative
+  explicitly left open: KnowledgeOS might instead be "primarily a platform boundary spanning several
+  domains" rather than a BC itself, "this distinction must be resolved through implementation and ownership
+  evidence." Delivers the precise risk analysis of getting this wrong (giant aggregates, a generic
+  "KnowledgeService," universal repositories, shared domain models, excessive coupling, "that would
+  undermine DDD"), crystallized with **the sharp, concrete "Generic Knowledge anti-pattern"**: a
+  `KnowledgeService` exposing only `saveKnowledge()/getKnowledge()/updateKnowledge()/searchKnowledge()` is
+  explicitly identified as "not automatically a domain model. It may merely be CRUD around documents" --
+  directly matching and validating this very repository's own actual governing warnings against generic/
+  anemic service patterns.
+
+  **Delivers the "Domain behavior test," a genuinely valuable, reusable DDD-validation heuristic**: "can the
+  context be described using meaningful domain verbs?" (`PromoteClaim, ApproveDecision, SupersedeDecision,
+  VerifyFinding, GrantException`) rather than only generic CRUD (`save()/find()`) -- "if yes, it is stronger
+  evidence of a domain boundary" -- worked through with concrete verb sets for each core candidate
+  (Governance: Assess/Approve/Reject/Delegate/GrantException/Supersede; Assurance: Check/Verify/Compare/
+  Detect/Classify; Evidence: Capture/Register/Validate/Link/Retain; Knowledge: Propose/Promote/Supersede/
+  Invalidate/Publish/Resolve), producing a refined final hypothesis converging on `Governance+Knowledge+
+  Evidence+Assurance` as the strongest core-domain candidates, with `AgentInteraction`+`EngineeringObservation`
+  as Supporting and `IAM/Git/CI-CD/Kubernetes/Monitoring/Nexus` as External -- a clean three-tier
+  classification directly matching classical DDD strategic-design terminology (Core Domain/Supporting
+  Subdomain/Generic Subdomain).
+
+  Delivers a comprehensive Domain-event catalog (`KnowledgeProposed, KnowledgeApproved, DecisionSuperseded,
+  EvidenceCaptured, FindingDetected, FindingClassified, ActionAuthorized, ActionExecuted,
+  VerificationCompleted`), the most complete such catalog in this reconstruction, with the precise Event-
+  ownership rule "the context that owns the business meaning should own the event" (`Governance→
+  DecisionApproved`, never a generic `KnowledgeOS GenericEventService→DecisionApproved`), an event-driven
+  interpretation of the control loop as Event choreography, and **the important, precisely reasoned
+  technology-independence caution "do not prematurely choose Kafka"** -- `DomainEvent` is the semantic
+  concept; Kafka/messaging/database-events/webhooks are implementation mechanisms -- directly extending
+  0705's technology-independence discipline into the event-architecture layer specifically.
+
+  Delivers Step 127's verdict with confident, precisely hedged phrasing consistent with the ongoing Steps
+  120-127 synthesis arc: the DDD analysis "currently supports `Governance, Knowledge, Evidence, Assurance`
+  as the strongest bounded-context candidates," but the correct status remains explicitly `Candidate`, not
+  `Confirmed`, crystallizing **the critical rule "KnowledgeOS should not be decomposed by nouns; it should
+  be decomposed by semantic boundaries."**
+
+  **Closes by opening "Step 128 — KnowledgeOS Context Map and Dependency Direction,"** promising to test the
+  actual dependency direction across the candidate contexts (`Governance→Knowledge→Assurance→Engineering`
+  desired, versus possible reverse dependencies/semantic leakage), and, most significantly, **explicitly
+  naming the dangerous anti-pattern to test for: `Infrastructure/Agent→Authority`** -- "which would mean the
+  technical implementation can silently redefine organizational truth" -- directly and sharply extending the
+  corpus's entire Agent≠Authority discipline into a formal, testable dependency-direction anti-pattern for
+  the first time, rather than only a behavioral/procedural rule. No actual code execution, repository
+  inspection, or verified filesystem/dependency claim is reported anywhere in this file.
+introduces:
+  - concept: "A genuinely rigorous eight-criterion DDD bounded-context test, directly matching classical Evans-style strategic-design methodology"
+  - concept: "The Assurance≠Governance DDD-boundary argument: Assurance determines Violation=True; Governance determines the disposition"
+  - concept: "Engineering State, Agent Interaction, and Authorization all correctly demoted to Supporting/External status to prevent KnowledgeOS from recreating Git/Kubernetes/enterprise IAM"
+  - concept: "'Do not over-fragment' — an explicit rejection of an eleven-noun-driven-BC anti-pattern list"
+  - concept: "The Domain behavior/verb test distinguishing genuine domain boundaries from generic CRUD"
+  - concept: "The key DDD insight: KnowledgeOS may be an 'ecosystem of bounded contexts' rather than one application, or alternatively a platform boundary spanning several domains"
+  - concept: "The 'Generic Knowledge anti-pattern' — a KnowledgeService with only save/get/update/search methods is not a domain model"
+  - concept: "The crystallizing rule: KnowledgeOS should not be decomposed by nouns; it should be decomposed by semantic boundaries"
+  - concept: "'Do not prematurely choose Kafka' — DomainEvent is semantic, messaging technology is implementation"
+  - concept: "Opens Step 128 — Context Map and Dependency Direction, explicitly naming the dangerous Infrastructure/Agent→Authority anti-pattern as its central test"
+defines:
+  - concept: "The eight-criterion DDD bounded-context test"
+    definition: "A candidate concept qualifies as a genuine bounded context only if it exhibits: (1) a distinct ubiquitous language, (2) its own business/engineering purpose, (3) meaningful invariants it owns, (4) a distinct lifecycle, (5) a meaningful consistency boundary, (6) identifiable ownership, (7) communication through explicit contracts, and (8) separation would genuinely reduce semantic ambiguity — satisfying some criteria makes a concept a 'candidate,' not yet 'confirmed'"
+  - concept: "Assurance≠Governance (DDD boundary)"
+    definition: "Assurance's domain purpose is determining whether a condition holds (Violation=True/False); Governance's domain purpose is deciding what organizational response should follow that determination — these are distinct business purposes with distinct language and lifecycle, even though they interact closely, supporting their treatment as separate bounded contexts"
+  - concept: "The Domain behavior/verb test"
+    definition: "A candidate bounded context is more strongly evidenced when it can be described through meaningful domain-specific verbs (e.g. PromoteClaim, ApproveDecision, GrantException) rather than only generic persistence operations (save(), find(), update()); a service exposing only CRUD-style methods around a noun is likely not a genuine domain model, regardless of how central that noun appears in the information model"
+  - concept: "KnowledgeOS as an ecosystem of bounded contexts (vs. one application)"
+    definition: "Rather than being a single monolithic bounded context or application, KnowledgeOS may be more accurately understood as an ecosystem of multiple distinct bounded contexts (candidate: Governance, Knowledge, Evidence, Assurance) connected by a common governance/evidence language and integration layer — or alternatively, KnowledgeOS may be a platform boundary spanning several domains rather than a bounded context itself; which framing is correct requires implementation and ownership evidence, not assumption"
+refines:
+  - concept: "0696's/0697's DDD-archaeology discipline"
+    refinement: "Directly and rigorously extended with a full eight-criterion bounded-context test and an explicit 'do not over-fragment' caution against noun-driven architecture"
+  - concept: "the corpus's Detection≠Authority/Agent≠Authority family"
+    refinement: "Directly extended into a formal DDD-boundary argument distinguishing Assurance (determines conformance) from Governance (determines disposition)"
+  - concept: "the corpus's scope-discipline against over-reaching into adjacent systems"
+    refinement: "Directly extended with explicit, precisely reasoned demotions of Engineering State, Agent Interaction, and Authorization to Supporting/External status, preventing KnowledgeOS from recreating Git/Kubernetes/monitoring/enterprise-IAM"
+  - concept: "0687's/0697's Anti-Corruption-Layer discipline"
+    refinement: "Directly extended with two concrete external-system examples (Kubernetes, Nexus) and an explicit agent-internal-concepts exclusion (conversation/token/tool-call/context-window are not KnowledgeOS domain concepts)"
+  - concept: "0705's technology-independence discipline"
+    refinement: "Directly extended into the event-architecture layer specifically: DomainEvent is semantic, Kafka/messaging technology is implementation, never conflated"
+  - concept: "this repository's own governing DDD/architecture-discipline standards (anti-generic-service, anti-noun-driven-decomposition)"
+    refinement: "Directly and precisely validated by the corpus's own independent arrival at the same 'Generic Knowledge Service is not a domain model' anti-pattern and 'decompose by semantic boundaries, not nouns' principle"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0713 (Step 128 — KnowledgeOS Context Map and Dependency Direction) with continued high attention: this file's own explicit naming of the dangerous Infrastructure/Agent→Authority anti-pattern as its central test target is a sharp, well-motivated, and significant continuation directly extending the corpus's Agent≠Authority discipline into a formal, testable dependency-direction property for the first time."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the genuinely rigorous eight-criterion DDD bounded-context test and its result (Governance+Knowledge+Evidence+Assurance as the strongest candidate core domains, explicitly Candidate not Confirmed), directly matching classical DDD strategic-design methodology."
+  - "dimension-registry.md: record the key DDD insight that KnowledgeOS may be an 'ecosystem of bounded contexts' rather than one application, the 'do not over-fragment'/Generic-Knowledge-anti-pattern cautions, and the Domain-behavior/verb test as a reusable DDD-validation heuristic."
+  - "dimension-registry.md: flag Step 128 (0713) for its explicit promise to test the dangerous Infrastructure/Agent→Authority dependency-direction anti-pattern -- a sharp, novel extension of the Agent≠Authority family into dependency-graph terms."
+anchor_test:
+  anchor: "0696's/0697's DDD-archaeology discipline; the corpus's Detection≠Authority/Agent≠Authority family; 0687's/0697's Anti-Corruption-Layer discipline; 0705's technology-independence discipline; this repository's own governing DDD/architecture-discipline standards; 0703's/0710's/0711's candidate fundamental-unit proposals (not engaged in this file)"
+  supports_dimension: "Delivers a genuinely rigorous DDD bounded-context analysis directly matching classical strategic-design methodology, correctly and precisely demoting several tempting candidates (Engineering State, Agent Interaction, Authorization) to Supporting/External status to prevent scope creep into adjacent systems (Git, Kubernetes, enterprise IAM). Delivers several genuinely valuable, reusable DDD principles: the 'do not over-fragment'/Generic-Knowledge-anti-pattern cautions, the Domain-behavior/verb test, and precise Event-ownership discipline with an explicit technology-independence caution for the event layer. Most significantly, delivers a genuinely important architectural insight -- KnowledgeOS may be an ecosystem of bounded contexts rather than one application -- directly resolving a tension built up across the entire constitution/operating-model/information-model arc, while appropriately leaving the alternative platform-boundary framing open pending evidence. Directly and independently validates this repository's own governing DDD-discipline standards. Closes with a sharp, well-motivated, and novel extension of the Agent≠Authority family into a testable dependency-direction anti-pattern for Step 128"
+  refines_or_contradicts: "directly and rigorously extends 0696's/0697's DDD-archaeology discipline, the corpus's Detection≠Authority/Agent≠Authority family, 0687's/0697's Anti-Corruption-Layer discipline, and 0705's technology-independence discipline; independently and directly validates (rather than merely referencing) this repository's own governing DDD/architecture-discipline standards against generic services and noun-driven decomposition; does not engage with or reconcile 0703's/0710's/0711's candidate fundamental-unit proposals (a separate open question); no contradiction found; no new invariant notation introduced (this file is strategic-DDD analysis, not invariant enumeration)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§127.42-127.44's 'ecosystem of bounded contexts' insight, explicitly weighed against the alternative 'platform boundary spanning several domains' framing and explicitly left open pending implementation/ownership evidence, is directly checkable evidence of a genuinely significant and appropriately epistemically humble architectural conclusion for KnowledgeOS's own strategic domain design."
+  - "§127.45-127.48's Generic-Knowledge-anti-pattern (a KnowledgeService exposing only save/get/update/search) and Domain-behavior/verb test are directly checkable, concrete evidence of a rigorous DDD validation methodology directly consistent with, and independently arrived at alongside, this repository's own governing architecture-discipline standards."
+  - "§128's opening explicit naming of 'Infrastructure/Agent→Authority' as 'the dangerous anti-pattern' to test for is directly quotable evidence of a sharp, novel formalization of the corpus's Agent≠Authority discipline as a testable dependency-direction property rather than only a behavioral rule."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 128's actual content (0713), once read, delivers a rigorous (even if still hypothetical) test of the Infrastructure/Agent→Authority anti-pattern and a genuine context map with resolved dependency directions, continuing the high quality established across the Steps 120-127 arc."
+  - "Whether this file's DDD-ecosystem conclusion is ever explicitly connected to 0703's TraceableKnowledgeEpisode or 0710's/0711's GovernedEngineeringFact/KnowledgeObject-Claim candidate fundamental-unit proposals in a later file."
+tier2_triggered: true
+tier2_reason: "Delivers a genuinely rigorous DDD bounded-context analysis directly matching classical strategic-design methodology, correctly demoting several tempting candidates to Supporting/External status to prevent scope creep into adjacent systems. Delivers several genuinely valuable, reusable DDD principles (the 'do not over-fragment'/Generic-Knowledge-anti-pattern cautions, the Domain-behavior/verb test, precise Event-ownership discipline). Delivers a genuinely important architectural insight (KnowledgeOS as an ecosystem of bounded contexts) directly resolving a tension built up across the entire preceding synthesis arc. Independently validates this repository's own governing DDD-discipline standards. Closes with a sharp, novel extension of the Agent≠Authority family into a testable dependency-direction anti-pattern for Step 128."

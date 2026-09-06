@@ -1,0 +1,181 @@
+sequence: 802
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-014710_step_177_the-knowledge-is-not-truth-experiment.md
+title: "Step 177 -- The 'Knowledge Is Not Truth' Experiment (MAJOR SYNTHESIS MILESTONE, delivers 0801's promised Truth/Claim/Evidence/Belief/Knowledge/Determination/Decision distinction, explicitly named 'one of the most important' experiments): Delivers ClaimExists(C)≠Truth(C), E⊢C≠C=True, and 'Confidence Is Not Always Probability' -- Delivers the Epistemic Tuple K=⟨C,E,M,S,T,V,P⟩ and Knowledge=Deterministic∪Empirical∪Probabilistic∪Interpretive -- Delivers the Epistemic Promotion Pipeline and Names AI-Hallucination Prevention ('Generation→Authority Without the Required Epistemic Process') as a First-Class KnowledgeOS Architectural Responsibility -- Delivers Explicit AI/Human Symmetry (Neither Source Is a Truth Substitute for Evidence) -- Upgrades the Three-Zone Architecture Into a Full Eight-Stage 'Semantic Lifecycle Architecture' -- Rejects 'Truth' as a Single Undifferentiated State in Favor of Multiple Domain-Owned Predicates (Supported/Established/Valid/Approved/Authorized) -- Opens Step 178's 'What Should We Do?' Experiment, Explicitly Invoking Gita Chapter 4's 'What Ought to Be Done, and What Ought Not to Be Done'"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily mathematical/statistical/DDD epistemic-taxonomy synthesis; closes by explicitly invoking Gita Chapter 4's 'what ought to be done, and what ought not to be done' theme to motivate the Decision=f(Knowledge,Values,Policy,...) formalization opening Step 178"
+source_role: PRIMARY_RESEARCH
+canonical_source: 802
+importance: critical
+confidence: high
+about: >
+  Directly continues 0801, opening "we now challenge one of the most important assumptions in our
+  architecture... if KnowledgeOS stores something called knowledge, what exactly does that mean?" Poses
+  the worked example "the Nexus migration is safe" and insists `Claim, Evidence, Belief, Knowledge,
+  Determination, Decision` "must not collapse into one object."
+
+  **§177.1-177.5 delivers the foundational claim/evidence distinction**: `ClaimExists(C_1)=true` does not
+  establish `Truth(C_1)=true`; evidence `E={E_1,E_2,E_3}` (worked through a staging test, capacity
+  analysis, network analysis) with `EvidenceExists(C)⇏C=True`. Delivers evidence's own property set
+  (Source/Time/Method/Provenance/Reliability/Scope/Validity), boxed **`Evidence≠Document`**. Delivers the
+  support relation `E⊢C` ("evidence E supports claim C") explicitly not meaning `C=True` -- "it means that,
+  according to the accepted method, E provides support for C." Imports the statistical framing
+  `P(H|X)>P(H)` not implying `P(H|X)=1`, delivering `Evidence→DegreeOfSupport`, not
+  `Evidence→AbsoluteTruth`.
+
+  **§177.6-177.9 delivers the epistemic tuple** (first pass) `K=⟨Claim,Evidence,Method,Context,Validity,
+  Confidence,Provenance,Time⟩` (explicitly a semantic model, not a forced database schema), and **"an
+  important correction: confidence is not always probability"** -- a governance determination's
+  `Confidence=High` does not necessarily mean `P(C)=0.95`; `SupportLevel` may be qualitative,
+  quantitative, logical, or rule-based per domain. Delivers **deterministic knowledge as a distinct,
+  equally valid category** (`x=5⇒x>0` requires no probabilistic confidence), explicitly rejecting "all
+  knowledge is probabilistic," yielding **`Knowledge=Deterministic∪Empirical∪Probabilistic∪
+  Interpretive`**, taxonomy explicitly not yet frozen.
+
+  **§177.10-177.16 delivers `Claim→Evidence→Evaluation→Determination`** as a governed progression (a
+  determination is "not merely a claim repeated with more authority" but "a governed conclusion about the
+  claim"), delivering **conditional knowledge**: `D_1=Conclusion+Conditions` (e.g. migration feasible
+  "provided that backup restoration has been validated"), generalized to `C|Conditions`. Delivers
+  **scope-dependence**: `K_staging≠K_production` even for textually identical statements, crystallized into
+  the second-pass boxed epistemic tuple **`K=⟨C,E,M,S,T,V,P⟩`** (claim/evidence/method/scope/temporal
+  validity/epistemic status/provenance), and the major conclusion **"knowledge is therefore not a text
+  blob"** -- a document merely represents one textual instance of the underlying
+  `Claim→Evidence→Method→Determination→Decision` relationship structure.
+
+  **§177.17-177.22 introduces belief**: `Belief(C)≠Established(C)`, boxed **`Belief≠Knowledge`**, though
+  `Belief→CandidateClaim` is a valid transition. **Extends this identically to AI**: an AI-generated
+  hypothesis ("the firewall probably allows the connection") must initially be `AIHypothesis`, not
+  `EstablishedFact`, promotable only through the same evidence/evaluation process. Delivers **the
+  epistemic promotion pipeline**, boxed: **`Observation→Claim→Evidence→Evaluation→Determination→
+  KnowledgeStatus`**. **Delivers AI-hallucination prevention as a named first-class architectural
+  responsibility**: "a hallucination is particularly dangerous when a generated claim is silently promoted
+  to established knowledge" -- KnowledgeOS's job is to prevent `Generation→Authority` without the required
+  epistemic process. Delivers **AI output provenance** (`GeneratedBy/Model/PromptContext/Time`) with the
+  explicit caveat `AIProvenance≠Truth`. **Delivers explicit AI/human symmetry**, a notably even-handed
+  discipline: "we must not design `AI→Suspicious` and `Human→Truth`. Both can produce `CandidateClaims`...
+  `SourceIdentity` is part of provenance, not a substitute for evidence."
+
+  **§177.23-177.27 delivers a DDD ownership pass** across Claim/Evidence/Evaluation/Determination/
+  Knowledge/Decision/Authorization ("which object owns which invariant?" -- Evidence owns integrity/
+  provenance rules; Determination owns evidence-to-conclusion rules; Decision owns governance rules;
+  Authorization owns permission-to-act rules), and delivers three more compact non-implication chains:
+  `Knowledge(C)=Established⇏Authorization(Action)=Granted`; `Determination=Feasible⇏Decision=Proceed`
+  (governance may still choose `DoNotProceed` for cost/timing/risk/strategy reasons -- "exactly why our
+  Epistemic and Governance contexts must remain separate"); `Decision=Proceed⇏ExecutionOccurred`. Delivers
+  **four boxed DDD-boundary questions**, one per context: Epistemic ("what do we currently have sufficient
+  grounds to conclude?"), Governance ("what should the organization decide?"), Authorization ("what action
+  is permitted?"), Operational ("what actually happened?").
+
+  **§177.28-177.30 upgrades the architecture**: the three-zone model becomes an explicit sequence of
+  semantic transformations (`Observation→[Epistemic]→Claim`, `Claim+Evidence→[Evaluation]→Determination`,
+  `Determination→[Governance]→Decision`, `Decision→[Authorization]→AuthorizedAction`, `AuthorizedAction→
+  [Operational]→Execution`, `Execution→[Observation]→Outcome`, closing `Outcome→Observation`). Delivers
+  the "not circular in the bad sense" clarification: `K_t→Action_t→K_{t+1}` with `t+1>t` is "an evolving
+  system, not a logical circular definition." Re-invokes Chapter 4 once more, this time specifically to
+  motivate `K_{t+1}→[derivedFrom]→K_t` as a provenance relation rather than requiring `K_{t+1}` to literally
+  "be" `K_t`.
+
+  **§177.31-177.36 delivers the file's central challenge to "truth" itself**: KnowledgeOS should not
+  represent `Truth(C)` "as an unqualified universal concept," instead representing
+  `SupportedClaim/EstablishedDetermination/ValidityScope/TemporalValidity/EvidenceBasis`. Delivers **truth
+  as domain-relative** (`1+1=2` under formal arithmetic versus "this migration will have zero downtime" as
+  an empirical proposition are fundamentally different justification modes), a provisional (explicitly
+  unfrozen) taxonomy of epistemic modes `{Formal,Deterministic,Empirical,Statistical,Interpretive,
+  Authoritative}`, and **why "authoritative" is distinct**: an Architecture Board decision is an
+  authoritative organizational fact (`Approved(ArchitectureX,Organization,t)`) without being an empirical
+  claim that the architecture is universally best. Delivers **multiple domain-owned predicates replacing
+  one `Truth(x)`**: `Supported(x), Established(x), Valid(x,t,S), Approved(x,t), Authorized(x,t)`, each with
+  a distinct semantic owner -- "the same word 'status' hides completely different domain meanings" across
+  Epistemic/Governance/Authorization/Operational.
+
+  **§177.37-177.38 delivers the upgraded architecture** as a full eight-stage boxed chain
+  `Observation→Claim→Evidence→Determination→Decision→Authorization→Execution→Outcome→Observation'`,
+  explicitly "no longer merely a three-zone architecture. It is becoming a semantic lifecycle
+  architecture." **Delivers the Step 177 verdict**, boxed twice: **"KnowledgeOS should not model 'truth'
+  as a single undifferentiated state"** and the seven-term non-collapse chain
+  `Claim≠Evidence≠Determination≠KnowledgeStatus≠Decision≠Authorization≠Execution`, crystallized into "the
+  strongest principle so far": **"a governed knowledge system should preserve why a proposition is
+  considered valid, for whom, under which conditions, and at what point in time."**
+
+  **Closes opening "Step 178 — The 'What Should We Do?' Experiment,"** explicitly framing the boundary
+  between knowledge and governance via **Gita Chapter 4's theme of "what ought to be done, and what ought
+  not to be done,"** posing the formal question "given a state of knowledge K, what transformation
+  produces a legitimate decision A?" -- explicitly rejecting `A=f(K)` alone, since two organizations with
+  identical knowledge can legitimately reach different decisions due to differing objectives, policies,
+  constraints, risk tolerance, authority, and responsibilities. Proposes the next experiment's governing
+  formula: **`Decision=f(Knowledge,Values,Policy,Constraints,Objectives,Authority,Time)`**, promising to
+  determine which inputs belong to Epistemic, which to Governance, and which must remain explicitly outside
+  both, seeking "the mathematically clean boundary between 'what is the case?' and 'what should we do?'"
+  No actual repository implementation occurs within this file itself; every tuple, predicate, and pipeline
+  remains a conceptual specification pending Step 178's governance formalization.
+introduces:
+  - concept: "ClaimExists(C)≠Truth(C); EvidenceExists(C)⇏C=True; the support relation E⊢C explicitly not meaning C=True"
+  - concept: "Evidence≠Document, with evidence's own property set (Source/Time/Method/Provenance/Reliability/Scope/Validity)"
+  - concept: "'Confidence is not always probability' -- a qualitative governance Confidence=High does not necessarily mean P(C)=0.95"
+  - concept: "Deterministic knowledge as a distinct category requiring no probabilistic confidence; Knowledge=Deterministic∪Empirical∪Probabilistic∪Interpretive"
+  - concept: "Conditional knowledge D_1=Conclusion+Conditions, generalized to C|Conditions"
+  - concept: "Scope-dependence K_staging≠K_production for textually identical statements; the epistemic tuple K=⟨C,E,M,S,T,V,P⟩"
+  - concept: "'Knowledge is therefore not a text blob' -- a document is one representation of an underlying claim/evidence/method/determination/decision structure"
+  - concept: "Belief≠Knowledge, with Belief→CandidateClaim as a valid transition; the identical extension to AI hypotheses"
+  - concept: "The epistemic promotion pipeline Observation→Claim→Evidence→Evaluation→Determination→KnowledgeStatus"
+  - concept: "AI-hallucination prevention named a first-class KnowledgeOS architectural responsibility: preventing Generation→Authority without the required epistemic process"
+  - concept: "Explicit AI/human symmetry: neither source substitutes for evidence; SourceIdentity is part of provenance, not a truth guarantee"
+  - concept: "The DDD ownership pass across seven domain concepts, and the four boxed DDD-boundary questions (Epistemic/Governance/Authorization/Operational)"
+  - concept: "The upgrade from three-zone architecture to a full eight-stage semantic lifecycle architecture"
+  - concept: "'Not circular in the bad sense': K_t→Action_t→K_{t+1} with t+1>t is an evolving system, not a logical circularity; K_{t+1}→[derivedFrom]→K_t as provenance, not identity"
+  - concept: "The rejection of Truth(x) as a single undifferentiated state, replaced by domain-owned predicates Supported/Established/Valid/Approved/Authorized"
+  - concept: "Truth as domain-relative: formal/deterministic/empirical/statistical/interpretive/authoritative epistemic modes (provisional, unfrozen)"
+  - concept: "'Authoritative' as a distinct epistemic mode: an organizational decision can be authoritative without being empirical truth"
+  - concept: "The Step 177 verdict: the seven-term non-collapse chain and 'a governed knowledge system should preserve why a proposition is considered valid, for whom, under which conditions, and at what point in time'"
+  - concept: "Step 178's opening: Decision=f(Knowledge,Values,Policy,Constraints,Objectives,Authority,Time), explicitly motivated by Gita Chapter 4's 'what ought to be done, and what ought not to be done'"
+defines:
+  - concept: "The epistemic tuple K=⟨C,E,M,S,T,V,P⟩"
+    definition: "A knowledge statement's full semantic model, distinguishing its claim (C), supporting evidence (E), method of evaluation (M), scope/context (S, e.g. staging vs. production), temporal validity (T), epistemic status/validity (V), and provenance (P) -- explicitly a semantic model rather than a mandated persistence schema, capturing why a bare textual claim is insufficient: the same sentence can carry different validity depending on scope and time"
+  - concept: "AI-hallucination prevention as a KnowledgeOS architectural responsibility"
+    definition: "A hallucination becomes architecturally dangerous specifically at the moment a generated claim is silently promoted to established knowledge without passing through the required epistemic process (evidence gathering, evaluation, determination) -- KnowledgeOS's responsibility is not to prevent AI from generating claims (which is legitimate and useful, symmetric with human belief formation) but to prevent the Generation→Authority transition from occurring without the applicable promotion rule being satisfied, directly extending the file's Belief≠Knowledge distinction to AI-generated hypotheses"
+  - concept: "Truth rejected as a single undifferentiated predicate"
+    definition: "Rather than one universal Truth(x) predicate, KnowledgeOS should represent multiple domain-owned predicates -- Supported(x) (epistemic, evidence-grounded), Established(x) (epistemic, sufficiently supported), Valid(x,t,S) (scoped and temporal), Approved(x,t) (governance), Authorized(x,t) (authorization) -- because a single word like 'status' otherwise hides materially different domain meanings across the Epistemic, Governance, Authorization, and Operational contexts, and because organizational facts (e.g. an Architecture Board's approval) can be authoritative without being empirically true in a universal sense"
+refines:
+  - concept: "0801's opening of Step 176 and its closing promise of a Truth/Claim/Evidence/Belief/Knowledge/Determination/Decision distinction"
+    refinement: "DELIVERED IN FULL: the claim/evidence/belief/knowledge/determination/decision distinctions each formalized with worked examples, the epistemic tuple, the promotion pipeline, and the rejection of a single undifferentiated Truth(x) in favor of domain-owned predicates"
+  - concept: "0801's epistemic-status vocabulary {Candidate,Supported,Established,Disputed,Superseded,Invalidated} and its 'AI may participate in the epistemic process without owning organizational truth' principle"
+    refinement: "Extended with a concrete mechanism for exactly how AI participation is bounded: the epistemic promotion pipeline and the explicit naming of hallucination prevention (Generation→Authority without due process) as the specific failure mode this discipline exists to prevent, plus the explicit AI/human symmetry principle absent from 0801's more AI-focused framing"
+  - concept: "0798's three-zone architecture (Epistemic→Governance→Operational→Epistemic) and 0799's three domain contracts"
+    refinement: "Substantially upgraded into an explicit eight-stage 'semantic lifecycle architecture' (Observation→Claim→Evidence→Determination→Decision→Authorization→Execution→Outcome→Observation), inserting Claim and Evidence as distinct named stages between Observation and Determination that the three-zone model had left implicit within the Epistemic zone"
+  - concept: "The arc's repeated Chapter-4-derived Current(K)≠Lineage(K) / CurrentKnowledge≠HistoricalKnowledge family of distinctions"
+    refinement: "Re-invoked once more, this time specifically to clarify that K_{t+1}→[derivedFrom]→K_t is a provenance relation, not an identity requirement, resolving the apparent circularity of the Knowledge→Action→Knowledge loop by making explicit that it is a temporal, evolving sequence (t+1>t) rather than a logical circular definition"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 178's actual formalization of Decision=f(Knowledge,Values,Policy,Constraints,Objectives,Authority,Time) and its allocation of these inputs across Epistemic, Governance, and 'explicitly outside both.'"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the rejection of a single undifferentiated Truth(x) predicate, replaced by domain-owned predicates (Supported/Established/Valid/Approved/Authorized), as one of the arc's sharpest epistemic-architecture conclusions."
+  - "dimension-registry.md: record AI-hallucination prevention as an explicitly named first-class KnowledgeOS architectural responsibility (preventing Generation→Authority without due epistemic process), directly relevant to this reconstruction's own AI-authored analytical work."
+  - "dimension-registry.md: record the explicit AI/human symmetry discipline ('we must not design AI→Suspicious and Human→Truth') as a notably even-handed epistemic-governance principle."
+  - "dimension-registry.md: record the upgrade from the three-zone architecture to the full eight-stage semantic lifecycle architecture as the arc's most granular architectural pipeline specification to date."
+anchor_test:
+  anchor: "0801's opening of Step 176 and its closing promise of a Truth/Claim/Evidence/Belief/Knowledge/Determination/Decision distinction; 0798's three-zone architecture; 0799's domain contracts; the arc's repeated Chapter-4-derived Current(K)≠Lineage(K) family"
+  supports_dimension: "Delivers the full claim/evidence/belief/knowledge/determination/decision distinction promised at 0801's close, with worked examples throughout. Delivers the epistemic tuple and a taxonomy explicitly including deterministic knowledge alongside probabilistic, rejecting an all-knowledge-is-probabilistic assumption. Names AI-hallucination prevention as a first-class architectural responsibility with an explicit, symmetric AI/human evidentiary discipline. Substantially upgrades the three-zone architecture into a full eight-stage semantic lifecycle pipeline, inserting explicit Claim and Evidence stages. Re-invokes the arc's Chapter-4-derived family once more to resolve the Knowledge→Action→Knowledge loop's apparent circularity via derivedFrom provenance rather than identity. Delivers the file's central conclusion rejecting a single undifferentiated Truth(x) in favor of domain-owned predicates. Opens Step 178 with an explicit, second, distinct Gita-Chapter-4 invocation (the 'what ought to be done, and what ought not to be done' theme) to motivate the Decision formalization"
+  refines_or_contradicts: "directly delivers and extends 0801's opening and its closing promise; substantially upgrades 0798's three-zone architecture with explicit new stages; extends 0799's domain contracts implicitly by giving the underlying Epistemic-zone concepts (Claim, Evidence) their own explicit pipeline positions; resolves an apparent circularity in the arc's Chapter-4-derived loop via provenance rather than identity; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§177.20's explicit naming of AI-hallucination prevention as an architectural responsibility ('a hallucination is particularly dangerous when a generated claim is silently promoted to established knowledge... one of KnowledgeOS's architectural responsibilities is to prevent Generation→Authority without the required epistemic process') is directly quotable evidence of a concrete, actionable AI-safety principle grounded in the file's broader epistemic framework."
+  - "§177.22's explicit AI/human symmetry statement ('we must not design AI→Suspicious and Human→Truth. Both can produce CandidateClaims') is directly quotable evidence of a notably even-handed, non-AI-biased epistemic discipline."
+  - "§177.37's boxed eight-stage semantic lifecycle architecture (Observation→Claim→Evidence→Determination→Decision→Authorization→Execution→Outcome→Observation'), explicitly declared 'no longer merely a three-zone architecture,' is directly checkable evidence of a substantial architectural upgrade from 0798's original three-zone hypothesis."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 178's formalization of Decision=f(Knowledge,Values,Policy,Constraints,Objectives,Authority,Time) was ever carried out, and how its inputs were allocated across Epistemic, Governance, and the explicitly proposed third category outside both."
+  - "Whether the provisional, explicitly unfrozen epistemic-mode taxonomy {Formal,Deterministic,Empirical,Statistical,Interpretive,Authoritative} was ever finalized or reconciled with the file's own {Candidate,Supported,Established,Disputed,Superseded,Invalidated} status vocabulary carried over from 0801."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE, explicitly self-named 'one of the most important' experiments in the arc: delivers the full Claim/Evidence/Belief/Knowledge/Determination/Decision distinction promised at 0801's close, the epistemic tuple, and a knowledge taxonomy explicitly including deterministic alongside probabilistic/empirical/interpretive modes. Names AI-hallucination prevention as a first-class, concretely actionable KnowledgeOS architectural responsibility, paired with an explicit and notably even-handed AI/human evidentiary symmetry principle. Substantially upgrades the three-zone architecture into a full eight-stage semantic lifecycle pipeline. Delivers the file's central conclusion rejecting a single undifferentiated Truth(x) predicate in favor of multiple domain-owned predicates, crystallized into the arc's strongest epistemic-preservation principle to date. Opens Step 178 with a second, distinct Gita Chapter 4 invocation (the ought/ought-not theme) to motivate the upcoming Decision formalization, extending the arc's dual Gita/mathematical methodology into governance territory for the first time."

@@ -1,0 +1,41 @@
+sequence: 952
+path: docs/knowledgeos/brainstorming/phase_measure_theory/external_research/20260831-165053_hpa-analysis-gita-chapter-08-philosophical-contributions-duplicate.md
+title: "HPA Analysis: Gita Chapter 8 -- Philosophical Contributions -- CONFIRMED BYTE-IDENTICAL DUPLICATE of file 0946"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "duplicate, minimal record per standing instruction"
+source_role: DUPLICATE
+canonical_source: 946
+importance: minor
+confidence: high
+about: "Confirmed via diff to be byte-for-byte identical to file 0946 (20260831-161028_hpa-analysis-gita-chapter-08-philosophical-contributions-to-knowledgeos.md). Per standing instruction, duplicate files receive minimal records only; full content analysis is recorded under canonical_source 946."
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - "Byte-identical duplicate of file 0946."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "0946"
+  supports_dimension: "duplicate, no independent content"
+  refines_or_contradicts: "none"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "diff against 0946's source file returns zero lines of difference."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Confirmed duplicate; no independent tier2 assessment warranted."

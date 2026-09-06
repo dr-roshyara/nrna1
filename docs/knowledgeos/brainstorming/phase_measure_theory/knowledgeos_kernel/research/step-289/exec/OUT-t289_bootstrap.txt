@@ -1,0 +1,34 @@
+==========================================================================
+STEP 289  DEPENDENCY GRAPH / CYCLES / MINIMAL BOOTSTRAP CUT
+==========================================================================
+nodes 27  edges 43   (every edge definitional or operational, each cited)
+
+elementary cycles found: 5
+   K -> equiv_T -> K
+   approx -> equiv -> approx
+   congruence -> equiv -> congruence
+   approx -> equiv -> bindings -> approx
+   congruence -> equiv -> delta -> congruence
+
+nodes resolvable by a decision : 12
+nodes only derivable            : 15
+
+--- exhaustive search for the minimal cut over RESOLVABLE nodes ---
+  size 1: 0 cut set(s)
+  size 2: 0 cut set(s)
+  size 3: 0 cut set(s)
+  size 4: 0 cut set(s)
+
+
+==========================================================================
+SCOPE: the graph is the AUDITED EDGE LIST above. A different edge list gives a
+different cut. No operation set, transformation semantics or equality is proposed.
+==========================================================================
+
+
+##########################################################################
+# RE-RUN AFTER AUDIT FIX: removed edge K -> equiv_T
+# REASON: 258.12 is a DEFINITION (K = H/equiv_T), not a dependency in both
+# directions. Rendering an equation as a 2-cycle is a modelling artifact, and
+# the mandate forbids calling that a cycle. T -> equiv_T is retained.
+##########################################################################

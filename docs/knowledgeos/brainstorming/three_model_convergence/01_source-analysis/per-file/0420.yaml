@@ -1,0 +1,92 @@
+sequence: 420
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-115757_research-synthesis-24-undefined-questions-path-forward.md
+title: "Formalized Q1-Q24 Catalog of 0419's Undefined Concepts, with Explicit Eight-Phase Research Priority Order and Consolidated 'What We Now Know' Status Ledger (15 Distinctions + 12 Concepts)"
+date: "2026-08-26"
+bytes: 12148
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "carries forward the Vāṇī/Tripuṭī/Nyāya/Lord/Zero lens references from 0419's executive summary"
+source_role: PRIMARY_RESEARCH
+canonical_source: 419
+importance: important
+confidence: high
+about: >
+  A clean, formally-organized restatement and actionable extension of 0419's landmark undefined-concepts
+  retrospective. Reformats 0419's twenty-four narrative questions into an explicit **Q1 through Q24**
+  numbered catalog across the same eight categories (A. Ontology Q1-Q5; B. Epistemology Q6-Q11; C. Logic
+  Q12-Q14; D. Infinite-Space Theory Q15-Q18; E. Zero Q19-Q20; F. Lord Q21; G. Knowledge Evolution Q22-Q23;
+  H. Decision Q24), with each question given an explicit "Current" (working definition), "Open"
+  (sub-questions), and "Status" (Undefined / Partially defined / Conceptualized-not-formalized / Defined-as-
+  lens) field -- a formal cataloging discipline directly consonant with 0392's earlier Q1-Q22 status-tracked
+  register. Restates the file's central "core insight" (the corpus has a powerful knowledge-state theory but
+  has not formally defined the boundary between observed reality R_t, ideal characterization S*_t, and
+  current representation K_t) and the same R_t/S*_t/K_t whiteboard reduction from 0419, without new
+  substantive content in that section.
+
+  Delivers the file's central new contribution: an explicit **eight-phase research priority order** for
+  resolving the twenty-four questions -- Phase 1 Ontology (Q1-Q5), Phase 2 Epistemology (Q6-Q11), Phase 3
+  Logic (Q12-Q14), Phase 4 Infinite Space (Q15-Q18), Phase 5 Zero (Q19-Q20), Phase 6 Lord (Q21), Phase 7
+  Evolution (Q22-Q23), Phase 8 Decision (Q24) -- a genuinely new, concrete research roadmap not explicit in
+  0419's narrative form, structurally parallel to but independent of 0402's earlier six-phase research
+  programme (Ontology->Semantic-Extraction->Epistemology->Dynamics->Mathematics->Kernel). Notably, this
+  eight-phase order places Ontology and Epistemology first (matching 0402's sequencing) but does not mention
+  Mathematics or the Kernel as explicit deferred final phases the way 0402 did, and folds Zero/Lord treatment
+  into dedicated middle phases (5-6) rather than treating them as cross-cutting lenses throughout.
+
+  Produces a consolidated "What We Now Know" status ledger (Section 5): fifteen explicitly enumerated
+  ESTABLISHED DISTINCTIONS (Knowledge!=Probability, Knowledge!=Decision, Knowledge!=Determination,
+  Determination!=Fact, Knowledge!=State, KnowledgeState!=KnowledgeSpace, Unknown!=Absent,
+  Unknown!=Non-existent, NotAssessed!=LowConfidence, NoEvidence!=InvalidEvidence, Superseded!=False,
+  Priority!=Completeness, Coverage!=Confidence, RealityChange!=KnowledgeChange, Representation!=Reality),
+  twelve ESTABLISHED CONCEPTS (Omega, K_t, D_t, V_t, R_t, E_t, Reasoning, C_t, Time, Lenses, Zero Lens, Lord
+  Lens), and the same twenty-four items again as WHAT REMAINS UNDEFINED -- the corpus's most compact,
+  single-glance summary to date of exactly where the theory stands (proven distinctions vs. named-but-
+  undefined concepts vs. open questions), a useful consolidated checkpoint artifact even though it introduces
+  no individually new distinction beyond what 0419 and earlier files already established.
+
+  Closes with a restated final Kernel Question, worded almost identically to 0416's Lord Kernel Question and
+  0417's combined Lord+Zero Kernel Question (minimum substrate to support continuous dimension/value/
+  relationship discovery, recalculation, and the known/possible-to-know distinction) -- a fourth variant in
+  this sub-arc's recurring Kernel Question theme, still not reconciled with the others.
+introduces:
+  - concept: "Explicit eight-phase research priority order for resolving the twenty-four undefined questions (Ontology->Epistemology->Logic->Infinite-Space->Zero->Lord->Evolution->Decision), a concrete, actionable research roadmap distinct from but structurally similar to 0402's earlier six-phase programme"
+  - concept: "Consolidated 'What We Now Know' status ledger: fifteen established distinctions, twelve established concepts, and the twenty-four remaining undefined items, presented as a single compact checkpoint summary"
+defines: []
+refines:
+  - concept: "0419's landmark twenty-four-question undefined-concepts catalog"
+    refinement: "Reformatted into an explicit Q1-Q24 numbered catalog with Current/Open/Status fields per question, directly consonant with 0392's earlier Q1-Q22 status-tracked register discipline, and given an explicit eight-phase execution order"
+  - concept: "0402's six-phase research programme (Ontology->Semantic-Extraction->Epistemology->Dynamics->Mathematics->Kernel)"
+    refinement: "A parallel but independently-derived eight-phase order is proposed here, agreeing on Ontology/Epistemology-first sequencing but not explicitly deferring Mathematics/Kernel to the end the way 0402 did -- flagged as an unreconciled duplicate research-sequencing artifact"
+contradicts: []
+repeats:
+  - concept: "0419's full twenty-four-question content, R_t/S*_t/K_t whiteboard reduction, and Lord/Zero role division"
+    canonical_source: 419
+    novelty: "reformatted into a formal Q1-Q24 catalog with per-question status fields; no new substantive claim in the restated sections"
+bridge_candidates:
+  - concept: "This file's eight-phase research priority order converging with (and potentially competing against) 0402's six-phase research programme as two independently-produced execution plans for the same underlying research gap"
+    candidates: ["This file's eight-phase order (Q1-Q24 based)", "0402's six-phase programme (Ontology->Semantic-Extraction->Epistemology->Dynamics->Mathematics->Kernel)"]
+    status: candidate
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the eight-phase research priority order and flag it as a bridge_candidate against 0402's earlier six-phase programme -- two independently-produced sequencing plans for the corpus's remaining research, not yet reconciled."
+  - "dimension-registry.md: record the consolidated 'What We Now Know' status ledger (15 distinctions, 12 concepts, 24 open questions) as the corpus's most compact single-glance checkpoint summary to date."
+anchor_test:
+  anchor: "0419's landmark undefined-concepts catalog; 0392's Q1-Q22 status-tracked register; 0402's six-phase research programme"
+  supports_dimension: "Formalizes 0419's narrative catalog into an explicit Q1-Q24 status-tracked register (consonant with 0392's discipline) and proposes a new eight-phase research priority order, plus a consolidated 'What We Now Know' checkpoint ledger. The eight-phase order is flagged as a bridge_candidate against 0402's independently-produced six-phase programme, since the two plans are not obviously identical and have not been reconciled"
+  refines_or_contradicts: "refines/reformats 0419 (Q1-Q24 numbering, status fields, consolidated ledger); potentially duplicates or competes with 0402's six-phase programme (flagged bridge_candidate, not adjudicated)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether the corpus follows this file's eight-phase priority order (Ontology first) in its subsequent sequential research, or instead follows 0402's six-phase programme, or neither"
+  - "Whether the two competing research-sequencing plans (this file's eight phases vs. 0402's six phases) are ever explicitly reconciled or one is retired in favor of the other"
+tier2_triggered: true
+tier2_reason: "Introduces a genuinely new, concrete eight-phase research execution order for resolving the corpus's largest outstanding open-questions catalog, and produces a valuable consolidated 'What We Now Know' checkpoint ledger -- worth tracking against 0402's independently-produced six-phase programme as a potential unreconciled duplicate. Recorded with a full write-up given its role as an actionable research-management artifact, even though its underlying substantive content is a reformatting of 0419."

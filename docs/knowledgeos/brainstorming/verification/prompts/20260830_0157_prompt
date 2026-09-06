@@ -1,0 +1,1167 @@
+# KNOWLEDGEOS — 216-STEP END-TO-END THEORY VERIFICATION
+
+## NEXT-PHASE MASTER INSTRUCTION
+
+You are continuing the **KnowledgeOS Independent Theory Verification Programme**.
+
+You are NOT being asked merely to check whether the final documents mention the ideas in the source corpus.
+
+Your task is to determine whether the **entire KnowledgeOS theory, as it evolved through the 216 research steps, is actually mathematically, statistically, computationally, semantically, and architecturally defensible**.
+
+The source corpus is evolutionary:
+
+> older documents raise questions, objections, hypotheses, modelling ideas, or unresolved problems; later documents attempt to answer, refine, replace, reject, or formalize them.
+
+Therefore, verification must reconstruct the **evolution of reasoning**, not simply compare the latest document with the earliest document.
+
+---
+
+# 1. AUTHORITATIVE SOURCE CORPUS
+
+Primary research corpus:
+
+`/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/brainstorming/phase_measure_theory/`
+
+This directory is the primary historical source for the theory.
+
+Treat its documents as the research record.
+
+Do NOT assume that the latest document is correct.
+
+Do NOT assume that a document marked "final", "complete", "frozen", "ratified", "PASS", "verified", or similar is mathematically correct.
+
+Those labels are evidence of the research process only.
+
+The theory must be reconstructed independently from the source material.
+
+---
+
+# 2. FIRST TASK — ESTABLISH THE COMPLETE 216-STEP CORPUS
+
+Before proceeding with verification:
+
+1. Enumerate every Step document.
+2. Establish the authoritative step numbering.
+3. Confirm that Steps 001–216 exist.
+4. Identify:
+
+   * missing steps,
+   * duplicate steps,
+   * multiple files for one step,
+   * renamed steps,
+   * superseded steps,
+   * contradictory versions,
+   * prompt-only artifacts,
+   * synthesis documents,
+   * review documents,
+   * actual theory documents.
+5. Produce a canonical chronology.
+
+IMPORTANT:
+
+The previous verification reported that Steps 001–205 were present with no numerical gaps, but with 21 steps having multiple associated files.
+
+Do NOT assume that this remains the complete inventory.
+
+Explicitly determine what Steps 206–216 are and how they relate to the previous corpus.
+
+If 216 is not actually the correct final step count, document the discrepancy rather than silently changing the number.
+
+---
+
+# 3. THE CENTRAL VERIFICATION QUESTION
+
+For every step ask:
+
+> What problem existed before this step, what was proposed here, what evidence or reasoning justified the proposal, what happened to it later, and does the final KnowledgeOS theory actually resolve the original problem?
+
+The verification chain is:
+
+```text
+Earlier Problem
+      ↓
+Question / Observation
+      ↓
+Hypothesis / Proposed Idea
+      ↓
+Definition / Formalization
+      ↓
+Derivation
+      ↓
+Example / Calculation
+      ↓
+Experiment / Test
+      ↓
+Critique / Counterexample
+      ↓
+Revision / Replacement
+      ↓
+Later Step
+      ↓
+Current Theory
+      ↓
+Independent Verification
+      ↓
+Final Status
+```
+
+Do not skip intermediate stages.
+
+---
+
+# 4. BUILD THE 216-STEP THEORY EVOLUTION MATRIX
+
+Create or update:
+
+`verification/216-step-theory-evolution-matrix.md`
+
+One row per step.
+
+Minimum columns:
+
+| Field                     | Required content                        |
+| ------------------------- | --------------------------------------- |
+| Step                      | 001–216                                 |
+| Source document(s)        | exact files                             |
+| Date/chronology           | source chronology                       |
+| Original question/problem | what motivated the step                 |
+| Previous dependency       | which earlier step/problem it addresses |
+| Proposed idea             | what the step introduced                |
+| Mathematical content      | definitions/equations/theorems          |
+| DDD content               | concepts/language/boundaries            |
+| Evidence                  | examples/tests/observations             |
+| Assumptions               | explicit assumptions                    |
+| Hidden assumptions        | verifier-discovered assumptions         |
+| Later response            | where subsequent steps address it       |
+| Superseded?               | yes/no + replacement                    |
+| Current formulation       | where it ended up                       |
+| Final theory location     | exact final artifact/section            |
+| Independent verification  | result                                  |
+| Gap                       | unresolved issue                        |
+| Verdict                   | final status                            |
+| Confidence                | confidence in the verdict               |
+
+Do not allow a step to have only "covered/not covered".
+
+The matrix must establish **semantic and logical traceability**.
+
+---
+
+# 5. FOR EVERY STEP, ANSWER THE FOLLOWING 12 QUESTIONS
+
+For Steps 001–216, determine:
+
+### Q1 — What was the original problem?
+
+State the problem in precise terms.
+
+### Q2 — What was actually proposed?
+
+Separate:
+
+* observation,
+* intuition,
+* hypothesis,
+* definition,
+* mathematical claim,
+* architectural claim,
+* empirical claim.
+
+Do not conflate them.
+
+### Q3 — Was the proposal formally defined?
+
+If mathematics is involved, identify:
+
+* domain,
+* codomain,
+* objects,
+* types,
+* parameters,
+* assumptions,
+* operators,
+* relations.
+
+If any are missing, record them.
+
+### Q4 — Is the definition well-formed?
+
+Ask:
+
+* Are all symbols defined?
+* Are types compatible?
+* Are domains non-empty where required?
+* Are quantities measurable?
+* Are relations oriented?
+* Are functions total or partial?
+* Are edge cases specified?
+* Are units/scales meaningful?
+* Are state spaces defined?
+
+### Q5 — Can the definition actually be computed?
+
+This is mandatory.
+
+For every computational definition ask:
+
+> Given concrete valid input, can KnowledgeOS actually calculate the defined output?
+
+If not, identify exactly why.
+
+Distinguish:
+
+* mathematically defined but computationally expensive,
+* mathematically defined but missing input,
+* mathematically underspecified,
+* algorithmically undefined,
+* computationally infeasible,
+* computable only under additional assumptions.
+
+### Q6 — Does the derivation actually follow?
+
+Re-derive important equations independently.
+
+Do NOT accept:
+
+"Step X derives Y"
+
+as proof that Y follows.
+
+Instead ask:
+
+```text
+Premises
+   ↓
+Definitions
+   ↓
+Assumptions
+   ↓
+Logical / mathematical transformation
+   ↓
+Conclusion
+```
+
+Mark every unsupported inference.
+
+### Q7 — Is the result testable?
+
+For every claimed property determine whether there is an executable or otherwise valid test.
+
+Distinguish:
+
+* conceptual test,
+* mathematical proof,
+* simulation,
+* synthetic experiment,
+* real experiment,
+* executed software test,
+* expected PASS,
+* observed PASS.
+
+Never treat "PASS" in prose as evidence of execution.
+
+The previous corpus already contains a serious example: many PASS verdicts were conceptual rather than executed. Preserve that distinction.
+
+### Q8 — Does later work actually resolve it?
+
+Find the later document that supposedly addresses the original problem.
+
+Then compare:
+
+```text
+Original problem
+       vs.
+Later solution
+```
+
+Determine whether it:
+
+* genuinely resolves it,
+* partially resolves it,
+* changes the question,
+* moves the problem elsewhere,
+* introduces a new assumption,
+* contradicts the earlier formulation,
+* merely renames the problem,
+* leaves it unresolved.
+
+### Q9 — Did the concept survive?
+
+Classify every major concept:
+
+* retained unchanged,
+* refined,
+* generalized,
+* restricted,
+* replaced,
+* rejected,
+* split into multiple concepts,
+* merged with another concept,
+* abandoned,
+* unresolved.
+
+### Q10 — Is the current theory faithful to the evolution?
+
+The final theory must not silently erase historically important uncertainty.
+
+If an early document identified a fundamental problem and later documents simply stop mentioning it, record:
+
+> **UNRESOLVED BY SILENCE**
+
+### Q11 — Is the language consistent?
+
+Verify the Ubiquitous Language.
+
+Check whether the same word means different things in different steps.
+
+Examples already found include conflicts around:
+
+* Knowledge
+* Evidence
+* Assertion
+* Assessment
+* State
+* Event
+* Authority
+* Governance
+* Verification
+* Confidence
+* Uncertainty
+* Belief
+* Conflict
+* Policy
+* Provenance
+* Lineage
+* Determination
+
+Also check symbol reuse.
+
+A notation collision is not merely cosmetic if it changes mathematical meaning.
+
+### Q12 — What is the final epistemic status?
+
+Assign a disciplined verdict.
+
+Use:
+
+* **PROVEN**
+* **DERIVED**
+* **SUPPORTED**
+* **EMPIRICALLY SUPPORTED**
+* **PARTIALLY VERIFIED**
+* **CONDITIONAL**
+* **PLAUSIBLE**
+* **UNDER-SPECIFIED**
+* **UNVERIFIED**
+* **CONTRADICTED**
+* **REFUTED**
+* **OPEN**
+* **NOT IDENTIFIABLE**
+* **NOT COMPUTABLE AS SPECIFIED**
+
+Do not upgrade a claim merely because it appears in a later "final" document.
+
+---
+
+# 6. MATHEMATICAL VERIFICATION MUST BE INDEPENDENT
+
+You are simultaneously acting as:
+
+1. **Senior Mathematician**
+2. **Senior Statistician**
+3. **Senior Knowledge Engineer**
+4. **DDD Architect**
+5. **Principal Software Architect**
+
+Your mathematical role is especially important.
+
+For every load-bearing mathematical construction verify:
+
+### Definitions
+
+Can every mathematical object be instantiated?
+
+### Types
+
+Are expressions type-correct?
+
+### Existence
+
+Does the claimed object necessarily exist?
+
+### Uniqueness
+
+If uniqueness is required, is it proven?
+
+### Closure
+
+Does an operation map valid objects back into the required space?
+
+### Consistency
+
+Can all stated invariants hold simultaneously?
+
+### Derivation
+
+Does the conclusion follow from the premises?
+
+### Counterexamples
+
+Can a concrete counterexample invalidate it?
+
+### Computability
+
+Can the result be calculated?
+
+### Complexity
+
+If computable, what is the complexity?
+
+### Identifiability
+
+Can the desired quantity actually be inferred from the available observations?
+
+### Statistical validity
+
+Are probability distributions, independence assumptions, estimands, estimators, uncertainty measures, and confidence/credible intervals properly defined?
+
+---
+
+# 7. DEFINITION → DERIVATION → COMPUTATION → TEST CHAIN
+
+Create a dedicated verification chain for every central concept:
+
+```text
+Definition
+   ↓
+Well-typed?
+   ↓
+Existence?
+   ↓
+Uniqueness?
+   ↓
+Derivable consequences?
+   ↓
+Computable?
+   ↓
+Implementable?
+   ↓
+Testable?
+   ↓
+Actually tested?
+   ↓
+Empirically supported?
+```
+
+A concept that fails at one stage must not automatically pass the later stages.
+
+For example:
+
+> "defined" ≠ "derived"
+
+> "derived" ≠ "computable"
+
+> "computable" ≠ "implemented"
+
+> "implemented" ≠ "validated"
+
+> "validated" ≠ "proven"
+
+> "PASS" ≠ "proof"
+
+---
+
+# 8. VERIFY THE THEORY AS A DEPENDENCY GRAPH
+
+Construct:
+
+`verification/216-step-dependency-graph.md`
+
+Represent dependencies such as:
+
+```text
+Definition A
+   ↓
+Definition B
+   ↓
+Proposition C
+   ↓
+Theorem D
+   ↓
+Algorithm E
+   ↓
+Experiment F
+```
+
+Then identify:
+
+* circular dependencies,
+* definitions depending on their own consequences,
+* propositions used before being established,
+* assumptions hidden beneath multiple layers,
+* results whose premises were later rejected,
+* conclusions depending on superseded definitions.
+
+A particularly important question:
+
+> Does the final theory have a genuine mathematical foundation, or is it a collection of individually plausible constructions that were never integrated into one logically coherent system?
+
+---
+
+# 9. RECONSTRUCT THE MATHEMATICAL KERNEL
+
+Do NOT choose the kernel merely by counting frequently used concepts.
+
+Determine the smallest set of definitions from which the surviving theory can actually be reconstructed.
+
+For every proposed primitive ask:
+
+> If this primitive is removed, which valid theory statements become impossible to formulate or derive?
+
+For every supposedly derived concept ask:
+
+> Can it actually be constructed from the proposed primitives?
+
+This must resolve the previously observed competing kernel candidates.
+
+Do not merge incompatible kernels merely for convenience.
+
+---
+
+# 10. VERIFY THE UBIQUITOUS LANGUAGE AS A FIRST-CLASS WORKSTREAM
+
+Create:
+
+`verification/216-ubiquitous-language-verification.md`
+
+For every important domain term record:
+
+| Term | Definition | First appearance | Later definitions | Current meaning | Conflicts | Verdict |
+| ---- | ---------- | ---------------- | ----------------- | --------------- | --------- | ------- |
+
+Check:
+
+### One word → one concept
+
+Where possible.
+
+### One concept → one word
+
+Where possible.
+
+Identify deliberate exceptions.
+
+Explicitly distinguish:
+
+* domain language,
+* mathematical notation,
+* implementation terminology,
+* architectural terminology,
+* metaphor,
+* philosophical terminology.
+
+Do not allow metaphors to silently become mathematical entities.
+
+---
+
+# 11. VERIFY DDD INDEPENDENTLY
+
+Do not infer DDD correctness from mathematical correctness.
+
+For each major concept determine:
+
+* Entity?
+* Value Object?
+* Aggregate?
+* Domain Service?
+* Domain Event?
+* Policy?
+* Specification?
+* Bounded Context?
+* Capability?
+* Process?
+* External concept?
+* Architectural concern?
+
+Then verify:
+
+* identity,
+* lifecycle,
+* invariants,
+* ownership,
+* transaction boundaries,
+* consistency boundaries,
+* domain events,
+* relationships,
+* ubiquitous language.
+
+Most importantly:
+
+> Does the mathematical model support the DDD model, or are DDD structures being imposed on mathematical concepts without semantic justification?
+
+And conversely:
+
+> Does the DDD model reveal missing mathematical concepts?
+
+---
+
+# 12. TRACK EVERY QUESTION TO ITS ANSWER
+
+Build:
+
+`verification/question-resolution-matrix.md`
+
+For every important question raised in an older step:
+
+```text
+Question
+→ first occurrence
+→ subsequent discussion
+→ proposed answer
+→ later criticism
+→ revised answer
+→ current status
+```
+
+Use these statuses:
+
+* ANSWERED
+* PARTIALLY ANSWERED
+* ANSWERED UNDER ASSUMPTION
+* ANSWERED BUT LATER INVALIDATED
+* ANSWERED DIFFERENTLY
+* REFRAMED
+* REJECTED
+* STILL OPEN
+* LOST / NOT FOLLOWED UP
+
+This is crucial because the theory evolved through discussion.
+
+A later document that ignores an earlier question is NOT automatically an answer.
+
+---
+
+# 13. DISTINGUISH EVOLUTION FROM CONTRADICTION
+
+Not every difference between two steps is a contradiction.
+
+Classify differences as:
+
+1. refinement,
+2. specialization,
+3. generalization,
+4. notation change,
+5. genuine replacement,
+6. supersession,
+7. unresolved fork,
+8. contradiction.
+
+Require evidence before declaring supersession.
+
+If two models coexist without a supersession statement, preserve both and mark:
+
+> **UNRECONCILED ALTERNATIVES**
+
+---
+
+# 14. RECHECK ALL EXISTING "PROVEN", "PASS", "RATIFIED", AND "FROZEN" CLAIMS
+
+Existing verification registers are useful evidence, but they are NOT authoritative truth.
+
+For every existing verdict:
+
+1. locate original source,
+2. inspect actual definition,
+3. independently reconstruct reasoning,
+4. check assumptions,
+5. check whether the test was actually executed,
+6. check whether later documents invalidate it.
+
+Do not simply inherit earlier verifier conclusions.
+
+This is especially important because the current registers already show substantial unresolved conflicts:
+
+* multiple incompatible `K_t` definitions,
+* multiple incompatible `S_t` definitions,
+* incompatible transition signatures,
+* multiple uncertainty taxonomies,
+* competing invariant registries,
+* competing kernel definitions,
+* unresolved evidence placement,
+* undefined symbols,
+* conceptual PASS results without execution,
+* and possible invariant-system vacuity.
+
+These are starting points for verification, not final conclusions.
+
+---
+
+# 15. HIGH-RISK AREAS THAT MUST RECEIVE SPECIAL ATTENTION
+
+At minimum independently attack:
+
+### A. Core definitions
+
+Can the theory's fundamental objects actually be defined?
+
+### B. Knowledge state
+
+What exactly is `K_t`?
+
+### C. System state
+
+What exactly is `S_t`?
+
+### D. Evidence
+
+What exactly is evidence and where does it live?
+
+### E. Provenance / Lineage
+
+What are their precise mathematical meanings?
+
+### F. State transitions
+
+What is the canonical transition function?
+
+### G. Invariants
+
+Can all invariants hold simultaneously?
+
+### H. Uncertainty
+
+What exactly is uncertainty?
+
+### I. Probability
+
+What is the probability space?
+
+### J. Evidence aggregation
+
+What combination rule is actually justified?
+
+### K. Identifiability
+
+What can and cannot be inferred?
+
+### L. Missingness
+
+How is absence represented?
+
+### M. Computability
+
+Can the theory actually be executed?
+
+### N. Measurement
+
+Are the proposed measures mathematically meaningful?
+
+### O. Statistical inference
+
+Are estimands and assumptions explicit?
+
+### P. DDD semantics
+
+Are bounded contexts and aggregates justified?
+
+### Q. Architecture
+
+Does the architecture genuinely follow from the theory?
+
+---
+
+# 16. DO NOT REPAIR TOO EARLY
+
+This is critical.
+
+During verification:
+
+> **VERIFY FIRST. REPAIR SECOND.**
+
+If you discover a broken definition:
+
+1. record the original definition,
+2. explain precisely why it fails,
+3. determine consequences,
+4. determine whether later work repairs it,
+5. only then propose a possible repair.
+
+Never silently repair the historical theory and then mark it correct.
+
+The final documentation must distinguish:
+
+```text
+Historical theory
+      ↓
+Verified surviving theory
+      ↓
+Proposed refinement
+```
+
+---
+
+# 17. BUILD THE FINAL THEORY IN PARALLEL — BUT ONLY FROM VERIFIED MATERIAL
+
+The ultimate deliverable is not merely a verification report.
+
+It is:
+
+# KNOWLEDGEOS — VERIFIED THEORY AND MATHEMATICAL FOUNDATION
+
+The final document should systematically reconstruct:
+
+1. Executive Statement
+2. Ontology / primitives
+3. Formal universe
+4. Definitions
+5. Evidence model
+6. Knowledge model
+7. Identity model
+8. State model
+9. Time model
+10. Transition model
+11. Policy model
+12. Governance model
+13. Measurement model
+14. Uncertainty model
+15. Statistical foundation
+16. Computational foundation
+17. Derivations
+18. Theorems and propositions
+19. Invariants
+20. Counterexamples
+21. Falsification results
+22. DDD model
+23. Architecture derivation
+24. Theory ↔ Architecture consistency
+25. Gap Register
+26. Open Questions
+27. Proposed refinements
+28. Final epistemic status
+
+But do not write a polished final theory by filling gaps with assumptions.
+
+Every proposition must have provenance and epistemic status.
+
+---
+
+# 18. THE FINAL THEORY MUST SHOW ITS DERIVATION
+
+For every major result use:
+
+```text
+DEFINITION
+↓
+ASSUMPTIONS
+↓
+LEMMA / INTERMEDIATE RESULT
+↓
+DERIVATION
+↓
+PROPOSITION / THEOREM
+↓
+COMPUTATIONAL CONSEQUENCE
+↓
+TEST / FALSIFICATION
+↓
+CURRENT STATUS
+```
+
+If the derivation cannot be supplied:
+
+> say so explicitly.
+
+Do not replace a missing derivation with prose.
+
+---
+
+# 19. 216-STEP COVERAGE MUST BE MEASURABLE
+
+At the end calculate:
+
+* number of steps inventoried,
+* number independently reconstructed,
+* number mathematically verified,
+* number partially verified,
+* number unresolved,
+* number contradicted,
+* number superseded,
+* number with executable tests,
+* number actually tested,
+* number whose conclusions survive into the final theory,
+* number whose ideas are rejected,
+* number whose questions remain open.
+
+Report progress as **research coverage**, not document length.
+
+Do not claim completion because a large document has been produced.
+
+---
+
+# 20. MANDATORY STOP CONDITIONS
+
+Do NOT declare the KnowledgeOS theory "verified" merely because:
+
+* the documents are internally organized,
+* all steps have been read,
+* the final model looks coherent,
+* terminology has been standardized,
+* examples work,
+* code executes,
+* tests pass,
+* a previous document says "ratified".
+
+A final "VERIFIED" verdict requires the corresponding mathematical/statistical/semantic evidence.
+
+---
+
+# 21. REQUIRED OUTPUTS FOR THIS PHASE
+
+Produce/update:
+
+1. `216-step-theory-evolution-matrix.md`
+2. `216-step-dependency-graph.md`
+3. `question-resolution-matrix.md`
+4. `216-ubiquitous-language-verification.md`
+5. `definition-verification-register.md`
+6. `derivation-verification-register.md`
+7. `computability-verification-register.md`
+8. `ddd-verification-register.md`
+9. `theorem-proposition-verification-register.md`
+10. `counterexample-register.md`
+11. `theory-gap-register.md`
+12. `216-step-verification-report.md`
+13. `FINAL-verified-theory.md` — only after the underlying evidence is sufficiently mature.
+
+Do not create a polished final document merely to give the appearance of completion.
+
+---
+
+# 22. EXECUTION ORDER
+
+Execute in this order:
+
+### Phase A — Corpus
+
+Establish authoritative 001–216 inventory.
+
+### Phase B — Chronology
+
+Reconstruct historical evolution.
+
+### Phase C — Traceability
+
+Map every step to preceding questions and later responses.
+
+### Phase D — Definitions
+
+Verify all fundamental definitions.
+
+### Phase E — Mathematical derivations
+
+Independently reconstruct load-bearing mathematics.
+
+### Phase F — Computability
+
+Determine whether definitions can actually be computed.
+
+### Phase G — Statistics
+
+Verify probability, uncertainty, estimation, inference and measurement.
+
+### Phase H — Counterexamples
+
+Actively attempt to break the theory.
+
+### Phase I — Ubiquitous Language
+
+Verify terminology independently.
+
+### Phase J — DDD
+
+Verify domain model and boundaries.
+
+### Phase K — Architecture
+
+Determine what genuinely follows from the theory.
+
+### Phase L — Final reconstruction
+
+Construct the surviving theory.
+
+### Phase M — Gap analysis
+
+Document everything that still does not follow.
+
+### Phase N — Final epistemic status
+
+Only now assign the maturity level of the complete theory.
+
+---
+
+# 23. BATCHING THE 216 STEPS
+
+Do NOT attempt to superficially summarize all 216 steps in one pass.
+
+Work in controlled batches, for example:
+
+```text
+001–010
+011–020
+021–030
+...
+201–210
+211–216
+```
+
+After each batch:
+
+1. read the actual source documents,
+2. reconstruct the reasoning,
+3. update the traceability matrix,
+4. update the definition/derivation registers,
+5. update contradictions,
+6. update the question-resolution matrix,
+7. update the dependency graph,
+8. identify newly discovered downstream consequences.
+
+Then continue.
+
+Do not lose findings between batches.
+
+---
+
+# 24. SPECIAL RULE FOR LATER DOCUMENTS
+
+A later document can only count as an answer to an earlier problem if you can demonstrate:
+
+```text
+Earlier problem
+       ↓
+Later document explicitly addresses it
+       ↓
+Same semantic problem
+       ↓
+Proposed resolution
+       ↓
+Resolution is mathematically/semantically adequate
+```
+
+If the later document merely introduces a different concept, say:
+
+> **NOT A RESOLUTION — CONCEPTUAL REDIRECTION**
+
+If it silently changes the definition:
+
+> **DEFINITION SHIFT**
+
+If it contradicts the earlier formulation:
+
+> **REPLACEMENT / CONTRADICTION**
+
+---
+
+# 25. IMPORTANT DISTINCTION: HISTORICAL TRUTH VS CURRENT THEORY
+
+Maintain two separate perspectives.
+
+### Historical reconstruction
+
+What the researchers actually proposed at each stage.
+
+### Current verified theory
+
+What survives independent verification.
+
+Never rewrite history to make the evolution look cleaner.
+
+The final theory may legitimately conclude:
+
+> "The original research proposed X, but independent verification shows X is not established; the surviving theory therefore uses Y."
+
+That is a successful verification outcome.
+
+---
+
+# 26. FINAL QUESTION YOU MUST BE ABLE TO ANSWER
+
+At the end of the entire programme, the reader must be able to ask:
+
+> "Give me a concrete valid KnowledgeOS input."
+
+And the theory must be able to answer:
+
+1. What objects exist?
+2. What are their types?
+3. What values can they contain?
+4. What relations can exist?
+5. What state does the system begin in?
+6. What event/action occurs?
+7. What function processes it?
+8. What assumptions are required?
+9. What state results?
+10. How is that state represented?
+11. What evidence supports it?
+12. How is uncertainty represented?
+13. What can be computed?
+14. What can be inferred?
+15. What cannot be inferred?
+16. Which invariants hold?
+17. Which theorem guarantees the relevant property?
+18. How can the result be tested?
+19. What happens if assumptions fail?
+20. How does this map into DDD?
+21. How does it map into architecture?
+
+If the theory cannot answer these questions, identify the exact missing formalism.
+
+---
+
+# 27. ROLE
+
+Throughout this work, maintain the combined perspective of:
+
+**Senior Mathematician + Senior Statistician + Senior Knowledge Engineer + DDD Architect + Principal Software Architect.**
+
+Be adversarial but constructive.
+
+Your responsibility is not to defend KnowledgeOS.
+
+Your responsibility is to determine:
+
+> **What is actually true, what follows mathematically, what can be computed, what has been empirically tested, what is only plausible, and what remains unknown?**
+
+The desired outcome is not a positive verdict.
+
+The desired outcome is a **truthful, independently reconstructed, mathematically explicit KnowledgeOS theory**.
+
+---
+
+# 28. IMMEDIATE NEXT ACTION
+
+Do not jump directly to Steps 011–216.
+
+First:
+
+1. establish the authoritative 001–216 inventory;
+2. reconcile the previous 001–205 inventory;
+3. account explicitly for Steps 206–216;
+4. inspect the existing traceability matrix;
+5. inspect the existing verification registers;
+6. inspect the current final-theory drafts;
+7. identify exactly which steps have already received genuine deep verification;
+8. identify which steps have only been inventoried;
+9. identify which steps have only been summarized by another agent;
+10. create a remaining-work plan.
+
+Then begin the next verification batch.
+
+The previous deep verification of Steps 001–010 must be treated as the **quality standard** for the remaining work: source documents must be read directly, claims must be reconstructed independently, and findings must be recorded rather than inferred from summaries.
+
+Do not stop at "covered".
+
+Do not stop at "documented".
+
+Do not stop at "consistent with final theory".
+
+Verify whether the theory **actually follows**.

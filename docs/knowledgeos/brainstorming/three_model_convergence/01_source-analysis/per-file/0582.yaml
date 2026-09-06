@@ -1,0 +1,258 @@
+sequence: 582
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-183142_step-025d-formal-zero-algebra.md
+title: "LANDMARK: Zero Finally Given Its Rigorous Mathematical Definition After 40+ Files of Informal Use — A Nine-Value Requirement-Status Set Replacing Boolean Logic; Zero Formally Proven NOT to Satisfy the Metric Axioms and Explicitly Renamed a 'Directed Epistemic Discrepancy Operator'; Zero Refined to Four Components (Z_world/Z_knowledge/Z_governance/Z_decision), Explicitly Rejecting Scalar Collapse ('Zero Is Primarily a Structured Object, Not a Scalar'); 'Zero Must Not Invent Gaps' Named 'One of the Strongest Governance Properties We Have Discovered'; a Complete Six-Step Zero Algorithm Requiring No LLM for Core Computation; Nine-Test Falsification Suite, All PASS; a Rare Callback to the Corpus's Atman/Ideal-State Philosophical Thread; Verdict '25D — PASS'; Opens Step 25E (Formal Epistemic Contract Algebra) as 'the Next Unavoidable' Step"
+date: "2026-08-27"
+bytes: 20053
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 25D -- Formal Zero Algebra', the sub-step committed at 0581, finally giving Zero the rigorous mathematical definition the entire prior 40+-file arc had used only informally"
+source_role: PRIMARY_RESEARCH
+canonical_source: 582
+importance: critical
+confidence: high
+about: >
+  Opens "Step 25D — Formal Zero Algebra," announcing this as "the right next barrier": Zero has been used
+  intuitively as "the gap between where we are and where we need to be" throughout the entire prior
+  research arc, and must now be made mathematically precise. Delivers the file's decisive governing test,
+  directly carried over from 0581's closing question: **"can `Zero(K,G,EC)` be computed from the
+  KnowledgeState? If yes, Zero becomes a genuine computational primitive of KnowledgeOS rather than an AI
+  metaphor."**
+
+  **Delivers the file's first foundational correction -- `Zero≠simple subtraction`**: worked through a
+  concrete four-row requirement/current-knowledge contrast table demonstrating four fundamentally
+  different situations that a bare `Target-Current` difference cannot capture. **Formalizes the Knowledge
+  Requirement set** `R_G={r_1,...,r_n}` induced by a goal, worked through a concrete seven-item Nexus-
+  migration requirement list, with the crucial finding **"Zero cannot be computed from the goal alone"** --
+  it additionally requires the **Epistemic Contract** `EC_G=(R_G,Γ_G)` (required conditions plus
+  sufficiency-determination rules), directly formalizing the `EC` object first introduced qualitatively at
+  0567/0577.
+
+  **Delivers the file's central formal deliverable -- a nine-value requirement-status set replacing binary
+  logic**: `𝒮={Satisfied,PartiallySatisfied,Unknown,Insufficient,Conflicted,Stale,Invalid,Prohibited,
+  NotApplicable}`, motivated by an explicit demonstration that `Sat(K,r)=False` could operationally mean
+  at least six genuinely distinct things (known false, unknown, conflicting evidence, stale evidence,
+  invalidated evidence, or governance prohibition) -- **`Sat≠Boolean`**. Delivers a first Zero status
+  function `Z_i=Status(K_t,r_i,EC_G)` producing a "Zero vector" `Zero(K_t,G,EC_G)={(r_i,Z_i)|r_i∈R_G}`,
+  worked through a concrete seven-element example vector.
+
+  **Delivers a further named status refinement -- `Missing≠Unknown`**: a requirement with genuinely no
+  supporting evidence (`Unknown`) is distinguished from a requirement expecting a governed artifact/action
+  (e.g. formal approval) that has simply never been issued (`Missing`), worked through a concrete Nexus
+  example. **Delivers the file's first structured Zero definition**: `Zero(K,G,EC)=R_G\Satisfied(K,R_G)`
+  explicitly flagged as "only a shorthand," refined into the actual required structure
+  `Zero={Requirement,Status,Evidence,Reason,Dependencies}`, worked through a concrete implementable Zero
+  item record (Requirement, Status, SupportingEvidence, BlockingReason, RequiredAction,
+  DecisionCriticality).
+
+  **Delivers `Satisfied=ContractSpecific`**: whether one piece of supporting evidence suffices depends
+  entirely on the contract (two independent tests? one witnessed test? a probability threshold?), yielding
+  a formal satisfaction predicate `Satisfied(K,r,EC)` that may itself invoke different reasoning
+  mechanisms (`RuleEngine`, `StatisticalCriterion`, or `HumanAuthorization`) -- "another reason Zero must
+  not contain one universal inference mechanism." **Delivers the file's key architectural refinement --
+  Zero is an orchestrator, not an inference engine**: `Zero→RequirementEvaluation→AppropriateReasoningModel`,
+  worked through a three-branch dispatch diagram (Rules/Statistics/Authority) with Zero aggregating
+  results -- directly reusing and applying 0579's/0580's inference-engine-plurality architecture to Zero
+  specifically.
+
+  **Delivers a formal reconfirmation and refinement of the OperationalZero/EpistemicZero split first
+  introduced at 0581**: `Z_W=Distance(W_t,W*)` versus `Z_K=Distance(K_t,K*_EC)`, worked through a fresh
+  Nexus example demonstrating that `Z_K` can persist and block execution even when an engineer knows
+  exactly how to perform a migration operationally. **Delivers the file's central formal deliverable --
+  Zero refined into FOUR distinct components**, going beyond 0581's two-way split:
+  **`Zero=(Z_world,Z_knowledge,Z_governance,Z_decision)`** (what differs in reality; what required facts
+  are unknown/uncertain; what required approvals/rules are missing; what prevents a defensible decision) --
+  "much stronger than one scalar distance."
+
+  **Delivers the file's second major mathematical correction, explicitly argued**: KnowledgeOS must NOT
+  collapse Zero's components into one scalar number -- worked through a concrete counterexample
+  (`Z_knowledge=5`, `Z_governance=1`, explicitly rejecting the naive sum `Zero=6`, since "one missing
+  governance approval could be more blocking than five low-priority informational gaps") -- yielding
+  **`Zero is primarily a structured object, not a scalar`**, a direct extension of the corpus's recurring
+  anti-collapse discipline applied specifically to Zero. Delivers explicit permission for DERIVED metrics
+  (GapCount, CriticalGapCount, WeightedGapScore, ContractCoverage) but with the crucial qualification that
+  these are "projections of Zero, not Zero itself."
+
+  **Delivers a formal treatment of requirement Criticality** (`{Critical,High,Medium,Low}`, with an
+  explicit caution against arbitrary scoring) and the resulting **`BlockingCondition`** concept, formalized
+  into a computable, deterministic execution-eligibility rule:
+  `∀r_i∈R_blocking: Satisfied(K,r_i)=True` required for `ExecutionEligible=True`.
+
+  **Delivers six labeled falsification experiments (A-F), each demonstrating a distinct required Zero
+  behavior**: (A) complete satisfaction of all blocking requirements correctly yields
+  `Zero_blocking=∅`, `ExecutionEligible=True` (subject to authorization) -- "our first formal Zero
+  condition"; (B) an unknown critical requirement correctly yields `ExecutionEligible=False`,
+  deterministically; (C) `Known negative (Failed) ≠ Unknown`, demonstrated through the DIFFERENT downstream
+  Lord actions each status implies (`Investigate` for Unknown vs. `Repair/ChangePlan/Reject` for Failed) --
+  "this demonstrates why Zero must preserve state semantics"; (D) conflict yields `Status=Conflicted`
+  requiring `ResolveConflict` as a distinct action class, "Zero can produce different action classes"; (E)
+  stale evidence (established two years ago, infrastructure since changed) yields `Status=Stale`,
+  requiring `Revalidate`, explicitly `Stale≠Unknown`; (F) invalidated supporting evidence yields
+  `Status=Invalid`, requiring `Reassess`, potentially reverting the requirement toward `Unknown`,
+  demonstrating "Zero is a projection over the evolving knowledge state."
+
+  **Delivers Zero's required reproducibility**: `Replay(K_t,EC_G)=Z_t` -- "another deterministic assurance
+  boundary," directly extending 0568's/0575's Replayability discipline to Zero specifically. **Delivers
+  the file's central governance-safety deliverable, explicitly self-identified as such**: **`Zero must not
+  invent gaps`** -- even if an LLM believes an unrequired dimension (e.g. container CPU architecture) would
+  be useful information, Zero must never fabricate a gap for it unless the requirement is authorized/
+  derived through a governed rule -- formalized as `Zero compares against declared/derived requirements,
+  not against arbitrary AI expectations`, explicitly stated to be **"one of the strongest governance
+  properties we have discovered."**
+
+  **Delivers Requirement derivation and a genuinely deep recursive architectural result**: requirements
+  themselves can be DERIVED (worked example: `MigrationGoal+ArchitecturePolicy⇒RollbackRequired`), meaning
+  the Epistemic Contract carries its own lineage (`Goal→Policy→Requirement`) and is itself governed
+  knowledge, not a fixed external input -- yielding the file's headline architectural conclusion:
+  **`KnowledgeOS is recursively knowledge-governed`**, explicitly called "a deep architectural result."
+
+  **Delivers a NOTABLE, RARE explicit callback to the corpus's earlier philosophical/Vedantic thread**:
+  "we can now revisit your earlier Atman / knowledge ideal state idea" -- Zero relative to an ideal
+  knowledge state `K*` is reformulated as `Zero(K,K*,EC)=EpistemicDistance(K,K*|EC)`, explicitly noting
+  this "distance" is a structured discrepancy, not necessarily a mathematical metric -- the second such
+  explicit reconnection to the corpus's dormant philosophical language within this dense mathematical
+  sub-arc, following 0567's "Knowledge Atma" reference, further reinforcing that the corpus's authors
+  themselves regard the mathematical and philosophical threads as still connected beneath the surface, of
+  direct relevance to this reconstruction's three-model-convergence mandate.
+
+  **Delivers the file's third and most rigorous mathematical correction -- Zero formally shown NOT to
+  satisfy the metric axioms**: explicitly tests Zero against all four standard metric properties
+  (non-negativity, identity of indiscernibles, symmetry, triangle inequality), concluding knowledge
+  comparison is inherently DIRECTIONAL (`CurrentKnowledge→RequiredKnowledge` is not equivalent to the
+  reverse) -- Zero therefore fails symmetry and should never be called a mathematical metric. Delivers the
+  file's precise terminological correction, replacing the informal "Zero measures the distance between
+  knowledge states" with the considerably more precise **"Zero computes the purpose-relative directed
+  discrepancy between the current knowledge state and the knowledge conditions required by an epistemic
+  contract"** -- Zero is explicitly renamed a **`directed epistemic discrepancy operator`**, "mathematically
+  safer" than calling it a distance or metric.
+
+  **Delivers the file's final Zero output structure**: `Z_t=Zero(K_t,EC_t)={g_1,...,g_m}`, with each gap
+  formalized as `g_i=(Requirement,Status,Evidence,Reason,Criticality,Dependencies,NextActions)`, with the
+  explicit architectural note that `NextActions` may be generated later BY LORD rather than by Zero itself
+  -- reconfirming the crisp DDD boundary **`Zero detects; Lord acts`**, worked through two concrete
+  paired examples (Zero: "rollback verification is missing" / Lord: "run a restore test"; Zero: "firewall
+  requirement is conflicted" / Lord: "resolve the conflict by consulting the authoritative network
+  source") -- formalized as **`Zero=Gap Detection`** versus **`Lord=Gap Resolution Planning`**.
+
+  **Delivers the file's central computational deliverable -- a complete six-step Zero algorithm in
+  pseudocode**: resolve required conditions from the epistemic contract; for each requirement, locate
+  relevant knowledge, evaluate temporal validity, provenance, support/challenge, invoke the required
+  inference model, and determine status; classify each requirement; identify blocking gaps; preserve
+  evidence and lineage; produce an immutable Zero result -- explicitly concluding **"no LLM is required for
+  the core computation. An LLM may help resolve semantic mappings, but those mappings must become governed
+  artifacts before they affect deterministic evaluation."** Delivers a compact computational form
+  `Z_t=⊕_{r∈R_G} Evaluate(K_t,r,EC_G)`, with `⊕` explicitly clarified as structured collection, "not
+  numerical addition," and a `Blocking(Z_t)` selector isolating the requirements that actually prevent
+  governed transition.
+
+  **Delivers the file's central formal deliverable -- a nine-test falsification suite, ALL explicitly
+  graded PASS or "PASS conceptually"**: complete satisfaction yields empty Zero; a single unknown blocker
+  yields nonempty Zero; irrelevant added evidence creates no new gaps; duplicate evidence leaves Zero
+  unchanged; conflict remains `Conflicted`, never silently collapsing to `Unknown`; stale evidence is
+  correctly detected; a requirement absent from the contract creates no gap (directly reconfirming the
+  no-gap-invention governance property); a changed contract must never retroactively rewrite yesterday's
+  Zero (directly reconfirming the anti-hindsight/no-retrospective-leakage discipline established across
+  0565/0568/0574/0577); and invalidated evidence must trigger recomputation of affected Zero items.
+
+  **Delivers two genuinely new, honestly-surfaced unresolved questions closing the file's technical
+  content**: (1) **How is the Epistemic Contract itself constructed?** -- a `MigrationGoal` alone does not
+  inherently imply `RollbackVerified` is mandatory; that knowledge must be traceable to a named external
+  source (constitution, policy, architecture standard, ADR, risk model, human instruction, law,
+  organizational convention), motivating a proposed `ContractDerivation` mechanism as "likely the next
+  major step"; (2) **Requirement dependencies** -- worked through a concrete three-requirement dependency
+  chain (`BackupExists`, `RestoreTested`, `RollbackVerified`, with `r_3⇒r_1∧r_2`) demonstrating that Zero
+  currently risks reporting three independent gaps for what is actually one dependency chain, motivating a
+  future `RequirementGraph`.
+
+  **Delivers Step 25D's verdict**: **"25D — PASS,"** with the file's own self-identified "significant
+  refinement" crystallized as the headline formal result: **"Zero is not a scalar distance and should not
+  initially be modeled as a metric. It is a directed, purpose-relative, structured epistemic discrepancy
+  operator,"** formalized as `Zero(K_t,G,EC_G)→StructuredGapSet` -- "now computationally meaningful."
+
+  **Delivers the file's consolidated eleven-row architecture table**, mapping every major KnowledgeOS
+  component (Evidence, Assessment, Inference, KnowledgeState, Epistemic Contract, Zero, Lord, Sārathi,
+  Governance, Action, Observation) to its precise mathematical role, positioning "Zero: Directed
+  discrepancy computation" -- the corpus's most complete single component-to-role mapping produced by the
+  entire 25A/25B/25C/25D sub-arc.
+
+  **Closes by identifying the immediately following, "now unavoidable" next step**: Zero has been formally
+  defined, but its input `EC` (the Epistemic Contract) has not itself been formally solved. **Opens "Step
+  25E — Formal Epistemic Contract Algebra,"** posing the precise governing question: "how can KnowledgeOS
+  derive, represent, validate, version and compute the knowledge conditions required for a goal?" Delivers
+  a twelve-item list of contract-source types to be tested (human instructions, scope, constitution,
+  policies, ADRs, rules, architecture standards, risk, domain models, laws/regulations, settings, previous
+  decisions), and the file's closing, most consequential governing question:
+  **"can KnowledgeOS compute what must be known without an LLM simply inventing the requirements?"**
+  explicitly stating that solving this would render the entire chain `Goal→Contract→Zero→Lord`
+  "mathematically and architecturally closed enough" to finally attack Lord itself directly -- a
+  significant milestone marker for how much of the reasoning-engine chain remains before Lord and Sārathi
+  themselves can be formally attacked. As with the entire 25A/25B/25C/25D sub-arc, no report of actual
+  executed code appears; the treatment remains rigorous symbolic/formal mathematical and architectural
+  reasoning.
+introduces:
+  - concept: "Zero given its first rigorous mathematical definition (Zero(K,G,EC)→StructuredGapSet) after having been used purely intuitively throughout the entire prior 40+-file research arc since its earliest introduction"
+  - concept: "A nine-value requirement-status set (Satisfied/PartiallySatisfied/Unknown/Insufficient/Conflicted/Stale/Invalid/Prohibited/NotApplicable) formally replacing binary satisfaction logic, motivated by an explicit demonstration that a bare 'False' status can mean at least six operationally distinct things"
+  - concept: "Missing≠Unknown — a requirement expecting a governed artifact/approval that was never issued is distinguished from a requirement with genuinely no evidence at all"
+  - concept: "Zero refined into four distinct, explicitly non-summable components (Z_world, Z_knowledge, Z_governance, Z_decision), with a concrete worked counterexample demonstrating why collapsing them into one scalar sum would be architecturally wrong"
+  - concept: "Zero as an orchestrator dispatching to appropriate reasoning engines (rule/statistical/authority), never itself performing the inference — directly reusing and applying the corpus's established inference-engine-plurality architecture to Zero specifically"
+  - concept: "'Zero must not invent gaps' — explicitly self-identified as one of the strongest governance properties discovered in the entire research program — Zero may compare only against declared/derived, governed requirements, never against arbitrary AI-imagined expectations"
+  - concept: "The recursive architectural result 'KnowledgeOS is recursively knowledge-governed' — the Epistemic Contract that Zero depends on is itself derived, versioned, governed knowledge with its own lineage, not a fixed external input"
+  - concept: "A rare, explicit callback to the corpus's earlier Atman/ideal-knowledge-state philosophical thread, the second such reconnection within this dense mathematical sub-arc (after 0567's 'Knowledge Atma'), further evidencing the authors' own continued sense of connection between the mathematical and philosophical strands of the research"
+  - concept: "The formal mathematical proof that Zero fails the metric axioms (specifically symmetry, since knowledge comparison is inherently directional), and its resulting precise renaming as a 'directed epistemic discrepancy operator' rather than a distance or metric"
+  - concept: "A complete, implementable six-step Zero algorithm explicitly requiring no LLM for its core computation, with any LLM-assisted semantic mapping required to become a governed artifact before affecting deterministic evaluation"
+  - concept: "A nine-test falsification suite for Zero, all passing, directly reconfirming several previously-established corpus invariants (no-gap-invention, anti-hindsight/no-retrospective-leakage, dependency recomputation on invalidation) in this new formal Zero context"
+  - concept: "'Step 25E — Formal Epistemic Contract Algebra', explicitly framed as 'now unavoidable' given Zero's formal dependence on the Epistemic Contract, and as the step that would render the Goal→Contract→Zero→Lord chain closed enough to finally attack Lord itself"
+defines:
+  - concept: "Epistemic Contract (formal)"
+    definition: "EC_G=(R_G,Γ_G) — required conditions R_G plus rules Γ_G determining sufficiency; 'what must be established + how sufficiency is judged'"
+  - concept: "Zero (final formal definition)"
+    definition: "Zero(K_t,G,EC_G)→StructuredGapSet — a directed, purpose-relative, structured epistemic discrepancy operator, explicitly not a scalar distance or mathematical metric, decomposable into Z_world/Z_knowledge/Z_governance/Z_decision"
+  - concept: "Zero gap item"
+    definition: "g_i=(Requirement,Status,Evidence,Reason,Criticality,Dependencies,NextActions) — with NextActions generated by Lord, not Zero itself, preserving the Zero-detects/Lord-acts boundary"
+  - concept: "Six-step Zero algorithm"
+    definition: "Resolve required conditions → per-requirement evaluate temporal validity/provenance/support/invoke inference model/determine status → classify → identify blocking gaps → preserve evidence/lineage → produce immutable result; explicitly requiring no LLM for the core computation"
+refines:
+  - concept: "The corpus's Zero(K,I)→Δ concept, used informally throughout the entire prior 40+-file arc since its earliest introduction"
+    refinement: "Finally given a complete, rigorous mathematical definition — a structured, non-scalar, four-component, non-metric directed discrepancy operator, computable via an explicit six-step algorithm requiring no LLM for its core computation"
+  - concept: "0581's two-way EpistemicZero/OperationalZero split"
+    refinement: "Refined into four distinct components (Z_world, Z_knowledge, Z_governance, Z_decision), each explicitly non-summable into one scalar"
+  - concept: "0561's/0563's/0578's/0581's recurring anti-collapse discipline (never force distinct epistemic dimensions into one number)"
+    refinement: "Applied directly and explicitly to Zero itself, with a concrete worked counterexample (Z_knowledge=5, Z_governance=1, explicitly NOT summing to Zero=6) demonstrating why the collapse would be architecturally wrong"
+  - concept: "0568's/0575's Replayability discipline"
+    refinement: "Extended to Zero specifically: Replay(K_t,EC_G)=Z_t must hold deterministically"
+  - concept: "0565's/0568's/0574's/0577's anti-hindsight / no-retrospective-knowledge-leakage principle"
+    refinement: "Reconfirmed a further time in this new formal Zero context via an explicit falsification test: a changed epistemic contract must never retroactively rewrite a historically-computed Zero result"
+  - concept: "0567's earlier 'Knowledge Atma' reconnection to the corpus's Atman/Vedantic philosophical thread"
+    refinement: "Echoed a second time via an explicit reference back to 'your earlier Atman / knowledge ideal state idea,' reformulating Zero relative to an ideal knowledge state K* as EpistemicDistance(K,K*|EC)"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25E — Formal Epistemic Contract Algebra' is executed as its own dedicated corpus file, and critically, whether it succeeds in formally answering its central governing question — can KnowledgeOS compute required knowledge conditions without an LLM simply inventing them?"
+  - "Trace whether either the ContractDerivation mechanism or the RequirementGraph (requirement dependency structure), both explicitly flagged as unresolved at the close of this file, are formally addressed in Step 25E or a later step"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Zero's first complete rigorous mathematical definition, the nine-value requirement-status set replacing Boolean logic, Missing≠Unknown, and the formal Epistemic Contract EC_G=(R_G,Γ_G)."
+  - "dimension-registry.md: record Zero refined into four non-summable components (Z_world/Z_knowledge/Z_governance/Z_decision), 'Zero must not invent gaps' as one of the strongest governance properties discovered, 'KnowledgeOS is recursively knowledge-governed,' and the second Atman/philosophical-thread callback in this sub-arc."
+  - "dimension-registry.md: record the formal proof Zero is not a mathematical metric (fails symmetry, renamed a 'directed epistemic discrepancy operator'), the complete six-step Zero algorithm requiring no LLM for core computation, the nine-test falsification suite (all PASS), the verdict '25D — PASS,' and 'Step 25E — Formal Epistemic Contract Algebra' as the next unavoidable research phase."
+anchor_test:
+  anchor: "0581's closing question of whether Zero can be computed from KnowledgeState rather than being an AI-generated narrative; 0567's 'Knowledge Atma' philosophical callback; 0561's/0563's/0578's/0581's recurring anti-collapse discipline; 0565's/0568's/0574's/0577's anti-hindsight principle; the corpus's Zero concept used informally throughout the entire prior arc"
+  supports_dimension: "LANDMARK delivering the corpus's first complete, rigorous mathematical definition of Zero, a concept used purely intuitively throughout the entire prior 40+-file arc since its earliest introduction. Delivers three distinct, genuine mathematical corrections rather than mere restatements: a nine-value requirement-status set replacing binary logic (motivated by a concrete demonstration that a bare False status can mean six operationally distinct things), an explicit argued refusal to collapse Zero's four components into a scalar sum, and a formal proof that Zero fails the metric axioms (specifically symmetry), leading to its precise renaming as a 'directed epistemic discrepancy operator.' Delivers the strongest single governance property self-identified anywhere in the research program ('Zero must not invent gaps'), a genuinely deep recursive architectural discovery ('KnowledgeOS is recursively knowledge-governed'), and a rare second explicit reconnection to the corpus's dormant Atman/philosophical thread. Delivers a complete, implementable six-step Zero algorithm explicitly requiring no LLM for its core computation, a nine-test falsification suite passing entirely, and closes by correctly identifying that Zero's own formal dependence on the still-unformalized Epistemic Contract makes 'Step 25E — Formal Epistemic Contract Algebra' now unavoidable before Lord itself can finally be attacked"
+  refines_or_contradicts: "directly executes Step 25D as opened at 0581; refines 0581's two-way EpistemicZero/OperationalZero split into four non-summable components; extends the recurring anti-collapse discipline (0561/0563/0578/0581) directly to Zero; extends 0568's/0575's Replayability discipline to Zero; reconfirms 0565's/0568's/0574's/0577's anti-hindsight principle via an explicit falsification test; echoes 0567's Atman/philosophical-thread callback a second time; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The formal proof-sketch that Zero fails the symmetry metric axiom (knowledge comparison is inherently directional, CurrentKnowledge→RequiredKnowledge is not equivalent to its reverse) is directly checkable, precise mathematical reasoning distinct from every prior file's looser, purely qualitative use of 'distance' language for Zero — a genuine correction rather than a restatement."
+  - "The worked counterexample explicitly rejecting Z_knowledge=5 plus Z_governance=1 summing to Zero=6 (since one missing governance approval could be more blocking than five low-priority informational gaps) is a directly checkable, concrete demonstration grounding the file's abstract anti-collapse principle in an inspectable, realistic scenario."
+  - "The six-step Zero algorithm pseudocode, together with the explicit computational form Z_t=⊕_{r∈R_G}Evaluate(K_t,r,EC_G) and the clarification that ⊕ denotes structured collection rather than numerical addition, is directly checkable as an implementation-ready specification, distinct from the more abstract conceptual treatments Zero received throughout the entire prior arc."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25E — Formal Epistemic Contract Algebra' is executed as its own dedicated corpus file, and whether it succeeds in formally answering whether KnowledgeOS can compute required knowledge conditions without an LLM inventing them"
+  - "Whether the ContractDerivation mechanism and RequirementGraph (requirement dependency structure), both flagged as unresolved at the close of this file, are formally addressed in Step 25E or a later step"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first complete, rigorous mathematical definition of Zero — a central architectural concept used purely intuitively throughout the entire prior 40+-file research arc since its earliest introduction. Delivers three distinct, genuine mathematical corrections rather than mere elaboration: a nine-value requirement-status set replacing binary satisfaction logic, motivated by a concrete demonstration that a bare False status can mean at least six operationally distinct things; an explicit, argued refusal to collapse Zero's four components into a single scalar sum, grounded in a concrete worked counterexample; and a formal proof that Zero fails the standard metric axioms (specifically symmetry, since knowledge comparison is inherently directional), leading to its precise renaming as a 'directed epistemic discrepancy operator' rather than a distance or metric. Delivers the strongest single governance property self-identified anywhere in this research program ('Zero must not invent gaps'), a genuinely deep recursive architectural discovery ('KnowledgeOS is recursively knowledge-governed', since the Epistemic Contract Zero depends on is itself derived, versioned, governed knowledge), and a rare second explicit reconnection to the corpus's dormant Atman/philosophical thread, following 0567's 'Knowledge Atma.' Delivers a complete, implementable six-step Zero algorithm explicitly requiring no LLM for its core computation, a nine-test falsification suite passing entirely and reconfirming several previously-established corpus invariants in this new formal context, and closes by correctly and precisely identifying why Zero's own formal dependence on the still-unformalized Epistemic Contract makes the newly-opened Step 25E 'now unavoidable' before Lord itself can finally be formally attacked — a clear, well-reasoned milestone marker for the remaining distance to the reasoning-engine core of the whole KnowledgeOS architecture."

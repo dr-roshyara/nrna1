@@ -1,0 +1,153 @@
+sequence: 491
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-185755_question-24-presenting-the-decision-ready-state-to-the-knower.md
+title: "LANDMARK (24-question arc closes): Presentation Formalized as a Semantic Projection Π_{N,D,P,C,F}(S_t) — P_t≠D_t≠S_t; Epistemic Fidelity Made a Hard Invariant, Not a Compensable Score; 'Complete Mathematical Specification' Claim Retracted a Second Time"
+date: "2026-08-26"
+bytes: 38060
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the Arjuna presentation example is used to argue that confidence indicators must not collapse Q16's multidimensional epistemic state (Acquisition/Support/Uncertainty/Validity) into a single label"
+source_role: PRIMARY_RESEARCH
+canonical_source: 491
+importance: critical
+confidence: high
+about: >
+  Answers Question 24 (posed at 0490's close): how does KnowledgeOS present the decision-ready state to the
+  Knower? This is the file that closes the 24-question research programme launched at 0449 and executed
+  through 0450-0490.
+
+  **Structural note**: Part A (the initial answer, lines 1-507) is repeated VERBATIM a second time (lines
+  508-1015) within this same file before the critical review begins at line 1016 -- the corpus's clearest
+  instance of an exact, complete in-file duplication (not merely a shared-prefix near-duplicate as seen at
+  0464/0473/0476). This is recorded as a corpus-integrity observation rather than distinct content.
+
+  **Part A (initial answer)** proposes a decision-ready state AS the presentation itself ("the Knowledge
+  State presented to the Knower..."), a Present function P_t=Present(K_t,I_t,U_t,Δ_t,Q_t,C_t,N_t,Format),
+  nine presentation components (State Summary, Key Findings, Gaps/Conflicts, Ideal Comparison, Risks,
+  Recommendations, Epistemic Status, Provenance, History), five presentation layers (Executive Summary,
+  Epistemic State, Comparison with Ideal, Risks/Implications, Recommendations), four presentation formats
+  (Natural Language, Structured, Visual, Comparative), simple confidence/conflict/gap color indicators, four
+  quality criteria (Fidelity, Comprehensibility, Actionability, Completeness) each in [0,1] combined via a
+  weighted Quality score Q(P_t)=w_F·Fidelity+w_C·Comprehensibility+w_A·Actionability+w_M·Completeness, an
+  Arjuna presentation example, and closes (a second time, since duplicated) declaring a 24-item "complete
+  mathematical specification of KnowledgeOS."
+
+  **Part B (critical review) delivers roughly a dozen corrections, culminating the entire 24-question
+  programme**. **The most important correction**: presentation must not become part of the epistemic state
+  itself -- corrects the chain K_t->D_t->P_t to **S_t --evaluate--> D_t --project--> P_t**, with
+  **P_t≠D_t and P_t≠S_t**: presentation is a view/projection, never another knowledge object. **Corrects the
+  definition of decision-ready state itself**: it must exist BEFORE presentation
+  (DecisionReady(S_t,D,P,C) is prior; P_t=Present(DecisionReadyState,Knower,Format) is downstream), directly
+  preserving 0490's DecisionReady≠ShouldStop/DecisionReady≠Stop distinction from being collapsed into
+  presentation. **Reframes Present() from formatting to semantic projection**: the system must decide
+  relevance, criticality, uncertainty, conflict, evidentiary support, recommendation-vs-fact, and
+  inference-vs-observation -- "Presentation = Epistemically Qualified Projection... much more important than
+  'UI formatting.'" **Introduces the Presentation Projection operator** Π_{N,D,P,C,F}, giving
+  P_t=Π_{N,D,P,C,F}(S_t) -- meaning two Knowers can receive different presentations of the SAME underlying
+  state without KnowledgeOS maintaining two different Knowledge States. **Requires the projection to be
+  loss-aware but never epistemically falsifying**: a presentation may omit information but must not collapse
+  Observed/Reported/Inferred/Assumed into "FACT," nor Strong/Weak/No-evidence into "CONFIDENT" -- introduces
+  EpistemicFidelity(P_t,S_t) and the requirement CriticalEpistemicDistinctions(S_t)⊆Preserved(P_t), flagged
+  as "one of the most important invariants of the entire presentation architecture." **Corrects "Confidence"
+  from the primary presentation model to a derived UI view**: ConfidenceIndicator=DerivedView(Σ), not
+  Confidence=Σ, since a single confidence label risks collapsing Q16's multidimensional epistemic state
+  (Acquisition≠Support≠Uncertainty≠Validity) back into one scalar -- reused directly from Q16's discipline.
+  **Rejects the weighted presentation Quality score as compensable** (worked counter-example: 95%
+  comprehensibility/actionability/completeness could still coexist with one critical misrepresented
+  epistemic status and score highly) -- replaced by hard presentation invariants
+  (Fidelity(P_t,S_t)=Required, CriticalEpistemicStatusPreserved(P_t,S_t),
+  DecisionRelevantInformationPreserved(P_t,D)), extending 0490's hard-gates-over-compensable-scalar pattern
+  from decision-readiness into presentation itself. **Makes Completeness decision-relative**:
+  CompleteForDecision(P_t,D), not a generic Complete(P_t), since a presentation may deliberately omit
+  decision-irrelevant information -- Relevance=f(Knower,Purpose,Decision,Context). **Re-semanticizes the five
+  presentation layers** as a clean epistemic progression: Decision->Knowledge->Evidence->Discrepancy->Action
+  (What decision? What do we know? How do we know it? What remains uncertain? What should the Knower
+  consider doing?). **Establishes a strict recommendation boundary**: Recommendation≠Assertion,
+  Recommendation≠Fact, Recommendation≠Decision -- Sārathi may say "investigate the moral obligation
+  dimension" but KnowledgeOS must never silently convert that into "therefore Arjuna should fight"; the
+  Knower remains the decision authority unless the domain explicitly delegates it. **Establishes an
+  equivalent boundary for Lord's candidates**: Candidate≠Knowledge, Candidate≠Evidence, Candidate≠Assertion,
+  requiring the presentation to visually distinguish KNOWN/INFERRED/UNKNOWN/CANDIDATE/RECOMMENDED to prevent
+  "semantic contamination." Confirms Zero's role (EpistemicFindings, not beliefs) as already correct.
+  **Strengthens provenance to claim-level, not merely presentation-level**: EveryDecisionRelevantClaim ->
+  Provenance, making the presentation auditable. **Demotes History from a main presentation component to
+  progressive disclosure**: CurrentState≠History; History->ExplanationOfCurrentState, available on expansion
+  rather than dumped into the primary view. **Introduces three DDD bounded responsibilities**: KnowledgeOS
+  Core (K,Σ,E,G,C,Δ,I,S), Epistemic Orchestration (Zero,Lord,Sārathi,Prioritization,Transition), and
+  Presentation/Interaction (Projection,View,Format,Explanation,Interaction). **Explicitly retracts, a second
+  time in the corpus (after 0486's first retraction), the claim that the 24-question model is "the complete
+  mathematical specification of KnowledgeOS"** -- renamed "KnowledgeOS Epistemic Model -- Conceptual and
+  Formal Specification," with ConceptualCompleteness≠FormalCompleteness explicitly named, and fourteen
+  specific unfinished formalization areas listed (ontology/type system, proposition semantics, evidence
+  model, inference semantics, conflict algebra, gap detection semantics, Ideal State construction,
+  discrepancy semantics, decision criteria, transition semantics, authorization/governance, persistence
+  semantics, concurrency/versioning, presentation projection semantics). Closes with the complete
+  end-to-end architecture diagram spanning Knower/Intent through Semantic Reconstruction, Observation,
+  Knowledge, Zero/Lord/Sārathi, Discrepancy, Prioritization, Investigation, Decision Criteria, Decision
+  Readiness, Projection, and back to the Knower's Decision -- described as "the strongest formulation of the
+  theory so far" -- a revised mathematical model (D_t=Evaluate(S_t,P,D,C,Policy); P_t=Π(S_t,D_t,N,F);
+  P_t≢S_t; P_t≢D_t), nine new presentation invariants, and a final five-item correction list culminating in
+  the single frozen invariant: **"Presentation may simplify the Knowledge State, but must never falsify its
+  epistemic structure."**
+introduces:
+  - concept: "Presentation formalized as a semantic projection operator Π_{N,D,P,C,F}(S_t)->P_t, parameterized by Knower, Decision, Purpose, Context, and Format, allowing two Knowers to receive different presentations of the same underlying state without KnowledgeOS maintaining two Knowledge States"
+  - concept: "P_t≠D_t≠S_t: presentation is corrected from being conflated with the decision-ready state (as Part A's own definition did) to a strictly downstream, loss-aware but never epistemically falsifying projection"
+  - concept: "EpistemicFidelity(P_t,S_t) and the hard requirement CriticalEpistemicDistinctions(S_t)⊆Preserved(P_t) -- a presentation may omit information but must never collapse Observed/Reported/Inferred/Assumed into 'FACT' or Strong/Weak/No-evidence into 'CONFIDENT'"
+  - concept: "Confidence corrected from the primary presentation model to a DerivedView(Σ), reusing Q16's Acquisition≠Support≠Uncertainty≠Validity discipline to prevent the multidimensional epistemic state from collapsing into a single label"
+  - concept: "Weighted presentation Quality score rejected as compensable (a critical misrepresented epistemic status could be masked by high comprehensibility/actionability/completeness scores); replaced by hard presentation invariants, extending 0490's hard-gates-over-scalar pattern into presentation"
+  - concept: "Completeness made decision-relative (CompleteForDecision(P_t,D)) rather than generic, since a presentation may deliberately omit decision-irrelevant information"
+  - concept: "Strict recommendation boundary: Recommendation≠Assertion, Recommendation≠Fact, Recommendation≠Decision -- KnowledgeOS must never silently convert a Sārathi recommendation into an implied decision, preserving the Knower's decision authority"
+  - concept: "Strict candidate boundary: Candidate≠Knowledge, Candidate≠Evidence, Candidate≠Assertion -- the presentation must visually distinguish KNOWN/INFERRED/UNKNOWN/CANDIDATE/RECOMMENDED to prevent semantic contamination"
+  - concept: "Claim-level provenance requirement: EveryDecisionRelevantClaim -> Provenance, making the presentation fully auditable"
+  - concept: "History demoted from a main presentation component to progressive disclosure (CurrentState≠History; History->ExplanationOfCurrentState)"
+  - concept: "Three DDD bounded responsibilities introduced for the full architecture: KnowledgeOS Core, Epistemic Orchestration, and Presentation/Interaction"
+  - concept: "'Complete mathematical specification of KnowledgeOS' claim explicitly retracted a SECOND time in the corpus (first retraction at 0486) -- renamed 'KnowledgeOS Epistemic Model -- Conceptual and Formal Specification,' with ConceptualCompleteness≠FormalCompleteness and fourteen named unfinished formalization areas"
+defines:
+  - concept: "Presentation Projection (Π)"
+    definition: "P_t=Π_{N,D,P,C,F}(S_t) -- a semantic, epistemically-qualified projection of the complete system state for a given Knower (N), Decision (D), Purpose (P), Context (C), and Format (F); loss-aware but required to preserve critical epistemic distinctions and claim-level provenance for decision-relevant claims"
+  - concept: "Decision-ready state (corrected, prior to presentation)"
+    definition: "An evaluated system state in which the knowledge relevant to a specific decision satisfies the applicable decision criteria (DecisionReady(S_t,D,P,C), per 0490) -- existing BEFORE and independently of any presentation; presentation is a downstream projection of this state, never identical to it"
+  - concept: "Final frozen presentation invariant"
+    definition: "Presentation may simplify the Knowledge State, but must never falsify its epistemic structure"
+refines:
+  - concept: "0490's DecisionReady≠ShouldStop and hard-gates-over-compensable-scalar architecture"
+    refinement: "Extended twice: first by correcting decision-readiness to exist strictly prior to presentation (never defined AS the presentation, correcting Part A's own definitional error); second by applying the identical hard-invariant-over-compensable-score pattern to presentation quality itself"
+  - concept: "Q16's multidimensional epistemic state (Acquisition≠Support≠Uncertainty≠Validity, established 0482)"
+    refinement: "Directly reused to correct the presentation layer's proposed single Confidence indicator, requiring it be a DerivedView(Σ) rather than a replacement for the underlying multidimensional epistemic state"
+  - concept: "0483/0484's Guidance≠Authorization≠Execution≠Transition and Sārathi=Guidance-not-authority discipline"
+    refinement: "Extended into the presentation layer as Recommendation≠Assertion≠Fact≠Decision, ensuring the Knower's decision authority is preserved even at the point of human-facing display, not merely in the internal architecture"
+  - concept: "0486's first retraction of the 'complete mathematical specification' claim"
+    refinement: "The identical overclaim recurs in this file's own Part A and is retracted a second time in Part B, this time with a specific renamed title and fourteen explicitly enumerated unfinished formalization areas -- the corpus's most detailed accounting yet of what remains open"
+contradicts:
+  - concept: "This file's own Part A (decision-ready state defined AS the presentation itself; weighted compensable Quality score; Confidence as the primary epistemic model; the 'complete mathematical specification' claim)"
+    contradiction: "Part B explicitly and directly corrects each of these as central review findings; superseded within the same file, no contradiction remains unresolved"
+repeats:
+  - "Part A (lines 1-507) is repeated VERBATIM in full a second time (lines 508-1015) within this single file -- the corpus's clearest exact, complete in-file duplication to date, distinct from the shared-prefix near-duplicates seen at 0464/0473/0476"
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the 24-question research programme's formal closure with Presentation formalized as Π_{N,D,P,C,F}(S_t), P_t≠D_t≠S_t, and EpistemicFidelity/CriticalEpistemicDistinctions as hard invariants over a compensable quality score."
+  - "dimension-registry.md: record the strict Recommendation≠Assertion≠Fact≠Decision and Candidate≠Knowledge≠Evidence≠Assertion boundaries preserving the Knower's decision authority at the presentation layer, and Confidence corrected to a DerivedView(Σ) rather than the epistemic model itself."
+  - "dimension-registry.md: record the SECOND retraction (after 0486) of the 'complete mathematical specification of KnowledgeOS' claim, renamed 'KnowledgeOS Epistemic Model -- Conceptual and Formal Specification' with fourteen named open formalization areas, and the exact full-Part-A verbatim in-file duplication as a corpus-integrity observation."
+anchor_test:
+  anchor: "0490's DecisionReady≠ShouldStop/hard-gates architecture; Q16's multidimensional epistemic state (0482); 0483/0484's Sārathi=Guidance-not-authority discipline; 0486's first retraction of the 'complete mathematical specification' claim"
+  supports_dimension: "LANDMARK (closes the 24-question programme): formalizes Presentation as a semantic projection Π_{N,D,P,C,F}(S_t) strictly downstream of and distinct from both the decision-ready state and the full system state (P_t≠D_t≠S_t); makes epistemic fidelity and critical-distinction preservation hard invariants rather than a compensable weighted quality score, extending 0490's hard-gates pattern into presentation; reuses Q16's multidimensional epistemic state to correct a naive single Confidence indicator; establishes strict Recommendation/Candidate boundaries preserving the Knower's decision authority at the human-facing layer; and retracts the 'complete mathematical specification' claim a second time with fourteen explicitly named open formalization areas -- while the file itself contains an exact, complete verbatim duplication of its own initial answer, the corpus's clearest full in-file duplication to date"
+  refines_or_contradicts: "refines 0490's hard-gates architecture, Q16's epistemic-state discipline, and 0483/0484's Sārathi-authority boundary; explicitly repeats 0486's retraction pattern for the 'complete specification' overclaim; Part B directly supersedes Part A's own definitional errors within the same file, with no unresolved contradiction remaining in the final formalization"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Part A (lines 1-507) is reproduced verbatim in full as lines 508-1015 -- an exact, complete duplication within a single file, distinct from every prior near-duplicate pattern in the corpus (which involved shared prefixes or tails, never a full exact repeat), warranting explicit tracking as a corpus-integrity artifact."
+  - "The recommendation-boundary worked example (Sārathi says 'investigate the moral obligation dimension'; KnowledgeOS must never silently convert that into 'therefore Arjuna should fight') is the corpus's clearest illustration yet of preserving Knower decision authority all the way through to the human-facing presentation layer."
+undefined_concepts: []
+open_questions:
+  - "The fourteen explicitly named unfinished formalization areas (ontology/type system, proposition semantics, evidence model, inference semantics, conflict algebra, gap detection semantics, Ideal State construction, discrepancy semantics, decision criteria, transition semantics, authorization/governance, persistence semantics, concurrency/versioning, presentation projection semantics) -- named as still open at the close of the 24-question programme"
+  - "Whether the corpus proceeds to a genuinely new research phase after Q24, given the programme's own explicit statement that conceptual completeness has been reached but formal completeness has not"
+  - "Whether the exact full-Part-A duplication in this file reflects a source-generation artifact worth tracking as a recurring pattern, or is an isolated occurrence"
+tier2_triggered: true
+tier2_reason: "Closes the 24-question research programme (launched 0449) by formalizing Presentation as a semantic projection operator Π_{N,D,P,C,F}(S_t) strictly distinct from both the decision-ready state and the full system state (P_t≠D_t≠S_t), correcting Part A's own conflation of decision-readiness with presentation; extends 0490's hard-gates-over-compensable-scalar architecture into the presentation layer via EpistemicFidelity and CriticalEpistemicDistinctions as required invariants rather than a weighted quality score; reuses Q16's multidimensional epistemic state to correct a naive single Confidence indicator; establishes strict Recommendation≠Assertion≠Fact≠Decision and Candidate≠Knowledge≠Evidence≠Assertion boundaries that preserve the Knower's decision authority through to the human-facing display; and retracts the 'complete mathematical specification of KnowledgeOS' claim for a second time in the corpus (after 0486), this time with fourteen explicitly enumerated open formalization areas -- while the file itself contains an exact, complete verbatim duplication of its entire initial answer, the corpus's clearest full in-file duplication artifact to date."

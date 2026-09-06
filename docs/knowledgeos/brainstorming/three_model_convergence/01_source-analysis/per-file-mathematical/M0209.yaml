@@ -1,0 +1,80 @@
+sequence: M0209
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-092006_strong-protocol-with-modifications.md
+title: "Fifth pass over the representation-reduction protocol: fixes a concrete R6=D/T5-R5 indexing inconsistency, distinguishes representation-capacity from Shannon entropy as the correct monotone-decrease criterion, gives the thread's first worked illustrative status table, and explicitly forbids inferring a unique eliminated payload S from a failed transition unless an explicit elimination decomposition exists — tying back to KR-ZERO-ORDER's non-element-wise finding"
+date: "20260903-092006"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0209
+importance: high
+confidence: high
+about: >
+  A fifth convergent pass over the representation-reduction protocol (following M0196-M0208),
+  reaching the same core apparatus (empirical-vs-theoretical adequacy, N_viol, the A/B/C/D
+  four-question decomposition, n* as boundary not argmin) but adding two genuinely new corrections:
+  a capacity-vs-entropy distinction for the monotone-decrease criterion, and an explicit prohibition
+  on inferring a unique eliminated payload from a failed reduction unless the transformation has a
+  declared elimination decomposition — the latter explicitly connected to KR-ZERO-ORDER's established
+  non-element-wise finding.
+introduces:
+  - "A concrete fix for an indexing inconsistency in the reviewed draft (R_n=T_n(R_{n+1}) combined with R_6=D, conflicting with the diagram's D→T_5→R_5): resolved as R_5=T_5(D), R_{n-1}=T_n(R_n) for n=5,...,2 — the cleanest explicit statement of the indexing convention in this sub-thread so far"
+  - "A four-way conceptual separation not made this precisely before: Representation Capacity (a structural property of the carrier) vs. Storage Cost (bits/bytes under a specified encoding) vs. Shannon Entropy H(R_n) (a property of the induced probability distribution) vs. Minimality (optimization under a selected cost function) — with the explicit correction that requiring H(R_n)<H(R_{n+1}) is TOO STRONG (a smaller carrier need not have lower entropy under a concentrated distribution; a two-state representation can have entropy near 1 bit while a larger one is highly concentrated), replacing it with Cap(R1)<Cap(R2)<...<Cap(R5) as the correct monotone-decrease criterion, with entropy measured independently"
+  - "The thread's first WORKED ILLUSTRATIVE status table (hypothetical, not actual experimental data) showing what a completed diagnostic run would look like: R5 (Admissible=1.00, Fidelity=1.00, Ĥ(Q|R)=0, Ĥ(R|Q)=7.2, status 'Adequate, redundant'), R4 (Ĥ(R|Q)=4.8, 'Adequate'), R3 (Ĥ(R|Q)=2.1, 'Adequate'), R2 (Ĥ(R|Q)=0, status 'Q-equivalent/optimal'), R1 (Fidelity=.623, Ĥ(Q|R)>0, status 'Boundary crossed') — the first concrete numeric illustration of the entire representation-reduction apparatus in action"
+  - "An explicit prohibition on inferring a unique eliminated payload S from a failed reduction R_n→R_{n-1}: a failed transition only demonstrates 'the transformation does not preserve the contract for that sample' — it does NOT automatically identify a unique S that was removed, since there may be multiple eliminated components, interaction effects, transformation-induced changes, recombination, or loss of relational structure; only if T_n has an explicit elimination decomposition T_n=E_{S_n} may one conclude S_n∉Elim_{T,Π}(D_i) — explicitly connected: 'this connects directly to the findings from KR-ZERO-ORDER: we should not assume that transformation loss decomposes element-wise'"
+  - "A third variant naming of the experimental progression: 'Reduction → Adequacy → Excess → Boundary' (compare M0207's 'transformation→elimination→representation→preservation→boundary→information measure' and M0208's 'adequacy→redundancy reduction→boundary')"
+defines:
+  - "Cap(R_n) as the intended monotone-decreasing quantity across the reduction chain, replacing the incorrect H(R_n) monotone-decrease requirement"
+refines:
+  - "M0207/M0208's canonical Representation Reduction Contract: corrected on the entropy-monotonicity point, and explicitly linked to KR-ZERO-ORDER's non-element-wise elimination finding for the first time in this sub-thread"
+contradicts:
+  - "The reviewed draft's own requirement H(R_n)<H(R_{n+1}) — shown false in general via the two-state-vs-concentrated-large-representation counterexample"
+  - "The reviewed draft's implicit assumption that a failed transition identifies a unique eliminated payload S — rejected absent an explicit elimination decomposition"
+repeats:
+  - "The by-now-standard corrections already recorded at M0207/M0208 (empirical-vs-theoretical adequacy, N_viol, the A/B/C/D four dimensions, n* as boundary not argmin)"
+bridge_candidates:
+  - "Whether Cap(R_n) is ever formally defined as a measurable quantity distinct from encoding size and Shannon entropy"
+  - "Whether the worked illustrative table's numeric pattern (adequate-and-redundant → adequate → Q-equivalent-optimal → boundary-crossed) is ever reproduced by an actual executed experiment"
+mathematical_content: >
+  Corrects a specific overclaim (entropy must strictly decrease across a representation-reduction
+  chain) with a concrete counterexample and introduces a four-way conceptual separation (capacity/
+  storage-cost/entropy/minimality) not made this precisely elsewhere in the thread; the connection
+  between failed-transition-payload-inference and KR-ZERO-ORDER's non-element-wise finding is a
+  genuine cross-connection within the same overall research programme.
+gita_content: null
+kernel_content: >
+  Continues the representation-reduction sub-thread's convergent-corrections pattern (a fifth
+  independent pass reaching the same core apparatus), while contributing two genuinely new items:
+  the capacity-vs-entropy distinction and the elimination-decomposition requirement linking back to
+  KR-ZERO-ORDER — the first explicit internal cross-reference between the representation-reduction
+  and Zero-order sub-threads.
+registry_updates:
+  - "Corrected indexing convention: R_5=T_5(D), R_{n-1}=T_n(R_n)"
+  - "New capacity-vs-entropy-vs-storage-cost-vs-minimality four-way distinction, correcting the entropy-strictly-decreasing overclaim"
+  - "First worked illustrative status table for the whole apparatus"
+  - "New explicit prohibition on inferring a unique eliminated payload without a declared elimination decomposition, cross-referenced to KR-ZERO-ORDER's non-element-wise finding"
+anchor_test:
+  anchor: false
+  supports_dimension: "Capacity-vs-entropy distinction; corrected indexing; worked illustrative table; elimination-decomposition requirement cross-referenced to KR-ZERO-ORDER"
+  refines_or_contradicts: "refines (M0207/M0208's canonical formulation); contradicts (the entropy-strictly-decreasing requirement and the unique-payload-inference assumption in the reviewed draft)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"A representation can have fewer symbols/dimensions/storage positions without having lower Shannon entropy under the empirical distribution.\""
+  - "\"This connects directly to the findings from KR-ZERO-ORDER: we should not assume that transformation loss decomposes element-wise.\""
+undefined_concepts:
+  - "The precise formal measure intended by 'representation capacity' distinct from storage cost"
+open_questions:
+  - "Is Cap(R_n) ever formally defined?"
+  - "Is the worked illustrative table's pattern ever reproduced empirically?"
+tier2_triggered: false
+tier2_reason: >
+  Genuine but incremental refinements (capacity-vs-entropy distinction, elimination-decomposition
+  requirement cross-referenced to KR-ZERO-ORDER, first worked illustrative table) layered onto the
+  already-recorded canonical formulation from M0207/M0208, rather than a structurally new finding.

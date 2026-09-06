@@ -1,0 +1,118 @@
+sequence: 1035
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/REFINED-STEP-287-INVARIANTS.md
+title: "REFINED STEP 287 -- Invariants: Resolves the 'REFINED-STEP-287-INVARIANTS.md' Bridge Candidate, Delivering the Programme's Arguably Most Important Finding Yet -- a SCHEMA-LEVEL CEILING (Admissible Is Undecidable, delta Has No Commit Case) That Blocks EVERY Candidate Invariant From Ever Being Established, Regardless of Any Other Progress"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual REFINED STEP 287 Invariants artifact, resolving the bridge candidate named in file 1034"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1035
+importance: critical
+confidence: high
+about: >
+  "Refined Step 287 · Invariants `𝓘` — Candidate Invariants, Derivability, Dependencies, Open Conditions,"
+  status "RESEARCH ARTIFACT — NOT NORMATIVE / NOT ARCHITECTURE." **Directly resolves the "REFINED-STEP-287-
+  INVARIANTS.md" bridge candidate** named in file 1034.
+
+  **CONFIRMS THE STEP-287 NUMBERING COLLISION IN ITS OWN OPENING NOTICE**: "Three sources place equality at
+  285 and Invariants at 287; my existing `REFINED-STEP-287.md` is the equality artifact. Both bodies of work
+  are real; the identifier is contested and its resolution is a REGISTRY decision, not a research one" --
+  directly confirming file 1034's already-tracked caveat, adopting the disambiguation "287-EQUALITY" and
+  "287-INVARIANTS" going forward.
+
+  **DELIVERS THE PROGRAMME'S ARGUABLY MOST IMPORTANT FINDING YET, EXPLICITLY LABELED AS SUCH**: "TWO SCHEMA-
+  LEVEL BLOCKERS, before any candidate is assessed": (1) **`Admissible` IS NOT EVALUABLE** -- it depends on
+  "`Assurance`, which the corpus has REFUTED AS DEFINABLE" (a new, significant corpus finding), and the
+  ratified DC (Decision Contract, presumably) is a 6-tuple with no admissibility conjunction of its own,
+  while the relevant law belongs to a distinct 7-tuple -- "the schema's ANTECEDENT cannot be decided"; (2)
+  **`δ` HAS NO COMMIT CASE**: "`Γ` is derived and is not a component of `K`, so `δ` has nowhere to write a
+  commitment. Executed: `K_1 IS K_0`" -- meaning the central transformation operation is CURRENTLY A NO-OP
+  in executable terms -- "the schema's CONSEQUENT cannot be evaluated for the central operation." Concludes:
+  **"Every invariant below inherits both blockers. No candidate can be ESTABLISHED while `Admissible` is
+  undecidable and `δ`'s central case is a no-op. This is a SCHEMA-LEVEL CEILING, and it is the single most
+  important result of this step."** This means the invariant-derivation programme is blocked not by any
+  single unresolved equality relation, but by a more fundamental structural gap sitting ABOVE the equality
+  question entirely.
+
+  **Delivers the full seven-candidate invariant register**: `I-𝒩` (Knower persistence, CORPUS-SUPPORTED via
+  FA-4/`Kṣetrajña`); `I-Π` (Provenance persistence, DERIVED, `t=0` proof, refined by a NEW corpus reference
+  "step 265" `π∈K`); `I-A` (Admissibility gate, `G1 OPEN`, self-referentially undecidable); `I-C` (Command≠
+  Transformation, DERIVED via `§256.21-22`, VACUOUS under `=_structural` and `≅_λ`, meaningful only under
+  `=_semantic`); `I-V` (Validity independent of outcome, CORPUS-SUPPORTED, "✅ yes — static inspection," one
+  of only two testable candidates); `I-I` (Identity≠State, CONDITIONALLY DERIVED, "inherits a live
+  contradiction" between `id=H(P,e,c,t,Π)` and mutable `e.state`); `I-O` (Observation≠Interpretation,
+  CONDITIONALLY DERIVED via Sañjaya, `Ω` lacks executable semantics). **0 of 7 fully ESTABLISHED.**
+
+  **DELIVERS A GENUINELY IMPORTANT TAXONOMIC FINDING**: "`𝓘` is NOT one mathematical object. At least two
+  kinds are present -- TRANSITION invariants (schema-shaped, `I-𝒩,I-Π,I-C,I-I,I-A,I-V`) and LAYER/TYPE
+  invariants (statically shaped, `I-O` -- `Reality≠Observation≠Knower` holds statically, with no `δ` in
+  sight). MERGING THEM UNDER ONE SYMBOL IS A CATEGORY ERROR." Forcing layer invariants into the transition
+  schema would make them "vacuously true, because the antecedent never engages them."
+
+  **Connects to a new corpus reference, "Step 259 §259.18"**: "the quantifier has no determinate meaning if
+  `𝒯` is incomplete" -- an already-recorded failure mode for congruence, shown here to "apply identically to
+  invariants," since every `∀o` in the invariant register quantifies over the still-unenumerated `𝒪`.
+
+  **The vacuity audit (§6) confirms only `I-V` and `I-O` are testable today, and precisely because neither
+  needs `δ`** -- "the invariant programme is blocked exactly where it depends on the transition system." This
+  is the ALREADY-CORRECTED form per file 1034's M-6/M-7 fixes: the Vacuity column is now split into
+  vacuity-safe and testable-today, and the count is corrected to "two, not one."
+
+  **§7 delivers a dependency matrix confirming `I-C` (Command≠Transformation) as "the most dependency-loaded"
+  candidate**: substantive only under `≡`-with-`Π`-excluded, vacuous under `≅_λ` -- "Decision 3 does not
+  merely refine it -- it DECIDES WHETHER IT SAYS ANYTHING."
+
+  **§8 confirms the independence pattern already tracked**: 5 of 7 candidates are KnowledgeOS-independent;
+  the 2 non-independent ones (`I-𝒩` via Kṣetrajña, `I-O` via Sañjaya) are both corpus-native, not
+  philosophical inference -- consistent with every prior finding in this pattern.
+introduces:
+  - concept: "The programme's arguably most important finding: a schema-level ceiling (Admissible undecidable, delta has no commit case) that blocks every candidate invariant from ever being established, independent of the equality-closure question"
+  - concept: "The refutation that 'Assurance' is definable, a new corpus finding underlying the Admissible-undecidability blocker"
+  - concept: "The concrete demonstration that delta currently has no commit case, executed as K_1 IS K_0 -- the central transformation is presently a no-op"
+  - concept: "The genuinely important taxonomic finding that the invariant universe I is NOT one mathematical object: transition invariants and layer/type invariants are categorically distinct shapes, and merging them is a category error"
+  - concept: "'Step 259 SS259.18' -- a new corpus reference for the quantifier-indeterminacy failure mode, shown to apply identically to invariants as it already applied to congruence"
+  - concept: "The full seven-candidate invariant register with complete classification, equality-used, vacuity-safety, and testability columns"
+defines:
+  - term: "Schema-level ceiling"
+    definition: "The finding that no invariant candidate can be ESTABLISHED regardless of individual candidate merit, because the invariant schema's antecedent (Admissible) is undecidable and its consequent (delta's central commit case) is a no-op -- a structural blocker sitting above and independent of the equality-closure programme"
+refines:
+  - concept: "This reconstruction's already-tracked Step-287 numbering collision (file 1034)"
+    refinement: "CONFIRMED directly by the artifact's own opening notice, adopting the 287-EQUALITY/287-INVARIANTS disambiguation"
+  - concept: "This reconstruction's already-tracked M-6/M-7 vacuity-column and count corrections (file 1034)"
+    refinement: "CONFIRMED applied in this actual document: the vacuity column is split, and the testable-today count reads 'two, not one'"
+  - concept: "This reconstruction's already-tracked delta-commit-case gap (files 1006, 1008)"
+    refinement: "SHARPENED into the concrete finding that delta currently executes as a no-op (K_1 IS K_0) for the central case, directly underlying the new schema-level-ceiling finding"
+contradicts: []
+repeats:
+  - "The independence pattern (5 independent, 2 corpus-native) and the equality-dependency findings for I-C substantially confirm already-tracked patterns; this file's major distinctive contribution is the schema-level-ceiling finding and the I-is-not-one-object taxonomic finding."
+bridge_candidates:
+  - "'step 265' (Pi in K, object outside) -- cited for I-Pi's refinement; not yet directly encountered."
+  - "'Step 259 SS259.18' -- the quantifier-indeterminacy precedent for congruence; not yet directly encountered."
+  - "The corpus location where 'Assurance' was refuted as definable, underlying the Admissible-undecidability blocker; not yet directly encountered."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the schema-level ceiling finding (Admissible undecidable + delta has no commit case) as arguably the programme's single most important result, blocking every invariant independent of equality closure."
+  - "dimension-registry.md: record the taxonomic finding that the invariant universe I is not one mathematical object -- transition invariants and layer/type invariants are categorically distinct, and merging them is a category error."
+  - "dimension-registry.md: record the full seven-candidate invariant register and the dependency-matrix finding that I-C is the most dependency-loaded candidate, decided entirely by Decision 3."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step-287 numbering collision, delta-commit-case gap, and equality-dependency findings (files 1006-1008, 1018-1019, 1026-1034)"
+  supports_dimension: "Delivers a new, more fundamental schema-level blocker sitting above the equality-closure question, and a genuinely important taxonomic finding separating two kinds of invariants"
+  refines_or_contradicts: "refines and sharpens prior findings into a more fundamental structural result"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The schema-level ceiling finding is directly checkable against the seven-candidate register's own testability column, where every schema-shaped candidate is marked untestable for exactly this reason."
+undefined_concepts: []
+open_questions:
+  - "'step 265' and 'Step 259 SS259.18', not yet directly encountered."
+  - "The corpus location refuting 'Assurance' as definable."
+tier2_triggered: true
+tier2_reason: "Resolves the long-tracked 'REFINED-STEP-287-INVARIANTS.md' bridge candidate and delivers what is arguably the entire programme's most important finding to date: a schema-level ceiling (Admissible undecidable, delta has no commit case) blocking every candidate invariant independent of the equality-closure question, plus a genuinely important taxonomic finding that the invariant universe is not one mathematical object. Classified importance critical and confidence high given the scale, precision, and structural significance of these findings."

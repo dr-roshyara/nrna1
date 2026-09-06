@@ -1,0 +1,86 @@
+sequence: M0160
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-181001_perplexity-research-response-r-req.md
+title: "PERPLEXITY RESEARCH RESPONSE: ℛ_req Analysis — with a source-characterization discrepancy"
+date: "20260902-181001"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: EXTERNAL_LITERATURE
+  secondary_note: >
+    An AI-research-tool ("Perplexity") response purporting to analyze M0159's ℛ_req document,
+    proposing ~10 additional formal-logic distinctions sourced from academic epistemology/modal-logic
+    literature (Quine, Kant, Kripke, Tarski, Gödel, Church/Turing, Fagin et al., Hintikka) not
+    previously present in this reconstruction's ℛ_req discussion.
+source_role: PRIMARY
+canonical_source: M0160
+importance: high
+confidence: medium
+about: >
+  Proposes formal-logic-literature-sourced additions to ℛ_req (Truth/Validity, Satisfiability/
+  Unsatisfiability, Soundness/Completeness, Decidability, Analytic/Synthetic, A-Priori/A-Posteriori,
+  Necessary/Contingent, Local/Global, Intentional/Extensional, De-Dicto/De-Re) and assesses M0159's
+  strengths/weaknesses — but its own characterization of M0159's structure ("8 categories, 47 core
+  distinctions... 12 gaps explicitly identified... 5 testable verification criteria") does NOT MATCH
+  M0159's actual content as read directly in this reconstruction (4 categories, ~9 named distinctions,
+  2 verification criteria, no explicit "12 gaps" section) — flagged as a genuine, unresolved
+  source-characterization discrepancy.
+introduces:
+  - "Ten candidate additional distinctions from formal logic/epistemology literature, tiered: Tier 1 — Truth vs. Validity (Tarski), Satisfiability vs. Unsatisfiability (Enderton); Tier 2 — Soundness vs. Completeness (Gödel), Decidability vs. Undecidability (Church/Turing), Analytic vs. Synthetic (Quine), A Priori vs. A Posteriori (Kant/Kripke), Necessary vs. Contingent (Kripke), Local vs. Global (KR literature), Intentional vs. Extensional (Fagin et al.), De Dicto vs. De Re (Hintikka); Tier 3 — Intrinsic vs. Extrinsic (action theory), Rigid vs. Non-Rigid designators (Kripke)"
+  - "A refined 'Adequate' definition: R is adequate for question Q iff D_Q⊆Preserved(R), where D_Q is the set of distinctions required to answer Q specifically — a question-relative (not universal) adequacy criterion, sharpening M0159's own adequacy language"
+  - "A context-parameterized refinement of the Separation Test: ∀d∈ℛ_req,∀v1,v2∈V_d,v1≠v2⟹Rep(v1,c)≠Rep(v2,c) — adding an explicit context parameter c to address 'context-sensitivity of distinctions' not covered by M0159's own tests"
+  - "A tiered-exception refinement to Projection Adequacy: 'allow projections to lose Tier 2/3 distinctions, but not Tier 1' — a graded adequacy criterion rather than an all-or-nothing one"
+  - "A governance/ratification timeline template (§8.1): HPA review of ℛ_req v0.1 (Week 1) → incorporate feedback (Week 2) → ratify ℛ_req v1.0 (Week 3) → use in kernel selection (Week 4) — the first concrete week-by-week ratification schedule proposed anywhere in this reconstruction's read order for any open decision item"
+  - "Long-term research directions not previously named in this reconstruction: Dynamic ℛ_req (may change as the system evolves), Context-sensitive ℛ_req (required distinctions may depend on context), Learned ℛ_req (system may learn which distinctions matter) — genuinely new meta-level questions about ℛ_req's own stability"
+defines: []
+refines:
+  - "M0159's adequacy/preservation definitions: restates them with near-identical formal structure (preserves/collapses/adequate) but adds the question-relative D_Q⊆Preserved(R) refinement and the context-parameterized Separation Test — incremental sharpening, not a correction"
+contradicts:
+  - "MAJOR UNRESOLVED DISCREPANCY, flagged not resolved: this document's own Executive Summary and Part 10 characterize its source as having '8 categories', '47 core distinctions', '12 gaps explicitly identified', and '5 testable verification criteria' (§10.1: 'Comprehensive — Covers 8 categories, 47 core distinctions... Verifiable — 5 testable verification criteria... Honest — 12 gaps explicitly identified'). M0159, read directly in this reconstruction, has 4 categories (§2.1-2.4), approximately 9 explicitly named/numbered distinctions, 2 verification criteria (§5: Separation Test, Round-Trip Transformation Test), and no section presenting or numbering '12 gaps'. Three possibilities, none confirmed: (a) this 'Perplexity' analysis fabricated/hallucinated structural detail about a document it was ostensibly analyzing — an instance, ironically, of exactly the AI-overclaiming failure mode this entire corpus's epistemic discipline exists to guard against; (b) a substantially larger/different version of the ℛ_req document (an 'ℛ_req v0.1' per this document's own §8.1 ratification timeline) exists elsewhere, of which M0159 is only an excerpt or an earlier/later draft; (c) M0159 and this document were produced independently and reference-mismatched. This is a corpus-integrity finding requiring reconciliation at the eventual global-reclassification pass, not resolvable from the two documents alone."
+repeats:
+  - "The corpus's own already-tracked distinctions, restated as 'confirmed by formal KR literature' (§9.1): Knowledge Status, Justification Status, Support Status, Evidence Type, Identity/Equality/Equivalence — matching M0159's own inventory items 1.1, 1.2, 3.1, 1.3, though under slightly different names (e.g. 'Support Status' for M0159's 'Evidence Directionality')"
+bridge_candidates:
+  - "Whether a fuller '8 categories, 47 core distinctions' version of ℛ_req exists anywhere in this reconstruction's corpus or the adjacent docs/knowledgeos/research/ tree — the source-characterization discrepancy above makes this a live, unresolved possibility"
+  - "Whether the ten proposed additional distinctions (Truth/Validity, Satisfiability, Soundness/Completeness, etc.) are ever formally incorporated into any later version of ℛ_req"
+  - "Whether the proposed week-by-week ratification timeline (HPA review→ratify ℛ_req v1.0→use in kernel selection) was ever actually followed"
+mathematical_content: >
+  Restates M0159's preservation/collapse/adequacy definitions with minor refinements (question-
+  relative adequacy, context-parameterized separation), and states the ten additional distinctions'
+  formal shorthand (⊨α vs. Σ⊨α, Σ satisfiable/unsatisfiable, ⊢α⇒⊨α vs. converse, etc.) — citing
+  established logic/philosophy literature, not deriving new results.
+gita_content: null
+kernel_content: >
+  Extends ℛ_req's candidate inventory with a formal-logic/epistemology literature layer distinct
+  from the corpus's own KR-CONTR-FDE/Gap-Theory-v1.0 self-citations, while simultaneously
+  demonstrating (via its own apparent source-characterization mismatch) a live instance of the
+  overclaiming risk this project's epistemic discipline is designed to catch.
+registry_updates:
+  - "Twelfth instance of the cross-domain external-literature corroboration pattern — this one drawing on formal logic/epistemology literature (Quine, Kant, Kripke, Tarski, Gödel, Church/Turing, Fagin et al., Hintikka) rather than KR&R textbooks"
+  - "FLAGS a significant, unresolved source-characterization discrepancy between this document's own description of M0159 and M0159's actual content as directly read in this reconstruction — a corpus-integrity finding, possibly indicating an unlocated fuller ℛ_req v0.1 document, or an instance of AI-generated overclaiming about a source"
+  - "First concrete week-by-week ratification timeline proposed for any open decision item in this reconstruction's read order"
+anchor_test:
+  anchor: true
+  supports_dimension: "ℛ_req additional distinctions from formal logic literature; source-characterization discrepancy against M0159; ratification timeline"
+  refines_or_contradicts: "refines (additional distinctions); contradicts (source-characterization discrepancy against M0159, unresolved)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Comprehensive — Covers 8 categories, 47 core distinctions\" (§10.1) — directly conflicting with M0159's actual 4 categories / ~9 distinctions as read in this reconstruction"
+  - "\"Honest — 12 gaps explicitly identified\" (§1.1) — no such numbered gap section appears in M0159 as read"
+  - "\"Perplexity research confirms the document's strengths and identifies 10 additional distinctions for consideration.\" — the document's own closing self-assessment"
+undefined_concepts:
+  - "Whether 'ℛ_req v0.1' (named in the §8.1 ratification timeline) is the same document as M0159, or a distinct, fuller version not located in this reconstruction's read order"
+open_questions:
+  - "Is there a fuller '8 categories, 47 core distinctions' ℛ_req document anywhere in this reconstruction's corpus, or did this Perplexity response mischaracterize M0159?"
+  - "Were any of the ten proposed additional distinctions or the ratification timeline ever acted upon?"
+tier2_triggered: true
+tier2_reason: >
+  Flags a significant, unresolved discrepancy between this document's own detailed characterization
+  of its source ℛ_req document (8 categories, 47 distinctions, 12 gaps, 5 verification criteria) and
+  M0159's actual content as directly read in this reconstruction (4 categories, ~9 distinctions, 2
+  verification criteria, no numbered gap section) — a corpus-integrity finding requiring
+  reconciliation, potentially significant given this project's own core discipline against
+  unsupported overclaiming.

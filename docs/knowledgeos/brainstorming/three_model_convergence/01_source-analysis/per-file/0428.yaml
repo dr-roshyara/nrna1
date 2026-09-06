@@ -1,0 +1,45 @@
+sequence: 428
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-135525_gita-chapter-1-as-first-observation-variant.md
+title: "Near-Duplicate Variant of 0427 (Gita Chapter 1 as First Observation)"
+date: "2026-08-26"
+bytes: 12648
+model:
+  primary: g1
+  secondary: c1
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 427
+importance: low
+confidence: high
+about: >
+  Near-byte-identical variant of file 0427, confirmed via diff: differs only by the absence of a leading
+  "chapter 01" label line and a trailing "#" marker line present in 0427 -- zero substantive content
+  difference. Filename self-declares "-variant," matching the corpus's established convention for
+  near-duplicate reproductions. Recorded minimally per the established duplicate protocol.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Entire substantive content duplicates 0427 (Gita Chapter 1 first-observation analysis: 'more information does not imply more decision certainty,' non-frozen ideal state, Uncertainty-about-Decision != Uncertainty-about-Observation)"
+    canonical_source: 427
+    novelty: "none -- near-byte-identical variant differing only by two trivial marker lines, verified via diff"
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0427"
+  supports_dimension: "Near-duplicate variant; no independent evidentiary weight"
+  refines_or_contradicts: "none -- duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "NOT TRIGGERED -- near-byte-identical variant of 0427, self-declared in filename, verified via diff (differs only by two trivial marker lines)"

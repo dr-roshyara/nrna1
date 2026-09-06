@@ -1,0 +1,80 @@
+sequence: 1059
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-289/04-derivation-governance-matrix.md
+title: "04 -- Derivation/Governance Matrix (Step 289 SSSS6, 7): Delivers a Definitive Twenty-One-Question D/E/N/G1 Classification and a Genuinely Important New Governance-Discipline Principle -- Four Specific Items Must Be WITHHELD From Governance Because They Are Forced/Derivable, Not Matters of Preference"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the fourth numbered Step-289 artifact, delivering a comprehensive four-way classification of every open question in the equality/identity research programme and a new governance-discipline principle"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1059
+importance: critical
+confidence: high
+about: >
+  "04 — Derivation / Governance Matrix (mandate §§6, 7)," establishing a strict four-way classification --
+  D (derivable) · E (empirically establishable) · N (normative) · G1 (irreducible) -- explicitly never
+  collapsed, with secondary qualifiers noted separately, applied to twenty-one distinct open questions across
+  the entire equality/identity research programme.
+
+  **Delivers the definitive count**: 5 D (derivable: provenance identity ESTABLISHED, policy composition
+  ESTABLISHED, congruence-under-operations and merge-laws both blocked pending upstream fixes); 2 E
+  (empirically establishable, BOTH ALREADY EXECUTED, BOTH NEGATIVE: equality-under-withdrawal fails,
+  equality-under-retraction's monotone-growth claim is refuted); 13 N (normative); 1 G1 (irreducible: `≡`'s
+  decision procedure itself, per `012§35`'s theorem-shaped undecidability).
+
+  **DELIVERS A GENUINELY IMPORTANT NEW GOVERNANCE-DISCIPLINE PRINCIPLE, EXPLICITLY POSED AS "WHAT MUST NOT BE
+  GIVEN TO GOVERNANCE?"**: "Handing an authority a derivable question manufactures a decision that can no
+  longer be revised by evidence." Identifies FOUR SPECIFIC ITEMS that must be WITHHELD from the governance
+  surface because they are forced or testable, not matters of preference: (1) congruence under operations --
+  the already-tracked "258-A" criterion is an EXECUTABLE TEST once `≡`,`𝒯`,`δ` are fixed; "Governance fixes
+  the inputs; it must not declare the outcome"; (2) equality under merge -- `25J.45-47`'s commutativity/
+  associativity/idempotence "are LAWS TO BE TESTED, not chosen"; (3) the `id`/mutable-state repair -- "FORCED:
+  if `StructuralValid`'s no-dangling clause holds and `e.state` is mutable, then `state∉id`. Governance
+  AUTHORIZES the repair; it does not SELECT it"; (4) `≈`'s two degenerate endpoints (the already-tracked
+  `≈_∅`/`≈_{full}` finding, file 1057) -- "excluded by MEASUREMENT, not by preference. The choice space is 30,
+  and offering 32 would present TWO NON-OPTIONS AS OPTIONS." Boxed: **"Governance decides `𝒪`, `𝒯`, `≡` and
+  the scoping parameters. It must NOT decide congruence, merge laws, or a forced repair."**
+
+  **DELIVERS A FURTHER GENUINELY IMPORTANT EPISTEMIC-DISCIPLINE CLOSING PRINCIPLE**, distinct from and
+  complementary to the four withheld items: "one item must not be given to governance because it is NOT
+  DECIDABLE BY ANYONE: `≡`'s total Boolean procedure -- `012§35` makes it a THEOREM-SHAPED LIMIT. AN AUTHORITY
+  CANNOT RATIFY DECIDABILITY INTO EXISTENCE." This precisely distinguishes three categories of governance-
+  surface item: what governance decides (genuine preferences/scoping choices), what is forced but requires
+  authorization (not selection), and what no authority anywhere can decide regardless of who is asked.
+introduces:
+  - concept: "The definitive twenty-one-question D/E/N/G1 classification for the entire equality/identity research programme, with a strict discipline against category collapse"
+  - concept: "The new governance-discipline principle identifying four specific items that must be withheld from the governance surface because they are forced or testable rather than matters of preference: congruence under operations, equality-under-merge laws, the id/mutable-state repair, and approx's two degenerate endpoints"
+  - concept: "The closing epistemic-discipline principle distinguishing what governance decides from what no authority anywhere can decide: an authority cannot ratify decidability into existence, applied to equiv's theorem-shaped undecidability"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked D288/D289 gap and decision registers (files 1005, 1047, 1055, 1057-1058)"
+    refinement: "CONSOLIDATED into a definitive twenty-one-question D/E/N/G1 classification, adding the genuinely new withheld-from-governance discipline principle"
+  - concept: "This reconstruction's already-tracked 258-A congruence criterion and the 30-usable-candidate approx_X finding (files 1044, 1057)"
+    refinement: "REUSED as concrete instances of the new withheld-from-governance principle, distinguishing authorization from selection"
+contradicts: []
+repeats:
+  - "The twenty-one-question classification substantially consolidates already-tracked findings across the entire equality-research arc; this file's distinctive contribution is the new governance-discipline principle identifying what must be withheld from the governance surface."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the new governance-discipline principle: four specific items (congruence under operations, equality-under-merge laws, the id/mutable-state repair, approx's degenerate endpoints) must be withheld from the governance surface because they are forced or testable, not preferences."
+  - "dimension-registry.md: record the closing epistemic-discipline principle: an authority cannot ratify decidability into existence, applied to equiv's theorem-shaped undecidability (012§35)."
+anchor_test:
+  anchor: "This reconstruction's already-tracked gap/decision registers and the 258-A/30-usable-candidate findings (files 1005, 1044, 1047, 1055-1058)"
+  supports_dimension: "Consolidates every open question into a definitive classification and delivers a genuinely new governance-discipline principle"
+  refines_or_contradicts: "confirms and consolidates prior findings; adds a new governing principle"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The twenty-one-question classification is directly checkable against files 1005-1058's own already-documented findings for exact consistency."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers a definitive twenty-one-question D/E/N/G1 classification consolidating the entire equality-research programme, plus a genuinely important new governance-discipline principle identifying four specific items that must be withheld from the governance surface because they are forced or testable rather than matters of preference, complemented by a closing epistemic-discipline principle about the limits of authority over undecidable questions. Classified importance critical and confidence high given the methodological significance and rigor of these findings."

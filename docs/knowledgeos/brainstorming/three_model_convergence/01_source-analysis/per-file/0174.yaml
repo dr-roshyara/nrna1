@@ -1,0 +1,169 @@
+sequence: "0174"
+path: docs/knowledgeos/brainstorming/kernel/20260824-001005-critical-thinking-source-inquiry-and-question-primitive.md
+title: "A practical critical-thinking/logic guide extracted into twelve KOS-CT-01..12 invariants and a large set of new kernel primitives (Question, Inquiry, Hypothesis, Assumption, Argument, Inference, Test, CounterEvidence, ReasoningMethod) -- explicitly synthesized with 0173's Shieber extraction into a versioned 'Kernel Candidate v0.2' with five bounded contexts"
+date: "2026-08-24"
+bytes: 21000
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0174"
+importance: critical
+confidence: high
+about: >
+  Extracts a practical four-part critical-thinking/logic/problem-solving/communication guide as a
+  KnowledgeOS domain-analysis source ("extract the domain primitives that critical thinking requires,"
+  not the methodology itself), directly continuing the Western-epistemology arc from 0171-0173 and
+  explicitly combining with 0173's Shieber extraction into a labeled, versioned "Kernel Candidate v0.2."
+  Key discoveries: (1) SCQH (Situation-Complication-Question-Hypothesis) exposes a missing kernel object,
+  Question, with full domain identity (subject/context/scope/purpose/origin/status), distinguished from
+  Inquiry (the investigating activity/process) -- AI agents "participate in an Inquiry," they do not
+  directly create knowledge; (2) Hypothesis made first-class with an explicit lifecycle (Proposed->
+  UnderTest->Supported/Refined/Rejected) and identity fields, motivating a RejectedHypothesis-is-knowledge
+  principle (KnowledgeOS should preserve epistemic alternatives considered and rejected, not only accepted
+  conclusions -- valuable for architectural archaeology) and a Hypothesis!=Claim boundary preventing AI
+  speculation from silently becoming knowledge; (3) Assumption made first-class with challengeable
+  lifecycle (Proposed/Accepted/Challenged/Validated/Invalidated/Superseded) and an explicit dependency
+  relation (Claim depends-on Assumption), motivating a "claim inherits epistemic risk from unresolved
+  assumptions" candidate invariant; (4) Argument made first-class (Purpose/Question/Premises/Assumptions/
+  Evidence/Inference/Conclusion/Implications/PointOfView, from the Paul-Elder framework) replacing "AI
+  text -> Claim" with "Argument -> Conclusion"; (5) Inference made an explicit first-class relation/process
+  (not merely a claim-references-evidence link), preserving how a conclusion was obtained, feeding
+  deterministic replay/auditability; (6) ReasoningMethod (Deductive/Inductive, explicitly NOT Abductive --
+  flagged as unestablished by this source) as a typed property of Inference; (7) Test distinguished from
+  Verification (Test = activity producing evidence relevant to a hypothesis; Verification = assurance
+  activity against an established criterion); (8) Refutation made a first-class event/relation
+  (Evidence-contradicts->Claim, Test-refutes->Hypothesis), producing a richer EvidenceRelation taxonomy
+  (Supports/Contradicts/Neutral/Contextualizes) replacing a flat evidence[] list; (9) a multi-dimensional
+  ReasoningAssessment vocabulary from the Paul-Elder intellectual standards (Clarity/Accuracy/Precision/
+  Relevance/Depth/Breadth/Logic/Significance/Fairness), explicitly kept separate from KnowledgeClaim itself
+  as a DDD boundary, avoiding a universal confidence scalar; (10) Relevance modeled as a relation to a
+  Question-in-Context, not an intrinsic Evidence property; (11) 5W2H as an interrogation lens on Inquiry,
+  not a literal entity; (12) Problem (CurrentState/DesiredState/Gap/Impact/Context) explicitly placed one
+  level above the Kernel, in an Inquiry-context/knowledge-work layer, not a kernel primitive; (13) MECE
+  reframed as a DecompositionQuality/CoverageAssessment concern, not a universal truth rule, feeding a
+  Question-decomposes-into-Question[] kernel relation; (14) Decision explicitly kept distinct from
+  Knowledge (Knowledge!=Decision; a decision uses knowledge, does not become knowledge merely by being
+  made) while requiring an explicit knowledge basis (alternatives/criteria/evidence/assumptions/decider/
+  time); (15) RACI motivating an epistemic-authority != execution-responsibility boundary (author!=
+  authority); (16) Fallacy and cognitive Bias explicitly separated (logic-flaw vs. systematic cognitive
+  error) and both modeled as ArgumentAssessment/InquiryAssessment defects, never as properties directly on
+  Claim, so a detected fallacy flags the reasoning without automatically falsifying the conclusion; (17)
+  Confirmation-bias risk motivating CounterEvidence as first-class and an Inquiry structure explicitly
+  tracking SupportingEvidence/CounterEvidence/Hypotheses/AlternativeInterpretations as an anti-hallucination
+  design; (18) correlation!=causation motivating typed Inference relations (CorrelationInference/
+  CausalInference/etc.) and stronger evidentiary requirements for CausalClaim; (19) Pattern introduced as
+  kernel-adjacent (Pattern != Rule, Pattern != Truth), placed in a "Knowledge Reasoning Context" outside the
+  strict kernel; (20) a SufficiencyAssessment/InquiryCompletionCriterion concept for agent-independent
+  "when is inquiry complete" governance, avoiding bare "Claude says I have enough information"; (21) a
+  contradiction-is-information principle producing a richer EpistemicStatus enum (Proposed/Supported/
+  Contested/Refuted/Accepted/Superseded) instead of true/false; (22) Perspective as a relation on
+  Argument/Claim (Developer/Operations/Security/Governance viewpoints), modeled narrowly as
+  ArgumentPerspective rather than a large aggregate; (23) a meta-level validation of the corpus's own
+  "lens" architecture -- the book itself is a collection of lenses, and KnowledgeOS should supply generic
+  Assessment objects to which Epistemic/Logic/Governance lenses attach, with the explicit rule "lenses
+  inspect domain objects; they do not redefine them." Produces twelve named KOS-CT-01..12 candidate
+  invariants (explicit question, hypothesis separation, assumption explicitness, inference explicitness,
+  testability, counter-evidence, correlation/causation separation, contextual relevance, multidimensional
+  reasoning quality, contradiction-is-first-class, epistemic-transition explicitness, revision). Combines
+  with 0173's Shieber extraction into "Kernel Candidate v0.2": a Knowledge Kernel (Question/Hypothesis/
+  Evidence/Claim/Argument/Inference/Assessment/Provenance) plus four surrounding bounded contexts --
+  Inquiry Context, Reasoning Context, Decision Context, Governance Context -- collaborating through
+  explicit contracts. Explicitly rejects importing generic self-help/methodology content (3-7-item memory
+  heuristic, power poses, storytelling technique, arbitrary prioritization matrices, every listed bias/
+  fallacy as hard rule) as architecture, preserving a Domain-Truth != Methodology != Heuristic !=
+  Implementation-Preference distinction. Explicitly flags this as "Kernel Candidate v0.2," not frozen, with
+  more lenses (testimony, argumentation, scientific method, organizational knowledge, information theory,
+  decision theory) still to apply.
+
+introduces:
+  - "Twelve named KOS-CT-01..12 candidate invariants: explicit question (KOS-CT-01), hypothesis separation
+    (KOS-CT-02), assumption explicitness (KOS-CT-03), inference explicitness (KOS-CT-04), testability
+    (KOS-CT-05), counter-evidence (KOS-CT-06), correlation/causation separation (KOS-CT-07), contextual
+    relevance (KOS-CT-08), multidimensional reasoning quality (KOS-CT-09), contradiction-is-first-class
+    (KOS-CT-10), epistemic-transition explicitness (KOS-CT-11), revision (KOS-CT-12)"
+  - "A large new set of candidate kernel/kernel-adjacent primitives beyond 0173's Shieber model: Question,
+    Inquiry, Hypothesis (with RejectedHypothesis-is-knowledge), Assumption, Argument, Inference (as
+    explicit relation/process), Test (distinguished from Verification), CounterEvidence, ReasoningMethod,
+    Pattern (kernel-adjacent), Decomposition, Perspective, and a five-value EvidenceRelation taxonomy
+    (Supports/Contradicts/Neutral/Contextualizes)"
+  - "'Kernel Candidate v0.2': explicitly versioned combination of the Shieber (0173) epistemology extraction
+    with this file's critical-thinking extraction into a Knowledge Kernel (Question/Hypothesis/Evidence/
+    Claim/Argument/Inference/Assessment/Provenance) surrounded by four bounded contexts -- Inquiry Context,
+    Reasoning Context, Decision Context, Governance Context -- explicitly NOT implemented as one giant
+    KnowledgeAggregate"
+  - "Explicit lenses-inspect-do-not-redefine rule: 'the kernel supplies the objects, the lenses supply the
+    evaluation' -- a meta-architectural validation of the corpus's own established lens methodology, applied
+    reflexively to this file's own source material"
+
+defines:
+  - "Twelve KOS-CT-01..12 candidate invariants (see introduces) -- PROPOSED only, not adjudicated or
+    admitted by this reconstruction"
+
+refines:
+  - "Directly extends and versions 0173's Shieber-derived seven-concept Kernel candidate into an explicit
+    'Kernel Candidate v0.2,' making this the third and most elaborated installment of the Western-
+    epistemology-arc Kernel-construction track (0171 Williamson -> 0172 Audi -> 0173 Shieber -> 0174
+    Critical Thinking), now running in parallel to (and structurally distinct from) the DDD/Sanskrit/
+    Chinese Kernel Boundary Discovery cycle's KnowledgeAggregate+ConflictRecord+VerificationPort hypothesis
+    (0144-0170)"
+  - "Sharpens 0172's Audi-derived Grounding/Derivation concepts by making Argument and Inference fully
+    first-class with explicit structure, rather than implicit relationships"
+
+contradicts: []
+
+repeats:
+  - {concept: "Coherence/artificial-corroboration risk requiring counter-evidence tracking", canonical_source: "0172", novelty: low}
+  - {concept: "Observation != Reality / Claim != State-of-affairs boundary", canonical_source: "0173", novelty: low}
+
+bridge_candidates:
+  - "The explicitly versioned 'Kernel Candidate v0.2' is now the most elaborated of the two parallel Kernel-
+    construction tracks in the corpus's reading order (Western-epistemology arc vs. DDD/Sanskrit/Chinese
+    cycle) -- worth tracking closely for whether a v0.3+ appears, whether the two tracks are ever explicitly
+    reconciled or compared by the source itself, and whether this reconstruction's own unresolved_equivalence
+    registry entry (added at 0173) needs updating to reflect the now-versioned, richer v0.2 model rather than
+    the bare seven-concept Shieber sketch"
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- explicitly framed as Kernel Candidate v0.2, not frozen, with the source itself stating more
+    lenses remain to be applied before an actual kernel specification"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Refines/extends 0173's Shieber Kernel candidate into a versioned, richer model; does not contradict the DDD-cycle hypothesis but proceeds independently of it."
+  alternative_minimal_kernel: "Kernel Candidate v0.2: Question/Hypothesis/Evidence/Claim/Argument/Inference/Assessment/Provenance, plus four bounded contexts (Inquiry/Reasoning/Decision/Governance) -- the most elaborated alternative Kernel candidate in the corpus's reading order so far, independent of the KnowledgeAggregate+ConflictRecord+VerificationPort hypothesis"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "This file explicitly versions its own output ('Kernel Candidate v0.2'), the first instance in the
+    corpus's reading order of a Kernel-candidate proposal using an explicit version number rather than a
+    prose 'illustrative sketch' framing -- worth watching whether this versioning discipline continues and
+    whether it eventually supersedes or merges with the DDD-cycle hypothesis's own (unversioned) sketch"
+  - "The RejectedHypothesis-is-knowledge principle and the lenses-inspect-do-not-redefine rule are both
+    reusable methodological principles with direct applicability to this reconstruction's own research
+    ledger practice (which already records rejected/falsified hypotheses, e.g. Ledger Entry 49's six-part
+    aggregate falsification) -- independent confirmation, from within the corpus, of a discipline this
+    reconstruction already follows"
+
+undefined_concepts: []
+open_questions:
+  - "Whether Kernel Candidate v0.2 is further versioned (v0.3+) or ever explicitly reconciled/compared with
+    the DDD-cycle's KnowledgeAggregate+ConflictRecord+VerificationPort hypothesis"
+  - "Whether the twelve KOS-CT invariants are merged with 0173's ten KOS-EPI invariants into one numbered
+    series, or kept permanently separate"
+
+tier2_triggered: true
+tier2_reason: >
+  Twelve new named KOS-CT invariants; a large set of new candidate kernel primitives (Question/Inquiry/
+  Hypothesis/Assumption/Argument/Inference/Test/CounterEvidence); an explicitly versioned 'Kernel Candidate
+  v0.2' extending 0173's model into a second, parallel Kernel-construction track running alongside the
+  DDD/Sanskrit/Chinese Kernel Boundary Discovery cycle.

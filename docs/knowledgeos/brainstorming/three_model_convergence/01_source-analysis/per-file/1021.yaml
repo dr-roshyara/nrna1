@@ -1,0 +1,102 @@
+sequence: 1021
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/10-GOVERNANCE-HANDOFF-STEP-285-RATIFICATION.md
+title: "10 -- Governance Handoff: Step-285 Ratification: The Actual, Concrete K-CANONICAL-DECISION Proposal Ready for Governance to Ratify, With the Four Downstream Acts Ordered by Dependency, a NEW Verified 'Reject vs I-12 vs Article 8' Governance Conflict, and the Formal Rejection of an Unratified 'Sufficient(K,O,I)' Signature"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual formal governance-handoff artifact, preparing (not taking) the K-CANONICAL-DECISION act this reconstruction has tracked as outstanding since files 0993, 0998-0999, 1006-1007, 1012, 1015"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1021
+importance: critical
+confidence: high
+about: >
+  "10 · Governance Handoff — Step-285 Ratification," status "HANDOFF PREPARED — not a decision. 1 act ready
+  to take · 4 acts identified downstream · 2 new register items." Explicitly disciplined: "This artifact
+  prepares one governance act and identifies the rest. It takes NONE of them."
+
+  **§1 delivers the actual, concrete, ready-to-ratify `K-CANONICAL-DECISION` proposal in full structured
+  form**: ratify the RECONCILIATION `(𝒜,ℛ)=_semantic π_K(K_t)` (not a choice between rivals), anchored to
+  `K_t` over the 8 ratified primitives, with the already-tracked four-line scope boundary REQUIRED TO BE
+  RATIFIED VERBATIM as part of the act itself (not a caveat): semantic projection ESTABLISHED / operational
+  equivalence NOT ESTABLISHED / observational equivalence REFUTED / computable projection BLOCKED. **Lists
+  four things explicitly NOT ratified by this act**: that `(𝒜,ℛ)` is an implementable kernel contract; that
+  it is "the" kernel state; that the projection has established operational meaning; that the lanes share a
+  semantic interpretation of Action/Event/Policy externality (they agree operationally only). Cites its
+  evidence base (`exec/t285_reconcile.py`, `exec/t285_equality.py`, D285-1/-6/-7) and marks
+  `authority_required: Governance -- research cannot take this`.
+
+  **§2 delivers the four downstream governance/derivation acts, explicitly ordered by dependency**: (2)
+  enumerate `𝓘` over `K_t`, blocked on act 1; (3) resolve identity+equality (Step 254 Decision 3, `Π∈≡`?),
+  cross-referencing a NEW bridge candidate **"REFINED-STEP-287"** for both branches' consequences; (4)
+  determine and ratify `𝒪_core` against ratified `K_t`, blocked on acts 1-2, "materially easier now --
+  enumeration has a fixed target"; (5) resolve `Reject↔I-12↔Article 8`, independent, can proceed in
+  parallel; (6) derive `δ`, blocked on acts 3-5. **Explicitly notes acts 3 and 5 can be taken now,
+  independent of act 1.**
+
+  **§3 delivers TWO NEW REGISTER ITEMS**: (i) the `Reject↔I-12↔Article 8` conflict is CONFIRMED VERIFIED in
+  the corpus (quoting "A6/Article 8.3 and Reject expose unresolved architectural semantics," Step 284
+  missings, and Step 291's own call to resolve it) -- "a governance act, and it does not depend on act 1";
+  (ii) **`Sufficient(K,𝒪,𝓘)` is explicitly REJECTED as an unratified construction**: "measured: the corpus
+  has `Sufficient(K,P,C,t)`, `Sufficient(K_t,Decision)`, `Sufficient(K_t,I_t,P_t,C_t,R_t)` -- several
+  arities, none over `𝒪` and `𝓘`. The reviewer's form is a CONSTRUCTION, and adopting it would import an
+  unratified signature. Recorded, not adopted."
+
+  **§4 delivers the file's own precise closing distinction**, superseding the earlier framing of "two
+  disjoint K candidates" needing governance to choose between them: boxed **"canonical state relationship
+  established ≠ canonical operational kernel established."** Reframes the reason two engineers still could
+  not implement the same kernel: NOT two incompatible `K`s any more, but that "the OPERATIONAL CONTRACT does
+  not exist" (`𝓘` unenumerated, identity/equality unresolved, `𝒪_core` unratified, rejection semantics
+  conflicted, `δ` underived, `Qualify` irreducible).
+
+  **§5 confirms the frontier is unchanged by this handoff**: one irreducible formal blocker (`Qualify`),
+  with the already-tracked Cavell reframing (file 1020) noted as a still-untested candidate.
+
+  **§6 delivers a comprehensive discipline closing statement**, and cross-references another NEW bridge
+  candidate, **"REFINED-STEP-285" §2b**, for the "epistemic-sub-state reading held as INTERPRETATION."
+introduces:
+  - concept: "The actual, concrete, structured K-CANONICAL-DECISION proposal, ready for governance to ratify, with its four-line scope boundary required verbatim as part of the act and four explicit non-ratified claims"
+  - concept: "The four downstream governance/derivation acts (invariant enumeration, identity/equality resolution, O_core ratification, rejection-semantics resolution, delta derivation), explicitly dependency-ordered, with acts 3 and 5 identified as independently actionable now"
+  - concept: "The newly verified 'Reject <-> I-12 <-> Article 8' governance conflict, confirmed present in the corpus and independent of act 1"
+  - concept: "The formal rejection of the unratified Sufficient(K,O,I) signature as an unadopted construction, distinct from several existing corpus arities of Sufficient"
+  - concept: "The precise closing distinction: canonical state relationship established does not equal canonical operational kernel established"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked outstanding K-CANONICAL-DECISION governance act (files 0993, 0998-0999, 1006-1007, 1012, 1015)"
+    refinement: "DELIVERED IN ITS ACTUAL, CONCRETE, READY-TO-RATIFY FORM for the first time, though still explicitly NOT taken here"
+  - concept: "This reconstruction's already-tracked framing of 'two disjoint K candidates needing governance to choose between them'"
+    refinement: "EXPLICITLY SUPERSEDED: the real remaining gap is not choosing between K models but that the operational contract (invariants, equality, operations, rejection, delta) does not yet exist"
+  - concept: "This reconstruction's already-tracked Qualify-as-declared-terminus reframing (file 1020)"
+    refinement: "CONFIRMED still on the register as a candidate, untested reframing, not affecting the current frontier"
+contradicts: []
+repeats:
+  - "The four-line scope boundary and the one-irreducible-blocker framing substantially repeat content already documented via files 1007, 1018-1020; this file's distinctive contribution is the actual, concrete governance-ready proposal and the two new register items."
+bridge_candidates:
+  - "'REFINED-STEP-287' -- cited for both branches' consequences of Decision 3; not yet directly encountered."
+  - "'REFINED-STEP-285' §2b -- cited for the epistemic-sub-state reading held as interpretation; not yet directly encountered."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the actual, concrete K-CANONICAL-DECISION proposal (ready for governance, not yet taken) and the four dependency-ordered downstream acts."
+  - "dimension-registry.md: record the two new register items: the verified Reject<->I-12<->Article-8 conflict, and the formal rejection of the unratified Sufficient(K,O,I) signature."
+  - "dimension-registry.md: record the precise closing distinction between canonical-state-relationship-established and canonical-operational-kernel-established."
+anchor_test:
+  anchor: "This reconstruction's already-tracked outstanding K-CANONICAL-DECISION act and the frontier findings (files 0993, 0998-1007, 1012, 1015, 1018-1020)"
+  supports_dimension: "Delivers the actual, concrete governance-ready proposal for the first time and two new register items, while confirming the frontier is otherwise unchanged"
+  refines_or_contradicts: "confirms and completes prior findings; supersedes the 'two disjoint K' framing with a sharper distinction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The K-CANONICAL-DECISION proposal's four-line scope boundary is directly checkable against files 1007/1018-1019's own already-documented findings for exact consistency."
+undefined_concepts: []
+open_questions:
+  - "'REFINED-STEP-287' and 'REFINED-STEP-285', not yet directly encountered."
+  - "Whether the K-CANONICAL-DECISION act is ever actually taken by a human governance authority."
+tier2_triggered: true
+tier2_reason: "Delivers the actual, concrete, ready-to-ratify K-CANONICAL-DECISION proposal this reconstruction has tracked as outstanding since files 0993-1015, plus two new register items (a verified Reject/I-12/Article-8 conflict, and a formally rejected unratified Sufficient signature). Classified importance critical and confidence high given the direct, structured, immediately actionable nature of this content."

@@ -1,0 +1,78 @@
+sequence: 221
+path: docs/knowledgeos/brainstorming/kernel/20260824-115021-ammerman-singer-belief-knowledge-and-truth-anthology-extraction.md
+title: "Ammerman & Singer, Belief, Knowledge, and Truth — Anthology Extraction"
+date: "2026-08-24"
+bytes: 22400
+model:
+  primary: g1
+  secondary: c1
+source_role: PRIMARY_RESEARCH
+canonical_source: 221
+importance: critical
+confidence: high
+about: >
+  Ammerman & Singer's anthology "Belief, Knowledge, and Truth: Readings in the Theory of Knowledge"
+  (Prichard, Whately, Peirce, Cook Wilson, Russell, Ryle, plus correspondence/coherence/pragmatic/
+  instrumentalist/social-agreement truth theories), mined as a direct extension of "our previous
+  synthesis" (explicitly referencing the 0216 lineage). Explicitly treated as a source that "does not
+  merely reinforce the previous synthesis... exposes several places where our KnowledgeOS vocabulary is
+  still too coarse." The anthology's own stated purpose -- keeping diverse and conflicting positions
+  together rather than declaring a winning theory -- is itself treated as architecturally significant,
+  directly motivating a "do not build TruthService" conclusion.
+introduces:
+  - concept: "Belief is not low-confidence knowledge (Prichard): knowing and believing are fundamentally different in kind, not degree; sharpens CONFIDENCE!=KNOWLEDGE to CONFIDENCE!=EPISTEMIC_KIND"
+  - concept: "Doubt as a distinct state from disbelief (Whately): 'not proven' as a legitimate verdict when evidence does not determine either side; introduces NOT_PROVEN as distinct from REJECTED"
+  - concept: "Peirce's Doubt->Inquiry->Settlement-of-Opinion->Belief->Action chain, identified as remarkably close to the corpus's independently-derived epistemic loop; key discovery: Inquiry is not the same thing as Knowledge"
+  - concept: "Proposed Inquiry Context as its own bounded context (Question/investigation/hypotheses/doubt/evidence-requests/acquisition/competing-explanations/progress/stopping-conditions/unresolved-questions/research-path/history), explicitly NOT owning Knowledge; its output is InquiryResult -> {Assessment, CandidateClaim, NotProven, InsufficientEvidence, Conflict}"
+  - concept: "Epistemic status vs. practical decision separation (Cook Wilson): an investigator may need to act as if a hypothesis were true despite insufficient evidence, with no contradiction between NOT_PROVEN epistemic status and 'proceed temporarily' decision -- strengthens the existing Decision Boundary's justification"
+  - concept: "Belief has agency/behavioral consequences (Peirce: belief guides desires and actions) -- Knowledge and Belief must not be collapsed merely because both are propositionally representable; proposed EpistemicAssessment -> Belief Policy -> Decision Policy -> Action chain"
+  - concept: "Knowledge by acquaintance vs. description (Russell) and knowing-how vs. knowing-that (Ryle) warn against reducing all knowledge to proposition+evidence; proposed KnowledgeKind as a domain distinction under investigation, not yet separate aggregates (DDD rule: preserve distinction first, prove aggregate ownership later)"
+  - concept: "Multiple incompatible truth theories (correspondence/coherence/pragmatic/instrumentalist/social-agreement) deliberately juxtaposed by the anthology -- directly motivates: KnowledgeOS must NOT build a TruthService, since doing so would silently choose one epistemological theory"
+  - concept: "COHERENCE!=TRUTH and CONSISTENCY!=TRUTH (reinforced via Davidson: a consistent belief set need not consist only of truths) -- KnowledgeOS consistency-checking must never silently become truth verification"
+  - concept: "CONSENSUS!=TRUTH and AUTHORITY!=TRUTH (social-agreement theory: public reproducibility explains rational authority but does not distinguish reliable from unreliable methods) -- validates the existing Authority boundary"
+  - concept: "EVIDENCE_STRENGTH!=TRUTH_FORCE (Cook Wilson: 'strong evidence' language applies precisely where evidence is insufficient to logically force the hypothesis) and MORE_CONFIDENCE!=MORE_TRUTH, proposed as AI Engineering Platform epistemic guardrails"
+  - concept: "New standardized AI epistemic protocol: Question->Scope->Doubt/Uncertainty->Hypotheses->Evidence->Inquiry->Assessment->Epistemic Status->Practical Decision->Action->Outcome->Revision, replacing the earlier flatter candidate->reasoning->admission model"
+  - concept: "Twenty invariant candidates consolidated (BELIEF!=KNOWLEDGE, BELIEF!=TRUTH, DOUBT!=FALSE, NOT_PROVEN!=REJECTED, REJECTION!=ABSENCE, INQUIRY!=KNOWLEDGE, ASSESSMENT!=KNOWLEDGE, DECISION!=KNOWLEDGE, ACTION!=BELIEF, plus prior invariants), plus one new headline invariant: EPISTEMIC_STATUS != PRACTICAL_DECISION"
+  - concept: "Correction to the prior single combinatorial state machine (UNKNOWN/ABSENT/INSUFFICIENT/QUESTIONABLE/CONFLICTED/REJECTED/VALIDATED): split into three separate orthogonal dimensions -- EpistemicStanding (SUPPORTED/NOT_PROVEN/CONFLICTED/REJECTED/UNKNOWN), EvidenceCondition (ABSENT/INSUFFICIENT/ADEQUATE/CONTESTED/INVALID), OperationalDisposition (NO_ACTION/INVESTIGATE/PROCEED/BLOCK/ESCALATE) -- explicit DDD lesson: ask whether values are actually different dimensions before building one combined status field"
+  - concept: "InquiryStoppingPolicy (RESOLVED/NOT_PROVEN/COST_EXCEEDS_VALUE/EVIDENCE_UNAVAILABLE/IDENTIFICATION_IMPOSSIBLE/DECISION_ALREADY_SUFFICIENT/AUTHORITY_REQUIRED/TIME_BOUND_EXPIRED), connecting Peirce's doubt-settlement account to the corpus's prior Value-of-Information research"
+  - concept: "Refined definition of UNKNOWN: not 'nobody knows' but 'the current inquiry has not established epistemically sufficient standing' -- distinguishes UNKNOWN_TO_US from KNOWN_BY_SOURCE_A / KNOWN_IN_CONTEXT_B"
+  - concept: "New bounded-context map: Governance -> Authority -> Knowledge Core -> {Evidence, Inquiry, Assessment} -> Reasoning Mechanisms -> Epistemic State -> Decision Boundary -> Action -> Outcome -> Reassessment, with Interpretation/Semantics/LLM/Statistics/Bayesian/Causal/Search/Experiment-Design as surrounding mechanisms"
+  - concept: "Sharpened KnowledgeOS definition: preserves governed relationships among questions/beliefs/claims/evidence/inquiry/assessment/epistemic standing/authority/revision/action WITHOUT collapsing epistemic status into practical decision or representation"
+defines: []
+refines:
+  - concept: "0216's synthesis (KnowledgeClaim/Evidence/Determination/Authority, eight bounded contexts) -- explicitly self-identified as 'our previous synthesis'"
+    refinement: "Adds a missing Inquiry Context (Peirce's doubt->inquiry->settlement chain), splits the prior single epistemic state machine into three orthogonal dimensions (EpistemicStanding/EvidenceCondition/OperationalDisposition), adds NOT_PROVEN as a distinct state, and strengthens the Decision-Boundary separation with Cook Wilson's epistemic-vs-practical-decision distinction."
+  - concept: "Kernel Candidate v0.2/v0.3's Inquiry/Reasoning/Decision/Governance bounded-context surround (0173/0174/0176)"
+    refinement: "Independently arrives at a near-identical Inquiry-as-separate-bounded-context conclusion via a completely different source (a classical epistemology anthology rather than Williamson/Audi/Shieber), strengthening (not merging with) the existing three/four-way unresolved_equivalence family."
+contradicts: []
+repeats:
+  - concept: "OpenInvestigation/KnowledgeInvestigation/Inquiry convergence (0193/0194/0174-0176)"
+    canonical_source: null
+    novelty: medium
+bridge_candidates:
+  - "This file's Inquiry Context and Peirce's Doubt->Inquiry->Settlement chain is a further, independent instance of the already-logged OpenInvestigation/KnowledgeInvestigation/Inquiry three-way unresolved_equivalence (0193/0194/0174-0176) -- now effectively a fourth convergent source. Registry entry extended, not re-created."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: extend the OpenInvestigation/KnowledgeInvestigation/Inquiry unresolved_equivalence entry to include this file's Peirce-derived Inquiry Context as a fourth independent convergent source."
+anchor_test:
+  anchor: "0216's synthesis lineage; OpenInvestigation/KnowledgeInvestigation/Inquiry unresolved_equivalence family"
+  supports_dimension: "Gita/philosophical model (classical Western epistemology) directly refining the Engineering-KnowledgeOS-model synthesis (0216)"
+  refines_or_contradicts: "refines 0216 explicitly (self-identified continuation); strengthens the Inquiry convergence family without merging it"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Worked migration-decision example (Question/Evidence/Assessment/Epistemic standing SUPPORTED/Uncertainty/Decision 'run pilot migration'/Decision basis) demonstrating the epistemic-status-vs-practical-decision separation concretely"
+  - "Explicit anthology self-description (diverse and conflicting positions deliberately kept together, not unified) cited as direct architectural justification for refusing to build a TruthService"
+undefined_concepts:
+  - "KnowledgeKind (propositional/procedural/acquaintance/descriptive) explicitly deferred as 'a domain distinction under investigation,' not specified further"
+open_questions:
+  - "Whether the proposed three-dimension epistemic-state split (EpistemicStanding/EvidenceCondition/OperationalDisposition) is ever reconciled with 0216's simpler epistemic lifecycle (CANDIDATE->ADMITTED->UNDETERMINED->...)"
+  - "Whether the 'Question->Doubt->Inquiry->Evidence->Belief/Assessment->Knowledge->Decision->Action->Revision' scenario-derivation exercise proposed as the next highest-value step is ever actually conducted"
+tier2_triggered: true
+tier2_reason: "Critical direct refinement of the 0216 synthesis lineage: introduces a missing Inquiry Context (independently converging with the corpus's prior OpenInvestigation/KnowledgeInvestigation/Inquiry family), corrects a combinatorial state-machine anti-pattern into three orthogonal dimensions, and produces a strong, well-justified 'do not build TruthService' architectural conclusion grounded directly in the anthology's own deliberate theory-pluralism."

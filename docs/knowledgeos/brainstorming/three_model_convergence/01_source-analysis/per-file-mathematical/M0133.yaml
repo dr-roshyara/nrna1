@@ -1,0 +1,88 @@
+sequence: M0133
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-175300_extraction-ziem-frames-of-understanding-in-text-and-discourse.md
+title: "EXTRACTION: Frames of Understanding in Text and Discourse (Ziem, 2014)"
+date: "20260902-175300"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: EXTERNAL_LITERATURE
+  secondary_note: >
+    Disciplined extraction of an academic linguistics monograph (Alexander Ziem,
+    frame semantics), translated systematically into KnowledgeOS vocabulary via
+    explicit "KnowledgeOS Translation" annotations after each cited passage.
+source_role: PRIMARY
+canonical_source: M0133
+importance: critical
+confidence: high
+about: >
+  A structured extraction of Ziem's frame-semantics theory (slots, fillers, default
+  values; evocation vs. invocation; hyperonym type reduction; matrix frames; generic
+  frames for metaphor; basic discourse-semantic figures; entrenchment via token/type
+  frequency), each concept explicitly mapped onto existing KnowledgeOS constructs
+  (ℛ_req, Boundary, Contr, Zero, Provenance, Lifecycle, Composition, δ).
+introduces:
+  - "U-relevance postulate: no U-relevant distinction may be excluded from analysis on grounds of theoretical convenience — external literature's own name for ℛ_req"
+  - "Slot / filler / default-value triad as the structural anatomy of a frame (Minsky, via Ziem)"
+  - "Evocation (form→frame, automatic) vs. Invocation (interpreter→memory, inferential) as two distinct knowledge-activation mechanisms"
+  - "Hyperonym type reduction: a systematic method for determining a frame's slots by reducing the target concept to its highest non-circular hyperonym and inheriting that hyperonym's matrix-frame slots"
+  - "Matrix frame hierarchy: slots inherited top-down (Entity → Stable Object → Primary Object → Organism/Role/etc.)"
+  - "Empirically validated predicator classes (definition, relevance-for-humans, constitutive relations I/II/III, properties, part-of-event, manifestation) as an operationalization of slot content"
+  - "Generic frame for metaphor: the intersection of slots shared by source (input frame I) and target (input frame II) matrix frames"
+  - "Basic discourse-semantic figures: three criteria (metalinguistic referentialization, high type frequency, entrenched content structure) for when a frame-structured expression becomes a discourse-level fixture"
+  - "Meaning potential: the full set of default values an evoked frame could feed into interpretation, of which only part is ever exploited"
+defines: []
+refines:
+  - "Zero (Zero⟺Δ=∅, frozen since Gap Theory v1.0/M0132): reframed via Minsky's dictum that frames are never stored with unassigned terminal values — 'Zero is not a frame with empty slots. Zero is a frame with satisfied slots' — an independent linguistic-theory statement landing on the same non-emptiness structure already frozen in this corpus"
+  - "Contr (gap classes, M0132): named explicitly as gap type G5 in the book's own vocabulary, corroborating the non-exclusive gap-tagging principle independently found at M0128 (Failures(A)⊆F)"
+  - "Composition (KR-COMP-SEP-2026-09, M0129's open bottleneck question 'what is a frame, semantically?'): answered at the level of external theory — a frame is a slot/filler/default-value schema; composition of two frames (e.g. for metaphor) is formalized as the generic frame (shared-slot intersection)"
+contradicts: []
+repeats:
+  - "Holistic-vs-modularist semantics debate substantiates, rather than repeats, the corpus's own prior rejection (never itself argued from external literature until now) of drawing a hard linguistic/conceptual boundary"
+bridge_candidates:
+  - "Sat(K_t,r) — the book explicitly leaves this open (its own Part 8.3, item 1) as 'how is satisfaction formally defined?' — directly matching M0132's identification of Sat(K_t,r) as 'the bridge problem'; still unresolved after this extraction"
+  - "Hyperonym type reduction as a candidate concrete algorithm for KnowledgeOS's still-unformalized slot-determination procedure — not yet connected to any executed code in this reconstruction's corpus"
+  - "Whether 'evocation vs. invocation' should be modeled as two distinct transition operators (δ_evoke, δ_invoke) or as a single δ with a mode flag — undecided, flagged for the tactical-design stage"
+mathematical_content: >
+  No new formalism introduced beyond what the book's own prose provides; the extraction
+  stays at the conceptual/translation level. The closest to formal content is the
+  frame-hierarchy inheritance diagram (Part 5.3) and the generic-frame-as-intersection
+  characterization for metaphor (Part 6.2), both informal set-theoretic sketches rather
+  than stated theorems.
+gita_content: null
+kernel_content: >
+  Directly targets the KR-COMP-SEP-2026-09 research thread's central open question
+  (identified at M0129): "what is a frame, semantically?" This document is external
+  corroboration, not internal derivation — it supplies a mature, independently-developed
+  academic answer (slots/fillers/defaults, evocation/invocation, matrix-frame inheritance)
+  that KnowledgeOS's own frame-composition research can now be checked against or built on.
+registry_updates:
+  - "Fourth instance of the cross-domain external-literature corroboration pattern (after M0119 Priest, M0128 Rice, M0130 Shapiro) — this one landing on Composition/frame-semantics rather than on Contr/Zero"
+  - "Names Sat(K_t,r) as an externally-corroborated open bridge problem, not merely an internally-flagged one"
+anchor_test:
+  anchor: true
+  supports_dimension: "Composition (frame semantics) and Zero (non-emptiness of satisfied frames)"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Frames are probably never stored in long-term memory with unassigned terminal values... frames are stored with weakly-bound default assignments at every terminal.\" (Minsky, via Ziem) — cited twice in the source, once generically (Part 1.3) and once explicitly mapped to Zero (Part 9)"
+  - "\"No aspect of meaning that is relevant to understanding may be excluded from the analysis simply on the basis that the methodological premises of the chosen theory settings do not allow [it]\" — the U-relevance postulate mapped to ℛ_req"
+  - "Part 8.3 'What Remains Open' item 1: \"Sat(K_t,r) — How is satisfaction formally defined?\" — an external source independently flagging the same unresolved bridge problem as M0132"
+undefined_concepts:
+  - "Formal definition of Sat(K_t,r) — flagged open by both this document and M0132; still nowhere formalized in this corpus"
+  - "How hyperonym type reduction would be implemented algorithmically over KnowledgeOS's own concept/aggregate vocabulary (not the book's linguistic dictionary-definition method)"
+open_questions:
+  - "Should evocation/invocation be modeled as one transition operator or two? (bridge_candidate, deferred to tactical design)"
+  - "Does the generic-frame-as-slot-intersection method for metaphor generalize to KnowledgeOS's other cross-model comparison needs (e.g. comparing C1/C2 kernels), or is it specific to linguistic metaphor?"
+tier2_triggered: true
+tier2_reason: >
+  Directly and substantively answers M0129's identified critical bottleneck question
+  ("what is a frame, semantically?") via a mature external academic theory, and
+  independently corroborates the frozen Zero theorem's non-emptiness structure from
+  an entirely unrelated discipline (cognitive linguistics) — the fourth instance of the
+  cross-domain corroboration pattern, and the first to bear on Composition rather than
+  Contr/Zero-as-logic.

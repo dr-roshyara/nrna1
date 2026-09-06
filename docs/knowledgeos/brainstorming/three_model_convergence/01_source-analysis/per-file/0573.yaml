@@ -1,0 +1,241 @@
+sequence: 573
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-181510_step-025a-2-evidence-to-assessment-to-assertion.md
+title: "LANDMARK: The Corpus's First 'PASS — With Refinements Required' Verdict — Twelve Numbered Sub-Experiments Formalizing Evidence→Assessment→Assertion; Multidimensional Assessment Q(E,A,P,C,t) Deliberately Finite-Domain (Not Yet Probabilistic); Temporal Apparent-Conflict Resolution Worked Concretely; 'epistemic_status=committed' Explicitly Preferred Over a 'truth=true' Field; a Tested Five-Case Commitment Rule; Eight Labeled Unresolved Items (U1-U8); Opens Step 25A.3 (KnowledgeState Revision, Conflict, Temporal Validity and Retraction)"
+date: "2026-08-27"
+bytes: 17994
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the second concrete sub-experiment in the newly-opened experimental phase, directly executing the '25A.2 -- executable Evidence to Assessment to Assertion experiment' committed at 0572"
+source_role: PRIMARY_RESEARCH
+canonical_source: 573
+importance: critical
+confidence: high
+about: >
+  Opens "Step 25A.2 — Evidence → Assessment → Assertion," explicitly reaffirming the disciplined sequencing
+  decision from 0572: "we will not yet build Zero, Lord or Sārathi. First we need to establish whether the
+  epistemic foundation underneath them is computationally coherent." Delivers the experiment's governing
+  dual question: `E→Assessment→Assertion`, and crucially, **"when, if ever, may an Assertion enter
+  Knowledge?"**
+
+  **Delivers a formal correction to the corpus's long-standing evidence pipeline**: `Artifact≠Observation≠
+  Evidence≠Assertion`, worked through a concrete document/extraction/proposition example, sharpening the
+  distinctions the corpus has used loosely since much earlier files. **Delivers a proposed minimal Evidence
+  type** `E=(id,source,content,observedAt,acquiredAt,method,provenance)`, worked through a concrete
+  infrastructure-inventory example, explicitly tagged **PROPOSED** ("we will test whether this is
+  sufficient"). Delivers a minimal Assertion type `A=(id,proposition,context,temporalScope)`, worked
+  through `A_1:Version(Nexus)=3.69.0` with explicit `Context=NexusProduction` and `ValidTime=[t_1,t_2]`,
+  motivated by the observation that a bare version claim without context is potentially ambiguous.
+
+  **Delivers the file's central formal deliverable -- a multidimensional Assessment type**
+  `Q(E,A,C)=(Relevance,Reliability,Directness,TemporalValidity,Consistency,Authenticity)`, explicitly
+  tagged **EXPERIMENTAL** and deliberately NOT a single scalar probability, worked through a concrete
+  "authentic but five-year-old document" example demonstrating that a single `Confidence=0.73` figure would
+  hide the crucial fact that Authenticity is High while TemporalValidity is Low for a current-state
+  question -- "the richer representation is safer."
+
+  **Delivers twelve numbered sub-experiments systematically stress-testing the Evidence→Assessment→
+  Assertion pipeline**, each producing a specific, checkable result:
+
+  (1) baseline single-evidence commitment (`Supported`, explicitly with the caution `Supported(A)≠True(A)`
+  -- "preserves epistemic humility," a first explicit `epistemic_status` field replacing a `truth` field);
+  (2) **corroboration and the evidence-independence problem**: adding a second confirming source `E_2`
+  exposes that `EvidenceCount=2` does not imply `IndependentEvidenceCount=2` if `E_1=f(E_2)` (a copy
+  relationship), requiring an explicit `DependsOn(E_i,E_j)` relation or full `EvidenceGraph`, tagged
+  **REQUIRED CONCEPT** with its exact mathematical representation left unresolved;
+  (3) **contradiction handling**: introducing `E_3:Version=3.72.0` alongside `E_1:Version=3.69.0` requires
+  `Conflict(A_1,A_2)`, with an explicit five-item list of REJECTED naive resolution strategies (latest
+  source wins; highest confidence wins; majority vote wins; LLM decides; average the values) -- "none of
+  these is universally valid" -- and a worked correct intermediate representation preserving both
+  assertions plus the conflict explicitly;
+  (4) **the file's single most theoretically important sub-experiment -- temporal apparent-conflict
+  dissolution**: the same `Version=3.69` vs `Version=3.72` pair, when given disjoint validity intervals
+  (`[t_1,t_2]` and `[t_3,∞)`), yields `NoLogicalConflict` -- "it was a temporal apparent conflict," proving
+  conflict cannot be defined merely as `A_1≠A_2` but must consider `Context+Time+Scope`, formalized as
+  `Conflict(A_1,A_2)=f(A_1,A_2,Context,Time,Scope)` -- explicitly flagged "a major result" that should
+  become part of the formal model, directly reconfirming and formally re-deriving 0567's/0568's
+  temporal-conflict-scope machinery inside this concrete experiment;
+  (5) **stale evidence and purpose-dependent assessment**: the same six-month-old evidence is excellent for
+  a historical question and insufficient for a current-state question, yielding the refined assessment
+  signature `Q(E,A,P,C,t)` (adding purpose `P` and evaluation time `t`) -- "a significant mathematical
+  refinement";
+  (6) **unsupported LLM output**: an unsourced LLM backup claim yields `Support(A_3)={LLMOutput}` and
+  `Assessment(A_3)=Unsupported`, remaining a candidate, never entering committed knowledge -- directly
+  reconfirming the corpus's central `LLMOutput⇒CandidateAssertion` invariant in this concrete experimental
+  context;
+  (7) **LLM as interpretation mechanism**: an LLM correctly extracting from a real backup-verification
+  document is treated differently -- the ACTUAL supporting evidence is the source document, with
+  provenance required to flow `A_4→LLMExtraction→Document`, never merely `A_4→LLM`, "precisely why
+  provenance must distinguish transformation from source";
+  (8) **summary traceability**: a summary omitting important qualifications from its source document must
+  never be treated as equivalent to the document, requiring `Summary→SourceArtifact` to remain traceable
+  (directly reconfirming 0566's `DerivedSummary≠SourceEvidence`);
+  (9) **`Authenticity≠Truth`**: a validly-signed artifact establishes origin/integrity, not the truth of
+  its content;
+  (10) **`Authenticity≠Authority`**: an authentic document asserting migration approval, written by someone
+  without approval authority, yields `Authenticity=True` but `Authority=False` -- "connects Evidence
+  directly to our later governance model";
+  (11) **statistical-evidence aggregation caution**: the recurring `{98,101,99}` vs. calibration-suspect
+  outlier `140` example, this time explicitly concluding that a naive `Mean=109.5` is wrong and that
+  measurement provenance, reliability, uncertainty, and potentially a measurement model are all required --
+  "evidence aggregation cannot be a simple counting operation";
+  (12) **evidence-dependence lineage**: a four-stage Website→PDF→LLM-summary→Human-report chain all
+  claiming the same fact yields `NumberOfSources≠AmountOfIndependentEvidence` (approximately one
+  underlying information lineage despite four apparent sources) -- "a major statistical requirement";
+  (13) **negative-evidence precision**: a failed backup-restore test does NOT necessarily mean
+  `BackupExists=False` -- it may mean `BackupExists=True` but `Restorability=False`, requiring precisely
+  typed, semantically precise propositions.
+
+  **Delivers the file's central architectural principle discovered through these experiments**: "evidence
+  does not directly modify truth. It modifies the epistemic state associated with propositions" --
+  formalized as `E→Assessment(A)→K`, explicitly NOT `E→Reality` (reality changes only through actions/
+  events, never through assessment). Delivers a provisional, richer knowledge-state representation
+  `K={A,Assessment(A),Support(A),Conflict(A),Validity(A),Provenance(A)}`, explicitly still provisional but
+  "much more robust than K={A}."
+
+  **Delivers three formally distinguished epistemic relations that must not be collapsed**: Support
+  (`E⊢A`), Conflict (`E⊢¬A` or an incompatible assertion supported), and Derivation (`A_1,...,A_n⊢A`).
+  Delivers a preliminary Knowledge commitment predicate interface `Commit(A,K,P,C,t)`, explicitly framed as
+  "not yet the final formula. It is the interface we need to define" -- naming its likely dependencies
+  (Support, Reliability, Conflict, TemporalValidity, Scope, EpistemicContract).
+
+  **Delivers a formal assertion-lifecycle state machine**: Candidate→Assessed→Supported→Committed (with
+  branches to Unsupported, Conflicted, and Retracted from Committed) -- "an executable lifecycle." Delivers
+  an explicit statistician's objection to binary "Supported": support itself may need a structured object
+  `SupportStrength=(Directness,Reliability,Independence,TemporalFit,Consistency)`, only later potentially
+  mapped to a scalar/probability -- "avoids premature mathematical oversimplification."
+
+  **Delivers the file's midpoint self-assessment -- "what we have actually learned"**, distilled into four
+  named requirements now elevated to part of the mathematical model itself (not implementation details):
+  Evidence must have provenance; Evidence relationships must represent dependency/independence; Assertion
+  assessment must be contextual and temporal; Commitment must be a separate operation from extraction.
+
+  **Delivers the file's central formal deliverable -- a full nine-dimension experimental Assessment
+  structure with deliberately finite (not yet probabilistic) domains**:
+  `Assessment=(relevance,reliability,directness,independence,temporalFit,consistency,authenticity,
+  authority,uncertainty)`, each drawn from a small controlled finite domain (e.g.
+  `relevance∈{low,medium,high}`, `authority∈{irrelevant,unauthorized,authorized,unknown}`). **Delivers an
+  explicit, principled methodological justification for starting finite rather than probabilistic**:
+  introducing `P=0.837` immediately "may hide a semantic problem" -- first establish `WhatDoesThisAssessment
+  Mean?`, THEN decide whether and how it deserves numerical representation -- "the correct mathematical
+  order," directly consistent with and extending 0562's/0563's rejection of premature quantification.
+
+  **Delivers a first proposed, deliberately conservative Commitment rule**:
+  `Commit(A)⟺Relevant∧TemporallyValid∧SufficientSupport∧NoBlockingConflict∧ProvenanceAvailable`,
+  explicitly labeled experimental, not final. **Delivers the rule tested against five concrete cases**
+  (Case A: one current authoritative direct observation→`Commit=True`; Case B: one old document→
+  `Commit=False` for a current-state requirement; Case C: two conflicting current sources→`Commit=False`
+  until resolved; Case D: LLM hallucination→`Commit=False`; Case E: LLM extraction from an authoritative
+  document→potentially `Commit=True` if the underlying evidence satisfies the contract) -- the corpus's
+  first delivery of a commitment predicate actually exercised against multiple concrete test cases with
+  distinct expected results.
+
+  **Delivers a first executable epistemic contract example**, worked through a concrete
+  `current_version` requirement specification (temporally-valid evidence, authoritative source, no
+  unresolved conflict, traceable provenance), formalized as a computable satisfaction predicate
+  `Satisfies(E,A,C)=True/False/Unknown`.
+
+  **Delivers the file's central architectural discovery, explicitly named as such**: KnowledgeOS should
+  NOT introduce a `truth=true` field into the first kernel; instead `epistemic_status=committed` is "much
+  safer," because it lets KnowledgeOS say "this proposition is currently committed under contract C"
+  without claiming "this proposition is metaphysically true" -- explicitly stated to be "central to the
+  entire architecture." This is the sharpest, most concrete single articulation anywhere in the corpus of
+  the difference between a truth-claiming and a commitment-claiming knowledge representation, directly
+  operationalizing the abstract `Committed(A)⇏A is universally true` principle established at 0562 into an
+  actual proposed field-naming decision.
+
+  **Delivers the file's central formal deliverable -- Step 25A.2's preliminary verdict**: **"PASS — with
+  refinements required"** -- the corpus's first delivery of an actual PASS verdict for a concrete
+  sub-experiment (as opposed to the arc's prior "STRUCTURALLY RESOLVED"/"THEORETICALLY RESOLVED"/
+  "COMPOSABLE"/"READY FOR EXECUTION"/"READY FOR EXPERIMENT" verdict vocabulary), reasoning that the basic
+  `Evidence→Assessment→Assertion` transformation IS representable, but the experiment exposed that
+  `Context+Time+Provenance+Dependency+Conflict+Assessment` "cannot be optional metadata" and must become
+  core, non-optional parts of the formal model.
+
+  **Delivers eight labeled unresolved items (U1-U8)**: exact evidence-aggregation mathematics; exact
+  reliability mathematics; independence/dependence mathematics; whether assessment should ultimately
+  contain probabilities; exact commitment predicate; exact conflict-resolution algebra; how derived
+  assertions inherit uncertainty; how statistical evidence interacts with qualitative evidence --
+  explicitly deferred to "the next refinement stages," a distinct, experiment-specific unresolved-items
+  list complementing (not duplicating) 0570's broader seven-domain backlog.
+
+  **Delivers the file's most important single result**: the corpus's original simplistic
+  `Evidence→Knowledge` conceptual chain is declared "not sufficient" -- the experimentally defensible chain
+  is instead **`Evidence→Assessment→Assertion→Commitment→KnowledgeState`**, with Context, Time, Provenance,
+  Dependency, and Conflict attached throughout the process -- "a genuine refinement of the KnowledgeOS
+  theory," the first time in the entire research program that an actual, checkable experiment has produced
+  a concrete correction to the theory's own foundational pipeline notation (adding an explicit Commitment
+  stage between Assertion and KnowledgeState) rather than merely reconfirming or elaborating prior claims.
+
+  **Closes by explicitly declining to proceed to Zero**, reasoning that 25A.2 established only how evidence
+  can ENTER the epistemic process; the harder remaining question is what happens once knowledge is
+  committed and the world changes, contradictory evidence arrives, or original evidence is retracted.
+  **Opens "Step 25A.3 — KnowledgeState Revision, Conflict, Temporal Validity and Retraction,"** explicitly
+  framed as the experiment that "will determine whether our `K_t→K_{t+1}` model is actually coherent" --
+  directly continuing the disciplined 25A.1→25A.2→25A.3 sub-step sequence committed at 0572.
+introduces:
+  - concept: "A refined, formally corrected evidence pipeline: Artifact≠Observation≠Evidence≠Assertion, sharpening distinctions the corpus had used somewhat loosely since much earlier in the arc"
+  - concept: "The multidimensional, deliberately non-probabilistic Assessment structure Q(E,A,C)→Q(E,A,P,C,t), with a concrete authenticity-vs-temporal-validity example demonstrating why a single scalar confidence figure is unsafe"
+  - concept: "The corpus's first explicit, rejected five-item list of naive conflict-resolution strategies (latest source wins, highest confidence wins, majority vote, LLM decides, averaging), none deemed universally valid"
+  - concept: "The temporal apparent-conflict dissolution result: two seemingly contradictory assertions with disjoint validity intervals produce NoLogicalConflict, formally requiring Conflict(A_1,A_2)=f(A_1,A_2,Context,Time,Scope) rather than a bare inequality test"
+  - concept: "The evidence-independence and evidence-dependence-lineage findings (EvidenceCount≠IndependentEvidenceCount; NumberOfSources≠AmountOfIndependentEvidence), worked through concrete corroboration and multi-hop citation-chain examples"
+  - concept: "The methodological principle of starting Assessment with finite, controlled domains before introducing any probabilistic representation — establish WhatDoesThisAssessmentMean? before deciding whether and how it deserves a numerical value, 'the correct mathematical order'"
+  - concept: "The corpus's sharpest concrete articulation of committed-vs-true knowledge representation: preferring an explicit epistemic_status=committed field over a truth=true field, explicitly named central to the entire architecture"
+  - concept: "The first delivery of a Commit(A) predicate actually tested against five distinct concrete cases with distinct expected results, rather than only stated abstractly"
+  - concept: "The corpus's first 'PASS — with refinements required' verdict for a concrete sub-experiment, a new verdict category distinct from the arc's prior STRUCTURALLY/THEORETICALLY RESOLVED and READY FOR EXPERIMENT vocabulary"
+  - concept: "The concrete correction of the theory's own foundational pipeline: Evidence→Knowledge is declared insufficient, replaced by Evidence→Assessment→Assertion→Commitment→KnowledgeState, adding an explicit Commitment stage — the first genuine theory correction produced by an actual (even if hand-executed) verification exercise rather than pure elaboration"
+  - concept: "'Step 25A.3 — KnowledgeState Revision, Conflict, Temporal Validity and Retraction' as the immediately committed next sub-experiment, framed as testing whether the K_t→K_{t+1} model is actually coherent"
+defines:
+  - concept: "Minimal Evidence type (25A.2, PROPOSED)"
+    definition: "E=(id,source,content,observedAt,acquiredAt,method,provenance)"
+  - concept: "Minimal Assertion type (25A.2)"
+    definition: "A=(id,proposition,context,temporalScope)"
+  - concept: "Experimental Assessment structure (25A.2, EXPERIMENTAL, finite-domain)"
+    definition: "Assessment=(relevance,reliability,directness,independence,temporalFit,consistency,authenticity,authority,uncertainty), each drawn from small controlled finite value domains rather than probabilities"
+  - concept: "First tested Commitment rule (experimental, not final)"
+    definition: "Commit(A)⟺Relevant∧TemporallyValid∧SufficientSupport∧NoBlockingConflict∧ProvenanceAvailable, tested against five concrete cases (A-E) yielding distinct Commit=True/False/conditional results"
+  - concept: "The corrected foundational evidence-to-knowledge pipeline"
+    definition: "Evidence→Assessment→Assertion→Commitment→KnowledgeState, with Context, Time, Provenance, Dependency, and Conflict attached throughout — correcting the earlier, insufficient Evidence→Knowledge shorthand used throughout the prior arc"
+refines:
+  - concept: "The corpus's long-standing, somewhat loosely-used evidence pipeline (Source→Artifact→Observation→Evidence→Assessment→Assertion→Knowledge, used since roughly 0533 onward)"
+    refinement: "Formally corrected via an actual worked experiment into a more precise chain with an explicit Commitment stage inserted between Assertion and KnowledgeState, and Context/Time/Provenance/Dependency/Conflict elevated to non-optional core status"
+  - concept: "0567's/0568's temporal-scope conflict-resolution machinery (Conflict requires compatible temporal scope)"
+    refinement: "Formally re-derived within this concrete experiment as Conflict(A_1,A_2)=f(A_1,A_2,Context,Time,Scope), with a worked disjoint-validity-interval example dissolving an apparent contradiction — 'a major result'"
+  - concept: "0562's evidence-independence and no-naive-aggregation safeguards, and 0570's statistical outlier test case ({98,101,99} vs 140)"
+    refinement: "Directly reused and extended with the explicit conclusion that a naive Mean=109.5 is wrong, requiring measurement provenance/reliability/uncertainty/model — 'evidence aggregation cannot be a simple counting operation'"
+  - concept: "0562's Committed(A)⇏A is universally true principle"
+    refinement: "Operationalized into a concrete, actionable field-naming recommendation: prefer epistemic_status=committed over truth=true, explicitly named central to the entire architecture — the sharpest, most concrete expression of this principle anywhere in the corpus"
+  - concept: "0568's/0572's 'READY FOR EXECUTION'/'READY FOR EXPERIMENT' epistemic-honesty verdict distinctions"
+    refinement: "Extended with a new, more granular verdict category specific to individual sub-experiments: 'PASS — with refinements required,' distinguishing overall program-level readiness verdicts from per-experiment pass/fail-with-caveats verdicts"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25A.3 — KnowledgeState Revision, Conflict, Temporal Validity and Retraction' is executed as its own dedicated corpus file, continuing the disciplined 25A.1→25A.2→25A.3 sub-step sequence before any Zero construction is attempted"
+  - "Trace whether the eight U1-U8 unresolved items from this experiment are explicitly addressed in 25A.3 or deferred further, and whether they are eventually reconciled against 0570's broader seven-domain unresolved-questions backlog"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the corrected evidence pipeline (Artifact≠Observation≠Evidence≠Assertion), the multidimensional non-probabilistic Assessment structure, the rejected naive conflict-resolution strategies, and the temporal apparent-conflict dissolution result (Conflict as a function of Context+Time+Scope)."
+  - "dimension-registry.md: record the evidence-independence/dependence-lineage findings, the finite-domain-before-probability methodological principle, the epistemic_status=committed vs truth=true architectural discovery, and the tested five-case Commitment rule."
+  - "dimension-registry.md: record the corpus's first 'PASS — with refinements required' verdict, the corrected foundational pipeline Evidence→Assessment→Assertion→Commitment→KnowledgeState (with an explicit Commitment stage added), the eight U1-U8 unresolved items, and 'Step 25A.3 — KnowledgeState Revision, Conflict, Temporal Validity and Retraction' as the next committed sub-experiment."
+anchor_test:
+  anchor: "0572's committed 25A.1→25A.2→25A.3 sub-step sequence; the corpus's long-standing Evidence pipeline notation used since ~0533; 0567's/0568's temporal-scope conflict machinery; 0562's evidence-independence safeguards and Committed(A)⇏universal-truth principle; 0568's/0572's epistemic-honesty verdict vocabulary"
+  supports_dimension: "LANDMARK delivering the corpus's first genuine, checkable theory CORRECTION produced by an actual (hand-executed) verification exercise rather than pure conceptual elaboration — the Evidence→Knowledge pipeline used loosely throughout the entire prior arc is formally shown insufficient and replaced with a corrected five-stage chain including an explicit Commitment stage. Delivers twelve concrete, specific sub-experiments each producing checkable results, a principled methodological commitment to finite-domain assessment before any probabilistic representation, and the sharpest, most concrete articulation anywhere in the corpus of committed-vs-true knowledge representation (epistemic_status=committed over truth=true). Delivers the arc's first delivery of an actually-tested Commitment predicate against five distinct concrete cases, and the corpus's first granular 'PASS — with refinements required' verdict category for an individual sub-experiment, distinct from the program-level readiness verdicts delivered at 0566/0568/0570"
+  refines_or_contradicts: "directly executes the 25A.2 sub-step committed at 0572; formally corrects the Evidence→Knowledge pipeline notation used throughout the prior arc; re-derives and formalizes 0567's/0568's temporal-scope conflict machinery within a concrete worked example; extends 0562's evidence-independence safeguards and Committed(A)⇏truth principle into concrete, actionable recommendations; introduces a new granular verdict category alongside 0568's/0572's program-level epistemic-honesty distinctions; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked temporal apparent-conflict example (Version=3.69 valid [t_1,t_2] vs. Version=3.72 valid [t_3,∞), yielding NoLogicalConflict) is a directly checkable, concrete demonstration that a bare inequality test A_1≠A_2 is an incorrect conflict criterion, and is directly reusable as an actual test case once code exists."
+  - "The explicit recommendation to use epistemic_status=committed rather than truth=true as an actual proposed field name in the minimal kernel is a directly checkable, concrete architectural decision — not merely an abstract philosophical point — with immediate implications for how any implementation of the reference model should represent assertion status."
+  - "The five-case Commitment rule test (Cases A-E, each with a distinct expected Commit result) is directly checkable and reusable as an actual property-based or example-based test suite once code exists, representing the corpus's most concrete, implementation-ready verification artifact produced so far in this research program."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25A.3 — KnowledgeState Revision, Conflict, Temporal Validity and Retraction' is executed as its own dedicated corpus file"
+  - "Whether the eight U1-U8 unresolved items are explicitly addressed in 25A.3 or deferred further, and how they relate to 0570's broader seven-domain unresolved-questions backlog"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first genuine, checkable theory CORRECTION produced by an actual verification exercise (even if hand-executed rather than code-run) rather than further conceptual elaboration: the long-standing Evidence→Knowledge pipeline notation is formally shown insufficient and corrected into a five-stage chain with an explicit Commitment stage. Delivers twelve concrete, individually checkable sub-experiments (corroboration/independence, contradiction, temporal apparent-conflict dissolution, purpose-dependent assessment, LLM boundary cases, summary traceability, authenticity/authority separation, statistical aggregation caution, evidence-dependence lineage, negative-evidence precision), a principled finite-domain-before-probability methodology, and the corpus's sharpest concrete articulation of committed-vs-true knowledge representation (epistemic_status=committed preferred over truth=true, explicitly named central to the whole architecture). Delivers the first actually-tested Commitment predicate against five distinct concrete cases and the corpus's first granular 'PASS — with refinements required' verdict category for an individual sub-experiment, distinct from the program's broader epistemic-honesty verdict vocabulary. Closes by continuing the disciplined 25A.1→25A.2→25A.3 sub-step sequence, opening the KnowledgeState revision/conflict/retraction experiment as the next necessary step before any Zero construction is attempted."

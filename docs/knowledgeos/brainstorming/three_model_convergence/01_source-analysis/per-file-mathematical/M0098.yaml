@@ -1,0 +1,165 @@
+sequence: M0098
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-134056_restructuring-proposal-and-a-terminology-correction.md
+title: "Restructuring Proposal and a Terminology Correction: FORMALIZES the Corpus's Already-Tracked 'Projection Destroys Structure' Diagnosis (M0043-M0077, Independently Corroborated M0085) Into a Rigorous Induced-Equivalence Framework (x1 ~pi x2 iff pi(x1)=pi(x2)), Replaces the Dangerous 'Kernel of the Projection' Language, Introduces Invariant Custody and the Representation Adequacy Principle [PROP], Retires Zero<=>Delta=EmptySet, Reframes E_t/B_t/AF_t/M_t as Candidate (Not The) Primary Structures, and Names KR-PROJ-2026-09-02 as the Decisive Next Research Gate"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "reviews and refines a restructuring proposal (itself already internally reviewed and kept at [PROP], not Theory v1.3) that unifies Sat/Zero/Gap/Balanced/K_t/the argument field under a single projection/information-loss theory -- this is the capstone theoretical formalization of the projection-destroys-structure pattern this reconstruction has tracked since M0043-M0077 and independently corroborated in M0085 ('worth investigating -- but it is not yet a theorem'); here it is given a rigorous mathematical treatment (induced equivalence, invariant custody, a named adequacy principle) rather than remaining an informal observation"
+source_role: ADJUDICATION
+canonical_source: M0098
+importance: critical
+confidence: high
+about: >
+  Identifies the real breakthrough underlying a reviewed restructuring proposal: "we repeatedly
+  tried to make a reduced representation answer questions that only the richer structure could
+  answer" -- unifying the corpus's many apparently unrelated projection failures (B->U losing the
+  reason for a boundary; AF->Balanced losing relation type; E->K possibly losing distinctions
+  needed for factivity) under one mathematical statement: "A representation cannot recover
+  distinctions that its projection has identified."
+
+  **REPLACES THE DANGEROUS "KERNEL OF THE PROJECTION" LANGUAGE WITH A RIGOROUS INDUCED
+  EQUIVALENCE**: for a general semantic map pi:X->Y, the correct object is x1 ~_pi x2 iff
+  pi(x1)=pi(x2), inducing equivalence classes [x]_pi -- replacing the informal (and mathematically
+  dangerous, since "kernel" has specific meaning only for structure-preserving maps between
+  algebraic objects) prior phrasing. Yields the new governing principle: "Every projection must
+  declare which distinctions it identifies," replacing "every projection declares its kernel."
+
+  **GIVES A NEW MATHEMATICAL INTERPRETATION OF Zero**: ZeroLens(S,pi) = examination of
+  distinctions hidden by pi -- explicitly stronger than "Zero=unknown" or "Zero<=>Delta=empty-set"
+  (the latter "already retired by our experiments," reconfirming the corpus's established
+  retirement of that definition), and explains U's already-tracked nine-way collapse precisely:
+  pi_U(b_1)=...=pi_U(b_9)=U even though b_i!=b_j -- "the projection intentionally identifies
+  states that the theory may need to distinguish," a sharper diagnosis than "U is too vague."
+
+  **REFRAMES Sat_c AS A LEGITIMATE LOSSY PROJECTION, NOT AN INHERENTLY BROKEN CONSTRUCT**:
+  Sat_c = pi_value 'compose' Eval_c is "perfectly legitimate provided we explicitly accept what it
+  loses" -- giving the crucial distinction "lossy projection != bad projection" but "lossy
+  projection used beyond its semantic scope = defective model," directly reconciling the corpus's
+  established Sat_c non-factivity findings (M0044-M0056) with the new framework without
+  contradiction.
+
+  **RECONNECTS THE SEXUAL/YONI METAPHOR SUB-THREAD TO THIS FRAMEWORK**: rather than turning
+  Proposal/Challenge/Evidence/Reconciliation/Closure into domain objects directly, asks what
+  richer structure contains those distinctions and which projections preserve or destroy them --
+  moving Yoni toward "a metaphor for a structured candidate space rather than a KnowledgeOS
+  object," consistent with (and generalizing) M0085-M0097's careful non-identification discipline.
+
+  **INTRODUCES INVARIANT CUSTODY AS A NEW GOVERNANCE/DDD/MATH BRIDGE CONCEPT**: reducing R_1->R_2
+  is inadmissible merely because |R_2|<|R_1|; instead, for every invariant I owned by an eliminated
+  operator, Custody_after(I) must remain non-empty -- "elimination of an operator is admissible
+  only if every required invariant retains an explicit owner," explicitly replacing "minimum
+  number of operators" reasoning with an invariant-preservation criterion, described as "a possible
+  formal bridge between mathematical representation reduction, KnowledgeOS kernel reduction, DDD
+  responsibility, and architecture governance."
+
+  **REAFFIRMS Kernel status = NOT SELECTABLE** (semantic equivalence not established) and proposes
+  the corrected methodological sequence Structure -> Observables -> Semantic Equivalence ->
+  Invariant Preservation -> Reduction -> Minimality, explicitly rejecting both "13 operators > 8
+  operators => 8 is better" and "8<13 => 8=minimum" as invalid (cardinality is representation-
+  dependent) -- a precise articulation of the already-tracked 13-vs-8 kernel-instability tension.
+
+  **DOWNGRADES TWO PRIOR "ESTABLISHED" CLAIMS TO CANDIDATE STATUS, WITH SPECIFIC REASONS**:
+  (1) "The kernel writes history and never reads it" -- the evidence (ReadsHistory(K)=0 in the
+  current implementation) does not establish a theoretical law, since "retrospective epistemic
+  revision may legitimately require historical information"; reframed as "history access by the
+  kernel is an explicit architectural capability," not a constitutional prohibition. (2)
+  "Factivity = external" -- the actual experiment established only the narrower fact that DEF-1 +
+  K_t=Gamma(E_t,...) was jointly unsatisfiable under the tested model, so "Externalization =
+  candidate architectural decision," not "discovered theoretical truth."
+
+  **REFRAMES E_t, B_t, AF_t, M_t AS CANDIDATE (NOT THE) PRIMARY STRUCTURES**, since none has yet
+  been shown underivable from another (B_t might derive from something else; AF_t could be a
+  relational structure over other objects; M_t may belong elsewhere) -- explicit restraint against
+  premature reification.
+
+  **PROPOSES A UNIFYING RESEARCH PROGRAMME**: for every projection pi_i: S->R_i, determine (1)
+  information loss (what disappears), (2) induced equivalence (when do states become
+  indistinguishable), (3) recoverability (can the lost distinction be reconstructed), (4)
+  invariant preservation (which I survive), (5) adequacy (is pi_i sufficient for its intended
+  question) -- proposed as "the mathematical backbone of the next phase of KnowledgeOS research,"
+  giving the hierarchy Rich epistemic structure -> {Sat, Gap, U, Balanced} (as downstream
+  projections) -> ZeroLens -> Boundary, "considerably cleaner than making Zero itself responsible
+  for producing all these things."
+
+  **NAMES THE REPRESENTATION ADEQUACY PRINCIPLE [PROP]**: "A representation is adequate for a
+  question only if the distinctions required to answer that question are preserved by the
+  representation," formalized Adequate(pi,Q) => D_Q subseteq Preserved(pi) -- explicitly marked
+  "not yet a KnowledgeOS law... a research hypothesis" but "potentially more fundamental than the
+  individual Sat, Gap, or Zero proposals."
+
+  **REPOSITIONS THE EPISTEMIC-CLOSURE/ORGASM SUB-THREAD WITHIN THIS FRAMEWORK**: reframes the
+  proposed "orgasm"/ClosureEvent as a candidate distinction that may or may not be representable by
+  existing projections of the richer S_t->Proposal->Challenge->Assessment->S_{t+1} transition
+  structure -- "Do not add ClosureEvent because the metaphor suggests it. Determine whether the
+  richer transition structure contains a distinction that existing projections cannot represent" --
+  directly extending the projection-adequacy test to the corpus's own already-established closure-
+  as-event work (M0073-M0092).
+
+  **AGREES WITH AND ELEVATES KR-PROJ-2026-09-02 (Projection, Information Loss and Invariant
+  Preservation) AS THE CLEAR NEXT RESEARCH GATE**, explicitly reordering the research programme:
+  Theory v1.2 -> Experiments -> Repeated projection failures -> STRUCTURE-FIRST HYPOTHESIS ->
+  {Projection theory, Invariant custody} -> KR-PROJ experiment -> only then revisit {Zero, Eval,
+  Kernel} -- and specifies that KR-PROJ should try to FALSIFY E_t/B_t/AF_t/M_t as candidate primary
+  structures via seven questions per candidate (what evidence requires it; can it be derived from
+  another candidate; what distinctions does it preserve; what does its projection lose; which
+  invariants depend on those distinctions; can another structure retain custody; is it necessary or
+  merely convenient), distinguishing "necessary structure" from "useful representation."
+
+  Closes with a full consolidated status ledger (ESTABLISHED/strong; PROPOSED; OPEN; RETIRED),
+  explicitly reconfirming Theory v1.3 does not yet exist, and states the overall judgment: "the
+  sexual/Linga/Yoni metaphor may have helped us discover the distinction between interaction,
+  reconciliation, closure and successor state. That remains valuable. But the new structure/
+  projection work potentially gives us... a general mathematical theory of what KnowledgeOS loses
+  when it compresses knowledge representations" -- explicitly proposing to pause further
+  philosophical-metaphor documents in favor of this structure-first programme.
+introduces:
+  - concept: "The rigorous induced-equivalence formalization of projection (x1 ~_pi x2 iff pi(x1)=pi(x2)), replacing the dangerous informal 'kernel of the projection' phrasing"
+  - concept: "The new governing principle: every projection must declare which distinctions it identifies"
+  - concept: "Invariant Custody: reduction R1->R2 is admissible only if every required invariant retains an explicit owner (Custody_after(I) != empty-set for every invariant I owned by an eliminated operator) -- a formal bridge between mathematical reduction, kernel reduction, DDD responsibility, and governance"
+  - concept: "The corrected methodological sequence Structure -> Observables -> Semantic Equivalence -> Invariant Preservation -> Reduction -> Minimality, explicitly rejecting naive operator-count comparisons"
+  - concept: "The Representation Adequacy Principle [PROP]: Adequate(pi,Q) => D_Q subseteq Preserved(pi)"
+  - concept: "The unifying five-question projection research programme (information loss / induced equivalence / recoverability / invariant preservation / adequacy) proposed as the mathematical backbone of the next research phase"
+  - concept: "The reframed hierarchy: Rich epistemic structure -> {Sat, Gap, U, Balanced} as downstream projections -> ZeroLens -> Boundary"
+defines: []
+refines:
+  - concept: "The already-tracked projection-destroys-structure diagnosis (M0043-M0077), FORMALIZED here into a rigorous induced-equivalence framework -- delivering close to the theorem M0085 flagged as 'worth investigating but not yet a theorem'"
+  - concept: "M0085's independent corroboration of the structure-over-projection convergence (Zero Lens / closure argument-relations / Yoni metaphor), now unified under one mathematical principle"
+  - concept: "The corpus's already-established Zero<=>Delta=empty-set retirement, reconfirmed here"
+  - concept: "The corpus's established Sat_c non-factivity findings (M0044-M0056), reconciled without contradiction via the lossy-projection-vs-defective-model distinction"
+  - concept: "The already-tracked 13-vs-8 kernel-operator-count tension, precisely diagnosed here as an invalid cardinality comparison absent semantic equivalence"
+  - concept: "M0085-M0097's Linga-Yoni non-identification discipline, generalized here into the structure-first projection framework"
+  - concept: "M0073-M0092's closure-as-event-not-state work, extended here via the projection-adequacy test applied to the candidate ClosureEvent"
+contradicts:
+  - concept: "The restructuring proposal's own overclaims: 'the kernel writes history and never reads it' (downgraded to an architectural capability, not a law) and 'Factivity = external' (downgraded to a candidate architectural decision, not a discovered truth)"
+repeats: []
+bridge_candidates:
+  - concept: "KR-PROJ-2026-09-02 as the decisive next experiment, explicitly gating further work on Zero/Eval/Kernel -- the clearest single next research action identified across this entire pass"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0098 as the capstone formalization of the corpus's projection-destroys-structure diagnosis (M0043-M0077, M0085) into a rigorous induced-equivalence framework, introducing Invariant Custody and the Representation Adequacy Principle [PROP], reaffirming Zero<=>Delta=empty-set's retirement, downgrading 'kernel never reads history' and 'Factivity=external' from established law to candidate architectural decision, reframing E_t/B_t/AF_t/M_t as candidate (not the) primary structures, and naming KR-PROJ-2026-09-02 as the clear next research gate."
+anchor_test:
+  anchor: "The corpus's projection-destroys-structure diagnosis (M0043-M0077), M0085's independent corroboration, the established Zero<=>Delta=empty-set retirement, the Sat_c non-factivity findings (M0044-M0056), and the 13-vs-8 kernel-operator tension"
+  supports_dimension: "Delivers a rigorous mathematical formalization (induced equivalence, invariant custody, a named adequacy principle) of a pattern this reconstruction has tracked as an informal observation across many prior files -- among the strongest single theoretical consolidations in the entire pass"
+  refines_or_contradicts: "refines (M0043-M0077, M0085, M0044-M0056, the kernel-operator-count tension); contradicts (the restructuring proposal's own 'kernel never reads history' and 'Factivity=external' overclaims)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'A representation cannot recover distinctions that its projection has identified' -- stated explicitly as 'a mathematical statement, not merely an architectural preference,' unifying B->U, AF->Balanced, and E->K losses under one principle."
+  - "The rigorous replacement of 'kernel of the projection' with the induced equivalence x1~_pi x2 iff pi(x1)=pi(x2) is a genuine mathematical correction (the word 'kernel' has specific, narrower meaning for structure-preserving maps and was being used loosely) -- exactly the kind of terminology discipline this reconstruction's own project charter requires."
+  - "'We should not do: 13 operators > 8 operators => 8 is better. Nor: 8<13 => 8=minimum. Cardinality is representation-dependent' -- a precise, quotable resolution of the corpus's own already-tracked 13-vs-8 kernel-instability tension."
+undefined_concepts:
+  - "The precise formal definition of Custody_after(I) and what constitutes a valid 'owner' of an invariant -- named and motivated but not yet formally specified"
+  - "Whether the Representation Adequacy Principle's Preserved(pi) is itself formally defined beyond 'the induced equivalence classes distinguish D_Q' -- sketched, not fully specified"
+open_questions:
+  - "Whether KR-PROJ-2026-09-02 was ever executed, and if so whether E_t/B_t/AF_t/M_t survived as necessary structures or were found derivable/redundant."
+  - "Whether the Representation Adequacy Principle and Invariant Custody were ever formally unified into a single theorem, or remain two parallel [PROP] constructs."
+tier2_triggered: true
+tier2_reason: "Formalizes the corpus's long-tracked projection-destroys-structure diagnosis into a rigorous induced-equivalence framework with a named adequacy principle and a genuinely new custody-based reduction criterion, corrects dangerous prior terminology, downgrades two overclaimed 'established' results back to candidate status with specific reasons, and names the clear decisive next experiment (KR-PROJ) that gates all further kernel/Zero/Eval work. Among the highest-importance documents in this entire pass."

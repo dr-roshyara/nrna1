@@ -1,0 +1,96 @@
+sequence: M0239
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-020004_remaining-todos-after-v12-freeze-formal-semantic-equivalence.md
+title: "Post-v1.2-freeze consolidated TODO register: 20 explicitly status-tagged open items spanning the entire Knowledge Theory research surface (not only kernel minimality) — organized into a 4-gate structure (A Foundational Discovery CLOSED / B Theory v1.2 Formal Closure OPEN / C Kernel Minimality Proof OPEN / D Canonical Implementation BLOCKED) with an explicit critical path and a named next artifact — the most comprehensive single 'what remains open' accounting in this reconstruction"
+date: "20260904-020004"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0239
+importance: critical
+confidence: high
+about: >
+  A comprehensive post-freeze TODO consolidation, produced immediately after Theory v1.2 was
+  recommended for freeze (M0235-M0238). Organizes ALL remaining open theoretical work — kernel-
+  minimality-specific items (1-10) plus non-Kernel theory items (11-20: contradiction handling,
+  epistemic ordering, revision/lifecycle semantics, evidence retirement, determination semantics,
+  knowledge attribution/factivity, adequacy/Sat, hypothesis-space/evidence-assessment, plus two
+  items marked substantially/fully closed: representation reduction and Zero algebra) — into a
+  4-gate structure with an explicit critical path and a single named next deliverable.
+introduces:
+  - "20-item consolidated TODO register, each explicitly status-tagged (🔴 OPEN foundational blocker / 🟠 OPEN / 🟡 OPEN-secondary / 🟢 CLOSED-or-substantially-closed / ⏸️ DEFERRED): 1.Formal Semantic Equivalence, 2.Capability Ordering, 3.Irreducibility Proofs, 4.Kernel Completeness, 5.Kernel Minimality Theorem, 6.Existence of a Minimal Kernel, 7.Uniqueness of the Semantic Kernel, 8.Kernel/DDD Boundary, 9.Zero Boundary, 10.Kernel Operator Mapping, 11.Contradiction/Non-Classical Logic, 12.Epistemic Ordering ⪰, 13.Revision/Lifecycle Semantics, 14.Evidence Retirement/Temporal Semantics, 15.Determination Semantics, 16.Knowledge Attribution/Factivity, 17.Adequacy/Satisfaction, 18.Hypothesis Space+Evidence Assessment, 19.Representation Reduction (SUBSTANTIALLY CLOSED), 20.Zero Algebra (RESEARCH CLOSED/NO ALGEBRA ADOPTED)"
+  - "Item 1 (Formal Semantic Equivalence) enumerates the EXACT list of components still needed to formalize ≡_sem: observation/trace space; contract scenarios; admissible inputs; state-transition traces; a formal definition of 'lossless simulation'; invariant preservation; observational equality; whether ≡_sem is genuinely an equivalence relation; the relationship between capability simulation and semantic equivalence. Deliverable named: KR-KERNEL-EQUIVALENCE-2026-09"
+  - "Item 3 (Irreducibility Proofs) gives the crispest restatement yet of the empirical-vs-universal proof gap tracked since M0235: '[we need to] move from \"operator X could not be removed in our simulator\" to \"no admissible realization lacking capability c can satisfy the semantic contract\"' — with the explicit methodological framing 'the old 13/12/8 operator experiments are evidence for this work, not the proof itself'"
+  - "Item 6 (Existence of a Minimal Kernel): explicitly flags that MinKer(𝔠_KOS)≠∅ is currently UNKNOWN and 'cannot simply be assumed' — requires either a constructive existence proof or an abstract theorem guaranteeing minimal elements exist in the admissible implementation space; explicitly separated from proving minimality of any particular candidate"
+  - "Item 7 (Uniqueness of the Semantic Kernel): frames the test as |MinKer_/≡sem|=1, and explicitly states a negative result would NOT be a failure — 'It means KnowledgeOS has multiple semantically minimal Kernel realizations. This is why uniqueness must remain separate from minimality' — an explicit epistemic-humility framing preventing a null/plural result from being treated as research failure"
+  - "Item 8 (Kernel/DDD Boundary) states an explicit anti-shortcut discipline: 'The DDD definition should NOT be used as a shortcut to prove mathematical minimality' — the mathematical Kernel and the DDD bounded context must independently demonstrate compatible responsibilities (identity, lifecycle, provenance, invariant custody, epistemic state evolution)"
+  - "Item 10 (Kernel Operator Mapping, DEFERRED): reframes the eventual operator-identification question from 'which operators look philosophically fundamental?' to 'which operators are implementations of the proven irreducible capabilities?' — explicitly designed to 'prevent another 13-vs-12-vs-8 cycle'"
+  - "Item 11 (Contradiction/Non-Classical Logic, flagged NEXT RESEARCH, deliberately deferred): the distinction Conflict≠Unknown≠Invalid; a proposed epistemic-support pair ES_t(p)=(E_t^+(p),E_t^-(p)); open questions on non-explosiveness of contradiction, the consequence relation, the relationship between contradiction and determination, and whether conflicting evidence can coexist in E_t without entering K_t — explicitly scoped as 'a separate research experiment, not a reason to modify Theory v1.2 prematurely'"
+  - "Item 12 (Epistemic Ordering ⪰): 'No universal ordering has yet been established' for statements like K2⪰K1 ('epistemically at least as adequate/strong as') — flagged as important for the strict/weak Zero problem; candidates listed (information, evidence, determination, adequacy, justified belief, knowledge, or a contract-relative combination) without resolution"
+  - "Item 13 (Revision/Lifecycle Semantics): rigorous lifecycle semantics still needed for supersession/retraction/evidence-retirement/historical-identity/provenance/state-transition/retrospective-revision, with an explicit callback: 'Especially important after the CE-3 failure: superseded evidence must not automatically retain full epistemic weight' — the first reference in this window to a named prior failure event (CE-3)"
+  - "Item 16 (Knowledge Attribution/Factivity): status DECIDED ARCHITECTURALLY, FORMALIZATION CONTINUES — remaining work: formally define KnowledgeAttribution, its warrant conditions, how truth enters the factive layer, 'prevent provenance alone from generating knowledge,' and 'distinguish reliability from truth' — explicitly notes 'No need for Theory v1.3 yet'"
+  - "Item 17 (Adequacy/Satisfaction): flags Sat(K,r) as 'one of the deepest unresolved primitives,' with an explicit circularity warning — must be defined 'without circularly saying \"K satisfies r when K is adequate\"' — labeled 'a major theoretical obligation'"
+  - "Item 19 (Representation Reduction, SUBSTANTIALLY CLOSED): the consolidated three-equation summary — Q=g∘T (adequacy), Π∘T=Π∘T∘E_S (Zero), Q=O∘T (realization) — with remaining work scoped only to 'turn the already-developed mathematics into the formal theorem/lemma/conjecture register' and an explicit instruction: 'It should not reopen Kernel discovery'"
+  - "Item 20 (Zero Algebra, RESEARCH CLOSED/NO ALGEBRA ADOPTED): 'Do not invent a Zero algebra now. Only reopen if a new semantic contract or empirical result requires it' — the most explicit closure statement yet for this entire sub-thread"
+  - "A FOUR-GATE overall structure: Gate A Foundational Discovery (🟢 CLOSED — broad conceptual exploration); Gate B Theory v1.2 Formal Closure (🟠 OPEN — equivalence, capability, Sat, determination, lifecycle); Gate C Kernel Minimality Proof (🔴 OPEN — completeness+irreducibility+minimality); Gate D Canonical Implementation (⏸️ BLOCKED — named operators/architecture)"
+  - "An explicit seven-stage CRITICAL PATH: Semantic Trace → Capability Simulation → Semantic Equivalence → Irreducibility → Completeness → Minimal Kernel → Uniqueness? — with the instruction 'Everything else should be prevented from silently reopening the foundational discovery phase'"
+  - "A single named next concrete deliverable, explicitly replacing any further broad Knowledge Theory research cycle: KR-KERNEL-EQUIVALENCE-CAPABILITY-2026-09 — 'Formal Semantic Trace, Capability Simulation, and Equivalence Specification' — 'the mathematical prerequisite for the actual Kernel Minimality proof object'"
+defines: []
+refines:
+  - "M0235-M0238's kernel-minimality apparatus: consolidates all still-open formal gaps identified across that thread (Trace(K,h) formalization, ⪯_cap reflexivity/transitivity, universal irreducibility witnesses, existence, uniqueness) into a single explicit, status-tagged register"
+  - "The reconstruction's broader open theory surface: for the first time, ties the kernel-minimality closure explicitly to the still-open contradiction/non-classical-logic, epistemic-ordering, revision/lifecycle, determination, and adequacy/Sat threads tracked separately elsewhere in the corpus"
+contradicts: []
+repeats:
+  - "Representation-reduction three-equation summary (Q=g∘T, Π∘T=Π∘T∘E_S, Q=O∘T) and the Zero-algebra closure position, both already established earlier in the corpus, restated here as closed/substantially-closed status entries within the consolidated register"
+bridge_candidates:
+  - "Whether KR-KERNEL-EQUIVALENCE-CAPABILITY-2026-09 (the named next artifact) was ever actually produced"
+  - "Whether the CE-3 failure referenced in item 13 was ever documented/analyzed elsewhere in this corpus, and whether it connects to any other tracked failure-mode thread"
+  - "Whether the epistemic ordering ⪰ (item 12) was ever resolved, given its flagged importance for the strict/weak Zero problem"
+mathematical_content: >
+  A structured, exhaustively enumerated register of exactly what remains mathematically
+  unformalized across the entire Knowledge Theory programme — trace/simulation semantics,
+  capability-ordering axioms, universal irreducibility, existence/uniqueness of minimal Kernels,
+  Sat/adequacy circularity, determination calculus, and epistemic ordering — each explicitly
+  status-tagged rather than left ambiguous.
+gita_content: null
+kernel_content: >
+  The most comprehensive single roadmap in this reconstruction for what remains before a Kernel
+  Minimality Theorem can be considered proved rather than merely schematized: four gates (Discovery
+  CLOSED / Formal Closure OPEN / Minimality Proof OPEN / Implementation BLOCKED), an explicit
+  critical path, and the named next deliverable (KR-KERNEL-EQUIVALENCE-CAPABILITY-2026-09).
+registry_updates:
+  - "Complete 20-item status-tagged TODO register spanning kernel-minimality and non-Kernel theory threads"
+  - "Four-gate overall structure (A-D) with an explicit seven-stage critical path"
+  - "Existence (MinKer≠∅) and Uniqueness (|MinKer_/≡sem|=1) explicitly separated and both flagged UNKNOWN/OPEN, with an explicit epistemic-humility framing that a negative uniqueness result would not be a failure"
+  - "Named next deliverable: KR-KERNEL-EQUIVALENCE-CAPABILITY-2026-09"
+  - "First reference to a named prior failure event, 'CE-3,' in the revision/lifecycle-semantics item"
+anchor_test:
+  anchor: true
+  supports_dimension: "Comprehensive 20-item open-theory TODO register; four-gate structure with critical path; explicit existence/uniqueness separation for the Kernel; named next deliverable KR-KERNEL-EQUIVALENCE-CAPABILITY-2026-09"
+  refines_or_contradicts: "refines (consolidates and structures all open gaps from M0235-M0238's kernel-minimality thread plus the corpus's other still-open theory threads)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"The old 13/12/8 operator experiments are evidence for this work, not the proof itself.\""
+  - "\"We currently explicitly do not know whether MinKer(C_KOS)≠∅. This cannot simply be assumed.\""
+  - "\"If not, that is not a failure. It means KnowledgeOS has multiple semantically minimal Kernel realizations.\""
+  - "\"Do not invent a Zero algebra now. Only reopen if a new semantic contract or empirical result requires it.\""
+  - "\"Do not start another broad Knowledge Theory research cycle.\""
+undefined_concepts: []
+open_questions:
+  - "Was KR-KERNEL-EQUIVALENCE-CAPABILITY-2026-09 ever produced?"
+  - "What is the CE-3 failure referenced in item 13, and where (if anywhere) is it documented in this corpus?"
+  - "Was the epistemic ordering ⪰ (item 12) ever resolved?"
+tier2_triggered: true
+tier2_reason: >
+  The most comprehensive single consolidated TODO register in this reconstruction, explicitly
+  status-tagging 20 distinct open theoretical items (spanning kernel minimality, contradiction
+  handling, epistemic ordering, lifecycle semantics, adequacy/Sat, and more) into a four-gate
+  structure with an explicit critical path and a single named next deliverable — essential
+  reference material for the eventual global-reclassification pass (MD-004).

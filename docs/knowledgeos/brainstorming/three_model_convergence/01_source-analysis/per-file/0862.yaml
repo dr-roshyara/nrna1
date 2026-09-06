@@ -1,0 +1,211 @@
+sequence: 862
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-101301_step_236_first-evidence-based-finding-we-have-a-problem-with-the-existing-reconstruction.md
+title: "Step 236 -- First Evidence-Based Finding: We Have a Problem With the Existing Reconstruction: THE DEFERRAL FINALLY BREAKS -- Real Corpus Audit Evidence Arrives, Delivering a Genuinely Substantive Self-Critique: Step 215's Claimed Reconstruction Named Only 6 of 182 Steps, Quoted None; Steps 212-216 Collectively Performed ZERO Empirical Acts (EL=Empty Set); the Earlier SemanticIntegrity Formula Was ILL-TYPED and Was Subsequently Repaired Into a Falsifiable Set-Theoretic Form; Step 209's 'Invariant Algebra' Is REJECTED as Currently Formulated (No Carrier Set, No Laws); Step 210's Invariant Verification Matrix Is RECLASSIFIED as Design Intent, Not Measurement (15 Test Names, 0 Test Results); Step 221's Eight Concept Families Are RECLASSIFIED as Hypotheses, Not a Demonstrated Genealogy (0 Genealogy Rows) -- Delivers the Revised, Appropriately Hedged Canonical-Status Table and Downgrades the Central Thesis From an Assertion to an Explicitly Candidate Claim -- Opens Step 237 With the Sharp New Constraint: Steps 183-237 Must Never Retroactively Define What Steps 1-182 Meant"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: c1
+  secondary: m1
+  secondary_note: "the mathematical repair of the SemanticIntegrity formula (236.4-236.7) and the invariant-algebra-vs-transformation-algebra correction (236.8-236.10) are substantive mathematical content secondary to the primarily DDD/methodological self-audit framing"
+source_role: PRIMARY_RESEARCH
+canonical_source: 862
+importance: critical
+confidence: high
+about: >
+  **THE FIRST FILE IN EITHER SUB-ARC WHERE THE DEFERRAL GENUINELY BREAKS.** Opens: "the file corpus
+  changes the conclusion from Step 235" -- confirming that, unlike every file since 0842, actual audit
+  evidence has now become available and is being used. Delivers, in rapid succession, several concrete,
+  quantified, damning findings about the corpus's own prior self-reported progress -- not further
+  methodology, but genuine (self-)critical results.
+
+  **§236 (opening) delivers the first finding**: "one of the audit artifacts explicitly reports that Step
+  215 named the objective `S_1,...,S_182→Evidence→Knowledge→Architecture` but actually named only 6 of
+  the 182 steps, quoted none, assigned no substantive verdicts to the steps, and left 176 completely
+  absent." Step 215 (this reconstruction's own file 0843, "Reconstruct Steps 1-182," which this session
+  had earlier recorded as designing "the complete reconstruction methodology... but explicitly and
+  honestly DOES NOT EXECUTE it") is now shown by the corpus's own later self-audit to have gone further
+  than merely deferring -- it apparently at some point CLAIMED a partial execution that the audit found to
+  be materially incomplete (6 of 182 named). **We must not accept Step 215 as the reconstruction we were
+  about to use.**
+
+  **§236.1 delivers the recursive-audit framing**: `HistoricalCorpus` vs. `ClaimsAboutHistoricalCorpus`
+  -- "the latter cannot substitute for the former." The reconstruction itself has become an audit subject.
+
+  **§236.2 delivers the quantified deferral-chain finding, directly confirming and numerically validating
+  this reconstruction's own long-tracked deferred-execution pattern**: Step 212, 0 empirical acts; Step
+  213, 0 artifacts opened; Step 214, 0 ledger rows; Step 215, no actual reconstruction; Step 216,
+  deferred again -- "a four-to-five-step deferral chain," resulting evidence ledger boxed
+  **`EL=∅`**. "This is not a minor documentation defect. It directly affects our confidence in every
+  conclusion that claimed to have been derived from Steps 1-182." This is an EXTERNALLY-CONFIRMING
+  validation (from within the corpus itself) of exactly the deferred-execution finding this reconstruction
+  has independently tracked since file 0842 (Steps 212-216 correspond to this reconstruction's own files
+  0840-0844).
+
+  **§236.3 delivers the withdrawal**: the earlier working assumption `Steps_{1-182}→PhaseReconstruction→
+  MathematicalKernel` is downgraded to boxed **`Steps_{1-182}→^?PhaseReconstruction`** -- "we should not
+  silently promote the previous conceptual reconstruction into established fact."
+
+  **§236.4-236.7 delivers the second major finding and its repair: the SemanticIntegrity formula was
+  ILL-TYPED.** The audit identifies that the earlier `SemanticIntegrity∝DistinctionPreservation`
+  expression was invalid because proportionality requires a meaningful ratio scale, while Semantic
+  Integrity had elsewhere been represented as Boolean (`SI(C,B)=True`) -- "the expression was not merely
+  unproven; it was ill-typed as a quantitative relationship." **The file then traces the genuine repair
+  progression already visible across this reconstruction's own records** (0846's proportional claim →
+  0849's `SI(K,T)=Preservation(CriticalSemantics(K))` → 0849's/0855's final set-theoretic form), landing
+  on the refined condition boxed **`SI(T,K,C)=1⟺𝒞(K,C)⊆R(T(K))∪DeclaredLoss(T,K,C)`** (critical semantic
+  distinctions `𝒞(K,C)`, recoverable distinctions `R(T(K))`) -- explicitly characterized by the audit as
+  "well-formed and falsifiable," "a genuine improvement." §236.7 extends this into a semantic-preservation
+  predicate `SP(T,K,C)` classifying transformations into `𝒯_preserving`/`𝒯_lossy`/`𝒯_invalid`, explicitly
+  praised as "meaningful mathematical development because it arose from an observed flaw and subsequent
+  repair, rather than from mathematical decoration" -- a rare, directly-traceable example of this
+  reconstruction's own tracked formula family (0846→0848→0849→0851→0852→0855→0858) being explicitly
+  validated as a genuine, disciplined repair rather than mere restatement.
+
+  **§236.8-236.10 delivers the third major finding: Step 209's "Invariant Algebra" (this reconstruction's
+  file 0836, earlier recorded in this session as delivering "the densest invariant content... the
+  strongest verdict set in the entire arc") is REJECTED AS CURRENTLY FORMULATED.** The audit reports it
+  lacked: a clearly defined carrier set; consistent invariant typing (used interchangeably as
+  predicates/propositions/objects); any operation beyond conjunction; and any algebraic laws --
+  "until these are defined, 'algebra' is only a title." An algebra requires at minimum boxed
+  **`(A,Ω,ℒ)`** (carrier, operations, laws). By contrast, **this file argues Step 232's transformation set
+  `𝒯={T:𝕂⇀𝕂}` (this reconstruction's file 0858) is a substantially more defensible candidate** -- it has
+  a legitimate carrier `𝒯`, composition `∘` (associative wherever defined), and an identity transformation
+  `I(K)=K`, making it "a much more defensible route toward a transformation monoid/semigroup than Step
+  209's 'Invariant Algebra.'" **§236.10 crystallizes the resulting canonical correction**: Transformation
+  algebra `(𝒯,∘,I)` must be kept distinct from an Invariant system `ℐ={I_1,...,I_n}` -- invariants
+  CONSTRAIN transformations (`T⊨I`) but "do not themselves automatically constitute an algebra. This
+  correction should become canonical." This directly and explicitly retroactively qualifies this
+  reconstruction's own earlier strongly positive assessment of file 0836.
+
+  **§236.11-236.12 delivers the third major finding: Step 210's Invariant Verification Matrix (this
+  reconstruction's file 0838, earlier recorded as "a MAJOR finding... the strongest verdict set in the
+  entire arc") is RECLASSIFIED as design intent, not empirical measurement.** The audit reports it
+  populated 17 rows, 0 TBD, 15 test names, but **0 actual test results** -- "represents design intent
+  rather than empirical measurement." This directly and explicitly retroactively qualifies this
+  reconstruction's own earlier assessment of file 0838: the "fifteen fully-specified invariants" were
+  specified as design intent, never actually executed or measured. Delivers boxed
+  **`Intent≠Implementation≠Execution≠Observation`** and a revised, more granular evidence hierarchy
+  **`E_0<E_1<E_2<E_3<E_4`** (`E_0` assertion, `E_1` design intent, `E_2` documentary evidence, `E_3`
+  implementation evidence, `E_4` executed/runtime evidence), plus a new dedicated category
+  **`E_historical`** for evidence about how a concept actually arose, "especially important for the Gītā
+  analysis."
+
+  **§236.13 delivers a SIXTH Gītā-relationship taxonomy variant, expressed in full words rather than
+  G-labels but structurally IDENTICAL to 0861's five-level G0-G4 scheme**: `GitaInfluence∈{None, Analogy,
+  Interpretation, ExplicitDesignInfluence, DemonstratedFoundationalInfluence}` (mapping cleanly onto
+  0861's `G0,G1,G2,G3,G4` respectively). This CONFIRMS the G0-Gn family introduced at 0860/refined at
+  0861 is stabilizing as the corpus's converging preference, while 0855's severely-colliding G1/G2/G3
+  scheme remains an isolated outlier never revisited. Explicitly ties this discipline to the just-
+  demonstrated failure mode: "the corpus sometimes asserted conclusions without performing the evidence
+  collection required to substantiate them."
+
+  **§236.14 delivers the fourth major finding: Step 221's eight candidate concept families (this
+  reconstruction's file 0848, earlier recorded as "the richest theoretical convergence moment") are
+  RECLASSIFIED as hypotheses, not a demonstrated genealogy.** The audit reports the "Concept Genealogy
+  Map" contained ZERO actual genealogy rows, and the eight families constituted "a taxonomy rather than a
+  demonstrated genealogy" -- `ConceptFamilies` remain boxed **`Hypotheses`** "until Steps 1-182 are
+  actually traced." This directly and explicitly retroactively qualifies this reconstruction's own
+  earlier strongly positive assessment of file 0848's eight-families-to-four-pillars compression: it
+  remains a genuine piece of theoretical synthesis, but the audit clarifies it was never empirically
+  grounded in a real genealogy trace against Steps 1-182.
+
+  **§236.15-236.17 delivers the file's consolidating verdict**: the answer to "can we accept the
+  mathematical architecture and align it with the historical/software architecture?" is
+  **"Partially -- but not yet canonically."** Seven concepts remain "currently strong candidates"
+  (KnowledgeState, Transformation, Lineage, Context, Evidence, Governance, SemanticIntegrity), "but the
+  historical derivation from Steps 1-182 has not yet been demonstrated." **Delivers the revised
+  thirteen-row canonical-status table** (a genuinely valuable, appropriately hedged consolidated
+  assessment spanning Knowledge state/State transformation/Provenance-lineage/Context/Evidence all
+  "Candidate/strong"; Governance constraints "Strongly supported in later corpus"; Semantic integrity
+  "Candidate; now formally improved"; Transformation composition "Mathematically defensible candidate";
+  Invariant algebra "Reject as currently formulated"; Concept genealogy "Not yet demonstrated"; Eight
+  concept families "Hypotheses"; Gītā as architectural source "Not established"; Gītā as interpretive
+  lens "Plausible, requires step-level tracing"). **Delivers the file's key architectural correction,
+  downgrading the central thesis's grammatical modality**: from the assertive "KnowledgeOS IS a governed
+  knowledge-state transformation system" to the explicitly hedged "the current evidence supports treating
+  KnowledgeOS AS A CANDIDATE governed knowledge-state transformation system; this model must be validated
+  against the original Steps 1-182 and the actual implementation before being declared canonical" --
+  self-assessed as "scientifically much stronger" wording.
+
+  **§236.18 delivers the Step 236 verdict**: six boxed summary findings (Steps 1-182 not yet genuinely
+  reconstructed; several "empirical" steps were methodological announcements rather than empirical work;
+  the earlier SemanticIntegrity formula was ill-typed; it was subsequently repaired into a falsifiable
+  set-theoretic formulation; "Invariant Algebra" should not be accepted as mathematically established;
+  and, boxed in bold, **`Do not proceed to further mathematical derivation yet`**).
+
+  **Closes opening "Step 237 — Reconstruct the Actual Source Corpus,"** proposing the per-step tuple
+  boxed **`S_i=(Claim_i,Evidence_i,Software_i,DDD_i,Math_i,Governance_i,Gita_i,Verdict_i)`** for every
+  `i∈{1,...,182}`, only after which the candidate kernel `𝔎=(G,σ,θ,λ,π)` can actually be assessed as
+  supported. **Delivers a sharp, disciplined new methodological constraint, directly responsive to the
+  Step-215 failure just diagnosed**, boxed in bold: **`Steps 183-237 must NOT be allowed to retroactively
+  define what Steps 1-182 meant`** -- "they can interpret, criticize, repair and formalize the earlier
+  material -- but they cannot become its substitute." This is a genuinely important self-correction of
+  the exact meta-level failure mode (later steps silently substituting for an unperformed earlier audit)
+  that this reconstruction has itself been tracking across the entire deferred-planning arc since 0842.
+introduces:
+  - concept: "THE FIRST GENUINE EVIDENCE-BASED SELF-AUDIT RESULT IN EITHER SUB-ARC -- concrete, quantified findings replacing further methodology proposals"
+  - concept: "The Step-215 finding: claimed reconstruction of 182 steps actually named only 6, quoted none, assigned no verdicts, left 176 absent"
+  - concept: "HistoricalCorpus≠ClaimsAboutHistoricalCorpus -- the recursive audit-of-the-audit framing"
+  - concept: "The quantified deferral-chain finding across Steps 212-216 (0 empirical acts, 0 artifacts, 0 ledger rows), EL=∅, directly confirming this reconstruction's own independently-tracked deferred-execution pattern"
+  - concept: "The withdrawal of Steps_{1-182}→PhaseReconstruction→MathematicalKernel to a provisional Steps_{1-182}→^?PhaseReconstruction"
+  - concept: "The SemanticIntegrity formula's ILL-TYPED diagnosis (proportionality claimed for a Boolean quantity) and its traced repair into the falsifiable SI(T,K,C)=1⟺𝒞(K,C)⊆R(T(K))∪DeclaredLoss(T,K,C)"
+  - concept: "The semantic-preservation predicate SP(T,K,C) classifying transformations into preserving/lossy/invalid"
+  - concept: "REJECTION of Step 209's 'Invariant Algebra' as currently formulated (no carrier set, no laws, only a title)"
+  - concept: "The canonical correction: Transformation algebra (𝒯,∘,I) is distinct from an Invariant system ℐ={I_1,...,I_n}; invariants constrain transformations but do not themselves constitute an algebra"
+  - concept: "RECLASSIFICATION of Step 210's Invariant Verification Matrix as design intent (15 test names, 0 test results), not empirical measurement"
+  - concept: "Intent≠Implementation≠Execution≠Observation, and the revised five-level evidence hierarchy plus a new E_historical category"
+  - concept: "A SIXTH Gita-relationship taxonomy variant (None/Analogy/Interpretation/ExplicitDesignInfluence/DemonstratedFoundationalInfluence), structurally identical to 0861's G0-G4, confirming the G0-Gn family's stabilization"
+  - concept: "RECLASSIFICATION of Step 221's eight concept families as unsubstantiated hypotheses (0 genealogy rows in the claimed Concept Genealogy Map)"
+  - concept: "The thirteen-row revised canonical-status table"
+  - concept: "The downgraded central thesis wording: KnowledgeOS as a CANDIDATE governed knowledge-state transformation system, not an assertion"
+  - concept: "Step 236's six-item verdict, ending 'Do not proceed to further mathematical derivation yet'"
+  - concept: "Step 237's opening: the per-step tuple S_i for i=1..182, and the sharp new constraint that Steps 183-237 must never retroactively define what Steps 1-182 meant"
+defines:
+  - concept: "The Steps-212-216 quantified deferral-chain finding (EL=∅)"
+    definition: "A specific, numerically-grounded audit result reported within this file: across five consecutive steps in the corpus's own numbering (212 through 216, corresponding to this reconstruction's files 0840 through 0844), each step announced or implied empirical/evidentiary work, but the audit found zero empirical acts at Step 212, zero artifacts opened at Step 213, zero ledger rows populated at Step 214, no actual reconstruction performed at Step 215 despite claiming one, and further deferral at Step 216 -- collectively yielding an effectively empty evidence ledger, EL=∅. This is presented as strong, directly quantified evidence of methodological failure, not merely of caution, and it independently confirms (from within the corpus's own self-audit) the deferred-execution pattern this reconstruction had already identified and tracked continuously since file 0842 without needing the corpus's own confirmation"
+  - concept: "The retroactive reclassification of files 0836, 0838, and 0848 (Steps 209, 210, 221)"
+    definition: "This file's audit findings require this reconstruction to hold a qualified view of three previously celebrated files: file 0836 (Step 209, 'Invariant Algebra') is now known, per the corpus's own later self-audit, to lack a defined carrier set, consistent invariant typing, non-trivial operations, or algebraic laws -- the term 'algebra' was asserted without the structure to support it; file 0838 (Step 210, Invariant Verification Matrix) populated 15 test names but zero actual test results, meaning its content should be understood as design intent (a specification of what should eventually be verified) rather than as completed empirical verification, contrary to this reconstruction's earlier framing of it as delivering 'the strongest verdict set in the entire arc'; and file 0848 (Step 221, eight concept families) produced a taxonomy of candidate concept groupings without any actual genealogy trace connecting them to real historical steps, meaning the families remain hypotheses rather than demonstrated historical categories. None of these three files should be considered incorrect or valueless -- each contributed genuine conceptual groundwork -- but their claimed epistemic status (verified algebra, measured invariants, demonstrated genealogy) is now explicitly downgraded by the corpus's own later self-audit to intent/hypothesis/taxonomy, and this reconstruction's own per-file records for 0836/0838/0848 should be read with this qualification in mind going forward"
+refines:
+  - concept: "This reconstruction's own independent tracking of the deferred-execution pattern since 0842"
+    refinement: "EXTERNALLY CONFIRMED AND QUANTIFIED by the corpus's own self-audit: rather than this reconstruction inferring the deferral pattern purely from reading each file's content, the corpus itself now reports specific zero-counts (0 empirical acts, 0 artifacts, 0 ledger rows, 0 test results, 0 genealogy rows) for the exact files this reconstruction had already flagged as deferring. This is a rare and valuable convergence between an external reader's (this reconstruction's) independent judgment and the source material's own internal self-critique"
+  - concept: "0846/0848/0849/0851/0852/0855/0858's SemanticIntegrity formula family"
+    refinement: "This file explicitly traces and validates the exact repair sequence this reconstruction has itself tracked across those files, confirming from the corpus's own audit perspective that the sequence represents 'a genuine improvement' arising from 'an observed flaw and subsequent repair, rather than from mathematical decoration' -- directly corroborating this reconstruction's own earlier characterization of the 0849 formula as 'the arc's first fully operationalized, falsifiable definition of Semantic Integrity'"
+  - concept: "0836's 'Invariant Algebra' framing and 0858's transformation-set/governance-composition work"
+    refinement: "REVERSED IN RELATIVE STRENGTH: this file explicitly argues 0858's transformation set 𝒯 (with composition and identity) is a substantially more defensible mathematical structure than 0836's 'Invariant Algebra,' which lacked the basic components (carrier/operations/laws) required to be called an algebra at all -- a genuine, retroactive comparative correction"
+contradicts:
+  - concept: "This reconstruction's own earlier characterizations of files 0836, 0838, and 0848 as delivering 'the strongest verdict set,' fully-specified invariants, and a rich theoretical convergence"
+    contradiction: "The corpus's own later self-audit (this file) reclassifies each of these three files' central claimed achievement downward: 0836's 'Invariant Algebra' is rejected as not actually being an algebra; 0838's invariant verification matrix is reclassified as unexecuted design intent rather than measured verification; 0848's eight concept families are reclassified as unsubstantiated hypotheses rather than a demonstrated genealogy. This is not a contradiction this reconstruction introduced, but one the corpus itself surfaces about its own earlier claims -- flagged here so that any future synthesis work does not treat those three files' strongest framings as settled fact without this qualification."
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 237's actual construction of the per-step tuple S_i for real Steps 1-182 -- this is now, for the first time, a genuinely plausible near-term deliverable given that real evidence has finally entered the corpus's context, rather than another purely hypothetical promise."
+  - "Watch closely whether the sharp new constraint ('Steps 183-237 must not retroactively define what Steps 1-182 meant') is actually honored in subsequent files, given that this exact failure mode (Step 215) is what triggered this file's entire self-audit."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record THE DEFERRAL FINALLY BREAKING at this file -- the first genuine evidence-based self-audit result in either sub-arc, with specific quantified findings (6/182 steps named, EL=∅ across five steps, 0/15 test results, 0 genealogy rows)."
+  - "dimension-registry.md: record the RETROACTIVE RECLASSIFICATION of this reconstruction's own earlier files 0836 (Invariant Algebra, rejected), 0838 (Invariant Verification Matrix, reclassified as design intent not measurement), and 0848 (eight concept families, reclassified as hypotheses not genealogy) -- flag these three prior records for qualified reading in any future synthesis work."
+  - "dimension-registry.md: record confirmation that the SemanticIntegrity formula family (0846→0848→0849→0851→0852→0855→0858) is validated by the corpus's own audit as a genuine repair sequence, not mere restatement."
+  - "dimension-registry.md: record the SIXTH Gita-taxonomy variant (full-word form, structurally identical to 0861's G0-G4), further confirming the G0-Gn family's stabilization as the corpus's converging preference over 0855's outlier G1/G2/G3 scheme."
+  - "dimension-registry.md: record the sharp new methodological constraint ('Steps 183-237 must not retroactively define Steps 1-182') as a directly reusable discipline for this reconstruction's OWN future synthesis work, given the direct structural parallel to this reconstruction's own obligation not to let later cross-model comparison retroactively redefine earlier per-file findings."
+anchor_test:
+  anchor: "0842-0861's entire deferred-planning arc (both sub-arcs); 0836's Invariant Algebra; 0838's Invariant Verification Matrix; 0848's eight concept families; 0849's/0855's/0858's SemanticIntegrity formula family; 0861's G0-G4 Gita taxonomy"
+  supports_dimension: "Directly confirms and quantifies this reconstruction's own long-tracked deferred-execution finding from within the corpus's own self-audit -- a rare, valuable external validation. Retroactively downgrades three previously celebrated files' claimed achievements (0836/0838/0848) to intent/hypothesis/taxonomy status, requiring qualified future reference to those records. Validates the SemanticIntegrity formula repair sequence as genuine progress. Confirms the G0-Gn Gita-taxonomy family's stabilization via a sixth structurally-identical variant. Delivers a sharp, self-aware methodological guardrail directly responsive to the exact failure just diagnosed"
+  refines_or_contradicts: "confirms and quantifies the deferred-execution pattern; retroactively downgrades (contradicts the strongest framing of) 0836/0838/0848's claimed achievements; validates the SemanticIntegrity repair sequence; confirms the G0-Gn Gita-taxonomy convergence; does not address the I-series invariant-numbering collisions or the 0855-vs-0860/0861 Gita-taxonomy outlier directly"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit quantified findings ('6 of the 182 steps,' 'quoted none,' '0 empirical acts,' '0 artifacts opened,' '0 ledger rows,' 'EL=∅,' '15 test names, 0 test results,' 'zero actual genealogy rows') are directly checkable, specific numerical claims rather than qualitative impressions, giving this file's self-audit unusually strong evidentiary character relative to every prior file in the deferred-planning arc."
+  - "The explicit boxed rejection 'Invariant Algebra should not be accepted as mathematically established,' immediately followed by the specific missing-components list (carrier set, consistent typing, non-trivial operations, algebraic laws), is directly checkable evidence of a substantive, structural mathematical critique rather than a vague caveat."
+  - "The explicit wording-comparison in §236.17 (the assertive original thesis sentence immediately followed by the hedged replacement sentence, with the self-assessment 'that wording is scientifically much stronger') is directly checkable evidence of a genuine, deliberate epistemic downgrade rather than incidental phrasing drift."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 237 actually constructs the per-step tuple S_i for real Steps 1-182, now that genuine evidence appears to be entering the corpus's context for the first time -- this is the most important open question for the immediate continuation of this reconstruction's reading."
+  - "Whether the sharp new constraint (Steps 183-237 must not retroactively define Steps 1-182) is actually honored going forward, or whether a future file repeats the exact Step-215 failure mode."
+  - "Whether this reconstruction's own per-file records for 0836, 0838, and 0848 should receive an explicit cross-reference note pointing back to this file's reclassification (a housekeeping question for the eventual canonical synthesis phase, not urgent during the ongoing sequential read)."
+tier2_triggered: true
+tier2_reason: "The single most consequential file in the deferred-planning arc since it began at 0842: delivers the first genuine, quantified, evidence-based self-audit result, externally confirming this reconstruction's own independently-tracked deferral pattern and retroactively downgrading three previously celebrated files' claimed achievements. Delivers a validated mathematical repair (SemanticIntegrity), a substantive algebra-vs-invariant-system correction, and a sharp new methodological guardrail directly responsive to the diagnosed failure. Classified importance critical and tier2-triggered."

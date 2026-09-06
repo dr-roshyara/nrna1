@@ -1,0 +1,43 @@
+==============================================================================
+Q. Under WHICH equality does  (A,R) = pi_K(K_t)  hold?
+==============================================================================
+
+1. STRUCTURAL equality  (same components, same names)
+   pi image  = ['Entity', 'Observation', 'Proposition', 'Relation', 'State']
+   target    = ['Assertion', 'Relation']
+   equal? False   -> FALSE. 'Assertion' is not a ratified primitive at all.
+   => the claim is FALSE under structural equality.
+
+2. SEMANTIC equality  (same content, ignore packaging)
+   Assertion unpacks to carry: ['Entity', 'Observation', 'Proposition']  (+ id,c,t,Pi which are not primitives)
+   plus Relation, plus State-as-carrier
+   covered by pi image? True  -> TRUE
+   => the claim HOLDS under semantic equality -- and ONLY after unpacking Assertion.
+
+3. OBSERVATIONAL equality  (same answers to all mandatory queries)
+   answerable in (A,R): ['member', 'contradicts', 'supersede', 'lineage']
+   NOT answerable    : ['replay', 'policy-eval', 'authorize']   <- these need Event/Policy/Action
+   => FALSE under observational equality. The projection is LOSSY, by design.
+
+==============================================================================
+RESULT -- the claim must be restated
+==============================================================================
+
+  WRONG (as D285-6 originally wrote it):
+      (A,R) = pi_K(K_t)
+
+  CORRECT:
+      (A,R)  =_semantic  pi_K(K_t)      after unpacking Assertion into its fields,
+                                         and modulo the declared drop of {Event, Policy, Action}
+
+  and explicitly NOT:
+      =_structural      (Assertion is not a ratified primitive)
+      =_observational   (replay, policy-eval and authorize are unanswerable in (A,R))
+
+  CONSEQUENCE: 'projection' is the right word only for a LOSSY, semantic-level map.
+  D285-6's Outcome B stands -- but it is weaker than an unqualified '=' suggested,
+  and the loss is now named: three primitives and three query classes.
+
+  This is the SAME defect class D285-5 caught in the action/result property:
+  a property stated without naming its equality is not a well-formed proposition.
+  D285-5 caught it in someone else's property; it was present in my own.

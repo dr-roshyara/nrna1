@@ -1,0 +1,94 @@
+sequence: 1030
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-212225_step_287_reviewer-accepts-corrections-and-issues-nine-audit-prompts-for-287-vnext.md
+title: "Reviewer -- Accepts Corrections, Issues Nine Audit Prompts for 287 vNext: Confirms File 1029's Sigma-Order-Not-Equal-K-Order Finding as 'a Genuine Category Error, Not Merely Wording,' Recommends Against Running Step 288 Until 287 Is Corrected, and Drafts a Complete Nine-Prompt Plus Synthesis Audit Sequence"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a methodological follow-up to file 1029's four-red-four-orange review, drafting a complete nine-prompt audit sequence plus a final synthesis prompt for producing Step 287 vNext"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1030
+importance: normal
+confidence: high
+about: >
+  Accepts the corrections from file 1029, verdict: "OPEN · substantially corrected · no premature closure ·
+  ready for Step 288" -- but NOT yet equality closure. **Confirms file 1029's central finding as substantive,
+  not cosmetic**: "Σ-order ≠ K-order — this was a GENUINE CATEGORY ERROR, not merely wording. Good that F5
+  is explicitly narrowed." Confirms all ten of the already-tracked corrections (files 1026, 1029) as
+  "directionally right," and delivers the sharpened boundary statement: "Step 287 does not solve equality.
+  It establishes exactly what is known, what is bounded, what is normative, and what remains technically
+  unspecified."
+
+  **Drafts a complete nine-prompt audit sequence plus a final synthesis prompt**, largely methodological
+  apparatus extending file 1029's own three-prompt draft: (1) a full consistency audit against fourteen named
+  corrections, classifying each found issue as contradiction/overclaim/terminology-error/unsupported-
+  inference/stylistic; (2) a formal mathematics audit (well-typedness, domain matching, level-of-application
+  for every relation, PASS/FAIL/QUALIFY verdicts); (3) an explicit "ontology and level-confusion audit"
+  across ten named levels (primitive/K/Σ/value/assertion/operation/authority-act/event/provenance/
+  observation), flagging implicit cross-level substitution without an explicit bridge; (4) an evidence/
+  provenance audit using a seven-value vocabulary, explicitly reinforcing "not established ≠ proven
+  impossible," "available ≠ established," "a source motivates a hypothesis ≠ a hypothesis is established";
+  (5) a narrow, dedicated `≈_X` section rewrite prompt; (6) a narrow, dedicated order-section rewrite prompt
+  with the hard constraint "NEVER move from `Σ_1⪯Σ_2` to `K_{t+1}≻K_t` as though these were the same
+  ordering," mandating the closing sentence "Σ-ordering is not K-ordering"; (7) a dependency sweep searching
+  the ENTIRE Step-287 package (headings, tables, findings, cross-references) for six named propagated forms
+  of the retracted K-order claim, classified `REMOVE/REPLACE/QUALIFY/SAFE`; (8) a test of whether "under-
+  specified" is itself the correct classification, applied separately across relation-existence/definition/
+  decision-procedure/semantic-commitment/normative-selection/implementation-semantics for all four relations
+  plus the value-level `≡_D`; (9) a "Step-288 boundary audit" producing three lists (CLOSED by 287 / BOUNDED
+  but OPEN / EXPLICITLY DEFERRED to 288), explicitly designed to "prevent Step 288 from solving questions
+  that 287 deliberately leaves normative or technically open."
+
+  **Delivers the final synthesis prompt** for producing "REFINED-STEP-287 vNext," with twenty explicit hard
+  rules (never infer K-order from Σ-order; keep `≈_X` explicitly a candidate construction; "under-specified
+  constructs" not "primitive"; preserve five separate identity notions; preserve the D285-5 quotient scoping;
+  preserve the Step-261 stop-gate; explicitly state 287 does NOT close the equality contract) and a mandated
+  output structure (CHANGE CONTROL section, then ESTABLISHED/BOUNDED/NORMATIVE/TECHNICALLY-OPEN/DEFERRED
+  lists), closing with the MANDATED FINAL SENTENCE: **"Step 287 establishes the boundary of the equality
+  problem; it does not establish the equality contract."**
+
+  **Delivers one genuinely important process recommendation**: "I would NOT run the drafted Step 288 yet...
+  First let 287 undergo the formal/ontology/evidence/dependency audits above; then Step 288 should consume
+  the CORRECTED 287, not the current one" -- explicitly sequencing the correction-before-commissioning
+  discipline for the entire equality-closure research chain, and restating the clean four-step architectural
+  progression: 285 (relationship established) → 286 (philosophical-source programme disciplined) → 287
+  (equality/identity problem bounded and decomposed) → 288 (decision-procedure research, without silently
+  making normative decisions).
+introduces:
+  - concept: "The complete nine-prompt plus synthesis audit sequence for correcting Step 287, extending file 1029's three-prompt draft"
+  - concept: "The mandated final sentence for the corrected Step 287: 'Step 287 establishes the boundary of the equality problem; it does not establish the equality contract'"
+  - concept: "The explicit process recommendation to correct Step 287 fully before Step 288 consumes it, rather than commissioning 288 against the uncorrected version"
+defines: []
+refines:
+  - concept: "File 1029's already-documented Sigma-order-vs-K-order finding (RED issue 4)"
+    refinement: "CONFIRMED as substantive, not cosmetic: 'a genuine category error, not merely wording'"
+  - concept: "This reconstruction's already-tracked D288/REFINED-STEP-288 commissioning sequence (files 1002, 1005, 1027)"
+    refinement: "EXPLICITLY GATED: Step 288 should not proceed against the uncorrected Step 287; the corrected version must exist first"
+contradicts: []
+repeats:
+  - "Substantially repeats and extends file 1029's already-documented corrections into concrete audit-prompt form; largely methodological apparatus rather than new substantive corpus findings."
+bridge_candidates:
+  - "The full 'REFINED-STEP-287' document (already tracked via files 1020-1022, 1026, 1029), whose eventual vNext correction this file's prompts target -- not yet directly encountered, nor its vNext outcome."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the mandated final sentence for corrected Step 287 ('establishes the boundary... does not establish the equality contract') and the explicit gating of Step 288 on 287's correction."
+anchor_test:
+  anchor: "File 1029's already-documented Sigma-order-vs-K-order finding and the D288/REFINED-STEP-288 commissioning sequence"
+  supports_dimension: "Confirms the prior finding as substantive and gates the next commissioning step on prior correction"
+  refines_or_contradicts: "confirms and extends prior findings into procedural form"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The fourteen named corrections in Prompt 1 are directly checkable against files 1026 and 1029's own already-documented findings for exact consistency."
+undefined_concepts: []
+open_questions:
+  - "Whether the nine-prompt audit sequence and final synthesis prompt were subsequently executed to produce a corrected 'REFINED-STEP-287 vNext'."
+tier2_triggered: false
+tier2_reason: "Largely methodological/procedural apparatus extending file 1029's already-documented corrections into concrete audit-prompt form, with no major new substantive corpus finding beyond confirming the Sigma-order-vs-K-order distinction as a genuine category error and gating Step 288 on 287's prior correction. Classified importance normal given its confirmatory, process-oriented character; confidence high given its direct traceability."

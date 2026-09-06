@@ -1,0 +1,228 @@
+sequence: 701
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-124238_step-116-actual-knowledgeos-graph-extraction.md
+title: "Step 116 -- Delivers a Genuinely Valuable Four-Layer Graph Model Unifying Prior Scattered Graph Concepts (Implementation/Data/Semantic/Governance Graphs, Explicitly G_I≠G_D≠G_S), a Set-Theoretic Declared-vs-Observed Gap/Unexpected Formalization, Similarity(A,B)≠Identity(A,B) as a Currently Critical AI-Specific Caution, and the Cleanest Six-Level KnowledgeOS Maturity Ladder in This Reconstruction (Documents→Indexed→Structured→Governed→Operational→Closed-Loop) -- Delivers the FIFTH Independently-Arrived-At Formulation of the Corpus's Central Tension ('Retrieval≠Knowledge Operations') -- Escalates the Recurring Pointer-Layer Illustrative Test Case to Its Strongest Severity Label Yet ('HIGH-PRIORITY DRIFT') -- Opens Step 117 -- KnowledgeOS Traceability Experiment, Framed as 'the First Genuinely Decisive End-to-End Experiment': Trace ONE Real Engineering Change Through the Complete Intent→Decision→Authority→Implementation→Verification→Runtime→Evidence→UpdatedKnowledge Chain"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 116 -- Actual KnowledgeOS Graph Extraction', promised at 0700's close; delivers several genuinely valuable consolidating models (a four-layer graph stack, a set-theoretic drift formalization, a maturity ladder) while continuing the calibrated methodology-only pattern"
+source_role: PRIMARY_RESEARCH
+canonical_source: 701
+importance: high
+confidence: high
+about: >
+  Delivers the strict extraction rule -- "no architectural relationship is accepted merely because it is
+  desirable or conceptually logical," `Claim_{architecture}⇒Evidence_{implementation}`, missing evidence
+  yielding `UNKNOWN`, never `FALSE` -- directly extending the corpus's central epistemic-honesty discipline,
+  and a refined seven-level evidence hierarchy (`E0` No evidence through `E6` Governance evidence),
+  extending 0693's/0699's grading scales.
+
+  **Delivers a genuinely valuable, explicitly unifying four-layer graph model, consolidating several
+  previously scattered graph concepts from earlier steps into one coherent stack**: the Implementation Graph
+  (`G_I=(Components,Dependencies,Interfaces)`, the result of Step 111/0696), the Data Graph
+  (`G_D=(Data,Relations)`), the Semantic Graph (`G_S=(Concepts,SemanticRelations)`, the result of Steps
+  112-115/0697-0700), and the Governance Graph (`G_G=(Actors,Authorities,Decisions,Policies)`), with the
+  explicit and important clarification `G_I≠G_D≠G_S` -- "they are related graphs" -- directly and genuinely
+  synthesizing 0696's component graph, 0697's/0698's/0700's semantic graph, and 0689's governance model into
+  a single, cleanly layered architectural stack for the first time.
+
+  Delivers Component-to-semantic-concept mapping requiring evidence rather than name inference (an
+  `EvidenceRepository` class could represent `Evidence`, `Document`, `Artifact`, or `Observation`, PASS) and
+  Table-to-domain-object mapping (a `knowledge_items` table containing content/embedding/source-URL/chunk-
+  number fields more plausibly representing `IndexedDocumentChunk` than a genuine knowledge domain object,
+  PASS), both directly extending the corpus's naming-proves-nothing family into implementation-to-semantics
+  mapping specifically. **Delivers a genuinely valuable methodological insight -- tests reveal intended
+  semantics more precisely than implementation names**: a test literally named
+  `shouldRejectDecisionWithoutAuthority()` is strong evidence for `Decision→^{requires}Authority`, worked
+  through with a concrete confidence ladder (documentation-only claim=`E1`, code enforcement=`E3`, test
+  verification=`E4`) -- directly extending 0687's/0688's naming-proves-nothing family with its positive
+  counterpart: tests, unlike names, DO carry strong semantic evidence.
+
+  Delivers Event-name-versus-behavior verification (a `KnowledgeUpdated` event that merely means "search
+  index updated" is not necessarily evidence of `SemanticKnowledgeUpdated`, PASS) and Workflow-lifecycle
+  reconstruction with the important technical-versus-governance-workflow distinction (a `Review→Publish`
+  transition with no authority check correctly yielding "technical lifecycle established, governance
+  lifecycle unproven," PASS), directly extending 0697's semantic-lifecycle-diversity discipline. Delivers
+  Configuration-reveals-dependency-not-ownership (a `GITHUB_URL` config value establishing integration, not
+  `GitHub=KnowledgeAuthority`, PASS), directly extending 0687's/0694's/0695's external-source-ownership
+  disciplines, and Runtime evidence explicitly identified as the strongest evidence class for actual
+  operational relationships.
+
+  **Delivers a genuinely valuable, precisely reasoned set-theoretic formalization of bidirectional drift,
+  refining the corpus's established drift-detection family with a cleaner mathematical framing**: two
+  parallel graphs, `G_{declared}` and `G_{observed}`, with `Gap=G_{declared}-G_{observed}` (potential dead
+  code, incomplete deployment, stale documentation, unused features) and `Unexpected=G_{observed}-
+  G_{declared}` (potential undocumented integration, architectural drift, accidental dependency, **"shadow
+  capability"**) -- directly and genuinely extending 0684's/0686's/0687's/0691's/0692's drift-detection
+  family into a symmetric, formally clean set-difference formulation, with two currently useful diagnostic
+  labels ("unused feature," "shadow capability") not previously named this precisely in this reconstruction.
+
+  Delivers Git-based temporal evidence with the important, precisely reasoned caution that
+  **`Correlation≠Causation`** for commit-history-based reconstruction (a decision committed Monday and a
+  code change committed Tuesday does not by itself establish that the decision caused the change, PASS),
+  directly extending the corpus's causal-reasoning discipline into git-history archaeology specifically, and
+  the counter-case where an explicit commit-message reference to an ADR ("implements ADR-042") provides
+  stronger, more direct evidence.
+
+  **Delivers Graph identity resolution formalized precisely, with a genuinely useful three-level confidence
+  scale**: three distinct textual identifiers (`ADR-042`, `decision-42`, `architecture-decision-42`)
+  potentially referring to one object require explicit `IdentityResolution`, graded `High` (explicit ID
+  match), `Medium` (multiple independent attributes align), or `Low` (textual similarity only) -- directly
+  extending 0691's/0693's/0697's identity-stability discipline into cross-reference resolution specifically,
+  crystallized as **`Similarity(A,B)≠Identity(A,B)`** -- a crisp, currently critical AI-specific caution: 97%
+  embedding similarity between two documents does not prove they represent the same decision (PASS) --
+  directly and genuinely extending 0673's/0680's/0698's embeddings-never-authoritative discipline into
+  identity-resolution specifically, a distinction of clear and immediate relevance to any AI-powered
+  knowledge system relying on vector similarity for deduplication or entity matching.
+
+  Delivers Edge confidence grading (High/Medium/Low) and explicit `UnknownEdge` recording rather than
+  inventing a relationship ("this is essential for architectural honesty," directly extending the corpus's
+  central epistemic-honesty discipline into edge-uncertainty representation), and Contradictory-evidence
+  handling that records both a `DeclaredEdge` and a conflicting `ObservedEdge` explicitly rather than
+  silently picking one, correctly yielding a `DriftFinding`, directly extending 0682's/0697's/0700's
+  Conflict-is-knowledge discipline.
+
+  **Escalates the reconstruction's recurring, still-never-empirically-resolved pointer-layer illustrative
+  test case to its strongest severity label used anywhere in this reconstruction**: "Documentation says: All
+  agent knowledge comes from KnowledgeOS. Runtime shows agents reading `.claude/memory/`. Expected:
+  Potential knowledge-source bypass. Result: `DRIFT CANDIDATE`... this is particularly important for the
+  Claude/Codex symmetry architecture," followed immediately by "Claude has a local memory artifact
+  containing an architecture decision that differs from KnowledgeOS. Expected: Potential semantic authority
+  conflict. Result: **`HIGH-PRIORITY DRIFT`**" -- the first use of a "HIGH-PRIORITY" severity qualifier
+  anywhere in this reconstruction's tracked history of pointer-layer test instances (0687, 0690, 0693, 0695,
+  0697, 0700), still entirely illustrative and never empirically confirmed, but notable for its escalating
+  language directly following 0700's explicit self-identification of this exact scenario as the
+  reconstruction's own test of that principle.
+
+  Delivers Agent-knowledge-cache legitimacy balanced against the drift concern above: a properly sourced
+  cache (`KnowledgeOS→AgentCache` with `SourceID/Version/Timestamp/RefreshPolicy`) is a valid projection, not
+  automatically a violation, directly extending 0691's/0693's/0697's projection-legitimacy discipline, with
+  Graph freshness formalized as `Freshness(P)=T_{now}-T_{source}` (a six-month-old cache against a
+  yesterday-changed source correctly yielding `ProjectionStatus=STALE`, PASS). Delivers Graph mutation audit
+  (an unaudited decision change correctly flagged as a potential semantic-integrity gap, `OBS`), directly
+  extending 0684's/0687's/0700's audit-trail disciplines, and a cleanly formatted eight-row Semantic gap
+  matrix (Target relationship/Actual relationship/Evidence/Confidence/Gap, all placeholders), the cleanest
+  edge-focused gap-matrix format delivered in this reconstruction.
+
+  **Delivers the file's decisive capstone experiment, the sharpest single-instance decisive-test framing yet
+  proposed**: "Can we select ONE real engineering change and reconstruct its complete semantic path?" via an
+  explicit eight-stage pipeline (`Architecture Decision→Authorized Change→Code Change→Build→Deployment→
+  Runtime Observation→Verification Evidence→Conformance Finding`), with a clean three-way traceability
+  classification -- `EndToEnd` (every arrow evidenced), `Partial` (some missing), or **`TechnicalOnly`**
+  (the process begins only at the Git commit, with no organizational/decision-level evidence at all) -- a
+  valuable, precisely named worst-case classification directly extending 0700's TechnicalTraceability-
+  versus-DecisionTraceability distinction.
+
+  **Delivers the cleanest, most complete six-level KnowledgeOS maturity ladder in this reconstruction,
+  directly synthesizing and superseding the several individual conformance-level schemes scattered across
+  0686/0687/0693/0694/0699 into one coherent framework**: Level 0 Documents (`Knowledge=Documents`); Level 1
+  Indexed knowledge (`Documents+Search`); Level 2 Structured knowledge (`Objects+Relations`); Level 3
+  Governed knowledge (`+Authority`); Level 4 Operational knowledge (`+Actions+Observations`); Level 5
+  Closed-loop KnowledgeOS (the full `Knowledge→Decision→Action→Observation→Evidence→Knowledge` loop) --
+  explicitly and precisely qualified as "a maturity model, not yet a classification of the current system,"
+  consistent with the corpus's epistemic-honesty discipline.
+
+  **Delivers the FIFTH independently-arrived-at formulation of this reconstruction's central open question**:
+  `Retrieval≠Knowledge Operations`; `Knowledge Operations=Knowledge+Governance+Action+Observation+Evidence`
+  -- textually distinct from, but substantively convergent with, 0688's Documents+Embeddings+LLM+Search+
+  Agents≠genuine-KnowledgeOS criterion, 0697's Knowledge-Operating-System-vs-AI-platform framing, 0698's
+  `CurrentAuthoritativeKnowledge`-vs-`TopKSimilarDocuments` contrast, and 0699's Knowledge-Retrieval-
+  Platform-vs-Knowledge-Operating-System distinction -- now a five-file convergence (0688, 0697, 0698, 0699,
+  0701) on materially the same underlying architectural tension, a strong triangulation signal for this
+  reconstruction's eventual synthesis.
+
+  No explicit new named invariants section appears in this file, consistent with the recent methodology-
+  heavy run.
+
+  Delivers Step 116's verdict continuing the calibrated methodology-only pattern: "STEP 116 — ACTUAL GRAPH
+  EXTRACTION METHOD: PASS... we have NOT fabricated the actual graph. The next step must use the real
+  KnowledgeOS artifacts to populate it."
+
+  **Closes by opening "Step 117 — KnowledgeOS Traceability Experiment,"** explicitly framed as "the first
+  genuinely decisive end-to-end experiment" -- proposing to select ONE real engineering change and test the
+  complete `Intent→Decision→Authority→Implementation→Verification→Runtime→Evidence→UpdatedKnowledge` chain
+  against seven explicit accountability questions (why was this change made, who authorized it, what
+  resulted, how was it verified, what happened at runtime, what evidence proves the result, where is the
+  resulting knowledge now authoritative), closing with: "If KnowledgeOS can perform that traversal, we have
+  found the core of the Engineering Knowledge Operating System. If it cannot, the missing links will tell us
+  exactly where the current architecture stops being an operating system and remains a collection of
+  knowledge-management and AI-engineering mechanisms." No actual code execution, repository inspection, or
+  verified filesystem/relationship claim is reported anywhere in this file.
+introduces:
+  - concept: "A genuinely valuable four-layer graph model unifying prior scattered graph concepts: Implementation Graph, Data Graph, Semantic Graph, Governance Graph, explicitly G_I≠G_D≠G_S"
+  - concept: "Tests reveal intended semantics more precisely than implementation names — the positive counterpart to the corpus's naming-proves-nothing family"
+  - concept: "A set-theoretic bidirectional drift formalization: Gap=G_declared-G_observed and Unexpected=G_observed-G_declared, with the useful diagnostic labels 'unused feature' and 'shadow capability'"
+  - concept: "Correlation≠Causation for git-history-based reconstruction"
+  - concept: "Similarity(A,B)≠Identity(A,B), a currently critical AI-specific caution against using embedding similarity for entity identity resolution"
+  - concept: "Escalation of the recurring pointer-layer illustrative test case to its strongest severity label yet in this reconstruction: HIGH-PRIORITY DRIFT"
+  - concept: "TechnicalOnly as a precisely named worst-case traceability classification (traceability that begins and ends at the Git commit, with no organizational/decision-level evidence)"
+  - concept: "The cleanest, most complete six-level KnowledgeOS maturity ladder in this reconstruction, synthesizing several prior scattered conformance-level schemes"
+  - concept: "The FIFTH independently-arrived-at formulation of the corpus's central tension: Retrieval≠Knowledge Operations"
+  - concept: "Opens Step 117 — KnowledgeOS Traceability Experiment, framed as the first genuinely decisive end-to-end experiment tracing one real engineering change"
+defines:
+  - concept: "The four-layer graph model (Implementation/Data/Semantic/Governance)"
+    definition: "A KnowledgeOS reconstruction should maintain four distinct but related graphs: the Implementation Graph (components, dependencies, interfaces), the Data Graph (data entities and their relations), the Semantic Graph (domain concepts and semantic relationships), and the Governance Graph (actors, authorities, decisions, policies) — collapsing them into a single diagram loses essential distinctions between what exists in code, what exists in data, what it means, and who controls it"
+  - concept: "Gap and Unexpected (bidirectional drift as set difference)"
+    definition: "Given a declared architecture graph G_declared and an observed runtime/implementation graph G_observed, Gap=G_declared-G_observed identifies declared-but-unobserved elements (potential dead code, incomplete deployment, stale docs, unused features), while Unexpected=G_observed-G_declared identifies observed-but-undeclared elements (potential undocumented integration, architectural drift, accidental dependency, shadow capability)"
+  - concept: "Similarity(A,B)≠Identity(A,B)"
+    definition: "A high embedding/vector similarity score between two knowledge objects (e.g. 0.97) does not establish that they are the same entity or represent the same decision; identity must be established through explicit identifiers or independently-aligned attributes, never through similarity scores alone"
+  - concept: "TechnicalOnly traceability"
+    definition: "The weakest end-to-end traceability classification for an engineering change: the reconstructable trace begins only at the Git commit level, with no organizational decision, authority, or governance evidence connecting to it at all — distinct from Partial (some links present) and EndToEnd (fully evidenced)"
+  - concept: "The six-level KnowledgeOS maturity ladder"
+    definition: "Level 0 Documents; Level 1 Indexed knowledge (Documents+Search); Level 2 Structured knowledge (Objects+Relations); Level 3 Governed knowledge (+Authority); Level 4 Operational knowledge (+Actions+Observations); Level 5 Closed-loop KnowledgeOS (full Knowledge→Decision→Action→Observation→Evidence→Knowledge loop) — a maturity model for classifying how far a system has progressed toward being a genuine knowledge operating system, not itself a claim about any specific system's current level"
+refines:
+  - concept: "0696's component graph, 0697's/0698's/0700's semantic graph, and 0689's governance model"
+    refinement: "Directly and genuinely unified into a single, coherent four-layer graph stack for the first time in this reconstruction"
+  - concept: "0687's/0688's naming-proves-nothing family"
+    refinement: "Directly extended with its positive counterpart: tests, unlike class/directory names, DO carry strong semantic evidence about intended behavior"
+  - concept: "0684's/0686's/0687's/0691's/0692's drift-detection family"
+    refinement: "Directly and genuinely refined into a symmetric, formally clean set-difference formulation (Gap and Unexpected), with two newly precise diagnostic labels"
+  - concept: "the corpus's causal-reasoning discipline (0658, 0669, 0684)"
+    refinement: "Directly extended into git-history archaeology specifically: temporal commit ordering does not establish causation without stronger linking evidence"
+  - concept: "0691's/0693's/0697's identity-stability discipline"
+    refinement: "Directly extended into cross-reference identity resolution with an explicit three-level confidence scale, crystallized as Similarity(A,B)≠Identity(A,B)"
+  - concept: "0673's/0680's/0698's embeddings-never-authoritative discipline"
+    refinement: "Directly and genuinely extended into identity-resolution specifically: vector similarity must never substitute for identity"
+  - concept: "0682's/0697's/0700's Conflict-is-knowledge discipline"
+    refinement: "Directly extended: conflicting declared and observed edges are both recorded explicitly, yielding a DriftFinding, rather than one being silently discarded"
+  - concept: "0687's/0690's/0693's/0695's/0697's/0700's previewed and repeatedly-engaged pointer-layer principle"
+    refinement: "Given its most severity-escalated illustrative test framing yet (HIGH-PRIORITY DRIFT), still entirely hypothetical and unresolved"
+  - concept: "0691's/0693's/0697's projection-legitimacy discipline"
+    refinement: "Directly extended with a formal freshness metric (Freshness(P)=T_now-T_source) and explicit properties (SourceID/Version/Timestamp/RefreshPolicy) for legitimate agent-knowledge caches"
+  - concept: "0700's TechnicalTraceability≠DecisionTraceability distinction"
+    refinement: "Directly extended into a formal three-way traceability classification (EndToEnd/Partial/TechnicalOnly)"
+  - concept: "0686's/0687's/0693's/0694's/0699's scattered conformance-level schemes"
+    refinement: "Directly synthesized into one coherent six-level maturity ladder (Documents through Closed-loop KnowledgeOS), the most complete such framework in this reconstruction"
+  - concept: "0688's, 0697's, 0698's, and 0699's convergent formulations of the corpus's central tension"
+    refinement: "Independently reconverges via a fifth distinct analytical route (Retrieval≠Knowledge Operations), strengthening the reconstruction's triangulation signal on this open question"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0702 (Step 117 — KnowledgeOS Traceability Experiment) with calibrated vigilance for whether the corpus attempts to trace even one hypothetical concrete engineering change through the full eight-stage pipeline, given this file's framing of it as 'the first genuinely decisive end-to-end experiment.'"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the file's most valuable contributions: the unifying four-layer graph model (Implementation/Data/Semantic/Governance), the set-theoretic Gap/Unexpected drift formalization, Similarity(A,B)≠Identity(A,B), and the six-level KnowledgeOS maturity ladder synthesizing prior scattered conformance schemes."
+  - "dimension-registry.md: record the FIFTH independently-arrived-at formulation of the corpus's central tension (Retrieval≠Knowledge Operations, converging with 0688/0697/0698/0699) as a strong triangulation signal, and the escalation of the recurring pointer-layer test case to its strongest severity label yet (HIGH-PRIORITY DRIFT), still unresolved."
+  - "dimension-registry.md: record continuation of the calibrated methodology-only pattern; flag Step 117 (0702) for whether it attempts genuine (even hypothetical) tracing of one concrete engineering change through the full eight-stage pipeline."
+anchor_test:
+  anchor: "0696's/0697's/0698's/0700's graph concepts; the corpus's naming-proves-nothing family; 0684's/0686's/0687's/0691's/0692's drift-detection family; the corpus's causal-reasoning discipline; 0691's/0693's/0697's identity-stability discipline; 0673's/0680's/0698's embeddings-never-authoritative discipline; 0682's/0697's/0700's Conflict-is-knowledge discipline; the pointer-layer principle (0687/0690/0693/0695/0697/0700); 0686's/0687's/0693's/0694's/0699's conformance-level schemes; 0688's/0697's/0698's/0699's central-tension formulations"
+  supports_dimension: "Delivers a genuinely valuable, explicitly unifying four-layer graph model consolidating several previously scattered graph concepts from earlier steps for the first time. Delivers several precisely reasoned principles coherently extending prior disciplines: tests-reveal-semantics as the positive counterpart to naming-proves-nothing, a clean set-theoretic drift formalization (Gap/Unexpected), Correlation≠Causation for git archaeology, and the currently critical Similarity≠Identity caution for AI-powered knowledge systems. Delivers the cleanest, most complete maturity ladder in this reconstruction, synthesizing several prior scattered conformance schemes. Delivers the fifth independently-arrived-at formulation of the corpus's central tension, further strengthening a meaningful triangulation signal across five files (0688, 0697, 0698, 0699, 0701). Escalates the recurring pointer-layer illustrative test case to its strongest severity label yet (HIGH-PRIORITY DRIFT), though it remains entirely hypothetical and unresolved. Continues the calibrated methodology-only pattern and closes with a sharply framed single-instance decisive experiment for Step 117"
+  refines_or_contradicts: "directly and genuinely extends 0696's/0697's/0698's/0700's graph concepts (unified for the first time), the corpus's naming-proves-nothing family (with a positive counterpart), 0684's/0686's/0687's/0691's/0692's drift-detection family (set-theoretic refinement), the corpus's causal-reasoning discipline, 0691's/0693's/0697's identity-stability discipline, 0673's/0680's/0698's embeddings-never-authoritative discipline, 0682's/0697's/0700's Conflict-is-knowledge discipline, and 0686's/0687's/0693's/0694's/0699's conformance-level schemes (synthesized into one ladder); directly and explicitly re-engages (without resolving) the pointer-layer principle at its strongest severity label yet; independently reconverges on (rather than contradicts) the corpus's central-tension formulations; no contradiction found; no new invariants introduced, so no collision risk"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§116.5-116.9's four-layer graph model, with its explicit G_I≠G_D≠G_S clarification and consolidated diagram, is direct, checkable evidence of a genuine unification of several previously independently-introduced graph concepts across this reconstruction's earlier steps."
+  - "§116.34-116.35's Similarity(A,B)≠Identity(A,B) principle, worked through with a concrete 0.97-similarity-does-not-imply-identity example, is a directly checkable, precisely reasoned, and currently critical caution for AI-powered knowledge-system architecture."
+  - "§116.41's 'HIGH-PRIORITY DRIFT' classification for the Claude-memory-diverges-from-KnowledgeOS scenario is the strongest severity label applied to this reconstruction's recurring pointer-layer test case across all its tracked instances (0687, 0690, 0693, 0695, 0697, 0700), directly following 0700's explicit self-identification of this exact test as targeting that principle."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 117's actual content (0702), once read, attempts to trace even one hypothetical concrete engineering change through the full eight-stage pipeline this file proposes, given its framing as 'the first genuinely decisive end-to-end experiment,' or continues the established methodology-only pattern."
+tier2_triggered: true
+tier2_reason: "Delivers a genuinely valuable, explicitly unifying four-layer graph model consolidating several previously scattered graph concepts for the first time in this reconstruction. Delivers several precisely reasoned principles: tests-reveal-semantics (the positive counterpart to naming-proves-nothing), a clean set-theoretic drift formalization, Correlation≠Causation for git archaeology, and the currently critical Similarity≠Identity caution. Delivers the cleanest, most complete maturity ladder in this reconstruction. Delivers the fifth independently-arrived-at formulation of the corpus's central tension, strengthening a meaningful five-file triangulation signal. Escalates the recurring pointer-layer test case to its strongest severity label yet (HIGH-PRIORITY DRIFT), still unresolved."

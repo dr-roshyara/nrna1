@@ -1,0 +1,48 @@
+sequence: 367
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260825-233112_evidence-connects-observation-to-facts.md
+title: "Duplicate of 0366 Section 5 (Fact-based comparison-and-closure pipeline)"
+date: "2026-08-25"
+bytes: 8004
+model:
+  primary: c1
+  secondary: null
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 366
+importance: low
+confidence: high
+about: >
+  Cross-file duplicate of file 0366's Section 5 (lines 2688-3206 of 0366's source, minus one leading
+  attribution line) -- the Fact-based comparison-and-closure Knowledge pipeline ((F_t,R_t)|-K; Evidence as
+  the O_t->E->F bridge; the Comparison mechanism (F_<=t,S_t)->Delta_t->K_t; the ideal state
+  K_t*=Cn_Rt(S_t union F_<=t); probability relocated to fact-extraction; the closing "What is a Fact?"
+  research question). Verified via diff against 0366's Section 5: content is identical except for the
+  leading line. Recorded minimally per the established cross-file duplicate protocol (matching 0344-vs-0340
+  and 0352-vs-0351).
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Entire content duplicates 0366's Section 5 (Fact-based comparison-and-closure pipeline, K_t*=Cn_Rt(S_t union F_<=t), the 'What is a Fact?' research question)"
+    canonical_source: 366
+    novelty: "none -- cross-file duplicate, verified via diff"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0366's Section 5"
+  supports_dimension: "Cross-file duplicate; no independent evidentiary weight beyond confirming 0366's content was reproduced/reused as a standalone file"
+  refines_or_contradicts: "none -- duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "NOT TRIGGERED -- cross-file duplicate of 0366's Section 5, verified via diff"

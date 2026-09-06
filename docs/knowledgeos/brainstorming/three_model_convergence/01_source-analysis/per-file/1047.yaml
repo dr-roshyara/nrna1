@@ -1,0 +1,88 @@
+sequence: 1047
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-288/07-NORMATIVE-DECISION-REGISTER.md
+title: "07 -- Normative Decision Register (Step 288 SSSS6, 20): The Definitive, Capstone Twenty-Item Governance Decision Register for the Entire Equality-Research Programme, With N-4 (Which Operation/Transformation Set) Identified as the Single Upstream Gate Blocking Nearly Everything Else"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the seventh numbered Step-288 artifact, the culminating governance decision register consolidating every open normative question this reconstruction has tracked across the entire equality-research programme"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1047
+importance: critical
+confidence: high
+about: >
+  "07 — Normative Decision Register (mandate §§6, 20)," explicitly binding: "this step makes NO governance
+  decision. No branch is chosen... Nothing is recommended."
+
+  **§6 delivers a fully disciplined, comprehensive both-branches analysis of Decision 3** (`Π∈≡`?),
+  cross-corpus-cited (`261.8`, `254`), covering thirteen consequence dimensions (effect on `≡`, `≅_λ`,
+  `D285-5`, `D285-6`, deduplication, canonicalization, provenance, replay, contradiction handling,
+  operations, `δ`, governance, and invariant `I-C`) for both branches, with NO preference stated. **DELIVERS
+  A GENUINELY IMPORTANT METHODOLOGICAL CLARIFICATION**, distinguishing what is TECHNICAL (decidable) from
+  what is NORMATIVE within Decision 3 itself: "Does any mandatory operation observe `Π`?" is TECHNICAL,
+  decidable by the already-tracked "258-A" congruence experiment (`∃T: F(H_1)=F(H_2)∧F(T(H_1))≠F(T(H_2))`),
+  quoting a NEW corpus principle **"258.31: 'we do NOT ask philosophically'"** -- and confirms this
+  experiment has ALREADY BEEN RUN once: "`258.15` already runs it: `TraceOrigin` distinguishes; pure audit
+  metadata does not." Only "which operations are mandatory" (= `𝒪`/`𝒯` ratification) and "which of `258.31`'s
+  three repairs" remain genuinely NORMATIVE.
+
+  **DELIVERS THE DEFINITIVE, CAPSTONE TWENTY-ITEM NORMATIVE DECISION REGISTER** consolidating every open
+  question this reconstruction has tracked across files 1005-1046 into one authoritative table, each with
+  formally-consistent options, technical/governance consequences, status, and assigned authority (`ARB`,
+  `PO`, `domain`, `registry`). Notably includes: **N-1**, explicitly flagged "OPEN — CRITICAL, newly found" --
+  the `≡`/`≈` one-relation-or-two question stemming directly from file 1041's discovered corpus
+  self-contradiction; N-4 (which `𝒪`/`𝒯`) explicitly marked "the single upstream gate" blocking N-3, N-5,
+  N-11, and the technical half of N-2; N-19 (the decision-theoretic false-merge/false-split operating point),
+  additionally blocked by the already-tracked missing-probability-space gap (`G-22`); and **N-20, the "287"
+  identifier collision**, explicitly assigned authority to "registry... carried, user's call" -- notably
+  DIFFERENT from every other item's `ARB`/`PO` authority assignment, treating this specific naming question
+  as outside even the architecture review board's remit.
+
+  **Closes with the definitive dependency-priority finding**: "20 open normative decisions. N-4 gates N-3,
+  N-5, N-11 and the technical half of N-2" -- confirming, in its most explicit and complete form yet, that a
+  single decision (ratifying the operation/transformation set `𝒪`/`𝒯`) is the master upstream gate for
+  nearly the entire remaining equality/identity/kernel research programme.
+introduces:
+  - concept: "The definitive, capstone twenty-item normative decision register (N-1 through N-20), consolidating every open governance question across the entire equality-research programme with formally-consistent options, consequences, and assigned authority"
+  - concept: "The methodological distinction within Decision 3 itself between its technical component (decidable by the 258-A congruence experiment, already run once per 258.15) and its genuinely normative components (which operations are mandatory, which repair strategy)"
+  - concept: "'258.31' -- a new corpus principle explicitly stating provenance relevance is decided empirically ('we do NOT ask philosophically'), not by preference"
+  - concept: "The explicit identification of N-4 (ratifying the operation/transformation set) as the single upstream gate blocking N-3, N-5, N-11, and the technical half of N-2"
+  - concept: "N-20, the Step-287 identifier collision, uniquely assigned to 'registry... the user's call' rather than ARB/PO authority"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked equiv/approx contradiction (file 1041)"
+    refinement: "FORMALIZED as N-1, explicitly flagged 'OPEN — CRITICAL, newly found' in the definitive decision register"
+  - concept: "This reconstruction's already-tracked Decision 3 (Pi in equiv) question (files 0993-0994, 1005, 1021, 1026-1027)"
+    refinement: "COMPLETED with a comprehensive thirteen-dimension both-branches consequence table and a precise technical-vs-normative decomposition, showing part of the question is actually decidable, not purely a matter of preference"
+  - concept: "This reconstruction's already-tracked identification of the operation-space enumeration as a critical dependency (files 1008, 1035, 1037-1038, 1044-1045)"
+    refinement: "FORMALIZED as N-4, explicitly named the single upstream gate for nearly the entire remaining decision register"
+  - concept: "This reconstruction's already-tracked Step-287 numbering collision (files 1034-1036)"
+    refinement: "FORMALIZED as N-20, uniquely assigned outside ARB/PO authority to 'registry... the user's call'"
+contradicts: []
+repeats:
+  - "Consolidates every already-tracked open decision across files 1005-1046 into one register; genuinely new content is limited to the precise technical-vs-normative decomposition of Decision 3 and the explicit gate-priority finding for N-4."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the definitive, capstone twenty-item normative decision register (N-1 through N-20) as the canonical governance reference for the entire equality/identity research programme."
+  - "dimension-registry.md: record the precise technical-vs-normative decomposition of Decision 3, and the explicit identification of N-4 (operation/transformation-set ratification) as the single upstream gate."
+anchor_test:
+  anchor: "Every already-tracked open governance question across the entire equality-research programme (files 1005-1046)"
+  supports_dimension: "Consolidates all of them into the definitive, capstone twenty-item decision register with dependency priorities and assigned authority"
+  refines_or_contradicts: "confirms and consolidates prior findings into their definitive final governance form"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The twenty-item register is directly checkable against every already-tracked open question across files 1005-1046 for completeness and consistency."
+undefined_concepts: []
+open_questions:
+  - "Whether any of the twenty normative decisions is subsequently taken by the assigned authority (ARB, PO, domain, or registry)."
+tier2_triggered: true
+tier2_reason: "Delivers the definitive, capstone twenty-item normative decision register consolidating every open governance question across the entire equality-research programme, with a precise technical-vs-normative decomposition of Decision 3 and the explicit identification of the single upstream gate (N-4) blocking most remaining decisions. Classified importance critical and confidence high given its role as the canonical governance closure document for this entire research arc."

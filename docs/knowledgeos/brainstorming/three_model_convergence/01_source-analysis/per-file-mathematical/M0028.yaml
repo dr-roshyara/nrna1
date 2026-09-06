@@ -1,0 +1,101 @@
+sequence: M0028
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-220800_white-plato-on-knowledge-and-reality-contribution-to-the-theory.md
+title: "White, Plato on Knowledge and Reality -- Second Pass: the Object-Knowledge-vs-Propositional-Knowledge Distinction, Epistemic Contamination (Old Models as Obstruction), the Syntactic/Semantic/Epistemic Correctness Triad, and Recursive Inquiry (K_t Needed to Search for K_t+1)"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "a second, independent extraction pass over the same White/Plato source already covered in M0024, largely restating that document's twelve principles but adding several genuinely new distinctions (object vs propositional knowledge, epistemic contamination, the syntactic/semantic/epistemic triad, recursive inquiry)"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0028
+importance: high
+confidence: high
+about: >
+  A second pass over Nicholas White's "Plato on Knowledge and Reality" (already extracted in
+  M0024), explicitly reaffirming that "the book does not give us a simple 'Plato says knowledge=X'
+  answer... one of its main conclusions is that Plato's investigation of knowledge ends without a
+  satisfactory final definition," and re-deriving most of M0024's twelve principles independently
+  (reality-independent-of-belief, belief!=knowledge via the failed true-belief and
+  true-belief+logos proposals, representation!=reality via the Cratylus, perception-can-generate-
+  error via the wax-tablet analogy, inquiry-is-purposeful, provisional hypotheses, foundational
+  dependencies, concepts-must-not-be-conflated).
+
+  **DELIVERS THE OBJECT-KNOWLEDGE-VS-PROPOSITIONAL-KNOWLEDGE DISTINCTION AS A GENUINELY NEW POINT**:
+  Plato's Theaetetus question is not primarily "what does it mean for S to know that P" but "what
+  does it mean for S to know X" -- the OBJECT of knowledge matters, not merely the proposition.
+  Distinguishes propositional knowledge ("X is true") from object knowledge ("I understand X"),
+  with a worked KnowledgeOS example: a document containing "Nexus uses Podman" is different from
+  KnowledgeOS actually having a validated representation of Nexus's runtime/host/container/
+  configuration/network/operational relationships.
+
+  **DELIVERS logos-AS-DISTINGUISHING-DESCRIPTION, FORMALIZED**: knowing something requires being
+  able to give a description that uniquely distinguishes it from other things --
+  KNOW(X) requires DISTINGUISH(X, not-X) -- giving KnowledgeOS an explicit capability requirement
+  (identity/boundary/distinction/classification) and reframing a knowledge-graph's inability to
+  reliably distinguish two entities as "an epistemic problem, not merely a data-quality problem."
+
+  **DELIVERS EPISTEMIC CONTAMINATION AS A NEW CONCEPT**: Plato regards existing language and
+  theory as potentially becoming an OBSTRUCTION to correctly apprehending reality -- previous
+  knowledge is not automatically helpful; it can become Old Model -> Bias -> Misinterpretation ->
+  False Knowledge -- proposed as part of "the KnowledgeOS theory of epistemic contamination," not
+  present in M0024's treatment of the same source.
+
+  **DELIVERS THE SYNTACTIC/SEMANTIC/EPISTEMIC CORRECTNESS TRIAD**: syntactic correctness !=
+  semantic correctness != epistemic correctness, sharper than M0024's Representation!=Reality
+  finding, derived from the Cratylus's language-reality problem.
+
+  **DELIVERS RECURSIVE INQUIRY**: inquiry cannot start from absolute nothing -- framing a question
+  requires prior beliefs about what the question means, what counts as an answer, what terms mean,
+  and what counts as relevant evidence; therefore K_t -> Question -> Inquiry -> New Information ->
+  K_{t+1} is recursive -- "you use existing knowledge to search for new knowledge," a point not
+  made in M0024's treatment.
+
+  **RESTATES (AS A SIXTEEN-ROW TABLE) MOST OF M0024's ALREADY-ESTABLISHED PRINCIPLES**: reality
+  independent of belief, true-belief insufficient, truth!=consensus, perception-can-error,
+  memory-can-mismatch, representation!=reality, names/descriptions can fail, knowing-requires-
+  distinguishing, definitions-central, inquiry-purposeful, hypotheses-provisional-testable,
+  consequences-must-be-examined, foundational-dependencies, concepts-must-not-be-conflated, and
+  the deliberately unresolved final-definition row.
+
+  **CLOSES WITH THE SAME EXPLICIT DISCIPLINE AS M0024**: "we should not claim 'Plato proves that
+  knowledge is true justified belief' -- that is a modern reconstruction and, historically, too
+  simplistic. Instead: Plato establishes a set of constraints and problems that any adequate
+  theory of knowledge must address." Final one-sentence synthesis: KnowledgeOS cannot equate
+  information/representation/belief/truth/consensus with knowledge; knowledge must involve a
+  reliable cognitive relation to objective reality, supported by inquiry/distinction/definition/
+  examination -- but the exact final condition remains unresolved, deliberately.
+introduces:
+  - concept: "The object-knowledge-vs-propositional-knowledge distinction (know that P vs know X), with a worked KnowledgeOS/Nexus example"
+  - concept: "logos as distinguishing description, formalized as KNOW(X) requires DISTINGUISH(X,not-X)"
+  - concept: "Epistemic contamination: existing language/theory/old models can obstruct correct knowledge (Old Model -> Bias -> Misinterpretation -> False Knowledge)"
+  - concept: "The syntactic/semantic/epistemic correctness triad, sharper than a flat representation!=reality claim"
+  - concept: "Recursive inquiry: framing any question requires prior knowledge, so K_t is used to search for K_t+1"
+defines: []
+refines:
+  - concept: "M0024's twelve Platonic principles P1-P12, independently re-derived here (largely consistent, no contradiction) with four genuinely new additions (object/propositional knowledge, epistemic contamination, the correctness triad, recursive inquiry)"
+contradicts: []
+repeats:
+  - concept: "Most of M0024's content (reality independence, belief!=knowledge, representation!=reality, the wax-tablet perception-error model, provisional hypotheses, foundational dependencies, concept-non-conflation, and the deliberately unresolved final Theaetetus definition), restated here via an independent second extraction pass rather than a citation of M0024"
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0028 as a second, largely-repeating extraction pass over M0024's Plato/White source, adding four genuinely new points: the object-vs-propositional-knowledge distinction, epistemic contamination (old models as obstruction), the syntactic/semantic/epistemic correctness triad, and recursive inquiry (K_t needed to search for K_t+1)."
+anchor_test:
+  anchor: "M0024's twelve Platonic principles"
+  supports_dimension: "Independently re-derives most of the same principles (consistent, not contradictory) while adding four genuinely new distinctions not present in M0024"
+  refines_or_contradicts: "refines (M0024)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked example distinguishing a document stating 'Nexus uses Podman' (propositional) from KnowledgeOS having a validated representation of Nexus's runtime/host/container/network relationships (object knowledge) is a concrete, engineering-relevant instance of Plato's know-that-P vs know-X distinction, not present in M0024."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Independently re-derives most of M0024's twelve Platonic principles (consistency check) while adding four genuinely new distinctions (object/propositional knowledge, epistemic contamination, the correctness triad, recursive inquiry) -- warrants high importance and a full tier-2 record despite substantial overlap with M0024."

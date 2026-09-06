@@ -1,0 +1,153 @@
+sequence: 910
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-222159_step_278_policy-authority-integration-temporal-semantics-and-governance-closure-final.md
+title: "Step 278 Final -- Policy-Authority Integration, Temporal Semantics, and Governance Closure: THE ARTIFACT 0909's SUPERVISORY REVIEW EXPLICITLY DESIGNATED, ACCEPTING ALL TWELVE CORRECTIONS -- Delivers a SIXTH Distinct Closure-Vocabulary Variant (C0-OPEN/C1-FORMALLY SPECIFIED/C2-COMPUTATIONALLY PARAMETRIC/C3-EMPIRICALLY CLOSED/C4-GOVERNANCE CLOSED, Explicitly Orthogonal) and Correctly Downgrades the Final Verdict to Policy,Authority IN C1 (Formally Specified), NOT Closed -- Reaffirms 'Epistemic Authority Neq Organizational Authority; Evidence Strength Neq Authorization; Truth Assessment Neq Governance Permission' as 'One of the Strongest Recurring Findings in the Research Corpus' -- Delivers a 16-Item Step 279 Deliverable List and the Full Step 280 End-to-End Empirical Chain"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: c1
+  secondary_note: "incorporates 0909's statistical/calibration corrections; primarily governance/DDD formalization"
+source_role: PRIMARY_RESEARCH
+canonical_source: 910
+importance: critical
+confidence: high
+about: >
+  **This is the exact artifact file 0909's appended Supervisory Review explicitly designated** ("Step 278
+  Final — Policy–Authority Integration with Corrections") -- the header confirms it directly:
+  "Supersedes: Step 278 — Policy–Authority Integration" (i.e. file 0908/0909), "Status: FINAL —
+  CONDITIONALLY CLOSED FOR EXECUTION." **Opens explicitly accepting the supervisory review**: "the previous
+  Step 278... was too strong in several places," listing six specific conflations it corrects (formal
+  definition with computational closure; computational closure with empirical validation; governance
+  policy with knowledge about policy; authority with authorization; policy versioning with knowledge-state
+  history; DDD aggregates with mathematical objects) -- delivering the corrected position boxed **`Policy
+  and Authority can now be specified as a formal governance subsystem, but their computational and
+  empirical closure must be demonstrated in Steps 279 and 280`**, explicitly citing the corpus's own
+  standing boxed **`Defined≠Derived≠Demonstrated≠Closed`** discipline (from file 0906's Version 2).
+
+  **§1 delivers a thirteen-row table confirming all nine originally-requested corrections plus four
+  additional requirements are incorporated** (Conditional verdict, Root of Authority, Policy change,
+  Temporal model, F9-F13, the Policy∉K-too-strong correction, DDD mapping, the closure-matrix
+  prematurity fix, corrected next steps, the statistical model, rule independence, aggregate roots,
+  eventual consistency).
+
+  **§2 delivers a SIXTH DISTINCT CLOSURE-VOCABULARY VARIANT** in this immediate file neighborhood (after
+  0904's five-level Defined≠WellTyped≠Decidable≠Executable≠Validated, 0906-Version-1's four closure types,
+  0906-Version-2's Defined≠Derived≠Demonstrated≠Closed, 0908's four-symbol FC/CC/EC/GC, and 0909's
+  Formally-Specified-vs-Formally-Closed refinement of FC): boxed **`C0 — OPEN`** (a necessary definition
+  is missing); boxed **`C1 — FORMALLY SPECIFIED`** (definitions/types/relations/invariants specified,
+  executable closure not yet demonstrated -- directly incorporating 0909's specific terminology critique);
+  boxed **`C2 — COMPUTATIONALLY PARAMETRIC`** (an executable decision procedure exists FOR A FULLY
+  SPECIFIED PARAMETER SET, though the parameters themselves remain external/governance-controlled, e.g.
+  `Evaluate(K,π)` executable once `π` is supplied); boxed **`C3 — EMPIRICALLY CLOSED`** (implemented,
+  executed against representative cases, invariants experimentally verified); boxed **`C4 — GOVERNANCE
+  CLOSED`** (the organization has formally ratified who may establish/modify/authorize/retire the
+  governing parameters). Explicitly states these five levels are ORTHOGONAL dimensions, not a strict
+  linear progression -- "a policy can therefore be: formally specified + computationally executable +
+  empirically tested + governance-open. That is not a contradiction" -- explicitly forbidding the closure
+  matrix from using a single simplistic closed/open column.
+
+  **Continues through an extensive middle section (largely re-elaborating and refining the Policy/
+  Authority/Rule/DDD apparatus from files 0908-0909 in light of the review's twelve corrections)** --
+  sampled but not exhaustively re-transcribed here given its substantial length (~2000 lines) and close
+  continuity with 0908's/0909's already-recorded content; the DDD section (around §41) reaffirms strict
+  bounded-context/aggregate ownership separation (Governance Context owning Authorization Decision/Policy
+  Lifecycle; Knowledge Context owning only `KnowledgeState`; Evidence Context owning only `Evidence`) --
+  "this maintains ownership and language boundaries."
+
+  **§42 delivers the file's own explicitly-flagged central architectural principle**, described as "one of
+  the strongest recurring findings in the research corpus": boxed **`Epistemic authority≠Organizational
+  authority`**; boxed **`Evidence strength≠Authorization`**; boxed **`Truth assessment≠Governance
+  permission`** -- a consolidated, emphatic restatement of the many individual non-collapse findings this
+  reconstruction has tracked across the entire Policy/Authority sub-thread (0894, 0897, 0900, 0901, 0907,
+  0908).
+
+  **§43 delivers a fifteen-row Step-278-Final gap register**, each item explicitly tagged with its
+  designated next-closure step (mostly `279`, with Calibration specifically deferred to `280`, and
+  Constitutional root explicitly marked "Recommended, not ratified → Governance").
+
+  **§44 delivers the file's REVISED CLOSURE STATEMENT, correctly downgraded per the review**: explicitly
+  NOT "Policy and Authority are closed" but rather "Policy and Authority are now sufficiently reconstructed
+  and formally specified to enter executable implementation, but their computational, empirical and
+  governance closure has not yet been demonstrated" -- formally boxed **`Policy, Authority∈C1`**, with
+  parts becoming `C2` once executable policy evaluation is demonstrated, `C3` requiring Step 280, `C4`
+  requiring organizational ratification.
+
+  **§45-§46 delivers Step 279's mandate**: a sixteen-item minimum deliverable list (Policy/Rule/Authority
+  schemas, an authorization evaluator, a policy evaluator, policy version identity, validity-interval
+  handling, a historical policy store, a supersession mechanism, overlap detection, a propagation
+  mechanism, a measurement evaluator, a rule-independence test harness, executable `F9`-`F13` tests, an
+  audit trail, and implementation-to-theory traceability), explicitly forbidding the implementation from
+  collapsing Policy/Authority/Authorization/Assessment/Decision/Knowledge into "a generic status or
+  configuration object"; and Step 280's mandate: the full empirical chain `Source→Evidence→Assessment→
+  Policy→Authorization→Transformation→K'→Validation`, including historical reconstruction
+  `K_t=Replay(K_0,H,t,π_t)`, with the explicit objective NOT merely that code executes but that boxed
+  **`Formal semantics↔Executable behavior↔Actual KnowledgeOS`** holds for representative cases.
+
+  **§47-§48 delivers the Final HPA Verdict, correctly and consistently downgraded**: Status
+  `STEP 278 — FINAL/CONDITIONALLY CLOSED FOR EXECUTION`; Mathematical status `FORMALLY SPECIFIED` (not
+  CLOSED, as 0908's original ruling had wrongly claimed); Computational status `PENDING STEP 279`;
+  Empirical status `PENDING STEP 280`; Governance status `PENDING NORMATIVE RATIFICATION`; explicitly
+  "the earlier overly strong claims of universal closure are explicitly rejected." Delivers four final
+  boxed principles (Governance is a typed, temporal, authoritative transformation constraint, not an
+  epistemic state; Policy is external governance state while knowledge about policy may be represented in
+  `K`; Authority establishes who may govern, Authorization establishes whether a specific governed action
+  is permitted; Policy semantics can now be implemented, but implementation must PROVE, not ASSUME, the
+  claimed closure).
+
+  **Closes with the HPA Ruling**: "Step 278 is accepted as the canonical formal specification of the
+  Policy–Authority governance layer, subject to executable verification. No claim of full KnowledgeOS
+  theory closure is permitted at this point," designating Step 279 (Policy and Authority Executable
+  Implementation) as the immediate next action and Step 280 (End-to-End Empirical Closure Test) as
+  following it.
+introduces:
+  - concept: "Confirmation that this file is exactly the artifact 0909's supervisory review designated ('Step 278 Final'), explicitly accepting and incorporating all twelve identified corrections"
+  - concept: "A sixth distinct closure-vocabulary variant: C0-OPEN/C1-FORMALLY SPECIFIED/C2-COMPUTATIONALLY PARAMETRIC/C3-EMPIRICALLY CLOSED/C4-GOVERNANCE CLOSED, explicitly declared orthogonal dimensions rather than a strict linear progression"
+  - concept: "The correct, downgraded final classification: Policy, Authority∈C1 (Formally Specified), not Closed -- consistent with, and directly incorporating, 0909's review downgrade"
+  - concept: "The consolidated central architectural principle, flagged as one of the corpus's strongest recurring findings: Epistemic authority≠Organizational authority; Evidence strength≠Authorization; Truth assessment≠Governance permission"
+  - concept: "The sixteen-item minimum Step 279 deliverable list, explicitly forbidding collapse of Policy/Authority/Authorization/Assessment/Decision/Knowledge into one generic object"
+  - concept: "The Step 280 empirical objective reframed as Formal semantics↔Executable behavior↔Actual KnowledgeOS, not merely 'code executes'"
+  - concept: "The four final boxed governing principles closing the Policy/Authority sub-thread's formal-specification phase"
+defines:
+  - concept: "The orthogonal C0-C4 closure vocabulary"
+    definition: "A five-level classification for any KnowledgeOS governance construct, explicitly declared to consist of ORTHOGONAL (independently assessable) dimensions rather than a single linear scale, despite the ordinal-looking C0-C4 labeling: C0 (OPEN) means a necessary semantic or mathematical definition is entirely missing; C1 (FORMALLY SPECIFIED) means definitions, types, relations, and invariants have been specified, but executable closure has not been demonstrated; C2 (COMPUTATIONALLY PARAMETRIC) means an executable decision procedure exists for a fully specified parameter set, even though the parameters themselves remain externally or governance-controlled (e.g. a policy evaluator that runs correctly once a specific policy π is supplied, without that meaning the choice of π itself is resolved); C3 (EMPIRICALLY CLOSED) means the formal model has actually been implemented, executed against representative cases, and had its expected invariants experimentally verified; C4 (GOVERNANCE CLOSED) means the organization has formally ratified who may establish, modify, authorize, and retire the governing parameters themselves. A single construct like Policy can simultaneously be C1 (its structure is fully specified), on its way to C2 (an evaluator exists for a fixed policy), while remaining explicitly C4-open (no organization has yet ratified who the root authority actually is) -- this is not treated as a contradiction, only as an honest, granular accounting of exactly what remains to be done"
+refines:
+  - concept: "0908's/0909's four-symbol closure taxonomy FC/CC/EC/GC and 0909's Formally-Specified-vs-Formally-Closed critique"
+    refinement: "SUPERSEDED by the five-level orthogonal C0-C4 vocabulary, directly incorporating 0909's specific terminology critique (the C1 label is explicitly 'Formally Specified,' resolving the Formally-Specified-vs-Formally-Closed confusion the review flagged) while restructuring the remaining three symbols (CC/EC/GC) into C2/C3/C4"
+  - concept: "0908's premature 'FORMAL POLICY/AUTHORITY SEMANTICS: CLOSED' ruling and 0909's downgrade of it"
+    refinement: "FULLY INCORPORATED and consistently maintained: this file's own final verdict explicitly classifies Policy and Authority as C1 (Formally Specified), never claiming C3/C4 closure, directly honoring 0909's review rather than reverting to 0908's original overclaim"
+  - concept: "The Policy/Authority sub-thread's many individual non-collapse findings across 0894/0897/0900/0901/0907/0908"
+    refinement: "CONSOLIDATED into one explicitly-flagged central architectural principle (Epistemic authority≠Organizational authority; Evidence strength≠Authorization; Truth assessment≠Governance permission), described as one of the corpus's strongest recurring findings -- a synthesizing capstone for the entire sub-thread rather than a further individual instance"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read Step 279 (Policy and Authority Executable Implementation) next, expecting the sixteen-item deliverable list to actually be produced, including executable evaluators, the F9-F13 test harness, and implementation-to-theory traceability."
+  - "Watch for whether Step 280 (End-to-End Empirical Closure Test) is ever reached and whether it genuinely tests the full Source→Evidence→Assessment→Policy→Authorization→Transformation→K'→Validation chain against actual KnowledgeOS."
+  - "Watch for whether the two divergent branches (Transformation-Inventory from 0907 vs. Policy/Authority from 0908-0910) are ever explicitly reconciled into a single canonical sequence."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the orthogonal C0-C4 closure vocabulary as the corpus's most mature closure-classification scheme for the Policy/Authority sub-thread, superseding the FC/CC/EC/GC taxonomy, directly reusable for the gated (§29) canonical Kernel synthesis's own closure accounting."
+  - "dimension-registry.md: record the consolidated architectural principle (Epistemic authority≠Organizational authority; Evidence strength≠Authorization; Truth assessment≠Governance permission), flagged by the corpus itself as one of its strongest recurring findings."
+  - "dimension-registry.md: note that this file correctly and consistently maintains the downgraded C1 (not Closed) status for Policy/Authority, honoring 0909's review rather than reverting to 0908's overclaim -- a positive instance of the corpus's self-correction discipline actually holding."
+anchor_test:
+  anchor: "0908's premature CLOSED ruling; 0909's supervisory-review downgrade and twelve corrections; 0906's Defined≠Derived≠Demonstrated≠Closed vocabulary; the Policy/Authority sub-thread's accumulated non-collapse findings (0894/0897/0900/0901/0907/0908)"
+  supports_dimension: "Fully incorporates 0909's review, correctly maintaining the downgraded C1 status rather than reverting to 0908's overclaim -- demonstrating the corpus's self-correction discipline genuinely holding across this cycle. Delivers a sixth closure-vocabulary variant directly resolving 0909's specific terminology critique. Consolidates the sub-thread's many non-collapse findings into one flagged central principle"
+  refines_or_contradicts: "supersedes 0908's/0909's closure vocabulary; correctly incorporates and maintains 0909's downgrade; consolidates the sub-thread's accumulated findings"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§44's explicit boxed classification 'Policy, Authority∈C1' rather than any claim of C3/C4 closure is directly checkable evidence that this file correctly maintains 0909's downgrade rather than reverting to 0908's original overclaim."
+  - "§2.2's explicit worked example ('a policy can therefore be: formally specified + computationally executable + empirically tested + governance-open. That is not a contradiction') is directly checkable evidence for the orthogonality claim underlying the C0-C4 vocabulary."
+  - "§47's four-part final verdict (Mathematical: FORMALLY SPECIFIED; Computational: PENDING STEP 279; Empirical: PENDING STEP 280; Governance: PENDING NORMATIVE RATIFICATION) is directly checkable evidence of the disciplined, non-overclaiming final status."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 279's sixteen-item deliverable list is ever genuinely executed and delivered, given the established pattern of ambitious deliverable lists sometimes remaining unexecuted plans."
+  - "Whether Step 280's End-to-End Empirical Closure Test is ever reached and genuinely tests the full pipeline against actual KnowledgeOS implementation artifacts."
+  - "Whether the Transformation-Inventory branch (0907) and this Policy/Authority branch (0908-0910) are ever explicitly reconciled into one canonical sequence."
+tier2_triggered: true
+tier2_reason: "Delivers the disciplined, fully-corrected resolution of the Policy/Authority sub-thread's overclaim-then-correction cycle (0908→0909→this file), a sixth closure-vocabulary variant directly resolving the prior terminology critique, and a consolidated central architectural principle flagged as one of the corpus's strongest recurring findings. Correctly and consistently maintains the downgraded, non-overclaiming final status. Classified importance critical and tier2-triggered."

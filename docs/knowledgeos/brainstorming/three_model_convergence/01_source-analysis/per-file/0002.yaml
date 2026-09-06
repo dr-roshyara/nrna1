@@ -1,0 +1,73 @@
+sequence: 2
+path: docs/knowledgeos/KnowledgeOS_Architecture_Validation_Matrix.md
+title: KnowledgeOS — Architecture Validation Matrix
+date: 2026-08-03
+bytes: 12566
+doc_type: external-literature validation matrix (REV 2; architecture held fixed)
+
+primary_model_initial: meta_research
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+confidence: high
+# high: the document explicitly holds the architecture fixed and assesses only external standing.
+# The intellectual work performed is validation, unambiguously.
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - validates C1 claims (PKS as governed context, provenance x standing, projections/attestation)
+  - 'kernel set-sufficiency' is a platform-scope claim about the reusable core, not an epistemic one
+  - no epistemic-lineage vocabulary present
+secondary_models: [kernel, ddd, governance, evidence, provenance, validation]
+
+status: DR
+maturity: developing
+importance: high
+
+introduces:
+  - source_grading_fetched_vs_canonical
+  - source_admission_rule
+  - three_standings_triple_partial_unique
+  - source_role_taxonomy_D_V_R_I
+  - challenges_recorded_not_absorbed
+defines:
+  - authority_as_provenance_times_standing   # NOTE: notation is multiplicative; evidence says PAIR
+hypotheses:
+  - dp_n_as_architectural_layer
+  - pks_generation_n0
+  - kernel_set_sufficiency        # RECORDED AS FALSIFIED at n=1, unrepaired
+  - enacted_mission_specific_text
+  - governance_grade_pks_framing
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 2nd consecutive file; asserted only negatively (knowledge != artifact)
+  - authority          # given as provenance x standing; neither factor's domain defined
+  - standing
+  - confidence         # ordinal scale, no calibration procedure
+  - kernel             # "kernel set-sufficiency" falsified against an undefined object
+  - governance
+open_questions:
+  - can the five unique hypotheses survive operational proof
+  - should the external "rule of three" displace the internal n>=2 bar
+  - is DP-n a genuine architectural layer or an artifact of local vocabulary
+  - X-3 challenge to individual ownership of a governed vocabulary
+
+depends_on: [1]
+extends: [1]           # adds an external-standing axis orthogonal to internal count n
+refines: []            # REV 2 softened its own PKS-identity claim
+renames: []
+contradicts: []
+supersedes: []         # supersedes its own REV 1
+repeats: [1]           # documentary form
+connects_to: [1]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Records the corpus's FIRST refutation (kernel set-sufficiency, n=1, unrepaired); states a
+  quasi-formal definition (authority = provenance x standing) whose own supporting evidence
+  describes a pair rather than a product; and makes a Kernel-scope claim against an object it
+  never defines.

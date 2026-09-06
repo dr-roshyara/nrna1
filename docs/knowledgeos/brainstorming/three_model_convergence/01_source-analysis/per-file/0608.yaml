@@ -1,0 +1,185 @@
+sequence: 608
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-101614_step-029-knowledge-consistency-constraints-invariants-satisfiability-and-dependency.md
+title: "The Corpus's Formal SAT/SMT/Constraint-Satisfaction and Proof-Carrying-Knowledge Layer — Pairwise Consistency≠Global Consistency; DDD Invariants Formalized as Executable Constraints (Discovering Consistency Failures Between Non-Opposite Assertions); 'A Generated LLM Rule Must Not Silently Become an Authoritative Domain Invariant'; a Seven-Dimensional Consistency Vector Replacing a Scalar Score; Statistical/Unit/Dimensional Consistency as Formal Constraints (Catching Errors Before Execution); 'AI Generates; Deterministic Machinery Verifies — Generate→Verify→Accept, Not Generate→Trust'; a New 'Deterministic Assurance Gate' Inserted Into the Full Architecture Diagram; Verdict 'STEP 29 — PASS'; Opens Step 30 (Epistemic Calibration, Reality Alignment, Validation, Ground Truth and Model Drift) With the Profound Closing Challenge Consistency≠Correctness — 'Genuinely Epistemic Rather Than Merely a Sophisticated Consistency Engine'"
+date: "2026-08-28"
+bytes: 21815
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 29 -- Knowledge Consistency, Constraints, Invariants, Satisfiability, Dependency Closure and Formal Verification', opened at 0607's close to move from pairwise conflict detection to whole-knowledge-state coherence"
+source_role: PRIMARY_RESEARCH
+canonical_source: 608
+importance: critical
+confidence: high
+about: >
+  Opens Step 29 directly executing 0607's closing commitment, delivering the file's central motivating
+  distinction: **`Pairwise consistency≠Global consistency`** -- three individually pairwise-consistent
+  assertions can jointly violate a higher-order constraint. Delivers a formal knowledge-state consistency
+  definition `Consistent(K,𝒞)⟺K⊨c_i∀c_i∈𝒞`, and DDD invariants formalized as executable constraints
+  (worked `Election.status=Closed⇒VotingAllowed=False` example), bridging DDD with formal constraint
+  evaluation.
+
+  **Delivers the file's key clarifying insight**: worked `Change=Approved∧ApprovalBoard=NotConvened`
+  example violating `Approved⇒BoardConvened` -- demonstrating a consistency failure discoverable even
+  though the two assertions are not logically opposite statements, precisely distinguishing invariant
+  violation from simple contradiction (0607's central topic). Delivers a formal `ConstraintViolation(C,K)`
+  structured output, and formal Constraint provenance (`Origin(C)`, five named types) with the explicit
+  governance statement: **`a generated LLM rule must not silently become an authoritative domain
+  invariant`**, directly extending the recurring AI-governance boundary into constraint-generation
+  specifically. Delivers a four-value Constraint Authority (`Binding,Advisory,Experimental,Deprecated`)
+  and bounded-context-scoped constraint isolation, and Constraint versioning
+  (`Valid(K,t,C_t)`, explicitly traced to the corpus's temporal knowledge model, 0601).
+
+  Delivers Temporal consistency reframed as time-indexed (`Consistent(K,t)` rather than timeless), formal
+  temporal constraints, and Event-ordering violation detection (worked ActionCompleted-before-
+  ActionStarted example, four named possible root causes). Delivers Causal consistency as strictly stronger
+  than timestamp validation (worked `Approval→Execution` causal-ordering example). **Delivers formal
+  Dependency closure** (`Closure(A)`, worked `E→A→M→D` impact-analysis chain), a formal dependency graph
+  `G=(V,E)`, and a precise distinction between `CircularDependency` (not automatically invalid) and
+  `CircularJustification` (problematic self-referential proof), with Strongly Connected Components offered
+  as the detection mechanism.
+
+  **Delivers the file's central formal deliverable -- formal satisfiability**: `SAT(K∧C)?`, worked through
+  a classic Boolean-satisfiability example, extended toward Satisfiability Modulo Theories (SMT) for
+  richer arithmetic/string/date constraints. **Delivers an important architectural discipline explicitly
+  restraining over-formalization**: "do we need an SMT solver everywhere? No" -- deterministic rules
+  suffice for simple constraints, with SAT/SMT reserved for cases where complexity genuinely justifies it,
+  directly consistent with the corpus's recurring pattern of resisting unnecessary machinery (0599, 0601,
+  0602, 0603, 0605, 0606).
+
+  Delivers an eight-class formal constraint taxonomy (Structural, Temporal, Semantic, Cardinality,
+  Authorization, Safety, Statistical, Causal), worked Cardinality/Uniqueness examples (the latter
+  explicitly connecting back to 0597's identity resolution), Referential integrity (`Exists(E17)` must
+  hold for referenced evidence, else `BrokenReference`), and Provenance integrity (a missing derivation
+  link yields `ProvenanceIncomplete`, requiring an epistemic downgrade rather than silent acceptance).
+  Delivers a five-value Severity taxonomy (`Info,Warning,Major,Critical,Blocking`, with `Blocking⇒
+  ActionDenied`), and a notable, precise clarification: **`deterministic binding constraints should not
+  normally carry a RuleConfidence figure`** -- probability belongs to uncertain propositions, not
+  deterministic governance rules. Delivers Constraint applicability (`Applicable(C,K,t)`, "prevents global
+  rule leakage") and Constraint precedence, explicitly a governance concern the system must never invent
+  on its own -- undefined precedence yields `ConstraintConflict→Escalate`, never an arbitrary pick.
+
+  **Delivers a formal seven-dimensional Consistency vector** `Consistency(K)=(Logical,Temporal,Semantic,
+  Referential,Provenance,Causal,Policy)`, explicitly not collapsed into one score, worked through a
+  concrete PASS/WARNING/UNKNOWN structured example -- "much more useful than `Consistency=0.86`," directly
+  extending the corpus's established anti-scalar discipline (0592, 0599, 0603, 0606).
+
+  **Delivers a substantial statistical-consistency treatment, statistician's-eye view applied to formal
+  constraint checking**: `Variance≥0` as a statistical invariant (worked impossible `Mean=50,Variance=-4`
+  example), probability-sum constraints for mutually exclusive exhaustive states (worked `0.7+0.6=1.3>1`
+  violation example), conditional-probability consistency (`P(A|B)=P(A∩B)/P(B)`), distribution consistency
+  (rejecting `σ²<0`), and confidence-interval consistency (`L≤U`). **Delivers a formal treatment of unit
+  and dimensional consistency, explicitly demonstrating errors caught before execution**: `Value=
+  (Magnitude,Unit)` rather than a bare number (worked `10m` mistakenly treated as `10km` example), and a
+  worked dimensional-analysis contrast (`Speed=Distance+Time` invalid vs. `Speed=Distance/Time` valid).
+  Delivers a formal Semantic type system analogous to programming-language type systems (`String+Date`
+  undefined should fail), reconnecting to DDD value objects (`NexusVersion(3.70)`, `Timestamp(t)`,
+  `RiskEstimate(p,model,horizon)` instead of bare primitives) -- **`TypedKnowledge` preferred over
+  `GenericKeyValueKnowledge`**, "dramatically reduces accidental semantic corruption."
+
+  Delivers Constraint propagation (forward: `A⇒B, A=True` derives `B`; backward: given `C` and `A→B→C`,
+  identify required premises), directly motivating a formal `ProofObligation(A)` structure -- explicitly
+  connected to 0604's (25Z) action-precondition/proof-obligation unification. **Delivers the file's second
+  central formal deliverable -- a three-layer formal-verification boundary**
+  (`Generative reasoning→Probabilistic/statistical inference→Deterministic constraint validation→
+  Execution`), with higher layers explicitly forbidden from bypassing lower-layer constraints. Delivers
+  KnowledgeOS reframed as a proof-carrying system (`Claim+Justification+ValidationResult`), a formal
+  `Proof(C)=(Premises,Rules,Derivation,Validation)` object independently checkable by a verifier, and the
+  file's sharpened deterministic-assurance principle: **`AI generates; deterministic machinery verifies`**
+  -- explicitly qualified as applying "not universally, but wherever the property is formally verifiable."
+  Delivers the file's headline architectural preference, formalized as its own boxed conclusion:
+  **`Generate→Verify→Accept` is preferable to `Generate→Trust`**.
+
+  **Delivers nine labeled falsification experiments (A-I), ALL PASS**: approval without evidence
+  (`ConstraintViolation`); mutually exclusive same-context assertions (`UNSAT`); a historical assertion
+  remaining valid under its applicable historical constraint version; a deleted referenced evidence object
+  (`BrokenProvenance`, downgraded conclusion); circular justification (`A→B→A`, detected); a probability-
+  sum violation (`ProbabilityConstraintViolation`); a unit/dimensional violation; an action with an
+  unresolved proof obligation blocked from execution; an unprecedented constraint conflict escalating
+  rather than being arbitrarily resolved.
+
+  **Delivers Step 29's verdict**: **"STEP 29 — PASS,"** with seven boxed conclusions (`Pairwise
+  consistency≠Global consistency`; `Knowledge requires executable invariants`; `Constraints are scoped,
+  versioned, and authoritative`; `Temporal consistency is first-class`; `Provenance integrity is itself a
+  constraint`; `Statistical claims can be formally inconsistent`; `Formal verification can sit beneath
+  generative AI`), plus the headline `Generate→Verify→Accept` preference. **Delivers the corpus's most
+  complete layered-assurance architecture diagram to date**: an eight-stage pipeline (REAL WORLD→
+  Observations→EVIDENCE→KNOWLEDGE→MODELS→DECISION→DETERMINISTIC ASSURANCE GATE→ACTION→WORLD), explicitly
+  introducing a NEW named `DETERMINISTIC ASSURANCE GATE` stage (constraints, policy, proof obligations)
+  interposed between Decision and Action, a concrete refinement of 0604's (25Z) earlier control-loop
+  diagram.
+
+  **Closes with the file's central, self-named "subtle problem" -- internal consistency does NOT guarantee
+  external correctness**: worked example (`A=True, B=True, C=True` all internally consistent while
+  `A=False` in reality), formalizing **`Internally consistent while being Externally incorrect`** as a
+  distinct, unaddressed failure mode. **Opens "Step 30 — Epistemic Calibration, Reality Alignment,
+  Validation, Ground Truth and Model Drift,"** posing "how does KnowledgeOS determine whether its
+  internally coherent knowledge corresponds to reality?" and naming twelve target concepts (ground truth,
+  validation, calibration, prediction error, residuals, model drift, concept drift, data drift, reality-
+  model divergence, external validation, independent verification, empirical falsification). Delivers the
+  file's central formal distinction for the next step: **`Consistency≠Correctness`**. **Delivers the
+  file's profound, self-aware closing challenge**: "a knowledge system must be able to discover that its
+  own internally coherent model is wrong" -- explicitly framed as "the next major test of whether our
+  KnowledgeOS architecture is genuinely epistemic rather than merely a sophisticated consistency engine."
+  No actual code execution reported.
+introduces:
+  - concept: "Pairwise consistency≠Global consistency, the file's central motivating distinction between local and system-wide knowledge coherence"
+  - concept: "Formal DDD invariant violation discoverable between two non-opposite assertions (Change=Approved∧ApprovalBoard=NotConvened violating Approved⇒BoardConvened), precisely distinguishing invariant violation from simple contradiction"
+  - concept: "The explicit governance statement that a generated LLM rule must not silently become an authoritative domain invariant, extending the recurring AI-governance boundary into constraint-generation specifically"
+  - concept: "The 'do we need an SMT solver everywhere? No' architectural discipline, reserving formal SAT/SMT machinery for cases where complexity genuinely justifies it"
+  - concept: "CircularDependency formally distinguished from CircularJustification (a dependency cycle may be acceptable; a self-referential proof is not)"
+  - concept: "A formal Semantic type system with DDD value objects (NexusVersion, Timestamp, RiskEstimate) preferred over generic key-value knowledge, catching unit/dimensional errors before execution"
+  - concept: "Generate→Verify→Accept as the corpus's headline architectural preference over Generate→Trust, backed by an independently checkable Proof(C) object"
+  - concept: "The new named DETERMINISTIC ASSURANCE GATE stage inserted between Decision and Action in the most complete architecture diagram to date"
+  - concept: "The profound closing challenge Consistency≠Correctness — a knowledge system must be able to discover that its own internally coherent model is wrong, opening 'Step 30 — Epistemic Calibration, Reality Alignment, Validation, Ground Truth and Model Drift'"
+defines:
+  - concept: "Knowledge-state consistency"
+    definition: "Consistent(K,𝒞)⟺K⊨c_i for all c_i∈𝒞 — the currently accepted knowledge state K satisfies every applicable constraint in the constraint set 𝒞"
+  - concept: "Formal satisfiability question"
+    definition: "SAT(K∧C)? — does there exist a world/model satisfying both the knowledge state and the constraint set simultaneously; extended toward SMT for arithmetic/string/date-valued constraints"
+  - concept: "Seven-dimensional Consistency vector"
+    definition: "Consistency(K)=(Logical,Temporal,Semantic,Referential,Provenance,Causal,Policy) — a structured, diagnostically separable consistency assessment replacing a single collapsed score"
+  - concept: "Proof(C) object"
+    definition: "Proof(C)=(Premises,Rules,Derivation,Validation) — an independently checkable derivation record for a conclusion C, enabling a deterministic verifier to confirm validity without trusting the generating process's own reasoning"
+refines:
+  - concept: "0607's (Step 28) contradiction-vs-invariant-violation discipline"
+    refinement: "Extended with a precise worked example showing an invariant violation is discoverable between two assertions that are not logically opposite — a genuinely distinct failure mode from Step 28's pairwise contradiction detection"
+  - concept: "0601's (25W) temporal knowledge model and versioning discipline"
+    refinement: "Directly reused for constraint versioning specifically: historical knowledge must be evaluated against the constraint version applicable at that historical time, Valid(K,t,C_t)"
+  - concept: "0604's (25Z) proof-obligation/precondition unification (ActionAuthorization=ProofOfRequiredPreconditions)"
+    refinement: "Extended into a general formal constraint-satisfaction framework applicable to any conclusion, not only action preconditions, with an explicit forward/backward propagation mechanism"
+  - concept: "0604's (25Z) most complete architecture diagram"
+    refinement: "Refined with a new named DETERMINISTIC ASSURANCE GATE stage explicitly interposed between Decision and Action, making the constraint-validation boundary an explicit architectural component rather than an implicit property"
+  - concept: "0592's/0599's/0603's/0606's recurring anti-scalar-confidence discipline"
+    refinement: "Extended into whole-knowledge-state consistency assessment via the seven-dimensional Consistency vector, directly paralleling the earlier evidence-assessment and uncertainty vectors"
+  - concept: "0597's identity-resolution discipline"
+    refinement: "Directly reconnected via Uniqueness constraints (Unique(EntityID)), formalizing identity collisions as a specific instance of the general constraint-violation machinery"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 30 — Epistemic Calibration, Reality Alignment, Validation, Ground Truth and Model Drift' is executed as its own file, and whether it succeeds in formally addressing the Consistency≠Correctness gap — the profound self-aware challenge of whether KnowledgeOS is genuinely epistemic rather than merely a sophisticated consistency engine"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Pairwise consistency≠Global consistency, formal DDD invariants as executable constraints (with the discoverable-violation-between-non-opposite-assertions insight), constraint provenance/authority/scope/versioning, and the 'LLM rule must not silently become an authoritative invariant' governance statement."
+  - "dimension-registry.md: record formal SAT/SMT with the explicit 'not everywhere' discipline, CircularDependency vs. CircularJustification, the seven-dimensional Consistency vector, statistical/unit/dimensional consistency as formal constraints, and the Semantic type system with DDD value objects."
+  - "dimension-registry.md: record Generate→Verify→Accept vs. Generate→Trust, the Proof(C) object and independent verification, the nine-test falsification suite (ALL PASS), verdict 'STEP 29 — PASS,' the new DETERMINISTIC ASSURANCE GATE architecture stage, and Step 30's opening with the profound Consistency≠Correctness closing challenge."
+anchor_test:
+  anchor: "0607's closing commitment to Step 29 (whole-knowledge-state consistency beyond pairwise conflict); 0601's (25W) temporal knowledge model; 0604's (25Z) proof-obligation unification and architecture diagram; 0592's/0599's/0603's/0606's anti-scalar-confidence discipline; 0597's identity-resolution discipline; the recurring LLM/AI-governance boundary"
+  supports_dimension: "Delivers a rigorous, well-organized formal SAT/SMT/constraint-satisfaction layer directly executing 0607's closing commitment, with a precisely worked example distinguishing genuine invariant violation from simple pairwise contradiction — a real advance beyond 0607's conflict-management machinery. Delivers a disciplined architectural restraint against over-applying formal solvers, directly consistent with the corpus's recurring pattern of resisting unnecessary machinery. Delivers a substantial, statistically grounded treatment of formal constraint checking spanning probability-sum, distributional, unit, and dimensional consistency, demonstrating that formal invariant checking can catch real errors before execution. Delivers a significant architectural refinement — a new named DETERMINISTIC ASSURANCE GATE stage explicitly interposed between Decision and Action in the corpus's most complete architecture diagram to date, making the constraint-validation boundary an explicit, first-class architectural component. Closes with a genuinely profound, self-aware epistemological challenge (Consistency≠Correctness) directly addressing whether the entire elaborate formal architecture actually tracks reality or merely achieves internal coherence — a question of first-order importance to evaluating the whole research program's ultimate validity, opening a dedicated step to investigate it"
+  refines_or_contradicts: "directly executes 0607's closing commitment to Step 29; extends 0607's contradiction-vs-invariant-violation discipline with a precisely worked non-opposite-assertion example; reuses 0601's temporal versioning discipline for constraint versioning; extends 0604's proof-obligation unification into a general constraint-satisfaction framework and refines 0604's architecture diagram with a new named stage; extends the recurring anti-scalar-confidence discipline (0592/0599/0603/0606) into whole-state consistency assessment; reconnects to 0597's identity-resolution discipline via uniqueness constraints; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked Change=Approved∧ApprovalBoard=NotConvened example, violating the invariant Approved⇒BoardConvened despite the two assertions not being logically opposite statements, is directly checkable, concrete evidence of a genuinely distinct failure mode from ordinary pairwise contradiction — demonstrating why formal invariant checking is a necessary addition beyond the conflict-detection machinery established at 0607."
+  - "The dimensional-analysis contrast (Speed=Distance+Time flagged invalid vs. Speed=Distance/Time flagged valid) is directly checkable, concrete evidence that formal type/unit consistency checking can catch genuine, realistic engineering errors before execution — a specific, verifiable demonstration rather than an abstract claim about formal verification's value."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 30 — Epistemic Calibration, Reality Alignment, Validation, Ground Truth and Model Drift' is executed as its own dedicated corpus file, and whether it succeeds in formally addressing the Consistency≠Correctness gap — the corpus's own self-posed test of whether the architecture is genuinely epistemic rather than merely a sophisticated consistency engine"
+tier2_triggered: true
+tier2_reason: "Delivers a rigorous, well-organized formal SAT/SMT/constraint-satisfaction and proof-carrying-knowledge layer directly executing 0607's closing commitment, with a precisely worked example distinguishing genuine invariant violation from simple pairwise contradiction — a real, checkable advance over 0607's earlier conflict-management machinery. Delivers a disciplined architectural restraint against over-applying formal solvers everywhere, directly consistent with the corpus's recurring pattern of resisting unnecessary mathematical machinery. Delivers a substantial, statistically grounded treatment of formal constraint checking spanning probability-sum, distributional, unit, and dimensional consistency, with concrete, verifiable worked examples demonstrating formal checking catches real errors before execution. Delivers a significant architectural refinement — a new named DETERMINISTIC ASSURANCE GATE stage explicitly interposed between Decision and Action in the corpus's most complete architecture diagram to date. Closes with a genuinely profound, self-aware epistemological challenge (Consistency≠Correctness) of first-order importance to evaluating whether the entire elaborate formal architecture built across this research program actually tracks reality or merely achieves internal coherence — the corpus's own explicit acknowledgment that this question remains open and consequential."

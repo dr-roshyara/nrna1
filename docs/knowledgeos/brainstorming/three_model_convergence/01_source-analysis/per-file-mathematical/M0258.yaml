@@ -1,0 +1,69 @@
+sequence: M0258
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-112500_theory-05-realization-and-the-decoder.md
+title: "Theory 05 — Realization and the Decoder: 'the shortest document in the set, and the one with the largest gap between its importance and its evidence' — restates the Realization⟹Adequacy conjecture and the KR-REP-REDUCTION design defect (already recorded at M0256/M0257) with two genuine refinements: an explicit architectural rationale for why the constraint C belongs to the inquiry frame rather than the transformation, and a granular representation-level-vs-operator-level distinction for exactly where the adequacy/realization separation could (and could not) be exhibited"
+date: "20260904-112500"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0258
+importance: high
+confidence: high
+about: >
+  Document 05 of the 15-document consolidated theory series, explicitly self-described as the
+  shortest document with the largest importance-to-evidence gap: "Realization is the least-tested
+  of the three predicates, and this document says so rather than padding it." Restates the
+  Realization definition, the Realization⟹Adequacy conjecture, and the KR-REP-REDUCTION design
+  defect already recorded at M0256/M0257, with two genuine refinements: a clean architectural
+  rationale placing the constraint C in the inquiry frame rather than the transformation, and a
+  more granular representation-level-vs-operator-level breakdown of exactly where the design could
+  and could not exhibit the adequacy/realization separation.
+introduces:
+  - "The final Realized(R,Q,O)⟺O(R)=Q(D) definition with O fixed in advance as part of Π_frame=(Q,C,O): 'the fixing is the whole content of the definition. If O may be chosen after seeing R, then realization is just some function of R equals Q, which is adequacy restated. Realization is a claim about the decoder you actually have, not about the existence of one'"
+  - "A clean two-reason explanation for why Realization≠Adequacy: (1) the decoder may be weaker than the information (R determines Q, but O does not compute the determining function); (2) the constraint C may fail (Adequate∧¬C(R)⟹not realizable, though the information is present) — with an explicit architectural rationale not previously stated this crisply: 'this is why C belongs in the frame and not in the transformation. Constraints are conditions on use, not on construction'"
+  - "A more granular breakdown of the already-recorded KR-REP-REDUCTION design defect, distinguishing where the adequacy/realization separation COULD be exhibited from where it could NOT: at the REPRESENTATION level (N_viol>0), the design DID exhibit the separation — at R4, R3, R2; but at the OPERATOR level (Ĥ(Q|R)=0 but F<1), the design NEVER exhibited it — the only adequate level, R5, has F=1.0000 exactly — 'the design excluded its own target case by construction'"
+  - "A concrete [REC] for the next realization experiment: it must ensure at least one level satisfies both Ĥ(Q|R)=0 AND F<1, requiring either a decoder deliberately weaker than the information or a constraint that bites at an adequate level — 'neither is hard; neither was done'"
+  - "An explicit closure of the asymmetry left implicit at M0256: 'the converse, Adequacy⟹Realization, is [NEG] by §2 — a strictly weaker decoder, or a failing constraint, breaks it' — confirming the one-directional [CONJ] (Realization⟹Adequacy) is not accompanied by its converse"
+defines: []
+refines:
+  - "M0256/M0257's Realization⟹Adequacy conjecture and KR-REP-REDUCTION design-defect finding: given the same content here with a cleaner architectural rationale (C-in-frame-not-transformation) and a more granular representation-vs-operator-level breakdown of exactly where the separation could be exhibited"
+contradicts: []
+repeats:
+  - "M0256's [CONJ] Realization⟹Adequacy with its untested refutation condition, and M0257's design-defect finding about KR-REP-REDUCTION's inability to exhibit the Preservation/Realization separation, both restated here in the Realization-specific document of the series"
+bridge_candidates:
+  - "Whether the recommended next realization experiment (a deliberately-weaker decoder, or a constraint that bites at an adequate level) was ever actually run"
+mathematical_content: >
+  Final Realized definition; a clean two-reason non-implication argument for Realization≠Adequacy;
+  a granular representation-level-vs-operator-level breakdown of the design defect; a concrete
+  experimental recommendation for exhibiting the un-exhibited separation.
+gita_content: null
+kernel_content: null
+registry_updates:
+  - "Architectural rationale: constraint C belongs to the inquiry frame, not the transformation, because constraints are conditions on use, not construction"
+  - "Granular representation-level (exhibited) vs operator-level (never exhibited) breakdown of the adequacy/realization design defect"
+  - "Confirmed converse [NEG]: Adequacy⟹Realization does not hold (weaker decoder or failing constraint breaks it)"
+anchor_test:
+  anchor: false
+  supports_dimension: "C-in-frame architectural rationale; representation-vs-operator-level design-defect breakdown; confirmed converse-is-NEG closure"
+  refines_or_contradicts: "refines (M0256/M0257's Realization⟹Adequacy conjecture and design-defect finding, given a cleaner rationale and finer granularity)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Realization is the least-tested of the three predicates, and this document says so rather than padding it.\""
+  - "\"C belongs in the frame and not in the transformation. Constraints are conditions on use, not on construction.\""
+  - "\"The design excluded its own target case by construction.\""
+undefined_concepts: []
+open_questions:
+  - "Was the recommended next realization experiment (weaker decoder or constraint biting at an adequate level) ever run?"
+tier2_triggered: false
+tier2_reason: >
+  Substantially restates the Realization⟹Adequacy conjecture and KR-REP-REDUCTION design defect
+  already recorded at M0256/M0257; the genuine refinements (C-in-frame rationale, granular
+  representation-vs-operator-level breakdown, confirmed converse-NEG) are useful but not
+  independently critical relative to those prior tier2 escalations.

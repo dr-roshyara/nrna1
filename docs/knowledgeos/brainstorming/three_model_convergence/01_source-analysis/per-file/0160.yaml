@@ -1,0 +1,83 @@
+sequence: "0160"
+path: docs/knowledgeos/brainstorming/20260823_1239_working_state.md
+title: "Governance pipeline position confirmed (AH-4/AH-5 consolidation NOW, Kernel Boundary Definition NEXT); 13-output specification for the boundary-definition phase; 'research corpus machinery' named as a new Kernel exclusion"
+date: "2026-08-23"
+bytes: 6800
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0148"
+importance: medium
+confidence: high
+about: >
+  A workspace-state/process document confirming the exact governance pipeline position already tracked
+  via Ledger Entry 48: P5/SNF CLOSED -> Kernel domain discovery (OQ-2/OQ-3/OQ-5/F-1..F-5 all checked) ->
+  Capability map (checked) -> "AH-4/AH-5 consolidation <- NOW" -> "Kernel Boundary Definition <- NEXT" ->
+  DDD/adversarial verification -> capability-to-boundary mapping -> implementation decision -> Kernel
+  build. Reconfirms the nine F-1..F-5 capabilities verbatim. Specifies a precise two-phase commission
+  (Architectural Consolidation, then Kernel Boundary Definition with 13 required outputs) and explicitly
+  warns against jumping from the nine capabilities directly to a KnowledgeClaim aggregate -- the same
+  discipline the ten-round critique cycle has been applying throughout.
+
+introduces:
+  - "13-output specification for the Kernel Boundary Definition phase: boundary / inside / outside /
+    aggregate(s) / domain services / value objects / commands / domain events / invariants / required
+    ports / explicit anti-capabilities / unresolved questions / implementation preconditions -- the most
+    concrete deliverable checklist proposed for this phase so far"
+  - "'Research corpus machinery' named as a Kernel exclusion for the first time -- a meta-level caution
+    that the research/documentation apparatus producing this very investigation must not itself become
+    part of the Kernel boundary"
+  - "Consolidated 12-item non-collapse list organized for direct commissioning use (largely restates
+    already-tracked distinctions but adds Policy≠Aggregate and Constitution≠Kernel as explicit pairs)"
+  - "Operational note: the source project's own '.claude/sessions/2026-08-23.md' session-log sync is
+    flagged as needing reconciliation before the next architectural act -- a structural parallel to this
+    reconstruction's own session-log discipline (the source project appears to use an analogous
+    .claude/sessions/ logging convention)"
+
+defines: []
+
+refines:
+  - "Reorganizes (does not extend) the already-tracked exclusion list and non-collapse principles into a
+    commissioning-ready checklist"
+
+contradicts: []
+
+repeats:
+  - {concept: "nine F-1..F-5 capabilities, anti-God-Aggregate discipline, capability-to-invariant-to-boundary reasoning chain", canonical_source: "0148", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- confirms and organizes already-tracked content (Ledger Entries 46-49); no new dimension or
+    representation introduced"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; a process/commissioning document confirming the existing pipeline position."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "The source project's own apparent use of a .claude/sessions/ log convention structurally parallels
+    this reconstruction's own session-log discipline -- an interesting meta-observation, not actionable
+    for this reconstruction's own state"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the two-phase commission (Architectural Consolidation, then Kernel Boundary Definition with
+    the 13-output spec) is actually executed in a later file"
+
+tier2_triggered: true
+tier2_reason: >
+  Confirms the governance pipeline position with a concrete 13-output deliverable specification for the
+  Kernel Boundary Definition phase, and names "research corpus machinery" as a new Kernel exclusion.

@@ -1,0 +1,243 @@
+sequence: 751
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-135255_step-157-knowledgeos-domain-model-and-bounded-context-validation.md
+title: "Step 157 -- KnowledgeOS Domain Model & Bounded Context Validation (MAJOR SYNTHESIS MILESTONE): Reconciles Both 0744's ('Minimum Irreducible Domain Model') and 0750's ('Domain Model & Bounded Context Validation') Differently-Framed Step-157 Openings by Delivering Both at Once -- a Full Six-Context DDD Reduction (Knowledge/Inquiry/Evidence/Assurance/Governance/Action) With Entity/Value-Object/Aggregate Assignments, the Complete DDD Context Map, Typed Predicates Replacing Overloaded Status Fields, and 'The Dangerous Words' Terminology Ban (Fact/Answer/User/Confidence/Approved) -- Delivers AGENTS.md≠KnowledgeOS, Directly Resonant With This Repository's Own `.claude/`/AGENTS.md Pointer-Layer Convention -- Surfaces a Genuinely Significant Convergence With the Real-World Contestation/Adjudication Domain (Evidence→Determination→Contestation→Adjudication→Governed Outcome) -- Closes by Opening Step 158, a Sixteen-Step Read-Only Architecture Conformance Audit Against the Actual KnowledgeOS Repository, Explicitly Testing Whether 'Our Architecture Actually Validates, or We Have Merely Constructed an Elegant Theory Around It'"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "no direct Gita content; a pure DDD/mathematics/engineering-evidence architecture step operating entirely within the g1/c1 discipline boundary that 0745 itself articulated -- the corpus's own explicit instantiation of that boundary in practice"
+source_role: PRIMARY_RESEARCH
+canonical_source: 751
+importance: critical
+confidence: high
+about: >
+  Opens by reframing the question as "what are the actual domain objects and boundaries that make the
+  KnowledgeOS operating model enforceable?", boxed as `Good conceptual model⇏Good DDD model`. **Delivers a
+  formal six-question DDD test** (identity? own lifecycle? own invariants? change independently? clear
+  domain meaning? belongs to one bounded context?) for classifying every concept as Entity/Aggregate vs.
+  Value Object/Domain Service/Policy/Domain Event/external concept/implementation detail -- "this prevents
+  us from turning every noun into a class," a genuinely reusable methodological artifact.
+
+  **Delivers "first correction: 'Knowledge' is not an Aggregate,"** explicitly rejecting a single giant
+  `KnowledgeAggregate` containing everything, boxed as `KnowledgeOS=Network of bounded semantic models` --
+  directly reaffirming 0745's Shared-Kernel/Big-Ball-of-Mud warning at the implementation-decomposition
+  level.
+
+  **Delivers a full six-context DDD reduction — Knowledge, Inquiry, Evidence, Assurance, Governance,
+  Action — each with detailed candidate Entity/Value-Object/Aggregate assignments**, reconciling both
+  0744's "minimum irreducible domain model" framing and 0750's "domain model & bounded context validation"
+  framing by delivering both at once rather than choosing between them.
+
+  Knowledge Context: `KnowledgeClaim` an Entity (distinguishable across `Claim_A(t_1)` vs `Claim_A(t_2)`);
+  Proposition and Scope as Value Objects (worked "which Nexus? which environment?" ambiguity example);
+  **`Version≠Validity`**, a precise new distinction (version answers "which representation?", validity
+  answers "during what domain period is this claim applicable?"); `KnowledgeSource` an Entity, with
+  `Source≠Artifact`. **Delivers Provenance refined as `lineage structure`, never a generic string** (e.g.
+  `source="Claude"` explicitly rejected), and **"provenance is cross-context infrastructure"** -- a
+  cross-cutting domain capability each bounded context records according to its own model, rather than one
+  shared aggregate.
+
+  Inquiry Context: `Inquiry` an Aggregate Root with an illustrative lifecycle (OPEN→INVESTIGATING→
+  DETERMINED→CLOSED). **Delivers "Inquiry does not own evidence"** -- an Inquiry references an
+  `EvidenceRequirement`, never owns `Evidence[]` transactionally. **Delivers Context refined as
+  `assembled view over governed knowledge`, not an object Context owns**, with `ContextSnapshot` as an
+  immutable Value Object/projection enabling deterministic replay: **`ContextSnapshot→Reproducibility`**,
+  "extremely important for assurance" -- reconstructing the exact epistemic input (Inquiry+ContextSnapshot+
+  Knowledge versions+Evidence versions+Method+Agent identity) behind any past determination.
+
+  Evidence Context: Observation defined strictly as "what was observed," never "what we think it means."
+  **Delivers "Evidence has many consumers"** (one Observation may support one Determination while
+  contradicting another) -- "this argues against embedding evidence inside a determination aggregate."
+
+  Assurance Context: `Determination` a strong Aggregate Root candidate, **immutable after finalization**
+  (DRAFT→PROPOSED→FINALIZED, then only `SupersededBy`, never mutated) -- "this gives us epistemic history."
+  Verification modeled as a specialized assurance operation
+  (`Verification(Proposition,Evidence,Method,Rule)→Result`, `VERIFIED/NOT_VERIFIED/INCONCLUSIVE/
+  NOT_APPLICABLE`). **Delivers the Deterministic-vs-Interpretive assurance-mode distinction**, explicitly
+  "should not be forced into the same implementation model."
+
+  Governance Context: `Decision` an Entity/Aggregate Root referencing but not owning its Determination.
+  **Delivers `Person≠Role≠Authority≠Delegation`**, a precise four-way separation, with an `AuthorityGrant`
+  schema making authority explicit and auditable. **Reaffirms Exception as first-class and temporal**:
+  `Exception=Exception(Scope,Time,Conditions,Authority)`.
+
+  Action Context: `Authorization≠Action` (permission vs. occurrence); the three-layer
+  Action/Execution/TechnicalCommand distinction reaffirmed with a fresh worked example (Migrate Nexus /
+  run migration workflow #47 / `podman ...`); Observation placed strictly after Execution, preventing the
+  dangerous assumption `RequestedEffect=ActualEffect`.
+
+  **Delivers fifteen named candidate Domain Events** (InquiryOpened...KnowledgeSuperseded) and
+  `Command≠Event` (worked "Verify Nexus backup coverage" vs. "NexusBackupVerificationCompleted" example).
+  Delivers Domain Policies (explicitly not Entities) and a caution against Domain Services becoming god
+  classes ("a class called `KnowledgeService` that contains 80% of the domain logic is a warning sign").
+
+  Delivers the consolidated aggregate map (six contexts, their owned aggregates, plus cross-cutting
+  Provenance/ContextSnapshot/Policy/DomainEvents) and **the complete DDD context-map diagram**,
+  self-assessed "the first version I would be comfortable calling a DDD context map rather than merely a
+  workflow." **Delivers the critical anti-corruption-boundary rule**: `Reference across contexts; do not
+  share ownership across contexts`. **Delivers the shared-kernel-question resolution**: identifier formats
+  (ClaimId/EvidenceId/DecisionId) may be shared, but domain objects must not be -- `KnowledgeClaim` inside
+  Knowledge is a distinct type from `KnowledgeClaimReference` inside Governance, "a very important
+  distinction." Delivers event-driven cross-context integration and **"eventual consistency is
+  acceptable,"** boxed as `Consistency boundary=aggregate/context requirement, not database transaction
+  boundary`.
+
+  **Delivers the formal traceability graph `G=(V,E)`** over eight nodes (I=Inquiry, K=Knowledge,
+  E=Evidence, D=Determination, Δ=Decision, A=Action, O=Observation, Vr=Verification) with the full edge
+  chain `I→K→E→D→Δ→A→O→Vr→K'`, paired immediately with **`KnowledgeGraph≠DDD Model`** -- the graph
+  describes relationships; DDD defines ownership/behavior/invariants/transactions/boundaries; KnowledgeOS
+  may use a graph internally for provenance without becoming a graph-database domain model.
+
+  Delivers a nineteen-row Entity/Value-Object classification hypothesis table, explicitly flagged "not yet
+  implementation-final." **Delivers "the most important aggregate rule": one transaction should protect
+  one invariant boundary**, explicitly NOT "one workflow=one transaction" -- the full KnowledgeOS lifecycle
+  is a Long-Running Domain Process, not a transaction, representable via a process manager/saga.
+  **Delivers "process manager does not own domain truth"**: `Process State≠Domain Truth` -- explicitly
+  validating the corpus's earlier workflow-mechanism architecture, conditional on workflow state remaining
+  separate from knowledge/evidence/determination/decision/authority.
+
+  Delivers "AI Agent as a Domain Actor" -- the agent is not a bounded context but an `Actor` crossing
+  contexts through contracts (Inquiry API→Evidence Retrieval→Candidate Determination), explicitly
+  validating the Claude/Codex-harness-symmetry architecture (`KnowledgeOS→{Claude Harness, Codex Harness}→
+  Governed Interfaces→Domain Model`, neither harness becoming the domain model). **Delivers `AGENTS.md≠
+  KnowledgeOS`**: AGENTS.md may say "use KnowledgeOS to determine the applicable architecture" but must
+  never reproduce the architecture itself; likewise `.claude/`/`.codex/` should hold agent operating
+  mechanics rather than become competing knowledge stores -- directly and precisely resonant with this
+  repository's own actual `.claude/`-directory pointer-layer convention (a notable convergence between the
+  brainstormed KnowledgeOS architecture and this repository's real operating discipline, flagged here as
+  an observation, not asserted as intentional self-reference).
+
+  Delivers deterministic-assurance-engine architecture (produces evidence/verification, never becomes the
+  authority itself) and **statistical discipline**: `Data→Evidence→Inference`, "the inferential step must
+  not disappear," worked through a concrete deployment-failure example distinguishing observed count,
+  evidence, inference (degraded reliability), and an unsupported causal claim (architecture caused
+  failures) -- boxed as `Inference strength must correspond to evidence strength`. Delivers a five-value
+  uncertainty vocabulary (SUPPORTED/NOT_SUPPORTED/INCONCLUSIVE/CONTESTED/UNKNOWN) replacing forced
+  TRUE/FALSE determinations.
+
+  **Delivers Contestation as a first-class epistemic-correction mechanism**: challenging a Determination
+  must never overwrite it, instead creating a new epistemic process -- explicitly connected to "the
+  architecture work where Contestation emerged as one of the confirmed bounded-context candidates," a
+  genuinely significant convergence with real-world domain modeling (this repository's actual governing
+  documentation references an `app/Contexts/Contestation` bounded context). **Delivers the chain Evidence→
+  Determination→Contestation→Adjudication→Governed outcome**, explicitly generalized beyond elections to
+  architecture/compliance/engineering decisions/AI-generated claims, self-assessed "a major validation" of
+  convergence between the KnowledgeOS brainstorming arc and the broader real-world DDD architecture work.
+
+  Delivers the DDD boundary test (genuine bounded-context separation justified by distinct language and
+  invariant ownership, worked through the Evidence/Knowledge/Governance triple) and a full Ubiquitous
+  Language glossary across all six contexts. **Delivers "the dangerous words,"** a genuinely valuable
+  terminology-discipline list banning unqualified use of "Fact," "Answer," "User," "Confidence," and
+  "Approved" in architectural specifications, each paired with precise qualified replacements. **Delivers
+  typed predicates replacing overloaded status fields**: `GovernanceApproved(x,t,s,a)` vs.
+  `TechnicallyVerified(x,m,e,t)` vs. `Authorized(a,s,t,r)`, allowing non-contradictory coexistence (an
+  object can be governance-approved while not technically verified) -- boxed architecture decision:
+  "governance, epistemic, operational, and technical states must not be represented by one generic
+  status."
+
+  Delivers a twenty-row Step-157 validation result table (sixteen ✅ items, four ⚠️ items needing
+  implementation validation: aggregate boundaries, exact bounded-context count, exact state vocabulary,
+  Evidence aggregate boundary, Authority model). **Final decision: `STEP 157 — PASSED WITH ARCHITECTURAL
+  HYPOTHESES`**, explicitly declining to freeze the exact aggregate/bounded-context implementation --
+  "DDD has one more test: Reality."
+
+  **Closes by opening "Step 158 — KnowledgeOS Architecture Conformance Audit,"** a genuinely significant
+  register shift from designing architecture to auditing the actual repository against it. Delivers a
+  sixteen-step read-only discovery sequence (discover repository structure→bounded-context candidates→
+  domain entities→database ownership→application services→events→workflows→governance mechanisms→
+  provenance mechanisms→AI-agent interfaces→map implementation to conceptual model→identify violations/
+  missing capabilities/accidental architecture→produce conformance matrix→decide what must change),
+  explicitly stating "we should NOT modify code during Step 158. It should be read-only." Delivers the
+  final equation `Architecture Constitution→DDD Model→Actual Implementation` and the capstone framing
+  question: "does our architecture actually validate, or have we merely constructed an elegant theory
+  around it?" No actual code execution, repository inspection, or verified filesystem/architecture claim
+  reported anywhere in THIS file itself; every schema, diagram and classification remains a design-time
+  hypothesis explicitly awaiting the Step-158 conformance audit for verification.
+introduces:
+  - concept: "The six-question DDD entity/aggregate classification test"
+  - concept: "'Knowledge is not an Aggregate' -- KnowledgeOS=Network of bounded semantic models"
+  - concept: "The full six-context DDD reduction: Knowledge/Inquiry/Evidence/Assurance/Governance/Action, with detailed Entity/VO/Aggregate assignments"
+  - concept: "Version≠Validity"
+  - concept: "Provenance refined as lineage structure and 'cross-context infrastructure' (not a shared aggregate)"
+  - concept: "'Inquiry does not own evidence' -- references EvidenceRequirement, not Evidence[] ownership"
+  - concept: "Context refined as 'assembled view over governed knowledge'; ContextSnapshot as immutable VO enabling deterministic replay (ContextSnapshot→Reproducibility)"
+  - concept: "'Evidence has many consumers' -- argues against embedding evidence inside a determination aggregate"
+  - concept: "Determination immutable after finalization (DRAFT→PROPOSED→FINALIZED, then SupersededBy only)"
+  - concept: "Deterministic vs. Interpretive assurance modes, must not share one implementation model"
+  - concept: "Person≠Role≠Authority≠Delegation; AuthorityGrant schema"
+  - concept: "Fifteen named candidate Domain Events; Command≠Event"
+  - concept: "The complete DDD context-map diagram; 'reference across contexts, do not share ownership across contexts'"
+  - concept: "The shared-kernel resolution: shared identifier formats, never shared domain object types"
+  - concept: "'Eventual consistency is acceptable': consistency boundary=aggregate/context requirement, not database transaction boundary"
+  - concept: "The formal traceability graph G=(V,E) over eight nodes; KnowledgeGraph≠DDD Model"
+  - concept: "'The most important aggregate rule': one transaction protects one invariant boundary, not one workflow=one transaction; the full lifecycle is a Long-Running Domain Process"
+  - concept: "'Process manager does not own domain truth': Process State≠Domain Truth"
+  - concept: "AGENTS.md≠KnowledgeOS"
+  - concept: "Statistical discipline: Data→Evidence→Inference, 'inference strength must correspond to evidence strength'"
+  - concept: "The five-value uncertainty vocabulary (SUPPORTED/NOT_SUPPORTED/INCONCLUSIVE/CONTESTED/UNKNOWN)"
+  - concept: "Contestation as a first-class epistemic-correction mechanism; the Evidence→Determination→Contestation→Adjudication→Governed outcome chain"
+  - concept: "'The dangerous words': banned unqualified terms (Fact/Answer/User/Confidence/Approved)"
+  - concept: "Typed predicates replacing overloaded status fields (GovernanceApproved/TechnicallyVerified/Authorized)"
+defines:
+  - concept: "Version≠Validity"
+    definition: "Version answers 'which representation of a claim is this?'; Validity answers 'during what domain time period does this claim's content actually apply?' -- a claim can have a fixed version while its validFrom/validTo window is entirely independent of when it was recorded"
+  - concept: "'Evidence has many consumers'"
+    definition: "A single Observation or piece of Evidence may support one Determination while simultaneously contradicting another; evidence must therefore be modeled as an independently referenceable object, never embedded inside or owned by any single Determination aggregate"
+  - concept: "'The most important aggregate rule'"
+    definition: "A database transaction should protect exactly one invariant boundary (e.g. creating an Inquiry, or finalizing a Determination, or making a Decision) -- never the entire multi-stage lifecycle (Inquiry→Evidence→Determination→Decision→Action) as one transaction, which would destroy the bounded-context model; the full lifecycle is instead a Long-Running Domain Process coordinated by a process manager/saga"
+  - concept: "Process State≠Domain Truth"
+    definition: "A process manager or saga tracks what should happen next in a long-running workflow, but must never become the authoritative source of what is true -- knowledge, evidence, determination, decision and authority remain owned by their respective bounded contexts, and the process manager can recover from interruption without ever becoming a knowledge source itself"
+  - concept: "AGENTS.md≠KnowledgeOS"
+    definition: "An agent-instruction file (AGENTS.md, or equivalent .claude/.codex configuration) may point an AI agent toward KnowledgeOS as the source of applicable architecture, but must never itself reproduce or duplicate that architecture -- agent configuration directories hold operating mechanics, never competing knowledge stores"
+  - concept: "'The dangerous words'"
+    definition: "Certain common words (Fact, Answer, User, Confidence, Approved) are architecturally ambiguous enough that they should be banned from unqualified use in specifications -- each must be replaced by a more precise term (e.g. Claim/Observation/Verified proposition instead of 'Fact'; Governance approval/Technical verification/Operational authorization instead of 'Approved') that names exactly which semantic dimension is meant"
+  - concept: "Typed predicates (replacing overloaded status fields)"
+    definition: "Instead of one generic status field like status=APPROVED, use distinct typed predicates for each semantic dimension -- e.g. GovernanceApproved(x,t,s,a), TechnicallyVerified(x,m,e,t), Authorized(a,s,t,r) -- so that an object can coherently be governance-approved while not technically verified, without producing a logical contradiction in a single overloaded field"
+refines:
+  - concept: "0744's Step-157 opening ('minimum irreducible domain model') and 0750's Step-157 opening ('domain model & bounded context validation')"
+    refinement: "Both delivered simultaneously: a genuine DDD reduction to entities/value-objects/aggregates/policies/events across six bounded contexts, plus a full context map and anti-corruption-boundary rules -- resolving the open reconciliation question left by the two differently-framed prior openings without needing to choose between them"
+  - concept: "0745's Shared-Kernel/Big-Ball-of-Mud warning"
+    refinement: "Directly operationalized at the implementation-decomposition level: 'Knowledge is not an Aggregate,' with an explicit shared-kernel resolution (shared ID formats, never shared domain object types) and the anti-corruption-boundary rule 'reference across contexts, do not share ownership across contexts'"
+  - concept: "0742's/0744's/0750's INCONCLUSIVE-preserving assurance discipline"
+    refinement: "Extended into a full five-value uncertainty vocabulary (SUPPORTED/NOT_SUPPORTED/INCONCLUSIVE/CONTESTED/UNKNOWN) and formalized as Verification(Proposition,Evidence,Method,Rule)→Result within a dedicated Assurance bounded context"
+  - concept: "The reconstruction's earlier workflow/process-manager architecture (referenced but not fully specified in prior files)"
+    refinement: "Explicitly validated conditional on workflow state remaining separate from knowledge/evidence/determination/decision/authority, via the new Process State≠Domain Truth principle"
+  - concept: "The Claude/Codex-harness-symmetry architecture (referenced across multiple prior files)"
+    refinement: "Explicitly re-validated through the DDD lens: the AI agent is a Domain Actor crossing bounded contexts through contracts, never itself a bounded context, with the new AGENTS.md≠KnowledgeOS principle as its concrete instantiation"
+  - concept: "The real-world Contestation/Adjudication domain work referenced elsewhere in the corpus's broader architecture discussions"
+    refinement: "Explicitly connected as a convergent validation: the KnowledgeOS epistemic model (Evidence→Determination→Contestation→Adjudication) independently arrives at the same domain pattern already identified as a confirmed bounded-context candidate, generalized beyond its original election-domain origin to architecture/compliance/engineering/AI-claims"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read Step 158 (KnowledgeOS Architecture Conformance Audit) with very high attention: this is an explicitly promised register shift from conceptual design to actual repository inspection -- a read-only sixteen-step discovery exercise against the real KnowledgeOS codebase. Check whether it delivers genuine implementation-archaeology findings or remains hypothetical/illustrative like the architecture steps before it."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the full six-context DDD reduction (Knowledge/Inquiry/Evidence/Assurance/Governance/Action) with the complete context map, the anti-corruption-boundary rule, and the shared-kernel resolution -- reconciling both 0744's and 0750's differently-framed Step-157 openings by delivering both at once."
+  - "dimension-registry.md: record AGENTS.md≠KnowledgeOS and the .claude//.codex/ pointer-layer principle as directly and precisely resonant with this repository's own actual operating convention -- a notable convergence, flagged as observation only."
+  - "dimension-registry.md: record the Contestation/Adjudication convergence (Evidence→Determination→Contestation→Adjudication→Governed outcome) as a genuinely significant cross-reference to real-world DDD architecture work already underway in the broader project."
+  - "dimension-registry.md: record 'the dangerous words' terminology ban and typed predicates (GovernanceApproved/TechnicallyVerified/Authorized) as a valuable, directly applicable architecture-specification discipline."
+  - "dimension-registry.md: record the promised Step 158 (Architecture Conformance Audit) as a major upcoming register shift -- read-only inspection of the actual repository against the conceptual model established across Steps 150-157."
+anchor_test:
+  anchor: "0744's and 0750's differently-framed Step-157 openings; 0745's Shared-Kernel/Big-Ball-of-Mud warning; 0742's/0744's/0750's INCONCLUSIVE-preserving assurance discipline; the corpus's Claude/Codex-harness-symmetry architecture; the real-world Contestation/Adjudication domain work"
+  supports_dimension: "Delivers a complete, genuinely rigorous six-context DDD reduction reconciling both prior Step-157 framings simultaneously. Delivers the complete DDD context map, the anti-corruption-boundary and shared-kernel rules, and 'the most important aggregate rule' (one transaction, one invariant boundary; the full lifecycle is a Long-Running Domain Process). Delivers AGENTS.md≠KnowledgeOS, directly and precisely resonant with this repository's own operating discipline. Surfaces a genuinely significant convergence with the real-world Contestation/Adjudication bounded-context work already underway elsewhere in the project. Delivers 'the dangerous words' terminology discipline and typed-predicate status modeling. Closes with an explicit, major register-shift promise: Step 158 as a read-only conformance audit of the actual repository -- a genuinely different kind of step than anything in this arc so far"
+  refines_or_contradicts: "reconciles 0744 and 0750 without contradiction; directly extends and operationalizes 0745's Shared-Kernel warning and the corpus's Claude/Codex-symmetry and workflow-architecture discussions; converges with (does not contradict) the real-world Contestation/Adjudication domain work; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§157.56's boxed `AGENTS.md≠KnowledgeOS`, paired with the explicit statement that `.claude/`/`.codex/` should hold agent operating mechanics rather than become competing knowledge stores, is directly quotable evidence of a precise architectural resonance with this repository's own actual pointer-layer convention."
+  - "§157.60-157.62's explicit statement that Contestation 'emerged as one of the confirmed bounded-context candidates' in prior architecture work, and the resulting Evidence→Determination→Contestation→Adjudication→Governed-outcome chain, is directly quotable evidence of a genuine convergence with real-world domain modeling beyond this brainstorming arc."
+  - "§157.72's sixteen-step Step-158 discovery sequence, explicitly marked 'we should NOT modify code during Step 158. It should be read-only,' is directly checkable evidence of a major, deliberately scoped register shift toward actual repository conformance auditing."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 158 (KnowledgeOS Architecture Conformance Audit), once reached, delivers genuine implementation-archaeology findings against an actual repository, or remains a hypothetical/illustrative exercise consistent with the rest of this brainstorming arc."
+  - "Whether the four ⚠️-flagged validation-table items (exact aggregate boundaries, exact bounded-context count, exact state vocabulary, Evidence aggregate boundary, Authority model) are ever resolved with concrete implementation evidence anywhere later in the corpus."
+  - "Whether the Contestation/Adjudication convergence noted here is picked up and further cross-referenced against the corpus's other governance-adjacent content, or remains a single-file observation."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers a complete, rigorous six-context DDD reduction of the entire KnowledgeOS operating model, reconciling both 0744's and 0750's differently-framed Step-157 openings simultaneously. Delivers the complete DDD context map, anti-corruption-boundary and shared-kernel rules, and 'the most important aggregate rule.' Delivers AGENTS.md≠KnowledgeOS, precisely resonant with this repository's own actual operating discipline. Surfaces a genuinely significant convergence with the real-world Contestation/Adjudication domain work already underway elsewhere in the project. Delivers 'the dangerous words' terminology discipline and typed-predicate status modeling. Closes with a major, explicitly scoped register-shift promise: Step 158 as a read-only conformance audit of the actual repository against the conceptual architecture built across this entire arc."

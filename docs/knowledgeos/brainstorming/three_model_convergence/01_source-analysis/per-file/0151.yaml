@@ -1,0 +1,96 @@
+sequence: "0151"
+path: docs/knowledgeos/brainstorming/kernel/20260823-111647-epistemic-lifecycle-domain-discovery-admission-as-first-transition.md
+title: "Round 3: DeepSeek's 8-state epistemic lifecycle + full transition table; critique doubts several 'states' are genuine states; explicit refusal to formalize as enum; commissions K-02 State/Event/Assessment task"
+date: "2026-08-23"
+bytes: 30000
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0150"
+importance: high
+confidence: high
+about: >
+  Round 3 of the DeepSeek/critique kernel-boundary cycle. DeepSeek derives a full 8-state candidate
+  epistemic lifecycle (PROPOSED/ADMITTED/CONTESTED/SUPERSEDED/RECONCILED/WITHDRAWN/REJECTED/
+  INSUFFICIENT_EVIDENCE) from first principles across three theoretical lenses (epistemic theory,
+  constitutional governance, evidence/justification theory), with a complete transition table and named
+  domain events, reaching "Kernel = constitutional evaluator for the entire lifecycle" (not merely
+  admission) as its strongest hypothesis. The critique-voice challenges whether several proposed
+  "states" (INSUFFICIENT_EVIDENCE, RECONCILED) are genuine domain states versus an evidence assessment
+  or an inter-claim relationship; decomposes any transition into five distinct sub-responsibilities
+  (Trigger/Proposal/Adjudication/Application/Recording); and explicitly refuses to let the state list
+  become an implementation enum before DDD discovery completes. Commissions a further-constrained task,
+  "K-02 -- Epistemic Lifecycle: State vs Event vs Assessment," with a 16-concept classification table.
+
+introduces:
+  - "8-state candidate epistemic lifecycle with a full transition table and named domain events
+    (KnowledgeAdmitted, KnowledgeRejected, KnowledgeContested, KnowledgeSuperseded, KnowledgeWithdrawn,
+    KnowledgeEvidenceInvalidated, KnowledgeReconciled, KnowledgeSupersededByContest,
+    KnowledgeChallengeRejected) -- the corpus's largest single status-vocabulary candidate so far,
+    NOT adopted"
+  - "Explicit doubt cast on whether INSUFFICIENT_EVIDENCE is a knowledge-claim state (vs. an
+    EvidenceAssessment property while the claim itself stays ADMITTED) and whether RECONCILED describes
+    a claim state at all vs. a relationship between two previously-conflicting claims"
+  - "Five-way decomposition of transition responsibility: Trigger (who detects) / Proposal (who
+    proposes) / Adjudication (who determines permissibility) / Application (who changes state) /
+    Recording (who records the event) -- a finer-grained responsibility model than any prior file"
+  - "Explicit anti-premature-formalization discipline: 'do not take this and immediately create
+    `enum EpistemicState`... that would be converting a research hypothesis into implementation
+    vocabulary before completing DDD discovery' -- directly parallel to this reconstruction's own
+    provisional-classification discipline (MD-004)"
+  - "K-02 task commissioned: classify 16 named concepts (PROPOSED, ADMITTED, CONTESTED, SUPERSEDED,
+    RECONCILED, WITHDRAWN, REJECTED, INSUFFICIENT_EVIDENCE, and 8 domain events/value objects) as
+    Domain State / Domain Event / Evidence Assessment / Relationship / Policy Decision / Derived
+    Projection, across 10 lenses, with an explicit instruction to mark UNRESOLVED rather than invent"
+
+defines: []
+
+refines:
+  - "Sharpens (does not adopt) 0150's 6-state lifecycle sketch into a full 8-state candidate with
+    transitions; the critique then immediately re-opens whether the states are even correctly typed"
+
+contradicts: []
+
+repeats:
+  - {concept: "admission-boundary hypothesis, constitutional-evaluator framing", canonical_source: "0150", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "Extended the 5-state-vocabulary unresolved_equivalence entry with the 8-state epistemic lifecycle
+    as a further, largest-yet sibling. Ledger Entry 48 Round 3 addendum added."
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Unknown Preservation"]
+  refines_or_contradicts: "Elaborates and immediately re-questions the epistemic-lifecycle vocabulary; still fully unresolved."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "Three full rounds of the DeepSeek/critique cycle have now occurred (0148, 0150, 0151) with
+    increasing, not decreasing, rigor at each round -- a genuine unresolved architectural question is
+    being treated with sustained discipline rather than settled by repetition or fatigue"
+  - "The explicit refusal to formalize the state list as an enum, precisely because doing so would
+    'convert a research hypothesis into implementation vocabulary,' is a clean structural analogue to
+    this reconstruction's own MD-004 provisional-classification discipline"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the K-02 State/Event/Assessment classification task is ever actually performed in a later
+    file, and what it concludes"
+
+tier2_triggered: true
+tier2_reason: >
+  Largest status-vocabulary candidate in the corpus so far (8 states + 9 events), a new five-way
+  transition-responsibility decomposition, and an explicit anti-premature-formalization discipline
+  directly paralleling this reconstruction's own methodology.

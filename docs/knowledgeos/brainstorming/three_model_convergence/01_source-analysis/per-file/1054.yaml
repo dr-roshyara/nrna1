@@ -1,0 +1,81 @@
+sequence: 1054
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-289/02-cycle-reconstruction.md
+title: "02 -- Cycle Reconstruction (Step 289 mandate §4): Explicitly Refutes a Prior Step-288 Claim That the Bootstrap Boundary Was O/T, Delivering the Robustness Finding That Three of Four Cycles Are STRUCTURALLY NECESSARY (Surviving Every Deletion) While the Fourth Is a Mere 'Documentary Defect Masquerading as a Dependency'"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the second numbered Step-289 artifact, delivering an explicit refutation of a prior claim plus a robustness analysis of the four confirmed cycles"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1054
+importance: critical
+confidence: high
+about: >
+  "02 — Cycle Reconstruction (mandate §4)," explicitly reconstructing the four cycles "INDEPENDENTLY... NOT
+  inherited from Step 288," delivering named identifiers Z-1 through Z-4 for the already-executed cycle
+  enumeration (file 1052).
+
+  **DELIVERS AN EXPLICIT, DIRECT REFUTATION OF A PRIOR CLAIM ATTRIBUTED TO STEP 288**: "Step 288 reported
+  'three dependency cycles, all through one node; the bootstrap boundary is `𝒪`/`𝒯`.' BOTH HALVES FAIL: there
+  are FOUR cycles (not three), and `𝒪`/`𝒯` are NOT MEMBERS OF ANY OF THEM." Boxed: **"ALL FOUR cycles contain
+  `≡`. NOT ONE contains `𝒪` or `𝒯`."** `𝒪` and `𝒯` are explicitly reclassified as "UPSTREAM SOURCES -- they
+  gate derivation downstream, they do not participate in the feedback structure." **Delivers the precise
+  methodological explanation for how the earlier, now-refuted claim arose**: "Step 288 traced each cycle to a
+  node it DEPENDED ON and concluded that node was IN the cycle. Being a prerequisite of a cycle is not being
+  a member of it." This directly confirms and sharpens files 1049-1052's capstone finding that the unique
+  minimal bootstrap cut is `{equiv}` alone, by explicitly ruling out the alternative `𝒪`/`𝒯`-centered framing
+  that an earlier pass apparently held.
+
+  **DELIVERS A GENUINELY VALUABLE ROBUSTNESS ANALYSIS**, testing whether each of the four cycles (Z-1
+  `≈↔≡`; Z-2 `congruence↔≡`; Z-3 `≈→≡→bindings→≈`; Z-4 `congruence→≡→δ→congruence`) survives three deletion
+  tests (removing philosophical material, removing verification-lane material, removing historical/non-
+  normative definitions): **Z-2, Z-3, and Z-4 survive ALL THREE deletions**, boxed "THREE OF FOUR CYCLES
+  SURVIVE EVERY DELETION. The dependency structure is NOT an artifact of the philosophical programme or the
+  verification lane" -- confirming these three cycles are genuinely STRUCTURALLY NECESSARY features of the
+  domain, not accidents of any one research lane. **Z-1 alone DIES under the historical-definitions
+  deletion**, since "it is MADE OF the historical duplication (`258.8` vs `261.1`)" -- explicitly reclassified
+  as "a DOCUMENTARY DEFECT masquerading as a dependency. It should be REPAIRED (`N-1`), not cut." This
+  distinguishes the already-tracked N-1 conflict (files 1041, 1047, 1049-1052) as the one CORRECTABLE
+  (documentation-level) cycle among four, while the other three represent genuine, irreducible structural
+  interdependencies in the equality/congruence/binding relationship.
+introduces:
+  - concept: "The explicit refutation of a prior Step-288 claim that the bootstrap boundary was O/T and that only three cycles existed -- both halves shown false by direct execution"
+  - concept: "The precise methodological diagnosis of how the refuted claim arose: conflating 'being a prerequisite of a cycle' with 'being a member of the cycle'"
+  - concept: "The named cycle identifiers Z-1 through Z-4, with a robustness classification distinguishing three structurally necessary cycles (surviving every deletion test) from one contingent, documentary-defect cycle (Z-1, which dies when the historical duplication is removed)"
+defines:
+  - term: "Z-1 through Z-4"
+    definition: "The four named elementary cycles in the Step-289 dependency graph, all passing through equiv: Z-1 (approx<->equiv, contingent/documentary), Z-2 (congruence<->equiv, necessary), Z-3 (approx-equiv-bindings-approx, necessary), Z-4 (congruence-equiv-delta-congruence, necessary)"
+refines:
+  - concept: "This reconstruction's already-tracked capstone minimal-cut finding (files 1049-1052: the unique minimal bootstrap cut is {equiv})"
+    refinement: "SHARPENED with an explicit refutation of an alternative O/T-centered framing, and a robustness analysis showing three of the four underlying cycles are structurally necessary while one (Z-1) is a correctable documentary defect"
+  - concept: "This reconstruction's already-tracked N-1 conflict (the equiv/approx formula-identity duplication, file 1041)"
+    refinement: "RECLASSIFIED, via the robustness test, as specifically 'a documentary defect masquerading as a dependency' -- the one cycle among four that should be repaired rather than treated as a genuine structural constraint"
+contradicts:
+  - concept: "A prior claim (attributed to 'Step 288') that the bootstrap boundary was O/T and that only three cycles existed"
+    contradicted_by: "Direct execution confirming four cycles, none containing O or T, all containing equiv"
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the explicit refutation of the O/T bootstrap-boundary claim and the precise methodological diagnosis (prerequisite-of-a-cycle is not membership-in-a-cycle)."
+  - "dimension-registry.md: record the robustness classification distinguishing three structurally necessary cycles from Z-1, the one correctable documentary-defect cycle tied to the N-1 conflict."
+anchor_test:
+  anchor: "This reconstruction's already-tracked capstone minimal-cut finding and N-1 conflict (files 1041, 1049-1052)"
+  supports_dimension: "Sharpens the capstone finding with an explicit refutation of an alternative framing and a robustness analysis distinguishing necessary from documentary-defect cycles"
+  refines_or_contradicts: "refines and sharpens prior findings; directly contradicts a prior O/T-centered claim"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The probe table directly reproduces file 1052's own already-documented execution results for the O/T/equiv/delta cuts."
+undefined_concepts: []
+open_questions:
+  - "Whether the N-1 conflict (Z-1's underlying cause) is subsequently repaired at the source."
+tier2_triggered: true
+tier2_reason: "Delivers an explicit, direct refutation of a prior claim about the bootstrap boundary, a precise methodological diagnosis of how that error arose, and a genuinely valuable robustness analysis distinguishing three structurally necessary dependency cycles from one correctable documentary-defect cycle. Classified importance critical and confidence high given the rigorous, executed, and structurally significant nature of these findings."

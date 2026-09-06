@@ -1,0 +1,44 @@
+sequence: 379
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260825-235913_kernel-problem-minimum-substrate-for-conditional-determination-duplicate.md
+title: "Duplicate of 0377 (S_Kernel=(D,E,S,T,U) Kernel Hypothesis)"
+date: "2026-08-25"
+bytes: 12746
+model:
+  primary: c1
+  secondary: null
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 377
+importance: low
+confidence: high
+about: >
+  Byte-identical cross-file duplicate of file 0377 (confirmed via diff, zero output). Filename itself
+  explicitly labels it "-duplicate," matching the corpus's own established duplicate-naming convention
+  (e.g. 0344, 0352). Recorded minimally per the established cross-file duplicate protocol.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Entire content duplicates 0377 (S_Kernel=(D,E,S,T,U) Kernel Hypothesis via cross-regime intersection)"
+    canonical_source: 377
+    novelty: "none -- byte-identical cross-file duplicate, verified via diff and self-declared in the filename"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0377"
+  supports_dimension: "Cross-file duplicate; no independent evidentiary weight"
+  refines_or_contradicts: "none -- duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "NOT TRIGGERED -- byte-identical duplicate of 0377, self-declared in filename, verified via diff"

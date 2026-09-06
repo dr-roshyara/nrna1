@@ -1,0 +1,205 @@
+sequence: 615
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-102539_step-035-epistemic-resource-allocation-attention-scheduling-knowledge-triage-and-portfolio-optimi.md
+title: "Portfolio-Level Epistemic Resource Allocation Delivered — an Eight-Dimensional Priority Vector Replacing 'Score≠Explanation'; 'Epistemic Debt' Introduced as a Formal Concept Analogous to Technical Debt, Which Can Compound; Epistemic Bottleneck/Unlock Value; Formal Multi-Resource Portfolio Optimization With Explicit NP-Hardness Acknowledgment and Greedy/Pareto-Frontier Heuristics — SUBSTANTIVELY CLOSES 0611's Third Explicitly Flagged Open Item (Computational Complexity/Tractability, 'Does Not Inherently Require a Supercomputer'); Hard Constraints Formally Subordinating Optimization ('Optimization Is Subordinate to Binding Constraints'); a Formal Four-Level Optimization Hierarchy (Claim/Investigation/Decision/Portfolio) Unifying the Entire Decision-Theoretic Program to Date; Goodhart's Law EXPLICITLY NAMED for the First Time in the Corpus; Verdict 'STEP 35 — PASS'; Opens Step 36 (Epistemic Calibration, Reliability, Meta-Validation and Knowledge-System Health) — the Corpus's First Explicit Turn Into Meta-Epistemology, KnowledgeOS→Evaluate(KnowledgeOS)"
+date: "2026-08-28"
+bytes: 21958
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 35 -- Epistemic Resource Allocation, Attention Scheduling, Knowledge Triage and Portfolio Optimization', opened cleanly at 0614's close, extending single-decision Value of Information into portfolio-level resource allocation across competing decisions"
+source_role: PRIMARY_RESEARCH
+canonical_source: 615
+importance: critical
+confidence: high
+about: >
+  Opens Step 35 directly executing 0614's clean transition, posing "how should KnowledgeOS allocate
+  limited epistemic resources across competing uncertainties and decisions?" across eight named enterprise
+  domains (architecture, infrastructure, security, governance, software, business, operations, AI-generated
+  knowledge). Delivers a formal allocation problem `Allocate(𝓡,𝓤)`, explicitly rejecting conventional
+  High/Medium/Low prioritization as insufficient given wildly differing per-item costs.
+
+  Delivers `Efficiency(u)=EU(u)/Cost(u)` as a first approximation, immediately extended into a richer
+  multi-dimensional `Priority(u)=f(Risk,DecisionImpact,VOI,Urgency,Dependency,Freshness,Cost)`, with the
+  file's central anti-scalar principle: **`Score≠Explanation`** -- a single priority number hides why an
+  item matters, what decision it affects, and what assumptions produced it. **Delivers an eight-dimensional
+  Epistemic priority vector** `P(u)=(Impact,Risk,VOI,Urgency,Dependency,Freshness,Cost,Authority)`, directly
+  extending the corpus's recurring anti-scalar-confidence discipline (0592/0599/0603/0606/0608/0613) into
+  portfolio prioritization specifically. Delivers domain/governance-owned Decision criticality (KnowledgeOS
+  consumes, never invents, what "Critical" means) and formal Uncertainty impact `Impact(u,d)`.
+
+  Delivers Dependency centrality and graph-theoretic indicators (Degree, Betweenness, Reachability),
+  explicitly qualified as NOT automatically equivalent to epistemic importance -- "a highly connected
+  irrelevant node can still be irrelevant" -- refined into Decision-Weighted Centrality
+  `DWC(u)=Σ_d Criticality(d)·Impact(u,d)`. Delivers Urgency (deadline-driven value increase) and Knowledge
+  freshness/half-life (`HL(u)`, explicitly domain-specific, useful for scheduling revalidation).
+
+  **Delivers the file's central formal deliverable -- Epistemic Debt, a genuinely new corpus concept**:
+  accumulated unresolved uncertainty that impairs future decisions, explicitly and precisely analogized to
+  technical debt (`UnresolvedUncertainty→FutureDecisionRisk`), with a conceptual accumulation equation
+  (`D_E(t+1)=D_E(t)+NewUncertainty-ResolvedUncertainty+Staleness`). **Delivers the important recognition
+  that epistemic debt can compound**: an unresolved uncertainty can become an embedded, unstated assumption
+  in a downstream model, which itself becomes an assumption in a decision -- the original uncertainty
+  silently propagates and amplifies through the epistemic graph. Delivers formal Epistemic bottlenecks
+  (`Blocker(u)`) and `BValue(u)=Σ_d UnlockValue(d,u)`, explicitly noted as potentially more important than
+  raw uncertainty magnitude, worked through a concrete migration-database-compatibility example blocking
+  architecture, infrastructure, testing, and governance simultaneously.
+
+  **Delivers a formal multi-resource portfolio optimization framework**: resource constraints (`Budget,
+  HumanHours, Compute, Time`), a basic knapsack-style formulation (`max Σx_i Value(I_i)` subject to
+  `Σx_i Cost_i≤B`), with an explicit, honest **acknowledgment of NP-hardness** for the general problem --
+  directly and substantively engaging with one of 0611's three explicitly flagged open formalization items
+  (computational complexity/tractability). Delivers Greedy epistemic allocation (`argmax NVOI(I)/Cost(I)`,
+  explicitly acknowledged as not globally optimal but often useful), and a worked failure case demonstrating
+  why greedy selection can miss value: **`Synergy(I_1,I_2)=Value(I_1,I_2)-Value(I_1)-Value(I_2)`**, with
+  positive synergy indicating reinforcement and negative synergy indicating redundancy (commonly arising
+  when investigations query the same underlying source), directly connecting provenance and dependency
+  machinery into portfolio optimization (`Provenance→Dependency→Redundancy/Synergy→ResourceAllocation`).
+
+  Delivers Human expert scheduling with explicit skill-matching (`SkillMatch(I,Expert)`,
+  `Qualified(Expert,I)` as an admissibility constraint), Human review reframed as a structured, auditable
+  epistemic event (`Who,When,Context,EvidenceReviewed,DecisionBasis`) rather than a bare boolean, and
+  Human disagreement explicitly preserved (`ExpertConflict`, never averaged). Delivers Expert reliability
+  explicitly rejecting a single global permanent score in favor of a domain/task-specific formulation
+  (`Reliability=f(Expert,Domain,Task)`). Delivers Multi-resource optimization with `Cost(I)` formalized as
+  a VECTOR, not a scalar, and formal Pareto dominance/frontier concepts for pre-filtering candidate
+  investigations before expensive combinatorial optimization.
+
+  Delivers a formal Dynamic portfolio reoptimization framework (`S_{t+1}=Optimize(K_{t+1})` after each new
+  observation), a receding-horizon strategy avoiding the need to predict the entire future, and a formal
+  thirteen-stage epistemic scheduling loop diagram, explicitly described as "the operational heart of an
+  active KnowledgeOS." Delivers a formal stopping condition (`max_I NVOI(I)≤0` or
+  `Sufficient(K,D)=True` for all relevant decisions).
+
+  **Delivers the file's second central formal deliverable -- organizational governance formally
+  subordinating pure optimization**: worked example (`NVOI(I_1)=10>NVOI(I_2)=8` yet governance mandates
+  `I_2`), formalizing **`Optimization is subordinate to binding constraints`**. Delivers a formal Hard
+  constraints (`MustBeSatisfied`) vs. Soft objectives (`ShouldBeOptimized`) separation, explicitly
+  DDD-owned (the bounded-context/governance authority defines constraints; KnowledgeOS only evaluates
+  `ConstraintSatisfied?`), yielding the full optimization function
+  `Optimize(Knowledge,Decisions,Constraints,Resources)`, never `Optimize(Knowledge)` in isolation. Delivers
+  a formal Risk budget (`Risk(I)≤B_R`) and the precise distinction **`Valuable≠Admissible`** -- an
+  investigation with positive net value can still be inadmissible if it exceeds a risk threshold.
+
+  **Delivers twelve labeled falsification experiments (1-12), all PASS (the last two explicitly "PASS
+  conceptually")**: a risk-forbidden high-VOI investigation correctly excluded in favor of a lower-risk
+  alternative; identical-evidence investigations flagged `RedundancyDetected`; an uncertainty affecting five
+  critical decisions correctly weighted higher than one affecting a trivial decision; a cheap bottleneck-
+  unlocking investigation correctly identified as high value; an unavailable expert correctly creating a
+  `ResourceConstraint`; a high-information-gain but decision-irrelevant investigation correctly receiving
+  low value; a previously-prioritized but now-irrelevant uncertainty correctly recalculated downward as
+  new evidence arrives; an approaching deadline correctly increasing urgency; stale knowledge correctly
+  increasing revalidation priority per the applicable freshness policy; a governance constraint correctly
+  overriding an otherwise-optimal investigation; individually-low-value but jointly-high-value
+  investigations identifiable as synergistic if the interaction model supports it; compounding epistemic
+  debt correctly increasing downstream dependency impact.
+
+  **Delivers Step 35's verdict**: **"STEP 35 — PASS,"** explicitly declaring KnowledgeOS extended "from an
+  active epistemic agent into a potential epistemic resource allocator." **Delivers a formal
+  `EpistemicPortfolio` six-tuple** `EP=(U,D,I,R,C,V)` and its optimization problem
+  `max_{S⊆I} Value(S)` subject to `Resource(S)≤R` and `Constraints(S)=True`.
+
+  **Delivers the file's most significant architectural crystallization -- a formal four-level optimization
+  hierarchy, explicitly named "extremely important," unifying four distinct decision-theoretic problems
+  the corpus has separately developed across many files**: Level 1 — Claim (`Validate(A)`, should we
+  accept this assertion); Level 2 — Investigation (`argmax_I NVOI(I)`, what should we learn next, from
+  0614/Step 34); Level 3 — Decision (`argmin_d E[L(d,Y)]`, what action should we take, from earlier
+  decision-theory steps); Level 4 — Portfolio (`argmax_S Value(S)`, which uncertainties should the
+  organization investigate first, from this file). Delivers a seven-stage architecture-level cycle
+  (`Observe→Understand→Validate→Decide→Act→Learn→Prioritize`), "a closed epistemic control system."
+
+  **Delivers the file's third central formal deliverable -- an explicit anti-gaming warning against a
+  genuinely dangerous optimization failure mode**: KnowledgeOS could accidentally optimize for
+  `EasyInformation` instead of `ImportantInformation`, repeatedly selecting cheap-but-unimportant queries
+  while avoiding difficult but critical questions, requiring the explicit corrective principles
+  **`Optimize decision quality, not information volume`** and
+  **`Optimize uncertainty reduction only when that reduction matters`**. **Delivers Goodhart's Law
+  explicitly named for the first time anywhere in the corpus** -- optimizing a proxy metric
+  (`NumberOfValidatedClaims`, `NumberOfInvestigations`) rather than the true underlying objective would
+  corrupt the system's actual behavior, formalized as **`MeasurementTarget≠UnderlyingObjective`**. Delivers
+  the corrected true objective: **"improve decision quality under resource, safety, and governance
+  constraints,"** explicitly not "maximize knowledge," and the file's philosophical distillation:
+  KnowledgeOS should not try to know everything, only "enough, of the right things, at the right time,
+  with the right assurance" -- "a much more realistic objective."
+
+  Delivers seven numbered Step 35 principles (P35.1-P35.7): knowledge work is a resource-allocation
+  problem; decision relevance dominates raw information volume; human attention is an epistemic resource;
+  epistemic debt is deferred uncertainty with future consequences; information actions are constrained by
+  safety and governance; the optimal portfolio may require approximation; optimize decision quality, not
+  knowledge volume.
+
+  **Delivers a substantive, honest engagement directly addressing one of 0611's three explicitly flagged
+  open formalization items -- computational complexity and tractability**: a normal PC handles most core
+  operations (graph traversal, rule evaluation, constraint checking, Bayesian updating, Monte Carlo,
+  optimization, provenance analysis), while acknowledging genuinely difficult cases (very large graphs,
+  complex probabilistic inference, large combinatorial portfolios, large ML models) require approximation,
+  caching, incremental computation, sampling, heuristics, or distributed execution -- **`the mathematical
+  architecture does not inherently require a supercomputer`**, substantially narrowing 0611's remaining
+  open-items list.
+
+  **Closes by identifying the next major missing property -- meta-epistemology**: a model can be internally
+  consistent, well-formalized, and resource-optimally allocated, and still systematically produce poor
+  decisions if the underlying epistemic PROCESS itself is unreliable, naming nine distinct metrics that
+  must not be treated as interchangeable (Calibration, Accuracy, Precision, Recall, Coverage, False
+  Discovery, False Assurance, Drift, Robustness). **Opens "Step 36 — Epistemic Calibration, Reliability,
+  Meta-Validation and Knowledge-System Health,"** the corpus's first explicit turn into genuine meta-
+  epistemology (`KnowledgeOS→Evaluate(KnowledgeOS)`), posing not "is this individual assertion correct?"
+  but **"when KnowledgeOS says 'validated,' 'high confidence,' 'unknown,' or 'safe to act,' how often are
+  those judgments actually reliable?"** No actual code execution reported.
+introduces:
+  - concept: "Epistemic Debt, a genuinely new corpus concept formally analogous to technical debt, explicitly recognized as capable of compounding as unresolved uncertainty becomes an embedded assumption in successively downstream models and decisions"
+  - concept: "Epistemic bottleneck value (BValue(u)), explicitly noted as potentially more important than raw uncertainty magnitude when a single unresolved uncertainty blocks multiple downstream decisions simultaneously"
+  - concept: "An eight-dimensional Epistemic priority vector replacing any single collapsed priority score, extending the corpus's recurring anti-scalar discipline into portfolio prioritization"
+  - concept: "Explicit acknowledgment of NP-hardness for general portfolio optimization, directly and substantively engaging with 0611's flagged computational-complexity open item, reconfirming normal-PC feasibility via approximation and heuristics"
+  - concept: "A formal four-level optimization hierarchy (Claim/Investigation/Decision/Portfolio), explicitly named 'extremely important,' unifying four distinct decision-theoretic problems developed separately across many earlier corpus files"
+  - concept: "Goodhart's Law explicitly named for the first time anywhere in the corpus, formalized as MeasurementTarget≠UnderlyingObjective, warning against optimizing proxy metrics rather than true decision quality"
+  - concept: "The philosophical distillation that KnowledgeOS should know 'enough, of the right things, at the right time, with the right assurance' rather than attempting to know everything"
+  - concept: "'Step 36 — Epistemic Calibration, Reliability, Meta-Validation and Knowledge-System Health', the corpus's first explicit turn into meta-epistemology (evaluating the epistemic system's own reliability, not individual assertions)"
+defines:
+  - concept: "Epistemic Debt"
+    definition: "D_E(t+1)=D_E(t)+NewUncertainty-ResolvedUncertainty+Staleness — accumulated unresolved uncertainty that can impair future decisions, directly analogous to technical debt, capable of compounding as it becomes an embedded assumption in downstream models and decisions"
+  - concept: "Epistemic priority vector"
+    definition: "P(u)=(Impact,Risk,VOI,Urgency,Dependency,Freshness,Cost,Authority) — a structured, eight-dimensional replacement for any single collapsed priority score, preserving the underlying reasoning behind a prioritization decision"
+  - concept: "Four-level optimization hierarchy"
+    definition: "Level 1 Claim (Validate(A)), Level 2 Investigation (argmax_I NVOI(I)), Level 3 Decision (argmin_d E[L(d,Y)]), Level 4 Portfolio (argmax_S Value(S)) — four genuinely distinct optimization problems the KnowledgeOS architecture must solve at different granularities"
+  - concept: "Goodhart's Law applied to KnowledgeOS (MeasurementTarget≠UnderlyingObjective)"
+    definition: "Optimizing a proxy metric (e.g. number of validated claims or investigations performed) rather than the true underlying objective (decision quality) will cause the system to game the metric rather than genuinely improve outcomes"
+refines:
+  - concept: "0592's/0599's/0603's/0606's/0608's/0613's recurring anti-scalar-confidence discipline"
+    refinement: "Extended into portfolio prioritization specifically via the eight-dimensional epistemic priority vector, with the explicit principle Score≠Explanation"
+  - concept: "0611's third explicitly flagged open formalization item (computational complexity and tractability)"
+    refinement: "Substantively and honestly engaged with -- portfolio optimization is explicitly acknowledged as NP-hard in general, with a concrete, practical resolution (approximation, heuristics, caching, sampling, distributed execution) rather than either ignoring the difficulty or overclaiming tractability"
+  - concept: "0612's/0613's/0614's separately-developed decision-theoretic optimization problems (claim validation, investigation selection via VOI, decision selection via expected loss)"
+    refinement: "Unified into a single formal four-level optimization hierarchy, explicitly self-identified as extremely important, showing these were always instances of one recurring optimization pattern applied at different granularities"
+  - concept: "0609's (Step 30) explicit methodological restraint against over-implementing before the model is proven"
+    refinement: "Extended into a new, explicitly named anti-gaming principle (Goodhart's Law) warning against a specific, concrete failure mode where naive optimization metrics corrupt the system's true objective"
+  - concept: "The corpus's recurring DDD governance-ownership discipline (constraints belong to the domain, not KnowledgeOS)"
+    refinement: "Directly reused for the hard-constraint/soft-objective separation in portfolio optimization: KnowledgeOS evaluates ConstraintSatisfied? but never invents or overrides governance-defined binding constraints"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 36 — Epistemic Calibration, Reliability, Meta-Validation and Knowledge-System Health' is executed as its own file, and whether it succeeds in formalizing genuine meta-epistemology — evaluating whether KnowledgeOS's own judgments (validated, high confidence, unknown, safe to act) are actually reliable over time, distinct from evaluating any individual assertion's correctness."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Epistemic Debt (a new corpus concept, analogous to technical debt, capable of compounding), the eight-dimensional epistemic priority vector replacing scalar priority scores, and Epistemic bottleneck value (BValue(u)) as potentially more important than raw uncertainty magnitude."
+  - "dimension-registry.md: record the formal multi-resource portfolio optimization framework with explicit NP-hardness acknowledgment (substantively closing 0611's flagged computational-complexity open item), the Valuable≠Admissible distinction, and Optimization is subordinate to binding constraints (governance-mandated investigations can override pure VOI ranking)."
+  - "dimension-registry.md: record the formal four-level optimization hierarchy (Claim/Investigation/Decision/Portfolio) unifying the corpus's decision-theoretic program, Goodhart's Law explicitly named for the first time (MeasurementTarget≠UnderlyingObjective), the twelve-test falsification suite, verdict 'STEP 35 — PASS,' and Step 36's opening into meta-epistemology (KnowledgeOS→Evaluate(KnowledgeOS))."
+anchor_test:
+  anchor: "0614's clean opening of Step 35; 0611's third explicitly flagged open formalization item (computational complexity/tractability); 0592's-0613's recurring anti-scalar discipline; 0612's/0613's/0614's separately-developed decision-theoretic optimization problems; the corpus's recurring DDD governance-ownership discipline"
+  supports_dimension: "Delivers a genuinely substantial extension of the corpus's decision-theoretic architecture from single-decision VOI to portfolio-level resource allocation across an entire organization's competing epistemic needs, introducing a genuinely new and useful concept (Epistemic Debt, explicitly capable of compounding) with a precise technical-debt analogy directly relevant to real organizational knowledge management. Delivers a formally significant unification — the four-level optimization hierarchy — explicitly self-identified as extremely important, correctly recognizing that the corpus's separately-developed claim-validation, investigation-selection, decision-selection, and now portfolio-selection problems are instances of one recurring optimization pattern at different granularities, a genuine architectural insight rather than a superficial summary. Delivers a substantive, honest engagement with one of 0611's three explicitly flagged open formalization items (computational complexity), acknowledging genuine NP-hardness while providing a concrete, practical resolution rather than either ignoring the difficulty or overclaiming universal tractability. Delivers the corpus's first explicit naming of Goodhart's Law, a well-known but previously unnamed metrics-gaming principle, directly and precisely warning against a specific, realistic optimization failure mode any real deployment of this architecture could encounter. Closes with a well-motivated transition into genuine meta-epistemology, correctly distinguishing the reliability of individual judgments from the reliability of the judgment-producing process itself — a conceptually important next boundary for the research program's overall epistemic-humility trajectory"
+  refines_or_contradicts: "extends 0614's clean opening into portfolio-level resource allocation; substantively engages with and narrows 0611's third explicitly flagged open formalization item (computational complexity); extends the recurring anti-scalar discipline (0592-0613) into portfolio prioritization; unifies 0612's/0613's/0614's separately-developed optimization problems into one formal hierarchy; extends the corpus's recurring DDD governance-ownership discipline into the hard-constraint/soft-objective portfolio-optimization separation; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked migration-database-compatibility bottleneck example (a single unresolved uncertainty simultaneously blocking architecture finalization, infrastructure provisioning, testing completion, and governance approval) is directly checkable, concrete evidence grounding the abstract BValue(u) concept in a realistic enterprise scenario, demonstrating that bottleneck value can exceed raw uncertainty magnitude in a way any project manager would recognize."
+  - "The explicit acknowledgment that portfolio optimization is NP-hard in general, immediately paired with a concrete practical resolution strategy (greedy approximation, Pareto-frontier pre-filtering, heuristics, caching, distributed execution) rather than either denial or overclaiming, is directly checkable evidence of the corpus's characteristic epistemic honesty applied specifically to the computational-tractability question 0611 had left open."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 36 — Epistemic Calibration, Reliability, Meta-Validation and Knowledge-System Health' is executed as its own dedicated corpus file, and whether it succeeds in formalizing genuine meta-epistemology — evaluating the reliability of KnowledgeOS's own judgment-producing process, distinct from evaluating any individual assertion's correctness"
+tier2_triggered: true
+tier2_reason: "Delivers a genuinely substantial extension of the corpus's decision-theoretic architecture from single-decision Value of Information to portfolio-level resource allocation, introducing a genuinely new and practically useful concept (Epistemic Debt, explicitly capable of compounding) with a precise technical-debt analogy. Delivers a formally significant architectural unification — the four-level optimization hierarchy — correctly recognizing that the corpus's separately-developed claim-validation, investigation-selection, decision-selection, and portfolio-selection problems are instances of one recurring optimization pattern at different granularities, explicitly self-identified as extremely important. Delivers a substantive, honest engagement with one of 0611's three explicitly flagged open formalization items (computational complexity/tractability), acknowledging genuine NP-hardness while providing a concrete, practical resolution rather than overclaiming or ignoring the difficulty, substantially narrowing the corpus's remaining formalization gaps. Delivers the corpus's first explicit naming of Goodhart's Law, precisely warning against a specific, realistic optimization failure mode directly relevant to any real deployment of this architecture. Closes with a well-motivated transition into genuine meta-epistemology, correctly distinguishing the reliability of individual judgments from the reliability of the judgment-producing process itself — a conceptually important next boundary for the research program's epistemic-humility trajectory."

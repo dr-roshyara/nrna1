@@ -1,0 +1,206 @@
+sequence: 715
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-125345_step-129-knowledgeos-architecture-fitness-model.md
+title: "Step 129 -- Formalizes Fitness Rule as F_i(S,C)→{PASS,FAIL,WARN,UNKNOWN}, Delivers Eight Fitness-Rule Categories and Extends the AFR Catalog From 0714's AFR-01..AFR-10 to a Full AFR-11..AFR-26 (Sixteen New Rules), Including a Nuanced Refinement of the .claude/memory/ Pointer-vs-Copy Test, the 'Never Use Temporary Without Expiry' Anti-Pattern, and a Recursive Self-Governance Requirement on Fitness Rules Themselves -- Delivers the Precise Fitness-Rule-vs-Test-vs-Policy-vs-Decision Taxonomy and the Central Thesis 'Narrative Architecture→Executable Architecture' -- Delivers 'No Single Score' Against Aggregate Health Percentages -- Opens Step 130, the KnowledgeOS Assurance Graph, Reframing the Central Question From 'What Objects Exist' to 'Can We Traverse the Complete Lifecycle From Organizational Intent to Runtime Evidence and Back'"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 129 -- KnowledgeOS Architecture Fitness Model', promised at 0714's close; formalizes the fitness-rule mechanism (F_i(S,C)→{PASS,FAIL,WARN,UNKNOWN}), extends the AFR catalog from ten to twenty-six numbered rules with substantial new governance mechanics (rule self-governance, severity/disposition mapping, three-way fitness-result semantics), and delivers a precise clarifying taxonomy distinguishing fitness rules from tests, policies, and governance decisions -- the most concrete, systematically numbered synthesis deliverable in the reconstruction to date"
+source_role: PRIMARY_RESEARCH
+canonical_source: 715
+importance: critical
+confidence: high
+about: >
+  Formalizes the fitness-rule mechanism precisely: `F_i(S,C)→{PASS,FAIL,WARN,UNKNOWN}`, where `S` is
+  observed system state and `C` is applicable constitutional/governance context, with the crucial framing
+  distinction stated up front: "An architecture principle describes what should be true. An architecture
+  fitness rule makes that principle testable. A verification execution produces evidence about whether it
+  is true." Delivers a worked illustrative example (AFR-01-style provenance check, "Checked: 1,248 objects.
+  Valid: 1,248. Invalid: 0" → PASS) and the `FitnessRule` object schema
+  (id/name/principle/scope/predicate/severity/checker/checker_version/applicability/lifecycle), with the
+  precise principle "the rule itself is governed knowledge" and an explicit rule-provenance chain
+  (`FitnessRule→Principle→Authority`, e.g. `AFR-02→C1→Architecture Constitution→Approved Decision`).
+
+  **Delivers Rule-applicability governance**, explicitly rejecting the anti-pattern `if inconvenient:
+  rule.not_applicable = true` — applicability itself requires `Scope+Policy+Authority`, never ad hoc
+  developer discretion. Delivers eight Fitness-rule categories (Structural, Semantic, Governance, Security,
+  Evidence, Behavioral, Assurance, Agent) as a clean, complete organizing taxonomy for the entire rule
+  catalog.
+
+  **Delivers a substantial expansion of the AFR catalog, from 0714's AFR-01 through AFR-10 to a full AFR-11
+  through AFR-26 (sixteen additional numbered rules)** — the most systematically numbered, concrete rule
+  catalog in the reconstruction to date: AFR-11 (agent components may consume authoritative knowledge
+  through approved interfaces but must not establish independent authoritative stores — directly
+  operationalizes the Claude/Codex symmetry principle from 0714); AFR-12 (`AGENTS.md` must not silently
+  become the enterprise architecture system of record); AFR-13 (Ubiquitous-Language rule: a term like
+  "Approved" must have one governed meaning within a bounded context — `ApprovedDecision`≠
+  `ApprovedDeployment` are not automatically the same concept); AFR-14 (only the owning context may perform
+  invariant-sensitive state transitions on its aggregates — "a classic DDD fitness rule"); AFR-15 (every
+  authoritative decision must reference valid authority, with authority explicitly temporal —
+  `ValidAuthority(a,t)`, worked through a concrete failing test: a delegation valid `2026-01-01→2026-06-30`
+  cannot authorize a decision dated `2026-07-15`); AFR-16 (every active exception must have authority, scope,
+  and expiry, with the explicit "never use 'temporary' without expiry" anti-pattern — a record with
+  `Expiry=null` fails, "this prevents temporary architecture from becoming permanent through neglect");
+  AFR-17 (material authoritative knowledge must have traceable evidence, with metadata requirements
+  Who/What/When/FromWhere/Hash/Version, plus `ObservedAt` specifically for runtime assertions); AFR-18
+  (current authoritative retrieval must exclude superseded knowledge unless historical retrieval is
+  explicitly requested, worked through a concrete stale-knowledge test: `K_1` current, `K_2` supersedes
+  `K_1`, a current-query returning `K_1` fails); AFR-19 (verification results must identify the rule and
+  checker version that produced them, motivated by a concrete reproducibility test `V_1=f(R,I)=V_2=f(R,I)`,
+  a mismatch triggering `InvestigationRequired`); AFR-20 through AFR-24, the Agent-specific fitness rules
+  (agent inference distinguishable from authoritative knowledge; agent actions have traceable identity;
+  material actions require authorization; agents must not bypass governance gates; agent-local memory must
+  not silently become enterprise authority — this fifth rule directly reprising and formally numbering
+  0714's pointer-layer conclusion within the fitness-rule system itself); AFR-25 (every material agent
+  action must reference the authorization under which it was executed, with a concrete negative test: an
+  unauthorized production-change attempt must `BLOCK`, "the test itself becomes assurance evidence"); and
+  AFR-26 (material governed changes require post-action verification, with the precise distinction
+  `CommandSucceeded≠MigrationCorrect` — a successful `exitCode=0` proves the command ran, not that the
+  migration was correct).
+
+  **Delivers a genuinely valuable, more nuanced refinement of the `.claude/memory/` pointer-layer test case
+  than 0714's binary FAIL** (§129.11): the fitness checker's actual question is "is this file an
+  authoritative source or merely a local pointer/cache?" — a record independently asserting "Architecture
+  Decision ADR-42 is authoritative" fails, but a record reading "See KnowledgeOS decision ADR-42" passes —
+  refining the pointer-layer discipline from a blunt existence-test into a content/framing-sensitive test,
+  a meaningful methodological advance for the eventual empirical (Step-131+) reconstruction phase.
+
+  Delivers Agent-identity attribution as `Agent+Session+Task` (concrete illustrative example: "Agent: codex,
+  Session: S-1842, Task: migrate Nexus configuration" — "far stronger than 'someone changed the
+  configuration'"), Agent-recommendation fitness (`Recommendation→Evidence`, `Recommendation→Producer`,
+  `Recommendation→ContextHash`), and a worked Context-integrity example: a Codex recommendation made under
+  context `C_1` must remain permanently associated with `C_1` even after the architecture evolves to `C_2` —
+  "otherwise we cannot explain what information caused the recommendation" — directly extending 0711's
+  `H(ContextPackage)` cryptographic-hashing proposal into an operational fitness requirement.
+
+  **Delivers the complete Architecture Fitness pipeline** (`Principle→Rule→Checker→Execution→Evidence→
+  Verdict→{PASS,FAIL→Finding→Governance}`, "the executable architecture loop"), and, crucially, **a
+  recursive self-governance requirement on fitness rules themselves** (§129.39-129.41, directly extending
+  0709's "Constitutional self-protection" concern into the fitness-rule layer specifically): "What if someone
+  changes AFR-19 to make a failing system pass? Then the rule change itself requires governance" — a rule
+  has its own governed lifecycle (`Proposed→Reviewed→Approved→Effective→Superseded`) and `RuleVersion`,
+  preserved on every `FitnessResult` "to preserve historical meaning."
+
+  Delivers the `FitnessResult` object schema (id/rule_id/rule_version/subject/execution/expected/actual/
+  verdict/evidence/executed_by/timestamp) and the precise principle `FitnessResult≠AuthoritativeKnowledge`
+  — "a result says: at time T, checker C found condition X. Governance may subsequently interpret that
+  result" — directly extending the corpus's Observation≠Knowledge/Evidence≠Authority family into
+  fitness-result terms specifically. **Delivers the precise Fitness-result→Finding disposition rule**:
+  `Verdict=FAIL→FindingCreated`, but `Verdict=UNKNOWN` must NOT automatically create a `Violation` — instead
+  `Finding(type=InsufficientEvidence)` — a valuable, precise anti-false-positive safeguard extending 0693's/
+  0699's/0708's Unknown-preservation discipline (crystallized formally as AFR-10 at 0714) into result-handling
+  logic specifically.
+
+  Delivers a Fitness state machine with `PASS|FAIL|UNKNOWN` as the minimum three-valued core, plus
+  `NOT_APPLICABLE` and `EXCEPTION` as additional states, a worked Architecture-fitness dashboard mockup
+  (ten AFR rules, mostly PASS with one WARN, explicitly caveated "actual statuses must come from execution,
+  not documentation"), and Fitness trends over releases (a declining pass-rate example `100%→98%→96%`
+  flagged as an architectural-drift signal).
+
+  **Delivers a precisely reasoned "no single score" caution** (§129.50): architecture health must never be
+  reduced to a single aggregate percentage — "a single failed authority invariant could be more important
+  than twenty cosmetic successes" — instead `CriticalFailures` must be surfaced separately, paired with a
+  Severity taxonomy (`BLOCKER/CRITICAL/HIGH/MEDIUM/LOW`, itself governed) and an Enforcement-policy mapping
+  (`Verdict+Severity→PipelineDisposition`, e.g. `FAIL+BLOCKER→BLOCK`, `FAIL+LOW→WARN`), worked through a
+  concrete constitutional-check-to-deployment-block scenario (a `C1` Constitution-principle FAIL propagating
+  to a critical finding, a governance workflow, and a potential deployment block).
+
+  **Delivers a precise, genuinely valuable Fitness-Rule-vs-Test-vs-Policy-vs-Decision taxonomy** (§129.54-
+  129.56): `UnitTest⊂EngineeringAssurance` (does the implementation behavior work?) is distinguished from
+  `FitnessRule⊂ArchitectureAssurance` (does the system continue to conform to this architectural
+  constraint?) as complementary, not equivalent, disciplines; `Policy→FitnessRule` (policy states what is
+  required, the rule states how it is objectively tested); and the complete governance-to-assurance path
+  `Decision→Knowledge→FitnessRule→Verification`.
+
+  **Delivers the file's central, precisely stated thesis** (§129.57): "`Narrative Architecture→Executable
+  Architecture`... not by eliminating documents, but by attaching deterministic verification mechanisms to
+  the parts that can be objectively tested" — an appropriately non-overreaching articulation avoiding the
+  stronger, false claim that documentation becomes unnecessary. Worked through three concrete
+  narrative-to-executable translation examples: the DDD boundary (`Governance owns decisions`→
+  `OnlyGovernanceMayMutate(Decision)` checker inspecting the dependency graph, API ownership, and write
+  access), the Agent boundary (`Agents cannot independently create authoritative decisions`→checker
+  inspecting API permissions/service roles/authorization policies/integration paths), and Evidence
+  (`∀x∈MaterialActions: ∃authorization(x)∧∃evidence(x)`, "potentially queryable continuously").
+
+  Delivers Step 129's verdict, crystallizing "architecture fitness is the executable boundary between
+  architecture governance and engineering reality," with the complete pipeline `Principle→Rule→Checker→
+  Evidence→Verdict→Finding→Governance`.
+
+  **Closes by opening "Step 130 — The KnowledgeOS Assurance Graph,"** promising to combine every object
+  derived across the entire preceding synthesis arc (knowledge, claims, evidence, authority, decisions,
+  policies, observations, findings, recommendations, actions, verification, fitness rules, agents, runtime,
+  governance) into a single machine-traversable graph, explicitly reframing the central architectural
+  question from "what objects exist?" to "can we traverse the complete lifecycle of an engineering decision
+  from organizational intent all the way to runtime evidence and back?" — with the target graph
+  `Intent→Decision→Knowledge→Rule→Implementation→Runtime→Evidence→Verification→Finding→Governance`,
+  explicitly named as potentially "the central architectural construct around which the rest of the
+  platform can be organized." No actual code execution, repository inspection, or verified filesystem/rule-
+  execution claim reported anywhere in this file — every worked example (the 1,248-object provenance check,
+  the delegation-expiry test, the `.claude/memory/` checker scenario, the dashboard, the trends) remains a
+  hypothetical illustrative application of the stated fitness-rule mechanism, not an empirical finding.
+introduces:
+  - concept: "The formal fitness-rule mechanism F_i(S,C)→{PASS,FAIL,WARN,UNKNOWN}"
+  - concept: "Eight fitness-rule categories: Structural, Semantic, Governance, Security, Evidence, Behavioral, Assurance, Agent"
+  - concept: "AFR-11 through AFR-26 — sixteen additional numbered fitness rules extending 0714's AFR-01..AFR-10"
+  - concept: "The refined, content/framing-sensitive .claude/memory/ pointer-vs-copy fitness test"
+  - concept: "'Never use temporary without expiry' — the exception-fitness anti-pattern"
+  - concept: "The recursive self-governance requirement on fitness rules themselves (a rule's own governed lifecycle and RuleVersion)"
+  - concept: "FitnessResult≠AuthoritativeKnowledge, and the precise Fitness-result→Finding disposition rule (UNKNOWN never automatically becomes Violation)"
+  - concept: "'No single score' — architecture health must never be reduced to a single aggregate percentage"
+  - concept: "The Fitness-Rule-vs-Test-vs-Policy-vs-Decision taxonomy"
+  - concept: "The central thesis: Narrative Architecture → Executable Architecture"
+  - concept: "Opens Step 130 — the KnowledgeOS Assurance Graph, reframing the central question as end-to-end lifecycle traversability"
+defines:
+  - concept: "Fitness rule (formal)"
+    definition: "A machine-checkable constraint F_i(S,C)→{PASS,FAIL,WARN,UNKNOWN} over observed system state S and applicable constitutional/governance context C; distinguished from a bare architecture principle (which only describes what should be true) by being objectively testable, and from a verification execution (which produces the actual evidence about whether it holds)"
+  - concept: "Rule applicability governance"
+    definition: "Whether a fitness rule applies to a given subject/state/time (Applicable(F,S,t)) must itself be determined by Scope+Policy+Authority, never by ad hoc developer discretion (rejecting the anti-pattern 'if inconvenient: rule.not_applicable = true')"
+  - concept: "AFR-24 (agent-local memory)"
+    definition: "Agent-local memory must not silently become enterprise authority — the fitness-rule-layer formalization of the pointer-layer principle first codified as invariant A1 (0706)"
+  - concept: "Fitness-result disposition rule"
+    definition: "A FAIL verdict creates a Finding; an UNKNOWN verdict must NOT automatically create a Violation, but instead a Finding of type InsufficientEvidence — preventing insufficient-evidence conditions from being misclassified as confirmed violations"
+  - concept: "No single score"
+    definition: "Architecture health must never be reduced to one aggregate percentage, because a single failed authority-critical rule can matter more than many passing cosmetic rules; instead, critical failures must be surfaced separately from an overall pass rate, with severity (BLOCKER/CRITICAL/HIGH/MEDIUM/LOW) itself governed"
+refines:
+  - concept: "0714's AFR-01..AFR-10 catalog"
+    refinement: "Directly extended with sixteen additional numbered rules (AFR-11..AFR-26), spanning structural/semantic/governance/evidence/temporal/assurance/agent/action categories, transforming the prior catalog into a substantially complete, systematically organized fitness-rule set"
+  - concept: "0714's binary .claude/memory/ FAIL test"
+    refinement: "Refined into a content/framing-sensitive test: independent assertion of authoritativeness fails, but an explicit pointer to the KnowledgeOS-authoritative record passes"
+  - concept: "0709's Constitutional self-protection concern"
+    refinement: "Directly extended into the fitness-rule layer specifically: fitness rules themselves require governance, their own lifecycle, and version-tracked results, preventing a rule from being quietly weakened to manufacture a passing result"
+  - concept: "0693's/0699's/0708's/0714's (AFR-10) Unknown-preservation discipline"
+    refinement: "Directly extended into concrete result-handling logic: an UNKNOWN fitness verdict must produce a Finding(type=InsufficientEvidence), never an automatic Violation"
+  - concept: "0711's H(ContextPackage) cryptographic-hashing proposal"
+    refinement: "Directly extended into an operational fitness requirement via Recommendation→ContextHash, worked through a concrete example of a recommendation remaining bound to its originating context even as the architecture evolves"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0716 (Step 130 — The KnowledgeOS Assurance Graph) with continued high attention: this file's own explicit reframing of the central question as end-to-end lifecycle traversability (Intent→Decision→Knowledge→Rule→Implementation→Runtime→Evidence→Verification→Finding→Governance) is a natural, well-motivated, and potentially major synthesis continuation — check specifically whether it delivers a genuinely traversable graph specification or continues the hypothetical/promise-then-defer pattern, and whether it is where the three-way candidate-fundamental-unit question (0703/0710/0711) finally gets addressed."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal fitness-rule mechanism F_i(S,C)→{PASS,FAIL,WARN,UNKNOWN}, the eight fitness-rule categories, and the substantial AFR catalog expansion (AFR-11..AFR-26, sixteen new rules) -- the most systematically numbered, concrete rule catalog in the reconstruction to date."
+  - "dimension-registry.md: record the recursive self-governance requirement on fitness rules themselves, the precise Fitness-result→Finding disposition rule (UNKNOWN never automatically Violation), the 'no single score' caution, and the Fitness-Rule-vs-Test-vs-Policy-vs-Decision taxonomy."
+  - "dimension-registry.md: flag Step 130 (0716) for its explicit reframing of the central question as end-to-end lifecycle graph traversability, and for its potential to finally address the three-way candidate-fundamental-unit reconciliation question."
+anchor_test:
+  anchor: "0714's AFR-01..AFR-10 catalog and its .claude/memory/ test; 0709's Constitutional self-protection concern; 0693's/0699's/0708's Unknown-preservation discipline; 0711's H(ContextPackage) proposal; the corpus's Observation≠Knowledge/Evidence≠Authority family; 0703's/0710's/0711's candidate fundamental-unit proposals (not engaged in this file)"
+  supports_dimension: "Delivers the formal fitness-rule mechanism and a substantial, systematically numbered AFR catalog expansion (AFR-11..AFR-26) -- the most concrete, directly actionable rule set in the reconstruction to date. Refines the .claude/memory/ pointer-layer test into a nuanced content-sensitive check. Delivers a genuinely important recursive self-governance requirement on fitness rules themselves, a precise fitness-result disposition rule preventing UNKNOWN-to-Violation misclassification, a precisely reasoned 'no single score' anti-metric-reductionism caution, and a valuable clarifying Fitness-Rule-vs-Test-vs-Policy-vs-Decision taxonomy. Crystallizes the central, appropriately calibrated thesis 'Narrative Architecture → Executable Architecture.' Closes with a well-motivated, major continuation into Step 130's promised end-to-end Assurance Graph"
+  refines_or_contradicts: "directly and substantially extends 0714's AFR-01..AFR-10 catalog and its .claude/memory/ test, 0709's Constitutional self-protection concern, 0693's/0699's/0708's Unknown-preservation discipline, and 0711's H(ContextPackage) proposal; no contradiction found; does not engage with or reconcile 0703's/0710's/0711's candidate fundamental-unit proposals (remains an open question); no new invariant-ID-scheme collision (AFR-11..AFR-26 is a direct, coherent numeric continuation of 0714's own AFR series, not a competing scheme)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§129.10-129.24's sixteen individually numbered, boxed AFR-11..AFR-26 rules, each stated as a single formal sentence with a worked illustrative example, is directly checkable evidence of the reconstruction's most systematically complete fitness-rule catalog to date."
+  - "§129.39-129.41's explicit recursive self-governance requirement ('what if someone changes AFR-19 to make a failing system pass?') is directly quotable evidence of a genuinely important, precisely reasoned safeguard against fitness-rule gaming, directly extending 0709's Constitutional self-protection concern into a new architectural layer."
+  - "§129.50's explicit 'no single score' statement ('a single failed authority invariant could be more important than twenty cosmetic successes') is directly quotable evidence of a precisely reasoned anti-metric-reductionism principle with direct, currently applicable relevance to any real dashboard/CI design."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 130's actual content (0716), once read, delivers a genuinely traversable, concretely specified Assurance Graph, or continues the established hypothetical/promise-then-defer pattern flagged by the 0694 calibrating meta-finding."
+  - "Whether Step 130 is where the reconstruction finally reconciles the three-way open candidate-fundamental-unit question (0703's TraceableKnowledgeEpisode, 0710's GovernedEngineeringFact, 0711's KnowledgeObject/Claim pairing), given its explicit ambition to unify every previously derived object into one graph."
+tier2_triggered: true
+tier2_reason: "Delivers the formal fitness-rule mechanism and a substantial, systematically numbered AFR catalog expansion (AFR-11..AFR-26, sixteen new rules) -- the most concrete, directly actionable rule set in the reconstruction to date. Refines the .claude/memory/ pointer-layer test into a nuanced content-sensitive check. Delivers a genuinely important recursive self-governance requirement on fitness rules themselves, a precise fitness-result disposition rule, a precisely reasoned 'no single score' caution, and a valuable Fitness-Rule-vs-Test-vs-Policy-vs-Decision taxonomy. Crystallizes 'Narrative Architecture → Executable Architecture.' Opens Step 130's major promised end-to-end Assurance Graph continuation."

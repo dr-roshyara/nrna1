@@ -1,0 +1,118 @@
+sequence: 484
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-184327_question-18-how-does-the-ideal-state-evolve-and-who-controls-it.md
+title: "LANDMARK: Ideal State Split Into Candidate vs. Approved, Governed by Authorized-Authority-Under-Norms (Not Absolute Knower Ownership) — Symmetric With Q17's Event-Sourcing (I_{t+1}=δ_I(I_t,r_t)); Question 19 Launched"
+date: "2026-08-26"
+bytes: 25722
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the Arjuna 'Dharma transcends personal duty' step is corrected to be represented as Proposition+Source+EpistemicStatus+Context, not an objective fact, preserving Q16's epistemic model"
+source_role: PRIMARY_RESEARCH
+canonical_source: 484
+importance: critical
+confidence: high
+about: >
+  Answers Question 18 (posed at 0483's close): how does the Ideal State evolve, and who controls it?
+
+  **Part A (initial answer)** proposes I_{t+1}=Revision(I_t,K_t,U_t,X_t,N_t) as a deterministic revision
+  function, six sources of change (knowledge-driven, understanding-driven, domain-driven, purpose-driven,
+  context-driven, Knower-driven revision), six revision operations (Add/Remove/Revise-Value/Revise-
+  Constraint/Revise-Purpose/Revise-Context), an "Ideal State Evolution Cycle" diagram embedding Zero/Lord/
+  Sārathi, a full system state S_t=(K_t,U_t,X_t,I_t,Q_t,C_t,N_t,Policy_t) with I_t⊂S_t, an Arjuna worked
+  example (I_0 through I_3), and the absolute claim "The Knower is the ultimate authority over the Ideal
+  State" / Knower→I_t.
+
+  **Part B (critical review)** delivers roughly fourteen corrections. **Corrects the set-theoretic error
+  I_t⊂S_t** -- I_t is a structured state/model, not a subset of the tuple S_t; corrected to I_t=π_I(S_t), a
+  projection. **Separates I^D (Ideal Domain State) from the Knowledge/Understanding pair**, renaming it D*
+  or X* to make explicit that "Knowledge Ideal ≠ Domain Desired State" (reconnecting to Q11).
+  **The single most important correction**: "The Knower ultimately owns the Ideal State" is **too absolute
+  for a serious DDD/governance model** -- the Knower may own intent and purpose, but the Ideal State may be
+  constrained by law, organizational policy, domain rules, contractual obligations, safety constraints,
+  architecture governance, and regulatory requirements ("the Knower cannot simply redefine a mandatory
+  regulatory requirement") -- formalized as **Knower Intent ≠ Ideal State Authority**. **Splits the Ideal
+  State into a Candidate Ideal State (hat-I_t) and an Approved Ideal State (I_t)**, mirroring Q17's
+  Recommendation/Authorization split: KnowledgeOS produces only candidates (hat-I_{t+1}); only
+  Authorize(hat-I_{t+1},Authority,Policy)->I_{t+1} produces the approved state -- "KnowledgeOS does not
+  mutate I_t." **Corrects the Revision function from deterministic to a power-set-valued
+  RevisionCandidates:S_t->P(I)** followed by a separate Authorize step, since "given the same inputs, there
+  is [not] one correct Ideal State" (worked example: a security-insufficiency finding admits multiple
+  legitimate responses -- increase requirement, change purpose, accept risk, change architecture, defer).
+  **Rejects the union equations (I^K_{t+1}=I^K_t∪NewRequiredDimensions(K_t), etc.) as general evolution
+  laws**, since they assume monotonic expansion while the same document also allows Remove/Revise
+  operations -- demoted to examples of one particular revision operation, replaced by a general
+  Revision(I_t,Delta_t,Authority_t) admitting Add|Remove|Modify|Relax|Strengthen|Replace. **Inserts a
+  Discovery->Proposal->Evaluation->Authorization->Revision pipeline**, explicitly distinguishing discovery
+  ("maybe Security_Status should become part of the Ideal State") from actual revision -- "that is not yet
+  a revision." **Introduces Ideal-State history and event-sourcing symmetric with Q17's Knowledge-State
+  model**: H^I_{t+1}=H^I_t‖r_t (append-only authorized revision events), I_t=Replay(I_0,H^I_t,Pi_I),
+  I_{t+1}=delta_I(I_t,r_t), giving Ideal-State provenance/auditability ("why did the system consider
+  Security_Status mandatory?" not merely "what is the current requirement?"). Corrects the unconditional
+  "I_t≠I_{t+1}" summary claim to the conditional
+  **RevisionCommitted_t=>I_{t+1}≠I_t; ¬RevisionCommitted_t=>I_{t+1}=I_t**. Corrects the Arjuna example's
+  "Dharma transcends personal duty" step: KnowledgeOS cannot formally encode this as an objective fact
+  merely because Sārathi/Lord/Krishna proposed it -- must be represented as
+  Proposition+Source+EpistemicStatus+Context, preserving Q16's epistemic model
+  (**Observation≠Interpretation≠Guidance≠Truth**). Delivers a strengthened Q18 definition:
+  I_t=(I^K_t,I^U_t,D*_t,C_t,P_t,Gamma_t) with Gamma_t as applicable governing constraints/norms;
+  CandidateRevision_t=f(I_t,K_t,U_t,X_t,Q_t,C_t,Gamma_t); I_{t+1}=Authorize(CandidateRevision_t,N_t,Gamma_t).
+  Closes with a revised architecture diagram (Zero->Lord->Candidate Ideal Revision->Sārathi->
+  Recommendation->Authority/Knower->Authorize->IdealStateRevision->I_{t+1}->Zero re-evaluates), eight
+  frozen invariants, a six-item mandatory/recommended correction list (three "remove," three "introduce"),
+  and states the clean symmetry with Q17 -- Knowledge: K_t--e_t-->K_{t+1}; Ideal: I_t--r_t-->I_{t+1} -- as
+  the foundation for **Question 19: what is the complete system state, and how does it evolve?**
+introduces:
+  - concept: "'Knower ultimately owns the Ideal State' explicitly rejected as too absolute; Ideal State authority is instead constrained by law/policy/domain-rules/contracts/safety/governance/regulation -- Knower Intent ≠ Ideal State Authority"
+  - concept: "Ideal State split into Candidate Ideal State (hat-I_t, produced by KnowledgeOS) and Approved Ideal State (I_t, produced only by Authorize(...)), mirroring Q17's Recommendation/Authorization split"
+  - concept: "RevisionCandidates:S_t->P(I) (power-set-valued, non-deterministic) replacing the deterministic Revision function, followed by a separate Authorize step"
+  - concept: "Discovery->Proposal->Evaluation->Authorization->Revision pipeline, explicitly distinguishing mere discovery of a candidate dimension from actual Ideal-State revision"
+  - concept: "Ideal-State event-sourcing introduced symmetric with Q17: H^I_{t+1}=H^I_t‖r_t, I_t=Replay(I_0,H^I_t,Π_I), I_{t+1}=δ_I(I_t,r_t) -- giving the Ideal State provenance and auditability"
+  - concept: "Union equations (I^K_{t+1}=I^K_t∪NewRequiredDimensions(K_t)) rejected as general evolution laws (assume monotonic expansion, contradicted by the document's own Remove/Revise operations); demoted to one example among Add|Remove|Modify|Relax|Strengthen|Replace"
+  - concept: "I_t⊂S_t corrected to I_t=π_I(S_t) (projection, not set inclusion, since S_t is a tuple)"
+  - concept: "I^D (Ideal Domain State) renamed D*/X* and explicitly separated from Ideal Knowledge/Understanding, reconnecting to Q11's Knowledge-Ideal≠Domain-Desired-State distinction"
+  - concept: "Unconditional 'I_t≠I_{t+1}' corrected to the conditional RevisionCommitted_t=>I_{t+1}≠I_t; ¬RevisionCommitted_t=>I_{t+1}=I_t"
+  - concept: "Arjuna's 'Dharma transcends personal duty' step corrected to Proposition+Source+EpistemicStatus+Context, not an objective fact, reinforcing Observation≠Interpretation≠Guidance≠Truth from Q16"
+  - concept: "Question 19 launched: what is the complete system state, and how does it evolve?"
+defines:
+  - concept: "Candidate Ideal State / Approved Ideal State"
+    definition: "hat-I_t = a proposed revision produced by KnowledgeOS (Zero/Lord/Sārathi); I_t = the approved Ideal State, produced only via Authorize(hat-I_{t+1},Authority,Policy)->I_{t+1}. KnowledgeOS never mutates I_t directly."
+  - concept: "Strengthened Ideal State definition (Q18 final)"
+    definition: "An authorized, purpose- and context-dependent normative model describing the knowledge, understanding, and/or domain conditions considered required, sufficient, desirable, or acceptable for a given purpose. It may be proposed for revision by KnowledgeOS, but it changes only through an authorized revision. Formally I_t=(I^K_t,I^U_t,D*_t,C_t,P_t,Γ_t), Γ_t = applicable governing constraints/norms."
+  - concept: "Ideal-State event-sourcing (δ_I)"
+    definition: "I_{t+1}=δ_I(I_t,r_t) where r_t is an authorized IdealStateRevisionAuthorized event, symmetric with Q17's K_{t+1}=δ_K(K_t,e_t); I_t=Replay(I_0,H^I_t,Π_I)"
+refines:
+  - concept: "0476's KnowledgeOS≠Ideal-Owner boundary and 0483's Ideal-State governance qualification (IdealState=KnowerIntent+ApplicableNorms+Constraints+Purpose)"
+    refinement: "Formalized fully into a Candidate/Approved split with an explicit Authorize step and a non-deterministic RevisionCandidates power-set function, directly answering the question those files anticipated but left open"
+  - concept: "0483's Guidance≠Authorization≠Execution≠Transition four-way separation"
+    refinement: "Extended by strict analogy to the Ideal State: Discovery/Proposal (KnowledgeOS) ≠ Authorization ≠ Revision, with the identical Recommendation≠Authorization invariant reused verbatim"
+  - concept: "0481's event-sourcing architecture for Knowledge State (H_{t+1}=H_t‖e_t, K_t=Replay(K_0,H_t,Π))"
+    refinement: "Mirrored for the Ideal State (H^I_{t+1}=H^I_t‖r_t, I_t=Replay(I_0,H^I_t,Π_I)), establishing the general pattern that every governed state in the architecture (Knowledge, Ideal) now carries its own append-only history and replay function"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Candidate Ideal State / Approved Ideal State split (mirroring Q17's Recommendation/Authorization) and the explicit rejection of absolute Knower ownership of the Ideal State (constrained by law/policy/norms/governance)."
+  - "dimension-registry.md: record Ideal-State event-sourcing (H^I_t, Replay(I_0,H^I_t,Π_I), δ_I(I_t,r_t)) as symmetric with Q17's Knowledge-State event-sourcing, and the RevisionCandidates power-set function replacing a deterministic Revision."
+  - "dimension-registry.md: record Question 19's launch (complete system state and its evolution)."
+anchor_test:
+  anchor: "0483's launch of Question 18 (authority over the Ideal State); 0476's KnowledgeOS≠Ideal-Owner boundary; 0481's Knowledge-State event-sourcing architecture; 0483's Guidance≠Authorization≠Execution≠Transition separation"
+  supports_dimension: "LANDMARK: fully answers Question 18 by splitting the Ideal State into Candidate (KnowledgeOS-proposed) and Approved (authority-authorized) states, rejecting absolute Knower ownership in favor of governance-constrained authority, replacing a deterministic Revision function with a non-deterministic RevisionCandidates power-set function plus a separate Authorize step, and introducing Ideal-State event-sourcing symmetric with Q17's Knowledge-State model -- launching Question 19 on the complete system state and its evolution"
+  refines_or_contradicts: "refines 0476 and 0483's governance qualifications of the Ideal State into a fully worked Candidate/Approved architecture; extends 0483's Guidance≠Authorization≠Execution≠Transition separation by strict analogy; mirrors 0481's event-sourcing architecture for a second governed state; no unresolved contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The Arjuna 'Dharma transcends personal duty' correction: KnowledgeOS cannot formally encode Krishna's guidance as objective fact merely because Sārathi/Lord proposed it; it must carry Proposition+Source+EpistemicStatus+Context, reinforcing the corpus's persistent discipline of never letting guidance silently become truth."
+undefined_concepts: []
+open_questions:
+  - "Question 19 (what is the complete system state, and how does it evolve?) -- launched here, not yet answered"
+  - "Whether the full system state S_t=(K_t,U_t,X_t,I_t,Q_t,C_t,N_t,Policy_t) will itself require an event-sourcing/history treatment analogous to K_t and I_t, given the pattern established across Q17 and Q18"
+  - "Whether the Candidate/Approved Ideal State split and the governance-qualified authority model (Γ_t) are consistently carried forward, given the arc's demonstrated pattern of corrections recurring across files"
+tier2_triggered: true
+tier2_reason: "Fully answers Question 18 by splitting the Ideal State into Candidate (KnowledgeOS-proposed) and Approved (authority-authorized) states, explicitly rejecting absolute Knower ownership in favor of governance-constrained authority (law/policy/norms/regulation), replacing a deterministic Revision function with a non-deterministic power-set RevisionCandidates function plus a separate Authorize step, rejecting monotonic-union evolution laws in favor of a general Add|Remove|Modify|Relax|Strengthen|Replace revision vocabulary, and introducing Ideal-State event-sourcing (history, replay, δ_I) fully symmetric with Q17's Knowledge-State model -- launching Question 19 on the complete system state and its evolution."

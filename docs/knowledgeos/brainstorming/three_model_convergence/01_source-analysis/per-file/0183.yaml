@@ -1,0 +1,143 @@
+sequence: "0183"
+path: docs/knowledgeos/brainstorming/kernel/20260824-005129-inquiry-and-question-layer-refinement.md
+title: "Inquiry/Question layer refinement: a ten-category question-dimension taxonomy, an Assertion-as-parent-of-Claim/Hypothesis/Proposal role-based model preserving identity across epistemic-state change, and a disciplined four-test (Non-collapse/Identity/Zero/Anti-reasoner) methodology -- explicitly declines to change the Kernel boundary yet"
+date: "2026-08-24"
+bytes: 13500
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0183"
+importance: high
+confidence: high
+about: >
+  Refines 0174's Question/Inquiry/Hypothesis primitives with a more disciplined treatment, explicitly
+  framing itself as lens-derived investigation rather than a Kernel-boundary change: "we should not change
+  the existing Kernel boundary yet." Central claim: KnowledgeOS cannot be modeled only around "knowledge
+  claims" -- an Inquiry/Question layer is needed that gives a claim its intended scope, but the file
+  explicitly separates what the lens discovers (distinctions to preserve) from what DDD decides (what
+  belongs inside the authoritative boundary). Expands 5W1H into a ten-category question-dimension taxonomy
+  (Identity: who/what/which/whose; Temporal: when/since-when/until-when/how-long/how-often; Spatial: where/
+  from-where/to-where/within-which-context; Causal: why/what-caused-it/what-enabled-it/what-prevented-it;
+  Procedural: how/by-what-process/by-which-mechanism/under-what-conditions; Quantitative: how-many/how-much/
+  how-large/how-frequent; Comparative: which-is-different/which-is-better/better-according-to-what;
+  Evidential: how-do-we-know/what-evidence/according-to-whom/what-would-falsify-it; Epistemic: is-it-known/
+  is-it-possible/is-it-uncertain/is-it-disputed/what-is-the-confidence; Scope: for-whom/for-which-system/
+  under-which-conditions/in-which-context), explicitly declining to design these as Kernel fields yet ("that
+  would be premature implementation"). Proposes an important moderating refinement to 0174's separate
+  Claim/Hypothesis objects: rather than a growing ontology of unrelated assertion types (Claim, Hypothesis,
+  Proposal, Fact, Belief, Theory...), model a single ASSERTION parent with Claim/Hypothesis/Proposal as
+  role/modality/epistemic-standing variants, NOT necessarily separate aggregates -- so "the failure was
+  caused by the database" can be one assertion whose epistemic status moves HYPOTHESIS -> SUPPORTED ->
+  ESTABLISHED -> REJECTED while the assertion's IDENTITY never changes, directly reinforcing the existing
+  "identity assigned, never derived" principle. Extends 0179's/0182's sense-vs-truth and reference-vs-
+  assertion distinctions into a five-way non-collapse family: REFERENCE != QUESTION != CLAIM != EVIDENCE !=
+  EPISTEMIC STATUS, called "one of the most important non-collapse families we've discovered." Applies
+  Zero to inquiry structure specifically: "answer completeness must never be confused with question
+  completeness" (an AI can give a coherent answer to the wrong question, or answer only some of the
+  relevant WHY/WHO/WHEN/WHERE/evidence/falsifiability/dispute/unknown sub-questions while appearing
+  complete) and "unanswered questions are not false claims" (no evidence found for "who authorized X" must
+  become UNRESOLVED, never "nobody authorized X"). Distinguishes object-level questions (What happened? ->
+  Claim) from meta-level questions (How do we know what happened? -> Evidence -> Justification), tying into
+  the corpus's existing justification-path/sufficiency work. Reframes the Kernel's anti-reasoner role
+  concretely: the Kernel preserves candidate/evidence/justification-path/authority/epistemic-state without
+  itself semantically evaluating "the evidence strongly suggests X." Produces an explicit DDD hypothesis
+  table classifying each candidate concept as probably-outside (Question, Question-type, semantic
+  interpretation, reasoning, natural-language expression, search/retrieval), potentially-inside (Claim
+  identity, Hypothesis status as epistemic state, Evidence reference, Authority reference), or already-
+  strongly-inside (Justification path, Epistemic state) -- explicitly provisional, not a decision. Proposes
+  a disciplined four-test methodology for the "Inquiry-Assertion-Evidence-Epistemic-State separation":
+  Test 1 Non-collapse (can Question/Claim/Evidence/Epistemic-State be distinguished without unnecessary
+  aggregates?), Test 2 Identity (does Hypothesis->Supported->Established->Superseded preserve the
+  underlying assertion's identity?), Test 3 Zero (can "question exists, answer absent" be represented
+  without manufacturing a negative claim?), Test 4 Anti-reasoner (can the Kernel preserve question/
+  candidate-answer/evidence/justification/epistemic-disposition without itself resolving semantic truth?).
+  Closes with an explicit whiteboard-quality candidate Zero-lens non-collapse principle: "A question creates
+  an epistemic demand; a claim proposes an answer; evidence supports or challenges the claim; justification
+  connects the evidence to the claim; epistemic state records the governed standing of the claim. None of
+  these should be silently collapsed into another" -- explicitly not a claim that the Kernel contains all
+  five, only that the distinction itself must be investigated by DDD.
+
+introduces:
+  - "A ten-category question-dimension taxonomy (Identity/Temporal/Spatial/Causal/Procedural/Quantitative/
+    Comparative/Evidential/Epistemic/Scope) substantially expanding 5W1H, explicitly not yet designed as
+    Kernel fields"
+  - "An Assertion-as-parent-of-Claim/Hypothesis/Proposal role-based model: a single assertion identity can
+    carry different epistemic-standing labels (HYPOTHESIS/SUPPORTED/ESTABLISHED/REJECTED) over time without
+    changing identity -- a moderating refinement of 0174's separate Claim/Hypothesis objects, avoiding an
+    unbounded ontology of assertion types (Fact/Belief/Theory/etc.)"
+  - "A five-way non-collapse family: REFERENCE != QUESTION != CLAIM != EVIDENCE != EPISTEMIC STATUS,
+    extending 0179's/0182's reference-vs-assertion and sense-vs-truth distinctions"
+  - "Two Zero-lens applications specific to inquiry structure: 'answer completeness != question
+    completeness' (a coherent answer may address the wrong or only a subset of relevant sub-questions) and
+    'unanswered questions are not false claims' (absence of evidence for a question must resolve to
+    UNRESOLVED, never a negative claim)"
+  - "Object-level vs. meta-level question distinction: 'What happened?' (object-level, produces a Claim)
+    vs. 'How do we know what happened?' (meta-level, produces Evidence->Justification), tying inquiry
+    structure to the corpus's existing justification-path/sufficiency work"
+  - "A disciplined four-test methodology (Non-collapse, Identity, Zero, Anti-reasoner) for validating the
+    Inquiry-Assertion-Evidence-Epistemic-State separation before any Kernel-boundary commitment"
+  - "An explicit provisional DDD hypothesis table classifying candidate concepts as probably-outside/
+    potentially-inside/already-strongly-inside the Kernel -- a disciplined, non-committal alternative to
+    the more liberal primitive-proliferation style of 0174/0176"
+
+defines: []
+
+refines:
+  - "Moderates 0174's separate Claim/Hypothesis/Assumption/Argument primitive proliferation with a single
+    Assertion-parent role-based model, directly addressing (without citing) the anti-reification concern
+    raised independently at 0178's Quinean ontic-commitment discipline"
+  - "Extends 0179's/0182's sense-vs-truth and reference-vs-assertion distinctions into a five-way non-
+    collapse family incorporating Question and Epistemic Status"
+  - "Extends the existing 'identity assigned, never derived' principle with a concrete worked example
+    (assertion identity surviving HYPOTHESIS->SUPPORTED->ESTABLISHED->REJECTED transitions)"
+
+contradicts: []
+
+repeats:
+  - {concept: "Identity assigned, never derived", canonical_source: "0087", novelty: low}
+  - {concept: "Kernel must not itself become the semantic reasoner (anti-reasoner boundary)", canonical_source: "0167", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- explicitly declines to change the Kernel boundary; frames its output as a lens-derived
+    investigation methodology (the four-test apparatus) awaiting DDD attack, not a finished proposal"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Refines/moderates 0174's Claim/Hypothesis primitive proliferation with a role-based Assertion model; explicitly declines to commit to a Kernel-boundary change."
+  alternative_minimal_kernel: "none -- explicitly provisional; produces a DDD hypothesis table with most items marked outside or undecided, not a competing structural proposal"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "This file's Assertion-as-parent-role-based model is a direct architectural answer to the anti-
+    reification tension flagged (but not resolved) at 0178 -- worth noting as the corpus's own internal
+    self-correction of the primitive-proliferation trend visible across 0173-0177, arriving independently
+    of an explicit citation back to 0178's Quinean discipline"
+  - "The explicit, disciplined refusal to commit to a Kernel-boundary change here contrasts with 0174's and
+    0176's more liberal versioned 'Kernel Candidate v0.2/v0.3' proposals -- both styles now coexist in the
+    corpus, worth tracking which one the eventual Kernel Boundary Definition act (still not reached per
+    0167/0168) ultimately follows"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the four-test (Non-collapse/Identity/Zero/Anti-reasoner) methodology is ever formally applied
+    to the Inquiry-Assertion-Evidence-Epistemic-State separation in a later file"
+  - "Whether this file's disciplined, non-committal DDD hypothesis table is reconciled with the more
+    liberal Kernel Candidate v0.2/v0.3 primitive lists from 0174/0176"
+
+tier2_triggered: true
+tier2_reason: >
+  Moderates the primitive-proliferation trend of 0173-0177 with a role-based Assertion model preserving
+  identity across epistemic-state transitions; introduces a disciplined four-test validation methodology;
+  explicitly declines to commit to a Kernel-boundary change, contrasting with 0174/0176's more liberal style.

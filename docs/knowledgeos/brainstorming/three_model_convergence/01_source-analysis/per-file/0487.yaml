@@ -1,0 +1,76 @@
+sequence: 487
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-184944_question-19-representing-and-measuring-discrepancy-filed-as-q21.md
+title: "Unreviewed Parallel Draft of Q19's Discrepancy Model — Regresses Two of 0485's Corrections (Zero=Δ, Conflict∈Δ_U); File Truncated Mid-Sentence"
+date: "2026-08-26"
+bytes: 9557
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "single-pass answer with no critical review, unlike the paired-review pattern of 0454-0486"
+source_role: PRIMARY_RESEARCH
+canonical_source: 487
+importance: minor
+confidence: medium
+about: >
+  A single-pass (no critical-review) formalization of the same Question 19 discrepancy-measurement problem
+  already answered and corrected at 0485, titled "How Do We Represent and Measure Discrepancy Between a
+  Current State and an Ideal State?" -- notably the exact title 0485's review recommended -- but filed
+  under the filename suffix "filed-as-q21," suggesting a numbering/sequencing artifact in the source corpus
+  rather than a genuine Question 21.
+
+  Defines Δ_t=(Δ_E,Δ_U,Δ_D) with the same three sub-vectors as 0485 (epistemic 7-component, understanding
+  5-component, domain 3-component). The Deficiency object here is
+  d=(Type,Target,Severity,Context,τ,Evidence,Provenance) -- a 7-tuple adding Evidence and Provenance fields
+  that 0485's corrected version lacks, but WITHOUT 0485's Condition field (the explicitly-violated Ideal
+  constraint). Adds a new Severity function Severity(d,P,C)=f(Risk,Impact,Urgency,Context) not present in
+  0485. Adds explicit component-specific Measure_i functions (e.g. Measure_Dim(Δ_D)=|𝒟_I\𝒟_K|/|𝒟_I|,
+  normalized ratios) and a weighted scalar M(Δ,P)=Σw_i(P)·Measure_i(Δ_i), reaffirming "the scalar measure is
+  derived, not fundamental."
+
+  **Regresses two of 0485's corrections**: (1) restates Z_t=Zero(K_t,I_t)→Δ_t alongside the earlier
+  (0485-corrected) Zero=Δ conflation implicitly present in the Lenses section, without the Zero≠Δ
+  clarification 0485's review established; (2) keeps Conflict as a component of the Understanding
+  discrepancy vector Δ_U=(Conceptual,Implication,Uncertainty,Conflict,Application), reproducing the exact
+  pre-correction vector 0485 explicitly revised to remove Conflict (since Conflict is Q16's first-class
+  relational object). Reproduces the identical Arjuna worked example from 0485 verbatim (Δ_0 through
+  Δ_3=∅), including the identical purpose/deficiency narrative.
+
+  The file is **truncated mid-sentence**: it ends at "The next question is:" with no question stated and no
+  further content, unlike every other file in this run which either states its next question explicitly or
+  is confirmed complete.
+introduces: []
+defines:
+  - concept: "Severity function (this file's variant)"
+    definition: "Severity(d,P,C)=f(Risk,Impact,Urgency,Context)∈[0,1], not present in 0485's version of the discrepancy model"
+  - concept: "Component-specific normalized Measure functions"
+    definition: "e.g. Measure_Dim(Δ_D)=|𝒟_I\\𝒟_K|/|𝒟_I|, Measure_Value, Measure_Σ, Measure_Rel as ratios in [0,1], feeding a derived weighted scalar M(Δ,P)=Σw_i(P)·Measure_i(Δ_i)"
+refines: []
+contradicts:
+  - concept: "0485's Zero≠Δ correction and removal of Conflict from Δ_U"
+    contradiction: "This file restates Zero's role ambiguously alongside Δ without 0485's explicit Zero≠Δ separation, and keeps Conflict as a component of the Understanding discrepancy vector Δ_U, directly reproducing the pre-correction form 0485's review explicitly rejected"
+repeats:
+  - "0485's Δ_t=(Δ_E,Δ_U,Δ_D) discrepancy structure, its three sub-vector definitions, and its Arjuna worked example (Δ_0 through Δ_3=∅) are reproduced near-verbatim here, without benefit of 0485's review-stage corrections"
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: record this file as a parallel, unreviewed draft that regresses two of 0485's corrections (Zero=Δ, Conflict∈Δ_U), evidence that the corpus's independent draft-generation process does not automatically inherit prior review-stage corrections across files."
+anchor_test:
+  anchor: "0485's Discrepancy (Δ) model and its Zero≠Δ / Conflict-removal corrections"
+  supports_dimension: "Minor: a single-pass, unreviewed restatement of 0485's Question 19 discrepancy model that regresses two of 0485's own corrections (Zero=Δ conflation, Conflict retained in Δ_U) and is truncated mid-sentence before naming its next question -- documented as evidence that corrections established in one file's review pass are not automatically carried into a parallel or near-simultaneous draft of the same question"
+  refines_or_contradicts: "contradicts 0485's Zero≠Δ and Conflict-removal corrections by reproducing the pre-correction forms; otherwise repeats 0485's discrepancy structure and worked example without material advance"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "File ends mid-sentence at 'The next question is:' with no question named and no further content -- the corpus's clearest instance yet of an incomplete/truncated file within the primary research sequence."
+undefined_concepts: []
+open_questions:
+  - "What question this file intended to pose next (truncated before being stated)"
+  - "Whether this file represents an earlier, superseded draft that predates 0485's review, or an independently-generated parallel model never reconciled against it"
+tier2_triggered: false
+tier2_reason: "Not a landmark: a single-pass, unreviewed restatement of 0485's already-corrected discrepancy model that regresses two of its corrections (Zero=Δ, Conflict∈Δ_U) and is truncated mid-sentence before naming its next question. Recorded as a minor corpus-integrity/duplication finding rather than new theoretical content."

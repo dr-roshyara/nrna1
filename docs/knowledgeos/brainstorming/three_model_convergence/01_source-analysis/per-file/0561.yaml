@@ -1,0 +1,236 @@
+sequence: 561
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-160659_step-018-rules-inference-logic-constraints-and-the-reasoning-engine.md
+title: "LANDMARK: Nine Typed Rule Kinds Formalized (Rule≠Inference≠Truth≠Policy); 'KnowledgeOS Should Not Mandate One Universal Logic' (Fourth/Fifth Confirmed 'No Universal Formula' Instance, Explicitly Stated); Paraconsistency Explicitly Adopted Against the Principle of Explosion; Non-Monotonic Reasoning as a 'Fundamental' KnowledgeOS Property; Four-Valued Reasoning Results (Derived/Refuted/Undetermined/Inapplicable); Proof≠Explanation; Fourteen Canonical R1-R14 Invariants; Opens Step 19 (Authority, Trust, Evidence Weighting, Source Reliability, and Knowledge Commitment)"
+date: "2026-08-27"
+bytes: 24227
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 0560's closing 'Step 18 -- Rules, Inference, Logic, Constraints, and the KnowledgeOS Reasoning Engine'"
+source_role: PRIMARY_RESEARCH
+canonical_source: 561
+importance: critical
+confidence: high
+about: >
+  Directly executes 0560's closing "Step 18," opening with the precise governing question: "When
+  KnowledgeOS derives something, what exactly gives it the right to derive it?" Observes that expressions
+  like `P⇒Q` or `K,𝒪⊢P` used throughout the corpus hide an important distinction: not every rule producing
+  a conclusion is the same kind of rule. Delivers the file's governing principle:
+  **`Rule≠Inference≠Truth≠Policy`**.
+
+  **Delivers the file's foundational example**: a single arrow `A⇒B` could denote logical implication,
+  mathematical theorem, business rule, architectural constraint, causal claim, statistical relationship,
+  heuristic, or LLM-generated hypothesis -- "these are fundamentally different," concluding
+  `KnowledgeOS needs typed inference semantics`. **Formalizes Rule as a structured object**
+  `R=(RuleID,Kind,Premises,Conclusion,Semantics,Context,Authority,Validity,Version,Provenance)`, with
+  `Kind` identified as the single most important addition.
+
+  **Delivers the file's central formal deliverable -- nine named rule kinds**
+  `ℛ={Logical,Mathematical,Semantic,Normative,Causal,Statistical,Constraint,Heuristic,Procedural}`, each
+  separately worked through: Logical (ModusPonens, validity depends on the logical system); Mathematical
+  (`Γ⊢_ℳ P`, formal mathematical semantics distinct from a business rule); Semantic (`K,𝒪⊢Rex∈Animal`,
+  directly reusing 0560's ontology theory); Normative (`NormativeRule≠DescriptiveRule` -- a rule about what
+  IS true in nature versus what MUST be done, "essential for Governance"); Constraint (describes an
+  admissible state, e.g. `ProductionService⇒HasOwner`, an `InvalidState` marker rather than a causal
+  explanation); Causal (`do(FirewallChange)→ConnectivityFailure`, `CausalRule≠LogicalRule`, cannot be fed
+  into an ordinary theorem prover, directly reusing 0556's causal theory); Statistical
+  (`P(Failure|ConfigA)=0.8` does NOT automatically yield `ConfigA⇒Failure` -- **`Probability≠Logical
+  Implication`**, flagged as "one of the most important safeguards against bad AI reasoning"); Heuristic
+  (`Heuristic inference produces candidates, not guaranteed conclusions`); Procedural
+  (`Procedure≠Inference`, a deployment checklist is operational, not a logical derivation rule).
+
+  **Formalizes the inference operation separately from the rule**: `I:(K,R)→C`, with the crucial
+  distinction `Rule is the specification; Inference is the application`. **Formalizes an auditable
+  inference record** `J=(InferenceID,Premises,Rule,Conclusion,Context,Model,Timestamp,Provenance)`, worked
+  through a concrete Nexus-version-migration-assessment example. **Delivers `DerivedKnowledge≠
+  DirectObservation`**, and formalizes derived epistemic state as NOT automatically inheriting source
+  epistemic state: `Support(DerivedConclusion) depends on Support(Premises)+Trustworthiness(ApplicableRule)`.
+
+  **Delivers Rule applicability as a precondition to inference**: a rule may be valid but not applicable in
+  a given context (`Applicable(R,K,Ctx,t)`), and generalizes inference itself as context-and-time-dependent
+  (`Inference=f(K,R,Context,Time,Policy)`, not merely `f(K,R)`) -- explicitly connected back to Step 17's
+  semantic model. **Delivers Rule precedence and Rule conflict**: worked through a
+  ProductionChange-requires-approval vs. EmergencyChange-allows-immediate-execution example, formalized as
+  `RuleConflict(R_1,R_2,Ctx,t)` following the same Detected→Investigated→Resolved/Unresolvable lifecycle as
+  the corpus's established conflict model. **Delivers the crucial governance-separating result
+  `Priority≠Truth`**: a higher-priority rule under a governance policy is not thereby "more true," and
+  **Normative conflict** is reframed as "a policy conflict requiring contextual resolution" rather than a
+  logical contradiction, with any override itself required to be explicitly defined.
+
+  **Formalizes three-valued rule evaluation** `Eval(P,K)∈{True,False,Unknown}` for conditional rule
+  premises, and delivers **`Unknown premise does not become True`** -- "essential for open-world
+  reasoning," worked through explicit `T∧U=U`, `F∧U=F`, `T∨U=T`, `F∨U=U` truth-table semantics for a
+  formal three-valued logic `𝕋_3={T,F,U}`.
+
+  **Delivers the file's second major architectural principle -- `KnowledgeOS should not mandate one
+  universal logic`**: three-valued logic alone is insufficient everywhere; some domains require
+  four-valued, paraconsistent, probabilistic, temporal, modal, fuzzy, or default-reasoning logics. Instead
+  KnowledgeOS needs "a reasoning framework capable of hosting multiple inference semantics" -- explicitly
+  and directly paralleling the corpus's recurring "no universal formula" pattern already confirmed at
+  0545/0546 (Evidence), 0554 (Inference/Derivation), 0556 (Causality), and arguably 0560 (ontology
+  formalism deferral); this file states the principle explicitly for logic/reasoning itself, constituting a
+  clean additional confirmed instance.
+
+  **Delivers the file's central theoretical commitment -- explicit adoption of paraconsistent reasoning**:
+  worked through the recurring `Nexus=3.69` vs `Nexus=3.72` example, delivering the formal rejection of the
+  classical principle of explosion (`A,¬A⊢B`, "which would be disastrous in an enterprise knowledge
+  system") and the resulting commitment **`KnowledgeOS should support contradiction-tolerant reasoning`**.
+  Delivers the central paraconsistency framing: **`Contradiction is a state to manage, not necessarily a
+  system failure`** -- contradictory evidence is itself knowledge. Delivers `Unknown≠Conflict`: not-knowing
+  whether A is genuinely distinct from holding incompatible support for A and ¬A.
+
+  **Formalizes Inference closure** for finite monotonic rule sets: `K_0=K`, `K_{i+1}=K_i∪Infer(K_i,R)`,
+  reaching a fixed point `K*=Cl_R(K)` -- "computationally useful." **Delivers the file's third major
+  theoretical commitment -- KnowledgeOS is explicitly declared fundamentally non-monotonic**: ordinary
+  monotonic reasoning (`K⊢P` remains valid as knowledge grows) is explicitly rejected as sufficient;
+  KnowledgeOS requires defeasible conclusions `K⊢_def P` that a later state may no longer support
+  (`K'⊬_def P`), worked through a HealthyHost/AvailableService/MaintenanceWindow example, and explicitly
+  connected back to the corpus's temporal and revision (0550/0558) machinery -- **"a major theoretical
+  property."**
+
+  **Delivers Rule provenance requirements** (a worked ProductionChangeRequiresApproval rule citing its
+  governing framework, authority, effective date, and version) and **`LLMGeneratedRule≠AuthorizedRule`**:
+  an LLM-proposed rule becomes only a `CandidateRule`, never automatically a `GovernedRule`. Delivers a full
+  Rule lifecycle (Candidate→Reviewed→Validated→Approved→Active→Superseded→Retired), explicitly analogous to
+  the corpus's established assertion and decision lifecycles. Delivers Rule versioning and
+  **Reproducible inference**: a historical conclusion must be reconstructible from
+  `Premises+RuleVersion+SemanticModelVersion+PolicyVersion+Context+TemporalScope` -- directly extending
+  0558's and 0560's reproducibility formalizations into the reasoning layer.
+
+  **Delivers the file's central architectural deliverable -- the Reasoning Engine architecture**: NOT one
+  giant "AI Reasoner," but `ReasoningEngine=InferenceOrchestrator+SpecializedReasoners`, with a proposed
+  set of specialized reasoners (Logical, Semantic, Temporal, Constraint, Causal, Statistical, Decision).
+  **Delivers an explicit compiler analogy**: `NaturalLanguage→SemanticRepresentation→FormalRepresentation
+  →Reasoner→DerivedKnowledge` -- "much safer than asking an LLM to perform the entire reasoning chain in
+  one opaque step."
+
+  **Formalizes Proof objects** `π=(P_1,...,P_n,R,C)` with `Verify(π)=True/False`, and delivers
+  **`Proof≠Explanation`**: a proof is formal justification within a formal system; an explanation is a
+  human-readable description, explicitly generated FROM the proof object by the LLM -- "an excellent
+  architectural boundary" -- worked through a concrete ProductionChange(Nexus)⇒RequiresApproval(Nexus)
+  proof-then-explanation example.
+
+  **Delivers a consolidated KnowledgeOS reasoning pipeline** (Input→Extraction→Semantic Normalization
+  →Assertion/Rule Candidate→Evidence & Authority Assessment→Rule Activation→Inference→Proof/Justification
+  →Derived Assertion→Epistemic Assessment→Knowledge State). **Delivers a precise Zero/Lord/Sārathi
+  reasoning-regime differentiation**: Zero uses semantic/constraint/temporal/epistemic rules; Lord uses
+  causal models, heuristics, statistical models, and domain rules; Sārathi uses decision rules, policies,
+  utility models, constraints, and authority -- "the three lenses are not three identical AI agents. They
+  operate over different reasoning regimes." Delivers a visualized reasoning hierarchy (Reasoning
+  Orchestrator dispatching to Logical/Semantic/Temporal/Causal/Constraint/Statistical reasoners, feeding
+  Derived Knowledge, consumed by Decision reasoning).
+
+  **Delivers a computability reassessment**: finite explicit rule systems (propositional rules, finite
+  ontology inference, constraint checking, temporal interval reasoning, graph traversal, deterministic
+  calculations) are computable, but some reasoning problems are computationally expensive, undecidable,
+  probabilistic, or dependent on incomplete information -- therefore KnowledgeOS must not promise
+  `Universal reasoning`, only "formally specified reasoning regimes with explicit computational
+  boundaries."
+
+  **Delivers the file's most important single property, in its own words**: the kernel must know when it
+  cannot conclude -- `NotDerivable` must be distinct from `False`, and `Derivable` does not mean
+  `TrueInReality`, only that "the conclusion follows under the declared reasoning system." Formalizes
+  **four reasoning result states** `{Derived,Refuted,Undetermined,Inapplicable}`, explicitly framed as
+  substantially better than binary true/false for an open-world enterprise system, and a formal reasoning
+  result object `J=(Conclusion,Status,Rule,Premises,Proof,Context,TemporalScope,ModelVersion,
+  Confidence/Support,Provenance)`.
+
+  **Delivers the file's central formal deliverable -- fourteen canonical Step-18 invariants (R1-R14)**:
+  Rule≠Inference; Inference≠Truth; different rule kinds require different semantics; LLMGeneratedRule≠
+  GovernedRule; DerivedKnowledge≠DirectObservation; every consequential inference is traceable; Unknown≠
+  False; Undetermined≠Refuted; SemanticInference≠CausalInference; StatisticalAssociation≠
+  LogicalImplication; contradiction does not imply arbitrary conclusions; KnowledgeOS supports
+  non-monotonic revision; RuleVersion is part of derivation provenance; a conclusion is valid only
+  relative to its declared reasoning semantics.
+
+  **Delivers Step 18's compact mathematical core** unifying rule sets, reasoning semantics, monotonic
+  closure, three-valued evaluation, proof derivations, and historical reproducibility into one formal
+  reasoning layer. **Delivers Step 18's verdict**: STRUCTURALLY RESOLVED, with the important explicit
+  architectural decision **"KnowledgeOS should not be one universal logic engine"** -- it should be "a
+  reasoning orchestration architecture" invoking different formal reasoning systems by question type,
+  described as "mathematically safer and architecturally cleaner."
+
+  **Delivers a fifteen-stage consolidated "where we stand" pipeline** (Source→Observation→Evidence
+  →Assertion→EpistemicState→KnowledgeState→SemanticModel→[KnowledgeState+Rules]→Inference→DerivedKnowledge
+  →[Knowledge+IdealState]→Discrepancy→CandidateActions→Decision→Action→Event→Observation→NewKnowledge),
+  cross-cut throughout by `Time+Identity+Provenance+Context+Governance`.
+
+  **Closes by identifying the next unresolved foundation**: the corpus has repeatedly treated `K_t` as one
+  coherent knowledge state, but KnowledgeOS will actually ingest contradictory documents, databases,
+  Internet sources, human instructions, constitutions, ADRs, textbooks, LLM outputs, observations, and
+  derived conclusions -- each with different authority, reliability, scope, and epistemic status. Poses the
+  governing question of how one governed Knowledge State is constructed from many heterogeneous, possibly
+  contradictory sources "without simply voting, averaging, or blindly trusting a source." **Opens "Step 19
+  — Authority, Trust, Evidence Weighting, Source Reliability, and Knowledge Commitment,"** explicitly
+  framed as where "our earlier Evidence work becomes connected to the complete system," and stated to be
+  "the next major piece needed before we can claim that the KnowledgeOS mathematical model is truly
+  closed" — a significant signal that Step 19 may be one of the final foundational steps.
+introduces:
+  - concept: "Rule≠Inference≠Truth≠Policy — the governing four-way separation of Step 18"
+  - concept: "Nine formally distinct rule kinds (Logical, Mathematical, Semantic, Normative, Causal, Statistical, Constraint, Heuristic, Procedural), each requiring different inference semantics and none interchangeable with another"
+  - concept: "Probability≠Logical Implication, explicitly flagged as one of the most important safeguards against bad AI reasoning — statistical association must never automatically become a logical rule"
+  - concept: "'KnowledgeOS should not mandate one universal logic' — an explicit, direct statement of the corpus's recurring 'no universal formula, typed pluggable methods' architectural pattern, applied specifically to reasoning/logic itself"
+  - concept: "Explicit adoption of paraconsistent, contradiction-tolerant reasoning as a KnowledgeOS design commitment, formally rejecting the classical principle of explosion — contradiction is a state to manage, not a system failure"
+  - concept: "KnowledgeOS explicitly declared fundamentally non-monotonic — defeasible derived conclusions that later knowledge can invalidate, contrasted directly with classical monotonic logical derivation"
+  - concept: "Four-valued reasoning result states {Derived, Refuted, Undetermined, Inapplicable}, explicitly presented as superior to binary true/false for an open-world enterprise reasoning system"
+  - concept: "The kernel must know when it cannot conclude — NotDerivable≠False and Derivable≠TrueInReality, framed as perhaps the single most important property of the reasoning engine"
+  - concept: "Proof≠Explanation — a formal proof object and a human-readable LLM-generated explanation of it are architecturally distinct artifacts, with the explanation generated FROM the proof rather than replacing it"
+  - concept: "A reasoning engine architecture explicitly rejecting one monolithic 'AI Reasoner' in favor of an InferenceOrchestrator dispatching to specialized reasoners (Logical/Semantic/Temporal/Constraint/Causal/Statistical/Decision)"
+  - concept: "A precise differentiation of the reasoning regimes used by Zero, Lord, and Sārathi respectively, confirming they 'are not three identical AI agents'"
+  - concept: "Fourteen canonical Step-18 invariants (R1-R14) governing rules, inference, logic, and constraints"
+  - concept: "'Step 19 — Authority, Trust, Evidence Weighting, Source Reliability, and Knowledge Commitment' as the corpus's next named research phase, explicitly framed as the piece needed before the KnowledgeOS mathematical model can be considered 'truly closed'"
+defines:
+  - concept: "Rule"
+    definition: "R=(RuleID,Kind,Premises,Conclusion,Semantics,Context,Authority,Validity,Version,Provenance) — with Kind (one of nine named categories) identified as the single most important field"
+  - concept: "Inference (operation, distinct from Rule)"
+    definition: "I:(K,R)→C — the Rule is the specification; Inference is its application against knowledge K"
+  - concept: "Inference record"
+    definition: "J=(InferenceID,Premises,Rule,Conclusion,Context,Model,Timestamp,Provenance) — an auditable derivation record produced by every non-trivial inference"
+  - concept: "Proof object"
+    definition: "π=(P_1,...,P_n,R,C) — a formal justification that premises P_1..P_n under rule R produce conclusion C, admitting a Verify(π)=True/False check"
+  - concept: "Reasoning Engine (architecture)"
+    definition: "ReasoningEngine=InferenceOrchestrator+SpecializedReasoners — an orchestrator dispatching to distinct formal reasoning systems (logical, semantic, temporal, constraint, causal, statistical, decision) by question type, rather than one universal AI reasoner"
+refines:
+  - concept: "The corpus's original assertion-level expressions of implication (P⇒Q, K,𝒪⊢P) used loosely throughout the entire prior arc"
+    refinement: "Made explicit and typed: every arrow must declare which of nine rule kinds it represents, since logical, mathematical, semantic, normative, causal, statistical, heuristic, and procedural rules require fundamentally different inference semantics"
+  - concept: "0560's semantic inference (K,𝒪⊢P, 'inference is model-relative')"
+    refinement: "Incorporated as one of nine named rule kinds (Semantic) within the broader typed-rule taxonomy, alongside Causal (from 0556) and the newly introduced Logical/Mathematical/Normative/Constraint/Statistical/Heuristic/Procedural kinds"
+  - concept: "The corpus's established conflict model (most recently reparameterized by semantic model at 0560)"
+    refinement: "Extended to Rule conflict (RuleConflict(R_1,R_2,Ctx,t), following the same Detected→Investigated→Resolved/Unresolvable lifecycle) and Normative conflict, explicitly reframed as policy conflict requiring contextual resolution rather than logical contradiction"
+  - concept: "0550's paraconsistent belief-revision theory and 0554/0556's competing-model tolerance"
+    refinement: "Consolidated into an explicit general architectural commitment to contradiction-tolerant (paraconsistent) reasoning across the entire KnowledgeOS reasoning layer, formally rejecting the principle of explosion"
+  - concept: "The recurring 'no universal formula, typed pluggable methods' pattern (confirmed at 0545/0546, 0554, 0556, arguably 0560)"
+    refinement: "Stated explicitly and directly for logic/reasoning itself: 'KnowledgeOS should not mandate one universal logic' — a clean additional confirmed instance of the pattern, this time named without qualification"
+  - concept: "0558's and 0560's reproducibility formalizations (KnowledgeStateVersion+PolicyVersion+OntologyVersion+..., SemanticModelVersion)"
+    refinement: "Extended into the reasoning layer: a historical conclusion must be reconstructible from Premises+RuleVersion+SemanticModelVersion+PolicyVersion+Context+TemporalScope"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 19 — Authority, Trust, Evidence Weighting, Source Reliability, and Knowledge Commitment' is executed as its own dedicated corpus file, and whether it is indeed treated as the step that closes the KnowledgeOS mathematical model, as this file's own closing framing predicts"
+  - "Whether the explicit 'KnowledgeOS should not mandate one universal logic' statement should be counted alongside 0545/0546, 0554, and 0556 as a clean, unambiguous instance of the corpus's recurring 'no universal formula' architectural pattern in the eventual canonical-theory reconciliation pass"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Rule≠Inference≠Truth≠Policy, the nine named rule kinds, Probability≠Logical Implication, and 'KnowledgeOS should not mandate one universal logic' as an explicit confirmed instance of the corpus's recurring architectural pattern."
+  - "dimension-registry.md: record explicit adoption of paraconsistent/contradiction-tolerant reasoning against the principle of explosion, KnowledgeOS declared fundamentally non-monotonic, the four-valued reasoning result states, and 'the kernel must know when it cannot conclude' (NotDerivable≠False)."
+  - "dimension-registry.md: record Proof≠Explanation, the InferenceOrchestrator+SpecializedReasoners architecture, the Zero/Lord/Sārathi reasoning-regime differentiation, the fourteen R1-R14 invariants, Step 18's verdict, and 'Step 19 — Authority, Trust, Evidence Weighting, Source Reliability, and Knowledge Commitment' as the next named research phase, explicitly framed as closing the KnowledgeOS mathematical model."
+anchor_test:
+  anchor: "0560's Step-18 directive; 0556's causal-rule theory; 0560's semantic inference and model-relativity; the corpus's established conflict model; 0550's paraconsistent belief-revision theory; the recurring 'no universal formula' pattern (0545/0546, 0554, 0556)"
+  supports_dimension: "LANDMARK delivering the corpus's first fully typed taxonomy of rules and inference, cleanly separating nine distinct rule kinds that had previously been used loosely and interchangeably throughout the entire 40-file research arc. Delivers an explicit, unambiguous statement of the corpus's recurring 'no universal formula' architectural pattern applied directly to logic and reasoning, a formal general commitment to paraconsistent contradiction-tolerant reasoning against the classical principle of explosion, and an explicit declaration that KnowledgeOS is fundamentally non-monotonic. Delivers the crucial open-world reasoning discipline that the kernel must distinguish inability to derive from falsity, a clean Proof/Explanation architectural boundary, and a reasoning-engine architecture explicitly rejecting a monolithic AI reasoner in favor of orchestrated specialized reasoners paralleling the Zero/Lord/Sārathi differentiation. Closes with fourteen governing invariants and explicitly signals that the next step (Authority/Trust/Evidence Weighting) is the piece needed to consider the KnowledgeOS mathematical model 'truly closed'"
+  refines_or_contradicts: "directly and fully executes 0560's Step-18 directive; incorporates 0556's causal-rule and 0560's semantic-inference theory as named rule kinds within a broader typed taxonomy; extends the corpus's conflict model to rule conflict and normative conflict; consolidates 0550's paraconsistency and 0554/0556's competing-model tolerance into one explicit general architectural commitment; extends 0558's and 0560's reproducibility formalizations into the reasoning layer; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked ProductionChange(Nexus)⇒RequiresApproval(Nexus) proof-then-explanation example is a directly checkable, concrete demonstration that formal proof and human-readable explanation are genuinely distinct artifacts, with the explanation generatable purely from the proof object — a falsifiable, inspectable architectural claim rather than an abstract assertion."
+  - "The four-valued reasoning result states {Derived, Refuted, Undetermined, Inapplicable}, contrasted explicitly and directly against binary true/false, are a checkable formal improvement whose necessity is demonstrated by the file's own worked examples (a rule that does not apply to a given change type yields Inapplicable, not False)."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 19 — Authority, Trust, Evidence Weighting, Source Reliability, and Knowledge Commitment' is executed as its own dedicated corpus file, and whether it does indeed close the KnowledgeOS mathematical model as this file's closing framing predicts"
+  - "Whether the explicit 'no universal logic' statement here should be formally counted as a fourth or fifth instance of the corpus's recurring 'no universal formula' pattern in the eventual canonical-theory reconciliation pass, alongside 0545/0546, 0554, 0556, and arguably 0560"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first fully typed rule/inference taxonomy (nine distinct rule kinds), an explicit and unambiguous statement of the recurring 'no universal formula' architectural pattern applied to logic and reasoning themselves, a formal general commitment to paraconsistent contradiction-tolerant reasoning against the principle of explosion, and an explicit declaration that KnowledgeOS is fundamentally non-monotonic. Delivers the crucial open-world discipline distinguishing inability to derive from falsity (NotDerivable≠False, four-valued reasoning results), a clean Proof≠Explanation architectural boundary with the LLM's role precisely scoped to generating explanations from formal proofs, and a reasoning-engine architecture of orchestrated specialized reasoners rather than one monolithic AI reasoner, explicitly paralleling and refining the Zero/Lord/Sārathi differentiation. Closes with fourteen canonical R1-R14 invariants and a significant closing signal: Step 19 (Authority, Trust, Evidence Weighting, Source Reliability, Knowledge Commitment) is explicitly framed as the piece needed before the corpus's own authors would consider the KnowledgeOS mathematical model 'truly closed.'"

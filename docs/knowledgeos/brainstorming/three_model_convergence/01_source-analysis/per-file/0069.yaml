@@ -1,0 +1,62 @@
+sequence: 69
+path: docs/knowledgeos/brainstorming/20260821-142748-event-driven-domain-loop-positioning.md
+title: Event-Driven Domain Loop Positioning for KnowledgeOS/EKS
+date: 2026-08-21
+bytes: 17186
+
+model:
+  primary: c1
+  secondary: [ddd, governance, evidence]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: medium
+confidence: high
+
+about: >
+  Refines EKS's definition (0049) with an event-driven loop, adds an Assurance bounded context
+  (mechanical vs judgment split), and states a "central KnowledgeOS formula": Knowledge State +
+  Evidence + Domain Events + Assurance + Governance = Organizational Memory.
+
+introduces:
+  - assurance_bounded_context_mechanical_vs_judgment
+  - central_knowledgeos_formula   # Knowledge State + Evidence + Events + Assurance + Governance = Organizational Memory
+  - knowledge_state_named_as_formula_component   # WATCH ITEM, not a bridge - see notes
+
+defines: []
+refines:
+  - concept: eks_definition
+    canonical_source: 49
+    change: "adds event-driven loop framing: domain changes produce knowledge facts; bounded contexts react without sharing implementation"
+
+contradicts:
+  - "internal: this file's 'Kernel' (parent/root of Knowledge Product/Evidence/Governance) is structurally inconsistent with 0063's 'Kernel' (a sibling module) - same sub-thread, 8 days apart"
+
+repeats: []
+
+bridge_candidates:
+  - "'Knowledge State' named as an explicit additive formula component (Knowledge State + Evidence +
+     Events + Assurance + Governance = Organizational Memory) - the corpus's closest LEXICAL approach
+     yet to a K_t-shaped construct. NOT flagged as a bridge on lexical grounds alone (MD-012). Watch
+     item: if C2 material later defines K_t and resembles this formula, check for structural
+     inheritance, not shared wording."
+
+mathematical_content: false
+gita_content: false
+kernel_content: true   # fourth positional sense; term-collision tracking
+
+key_evidence:
+  - "'C2 architecture' in §13 is a DOCUMENT-LOCAL versioning label, NOT this research's epistemic_knowledgeos (C2) classification - explicitly disambiguated"
+  - "'Knowledge State + Evidence + Domain Events + Assurance + Governance = Organizational Memory'"
+
+undefined_concepts: [knowledge, knowledge_state]
+open_questions: []
+
+tier2_triggered: true
+tier2_reason: >
+  Three findings: (1) a document-local "C2" label that must not be confused with this research's
+  taxonomy value of the same name; (2) a fourth, internally-inconsistent positional sense of
+  "Kernel" (parent/root here vs sibling module at 0063, same sub-thread); (3) the corpus's first
+  explicit naming of "Knowledge State" as an additive formula component - recorded as a watch item
+  for any future K_t-shaped C2 construct, not asserted as a bridge.

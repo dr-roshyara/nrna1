@@ -1,0 +1,228 @@
+sequence: 895
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-195450_step_266_computability-audit.md
+title: "Step 266 -- Computability Audit: ARGUABLY THE MOST VALUABLE SINGLE FILE OF THE ENTIRE MATHEMATICAL-KERNEL SUB-ARC -- Delivers a Rigorous Computable≠Implementable-in-Principle Criterion, a Systematic Per-Construct Computability Audit of Every Major KnowledgeOS Object (Entity/Dimension/Value/Proposition/Assertion/Status/Equality/Identity/Provenance/Replay/Policy/Evidence/Statistics/Uncertainty), the 23-Row 'Hidden Human Judgment Map,' the Three-Layer Architecture (Formal-Deterministic-Core / External-Parametric-Semantics / Normative-Assessment-Boundary), the Candidate Computability Boundary Principle, a Five-Label Replacement Vocabulary for the Vague Word 'Valid,' and the Headline Finding: 'KnowledgeOS Can Be Computationally Rigorous Without Claiming That All Knowledge Judgment Is Computable' -- Delivers 'Replay≠Reversal' and 'TransitionValidity≠StatusAssignment' as Concrete New Invariants, and Explicitly Self-Classifies Its Own Claims as DERIVED/VERIFIED-BY-FORMAL-ANALYSIS, NOT EXECUTED, NOT IMPLEMENTED"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: c1
+  secondary: m1
+  secondary_note: "genuine computability-theory/decidability analysis (effective procedures, decision predicates, precondition/postcondition computability) combined with the DDD/kernel-architecture synthesis"
+source_role: PRIMARY_RESEARCH
+canonical_source: 895
+importance: critical
+confidence: high
+about: >
+  Opens reframing the entire research programme's central question: not whether a definition is
+  "conceptually attractive" but boxed **`Is the definition an effective object that can actually be
+  computed, decided, persisted, replayed and implemented without hidden human judgment?`** -- explicitly
+  a **closure audit, not another conceptual expansion**, and explicitly forbidding "calling something
+  computable merely because a program could approximate it."
+
+  **§266.1 delivers the file's foundational criterion**: boxed **`Computable≠Implementable in principle`**;
+  boxed **`Computable=effective, typed, terminating procedure with defined semantics`** -- requiring
+  defined inputs/types/termination/determinism for decision functions, and defined domain/codomain for
+  transformations.
+
+  **§266.2 delivers a three-class taxonomy** partitioning the entire current theory: Class A (directly
+  computable -- structural parsing, identifier lookup, finite-registry membership, hashing, canonical
+  serialization, fixed-input deterministic transformation); Class B (computable only after semantic
+  parameters are supplied -- e.g. `ValidOperation(D,o)` needing the scale/type registry, `Resolve(π)`
+  needing the provenance registry); Class C (not computable as currently defined -- `Authoritative(x)`,
+  `Relevant(x)`, `Correct(x)`, `Adequate(x)`, when no decision procedure or authoritative source is
+  defined) -- "exactly the kind of hidden human judgment the Step-266 prompt requires us to expose."
+
+  **§266.3-266.27 delivers a systematic per-construct computability audit of essentially every major object
+  this entire mathematical-kernel sub-arc has formalized**, each with a genuinely new, checkable
+  distinction: **Entity** (boxed **`Entity membership=UNDER-SPECIFIED`** unless an explicit ontology
+  boundary exists -- "Entity definition is conceptually clear" but "Entity membership is not universally
+  decidable"); **Dimension** (`StructuralValidDimension(D)` computable given explicit fields, but
+  `Structural validity≠Semantic adequacy`); **Value membership** (computable only where `V_D` itself has
+  an effective representation -- finite set / typed primitive / formal grammar / open-ended conceptual
+  domain, in decreasing order of tractability); **Proposition WF** (`Conditionally Computable`, contingent
+  on the three membership predicates); **Assertion validation** (`StructuralValidation(A)` computable,
+  `Truth(A)` "cannot be assumed computable"); **Epistemic status** (finite status algebra ⇒ computable
+  transition validation, but boxed **`TransitionValidity≠StatusAssignment`**, "one of the most important
+  hidden boundaries" -- a deterministic state machine enforces which transitions are LEGAL, not which
+  transition is WARRANTED by the evidence); **Equality** (`StructuralEquality=COMPUTABLE` under canonical
+  representation/hashing; `SemanticEquality=CONDITIONAL`, requiring domain-specific semantics such as unit
+  normalization); **Identity** (`IdentityConstruction` computable via canonical-data hashing, but
+  `IdentityResolution` -- whether two independently supplied real-world references denote the same entity
+  -- "may remain externally supplied or human-governed"); **Provenance lookup** (`ProvenanceLookup=
+  COMPUTABLE` under three explicit infrastructure assumptions, but `lookup≠validation` -- `Resolve(π)`
+  being computable does not establish `ProvenanceTruth(π)`); **Replay** (`Conditionally Computable`,
+  requiring persisted `K_0`, defined/available/deterministic operations; **delivers `Replayability⇒
+  Immutable or versioned transformation semantics`** as a derived architectural requirement, since
+  operation-semantics drift across versions like `T_1^{2026}` vs. `T_1^{2027}` breaks deterministic
+  replay); **delivers the genuinely important negative finding boxed `Replay≠Reversal`** -- a many-to-one
+  transformation loses information, so `T^{-1}` cannot uniquely reconstruct an original state even when
+  forward replay is fully computable; **Operation registry/preconditions/postconditions** (an operation is
+  not "fully computable merely because its body is executable" -- preconditions and postconditions must
+  themselves be decidable predicates, not natural-language expectations -- boxed **`FormalPostcondition≠
+  NaturalLanguageExpectation`**); **Minimality** (boxed **`Minimality=NOT YET COMPUTABLY ESTABLISHED`**,
+  explicitly "not a defect in the theory. It is a correct research status" -- and delivers boxed
+  **`Empirical minimality evidence≠Mathematical minimality proof`**, since removal-testing finitely many
+  cases, as done throughout files 0888-0890, cannot prove no future operation will require a removed
+  component); **State transitions / policy** (policy-dependent transitions `T:K×Policy→K'` mean policy
+  need not be part of `K`, but policy itself needs computable semantics for `T` to be deterministic; boxed
+  **`Governance decision=possibly non-computable input`**, "this does not invalidate governance. It means
+  the architecture must model the boundary honestly"); **Evidence assessment** ("computable in layers" --
+  retrieval/hashing/linkage computable, `Assess(e,A)` "may require a human or statistical model");
+  **Statistical quantities** (boxed **`StatisticalFormula≠ComputableKnowledgeOSQuantity`** -- a formula's
+  mere existence, e.g. Bayes' rule, does not make `P(H∣D)` computable without a full probability model,
+  priors, likelihood, estimator, and assumptions -- directly extending 0893's rejection of the
+  probability-distribution kernel candidate with the concrete Step-246 mandate's checklist); **Probability**
+  (boxed **`Probability claims=UNDER-SPECIFIED`** without an explicit `(Ω,𝔉,P)` space, reaffirming
+  0893's/0864's earlier finding); **Uncertainty** (boxed **`Uncertainty is not computable until its
+  semantics are fixed`** -- a bare number like `U(A)=0.2` could denote probability, confidence score,
+  epistemic strength, error bound, entropy, or subjective belief, "mathematically different"); **Semantic
+  validation** (`SemanticIntegrity(A)=⋀_iC_i` only once each `C_i` is itself operationalized into decidable
+  sub-predicates like `TypeValid`, `ReferenceValid`, `TransitionValid`, `ProvenanceResolvable`,
+  `PolicyCompliant`).
+
+  **§266.28 delivers "perhaps the most valuable output of Step 266": a TWENTY-THREE-ROW HIDDEN HUMAN
+  JUDGMENT MAP**, giving every major concept an explicit current computability color (🟢/🟡/🔴), from
+  fully-green (canonical serialization, structural equality, hash identity, registry lookup, finite status
+  membership) through mixed (typed proposition validation, value-space membership, provenance lookup,
+  deterministic replay, transition validation, semantic equality) to fully-red (authority determination,
+  policy interpretation, truth of arbitrary assertion, relevance, correctness, adequacy, minimality proof,
+  uncertainty semantics, statistical quantities without a model) -- a single consolidated visual audit of
+  the ENTIRE theory's computability status at this point in the reconstruction.
+
+  **§266.29-266.30 delivers the THREE-LAYER ARCHITECTURE**, a genuinely reusable structural finding
+  separating (1) the FORMAL/DETERMINISTIC CORE (typing, identity references, canonicalization, equality,
+  membership, transition validation, replay, hashing), (2) EXTERNAL/PARAMETRIC SEMANTICS (policy, evidence,
+  time, provenance store, authority, measurement regime), and (3) the NORMATIVE/ASSESSMENT BOUNDARY (truth
+  assessment, relevance, adequacy, authority assignment, epistemic judgment, unresolved statistical
+  assumptions) -- explicitly NOT claiming layer 3 is outside KnowledgeOS, only that "its semantics cannot
+  be falsely represented as purely deterministic unless the necessary decision procedure is actually
+  defined." **§266.30 delivers the DDD warning**: a domain model must distinguish `ValueObject` from
+  `DomainDecision` from `ExternalPolicy` from `Assessment`, and must not hide an unmodeled human authority
+  judgment inside a method innocuously named `isValid()` -- "that would violate the Ubiquitous Language
+  boundary."
+
+  **§266.31 delivers what this file itself calls "the most important finding"**: boxed **`KnowledgeOS can
+  be computationally rigorous without claiming that all knowledge judgment is computable`** -- explicitly
+  "stronger than attempting to make everything deterministic" -- proposing the theory instead explicitly
+  define a `ComputableCore` (guaranteeing "given the same formal inputs, the same result follows") and a
+  `JudgmentBoundary` (guaranteeing "the decision is recorded, attributed, contextualized and auditable") --
+  "a much more defensible architecture."
+
+  **§266.32 delivers a candidate Computability Boundary Principle**: for `T:X×C→Y`, if `X,C,Y` have
+  effective representations, all preconditions are decidable, `T` is a terminating algorithm, and all
+  external dependencies have deterministic interfaces, then `T` is computable relative to `C`; but if `T`
+  depends on an undefined judgment predicate `J(x)`, `T` is not established computable until `J` is
+  formalized -- boxed **`Computability(T)⇒Computability(all semantic dependencies of T)`** -- explicitly
+  "a derived candidate principle, not yet a formal theorem of the corpus."
+
+  **§266.33-266.34 reframes the entire kernel problem**: not "can the entire KnowledgeOS theory be made
+  computable" (too coarse) but boxed **`Which information must be represented in the deterministic state
+  so that every deterministic operation is computable?`** and separately boxed **`Which decisions remain
+  explicit external/normative inputs?`** -- sufficiency now evaluated relative to `𝒯_det`, the
+  deterministic operation subset. **Delivers** boxed **`Computability of candidate K≠Sufficiency of
+  candidate K`** -- both gates must eventually pass independently.
+
+  **§266.35 delivers a further TWENTY-NINE-ROW audit matrix** cross-referencing every formal object/
+  operation against its computability status and its specific missing condition (e.g. Dimension semantic
+  adequacy needs "a judgment criterion"; Reversal needs "no invertibility established").
+
+  **§266.36 delivers an honest self-classification** using the corpus's own six-level evidence vocabulary
+  (CORPUS ESTABLISHES/DERIVED/VERIFIED/EXECUTED/IMPLEMENTED/PROPOSED, first introduced at files 0888-0889):
+  this step's own computability claims are mostly boxed **`DERIVED`** or boxed **`VERIFIED BY FORMAL
+  ANALYSIS`** -- explicitly NOT `EXECUTED` (no complete implementation or executable formal registry was
+  actually run) and certainly not `IMPLEMENTED`.
+
+  **§266.37 delivers a critical negative result**: boxed **`The existence of formal notation does not
+  imply computability`** -- `Relevant(A)`, `Minimal(K)`, and `Truth(A)` are all syntactically valid
+  mathematical predicates that can remain meaningful without being decidable or computable -- "precisely
+  why the prompt insists: do not label something computable merely because a program could approximate
+  it."
+
+  **§266.38 delivers a proposed five-label replacement vocabulary** for the theory's future predicate
+  classifications, replacing the vague word "valid": `DECIDABLE`, `COMPUTABLE`, `PARAMETRIC`,
+  `HUMAN-ASSESSABLE`, `UNDER-SPECIFIED` -- worked via `StructuralValid(A)=DECIDABLE` vs.
+  `EpistemicallyValid(A)=HUMAN-ASSESSABLE` until formalized.
+
+  **§266.39 delivers the file's conclusion**: KnowledgeOS has a computable candidate deterministic core
+  (typing + canonicalization + structural equality + membership + transition validation + provenance
+  resolution + replay) subject to missing registries, while the unresolved layer (truth + relevance +
+  adequacy + authority + assessment + uncertainty + minimality) lacks established formal decision
+  procedures.
+
+  **The Step 266 verdict** is boxed **`COMPUTABILITY: PARTIALLY ESTABLISHED — NOT CLOSED`**, with explicit
+  closed/strongly-established items (structural computation, typed validation where formalized,
+  deterministic replay under versioning, provenance lookup under a resolvable store) versus not-closed
+  items (semantic equality, entity identity resolution, assessment/status assignment, policy/authority
+  semantics, uncertainty, minimality, complete executable operation registry). **The biggest result**:
+  "The KnowledgeOS theory does not need to make human judgment computable. It needs to make the boundary
+  between deterministic computation and explicit judgment formally visible" -- "a much stronger and more
+  DDD-consistent requirement."
+
+  **§266.40 delivers the supervisory consequence**, explicitly declining to jump directly to a final `K`,
+  and closes opening "Step 267 — Empirical Bridge to KnowledgeOS": mapping `Theory Object↔Implementation
+  Object`, each correspondence classified as IMPLEMENTED / PARTIALLY IMPLEMENTED / SIMULATED / TESTED /
+  UNTESTED / NOT IMPLEMENTED / NO CORRESPONDING OBJECT -- reframed as "for each formal object, what -- if
+  anything -- in the actual KnowledgeOS system realizes it, and what evidence proves that
+  correspondence?"
+introduces:
+  - concept: "The Computable≠Implementable-in-principle criterion, and the effective/typed/terminating/deterministic definition of Computable"
+  - concept: "The three-class taxonomy (directly computable / computable-after-parameters / not computable as currently defined)"
+  - concept: "A systematic per-construct computability audit covering Entity, Dimension, Value, Proposition, Assertion, Status, Equality, Identity, Provenance, Replay, Policy, Evidence, Statistics, Uncertainty, and Semantic validation"
+  - concept: "TransitionValidity≠StatusAssignment, one of the most important hidden boundaries"
+  - concept: "Replay≠Reversal, a genuinely new negative invariant about non-invertibility of many-to-one transformations"
+  - concept: "Replayability⇒Immutable or versioned transformation semantics"
+  - concept: "Empirical minimality evidence≠Mathematical minimality proof"
+  - concept: "The twenty-three-row Hidden Human Judgment Map, a consolidated visual computability audit of the entire theory"
+  - concept: "The Three-Layer Architecture: Formal/Deterministic Core, External/Parametric Semantics, Normative/Assessment Boundary"
+  - concept: "The DDD warning against hiding an unmodeled human authority judgment inside a method named isValid()"
+  - concept: "THE MOST IMPORTANT FINDING: KnowledgeOS can be computationally rigorous without claiming all knowledge judgment is computable, via a ComputableCore/JudgmentBoundary split"
+  - concept: "The candidate Computability Boundary Principle: Computability(T)⇒Computability(all semantic dependencies of T)"
+  - concept: "The kernel-problem reframing: which info must be in deterministic state for deterministic operations to be computable, vs which decisions remain explicit external/normative inputs"
+  - concept: "Computability of candidate K≠Sufficiency of candidate K, as two independent gates"
+  - concept: "The five-label replacement vocabulary (DECIDABLE/COMPUTABLE/PARAMETRIC/HUMAN-ASSESSABLE/UNDER-SPECIFIED) replacing the vague word 'valid'"
+  - concept: "The critical negative result: the existence of formal notation does not imply computability"
+  - concept: "Opens Step 267 — Empirical Bridge to KnowledgeOS, mapping Theory Object↔Implementation Object correspondences"
+defines:
+  - concept: "The Three-Layer Architecture"
+    definition: "A structural decomposition of the entire KnowledgeOS theory into three layers by computability character rather than by domain topic: (1) the FORMAL/DETERMINISTIC CORE, containing typing, identity references, canonicalization, equality, membership, transition validation, replay, and hashing -- operations that are computable given effective representations; (2) EXTERNAL/PARAMETRIC SEMANTICS, containing policy, evidence, time, the provenance store, authority, and measurement regime -- inputs that must be supplied from outside the deterministic core but which the core's operations are computable RELATIVE TO once supplied; (3) the NORMATIVE/ASSESSMENT BOUNDARY, containing truth assessment, relevance, adequacy, authority assignment, epistemic judgment, and unresolved statistical assumptions -- genuine human/normative judgments that must not be falsely represented as deterministic unless an actual decision procedure is defined for them. The architecture does not exclude layer 3 from KnowledgeOS; it requires that layer 3's non-deterministic character be made explicit and auditable rather than hidden inside code or notation that implies determinism"
+  - concept: "ComputableCore vs JudgmentBoundary"
+    definition: "The file's proposed replacement for the goal of making 'everything' computable: KnowledgeOS should explicitly define a ComputableCore, which guarantees that given the same formal inputs, the same result follows (full determinism), and a separate JudgmentBoundary, which guarantees only that a decision is recorded, attributed, contextualized, and auditable (not that it is deterministic or computable). This is presented as strictly more defensible than either (a) falsely claiming the whole theory is computable, or (b) abandoning computability rigor altogether, because it lets KnowledgeOS make precise, honest claims about exactly which parts of its behavior are guaranteed reproducible and which parts are governed, accountable human judgment"
+refines:
+  - concept: "0888's/0889's/0890's kernel-minimality and congruence program"
+    refinement: "SHARPENS the minimality question specifically: Minimality=NOT YET COMPUTABLY ESTABLISHED is explicitly reclassified as a correct research status rather than a defect, and TestMinimal(K)≠ProveMinimal(K) formally explains why the removal-test tables built throughout 0888-0893 (however rigorously conducted) can never by themselves constitute a minimality proof -- directly retroactively contextualizing those tables' epistemic weight"
+  - concept: "0893's rejection of KnowledgeOS=ProbabilityDistribution and 0889's F_E candidate"
+    refinement: "GENERALIZES the specific probability-distribution objection into the general StatisticalFormula≠ComputableKnowledgeOSQuantity principle and the Uncertainty-is-not-computable-until-its-semantics-are-fixed finding, giving both a fuller formal justification via the Step-246 mandate's checklist (parameter, observable, model, assumptions, identifiability, estimator, uncertainty, actual data)"
+  - concept: "0894's provenance-reference/provenance-object distinction"
+    refinement: "APPLIED concretely: ProvenanceLookup=COMPUTABLE under stated infrastructure assumptions, but lookup≠validation (Resolve(π) being computable does not establish ProvenanceTruth(π)) -- extending 0894's placement recommendation with its computability consequence"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read Step 267 (Empirical Bridge to KnowledgeOS) next, expecting the promised Theory-Object↔Implementation-Object correspondence classification (IMPLEMENTED/PARTIALLY IMPLEMENTED/SIMULATED/TESTED/UNTESTED/NOT IMPLEMENTED/NO CORRESPONDING OBJECT) applied to the formal objects established across Steps 258-266."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Three-Layer Architecture (Formal Core / External Semantics / Normative Boundary) and the ComputableCore/JudgmentBoundary split as the single most reusable structural finding of the entire mathematical-kernel sub-arc, directly informing the gated (§29) canonical Kernel synthesis's own architecture."
+  - "dimension-registry.md: record the twenty-three-row Hidden Human Judgment Map as a consolidated, directly reusable computability audit of the whole theory to date."
+  - "dimension-registry.md: record Replay≠Reversal and TransitionValidity≠StatusAssignment as concrete new invariants for the eventual operation registry."
+  - "dimension-registry.md: record the five-label predicate vocabulary (DECIDABLE/COMPUTABLE/PARAMETRIC/HUMAN-ASSESSABLE/UNDER-SPECIFIED) as a candidate replacement for the vague word 'valid' throughout future formalization."
+anchor_test:
+  anchor: "0888's/0889's/0890's kernel-minimality/congruence/equality program; 0893's Value-space measurement theory and rejection of KnowledgeOS=ProbabilityDistribution; 0894's provenance-reference/provenance-object placement; 0887's headline extensional-not-compositional finding"
+  supports_dimension: "Delivers the single most consolidating structural finding of the entire sub-arc (the Three-Layer Architecture and ComputableCore/JudgmentBoundary split), directly informing how the eventual canonical Kernel should be organized. Retroactively contextualizes the epistemic weight of every prior removal-test table via TestMinimal≠ProveMinimal. Extends 0893's probability rejection and 0894's provenance placement with their computability consequences"
+  refines_or_contradicts: "sharpens and contextualizes 0888-0890's minimality program; generalizes 0893's probability rejection; extends 0894's provenance placement"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§266.15's worked many-to-one transformation example (T(K_1)=T(K_2) for K_1≠K_2) is directly checkable evidence for the Replay≠Reversal finding."
+  - "§266.28's twenty-three-row Hidden Human Judgment Map, with explicit color-coded status per concept, is directly checkable evidence for the theory's overall current computability state, usable as a reference table in future files."
+  - "§266.36's explicit self-classification (DERIVED / VERIFIED BY FORMAL ANALYSIS, not EXECUTED, not IMPLEMENTED) is directly checkable evidence of this file's own disciplined adherence to the evidence vocabulary it inherits from files 0888-0889."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 267's promised Theory-Object↔Implementation-Object correspondence audit is genuinely delivered, and what it finds for the formal objects established in Steps 258-266."
+  - "Whether the candidate Computability Boundary Principle (§266.32) is ever formally proven or tested against a concrete counterexample."
+  - "Whether the five-label predicate vocabulary (DECIDABLE/COMPUTABLE/PARAMETRIC/HUMAN-ASSESSABLE/UNDER-SPECIFIED) is consistently adopted in subsequent files."
+tier2_triggered: true
+tier2_reason: "Delivers the single most consolidating structural finding of the entire mathematical-kernel sub-arc (the Three-Layer Architecture and ComputableCore/JudgmentBoundary split), a systematic computability audit of every major theory construct, two new concrete invariants (Replay≠Reversal, TransitionValidity≠StatusAssignment), and a disciplined self-classification of its own claims. Classified importance critical and tier2-triggered."

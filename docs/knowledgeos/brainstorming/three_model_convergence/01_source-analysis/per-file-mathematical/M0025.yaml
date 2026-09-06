@@ -1,0 +1,120 @@
+sequence: M0025
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-214400_audi-epistemology-as-first-book-in-the-epistemology-research-corpus.md
+title: "Robert Audi, Epistemology (3rd ed.): the Deliberately Incomplete 'True Belief Based in the Right Way on the Right Kind of Ground' Definition, the Propositional-vs-Doxastic Justification Distinction, the Lottery Case (p=0.999999, Still Not Knowledge), and the Open Question 'Is KnowledgeOS Modelling Knowledge or Justified Epistemic State?'"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "the first contemporary analytic-epistemology source in this pass (following the Vedic/Upanishadic and Platonic sources M0021-M0024), explicitly designated 'the first book in the epistemology research set'; delivers a formally cautious, deliberately-incomplete general conception of knowledge and several fine-grained justification distinctions not present in the earlier philosophical sources"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0025
+importance: high
+confidence: high
+about: >
+  Analyzes Robert Audi's "Epistemology: A Contemporary Introduction to the Theory of Knowledge"
+  (3rd ed.) as the first book in a dedicated epistemology research set, following its own
+  progression (sources of knowledge/justification: perception, memory, introspection, reason,
+  testimony; structure and growth: inference, transmission, foundationalism, coherentism; nature
+  and scope: analysis of knowledge, truth, justification, reliability, internalism/externalism,
+  virtue, skepticism).
+
+  **DELIVERS AUDI'S DELIBERATELY INCOMPLETE GENERAL CONCEPTION**: "Knowledge is true belief based
+  in the right way on the right kind of ground" -- explicitly NOT offered as a complete final
+  analysis; Audi leaves open whether the "right kind of ground" involves causation, justification,
+  reliability, accessibility to consciousness, epistemic virtue, direct/non-inferential grounding,
+  or some combination. Explicitly warns against translating this into a settled
+  Knowledge=True+Belief+Justification theorem: a justified true belief can still fail to be
+  knowledge (truth obtained accidentally, or via a misleading situation -- the Gettier-type
+  problem), and conversely some cases suggest knowledge without ordinary accessible justification.
+
+  **DELIVERS THREE DISTINCT GROUNDING RELATIONS**: causal grounding, justificational grounding,
+  and epistemic grounding -- explicitly not interchangeable, refining the earlier
+  Information->Knowledge arrow into Source->Evidence->Belief/Representation->Grounding->Truth->
+  Knowledge, "with the exact mapping still unresolved."
+
+  **DELIVERS THE TRANSMISSION MODEL**: inference TRANSMITS knowledge and justification; it is "not
+  itself a basic source" of them -- Source knowledge -> Inference -> New belief/knowledge, with
+  distinct necessary and sufficient conditions for successful transmission. Explicitly logged
+  [EXT], with structural correspondence to Dretske's information-flow work (M0010/M0017) left
+  for later determination, not asserted.
+
+  **DELIVERS SUPPORTING (NOT PROVING) EVIDENCE FOR K_t != K_t+1 NON-MONOTONICITY**: Audi describes
+  the belief structure as containing continuously changing elements from experience, thought,
+  action, learning, forgetting, inference, acceptance, revision, rejection, speaking, and
+  listening -- explicitly flagged as supporting evidence for the KnowledgeOS research hypothesis,
+  not a proof of it, since "Audi does not give us the KnowledgeOS K_t model."
+
+  **DELIVERS THE LOTTERY CASE AS A CANONICAL PHILOSOPHICAL EXAMPLE OF HIGH-PROBABILITY-!=-
+  KNOWLEDGE**: a person can have probability approximately 0.999999 of losing a lottery and
+  nevertheless NOT KNOW that they will lose -- a sharp, quantified philosophical instance
+  reinforcing (via a different, independent philosophical tradition) the same conclusion already
+  established via Dretske (M0010) and Kallenberg (M0014): p_i cannot be treated as "the amount of
+  knowledge" in an atomic claim; probability belongs to the epistemic-support/uncertainty layer,
+  not automatically to knowledge itself.
+
+  **DELIVERS A FIVE/THREE-WAY NON-COLLAPSE**: Ground != Justification != Belief != Truth !=
+  Knowledge, and (probably also) Information != Evidence != Justification.
+
+  **DELIVERS THE PROPOSITIONAL-VS-DOXASTIC JUSTIFICATION DISTINCTION AS A GENUINELY NEW LAYER**:
+  situational/propositional justification (justification AVAILABLE for a proposition, given one's
+  evidence) is distinct from belief/doxastic justification (a justification actually EXERCISED in
+  holding a belief) -- one can have justification available without actually believing the
+  proposition. Explicitly flagged as "a major missing layer in KnowledgeOS," not previously named
+  anywhere in this pass (M0001-M0024).
+
+  **DELIVERS A 15-ROW AUDI-TO-KNOWLEDGEOS MAPPING TABLE**, all rows logged [INF] or [PROP] except
+  the crucial final row: Knowledge -> K_t, explicitly marked "not yet equivalent" -- the central
+  unresolved gap being "what exactly makes a justified true belief become knowledge," which Audi
+  himself deliberately leaves open rather than resolving with a formula.
+
+  **PROPOSES A NEW KnowledgeFormation RESEARCH HYPOTHESIS**: KnowledgeFormation(Evidence, Ground,
+  Belief, Justification, Truth, Context, Knower) -> Knowledge -- explicitly a research hypothesis,
+  not architecture, intended to receive Audi's material as its primary source going forward rather
+  than modifying the existing KnowledgeOS kernel.
+
+  **POSES A DEEP, EXPLICITLY UNRESOLVED QUESTION FOR THIS RESEARCH PROGRAM**: "Is KnowledgeOS
+  actually modelling knowledge, or is it currently modelling justified epistemic state?" --
+  flagged as needing investigation BEFORE finalizing the mathematical definition of K_t, i.e. a
+  possible re-scoping of the entire K_t research target rather than a mere refinement of it.
+introduces:
+  - concept: "Audi's deliberately incomplete general conception: knowledge = true belief based in the right way on the right kind of ground, with the 'right way'/'right kind of ground' left explicitly open"
+  - concept: "Three distinct grounding relations: causal, justificational, epistemic grounding"
+  - concept: "The transmission model: inference transmits (does not originate) knowledge/justification, with distinct necessary/sufficient transmission conditions"
+  - concept: "The lottery case (p approx 0.999999 of losing, still not knowledge) as a canonical philosophical instance of high-probability!=knowledge"
+  - concept: "The propositional/situational-vs-doxastic/belief justification distinction, flagged as a major missing KnowledgeOS layer"
+  - concept: "The KnowledgeFormation(Evidence,Ground,Belief,Justification,Truth,Context,Knower)->Knowledge research hypothesis"
+  - concept: "The deep re-scoping question: is KnowledgeOS modelling knowledge, or justified epistemic state?"
+defines: []
+refines:
+  - concept: "The pass's earlier Information->Knowledge arrow (M0005-M0018), refined into Source->Evidence->Belief/Representation->Grounding->Truth->Knowledge with three distinct grounding relations"
+  - concept: "M0010/M0014's probability!=knowledge finding, reinforced via an independent philosophical tradition and a sharp quantified example (the lottery case)"
+contradicts: []
+repeats:
+  - concept: "K_t!=K_t+1 non-monotonicity (already established M0006/M0014/M0016), restated here as 'supporting evidence, not proof' from Audi's description of continuously changing belief structure"
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0025 as introducing Audi's contemporary epistemology as the pass's first analytic-philosophy epistemology source, delivering the deliberately-incomplete JTB-plus-ground definition, three distinct grounding relations, the propositional-vs-doxastic justification distinction (a new missing KnowledgeOS layer), the lottery case reinforcing probability!=knowledge, and a deep re-scoping question (is KnowledgeOS modelling knowledge or justified epistemic state)."
+anchor_test:
+  anchor: "M0010/M0014's probability!=knowledge finding and this reconstruction's own anti-overclaim discipline"
+  supports_dimension: "Independently reinforces probability!=knowledge via a canonical philosophical example (the lottery case) from a source outside the information-theoretic tradition; poses a deep re-scoping question rather than a settled answer"
+  refines_or_contradicts: "refines (the Information->Knowledge pipeline, sharpened into a grounding-relation structure)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The lottery case (p approx 0.999999 of losing, yet not knowledge) as a sharp, independently-sourced philosophical reinforcement of probability!=knowledge, distinct from and complementary to Dretske's pink-ball urn example (M0010)."
+  - "'Is KnowledgeOS actually modelling knowledge, or is it currently modelling justified epistemic state?' -- an explicit, unresolved re-scoping question flagged as needing investigation BEFORE finalizing K_t, not merely a refinement suggestion."
+undefined_concepts:
+  - "The precise formal content of causal/justificational/epistemic grounding as distinct relations -- named, not formalized"
+  - "The precise formal content of KnowledgeFormation(Evidence,Ground,Belief,Justification,Truth,Context,Knower) -- proposed as a research hypothesis, not constructed"
+open_questions:
+  - "Whether this pass later investigates and answers 'is KnowledgeOS modelling knowledge or justified epistemic state,' and whether that investigation changes the target of the K_t/Phi apparatus already developed in M0009-M0022."
+tier2_triggered: true
+tier2_reason: "Introduces a new major epistemology source with a deliberately incomplete general conception, a genuinely new missing-layer distinction (propositional vs doxastic justification), a sharp independent reinforcement of probability!=knowledge, and a deep, explicitly unresolved re-scoping question about the entire K_t research target -- warrants high importance and full tier-2 treatment."

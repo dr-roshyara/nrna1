@@ -1,0 +1,150 @@
+sequence: 695
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-123520_step-110-knowledgeos-system-boundary-reconstruction.md
+title: "Step 110 -- Delivers a Clean Six-Way System-Boundary Classification (CORE/SUPPORTING/AGENT/EXTERNAL/LEGACY/UNKNOWN), the Three-Tier K_product⊆K_ecosystem⊆K_environment Boundary Model, Projection≠Ownership, and the Self-Declared 'One of the Most Important Findings' -- RepositoryMembership≠SystemMembership (the 'Dead Code Problem') -- CONFIRMS a SECOND Occurrence of the I_AgentBoundary Invariant (0690→0695, Near-Identical Wording and Identical Name) -- Continues the Structural Promise-Then-Defer Pattern (Calibrated Tracking, per 0694) -- Opens Step 111 -- Actual Component Inventory, Posing the Genuinely Interesting Question Whether KnowledgeOS Has One Coherent Core or Has Evolved Into Overlapping Subsystems"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 110 -- KnowledgeOS System Boundary Reconstruction', promised at 0694's close; delivers a coherent boundary-classification methodology (still entirely hypothetical/illustrative), continuing the calibrated promise-then-defer pattern"
+source_role: PRIMARY_RESEARCH
+canonical_source: 695
+importance: high
+confidence: high
+about: >
+  Delivers a clean six-way system-boundary classification (`CORE`, `SUPPORTING`, `AGENT`, `EXTERNAL`,
+  `LEGACY`, `UNKNOWN`), with `K_{OS}={x∣x has an evidenced architectural role}`, explicitly NOT `{x∣x
+  happens to interact with KnowledgeOS}` (an external Git server essential to but not part of KnowledgeOS,
+  PASS implicit). Reuses the illustrative `scripts/session-changes-logger` example a third time (after 0687,
+  0693), here correctly classified `UNKNOWN until usage is established` rather than assumed -- a genuinely
+  disciplined epistemic outcome for a name this reconstruction has now seen used three times without ever
+  being empirically resolved.
+
+  Delivers the important three-tier boundary model `K_{product}⊆K_{ecosystem}⊆K_{environment}` (Product
+  boundary / Ecosystem boundary / External environment) and the Agent-harness-boundary resolution directly
+  answering an earlier architectural question: Claude and Codex are `EcosystemParticipants` with
+  `AgentOperatingLayers`, while KnowledgeOS itself remains `SemanticKnowledge+Governance+Evidence+
+  Assurance` per the actual implementation -- directly extending and formally resolving 0690's/0693's/0694's
+  Claude/Codex-boundary discussions into this file's own classification scheme (`Codex→^{consumes}
+  KnowledgeOS`, `Codex→^{produces}Evidence`).
+
+  **Delivers `Projection≠Ownership`, a genuinely valuable, precisely reasoned principle**: KnowledgeOS may
+  contain a `Projection(X)` of externally-owned data (e.g. a cached Jira ticket status) without owning
+  `Truth(X)` -- an external system (Jira) remains authoritative for its own facts even when KnowledgeOS
+  stores a local copy, preventing competing authority (PASS×2) -- directly and genuinely extending 0680's/
+  0687's evidence-authority-provenance discipline into external-system-integration specifically.
+
+  Delivers Boundary discovery via dependency direction, with the important, correctly reasoned clarification
+  that **invocation direction does not determine system ownership** (a reverse webhook call from GitHub
+  into KnowledgeOS still leaves GitHub `EXTERNAL`, PASS×2), and Infrastructure boundary (PostgreSQL/Kafka/
+  Kubernetes as operationally essential but not semantically CORE, `SUPPORTING`, PASS).
+
+  **Delivers the file's most significant self-declared finding -- `RepositoryMembership≠SystemMembership`
+  (the "dead code problem")**: experimental code, abandoned prototypes, old migrations, and unused libraries
+  can persist in a repository without being part of the operating system (a 5,000-line sophisticated
+  knowledge module referenced by no build correctly NOT counted as operational functionality, PASS) --
+  explicitly self-declared "one of the most important findings of the reconstruction methodology," directly
+  and genuinely extending 0691's `LogicalComponent≠RuntimeInstance` and 0694's Deprecated-versus-Active
+  distinction into repository-archaeology specifically, with a concrete three-stage verification chain
+  (Build graph → Deployment graph → Runtime graph: `Repository→BuildArtifact→Container→Deployment→
+  Runtime`) required before any component may be treated as genuinely operational.
+
+  Delivers Boundary confidence (`High/Medium/Low`) and a `BoundaryEvidence=(Classification,Reason,Evidence,
+  Confidence,Date)` record schema ("this prevents later arguments based on memory," PASS), and a DDD-style
+  context map distinguishing the "logical ecosystem map" from "final physical topology." **Delivers a
+  genuinely valuable, precisely specified nine-relation vocabulary replacing generic "integrates with"**:
+  `Consumes/Produces/Reads/Writes/Publishes/Subscribes/Verifies/Authorizes/Projects` (Codex modeled as
+  `consumes→KnowledgeOS` and `produces→EngineeringChange`, PASS), directly extending 0687's/0689's/0693's
+  Architecture Evidence Graph edge-type family with a specific, currently reusable relationship taxonomy,
+  and the correct observation that the same external system can be Upstream for one relationship and
+  Downstream for another (KnowledgeOS consuming Git evidence while publishing findings back into Jira).
+
+  **Delivers five new named invariants, ONE of which is a CONFIRMED SECOND OCCURRENCE of `I_
+  {AgentBoundary}`, first introduced at 0690**: this file's `I_{AgentBoundary}` ("Agent-specific operating
+  artifacts must remain distinguishable from authoritative KnowledgeOS knowledge") is near-identical in
+  substance to and IDENTICAL in name to 0690's `I_{AgentBoundary}` ("Agent configuration must define
+  behavior, not silently become a competing authoritative engineering knowledge store") -- both invariants
+  address the same underlying concern (agent-layer artifacts must not be confused with or supplant
+  authoritative KnowledgeOS knowledge) using the identical symbolic name, joining the reconstruction's
+  established collision-tracking discipline (I_Concurrency ×3, I_Intervention ×3, I_Delegation ×3,
+  I_DecisionAuthority ×2, I_TemporalTruth ×2, I_EvidenceIndependence ×2) as a newly confirmed pair. The
+  remaining four invariants are not confirmed matches against the tracked-collision set: `I_{Boundary}`
+  ("a component must not be classified as Core solely because it is stored in the same repository," directly
+  extending 0687's directory-naming≠proof-of-structure caution), `I_{AuthorityBoundary}` ("data projection
+  does not automatically transfer authority," directly restating this file's own Projection≠Ownership
+  principle as a formal invariant), `I_{RuntimeMembership}` ("source existence does not establish runtime
+  membership," directly restating the dead-code-problem finding as a formal invariant), and `I_{External}`
+  ("external systems remain externally owned unless explicit system-boundary evidence establishes
+  otherwise").
+
+  Delivers the file's own summary: "we have established the boundary METHOD, not yet the final component
+  list," with Step 110's verdict continuing the established self-admission pattern: "STEP 110 — SYSTEM
+  BOUNDARY MODEL: PASS. The conceptual boundary is coherent. The empirical boundary remains:
+  `KnowledgeOS_{ActualBoundary}=TBD` until the repository and operational evidence are mapped" -- consistent
+  with the calibrated, structural (not per-file-novel) pattern established at 0692-0694.
+
+  **Closes by opening "Step 111 — Actual Component Inventory,"** posing a genuinely interesting and non-
+  trivial forward question distinct from the repeated promise-then-defer framing of recent files: **"Is
+  there actually one coherent KnowledgeOS core, or has the current implementation evolved into several
+  partially overlapping subsystems?"** -- a substantive architectural question worth tracking on its own
+  merits regardless of whether it is answered empirically. No actual code execution, repository inspection,
+  or verified filesystem/boundary claim is reported anywhere in this file.
+introduces:
+  - concept: "A clean six-way system-boundary classification (CORE/SUPPORTING/AGENT/EXTERNAL/LEGACY/UNKNOWN)"
+  - concept: "The three-tier boundary model K_product⊆K_ecosystem⊆K_environment"
+  - concept: "Projection≠Ownership: KnowledgeOS may contain a projection of externally-owned data without owning the underlying truth"
+  - concept: "Invocation direction does not determine system ownership (a reverse webhook call does not make the caller internal)"
+  - concept: "RepositoryMembership≠SystemMembership (the 'dead code problem'), self-declared one of the most important findings of the reconstruction methodology"
+  - concept: "A nine-relation vocabulary (Consumes/Produces/Reads/Writes/Publishes/Subscribes/Verifies/Authorizes/Projects) replacing generic 'integrates with'"
+  - concept: "CONFIRMED second occurrence of the I_AgentBoundary invariant name (0690, 0695)"
+  - concept: "Opens Step 111 — Actual Component Inventory, posing whether KnowledgeOS has one coherent core or has evolved into overlapping subsystems"
+defines:
+  - concept: "Projection≠Ownership"
+    definition: "A system (KnowledgeOS) may store and display a local representation (Projection(X)) of a fact whose authoritative source lies in an external system, without thereby acquiring ownership of that fact's truth; the external system remains authoritative unless the architecture explicitly and deliberately transfers ownership"
+  - concept: "RepositoryMembership≠SystemMembership (the dead code problem)"
+    definition: "The presence of source code, modules, or artifacts within a repository does not establish that they are part of the operating system; genuine system membership requires an established chain through the build graph, deployment graph, and runtime graph (Repository→BuildArtifact→Container→Deployment→Runtime) — self-declared one of the most important findings of the whole reconstruction methodology"
+refines:
+  - concept: "0690's/0693's/0694's Claude/Codex-boundary discussions"
+    refinement: "Directly and formally resolved into this file's own six-way classification scheme: Claude and Codex are EcosystemParticipants with AgentOperatingLayers, not KnowledgeOS CORE"
+  - concept: "0680's/0687's evidence-authority-provenance discipline"
+    refinement: "Directly and genuinely extended into external-system-integration specifically via Projection≠Ownership"
+  - concept: "0691's LogicalComponent≠RuntimeInstance and 0694's Deprecated-versus-Active distinction"
+    refinement: "Directly and genuinely extended into repository-archaeology specifically via RepositoryMembership≠SystemMembership and the Build/Deployment/Runtime graph verification chain"
+  - concept: "0687's/0689's/0693's Architecture Evidence Graph edge-type family"
+    refinement: "Directly extended with a specific, currently reusable nine-relation vocabulary (Consumes/Produces/Reads/Writes/Publishes/Subscribes/Verifies/Authorizes/Projects)"
+  - concept: "0687's directory-naming≠proof-of-structure caution"
+    refinement: "Directly restated as a formal invariant (I_Boundary): repository co-location does not establish Core classification"
+  - concept: "0690's I_AgentBoundary invariant"
+    refinement: "CONFIRMED SECOND OCCURRENCE: near-identical substance and identical name reappear at this file, joining the reconstruction's established multi-occurrence invariant-collision tracking (alongside I_Concurrency, I_Intervention, I_Delegation, I_DecisionAuthority, I_TemporalTruth, I_EvidenceIndependence)"
+  - concept: "the calibrated promise-then-defer pattern established at 0692-0694"
+    refinement: "Continued consistently: 'we have established the boundary METHOD, not yet the final component list', KnowledgeOS_ActualBoundary=TBD"
+contradicts: []
+repeats:
+  - "0690 and 0695 (I_AgentBoundary, now a confirmed second occurrence)"
+bridge_candidates:
+  - "Read 0696 (Step 111 — Actual Component Inventory) with calibrated vigilance, specifically tracking whether it engages the genuinely substantive question posed at this file's close: does KnowledgeOS have one coherent core, or has it evolved into overlapping subsystems?"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CONFIRMED second occurrence of I_AgentBoundary (0690, 0695) -- a new multi-occurrence invariant pair, joining the reconstruction's established collision-tracking discipline."
+  - "dimension-registry.md: record the file's most valuable principles: Projection≠Ownership, RepositoryMembership≠SystemMembership (the 'dead code problem,' self-declared one of the most important findings), invocation-direction-does-not-determine-ownership, and the nine-relation vocabulary replacing generic 'integrates with.'"
+  - "dimension-registry.md: record continuation of the calibrated promise-then-defer pattern (STEP 110 verdict: KnowledgeOS_ActualBoundary=TBD); flag Step 111's genuinely substantive forward question (one coherent core, or overlapping subsystems?) for tracking on its own merits."
+anchor_test:
+  anchor: "0690's I_AgentBoundary invariant; 0680's/0687's evidence-authority-provenance discipline; 0691's LogicalComponent≠RuntimeInstance and 0694's Deprecated-versus-Active distinction; 0687's/0689's/0693's Architecture Evidence Graph edge-type family; 0687's directory-naming≠proof-of-structure caution; the calibrated promise-then-defer pattern (0692-0694)"
+  supports_dimension: "Delivers a clean, genuinely valuable system-boundary classification methodology with several precisely reasoned principles (Projection≠Ownership, the self-declared significant RepositoryMembership≠SystemMembership 'dead code problem,' invocation-direction-independence for ownership, and a concrete nine-relation vocabulary). Most notably CONFIRMS a second occurrence of the I_AgentBoundary invariant name (0690, 0695), a new addition to this reconstruction's established multi-occurrence invariant-collision family. Continues the calibrated promise-then-defer pattern consistently with 0692-0694, without escalation. Poses a genuinely substantive forward question (one coherent core vs. overlapping subsystems) worth tracking independent of the empirical-engagement question"
+  refines_or_contradicts: "directly and genuinely extends 0680's/0687's evidence-authority-provenance discipline, 0691's LogicalComponent≠RuntimeInstance, 0694's Deprecated-versus-Active distinction, and 0687's/0689's/0693's Architecture Evidence Graph edge-type family; directly restates 0687's directory-naming≠proof-of-structure caution as a formal invariant; CONFIRMS (repeats) 0690's I_AgentBoundary invariant name; continues (does not contradict) the calibrated promise-then-defer pattern; no other contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§110.49's invariant text 'I_{AgentBoundary}: Agent-specific operating artifacts must remain distinguishable from authoritative KnowledgeOS knowledge' shares the identical symbolic name with 0690's §105.65 invariant 'I_{AgentBoundary}: Agent configuration must define behavior, not silently become a competing authoritative engineering knowledge store' -- both addressing the same underlying agent-versus-authoritative-knowledge boundary concern, directly and mechanically confirming a second independent occurrence."
+  - "§110.33-110.34's dead-code-problem experiment (a 5,000-line knowledge module referenced by no build correctly excluded from operational status) is a directly checkable, precisely reasoned, and self-declared significant finding with clear applicability to real repository-archaeology practice."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 111's actual content (0696), once read, engages the genuinely substantive question posed at this file's close (one coherent KnowledgeOS core vs. overlapping subsystems) in a way that yields a non-trivial architectural insight, independent of whether it is empirically grounded."
+tier2_triggered: true
+tier2_reason: "Delivers a clean, genuinely valuable system-boundary classification methodology with several precisely reasoned principles (Projection≠Ownership, the self-declared significant RepositoryMembership≠SystemMembership 'dead code problem,' invocation-direction-independence for ownership, a concrete nine-relation vocabulary). CONFIRMS a second occurrence of the I_AgentBoundary invariant name (0690, 0695), a new addition to this reconstruction's multi-occurrence invariant-collision family. Continues the calibrated promise-then-defer pattern consistently. Poses a genuinely substantive forward question for Step 111."

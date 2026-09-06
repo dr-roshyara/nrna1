@@ -1,0 +1,140 @@
+sequence: 2298
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260901-022425_step_286_operators-must-be-well-typed-and-invariant-preserving-not-analogy-driven.md
+title: "Operators Must Be Well-Typed and Invariant-Preserving, Not Analogy-Driven -- Delivers the Thread's First Full Operator Contract Formalism, the Five Kinds of Preservation, the No-Silent-Epistemic-Transition Invariant, a Ten-Step Research Programme, and the Closing Algebra 𝔎=⟨𝒦,Op,∘,⊥,Inv⟩"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the thread's most mathematically rigorous document to date -- a full formal operator-contract specification explicitly separating KnowledgeOS mathematics from Gita interpretation, reversing the direction of derivation the entire thread had implicitly used"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2298
+importance: critical
+confidence: high
+about: >
+  Opens: "This is the central mathematical problem now. We should not define operators merely because a
+  Gītā concept sounds analogous. We need to define them so that every transformation K_t→_op K_{t+1} is
+  well-typed, mathematically valid, traceable, and preserves the invariants that make K_t a valid KnowledgeOS
+  state... I would therefore separate operator semantics from the Gītā interpretation." This document is the
+  thread's single most mathematically rigorous artifact, and explicitly REVERSES the direction of derivation
+  the entire 60-file Gītā thread had implicitly used up to this point (Gītā-concept→operator), replacing it
+  with (KnowledgeOS-mathematics→operator, separately Gītā→philosophical-interpretation-of-operator).
+
+  **DELIVERS THE TYPED-STATE REQUIREMENT**: K_t∈𝒦_valid, with each of the eight primitive components given
+  an explicit domain/type (E_t∈ℰ, S_t∈𝒮, ..., R_t⊆𝒳×ℛ×𝒳).
+
+  **DELIVERS THE THREAD'S FIRST FULL OPERATOR TYPE SIGNATURE**: op:K_valid×I→K_valid∪{⊥} — explicitly
+  requiring the kernel be "allowed to say 'this transformation is not valid'," directly connecting to Zero.
+
+  **DELIVERS THE FULL OPERATOR CONTRACT FORMALISM**: 𝖮𝗉=⟨Name,Input,Pre,Transform,Post,Inv,Evidence⟩ — the
+  thread's first complete, general-purpose contract schema for defining ANY kernel operator, with the
+  state-preservation law Pre(K_t,x)∧Inv(K_t)⇒Inv(K_{t+1}).
+
+  **DELIVERS THE FIVE KINDS OF PRESERVATION** (previously treated as a single undifferentiated "purification/
+  quality" notion throughout the thread): (1) Structural preservation (K_t∈𝒦_valid⇒K_{t+1}∈𝒦_valid); (2)
+  Semantic preservation (K_t≡K_{t+1} under an appropriate semantic relation); (3) Provenance preservation
+  (Π_t→Π_{t+1} per provenance rules); (4) Monotonicity (K_t⪯K_{t+1}, explicitly "not every operator should be
+  monotonic"); (5) Information-changing operations (explicitly permitted retraction, e.g. P_old→P_retracted,
+  "that does not violate mathematics if the operator explicitly permits retraction"). This taxonomy directly
+  and explicitly REJECTS the "knowledge can only increase / K_t⊆K_{t+1}" assumption this reconstruction has
+  seen echoed loosely elsewhere in the thread, replacing it with operator-declared transformation laws.
+
+  **DELIVERS FULLY TYPED OPERATOR SIGNATURES** for a first candidate set: Observe:Environment→Observation;
+  Qualify:Observation×Context→PropositionStatus; Relate:KnowledgeElement²×RelationType→Relation; Revise:
+  Proposition×Evidence→Proposition'; Act:Decision×Policy→Action — "this prevents type errors. And type
+  errors are one of the strongest mathematical safeguards available to us."
+
+  **DELIVERS THE OBSERVATION≠PROPOSITION SAFEGUARD** with a worked example: O_{t+1}=O_t∪{o} while P_{t+1}=P_t
+  ("observation is not automatically proposition... Buddhi may later transform O→_B P only when the
+  appropriate conditions are satisfied") — "protects us against one of the most dangerous epistemic errors:
+  treating an observation as truth."
+
+  **DELIVERS A WORKED REVISION EXAMPLE** preserving historical truth: P_1→_revision P_2 while retaining O_1,
+  O_2, Π, provenance, and recording R(P_1,contradicted-by,P_2) — "the new state can preserve historical truth
+  about the knowledge process while changing the currently accepted state."
+
+  **DELIVERS THE STATE-TRANSITION ALGEBRA WITH COMPOSITION**: K_{t+1}=T_op(K_t,x), sequential composition
+  T=T_{op_n}∘...∘T_{op_1}.
+
+  **DELIVERS THE BUDDHI-SELECTS-NOT-PERFORMS REFINEMENT**: "Buddhi selects, validates and governs the
+  admissibility of kernel operations" rather than "Buddhi = all operations" — an explicit correction of a
+  looser prior formulation attributed to the human interlocutor ("your earlier statement... needs one
+  refinement").
+
+  **DELIVERS THE GUṆA-AS-ADMISSIBILITY-FILTER REFORMULATION**: B_G:K→Op* (set of admissible operations,
+  not a different operator), with hypothesized (explicitly non-canonical) admissible sets per mode: Sattva→
+  {verify,qualify,reconcile,discriminate}; Rajas→{act,transform,pursue,propagate}; Tamas→{defer,retain,
+  expose-uncertainty} — "the mathematical operator itself remains well-defined" regardless of mode.
+
+  **DELIVERS THE 'NO SILENT EPISTEMIC TRANSITION' INVARIANT**, proposed as a candidate core KnowledgeOS law:
+  ∀K_t,K_{t+1}: K_t→K_{t+1} ⇒ ∃op,evidence — "no knowledge-state transition without an identifiable operation
+  and justification."
+
+  **DELIVERS THE QUALITY-VECTOR REFORMULATION OF PURIFICATION**, explicitly tied to the already-established
+  Σ=(A,S,R,V,C): 𝒫:Σ_t→Σ_{t+1} with Q(K_{t+1})⪰Q(K_t) for specified dimensions, explicitly hedged: "we must
+  not invent these dimensions yet... Step 287 correctly warned us that the per-axis orders are not all
+  established. So we cannot yet claim Σ_t⪯Σ_{t+1} universally" — a further precise citation of the Step-287
+  per-axis-order discipline (the second in this window, after file 2297).
+
+  **DELIVERS A TEN-STEP RESEARCH PROGRAMME** for constructing the operator algebra properly: (1) define state
+  types; (2) define validity invariants; (3) enumerate candidate operations; (4) give every operation a type
+  signature; (5) define pre/postconditions; (6) define preservation laws; (7) define composability; (8)
+  define reversibility/irreversibility; (9) define provenance effects; (10) "only then map Gītā concepts onto
+  the resulting algebra" — explicitly stated as the correct order, inverting the thread's actual practice
+  across the prior ~50 files.
+
+  **CLOSES WITH THE FORMAL KERNEL ALGEBRA**: 𝔎=⟨𝒦,Op,∘,⊥,Inv⟩ [𝒦=valid kernel states, Op=typed kernel
+  operations, ∘=valid composition, ⊥=invalid/undetermined transformation, Inv=state invariants], with
+  composition validity gated on type/postcondition-to-precondition matching, and the closing formal
+  interpretation of Buddhi: "Buddhi does not create mathematical truth. It discriminates among admissible
+  transformations while preserving the kernel's invariants," formalized as B:(K_t,Candidates,Evidence,
+  Policy)→(Decision,Op,Justification).
+
+  Closes proposing the concrete next task: "derive the first complete candidate operator set from the eight
+  primitives, construct each operator's type signature + preconditions + postconditions + invariants, and
+  then test whether the resulting algebra is closed. That will tell us whether we actually have a formal
+  KnowledgeOS kernel — or merely a conceptual one."
+introduces:
+  - concept: "The full operator contract formalism Op=⟨Name,Input,Pre,Transform,Post,Inv,Evidence⟩, the thread's first general-purpose schema for defining any kernel operator"
+  - concept: "The five kinds of preservation (structural, semantic, provenance, monotonicity, information-changing/retraction), explicitly rejecting a universal 'knowledge can only increase' assumption"
+  - concept: "The Observation≠Proposition safeguard with a worked non-collapsing example, and the worked P1-to-P2 revision example preserving historical truth via an explicit contradicted-by relation"
+  - concept: "The 'no silent epistemic transition' candidate core law: every K_t→K_{t+1} requires an identifiable operation and evidence"
+  - concept: "The ten-step research programme for constructing the operator algebra mathematics-first, Gita-mapping last -- explicitly inverting the thread's actual practice to date"
+  - concept: "The closing formal kernel algebra 𝔎=⟨𝒦,Op,∘,⊥,Inv⟩ with type-gated composition"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked dozen-plus prior operator-list proposals across the thread (files 2260-2297)"
+    refinement: "GIVEN THE THREAD'S FIRST RIGOROUS TYPE-SIGNATURE AND CONTRACT DISCIPLINE, explicitly demanding every candidate operator be typed, pre/postcondition-bound, and invariant-preserving before being treated as a real operator"
+  - concept: "This reconstruction's already-tracked loose purification-as-accumulation formulations across the thread"
+    refinement: "EXPLICITLY REJECTED as a universal law; replaced with operator-declared, non-monotonic transformation laws and a hedged quality-vector formulation pending Step-287 per-axis-order resolution"
+  - concept: "This reconstruction's already-tracked 'Buddhi performs operations' framing (multiple prior files)"
+    refinement: "EXPLICITLY CORRECTED to 'Buddhi selects, validates and governs admissibility' rather than performing operations itself"
+  - concept: "This reconstruction's already-tracked Step 287 per-axis-order warning on the Sigma=(A,S,R,V,C) purification axes"
+    refinement: "DIRECTLY CITED a second time in this window (after file 2297), explicitly blocking a universal Sigma_t⪯Sigma_t+1 claim"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as the thread's most mathematically rigorous artifact -- the full operator contract formalism, the five kinds of preservation, the no-silent-epistemic-transition invariant, the ten-step Gita-last research programme, and the closing formal algebra 𝔎=⟨𝒦,Op,∘,⊥,Inv⟩."
+anchor_test:
+  anchor: "This reconstruction's already-tracked many prior operator-list proposals, the loose purification-as-accumulation framing, and the Step 287 per-axis-order discipline"
+  supports_dimension: "Delivers the thread's first rigorous operator-contract/typing discipline, explicitly rejects universal knowledge-accumulation, and re-cites the Step-287 per-axis-order warning to block a premature purification ordering claim"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The ten-step Gita-last research programme is directly checkable against the thread's actual subsequent practice (files 2260-2297 all proceeded Gita-concept-first) as evidence of whether this correction was actually adopted going forward in the sequential read."
+  - "The five candidate typed operator signatures (Observe, Qualify, Relate, Revise, Act) are directly comparable against file 2294's fifteen-item operation family and file 2295's eight-operator candidate algebra for eventual reconciliation."
+undefined_concepts: []
+open_questions:
+  - "Whether 'the first complete candidate operator set from the eight primitives' with full type signatures and closure testing (this document's proposed next concrete task) is directly commissioned and executed later in the sequential read."
+  - "Whether the ten-step Gita-last research programme changes the thread's actual subsequent methodology, or whether later files continue the Gita-concept-first pattern despite this explicit correction."
+tier2_triggered: true
+tier2_reason: "The thread's single most mathematically rigorous document -- delivers a complete, general-purpose operator contract formalism, a five-way preservation taxonomy that explicitly rejects universal knowledge-accumulation, a proposed core invariant (no silent epistemic transition), and a closing formal algebra 𝔎=⟨𝒦,Op,∘,⊥,Inv⟩, while explicitly inverting the thread's own methodology (mathematics-first, Gita-last) for the first time. Classified importance critical."

@@ -1,0 +1,200 @@
+sequence: 898
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-202840_step_270_adversarial-policy-evidence-assessment-closure-audit.md
+title: "Step 270 -- Adversarial Policy & Evidence-Assessment Closure Audit: A RIGOROUS AUDIT PROTOCOL, NOT YET AN EXECUTED RESULT -- Delivers the Three-Levels-of-Closure Discipline (Formal Specification/Computational Closure/KnowledgeOS Validity, Never Collapsed: Computable≠Valid, Specified≠Derived), a Genuine Statistical Correction (GraphDistance≠StatisticalIndependence, 'One of the Most Important Corrections in This Step'), the Log-Damping-Is-a-Design-Heuristic-Not-a-Law Finding, the Critical Sigma-Is-Policy-Relative Test, and 'the Most Important Instruction': Explicitly Refusing to Accept the Corpus's Own Tempting 'Ontologically Complete, Mathematically Computable, Reproducible, Policy-Aware and DDD-Clean' Conclusion Pending Audit -- Proposes Policy/AssessmentPolicy as a Potential EXTERNAL PLUGGABLE REGIME, Directly Paralleling the Earlier Measure-Theory-as-External-Regime Precedent"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: c1
+  secondary: m1
+  secondary_note: "genuine statistical/measurement-theory audit discipline (independence vs graph distance, scale-theory requirements for arithmetic) combined with DDD/kernel-formalization methodology"
+source_role: PRIMARY_RESEARCH
+canonical_source: 898
+importance: critical
+confidence: medium
+about: >
+  **Note on nature of this file**: unlike most preceding Step files, this delivers a detailed ADVERSARIAL
+  AUDIT PROTOCOL (a specific, extensive test plan with over twenty individually named tests and required
+  output templates) rather than an already-executed audit result -- the actual execution and its findings
+  are not contained in this file and must be sought in a subsequent file. Opens explicitly declining to
+  accept the corpus's own claimed prior "Computational Closure 4" for Evidence Assessment (a three-layer
+  `Observation→Evidence→Assessment→Inference` separation, reportedly including a claim that "policy-
+  dependent assessment is reproducible when provenance, rules and context are preserved") -- **a further
+  instance of the corpus referencing prior claimed-closure material not directly visible in this
+  reconstruction's sequential pass**, continuing the pattern from files 0892/0896/0897. Explicitly:
+  "that claimed closure itself must be audited, because some of the proposed formulas ... were introduced
+  as definitions rather than demonstrably derived from the corpus."
+
+  **§270.0 delivers the mandate**: determine whether Policy and Evidence Assessment are ACTUALLY
+  computationally closed, or whether apparent closure depends on unproved assumptions, arbitrary numerical
+  functions, undefined semantics, or hidden normative choices -- explicitly: do not construct another
+  policy theory; do not assume the previous "Computational Closure 4" is correct merely because it was
+  labelled closed -- "the previous conclusion is evidence of a claim, not evidence of its truth."
+
+  **§270.1 delivers the file's foundational discipline, THE THREE LEVELS OF CLOSURE**, which "must never be
+  collapsed": Level A -- Formal specification (a precise mathematical definition exists); Level B --
+  Computational closure (the function can actually be evaluated from finite specified inputs); Level C --
+  KnowledgeOS validity (the function corresponds to what KnowledgeOS is actually intended to mean and/or
+  does in the implementation). Worked via `IndependenceFactor(E,G)=1/(1+depth(E,G))`: mathematically
+  computable (Level B) does not prove it is the correct KnowledgeOS semantics of evidential independence
+  (Level C) -- boxed **`Computable≠Valid`**; boxed **`Specified≠Derived`**.
+
+  **§270.2-270.10 delivers a detailed Policy-specific audit protocol**: a full corpus-wide term-lineage
+  reconstruction (Policy, AssessmentPolicy, Rule, Invariant, Governance, Authorization, Authority,
+  PolicyDecision, PolicyVerdict, Threshold, ValidityInterval, ResolutionBehavior, each with nine required
+  tracked fields) to determine whether there is genuinely ONE Policy concept or several that historically
+  acquired the same name; a component-classification test for `Rules/Parameters/Scope/Validity/
+  AuthorityBindings/ResolutionBehavior` (primitive/derived/external/implementation-only/normative/
+  unnecessary); the Policy-as-rule-set (`P-A: Policy=Set(Rule)`) vs. Policy-as-semantic-function
+  (`P-B: ⟦π⟧:X→Decision`) distinction, with the explicit instruction to preserve BOTH levels (Policy
+  representation vs. Policy semantics) rather than confusing syntax with semantics; a demand that
+  `EvalPolicy(π,x)` cannot be called closed without seven explicit sub-definitions (domain, rule semantics,
+  conflict behavior, precedence, missing-input behavior, temporal behavior, authorization interaction); a
+  concrete Policy CONFLICT test (`r_1(x)=Permit`, `r_2(x)=Deny` -- explicitly "do not choose one. Find
+  whether the corpus determines it. If not: `PolicyConflictResolution=G7 NORMATIVE`, and stop there rather
+  than inventing semantics"); a missing-input test (does `Missing` mean `Deny`/`Unknown`/`NotApplicable`/
+  `InsufficientEvidence` -- "do not silently equate `Unknown=Fail`"); a temporal-Policy test (distinguishing
+  evaluation time, knowledge validity time, and event time as not necessarily identical); a Policy-change
+  test (is changing Policy itself a KnowledgeOS transformation, `T_π(π_1,α)→π_2`, or does it belong to an
+  external governance system -- "the answer must be derived from the corpus... do not decide this by
+  architecture preference"); and an Authority/Policy separation test (three cases -- Policy permits/
+  Authority denies → `Rejected(Authority)`; Authority valid/Policy prohibits → `Rejected(Policy)`; both
+  permit → `Proceed` -- "if these cases are distinguishable, then `Policy≠Authority`. This is likely a
+  strong result," with the explicit requirement to record the evidence class -- mathematically derived,
+  corpus-established, implementation-observed, or experimentally validated).
+
+  **§270.11-270.15 delivers the Evidence-Assessment-specific audit protocol, containing the file's
+  sharpest independent statistical contributions**: challenges the proposed `AssessEvidence:
+  ER^*×Policy×Context×EvidenceGraph→EvidenceAssessment` signature field by field; audits `weighted_strength
+  =reliability×relevance×currency×independence`, asking "where did multiplication come from?" -- if
+  undocumented, boxed **`weighted product=DESIGN CHOICE`**, not theorem; **delivers what this file itself
+  calls "one of the most important corrections in this step"**: for the proposed `IndependenceFactor=
+  1/(1+dependency_depth)`, two sources with dependency depth 1 do NOT mathematically imply
+  `I(S_1)=I(S_2)=0.5` -- boxed **`GraphDistance≠StatisticalIndependence`** -- "the graph can represent
+  dependency structure. It does not automatically establish a probability model"; audits the proposed
+  `AggregateSupport=(Σ_iStrength_i)/(1+log(n))`, demanding a theoretical justification for logarithmic
+  damping and, absent one, classifying it boxed **`Engineering/Design Heuristic`** rather than a
+  mathematical law; audits numerical quality scores (`AssessReliability→[0,1]`, etc.), warning that a
+  number in `[0,1]` is not automatically a probability, and must be classified as a measurement, normalized
+  score, ordinal category, utility, or probability before further arithmetic is licensed on it.
+
+  **§270.15 delivers a measurement-theory audit reapplying Step 264's scale-type discipline**: `0.8=2(0.4)`
+  is legitimate only under ratio-scale semantics, otherwise `[0,1]` values may merely be normalized
+  representations -- explicitly reaffirming "the earlier research already concluded that measure theory
+  should remain an external regime rather than becoming the foundation of KnowledgeOS," and explicitly
+  scoping this audit's measurement-theory work to only the numerical assumptions Policy/Evidence Assessment
+  actually use, not reopening measure theory globally.
+
+  **§270.16-270.20 delivers four further discriminating tests**: Evidence Assessment≠Inference (testing
+  whether any proposed function accidentally performs inference while claiming mere assessment, e.g.
+  `StrongEvidence⇒True` being invalid absent an explicit inference rule); Evidence quality vs. epistemic
+  status (does `Σ=f(EvidenceAssessment)` hold deterministically, policy-dependently, threshold-based, rule-
+  based, or normatively -- `SupportLevel=Strong` must not be silently assumed to mean
+  `EpistemicStatus=Supported`); **THE CRITICAL `Σ` TEST**: two cases with identical `Support=Strong` under
+  different policies `π_1≠π_2` -- if `Σ_1≠Σ_2`, then `Σ` is policy-relative (explicitly "acceptable," but
+  the theory must then state `Σ_π` or equivalent contextual semantics rather than pretending a single
+  policy-free epistemic status exists); unknown/insufficient-evidence handling (`Unknown`/`NotAssessable`/
+  `InsufficientEvidence` may not be semantically identical); contradictory-evidence handling (`Conflicted`/
+  `Unknown`/`Contested` -- "do not collapse contradiction into uncertainty without evidence," reaffirming
+  the corpus's standing principle that contradictory evidence should be preserved rather than discarded).
+
+  **§270.21 delivers a reproducibility precision test**: `Replayable(A)⟺Inputs(A)⊆
+  ReconstructibleHistory` -- demanding the EXACT required input set be identified (`{P,E,C,π,R,Version,…}`)
+  rather than assuming provenance alone is sufficient for replay.
+
+  **§270.22-270.23 delivers the Policy-minimality method and the three legitimate possible outcomes**:
+  `Policy_min` derived by distinguishability (`π_1≡_{𝒪_π}π_2⟺∀x∈X:Eval_{π_1}(x)=Eval_{π_2}(x)`), directly
+  reapplying the K-minimality/Step-269 method; Outcome A -- Closure (a minimal semantic model with all
+  mandatory functions computable); Outcome B -- Conditional closure (computable only after explicit policy-
+  language/rule semantics are supplied); Outcome C -- Normative blockage (the corpus does not determine a
+  unique Policy semantics) -- "in Outcome C, do not invent one. Create `G7-POLICY-001` and stop at the
+  decision boundary."
+
+  **§270.24-270.27 delivers the required final-output structure**: a mandatory eleven-row Evidence-
+  Assessment component audit table (Evidence relation/Reliability/Relevance/Currency/Independence/
+  Aggregation/Conflict detection/Assessment/Inference/Policy dependence/Reproducibility, each scored
+  Formal/Computable/Corpus-derived/Empirical/Design-choice); an explicit refusal to accept "no premature
+  'Computational Closure 5'" (treating the prior "Evidence Assessment is now computationally closed" claim
+  as `Claim_previous`, not `Fact`); a ten-part required final output (Policy Lineage, Policy Semantic
+  Audit, Policy Conflict Analysis, Evidence-Assessment Audit, Statistical Validity Audit, Measurement
+  Audit, `Σ` Dependency Analysis, Reproducibility Audit, Policy Minimality, Updated Gap Register); and an
+  eight-lettered final-verdict format (A. ESTABLISHED, B. COMPUTABLE, C. EMPIRICALLY VALIDATED, D. DESIGN
+  CHOICES, E. REFUTED, F. REMAINING GAPS, G. HUMAN DECISIONS REQUIRED, H. NEXT STEP).
+
+  **§270.28 delivers "the most important instruction"**: explicitly REFUSES to accept the corpus's own
+  tempting prior conclusion, quoted verbatim -- "the model is now ontologically complete, mathematically
+  computable, reproducible, policy-aware and DDD-clean" -- stating "Step 270 exists precisely to determine
+  whether it is true." Clarifies the three-layer architecture itself (`Observation→Evidence→
+  Assessment→Inference`) is "well motivated" and not the concern; the concern is specifically that some
+  numerical functions inside the assessment layer "may be chosen formulas rather than derived KnowledgeOS
+  semantics" -- reiterating both worked examples (`IndependenceFactor`, `AggregateSupport`) as "excellent
+  engineering heuristics" that are "not automatically" statistical measures, since "elegance is not
+  derivation." Delivers the file's central objective, boxed **`separate the genuinely canonical epistemic
+  machinery from useful but optional engineering heuristics`**, and proposes that if the audit concludes
+  `AssessmentPolicy` is best modeled as an EXTERNAL PLUGGABLE REGIME (with the KnowledgeOS core defining
+  only structural interfaces and invariants), "that is a perfectly valid and potentially much cleaner
+  result" -- explicitly consistent with, and directly paralleling, the earlier precedent that measure
+  theory itself should be treated as an external regime rather than part of the universal KnowledgeOS
+  core.
+introduces:
+  - concept: "A further instance of the referenced-but-unseen-material pattern: the corpus's own prior claimed 'Computational Closure 4' for Evidence Assessment, explicitly not accepted without audit"
+  - concept: "THE THREE LEVELS OF CLOSURE (Formal specification / Computational closure / KnowledgeOS validity), never to be collapsed -- Computable≠Valid, Specified≠Derived"
+  - concept: "The extensive Policy-lineage reconstruction protocol, testing whether Policy is genuinely one concept or several sharing a name"
+  - concept: "The Policy-as-rule-set vs Policy-as-semantic-function distinction (representation vs semantics)"
+  - concept: "The Policy conflict test, explicitly refusing to choose a resolution semantics not determined by the corpus (creating a G7 NORMATIVE gap instead)"
+  - concept: "The missing-input test: do not silently equate Unknown=Fail"
+  - concept: "The temporal-Policy test distinguishing evaluation time, knowledge validity time, and event time"
+  - concept: "The Authority/Policy separation test via three explicit cases, with an evidence-class recording requirement"
+  - concept: "The genuinely important statistical correction: GraphDistance≠StatisticalIndependence"
+  - concept: "The log-damping-is-a-design-heuristic-not-a-mathematical-law finding for AggregateSupport"
+  - concept: "The [0,1]-score-is-not-automatically-a-probability warning, requiring explicit measurement-scale classification"
+  - concept: "THE CRITICAL Σ TEST: whether Σ is policy-relative, requiring explicit Σ_π contextual semantics if so"
+  - concept: "The reproducibility precision test: Replayable(A)⟺Inputs(A)⊆ReconstructibleHistory, requiring the exact input set, not assuming provenance alone suffices"
+  - concept: "The three legitimate Policy-closure outcomes: Closure / Conditional closure / Normative blockage, with an explicit stop-and-flag discipline for the third"
+  - concept: "THE MOST IMPORTANT INSTRUCTION: explicit refusal to accept the corpus's own tempting 'ontologically complete... DDD-clean' conclusion pending audit"
+  - concept: "The proposal that Policy/AssessmentPolicy may be best modeled as an external pluggable regime, directly paralleling the measure-theory-as-external-regime precedent"
+defines:
+  - concept: "The Three Levels of Closure"
+    definition: "A discipline requiring every proposed formal result in the theory to be evaluated at three independent, never-collapsible levels: Level A, Formal specification (does the object/function have a precise mathematical definition?); Level B, Computational closure (can the function actually be evaluated from finite, specified inputs -- i.e. is it genuinely computable, not merely notationally definable?); Level C, KnowledgeOS validity (does the function correspond to what KnowledgeOS is actually intended to mean, and/or does it match what the implementation actually does?). A result can satisfy Level A and B while failing Level C -- e.g. a mathematically well-defined and computable IndependenceFactor formula that nonetheless is not the correct semantics of evidential independence for KnowledgeOS. This directly generalizes and sharpens 0895's Computable≠Implementable-in-principle distinction into three explicit checkpoints rather than two"
+  - concept: "GraphDistance≠StatisticalIndependence"
+    definition: "A concrete statistical correction demonstrating that a proposed dependency-graph-based independence measure (e.g. IndependenceFactor=1/(1+dependency_depth)) does not automatically establish genuine statistical independence between evidence sources, because graph distance measures structural/topological separation in a dependency graph, while statistical independence is a probabilistic property requiring an actual probability model over the sources' joint distribution. Two sources at the same graph distance need not have the same, or any determinate, degree of statistical independence -- the graph can represent dependency STRUCTURE without establishing a probability model at all. This is flagged as potentially one of the audit's most important corrections because it prevents a plausible-looking graph-theoretic heuristic from being silently promoted to a statistical claim"
+refines:
+  - concept: "0897's Policy congruence criterion and Minimality(Π|𝒪_π)"
+    refinement: "OPERATIONALIZED into a concrete, extensive test protocol: the abstract congruence/minimality method is now unpacked into specific named tests (conflict, missing-input, temporal, policy-change, authority-separation) that must each be executed and their results classified by evidence-strength before Policy_min can be legitimately derived"
+  - concept: "0893's Stevens/Roberts measurement-theory formalization and the corpus's earlier measure-theory-abandonment finding"
+    refinement: "REAPPLIED specifically to the Evidence-Assessment numerical layer -- scale-type classification is now demanded for every quality score ([0,1] values), and the earlier decision to keep measure theory as an external regime is explicitly reaffirmed and scoped narrowly to only the numerical assumptions actually used by Policy/Evidence Assessment, rather than reopened globally"
+  - concept: "0895's Computable≠Implementable-in-principle criterion"
+    refinement: "SHARPENED into the three-level (A/B/C) closure discipline, adding the KnowledgeOS-validity checkpoint (Level C) as a distinct concern beyond mere computability (Level B), directly motivated by the worked IndependenceFactor example"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read the file that actually EXECUTES this Step 270 audit protocol (if a separate file exists, given this file is explicitly a plan/mandate rather than a result), expecting the eleven-row Evidence-Assessment component table to be filled in, the Policy conflict/missing-input/temporal/change/authority tests to be run, and the final eight-lettered verdict (A-H) to be delivered."
+  - "Watch for whether the corpus's tempting prior claim ('ontologically complete, mathematically computable, reproducible, policy-aware and DDD-clean') survives or is refuted by the eventual audit execution."
+  - "Watch for whether Policy/AssessmentPolicy is ultimately modeled as an external pluggable regime (paralleling measure theory) or as part of the canonical KnowledgeOS core."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Three Levels of Closure (Formal specification/Computational closure/KnowledgeOS validity) as a directly reusable epistemic discipline for the gated (§29) canonical Kernel synthesis's own eventual claims."
+  - "dimension-registry.md: record GraphDistance≠StatisticalIndependence and the log-damping-is-a-heuristic-not-a-law finding as concrete, checkable statistical corrections relevant to any future evidence-aggregation design."
+  - "dimension-registry.md: record the proposal that Policy/AssessmentPolicy may be an external pluggable regime, directly paralleling the measure-theory precedent, as a candidate architectural boundary decision for the eventual synthesis."
+anchor_test:
+  anchor: "0897's Policy congruence criterion and Minimality(Π|𝒪_π); 0893's Stevens/Roberts measurement-theory formalization; 0895's Computable≠Implementable-in-principle criterion; the corpus's earlier measure-theory-abandonment/external-regime precedent"
+  supports_dimension: "Operationalizes 0897's abstract Policy congruence/minimality method into a concrete, extensive test protocol. Reapplies 0893's measurement-theory discipline specifically to the Evidence-Assessment numerical layer, reaffirming and narrowly scoping the measure-theory-external-regime precedent. Sharpens 0895's Computable≠Implementable-in-principle criterion into the three-level A/B/C closure discipline"
+  refines_or_contradicts: "operationalizes 0897's Policy minimality method; reapplies and narrowly reaffirms 0893's measurement-theory scoping; sharpens 0895's computability criterion"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§270.12's explicit worked counterexample (two sources at dependency depth 1 need not have I(S_1)=I(S_2)=0.5) is directly checkable evidence for the GraphDistance≠StatisticalIndependence correction."
+  - "§270.13's explicit challenge ('why logarithmic damping? What theoretical property requires this?') with no offered justification is directly checkable evidence for the log-damping-as-heuristic-not-law classification."
+  - "§270.28's verbatim quotation of the corpus's own tempting prior conclusion ('the model is now ontologically complete, mathematically computable, reproducible, policy-aware and DDD-clean'), immediately followed by 'do not accept that sentence as established,' is directly checkable evidence of this file's disciplined refusal to inherit an unaudited claim."
+undefined_concepts: []
+open_questions:
+  - "Whether a subsequent file actually executes this Step 270 audit protocol and delivers the eight-lettered final verdict, or whether (per the established pattern) the protocol itself becomes superseded by a further corrective file before execution."
+  - "Whether Policy/AssessmentPolicy is ultimately resolved as Outcome A (Closure), B (Conditional closure), or C (Normative blockage) once the protocol is executed."
+  - "Whether the corpus's prior tempting 'ontologically complete... DDD-clean' claim survives the audit or is formally refuted."
+tier2_triggered: true
+tier2_reason: "Delivers the Three Levels of Closure discipline, a genuinely important independent statistical correction (GraphDistance≠StatisticalIndependence), the log-damping-is-a-heuristic finding, the critical Σ-is-policy-relative test, and an explicit, well-justified refusal to accept the corpus's own tempting prior 'complete theory' claim pending audit. Classified importance critical and tier2-triggered; confidence medium reflecting that this file is a protocol/plan rather than an executed result, and relies on unverified prior claimed-closure material."

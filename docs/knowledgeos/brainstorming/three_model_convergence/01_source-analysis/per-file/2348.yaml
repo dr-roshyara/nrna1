@@ -1,0 +1,45 @@
+sequence: 2348
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/exec/results/A1_history_state_collision.json
+title: "Step-292 exec/results — A1: raw JSON backing the already-tracked A1 counterexample (file 2336)"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: none
+  secondary_note: "raw executable-evidence JSON, content already comprehensively tracked as file 2336's worked counterexample; per user guidance, the step-292 package is a repeat and given minimal treatment going forward"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2348
+importance: low
+confidence: high
+about: >
+  Raw JSON result confirming file 2336's already-tracked A1 counterexample: situation_1=[turn_on],
+  situation_2=[turn_on,turn_off,turn_on], state_1=state_2=[F] (identical), situations_identical=false,
+  collision_demonstrated=true. No new content beyond file 2336.
+introduces: []
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked file 2336 A1 counterexample"
+    refinement: "CONFIRMED by the raw executable JSON"
+contradicts: []
+repeats:
+  - "Fully repeats file 2336's already-tracked content; raw data backing only."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "This reconstruction's already-tracked file 2336"
+  supports_dimension: "Raw data confirmation only"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Raw JSON data, content already comprehensively tracked in file 2336; minimal treatment per user guidance."

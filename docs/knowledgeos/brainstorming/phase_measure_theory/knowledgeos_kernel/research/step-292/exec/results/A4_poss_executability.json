@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "experiment_id": "KR-REITER-2026-09",
+  "source": "Reiter 2001, Knowledge in Action",
+  "source_role": "[EXT] independent formal-methods source -- NEVER an authority",
+  "theory": "v1.2 UNCHANGED",
+  "adopted": "nothing",
+  "deterministic": true,
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "claim": "executable(s) requires Poss at every prefix",
+ "blocked_situation": [
+  "enter"
+ ],
+ "blocked_executable": false,
+ "unblocked_situation": [
+  "unlock",
+  "enter"
+ ],
+ "unblocked_executable": true,
+ "precondition_is_a_gate_not_an_effect": true
+}

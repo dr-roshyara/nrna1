@@ -1,0 +1,56 @@
+sequence: 33
+path: docs/knowledgeos/KnowledgeOS_Operational_Knowledge_Principles.md
+title: KnowledgeOS — Operational Knowledge Principles - a reconciliation, not a new set
+date: 2026-08-02
+bytes: 9015
+doc_type: principle reconciliation against a second-hand, unread external source
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [governance, evidence, invariants, contradiction]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+status: DR
+maturity: established        # for the BOUNDARY/TRIGGER/ADVISORY correction specifically
+importance: high
+
+introduces:
+  - boundary_trigger_advisory_taxonomy_originated_here   # see provenance note re: 0005
+  - enforcement_exists_exactly_where_governance_does_not
+  - naming_vs_legislating_graded_response
+  - four_rung_observation_ladder
+defines:
+  - boundary_trigger_advisory_control_classes
+hypotheses:
+  - knowledge_is_an_executable_engineering_asset   # the one adopted principle, n=1
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge]
+open_questions: []
+
+depends_on: [19, 20]
+extends: [19]
+refines: []
+renames: []
+contradicts: [5]      # provenance dispute - see Tier 2
+supersedes: []
+repeats: []
+connects_to: [5, 19, 20]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Raises an open provenance/editing question: this file and 0005 (read earlier at seq 5) both
+  contain an identical, numerically-matched BOUNDARY/TRIGGER/ADVISORY correction (19/22/16 counts,
+  same conclusion about enforcement location), which cannot both be independent origins. Most likely
+  0005's block was appended on review after this document existed, propagating backward without
+  citation - consistent with this corpus's general pattern of dated after-the-fact annotations.
+  Bears directly on this research's own §38/§39 discipline: reading-order first-occurrence is not
+  always authorial first-occurrence, though the reading order remains the governing evidence base.

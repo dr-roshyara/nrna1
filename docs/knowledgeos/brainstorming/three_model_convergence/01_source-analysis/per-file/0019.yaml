@@ -1,0 +1,67 @@
+sequence: 19
+path: docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md
+title: KnowledgeOS — Engineering Knowledge Landscape
+date: 2026-08-02
+bytes: 25779
+doc_type: systematic repository sweep / knowledge inventory (30 asset families classified)
+
+primary_model_initial: meta_research
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - all 30 classified assets (K-01..K-30) are C1 engineering-governance/methodology artifacts
+  - the inferred knowledge lifecycle (Discovery->...->Promotion->Platform) describes DOCUMENT/METHOD flow, not knowledge state
+  - no epistemic-lineage vocabulary present
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [engineering_knowledgeos, evidence, governance, contradiction, domain_model]
+
+status: SR
+maturity: developing
+importance: high
+
+introduces:
+  - rediscovery_against_ones_own_same_day_work
+  - form_content_method_evidence_four_way_split
+  - healthy_repetition_vs_historical_evolution_vs_accidental_duplication
+  - declining_to_recommend_as_a_positive_research_act
+defines: []
+hypotheses:
+  - K19_should_govern_all_inventoried_assets    # untested, RQ-002 awaits ARB
+  - K18_should_govern_K20_CAP001                # CAP-001 built without citing it; conformance unassessed
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 19th consecutive file; now the subject of a 30-item inventory, still undefined
+  - reusable            # graded n=1/n>=2 throughout; no criterion beyond occurrence count
+  - index                # the document's own recommended top intervention; not itself specified
+open_questions:
+  - does K19 govern all inventoried assets
+  - does CAP-001 conform to the frozen capability pattern
+  - M1 Genesis (re-confirmed still missing)
+  - M2 through M4 carried (role scaling, acquisition, verdict scoping)
+  - is the AKB layer set documented anywhere
+
+depends_on: [1]
+extends: [1, 9]
+refines: [1]           # method/binding/evidence -> form/content/method/evidence
+renames: []
+contradicts: [19]      # partially retracts its OWN headline correlation via header annotation
+supersedes: []
+repeats: [9]
+connects_to: [1, 9, 13]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  The corpus's most severe same-day self-rediscovery event: three of the programme's OWN
+  deliverables from the day of writing duplicate pre-existing material, one of them (#9) refuting
+  the method used by another same-day deliverable (#8). Partially retracts its own headline
+  quantitative correlation ("all rediscoveries drew on unindexed regions") via review annotation,
+  the second such self-weakening event in the reading order after 0015. The strongest available
+  corpus-internal argument that this convergence research must periodically re-check its own prior
+  findings against later files, not check the corpus once at the start.

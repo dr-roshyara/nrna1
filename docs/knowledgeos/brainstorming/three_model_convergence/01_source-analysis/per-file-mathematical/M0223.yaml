@@ -1,0 +1,71 @@
+sequence: M0223
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-120001_review-read-attached-file-in-full.md
+title: "Third/fourth-level re-adjudication of KR-REP-REDUCTION-2026-09 (heavy overlap with M0219/M0221/M0222): adds 'first failure ≠ global optimum' distinction, catches an H(Q|R5)-stated-too-strongly internal inconsistency, grades the Zero≠Preservation claim into three separate [EXP]/[NEG]/[OPEN] statuses, and cleans up Zero(S)=0 boolean-predicate notation"
+date: "20260903-120001"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0223
+importance: high
+confidence: high
+about: >
+  Two concatenated further re-adjudications of the same KR-REP-REDUCTION-2026-09 assessment already
+  reviewed at M0219/M0221/M0222, reaching essentially identical substantive conclusions (DPI-derived
+  sequential monotonicity, sequential-vs-parallel distinction, adequacy≠realization via the rank
+  result, Zero uncorrelated with the boundary). Recorded at moderate depth given the heavy overlap;
+  four genuinely incremental precision points are highlighted below.
+introduces:
+  - "A new explicit distinction not previously stated this precisely: 'first failure in one chain ≠ global representation optimum' — the experiment establishes only that R5→R4 is the FIRST OBSERVED failure in THIS sequential chain, not that R4 is a globally minimal adequate representation; a differently-constructed parallel R'_4=T'(D) could be substantially smaller than R5 while remaining adequate — connects directly to the sequential-vs-parallel distinction"
+  - "An internal-inconsistency catch in the reviewed assessment: it states H(Q|R5)=0 (a population-level claim) while elsewhere correctly acknowledging only the empirical/finite-sample Ĥ(Q|R5)=0 was established — corrected to 'no observed training or test collisions were found at R5; this provides empirical evidence consistent with adequacy, but does not establish population H(Q|R5)=0' — the same empirical-vs-theoretical-adequacy discipline (M0198) applied here to catch a live drafting slip"
+  - "A three-way graded refinement of the single blanket claim 'Zero≠Preservation': split into '[EXP] No association observed in KR-REP-REDUCTION-2026-09' / '[NEG] Zero⇒Adequacy is unsupported' / '[OPEN] whether Zero and preservation have a deeper relationship' — preventing a negative single-experiment result from silently becoming a universal non-equivalence theorem"
+  - "A parallel correction to the 'three research stages' narrative: 'Stage 3: NO EVIDENCE OF EQUIVALENCE' softened to 'no evidence of equivalence UNDER THE TESTED CONDITIONS' — the same discipline against overgeneralizing a negative result from one experimental setup"
+  - "A small notation cleanup: 'Zero(S)=0' (implying Zero is numeric-valued) corrected to the Boolean-predicate form Zero_{T,Π}(S;D)=true or simply Zero_{T,Π}(S;D), since Zero has consistently been treated as a Boolean predicate throughout this thread, not a numeric function"
+  - "The most complete single-document 18-row adjudication table for the KR-REP-REDUCTION result to date, adding the first-failure≠global-optimum and Q-relative-residual-representation rows to M0222's 16-row version"
+defines: []
+refines:
+  - "M0219/M0221/M0222's already-established KR-REP-REDUCTION findings: confirmed via a further independent re-read, with four incremental precision corrections layered on top"
+contradicts:
+  - "The reviewed assessment's overly strong H(Q|R5)=0 (population-level) phrasing — corrected to the empirical Ĥ(Q|R5)=0 form"
+  - "The reviewed assessment's implicit treatment of R4 as potentially the minimal adequate representation — corrected via the first-failure≠global-optimum distinction"
+repeats:
+  - "The established DPI-derived sequential monotonicity result, the sequential-vs-parallel distinction, the rank-direction adequacy≠realization demonstration (with its already-noted bijection-audit requirement, M0222), the Q-relative-residual-representation naming (M0218), and the recommendation to commission KR-REP-REDUCTION-AUDIT-2026-09 (M0222) before any theory revision — all restated here in near-identical substance"
+bridge_candidates: []
+mathematical_content: >
+  No new formal results beyond M0219-M0222; the H(Q|R5)-population-vs-empirical catch and the
+  first-failure≠global-optimum distinction are genuine but incremental precision corrections applied
+  to already-established material.
+gita_content: null
+kernel_content: >
+  A further corroborating pass over the KR-REP-REDUCTION results, adding modest precision to the
+  already-thoroughly-adjudicated findings from M0219-M0222 without introducing new structural
+  discoveries.
+registry_updates:
+  - "New distinction: first observed failure in a chain ≠ global representation optimum"
+  - "Caught internal inconsistency: H(Q|R5)=0 (population) vs. the correctly-established Ĥ(Q|R5)=0 (empirical)"
+  - "Graded Zero≠Preservation claim into separate [EXP]/[NEG]/[OPEN] statuses"
+  - "Boolean-predicate notation cleanup for Zero_{T,Π}(S;D)"
+anchor_test:
+  anchor: false
+  supports_dimension: "First-failure≠global-optimum distinction; H(Q|R5) population-vs-empirical catch; graded Zero-preservation refinement"
+  refines_or_contradicts: "refines (M0219/M0221/M0222's already-established findings, with incremental precision corrections)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"First failure in one chain ≠ global representation optimum\""
+  - "\"Ĥ(Q|R5)=0 ≠ proof that H(Q|R5)=0\""
+  - "\"[EXP] No association observed... [NEG] Zero⇒Adequacy is unsupported... [OPEN] whether Zero and preservation have a deeper relationship\""
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: >
+  Substantially a further corroborating re-read of M0219-M0222's already-recorded KR-REP-REDUCTION
+  findings; the four incremental precision corrections (first-failure≠global-optimum, H(Q|R5)
+  population-vs-empirical catch, graded Zero-preservation refinement, notation cleanup) are genuine
+  but narrow in scope relative to the prior documents' structural discoveries.

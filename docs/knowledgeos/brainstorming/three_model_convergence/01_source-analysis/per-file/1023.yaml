@@ -1,0 +1,110 @@
+sequence: 1023
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-211014_step_286_reviewer-review-of-refined-step-286-accept-with-five-corrections.md
+title: "Reviewer -- Review of 'Refined Step 286', Accept With Five Corrections: Reflexively Walks Back File 1020's Own 'Three Candidate Primitives' Framing to 'Innovation Hypotheses,' Softens the 'Total Qualify Cannot Exist' Over-Claim, and Delivers the Programme's Key New Classification -- Gita Gives Corroboration/Recovery, Cavell Gives Objections/Innovation Hypotheses"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a detailed review of the not-yet-directly-encountered 'Refined Step 286' document, applying the promotion-chain discipline reflexively to file 1020's own Cavell findings"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1023
+importance: critical
+confidence: high
+about: >
+  "I reviewed the refined Step 286... Step 286 is substantially improved and, structurally, I would accept
+  it as a research-result artifact." Reviews the not-yet-directly-encountered "Refined Step 286" (extending
+  file 1020's Cavell material) in extensive quoted detail, delivering two main corrections plus three minor
+  ones.
+
+  **DELIVERS THE MAIN CORRECTION: REFLEXIVELY WALKS BACK FILE 1020's OWN "CANDIDATE PRIMITIVES" FRAMING**.
+  Argues that calling Acknowledgment/Trust/Betrayal/Avoidance "candidate primitives" is "already one
+  promotion step too far" against the programme's own promotion chain (`Candidate correspondence→Research
+  hypothesis→Falsification→Independent derivation test→Technical usefulness→Architecture→Governance→
+  Canonicalization`): what is actually established for Acknowledgment is only that Cavell distinguishes it
+  from knowledge, that the corpus lacks it in that sense, and that the token collides with an existing
+  lifecycle stage -- NOT that it is a primitive, an epistemic relation, irreducible to existing primitives,
+  or independently required. Recommends renaming "3 candidate primitives" to **"3 innovation hypotheses /
+  candidate concepts,"** with the explicit closing sentence "Three innovation hypotheses have been
+  identified. NONE IS A CANDIDATE PRIMITIVE YET." Delivers the precise five-stage chain that should apply:
+  Cavell distinction → semantic distinction detected → candidate KnowledgeOS concept → independent corpus/
+  architectural necessity test → only THEN candidate relation/primitive.
+
+  **DELIVERS THE SECOND MAIN CORRECTION**: softens file 1020's already-tracked reframing of `Qualify` ("a
+  total `Qualify` cannot exist") as "stronger than the evidence establishes" -- lists six still-open
+  possibilities (partial, terminates at an authority boundary, returns a terminal-but-not-affirmative state,
+  requires human/governance input, intentionally non-total, or has a total contract whose result includes
+  "cannot qualify"). Recommends the reframed hypothesis: "`Qualify` may legitimately terminate at an
+  explicit boundary rather than being total over all cases," shifting the research question from "what are
+  the necessary-and-sufficient criteria?" to "where may qualification legitimately terminate, and what
+  records that termination?" -- explicitly "does not close `Qualify`... remains `G1` until independently
+  tested." Recommends calling this "Cavell motivates a reclassification HYPOTHESIS for `Qualify`," not a
+  reclassification, applying the corroboration≠derivation discipline to a philosophical OBJECTION for the
+  first time.
+
+  **DELIVERS THE PROGRAMME'S KEY NEW SOURCE-TYPE CLASSIFICATION**: "The programme now has a SECOND KIND OF
+  SOURCE BEHAVIOUR. The Gītā mostly gave you corroboration and corpus recoveries. Cavell gives you POTENTIAL
+  ARCHITECTURAL OBJECTIONS AND INNOVATION HYPOTHESES... an objection can open a research question without
+  becoming a primitive, and a philosophical distinction can expose a missing concept without becoming
+  architecture." This is a genuinely important, general methodological classification of philosophical-
+  source behavior for the entire programme.
+
+  **Delivers the D285/D286 dependency-chain clarification**: "D286 is evidentiary/diagnostic, not
+  foundational to D285," diagrammed explicitly, endorsing the already-tracked test "Every formal result in
+  `D285-1...7` stands with the philosophical appendix deleted."
+
+  **Three minor corrections**: sharpen the GK-registry governance boundary ("research may discover a
+  registry defect; research does not thereby become the registry authority" -- an architectural symmetry
+  with Step 285's "research establishes relationship; governance ratifies canonical status"); strengthen
+  the already-tracked term-collision finding as "a concrete architecture-language constraint, not
+  philosophical speculation"; keep the six remaining GK entries "recorded/undeveloped/explicitly gated"
+  rather than "open research," to avoid scope creep.
+
+  **Closes with the twelve-row gap-programme-relationship table** confirming no closure anywhere except the
+  reframed Qualify hypothesis, and the final classification: "RESEARCH COMPLETE — ACCEPTABLE WITH MINOR
+  AMENDMENTS."
+introduces:
+  - concept: "The reflexive correction demoting Cavell's Acknowledgment/Trust/Betrayal/Avoidance from 'candidate primitives' to 'innovation hypotheses/candidate concepts,' applying the programme's own promotion chain to itself"
+  - concept: "The precise five-stage chain for source-derived concepts: distinction -> semantic differentiation detected -> candidate KnowledgeOS concept -> independent necessity test -> only then candidate relation/primitive"
+  - concept: "The softened Qualify hypothesis: 'Qualify may legitimately terminate at an explicit boundary rather than being total over all cases,' with six named still-open possibilities preserving the discovery without premature resolution"
+  - concept: "The programme's key new source-type classification: Gita sources behave as corroboration/recovery; Cavell-type sources behave as objections/innovation hypotheses"
+  - concept: "The architectural symmetry between Step 285 ('research establishes relationship; governance ratifies canonical status') and the GK-registry governance boundary ('research may discover a defect; research does not become the registry authority')"
+defines:
+  - term: "innovation hypothesis / candidate concept"
+    definition: "A concept motivated by a philosophical source's semantic distinction, weaker in status than a 'candidate primitive' -- has not yet passed the independent corpus/architectural necessity test required before primitive status can even be considered"
+refines:
+  - concept: "File 1020's already-tracked 'three candidate primitives' framing for Acknowledgment/Trust/Betrayal/Avoidance"
+    refinement: "REFLEXIVELY DEMOTED to 'three innovation hypotheses / candidate concepts, none a candidate primitive yet' -- the programme's own promotion-chain discipline applied to its own recent finding"
+  - concept: "File 1020's already-tracked Qualify-as-declared-terminus reframing"
+    refinement: "SOFTENED from a strong claim ('a total Qualify cannot exist') to an explicit, still-untested hypothesis, with six named alternative possibilities preserved as open"
+contradicts:
+  - concept: "File 1020's framing of Acknowledgment/Trust/Betrayal/Avoidance as 'candidate primitives' and 'the first genuine INNOVATION candidates'"
+    contradicted_by: "This file's explicit correction that none of them has yet earned candidate-primitive status under the programme's own promotion chain"
+repeats:
+  - "The GK-registry citation rule and the Sanskrit-expansion freeze substantially repeat content already documented via files 1016, 1020; this file's distinctive contributions are the two main reflexive corrections and the new source-type classification."
+bridge_candidates:
+  - "The full 'Refined Step 286' document itself, extensively quoted and corrected here but not yet directly encountered in its original form."
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the reflexive demotion of Cavell's candidates from 'candidate primitives' to 'innovation hypotheses,' correcting file 1020's own framing."
+  - "dimension-registry.md: record the softened Qualify hypothesis (may legitimately terminate at a boundary, not proven total-impossible) and the programme's new source-type classification (Gita=corroboration/recovery vs Cavell=objection/innovation)."
+anchor_test:
+  anchor: "File 1020's Cavell findings (candidate primitives, Qualify-as-declared-terminus)"
+  supports_dimension: "Directly and explicitly corrects both of file 1020's central claims, applying the programme's own discipline reflexively"
+  refines_or_contradicts: "contradicts (corrects) file 1020's framing"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Both corrections are directly checkable against file 1020's own already-documented Cavell findings for the exact claims being corrected."
+undefined_concepts: []
+open_questions:
+  - "The full original text of the 'Refined Step 286' document, not yet directly encountered."
+  - "Whether the softened Qualify hypothesis is subsequently tested."
+tier2_triggered: true
+tier2_reason: "Delivers two significant, explicit corrections to file 1020's own Cavell findings (demoting 'candidate primitives' to 'innovation hypotheses,' softening the 'total Qualify cannot exist' over-claim), and introduces the programme's key new source-type classification distinguishing Gita-type corroboration sources from Cavell-type objection sources. Classified importance critical and confidence high given the direct, explicit, and methodologically significant nature of these corrections."

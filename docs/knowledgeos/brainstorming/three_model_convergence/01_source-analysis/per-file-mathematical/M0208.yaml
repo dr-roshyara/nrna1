@@ -1,0 +1,62 @@
+sequence: M0208
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-092010_with-additional-theoretical-material.md
+title: "Near-duplicate-in-substance of M0207 (same four corrections: N_viol⟺Ĥ(Q|R), Q-extraneous terminology, n*/transformation-index separation, Q-equivalent not Q-isomorphic) — reorganizes them as an A/B/C/D four-question decomposition and names a predicted empirical sequence (adequacy→redundancy-reduction→boundary) to test"
+date: "20260903-092010"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0208
+importance: medium
+confidence: high
+about: >
+  Applies essentially the same four corrections as M0207 (N_viol=0⟺Ĥ(Q|R)=0 classified as
+  structural-audit vs. information-summary, not independent tests; Q-extraneous relative to Q rather
+  than 'superfluous'; n* cleanly separated from the transformation index T_n; 'Q-isomorphic'→
+  'Q-equivalent') to reach the same canonical formulation, reorganized as a labeled A/B/C/D
+  four-question decomposition (A: is R sufficient? B: does O realize the contract? C: how much
+  Q-extraneous representation remains? D: where does reduction cross the boundary?) mapped to
+  concrete observables. Recorded at reduced depth given the near-total content overlap with M0207,
+  already recorded in full.
+introduces:
+  - "The A/B/C/D four-question decomposition with explicit observable mappings: A↔(N_viol,Ĥ(Q|R)); B↔(A(R),F(R)); C↔Ĥ(R|Q); D↔n* — a labeled organizational framing not present in exactly this form at M0207, though built from the same underlying apparatus"
+  - "Four named failure categories: Sufficiency failure (N_viol>0, carrier collapsed distinct inquiry states); Decoder failure (Ĥ(Q|R)=0 but F(R)<1); Excess representation (Ĥ(R|Q)>0); Boundary crossing (R_n adequate, R_{n-1} inadequate)"
+  - "A named predicted empirical sequence to test experimentally: 'adequacy → redundancy reduction → boundary' — framed as the next thing to verify once the theory is executed, not previously named as a specific ordered prediction"
+defines: []
+refines:
+  - "M0207's frozen Representation Reduction Contract: reaches the identical canonical formulation via an independently-organized four-question (A/B/C/D) framing"
+contradicts: []
+repeats:
+  - "M0207's entire correction set: the N_viol⟺Ĥ(Q|R) classification, the Q-extraneous (not 'superfluous') terminology, the n*-vs-T_n index separation, the Q-equivalent (not Q-isomorphic) terminology, and the three-boundary-type (Representation/Contract/Operator) taxonomy — all restated here in near-identical substance"
+bridge_candidates: []
+mathematical_content: >
+  Identical mathematical content to M0207 (same equivalence, same n* definition, same boundary
+  taxonomy), reorganized under an A/B/C/D labeling scheme; no new formal results beyond that
+  reorganization and the named adequacy→redundancy-reduction→boundary predicted sequence.
+gita_content: null
+kernel_content: >
+  A parallel convergent pass reaching M0207's same frozen formulation independently, reinforcing
+  rather than extending the representation-reduction sub-thread's theoretical closure.
+registry_updates:
+  - "Corroborates M0207's frozen Representation Reduction Contract via an independently-organized A/B/C/D framing"
+  - "New: a named predicted empirical sequence (adequacy→redundancy-reduction→boundary) to test once the theory is executed"
+anchor_test:
+  anchor: false
+  supports_dimension: "Corroborates M0207's frozen contract via an A/B/C/D framing; names a predicted empirical sequence"
+  refines_or_contradicts: "refines (identical conclusions to M0207, independently reached)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"How much representation can be eliminated while remaining in the same Q-equivalence class and satisfying Π?\""
+  - "\"Adequacy → redundancy reduction → boundary\" — the named predicted empirical sequence"
+undefined_concepts: []
+open_questions:
+  - "Is the predicted adequacy→redundancy-reduction→boundary sequence ever empirically tested?"
+tier2_triggered: false
+tier2_reason: null

@@ -1,0 +1,55 @@
+sequence: 977
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/exec/OUT-t285.txt
+title: "OUT-t285.txt -- The Saved, Confirmed Execution Output of File 0974's t285_reconcile.py Script, Content-Identical in Substance to the Findings Already Fully Recorded Under File 0974"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "saved script output, content-equivalent to file 0974's own script logic"
+source_role: DUPLICATE
+canonical_source: 974
+importance: minor
+confidence: high
+about: >
+  The saved plaintext output of actually running file 0974's `t285_reconcile.py` script. Every line of
+  output matches, verbatim in substance, the print statements already documented in file 0974's full
+  record (the T-A primitive comparison, the T-B Model A-F discrimination verdict, the T-C decisive
+  projection-definability-vs-computability finding citing the undefined Qualify operation and Step 170,
+  the T-D sufficiency/identity/replay findings, and the T-E operation non-identifiability confirmation with
+  its semantic-equality refinement). This file provides independent CONFIRMATION that the script in file
+  0974 genuinely executes as written and produces exactly the claimed results -- a valuable, if not
+  independently novel, verification that file 0974's record accurately reflects real, reproducible
+  computational output rather than a merely plausible-looking but unexecuted script. Per this
+  reconstruction's standing treatment of duplicate/content-equivalent artifacts, this file receives a
+  minimal record; the full analysis and all findings remain recorded under canonical_source 0974.
+introduces: []
+defines: []
+refines:
+  - concept: "File 0974's t285_reconcile.py script"
+    refinement: "CONFIRMED to actually execute and produce exactly the results already documented, via this saved, independently-checkable output file"
+contradicts: []
+repeats:
+  - "Content-equivalent (not byte-identical, but substantively identical) to the print output already fully documented in file 0974's record."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record that file 0974's script is confirmed to actually execute and reproduce its claimed output, via this saved output file -- strengthening confidence in file 0974's findings as genuine, reproducible computation rather than merely plausible-looking code."
+anchor_test:
+  anchor: "File 0974's t285_reconcile.py script and its findings"
+  supports_dimension: "Confirms file 0974's script actually executes and produces the exact claimed output"
+  refines_or_contradicts: "confirms (does not contradict) file 0974's findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Line-by-line comparison of this file's output against file 0974's script print statements confirms exact substantive correspondence."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Saved execution output, content-equivalent to file 0974's own script logic and already fully analyzed under that record; provides confirmatory rather than novel value."

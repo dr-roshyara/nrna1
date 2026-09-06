@@ -1,0 +1,52 @@
+sequence: 967
+path: docs/knowledgeos/brainstorming/phase_measure_theory/external_research/20260831-172642_hpa-analysis-gita-chapter-05-application-to-knowledgeos-theory.md
+title: "HPA Analysis: Gita Chapter 5 -- Application to KnowledgeOS Theory (second pass) -- Continues the Milder, Non-Escalating Format Confirmed for Files 0965/0966: No Named-Triad 'Gaps Solved' Claim, Same All-Checkmark Verdict and Decorative Summation-Formula Closing Device"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "second-pass Gita chapter review, confirmed milder format"
+source_role: PRIMARY_RESEARCH
+canonical_source: 967
+importance: normal
+confidence: low
+about: >
+  Continues the second, "Application to KnowledgeOS Theory" pass (following files 0965 Ch.3, 0966 Ch.4),
+  now covering Chapter 5 (Karma Yoga's renunciation-vs-action question, the true renunciate, the lotus leaf,
+  the city of nine gates, equal vision) across eleven verse-range subsections plus five "Key Verses and
+  Their Application" case studies. **CONFIRMS the second pass's milder format**: no named-triad "gaps
+  solved" claim, the same all-checkmark Supervisory Verdict, and (per the established pattern) a closing
+  decorative qualitative-summation formula. Closes "Next: STEP 290 — TRANSFORMATION ALGEBRA," matching the
+  second pass's established designation.
+introduces: []
+defines: []
+refines:
+  - concept: "The second, milder 'Application to KnowledgeOS Theory' pass format (files 0965, 0966)"
+    refinement: "CONFIRMED CONSISTENT across a third consecutive chapter (5), strengthening the characterization of this second pass as structurally distinct from and milder than the first pass's most severe instances"
+contradicts: []
+repeats:
+  - "Repeats the all-checkmark verdict and decorative summation-formula pattern from files 0965/0966."
+bridge_candidates:
+  - "Whether this milder second-pass format holds consistently through all eighteen chapters, or whether the severe named-triad pattern eventually recurs within this pass as well."
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "Files 0965's and 0966's second-pass format"
+  supports_dimension: "Confirms the milder second-pass format across a third consecutive chapter"
+  refines_or_contradicts: "confirms the second pass's milder, non-escalating format"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Absence of the named-triad 'gaps solved' heading, directly checkable via full-text scan of this file."
+undefined_concepts: []
+open_questions:
+  - "Whether the milder second-pass format persists through all eighteen chapters."
+tier2_triggered: false
+tier2_reason: "Confirms an already-identified pattern (the second pass's milder format) without new content. Classified importance normal, tier2 not triggered."

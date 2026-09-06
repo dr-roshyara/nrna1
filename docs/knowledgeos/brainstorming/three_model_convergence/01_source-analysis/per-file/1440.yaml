@@ -1,0 +1,72 @@
+sequence: 1440
+path: "docs/knowledgeos/brainstorming/Thinking about mathematics - The philosophy of mathematics (2000) (Stewart Shapiro) (z-library.sk, 1lib.sk, z-lib.sk).pdf"
+title: "Thinking About Mathematics (Stewart Shapiro, 2000) -- a Complete Published External Philosophy-of-Mathematics Textbook, Read Only at Front Matter (Cover, Title, Copyright, Preface) -- a Scanned 321-Page Image-Only PDF With No Extractable Text Layer, Recorded as Unexamined Background Literature Per the Corpus's Own Discipline of Never Importing External Sources as Architecture"
+date: "2026-08-26"
+bytes: 26391786
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a complete, externally-published academic monograph (Oxford University Press, 2000), scanned/image-only with no text layer, read only at front matter"
+source_role: LITERATURE_BACKGROUND
+canonical_source: 1440
+importance: minor
+confidence: high
+about: >
+  `Thinking about mathematics - The philosophy of mathematics (2000) (Stewart Shapiro)` -- a complete, 321-
+  page, externally-published academic textbook (Oxford University Press, ISBN 0-19-289306-8), NOT a corpus-
+  internal research artifact. Confirmed via front-matter read (cover, title page, copyright page, dedication,
+  and the full Preface) to be Shapiro's standard introductory survey of the philosophy of mathematics.
+
+  **CONFIRMS THE PDF IS SCANNED/IMAGE-ONLY WITH NO EXTRACTABLE TEXT LAYER**: `pdftotext` extraction returned
+  essentially empty output (20 bytes) across the first 20 pages, confirming this is a z-library scan without
+  OCR text embedding. Given its length (321 pages) and status as a complete, independently-published external
+  text rather than corpus research, it was read only at the front matter (cover through Preface) to confirm
+  identity, scope, and structure, consistent with this reconstruction's established practice of characterizing
+  rather than exhaustively processing lengthy external literature sources cited by the corpus's own research
+  (already-tracked pattern, e.g. files 1096/1109's "read by heading only" self-disclosures for similarly
+  extensive external material).
+
+  **DELIVERS THE BOOK'S FULL STRUCTURAL OUTLINE FROM ITS OWN PREFACE**: Part I "Perspective" (Ch 1 mathematics'
+  place in the history of philosophy; Ch 2 a broad survey of philosophy-of-mathematics problems and positions);
+  Part II "History" (Ch 3 Plato and Aristotle; Ch 4 Kant and Mill); Part III "The Big Three" (Ch 5 logicism;
+  Ch 6 formalism; Ch 7 intuitionism); Part IV "The Contemporary Scene" (Ch 8 mathematical realism/Platonism;
+  Ch 9 nominalism/anti-realist reinterpretation; Ch 10 STRUCTURALISM -- "This is my own position (Shapiro
+  1997), so one might say that I have saved the best for last"). Confirms the book's central epistemological
+  and metaphysical questions ("What is mathematics all about? ... What is the nature of mathematical truth?
+  ... What is a proof? Are proofs absolutely certain?") as background material potentially relevant to the
+  already-tracked corpus's own extensive philosophy-of-mathematics-adjacent discipline (the entire already-
+  tracked "external literature used for classification only, never imported as architecture" rule this
+  reconstruction has tracked operating throughout the equality research arc, e.g. files 1088, 1092, 1116).
+
+  This is recorded as UNEXAMINED BACKGROUND LITERATURE, not primary corpus research: no corpus-internal
+  finding, hypothesis, gap, or correction is attributable to this file specifically, since the corpus's own
+  research artifacts (already exhaustively tracked across files 1010-1119) never cite Shapiro by name in any
+  passage this reconstruction has encountered. Its presence in the primary-corpus directory appears to reflect
+  its role as raw reference material available to (but not directly authored by) the research programme.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "The remaining 313 pages of this scanned, non-OCR'd academic text, not read beyond the front matter given its status as a complete external publication rather than corpus-internal research."
+mathematical_content: true
+gita_content: false
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "This reconstruction's already-tracked 'external literature used for classification only' discipline (files 1088, 1092, 1116)"
+  supports_dimension: "Confirms the presence of a complete, unexamined external philosophy-of-mathematics text available as background reference material, consistent with but not directly cited by the corpus's own tracked research"
+  refines_or_contradicts: "neither refines nor contradicts; background literature with no direct corpus citation found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether any corpus research artifact directly cites Shapiro's structuralism (Ch 10) or this text's other positions, given this reconstruction has not yet encountered such a citation across the extensively-tracked equality/Gita research arc."
+tier2_triggered: false
+tier2_reason: "A complete, externally-published academic monograph, scanned without an extractable text layer, read only at front matter to confirm identity and structure -- background literature with no corpus-internal finding attributable to it, not primary research requiring detailed tier-2 tracking."

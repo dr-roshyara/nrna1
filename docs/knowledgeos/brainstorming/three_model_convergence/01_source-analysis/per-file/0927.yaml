@@ -1,0 +1,145 @@
+sequence: 927
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260831-005956_step_283_missing-part-governance-decision-protocol-authority-provenance-and-closure-criteria.md
+title: "STEP 283 -- MISSING PART: Governance Decision Protocol, Authority Provenance and Closure Criteria (Plus TWO Appended Reviews With an Unreconciled Internal Verdict Tension: the First Declares 'ACCEPTED -- COMPLETE,' the Second, Titled 'FINAL ACCEPTANCE,' Reverts to 'ACCEPTED CONDITIONALLY WITH THE EIGHT CORRECTIONS') -- Delivers the Sub-Arc's Most Granular Governance-Execution Machinery: the Prepare->Decide->Ratify->Record Four-Act Model, the Authority Provenance Chain, a Refined 283A-283D Four-Stage Execution Pipeline, the GD-01..GD-08 Criticality Classification, and Twelve Named Final Deliverables"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "governance-protocol correction delivering all eight items required by file 0926's appended review, plus two further layered reviews"
+source_role: PRIMARY_RESEARCH
+canonical_source: 927
+importance: critical
+confidence: medium
+about: >
+  Opens: "Based on the supervisory ruling and the Step 283 framework already established, the missing part
+  should not reopen the theory. It should close the governance-process specification" -- directly responding
+  to file 0926's appended review's eight itemized corrections, delivering each in turn as new numbered
+  sections 12-26 to be appended to Step 283.
+
+  **§12 delivers THE FILE'S CENTRAL NEW APPARATUS: A FOUR-ACT GOVERNANCE MODEL** boxed **`Prepare→Decide→
+  Ratify→Record`**, explicitly "MUST NOT be collapsed into one operation" -- Prepare (verifier, creates no
+  authority, `Prepare(x)⇏Authoritative(x)`); Decide (human authority, normative, `Decision(d)≢Derived(d)`);
+  Ratify (the explicit binding-acceptance act, with a seven-field `R_a` schema: authority/decision/scope/
+  effective_from/record/justification/version); Record (the governance register becomes authoritative,
+  boxed **`GovernanceAuthority=Record(ValidRatificationAct)`** not `Inference(theory)`).
+
+  **§13-14 delivers AUTHORITY PROVENANCE**: distinguishes `Authority(a,scope)` as a theoretical relationship
+  from `LegitimateAuthority(a,scope,source,validity)` as an organizational fact -- boxed **`Theory defines
+  Authority`** but boxed **`Organization establishes LegitimateAuthority`** -- and a seven-link minimum
+  provenance chain (Organizational Mandate→Authority/Delegation→Decision Maker→Decision→Ratification Act→
+  Governance Record→Effective Policy) with the formal biconditional `ValidRatification(d)⟺Mandate(a)∧
+  Authorized(a,d)∧Decision(a,d)∧Recorded(d)∧Effective(d)`.
+
+  **§15** delivers a concrete nine-row Governance Decision Register table (renumbering the prior GD-01..
+  GD-08 as `ND-282-1/2` plus `G-283-1..7`) with explicit `Pending`/`TBD`/`OPEN` placeholder values and the
+  explicit caution "`Pending` MUST NOT be interpreted as `Rejected`."
+
+  **§16-17** delivers the Non-Binding Verifier Recommendation classification template and **THE GOVERNANCE
+  CLOSURE FUNCTION**: `GC=ACHIEVED ⟺ ∀d∈D: A_d∧R_d∧E_d∧S_d∧J_d∧I_d∧P_d`, restating `GC≠f(FC,CC,EC)`.
+
+  **§18-19** delivers the Policy Change Protocol (a five-stage version-transition pipeline
+  `Policy_v→...→Policy_{v+1}^{effective}` with nine validity conditions) and append-oriented Policy History
+  semantics (`CurrentPolicy(t)=Resolve({p|t∈Validity(p)})`).
+
+  **§20-21** reconfirms the `Policy∉K ∧ KnowledgeAboutPolicy∈K` distinction and delivers a three-way
+  eventual-consistency model (`Policy^approved` / `Policy^effective` / `Policy^observed_node_i`) with the
+  convergence invariant `t≥EffectiveFrom(v2)⇒eventual convergence to v2`.
+
+  **§22 delivers the THREE STOP-CONDITION OUTCOMES** (A `GC=ACHIEVED`, B `GC=PARTIAL`, C `GC=NOT CLAIMED`
+  -- "a valid scientific result... MUST NOT be converted into an implied approval").
+
+  **§23 delivers AN EXPLICIT PROHIBITION LIST** forbidding `FC⇒GC`, `CC⇒GC`, `EC⇒GC`,
+  `FC∧CC∧EC⇒GC`, `VerifierRecommendation⇒HumanDecision`, and `HumanDecision⇒Ratification`, with the
+  single valid chain boxed **`LegitimateAuthority→Decision→RatificationAct→GovernanceRecord→GC`**.
+
+  **§24-26** delivers a twelve-item Final Deliverables list, the Revised Final Verdict structure (report
+  `FC,CC,EC,GC` independently), and the Step-284 boundary restated (`Step 284 permitted with GC=NOT
+  CLAIMED`).
+
+  **The "HPA Supervisory Interpretation"** closing section delivers the central corrective reframing: "Step
+  283 is not the step in which the verifier decides what the organization should govern. It is the step in
+  which the verifier makes the governance decisions explicit..." and elevates boxed **`Derivation≠
+  Recommendation≠Decision≠Ratification`** to "a constitutional rule of the KnowledgeOS governance model."
+
+  **THE FIRST APPENDED REVIEW** ("HPA SUPERVISORY REVIEW: STEP 283 — MISSING PART," same date) declares all
+  eight of file 0926's corrections ✅ resolved in a explicit mapping table, and issues **"Status: ACCEPTED —
+  COMPLETE," "Step 283 is ACCEPTED as complete and execution-ready,"** with "Next: STEP 284 — BOOK
+  ARCHITECTURE GATE."
+
+  **THE SECOND APPENDED SECTION** ("HPA SUPERVISORY RULING: STEP 283 — FINAL ACCEPTANCE," same date) --
+  **DIRECTLY IN TENSION WITH THE FIRST REVIEW'S "COMPLETE" VERDICT** -- opens "Step 283 is fundamentally
+  correct but requires the eight corrections identified in the supervisory review before execution" and
+  concludes **"Status: ACCEPTED CONDITIONALLY with the eight corrections,"** despite this very file having
+  just delivered those eight corrections in §§12-26 and the immediately preceding review having already
+  declared them ✅ resolved -- **an unreconciled internal verdict inconsistency within a single file**, a
+  further, more acute instance of this sub-arc's already-tracked overclaim/status-oscillation pattern
+  (joining the roadmap-naming back-and-forth of files 0917-0920). This second section nonetheless delivers
+  genuinely new content: **A REFINED FOUR-STAGE EXECUTION PIPELINE `283A`-`283D`** (Governance Ratification
+  Preparation [Verifier] → Human Governance Act [Legitimate Authority] → Governance Recording [Governance
+  System] → Governance Verification [Verifier]), refining file 0926's simpler two-stage (283A-only) model;
+  **A THREE-INDEPENDENT-ACTS TAXONOMY** (Theory Acceptance / Governance Adoption / Implementation
+  Certification, each with a distinct organizational meaning, "must remain independent"); a three-layer
+  canonical-specification architecture diagram (Formal theory / Governance model / Organizational
+  decisions); the concrete GD-01..GD-08 criticality classification table (five critical, three optional)
+  matching file 0926's review's own proposed table verbatim; a GC amendment-lifecycle extension
+  (`NOT CLAIMED→PARTIAL→ACHIEVED→AMENDED/SUPERSEDED→NEW GOVERNANCE VERSION`, "governance is versioned, not
+  terminal"); and closes designating **"Next: REVISED STEP 283 — GOVERNANCE RATIFICATION PREPARATION (Step
+  283A)"** -- a THIRD distinct "next" designation across this file's two internal reviews (the first says
+  Step 284 directly; the second says a further Revised Step 283A), a further unreconciled sequencing
+  ambiguity.
+introduces:
+  - concept: "The Prepare->Decide->Ratify->Record four-act governance model, explicitly non-collapsible"
+  - concept: "The Authority(a,scope) [theoretical] vs LegitimateAuthority(a,scope,source,validity) [organizational-fact] distinction, with the seven-link minimum provenance chain"
+  - concept: "The refined 283A-283D four-stage execution pipeline (Preparation/Human Act/Recording/Verification), refining file 0926's simpler two-stage model"
+  - concept: "The Three Independent Acts taxonomy: Theory Acceptance, Governance Adoption, Implementation Certification"
+  - concept: "The explicit GD-01..GD-08 criticality classification (five critical, three optional)"
+  - concept: "The GC amendment-lifecycle extension: NOT CLAIMED->PARTIAL->ACHIEVED->AMENDED/SUPERSEDED->NEW GOVERNANCE VERSION, 'governance is versioned, not terminal'"
+  - concept: "AN UNRECONCILED INTERNAL VERDICT TENSION WITHIN A SINGLE FILE: the first appended review declares Step 283 'ACCEPTED -- COMPLETE' and ready for Step 284; the second appended section, titled 'FINAL ACCEPTANCE,' reverts to 'ACCEPTED CONDITIONALLY' and designates a further 'REVISED STEP 283' as next"
+defines:
+  - concept: "GovernanceAuthority = Record(ValidRatificationAct), not Inference(theory)"
+    definition: "The organizationally-recognized authority backing a governance decision comes into existence only through the durable recording of a valid ratification act performed by a legitimate human authority -- never through logical inference from the mathematical theory's own correctness or completeness. A theory being formally closed, computationally realized, or empirically validated supplies no organizational authority whatsoever; only an actual recorded ratification act does"
+  - concept: "ValidRatification(d) (the formal ratification validity biconditional)"
+    definition: "A governance decision d counts as validly ratified if and only if: a genuine organizational mandate for some authority a exists (Mandate(a)), a is authorized to decide on d (Authorized(a,d)), a actually made the decision (Decision(a,d)), the decision is recorded (Recorded(d)), and the decision is currently within its effective validity interval (Effective(d)). All five conjuncts are independently required; a missing link anywhere in this chain means governance closure cannot be claimed for that specific decision"
+refines:
+  - concept: "0926's appended supervisory review's eight required corrections"
+    refinement: "DELIVERED, section by section (§§12-26), each explicitly mapped to its originating correction number in the first appended review's resolution table"
+  - concept: "0926's two-stage (283A-only) execution model"
+    refinement: "REFINED into an explicit four-stage 283A-283D pipeline (Preparation/Human Act/Recording/Verification) in this file's second appended section"
+  - concept: "0925's/0926's authority doctrine (mechanism records, does not grant/create authority)"
+    refinement: "FURTHER SHARPENED into the Authority-as-theoretical-relationship vs LegitimateAuthority-as-organizational-fact distinction, with an explicit seven-link provenance chain and formal ValidRatification biconditional"
+contradicts:
+  - concept: "This file's own first appended review's verdict ('ACCEPTED — COMPLETE,' Step 283 execution-ready, Next: STEP 284)"
+    contradiction: "DIRECTLY CONTRADICTED by this same file's own second appended section ('FINAL ACCEPTANCE'), which reverts to 'ACCEPTED CONDITIONALLY with the eight corrections' and designates a further, distinct 'REVISED STEP 283 — GOVERNANCE RATIFICATION PREPARATION (Step 283A)' as next -- an unreconciled internal verdict and next-step-designation inconsistency within a single file, the most acute instance yet of this sub-arc's overclaim/status-oscillation pattern"
+repeats:
+  - "The GD-01..GD-08 criticality table in this file's second appended section repeats file 0926's appended review's own proposed table verbatim, without new content."
+  - "The three-outcome GC stop-condition structure (§22) repeats material already established in files 0921-0926."
+bridge_candidates:
+  - "Whether a further 'REVISED STEP 283' / 'Step 283A — Governance Ratification Preparation' artifact is produced separately, per the second appended section's designation, or whether the corpus instead proceeds directly to Step 284 per the first appended review's designation -- these two predictions from within the same file are mutually exclusive as stated and should be checked against whichever file is encountered next."
+  - "Whether the actual organizational ratification act (resolving GD-01/02/04/06/07 as critical) is ever recorded anywhere in the visible corpus."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Prepare->Decide->Ratify->Record four-act model and the Authority-vs-LegitimateAuthority provenance-chain formalization as the sub-arc's most granular governance-execution machinery, directly extending files 0924/0925/0926's authority doctrine into an auditable, falsifiable protocol."
+  - "dimension-registry.md: record the unreconciled internal verdict tension within this single file (first review: ACCEPTED-COMPLETE/Next-Step-284; second section: ACCEPTED-CONDITIONALLY/Next-Revised-Step-283A) as a new, more acute instance of the sub-arc's recurring overclaim/status-oscillation pattern, directly relevant to this reconstruction's own eventual synthesis discipline of never silently resolving such tensions."
+anchor_test:
+  anchor: "0926's Step-283 framework and its appended review's eight corrections; 0924's/0925's authority doctrine; the sub-arc's recurring overclaim-review-correction and roadmap-naming-inconsistency patterns"
+  supports_dimension: "Delivers all eight corrections file 0926's review required, refines its two-stage execution model into four stages, and further sharpens the authority doctrine into a formal provenance chain. Its own two appended reviews directly contradict each other on both the final verdict and the designated next step"
+  refines_or_contradicts: "delivers 0926's required corrections; refines 0926's execution model and 0924's/0925's authority doctrine; its own two internal reviews contradict each other"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The first appended review's explicit line 'Status: ACCEPTED — COMPLETE' / 'Step 283 is ACCEPTED as complete and execution-ready' is directly checkable against the second appended section's explicit line 'Status: ACCEPTED CONDITIONALLY with the eight corrections' -- both present in the same file, dated identically (2026-08-31)."
+  - "The first review's 'Next: STEP 284 — BOOK ARCHITECTURE GATE' is directly checkable against the second section's 'Next: REVISED STEP 283 — GOVERNANCE RATIFICATION PREPARATION (Step 283A)' for the next-step-designation inconsistency."
+undefined_concepts: []
+open_questions:
+  - "Which of the two mutually exclusive next-step designations within this file (Step 284 directly, vs. a further Revised-Step-283A) is actually followed in the corpus's file-path sequence."
+  - "Whether the unreconciled internal verdict tension (COMPLETE vs. CONDITIONALLY ACCEPTED) is ever explicitly noticed and resolved anywhere later in the corpus."
+  - "Whether the actual organizational ratification act is ever recorded, resolving GD-01/02/04/06/07."
+tier2_triggered: true
+tier2_reason: "Delivers the sub-arc's most granular governance-execution machinery (the four-act Prepare-Decide-Ratify-Record model, the formal ValidRatification biconditional, the refined 283A-283D pipeline, and the Three Independent Acts taxonomy), while its own two appended reviews present a genuinely notable unreconciled internal contradiction on both the final acceptance verdict and the designated next step -- the most acute single-file instance yet of this sub-arc's recurring overclaim/status-oscillation and roadmap-sequencing-ambiguity patterns. Classified importance critical; confidence medium given this internal inconsistency and the still-unresolved organizational ratification act."

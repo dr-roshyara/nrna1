@@ -1,0 +1,55 @@
+sequence: M0190
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-183102_untitled-6-working-notes.md
+title: "Content subset of M0189 (verbatim identical text, sections 1-14 only — missing the KR-ZERO-ALGEBRA-2026-09 20-section protocol and closing remarks)"
+date: "20260902-183102"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0190
+importance: low
+confidence: high
+about: >
+  Verbatim-identical text to the first portion of M0189 (the Transformation-relative Zero
+  review-and-redesign, sections 1-14 of that document: counterfactual Zero definition, rejection of
+  direct-sum decomposition, rejection of the projection/idempotence claim, the Π_{Q,C,R,S}
+  preservation-contract generalization, and the KR-ZERO-ALGEBRA research-candidate register) —
+  but this file ends at M0189's section 14 and does NOT include M0189's subsequent 20-section
+  KR-ZERO-ALGEBRA-2026-09 empirical protocol or its closing "one important change" remarks. Not
+  manifest-flagged DUPLICATE (checksums differ due to the truncation), so recorded per standing
+  discipline, but at minimal depth given the near-total content overlap with M0189 already recorded
+  in full.
+introduces: []
+defines: []
+refines:
+  - "Identical content to M0189's sections 1-14 — see M0189 for the complete analysis (Transformation-relative Zero, Invariant≠Zero, direct-sum/projection rejections, Π_{Q,C,R,S})"
+contradicts: []
+repeats:
+  - "M0189's entire content up to (but not including) its KR-ZERO-ALGEBRA-2026-09 protocol section"
+bridge_candidates:
+  - "Whether this file represents an earlier draft/save-point of the same authored response that M0189 later continues with the full experimental protocol, or an independent truncated copy"
+mathematical_content: >
+  Identical to M0189's — see that record; no content here beyond what M0189 already covers.
+gita_content: null
+kernel_content: >
+  A truncated subset of M0189; carries no content not already captured there.
+registry_updates:
+  - "Confirmed as a near-total content subset of M0189 — not manifest-DUPLICATE-flagged, but substantively redundant; no new registry entry warranted beyond M0189's own"
+anchor_test:
+  anchor: false
+  supports_dimension: null
+  refines_or_contradicts: "refines (identical to M0189, truncated)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Is this a draft/save-point predating M0189's full version, or an independent truncated copy?"
+tier2_triggered: false
+tier2_reason: null

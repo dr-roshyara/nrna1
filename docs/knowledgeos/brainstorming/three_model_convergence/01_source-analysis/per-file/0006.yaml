@@ -1,0 +1,76 @@
+sequence: 6
+path: docs/knowledgeos/KnowledgeOS_ARB_Decision_Docket.md
+title: KnowledgeOS — ARB Decision Docket
+date: 2026-08-03
+bytes: 17740
+doc_type: decision preparation / ordered agenda (REV 2); recommendations only
+
+primary_model_initial: meta_research
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+confidence: high
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - packages C1 decisions: platform cost metric, mission ratification, ontology reconciliation, register list
+  - no epistemic-lineage vocabulary present
+secondary_models: [governance, evidence, validation, contradiction, ddd, provenance]
+
+status: DR
+maturity: developing
+importance: medium
+
+introduces:
+  - gating_effect_ordering_of_decisions
+  - define_the_metric_before_running_it
+  - mandatory_opposing_evidence_field
+  - governs_by_a_proposed_constitution
+  - authorization_recursion
+  - declare_the_sense_rather_than_defend_the_use
+defines: []
+hypotheses:
+  - adopt_one_ontology_as_frame_and_scope_the_other_two_under_it
+  - pa_commissions_as_second_lawful_authorization_channel
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 6th consecutive file; D-8 exists because THREE knowledge ontologies compete
+  - platform_cost      # the metric D-9a must define; the control has never fired for want of it
+  - service            # contested; remedy is DECLARE the sense, not assert equivalence
+  - canonical
+  - capability
+open_questions:
+  - D-9a define the platform cost measurement basis
+  - D-9b run the over-evolution check
+  - D-5 ratify the enacted mission
+  - D-1 dispose the E-1 falsification
+  - D-8 reconcile the three knowledge ontologies
+  - D-3 amend the frozen context map
+  - D-2 mint CAP-001 authorization
+  - D-4 ratify the ES set and reference architecture
+  - D-7 issue the canonical register list
+  - D-6 state that role separation is session-simulated
+  - D-10 admit model-amnesia prevention as requirement candidate
+  - Package 11 authorize the platform architecture workstream (recommended DEFER)
+
+depends_on: [1, 3, 4, 5]
+extends: [1, 3, 5]
+refines: [1, 5]
+renames: []
+contradicts: [6]     # its own Package 1 supporting-evidence line, corrected in REV 2
+supersedes: []       # supersedes its own REV 1
+repeats: [1, 3]
+connects_to: [3, 4, 5]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Contains a measurement-definition result bearing directly on §27 (a measurement cannot be run
+  before its basis is defined; evidence offered beforehand may presuppose the answer) — with a
+  worked instance of the author catching that error in their own text. Also records a ubiquitous-
+  language contradiction ("services" vs the adopted no-software-machinery stance, which bars a
+  state machine absent insufficiency evidence — relevant to §26/§32) and an authorization
+  recursion the corpus notices but does not formalise.

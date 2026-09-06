@@ -1,0 +1,75 @@
+sequence: "0120"
+path: docs/knowledgeos/brainstorming/20260822-114551-wisdom-transformation-epistemic-humility-research-extraction.md
+title: "Wisdom Transformation and Epistemic Humility: Research Extraction (external literature)"
+date: "2026-08-22"
+bytes: 25202
+model:
+  primary: x
+  secondary: [c1]
+source_role: INDEPENDENT_RESEARCH
+canonical_source: "0117"
+importance: high
+confidence: high
+about: >
+  Externally-sourced research review (real citations: ideas.repec, dl.acm, a Stanford paper on wise
+  decision-making, a named "BODHI framework for AI humility") formalizing the Ganesha wisdom-cluster
+  material (0117/0119) into six WISDOM-MECH candidates, all explicitly classified "mechanism," none
+  kernel. Introduces a genuinely useful new distinction: Causal Memory vs Historical Memory.
+
+introduces:
+  - "Causal Memory vs Historical Memory: a database remembers 'event happened'; a wise system remembers
+    'event happened + conditions + causes + consequences + similar events.' Structured comparison table
+    (Content/Structure/Function/Revision/Query) -- a genuine refinement of Reasoning Provenance/
+    Temporal Validity, not previously stated this precisely"
+  - "WISDOM-MECH-001..006 (Listening/Causal-Memory/Discrimination/Revision-without-Deletion/Noise-
+    Control/Integration), all classified 'Strong candidate... mechanism', extending rather than adding
+    to kernel dimensions -- an eleventh-ish ID scheme, but explicitly scoped to mechanism-status only"
+  - "Two explicit rejections: 'Wisdom as stored artifact' and 'Wisdom generation as kernel function' --
+    both marked Rejected/dangerous, consistent with the established discipline"
+  - "'BODHI framework for AI humility' -- a named external framework, not elaborated further here"
+
+defines: []
+
+refines:
+  - "Reasoning Provenance: sharpened with the Causal-vs-Historical-Memory distinction (conditions/
+    causes/consequences, not just event logging)"
+
+contradicts: []
+
+repeats:
+  - {concept: "Ganesha wisdom-cluster mechanisms restated as formal external-research candidates", canonical_source: "0117", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+registry_updates:
+  - "Reasoning Provenance entry: Causal-vs-Historical-Memory distinction added as a refinement"
+  - "No new kernel-level entries -- six WISDOM-MECH candidates all explicitly mechanism-scoped"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity", "Unknown Preservation"]
+  refines_or_contradicts: "No reshaping; refines Reasoning Provenance via Causal Memory."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "Genuine external citations (Stanford wise-decision-making paper, organizational-learning
+    literature) grounding the Ganesha-cluster mechanisms in real research, not analogy alone"
+
+undefined_concepts:
+  - "'BODHI framework for AI humility' -- named, not elaborated"
+
+open_questions: []
+
+tier2_triggered: true
+tier2_reason: >
+  Genuine refinement (Causal vs Historical Memory) grounded in real external citations, though
+  otherwise formalizing already-tracked mechanism-level material from the Ganesha cluster.

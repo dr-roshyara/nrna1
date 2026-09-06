@@ -1,0 +1,82 @@
+sequence: 1070
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-290/06-declaration-derivation-audit.md
+title: "06 -- Declaration vs Derivation Fork (Step 290 mandate SS7): Rigorously Elaborates the Already-Tracked Declaration-Route-vs-Derivation-Route Distinction (File 1052) Into a Full Two-Branch Audit for equiv_K, Confirming the Corpus Closes Neither Branch and Delivering the Sharp Limit That a Declared equiv Would Not Be Self-Validating as a Congruence"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the sixth numbered Step-290 artifact, elaborating the already-tracked declaration-vs-derivation distinction into a full two-branch decision audit"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1070
+importance: major
+confidence: high
+about: >
+  "06 — Declaration vs Derivation Fork (mandate §7)." Directly elaborates the already-tracked Step-289
+  distinction (file 1052) between resolving `≡_K` via a DECLARATION route (a governance act) versus a
+  DERIVATION route (requiring congruence, which needs `𝒯`/`δ` first) into a full, disciplined two-branch
+  audit with precise consequences for each.
+
+  **BRANCH A — `≡` NORMATIVELY DECLARED**: would establish a usable `≡` (making `δ`'s postconditions
+  statable), break cycles Z-2 and Z-4 (already-tracked, file 1069), conditionally unblock the 8 derivable
+  prerequisites (already-tracked, file 1052), and make "N-1′" moot. **Would NOT establish**: that the
+  declared `≡` is a CONGRUENCE ("`258.9` must still be tested, and a declaration cannot make it true"),
+  decidability (`012 §35`: "No authority can ratify decidability into existence"), resolution of `𝒪_K`
+  (still open), minimality (`259` forbids the proof before congruence analysis), or the representation block
+  (`261.23` conditions 4-5 untouched). Delivers the sharpest limit as a boxed claim: "declaring `≡` and then
+  DISCOVERING it is not a congruence would mean `258.9`'s own verdict applies -- '`≡_K` is too coarse' --
+  i.e. THE DECLARATION WOULD BE FALSIFIED BY THE VERY TEST IT WAS MEANT TO UNBLOCK. Declaration is not
+  self-validating."
+
+  **BRANCH B — `≡` MUST BE DERIVED**: names each blocking missing construct precisely -- `𝒯` (no congruence
+  test or selection criterion without it), `δ` (congruence is a property OF `δ`; commit case
+  unspecifiable), `𝒪_K` (the only candidates for `≡` are defined over it), and a minimality proof (`259`
+  forbids it before congruence analysis). Boxed: "Branch B is blocked on `𝒯`, `δ`, `𝒪_K` -- i.e. on `N-4`."
+
+  **CONFIRMS THE CORPUS CLOSES NEITHER BRANCH**: cites `261.21` (offers a candidate, declines to ratify --
+  already tracked), `258.37` ("we still do not have the final `=_X` or `≡_K`" -- already tracked, file
+  1067), `259` (blocks the derivation route on `𝒯`), and `261.23` ("selection must stop while equality
+  remains ambiguous" -- states the block, does not resolve it). "No branch is selected."
+
+  **DELIVERS A GENUINELY INTERESTING STRUCTURAL OBSERVATION ABOUT THE FORK'S OWN ASYMMETRY**: "Branch A is
+  AVAILABLE NOW and NOT SELF-VALIDATING; Branch B is UNAVAILABLE NOW and WOULD BE SELF-VALIDATING. That
+  asymmetry is a FACT ABOUT THE FORK, not an argument for either side" -- a disciplined refusal to let a
+  structural observation slide into an implicit recommendation.
+
+  Confirms the STATUS block: ESTABLISHED both branches' consequences, the corpus does not close the fork,
+  Branch B is blocked on `N-4`, a declaration cannot establish congruence or decidability · BOUNDED exactly
+  two branches · NORMATIVE the choice · DEFERRED, no branch selected.
+introduces:
+  - concept: "The full two-branch declaration-vs-derivation decision audit for equiv_K, precisely enumerating what each branch would and would not establish"
+  - concept: "The sharp limit that a normatively declared equiv is not self-validating as a congruence -- discovering non-congruence after declaration would falsify the declaration by the very test (258.9) it was meant to unblock"
+  - concept: "The disciplined structural observation that the fork's asymmetry (Branch A available-but-not-self-validating, Branch B unavailable-but-self-validating) is a fact about the fork, not an argument for either side"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked declaration-route-vs-derivation-route distinction for resolving equiv (file 1052)"
+    refinement: "ELABORATED into a full, precise two-branch audit with named consequences and named blocking constructs for each branch, and the corpus's own refusal to close the fork confirmed via four independent corpus loci"
+contradicts: []
+repeats:
+  - "Cites and reconfirms already-tracked findings (Z-2/Z-4 cycle-breaking, the 8 derivable prerequisites, 261.21's candidate-not-assertion status, 258.37, 259's minimality-proof restriction, 261.23's block statement) as consequences within this fork audit's structure."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the full declaration-vs-derivation two-branch audit for equiv_K -- what each branch would/would not establish, the sharp non-self-validation limit on declaration, the corpus's refusal to close the fork, and the disciplined structural observation about the fork's own asymmetry."
+anchor_test:
+  anchor: "This reconstruction's already-tracked declaration-route-vs-derivation-route distinction for resolving equiv (file 1052)"
+  supports_dimension: "Elaborates this distinction into a full, precise decision audit confirming the corpus resolves neither branch and delivering a sharp limit on declaration's self-validating power"
+  refines_or_contradicts: "refines (elaborates) the prior tracked finding"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The Branch A/Branch B consequence tables and the four closing corpus citations are directly checkable against files 1052 (dependency-graph cut), 1067 (261.21/258.37 candidate framing), and 1069 (Z-2/Z-4 necessity) for exact consistency."
+undefined_concepts: []
+open_questions:
+  - "Whether the corpus ever subsequently selects Branch A or Branch B via a genuine governance act, given this file's finding that neither is currently selected."
+tier2_triggered: true
+tier2_reason: "Elaborates the already-tracked declaration-vs-derivation distinction into a full, disciplined two-branch decision audit, delivering the sharp limit that declaration is not self-validating as a congruence and confirming the corpus closes neither branch, plus a genuinely interesting disciplined observation about the fork's own asymmetry. Classified importance major and confidence high given the rigor and direct connection to prior tracked findings."

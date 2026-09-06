@@ -1,0 +1,59 @@
+====================================================================================================
+F21 — PROBABILITY NECESSITY TEST
+====================================================================================================
+
+STEP 1 — Does a probability space exist in the corpus?
+  scanned 1897 files
+    Omega              appears in 271 files
+    sigma-algebra      appears in 38 files
+    triple             appears in 69 files
+    random variable    appears in 42 files
+    estimator          appears in 46 files
+    estimand           appears in 43 files
+  NOTE: appearance of a SYMBOL is not construction of a SPACE. Checked below.
+
+STEP 2 — the seven probability questions, answered from the theory as it stands
+    What random experiment exists?     NONE. Assertions are made by actors; evidence is observed. No repeatable trial is defined anywhere.
+    What is Omega?                     UNDEFINED. No sample space of outcomes is constructed.
+    What is F?                         UNDEFINED. No sigma-algebra over any Omega.
+    What is P?                         UNDEFINED. No measure. str is ORDINAL — a measure requires at least an interval structure.
+    What are the random variables?     NONE defined.
+    What is the estimand?              NONE. No population parameter is named.
+    What is the estimator?             NONE. No estimation procedure exists.
+
+STEP 3 — THE CRITICAL TEST: remove probability. Which mandatory constructs break?
+    OK     K = (A,R)                  set + relation. no measure required
+    OK     Assertion                  id = H(P,e,c,t,Pi). hashing, not probability
+    OK     WellFormed(P)              membership in V_D. decidable
+    BREAK  Sigma                      ORDINAL fold over e. |sup|=1->Weak, |sup|=3->Moderate. counting, not measuring
+    OK     Sigma ordering             <= on an ordinal scale. no arithmetic, no measure
+    OK     contradicts                predicate over (E,D,V,c,t,R). boolean
+    BREAK  StructuralValid            4 decidable conjuncts
+    OK     Transformation T           guarded, deterministic
+    OK     Replay                     fold. deterministic
+    OK     Identity/Equality          content hash
+    OK     Lineage                    reachability in R_der. graph traversal
+    OK     Policy Apply               three-valued conjunction. no averaging (42.10 forbids it)
+    OK     Authorize                  set containment: Scope(o) subset Scope(a)
+
+  CONSTRUCTS BROKEN BY REMOVING PROBABILITY: 2  ['Sigma', 'StructuralValid']
+
+STEP 4 — is there ANY claim in the canonical theory that requires probability?
+    Sigma = (dir,str)                              NO — str is ORDINAL by construction; 42.10 forbids averaging
+    Assessment                                     NO — a fold over e under a Policy; policy gates are three-valued
+    JustificationStrength                          NO — ORDINAL {prose,reviewed,tested,executable,proven}
+    Admissible = Pre^Inv^Assur^Auth                NO — strict conjunction, explicitly NO averaging
+    Risk(action)                                   NO — ORDINAL
+    'KnowledgeOS = Probability Distribution' (step 246) *** THE ONLY ONE. And it constructs no space. ***
+
+VERDICT F21:
+  Removing probability from the foundational theory breaks ZERO mandatory constructs.
+  Every quantitative notion in the canonical theory is ORDINAL, and the corpus's own
+  no-averaging law (42.10) actively FORBIDS the arithmetic a measure would license.
+
+  => PROBABILITY IS NOT A FOUNDATIONAL DEPENDENCY.
+     It is a SPECIALISED MEASUREMENT/STATISTICAL MODEL, applicable within a Measurement
+     bounded context, and OUTSIDE the declared scope of the core theory.
+
+  => T-3 IS NOT THEORY-CRITICAL.  Primary classification: M (Measurement) + S (Scope).
+     Step 246's 'KnowledgeOS = Probability Distribution' remains an UNSUPPORTED SOURCE CLAIM.

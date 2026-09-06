@@ -1,0 +1,68 @@
+sequence: 2338
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/05_frame-problem-audit.md
+title: "Step-292/05 — the Frame Problem: 'State What Changes a Thing; Everything Else Persists by Construction' Transfers as Method; None of Three Required Assumptions Transfer; Proposes an SSA Over (Standing, Boundary) Pairs Rather Than Booleans"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "isolates the one genuinely transferable element of Reiter's frame-problem solution (the persistence-by-construction method) from three required background assumptions, none of which KnowledgeOS supplies, and proposes a concrete generalization (SSA over typed pairs rather than booleans) as an open next question"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2338
+importance: high
+confidence: high
+about: >
+  Delivers the detail behind file 2332's already-tracked "persistence-by-construction as a design method
+  -- CORROBORATED" finding, now with the explicit statement "this is genuinely useful and is the
+  strongest positive result of this step": "[EXP] the METHOD transfers: 'state what changes a thing;
+  everything else persists by construction.'"
+
+  **DELIVERS A THREE-ROW TABLE OF ASSUMPTIONS REITER REQUIRES THAT KNOWLEDGEOS DOES NOT SUPPLY**: causal
+  completeness (NO -- "an epistemic system's evidence arrives from channels it does not control," citing
+  a specific quantitative measurement: "KR-M2O measured what happens when an unmodelled channel misleads:
+  99.3% vs 0.75% detection" -- a bridge candidate to an unincluded corpus experiment); consistent effect
+  axioms (NO -- contradiction is first-class); two-valued fluents (NO -- KR-CONTR-EVAL: "no flat domain
+  of any cardinality is adequate; the surviving factorization is Status×Typed Boundary").
+
+  **DELIVERS THE EXPLICIT DEEPEST-ROW ANALYSIS**: "Reiter's fluents are two-valued. KnowledgeOS
+  established that a flat value domain is insufficient regardless of cardinality -- the obstruction is
+  structural, not cardinal. An SSA over two-valued fluents cannot carry the boundary component that
+  KR-CONTR-FDE showed is indispensable."
+
+  **DELIVERS A CONCRETE GENERALIZATION PROPOSAL, EXPLICITLY OPEN**: "a KnowledgeOS successor-state
+  construction would need to be an SSA over (Standing,Boundary) pairs, not over booleans. Whether the
+  frame solution survives that generalization is untested and is a well-posed next question. OPEN."
+introduces:
+  - concept: "The explicit isolation of persistence-by-construction as the sole genuinely transferable element of Reiter's frame solution, with all three required background assumptions (causal completeness, consistent effect axioms, two-valued fluents) failing to transfer"
+  - concept: "The specific quantitative citation KR-M2O (99.3% vs 0.75% detection) for the causal-completeness failure"
+  - concept: "The concrete, explicitly open generalization proposal: an SSA over (Standing, Boundary) typed pairs rather than booleans"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked file 2332 'persistence-by-construction CORROBORATED' finding"
+    refinement: "GIVEN THE EXPLICIT DESIGNATION 'the strongest positive result of this step', with the three failing background assumptions itemized and a concrete generalization proposal offered as the well-posed next question"
+contradicts: []
+repeats:
+  - "The high-level verdict (persistence-by-construction corroborated as a method, but causal completeness/consistent-effects/two-valued-fluents all fail to transfer) is already tracked in file 2332; this record captures the incremental quantitative citation and the concrete generalization proposal."
+bridge_candidates:
+  - "'KR-M2O' -- cited for the 99.3% vs 0.75% detection measurement on unmodelled-channel misleading; not included in this file."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as isolating persistence-by-construction as the sole transferable element of Reiter's frame solution, and proposing an SSA over (Standing, Boundary) typed pairs (rather than booleans) as the well-posed open next question."
+anchor_test:
+  anchor: "This reconstruction's already-tracked file 2332 persistence-by-construction finding"
+  supports_dimension: "Isolates the single transferable method element and proposes a concrete typed-pair generalization for the SSA"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether an SSA over (Standing, Boundary) typed pairs (rather than booleans) is tested in any later material within this reconstruction's remaining primary-corpus reading."
+tier2_triggered: true
+tier2_reason: "Isolates persistence-by-construction as the sole transferable element of Reiter's frame solution, cites a specific quantitative measurement for the causal-completeness failure, and proposes a concrete typed-pair generalization of the SSA as an explicitly open next question. Classified importance high given the incremental precision beyond file 2332."

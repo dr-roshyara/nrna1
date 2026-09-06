@@ -1,0 +1,88 @@
+sequence: 2266
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260901-010705_step_286_sentence-as-candidate-representation-not-equal-to-dimension.md
+title: "Sentence as Candidate Representation, Not Equal to Dimension -- Delivers Sentence≠Proposition≠Dimension and the KNOWLEDGE ATOM KA=(p,d,v,c,e,t,π), the Smallest Structural Unit Feeding the Purification Algebra"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: important structural companion to file 2265's Epistemic Purification Algebra, delivering the smallest-unit construct (Knowledge Atom) that dimension/value operators would actually act upon
+  secondary_note: "a structural companion to file 2265's Epistemic Purification Algebra, addressing how individual Gītā sentences (or any sentence) relate to the dimension/value structure the purification operators act upon"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2266
+importance: high
+confidence: high
+about: >
+  A structural companion to the already-tracked Epistemic Purification Algebra (file 2265), addressing a
+  proposed but rejected simplification: "sentence=dimension." Corrected formulation: "Sentence→proposition
+  about a dimension" and, under certain conditions, "Sentence can instantiate a knowledge dimension" — worked
+  via the boiling-point example (dimension d=boiling point of water under specified pressure; sentence
+  supplies value v(d)=100°C; the sentence is not itself the dimension).
+
+  **DELIVERS SENTENCE≠PROPOSITION≠DIMENSION**, a three-way non-collapse worked via a Gītā example ("Buddhi
+  distinguishes" → proposition p=Buddhi performs discrimination → dimension d=discrimination capability →
+  value v(d)∈{high,low,unknown} or [0,1]), explicitly noting multiple sentences can contribute to the SAME
+  dimension (a second sentence "Buddhi should distinguish the permanent from the impermanent" refines the
+  same d rather than creating a new one).
+
+  **DELIVERS THE DISCIPLINE CHAIN**: Sentence→Proposition→Semantic interpretation→Candidate dimension→
+  Dimension definition→Evidence/context→Value — "that keeps the Gītā programme scientifically disciplined,"
+  explicitly warning against choosing a dimension "merely because it sounds philosophically appropriate."
+
+  **CONNECTS DIRECTLY TO THE ALREADY-TRACKED PURIFICATION ALGEBRA (file 2265)**: reframes |K_1|>|K_0| (sentence
+  count growth) as potentially misleading — the important change is D_1>D_0 (dimension-count growth, a new
+  knowledge dimension discovered) or v_0(d)→v_1(d) (existing-dimension value improvement), giving a six-way
+  classification of what sentence addition can produce (new dimension / new value / new context / new
+  relation / correction / qualification) — "exactly the kind of operator algebra we were looking for,"
+  directly matching the already-tracked E/R/C/X/Q/Z operators.
+
+  **DELIVERS THE KNOWLEDGE ATOM CONSTRUCT, THE SMALLEST STRUCTURAL UNIT**: KA=(p,d,v,c,e,t,π) — proposition,
+  dimension, value, context, evidence, time, provenance — explicitly proposed as more fundamental than
+  "sentence" and not necessarily "primitive": "A sentence is then merely one possible surface representation
+  of a Knowledge Atom." Proposes that purification (file 2265's algebra) should operate on Knowledge Atoms
+  rather than on sentences directly, and that Buddhi discriminates over Knowledge Atoms: B(KA_1,KA_2,...)→
+  {accept, reject, refine, contradict, qualify} — a SEVENTH candidate discrimination output vocabulary in
+  this thread, now explicitly operating on the Knowledge Atom structure rather than raw propositions.
+
+  Final recommendation: treat "one sentence may reveal or instantiate one or more knowledge dimensions" as a
+  research hypothesis, not a canonical rule, to be falsified by testing against a substantial corpus of both
+  Gītā statements and ordinary KnowledgeOS knowledge — "if the same sentence routinely contains multiple
+  independent dimensions, that will falsify the simplistic one-sentence/one-dimension model," with the
+  explicit goal of leading to "a rigorous definition of Knowledge Atom → Dimension → Value → Purification
+  Operator."
+introduces:
+  - concept: "The Knowledge Atom construct KA=(p,d,v,c,e,t,pi), proposed as the smallest structural unit beneath 'sentence' and beneath the eight ratified KnowledgeOS primitives, upon which the already-tracked Purification Algebra's operators would actually act"
+  - concept: "Sentence≠Proposition≠Dimension, a three-way non-collapse with the discipline chain Sentence→Proposition→Semantic interpretation→Candidate dimension→Dimension definition→Evidence/context→Value"
+  - concept: "The falsification test for the one-sentence/one-dimension model: test against a substantial corpus of Gītā statements and ordinary KnowledgeOS knowledge to see whether sentences routinely reveal multiple independent dimensions"
+defines:
+  - concept: "KA=(p,d,v,c,e,t,pi): the seven-field Knowledge Atom tuple (proposition, dimension, value, context, evidence, time, provenance)"
+refines:
+  - concept: "This reconstruction's already-tracked Epistemic Purification Algebra (file 2265) and its six named operators (E/R/C/X/Q/Z)"
+    refinement: "GROUNDED with a structural unit (Knowledge Atom) that the operators would act upon, and directly reinterprets |K_t| growth as potentially misleading -- the true purification signal is dimension-count or value growth, not raw proposition/sentence count"
+  - concept: "This reconstruction's already-tracked candidate discrimination output vocabularies (files 2252, 2254, 2260, 2263, 2264)"
+    refinement: "A SEVENTH candidate vocabulary {accept, reject, refine, contradict, qualify} is proposed, now explicitly operating over Knowledge Atoms rather than raw propositions"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Whether the Knowledge Atom construct KA=(p,d,v,c,e,t,pi) is directly tested against or reconciled with the corpus's existing Assertion structure ({Proposition,Entity,Evidence,Context,Time,Provenance}, already noted as structurally similar in file 2254) later in the sequential read."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering the Knowledge Atom construct KA=(p,d,v,c,e,t,pi), the Sentence≠Proposition≠Dimension non-collapse discipline chain, and the reframing of purification signal from sentence-count growth to dimension-count/value growth -- directly grounding the already-tracked Purification Algebra."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Epistemic Purification Algebra (file 2265) and its six named operators"
+  supports_dimension: "Grounds the algebra with a smallest structural unit (Knowledge Atom) and reframes the purification signal as dimension/value growth rather than raw sentence-count growth"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The Knowledge Atom's seven-field structure KA=(p,d,v,c,e,t,pi) is directly comparable against the already-tracked corpus Assertion structure {Proposition,Entity,Evidence,Context,Time,Provenance} (noted in file 2254) for structural overlap if pursued later in the sequential read."
+undefined_concepts: []
+open_questions:
+  - "Whether the Knowledge Atom construct is directly tested against or reconciled with the corpus's existing Assertion structure, and whether the one-sentence/one-dimension falsification test is directly performed later in the sequential read."
+tier2_triggered: true
+tier2_reason: "Delivers a genuinely new structural construct (the Knowledge Atom) that grounds the already-tracked Purification Algebra with a concrete smallest unit, plus the Sentence≠Proposition≠Dimension discipline chain and a reframed purification-signal principle (dimension/value growth over raw sentence-count growth). Classified importance high given the substantive structural contribution, short of critical since it is a companion/grounding document to the more foundational file 2265."

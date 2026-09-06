@@ -1,0 +1,156 @@
+
+==========================================================================
+EXP-11  Does K=(A,R) have a real instance?  (theory object -> live data)
+==========================================================================
+  scanned: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledge
+  governed documents carrying a knowledge_id (|A|): 40
+  typed relationships (|R|):                        59
+  distinct relation types in use:                   ['derived_from', 'documents', 'related_to', 'requires', 'state_machine', 'tested_by']
+  of these, id-typed edges (must resolve to a card):  52
+  id-typed edges whose target does NOT resolve:      0
+
+  => K = (A, R) IS INSTANTIATED. |A|=40, |R|=59, with a typed
+     relation vocabulary of 6 kinds.  This is a Type-1 semantic
+     realization in Step 267's own taxonomy -- and Step 267 did not find it,
+     because it searched PublicDigit's election domain instead of the EKP.
+
+==========================================================================
+EXP-12  Sigma: how many status axes does the RUNNING system actually have?
+==========================================================================
+  axis 1 'status'    (lifecycle) : {'frozen': 1, 'baseline': 1, 'approved': 24, 'draft': 12, '<none>': 2}
+  axis 2 'authority' (source trust): {'authoritative': 15, 'provisional': 12, 'derived': 10, 'generated': 1, '<none>': 2}
+
+  observed (status, authority) combinations: 7
+    (None, None)                     x2
+    ('approved', 'authoritative')    x13
+    ('approved', 'derived')          x10
+    ('approved', 'generated')        x1
+    ('baseline', 'authoritative')    x1
+    ('draft', 'provisional')         x12
+    ('frozen', 'authoritative')      x1
+
+  Do the two axes vary independently in the real data? True
+  (7 observed pairs vs 5 statuses and 5 authorities;
+   if the axes were the same concept, pairs would equal max(len) not exceed it.)
+
+  => EMPIRICAL CONFIRMATION of ARC D's separation -- and the separation was
+     ALREADY RUNNING, schema-enforced, before the theory derived it:
+     statuses.yaml says verbatim 'status (lifecycle position) is INDEPENDENT of
+     authority', and authorities.yaml says 'It is INDEPENDENT of status'.
+
+  BUT -- and this is the finding -- NEITHER axis is the theory's Sigma.
+     status    = lifecycle position   (draft ... frozen, superseded, archived)
+     authority = trust in the SOURCE  (authoritative > derived > generated >
+                                       historical > provisional)
+     Sigma     = epistemic support    (Supported / Refuted / Conflicted / Unknown)
+  There is NO field in the running system that records whether a claim is
+  SUPPORTED BY EVIDENCE.  The implementation has Lifecycle x SourceTrust;
+  the theory needs Lifecycle x SourceTrust x EpistemicSupport.
+
+==========================================================================
+EXP-13  Is the lifecycle a real state machine, and is it MONOTONE?
+==========================================================================
+  statuses.yaml declares 8 states with a total 'order':
+    1. draft        settled=false 
+    2. discovery    settled=false 
+    3. reviewed     settled=false 
+    4. approved     settled=true 
+    5. baseline     settled=true 
+    6. frozen       settled=true requires_adr_to_change
+    7. superseded   settled=true 
+    8. archived     settled=true 
+
+  authorities.yaml declares 5 ranks:
+    rank 1: authoritative   single_per_topic=true
+    rank 2: derived         single_per_topic=False
+    rank 3: generated       single_per_topic=False
+    rank 4: historical      single_per_topic=False
+    rank 5: provisional     single_per_topic=False
+
+  TEST: is the lifecycle MONOTONE (order only increases)?
+  The schema gives a total order 1..8 -- but observe positions 7 and 8:
+    6. frozen      settled=true
+    7. superseded  settled=true
+    8. archived    settled=true
+
+  'superseded' and 'archived' are given HIGHER order numbers than 'baseline'
+  and 'frozen'.  Under a monotone reading that says a superseded document is
+  MORE advanced than a baseline one.  They are not progress states at all --
+  they are TERMINATION states on a different axis.  The `order` field therefore
+  encodes two different things in one integer: progression (1-6) and
+  retirement (7-8).
+
+  MEASUREMENT-THEORY CONSEQUENCE (Roberts, executed in EXP-4):
+  `order` is used by the tooling 'for sorting/validation' per its own comment.
+  Sorting is ordinal-admissible.  But any rule of the form
+      'advance only if order(new) > order(old)'
+  will happily accept  frozen(6) -> superseded(7)  AND  approved(4) ->
+  superseded(7), while REJECTING superseded(7) -> approved(4) (a legitimate
+  un-supersession after the replacement is withdrawn).
+
+    order-rule allows approved    -> superseded ? True
+    order-rule allows frozen      -> superseded ? True
+    order-rule allows superseded  -> approved   ? False
+    order-rule allows archived    -> draft      ? False
+    order-rule allows draft       -> frozen     ? True
+    draft -> frozen is allowed by the order rule, skipping four states.
+  => The single `order` integer is NOT a sufficient encoding of the lifecycle
+     state machine.  A covering relation (which pairs are ADJACENT) is required,
+     and statuses.yaml does not carry one.  The lint passes because it never
+     checks transitions -- only membership.  VERIFIED below.
+
+==========================================================================
+EXP-14  What does knowledge-lint ACTUALLY enforce?
+==========================================================================
+  rule identifiers the linter can actually emit (16):
+    - boundary_consistency
+    - circular_dependency
+    - code_refs_exist
+    - enum_values_valid
+    - frontmatter_parses
+    - frontmatter_present
+    - knowledge_id_pattern
+    - knowledge_id_unique
+    - links_resolve
+    - orphan_document
+    - recommended_fields_present
+    - relationship_targets_exist
+    - required_fields_present
+    - review_overdue
+    - single_authoritative
+    - traceability_complete
+
+  theory-relevant checks:
+    referential integrity of relations     YES
+    cycle detection                        YES
+    single authoritative per topic         YES
+    STATUS TRANSITION legality             NO
+    epistemic support / evidence           NO
+
+  => The linter enforces STRUCTURE (vocabulary, referential integrity, cycles,
+     single-authoritative, orphans, link resolution, review dates).  It has NO
+     rule for status-transition legality and NO rule mentioning evidence or
+     epistemic support -- confirming EXP-12 from the code side: the running
+     system has a Lifecycle axis and a SourceTrust axis, and no Sigma.
+
+==========================================================================
+EXP-15  Do the theory's INVARIANTS hold in the real data?
+==========================================================================
+    I1 supersedes acyclic/antisymmetric              population=0    violations=0   VACUOUS (empty population)
+    I2 superseded_by is converse of supersedes       population=0    violations=0   VACUOUS (empty population)
+    I3 status=superseded => superseded_by non-empty  population=0    violations=0   VACUOUS (empty population)
+    I4 single authoritative per topic+context        population=0    violations=0   VACUOUS (empty population)
+    I5 all relation targets resolve                  population=52   violations=0   HOLDS
+
+  These are the FIRST invariant checks executed against the EKP's real
+  knowledge graph in this research programme.  A VACUOUS result is NOT a pass:
+  it means the real data contains no instance of the construct, so the theory's
+  invariant about it has never been exercised by reality.
+
+  Relation types the SCHEMA offers but the real graph never uses:
+    ['adr', 'depends_on', 'implements', 'reviewed_by', 'superseded_by', 'supersedes', 'verified_by']
+  => The supersession and implementation machinery -- the part of the theory
+     that carries revision, replacement and traceability -- is entirely
+     UNEXERCISED in the only running instance available.  Four of the five
+     invariant checks are therefore vacuous: the theory has not been tested by
+     reality on any of them.

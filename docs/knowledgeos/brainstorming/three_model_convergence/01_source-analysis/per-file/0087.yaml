@@ -1,0 +1,145 @@
+sequence: "0087"
+path: docs/knowledgeos/brainstorming/20260822-0146-knowledgeos-epistemic-pipeline-veda-vedanta-analysis.md
+title: "Knowledge is not one entity — it has an epistemic pipeline (Veda/Upanishad/Vedanta analysis)"
+date: "2026-08-22"
+bytes: 15158
+
+model:
+  primary: x
+  secondary: [c1, g]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: critical
+confidence: high
+
+about: >
+  A deep (not merely structural) engagement with Vedantic epistemology -- centrally the Pramāṇa
+  quartet (Pramātā/Pramāṇa/Prameya/Pramā: knower/means-of-knowing/object-known/valid-knowledge) and
+  the Aparā Vidyā/Parā Vidyā (lower/higher knowledge) distinction -- reviewed against EKS evidence,
+  followed by a closing synthesis that declares the five-lens conceptual-research phase COMPLETE and
+  produces the corpus's FIRST explicit, numbered "Minimal Kernel Candidate": six protected dimensions
+  plus one non-dimensional enforcement mechanism.
+
+introduces:
+  - "Pramāṇa quartet: Pramātā (knower), Pramāṇa (means/method of valid knowledge), Prameya (object
+    known), Pramā (valid knowledge) -- called 'almost a missing KnowledgeOS primitive'; mapped onto a
+    proposed 'Knowledge Claim' object: Object / Source / Method / Validator / State"
+  - "Direct EKS mapping: EKS's transitions != grants (evidence movement != authority assignment) is
+    read as matching Pramāṇa != Pramā (validation method != the valid-knowledge result) -- reinforcing
+    INV-001 Authority Separation with a second, independent structural analogy"
+  - "Veda -> Upanishad -> Vedanta reinterpreted (explicitly not literally) as: large corpus -> essential-
+    principle extraction -> systematic interpretation framework -- mapped onto EKS/PKS/AIP -> invariant
+    discovery -> KnowledgeOS Constitutional Map, an explicit self-referential parallel to this very
+    reconstruction's own reading-order arc, for a second time (after 0084's 6-phase roadmap)"
+  - "Aparā Vidyā (lower/operational knowledge) vs Parā Vidyā (higher/meta-knowledge), reinterpreted
+    structurally as Operational Knowledge vs Meta-Knowledge ('knowledge about knowledge') -- explicitly
+    NOT copied literally from the Upanishadic source"
+  - "Richer epistemic pipeline: Reality -> Observation -> Evidence -> Validation Method -> Knowledge
+    Claim -> Authority Decision -> Published Knowledge -- reintroduces 'Knowledge Claim' as an explicit
+    node, in apparent tension with 0081's finding that 'Claim' was empirically ABSENT from current
+    EKS/PKS/AIP architecture; this tension is not addressed or reconciled by this document"
+  - "INV-KOS Candidate: 'Knowledge Requires Provenance of Knowing' -- a KnowledgeOS knowledge state
+    SHALL preserve not only what is known but the means by which it became knowable; forbidden
+    collapse: Statement->Truth, Source document->Valid knowledge"
+  - "'UNKNOWN is not a failure state. UNKNOWN is a purified state.' -- FIRST appearance of the word
+    'purified' applied to an epistemic state. NOT confirmed to invoke the technical Gita/Vedanta
+    purification (śuddhi) doctrine this ledger has tracked as absent since Entry 10 -- recorded as a
+    bridge_candidate only, given the surrounding deep Vedantic context makes an intentional echo
+    plausible but not established"
+  - "Nine-lens summary table: EKS, PKS, AIP, Topology, Vāṇī, Zero, Gita, Vedanta, and (NEW, undefined)
+    'ECS' (Epistemic Control Systems) -- 'trusted advancement and publication gates' -- another
+    forward/external reference to a document not yet located in the read corpus"
+  - "⭐ FIRST explicit, numbered 'Minimal Kernel Candidate' in the corpus: SIX protected dimensions --
+    (1) Identity Preservation 'what is this?', (2) Evidence Integrity 'why should this be believed?',
+    (3) Authority Separation 'who can make it valid?', (4) Transformation Integrity 'how did it
+    change?', (5) Temporal Validity 'when was it valid?', (6) Unknown Preservation 'what remains
+    unresolved?' -- PLUS one explicitly non-dimensional mechanism: Structural Enforcement ('the kernel
+    must make forbidden transformations impossible')"
+  - "Kernel reframed as an 'Epistemic Integrity Layer': Separate -> Preserve -> Validate -> Relate ->
+    Transform -> Project (a six-verb pipeline, distinct from the six-dimension list)"
+  - "Explicit 4-tier evidence hierarchy (restates 0084's phase roadmap in evidentiary terms): Tier 1
+    EKS/PKS/AIP evidence -> Tier 2 invariant extraction -> Tier 3 mathematical/philosophical lenses ->
+    Tier 4 future kernel hypothesis -- 'not the other way around'"
+  - "Declaration: 'Research Collection Phase: COMPLETE' -- matches 0084's Phase-3-done/Phase-4-next
+    roadmap prediction exactly; next phase named 'P4: Constitutional Invariant Map' with a stated
+    Filter/Separate/Test procedure"
+
+defines: []
+
+refines:
+  - "0086's Kṣetra/Kṣetrajña and Tripuṭī (structural only): this file adds genuine doctrinal depth via
+    the Pramāṇa quartet and the Aparā/Parā Vidyā distinction -- the corpus's deepest Vedantic
+    engagement so far, though still self-limited as 'a conceptual research lens'"
+  - "0081's Observation->Evidence->Claim->Confidence->Authority->Decision pipeline (where Claim/
+    Confidence were found empirically ABSENT): this document's pipeline reintroduces 'Knowledge Claim'
+    without addressing that prior negative finding -- flagged as an unreconciled tension, not silently
+    merged"
+  - "0084's INV-KOS-001 (Dimension Independence): the six-protected-dimensions list overlaps but is not
+    identical to any prior dimension list (0080's nine, 0082's K=(S,A,E,T), 0086's Knowledge-Object-
+    plus-Agent model) -- yet another non-identical dimension-count proposal, now explicitly the
+    corpus's first NUMBERED minimal candidate"
+
+contradicts: []
+
+repeats:
+  - concept: "Evidence != Authority / assessment confers no authority"
+    canonical_source: "0014"
+    novelty: low
+  - concept: "kernel protects transformations, not components"
+    canonical_source: "0084"
+    novelty: low
+
+bridge_candidates:
+  - "'UNKNOWN is a purified state' as a possible echo of the tracked C2 purification doctrine -- word
+    appears for the first time, technical content not confirmed"
+  - "Pramāṇa quartet (Pramātā/Pramāṇa/Prameya/Pramā) as a possible bridge to a future C2 formalization
+    of validated-knowledge states -- structural resemblance to the Knowledge-Claim object model only,
+    no C2 document has yet been located that would confirm or deny this"
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+# MD-014: 0087 designated the corpus's FIRST ANCHOR DOCUMENT. Its six-dimension proposal is
+# Minimal_Kernel_Candidate_0087 — a candidate, never silently promoted to canonical status. Every
+# subsequent primary-corpus file is additionally tested against it via the 8-point anchor_test
+# (see machine-record-schema.md MD-014 addendum), recorded per later file only when triggered.
+kernel_candidate_status: candidate   # NEVER "canonical" — promotion requires the staged progression
+                                       # candidate -> cross-corpus corroboration -> formalization ->
+                                       # falsification -> canonical kernel, each evidenced separately
+anchor_document: true
+anchor_id: "0087"
+
+key_evidence:
+  - "The corpus's first NUMBERED, explicitly-scoped ('not seven') minimal-kernel-dimension proposal,
+    with one dimension explicitly demoted to a non-dimensional enforcement mechanism -- the sharpest,
+    most decision-shaped kernel candidate produced in the reading order so far"
+  - "A second self-referential parallel (after 0084) between the corpus's own research-staging
+    discipline and this reconstruction's own reading-order arc"
+  - "An unreconciled tension between this file's reintroduction of 'Knowledge Claim' and 0081's
+    measured absence of Claim/Confidence from current architecture, left unaddressed by the source"
+
+undefined_concepts:
+  - "ECS / Epistemic Control Systems -- referenced as an already-reviewed input ('trusted advancement
+    and publication gates'), its source document not yet located in the read corpus"
+  - "The 'uploaded session record' reviewed in this file's second half -- not itself part of the read
+    corpus; appears to already incorporate content matching 0086's opening phrase near-verbatim
+    ('preserve relationships, identities, boundaries, and transformations through which knowledge
+    remains trustworthy'), suggesting close provenance proximity between 0086 and 0087's source material"
+
+open_questions:
+  - "Whether the six-protected-dimensions minimal kernel candidate survives contact with the actual
+    EKS/PKS/AIP evidence in later files, or is revised again (as every prior dimension-count proposal
+    has been)"
+  - "Whether ECS's source document appears later in the reading order"
+  - "Whether 'Knowledge Claim' is ever reconciled with 0081's Claim-absence finding"
+
+tier2_triggered: true
+tier2_reason: >
+  The corpus's deepest Vedantic-epistemology engagement so far (Pramāṇa quartet, Aparā/Parā Vidyā) and
+  its FIRST explicit numbered minimal-kernel-dimension proposal (six dimensions plus one enforcement
+  mechanism) -- directly and centrally relevant to §18/§23 of the governing prompt. Also surfaces an
+  unreconciled tension with 0081's empirical Claim-absence finding and a new undefined forward
+  reference (ECS), both requiring continued tracking rather than premature resolution.

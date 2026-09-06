@@ -1,0 +1,100 @@
+sequence: 2297
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260901-022227_step_286_eight-primitives-are-a-state-vocabulary-not-eight-equal-fields.md
+title: "Eight Primitives Are a State Vocabulary, Not Eight Equal Fields -- Delivers the Internal Epistemic/Operational Taxonomy of the Eight Primitives, an Eleventh Kernel Tuple (K_t,B_t,G_t,Z_t), and a Six-Term Purification Decomposition"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "delivers an internal structural taxonomy of the eight ratified primitives, a further guna-conditioned kernel tuple, and an explicit six-term non-accumulative purification decomposition, directly citing the Steps 285-287 K_t≠(A,R) lossy-projection distinction"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2297
+importance: high
+confidence: high
+about: >
+  Opens: "the eight primitives are the state vocabulary; they are not eight equal 'fields.' The kernel is a
+  stateful epistemic machine whose state is represented through these primitives and whose transformations
+  are mediated by Buddhi." Continues the same K_t=⟨E,S,V,O,P,R,Π,A⟩ eight-primitive model as file 2295 (near-
+  identical correspondence table), but adds substantial genuinely new structural content.
+
+  **DELIVERS THE INTERNAL EPISTEMIC/OPERATIONAL TAXONOMY OF THE EIGHT PRIMITIVES**: explicitly groups the
+  eight into four categories -- "things being known" (E,S,P), "things that happen or are observed" (V,O),
+  "things connecting or constraining" (R,Π), "things the kernel may perform" (A) -- with an explicit diagram
+  splitting "epistemic state" (Entity/State/Proposition, connected via Relation, further connected to
+  Observation/Event) from "operational state" (Policy/Action). "So the kernel is not a flat eight-element
+  tuple. It has an internal conceptual structure" -- the thread's first explicit internal sub-grouping of the
+  eight primitives by kind, distinct from any prior file's treatment of them as a flat list.
+
+  **DELIVERS THE EXPLICIT KERNEL≠KNOWLEDGE-STORE FORMULA**: Kernel=State+Discrimination+Transformation, with
+  Buddhi formalized as B:K_t→D_t producing a seven-value discrimination result {accept,reject,qualify,
+  investigate,transform,defer,act} -- a further (roughly the dozenth) candidate discrimination-result
+  vocabulary in the thread.
+
+  **DELIVERS AN ELEVENTH KERNEL TUPLE** 𝕂_t=(K_t,B_t,G_t,Z_t) [K_t=eight-primitive state, B_t=Buddhi
+  capability, G_t=operating mode (Sattva/Rajas/Tamas), Z_t=currently exposed epistemic zeros/gaps], with
+  transition (K_t,B_t,G_t,Z_t)→_{Ω_t}(K_{t+1},B_{t+1},G_{t+1},Z_{t+1}) -- explicitly hedged: "I would not yet
+  call Ω a canonical primitive or operation. That needs to emerge from the operator analysis."
+
+  **DELIVERS A SIX-TERM PURIFICATION DECOMPOSITION**: 𝒫(K_t)=reduce-contradiction+increase-justification+
+  improve-provenance+resolve-ambiguity+correct-relations+remove-unsupported-propositions, with the explicit
+  formula Purification≠Accumulation (rejecting |K_{t+1}|>|K_t| as the definition) -- the thread's most
+  concrete, itemized purification decomposition to date, more specific than prior "quality improvement"
+  glosses.
+
+  **DIRECTLY CITES AND REAFFIRMS THE STEP 285-287 K_t≠(𝒜,ℛ) LOSSY-PROJECTION DISTINCTION**: "We should keep
+  the distinction established by Steps 285-287: K_t≠(𝒜,ℛ). The eight-primitive K_t is the broader governance/
+  canonical state candidate. The semantic verification structure (𝒜,ℛ) is a lossy projection of it: (𝒜,ℛ)
+  ≡_semantic π_K(K_t), subject to the qualifications already established." -- an explicit, direct primary-
+  source anchor connecting this Gītā-lens kernel-state work back to the already-tracked formal (𝒜,ℛ)/K_t
+  projection result from earlier in this reconstruction's project.
+
+  **DELIVERS A SPECIFIC EIGHT-STEP FUNDAMENTAL CYCLE**: O_t→B→P_t→R_t→S_t→B→A_t→V_{t+1}→O_{t+1} (observation
+  → discrimination → proposition → relation/context → state assessment → discrimination again → action →
+  event → new observation), a distinct specific ordering from other cycle proposals in the thread (note
+  Buddhi is applied twice in this cycle, once after observation and once after state assessment).
+
+  Reaffirms Zero as a Buddhi output ⊥ ("KnowledgeOS does not currently possess sufficient knowledge to
+  determine the proposition"), and the three Guṇa modes as kernel-operating-mode qualifiers on Buddhi
+  (B_{G_t}:K_t→D_t) rather than static labels, consistent with several already-tracked prior files.
+
+  Closes proposing the next research target: "the complete Kernel Operator Algebra -- especially which
+  operations Buddhi can perform on E,S,V,O,P,R,Π,A, and how Sattva/Rajas/Tamas select or constrain those
+  operators."
+introduces:
+  - concept: "The internal epistemic/operational taxonomy of the eight primitives: 'things being known' (E,S,P), 'things that happen or are observed' (V,O), 'things connecting or constraining' (R,Π), 'things the kernel may perform' (A)"
+  - concept: "The eleventh kernel tuple K_t=(K_t,B_t,G_t,Z_t) with an explicitly non-canonical Omega transformation"
+  - concept: "The six-term purification decomposition (reduce contradiction + increase justification + improve provenance + resolve ambiguity + correct relations + remove unsupported propositions), with explicit Purification≠Accumulation"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked eight-primitive kernel state (files 2294, 2295 in this window)"
+    refinement: "GIVEN AN EXPLICIT INTERNAL TAXONOMY for the first time, grouping the eight primitives into epistemic-state vs operational-state categories rather than treating them as a flat tuple"
+  - concept: "This reconstruction's already-tracked Steps 285-287 K_t≠(A,R) lossy-projection result"
+    refinement: "DIRECTLY CITED AND REAFFIRMED with explicit notation (A,R)≡_semantic π_K(K_t) -- a primary-source confirmation this Gītā-lens work is deliberately grounded in, not overriding, the already-established formal projection result"
+  - concept: "This reconstruction's already-tracked prior purification reformulations (multiple files across the thread)"
+    refinement: "GIVEN THE THREAD'S MOST CONCRETE, ITEMIZED SIX-TERM DECOMPOSITION"
+contradicts: []
+repeats:
+  - "Shares the same eight-primitive/Gita correspondence table as file 2295 (near-identical wording), but delivers substantial genuinely new structural content (internal taxonomy, eleventh tuple, purification decomposition, explicit A/R projection citation) beyond that overlap."
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering the internal epistemic/operational taxonomy of the eight primitives, the eleventh kernel tuple (K_t,B_t,G_t,Z_t), the six-term purification decomposition, and an explicit primary-source citation reaffirming the Steps 285-287 K_t≠(A,R) lossy-projection result."
+anchor_test:
+  anchor: "This reconstruction's already-tracked eight-primitive kernel state and the Steps 285-287 K_t≠(A,R) lossy-projection result"
+  supports_dimension: "Delivers an internal taxonomy of the eight primitives, a further kernel tuple, a concrete purification decomposition, and directly reaffirms the K_t≠(A,R) projection result via explicit citation"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit citation '(A,R)≡_semantic π_K(K_t)' is directly checkable against this reconstruction's already-tracked Steps 285-287 formal projection result for terminology consistency."
+undefined_concepts: []
+open_questions:
+  - "Whether 'the complete Kernel Operator Algebra' (this document's proposed next research target) is directly commissioned and executed later in the sequential read, and whether it reconciles the thread's many prior operator-list proposals."
+tier2_triggered: true
+tier2_reason: "Delivers the thread's first explicit internal taxonomy of the eight ratified primitives (epistemic vs operational grouping), an eleventh guna-conditioned kernel tuple, a concrete six-term purification decomposition, and directly cites the already-tracked Steps 285-287 K_t≠(A,R) projection result. Classified importance high given the substantial structural additions despite heavy overlap with file 2295's correspondence table."

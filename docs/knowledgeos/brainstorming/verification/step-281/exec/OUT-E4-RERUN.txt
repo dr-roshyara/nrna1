@@ -1,0 +1,17 @@
+==================================================================================================
+E4 RE-RUN (E4-R1 .. E4-R7)
+==================================================================================================
+ID       VERDICT  SETUP                         OBSERVED
+E4-R1    PASS     no query                      ('NotAsked', '-')
+E4-R2    PASS     query, no assertion           ('Asked', 'Absent')
+E4-R3    PASS     query, insufficient evidence  ('Asked', 'Unknown')
+E4-R4    PASS     query, supporting             ('Asked', 'Supported')
+E4-R5    PASS     query, refuting               ('Asked', 'Refuted')
+E4-R6    PASS     query, conflicting            ('Asked', 'Conflicted')
+E4-R7    PASS     orphan document               orphan=True->False; E: ('Asked', 'Supported'
+
+  7/7 PASS
+
+  CRITICAL FAILURE #7 RE-CHECK:
+    'not asked'=('NotAsked', '-')  vs  'absent'=('Asked', 'Absent')   DISTINCT = True
+    => missingness is NO LONGER silently converted into a substantive value.

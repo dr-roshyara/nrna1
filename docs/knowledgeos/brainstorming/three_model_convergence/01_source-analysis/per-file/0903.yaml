@@ -1,0 +1,189 @@
+sequence: 903
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-214639_step_275_epistemic-state-reconstruction-and-dimension-separation.md
+title: "Step 275 -- Canonical Epistemic State Reconstruction and Dimension Separation: Delivers the FIVE-TYPE DECOMPOSITION HYPOTHESIS (StatusLikeInformation=Epistemic+Lifecycle+Governance+Temporal+Provenance), a Thirteen-Concept Semantic-Question Table Replacing Vocabulary-First Reasoning, Ten Concrete Falsification Tests, the Historical-Lineage-Preservation Principle (Do Not Erase Discarded Formulations), and a Claimed EXECUTED Result Distinguishing Unknown From Missing -- Explicitly Rejects Three Named 'Unacceptable Shortcuts' for Declaring Sigma Solved"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "rigorous DDD/epistemic-taxonomy decomposition methodology, directly continuing the Σ-minimality investigation from 0900/0902"
+source_role: PRIMARY_RESEARCH
+canonical_source: 903
+importance: critical
+confidence: medium
+about: >
+  Opens explaining a sequencing correction driven by "the latest adversarial audit" (again referenced, not
+  directly visible -- continuing the established pattern from 0892/0896/0897/0902): the three-state model
+  `Σ={Unknown,Supported,Refuted}` has been "partially refuted" (cannot represent degree of support), and
+  the older five-dimensional `Σ=(A,S,R,V,C)` "contains dimensions that belong elsewhere." **§275.0
+  delivers the mandate**: neither candidate is acceptable; the real question is boxed **`What is actually
+  epistemic, what is derived, and what belongs to another bounded context or mathematical layer?`**
+
+  **§275.1-275.2 delivers a genuinely valuable methodological reframing**: explicitly refuses to "start
+  with a vocabulary" (the corpus's ~12+ status-like terms), instead constructing a THIRTEEN-CONCEPT
+  SEMANTIC-QUESTION TABLE mapping each status-like term (Unknown, Supported, Refuted, Support strength,
+  Conflict, Contestation, Acceptance, Validation, Supersession, Approval, Acquisition, Validity,
+  Resolution) to the distinct semantic question it actually answers -- reframing the whole investigation
+  from "which terms are useful" to boxed **`Do they represent distinct semantic dimensions?`**
+
+  **§275.3 delivers a candidate dimensional decomposition to be proven or falsified, not assumed**:
+  `Σ=(epistemic direction, support magnitude)`, while Acquisition maps to Evidence/Provenance, Resolution
+  to Lifecycle, Validity to TemporalSemantics, Conflict to a derived Relation/predicate, and Acceptance/
+  Approval to Governance.
+
+  **§275.4-275.7 delivers the crucial binary-vs-graded question**: the referenced audit found corpus
+  evidence for a five-level ordinal support scale `S={None,Weak,Moderate,Strong,VeryStrong}`, meaning the
+  three-state model cannot be complete unless support magnitude is shown NOT part of canonical epistemic
+  semantics; explicitly warns against assuming ordinal arithmetic (`Strong≠3`, `VeryStrong≠4` absent a
+  justified measurement scale, directly reapplying 0893's/0898's measurement-theory discipline); tests
+  whether epistemic direction needs a genuine negative pole `D={Unknown,Positive,Negative}`; delivers a
+  candidate `Σ=(D,S)`, explicitly noting it may be a CONSTRAINED SUBSET rather than the full Cartesian
+  product (`(Refuted,VeryStrong)` plausibly meaningful; `(Unknown,VeryStrong)` plausibly contradictory) --
+  boxed **`Σ⊊D×S`** possible.
+
+  **§275.8-275.17 delivers an extensive battery of pairwise non-collapse tests**, each concrete and
+  independently checkable: `Unknown≠None` (insufficient information to determine direction vs. no
+  evidential support -- `Unknown+None` may be legitimate, `Supported+None` may not); `Confidence≠
+  SupportStrength` unless formally established (probability/calibration/estimator vs. ordinal evidence
+  assessment -- directly extending the corpus's standing confidence-ambiguity warning); `Refuted≠False`
+  and `Supported⇏True` (epistemic justification, not metaphysical truth); `Conflict` tested as a
+  potentially derivable relation, `Conflict(P)=f(R,E)`, making stored conflict status possibly redundant;
+  `Contested≠Conflicted` (actor-challenge vs. incompatible-content coexistence); `Accepted≠Supported`
+  (governance-dependent, reinforcing `Σ⊥Γ`); **`Superseded≠Refuted`, backed by a specific cited piece of
+  running-system (EKP) evidence: "`supersedes` exists as a relation while the lifecycle status is a
+  projection, not the source of truth" -- "strong evidence against treating every lifecycle label as
+  primitive epistemic state"**; `TemporalValidity≠EpistemicStatus` (`Supported` but `Expired`, derivable
+  from `t_start,t_end,now` rather than stored in `Σ`); Acquisition classified into Evidence/Provenance,
+  not `Σ`; Resolution classified into Lifecycle, not `Σ`.
+
+  **§275.18 delivers the file's central structural hypothesis, THE FIVE-TYPE DECOMPOSITION**: boxed
+  **`StatusLikeInformation=Epistemic⊕Lifecycle⊕Governance⊕Temporal⊕Provenance`** (`⊕` denoting semantic
+  separation, not necessarily mathematical direct sum) -- "a hypothesis to verify," giving the
+  long-running status-vocabulary-proliferation investigation (tracked across many prior files back to the
+  earliest windows) its most complete and precise decomposition target yet.
+
+  **§275.19-275.22 delivers the same rigorous minimality apparatus as 0902's Step 273**, reapplied to `Σ`
+  specifically: THE KEY MINIMALITY TEST (`K^{-d}` sufficient iff `∀o∈𝒪_core:o(K,x)=o(K^{-d},x)`, i.e. `d`
+  is not primitive if no operation distinguishes its removal); the converse SEPARATING-EXAMPLE
+  construction for dimensions believed necessary; a `Σ`-equivalence relation (`σ_1≡_Σσ_2` iff
+  indistinguishable under mandatory epistemic operations, not mere tuple equality, worked via
+  `(Supported,Strong)` vs. `(Supported,VeryStrong)`); and a `Σ`-ordering investigation explicitly warning
+  the resulting structure may be "a product of heterogeneous structures, not necessarily one total order"
+  (support strength ordinal, epistemic direction not naturally ordered -- `Refuted` is not "less than"
+  `Supported`).
+
+  **§275.23 reaffirms "do not manufacture probability"**, directly consistent with 0893's/0895's/0898's
+  standing rejection of unestablished probability claims -- `SupportStrength` must not be interpreted
+  probabilistically absent an actual `(Ω,𝔉,P)` space -- `Strong≠0.9`.
+
+  **§275.24-275.27 delivers three explicitly separated questions and the file's most consequential
+  methodological framing**: Q1 -- Representation (what values can `Σ` contain?); Q2 -- Determination (how
+  is `Σ` computed?); Q3 -- Governance (who may establish/change the epistemic commitment?) -- explicitly
+  different problems, none to be conflated. Since Assessment (`P×Evidence×Context×Policy→Σ`) depends on
+  still-open Policy semantics, Step 275 explicitly must NOT claim `Σ` is computationally closed merely
+  because its type has been reconstructed -- separating status REPRESENTATION from status DETERMINATION.
+  **Delivers "perhaps the most important test," THE STORED-VERSUS-DERIVED QUESTION**: if
+  `Σ=f(K,E,C,Π)` is genuinely reproducible, a stored `Σ` may be nothing more than a cache/projection --
+  "do not automatically store derived values" -- directly reapplying 0902's/0897's Required≠Primitive and
+  Semantic-necessity≠Representation-necessity safeguards to `Σ` specifically.
+
+  **§275.28 delivers a valuable, constructively-framed historical-preservation principle**: the corpus
+  contains a genuine lineage of competing formulations (the formal three-status ladder, the older rich
+  vocabulary, the five-dimensional structured model, the later adversarial decomposition, executable status
+  examples) arising in different eras, explicitly never fully reconciled -- requiring Step 275 to preserve,
+  not erase, this lineage (`HistoricalModel→FormalModel→AdversarialRefutation→ReconstructedModel`) -- a
+  constructive counterpart to the earlier `Later≠Better`/historical-regression caution (first crystallized
+  at file 0863), applied here as an instruction to retain discarded formulations as record rather than
+  silently discard them.
+
+  **§275.29-275.30 delivers ten concrete falsification tests** for any candidate `Σ` structure (can it
+  represent Unknown/Supported/Refuted; distinguish Weak from Strong; Supported from Accepted; Refuted from
+  Superseded; Conflicted from Contested; Expired from Refuted; Unknown from Missing; and Strong-support
+  from high-statistical-confidence). **Delivers a specific claimed EXECUTED falsification result**:
+  "the executable corpus already distinguishes `Missing` (expected governed artifact absent) from
+  `Unknown` (no evidence either way)... the independent execution falsified the claim that the corpus
+  could not distinguish them" -- a further instance of the referenced-but-unseen-executed-evidence pattern
+  (like the "closure artifact" at 0896), here specifically claiming a genuine empirical/executable
+  falsification test was actually run, though not directly visible in this file. Follows with the further
+  open question of whether `Missing` is itself epistemic, governance, or data-quality state -- "do not
+  automatically put it into `Σ`."
+
+  **§275.31-275.33 delivers a thirteen-row required classification matrix** (currently unfilled), a
+  ten-artifact required-documentation list (dimensional decomposition, minimal structure, primitive/
+  derived audit, ordinal-scale audit, equality-and-order, counterexamples, Unknown-vs-Missing audit,
+  assessment dependency, policy boundary, updated closure status), and a nineteen-lettered final-verdict
+  format (A through S).
+
+  **§275.34 delivers THE NON-NEGOTIABLE CONCLUSION RULE**: explicitly names and rejects THREE UNACCEPTABLE
+  SHORTCUTS for declaring `Σ` solved -- "three states ⇒ Σ solved"; "five dimensions ⇒ Σ solved"; "24
+  vocabulary terms ⇒ 24 epistemic states" -- "all three are invalid without further derivation. The corpus
+  itself has now demonstrated why."
+
+  **§275.35 delivers the strategic objective**: boxed **`EpistemicState=the minimum formally typed
+  information required to distinguish epistemic outcomes under the canonical operations`** -- everything
+  else must be shown to belong elsewhere, to be derivable, or to be genuinely required.
+
+  **Closes opening "Step 276 — Policy Minimal Semantics and Assessment Closure,"** reaffirming the overall
+  formal dependency chain boxed **`K→Σ→Assessment→Policy→T→Computational Closure`**, explicitly continuing
+  (rather than re-deriving) the localization of Policy as the remaining foundational dependency already
+  established in files 0897/0900.
+introduces:
+  - concept: "The thirteen-concept semantic-question table, reframing the epistemic-status investigation from vocabulary-selection to distinct-semantic-dimension identification"
+  - concept: "THE FIVE-TYPE DECOMPOSITION HYPOTHESIS: StatusLikeInformation=Epistemic⊕Lifecycle⊕Governance⊕Temporal⊕Provenance"
+  - concept: "Σ as a possibly constrained subset of D×S rather than the full Cartesian product, with a worked plausible/implausible combination example"
+  - concept: "The cited EKP-style corpus evidence that supersedes is a relation while lifecycle status is a projection, not the source of truth"
+  - concept: "The Σ-ordering investigation delivering a heterogeneous-structure (not total-order) hypothesis: support strength ordinal, epistemic direction not naturally ordered"
+  - concept: "The three explicitly separated questions: Representation (Q1), Determination (Q2), Governance (Q3) for epistemic status"
+  - concept: "The historical-lineage-preservation principle: do not erase discarded status-model formulations, preserve the full HistoricalModel→FormalModel→AdversarialRefutation→ReconstructedModel chain"
+  - concept: "Ten concrete falsification tests for any candidate epistemic-status structure"
+  - concept: "A claimed EXECUTED falsification result distinguishing Unknown from Missing, referenced but not directly visible"
+  - concept: "THE NON-NEGOTIABLE CONCLUSION RULE: three named unacceptable shortcuts for declaring Σ solved"
+  - concept: "Opens Step 276 — Policy Minimal Semantics and Assessment Closure, reaffirming the K→Σ→Assessment→Policy→T→Computational Closure chain"
+defines:
+  - concept: "The five-type decomposition hypothesis for status-like information"
+    definition: "A candidate structural hypothesis proposing that all of KnowledgeOS's status-like vocabulary (Unknown, Supported, Refuted, Conflicted, Contested, Accepted, Superseded, Approved, Validated, Expired, Missing, etc.) decomposes not into one epistemic status set but into five semantically distinct, separately-governed dimensions: Epistemic (genuine evidential support direction and magnitude), Lifecycle (workflow/process stage, e.g. Open/InProgress/Resolved), Governance (authority-based acceptance/approval/rejection, independent of evidence quality), Temporal (time-bounded validity, e.g. Expired vs. currently applicable), and Provenance (how the information was acquired -- Observed/Reported/Inferred/Calculated/Assumed/Hypothesized). The ⊕ notation denotes semantic separation of concerns rather than a claim about a specific mathematical direct-sum structure. Only the Epistemic component is claimed to belong inside the canonical epistemic-status object Σ_epi; the other four dimensions belong to entirely separate KnowledgeOS subsystems/bounded contexts"
+  - concept: "The Stored-versus-Derived question for Σ"
+    definition: "Described as perhaps the single most important test for the epistemic-status investigation: determine whether Σ=f(K,E,C,Π) — the epistemic status as a function of the knowledge state, evidence, context, and policy — is genuinely reproducible (i.e. recomputable on demand, deterministically, from these inputs). If reproducibility holds, then any stored Σ value is merely a cache or projection of that function, not independently authoritative information, and storing it need not be treated as adding to the canonical minimal state. If reproducibility does NOT hold — if some additional persistent epistemic commitment exists that cannot be recovered purely from K, E, C, and Π — then that additional commitment (and only that) must be identified and separately justified as genuinely primitive, persisted state. This directly reapplies the Required≠Primitive and Semantic-necessity≠Representation-necessity safeguards from 0897/0902 specifically to the epistemic-status object"
+refines:
+  - concept: "0902's Σ PROBLEM (three competing models: single status / structured multi-dimensional / derived assessment)"
+    refinement: "SHARPENED into the concrete five-type decomposition hypothesis and a specific candidate two-part structure Σ_epi=(D,S), with D={Unknown,Positive,Negative} and S={None,Weak,Moderate,Strong,VeryStrong} -- giving 0902's abstract three-model choice a specific, testable candidate structure and an explicit falsification test suite"
+  - concept: "0902's Deletion/Replacement/Information-Loss test triad and Required≠Primitive/Semantic-necessity≠Representation-necessity safeguards"
+    refinement: "REAPPLIED specifically to Σ via the Key Minimality Test, the separating-example construction, and the Stored-versus-Derived question, demonstrating the reusability of the general minimality methodology"
+  - concept: "0893's/0895's/0898's/0900's standing rejection of unjustified probability/measurement claims"
+    refinement: "REAFFIRMED for support strength specifically -- Strong≠0.9 absent an established probability space, and ordinal support labels must not be assumed to carry arithmetic meaning (Strong≠3) without a justified measurement scale"
+  - concept: "0863's Later≠Better/Chronology≠Supersession finding about historical knowledge loss"
+    refinement: "REFRAMED CONSTRUCTIVELY: rather than merely warning against treating later material as automatically superior, this file requires actively preserving the full lineage of competing prior formulations as an explicit deliverable, treating discarded models as retained historical record rather than material to silently discard"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read Step 276 (Policy Minimal Semantics and Assessment Closure) next, expecting the promised derivation of the minimum policy information necessary for Transformation and Assessment, continuing rather than re-deriving the Policy localization already established at files 0897/0900."
+  - "Watch for whether a subsequent file executes this Step 275 protocol (the classification matrix, the ten falsification tests, the ten required artifacts) and delivers the nineteen-lettered final verdict."
+  - "Watch for whether the claimed executed Unknown-vs-Missing falsification result is ever directly encountered as visible executable evidence in this reconstruction's sequential pass."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the five-type decomposition hypothesis (Epistemic⊕Lifecycle⊕Governance⊕Temporal⊕Provenance) as the most complete formal target yet for resolving the corpus's long-running status-vocabulary proliferation, directly relevant to the gated (§29) canonical Kernel synthesis."
+  - "dimension-registry.md: record the three named unacceptable shortcuts (three-states/five-dimensions/24-terms all ⇒ 'Σ solved') as a directly reusable anti-pattern warning for the eventual synthesis."
+  - "dimension-registry.md: record the historical-lineage-preservation principle as a constructive methodological complement to the earlier Later≠Better finding."
+anchor_test:
+  anchor: "0902's Σ PROBLEM and minimality-testing triad; 0900's orthogonality test (epistemic vs governance status); 0893's/0895's/0898's measurement-theory and probability discipline; 0863's Later≠Better finding"
+  supports_dimension: "Sharpens 0902's abstract three-model Σ choice into a concrete, testable five-type decomposition and candidate (D,S) structure. Extends 0900's orthogonality test into a full battery of pairwise dimension-separation tests. Reaffirms and reapplies the measurement-theory/probability discipline to support strength. Reframes 0863's Later≠Better finding constructively as an active historical-preservation requirement"
+  refines_or_contradicts: "sharpens 0902's Σ PROBLEM into a concrete decomposition; extends 0900's orthogonality test; reaffirms 0893's/0895's/0898's measurement discipline; constructively reframes 0863's Later≠Better finding"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§275.7's explicit worked example (Refuted,VeryStrong plausibly meaningful; Unknown,VeryStrong plausibly contradictory) is directly checkable evidence for the Σ⊊D×S constrained-subset hypothesis."
+  - "§275.14's specific cited claim ('supersedes exists as a relation while the lifecycle status is a projection, not the source of truth') is directly checkable evidence for the Superseded≠Refuted finding and the broader anti-lifecycle-primitivity argument."
+  - "§275.34's explicit naming and rejection of three specific shortcuts ('three states⇒Σ solved,' 'five dimensions⇒Σ solved,' '24 vocabulary terms⇒24 epistemic states') is directly checkable evidence of the file's disciplined refusal to accept any of the corpus's own prior candidate resolutions without further derivation."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 276 genuinely delivers the promised minimum Policy semantics for Transformation and Assessment closure."
+  - "Whether a subsequent file actually executes this Step 275 protocol, filling the classification matrix and delivering the nineteen-lettered verdict."
+  - "Whether the claimed executed Unknown-vs-Missing falsification result is ever directly encountered as visible executable evidence."
+tier2_triggered: true
+tier2_reason: "Delivers the five-type decomposition hypothesis for status-like information (the most complete formal target yet for the long-running status-vocabulary proliferation), a thirteen-concept semantic-question reframing, ten concrete falsification tests, the constructive historical-lineage-preservation principle, and the explicit rejection of three named unacceptable shortcuts for declaring Σ solved. Classified importance critical and tier2-triggered; confidence medium reflecting reliance on the referenced but unverified adversarial audit and claimed executed falsification result."

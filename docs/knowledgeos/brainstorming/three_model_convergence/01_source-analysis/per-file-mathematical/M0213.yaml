@@ -1,0 +1,89 @@
+sequence: M0213
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-093000_prompt-design-the-r5-r2-reduction-experiment.md
+title: "CORPUS-THEORY-AUDIT.md reviewed: confirms the 1395/{1252,25,3,115} statistics AND discovers a genuine generator defect (103/256 R1 contexts contaminated with metadata despite R1 meaning token-only) — confirms zero existing implementation of the R5→R2 theory — commissions a rigorous 16-section, 9-stop-condition KR-REP-REDUCTION-2026-09 DESIGN (not implementation) protocol — and records a concrete instance of the Gita thread correctly rejecting an attractive but theory-violating 'skill=do more with less' reading of verse 2.50"
+date: "20260903-093000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: GITA
+  secondary_note: "Records a concrete instance of the anti-reification discipline: the audit explicitly rejects Gita verse 2.50's 'skill in action' reading when it maps onto exactly the 'do more with less' interpretation the representation-reduction theory itself forbids — 'interesting analogy → test whether it entails the theory → reject it if it doesn't'"
+source_role: PRIMARY
+canonical_source: M0213
+importance: critical
+confidence: high
+about: >
+  Reviews an actually-produced CORPUS-THEORY-AUDIT.md (the audit deliverable M0198/M0201/M0209
+  specified) and confirms its two major conclusions: (1) the old KR-ZERO corpus's headline
+  statistics (1,395 cases, {1:1252,2:25,3:3,irreducible:115}) independently verify across
+  cases.jsonl/cases.csv/property-results.json, BUT (2) the generator that produced R1-R4 is itself
+  DEFECTIVE — R1 was meant to be token-only, yet 103/256 R1 contexts contain metadata because three
+  generator code paths bypass the class constructor. The audit also confirms the new R5→R2
+  representation-reduction theory has ZERO existing implementation in the repository (no chain, no
+  Q, no C, no O, no adequacy/fiber/H(R|Q)/metric-vector/held-out apparatus). Commissions a rigorous,
+  design-only (not implementation) 16-section specification protocol for KR-REP-REDUCTION-2026-09,
+  with 9 explicit stop conditions and a mandatory READY/NOT-READY final verdict.
+introduces:
+  - "MAJOR NEW CORPUS-INTEGRITY FINDING: the old KR-ZERO generator is DEFECTIVE — R1 (meant to be strictly token-only) actually contains metadata in 103 of 256 sampled contexts, because three generator code shapes bypass the class constructor that should have enforced the token-only invariant — a concrete, quantified implementation bug, distinct from (and additional to) M0198's aggregate-only-persistence finding"
+  - "Confirmation (independent verification) of the already-tracked 1,395/{1252,25,3,115} statistics, reproduced exactly across cases.jsonl, cases.csv, and property-results.json — this specific denominator IS internally consistent, even as the separate 1496/1475/1500 figures (M0198/M0200/M0212) remain unreconciled"
+  - "Confirmation that the new R5→R2 representation-reduction chain, Q, C, O, adequacy, fiber analysis, H(R|Q), the metric vector, and held-out evaluation are ALL ABSENT from the repository — closing the open question (tracked since M0198) of whether any part of the new theory already has an implementation: it does not"
+  - "A comprehensive 16-numbered-section DESIGN-ONLY specification protocol for KR-REP-REDUCTION-2026-09, explicitly forbidding implementation: Carrier (reject E_S(D)=D\\S by default, require an explicit typed elimination operator if needed); Source Representation D (concrete finite structure, not an abstract tuple); Inquiry Q (must be defined BEFORE T5..T2, deterministic, independently computable from D); Contract C; Fixed Decoder O (independent from the optimal O*); Reduction Chain (genuine sequential T5:D→R5, T4:R5→R4, T3:R4→R3, T2:R3→R2 — never independently-defined levels); explicit multi-dimensional operationalization of 'reduction' (encoded size/cardinality/storage cost/structural complexity/Shannon entropy kept SEPARATE, consistent with M0209's capacity-vs-entropy correction); Preservation Test; Fiber Test; Boundary (non-monotone-aware, distinguishing last-adequate from first-inadequate); Held-Out Test (explicitly to prevent mistaking Ĥ(Q|R)=0 for H(Q|R)=0); Data Generation (full population persistence); Factor Fidelity (explicit validation tests so 'the previous KR-ZERO generator defect must never be repeated'); Null/Zero Test (no assumed element-wise eliminability, no assumed E_S(D)=D\\S); Falsification Criteria (5 named: adequacy, realization, minimal reduction, information-theoretic optimality, monotone reduction)"
+  - "9 explicit STOP conditions before any implementation may begin: Q cannot be defined independently of the transformations; the carrier is ambiguous; R5-R2 are not genuine sequential transformations; 'reduction' cannot be operationalized; C cannot be evaluated; O cannot be fixed independently; the experiment relies on the old R1-R4 classes; any declared factor is not faithfully generated; the experiment would require silently assuming E_S(D)=D\\S"
+  - "A mandatory final verdict format: READY FOR IMPLEMENTATION or NOT READY — [specific unresolved blocker] — 'do not implement until the design is internally coherent'"
+  - "A concrete, dated instance of the Gita-material anti-reification discipline caught IN ACTION: the audit explicitly rejects verse 2.50's 'skill in action' reading precisely because it maps onto the seductive 'do more with less' interpretation the representation-reduction theory itself forbids — described as the correct epistemic behavior: 'interesting analogy → test whether it entails the theory → reject it if it doesn't'"
+defines: []
+refines:
+  - "M0198's aggregate-only-persistence corpus-integrity finding: extended with a second, distinct integrity issue (the generator defect itself, not merely under-persisted data)"
+  - "M0201's 12-phase audit protocol and M0209's capacity-vs-entropy distinction: both confirmed as correctly incorporated into the executed audit and the new design-protocol requirements"
+contradicts: []
+repeats:
+  - "The established R1-R4-representation-classes-vs-R5→R2-reduction-hierarchy category-error warning (M0198/M0199/M0202), now independently reconfirmed by the executed audit: 'The generator independently samples the class and contains no R_n→R_{n-1} transformation'"
+bridge_candidates:
+  - "Whether KR-REP-REDUCTION-DESIGN-2026-09.md was ever actually produced following this 16-section specification"
+  - "Whether the generator defect (103/256 contaminated R1 contexts) was ever fixed or whether the old corpus was fully deprecated as a result"
+  - "Whether the 1500/90.04%/7.89% figures from M0212 are ever reconciled against this document's independently-verified 1395/{1252,25,3,115} figures"
+mathematical_content: null
+gita_content: >
+  Records a concrete, dated example of the anti-reification discipline succeeding: verse 2.50's
+  'skill in action' reading was explicitly tested against the representation-reduction theory's own
+  constraints and rejected because it entailed exactly the overclaim ('do more with less') the
+  theory forbids — the cleanest single documented instance of this discipline actually operating on
+  a live candidate analogy, rather than merely being stated as a standing rule.
+kernel_content: >
+  Establishes, via an actually-executed audit, that the KR-ZERO corpus is real but flawed evidence
+  (a genuine generator defect discovered and quantified) and that the new representation-reduction
+  theory remains entirely unimplemented — closing the open audit question from M0198-M0209 with a
+  concrete, negative-but-honest result, then commissioning a rigorous design-only next stage rather
+  than proceeding directly to implementation.
+registry_updates:
+  - "MAJOR: KR-ZERO generator defect discovered — 103/256 R1 contexts contain metadata despite R1's token-only definition, due to three generator code paths bypassing the class constructor"
+  - "Confirms zero existing implementation of the R5→R2 representation-reduction theory in the repository"
+  - "New 16-section, 9-stop-condition KR-REP-REDUCTION-2026-09 design (not implementation) specification protocol, with a mandatory READY/NOT-READY verdict requirement"
+  - "Concrete documented instance of Gita-material correctly rejected (verse 2.50's 'skill' reading) for entailing a theory-forbidden overclaim"
+anchor_test:
+  anchor: true
+  supports_dimension: "KR-ZERO generator defect (103/256 contaminated R1 contexts); confirmed zero implementation of R5→R2 theory; 16-section design-only protocol; concrete Gita-rejection instance"
+  refines_or_contradicts: "refines (M0198's corpus-integrity tracking, extended with a distinct generator-defect finding); contradicts (any implicit assumption that R1-R4 could serve as the new hierarchy, now independently reconfirmed false by the executed audit)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"R1 was supposed to mean token-only, but 103/256 R1 contexts contain metadata because three generator shapes bypass the class constructor.\""
+  - "\"The audit explicitly finds the chain, inquiry Q, constraints C, decoder O, adequacy, fiber analysis, H(R|Q), metric vector, and held-out evaluation absent.\""
+  - "\"The audit records that 2.50's 'skill' reading as precisely the seductive 'do more with less' interpretation that the current theory explicitly forbids.\""
+undefined_concepts: []
+open_questions:
+  - "Was KR-REP-REDUCTION-DESIGN-2026-09.md ever produced?"
+  - "Was the generator defect ever fixed?"
+  - "Are the 1500/90.04%/7.89% figures from M0212 ever reconciled with this document's verified 1395/{1252,25,3,115}?"
+tier2_triggered: true
+tier2_reason: >
+  Reports a genuine, quantified corpus-integrity finding (a KR-ZERO generator defect contaminating
+  103/256 R1 contexts) discovered by an actually-executed audit, confirms the new representation-
+  reduction theory has zero existing implementation, commissions a rigorous 16-section design-only
+  specification protocol with explicit stop-conditions, and records a concrete, dated instance of the
+  Gita-material anti-reification discipline correctly rejecting an attractive but theory-violating
+  interpretation — several genuinely new, structurally significant findings beyond the prior
+  audit-planning documents (M0198-M0209).

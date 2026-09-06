@@ -1,0 +1,198 @@
+sequence: 606
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-101458_step-027-uncertainty-calculus-probability-confidence-belief-and-evidence-weight.md
+title: "The Corpus's Formal Uncertainty Calculus — 'Unknown≠0.5', Self-Named One of the Strongest Conclusions of Step 27; an Eight-Dimensional Uncertainty Vector Replacing Any Single Confidence Score ('UniversalConfidenceScore=ArchitecturalAntiPattern'); Likelihood≠Posterior, ConfidenceInterval≠CredibleInterval, EvidenceAssessment≠Probability; a Dempster-Shafer Perspective Explicitly Aligned With Unknown≠50%; Missingness Mechanisms and Selection Bias, Including an Important AI-Training-Data-Bias Observation; 'KnowledgeOS Should Never Expose a Naked Number When the Semantics of That Number Are Unclear'; Verdict 'STEP 27 — PASS'; Opens Step 28 (Epistemic Conflict, Belief Revision, Multiple Authorities, Contradiction Management and Knowledge Reconciliation) — Predicting the Invariant 'Conflict Is Information'"
+date: "2026-08-28"
+bytes: 23657
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 27 -- Uncertainty Calculus, Probability, Confidence, Belief, Evidence Weighting and the Mathematics of Unknown', opened at 0605's close to formalize eight distinct kinds of uncertainty without collapsing them into one arbitrary probability"
+source_role: PRIMARY_RESEARCH
+canonical_source: 606
+importance: critical
+confidence: high
+about: >
+  Opens Step 27 directly executing 0605's closing commitment, explicitly recommending against introducing
+  one universal `confidence` number, delivering instead a precise six-way separation:
+  **`Truth, Evidence, Probability, Belief, Confidence, Uncertainty`** as mutually distinct concepts.
+  Delivers `Truth≠Probability` (`P(H)=0.7≠Truth(H)=0.7`, probability describes uncertainty, never a
+  fractional truth value). **Delivers Epistemic uncertainty formally separated from Aleatoric
+  uncertainty**, worked through a `P(Failure)=0.1` example with two genuinely different interpretations
+  requiring different remedial responses. Delivers Measurement, Model, Parameter, Semantic, Identity,
+  Temporal, and Causal uncertainty each as distinct, worked, non-interchangeable dimensions (semantic
+  ambiguity in "Approved" is explicitly noted as unsolvable by any probability over the technical outcome;
+  causal uncertainty about `P(Failure|do(Deployment))` is distinct from ordinary distributional
+  uncertainty).
+
+  **Delivers the file's central formal deliverable -- an eight-dimensional uncertainty vector**
+  `U(H)=(U_{measurement},U_{epistemic},U_{aleatoric},U_{model},U_{semantic},U_{identity},U_{temporal},
+  U_{causal})`, explicitly replacing any single confidence score, formalized as
+  **`UniversalConfidenceScore=ArchitecturalAntiPattern`** (worked ambiguous-`Confidence=0.85` example
+  spanning five incompatible meanings).
+
+  Delivers probability requiring an explicit reference class/model (`P(H|C,M,E,t)`), Conditional
+  probability preferred over unconditional, and a formal Base-rate/Bayes'-theorem treatment worked through
+  a concrete security-incident-detector example (sensitivity `0.95`, false-positive rate `0.05`, base rate
+  `0.01`) demonstrating a positive signal does NOT imply `P(Incident|Positive)=0.95`. Delivers an explicit
+  caution that not every inference need be Bayesian -- Bayesian reasoning is one tool among several.
+  **Delivers `EvidenceAssessment≠Probability`** -- high evidence strength never automatically implies a
+  specific numeric probability -- and **`Likelihood≠Posterior`** (`L(H;E)=P(E|H)≠P(H|E)`, "essential").
+  Delivers Bayes factors for evidence comparison and a direct reconnection to 0602's (25X)
+  evidence-independence discipline: `EvidenceCount≠IndependentEvidenceCount`, worked through a four-
+  source-one-underlying-database example.
+
+  **Delivers a precise, statistically rigorous separation preserved for the first time in the corpus**:
+  `ConfidenceInterval≠CredibleInterval` -- a classical 95% confidence interval is explicitly NOT a
+  95%-probability statement about the parameter under the frequentist interpretation, distinct from a
+  Bayesian credible interval's probabilistic reading of the same numeric bounds. Delivers Interval
+  estimates preferred over false precision (worked `0.073842` vs. `[0.04,0.11]` example), Bounds-instead-
+  of-probabilities (`L≤P(H)≤U`) when a full distribution cannot be justified, and Imprecise probability
+  (`P(H)∈𝒫`, a set of plausible distributions), immediately followed by an explicit anti-over-formalization
+  caution -- imprecise probability should NOT become the universal representation, introduced only where
+  it solves a demonstrated problem.
+
+  Delivers uncertainty semantics as belonging to the bounded context (Infrastructure/
+  `AvailabilityProbability`, Governance/`EvidenceStatus`, Identity/`MatchProbability`, Architecture/
+  `ApplicabilityStatus`), directly extending the corpus's recurring no-universal-ontology DDD principle
+  (0590/0595/0597/0598/0600/0605). Delivers a five-value categorical Evidence status
+  (`Unverified,PartiallyVerified,Verified,Contradicted,Superseded`) and an eight-value `EpistemicStatus`
+  (`Observed,Supported,Inferred,Hypothesized,Disputed,Unknown,Rejected,Superseded`), explicitly as semantic
+  states rather than probabilities, worked through a concrete example showing probability and epistemic
+  status coexisting in one richer structured record.
+
+  **Delivers the file's central and repeatedly self-emphasized result -- Unknown formally distinguished
+  from a numeric probability**: `P(H)` cannot reasonably be estimated implies the correct state is
+  `Unknown`, never `P(H)=0.5`, since `0.5` is itself a substantive probabilistic claim ("under the
+  specified probability model, the proposition has probability 0.5") while `Unknown` means "we do not
+  possess a justified probability model" -- fundamentally different assertions. **Delivers the file's
+  headline invariant, explicitly self-described as "one of the strongest conclusions of Step 27"**:
+  **`Unknown≠0.5`**. Delivers the parallel missing-data caution (encoding an unknown version as `0` is
+  equally invalid) and six named distinct null-like semantics (`Missing, Unknown, NotApplicable,
+  NotObserved, Withheld, Contradictory`), explicitly noting "a SQL NULL alone cannot express all of
+  these."
+
+  **Delivers a substantial statistical treatment of missingness and selection bias**: formal missing-data
+  mechanisms (`MCAR, MAR, MNAR`), worked through a concrete failed-deployments-underlogged example
+  demonstrating `P(Failure|Logged)` can differ from `P(Failure)` -- "must not assume missing evidence is
+  neutral." Delivers Selection bias (worked serious-incidents-only-reported example,
+  `ObservedIncidentRate>TrueIncidentRate`) and a formal Observation mechanism
+  (`World→ObservationMechanism→ObservedEvidence`), the mechanism itself capable of introducing bias.
+  **Delivers a genuinely important, concrete AI-training-data-bias observation, explicitly flagged as
+  "especially important for AI-generated knowledge"**: if humans document unusual failures more often than
+  ordinary successes, the accumulated KnowledgeOS corpus can systematically overrepresent failure cases,
+  causing the system to incorrectly infer an inflated `FailureRate` -- a direct, practically consequential
+  warning about corpus-level selection bias specific to AI/knowledge-system corpora.
+
+  Delivers a formal six-dimensional Evidence quality `Q(E,q)=(Reliability,Relevance,Independence,
+  Completeness,Freshness,Provenance)`, explicitly not itself a probability, and an Evidence aggregation
+  survey (Bayesian updating, likelihood ratios, deterministic rules, expert weighting, Dempster-Shafer-
+  style structures, interval probabilities), with the bounded context determining the appropriate method.
+  **Delivers a Dempster-Shafer perspective, explicitly noted as conceptually aligned with the corpus's own
+  Unknown≠50% principle**: evidence can support a SET of possibilities (`{H_1,H_2}`) without distinguishing
+  among them, worked through a `Cause∈{Network,Database}` undetermined example, preserving genuine ignorance
+  rather than forcing an arbitrary 50/50 split. Delivers an explicit, well-motivated caution against over-
+  applying belief-function machinery everywhere: **`Mathematical sophistication≠architectural quality`**.
+
+  Delivers a five-component Uncertainty decomposition (`U_D=U_E+U_M+U_P+U_C+U_S`), not necessarily
+  numerically additive, explicitly valuable for diagnostic separation -- different high components require
+  different remedial actions (acquire evidence / evaluate competing models / clarify terminology / conduct
+  causal analysis). Delivers `NextBestInformation=argmax_O VOI(O)` as the resulting uncertainty-reduction
+  planning problem, explicitly connecting Step 27 directly to 0604 (25Z) and 0605 (Step 26). Delivers
+  formal decision-under-uncertainty machinery (`EU(a)=Σ_s P(s|E)U(a,s)`) with the explicit caveat
+  `Decision=Optimization+Constraints+Governance`, a Robust worst-case decision criterion
+  (`argmax_a min_{P∈𝒫} EU_P(a)`), and Sensitivity analysis with a worked concrete decision-threshold
+  example (`p<0.15⇒Upgrade`, `p≥0.15⇒StageFirst`), explicitly framed as "far more useful to an architect"
+  than a bare recommendation.
+
+  **Delivers nine labeled falsification experiments (A-I), ALL PASS**: `EpistemicStatus=Unknown` (no
+  automatic probability assignment); high-quality but irrelevant evidence (`Relevance=False`); two reports
+  from one source (`IndependentEvidenceCount=1`, not 2); a model probability with violated applicability
+  (`ProbabilityStatus=NotApplicable`, must not blindly use the number); measurement uncertainty not
+  automatically reinterpreted as outcome probability; semantic ambiguity yields `SemanticUncertainty`, not
+  `NumericalConfidence`; two undistinguished plausible hypotheses (`Underdetermined` or set-valued belief,
+  not automatically `50/50`); a high-value discriminating observation dominating immediate action; a
+  historical probability figure remaining accessible after later revision.
+
+  **Delivers Step 27's verdict**: **"STEP 27 — PASS,"** with seven boxed central principles:
+  `Unknown≠0.5`, `EvidenceStrength≠Probability`, `Confidence≠Truth`, `ModelUncertainty≠
+  ParameterUncertainty`, `ObservationUncertainty≠OutcomeUncertainty`, `Correlation≠Causation`, and
+  "Different uncertainties require different remedies." **Delivers a much richer worked full-assertion
+  example** (fourteen structured fields -- assertion, epistemic status, evidence, provenance, identity,
+  semantic version, temporal scope, model, model applicability, probability, model uncertainty, known
+  unknowns, decision threshold, authorization) explicitly replacing a bare `Confidence=87%` record,
+  described as "vastly more expressive." Delivers a formal three-tier architectural decomposition
+  (`KnowledgeState`, `DecisionState`, `ActionState`), "the mathematical architecture is converging."
+
+  **Delivers the file's headline architectural design principle**: **"KnowledgeOS should never expose a
+  naked number when the semantics of that number are unclear"** -- a number must carry
+  `Meaning+ReferenceContext+Method+Time+Uncertainty`, explicitly called "a very strong statistical design
+  principle."
+
+  **Closes by identifying the next difficult issue -- multiple simultaneous epistemic authorities
+  producing conflicting claims** (worked example: KnowledgeOS `P(H)=0.8`, another agent `P(H)=0.6`, a
+  disagreeing human expert, and a deterministic rule declaring `H=Forbidden`), posing "who wins?" **Opens
+  "Step 28 — Epistemic Conflict, Belief Revision, Multiple Authorities, Contradiction Management and
+  Knowledge Reconciliation,"** posing the central question "when two legitimate sources disagree, should
+  KnowledgeOS choose one truth, preserve both, or escalate the conflict?" and naming belief revision, non-
+  monotonic reasoning, defeasible knowledge, authority hierarchies, argumentation, contradiction sets, and
+  DDD bounded-context ownership as relevant machinery. Delivers an explicit self-prediction:
+  **`Conflict is information`** -- an architectural invariant the file expects the next step to establish,
+  warning against automatically destroying conflict through premature reconciliation. No actual code
+  execution reported.
+introduces:
+  - concept: "The headline invariant Unknown≠0.5, self-described as one of the strongest conclusions of Step 27 — a proper 0.5 probability is a substantive claim under a probability model, categorically distinct from the absence of any justified probability model"
+  - concept: "An eight-dimensional uncertainty vector U(H)=(measurement,epistemic,aleatoric,model,semantic,identity,temporal,causal) formally replacing any single confidence score, with UniversalConfidenceScore=ArchitecturalAntiPattern"
+  - concept: "ConfidenceInterval≠CredibleInterval, the corpus's first explicit preservation of the frequentist/Bayesian statistical distinction"
+  - concept: "A Dempster-Shafer perspective explicitly noted as aligned with the corpus's Unknown≠50% principle, representing genuine ignorance over a set of possibilities without forcing an arbitrary split"
+  - concept: "The concrete AI-training-data-bias observation: unusual failures being documented more often than ordinary successes can systematically inflate a KnowledgeOS corpus's inferred failure rate"
+  - concept: "The headline design principle 'KnowledgeOS should never expose a naked number when the semantics of that number are unclear', requiring every exposed number to carry Meaning+ReferenceContext+Method+Time+Uncertainty"
+  - concept: "'Step 28 — Epistemic Conflict, Belief Revision, Multiple Authorities, Contradiction Management and Knowledge Reconciliation', predicting the architectural invariant Conflict is information"
+defines:
+  - concept: "Unknown vs. numeric probability"
+    definition: "Unknown means 'we do not possess a justified probability model' for H; a stated probability of 0.5 means 'under the specified probability model, H has probability 0.5' — these are categorically different claims, and the former must never be silently encoded as the latter"
+  - concept: "Eight-dimensional uncertainty vector"
+    definition: "U(H)=(U_measurement,U_epistemic,U_aleatoric,U_model,U_semantic,U_identity,U_temporal,U_causal) — a structured, diagnostically separable representation replacing any single scalar confidence value; not every component applies to every proposition"
+  - concept: "ConfidenceInterval≠CredibleInterval"
+    definition: "A classical (frequentist) confidence interval describes a procedure's long-run coverage property, not a probability that the fixed parameter lies within it; a Bayesian credible interval directly states P(θ∈[L,U]|E)=0.95 — the two must not be conflated"
+  - concept: "Naked-number design principle"
+    definition: "KnowledgeOS must never expose a bare numeric value whose semantics (meaning, reference context, method, time, uncertainty) are unclear; every exposed number requires this accompanying metadata"
+refines:
+  - concept: "0602's (25X) evidence-independence discipline (Replication≠Corroboration, evidence lineage)"
+    refinement: "Directly reconnected and extended to probabilistic evidence combination specifically: EvidenceCount≠IndependentEvidenceCount, worked through a concrete four-source-one-database example, warning against inflating a Bayesian combination via non-independent sources"
+  - concept: "0592's (25N) and 0599's (25U) anti-scalar-confidence discipline"
+    refinement: "Given its most rigorous statistical grounding yet, formally separating Truth/Evidence/Probability/Belief/Confidence/Uncertainty and delivering the eight-dimensional uncertainty vector as the canonical replacement for a single scalar score"
+  - concept: "0590's/0595's/0597's/0598's/0600's/0605's recurring no-universal-ontology DDD principle"
+    refinement: "Extended into uncertainty representation specifically: different bounded contexts (Infrastructure, Governance, Identity, Architecture) legitimately use different uncertainty representations rather than one universal ConfidenceScore"
+  - concept: "0604's (25Z) and 0605's (Step 26) Value of Information / epistemic-planning machinery"
+    refinement: "Directly reused: NextBestInformation=argmax_O VOI(O) formalizes uncertainty reduction as a planning problem, explicitly connecting Step 27 to both 25Z and Step 26"
+  - concept: "0603's OrphanKnowledge and the recurring capstone Zero unification (0598/0604/0605)"
+    refinement: "Indirectly extended via the Unknown≠0.5 discipline, which underlies why an unjustified probability must never silently substitute for an explicit Zero/Unknown epistemic status"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 28 — Epistemic Conflict, Belief Revision, Multiple Authorities, Contradiction Management and Knowledge Reconciliation' is executed as its own file, and whether it confirms the file's own self-predicted invariant 'Conflict is information' as an architectural result rather than merely a hopeful framing"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the six-way Truth/Evidence/Probability/Belief/Confidence/Uncertainty separation, Epistemic vs. Aleatoric uncertainty, the eight-dimensional uncertainty vector replacing scalar confidence, and the headline invariant Unknown≠0.5."
+  - "dimension-registry.md: record Likelihood≠Posterior, ConfidenceInterval≠CredibleInterval, EvidenceCount≠IndependentEvidenceCount, the Dempster-Shafer perspective aligned with Unknown≠50%, missingness mechanisms (MCAR/MAR/MNAR) and selection bias, and the concrete AI-training-data-bias observation about corpus-level failure-overrepresentation."
+  - "dimension-registry.md: record the naked-number design principle, the fourteen-field richer assertion structure, the three-tier KnowledgeState/DecisionState/ActionState decomposition, the nine-test falsification suite (ALL PASS), verdict 'STEP 27 — PASS,' and Step 28's opening with its self-predicted invariant 'Conflict is information.'"
+anchor_test:
+  anchor: "0605's closing commitment to Step 27 (eight distinct kinds of uncertainty without collapsing into one number); 0602's (25X) evidence-independence discipline; 0592's/0599's anti-scalar-confidence discipline; 0590's-0605's recurring no-universal-ontology principle; 0604's/0605's Value of Information machinery"
+  supports_dimension: "Delivers the corpus's most statistically rigorous, comprehensive treatment of uncertainty to date, directly executing 0605's closing commitment and grounding the eight distinct kinds of uncertainty it identified in precise, mutually distinguishable formal definitions with worked examples for each. Delivers the corpus's headline uncertainty-representation invariant, Unknown≠0.5, self-identified as one of the strongest conclusions of the entire step, directly relevant to preventing a common and dangerous AI-system failure mode where genuine ignorance is silently laundered into an unjustified midpoint probability. Delivers the corpus's first explicit preservation of the classical frequentist/Bayesian statistical distinction (ConfidenceInterval≠CredibleInterval), and a Dempster-Shafer perspective explicitly and correctly connected to the corpus's own established Unknown≠50% principle rather than introduced as an unmotivated formalism. Delivers a genuinely important, concretely stated observation about AI-training-data/corpus-level selection bias — that documentation practices favoring unusual failures over ordinary successes can systematically distort an AI knowledge system's inferred failure rates — directly relevant to any real deployment of this architecture that learns from its own accumulated corpus. Delivers a strong, well-motivated design principle (never expose a naked number without full semantic context) directly actionable for implementation. Closes by correctly anticipating the next necessary step — multi-authority epistemic conflict — and explicitly predicts the architectural result 'Conflict is information,' a hypothesis this reconstruction should verify against the next file rather than assume confirmed"
+  refines_or_contradicts: "directly executes 0605's closing commitment to Step 27; reconnects and extends 0602's evidence-independence discipline into probabilistic evidence combination; gives 0592's/0599's anti-scalar-confidence discipline its most rigorous statistical grounding yet; extends the recurring no-universal-ontology principle (0590-0605) into uncertainty representation; directly reuses 0604's/0605's Value of Information and epistemic-planning machinery for uncertainty-reduction planning; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked security-incident base-rate example (sensitivity 0.95, false-positive rate 0.05, base rate 0.01, correctly noting a positive signal does not imply P(Incident|Positive)=0.95) is directly checkable, concrete evidence of rigorous, correctly-applied Bayesian statistical reasoning grounding the file's abstract claims in a realistic and commonly-misjudged scenario."
+  - "The explicit AI-training-data-bias observation — that documentation practices favoring unusual failures over ordinary successes can systematically distort a KnowledgeOS corpus's inferred failure rate — is directly checkable, practically consequential evidence relevant to any real deployment of this architecture that would learn from its own accumulated evidence corpus, extending the file's general selection-bias discussion into a domain-specific, self-referential risk."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 28 — Epistemic Conflict, Belief Revision, Multiple Authorities, Contradiction Management and Knowledge Reconciliation' is executed as its own dedicated corpus file, and whether it confirms the self-predicted invariant 'Conflict is information' as an actual architectural result"
+tier2_triggered: true
+tier2_reason: "Delivers the corpus's most statistically rigorous, comprehensive treatment of uncertainty to date, directly executing 0605's closing commitment and grounding its eight distinct kinds of uncertainty in precise, mutually distinguishable formal definitions with worked examples throughout. Delivers the corpus's headline uncertainty-representation invariant, Unknown≠0.5, self-identified as one of the step's strongest conclusions and of direct practical relevance to preventing a common, dangerous AI-system failure mode where genuine ignorance is silently laundered into an unjustified midpoint probability. Delivers the corpus's first explicit preservation of the classical frequentist/Bayesian statistical distinction and a Dempster-Shafer perspective correctly connected to the corpus's own established discipline rather than introduced as an unmotivated formalism. Delivers a genuinely important, concretely stated observation about AI-corpus-level selection bias directly relevant to any real deployment that learns from its own accumulated evidence. Delivers a strong, actionable design principle (never expose a naked number without full semantic context). Closes by correctly anticipating multi-authority epistemic conflict as the next necessary boundary and explicitly predicts the architectural invariant 'Conflict is information' — a hypothesis to be verified, not assumed, against the next file."

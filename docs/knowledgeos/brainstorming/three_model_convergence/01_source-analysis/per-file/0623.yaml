@@ -1,0 +1,206 @@
+sequence: 623
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-103509_step-042-assurance-composition-invariants-safety-gates-and-formal-decision-contracts.md
+title: "The Corpus's Formal-Admissibility Layer — Three-Way SufficientKnowledge≠ValidDecision≠AuthorizedAction Separation; Hoare-Style {Pre}d{Post} Decision Contracts Extended With Evidence/Uncertainty/Authority/TemporalValidity/Provenance; a Formal Explicitly-Labeled DDD-Interpretation Section (Invariant Ownership by Bounded Context, Preventing Global-Rule Pollution); a Corrected Formal Vocabulary (HardInvariant vs. PolicyConstraint vs. AdvisoryCondition, Replacing the Imprecise 'Soft Invariant'); Classical Base-Case/Inductive-Step Invariant-Preservation Reasoning Borrowed From Program Verification; 'Unknown Safety State Must Not Silently Become Safe'; 'AI May Propose; the Governed System Decides Whether the Proposal Is Admissible'; a New Five-Layer Formal Software-Architecture Diagram (Governance/Decision/Epistemic/Semantic/Reality); Verdict 'STEP 42 — PASS'; Opens Step 43 (Causal Reasoning, Intervention, Counterfactuals and Learning From Outcomes)"
+date: "2026-08-28"
+bytes: 19087
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 42 -- Assurance Composition, Invariants, Safety Gates and Formal Decision Contracts', opened cleanly at 0622's close, and explicitly reintroduces the recurring persona framing ('senior mathematician + statistician + Principal DDD Architect') alongside a partial, though not complete, move toward 0621's just-proposed four-artifact methodology"
+source_role: PRIMARY_RESEARCH
+canonical_source: 623
+importance: critical
+confidence: high
+about: >
+  Opens Step 42 directly executing 0621's preview and 0622's close, posing the stronger question: "how do
+  we ensure that a KnowledgeOS decision gate can never authorize a state that violates a mandatory
+  invariant?" **Delivers the file's foundational three-way separation**: Epistemic ("do we have sufficient
+  knowledge?"), Logical ("are the decision conditions internally consistent?"), and Governance/safety
+  ("is the resulting action permitted?"), formalized as
+  **`SufficientKnowledge≠ValidDecision≠AuthorizedAction`**. Delivers a formal Decision contract
+  `DC(d)=(Pre,Inv,Auth,Post,Temporal,Evidence)` and the precise Precondition-vs-Invariant separation:
+  a precondition asks whether the world is ready; an invariant asks whether the operation is allowed to
+  produce a state that violates a protected property -- kept formally distinct rather than conflated.
+
+  **Delivers the file's first central formal deliverable -- a Hoare-style decision-contract formalism
+  explicitly borrowed from program verification**: `{Pre(d)} d {Post(d)}`, immediately extended beyond
+  classical Hoare logic since KnowledgeOS additionally requires `Evidence, Uncertainty, Authority,
+  TemporalValidity, Provenance`. Delivers formal Admissibility as strict conjunction, never averaged:
+  `Admissible=Pre∧Invariant∧Assurance∧Authorization` (worked counterexample: three conditions `True`, one
+  `Invariant=False`, yields `Admissible=False` regardless). Delivers a formal Safety gate
+  (`Gate(d,K,t)=InvariantSatisfied(d,K,t)`) with critical-invariant `False⇒Block`, and the important
+  architectural default for the unknown case: **`Unknown safety state must not silently become safe`** --
+  for safety-critical decisions the default should generally be `Block`, explicitly distinguishing
+  Open-world from Closed-world interpretation and declining to impose one universal semantics --
+  the applicable domain `Policy_decision` determines unknown-handling (safety-critical→`Block`,
+  exploratory analytics→`ContinueWithWarning`).
+
+  Delivers a six-type Invariant taxonomy (`Structural, Temporal, Numerical, Referential, Governance,
+  Security`). **Delivers an explicitly labeled "DDD interpretation" section (§42.16-42.18) -- a partial,
+  though not complete, move toward 0621's just-proposed four-artifact methodology**: invariants belong to
+  aggregate boundaries; KnowledgeOS must respect that ownership and never arbitrarily redefine an
+  aggregate's invariants; every invariant carries a formal `OwnerContext` (`Invariant→BC`), explicitly
+  preventing "global-rule pollution" -- KnowledgeOS represents, evaluates, and traces governed invariants
+  while the domain remains authoritative over their content.
+
+  **Delivers the file's second central formal deliverable -- a self-corrected formal vocabulary**: an
+  initial Hard/Soft/Advisory invariant classification is explicitly revised mid-file with the recognition
+  that "a property that can be violated is not an invariant in the mathematical sense," yielding the
+  corrected terminology `HardInvariant` vs. `PolicyConstraint` vs. `AdvisoryCondition` -- an explicit,
+  self-aware terminological correction described as "a useful correction in our formal vocabulary,"
+  directly consistent with the corpus's established epistemic-honesty and non-overclaiming discipline
+  applied here to its own prior sentence within the same file.
+
+  **Delivers the file's third central formal deliverable -- classical base-case/inductive-step invariant-
+  preservation reasoning, explicitly borrowed from program verification**: `I(s_0)=True` (base case) and
+  `I(s)∧ValidTransition(s,s')⇒I(s')` (inductive step) together establish that `I` holds for all reachable
+  states, worked through a concrete governed-workflow example
+  (`Requested→Reviewed→Approved→Provisioned`, with `Provisioned⇒Approved` as the protected invariant).
+  Delivers a formal state-transition system (`S`, `T⊆S×S`) and the safety requirement
+  `(s,s')∈T∧I(s)⇒I(s')`, explicitly connected to event-driven architecture: state is reconstructed from
+  events (`State_t` from `Events_{≤t}`), with `EventValid(e,K,t)` required so an invalid event cannot
+  silently establish a valid state, and full Event provenance (`Event→Actor→Evidence→Authorization`)
+  giving "complete decision lineage."
+
+  Delivers Temporal invariants (`ApprovalTime<DeploymentTime`) and Temporal validity/staleness
+  (`ValidityWindow`), composed into `TemporalSufficiency(d,t)`. Delivers Assurance composition as
+  hierarchical (an explicit assurance tree: Decision→Assurance A/B→Claim/Evidence→Validation), and
+  Assurance invalidation via dependency closure (`Affected(E)=Descendants(E,G_P)`), explicitly identified
+  as motivating a major software property: **`Incremental assurance recomputation`** -- no full-knowledge-
+  base recompute required after a single evidence revocation.
+
+  **Delivers the file's fourth central formal deliverable -- Assurance monotonicity explicitly rejected as
+  a universal property**: adding valid evidence does not always increase or preserve assurance, since new
+  evidence can reveal that prior beliefs were wrong (`K_t⊨A` but `K_{t+1}⊭A` is legitimate knowledge
+  revision, not failure); `Assurance_{t+1}(A)` can be strictly lower than `Assurance_t(A)`. Delivers the
+  important, subtle asymmetry that **Safety is different**: once a prohibited state is detected, the system
+  should not simply discard the finding because subsequent evidence looks favorable -- the safety decision
+  must retain the evidence and reasoning that produced it, even as ordinary knowledge continues to revise.
+
+  Delivers the file's complete, extended formal Decision contract `DC(d)=⟨P,I,A,E,Q,T,O⟩` (preconditions,
+  invariants, authorization, evidence requirements, epistemic sufficiency, temporal constraints,
+  postconditions) and Decision admissibility as full conjunction
+  (`Admissible=P∧I∧A∧E∧Q∧T`), only after which `Execute(d)` may proceed.
+
+  **Delivers the file's fifth central formal deliverable -- Decision evaluation formally separated from
+  Decision execution**: `Evaluate(d)` must conceptually precede `Execute(d)`, explicitly enabling a
+  Dry-run capability (simulation, review, what-if analysis, governance checks, AI planning) and a
+  Counterfactual-decision preview (`WhatIf(Execute(d))→PostState(d)`, explicitly flagged as anticipating
+  the corpus's forthcoming causal-reasoning work). Delivers a formal safety-gate pipeline
+  (`Plan→Evaluate→Validate→Authorize→Safety Gate→Execute→Observe Outcome`), with the side effect required
+  to occur strictly after the gate.
+
+  **Delivers the file's sixth central formal deliverable -- the AI agent boundary, formalized as a core
+  KnowledgeOS principle**: `AIProposal→DecisionEvaluation→PolicyGate` -- **"AI may propose; the governed
+  system decides whether the proposal is admissible."** Delivers Agent trust explicitly rejected as a
+  binary flag (`Trust(AI)=True` avoided); instead `Capability(AI)` is constrained by `Policy`, with an
+  AI agent's authority explicitly bounded rather than assumed.
+
+  **Delivers twelve labeled falsification experiments (1-12), ALL PASS**: authorization failure correctly
+  blocking an otherwise-epistemically-sufficient decision; a hard-invariant failure correctly blocking
+  despite passed authorization; an unknown safety-critical invariant correctly blocking/remaining unknown
+  rather than auto-authorizing; a valid transition correctly preserving its starting invariant; an
+  invariant-violating transition correctly rejected; an expired approval correctly rendering a decision
+  inadmissible; a revoked evidence item correctly triggering dependency-closure identification of affected
+  assurance and decisions; an AI proposal violating governance correctly recorded but blocked from
+  execution; new disproving evidence correctly downgrading/revoking existing assurance; a dry-run
+  evaluation correctly producing no side effect; an invariant correctly not silently redefined across
+  bounded-context ownership; and a technically-supported-but-ungoverned decision correctly remaining
+  unexecuted (`TechnicallySupported=True`, `Authorized=False`, `Execute=False`).
+
+  **Delivers Step 42's verdict — "STEP 42 — PASS,"** self-described as another major architectural
+  milestone: KnowledgeOS has moved from "knows enough" (Step 41) to **"can formally determine whether a
+  decision is admissible"** (this step). **Delivers seven major numbered principles** (Sufficient
+  Knowledge≠Valid Decision; Valid Decision≠Authorized Action; Unknown safety state must not silently
+  become safe; Hard invariants are non-negotiable; AI proposal≠authorized execution; every consequential
+  decision should have an explicit contract; evidence invalidation must propagate through decision
+  dependencies).
+
+  **Delivers the file's seventh, most architecturally significant deliverable -- a new, clean five-layer
+  formal software-architecture diagram**: `GOVERNANCE` (Authority/Policy/Authorization) →
+  `DECISION` (Preconditions/Gates/Postconditions) → `EPISTEMIC` (Evidence/Claims/Uncertainty/Validation) →
+  `SEMANTIC` (Identity/Context/Translation/Meaning) → `REALITY` (Observation/Events/State/Outcomes),
+  explicitly self-described as "beginning to look less like a collection of theoretical ideas and more
+  like a genuine software architecture model" -- the corpus's first clean, layered, software-architecture-
+  style stratification of its own accumulated concepts.
+
+  **Closes by identifying the next major gap -- correlation does not establish causation**: an observed
+  `Action=A` followed by `Outcome=B` does not license concluding `A→B`, of direct importance if KnowledgeOS
+  is to learn from its own decisions. **Opens "Step 43 — Causal Reasoning, Intervention, Counterfactuals
+  and Learning from Outcomes,"** cleanly, previewing the central principle
+  **`An outcome following an action does not prove that the action caused the outcome`**. No actual code
+  execution reported. No corpus-integrity topic collision detected.
+
+  **METHODOLOGY-TRACKING NOTE (continuing the observation opened at 0622)**: this file delivers an
+  explicitly labeled "DDD interpretation" subsection (§42.16-42.18), a partial step toward 0621's
+  four-artifact recommendation, but still does not deliver a separately labeled "Software abstraction" or
+  genuinely "Executable falsification tests" section -- the twelve falsification experiments remain
+  narrative and hand-verified, as in every prior step. The five-layer architecture diagram functions as an
+  implicit software-abstraction artifact but is not framed or labeled as such.
+
+  **MINOR NUMBERING-DRIFT OBSERVATION**: 0621's Track A explicitly proposed Causal reasoning/intervention as
+  "Step 44," with Step 42 reserved for "Assurance composition" and Step 43 for "Decision gates and safety
+  invariants" as two separate steps. This file (0623) instead consolidates assurance composition,
+  invariants, safety gates, and formal decision contracts into a single "Step 42," causing the corpus's
+  actual causal-reasoning treatment to land one step earlier than predicted, as "Step 43" rather than
+  "Step 44" -- a minor, non-alarming drift from 0621's own numbered prediction, recorded for completeness
+  rather than as a corpus-integrity concern.
+introduces:
+  - concept: "The three-way separation SufficientKnowledge≠ValidDecision≠AuthorizedAction, distinguishing epistemic, logical, and governance/safety questions as genuinely different evaluations"
+  - concept: "A Hoare-style {Pre}d{Post} decision-contract formalism explicitly borrowed from program verification, extended with Evidence/Uncertainty/Authority/TemporalValidity/Provenance beyond classical Hoare logic's scope"
+  - concept: "An explicitly labeled DDD-interpretation section formalizing invariant ownership by bounded context, preventing KnowledgeOS from becoming a global-rule owner"
+  - concept: "A self-corrected formal vocabulary — HardInvariant/PolicyConstraint/AdvisoryCondition replacing an initially imprecise Hard/Soft/Advisory invariant classification, an explicit within-file terminological self-correction"
+  - concept: "Classical base-case/inductive-step invariant-preservation reasoning borrowed from program verification, applied to a concrete governed-workflow example"
+  - concept: "Assurance monotonicity explicitly rejected as universal, with Safety explicitly treated as an asymmetric exception requiring retained evidence/reasoning even as ordinary knowledge revises"
+  - concept: "The AI agent boundary formalized as a core principle: AI may propose; the governed system decides admissibility — with agent trust explicitly rejected as a binary flag in favor of policy-bounded capability"
+  - concept: "A new five-layer formal software-architecture diagram (Governance/Decision/Epistemic/Semantic/Reality), the corpus's first clean layered stratification of its accumulated concepts"
+defines:
+  - concept: "SufficientKnowledge≠ValidDecision≠AuthorizedAction"
+    definition: "Three genuinely distinct evaluations — whether enough is known (epistemic), whether the decision's conditions are internally consistent (logical), and whether the resulting action is permitted (governance/safety) — none of which implies either of the others"
+  - concept: "Admissible=Pre∧Invariant∧Assurance∧Authorization"
+    definition: "A decision is admissible only under strict, unaveraged conjunction of all four dimensions; a single failing dimension (most critically a violated hard invariant) blocks the decision regardless of how strongly the others are satisfied"
+  - concept: "HardInvariant / PolicyConstraint / AdvisoryCondition"
+    definition: "A corrected three-way vocabulary replacing the imprecise Hard/Soft/Advisory invariant classification: a true invariant (HardInvariant) can never be violated by definition, while a violable-but-consequential property is properly a PolicyConstraint, and a violable-with-only-a-warning property is an AdvisoryCondition"
+  - concept: "Evaluate(d) before Execute(d)"
+    definition: "Decision evaluation is formally separated from decision execution, enabling dry-run simulation, review, what-if analysis, governance checks, and AI planning without side effects"
+  - concept: "AI may propose; the governed system decides whether the proposal is admissible"
+    definition: "An AI agent's proposed decision must pass through DecisionEvaluation and a PolicyGate before execution; the agent's capability is explicitly bounded by policy rather than granted blanket trust"
+refines:
+  - concept: "0620's (Step 40) Optimal≠Authorized and 0622's (Step 41) GatePass≠Authorization principles"
+    refinement: "Directly extended into a full three-way separation (SufficientKnowledge≠ValidDecision≠AuthorizedAction) and formalized into a complete decision-contract admissibility test"
+  - concept: "0622's (Step 41) three-valued epistemic logic and Unknown-handling discipline"
+    refinement: "Directly reapplied to safety-critical invariants specifically: Unknown safety state must not silently become safe, with an explicit safety-critical default of Block distinguished from a lighter exploratory-analytics default"
+  - concept: "The corpus's established closure/dependency-graph machinery (0618's Closure(Identity), 0620's Affected(C))"
+    refinement: "Directly reapplied to assurance invalidation: Affected(E)=Descendants(E,G_P), motivating the newly named software property Incremental assurance recomputation"
+  - concept: "0621's just-proposed four-artifact methodology (Mathematics/DDD/Software/Test)"
+    refinement: "Partially adopted: this file delivers an explicitly labeled DDD-interpretation subsection (a first for the corpus in this exact labeled form) and an implicit software-architecture artifact (the five-layer diagram), but still lacks a separately labeled software-abstraction section and genuinely executable falsification tests — recorded as continued partial progress on the methodology-tracking observation opened at 0622"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Continue tracking whether subsequent steps (43 onward) further formalize the DDD-interpretation and software-abstraction sections this file partially introduced, eventually reaching the full four-artifact structure 0621 proposed, or whether the corpus's engagement with that recommendation plateaus at this file's partial level."
+  - "Track whether Step 43 (Causal Reasoning, Intervention, Counterfactuals and Learning from Outcomes) follows cleanly, confirming the minor one-step numbering drift relative to 0621's Track A prediction (which had named causal reasoning as Step 44), and whether any further renumbering occurs."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the three-way separation SufficientKnowledge≠ValidDecision≠AuthorizedAction; the Hoare-style {Pre}d{Post} decision-contract formalism extended beyond classical program verification; formal Admissibility as strict unaveraged conjunction; and Unknown safety state must not silently become safe with its safety-critical Block default."
+  - "dimension-registry.md: record the explicitly labeled DDD-interpretation section on invariant ownership by bounded context; the self-corrected HardInvariant/PolicyConstraint/AdvisoryCondition vocabulary; classical base-case/inductive-step invariant-preservation reasoning; Assurance monotonicity explicitly rejected as universal with Safety treated as an asymmetric exception; and Evaluate(d) formally separated from Execute(d) enabling dry-run/counterfactual evaluation."
+  - "dimension-registry.md: record the AI-agent-boundary principle (AI may propose, governed system decides admissibility, Capability(AI) policy-bounded not trust-based); the new five-layer formal software-architecture diagram (Governance/Decision/Epistemic/Semantic/Reality); twelve falsification experiments (ALL PASS); seven major numbered principles; verdict 'STEP 42 — PASS'; the continued methodology-tracking observation re 0621's four-artifact proposal; and the minor numbering-drift observation relative to 0621's Track A prediction. Opens Step 43 into causal reasoning."
+anchor_test:
+  anchor: "0621's just-proposed four-artifact methodology and its Track A prediction naming causal reasoning as Step 44; 0620's (Step 40) Optimal≠Authorized and 0622's (Step 41) GatePass≠Authorization principles; the corpus's established closure/dependency-graph machinery; the corpus's recurring epistemic-honesty/non-overclaiming discipline"
+  supports_dimension: "Delivers a rigorous, cleanly organized formal-admissibility layer directly and substantively extending the corpus's accumulated authority/authorization discipline (0620, 0622) into a complete Hoare-style decision-contract formalism explicitly borrowed from program verification, a genuinely powerful and well-motivated cross-disciplinary transfer. Delivers a self-aware, in-file terminological self-correction (Hard/Soft/Advisory invariant → HardInvariant/PolicyConstraint/AdvisoryCondition) that is directly checkable evidence of the corpus's continuing epistemic-honesty discipline applied reflexively to its own immediately preceding sentence, not merely to external claims. Delivers classical invariant-induction reasoning (base case + inductive step) correctly and concretely applied to a governed workflow, giving the corpus's safety-gate concept genuine formal teeth beyond prose assertion. Makes partial, directly observable progress on 0621's just-proposed four-artifact methodology (an explicitly labeled DDD-interpretation subsection, and an implicit though unlabeled software-architecture artifact in the new five-layer diagram) without yet reaching the full four-part structure, extending rather than resolving the methodology-tracking observation opened at 0622. Delivers a concrete, memorable, and practically important AI-governance principle (AI may propose; the governed system decides admissibility) directly extending 0620's/0622's authority discipline into agentic-AI boundary-setting specifically. Surfaces a minor, non-alarming numbering-drift observation relative to 0621's own Track A prediction, worth recording for completeness in this reconstruction's ongoing numbering-integrity tracking"
+  refines_or_contradicts: "directly extends 0620's Optimal≠Authorized and 0622's GatePass≠Authorization principles into a full three-way admissibility separation; directly reapplies 0622's three-valued Unknown-handling discipline to safety-critical invariants specifically; directly reapplies the corpus's established closure/dependency-graph machinery to assurance invalidation; makes partial, directly observable progress on 0621's four-artifact methodology recommendation without fully adopting it; minor numbering drift relative to 0621's Track A prediction (causal reasoning lands as Step 43 rather than the predicted Step 44), not a corpus-integrity concern; no contradiction found; no topic collision detected"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit within-file terminological self-correction — from an initial Hard/Soft/Advisory invariant classification to the corrected HardInvariant/PolicyConstraint/AdvisoryCondition vocabulary, with the explicit justification 'a property that can be violated is not an invariant in the mathematical sense' — is directly checkable, concrete evidence of the corpus's epistemic-honesty discipline being applied reflexively to its own immediately preceding formulation within the same file, not merely retrospectively across files."
+  - "The explicit base-case/inductive-step invariant-preservation argument (I(s_0)=True; I(s)∧ValidTransition(s,s')⇒I(s')), applied to the concrete worked example Provisioned⇒Approved over the workflow Requested→Reviewed→Approved→Provisioned, is directly checkable, concrete evidence of a genuine formal-verification technique correctly transferred and correctly applied, rather than merely gestured at."
+undefined_concepts: []
+open_questions:
+  - "Whether subsequent steps further formalize the DDD-interpretation and software-abstraction artifacts this file partially introduced, eventually reaching the full four-artifact structure 0621 proposed, or whether the corpus's engagement with that recommendation plateaus at this file's partial level"
+tier2_triggered: true
+tier2_reason: "Delivers a rigorous, cleanly organized formal-admissibility layer directly extending the corpus's accumulated authority discipline (0620, 0622) into a complete Hoare-style decision-contract formalism explicitly borrowed from program verification. Delivers a self-aware, directly checkable in-file terminological self-correction (Hard/Soft/Advisory → HardInvariant/PolicyConstraint/AdvisoryCondition), extending the corpus's epistemic-honesty discipline reflexively to its own preceding formulation. Delivers classical base-case/inductive-step invariant-preservation reasoning correctly and concretely applied to a worked governed-workflow example. Makes partial, directly observable progress on 0621's just-proposed four-artifact methodology (an explicitly labeled DDD-interpretation subsection, plus an implicit unlabeled software-architecture artifact in the new five-layer diagram) without yet completing the full four-part structure. Delivers a concrete, practically important AI-governance principle (AI may propose; the governed system decides admissibility) directly extending the corpus's authority discipline into agentic-AI boundary-setting. Surfaces a minor, non-alarming numbering-drift observation relative to 0621's own Track A prediction. Verdict 'STEP 42 — PASS'; opens Step 43 into causal reasoning, intervention, and counterfactuals."

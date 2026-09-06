@@ -1,0 +1,140 @@
+sequence: M0120
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-161500_review-of-w-kr-contr-accept-with-minor-formal-corrections.md
+title: "Review of W-KR-CONTR-2026-09 -- ACCEPT WITH MINOR FORMAL CORRECTIONS: A Second, More Advanced Executed Contr Experiment Reframes the Whole Question -- Flat Candidates A/B/C (4th Value/Delegation/Exclusive-Construction) All Score 7/12 and Fail on the SAME Seven Distinctions Which Are About the Unknown-Family Collapse, NOT Contradiction; chi(G)=3 Shows the Required Distinctions Do Not Force Four Values, But the Nine No-Determinate-Value Conditions Cannot Be Represented by ANY Flat Domain (Structural, Not Cardinal); Only Structured Evaluation D=(value,reason) Achieves 12/12; Candidate C Exposes a Genuine Invariant-Suite Coverage Gap (Maps Contradiction to Satisfied Yet Passes I1-I5); Introduces 'Same Status =/=> Semantic Equivalence' as a New =_sem Principle; and Reframes Contradiction as One Required Distinction Among Many, Not the Research Root"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "reviews a second, more advanced executed Contr experiment (W-KR-CONTR-2026-09, distinct from M0116's KR-CONTR-2026-09 model-separation experiment, which this document explicitly renames KR-CONTR-MODELS-2026-09 to resolve an ID collision) -- genuinely reframes the entire Contr research question from 'how many truth values' to 'what distinctions must evaluation preserve,' with a real chromatic-number/exhaustive-search analysis and a valuable invariant-suite-gap discovery"
+source_role: ADJUDICATION
+canonical_source: M0120
+importance: critical
+confidence: high
+about: >
+  Reviews W-KR-CONTR-2026-09, which tests "what evaluation structure is minimally required to
+  preserve the distinctions the KnowledgeOS programme has already declared important," reporting:
+  Candidate A (fourth value) 7/12; B (delegation) 7/12; C (exclusive construction) 7/12; D
+  (structured evaluation) 12/12 -- with the critical observation that A, B, and C fail on the SAME
+  seven distinctions, and those failures collapse the UNKNOWN FAMILY (Unobservable ==
+  InsufficientEvidence == Underdetermined == TheoryIncomplete == ... -> U), not the contradiction
+  dimension: "adding another value for contradiction does not solve a problem whose missing
+  distinctions lie outside the contradiction dimension."
+
+  **THE CHROMATIC-NUMBER RESULT, CAREFULLY BOUNDED**: the experiment builds a "must-differ" graph
+  over required distinctions and finds chi(G)=3, so the tested required distinctions do NOT
+  mathematically force a four-valued flat evaluation domain -- but this "does not establish that
+  the correct evaluation domain has three values," only that "given this particular required-
+  distinction set and adequacy criterion, at least three distinguishable flat classes are
+  required." Immediately qualified by the stronger, structural result: the nine no-determinate-
+  value conditions CANNOT be adequately represented by ANY flat value domain, regardless of
+  cardinality -- "the obstruction is structural rather than cardinal," explicitly named "the
+  headline finding." Yields the methodological principle: "cardinality sufficiency != semantic
+  adequacy" (colorability only proves pairwise coding capacity under the chosen abstraction, not
+  that the resulting values carry the required semantic/operational meaning).
+
+  **THE REAL MINIMUM REPRESENTATION IS TWO FIELDS, NOT THREE VALUES**: exhaustive search finds
+  min|representation|=2, with two minimum representations {value,reason} and {polarity,reason} --
+  "reason is indispensable," CAREFULLY SOFTENED to "within the tested representation language and
+  candidate fields, an explicit reason/boundary component is indispensable for separating the
+  required distinctions" (explicitly not an absolute claim, since Reason(x)=x could trivially
+  encode everything). Proposes distinguishing FLAT semantics (Eval:X->V) from STRUCTURED semantics
+  (Eval:X->V x R) as new research vocabulary, with Candidate D reframed as a genuine product/
+  structured evaluation space E = V x R, "structurally closer to what Zero Lens has been
+  discovering" -- NOT simply a richer many-valued logic.
+
+  **CANDIDATE C's FAILURE EXPOSES A GENUINE INVARIANT-SUITE COVERAGE GAP**: Candidate C maps
+  Contradiction -> T (Satisfied) yet PASSES invariants I1-I5, because those invariants only test
+  Contr against the UNKNOWN family, never against SATISFACTION itself -- "an invariant suite that
+  checks only the separation of contradiction from the unknown family can allow contradiction to
+  collapse into satisfaction." Yields "passing invariants does not imply semantic adequacy" and
+  motivates a new candidate invariant I11: Contr != Satisfied, explicitly kept as [PROP], not
+  canon, with the discipline "do not fix the history by retroactively declaring the invariant
+  suite complete" -- preserving the conflict (I1-I5 pass, capability guard fails) as a recorded
+  fact rather than papering over it.
+
+  **INTRODUCES "SAME STATUS DOES NOT IMPLY SEMANTIC EQUIVALENCE" AS A NEW ==_sem PRINCIPLE**:
+  Eval_1(p)=U and Eval_2(p)=U does not imply Eval_1 ==_sem Eval_2, because the underlying reasons
+  may differ (Unobservable vs InsufficientEvidence) and downstream operations may distinguish
+  them -- a genuinely new candidate observation principle for the corpus's semantic-equivalence
+  work, distinct from (though compatible with) the previously-established equivalence-relation
+  requirements (FR-001, M0119's representative-invariance principle).
+
+  **REFRAMES THE OVERALL DEPENDENCY CHAIN, PLACING CONTRADICTION AS ONE DISTINCTION AMONG MANY,
+  NOT THE ROOT**: Required Distinctions -> Evaluation Representation -> Typed Boundary/Reason ->
+  Composition -> Aggregation -> Zero -> Determination, with Contradiction explicitly demoted to
+  "one particular required distinction" feeding this chain, rather than the chain's starting
+  point -- "a significant architectural clarification," reversing the earlier framing where
+  contradiction drove the whole investigation.
+
+  **RESOLVES A GENUINE ID-COLLISION** between this new structured-evaluation experiment and
+  M0116's earlier model-separation experiment: renames M0116's experiment KR-CONTR-MODELS-2026-09
+  (alias KR-CONTR-2026-09, legacy), assigning this new experiment the canonical KR-CONTR-2026-09
+  ID (or KR-CONTR-EVAL-2026-09 if a scope suffix is permitted), with explicit cross-provenance
+  notes in both artifacts -- careful corpus-hygiene discipline, though it creates a SECOND
+  candidate "FR-002" proposal (thirteen items, about structured evaluation) DISTINCT FROM M0116's
+  own candidate FR-002 (ten items, about M3/M4 model isomorphism) -- a fresh ID-collision risk this
+  document does not itself flag, left noted here for the eventual reclassification pass.
+
+  **PROPOSES KR-COMP-2026-09 (Composition of Structured Evaluation)** as the next experiment, with
+  a precise decisive test: does there exist x,y,op such that Compose_structured(x,y,op) is NOT
+  equivalent to Encode(Compose_flat(Encode(x),Encode(y),op))? -- if such a witness exists, the
+  structured representation has genuine semantic power beyond mere metadata. Recommends a
+  reformulated Priest extraction targeting exactly this: semantic values, designated values,
+  truth-function composition, consequence, negation, conjunction, implication, and which
+  KnowledgeOS distinctions could or could not be represented by flat versus structured systems.
+
+  **HANDLES THE GITA MATERIAL WITH APPROVED DISCIPLINE**: the 18.63 observation (exhaustion of
+  presented reasoning -> return of resolution to Arjuna) is endorsed as corroboration/lens only,
+  mapped onto the already-established Determination!=Decision!=Authorization!=Action separation;
+  the samsaya (doubt->inquiry) versus visada (halt/impairment) distinction is noted as potentially
+  useful for distinguishing epistemic uncertainty from agent inability/unwillingness, but
+  explicitly "interpretive research, not architecture," producing no kernel candidate.
+
+  Closes: "Theory v1.2 remains unchanged. Contr remains OPEN. Composition is promoted to the
+  immediate research target... use Priest specifically to formalize the value/composition side
+  before running KR-COMP-2026-09."
+introduces:
+  - concept: "The 7/12 vs 12/12 experimental result showing flat candidates (fourth-value, delegation, exclusive-construction) all fail identically on the unknown-family distinctions, not the contradiction distinctions"
+  - concept: "The chi(G)=3 chromatic-number result and the methodological principle 'cardinality sufficiency != semantic adequacy'"
+  - concept: "The structural-not-cardinal obstruction finding: nine no-determinate-value conditions cannot be represented by ANY flat domain regardless of cardinality"
+  - concept: "The minimum two-field representation result ({value,reason} or {polarity,reason}), carefully bounded against over-claiming 'reason' as trivially sufficient"
+  - concept: "Candidate C's exposure of a genuine invariant-suite coverage gap (passes I1-I5 while mapping Contradiction to Satisfied), motivating candidate invariant I11: Contr != Satisfied"
+  - concept: "The new =_sem principle: same evaluation status does not imply semantic equivalence, when underlying reasons differ and downstream operations can distinguish them"
+  - concept: "The reframed dependency chain placing Contradiction as one required distinction among many, not the research root"
+  - concept: "The precise KR-COMP-2026-09 decisive test: existence of a witness where structured composition is not equivalent to encoded flat composition"
+defines: []
+refines:
+  - concept: "M0116's KR-CONTR-2026-09 model-separation experiment, here renamed KR-CONTR-MODELS-2026-09 to resolve an ID collision with this new structured-evaluation experiment"
+  - concept: "The corpus's established Sat->Zero ordering discipline, reinforced here by explaining why the old Zero<=>Delta=empty-set definition was too simple (Sat itself was underspecified, since U_unobservable != U_notassessed)"
+  - concept: "M0119's representative-invariance principle for ==_sem, complemented here by the distinct 'same status != semantic equivalence' observation"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - concept: "This document's own proposed candidate FR-002 (13 items, structured evaluation) versus M0116's separately-proposed candidate FR-002 (10 items, M3/M4 isomorphism) -- a fresh, unflagged-by-this-document ID collision for the eventual reclassification pass to resolve"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0120 as reviewing the second, more advanced W-KR-CONTR-2026-09 experiment, which reframes Contr entirely: flat candidates A/B/C fail identically (7/12) on the unknown-family (not contradiction) distinctions; chi(G)=3 shows required distinctions don't force four values, but the obstruction is structural (any flat domain fails on nine no-determinate-value conditions); only structured D=(value,reason) achieves 12/12; Candidate C exposes a genuine invariant-suite coverage gap; introduces 'same status =/=> semantic equivalence'; reframes Contradiction as one distinction among many, not the root. Resolves an ID collision with M0116 (renamed KR-CONTR-MODELS-2026-09) but creates a fresh, unflagged FR-002 naming collision."
+anchor_test:
+  anchor: "M0116's KR-CONTR-2026-09 model-separation experiment, the established Sat->Zero ordering discipline, and the corpus's semantic-equivalence work"
+  supports_dimension: "A genuinely deep, well-executed second experiment that reframes the entire Contr research question and delivers a valuable new invariant-suite-gap discovery plus a new semantic-equivalence principle"
+  refines_or_contradicts: "refines (M0116, the Sat->Zero ordering discipline, M0119's =_sem work); creates (an unflagged FR-002 naming collision with M0116)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'Candidates A, B and C fail on the same seven distinctions, and those failures are not primarily about contradiction... adding another value for contradiction does not solve a problem whose missing distinctions lie outside the contradiction dimension' -- the experiment's central, genuinely surprising reframing result."
+  - "Candidate C maps Contradiction->T (Satisfied) yet passes invariants I1-I5 -- a concrete, quantified demonstration that 'passing invariants does not imply semantic adequacy,' motivating a specific new candidate invariant (I11) rather than a vague warning."
+  - "'Cardinality sufficiency != semantic adequacy' -- precisely explains why chi(G)=3 (a valid coloring exists) coexists with Candidates A/B/C (which use 3-4 flat values) still failing -- colorability proves coding capacity, not semantic/operational meaning."
+undefined_concepts:
+  - "The exact minimal formal structure of 'Reason' -- explicitly named as the next open question ('what is the minimal structured semantics of Reason?'), not resolved here"
+open_questions:
+  - "Whether KR-COMP-2026-09 (Composition of Structured Evaluation) was ever executed, and if so whether a witness was found where structured composition has genuine semantic power beyond flat encoding."
+  - "Whether this document's own candidate FR-002 (structured evaluation, 13 items) and M0116's candidate FR-002 (M3/M4 isomorphism, 10 items) were ever reconciled or renumbered to avoid collision."
+tier2_triggered: true
+tier2_reason: "A genuinely deep second executed experiment that fundamentally reframes the Contr research question (from truth-value count to required-distinction preservation), delivers a valuable invariant-suite-gap discovery with a concrete counterexample, introduces a new semantic-equivalence principle, and carefully bounds its own strongest claims (cardinality!=adequacy; reason-indispensability scoped to the tested representation language) -- while also creating a fresh, unflagged FR-002 naming collision worth tracking. Comfortably meets the tier-2 bar."

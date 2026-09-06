@@ -1,0 +1,73 @@
+sequence: M0200
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-092003_clarification-what-raw-kr-zero-records-means.md
+title: "Self-aware admission of no direct access to the 1,395-record KR-ZERO case-level dataset; reveals a NEW corpus-count discrepancy (1496 and 1475 figures from separate O2/O4/O6 analyses); sharpens M0198's corpus-integrity finding into a boxed principle and a disciplined stop-condition"
+date: "20260903-092003"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0200
+importance: high
+confidence: high
+about: >
+  A methodological clarification refining M0198/M0199's corpus-audit discussion: an explicit,
+  self-aware admission that the reviewer does not have direct access to the actual 1,395-record
+  case-level KR-ZERO dataset, only the previously-discussed aggregates — and a corresponding
+  terminology correction ("raw KR-ZERO records" reframed as "locate and inspect the original
+  case-generating artifacts... determine whether a reconstructible case-level corpus exists").
+  Surfaces a new corpus-count discrepancy (1496 and 1475, from separate O2/O4/O6 analyses) alongside
+  the already-established 1,395 figure.
+introduces:
+  - "An explicit epistemic-honesty admission: 'in the material currently visible to me I do not have the actual case-level 1,395-record dataset itself' — distinguishing discussed/summarized results from directly-inspected raw data, a discipline this reconstruction's own standing rules require but which is here applied by the source material itself"
+  - "A NEW corpus-count discrepancy: alongside the established 1,395 total (k=1:1252/89.7%, k=2:25/1.8%, k=3:3/0.2%, irreducible:115/8.24%), 'separate populations/results such as the O2/O4/O6 analyses' produced totals of 1,496 and 1,475 — figures not reconciled with the 1,395 total or with each other, joining this reconstruction's other long-tracked corpus-count discrepancies (the main-corpus ~1,193/2,376 figure, the KR-SIM lane's own 1,452+330=1,782 figure from M0035)"
+  - "A boxed sharpening of M0198's corpus-integrity finding: 'aggregate KR-ZERO results ≠ case-level KR-REP dataset' — restated as a formal non-identity, not merely a caution"
+  - "A disciplined stop-condition: 'Can the existing KR-ZERO experiment actually support KR-REP-DATASET-2026-09? If yes, we build the adapter. If no, we stop and document exactly which information was never recorded. That is much better scientifically than pretending the 1,395 aggregate cases contain R5...R1.'"
+  - "A candidate artifact-directory structure for what 'raw KR-ZERO records' might actually consist of (experiment definition, generated cases, Zero-status results, witnesses, transformation metadata, contract metadata, summary/results, README) — offered as a hypothesis to be verified by direct inspection, not asserted as fact"
+defines: []
+refines:
+  - "M0198's corpus-integrity finding (aggregate-only persistence): sharpened into an explicit non-identity principle and a stop-condition discipline"
+  - "M0199's file-request list: reframed from a request for 'raw KR-ZERO records' (potentially presupposing their existence in a single reconstructible form) to a request to determine WHETHER such records exist at all"
+contradicts: []
+repeats:
+  - "M0198's already-established k=1/k=2/k=3/irreducible statistics (1252/25/3/115 of 1395), restated here as background before introducing the new 1496/1475 discrepancy"
+bridge_candidates:
+  - "The precise origin and reconciliation of the 1,496 and 1,475 figures against the established 1,395 total — an unresolved corpus-count discrepancy for the eventual global-reclassification pass"
+  - "Whether the KR-ZERO experiment's actual file artifacts were ever directly inspected (rather than discussed/summarized) to resolve this question"
+mathematical_content: null
+gita_content: null
+kernel_content: >
+  Models a self-aware epistemic discipline (distinguishing discussed-from-directly-inspected data)
+  applied to the Zero-algebra thread's own corpus-integrity question, while surfacing a fresh,
+  unreconciled corpus-count discrepancy consistent with this reconstruction's broader pattern of
+  tracked count discrepancies across multiple sub-threads.
+registry_updates:
+  - "New unreconciled corpus-count discrepancy: 1,496 and 1,475 figures (from O2/O4/O6 analyses) alongside the established 1,395 KR-ZERO total"
+  - "Sharpened corpus-integrity principle: 'aggregate KR-ZERO results ≠ case-level KR-REP dataset,' with an explicit stop-condition discipline"
+anchor_test:
+  anchor: false
+  supports_dimension: "New unreconciled corpus-count discrepancy (1496/1475 vs. 1395); sharpened corpus-integrity stop-condition"
+  refines_or_contradicts: "refines (M0198's corpus-integrity finding)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"In the material currently visible to me I do not have the actual case-level 1,395-record dataset itself.\""
+  - "\"There were also separate populations/results such as the O2/O4/O6 analyses, which is why we have encountered 1496 and 1475 as well.\""
+  - "\"Aggregate KR-ZERO results ≠ case-level KR-REP dataset.\""
+undefined_concepts:
+  - "The precise source and meaning of the 1,496 and 1,475 figures — named but not explained"
+open_questions:
+  - "Are the 1,496 and 1,475 figures ever reconciled with the 1,395 total or with each other?"
+  - "Was the actual KR-ZERO experiment directory structure ever directly inspected?"
+tier2_triggered: true
+tier2_reason: >
+  Surfaces a new, unreconciled corpus-count discrepancy (1,496 and 1,475 alongside the established
+  1,395 KR-ZERO total) consistent with this reconstruction's broader pattern of tracked count
+  discrepancies, and sharpens the prior corpus-integrity finding into an explicit stop-condition
+  discipline — a genuine addition to the corpus-integrity tracking this reconstruction maintains,
+  even though the surrounding methodological content mostly refines M0198.

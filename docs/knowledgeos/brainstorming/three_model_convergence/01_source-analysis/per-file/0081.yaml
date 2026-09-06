@@ -1,0 +1,126 @@
+sequence: "0081"
+path: docs/knowledgeos/brainstorming/_misc/20260821-2353-deepseek-investigation-eks-pks-aip-current-architecture.md
+title: "(untitled AI-assistant reply) — DeepSeek investigation of EKS/PKS/AIP current architecture, interpreted"
+date: "2026-08-21"
+bytes: 15964
+
+model:
+  primary: c1
+  secondary: [meta_research]
+
+source_role: CRITICAL_REVIEW
+canonical_source: null
+
+importance: critical
+confidence: high
+
+about: >
+  An AI-assistant commentary interpreting an external "DeepSeek investigation" report (not itself in
+  the corpus at this position) that measured actual current EKS/PKS/AIP architecture against a
+  proposed epistemic-pipeline hypothesis and a probabilistic (CAPPI) proposal. Produces the corpus's
+  most rigorous, quantitatively-evidenced cross-system kernel-candidate list to date (8 strong
+  candidates, 2 rejected), explicitly refuses to declare a kernel found, and recommends testing C-1
+  (authority-as-recorded-reference-to-a-human-act) first via an "AMENDMENT-6 progression."
+
+introduces:
+  - "C-1..C-10 cross-system kernel-candidate list, evidence-graded per system (EKS/PKS/AIP), 8 kept as
+    strong candidates (C-1 authority-as-recorded-human-act-reference, C-2 state-as-fold/append-only,
+    C-3 closed verdict vocabulary as published language, C-4 assessment-confers-no-authority, C-5
+    forward-only supersession, C-6 per-kind register-scoped identity, C-7 regenerable non-authoritative
+    projection, C-10 honest UNKNOWN as first-class answer), 2 explicitly rejected as not-kernel (C-8
+    epistemic-class discipline -> domain/PKS concern, C-9 advisory-vs-blocking enforcement -> platform
+    capability)"
+  - "Quantified negative result: CAPPI's Bayesian/continuous-confidence/reliability-weighting model has
+    ZERO current-architecture support across EKS/PKS/AIP -- discrete/closed epistemic vocabularies used
+    instead"
+  - "UNKNOWN as a first-class, epistemically valid answer (not an exception/error state) -- distinct
+    from FALSE, from NOT AUTHORIZED, from DENIED"
+  - "State = fold: current state is always a reconstruction from an append-only, forward-only history,
+    never an independently mutable value that can drift from it"
+  - "Fail-closed philosophy across all three systems, explicitly CONTRADICTING CAPPI's proposed
+    fallback-version chain (v21->v20->v18->expert floor)"
+  - "Semantic non-collapse principle: a recurring family of X != Y boundaries (ACTIVE!=AUTHORIZED,
+    REGISTRY!=AUTHORITY, ASSESSMENT!=AUTHORITY, RECOMMENDATION!=DECISION, DIAGNOSTIC!=AUTHORITATIVE
+    STATE, UNKNOWN!=FALSE, PROJECTION!=SOURCE), proposed as possibly the deeper pattern underlying most
+    of the other individual findings"
+  - "Negative result directly testing 0080's proposed pipeline: Observation and Evidence and Authority
+    and Decision are present in current architecture; Claim and Confidence are NOT -- 'currently
+    research questions, not architecture'"
+  - "Quantified temporal-knowledge gap: EKS/AIP have dates on only 2 of 218 transitions; PKS has
+    supersession semantics but no timestamp dimension -- architecture generally cannot answer 'what was
+    authoritative at time T', only 'what is recorded now'; explicitly left as UNKNOWN whether a richer
+    (e.g. bitemporal) model is needed, not concluded as necessary"
+  - "Provenance found only partially established in each of EKS/PKS/AIP (some unresolved refs in EKS,
+    reconstructed provenance in PKS, non-attestable process identity in AIP) -- provenance and temporal
+    state named as the weakest-supported elements of the proposed kernel boundary"
+  - "Invariant ownership (not event-driven communication) is how consistency is currently achieved in
+    all three systems (none has an event bus) -- explicitly scoped as supported only for non-distributed
+    systems, left UNKNOWN for a distributed KnowledgeOS"
+  - "Recommended next step: AMENDMENT-6 progression, candidate-by-candidate, starting with C-1 as the
+    strongest (found explicitly represented across all three systems)"
+
+defines: []
+
+refines:
+  - "0080's candidate epistemic pipeline (Observation->Evidence->Claim->Inference->Belief->
+    {confidence,authority}->Decision): empirically tested against actual EKS/PKS/AIP architecture the
+    same day region, found to only partially hold (Claim and Confidence absent) -- the corpus's first
+    direct measured test of a just-proposed hypothesis"
+  - "0075's six-criterion kernel-membership test: this file supplies the first quantitatively-evidenced
+    candidate-by-candidate application across three real systems, rather than a test method alone"
+
+contradicts:
+  - "An external CAPPI/PPI proposal (mu/tau/w Bayesian fusion, continuous confidence, fallback-version
+    chain) -- found to have ZERO current-architecture support and to be philosophically CONTRADICTED
+    by the fail-closed pattern; CAPPI itself is not in the read corpus prefix, referenced only as an
+    external idea under test"
+
+repeats:
+  - concept: "assessment/evidence does not create authority (CONFIDENCE != AUTHORITY)"
+    canonical_source: "0014"
+    novelty: low
+  - concept: "provenance functions as more than metadata, remains partially unresolved"
+    canonical_source: "0080"
+    novelty: low
+
+bridge_candidates:
+  - "Semantic non-collapse principle (X != Y family) as a possible bridge to C2's purification/
+    non-conflation language, IF C2 material later states an analogous discipline -- no C2 evidence
+    exists yet, recorded as candidate only"
+  - "C-10 (honest UNKNOWN as first-class answer) as a possible bridge to a future three-valued or
+    modal epistemic-status formalism (Model M/mathematics) -- no formal (M) treatment of UNKNOWN exists
+    in the corpus yet to confirm this beyond a naming parallel"
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+key_evidence:
+  - "EKS 11/11 workflow invariants, each with a single identifiable owner and executable tests, achieved
+    with no event bus"
+  - "EKS/AIP: only 2 of 218 transitions carry any date (quantified temporal-knowledge gap)"
+  - "8 kernel candidates kept, 2 explicitly rejected, each individually evidence-graded per system
+    (ESTABLISHED / PARTIALLY ESTABLISHED / CONTRADICTED / UNKNOWN)"
+
+undefined_concepts:
+  - "CAPPI / PPI (external mu/tau/w Bayesian-fusion proposal) -- referenced as prior context, not
+    itself defined in this document nor yet located in the read corpus prefix"
+  - "AMENDMENT-6 progression -- referenced as an established methodology step, not defined here"
+  - "The DeepSeek investigation report itself -- referenced and quoted throughout but not itself part
+    of the read corpus at this position; its findings are known only through this document's summary"
+
+open_questions:
+  - "Whether temporal state needs a richer (bitemporal) model -- explicitly left UNKNOWN, not decided"
+  - "Whether invariant-ownership-based consistency scales to a distributed KnowledgeOS -- explicitly
+    left UNKNOWN"
+  - "Whether C-1 (authority-as-recorded-human-act-reference) survives the recommended AMENDMENT-6
+    candidate-by-candidate progression -- explicitly not yet executed by this document"
+
+tier2_triggered: true
+tier2_reason: >
+  The corpus's most rigorous, quantitatively-evidenced (11/11 invariants; 2/218 dated transitions)
+  cross-system kernel-candidate synthesis to date, directly and empirically testing 0080's just-proposed
+  epistemic pipeline (finding Claim/Confidence absent from current architecture) and an external
+  probabilistic (CAPPI) proposal (finding zero support, explicit philosophical contradiction via
+  fail-closed design). Produces a graded 8-candidate kernel list and a named semantic non-collapse
+  principle, directly feeding the eventual Kernel investigation (§18/§23) and the gap register (§14).

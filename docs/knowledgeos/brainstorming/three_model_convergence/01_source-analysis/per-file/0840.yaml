@@ -1,0 +1,199 @@
+sequence: 840
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-012424_step_212_architecture-gap-discovery.md
+title: "Step 212 -- Architecture Gap Discovery (CAPSTONE AUDIT-DISCIPLINE MILESTONE, delivers 0839's promised gap-discovery framework, INTRODUCES A THIRD COLLIDING ID SCHEME 'G-01..G-15' Gap IDs DISTINCT FROM BOTH THE GLOBAL I1-I75 SERIES AND 0838's LOCAL I1-I15 INVARIANT IDS): Delivers the Five-State Status Classification (Implemented/Partial/Specified/Missing/Unknown) With Unknown≠Missing≠Implemented -- Names the Anti-Pattern 'Architectural Hallucination' (Gradually Speaking of a Derived Principle as if Already Implemented) and Derived Architecture≠Current Architecture -- Delivers a Five-Tier Evidence-Quality Hierarchy (E0-E5) and Confidence≠EvidenceLevel -- Delivers 'No Arbitrary Percentages' (Rejecting '82% Compliant' Without a Justified Population/Weighting/Independence Model) -- Delivers Five Named Gap Classes (Semantic/Governance/Temporal/Epistemic/Assurance) That Can Coexist -- Delivers ArchitectureGap≠ImplementationGap≠VerificationGap -- Delivers 'Ownerless Invariant' and 'Shared Responsibility Must Not Mean Undefined Responsibility' -- Delivers the Symmetric-Difference State-Transition-Gap Formalization ΔT=T_target△T_actual and 'Unauthorized State Transition Path' -- Delivers Reproducibility≠Replayability -- Delivers the Negative-Space Principle (Architecture=AllowedTransitions+ForbiddenTransitions) With a Concrete Forbidden-Path AAG Extension (Assessment↛Authority) -- Delivers the Provisional Fifteen-Item Gap Register (G-01..G-15) -- Delivers 'No Evidence⇒Unknown' (Never Missing, Never Implemented) -- Opens Step 213's Evidence-First Reconstruction, Reframing the Work From 'Architectural Invention' to 'Architectural Archaeology'"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily audit-methodology/mathematical formalization (evidence hierarchies, gap classification, symmetric-difference state-transition analysis); closes with a compact re-affirmation of the Gita lens as architectural-question generator only, without new Gita textual content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 840
+importance: critical
+confidence: high
+about: >
+  Directly executes the task proposed at 0839's close, opening "we now enter a different mode. Steps 1-211
+  have largely been derivation... Step 212 begins the audit," boxed:
+  **`Architecture→Implementation→Evidence→Gap`**, explicitly: "the purpose is not to make the software
+  conform to the theory prematurely. The purpose is to discover, honestly, what is already there."
+
+  **§212.1 delivers the five-state status classification**, boxed:
+  **`Status(I)∈{Implemented,Partial,Specified,Missing,Unknown}`**, with the file's central discipline
+  crystallized as two boxed inequalities: **`Unknown≠Missing`** and **`Unknown≠Implemented`**.
+
+  **§212.2 delivers the file's central named risk**: gradually speaking of a well-derived architectural
+  principle as though the existing system already implements it, explicitly named
+  **"architectural hallucination,"** guarded against via the boxed rule: **`Derived Architecture≠Current
+  Architecture`** -- "the current architecture must be established from evidence."
+
+  **§212.3-212.4 delivers the formal per-invariant evidence-record tuple**
+  `G_i=(I_i,Status,Owner,Mechanism,Evidence,Confidence,Gap)` and **restates the theoretical register from
+  0838 verbatim by its I1-I15 IDs** (Identity≠State through No silent semantic strengthening), explicitly:
+  "none of these should yet be marked 'Implemented' merely because we derived them" -- confirming 0838's
+  local I1-I15 numbering is being actively reused as a working reference in this file, not merely a
+  one-off local artifact.
+
+  **§212.5-212.9 delivers a five-tier evidence-quality hierarchy** (E0 No evidence → E1 Claim/
+  documentation → E2 Static implementation evidence → E3 Executable test evidence → E4 Runtime/production
+  evidence → E5 Formal verification), worked through a concrete provenance example progressing from a bare
+  documentation claim through a code field, an automated reconstruction test, to production-preserved
+  lineage. Delivers **`Confidence(I)≠EvidenceLevel(I)`** (strong evidence from one inspected module does
+  not establish system-wide confidence), and **the file's central statistical-honesty rule**, boxed:
+  **`No arbitrary percentages`** -- explicitly rejecting a claim like "the architecture is 82% compliant"
+  absent a defined population/weighting/independence/evidence-quality/confidence model, preferring the
+  qualitative **`CriticalGap`** as "much more meaningful."
+
+  **§212.10-212.14 delivers the conceptual gap equation** (`Gap(I)=Target(I)-Current(I)`, kept ordinal:
+  `None/Partial/Significant/Critical/Unknown`) and **five named, co-existing gap classes**: G1 Semantic
+  (domain meaning lost), G2 Governance (authority/responsibility ambiguous), G3 Temporal (historical state
+  not reliably reconstructible), G4 Epistemic (evidence/uncertainty/assumptions lost), G5 Assurance
+  (behavior may be correct but insufficiently proven) -- worked through a concrete AI-assessment example
+  where `Implementation=Present` yet `Assurance=Weak`, an assurance gap rather than an implementation gap.
+  Delivers **the three-way gap-type separation**, boxed: **`ArchitectureGap≠ImplementationGap≠
+  VerificationGap`** (the design itself lacking a mechanism, versus code failing to implement a specified
+  mechanism, versus correct-looking implementation with insufficient evidence). Delivers **the governance
+  gap concretely**: a technically-working `AI→Assessment→Approval` pipeline with no defined approval
+  authority yields `TechnicalCapability=Present` while `GovernanceCapability=Missing`.
+
+  **§212.15-212.16 delivers "the ownerless invariant"** -- an invariant that exists with `Owner(I)=∅`,
+  explicitly named "one of the most dangerous findings" since nobody remains responsible for maintaining
+  it, boxed as a search target: **`Ownerless Invariants`**. Delivers the complementary "shared ownership
+  problem" (multiple co-owners, `Owner(I)={A,B,C}`, without explicit division of responsibility, risking
+  each team assuming another enforces it), crystallized: boxed **`Shared responsibility must not mean
+  undefined responsibility`**.
+
+  **§212.17-212.20 delivers a context-boundary audit checklist** (five questions per Bounded Context) and
+  a **contract audit checklist** (seven questions per cross-context relationship), delivering **the
+  semantic-loss function** `L(C)=InformationBefore(C)-InformationAfter(C)`, refined via
+  `CriticalSemanticProperties(C)` and `Loss(C)={p|p∈CriticalProperties∧p absent after transformation}` --
+  "a practical contract-audit mechanism," worked through a concrete Assessment tuple losing
+  uncertainty/modelVersion/evidenceRef when a contract sends only `score`, crystallized as a
+  **`Critical Semantic Gap`** when downstream governance requires the dropped fields.
+
+  **§212.21-212.22 delivers the formal state-machine audit**: reconstructing `T_actual` from the actual
+  implementation and comparing it against `T_target` via the symmetric difference, boxed:
+  **`ΔT=T_target△T_actual`**, "a clean mathematical way to describe state-transition gaps." Delivers the
+  illegal-transition-path finding, boxed: **`Unauthorized State Transition Path`**, for any
+  `(s_i,s_j)∈T_actual` not present in `T_target`, "high priority if the state has governance
+  consequences."
+
+  **§212.23-212.25 delivers the historical replay audit**: attempting `Replay(A_t)` and checking whether the
+  system reconstructs `Context_t` or wrongly substitutes `Context_now`, formalized as
+  `Replay(A,t)=F(Data_t,Policy_t,Model_t,Schema_t,Context_t)`, with `Replay(A,t)=A_t` for deterministic
+  portions and an explicit requirement to preserve provenance explaining why exact replay may be impossible
+  when external conditions changed. Delivers **`Reproducibility≠Replayability`** (regenerating the same
+  result versus reconstructing what happened and why -- "a system may be replayable without being
+  perfectly reproducible," e.g. when an external service no longer exists).
+
+  **§212.26-212.29 re-connects to Chapter 4 once more**, delivering the disciplined technical
+  reinterpretation: `CurrentState=History` must not be forced; instead `CurrentState+
+  HistoricalProvenance` should allow reconstruction of relevant prior meaning, crystallized: boxed
+  **`History must be preservable, not necessarily embedded in every current state`**. Re-affirms the Gita
+  lens as strictly a question-generator (`GitaLens→ArchitecturalQuestions`, never a specification),
+  re-walking Chapters 2 and 4 as concrete worked examples. **Delivers the negative-space principle**: a
+  mature architecture must specify `ForbiddenPaths`, not only `AllowedPaths`, boxed:
+  **`Architecture=AllowedTransitions+ForbiddenTransitions`**, worked through four concrete forbidden
+  implicit transitions (`Prediction→AutomaticAuthority`; `CurrentState→AssumeCompleteHistory`;
+  `Unknown→False`; `Execution→AssumeSuccess`), explicitly "particularly valuable because architecture
+  often fails through implicit transitions."
+
+  **§212.30 delivers a concrete AAG extension showing a forbidden path explicitly marked**: an `X` on the
+  `Assessment→Authority` edge in the assurance-chain diagram, formalized as `Assessment↛Authority`,
+  representing a path "the architecture must prevent."
+
+  **§212.31 delivers the provisional fifteen-item gap register**, using a THIRD, distinct ID scheme
+  **`G-01` through `G-15`** (Category/Question format: Identity, Temporal, Provenance, Epistemic, AI,
+  Governance, Decision, Outcome, State, Contract, Contradiction, Unknown, Assurance, Ownership, History),
+  explicitly named "the audit instrument" -- these Gap IDs are distinct from both the established global
+  I1-I75 invariant series and 0838's colliding local I1-I15 invariant IDs, adding a third, non-colliding
+  but easily-confusable identifier namespace to the corpus.
+
+  **§212.32 delivers the file's sharpest methodological warning**: "we must not populate it by imagination
+  ... perhaps the most important methodological rule of Step 212," boxed:
+  **`No evidence⇒Unknown`**, explicitly never `⇒Missing` and certainly never `⇒Implemented`.
+
+  **§212.33 delivers the transition plan**: taking artifacts already generated across Steps 1-182 (and
+  later implementation material) to build `Artifact→ArchitecturalFact→Invariant→Evidence` before
+  populating the gap register.
+
+  **§212.34 delivers the Step 212 verdict**: six named PASS/COHERENT sub-verdicts across Architectural
+  reasoning, DDD, Mathematics, Statistics, AI, and the Gita Chapters 1-4 lens.
+
+  **Closes opening "Step 213 — Evidence-First Reconstruction,"** proposing a four-way classification for
+  every architectural claim, boxed: **`FACT|DERIVED|PROPOSED|UNKNOWN`**, connected to
+  `Invariant→Implementation→Evidence`, explicitly framing this as "the point where our work changes from
+  architectural invention to architectural archaeology" -- essential, the file argues, if the eventual book
+  is to credibly claim the architecture "emerged from real engineering experience, rather than being
+  designed retrospectively and projected onto the software." No actual repository implementation occurs
+  within this file itself.
+introduces:
+  - concept: "The five-state status classification (Implemented/Partial/Specified/Missing/Unknown), with Unknown≠Missing and Unknown≠Implemented"
+  - concept: "The named anti-pattern 'architectural hallucination,' and the guarding rule Derived Architecture≠Current Architecture"
+  - concept: "The formal per-invariant evidence-record tuple G_i=(I_i,Status,Owner,Mechanism,Evidence,Confidence,Gap)"
+  - concept: "The active reuse of 0838's local I1-I15 invariant IDs as a working register in this file, confirming they function as an ongoing reference scheme"
+  - concept: "The five-tier evidence-quality hierarchy E0-E5, worked through a concrete provenance example"
+  - concept: "Confidence(I)≠EvidenceLevel(I)"
+  - concept: "'No arbitrary percentages,' rejecting unjustified compliance-percentage claims in favor of the qualitative CriticalGap"
+  - concept: "The conceptual gap equation and five named, co-existing gap classes (G1 Semantic/G2 Governance/G3 Temporal/G4 Epistemic/G5 Assurance)"
+  - concept: "ArchitectureGap≠ImplementationGap≠VerificationGap"
+  - concept: "The concrete governance-gap example: TechnicalCapability=Present while GovernanceCapability=Missing"
+  - concept: "'The ownerless invariant' and the complementary 'shared responsibility must not mean undefined responsibility'"
+  - concept: "The context-boundary audit checklist and the contract audit checklist"
+  - concept: "The semantic-loss function L(C) refined via CriticalSemanticProperties(C), and the 'Critical Semantic Gap' finding"
+  - concept: "The symmetric-difference state-transition-gap formalization ΔT=T_target△T_actual, and 'Unauthorized State Transition Path'"
+  - concept: "The historical replay audit, Replay(A,t)=F(Data_t,Policy_t,Model_t,Schema_t,Context_t), and Reproducibility≠Replayability"
+  - concept: "'History must be preservable, not necessarily embedded in every current state'"
+  - concept: "The negative-space principle: Architecture=AllowedTransitions+ForbiddenTransitions, with four concrete forbidden implicit transitions"
+  - concept: "The concrete AAG extension marking a forbidden path (Assessment↛Authority) explicitly"
+  - concept: "The provisional fifteen-item gap register using a third, distinct Gap-ID scheme (G-01..G-15)"
+  - concept: "'No evidence⇒Unknown,' explicitly never ⇒Missing and never ⇒Implemented"
+  - concept: "The Step 212 verdict's six named sub-verdicts"
+  - concept: "Step 213's opening: Evidence-First Reconstruction, the FACT|DERIVED|PROPOSED|UNKNOWN classification, and the reframing from architectural invention to architectural archaeology"
+defines:
+  - concept: "Architectural hallucination"
+    definition: "A named risk specific to long architecture-derivation exercises: after deriving a good architectural principle through extensive theoretical work, the natural tendency to gradually begin speaking about that principle as though the existing implemented system already realizes it, without ever having checked -- directly analogous to an AI model confidently asserting an unverified claim as fact. The explicit guard is the rule Derived Architecture≠Current Architecture: the current architecture's actual status must always be established from evidence, never inferred from the quality or completeness of the theoretical derivation that produced the target architecture"
+  - concept: "The three-way gap-type separation (Architecture/Implementation/Verification gap)"
+    definition: "A precise decomposition of what 'the architecture has a gap' can actually mean, preventing conflated diagnosis: an Architecture gap means the DESIGN itself does not provide the required mechanism at all (nothing was ever specified to address the need); an Implementation gap means the architecture DOES specify the mechanism, but the actual code fails to correctly implement it; a Verification gap means the implementation APPEARS correct (and may in fact be correct) but insufficient evidence exists to actually prove it holds -- each requires a different remedy (design work, coding work, or testing/evidence work respectively), so treating all three as one undifferentiated 'gap' would misdirect the fix"
+  - concept: "The negative-space principle"
+    definition: "A mature architecture must be specified not only by what it permits (AllowedTransitions, AllowedPaths) but equally by what it explicitly forbids (ForbiddenTransitions, ForbiddenPaths): Architecture=AllowedTransitions+ForbiddenTransitions. This matters because architectures most often fail not through an explicitly-designed-but-wrong allowed path, but through an IMPLICIT transition nobody ever thought to forbid (e.g. a prediction silently becoming an authoritative action, an unknown silently becoming a false, an execution attempt silently being assumed successful) -- so an audit must actively search the negative space of what the architecture fails to prohibit, not only verify what it correctly permits"
+refines:
+  - concept: "0839's closing proposal of Step 212's Architecture Gap Discovery task, the five-state classification, and the fourteen-item gap-register outline"
+    refinement: "DELIVERED IN FULL and substantially exceeded: the five-state classification is formalized with explicit Unknown-inequalities, the fourteen-item outline becomes a concrete fifteen-item G-01..G-15 register, and five additional major concepts (architectural hallucination, the evidence-quality hierarchy, the three-way gap-type separation, the ownerless-invariant search, and the negative-space principle) are delivered beyond what 0839 explicitly proposed"
+  - concept: "0838's local I1-I15 invariant-verification-matrix scheme"
+    refinement: "ACTIVELY REUSED, not merely introduced-and-abandoned: this file's own theoretical register at §212.4 restates all fifteen I1-I15 items by their exact IDs from 0838, confirming this local numbering functions as a genuine, ongoing working reference within this specific sub-arc, even though it remains unreconciled with the global I1-I75 series"
+  - concept: "0810's/0836's/0839's epistemic-gap and epistemic-honesty discipline family (never present Level 1 as Level 3; never claim mathematically proven; document only what has actual evidence)"
+    refinement: "Given its sharpest, most memorable name yet: 'architectural hallucination,' directly borrowing the AI-safety vocabulary of hallucination to describe the analogous human/team failure mode of gradually treating a well-argued theoretical claim as an established implementation fact"
+  - concept: "0817's/0824's/0833's DDD aggregate-boundary and ownership discipline"
+    refinement: "Extended with the concrete 'ownerless invariant' and 'shared ownership problem' findings, giving the arc's abstract ownership requirements two directly searchable, named failure patterns to look for during an actual codebase audit"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 213's actual Evidence-First Reconstruction, applying the FACT|DERIVED|PROPOSED|UNKNOWN classification to real KnowledgeOS artifacts and populating the G-01..G-15 gap register -- a HIGH-PRIORITY bridge candidate, explicitly framed by the corpus as the shift from 'architectural invention' to 'architectural archaeology,' directly relevant to whether the eventual book's claims about real engineering provenance are credible."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the named anti-pattern 'architectural hallucination' as a directly reusable, memorably-named epistemic-discipline concept extending the arc's Level 1/2/3 and 'principle≠property' family."
+  - "dimension-registry.md: record the three-way gap-type separation (Architecture/Implementation/Verification gap) as a directly actionable diagnostic framework for real audit work."
+  - "dimension-registry.md: record the negative-space principle (Architecture=AllowedTransitions+ForbiddenTransitions) as a high-value, directly applicable audit technique, distinct from and complementary to the invariant-verification work in 0838/0839."
+  - "dimension-registry.md: record the THIRD, distinct Gap-ID scheme (G-01..G-15) alongside the global I1-I75 series and 0838's colliding local I1-I15 scheme -- flag with high priority as compounding the reconstruction's ongoing notation-proliferation tracking, since three structurally similar but numerically independent ID systems now coexist in close proximity within the same sub-arc."
+anchor_test:
+  anchor: "0839's closing proposal of Step 212's Architecture Gap Discovery task; 0838's local I1-I15 invariant scheme; the arc's epistemic-honesty/Level-1-2-3 family; 0817's/0824's/0833's DDD ownership discipline"
+  supports_dimension: "Delivers the full Architecture Gap Discovery task directly and substantially exceeding 0839's closing proposal, with the five-state status classification, the named anti-pattern 'architectural hallucination,' a five-tier evidence-quality hierarchy, the disciplined rejection of arbitrary compliance percentages, five named co-existing gap classes, and the precise three-way Architecture/Implementation/Verification gap separation. Directly and actively reuses 0838's local I1-I15 invariant scheme as an ongoing working register, confirming it is a genuine sub-arc reference rather than a one-off artifact. Introduces a THIRD, distinct Gap-ID scheme (G-01..G-15), compounding the reconstruction's ongoing invariant/gap-notation-proliferation tracking. Delivers the concrete 'ownerless invariant' and 'shared ownership problem' findings, extending the arc's DDD ownership discipline with directly searchable audit patterns. Delivers the negative-space principle and a concrete AAG extension marking an explicit forbidden path. Delivers the sharpest methodological rule of the audit phase, 'no evidence⇒Unknown,' with an explicit prohibition against inferring Missing or Implemented in its absence. Opens Step 213's well-posed Evidence-First Reconstruction task, explicitly reframing the work from architectural invention to architectural archaeology"
+  refines_or_contradicts: "directly delivers and substantially exceeds 0839's closing proposal; actively reuses and confirms 0838's local invariant scheme as ongoing; introduces a third, non-colliding but easily-confusable Gap-ID scheme; extends the epistemic-honesty and DDD-ownership discipline families; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§212.2's explicit naming of 'architectural hallucination,' directly borrowing the AI-safety term for a structurally analogous human/team failure mode, immediately followed by the guard rule Derived Architecture≠Current Architecture, is directly checkable evidence of a genuinely new, memorable, and reusable epistemic-discipline concept."
+  - "§212.4's exact restatement of all fifteen I1-I15 items from 0838's verification matrix, verbatim by ID and description, is directly checkable evidence that this local invariant-numbering scheme functions as an actual working reference across at least two consecutive files, not a one-off artifact abandoned after its introduction."
+  - "§212.31's provisional gap register using the distinct G-01..G-15 identifier format (rather than continuing either I-series) is directly checkable evidence of a third, independent notation scheme now confirmed alongside the global and 0838's local invariant series, within a span of only three files (0838-0840)."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 213's actual Evidence-First Reconstruction was ever delivered, and whether it succeeds in populating the G-01..G-15 gap register from genuine evidence rather than by inference or imagination, per the file's own 'no evidence⇒Unknown' rule."
+  - "Whether the three coexisting invariant/gap ID schemes (global I1-I75, 0838's local I1-I15, and this file's G-01..G-15) are ever explicitly reconciled, cross-referenced, or merged anywhere later in the corpus."
+tier2_triggered: true
+tier2_reason: "CAPSTONE AUDIT-DISCIPLINE MILESTONE delivering the full Architecture Gap Discovery task, substantially exceeding 0839's closing proposal: the five-state status classification with explicit Unknown-inequalities, the named anti-pattern 'architectural hallucination' (a genuinely new, memorable epistemic-discipline concept borrowing AI-safety vocabulary), a five-tier evidence-quality hierarchy, and the disciplined rejection of arbitrary compliance percentages. Delivers five named co-existing gap classes and the precise three-way Architecture/Implementation/Verification gap separation, a directly actionable diagnostic framework. Delivers 'the ownerless invariant' and 'shared responsibility must not mean undefined responsibility,' extending the arc's DDD ownership discipline with concrete, searchable audit patterns. Delivers the symmetric-difference state-transition-gap formalization, historical replay auditing, and Reproducibility≠Replayability. Delivers the negative-space principle (Architecture=AllowedTransitions+ForbiddenTransitions) with a concrete forbidden-path AAG extension. CONFIRMS 0838's local I1-I15 invariant scheme is an actively reused, ongoing working register (restated verbatim here), while simultaneously INTRODUCING A THIRD, independent Gap-ID scheme (G-01..G-15) -- now three coexisting, structurally similar but numerically distinct identifier systems within a three-file span, compounding this reconstruction's notation-proliferation tracking with its highest-priority finding yet. Delivers the sharpest audit-phase methodological rule, 'no evidence⇒Unknown.' Opens Step 213's Evidence-First Reconstruction, explicitly reframing the corpus's own work from 'architectural invention' to 'architectural archaeology.'"

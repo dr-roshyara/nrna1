@@ -1,0 +1,64 @@
+sequence: 406
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-105229_research-synthesis-zero-lens-infinite-knowledge-space-mithya.md
+title: "Research Synthesis: Zero Lens + Infinite Knowledge Space + Mithya (clean restatement of 0405, plus explicit Q1-Q5 registry and named 'Zero Kernel Question')"
+date: "2026-08-26"
+bytes: 8694
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "restates 0405's Mithya/Sat/Asat engagement in clean synthesis form"
+source_role: PRIMARY_RESEARCH
+canonical_source: 405
+importance: moderate
+confidence: high
+about: >
+  A clean, well-organized restructuring of 0405's full content into a formal "Research Synthesis" document
+  -- the Zero Lens's five non-collapse distinctions, Zero(K_t)=Omega\Represented(K_t) with its warning,
+  the Zero-A (Value Zero)/Zero-B (Dimensional Zero) split and UnknownValue(D)!=UnknownDimension(D), the
+  third explicit-absence case and six-branch dimension-status taxonomy, the Omega/D_t/K_t/Z_t notation with
+  K_{t+1}=Update(K_t,NewInformation) and D_{t+1}>D_t, the Mithya/Sat/Asat anti-reification lens
+  (Representation!=independently-existing-reality), the three-way ideal-state split (R_t/I_t*/I-hat_t), the
+  95%-knowledge-denominator problem, and the "Zero is not another dimension" closing discipline -- carries
+  no independent evidentiary content beyond 0405 itself. Adds two small formal increments not explicit in
+  0405: an enumerated Q1-Q5 research-question registry (boundary representation / absence-kind
+  distinction / dimension-discovery representation / incompleteness representation / 95%-avoidance), each
+  explicitly marked "Status: Undefined," and a single named "Zero Kernel Question" -- "What is the minimum
+  substrate required to represent the boundary between what is known and what is not known?" -- posed twice
+  (as "the Zero question for the Kernel" and again as "the Kernel Question"), extending the corpus's
+  long-running Kernel-content-candidate inventory (0363, 0377, 0380, 0395) with a Zero-specific formal
+  question that none of those prior candidates addressed.
+introduces:
+  - concept: "Explicit Q1-Q5 registry of Zero-boundary research questions (boundary representation, absence-kind distinction, dimension-discovery representation, incompleteness representation, 95%-avoidance), each marked Status: Undefined"
+  - concept: "Named 'Zero Kernel Question': what is the minimum substrate required to represent the boundary between what is known and what is not known -- a new, Zero-specific addition to the corpus's ongoing Kernel-content-candidate inventory (cf. 0363, 0377, 0380, 0395)"
+defines: []
+refines:
+  - concept: "0405's full Zero-lens/infinite-space/Mithya synthesis"
+    refinement: "Restated in clean, formally organized research-synthesis form with an explicit open-question registry and a single named Kernel question; no new substantive claim beyond 0405 itself"
+contradicts: []
+repeats:
+  - concept: "Zero(K_t)=Omega\\Represented(K_t), Zero-A/Zero-B distinction, six-branch dimension-status tree, Mithya/Sat/Asat anti-reification lens, three-way ideal-state split (R_t/I_t*/I-hat_t), 95%-knowledge-denominator problem, 'Zero is not another dimension' discipline"
+    canonical_source: 405
+    novelty: "restructured/reformatted restatement; no new substantive content beyond the Q1-Q5 registry and the named Kernel Question"
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: note 0406 as a clean restatement/synthesis of 0405, adding only an explicit Q1-Q5 open-question registry and a named 'Zero Kernel Question' to the corpus's Kernel-content-candidate inventory."
+anchor_test:
+  anchor: "0405"
+  supports_dimension: "Restates 0405 in synthesis form; contributes a small formal increment (Q1-Q5 registry, named Zero Kernel Question) to the ongoing Kernel-content-candidate inventory"
+  refines_or_contradicts: "refines (reformats/consolidates) 0405; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "All five items in the Q1-Q5 registry are explicitly marked Status: Undefined by the file itself"
+open_questions:
+  - "The named 'Zero Kernel Question' (minimum substrate to represent the known/unknown boundary) -- not yet reconciled against the corpus's other Kernel-content candidates (0377's S_Kernel, 0380's ten-component invariant, 0395's ten candidate elements, 0400/0403's Knowledge Unit)"
+tier2_triggered: false
+tier2_reason: "NOT TRIGGERED -- a clean restatement/consolidation of 0405 with no new substantive claim; the only additions (Q1-Q5 registry, named Zero Kernel Question) are minor formal bookkeeping increments recorded without a full Tier-2 analysis"

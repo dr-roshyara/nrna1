@@ -1,0 +1,187 @@
+sequence: 753
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-140338_gita-chapter-4-what-to-do-versus-what-not-to-do-distinction.md
+title: "Gita Chapter 4 -- What to Do Versus What Not to Do (MAJOR SYNTHESIS MILESTONE): Delivers Two Genuinely New Architectural Principles Rather Than Restating Prior Content -- Principle IV-A, 'A Governed System Must Be Capable of Determining Both What Should Be Done and What Should Not Be Done' (Decision→{Act,Refrain,Defer,Escalate,Investigate}, With 'Do Nothing' as a First-Class Outcome and Insufficient-Evidence⇒Do-Not-Determine as Explicit Epistemic Restraint), and Principle IV-B, 'Continuity Exceeds Accessible Memory' (State≠History≠Accessible Memory, Derived From Krishna Remembering Past Births That Arjuna Does Not) -- Delivers Provenance≠Lineage, a Fresh Independent Justification for Ephemeral Agent Memory≠Authoritative Knowledge Memory (Directly Reinforcing 0751's AGENTS.md≠KnowledgeOS Finding), the Seven-Statement Epistemic-Maturity Checklist ('The Actor Must Know the Limits of Its Own Knowledge' -- 'Perhaps the Most Important Principle for AI'), and Proposes Wisdom as a Cross-Cutting Domain FUNCTION (Not a Naive Domain Class) -- Explicitly Self-Assessed as Strengthening Rather Than Forcing a Redesign of Ten Prior Architecture Decisions"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: g1
+  secondary: c1
+  secondary_note: "a direct continuation of the Krishna/Arjuna dialogue analysis (0752), but this file crosses decisively from character cataloguing into genuine architectural principle derivation -- explicitly framed by its own opening line as identifying 'two much deeper architectural ideas in Chapter 4 than simply knowledge has provenance,' with the explicit caution 'these are not just metaphors for our architecture. They can become design principles if we translate them correctly'"
+source_role: PRIMARY_RESEARCH
+canonical_source: 753
+importance: critical
+confidence: high
+about: >
+  Opens as a direct response continuing the Chapter-4 analysis (following 0752), identifying two
+  architectural ideas explicitly deeper than the corpus's established "knowledge has provenance" theme,
+  with an upfront methodological caution: "these are not just metaphors for our architecture. They can
+  become design principles if we translate them correctly" -- maintaining the analogy-discipline 0752 had
+  just reasserted.
+
+  **Delivers the "what to do vs. what not to do" distinction**: Krishna's chapter-wide treatment of action/
+  wrong-action/inaction is reframed as the harder engineering question "given a situation, how do I know
+  which action is right?" paired with "how do I know which action must NOT be taken?" -- explicitly
+  distinguished from a naive `IF condition THEN execute action` command system via the sequence
+  Situation→Understanding→Applicable principle→What should be done?→What should not be done?→Action/
+  restraint. **Delivers the deontic four/six-value governance vocabulary**: `Required, Permitted, Forbidden,
+  Unknown` (plus optionally `Recommended, Discouraged`), explicitly replacing a naive boolean
+  `allowed=true/false` governance model -- "much closer to a policy/dharma model."
+
+  **Delivers "wisdom is concerned with the action boundary"**: wisdom is not storage but a continuous
+  dual question, "what should I do?" and equally "what should I refrain from doing?" -- yielding a revised
+  chain `Knowledge→Wisdom→Action Guidance`, where Wisdom branches into `DO/ACT` and `DO NOT ACT` before
+  reconverging into Action.
+
+  **Delivers "'do nothing' must be a first-class outcome,"** explicitly rejecting the assumption
+  `Decision⇒Action`: `Decision→{ACT, REFRAIN, DEFER, ESCALATE, SEEK MORE KNOWLEDGE}`. Worked through a
+  concrete AI-agent example: an agent lacking sufficient evidence should conclude `Insufficient Evidence⇒
+  Do Not Determine`, optionally `⇒SeekMoreEvidence` -- named "epistemic restraint." **Connects this
+  directly to the prior established `Evidence⇏Truth` principle**, adding the parallel `Knowledge⇏Action`,
+  requiring an intermediate `Knowledge→Judgment→Action/Restraint` step.
+
+  **Delivers the second deep idea: Continuity vs. Accessible Memory**, derived from Krishna telling Arjuna
+  both have had many births, but Krishna remembers them while Arjuna does not -- explicitly NOT modeled as
+  "a database containing previous lives," but as a precise distinction between `Continuity` and
+  `Accessible memory`, "not the same thing." Formalized: `Identity_t→Identity_{t+1}` continuity may hold
+  while `Memory(Identity_{t+1})⊉Memory(Identity_t)`, with a separate actor (Krishna) possessing knowledge of
+  the complete lineage.
+
+  **Delivers a three-layer memory model**: Layer 1 Current state `S_t`; Layer 2 Historical lineage
+  `H={S_0,S_1,...,S_t}`; Layer 3 Authorized historical knowledge `K(H)` (what some actor/system is actually
+  permitted or capable of knowing about H) -- boxed as `State≠History≠Accessible Memory`, "a profound
+  architectural distinction." Connects this to the corpus's existing KnowledgeClaim/KnowledgeVersion/
+  Provenance/ContextSnapshot/Determination/Supersession machinery, but delivers the sharper new invariant:
+  "a new state does not necessarily inherit the complete epistemic memory of the previous state" --
+  `History exists ≠ Current agent knows history`.
+
+  **Delivers "this solves a major AI-agent problem,"** worked through a concrete Agent-A-Session-1 /
+  Agent-B-Session-2 example: `Agent_{t+1}≠Agent_t` in accessible-memory terms even when operationally "the
+  same agent," while KnowledgeOS preserves `History(Agent)` outside the ephemeral agent state -- "the
+  agent does not have to carry its entire history."
+
+  **Delivers a fresh, independently-derived justification for a new architectural principle,
+  `Ephemeral Agent Memory≠Authoritative Knowledge Memory`**, explicitly cited as strongly validating the
+  prior architecture decision that `.claude/` and `.codex/` should not become the authoritative KnowledgeOS
+  memory (the agent harness holds operational memory; KnowledgeOS holds governed historical knowledge) --
+  directly and independently reinforcing 0751's `AGENTS.md≠KnowledgeOS` finding from a completely different
+  Chapter-4-derived angle.
+
+  Delivers a deeper identity decomposition (Actor identity/State/Memory/Role/Authority/Experience/
+  Knowledge as separate dimensions: `ActorIdentity=A`, `State(A,t_1)≠State(A,t_2)`,
+  `Memory(A,t_2)⊉Memory(A,t_1)`, yet `History(A)` persists). **Delivers "this is exactly why provenance
+  must be external to transient state,"** worked through a concrete Determination-D1 example: without
+  externally-retained actor/context/evidence/method/timestamp/provenance, D1 degrades from governed
+  knowledge into merely "something the AI once said" -- reframed as the necessary alternative,
+  `Historical epistemic artifact`.
+
+  **Refines Krishna's architectural characterization**: explicitly rejected as "the administrator who has
+  all memory" (an "omniscient database"), replaced with `Witness+Teacher+Source of continuity` -- "a
+  trusted epistemic authority that can establish continuity across states that individually lack complete
+  historical memory" -- a disciplined, non-literal translation avoiding the exact naive-analogy trap 0752
+  warned against.
+
+  **Delivers a new KnowledgeOS concept, Historical Continuity**: a governed mechanism maintaining
+  `Lineage(x)` even when `Memory(x,t)` is incomplete, illustrated via a lineage-of-partial-memory-states
+  diagram. **Delivers `Provenance≠Lineage`**: Provenance asks "where did this knowledge come from?"
+  (`Provenance(x)`); Lineage asks "what states/instances are connected through continuity?" (`Lineage(x)`)
+  -- overlapping but distinct, "worth adding to our architecture vocabulary."
+
+  **Names two formal architectural principles explicitly**: **Principle IV-A — Wisdom of action and
+  restraint** (`A governed system must be capable of determining both what should be done and what should
+  not be done`, therefore `Decision→{Act,Refrain,Defer,Escalate,Investigate}`); **Principle IV-B —
+  Continuity exceeds accessible memory** (`Historical continuity must not depend on the current actor's
+  accessible memory`; `CurrentMemory⊆HistoricalKnowledge` may hold, but `CurrentMemory=HistoricalKnowledge`
+  must never be assumed).
+
+  **Delivers a third emergent principle, unnamed but flagged "perhaps the most important principle for
+  AI"**: "the actor must know the limits of its own knowledge," worked through a seven-statement epistemic-
+  maturity checklist an agent should be able to produce (I know this / I do not know this / I previously
+  knew this but cannot currently reconstruct it / the system has historical evidence for this / the
+  evidence is insufficient for action / the action is prohibited / the action requires authority) --
+  "epistemically mature architecture," a genuinely precise and directly applicable AI-honesty/calibration
+  framework.
+
+  Delivers a revised master architecture diagram (HISTORICAL LINEAGE→KNOWLEDGE→INQUIRY→EVIDENCE→
+  DETERMINATION→WISDOM→{SHOULD DO, SHOULD NOT DO}→DECISION→{ACT, DEFER, REFRAIN}→EXECUTION→OBSERVATION→
+  NEW KNOWLEDGE/UPDATE, under `PROVENANCE+LINEAGE`), and an explicit self-assessment that Chapter 4
+  strengthens rather than forces a redesign of ten previously-established architecture decisions (knowledge
+  separated from agents; evidence separated from claims; determination separated from decision; decision
+  separated from execution; provenance preserved; context snapshots; immutable historical determinations;
+  supersession rather than overwriting; AI agents treated as actors; governance as a separate concern).
+
+  **Closes by explicitly naming "one thing still missing": Wisdom as a domain capability**, deliberately
+  NOT proposing a naive `Wisdom` domain class ("that would be premature"), instead proposing Wisdom as a
+  cross-cutting domain FUNCTION: `Wisdom:(Knowledge,Context,Evidence,Rules,Authority)→ActionGuidance`, with
+  `ActionGuidance∈{DO,DON'T,WAIT,ASK,ESCALATE,INVESTIGATE}` -- explicitly flagged "something I think we
+  should examine very seriously before Step 158," closing with the capstone: "Chapter 4 may have revealed a
+  missing layer in our architecture: not another repository of knowledge, but a governed mechanism for
+  converting knowledge into appropriate action -- or appropriate restraint." No actual code execution,
+  repository inspection, or verified filesystem/architecture claim reported anywhere in this file. The
+  verse-level Chapter 4 summary and Chapter 1-4 cumulative matrix promised at 0752's close have STILL not
+  been delivered as of this file -- Step 158 remains deferred a third time.
+introduces:
+  - concept: "The deontic governance vocabulary: Required/Permitted/Forbidden/Unknown (+Recommended/Discouraged), replacing boolean allowed=true/false"
+  - concept: "'Do nothing' as a first-class outcome: Decision→{ACT,REFRAIN,DEFER,ESCALATE,SEEK MORE KNOWLEDGE}; Insufficient Evidence⇒Do Not Determine (epistemic restraint)"
+  - concept: "Knowledge⇏Action, paired with the prior Evidence⇏Truth; requires an intermediate Knowledge→Judgment→Action/Restraint step"
+  - concept: "Continuity vs. Accessible Memory (Continuity≠Accessible memory)"
+  - concept: "The three-layer memory model: Current state / Historical lineage / Authorized historical knowledge (State≠History≠Accessible Memory)"
+  - concept: "Ephemeral Agent Memory≠Authoritative Knowledge Memory (independent re-derivation reinforcing AGENTS.md≠KnowledgeOS)"
+  - concept: "Historical Continuity as a governed mechanism maintaining Lineage(x) despite incomplete Memory(x,t)"
+  - concept: "Provenance≠Lineage"
+  - concept: "Principle IV-A (Wisdom of action and restraint) and Principle IV-B (Continuity exceeds accessible memory), explicitly named"
+  - concept: "The seven-statement epistemic-maturity checklist -- 'the actor must know the limits of its own knowledge'"
+  - concept: "Wisdom proposed as a cross-cutting domain function (not a domain class): Wisdom:(Knowledge,Context,Evidence,Rules,Authority)→ActionGuidance"
+defines:
+  - concept: "Continuity≠Accessible Memory"
+    definition: "An identity or state may possess genuine underlying continuity across transitions (Identity_t→Identity_{t+1}) without the later state having direct access to the complete memory of the earlier one (Memory(Identity_{t+1}) does not necessarily contain Memory(Identity_t)) -- continuity of being and completeness of accessible recollection are two independent properties, and a third party may hold knowledge of the full lineage that neither individual state possesses"
+  - concept: "State≠History≠Accessible Memory (the three-layer memory model)"
+    definition: "Current state S_t (what an actor presently knows), Historical lineage H={S_0,...,S_t} (what actually happened across all previous states), and Authorized historical knowledge K(H) (what some actor or system is actually permitted or capable of knowing about H) are three distinct layers that must never be collapsed into one; an actor's current accessible memory is generally a proper subset of the full history, and access to history is itself a governed, authority-scoped question"
+  - concept: "Ephemeral Agent Memory≠Authoritative Knowledge Memory"
+    definition: "An AI agent's own session-scoped operational memory (what it currently recalls having done or decided) must never be treated as the authoritative record of governed knowledge -- authoritative history is retained by KnowledgeOS itself, external to and independent of any single agent session's transient state, so that a new agent session need not (and cannot be assumed to) carry the complete history of prior sessions"
+  - concept: "Provenance≠Lineage"
+    definition: "Provenance answers 'where did this specific piece of knowledge come from?' (its origin, acquisition, transformation, and derivation chain); Lineage answers 'what states or instances are connected through continuity?' (the broader thread of identity/continuity across a sequence of states) -- the two concepts overlap substantially but are not identical, and an architecture should track both explicitly rather than conflating them into one field"
+  - concept: "Wisdom as a cross-cutting domain function (not a domain class)"
+    definition: "Rather than reifying 'Wisdom' as a stateful domain entity or aggregate, it should be modeled as a pure function taking governed inputs (Knowledge, Context, Evidence, Rules, Authority) and producing an ActionGuidance verdict from a fixed vocabulary (DO, DON'T, WAIT, ASK, ESCALATE, INVESTIGATE) -- a cross-cutting capability multiple bounded contexts can invoke, not a new aggregate root owning its own persisted state"
+refines:
+  - concept: "0745's Determination immutability and Supersession discipline"
+    refinement: "Extended with an explicit rationale grounded in Continuity vs. Accessible Memory: a finalized Determination must retain its full actor/context/evidence/method/timestamp/provenance externally precisely because the producing agent's own session memory cannot be relied upon to retain or reconstruct it later"
+  - concept: "0742's/0744's/0750's/0751's established assurance discipline (Evidence⇏Truth, INCONCLUSIVE retention)"
+    refinement: "Extended with the parallel principle Knowledge⇏Action, requiring an explicit intermediate Judgment/Wisdom stage between Knowledge/Determination and Action, and with 'do nothing' elevated to a first-class Decision outcome alongside Act/Defer/Escalate"
+  - concept: "0751's AGENTS.md≠KnowledgeOS and the Claude/Codex-harness-symmetry architecture"
+    refinement: "Independently re-derived and reinforced from an entirely different angle (the Continuity-vs-Accessible-Memory distinction) as Ephemeral Agent Memory≠Authoritative Knowledge Memory -- two independent Chapter-4-adjacent lines of reasoning converging on the same architectural conclusion"
+  - concept: "0752's Person≠Role distinction and its explicit anti-premature-analogy discipline"
+    refinement: "Directly honored: Krishna is explicitly NOT modeled as 'the administrator who has all memory' (an omniscient-database analogy that would have violated 0752's own warning), but reframed through the more careful abstraction Witness+Teacher+Source of continuity"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read the next file with high attention: check whether it finally delivers the verse-level Chapter 4 summary and Chapter 1-4 cumulative matrix promised at 0752's close (now deferred a third time), or continues developing the Wisdom-as-cross-cutting-function proposal before Step 158 is genuinely reached."
+  - "Track whether Wisdom (as a cross-cutting domain function) is formally integrated into the DDD reduction already completed at 0751 (which did not include it), and whether Provenance≠Lineage is added as an explicit KOS-EPI invariant alongside 0745's existing eighteen-item list."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Principle IV-A (Wisdom of action and restraint, 'do nothing' as first-class) and Principle IV-B (Continuity exceeds accessible memory, State≠History≠Accessible Memory) as two genuinely new, explicitly named architectural principles delivered by this file."
+  - "dimension-registry.md: record Ephemeral Agent Memory≠Authoritative Knowledge Memory as an independent re-derivation reinforcing 0751's AGENTS.md≠KnowledgeOS finding from a different angle -- a notable convergence between two separate lines of Chapter-4-derived reasoning."
+  - "dimension-registry.md: record Provenance≠Lineage and the seven-statement epistemic-maturity checklist ('the actor must know the limits of its own knowledge') as precise, directly applicable AI-honesty/calibration contributions."
+  - "dimension-registry.md: record the proposed Wisdom-as-cross-cutting-domain-function (not a domain class) as an open item for eventual integration into 0751's DDD reduction, which did not include it."
+anchor_test:
+  anchor: "0742's/0744's/0750's/0751's INCONCLUSIVE-preserving and evidence-vs-truth assurance discipline; 0745's Determination immutability/Supersession and KOS-EPI Epistemic Constitution; 0751's AGENTS.md≠KnowledgeOS and Claude/Codex-harness symmetry; 0752's Person≠Role distinction and anti-premature-analogy discipline"
+  supports_dimension: "Delivers two genuinely new, explicitly named architectural principles (IV-A: wisdom of action and restraint, with 'do nothing' as a first-class Decision outcome; IV-B: continuity exceeds accessible memory, formalized as State≠History≠Accessible Memory) directly derived from close, disciplined reading of specific Gita Chapter 4 content (the Krishna-remembers/Arjuna-does-not exchange) rather than generic restatement. Delivers Provenance≠Lineage and an independently re-derived Ephemeral Agent Memory≠Authoritative Knowledge Memory that reinforces 0751's AGENTS.md≠KnowledgeOS finding from a genuinely different angle -- a notable cross-file convergence. Delivers a precise, directly applicable seven-statement AI epistemic-maturity checklist. Proposes Wisdom as a cross-cutting domain function, explicitly avoiding the premature-reification trap. Honors 0752's own anti-premature-analogy discipline throughout (Krishna reframed as Witness+Teacher+Source of continuity, not omniscient database). Defers the promised Step 158 and the Chapter-1-4 cumulative matrix for a third time"
+  refines_or_contradicts: "substantially extends 0742/0744/0750/0751's assurance discipline and 0745's Determination/Supersession/KOS-EPI work; independently reinforces (does not merely repeat) 0751's AGENTS.md≠KnowledgeOS finding; honors and exemplifies 0752's anti-premature-analogy discipline; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§3's boxed `Insufficient Evidence⇒Do Not Determine` and the explicit five-outcome Decision set (`{ACT,REFRAIN,DEFER,ESCALATE,SEEK MORE KNOWLEDGE}`) is directly quotable evidence of 'do nothing' being elevated to a first-class governed outcome, extending rather than repeating the corpus's prior binary act/don't-act framing."
+  - "§7's explicit three-layer formalization (`S_t`, `H={S_0,...,S_t}`, `K(H)`), boxed as `State≠History≠Accessible Memory,` is directly checkable evidence of a precise, novel memory-architecture distinction derived specifically from the Krishna/Arjuna past-births exchange rather than asserted independently of the text."
+  - "§10's explicit statement that this analysis 'strongly validates the architecture decision we previously made that .claude/ and .codex/ should not become the authoritative KnowledgeOS memory' is directly quotable evidence of an independent, textually-grounded re-derivation of 0751's AGENTS.md≠KnowledgeOS finding."
+undefined_concepts: []
+open_questions:
+  - "Whether the verse-level Chapter 4 summary and Chapter 1-4 cumulative comparison matrix promised at 0752's close (now deferred a third time across two files) are ever actually delivered, or whether Step 158 is reached without them."
+  - "Whether the proposed Wisdom-as-cross-cutting-domain-function is formally integrated into 0751's six-context DDD reduction (which predates and does not include it) anywhere later in the corpus."
+  - "Whether Provenance≠Lineage is ever added as an explicit numbered invariant alongside 0745's KOS-EPI-001 through KOS-EPI-018 list, or remains a separately-introduced, unreconciled distinction."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers two genuinely new, explicitly named architectural principles (IV-A: wisdom of action and restraint with 'do nothing' as a first-class outcome; IV-B: continuity exceeds accessible memory, formalized as State≠History≠Accessible Memory) derived from close, disciplined reading of specific Chapter-4 content rather than generic restatement. Delivers Provenance≠Lineage and an independently re-derived Ephemeral Agent Memory≠Authoritative Knowledge Memory that reinforces 0751's AGENTS.md≠KnowledgeOS finding via a genuinely different line of reasoning -- a notable cross-file convergence. Delivers a precise, directly applicable seven-statement AI epistemic-maturity checklist and proposes Wisdom as a cross-cutting domain function while explicitly avoiding premature reification. Consistently honors 0752's own anti-premature-analogy discipline throughout."

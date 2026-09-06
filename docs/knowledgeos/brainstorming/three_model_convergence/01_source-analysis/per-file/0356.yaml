@@ -1,0 +1,111 @@
+sequence: 356
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260825-221301_next-research-direction-after-measure-theory.md
+title: "Next Research Direction: Temporal Epistemic Reconstruction (the phase_measure_theory arc's decision point)"
+date: "2026-08-25"
+bytes: 20195
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 356
+importance: critical
+confidence: high
+about: >
+  Likely the single most decisive synthesis point in the phase_measure_theory arc's 'what should we
+  research next' debate (0347-0356): an 'independent researcher' proposal, fully endorsed by a second
+  layer, that neither more tuple formalization nor deeper measure theory should come next. Instead
+  proposes TEMPORAL EPISTEMIC RECONSTRUCTION as the single highest-value research direction: 'what is
+  required to reconstruct what a participant could legitimately know at a particular point in time?' --
+  explicitly chosen because it simultaneously tests every standing hypothesis (History->Information->
+  Extraction->Epistemic-State->Knowledge) while deferring commitment to any one mathematical regime.
+  Deliberately SUSPENDS the 'what is KnowledgeOS?' question (too many candidate answers currently
+  coexist), replacing it with a unifying underlying-problem formulation: 'given a changing world and
+  incomplete observations, reconstruct the epistemic state that was supportable at a particular time, for
+  a particular participant, under a particular context and evaluation regime.' States a new independence-
+  of-changes invariant (Delta-D != Delta-F != Delta-E != Delta-K, domain/information/epistemic-state/
+  knowledge-attribution changes are independent) as deserving serious investigation before any Core model
+  is frozen. Proposes two concrete worked temporal episodes (a simple version-upgrade scenario testing
+  'what was A's knowledge at 11:30, not what is true now'; an extended conflicting-information scenario
+  introducing genuine contradictions across sources) as more powerful than implementing ten Core entities.
+  Proposes a four-regime 'attack knowledge' test (logical/probabilistic/institutional/evidential) applied
+  to the SAME historical substrate, asking whether these are different KINDS of knowledge or different
+  EVALUATIONS of the same underlying epistemic substrate -- explicitly judged more important than deciding
+  whether Knows is primitive. Re-scopes measure theory's entry point precisely: only AFTER a concrete
+  temporal episode exists should one ask whether probabilistic extraction can be rigorously formulated,
+  letting the case determine exactly which machinery ((Omega,F,P) alone? filtrations? conditional
+  expectation? a full stochastic process? none?) is actually needed -- 'problem first, mathematical
+  structure second,' explicitly rejecting 'measure theory -> invent KnowledgeOS model.' Reformulates the
+  strongest form of the Zero Lens yet ('remove the candidate; what fundamentally becomes impossible?'),
+  applies it to every element of the candidate ten-tuple, and proposes S_<=t --[A,C,R]--> E_t^{A,R} with an
+  explicit test for whether S_<=t itself can remain REGIME-NEUTRAL. Proposes letting the Kernel question be
+  answered empirically via removal experiments rather than declared by assertion, and organizes the
+  entire next research phase into FIVE TRACKS (A Temporal Epistemology, B Knowledge Space, C Extraction,
+  D Mathematical Regimes, E Kernel Falsification -- explicitly sequenced LAST). Explicitly defers all
+  implementation (no tuple implementation, no KnowledgeAttribution, no Knows aggregate, no probabilistic
+  regime, no frozen Kernel API/invariants) in favor of first proving necessity. A second, fully endorsing
+  layer ('the most methodologically mature proposal we have seen') confirms every point via a ten-row
+  agreement table, flags five items not yet resolved (historical substrate definition, reconstruction-
+  process formalization, ValidAt/CurrentAt/CompleteRelativeTo testing, regime-comparison criteria,
+  actually running the Remove-X test), and produces a concrete six-item execution plan.
+introduces:
+  - concept: "Central decision: neither further tuple formalization nor deeper measure theory comes next; instead go 'one level below the current definition' to investigate Temporal Epistemic Reconstruction as the highest-value research direction, since it 'simultaneously tests almost every hypothesis we currently have' while deferring commitment to any single mathematical regime"
+  - concept: "Deliberate suspension of 'What is KnowledgeOS?': too many coexisting candidate descriptions (knowledge representation / epistemic system / knowledge-space navigation / reconstruction system / AI engineering substrate / brain) -- reframed as 'what problem would a system have to solve for all of these descriptions to make sense?', answered by a single unifying formulation: 'given a changing world and incomplete observations, reconstruct the epistemic state that was supportable at a particular time, for a particular participant, under a particular context and evaluation regime'"
+  - concept: "Formal temporal chain D_t -> O_t^A -> F_t^A -> E_t^A -> K_t^A [domain/world state -> observations available to A -> information available to A -> epistemic state -> knowledge attribution], with a new independence-of-changes invariant: Delta-D != Delta-F != Delta-E != Delta-K -- 'deserves serious investigation before we freeze any Core model'"
+  - concept: "First concrete worked temporal episode (version-upgrade scenario, 10:00-12:00): tests 'what was A's knowledge at 11:30?' as NOT 'what is true now' but 'what was epistemically supportable for A at 11:30,' then asks whether that answer can be reconstructed from the historical substrate -- explicitly 'a far more powerful experiment than implementing ten Core entities'"
+  - concept: "Second, extended worked episode deliberately introducing genuine CONFLICTING information across sources (monitoring says 3.69, deployment record says 3.70, human says 3.69, monitoring later says 3.70) -- generates a cluster of genuinely difficult new questions: what is information? what is evidence? what is an epistemic state? what is a commitment? when does a contradiction change knowledge? does the system need to RESOLVE contradictions or merely PRESERVE them? is truth something the Kernel knows, or something a regime evaluates?"
+  - concept: "Four-regime 'attack knowledge' test applied to the SAME historical substrate: Logical regime (KB_t |- P), Probabilistic regime (P(P|F_t)=0.93), Institutional regime (an authorized authority has certified P), Evidential regime (evidence supporting P exceeds an applicable threshold) -- central question: 'are these four different KINDS of Knowledge, or different EVALUATIONS of the same underlying epistemic substrate?' -- explicitly judged 'much more important than deciding now whether Knows is primitive'"
+  - concept: "Precise re-scoping of measure theory's entry point: only introduce it AFTER a concrete temporal episode exists, then ask 'can the probabilistic extraction be rigorously formulated?' and let the case determine exactly which machinery is needed ((Omega,F,P) alone? filtrations (F_t)_t>=0? conditional expectation E[X_t|F_t]? a full stochastic process? perhaps none) -- formalized as 'problem first, mathematical structure second,' explicitly rejecting the reverse ('measure theory -> invent KnowledgeOS model')"
+  - concept: "Simultaneous attack on the candidate ten-tuple (D,P,T,Ctx,I,E,K,R,H,Theta), explicitly reframed as 'our candidate model to falsify, not our starting ontology' -- per-element removal questions: can EpistemicState be reconstructed from history (if yes, derived)? can different regimes derive Knowledge attributions independently (if yes, K may not belong in the substrate)? can Transitions be calculated by comparing E_t and E_t+1 (if yes, derived)? can Context be represented through relations and scoped events (if yes, not primitive)? can Information be reconstructed from Observations (if yes, the two must be distinguished)?"
+  - concept: "Strongest-yet Zero-Lens reformulation: 'remove the candidate. What fundamentally becomes impossible?' -- explicitly named 'the Zero Lens in its strongest form'"
+  - concept: "Central research-question reformulation: 'what is the minimum historical substrate required to reconstruct a participant's epistemic state at time t?', expanded formally as S_<=t --[A,C,R]--> E_t^{A,R} [preserved historical substrate, participant, context, epistemic regime], with an explicit test for whether S_<=t itself can remain REGIME-NEUTRAL -- 'if yes, we may have discovered something very important'"
+  - concept: "Empirical (not declarative) Kernel-determination methodology: if reconstruction FAILS without provenance (S-Provenance does not imply Reconstruct(E_t)), provenance becomes a strong Kernel candidate; if reconstruction SUCCEEDS without Transition (S-Theta implies Reconstruct(E_t)), then Theta is NOT in the Kernel; if both logical and probabilistic regimes work from the SAME substrate (S->R_logical and S->R_probabilistic both succeed), that constitutes empirical evidence for regime independence -- 'far stronger than arguing for it philosophically'"
+  - concept: "Five-track research-phase structure: Track A Temporal Epistemology (knowledge-at-t, truth-at-t, information availability, epistemic accessibility, knowledge change, obsolete-vs-false, completeness, reconstruction); Track B Knowledge Space (what constitutes the space, finite/infinite/unbounded, propositions-vs-states-vs-interpretations, participant-relative spaces, temporal spaces, possible-world models, Knowledge Space Theory -- explicitly citing 0351's KST discovery); Track C Extraction (comparing Extraction/Inference/Projection/Reconstruction/Selection to determine whether these are genuinely different concepts); Track D Mathematical Regimes (logical/probabilistic/metric/measurement/temporal/institutional, compared not chosen); Track E Kernel Falsification (candidate-substrate -> remove X -> test reconstruction -> classify X into Kernel/Derived/Regime/Domain/Governance/Implementation/Unnecessary) -- explicitly sequenced LAST, only after Tracks A-D"
+  - concept: "Explicit implementation-deferral list: no tuple implementation, no KnowledgeAttribution creation, no Knows aggregate, no probabilistic-regime build, no frozen Kernel API, no frozen Core invariants -- 'we have enough conceptual material now to do something more valuable: try to prove that these things are necessary before we build them'"
+  - concept: "Final independent-researcher verdict: if choosing one direction for the next 2-4 weeks, it would be Temporal Epistemic Reconstruction, with the central experiment 'can a participant's epistemic/knowledge state at time t be reconstructed from a minimal historical substrate?', using the SAME episode to test Logical Regime vs. Probabilistic Regime and only then determining whether measure theory is actually required -- explicit dual-outcome framing: success teaches about Knowledge/Knowledge-Space/Time/Information/Extraction/Epistemic-State/Regimes/Kernel simultaneously; failure is 'even more valuable' because it identifies exactly which current assumption is wrong"
+  - concept: "PART 2 -- full endorsement, explicitly rated 'the most methodologically mature proposal we have seen,' with a ten-row point-by-point agreement table (one-level-below insight, temporal reconstruction framing, independence-of-changes, concrete episode, attack-knowledge approach, Remove-X test, try-to-prove-necessity principle, five-track structure, deferring implementation, deferring measure theory -- all 'strongly agree')"
+  - concept: "PART 2 -- five explicitly unresolved items each paired with a concrete action: historical substrate not yet formally defined (action: define it as part of the experiment); the reconstruction PROCESS itself not yet formalized (action: define how reconstruction works); ValidAt/CurrentAt/CompleteRelativeTo identified but not tested (action: test them in the experiment); logical-vs-probabilistic comparison criteria not specified (action: define comparison criteria); the Remove-X Kernel-admission test named but not yet performed (action: apply it systematically)"
+  - concept: "PART 2 -- concrete six-item execution plan: (1) run the temporal-epistemology experiment with domain-state changes/observations/information-availability/epistemic-reconstruction/time-varying knowledge attribution; (2) define the historical substrate (observations/timestamps/sources/participants/contexts); (3) test reconstruction at each time t (domain state? available information? supportable epistemic state? justified knowledge attribution?); (4) apply logical/probabilistic/institutional regimes to the same substrate and compare; (5) apply the Remove-X test per candidate concept, classifying by reconstruction success/failure; (6) determine Kernel membership from the resulting evidence (what must be preserved / what can be derived / what is regime-specific)"
+defines: []
+refines:
+  - concept: "0347's original 'measure theory ready and waiting' framing and 0354's Part-3 reprioritization"
+    refinement: "Further sharpened into a precise sequencing rule: measure theory enters ONLY after a concrete temporal episode is constructed, with the case itself determining exactly which machinery is needed -- 'problem first, mathematical structure second'"
+  - concept: "0348/0353/0355's converging critiques of the candidate ten-tuple Core (D,P,T,Ctx,I,E,K,R,H,Theta)"
+    refinement: "Reframed collectively as 'our candidate model to falsify, not our starting ontology,' with a concrete per-element removal-test methodology (Remove-X: what fundamentally becomes impossible?) replacing the earlier separate critique passes with one unified empirical program"
+  - concept: "0351's Knowledge Space Theory (KST) discovery"
+    refinement: "Incorporated directly into Research Track B's investigation list, alongside possible-world models and participant-relative/temporal spaces"
+  - concept: "0354/0355's temporal-semantics landmark work (Truth/Completeness/Currentness, ValidAt/CurrentAt/CompleteRelativeTo, six named temporal dimensions)"
+    refinement: "Consolidated into Research Track A (Temporal Epistemology) as the first and most urgent of the five research tracks, with a concrete worked episode explicitly designed to test these distinctions empirically rather than only formally"
+  - concept: "0353's counterexample-requirement (positive case/negative case/countermodel/decision) for Kernel admission"
+    refinement: "Converges with this file's own Remove-X empirical test into a shared methodology, both now explicitly requiring reconstruction-based evidence rather than argument alone for Kernel-candidate decisions"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - concept: "The worked version-upgrade and conflicting-monitoring-data episodes are IT-operations-domain examples, alongside the corpus's recurring election/governance domain worked examples, broadening the range of concrete test scenarios proposed for the eventual Kernel falsification phase"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: Kernel-structure-synthesis family / phase_measure_theory region -- record this file as the decisive research-direction synthesis point for the 0347-0356 stretch: Temporal Epistemic Reconstruction adopted as the next research priority, organized into five tracks (A-E) with Kernel Falsification explicitly sequenced last."
+  - "dimension-registry.md: record the Delta-D!=Delta-F!=Delta-E!=Delta-K independence-of-changes invariant as a new named principle, extending 0354's World!=Information!=Knowledge-Change invariant."
+  - "dimension-registry.md: record the empirical (Remove-X, reconstruction-based) Kernel-determination methodology as unifying 0348/0353/0355's separate critique-based admission procedures into one shared program."
+anchor_test:
+  anchor: "0347/0354's measure-theory reprioritization; 0348/0353/0355's converging ten-tuple critiques; 0351's Knowledge Space Theory discovery; 0354/0355's temporal-semantics landmark work"
+  supports_dimension: "Engineering KnowledgeOS / mathematical model, cross-cutting decision point: adopts Temporal Epistemic Reconstruction as the phase_measure_theory arc's next research priority, precisely re-sequences measure theory's entry point (problem-first), unifies the prior separate critique passes into one empirical Remove-X Kernel-admission methodology, and organizes the next research phase into five explicitly sequenced tracks"
+  refines_or_contradicts: "refines and synthesizes 0347/0348/0351/0353/0354/0355 into one coherent forward research program, explicitly deferring implementation and further measure-theory work until concrete temporal episodes have been tested"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "Precise definition of the reconstruction process itself (how S_<=t actually yields E_t^{A,R}) -- explicitly flagged by the endorsing layer as not yet formalized"
+  - "Precise historical-substrate content -- explicitly flagged as not yet defined, deferred to the proposed experiment itself"
+open_questions:
+  - "Whether the proposed temporal episodes (version-upgrade, conflicting-monitoring-data) are ever actually constructed and tested"
+  - "Whether the five-track research structure (A-E) is ever actually followed in sequence"
+  - "Whether the Remove-X empirical Kernel-admission test is ever systematically applied to the ten-tuple's elements"
+  - "Whether the four-regime 'attack knowledge' test (logical/probabilistic/institutional/evidential) is ever executed against a real substrate"
+tier2_triggered: true
+tier2_reason: "Likely the decisive research-direction synthesis point for the entire 0347-0356 phase_measure_theory stretch: adopts Temporal Epistemic Reconstruction as the next research priority, deliberately suspending 'What is KnowledgeOS?', introducing a new Delta-D!=Delta-F!=Delta-E!=Delta-K independence invariant, two concrete worked temporal episodes, a four-regime 'attack knowledge' test, a precise problem-first re-sequencing of measure theory's entry point, the strongest-yet Zero-Lens reformulation (Remove-X: what becomes impossible?), and a five-track research structure (Temporal Epistemology / Knowledge Space / Extraction / Mathematical Regimes / Kernel Falsification, explicitly sequenced last) that explicitly defers all implementation. A second layer fully endorses this as 'the most methodologically mature proposal we have seen' and produces a concrete six-item execution plan."

@@ -1,0 +1,230 @@
+sequence: 697
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-123645_step-112-semantic-ownership-reconstruction.md
+title: "Step 112 -- Delivers the Reconstruction's Most Precise DDD-Semantic-Ownership Methodology Yet: Data≠Knowledge, 'Who Owns the Meaning?' Not 'Who Stores the Record?', Invariant→Owner as the Strongest Ownership-Identification Technique, True≠Authoritative, an Explicit Anti-Corruption-Layer Formalization (JiraIssue≠ChangeRequest, Requiring Mapping()), and the Genuinely Serious 'Semantic Fragmentation' Anti-Pattern (OneConcept→ManyOwners, Explicitly Named 'the Most Serious Pattern') -- Delivers a Generalizable 'Semantic Core Test' Heuristic ('If This Component Disappeared, Would KnowledgeOS Lose the MEANING of Its Knowledge, or Merely a Technical Capability?') -- Formally Defines the KnowledgeOS Semantic Core as a Hypothesis Pending Implementation Confirmation -- Continues the Calibrated Methodology-Only Pattern -- Opens Step 113 -- KnowledgeOS Semantic Core Reconstruction, Restating the Corpus's Central Open Question at Its Sharpest Point Yet: Is This 'a Genuine Knowledge Operating System, or Currently an AI Engineering Platform With Knowledge-Oriented Tooling'?"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 112 -- Semantic Ownership Reconstruction', promised at 0696's close and self-declared there to pose 'one of the most important findings in the entire reconstruction'; delivers a precise DDD-semantic-ownership methodology (still entirely hypothetical/illustrative) that directly and substantively engages the semantic-core question, restating the corpus's central open question in its sharpest form yet at its close"
+source_role: PRIMARY_RESEARCH
+canonical_source: 697
+importance: high
+confidence: high
+about: >
+  Delivers the foundational principle `Data≠Knowledge` (a `status=APPROVED` field value alone insufficient
+  to conclude an authorized decision exists without `WhoApproved/UnderWhichAuthority/When/WhatEvidence`,
+  PASS), directly extending 0688's Evidence/Knowledge distinction, and a formal `Concept=(Identity,Meaning,
+  State,Invariants,Relationships,Authority,Provenance)` semantic-object schema, with `ConceptMention≠
+  ConceptImplementation` (`Evidence` appearing across `EvidenceCollector/EvidenceStore/EvidenceReport/
+  EvidenceAPI` establishing terminology but not a coherent domain, PASS) directly extending 0688's
+  `NameMatch≠SemanticConformance` to the concept level.
+
+  Delivers a concrete Semantic-collision worked example (Module A treats "evidence" as a source document,
+  Module B as a runtime observation, `OBS`) directly extending 0696's semantic-collision pattern, with the
+  important clarifying nuance that `Evidence_A≠Evidence_B` across genuinely distinct contexts is legitimate
+  -- the problem is only when the system treats them as identical without explicit translation --
+  and `BoundedContext≠Directory` (an `evidence/` directory containing only file-parsing/OCR/embedding logic
+  correctly identified as ingestion, not necessarily an Evidence bounded context, PASS).
+
+  **Delivers the file's central reframing question, genuinely precise and directly useful**: `Who owns the
+  meaning?`, not `who stores the record?` -- an `EvidenceRepository` that merely stores records is
+  distinguished from an `EvidenceDomain` that defines what evidence means and what makes it valid (three
+  services writing evidence records, only one defining validation rules, correctly identifying the
+  validating service as the stronger semantic-owner candidate, PASS) -- crystallizing **`Invariant→Owner` as
+  the strongest ownership-identification technique** (the component enforcing `Approved⇒AuthorityPresent`
+  is the strongest candidate for owning the decision invariant, PASS), directly extending 0696's aggregate-
+  ownership discipline with a general-purpose ownership-discovery heuristic. Delivers state-transition-based
+  ownership discovery (any component being permitted to transition `Candidate→Authoritative` correctly
+  flagged `OBS/VIOLATION`, depending on the intended rule), directly extending 0690's/0696's knowledge-
+  promotion-lifecycle discipline.
+
+  **Delivers `True≠Authoritative`, a philosophically clean and precisely reasoned restatement of the
+  corpus's Recommendation≠Decision family**: an AI's "the architecture should use Kafka" correctly remains a
+  `Recommendation`, never an `ArchitectureDecision` (PASS), crystallized as `Suggestion→Review→Decision→
+  AuthoritativeState`. Delivers Semantic identity fragility (a decision identified only by filename
+  `ADR-042.md`, breaking under rename, correctly flagged `OBS`), directly extending 0672's/0691's/0696's
+  identity-stability discipline, and `Knowledge-version≠SourceCodeVersion` (an architecture decision
+  changing independently of any application deployment, PASS), directly extending 0688's/0689's multi-
+  dimensional versioning discipline.
+
+  Delivers Conflict semantics with the important, precisely reasoned caution that the newest claim does
+  NOT automatically win (two disagreeing architecture documents correctly yielding a recorded `Conflict`
+  with sources/dates/authorities/scope preserved, PASS), directly extending the corpus's conflict-surfacing
+  family, crystallized as **`Conflict is knowledge`** (`Conflict→Finding→Resolution`, "silently overwriting
+  one side destroys organizational history"), directly extending 0682's `Dissent→KnowledgeArtifact`
+  principle into semantic-ownership conflicts specifically.
+
+  Delivers a semantic-specific relationship vocabulary (`supports/contradicts/supersedes/derivedFrom/
+  implements/verifies/authorizes/violates`, "more important than simple foreign keys") and a formal semantic
+  graph `G_K=(V_K,E_K)` with a valuable worked diagram (`ArchitectureRule→^{implementedBy}Component→
+  ^{verifiedBy}Test→^{produces}Evidence→^{observedAt}Runtime`), directly extending 0687's/0689's/0693's/
+  0695's/0696's Architecture Evidence Graph family with a semantic-specific edge-type vocabulary, "fundamentally
+  different from a document repository."
+
+  **Delivers an explicit, precisely formalized Anti-Corruption Layer principle, directly and usefully
+  applying the classic DDD pattern to this reconstruction's own vocabulary**: `JiraIssue≠ChangeRequest`;
+  instead `Mapping(JiraIssue,ChangeRequest)` (an automatic Jira-Issue-to-ChangeRequest identity assumption
+  correctly rejected in favor of an explicit mapping relationship, PASS×2), directly extending 0687's/0693's
+  external-source/projection disciplines with a named, currently reusable integration-architecture pattern,
+  alongside a Bounded-context-candidate criterion (`Meaning+Rules+Lifecycle+Ownership` forming a coherent
+  cluster, extending 0696's cohesion/coupling boundary-candidate discipline into explicitly semantic terms).
+
+  Delivers an eight-row illustrative Semantic ownership matrix (all `?`, extending 0693's/0695's/0696's
+  Conformance/inventory matrix family), Semantic orphan detection (`KnowledgeItem` used across five modules
+  with no identifiable invariant or owner, `OBS`), directly extending 0682's/0687's/0696's orphan-detection
+  discipline into concept-level semantics, and Semantic duplicate detection (`KnowledgeRecord` and
+  `KnowledgeItem` with identical fields/lifecycle/API behavior, `OBS`), extending 0696's semantic-duplication
+  pattern.
+
+  **Delivers the file's most severe and explicitly self-flagged anti-pattern -- Semantic fragmentation
+  (`OneConcept→ManyOwners`)**: `Decision` simultaneously "owned" by `ServiceA`, `ServiceB`, and `AgentMemory`,
+  with three independent representations each claiming to be the current architecture decision, correctly
+  flagged **`DRIFT`** -- explicitly self-declared "the most serious pattern" -- directly and precisely
+  extending 0696's Fragmented-outcome diagnostic into a concrete, named DRIFT-classified anti-pattern.
+  Delivers the resolving principle that centralization requires **`One authoritative semantic owner`**, not
+  necessarily one database -- physical projections may legitimately exist elsewhere -- directly extending
+  0691's/0693's "centralized means one semantic model, not one database" principle, with a Projection-
+  staleness-detection mechanism (an agent cache holding decision version 4 while KnowledgeOS is at version
+  5, correctly flagged `ProjectionStale`, PASS), explicitly and directly connecting this file's own framework
+  back to the agent-architecture discussions: "this connects back to agents... Agent memory may be
+  `Projection` but not `Authority`" -- unifying 0690's/0693's/0695's pointer-layer principle under this
+  file's semantic-ownership framework for the first time.
+
+  Delivers Authority-must-have-an-owner (`Rule→Authority→AuthorityHolder`, an unidentifiable authority
+  holder correctly flagged `GovernanceGap`, PASS), directly extending 0687's/0689's authority-provenance
+  discipline, and **the important, precisely reasoned principle that different semantic concepts require
+  genuinely different state machines and must not be conflated into a single generic status flag**: `Claim`
+  (`Proposed→Supported→Accepted→Superseded`), `Decision` (`Draft→Approved→Effective→Superseded`), and
+  `Finding` (`Open→Investigating→Remediating→Verified→Closed`) each require their own lifecycle; a uniform
+  `ACTIVE|INACTIVE` status applied to every concept correctly flagged as a semantic weakness (`OBS`) --
+  directly and genuinely extending 0682's/0689's/0692's lifecycle-management family with an explicit anti-
+  conflation caution. Delivers Semantic invariants with enforcement-location identification (domain code/
+  application service/database constraint/policy engine/workflow/CI/runtime/human process; a README-only
+  invariant correctly classified `DocumentedRule`, never `EnforcedInvariant`, PASS), directly extending the
+  corpus's central `Specified≠Implemented` family.
+
+  Delivers the capstone chain **`SemanticTruth→Invariant→Enforcement→Evidence`** -- "how semantic
+  architecture becomes executable" -- and formally defines the **`KnowledgeOS Semantic Core`** as "the
+  smallest coherent set of concepts and invariants that defines what 'knowledge' means in the system,"
+  hypothesized as `Evidence+Claim+Decision+Authority+Provenance+TemporalValidity` but explicitly and
+  precisely qualified as "a hypothesis until the implementation confirms it" -- directly and genuinely
+  extending the corpus's central epistemic-honesty discipline into its own core-definition claim.
+
+  **Delivers a genuinely valuable, generalizable heuristic -- the "semantic core test"**: "If this
+  component disappeared, would KnowledgeOS lose the MEANING of its knowledge, or merely a technical
+  capability?" (removing a search/indexing subsystem correctly leaving knowledge semantics intact, hence
+  `SupportingCandidate`; removing the semantic identity/provenance model correctly destroying traceability
+  entirely, hence `CoreCandidate`) -- a precise, currently reusable diagnostic for distinguishing genuine
+  architectural cores from supporting infrastructure in any system, not merely this one.
+
+  No explicit new named invariants section appears in this file, consistent with 0696's organizational/
+  principle-driven (rather than atomic-invariant-introducing) character.
+
+  Delivers Step 112's verdict continuing the calibrated methodology-only pattern: "STEP 112 — SEMANTIC
+  OWNERSHIP MODEL: PASS. The actual ownership map remains: TBD until the repository evidence is mapped."
+
+  **Closes by opening "Step 113 — KnowledgeOS Semantic Core Reconstruction," explicitly framed as "the
+  deepest question so far,"** restating the corpus's central open tracked question in its sharpest form
+  yet: whether `Evidence→Claim→Decision→Authority→Action→Observation` (with `Provenance` and
+  `TemporalValidity` cross-cutting) represents "real domain concepts represented and enforced by the
+  software, or merely concepts we have projected onto the existing implementation" -- **"that distinction
+  will determine whether KnowledgeOS is truly a Knowledge Operating System or currently an AI engineering
+  platform with knowledge-oriented tooling."** This directly echoes and sharpens 0688's falsifiability
+  criterion (Documents+Embeddings+LLM+Search+Agents alone ≠ genuine KnowledgeOS), restating the same
+  underlying tension at its most precise point in this reconstruction so far. No actual code execution,
+  repository inspection, or verified filesystem/concept-ownership claim is reported anywhere in this file.
+introduces:
+  - concept: "Data≠Knowledge as the file's foundational principle, extending 0688's Evidence/Knowledge distinction"
+  - concept: "'Who owns the meaning?' not 'who stores the record?' -- distinguishing EvidenceRepository (storage) from EvidenceDomain (meaning/validity)"
+  - concept: "Invariant→Owner as the strongest general-purpose ownership-identification technique"
+  - concept: "True≠Authoritative, a philosophically clean restatement of the Recommendation≠Decision family"
+  - concept: "Knowledge-version≠SourceCodeVersion: knowledge can evolve independently of software releases"
+  - concept: "Conflict is knowledge: silently overwriting one side of a disagreement destroys organizational history, directly extending Dissent→KnowledgeArtifact"
+  - concept: "An explicit Anti-Corruption Layer formalization (JiraIssue≠ChangeRequest, requiring Mapping()) applying the classic DDD pattern to this reconstruction's own vocabulary"
+  - concept: "Semantic fragmentation (OneConcept→ManyOwners), explicitly self-declared 'the most serious pattern' in this file"
+  - concept: "One authoritative semantic owner, not necessarily one database -- physical projections may legitimately exist elsewhere, with explicit projection-staleness detection"
+  - concept: "Different semantic concepts require genuinely different state machines and must not be conflated into a single generic status flag"
+  - concept: "The KnowledgeOS Semantic Core formally defined and explicitly held as a hypothesis pending implementation confirmation"
+  - concept: "The generalizable 'semantic core test' heuristic: if a component disappeared, would meaning be lost, or merely a technical capability?"
+  - concept: "Opens Step 113 restating the corpus's central open question at its sharpest point yet: a genuine Knowledge Operating System, or currently an AI engineering platform with knowledge-oriented tooling?"
+defines:
+  - concept: "Who owns the meaning? (semantic ownership)"
+    definition: "Semantic ownership of a concept is established not by which component stores its records, but by which component defines and enforces what the concept means and what makes an instance of it valid -- typically identified via the component that enforces the concept's governing invariant"
+  - concept: "True≠Authoritative"
+    definition: "A statement can be widely believed to be true (e.g. an AI's technical recommendation) without being the organization's official, authorized decision; only content that has passed through Suggestion→Review→Decision→AuthoritativeState counts as authoritative"
+  - concept: "Semantic fragmentation (OneConcept→ManyOwners)"
+    definition: "The most serious semantic-ownership anti-pattern: a single conceptual entity (e.g. 'the current architecture decision') is independently represented and asserted as current by multiple uncoordinated owners (e.g. two services and an agent's memory), creating genuine ambiguity about which representation is true"
+  - concept: "The semantic core test"
+    definition: "To determine whether a component belongs to a system's genuine semantic core (versus merely supporting infrastructure), ask: if this component disappeared, would the system lose the MEANING of its knowledge (identity, provenance, validity), or merely a technical capability (e.g. search speed)? Loss of meaning indicates a core candidate; loss of only technical capability indicates a supporting candidate"
+refines:
+  - concept: "0688's Evidence/Knowledge distinction and NameMatch≠SemanticConformance"
+    refinement: "Directly extended into Data≠Knowledge and ConceptMention≠ConceptImplementation at the concept level"
+  - concept: "0696's semantic-collision and semantic-duplication patterns"
+    refinement: "Directly extended with new worked examples and the important context-legitimacy nuance (Evidence_A≠Evidence_B is fine across genuinely distinct contexts; the problem is unacknowledged conflation)"
+  - concept: "0696's aggregate-ownership discipline"
+    refinement: "Directly extended into a general-purpose ownership-identification heuristic (Invariant→Owner)"
+  - concept: "0690's/0696's knowledge-promotion-lifecycle discipline"
+    refinement: "Directly extended into state-transition-based ownership discovery (who is permitted to perform which transition reveals the governance boundary)"
+  - concept: "the corpus's Recommendation≠Decision family (0645, 0672, 0682, 0685, 0688)"
+    refinement: "Directly and philosophically restated as True≠Authoritative"
+  - concept: "0672's/0691's/0696's identity-stability discipline"
+    refinement: "Directly extended into filename-based semantic identity fragility"
+  - concept: "0688's/0689's multi-dimensional versioning discipline"
+    refinement: "Directly extended into Knowledge-version≠SourceCodeVersion"
+  - concept: "the corpus's conflict-surfacing family and 0682's Dissent→KnowledgeArtifact principle"
+    refinement: "Directly and genuinely extended into semantic-ownership conflicts specifically: Conflict is knowledge, never automatically resolved by recency"
+  - concept: "0687's/0689's/0693's/0695's/0696's Architecture Evidence Graph family"
+    refinement: "Directly extended with a semantic-specific relationship vocabulary (supports/contradicts/supersedes/derivedFrom/implements/verifies/authorizes/violates)"
+  - concept: "0687's/0693's external-source/projection disciplines"
+    refinement: "Directly and usefully extended with a named, formal Anti-Corruption Layer pattern (JiraIssue≠ChangeRequest, Mapping())"
+  - concept: "0696's cohesion/coupling boundary-candidate discipline"
+    refinement: "Directly extended into explicitly semantic terms (Meaning+Rules+Lifecycle+Ownership forming a coherent cluster)"
+  - concept: "0682's/0687's/0696's orphan-detection discipline"
+    refinement: "Directly extended into concept-level semantic-orphan detection"
+  - concept: "0696's Fragmented-outcome diagnostic"
+    refinement: "Directly and precisely extended into a concrete, named, self-declared-most-serious DRIFT anti-pattern: Semantic fragmentation (OneConcept→ManyOwners)"
+  - concept: "0691's/0693's 'centralized means one semantic model, not one database' principle"
+    refinement: "Directly extended into semantic ownership specifically: One authoritative semantic owner, with legitimate physical projections elsewhere"
+  - concept: "0690's/0693's/0695's pointer-layer principle"
+    refinement: "Explicitly and directly unified under this file's own semantic-ownership framework for the first time: 'this connects back to agents... Agent memory may be Projection but not Authority'"
+  - concept: "0687's/0689's authority-provenance discipline"
+    refinement: "Directly extended: authority itself must have an identifiable holder, or a GovernanceGap exists"
+  - concept: "0682's/0689's/0692's lifecycle-management family"
+    refinement: "Directly and genuinely extended with an explicit anti-conflation caution: distinct concepts (Claim/Decision/Finding) require genuinely distinct state machines"
+  - concept: "the corpus's central Specified≠Implemented family"
+    refinement: "Directly extended: a README-only invariant is a DocumentedRule, never an EnforcedInvariant"
+  - concept: "0688's falsifiability criterion (Documents+Embeddings+LLM+Search+Agents alone ≠ genuine KnowledgeOS)"
+    refinement: "Directly echoed and restated in its sharpest form yet at this file's close, via Step 113's framing: genuine Knowledge Operating System vs. AI engineering platform with knowledge-oriented tooling"
+  - concept: "the calibrated methodology-only pattern (0692-0696)"
+    refinement: "Continued consistently: STEP 112 verdict PASS at the model level, actual ownership map remains TBD"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0698 (Step 113 — KnowledgeOS Semantic Core Reconstruction) with calibrated vigilance, specifically for whether it substantively engages its own restated central question (genuine Knowledge Operating System vs. AI engineering platform with knowledge-oriented tooling) with a comparably novel and precise analytical contribution to this file's semantic-core test and semantic-fragmentation findings."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the file's most valuable DDD-semantic-ownership contributions: Data≠Knowledge, Who-owns-the-meaning/Invariant→Owner, True≠Authoritative, the Anti-Corruption-Layer formalization, Semantic fragmentation (the most serious pattern, OneConcept→ManyOwners), and the generalizable semantic-core test heuristic."
+  - "dimension-registry.md: record the explicit unification of the pointer-layer principle (0690/0693/0695) under this file's own semantic-ownership framework (Agent memory = Projection, not Authority), and the formal KnowledgeOS Semantic Core definition held explicitly as a hypothesis pending confirmation."
+  - "dimension-registry.md: record continuation of the calibrated methodology-only pattern; flag Step 113 (0698) as restating the corpus's central open question in its sharpest form yet: genuine Knowledge Operating System, or AI engineering platform with knowledge-oriented tooling?"
+anchor_test:
+  anchor: "0696's Coherent/Fragmented/Monolithic diagnostic and its closing question; 0688's Evidence/Knowledge distinction, NameMatch≠SemanticConformance, and falsifiability criterion; the corpus's Recommendation≠Decision family; 0682's Dissent→KnowledgeArtifact principle; 0687's/0689's/0693's/0695's/0696's Architecture Evidence Graph family; 0691's/0693's centralized-means-one-semantic-model principle; 0690's/0693's/0695's pointer-layer principle; the corpus's central Specified≠Implemented family; the calibrated methodology-only pattern (0692-0696)"
+  supports_dimension: "Delivers the reconstruction's most precise DDD-semantic-ownership methodology yet, with several genuinely valuable, precisely reasoned principles coherently extending prior corpus disciplines: the who-owns-the-meaning reframing with Invariant→Owner as a general heuristic, True≠Authoritative, an explicit and usefully formalized Anti-Corruption Layer pattern, Semantic fragmentation (self-declared the most serious pattern), and the generalizable semantic-core test heuristic. Explicitly and directly unifies the pointer-layer principle under its own semantic-ownership framework for the first time. Holds its own KnowledgeOS Semantic Core definition explicitly as an unconfirmed hypothesis, consistent with the corpus's epistemic-honesty discipline. Continues the calibrated methodology-only pattern without escalation, and closes by restating the corpus's central open question in its sharpest, most memorable formulation yet (genuine Knowledge Operating System vs. AI engineering platform with knowledge-oriented tooling)"
+  refines_or_contradicts: "directly and genuinely extends 0688's Evidence/Knowledge distinction and NameMatch≠SemanticConformance, 0696's semantic-collision/duplication patterns and aggregate-ownership discipline, 0690's/0696's knowledge-promotion-lifecycle discipline, the corpus's Recommendation≠Decision family, 0672's/0691's/0696's identity-stability discipline, 0688's/0689's multi-dimensional versioning discipline, the corpus's conflict-surfacing family and 0682's Dissent→KnowledgeArtifact principle, 0687's/0689's/0693's/0695's/0696's Architecture Evidence Graph family, 0687's/0693's external-source/projection disciplines, 0696's cohesion/coupling boundary-candidate discipline, 0682's/0687's/0696's orphan-detection discipline, 0696's Fragmented-outcome diagnostic, 0691's/0693's centralized-semantic-model principle, 0690's/0693's/0695's pointer-layer principle, 0687's/0689's authority-provenance discipline, 0682's/0689's/0692's lifecycle-management family, and the corpus's central Specified≠Implemented family; directly echoes and sharpens 0688's falsifiability criterion; no contradiction found; no new invariants introduced, so no collision risk"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§112.46-112.47's Semantic-fragmentation experiment (Decision independently owned by ServiceA, ServiceB, and AgentMemory, three representations each claiming current status, correctly flagged DRIFT and explicitly self-declared 'the most serious pattern') is a directly checkable, precisely reasoned anti-pattern with clear currency for any multi-service or multi-agent knowledge architecture."
+  - "§112.67's semantic-core-test heuristic ('if this component disappeared, would KnowledgeOS lose the MEANING of its knowledge, or merely a technical capability?'), worked through with two contrasting removal experiments (search/indexing vs. semantic identity/provenance), is a directly checkable, precisely stated, and genuinely generalizable diagnostic distinct from anything delivered earlier in this reconstruction."
+  - "The closing text's direct echo of 0688's falsifiability criterion -- restated as 'whether KnowledgeOS is truly a Knowledge Operating System or currently an AI engineering platform with knowledge-oriented tooling' -- is directly quotable evidence that this reconstruction's central open question has now been independently arrived at, in comparably sharp form, from two distinct analytical angles (semantic-model conformance at 0688, semantic-ownership reconstruction here)."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 113's actual content (0698), once read, delivers a comparably novel and precise analytical contribution (in the spirit of this file's semantic-core test and semantic-fragmentation findings) toward answering its own restated central question, or continues the calibrated methodology-only pattern without further diagnostic innovation."
+tier2_triggered: true
+tier2_reason: "Delivers the reconstruction's most precise DDD-semantic-ownership methodology yet, with several genuinely valuable, precisely reasoned principles (Who-owns-the-meaning/Invariant→Owner, True≠Authoritative, an explicit Anti-Corruption Layer formalization, Semantic fragmentation self-declared the most serious pattern, and a generalizable semantic-core test heuristic). Explicitly unifies the pointer-layer principle under its own semantic-ownership framework for the first time, and holds its own Semantic Core definition explicitly as an unconfirmed hypothesis. Closes by independently arriving at, and sharpening, the corpus's central open question from a distinct analytical angle: genuine Knowledge Operating System, or AI engineering platform with knowledge-oriented tooling?"

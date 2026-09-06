@@ -1,0 +1,69 @@
+sequence: 225
+path: docs/knowledgeos/brainstorming/kernel/20260824-124529-hidden-semi-markov-models-hidden-epistemic-state-layer.md
+title: "Hidden Semi-Markov Models — Hidden Epistemic State Layer"
+date: "2026-08-24"
+bytes: 40000
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 225
+importance: critical
+confidence: high
+about: >
+  A Hidden Semi-Markov Model (HSMM) textbook, continuing the 0223/0224 mathematical arc. Central thesis:
+  KnowledgeOS should contain a Semi-Markov epistemic layer, not because everything is stochastic, but
+  because much KnowledgeOS phenomena consist of hidden states with non-geometric durations that produce
+  observable evidence and transition on evidence/events. Explicit final invariant: Observed != Inferred
+  != Authoritative != True.
+introduces:
+  - concept: "HESMM=(S,A,D,B,Pi): hidden epistemic states, transition probabilities, duration distributions p_i(d) (explicitly non-geometric, unlike ordinary HMM), observation distributions, initial distribution -- Z_t^epistemic -> O_t^evidence"
+  - concept: "Filtering P(Z_t|O_1:t), prediction P(Z_t+k|O_1:t), smoothing P(Z_t|O_1:T), and Viterbi best-state-sequence reconstruction (Z*_1:T) -- smoothing specifically named as a formal 'KnowledgeOS Historical Reconstruction Engine' for architecture/audit"
+  - concept: "Duration as a first-class epistemic property (E[D_i], Var(D_i), P(D_i>d)); Knowledge half-life as an empirical (not arbitrary) concept"
+  - concept: "Three-layer state architecture: AUTHORITATIVE STATE (deterministic domain/governance) -> OBSERVATIONAL STATE (what was actually seen) -> INFERRED STATE (probabilistic/analytical model) -- these must not collapse; an inferred signal (e.g. P(Contested)=0.41) never automatically overrides authoritative state, it triggers review instead"
+  - concept: "State-distinguishability / identifiability warning: if P(O|Z1) approx P(O|Z2), KnowledgeOS must report NOT IDENTIFIABLE rather than arbitrarily selecting one state"
+  - concept: "Epistemic entropy H(Z_t)=-sum p_i log p_i (state ambiguity) and transition entropy H(Z_t+1|Z_t) (process structure/predictability) as legitimate quantitative measures, explicitly Entropy != Truth"
+  - concept: "Epistemic volatility (transition rate) and epistemic momentum (d/dt P(DesiredState)) -- a static probability score misses trajectory direction; two systems at the same P(Assured)=0.9 with opposite momentum are not equivalent"
+  - concept: "MissingEvidence != ContradictoryEvidence as an explicit architectural invariant: O_t=empty-set does not imply P(H|O_t=empty-set)=0"
+  - concept: "Context-dependent HSMM (P(Z_t+1|Z_t,C_t) with domain/team/system-type/governance-regime/risk-class as context), switching HSMM (regime changes, e.g. Legacy->Migration->Target architecture regimes with different parameter sets), adaptive HSMM (Theta=Theta(t), motivating model versioning as a temporal concept), and multichannel HSMM (simultaneous architecture/code/governance/operations/security/documentation observation channels)"
+  - concept: "Infinite/HDP-HSMM (unknown number of hidden states) motivating LatentStateDiscovery -> Proposal -> DomainReview -> CanonicalState as a governed ML+DDD combination -- statistical models may discover latent patterns but cannot declare new domain states without governance approval"
+  - concept: "TemporalAnomalyEngine pattern: AnomalyScore = -log P(O_t*|Z_t) flags unexpected evidence or possible epistemic regime change, illustrated with a 14-month-stable 'Assured' architecture suddenly showing failing tests/undocumented dependencies"
+  - concept: "Full model architecture proposal: EpistemicStateEngine, ObservationEngine, TemporalInferenceEngine, ModelRegistry, ParameterLearningEngine, StateInferenceEngine, TemporalAnomalyEngine, CalibrationEngine, AssuranceEngine"
+  - concept: "Explicit anti-overfitting warning: HSMM = one mathematical model family inside KnowledgeOS, NOT KnowledgeOS = HSMM; every model must declare what it does NOT represent (not truth, not authoritative state, not complete causal model, not guaranteed identifiable, not valid outside applicability domain)"
+  - concept: "Final architectural invariant: Observed != Inferred != Authoritative != True"
+defines: []
+refines:
+  - concept: "0224's Knowledge Dynamics Model K_{t+1}=F(K_t,E_t,Theta) and EpistemicAttractor concept"
+    refinement: "Replaces the flat state-transition model with a full hidden-state/duration/observation formalism (HSMM), explaining EpistemicAttractor-like instability quantitatively via entropy and momentum, and extends the corpus's Model Registry concept with duration/context/switching/adaptive model types."
+  - concept: "0207's EKS architecture-baseline evidence hierarchy and classification vocabulary (CURRENT/IMPLEMENTED-BUT-IMPLICIT/PARTIAL/...)"
+    refinement: "Supplies a formal temporal-inference mechanism (filtering/smoothing/Viterbi) that could in principle reconstruct historical architecture states from evidence gathered later -- directly extending 0207's evidence-archaeology methodology with named mathematical operations."
+contradicts: []
+repeats:
+  - concept: "Equilibrium != truth; a stable wrong model can persist"
+    canonical_source: 224
+    novelty: low
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0223/0224 mathematical arc; 0207's EKS architecture-reconstruction methodology"
+  supports_dimension: "Mathematical/statistical model -- supplies a formal temporal-inference layer (filtering/smoothing/Viterbi/duration modeling) directly extending 0207's architecture-archaeology methodology and 0224's inverse-problem framing"
+  refines_or_contradicts: "refines 0224; reinforces (does not contradict) 0207"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Worked 14-month-stable-Assured-then-sudden-failure example directly illustrating TemporalAnomalyEngine's regime-change detection, more informative than a bare confidence-drop number"
+  - "Worked YAML EpistemicAssessment example explicitly separating authoritative_state from inferred_state distribution, duration, transition, and evidence_entropy fields"
+undefined_concepts:
+  - "No formal criteria given for when a LatentStateDiscovery proposal should be escalated to DomainReview, beyond the general governance principle"
+open_questions:
+  - "Whether Temporal Epistemic Modelling / Hidden Epistemic State Modelling is ever taken up as a dedicated research track distinct from the general Model Registry proposal (0224)"
+  - "Whether the smoothing-based Historical Reconstruction Engine is ever applied concretely to 0207's EKS baseline"
+tier2_triggered: true
+tier2_reason: "Critical extension of the mathematical arc: introduces a formal hidden-state/duration/observation model (HSMM) for temporal epistemic reasoning, a three-layer Authoritative/Observational/Inferred state separation that must never collapse, epistemic entropy/volatility/momentum as quantitative but non-truth-establishing metrics, and a governed ML+DDD pattern for latent-state discovery -- directly relevant to the corpus's own architecture-archaeology methodology (0207)."

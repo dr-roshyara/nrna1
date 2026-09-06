@@ -1,0 +1,80 @@
+sequence: M0259
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-113000_theory-06-representation-reduction-boundary.md
+title: "Theory 06 — The Representation-Reduction Boundary: final consolidated form of the R5→R4 preservation-boundary finding, with a NEW DPI-derived corollary that the boundary is UNIQUE along a sequential chain (once crossed it cannot be re-crossed back into adequacy — 'this is a corollary, not an observation; it follows from the theorem and does not need the data'), the cleanest possible statement of the scope-bound discipline, a falsification scorecard consolidating seven named hypotheses, and a nuanced qualification that the rank-convention sensitivity gap IS the one place in the corpus where the adequacy/realization separation was actually visible, just not in the clean form Document 05 requires"
+date: "20260904-113000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0259
+importance: critical
+confidence: high
+about: >
+  Document 06 of the 15-document consolidated theory series, sourced from KR-REP-REDUCTION-2026-09
+  and its audit. Consolidates the corpus's central representation-reduction experimental finding —
+  a preservation boundary at R5→R4 — into its final, tightly scope-bounded form, adds a genuinely
+  new formal corollary (the boundary's uniqueness along a sequential chain, derived purely from the
+  DPI), restates the H-RR2 negative result and the rank-invertibility audit withdrawal with exact
+  final numbers, and supplies a nuanced clarification distinguishing where the adequacy/realization
+  separation was and was not actually exhibited.
+introduces:
+  - "Final experimental parameters: 40,000 cases per split, independent seeds, full population persisted; seven falsification tests (FT-1..FT-7) ran BEFORE any result and all passed; the positive control passed (N_viol>0 at three levels), confirming the experiment was not blind"
+  - "The final boundary table: R5 (drop timestamps) F=1.00, Ĥ(Q|R)=0.0000, N_viol=0, adequate=YES; R4 (round to 3 s.f.) F=1.00, Ĥ(Q|R)=0.4299, N_viol=35532, adequate=no — 'last adequate stage: R5. First inadequate: R4. Crossing transformation: T4 — rounding to 3 significant digits'"
+  - "A TEST-reproduces-TRAIN confirmation with exact numbers: R4 Ĥ 0.4408 (test) vs 0.4299 (train); N_viol 36,445 (test) vs 35,532 (train) — 'the Ĥ(Q|R5)=0 observation is not a one-sample artifact'"
+  - "THE CLEANEST STATEMENT OF THE SCOPE-BOUND DISCIPLINE in the entire corpus: explicit forbidden claim ('three significant digits is the universal preservation limit') contrasted with the permitted claim ('for THIS carrier, THIS inquiry Q, THIS transformation chain, THIS contract and THIS value domain, rounding to three significant digits crossed the observed preservation boundary') — with the carrier and inquiry stated exactly (r=(value,source,timestamp); Q=(argmax_source, decile(total))) and the explicit generalization: 'the boundary is a property of the frame, not of the number 3'"
+  - "An explicit negative-space clarification of what the boundary is NOT a boundary of: not eliminability (§4 — Zero doesn't mark it); not realization (Document 05 — never exhibited); not 'size' (Document 04 §4 — bytes were flat across it) — the boundary is specifically and only a boundary of ADEQUACY, i.e. of Ĥ(Q|R) crossing zero"
+  - "A GENUINELY NEW FORMAL COROLLARY, derived purely from the DPI theorem (Document 04) rather than from data: 'the boundary is unique along the sequential chain: once crossed it cannot be re-crossed back into adequacy. This is a corollary, not an observation — it follows from the theorem and does not need the data' — the first explicit statement of preservation-boundary uniqueness in the corpus"
+  - "Restatement of the H-RR2 negative result with exact numbers, explicitly identified as 'the first of the four independent negatives that make up Document 07' (confirming Document 07's existence and role as the consolidated four-negative registry): R5→R4 (the crossing) Zero rate 0.0377 over 12,000 cases; R4→R3 (not a crossing) Zero rate 0.0426 over 12,000 cases; Zero vanishes entirely thereafter — 'the Zero rate at the boundary crossing is not distinguishable from the rate at a non-crossing step, and is in fact lower. Eliminability carries no signal about where preservation fails'"
+  - "The exact final tie-violation count for the rank-invertibility audit withdrawal: 'desc≠(n+1)-asc when values tie — 21,369 violations; the induced partitions differ' — therefore 'this is NOT an instance of DECISION-01 (non-evidential invariance)... the headline built on it was withdrawn — both my wording and the review's replacement wording'"
+  - "A NUANCED CLARIFICATION distinguishing where the adequacy/realization separation was and was not actually exhibited, refining Document 05's cleaner 'never exhibited' framing: 'what survives: the sensitivity is located precisely. Adequacy is nearly invariant across the [rank] convention change where realization is not, and the gap MEASURES THE SEPARATION between them — which is the ONE PLACE in the corpus where the adequacy/realization distinction was visible at all, even though it was not exhibited in the clean form Document 05 requires'"
+  - "A consolidated 7-row FALSIFICATION SCORECARD summarizing every named hypothesis's final verdict: A (adequacy) SURVIVES; H-RR1/H-A (boundary exists) CONFIRMED; H-RR2 (Zero marks boundary) [NEG]; H-B (adequacy/realization separation) [DEFECT] — design could not exhibit it; H-C (non-monotone adequacy) structurally inapplicable, not refuted; H-D (reduction is multi-dimensional) CONFIRMED; H-E (Ĥ(R)≥Ĥ(Q)) holds at every level"
+  - "A final consolidated 8-row status register summarizing every statement in the document with its exact epistemic tag"
+defines: []
+refines:
+  - "M0219's original preservation-boundary finding (R5→R4, T4 rounding-to-3-sig-figs): given final exact numbers, a full 40,000-case-per-split experimental parameter set with pre-registered falsification tests, and a genuinely new DPI-derived uniqueness corollary"
+  - "M0231/M0232's rank-invertibility audit finding: given the exact tie-violation count (21,369) and a more nuanced characterization distinguishing it as 'the one place in the corpus' where the adequacy/realization separation was visible, even if not in Document 05's required clean form"
+contradicts: []
+repeats:
+  - "The already-established H-RR2 negative result (Zero doesn't mark the preservation boundary) and the rank-convention DECISION-01 withdrawal (M0231/M0232), restated here with final exact figures as part of this document's consolidated form"
+bridge_candidates:
+  - "Whether the new boundary-uniqueness corollary (derived from the DPI) was ever formally cross-checked against a case where the sequential-vs-parallel distinction (Document 04) might complicate its applicability"
+mathematical_content: >
+  A final, exact-number consolidation of the R5→R4 preservation boundary; a new DPI-derived
+  corollary establishing boundary uniqueness along a sequential chain; final exact figures for the
+  H-RR2 negative result and the rank-invertibility tie-violation count (21,369); a 7-hypothesis
+  falsification scorecard.
+gita_content: null
+kernel_content: null
+registry_updates:
+  - "New [COR]: the preservation boundary is unique along a sequential chain (derived purely from the DPI, not from data)"
+  - "Final exact experimental parameters and numbers for the R5→R4 boundary, H-RR2, and the rank-invertibility tie-violation count (21,369)"
+  - "Nuanced clarification: the rank-convention sensitivity gap is 'the one place' the adequacy/realization separation was actually visible, though not in the clean form Document 05 requires"
+  - "Consolidated 7-hypothesis falsification scorecard (A/H-RR1/H-RR2/H-B/H-C/H-D/H-E)"
+  - "Confirmed existence and role of Document 07 as the consolidated four-independent-negatives registry"
+anchor_test:
+  anchor: true
+  supports_dimension: "Final preservation-boundary consolidation with exact numbers; new DPI-derived boundary-uniqueness corollary; falsification scorecard; nuanced adequacy/realization-separation clarification"
+  refines_or_contradicts: "refines (M0219's preservation-boundary finding and M0231/M0232's rank-invertibility audit finding, both given final exact numbers and a new formal corollary)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"The boundary is a property of the frame, not of the number 3.\""
+  - "\"The boundary is unique along the sequential chain: once crossed it cannot be re-crossed back into adequacy. This is a corollary, not an observation.\""
+  - "\"Desc≠(n+1)-asc when values tie — 21,369 violations; the induced partitions differ.\""
+  - "\"Which is the one place in the corpus where the adequacy/realization distinction was visible at all, even though it was not exhibited in the clean form document 05 requires.\""
+undefined_concepts: []
+open_questions:
+  - "Was the new boundary-uniqueness corollary ever cross-checked against the sequential-vs-parallel distinction's implications?"
+tier2_triggered: true
+tier2_reason: >
+  Consolidates the corpus's central representation-reduction preservation-boundary finding into its
+  final exact-number form, adds a genuinely new DPI-derived formal corollary (boundary uniqueness),
+  gives the cleanest statement yet of the scope-bound discipline, and supplies a nuanced
+  clarification about where the adequacy/realization separation was actually visible — core
+  reference material for this consolidated theory series.

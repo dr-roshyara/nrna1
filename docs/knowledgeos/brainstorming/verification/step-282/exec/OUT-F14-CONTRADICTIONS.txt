@@ -1,0 +1,44 @@
+====================================================================================================
+F14 — THEORY-CRITICALITY TEST: remove each proposed resolution, does a MANDATORY op break?
+====================================================================================================
+  Q_t (missingness repair)  'not asked' collapses into 'absent' -> M1/M2 indistinguishableTHEORY-CRITICAL
+  probability space         NOTHING — 0 of 13 mandatory constructs break (F21)not critical
+  non-identifiability primitiveNOTHING — the predicate is derivable in 2 lines (F15)not critical
+  Authorize() runtime       NOTHING formal — Authorize_formal stays typed and totalnot critical
+  multi-node execution      NOTHING — no theory claim depends on distributed consistencynot critical
+  measurement executor      NOTHING — the measurement MODEL is a parameter, not a constructnot critical
+  real-environment observationNOTHING formal — certification weakens, definitions do notnot critical
+  orphan primitive          NOTHING — is_orphan is derivable from R (step 281)not critical
+
+  THEORY-CRITICAL resolutions: ['Q_t (missingness repair)']
+  => exactly ONE resolution is load-bearing, and it was ALREADY MADE in step 281.
+
+====================================================================================================
+VERIFY STEP 281's CLAIMS UNDER THE CORRECTED id (do not trust PASS)
+====================================================================================================
+  M1-M6 under corrected id: [('NotAsked', '-'), ('Asked', 'Absent'), ('Asked', 'Unknown'), ('Asked', 'Supported'), ('Asked', 'Refuted'), ('Asked', 'Conflicted')]
+  all distinct: True
+  M7 orphan orthogonal: True -> False   epistemic unchanged
+  StructuralValid with the corrected id: (True, 'ok')
+  the F21 collision case, re-run: ids 07c5019954 vs e514390ddd equal=False; Valid=(True, 'ok')
+  => STEP 281's RESULTS SURVIVE the id correction. 7/7 distinguishability re-confirmed.
+
+====================================================================================================
+§20 — ACTIVE CONTRADICTION SEARCH (ten mandated pairs)
+====================================================================================================
+  none found    K vs Q_t                          Q is not a component of K; K==K unaffected by Q (step 281 invariant proof)
+  none found    Sigma vs missingness              Sigma is defined only once inquiry has occurred; NotAsked is outside Sigma's domain
+  none found    Policy vs Knowledge               F16: policy governs T; knowledge ABOUT policy is an ordinary assertion
+  none found    Identity vs observational equivalenceF15: id distinguishes; O_core may not. Both statable — that IS non-identifiability
+  none found    History vs state                  History(K)!=K executed; congruence holds because T's domain excludes History
+  none found    provenance vs lineage             Pi is intrinsic (t=0-safe); Lineage = Pi o R_der*. Four named objects, no shared word
+  none found    measurement vs uncertainty        measurement model is ORDINAL and parametric; uncertainty is OUT OF SCOPE (F21)
+  none found    governance vs epistemic status    Sigma perp Gamma, proven 3 independent ways
+  none found    transformation vs policy          F19: T depends on Policy definitionally; Policy does not depend on T
+  none found    authorization vs transformation   Authorize produces a command c_t; delta consumes the EVENT e_t. Separate boundaries
+
+  ONE DEFECT FOUND AND CLASSIFIED (not a contradiction in the theory):
+    the step-280/281 HARNESS hashed only evidence refs, omitting polarity -> id collision.
+    Under the CANONICAL definition (hash the Evidence tuple) ids differ. Classification: C.
+
+  'No contradictions remain' is asserted ONLY after the ten tests above were executed.

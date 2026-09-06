@@ -1,0 +1,67 @@
+sequence: 257
+path: docs/knowledgeos/brainstorming/kernel/20260824-164328-pramana-as-epistemic-acquisition-layer-and-claim-provenance.md
+title: "Pramāṇa as Epistemic Acquisition Layer and Claim Provenance"
+date: "2026-08-24"
+bytes: 19500
+model:
+  primary: g1
+  secondary: c1
+source_role: PRIMARY_RESEARCH
+canonical_source: 257
+importance: critical
+confidence: high
+about: >
+  A significant deepening of the corpus's already architecturally-grounded Evidence-Integrity-Pramana
+  correspondence, via a secondary (explicitly disciplined) interpretive source on Indian epistemology.
+  Extracts the six-fold pramana taxonomy (valid means of knowledge acquisition) as six formal epistemic
+  operators, directly answering the corpus's recurring 'what is knowledge / what is not knowledge'
+  question with a concrete acquisition-route architecture. Closes with an exemplary self-applied
+  discipline: explicitly separates the useful pramana taxonomy from the source article's unrelated and
+  unsupported polemical/comparative-religion claims, which are explicitly excluded.
+introduces:
+  - concept: "Six-fold pramana taxonomy reframed as epistemic operators: Pratyaksa (direct perception, P(X)=Observation(X)), Anumana (inference, Y=>X with an inference chain), Upamana (analogy -- explicitly flagged as NOT observation, directly relevant to LLM analogy-based reasoning), Arthapatti (postulation/presumption -- abductive model-building: incompatible A+B observations force postulating C to restore coherence), Anupalabdhi (absence/non-apprehension as evidence), Sabda (testimony, explicitly authority!=truth, testimony's epistemic status depends on the broader accepted-evidence system and must not override empirical evidence)"
+  - concept: "KnowledgeClaim ≠ Proposition: Knowledge = Proposition + Epistemic Justification + Lineage + Validity; full object structure (proposition/source/pramana-acquisition-mode/evidence/inference-chain/assumptions/confidence/counter-evidence/temporal-validity/perspective/authority)"
+  - concept: "Anupalabdhi formalized as Bayesian absence-reasoning with an explicit observability precondition: P(E|H) then observe not-E, update P(H|not-E) -- but absence-of-observation implies absence-of-X ONLY when the absence is itself observable and the expected observation was sufficiently likely; 'I didn't observe X' does not imply 'X does not exist' without that precondition"
+  - concept: "Eleven-row Knowledge-vs-not-knowledge classification table (raw signal=no, observation=candidate evidence, claim=candidate knowledge, inference=derived knowledge candidate, analogy=interpretive support, hypothesis=provisional knowledge, unsupported assertion=no established knowledge, testimony=epistemic input, contradicted claim=requires revision, unknown=explicit non-knowledge, unknowable=epistemic boundary) -- directly answering the sub-arc's recurring not-knowledge question"
+  - concept: "Probability reframed as one measurement of epistemic support, not knowledge itself: an epistemic profile per pramana pathway (e.g. Pratyaksa 0.92, Anumana 0.78, Sabda 0.65, Upamana 0.55, Anupalabdhi 0.81) rather than one collapsed score"
+  - concept: "Epistemic vector P(C)=(p1..p6) per pramana pathway, with a leave-one-out robustness test: does claim C survive removal of any single pathway (C-Sabda, C-Anumana, C-analogy)? Strongest knowledge is that whose support is INDEPENDENTLY CONVERGENT across multiple pathways"
+  - concept: "Convergence(C) = f(independent evidence pathways) proposed as a knowledge-quality metric"
+  - concept: "Pramana added as a distinct tenth lens to the accumulated lens system: 'by what legitimate epistemic route did we arrive at this claim?' -- explicitly filling a gap the prior nine lenses (Dhatu/Zero/Ganesha/Leonardo/Krishna/Shani/Consciousness/Temporal/Hofstadter) did not cover"
+  - concept: "Dynamic epistemic status ladder: Unknown -(observation)-> Evidence -(interpretation)-> Hypothesis -(epistemic support)-> Justified Claim -(independent convergence)-> Stable Knowledge -(repeated validation)-> Robust Knowledge, with an explicit defeater-driven degradation path (new evidence -> defeater -> knowledge degradation) -- knowledge as dynamic epistemic status, not static content"
+  - concept: "Evidence-provenance deepening: evidence must retain the epistemic PROVENANCE of how it became evidence (origin/observer/observation-time/conditions/transformation/epistemic-mode/confidence), with interpretation explicitly excluded from the Evidence record itself, preserving Evidence-records-what-was-observed vs. Evaluation-determines-what-it-means"
+  - concept: "Culminating definition: Knowledge is a proposition whose epistemic lineage, support, scope, temporal validity, and defeaters are explicitly represented; a proposition without epistemic lineage is a claim, not necessarily knowledge"
+  - concept: "Explicit source-discipline triage: PRIMARY/STRONG (pramana concepts, epistemic pathways, debate structure, evidence-vs-assertion distinction) vs. SECONDARY (the author's interpretation) vs. NOT-IMPORT (civilizational/religious superiority claims, claims that ancient texts literally contain modern physics) -- self-labeled as itself an application of Pramana+Shani+Leonardo: what exactly is supported by the source, and what has the interpreter added?"
+defines: []
+refines:
+  - concept: "The corpus's architecturally-grounded Evidence Integrity dimension and its Pramana correspondence (established early in the corpus, classified correspondence-reinforcing, not unresolved_equivalence)"
+    refinement: "Substantially deepens the correspondence with a concrete six-operator taxonomy, formal Anupalabdhi/absence-evidence Bayesian machinery, and an eleven-row knowledge/not-knowledge classification -- strengthening (not creating a new) grounding relationship, consistent with the registry's existing correspondence-reinforcing classification."
+  - concept: "0244's inverse-problem 'what is not knowledge' formulation and 0247/0253/0254/0255's Knowledge Vector variants"
+    refinement: "Supplies a concrete philosophical precedent (Anupalabdhi) for the inverse-statistics/absence-as-evidence approach, and adds an eleventh classification row directly answering the corpus's recurring knowledge-vs-not-knowledge question with a philosophically-grounded taxonomy rather than a purely statistical one."
+contradicts: []
+repeats:
+  - concept: "Authority != Truth"
+    canonical_source: 222
+    novelty: none
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: note that this file (0257) substantially deepens the already-grounded Evidence Integrity <-> Pramana correspondence with a concrete six-operator taxonomy and formal Anupalabdhi absence-evidence machinery; remains correspondence-reinforcing per the existing classification, not logged as a new unresolved_equivalence."
+anchor_test:
+  anchor: "Evidence Integrity dimension (architecturally grounded, Pramana correspondence already noted); 0244's inverse-problem knowledge definition"
+  supports_dimension: "Gita/philosophical model (Nyaya/Indian epistemology pramana taxonomy) directly deepening an already architecturally-grounded corpus dimension with concrete operator formalizations"
+  refines_or_contradicts: "refines/deepens the Evidence Integrity dimension and 0244's inverse-problem approach; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "No formal criteria given for how the Convergence(C) metric would be computed beyond the qualitative leave-one-out robustness description"
+open_questions:
+  - "Whether the ten-lens system (adding Pramana) is ever formally consolidated with the corpus's other lens systems (the 26-lens system, the Ganesha/Leonardo/Krishna/Shani framework from 0238)"
+tier2_triggered: true
+tier2_reason: "Critical deepening of the corpus's architecturally-grounded Evidence Integrity/Pramana dimension: formalizes the six-fold pramana taxonomy as concrete epistemic operators, gives Anupalabdhi a rigorous Bayesian absence-evidence formulation with an explicit observability precondition, and directly answers the sub-arc's recurring knowledge-vs-not-knowledge question with an eleven-row classification; closes with an exemplary self-applied source-discipline triage separating useful epistemology from unsupported polemical claims."

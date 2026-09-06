@@ -1,0 +1,82 @@
+========================================================================================================
+PART 1 — WHICH TESTS ARE EXECUTABLE AGAINST THE REAL KnowledgeOS/EKP? (Evidence Level 5)
+========================================================================================================
+  knowledge-lint : exit=0  ✅ All documents pass.
+  knowledge-graph: exit=0  knowledge-graph: 39 nodes, 70 edges -> docs/knowledge/portal/graph/
+  reproducible   : True
+
+TEST  REAL?     LVL  NOTE
+  E1  YES       5    37 governed docs parsed into (A,R); lint exit 0
+  E2  YES       5    graph output byte-identical across 2 runs
+  E3  NO        0    EKP has no epistemic status field — Sigma NOT OBSERVABLE
+  E4  PARTIAL   5    orphan_document rule exists (missingness kind 4); other 3 kinds NOT OBSERVABLE
+  E5  NO        0    no evidence field in the EKP schema
+  E6  NO        0    no evidence polarity
+  E7  NO        0    no guarded transition; docs are hand-edited
+  E8  PARTIAL   1    git provides history; the platform does not model replay
+  E9  NO        0    authority = trust rank, not origin
+  E10 YES       5    typed edges derived_from/requires present in the real graph
+  E11 NO        0    history not modelled by the platform
+  E12 PARTIAL   5    knowledge-lint IS a policy evaluator (18 rules, 11 error/7 warning)
+  E13 NO        0    no conditional verdicts; lint is 2-valued error/warning
+  E14 PARTIAL   5    authorities.yaml enum enforced; no Authorize() runtime
+  E15 NO        0    schema versioning exists; no authorised change mechanism
+  E16 NO        0    no temporal field anywhere in the schema
+  E17 NO        0    single-node; no propagation
+  E18 NO        0    lint rules not declared independent
+  E19 NO        0    no measurement executor
+  E20 NO        0    no probability space
+  E21 NO        0    no contradiction detection
+  E22 YES       5    supersedes/superseded_by + status:superseded, old doc retained
+  E23 YES       5    lint names the failing rule id in every message
+  E24 NO        0    chain not runnable end-to-end in the real platform
+
+  {'YES': 5, 'NO': 15, 'PARTIAL': 4}   Level-5 tests: 8/24
+
+========================================================================================================
+PART 2 — STATISTICAL REPORTING BY CASE CLASS
+========================================================================================================
+Domain            N  Exact  Mismatch  Blocked
+  Authority       1      1         0        0
+  Contradiction   1      1         0        0
+  EndToEnd        1      1         0        0
+  Evidence        2      2         0        0
+  Explanation     1      1         0        0
+  Governance      2      2         0        0
+  History         1      1         0        0
+  Identity        1      1         0        0
+  K               1      1         0        0
+  Lineage         1      1         0        0
+  Measurement     2      1         0        1
+  Missingness     1      0         1        0
+  Policy          2      2         0        0
+  Provenance      1      1         0        0
+  Replay          1      1         0        0
+  Rules           1      1         0        0
+  Sigma           1      1         0        0
+  Supersession    1      1         0        0
+  Temporal        1      1         0        0
+  Transformation  1      1         0        0
+
+  Confusion over the 36-case corpus (predicted vs observed handling):
+    TP=22 TN=14 FP=0 FN=1   N=37
+    Accuracy =0.973
+    Precision=1.000
+    Recall   =0.957
+    NOTE: FP=0 is the load-bearing number — NO negative control was wrongly Permitted.
+
+========================================================================================================
+PART 3 — CRITICAL FAILURE RULE (10 conditions)
+========================================================================================================
+  [NO   ] 1 K cannot represent a required real state           E1: 6/6 real assertions representable
+  [NO   ] 2 equality produces a known semantic error           E2 PASS
+  [NO   ] 3 replay cannot reconstruct historical state         E8,F10 PASS
+  [NO   ] 4 policy history is lost                             E15,F9,F10 PASS — no overwrite possible
+  [NO   ] 5 unauthorized action is permitted                   F2,F4,F7,F8 all DENY; FP=0
+  [NO   ] 6 contradictory evidence silently collapsed          E6,E21 PASS — both retained
+  [**YES**] 7 missingness silently converted to a value          E4 FAIL: 'not asked' collapses into 'absent'
+  [NO   ] 8 policy behaviour contradicts formal semantics      F1,F3,F5,F6,F11 PASS
+  [NO   ] 9 essential transformation not reproducible          E7,E8 PASS; graph byte-identical
+  [NO   ] 10 real behaviour needs an undefined primitive       30/30 symbols resolved
+
+  CRITICAL FAILURES TRIGGERED: 1  -> ['7 missingness silently converted to a value']

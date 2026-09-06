@@ -1,0 +1,100 @@
+sequence: M0229
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-090000_review-kr-bridge-01-accepted-vary-pi-and-q-next.md
+title: "KR-BRIDGE-01-ZERO-PRESERVATION-2026-09 EXECUTED: a massive four-way contingency table (12,046/164,158/679,604/894,192) positively rejects both Zero⟹Adequate and Adequate⟹Zero as necessity/sufficiency claims; the pooled RD=-0.363 apparent correlation is fully explained by a REDUNDANCY confound (stratified RD→0.000); a genuine self-correcting withdrawal of an initial single-mechanism (exact-factorization) explanation when it failed at one stratum; Q/Π confirmed read-disjoint; KR-ZERO⊥KR-REP-REDUCTION becomes an evidence-supported (not just designed) conclusion; and a disciplined companion Gita study models the lens-vs-machinery boundary correctly — next step: vary Π and Q"
+date: "20260904-090000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: GITA
+  secondary_note: "A companion Gita interpretive study is explicitly praised for refusing to claim 'the Gita contains confounding analysis' — instead maintaining the clean separation 'textual/philosophical lens (suggests a shape of reasoning) vs. experimental machinery (actually detects confounding)' — a second documented instance (after M0213's verse-2.50 rejection) of the anti-reification discipline operating correctly on live research output"
+source_role: PRIMARY
+canonical_source: M0229
+importance: critical
+confidence: high
+about: >
+  Reports the actual executed results of KR-BRIDGE-01-ZERO-PRESERVATION-2026-09 (the definitive
+  falsification-oriented bridge experiment specified at M0226) — the second genuine empirical dataset
+  (after KR-REP-REDUCTION at M0219) for this research programme's central open question: whether
+  Zero and preservation/adequacy are related. The result is a strongly executed, informative negative
+  result: an apparent pooled correlation is shown to be entirely explained by a confound
+  (redundancy), with a genuine mid-experiment self-correction when an initial explanatory mechanism
+  failed to survive stratification, and disciplined governance conclusions throughout.
+introduces:
+  - "THE MASSIVE FOUR-WAY CONTINGENCY TABLE with real counts: Zero+Adequate=12,046; Zero+Inadequate=164,158; Non-Zero+Adequate=679,604; Non-Zero+Inadequate=894,192 — both off-diagonal cells enormous, giving two direct counterexamples: Zero⟹Adequate is FALSE (164,158 Zero+Inadequate cases) and Adequate⟹Zero is FALSE (679,604 Non-Zero+Adequate cases) — 'the experiment does not merely fail to establish a bridge; it POSITIVELY REJECTS necessity and sufficiency in this regime'"
+  - "The central confounding-resolution finding, with precise risk-difference (RD) figures: pooled RD=-0.363 → transformation-stratified RD=-0.291 → transformation+redundancy-stratified RD=0.000 — demonstrating that the apparent pooled Zero/adequacy association is FULLY EXPLAINED by redundancy as a common cause, once properly stratified — the correct statement is 'in this experimental regime, the observed pooled association... is explained by redundancy; no residual Zero-adequacy association was observed after the specified stratification,' explicitly NOT 'Zero and preservation are universally independent'"
+  - "A genuine mid-experiment self-correction, praised as exemplary methodology: an initial single-mechanism 'exact factorization' explanation for the Zero-count pattern was proposed, operationally tested across redundancy strata, and WITHDRAWN when it failed at stratum r=2 (Zero count varies there, breaking the factorization explanation; adequacy is simply uniformly zero) — 'a clean explanatory mechanism was generated, operationally tested, and rejected when it failed to explain all strata... a genuine demonstration that the governance discipline is functioning'"
+  - "The single-informative-stratum limitation, correctly left unrepaired rather than patched post hoc: redundancy strata r=0 (Zero impossible), r=1 (informative — the only stratum actually driving the comparison), r=2 (adequacy uniformly zero), r=3 (Zero saturated) — the redundancy-as-common-cause conclusion is explicitly narrowed from a general causal claim to 'within the tested deduplication regime, redundancy behaves as a common cause of Zero occurrence and inadequacy'"
+  - "Validation of pre-registration discipline via control A1: transformation T_B_lossy was pre-registered to produce adequacy<0.05 but actually measured 0.0916, and was explicitly NOT redefined after seeing the result — preserved as a worked example of 'pre-registered semantic labels ≠ observed empirical behavior'"
+  - "Confirmation that the Q/Π anti-circularity design succeeded exactly as required by M0226: Q(D)=(argmax_source, #distinct tags) reads source/tag fields, while Π(R)=sorted value multiset reads the value field — they share NO field, making the negative bridge result 'substantially more credible' since it cannot trivially arise from Zero and preservation secretly sharing an observable"
+  - "The KR-ZERO⊥KR-REP-REDUCTION decoupling upgraded from a purely designed/governance assumption (M0224) to an EVIDENCE-SUPPORTED research conclusion: 'not as a mathematical theorem, but as a governance/research conclusion supported by the current experimental evidence' — with explicit confirmation that the experiment correctly followed Outcome A discipline (M0226) by NOT inventing a new bridge hypothesis after the negative result"
+  - "A second documented, praised instance of the Gita-material anti-reification discipline operating on live research output (after M0213's verse-2.50 rejection): a companion Gita interpretive study explicitly refuses to claim 'the Gita contains confounding analysis,' instead maintaining a strict separation between 'textual/philosophical lens → suggests a shape of reasoning' and 'experimental machinery → actually detects the confounding' — with stratification, not the Gita reading, remaining the actual scientific procedure"
+  - "A precise wording tightening applied before freezing: 'Redundancy is a common cause of Zero and of inadequacy under dedup transformations' corrected to 'Within the tested deduplication regime, redundancy behaves as a common cause of Zero occurrence and inadequacy' — preventing a regime-specific empirical finding from silently becoming a general causal law, given the scope constraints (one informative stratum, one carrier, one Π, one Q, one principal Zero-producing transformation)"
+  - "A clear, explicitly endorsed next-experiment direction: VARY Π AND Q (both were deliberately held fixed in KR-BRIDGE-01) — because a CONDITIONAL bridge Zero_{T,Π}(S;D)↔Adequacy_Q(D,T) could still exist for some particular (Π,Q) pair even though none appeared for the tested pair; the results explicitly identify M0226's own falsification questions Q4, Q5, and Q10 as still unanswered and pointing toward this next step"
+  - "Explicit governance discipline reconfirmed: 'I would not move to a new algebra, carrier selection, or Vedic-derived operator yet' and 'I would keep the Gita strand exactly where it is: external interpretive lens, never machinery, never kernel primitive'"
+defines: []
+refines:
+  - "M0226's KR-BRIDGE-01 design: confirmed as correctly executed, producing Outcome-A-type results (confounded/no-residual-association) per that document's own four-outcome-class framework"
+  - "M0224's KR-ZERO⊥KR-REP-REDUCTION governance decoupling: upgraded from a designed assumption to an evidence-supported research conclusion"
+contradicts:
+  - "The reviewed draft's phrase 'redundancy is a common cause of Zero and of inadequacy under dedup transformations' (too general) — tightened to scope-bounded wording"
+repeats:
+  - "The document's own body is internally duplicated verbatim (lines 1-275 repeated as 276-550) — a copy-paste artifact, distinct from manifest-DUPLICATE files, consistent with the pattern already seen at M0184"
+bridge_candidates:
+  - "Whether a follow-up experiment varying Π and Q (as recommended) was ever executed"
+  - "Whether M0226's falsification questions Q4, Q5, and Q10 were ever separately answered"
+mathematical_content: >
+  Delivers the second genuine large-scale empirical dataset in this research programme (after
+  KR-REP-REDUCTION at M0219): a massive four-way contingency table with real counts positively
+  rejecting both directions of a Zero-adequacy implication, a precise stratified risk-difference
+  analysis (RD: -0.363→-0.291→0.000) isolating redundancy as the confounding common cause, and a
+  genuine, evidence-driven withdrawal of an initial explanatory mechanism when it failed to survive
+  stratification — a rigorous applied-statistics result, not merely a qualitative negative finding.
+gita_content: >
+  A second documented, exemplary instance of the anti-reification discipline operating correctly on
+  live research output: a companion Gita interpretive study is praised specifically for refusing to
+  claim the Gita itself performs confounding analysis, maintaining instead a strict lens-vs-machinery
+  separation — corroborating (independently, on a new document) the discipline already observed at
+  M0213.
+kernel_content: >
+  The second major empirical result of the Zero-algebra/representation-reduction research programme,
+  producing a rigorous, statistically grounded negative-but-informative finding that strengthens
+  (with actual evidence, not just a governance decision) the decoupling of KR-ZERO from
+  KR-REP-REDUCTION, while correctly declining to overgeneralize the redundancy-confound finding
+  beyond its narrow tested regime and correctly identifying the specific next experiment (varying Π
+  and Q) needed to test whether any conditional bridge remains possible.
+registry_updates:
+  - "MAJOR: KR-BRIDGE-01 executed — massive four-way contingency table positively rejects Zero⟹Adequate and Adequate⟹Zero as necessity/sufficiency claims in the tested regime"
+  - "Redundancy identified and confirmed (via stratified RD: -0.363→-0.291→0.000) as the confounding common cause of the apparent pooled Zero-adequacy correlation"
+  - "Genuine self-correcting withdrawal of an initial single-mechanism (exact-factorization) explanation when it failed to survive one redundancy stratum"
+  - "KR-ZERO⊥KR-REP-REDUCTION upgraded from designed assumption to evidence-supported research conclusion"
+  - "Second documented instance of disciplined Gita-material lens-vs-machinery separation on live research output"
+  - "Clear next-step direction: vary Π and Q to test for a conditional bridge, per M0226's own unanswered falsification questions"
+anchor_test:
+  anchor: true
+  supports_dimension: "Four-way contingency table rejecting both implication directions; redundancy-confound resolution via stratified RD; self-correcting mechanism withdrawal; evidence-supported KR-ZERO⊥KR-REP-REDUCTION; disciplined Gita companion study; vary-Π-and-Q next step"
+  refines_or_contradicts: "refines (M0226's design, now executed; M0224's governance decoupling, now evidence-supported); contradicts (an overgeneralized 'redundancy is a common cause' phrasing, tightened to the tested regime)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Zero+Adequate=12,046; Zero+Inadequate=164,158; Non-Zero+Adequate=679,604; Non-Zero+Inadequate=894,192\" — the four-way table"
+  - "\"Pooled RD = −0.363 → transformation-stratified −0.291 → transformation + redundancy = 0.000.\""
+  - "\"A clean explanatory mechanism was generated, operationally tested, and rejected when it failed to explain all strata.\""
+  - "\"KR-ZERO ⊥ KR-REP-REDUCTION, not as a mathematical theorem, but as a governance/research conclusion supported by the current experimental evidence.\""
+  - "\"Vary Π and Q\" — the identified next experimental step"
+undefined_concepts: []
+open_questions:
+  - "Was a follow-up experiment varying Π and Q ever executed?"
+  - "Were falsification questions Q4, Q5, and Q10 (from M0226) ever separately answered?"
+tier2_triggered: true
+tier2_reason: >
+  Reports the actual executed results of the definitive KR-BRIDGE-01 falsification experiment
+  specified at M0226: a massive four-way contingency table positively rejecting both directions of
+  the Zero-adequacy implication, a rigorous stratified statistical analysis isolating redundancy as
+  the confounding common cause, and a genuine, self-correcting withdrawal of an initial explanatory
+  mechanism — the second major empirical result (after M0219) in this research programme, upgrading
+  the KR-ZERO/KR-REP-REDUCTION decoupling from a designed assumption to an evidence-supported
+  conclusion while correctly scoping the finding and identifying the precise next experiment needed.

@@ -1,0 +1,84 @@
+sequence: M0157
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180002_research-mandate-reiter-knowledgeos-derivation-prompt.md
+title: "Research mandate: Reiter/KnowledgeOS implementation derivation prompt"
+date: "20260902-180002"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0157
+importance: critical
+confidence: high
+about: >
+  A meta-document: a disciplined "research mandate" prompt (not itself a research result) to be
+  given to a fresh Claude session for investigating Reiter's Situation Calculus against KnowledgeOS,
+  timestamped earliest (18:00:02) among the Reiter sub-thread documents (M0155 extraction 18:00:04,
+  M0145 review 18:00:14, M0146 final derivation 18:00:22) — this is the genesis prompt that produced
+  that sub-thread. CRITICAL DISCOVERY: this document references an entirely different, previously
+  unseen numbered-step research thread ("Step 285" through "Step 291+") with its own terminology
+  (Qualify, O/T, G1 gap) not otherwise encountered anywhere in this reconstruction's read order.
+introduces:
+  - "Reveals a THIRD parallel research thread in this project's history, distinct from both the KR-CONTR/Composition thread (M0109-M0137) and the extraction-review-artifact KR-integration thread (M0136-M0156): a numbered 'Step' sequence — Step 285 (canonical state reconciliation), Step 286 (philosophical-source hypothesis programme), Step 287 (equality/identity/observability), Step 288 (equality audit), Step 289 (bootstrap/cycle audit), Step 290 (equality corpus repair), Step 291+ (this Reiter mandate) — none of these Step-numbered documents have been located anywhere in this reconstruction's read order"
+  - "New unresolved terminology from that Step-thread, not otherwise present in this reconstruction's tracked vocabulary: 'Qualify' (an unresolved operation/boundary concept, candidate readings include precondition/action/knowledge-producing-transition/epistemic-test/boundary/declared-terminus — deliberately left undecided), 'O/T' (an unresolved Observation/Time-related pairing, context suggests Observation chained with something else — 'W→O→E→Qualify→Assertion→K'), and 'G1' (a named gap identifier in that thread's own gap-register, distinct from this reconstruction's own gap/TODO vocabulary)"
+  - "A ten-item mandatory falsification test list (P1-P10): explicit propositions to actively try to REFUTE rather than confirm — Situation=KnowledgeOS-state, Action=KnowledgeOS-event, Reiter's-δ-completely-defines-KnowledgeOS-δ, Reiter-solves-Qualify, Reiter-resolves-equality, Reiter-makes-K_t-history-complete, Reiter-makes-provenance-unnecessary, Reiter's-knowledge-operator-equals-KnowledgeOS-Knowledge, Golog-directly-usable-as-workflow-model, progression-sufficient-for-state-evolution — with the explicit instruction 'a failed correspondence is a valuable result'"
+  - "A disciplined nine-stage epistemic pipeline for evaluating any external-source claim: source statement → formal interpretation → candidate correspondence → independent corpus test → falsification/confirmation → implementation usefulness → architecture candidate → governance → canonicalization — with the explicit rule 'correspondence ≠ derivation; formal analogy ≠ architectural truth; implementation usefulness ≠ canonical status'"
+  - "A candidate KnowledgeOS Operation contract schema: identity/precondition/positive-effects/negative-effects/persistence-policy/authority-requirement/evidence-requirement/provenance-effect/resulting-state — explicitly requiring each field to be tagged REITER-DERIVED / CORPUS-DERIVED / SYNTHESIS / NEW-PROPOSAL rather than assumed"
+  - "A required status vocabulary for implementation candidates: DERIVED / CORROBORATED / SUPPORTED / BOUNDED / OPEN / REFUTED / RESEARCH-ONLY / PROPOSAL — explicitly excluding CANONICAL 'unless an existing governance act already makes it canonical'"
+  - "A 14-file deliverable structure (01-source-formal-model.md through 14-governance-impact.md) plus executable mathematical audits (successor-state consistency, persistence, conflicting effects, precondition failure, composition, idempotence, determinism, regression/progression equivalence, history/state collision, observational equivalence)"
+defines: []
+refines:
+  - "Confirms this document is the genesis prompt for the entire Reiter sub-thread already tracked (M0145 review, M0146 final derivation, M0155 extraction/source) — its own recommended investigation order (Situation≠State first, then δ/frame-problem, then Qualify/Observation/Sensing, then Regression/Progression, then Equality/Identity, then Golog/composition, then stochastic actions, then implementation candidates) closely matches the structure actually followed across M0145/M0146/M0155"
+  - "Explicitly anticipates and pre-authorizes the exact rejections later delivered in M0145/M0146: 'do NOT translate Situation=K_t without qualification' (matches M0145's/M0146's K_t≠H_t), 'δ is not automatically solved' (matches M0146's own status hedging before its overclaim), 'the Reiter book must never become the authority for KnowledgeOS architecture' (matches the established rejection-table discipline seen across every extraction in this sub-thread)"
+contradicts:
+  - "This document's own explicit discipline (mandatory falsification tests P1-P10, explicit REITER-DERIVED/CORPUS-DERIVED/SYNTHESIS tagging requirement, the ban on CANONICAL status without governance) appears NOT to have been fully honored by M0146 (the 'FINAL DERIVATION' document downstream in this same sub-thread): M0146 marks composition (choice/iteration) '[DERIVED]' and claims it is 'fully specified by the Situation Calculus' without the falsification-test discipline or REITER-DERIVED/SYNTHESIS tagging this mandate explicitly requires — reinforcing (from a different angle) the M0146 tier2 finding already recorded: that document's status escalation relative to M0145 may also represent a departure from the very discipline this genesis mandate (M0157) laid down for the whole sub-thread"
+repeats: []
+bridge_candidates:
+  - "CORRECTED at M0188 (self-caught): the Step-285-290 thread was NOT previously unseen in this reconstruction as a whole — already located and flagged critical/tier2 at M0050 (an earlier window), which reviews Steps 285-290 in detail. Steps 285-290 themselves remain unlocated as standalone documents; only M0050's review of them exists."
+  - "Whether any of the Step-285 through Step-290 documents (canonical state reconciliation, philosophical-source hypothesis programme, equality/identity/observability, equality audit, bootstrap/cycle audit, equality corpus repair) exist anywhere in this reconstruction's 282-file corpus — not located under this M-numbering; may belong to a different lane/directory entirely (paralleling the M0106/M0111/M0135/M0137 discovery of the adjacent docs/knowledgeos/research/ codebase)"
+  - "Whether 'Qualify', 'O/T', and 'G1' are ever reconciled with this reconstruction's own tracked vocabulary (Boundary, Contr, Zero, δ, Sat) — genuinely new unresolved terms from an apparently distinct research lineage"
+  - "Whether the 14-file deliverable structure (01-source-formal-model.md ... 14-governance-impact.md) was ever actually produced, and if so where it lives in the repository"
+  - "Whether the P1-P10 falsification tests were actually run and their results recorded — M0145/M0146 do not explicitly reference this P1-P10 numbering, though their content substantively addresses most of the same propositions"
+mathematical_content: >
+  Contains no new mathematical derivations of its own — it is a prompt/methodology document
+  specifying what mathematical audits (successor-state consistency, regression/progression
+  equivalence, etc.) a future investigation should perform.
+gita_content: null
+kernel_content: >
+  Functions as the disciplined genesis mandate for the entire Reiter/Situation-Calculus sub-thread,
+  and in doing so reveals that this reconstruction's corpus intersects with at least one further,
+  entirely unexplored research lineage (the Step-285-291 sequence) carrying its own unresolved
+  terminology (Qualify, O/T, G1) not otherwise present anywhere in this reconstruction's tracked
+  vocabulary.
+registry_updates:
+  - "MAJOR: reveals a third parallel research thread (Step 285-291+) with its own terminology (Qualify, O/T, G1) not located anywhere else in this reconstruction's read order — a genuine corpus-scope discovery, structurally similar to (but distinct from) the M0106/M0111/M0135/M0137 discovery of the adjacent docs/knowledgeos/research/ codebase"
+  - "Confirms this document is the genesis prompt for the M0145/M0146/M0155 Reiter sub-thread"
+  - "Notes a possible discipline gap between this mandate's explicit falsification/tagging requirements and M0146's subsequent status-escalation overclaim (already flagged as a tier2 finding at M0146)"
+anchor_test:
+  anchor: true
+  supports_dimension: "Reveals the Step-285-291 parallel research thread and its unresolved Qualify/O-T/G1 terminology; genesis prompt for the Reiter sub-thread; falsification-test methodology"
+  refines_or_contradicts: "refines (genesis-prompt confirmation); contradicts (mildly, discipline-gap note re: M0146)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"285 Canonical state reconciliation / 286 Philosophical-source hypothesis programme / 287 Equality / identity / observability / 288 Equality audit / 289 Bootstrap/cycle audit / 290 Equality corpus repair / 291 Reiter / situation calculus\" — the Step-numbered lineage, none located elsewhere in this reconstruction"
+  - "\"The current G1 status of Qualify remains unless this research genuinely closes it.\" — confirming Qualify/G1 as pre-existing, unresolved terms from that other thread"
+  - "\"A failed correspondence is a valuable result.\" — the mandate's own falsification-first discipline"
+undefined_concepts:
+  - "Qualify — deliberately left with six candidate readings, none selected"
+  - "O/T — referenced only via the chain W→O→E→Qualify→Assertion→K, exact meaning not given in this document"
+  - "G1 — named as a gap identifier with no definition given here"
+open_questions:
+  - "Where do the Step-285 through Step-290 documents live, if anywhere, in this reconstruction's corpus or the adjacent docs/knowledgeos/research/ tree?"
+  - "Was the 14-file Reiter research-directory deliverable ever produced?"
+tier2_triggered: true
+tier2_reason: >
+  Reveals a third, previously unencountered parallel research thread (Step 285-291+) carrying its
+  own unresolved terminology (Qualify, O/T, G1) not present anywhere else in this reconstruction's
+  tracked vocabulary — a genuine corpus-scope discovery on the same order of significance as the
+  earlier discovery of the adjacent docs/knowledgeos/research/ codebase (M0106/M0111/M0135/M0137).

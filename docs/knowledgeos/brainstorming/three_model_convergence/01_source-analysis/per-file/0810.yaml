@@ -1,0 +1,181 @@
+sequence: 810
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-020345_step_184_the-epistemic-gap-experiment.md
+title: "Step 184 -- The Epistemic Gap Experiment (MAJOR SYNTHESIS MILESTONE, delivers 0809's promised Epistemic Gap formalization): Delivers the Three-State Formalism Established(E⊢P)≠Inferable(E,A⊢P)≠Unknown(E⊬P) and the AI-Danger Diagnosis (LLM 'The Decision Was Probably Made Because...' Transforms Inference Into HistoricalFact) -- Delivers Six Named Types of Unknown (NotObserved/NotRecorded/NotAccessible/Conflicted/NotEvaluated/Indeterminate) -- Delivers 'Narrative Completeness Must Never Outrank Epistemic Correctness' (Explicitly Rejecting AI-Generated Rationale-Filling) -- Delivers 'Epistemic Debt' (=Importance×Recoverability×Missingness, Explicitly a Research Model) -- Delivers GovernanceStatus≠EpistemicCompleteness (a Decision Can Be Valid∧PoorlyDocumented) -- Delivers the Multi-Dimensional Proposition Tuple Replacing 'One Giant Truth Score' -- Delivers the AI Agent's Contract ('Never Upgrade an Epistemic State Without an Explicit Evidential or Authorized Transition,' Three Named Forbidden Transitions Explicitly Said to Eliminate Many Classes of AI Hallucination) -- Opens Step 185's 'Wrong vs. Changed' Question (Correction≠Change≠Recontextualization≠Refinement)"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily mathematical/statistical/DDD epistemic-gap formalization; re-walks all four Gita chapters specifically for epistemic-gap connections without introducing new Gita textual content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 810
+importance: critical
+confidence: high
+about: >
+  Directly continues 0809, opening "we now test one of the most important consequences of Steps 1-183:
+  what should KnowledgeOS do when the historical reasoning chain is incomplete? This is not an edge case.
+  It is normal in real organizations," boxed: "can KnowledgeOS distinguish what is known, what can be
+  inferred, and what is genuinely unknown?"
+
+  **§184.1 delivers the three-state formalism**: **Established** (`E⊢P`, sufficient preserved evidence
+  supports the proposition), **Inferable** (`E,A⊢P`, derivable from existing information plus explicit
+  assumptions `A`), **Unknown** (`E⊬P`, no justified inference closes the gap), boxed
+  **`Established≠Inferable≠Unknown`**, "a fundamental KnowledgeOS distinction."
+
+  **§184.2-184.6 delivers the AI-danger diagnosis**: a conventional LLM's "the decision was probably made
+  because..." dangerously transforms `Inference` into something sounding like `HistoricalFact`. Worked
+  through a concrete example (a 2026 Nexus migration approval with recorded evidence but no recorded
+  rationale; an AI's plausible EOS-related inference must remain `Hypothesis≠HistoricalReason`, with the
+  system representing `Rationale=Unknown` unless direct evidence exists). Delivers the strict semantic
+  boundary `Fact, Determination, Inference, Hypothesis, Unknown` as **different epistemic categories, not
+  confidence levels**, and **the statistical safeguard**: an LLM's `Confidence=0.95` must never be allowed
+  to upgrade `Unknown→Established`, "one of the most important statistical safeguards." Delivers **the
+  Bayesian-insufficiency principle**: `P(Rationale=EOS|Evidence)` is useful for investigation but does not
+  establish `Rationale_historical=EOS`, boxed: **"probabilistic inference may guide investigation, but
+  must not silently become provenance."**
+
+  **§184.7-184.9 delivers the DDD framing**: an aggregate invariant can require a Decision have an
+  authorized decision-maker, but cannot retroactively require "every historical Decision must have a
+  complete recorded rationale" if that was never historically enforced -- boxed **"KnowledgeOS must
+  support legacy incompleteness."** Delivers **"missing information is itself information"** (a further
+  Zero-lens result): `Rationale=Unknown` should be an explicit `EpistemicStatus=Unknown`, never a bare
+  `null`/`N/A`/"probably X." Delivers **six named types of unknown**: `NotObserved, NotRecorded,
+  NotAccessible, Conflicted, NotEvaluated, Indeterminate`, worked through a contrasting example (Architecture
+  Board rejecting option B: `Rationale=NotRecorded` is materially different from `Conflicted` or
+  `NotAccessible` -- "a future agent needs to know which situation it faces").
+
+  **§184.11-184.13 delivers the reconstruction-with-gaps model**, extending 0809: `Reconstruct(D)` must
+  return `Gap(D)` alongside reconstructed elements, formalized `Reconstruction=Established+Inferable+
+  Unknown+Conflicted`, with the reconstruction graph explicitly displaying `[JUSTIFICATION NOT RECORDED]`
+  as a node rather than silently connecting Determination to Decision. **Delivers the explicitly rejected
+  dangerous alternative**: a system that fills the hole with "AI-generated rationale" to "produce a
+  beautiful narrative" that "is also potentially false" -- boxed **"narrative completeness must never
+  outrank epistemic correctness."**
+
+  **§184.14-184.17 delivers the central AI governance principle**: an AI performing historical
+  reconstruction should prefer "I cannot establish why" over "the likely reason was..."; but the SAME
+  evidence supports different operations depending on task semantics -- Historical reconstruction
+  (`E→EstablishedHistoricalClaim` only when justified), Investigation (`E→Hypotheses`), Prediction
+  (`E→P(FutureEvent)`), Recommendation (`E→SuggestedAction`) -- treated as "different bounded contexts,"
+  "pure DDD thinking." Delivers **"'knowledge' is therefore not one aggregate"**: distinguishes
+  `HistoricalKnowledge` ("Architecture Board approved migration"), `CurrentKnowledge` ("migration is
+  currently approved"), `DerivedKnowledge` ("migration probably happened"), and `NormativeKnowledge`
+  ("migration should happen") as genuinely non-collapsible categories, explicitly named a discovery
+  "probably more important than adding another technical component" given the overloaded word
+  "Knowledge" itself needs a full ubiquitous-language treatment (Observation/Evidence/Claim/Determination/
+  Decision/Rule/Policy/Hypothesis/Recommendation/Unknown).
+
+  **§184.18-184.21 re-walks all four Gita chapters specifically for epistemic-gap connections**: Chapter 1
+  (Arjuna's crisis begins because he cannot move from Situation to Action -- "the correct response is not
+  to pretend certainty exists," mapping to Unknown remaining visible); Chapter 2 (what is known now is not
+  necessarily what was known then, so a historical epistemic gap can persist even when today's answer seems
+  obvious); Chapter 3 (`Unknown` does not necessarily mean `NoAction` -- an organization may legitimately
+  proceed under acknowledged incompleteness, "we do not know X, but given constraints Y, we will proceed,"
+  and that decision should itself be recorded); Chapter 4, **explicitly named "perhaps the strongest
+  Chapter 4 connection"**: since knowledge can be lost through transmission, `CurrentRecord` may not
+  contain everything from the original context, so `KnowledgeGap` "can be historically legitimate" and
+  should be preserved "rather than reconstruct a fictional continuity."
+
+  **§184.22-184.24 delivers "epistemic debt,"** analogous to technical debt: if an important decision's
+  `Rationale=Unknown`, the organization may have incurred `EpistemicDebt` -- but explicitly not every
+  unknown is debt (a genuinely `Indeterminate` unknown carries no debt; an important but merely
+  `NotRecorded` unknown may). Delivers the conceptual (explicitly not-yet-production) formula
+  **`EpistemicDebt=Importance×Recoverability×Missingness`**, and **a new proactive KnowledgeOS role**:
+  identifying epistemic gaps before they become organizational problems (e.g. flagging "this architecture
+  decision is binding, but its evidence chain is incomplete" as valuable governance information).
+
+  **§184.25-184.27 delivers the file's central non-implication result**: incomplete rationale does **not**
+  automatically invalidate a decision -- two separate questions (historical validity: was it actually
+  authorized? vs. epistemic completeness: can we reconstruct why?) mean a decision can be
+  `Valid∧PoorlyDocumented`, boxed **`GovernanceStatus≠EpistemicCompleteness`**, explicitly extending
+  0807's `GovernanceAuthority≠EpistemicAuthority` "very strong conceptual extension." Delivers **the
+  multi-dimensional proposition tuple**, boxed: **`P=⟨Content,Context,Time,Provenance,EpistemicStatus,
+  GovernanceStatus,Authority⟩`** -- explicitly "not one giant truth score," and a conceptual
+  `KnowledgeAssertion` object model contrasting a simplistic value/confidence/source structure against a
+  richer proposition/boundedContext/temporalScope/provenance/epistemicStatus/authorityContext/
+  governanceStatus/relations structure, explicitly not yet a database schema.
+
+  **§184.29 delivers the AI agent's contract**, boxed: **"never upgrade an epistemic state without an
+  explicit evidential or authorized transition"** -- three named forbidden transitions:
+  `Unknown↛Established` merely because an LLM generated a plausible answer, `Hypothesis↛HistoricalFact`
+  without evidence, `Recommendation↛Decision` without governance authority -- explicitly claimed: **"these
+  three rules alone would eliminate many classes of AI hallucination."**
+
+  **§184.30 delivers the Step 184 verdict**, boxed: **"an epistemic gap is a first-class state, not a
+  defect to be hidden,"** with three explicitly protected transitions boxed: **`Inference≠Fact`**,
+  **`Confidence≠Truth`**, **`Authorization≠Evidence`** -- "this strengthens our earlier architecture
+  considerably."
+
+  **Closes opening "Step 185 — Can KnowledgeOS distinguish 'wrong' from 'changed'?,"** posing a proposition
+  observed as `P_2025=X` and later `P_2026=Y`, distinguishing four fundamentally different explanations:
+  did the system discover `X` was wrong (Correction)? did reality legitimately change (Change)? did the
+  bounded context's meaning of `P` shift (Recontextualization)? or was the original observation simply
+  incomplete (Refinement)? boxed: **`Correction≠Change≠Recontextualization≠Refinement`**. No actual
+  repository implementation occurs within this file itself; every state, tuple, and contract remains a
+  conceptual specification pending Step 185's four-way distinction.
+introduces:
+  - concept: "The three-state formalism Established(E⊢P)/Inferable(E,A⊢P)/Unknown(E⊬P), boxed Established≠Inferable≠Unknown"
+  - concept: "The AI-danger diagnosis: LLM inference language ('probably made because...') dangerously transforming Inference into HistoricalFact"
+  - concept: "The strict semantic boundary Fact/Determination/Inference/Hypothesis/Unknown as distinct epistemic categories, not confidence levels"
+  - concept: "The statistical safeguard: LLM confidence scores must never upgrade Unknown→Established"
+  - concept: "'Probabilistic inference may guide investigation, but must not silently become provenance'"
+  - concept: "'KnowledgeOS must support legacy incompleteness' (a DDD aggregate cannot retroactively require historical rationale that was never historically enforced)"
+  - concept: "'Missing information is itself information'; six named types of unknown (NotObserved/NotRecorded/NotAccessible/Conflicted/NotEvaluated/Indeterminate)"
+  - concept: "Reconstruction=Established+Inferable+Unknown+Conflicted; the reconstruction graph explicitly displaying [JUSTIFICATION NOT RECORDED] as a node"
+  - concept: "The rejected dangerous alternative (AI-generated rationale filling gaps) and 'narrative completeness must never outrank epistemic correctness'"
+  - concept: "Task-semantics-dependent evidence use: historical reconstruction/investigation/prediction/recommendation as distinct bounded contexts over the same evidence"
+  - concept: "'Knowledge is therefore not one aggregate': HistoricalKnowledge/CurrentKnowledge/DerivedKnowledge/NormativeKnowledge as non-collapsible categories"
+  - concept: "'Epistemic debt' = Importance×Recoverability×Missingness, explicitly a research model; KnowledgeOS's proactive gap-identification role"
+  - concept: "GovernanceStatus≠EpistemicCompleteness (a decision can be Valid∧PoorlyDocumented), extending 0807's GovernanceAuthority≠EpistemicAuthority"
+  - concept: "The multi-dimensional proposition tuple P=⟨Content,Context,Time,Provenance,EpistemicStatus,GovernanceStatus,Authority⟩, explicitly replacing 'one giant truth score'"
+  - concept: "The AI agent's contract: never upgrade an epistemic state without an explicit evidential or authorized transition, with three named forbidden transitions explicitly said to eliminate many classes of AI hallucination"
+  - concept: "The Step 184 verdict: epistemic gap as a first-class state, plus three protected transitions (Inference≠Fact, Confidence≠Truth, Authorization≠Evidence)"
+  - concept: "Step 185's opening: the four-way Correction≠Change≠Recontextualization≠Refinement distinction"
+defines:
+  - concept: "The three-state epistemic formalism"
+    definition: "Established(E⊢P): the preserved evidence directly and sufficiently supports proposition P. Inferable(E,A⊢P): P is not directly established but can be derived from the preserved evidence E together with explicit, stated assumptions or inference rules A. Unknown(E⊬P): the preserved information is insufficient and no justified inference closes the gap. These are not degrees of confidence on a single scale but qualitatively distinct epistemic categories that must never be silently collapsed into one another -- particularly, an AI-generated inference must never be presented or stored in a way indistinguishable from an established historical fact"
+  - concept: "Epistemic debt"
+    definition: "Analogous to technical debt: when an important decision or proposition lacks recorded rationale (Rationale=Unknown), the organization has incurred a form of epistemic debt proportional to how important the missing information is, how recoverable it might still be, and how much is actually missing (conceptually Importance×Recoverability×Missingness) -- explicitly not every unknown constitutes debt: a genuinely Indeterminate unknown (fundamentally unknowable) carries none, while an important but merely NotRecorded unknown may carry substantial debt; this remains an explicitly unvalidated research model, not a production metric, pending further experimentation"
+  - concept: "GovernanceStatus≠EpistemicCompleteness"
+    definition: "Whether a decision was legitimately and properly authorized (its governance/historical validity) is a completely separate question from whether the reasoning behind it can now be fully reconstructed (its epistemic completeness) -- a decision can simultaneously be Valid (properly authorized at the time) and PoorlyDocumented (its underlying rationale was never adequately recorded), and KnowledgeOS must never conflate an incomplete evidence trail with an invalid or illegitimate decision, extending 0807's GovernanceAuthority≠EpistemicAuthority into the temporal/completeness dimension specifically"
+refines:
+  - concept: "0809's opening of Step 184 (closing Step 183) and its seven candidate responses to a recorded reasoning gap"
+    refinement: "DELIVERED: the three-state formalism, six named types of unknown, the reconstruction-with-gaps model explicitly displaying holes, and the Step 184 verdict naming epistemic gap a first-class state -- effectively selecting and formalizing option 7 ('preserve the gap permanently') from 0809's list as the governing answer, combined with option 2 (mark unknown) via the six-way unknown-type taxonomy"
+  - concept: "0805's 'hallucination boundary' (¬Evidence(C)⇏Evidence(¬C)) and 0802's AI-hallucination-prevention discipline"
+    refinement: "Extended into a third, distinct hallucination-prevention mechanism specifically targeting historical-reconstruction inference: the AI agent's contract's three named forbidden transitions (Unknown↛Established, Hypothesis↛HistoricalFact, Recommendation↛Decision), explicitly claimed sufficient to 'eliminate many classes of AI hallucination' -- a third member of the arc's growing family of concrete, named hallucination-prevention invariants"
+  - concept: "0807's GovernanceAuthority≠EpistemicAuthority and the broader Epistemic/Governance separation family"
+    refinement: "Extended with a new orthogonal pair specifically about completeness/documentation rather than authority: GovernanceStatus≠EpistemicCompleteness, explicitly named 'a very strong conceptual extension' of the established principle"
+  - concept: "The arc's repeated Unknown≠False family (0802, 0805, 0809) and 0805's four-situation conflict taxonomy"
+    refinement: "Substantially refined by decomposing 'Unknown' itself into six distinct named subtypes (NotObserved/NotRecorded/NotAccessible/Conflicted/NotEvaluated/Indeterminate), a genuine deepening beyond the prior binary Unknown/not-Unknown treatment"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 185's actual formalization distinguishing Correction from Change from Recontextualization from Refinement when a proposition's recorded value differs across two time points."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the three-state formalism (Established≠Inferable≠Unknown) and the six named types of unknown as the arc's most granular epistemic-gap taxonomy to date."
+  - "dimension-registry.md: record 'narrative completeness must never outrank epistemic correctness' and the AI agent's contract's three named forbidden transitions (explicitly claimed to eliminate many classes of AI hallucination) as directly actionable AI-safety specifications."
+  - "dimension-registry.md: record 'epistemic debt' (=Importance×Recoverability×Missingness) as a novel, directly reusable governance concept, explicitly flagged as a research model pending validation."
+  - "dimension-registry.md: record GovernanceStatus≠EpistemicCompleteness as a new orthogonal extension of the arc's Epistemic/Governance separation family, and the multi-dimensional proposition tuple replacing 'one giant truth score' as a directly applicable data-modeling principle."
+anchor_test:
+  anchor: "0809's closing seven candidate responses to a recorded reasoning gap; 0802's and 0805's AI-hallucination-prevention disciplines; 0807's GovernanceAuthority≠EpistemicAuthority; the arc's repeated Unknown≠False family"
+  supports_dimension: "Delivers the full Epistemic Gap formalization directly answering 0809's closing question, effectively selecting and combining two of its seven candidate responses (preserve permanently + mark with typed unknown) into a coherent governing model. Extends the arc's hallucination-prevention family with a third, distinct concrete mechanism (the AI agent's contract's three forbidden transitions), explicitly claimed sufficient to eliminate many classes of AI hallucination. Extends 0807's Epistemic/Governance separation with a new orthogonal pair specifically about completeness. Substantially refines the arc's Unknown≠False family by decomposing Unknown into six distinct named subtypes. Delivers 'epistemic debt' as a novel governance concept and the multi-dimensional proposition tuple replacing a single truth score. Re-walks all four Gita chapters specifically for epistemic-gap connections, maintaining the arc's disciplined, non-literalizing engagement with the source material throughout. Opens Step 185 with a well-posed four-way distinction problem"
+  refines_or_contradicts: "directly delivers and extends 0809's closing question; extends the arc's hallucination-prevention family with a third distinct mechanism; extends 0807's Epistemic/Governance separation with a completeness-specific orthogonal pair; substantially refines the arc's Unknown≠False family; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§184.13's boxed 'narrative completeness must never outrank epistemic correctness,' immediately following the explicitly rejected AI-generated-rationale-filling diagram, is directly checkable evidence of a concrete AI-safety principle grounded in a worked negative example."
+  - "§184.29's boxed AI agent's contract with its three named forbidden transitions, explicitly claimed to 'eliminate many classes of AI hallucination,' is directly quotable evidence of a concrete, actionable specification extending the arc's hallucination-prevention family."
+  - "§184.10's worked contrast (Rationale=NotRecorded vs. Conflicted vs. NotAccessible for the same Architecture Board rejection) is directly checkable evidence that the six-way unknown-type taxonomy carries genuine, distinguishable semantic content rather than being an arbitrary enumeration."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 185's Correction/Change/Recontextualization/Refinement four-way distinction was ever actually formalized, and how it reconciles with 0805's earlier four-situation taxonomy (Unknown/Contradiction/Supersession/Correction) and 0806's nine-category ConflictType taxonomy."
+  - "Whether 'epistemic debt' was ever developed beyond its explicitly-flagged research-model status into a validated governance mechanism, and whether it was ever reconciled with the arc's other unvalidated quantitative constructs explicitly demoted at 0808 (e.g. NumericalTrustScore)."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the full Epistemic Gap formalization directly answering 0809's closing question, including the three-state formalism, six named types of unknown, and the reconstruction-with-gaps model. Extends the arc's AI-hallucination-prevention family with a third distinct, concrete mechanism (the AI agent's contract), explicitly claimed sufficient to eliminate many classes of AI hallucination. Delivers 'narrative completeness must never outrank epistemic correctness' as a sharply stated principle grounded in a worked negative example. Extends 0807's Epistemic/Governance separation with GovernanceStatus≠EpistemicCompleteness and delivers the multi-dimensional proposition tuple replacing a single truth score. Introduces 'epistemic debt' as a novel, explicitly-flagged research concept. Re-walks all four Gita chapters specifically for epistemic-gap connections while maintaining the arc's established non-literalizing discipline throughout. Opens Step 185 with a well-posed four-way distinction problem."

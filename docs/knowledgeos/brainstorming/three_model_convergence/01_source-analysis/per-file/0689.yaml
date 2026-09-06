@@ -1,0 +1,257 @@
+sequence: 689
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-123048_step-104-governance-conformance.md
+title: "Step 104 -- Delivers a Rich, Genuinely Valuable Governance-Executability Model (Governance≠Documents, PolicyIntent≠PolicyControl, WorkflowComplete≠GovernanceComplete, Semantic-Classification-Overrides-Informal-Label, AIInference⇏GovernanceRuleChange, Governance Drift Extending 0684/0686, the 'Why Was This Allowed/Blocked' Explainability Test) -- CONFIRMS 'Softwareeinführungsprozess'/'ITCM' and 'Nexus' as GENUINE Recurring Real-World Governance Context (Not Corpus-Internal Fiction), First Introduced at Exactly Step 101 and Persisting Through Steps 103-104 (and, Per a orpus-Wide Grep, Later Into Steps 155/156/160) -- Nine New Invariants, ZERO Collisions -- CONTINUES the Now-FIFTH-Consecutive Explicit Self-Admission ('Does Not Yet Mean the Implementation Satisfies These Properties... the Empirical Question Remains') -- Delivers the Major Consolidating Capstone 'KnowledgeOS = Semantic Model + Governance Model = Meaning + Authority' -- Opens Step 105 -- Agent Architecture Conformance, EXPLICITLY Naming 'Claude↔KnowledgeOS↔Codex' and the '.claude/'/'​.codex/' Pointer-Layer Architecture as Its Direct Test Subject -- NOW THE SINGLE HIGHEST-PRIORITY BRIDGE CANDIDATE, Superseding All Prior Flags, Since It Directly Promises to Test the Exact Self-Referential Claims Already Posed Hypothetically at 0687 and 0688"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 104 -- Governance Conformance', the third of the named forward-plan steps from 0686's close; delivers substantial new governance-model content (nine invariants) while continuing the fifth-consecutive corpus-internal self-admission that empirical implementation verification has not occurred"
+source_role: PRIMARY_RESEARCH
+canonical_source: 689
+importance: critical
+confidence: high
+about: >
+  **CONFIRMS, via a corpus-wide grep, that "Softwareeinführungsprozess"/"ITCM" (IT Change Management) are
+  GENUINE recurring real-world governance-process references, not corpus-internal fiction** -- these terms
+  are used across this file, 0686's and 0688's records, and (per `grep -rl "Softwareeinführungsprozess"` over
+  the full `phase_measure_theory/` corpus) additionally appear in Steps 101, 103, 104, 155, 156, and 160,
+  but in NO file prior to Step 101 (i.e., not before sequence 0686 in this reconstruction's tracked span).
+  This confirms they are a real, consistently-used external governance-process pair the source author
+  brings into the corpus starting exactly at the empirical-conformance phase (Step 101 onward), most
+  plausibly reflecting the author's own real organizational context (the German term "Softwareeinführungsprozess"
+  = "software introduction process," paired with the English "IT Change Management") rather than a
+  fictional placeholder -- **this disposition is DIFFERENT from "Nexus," which 0688 confirmed as a recurring
+  fictional illustrative example-system name**; §104.69's explicit statement "the Nexus discussion exposed a
+  real-world version of this" suggests "Nexus" may itself be grounded in a real prior discussion the source
+  author had, even while functioning as an illustrative stand-in name within the corpus's worked examples.
+
+  Delivers **`Governance≠Documents`** as the file's opening formal caution (a governance system requires
+  Authority+Rule+Scope+Trigger+Decision+Responsibility+Evidence+Exception+Enforcement, not merely written
+  policy text, PASS), directly and genuinely extending 0685's KnowledgeOS-is-not-a-repository identity
+  statement into governance-artifact semantics specifically. Delivers Principle formally distinguished from
+  operationally-testable Rule (`ProductionChange⇒RequiredGovernancePath`, an unactionable principle
+  correctly flagged as `GovernanceIntent=True` but `ExecutableRule=False`, PASS×2), and a Governance
+  decision requiring `Decision+Authority+Scope+Validity` (an unscoped board decision correctly flagged as
+  ambiguous, PASS).
+
+  Delivers a Governance rule lifecycle (`Draft→Reviewed→Approved→Active→Superseded→Retired`, a superseded
+  rule incorrectly remaining marked `Active` correctly flagged as a governance conflict, PASS), directly
+  extending 0672's/0677's/0684's/0687's/0688's version-lifecycle disciplines into governance rules
+  specifically, with Temporal rule validity (no automatic retroactivity, PASS) extending 0688's Temporal-
+  Knowledge invariant, and Governance scope (Organization/Domain/Application/Environment/ChangeType,
+  a production-only rule correctly not governing development, PASS) directly extending 0688's Scope-Binding
+  invariant into governance rules specifically.
+
+  **Delivers the important, precisely reasoned principle that governance classification must derive from
+  the actual semantic content of a change, never from an informal process label**: "KnowledgeOS should NOT
+  merely ask what process the Jira ticket says this belongs to. It should ask: What semantic change
+  actually occurred?" (a change mislabeled "routine maintenance" that actually introduces a new external
+  dependency correctly reclassified by its true semantic content, PASS) -- directly and genuinely extending
+  0663's/0667's/0684's/0687's impact-analysis discipline and 0686's/0687's/0688's naming/labeling-proves-
+  nothing family into governance-classification specifically, forming a coherent four-file "surface labels
+  prove nothing" lineage (0686 directories, 0687 authority, 0688 code names, 0689 process labels).
+
+  **Delivers `WorkflowComplete≠GovernanceComplete`**: a Jira ticket marked `Done` with a missing Architecture
+  Board approval correctly recorded as `WorkflowComplete=True` but `GovernanceComplete=False` (PASS),
+  directly extending 0686's Coverage≠Correctness family into workflow-status semantics specifically.
+
+  Delivers the Exception model formalized (`Exception=(Rule,Reason,Scope,Authority,Validity,
+  CompensatingControls)`, a self-declared "Emergency" label with no valid exception record correctly
+  rejected, PASS×2), with the precisely stated semantics `Rule+AuthorizedException→PermittedDeviation`, never
+  `Rule→Ignored` (a missing mandatory post-deployment compensating control correctly flagged as an
+  incomplete exception process, PASS), directly and genuinely extending 0687's authority-cannot-be-inferred-
+  from-names caution into exception-labeling specifically.
+
+  Delivers Governance enforceability formally distinguished from mere intent: **`PolicyIntent≠PolicyControl`**
+  (a "no direct production database modification" rule undermined by unrestricted developer database
+  credentials correctly flagged as unenforced intent, PASS), with Enforcement layers (HumanApproval/
+  WorkflowGate/PolicyEngine/CI-CD Gate/RuntimeAuthorization/NetworkControl) and an explicit Defense-in-depth
+  requirement for critical rules (a CI gate bypassable via direct deployment correctly flagged as
+  incomplete, PASS×2), directly extending 0683's HardConstraint-vs-OptimizationObjective discipline and
+  0679's/0680's layered-security disciplines into governance-enforcement architecture specifically.
+
+  Delivers Governance-to-code transformation (`GovernanceRule→MachineCheck`, a governance rule with no
+  automated enforcement correctly flagged as `GovernanceAutomation=Incomplete`, PASS), directly extending
+  0684's executable-governance-chain discipline, alongside the important caution that not every governance
+  decision should be automated: "AI can support the decision but does not replace authorized governance
+  judgment" for strategic architecture trade-offs (PASS), crystallizing **`KnowledgeOS≠GovernanceReplacement`**,
+  instead **`KnowledgeOS=GovernanceAugmentation+GovernanceExecution+GovernanceEvidence`** -- directly and
+  genuinely extending 0685's/0688's KnowledgeOS-identity statements into the governance domain specifically.
+
+  Delivers AI-generated governance recommendations explicitly overridable by human governance authority (an
+  Architecture Board disagreeing with an AI's `NonMaterial` classification, with the override itself becoming
+  evidence, PASS), directly extending 0682's human-override discipline, and the critical boundary **`AI
+  Inference⇏Governance Rule Change`** -- an agent may propose a `RuleChangeProposal` but never silently
+  activate a `RuleChange` (PASS), directly and genuinely extending 0685's/0687's/0688's Agent≠Authority
+  boundary discipline into governance-rule mutation specifically.
+
+  Delivers Governance versioning (a deployment evaluated under the rule active at its own time, not
+  retroactively under a later rule, PASS) directly extending the temporal-validity/historical-immutability
+  family, and Governance impact analysis (`Policy→DependencyGraph→AffectedSystems`, explicitly framed as
+  "executable governance intelligence" replacing human memory of "which systems are affected by this
+  policy," PASS), directly extending 0663's/0667's/0684's/0687's impact-analysis discipline into policy-
+  change propagation specifically.
+
+  **Delivers Governance drift formally named and distinguished from architecture/runtime drift**
+  (`ApprovedRule⊭Runtime`, an approved-but-unenforced production-approval rule correctly flagged as a
+  governance violation upon runtime observation, PASS), directly extending 0684's/0686's/0687's drift-
+  detection family into the governance dimension specifically -- forming a now-three-way disambiguated
+  "drift" taxonomy across this reconstruction (0681 model/concept drift, 0684/0686/0687 architecture/
+  configuration/infrastructure drift, 0689 governance drift), each confirmed distinct despite shared
+  vocabulary. Delivers the Governance assurance loop (`Rule→Control→Execution→Observation→Evidence→
+  GovernanceAssurance`), explicitly and directly self-cross-referenced as "the governance equivalent of the
+  architecture loop from Step 100" (0685), and Governance-to-architecture mapping (`GovernanceRule→
+  ArchitectureConstraint`).
+
+  Delivers Governance vocabulary subjected to the corpus's own DDD/ubiquitous-language discipline: "Software
+  Introduction" and "Material Change" explicitly required to remain distinct concepts even though both
+  trigger governance, with "Software Introduction" used loosely as a synonym for "Change" correctly flagged
+  as a potential ubiquitous-language violation (PASS), directly extending 0687's/0688's terminology-
+  ambiguity cautions into the governance-vocabulary domain specifically, and explicitly self-cross-
+  referenced ("this directly relates to the governance ambiguity we identified previously") to the
+  Softwareeinführungsprozess/ITCM real-world governance-classification problem.
+
+  **Delivers the important, precisely reasoned principle that governance ambiguity/conflict must be
+  surfaced, never silently arbitrated -- explicitly grounded in a real-world example**: "Softwareeinführungsprozess
+  and ITCM both classify the same event differently. Expected: `GovernanceConflict` until resolved" (PASS),
+  crystallized with "the Nexus discussion exposed a real-world version of this... the deeper problem was not
+  merely terminology. It was: **Who determines the governance path?**" -- directly and genuinely extending
+  0664's/0680's/0686's/0687's/0688's conflict-surfacing family into real governance-path-determination
+  ambiguity specifically, with the resolution mechanism `Conflict→ArchitectureBoardDecision→RuleUpdate`
+  becoming reusable knowledge (avoiding repeated reinvention of the same classification decision, PASS),
+  directly extending 0672's/0677's/0684's decision-provenance/reusability discipline.
+
+  Delivers Governance memory with the important caveat **`HistoricalDecision≠CurrentRule`** (a superseded
+  architecture decision retrieved by an agent correctly surfaced as `Superseded`, never treated as current
+  authority, PASS), directly extending the temporal-validity/versioning family, and a formal
+  `GovernanceDecisionEngine` concept whose responsibility is explicitly bounded: "it evaluates approved
+  governance. It does not create authority" (a novel situation with no applicable rule correctly yielding
+  `Unknown/NeedsDecision`, never `AutomaticallyApproved`, PASS×2), directly extending 0685's/0687's/0688's
+  Agent≠Authority boundary discipline into a dedicated governance-engine component design. Delivers
+  Escalation for `NoApplicableRule` and `ConflictingRules` (PASS), extending 0682's escalation discipline,
+  and a formal `GovernanceCompliant(Change)=True` criterion requiring rule+controls+evidence jointly (a
+  missing required approval correctly yielding `GovernanceCompliant=False`, PASS), extending the corpus's
+  evidence-backed-claim discipline. Delivers a ten-row Governance Conformance Matrix (all `?` placeholders,
+  explicitly "one of the central empirical artifacts," directly extending 0686's Conformance Matrix into the
+  governance domain).
+
+  **Delivers nine new named invariants -- ZERO exact-name collisions against the full tracked-collision
+  set**: `I_{GovernanceAuthority}`, `I_{RuleLifecycle}`, `I_{GovernanceTraceability}`, `I_
+  {ExceptionGovernance}`, `I_{GovernanceConflict}`, `I_{GovernanceFreshness}`, `I_{GovernanceEnforcement}`,
+  `I_{AIGovernanceBoundary}`, `I_{GovernanceMemory}`.
+
+  **Delivers Step 104's verdict continuing the now-FIFTH-consecutive explicit self-admission**: "STEP 104 —
+  GOVERNANCE MODEL: PASS. Again, this does NOT yet mean the existing KnowledgeOS implementation satisfies
+  all these properties... The empirical question remains: Does our actual implementation already contain
+  this governance model?" -- directly continuing 0685's/0686's/0687's/0688's identical admission pattern for
+  a fifth consecutive file.
+
+  **Delivers the major consolidating architectural capstone of Steps 103-104 together**: "KnowledgeOS =
+  Semantic Model + Governance Model," where the semantic model answers "What is this?" and the governance
+  model answers "Who may decide or act on it, under which rules?" -- crystallized as **"Meaning + Authority"**
+  -- "the foundation required before agents can safely participate."
+
+  **Closes by opening "Step 105 — Agent Architecture Conformance," explicitly and directly naming
+  `Claude↔KnowledgeOS↔Codex` as its test subject and posing the sharpest agent-architecture question
+  anywhere in this reconstruction**: "Are Claude and Codex actually agents operating against a shared
+  governed knowledge system, or have we accidentally allowed each agent harness to become its own
+  knowledge/governance system?" -- explicitly promising to test `AgentBehavior≠EngineeringKnowledge`,
+  `AgentConfiguration→KnowledgeOS`, and `Agent→Recommendation` versus `Agent→UnauthorizedDecision`, and
+  MOST IMPORTANTLY explicitly stating it will test "whether the `.claude/` and `.codex/` pointer-layer
+  architecture we established earlier is actually consistent with the KnowledgeOS architecture." **This is
+  now, unambiguously, the single highest-priority bridge candidate in this entire reconstruction,
+  superseding every prior flag (0685's, 0686's), since 0687 and 0688 already posed illustrative Claude/
+  Codex hypotheses that Step 105 now explicitly promises to test directly.** No actual code execution or
+  repository inspection is reported anywhere in this file itself.
+introduces:
+  - concept: "CONFIRMATION (via corpus-wide grep) that 'Softwareeinführungsprozess'/'ITCM' are genuine recurring real-world governance-process references (first appearing at exactly Step 101, persisting through Steps 103-104 and later 155/156/160), distinct in disposition from 'Nexus' (confirmed fictional at 0688)"
+  - concept: "Governance≠Documents, extending 0685's KnowledgeOS-is-not-a-repository identity statement into governance artifacts"
+  - concept: "Semantic classification overrides informal process labels — a change's true semantic content, not its Jira-ticket label, determines its governance path; completes a four-file 'surface labels prove nothing' lineage with 0686/0687/0688"
+  - concept: "WorkflowComplete≠GovernanceComplete, extending 0686's Coverage≠Correctness into workflow-status semantics"
+  - concept: "PolicyIntent≠PolicyControl: an unenforceable policy is mere intent, not actual governance control"
+  - concept: "AIInference⇏GovernanceRuleChange: an agent may propose a rule change but never silently activate one, extending the Agent≠Authority boundary into governance-rule mutation"
+  - concept: "Governance drift formally named and distinguished from architecture/configuration/infrastructure drift (0684/0686/0687) and model/concept drift (0681) — a now-three-way disambiguated 'drift' taxonomy across this reconstruction"
+  - concept: "KnowledgeOS≠GovernanceReplacement; KnowledgeOS=GovernanceAugmentation+GovernanceExecution+GovernanceEvidence"
+  - concept: "The major consolidating capstone: KnowledgeOS=Semantic Model+Governance Model=Meaning+Authority"
+  - concept: "FIFTH consecutive explicit self-admission: 'does NOT yet mean the implementation satisfies these properties... the empirical question remains'"
+  - concept: "Opens Step 105 — Agent Architecture Conformance, explicitly naming Claude↔KnowledgeOS↔Codex and the .claude/.codex pointer-layer architecture as its direct test subject — now the single highest-priority bridge candidate in this entire reconstruction"
+defines:
+  - concept: "Governance≠Documents"
+    definition: "A governance system is not constituted merely by written policy documents; it requires explicit, operationally checkable representations of Authority, Rule, Scope, Trigger, Decision, Responsibility, Evidence, Exception, and Enforcement — documents are governance artifacts, not executable governance"
+  - concept: "PolicyIntent≠PolicyControl"
+    definition: "A stated policy that cannot actually be technically enforced (e.g. 'no direct production database modification' while developers hold unrestricted database credentials) remains mere PolicyIntent; it becomes PolicyControl only when backed by an actual enforcement mechanism"
+  - concept: "AIInference⇏GovernanceRuleChange"
+    definition: "An AI agent's discovery or recommendation of a better governance rule may become a RuleChangeProposal, but the agent can never silently activate the corresponding RuleChange — governance rules change only through their own authorized lifecycle"
+  - concept: "Governance drift"
+    definition: "The condition where an approved governance rule remains formally active while actual runtime behavior no longer follows it (ApprovedRule⊭Runtime); distinct from architecture/configuration/infrastructure drift (0684/0686/0687, runtime-vs-declared-architecture divergence) and from model/concept drift (0681, data-distribution shift) despite all three sharing 'drift' vocabulary"
+  - concept: "KnowledgeOS = Semantic Model + Governance Model"
+    definition: "The consolidating architectural identity from Steps 103-104 together: the semantic model (Step 103) answers 'what is this?' (Evidence/Claim/Inference/Decision/Authority/Action distinctions), and the governance model (Step 104) answers 'who may decide or act on it, under which rules?' — together, Meaning + Authority, the foundation required before agents can safely participate in the system"
+refines:
+  - concept: "0685's KnowledgeOS-is-not-a-repository identity statement"
+    refinement: "Directly extended into governance-artifact semantics specifically (Governance≠Documents)"
+  - concept: "0663's/0667's/0684's/0687's impact-analysis discipline and 0686's/0687's/0688's naming/labeling-proves-nothing family"
+    refinement: "Directly and genuinely extended into governance-classification specifically: semantic content, never an informal process label, determines governance path — completing a coherent four-file lineage"
+  - concept: "0686's Coverage≠Correctness family"
+    refinement: "Directly extended into workflow-status semantics (WorkflowComplete≠GovernanceComplete)"
+  - concept: "0687's authority-cannot-be-inferred-from-names caution"
+    refinement: "Directly extended into exception-labeling specifically (a self-declared 'Emergency' label does not create a valid exception)"
+  - concept: "0683's HardConstraint-vs-OptimizationObjective discipline and 0679's/0680's layered-security disciplines"
+    refinement: "Directly extended into governance-enforcement architecture specifically (PolicyIntent≠PolicyControl, defense-in-depth enforcement layers)"
+  - concept: "0684's executable-governance-chain discipline"
+    refinement: "Directly extended into governance-rule-to-machine-check transformation, with an explicit human-judgment-required exception for strategic decisions"
+  - concept: "0685's/0688's KnowledgeOS-identity statements"
+    refinement: "Directly and genuinely extended into the governance domain specifically: KnowledgeOS≠GovernanceReplacement, =GovernanceAugmentation+GovernanceExecution+GovernanceEvidence"
+  - concept: "0682's human-override discipline"
+    refinement: "Directly extended: an Architecture Board's override of an AI governance classification becomes evidence"
+  - concept: "0685's/0687's/0688's Agent≠Authority boundary discipline"
+    refinement: "Directly and genuinely extended into governance-rule mutation specifically (AIInference⇏GovernanceRuleChange) and into a dedicated GovernanceDecisionEngine component design (evaluates approved governance, does not create authority)"
+  - concept: "0663's/0667's/0684's/0687's impact-analysis discipline"
+    refinement: "Directly extended into policy-change propagation specifically (Policy→DependencyGraph→AffectedSystems), explicitly framed as 'executable governance intelligence'"
+  - concept: "0684's/0686's/0687's architecture/configuration/infrastructure drift family and 0681's model/concept drift"
+    refinement: "Directly extended with a THIRD disambiguated drift concept (Governance drift, ApprovedRule⊭Runtime), explicitly distinct from both, completing a three-way disambiguated drift taxonomy across this reconstruction"
+  - concept: "0664's/0680's/0686's/0687's/0688's conflict-surfacing family"
+    refinement: "Directly and genuinely extended into real governance-path-determination ambiguity specifically, explicitly grounded in the Softwareeinführungsprozess/ITCM real-world classification conflict and 'the Nexus discussion'"
+  - concept: "0672's/0677's/0684's decision-provenance/reusability discipline"
+    refinement: "Directly extended: a resolved governance conflict becomes reusable knowledge, avoiding repeated reinvention of the same classification decision"
+  - concept: "0687's/0688's terminology-ambiguity cautions (DDD/ubiquitous language)"
+    refinement: "Directly extended into governance vocabulary specifically ('Software Introduction' and 'Material Change' must remain distinct concepts despite both triggering governance)"
+  - concept: "0682's escalation discipline"
+    refinement: "Directly extended: NoApplicableRule and ConflictingRules both require escalation, never silent default resolution"
+  - concept: "0686's Conformance Matrix"
+    refinement: "Directly extended into the governance domain (a ten-row Governance Conformance Matrix, still entirely TBD placeholders)"
+  - concept: "0685's, 0686's, 0687's, and 0688's central self-admission (implementation status NOT YET PROVEN)"
+    refinement: "DIRECTLY CONTINUED for a FIFTH consecutive file"
+  - concept: "0687's flagged 'the Nexus work' and 0686's flagged 'Softwareeinführungsprozess/IT Change Management' open naming items"
+    refinement: "CONFIRMED via corpus-wide grep as genuine, consistently-used real-world governance-process references (Softwareeinführungsprozess/ITCM) first appearing exactly at Step 101 and recurring through Step 104 and later Steps 155/156/160 — a different disposition from 'Nexus' (confirmed fictional at 0688), though §104.69's 'the Nexus discussion exposed a real-world version of this' suggests even Nexus may be grounded in a real prior discussion functioning as an illustrative stand-in"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0690 (Step 105 — Agent Architecture Conformance) with the HIGHEST vigilance level reached anywhere in this reconstruction: this file explicitly and directly promises to test whether Claude and Codex actually operate against a shared governed KnowledgeOS system or have become independent knowledge/governance systems, and whether the .claude/.codex pointer-layer architecture is consistent with KnowledgeOS -- directly resolving or extending the illustrative (unverified) Claude/Codex hypotheses posed at 0687 and 0688."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CONFIRMATION (via corpus-wide grep) that 'Softwareeinführungsprozess'/'ITCM' are genuine real-world governance-process references first appearing at Step 101, distinct in disposition from the confirmed-fictional 'Nexus.'"
+  - "dimension-registry.md: record the file's most reusable governance principles: Governance≠Documents, semantic-classification-overrides-informal-labels (completing a four-file naming-proves-nothing lineage), WorkflowComplete≠GovernanceComplete, PolicyIntent≠PolicyControl, AIInference⇏GovernanceRuleChange, and the newly disambiguated three-way 'drift' taxonomy (model/concept, architecture/config/infra, governance)."
+  - "dimension-registry.md: record nine new invariants with ZERO collisions; the capstone 'KnowledgeOS=Semantic Model+Governance Model=Meaning+Authority'; the fifth-consecutive self-admission; and that Step 105 (0690) is now the single highest-priority bridge candidate in this entire reconstruction, explicitly promising to test the Claude/Codex/.claude//.codex pointer-layer architecture directly."
+anchor_test:
+  anchor: "0685's/0686's/0687's/0688's central self-admission; 0685's KnowledgeOS-identity statements; 0686's/0687's/0688's naming/labeling-proves-nothing family; 0686's Coverage≠Correctness family; 0683's HardConstraint-vs-OptimizationObjective discipline; 0684's executable-governance-chain discipline; 0682's human-override and escalation disciplines; 0685's/0687's/0688's Agent≠Authority boundary discipline; 0663's/0667's/0684's/0687's impact-analysis discipline; 0684's/0686's/0687's drift family and 0681's model/concept drift; 0664's/0680's/0686's/0687's/0688's conflict-surfacing family; 0687's/0688's terminology-ambiguity cautions; 0687's 'Nexus work' and 0686's 'Softwareeinführungsprozess' open items"
+  supports_dimension: "Delivers a rich, genuinely valuable governance-executability model with nine new invariants (zero collisions) and several precisely reasoned, broadly reusable principles (Governance≠Documents, semantic-classification-overrides-labels, WorkflowComplete≠GovernanceComplete, PolicyIntent≠PolicyControl, AIInference⇏GovernanceRuleChange, a newly disambiguated three-way drift taxonomy), while continuing the corpus's fifth-consecutive explicit self-admission that empirical implementation verification has not occurred. CONFIRMS via corpus-wide grep that 'Softwareeinführungsprozess'/'ITCM' are genuine, consistently-used real-world governance-process references distinct in disposition from the confirmed-fictional 'Nexus.' Delivers the major consolidating capstone unifying Steps 103-104 (KnowledgeOS=Semantic Model+Governance Model=Meaning+Authority). Most consequentially, opens Step 105 with the most direct and explicit promise anywhere in this reconstruction to test the corpus's own real Claude/Codex/.claude//.codex agent architecture -- making 0690 the single highest-priority bridge candidate found so far"
+  refines_or_contradicts: "directly continues 0685's/0686's/0687's/0688's central self-admission for a fifth consecutive file; directly and genuinely extends 0685's KnowledgeOS-identity statements, 0686's/0687's/0688's naming/labeling-proves-nothing family (into governance labels), 0686's Coverage≠Correctness family, 0683's HardConstraint discipline, 0684's executable-governance-chain discipline, 0682's human-override/escalation disciplines, 0685's/0687's/0688's Agent≠Authority boundary discipline, 0663's/0667's/0684's/0687's impact-analysis discipline, and 0664's/0680's/0686's/0687's/0688's conflict-surfacing family; introduces a third disambiguated 'drift' concept alongside 0681's and 0684's/0686's/0687's, correctly distinguished rather than conflated; confirms (rather than contradicts) 0687's and 0686's open naming items; no contradiction found; zero invariant-name collisions"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "A corpus-wide `grep -rl \"Softwareeinführungsprozess\"` over the full `phase_measure_theory/` directory returns exactly Steps 101, 103, 104, 155, 156, and 160 -- confirming this term is a genuine, consistently-reused reference introduced starting exactly at the empirical-conformance phase (Step 101) and persisting across a specific later cluster, rather than an isolated error or a purely fictional corpus-internal placeholder."
+  - "§104.17-104.18's semantic-classification-overrides-informal-label experiment (a change mislabeled 'routine maintenance' that actually introduces a new external dependency correctly reclassified by its true content) is a directly checkable, precisely reasoned governance principle with clear current engineering relevance, completing a coherent four-file 'surface labels prove nothing' lineage with 0686/0687/0688."
+  - "The closing section's explicit, direct naming of 'Claude↔KnowledgeOS↔Codex' and the '.claude/'/'.codex/' pointer-layer architecture as Step 105's test subject is a directly quotable, unambiguous commitment -- stronger and more specific than any prior forward-looking flag in this reconstruction -- to test this corpus's own real agent-tooling architecture."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 105's actual content (0690), once read, genuinely and empirically tests the real .claude/.codex architecture (with actual file/directory evidence) or continues the pattern of illustrative, unverified experiments seen at 0687-0689."
+  - "Whether 'the Nexus discussion' referenced at §104.69 as 'a real-world version of this' problem indicates that 'Nexus' functions as a lightly-fictionalized stand-in for a real prior discussion, refining (without fully resolving) 0688's fictional-placeholder finding."
+tier2_triggered: true
+tier2_reason: "Delivers a rich, genuinely valuable governance-executability model with nine new invariants (zero collisions) and several precisely reasoned, broadly reusable principles (Governance≠Documents, semantic-classification-overrides-labels, WorkflowComplete≠GovernanceComplete, PolicyIntent≠PolicyControl, AIInference⇏GovernanceRuleChange, a newly disambiguated three-way drift taxonomy), while continuing a fifth-consecutive explicit corpus-internal self-admission. CONFIRMS via corpus-wide grep that 'Softwareeinführungsprozess'/'ITCM' are genuine real-world governance references, distinct in disposition from the confirmed-fictional 'Nexus.' Delivers the major consolidating capstone 'KnowledgeOS=Semantic Model+Governance Model=Meaning+Authority.' Opens Step 105 with the most direct and explicit promise anywhere in this reconstruction to test the corpus's own real Claude/Codex/.claude//.codex agent architecture -- the single highest-priority bridge candidate identified so far."

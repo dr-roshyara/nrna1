@@ -1,0 +1,58 @@
+sequence: 978
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/20260831-183219_step_286_revised-gita-knowledgeos-hypothesis-research-programme.md
+title: "REVISED STEP 286 -- Gita to KnowledgeOS Hypothesis Research Programme -- The Polished, Revised Merge of File 0973's Draft Research Programme, Retaining the Same Twelve-Item GK Register, the Same Fourteen-Property Theta-Operator Specification Requirement ('Separate Research Track'), and the Same Three-Test Falsification Framework, Now Incorporating the Executed R1/D285-8 Findings Into a Single Consolidated Document"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the revised, consolidated version of file 0973's Step-286 research programme"
+source_role: PRIMARY_RESEARCH
+canonical_source: 978
+importance: normal
+confidence: medium
+about: >
+  A 1133-line "REVISED STEP 286" document, structurally near-identical to file 0973's draft (same Parts
+  1-4 research question/source-discipline/register/prioritization structure, the same twelve individual
+  hypothesis investigations H-K01 through H-K11, the same "Part 16: The Five Θ Operators — Separate
+  Research Track" heading retaining the identical fourteen-property specification-before-composition
+  discipline, and the same "Part 17: Three Independent Tests" falsification framework including the
+  KnowledgeOS Independence Test) -- this file represents a polished, revised consolidation of file 0973's
+  draft programme, produced after (and evidently informed by) the executed R1 (file 0976) and D285-8 (file
+  0975) deliverables, continuing the disciplined kernel-track lineage without introducing the severe
+  violations found in file 0971's parallel, apparently non-communicating branch. Given the substantial
+  structural and substantive overlap with file 0973 (already recorded in full detail), this record notes
+  the confirmed continuation of that discipline rather than re-deriving each individual hypothesis
+  investigation's content.
+introduces: []
+defines: []
+refines:
+  - concept: "File 0973's draft Step-286 research programme"
+    refinement: "REVISED AND CONSOLIDATED into a polished version retaining the same disciplined structure (fourteen-property Theta-operator specification, three-test falsification framework, twelve-item GK research register), now situated after the executed R1/D285-8 deliverables"
+contradicts: []
+repeats:
+  - "The vast majority of this file's structure and content repeats file 0973's draft programme, now polished and consolidated."
+bridge_candidates:
+  - "Whether this revised programme document supersedes file 0973 as the corpus's canonical Step-286 specification."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file as the revised, consolidated version of file 0973's Step-286 research programme, confirming the disciplined kernel-track lineage continues to hold at this later revision point."
+anchor_test:
+  anchor: "File 0973's draft Step-286 research programme"
+  supports_dimension: "Confirms and consolidates file 0973's disciplined structure into a revised, polished version"
+  refines_or_contradicts: "revises and consolidates (does not contradict) file 0973"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Structural comparison (matching section headings and ordering) against file 0973 confirms this is a revised consolidation rather than an independently new document."
+undefined_concepts: []
+open_questions:
+  - "Whether this revised programme supersedes file 0973 as the corpus's canonical Step-286 specification."
+tier2_triggered: false
+tier2_reason: "A polished, revised consolidation of file 0973's already-fully-documented disciplined research programme, without qualitatively new findings beyond confirming the discipline's continuation. Classified importance normal, tier2 not triggered."

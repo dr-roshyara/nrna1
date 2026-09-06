@@ -1,0 +1,149 @@
+sequence: 928
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260831-010447_step_284_revised-post-step-283-roadmap-duplicate.md
+title: "REVISED POST-STEP-283 ROADMAP -- Despite Its Filename's 'duplicate' Label, This Is NOT a Byte-Duplicate File but a Substantive, Novel Consolidation Delivering a Full Branching Roadmap Through STEP 290: Resolves the Long-Tracked Step-284-Naming Inconsistency by Confirming 'Book Architecture Gate' While Adding a Parallel Six-Step Certification Chain (STEPS 285-289: Computational/Empirical/Measurement/Governance-Operational Certification, End-to-End Conformance) Converging at a New STEP 290 Final Certification Decision"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "roadmap-consolidation and re-sequencing document"
+source_role: PRIMARY_RESEARCH
+canonical_source: 928
+importance: critical
+confidence: medium
+about: >
+  **NOTE ON FILENAME**: despite the filename's "-duplicate" suffix, this file is NOT a byte-for-byte or
+  substantively duplicate document -- at 671 lines it delivers extensive novel roadmap content not present
+  in any prior file of this sub-arc (Steps 285-290, the branching diagram, the empirical-coverage matrix
+  template). The "duplicate" label appears to be a corpus-authoring artifact (perhaps indicating this
+  roadmap duplicates/reconciles the ALREADY-STATED Step 282/283 conclusions as its premise) rather than a
+  genuine content duplicate; this reconstruction's standing "duplicate files get minimal records" rule is
+  therefore judged NOT applicable here, and this file receives a full primary-research record.
+
+  Opens agreeing with "the direction" of Steps 282/283 "but I would change the sequencing of the remaining
+  steps," delivering the central reframing: "we should stop treating the work as one linear theory-
+  development chain... from here onward, the work separates into certification and architecture streams."
+
+  **Restates the chain through Step 283** and delivers a three-way branch diagram (Governance stream /
+  Architecture stream / Empirical stream) -- "this is much better than continuing with Steps 284, 285, 286
+  as if each one were another prerequisite for the theory," directly critiquing file 0919's linear
+  Step-284/285/286 insertion.
+
+  **Restates Step 283** ("CONDITIONALLY ACCEPTED → EXECUTE AFTER CORRECTIONS") with its eight required
+  outputs and the three legitimate GC outcomes.
+
+  **Restates STEP 284 — BOOK ARCHITECTURE GATE** (confirming the ORIGINAL naming, matching files 0917,
+  0918, 0920, 0925, 0926 -- NOT file 0919's "Final Empirical Conformance" revision), sharply constraining
+  its mission to "determine whether the accumulated theory and evidence can now be safely incorporated into
+  the canonical book architecture without conflating formal, computational, empirical, and governance
+  status," delivering a twelve-item "Canonical KnowledgeOS Architecture Baseline" deliverable list.
+
+  **Delivers FIVE ENTIRELY NEW ROADMAP STEPS (285-289), THE FILE'S CENTRAL NOVEL CONTRIBUTION**:
+
+  **STEP 285 — COMPUTATIONAL CERTIFICATION AND RUNTIME GAP CLOSURE**: a six-stage pipeline (C-NEW fix →
+  Authorize runtime → Measurement executor → Q_t production integration → Runtime invariant tests →
+  Regression suite), explicitly "do not reopen the theory to solve them," producing an ACTUALLY MEASURED
+  `CC`, "not an assumed CC=TRUE."
+
+  **STEP 286 — EMPIRICAL CERTIFICATION EXPANSION**, "the most important remaining scientific stream,"
+  delivering the sharp reframing boxed **`𝒯_KOS≠ℐ_EKP`** and boxed **`ℐ_EKP⊨𝒯_KOS has not yet been
+  established for the complete system`**, an explicit per-construct empirical-coverage matrix template
+  (Observable?/Instrumented?/Testable?/L5 evidence?, with `K` and `ℛ` fully checked, `Σ`/`Q_t`/`Evidence`/
+  `T`/`Replay`/`Provenance` unresolved, `Policy`/`Authorization` partial, `Measurement` no), and a
+  quantitative EC definition boxed **`EC=(constructs with valid L5 evidence)/(constructs requiring
+  empirical observation)`** -- the first genuinely QUANTITATIVE (ratio-based) EC formalization in this
+  sub-arc, refining the prior binary/qualitative EC=TRUE/FALSE framing used throughout files 0919-0927.
+
+  **STEP 287 — STATISTICAL AND MEASUREMENT CERTIFICATION**, separated from generic empirical testing --
+  "a mathematical measurement definition is not equivalent to measurement validation" -- delivering six
+  sub-components (measurement population, observation model `Y_i=f(X_i,θ)+ε_i`, reliability, repeatability,
+  sensitivity, uncertainty), with the explicit constraint "should NOT retroactively introduce probability
+  into constructs that do not require it," directly citing file 0925's/0923's F21 probability-necessity
+  result.
+
+  **STEP 288 — GOVERNANCE OPERATIONAL CERTIFICATION**: distinguishes "governance decisions EXIST" (Step
+  283) from "the governance MECHANISM OPERATES CORRECTLY in the running system" (Step 288), delivering an
+  eight-stage runtime test chain (Human decision→Governance record→Policy version→Propagation→Runtime
+  interpretation→Authorization→Audit/history→Replay).
+
+  **STEP 289 — END-TO-END SYSTEM CONFORMANCE**: a twelve-node full-lifecycle conformance chain
+  (Human/External Event→Evidence→K→Σ→Policy→Authority→Authorization→T→K'→History→Replay→Explanation),
+  reframing the objective from per-component correctness to "does the integrated system preserve all
+  declared invariants across the complete lifecycle?"
+
+  **STEP 290 — FINAL CERTIFICATION DECISION, A NEW GLOBAL CLOSURE GATE NOT PRESENT IN ANY PRIOR FILE**:
+  computing the composite `𝒞=(FC,CC,EC,GC)` and issuing one of three outcomes (A theory reopened only on
+  genuine theory-critical discovery; B theory closed, certification incomplete; C fully certified only with
+  actual evidence for all dimensions) -- explicitly the SAME three-letter A/B/C outcome structure used
+  throughout Steps 282/283, now applied one level up at the full-system-certification scale.
+
+  **Delivers THE FILE'S CENTRAL STRUCTURAL DIAGRAM**: the complete Step 278→283 chain, a boxed "THEORY
+  STOPPING POINT" marker, then Step 283 branching into a parallel pair (Step 284 Book Architecture Gate
+  directly to Canonical Book Baseline; Step 285→286→287→288→289 certification chain), reconverging only at
+  Step 290.
+
+  **Delivers "One important architectural correction"**: explicitly refuses to make Step 284 wait for Steps
+  285-289 -- "that would recreate the very category error we have spent Steps 280-283 eliminating" -- the
+  Book Architecture Gate may proceed with whatever `FC/CC/EC/GC` statuses currently hold, as long as stated
+  accurately, directly reconfirming file 0926's/0927's Step-284-not-blocked ruling.
+
+  **Closes with the Final Supervisory Recommendation**: "Step 283 is the last governance-definition step.
+  Step 284 is the architecture/book gate. After that, work becomes certification and implementation--not
+  further theory invention," boxed **`Theory development→STOP`** at Step 282 (barring future falsification),
+  and the explicit immediate next action: "revise Step 283 with the eight mandatory corrections, then
+  execute Step 283. Do not start another theoretical derivation before that execution" -- implicitly siding
+  with file 0927's first appended review's designation (proceed toward Step 284/certification) over its
+  second appended section's alternative "Revised Step 283A" designation, though without directly
+  acknowledging that internal tension.
+introduces:
+  - concept: "The full branching post-Step-283 roadmap through a new STEP 290, resolving the linear-chain assumption critiqued in this file's own opening"
+  - concept: "STEP 285 through STEP 289: Computational Certification, Empirical Certification Expansion, Statistical/Measurement Certification, Governance Operational Certification, End-to-End System Conformance -- five entirely new named roadmap steps"
+  - concept: "STEP 290 -- Final Certification Decision, a new global closure gate computing the composite (FC,CC,EC,GC) and issuing an A/B/C verdict one level above Steps 282/283's own A/B/C structure"
+  - concept: "The quantitative (ratio-based) EC definition: EC = (constructs with valid L5 evidence)/(constructs requiring empirical observation), refining the prior binary EC=TRUE/FALSE framing"
+  - concept: "The explicit refusal to block Step 284 on Steps 285-289's completion, reconfirming the Step-284-not-blocked-by-certification ruling"
+defines:
+  - concept: "EC (Empirical Closure), quantitative form"
+    definition: "Rather than a binary TRUE/FALSE judgment, Empirical Closure is defined as the ratio of theoretical constructs possessing valid Level-5 (real-environment) evidence to the total number of constructs that actually require empirical observation for their closure claim. This quantitative reframing allows partial, measurable progress toward empirical closure to be reported honestly, rather than forcing a premature binary verdict; the document explicitly cautions that no claim of EC=TRUE is warranted until this ratio criterion is actually satisfied, and the exact matrix populating the ratio's numerator and denominator should be generated from actual execution rather than assumed"
+refines:
+  - concept: "0919's inserted post-Step-283 roadmap (Step 284 renamed 'Final Empirical Conformance,' new Step 285 'Canonical Theory Freeze,' Book Publication pushed to Step 286)"
+    refinement: "IMPLICITLY REJECTED in favor of the ORIGINAL Step-284='Book Architecture Gate' naming (matching 0917/0918/0920/0925/0926/0927), while independently introducing its OWN new Steps 285-290 with entirely different content and purpose than 0919's inserted steps -- the two 'Step 285' proposals (0919's 'Canonical Theory Freeze' vs. this file's 'Computational Certification and Runtime Gap Closure') are mutually incompatible, a further, still-unreconciled instance of this sub-arc's roadmap-naming instability"
+  - concept: "0919's/0920's/0925's binary EC=TRUE/FALSE framing"
+    refinement: "REFINED into a quantitative ratio-based definition (constructs-with-L5-evidence / constructs-requiring-empirical-observation), permitting graded, measurable empirical-closure progress reporting rather than a forced binary verdict"
+  - concept: "0926's/0927's Step-284-not-blocked-by-governance-closure ruling"
+    refinement: "GENERALIZED from governance closure specifically to ALL of Steps 285-289 (computational/empirical/measurement/governance-operational/end-to-end certification) -- Step 284 need not wait for ANY of the certification streams, not merely governance"
+contradicts:
+  - concept: "0919's Step 285 ('Canonical Theory Freeze') and Step 286 ('Book/Architecture Publication')"
+    contradiction: "This file's own Step 285 ('Computational Certification and Runtime Gap Closure') and Step 286 ('Empirical Certification Expansion') name the same step numbers with entirely different, non-overlapping content and purpose -- an unreconciled roadmap-numbering collision between two sibling files in this sub-arc"
+repeats:
+  - "Restates the Step 283 eight-corrections list, the three GC outcomes, and the FC/CC/EC/GC non-implication doctrine, all already established in files 0926/0927, without new content in those specific passages."
+bridge_candidates:
+  - "Whether Steps 285 through 290 (Computational Certification, Empirical Certification Expansion, Statistical/Measurement Certification, Governance Operational Certification, End-to-End System Conformance, Final Certification Decision) are ever actually encountered as executed artifacts later in the corpus, under this file's naming rather than file 0919's competing Step-285/286 naming."
+  - "Whether the Step-285/286 naming collision between this file and file 0919 is ever explicitly noticed and reconciled."
+  - "Whether the quantitative EC ratio definition is ever adopted and actually computed against a concrete construct matrix."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file's five new roadmap steps (285-289) and new Step 290 as a major extension of the post-theory-closure certification programme, while flagging the Step-285/286 naming collision against file 0919's incompatible naming for the same step numbers as a further unreconciled roadmap-instability instance."
+  - "dimension-registry.md: record the quantitative (ratio-based) EC redefinition as a refinement of the prior binary EC=TRUE/FALSE framing, directly relevant to this reconstruction's own eventual synthesis work on how empirical closure should be reported."
+  - "dimension-registry.md: note the filename's misleading 'duplicate' label -- this file is confirmed, on full reading, to be substantively novel rather than a content duplicate."
+anchor_test:
+  anchor: "0919's inserted Step 285/286 roadmap naming; 0920's/0925's/0926's/0927's original Step-284='Book Architecture Gate' naming and Step-284-not-blocked ruling; the sub-arc's binary EC=TRUE/FALSE framing"
+  supports_dimension: "Confirms the original Step-284 naming and generalizes the not-blocked ruling to all certification streams. Introduces five new roadmap steps (285-289) and a new Step 290, whose own Step-285/286 naming directly collides with file 0919's incompatible naming for the same numbers. Refines the binary EC framing into a quantitative ratio"
+  refines_or_contradicts: "confirms 0920's/0925's/0926's/0927's Step-284 naming and not-blocked ruling; contradicts 0919's Step-285/286 naming; refines the binary EC framing"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "This file's own explicit Step 285 title ('Computational Certification and Runtime Gap Closure') is directly checkable against file 0919's Step 285 title ('Canonical Theory Freeze') for the naming-collision finding."
+  - "The file's 671-line length and extensive novel content (Steps 285-290, the empirical-coverage matrix, the quantitative EC ratio) directly contradicts a literal reading of its own filename's 'duplicate' label."
+undefined_concepts: []
+open_questions:
+  - "Whether Steps 285-290 as named in this file, or the competing Step 285/286 naming from file 0919, is the one actually carried forward and executed later in the corpus."
+  - "Whether the quantitative EC ratio definition is ever computed against an actual concrete construct matrix."
+  - "Why this file's filename carries a 'duplicate' label despite containing substantively novel content -- whether this is ever explained or is simply a corpus-authoring/naming artifact."
+tier2_triggered: true
+tier2_reason: "Despite its filename's misleading 'duplicate' label, delivers substantial novel roadmap content (five new named steps 285-289 plus a new Step 290 global closure gate), refines the EC framing from binary to quantitative, and generalizes the Step-284-not-blocked ruling -- while also introducing an unreconciled roadmap-naming collision with file 0919's incompatible Step-285/286 content. Classified importance critical; confidence medium given the roadmap-naming collision and the still-undetermined actual sequence followed by the corpus."

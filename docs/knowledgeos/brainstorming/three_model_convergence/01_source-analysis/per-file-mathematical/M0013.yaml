@@ -1,0 +1,81 @@
+sequence: M0013
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-203600_not-the-same-but-large-important-overlap.md
+title: "Not the Same, but Large/Important Overlap: the [CORPUS]/[EXT]/[INF]/[PROP] Provenance Taxonomy and an Explicit Anti-Hindsight-Bias Correction Against Retrospectively Pretending K_t Was Already the Corpus Definition"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "a provenance-clarification/meta document comparing the earlier '00/01' corpus-baseline documents (M0012's review target) against the newer Dretske-informed K_t model (M0009/M0010), via a 26-row side-by-side comparison table and an explicit four-tag provenance discipline; delivers no new mathematics of its own"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0013
+importance: medium
+confidence: high
+about: >
+  A direct answer to "are these the same" regarding the corpus-baseline '00/01' documents (compared
+  in M0012) versus the newer atomic-claim K_t model (M0009/M0010): "No -- they are not the same,
+  although there is a large and important overlap." Delivers a 26-row side-by-side comparison table
+  classifying each concept as Same / Partial-Expanded / New-in-01 / New-in-later-work, and organizes
+  the material into three explicit layers: Layer 1 (corpus-established results: Sigma!=K_i, K_t!=
+  possible-worlds, Conflict permitted, non-deductive-closure, governance!=epistemic-update,
+  information!=meaning!=knowledge -- all "corpus-backed, not recently invented"); Layer 2 (Dretske/
+  mathematical extension: the full World->Observation->Channel->Signal->Information->Probability->
+  Determination->K_t acquisition chain, not present in 00/01); Layer 3 (the newer atomic-claim
+  mathematical K_t model itself: k_i=(O,d_i,v_i,t,E_i,C_i,p_i,q_i), X* != K_t != I_t(P,C), and the
+  vector-valued gap G_t=(G_1,t,...,G_n,t) -- none of which 00/01 provide).
+
+  **DELIVERS AN EXPLICIT FOUR-TAG PROVENANCE DISCIPLINE**: [CORPUS] (what the corpus itself already
+  states, e.g. "K_t has competing definitions and unresolved formalization"); [EXT] (external
+  mathematical structures -- Dretske, probability theory, information theory, DEL -- that provide
+  candidate machinery); [INF] (what those external theories constrain a plausible K_t model to look
+  like, or rule out); [PROP] (this research's own proposed construction, e.g. the atomic-claim
+  tuple) -- explicitly named as "exactly the separation discipline your 00 document demands," i.e.
+  a discipline this document is APPLYING (from an earlier corpus document) rather than inventing.
+
+  **DELIVERS AN EXPLICIT ANTI-HINDSIGHT-BIAS CORRECTION**: "we should not retrospectively pretend
+  that the newer atomic-claim model was already the corpus definition" -- given the corpus's own
+  00 document states there are "two rival definitions of K_t and zero shared symbols," this
+  document explicitly refuses to claim the newer [PROP] model as having been the corpus's answer
+  all along. This is a direct, native instance of this reconstruction's own standing rule against
+  hindsight bias, arising independently within the KR-SIM lane's own provenance discipline.
+
+  **REFRAMES THE OVERALL RESEARCH STATE MORE CAUTIOUSLY**: replaces "we have now defined K_t" with
+  "the corpus has not yet ratified a unique formal definition of K_t; external-theory analysis has
+  ruled out or constrained several candidate interpretations; current research has produced a more
+  explicit [PROP] candidate" -- an explicit downgrade of confidence relative to how the K_t work
+  might otherwise be summarized.
+introduces:
+  - concept: "The explicit four-tag provenance discipline [CORPUS]/[EXT]/[INF]/[PROP], applied here to K_t's own developmental history"
+  - concept: "The three-layer organization of accumulated K_t research (corpus-established results / external-theory extension / newer proposed mathematical model), clarifying which parts of the current apparatus are corpus-backed vs. newly proposed"
+defines: []
+refines:
+  - concept: "Re-summarizes and re-classifies (via the 26-row comparison table) the accumulated content of M0009-M0012 by provenance rather than by content, without adding new formal claims"
+contradicts: []
+repeats:
+  - concept: "The already-established corpus-backed results (Sigma!=K_i, K_t!=possible-worlds, Conflict permitted, non-closure, governance!=epistemic-update) from M0012, restated here as 'Layer 1' without new argument"
+  - concept: "The already-developed atomic-claim tuple k_i=(O,d_i,v_i,t,E_i,C_i,p_i,q_i) and X*!=K_t!=I_t(P,C) from M0009/M0010, restated here as 'Layer 3' without new argument"
+bridge_candidates:
+  - "The [CORPUS]/[EXT]/[INF]/[PROP] four-tag provenance discipline is directly comparable to this reconstruction's own source_role taxonomy (PRIMARY_RESEARCH/BRIDGE/DUPLICATE/CONTROL_SELF_REFERENCE) and to its hypothesis-vs-definition-vs-analogy-vs-mathematics classification -- worth considering whether a similar explicit four-tag discipline should be adopted at the global-reclassification stage (MD-004)."
+  - "The explicit anti-hindsight-bias correction ('do not retrospectively pretend the newer model was already the corpus definition') is a native, independent instance of this reconstruction's own standing no-hindsight-bias rule, arising from within the KR-SIM lane's own provenance practice."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0013 as a provenance-clarification document delivering the [CORPUS]/[EXT]/[INF]/[PROP] four-tag discipline and an explicit anti-hindsight-bias correction against retrospectively treating the newer atomic-claim K_t model as the corpus's original definition -- both flagged as bridge candidates to this reconstruction's own classification and anti-hindsight-bias disciplines."
+anchor_test:
+  anchor: "This reconstruction's own standing no-hindsight-bias rule and its source_role/classification taxonomy"
+  supports_dimension: "Delivers a native, independent instance of the same anti-hindsight-bias discipline, plus a four-tag provenance scheme structurally comparable to this reconstruction's own classification apparatus"
+  refines_or_contradicts: "refines (re-organizes M0009-M0012 by provenance, no new formal content)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'we should not retrospectively pretend that the newer atomic-claim model was already the corpus definition' -- a direct, native instance of this reconstruction's own no-hindsight-bias rule, independently arrived at within the KR-SIM lane."
+undefined_concepts: []
+open_questions:
+  - "Whether the [CORPUS]/[EXT]/[INF]/[PROP] provenance tagging is used consistently in later KR-SIM lane documents this pass has not yet reached, which would make it a durable methodological convention rather than a one-off framing."
+tier2_triggered: true
+tier2_reason: "Delivers a native instance of this reconstruction's own anti-hindsight-bias discipline and a four-tag provenance scheme worth considering for the global-reclassification pass, despite containing no new object-level mathematics beyond re-organizing M0009-M0012."

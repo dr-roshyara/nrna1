@@ -1,0 +1,104 @@
+sequence: M0236
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-014642_unified-formal-evaluation-kernel-minimality-semantic-capability-ordering.md
+title: "KR-KERNEL-MINIMALITY-2026-09 (continued): a first executable Python minimality-verification testbed, PLUS a live self-caught GOVERNANCE-FABRICATION event — a draft 'RATIFIED... KnowledgeOS Core Epistemic Framework Committee' register entry is flagged by a senior reviewer as manufactured authority ('exactly the kind of provenance error KnowledgeOS is supposed to prevent') and corrected to UNRATIFIED/proposal status, alongside a further theorem refinement (alternative non-subset decompositions) and explicit purging of Complexity(K) from the mathematical minimality definition"
+date: "20260904-014642"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0236
+importance: critical
+confidence: high
+about: >
+  Direct continuation of M0235's kernel-minimality theorem completion. Delivers a four-layer
+  architecture diagram (Kernel/Representation/Observation-Preservation/Derived-Rewrite-Rules), a
+  formal witness-pair-based Lemma/Theorem pair (Universal Capability Irreducibility Witness;
+  Absolute Minimality of the Irreducible Capability Basis), formal Factivity/Selection/Zero
+  boundary conditions, and — most significantly — a first EXECUTABLE Python verification testbed
+  for kernel minimality (EpistemicKernel, MinimalityVerificationSuite). A draft "RATIFIED" register
+  entry citing a fictitious "KnowledgeOS Core Epistemic Framework Committee" is then caught and
+  corrected by a senior reviewer pass as unauthorized governance fabrication, alongside a further
+  refinement of the minimality theorem itself (accounting for alternative, non-subset-relation
+  capability decompositions) and an explicit purge of Complexity(K) from the mathematical
+  definition of minimality.
+introduces:
+  - "A four-layer architecture stack: Layer 1 Epistemic Kernel (K_epi, irreducible capability basis C_irr⊆Capabilities(K*)) → Layer 2 Representation Carrier (reference-relative encoding encode_B(K)=(B,δ_K)) → Layer 3 Observation & Preservation (Zero Lens Zero_{T,Π}(S;D); homomorphism f(a⊗b)=...) → Layer 4 Derived Rewrite Rules (guarded sub-sutras P(x)⇒O_special(x)≡O_general(x))"
+  - "Definition 1: Admissible Epistemic Environment 𝔈=(𝒳,𝒬,𝒞,ℋ,𝒮,ℐ,𝒜) — a 7-tuple (states, inquiry, contract/context, hypothesis space, standards, invariants, externally observable attributions/outcomes)"
+  - "Definition 2: Observational Equivalence via an explicit Obs vector — (StateTransition,GapDetection,Determination,RevisionOutcome,InvariantStatus,Attribution) — the most concrete instantiation yet of the Obs function left as a placeholder in M0235's pass 1/2"
+  - "Lemma 1 (Universal Capability Irreducibility Witness) and Theorem 1 (Absolute Minimality of the Irreducible Capability Basis C_irr), both proved by contradiction using an explicit witness state-inquiry pair (x_w,q_w) and invariant i — a more concrete, witness-construction-based restatement of M0235's corrected apparatus"
+  - "Formal Factivity Boundary Condition: kernel attribution operator Γ:E_t×𝒬×𝒞→A_t computes only internal epistemic attributions; the factive constraint Knows(a,p,c,t)⟹True(p,c,t) is enforced as an EXTERNAL evaluation predicate FactiveCheck(A_t,T) involving environmental truth T — 'The kernel does not manufacture T(p); it manages E_t→Γ→A_t. This prevents truth verification from corrupting kernel minimality'"
+  - "Formal Selection Typing Boundary: Select_epi:ℋ_Q×𝒮→ℋ_Q' (internal to Kernel) vs Select_act:𝒜^act×Policy→Action (external, downstream in execution/governance) — only Select_epi is a kernel candidate"
+  - "Formal Non-Primitive Role of Zero: Zero_{T,Π}(S;D)⟺Π(T(D))=Π(T(E_S(D))) requires a baseline dataset, transformation, projection, and elimination mask — 'a higher-order evaluation operator over kernel states, not an elementary capability required to construct kernel states' — hence Zero∉C_irr"
+  - "A FIRST EXECUTABLE Python verification testbed for kernel minimality: EpistemicState (knowledge_base/hypotheses/qualifiers with a deterministic digest hash), Capability interface with InterpretCapability/QualifyCapability/HypothesizeCapability/DerivedDetectGapCapability implementations, EpistemicKernel container, observe_kernel_behaviour() invariant-checking runner, and MinimalityVerificationSuite with test_irreducibility_witness() (removes a capability, checks observational/invariant divergence) and test_reference_relative_encoding() (tests lossless encode_B(K)=(B,δ_K) recovery + compression ratio) — a genuine code-runnable instantiation, not merely formal notation"
+  - "A demonstrated concrete irreducibility-witness run: Qualify capability tested irreducible against a 3-step scenario (Interpret→Qualify→Hypothesize), reference-relative encoding tested lossless with a computed compression ratio — the first time this reconstruction's kernel-minimality apparatus produces an actual (if toy-scale) executed result rather than pure formal argument"
+  - "GOVERNANCE-FABRICATION CATCH (senior reviewer pass): a draft register block declaring 'KNOWLEDGEOS RESEARCH REGISTER: KR-KERNEL-MINIMALITY-2026-09 (RATIFIED)' with authority 'KnowledgeOS Core Epistemic Framework Committee' is flagged: 'Unless that committee and ratification act actually exist in your governance system, this must not appear as a factual ratification... this is exactly the kind of provenance error KnowledgeOS is supposed to prevent' — corrected to 'STATUS: PROPOSED RESEARCH REGISTER ENTRY / STATUS OF RATIFICATION: NOT RATIFIED'"
+  - "A further theorem refinement catching a gap M0235's own corrected apparatus had not yet made fully explicit: alternative NON-SUBSET decompositions — a competing Kernel K2={X,Y} may realize exactly the same semantic capability as K1={A,B,C} without Capabilities(K2) being any subset of C*, so the minimality theorem must quantify over admissible implementations and realization mappings (𝔎_adm, ⪯_cap), not merely over subsets of one named capability list — corrected theorem: K*⊨𝔠_KOS ∧ ∀K∈𝔎_adm[K≡_sem K* ⟹ C_irr⪯_cap K]"
+  - "Explicit purge of Complexity(K) from the mathematical minimality definition (not merely deferred, as in M0235's pass 2, but now REMOVED outright): 'K* is minimal iff no strictly semantically weaker admissible Kernel exists' — semantic minimality and implementation efficiency (Complexity_impl(K), a secondary engineering optimization within the equivalence class [K]_≡sem) 'must never be conflated'"
+  - "Split Kernel definition into two non-identified layers: a DDD Architectural definition (smallest domain-independent bounded context owning identity/lifecycle/provenance/invariant-preserving evolution of epistemic states) vs a Mathematical Semantic definition (𝒦_epi=min_{⪯_sem}{K:K⊨𝔠_KOS}) — 'They should be connected, but not identified'"
+  - "Relabeling discipline applied retroactively to the draft's own strongest claims: 'THE EPISTEMIC KERNEL IS STRICTLY BOUNDED' downgraded from 'mathematical law' to [PROP] Architectural Boundary (a DDD/domain decision, not derived from mathematics alone); the 'deepest theorem' (KnowledgeOS is a theory of invariant-preserving epistemic state evolution) downgraded from 'theorem' to [PROP] Core Theoretical Characterization, since it is 'a model of the system, not something established independently of the definitions'"
+  - "A stopping rule against conceptual drift: 'No new primitive is admitted unless it either (a) changes the semantic contract 𝔠_KOS, or (b) defeats an existing irreducibility proof' — explicitly framed as making the research programme 'self-protecting against conceptual drift'"
+  - "Renamed remaining research phase: 'Kernel Semantic Closure' (replacing open-ended 'more research') — Foundational Discovery Phase CLOSED; Kernel Semantic Closure Phase OPEN, restricted strictly to establishing semantic equivalence bounds and completing irreducibility proofs over 𝔎_adm"
+  - "The corrected, final FROZEN core statement and register entry, with honest status fields: DOCUMENT STATUS=PROPOSED RESEARCH REGISTER ENTRY; STATUS OF THEOREM=CONDITIONAL THEOREM SCHEMA; STATUS OF RATIFICATION=UNRATIFIED/PROPOSAL FOR FOUNDATIONAL FREEZE; AUTHORITY=Proposed by Research Lead; Pending Governance Review"
+defines:
+  - "𝔈=(𝒳,𝒬,𝒞,ℋ,𝒮,ℐ,𝒜) — admissible epistemic environment 7-tuple"
+  - "Γ:E_t×𝒬×𝒞→A_t — kernel attribution operator; FactiveCheck(A_t,T) — external factivity predicate"
+  - "K1⪯_cap K2 — capability-inclusion/subsumption ordering over admissible implementations"
+refines:
+  - "M0235's pass-3 trace-equivalence/universal-irreducibility apparatus: sharpened by (a) an explicit concrete Obs vector, (b) a witness-pair-based Lemma/Theorem restatement, (c) recognition that alternative non-subset decompositions require quantifying over 𝔎_adm/⪯_cap rather than subsets of one capability list, and (d) outright removal (not mere deferral) of Complexity(K) from the mathematical definition"
+contradicts:
+  - "The draft's own 'RATIFIED... KnowledgeOS Core Epistemic Framework Committee' register block: explicitly caught and corrected as unauthorized governance fabrication before acceptance"
+  - "The draft's own 'deepest theorem'/'THE EPISTEMIC KERNEL IS STRICTLY BOUNDED' framing as mathematical law: downgraded to [PROP] characterizations by the same reviewer pass"
+repeats:
+  - "The Zero∉KernelCapability, Select_epi/Select_act split, and Factivity-external-boundary arguments already established in M0235, now given a more concrete formal restatement"
+bridge_candidates:
+  - "Whether the corrected KR-KERNEL-MINIMALITY-2026-09 register entry (UNRATIFIED/proposal status) was ever actually submitted to a real governance mechanism for ratification"
+  - "Whether the executable Python testbed (MinimalityVerificationSuite) was ever run against the full candidate 13-operator capability universe rather than the 3-4 capability toy example shown here"
+mathematical_content: >
+  Concrete witness-based Lemma/Theorem restatement of kernel irreducibility/minimality; formal
+  Factivity/Selection/Zero boundary conditions; a further theorem refinement handling alternative
+  non-subset capability decompositions via admissible-implementation quantification (𝔎_adm,⪯_cap);
+  outright removal of Complexity(K) from the mathematical minimality definition; and a first
+  executable (Python) verification testbed with a demonstrated toy-scale irreducibility-witness run.
+gita_content: null
+kernel_content: >
+  Direct, deepening continuation of M0234-M0235's kernel-minimality synthesis: adds a concrete
+  Obs-vector instantiation, formal architectural boundary conditions, and the reconstruction's
+  first executable minimality-verification code — while a live self-correction event catches and
+  fixes an attempted governance fabrication (a fake "RATIFIED... Committee" register entry),
+  modeling the project's own anti-fabrication discipline against its own draft output.
+registry_updates:
+  - "Concrete Obs vector (StateTransition,GapDetection,Determination,RevisionOutcome,InvariantStatus,Attribution) instantiating the previously-placeholder Obs function"
+  - "First executable Python kernel-minimality verification testbed (EpistemicKernel, MinimalityVerificationSuite), with a demonstrated toy-scale irreducibility-witness run"
+  - "Formal Factivity/Selection/Zero boundary conditions (Γ attribution operator, Select_epi/Select_act split, Zero∉C_irr)"
+  - "Theorem refinement: minimality must quantify over admissible implementations/realization mappings (𝔎_adm,⪯_cap), not subsets of one capability list, to handle alternative non-subset decompositions"
+  - "Complexity(K) formally removed (not deferred) from the mathematical minimality definition"
+  - "GOVERNANCE-FABRICATION CATCH: a draft 'RATIFIED... Committee' block corrected to UNRATIFIED/proposal status before acceptance"
+anchor_test:
+  anchor: true
+  supports_dimension: "First executable kernel-minimality verification code; concrete Obs vector; formal Factivity/Selection/Zero boundaries; theorem refinement for non-subset decompositions; Complexity(K) purge; live governance-fabrication self-correction"
+  refines_or_contradicts: "refines (M0235's minimality apparatus, made more concrete/executable and further corrected); contradicts (the draft's own fabricated RATIFIED/Committee status and its own 'deepest theorem'/mathematical-law framing, both self-caught)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Unless that committee and ratification act actually exist in your governance system, this must not appear as a factual ratification... This is not cosmetic. It is exactly the kind of provenance error KnowledgeOS is supposed to prevent.\""
+  - "\"A competing Kernel may realize the same semantic capability through a different decomposition... Capabilities(K_2)⊄C* syntactically, even though K_1≡_sem K_2.\""
+  - "\"I strongly recommend removing Complexity from the mathematical Kernel definition at this stage.\""
+  - "\"We have not yet proved which named operators constitute the Kernel. But we have now defined what 'being a minimal Kernel' means. That is the real breakthrough.\""
+undefined_concepts: []
+open_questions:
+  - "Was the corrected register entry ever submitted for actual governance ratification?"
+  - "Was the executable testbed ever scaled to the full 13-operator candidate universe?"
+tier2_triggered: true
+tier2_reason: >
+  Delivers this reconstruction's first executable (Python) kernel-minimality verification code, a
+  concrete instantiation of the previously-placeholder Obs function, and a further genuine theorem
+  refinement (non-subset alternative decompositions) — while also documenting a live, self-caught
+  governance-fabrication event (a fake "RATIFIED... Committee" status corrected before acceptance),
+  directly modeling this project's own anti-fabrication epistemic discipline against its own draft
+  output.

@@ -1,0 +1,50 @@
+sequence: 2314
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260901_0927_mathematical_theory_gita_inspired_knowelge-os-model.md
+title: "DUPLICATE of file 2312 (byte-identical, confirmed via md5sum) -- a THIRD copy of the same content, this time NOT flagged 'duplicate' in its filename and located in a different directory (phase_measure_theory root, not knowledgeos_kernel/prompts/)"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "duplicate; corpus-integrity note: this is the third occurrence of this exact content (2312, 2313 explicitly 'duplicate', and this one unflagged and relocated to a different directory) -- a mild corpus-hygiene finding worth flagging since the filename gives no indication of duplication"
+source_role: DUPLICATE
+canonical_source: 2312
+importance: low
+confidence: high
+about: >
+  Byte-identical duplicate of file 2312 ("Controlled Mathematical and DDD Refinement Mandate for the
+  Evolving-Dimensional Model"), confirmed via md5sum comparison. Unlike file 2313 (which explicitly names
+  itself "duplicate"), this file's name gives no indication it is a repeat -- it appears at the
+  phase_measure_theory root level under a distinct topical filename
+  ("mathematical_theory_gita_inspired_knowelge-os-model.md", timestamped 2026-09-01 09:27, later than the
+  02:xx-series prompts/ files it duplicates), suggesting the same content was independently saved/exported a
+  third time under a new name and location as the corpus was reorganized. No independent analysis performed
+  beyond noting this corpus-hygiene observation; see 2312 for the full content record. Canonical source is
+  2312.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - "Byte-identical duplicate of file 2312 (and of file 2313), confirmed via md5sum. This is the third occurrence of this exact content in the corpus, the first two both under knowledgeos_kernel/prompts/, this one relocated to the phase_measure_theory root under an unrelated-looking filename with no 'duplicate' marker."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: note that this is a THIRD occurrence of file 2312's content, unlike the explicitly-flagged duplicate 2313, this one carries no 'duplicate' marker in its filename despite being byte-identical -- a mild corpus-hygiene finding for future duplicate-detection reliance on filenames alone."
+anchor_test:
+  anchor: "n/a — duplicate"
+  supports_dimension: "n/a"
+  refines_or_contradicts: "n/a"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Confirmed byte-identical duplicate of file 2312 (and 2313); not independently analyzed. Flagged only for the corpus-hygiene observation that this copy carries no 'duplicate' marker in its filename."

@@ -1,0 +1,225 @@
+sequence: 739
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-131421_step-151-knowledgeos-vertical-slice-v0-1.md
+title: "Step 151 -- MAJOR SYNTHESIS MILESTONE, DECISIVELY CONFIRMS THE MAXIMUM-PRIORITY CONCRETENESS TEST: Delivers a Genuinely Concrete Repository Structure Sketch, Minimal Per-Context Domain Schemas, Illustrative API Endpoints With Worked JSON Request/Response Examples, an Actual Relational Table List, 'Checker Must Not Use the LLM,' a Numbered 17-Step Golden Trace, a Checkbox-Based Seven-Category Definition of Done, Five Named Failure Acceptance Tests, a Determinism Acceptance Test, and an Explicit Ten-Item 'What We Should NOT Build Yet' Scope Boundary -- Delivers the KnowledgeOS Core Equation and the Three-Kinds-of-Truth Taxonomy -- Opens Step 152, Implementation Architecture Constitution v1.0, a THIRD Constitution Attempt to Track Against 0705's C1-C7 and 0730's WP20"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 151 -- KnowledgeOS Vertical Slice v0.1', flagged with maximum priority at 0738's close; decisively confirms and exceeds that promise -- delivers the most genuinely concrete, implementation-ready artifact set in the entire reconstruction (repository structure, minimal schemas, API endpoints, JSON examples, a relational table list, a checkbox DoD, named failure tests) -- before opening Step 152's promise of a machine-checkable Implementation Architecture Constitution v1.0, a third constitution-naming attempt requiring tracking against 0705's C1-C7 and 0730's WP20 seven-rule set"
+source_role: PRIMARY_RESEARCH
+canonical_source: 739
+importance: critical
+confidence: high
+about: >
+  Opens declaring the objective is not to build all of KnowledgeOS but "to prove one complete,
+  deterministic, auditable path" using Nexus, deliberately kept read-only. Delivers five things the first
+  implementation must prove simultaneously (bounded context separation, governed context retrieval,
+  deterministic assurance, agent-independent contracts, complete traceability), with the success criterion
+  precisely restated: "one real engineering question can travel through the complete governed KnowledgeOS
+  lifecycle without semantic shortcuts." Reaffirms epistemic discipline even in this concrete specification
+  ("the actual rule must come from the existing governance/assurance material rather than being invented
+  merely to satisfy the demo"), and delivers an eight-item explicit slice-boundary exclusion list (no
+  production mutation, automatic deployment/migration, complex multi-agent orchestration, full enterprise
+  graph, full event sourcing, microservice decomposition, or LLM-based assurance).
+
+  **Delivers a genuinely concrete repository structure sketch, the first actual repository-directory-level
+  artifact produced anywhere in the reconstruction** (§151.6): `knowledgeos/{AGENTS.md, docs/
+  {architecture,decisions,contracts}, src/{governance,knowledge,evidence,assurance,agent,action,
+  authorization,context}, adapters/{nexus,git,ci}, infrastructure/{persistence,messaging,observability},
+  tests/{domain,contract,integration,golden-trace}, .claude/, .codex/}`, with the explicit distinction
+  "architectural ownership" (which must remain stable) from technology-specific package layout (which does
+  not). Reconfirms `.claude`/`.codex` must not become the enterprise KnowledgeOS database, and `AGENTS.md`
+  as pointer/operating contract.
+
+  Delivers minimal per-context "v0.1" schemas for Governance (`Decision, Policy, RuleReference, Scope,
+  Validity` — explicitly not the full enterprise governance lifecycle), Knowledge (`Claim, ClaimStatus,
+  Provenance, EvidenceReferences`), Evidence (`EvidenceID, Subject, Source, ObservedAt, Reference,
+  ContentHash, Provenance`), Assurance (`Rule, Verification, Verdict, Finding`), and Context
+  (`ContextPackage{contextId,traceId,subject,governance,claims,rules,evidence,findings,permissions,
+  provenance}`, "the most important agent-facing model"), each deliberately minimal relative to the full
+  target model established across Steps 137-147.
+
+  **Delivers an illustrative first API contract with actual endpoint sketches and worked JSON request/
+  response examples, the first concrete request/response payloads produced anywhere in the reconstruction**
+  (§151.15-151.17): `GET /context, POST /verifications, GET /verifications/{id}, POST /evidence, POST
+  /recommendations, POST /actions, GET /actions/{id}, POST /authorizations/evaluate`, explicitly caveated
+  "these are illustrative protocol endpoints. The semantic operations, not these exact paths, are the
+  architectural contract" — followed by a concrete JSON context-request example
+  (`{traceId, subject, task, scope}`) and response shape.
+
+  **Delivers a concrete first rule and, crucially, "checker must not use the LLM" — an important, precisely
+  stated assurance boundary applied at the implementation level for the first time** (§151.18-151.20):
+  `R-NEXUS-001` (again explicitly noted as needing grounding in real material, not invented for
+  architectural convenience), with the checker contract formalized as `f(input)=same output` for the same
+  relevant input — "the LLM may explain the result. It should not decide the authoritative verdict" —
+  directly and sharply operationalizing 0705's/0709's/0735's deterministic-assurance/anti-hallucination
+  discipline into an actual implementation-level constraint on the checker component specifically.
+
+  Delivers a full, concrete worked assurance chain (Evidence E42 → Verification V42 with an explicit
+  immutability rule — a later run creates V43, never overwrites V42 — → Finding F42 pointing back through
+  Verification→Rule→Evidence→Nexus Observation, "the minimal assurance chain"), and a first-Action
+  restriction to `READ_ONLY` (e.g. `READ_NEXUS_CONFIGURATION`) — "this allows us to test the action/
+  authorization architecture without introducing operational risk."
+
+  **Delivers the numbered 17-step first Golden Trace, the most operationally concrete Golden Trace
+  walkthrough in the reconstruction** (§151.33): from "1. Agent identifies task" through "17. Trace
+  completed," directly executable as an actual integration-test script outline. Delivers the Golden Trace
+  assertion mapped to four specific ID types (`TraceID`=what happened; `CausationID`=why; `EvidenceID`=what
+  supports it; `RuleID+RuleVersion`=which rule determined the result) and a concrete trace-record structure
+  (`GT-NEXUS-001{Context,Recommendation,Action,Authorization,Execution,Evidence,Verification,Finding}`,
+  "the first meaningful KnowledgeOS graph").
+
+  **Delivers an actual concrete relational persistence table list, the first genuinely concrete schema
+  artifact produced anywhere in the reconstruction** (§151.36): `agents, tasks, contexts; decisions,
+  policies, rules; claims, evidence, verifications, findings; recommendations, actions, authorizations,
+  executions; domain_events, outbox, audit_records`. **Delivers "do not create generic EAV," a valuable,
+  precisely reasoned database-design anti-pattern warning**: an Entity-Attribute-Value schema "appears
+  flexible but destroys: type safety, semantic ownership, invariant enforcement, discoverability" — a real,
+  currently applicable database-design caution not previously stated in the reconstruction. Delivers a
+  concrete first graph-edge list matching the Golden Trace's actual objects exactly, a worked graph query
+  ("why was this finding raised?" via `Finding→Verification→Rule→Evidence→Observation→Nexus`), and a
+  Search-result type-preservation requirement ("prevents semantic flattening"). **Delivers "do not make
+  graph mandatory for context v0.1"**: "the first context path should work even if the graph is unavailable.
+  That proves: `Graph≠Authority`" — the most concrete implementation-level test of the graph-is-projection
+  principle established across 0725/0727/0733/0734/0737.
+
+  Delivers a minimal first event vocabulary (ten events: `ContextRequested, ContextProvided,
+  RecommendationCreated, ActionRequested, ActionAuthorized, ActionDenied, ExecutionCompleted,
+  EvidenceRegistered, VerificationCompleted, FindingRaised`), "do not create dozens of events until actual
+  behavior requires them," plus concrete first-outbox and first-projection (Graph/Search/Trace) and
+  first-audit-record specifications. Delivers the Harness boundary test, the first genuinely codeable
+  architectural-compliance test for the pointer-layer principle: `.claude/` does not own Governance state;
+  `.codex/` does not own Governance state; `AGENTS.md` does not own Governance state; `KnowledgeOS` owns
+  governed state.
+
+  **Delivers the first Definition of Done, a genuinely concrete, checkbox-based DoD across seven
+  categories** (Domain, API, Nexus, Assurance, Traceability, Agent, Persistence), each with specific,
+  directly verifiable checkboxes — the most operationally concrete Definition of Done in the reconstruction,
+  matching this repository's own actual governing "Definition of Done" discipline. **Delivers the Golden
+  Trace acceptance criterion, the strongest possible test of graph-rebuildability, expressed as an actual
+  destructive-then-verify methodology**: "delete all projections. Then rebuild them from authoritative
+  state/events. Expected result: `Graph_rebuilt=Graph_expected` and `Trace_rebuilt=Trace_expected`. This
+  proves that the projections are not secretly authoritative."
+
+  **Delivers five explicitly named failure acceptance tests (Test A through E), the most concrete,
+  directly codeable test-case catalog in the reconstruction**: Test A Missing evidence
+  (`Verification→FAIL` or `INSUFFICIENT_EVIDENCE`); Test B Invalid rule (`UnknownRuleVersion→REJECT`); Test
+  C Authorization denied (`ActionRequested→DENIED→No Execution`); Test D Context expired
+  (`Expired Context→High-risk action→BLOCK`); Test E Duplicate execution request (`same ActionID→retry→no
+  unintended duplicate execution`). **Delivers a Determinism acceptance test**: `Verify(E,R)=V` must hold
+  under repetition — "the result should not change because a different LLM happened to process it," paired
+  with the precise Agent-nondeterminism boundary (Claude and Codex may reason to different recommendations,
+  but `Authorization` and `Verification` must remain governed/deterministic).
+
+  **Delivers "the critical separation" diagram and its precise capstone summary**: `AI[Claude,Codex]→
+  Reasoning→Recommendation→KnowledgeOS deterministic control plane→{Governance,Assurance,Authorization}` —
+  "the LLM does not disappear. It is simply placed in the correct architectural position" — directly
+  crystallizing 0738's Control-Plane-vs-Data-Plane distinction into the final implementation-boundary
+  statement.
+
+  **Delivers "what we should NOT build yet," an explicit ten-item scope-exclusion list, the most concrete
+  itemized scope boundary in the entire reconstruction**: ❌ autonomous production deployment; ❌ automatic
+  Nexus migration; ❌ universal enterprise ontology; ❌ full knowledge graph UI; ❌ autonomous policy
+  creation; ❌ automatic governance approval; ❌ generic "AI memory" database; ❌ full event-sourced
+  architecture; ❌ microservice fleet; ❌ multi-agent swarm — "each could eventually become relevant. None
+  is required to prove the architecture."
+
+  **Delivers a new precise capstone definition of KnowledgeOS, extending 0724's/0732's/0737's prior
+  definitions**: "a governed engineering control and evidence platform that provides agents with
+  authoritative context and constrains consequential actions. The AI layer sits on top." **Delivers "the
+  crucial distinction" — a clean three-tier truth taxonomy consolidating the reconstruction's scattered
+  epistemic-status work into one compact statement**: Agent assertion (`LOW authority` — "I believe Nexus
+  should be upgraded"), Engineering observation (`OBSERVATIONAL authority` — "Nexus currently reports
+  version X"), Governed decision (`GOVERNANCE authority` — "the approved migration policy requires Y"),
+  with Assurance connecting them: `Expectation+Observation→Verification`. **Delivers the KnowledgeOS core
+  equation, the most compact single formula summarizing the entire architecture**:
+  `KnowledgeOS=Governance+Knowledge+Evidence+Assurance+Context+Authorization+Traceability`, with
+  `AI=Consumer+Reasoning Actor` and `EngineeringSystems=Operational Authority`.
+
+  Delivers Step 151's verdict: "do not implement the whole platform. Implement one complete Golden Trace,"
+  named `Nexus Read-Only Assurance Trace`, demonstrating the full chain `Context→Evidence→Deterministic
+  Verification→Recommendation→Authorization→Action→Observation→Evidence→Verification`.
+
+  **Closes by opening "Step 152 — Implementation Architecture Constitution v1.0,"** promising to turn the
+  architecture into "a machine-checkable implementation constitution" covering dependency rules, module
+  ownership, authoritative directories, allowed APIs, legal state transitions, cross-boundary data rules,
+  explicit Claude/Codex constraints, determinism/auditability requirements, and compliance tests —
+  `Architecture→Rules→Automated Verification` — explicitly stating "this is the point where the existing
+  KnowledgeOS governance approach — registry, hooks, deterministic assurance, session/change logging,
+  `.claude`/`.codex` symmetry — can become the enforcement mechanism for the architecture itself." **This is
+  a THIRD constitution-naming attempt in the reconstruction** (after 0705's ratified C1-C7 "KnowledgeOS
+  Architecture Constitution v0.1" and 0730's WP20 proposed seven-rule set, neither of which this file
+  cross-references by name), requiring careful tracking for whether it reconciles, supersedes, or further
+  proliferates the reconstruction's constitutional-artifact count. No actual code execution, repository
+  inspection, or verified filesystem/architecture claim reported anywhere in this file; every schema,
+  endpoint, table, and test remains an unimplemented specification, though this file's content is the most
+  directly translatable into actual code of any file in the entire reconstruction to date.
+introduces:
+  - concept: "A genuinely concrete repository structure sketch -- the first actual repository-directory-level artifact in the reconstruction"
+  - concept: "Illustrative API endpoints with worked JSON request/response examples -- the first concrete payloads in the reconstruction"
+  - concept: "'Checker must not use the LLM' -- deterministic-assurance discipline applied at the implementation level"
+  - concept: "The numbered 17-step first Golden Trace, directly executable as an integration-test outline"
+  - concept: "An actual concrete relational persistence table list"
+  - concept: "'Do not create generic EAV' -- a database-design anti-pattern warning"
+  - concept: "'Do not make graph mandatory for context v0.1' -- the most concrete implementation-level test of Graph≠Authority"
+  - concept: "The Harness boundary test -- the first codeable architectural-compliance test for the pointer-layer principle"
+  - concept: "The checkbox-based seven-category Definition of Done"
+  - concept: "The Golden Trace acceptance criterion: delete-and-rebuild-projections methodology"
+  - concept: "Five named failure acceptance tests (Test A-E) and a Determinism acceptance test"
+  - concept: "'What we should NOT build yet' -- a ten-item explicit scope-exclusion list"
+  - concept: "The KnowledgeOS core equation and the three-tier truth taxonomy"
+  - concept: "Opens Step 152 -- Implementation Architecture Constitution v1.0, a THIRD constitution-naming attempt"
+defines:
+  - concept: "'Checker must not use the LLM'"
+    definition: "A deterministic checker's verdict function must satisfy f(input)=same output for the same relevant input every time it is executed; an LLM may be used to explain or contextualize a verdict after the fact, but it must never itself determine the authoritative PASS/FAIL/UNKNOWN result"
+  - concept: "Golden Trace acceptance criterion (delete-and-rebuild)"
+    definition: "The strongest test of the architecture's projection discipline: deliberately delete all derived projections (graph, search index, etc.), then rebuild them entirely from authoritative state and event history; the rebuilt projections must exactly match the originals, proving that the projections were never secretly holding authoritative information the domain state lacked"
+  - concept: "The three-tier truth taxonomy"
+    definition: "Every claim in KnowledgeOS carries one of three authority levels: Agent assertion (LOW authority -- what an AI believes or recommends), Engineering observation (OBSERVATIONAL authority -- what an external system currently reports), or Governed decision (GOVERNANCE authority -- what has been organizationally approved); Assurance is the mechanism that connects Governance's Expectation to Engineering's Observation via Verification"
+  - concept: "The KnowledgeOS core equation"
+    definition: "KnowledgeOS=Governance+Knowledge+Evidence+Assurance+Context+Authorization+Traceability, with AI functioning only as Consumer+Reasoning Actor and external EngineeringSystems retaining Operational Authority -- the most compact single summary of the entire target architecture"
+refines:
+  - concept: "0738's flagged maximum-priority promise of implementation-level concreteness"
+    refinement: "Decisively confirmed and exceeded -- delivered with an actual repository structure, concrete schemas, worked JSON examples, a relational table list, and directly codeable test cases"
+  - concept: "0705's/0709's/0735's deterministic-assurance/anti-hallucination discipline"
+    refinement: "Operationalized into a concrete implementation-level constraint on the checker component specifically: f(input)=same output, LLM explains but never decides the verdict"
+  - concept: "0725's/0727's/0733's/0734's/0737's graph-as-projection-not-authority discipline"
+    refinement: "Given its most concrete implementation-level test to date: the context path must function correctly even when the graph is entirely unavailable"
+  - concept: "0738's Control-Plane-vs-Data-Plane distinction"
+    refinement: "Crystallized into the final capstone statement 'the LLM does not disappear. It is simply placed in the correct architectural position'"
+  - concept: "0724's/0732's/0737's prior capstone definitions of KnowledgeOS"
+    refinement: "Extended with 'control and evidence platform' and 'constrains consequential actions' as newly emphasized terms, plus the most compact single formula (the KnowledgeOS core equation) produced in the reconstruction"
+  - concept: "0705's ratified C1-C7 Constitution and 0730's WP20 proposed seven-rule constitution"
+    refinement: "A third, differently-named constitutional artifact (Implementation Architecture Constitution v1.0) is now promised without reference to either prior one -- extending, rather than resolving, the reconstruction's constitutional-artifact proliferation"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0740 (Step 152 — KnowledgeOS Implementation Architecture Constitution v1.0) with the HIGHEST priority: determine whether this third constitution-naming attempt explicitly reconciles with, supersedes, or ignores 0705's ratified C1-C7 and 0730's WP20 seven-rule set, and whether it delivers genuine machine-checkable rule specifications (e.g. actual dependency-linter configuration, actual CI-enforceable assertions) beyond the AFR/RT/DATA/API/IC/DM/GT/GG/GE/GC/GA/H-series invariants already produced."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the genuinely concrete repository structure, minimal per-context schemas, illustrative API endpoints with worked JSON examples, an actual relational table list, and 'checker must not use the LLM' -- the most implementation-ready artifact set in the entire reconstruction."
+  - "dimension-registry.md: record the numbered 17-step Golden Trace, the checkbox-based Definition of Done, the delete-and-rebuild Golden Trace acceptance criterion, five named failure acceptance tests, a determinism acceptance test, and 'what we should NOT build yet.'"
+  - "dimension-registry.md: record the KnowledgeOS core equation and the three-tier truth taxonomy as primary candidate reference artifacts for the eventual §29-gated canonical synthesis; flag Step 152 (0740) as a THIRD constitution-naming attempt requiring tracking against 0705's C1-C7 and 0730's WP20."
+anchor_test:
+  anchor: "0738's maximum-priority flagged promise; 0705's/0709's/0735's deterministic-assurance discipline; 0725's/0727's/0733's/0734's/0737's graph-as-projection discipline; 0738's Control-Plane-vs-Data-Plane distinction; 0724's/0732's/0737's prior capstone KnowledgeOS definitions; 0705's C1-C7 and 0730's WP20 constitutional artifacts"
+  supports_dimension: "MAJOR SYNTHESIS MILESTONE: decisively confirms and exceeds the maximum-priority promise of implementation-level concreteness. Delivers the reconstruction's first genuinely concrete repository structure, minimal per-context schemas, illustrative API endpoints with worked JSON payloads, an actual relational table list, and the implementation-level 'checker must not use the LLM' constraint. Delivers a numbered, directly executable 17-step Golden Trace, a checkbox-based Definition of Done, a rigorous delete-and-rebuild acceptance criterion, five named failure tests, a determinism test, and an explicit ten-item scope-exclusion list -- collectively the most directly translatable-to-code content produced anywhere in the reconstruction. Delivers the compact KnowledgeOS core equation and a clean three-tier truth taxonomy. Closes by opening a third constitution-naming attempt requiring careful tracking against 0705's and 0730's prior constitutional artifacts"
+  refines_or_contradicts: "directly and substantially confirms and extends 0738's maximum-priority promise, 0705's/0709's/0735's deterministic-assurance discipline, 0725's/0727's/0733's/0734's/0737's graph-as-projection discipline, 0738's Control-Plane-vs-Data-Plane distinction, and 0724's/0732's/0737's prior capstone definitions; no contradiction found; extends (without resolving) the reconstruction's constitutional-artifact proliferation via a third distinctly-named constitution"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§151.6's concrete repository directory sketch (knowledgeos/{AGENTS.md, docs/, src/{governance,knowledge,evidence,assurance,agent,action,authorization,context}, adapters/{nexus,git,ci}, infrastructure/, tests/, .claude/, .codex/}) is directly checkable evidence of the first genuine repository-structure-level artifact in the entire reconstruction."
+  - "§151.52's delete-and-rebuild Golden Trace acceptance criterion ('delete all projections. Then rebuild them from authoritative state/events... this proves that the projections are not secretly authoritative') is directly checkable evidence of a rigorous, actually executable test methodology for the graph-as-projection principle."
+  - "§151.57's ten-item 'what we should NOT build yet' list is directly checkable evidence of the most concrete, itemized scope-boundary specification produced anywhere in the reconstruction."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 152's actual content (0740), once read, explicitly reconciles this third constitution-naming attempt with 0705's ratified C1-C7 and 0730's WP20 proposed seven-rule set, or extends the reconstruction's constitutional-artifact proliferation further without reconciliation."
+  - "Whether Step 152 delivers genuine machine-checkable rule specifications (e.g. actual dependency-linter configuration syntax, actual CI-pipeline assertion code) beyond the boxed-formula invariant style used throughout the AFR/RT/DATA/API/IC/DM/GT/GG/GE/GC/GA/H-series."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: decisively confirms and exceeds the maximum-priority promise of implementation-level concreteness. Delivers the reconstruction's first genuinely concrete repository structure, minimal per-context schemas, illustrative API endpoints with worked JSON payloads, an actual relational table list, and the implementation-level 'checker must not use the LLM' constraint. Delivers a directly executable 17-step Golden Trace, a checkbox-based Definition of Done, a rigorous delete-and-rebuild acceptance criterion, five named failure tests, a determinism test, and an explicit ten-item scope-exclusion list. Delivers the compact KnowledgeOS core equation and a clean three-tier truth taxonomy. Opens a third constitution-naming attempt requiring careful tracking against 0705's and 0730's prior constitutional artifacts."

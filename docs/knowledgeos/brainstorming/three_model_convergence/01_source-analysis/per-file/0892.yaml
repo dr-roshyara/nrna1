@@ -1,0 +1,166 @@
+sequence: 892
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-192926_step_263_entity-dimension-value-type-system.md
+title: "Step 263 -- Entity/Dimension/Value Type System: PARTIALLY CORROBORATES (but does not fully resolve) File 0891's Flagged Discontinuity by Attributing the 'Already-PROVEN' Claim to an Unread Prior Corpus Artifact ('Q14'/'CB-2 RESOLVED BY THE CORPUS') -- Formalizes P=(E,D,V) as a Dependent Sum Type 𝒫=Sum_E Sum_D V_D, Delivers the Genuinely Valuable Self-Correcting Finding That Q14's Own Classification of Version-Numbers as Interval-Scale Is Mathematically Wrong (Should Be Ordinal), and Explicitly Leaves Two Competing Relationship-Representation Models Open"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: c1
+  secondary_note: "measurement-theory scale classification (nominal/ordinal/interval/ratio) and the version-numbers-are-not-interval correction are genuinely statistical/mathematical content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 892
+importance: critical
+confidence: medium
+about: >
+  **Opens by partially corroborating, but not fully resolving, file 0891's flagged epistemic-status
+  discontinuity**: "the corpus search shows that Step 263 is no longer an open discovery problem... The
+  non-step Q14 material already defines the three types, and the independent reconstruction explicitly
+  classifies CB-2 as 'RESOLVED BY THE CORPUS — not by the verifier.'" **This attributes the "already
+  proven" status invoked at file 0891 to a specific named prior corpus artifact ("Q14") and a specific
+  named gap-tracking label ("CB-2")** -- neither of which has been directly read by this reconstruction in
+  the sequential pass through files 0854-0891. This is consistent with, and extends, the established
+  pattern (first confirmed at file 0861) of the corpus referencing source material not present in the
+  immediately visible context -- **the discontinuity is therefore attributable to an unread prior
+  artifact rather than to fabrication, but remains UNVERIFIED by this reconstruction until Q14 itself, or
+  equivalent corroborating content, is directly encountered.**
+
+  **§263.1-263.4 restates the "canonical Q14" type system** and Entity's definition: boxed **`Entity =
+  anything that can be the subject of knowledge: a person, object, system, event, relationship, or
+  concept`** -- explicitly broader than DDD's technical Entity notion. **§263.3 delivers an explicit DDD
+  warning**: boxed **`KnowledgeOS Entity≠automatically DDD Entity`** -- an event, relationship, or concept
+  may be a KnowledgeOS Entity without being modeled as a DDD Entity, "an important Ubiquitous Language
+  boundary." §263.4 reapplies Step 261's identity/equality distinction: Entity is a semantic role,
+  `EntityIdentity` a separate question.
+
+  **§263.5-263.9 formalizes Dimension** (`d:Domain→V_d`, `d=(ID,Name,ValueSpace,Type,Domain)`), delivers
+  boxed **`DatabaseField≠KnowledgeDimension`**, and **§263.8-263.9 delivers the file's most genuinely
+  valuable, independently checkable contribution**: the measurement-theory scale categories (Nominal/
+  Ordinal/Interval/Ratio, plus Boolean/Text/Complex) -- with an explicit, mathematically sound
+  self-correction of the corpus's own prior Q14 artifact: **"Version numbers are not [interval]; `3.69 −
+  3.68` is not a magnitude..."** -- concluding boxed **`Version: Ordinal candidate`**, not `Interval`,
+  "unless the domain gives an explicit quantitative semantics." Explicitly distinguishes boxed **`Corpus
+  definition exists`** from boxed **`Corpus definition is mathematically valid`** -- "the first is
+  established. The second requires validation" -- a disciplined methodological stance applied concretely
+  against the corpus's own earlier claim, structurally analogous to (though narrower in scope than) 0862's
+  earlier self-auditing downgrades.
+
+  **§263.10-263.12 formalizes Value** (`v=(ID,Value,Dimension,Type)`, the invariant `Value(v)∈V_d⟺
+  Dimension(v)=d`) and restates the well-formedness predicate `WF(P)⟺E∈ℰ∧D∈𝒟∧V∈V_D`, flagged
+  **`CORPUS-ESTABLISHED`** (again, per Q14, not independently re-derived here).
+
+  **§263.13-263.14 restates a minimality table** for `E,D,V` (all six proper non-empty subsets fail,
+  only the full triple succeeds), sourced explicitly to "the earlier Knowledge Atom source," with an
+  important caveat: minimal "for the knowledge-atom model," not proven sufficient for every conceivable
+  proposition -- the corpus itself contains competing forms `P=(S,ρ,O,Γ)` and `P=(V_P,E_P)`, correctly
+  classified as competing rather than silently discarded.
+
+  **§263.15-263.17 delivers the relationship-representation problem**: the corpus has both `Relationship=
+  (E_1,E_2,T,R,Q,E,Σ,τ)` as a first-class construct AND represents relationships via `P=(E,D,V)`
+  (worked example: `P=(Bhīṣma,RelationshipToArjuna,Grandfather)`) -- **explicitly names two competing
+  Representations, A (relationship as dimension/value, compact) and B (relationship as first-class object,
+  carrying relationship-specific evidence/status/validity/qualifiers)**, concluding boxed **`Relationship
+  may require an Assertion-level wrapper even if its semantic core is a proposition`** -- directly
+  extending file 0891's Model-A/Model-B open question with corpus-attested examples on both sides rather
+  than resolving it.
+
+  **§263.18-263.20 reaffirms the Proposition/Assertion separation invariant**: boxed **`P∌Σ,e,τ,Π`** under
+  the current canonical ontology -- `P=(E,D,V)` must not become `P=(E,D,V,Σ,e,τ,Π)` merely because those
+  fields matter to an assertion, "that would collapse two semantic levels" -- and restates the full
+  hierarchy `K=(𝒜,ℛ)`, `A=(id,P,e,c,t,Π)`, `P=(E,D,V)`.
+
+  **§263.21 delivers a symbol-hygiene recommendation** reconciling with 0891's own Entity/Evidence
+  disambiguation: recommends `x∈ℰ` for entity instances, `d∈𝒟` for dimensions, `v∈V_d` for values, and
+  reserving `e` for Evidence only where unambiguous -- explicitly "a notation recommendation, not a
+  semantic change."
+
+  **§263.22 delivers the DDD subject-predicate-object interpretation** (Entity→subject, Dimension→
+  semantic predicate/axis, Value→typed object of the predicate) -- "roughly analogous to a typed
+  subject-predicate-object structure... while remaining distinct from RDF or classical logical syntax."
+
+  **§263.23-263.25 delivers the file's sharpest mathematical formalization**: models the proposition space
+  as a genuinely DEPENDENT SUM TYPE, boxed **`𝒫=Σ_{E∈ℰ}Σ_{D∈𝒟}V_D`**, explicitly stronger than treating
+  `ℰ×𝒟×𝒱` as an unrestricted Cartesian product, since not every value is valid for every dimension --
+  worked with a concrete `SecurityStatus` example showing `WF(Nexus,SecurityStatus,3.69)=false`. Concludes
+  boxed **`KnowledgeOS Proposition Space is typed`** -- "not all triples... all semantically valid
+  triples" -- giving `WF:𝒫→{true,false}` as "a strong bridge between the conceptual theory and eventual
+  implementation."
+
+  **§263.26 delivers an explicit non-claims list** (not all ValueSpaces known; measurement-scale rules
+  not complete; not all relationship forms proven reducible to `(E,D,V)`; semantic equality of values not
+  proven decidable).
+
+  **§263.27 delivers a fifteen-row status matrix** (nine green -- the Q14-sourced definitions and
+  invariants; four yellow -- measurement-scale semantics, the Version-scale correction, relationship
+  representation, symbol hygiene; two red -- complete value ontology, universal proposition
+  expressiveness).
+
+  **§263.28 delivers the verdict**: boxed **`CB-2 = CLOSED BY THE CORPUS`** -- explicitly instructing "we
+  should not continue treating `P=(E,D,V)` as an unresolved hypothesis," reclassifying remaining work as
+  validation/refinement (value-space semantics, measurement scales, relationship representation, identity,
+  normalization) rather than open discovery. **§263.29 reaffirms the full `K/A/P` hierarchy** as "one of
+  the strongest pieces of convergence in the corpus."
+
+  **§263.30 closes opening "Step 264 — Value Space and Measurement Semantics,"** explicitly concentrating
+  remaining ambiguity in `V_D` and its admissible operations (`Equality_D, Compatibility_D, Ordering_D,
+  Distance_D, Aggregation_D`), worked through the nominal/ordinal/interval/ratio implications for
+  meaningful operations, and specifically flagging version-ordering semantics (lexical vs. semantic-
+  version precedence vs. real-number arithmetic) as the concrete next test case -- "where the KnowledgeOS
+  theory can either gain genuine mathematical closure—or expose another foundational inconsistency."
+introduces:
+  - concept: "Attribution of file 0891's 'already-PROVEN' claim to a specific named prior corpus artifact ('Q14') and gap-tracking label ('CB-2 RESOLVED BY THE CORPUS') -- partially corroborating but not fully resolving the flagged discontinuity, since Q14 itself remains unread"
+  - concept: "KnowledgeOS Entity≠automatically DDD Entity, an explicit Ubiquitous Language boundary warning"
+  - concept: "DatabaseField≠KnowledgeDimension"
+  - concept: "The genuinely valuable, independently checkable self-correction: Q14's classification of version numbers as Interval-scale is mathematically wrong; Ordinal is the defensible candidate"
+  - concept: "Corpus definition exists≠Corpus definition is mathematically valid, as an explicit methodological distinction applied concretely"
+  - concept: "The two-representations relationship problem (A: relationship as dimension/value; B: relationship as first-class object), with corpus-attested examples on both sides"
+  - concept: "The Proposition/Assertion separation invariant P∌Σ,e,τ,Π"
+  - concept: "The dependent-sum-type formalization of the proposition space, 𝒫=Σ_{E∈ℰ}Σ_{D∈𝒟}V_D, stronger than an unrestricted Cartesian product"
+  - concept: "WF:𝒫→{true,false} as a deterministic bridge between conceptual theory and implementation"
+  - concept: "Opens Step 264 — Value Space and Measurement Semantics, concentrating remaining ambiguity in V_D and its admissible operations"
+defines:
+  - concept: "Dependent sum type formalization of the proposition space"
+    definition: "𝒫=Σ_{E∈ℰ}Σ_{D∈𝒟}V_D, i.e. the proposition space is not the unrestricted Cartesian product ℰ×𝒟×𝒱 but a dependent sum (Sigma type) where, for each entity E and dimension D, only values v drawn from that dimension's specific admissible value space V_D are permitted. This is mathematically stronger than an unrestricted product because it encodes, directly in the type, that not every value is valid for every dimension (e.g. (Nexus,SecurityStatus,3.69) is ill-typed since 3.69∉V_SecurityStatus={Compliant,NonCompliant,Unknown}), making well-formedness WF:𝒫→{true,false} a decidable structural predicate rather than a post-hoc validation rule"
+  - concept: "Corpus definition exists vs. Corpus definition is mathematically valid"
+    definition: "A methodological distinction requiring that the mere presence of a definition or classification within the prior corpus (e.g. Q14's classification of Version as an Interval-scale dimension) must not be treated as automatically mathematically correct. The corpus's historical existence of a claim is one (weaker) epistemic status; its independent mathematical validation is a separate (stronger) status that must be checked, not assumed -- concretely demonstrated by finding Q14's Interval classification of version numbers indefensible (3.69−3.68 is not a meaningful magnitude) and proposing Ordinal instead"
+refines:
+  - concept: "0891's opening claim that 'the latest executed reconstruction has already closed much of Step 261'"
+    refinement: "PARTIALLY CORROBORATED, not fully resolved -- this file attributes that status to unread prior corpus material named 'Q14' and a gap-label 'CB-2,' consistent with the established missing-source-material pattern (file 0861), but this reconstruction has still not directly read Q14 itself, so the underlying 'PROVEN' status remains second-hand pending direct encounter with that material"
+  - concept: "0891's Model-A/Model-B relationship-representation open question"
+    refinement: "EXTENDED with concrete corpus-attested examples on both sides (the Bhīṣma-Grandfather-Arjuna proposition-style example for Model A; the eight-field Relationship tuple for Model B) without resolving which model is correct -- reinforcing that a genuine counterexample, not corpus presence alone, is still required"
+  - concept: "0891's Entity/Evidence symbol-hygiene proposal (x∈ℰ, e for Evidence)"
+    refinement: "REAFFIRMED and extended with an explicit d∈𝒟 for dimensions and v∈V_d for values, giving a complete, mutually-consistent three-symbol convention across both files"
+contradicts: []
+repeats:
+  - concept: "0891's P=(x,d,v)/P=(E,D,V) formalization, the three-way removal-test minimality argument, and the P∌{Σ,e,τ,Π} separation invariant"
+    detail: "This file restates the same underlying triple and separation invariant, attributing them to the prior Q14 corpus artifact rather than to 0891's own derivation -- largely consistent in substance, differing mainly in claimed provenance (0891 presented it as its own reasoned removal-test argument; 0892 presents it as pre-existing corpus-established fact)"
+bridge_candidates:
+  - "Read Step 264 (Value Space and Measurement Semantics) next, expecting the promised per-dimension formalization of V_D and its operations (Equality_D, Compatibility_D, Ordering_D, Distance_D, Aggregation_D), and specifically the resolution of the version-ordering-semantics question (lexical vs semver vs real-number)."
+  - "Watch for whether the 'Q14' corpus artifact and 'CB-2' gap label are ever directly encountered as their own file(s), which would resolve the discontinuity flagged at file 0891 by supplying the actually-executed removal tests and equality derivations claimed there."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Version-numbers-are-not-Interval self-correction as a genuinely valuable, independently checkable measurement-theory finding, directly reusable for the gated (§29) canonical Kernel synthesis's eventual value-space typing."
+  - "dimension-registry.md: record the dependent-sum-type formalization 𝒫=Σ_{E∈ℰ}Σ_{D∈𝒟}V_D as the sharpest mathematical structure yet proposed for the proposition space."
+  - "dimension-registry.md: note that file 0891's flagged discontinuity is PARTIALLY (not fully) corroborated by this file's attribution to unread 'Q14'/'CB-2' material -- keep the open-finding status until Q14 itself is directly encountered."
+anchor_test:
+  anchor: "0891's P=(x,d,v)/typed-Proposition formalization and flagged epistemic-status discontinuity; 0890's six-notion equality formalization; 0888's Hash-identity≠semantic-identity and typed-family findings"
+  supports_dimension: "Partially corroborates but does not resolve 0891's discontinuity by naming a specific unread prior artifact (Q14/CB-2). Extends 0891's typed-Proposition formalization into a genuinely stronger dependent-sum-type structure. Delivers an independently valuable, checkable self-correction (Version scale) exemplifying the corpus-definition-exists≠mathematically-valid discipline consistent with 0888's/0889's conservative methodology"
+  refines_or_contradicts: "partially corroborates (does not fully resolve) 0891's discontinuity; extends 0891's Proposition formalization; consistent with, and reinforces, 0888's/0889's conservative discipline"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "§263.9's direct quotation of the corpus's own self-critique ('Version numbers are not [interval]; 3.69 − 3.68 is not a magnitude...') is directly checkable evidence of a genuine, mathematically sound correction to a prior corpus artifact's classification."
+  - "§263.15's worked example (P=(Bhīṣma,RelationshipToArjuna,Grandfather)) alongside the Relationship=(E_1,...,τ) eight-field tuple is directly checkable evidence that the corpus itself contains both competing relationship-representation forms, supporting the file's explicit refusal to choose between them without a counterexample."
+  - "§263.24's worked (Nexus,SecurityStatus,3.69) ill-typedness example is directly checkable evidence for the dependent-sum-type formalization's practical bite (rejecting a specific concrete triple as ill-formed)."
+undefined_concepts: []
+open_questions:
+  - "Whether the named 'Q14' corpus artifact and 'CB-2' gap label are ever directly encountered as readable content in this reconstruction's sequential pass, which would fully resolve file 0891's flagged discontinuity."
+  - "Whether Step 264 genuinely resolves the version-ordering-semantics question (lexical/semver/real-number) as concretely promised."
+  - "Whether the relationship-representation question (Model A vs Model B) is ever resolved by an actual counterexample, as both this file and 0891 explicitly require."
+tier2_triggered: true
+tier2_reason: "Partially corroborates but does not fully resolve file 0891's major flagged discontinuity by naming a specific unread prior corpus artifact. Delivers a genuinely valuable, independently checkable self-correction (Version scale misclassification) and the sharpest mathematical formalization yet of the proposition space (dependent sum type). Classified importance critical and tier2-triggered; confidence medium reflecting the still-unresolved discontinuity."

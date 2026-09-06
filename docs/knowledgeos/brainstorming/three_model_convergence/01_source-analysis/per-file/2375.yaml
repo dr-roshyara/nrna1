@@ -1,0 +1,94 @@
+sequence: 2375
+path: docs/knowledgeos/brainstorming/20260904-081500_gita-on-the-bridge-that-was-not-there.md
+title: "The Gītā on the Bridge That Was Not There -- Fifth KR-SIM Companion Study (KR-BRIDGE-01, a Confounding-by-Redundancy Result), Delivers the Third Consecutive Refusal of the Series' Most Quotable Line, and Confirms Kernel Candidates NONE, Seventh Consecutive Time"
+date: "2026-09-04"
+bytes: 0
+model:
+  primary: g
+  secondary: c1
+  secondary_note: "fifth KR-SIM Gita companion study (parallel to files 2329, 2370, 2372, 2373), applied against KR-BRIDGE-01, a confounding-by-redundancy result (pooled RD=-0.363, stratified RD=0.000 exactly); NOTE: the title's 'bridge' refers to a statistical bridge hypothesis in the experiment, not this reconstruction's own unresolved 'Path B' bridge candidate from file 2319 -- unrelated despite the title's resonance"
+source_role: BRIDGE
+canonical_source: 2375
+importance: high
+confidence: high
+about: >
+  METHODOLOGICAL NOTE: despite its title's resonance with this reconstruction's already-tracked
+  unresolved "Path B" bridge-candidate question (file 2319), this document's "bridge" refers to a
+  statistical bridge HYPOTHESIS within the KR-BRIDGE-01 experiment (a proposed causal connection between
+  two variables) -- entirely unrelated to file 2319's unidentified engineering/DDD research lineage. No
+  connection should be inferred from the shared word.
+
+  Fifth KR-SIM Gītā companion study, against KR-BRIDGE-01: "looked for a connection between two things
+  and found that the apparent connection was a third thing acting on both. Pooled RD=-0.363; stratified,
+  0.000 exactly. Redundancy was causing both Zero and inadequacy" -- a confounding-by-common-cause
+  result.
+
+  **DELIVERS FOUR LOCI**: 3.27 (guṇa as the true actor, agency-attribution is delusion) -- Corroboration
+  C-1 for the SHAPE of the confounding correction (redundancy→Zero and redundancy→inadequacy share a
+  common cause, "exactly the shape 3.27 describes"), explicitly not for the detection method
+  ("stratification... the verse offers no stratification, no contingency table, no test"). 14.19 ("the
+  seer perceives no agent other than the qualities") -- Lens L-1, "'no relationship' is a finding, not a
+  failure," matching the experiment's OUTCOME A (a clean negative result). 2.48 (samatvam/evenness) --
+  weak Corroboration C-2 for the protocol's equal-weighting of H0-H3 ("do NOT privilege H1"), explicitly
+  flagged as a rhyme, not the same claim.
+
+  **DELIVERS THE THIRD CONSECUTIVE REFUSAL OF THE SERIES' MOST QUOTABLE VERSE**: 2.48a ("established in
+  yoga, perform actions, having abandoned attachment") tempts "having found no bridge, abandon
+  attachment to the result and move on." "⚠️ REFUSED -- and for a reason specific to this experiment:
+  OUTCOME A is not a null to be shrugged off. It is a constraint with content: it says a formal bridge
+  hypothesis may not be proposed... a reading of 2.48a as 'release the result' would license exactly the
+  drift the governance freeze forbids." Explicitly: "THIRD REFUSAL IN THREE STUDIES. 2.50 (skill in
+  action), 18.66 (abandon all duties), and now 2.48a. All three are the text's most quotable lines, and
+  all three would license a shortcut." This directly extends and confirms this reconstruction's already-
+  tracked pattern from files 2372 (first refusal) and 2373 (second refusal, with explicit cross-
+  reference) to a third instance.
+
+  **DELIVERS THE CORROBORATION MAP**: five of eight get nothing, including every technical finding and
+  the entire method -- "the text speaks to causal attribution as a POSTURE; the experiment needed causal
+  attribution as a PROCEDURE."
+
+  **DELIVERS A THREE-ITEM CANDIDATE REGISTER**: G-19 (third-factor-is-default-not-fallback, lens, already
+  operationalized as §12 stratification); G-20 (declining-to-name-a-relationship-is-a-result, lens);
+  G-21 (~~release attachment and proceed~~, REFUSED).
+
+  **DELIVERS THE UPDATED RUNNING COUNT**: "kernel candidates -- NONE. SEVENTH CONSECUTIVE TIME." Extends
+  this reconstruction's already-tracked tally (files 2370's fourth, 2372's fifth, 2373's sixth) to seven.
+
+  **CLOSES WITH THE EXPLICIT VALUE-OF-REFUSAL PRINCIPLE, NOW GENERALIZED ACROSS THE SERIES**: "not that
+  three refusals in three studies means the text is unproductive. The refusals are the most reliable
+  output this strand produces -- each names a shortcut the programme would otherwise be tempted by...
+  the refusal is again the most useful part." This closing statement generalizes the pattern first noted
+  in file 2372 into an explicit standing claim about the series' most reliable output type.
+introduces:
+  - concept: "The third consecutive refusal of the series' most quotable verse (2.48a), explicitly enumerated against the first two (2.50, 18.66), establishing a confirmed three-instance pattern"
+  - concept: "The generalized closing claim: refusals are the most reliable output type this KR-SIM Gita companion series produces"
+  - concept: "The updated running count: seventh consecutive KR-SIM Gita companion study to produce zero kernel candidates"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked files 2329, 2370, 2372, 2373 companion-study pattern and kernel-verdict running count"
+    refinement: "EXTENDED to a seventh consecutive occurrence, with the refusal-of-the-most-quotable-verse pattern now confirmed across three consecutive instances and explicitly generalized into a standing methodological claim"
+contradicts: []
+repeats:
+  - "Structurally near-identical to files 2329, 2370, 2372, 2373; this record captures the incremental loci, the third consecutive refusal (now explicitly enumerated), and the updated running count."
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as the fifth KR-SIM Gita-companion study, delivering the third consecutive refusal of the series' most quotable verse (now explicitly enumerated as a confirmed three-instance pattern) and the seventh-consecutive-time zero-kernel-candidate running count."
+anchor_test:
+  anchor: "This reconstruction's already-tracked files 2329, 2370, 2372, 2373 kernel-verdict running count and refusal pattern"
+  supports_dimension: "Extends the running count to seven and confirms the refusal-of-most-tempting-verse pattern as a three-instance, explicitly generalized methodological claim"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether an eighth or further KR-SIM Gita-companion study exists elsewhere in the corpus, continuing the running tally."
+tier2_triggered: true
+tier2_reason: "Fifth KR-SIM companion study confirming a three-instance refusal-of-the-most-quotable-verse pattern (now explicitly enumerated and generalized) and extending the zero-kernel-candidate running count to seven consecutive occurrences. Classified importance high given the substantial structural repetition, though the confirmed three-instance refusal pattern is a genuinely notable cross-study finding."

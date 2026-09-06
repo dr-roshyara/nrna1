@@ -1,0 +1,71 @@
+sequence: 950
+path: docs/knowledgeos/brainstorming/phase_measure_theory/external_research/20260831-164704_hpa-complete-gita-knowledgeos-term-correspondence.md
+title: "HPA Complete Gita-KnowledgeOS Term Correspondence -- A Purely Lexical, 109-Term Sanskrit-to-KnowledgeOS Vocabulary Glossary Across Twelve Categories (Core Philosophy/Characters/Knowledge Theory/Action Theory/Epistemic Discipline/Epistemic Status/Cognitive/Knower's Qualities/Transformation/Governance/Relationship/System) -- No New Formal Content Beyond Restating Already-Tracked Equations; a Reference Artifact, Not a Research Contribution"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "purely lexical glossary/reference artifact, no new formal or philosophical claims"
+source_role: PRIMARY_RESEARCH
+canonical_source: 950
+importance: normal
+confidence: medium
+about: >
+  A 109-entry Sanskrit-term-to-KnowledgeOS-term correspondence glossary spanning twelve thematic categories
+  (Core Philosophy 10 terms; Characters 5; Knowledge Theory 8; Action Theory 16; Epistemic Discipline 6;
+  Epistemic Status 9; Cognitive 10; Knower's Qualities 10; Transformation 12; Governance 9; Relationship 7;
+  System 7), each entry giving the Sanskrit term, its proposed KnowledgeOS parallel, a one-line gloss, and a
+  Gita chapter citation. Functions purely as a reference/index artifact consolidating and cross-referencing
+  Sanskrit vocabulary already introduced piecemeal across files 0932-0949 (Atman, Krishna, Arjuna, Karma,
+  Dharma, Moksha, etc.), plus many newly-introduced terms not previously encountered by this reconstruction
+  (e.g. Paramatman→𝒦_supreme; Prakrti→Evidence/Observation; the three Gunas Sattva/Rajas/Tamas explicitly
+  mapped to Σ=Supported/Conflicted/Unknown respectively; Vikarma→Invalid Operation; Kshetra/Kshetrajna→
+  Knowledge Field/Knower-of-the-Field; Agni→Transformation Engine; Om→Knowledge Signature).
+
+  Closes with a "Central Equation" section restating, in condensed boxed form, already-established
+  correspondences from prior files (Krishna→𝒦_supreme, Arjuna→A_t, Yoga→Search(K_t→I_t→𝒦_supreme),
+  Moksha→DecisionReadiness(K_t)=1) without deriving any new formal content.
+
+  This file introduces no new mathematical claims, no new architectural components, no gap-closure claims
+  (positive or overclaimed), and no falsification tests -- it is purely an organizational/lexical
+  consolidation of terminology already scattered across the Step-25X track's prior files, functioning as a
+  glossary/index rather than a research contribution. Unlike files 0943/0945/0946, it makes no completeness
+  claims about resolving open technical questions, and unlike files 0933/0936/0942, it introduces no new
+  decorative undefined-quantity equations beyond restating already-tracked ones -- it is comparatively the
+  most epistemically neutral document in this immediate cluster, simply cataloguing vocabulary rather than
+  making claims that could be right or wrong.
+introduces:
+  - concept: "A consolidated, 109-term Sanskrit-to-KnowledgeOS vocabulary glossary across twelve thematic categories, cataloguing terminology scattered across prior Step-25X files plus many newly-introduced terms not previously encountered"
+  - concept: "The explicit three-way Guna-to-Sigma mapping: Sattva=Sigma-Supported, Rajas=Sigma-Conflicted, Tamas=Sigma-Unknown"
+defines: []
+refines:
+  - concept: "The Sanskrit vocabulary scattered across files 0932-0949"
+    refinement: "CONSOLIDATED into a single 109-entry cross-referenced glossary, useful as a lookup index for this reconstruction's own tracking of which Gita term corresponds to which claimed KnowledgeOS construct across the Step-25X track's files"
+contradicts: []
+repeats:
+  - "The 'Central Equation' section repeats already-established correspondences (Krishna->K_supreme, Arjuna->A_t, Yoga->Search, Moksha->DecisionReadiness) from files 0937/0942/0943 verbatim in condensed form."
+bridge_candidates:
+  - "Whether any of the newly-introduced terms here (Paramatman, Prakrti, the Guna-to-Sigma mapping, Vikarma, Kshetra/Kshetrajna) are elaborated with substantive formal content in later files."
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: record this file as a purely lexical, 109-term glossary consolidating the Step-25X track's Sanskrit vocabulary -- useful as a reference index but contributing no new formal, architectural, or gap-closure claims requiring verification."
+anchor_test:
+  anchor: "The Sanskrit vocabulary scattered across files 0932-0949"
+  supports_dimension: "Consolidates and cross-references terminology already introduced piecemeal, adding no new substantive claims of its own beyond the glossary function"
+  refines_or_contradicts: "consolidates without contradicting prior vocabulary usage"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The 109-row §Part 12 correspondence table is directly checkable, term by term, against this reconstruction's own per-file records for files 0932-0949 to confirm which terms were previously introduced versus newly appearing here."
+undefined_concepts: []
+open_questions:
+  - "Whether any of the newly-introduced terms (Paramatman, Prakrti, Vikarma, Kshetra/Kshetrajna, the Guna-Sigma mapping) receive substantive formal elaboration elsewhere in the corpus."
+tier2_triggered: false
+tier2_reason: "A purely lexical glossary/reference artifact consolidating already-scattered Sanskrit vocabulary, introducing no new formal, architectural, or gap-closure claims requiring verification -- the most epistemically neutral document in this immediate cluster. Classified importance normal, tier2 not triggered."

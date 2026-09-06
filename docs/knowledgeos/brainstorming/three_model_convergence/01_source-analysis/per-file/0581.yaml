@@ -1,0 +1,222 @@
+sequence: 581
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-182955_step-025c-3-evidence-dependence-and-information-value.md
+title: "LANDMARK: The Mathematical Bridge Evidence→Zero→Lord Formalized via Shannon Information Theory and Decision-Theoretic Value of Information — IG(E;H)=Ent(H)-Ent(H|E) Gives a Rigorous Information-Theoretic Basis for 'Don't Count Copied Evidence Twice'; Full VOI(q)=E[max_a EU(a|K_t,E_q)]-max_a EU(a|K_t)-Cost(q) Formula; Zero Refined Into EpistemicZero vs. OperationalZero ('One of the Central Ideas of KnowledgeOS'); the Crucial Three-Way Separation InformationGain≠KnowledgeGain≠DecisionValue; a Six-Item Falsification Suite, All 'Good'; Verdict '25C.3 — PASS, With a New Refinement'; Opens Step 25D (Formal Zero Algebra) — the Governing Question 'Can Zero Be Computed From the Actual KnowledgeState, Rather Than Being an AI-Generated Narrative?'"
+date: "2026-08-27"
+bytes: 16975
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 25C.3 -- Evidence Dependence and Information Value', the sub-step committed at 0580, delivering the promised bridge from information theory to Lord's epistemic-action selection"
+source_role: PRIMARY_RESEARCH
+canonical_source: 581
+importance: critical
+confidence: high
+about: >
+  Opens "Step 25C.3 — Evidence Dependence and Information Value," framing this as "the mathematical bridge
+  between Evidence→Zero→Lord," governed by the central question: "when is acquiring another piece of
+  evidence actually useful?" Poses the core problem: given a candidate investigation action `a` (query a
+  database, inspect a server, run a test, ask an LLM, etc.), calculate whether obtaining its resulting
+  evidence `E_a` is worthwhile, via `InformationGain(E_a|K_t)` and eventually `ValueOfInformation(a|K_t,G)`.
+
+  **Delivers the file's foundational information-theoretic formalization**: for a hypothesis `H`, Shannon
+  entropy `Ent(H)` and the standard information-gain formula
+  `IG(E;H)=Ent(H)-Ent(H|E)`, worked through a concrete `P(H)=0.5→1 bit` example where a posterior
+  `P(H|E)=0.9` demonstrably reduces entropy. **Delivers the file's key refinement -- KnowledgeOS needs the
+  CONDITIONAL, not the absolute, information gain**: `IG(E_2;H|K_t)`, asking precisely "how much does this
+  new evidence tell us that we do not already know?" -- exactly the quantity KnowledgeOS requires.
+
+  **Delivers the file's central methodological result -- a rigorous information-theoretic grounding for
+  the corpus's long-standing qualitative rule against double-counting copied evidence**: independent
+  evidence yields `IG(E_2;H|E_1)>0`; dependent/copied evidence (`E_2=f(E_1)`) yields
+  `IG(E_2;H|E_1)≈0` -- explicitly stated to give "a rigorous interpretation of the earlier qualitative
+  rule... it isn't merely a governance convention. It has an information-theoretic interpretation," a
+  genuinely significant strengthening of a principle previously justified only by intuition and worked
+  examples (0562, 0573, 0578, 0580). Delivers the intermediate, realistic case of PARTIALLY dependent
+  evidence (`0<IG(E_2;H|E_1)<IG(E_2;H)`), worked through a concrete four-stage
+  Vendor-documentation→Internal-architecture-document→Human-report→LLM-summary chain, "likely to be
+  extremely common in KnowledgeOS." Delivers the resulting concept **`NovelInformation(E|K)`**, proposed as
+  a quantity Lord should have direct access to.
+
+  **Delivers the file's key architectural warning -- `InformationGain≠Value`**: worked through a stark
+  contrasting example (a five-second database query yielding 0.1 bit vs. a two-week migration test
+  yielding 1.0 bit) where naive information-maximization would absurdly select the two-week test --
+  motivating the need for cost to enter the equation. Delivers a preliminary VOI formulation
+  `VOI(a)=ExpectedBenefitFromInformation-Cost-Risk`, then the file's central formal deliverable -- a
+  **rigorous decision-theoretic Value of Information formula**:
+  `VOI(q)=𝔼_{E_q}[max_a EU(a|K_t,E_q)] - max_a EU(a|K_t) - Cost(q)`, explicitly "much more rigorous,"
+  directly extending and formalizing 0557's Step-15 EVSI machinery specifically for Lord's epistemic-action
+  selection. Delivers the resulting clean separation **`Lord = InformationAcquisition + DecisionValue`**
+  -- "can I learn something?" (information theory) versus "is learning it worth doing?" (decision theory).
+
+  **Delivers six named experimental attacks on the VOI model, each yielding a specific, sensible result**:
+  known irrelevant information (a company seating-plan search example yields `IG(E;G)≈0`, so
+  `VOI≈0`, delivering **`InformationQuantity≠GoalRelevantInformation`**); highly relevant information
+  (a real restore test yields `IG≫0` and `VOI≫0`, "exactly the type of action Lord should prioritize");
+  information that cannot alter an already-authorized decision (yields `VOI≈0` even with high information
+  gain, delivering **`VOI is goal- and decision-context dependent`** -- "the same evidence can have
+  HighInformationValue in one context and ZeroDecisionValue in another"); deadline effects (a
+  three-week test arriving after a next-day decision deadline yields `VOI_effective≈0`, "time is part of
+  the value calculation"); dangerous information acquisition (positive information gain paired with severe
+  production risk should be rejected, yielding the governance constraint
+  **`SafeInformationAcquisition`**); and human/LLM information acquisition, requiring `Question→
+  HumanResponse→Evidence→Assessment` -- "the human answer must not bypass the evidence model."
+
+  **Delivers a genuinely important new distinction -- `Knowledge gain versus accessibility gain`**: an
+  LLM summarizing a 100-page document may deliver `InterpretationGain>0` while `WorldEvidenceGain=0`,
+  since the underlying facts were already present -- formalized as **`AI can transform knowledge without
+  necessarily adding new evidence`**, explicitly stated to "fit perfectly with our earlier AI boundary."
+  Delivers a resulting four-way AI-action classification (Evidence acquisition `World→Observation`;
+  Evidence transformation `Artifact→StructuredEvidence`; Semantic interpretation `Evidence→
+  CandidateMeaning`; Hypothesis generation `Knowledge→CandidateHypothesis`), each carrying distinct
+  epistemic value.
+
+  **Delivers a major architectural consequence for Lord**: candidate actions are cleanly split into
+  **Information actions** (`q:K_t→K_{t+1}`, primarily changing knowledge) versus **Operational actions**
+  (`a:W_t→W_{t+1}`, primarily changing reality) -- "this distinction is becoming mathematically very
+  clean," directly formalizing the qualitative Epistemic/Operational-action separation first named at
+  0577 into two precise mathematical operators.
+
+  **Delivers the file's central architectural reframing**: the complete KnowledgeOS loop
+  (`W_t→Observation→K_t→Action→W_{t+1}`) is explicitly noted to resemble "a partially observable control
+  problem," paired with a careful, deliberate caution: **"we should NOT yet declare KnowledgeOS to be a
+  POMDP. That framework may be useful for some decision contexts, but KnowledgeOS is broader"** -- a
+  disciplined refusal to over-commit to a single formal decision-process framework, consistent with the
+  corpus's recurring anti-premature-framework-selection pattern.
+
+  **Delivers the file's central formal deliverable -- Zero refined into two genuinely distinct
+  sub-quantities, explicitly called "one of the central ideas of KnowledgeOS"**: **`OperationalZero`**
+  (the difference between current and target WORLD state) versus **`EpistemicZero`** (the difference
+  between current KNOWLEDGE and the knowledge required by the epistemic contract). Delivers a concrete
+  worked Nexus-migration example demonstrating `Zero_epistemic` can be substantially LARGER than
+  `Zero_operational` -- only one missing migration script operationally, yet four separate epistemic gaps
+  (rollback effectiveness unknown, firewall conflicted, capacity unknown, governance approval missing) --
+  a vivid, concrete demonstration of why the two must be kept mathematically distinct.
+
+  **Delivers Lord's refined optimization formula**:
+  `Lord(q)≈argmax_q [ExpectedReductionInDecisionCriticalGap(q)/(Cost(q)+Risk(q))]`, explicitly flagged
+  provisional but "an excellent candidate" -- prioritizing the DECISION-CRITICAL portion of the epistemic
+  gap specifically, not the epistemic gap generally.
+
+  **Delivers a DDD framing of the newly-established domain vocabulary**: Evidence, Information Gain,
+  Knowledge Gap, Decision-Critical Gap, Epistemic Action, Operational Action, Value of Information, each
+  explicitly identified as "not merely technical terms" but "distinct domain concepts."
+
+  **Delivers a six-item falsification test suite for the whole model, all explicitly graded "Good"**:
+  duplicate evidence yields `IG=0`; independent evidence yields `IG>0`; irrelevant evidence yields
+  `IG_goal≈0`; post-deadline information yields `VOI≈0`; information that cannot alter an authorized
+  decision yields `VOI≈0`; and high-information-but-dangerous acquisition yields `VOI_net<0` -- "the model
+  behaves sensibly."
+
+  **Delivers two further genuine unresolved-mathematics warnings, honestly surfaced rather than glossed
+  over**: (1) **`VOI depends on the quality of the predictive model`** -- worked through a worked
+  outcome-mismatch scenario (Lord predicting `P(E_1)=0.8` but reality producing `E_2`), explicitly stated
+  "we cannot hide that assumption"; (2) **the `UtilityModel` must be domain-specific**, worked through a
+  contrasting €100-per-hour versus safety-critical-millions example, explicitly assigned to the Decision
+  Context rather than the epistemic kernel.
+
+  **Delivers the file's single most important architectural clarification, explicitly named "a very
+  important distinction"**: **`InformationGain≠KnowledgeGain≠DecisionValue`** -- three formally separated
+  metrics (Information Gain `IG`, how much uncertainty is mathematically reduced; Knowledge Gap Reduction
+  `KGR`, how much of the epistemic contract has been satisfied; Decision Value `DV`, how much the new
+  information can improve the actual decision), worked through a sharply contrasting pair of examples: an
+  obscure architecture-detail clarification yields `IG>0` but `KGR≈0` and `DV=0` (irrelevant to the
+  contract); conversely, discovering `GovernanceApprovalMissing` may have little conventional Shannon-
+  information content yet `KGR≫0` and `DV≫0` -- explicitly concluded **"this is precisely why KnowledgeOS
+  cannot be reduced to information theory."**
+
+  **Delivers Step 25C.3's result -- a four-layer structure** `Evidence→Information→KnowledgeGap→
+  DecisionValue`, each layer carrying distinct mathematical semantics, yielding the file's summarizing
+  principle: **"Lord should optimize decision-relevant knowledge acquisition, not raw information
+  acquisition."**
+
+  **Delivers Step 25C.3's verdict**: **"25C.3 — PASS, with a new refinement"** -- explicitly confirming
+  that `EvidenceDependency` can be formally connected to `ConditionalInformationGain` and then to
+  `ValueOfInformation`, but with an explicit, load-bearing caution: `IG`, `KGR`, and `VOI` must NEVER be
+  collapsed into one universal number, directly extending the corpus's recurring anti-collapse discipline
+  (established for uncertainty at 0563, for evidence assessment at 0578) into the information-value domain
+  specifically.
+
+  **Delivers the file's central consolidated architecture -- the corpus's most complete single
+  mathematical-chain summary produced to date**, spanning two branches from `KnowledgeState`: the
+  epistemic branch (`KnowledgeState→EpistemicZero→KnowledgeGap→InformationAction→Evidence`) and the
+  operational/decision branch (`KnowledgeState→DecisionInference→Recommendation→OperationalAction→
+  WorldChange→Observation`), unified with the earlier ingestion chain
+  (`Input→Evidence→EvidenceGraph→Assessment→Inference→KnowledgeState`).
+
+  **Closes by identifying the next unavoidable barrier**: despite using `Zero(K,I)` conceptually
+  throughout the entire 40+-file arc, the corpus has never given Zero a rigorous mathematical definition.
+  **Opens "Step 25D — Formal Zero Algebra,"** proposing to formally define `Zero(K,G,EC)`, tested against
+  ten named result states (known, unknown, insufficient, conflicting, stale, invalid, prohibited,
+  irrelevant, satisfied, partially satisfied) -- an explicit and significant expansion beyond Zero's
+  previous simple binary/ternary treatment throughout the arc. Delivers the file's climactic governing
+  question for the next research phase: **"can Zero be computed from the actual KnowledgeState, rather
+  than being an AI-generated narrative?"** -- explicitly framed as the step that, if solved, will connect
+  "the epistemic kernel to the operational intelligence layer in a mathematically precise way," a
+  significant, genuinely central open problem for the entire KnowledgeOS architecture that the corpus has
+  deferred since Zero's earliest introduction many files ago. As with the entire 25A/25B/25C sub-arc, no
+  report of actual executed code appears, though this file's information-theoretic formulas remain purely
+  symbolic (unlike 0580's worked numerical Bayesian arithmetic).
+introduces:
+  - concept: "A rigorous, formal information-theoretic derivation (IG(E;H)=Ent(H)-Ent(H|E)) grounding the corpus's long-standing intuitive rule against double-counting copied evidence, elevating it from a governance convention to a mathematically necessary consequence"
+  - concept: "The conditional information-gain quantity IG(E_2;H|K_t), precisely capturing 'how much does this new evidence tell us that we do not already know?' — exactly the operational quantity Lord requires, distinct from unconditional Shannon information gain"
+  - concept: "NovelInformation(E|K), a proposed quantity capturing the information in a piece of evidence not already represented by the current knowledge state"
+  - concept: "The full rigorous decision-theoretic Value of Information formula VOI(q)=𝔼[max_a EU(a|K_t,E_q)]-max_a EU(a|K_t)-Cost(q), directly extending 0557's EVSI machinery into a concrete, usable formula for Lord's epistemic-action selection"
+  - concept: "InformationQuantity≠GoalRelevantInformation and VOI is goal- and decision-context dependent — the same piece of evidence can carry high information value in one decision context and zero decision value in another, demonstrated through a worked already-prohibited-migration example"
+  - concept: "Knowledge gain versus accessibility gain — an AI can transform (make more accessible/interpretable) existing knowledge without adding any new evidence to the world, explicitly connected to the corpus's established AI-governance boundary"
+  - concept: "Epistemic action (q:K_t→K_{t+1}) and Operational action (a:W_t→W_{t+1}) formalized as two precise mathematical operators, directly grounding the qualitative Epistemic/Operational-action distinction first named at 0577"
+  - concept: "The disciplined, explicit refusal to declare KnowledgeOS a POMDP despite noting the strong structural resemblance — a deliberate anti-premature-framework-commitment consistent with the corpus's recurring pattern"
+  - concept: "Zero formally split into OperationalZero (world-state gap) and EpistemicZero (knowledge-state gap relative to the epistemic contract), explicitly named 'one of the central ideas of KnowledgeOS', demonstrated to potentially diverge substantially in magnitude via a concrete Nexus example"
+  - concept: "The crucial three-way metric separation InformationGain≠KnowledgeGain≠DecisionValue, explicitly stated to be precisely why KnowledgeOS cannot be reduced to information theory alone"
+  - concept: "'Step 25D — Formal Zero Algebra', explicitly identified as the next unavoidable mathematical barrier despite Zero having been used conceptually throughout the entire prior research arc without ever being rigorously defined"
+defines:
+  - concept: "Conditional information gain"
+    definition: "IG(E_2;H|K_t) — the reduction in entropy about H provided by new evidence E_2 relative to the CURRENT knowledge state, not relative to zero prior knowledge; the operationally correct quantity for KnowledgeOS"
+  - concept: "Decision-theoretic Value of Information"
+    definition: "VOI(q)=𝔼_{E_q}[max_a EU(a|K_t,E_q)] - max_a EU(a|K_t) - Cost(q) — the expected improvement in the best achievable expected utility from acquiring evidence via information-gathering action q, net of its cost"
+  - concept: "EpistemicZero vs OperationalZero"
+    definition: "OperationalZero = gap between current and target WORLD state; EpistemicZero = gap between current KNOWLEDGE and the knowledge required by the epistemic contract — two mathematically distinct quantities that can diverge substantially"
+  - concept: "The three separated value metrics"
+    definition: "Information Gain (IG, mathematical uncertainty reduction) ≠ Knowledge Gap Reduction (KGR, epistemic contract satisfaction) ≠ Decision Value (DV, actual decision improvement) — genuinely distinct dimensions that must not be collapsed into one number"
+  - concept: "Lord's refined optimization formula (provisional)"
+    definition: "Lord(q)≈argmax_q [ExpectedReductionInDecisionCriticalGap(q)/(Cost(q)+Risk(q))] — prioritizing the decision-critical portion of the epistemic gap specifically, not the epistemic gap generally"
+refines:
+  - concept: "0562's/0573's/0578's/0580's intuitive, example-driven rejection of naive evidence double-counting"
+    refinement: "Given a rigorous formal information-theoretic grounding (IG(E_2;H|E_1)≈0 for dependent evidence) — no longer merely a governance convention justified by worked examples, but a mathematically necessary consequence of conditional information theory"
+  - concept: "0557's/0567's Value of Information (EVSI) machinery, first formalized for general decision-making"
+    refinement: "Directly reused and specifically adapted into a concrete VOI(q) formula scoped precisely to Lord's epistemic-action selection problem, with an explicit Cost(q) term and expectation over the possible evidence outcome E_q"
+  - concept: "0577's qualitative EpistemicAction≠OperationalAction discovery"
+    refinement: "Formalized into two precise mathematical operators (q:K_t→K_{t+1} vs a:W_t→W_{t+1}), grounding the earlier qualitative architectural insight in exact notation"
+  - concept: "The corpus's Zero concept, used informally as Zero(K,I)→Δ throughout the entire prior 40+-file arc since its introduction"
+    refinement: "Explicitly identified as never having been rigorously mathematically defined, split for the first time into OperationalZero and EpistemicZero as two distinct sub-quantities, and designated the subject of the newly-opened dedicated Step 25D specifically to close this gap"
+  - concept: "0561's/0563's/0578's recurring anti-collapse discipline (never force distinct epistemic dimensions into one number)"
+    refinement: "Extended explicitly into the information-value domain: IG, KGR, and VOI must never be collapsed into one universal number, delivered as an explicit load-bearing caution in this file's own verdict"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25D — Formal Zero Algebra' is executed as its own dedicated corpus file, and critically, whether it succeeds in giving Zero a rigorous mathematical definition computable from KnowledgeState alone, resolving the corpus's long-standing informal treatment of this central architectural concept since its earliest introduction many files ago"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal information-theoretic grounding of the evidence-independence rule, the conditional information-gain quantity IG(E_2;H|K_t), NovelInformation(E|K), and the full rigorous decision-theoretic VOI(q) formula extending 0557's EVSI machinery for Lord's epistemic-action selection."
+  - "dimension-registry.md: record InformationQuantity≠GoalRelevantInformation, VOI's goal/decision-context dependence, knowledge gain vs. accessibility gain, the formalized Epistemic/Operational action operators (q vs a), the deliberate refusal to declare KnowledgeOS a POMDP, and Zero split into EpistemicZero vs OperationalZero ('one of the central ideas of KnowledgeOS')."
+  - "dimension-registry.md: record the crucial three-way separation InformationGain≠KnowledgeGain≠DecisionValue, Lord's refined decision-critical-gap optimization formula, the six-item falsification suite (all 'Good'), the verdict '25C.3 — PASS, with a new refinement,' and 'Step 25D — Formal Zero Algebra' as the next research phase, closing the corpus's long-standing informal treatment of Zero."
+anchor_test:
+  anchor: "0580's opening of the information-theoretic bridge to Step 25C.3; 0557's/0567's Value of Information machinery; 0577's qualitative EpistemicAction/OperationalAction discovery; the corpus's Zero(K,I)→Δ concept used informally since much earlier in the arc; 0561's/0563's/0578's recurring anti-collapse discipline"
+  supports_dimension: "LANDMARK delivering the corpus's first rigorous formal bridge from information theory through decision theory to the Evidence→Zero→Lord architecture, grounding the long-standing intuitive prohibition on double-counting dependent evidence in an actual mathematical derivation for the first time. Delivers a concrete, usable Value of Information formula directly extending established decision-theoretic machinery, a disciplined refusal to prematurely commit to a POMDP framing despite noting the strong structural resemblance, and the file's central architectural achievement — splitting Zero, a concept used informally throughout the entire prior 40+-file arc, into precisely distinguished EpistemicZero and OperationalZero components, explicitly named 'one of the central ideas of KnowledgeOS.' Delivers the crucial three-way metric separation InformationGain≠KnowledgeGain≠DecisionValue, explicitly identified as the precise reason KnowledgeOS cannot be reduced to information theory alone, and closes by finally committing to give Zero itself the rigorous mathematical definition it has lacked since its earliest introduction, posing the field's most consequential remaining question: can Zero be computed deterministically from KnowledgeState, or does it remain an AI-generated narrative?"
+  refines_or_contradicts: "directly executes Step 25C.3 as opened at 0580; formally grounds the evidence-dependency rule established across 0562/0573/0578/0580; directly extends 0557's/0567's VOI/EVSI machinery into a scoped Lord-specific formula; formalizes 0577's qualitative EpistemicAction/OperationalAction distinction into precise operators; splits and finally commits to rigorously defining the corpus's long-informal Zero concept; extends the recurring anti-collapse discipline into the information-value domain; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The formal derivation IG(E_2;H|E_1)≈0 for dependent evidence (E_2=f(E_1)) is directly checkable mathematical grounding for a principle the corpus had, until this file, only ever justified through worked examples and stated intuition — a genuine strengthening of the theoretical foundation rather than a restatement."
+  - "The concrete worked Nexus-migration example demonstrating EpistemicZero can be substantially larger than OperationalZero (one missing script operationally vs. four distinct epistemic gaps: rollback, firewall, capacity, governance) is a directly checkable, vivid illustration of why the two Zero sub-quantities must be kept mathematically distinct rather than treated as a single undifferentiated discrepancy measure."
+  - "The explicit, deliberate statement declining to formally adopt a POMDP framework despite noting the architecture's strong structural resemblance to one is directly checkable evidence of continued methodological discipline against premature framework commitment, consistent with the pattern established across 0545/0546, 0554, 0556, 0561, 0563, 0577, 0578, and 0579."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25D — Formal Zero Algebra' is executed as its own dedicated corpus file, and critically, whether it succeeds in giving Zero a rigorous, deterministically-computable mathematical definition"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first rigorous formal bridge from Shannon information theory through decision theory to the Evidence→Zero→Lord architecture, finally grounding the long-standing intuitive evidence-dependency rule in an actual mathematical derivation rather than only worked examples and stated intuition. Delivers a concrete, immediately usable Value of Information formula directly extending established decision-theoretic machinery specifically for Lord's epistemic-action selection, a disciplined refusal to prematurely commit to a POMDP framing despite noting the architecture's strong structural resemblance, and formalizes the qualitative Epistemic/Operational-action distinction into two precise mathematical operators. Delivers the file's central architectural achievement — splitting Zero, a concept the entire prior 40+-file arc had used only informally since its earliest introduction, into precisely distinguished EpistemicZero and OperationalZero components, explicitly self-identified as 'one of the central ideas of KnowledgeOS,' demonstrated through a vivid worked example where the two diverge substantially in magnitude. Delivers the crucial three-way metric separation InformationGain≠KnowledgeGain≠DecisionValue, explicitly stated to be precisely why KnowledgeOS cannot be reduced to information theory alone, and closes by finally committing the research program to give Zero the rigorous mathematical definition it has lacked throughout the entire prior arc, posing the field's most consequential remaining open question for the next phase: can Zero be computed deterministically from KnowledgeState, or does it remain an AI-generated narrative?"

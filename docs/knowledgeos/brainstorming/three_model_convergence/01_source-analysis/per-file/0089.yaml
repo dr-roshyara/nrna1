@@ -1,0 +1,152 @@
+sequence: "0089"
+path: docs/knowledgeos/brainstorming/20260822-0200-knowledgeos-vs-epistemic-os-layer-separation-review.md
+title: "KnowledgeOS vs Epistemic OS — layer separation review"
+date: "2026-08-22"
+bytes: 13555
+
+model:
+  primary: x
+  secondary: [c1, m, g]
+
+source_role: CRITICAL_REVIEW
+canonical_source: null
+
+importance: critical
+confidence: high
+
+about: >
+  A review of the 0088 "uploaded research document" that (1) establishes KnowledgeOS and Epistemic OS
+  as separate architectural layers, (2) maps 0088's EOS research explicitly onto 0087's six kernel
+  dimensions (partial, direct support for 4 of 6), (3) introduces "Cognitive Worlds" (context-relative
+  truth) as a candidate SEVENTH dimension, contradicting 0087's explicit "six, not seven" framing, and
+  (4) undergoes THREE successive, explicitly-labeled revisions of "what KnowledgeOS is" within a single
+  document, ending on "a truth-seeking machine with constitutional memory," not a truth oracle.
+
+introduces:
+  - "Explicit KnowledgeOS/Epistemic-OS layer table: primary concern (governance vs reasoning
+    correctness), core object (governed knowledge product vs belief), main operation (lifecycle
+    transition vs belief revision), authority (organizational vs logical justification), time (validity
+    +transaction vs belief state), provenance (decision traceability vs justification graph)"
+  - "Direct mapping of 0088's EOS research onto 4 of 0087's six dimensions: Evidence <- immutable
+    evidence E*; Transformation <- justification graph/dependency tracking/revision history; Unknown <-
+    TMS belief-status-change (not deletion); Identity <- belief base B_t (weaker/indirect). Authority
+    Separation and Temporal Validity are NOT explicitly addressed in this mapping section"
+  - "'Cognitive Worlds' (from 0088's DEC framework): provenance-homogeneous bundles of claims; a
+    KnowledgeOS object may not live in one universal truth space -- 'contradiction is not always
+    corruption, sometimes it is context separation.' Explicitly connected to a prior 'missing Context
+    invariant' (undefined forward/lateral reference, not located in the read corpus)"
+  - "Four candidate invariants recommended for promotion, given in unlabeled prose (a SIXTH naming
+    style, joining C-n/INV-KOS-n/H-ZERO-n-H-KOS-n/INV-CANDIDATE-n/EPI-n): Justification Integrity
+    (every derived knowledge state SHALL preserve an explicit justification chain), Belief/Core
+    Separation (derived conclusions SHALL remain distinguishable from authoritative knowledge),
+    Revision Integrity (knowledge evolution SHALL preserve minimal justified change), Provenance
+    Context (knowledge meaning SHALL include the provenance conditions under which it is valid)"
+  - "Explicit kernel-exclusion list: Bayesian confidence engine, automatic belief scoring, universal
+    truth calculator, fully logical theorem prover -- reinforcing Confidence!=Authority/Evidence!=
+    Truth/Score!=Knowledge"
+  - "'Final architectural picture' reproduces 0087's exact six-dimension list verbatim (Identity,
+    Evidence, Authority, Transformation, Temporal, Unknown + Structural Enforcement) as the
+    'KnowledgeOS Kernel' layer, positioned beneath an 'Epistemic Reasoning Layer' (belief management/
+    justification graphs/contradiction handling/revision protocols) and above 'Organizational Reality'"
+  - "⭐ KnowledgeOS Kernel Definition (candidate): 'an epistemic reasoning kernel that preserves the
+    conditions required for trustworthy truth discovery: identity, evidence, authority, context,
+    transformation, temporal validity, and uncertainty' -- SEVEN items, adding 'context' to 0087's six.
+    This directly contradicts 0087's explicit 'six protected dimensions (not seven)' framing"
+  - "'The kernel does not answer \"what is true?\" -- it enables \"why should we believe this?\"'"
+  - "New 'KnowledgeOS Core Question' (a third reformulation, after 'what components?' and 'what
+    transformations to prevent?'): 'Given incomplete, evolving, and sometimes contradictory
+    information, how can a system move closer to justified truth without corrupting identity,
+    evidence, authority, or meaning?'"
+  - "Three explicitly-labeled, successive position revisions within one document: (1) 'KnowledgeOS is
+    not an Epistemic OS; it is the constitutional substrate on which epistemic operating systems can
+    safely operate' (epistemic constitution / reasoning cortex / active cognition trilayer analogy);
+    (2) revised again against a quoted prior human statement ('KnowledgeOS is truth finding capacity by
+    reasoning and logics') into 'a truth-seeking epistemic system... capacity, not oracle'; (3) revised
+    a third time into 'the constitutional reasoning substrate for truth discovery; an Epistemic OS is
+    one possible reasoning mechanism operating inside KnowledgeOS'"
+
+defines: []
+
+refines:
+  - "0087's six-dimension Minimal Kernel Candidate: partially corroborated (4/6 dimensions directly
+    supported by 0088's EOS research), but also DIRECTLY CHALLENGED by the addition of a seventh
+    dimension (Context, via Cognitive Worlds) in this same document's own later 'Kernel Definition
+    (candidate)' -- an unresolved internal tension between this file's own 'Final architectural
+    picture' (six, matching 0087 exactly) and its own later 'Kernel Definition (candidate)' (seven).
+    Neither is reconciled within the document itself"
+  - "0083/0084's 'constitutional layer preserving separation' framing: explicitly revised, three times
+    in succession, toward a 'truth-seeking machine with constitutional memory' framing -- a materially
+    broader self-conception than pure separation-preservation, though still explicitly 'capacity, not
+    oracle'"
+
+contradicts:
+  - "0087's explicit 'six protected dimensions (not seven)': this file's own 'Kernel Definition
+    (candidate)' proposes seven (adds Context), while its own 'Final architectural picture' elsewhere
+    in the SAME document reproduces the six unchanged -- an internal inconsistency, not merely a
+    disagreement with 0087"
+
+repeats:
+  - concept: "Confidence != Authority / Score != Knowledge (kernel exclusion list)"
+    canonical_source: "0084"
+    novelty: low
+
+bridge_candidates:
+  - "'Context invariant' referenced as already discussed/missing -- not located in the read corpus;
+    possibly resolved by a not-yet-read file, or an artifact of the unread 'uploaded research document'
+    conversation this file reviews"
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+# MD-014 anchor_test against 0087 (Minimal_Kernel_Candidate_0087)
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity", "Transformation Integrity", "Unknown Preservation"]
+  refines_or_contradicts: >
+    Identity Preservation: weak/indirect support only (belief base B_t). Authority Separation and
+    Temporal Validity: NOT addressed at all in this file's explicit dimension-mapping section. Most
+    significantly: this file's own later "Kernel Definition (candidate)" CONTRADICTS 0087's six-not-
+    seven framing by adding a seventh dimension (Context), while its own "Final architectural picture"
+    section reproduces the six unchanged -- an internal inconsistency within 0089 itself, not resolved.
+  alternative_minimal_kernel: >
+    A candidate SEVEN-dimension kernel (Identity, Evidence, Authority, Context, Transformation,
+    Temporal Validity, Uncertainty) appears in this file's "Kernel Definition (candidate)" section,
+    genuinely different in count from 0087's six -- the corpus's first direct dimension-count
+    divergence from the 0087 anchor within an otherwise-corroborating document.
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false   # Vedanta/Jñāna lens repeated (Information!=Knowledge)
+                                                    # but not newly connected to C1/C2 structures here
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false   # a SIXTH scheme introduced (unlabeled prose candidates)
+
+key_evidence:
+  - "Direct, section-by-section mapping of 0088's EOS research onto 0087's dimensions -- the corpus's
+    first genuine attempt at MD-014-style anchor corroboration, done independently by the corpus's own
+    author before this research's own anchor_test discipline existed"
+  - "Three explicitly-labeled successive revisions of 'what KnowledgeOS is' within one document -- the
+    corpus's richest single-document example of transparent, provenance-preserving position evolution
+    (cf. 0026's REV2-3 same-day revision)"
+  - "An internal six-vs-seven dimension-count inconsistency within the SAME document, not reconciled by
+    its own author"
+
+undefined_concepts:
+  - "'Context invariant' -- referenced as already discussed/missing, not located in the read corpus"
+  - "The 'uploaded research document' being reviewed -- presumably 0088, but the review's own dimension
+    labels and some content (e.g. exact wording of the layer table) do not verbatim-match 0088's text,
+    so exact identity is treated as likely but not proven"
+
+open_questions:
+  - "Whether the six-vs-seven dimension count is resolved in a later file, and if so, in which
+    direction (six wins, seven wins, or a different count entirely)"
+  - "Whether 'Context' as a dimension is the same concept as the 'missing Context invariant' reference,
+    or a fresh proposal under a reused name"
+
+tier2_triggered: true
+tier2_reason: >
+  First genuine (if partial) cross-corroboration of the 0087 anchor's dimensions from an independent
+  angle, immediately followed by a direct, UNRESOLVED internal contradiction of its dimension count
+  (six vs seven) within the same document -- exactly the kind of finding MD-014's anchor_test discipline
+  exists to catch. Also the corpus's richest single-document example of transparent, labeled position
+  revision (three stages), directly relevant to §14 (gap analysis) and the eventual kernel synthesis.

@@ -1,0 +1,80 @@
+sequence: 230
+path: docs/knowledgeos/brainstorming/kernel/20260824-141231-bishop-prml-adaptive-inference-fabric-beyond-hmm-hsmm-hybrid.md
+title: "Bishop PRML — Adaptive Inference Fabric Beyond the HMM/HSMM Hybrid"
+date: "2026-08-24"
+bytes: 51000
+model:
+  primary: c1
+  secondary: g1
+source_role: PRIMARY_RESEARCH
+canonical_source: 230
+importance: critical
+confidence: high
+about: >
+  Bishop's Pattern Recognition and Machine Learning, mined against the full lens system, explicitly
+  generalizing and superseding 0226's Evidence-Gated Hybrid Temporal Inference (EG-HTI): "EG-HTI subset
+  of KnowledgeOS Adaptive Inference Fabric." Proposes the larger target architecture: Evidence-Gated
+  Adaptive Inference Fabric (EGAIF) -- deterministic + probabilistic + temporal + graphical + approximate
+  + sampling + model-combination branches, routed by an explicit Risk/Cost/Assurance Router. Single
+  strongest extraction: Bishop's formal separation of inference (estimate the posterior) from decision
+  (apply a loss function to choose an action) -- the computational counterpart of the corpus's own
+  Godel-lens 'proof != truth' / 'inference != authority' principle.
+introduces:
+  - concept: "Inference != Decision (P1): posterior != action; KnowledgeOS must never collapse P(state=X)=0.97 directly into 'therefore choose X' without an explicit loss/cost model"
+  - concept: "Reject option (P2) formalized as ABSTAIN: Decision=argmin_a E[L(a,theta)|evidence] where a=REJECT is a valid action, replacing ad hoc 'confidence<0.8 -> escalate' thresholds with a principled decision-theoretic ABSTAIN outcome"
+  - concept: "Five-state inference result taxonomy: ACCEPT / ACCEPT_WITH_UNCERTAINTY / ESCALATE / ABSTAIN / INSUFFICIENT_EVIDENCE, replacing forced TRUE/FALSE or binary state choice"
+  - concept: "ExpectedTotalCost(model) = ComputeCost(model) + ExpectedDecisionLoss(model), refining 0226's Compute+ExpectedError formula with an explicit decision-loss term distinguishing false-positive/false-negative/abstention costs"
+  - concept: "Bayesian model comparison / model evidence p(M_i|D) proportional to p(M_i)p(D|M_i): HSMM activation should be justified by whether evidence supports the additional complexity, not merely by accuracy comparison -- balances fit against complexity"
+  - concept: "Bayesian Model Averaging: p(z|D) = sum_m p(z|D,M_m)p(M_m|D) instead of winner-take-all model selection; introduces two distinct uncertainty layers that must not be conflated -- State uncertainty p(Z|D,M) vs. Model uncertainty p(M|D) (P6)"
+  - concept: "Mixture of Experts reframed as 'epistemic experts': p(t|x)=sum_k pi_k(x)p(t|x,k), gate=f(Context,Domain,EvidenceType,TemporalStructure,Risk) -- BoundedContext approx InferenceExpertBoundary (P8), DDD's context boundaries given a computational mechanism"
+  - concept: "Graphical models (factor graphs, sum-product for marginals vs. max-sum for MAP configuration, kept explicitly distinct) elevated above HSMM as potentially the more important extraction: 'can we factorize the problem?' as a Structural Tractability Principle (P3) -- DDD boundary -> smaller dependency graph -> sparser factor graph -> lower computational cost, an explicit architecture-to-computation bridge"
+  - concept: "Variational inference reframed as controlled, auditable approximation: the variational lower bound can be monitored for convergence, making approximation itself auditable (Approximation->Bound->Monitor->Validate, P5), with a worked YAML assurance record (lower_bound, convergence, monotonic_bound validation)"
+  - concept: "Numerical stability elevated to an assurance concern: mathematically correct inference that underflows numerically is operationally incorrect -- Inference correctness = Mathematical correctness + Numerical stability + Implementation validation"
+  - concept: "EM pattern (alternate latent inference and parameter estimation) generalized as a KnowledgeOS capability when structure is not directly observed (e.g. semantic cluster, operational state, regime as latent variables), with convergence/delta exposed rather than an opaque model.fit()"
+  - concept: "ARD (Automatic Relevance Determination) and PCA/probabilistic-PCA introduced as statistical (data-driven) reduction complementing DDD's architectural (semantic/legal) reduction: DomainReduction -> FeatureReduction -> Inference as a two-stage pipeline"
+  - concept: "Escher reinterpreted with a statistical counterpart: compression is permitted only when information required by the downstream decision is preserved (concrete EM-PCA example: O(ND^2) reduced toward O(NDM) when M<<D)"
+  - concept: "Temporal layer made polymorphic: TemporalModel = DiscreteMarkov | HMM | HSMM | LDS | SwitchingLDS | ParticleFilter, selected by state-space/observation characteristics rather than assuming HMM/HSMM covers all cases; particle filtering as the 'escape hatch' when linear-Gaussian assumptions fail"
+  - concept: "Seven-tier computational hierarchy (Deterministic -> Closed-form/Bayesian-update -> Structured-exact/HMM-Kalman-factor-graph -> HSMM/switching -> Approximate(VI/EP/Laplace) -> Sampling(MCMC/particle) -> Model-combination(BMA/experts/ensembles) -> Human/governance), with an explicit 'don't always climb the ladder' Pareto-optimality principle (subject to risk and assurance, not pure accuracy)"
+  - concept: "Sufficient statistics as an explicit architectural layer distinct from raw evidence and inference state, with a proposed five-object data model (Observation/FeatureRepresentation/SufficientStatistics/InferenceState/DecisionAssessment/AssuranceRecord) replacing one giant opaque 'AI result'"
+  - concept: "Posterior preservation principle (P7): prefer preserving full posterior distributions over premature point estimates, directly enabling non-destructive Bayesian revision when new evidence arrives (Moksha reframed computationally: release from treating a prior inference as immutable truth)"
+  - concept: "Full lens-to-PRML-mechanism correspondence table (17 rows: DDD->graph factorization, Zero->reject/insufficient-evidence, Godel->inference!=truth, Dharma->decision/loss responsibility, Wisdom->cost-risk model selection, etc.) -- the strongest architectural correspondence the source claims to have found across the whole arc"
+  - concept: "Eight named architectural principles P1-P8 (Inference!=Decision; Reject-is-valid; Structure-before-sophistication; Complexity-must-earn-its-cost; Approximation-must-be-observable; Model-uncertainty-is-first-class; Preserve-distributions-until-decision-time; Heterogeneous-experts-where-domains-differ)"
+  - concept: "Explicit architecture-generalization statement: EG-HTI (0226) is downgraded from 'ultimate architecture' to one component of the larger Evidence-Gated Adaptive Inference Fabric (EGAIF)"
+  - concept: "Explicit non-adoption list: probability as definition of truth, model output as knowledge, statistical confidence as governance authority, automatic model selection as sovereign architecture, dimensionality reduction without information-loss accounting -- these remain governed by DDD/epistemic architecture, not PRML"
+defines: []
+refines:
+  - concept: "0226's EG-HTI hybrid temporal inference hypothesis"
+    refinement: "Explicitly supersedes/subsumes it: EG-HTI becomes one branch (temporal) inside the larger EGAIF, which adds graphical-model/factor-graph inference, continuous-state filtering (LDS/particle), approximate inference (variational/EP), sampling, and model combination (BMA/mixture-of-experts) as co-equal branches selected by a Risk/Cost/Assurance Router."
+  - concept: "0229's readiness gate and 0226's escalation-cost formula"
+    refinement: "Refines Compute+ExpectedError into ExpectedTotalCost=ComputeCost+ExpectedDecisionLoss, adding an explicit reject/abstain action and Pareto-frontier framing (accuracy vs. compute, subject to risk/assurance) rather than a single-threshold escalation rule."
+contradicts: []
+repeats:
+  - concept: "Optimization/approximation must remain auditable, must not erase uncertainty"
+    canonical_source: 226
+    novelty: low
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0226's EG-HTI hypothesis; the 26-lens system; 0216-0229 synthesis lineage"
+  supports_dimension: "Mathematical/statistical model + Gita/philosophical model (26-lens system) unified into the strongest single lens-to-mechanism correspondence table in the corpus, superseding EG-HTI with the larger EGAIF target architecture"
+  refines_or_contradicts: "refines/supersedes 0226; reinforces 0225/0227/0228/0229; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Concrete EM-based PCA computational example (O(ND^2) reduced toward O(NDM) when M<<D) directly grounding the compression-must-preserve-decision-relevant-information principle"
+  - "Worked YAML variational-inference assurance record (lower_bound, convergence.iterations, delta_bound, monotonic_bound validation) as a concrete instance of 'approximation must be observable'"
+  - "Worked Pareto-frontier table (Rules/HMM/HSMM/VI/Sampling/Human with accuracy/cost/assurance columns) grounding the 'don't always climb the ladder' principle"
+undefined_concepts:
+  - "No concrete algorithm given for the proposed InferenceRouter's estimate_accuracy/estimate_cost/estimate_risk functions beyond a conceptual pseudocode sketch"
+open_questions:
+  - "Whether EGAIF is ever taken up as the corpus's canonical target computational architecture superseding EG-HTI in later files"
+  - "Whether the eight P1-P8 principles are ever reconciled with the corpus's other accumulating principle/invariant sets"
+tier2_triggered: true
+tier2_reason: "Critical architectural generalization: explicitly supersedes the prior EG-HTI hypothesis (0226) with a larger Evidence-Gated Adaptive Inference Fabric spanning graphical models, continuous-state filtering, approximate inference, sampling, and model combination; formalizes the inference/decision separation (the computational counterpart of the corpus's Godel-lens invariant) with a first-class reject/abstain outcome; and produces the strongest lens-to-mechanism correspondence table in the corpus so far."

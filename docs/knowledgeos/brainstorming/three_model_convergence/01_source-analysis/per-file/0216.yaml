@@ -1,0 +1,89 @@
+sequence: 216
+path: docs/knowledgeos/brainstorming/kernel/20260824-111317-knowledgeos-epistemic-architecture-synthesis-ddd-consolidation.md
+title: "KnowledgeOS — Epistemic Architecture Synthesis (Senior Principal Architect / DDD Consolidation)"
+date: "2026-08-24"
+bytes: 44000
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 216
+importance: critical
+confidence: high
+about: >
+  A major "Senior Principal Architect" DDD-consolidation pass synthesizing Williamson (0171-0173),
+  Chivers (0212), Freedman (0205/0208), and Stigler (0213/0215) into a single proposed target
+  architecture -- the most complete Kernel architecture proposal in the corpus's technical-pivot arc so
+  far. Explicit status: "Architecture synthesis / proposed target model" (not adopted). Central executive
+  decision: KnowledgeOS is NOT a Bayesian engine, statistical engine, semantic engine, reasoning engine,
+  knowledge graph, or broad "epistemic operating system" -- it is a narrow "constitutional epistemic
+  domain boundary" preserving claim/evidence/justification/authority/standing/uncertainty/conflict/
+  revision integrity, while interpretation/inference/prediction/search/semantic-generation remain
+  replaceable external mechanisms. Most consequential DDD conclusion: explicitly instructs NOT to
+  implement the earlier "God KnowledgeAggregate" (the K-1 KnowledgeAggregate+ConflictRecord+
+  VerificationPort hypothesis from the 0144-0170 DDD/Sanskrit/Chinese Kernel Boundary Discovery cycle)
+  literally -- decomposing it into small consistency boundaries instead.
+introduces:
+  - concept: "Executive architectural decision: KnowledgeOS is a constitutional epistemic domain boundary, not a Bayesian/statistical/semantic/reasoning engine, knowledge graph, or broad epistemic OS"
+  - concept: "Explicit rejection of literal 'God KnowledgeAggregate' implementation -- decompose into small consistency boundaries: immutable evidence records, a Claim/Knowledge aggregate for identity+standing, separate Determination records, separate Authority state, append-only revision/provenance, external semantic/reasoning mechanisms, deterministic constitutional enforcement, event-driven re-assessment"
+  - concept: "Seven-layer convergence pipeline: World/Sources -> Observation/Evidence -> Interpretation/Model/Hypothesis -> Claim/Assertion -> Justification/Assessment -> Epistemic Standing -> Decision/Action; rule: do not collapse layers merely because a mechanism can produce all of them"
+  - concept: "Eight recommended bounded contexts: Knowledge Core, Evidence Context, Assessment Context, Authority Context, Interpretation Context, Reasoning/Inference Context, Research/Evidence Design Context, Projection/Knowledge Product Context -- each with explicit ownership boundaries and a context map"
+  - concept: "KnowledgeClaim aggregate (ClaimId/PropositionReference/Scope/CurrentStanding/CurrentRevision/Status/RevisionLineageReference) explicitly NOT containing every evidence item, reasoning path, semantic representation, authority, prediction, or model -- those are references, not aggregate members"
+  - concept: "Evidence aggregate (EvidenceId/SourceReference/Observation/AcquisitionMetadata/Scope/Integrity/Validity/Provenance), normally immutable; corrections create new versions/invalidation events, never silent rewrites"
+  - concept: "Determination-is-not-Claim-state: confidence is not an intrinsic Claim property but a separate Determination record (DeterminationId/ClaimId/EvidenceSet/Assumptions/Method/Model/Result/Uncertainty/Scope/Assessor/Timestamp); Claim standing is derived from admissible determinations under governed rules"
+  - concept: "DDD refinement of the God-Aggregate question: identity/evidence/justification/state/confidence/history do NOT need to be transactionally co-owned; cross-context coherence via immutable references, domain events, deterministic policies, re-assessment, audit trails"
+  - concept: "Candidate/Admission pipeline: Candidate -> Contract Check -> Admissibility -> Identity Assignment -> KnowledgeClaim Created; the gate performs no semantic reasoning; Candidate != Admitted Claim"
+  - concept: "Recommended epistemic lifecycle: CANDIDATE -> ADMITTED -> UNDETERMINED -> {VALIDATED, REJECTED, CONFLICTED, QUESTIONABLE, UNKNOWN/INSUFFICIENT, SUPERSEDED, WITHDRAWN}; Conflict != Rejection"
+  - concept: "Revision must be append-only (Claim v1 -> v2 with new evidence/revised determination, never overwrite); Evidence invalidation triggers async ReassessmentRequired, not synchronous cascading rewrite ('scalable DDD')"
+  - concept: "Justification as an explicit relation/record (JustificationId/ClaimId/EvidenceReferences/DeterminationReference/AssumptionReferences/ReasoningMethod/Scope/CreatedAt), distinct from Evidence"
+  - concept: "AssumptionLedger, RivalExplanationSet, Residual-First Reasoning, Prediction Ledger, Calibrated Abstention (four-way ground-truth x mechanism-outcome taxonomy, worst failure = false acceptance of an ambiguous case), MechanismDisagreement record ('disagreement is evidence,' no automatic majority vote), Search Multiplicity/Investigation record, Value of Information -- all promoted from prior individual-book extractions (0205/0208/0210/0211/0212/0213/0215) into unified architectural techniques"
+  - concept: "Causal Gate state machine: Association -> Causal Hypothesis -> Identification Analysis -> {NOT_IDENTIFIABLE, IDENTIFIABLE_UNDER_ASSUMPTIONS, EXPERIMENTALLY_SUPPORTED} -> Causal Determination; NOT_IDENTIFIABLE is a successful domain outcome"
+  - concept: "Identity Architecture: identity independent of representation (similarity != identity, semantic equivalence != transactional ownership); CandidatePort as a mechanism-independence test ('replace the interpreter, the constitutional boundary must still behave the same')"
+  - concept: "Knowledge Products are projections, never the aggregate root (Document != Knowledge)"
+  - concept: "Seventeen named architectural invariants (Evidence!=Interpretation, Evidence!=Justification, Justification!=Conclusion, Assertion!=Truth, Authority!=Truth, Confidence!=Truth, Unknown!=False, Conflict!=Rejection, Supersession!=Deletion, Representation!=Identity, Semantic-similarity!=Identity, Reasoning!=Validation, Model!=Reality, Association!=Causation, KnowledgeProduct!=Knowledge, KnowledgeOS!=ReasoningEngine, Kernel!=AIBrain)"
+  - concept: "Optimal agent architecture: agents never carry authoritative KnowledgeOS state in prompts/local files; a resolution->reasoning->admission cycle where the agent is a consumer/producer of candidates, never the owner of epistemic truth"
+  - concept: "Sixteen-step recommended AI Investigation Protocol (state question -> scope -> competing hypotheses -> acquire evidence -> provenance -> evidence quality -> assumptions -> inference -> compare alternatives -> uncertainty -> residuals -> prediction -> identifiability -> abstain-where-required -> submit candidate determination -> preserve investigation lineage)"
+  - concept: "Falsification Protocol for architecture decisions: remove aggregate member X, does an invariant break (if not, X does not belong); replace a Kernel mechanism, does the constitutional result change (if yes, hidden semantic authority exists); ask what rival explanation survives, what residual remains, what would make us abstain"
+  - concept: "Eleven-dimension Architecture Quality Model (Correctness/Calibration/Coverage/Selective-Risk/Traceability/Reproducibility/Interpretation-Robustness/Conflict-Handling/Abstention-Quality/Residual-Discovery/Revision-Quality) explicitly not collapsed into one score"
+  - concept: "Ten explicit 'what NOT to build' anti-patterns: God Aggregate, Truth Oracle, Bayesian Kernel, Semantic Kernel, Embedding Identity, AI Authority, Automatic Causal Discovery, Silent Revision, 'Confidence=Knowledge', Full Epistemic OS Inside the Kernel"
+  - concept: "Fifteen named 'most optimized techniques' T1-T15 (Distinction Preservation, Evidence-First Reasoning, Assumption Ledger, Rival Hypothesis Analysis, Calibrated Uncertainty, Explicit Abstention, Residual Analysis, Search-Path Provenance, Value-of-Information Research, Designed Evidence, Append-Only Revision, Conflict Preservation, Representation-Independent Identity, Mechanism Independence, Deterministic Assurance)"
+  - concept: "Sharpened DDD principle: preserve distinctions in the domain model; collapse representations only in mechanisms; collapse transactional boundaries only when an invariant requires atomicity"
+  - concept: "24-scenario DDD falsification program (candidate admitted/refused, shared evidence, evidence invalidated, determination revised, authority expires, reasoners disagree, interpretations differ, same-meaning-different-representation, different-meaning-same-representation, claim conflicted/superseded, causal claim not-identifiable, prediction fails, residual exposes new hypothesis, confidence unavailable, evidence absent/insufficient, true-but-unknown, false-but-believed, replay of admission, mechanism replacement, semantic compiler failure, Knowledge Product stale), explicitly proposed as the NEXT step, not yet run"
+  - concept: "Final position: KnowledgeOS should not try to produce truth -- it should preserve the conditions under which claims can be responsibly admitted, assessed, revised, challenged, contextualized and acted upon; 'the boundary that makes cognition governable, not the mechanism that performs cognition'"
+defines: []
+refines:
+  - concept: "K-1 / KnowledgeAggregate+ConflictRecord+VerificationPort hypothesis (0144-0170 DDD/Sanskrit/Chinese Kernel Boundary Discovery cycle, canonically stated 0165/0167)"
+    refinement: "Explicitly instructs NOT to implement the God Aggregate literally; decomposes it into KnowledgeClaim/Evidence/Determination/Authority as separately-owned consistency boundaries connected by references and events, while explicitly preserving the invariants K-1 was trying to protect (identity, evidence, justification, epistemic state, confidence, history coherence)."
+  - concept: "0205/0208/0210/0211/0212/0213/0215's individual evidence-acquisition/causal/Bayesian/statistical techniques"
+    refinement: "Unifies all of them into a single named technique set (T1-T15) and assigns each a home bounded context (Evidence Context, Assessment Context, Research/Evidence Design Context, Reasoning/Inference Context)."
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "This file's Candidate/Admission/Interpretation-Context apparatus and its explicit citation of Williamson closely resembles the Western-epistemology-arc Kernel Candidate v0.2/v0.3 (0173/0174/0176: Question/Hypothesis/Evidence/Claim/Argument/Inference/Assessment/Provenance) and the DDD-cycle K-1 hypothesis already logged as unresolved_equivalence against each other (see registry entry). This file is effectively a THIRD independently-produced synthesis occupying similar territory -- explicitly flagged here, NOT merged into the existing unresolved_equivalence entry (which remains a two-way K-1-vs-v0.2 comparison); a three-way note is added to the registry to track this."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: extend the existing K-1 vs. Kernel-Candidate-v0.2 unresolved_equivalence entry with a note that this file (0216) constitutes a third, independently-produced target-architecture synthesis occupying comparable territory (Candidate/Admission gate, Claim/Evidence/Determination/Authority separation), explicitly instructing against literal K-1 implementation while claiming to preserve its invariants. Status remains PROPOSED, not canonical, consistent with the corpus's own full-corpus-completion gate (protocol section 29)."
+anchor_test:
+  anchor: "K-1 / Kernel Boundary Discovery cycle (0144-0170) and Kernel Candidate v0.2/v0.3 (0171-0176)"
+  supports_dimension: "Engineering KnowledgeOS model + Mathematical/statistical model convergence -- the most complete DDD target-architecture synthesis in the corpus so far, explicitly built from the technical-pivot book arc"
+  refines_or_contradicts: "refines K-1 (explicitly rejects literal implementation, preserves invariants via decomposition); does not contradict Kernel Candidate v0.2/v0.3 but occupies overlapping territory, unresolved"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Explicit, named DDD test for aggregate membership ('remove member X, what invariant breaks -- if none, X does not belong') applied concretely to reject embedding all evidence/reasoning/semantics/history/projections inside one Knowledge aggregate"
+  - "Concrete event model (18 named domain events across Candidate/Evidence/Determination/Claim/Authority/Reassessment lifecycles) grounding the proposed architecture in DDD event-storming discipline rather than abstract principle alone"
+undefined_concepts:
+  - "Exact governed vocabulary for the epistemic lifecycle states (explicitly deferred: 'the exact governed vocabulary remains a domain-law question')"
+  - "Exact persisted schema/implementation for any of the eight bounded contexts -- this is explicitly a proposed target model, not an implementation"
+open_questions:
+  - "Whether the 24-scenario DDD falsification program is ever actually run against this proposed architecture in a later file"
+  - "Whether this synthesis is ever explicitly reconciled with K-1, Kernel Candidate v0.2/v0.3, or the 0187/0188 sealed dossier's Anti-God-Aggregate conclusion and 35-item Non-Collapse Register"
+  - "Whether ADR-KOS-KERNEL-001 (0167, Status PROPOSED) is ever updated or superseded in light of this synthesis's explicit rejection of literal God-Aggregate implementation"
+tier2_triggered: true
+tier2_reason: "The most complete DDD target-architecture synthesis in the corpus's technical-pivot arc: explicitly rejects literal implementation of the earlier K-1/God-Aggregate hypothesis, proposes eight bounded contexts, a KnowledgeClaim/Evidence/Determination/Authority aggregate decomposition, seventeen named invariants, fifteen named techniques (T1-T15), and a 24-scenario falsification program -- a candidate PROPOSED target model requiring careful non-merging treatment against the corpus's existing K-1 vs. Kernel-Candidate-v0.2 unresolved_equivalence entry and the full-corpus-completion gate (protocol section 29)."

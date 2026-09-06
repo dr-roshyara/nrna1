@@ -1,0 +1,79 @@
+sequence: 210
+path: docs/knowledgeos/brainstorming/kernel/20260824-033419-book-of-evidence-evidence-acquisition-is-its-own-domain.md
+title: "The Book of Evidence — Evidence Acquisition Is Its Own Domain"
+date: "2026-08-24"
+bytes: 21800
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 210
+importance: critical
+confidence: high
+about: >
+  Peter Achinstein's "The Book of Evidence" (philosophy of science), mined via Zero + DDD + Wisdom
+  lenses as a direct continuation of the 0205/0208/0209 causal-assurance arc. Central discovery:
+  evidence acquisition is itself a domain, prior to evidence assessment — "Observation != Evidence."
+  Uses Achinstein's historical Hertz/Thomson cathode-ray example (identical observed result,
+  disagreement over evidential status, later shown to depend on an experimental flaw) and his
+  biased-raven-selection and Michael-Jordan-Wheaties examples to argue that the SELECTION PROCEDURE
+  by which an observation was obtained is constitutive of its evidential status, not mere metadata.
+introduces:
+  - concept: "Observation != Evidence, refined to Observation -> Candidate evidence -> Evidence assessment"
+  - concept: "Selection Procedure as a first-class concept: the rule determining how to test or obtain evidence for/against a hypothesis; evidential status is partly determined by HOW an observation was obtained"
+  - concept: "EvidenceAcquisition aggregate (Question/Hypothesis/TargetPopulation/SelectionProcedure/ObservationMethod/MeasurementMethod/Conditions/Instrumentation/SamplingRules/Exclusions/Competitors/ExpectedObservations/Result)"
+  - concept: "Evidence Acquisition Context as a strong bounded-context candidate (explicitly not yet certified)"
+  - concept: "Evidence Acquisition lifecycle: EvidenceQuestion -> AcquisitionDesign -> SelectionProcedure -> Observation -> Measurement -> ObservationRecord -> AcquisitionValidation -> CandidateEvidence -> EvidenceAssessment"
+  - concept: "Two-dimensional evidence provenance: SOURCE PROVENANCE (who/when/where/version) vs. ACQUISITION/EPISTEMIC PROVENANCE (why selected, how generated, under what conditions, what alternatives excluded)"
+  - concept: "Proposed invariant: no observation supporting a knowledge claim shall be treated as evidence without preserving its selection/generation procedure, when one exists"
+  - concept: "EvidenceNeed concept (Decision/Claim/Uncertainty/RequiredObservation/RequiredPopulation/RequiredComparison/RequiredTimeHorizon/AcceptanceCriteria) -- reframes KnowledgeOS from data-warehouse-plus-AI to purpose-driven evidence system"
+  - concept: "Evidence Quality != Quantity; Evidence Quality decomposed as observation quality x selection quality x measurement quality x context adequacy x explanatory relevance (explicitly NOT a literal formula, an architectural decomposition)"
+  - concept: "Selection Audit capability: eight-question checklist (target population / actually observed / how selected / could selection guarantee the result / what excluded / exclusions known beforehand / alternative procedure possible / procedure appropriate to hypothesis)"
+  - concept: "MeasurementContext as an 'epistemic measurement contract' (instrument/configuration/calibration/environment/resolution/detection-limits/operating-conditions/known-failure-modes)"
+  - concept: "Three distinct objects that must not collapse: Observation (what happened) / Acquisition (how we obtained knowledge of it) / EvidenceClaim (why it supports the hypothesis)"
+  - concept: "AlternativeExplanation as a first-class concept; acquisition should be designed to discriminate between hypothesis and named alternatives, not merely collect supporting evidence"
+  - concept: "EvidenceRelevance: true observation != decision-relevant evidence (Michael-Jordan-Wheaties example: high probability given a fact is not itself an evidential/explanatory connection)"
+  - concept: "EvidenceObservation distinguished from Observation: an operationally-collected observation may only later become evidence for a hypothesis not yet formulated at collection time -- evidence need not be newly predicted"
+  - concept: "'Evidence is contextualized observation' -- the same observation can be evidence for one hypothesis and irrelevant to another"
+  - concept: "Combined 24-step epistemic operating loop: Decision -> Evidence Need -> Evidence Question -> Acquisition Design -> (Selection/Measurement/Context) -> Observation -> Acquisition Audit -> Candidate Evidence -> Evidence Assessment -> Statistical Analysis -> Causal Assessment -> Knowledge -> Wisdom -> Decision"
+  - concept: "Proposed AI-agent guard: agents must not collect 'supporting evidence' without an acquisition strategy (clarify hypothesis -> identify evidence need -> identify competing explanations -> define selection criteria -> collect -> record provenance -> audit selection -> assess -> conclude)"
+  - concept: "Fourteen-question 'Evidence Acquisition & Provenance' discovery-round agenda (Q1-Q14), explicitly proposed as the next research round rather than jumping to implementation"
+defines: []
+refines:
+  - concept: "Evidence Integrity (architecturally-grounded C1 dimension, registry entry established early in the corpus) and Evidence ↔ Pramāṇa correspondence"
+    refinement: "Substantially deepens the Evidence Integrity dimension with concrete sub-structure (Selection Procedure, EvidenceAcquisition aggregate, two-dimensional provenance, Selection Audit, MeasurementContext) not previously present in the registry's Evidence Integrity treatment."
+  - concept: "0205/0208's causal-assurance apparatus (assumptions, identification, confounding, selection bias, measurement bias)"
+    refinement: "Supplies the prior stage: HOW an observation becomes eligible to be assessed as evidence at all, before 0205/0208's causal-identification machinery operates on it."
+contradicts: []
+repeats:
+  - concept: "Selection bias / measurement bias as threats to valid inference"
+    canonical_source: 208
+    novelty: medium
+bridge_candidates:
+  - "EvidenceAcquisition's 'Competitors'/AlternativeExplanation concept vs. the philosophical Kernel candidates' treatment of rival hypotheses (0173's Kernel Candidate v0.2 Argument/Inference machinery) -- not logged as unresolved_equivalence yet; noted for future comparison only, insufficiently specific overlap to log now."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: Evidence Integrity dimension entry should eventually be annotated with this file's Selection Procedure / two-dimensional provenance sub-structure as corroborating depth, not a new equivalence claim (same C1-grounded dimension, deepened)."
+anchor_test:
+  anchor: "Evidence Integrity dimension (architecturally grounded) and the 0205/0208/0209 causal-assurance/wisdom arc"
+  supports_dimension: "Mathematical/statistical + Engineering KnowledgeOS convergence point -- supplies the pre-evidence-assessment stage (acquisition) the causal-assurance arc had assumed as given"
+  refines_or_contradicts: "refines Evidence Integrity and the causal-assurance arc; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Hertz/Thomson cathode-ray historical example: identical null observation, later shown to result from an experimental flaw (insufficient evacuation causing screening) -- concrete historical proof that acquisition-procedure quality determines evidential status"
+  - "Biased-raven-selection worked example directly demonstrates why a 'perfect' dataset can be epistemically worthless when the selection procedure guarantees the result"
+undefined_concepts:
+  - "Exact formal criteria for when an AcquisitionValidation succeeds or fails (only the eight-question Selection Audit checklist is offered, not a formal decision procedure)"
+  - "How EvidenceRelevance is to be computed/assessed beyond the Michael-Jordan-Wheaties illustrative example"
+open_questions:
+  - "Whether the proposed 'KnowledgeOS Evidence Acquisition & Provenance' discovery round (Q1-Q14) is ever conducted as a dedicated later source"
+  - "Whether Evidence Acquisition Context is ever certified as an actual bounded context or remains a permanent candidate"
+tier2_triggered: true
+tier2_reason: "Critical foundational discovery for the evidence-assurance track: evidence acquisition is argued to be its own prior domain, introducing Selection Procedure as a first-class epistemic-provenance concept, a two-dimensional provenance model, and a 24-step combined epistemic operating loop integrating this file with the 0205/0208/0209 causal-assurance/wisdom arc; directly deepens the already architecturally-grounded Evidence Integrity dimension."

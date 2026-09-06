@@ -1,0 +1,54 @@
+sequence: "0181"
+path: docs/knowledgeos/brainstorming/kernel/20260824-004125-managing-memory-for-ai-agents-agent-memory-is-not-knowledgeos-duplicate.md
+title: "Verified byte-identical duplicate of 0180 (diff empty); filename itself flags '-duplicate' -- direct filesystem-level confirmation of the corpus's known duplicate/overlapping capture pattern"
+date: "2026-08-24"
+bytes: 22000
+model:
+  primary: c1
+  secondary: []
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: "0180"
+importance: low
+confidence: high
+about: >
+  Verified via `diff` to be byte-for-byte identical to file 0180 (empty diff output, both 1549 lines).
+  The filename itself is suffixed "-duplicate," a rare instance of the corpus's own capture/rename process
+  explicitly self-labeling a duplicate rather than this reconstruction having to infer it from content
+  comparison (contrast with 0169's tail matching 0168, which required direct textual comparison to
+  establish). No new content; recorded minimally per MD-012/protocol discipline for verified duplicates.
+
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - {concept: "Entire file content (Managing Memory for AI Agents multi-lens stress test)", canonical_source: "0180", novelty: none}
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+registry_updates: []
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; verified byte-identical duplicate of 0180."
+  alternative_minimal_kernel: "none"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Filename explicitly self-labels '-duplicate' -- the first case in this reconstruction's reading order
+    where the corpus's own naming process flags a duplicate directly, rather than requiring content
+    comparison to discover it"
+
+undefined_concepts: []
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: "Verified exact duplicate; no independent content."

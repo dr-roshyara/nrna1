@@ -1,0 +1,63 @@
+sequence: 2320
+path: docs/knowledgeos/brainstorming/files_to_read_one_by_one.log
+title: "files_to_read_one_by_one.log -- a CONTROL_SELF_REFERENCE directory-listing snapshot of the brainstorming corpus (ls -la style), minimal record per corpus convention for control/scaffolding files"
+date: "2026-09-01"
+bytes: 407439
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "control/scaffolding artifact, not primary research prose; a long ls -la style directory listing enumerating corpus files with sizes and dates, evidently used by the corpus's own authors to track a sequential reading order (paralleling this reconstruction's own progress.tsv/reading-manifest.tsv mechanism). On-disk filename has since been renamed to 20260902-185001_files-to-read-one-by-one.log.md (232087 bytes, modified 2026-09-03), which is SMALLER than the manifest's recorded 407439 bytes for this sequence -- the file was apparently edited/truncated after the manifest was built, not merely renamed; treated as the same logical file per manifest cross-check (identical role, matching filename stem, only path/size/date differ)."
+source_role: CONTROL_SELF_REFERENCE
+canonical_source: 2320
+importance: low
+confidence: medium
+about: >
+  A plain-text directory-listing log (ls -la output format: permissions, owner, size, date, path), listing
+  corpus files under docs/knowledgeos/ and docs/knowledgeos/brainstorming/ with byte sizes and modification
+  dates. This is a control/scaffolding artifact -- the corpus's own bookkeeping mechanism for tracking which
+  files to read in sequence -- not primary research prose, consistent with the manifest's own
+  CONTROL_SELF_REFERENCE classification. Per this reconstruction's standing convention for control/scaffolding
+  files (parallel to duplicate-file handling), only a minimal record is produced; no line-by-line content
+  analysis was performed on the full listing.
+
+  A partial read (first 80 lines) confirms the file enumerates: the docs/knowledgeos/ root-level architecture/
+  governance artifacts (Architecture_Validation_Matrix, Architecture_Synthesis_Matrix, ARB_Decision_Docket,
+  Meta_Model, Ontology_Discovery, Strategic_Architecture_Discovery, etc. -- all dated Aug 5, already
+  out-of-scope per this reconstruction's brainstorming/-only primary-corpus convention), followed by
+  docs/knowledgeos/brainstorming/ files from mid-to-late August (dates Aug 16-23), including several files
+  whose titles suggest they could be relevant to the "Path B" engineering/DDD Kernel research line flagged
+  as an unidentified bridge candidate in the immediately preceding file 2319 -- most notably
+  `_misc/20260819-224159-linux-analogy-kernel-os-model.md` ("Linux analogy kernel OS model") and
+  `20260821-2032-how-to-change-eks-into-knowledgeos-kernel.md` / `20260821-2108-how-to-integrate-current-eks-
+  into-knowledgeos-kernel.md` (EKS-to-Kernel integration material). These are noted as POTENTIAL leads for
+  identifying file 2319's "Path B," not confirmed matches -- their actual content was not read as part of
+  this minimal control-file record and would need direct examination (likely already encountered earlier in
+  this reconstruction's sequential read, given their August dates predate this September Gītā thread).
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Whether '_misc/20260819-224159-linux-analogy-kernel-os-model.md' or the EKS-to-Kernel integration files ('20260821-2032-how-to-change-eks-into-knowledgeos-kernel.md', '20260821-2108-how-to-integrate-current-eks-into-knowledgeos-kernel.md') are the 'Path B' engineering/DDD Kernel research line referenced in file 2319 -- these appear in this listing but were not independently read as part of this control-file record; both predate this Gita thread and were likely already encountered and recorded earlier in this reconstruction's sequential read, so this connection should be checked against those already-tracked per-file records rather than re-read here."
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: note this file as a control/scaffolding directory-listing log, and flag two candidate leads (linux-analogy-kernel-os-model.md, EKS-to-Kernel integration files) for identifying file 2319's unidentified 'Path B' research line, pending cross-check against this reconstruction's already-tracked per-file records for those files."
+anchor_test:
+  anchor: "This reconstruction's already-tracked file 2319 unidentified 'Path B' bridge candidate"
+  supports_dimension: "Surfaces two candidate corpus files (linux-analogy-kernel-os-model, EKS-to-Kernel integration) that may correspond to the unidentified engineering/DDD Kernel research line referenced in file 2319, without confirming the match"
+  refines_or_contradicts: "n/a"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether this reconstruction's already-tracked per-file records for 'linux-analogy-kernel-os-model.md' and the EKS-to-Kernel integration files confirm or refute their identification as file 2319's 'Path B' engineering/DDD Kernel research line."
+tier2_triggered: false
+tier2_reason: "A control/scaffolding directory-listing log (CONTROL_SELF_REFERENCE per the manifest), not primary research content; given minimal treatment per this reconstruction's standing convention. Surfaces two candidate leads for the unidentified 'Path B' bridge candidate from file 2319, worth checking against already-tracked records rather than independent re-analysis."

@@ -1,0 +1,59 @@
+sequence: 4
+path: docs/knowledgeos/KnowledgeOS_Architecture_Health_Dashboard.md
+title: KnowledgeOS — Architecture Health Dashboard
+date: 2026-08-03
+bytes: 6185
+doc_type: derived projection / operational monitoring artifact (non-authoritative until attested)
+
+primary_model_initial: meta_research
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+confidence: high
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - projection over C1 hypotheses (generates->PKS, DP-n anchor, archetype set)
+  - no epistemic-lineage vocabulary present
+secondary_models: [evidence, validation, governance, provenance]
+
+status: SR
+maturity: developing
+importance: medium
+
+introduces:
+  - projection_update_rule                  # evidence or authority only; never re-reasoning
+  - instrumentation_level_vs_canon_level    # refines the back-edge traversal claim
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 4th consecutive file
+  - attestation        # the status gate; procedure unspecified
+  - canon_level        # newly introduced; boundary undefined
+open_questions:
+  - what would constitute a canon-level back-edge traversal
+  - RO-4 the one operating-unowned asset
+  - whether the second-adopter gate will ever open
+
+depends_on: [3]
+extends: [3]
+refines: [1, 3]        # stratifies the "0 traversals" / "n~3 informal" back-edge claim by level
+renames: []
+contradicts: []
+supersedes: []
+repeats: [3]           # most rows restate 0003 — recorded, NOT grounds for omission (§1)
+connects_to: [3]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: >
+  No formal object, no definition stated or attacked, no operator, no contradiction, no
+  mathematical/probabilistic/topological content, no Kernel boundary or admissibility claim, no
+  Gita/epistemic interpretation. Derived projection restating 0003 plus counters. Its one
+  non-restated idea (the update rule) is a provenance constraint fully captured in Tier 1 under
+  Invariants. CHECKABLE: if a later reading finds any of the above in this file, the non-firing
+  is wrong and must be logged in revisions.md.

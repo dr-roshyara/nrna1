@@ -1,0 +1,221 @@
+sequence: 822
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-104418_step_195_the-identity-continuity-model.md
+title: "Step 195 -- The Identity-Continuity Model (MAJOR SYNTHESIS MILESTONE, delivers 0821's promised identity boundary test, CONTINUES I-series to I51): Delivers Identity≠Name≠Representation≠State via StateChange⇏IdentityChange and the Six-Representations-One-or-Six-Entities Problem -- Delivers Identity as Context-Dependent (Identity_BC1(x)≠Identity_BC2(x)) With a Formal Equivalence Relation x≡_C y -- Delivers Identity/Continuity/Similarity as Three Genuinely Distinct Questions -- Names 'Name Reuse' as 'a Classic Source of Historical Corruption' and Delivers TechnicalIdentity≠DomainIdentity -- Delivers 'Identity Merge Is a High-Impact Transition' (Risk(identityMerge)>Risk(attributeUpdate)) With Non-Destructive Identity-Split Handling -- Discovers a FIFTH Interacting Semantic Graph (Identity), Consolidating Temporal/Epistemic/Governance/Causal/Identity Into 'A Federation of Semantic Graphs Over a Common Lineage Model' -- Refines the Proposition Tuple Into Subject+Predicate+Object+Context+Time -- Revisits the Chapter 4 Insight a Further Time (CurrentState+HistoricalLineage) -- Delivers Four New Invariants I48-I51 -- Opens Step 196's Authority Boundary (Authority≠Identity≠Role≠Permission≠Responsibility)"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily DDD/mathematical identity-continuity formalization; re-invokes the Chapter 2 and Chapter 4 lenses once more for identity persistence through state change, without new Gita textual content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 822
+importance: critical
+confidence: high
+about: >
+  Directly continues 0821, opening "we now reach a boundary that is even more fundamental than time...
+  what exactly are we talking about? If the identity of the subject is unstable, then even perfect
+  temporal and epistemic lineage can become meaningless," boxed: **`Identity≠Name≠State≠Representation`**.
+
+  **§195.1-195.3 delivers the three foundational separations**: `StateChange⇏IdentityChange` (a Nexus
+  version change from 3.69 to 3.70 does not change the underlying entity's identity, "basic DDD thinking");
+  `Name≠Identity` (a system renamed from one hostname to another may remain the same entity, "name is an
+  attribute of an identity, not necessarily the identity itself"); `Representation≠Identity` (the same
+  entity `x` appears differently across CMDB, DNS, monitoring, firewall rules, KnowledgeOS, Git, Jira, and
+  documentation -- `r_i≠x`, and `Representation→Entity` is "a mapping that itself requires evidence").
+
+  **§195.4-195.7 delivers the identity problem worked concretely**: given six differently-named
+  representations of what may be one Nexus system, "we cannot determine that merely from names. We need an
+  identity model." Delivers **`RefersTo(R_i,x)` as itself carrying an epistemic status** (e.g. `Confirmed`
+  for a CMDB entry versus merely `Likely` for a DNS entry), crystallized: **"relationship claims are
+  themselves knowledge claims"** -- directly extending the arc's established knowledge-claim discipline
+  into the identity domain. Delivers **identity as itself epistemic**: `SameEntity(x_1,x_2)` is an
+  inference requiring evidence, never a given, and `Similarity(x,y)⇏Identity` (two systems can share
+  software, configuration, purpose, and hostname pattern without being the same entity).
+
+  **§195.8-195.13 delivers the migration example and its DDD resolution**: "is `Nexus_B` the same system as
+  `Nexus_A`?" has "no universally correct answer. It depends on the domain identity semantics" -- the
+  domain may define the migrated service as the same logical service (`Identity(Nexus_A)=Identity(Nexus_B)`)
+  or as genuinely distinct instances (`Nexus_A≠Nexus_B`), "both can be correct depending on the bounded
+  context." Delivers **identity as context-dependent**, boxed: **`Identity_{BC_1}(x)≠Identity_{BC_2}(x)`**,
+  worked through three concrete contexts (Infrastructure BC: a VM has one identity; Application BC: the
+  Nexus service has another; Business BC: "Artifact Repository Service" may have yet another), connected by
+  explicit typed relations `Represents(x_I,x_A)` and `Hosts(x_I,x_A)` rather than pretending all three are
+  one object -- "the question is not 'what is the one true identity?' The question is: identity according
+  to which domain model?" Delivers **the formal identity function** `I_C(x)` and equivalence relation
+  `x≡_C y` under a bounded context `C`'s identity rules.
+
+  **§195.14-195.16 delivers the formal equivalence-relation requirements** (reflexivity, symmetry,
+  transitivity), worked through a contradiction scenario (`A≡B, B≡C, A≢C` as an identity consistency
+  violation), crystallized as **`I48`: identity equivalence must be transitive within a defined identity
+  context**, "a mathematically clean invariant."
+
+  **§195.17-195.21 delivers identity/lifecycle/continuity/similarity as four genuinely distinct
+  concepts**: `LifecycleState(x,t)≠Identity(x)` (Created→Active→Suspended→Retired does not change identity);
+  `SameIdentity(x,y)≠Replaces(y,x)` (a retired system's successor does not automatically share its
+  identity); **`Continuity(x,y)` formalized as broader than identity** (operational continuity
+  `Continuity(x,y)=True` can hold while `Identity(x)≠Identity(y)`); and a clear ordering diagram showing
+  Similarity as evidence feeding both Identity and Continuity assessments, "they should not collapse."
+
+  **§195.22-195.24 re-invokes the Chapter 2 lens**: "change does not necessarily destroy identity," and
+  **revisits the Chapter 4 lens with a sharper conclusion**: since a current representation may lack
+  sufficient information to reconstruct an earlier state, lineage (not merely current identity) is what
+  actually carries continuity, boxed: **"continuity requires lineage, not merely current identity."**
+  Delivers **identity and lineage as orthogonal dimensions**, worked through three cases (same identity
+  across states; different identity with a continuity relation; different identity with no continuity at
+  all).
+
+  **§195.25-195.27 delivers identity itself as temporal**: `IdentityAssignment(x,t)` (a hostname can refer
+  to different entities across time due to reassignment), and **explicitly names "name reuse" as "a
+  classic source of historical corruption"**: reusing the name "nexus" for a different entity `y` in 2026
+  after it referred to `x` in 2025 must never be silently merged by a naive knowledge system, boxed:
+  **`NameReuse must not imply IdentityContinuity`**, crystallized as **`I49`: a reused name, identifier,
+  address, or representation must not by itself establish identity continuity**.
+
+  **§195.28-195.30 delivers immutable identity versus mutable attributes** (`ID(x)=constant` while
+  `Name, Location, Version, Configuration, Owner` vary) and **`TechnicalIdentity≠DomainIdentity`**: a
+  database UUID is not automatically a domain identity -- a deleted-and-recreated record's new UUID may or
+  may not represent the same business entity to the domain, "the correct question is: what makes this
+  entity the same entity in the domain? Not the database schema."
+
+  **§195.31-195.35 delivers identity reconciliation as a full epistemic process**: an identity assertion
+  `A_id: x≡_C y` carrying its own `Evidence(A_id)` (migration record, certificate, system registry,
+  configuration, ownership, or explicit architectural decision), and **`P(x=y|E)` explicitly not
+  metaphysical equality** -- "an epistemic assessment," not objective truth. Delivers **deterministic
+  versus probabilistic identity** (a passport number under explicit authority can uniquely identify a
+  person; other domains remain probabilistic), and **the identity resolution pipeline**, boxed:
+  **`Representation→CandidateMatch→Evidence→IdentityAssessment→IdentityDetermination`**, explicitly noted
+  as "structurally identical to the epistemic pipeline we derived earlier... a strong sign of architectural
+  coherence." Delivers **AI identity claims properly bounded**: an AI's "these two repositories are the
+  same system" must initially be a `CandidateIdentityClaim`, never an immediate silent merge -- "safer than
+  allowing AI entity resolution to silently merge records."
+
+  **§195.36-195.39 delivers "identity merge is a high-impact transition,"** boxed:
+  **`Risk(identityMerge)>Risk(attributeUpdate)`**, because a wrong merge can contaminate `History, Evidence,
+  Decisions, Ownership, Compliance, Causality` -- "it can effectively rewrite the meaning of the knowledge
+  graph." Crystallized as **`I50`: identity merge, split, and reassignment must be explicitly represented
+  and lineage-preserving**, explicitly flagged as "likely a constitutional-level rule." Delivers **the
+  non-destructive identity-split pattern**: when `x` is discovered to have actually represented two
+  distinct entities `y,z`, the architecture must never simply edit `x` in place, but represent
+  `x→[resolvedAs]→{y,z}` while historical records referring to `x` remain historically valid.
+
+  **§195.40-195.44 delivers a dedicated identity graph** `G_I=(V,E_I)` with typed edges (`sameAs, replaces,
+  represents, hosts, derivedFrom, renamedTo`), its coupling with the temporal graph (`NameAssignment(nexus,
+  x,[t_0,t_1])` then `NameAssignment(nexus,y,[t_1,t_2])`) and with the causal graph
+  (`DecisionToReplace(x,y)→ReplacementAction`, explicitly noting replacement itself does not establish
+  `sameAs`). **Delivers the file's central consolidating discovery**: five graphs now interact
+  (`G_I` Identity, `G_T` Temporal, `G_E` Epistemic, `G_C` Causal, `G_G` Governance), crystallized: "KnowledgeOS
+  is increasingly looking like a federation of semantic graphs over a common lineage model, rather than one
+  undifferentiated graph" -- paired with an explicit anti-over-engineering caveat: "this does not mean
+  'build five graph databases.' The graphs are conceptual models... DDD determines boundaries first.
+  Technology comes later."
+
+  **§195.45-195.46 delivers identity's relationship to aggregate boundaries**: an aggregate root must have
+  a domain identity, but "an aggregate should not automatically contain every representation of the same
+  real-world thing," boxed: **`DomainEntityIdentity≠AggregateBoundary`** -- "identity does not dictate
+  transaction boundary," "an important DDD safeguard."
+
+  **§195.47-195.50 delivers a substantial refinement of 0819's epistemic tuple**: a proposition must
+  explicitly identify its subject, boxed: **`Proposition=Subject+Predicate+Object+Context+Time`** (at
+  minimum), so that `p="Version=3.70"` becomes `p=(x,Version,3.70,C,T)`, preserving the ability to track
+  subject identity even after `x` is later replaced by `y`. **Revisits the Chapter 4 insight once more**:
+  if a new state lacks its historical identity/lineage context, a current observer cannot determine why
+  the current state exists, requiring `CurrentState+HistoricalLineage` rather than current state alone.
+
+  **§195.51-195.52 delivers the continuity equation**, boxed:
+  **`Continuity(x,y)=f(IdentityRelation,TransitionLineage,DomainRules,Evidence)`**, explicitly not simply
+  `x=y`. Delivers **the three genuinely distinct questions**, each separately boxed: **Identity** ("is it
+  the same entity?"), **Continuity** ("does the history of one connect meaningfully to the other?"),
+  **Similarity** ("how much does it resemble the other?") -- "these three questions may produce three
+  different answers."
+
+  **§195.53-195.54 delivers the Step 195 invariant set** (I48-I50 restated) plus a new fourth invariant,
+  boxed: **`I51`: domain identity must be defined by domain semantics, not inferred solely from technical
+  representation**. **Delivers the Step 195 verdict**: the architecture survives and becomes more precise,
+  boxed the forward chain **`Identity→Continuity→Lineage→State→Evidence→Knowledge→Decision→Action`** and
+  the reverse observation chain **`Reality→Observation→Representation→IdentityAssessment→Knowledge`** --
+  "the architecture therefore cannot safely be a simple CRUD model of 'things and their current status.'
+  It needs identity-aware, temporally versioned, provenance-preserving transitions."
+
+  **Closes opening "Step 196 — the next boundary: authority,"** listing the seven concepts already
+  established (Truth, Evidence, Knowledge, Causality, Identity, Time, Decision) and posing the remaining
+  question: "who is allowed to assert, determine, change, or invalidate a state? ... this is not merely
+  authentication. It is epistemic and domain authority," worked through a three-tier example (AI may
+  propose; Engineer may verify; Architecture Board may determine), boxed: **`Authority≠Identity≠Role≠
+  Permission≠Responsibility`**, explicitly proposing to "test whether our architecture can prevent an
+  actor from acquiring epistemic authority merely because it has technical access." No actual repository
+  implementation occurs within this file itself; every relation, tuple, and graph remains a conceptual
+  specification pending Step 196's authority-boundary test.
+introduces:
+  - concept: "The three foundational separations StateChange⇏IdentityChange, Name≠Identity, Representation≠Identity"
+  - concept: "The identity problem worked concretely (six differently-named representations, one entity or six?) requiring an explicit identity model"
+  - concept: "RefersTo(R_i,x) carrying its own epistemic status; 'relationship claims are themselves knowledge claims' extended into the identity domain"
+  - concept: "Identity as itself epistemic: SameEntity(x_1,x_2) as an inference; Similarity(x,y)⇏Identity"
+  - concept: "Identity as context-dependent: Identity_BC1(x)≠Identity_BC2(x), with the formal identity function I_C(x) and equivalence relation x≡_C y"
+  - concept: "The formal equivalence-relation requirements (reflexivity/symmetry/transitivity) and the transitivity-violation consistency check -- Invariant I48"
+  - concept: "The four genuinely distinct concepts: Identity, Lifecycle, Continuity, Similarity, with a clear evidence-flow diagram"
+  - concept: "'Continuity requires lineage, not merely current identity'; identity and lineage as orthogonal dimensions"
+  - concept: "Identity itself as temporal (IdentityAssignment(x,t)), and the explicit naming of 'name reuse' as 'a classic source of historical corruption' -- Invariant I49"
+  - concept: "Immutable identity vs. mutable attributes; TechnicalIdentity≠DomainIdentity"
+  - concept: "The identity resolution pipeline, explicitly structurally identical to the arc's established epistemic pipeline"
+  - concept: "AI identity claims properly bounded as CandidateIdentityClaim, never an immediate silent merge"
+  - concept: "'Identity merge is a high-impact transition,' Risk(identityMerge)>Risk(attributeUpdate) -- Invariant I50"
+  - concept: "The non-destructive identity-split pattern (x→[resolvedAs]→{y,z})"
+  - concept: "The dedicated identity graph G_I with typed edges, and its coupling with the temporal and causal graphs"
+  - concept: "The central consolidating discovery: five interacting semantic graphs (Identity/Temporal/Epistemic/Causal/Governance), 'a federation of semantic graphs over a common lineage model'"
+  - concept: "DomainEntityIdentity≠AggregateBoundary"
+  - concept: "The refined proposition tuple Subject+Predicate+Object+Context+Time, substantially refining 0819's epistemic tuple"
+  - concept: "The continuity equation Continuity(x,y)=f(IdentityRelation,TransitionLineage,DomainRules,Evidence)"
+  - concept: "The three genuinely distinct questions: Identity, Continuity, Similarity"
+  - concept: "Invariant I51: domain identity must be defined by domain semantics, not inferred solely from technical representation"
+  - concept: "The Step 195 verdict's forward and reverse chains"
+  - concept: "Step 196's opening: the authority boundary Authority≠Identity≠Role≠Permission≠Responsibility"
+defines:
+  - concept: "Identity vs. Continuity vs. Similarity"
+    definition: "Three genuinely distinct questions that must not be collapsed: Identity asks 'is it the same entity?' (a strict equivalence relation within a bounded context); Continuity asks 'does the history of one meaningfully connect to the other?' (a broader historical relation that can hold between genuinely distinct identities, e.g. an old system replaced by a new one); Similarity asks 'how much does it resemble the other?' (a resemblance measure that may provide evidence for either Identity or Continuity claims but establishes neither by itself) -- these three questions can and often do produce three different answers for the same pair of entities"
+  - concept: "'Identity merge is a high-impact transition'"
+    definition: "Accepting that two previously-distinct representations x and y refer to the same entity (x≡y) and merging their associated knowledge histories carries substantially higher risk than an ordinary attribute update, because a wrong identity merge can contaminate history, evidence, decisions, ownership, compliance, and causality all at once -- effectively rewriting the meaning of the knowledge graph rather than merely correcting one field -- so identity merge, split, and reassignment must be treated as explicitly governed, lineage-preserving transitions rather than an ordinary data-cleanup operation"
+  - concept: "The federation of semantic graphs"
+    definition: "Rather than one undifferentiated knowledge graph, the architecture requires (at least) five distinct, interacting semantic graph structures -- Identity (what refers to what), Temporal (when things were valid/observed/known/decided/executed), Epistemic (what evidence supports what claim), Causal (what actually influenced what), and Governance (who is authorized to decide what) -- each with its own typed edges and semantics, conceptually distinct even though they interact and may share underlying implementation technology; this is explicitly a DDD/conceptual-modeling conclusion, not a mandate to build five separate graph databases"
+refines:
+  - concept: "0821's closing proposal of the identity boundary test (Identity≠Name≠State≠Representation) and its Nexus-after-migration continuity question"
+    refinement: "DELIVERED IN FULL: the three foundational separations, the context-dependent identity function and equivalence relation, the identity resolution pipeline, and the Step 195 verdict directly resolving the migration question (both Identity(Nexus_A)=Identity(Nexus_B) and Nexus_A≠Nexus_B can be correct, depending on the bounded context's identity semantics)"
+  - concept: "0819's epistemic tuple K=(P,E,M,A,C,T,S,W) and its proposition object"
+    refinement: "Substantially refined by decomposing the proposition itself into Subject+Predicate+Object+Context+Time, explicitly named 'a substantial refinement of Step 192' -- ensuring propositions remain trackable across subject-identity changes, a gap the earlier tuple had left implicit"
+  - concept: "0813's/0819's/0821's recurring multilayer-graph discoveries (evidence/semantic/temporal/governance/causal graphs)"
+    refinement: "Extended with a fifth graph, the Identity graph G_I, crystallized into the consolidating capstone description 'a federation of semantic graphs over a common lineage model,' the arc's most complete graph-taxonomy statement to date"
+  - concept: "0793's/0806's/0821's evidence-independence and 'relationship claims are themselves knowledge claims' family"
+    refinement: "Directly extended into the identity domain: RefersTo(R_i,x) itself carries an epistemic status (Confirmed vs. Likely), demonstrating the family's principle applies even to the foundational question of what a representation refers to, not only to substantive domain claims"
+  - concept: "0808's I1-I14 through 0821's I45-I47 invariant series"
+    refinement: "DIRECTLY EXTENDED as I48-I51, an eleventh consecutive instance of correct invariant-series continuity spanning 0808 through 0822"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 196's actual authority boundary test (Authority≠Identity≠Role≠Permission≠Responsibility) and whether the architecture can prevent technical access from becoming epistemic authority."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record 'name reuse' explicitly named 'a classic source of historical corruption' as a directly recognizable, concrete data-integrity failure mode."
+  - "dimension-registry.md: record 'identity merge is a high-impact transition' (Risk(identityMerge)>Risk(attributeUpdate)) as a sharply stated, directly applicable governance principle for entity-resolution systems, especially AI-assisted ones."
+  - "dimension-registry.md: record the federation of five semantic graphs (Identity/Temporal/Epistemic/Causal/Governance) as the arc's most complete graph-taxonomy consolidation to date."
+  - "dimension-registry.md: record the refined proposition tuple Subject+Predicate+Object+Context+Time as a substantial, directly applicable refinement of 0819's epistemic tuple, explicitly closing a gap in subject-identity tracking."
+anchor_test:
+  anchor: "0821's closing proposal of the identity boundary test; 0819's epistemic tuple and proposition object; the arc's recurring multilayer-graph discoveries (0793, 0806, 0813, 0821); the arc's evidence-independence/relationship-claims-are-knowledge-claims family; the I1-I47 invariant series"
+  supports_dimension: "Delivers the full identity boundary test directly answering 0821's closing question, resolving the Nexus-after-migration continuity question via context-dependent identity rather than a universal answer. Substantially refines 0819's epistemic tuple by decomposing the proposition into an explicit subject-identity-aware structure. Extends the arc's recurring multilayer-graph discoveries with a fifth graph (Identity), crystallized into the most complete graph-taxonomy statement yet ('a federation of semantic graphs over a common lineage model'). Extends the evidence-independence/relationship-claims family into the identity domain via RefersTo's own epistemic status. Delivers 'identity merge is a high-impact transition' and the explicit naming of 'name reuse' as a classic corruption source, both directly applicable governance principles. Correctly extends the I-series to I51, an eleventh consecutive positive continuity instance. Opens Step 196 with a well-posed authority boundary test directly testing whether technical access can be prevented from becoming epistemic authority"
+  refines_or_contradicts: "directly delivers and extends 0821's closing proposal; substantially refines 0819's epistemic tuple and proposition object; extends the arc's recurring multilayer-graph discoveries with a fifth graph; extends the evidence-independence/relationship-claims family into a new domain; correctly extends the I-series; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "§195.8-195.10's worked migration example (Nexus_A vs. Nexus_B, 'no universally correct answer... depends on the domain identity semantics'), immediately resolved via context-dependent identity, is directly checkable evidence of a genuine, non-arbitrary resolution to the exact question 0821 posed."
+  - "§195.36-195.38's explicit boxed 'identity merge is a high-impact transition' (Risk(identityMerge)>Risk(attributeUpdate)), with the concrete list of contaminable dimensions (History, Evidence, Decisions, Ownership, Compliance, Causality), is directly quotable evidence of a sharply stated, directly applicable entity-resolution governance principle."
+  - "§195.43's explicit consolidation 'KnowledgeOS is increasingly looking like a federation of semantic graphs over a common lineage model, rather than one undifferentiated graph,' immediately followed by the anti-over-engineering caveat against building five graph databases, is directly checkable evidence of the arc's most complete and disciplined graph-taxonomy statement to date."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 196's authority boundary test (Authority≠Identity≠Role≠Permission≠Responsibility) was ever carried out, and whether it confirmed the architecture prevents technical access from becoming epistemic authority."
+  - "Whether the five-graph federation (Identity/Temporal/Epistemic/Causal/Governance) was ever explicitly reconciled with 0813's earlier five-graph structure (G_E, G_S, G_T, G_G, G_C), given the partial but not complete overlap in naming and count."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the full identity boundary test directly answering 0821's closing question, resolving the Nexus-after-migration continuity question via context-dependent identity with a formal equivalence relation. Delivers Identity/Continuity/Similarity as three genuinely distinct, separately boxed questions. Names 'name reuse' as a classic corruption source and delivers TechnicalIdentity≠DomainIdentity. Delivers 'identity merge is a high-impact transition' with non-destructive split handling, and a dedicated identity graph coupled to the temporal and causal graphs. Consolidates the arc's recurring multilayer-graph discoveries into the most complete graph-taxonomy statement to date -- a federation of five interacting semantic graphs. Substantially refines the epistemic tuple's proposition object into an explicit subject-identity-aware structure. Correctly extends the I-series to I51, an eleventh consecutive positive continuity instance. Opens Step 196 with a well-posed authority boundary test."

@@ -1,0 +1,144 @@
+sequence: M0026
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-215000_book-highly-relevant-to-the-kernel-question-changes-direction-substantially.md
+title: "Rescorla on Bayesian Cognitive Science: the K_t(State)-vs-K(Mechanism) Foundational Distinction, the Seven-Operation Kernel Candidate {Represent,Discriminate,Compare,Infer,Update,Evaluate,Select}, Prediction-Error as a Zero-Discrepancy-Detector Candidate, and a Six-Source Kernel-Minimality Cross-Validation Programme"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "introduces Rescorla's philosophy of Bayesian cognitive science as a major new external source specifically for the KERNEL question (distinct from the epistemology sources M0021-M0025, which addressed the definition of knowledge rather than the kernel mechanism); explicitly corrects an overstated 'Mind is the KnowledgeOS kernel' framing down to a hedged research hypothesis"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0026
+importance: critical
+confidence: high
+about: >
+  Analyzes Colin Klein/Michael Rescorla-style philosophy-of-mind material on Bayesian cognitive
+  science, explicitly correcting an initial overstated framing ("mind is the KnowledgeOS kernel")
+  to a hedged research hypothesis: "KnowledgeOS Kernel approx the minimal epistemic/computational
+  mechanism that mediates representation, inference, evaluation and action, and mind is one of the
+  strongest external models we currently have for discovering what that mechanism must do."
+
+  **DELIVERS THE FOUNDATIONAL K_t(STATE) VS 𝒦(MECHANISM) DISTINCTION**: Rescorla's Bayesian
+  cognitive models posit internal representational STATES (prior, likelihood, posterior) and
+  TRANSITIONS between them; the kernel should therefore not be a knowledge database but "the
+  machinery that transforms epistemic states." Explicitly: Kernel != Knowledge State, and Kernel
+  != Probability Distribution -- "the repository is state. The kernel is transformation
+  capability." K_t = what the system currently represents/knows; 𝒦 = what the system can do with
+  that state. Proposed as potentially foundational.
+
+  **DELIVERS THE PROVISIONAL FUNCTIONAL SIGNATURE**: 𝒦:(K_t,E_t,G_t,C_t) -> (K_{t+1},A_t), later
+  refined to K_{t+1} = 𝒦(K_t,E_t,Q_t,C_t) with a probabilistic substructure Pi_{t+1} proportional to
+  Pi_t * L(E_t|H) where applicable, and explicitly K_{t+1} != Pi_{t+1} in general.
+
+  **DELIVERS REPRESENTATION AS A GENUINELY MISSING KERNEL COMPONENT**: Rescorla argues internal
+  Bayesian states cannot be identified purely as abstract mathematical functions -- their
+  REPRESENTATIONAL CONTENT matters (a perceptual estimate represents size/speed/position, and its
+  accuracy depends on what it represents); this converges independently with the Vedic material
+  (M0021/M0023) and Dretske (M0010/M0017) on Representation -> Interpretation -> Epistemic State
+  as "increasingly fundamental." Also separates subjective CREDENCE (a psychological facet of the
+  agent) from objective probability, giving a four-way split: Representation / Credence /
+  Knowledge / Action.
+
+  **DELIVERS PREDICTION ERROR AS A CANDIDATE (NOT PROVEN) MODEL OF Zero**: predictive coding's
+  cycle (generate prediction -> receive sensory input -> compare -> compute error -> use error to
+  modify subsequent computation) gives "Expected state <-> Observed state -> discrepancy -> state
+  update," proposed as "Zero ~ epistemic discrepancy detector, where predictive error is ONE
+  POSSIBLE implementation/model of discrepancy detection" -- explicitly hedged as a serious
+  candidate relationship, not an identity.
+
+  **DELIVERS GOAL AS PART OF THE KERNEL, REINFORCING M0019's INQUIRY**: Bayesian sensorimotor
+  models estimate the world RELATIVE TO A TASK GOAL, with goal-setting mental states having
+  "fulfillment conditions" that can succeed or fail -- an independent cognitive-science grounding
+  for "sufficient for WHAT" (M0019's Inquiry apparatus), now framed as Inquiry -> Goal/Purpose ->
+  Required representation -> Assessment.
+
+  **DELIVERS A SIX-SOURCE CROSS-CANDIDATE CONVERGENCE OBSERVATION**: Gita, Audi, Dretske,
+  probability theory, information theory, and Rescorla, "coming from radically different
+  traditions," repeatedly point toward Representation -> Discrimination -> Evaluation -> State
+  transformation -> Action -- explicitly flagged as "structural convergence, not yet formal
+  convergence," directly extending M0020's own convergence-matrix methodology to a sixth source.
+
+  **DELIVERS THE SEVEN-OPERATION KERNEL CANDIDATE**: 𝒦 = {Represent, Discriminate, Compare, Infer,
+  Update, Evaluate, Select}, formally 𝒦:(R_t,K_t,E_t,Q_t,C_t) -> (K_{t+1},D_t,A_t) -- the pass's
+  most concrete kernel-operation-set candidate so far, each operation given a one-line functional
+  gloss (Represent: construct/maintain representations; Compare: representation vs
+  evidence/expectation/requirement; Discriminate: distinguish competing hypotheses; Update: revise
+  epistemic state; Evaluate: assess adequacy/truth-support/uncertainty/contradiction; Select: pick
+  the next relevant operation). Explicitly logged as "a kernel candidate, not yet the kernel."
+
+  **DELIVERS AN EXPLICIT NON-IDENTIFICATION: Buddhi != Kernel**: Mind superset-of {Representational
+  states + Inference + Evaluation + Action selection}, while Buddhi ~ Discrimination/Evaluation is
+  only ONE functional aspect of that larger structure -- explicitly refusing to define the kernel
+  as Buddhi alone, extending the pass's Gita/mathematics non-collapse discipline (M0005, M0020-
+  M0022) to a third comparandum (the cognitive-science kernel candidate).
+
+  **RAISES A SECOND DEEP RE-SCOPING QUESTION, PARALLEL TO M0025's**: "Is the KnowledgeOS kernel a
+  knowledge store, or an epistemic cognitive mechanism?" -- "the evidence increasingly favors...
+  epistemic cognitive mechanism." Together with M0025's "is KnowledgeOS modelling knowledge or
+  justified epistemic state," this constitutes a pair of unresolved foundational re-scoping
+  questions bearing directly on the entire K_t/𝒦 research programme.
+
+  **DELIVERS A 14-ROW KERNEL-CAPABILITY TEST TABLE**: represent/maintain/update states, combine
+  prior+evidence, detect discrepancy, represent uncertainty, use context, have goals, select
+  actions, revise beliefs -- all "Yes"/"Likely, strong [Rescorla] analogue"; "produce knowledge"
+  and "establish truth" explicitly marked "Not established, Audi problem remains"; governance/
+  authorization and durable organizational-knowledge storage explicitly marked "No -- external
+  layer / KnowledgeOS infrastructure," i.e. NOT part of the cognitive kernel by this test.
+
+  **DELIVERS AN EXPLICIT FIVE-ITEM LIST OF WHAT RESCORLA DOES NOT PROVE**: Mind=KnowledgeOS;
+  Mind=KnowledgeOS Kernel; Bayesian inference=Knowledge; Posterior=Knowledge; Prediction
+  error=Zero -- maintaining strict [EXT]->[INF]->[PROP] provenance throughout.
+
+  **PROPOSES A DEDICATED SIX-SOURCE KERNEL-RECONSTRUCTION RESEARCH PROGRAMME**: "what is the
+  smallest set of transformations required for a system to function as an epistemic mind?" --
+  test the candidate kernel operations against Gita (Buddhi/Jnana/Kshetra-Kshetrajna/inquiry/
+  discernment), Audi (belief/grounding/justification/truth/knowledge), Dretske (information/
+  representation/discrimination/semantic content), Kallenberg/Shum (information
+  states/conditioning/dependence/state transitions), Cover-Thomas (information
+  reduction/sufficiency/distortion/decision), and Rescorla itself (representational
+  states/priors/evidence/posterior updating/prediction error/goals/action) -- "if the same minimal
+  operations survive all six, we may have something much more serious than an analogy... a
+  candidate KnowledgeOS Kernel Theory."
+introduces:
+  - concept: "The foundational K_t(state)-vs-K(mechanism) distinction: the repository is state, the kernel is transformation capability"
+  - concept: "The provisional kernel functional signature K_t+1=K(K_t,E_t,Q_t,C_t), with an explicit K_t+1!=Pi_t+1 caveat"
+  - concept: "Representation as a genuinely missing kernel component, and the Representation/Credence/Knowledge/Action four-way split"
+  - concept: "Prediction error as a candidate (not proven) model of Zero, framed via predictive coding's generate-compare-error-update cycle"
+  - concept: "Goal/fulfillment-conditions as part of the kernel, independently reinforcing M0019's Inquiry from cognitive science"
+  - concept: "The seven-operation kernel candidate K={Represent,Discriminate,Compare,Infer,Update,Evaluate,Select}, with one-line functional glosses for each"
+  - concept: "The explicit non-identification Buddhi != Kernel (Buddhi is only one functional aspect of a larger cognitive structure)"
+  - concept: "The second deep re-scoping question: is the kernel a knowledge store or an epistemic cognitive mechanism (favoring the latter)"
+  - concept: "The dedicated six-source kernel-minimality cross-validation research programme"
+defines: []
+refines:
+  - concept: "M0018's rate-distortion minimal-kernel reformulation and M0019's Inquiry, now given an independent cognitive-science grounding via goal/fulfillment conditions"
+  - concept: "M0020's convergence-matrix methodology, extended here to a sixth source (Rescorla) with the same structural-not-yet-formal convergence caveat"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "The proposed six-source kernel-minimality cross-validation programme (test the same candidate operations against Gita, Audi, Dretske, Kallenberg/Shum, Cover-Thomas, and Rescorla) is a concrete, falsifiable methodology directly relevant to this reconstruction's own eventual kernel-formalization stage (Phase 08) and gap-analysis stage (Phase 06) -- worth flagging prominently for the global-reclassification pass."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0026 as introducing the foundational K_t(state)-vs-Kernel(mechanism) distinction, the seven-operation kernel candidate {Represent,Discriminate,Compare,Infer,Update,Evaluate,Select}, prediction-error as a candidate Zero-discrepancy-detector model, an independent cognitive-science grounding for Inquiry via goal/fulfillment conditions, and a proposed six-source kernel-minimality cross-validation research programme."
+anchor_test:
+  anchor: "The pass's long-running unresolved 'minimal kernel' question (cf. M0009's eight-primitive claim, M0018's rate-distortion reformulation) and this reconstruction's own eventual kernel-formalization/gap-analysis phases"
+  supports_dimension: "Delivers the pass's most concrete kernel-operation-set candidate so far and a concrete, falsifiable six-source cross-validation methodology for testing kernel minimality"
+  refines_or_contradicts: "refines (M0018's minimal-kernel question, M0019's Inquiry, M0020's convergence methodology)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'The repository is state. The kernel is transformation capability... K_t = what the system currently represents/knows, versus K(mathcal) = what the system can do with that state. This distinction could be foundational' -- a clean, explicit statement of a distinction not previously drawn this sharply anywhere in this pass (M0001-M0025)."
+  - "The explicit five-item list of what Rescorla does NOT prove (Mind=KnowledgeOS, Mind=Kernel, Bayesian-inference=Knowledge, Posterior=Knowledge, Prediction-error=Zero), maintaining strict [EXT]->[INF]->[PROP] provenance discipline."
+undefined_concepts:
+  - "The precise formal content of each of the seven kernel operations (Represent, Discriminate, Compare, Infer, Update, Evaluate, Select) beyond their one-line glosses"
+open_questions:
+  - "Whether the proposed six-source kernel-minimality cross-validation programme is ever actually carried out later in this pass, and if so what operations survive all six sources."
+  - "Whether M0025's 'knowledge vs justified epistemic state' question and this document's 'knowledge store vs epistemic cognitive mechanism' question are later explicitly connected or resolved together."
+tier2_triggered: true
+tier2_reason: "Delivers the pass's most concrete kernel-operation-set candidate (the seven-operation K), the foundational K_t(state)-vs-Kernel(mechanism) distinction, an independent cognitive-science grounding for Zero (prediction error) and Inquiry (goal/fulfillment conditions), and a concrete falsifiable six-source kernel-minimality research programme -- critical importance and full tier-2 treatment clearly warranted."

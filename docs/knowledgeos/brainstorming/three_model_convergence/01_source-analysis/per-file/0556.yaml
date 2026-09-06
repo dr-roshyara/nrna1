@@ -1,0 +1,216 @@
+sequence: 556
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-155259_step-014-causality-dependency-and-counterfactual-reasoning.md
+title: "LANDMARK: Full Pearl-Style Causal Inference Theory Integrated Into KnowledgeOS — Correlation≠Dependency≠Causation≠LogicalImplication; do(X=x) Intervention and Y_x Counterfactuals Formalized; Competing Causal Models Retained Without Premature Selection (Analogous to Step 9's Contradictory Assertions); Causal Diagnosis as Active Learning (Connects to Value-of-Evidence); PredictiveModel≠CausalModel; a Third Independent Instance of 'No Universal Formula, Typed Pluggable Methods Instead' (After Evidence-Theory and Inference-Theory); Twelve Canonical CA1-CA12 Invariants; Opens Step 15 (Decision Theory, Value of Information, Action Selection, Sārathi)"
+date: "2026-08-27"
+bytes: 20251
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 0553's named 'Step 14,' delivering a complete, Pearl-calculus-grounded causal reasoning theory fully integrated into the corpus's established evidence/assessment/acceptance architecture"
+source_role: PRIMARY_RESEARCH
+canonical_source: 556
+importance: critical
+confidence: high
+about: >
+  Directly executes 0553's closing "Step 14 -- Causality, Dependency, and Counterfactual Reasoning,"
+  opening with the central principle `Correlation≠Dependency≠Causation≠Logical Implication`, motivated by
+  a worked example (Nexus becoming unavailable after a firewall change) showing `TemporalSequence⇏
+  Causation`, since a simultaneous deployment, certificate expiry, DNS failure, host failure, or database
+  failure could equally explain the observation.
+
+  **Formalizes four genuinely distinct relations**: Logical implication (`P->Q`, formal entailment under a
+  rule system); Dependency (`P⇝Q`, one thing depending on another within a model or process, without
+  establishing causality); Correlation (`P∼Q`, statistical association alone); and Causation
+  (`P⇝_cQ`, "changing P, under a specified causal model and intervention semantics, changes the
+  distribution/state of Q" -- "substantially stronger" than the other three). **Delivers the file's
+  foundational mathematical requirement**: causality cannot be determined from data alone -- it requires an
+  explicit `CausalModel`, formalized as a Pearl-style structural causal model
+  `M=(V,U,F,P(U))` (observed/endogenous variables, exogenous variables, structural equations, exogenous
+  distribution), worked through a concrete multi-cause availability model and causal graph
+  (FirewallChange->Connectivity, CertificateExpiry, and HostFailure all feeding NexusUnavailable) --
+  "causality is model relative," and any such graph is explicitly "a causal hypothesis/model, not
+  automatically established fact."
+
+  **Formalizes causal edges as fully epistemically governed objects**, `CausalRelation=(Cause,Effect,
+  Model,Evidence,Support,Uncertainty,Context,Validity)`, "entirely consistent with our earlier
+  architecture." **Catalogs nine categories of causal evidence** (controlled experiments, interventions,
+  natural experiments, temporal evidence, mechanism evidence, statistical data, domain rules, simulations,
+  observational studies) with explicitly differing evidential strength -- `CausalEvidence≠ordinary
+  co-occurrence`.
+
+  **Delivers the file's central mathematical concept -- intervention**: `do(X=x)`, formally distinguishing
+  `P(Y|do(X=x))` from mere observational `P(Y|X=x)`, extending 0554's Observation≠Resolution principle
+  into `Observation≠Intervention` (worked contrast: passively observing systems with a given firewall rule
+  vs. actively changing the rule and measuring the effect). **Formalizes counterfactual reasoning**:
+  `Y_{X=x}`, a potential/counterfactual outcome under a specified intervention, with a causal effect
+  attributed to X precisely when `Y_{X=1}≠Y_{X=0}`, explicitly `Counterfactual(P)≠Observed(P)` -- a
+  counterfactual is always model-derived, carrying `Acquisition=CounterfactualInference` with mandatory
+  provenance (causal model, assumptions, observed evidence, intervention, inference method). Motivates this
+  with a concrete Architecture Board scenario ("what happens if we migrate Nexus without parallel
+  operation?") requiring `CurrentKnowledge->CausalModel->Intervention->Simulation/Inference->
+  CounterfactualOutcome`, explicitly "a fundamentally different capability from document retrieval."
+
+  **Delivers `ProcessDependency≠CausalSufficiency`**: a backup-configuration-to-execution dependency does
+  not by itself prove successful-restore causal sufficiency (storage failure, permission failure,
+  corruption, or restore-procedure failure could all intervene). **Delivers three formally distinct types
+  of cause that must not be collapsed into one generic "causes" relation**: Necessary
+  (`¬X⇒¬Y`), Sufficient (`X⇒Y`), and Contributory
+  (`P(Y|do(X))>P(Y|do(¬X))`). **Delivers multiple-cause modeling** where the true causal mechanism
+  `Y=f(X_1,X_2,X_3,U)` must be explicitly defined rather than assumed to be a simple logical disjunction of
+  candidate causes.
+
+  **Reconfirms Hypothesis≠AcceptedFact specifically for causal claims**, worked through a structured
+  causal-uncertainty record (Candidate status, Moderate support, named alternative causes, High
+  uncertainty) rather than an assertive causal statement. **Delivers competing causal models retained
+  without premature selection**: `M_1` and `M_2` may both be held simultaneously as competing hypotheses,
+  explicitly "analogous to the contradictory assertion model from Step 9" (0550's paraconsistency
+  framework) -- "causal model competition can be represented without premature selection."
+
+  **Delivers the file's most operationally consequential new capability -- causal diagnosis as an active
+  learning problem**: given competing models `M_1,M_2,M_3` each predicting different observable evidence
+  (e.g. distinct log signatures), Lord asks "which observation would most efficiently distinguish them?",
+  formalized as `q*=argmax_q ExpectedInformationGain(q)` subject to `Cost(q)≤Budget` -- directly connecting
+  Step 14 to the corpus's established Value-of-Evidence machinery (0546/0547). **Delivers the corpus's
+  cleanest three-lens division statement to date**: Zero asks "what is wrong/unknown?"; Lord asks "what
+  could explain/reduce it?"; Sārathi asks "what should we do next?"
+
+  **Connects causal reasoning to Discrepancy** (a required causal-support threshold unmet by a merely
+  Candidate-status cause generates an explicit `Δ_causal`), and delivers a **causal model validation
+  requirement guarding explicitly against overfitting**: a model explaining historical data can still be
+  causally wrong, requiring out-of-sample predictions, interventions, controlled tests, natural
+  experiments, or mechanism verification as genuine validating evidence. **Formalizes Simulation**
+  (`Simulation(M,X)->Y`, always conditional on `M`, `SimulationResult≠ObservedFact`, always
+  `DerivedUnderModel`), worked through a concrete Nexus-migration-downtime simulation carrying full
+  provenance (model version, assumptions, simulation engine, uncertainty) rather than an asserted fact.
+
+  **Delivers causal assumptions as first-class, explicit knowledge objects** (worked through three named
+  assumptions -- complete firewall logs, no simultaneous deployment, unchanged DNS -- underlying a causal
+  conclusion), formalizing a recursive dependency structure: a causal conclusion depends on its causal
+  model, which depends on its assumptions, which are themselves knowledge objects subject to invalidation
+  and reassessment -- "this follows exactly from Step 11." **Confirms causal models participate in the
+  identical belief-revision machinery** established at Step 9: an accepted model contradicted by new
+  evidence becomes Rejected/Contested, with all dependent conclusions reassessed.
+
+  **Delivers `CausalDirection≠LogicalDirection`** (worked WetRoad/SlipperyRoad and Rain/WetRoad examples
+  showing implication direction does not reverse the way causal reasoning might suggest), and the crucial
+  finding that **correlation alone is insufficient for causal direction**: given `X∼Y`, the underlying
+  structure could be `X->Y`, `Y->X`, or a common cause `Z` driving both -- "KnowledgeOS must preserve this
+  uncertainty" rather than guessing a direction.
+
+  **Formally distinguishes the Knowledge Graph from the Causal Graph**: `G_K=(V,R_K)` (arbitrary semantic
+  relationships) versus `G_C=(V,R_C)` (causal relationships under a specified model), with an explicit DDD
+  warning that a generic `RelatedTo(X,Y)` edge must never be interpreted as `Causes(X,Y)`. **Proposes a
+  distinct `CausalReasoning` bounded context** (CausalModel, CausalVariable, CausalRelation, Intervention,
+  Counterfactual, CausalEvidence, CausalHypothesis, CausalInferenceResult) explicitly kept separate from
+  the general Knowledge context to avoid overloading it.
+
+  **Formalizes the interventional distribution** `P(Y|do(X=x),M)` and counterfactual `Y_x` under a model
+  `M`, packaged into a Causal Result object `CR=(Model,Intervention,Outcome,Assumptions,Evidence,
+  Uncertainty,Provenance)`. **Delivers the file's central architectural integration result**: causal
+  conclusions become ordinary KnowledgeOS assertions -- a causal result transforms into an assertion
+  `A_C` carrying `Acquisition=Derived`, `Method=CausalInference`, then flows through the identical
+  `Assessment->Acceptance->Commitment` pipeline as any other assertion -- "causal reasoning does not break
+  our architecture. It plugs into it."
+
+  **Connects causality directly to Sārathi's decision-making**: for candidate actions `a_1,a_2,a_3`, each
+  intervention `do(a_i)` produces an estimated outcome `Y_i`, with the optimal action formalized as
+  `a*=argmax_a ExpectedUtility(Y|do(a),K_t)` subject to constraints -- "this is where KnowledgeOS moves
+  from knowledge management toward knowledge-guided decision support." **Delivers a crucial safeguard
+  against conflating prediction with causation**: `PredictiveModel≠CausalModel` -- a machine-learning
+  model's `P(Y|X)` is generally NOT equal to a causal model's `P(Y|do(X))`; an LLM or ML system can supply
+  predictive evidence without ever proving causal structure. **Positions the LLM's role in causal reasoning
+  precisely**: it may extract causal claims, propose causal graphs, identify candidate mechanisms, generate
+  competing hypotheses, propose experiments, interpret results, or explain causal models in natural
+  language -- but `LLM-generated causal claim≠Established causal relation`, always entering as a
+  `CandidateCausalHypothesis`, worked through a concrete document-extraction example flowing correctly
+  through Zero/Lord/Sārathi ("precisely our intended architecture").
+
+  **Delivers the file's central formal deliverable -- twelve canonical Step-14 invariants (CA1-CA12)**:
+  CA1 Correlation≠Causation; CA2 TemporalOrder≠Causation; CA3 Dependency≠Causation; CA4
+  LogicalImplication≠Causation; CA5 CausalClaim requires an explicit causal model/context; CA6
+  Observation≠Intervention; CA7 Counterfactual results are model dependent; CA8 CausalRelations have
+  epistemic status; CA9 CausalHypothesis≠EstablishedCause; CA10 CausalModel assumptions are explicit and
+  traceable; CA11 CausalModel revision leads to dependent-conclusion reassessment; CA12 Simulation
+  result≠ObservedFact.
+
+  **Delivers Step 14's verdict**: STRUCTURALLY RESOLVED, with the explicit qualification that
+  KnowledgeOS deliberately does NOT select one universal causal inference engine, instead supporting six
+  named causal mechanisms in parallel (Observational, Interventional, Experimental, Statistical,
+  Simulation, Counterfactual) -- "rather than pretending that one algorithm solves causality in every
+  domain." This is explicitly the THIRD independent instance in the corpus's Computational Closure research
+  program of the identical architectural resolution -- no universal formula, a typed family of pluggable
+  methods instead -- previously reached for Evidence theory (0545/0546) and Inference/Derivation theory
+  (0554), now confirmed as a genuinely recurring, deliberate design principle rather than a one-off
+  decision.
+
+  **Consolidates "where the theory now stands"** into the fullest single architecture pipeline statement to
+  date (Reality/Source through Entity, Proposition, Evidence, Assessment, Acceptance, KnowledgeState,
+  Discrepancy, Investigation, Inference, DerivedKnowledge, CausalModel, Intervention/Counterfactual,
+  DecisionEvidence, Sārathi, Action), all "auditable through Provenance + EventHistory + PolicyVersion +
+  ModelVersion."
+
+  **Closes by opening "Step 15 -- Decision Theory, Value of Information, Action Selection, and Sārathi"**,
+  motivated by a concrete four-candidate-action scenario (inspect firewall, ask system owner, run a live
+  test, do nothing), each carrying its own cost, risk, expected information gain, expected discrepancy
+  reduction, reversibility, authority requirement, and business impact -- explicitly framed as the point
+  where the corpus finally addresses how to choose between competing possible actions.
+introduces:
+  - concept: "Four formally distinct relations — Logical implication, Dependency, Correlation, Causation — none reducible to another, with Causation defined via intervention semantics rather than mere observed association"
+  - concept: "Causality formalized as model-relative via a Pearl-style structural causal model M=(V,U,F,P(U)), explicitly never inferable from data alone"
+  - concept: "The intervention operator do(X=x), formally distinguishing P(Y|do(X=x)) from mere observational P(Y|X=x), extending Observation≠Resolution into Observation≠Intervention"
+  - concept: "Counterfactual outcomes Y_x formalized as model-derived (Counterfactual(P)≠Observed(P)), never treated as an observed fact"
+  - concept: "Three formally distinct cause types (Necessary, Sufficient, Contributory) that must not be collapsed into one generic causal relation"
+  - concept: "Competing causal models retained without premature selection, explicitly analogous to Step 9's contradictory-assertion tolerance"
+  - concept: "Causal diagnosis formalized as an active-learning problem, connecting causal-model discrimination directly to the corpus's Value-of-Evidence machinery via q*=argmax ExpectedInformationGain(q)"
+  - concept: "The Knowledge Graph vs. Causal Graph distinction, with a critical DDD warning that a generic semantic relation must never be interpreted as a causal one"
+  - concept: "The architectural integration result that causal conclusions become ordinary KnowledgeOS assertions, flowing through the identical Assessment->Acceptance->Commitment pipeline as any other assertion"
+  - concept: "PredictiveModel≠CausalModel: a predictive model's P(Y|X) is generally not equal to a causal model's P(Y|do(X)), so predictive accuracy alone never establishes causal structure"
+  - concept: "Twelve canonical Step-14 invariants (CA1-CA12) governing causality, dependency, and counterfactual reasoning"
+  - concept: "The THIRD independent instance of the corpus's recurring architectural resolution — no universal formula, a typed family of pluggable methods instead — now confirmed across Evidence theory, Inference/Derivation theory, and Causal theory"
+  - concept: "'Step 15 — Decision Theory, Value of Information, Action Selection, and Sārathi' as the corpus's next named research phase"
+defines:
+  - concept: "Structural Causal Model (M)"
+    definition: "M=(V,U,F,P(U)) — observed/endogenous variables, exogenous variables, structural equations, and a distribution over exogenous variables — a Pearl-style formalization expressing a causal hypothesis, not automatically established fact"
+  - concept: "CausalRelation"
+    definition: "(Cause, Effect, Model, Evidence, Support, Uncertainty, Context, Validity) — a fully epistemically governed object, consistent with the corpus's general evidence/assessment architecture"
+  - concept: "Causal Result (CR)"
+    definition: "(Model, Intervention, Outcome, Assumptions, Evidence, Uncertainty, Provenance) — the structured output of formal causal inference, convertible into an ordinary KnowledgeOS assertion with Acquisition=Derived, Method=CausalInference"
+refines:
+  - concept: "0553's closing directive naming Step 14 and its Correlation≠Dependency≠Causation≠LogicalImplication motivating principle"
+    refinement: "Fully executed via a complete Pearl-calculus-grounded causal theory (structural causal models, do-calculus, counterfactuals) fully integrated into the corpus's existing assertion/assessment/acceptance architecture"
+  - concept: "0554/0551's Derivation≠Inference≠Generation and no-universal-reasoning-formula conclusion, and 0545/0546's no-universal-evidence-algebra conclusion"
+    refinement: "Extended by direct structural parallel a third time into causal theory: KnowledgeOS supports six named causal mechanisms rather than one universal causal inference engine, confirming this pluggable-typed-methods pattern as a deliberate, recurring architectural principle across the entire epistemic kernel"
+  - concept: "0546/0547's Value of Evidence and Lord's evidence-acquisition optimization"
+    refinement: "Extended into causal-model discrimination specifically: Lord can now select observations that maximally distinguish competing causal hypotheses, not merely reduce generic discrepancy"
+  - concept: "0550's paraconsistent tolerance for contradictory assertions"
+    refinement: "Extended explicitly to competing causal models, which may be retained simultaneously without forced premature resolution"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 15 — Decision Theory, Value of Information, Action Selection, and Sārathi' is executed as its own dedicated corpus file, formally addressing the four-candidate-action worked scenario posed at this file's close"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the four formally distinct relations (Logical implication/Dependency/Correlation/Causation), the structural causal model M=(V,U,F,P(U)), the intervention operator do(X=x), and Observation≠Intervention."
+  - "dimension-registry.md: record counterfactual formalization (Y_x, Counterfactual≠Observed), the three cause types (Necessary/Sufficient/Contributory), competing causal models retained without premature selection, and causal diagnosis as an active-learning problem connecting to Value-of-Evidence."
+  - "dimension-registry.md: record the Knowledge-Graph-vs-Causal-Graph distinction, causal conclusions plugging into the ordinary assertion pipeline, PredictiveModel≠CausalModel, the twelve canonical CA1-CA12 invariants, and the confirmed third instance of the corpus's no-universal-formula/typed-pluggable-methods architectural pattern."
+anchor_test:
+  anchor: "0553's Step-14 directive; 0554/0551's no-universal-reasoning-formula conclusion; 0545/0546's no-universal-evidence-algebra conclusion; 0546/0547's Value of Evidence machinery; 0550's paraconsistent contradiction tolerance"
+  supports_dimension: "LANDMARK complete integration of Pearl-style causal inference theory (structural causal models, intervention, counterfactuals) into KnowledgeOS's existing evidence/assessment/acceptance architecture, delivering a rigorous four-way relation separation (correlation/dependency/causation/logical implication), a formal treatment of competing causal models analogous to the corpus's contradiction-tolerance discipline, a genuinely new operational capability (causal diagnosis as active learning, directly extending Lord's Value-of-Evidence machinery), and — most significantly for the corpus's overall architectural coherence — a THIRD independent confirmation of the same 'typed pluggable methods, no universal formula' design resolution already reached separately for Evidence theory and Inference/Derivation theory, establishing this as a genuinely recurring, deliberate principle across the entire epistemic kernel rather than a one-off choice"
+  refines_or_contradicts: "directly and fully executes 0553's Step-14 directive; extends 0554/0551's and 0545/0546's parallel no-universal-formula conclusions with a third confirming instance; extends 0546/0547's Value-of-Evidence machinery into causal-model discrimination; extends 0550's contradiction tolerance to competing causal models; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The three-model active-learning worked example (M_1, M_2, M_3 each predicting distinct observable log signatures) is a directly checkable demonstration of how causal-model discrimination reduces to the corpus's already-established evidence-value optimization machinery, rather than requiring a separate ad hoc mechanism."
+  - "The recognition that this file's 'six causal mechanisms, not one universal engine' resolution is the third independent occurrence of the identical architectural pattern (after Evidence theory and Inference/Derivation theory) is a structurally significant, directly checkable convergence across three separately-drafted corpus sections, strengthening the case that this is a genuine discovered design principle rather than a coincidence."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 15 — Decision Theory, Value of Information, Action Selection, and Sārathi' is executed as its own dedicated corpus file, formally resolving the posed four-candidate-action decision scenario"
+  - "Whether the twelve CA1-CA12 invariants are ever cross-referenced against the corpus's other independently-numbered invariant schemes from this same research program in a future canonical reference"
+tier2_triggered: true
+tier2_reason: "LANDMARK complete integration of a full Pearl-style causal inference theory (structural causal models, do-calculus intervention, counterfactual reasoning) into KnowledgeOS's established evidence/assessment/acceptance architecture, delivering a rigorous four-way relation separation, three formally distinct cause types, and a genuinely new operational capability directly extending the corpus's Value-of-Evidence machinery into active learning for causal-model discrimination. Its single most structurally significant contribution is confirming, for a third independent time (after Evidence theory at 0545/0546 and Inference/Derivation theory at 0554), the identical architectural resolution that KnowledgeOS requires no single universal formula but rather a typed family of pluggable methods sharing common provenance — establishing this as a genuinely recurring, deliberate design principle spanning the entirety of the corpus's epistemic kernel rather than a coincidental repetition. Closes with twelve canonical governing invariants and a well-motivated next research phase on decision theory and action selection."

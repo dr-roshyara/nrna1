@@ -1,0 +1,110 @@
+sequence: 2376
+path: docs/knowledgeos/brainstorming/20260904-104500_gita-on-declared-reads-and-effective-reads.md
+title: "Gītā on Declared Reads vs Effective Reads — THE FINAL, SIXTH KR-SIM COMPANION STUDY AND FORMAL CLOSURE: 'The Gītā Strand Has Now Run Five Cycles... in None of Them Has It Produced a Kernel Primitive... Stop Testing It for Kernel Candidacy — the Candidacy Question Is Answered' -- LAST FILE IN THE PRIMARY CORPUS"
+date: "2026-09-04"
+bytes: 0
+model:
+  primary: g
+  secondary: c1
+  secondary_note: "the sixth and FINAL document in the KR-SIM Gita-companion series (contradiction/file 2329, elimination/file 2370, reduction/file 2372, audit/file 2373, bridge/file 2375, and now this closing synthesis), delivering the formal five-cycle tally and closing recommendation to stop testing the Gita strand for kernel candidacy; this is the exact primary-source document behind the parallel same-day session's already-reported closure note ('Gita strand: stop testing it for kernel candidacy. Five cycles, zero machinery.'); also the LAST entry in the entire primary corpus manifest (sequence 2376 of 2376)"
+source_role: BRIDGE
+canonical_source: 2376
+importance: critical
+confidence: high
+about: >
+  IMPORTANT NOTE: this is the LAST FILE in the primary-corpus manifest (2376 of 2376 total rows,
+  1193 PRIMARY). It is also the exact primary-source document behind a finding this reconstruction's own
+  session log (2026-09-04, a parallel, differently-scoped session) already reported as an external fact:
+  "Gītā strand: stop testing it for kernel candidacy. Five cycles, zero machinery. Keep it as an external
+  naming lens; the candidacy question is answered." This document IS that closure, delivered by the KR-
+  SIM lane itself against KR-BRIDGE-02 (a Π×Q grid cycle).
+
+  **DELIVERS TWO CONCRETE PROVENANCE-TRACKING FAILURES THIS CYCLE**: Π_value_set was declared to read the
+  value field; under T_D_relational its value is actually computed from `rank`, and rank is computed by
+  ordering values WITHIN A TAG GROUP -- so the observable was in fact carried by `tag`, the very field Q
+  reads. "It did not know this. Neither did I, and I wrote it." The corrected map was STILL wrong:
+  Π_arity reads no field by declaration, but after T_C_dedup it effectively reads `v`, because arity is a
+  function of which records survive and membership is decided by a field. "A perturbation test found
+  this; reading the code did not."
+
+  **DELIVERS THE 3.27 CORRESPONDENCE, STRIPPED TO ITS STRUCTURAL CONTENT**: "the agent's account of its
+  own activity is not the activity. Π reports {v}. Π is in fact carried by {v,tag}. Its self-description
+  is sincere and wrong, and its wrongness is not visible from inside itself -- it is visible only from
+  the transformation that constitutes it." Paired with 4.17 ("the way of action is deep/impenetrable"):
+  "not mysticism here: dependency structure is not surface-readable. Two of my three provenance maps
+  were wrong, and I was reading the code that produced them each time."
+
+  **DELIVERS THE EXPLICIT 'WHERE THE ANALOGY BREAKS' SECTION**: the Gītā's own resolution is
+  renunciation-of-fruit and non-doership (2.47, 5.8-9) -- a resolution "in the register of disposition."
+  "There is no such move available here. The experiment's resolution was not disposition but
+  PERTURBATION: change one input field, watch which output columns move, and let the observed dependency
+  overrule the declared one. That is a mechanical test, not an insight. The lens supplies the question --
+  'does this thing know what it reads?' -- and supplies NOTHING toward the answer. Treating the
+  resolution as transferable would be exactly the category error the discipline forbids." This is the
+  series' clearest, most explicit statement of where the philosophical analogy structurally cannot
+  transfer, directly paralleling this reconstruction's own already-tracked Gītā-thread discipline (files
+  2234-2321's correspondence≠derivation rule, and file 2308's warning against reversing lens-then-theorem
+  order).
+
+  **DELIVERS A FOUR-ITEM CANDIDATE REGISTER WITH HONEST PROVENANCE ATTRIBUTION**: Effective-read closure
+  (an observable's read-set must be computed through the transformation's provenance, never declared) --
+  [PROP] FR-003, EXPLICITLY "established by EXPERIMENT (KR-BRIDGE-02 §2), not by the lens. The lens named
+  it after the fact"; Declaration≠verification as a standing experimental obligation -- [PROP], "two
+  independent occurrences now: KR-BRIDGE-01's label mismatch on T_B, KR-BRIDGE-02's provenance failures.
+  Two is not promotion (ES-006.1)"; Non-doership as a kernel stance -- REJECTED ("no mechanical content.
+  Recorded so it is not proposed again"); "Action's depth" as an interpretive-humility argument -- REJECTED
+  as machinery ("legitimate only as a reason to test, and testing is already an obligation").
+
+  **DELIVERS THE FORMAL FIVE-CYCLE CLOSURE, EXPLICITLY NAMING ALL FIVE CYCLES**: "[CORPUS] the Gītā strand
+  has now run FIVE CYCLES (contradiction · elimination · reduction · audit · bridge). In none of them has
+  it produced a kernel primitive, and in each it has produced a question already answerable by
+  experiment. That is itself a finding worth recording: the lens has been consistently useful for
+  framing and consistently empty of machinery. Its value is in naming what an experiment already
+  earned. It has never once been the source of a result, and after five cycles that is evidence, not an
+  accident." This maps EXACTLY onto this reconstruction's already-tracked five KR-SIM companion studies
+  in sequential order: contradiction (file 2329), elimination (file 2370), reduction (file 2372), audit
+  (file 2373), bridge (file 2375) -- confirming this reconstruction independently tracked and recorded
+  the identical five-cycle series this closing document explicitly tallies, in the same order.
+
+  **DELIVERS THE FORMAL CLOSING RECOMMENDATION**: "[PROP] Recommendation: keep the strand, keep it
+  external, and stop testing it for kernel candidacy -- THE CANDIDACY QUESTION IS ANSWERED. Its role is
+  naming, and naming is enough." This is the exact, word-for-word source of the finding this
+  reconstruction's own session log (a parallel, differently-scoped session on the same day) already
+  reported: "Gītā strand: stop testing it for kernel candidacy. Five cycles, zero machinery. Keep it as
+  an external naming lens; the candidacy question is answered" -- now directly, independently confirmed
+  by reading the primary source itself, closing the loop on that earlier cross-reference.
+introduces:
+  - concept: "The explicit, formal five-cycle closure of the KR-SIM Gita-companion series, naming all five cycles in order (contradiction, elimination, reduction, audit, bridge) and recommending the candidacy question be treated as answered"
+  - concept: "The clearest statement in the series of exactly where the philosophical analogy structurally cannot transfer: the text's resolution is dispositional (renunciation, non-doership), the experiment's resolution is mechanical (perturbation testing), and the lens supplies only the question, never the answer"
+  - concept: "The two concrete provenance-tracking failures this cycle (Pi_value_set actually carried by tag; Pi_arity actually carried by v after deduplication), both found by perturbation testing rather than code reading"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked five-file KR-SIM Gita-companion series (files 2329, 2370, 2372, 2373, 2375)"
+    refinement: "FORMALLY CLOSED by this exact document, which independently names and tallies the identical five cycles in the identical order this reconstruction tracked them, confirming the series is complete and its candidacy verdict is final"
+  - concept: "This reconstruction's already-reported session-log cross-reference (a parallel session's note: 'Gita strand: stop testing it for kernel candidacy... candidacy question is answered')"
+    refinement: "IDENTIFIED, by direct primary-source reading, as this exact document -- the cross-reference is now confirmed rather than merely reported secondhand"
+contradicts: []
+repeats:
+  - "The kernel-non-selectability verdict is already tracked across files 2329, 2370, 2372, 2373, 2375; this record captures the incremental formal five-cycle tally, the clearest-yet analogy-breaks statement, and the closing recommendation."
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as the sixth and final KR-SIM Gita-companion study, formally closing the series with an explicit five-cycle tally (contradiction/elimination/reduction/audit/bridge) and the recommendation to stop testing the Gita strand for kernel candidacy -- confirmed as the exact primary source behind this reconstruction's already-reported session-log cross-reference."
+anchor_test:
+  anchor: "This reconstruction's already-tracked five-file KR-SIM Gita-companion series and the parallel session's already-reported closure note"
+  supports_dimension: "Formally closes the series with an explicit five-cycle tally matching this reconstruction's own tracked sequence exactly, and is confirmed as the primary source behind the already-reported closure note"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The five cycles named here (contradiction, elimination, reduction, audit, bridge) map exactly onto this reconstruction's own already-tracked files 2329, 2370, 2372, 2373, 2375 in the identical order, confirming this reconstruction independently reconstructed the same series this document formally closes."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "The sixth and final KR-SIM Gita-companion study, formally closing the entire series with an explicit five-cycle tally and a definitive recommendation to stop testing the Gita strand for kernel candidacy -- confirmed, by direct primary-source reading, as the exact document behind this reconstruction's already-reported parallel-session closure note. Classified importance critical given its role as the series' formal closure and its status as the final entry in the entire primary-corpus manifest."

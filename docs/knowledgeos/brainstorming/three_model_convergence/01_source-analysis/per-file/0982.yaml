@@ -1,0 +1,103 @@
+sequence: 982
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/exec/t285_equality.py
+title: "t285_equality.py -- A GENUINELY ADMIRABLE ACT OF REFLEXIVE SELF-CORRECTION: Applies File 0981's Newly-Mandated Equality-Naming Discipline BACK ONTO THE AUTHOR'S OWN PRIOR CLAIM (File 0974's '(A,R)=pi_K(K_t)'), Finding It FALSE Under Structural Equality, TRUE Only Under Semantic Equality After Unpacking Assertion, and FALSE Under a Newly-Introduced 'Observational Equality' (Three Concrete Query Classes -- Replay/Policy-Eval/Authorize -- Are Unanswerable in (A,R)) -- Closes: 'D285-5 Caught It in Someone Else's Property; It Was Present in My Own'"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "genuinely executable, self-critical verification script, directly applying newly-mandated discipline reflexively"
+source_role: PRIMARY_RESEARCH
+canonical_source: 982
+importance: critical
+confidence: high
+about: >
+  A second genuinely executable, no-stub Python script (57 lines), whose docstring explicitly states its
+  purpose: "Applying the HPA review's mandate -- 'each test specifies its equality relation' -- to D285-6's
+  own claim: `(𝒜,ℛ)=π_K(K_t)`. Which equality? The answer changes the strength of the result." **THIS IS A
+  DIRECT, REFLEXIVE APPLICATION of file 0981's newly-mandated equality-naming discipline BACK ONTO THE
+  AUTHOR'S OWN EARLIER CLAIM** (file 0974's own `t285_reconcile.py`, whose T-B/T-C sections asserted `(𝒜,ℛ)
+  =π_K(K_t)` as "the precise reconciliation result" without ever naming which equality relation the claim
+  used) -- a genuinely admirable instance of a research programme catching and correcting its own prior
+  imprecision using a rule it had only just adopted.
+
+  **§1 tests the claim under STRUCTURAL equality** (same components, same names): computes `π`'s
+  non-dropped image set (`{Entity,Observation,Proposition,Relation,State}`) against the literal target
+  `(𝒜,ℛ)={Assertion,Relation}`, finding them unequal and concluding **"the claim is FALSE under structural
+  equality"** because "'Assertion' is not a ratified primitive at all."
+
+  **§2 tests the claim under SEMANTIC equality** (same content, ignoring packaging): unpacks `Assertion`
+  into its constituent fields (`{Proposition,Entity,Observation}`, per its declared structure `(id,P,e,c,t,
+  Π)`), finds this unpacked set IS covered by `π`'s image, concluding **"the claim HOLDS under semantic
+  equality -- and ONLY after unpacking Assertion."**
+
+  **§3 delivers THE SCRIPT'S GENUINELY NEW CONTRIBUTION: A THIRD, CONCRETE EQUALITY NOTION, "OBSERVATIONAL
+  EQUALITY"** (same answers to all mandatory queries), tested against seven named query classes
+  (`member,contradicts,supersede,lineage` answerable in `(𝒜,ℛ)`; **`replay,policy-eval,authorize` NOT
+  answerable**, since they require Event/Policy/Action which the projection explicitly drops), concluding
+  **"FALSE under observational equality. The projection is LOSSY, by design."** -- this is the first time
+  this reconstruction has encountered "observational equality" specified with concrete, named query
+  classes, giving genuine operational teeth to a concept this reconstruction has previously only seen
+  discussed abstractly (the corpus's earlier multi-way equality-notion collision, files 0912, 0934, 0957,
+  0959, 0968).
+
+  **THE SCRIPT'S CLOSING SECTION DELIVERS A GENUINE, PRECISE SELF-CORRECTION**: restates the original
+  (imprecise) claim "WRONG (as D285-6 originally wrote it): `(𝒜,ℛ)=π_K(K_t)`", replacing it with **"CORRECT:
+  `(𝒜,ℛ)=_semantic π_K(K_t)` after unpacking Assertion into its fields, and modulo the declared drop of
+  {Event, Policy, Action}"**, explicitly noting the claim is **NOT** true under `=_structural` or
+  `=_observational`. Delivers the precise consequence: **"'projection' is the right word only for a LOSSY,
+  semantic-level map. D285-6's Outcome B stands -- but it is weaker than an unqualified '=' suggested, and
+  the loss is now named: three primitives and three query classes."**
+
+  **THE SCRIPT CLOSES WITH THE MOST GENUINELY SELF-CRITICAL STATEMENT ENCOUNTERED IN THIS ENTIRE
+  RECONSTRUCTION'S TRACKING**: **"This is the SAME defect class D285-5 caught in the action/result property:
+  a property stated without naming its equality is not a well-formed proposition. D285-5 caught it in
+  someone else's property; it was present in my own."** -- an explicit, transparent admission that the
+  author's own earlier work (file 0974's T-B/T-C reconciliation result) suffered from exactly the same
+  imprecision the disciplined methodology was designed to catch in the Gita-derived hypotheses, and a
+  genuine correction of it rather than a defensive dismissal.
+introduces:
+  - concept: "A reflexive self-correction: applying the newly-mandated equality-naming discipline (file 0981) back onto the author's own prior claim (file 0974's (A,R)=pi_K(K_t))"
+  - concept: "The concrete specification of 'observational equality' via seven named mandatory query classes (member/contradicts/supersede/lineage answerable; replay/policy-eval/authorize not answerable in (A,R))"
+  - concept: "The precise, corrected restatement: (A,R) =_semantic pi_K(K_t), after unpacking Assertion, modulo the declared drop of {Event, Policy, Action} -- explicitly NOT structural, NOT observational equality"
+  - concept: "The genuinely self-critical closing admission: 'D285-5 caught it in someone else's property; it was present in my own'"
+defines:
+  - concept: "Observational equality (as concretely specified in this script)"
+    definition: "Two representations of a state are observationally equal if and only if they produce identical answers to every mandatory query the KnowledgeOS kernel must be able to answer about that state. This script concretely tests seven such query classes -- member, contradicts, supersede, and lineage (all answerable using only Assertion/Relation content) versus replay, policy-eval, and authorize (all requiring Event, Policy, or Action information that the (A,R) projection explicitly drops) -- and finds the projection FAILS observational equality precisely because three of the seven mandatory query classes cannot be answered from (A,R) alone, confirming the projection is deliberately lossy rather than merely incompletely specified"
+refines:
+  - concept: "File 0974's T-B/T-C claim '(A,R)=pi_K(K_t)... this is the precise reconciliation result'"
+    refinement: "PRECISELY CORRECTED via reflexive self-application of file 0981's equality-naming mandate: the claim holds only under semantic equality (after unpacking Assertion), is FALSE under structural equality, and is FALSE under the newly-specified observational equality -- the original claim is not wrong in substance but was imprecisely stated, now given the exact qualification it required"
+  - concept: "This reconstruction's long-tracked multi-way equality-notion collision (files 0912, 0934, 0957, 0959, 0968)"
+    refinement: "GIVEN GENUINE OPERATIONAL CONTENT for one of its members ('observational equality'), concretely specified via seven named query classes rather than left as an abstract label -- a further step toward resolving this reconstruction's long-tracked equality-definition ambiguity"
+  - concept: "File 0981's newly-mandated equality-naming principle"
+    refinement: "IMMEDIATELY, REFLEXIVELY APPLIED to the author's own prior work within the same research programme, demonstrating the principle is genuinely operative rather than merely aspirational"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Whether the concretely-specified 'observational equality' notion (member/contradicts/supersede/lineage/replay/policy-eval/authorize) is formally adopted as one of the corpus's canonical equality relations."
+  - "Whether D285-6's Outcome B (the (A,R)=pi_K(K_t) projection claim) is ever restated with this precise equality qualification in the corpus's own canonical documentation."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this script's reflexive self-correction of file 0974's own imprecise claim as a genuinely admirable instance of the disciplined kernel-track methodology being applied to the author's own prior work, not merely to Gita-derived hypotheses -- strong evidence the discipline is operative rather than performative."
+  - "dimension-registry.md: record the concrete specification of 'observational equality' via seven named mandatory query classes as a genuine advance toward resolving this reconstruction's long-tracked multi-way equality-notion collision (files 0912, 0934, 0957, 0959, 0968)."
+anchor_test:
+  anchor: "File 0974's T-B/T-C '(A,R)=pi_K(K_t)' claim; file 0981's newly-mandated equality-naming principle; this reconstruction's long-tracked equality-notion collision"
+  supports_dimension: "Precisely corrects file 0974's own claim by naming its required equality relation (semantic, not structural or observational), and concretely specifies observational equality via seven named query classes -- directly extending and reflexively validating file 0981's newly-mandated discipline"
+  refines_or_contradicts: "precisely corrects (refines) file 0974's own claim; concretely specifies (refines) the abstract equality-notion collision"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The script's explicit print output distinguishing structural (FALSE), semantic (TRUE, after unpacking), and observational (FALSE, lossy) equality for the same claim is directly checkable by re-running the script."
+  - "The closing self-critical statement ('D285-5 caught it in someone else's property; it was present in my own') is directly checkable against file 0974's own unqualified '(A,R)=pi_K(K_t)' formula for the reflexive-self-correction finding."
+undefined_concepts: []
+open_questions:
+  - "Whether the concretely-specified observational equality notion is formally adopted as a canonical equality relation."
+  - "Whether D285-6's Outcome B is ever restated with this precise equality qualification in canonical documentation."
+tier2_triggered: true
+tier2_reason: "A genuinely admirable act of reflexive self-correction, applying the newly-mandated equality-naming discipline (file 0981) back onto the author's own prior imprecise claim (file 0974), and concretely specifying a third equality notion ('observational equality') via seven named query classes, advancing this reconstruction's long-tracked equality-notion collision toward resolution. Classified importance critical given the methodological significance of this self-correcting discipline and the concrete new equality specification; confidence high given the artifact's directly executable, transparent logic."

@@ -1,0 +1,226 @@
+sequence: 617
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-102747_step-037-adversarial-epistemology-epistemic-integrity-trust-manipulation-and-strategic-behavior.md
+title: "The Corpus's Adversarial-Epistemology Layer — Three Formally Distinguished Error Types (RandomError/SystematicBias/StrategicManipulation); a Six-Dimensional EpistemicIntegrity Decomposition; the Named Dangerous Failure Mode 'CorrectInferenceFromFalseEvidence' ('Downstream Correctness Cannot Repair Upstream Integrity Failure'); a Precise Formal Refinement of AbsenceOfEvidence≠EvidenceOfAbsence via Detectable(A,O); Goodhart's Law Reconfirmed and Formally Connected to Steps 35/36; Mechanism Design Introduced as a Genuinely New Theoretical Discipline ('Truthful Reporting Must Be Made Advantageous — an Organizational, Not Software, Problem'); Authenticity≠Truth and a Formal Four-Way Authentic/Reliable/Supported/Validated Distinction; Seven Major Numbered Principles; Verdict 'STEP 37 — PASS'; Opens Step 38 (Identity, Entity Resolution, Equivalence, Reference Integrity and the Mathematics of 'Same') — A LIKELY SECOND MAJOR TOPIC-COLLISION WITH 0597's ALREADY-LANDMARK STEP 25S, FLAGGED FOR §29 RECONCILIATION"
+date: "2026-08-28"
+bytes: 28530
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 37 -- Adversarial Epistemology, Epistemic Integrity, Trust, Manipulation and Strategic Behavior', opened cleanly at 0616's close, directly addressing 0616's fifth explicitly acknowledged unresolved item (adversarial manipulation of epistemic metrics)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 617
+importance: critical
+confidence: high
+about: >
+  Opens Step 37 directly executing 0616's close, extending the epistemic model from a merely uncertain
+  world to a **potentially strategic information environment**. Delivers a formal three-way separation of
+  error types, explicitly declared "mathematically different": `RandomError` (`E[ε]≈0`), `SystematicBias`
+  (`E[ε]≠0`), and `StrategicManipulation` (`ε=f(Actor,Goal,Incentive)`). Delivers Source incentives
+  formally incorporated (`Source(s,Goal)→Evidence`), with an explicit, careful clarification that a
+  motivated source is NOT automatically unreliable -- motivation is relevant information about the
+  evidence-generating process, worked through a concrete vendor-conflict-of-interest example where the
+  evidence is preserved with its conflict-of-interest context rather than rejected.
+
+  **Delivers the file's central formal deliverable -- a six-dimensional `EpistemicIntegrity` decomposition**
+  (`EvidenceIntegrity, ProvenanceIntegrity, SemanticIntegrity, InferenceIntegrity, ValidationIntegrity,
+  DecisionIntegrity`), each independently worked with a concrete counterexample: Semantic integrity (a
+  genuine "tested in staging" source can be misrepresented as "production-ready," `EvidenceIntegrity=True`
+  while `SemanticIntegrity=False`); Inference integrity (valid premises combined with an invalid inference
+  rule, `GoodEvidence⇏GoodConclusion`); Validation integrity (a test deliberately designed to avoid a known
+  failure mode can `Pass` without genuine `ValidationIntegrity`); Decision integrity (an unauthorized
+  threshold change corrupting an otherwise-correct risk assessment). Delivers a formal seven-stage
+  "epistemic attack surface" diagram (Reality→Observation[manipulation]→Evidence[fabrication/alteration]→
+  Provenance[misattribution]→Inference[reasoning manipulation]→Validation[test gaming]→
+  Decision[incentive manipulation]→Action), explicitly "broader than conventional cybersecurity."
+
+  Delivers a formal game-theoretic strategic-actor model (`s_a*=argmax_{s_a} Utility_a(s_a)`), and
+  reconfirms/extends the Goodhart-style epistemic gaming concept first named at 0615, formalizing
+  **`EvidenceVolume≠EvidenceStrength`** and **`ValidationCount≠ValidationQuality`** (worked
+  high-evidence-count-reward-gaming example). Delivers Strategic reporting and the important recognition
+  that `MissingEvidence` itself can be informative when reporting is selective, reconfirming `MCAR/MAR/MNAR`
+  and directly connecting strategic environments to `MNAR` selection specifically (worked failed-
+  deployments-underreported example, extending 0606's earlier selection-bias treatment into an explicitly
+  adversarial framing).
+
+  **Delivers the file's second central formal deliverable -- a precise refinement of the corpus's
+  established `AbsenceOfEvidence≠EvidenceOfAbsence` principle via an explicit detection-capability
+  precondition**: `NoEvidence(A)` is formally distinguished from `EvidenceOfAbsence(A)`, with the latter
+  requiring `Detectable(A,O)=True` -- the observation process must have had sufficient capability to detect
+  `A` -- explicitly described as "fundamental," worked through a concrete monitoring-system-silence
+  example. Delivers formal `Observability(O,A)`, explicitly connecting to and extending 0611's (Step 31)
+  identifiability work.
+
+  **Delivers the file's third central formal deliverable -- a named, particularly dangerous failure mode**:
+  `CorrectInferenceFromFalseEvidence` -- an attacker manipulates the observation itself
+  (`O'=Attack(O)`), and the system reasons perfectly validly from the corrupted input, producing a chain
+  that "looks perfectly valid" end to end while the foundation was compromised, explicitly worse than an
+  ordinary inference error since **"downstream correctness cannot repair upstream integrity failure."**
+  Delivers a formal compositional-integrity requirement (`I_{total}=I_E∧I_{inference}∧I_{decision}`,
+  explicitly acknowledged as a simplified Boolean model) and the resulting **Weakest-link principle**:
+  `EpistemicIntegrity` is constrained by its most compromised critical dependency.
+
+  Delivers Trust reformalized as fully contextual (`Trust(source,context,task,time)`, never a bare scalar),
+  with `Trust≠Truth` and `Trust` explicitly time-varying (`Trust_t(S)`, directly connecting to 0616's drift
+  model). Delivers `Reputation≠AutomaticValidation` -- even a `99%`-reliable historical source still
+  requires claim-specific evidence for a new assertion. Delivers a four-value honest Independence-status
+  enum (`Established, Likely, Unknown, Dependent`), explicitly "more epistemically honest" than a binary
+  independence claim. Delivers a careful, precise engagement with Byzantine fault tolerance, explicitly
+  declining to import specific formulas (`n≥3f+1`) universally while extracting the useful conceptual
+  transfer -- **`do not assume all participants are honest`** -- directly reconfirming and sharpening
+  0599's earlier Byzantine-differentiation discipline. Delivers Robust aggregation methods (median,
+  trimmed mean, M-estimators) paired with the important, precise caution **`Outlier≠Adversary`** -- a
+  legitimate extreme measurement must be formally distinguished from adversarial suspicion -- and
+  `Robustness≠Truth` (a robust estimator reduces sensitivity to extremes without guaranteeing correctness).
+
+  **Delivers the file's fourth central formal deliverable -- Goodhart's Law reconfirmed from 0615 and
+  formally connected to two distinct corpus results**: metric-optimization gaming applied specifically to
+  epistemic metrics (`EvidenceScore` as a proxy for `KnowledgeReliability` becoming detached from actual
+  reliability if directly optimized), explicitly connected to 0615's (Step 35) resource-allocation
+  discussion and 0616's (Step 36) meta-validation discipline -- **`EpistemicMetrics must themselves be
+  periodically validated`**. Delivers Circular trust as a named danger (`A→Trust(S)→A`, worked self-
+  referential-reputation example) and the requirement that trust have external anchors (historical
+  outcomes, independent audits, external validation, process controls) rather than merely self-reported
+  prior success. Delivers Trust decay/update dynamics and the important recognition that trust itself can
+  be strategically gamed (a source building low-stakes reputation before a high-stakes false claim),
+  requiring reliability to be weighted by task similarity and criticality.
+
+  **Delivers a genuinely new uncertainty category, extending the corpus's established taxonomy**:
+  `AdversarialUncertainty`, formally distinguished from `AleatoryUncertainty` and `EpistemicUncertainty` --
+  not "we do not know the value" but "we do not know HOW the information process is being strategically
+  influenced," explicitly characterized as "a different epistemic state." Delivers Robust decision
+  formulation (worst-case optimization over a plausible-distribution set) and formal Minimax regret
+  (`Regret(a,θ)=L(a,θ)-min_{a'}L(a',θ)`), paired with an honest caution that worst-case optimization can
+  become overly conservative if the uncertainty set is unjustifiably large, resolved via Distributionally
+  robust reasoning (a bounded-distance neighborhood `𝒫_ε` around a reference distribution) as "a middle
+  ground."
+
+  **Delivers the file's most significant single theoretical introduction -- Mechanism Design, a genuinely
+  new discipline not previously invoked anywhere in the corpus**: the response to strategic information
+  environments cannot be purely mathematical inference; incentives must be designed so that
+  `Utility(TruthfulReport)≥Utility(ManipulatedReport)`, explicitly and precisely framed as "an
+  organizational/governance problem, not merely a software problem." Delivers a clear DDD-boundary
+  restatement: KnowledgeOS provides evidence/provenance/auditability/conflict/validation/dependency
+  machinery, while the organizational/governance context owns incentives, accountability, sanctions, and
+  approval authority.
+
+  Delivers formal Epistemic accountability (`AccountableKnowledge`, every consequential claim attributable
+  to Actor, Source, Method, Time, Evidence) and a precise separation between cryptographic non-repudiation
+  and epistemic truth: **`SignatureValidity≠ClaimTruth`** -- a genuine, correctly-signed record can still
+  contain a false claim (`Authenticity≠Truth`, "authentic falsehood"). **Delivers a formal four-way
+  independently-askable property set**: `Authentic?`, `ReliableSource?`, `Supported?`, `Validated?`
+  (worked genuine-executive-email-with-incomplete-information example), consolidated into a formal eight-
+  row Epistemic integrity matrix (Authenticity, Provenance, Reliability, Independence, Semantics,
+  Inference, Validation, Authorization), explicitly noted as "no single dimension substitutes for
+  another."
+
+  **Delivers twelve labeled falsification experiments (1-12), ALL PASS**: an authentic-but-systematically-
+  biased source correctly separating `Authenticity=True` from reduced `Reliability`; two sources sharing
+  one upstream report correctly yielding `Independence=False/Unknown`; undetectable failure correctly
+  yielding `NoAlert⇏NoFailure`; a signed-but-incorrect document correctly separating `Authentic=True` from
+  `Truth=Unknown/False`; a gamed metric correctly showing detected `MetricValidity` degradation;
+  context-specific source reliability correctly not generalized across domains; deliberately withheld
+  failure reports correctly flagged as potential `MNAR` selection bias; a test designed to avoid a known
+  failure mode correctly flagged as potential `ValidationIntegrity=False`; a high-confidence conclusion on
+  compromised evidence correctly showing degraded downstream assurance; a model-optimal-but-unsafe-under-
+  alternatives decision correctly surfacing `ModelUncertainty`; metric-optimization-over-objective correctly
+  flagged as a potential Goodhart effect; genuinely undetectable missing evidence correctly classified as
+  `AbsenceOfEvidence`, never `EvidenceOfAbsence`.
+
+  **Delivers Step 37's verdict**: **"STEP 37 — PASS,"** with `EpistemicIntegrity` explicitly established as
+  a first-class architectural concern. Delivers an extended six-type uncertainty taxonomy (`Aleatory,
+  Epistemic, Model, Semantic, Selection, Adversarial`), the corpus's own evolving canonical uncertainty
+  vocabulary continuing to be refined across files. **Delivers seven major numbered principles**:
+  authenticity does not imply truth; trust does not imply truth; independent identities do not imply
+  independent evidence; absence of observation does not imply absence of the phenomenon unless
+  observability is established; a validated transformation is only as trustworthy as its critical
+  epistemic dependencies; epistemic metrics can themselves be gamed and require meta-validation; strategic
+  behavior must be treated as a POSSIBLE property of the information environment (not every environment is
+  adversarial, but the architecture must never depend on universal honesty).
+
+  **Delivers the corpus's most comprehensive single consolidated architecture diagram to date**, a
+  fully-annotated pipeline consolidating essentially every major concept from Steps 1 through 37 (Reality→
+  Observation[Measurement/Observability]→Evidence[Provenance/Source/Integrity]→Epistemic Claim[Context/
+  Time/Uncertainty]→Model[Assumptions/Dependence/Structure]→Inference[Integrity]→
+  Validation[Validation Integrity]→Decision[Risk/Utility/Governance]→Action→Outcome→
+  Meta-Evaluation[Calibration/Drift/False Assurance]→Knowledge Revision→Next Best Information→
+  Epistemic Portfolio), explicitly surrounded by an `AdversarialEnvironment` boundary since every layer may
+  potentially be influenced. Delivers the file's deeper self-reflective conclusion: KnowledgeOS has moved
+  from modeling "knowledge under uncertainty" to modeling "knowledge under uncertainty AND strategic
+  information conditions" -- "a substantial mathematical transition."
+
+  **Closes by reopening the entity-identity/reference-resolution question**, worked through the corpus's
+  recurring Nexus/hostname/IP-address/description example, correctly identifying that false merges produce
+  `FalseConflict`/`FalseEvidenceAggregation` while false splits produce `MissedConflict`/`DuplicateKnowledge`.
+  **Opens "Step 38 — Identity, Entity Resolution, Equivalence, Reference Integrity and the Mathematics of
+  'Same',"** posing "when can KnowledgeOS legitimately say `x=y`?" and targeting `Similarity≠Identity` as
+  the central conclusion. **CORPUS-INTEGRITY OBSERVATION OF LIKELY HIGH SIGNIFICANCE**: this topic --
+  identity, entity resolution, same-as/distinct-from reasoning, contextual identity -- was already
+  extensively and substantively treated as a landmark file at 0597 ("Step 25S — Identity, Entity
+  Resolution, Same-As, Distinct-From and Knowledge Atma"), which delivered a three-level identity split
+  (EntityIdentity/KnowledgeMeaningIdentity/RecordIdentity), a finalized Knowledge Atma definition, and the
+  named "Identity contamination" safety finding. The newly opened Step 38 appears to substantially overlap
+  this ground under a differently-worded title, directly analogous to the CONFIRMED 25N/25C title-collision
+  precedent (0591/0592) -- flagged here as a bridge candidate for the eventual full-corpus §29
+  reconciliation, pending confirmation of the actual overlap once Step 38's content is read. No actual code
+  execution reported.
+introduces:
+  - concept: "A formal three-way error taxonomy (RandomError/SystematicBias/StrategicManipulation), explicitly declared mathematically different, removing the corpus's earlier implicit neutral-source assumption"
+  - concept: "A six-dimensional EpistemicIntegrity decomposition (Evidence/Provenance/Semantic/Inference/Validation/Decision Integrity), each independently worked with a distinct concrete counterexample"
+  - concept: "CorrectInferenceFromFalseEvidence, a named dangerous failure mode where perfectly valid downstream reasoning cannot repair a compromised upstream observation, formalized as a weakest-link constraint on total epistemic integrity"
+  - concept: "A precise refinement of AbsenceOfEvidence≠EvidenceOfAbsence via an explicit Detectable(A,O) precondition — evidence of absence requires demonstrated detection capability, not merely silence"
+  - concept: "Goodhart's Law reconfirmed from 0615 and formally connected to two distinct corpus results (Step 35 resource allocation and Step 36 meta-validation) via the requirement that epistemic metrics themselves require periodic meta-validation"
+  - concept: "Mechanism Design introduced as a genuinely new theoretical discipline for the corpus, reframing truthful-reporting incentives as an organizational/governance design problem rather than a purely mathematical inference problem"
+  - concept: "AdversarialUncertainty as a genuinely new uncertainty category distinguished from aleatory and epistemic uncertainty — not ignorance of a value, but ignorance of how the information process is being strategically influenced"
+  - concept: "Authenticity≠Truth (SignatureValidity≠ClaimTruth) and a formal four-way independently-askable Authentic/ReliableSource/Supported/Validated property set"
+  - concept: "A likely second major topic-collision with 0597's landmark Step 25S, flagged for eventual §29 reconciliation, directly analogous to the confirmed 25N/25C precedent"
+defines:
+  - concept: "EpistemicIntegrity (six-dimensional)"
+    definition: "EI=(EvidenceIntegrity,ProvenanceIntegrity,SemanticIntegrity,InferenceIntegrity,ValidationIntegrity,DecisionIntegrity) — the preservation of the intended Reality→Observation→Evidence→Inference→Decision relationship, formally decomposed since a violation at any one dimension is independent of the others"
+  - concept: "CorrectInferenceFromFalseEvidence"
+    definition: "A failure mode in which every downstream reasoning step is formally valid, yet the entire conclusion is unsound because the original observation was adversarially manipulated — explicitly worse than an ordinary inference error since valid downstream reasoning cannot repair a compromised foundation"
+  - concept: "Detectable(A,O)-gated evidence of absence"
+    definition: "NotObserved(A) constitutes genuine evidence against A only when Detectable(A,O)=True — the observation mechanism O must have had demonstrated capability to detect A, distinguishing EvidenceOfAbsence(A) from mere NoEvidence(A)"
+  - concept: "Mechanism design for truthful reporting"
+    definition: "A governance-level incentive structure ensuring Utility(TruthfulReport)≥Utility(ManipulatedReport) for participating actors — an organizational design problem the epistemic architecture cannot solve through inference alone"
+refines:
+  - concept: "0615's first naming of Goodhart's Law"
+    refinement: "Directly reconfirmed and formally connected to both 0615's (Step 35) resource-allocation discussion and 0616's (Step 36) meta-validation discipline, requiring epistemic metrics themselves to be periodically meta-validated against strategic gaming"
+  - concept: "0599's Byzantine-consensus differentiation discipline"
+    refinement: "Directly reconfirmed and sharpened: KnowledgeOS explicitly declines to import specific Byzantine fault tolerance formulas (n≥3f+1) universally while extracting the useful conceptual transfer that not all participants can be assumed honest"
+  - concept: "0611's (Step 31) identifiability work"
+    refinement: "Directly extended into a formal Observability(O,A) concept specifically for adversarial-detection-capability assessment"
+  - concept: "0606's/0617's own reconfirmed absence-of-evidence discipline"
+    refinement: "Given a precise, formal gating condition (Detectable(A,O)) not previously stated this explicitly, directly relevant to strategic non-reporting scenarios"
+  - concept: "0616's (Step 36) drift model (Θ_t evolving trustworthiness of epistemic mechanisms)"
+    refinement: "Directly connected to Trust_t(S) as time-varying source trustworthiness, treating source-trust decay as a specific instance of the broader EpistemicMechanismState evolution introduced at 0616"
+  - concept: "0597's (Step 25S) landmark identity/entity-resolution treatment and Knowledge Atma refinement"
+    refinement: "Potentially substantially revisited under a new title ('Step 38 — Identity, Entity Resolution, Equivalence, Reference Integrity and the Mathematics of Same'), flagged as a likely second title/topic collision analogous to the confirmed 25N/25C precedent, pending confirmation of the actual content overlap"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: read 'Step 38 — Identity, Entity Resolution, Equivalence, Reference Integrity and the Mathematics of Same' and determine whether it substantively overlaps 0597's landmark Step 25S (Identity, Entity Resolution, Same-As, Distinct-From and Knowledge Atma), directly analogous to the CONFIRMED 25N/25C title collision (0591/0592) -- flag for §29 reconciliation if overlap is confirmed."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the three-way error taxonomy (RandomError/SystematicBias/StrategicManipulation), the six-dimensional EpistemicIntegrity decomposition, the named dangerous failure mode CorrectInferenceFromFalseEvidence with its weakest-link principle, and the Detectable(A,O)-gated refinement of AbsenceOfEvidence≠EvidenceOfAbsence."
+  - "dimension-registry.md: record Goodhart's Law reconfirmed and connected to Steps 35/36, the Byzantine-differentiation discipline reconfirmed, Mechanism Design introduced as a genuinely new discipline for truthful-reporting incentives, and AdversarialUncertainty as a new uncertainty category distinct from aleatory/epistemic."
+  - "dimension-registry.md: record Authenticity≠Truth (SignatureValidity≠ClaimTruth), the four-way Authentic/ReliableSource/Supported/Validated property set, the twelve-test falsification suite (ALL PASS), seven major numbered principles, verdict 'STEP 37 — PASS,' the corpus's most comprehensive consolidated architecture diagram to date, and the flagged likely topic collision between the newly opened Step 38 and 0597's landmark Step 25S."
+anchor_test:
+  anchor: "0616's fifth explicitly acknowledged unresolved item (adversarial manipulation of epistemic metrics), directly picked up here; 0615's first naming of Goodhart's Law; 0599's Byzantine-consensus differentiation discipline; 0611's identifiability work; 0597's landmark Step 25S identity/entity-resolution treatment"
+  supports_dimension: "Delivers a rigorous, well-organized adversarial-epistemology layer directly executing 0616's fifth explicitly flagged unresolved item, extending the corpus's epistemic architecture to explicitly account for strategic, non-neutral information environments rather than assuming universal honesty. Delivers a genuinely important, precisely named dangerous failure mode (CorrectInferenceFromFalseEvidence) directly relevant to any real deployment where valid downstream reasoning provides false reassurance about a compromised upstream observation. Delivers a precise, well-motivated formal refinement of the corpus's established absence-of-evidence discipline via an explicit detection-capability precondition, directly relevant to strategic non-reporting scenarios. Reconfirms and connects Goodhart's Law across three separate corpus steps (35, 36, 37), demonstrating the corpus's genuine cross-referential coherence rather than isolated one-off mentions. Introduces mechanism design as a genuinely new theoretical discipline, correctly reframing truthful-reporting incentives as an organizational rather than purely computational problem, extending the corpus's established DDD governance-boundary discipline into incentive design specifically. Delivers the corpus's most comprehensive single consolidated architecture diagram to date, synthesizing essentially every major concept developed across the entire thirty-seven-step research program. Surfaces a corpus-integrity observation of likely high significance directly relevant to this reconstruction's own tracking obligation: the newly opened Step 38 appears to substantially revisit ground already covered as a landmark at 0597 under a different title, directly analogous to the confirmed 25N/25C precedent, requiring careful comparison once Step 38's content is read"
+  refines_or_contradicts: "directly executes 0616's fifth explicitly acknowledged unresolved item; reconfirms and cross-connects 0615's Goodhart's Law naming across two further corpus steps; reconfirms and sharpens 0599's Byzantine-consensus differentiation discipline; extends 0611's identifiability work into a formal Observability(O,A) concept; extends the corpus's absence-of-evidence discipline with a precise detection-capability gating condition; potentially substantially overlaps 0597's landmark Step 25S under a new title, flagged pending confirmation, directly analogous to the confirmed 25N/25C collision; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit, precise description of CorrectInferenceFromFalseEvidence — 'the chain may look perfectly valid... yet E was compromised. Therefore downstream correctness cannot repair upstream integrity failure' — is directly checkable, concrete evidence of a genuinely important, well-articulated failure mode distinct from ordinary inference error, with direct practical relevance to any system relying on a chain of otherwise-valid reasoning built atop a single compromised observation."
+  - "The explicit connection of Goodhart's Law across three separate steps (the epistemic-metric-gaming concern at 0615/Step 35, the meta-validation requirement at 0616/Step 36, and the formal restatement here at Step 37 with 'this directly connects with Step 35' and 'this connects directly to Step 36' cross-references) is directly checkable evidence of genuine cross-referential coherence within the corpus, not merely coincidental repeated naming of the same well-known principle."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 38 — Identity, Entity Resolution, Equivalence, Reference Integrity and the Mathematics of Same' substantially overlaps 0597's landmark Step 25S (Identity, Entity Resolution, Same-As, Distinct-From and Knowledge Atma), directly analogous to the confirmed 25N/25C title collision, and if so, whether it supersedes, extends, or merely duplicates that earlier landmark treatment"
+tier2_triggered: true
+tier2_reason: "Delivers a rigorous, well-organized adversarial-epistemology layer directly executing 0616's explicitly flagged unresolved item, extending the corpus's epistemic architecture to explicitly account for strategic, non-neutral information environments. Delivers a genuinely important, precisely named dangerous failure mode (CorrectInferenceFromFalseEvidence) of direct practical relevance to any real deployment, and a precise formal refinement of the corpus's established absence-of-evidence discipline via an explicit detection-capability precondition. Reconfirms and cross-connects Goodhart's Law across three separate corpus steps, demonstrating genuine cross-referential architectural coherence rather than isolated repeated naming. Introduces mechanism design as a genuinely new theoretical discipline, correctly reframing truthful-reporting incentives as an organizational design problem. Delivers the corpus's most comprehensive single consolidated architecture diagram to date, synthesizing essentially every major concept developed across the entire thirty-seven-step research program. Surfaces a corpus-integrity observation of likely high significance for this reconstruction's own tracking obligation: the newly opened Step 38 appears to substantially revisit ground already covered as a landmark at 0597 under a different title, directly analogous to the confirmed 25N/25C precedent, requiring careful comparison once Step 38's content is read."

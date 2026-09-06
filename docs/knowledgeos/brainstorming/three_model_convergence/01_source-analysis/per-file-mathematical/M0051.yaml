@@ -1,0 +1,142 @@
+sequence: M0051
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-093546_satisfaction-by-requirement-class-three-valued-sat-predicate.md
+title: "Satisfaction by Requirement Class -- Three-Valued Sat Predicate: CONFIRMS Experiment KR-SIM-2026-09-02(-B) Was Actually Executed, Verdict 'B -- PARTIALLY EXECUTABLE', With Concrete Counterexamples (CE-1 Factivity/Determinacy, CE-3 Revision-Without-Retraction); Delivers an Eight-Class Sat_c Formal Specification, the Eval(K_t,r;Gamma_t) Evaluation-Context Parameter, the Sat_c/Just_c Value/Justification Split, and Three Candidate Zero-Closure Policies (Strict/Weak/Kleene), Through a Four-Layer Self-Correcting Review Chain"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c1
+  secondary_note: "a dense, four-layer review chain (initial derivation -> review -> review-of-review -> Sat_c elaboration -> review of the executed simulation) confirming M0049's simulation-experiment protocol was actually run, with a concrete verdict and two real counterexamples, while progressively downgrading premature [DEF] claims to [PROP]/candidate status at every layer -- the clearest single demonstration of this pass's own recursive epistemic discipline applied to itself"
+source_role: ADJUDICATION
+canonical_source: M0051
+importance: critical
+confidence: high
+about: >
+  **CONFIRMS THAT EXPERIMENT KR-SIM-2026-09-02 (PROPOSED IN M0049) WAS ACTUALLY EXECUTED**, now
+  under the identifier KR-SIM-2026-09-02-B, with the reported verdict **"B -- PARTIALLY
+  EXECUTABLE"** (one of M0049's own four mandated Theory Status classifications) -- directly
+  analogous to how M0035/M0037 confirmed the M0030 kernel-reduction protocol had been executed.
+  Reports two concrete, named counterexamples: **CE-1 (factivity/determinacy)**, where identical
+  epistemic input E_t corresponds to different world-truth values, so a deterministic evaluator
+  Gamma(E,Q,C,EC) cannot simultaneously guarantee factivity -- "K_t-based deterministic evaluation
+  does not imply world truth," a genuine theoretical constraint, not an implementation gap; and
+  **CE-3 (revision without retraction)**, where the theory has revision/supersession/contradiction/
+  retraction/history but has not sufficiently defined the retirement relation -- "evidence lifecycle
+  semantics remain incomplete." Also confirms the four-way Unknown taxonomy (UNOBSERVED/
+  UNINTERPRETED/UNDERDETERMINED/UNOBSERVABLE from M0049) collapsed into a single generic U value
+  during simulation, reframed constructively (not as failure) as evidence that "Sat's evaluation
+  codomain is coarser than the knowledge-gap taxonomy."
+
+  **DELIVERS THE CLASS-INDEXED THREE-VALUED SATISFACTION PREDICATE**: Sat(K_t,r) in {top,bot,U}
+  (satisfied/violated/undetermined), explicitly NOT one universal predicate but indexed by EIGHT
+  requirement classes -- Content, Evidence, Provenance, Epistemic-Status, Consistency, Governance,
+  Temporal, Operational (R = R_content U R_evidence U R_provenance U R_epistemic U R_consistency U
+  R_governance U R_temporal U R_operational). This eight-class satisfaction-predicate taxonomy is
+  DIFFERENT FROM (not the same axis as) M0047's ten-class GAP taxonomy (Coverage/Value/Uncertainty/
+  Warrant/Contradiction/Model/Observability/Staleness/Identity/Representation) -- flagged as yet
+  another unreconciled classification scheme (8 satisfaction classes vs 10 gap classes), needing
+  cross-mapping at the eventual reclassification stage.
+
+  **DELIVERS EACH OF THE EIGHT Sat_c PREDICATES FULLY WORKED, EACH WITH ITS OWN NON-COLLAPSE
+  INVARIANT**: Sat_content (p not-in K_t does NOT imply not-p in K_t -- absence is not refutation;
+  Supp AND Ref both present is explicitly [OPEN], not silently assigned U); Sat_evidence (Evidence
+  existence != Evidence sufficiency; Evidence != Truth); Sat_provenance (Provenance != Truth,
+  Provenance != Evidence, even though provenance qualifies evidence); Sat_status (explicitly
+  refuses to assume epistemic statuses form an order -- "we must not yet assume that epistemic
+  statuses form an order. That remains open" -- avoiding a premature epistemic lattice); Sat_cons
+  (Sat_cons=bot does NOT mean all knowledge is false, only that the consistency REQUIREMENT is
+  violated; the p-and-not-p-both-supported case is explicitly left OPEN among four candidate
+  readings: inconsistency, conflict, unresolved determination, or legitimate competing-claims
+  representation); Sat_gov (Governance satisfaction != Truth, Governance satisfaction !=
+  EpistemicStatus -- a true proposition can have invalid governance, and a properly authorized
+  process does not make its conclusion true); Sat_time (distinguishes valid/world time t_v from
+  record/knowledge time t_r -- "valid time != record time," since a 2026-09-01-recorded
+  authorization does not by itself establish validity on 2026-08-31); Sat_op (decomposed into three
+  genuinely distinct sub-conditions -- Precondition, Authorization, Postcondition -- "Semantically
+  applicable != Authorized != Successfully executed," richer than M0049's simpler delta-based
+  operational satisfaction).
+
+  **DELIVERS THE UNIFYING ABSTRACTION Sat_c = Eval(P_c,K_t,r,Gamma_t)**, where P_c is a
+  class-specific predicate -- converting "eight unrelated satisfaction mechanisms" into "one
+  evaluation schema whose class-specific predicates {P_C,P_E,P_P,P_S,P_Con,P_G,P_T,P_O} must be
+  tested for independence, composability, and executability" -- a genuine unification.
+
+  **INTRODUCES THE EVALUATION-CONTEXT PARAMETER Gamma_t**: Sat(K_t,r;Gamma_t) rather than
+  Sat(K_t,r), explicitly to avoid "silently assuming that the knowledge state alone contains
+  everything required for satisfaction" -- directly motivated by and partially addressing the
+  CE-1 factivity/determinacy obstruction (a total deterministic K_t-only evaluator cannot guarantee
+  factivity; making the evaluation context explicit and partial is the proposed repair direction,
+  not yet a completed one).
+
+  **INTRODUCES THE Sat_c/Just_c VALUE/JUSTIFICATION SPLIT**: Level 1 is the satisfaction VALUE
+  (top/bot/U); Level 2, Just_c(K_t,r;Gamma_t), records WHY that value was obtained (e.g. Sat=U
+  because Just=UNOBSERVED, vs Just=UNDERDETERMINED because the status ordering itself is not
+  established) -- an elegant resolution preserving the four-way Unknown taxonomy without forcing
+  the core satisfaction algebra's codomain to grow, addressing the simulation's own
+  collapse-to-generic-U finding constructively.
+
+  **DELIVERS THREE NAMED CANDIDATE ZERO-CLOSURE POLICIES, EXPLICITLY NOT YET CHOSEN**:
+  Zero_strict, Zero_weak, Zero_Kleene -- with an explicit methodological ordering rule: "define
+  what U means -> test Sat_c -> choose Zero semantics," rather than choosing a closure policy
+  before the eight Sat_c functions' U-semantics are understood ("that would be backwards").
+
+  **CORRECTS THE EXPERIMENT'S OWN PROPOSED NEXT STEP**: revises "Zero Closure Decision Experiment"
+  to "Sat_c Semantic Closure Experiment -- followed by Zero Closure Decision Experiment," inserting
+  a prerequisite phase (Phase A: formalize the eight Sat_c without implementing, via a 12-point
+  per-class specification template; Phase B: adversarial test against the four ALREADY-FOUND
+  deterministic counterexamples rather than another 10,000-trial random sweep; Phase C: only then
+  compare Zero_strict/weak/Kleene).
+
+  **DEMONSTRATES A FOUR-LAYER RECURSIVE SELF-CORRECTION CHAIN WITHIN ONE DOCUMENT**: an initial
+  derivation proposes Sat as "Strong candidate [DEF]"; a first review downgrades it to "[PROP]
+  Candidate common satisfaction interface" citing the factivity/Gamma-determinacy problem; a
+  second review (explicitly a "meta-review of the previous review") further refines the status
+  table and introduces Eval(K_t,r;Gamma_t); a full eight-function Sat_c elaboration follows; a
+  final review of the executed experiment confirms the verdict and corrects the next-step sequence
+  -- the clearest single within-document demonstration of this pass's own standing rule against
+  premature promotion of hypothesis to definition.
+introduces:
+  - concept: "The eight-class satisfaction-predicate taxonomy (Content/Evidence/Provenance/Status/Consistency/Governance/Temporal/Operational), a distinct classification axis from M0047's ten-class Gap taxonomy"
+  - concept: "The unifying abstraction Sat_c = Eval(P_c,K_t,r,Gamma_t), converting eight mechanisms into one evaluation schema with class-specific predicates"
+  - concept: "The evaluation-context parameter Gamma_t, explicitly preventing the silent assumption that K_t alone suffices for satisfaction evaluation"
+  - concept: "The Sat_c/Just_c value/justification split, preserving the four-way Unknown taxonomy without complicating the satisfaction algebra's codomain"
+  - concept: "Three named, explicitly not-yet-chosen Zero-closure policies (Zero_strict, Zero_weak, Zero_Kleene), with an explicit methodological ordering rule for when to choose among them"
+  - concept: "The Sat_op three-way decomposition (Precondition/Authorization/Postcondition), richer than M0049's single delta-based operational satisfaction"
+  - concept: "Confirmed experimental counterexamples CE-1 (factivity/determinacy) and CE-3 (revision without retraction), both classified as genuine theory-level constraints rather than implementation gaps"
+defines: []
+refines:
+  - concept: "M0049's simulation-experiment protocol (KR-SIM-2026-09-02), now confirmed executed as KR-SIM-2026-09-02-B with verdict B -- PARTIALLY EXECUTABLE"
+  - concept: "M0047's Gap definition, refined with an applicability pre-filter: Delta_t^sem={r in R_t^app : Sat(K_t,r;Gamma_t)!=top}, requiring Applicability != Satisfaction as a distinct structural distinction"
+  - concept: "M0043/M0047's Zero definition, downgraded to Zero_t^candidate with an explicit warning that it defines requirement-relative epistemic closure, not omniscience: 'Zero != complete knowledge... Zero ~ no currently identified applicable epistemic deficit'"
+  - concept: "M0049's four-way Unknown taxonomy, confirmed to collapse to generic U in simulation, then reframed via the Sat_c/Just_c split rather than treated as a failure"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0051 as confirming the KR-SIM-2026-09-02 experiment (proposed in M0049) was actually executed (as KR-SIM-2026-09-02-B), verdict B -- PARTIALLY EXECUTABLE, with two genuine theory-level counterexamples (CE-1 factivity/determinacy, CE-3 revision without retraction). Delivers an eight-class Sat_c formal specification, the Gamma_t evaluation-context parameter, the Sat_c/Just_c value/justification split, and three candidate Zero-closure policies, through a four-layer self-correcting review chain."
+anchor_test:
+  anchor: "M0049's not-yet-executed KR-SIM-2026-09-02 protocol and its proposed circularity/type-collision audits"
+  supports_dimension: "Confirms the protocol's execution with a concrete verdict and two genuine counterexamples, and directly addresses the factivity concern the protocol's Sec 9 (Knowledge Attribution Test) anticipated"
+  refines_or_contradicts: "refines (M0043, M0047, M0049)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'K_t-based deterministic evaluation does not imply world truth' (CE-1) -- confirmed by simulation, not merely hypothesized: identical epistemic input can correspond to different world-truth values, so a deterministic Gamma evaluator cannot simultaneously guarantee factivity. This is reported as a genuine theoretical constraint the theory must address, not an implementation defect."
+  - "The document's own explicit self-correction across four layers: Sat proposed as [DEF] -> downgraded to [PROP] -> Zero downgraded to 'candidate' with an explicit non-omniscience warning -> the experiment's own proposed next step corrected from 'Zero Closure Decision Experiment' to a two-phase sequence inserting a prerequisite Sat_c formalization phase."
+  - "The four-way Unknown taxonomy (UNOBSERVED/UNINTERPRETED/UNDERDETERMINED/UNOBSERVABLE) collapsing to generic U in the executed simulation, reframed via the Sat_c/Just_c split as a coarser-codomain finding rather than a taxonomy failure."
+undefined_concepts:
+  - "The precise formal content of Eval(P_c,K_t,r,Gamma_t) beyond its schema -- named as the next research target (the proposed 'Sat_c Semantic Closure Experiment'), not defined here"
+  - "The 'earlier policy experiment' referenced (P_A AND P_B conjunctive, disjunction inappropriate for tested safety semantics) -- cited as prior context, not itself re-derived in this document"
+open_questions:
+  - "Whether the proposed 'Sat_c Semantic Closure Experiment' is later executed and reported, analogous to how this document itself confirmed KR-SIM-2026-09-02's execution."
+  - "Whether Zero_strict/Zero_weak/Zero_Kleene are later compared and one adopted, per the explicit methodological ordering this document establishes."
+  - "How the eight-class satisfaction taxonomy here is eventually cross-mapped against M0047's ten-class Gap taxonomy."
+tier2_triggered: true
+tier2_reason: "Confirms actual execution of the KR-SIM-2026-09-02 experiment (proposed in M0049) with a concrete verdict and two genuine theory-level counterexamples, delivers a fully worked eight-class satisfaction-predicate specification with a unifying Eval abstraction, introduces the Gamma_t evaluation-context parameter and the Sat_c/Just_c split, and demonstrates a four-layer recursive self-correction chain exemplifying this pass's own epistemic discipline. Critical importance and full tier-2 treatment unambiguously warranted."

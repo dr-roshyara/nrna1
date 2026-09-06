@@ -1,0 +1,95 @@
+sequence: 998
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/R5-RESEARCH-TO-ARCHITECTURE-REPORT.md
+title: "R5 -- Research-to-Architecture Report: The Actual Canonical Closure Document Tracing All Six Surviving Hypotheses Through Formal/DDD/Architecture/Governance Consequences, Delivering the Single Governance Question in Its Definitive Form and a Comprehensive 'What This Research Did NOT Do' Negative-Scope Closing List"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual R5 artifact: the canonical research-to-architecture consequence trace underlying nearly every architecture/DDD/governance finding this reconstruction has tracked by cross-reference"
+source_role: PRIMARY_RESEARCH
+canonical_source: 998
+importance: critical
+confidence: high
+about: >
+  The actual R5 Research-to-Architecture Report (previously known only by cross-reference), status "survivors
+  only... no governance decision taken, one raised," tracing six surviving hypotheses (of the sixteen in R2,
+  the eleven-plus in R3) through the full chain: `Hypothesis→formal consequence→DDD consequence→architecture
+  consequence→governance question`.
+
+  **H-K03 (`R5`)**: formal `Knower∉K` persistence; DDD `Knower` is an external actor, goal owned outside the
+  state it constrains; architecture already enforced (`Zero/Lord/Sārathi∉State Mutation Boundary`); NO
+  governance question (already ratified). **Delivers an explicit programme-level caution not previously
+  captured in this exact form**: "because this concept entered via the Sanskrit lineage and is now ratified,
+  any further Gītā mapping will be tempted to cite it as precedent. It is not precedent. It is one ratified
+  convergence, and R4 shows it is the ONLY non-independent survivor."
+
+  **H-K06 (`R6`)**: formal semantic-equality-qualified non-injectivity (already corrected per file
+  0994's E5); DDD commands vs domain events, `Command≠Transformation` (§256.21); architecture: registry keys
+  on operation identity; governance explicitly WITHDRAWN (the `humanActRef` typing motivation retracted).
+
+  **H-K11 (`R6`)**, **H-K08 (`R6`)**, **H-K09 (`R4`, four not five epistemic stages)**, **H-K16 (`R5`)** all
+  confirmed in their already-tracked forms, with H-K16 restating the `Σ`/`Sañjaya_K` layer-distinction finding
+  (already tracked via files 0979, 0985, 0990) as a formal DDD/architecture consequence for the first time in
+  this exact framing.
+
+  **H-K13 (`R4`)**: "a correction rather than an addition," `Jñātā→Knower`, `Jñeya→Proposition`, `Jñāna→δ`,
+  "Architecture consequence: none — it reinforces an existing ratified decision."
+
+  **DELIVERS THE SINGLE GOVERNANCE QUESTION IN ITS DEFINITIVE, CANONICAL FORM**, explicitly tying it to an
+  EXISTING, PRE-DATING governance register entry: "It is already on the estate's register (`D-2`), and
+  nothing in this research resolves it." This CONFIRMS the `humanActRef`/`grantId` identity-boundary question
+  this reconstruction has tracked as open since file 0988 was NOT newly discovered by this research
+  programme but is a pre-existing item this programme merely surfaced via H-K08's architecture consequence.
+
+  **DELIVERS A COMPREHENSIVE, DISCIPLINED "WHAT THIS RESEARCH DID NOT DO" NEGATIVE-SCOPE CLOSING LIST**,
+  consolidating every already-tracked rejection/non-promotion in one place: did not redefine `K`; did not
+  choose the canonical state; did not define `δ`; did not introduce Knowledge Ātma (destroyed, `RX`); did not
+  reintroduce `Knowledge` as a primitive; did not promote Sañjaya (recorded as corpus-native, not proposed);
+  did not make `Ω` canonical; did not equate Kṛṣṇa with `Ω` (blocked by E-10 -- a new corpus reference); did
+  not equate Dharma with Policy; did not equate Buddhi with AI; did not declare Arjuna the Knower (flagged as
+  a two-role conflation); did not modify the Constitution; **did not resolve Blocker 1 by assumption — it
+  resolved it by projection, formally, and named the one function that blocks its computation** (a direct
+  reference to file 0974's `Qualify`-undefined finding).
+introduces:
+  - concept: "'D-2' -- the pre-existing estate governance register entry that already carries the humanActRef/grantId identity-boundary question, confirming this research programme surfaced rather than newly discovered it"
+  - concept: "'E-10' -- a new corpus reference explicitly cited as the source of the block on equating Krsna with Omega"
+  - concept: "The explicit programme-level caution against citing H-K03's ratified convergence as precedent for future Gita mappings"
+  - concept: "The comprehensive, twelve-item 'what this research did NOT do' negative-scope closing list, consolidating every already-tracked rejection/non-promotion into one canonical statement"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked open humanActRef/grantId governance question (files 0988, 0996)"
+    refinement: "GROUNDED as a pre-existing estate register item (D-2), not a novel discovery of this research programme -- this programme merely surfaced it via H-K08's architecture consequence"
+  - concept: "This reconstruction's already-tracked Sanjaya_K/Sigma-0 layer-distinction finding (files 0979, 0985, 0990)"
+    refinement: "FORMALIZED as an explicit DDD/architecture consequence for the first time: it 'dissolves -- rather than answers -- the question of whether Sigma-0 is too small: it is the wrong layer to ask at'"
+  - concept: "File 0974's already-tracked Qualify-undefined/projection-computability finding"
+    refinement: "REFRAMED in this closing list as evidence that 'Blocker 1' was resolved by formal projection, not by assumption -- confirming the disciplined character of that earlier finding"
+contradicts: []
+repeats:
+  - "Substantially consolidates content already documented across files 0973-0997 (H-K03/06/08/09/11/13/16 findings, the humanActRef question, the Sanjaya-Sigma distinction); this report's distinctive contribution is being the actual canonical R5 source and its comprehensive closing negative-scope list."
+bridge_candidates:
+  - "'E-10' -- the corpus location blocking the Krsna=Omega equation; watch for direct encounter."
+  - "'D-2' -- the estate governance register entry for the humanActRef question; watch for direct encounter."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file as the actual canonical R5 research-to-architecture report, grounding the humanActRef/D-2 governance question as pre-existing (not newly discovered) and the Sanjaya-Sigma layer distinction as a formal DDD/architecture consequence."
+  - "dimension-registry.md: record the comprehensive twelve-item 'what this research did NOT do' negative-scope closing list as a directly reusable summary of the entire Step-25X/D285 programme's disciplined boundaries."
+anchor_test:
+  anchor: "This reconstruction's already-tracked H-K03/06/08/09/11/13/16 findings and the humanActRef/grantId governance question (files 0973-0997)"
+  supports_dimension: "Grounds all prior findings in the canonical R5 source, and clarifies that the governance question is a pre-existing estate item (D-2), not a discovery of this programme"
+  refines_or_contradicts: "confirms and grounds prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The six-hypothesis survivor list and their R-grades are directly checkable against files 0973-0997's own already-documented findings for consistency."
+undefined_concepts: []
+open_questions:
+  - "The content of 'D-2' (the estate governance register entry) and 'E-10' (the Krsna=Omega block), not yet directly encountered."
+tier2_triggered: true
+tier2_reason: "The actual canonical R5 research-to-architecture report grounding nearly every architecture/DDD/governance finding this reconstruction has tracked, clarifying that the humanActRef governance question is a pre-existing estate item (D-2) rather than a new discovery, and delivering a comprehensive negative-scope closing list. Classified importance critical and confidence high given its role as the definitive closure document for the entire Step-25X/D285 research-to-architecture arc."

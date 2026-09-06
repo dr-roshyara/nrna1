@@ -1,0 +1,185 @@
+sequence: 979
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/01-GAP-UPDATE-FROM-REVISED-286.md
+title: "01 -- Gap Update From the Revised Step 286: A MAJOR SUBSTANTIVE RESEARCH ADVANCE -- DISCOVERS THAT THE 'MISSING REFERENT LAYER' (W, Omega) FILE 0974 IDENTIFIED AS A GAP WAS ALREADY PRESENT IN THE CORPUS SINCE 2026-08-26 UNDER THE NAME 'SANJAYA' WITH SIX FORMALIZED PRINCIPLES AND A SIX-VALUE OBSERVATION-LAYER EPISTEMIC-STATUS VECTOR -- FORMALLY DESTROYS THE KNOWLEDGE ATMA CONSTRUCT (VERDICT 'RX -- DESTROYED': ORDINARY PROVENANCE ALREADY SUPPLIES EVERYTHING IT WAS MEANT TO PROVIDE) -- CORRECTS THE JNANA MAPPING FROM 'KNOWLEDGE' TO 'THE TRANSFORMATION, NOT THE STATE' -- AND FLAGS A GENUINE IDENTIFIER-COLLISION DEFECT IN THE PRIOR REVISED-286 DOCUMENT"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "genuine, disciplined corpus-archaeology and falsification research, the most substantively important single document in the recent kernel-track sequence"
+source_role: PRIMARY_RESEARCH
+canonical_source: 979
+importance: critical
+confidence: high
+about: >
+  A 198-line, disciplined research update explicitly headed with its own net result summary: **"3 gaps
+  CLOSED by corpus recovery · 1 gap RECLASSIFIED · 2 NEW gaps · 1 prompt defect flagged."**
+
+  **§2 DELIVERS THE FILE'S HEADLINE FINDING, A MAJOR SUBSTANTIVE RESEARCH ADVANCE**: file 0974's `t285_
+  reconcile.py` had identified that the projection `π_K:K_t→(𝒜,ℛ)` is "definable and not computable" in
+  part because the verification lane has "no `W` [world/domain reality] and no `Ω` [observation function]"
+  -- this document records this as "the missing referent layer." **THIS FILE THEN DISCOVERS, VIA CORPUS
+  ARCHAEOLOGY, THAT THIS LAYER WAS NOT ACTUALLY MISSING**: "it has been in the corpus since 2026-08-26, and
+  it is called **Sañjaya**" -- citing two specific, previously-unseen-by-this-reconstruction corpus files
+  by name and timestamp (`20260826-151534_right-architectural-interpretation-now.md`;
+  `20260826-143046_validating-and-formalizing-the-principles`), delivering an explicit four-stage diagram
+  (Domain Reality [=`W`] → Sañjaya [=`Ω`, the observation function] → State Knowledge [=`O`, the observation
+  codomain] → KnowledgeOS/Sārathi) and SIX FORMALIZED PRINCIPLES with genuine mathematical content: (1)
+  `Knower≠Observer` ("the foundation of the Sañjaya/Arjuna split"); (2) `Knowledge=f(Transmission_Chain)`
+  (provenance per step); (3) `Knowledge=f(Access_Level,Role,Purpose)`; (6) `K_A(Reality)≠K_B(Reality)`
+  (co-existing conflicting representations, provenance-traced); (13) `Access⊨Understanding`, an explicit
+  refutation of naïve realism; **(15) `Sañjaya_K=(Observed,Inferred,Reported,Unknown,Conflicting,
+  Unresolved)`, A SIX-VALUE EPISTEMIC-STATUS VECTOR DEFINED AT THE OBSERVATION LAYER** -- explicitly
+  distinguished from `Σ` (which operates at the assertion layer) rather than competing with it, this
+  reconstruction notes this SUPPLIES A GENUINE, PRINCIPLED RESOLUTION to part of the long-tracked Σ-
+  representation-inconsistency question this reconstruction has followed since file 0912: at least one of
+  the many competing "Σ-like" six-value/multi-value status schemes this reconstruction has flagged as
+  incompatible variants may in fact belong to a DIFFERENT, EARLIER-ESTABLISHED LAYER (observation, not
+  assertion) rather than being a genuine rival definition of the SAME construct -- a layer-confusion
+  explanation this reconstruction had not previously considered for at least part of that inconsistency;
+  (16) `Arjuna_K≠Sañjaya_K` (interpretation layer built on top of, never replacing, the observation layer).
+
+  **§2 delivers THREE CONCRETE GAP-CLOSURE MOVEMENTS**: the `(W,Ω)` missing-referent-layer gap moves from
+  "`G3` theoretical gap... the smallest missing concept" to **"`G5` PROMOTION — named, layered and diagrammed
+  in the corpus. Nothing to invent"**; the "`Observation` primitive absent from the verification lane"
+  asymmetry (identified in file 0974's own T-D test) is **CLOSED as a discovery gap** -- "it is a ratified
+  primitive and has a corpus construct. The lane simply never imported it"; and the question of whether `Σ`
+  can express Unknown/Conflicting/Unresolved distinctly is reclassified `G5`, resolved by recognizing
+  `Sañjaya_K`'s six values operate "at the observation layer, which is where they belong... the two are at
+  different layers and were never rivals." **Explicitly, correctly, this file does NOT overclaim**: "this
+  does NOT make `π_K` computable. `Qualify`'s body is still missing (`G1`, irreducible). What closes is the
+  structural gap... the blocker narrows from 'a whole layer is missing' to 'one function has no body.'"
+
+  **§3 delivers A RESPECTFUL, EXPLICITLY NON-OVERRIDING METHODOLOGICAL DISAGREEMENT**: the "revised" Step-
+  286 prompt (file 0978) had placed `GK-16 Sañjaya` in Priority 3 (exploratory); this file argues, with
+  explicit evidence, that it should be Priority 1 (it touches a named blocker, `Observation` is a ratified
+  primitive, it already has a formalized corpus construct, and its `Knower≠Observer` principle refines
+  `GK-04` which the prompt itself ranks Priority 1) -- but explicitly declines to unilaterally reorder the
+  programme: **"Recorded as a recommendation to the HPA, not acted on."** -- a genuinely disciplined
+  demonstration of respecting governance authority even while disagreeing on a technical judgment call.
+
+  **§4 delivers A GENUINE, WELL-EVIDENCED CORRECTION TO AN INITIAL MAPPING**: `GK-13 Jñāna`, initially
+  mapped to `Knowledge`, is corrected via (a) two independent corpus measurements confirming `Knowledge` is
+  absent from the 8 ratified primitives and from "Steps 100-158 vocabulary," and (b) the corpus's own
+  Sanskrit reading placing Jñāna within the **Tripuṭī triad** `Jñātā·Jñāna·Jñeya` = knower·knowing·known --
+  concluding **"`Jñāna→Knowledge` is the wrong mapping. `Jñāna→Knowing`, i.e. the transformation, not the
+  state"** -- `Jñātā`→Knower (already ratified as `Kṣetrajña`), `Jñeya`→the known (Proposition/Assertion
+  content), **`Jñāna`→the transformation `δ`/the act of knowing, not `K`** -- explicitly verdict `R4`,
+  "falsifiable, useful, and it reinforces the ratified decision [that Knowledge is deliberately not a
+  primitive] rather than challenging it."
+
+  **§4b delivers two further entries "recorded, not developed"** per the (respected) prompt prioritization:
+  `GK-14 Guṇa`→"knowledge quality" explicitly flagged (not opened) as touching "the live measurement gap...
+  any Guṇa→quality-scale mapping must state its scale type first, or it will import the exact error already
+  on the register"; `GK-15 Mokṣa`→"epistemic freedom" provisionally `R2` (no candidate formal consequence
+  identified).
+
+  **§5 delivers THE COMPLETED "PART 24 FALSIFICATION PROTOCOL," FOUR FULLY EXECUTED TEST TABLES**:
+
+  **H-K03 (Kṣetra/Field)**: verdict **`R5 — not independent, already ratified`** -- confirms `K` is
+  definable without reference to Knower, confirms Knower can persist across `K` changes (via `I-1`'s
+  cross-transition goal-ownership), and CONFIRMS, RE-EXECUTING FILE 0975's OWN FINDING, that 13.3's forced
+  multiple-Knower-levels reading holds in the source but is `RX`-rejected in KnowledgeOS because "a
+  universal knower contradicts `31.19`" -- independently re-confirming the `31.19` reference and the
+  universal-knower refutation across two separate documents.
+
+  **H-K06/H-K07 (Karma/Phala)**: verdict **`R6 — independent, Gītā corroborates`** -- confirms two
+  operations differing in provenance/actor/authority can produce the identical resulting state (re-executing
+  file 0974's own T-E worked example), confirms `δ(K,o_1)=δ(K,o_2)⇒o_1=o_2` is FALSE and "holds only under
+  `=_semantic`; under structural equality (`Π∈id`) the antecedent is false and the property is vacuous" --
+  again independently corroborating file 0974's semantic-equality refinement -- and cites **`Command≠
+  Transformation (§256.21, boxed)`** as the independently-derived reason this property is required regardless
+  of the Gita, confirming `§256.21` (already noted in file 0976) as a real, recurring corpus theorem
+  reference.
+
+  **H-K11 (Non-Attachment)**: verdict **`R6 — independent`** -- confirms outcome does not determine
+  operation validity, confirms `Valid(o,K)` can be true even when `Outcome(o)=failure`, since validity is
+  evaluated on preconditions/invariants/authority, not outcome.
+
+  **H-K05 (Ātman/Persistence) DELIVERS THE FILE'S MOST CONSEQUENTIAL SINGLE FINDING**: verdict **`RX —
+  DESTROYED`** -- testing whether any candidate invariant `P` for `𝒦_ātma` adds anything beyond ordinary
+  provenance, this file concludes every candidate reduces to `Π` (origin/intrinsic/`t=0`-safe) or `ℛ_der*`
+  (lineage), that "`Lineage=Π∘ℛ_der*` already supplies persistence," and that **`𝒦_ātma` adds NOTHING** --
+  **THIS IS THE FORMAL, DISCIPLINED DESTRUCTION OF THE ENTIRE 'KNOWLEDGE ĀTMA' CONSTRUCT THIS
+  RECONSTRUCTION HAS TRACKED AT LENGTH ACROSS FILES 0932, 0934 (WHICH DELIVERED A GENUINE, IF THINLY-PROVEN,
+  ALGEBRA FOR IT), 0937, 0942, 0948, 0954, 0959, AND 0962** -- an entire construct this reconstruction has
+  followed through multiple state-tuple incorporations, a dedicated algebra derivation (file 0934), and
+  repeated persistence-criterion claims (file 0959) is now, at this later, more rigorously falsification-
+  tested stage of the same corpus's own research programme, EXPLICITLY DECLARED TO ADD NO INFORMATION
+  BEYOND WHAT ORDINARY PROVENANCE ALREADY SUPPLIES -- and therefore, by this file's own applied methodology,
+  should NOT be retained as a distinct KnowledgeOS primitive or state component going forward.
+
+  **§6 delivers AN HONEST QUALITY-CONTROL FINDING: A GENUINE IDENTIFIER-COLLISION DEFECT** in file 0978's
+  "revised" prompt -- **`H-K04` is used for BOTH `GK-04 Kṣetra-jña` (in its Part 3 register) AND
+  `Equanimity` (in its Part 15 treatment)**, and **`H-K06` is used for BOTH `GK-06 Karma` AND "Failed
+  Action/Negative Knowledge"** -- explicitly: "neither collision is mine to resolve... recorded because a
+  falsification protocol keyed on `H-K04`/`H-K06` is ambiguous as written." Delivers a clean, LOCALLY-
+  DECLARED (not proposed as a fix to the source document) disambiguation scheme: `H-K04`=Kṣetra-jña,
+  `H-K04e`=Equanimity, `H-K06`=Karma/Phala, `H-K06f`=Failed action, `H-K13`=Jñāna (per the revised register)
+  -- and explicitly self-corrects an error in the AUTHOR'S OWN EARLIER WORK: "my earlier `R3` used `H-K13`
+  for failed inquiry; that is corrected to `H-K06f` throughout" -- a genuinely disciplined act of
+  transparent self-correction.
+
+  **§7 delivers THE FILE'S NET GAP POSITION TABLE** (eight rows, matching the §1 summary), closing with the
+  file's own overarching methodological reflection, **CONSISTENT WITH THIS RECONSTRUCTION'S OWN REPEATEDLY-
+  OBSERVED PATTERN ACROSS THIS ENTIRE CORPUS**: **"Three gaps closed by recovery, one corroborated, one
+  irreducible blocker unchanged, two new items — and no innovation used anywhere. The pattern from every
+  prior pass holds: the corpus was richer than the model built from it."**
+introduces:
+  - concept: "THE SANJAYA DISCOVERY: the 'missing referent layer' (W=Domain Reality, Omega=observation function) identified as a gap in file 0974 was already present in the corpus since 2026-08-26 under the name Sanjaya, with six formalized principles including a six-value observation-layer epistemic-status vector Sanjaya_K distinct from (not rival to) Sigma"
+  - concept: "THE FORMAL DESTRUCTION OF THE KNOWLEDGE ATMA CONSTRUCT (verdict RX): ordinary provenance (Lineage=Pi-compose-R_der*) already supplies everything 'Knowledge Atma' was meant to provide, adding nothing"
+  - concept: "The corrected Jnana mapping: Jnana maps to the transformation delta ('the act of knowing'), not to the Knowledge State K, via the corpus's own Tripuṭī reading (Jnata/Jnana/Jneya = knower/knowing/known)"
+  - concept: "A genuine identifier-collision defect in file 0978's revised prompt (H-K04 used for two distinct hypotheses; H-K06 likewise), with an explicit self-correction of the author's own earlier error"
+  - concept: "Independent, cross-document re-confirmation of the '31.19' universal-knower-forbidding theorem and the '§256.21' Command!=Transformation theorem, both now confirmed across at least two separate research documents (0975/0976 and this file)"
+defines:
+  - concept: "The layered epistemic-status resolution (Sanjaya_K vs Sigma)"
+    definition: "Rather than being competing, incompatible definitions of a single epistemic-status construct, Sanjaya_K=(Observed,Inferred,Reported,Unknown,Conflicting,Unresolved) and Sigma operate at genuinely different layers of the KnowledgeOS architecture: Sanjaya_K characterizes the OBSERVATION layer (how reliably and by what means a piece of information was obtained from the world), while Sigma characterizes the ASSERTION layer (the epistemic status of a claim already admitted into the knowledge state). They were 'never rivals' because they answer different questions about different objects in the pipeline -- this reframing potentially explains at least one instance of this reconstruction's long-tracked Sigma-representation-inconsistency puzzle as a layer confusion rather than a genuine definitional conflict"
+refines:
+  - concept: "File 0974's t285_reconcile.py identification of the missing W/Omega referent layer as a theoretical gap"
+    refinement: "RESOLVED via corpus archaeology: the layer was not missing, merely not imported into the verification lane -- it already exists, named and formalized, as Sanjaya since 2026-08-26. This narrows the remaining blocker from a whole missing layer to a single undefined function body (Qualify)"
+  - concept: "This reconstruction's long-tracked Sigma-representation inconsistency (files 0912, 0915, 0917, 0918, 0919, 0925, 0958, 0962)"
+    refinement: "PARTIALLY REFRAMED: at least one instance of an apparently-competing multi-value status scheme (Sanjaya_K's six values) is here explained as belonging to a genuinely different architectural LAYER (observation, not assertion) rather than being a rival definition of Sigma itself -- though this does not resolve the remaining, still-unreconciled variants of Sigma proper (Sigma_min, Sigma=(A,S,R,V,C), Sigma=(Direction,Strength), Sigma-A, Sigma={Sattva,Rajas,Tamas}, Theta_t)"
+  - concept: "The entire Knowledge Atma construct and its dedicated algebra (files 0932, 0934, 0937, 0942, 0948, 0954, 0959, 0962)"
+    refinement: "FORMALLY DESTROYED (verdict RX) by this file's own rigorous falsification test: every candidate persistence invariant for Knowledge Atma reduces to ordinary provenance/lineage already present in the theory, meaning the construct adds no genuine new information and should not be retained as a distinct primitive or state component"
+  - concept: "Files 0932's-0937's repeated GK-13 Jnana=Knowledge mapping (implicit throughout the Step-25X track's per-chapter reviews)"
+    refinement: "EXPLICITLY CORRECTED: Jnana maps to the transformation (the act of knowing), not to the Knowledge State K, directly reinforcing (rather than contesting) the architecture's deliberate exclusion of 'Knowledge' as a ratified primitive"
+  - concept: "File 0978's revised Step-286 research programme"
+    refinement: "FLAGGED WITH A GENUINE IDENTIFIER-COLLISION DEFECT (H-K04 and H-K06 each carrying two distinct hypotheses), handled via a disciplined, locally-declared (not unilaterally imposed) disambiguation"
+contradicts:
+  - concept: "The implicit assumption throughout the Step-25X track's per-chapter reviews (files 0932-0937, 0959) that Knowledge Atma is a legitimate, load-bearing KnowledgeOS construct"
+    contradiction: "Directly contradicted by this file's H-K05 falsification test, which formally destroys the construct (verdict RX), concluding it adds nothing beyond ordinary provenance already present in the theory"
+repeats:
+  - "Re-executes and independently reconfirms file 0974's T-E finding (operation non-identifiability under semantic equality) and file 0975's universal-knower refutation via the 31.19 theorem, both consistent with the prior records."
+bridge_candidates:
+  - "The two named corpus files ('20260826-151534_right-architectural-interpretation-now.md' and '20260826-143046_validating-and-formalizing-the-principles') documenting the Sanjaya construct -- dated 2026-08-26, five days and likely hundreds of files earlier than this reconstruction's current sequential position (past Step 260, dated 2026-08-30/31); this reconstruction has almost certainly already processed these exact files much earlier in its own sequence and should cross-reference its own prior records for them."
+  - "Whether the Knowledge Atma construct's RX/DESTROYED verdict is respected in any subsequent corpus material, or whether later files (in the corpus's own generation order) continue using it regardless."
+  - "Whether the two flagged new items (Sanjaya's mis-prioritization; the H-K04/H-K06 identifier collisions) are ever addressed by the HPA as recommended."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record THE SANJAYA DISCOVERY as a major substantive research advance: the corpus's own archaeology reveals that a construct thought missing (the W/Omega referent layer for the K_t/(A,R) projection) was already present since 2026-08-26 under the name Sanjaya, with a genuine six-value observation-layer epistemic-status vector distinct from (not rival to) Sigma -- potentially resolving part of this reconstruction's long-tracked Sigma-inconsistency puzzle as a layer confusion."
+  - "dimension-registry.md: record the FORMAL DESTRUCTION of the Knowledge Atma construct (verdict RX) as a major finding directly contradicting the implicit legitimacy this reconstruction observed the Step-25X track (files 0932-0962) repeatedly assigning to it -- this construct should not be treated as established KnowledgeOS content by any future synthesis work."
+  - "dimension-registry.md: record the corrected Jnana mapping (transformation, not Knowledge State) as reinforcing rather than contesting the architecture's deliberate exclusion of Knowledge as a primitive."
+  - "dimension-registry.md: cross-reference the two named corpus files dated 2026-08-26 (right-architectural-interpretation-now.md; validating-and-formalizing-the-principles) against this reconstruction's own earlier per-file records, which almost certainly already cover this exact material given the date is well before this reconstruction's current sequential position."
+anchor_test:
+  anchor: "File 0974's identification of the missing W/Omega referent layer; the entire Knowledge Atma construct and its dedicated algebra (files 0932, 0934, 0937, 0942, 0948, 0954, 0959, 0962); this reconstruction's long-tracked Sigma-representation inconsistency; file 0978's revised prompt"
+  supports_dimension: "Resolves file 0974's identified gap via genuine corpus archaeology (the Sanjaya discovery). Formally destroys the Knowledge Atma construct via rigorous falsification testing, directly contradicting its implicit legitimacy throughout the Step-25X track. Partially reframes the Sigma-inconsistency puzzle as a layer confusion for at least one instance. Flags a genuine identifier-collision defect in file 0978"
+  refines_or_contradicts: "resolves 0974's identified gap; destroys (contradicts the implicit legitimacy of) the Knowledge Atma construct across 0932-0962; partially reframes the Sigma-inconsistency puzzle; flags a defect in 0978"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit citation of two named corpus files dated 2026-08-26 documenting the Sanjaya construct is directly checkable against this reconstruction's own much-earlier per-file records (given the corpus's file-path date ordering, these files were almost certainly already processed by this reconstruction well before its current sequential position)."
+  - "The H-K05 falsification table's explicit 'Does K_atma add anything? NO' finding and its RX-DESTROYED verdict are directly checkable against file 0934's own three-conjunct identity criterion and six-stage lifecycle model, and against files 0937/0942/0948/0954/0959/0962's continued use of the K_atma component in their state tuples."
+  - "The '31.19' and '§256.21' theorem citations are directly checkable, now appearing consistently across files 0975, 0976, and this file, confirming they are genuine, stable, recurring corpus references rather than isolated or erroneous citations."
+undefined_concepts: []
+open_questions:
+  - "Whether this reconstruction's own already-completed per-file records (dated 2026-08-26 in the corpus's own timeline, processed much earlier in this reconstruction's sequence) already documented the Sanjaya construct -- a cross-reference check against this reconstruction's own prior records is warranted."
+  - "Whether the Knowledge Atma construct's RX/DESTROYED verdict is respected in any subsequent corpus material."
+  - "Whether the flagged Sanjaya mis-prioritization and H-K04/H-K06 identifier collisions are ever addressed by the HPA."
+tier2_triggered: true
+tier2_reason: "One of the most substantively important documents in this entire reconstruction's tracking: resolves a previously-identified gap via genuine corpus archaeology (the Sanjaya discovery, potentially reframing part of the long-tracked Sigma-inconsistency puzzle), formally destroys the entire Knowledge Atma construct via rigorous falsification testing (directly contradicting its implicit legitimacy throughout the Step-25X track), delivers a genuine, well-evidenced mapping correction (Jnana->transformation, not state), and honestly flags a real identifier-collision defect in a prior document including a transparent self-correction of the author's own earlier error. Classified importance critical given the scale and substance of these findings; confidence high given the artifact's transparent, well-evidenced, falsification-tested reasoning throughout."

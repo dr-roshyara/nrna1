@@ -1,0 +1,105 @@
+sequence: 996
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/03-D285-PROTOCOL-CONFORMANT-HYPOTHESIS-DOSSIER.md
+title: "03 -- D285 Protocol-Conformant Hypothesis Dossier: DIRECTLY RESOLVES the Long-Tracked Bridge Candidate Named Since File 0985 -- the Master Dossier Applying the Frozen Seven-Stage Protocol to All Eight Hypotheses Plus Two Queue Items, Delivering the Definitive Final Statistics: '2 at R5 (Both Corpus-Native) · 3 Corroborations · 1 Correction · 3 RX'"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the master hypothesis dossier applying the frozen seven-stage D285 protocol (file 0984) to every hypothesis this reconstruction has already tracked by cross-reference"
+source_role: PRIMARY_RESEARCH
+canonical_source: 996
+importance: critical
+confidence: high
+about: >
+  **DIRECTLY RESOLVES THE LONG-TRACKED BRIDGE CANDIDATE "03-D285-PROTOCOL-CONFORMANT-HYPOTHESIS-DOSSIER.md,"
+  named since file 0985** (and referenced again in file 0993). Input: the frozen protocol prompt
+  (`20260831-184950_step_285...`, the timestamp discrepancy this reconstruction flagged in file 0985 as
+  possibly distinct from the 185218-timestamped file recorded as sequence 0984 -- now resolved: BOTH
+  timestamps exist as genuinely separate corpus files, both instances of the same "frozen seven-stage typing
+  mandate" prompt, confirming the earlier flagged discrepancy was a genuine duplicate/near-duplicate prompt
+  file, not a citation error).
+
+  Applies the seven-stage protocol (source→translation→formal hypothesis→type/equality audit→independent KOS
+  derivation→executable test→classification) to eight named hypotheses plus the two queued items, with every
+  finding already tracked by this reconstruction now grounded in its definitive, single-document form:
+
+  **H-K03 (Kṣetra/Kṣetra-jña)**: `𝒩∉K` established mathematically; NOT independently KOS-derived (FA-4
+  Sanskrit-lineage entry); classified as "the one case of genuine contribution, not corroboration." Sub-
+  hypothesis H-K03b (universal knower): `RX`, with Reviewer A's precision correction (only the KnowledgeOS
+  projection is destroyed, not the Gītā's theological proposition) incorporated in place.
+
+  **H-K06/H-K07 (Karma/Phala)**: type/equality audit is "THE DECISIVE STAGE" -- vacuous under structural
+  equality, non-vacuous only under semantic equality; independently KOS-derived via `Command≠Transformation`
+  (§256.21-22, boxed -- now doubly confirmed, extending file 0989's citation); classification explicitly
+  WEAKENED per Reviewer B's E5 finding (non-injectivity modulo a quotient, not of δ itself; injective under
+  `≅_λ`); the `grantId` link explicitly WITHDRAWN.
+
+  **H-K11 (Vairāgya)**: restated per Reviewer A ("Valid(o,K)≢Outcome(o)", never `⊥`); independently KOS-
+  derived; `R5`/`R6`; corroboration ✅; the unnarrowed readings explicitly `RX`.
+
+  **H-K08 (Sārathi, Guidance≠Authority)**: `R6`, IMPLEMENTATION-grade test ("measured and running");
+  independently KOS-derived (AP-1, 132/132 grants carry `humanActRef`); **governance flag explicitly
+  retained**: "the referent of `humanActRef` is untyped, and two acts have already collided on one
+  `grantId`" -- this reconstruction's long-tracked open governance item, now formally logged inside the
+  dossier itself rather than only in file 0988's closing bucket.
+
+  **H-K16 (Sañjaya)**: `R5` on structure; NOT independently KOS-derived but explicitly "corpus-native
+  (2026-08-26)," not philosophical; architectural finding STRENGTHENED to the three-way `Reality≠Observation
+  ≠Knower` distinction (Reviewer A).
+
+  **H-K13 (Jñāna)**: mapping to `Knowledge` fails (target does not exist as a primitive); `Jñāna∼δ`
+  established as correspondence not identity; `R4`, "corrected, not added."
+
+  **Queue items, both formally resolved, not merely parked**: `𝒦_ātma` -- every candidate for the persistence
+  invariant `P` "reduces to `Π`... or to `ℛ_der*`," `RX` DESTROYED; `Θ_total` -- four incompatible carriers,
+  `RX` REJECTED, "what survives is a taxonomy... not a composable algebra."
+
+  **Delivers the definitive protocol-compliance summary and final numerical result**: "2 at `R5` with genuine
+  contribution (H-K03, H-K16 — both corpus-native) · 3 corroborations (H-K06/07, H-K11, H-K08) · 1 correction
+  (H-K13) · 3 `RX` (universal knower, `𝒦_ātma`, `Θ_total`)." Closes: **"No canon touched. One governance
+  question standing, and it is not a Gītā question"** -- referring to the `humanActRef`/`grantId`
+  identity-boundary governance item.
+introduces:
+  - concept: "The definitive, single-document consolidation of all eight hypotheses' full seven-stage protocol application, resolving the long-tracked '03-D285-PROTOCOL-CONFORMANT-HYPOTHESIS-DOSSIER.md' bridge candidate"
+  - concept: "Confirmation that both '184950' and '185218' timestamped prompt files genuinely exist as separate corpus artifacts, resolving this reconstruction's own earlier flagged timestamp discrepancy (file 0985)"
+  - concept: "The final definitive numerical result for the entire Step-25X/D285 hypothesis-testing programme: 2 R5 (genuine contribution) / 3 corroborations / 1 correction / 3 RX"
+  - concept: "The formally logged governance item retained within the dossier itself: the untyped referent of humanActRef and the grantId collision between two authority acts"
+defines: []
+refines:
+  - concept: "This reconstruction's long-tracked bridge candidate '03-D285-PROTOCOL-CONFORMANT-HYPOTHESIS-DOSSIER.md' (named in files 0985, 0993)"
+    refinement: "DIRECTLY RESOLVED: the full dossier is now read in complete form"
+  - concept: "File 0985's flagged timestamp discrepancy ('20260831-184950' vs the processed file 0984's '20260831-185218')"
+    refinement: "RESOLVED: this dossier's own input citation confirms '184950' is a genuinely distinct corpus file from the 185218-timestamped one processed as sequence 0984, both being instances of 'the frozen seven-stage typing mandate' prompt"
+  - concept: "Every already-tracked H-K hypothesis finding (files 0973-0995)"
+    refinement: "GROUNDED in this single definitive dossier, with the final numerical tally now confirmed in one place: 2 R5 / 3 corroborations / 1 correction / 3 RX"
+  - concept: "This reconstruction's already-tracked open humanActRef/grantId governance question"
+    refinement: "CONFIRMED as the dossier's own explicitly retained 'one governance question standing, and it is not a Gita question'"
+contradicts: []
+repeats:
+  - "Substantially consolidates content already documented across files 0973-0995 in full detail; its distinctive contribution is being the single, definitive, protocol-conformant dossier and resolving the long-tracked bridge candidate."
+bridge_candidates:
+  - "The original, not-yet-encountered '20260831-184950' prompt file (distinct from the 185218-timestamped file already processed as sequence 0984)."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the direct resolution of the long-tracked '03-D285-PROTOCOL-CONFORMANT-HYPOTHESIS-DOSSIER.md' bridge candidate, and the resolution of the file-0985-flagged timestamp discrepancy (both 184950 and 185218 prompt files genuinely exist)."
+  - "dimension-registry.md: record the definitive final numerical result for the Step-25X/D285 programme: 2 R5 (genuine contribution, both corpus-native) / 3 corroborations / 1 correction / 3 RX -- the canonical closing tally for this entire sub-track."
+anchor_test:
+  anchor: "Files 0973-0995's already-tracked H-K hypothesis findings; file 0985's flagged timestamp discrepancy"
+  supports_dimension: "Directly resolves the long-tracked bridge candidate, grounds every prior hypothesis finding in one definitive dossier, and resolves the timestamp discrepancy"
+  refines_or_contradicts: "confirms and grounds prior findings; resolves an open question"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The final numerical tally (2 R5/3 corroborations/1 correction/3 RX) is directly checkable against every individual hypothesis's classification stated across files 0973-0995 for consistency."
+undefined_concepts: []
+open_questions:
+  - "The original '20260831-184950' prompt file, distinct from the already-processed 185218 file, not yet directly encountered."
+tier2_triggered: true
+tier2_reason: "Directly resolves the long-tracked '03-D285-PROTOCOL-CONFORMANT-HYPOTHESIS-DOSSIER.md' bridge candidate (named since file 0985), delivers the single definitive protocol-conformant hypothesis dossier grounding all prior H-K findings, and resolves a previously flagged timestamp discrepancy. Classified importance critical and confidence high given its role as the canonical closing document for the entire Step-25X/D285 hypothesis-testing programme."

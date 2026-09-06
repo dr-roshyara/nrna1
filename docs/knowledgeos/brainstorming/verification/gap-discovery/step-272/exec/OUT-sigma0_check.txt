@@ -1,0 +1,73 @@
+
+==============================================================================
+A. Was `contradiction` an independent source, or a function of (S,R)?
+==============================================================================
+  so_exp05 admitted these (evidence, contradiction) pairs:
+    (none        , False)
+    (support     , False)
+    (refute      , False)
+    (both        , False)
+    (both        , True)
+    (insufficient, False)
+
+  is `contradiction` a FUNCTION of `evidence_assessment`? False
+  => YES. so_exp05 counted `contradiction` as an independent source while its own
+     coherence filter made it determined by `evidence_assessment`.  Its
+     'irreducible' verdict for that source is an ARTIFACT of a redundant encoding.
+     Step 272B is right: Conflict is not a primitive, it is (S,R)=(1,1).
+     THIS SESSION'S so_exp05 IS CORRECTED ON THIS POINT.
+
+==============================================================================
+B. Does Sigma_0 = (S,R) preserve every mandatory EPISTEMIC distinction?
+==============================================================================
+  (S,R)   Sigma_0     is there qualified sup  is there qualified ref  must open a conflict p  is the question settle  
+  (0, 0)  Unknown     False                   False                   False                   False                   
+  (1, 0)  Supported   True                    False                   False                   True                    
+  (0, 1)  Refuted     False                   True                    False                   True                    
+  (1, 1)  Conflict    True                    True                    True                    True                    
+
+  distinct decision signatures over the four states: 4/4
+  => Sigma_0's four states are pairwise distinguishable by these operations: True. No state is redundant; none can be merged.
+
+==============================================================================
+C. What can Sigma_0 NOT carry?  (the distinctions that must live elsewhere)
+==============================================================================
+  situation pair                              Sigma_0           needs
+  ----------------------------------------------------------------------------
+  never asked  vs  asked & nothing found      (0,0) vs (0,0)    asked
+  1 supporting item vs meets a 2-item bar     (1,0) vs (1,0)    sufficiency
+  supported & accepted vs supported & rejected(1,0) vs (1,0)    authority
+  supported vs supported-but-superseded       (1,0) vs (1,0)    lifecycle
+  supported & currently valid vs expired      (1,0) vs (1,0)    validity
+
+  => FIVE distinctions collapse inside Sigma_0.  Step 272B does not deny this --
+     it EXCLUDES them from Sigma by design ("required information, not a value of
+     the epistemic status") and places them in Lambda (lifecycle), Gamma
+     (governance), a policy bar, and a temporal evaluation.
+
+  RECONCILIATION with so_exp05 and with first-order SG-2:
+     so_exp05 asked  "how many distinctions must the SYSTEM preserve?"   -> many
+     Step 272B asks  "how many values must the EPISTEMIC STATUS have?"   -> four
+     Both answers are correct; they answer different questions.
+     SG-2's claim "Sigma is >=5 orthogonal axes" CONFLATED the two, and is
+     superseded: Sigma is 2 bits; the other axes are real but are NOT Sigma.
+
+==============================================================================
+D. Is Step 272B's minimality argument sound?
+==============================================================================
+  Claim: Sigma_min = P({Support, Refute}) ~= {0,1}^2, and "removing any one of
+  the four combinations destroys a mandatory distinction."
+
+  CHECK, executed above in (B): the four states have 4 distinct decision
+  signatures, so no two can be merged without losing a distinction. The deletion
+  argument therefore holds FOR THE OPERATION SET USED.
+
+  WHAT IS NOT ESTABLISHED by that argument:
+    * that {Support, Refute} are the only two primitive epistemic predicates.
+      The power-set construction is minimal GIVEN those two generators; the
+      generators themselves are argued (272A.3.1-3.3), not derived from a
+      closed operation set.
+    * that support/refutation are BINARY.  Step 275 proposed a five-level
+      ordinal strength S; Step 272B drops it ("no numerical confidence
+      required").  Both cannot be the minimal Sigma.  This is a live
+      corpus-internal disagreement, 272B (22:50) vs 275 (21:46).

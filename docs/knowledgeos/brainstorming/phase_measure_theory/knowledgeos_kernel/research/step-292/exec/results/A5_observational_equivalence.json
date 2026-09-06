@@ -1,0 +1,39 @@
+{
+ "_meta": {
+  "experiment_id": "KR-REITER-2026-09",
+  "source": "Reiter 2001, Knowledge in Action",
+  "source_role": "[EXT] independent formal-methods source -- NEVER an authority",
+  "theory": "v1.2 UNCHANGED",
+  "adopted": "nothing",
+  "deterministic": true,
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "claim": "observational equivalence does not imply situation identity",
+ "rows": [
+  {
+   "s1": [
+    "on"
+   ],
+   "s2": [
+    "on",
+    "off",
+    "on"
+   ],
+   "obs_equivalent": true,
+   "situations_equal": false,
+   "history_length_differs": true
+  },
+  {
+   "s1": [],
+   "s2": [
+    "on",
+    "off"
+   ],
+   "obs_equivalent": true,
+   "situations_equal": false,
+   "history_length_differs": true
+  }
+ ],
+ "all_obs_equivalent_but_distinct": true
+}

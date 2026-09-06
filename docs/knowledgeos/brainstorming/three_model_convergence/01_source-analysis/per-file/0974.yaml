@@ -1,0 +1,140 @@
+sequence: 974
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/exec/t285_reconcile.py
+title: "t285_reconcile.py -- THE FIRST GENUINELY EXECUTABLE, NO-STUB VERIFICATION SCRIPT IN THIS ENTIRE RECONSTRUCTION, ACTUALLY RUNNING FILE 0969's/0972's FORMAL TESTS T1-T8 AND MODELS A-F -- DELIVERS A CONCRETE ANSWER TO THE K_t VS K=(A,R) RECONCILIATION QUESTION (MODEL C, PROJECTION, HOLDS; A, B, F REFUTED), THE DECISIVE FINDING THAT THE PROJECTION IS 'DEFINABLE BUT NOT COMPUTABLE' BECAUSE THE 'QUALIFY' OPERATION HAS NO BODY ANYWHERE IN THE CORPUS SINCE STEP 170, AND AN ACTUAL WORKED CONFIRMATION (WITH A GENUINE REFINEMENT TO SEMANTIC EQUALITY) OF FILE 0969's delta(K,o1)=delta(K,o2) DOES NOT IMPLY o1=o2 INSIGHT"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "genuinely executable Python verification script, no unimplemented stubs, the first such artifact in this reconstruction's tracking"
+source_role: PRIMARY_RESEARCH
+canonical_source: 974
+importance: critical
+confidence: high
+about: >
+  **STRUCTURAL NOTE**: this is a standalone, self-contained, genuinely executable Python script (86 lines)
+  located under `knowledgeos_kernel/research/exec/`, a further new sub-path within the kernel-track
+  directory dedicated specifically to executable research code -- a qualitatively different kind of
+  artifact from every prior file in this reconstruction's tracking. **UNLIKE FILES 0939's AND 0963's
+  PSEUDOCODE (which contained bare `pass`-statement stubs for their hardest logic), EVERY LINE OF THIS
+  SCRIPT ACTUALLY COMPUTES AND PRINTS A CONCRETE RESULT -- THIS IS THE FIRST FULLY EXECUTABLE, NO-STUB
+  VERIFICATION ARTIFACT ENCOUNTERED IN THIS ENTIRE RECONSTRUCTION.** Its docstring explicitly identifies it
+  as implementing "STEP 285 — formal reconciliation of the two K formulations. Tests T1-T8, Models A-F,"
+  directly executing the formal test framework files 0969 and 0972 specified in prose.
+
+  **§T-A (PRIMITIVE-LEVEL COMPARISON) delivers a concrete set-theoretic comparison**: the ratified `K_t`
+  primitives (eight: Entity, State, Event, Observation, Proposition, Relation, Policy, Action) versus the
+  verification lane's `K=(𝒜,ℛ)` (Assertion, Relation, with Assertion expanded via its own declared fields --
+  `id,P,e,c,t,Π` with `P=(E,D,V)` -- into Proposition, Entity, Evidence, Context, Time, Provenance),
+  computing the SHARED, RATIFIED-ONLY, and VERIFICATION-ONLY sets, and explicitly separating the
+  ratified-only items into those the verification lane's own Steps 272B/273 declare EXTERNAL to `K`
+  (History, Policy, Authority, Action, Event) versus those "simply ABSENT from the verification lane" --
+  the first genuinely mechanized, reproducible computation of the exact construct-set overlap underlying
+  files 0941's/0942's/0968's long-tracked K-collision.
+
+  **§T-B (MODEL DISCRIMINATION) DELIVERS A CONCRETE, EXECUTED VERDICT ON FILE 0969's SIX CANDIDATE MODELS
+  (A-F)**: **Model A** ("K_t=(𝒜,ℛ,Σ,...) complete") **REFUTED** -- "ratified K_t contains Action/Event/
+  Policy, which the verification lane puts OUTSIDE K"; **Model B** ("K_t=(𝒜,ℛ), rest external") **REFUTED**
+  -- "contradicts FA-4: ratified K_t is 'state over 8 primitives', not 2" (citing a specific, previously-
+  unseen corpus reference "FA-4"); **Model C** ("(𝒜,ℛ)=π_K(K_t) projection") **HOLDS** -- "every
+  VERIFICATION-ONLY item is a FIELD of an assertion, not a new primitive"; **Model D** ("K_t=
+  π_knowledge(S_t)") **HOLDS**, explicitly "compatible with C; differs only in which object is called
+  primary"; **Model E** (`S_t=(K_t,E_t,H_t,G_t,Q_t)` layered) **HOLDS**, "compatible with C; names the
+  complement of the projection"; **Model F** (separate products) **REFUTED** -- "'Relation' and
+  'Proposition' are shared primitives; a common referent exists" -- **THIS IS THE FIRST GENUINE, CONCRETE,
+  MECHANICALLY-DERIVED ANSWER TO THE K_t/K=(𝒜,ℛ) RECONCILIATION QUESTION this reconstruction has tracked
+  since files 0941/0942/0968/0969**: the ratified architecture's `K_t` and the verification lane's
+  `K=(𝒜,ℛ)` are compatible via a projection relationship (Models C/D/E all describing essentially the same
+  underlying structure from different vantage points), NOT identical, NOT unrelated, and NOT separate
+  products.
+
+  **§T-C (IS THE PROJECTION WELL-DEFINED?) DELIVERS "THE DECISIVE TEST" AND THE SCRIPT'S MOST IMPORTANT
+  FINDING**: constructs the explicit projection map π for each of the eight ratified primitives (Proposition
+  → inside Assertion's P; Entity → inside P; Relation → directly; Observation → evidence `e`, AFTER
+  Qualify; State → the carrier itself; Event/Policy/Action → DROPPED as external), confirms the projection
+  is TOTAL (every primitive has an image or an explicit, principled drop), **BUT THEN IDENTIFIES THAT ONE
+  MAPPING IS MERELY CONDITIONAL**: `π(Observation)→e requires Qualify: Observation×Policy→Evidence`, and
+  **"Qualify HAS NO BODY in the corpus (1 undefined hit, Step 170)"** -- **REVEALING A SPECIFIC, PREVIOUSLY-
+  UNNAMED CONCRETE GAP TRACEABLE TO A SPECIFIC, VERY EARLY STEP NUMBER (Step 170) THIS RECONSTRUCTION HAS
+  NOT DIRECTLY ENCOUNTERED BY NAME, IDENTIFIED AS STILL UNRESOLVED EVEN AT THIS LATE STAGE (Step 285) OF THE
+  CORPUS'S OWN TIMELINE** -- delivering the script's central boxed conclusion (in prose form): **"π is
+  DEFINABLE but NOT COMPUTABLE. The projection exists as a structure and cannot be evaluated. This is the
+  precise reconciliation result."** -- a genuinely precise, actionable, falsifiable formal conclusion,
+  qualitatively different from every decorative claim this reconstruction has flagged throughout the Step-
+  25X track: it identifies EXACTLY what is missing (a computable body for `Qualify`) and EXACTLY where the
+  gap originates (Step 170), rather than asserting vague completeness.
+
+  **§T-D (SUFFICIENCY/IDENTITY/REPLAY) delivers three further concrete negative findings**: T1 sufficiency
+  -- `(𝒜,ℛ)` alone cannot carry Action/Event/Policy, hence INSUFFICIENT for `K_t`'s full role; T2 identity
+  -- assertions have an explicit identity rule `id=H(P,e,c,t,Π)` while `K_t` itself has NO identity rule,
+  an explicit ASYMMETRY between the two lanes; T6 replay -- `K_t=fold(δ,H,K_0)` requires Action+Event, which
+  `(𝒜,ℛ)` excludes, meaning replay is expressible in the ratified lane but not in the verification lane
+  alone.
+
+  **§T-E (ACTION≠RESULT) DELIVERS A GENUINE, EXECUTED, WORKED CONFIRMATION OF FILE 0969's §6 FORMAL
+  INSIGHT** (`δ(K,o_1)=δ(K,o_2)⇏o_1=o_2`): constructs two concrete operations (`o1` asserting `a2` with
+  provenance "origin:scan, actor:tool"; `o2` asserting the identical `a2` with provenance "origin:vendor,
+  actor:human"), computes both resulting states as SET-EQUAL (`{a1,a2}={a1,a2}`) while the operations
+  themselves are NOT equal, printing "CONFIRMED, REQUIRED" -- **BUT THEN DELIVERS A GENUINE FORMAL
+  REFINEMENT NOT PRESENT IN FILE 0969's ORIGINAL STATEMENT**: "if ids hash Π [provenance], the assertions
+  differ -- but then the STATES differ too, so the property must be stated over SEMANTIC equality, not
+  structural [equality]... under SEMANTIC equality (ignore id, Π): states ARE equal, operations differ."
+  Concluding "the property is REQUIRED and holds only under semantic equality. Typed result." -- **THIS IS A
+  GENUINE, SUBSTANTIVE SHARPENING of file 0969's own formal claim, identified through actual code execution
+  rather than prose argument, directly relevant to the eventual identity/equality semantics the corpus has
+  repeatedly flagged as unresolved (files 0912, 0934, 0957, 0959, 0968).**
+introduces:
+  - concept: "THE FIRST GENUINELY EXECUTABLE, NO-STUB VERIFICATION SCRIPT in this entire reconstruction's tracking, actually running the formal test framework files 0969/0972 specified in prose"
+  - concept: "A concrete, mechanically-derived verdict on the K_t/K=(A,R) reconciliation question: Models C/D/E (projection-compatible interpretations) HOLD; Models A, B, F REFUTED"
+  - concept: "THE SCRIPT'S CENTRAL FINDING: the projection pi(K_t)=(A,R) is DEFINABLE but NOT COMPUTABLE, because the Qualify operation (Observation x Policy -> Evidence) 'has no body in the corpus (1 undefined hit, Step 170)' -- a specific, traceable, previously-unnamed gap"
+  - concept: "A genuine formal refinement (via actual code execution) to file 0969's delta-non-identifiability insight: the property holds only under semantic equality, not structural equality (which would collapse under provenance-based identity hashing)"
+  - concept: "A citation to a previously-unseen corpus reference 'FA-4' (used to refute Model B)"
+defines:
+  - concept: "The projection well-definedness distinction: definable but not computable"
+    definition: "A projection map pi:K_t->(A,R) can be DEFINABLE -- meaning every element of its domain has a specified image or an explicit, principled exclusion, making the map total as a mathematical object -- while simultaneously NOT COMPUTABLE, meaning at least one of its component mappings depends on an auxiliary function (here, Qualify: Observation x Policy -> Evidence) that has never been given an actual implementation or algorithmic body anywhere in the corpus. A definable-but-not-computable projection exists as a valid mathematical structure but cannot actually be evaluated on real inputs until its missing component function is supplied"
+  - concept: "The semantic-equality-scoped delta non-identifiability property"
+    definition: "The property delta(K,o1)=delta(K,o2) does not imply o1=o2 (two different operations can produce the same resulting state) is REQUIRED (a genuine, necessary feature of the theory) but holds ONLY under semantic equality of states (comparing states by their asserted content, ignoring identity/provenance fields). Under structural equality (comparing states including their identity-hashing fields, which typically incorporate provenance Pi), differing provenance between o1 and o2 would make the resulting states differ too, since the assertion identity itself is a hash of provenance among other fields -- so the non-identifiability property would then vacuously fail to apply. The property must therefore be explicitly scoped to semantic equality to be meaningful, and any formal transformation algebra must treat delta's result-equality check as a TYPED result (semantic-equality typed) rather than assuming a single universal notion of state equality"
+refines:
+  - concept: "File 0969's six candidate models (A-F) for the K_t/K=(A,R) relationship"
+    refinement: "GIVEN A CONCRETE, EXECUTED, MECHANICALLY-DERIVED VERDICT: Models C, D, and E all HOLD (as compatible, mutually consistent projection-based interpretations), while Models A, B, and F are REFUTED with explicit, checkable reasons -- the first genuine resolution (not merely further hypothesis-generation) of this long-open reconciliation question"
+  - concept: "File 0968's central two-lane (Architecture vs Research/Verification) reframing and its 'missing canonical bridge' diagnosis"
+    refinement: "THE MISSING BRIDGE IS HERE CONCRETELY LOCATED AND CHARACTERIZED: it is a well-defined but non-computable projection, whose sole computational obstruction is the undefined Qualify operation traceable to Step 170 -- transforming an abstract 'missing bridge' diagnosis into a specific, actionable engineering task"
+  - concept: "File 0969's operation non-identifiability insight (delta(K,o1)=delta(K,o2) does not imply o1=o2)"
+    refinement: "CONCRETELY CONFIRMED via actual code execution, AND SHARPENED with a genuine formal refinement (the property is scoped to semantic, not structural, equality) not present in file 0969's original prose statement"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Step 170 -- the previously-unnamed, specific corpus step where the 'Qualify: Observation x Policy -> Evidence' operation was apparently first introduced without a computable body -- watch for whether this reconstruction directly encounters this step (given the primary corpus's sequential numbering, Step 170 would fall much earlier in the overall corpus than the Steps 260+ material this reconstruction has focused on recently)."
+  - "The 'FA-4' citation used to refute Model B ('ratified K_t is state over 8 primitives, not 2') -- watch for whether this specific corpus reference is directly encountered and its full content clarified."
+  - "Whether the Qualify operation is ever given an actual computable body elsewhere in the corpus, resolving the projection's computability gap."
+  - "Whether this script's Model C/D/E verdict is formally ratified as the corpus's canonical K-reconciliation decision, per file 0969's own Outcome-A-through-E stop-condition framework."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this script as the first genuinely executable, no-stub verification artifact in this entire reconstruction, delivering a concrete, mechanically-derived resolution to the long-tracked K_t/K=(A,R) reconciliation question (Models C/D/E hold, A/B/F refuted)."
+  - "dimension-registry.md: record the script's central finding -- the K-lane projection is definable but not computable due to the undefined Qualify operation traceable to Step 170 -- as transforming file 0968's abstract 'missing canonical bridge' diagnosis into a specific, actionable, traceable engineering gap."
+  - "dimension-registry.md: record the genuine formal refinement to file 0969's operation non-identifiability insight (scoped to semantic, not structural, equality), discovered via actual code execution."
+  - "dimension-registry.md: record the previously-unseen corpus reference 'FA-4' as a bridge candidate for future encounter."
+anchor_test:
+  anchor: "File 0969's six candidate models (A-F) and its operation non-identifiability insight; file 0968's 'missing canonical bridge' diagnosis; the corpus's recurring pattern of decorative, unexecuted formal claims throughout the Step-25X track"
+  supports_dimension: "Delivers the first genuinely executed, no-stub resolution of the K-model reconciliation question (Models C/D/E hold), concretely locates file 0968's abstract missing bridge as a specific non-computable projection component (the undefined Qualify operation, traceable to Step 170), and sharpens file 0969's operation non-identifiability insight via actual code execution -- a qualitatively different, genuinely substantive class of artifact compared to the Step-25X track's decorative formulas"
+  refines_or_contradicts: "concretely resolves (refines) file 0969's six candidate models; concretely locates (refines) file 0968's missing-bridge diagnosis; sharpens (refines) file 0969's non-identifiability insight"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The script's own printed output (T-B section) explicitly labels Models A, B, F as 'REFUTED' and Models C, D, E as 'HOLDS,' each with an explicit one-line justification, directly checkable by re-running the script."
+  - "The explicit statement 'Qualify HAS NO BODY in the corpus (1 undefined hit, Step 170)' is directly checkable against this reconstruction's own eventual encounter with Step 170 material (not yet reached in this reconstruction's current sequential position, which is well past Step 260)."
+  - "The T-E section's printed comparison (K1==K2 True, o1==o2 False) is directly checkable by re-running the script's own code, confirming the operation non-identifiability property is genuinely demonstrated, not merely asserted."
+undefined_concepts: []
+open_questions:
+  - "The specific content of Step 170 and its undefined Qualify operation, not yet directly encountered by this reconstruction."
+  - "The specific content of the 'FA-4' reference used to refute Model B."
+  - "Whether the Qualify operation is ever given a computable body elsewhere in the corpus."
+  - "Whether this script's Model C/D/E verdict is ever formally ratified as the corpus's canonical K-reconciliation decision."
+tier2_triggered: true
+tier2_reason: "The first genuinely executable, no-stub verification artifact in this entire reconstruction, delivering a concrete, mechanically-derived resolution to the long-tracked K_t/K=(A,R) reconciliation question, precisely locating the corpus's abstract 'missing canonical bridge' diagnosis as a specific, traceable, non-computable projection component (the undefined Qualify operation from Step 170), and genuinely sharpening a prior formal insight through actual code execution rather than prose assertion. Classified importance critical given the substantive research progress this represents; confidence high given the artifact is directly executable and its logic is transparently checkable, in contrast to the low-confidence decorative claims this reconstruction has flagged throughout the Step-25X track."

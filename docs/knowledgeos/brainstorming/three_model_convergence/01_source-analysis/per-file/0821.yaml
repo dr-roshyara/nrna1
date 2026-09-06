@@ -1,0 +1,201 @@
+sequence: 821
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-091044_step_194_the-causal-boundary.md
+title: "Step 194 -- The Causal Boundary (MAJOR SYNTHESIS MILESTONE, delivers 0820's promised causality test, CONTINUES I-series to I47): Delivers Rigorous Pearl-Style Causal Inference (P(Y|X) vs. P(Y|do(X)), a Worked Confounder Example) Applied Directly to AI-Generated Causal Claims -- Delivers 'Human Authority Does Not Repair Bad Causality' (Authority≠EpistemicTruth) -- Delivers the Two-Dimensional Knowledge State K(p)=(EpistemicStrength,GovernanceStatus) With a Worked Four-Row Table Showing Weak-Evidence-Yet-Approved as Legitimate -- Delivers Causal Claims as Immutable Versioned Assertions (Claim_v1→[Superseded/Refuted]→Claim_v2) and CausalClaim's Full Statistical-Provenance Tuple -- Explicitly Names and Forbids Circular Justification (Decision→Claim→Evidence→Decision) -- Delivers 'Reproducibility Is a Knowledge Invariant Where Quantitative Claims Matter' -- Delivers Three New Invariants I45-I47 -- Delivers the Deepest Result: the Architecture Must Preserve (at Least) Four Distinct Semantic Graphs (Temporal/Epistemic/Governance/Causal) -- Opens Step 195's Identity Boundary (Identity≠Name≠State≠Representation)"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily mathematical/statistical causal-inference formalization (Pearl do-calculus); re-walks all four Gita chapters once more specifically for the causality distinction, adding a fifth architectural question of its own, without new Gita textual content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 821
+importance: critical
+confidence: high
+about: >
+  Directly continues 0820, opening "we established `TemporalOrder≠CausalOrder`. Now we need to determine
+  whether KnowledgeOS can distinguish what happened before something from what actually contributed to
+  making it happen... an AI can easily observe `X→Y` in the data and incorrectly conclude `X causes Y`. A
+  serious knowledge architecture must not permit that inference without an appropriate basis."
+
+  **§194.1-194.5 delivers four distinct relations** (`Precedes, Correlates, Supports, Causes`) and the
+  rigorous causal-inference core: `Precedes(X,Y)` means only `T(X)<T(Y)`, boxed **`Precedes(X,Y)⇏
+  Causes(X,Y)`** (a deployment preceding an outage does not establish causation). Delivers the crucial
+  distinction between observational conditioning `P(Y|X)` and interventional `P(Y|do(X=x))` -- "what is
+  the distribution of Y if we intervene and set X=x?" -- explicitly "fundamentally different" from
+  conditioning.
+
+  **§194.6-194.8 delivers a fully worked confounding example**: `P(Outage|Deployment)=0.25` alone is
+  insufficient, since a latent `SystemInstability` may drive both `Deployment` and `Outage`, formalized as
+  a small causal graph (`Instability→Deployment`, `Instability→Outage`), concluding `Deployment⇏Outage`
+  necessarily -- "the observed association is confounded." Delivers **`RelationType=ObservedSequence`
+  explicitly kept distinct from `RelationType=Causal`**.
+
+  **§194.9-194.14 delivers a nine-relation candidate taxonomy** (`Precedes, Follows, Correlates, Supports,
+  Explains, Causes, Enables, Prevents, Contradicts`) with **relation-dependent evidential requirements**,
+  boxed: **`EvidenceRequirement(Cause)>EvidenceRequirement(Sequence)`** in general. Delivers the refinement
+  of 0819's `Evidence⇒Assessment` into **`Assessment=f(Evidence,ClaimType,Model,Assumptions)`**, worked
+  through a concrete server-restart-after-deployment example where log evidence establishes `Deployment≺
+  Restart` but not `Deployment→Restart`, boxed: **`ClaimType determines EvidenceSufficiency`**. Delivers
+  **causal confidence** `C_{X→Y}=P(Y|do(X))-P(Y|do(¬X))`, explicitly "conditional on the causal model and
+  assumptions. It is not metaphysical truth," and the statistical architecture chain `Data→
+  StatisticalModel→Estimate→Interpretation`, requiring `Model,Assumptions,Population,Sample,Method` be
+  retained alongside any point estimate.
+
+  **§194.15-194.18 delivers AI-generated causal claims properly bounded**: an AI's `Deployment causes
+  outage` output must initially be `CandidateCausalClaim`, never `EstablishedCausalClaim`, boxed:
+  **`AIInference≠EstablishedKnowledge`**. **Delivers the file's central governance-discipline finding,
+  "human authority does not repair bad causality"**: an Architecture Board approving "deployment caused
+  outage" creates a `Determination(C)` but "does not magically turn a weak causal inference into
+  scientifically established causality," boxed: **`Authority≠EpistemicTruth`** -- "authority establishes
+  organizational validity for a purpose. It does not rewrite the statistical model."
+
+  **§194.18-194.20 delivers the two-dimensional knowledge state**, boxed: **`K(p)=(E_p,G_p)`**
+  (EpistemicStrength, GovernanceStatus), worked through a **four-row concrete table** (deployment-preceded-
+  outage: High/Accepted; deployment-correlated: High/Accepted; deployment-caused-weak: Weak/Approved;
+  deployment-caused-strong: Strong/Accepted) -- "much more accurate than a single `status=approved`."
+  Delivers **the explicit worked legitimacy of `WeakEvidence` + `ApprovedForOperationalUse`**
+  simultaneously (a board choosing a conservative policy despite incomplete evidence), explicitly: "the
+  architecture should represent this honestly. It should not transform `WeakEvidence` into `StrongEvidence`
+  because somebody approved an action."
+
+  **§194.21-194.25 delivers the extended, typed causal lineage graph**
+  (`Observation→Evidence→StatisticalAnalysis→CausalClaim→[EpistemicAssessment/GovernanceDetermination]→
+  Decision→Action`) and reconfirms typed edges (`supports/precedes/causes/justifies/authorizes`) over a
+  generic `Relationship{type:"whatever"}`. Delivers **six candidate DDD bounded-context boundaries**
+  (Observation/Evidence/Epistemic/Governance/Decision/Execution Context), explicitly "should not
+  automatically become six microservices... but they are strong semantic boundaries," and the aggregate
+  question of which transitions require atomic consistency (`EvidenceRegistration` atomically establishes
+  Identity+Provenance+Integrity, but not `GovernanceDecision`).
+
+  **§194.26-194.29 delivers causal claims as immutable versioned assertions**: never silently overwrite
+  `cause=deployment`; instead create `Claim_v2=Refuted` referencing `Claim_v1→[superseded/refuted]→
+  Claim_v2`. **Delivers AI model evolution requiring explicit provenance**: `Model_1≠Model_2` must be
+  preserved -- "otherwise we cannot understand why the epistemic assessment changed." Delivers **the full
+  `CausalClaim` provenance tuple**, boxed: **`CausalClaim=(Proposition,Evidence,Model,Assumptions,
+  Population,Method,Assessment,Time)`**, explicitly "the statistical equivalent of software provenance."
+  Delivers **statistical reproducibility as a knowledge invariant**: "could another qualified analyst
+  reproduce the assessment?", requiring `Data+Method+Model+Assumptions+Version`, boxed: **"reproducibility
+  is a knowledge invariant where quantitative claims matter."**
+
+  **§194.30-194.32 delivers three new invariants**: **`I45`** (a causal claim must be distinguishable from
+  the temporal or statistical association that motivated it); **`I46`** (evidential requirements for a
+  claim must depend on the claim's semantic type); **`I47`** (governance approval must not silently
+  upgrade epistemic strength), explicitly flagged "particularly important."
+
+  **§194.33-194.36 delivers the epistemic/causal graph versus governance graph as related but non-
+  identical structures** (`E_causal: Evidence→Inference→Claim` versus `G_gov: Claim→Determination→
+  Decision`), and **explicitly names and forbids circular justification**: a dangerous architecture
+  permitting `Decision→Claim→Evidence→Decision`, worked through the concrete circular example "we approved
+  the architecture because the architecture was already approved" (`A→B→A`). Delivers **a new acyclicity
+  consistency rule**, boxed: **`G_justification` should be acyclic unless an explicit domain rule permits
+  cycles**.
+
+  **§194.37-194.41 re-walks all four Gita chapters once more specifically for the causality/decision
+  distinction**: Chapter 1 (`MultipleConstraints+ConflictingValues→DecisionProblem`, explicitly rejecting
+  `Evidence→UniqueDecision` -- "there can be several legitimate decisions under different objectives");
+  Chapter 2 (`DecisionQuality≠OutcomeQuality`, "important when evaluating AI agents"); Chapter 3
+  (`Knowledge→Action` but never `Knowledge=Action`, "an action is an operational transition. It should
+  remain separately observable"); Chapter 4 (`Transmission≠CompleteReconstruction`, "the recipient may
+  possess only a projection... this again reinforces provenance"). Delivers **the four-chapter
+  architectural-question table plus Step 194's own fifth question**: "how do we distinguish temporal
+  sequence, evidence, correlation, and causation?"
+
+  **§194.42-194.45 delivers "the architecture is becoming a semantic calculus"**: an assertion is not bare
+  `A` but `A(Context,Time,Evidence,Model,Authority,Lineage)`, and a transition is not bare `S_1→S_2` but
+  `τ(S_1,S_2,Reason,Rule,Witness,Actor,Authority,Time)`. Delivers **the central architecture equation**,
+  boxed: **`KnowledgeState_{t+1}=Transition(KnowledgeState_t,Evidence,Model,Context,Rule,Authority)`**
+  subject to `InvariantSet`, kept explicitly separate from `Reality_{t+1}=Action(Decision,Environment)` --
+  "the two systems interact, but they are not identical." Delivers **two coupled state machines**
+  (Epistemic `K_t`, Operational `R_t`) with the full closed feedback-loop diagram
+  (Reality→[observe]→Evidence→[assess]→Knowledge→[determine]→Decision→[execute]→Reality'), surrounded by
+  `Time+Lineage+Authority+Provenance`.
+
+  **§194.46 delivers the file's deepest result**: the architecture must preserve at least four distinct
+  semantic graphs, boxed: **`TemporalGraph`**, **`EpistemicGraph`**, **`GovernanceGraph`**, and (newly
+  emerging) **`CausalGraph`**, explicitly "should not automatically be implemented as four databases or
+  four services. They are four semantic structures. Implementation comes later."
+
+  **§194.47 delivers the Step 194 verdict**, three boxed results: **`Sequence≠Correlation≠Evidence≠
+  Causation`**; **`EpistemicStrength≠GovernanceStatus`**; **`Decision≠Outcome`** -- "mutually consistent
+  with Steps 191-193 and with the Chapter 1-4 lenses."
+
+  **Closes opening "Step 195 — the next boundary: identity,"** motivated by real distributed-systems
+  concerns (names change, systems are replaced, repositories are forked, services are renamed, AI agents
+  are recreated, knowledge is copied, domains evolve), boxed: **`Identity≠Name≠State≠Representation`**,
+  posing the concrete question "how can KnowledgeOS know that the 'Nexus' observed yesterday is the same
+  domain/system entity as the 'Nexus' discussed today after migration?" -- explicitly connecting to the
+  Chapter 2 continuity-through-change lens and DDD's identity-versus-attributes distinction. No actual
+  repository implementation occurs within this file itself; every relation, tuple, and graph remains a
+  conceptual specification pending Step 195's identity test.
+introduces:
+  - concept: "The four distinct relations Precedes/Correlates/Supports/Causes, and Precedes(X,Y)⇏Causes(X,Y)"
+  - concept: "The crucial P(Y|X) vs. P(Y|do(X)) distinction, and a fully worked confounding example (SystemInstability driving both Deployment and Outage)"
+  - concept: "The nine-relation candidate taxonomy and relation-dependent evidential requirements: EvidenceRequirement(Cause)>EvidenceRequirement(Sequence)"
+  - concept: "Assessment=f(Evidence,ClaimType,Model,Assumptions), refining 0819's Evidence⇒Assessment; ClaimType determines EvidenceSufficiency"
+  - concept: "Causal confidence C_{X→Y}=P(Y|do(X))-P(Y|do(¬X)), explicitly conditional on the causal model, not metaphysical truth"
+  - concept: "AI-generated causal claims properly bounded as CandidateCausalClaim, never EstablishedCausalClaim; AIInference≠EstablishedKnowledge"
+  - concept: "'Human authority does not repair bad causality': Authority≠EpistemicTruth, applied to a Board's causal-claim approval"
+  - concept: "The two-dimensional knowledge state K(p)=(EpistemicStrength,GovernanceStatus), with a worked four-row table and the legitimacy of WeakEvidence+ApprovedForOperationalUse"
+  - concept: "The extended typed causal lineage graph and six candidate DDD bounded-context boundaries, explicitly not six microservices"
+  - concept: "Causal claims as immutable versioned assertions (Claim_v1→[superseded/refuted]→Claim_v2) and AI model evolution requiring explicit Model_1≠Model_2 provenance"
+  - concept: "The full CausalClaim provenance tuple, 'the statistical equivalent of software provenance'"
+  - concept: "Statistical reproducibility as a knowledge invariant where quantitative claims matter"
+  - concept: "Three new invariants I45-I47 (causal-vs-associational distinguishability, claim-type-dependent evidential requirements, governance-cannot-upgrade-epistemic-strength)"
+  - concept: "The epistemic/causal graph vs. governance graph as related but non-identical, and the explicit naming and forbidding of circular justification (Decision→Claim→Evidence→Decision)"
+  - concept: "The acyclicity consistency rule for justification graphs"
+  - concept: "The four-chapter architectural-question table plus Step 194's own fifth question about sequence/evidence/correlation/causation"
+  - concept: "'The architecture is becoming a semantic calculus': the fully parameterized assertion and transition objects"
+  - concept: "The central architecture equation KnowledgeState_{t+1}=Transition(...), kept separate from Reality_{t+1}=Action(...)"
+  - concept: "The deepest result: the architecture must preserve at least four distinct semantic graphs (Temporal/Epistemic/Governance/Causal)"
+  - concept: "The Step 194 verdict's three boxed results"
+  - concept: "Step 195's opening: the identity boundary Identity≠Name≠State≠Representation"
+defines:
+  - concept: "'Human authority does not repair bad causality'"
+    definition: "When an authorized governance body (e.g. an Architecture Board) formally approves or determines a causal claim, that act establishes organizational validity for the claim's use within governance purposes, but it does not and cannot retroactively strengthen the underlying statistical/causal evidence -- a weak causal inference approved by authority remains a weak causal inference; Authority and EpistemicTruth (or EpistemicStrength) are orthogonal dimensions, formalized as the two-dimensional knowledge state K(p)=(EpistemicStrength,GovernanceStatus), which explicitly permits and represents combinations like WeakEvidence+ApprovedForOperationalUse as legitimate rather than forcing governance approval to silently upgrade the evidence's actual strength"
+  - concept: "Causal claim immutability and versioning"
+    definition: "A causal claim, once asserted, should never be silently overwritten in place when later analysis contradicts it -- instead a new versioned claim (Claim_v2) is created that explicitly supersedes or refutes the original (Claim_v1→[superseded/refuted]→Claim_v2), preserving the full CausalClaim provenance tuple (Proposition, Evidence, Model, Assumptions, Population, Method, Assessment, Time) for each version, so that a later disagreement between model versions or reanalysis is itself an auditable, reconstructable event rather than a silent, untraceable correction"
+  - concept: "Circular justification"
+    definition: "A dangerous architectural failure mode in which a decision's justification chain loops back to depend on an artifact whose own existence or validity depends on that same decision (formally A→B→A, e.g. 'we approved the architecture because the architecture was already approved') -- while cycles are not automatically invalid in every knowledge graph, a justification relation (Justifies) specifically should be required to form an acyclic graph unless an explicit domain rule deliberately permits cycles, since an unnoticed justification cycle manufactures apparent legitimacy from nothing"
+refines:
+  - concept: "0820's closing proposal of the causality test (Cause≠Evidence≠Correlation≠Sequence, P(Y|X) vs. P(Y|do(X)))"
+    refinement: "DELIVERED IN FULL: the four-relation formalization, a fully worked confounding example, the nine-relation taxonomy with relation-dependent evidential requirements, AI-causal-claim bounding, and the Step 194 verdict's three boxed results, directly answering the exact question 0820 posed"
+  - concept: "0819's Evidence⇒Assessment and the arc's broader Assessment=f(E,M,A) family (0813, 0819)"
+    refinement: "Extended with an explicit ClaimType parameter: Assessment=f(Evidence,ClaimType,Model,Assumptions), formalizing the previously implicit observation that the same evidence can be sufficient for a sequence claim but insufficient for a causal claim"
+  - concept: "0812's Pearl-style causal do-calculus introduction and 0813's causal-inference mention"
+    refinement: "Given its first fully worked application, including a concrete confounding scenario and the derived causal-effect estimator C_{X→Y}=P(Y|do(X))-P(Y|do(¬X)), converting the earlier abstract mention into a genuinely applied causal-inference methodology"
+  - concept: "0813's/0814's/0817's/0818's/0819's authority-cannot-manufacture-truth family (statistical confidence cannot manufacture authority; the AI did it anti-pattern; the dangerous collapse)"
+    refinement: "Extended with its precise converse: 'human authority does not repair bad causality,' Authority≠EpistemicTruth -- the family now covers both directions (confidence cannot become authority, AND authority cannot become epistemic strength)"
+  - concept: "0808's I1-I14 through 0820's I41-I44 invariant series"
+    refinement: "DIRECTLY EXTENDED as I45-I47, a tenth consecutive instance of correct invariant-series continuity spanning 0808 through 0821"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 195's actual identity boundary test (Identity≠Name≠State≠Representation) and its resolution of the Nexus-after-migration continuity question."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the fully worked Pearl-style confounding example (SystemInstability driving both Deployment and Outage) as the arc's first genuinely applied causal-inference methodology, not merely a mentioned framework."
+  - "dimension-registry.md: record 'human authority does not repair bad causality' (Authority≠EpistemicTruth) as the precise converse completing the arc's authority-cannot-manufacture-truth family (alongside 'statistical confidence cannot manufacture authority')."
+  - "dimension-registry.md: record the explicit naming and forbidding of circular justification (Decision→Claim→Evidence→Decision) as a concrete, directly applicable governance-integrity check."
+  - "dimension-registry.md: record the deepest result -- the architecture must preserve at least four distinct semantic graphs (Temporal/Epistemic/Governance/Causal) -- as a major consolidation of the arc's graph-multiplication discoveries (0793, 0806, 0813, 0819)."
+anchor_test:
+  anchor: "0820's closing proposal of the causality test; 0812's/0813's earlier Pearl-causal-inference mentions; the arc's authority-cannot-manufacture-truth family (0813, 0814, 0817, 0818, 0819); the I1-I44 invariant series; the arc's recurring multilayer-graph discoveries (0793, 0806, 0813)"
+  supports_dimension: "Delivers the full causality test directly answering 0820's closing question, with a fully worked confounding example converting the arc's earlier abstract Pearl-causal-inference mentions into genuinely applied methodology. Delivers the precise converse completing the arc's authority-cannot-manufacture-truth family: human authority cannot repair bad causality, just as confidence cannot manufacture authority. Delivers the two-dimensional knowledge state with a concrete worked table showing weak-evidence-yet-approved as legitimate. Explicitly names and forbids circular justification, a concrete governance-integrity pattern. Consolidates the arc's recurring multilayer-graph discoveries into the deepest result: at least four distinct semantic graphs (Temporal/Epistemic/Governance/Causal) must be preserved. Correctly extends the I-series to I47, a tenth consecutive positive continuity instance. Opens Step 195 with a well-posed, distributed-systems-grounded identity test"
+  refines_or_contradicts: "directly delivers and extends 0820's closing proposal; gives 0812's/0813's abstract Pearl-causal-inference mentions their first fully worked application; completes the arc's authority-cannot-manufacture-truth family with its precise converse; consolidates the arc's recurring multilayer-graph discoveries; correctly extends the I-series; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "§194.6-194.7's fully worked confounding example (Instability→Deployment, Instability→Outage, concluding Deployment⇏Outage necessarily) is directly checkable evidence of the arc's first genuinely applied causal-inference methodology, not merely an abstract mention of do-calculus."
+  - "§194.17's explicit statement 'human authority does not repair bad causality... authority establishes organizational validity for a purpose. It does not rewrite the statistical model,' boxed as Authority≠EpistemicTruth, is directly quotable evidence completing the arc's authority-cannot-manufacture-truth family with its precise converse."
+  - "§194.34-194.36's explicit worked circular-justification example ('we approved the architecture because the architecture was already approved,' formalized A→B→A) is directly checkable evidence of a concrete, actionable governance-integrity anti-pattern."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 195's identity boundary test (Identity≠Name≠State≠Representation) was ever actually carried out, and how it resolved the concrete Nexus-after-migration continuity question."
+  - "Whether the four named semantic graphs (Temporal/Epistemic/Governance/Causal) were ever formally reconciled with 0813's earlier five-graph multilayer structure (G_E, G_S, G_T, G_G, G_C) into one consolidated graph taxonomy."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the full causality test directly answering 0820's closing question, with a fully worked Pearl-style confounding example converting the arc's earlier abstract causal-inference mentions into genuinely applied methodology. Delivers 'human authority does not repair bad causality' as the precise converse completing the arc's authority-cannot-manufacture-truth family. Delivers the two-dimensional knowledge state with a concrete worked table, causal claims as immutable versioned assertions, and the full CausalClaim statistical-provenance tuple. Explicitly names and forbids circular justification as a concrete governance-integrity anti-pattern. Delivers the deepest result -- at least four distinct semantic graphs (Temporal/Epistemic/Governance/Causal) must be preserved -- consolidating the arc's recurring multilayer-graph discoveries. Correctly extends the I-series to I47, a tenth consecutive positive continuity instance. Opens Step 195 with a well-posed, distributed-systems-grounded identity test."

@@ -1,0 +1,111 @@
+sequence: "0157"
+path: docs/knowledgeos/brainstorming/kernel/20260823-114530-aggregate-hypothesis-falsification-atomicity-vs-relatedness.md
+title: "Round 9: first genuine FALSIFICATION in the cycle -- the six-part aggregate is falsified (semantic relatedness != transactional atomicity); smaller three-part boundary proposed, immediately caught repeating the same error; content mutability elevated to #1 open question"
+date: "2026-08-23"
+bytes: 47000
+model:
+  primary: c1
+  secondary: [g, m]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0156"
+importance: critical
+confidence: high
+about: >
+  Round 9, executing the falsification task commissioned at 0155. DeepSeek runs a systematic
+  pair-by-pair test (semantic relatedness / traceability / consistency / transactional atomicity) over
+  every pair among Identity, Evidence References, Justification, Epistemic State, Confidence, and
+  History, and finds transactional atomicity WEAK or MODERATE for every pair -- the first genuine
+  FALSIFICATION result the nine-round cycle has produced: "Hypothesis FALSIFIED: the six parts do NOT
+  require one aggregate." Re-examines Epistemic State (derived from events), Confidence (an assessment
+  output, not domain state), History (an event stream, not aggregate state), Evidence (decomposed into
+  six components, only the reference needing Kernel co-location), and Justification (relation +
+  argument structure). Retests the four contested epistemic "states" with a finer four-way scheme,
+  finding WITHDRAWN uniquely has no relationship component. Proposes a smaller three-part replacement
+  boundary. The critique-voice catches the new boundary repeating the exact traceability-argument error
+  just eliminated for the six-part version, and elevates content mutability to the single most
+  foundational open question.
+
+introduces:
+  - "First genuine FALSIFICATION result in the cycle: the six-part aggregate invariant
+    (Identity+EvidenceRefs+Justification+EpistemicState+Confidence+History = one aggregate) is
+    explicitly FALSIFIED via systematic pair-by-pair transactional-atomicity testing -- 'semantic
+    relatedness and traceability do NOT imply transactional atomicity'"
+  - "Concrete resulting positions: Epistemic State = derived (event history is source of truth);
+    Confidence = assessment output, not domain state; History = event stream, not aggregate state;
+    Evidence decomposed into 6 components (content/identity/reference/provenance/validity/assessment),
+    only 'reference' needing Kernel co-location; Justification = relation + argument structure, not a
+    standalone object"
+  - "Finer four-way retest of SUPERSEDED/CONTESTED/RECONCILED/WITHDRAWN/INSUFFICIENT_EVIDENCE
+    (Event?/Relationship?/Assessment?/Derived-State?): first four are Derived-State+Relationship except
+    WITHDRAWN, uniquely found to be Derived-State ONLY (no relationship -- withdrawal is unilateral);
+    INSUFFICIENT_EVIDENCE is the richest, Derived-State+Relationship+Assessment (all three)"
+  - "Proposed smaller replacement boundary: Identity + Evidence References + Justification History
+    (three-part, down from six) -- immediately flagged by the critique as repeating the just-eliminated
+    traceability-argument error one level down: 'we must not immediately recreate the same error one
+    level lower'"
+  - "Content mutability elevated to the single most foundational open question: does a claim's content
+    change in place, or does any content change create a new, superseding claim? -- cascades into
+    identity, history, evidence, justification, supersession, and the event model simultaneously"
+  - "Challenges one Zero-lens conclusion ('meaning is resolved before it becomes a candidate') against
+    an unread SNF/P5 finding that ambiguity/insufficiency are legitimate epistemic conditions; proposes
+    candidates may be resolved/ambiguous/insufficient, only 'resolved' reaching admission, while the
+    wider ecosystem may still represent unresolved interpretation elsewhere"
+  - "Nine concrete falsification scenarios commissioned for the next round, most notably: one Evidence
+    entity referenced by 1,000 claims (directly testing whether shared-evidence cardinality rules out
+    one giant aggregate) and content-amendment-vs-supersession"
+
+defines: []
+
+refines:
+  - "Directly resolves (falsifies) the six-part aggregate hypothesis that every prior round (0144-0156)
+    had treated as a live candidate -- the strongest single methodological advance in the cycle"
+
+contradicts:
+  - "Explicitly falsifies the six-part-aggregate, epistemic-state-as-stored-property, confidence-as-
+    domain-property, and history-as-aggregate-state claims carried through 0144-0156"
+
+repeats:
+  - {concept: "evidence-reference vs evidence-content separation, Zero-last discipline, Candidate≠Knowledge", canonical_source: "0156", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "Ledger Entry 49 added: the cycle's first genuine falsification result, its concrete implications,
+    and the immediately-caught repeated-error correction on the proposed smaller boundary"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Evidence Integrity", "Unknown Preservation"]
+  refines_or_contradicts: "Falsifies the six-part aggregate hypothesis carried through 0144-0156; proposes and immediately re-challenges a smaller boundary."
+  alternative_minimal_kernel: "Identity + Evidence References + Justification History (three-part) -- proposed, immediately flagged as under-justified by the same standard that falsified the six-part version"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "The first genuine FALSIFICATION in nine rounds -- a real, load-bearing negative result achieved
+    through disciplined pair-by-pair testing rather than argued from philosophical coherence, directly
+    fulfilling the falsification methodology first proposed at 0155"
+  - "The critique's immediate self-consistency check (catching the same traceability-argument error one
+    level down) demonstrates the review cycle applying its own newly-learned lesson rigorously rather
+    than lapsing after one success -- a strong discipline signal"
+
+undefined_concepts: []
+open_questions:
+  - "Whether content mutability (claim content amendment vs. supersession) is resolved in a later round,
+    given it is now marked the single most foundational open question"
+  - "Whether the nine falsification scenarios (especially the 1,000-claims-share-one-evidence test) are
+    executed in a subsequent round"
+
+tier2_triggered: true
+tier2_reason: >
+  The first genuine falsification result in the nine-round Kernel-boundary cycle, four concrete
+  falsified claims, a finer contested-states retest with one genuinely new finding (WITHDRAWN has no
+  relationship component), and an immediate self-consistency catch preventing the same error from
+  recurring one level down.

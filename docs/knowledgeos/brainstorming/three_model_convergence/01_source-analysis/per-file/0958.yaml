@@ -1,0 +1,96 @@
+sequence: 958
+path: docs/knowledgeos/brainstorming/phase_measure_theory/external_research/20260831-170403_hpa-analysis-gita-chapter-14-the-three-modes-of-material-nature-and-their-t.md
+title: "HPA Analysis: Gita Chapter 14 -- The Three Modes of Material Nature -- INTRODUCES A FURTHER, DISTINCT SIGMA FORMULATION: Sigma={Sattva,Rajas,Tamas}, Each Mode Mapped to a BUNDLE of Three Separate KnowledgeOS-State Attributes Rather Than a Single Value -- FURTHER COMPOUNDING THE ALREADY-ESCALATING FOUR-WAY (NOW AT LEAST SIX-WAY) SIGMA-REPRESENTATION INCONSISTENCY TRACKED SINCE FILE 0912 -- AND DIRECTLY, INTERNALLY INCONSISTENT WITH FILE 0950's OWN GLOSSARY MAPPING OF THE SAME THREE GUNAS TO SIGMA VALUES"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "Gita per-chapter review introducing a further incompatible Sigma formulation"
+source_role: PRIMARY_RESEARCH
+canonical_source: 958
+importance: critical
+confidence: low
+about: >
+  Continues the per-chapter Gita review series covering Chapter 14 (the three Gunas/modes of material
+  nature: Sattva, Rajas, Tamas).
+
+  **§Part 3 delivers "THE COMPLETE Σ THEORY," introducing A FURTHER, STRUCTURALLY DISTINCT Σ FORMULATION**:
+  boxed **`Σ={Sattva,Rajas,Tamas}`** -- a bare three-element set, with each mode then mapped to a BUNDLE OF
+  THREE SEPARATE KnowledgeOS-state attributes rather than a single scalar or tuple value: **Sattva→
+  "Supported, Strong, Coherent"**; **Rajas→"Unknown, Weak, Conflict"**; **Tamas→"Refuted, None, Missing."**
+  This is structurally different from every previously-tracked Σ variant in this reconstruction's records
+  (`Σ_min=𝒫({Support,Refute})` from file 0912; `Σ=(A,S,R,V,C)` five-dimensional from earlier main-track
+  files; `Σ=(Direction,Strength)` two-dimensional from file 0917; `Σ-A=(I,A,S,R,V,C)` six-dimensional from
+  file 0918; `Σ=(dir,str)` operatively adopted at Step 282's own declared formal closure, file 0925; and
+  the simpler Sattva/Rajas/Tamas→Supported/Conflicted/Unknown three-way glossary mapping from file 0950),
+  now bringing the total count of distinct, structurally incompatible Σ formulations tracked across this
+  entire reconstruction to AT LEAST SIX.
+
+  **THIS FILE'S OWN THREE-ATTRIBUTE-BUNDLE MAPPING IS ALSO DIRECTLY, INTERNALLY INCONSISTENT WITH FILE
+  0950's OWN GLOSSARY** (read nine files earlier in this reconstruction's sequence, same broader corpus
+  cluster, same date 2026-08-31): file 0950 mapped **Rajas→Σ=Conflicted** and **Tamas→Σ=Unknown**, whereas
+  this file maps **Rajas→[Unknown, Weak, Conflict]** (including "Unknown," which file 0950 assigned
+  exclusively to Tamas) and **Tamas→[Refuted, None, Missing]** (a wholly different label set not overlapping
+  file 0950's "Unknown" at all) -- a directly checkable, unreconciled inconsistency between two files in the
+  same immediate corpus cluster regarding the exact Guna-to-epistemic-status correspondence.
+
+  **§3.2 delivers a "Transition Dynamics" rule** `Tamas→Rajas→Sattva→None`, asserting a specific, linear,
+  unidirectional maturation ordering among the modes with no justification beyond narrative plausibility
+  ("ignorance is overcome by activity," "activity is refined into knowledge," "knowledge is transcended").
+
+  **§3.4 delivers boxed `IdealΣ=None=Transcendence`** -- treating the complete ABSENCE of epistemic status
+  as the system's "ideal" target state, a philosophically-motivated but formally unmotivated claim: a
+  knowledge-representation system's epistemic-status field presumably exists precisely to track how well-
+  supported an assertion is, so an "ideal" state defined as having NO epistemic status at all is in tension
+  with the system's own purpose, and this tension is not addressed or resolved anywhere in the file.
+
+  §Part 4 delivers a further "Complete Transformation Equation with Modes," restating the recurring
+  undefined-operator-composition pattern (files 0945, 0953, 0955) with Σ-mode transitions folded in.
+
+  §Part 5 delivers the familiar all-✅ Supervisory Verdict. Closes "Next: STEP 290 — TRANSFORMATION
+  ALGEBRA," matching files 0945's, 0953's, and 0955's designation (in continued contrast to the "Step 285"
+  designation of files 0946/0947/0949/0954/0956/0957).
+introduces:
+  - concept: "A further, structurally distinct Sigma formulation Sigma={Sattva,Rajas,Tamas}, with each mode mapped to a bundle of three separate KnowledgeOS-state attributes -- bringing the total count of tracked incompatible Sigma variants to at least six"
+  - concept: "A directly checkable internal inconsistency between this file's Guna-to-Sigma mapping and file 0950's own glossary mapping of the same three Gunas"
+  - concept: "The IdealSigma=None=Transcendence claim, in unaddressed tension with the epistemic-status field's own presumed purpose"
+defines: []
+refines:
+  - concept: "This reconstruction's escalating, already-tracked Sigma-representation inconsistency (files 0912, 0915, 0917, 0918, 0919, 0925)"
+    refinement: "FURTHER ESCALATED to at least a sixth distinct, structurally incompatible formulation (a three-element Guna set with each mode mapped to a three-attribute bundle), confirming this inconsistency remains not merely unresolved but actively growing in this later part of the corpus, now spanning both the main Step-NNN track and the Step-25X Gita-integration track"
+  - concept: "File 0950's Guna-to-Sigma glossary mapping (Sattva/Rajas/Tamas -> Supported/Conflicted/Unknown)"
+    refinement: "DIRECTLY CONTRADICTED by this file's own, differently-structured mapping (Rajas including 'Unknown,' Tamas mapped to an entirely different label set) -- an unreconciled inconsistency between two files in the same immediate cluster"
+contradicts:
+  - concept: "File 0950's Guna-to-Sigma glossary mapping"
+    contradiction: "This file's Rajas mapping includes 'Unknown' (which file 0950 assigned exclusively to Tamas), and this file's Tamas mapping ('Refuted, None, Missing') does not match file 0950's Tamas mapping ('Unknown') at all -- a directly checkable, unreconciled contradiction between two files in the same corpus cluster and date"
+repeats:
+  - "The undefined-operator-composition transformation-equation pattern repeats files 0945/0953/0955's approach with modes folded in."
+bridge_candidates:
+  - "Whether this reconstruction's escalating, now six-way Sigma-representation inconsistency is ever explicitly noticed and reconciled anywhere later in the corpus."
+  - "Whether the direct contradiction between this file's and file 0950's Guna-to-Sigma mappings is ever noticed."
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file's Sigma={Sattva,Rajas,Tamas} formulation, with its three-attribute-bundle mapping, as a further, sixth distinct Sigma variant, escalating this reconstruction's long-tracked Sigma-representation inconsistency to now span the Step-25X Gita-integration track as well as the main Step-NNN track."
+  - "dimension-registry.md: record the directly checkable internal contradiction between this file's and file 0950's Guna-to-Sigma mappings, both within the same immediate corpus cluster and date, as a further concrete instance of this corpus's recurring failure to cross-reference its own sibling files."
+anchor_test:
+  anchor: "This reconstruction's escalating Sigma-representation inconsistency (files 0912, 0915, 0917, 0918, 0919, 0925); file 0950's Guna-to-Sigma glossary mapping"
+  supports_dimension: "Introduces a sixth, structurally distinct Sigma formulation, further escalating an already long-tracked and unresolved inconsistency, now spanning both corpus tracks. Directly, checkably contradicts file 0950's own Guna-to-Sigma glossary mapping within the same cluster"
+  refines_or_contradicts: "further escalates the tracked Sigma-representation inconsistency; directly contradicts file 0950's mapping"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "This file's boxed Sigma={Sattva,Rajas,Tamas} formulation and its three-attribute-bundle mapping table are directly checkable against this reconstruction's own cumulative Sigma-variant tracking (files 0912, 0917, 0918, 0925) for the sixth-distinct-variant finding."
+  - "This file's Rajas->[Unknown,Weak,Conflict] and Tamas->[Refuted,None,Missing] mappings are directly checkable, term by term, against file 0950's own Rajas->Sigma-Conflicted and Tamas->Sigma-Unknown mappings for the direct-contradiction finding."
+undefined_concepts: []
+open_questions:
+  - "Whether this reconstruction's escalating, now six-way Sigma-representation inconsistency is ever explicitly noticed and reconciled anywhere later in the corpus."
+  - "Whether the direct contradiction between this file's and file 0950's Guna-to-Sigma mappings is ever noticed or resolved."
+tier2_triggered: true
+tier2_reason: "Introduces a sixth, structurally distinct Sigma formulation directly compounding this reconstruction's long-tracked, still-unresolved Sigma-representation inconsistency (a significant open item for this reconstruction's eventual cross-model synthesis work), and delivers a directly checkable internal contradiction against a sibling file's (0950) own Guna-to-Sigma mapping within the same immediate cluster. Classified importance critical given the significance of the escalating Sigma inconsistency for the theory's own claimed formal closure; confidence low given the file's demonstrated internal/cross-file inconsistency."

@@ -1,0 +1,62 @@
+sequence: 61
+path: docs/knowledgeos/brainstorming/20260819-220806-kos-3-0-state-durability-ddd-boundary.md
+title: KnowledgeOS 3.0 — State Durability DDD Boundary Review
+date: 2026-08-19
+bytes: 19159
+
+model:
+  primary: c1
+  secondary: [ddd, invariants, evidence, provenance]
+
+source_role: CRITICAL_REVIEW
+canonical_source: null   # reviews a prior document (KOS-AIP-GOV-STATE-DURABILITY) not yet read in sequence
+
+importance: medium
+confidence: high
+
+about: >
+  Diagnoses a durability/storage decision as really a missing domain boundary (Knowledge Execution
+  vs Knowledge Governance Evidence sharing one persistence boundary), proposes R-CONFLICT as a
+  domain invariant treating storage conflicts as domain events, and refuses to freeze bounded
+  contexts pending a six-question validation workshop.
+
+introduces:
+  - r_conflict_domain_invariant   # conflict resolution MUST preserve provenance, sequence integrity, reconstruction capability
+  - evidenceconflict_domain_object
+  - execution_evidence_authority_knowledge_chain_as_trust_source
+
+defines:
+  - r_conflict_invariant
+
+refines:
+  - concept: authority_resolver_placement
+    canonical_source: null
+    change: "should not be merely a technical service - placement caution raised"
+
+contradicts: []
+repeats:
+  - concept: refuse_to_freeze_bounded_contexts_pending_validation
+    canonical_source: 60
+    novelty: low
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence:
+  - "'AIP' naming (KOS-AIP-GOV-STATE-DURABILITY, ADR-KOS-002) matches the root-level ADR-AIP series - further provenance confirmation alongside 0057"
+  - "'KnowledgeOS is not trustworthy because it stores knowledge. It is trustworthy because it preserves the chain from execution -> evidence -> authority -> reusable knowledge.'"
+  - "document contains two near-identical review passes over the same ten points"
+
+undefined_concepts: [knowledge]
+open_questions:
+  - "six-question bounded-context validation workshop, unresolved: does Evidence have independent lifecycle/ownership; can Evidence exist without a Knowledge Product; can Governance exist without Evidence; who owns authority vs lifecycle transitions"
+
+tier2_triggered: true
+tier2_reason: >
+  Proposes a genuine domain invariant (R-CONFLICT: conflict resolution must preserve provenance,
+  sequence integrity, reconstruction capability) treating storage conflicts as first-class domain
+  events. AIP naming convention further confirms the provenance link to root-level material found
+  at 0057.

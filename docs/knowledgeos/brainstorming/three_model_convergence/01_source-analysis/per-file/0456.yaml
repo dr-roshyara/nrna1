@@ -1,0 +1,128 @@
+sequence: 456
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-170948_why-a-c-type-parser-is-useful.md
+title: "Semantic Reconstruction Named as a Parent Capability Over C-Type and Sanskrit-Grammar-Type Parser Lenses; Full Kāraka-Based Worked Parse of the Arjuna Test Sentence; Parsing≠Observation≠Knowledge Invariant"
+date: "2026-08-26"
+bytes: 29503
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "Sanskrit kāraka grammatical categories (Kartṛ/Karma/Kriyā/Sambandha/Kartavya/Karaṇa/Apādāna/Adhikaraṇa) used as an explicit non-authoritative analytical lens for semantic-role extraction"
+source_role: PRIMARY_RESEARCH
+canonical_source: 456
+importance: high
+confidence: high
+about: >
+  Directly continues 0455's Dimension Discovery thread by responding to a (not-independently-recorded, since
+  this corpus captures only one side plus synthesis) proposal for two complementary natural-language parsing
+  lenses -- a **C-type parser** and a **Sanskrit-grammar-type parser** -- and refines this into an explicit
+  architecture rather than "KnowledgeOS uses two parsers." Characterizes the **C-type parser lens** as
+  teaching structural decomposition (Sentence->Syntax Tree->Structured Representation) without itself
+  providing semantic ontology -- "C parsing provides the architectural pattern for deterministic structural
+  decomposition," not a literal natural-language parsing mechanism. Characterizes the **Sanskrit grammar
+  lens** as teaching semantic/relational decomposition (Surface sentence->grammatical relations->semantic
+  roles), useful specifically for Dimension Discovery. Produces a six-lens comparison table (C-parser=
+  structural decomposition; Sanskrit grammar=semantic/relational decomposition; DDD=domain meaning/bounded-
+  context semantics; Zero=what the representation does not establish; Lord=what dimensions may exist beyond
+  the current representation; Sārathi=how to navigate the investigation), explicitly framing them as
+  "different analytical lenses over language," never competing parsers.
+
+  Produces a full architecture diagram: Human Knower -> natural-language intent -> Language Analysis
+  {Structural Parser (C-type), Semantic Grammar (Sanskrit)} -> Semantic Representation -> Candidate
+  Dimensions -> {Domain, Zero, Lord} Lens -> Dimension Assessment -> Investigation -> Knowledge. Reasserts
+  the critical epistemic-discipline point already established for dimension discovery: **Parsing != Observation,
+  Parsing != Knowledge** -- a parser can extract semantic candidates (e.g. Actor=Arjuna, Action=fight,
+  Relation=with, Target=persons, Modality=obligation) but this does not establish "Arjuna must fight X" or
+  "X is Arjuna's enemy," which require observation/evidence/context. Establishes that **DimensionDiscovery is
+  recursive**: a new question produced by observation (Q_1) is itself run back through the language-analysis
+  capability (Q_1->SemanticStructure_1->D_2), so the system continually reconstructs the semantic space as
+  investigation proceeds rather than parsing once and stopping -- explicitly connected to a worked Level
+  0-3 progressive-investigation example that operationalizes 0452's Progressive Investigation Principle in
+  language-analysis terms.
+
+  Proposes a new, broader KnowledgeOS capability, **Semantic Reconstruction**, of which Dimension Discovery
+  is only one output, with an explicit extensible sub-branch structure (Structural Analysis/C-type,
+  Grammatical Analysis/Sanskrit, Entity Analysis, Relation Analysis, Modality Analysis, Context Analysis,
+  Dimension Discovery), noting later additions (DDD semantic analysis, domain ontology, temporal analysis,
+  causal analysis, legal/scientific language analysis) could be added "without changing the fundamental
+  architecture." Investigates whether Sanskrit grammatical roles can distinguish canonical question-dimensions
+  of an event/statement (Who/What/To whom/With what/From where/For whom/Because of what/Under what
+  condition), worked via "Arjuna fights Bhīṣma" (Agent=Arjuna, Action=Fight, Target=Bhīṣma) and "Bhīṣma is
+  Arjuna's grandfather" (Entity_1=Bhīṣma, Relation=GrandfatherOf, Entity_2=Arjuna). Explicitly preserves
+  methodological discipline: "The Sanskrit grammar lens is an analytical lens from which KnowledgeOS may
+  learn useful principles of semantic decomposition. It is not evidence that the KnowledgeOS ontology must
+  conform to Sanskrit grammar," directly paralleling "The Gita is not proof of our mathematical model... a
+  source through which we observe potentially useful structures." Formalizes the resulting architectural
+  hypothesis: NL->[StructuralAnalysis]->SyntacticStructure; NL->[Grammar/SemanticAnalysis]->SemanticStructure;
+  (SyntacticStructure,SemanticStructure,Context,Domain)->CandidateDimensions;
+  CandidateDimensions->[Observation+Zero+Lord+Sārathi]->InvestigatedKnowledge. Pauses Question 3 to first
+  concretely decompose one test sentence ("Show me those with whom I have to fight") via both lenses.
+
+  Delivers the promised concrete decomposition in a "Semantic Reconstruction: A Formal Analysis" section
+  (appearing TWICE, verbatim, within this single file -- an internal duplication anomaly, not a separate
+  sequence-level duplicate). Provides a full C-parser parse tree and structural-elements table for the test
+  sentence (Action/Recipient/Target/Relation/Actor/Action/Modality/Implied-Object), with explicit strengths
+  (clear grammatical roles, deterministic, handles complex structure) and limitations (no semantic-type
+  distinction, no domain-specific inference, no implicit knowledge). Provides a full Sanskrit kāraka-based
+  semantic-role extraction table using genuine Sanskrit grammatical categories -- **Kartṛ** (Agent),
+  **Karma** (Object), **Kriyā** (Action), **Sambandha** (Relation), **Kartavya** (Obligation), **Karaṇa**
+  (Instrument), **Apādāna** (Source), **Adhikaraṇa** (Location) -- mapped to candidate KnowledgeOS
+  dimensions (Actor/Decision_Maker, Entity/Target, Action_Type, Relationship_Type, Duty/Obligation,
+  Means/Method, Origin, Context/Situation), with strengths (captures semantic roles, distinguishes relation
+  types, handles implicit knowledge) and limitations (requires domain ontology, may over-interpret
+  grammatical roles, requires implementing semantic grammar). Synthesizes both analyses into eight candidate
+  dimensions (Actor, Target_Entity, Action_Type, Relationship_Type, Obligation, Context, Purpose,
+  Consequence) and the formula D_candidate=Extract(Q,Structural,Semantic,Domain). Applies the model to
+  Arjuna's case end-to-end, distinguishing eight initial candidate dimensions from six observation-revealed
+  dimensions (including Relationship_To_Arjuna and Moral_Obligation), and lists eight required implementation
+  components (Structural Parser, Semantic Parser, Domain Ontology, Context Model, Pattern Recognition, Zero
+  Lens, Lord Lens, Sārathi) plus the consolidated invariant Parsing != Observation != Knowledge. Closes
+  (in both copies) by proposing to proceed to Question 3 (Statement) -- notably WITHOUT addressing Question
+  2B (DimensionAssessment), launched at the close of 0455, at all.
+introduces:
+  - concept: "Semantic Reconstruction named as a new, broader parent KnowledgeOS capability, with Dimension Discovery as only one of its sub-branches (alongside Structural/Grammatical/Entity/Relation/Modality/Context Analysis), explicitly designed to be extensible to later analysis types (temporal, causal, legal, scientific) without architectural change"
+  - concept: "C-type parser and Sanskrit-grammar-type parser framed as complementary, non-competing analytical LENSES over language (not literal implementation parsers): C-type teaches deterministic structural decomposition, Sanskrit grammar teaches semantic/relational decomposition"
+  - concept: "DimensionDiscovery is recursive: a new question generated by observation is re-run through the same language-analysis capability, so semantic reconstruction continually re-executes rather than running once, operationalizing 0452's Progressive Investigation Principle in language-analysis terms"
+  - concept: "Sanskrit kāraka grammatical categories (Kartṛ, Karma, Kriyā, Sambandha, Kartavya, Karaṇa, Apādāna, Adhikaraṇa) introduced and mapped concretely to candidate KnowledgeOS dimensions, with an explicit non-authority disclaimer paralleling the corpus's Gita-as-lens-not-proof discipline"
+  - concept: "Parsing != Observation != Knowledge consolidated invariant: parsing produces candidate dimensions only; observation and investigation produce knowledge"
+  - concept: "Full worked C-parser-vs-Sanskrit-lens comparative decomposition of a single test sentence, synthesized into eight candidate dimensions and applied end-to-end to the Arjuna case"
+defines:
+  - concept: "Semantic Reconstruction"
+    definition: "The KnowledgeOS capability that derives candidate semantic structures (and, as one output, candidate dimensions) from natural-language intent via complementary structural (C-type) and semantic/grammatical (Sanskrit-type) analytical lenses, combined with context and domain ontology"
+  - concept: "Dimension Discovery formula (parser-grounded)"
+    definition: "D_candidate = Extract(Q, Structural, Semantic, Domain), where Structural is C-type parser output and Semantic is Sanskrit-type parser output"
+refines:
+  - concept: "0455's seven-source Dimension Discovery taxonomy and DimensionDiscovery(Q,K,C)->D_candidate capability"
+    refinement: "Subsumes Dimension Discovery under the broader Semantic Reconstruction capability, and grounds the question-derived/pattern-derived sources in two concrete, non-authoritative parsing lenses (C-type, Sanskrit-grammar-type)"
+  - concept: "0452's Progressive Investigation Principle"
+    refinement: "Operationalized specifically at the language-analysis layer: each new question triggers a fresh pass of Semantic Reconstruction, making dimension discovery structurally recursive"
+contradicts: []
+repeats:
+  - "Internal duplication anomaly: the entire 'Semantic Reconstruction: A Formal Analysis' section (test sentence, C-parser parse tree, Sanskrit kāraka table, synthesis, Arjuna application, implementation considerations, summary, next steps) appears twice, verbatim, within this single file (lines ~567-874 and ~876-1183) -- a within-file duplication, not a separate sequence-level duplicate."
+bridge_candidates:
+  - concept: "Sanskrit kāraka case-role grammar (Kartṛ/Karma/Kriyā/Sambandha/Kartavya/Karaṇa/Apādāna/Adhikaraṇa) vs. Western semantic-role/case-grammar frameworks (e.g. Fillmore's case grammar) -- unresolved_equivalence, no cross-reference made in this pass"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Semantic Reconstruction as a new parent capability over Dimension Discovery, with C-type and Sanskrit-grammar-type parser lenses as complementary, non-authoritative analytical lenses."
+  - "dimension-registry.md: record the Parsing!=Observation!=Knowledge invariant and DimensionDiscovery's recursive re-execution on each new question."
+  - "dimension-registry.md: flag that this file proceeds to propose Question 3 without addressing 0455's Question 2B (DimensionAssessment), and flag the internal duplication anomaly."
+anchor_test:
+  anchor: "0455's Dimension Discovery capability and seven-source taxonomy; 0452's Progressive Investigation Principle; 0454's Dimension/Statement/Relationship definitions"
+  supports_dimension: "Extends 0455 by grounding Dimension Discovery in a concrete, disciplined two-lens (C-type/Sanskrit) parsing architecture under a new parent capability (Semantic Reconstruction), reasserting the Parsing!=Observation!=Knowledge invariant and making dimension discovery explicitly recursive; introduces genuine Sanskrit kāraka grammatical vocabulary as a non-authoritative analytical lens"
+  refines_or_contradicts: "refines 0455's Dimension Discovery capability and taxonomy; no direct contradiction, but silently bypasses 0455's Question 2B (DimensionAssessment) rather than resolving or explicitly deferring it"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Uses the same Arjuna/Bhishma battlefield test sentence ('Show me those with whom I have to fight') established across 0451-0455; introduces genuine Sanskrit kāraka case-role grammar as a new technical vocabulary layer"
+undefined_concepts: []
+open_questions:
+  - "Whether Question 2B (DimensionAssessment, launched at 0455's close) is ever explicitly addressed, or is silently superseded by this file's pivot to Semantic Reconstruction and Question 3"
+  - "Whether the Sanskrit kāraka framework is later reconciled or contrasted with Western case-grammar/semantic-role frameworks"
+  - "Why the 'Semantic Reconstruction: A Formal Analysis' section appears twice verbatim within a single file -- whether this reflects an authoring/pasting artifact in the corpus itself, to be watched for at future sequences"
+tier2_triggered: true
+tier2_reason: "Names a new parent capability (Semantic Reconstruction) subsuming Dimension Discovery, grounds it in two disciplined, non-authoritative parsing lenses (C-type structural, Sanskrit-grammar semantic/kāraka-based), reasserts and sharpens the Parsing!=Observation!=Knowledge invariant, and makes dimension discovery explicitly recursive -- while silently bypassing the immediately-prior Question 2B (DimensionAssessment) and containing a notable internal duplication of its own analysis section."

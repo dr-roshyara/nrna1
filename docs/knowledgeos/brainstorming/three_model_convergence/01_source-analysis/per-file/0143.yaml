@@ -1,0 +1,84 @@
+sequence: "0143"
+path: docs/knowledgeos/brainstorming/20260823-103255-candidate-set-architecture-ah6-interpretation-execution-separation.md
+title: "AH-6 architectural hypothesis (Interpretation/Execution Separation); confirms 'SNF research track closed'; expanding references to HPA/OQ/Port-Contract governance apparatus"
+date: "2026-08-23"
+bytes: 6800
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0142"
+importance: high
+confidence: high
+about: >
+  Proposes a candidate architectural hypothesis "AH-6 -- Interpretation/Execution Separation": expression
+  recognition and candidate generation must be separated from contextual governance interpretation and
+  from authoritative workflow execution, with ambiguity remaining explicit across the boundary. Explicitly
+  NOT adopted -- "AH-6 should remain a hypothesis until the existing architecture is checked against it."
+  Confirms the SNF research track referenced at 0141/0142 is now formally "closed," governed by a "HPA
+  standing rule" (development informs HPA when research is needed, never initiates research
+  autonomously), and references numbered open questions (OQ-4, OQ-5) and the "Port Contract" again --
+  none of these governance artifacts (HPA rule, OQ numbering scheme, Port Contract) has been directly
+  encountered as an executed document in the corpus read so far.
+
+introduces:
+  - "AH-6 architectural hypothesis (named, numbered): Interpretation/Execution Separation -- expression
+    recognition/candidate generation must stay separate from governance interpretation and from
+    execution; ambiguity must remain explicit, never implicitly resolved by the execution mechanism.
+    Explicitly held as hypothesis only, not adopted"
+  - "Correction to a stronger claim: NOT 'the Governance Interpreter determines the correct meaning' but
+    'the Governance Interpreter evaluates candidate interpretations... and determines admissibility for
+    the requested act' -- preserves the interpreter-is-not-semantic-identity-authority boundary"
+  - "Confirms the SNF research track is formally CLOSED (governed by an 'HPA standing rule': research is
+    surfaced as a bounded requirement to the HPA, never initiated autonomously by development)"
+
+defines: []
+
+refines:
+  - "Separates three previously-conflated contributions of the Sanskrit/compiler thread: (1) Pāṇinian
+    grammar as a source of design patterns only, (2) compiler theory as the stronger engineering
+    analogy, (3) KnowledgeOS as consumer of structured candidates, never itself a Sanskrit/NLP engine"
+
+contradicts: []
+
+repeats:
+  - {concept: "candidate interpretation vs. governance validation boundary, ambiguity as explicit state", canonical_source: "0139", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+registry_updates:
+  - "None -- AH-6 recorded as an unadopted architectural hypothesis, not a dimension or mechanism"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; a new unadopted architectural-hypothesis proposal."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "DISCREPANCY NOTE (continuation, not escalated): expanding governance-apparatus references -- 'HPA
+    standing rule,' numbered open questions (OQ-4, OQ-5), and a fifth 'Port Contract' mention -- none of
+    which has been directly encountered as an executed artifact in the corpus read so far. Consistent
+    with, and now stronger evidence for, the hypothesis (raised at 0142) that these live in unread
+    kernel/ subdirectory files or an external governance thread; not escalated to a consolidation check."
+
+undefined_concepts:
+  - "HPA (acronym not expanded in this file -- likely 'Human/Higher Process Authority' or similar
+    governance role, unconfirmed)"
+open_questions:
+  - "What HPA stands for and what OQ-4/OQ-5 actually specify -- watch for a defining file"
+
+tier2_triggered: true
+tier2_reason: >
+  New named architectural hypothesis (AH-6), confirmation that the SNF track is formally closed under a
+  referenced but unencountered governance process, and continued expansion of the unencountered-artifact
+  reference pattern.

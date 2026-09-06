@@ -1,0 +1,162 @@
+sequence: 769
+path: docs/knowledgeos/brainstorming/phase_measure_theory/how_to_combine/20260828-230119_step_combine_remaining-todos.md
+title: "Step Combine -- Remaining TODOs (EXCEPTIONAL META-LEVEL FINDING, continuing 0755-0764): Reveals Book Architecture (Edition 2) Is Already Well Underway -- a Four-Part, Twenty-Five-Chapter Book With Part III (Architecture) at 7/10 -- Delivers the Explicit DeepSeek Research-Intake Protocol ('Zero Is a Boundary Operator' Must NOT Quietly Become KnowledgeOS Architecture Merely Because DeepSeek Proposed It) Extending 0762's Caution Into a Concrete Seven-Step Governance Gate -- Delivers the I.3 Evidence-Gating Rule ('We Must Not Reconstruct Missing History From Inference'; a Separate 38-Document Kernel Full-Read Commission Required), Strikingly Resonant With This Reconstruction's Own Methodology -- Delivers Eight Named Production Findings (PF-1 Through PF-8, Minus PF-4) That 'Must Remain Findings, Not Accidental Architecture Changes'"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "pure production/governance-planning content for the book-authoring workstream; no direct Gita textual analysis, though it references the running election-certification example and the I.3 historical-discovery chapter that will eventually draw on Gita-adjacent material"
+source_role: PRIMARY_RESEARCH
+canonical_source: 769
+importance: critical
+confidence: high
+about: >
+  Directly continues the how_to_combine/ meta-level chain, revealing substantial off-record progress since
+  0761/0764: **Book Architecture (Edition 2) is already well underway**, not merely authorized in
+  principle. Opens: "there are three kinds of remaining work: finish Edition 2 production, review/
+  quality-gate it, and then handle the research material such as DeepSeek."
+
+  **Delivers the current state of a four-part, twenty-five-chapter book structure**:
+
+  **Part III — Architecture** (current: **7/10**), the file's stated "immediate priority": III.8 "The
+  Policy That Governs Itself" (in progress), III.9 "Kernel Architecture," III.10 "Invariants," then Part
+  III producer review, independent review, corrections, and an acceptance gate.
+
+  **Part II — Reconstruction** (queued next): II.1 reconstruction foundations, II.2 falsification/
+  reconstruction method, II.3 authority/falsification, II.4 transition toward the ratified architecture --
+  explicitly described as explaining "how the architecture was discovered and reconstructed, rather than
+  just presenting the finished model."
+
+  **Part IV — Governance/operational meaning**: IV.1 through IV.5, with **IV.4 explicitly devoted to "the
+  12 unresolved OQs"** -- directly matching the twelve open questions retained by 0764's GN-31 ratification
+  -- and IV.5 "conclusion/limits/status."
+
+  **Part I — Discovery/history**, described as "more complicated": chapters I.1, I.2, I.4, I.5, I.6 are
+  "ready now" ("light treatment" for I.1), but **I.3 is explicitly "evidence-gated,"** requiring "the
+  separate 38-document kernel research/full-read commission," with the explicit governing principle: **"we
+  must not reconstruct missing history from inference. So Part I cannot simply be written from memory or
+  from the existing condensed book."**
+
+  Delivers a substantial book-apparatus checklist beyond Edition 1's scope (reading paths, notation table,
+  corpus/source-code legend, assumption register, glossary, reader-facing bibliography, indexes,
+  mathematical appendix, architectural mapping appendix, and a **"how to verify a claim" guide**) and a
+  candidate figure list, explicitly disciplined: "no arbitrary diagram quota. Each figure needs purpose,
+  abstraction level, source, and fact/visualization classification."
+
+  **Delivers "the running example"**: the book's "election-certification example," already begun in Part
+  III, to be developed into "a coherent complete thread" spanning the entire operating pipeline
+  (`Goal→IdealState→EC→K_t→Zero→Evidence→Admission→Decision→Authorization→Action→Outcome→K_{t+1}→
+  potentially Policy change/governance`) -- explicitly framed as "one of the things that can turn the book
+  from an architecture catalogue into something people can actually learn from." Notable, coincidental
+  domain resonance (not asserted as intentional or significant beyond observation): an "election-
+  certification" worked example in a KnowledgeOS architecture book, while this repository's own actual
+  product domain is an election/voting platform (per this repository's project CLAUDE.md) -- flagged as an
+  interesting surface-level parallel, not evidence of any deeper connection.
+
+  **Delivers the explicit DeepSeek research-intake protocol**, "deliberately not part of the current
+  production stream yet": (1) recover/save the DeepSeek outputs; (2) preserve them as external research
+  evidence; (3) classify each proposed connection; (4) separate into five explicit categories --
+  `already established by KnowledgeOS evidence`, `compatible external interpretation`, `potentially useful
+  hypothesis`, `unsupported speculation`, `contradiction`; (5) independently verify anything to be
+  incorporated; (6) create a dedicated intake/research gate; (7) only then decide whether any DeepSeek-
+  derived material belongs in Edition 2. **Delivers the file's sharpest concrete instance of this
+  discipline**: "the idea 'Zero is a boundary operator' must NOT quietly become KnowledgeOS architecture
+  merely because DeepSeek proposed it. It can become a research hypothesis if it survives the required
+  process." -- a precise, directly applicable extension of 0762's "do not take blindly" caution into a
+  concrete, procedural governance gate, and directly relevant to this reconstruction's own handling of the
+  external_research/ subdirectory (0762-0768).
+
+  **Delivers the I.3 kernel-research workstream specification**, explicitly named "a separate workstream"
+  requiring "the 38-document kernel full-read": the required sequence is `discover→read complete sources→
+  establish chronology→establish evidence→reconstruct I.3→independently review`, explicitly contrasted
+  against the forbidden shortcut `infer historical story→write chapter` -- flagged as "one of the most
+  important evidence-discipline points in the whole project." **This principle is strikingly, directly
+  resonant with this reconstruction's own governing methodology**: a full, complete, source-ordered read of
+  primary documents before any historical reconstruction, explicitly rejecting inference-from-memory or
+  reliance on prior condensed summaries -- the parallel synthesis effort here independently arrives at
+  essentially the same evidentiary discipline this reconstruction task has been executing throughout.
+
+  **Delivers eight named "production findings," PF-1 through PF-8 (PF-4 notably absent from the list,
+  unexplained)**: PF-1 "Zero source has nine statuses vs. ratified four-arm compression"; PF-2 "eight-
+  primitives reduction is partially reconstructable"; PF-3 "epistemic equivalence remains open"; PF-5
+  "EC_G and operational/epistemic Zero compression"; PF-6 "source admission system is richer/branched";
+  PF-7 "DC six-tuple vs. seven-tuple refinement"; PF-8 "two selector roles vs. ratified compression" --
+  explicitly instructed: "these must remain findings, not accidental architecture changes," with five
+  possible future governance dispositions (no action / annotation / future FA amendment / research /
+  explicit rejection) left undecided.
+
+  Delivers a comprehensive final-book-review checklist (architectural conformance, evidence/provenance,
+  historical discipline, research-status fidelity, terminology, cross-chapter consistency, OQ preservation,
+  running-example consistency, diagram correctness, bibliography/provenance, "no accidental architectural
+  expansion," "no L2→L3/L4 category errors") plus the capstone self-check question: "is this actually a
+  full-depth technical book? -- not merely a 90k-word version of the old condensed essays." Delivers a
+  "final Edition-2 acceptance ruling" as the terminal gate.
+
+  Delivers the complete practical roadmap diagram (NOW→III.8→III.9→III.10→PART III REVIEW→PART II→PART
+  IV→PART I [I.3 gated on kernel research]→BOOK APPARATUS→FINAL BOOK REVIEW→EDITION 2 ACCEPTANCE), run in
+  parallel with, but explicitly outside, the separate DeepSeek pipeline (save/archive→research
+  classification→independent verification→research intake decision→possible future incorporation).
+
+  **Closes with a deliberately minimal immediate scope**: "the immediate TODO is actually very small.
+  Right now: don't do anything else. Let Claude finish III.8→III.9→III.10. Then we stop and review Part
+  III. That review is our first major quality gate for the new book." No actual code execution, repository
+  inspection, or independently-verified filesystem claim is made anywhere in this file regarding the
+  book's actual chapter content -- only its stated production status and plan are reported.
+introduces:
+  - concept: "The four-part, twenty-five-chapter Edition-2 book structure (Part I Discovery/history, Part II Reconstruction, Part III Architecture, Part IV Governance/operational meaning), with Part III at 7/10"
+  - concept: "I.3's evidence-gating rule: 'we must not reconstruct missing history from inference,' requiring the separate 38-document kernel full-read commission"
+  - concept: "The explicit seven-step DeepSeek research-intake protocol, with the concrete example 'Zero is a boundary operator must NOT quietly become KnowledgeOS architecture'"
+  - concept: "The running election-certification example thread spanning Goal→IdealState→EC→K_t→Zero→Evidence→Admission→Decision→Authorization→Action→Outcome→K_{t+1}→Policy change"
+  - concept: "The eight named production findings PF-1 through PF-8 (PF-4 absent), explicitly required to 'remain findings, not accidental architecture changes'"
+  - concept: "The comprehensive final-book-review checklist and its capstone self-check ('is this actually a full-depth technical book?')"
+  - concept: "The 'no arbitrary diagram quota' figure-discipline principle"
+defines:
+  - concept: "The evidence-gating discipline for historical reconstruction (I.3's rule)"
+    definition: "A chapter or section reconstructing historical/discovery narrative must not be written from memory, inference, or an existing condensed summary alone -- it requires its own dedicated full-read commission over the complete relevant source documents, establishing chronology and evidence before reconstruction is attempted, with independent review afterward; skipping this and inferring the historical story directly from prior familiarity is explicitly forbidden"
+  - concept: "The DeepSeek research-intake protocol"
+    definition: "External-AI-sourced research material must pass through a dedicated seven-step gate before any of its content can be incorporated into authoritative project output: recovery/preservation as evidence, per-connection classification, five-way categorization (established/compatible-interpretation/hypothesis/speculation/contradiction), independent verification, a formal intake decision gate, and only then a decision on incorporation -- a proposed idea from such material may become a tracked research hypothesis, but must never silently become accepted architecture merely by having been proposed"
+  - concept: "'Findings, not accidental architecture changes' (production findings discipline)"
+    definition: "A discrepancy or discovery surfaced during production work (e.g. the source material showing nine statuses where the ratified architecture compresses to four) must be explicitly recorded as a named finding with its own governance disposition options, never silently folded into or treated as an implicit revision of the ratified architecture without an explicit governance act"
+refines:
+  - concept: "0761's revealed macro-sequence (...→v0.2 AUTHORIZED→3C→Brainstorming Archaeology→Final Architecture→Book Architecture→BOOK) and 0764's GN-31 closing statement ('the next gate is Book Architecture — a separate, future authorization')"
+    refinement: "Substantially advanced: Book Architecture (Edition 2) has evidently been authorized and is now in active production, with Part III already at 7/10 -- a significant off-record advance this reconstruction had not previously observed"
+  - concept: "0762's DeepSeek provenance caution ('we should not take them as it is blindly')"
+    refinement: "Operationalized into a concrete, seven-step formal governance protocol, with the explicit worked example ('Zero is a boundary operator') showing exactly what kind of premature architectural absorption the protocol exists to prevent"
+  - concept: "0761's revealed 'Brainstorming Archaeology' phase (the 696-file docs/knowledgeos/brainstorming/ corpus reserved for a later phase)"
+    refinement: "Given a concrete evidentiary-discipline specification via the I.3 kernel-research workstream: a dedicated 38-document full-read commission with an explicit discover→read→chronology→evidence→reconstruct→review sequence, directly paralleling this reconstruction's own methodology of sequential, complete, source-ordered reading before any historical synthesis is attempted"
+  - concept: "0764's GN-31 ratification's twelve retained open questions (OQ-1 through OQ-12)"
+    refinement: "Confirmed as carried forward directly into the book's own structure: Part IV's chapter IV.4 is explicitly devoted to presenting 'the 12 unresolved OQs' to the reader, rather than silently resolving or omitting them"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read the remaining how_to_combine/ files (combine-prompt-6, halfway-point-progress-review, the qualification file) and the numerous confirmed later external_research/ hpa-* review files with high attention: check whether III.8-III.10 were completed, whether the Part III review gate was passed, and whether the DeepSeek research-intake protocol was ever actually executed against the material this reconstruction read at 0763-0768."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the confirmed active Edition-2 book production (four parts, twenty-five chapters, Part III at 7/10) as a substantial off-record advance beyond what 0761/0764 had revealed -- a major reference point for this reconstruction's own eventual canonical synthesis."
+  - "dimension-registry.md: record the explicit DeepSeek research-intake protocol and its concrete worked example ('Zero is a boundary operator must NOT quietly become KnowledgeOS architecture') as a directly applicable extension of 0762's caution, relevant to how this reconstruction itself should continue treating the external_research/ material it is reading (0763-0768)."
+  - "dimension-registry.md: record the I.3 evidence-gating rule ('we must not reconstruct missing history from inference,' the 38-document kernel full-read commission) as strikingly resonant with this reconstruction's own governing methodology -- flag as a notable cross-effort methodological convergence."
+  - "dimension-registry.md: record the eight named production findings (PF-1..PF-8, PF-4 absent) as open governance items -- watch for their eventual disposition in subsequent files."
+anchor_test:
+  anchor: "0761's revealed macro-sequence and 0764's GN-31 ratification (twelve retained OQs, 'the next gate is Book Architecture'); 0762's DeepSeek provenance caution; this reconstruction's own governing sequential-full-read methodology"
+  supports_dimension: "Reveals substantial off-record progress: Book Architecture (Edition 2) is already in active production (four parts, twenty-five chapters, Part III at 7/10), well beyond the 'separate, future authorization' status 0764 had left it at. Delivers a concrete, seven-step DeepSeek research-intake protocol directly extending 0762's caution, with a precise worked example of exactly the kind of premature architectural absorption it prevents. Delivers the I.3 evidence-gating rule, strikingly resonant with this reconstruction's own governing methodology of complete sequential source reading before historical reconstruction -- a notable independent cross-effort methodological convergence. Delivers eight named production findings requiring explicit future governance disposition, and confirms the twelve OQs retained at GN-31 are carried forward directly into the book's own Part IV structure"
+  refines_or_contradicts: "substantially advances (without contradicting) 0761's macro-sequence and 0764's book-architecture status; operationalizes 0762's caution into a concrete protocol; independently converges with (does not contradict) this reconstruction's own methodology"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit statement 'the idea Zero is a boundary operator must NOT quietly become KnowledgeOS architecture merely because DeepSeek proposed it. It can become a research hypothesis if it survives the required process' is directly quotable evidence of a concrete, worked instance of the DeepSeek research-intake discipline."
+  - "The explicit statement 'we must not reconstruct missing history from inference. So Part I cannot simply be written from memory or from the existing condensed book' is directly quotable evidence of the I.3 evidence-gating rule, strikingly resonant with this reconstruction's own methodology."
+  - "The stated 'Part III — Architecture: current 7/10' with named remaining chapters (III.8/III.9/III.10) is directly checkable evidence of substantial off-record Edition-2 book production progress not previously visible to this reconstruction."
+undefined_concepts: []
+open_questions:
+  - "Whether III.8-III.10 were completed and the Part III review gate passed, and what the eight production findings (PF-1..PF-8) were eventually disposed as, per subsequent files."
+  - "Whether the DeepSeek research-intake protocol was ever actually executed against the specific material this reconstruction read at 0763-0768 (the C4 diagrams, distribution-theory proposal, methodological-discipline reflection, three-pathways analysis, and practical-assessment mapping), and what classification each received."
+  - "What became of PF-4, notably absent from the named production-findings list without explanation."
+tier2_triggered: true
+tier2_reason: "EXCEPTIONAL META-LEVEL FINDING (continuing 0755-0764): reveals Book Architecture (Edition 2) is already in active production -- a four-part, twenty-five-chapter book with Part III at 7/10 -- substantially beyond the 'separate, future authorization' status 0764 had left it at. Delivers a concrete, seven-step DeepSeek research-intake protocol directly extending 0762's provenance caution, with a precise worked example. Delivers the I.3 evidence-gating rule, strikingly resonant with this reconstruction's own governing methodology of complete sequential source reading before historical reconstruction. Delivers eight named production findings requiring explicit future governance disposition."

@@ -1,0 +1,71 @@
+sequence: 289
+path: docs/knowledgeos/brainstorming/kernel/20260825-140251-per-agent-projection-divergence-without-divergent-reality.md
+title: "Per-Agent Projection Divergence Without Divergent Reality"
+date: "2026-08-25"
+bytes: 14500
+model:
+  primary: c1
+  secondary: g1
+source_role: PRIMARY_RESEARCH
+canonical_source: 289
+importance: critical
+confidence: high
+about: >
+  Direct continuation and deepening of 0288's per-agent-projection model. Central move: S_t^A != S_t^B does
+  NOT imply Reality_A != Reality_B -- distinct agents' projections of one underlying Knowledge Space may
+  legitimately diverge without being contradictory. Introduces 'epistemic orientation' O(S_t)=(scope,
+  purpose, LoA, regime, time) as a new required field, a named 'Projection Compatibility Principle'
+  (projections need not agree syntactically, must remain semantically reconcilable), a four-way separation
+  of what 'truth' can mean across local consistency / cross-projection compatibility / truth orientation /
+  reality adequacy, and reframes knowledge evolution as coarse->refined->expanded->qualified->corrected->
+  recontextualized rather than false->true. Formalizes 'progress' as a six-dimension vector rather than a
+  scalar comparison, and closes with two boxed provisional principles self-described as among the strongest
+  reached so far, plus an open question about whether Orientation needs to be an explicit Kernel primitive.
+introduces:
+  - concept: "Central distinction: S_t^A != S_t^B != S_t^G (different agents' knowledge states differ) does NOT imply Reality_A != Reality_B != Reality_G -- multiple projections of one underlying Knowledge Space, differing by observations/capacities/boundaries/purposes/abstractions/evidence/reasoning-regimes, are perfectly compatible with a single underlying space"
+  - concept: "Explicit refinement rejecting an over-strong non-contradiction requirement: 'different projections must never contain contradictory propositions' is too strong; legitimate disagreement sources include newer information, different observed aspect, different Level of Abstraction, different context, incomplete information -- worked 'service healthy (A, 12:00, application layer, local instance) vs unhealthy (B, 12:15, infrastructure layer, global service)' example resolved via time/layer/scope differences rather than genuine contradiction; refined principle: 'different knowledge projections must not be required to agree syntactically; they must remain semantically reconcilable within the larger Knowledge Space when their contexts, times, boundaries and epistemic regimes are taken into account'"
+  - concept: "'Serve the nature of the infinite space' elevated to a candidate foundational principle: 'every local knowledge projection should be oriented toward the structure it is attempting to represent, rather than becoming a self-contained absolute reality'"
+  - concept: "NEW concept: epistemic orientation O(S_t) = (scope, purpose, LoA, regime, time) -- 'what part of the Knowledge Space is this state trying to describe, from which perspective, for what purpose, and under which constraints?'; two knowledge states should be compared by first comparing their orientations O(S_t^A) vs O(S_t^B), not by comparing their sentences directly"
+  - concept: "Refined four-level projection hierarchy with explicit per-participant indexing: Infinite Knowledge Space Omega (unbounded space of possible objects/states/relations/facts/ideas/explanations); Knowledge Projection P_i(Omega) (a bounded view produced by a specific person/agent/system/organization/inquiry i); Knowledge State S_t^i (the state of projection i at time t); Knowledge History H_<=t^i (how that state evolved) -- formalized S_t^i = P_i(Omega, H_<=t^i)"
+  - concept: "Kernel responsibility refined to per-projection orientation preservation: 'the KnowledgeOS Kernel preserves orientation, identity, context, provenance, temporal position, semantic relationships, epistemic commitments, and transformation history of knowledge projections' -- enabling nine standard reconstructive questions (what are you talking about / where did it come from / at what level / at what time / for what purpose / what evidence / what changed / what remains unknown / what other projections relate to it)"
+  - concept: "Named 'Projection Compatibility Principle': 'knowledge projections need not be identical, but their differences must be interpretable through their declared context, boundary, time, purpose, abstraction level, evidence, and epistemic regime' -- worked 'Alice says P, AI says not-P' example: NOT immediately a contradiction; the Kernel checks same-referent/same-time/same-scope/same-LoA/same-proposition/same-regime before classifying the divergence as true contradiction, complementary perspectives, temporal change, scope difference, abstraction difference, or epistemic incompleteness"
+  - concept: "Four-way separation of what 'truth' can mean across a multi-projection system: Local epistemic consistency (does this projection internally hang together?) vs. Cross-projection compatibility (can different projections coexist?) vs. Truth orientation (are the projections making claims intended to correspond to the underlying domain?) vs. Reality adequacy (how well does the projection survive independent observation/verification?) -- a projection can be internally-consistent-but-incomplete while another is more-complete-but-weaker-evidence, and a later projection can improve on both simultaneously"
+  - concept: "Knowledge evolution reframed away from a false->true trajectory toward coarse -> refined -> expanded -> qualified -> corrected -> recontextualized; worked five-stage service-latency example (S1 'system is slow' -> S2 'API is slow' -> S3 'API latency high only under load' -> S4 'caused by database contention' -> S5 'triggered by query pattern X') -- 'the later states do not merely replace the earlier one, they orient more deeply into the Knowledge Space'"
+  - concept: "'Progress' formalized as a six-dimension vector rather than a scalar comparison: Progress = (delta-C, delta-U, delta-E, delta-X, delta-D, delta-Q) [coverage, uncertainty, evidence quality, contradiction reduction, explanatory depth, question resolution] -- explicitly 'far more meaningful than Knowledge_new > Knowledge_old as one number'"
+  - concept: "Orientation added as an explicit KnowledgeState field alongside participant/time/boundary/LoA/purpose/epistemicRegime/observations/assertions/evidence/questions/conflicts/uncertainty/provenance -- explicitly NOT another score, but 'the relationship between the projection and the space it attempts to represent'"
+  - concept: "Two boxed provisional principles, self-described as among the strongest formulations reached so far: (1) 'knowledge exists as local, time-dependent projections of an unbounded Knowledge Space. Different persons, agents, systems, and institutions may hold different projections because their observations, capacities, boundaries, purposes, and epistemic regimes differ. These projections need not be identical, but they should remain semantically reconcilable and oriented toward the same underlying Knowledge Space rather than treating their local projection as the whole of reality.'; (2) 'KnowledgeOS does not own the Knowledge Space. It preserves and relates the projections, transitions, evidence, boundaries, and orientations through which participants engage with it.'"
+  - concept: "Open next research question explicitly flagged: does the Kernel need an explicit Orientation/Perspective PRIMITIVE, or is orientation fully DERIVABLE from participant+purpose+boundary+LevelOfAbstraction+epistemicRegime -- 'exactly the kind of question the Zero Lens should test next'"
+defines: []
+refines:
+  - concept: "0288's per-agent projection diagram (S_t(A), S_t(B), S_t(G) derived from the same substrate)"
+    refinement: "Adds the explicit non-contradiction refinement (syntactic disagreement permitted, semantic reconcilability required), the epistemic-orientation field, and the Projection Compatibility Principle -- directly operationalizing how divergent per-agent projections should be reconciled rather than merely acknowledging that they can differ"
+  - concept: "The corpus's recurring truth-related non-collapsing discipline (Merricks' truthmaker rejection at 0272, McGinn's truth-as-primitive at 0273/0276/0278, Fagin's ascribed-vs-computable distinction at 0286)"
+    refinement: "Adds a fourth axis (local-consistency vs cross-projection-compatibility vs truth-orientation vs reality-adequacy), specifically addressing multi-agent/multi-projection truth semantics rather than single-claim semantics"
+  - concept: "The corpus's founding open-ended-knowledge intuition and 0288's projection formalization"
+    refinement: "Reframes 'knowledge going deeper' as orientation toward the underlying space rather than replacement of earlier claims, giving the worked five-stage service-latency example as a concrete illustration of non-replacing epistemic refinement"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: deepen the ninth candidate (Preservation Substrate) with this file's per-participant projection indexing (S_t^i = P_i(Omega, H_<=t^i)), the epistemic-orientation field, and the Projection Compatibility Principle -- directly extends 0288's formal projection equation to explicitly handle multiple simultaneous per-agent projections."
+anchor_test:
+  anchor: "0288's per-agent projection formalization and formal projection equation; the corpus's truth-related non-collapsing discipline"
+  supports_dimension: "Mathematical/formal model directly extending the Engineering KnowledgeOS model's Preservation Substrate candidate to explicitly handle multiple simultaneous, legitimately-divergent per-agent projections of one underlying Knowledge Space, via a new orientation field and compatibility principle"
+  refines_or_contradicts: "refines/extends 0288's projection formalization and the corpus's truth-related discipline; no contradiction"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "No formal criteria given for how the Kernel would actually automate the same-referent/same-time/same-scope/same-LoA/same-proposition/same-regime checks the Projection Compatibility Principle requires before classifying a divergence"
+open_questions:
+  - "Whether Orientation becomes an explicit Kernel primitive or is treated as fully derivable from participant+purpose+boundary+LoA+regime, as explicitly posed at the file's close"
+  - "Whether the six-dimension Progress vector is ever combined with the five state dimensions from 0288 and epistemic entrenchment from 0287 into one unified quantitative model"
+tier2_triggered: true
+tier2_reason: "Direct deepening of 0288's per-agent projection model: refines the non-contradiction requirement into a semantic-reconcilability requirement, introduces epistemic orientation as a new formal field, names the Projection Compatibility Principle, separates four distinct senses of truth for multi-projection systems, reframes knowledge evolution as non-replacing refinement rather than false-to-true correction, and formalizes 'progress' as a six-dimension vector -- closing with two boxed principles self-described as among the strongest reached so far and an open question about whether Orientation must be an explicit Kernel primitive."

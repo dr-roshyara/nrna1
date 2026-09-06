@@ -1,0 +1,79 @@
+sequence: 1069
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-290/05-congruence-audit.md
+title: "05 -- Congruence Audit (Step 290 mandate SS6): Confirms Congruence Has an Independent Corpus Basis (258.9, No approx Involvement); Self-Diagnoses That the Already-Tracked Z-1 Cycle in Step 289's Dependency Graph Was Mis-Modelled From the equiv_K Candidate Proposal Rather Than a True Definitional Dependency -- Narrowing to 3 Necessary Cycles but Confirming the {equiv} Minimal Cut Still Holds, Now Better-Evidenced"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the fifth numbered Step-290 artifact, delivering a self-diagnosed retroactive correction to the Step-289 dependency-graph cycle analysis"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1069
+importance: major
+confidence: high
+about: >
+  "05 — Congruence Audit (mandate §6)." Asks whether there is an INDEPENDENT corpus basis for requiring
+  congruence of transformations under `≡_K` equality.
+
+  **CONFIRMS YES, VIA `258.9`, INDEPENDENT OF `≈`**: quotes `258.9` in full: "For every valid transformation
+  `T∈𝒯` we require `K_1≡_K K_2⟹T(K_1,c)≡_K T(K_2,c)`... THIS IS THE CRITICAL MATHEMATICAL REQUIREMENT. If it
+  fails, then `≡_K` is too coarse." Cites `258.30` Proposition 258-A (`F∘T_H=T̄∘F`, every mandatory
+  transformation must factor through the abstraction) and its commuting diagram (`258.23`). "None of these
+  mentions `≈`." Delivers a clean four-way separation of previously-conflated notions: equality itself (no
+  independent definition, two unratified candidates, already tracked file 1067); congruence of operations
+  under equality (required by `258.9`, unproven globally since `𝒯` is not closed per `259`, and `=` is
+  "EXECUTED not a congruence" per `288/06 §G`, already tracked); observational equivalence `≈` (defined,
+  `261.5`, but `𝒪_K` open, already tracked); transformation semantics (`δ`/`𝒯`, commit case unspecifiable,
+  `𝒯` unratified, already tracked).
+
+  **SELF-DIAGNOSES A GENUINELY IMPORTANT RETROACTIVE CORRECTION TO THE ALREADY-TRACKED STEP-289 DEPENDENCY-
+  GRAPH CYCLE ANALYSIS (file 1052)**: explicitly runs the mandate's own warned-against trap check ("Do not
+  use the existence of a cycle as evidence that `≡` and `≈` are identical... a dependency edge is a claim
+  about DERIVATION ORDER. Identity is a claim about EXTENSION.") and discovers that "Z-1's edge `≈→≡` CAME
+  FROM `261.21`'S CANDIDATE -- i.e. the cycle existed in my graph BECAUSE OF THE CANDIDATE PROPOSAL, which I
+  had MIS-MODELLED AS A DEFINITIONAL DEPENDENCY." This directly connects the newly-resolved N-1
+  candidate-vs-assertion finding (files 1063-1067) back into a concrete correction of the earlier
+  dependency-graph artifact (file 1052).
+
+  **CONSEQUENCE FOR THE ALREADY-TRACKED MINIMAL-CUT RESULT**: cycles narrow from 4 to "3 necessary + 1
+  candidate-dependency"; Z-1's status weakens from NECESSARY to a mere proposal-derived artifact; but **the
+  minimal cut `{≡}` STILL HOLDS**, now carried entirely by Z-2 (congruence↔≡) and Z-4
+  (congruence→≡→δ→congruence), both independently classed NECESSARY and surviving all three deletion tests
+  (already-tracked methodology, file 1052). Delivers the precise, disciplined characterization of the
+  correction's direction: "the cut is BETTER evidenced after the withdrawal, because the cycle that depended
+  on a misreading is gone and the remaining ones do not."
+
+  Confirms the STATUS block: ESTABLISHED congruence has an independent basis, the four notions are distinct,
+  a dependency is not a semantic identity · REFINED Z-1 weakened, `{≡}` still the cut on 3 necessary cycles ·
+  TECHNICALLY OPEN global congruence · BLOCKED on `𝒯`, `δ`.
+introduces:
+  - concept: "The clean four-way separation of equality, congruence-of-operations, observational equivalence, and transformation semantics as four distinct notions with four distinct evidentiary statuses"
+  - concept: "The self-diagnosed correction that the Z-1 cycle in the Step-289 dependency graph was mis-modelled from the equiv_K candidate proposal rather than a genuine definitional dependency, narrowing the necessary-cycle count from 4 to 3 while the minimal cut {equiv} survives, now better-evidenced"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Step-289 minimal-cut result and its four-cycle robustness analysis (file 1052)"
+    refinement: "RETROACTIVELY CORRECTED: Z-1 (the equiv/approx cycle) is discovered to have been mis-modelled from the unratified 261.21 candidate proposal rather than a true definitional dependency; narrows to 3 necessary cycles (Z-2, Z-3, Z-4), but the minimal cut {equiv} still holds, now carried solely by Z-2 and Z-4 and better-evidenced than before"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the confirmed independent congruence requirement (258.9), the four-way separation of equality/congruence/observational-equivalence/transformation-semantics, and the self-diagnosed retroactive correction narrowing the Step-289 necessary-cycle count from 4 to 3 while confirming the {equiv} minimal cut survives, better-evidenced."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step-289 minimal-cut result and four-cycle robustness analysis (file 1052)"
+  supports_dimension: "Delivers a self-diagnosed retroactive correction narrowing the necessary-cycle count while confirming and strengthening the minimal-cut result"
+  refines_or_contradicts: "refines (strengthens via correction) the prior tracked finding"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The Z-1/Z-2/Z-3/Z-4 cycle labels and the {equiv} minimal cut are directly checkable against file 1052's already-read Step-289 dependency-graph analysis for exact consistency of the correction."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers a self-diagnosed, disciplined retroactive correction to the already-tracked Step-289 dependency-graph cycle analysis, discovering that one of four cycles was mis-modelled from an unratified candidate proposal, and confirms the minimal cut {equiv} survives this correction in strengthened form. Classified importance major and confidence high given the rigor and direct connection to prior tracked findings."

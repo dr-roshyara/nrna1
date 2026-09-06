@@ -1,0 +1,104 @@
+sequence: 999
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-191402_step_285_reviewer-a-d285-package-readiness-review-with-scope-tightenings.md
+title: "Reviewer A -- D285 Package Readiness Review With Scope Tightenings: The Master Whole-Package Review Delivering '~90% HPA-Ready,' Identifying the D285-6/D285-7 Tension and Its Resolving Four-Line Distinction, and Naming the Two Genuine Remaining Open Fronts for the Entire Programme"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "Reviewer A's full whole-package readiness review of D285-1 through D285-8, treated as a single research package"
+source_role: PRIMARY_RESEARCH
+canonical_source: 999
+importance: critical
+confidence: high
+about: >
+  A comprehensive readiness review of the entire D285 research package (D285-1 through D285-8), opening with
+  a clean architecture diagram (`Knower 𝒩 (external) → World W --Ω--> Observation → Qualify → ratified K_t
+  (8 primitives) → π_K → (𝒜,ℛ) epistemic projection [+H→replay, +D_t→missingness]`) and the central
+  conclusion: **"`(𝒜,ℛ)` is a lossy epistemic projection of the ratified `K_t`, not an alternative definition
+  of the complete KnowledgeOS state" -- the most important result across D285-1...7.**
+
+  **§1 (D285-1) tightens an already-tracked sentence**: rejects "the lanes do not disagree about
+  Action/Event/Policy — they agree, and place them differently" as "slightly too strong," replacing with the
+  more careful "the lanes agree OPERATIONALLY... this does not establish SEMANTIC EQUIVALENCE of their
+  treatment across the two models" -- explicitly preserving the equality discipline established elsewhere.
+
+  **§2 (D285-2) reinforces the already-tracked theological/computational boundary** (file 0988's H-K04b
+  correction), further tightening the wording: avoid "the mathematics proves the Gītā's universal knower
+  impossible"; use only "the universal-knower concept has no KnowledgeOS counterpart under the ratified
+  information-theoretic constraints."
+
+  **§4 (D285-5) elevates the equality-naming discipline beyond the single result**: "Every future proposition
+  involving state equality, operation equality, transition equality or projection equality must declare its
+  equality relation. Otherwise the research risks generating technically true but scientifically vacuous
+  propositions" -- a generalized, forward-binding methodological mandate.
+
+  **§5 (D285-6) reformulates the central architectural result** in its strongest available form: "The
+  verification state is a semantic, lossy projection of the ratified KnowledgeOS state. The projection is
+  conceptually definable but currently not computable because the Observation→Evidence qualification
+  function is undefined."
+
+  **DELIVERS "THE ONE MAJOR ISSUE," A GENUINELY NEW CROSS-ARTIFACT TENSION NOT PREVIOUSLY FLAGGED IN THIS
+  EXACT FORM**: a tension between D285-6's semantic-projection claim and D285-7's finding that `𝒪` has not
+  been enumerated against the ratified 8 primitives -- "compatible only if `π_K` is being defined at the
+  state/data level rather than claiming a fully operational equivalence." **Resolves it with an explicit
+  FOUR-LINE DISTINCTION that should be written into D285-6/D285-7 itself**: "semantic state projection =
+  established / operational equivalence = NOT established / observational equivalence = refuted / computable
+  projection = blocked."
+
+  **§7 (D285-8) delivers the definitive seven-row Gītā-contribution classification table** (kṣetra≠kṣetra-jña
+  genuine contribution already ratified; universal knower negative result/rejected; karma≠phala
+  corroboration; Sārathi vocabulary/boundary metaphor; failed-inquiry≠lost-inquiry design heuristic;
+  equanimity narrowed; five Θs rejected by typing), closing with the methodological rule to preserve almost
+  verbatim: "Let the Gītā ask the question; let mathematics answer what mathematics can answer."
+
+  **Delivers the per-artifact readiness verdict table (all seven D285-x artifacts green) and the overall
+  numerical verdict: "~90% HPA-ready."**
+
+  **DELIVERS THE TWO GENUINE REMAINING OPEN FRONTS FOR THE ENTIRE PROGRAMME, EXPLICITLY REPLACING ANY FURTHER
+  SEARCH FOR A NEW K DEFINITION**: (1) "Enumerate the operation space `𝒪` against the ratified 8-primitive
+  `K_t`, then type-check the resulting `δ` and determine whether a minimal `𝒪_core` exists"; (2) "Specify/
+  implement `Qualify: Observation×Policy→Evidence`" -- closing: "Everything else should resist reopening
+  unless new primary evidence contradicts the current corpus."
+introduces:
+  - concept: "The explicit, previously-unflagged tension between D285-6's semantic-projection claim and D285-7's operation-space-not-enumerated finding, resolved by a four-line distinction (semantic state projection established / operational equivalence NOT established / observational equivalence refuted / computable projection blocked)"
+  - concept: "The generalized, forward-binding equality-naming mandate: every future proposition involving any of state/operation/transition/projection equality must declare its equality relation"
+  - concept: "The definitive seven-row D285-8 Gita-contribution classification table"
+  - concept: "The two named genuine remaining open fronts for the entire D285/Step-25X programme: operation-space enumeration with minimality determination, and Qualify's specification/implementation"
+  - concept: "The overall numerical readiness verdict for the entire D285 package: approximately 90% HPA-ready"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked D285-1 lane-comparison sentence"
+    refinement: "TIGHTENED: replaced with a more careful formulation distinguishing operational agreement from semantic equivalence, explicitly preserving the equality discipline"
+  - concept: "This reconstruction's already-tracked H-K04b theological/computational boundary (files 0986, 0988)"
+    refinement: "FURTHER TIGHTENED with a specific wording prohibition: never claim mathematics 'proves the Gita's universal knower impossible'"
+  - concept: "This reconstruction's already-tracked D285-5 equality-naming discipline and D285-6 projection-computability finding"
+    refinement: "GENERALIZED (equality-naming extended to all future propositions) and SHARPENED (the D285-6/D285-7 tension named and resolved with an explicit four-line distinction)"
+contradicts: []
+repeats:
+  - "Substantially reviews and restates content already documented across files 0973-0998; this review's distinctive contributions are the D285-6/D285-7 tension identification, the generalized equality mandate, and the concrete two-item forward research agenda."
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the D285-6/D285-7 tension and its resolving four-line distinction (semantic projection established / operational equivalence not established / observational equivalence refuted / computable projection blocked)."
+  - "dimension-registry.md: record the two named genuine remaining open fronts for the entire D285/Step-25X programme (operation-space enumeration + minimality; Qualify specification/implementation), and the overall '~90% HPA-ready' verdict."
+anchor_test:
+  anchor: "Files 0973-0998's already-documented D285-1 through D285-8 findings"
+  supports_dimension: "Reviews the whole package, identifies a genuine previously-unflagged tension between two artifacts, and delivers the concrete forward research agenda for the entire programme"
+  refines_or_contradicts: "refines (tightens) prior wording and identifies a genuine internal tension requiring explicit resolution"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The D285-6/D285-7 tension and its four-line resolution are directly checkable against files 0973-0998's own already-documented findings for both artifacts."
+undefined_concepts: []
+open_questions:
+  - "Whether the four-line distinction is subsequently written back into D285-6 or D285-7 as recommended."
+  - "Whether the two named open fronts (operation-space enumeration, Qualify implementation) are subsequently pursued."
+tier2_triggered: true
+tier2_reason: "The master whole-package readiness review for the entire D285 research programme, identifying a genuine previously-unflagged cross-artifact tension and its resolution, generalizing the equality-naming discipline, and delivering the concrete two-item forward research agenda plus the overall 90%-ready verdict. Classified importance critical and confidence high given its comprehensive, well-reasoned, and forward-actionable content."

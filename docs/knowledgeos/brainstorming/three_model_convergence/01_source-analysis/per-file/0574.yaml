@@ -1,0 +1,235 @@
+sequence: 574
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-181716_step-025a-3-knowledge-state-revision-conflict-temporal-validity-and-retraction.md
+title: "LANDMARK: Twelve Labeled Experiments (A-L) Formalizing KnowledgeState Revision, Conflict, Temporal Validity, and Retraction; 'RealityCanChangeWithoutKnowledgeChanging' as 'Perhaps the Most Important Epistemic Property'; History Is Monotonic While Knowledge Content Is Non-Monotonic; 'No Silent Revision' (RevisionCause Must Exist) and Replayability; a Ten-Row 'What Passed' Table (All Model-Level 'PASS Conceptually', Explicitly Not Yet Executable Results); Verdict '25A.3 — CONCEPTUALLY PASSED' With Three Named Mandatory Refinements; Opens Step 25A.4 (Executable Knowledge-State Model) — The Corpus's First Explicit Commitment to Move From Formal Thought Experiment to a Genuinely Executable Mathematical Experiment"
+date: "2026-08-27"
+bytes: 18233
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the third concrete sub-experiment in the experimental phase, directly executing '25A.3 -- KnowledgeState revision/conflict/temporal experiment' committed at 0572 and reaffirmed at 0573"
+source_role: PRIMARY_RESEARCH
+canonical_source: 574
+importance: critical
+confidence: high
+about: >
+  Opens "Step 25A.3 — Knowledge-State Revision, Conflict, Temporal Validity and Retraction," confirming
+  25A.2's established chain `Evidence→Assessment→Assertion→Commitment→KnowledgeState` "can be represented,"
+  and posing the governing question this experiment must answer: **"can KnowledgeOS revise its knowledge
+  without destroying history, hiding contradictions, or confusing changes in reality with changes in
+  knowledge?"**
+
+  **Delivers the file's central formal deliverable -- a first Revision operator**
+  `K_{t+1}=Revise(K_t,E_{t+1},C,t+1)`, explicitly named "one of the most important operators in the entire
+  KnowledgeOS theory," with the warning "if this cannot be made coherent, everything above it becomes
+  unstable." Delivers the file's foundational architectural principle: **`K_t is historically immutable`
+  while `K_current is revisable`** -- a clean, explicit separation between the historical truth of a past
+  knowledge state and current epistemic belief, worked through a concrete 10:00/12:00 discovery scenario.
+
+  **Delivers twelve labeled sub-experiments (A through L), each producing a specific, checkable formal
+  result**:
+
+  (A) simple knowledge growth (`K_0→[E_1]→K_1`, ordinary acquisition);
+  (B) **`WorldEvolution≠KnowledgeRevision`**: a real Nexus upgrade event (`W_1→[Event]→W_2`) is explicitly
+  NOT a knowledge contradiction but a genuine world-state change that KnowledgeOS subsequently observes
+  and incorporates -- "that distinction is fundamental";
+  (C) **apparent contradiction via disjoint temporal scope**: `A_1:Version=3.69` valid `[t_1,t_2]` and
+  `A_2:Version=3.72` valid `[t_3,∞)` with `t_2<t_3` are `A_1≠A_2` but NOT contradictory --
+  `Conflict(A_1,A_2)≠A_1≠A_2`, "conflict requires overlapping semantic scope," directly re-deriving
+  0573's temporal-conflict result within this new experiment for independent confirmation;
+  (D) genuine contradiction (identical `ValidTime`), yielding `Conflict(A_1,A_2)=True`, with the required
+  representation `K_t={A_1,A_2,Conflict(A_1,A_2)}` -- "rather than arbitrarily deleting one," worked
+  through a concrete inventory-vs-direct-query example illustrating why premature deletion in either
+  direction loses information;
+  (E) **conflict resolution is NOT conflict deletion**: `Resolve(C_1)→A_2` should mark `A_1.status=
+  Superseded` or `Rejected`, never delete it -- "history remains available";
+  (F) **retraction and dependency-graph propagation**: a worked four-hop chain
+  (`E_1:RollbackTest=Passed→A_1:RollbackAvailable=True→A_3:MigrationIsExecutionReady→
+  Decision_1:ProceedWithMigration`) demonstrates that retracting `E_1` must propagate through
+  `Reevaluate(A_1)→Reevaluate(A_3)→Reevaluate(Decision_1)` -- "a major architectural requirement";
+  (G) **deletion≠invalidation**, explicitly distinguished and `Invalidate` (the system records that
+  evidence must no longer support relevant claims, while retaining the record) declared "generally much
+  more important than physical deletion" for an auditable system;
+  (H) **partial retraction with non-cascading support**: `A_1` supported by `E_1,E_2,E_3` is NOT
+  automatically retracted when only `E_1` is invalidated -- support is recomputed to `{E_2,E_3}` and
+  reassessed across a four-value outcome space (StillSupported/WeaklySupported/Unsupported/Conflicted),
+  directly reconfirming 0566's "dependency invalidation requires re-evaluation, not blind deletion"
+  principle with a concrete formal mechanism;
+  (I) **derived knowledge requires DerivationLineage, not merely source provenance**: a worked rule
+  `A_1,A_2⊢A_3` example shows that retracting `A_1` requires reconsidering `A_3`, distinct from ordinary
+  provenance tracking, motivating a formal three-way relationship split -- Support (`E→A`) ≠ Derivation
+  (`A_1,A_2⊢A_3`) ≠ Decision Dependency (`A_3→Decision`), "important for the eventual graph model";
+  (J) **temporal invalidation vs. falsification -- three states that must be separated**: Valid /
+  Superseded / Invalid, worked through a concrete example demonstrating that a world-state change at `t_2`
+  does not falsify evidence that remained genuinely valid at `t_1` -- "temporal supersession, not evidence
+  falsification";
+  (K) **knowledge revision without world change**: KnowledgeOS's own belief correcting itself (initially
+  wrong, then corrected to match unchanged reality) demonstrates `KnowledgeRevision⇏WorldStateChange`;
+  (L) **the file's single most important experimental finding, explicitly named as such -- world change
+  without immediate knowledge change**: reality changing (`W_t→W_{t+1}`) while KnowledgeOS receives no
+  observation yields `K_t=K_{t+1}` despite `W_t≠W_{t+1}`, formalized as
+  **`RealityCanChangeWithoutKnowledgeChanging`**, explicitly called "perhaps the most important epistemic
+  property" and stated to make the World/Knowledge state-space separation "mathematically necessary" --
+  the strongest, most explicit statement anywhere in the corpus of why `W_t≠K_t` is not merely a useful
+  distinction but a structural requirement.
+
+  **Delivers Knowledge Lag formalized precisely**: `KnowledgeLag=t_observation-t_worldChange`, proposed as
+  a future quality metric. **Delivers the anti-hindsight invariant with a concrete worked scenario**: a
+  migration decision made under `K_t0:Rollback=Unknown`, later followed by discovering `Rollback=False` at
+  `t_1>t_0`, must NOT retroactively judge the earlier decision using the later knowledge unless the
+  historical knowledge state itself actually supported that conclusion --
+  `HistoricalDecision(D_{t_0}) depends only on K_{t_0}` -- directly reconfirming and re-deriving 0565's
+  "no retrospective knowledge leakage" principle inside this new concrete experiment.
+
+  **Delivers governed contradiction resolution**: a worked example where an explicit governance policy
+  ("direct current observation has precedence over stale derived documentation") resolves a genuine
+  conflict in favor of `A_2`, while `A_1` is explicitly retained as historical/superseded rather than
+  deleted -- "a governed resolution, not a mathematical truth function," reconfirming 0561's/0566's
+  Priority≠Truth distinction.
+
+  **Delivers the file's central formal deliverable -- a refined, fuller Revision operator**
+  `K_{t+1}=Revision(K_t,NewEvidence,Events,Rules,Context,Time)`, paired with four named invariants
+  (`History(K_t)=Immutable`; `Provenance(K_{t+1})⊇RequiredHistory`; conflicts remain explicit;
+  invalidation propagates). Delivers a candidate KnowledgeState representation
+  `K_t=(Assertions,Assessments,EvidenceRefs,Conflicts,Derivations,TemporalValidity,RevisionMetadata)` with
+  immutable historical snapshots `K_0,K_1,...,K_t`, explicitly flagged **PROVISIONAL** but "now strongly
+  motivated by the experiments" -- a notably more complete structure than 0572's original provisional
+  `K_t=(E_t,A_t,Q_t,C_t,P_t,V_t)` formula, directly resolving 25A.1's flagged pressure point #1 ("what
+  exactly is inside `K_t`?") with concrete new content.
+
+  **Delivers a full knowledge-state transition graph diagram** (New Evidence→Assessment→{Support,
+  Conflict, Reject}→{Commit, Resolve}→KnowledgeState→Revision Event→New KnowledgeState) -- "much closer to
+  something we can actually implement."
+
+  **Delivers three critical invariants central to the entire architecture**: (1) **monotonic history vs.
+  non-monotonic content**: current knowledge is explicitly non-monotonic (`K_t⊄K_{t+1}` in general), but
+  the HISTORY of knowledge states is monotonic (once recorded, `K_t` is never rewritten) -- "a very useful
+  architectural principle" cleanly separating two properties the corpus had sometimes conflated; (2) **no
+  silent revision**: `K_t→K_{t+1}⇒RevisionCause exists`, with seven named legitimate causes (new evidence,
+  invalidation, temporal event, policy change, ontology change, human correction, rule change) -- "a
+  knowledge change must have an identifiable cause"; (3) **revision must be reproducible --
+  Replayability**: an independent evaluator must be able to reproduce `K_{t+1}` from `K_t+X+Rules`,
+  explicitly flagged as "very important when we build the executable kernel"; (4) **revision is not
+  necessarily truth correction**: revision can move `Known→Unknown`, `Supported→Conflicted`, or
+  `HighConfidence→LowConfidence`, not only `True→False` -- "important for statistical epistemology."
+
+  **Delivers eleven named state-transition-algebra operations required as explicit domain operations**
+  (AddEvidence, AssessEvidence, CommitAssertion, CreateConflict, ResolveConflict, SupersedeAssertion,
+  InvalidateEvidence, RetractAssertion, DeriveAssertion, RecalculateDependents, CreateSnapshot) --
+  "rather than implicit database updates," the corpus's most complete operator vocabulary for the
+  revision layer specifically.
+
+  **Delivers a six-context DDD proposal** for the revision layer specifically (Evidence Context, Knowledge
+  Context, Revision Context, Temporal Context, Governance Context, Decision Context), explicitly flagged
+  provisional and requiring later bounded-context validation -- narrower and more revision-focused than
+  0565's/0568's broader eight-context proposals.
+
+  **Delivers the file's central formal deliverable -- the mathematical result of 25A.3**: a refined
+  transition function `K_{t+1}=F(K_t,Evidence,Events,Rules,Context,Time)` subject to six named formal
+  properties (HistoryImmutable, RevisionTraceable, ConflictExplicit, TemporalValidityExplicit,
+  DependencyAware, UnknownPreserved).
+
+  **Delivers the file's central formal deliverable -- a ten-row "what passed" table**, each item
+  explicitly graded **PASS** or **PASS conceptually** (World and knowledge can evolve independently: PASS;
+  Historical snapshots can remain immutable: PASS conceptually; Temporal apparent conflict distinguishable
+  from true conflict: PASS conceptually; Genuine contradiction representable: PASS; Retraction
+  representable: PASS conceptually; Partial evidence loss handleable: PASS conceptually; Derived-knowledge
+  dependencies representable: PASS conceptually; Future information prevented from contaminating history:
+  PASS conceptually; Knowledge can move known→unknown: PASS conceptually; Silent revision prohibitable:
+  PASS conceptually) -- with the crucial, explicitly stated qualification: **"these are model-level passes,
+  not yet executable test results"** -- directly extending 0568's/0570's/0572's now well-established
+  epistemic-honesty discipline into this specific ten-item checklist.
+
+  **Delivers the file's honest self-assessment of what remains unresolved -- three named genuine open
+  mathematical areas**: Revision algebra (a precise definition of `Revision(K,E)` is still needed);
+  Conflict algebra (representation is solved, but complete resolution mathematics is not); Dependency
+  propagation (the requirement is established, but the exact algorithm is not yet defined).
+
+  **Delivers a significantly strengthened redefinition of KnowledgeState itself**: no longer simply
+  `K_t={things we know}`, but **"the governed epistemic state at time t"**, explicitly enumerated as
+  including what is currently supported, what is uncertain, what conflicts, what has been superseded, what
+  has been derived, WHY each claim is held, WHEN it is valid, and WHAT it depends upon -- "a substantially
+  stronger definition," the corpus's most complete single characterization of KnowledgeState's true scope
+  to date.
+
+  **Delivers Step 25A.3's verdict**: **"25A.3 — CONCEPTUALLY PASSED"**, with three named mandatory
+  mathematical refinements (Revision Algebra, Conflict Algebra, Dependency Propagation) still required.
+  Delivers an important architectural conclusion crystallizing the whole experiment: **"KnowledgeOS needs
+  immutable historical knowledge states plus a revisable current projection,"** explicitly giving both
+  Auditability and Epistemic Revision simultaneously.
+
+  **Closes by explicitly declining to move to Zero yet again**, and instead **opens "Step 25A.4 —
+  Executable Knowledge-State Model,"** proposing to take everything from 25A.1-25A.3 and "actually
+  construct a small state machine" with ten named concrete components (initial empty knowledge state,
+  evidence, assessments, assertions, conflicting evidence, temporal changes, retractions, derived
+  assertions, dependency propagation, historical snapshots), posing the file's final, decisive governing
+  question: **"can the complete `K_t→K_{t+1}` transition actually execute without violating our
+  invariants?"** -- explicitly named as **"the first point where we move from formal thought experiment to
+  a genuinely executable mathematical experiment"** -- the corpus's clearest, most explicit statement yet
+  distinguishing everything done so far (careful, rigorous, but still hand-executed conceptual reasoning)
+  from what genuinely executed code verification would represent, directly building toward resolving
+  0572's admitted failed execution attempt.
+introduces:
+  - concept: "'RealityCanChangeWithoutKnowledgeChanging', explicitly named 'perhaps the most important epistemic property' — the strongest, most explicit statement anywhere in the corpus of why WorldState≠KnowledgeState is a structural mathematical necessity rather than merely a useful conceptual distinction"
+  - concept: "History is monotonic while knowledge content is non-monotonic — a clean architectural principle separating the append-only historical record of knowledge states from the genuinely revisable current epistemic content"
+  - concept: "'No silent revision': every K_t→K_{t+1} transition must have an identifiable RevisionCause, with seven named legitimate cause types"
+  - concept: "Replayability as a formal requirement: an independent evaluator must be able to reproduce a revision transition purely from K_t, the new information, and the applicable rules"
+  - concept: "The formal conflict predicate refined into a four-part conjunction (Incompatibility ∧ ContextOverlap ∧ TemporalOverlap ∧ ScopeOverlap), independently re-deriving and confirming the temporal apparent-conflict result from 0573 within a new experiment"
+  - concept: "Deletion≠Invalidation, with invalidation (retaining the record while marking it no longer support-bearing) declared more important than physical deletion for an auditable knowledge system"
+  - concept: "A three-way relationship split for knowledge dependencies — Support (E→A) ≠ Derivation (A_1,A_2⊢A_3) ≠ Decision Dependency (A_3→Decision) — required for the eventual graph model"
+  - concept: "Three distinct temporal-validity states (Valid/Superseded/Invalid), formally separating a world-state change from an evidence-falsification event"
+  - concept: "A significantly strengthened, more complete definition of KnowledgeState as 'the governed epistemic state at time t', explicitly including not just current beliefs but why, when, and what-dependent-on each claim is"
+  - concept: "The explicit qualification 'these are model-level passes, not yet executable test results' applied uniformly across a ten-item PASS checklist, extending the corpus's now well-established epistemic-honesty discipline into a specific, itemized form"
+  - concept: "'Step 25A.4 — Executable Knowledge-State Model', explicitly named the first point where the research program moves from formal thought experiment to a genuinely executable mathematical experiment"
+defines:
+  - concept: "First Revision operator (refined)"
+    definition: "K_{t+1}=Revision(K_t,NewEvidence,Events,Rules,Context,Time), subject to History(K_t)=Immutable, Provenance(K_{t+1})⊇RequiredHistory, conflicts remain explicit, and invalidation propagates"
+  - concept: "Refined conflict predicate"
+    definition: "Conflict(A_1,A_2) = Incompatibility ∧ ContextOverlap ∧ TemporalOverlap ∧ ScopeOverlap — conflict requires overlapping semantic scope, not merely inequality"
+  - concept: "Candidate KnowledgeState representation (25A.3, PROVISIONAL, strengthened)"
+    definition: "K_t=(Assertions,Assessments,EvidenceRefs,Conflicts,Derivations,TemporalValidity,RevisionMetadata), with immutable historical snapshots K_0,K_1,...,K_t"
+  - concept: "Eleven named state-transition-algebra operations"
+    definition: "AddEvidence, AssessEvidence, CommitAssertion, CreateConflict, ResolveConflict, SupersedeAssertion, InvalidateEvidence, RetractAssertion, DeriveAssertion, RecalculateDependents, CreateSnapshot — required as explicit domain operations, not implicit database updates"
+  - concept: "Knowledge Lag (formalized)"
+    definition: "KnowledgeLag = t_observation - t_worldChange — measuring how long KnowledgeOS remains unaware of a relevant real-world change, proposed as a future quality metric"
+refines:
+  - concept: "0573's temporal apparent-conflict dissolution result (Conflict as a function of Context+Time+Scope)"
+    refinement: "Independently re-derived and confirmed within a new, separate experiment (Experiment C), and formalized as an explicit four-part logical conjunction (Incompatibility∧ContextOverlap∧TemporalOverlap∧ScopeOverlap), strengthening confidence that the result is robust rather than an artifact of one particular experimental framing"
+  - concept: "0566's 'dependency invalidation requires re-evaluation, not blind deletion' invariant"
+    refinement: "Given a concrete formal mechanism via partial retraction (Experiment H): support is recomputed from the remaining non-invalidated evidence set, then reassessed across a four-value outcome space rather than a binary retract/keep decision"
+  - concept: "0565's 'no retrospective knowledge leakage' invariant"
+    refinement: "Re-derived within a fresh, concrete worked scenario (Experiment K/the anti-hindsight invariant), reconfirming the principle through independent experimental replication rather than merely restating it"
+  - concept: "0572's original provisional KnowledgeState formula K_t=(E_t,A_t,Q_t,C_t,P_t,V_t) and its flagged pressure point 'what exactly is inside K_t?'"
+    refinement: "Directly answered with a more complete, experimentally-motivated candidate structure K_t=(Assertions,Assessments,EvidenceRefs,Conflicts,Derivations,TemporalValidity,RevisionMetadata), still provisional but now grounded in twelve concrete experiments rather than initial intuition"
+  - concept: "0568's/0570's/0572's/0573's progressively developed epistemic-honesty verdict vocabulary (READY FOR EXECUTION/EXPERIMENT, PASS with refinements required)"
+    refinement: "Extended with a new granular verdict form applied uniformly across an itemized checklist ('PASS' vs 'PASS conceptually' for each of ten properties), plus the overall experiment-level verdict 'CONCEPTUALLY PASSED' — a further refinement of the verdict taxonomy distinguishing model-level from execution-level validation"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25A.4 — Executable Knowledge-State Model' is executed as its own dedicated corpus file, and critically, whether it involves an actually SUCCESSFUL code execution (given 0572's admitted failed attempt at exactly this kind of experiment) — this remains the outstanding, most important open question for assessing whether the KnowledgeOS theoretical arc ever achieves genuine computational verification rather than only rigorous conceptual/formal reasoning"
+  - "Trace whether the three named remaining open mathematical areas (Revision algebra, Conflict algebra, Dependency propagation) are resolved in 25A.4 or deferred further"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the first Revision operator and the historically-immutable/currently-revisable KnowledgeState separation, the twelve labeled experiments (A-L), and 'RealityCanChangeWithoutKnowledgeChanging' as 'perhaps the most important epistemic property.'"
+  - "dimension-registry.md: record history-monotonic-vs-content-non-monotonic, 'no silent revision'/RevisionCause, Replayability, the refined four-part conflict predicate, Deletion≠Invalidation, the three-way Support/Derivation/DecisionDependency relationship split, and the three temporal-validity states (Valid/Superseded/Invalid)."
+  - "dimension-registry.md: record the strengthened KnowledgeState definition, the eleven-operation state-transition algebra, the ten-row model-level PASS table with its explicit 'not yet executable test results' qualification, the three named remaining open mathematical areas, the verdict '25A.3 — CONCEPTUALLY PASSED,' and 'Step 25A.4 — Executable Knowledge-State Model' as the corpus's first explicit commitment to move from formal thought experiment to genuine executable verification."
+anchor_test:
+  anchor: "0572's/0573's committed 25A.1→25A.2→25A.3→(25A.4) sub-step sequence; 0565's no-retrospective-knowledge-leakage and BasedOn≠Caused principles; 0566's dependency-invalidation-requires-re-evaluation invariant; 0572's admitted failed execution attempt; the corpus's foundational W_t≠K_t separation established since ~0558/0565"
+  supports_dimension: "LANDMARK delivering the corpus's most rigorous single-file treatment of knowledge-state revision, conflict, and retraction to date, via twelve individually labeled, concretely worked experiments each producing a specific checkable formal result. Delivers the strongest, most explicit statement anywhere in the corpus of why WorldState and KnowledgeState must be mathematically distinct state spaces ('RealityCanChangeWithoutKnowledgeChanging', named the single most important epistemic property), a clean new architectural principle separating monotonic history from non-monotonic content, and three genuinely new formal invariants (no silent revision, Replayability, revision-is-not-necessarily-truth-correction) directly relevant to eventual implementation. Delivers a significantly strengthened, more complete redefinition of KnowledgeState itself grounded in concrete experimental motivation rather than initial intuition, and independently re-derives and confirms two previously-established principles (temporal apparent-conflict dissolution from 0573; no-retrospective-knowledge-leakage from 0565) through fresh, separate worked scenarios, strengthening confidence in their robustness. Delivers the corpus's first uniformly-itemized epistemic-honesty checklist (ten properties, each explicitly graded PASS vs PASS-conceptually with the caveat these are model-level, not executable, results) and closes with the clearest statement yet of the gap between rigorous formal reasoning and genuine computational verification, opening Step 25A.4 as the first explicit commitment to close that gap"
+  refines_or_contradicts: "directly executes the 25A.3 sub-step committed at 0572/0573; independently re-derives and confirms 0573's temporal apparent-conflict result and 0565's no-retrospective-knowledge-leakage principle through fresh experiments; extends 0566's dependency-invalidation invariant with a concrete partial-retraction mechanism; directly answers 0572's flagged 'what is inside K_t?' pressure point with a strengthened candidate structure; extends the corpus's epistemic-honesty verdict vocabulary with a new itemized-checklist form; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The formal statement 'RealityCanChangeWithoutKnowledgeChanging' (K_t=K_{t+1} despite W_t≠W_{t+1} because no observation occurred), explicitly named the single most important epistemic property discovered, is a directly checkable, precise mathematical claim with an unambiguous worked scenario, and is the strongest and most explicit justification anywhere in the corpus for treating WorldState and KnowledgeState as genuinely distinct mathematical structures rather than merely a useful conceptual convenience."
+  - "The dependency-propagation worked example (E_1:RollbackTest=Passed→A_1:RollbackAvailable=True→A_3:MigrationIsExecutionReady→Decision_1:ProceedWithMigration, with retraction of E_1 requiring sequential reevaluation of A_1, A_3, and Decision_1) is a directly checkable, concrete four-hop dependency chain directly reusable as an actual property-based test case once code exists, and precisely operationalizes the abstract blast-radius/dependency-analysis principle established at 0565/0566 into a specific worked scenario."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25A.4 — Executable Knowledge-State Model' is executed as its own dedicated corpus file, and critically, whether it involves an actually successful code execution given 0572's admitted failed execution attempt"
+  - "Whether the three named remaining open mathematical areas (Revision algebra, Conflict algebra, Dependency propagation) are resolved in 25A.4 or deferred further"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's most rigorous single-file treatment of knowledge-state revision, conflict, and retraction, via twelve individually labeled, concretely worked experiments each producing a specific checkable formal result rather than only qualitative discussion. Delivers the strongest, most explicit mathematical justification anywhere in the corpus for the foundational WorldState≠KnowledgeState separation ('RealityCanChangeWithoutKnowledgeChanging', explicitly named the single most important epistemic property discovered in the entire research program), alongside three genuinely new implementation-relevant invariants (no silent revision with an identifiable RevisionCause, formal Replayability, and the correction that revision need not mean truth-falsification). Delivers a significantly strengthened, experimentally-motivated redefinition of KnowledgeState itself, and independently re-derives and confirms two previously-established principles (temporal apparent-conflict dissolution and no-retrospective-knowledge-leakage) through fresh worked scenarios, meaningfully strengthening confidence in their robustness through independent replication. Delivers the corpus's first uniformly itemized epistemic-honesty checklist explicitly distinguishing model-level passes from executable verification results, and closes with the clearest, most decisive statement yet of the gap between the program's extensive rigorous formal reasoning and genuine computational verification — opening Step 25A.4 as the first explicit, named commitment to close that gap, directly building toward resolving the failed execution attempt admitted at 0572."

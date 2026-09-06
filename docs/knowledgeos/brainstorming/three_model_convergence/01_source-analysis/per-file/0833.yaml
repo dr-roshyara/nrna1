@@ -1,0 +1,208 @@
+sequence: 833
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-114533_step_205_aggregate-derivation.md
+title: "Step 205 -- Aggregate Derivation (PHASE-C-OPENING MILESTONE, delivers 0832's promised aggregate derivation, NO new invariant): Delivers Aggregate=(Identity,OwnedState,InvariantBoundary) With Aggregate≠DatabaseTable≠Entity≠BoundedContext -- Delivers Four Rigorous Derivation Criteria (Invariant Ownership/Atomicity-Required-By-Invariant/Lifecycle/ConcurrencyCost) Replacing Noun-Based Grouping -- Delivers a Full Per-Candidate Walkthrough (Proposition/Evidence/Assessment/Model/Uncertainty/Policy/Authority/Decision/Action/Outcome) Each Tested Against the Criteria, Concluding 'Reference Is Often Preferable to Containment' and 'An Aggregate Owns Invariants, Not Relationships' -- Delivers VersionedModelIdentity, PresentAuthority≠HistoricalAuthority, and 'Historical Semantic References Are Immutable' -- Delivers the Concrete Decision Basis B_D=(AssessmentRef,PolicyRef,AuthorityRef,ContextRef) So Decision Does Not Depend on Today's Mutable World to Explain Yesterday's Decision -- Delivers Audit⊊Lineage -- Delivers the 'Symmetry Trap' Warning (Architectural Asymmetry Is Acceptable; DDD Optimizes Cohesion+Consistency-Coupling, Not One-Concept-One-Aggregate) -- Delivers the Aggregate-as-Guardian-of-Local-Invariants Formulation and Explicit Non-Identities (Not RepositoryFacade, Not CRUDController, Not WorkflowEngine) -- Delivers a Four-Level Candidate Architecture Hierarchy (Domain Objects/Aggregates/Bounded Contexts/Processes) -- DELIVERS THE MOST IMPORTANT ARCHITECTURAL RESULT: Three Nested 'Unit of X Is Not Necessarily the Unit of Y' Statements (Knowledge≠Consistency≠Process≠BoundedContext) -- Opens Step 206's Bounded Context Derivation, Reframing the Central Question From 'How Many Microservices?' to 'Where Does KnowledgeOS Need a Different Model of Reality?'"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "purely DDD/mathematical aggregate-derivation formalization; no Gita-lens content in this file (a rare purely-technical step within the arc)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 833
+importance: critical
+confidence: high
+about: >
+  Directly executes the task proposed at 0832's close, opening "we now have enough formal structure to
+  attempt the first genuine DDD derivation: which concepts must share a consistency boundary?", restating
+  the governing methodological rule: **"we do not derive Aggregates from nouns. We derive them from
+  invariants, transactional atomicity, identity, lifecycle and concurrency,"** explicitly resisting the
+  temptation to create `EvidenceAggregate`/`AssessmentAggregate`/`DecisionAggregate` merely because those
+  words exist.
+
+  **§205.1-205.2 delivers the formal Aggregate definition**, boxed: **`Agg=(I,O,B)`** (identity/owned
+  state/invariant boundary), with the key property **`B defines what must remain consistent atomically`**,
+  and three explicit non-identities: **`Aggregate≠DatabaseTable`**, **`Aggregate≠Entity`**,
+  **`Aggregate≠BoundedContext`**. Delivers the Aggregate Root as the sole externally addressable entry
+  point (`ExternalCommand→AggregateRoot→InvariantValidation→StateTransition`).
+
+  **§205.3-205.6 delivers four rigorous derivation criteria**: (1) Invariant ownership --
+  `Owner(I_i)=Agg_j`; if no aggregate can locally enforce an invariant, either the invariant is genuinely
+  cross-context, the model is missing a concept, or the proposed boundary is wrong; (2) Atomicity --
+  boxed **`Atomicity must be required by an invariant`**, explicitly rejecting "usually change together"
+  as insufficient; (3) Lifecycle containment (`Lifecycle(B)⊆Lifecycle(A)`), explicitly insufficient alone
+  if the contained object has an independent consistency boundary; (4) Concurrency cost, crystallized as
+  an optimization principle, boxed: **`Minimize aggregate size subject to Invariant preservation`**.
+
+  **§205.7-205.24 delivers a full per-candidate walkthrough** against these four criteria, testing ten
+  concepts: **Proposition/Assessment** -- a proposition can exist before, and receive multiple, assessments
+  over time (`Lifecycle(Proposition)⊄Lifecycle(Assessment)`), so `PropositionAggregate` is favored, with
+  Assessment kept as a separate object (possibly owning only a `CurrentAssessmentReference`);
+  **Observation/Evidence** -- Evidence can exist independently of any single observation and can originate
+  from documents/system records/external datasets/calculations, so `Evidence≠Observation`, delivering
+  `EvidenceAggregate` with an internal invariant `I_E:Verified⇒Provenance∧Integrity`, while Observation
+  keeps its own independent lifecycle (`Captured→Corrected→Superseded`) and is referenced, not owned,
+  crystallized: **`Reference is often preferable to containment`**; **Assessment** -- delivers its own
+  traceable-basis invariant `I_A:Assessment→(P,E,M,U,L)`, with Evidence held only as references
+  (`EvidenceRef_1,...,EvidenceRef_n`), never embedded; **Model** -- has independent identity and
+  lifecycle, shared across multiple assessments, candidate `ModelRegistry/ModelContext`, delivering the
+  major invariant **`VersionedModelIdentity`** (`M_v≠M_{v+1}` once referenced, required for
+  reproducibility, "especially important for AI models"); **Uncertainty** -- explicitly NOT automatically
+  its own aggregate, "a value/semantic component of Assessment" unless it later demonstrates its own
+  lifecycle/calibration/governance; **Policy** -- independent lifecycle/versioning, Decision references
+  `PolicyVersion` rather than copying the mutable policy, delivering the temporal-selection invariant
+  `ApplicablePolicy(t)=Policy_v`; **Authority** -- independent lifecycle (`Authority_t≠Authority_{t+1}`),
+  requiring the decision record to preserve the authority basis at decision time, boxed:
+  **`PresentAuthority≠HistoricalAuthority`**; **Decision** -- a strong candidate with its own final-decision
+  invariant `I_D:FinalDecision⇒ValidDecisionBasis`, explicitly referencing rather than owning Assessment
+  (boxed: **`Decision references Assessment; it does not own Assessment`**, "otherwise Decision would
+  become responsible for epistemic lifecycle... would violate bounded responsibility"); **Action** -- a
+  strong candidate deriving from, but not owning, Decision (`Action→[derivedFrom]→DecisionRef`); **Outcome**
+  -- explicitly difficult, externally produced, so not naturally owned by the Action aggregate
+  (`Action→OutcomeObservation`), reinforcing **`ExecutionState≠Outcome`**.
+
+  **§205.25-205.26 delivers a candidate aggregate map diagram** (Proposition→Assessment→[references
+  Evidence, Model Version]; Assessment→Decision→[references Policy Version, Authority Version]→Action→
+  Outcome/Observation), explicitly "considerably cleaner than one giant Knowledge Aggregate," crystallized
+  as a central DDD teaching principle, boxed: **`An Aggregate owns invariants, not relationships`**.
+
+  **§205.27-205.32 delivers the cross-aggregate reference pattern** (`Aggregate_A→ID_B` preferred over
+  `Aggregate_A→MutableObject_B`, worked through `Decision.AssessmentId` not `Decision.Assessment`), and
+  its refinement: an ID alone is insufficient, references must also carry semantic **version**
+  (`AssessmentRef=(AssessmentId,Version)`, similarly for `PolicyRef`/`ModelRef`), delivering **the concrete
+  Decision Basis composite**, boxed: **`B_D={AssessmentRef,PolicyRef,AuthorityRef,ContextRef}`**, "the
+  decision records the exact semantic inputs used" so that "Decision is not dependent on today's mutable
+  world to explain yesterday's decision" -- explicitly flagged "a major architecture property." Delivers
+  **temporal consistency for historical decisions** (a decision made under `Policy_v1` must never be
+  reinterpreted under `Policy_v2`), boxed: **`Historical semantic references are immutable`**, connecting
+  once more (compactly) to the "new state does not know the old state" Chapter 4 lens via
+  `CurrentPolicy≠HistoricalPolicy`/`CurrentAuthority≠HistoricalAuthority`/`CurrentModel≠HistoricalModel`,
+  crystallized: **`Historical truth requires versioned semantic references`**, "far more precise than
+  simply keeping an audit log." Delivers **`Audit⊊Lineage`** (audit asks who/what happened; lineage asks
+  from what semantic inputs an artifact arose; audit is one projection of lineage).
+
+  **§205.33-205.35 delivers a six-test aggregate-sizing framework** (Identity/OwnsInvariant/
+  RequiresAtomicEnforcement/IndependentLifecycle/ContentionAvoidance/ReferenceableWithoutOwnership) and
+  **the explicit "symmetry trap" warning**: a beautiful `OneConcept=OneAggregate` diagram is "aesthetically
+  attractive but architecturally dangerous" -- DDD optimizes `Cohesion+Consistency-Coupling`, not symmetry,
+  boxed: **`Architectural asymmetry is acceptable`**.
+
+  **§205.36-205.37 delivers KnowledgeArtifact's conditional aggregate status**: it becomes a legitimate
+  aggregate only if it owns its own invariant (worked example: `I_KA:Published⇒ApprovedAssessment∧
+  CompleteLineage`), representing "the point where epistemic material becomes an organizationally reusable
+  artifact," explicitly "not automatically" derived from Assessment -- "publication itself is a domain
+  decision."
+
+  **§205.38-205.42 delivers candidate commands per aggregate** (Proposition/Evidence/Assessment/Decision/
+  Action, explicitly "candidate commands, not final APIs"), crystallized: **`Command≠Event`** and the
+  pipeline **`Command→Transition→Event→State`**. Delivers **the Aggregate-as-Guardian formulation**, boxed:
+  **`AggregateRoot=Guardian of local invariants`**, with three explicit non-identities (not
+  `RepositoryFacade`, not `CRUDController`, not `WorkflowEngine`). Delivers the process-manager
+  orchestration pattern for cross-aggregate sequences no single aggregate owns
+  (`EvidenceValidated→AssessmentRequested→AssessmentCompleted→DecisionRequested`), explicitly "orchestration,
+  not aggregate ownership."
+
+  **§205.43-205.46 delivers a four-level candidate architecture hierarchy** (Level 1 Domain
+  objects/Entity+ValueObject; Level 2 Aggregates/InvariantBoundaries; Level 3 Bounded
+  Contexts/ModelBoundaries; Level 4 Processes/CrossContextOrchestration), a formal aggregate-to-bounded-
+  context ownership cardinality (`Σ_j Owns(A_i,B_j)=1`, one primary owning context per aggregate, one
+  context may own many aggregates -- `1→N`), and the aggregate-to-aggregate reference-over-containment
+  preference. Delivers **a first candidate four-context structure** (DomainContext→
+  Proposition/Evidence/Assessment-related models; GovernanceContext→Policy/Authority/Decision;
+  ExecutionContext→Action; ObservationContext→Outcome/Observation), explicitly flagging that "which of
+  these candidates genuinely deserve separate Bounded Contexts... we cannot answer that solely from
+  aggregates."
+
+  **§205.47 delivers the Step 205 verdict**: Aggregate derivation **PASS**, with an explicit
+  three-tier confidence classification -- Strong candidates (Proposition, Evidence, Assessment, Model,
+  Policy, Decision, Action); Conditional candidates (Authority, KnowledgeArtifact); Probably-not-
+  independent-aggregates (Uncertainty, Lineage, Outcome, "unless further domain invariants demonstrate
+  otherwise").
+
+  **§205.48 delivers what the file itself calls "the most important architectural result": three nested
+  non-identity statements**, each individually boxed: **`The unit of knowledge is not necessarily the unit
+  of consistency`**; **`The unit of consistency is not necessarily the unit of process`**; **`The unit of
+  process is not necessarily the unit of bounded context`** -- explicitly credited with preventing "a huge
+  number of DDD design errors."
+
+  **Closes opening "Step 206 — Bounded Context Derivation,"** promising to test each candidate boundary
+  against a seven-factor criterion (`UbiquitousLanguage+SemanticModel+InvariantOwnership+
+  Team/Responsibility+Lifecycle+ChangeRate+IntegrationNeed`) and, "especially," the single question boxed
+  as "the true DDD boundary detector": **`Where does the meaning of a word change?`** -- explicitly
+  reframing the guiding question away from "how many microservices should we build?" toward **"where does
+  KnowledgeOS need a different model of reality?"** No actual repository implementation occurs within this
+  file itself, and NO new numbered invariant is introduced (continuing the pattern from 0832 despite
+  substantial new conceptual content -- e.g. VersionedModelIdentity, PresentAuthority≠HistoricalAuthority,
+  Historical semantic references are immutable, and the three nested unit-of-X statements all read as
+  strong invariant candidates left unnumbered).
+introduces:
+  - concept: "The formal Aggregate definition Agg=(I,O,B), with Aggregate≠DatabaseTable≠Entity≠BoundedContext"
+  - concept: "Four rigorous aggregate-derivation criteria: invariant ownership, atomicity-required-by-invariant, lifecycle containment, concurrency cost"
+  - concept: "The full per-candidate aggregate walkthrough (Proposition/Evidence/Assessment/Model/Uncertainty/Policy/Authority/Decision/Action/Outcome), each tested against the four criteria"
+  - concept: "'Reference is often preferable to containment,' worked through Observation not being owned by the Evidence Aggregate"
+  - concept: "VersionedModelIdentity (M_v≠M_{v+1} once referenced), required for reproducibility, especially important for AI models"
+  - concept: "PresentAuthority≠HistoricalAuthority, requiring decisions to preserve their authority basis at decision time"
+  - concept: "'Decision references Assessment; it does not own Assessment,' explicitly to preserve bounded responsibility"
+  - concept: "'An Aggregate owns invariants, not relationships' -- a central DDD teaching principle"
+  - concept: "The cross-aggregate reference pattern preferring IDs over mutable object references, refined to require semantic version in the reference"
+  - concept: "The concrete Decision Basis composite B_D=(AssessmentRef,PolicyRef,AuthorityRef,ContextRef), making decisions independent of today's mutable world"
+  - concept: "'Historical semantic references are immutable,' connected once more (compactly) to the Chapter 4 new-state-does-not-know-old-state lens"
+  - concept: "Audit⊊Lineage, audit as one projection of lineage"
+  - concept: "The six-test aggregate-sizing framework and the explicit 'symmetry trap' warning against forcing OneConcept=OneAggregate"
+  - concept: "KnowledgeArtifact's conditional aggregate status, legitimate only if it owns its own invariant"
+  - concept: "Candidate commands per aggregate, Command≠Event, and the Command→Transition→Event→State pipeline"
+  - concept: "The Aggregate-as-Guardian-of-local-invariants formulation, with explicit non-identities (not RepositoryFacade, not CRUDController, not WorkflowEngine)"
+  - concept: "The process-manager orchestration pattern for cross-aggregate sequences no single aggregate owns"
+  - concept: "The four-level candidate architecture hierarchy (Domain objects/Aggregates/Bounded Contexts/Processes)"
+  - concept: "The formal aggregate-to-bounded-context ownership cardinality (one primary owner per aggregate, one context may own many aggregates)"
+  - concept: "A first candidate four-context structure (Domain/Governance/Execution/Observation), explicitly insufficient to answer the bounded-context question alone"
+  - concept: "The Step 205 verdict's three-tier aggregate confidence classification"
+  - concept: "The most important architectural result: three nested 'unit of X is not necessarily the unit of Y' statements (knowledge≠consistency≠process≠bounded context)"
+  - concept: "Step 206's opening: Bounded Context Derivation, and 'where does the meaning of a word change?' as the true DDD boundary detector"
+defines:
+  - concept: "The three nested unit-of-X non-identity statements"
+    definition: "The arc's most important consolidated DDD architectural result to date: the unit of knowledge (a proposition, an assessment, a piece of evidence) is not necessarily the unit of consistency (an aggregate, whose boundary is determined by which invariants require atomic enforcement); the unit of consistency (an aggregate) is not necessarily the unit of process (a cross-aggregate workflow coordinated by a process manager, since no single aggregate need own an entire multi-step sequence); and the unit of process is not necessarily the unit of bounded context (a model boundary, determined by where the meaning of shared vocabulary actually changes, not by how many process managers or aggregates happen to exist) -- collapsing any two of these three distinct units into one is named as a source of a large class of common DDD design errors"
+  - concept: "The Decision Basis composite B_D"
+    definition: "A concrete formal composite (not a new domain entity in its own right) recording the exact versioned semantic inputs a decision relied upon: B_D=(AssessmentRef,PolicyRef,AuthorityRef,ContextRef), where each reference carries both an identifier and a version (e.g. AssessmentRef=(AssessmentId,Version)) so that a historical decision's basis remains fully reconstructible and immutable even after the current assessment, policy, authority, or context has since evolved -- ensuring a decision is never silently reinterpreted as if it had been made under today's mutable world rather than the world that actually existed at decision time"
+refines:
+  - concept: "0832's closing proposal of Step 205's Aggregate Derivation task and its explicit two-question test per candidate aggregate"
+    refinement: "DELIVERED IN FULL: a complete per-candidate walkthrough of ten concepts against four rigorous derivation criteria, yielding an explicit three-tier confidence classification (strong/conditional/probably-not) rather than a single flat aggregate list -- directly fulfilling and substantially exceeding 0832's proposed two-question test"
+  - concept: "0831's rigorous aggregate-boundary criterion (Same Aggregate ⟺ shared transactional invariant requires atomicity) and 0824's earlier invariant-co-change aggregate-discovery method"
+    refinement: "OPERATIONALIZED into four concrete, individually-testable derivation criteria (invariant ownership, atomicity-required-by-invariant, lifecycle containment, concurrency cost) plus a six-item aggregate-sizing test, converting the earlier abstract biconditional into a repeatable design procedure actually applied to ten concrete concepts"
+  - concept: "0817's DDD aggregate-boundary experiment (EvidenceAggregate≠DecisionAggregate, resisting Lineage-as-aggregate) and 0830's candidate six-context ownership hypothesis"
+    refinement: "DIRECTLY CONFIRMED and extended with much finer granularity: Evidence and Decision are independently reconfirmed as strong aggregate candidates via the new four-criteria test, while Lineage, Uncertainty, and Outcome are independently reconfirmed as probably-not-independent-aggregates, now with an explicit rationale (value/semantic component of Assessment; externally determined; cross-cutting concern) rather than an intuitive judgment"
+  - concept: "0823's/0827's/0829's repeatedly re-affirmed candidate central axiom (no semantic elevation without an explicit, governed, lineage-preserving transition) and 0824's conservation principle"
+    refinement: "Given a concrete DDD implementation form via 'historical semantic references are immutable' and the Decision Basis composite -- the abstract conservation/no-implicit-elevation principles are now expressed as a specific, implementable reference-versioning pattern (AssessmentRef, PolicyRef, ModelRef each carrying an explicit version)"
+  - concept: "0808's I1-I14 through 0832's I75 invariant series"
+    refinement: "NOT EXTENDED in this file, continuing the anomaly first noted at 0832 -- despite delivering several strong invariant-candidate principles (VersionedModelIdentity, PresentAuthority≠HistoricalAuthority, Historical semantic references are immutable, the three nested unit-of-X statements), none receive a numbered I_n designation, now a two-file streak of substantial unnumbered content worth flagging prominently for the eventual canonical synthesis"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 206's actual Bounded Context Derivation, testing the four-context candidate structure against a seven-factor criterion and 'where does the meaning of a word change?' -- a HIGH-PRIORITY bridge candidate, since this is the file the corpus itself says will finally answer 'which of these candidates genuinely deserve separate Bounded Contexts.'"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the three nested unit-of-X non-identity statements (knowledge≠consistency≠process≠bounded context) as the arc's most important consolidated DDD result to date, explicitly self-flagged by the corpus as its 'most important architectural result.'"
+  - "dimension-registry.md: record the concrete Decision Basis composite B_D=(AssessmentRef,PolicyRef,AuthorityRef,ContextRef) as a directly implementable pattern making historical decisions immune to reinterpretation under today's mutable policy/authority/model state."
+  - "dimension-registry.md: record the 'symmetry trap' warning (architectural asymmetry is acceptable; DDD optimizes cohesion+consistency-coupling, not one-concept-one-aggregate) as a directly reusable design-review caution."
+  - "dimension-registry.md: record that this file (like 0832 immediately before it) introduces ZERO new numbered invariants despite delivering several strong invariant-candidate principles -- now a two-file streak, worth flagging prominently as a possible retroactive I-series gap for the eventual canonical synthesis."
+anchor_test:
+  anchor: "0832's closing proposal of Step 205's Aggregate Derivation task; 0831's aggregate-boundary criterion; 0817's/0824's DDD aggregate-boundary work; 0830's candidate ownership hypothesis; the I1-I75 invariant series"
+  supports_dimension: "Delivers the full Aggregate Derivation directly answering 0832's closing question, applying four rigorous, individually-testable criteria to ten concrete concepts and producing an explicit three-tier confidence classification, substantially exceeding the two-question test originally proposed. Operationalizes 0831's abstract aggregate-boundary biconditional into a repeatable, applied design procedure. Directly confirms and refines 0817's/0830's earlier aggregate-boundary intuitions with explicit rationale. Delivers a concrete, implementable Decision Basis composite giving the arc's recurring conservation/no-implicit-elevation principles a specific reference-versioning realization. Delivers the file's self-declared 'most important architectural result' -- three nested unit-of-X non-identity statements preventing a large class of DDD design errors. Does not extend the I-series for a second consecutive file despite substantial new content, an anomaly now worth flagging prominently. Opens Step 206's well-posed Bounded Context Derivation task, explicitly the point the corpus says will finally answer which candidates deserve separate bounded contexts"
+  refines_or_contradicts: "directly delivers and substantially exceeds 0832's closing proposal; operationalizes 0831's aggregate-boundary criterion; confirms and refines 0817's/0830's earlier aggregate-boundary work; gives the arc's conservation/elevation principles a concrete implementation form; does not extend the I-series for a second consecutive file (no contradiction, an anomaly); no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§205.48's explicit self-flagging 'we have derived a crucial rule... this three-level distinction prevents a huge number of DDD design errors,' presenting all three nested unit-of-X statements together as one coherent architectural result, is directly checkable evidence of the file's own assessment of its most valuable output."
+  - "§205.29's concrete Decision Basis definition, immediately followed by the explicit claim 'Decision is not dependent on today's mutable world to explain yesterday's decision... this is a major architecture property,' is directly checkable evidence connecting an abstract conservation principle (established several files earlier) to a specific, implementable reference-versioning pattern."
+  - "§205.34's explicit three-tier confidence table (High/Medium-High/Low), immediately followed by the caution 'we should not force them into aggregates simply to make the diagram symmetrical,' is directly checkable evidence of a genuinely disciplined derivation process rather than a predetermined conclusion dressed up as analysis."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 206's actual Bounded Context Derivation was ever delivered, and whether the resulting Bounded Context Map matches, refines, or significantly departs from the first candidate four-context structure proposed here (Domain/Governance/Execution/Observation)."
+  - "Whether any of this file's several strong unnumbered invariant-candidate principles (VersionedModelIdentity, PresentAuthority≠HistoricalAuthority, Historical semantic references are immutable, the three nested unit-of-X statements) are ever retroactively assigned invariant numbers, given that this is now a two-file streak (0832-0833) without new I-series additions despite substantial conceptual content."
+tier2_triggered: true
+tier2_reason: "PHASE-C-OPENING MILESTONE: delivers the full Aggregate Derivation directly answering 0832's closing question, applying four rigorous derivation criteria to a complete ten-concept walkthrough and producing an explicit, disciplined three-tier confidence classification rather than a predetermined symmetric list. Delivers VersionedModelIdentity, PresentAuthority≠HistoricalAuthority, 'Decision references Assessment; it does not own Assessment,' and the central DDD teaching principle 'an Aggregate owns invariants, not relationships.' Delivers the concrete Decision Basis composite B_D, giving the arc's recurring conservation/no-implicit-elevation family a specific, implementable reference-versioning realization. Delivers the explicit 'symmetry trap' warning against forcing one-concept-one-aggregate design. Delivers the Aggregate-as-Guardian formulation with explicit non-identities, and a four-level candidate architecture hierarchy. Delivers the file's self-declared 'most important architectural result': three nested unit-of-X non-identity statements (knowledge≠consistency≠process≠bounded context) explicitly credited with preventing a large class of DDD design errors. For a second consecutive file, introduces ZERO new numbered invariants despite substantial new conceptual content -- a notable anomaly worth flagging for the eventual canonical synthesis. Opens Step 206's well-posed Bounded Context Derivation, the file the corpus itself identifies as finally answering which candidates deserve separate bounded contexts, reframed around 'where does the meaning of a word change?' rather than a technology-first microservices question."

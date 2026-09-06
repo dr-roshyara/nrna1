@@ -1,0 +1,123 @@
+sequence: 939
+path: docs/knowledgeos/brainstorming/phase_measure_theory/external_research/20260831-151606_knowledgeos-complete-pseudo-algorithm.md
+title: "KnowledgeOS -- Complete Pseudo-Algorithm: THE MOST CONCRETE, ACTUALLY-EXECUTABLE-SHAPED ARTIFACT IN THE ENTIRE STEP-25X TRACK (1220 Lines) -- Real Data Structures, a Full Main Algorithm, Detailed Sub-Algorithms With Genuine (Though Arbitrary/Uncalibrated) Numeric Heuristics for Reliability/Relevance/Currency/Support, and a Worked Example -- BUT THE DOCUMENT TITLED 'COMPLETE' LEAVES ITS OWN TWO HARDEST FUNCTIONS (_structural_parse, _semantic_parse -- THE EXACT C-PARSER/SANSKRIT-GRAMMAR BOUNDARY FILE 0931 IDENTIFIED AS NEEDING GENUINE CS RESEARCH) AS BARE `pass` STUBS, A CONCRETE, DIRECTLY CHECKABLE INSTANCE OF THIS TRACK'S RECURRING COMPLETENESS-OVERCLAIM PATTERN"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the Step-25X track's most substantive pseudocode implementation artifact, paired with file 0938's diagrams"
+source_role: PRIMARY_RESEARCH
+canonical_source: 939
+importance: critical
+confidence: medium
+about: >
+  A 1220-line companion document to file 0938's diagrams, delivering actual Python-style pseudocode: §Part 1
+  defines primitive types and roughly twenty core data structures (Artifact, SourceObservation,
+  SemanticInterpretation, Proposition, CandidateAssertion, Evidence, EvidenceQuality, Sigma, Assertion,
+  KnowledgeState, KnowledgeAtma, Lineage, Provenance, HistoryEvent, Policy, ActorState, Gap, Candidate,
+  Guidance, DecisionResult); §Part 2 the main pipeline algorithm; §Part 3 four groups of detailed sub-
+  algorithms (Observation/Assessment/Guidance/Decision); §Part 4 helper functions; §Part 5 a worked example
+  (processing a database query); §Part 6 a summary pipeline diagram, complexity table, and Gita-parallel
+  table.
+
+  **§Part 3.2 (Assessment Sub-Algorithms) delivers GENUINELY MORE SUBSTANTIVE LOGIC THAN ANY PRIOR STEP-25X
+  ARTIFACT**: `_should_admit` compares an ordinal support level against a policy-configurable threshold via
+  explicit rank dictionaries (`support_order`, `uncertainty_order`); `_update_atma` implements an actual
+  deduplication scheme (a dictionary keyed by stringified proposition content, appending to a lineage list
+  on repeat) directly operationalizing file 0934's Knowledge Atma identity criterion into working (if
+  simplistic) code.
+
+  **§Part 4 (Helper Functions) delivers CONCRETE, IF ARBITRARY AND UNCALIBRATED, NUMERIC HEURISTICS**:
+  `_assess_reliability` returns a fixed confidence value per source-method type via a lookup table
+  (`sql_query→0.95, sensor_read→0.90, official_document→0.85, expert_opinion→0.70, human_statement→0.60,
+  llm_output→0.50, unknown→0.30`) -- these specific numbers are asserted with NO calibration, empirical
+  basis, or sensitivity analysis given anywhere in the file, a concrete instance of decorative-but-plausible
+  numeric precision masking an entirely unjustified quantification, structurally similar in kind (though
+  more concrete in form) to the undefined-quantity formulas flagged severely in file 0933; `_assess_relevance`
+  implements simple keyword-matching (fraction of proposition keywords found in observation content);
+  `_assess_currency` implements an age-threshold classifier (`<1 day→current, <30→current, <90→stale,
+  else→expired`, itself internally inconsistent since both `<1` and `<30` map to the same "current" label,
+  making the `<1` branch dead code -- a minor but directly checkable logic redundancy); `_map_support`
+  averages reliability and relevance and thresholds the result into a five-level ordinal scale (none/weak/
+  moderate/strong/very_strong at 0.25/0.50/0.75/0.90 cutoffs) -- again, these specific cutoffs are asserted
+  without justification.
+
+  **§Part 4 ALSO REVEALS THE DOCUMENT'S CENTRAL, DIRECTLY CHECKABLE DEFICIENCY**: the two functions
+  `_structural_parse` (docstring: "This is where the C-parser logic lives... identifies sentences, clauses,
+  phrases, dependencies") and `_semantic_parse` (docstring: "This is where the Sanskrit-style parser logic
+  lives... maps syntax to semantics") are each implemented as a bare **`pass`** statement -- i.e. these two
+  functions, which constitute the actual hard natural-language-understanding core of the entire
+  Observation phase (and which file 0931, the earliest file in this reconstruction's tracked lineage of
+  this idea, explicitly identified as requiring genuine computer-science literature research: "formal
+  grammar; dependency parsing; semantic role labeling; Paninian grammar; computational Sanskrit; ontology
+  learning; knowledge representation; information extraction" -- none of which appears here), REMAIN
+  ENTIRELY UNIMPLEMENTED in a document titled "COMPLETE." **This is a concrete, directly checkable instance
+  of the same completeness-overclaim pattern flagged in file 0937's "all 18 chapters mapped"**: the two
+  functions doing the genuinely hard work are stubs, while the surrounding scaffolding (ID generation,
+  timestamping, threshold comparisons, dictionary lookups) is fully "implemented" -- illustrating precisely
+  the difference between an executable REFERENCE IMPLEMENTATION SKELETON and a working system, a
+  distinction this reconstruction's main Step-NNN track has itself repeatedly and explicitly insisted upon
+  (e.g. files 0915, 0919, 0923's "reference implementation≠real system≠empirical observation" discipline) --
+  here demonstrated concretely rather than merely asserted in prose.
+
+  **§Part 6.2 (Complexity Summary) restates unsubstantiated O(1)/O(n)/O(n²) complexity claims** (Zero
+  `O(n²)`, Sārathi `O(n²)`, Decision `O(n²)`) continuing the pattern from files 0934/0936/0937, here at
+  least contextually more plausible (n likely denotes the number of assertions/knowledge-state size given
+  the surrounding pseudocode) though still never explicitly defined as such in the text.
+
+  **§Part 6.3** restates the Gita-chapter-to-phase parallel table, again implicitly claiming coverage of
+  "Ch 7-17" as a single undifferentiated "Guide" phase entry, consistent with file 0937's already-flagged
+  chapter-coverage overclaim.
+introduces:
+  - concept: "The most substantive pseudocode implementation in the Step-25X track: ~20 concrete data structures, a full main algorithm, four groups of detailed sub-algorithms, and a worked example"
+  - concept: "The concrete (if uncalibrated) numeric reliability lookup table, relevance keyword-matching function, currency age-threshold classifier, and support-mapping averaging function"
+  - concept: "The actual working Knowledge Atma deduplication scheme (a proposition-content-keyed dictionary with lineage appending), directly operationalizing file 0934's identity criterion"
+  - concept: "A CONCRETE, DIRECTLY CHECKABLE DEMONSTRATION OF THE COMPLETENESS-OVERCLAIM PATTERN: the two functions doing the genuinely hard natural-language-understanding work (_structural_parse, _semantic_parse) are bare 'pass' stubs in a document titled 'COMPLETE'"
+  - concept: "A minor internally-redundant currency-classification branch (both <1 day and <30 days map to the identical 'current' label, making the <1-day branch dead code)"
+defines:
+  - concept: "The five-level ordinal support-mapping function (_map_support)"
+    definition: "Given a reliability score and a relevance score (each in [0,1]), their arithmetic mean is thresholded into one of five ordinal support levels: 'very_strong' if the mean is at least 0.90, 'strong' if at least 0.75, 'moderate' if at least 0.50, 'weak' if at least 0.25, and 'none' otherwise. The specific numeric cutoffs (0.25/0.50/0.75/0.90) and the choice of a simple arithmetic mean (rather than e.g. a weighted combination, minimum, or product) are asserted without justification or calibration anywhere in the source document"
+refines:
+  - concept: "File 0934's Knowledge Atma identity criterion"
+    refinement: "OPERATIONALIZED into an actual working code scheme: a dictionary keyed by stringified proposition content, checked for membership before creating a new Atma record, with matching propositions appended to a shared lineage list -- a concrete (if simplistic, string-equality-based rather than semantically-aware) implementation of the abstract identity criterion"
+  - concept: "File 0931's identification of the C-parser/Sanskrit-grammar boundary as requiring dedicated computer-science literature research"
+    refinement: "CONFIRMED STILL UNRESOLVED: the two functions corresponding exactly to this boundary (_structural_parse, _semantic_parse) remain bare, unimplemented stubs in this 'complete' pseudo-algorithm, four days (by original authoring date) or more after file 0931 first flagged the need for dedicated research into this exact problem"
+  - concept: "The main Step-NNN track's 'reference implementation≠real system≠empirical observation' discipline (files 0915, 0919, 0923)"
+    refinement: "CONCRETELY DEMONSTRATED (rather than merely asserted) by this file's own internal structure: extensive, genuinely worked-out scaffolding surrounds two entirely unimplemented core functions, directly illustrating the exact gap this discipline warns about"
+  - concept: "File 0937's 'all 18 chapters mapped' overclaim"
+    refinement: "A STRUCTURALLY ANALOGOUS COMPLETENESS OVERCLAIM IS FOUND HERE: a document titled 'COMPLETE PSEUDO-ALGORITHM' leaves its two hardest, most consequential functions as bare stubs -- the same pattern of claiming totality while a substantive core remains unaddressed"
+contradicts: []
+repeats:
+  - "The six-phase pipeline and complexity table substantially repeat file 0938's own diagrammatic content, now rendered as actual code."
+bridge_candidates:
+  - "Whether _structural_parse and _semantic_parse (or functionally equivalent NLP/grammar components) are ever actually implemented, elaborated, or subjected to the dedicated computer-science literature research file 0931 called for."
+  - "Whether the arbitrary numeric thresholds (reliability lookup table, support-mapping cutoffs) are ever calibrated against real data or subjected to a sensitivity analysis."
+  - "Whether the worked example (§Part 5, processing a database query) is ever actually executed against a real KnowledgeOS/EKP environment, which would constitute genuine empirical evidence rather than a paper-traced illustration."
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file as the Step-25X track's most substantive pseudocode artifact, while flagging the concrete, directly checkable demonstration that its two hardest functions (structural and semantic parsing) remain unimplemented stubs -- a real-world illustration of the reference-implementation-vs-real-system distinction the main Step-NNN track has repeatedly asserted in prose."
+  - "dimension-registry.md: record the file's arbitrary, uncalibrated numeric heuristics (reliability lookup table, support-mapping thresholds) as a further, more concrete-looking but equally unjustified instance of this sub-track's unsubstantiated-formalization tendency."
+anchor_test:
+  anchor: "File 0931's identification of the C-parser/Sanskrit-grammar research boundary; file 0934's Knowledge Atma identity criterion; the main Step-NNN track's reference-implementation-vs-real-system discipline; file 0937's completeness-overclaim pattern"
+  supports_dimension: "Concretely operationalizes file 0934's identity criterion into working code. Confirms file 0931's identified research boundary remains unresolved, with the exact two functions left as bare stubs. Concretely demonstrates (rather than merely asserts) the main track's reference-implementation-vs-real-system distinction. Replicates file 0937's completeness-overclaim pattern in a directly checkable, code-level form"
+  refines_or_contradicts: "operationalizes 0934's criterion; confirms 0931's boundary remains unresolved; concretely demonstrates the main track's own asserted discipline; replicates 0937's overclaim pattern at the code level"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Lines 897-908 (per this reconstruction's read offset) show _structural_parse and _semantic_parse each consisting of only a docstring and a bare 'pass' statement -- directly checkable against the document's own title 'COMPLETE PSEUDO-ALGORITHM.'"
+  - "The reliability lookup table's specific numeric values (0.95, 0.90, 0.85, 0.70, 0.60, 0.50, 0.30) are directly checkable as appearing nowhere else in the file with any derivation, citation, or calibration procedure."
+  - "The _assess_currency function's '<1 day' and '<30 days' branches both returning 'current' is directly checkable as a redundant/dead-code condition."
+undefined_concepts: []
+open_questions:
+  - "Whether _structural_parse/_semantic_parse are ever actually implemented or researched, as file 0931 originally called for."
+  - "Whether the arbitrary numeric thresholds are ever calibrated or justified."
+  - "Whether the worked example is ever executed against a real system rather than paper-traced."
+tier2_triggered: true
+tier2_reason: "The Step-25X track's most substantive pseudocode implementation, genuinely operationalizing prior abstract constructs (the Knowledge Atma identity criterion) into working code -- while also delivering a concrete, directly checkable demonstration that its own two hardest, most consequential functions remain unimplemented stubs, replicating this track's completeness-overclaim pattern at the code level and confirming file 0931's identified NLP/grammar research boundary remains unresolved. Classified importance critical given this dual significance (genuine implementation progress plus a concrete overclaim instance); confidence medium given the mixture of real logic and arbitrary uncalibrated heuristics."

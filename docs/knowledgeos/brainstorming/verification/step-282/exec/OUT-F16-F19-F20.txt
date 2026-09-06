@@ -1,0 +1,49 @@
+====================================================================================================
+F16 — POLICY / KNOWLEDGE SEPARATION
+====================================================================================================
+  1. Policy governs T:  EvaluatePolicy(P) = PASS   P in K? False  -> P is NOT in K
+  2. Assertion ABOUT policy: (P-infra,PolicyStatus,authoritative)  asserted -> 'ok'  |A|=1
+  3. Sigma(aP)=('Supporting', 'Weak')   Pi(aP)=HPA   id=a46070cb69
+  4. Policy change as knowledge: |A|=2 |R|=1  old retained=True
+
+  GovernancePolicy in K?           NO   (P is a Policy object, never an Assertion)
+  KnowledgeAboutPolicy in K?       YES  (2 assertions, with Sigma, Pi, R, History)
+  SEPARATION HOLDS: True
+  => F16 PASS. The two are distinct objects in distinct bounded contexts, and both are representable.
+
+====================================================================================================
+F19 — DEPENDENCY-CYCLE TEST
+====================================================================================================
+  nodes=26  definitional cycles found: 0  -> NONE
+
+  The suspected cycles, each tested:
+    T -> K -> Invariant -> T     Invariant depends on K; T depends on K. Neither depends on the other. NOT a cycle.
+    Sigma -> K                   Sigma depends on Assessment, not on K. NOT a cycle.
+    Policy -> T -> Policy        T depends on Policy DEFINITIONALLY. Policy does NOT depend on T definitionally.
+    Q -> K                       Q depends on P only. NOT a cycle.
+
+  DISTINGUISHING DEPENDENCY KINDS:
+    definitional : needed to WRITE the definition        -> graph above, ACYCLIC
+    operational  : needed to RUN the operation           -> T needs a Policy VALUE at runtime
+    runtime      : needed at execution time              -> same
+    governance   : who may change it                     -> a policy CHANGE is authorised by an act
+    reference    : one definition mentions another       -> acyclic
+
+  The 'Policy -> T -> Policy' loop is a GOVERNANCE dependency, not a definitional one:
+  changing a policy is an ACT that T mediates, but Policy's DEFINITION does not mention T.
+  => NO TRUE DEFINITIONAL CYCLE EXISTS. F19 PASS. I-2 CLOSED with evidence.
+
+====================================================================================================
+F20 — CLOSURE-CATEGORY TEST
+====================================================================================================
+  case                            correct category          test
+  EKP has no evidence field       EMPIRICAL/IMPLEMENTATION  the theory DEFINES Evidence; the platform does not implement it
+  no probability space            MEASUREMENT/SCOPE         F21: removing probability breaks 0 mandatory constructs
+  no Authorize() runtime          COMPUTATIONAL             Authorize_formal is fully typed; only the runtime is absent
+  not-asked vs absent (step 280)  FORMAL — genuinely        the MODEL could not express it; repaired in step 281
+
+  Does the framework PREVENT the miscategorisation? YES, by one operational rule:
+      A gap is FORMAL only if the THEORY cannot express or define the construct.
+      A gap is EMPIRICAL/COMPUTATIONAL if the theory defines it and the SYSTEM lacks it.
+  Applying the rule mechanically re-derives all four categorisations above.
+  => F20 PASS. The distinction is operational, not rhetorical.

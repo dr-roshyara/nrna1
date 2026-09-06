@@ -1,0 +1,110 @@
+sequence: "0122"
+path: docs/knowledgeos/brainstorming/20260822-115144-godel-truth-provability-boundary-lens.md
+title: "Gödel Truth/Provability Boundary lens -- necessary-incompleteness principle for the kernel"
+date: "2026-08-22"
+bytes: 7594
+model:
+  primary: m
+  secondary: [x, c1]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+importance: critical
+confidence: high
+about: >
+  A genuinely rigorous formal-logic connection (Gödel's incompleteness theorem: Truth != Provability,
+  correctly grounded with the German "Wahrheit und Beweisbarkeit" reference) applied to KnowledgeOS.
+  Produces the "Gödel Principle" -- a NEW, precisely-classified status category distinct from the
+  established "meta-principle" cluster (Zero/Mokṣa/Śiva-Śakti/Leonardo/Gaṇeśa): "Meta-epistemic
+  invariant... Not: Dimension. Not: Knowledge object. Role: Defines system limitation."
+
+introduces:
+  - "Gödel's Truth != Provability applied to KnowledgeOS: a knowledge claim's Evidence/Provability
+    (provable within the current model) and Truth/Reality-correspondence are explicitly NOT identical
+    -- a genuinely rigorous formal grounding for the corpus's long-standing Confidence!=Truth /
+    Evidence!=Authority family, now via an actual theorem rather than analogy"
+  - "New triad (distinct from Tripuṭī): Reality / Knowledge state / Formal justification -- 'the bottom
+    layer [formal justification/proof capability] is always incomplete'"
+  - "⭐ 'Gödel Principle': 'No epistemic system may claim complete self-certification. Every knowledge
+    state must preserve its own boundary of validity.' Explicitly classified a NEW category: 'Type:
+    Meta-epistemic invariant. Not: Dimension. Not: Knowledge object. Role: Defines system limitation.'
+    This is terminologically DISTINCT from the established 'meta-principle' status (Zero/Mokṣa/etc.) --
+    'meta-epistemic invariant' specifically names SELF-REFERENTIAL LIMITATION (the kernel cannot fully
+    certify itself), a different flavor of non-kernel status, not to be conflated with the meta-
+    principle cluster per MD-017's non-collapse discipline"
+  - "'Necessary incompleteness principle': 'KnowledgeOS becomes a self-limiting epistemic organism. It
+    preserves knowledge precisely because it accepts that complete knowledge of itself is impossible.'
+    Explicitly named as 'the missing bridge between Zero (neutrality), Wisdom (maturation), AI
+    humility, and Constitutional epistemics' -- a genuine, if informal, connective claim across the
+    whole 0110-0121 meta-principle/mechanism cluster"
+
+defines:
+  - "Gödel Principle (informal): no epistemic system may claim complete self-certification; every
+    knowledge state preserves its own boundary of validity -- classified 'meta-epistemic invariant'"
+
+refines:
+  - "0081's Confidence!=Truth and Evidence!=Authority family: given a genuine formal-logic grounding
+    (Gödel's actual theorem) rather than analogy alone -- the strongest mathematical justification for
+    this family found in the corpus so far"
+
+contradicts: []
+
+repeats:
+  - {concept: "epistemic humility, system limitation awareness", canonical_source: "0114", novelty: low}
+
+bridge_candidates:
+  - "'Meta-epistemic invariant' (Gödel, self-referential limitation) vs 'meta-principle' (Zero/Mokṣa/
+    Śiva-Śakti/Leonardo/Gaṇeśa, foundational-attitude/wisdom-maturation): related but NOT confirmed
+    identical status categories -- recorded as unresolved_equivalence, per MD-017, not merged"
+
+mathematical_content: true
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "New tracked distinction: 'meta-epistemic invariant' (Gödel-derived, self-referential limitation)
+    vs the established 'meta-principle' category -- added to the dimension-registry's meta-principle
+    tracking note as a related-but-distinct sixth-ish status instance"
+
+relationship:
+  type: unresolved_equivalence
+  candidates: ["Gödel Principle (meta-epistemic invariant)", "Meta-Principle cluster (Zero/Mokṣa/Śiva-Śakti/Leonardo/Gaṇeśa)"]
+  equivalence_status: unproven
+  note: >
+    Both are explicitly non-kernel, non-dimension status categories in the source corpus's own
+    vocabulary, but named and justified differently (self-referential logical limitation vs
+    foundational-attitude/wisdom-maturation). Not merged.
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity", "Unknown Preservation"]
+  refines_or_contradicts: >
+    No reshaping of the flat dimension list, but introduces a genuinely new, rigorously-grounded status
+    category (meta-epistemic invariant) alongside the meta-principle cluster -- the corpus's first
+    formal-logic-derived (not merely analogical) justification for kernel self-limitation.
+  alternative_minimal_kernel: null
+  supplies_math_semantics: true   # Gödel's actual theorem, correctly cited, genuine formal content
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "First genuinely rigorous formal-logic (not analogical) grounding for the corpus's long-standing
+    Confidence!=Truth/Evidence!=Authority family, via Gödel's actual incompleteness theorem"
+  - "A new, precisely-named status category (meta-epistemic invariant) explicitly distinguished from
+    the established meta-principle cluster, though the source connects them informally"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether the Gödel Principle and the meta-principle cluster are ever formally distinguished or
+    merged by a later file"
+  - "Whether this genuinely formal grounding (Gödel) prompts any later file toward actual formalization
+    (stage 4/5 maturity) of the kernel's self-limitation property"
+
+tier2_triggered: true
+tier2_reason: >
+  Genuinely rigorous formal-logic connection (Gödel's Truth!=Provability), the strongest mathematical
+  justification yet for the Confidence!=Truth family, and a new precisely-named status category
+  (meta-epistemic invariant) explicitly distinct from the established meta-principle cluster -- tracked
+  as unresolved_equivalence per MD-017, directly relevant to the kernel's self-limitation properties.

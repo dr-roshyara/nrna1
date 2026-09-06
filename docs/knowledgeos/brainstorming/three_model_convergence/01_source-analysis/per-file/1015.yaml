@@ -1,0 +1,105 @@
+sequence: 1015
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/06-GAP-UPDATE-FROM-TRANSLATION-REGISTER-AND-KERNEL-PROGRAMME.md
+title: "06 -- Gap Update From Translation Register and Kernel Programme: DIRECTLY RESOLVES This Reconstruction's Own Flagged File-1011 Chronology-vs-Content Tension (v0.1 Is Confirmed the Superseded Earlier Draft, Not a Relapse), Confirms a NEW GK-Numbering-Collision Defect Across Two Documents, and Delivers Step 285's Answer via D285-6: 'One Is a Projection of the Other -- YES'"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the master consolidation document processing files 1010-1012, 1013 (duplicate), and 1014"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1015
+importance: critical
+confidence: high
+about: >
+  "06 · Gap Update — Translation Register v0.1 + the Kernel Research Programme," processing five renamed
+  prompt files this reconstruction has just documented (files 1010, 1011, 1012, 1013's duplicate, 1014).
+
+  **§2 DELIVERS THE FORMAL, DIRECT RESOLUTION OF THIS RECONSTRUCTION'S OWN FLAGGED FILE-1011 TENSION**: the
+  Translation Register v0.1 (19 entries) and the revised Step 286 register (16 entries, file 0997) are
+  confirmed to assign DIFFERENT IDs to the SAME terms -- a full cross-mapping table given (Sañjaya:
+  GK-09/v0.1 vs GK-16/r286; Buddhi: GK-10/v0.1 vs GK-09/r286; Vairāgya: GK-14/v0.1 vs GK-11/r286; Guṇa:
+  GK-16/v0.1 vs GK-14/r286; Mokṣa: GK-17/v0.1 vs GK-15/r286; `Ω`/Zero: GK-18/19 in v0.1, absent from r286;
+  Jñāna: GK-13 in both, "the only one that agrees"). **"`GK-16` means Sañjaya in one document and Guṇa in
+  the other... This is the same defect class as the `H-K04`/`H-K06` collision -- now at the GK level and
+  ACROSS TWO DOCUMENTS, which is worse: a cross-document citation of `GK-16` is unresolvable."** Explicitly
+  confirms "My artifacts use the revised-286 scheme throughout" -- **directly settling this reconstruction's
+  own flagged ambiguity about whether file 1011's v0.1 register was a genuine relapse or a preserved earlier
+  draft: it is confirmed here as an EARLIER, SUPERSEDED numbering scheme, not the operative one, though
+  neither register is "renumbered" -- disambiguation is used instead (`GK-nn/v0.1` vs `GK-nn/r286`).**
+
+  **§3 DIRECTLY ADJUDICATES the three points where v0.1's content weakened already-tracked findings**
+  (flagged at file 1011): Jñāna (v0.1 says "Knowledge→K, Partial"; adjudicated "my finding stands," since
+  v0.1's own classification is only "Partial," not a strong assertion); Kṣetra-jña (v0.1 says "Candidate";
+  adjudicated "the register UNDERSTATES it" -- it is ratified, FA-4, grade [E]); Sañjaya (v0.1 says
+  "Analogy, Canonical? No"; adjudicated "the register UNDERSTATES it" -- it is a corpus-native construct
+  with six formalized principles). **Governing rule: "Where it and the corpus differ, the corpus governs.
+  No register entry is changed here."** This CONFIRMS file 1011's own weaker treatment of these constructs
+  was a genuine feature of the earlier draft, not a relapse this reconstruction needed to independently
+  flag as severely as file 0971's -- the corpus's own later research explicitly supersedes it, in writing,
+  here.
+
+  **§4 delivers the direct answer to Step 285's eight canonical-K questions (file 1012) via `D285-6`**: same
+  abstraction? NO. **One a projection of the other? YES — `(𝒜,ℛ)=_semantic π_K(K_t)`, lossy.** A refinement?
+  no. Different layers? yes (that is what the projection means). Both required? YES (`K_t` governance anchor,
+  `(𝒜,ℛ)` epistemic sub-state). Which is canonical? `K_t` (the only one with a ratification act). Which is
+  kernel state? UNDETERMINED (depends on unenumerated `𝒪`). Which terminology becomes canonical? NORMATIVE,
+  not the research's to decide. **Explicitly distinguishes the research answer from the required governance
+  artifact**: "`D285-6` supplies Step 285's research answer. It cannot supply the `K-CANONICAL-DECISION`
+  artifact... The research is done; the act is not mine."
+
+  **§5 confirms Reviewer B's discovery-vs-formal correction and adds `Ω`'s executable semantics as a NEW
+  formal gap** to the frontier, distinct from the already-tracked structural recovery.
+
+  **§6 delivers a refined gap-movement table** with the net: "1 new discovery gap (GK ids) · 1 new formal
+  gap (`Ω` semantics) · 1 framing correction · 0 formal gaps closed."
+
+  **§7 DELIVERS THE FILE'S CENTRAL STANDING POSITION, THE DEFINITIVE CLOSURE OF THE ENTIRE EQUALITY/KERNEL
+  RESEARCH ARC**: "The programme has reached a governance boundary, not a research one. FOUR INDEPENDENT
+  VOICES now agree" -- Reviewer A (governance decision required at Step 285), Reviewer B (hand Decision 3
+  to human governance), the corpus itself (Step 261 §261.23's own halt), and this research. **Names the two
+  dependency-ordered decisions remaining**: (1) `Π∈≡`? -- settles `≡`, `≅_λ`'s distinctness, D285-5/6's
+  legitimacy; (2) `K-CANONICAL-DECISION` -- ratify `K_t` as canonical with `(𝒜,ℛ)` as its lossy projection,
+  or rule otherwise. **"Neither is taken here. No new Sanskrit hypothesis was opened."**
+introduces:
+  - concept: "The full GK-numbering cross-mapping table between Translation Register v0.1 and the revised 286 register, confirming a genuine cross-document identifier collision"
+  - concept: "The formal adjudication that the corpus's later, more rigorous findings supersede v0.1's weaker treatment of Jnana, Ksetra-jna, and Sanjaya wherever they differ"
+  - concept: "The direct Step-285 canonical-K answer via D285-6: one model IS a lossy semantic projection of the other, K_t is canonical, kernel state is undetermined pending O enumeration"
+  - concept: "The four-independent-voice convergence on the programme having reached a governance boundary, with two named dependency-ordered decisions remaining (Pi-in-equiv, K-canonical-decision)"
+defines: []
+refines:
+  - concept: "This reconstruction's own flagged file-1011 chronology-vs-content tension (v0.1 register's weaker treatment of Knowledge Atma and Krishna=Omega, and by extension Ksetra-jna/Sanjaya/Jnana)"
+    refinement: "DIRECTLY RESOLVED: v0.1 is confirmed here as the earlier, superseded numbering/content scheme; the operative artifacts use the revised-286 scheme; where they differ, the corpus's later, more rigorous findings explicitly govern -- confirming this was NOT a relapse in the file-0971 sense, but simply an earlier draft correctly identified and adjudicated by the corpus's own later research"
+  - concept: "This reconstruction's already-tracked H-K identifier collision (files 0990, 0996)"
+    refinement: "CONFIRMED to recur at the GK level, across two whole documents rather than within one register -- explicitly named 'the same defect class... now... worse'"
+  - concept: "This reconstruction's already-tracked Step-285 canonical-K reconciliation question (files 0968, 0993, 0998-0999, 1006-1007, 1012)"
+    refinement: "ANSWERED via D285-6, with the research answer explicitly distinguished from the still-outstanding governance artifact (K-CANONICAL-DECISION)"
+contradicts: []
+repeats:
+  - "Substantially consolidates content already documented via files 1001-1012, 1014; its distinctive contributions are the GK cross-mapping table, the formal corpus-governs adjudication, the direct D285-6 answer to Step 285's eight questions, and the four-voice convergence statement."
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the direct resolution of this reconstruction's own flagged file-1011 tension: v0.1 is the superseded earlier draft, not a relapse, and the corpus's later findings explicitly govern wherever they differ."
+  - "dimension-registry.md: record the GK-numbering cross-document collision as a confirmed, named defect (same class as H-K, now worse), and the direct D285-6 answer to Step 285's eight canonical-K questions."
+  - "dimension-registry.md: record the four-independent-voice convergence that the programme has reached a governance boundary, with two named dependency-ordered decisions remaining."
+anchor_test:
+  anchor: "This reconstruction's own flagged file-1011 tension and the already-tracked Step-285 canonical-K question"
+  supports_dimension: "Directly resolves the file-1011 tension and delivers the direct D285-6 answer to the canonical-K question"
+  refines_or_contradicts: "resolves (via adjudication) the file-1011 tension; answers (via research, not governance) the canonical-K question"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The GK cross-mapping table is directly checkable against files 0997 and 1011's own register content for exact consistency."
+  - "The D285-6 answer to Step 285's eight questions is directly checkable against file 1007's own already-documented D285-6 findings."
+undefined_concepts: []
+open_questions:
+  - "Whether the two named dependency-ordered governance decisions (Pi-in-equiv, K-CANONICAL-DECISION) are ever subsequently taken by a human governance act later in the corpus."
+tier2_triggered: true
+tier2_reason: "Directly resolves this reconstruction's own flagged file-1011 chronology-vs-content tension, confirms a new cross-document GK-numbering-collision defect, delivers the direct D285-6 answer to Step 285's eight canonical-K questions, and states the four-independent-voice convergence that the programme has reached a governance boundary. Classified importance critical and confidence high given the direct resolution of an open question this reconstruction itself raised."

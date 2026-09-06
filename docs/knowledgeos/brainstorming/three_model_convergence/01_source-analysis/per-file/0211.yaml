@@ -1,0 +1,77 @@
+sequence: 211
+path: docs/knowledgeos/brainstorming/kernel/20260824-033614-zero-and-chinese-lenses-on-minimum-structure-before-evidence.md
+title: "Zero and Chinese Lenses on Minimum Structure Before Evidence"
+date: "2026-08-24"
+bytes: 18900
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 211
+importance: critical
+confidence: high
+about: >
+  Direct continuation of 0210, applying Zero Lens plus the Chinese philosophical lens (Dao, Yin-Yang,
+  Confucianism, the concept of li) to push behind evidence acquisition itself. Zero Lens asks for the
+  minimum structure needed to move from "something happened" to "we may rely on this" without smuggling
+  in assumptions. The Chinese lens adds a relational question: what relationship must exist between the
+  thing observed, the situation, the observer, and the resulting action. Reformulates evidence not as a
+  stored thing but as a STATUS an observation may acquire through a defensible relationship between
+  phenomenon, observation, acquisition, situation, hypothesis and explanation.
+introduces:
+  - concept: "Four epistemically distinct objects that must not collapse: World event / Observation of event / Interpretation of observation / Knowledge claim"
+  - concept: "Rule: never promote an observation to an explanation without preserving the transition between them (Observation -> interpretation -> Hypothesis, not Observation -> Truth)"
+  - concept: "Situational Provenance, extending ordinary Source/Method provenance with conditions/environment/relation/phase/actors/constraints/what-changed/what-was-absent/what-was-excluded"
+  - concept: "Yin-Yang polarity principle for evidence collection: actively seek both supporting AND contradicting observations, not merely 'find evidence for H'"
+  - concept: "EvidenceInquiry object with SupportingObservations/ContradictingObservations/MissingObservations/AlternativeExplanations/ContextualConditions"
+  - concept: "Change as evidence-bearing structure: a true snapshot (e.g. 99.9% availability) can be misleading; the trajectory (99.99%->99.98%->99.9%->99.4%) carries information the snapshot does not"
+  - concept: "EvidenceTrajectory object (observations/temporal ordering/transitions/environmental changes/inferred pattern)"
+  - concept: "Confucian observer-role dimension: WHO is preserved not as identity alone but as ROLE/AUTHORITY/RESPONSIBILITY/PURPOSE -- the same observation collected by different roles for different purposes carries a different epistemic context (explicitly NOT 'trust the person')"
+  - concept: "'li' as a conceptual lens for appropriate pattern/form/procedure/ordering, mapped onto SelectionProcedure/ObservationProtocol/MeasurementProtocol/EvidenceProtocol"
+  - concept: "Refined definition: evidence acquisition is deliberate creation/retrieval of observations under explicit conditions/procedures/relationships/purposes such that the result CAN SUBSEQUENTLY BE ASSESSED -- not is automatically evidence"
+  - concept: "Complete Zero-Lens chain: REALITY -> PHENOMENON -> OBSERVATION -> OBSERVATION RECORD -> CANDIDATE EVIDENCE -> EVIDENCE -> KNOWLEDGE -> WISDOM -> ACTION, overlaid with a Situation/Person/Time/Relation relational structure"
+  - concept: "Full EvidenceInquiry conceptual object (Question/Claim-Hypothesis/DecisionContext/TargetPhenomenon/AcquisitionIntent/SelectionProcedure/ObservationProcedure/MeasurementContext/Observer[identity,role,authority]/Situation[time,environment,actors,constraints]/ExpectedObservations/ContradictingObservations/AlternativeExplanations/Deviations/ResultingObservations)"
+  - concept: "Evidence quality as multi-dimensional (Observation:accuracy/integrity/precision, Acquisition:selection-procedure/bias, Situation:completeness/context/change) feeding Interpretation feeding Assessment -- explicitly rejecting a single reductive quality score"
+  - concept: "Absence-as-evidence: six-way epistemic distinction (Observed / Not observed / Expected-but-absent / Unexpectedly-present / Unknown / Not-measurable / Not-collected), with 'not observed' explicitly != 'does not exist'"
+  - concept: "Epistemic state model per proposition: OBSERVED / UNOBSERVED / UNKNOWN, each with its own sub-questions, explicitly contrasted with AI's naive true/false binary"
+  - concept: "'Conceptual hardening' warning (Daoist lens): Observation->pattern->category->reality collapse; the system must retain 'our conceptualization may be wrong even when the underlying observation is correct' at every transition (Phenomenon->Description->Pattern->Interpretation->Concept->Hypothesis)"
+  - concept: "AI reframed as 'Epistemic Inquiry Assistant' rather than evidence collector -- an eleven-question inquiry checklist precedes any collect/search/measure action"
+  - concept: "Agent workflow chain: Question->Inquiry Formulation->Evidence Need->Acquisition Design->Collection->Provenance Capture->Selection Audit->Contradiction Search->Alternative Explanation->Evidence Assessment->Knowledge Update, to be verified (not bypassed) by the Verification Engine"
+  - concept: "Core principle: 'Evidence is not a thing KnowledgeOS merely stores. Evidence is a status an observation may acquire through a defensible relationship between phenomenon, observation, acquisition procedure, situation, hypothesis and explanation.'"
+  - concept: "Proposed five-lens 'Evidence Acquisition Discovery Round' agenda (Zero/Chinese/Achinstein/Causal/Wisdom questions) to derive the domain model from first principles rather than prematurely inventing entities"
+defines: []
+refines:
+  - concept: "0210's EvidenceAcquisition aggregate and two-dimensional provenance model"
+    refinement: "Adds a third provenance dimension (Situational Provenance: role/relation/timing/change/absence), reframes evidence from a stored object to an acquired STATUS, and adds EvidenceTrajectory (temporal/transformation structure) and the Yin-Yang supporting/contradicting polarity requirement not present in 0210."
+contradicts: []
+repeats:
+  - concept: "Alternative explanations must be actively sought, not merely supporting evidence"
+    canonical_source: 210
+    novelty: low
+bridge_candidates:
+  - "This file's 'Situation' object (time/environment/actors/constraints) vs. the dimension-registry's OPEN/UNRECONCILED 'Context' dimension (unstable across 0089/0090/0091/0094/0095) -- worth flagging as a possible resolution candidate: this file's Situational Provenance may supply the missing structural account 'Context' lacked, but this is NOT logged as unresolved_equivalence yet since the earlier Context instability was about a different kind of collapse (constitutively-relational vs. accidentally-relational attributes), not evidence-acquisition situational conditions. Noted only for future comparison."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0144-0170 DDD/Sanskrit/Chinese Kernel Boundary Discovery cycle (Chinese-lens findings) and the dimension-registry's OPEN/UNRECONCILED Context dimension"
+  supports_dimension: "Reinforces prior Chinese-lens findings (Relational Identity, Context Envelope from 0202) with new evidence-specific content; potential future relevance to resolving the OPEN Context dimension, not yet claimed as resolution"
+  refines_or_contradicts: "refines 0210; does not directly engage the Context dimension's specific instability (flagged as a noted-only bridge, not logged as unresolved_equivalence)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Deployment-outage worked example distinguishing World event / Observation / Interpretation / Knowledge claim as four genuinely different objects, showing exactly where AI systems collapse observation into interpretation into fact"
+  - "Monthly-availability-trend worked example (99.99% -> 99.4%) demonstrating that a true snapshot can be evidentially misleading without trajectory information"
+undefined_concepts:
+  - "No formal criteria given for when Situational Provenance is 'complete enough' to support an assessment -- only illustrative dimensions listed"
+  - "How EvidenceTrajectory's 'inferred pattern' sub-field would be computed or validated"
+open_questions:
+  - "Whether the proposed five-lens Evidence Acquisition Discovery Round is ever actually conducted as a dedicated later source"
+  - "Whether Situational Provenance is ever explicitly connected to resolving the registry's OPEN/UNRECONCILED Context dimension"
+tier2_triggered: true
+tier2_reason: "Critical deepening of the evidence-acquisition arc: reformulates evidence as an acquired status rather than a stored object, introduces Situational Provenance and EvidenceTrajectory via the Chinese philosophical lens, and produces an explicit epistemic-state model (Observed/Unobserved/Unknown) rejecting AI's naive true/false binary -- directly relevant to the registry's still-unresolved Context dimension."

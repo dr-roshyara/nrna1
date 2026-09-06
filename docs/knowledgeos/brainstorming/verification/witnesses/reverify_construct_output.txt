@@ -1,0 +1,35 @@
+==============================================================================
+SMALLEST COMPLETE INSTANCE — CONSTRUCTION RESULT
+==============================================================================
+K0: |A|=2  |R|=1   R=[('7d63f998ff18', '7181dac364ee', 'contradicts')]
+Sigma(A1,p)=('Supporting', 'Weak')   Sigma(A2,p)=('Supporting', 'Weak')
+verdict (Apply) = {'7d63f998ff18': False, '7181dac364ee': False}
+c_t = {'cmd': 'commit', 'target': '7d63f998ff18', 'by': 'N:architect', 'policyVersion': 3}
+e_t = {'event': 'Committed', 'target': '7d63f998ff18', 'at': '2026-08-02'}
+K1 is K0 : True   |History|=1
+
+OBJECTS THAT COULD NOT BE CONSTRUCTED WITHOUT INVENTING A DEFINITION: 8
+
+  [1] UNKNOWN-VALUE
+      P=(E,D,V) requires V in V_D. '?' is not in V_D. Representing 'value unknown' requires either widening every V_D with a bottom element or a new carrier. Neither is defined in the theory.
+
+  [2] MISSINGNESS-NOT-ASSESSED
+      K=(A,R) contains no set of RECOGNISED DIMENSIONS D_t. 'not assessed' and 'assessed, nothing found' both render as: no assertion mentioning D.bkp. The two are provably indistinguishable in K.
+
+  [3] UNCERTAINTY
+      Sigma:(dir,str) is ORDINAL and DERIVED, never stored, and is a function of (Assertion,Policy). There is no field on Assertion or Evidence able to carry U(H)=(type,value,model,scope,source). Uncertainty of the CLAIM cannot be distinguished from strength of the EVIDENCE FOR it.
+
+  [4] NON-IDENTIFIABILITY
+      Identifiable(g,Omega) quantifies over W1,W2 in a WORLD SPACE W with an observation function Omega:W->O. The canonical 8-layer ontology has no W and no Omega. The property is not statable, let alone decidable.
+
+  [5] SARATHI-BODY
+      Sarathi has a 7-ary signature and no body anywhere in the corpus.
+
+  [6] AUTHORIZE-BODY
+      Authorize:(N,A,Policy)->C is a SIGNATURE ONLY. No body exists in the corpus. Codomain declared C (commands) but the outcome enum includes Rejected/Deferred/Modified, which are not commands: the declared type is wrong and the partiality is unacknowledged.
+
+  [7] KNOWER-SPACE-N
+      N (the Knower) is never defined. Its space, identity criterion and equality are absent, so 'the same authority act' is not expressible.
+
+  [8] DELTA-COMMIT-SEMANTICS
+      delta(K,e) must place the target in a COMMITTED governance status. Gamma is typed Assertion x GovCtx -> {...} but is DERIVED and NOT a component of K, so delta has nowhere in K to write the result. The state transition for the system's central act is undefined.

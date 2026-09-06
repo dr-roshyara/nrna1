@@ -1,0 +1,162 @@
+sequence: 2310
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260901-025251_step_290_proposed-as-operation-semantics-research-step-collides-with-n1-adjudication.md
+title: "REFINED-STEP-290 — Operation Semantics: a Rigorous Formal Research Mandate That Directly Collides With the Already-Tracked Actual Step 290 (N-1/Adjudication), Delivers the Operation-Semantics≠Transformation-Semantics Boundary, a Nine-Value Evidence Classification, and a Renumbered 285→293+ Research Sequence Explicitly Separating Observation Out of Step 290"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the thread's single most rigorous formal research-mandate artifact -- a full REFINED-STEP-290 specification with an extensive non-goals list, thirty-plus numbered sections, a nine-value evidence classification scheme, and an explicit anti-overclaiming table; its title, and its own content, directly collide with this reconstruction's already-tracked actual Step 290 (N-1/adjudication, per file 2301's summary)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2310
+importance: critical
+confidence: high
+about: >
+  Proposes a complete "REFINED-STEP-290 — OPERATION SEMANTICS" research mandate: "Step 290 must define what
+  it means for a KnowledgeOS operation to be semantically valid, without prematurely selecting the final
+  operation set, kernel state, equality relation, or implementation." This is the thread's single most
+  formally structured artifact -- a full research-mandate document with artifact/type/depends-on/status/
+  authority/objective header fields, thirty-plus numbered sections, and explicit deliverable specifications.
+
+  **DELIVERS A DIRECT, EXPLICIT 'STEP 290' NAMING COLLISION WITH THE ALREADY-TRACKED ACTUAL STEP 290**: this
+  reconstruction has already tracked (via file 2301's comprehensive Steps-286-290 summary table, itself
+  summarizing this reconstruction's earlier project phase) the actual corpus Step 290 as "N-1/adjudication:
+  resolves or structures the remaining competing interpretations/registers without prematurely choosing
+  architecture." This document instead proposes Step 290 as "OPERATION SEMANTICS" -- an entirely different
+  research mandate under the SAME step number. This is the corpus's own filename explicitly flagging the
+  collision ("...collides-with-n1-adjudication"), making it the FIRST instance in this entire Gītā thread
+  where a naming collision is self-identified in the source material itself (all four prior 'Step 291'
+  collisions -- files 2260, 2275, 2300, 2302 -- went unnoticed within the corpus). This is a significant,
+  now doubly-confirmed corpus-integrity pattern: this Gītā thread repeatedly reuses already-occupied step
+  numbers (Step 290 here, Step 291 four times previously) for unrelated research content.
+
+  **DELIVERS A THIRTEEN-ITEM NON-GOALS LIST** for the proposed Step 290: must NOT select the final kernel;
+  declare (𝒜,ℛ) to be the kernel; resolve the equality decision problem; decide whether Π∈≡; define the
+  final observation model; introduce new primitives; promote philosophical concepts into architecture; select
+  a final operation registry; declare δ total; assume operations deterministic; assume every operation
+  changes K; assume every operation reversible; resolve Governance questions by mathematical argument --
+  "operation semantics ≠ operation registry ≠ implementation."
+
+  **DELIVERS THE OPERATION-SEMANTICS≠TRANSFORMATION-SEMANTICS BOUNDARY**, explicitly called "likely the most
+  important boundary of the entire step": Operation semantics answer "what does this operation mean and
+  under what conditions is it applicable?" (Applicable(K,o)); Transformation semantics answer "given an
+  applicable operation, exactly how does state change?" (δ(K,o)=K'). Step 290 may establish the former
+  WITHOUT establishing the latter.
+
+  **DELIVERS A THREE-LEVEL SEPARATION FOR OPERATIONS**: Level 1 -- Operation identity (what makes o_1=o_2
+  true? candidates: identifier/type/version/parameters/semantic-specification/authority/provenance); Level 2
+  -- Operation semantics (⟦o⟧(K)=K' or ⟦o⟧(K,O)=K' or ⟦o⟧(K,I)=(K',E)); Level 3 -- Operation execution
+  (database transaction/event emission/workflow transition/API call/human decision/AI inference) --
+  "identity ≠ semantics ≠ execution," "implementation must not be used to define semantics."
+
+  **DELIVERS SIX CANDIDATE SEMANTIC OPERATION CLASSES** (explicitly hedged as candidates only): Query q:K→R
+  (non-mutating); State transformation δ:K→K'; Observation acquisition a:W→O; Assertion creation α:(O,E,C)→A;
+  Governance operation g:K×Π→K'; External effect e:K→(K',X).
+
+  **DELIVERS THE REJECTION≠FAILURE≠NOOP DISTINCTION** as its own required investigation: "Rejected ≠
+  Execution failure ≠ Successful operation with unchanged state," explicitly cross-referenced to an existing
+  governance question "Reject↔I-12↔Article 8" (flagged as a bridge candidate -- I-12 and Article 8 are not
+  otherwise identified in this reconstruction's already-tracked material) -- "Step 290 must NOT resolve that
+  governance question."
+
+  **DELIVERS THE REPLAY≠RE-EXECUTION DISTINCTION**, connected directly to "the Step-285 finding that K_t is
+  replay-capable": Replay(H)→K_t (reconstructing a historical state) versus Execute(o,K_t)→K_{t+1} (executing
+  again) -- "these are not necessarily equivalent."
+
+  **DELIVERS THE OPERATION≠EVENT AND OPERATION≠ACTION FORMAL AUDIT REQUIREMENTS**: "the corpus already
+  contains both primitives Event, Action, and therefore Step 290 must not silently merge them," with a
+  candidate (hypothesis-only) distinction: "Operation = semantic transition specification; Action =
+  something performed; Event = something that occurred/is recorded."
+
+  **DELIVERS THE AUTHORITY-RECORDING≠AUTHORITY-GRANTING PRINCIPLE**: "an operation may record AuthorityRef
+  without creating authority... recording authority ≠ granting authority" -- explicitly following "the
+  established anti-regress principle" (a direct citation to this reconstruction's already-tracked anti-
+  regress finding from earlier project phases).
+
+  **DELIVERS THE PHILOSOPHICAL-SOURCE CONSTRAINT FOR STEP 290 SPECIFICALLY**: Gītā material may be used only
+  as a research lens (candidate relevant concepts: Karma, Buddhi, Dharma, Vairāgya, Sārathi), with the chain
+  "Gītā→interpretation→hypothesis→independent derivation→technical test. Never: Gītā→Operation Type," and the
+  falsifiability criterion: "if a result survives after deleting the philosophical appendix, classify it as
+  independently derived."
+
+  **DELIVERS A FIFTEEN-ROW MATHEMATICAL TEST PROGRAMME** (Identity/Domain/Partiality/Determinism/No-op/
+  Idempotence/Composition/Associativity/Commutation/Replay/Provenance/Rejection/Failure/Observation/Event),
+  with the explicit warning: "every PASS must state exactly what object was tested. No 'operations are
+  associative' unless the operation domain and composition operation have actually been defined."
+
+  **DELIVERS A DDD AUDIT REQUIREMENT**: determine whether 'Operation' is Entity/Value-Object/Domain-Service/
+  Command/Domain-Event/Policy/Specification/Process/or merely a mathematical abstraction -- "Command≠
+  Operation unless the bounded context explicitly establishes the correspondence... DDD terminology must not
+  be used as a substitute for semantic definition."
+
+  **DELIVERS A NINE-VALUE EVIDENCE CLASSIFICATION SCHEME**, more granular than any prior status-tagging
+  scheme in this window: CORPUS, DERIVED, EMPIRICALLY VERIFIED, CORROBORATED, HYPOTHESIS, NORMATIVE, OPEN,
+  BLOCKED, REFUTED -- "every conclusion must receive exactly one primary classification... do not use
+  'established' merely because a mathematical model is elegant."
+
+  **DELIVERS A MANDATORY EIGHT-ROW ANTI-OVERCLAIMING TABLE** pairing "tempting statement" against "permitted
+  statement" (e.g. "δ is the transformation function"→"δ is a candidate transformation notation"; "Buddhi is
+  the kernel"→"Buddhi is a philosophical lens for discrimination").
+
+  **DELIVERS SIX CANDIDATE OUTCOME CLASSES FOR THE STEP'S OWN RESULT** (A-F): Functional transition model
+  δ:K×O⇀K; Relation-based semantics R_o(K,K'); Effect-producing semantics δ:K×O→K×E; Event-sourced semantics
+  K_t=Replay(E_{0:t}); Hybrid (K,O,E,Π,P,A); or Insufficient evidence ("operation semantics remain under-
+  specified") -- "no outcome may be selected because it is architecturally attractive."
+
+  **DELIVERS AN EXPLICIT REVISED RESEARCH SEQUENCE**, separating Observation OUT of Step 290: "I would NOT
+  put Observation research inside Step 290. Observation is a separate conceptual dependency and should be
+  investigated as its own controlled step. Otherwise Step 290 risks assuming precisely the thing the new
+  methodology says must be researched first." Proposes: 285(Canonical State Reconciliation)→286
+  (Philosophical-Source Hypothesis Programme)→287(Equality/Identity/Observability)→288(Equality Closure
+  Audit)→289(Operations -- inventory/candidate space)→290(Operation Semantics)→291(Observation Semantics)→
+  292(Dimension)→293(Statement)→... This is itself a FIFTH independent 'Step 291' proposal within this Gītā
+  thread (after files 2260, 2275, 2300, 2302), now specifically assigning it to "Observation Semantics"
+  rather than general kernel-operator-discovery -- still colliding with the actual already-tracked corpus
+  Step 291.
+introduces:
+  - concept: "The self-identified 'Step 290' naming collision -- the corpus's own filename explicitly flags that this proposed Operation-Semantics mandate collides with the already-tracked actual Step 290 (N-1/adjudication), the first such self-identified collision in the entire thread"
+  - concept: "The Operation-Semantics≠Transformation-Semantics boundary, explicitly named the step's most important distinction"
+  - concept: "The nine-value evidence classification scheme (CORPUS/DERIVED/EMPIRICALLY VERIFIED/CORROBORATED/HYPOTHESIS/NORMATIVE/OPEN/BLOCKED/REFUTED), the thread's most granular status vocabulary"
+  - concept: "The mandatory eight-row anti-overclaiming table pairing tempting vs permitted statements"
+  - concept: "The Rejection≠Failure≠NoOp distinction, cross-referenced to an external governance question 'Reject↔I-12↔Article 8' (bridge candidate)"
+  - concept: "The revised 285-293+ research sequence explicitly separating Observation out of Step 290 into a renamed 'Step 291 -- Observation Semantics' (a fifth independent Step 291 proposal)"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked actual Step 290 (N-1/adjudication) from file 2301's summary"
+    refinement: "DIRECTLY COLLIDES with this document's proposed 'Step 290 -- Operation Semantics' -- the corpus's own filename self-identifies this collision, unlike the four prior unnoticed 'Step 291' collisions"
+  - concept: "This reconstruction's already-tracked anti-regress principle (authority)"
+    refinement: "DIRECTLY CITED and applied to operation semantics: recording authority ≠ granting authority"
+  - concept: "This reconstruction's already-tracked Step 285 replay-capability finding for K_t"
+    refinement: "EXTENDED into an explicit Replay≠Re-execution operational distinction"
+  - concept: "This reconstruction's already-tracked four prior 'Step 291' collisions (files 2260, 2275, 2300, 2302)"
+    refinement: "EXTENDED to a fifth independent proposal, now specifically for 'Observation Semantics'"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "The 'Reject↔I-12↔Article 8' governance-question citation -- I-12 and Article 8 are not otherwise identified in this reconstruction's already-tracked material; flagged for direct encounter elsewhere in the corpus."
+  - "Whether the revised 285-293+ research sequence (with Observation explicitly separated into a renamed Step 291) is the version actually adopted and executed later in the sequential read, given the confirmed collision with the actual Step 290 and the still-unresolved four-plus-one collisions on Step 291."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as the thread's most rigorous formal research-mandate artifact, self-identifying a 'Step 290' naming collision with the already-tracked actual Step 290 (N-1/adjudication) -- the first self-identified collision in the thread -- and delivering the Operation-Semantics≠Transformation-Semantics boundary, a nine-value evidence classification, and a revised research sequence that produces a fifth independent 'Step 291' collision (Observation Semantics)."
+anchor_test:
+  anchor: "This reconstruction's already-tracked actual Step 290 (N-1/adjudication) and the four prior 'Step 291' collisions"
+  supports_dimension: "Self-identifies a direct collision with the actual Step 290, and its own proposed renumbering produces a fifth independent 'Step 291' collision -- confirming this is a systemic, repeated corpus-integrity pattern rather than an isolated incident"
+  refines_or_contradicts: "contradicts (step-numbering) / refines (operation-semantics methodology)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "This document's own filename explicitly flags the Step-290 collision ('collides-with-n1-adjudication'), directly confirming this reconstruction's already-tracked actual Step 290 content and providing the first corpus-internal acknowledgment of a step-numbering collision anywhere in this Gita thread."
+  - "The 'Reject↔I-12↔Article 8' citation is directly checkable against this reconstruction's already-tracked governance material to identify what I-12 and Article 8 refer to."
+undefined_concepts:
+  - "'I-12' and 'Article 8' -- cited as an existing governance question tied to the Reject/Fail distinction, not otherwise defined in this document."
+open_questions:
+  - "Whether the proposed thirty-plus-section REFINED-STEP-290 research mandate (operation semantics) is directly commissioned and executed as its own set of deliverable artifacts (research/step-290/01-12*.md, exec/t290_*.py) later in the sequential read."
+  - "Whether the renumbered Step 291 (Observation Semantics) proposed here is the version actually adopted, given it constitutes a fifth independent collision with the actual corpus Step 291."
+tier2_triggered: true
+tier2_reason: "The thread's single most rigorous, formally structured research-mandate document -- delivers the Operation-Semantics≠Transformation-Semantics boundary, a nine-value evidence classification scheme, a mandatory anti-overclaiming table, and thirty-plus numbered investigative sections -- while its own filename self-identifies a direct 'Step 290' naming collision with the already-tracked actual Step 290, the first such self-acknowledgment in the entire thread, and its proposed renumbering produces yet a fifth independent 'Step 291' collision. Classified importance critical given both the methodological rigor and the significance of the self-identified corpus-integrity collision."

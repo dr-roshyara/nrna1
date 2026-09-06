@@ -1,0 +1,98 @@
+sequence: M0117
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-132000_proposed-optimized-model-structures-first-projections-derived.md
+title: "A Proposed Optimized Model for KnowledgeOS -- CONFIRMED AS THE ORIGINAL ANTECEDENT PROPOSAL Already Reviewed and Analyzed as M0098 (Its Appended 'Review of This Proposal' Section, Lines 253-1486, Is Near-Identical to M0098's Full Content): the Six-Layer Structures-First Model, Four Structural Laws L1-L4, and a SUPERSEDED-AS-OF Notice Pointing to a Not-Yet-Processed Consolidation Document, '20260902-155427_the-research-model-and-the-optimized-model.md', That Incorporates This Review Together With FR-001, KR-HILBERT, the R1 Factivity Decision, and KR-CONTR"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "the ORIGINAL antecedent 'structures-first' proposal document (Author: 'the executing research lane'), whose appended review section (lines 253 onward, marked '# Review of this proposal') is near-identical in content to this reconstruction's already-fully-recorded M0098 -- confirming M0098 is a copy/retitling of this document's review portion; carries a superseded-notice header pointing to a further, not-yet-processed consolidation document"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0117
+importance: high
+confidence: high
+about: >
+  Presents the original structures-first proposal (Layer 0 Lenses / Layer 1 Structures (E_t, B_t,
+  AF_t, M_t) / Layer 2 Projections (Sat_c, Gap, U, Zero, Balanced) / Layer 3 Attribution / Layers
+  4-5 Transition+History), the four structural laws L1-L4 (plus a proposed but not-yet-enforceable
+  L5), a migration plan (six cheapest-first steps), DDD bounded-context consequences, and an
+  "honest summary" explicitly warning against adopting the model merely because experiments
+  succeeded and against repairing open items by silent implementation -- all already summarized via
+  this reconstruction's M0098/M0099 records (which reviewed this same content one step removed).
+
+  **CARRIES A SUPERSEDED-AS-A-PROPOSAL NOTICE** (added 2026-09-02, at the top): states a REVISED
+  proposal, "20260902-155427_the-research-model-and-the-optimized-model.md" -- NOT YET PROCESSED IN
+  THIS RECONSTRUCTION'S PASS AS OF THIS RECORD -- "incorporates the review appended below" together
+  with FR-001, KR-HILBERT, the R1 factivity decision, and KR-CONTR, and explicitly instructs "this
+  document is NOT withdrawn. It stands as the record of the proposal that was reviewed... read it
+  as of its date." This is a genuine forward pointer to a further consolidation this reconstruction
+  should expect to encounter and connect back to this document when reached.
+
+  **PROVIDES SEVERAL SPECIFIC QUANTIFIED EVIDENCE CITATIONS NOT PREVIOUSLY RECORDED WITH THIS
+  PRECISION**: for B_t as a candidate primary structure, cites "KR-ZERO-H: 9 distinct, 36/36 pairs"
+  (all 36 pairwise comparisons among the nine boundary conditions remain distinct); for M_t, cites
+  a concrete model-fit-vs-causal-validity witness "beta=1.852, R^2=0.899, true effect 0" (a strong
+  apparent statistical fit masking zero actual causal effect) from "v1.1 scenario H"; for the
+  minimum-typing result, gives the exact minimal sufficient sets "{G_value, G_assessment, G_model}
+  or {G_assessment, G_evidence, G_model}" (two of eleven facets, G_assessment and G_model, are the
+  common minimum); the migration plan's exact six-step cheapest-first ordering (declare the lens
+  register; decide factivity; decide whether Delta is a count or ordered; define Contr with the
+  fourth value and Zero readings together; define >=; test-or-drop the 37 distinctions); and the
+  DDD "three notions of necessity disagree for Discriminate, Select, Revise" finding.
+
+  **THE APPENDED REVIEW SECTION (lines 253-1486) IS SUBSTANTIVELY THE SAME CONTENT ALREADY RECORDED
+  IN THIS RECONSTRUCTION'S M0098 ENTRY**: the induced-equivalence correction (x1~_pi x2 iff
+  pi(x1)=pi(x2), replacing the "kernel of the projection" phrasing); the strengthened L2 (every
+  projection declares distinctions identified OR discarded); the "candidate primary structures"
+  downgrade for E_t/B_t/AF_t/M_t; the invariant custody formalization (Custody(I)={c|c responsible
+  for preserving I}, admissibility condition Custody_before(I)!=empty=>Custody_after(I)!=empty);
+  the factivity caution (externalization should remain [PROP] until an architectural decision is
+  made, and the further subtlety of separating TruthEvaluation from KnowledgeAttribution); the
+  "kernel writes history" downgrade from established law to candidate architectural capability
+  requiring adjudication; the L4 refinement (semantic rule: a lens cannot be the ontological
+  producer of the object it examines, rather than a purely syntactic RHS rule); the L5 endorsement
+  and the "not currently testable as progress claims" precision over "unfalsifiable"; the
+  "projection lattice" idea (Pi={pi_1,...,pi_n}, x~_{pi_i}y); the Zero-as-boundary-analysis-lens
+  reinterpretation (ZeroLens(K,Pi) examining [x]_pi); the Yoni~(H,R,Theta) and Linga~G:K_t x Q_t ->
+  H_t reinterpretations, both explicitly non-identity; the version-diff-discipline correction (a
+  semantic change is a real change even if no paragraph is deleted); the KR-PROJ-2026-09 proposal
+  with its eight-part method and the explicit instruction "do not assume Claude's four structures
+  are correct... let the experiment try to falsify them"; and the final S_t -> pi_i -> R_{i,t}
+  research-architecture formulation with Structure!=Projection!=Lens!=Transformation!=History. See
+  M0098's own dimension-registry entry for the full analysis of this content; not re-recorded here.
+introduces:
+  - concept: "The forward pointer to '20260902-155427_the-research-model-and-the-optimized-model.md', a further consolidation document (not yet processed at the time of this record) incorporating this review together with FR-001, KR-HILBERT, R1, and KR-CONTR"
+  - concept: "The specific quantified evidence citations for B_t (KR-ZERO-H: 9 distinct, 36/36 pairs) and M_t (beta=1.852, R^2=0.899, true effect 0, from v1.1 scenario H) as candidate primary structures"
+  - concept: "The exact minimal sufficient typing sets ({G_value,G_assessment,G_model} or {G_assessment,G_evidence,G_model}) for the boundary object's typed facets"
+  - concept: "The exact six-step cheapest-first migration ordering"
+defines: []
+refines:
+  - concept: "Confirmed as the original antecedent document underlying M0098/M0099's already-recorded analysis -- this record does not repeat that analysis, only the specific new evidentiary detail present in this fuller original document"
+contradicts: []
+repeats:
+  - concept: "The appended review section (lines 253-1486) substantially repeats content already fully recorded in M0098 -- see that entry for the full analysis of the induced-equivalence correction, invariant custody, the candidate-primary-structures downgrade, the factivity caution, the kernel-history downgrade, L4's refinement, the KR-PROJ-2026-09 proposal, and the Yoni/Linga reinterpretations"
+bridge_candidates:
+  - concept: "'20260902-155427_the-research-model-and-the-optimized-model.md' -- a specific, named consolidation document this reconstruction should locate and connect back to this proposal and its review when encountered later in the pass"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0117 as the confirmed original antecedent of M0098 (its review section is near-identical content, already recorded there), carrying a superseded-notice pointing to a further, not-yet-processed consolidation document ('20260902-155427_the-research-model-and-the-optimized-model.md') that should be located and connected back when reached, plus several specific quantified evidence citations (KR-ZERO-H 9-distinct/36-36-pairs; the beta=1.852/R^2=0.899/true-effect-0 model-fit-vs-causal-validity witness; the exact minimal typing sets and six-step migration ordering) not previously recorded with this precision."
+anchor_test:
+  anchor: "M0098/M0099 (this document's own review/ratification, already fully recorded)"
+  supports_dimension: "Confirms the original source of M0098's content and supplies several specific quantified evidentiary details not previously recorded, plus a genuine forward pointer to a further consolidation document"
+  refines_or_contradicts: "refines (M0098, M0099)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'20260902-155427_the-research-model-and-the-optimized-model.md' is named explicitly as the document that supersedes this proposal, incorporating this review together with FR-001, KR-HILBERT, R1, and KR-CONTR -- a genuine, checkable forward reference for this reconstruction's continued pass."
+  - "'beta=1.852, R^2=0.899, true effect 0' -- a concrete, previously-unrecorded statistical witness for M_t's candidacy as a primary structure, demonstrating strong apparent model fit can coexist with zero true causal effect."
+undefined_concepts: []
+open_questions:
+  - "Whether '20260902-155427_the-research-model-and-the-optimized-model.md' appears later in this reconstruction's remaining sequence, and if so, connecting it back to this document and M0098/M0099 as its lineage."
+tier2_triggered: true
+tier2_reason: "Confirms the source lineage of M0098/M0099 and supplies a genuine, checkable forward pointer to a further not-yet-processed consolidation document this reconstruction should watch for, plus several specific quantified evidentiary details not previously recorded with this precision."

@@ -1,0 +1,82 @@
+sequence: 1113
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/00_NUMBERING-COLLISION-REPORT.md
+title: "00 -- Numbering Collision Report: THE PRIMARY LIVING SOURCE DOCUMENT for the Entire Numbering-Collision Arc, Confirming and Consolidating the Already-Tracked N-22 (file 1093), G-101 Root-Cause (file 1107), and G-106 Escalation (file 1112) Findings in Full Original Detail, With Three Chronological Addenda Appended Directly to the Original Report"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the self-updating primary source document underlying the entire numbering-collision discovery arc, cited repeatedly across files 1093/1107/1112"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1113
+importance: major
+confidence: high
+about: >
+  "00 — Numbering Collision Report (mandate §22)." The primary living source document underlying this
+  reconstruction's already-tracked numbering-collision arc (files 1093's `N-22` flag, 1107's `G-101` root-
+  cause diagnosis, 1112's `G-106` escalation), confirming their content in full original detail. Explicitly
+  disciplined per its own mandate: "'Do NOT renumber or overwrite anything. Inspect the registry first. If
+  there is a collision, create a collision report and leave numbering unchanged.'"
+
+  **DELIVERS THE ORIGINAL, FULL-DETAIL RECORD OF COLLISION 1 (`287`)**: two artifacts carry slot 287 -- the
+  already-tracked equality/identity/observability step and a separate `REFINED-STEP-287-INVARIANTS.md` --
+  with "three prompt sources place equality at 285 and Invariants at 287," "recorded since 2026-08-31 21:1x;
+  never adjudicated."
+
+  **DELIVERS THE ORIGINAL, FULL-DETAIL RECORD OF COLLISION 2 (`289`)**, already substantially tracked via
+  file 1112's escalation but here shown in its first form: three prompts at slot 289, two of which are
+  OPERATIONS mandates (one superseded by the other), confirming Step 290 itself already noted "'the natural
+  slot is 291,'" which was then itself claimed by this very `step-291` package -- leaving the OPERATIONS
+  mandate's natural slot at 292, explicitly "NOT assigned here."
+
+  **DELIVERS A GENUINELY VALUABLE OVERLAP-CHECK NOT PREVIOUSLY TRACKED AT THIS PRECISION**: precisely
+  distinguishes the already-tracked file-1080 Step-291 operation-registry audit from the still-unscheduled
+  OPERATIONS mandate, confirming they are NOT duplicates despite covering the same 22 operations: "Step 291
+  `03` -- IS `𝒪` CLOSED? -- a closure question" (measuring: "22 named · 8 typed · 0 bodies · 0 ratified") vs.
+  "the OPERATIONS mandate -- WHAT IS `𝒪`? -- a construction question" (~25 sections on composition,
+  idempotence, replay, determinism, partiality, and operation/event/policy/governance distinctions). "Step
+  291 measured the registry; it did not reconstruct it. The OPERATIONS mandate remains SUBSTANTIALLY
+  UNEXECUTED." This precisely clarifies that the OPERATIONS mandate's unscheduled status (already-tracked
+  `G-106`) represents genuinely lost, unduplicated research work, not mere redundancy.
+
+  **CONFIRMS, IN FULL, THE ALREADY-TRACKED CHRONOLOGICAL ADDENDA**: the "ROOT CAUSE IDENTIFIED" section
+  (2026-09-01, matching the already-tracked file-1107 `G-101` finding verbatim) and the "ESCALATION" section
+  (2026-09-01, matching the already-tracked file-1112 `G-106` finding verbatim), both appended directly to
+  this same living report rather than as separate documents -- confirming this is the actual primary artifact
+  those two files were citing and updating.
+
+  Delivers the explicit, disciplined recommendation with its scoped authority: "1. Adjudicate the `287`
+  collision -- trivial, and it has been carried for hours. 2. Assign the OPERATIONS mandate a free slot
+  (292) -- or explicitly retire it as superseded. 3. Neither is performed here. `NORMATIVE DECISION REQUIRED`
+  -- authority: registry/ARB."
+introduces:
+  - concept: "The precise, original overlap-check distinguishing the Step-291 operation-registry audit (a closure question, already executed) from the still-unscheduled OPERATIONS mandate (a construction question, substantially unexecuted) -- clarifying the unscheduled programme represents genuinely lost work, not mere redundancy"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked N-22 flag (file 1093), G-101 root-cause diagnosis (file 1107), and G-106 escalation (file 1112)"
+    refinement: "CONFIRMED at the primary source: all three already-tracked findings are shown to derive from and be appended directly to this single, self-updating living collision report, with full original detail for both the 287 and 289 collisions and a valuable overlap-check clarifying the OPERATIONS mandate's unscheduled work is not duplicated elsewhere"
+contradicts: []
+repeats:
+  - "Substantially reproduces, at the primary source, the already-tracked G-101 and G-106 findings from files 1107 and 1112, confirming their exact chronological placement as addenda to this original report."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the confirmation of the primary numbering-collision report, its precise 287/289 collision details, and the valuable overlap-check clarifying the unscheduled OPERATIONS mandate represents genuinely unduplicated lost research work rather than mere redundancy with the already-executed Step-291 registry audit."
+anchor_test:
+  anchor: "This reconstruction's already-tracked N-22 flag (file 1093), G-101 root-cause diagnosis (file 1107), and G-106 escalation (file 1112)"
+  supports_dimension: "Confirms all three findings at their primary source with full original detail and a valuable clarifying overlap-check"
+  refines_or_contradicts: "refines (confirms and grounds) the prior tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The root-cause and escalation addenda are directly checkable against files 1107 and 1112's own already-documented findings for exact verbatim consistency."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Confirms, at the primary source, the entire already-tracked numbering-collision discovery arc (N-22, G-101, G-106) in full original detail, and delivers a valuable overlap-check clarifying that the unscheduled OPERATIONS mandate represents genuinely lost, unduplicated research work rather than mere redundancy with the already-executed Step-291 registry audit. Classified importance major (primarily confirming already-tracked findings, with one genuinely new clarifying detail) and confidence high given the disciplined, well-evidenced nature of this living report."

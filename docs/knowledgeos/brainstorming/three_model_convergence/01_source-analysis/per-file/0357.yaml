@@ -1,0 +1,116 @@
+sequence: 357
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260825-222327_doignon-falmagne-knowledge-spaces-source-identified.md
+title: "Curated Adversarial Research Library and Six-Phase Reading Programme (Pritchard, Doignon & Falmagne, Fagin et al., Gardenfors, van Fraassen)"
+date: "2026-08-25"
+bytes: 15781
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 357
+importance: high
+confidence: high
+about: >
+  A curated, deliberately 'adversarial' research-library recommendation and six-phase reading programme
+  (Phase A-F), externally sourced with live citations (Routledge, Springer, MIT Press Direct, Stanford
+  Encyclopedia of Philosophy), directly operationalizing 0356's five-track research plan into concrete
+  named books and questions. Explicitly rejects a generic reading list in favor of organizing books by
+  RESEARCH LAYER rather than subject, and rejects adding further KnowledgeOS-specific architecture books
+  ('we already have enough architecture thinking'). Recommends, in order: Duncan Pritchard's What Is This
+  Thing Called Knowledge? (5th ed., covering definition/structure/rationality/perception/testimony/memory/
+  inference/scientific-knowledge/disagreement/ignorance/technology/law/politics/truth-objectivity) as the
+  FIRST read, explicitly to challenge the corpus's own Knows(p,proposition,context,time) hypothesis;
+  Doignon & Falmagne's Knowledge Spaces (the exact source whose existence was discovered at 0351,
+  identified here by full bibliographic detail) as 'probably the single most important mathematical book
+  for our Knowledge Space question,' with an explicit instruction to COMPARE rather than assume identity
+  between KST's Knowledge Space and the corpus's own; Fagin/Halpern/Moses/Vardi's Reasoning About
+  Knowledge (this reconstruction's own already-partially-engaged Fagin material, 0282-0289, now given a
+  full bibliographic citation and reframed as the tool to attack the Participant-as-Kernel-primitive
+  question); Peter Gardenfors's Knowledge in Flux (this reconstruction's own already-read 0287, similarly
+  reframed as testing whether the EXPAND/REVISE/CONTRACT/CHALLENGE/SUPERSEDE/REINSTATE transition
+  vocabulary is fundamental or merely convenient engineering naming); dynamic epistemic logic literature
+  (Hendricks and related, new to this reconstruction's tracked corpus); Krantz/Luce/Suppes/Tversky's
+  Foundations of Measurement (the formal antecedent underlying 0332's Roberts engagement, explicitly
+  scoped to measurement-regime research, not Kernel research); a to-be-selected rigorous probability/
+  measure-theory text (deferred until X_t/Omega/F_t are resolved); temporal-database/event-sourcing/
+  bitemporal-systems literature (the 'computer-science side we are currently missing,' introducing valid-
+  time/transaction-time/event-time/observation-time/knowledge-attribution-time as a named vocabulary); the
+  W3C PROV literature (already engaged at 0351, reused here with an explicit provenance-sufficiency
+  research question); and quantum-foundations material treated deliberately as an ADVERSARIAL STRESS TEST
+  rather than architectural inspiration. Adds ONE further book beyond the corpus's own prior scope: Bas
+  van Fraassen's The Scientific Image, introduced to confront the corpus's recurring reality-vs-
+  observation-vs-representation-vs-theory tension via the scientific-realism-vs-constructive-empiricism
+  debate, posing a new foundational (deliberately unresolved) question: does KnowledgeOS need to represent
+  what is TRUE IN THE WORLD, or what can be RESPONSIBLY ASSERTED FROM AVAILABLE EVIDENCE? Organizes
+  everything into six phases (A What is Knowledge?, B What is a Knowledge Space?, C What is an Epistemic
+  State?, D Time and Reconstruction, E Measurement, F Probability) with measure theory explicitly LAST,
+  reframing the final research question from 'does KnowledgeOS need measure theory?' to 'what probabilistic
+  extraction problem does KnowledgeOS actually have, and what mathematical structure does that problem
+  require?' Produces a disciplined top-8 priority shortlist and an eighteen-question research-extraction
+  table to be applied uniformly to every source (replacing the naive 'what does this book say KnowledgeOS
+  should be?' question), explicitly assigning extraction to Session 1, attack to Session 2, and alternative
+  modeling to independent mathematical research -- with cross-source DISAGREEMENT explicitly flagged as
+  more valuable than agreement.
+introduces:
+  - concept: "Explicit rejection of a generic reading list in favor of organizing books by RESEARCH LAYER rather than subject, and explicit rejection of adding further KnowledgeOS-specific architecture books at this stage ('we already have enough architecture thinking; we need to expose the problem to epistemology, Knowledge Space Theory, epistemic logic, temporal reconstruction, measurement theory, and probability and see where they converge -- and where they fundamentally disagree')"
+  - concept: "Duncan Pritchard, What Is This Thing Called Knowledge? (5th ed.), recommended FIRST, explicitly to challenge the corpus's own Knows(p,proposition,context,time) hypothesis; a seven-step topic chain (what is knowledge -> distinguishing belief -> reliability -> evidence -> disagreement -> ignorance -> objectivity) with an explicit research question: does Knowledge have a common structure across competing epistemological theories, or are fundamentally different phenomena being forced into one concept?"
+  - concept: "Doignon & Falmagne, Knowledge Spaces, identified by full bibliographic citation as the exact source whose EXISTENCE was discovered at 0351 -- 'probably the single most important mathematical book for our Knowledge Space question,' developing a mathematical theory generalizing partially ordered sets and connecting to knowledge assessment and stochastic/combinatorial models; six candidate readings for K (set of propositions / set of possible knowledge states / partially ordered structure / family of admissible states / stochastic structure / something else) posed as open, with an explicit instruction: 'we should not assume that our Knowledge Space is the same thing as Knowledge Space Theory. Instead: compare them'"
+  - concept: "Fagin, Halpern, Moses & Vardi, Reasoning About Knowledge (full citation for this reconstruction's own already-partially-engaged Fagin lineage, 0282-0289), reframed as the tool to attack the corpus's own participant model: 'is Participant actually a Kernel primitive, or is participant-relative knowledge a derived construction over information states?' -- explicitly connects K_A(P) and the higher-order K_A(K_B(P)) to agents/information/possible-worlds/accessibility/common-knowledge/distributed-knowledge/knowledge-change"
+  - concept: "Peter Gardenfors, Knowledge in Flux (full citation for this reconstruction's own already-read 0287), put 'very high on the list,' reframed to directly attack E_t->E_t+1 and test whether the corpus's own EXPAND/REVISE/CONTRACT/CHALLENGE/SUPERSEDE/REINSTATE transition vocabulary is fundamental or merely convenient engineering naming"
+  - concept: "Dynamic Epistemic Logic literature (Hendricks and related), recommended to be researched BEFORE attempting to formalize any temporal Kernel, formalized as E_t -[event]-> E_t+1 -- 'very close to what we are trying to model'"
+  - concept: "Krantz, Luce, Suppes & Tversky, Foundations of Measurement, explicitly scoped LATER and to MEASUREMENT-REGIME research, not Kernel research -- reframes the question from 'how do we measure Knowledge?' to 'when is a numerical representation actually meaningful?', explicitly protecting KnowledgeOS from unjustified numbers like Knowledge=0.83/Understanding=0.71/Reliability=0.92"
+  - concept: "A deferred, to-be-selected rigorous probability/measure-theory text (explicitly not a 'popular book'), with the research question sequenced as F_t -> P(K_t|F_t) and then 'what exactly are Omega, F, P, F_t?' -- explicitly reiterating that the random variable X_t itself remains unresolved (world state? observation? epistemic state? candidate knowledge proposition?), directly continuing 0333/0334/0354's unresolved X_t/Omega/F_t question"
+  - concept: "New named temporal-database/event-sourcing/bitemporal-systems research area, explicitly called 'the computer-science side we are currently missing' -- introduces valid time / transaction time / event time / observation time / knowledge-attribution time as a formal vocabulary directly connected to 0354/0355's own K_t1-correct-vs-K_t1-complete-at-t2 finding"
+  - concept: "W3C PROV literature reused (already engaged at 0351) with a sharpened research question: 'can provenance be sufficient for epistemic reconstruction? If yes, provenance becomes a very strong Kernel candidate. If no, what is missing?' -- formalized via a candidate bidirectional chain Observation->Record->Inference->Knowledge and Knowledge->Evidence->Observation->Source"
+  - concept: "Quantum foundations material (continuing the corpus's own prior 'Beyond Measure' engagement, referenced but not itself read here) explicitly reframed as a deliberately ADVERSARIAL STRESS TEST rather than architectural inspiration -- 'the purpose is not to make KnowledgeOS quantum-inspired... find a domain where our naive concepts of observation, reality, probability and knowledge break down, and use it to stress-test our abstractions,' recommending a more technically rigorous quantum-foundations source than a book summary"
+  - concept: "NEW addition beyond the corpus's prior scope: Bas van Fraassen, The Scientific Image, introduced specifically after the 'Beyond Measure' quantum material to confront the recurring Reality-vs-Observation-vs-Representation-vs-Theory tension via the scientific-realism-vs-constructive-empiricism debate -- new deliberately UNANSWERED foundational question: 'does KnowledgeOS need to represent what is true in the world, or does it need to represent what can be responsibly asserted from available evidence?'"
+  - concept: "Six-phase research programme (Phase A-F), directly operationalizing 0356's five-track plan into concrete named sources: Phase A What is Knowledge? (Pritchard + deeper epistemology: Gettier/reliabilism/virtue-epistemology/contextualism/social-epistemology/epistemic-injustice/testimony/memory); Phase B What is a Knowledge Space? (Doignon & Falmagne + comparison against state-spaces/possible-world-semantics/concept-lattices/formal-concept-analysis/partially-ordered-knowledge-structures, central question K=?); Phase C What is an Epistemic State? (Fagin et al. + Gardenfors + dynamic epistemic logic, central questions E_t=?, E_t->E_t+1=?, K_A(P)=?); Phase D Time and Reconstruction (temporal-database + provenance + event-sourcing literature, central question: can E_t be reconstructed from H_<=t? -- explicitly flagged as where 'the KnowledgeOS Kernel question will begin to become mathematically concrete'); Phase E Measurement (Foundations of Measurement + Roberts, central question: when is a numerical epistemic representation meaningful?); Phase F Probability (rigorous probability + measure theory + filtering/stochastic processes, explicitly LAST, central question reframed from 'does KnowledgeOS need measure theory?' to 'what probabilistic extraction problem does KnowledgeOS actually have, and what mathematical structure does that problem require?')"
+  - concept: "Disciplined top-8 priority shortlist (if a full six-phase programme is judged too large): 1 Pritchard (What is Knowledge?), 2 Doignon & Falmagne (What is a Knowledge Space?), 3 Fagin et al. (What is participant-relative Knowledge?), 4 Gardenfors (How do epistemic states change?), 5 van Fraassen (Reality vs representation), 6 Krantz et al. (When is measurement meaningful?), 7 Temporal+provenance literature (Can Knowledge be reconstructed historically?), 8 Rigorous probability/measure theory (When is extraction probabilistic?)"
+  - concept: "Explicit methodological warning against the naive extraction question 'what does this book say KnowledgeOS should be?' ('that will recreate the problem we have been trying to avoid'), replaced with an eighteen-question uniform research-extraction table applied to every source: what-is-Knowledge (exact definition/theory); what-is-not-Knowledge (boundary); what-is-the-Knowledge-object/state (formal structure); who/what-can-know (subject/agent); what-produces-Knowledge (sources); what-changes-Knowledge (dynamics); what-makes-it-correct (normative criteria); what-makes-it-complete (completeness); what-makes-it-uncertain (uncertainty); what-makes-it-obsolete (temporal semantics); what-is-observable (observation boundary); what-is-measurable (measurement); what-is-derived (inference); what-is-assumed (hidden ontology); what-must-be-preserved (reconstruction requirements); what-cannot-be-reconstructed (limits); what-is-theory-specific (regime); what-might-survive-all-theories (candidate invariant)"
+  - concept: "Explicit division of research labor: Session 1 extracts (per the eighteen-question table), Session 2 attacks, independent mathematical research supplies alternative models -- only after all three does the central cross-source question get asked: 'what survives across the theories?' -- with an explicit closing principle: cross-source DISAGREEMENT is 'likely to be more valuable to us than their agreement'"
+defines: []
+refines:
+  - concept: "0351's discovery of Knowledge Space Theory's mere existence"
+    refinement: "Given full bibliographic identification (Doignon & Falmagne, Knowledge Spaces, Springer) and elevated to Phase B of a formal six-phase reading programme, with an explicit compare-don't-assume instruction"
+  - concept: "0356's five-track research structure (A Temporal Epistemology, B Knowledge Space, C Extraction, D Mathematical Regimes, E Kernel Falsification)"
+    refinement: "Directly operationalized into six concrete phases (A-F) with named books/literatures assigned to each, and measure theory (Track D's probabilistic component) explicitly sequenced last as Phase F"
+  - concept: "0332's Roberts measurement-governance engagement"
+    refinement: "Traced back to its formal antecedent, Krantz/Luce/Suppes/Tversky's Foundations of Measurement, explicitly scoped to measurement-regime research rather than Kernel research"
+  - concept: "The corpus's own prior Fagin (0282-0289) and Gardenfors (0287) engagements"
+    refinement: "Given full bibliographic citations and explicitly reframed as tools to attack the Participant-as-Kernel-primitive question and the EXPAND/REVISE/CONTRACT/etc. transition-vocabulary question respectively, rather than treated as already-settled foundational material"
+  - concept: "0333/0334/0354's unresolved X_t/Omega/F_t question for any probabilistic KnowledgeOS regime"
+    refinement: "Explicitly reiterated as a prerequisite for Phase F, unchanged from its prior open status"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the six-phase reading programme (A-F) and its top-8 shortlist as the concrete operationalization of 0356's five-track research plan, with full bibliographic identification of Doignon & Falmagne's Knowledge Spaces."
+  - "dimension-registry.md: record the new eighteen-question uniform research-extraction table and the explicit division of labor (Session 1 extracts, Session 2 attacks, independent math research models) as a further refinement of the corpus's own extraction methodology (0338/0341's differential-extraction procedure)."
+  - "dimension-registry.md: note van Fraassen's The Scientific Image and the realism-vs-constructive-empiricism question as a new, deliberately unresolved foundational tension added to the corpus's tracked open questions."
+anchor_test:
+  anchor: "0351's Knowledge Space Theory discovery; 0356's five-track research plan; 0332's Roberts engagement; the corpus's own prior Fagin/Gardenfors engagements (0282-0289, 0287); 0333/0334/0354's unresolved X_t/Omega/F_t question; 0338/0341's differential-extraction methodology"
+  supports_dimension: "Governance/methodology and cross-cutting research planning: operationalizes 0356's five-track plan into a concrete six-phase reading programme with named, cited sources, full bibliographic identification of the Knowledge Space Theory source, an eighteen-question uniform extraction table, and a new deliberately unresolved realism-vs-constructive-empiricism tension via van Fraassen"
+  refines_or_contradicts: "refines 0351 (full bibliographic identification), refines 0356 (concrete phase-by-phase operationalization), refines 0332 (traces Roberts to Krantz et al.), refines the corpus's own prior Fagin/Gardenfors engagements (reframed as attack tools), reiterates 0333/0334/0354's open X_t/Omega/F_t question"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Doignon & Falmagne, Knowledge Spaces (Springer, via link.springer.com) -- full bibliographic identification"
+  - "Duncan Pritchard, What Is This Thing Called Knowledge? 5th edition (Routledge)"
+  - "Fagin, Halpern, Moses & Vardi, Reasoning About Knowledge (MIT Press Direct)"
+  - "Stanford Encyclopedia of Philosophy entries on epistemic logic, cited for Gardenfors's and dynamic-epistemic-logic's role in the epistemic-dynamics literature"
+undefined_concepts:
+  - "Which specific rigorous probability/measure-theory text and which specific quantum-foundations source will actually be used -- both explicitly left unselected pending prior phases"
+open_questions:
+  - "Whether the six-phase reading programme (A-F) or the top-8 shortlist is ever actually followed"
+  - "Whether the eighteen-question research-extraction table is ever applied uniformly across the named sources"
+  - "Whether van Fraassen's realism-vs-constructive-empiricism question is ever engaged or resolved"
+  - "Whether Doignon & Falmagne's Knowledge Spaces is itself directly read and compared against the corpus's own Knowledge Space concept, as instructed"
+tier2_triggered: true
+tier2_reason: "A curated, deliberately adversarial research-library recommendation and six-phase reading programme (A-F), externally sourced with live citations, directly operationalizing 0356's five-track research plan into named books (Pritchard, Doignon & Falmagne -- fully identifying the source discovered at 0351, Fagin et al., Gardenfors, Krantz et al., temporal-database/provenance literature, and a new addition, van Fraassen's The Scientific Image) with measure theory explicitly sequenced last. Introduces a new eighteen-question uniform research-extraction table and an explicit Session-1-extracts/Session-2-attacks/independent-math-models division of labor, closing with the principle that cross-source disagreement is more valuable than agreement."

@@ -1,0 +1,189 @@
+sequence: 1037
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/14-GAP-UPDATE-FROM-THE-025-ALGEBRA-SEAM.md
+title: "14 -- Gap Update From the 025x Algebra Seam: A Disciplined Self-Correction Discovering an Entire Earlier Corpus Layer (25I/25J/25S/038, Dated Two Days Before Step 246/260) That REFUTES the 'Register Originates at Step 246' Claim, Reveals Equality May Not Even Be Transitive, and Corrects Six Further Step-288 Claims -- Plus a Named Third Instance of a Recurring Search-Methodology Failure"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the disciplined discovery-and-correction document resolving the '25I.11'/'14-GAP-UPDATE' bridge candidate named in file 1036"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1037
+importance: critical
+confidence: high
+about: >
+  "14 — Gap Update From the `025x` Algebra Seam," triggered by explicit user direction to a specific file,
+  verdict: "`REFINED-STEP-288.md` was built on an incomplete evidence base. Six of its claims are corrected
+  here; one is REFUTED." **Resolves the "25I.11"/"14-GAP-UPDATE-FROM-THE-025-ALGEBRA-SEAM.md" bridge
+  candidate named in file 1036.**
+
+  **§0 DELIVERS THE DISCIPLINED SELF-DIAGNOSIS**: "Step 288 was written without consulting the `025i-025z`
+  seam" -- five specific dated files at `2026-08-28`, TWO DAYS BEFORE Step 246 and Step 260 -- naming `25I`
+  (Knowledge Identity Algebra), `25J` (Semantic Equivalence/Refinement/Contradiction/Merge, "an EARLIER
+  DRAFT of the Step 288 programme itself," verdicted PASS 72 seconds after `25I`), `25K`, `25S` (Identity/
+  Entity Resolution/Same-As/Distinct-From/Knowledge Ātma), and `038`. **Names the root cause explicitly**:
+  "This is not a failure of the corpus. It is a failure of my search. I searched for behavioural equivalence
+  and found Step 260; I did not search for refinement, merge, entity resolution, or same-as... THIRD INSTANCE
+  of my recurring error: SEARCHING FOR A PHRASE INSTEAD OF A CONCEPT."
+
+  **§1 DELIVERS THE FILE'S HEADLINE REFUTATION**: "the register originates at Step 246" is REFUTED --
+  `25I.11` states the non-interchangeability warning FIRST, over THREE relations (`≡_exact`, `≡_struct`,
+  `≡_sem,C`), with the semantic relation ALREADY INDEXED BY CONTEXT `C`, further refined at `25J.6` to be
+  indexed by BOTH context AND reference time (`SemanticEquivalent(A_1,A_2,C,t)`), observing at `25J.7` that
+  `≡_sem^2025 ≠ ≡_sem^2026`. **STRUCTURAL CONSEQUENCE**: "`≡` is NOT ONE RELATION. It is a `(C,t)`-INDEXED
+  FAMILY of relations. Every artifact in this programme -- 287, 288 included -- has treated it as a single
+  relation." This fundamentally revises the state-level equality treatment tracked across dozens of files
+  since file 0989.
+
+  **§2 DELIVERS A GENUINELY MAJOR FINDING**: equality MAY NOT EVEN BE TRANSITIVE, and the corpus says so
+  TWICE: `25J.27` ("we would also like transitivity, but this MUST BE CAREFULLY CONTROLLED because context-
+  dependent semantic mappings can break naive transitivity"); `25S.6`/`25S.29`/`25S.30` (SameAs evidence "is
+  NOT necessarily transitive," transitive closure "can propagate the error across a huge graph," naming the
+  failure mode **`KnowledgeContamination`**). "Everything downstream that assumes a quotient -- including
+  Step 260's `ℋ/≡_𝒯` and my own `≈_X` framing -- inherits this as a precondition." Delivers a disciplined
+  self-catch: `≈_X`'s own transitivity is unaffected (constructed as a pullback, hence automatically
+  transitive), "but that is exactly the point: `≈_X` is transitive because I constructed it that way, and
+  the corpus's relation is not known to be. A property of my construction was being read as a property of the
+  corpus's object. THIS IS THE SAME DEFECT TWO REVIEWERS CAUGHT IN `=_semantic`" -- a reflexive recognition
+  of a recurring category error.
+
+  **§3 delivers a three-level identity hierarchy** never previously registered: `EntityID≠KAID≠RecordID`
+  (`25S.36`/`25S.43`), softening the already-tracked "`K_t` has no identity rule" (files 1006, 1035) to "a
+  PROVISIONAL candidate exists (`KAID=Identity(CanonicalAssertion,Context)`), explicitly marked provisional,
+  and was never ratified" -- plus two further separations: `SameState⇏SameEntity` and
+  `SemanticEquivalent⇏SameEntity`.
+
+  **§4 delivers a genuinely important correction**: equality decisions are NOT BINARY -- `25S.3` proposes a
+  FOUR-VALUED codomain `{Same,Different,PossibleSame,Unknown}` for entity resolution, meaning "a procedure
+  returning `Unknown` is total and decidable WITHOUT DECIDING EQUALITY" -- explicitly cross-referencing the
+  already-tracked "negative-knowledge discipline" and "Step 224.11" ("absence of evidence should remain
+  Unknown") as "two independent corpus loci, one rule."
+
+  **§5 qualifies the already-tracked "columns 6 and 7 empty" claim**: the Level-7 governance PATHWAY IS
+  specified (`25J.36/42`: `SemanticCandidate→GovernedValidation→AuthoritativeRelation`; `25J.49`:
+  `Generation≠Validation≠Authority`, "one of the strongest principles in the entire architecture") -- "the
+  Level-7 PATHWAY is specified; NO relation has been taken through it. Not the same claim as 'column 7 is
+  empty.'" Also: `25J.41`'s 13-operation computability table rates semantic equivalence "computable but NOT
+  DETERMINISTIC -- stronger and worse than my 'Level 2, no procedure.'"
+
+  **§6 delivers a genuinely important correction to the already-tracked "K has no candidate structure at
+  all" finding**: an ordering candidate DOES exist ONE LEVEL DOWN -- `25J.10` defines a PREORDER on
+  assertions via entailment (`A_specific⇒A_general`), with PROVEN reflexivity and transitivity (`25J.27`),
+  called "refinement" `⪰` (`25I.21`/`25J.8`) -- computable only relative to a version ontology `Ω` (`25J.11`).
+  "`K` has no candidate order; `𝒜` has a DEFINED candidate preorder... which is materially different from
+  'nothing at all.'"
+
+  **§7 delivers TWO OPERATORS ABSENT FROM STEP 288 ENTIRELY**: (a) `Merge_K` with its own equality-RELATIVE
+  invariants (`25J.44-47`: non-destructive INVARIANT; idempotent ONLY MODULO `≡`; commutativity/
+  associativity explicitly NOT YET imposed/proven) -- "`Merge` is a SECOND operator whose invariants depend
+  on Decision 3, alongside `δ`... The equality choice has a wider blast radius than Step 288 reported"; (b)
+  a typed relation algebra `ℛ={Equal,Equivalent,Refines,RefinedBy,Contradicts,EvolvesTo,Independent}`
+  (`25J.26`), seven typed edges between assertions (a different carrier from state/history equality
+  relations), plus `TemporalEvolution≠Contradiction` and a domain-rule requirement for `Contradiction`.
+
+  **§8 delivers a genuine ELEVATION of the already-tracked `id`/mutable-`e.state` contradiction repair**:
+  it is no longer merely this reconstruction's engineering recommendation -- `25I.29-30` states the exact
+  principle already, as a CORPUS PRINCIPLE ("`KnowledgeIdentity` is persistent; `KnowledgeState` evolves")
+  now violated by a LATER construction -- "a governance matter, and a stronger finding than an engineering
+  suggestion."
+
+  **§9 delivers a genuinely major finding that the already-tracked `≈_X` (Σ-axis-subset) parameterization
+  MAY NOT BE THE CORPUS'S ACTUAL RELATION AT ALL**: `25I.35` defines `≈_C` (context-relative, PURPOSE/
+  POLICY-indexed, "equivalent for `MigrationPolicy_X`, not for `PatchCompliancePolicy_Y`") -- "these are NOT
+  the same relation, and the corpus's is indexed by POLICY, not by axis subset. My 32-projection catalogue is
+  a defensible construction; it is NOT ESTABLISHED to be the corpus's `≈`." Also delivers `25I.36`'s
+  reframing of the entire equality-vs-sufficiency question: "Zero should not ask 'are these identical?' It
+  should ask 'is the available knowledge sufficient?'" -- `Identity≠Equivalence≠Sufficiency`.
+
+  **§10 DELIVERS A GENUINE SELF-RETRACTION WITHIN THIS VERY DOCUMENT**: originally claimed `Fold` supplies
+  Step 260's missing quotient map (`H_1≡_𝒯H_2⟺Fold(H_1)=Fold(H_2)`) -- then explicitly retracts this, citing
+  a still-earlier corpus refutation at "`258.11`" of exactly this naive relation, distinguishing it from the
+  stronger, still-undemonstrated behavioural equivalence (`∀σ: F(σ(H_1))≡_K F(σ(H_2))`) -- "I conflated the
+  naive relation with the strong one... `Fold`/`Replay` remain worth recording as a construction -- but as
+  `~_F`, a relation the corpus names and REJECTS, not as a closure."
+
+  **§11 delivers two missing layers** (`Representation`, `Assessment`) in the already-tracked `W--Ω-->O`
+  observation model, with three load-bearing distinctions (`RepresentationIdentity≠ObservationIdentity`,
+  `EvidenceIdentity≠AssertionIdentity`), and confirms the already-tracked `Qualify` gap is genuinely three
+  days older than previously dated.
+
+  **§13 delivers the definitive net-effect table on Step 288**: one claim REFUTED, seven CORRECTED/SOFTENED/
+  WIDENED/RIVALLED/STRENGTHENED/RETRACTED. Closes: "Step 288's VERDICT stands: the equality problem is
+  mapped, not solved. Its EVIDENCE BASE does not: six claims corrected, one refuted."
+
+  **§12 delivers the disciplined evidence-status finding**: all of 25I/25J/25S is "self-verdicted PASS on
+  ANALYTIC falsification tests... NONE IS EXECUTED... Every definition in this seam is marked by its own
+  author PROVISIONAL... It raises no status to ESTABLISHED. It does show that several things I reported as
+  ABSENT are PRESENT-BUT-UNRATIFIED -- a different verdict, and the honest one."
+
+  **§15 explicitly lists what remains UNREAD** (`025k/l/m/o/t/v/w`, `038`, external-research reissues),
+  flagging `025v` and `038` as "directly on-topic and unread. Recorded so this gap is not mistaken for
+  coverage" -- a disciplined incompleteness disclosure.
+introduces:
+  - concept: "The entire '025i-025z' algebra seam (2026-08-28, predating Step 246/260), containing an earlier, more sophisticated equality/identity/merge/relation-algebra research programme never consulted by Step 288"
+  - concept: "The refutation that the equality-relations register originates at Step 246; it originates at 25I.11, two days earlier, over three relations rather than four"
+  - concept: "The structural finding that semantic equality is not one relation but a (C,t)-indexed family, indexed by both context and reference time"
+  - concept: "The finding that equality may not be transitive, with the named failure mode 'KnowledgeContamination' for unsafe transitive closure over identity links"
+  - concept: "The three-level identity hierarchy EntityID/KAID/RecordID, with a provisional (never-ratified) KAID formula"
+  - concept: "The four-valued equality-decision codomain {Same, Different, PossibleSame, Unknown}, replacing the assumed Boolean codomain"
+  - concept: "The specified but never-exercised Level-7 governance pathway: SemanticCandidate to GovernedValidation to AuthoritativeRelation"
+  - concept: "The defined entailment-based preorder on assertions ('refinement'), one level below the still-unordered K"
+  - concept: "Two operators entirely absent from Step 288: Merge_K (with equality-relative invariants) and a seven-edge typed relation algebra"
+  - concept: "The elevation of the id/mutable-state contradiction repair from engineering recommendation to violated corpus principle"
+  - concept: "The rival, policy-indexed corpus equivalence relation approx_C, potentially displacing the axis-subset approx_X construction as the corpus's actual observational equality"
+  - concept: "The self-retraction of the Fold-supplies-the-quotient-map claim, citing an even earlier corpus refutation (258.11) of the naive Fold-equality relation"
+  - concept: "The named third instance of a recurring search-methodology failure: searching for a specific phrase instead of the underlying concept, causing an entire earlier corpus layer to be missed"
+defines:
+  - term: "KnowledgeContamination"
+    definition: "The named failure mode where transitive closure over identity links propagates an erroneous same-as link across a large graph, motivating the corpus principle that identity closure must be governed"
+  - term: "the (C,t)-indexed equality family"
+    definition: "The corrected understanding that state-level semantic equality is not a single relation but a family indexed by context C and reference time t, per 25I.11/25J.6-7"
+refines:
+  - concept: "This reconstruction's foundational four-relations finding, tracked since file 0989 (Step 246) and just revised to five relations in file 1036"
+    refinement: "FURTHER REVISED: the four/five-relation register itself is shown to be a successor to an earlier, three-relation, (C,t)-indexed family register from 25I.11/25J.6-7, predating Step 246 by two days"
+  - concept: "This reconstruction's already-tracked 32-projection axis-subset construction for approx_X (files 1018-1019, 1026, 1029, 1031, 1036)"
+    refinement: "CHALLENGED as potentially not the corpus's actual approx relation at all -- a rival, policy-indexed corpus-native relation approx_C exists and was never consulted"
+  - concept: "This reconstruction's already-tracked K-has-no-identity-rule finding"
+    refinement: "SOFTENED: a provisional, never-ratified KAID candidate formula exists in the earlier seam"
+  - concept: "This reconstruction's already-tracked K-has-no-candidate-order-at-all finding (files 1029, 1031, 1035-1036)"
+    refinement: "CORRECTED: while K itself has no order, the assertion set A has a defined, partially-proven entailment preorder one level down"
+  - concept: "This reconstruction's already-tracked id/mutable-e.state contradiction (file 1006)"
+    refinement: "ELEVATED from an engineering recommendation to a violated corpus principle (25I.29-30), making it a governance matter"
+contradicts:
+  - concept: "The already-tracked claim that the equality-relations register originates at Step 246"
+    contradicted_by: "25I.11's own two-days-earlier statement of the non-interchangeability warning over a different, three-relation, context-indexed formulation"
+repeats: []
+bridge_candidates:
+  - "The full '025i-025z' seam files themselves (25I, 25J, 25K, 25S, 038), cited extensively but not yet directly encountered by this reconstruction in their original form."
+  - "Corpus locus '258.11'/'258.13'/'258.14' -- the still-earlier refutation of naive Fold-equality and the still-undemonstrated behavioural-equivalence biconditional."
+  - "'Step 224.11' -- the negative-knowledge discipline precedent, cross-referenced but not yet directly encountered."
+  - "The explicitly unread but directly-on-topic seam files '025v' and '038'."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the headline refutation that the equality-relations register originates at Step 246 -- it originates at 25I.11, two days earlier, as a (C,t)-indexed family, not a single relation."
+  - "dimension-registry.md: record the major finding that equality may not be transitive (KnowledgeContamination), threatening every downstream quotient construction including Step 260's history quotient and this reconstruction's own approx_X."
+  - "dimension-registry.md: record the challenge that approx_X may not be the corpus's actual approx relation -- a rival, policy-indexed approx_C exists in the earlier seam."
+  - "dimension-registry.md: record the named third instance of the search-methodology failure (phrase-search vs concept-search) as a standing lesson for the remainder of this reconstruction's own sequential pass."
+  - "dimension-registry.md: record the self-retraction of the Fold-supplies-the-quotient-map claim, and the elevation of the id/mutable-state contradiction to a violated corpus principle."
+anchor_test:
+  anchor: "This reconstruction's foundational four/five-relations finding, the approx_X construction, and the K-has-no-order/no-identity-rule findings (files 0989-1036)"
+  supports_dimension: "Refutes the origin claim for the equality-relations register and delivers six further corrections, revealing an entire earlier, more sophisticated corpus layer never consulted"
+  refines_or_contradicts: "contradicts (refutes) the Step-246-origin claim; refines (softens/corrects/challenges) six further already-tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The 25I.11/25J.6-7 citations are directly checkable against a future direct encounter with the 025i-025z seam files for exact verification."
+  - "The refutation of the Fold-quotient claim is directly checkable against corpus locus 258.11, if directly encountered."
+undefined_concepts: []
+open_questions:
+  - "The full content of the 025i-025z seam files, not yet directly encountered."
+  - "Corpus locus 258.11/258.13/258.14 and Step 224.11, not yet directly encountered."
+  - "Whether the rival approx_C (policy-indexed) parameterization or the approx_X (axis-subset) construction is eventually adopted as canonical."
+tier2_triggered: true
+tier2_reason: "A disciplined self-correction discovering an entire earlier, more sophisticated corpus algebra seam (25I/25J/25S, predating Step 246/260 by two days) that refutes the foundational claim that the equality-relations register originates at Step 246, reveals equality may not be transitive, and delivers six further corrections to already-tracked findings, including a challenge to the axis-subset approx_X construction's correspondence to the corpus's actual relation. Classified importance critical and confidence high given the scale, rigor, and structural significance of these findings, all delivered with disciplined self-attribution of the search-methodology failure that caused them to be missed initially."

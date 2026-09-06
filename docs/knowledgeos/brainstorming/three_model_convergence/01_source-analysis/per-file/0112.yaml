@@ -1,0 +1,82 @@
+sequence: "0112"
+path: docs/knowledgeos/brainstorming/20260822-105921-negative-epistemology-what-knowledgeos-is-not.md
+title: "KnowledgeOS Negative Epistemology -- systematic 'what it is NOT' across 12 lenses"
+date: "2026-08-22"
+bytes: 8966
+model:
+  primary: x
+  secondary: [c1, g]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+importance: high
+confidence: high
+about: >
+  Systematically restates every lens covered so far (Vedanta/Gita/Tripuṭī/Nyāya-Tarka/Hetvābhāsa/
+  Abhāva/Zero/Quranic/Isnād/LLM/Similarity-Vector/Transformation) as a negative claim ("knowledge is
+  NOT X"), producing a 15-row "KnowledgeOS is NOT" table and a 9-row mapping back onto existing
+  tracked areas. THIRD consecutive file (after 0108, 0110) to explicitly self-report zero new kernel
+  dimensions: "This negative analysis does NOT create new kernel dimensions. It reinforces existing
+  boundaries."
+
+introduces:
+  - "15-row 'KnowledgeOS is NOT' table: Data, Documents, Text, Search results, Similarity, Authority,
+    Belief, Opinion, Probability, Prediction, Memory, Latest version, Consensus, LLM output, Database
+    row -- each with a one-line 'why wrong' reason, the most comprehensive negative-definition
+    compilation in the corpus"
+  - "'Similarity != Identity' explicitly named as a forbidden-collapse pair (LLM/vector-embedding
+    critique: 'similarity is not identity'), mapped to the existing Semantic Context area, not a new one"
+  - "'The Deepest Boundary': 'KnowledgeOS is NOT a truth generator... It prevents the corruption of the
+    path toward truth' -- restates the 0088/0091 EOS-boundary discipline once more, cleanly"
+  - "9-row Final Classification mapping every negative principle to an existing tracked area (Identity/
+    Evidence/Authority/Semantic Context/Reasoning/Transformation/Agent/Uncertainty/Contradiction) --
+    zero new areas"
+  - "Two complementary closing statements: Positive ('preserves the relationship between Knower, Known,
+    Evidence, and evolution of understanding') and Negative ('prevents representations, opinions,
+    predictions, authorities, and transformations from being mistaken for knowledge itself')"
+
+defines: []
+refines: []
+contradicts: []
+
+repeats:
+  - concept: "restates all twelve already-covered lenses as negative claims"
+    canonical_source: "0087"
+    novelty: low
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "No new registry entries -- explicit self-report of zero new dimensions, third consecutive such file"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Evidence Integrity", "Authority Separation", "Unknown Preservation"]
+  refines_or_contradicts: >
+    No reshaping. THIRD consecutive disciplined-restraint file (0108, 0110, 0112) -- a genuine pattern,
+    not an isolated event, worth treating as a real signal that this stretch of the source corpus
+    entered a consolidation phase.
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Third consecutive file explicitly self-reporting zero new kernel dimensions -- a genuine
+    consolidation-phase pattern (0108, 0110, 0112), not isolated restraint"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the consolidation-phase pattern (3 consecutive disciplined-restraint files) continues or
+    a subsequent file reverts to expansion"
+
+tier2_triggered: true
+tier2_reason: >
+  Most comprehensive negative-definition compilation in the corpus, and the third consecutive
+  explicitly self-disciplined (zero-new-dimension) file -- a genuine, trackable consolidation-phase
+  pattern rather than an isolated event.

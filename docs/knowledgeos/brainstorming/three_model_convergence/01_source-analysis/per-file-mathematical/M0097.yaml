@@ -1,0 +1,185 @@
+sequence: M0097
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-133231_kr-m2o-candidate-multiplicity-selection-validation-determination.md
+title: "KR-M2O-2026-09-02 -- Candidate Multiplicity, Selection, Validation and Epistemic Determination: The Full, Extremely Rigorous Executable Protocol (35 Sections) for M0095's Proposed Experiment, With 12 Hypotheses H1-H12, 16 Mandatory Non-Collapse Distinctions, 15 Ground-Truth-Isolated Controlled Worlds, 7 Candidate Generators, a Mandatory Selection-Bias/Winner's-Curse Test, an Anti-Smuggling Rule, a Representation-Invariance Test, 14 Negative Controls, 25 Required Metrics, and an Explicit Three-Way Discovery-Outcome Taxonomy (A: Redundancy / B: Independent-but-Derivable / C: Irreducible Capability) Where Only C Would Reopen the Kernel Question -- Not Yet Confirmed Executed in This Pass"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "the full, exceptionally rigorous 35-section executable protocol operationalizing M0095's candidate-multiplicity/selection critique into a complete experimental specification -- comparable in scope and discipline to M0078's Epistemic Closure Event protocol, and considerably more elaborate than any single prior document in the Linga-Yoni sub-thread; explicitly designed as a prompt to hand to an executing agent (Claude Code), not itself an execution report"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0097
+importance: critical
+confidence: high
+about: >
+  Specifies KR-M2O-2026-09-02 as a controlled, adversarial empirical/formal experiment against
+  KnowledgeOS Theory v1.2, explicitly instructed: "Do NOT try to confirm the Linga-Yoni metaphor.
+  Do NOT make the model work by construction. Do NOT silently repair theory gaps. Do NOT promote
+  philosophical analogy into KnowledgeOS architecture." Status [EXP]; Theory v1.2 must not be
+  modified, no v1.3 created; any amendment recorded separately as [PROP], never auto-promoted.
+
+  **REFRAMES THE CENTRAL QUESTION**: not "does millions-to-one prove Knowledge?" but "does
+  candidate multiplicity and selection introduce irreducible epistemic capability that KnowledgeOS
+  v1.2 currently lacks?"
+
+  **SPECIFIES TWELVE INDEPENDENTLY TESTABLE HYPOTHESES (H1-H12)**, considerably more detailed than
+  M0095's H0: H1 (more candidates does not necessarily improve quality), H2 (candidate reduction !=
+  epistemic progress), H3 (selection != validation), H4 (selection != determination), H5 (unique
+  survivor does not imply Knowledge), H6 (multiple survivors can be correct), H7 (zero survivors
+  can be correct), H8 ("best candidate" requires an ordering/comparison criterion; no assumed total
+  scalar ranking), H9 (more candidates can increase selection bias/overfitting/false-selection
+  risk), H10 (generation/assessment/selection/validation/determination/knowledge-attribution may
+  be separate responsibilities), H11 (if all behavior is reproducible without an irreducible
+  capability, candidate-multiplicity does NOT justify a new kernel primitive), H12 (the biological
+  million-to-one ratio has no universal epistemological status merely because biology has that
+  property).
+
+  **MANDATES SIXTEEN NON-COLLAPSE DISTINCTIONS** to be preserved throughout: Candidate!=
+  Assessment, Assessment!=Selection, Selection!=Validation, Validation!=Determination,
+  Determination!=Knowledge, CandidateCount!=KnowledgeQuantity, CandidateCount!=KnowledgeQuality,
+  CandidateReduction!=EpistemicProgress, Acceptance!=Truth, Survival!=Factivity, Ranking!=
+  Validation, Fit!=CausalValidity, Evidence!=Assessment, Credence!=Truth, Knowledge!=
+  EpistemicState, Zero!=Selection/Evaluation/StateTransformation -- "Do not collapse these
+  distinctions merely to simplify implementation."
+
+  **FORMALIZES THE PIPELINE AS EXPLICITLY SET-VALUED**: G(K_t,Q_t)->H_t (n not assumed =1),
+  A(H_t,E_t,M_t,S_t,C_t)->V_t, Sel(H_t,V_t)->A_t (A_t subseteq H_t, "Selection MUST initially be
+  set-valued... Do NOT define selection as argmax returning exactly one candidate," |A_t| in
+  {0,1,>1}), Det(A_t,Q_t,S_t,C_t)->D_t, Gamma(D_t,E_t,factivity-policy)->K_t^attrib, with the
+  explicit prohibition "Do NOT assume |A_t|=1 => Knowledge."
+
+  **MANDATES A PARTIAL-ORDER-FIRST METHODOLOGY**: construct incomparability-preserving cases
+  (H1>=H2 but not H2>=H1; neither dominates) BEFORE introducing scalar ranking as a "secondary
+  experimental arm," and even then requiring explicit sensitivity testing to weights,
+  normalization, metric choice, candidate count, and candidate dependence.
+
+  **SPECIFIES FIVE (OPTIONALLY SIX) EXPERIMENTAL ARMS** varying candidate count across five orders
+  of magnitude (n=1,10,100,1,000,10,000, optionally 100,000), explicitly warning "do NOT sacrifice
+  experimental validity merely to obtain a larger number."
+
+  **REQUIRES FIFTEEN GROUND-TRUTH-ISOLATED CONTROLLED EPISTEMIC WORLDS** (unique true hypothesis;
+  multiple observationally-compatible hypotheses; no admissible hypothesis; one false but highly-
+  fitting hypothesis; multiple false hypotheses; correct-hypothesis-weak-evidence; false-hypothesis-
+  strong-apparent-fit; model misspecification; dependent evidence; independent evidence;
+  contradictory evidence; unobservable target; underdetermined target; temporal evidence conflict;
+  selection-induced overfitting), with the evaluator (not the epistemic agent) permitted access to
+  ground truth, and a mandatory STATIC audit of the simulator to ensure no truth leakage.
+
+  **SPECIFIES SEVEN CANDIDATE GENERATOR TYPES (G1-G7)** (random, diverse, correlated, near-
+  duplicate, adversarial, high-false-proportion, high-correct-proportion), explicitly mandating
+  that "most hypotheses are false" must NOT be assumed but MEASURED per generator -- directly
+  operationalizing M0095's rejected Claim D.
+
+  **MANDATES EXPLICIT CANDIDATE-DEPENDENCE MODELING**: "3 candidates != 3 independent
+  alternatives" when they share an underlying assumption; requires measuring candidate_dependence
+  distinct from candidate_count, framed as "a major statistical requirement."
+
+  **MANDATES THE SELECTION-BIAS/WINNER'S-CURSE TEST**: constructs a null world where no candidate
+  has real predictive advantage, generates increasingly many candidates, selects the best apparent
+  training fit, and compares training performance against independently-evaluated held-out
+  performance, explicitly testing whether max(training_score) increases with candidate count while
+  held-out performance does not -- "this directly tests 'More candidates => better knowledge' and
+  should be treated as an adversarial statistical control." Formalizes: |H| up-arrow does NOT imply
+  KnowledgeQuality up-arrow, and (ideally) |H| up-arrow implies SelectionBias up-arrow under null
+  conditions.
+
+  **MANDATES AN ANTI-SMUGGLING RULE**: every capability must be tagged as explicitly represented /
+  derivable / evaluator-only / simulator infrastructure / imported-from-the-proposed-model /
+  inherited-from-KnowledgeOS-v1.2, with particular attention to Represent, Select, Validate,
+  Determine, Score, Order, GroundTruth, Truth, Progress -- "a capability must not be declared
+  irreducible if it was silently implemented elsewhere."
+
+  **MANDATES A REPRESENTATION-INVARIANCE TEST**: repeat selected experiments under scalar-score,
+  vector, partial-order, and explicit-relation-graph representations, testing whether observed
+  epistemic behavior changes due to representation rather than semantics -- "do NOT confuse
+  computational representation with semantic capability."
+
+  **SPECIFIES FOURTEEN NEGATIVE CONTROLS (NC1-NC14)** and TWENTY-FIVE required metrics (candidate
+  count, surviving count, reduction ratio, diversity, dependence, selection/unique-selection/
+  multiple-survivor/zero-survivor rates, validation-failure rate, false-selection rate, selection
+  optimism, held-out performance, determination unique/multiple/none rates, knowledge-attribution
+  rate, factivity violations, epistemic gap before/after) -- "do not invent an aggregate 'knowledge
+  score' unless explicitly justified."
+
+  **MANDATES MONTE CARLO DISCIPLINE**: distinguish simulation uncertainty from epistemic
+  uncertainty, report sample size/seeds/generator configuration, use Wilson intervals for binomial
+  proportions, perform vacuity audits, ensure controls are non-vacuous -- "do not treat 10,000
+  trials as a population proof."
+
+  **EXPLICITLY DEFERS KERNEL MINIMALITY**: reuses the corpus's already-established finding
+  ("semantic equivalence unresolved, kernel minimality blocked") to require "DO NOT perform kernel
+  minimality comparisons until semantic equivalence is adequately specified... may identify
+  candidate irreducible capability but may NOT claim final minimal kernel... if blocked, explicitly
+  report KERNEL MINIMALITY NOT TESTABLE."
+
+  **EXPLICITLY SUBORDINATES THE LINGA/YONI AND GITA INTERPRETATIONS**: only after the mathematical
+  experiment is complete may the Linga/Yoni metaphor be discussed, and then only as [EXT]
+  philosophical analogy / [PROP] structural interpretation, explicitly forbidding Linga=Generator/
+  Yoni=Selector/Linga=Kernel/Yoni=KnowledgeSpace "unless a separate structure-preserving
+  correspondence has been demonstrated. The biological sperm analogy is NOT evidence for the
+  epistemic model." Analogously for the Gita: "It cannot serve as mathematical evidence... Do NOT
+  claim: 'The Gita proves candidate selection.'"
+
+  **NAMES THE MOST IMPORTANT METHODOLOGICAL PRINCIPLE**: "Do not ask 'How can we make the million-
+  to-one model fit KnowledgeOS?' Ask 'Under what conditions would the million-to-one model be
+  unnecessary, false, useful, or genuinely structurally necessary?' The experiment must be capable
+  of concluding 'The model adds no new capability.' That is a successful result."
+
+  **DEFINES THE DECISIVE THREE-WAY DISCOVERY-OUTCOME TAXONOMY**: (A) Redundancy -- Selection =
+  f(Discriminate,Validate,Determine), no new kernel capability; (B) Independent domain
+  responsibility but not a kernel primitive -- semantically distinct in DDD, computationally
+  derivable; (C) Irreducible epistemic capability -- no existing kernel operation reproduces
+  selection semantics under the same semantic carrier and observable behavior. "Only C would give
+  us a serious reason to reopen the kernel question. And because Contr, >=, factivity, and
+  semantic equivalence are still unresolved, Claude must not jump from C to a new canonical
+  kernel" -- an explicit, disciplined refusal to let even the strongest possible outcome bypass the
+  corpus's established unresolved-prerequisite chain.
+
+  Specifies a complete artifact directory structure (experiments/KR-M2O-2026-09-02/ with protocol/,
+  src/, results/, analysis/, verdict/ subdirectories), a 23-section FINAL-VERDICT.md template, a
+  20-question required final verdict, an absolute version-control rule (no Theory v1.3), and a
+  16-item completion-criteria checklist -- among the most operationally complete experimental
+  specifications in the entire corpus.
+introduces:
+  - concept: "Twelve independently testable hypotheses H1-H12 for candidate multiplicity/selection/validation/determination, considerably more granular than any prior document's treatment"
+  - concept: "Sixteen mandatory non-collapse distinctions extending the corpus's established non-collapse discipline to the candidate-selection domain"
+  - concept: "The mandatory selection-bias/winner's-curse test with explicit training-vs-held-out comparison under null conditions, formalized as |H|-up-arrow-does-not-imply-KnowledgeQuality-up-arrow and (ideally) |H|-up-arrow-implies-SelectionBias-up-arrow"
+  - concept: "The anti-smuggling rule requiring every capability to be tagged by its true provenance (represented/derivable/evaluator-only/infrastructure/imported/inherited)"
+  - concept: "The representation-invariance test (scalar/vector/partial-order/relation-graph) distinguishing computational representation from semantic capability"
+  - concept: "The explicit three-way discovery-outcome taxonomy (A Redundancy / B Independent-but-derivable / C Irreducible), with the disciplined refusal to jump from even outcome C to a new canonical kernel given unresolved Contr/>=/factivity/semantic-equivalence"
+  - concept: "Seven candidate generator types (G1-G7) mandating measurement (not assumption) of the false-hypothesis proportion each produces"
+defines: []
+refines:
+  - concept: "M0095's rejected claims and proposed KR-M2O-2026-09-02 experiment, here fully operationalized into an executable 35-section protocol"
+  - concept: "The corpus's already-established 'semantic equivalence unresolved, kernel minimality blocked' finding, explicitly reused as a hard precondition gating any kernel-minimality claim from this experiment"
+  - concept: "M0090-M0093's Linga-Yoni/Gita provenance discipline, reapplied here with explicit forbidden-identification lists and the requirement that Linga/Yoni discussion follow, not precede, the mathematical experiment"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - concept: "The three-way discovery-outcome taxonomy (Redundancy/Independent-but-derivable/Irreducible) as a candidate general template, alongside M0094's minimality test, for evaluating every dual-construct proposal across this sub-thread"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0097 as the full 35-section KR-M2O-2026-09-02 executable protocol, specifying 12 hypotheses, 16 non-collapse distinctions, 15 ground-truth-isolated worlds, 7 generators, a mandatory selection-bias/winner's-curse test, an anti-smuggling rule, a representation-invariance test, 14 negative controls, 25 metrics, and a three-way discovery-outcome taxonomy (Redundancy/Independent-but-derivable/Irreducible) where only the strongest outcome reopens the kernel question -- and even then may not bypass the corpus's unresolved Contr/>=/factivity/semantic-equivalence prerequisites. Not yet confirmed executed in this pass."
+anchor_test:
+  anchor: "M0095's candidate-multiplicity critique, the corpus's established semantic-equivalence-unresolved/kernel-minimality-blocked finding, and M0090-M0093's Linga-Yoni/Gita provenance discipline"
+  supports_dimension: "The most operationally complete and methodologically disciplined experimental protocol encountered in this specific sub-thread, comparable to M0078's Epistemic Closure Event protocol"
+  refines_or_contradicts: "refines (M0095, and the corpus's established kernel-minimality-blocked precondition)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'Only C would give us a serious reason to reopen the kernel question. And because Contr, >=, factivity, and semantic equivalence are still unresolved, Claude must not jump from C to a new canonical kernel' -- exemplary discipline refusing to let even the strongest possible experimental outcome bypass already-unresolved prerequisites."
+  - "'The experiment must be capable of concluding: The model adds no new capability. That is a successful result' -- an explicit falsifiability commitment stated as a named methodological principle, not merely implied."
+  - "The mandatory anti-smuggling rule and representation-invariance test together directly guard against exactly the kind of silent construct-promotion this reconstruction has flagged repeatedly across the corpus (hypothesis-to-definition, analogy-to-mathematics promotion)."
+undefined_concepts:
+  - "Whether this protocol (M0097) was ever actually executed, and if so under what artifact path -- 'experiments/KR-M2O-2026-09-02/' is specified but its existence/results are not verified in this pass"
+open_questions:
+  - "Whether KR-M2O-2026-09-02 was executed, and if so which of the 20 required final-verdict questions were answered and with what results (in particular H9 selection bias, and the A/B/C discovery-outcome classification for Selection)."
+  - "Whether the semantic-equivalence precondition referenced here was ever resolved elsewhere in the corpus, which would unblock the kernel-minimality question this protocol explicitly defers."
+tier2_triggered: true
+tier2_reason: "One of the most operationally complete and methodologically disciplined experimental protocols in this pass -- specifying 12 hypotheses, 16 non-collapse distinctions, a mandatory selection-bias/winner's-curse test, an anti-smuggling rule, a representation-invariance test, and a three-way discovery-outcome taxonomy that explicitly refuses to bypass unresolved corpus prerequisites even under its strongest possible result. Comfortably meets the tier-2 bar."

@@ -1,0 +1,104 @@
+sequence: "0085"
+path: docs/knowledgeos/brainstorming/20260822-0123-knowledgeos-consolidation-review-kernel-boundary-filter.md
+title: "KnowledgeOS consolidation review — kernel boundary filter"
+date: "2026-08-22"
+bytes: 6440
+
+model:
+  primary: meta
+  secondary: [c1]
+
+source_role: CRITICAL_REVIEW
+canonical_source: null
+
+importance: critical
+confidence: high
+
+about: >
+  A critical review of an "uploaded consolidation" document (not itself in the read corpus at this
+  position -- an external/attached artifact, referenced the way the DeepSeek report was at 0081) that
+  reduces the prior Zero/Vāṇī/topology/external-research exploration into a smaller, more precise
+  boundary. Praises a new operational "5-question kernel boundary filter," a new forbidden collapse
+  (Representation -> Truth), and reproduces its own 7-row "KnowledgeOS Constitutional Invariant Map
+  v1.0" -- while explicitly warning that "convergence of hypotheses is not validation."
+
+introduces:
+  - "First domain-specific definition attempt of 'invariant': 'A KnowledgeOS invariant is not a fact
+    about knowledge. It is a protection against an invalid transformation between knowledge
+    dimensions.'"
+  - "The 5-question kernel boundary filter (praised as 'probably the most important artifact' so far):
+    Did meaning change? Did authority change? Did evidence change? Did identity change? Was the
+    transition explicit? -- described as the operational/detection dual of the forbidden-transition
+    list, turning a passive prohibition list into a checkable procedure"
+  - "New forbidden collapse: Representation -> Truth, motivated explicitly by AI-era concerns (an LLM
+    summary or vector embedding mistaken for the underlying knowledge/truth) -- extends the family
+    (Expression->Meaning, Projection->Source, Memory->Evidence, Evidence->Authority)"
+  - "Convergence table: Zero->neutral origin, Vāṇī->expression vs meaning, Topology->survival under
+    transformation, EKS/PKS/AIP->observed separations, DDD->bounded ownership -- explicitly adds DDD
+    to the convergence claim made at 0084"
+  - "Explicit epistemic caution, quoted from the reviewed (unread) document itself: 'convergence of
+    hypotheses is not validation' -- a warning against mistaking aesthetic/structural convergence for
+    evidential support, directly relevant to this research's own eventual cross-model comparison (§29)"
+  - "First actual instance (a reviewer's own reproduction, not confirmed identical to the unread
+    'uploaded' original) of a 'KnowledgeOS Constitutional Invariant Map v1.0' table: 7 rows -- Authority
+    Separation, Observation Separation, Projection Separation, Representation Separation, Dimension
+    Independence, Neutral State Preservation, Transformation Origin Preservation -- each with
+    Dimensions/Forbidden-Collapse/Validation-source columns"
+  - "Closing reframing: the kernel should be 'the consequence of [the] invariants, not the starting
+    hypothesis' -- and the next challenge is named 'compression', not further discovery"
+
+defines:
+  - "'KnowledgeOS invariant' (informal, first attempt): a protection against an invalid transformation
+    between knowledge dimensions, not a fact about knowledge"
+
+refines:
+  - "0084's 5-row Constitutional Invariant Map proposal: this file's 7-row version adds Representation
+    Separation and splits/renames rows differently -- 'Semantic Continuity' (0084) does not appear
+    verbatim here, replaced or represented by 'Representation Separation' and 'Transformation Origin
+    Preservation'. The two versions of the same proposed artifact are NOT identical -- another instance
+    of an artifact still actively under revision, consistent with the corpus's general provisional-
+    editing character (cf. REV-001)"
+  - "0084's H-ZERO-001: reaffirmed as correctly kept at candidate status, not promoted -- explicit
+    approval of the prior document's discipline rather than new content"
+
+contradicts: []
+
+repeats:
+  - concept: "Zero as neutral-origin research lens, not mathematics or kernel primitive"
+    canonical_source: "0084"
+    novelty: low
+  - concept: "forbidden-collapse family (Expression->Meaning, Projection->Source, Evidence->Authority)"
+    canonical_source: "0084"
+    novelty: low
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+key_evidence:
+  - "Explicit self-quotation of the reviewed document's own caution ('convergence of hypotheses is not
+    validation'), then independently reaffirmed by this file's own author -- a doubled instance of
+    epistemic discipline rather than a single claim"
+  - "Two non-identical versions of 'the' Constitutional Invariant Map v1.0 (0084's 5-row proposal vs
+    0085's 7-row reproduction), three files apart in the reading order"
+
+undefined_concepts:
+  - "'P5' -- appears as a validation-source label in the reproduced map's Dimension Independence row,
+    consistent with the 'P4/P5 vocabulary' forward reference opened at 0083, still not defined"
+  - "The 'uploaded consolidation' document itself -- reviewed throughout but not part of the read
+    corpus at this position; its exact content is known only through this file's summary and partial
+    quotation"
+
+open_questions:
+  - "Whether a canonical, single version of the Constitutional Invariant Map is ever produced later in
+    the reading order, and whether it reconciles the 0084/0085 discrepancies"
+
+tier2_triggered: true
+tier2_reason: >
+  Introduces the corpus's first operational (checkable) kernel-boundary artifact (the 5-question
+  filter), a new forbidden-collapse instance motivated by AI-era concerns (Representation->Truth), the
+  first actual reproduction of the proposed Constitutional Invariant Map (non-identical to 0084's
+  version), and an explicit, doubly-stated epistemic caution against mistaking convergence for
+  validation -- directly relevant to §14/§18/§23/§29 of the governing prompt.

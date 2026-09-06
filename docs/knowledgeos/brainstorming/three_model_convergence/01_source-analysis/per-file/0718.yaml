@@ -1,0 +1,206 @@
+sequence: 718
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-125554_step-132-current-state-reconstruction.md
+title: "Step 132 -- RESOLVES 0717's Sharpest-Yet Mode-Change Promise NEGATIVELY (Deferred Again to Step 133): No Actual Repository/Filesystem Inspection Occurs, Every Current→Target Matrix Cell Remains 'Unknown'/'To Reconstruct'/'Partial' -- But Delivers Substantial New Methodology: the G0-G6/K0-K6/A0-A6 Maturity Ladders, the Capability/Assurance Asymmetry Principle (AgentCapability≤GovernanceAssurance), the FACT/DERIVED/HYPOTHESIS/TARGET Claim-Classification Discipline, the Expanded Seven-Category Delta (Adding STRENGTHEN, REPLACE, and INVESTIGATE), and the Anti-Duplication Rule 'Never Introduce a Target Component Merely Because Its Counterpart Has Not Yet Been Found' -- Opens Step 133, Repository/Artifact Archaeology, With an Even More Specific Ten-Item Ordered Checklist Explicitly Declared 'Repository-Specific Rather Than Conceptual'"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 132 -- Current-State Reconstruction', the explicit mode-change promised at 0717's close; resolves that promise NEGATIVELY within this file itself (every current-state matrix cell remains a placeholder, no actual filesystem/repository inspection occurs), continuing the corpus's established promise-then-defer structural pattern (0694 calibrating meta-finding) one further level -- but delivers substantial new, genuinely reusable methodology (three parallel maturity ladders, the capability/assurance asymmetry principle, a precise claim-classification discipline, and an anti-duplication architecture rule) and defers the actual archaeology to an even more specifically itemized Step 133"
+source_role: PRIMARY_RESEARCH
+canonical_source: 718
+importance: critical
+confidence: high
+about: >
+  Opens by declaring the governing rule for this phase, "Evidence before Architecture Claims," and a
+  five-state classification (`Existing | Partial | Missing | Misaligned | Unknown`), refining 0717's
+  five-way outcome taxonomy (`Already Exists|Partially Exists|Missing|Architecturally Wrong|Unknown`, with
+  "Architecturally Wrong" renamed "Misaligned"). Delivers a five-question reconstruction model per capability
+  (What should exist? What actually exists? What proves it — Evidence? Does it conform? What must happen
+  next?) and a worked thirteen-row Current→Target matrix (Knowledge model/Provenance/Governance/Evidence/
+  Assurance/Agent integration/Agent memory/Registry/Hooks/Context construction/Authorization/Runtime
+  evidence/Assurance graph) — **every cell for the genuinely target-architecture-relevant rows remains
+  `Unknown`, `Partial`, or `To reconstruct`/`To verify`; only Registry and Hooks are marked `Existing`, and
+  even those without cited concrete evidence** — the file itself explicitly calls this matrix "deliberately
+  conservative."
+
+  **This file constitutes the direct, decisive resolution of 0717's explicit mode-change promise, and the
+  resolution is NEGATIVE**: despite declaring "we have reached the point where we should stop extending the
+  target architecture from assumptions" and explicitly framing the phase as "Evidence Mode," no actual
+  repository, filesystem, or code inspection occurs anywhere in this file. The repository-structure template
+  (§132.5) is explicitly hypothetical, caveated "we must NOT assume these directories exist." The `.claude/`,
+  `.codex/`, `AGENTS.md`, and memory-classification sections (§132.7-132.10) pose the correct classification
+  questions (most centrally, the recurring pointer-layer test: "does `.claude/` own knowledge, or does it
+  point to knowledge?") but answer none of them with actual observed content. The file's own closing section
+  explicitly reframes the still-undone archaeology as Step 133's job — continuing the corpus's established
+  promise-then-defer structural pattern (0692→0693→0694; 0709; now 0717→0718→0719) one further level. Per
+  the 0694 calibrating meta-finding, this non-fulfillment is recorded factually without escalating framing,
+  but is explicitly noted as the direct resolution of the specific, unusually sharp promise flagged at 0717.
+
+  **Despite the negative resolution, this file delivers substantial new, genuinely reusable methodology**,
+  making it more than a pure repetition of the defer pattern. It delivers the precise Existing-vs-mature
+  distinction (`Registry≠AssuranceGraph`, `Memory≠AuthoritativeKnowledge`, `Hook≠Governance`,
+  `Check≠CompleteAssuranceModel`) and a self-referential inventory of mechanisms the corpus asserts the
+  existing KnowledgeOS/EKS ecosystem already has (an AI Engineering Platform, governance mechanisms, a
+  registry, hooks, agent-specific configuration, `.claude/`, `.codex/`, `.claude/memory/`, `AGENTS.md`,
+  deterministic assurance mechanisms, session/change logging) — "therefore the current system is NOT a
+  blank-slate knowledge platform" — itself an unverified but plausible claim within this file, not backed by
+  citation to an actual inspected artifact.
+
+  Delivers a Package-boundary test with five concrete dependency-direction questions (`Domain→
+  infrastructure?`=FAIL if direct/inappropriate; `Agent→domain?`=potentially valid through application
+  contracts; `Agent→database?`=needs scrutiny; `Governance→agent implementation?`=generally suspicious;
+  `Assurance→external systems?`=expected through ports/adapters) directly operationalizing 0717's Logical
+  Architecture for inspection use. Delivers a Hook-classification framework (`Trigger→Action→Evidence`,
+  two worked examples: a Git-event validation hook vs. an agent-event session-logging hook, explicitly named
+  "different architectural responsibilities") and the precise caution "hooks are not automatically
+  governance" — a hook that blocks an operation is an enforcement mechanism, but `Hook→Policy` traceability
+  must be established for hooks enforcing a governed rule.
+
+  Delivers a Deterministic-assurance reconstruction checklist (eight specific questions: what is checked?
+  where are rules defined? who owns the rules? how are results recorded? are results versioned? is evidence
+  preserved? can results be reproduced? are failures connected to governance?), distinguishing
+  `CollectionOfChecks` from `AssuranceSystem`, with the honest current classification
+  `AssuranceCapability=Existing/Partial` (never `CompleteAssuranceContext`) and the precise minimum-evidence
+  chain required for a genuine assurance architecture claim: `Rule→Checker→Execution→Result→Evidence→
+  Finding` ("a checker exists" alone is "weak evidence").
+
+  **Delivers three parallel seven-level maturity ladders, a genuinely valuable new methodological
+  contribution**: Governance maturity `G0`(documents only)`→G1`(indexed)`→G2`(decisions registered)`→
+  G3`(decisions have authority/provenance/lifecycle)`→G4`(decisions connect to implementation)`→
+  G5`(decisions connect to deterministic verification)`→G6`(governance closes the runtime feedback loop);
+  Knowledge maturity `K0`(documents)`→K1`(searchable)`→K2`(structured)`→K3`(governed)`→K4`(evidence-linked)
+  →K5`(machine-traversable)`→K6`(continuously verified), target ≈ K6; and Agent maturity
+  `A0`(standalone AI tool)`→A1`(repository-aware)`→A2`(knowledge-aware)`→A3`(governed)`→
+  A4`(evidence-producing)`→A5`(authorized action)`→A6`(continuously assured), with the plausible but
+  explicitly unverified claim "the current Claude/Codex architecture appears to be beyond A1, but the exact
+  level must be established through evidence."
+
+  **Delivers the file's most significant, currently and generally applicable AI-governance principle — the
+  Capability/Assurance asymmetry** (§132.21-132.23): a system can have high agent capability (e.g. `A5`) but
+  low knowledge maturity (e.g. `K2`), which is "dangerous" because `AgentCapability>KnowledgeAssurance`
+  creates architectural risk — crystallized as the design principle `AgentCapability≤GovernanceAssurance`,
+  "the more powerful the agent becomes, the stronger the surrounding governance/evidence architecture must
+  become," worked through a concrete illustrative example (an agent capable of Read+Write+Deploy but a
+  KnowledgeOS that only knows Documents+Search "can act faster than the organization can establish what
+  should be true... unacceptable for governed engineering"). This principle is directly and currently
+  applicable well beyond this reconstruction's own theoretical scope, to any real agentic-coding-tool
+  deployment, including implicitly this very reconstruction's own operating context.
+
+  Delivers a four-dimension current-architecture assessment framework (`Existence, SemanticMaturity,
+  Enforcement, Traceability`) with a worked example table (mostly `?` placeholders, several rows partially
+  filled with `Medium`/`High` for Agent hooks and Assurance checks specifically) and a Current-state
+  evidence-strength hierarchy (`Runtime/Code > Executable Configuration > Tests/Checks > Structured Data >
+  Architecture Documents > Narrative Statements`, "the stronger the claim, the stronger the evidence should
+  be").
+
+  **Delivers the FACT/DERIVED/HYPOTHESIS/TARGET claim-classification discipline**, worked through a
+  precise, concrete four-line example directly and structurally consistent with this very reconstruction's
+  own governing epistemic-discipline mandate (never silently convert hypothesis→definition): FACT (`.claude/
+  contains a memory directory`) → DERIVED (`Claude has persistent local memory mechanisms`) → HYPOTHESIS
+  (`the memory mechanism is intended as non-authoritative context`) → TARGET (`all authoritative
+  engineering knowledge should resolve through KnowledgeOS`) — "this discipline is essential for the
+  remainder of the reconstruction. This prevents accidental blending of current and target architecture."
+
+  **Delivers an expanded, seven-category Current→Target delta classification**, refining 0717's five
+  categories (`Retain/Refactor/Introduce/Remove/Integrate`) into seven (`KEEP/STRENGTHEN/REFACTOR/
+  INTRODUCE/REMOVE/REPLACE/INVESTIGATE`), with a genuinely valuable, precisely reasoned justification for
+  the new `INVESTIGATE` category (§132.29): "we should not turn uncertainty into architecture work
+  prematurely" — a claim like "the registry might already provide evidence lineage" should be classified
+  `INVESTIGATE`, never prematurely `INTRODUCE EvidenceSystem`.
+
+  Delivers an Architecture-reconstruction sequence (`Repository→Modules/Packages→Data Model→APIs→Agent
+  Harnesses→Hooks→Registry→Assurance→Governance→Integrations→Runtime→Current Architecture→Target Delta`),
+  reframes "the most important question" from "what should KnowledgeOS be?" (already answered) to "how much
+  of this target is already present, under what names, and with what guarantees?", and an Expected-
+  reconstruction-output matrix template (again populated mostly with `...?` placeholders).
+
+  **Delivers the "Architecture reconstruction rule," a genuinely valuable, precisely reasoned
+  anti-duplication caution directly matching this repository's own actual "Canonical Discovery" obligation
+  (ES-005.4: search before modelling, never create a second)**: "never introduce a target component merely
+  because its conceptual counterpart has not yet been found. First determine whether it exists under
+  another name. This is particularly important for KnowledgeOS because the platform has evolved
+  incrementally."
+
+  Delivers Step 132's verdict: "the architecture reconstruction has now formally switched from Design Mode
+  to Evidence Mode" (`Current→Evidence→Assessment→Delta→Target`) — a verdict this analysis flags as itself
+  another architecture-mode DECLARATION rather than a fulfilled transition, since no actual evidence
+  gathering occurs within this file.
+
+  **Closes by opening "Step 133 — Repository/Artifact Archaeology,"** promising "the first concrete
+  archaeology pass" via an explicit ten-item ordered sequence (Repository topology, `.claude/`, `.codex/`,
+  `AGENTS.md`, Knowledge/registry structures, Governance artifacts, Hooks, Deterministic assurance,
+  Session/evidence logging, Application/domain boundaries), each item to be classified
+  `FACT|DERIVED|HYPOTHESIS|TARGET` and mapped onto `Governance, Knowledge, Evidence, Assurance, Agent,
+  Integration, Infrastructure` — explicitly and directly stated: "**this is where the next pass should
+  become repository-specific rather than conceptual.**" No actual code execution, repository inspection, or
+  verified filesystem/architecture claim reported anywhere in this file — every matrix, ladder, and worked
+  example remains a hypothetical methodological specification, and the file's own self-referential
+  inventory claims about the existing KnowledgeOS/EKS ecosystem (§132.3) are asserted, not evidenced, within
+  this file.
+introduces:
+  - concept: "The refined five-state classification: Existing | Partial | Missing | Misaligned | Unknown"
+  - concept: "The Package-boundary test — five concrete dependency-direction inspection questions"
+  - concept: "The Hook-classification framework (Trigger→Action→Evidence) and 'hooks are not automatically governance'"
+  - concept: "The minimum evidence chain for an assurance-architecture claim: Rule→Checker→Execution→Result→Evidence→Finding"
+  - concept: "Three parallel maturity ladders: Governance (G0-G6), Knowledge (K0-K6), Agent (A0-A6)"
+  - concept: "The Capability/Assurance asymmetry principle: AgentCapability≤GovernanceAssurance"
+  - concept: "The FACT/DERIVED/HYPOTHESIS/TARGET claim-classification discipline"
+  - concept: "The expanded seven-category delta classification (adds STRENGTHEN, REPLACE, INVESTIGATE to 0717's five)"
+  - concept: "The Architecture reconstruction rule: never introduce a target component merely because its counterpart has not yet been found"
+  - concept: "Opens Step 133 — Repository/Artifact Archaeology, an even more specifically itemized ten-step promise of concrete, repository-specific reconstruction"
+defines:
+  - concept: "Capability/Assurance asymmetry (AgentCapability≤GovernanceAssurance)"
+    definition: "An agent's operational capability (what it is technically able to do — read, write, deploy, etc.) must never exceed the maturity of the surrounding governance and evidence architecture that can assure and account for its actions; when capability outpaces assurance, the agent can act faster than the organization can establish what should be true, which is an unacceptable architectural risk for governed engineering"
+  - concept: "FACT/DERIVED/HYPOTHESIS/TARGET"
+    definition: "Every reconstructed architectural claim must be explicitly tagged: FACT (directly observed), DERIVED (logically derived from observed facts), HYPOTHESIS (an architectural interpretation requiring validation), or TARGET (desired future architecture) — this discipline prevents current and target architecture from being silently blended into a single undifferentiated claim"
+  - concept: "The Architecture reconstruction rule (anti-duplication)"
+    definition: "A target architectural component must never be introduced merely because a reconstruction pass has not yet located its conceptual counterpart in the existing system; the counterpart may already exist under a different name, especially in a platform that evolved incrementally — the correct disposition for genuine uncertainty is INVESTIGATE, not INTRODUCE"
+  - concept: "Governance maturity ladder (G0-G6)"
+    definition: "G0 governance exists only in documents; G1 governance documents are indexed; G2 decisions are registered; G3 decisions have authority/provenance/lifecycle; G4 decisions connect to implementation; G5 decisions connect to deterministic verification; G6 governance closes the runtime feedback loop"
+refines:
+  - concept: "0717's five-way Current-state outcome taxonomy (Already Exists|Partially Exists|Missing|Architecturally Wrong|Unknown)"
+    refinement: "Refined into a five-state classification (Existing|Partial|Missing|Misaligned|Unknown), renaming 'Architecturally Wrong' to 'Misaligned'"
+  - concept: "0717's five-category Architecture-delta classification (Retain/Refactor/Introduce/Remove/Integrate)"
+    refinement: "Expanded into seven categories (KEEP/STRENGTHEN/REFACTOR/INTRODUCE/REMOVE/REPLACE/INVESTIGATE), adding STRENGTHEN, REPLACE, and the genuinely valuable INVESTIGATE category with an explicit justification against premature architecture work"
+  - concept: "the corpus's long-tracked pointer-layer test case"
+    refinement: "Restated as the central .claude/ classification question ('does .claude/ own knowledge, or does it point to knowledge?') without new resolution, still pending actual inspection"
+  - concept: "0687's four unverified self-referential claims about the corpus's own governing repository"
+    refinement: "Extended with a broader self-referential inventory claim (an AI Engineering Platform, governance mechanisms, registry, hooks, .claude/, .codex/, .claude/memory/, AGENTS.md, deterministic assurance, session logging all asserted to already exist), still unverified within this file"
+  - concept: "0701's/0710's prior six-level and seven-level KnowledgeOS maturity ladders"
+    refinement: "Complemented by three new, more granular, dimension-specific maturity ladders (Governance G0-G6, Knowledge K0-K6, Agent A0-A6), rather than one single undifferentiated overall maturity scale"
+  - concept: "0699's DelegatedAuthority, 0709's A2, and 0717's AgentCapability≠AgentAuthority"
+    refinement: "Extended into a precise, actionable design principle governing the RELATIVE growth of two quantities over time: AgentCapability≤GovernanceAssurance, not merely their qualitative non-identity"
+  - concept: "the corpus's governing epistemic discipline (never silently convert hypothesis→definition, per the governing reconstruction prompt itself)"
+    refinement: "Given its most precise, directly worked operational instantiation to date via the FACT/DERIVED/HYPOTHESIS/TARGET four-line example applied to .claude/memory/"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0719 (Step 133 — Repository/Artifact Archaeology) with continued high attention, as the corpus's own second, even more specifically itemized attempt at the mode-change this reconstruction has now tracked as unfulfilled across 0717→0718. Determine definitively whether Step 133 finally performs genuine repository-specific reconstruction (even partial), or extends the promise-then-defer pattern a further level -- per the 0694 calibrating meta-finding, continue tracking without escalating framing, but this is now the second consecutive file explicitly promising the same concrete empirical transition."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the three parallel maturity ladders (Governance G0-G6, Knowledge K0-K6, Agent A0-A6), the Capability/Assurance asymmetry principle (AgentCapability≤GovernanceAssurance), and the FACT/DERIVED/HYPOTHESIS/TARGET claim-classification discipline -- genuinely valuable new methodology delivered despite this file's negative resolution of 0717's mode-change promise."
+  - "dimension-registry.md: record the expanded seven-category delta classification (adds STRENGTHEN, REPLACE, INVESTIGATE) and the anti-duplication Architecture reconstruction rule, directly matching this repository's own ES-005.4 Canonical Discovery obligation."
+  - "dimension-registry.md: record that 0717's sharpest-yet mode-change promise resolves NEGATIVELY within this file -- no actual repository/filesystem inspection occurs, all current-state matrix cells remain placeholders -- and that the concrete archaeology is deferred again, with even greater specificity, to Step 133 (0719)."
+anchor_test:
+  anchor: "0717's explicit mode-change promise (the decisive test flagged at 0717's close); 0687's self-referential claims about the corpus's own governing repository; the corpus's long-tracked pointer-layer test case; 0701's/0710's prior maturity ladders; 0699's/0709's/0717's technical-capability≠authority family; this repository's own ES-005.4 Canonical Discovery obligation; the 0694 calibrating meta-finding on promise-then-defer"
+  supports_dimension: "Directly and decisively resolves 0717's sharpest-yet mode-change promise NEGATIVELY within this very file -- no actual repository, filesystem, or code inspection occurs; the Current→Target matrix remains entirely populated with placeholders; the file's own 'Evidence Mode' verdict is itself another declaration rather than a fulfilled transition. Despite this, delivers substantial new, genuinely reusable methodology: three parallel maturity ladders, the currently and broadly applicable Capability/Assurance asymmetry design principle, a precise FACT/DERIVED/HYPOTHESIS/TARGET claim-classification discipline directly consonant with this reconstruction's own governing epistemic mandate, an expanded seven-category delta classification with a well-justified INVESTIGATE category, and an anti-duplication architecture rule directly matching this repository's own actual Canonical Discovery obligation. Closes by deferring the actual archaeology once more, but with an even more specifically itemized ten-step promise for Step 133"
+  refines_or_contradicts: "directly resolves (negatively) 0717's mode-change promise; directly extends 0687's self-referential-claims pattern, the corpus's long-tracked pointer-layer test case (restated, not resolved), 0701's/0710's prior maturity ladders, 0699's/0709's/0717's technical-capability≠authority family, and this repository's own ES-005.4 Canonical Discovery obligation; no contradiction found; continues (does not break) the corpus's established promise-then-defer structural pattern per the 0694 calibrating meta-finding, now specifically at the 0717→0718→0719 mode-change juncture"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§132.2's thirteen-row Current→Target matrix, with the large majority of cells reading 'Unknown'/'To reconstruct'/'To verify' and the file's own admission this is 'deliberately conservative,' is directly checkable evidence that 0717's mode-change promise resolves negatively within this file — no actual inspected evidence populates the matrix."
+  - "§132.21-132.23's explicit AgentCapability≤GovernanceAssurance principle, worked through the concrete Read+Write+Deploy-vs-Documents+Search example, is directly quotable evidence of a genuinely important, currently and broadly applicable AI-governance design principle independent of whether this specific reconstruction ever empirically validates its own KnowledgeOS target."
+  - "§132.27's four-line FACT/DERIVED/HYPOTHESIS/TARGET worked example (.claude/memory/) is directly checkable evidence of a precise, reusable claim-classification discipline directly matching this very reconstruction's own governing epistemic mandate."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 133's actual content (0719), once read, finally delivers genuine repository-specific archaeology (even partial, even a single concretely inspected artifact), or extends the promise-then-defer pattern a further level -- this is now the second consecutive file explicitly promising the same concrete empirical transition (0717→0718→0719)."
+  - "Whether the corpus's self-referential inventory claims about its own governing repository (an AI Engineering Platform, registry, hooks, .claude/, .codex/, AGENTS.md, deterministic assurance, session logging) are ever actually verified against real repository content anywhere later in the corpus, or remain permanently asserted rather than evidenced."
+tier2_triggered: true
+tier2_reason: "Directly and decisively resolves 0717's sharpest-yet mode-change promise NEGATIVELY within this file -- no actual repository/filesystem inspection occurs, the Current→Target matrix remains entirely populated with placeholders. Despite this, delivers substantial new, genuinely reusable methodology: three parallel maturity ladders (G0-G6/K0-K6/A0-A6), the currently and broadly applicable Capability/Assurance asymmetry principle, a precise FACT/DERIVED/HYPOTHESIS/TARGET claim-classification discipline, an expanded seven-category delta classification, and an anti-duplication architecture rule matching this repository's own ES-005.4 obligation. Defers the actual archaeology once more, with an even more specifically itemized ten-step promise for Step 133."

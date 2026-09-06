@@ -1,0 +1,131 @@
+sequence: "0179"
+path: docs/knowledgeos/brainstorming/kernel/20260824-002740-tractatus-logico-philosophicus-lenses-for-kernel.md
+title: "Wittgenstein's Tractatus Logico-Philosophicus applied as a Kernel lens: fact-vs-thing, sense-vs-truth, and saying-vs-showing distinctions, tautologies/contradictions lack sense, an anti-reasoner mapping -- raw, unadjudicated observations/questions in the same format as 0169's commission, not yet filtered the way 0178 filtered Quine"
+date: "2026-08-24"
+bytes: 16000
+model:
+  primary: c1
+  secondary: [g]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0179"
+importance: high
+confidence: high
+about: >
+  Applies Wittgenstein's Tractatus Logico-Philosophicus (cited by TLP proposition number throughout, e.g.
+  1.1, 4.01, 4.1212) as an independent lens on the minimal Knowledge Kernel question, in the same raw
+  observation/falsification-question format as 0169's original commission and 0175's consolidation --
+  unlike 0178's Quine file, this one does NOT run each observation through an explicit lens-verdict
+  pipeline or reach a final "no new dimension" adjudication; it is presented as unfiltered source material
+  for later adjudication. Three headline findings: (1) "the world is the totality of facts, not of things"
+  (TLP 1.1) -- knowledge is always propositional (about how objects are CONFIGURED), never merely objectual
+  (naming an object without asserting any fact about it); a Kernel that stores bare entities without their
+  configuring facts may not be storing knowledge at all; (2) meaning is non-psychological -- a proposition
+  has sense independently of anyone believing, knowing, or understanding it, challenging any Kernel design
+  that ties knowledge to belief states; (3) the name/proposition distinction (names refer to simple
+  objects; propositions are configurations of names) suggests naming (reference) and saying (propositional
+  content) must be kept distinct, and that knowledge is always propositional, never mere naming. Ten
+  TLP-cited observations extracted: fact-vs-thing (1.1); proposition-as-picture-sharing-logical-form
+  (4.01); saying-vs-showing -- logical form manifests itself in propositions but cannot itself be
+  expressed as a proposition (4.1212); sense-independent-of-truth -- a proposition shows its sense
+  regardless of whether it is true (4.022), meaning a false proposition still HAS sense and may be worth
+  preserving as a record of belief/hypothesis/refutation, not merely discarded; tautologies-and-
+  contradictions-lack-sense -- they are part of the symbolism but represent no possible situation, distinct
+  from factual propositions (4.461); logic-is-self-contained and requires no reference to meaning or world
+  (5.473); the limits-of-language-are-the-limits-of-the-world, with anything inexpressible being "the
+  mystical," not part of the world (5.6); names-refer-to-simple-objects, unanalyzable further (3.203);
+  no-logical-objects -- logical connectives (and/or/not) are OPERATIONS, not objects, and must not be
+  stored as content (5.4); the general-propositional-form-is-a-variable, not itself a proposition, defining
+  the scope of what can be said (4.53). Produces an anti-reasoner mapping table (TLP propositions mapped to
+  protective functions: against nonsensical propositions, against confusing name and proposition, against
+  saying what can only be shown, against treating logical constants as objects, against treating
+  tautologies as content) structurally parallel to 0170's and 0177's Tarka/Nyaya-to-anti-reasoner mappings,
+  now a third independent instance of this reflexive-falsification pattern. Explicitly flags five
+  observations that should NOT influence architecture without further evidence (Wittgenstein's atomism,
+  elementary-propositions theory, rejection of identity as a relation, the mystical/ethics/aesthetics, the
+  specific N-operator truth-function theory).
+
+introduces:
+  - "The fact-vs-thing distinction (TLP 1.1): 'the world is the totality of facts, not of things' -- a
+    Kernel storing bare entities without their configuring facts is not storing knowledge; the Kernel's
+    fundamental unit should arguably be the proposition/fact, with entities as constituents, not knowledge
+    themselves"
+  - "The sense-vs-truth distinction (TLP 4.022): a proposition has sense (presents a possible situation)
+    independently of whether it is true or false; a false proposition still says something and may be
+    worth preserving as a record of belief/hypothesis/refutation, rather than being discarded as non-
+    knowledge -- a genuinely new distinction not previously articulated this precisely in the corpus's
+    epistemology-arc files (0171-0178), complementary to but distinct from Shieber's claim-vs-reality
+    separation (0173)"
+  - "The saying-vs-showing distinction (TLP 4.1212): logical form -- what a proposition shares with reality
+    that makes representation possible -- cannot itself be said/represented as content; it can only be
+    shown/manifested through structure. Raises whether a Kernel's own structure should SHOW logical form
+    rather than attempt to represent it as data"
+  - "Tautologies-and-contradictions-lack-sense (TLP 4.461): logical truths/falsehoods are not pictures of
+    reality and represent no possible situation, distinct in kind from factual propositions -- raising
+    whether a Kernel should treat logical truths/falsehoods as 'knowledge' at all or as mere scaffolding"
+  - "A third independent instance of the reflexive Tarka-style anti-reasoner mapping pattern (after 0170's
+    Tarka T1-T10 and 0175's mapping table), here mapping five TLP propositions to protective functions
+    against nonsensical propositions, name/proposition confusion, saying-what-can-only-be-shown, treating
+    logical constants as objects, and treating tautologies as content"
+
+defines: []
+
+refines:
+  - "Complements (without merging into) Shieber's claim-vs-state-of-affairs separation (0173, KOS-EPI-01)
+    with an internal, proposition-level distinction (sense vs. truth) that Shieber's extraction did not
+    make explicit -- both concern keeping representation and reality/truth apart, but at different grains"
+
+contradicts: []
+
+repeats:
+  - {concept: "Anti-reasoner falsification-lens mapping pattern", canonical_source: "0170", novelty: low}
+
+bridge_candidates:
+  - "The sense-vs-truth distinction, if adopted, would justify explicitly preserving REJECTED/REFUTED
+    hypotheses and claims with full structural fidelity (not merely a status flag) -- directly reinforcing
+    0174's RejectedHypothesis-is-knowledge principle from an entirely different (logical-atomist) tradition;
+    worth tracking as a further cross-tradition convergence instance for the eventual cross-model
+    comparison phase"
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "None -- raw, unadjudicated lens observations in the corpus's own established discipline (external
+    insight -> candidate -> validation -> only then law); no verdict rendered by this file itself, unlike
+    0178's explicit Quine adjudication"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; supplies new, unadjudicated distinctions (sense-vs-truth, saying-vs-showing, fact-vs-thing) as falsification/observation material, explicitly not yet run through the corpus's own lens-verdict pipeline the way 0178 did for Quine."
+  alternative_minimal_kernel: "none"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Unlike 0178 (Quine), this file does not run its own adjudication pipeline or render kernel verdicts --
+    it is raw commissioned material, structurally matching 0169's original commission format. Worth
+    watching whether a companion 'Tractatus stress test/adjudication' file follows later in the corpus, the
+    way 0166 followed 0165 and 0168 followed the Kimi/DeepSeek/Perplexity raw reports"
+  - "The sense-vs-truth distinction independently reinforces 0174's RejectedHypothesis-is-knowledge
+    principle from logical atomism, a third tradition (after critical-thinking practice and, implicitly,
+    Audi's epistemology) converging on preserving rejected/false propositions as valuable record rather
+    than discarding them"
+
+undefined_concepts: []
+open_questions:
+  - "Whether a companion adjudication/stress-test file (analogous to 0178 for Quine, or 0166 for the
+    Chinese lenses) follows for the Tractatus material, filtering these ten observations through the
+    corpus's own verdict pipeline"
+  - "Whether the saying-vs-showing distinction is ever concretely applied to the Kernel's own structural
+    design (e.g. whether logical form should be shown via schema/architecture rather than stored as data)"
+
+tier2_triggered: true
+tier2_reason: >
+  Genuinely new distinctions (sense-vs-truth, saying-vs-showing) from a fourth independent philosophical
+  tradition (logical atomism); a third instance of the reflexive anti-reasoner mapping pattern; raw,
+  unadjudicated material structurally distinct from 0178's already-filtered Quine treatment.

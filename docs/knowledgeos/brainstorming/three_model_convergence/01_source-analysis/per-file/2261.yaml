@@ -1,0 +1,86 @@
+sequence: 2261
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260901-005458_step_286_hpa-gita-as-philosophical-lens-only-stronger-knowledgeos-hypothesis.md
+title: "Gītā-as-Philosophical-Lens-Only HPA -- Stronger KnowledgeOS Hypothesis: Delivers Kernel≠Buddhi (Kernel HOSTS Buddhi), a Fourth Candidate Discrimination Function B:(K_t,O_t,E_t,C_t)→D_t, and an 11-Term Gītā Register Including Viveka/Kṣetra/Kṣetrajña/Dharma"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a further formalization pass parallel to file 2260, sharpening the Kernel/Buddhi relationship and delivering a fourth candidate discrimination function, substantially overlapping the already-tracked Ch2-9 threads"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2261
+importance: high
+confidence: high
+about: >
+  A formalization pass parallel to and overlapping the already-tracked file 2260, delivering the central
+  hypothesis: "The KnowledgeOS Kernel is analogous to the mind as the smallest continuously operating
+  epistemic unit, while Buddhi is the kernel's discrimination/decision function."
+
+  **DELIVERS KERNEL≠BUDDHI, KERNEL HOSTS BUDDHI**: "Kernel ≠ Buddhi. Rather: Kernel contains/hosts the
+  operations of Buddhi" — a precise refinement of the already-tracked Kernel-as-Buddhi conflation risk,
+  distinguishing the kernel as the broader mechanism from Buddhi as one of its capabilities. Also derives
+  "Kernel ≠ K_t" (the kernel is "the persistent processing mechanism," K_t is "the current epistemic state,"
+  analogous to Mind≠one-particular-thought) — reinforcing the already-tracked N≠M_K≠K_t non-collapse (file
+  2252) from a slightly different angle.
+
+  **DELIVERS AN 11-TERM GĪTĀ REGISTER** distinct from files 2251's (16 terms) and 2255's (13 terms):
+  Mind/Manas, Buddhi, Jñāna, Kṣetra (field/state being processed), Kṣetrajña (knower/observer of the field),
+  Karma, Phala, Dharma (correctness/order per governing principles), Saṅkalpa (commitment/intention toward
+  decision), Viveka (discrimination between alternatives, "particularly relevant to Buddhi"), Mokṣa — four
+  genuinely new terms not in the prior registers (Kṣetra, Kṣetrajña, Dharma, Saṅkalpa, Viveka).
+
+  **DELIVERS A FOURTH CANDIDATE DISCRIMINATION/QUALIFY-ADJACENT FUNCTION**: ℬ:(K_t,O_t,E_t,C_t)→D_t with a
+  six-value result domain {supported,refuted,contradictory,unknown,unqualified,inadmissible} — explicitly
+  "Buddhi = epistemic discrimination... rather than Buddhi=truth. The kernel does not create truth. It
+  evaluates what can legitimately be concluded from its current state and evidence." A twelve-item
+  enumeration of what ℬ must do (distinguish, compare, validate, detect contradiction, assess evidence,
+  qualify, reject, accept, defer, update state, preserve provenance, determine what remains unknown).
+
+  **REINFORCES THE ERROR-PROPAGATION MECHANISM** (already tracked as H-KERNEL-01, file 2253): "a defective B_t
+  can therefore systematically produce defective future states," formalized as K_{t+1}=F(K_t,O_t,B_t).
+
+  Reformulates the research question discipline: not "is Buddhi a KnowledgeOS primitive?" but "does
+  KnowledgeOS necessarily require a discrimination capability that operates over its changing epistemic
+  state, and does the Gītā's concept of Buddhi provide a useful philosophical model for that capability?" —
+  matching the Gītā→hypothesis→existing-requirement→formal-operation→independent-derivation→architecture
+  discipline chain already established across this thread.
+
+  Provides a four-level hierarchy diagram (Knowledge Space 𝒦 → Knowledge State K_t → KnowledgeOS Kernel →
+  Buddhi → epistemic operations → K_{t+1}), explicitly flagged as "a hypothesis until we test the actual
+  kernel operations against the Gītā passages and against the existing KnowledgeOS corpus."
+introduces:
+  - concept: "Kernel≠Buddhi with 'Kernel hosts/contains the operations of Buddhi' -- a precise refinement distinguishing the kernel mechanism from one of its capabilities"
+  - concept: "A fourth candidate discrimination function B:(K_t,O_t,E_t,C_t)→D_t with a six-value result domain {supported,refuted,contradictory,unknown,unqualified,inadmissible}"
+  - concept: "Four new Gītā-KOS register terms not present in files 2251/2255: Kṣetra (field/state), Kṣetrajña (knower/observer of field), Dharma (governing correctness/order), Saṅkalpa (commitment/intention), Viveka (discrimination between alternatives)"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked N≠M_K≠K_t Knower-Mind-Knowledge non-collapse (file 2252)"
+    refinement: "SHARPENED with the explicit Kernel≠Buddhi / Kernel-hosts-Buddhi distinction and the Kernel≠K_t (mind≠one-particular-thought analogy)"
+  - concept: "This reconstruction's already-tracked H-KERNEL-01 error-propagation finding (file 2253) and candidate Qualify/discrimination signatures (files 2252, 2254, 2260)"
+    refinement: "REINFORCED with a fourth candidate discrimination function and formalized error-propagation as K_t+1=F(K_t,O_t,B_t)"
+contradicts: []
+repeats:
+  - "Substantial thematic overlap with file 2260 (both formalize the Kernel/Buddhi relationship and propose candidate discrimination functions); this record focuses on the incremental content (Kernel-hosts-Buddhi precision, fourth discrimination function, four new register terms)."
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document's incremental contribution beyond file 2260 -- the Kernel≠Buddhi/Kernel-hosts-Buddhi precision, a fourth candidate discrimination function with a six-value result domain, and four new Gītā-KOS register terms (Kṣetra, Kṣetrajña, Dharma, Saṅkalpa, Viveka)."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Knower-Mind-Knowledge non-collapse and candidate kernel-formalization documents (files 2252, 2260)"
+  supports_dimension: "Sharpens the Kernel/Buddhi relationship and adds a fourth candidate discrimination function, parallel to but distinct from file 2260's eleven-operation algebra"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The four candidate discrimination/Qualify signatures produced across this Gītā-lens thread (files 2252, 2254, 2260, this document) are directly comparable for eventual reconciliation if pursued later in the sequential read."
+undefined_concepts: []
+open_questions:
+  - "Whether the four independently-produced candidate discrimination/Qualify signatures across this thread are ever reconciled into a single formal proposal."
+tier2_triggered: true
+tier2_reason: "Delivers a precise Kernel≠Buddhi/Kernel-hosts-Buddhi refinement, a fourth candidate discrimination function, and four new Gītā-KOS register terms, substantially overlapping the already-tracked file 2260. Classified importance high given the incremental but genuine formalization content, short of critical given the substantial overlap with the more comprehensive file 2260."

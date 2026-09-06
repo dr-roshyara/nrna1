@@ -1,0 +1,40 @@
+==========================================================================
+PROBE 1 — id is a hash over a MUTABLE field (e.state)
+==========================================================================
+  id before withdrawal : 86a0330e2b65
+  id after  withdrawal : a9d84e7a43d8
+  SAME? False
+  R edge ('86a0330e2b65', 'other-assertion') now dangles: True
+  => the canonical field table declares e.state MUTABLE and id DERIVED from e.
+     Mutating state re-keys the assertion and breaks every R edge into it,
+     violating StructuralValid's own 'no dangling' clause. CONTRADICTION.
+
+==========================================================================
+PROBE 2 — merge = set union cannot deduplicate (Pi is inside id)
+==========================================================================
+  same proposition P=('svc', 'D.tls', '1.3'), two sources -> 2 distinct assertions
+  ids: 86a0330e2b65 vs f847660b1940
+  => merge is idempotent only on IDENTICAL assertions. Corroboration (the same
+     fact from two sources) is indistinguishable from duplication. K grows
+     without bound under re-observation; no dedup operator is defined.
+
+==========================================================================
+PROBE 3 — Sigma never consults R: contradiction is invisible to epistemic status
+==========================================================================
+  R = [('37abc098f790', 'ee2e8bd28b1d', 'contradicts')]
+  Sigma(c1) = ('Supporting', 'Weak')
+  Sigma(c2) = ('Supporting', 'Weak')
+  => Two assertions in an explicit 'contradicts' edge are BOTH 'Supporting'.
+     Sigma : Assertion x Policy -> (dir,str) has NO access to R by its own
+     signature. Epistemic status is blind to contradiction. Unless a policy
+     gate re-derives it, K can hold a fully-supported inconsistency.
+
+==========================================================================
+PROBE 4 — history-equality vs structural-equality on K
+==========================================================================
+  K_A built by (import), K_B built by (import, add, remove): equal? True
+  => History is EXTERNAL to K, so states with different histories are EQUAL.
+     Consequence: GovernanceValid needs History, therefore GovernanceValid is
+     NOT a function of K. Two K-equal states can differ in governance validity.
+     The canonical theory calls this 'a boundary, not a defect' — but it means
+     validity is not a predicate over the declared state space.

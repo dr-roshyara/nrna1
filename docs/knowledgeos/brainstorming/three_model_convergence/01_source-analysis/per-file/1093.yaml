@@ -1,0 +1,86 @@
+sequence: 1093
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/REFINED-STEP-291.md
+title: "REFINED STEP 291 -- O/T Closure Audit and N-4 Verification: The Living-Document Companion to REFINED-STEP-288/289 (files 1088-1089), Formally Numbering Gaps G-78 Through G-84 for the First Time, Introducing a New N-22 (287/289 Numbering Collisions), and Closing With the Programme's Own Named 'Only Reliable Guard'"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the living-document companion to REFINED-STEP-288/289 (files 1088-1089), for Step 291's O/T closure and N-4 findings, with the vNext audit's corrections embedded inline"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1093
+importance: major
+confidence: high
+about: >
+  `REFINED-STEP-291.md` — "`𝒪`/`𝒯` CLOSURE AUDIT AND N-4 VERIFICATION." The third living-document synthesis
+  in this trio (alongside the already-tracked files 1088-1089), consolidating this reconstruction's already-
+  tracked Step-291 findings (files 1075-1092) with the already-tracked vNext adversarial audit's (file 1092)
+  six downgrades embedded live inline at the top, marked "vNext: NOT FROZEN."
+
+  **SUBSTANTIALLY RECONFIRMS THE ALREADY-TRACKED SUBSTANCE** of files 1075-1092: the O/T/O_K three-way
+  separation and glyph collision; the enumeration-vs-closure distinction; the operation registry (22/8/0/0/0);
+  the observation inventory (TraceOrigin/ExplainRevision unregistered); the dependency graph (3 cycles, `{≡}`
+  unique cut, tested over both universes); the derivation-vs-governance Case-E MIXED split; the 32/2/30
+  re-verification; the identity-repair forced-class-not-formula finding; the 25-item negative-results ledger;
+  and the N-4-downgrade with its seven independent source nodes.
+
+  **DELIVERS THE FIRST FORMAL GAP-NUMBERING** for findings this reconstruction has already tracked but which
+  had not previously been assigned formal gap IDs: **`G-78`** (the `𝒪` glyph overload, already-tracked file
+  1076); **`G-79`** (`261.21`'s self-reference, already-tracked file 1076/1079); **`G-80`** (`TraceOrigin`/
+  `ExplainRevision` unregistered, already-tracked file 1081); **`G-81`** (kind-5 has no signature); **`G-82`**
+  (0 of 22 operations has a body/identity/ratification, already-tracked file 1080, now dependency-linked to
+  `N-4`); **`G-83`** (5 prose-only operations, already-tracked file 1080); **`G-84`** ("`N-4` is the earliest
+  act" not established, already-tracked file 1087/1092).
+
+  **DELIVERS A GENUINELY NEW ITEM NOT PREVIOUSLY TRACKED**: `N-22`, "the `287` and `289` NUMBERING
+  COLLISIONS" -- a normative registry item citing `step-291/00` (not yet directly read in this
+  reconstruction's sequence), flagging that the step-numbering scheme itself has collided somewhere between
+  the already-tracked Step 287 and Step 289 packages.
+
+  **DELIVERS THE PROGRAMME'S OWN CLOSING SELF-CHARACTERIZATION OF ITS ACTUAL RELIABLE SAFETY MECHANISM**: the
+  self-check log tallies "Seven entries: five corrections to prior steps, two near-misses caught pre-
+  publication," and closes with a genuinely valuable meta-observation: "Both near-misses were caught by THE
+  SAME MOVE -- checking the primary text or the degeneracy of a PASS before writing it down. THAT IS NOW THE
+  ONLY RELIABLE GUARD THIS PROGRAMME HAS." This names, for the first time, the single unifying discipline
+  (verbatim-text verification and vacuous-PASS degeneracy checking) that underlies every near-miss catch
+  across the entire equality research arc (already-tracked files 1078, 1083).
+
+  Confirms the already-tracked §25 required final statement verbatim (matching file 1087) and the full STATUS
+  taxonomy, now consolidated with the vNext corrections applied throughout.
+introduces:
+  - concept: "The formal numbering of gaps G-78 through G-84, assigning IDs to already-tracked Step-291 findings for the first time"
+  - concept: "N-22, a genuinely new normative item flagging numbering collisions between Step 287 and Step 289, citing step-291/00 as its source"
+  - concept: "The programme's own closing characterization of its single reliable safety mechanism: verbatim-text verification and vacuous-PASS degeneracy checking, the common thread underlying both near-misses caught in this step"
+defines:
+  - term: "N-22"
+    definition: "A normative registry item flagging numbering collisions between Step 287 and Step 289, sourced from step-291/00 -- not yet directly read in this reconstruction's sequence"
+refines:
+  - concept: "This reconstruction's already-tracked Step-291 findings (files 1075-1092)"
+    refinement: "CONSOLIDATED into a single living document with formal gap IDs (G-78 through G-84) assigned for the first time, and the vNext audit's corrections embedded inline"
+contradicts: []
+repeats:
+  - "Substantially reproduces the already-tracked substance of files 1075-1092, now with formal gap numbering and consolidated presentation."
+bridge_candidates:
+  - "step-291/00 -- cited as the source for N-22's 287/289 numbering-collision finding, not yet directly read in this reconstruction's sequence."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal gap numbering G-78 through G-84 (assigning IDs to already-tracked findings), the new N-22 numbering-collision item, and the programme's own closing characterization of verbatim-text verification and vacuous-PASS degeneracy checking as its only reliable safety mechanism."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step-291 findings across files 1075-1092"
+  supports_dimension: "Consolidates these findings into a living document with formal gap numbering assigned for the first time and a new numbering-collision item flagged"
+  refines_or_contradicts: "refines (consolidates and formally numbers) the prior tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The gap numbering G-78 through G-84 is directly checkable against files 1076, 1079, 1080, and 1081's own already-documented findings for exact substantive consistency."
+undefined_concepts: []
+open_questions:
+  - "What exactly N-22's 287/289 numbering collisions consist of -- to be resolved by reading step-291/00, not yet directly encountered in this reconstruction's sequence."
+tier2_triggered: true
+tier2_reason: "Consolidates the already-tracked Step-291 findings into a living document, assigning formal gap IDs (G-78 through G-84) for the first time and introducing a genuinely new normative item (N-22, numbering collisions between Step 287 and 289), plus the programme's own valuable closing characterization of its single reliable safety mechanism. Classified importance major (a consolidation with useful new formal numbering, rather than a fresh critical finding) and confidence high given the disciplined, well-evidenced nature of the synthesis."

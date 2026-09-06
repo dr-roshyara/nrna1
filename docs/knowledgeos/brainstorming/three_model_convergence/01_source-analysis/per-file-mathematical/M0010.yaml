@@ -1,0 +1,124 @@
+sequence: M0010
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-202000_dretske-knowledge-and-the-flow-of-information.md
+title: "Dretske, Knowledge and the Flow of Information -- Very Plausibly the Direct Primary Source Behind Already-Tracked Main-Corpus Files 2321/2324's 'Probability Is Not Knowledge' Negative-Convergence Finding, Delivering the Semantic-Information Condition, Channel Theory, the Three-Way Zero Split, and the Seven-Component Atomic Claim k_i=(O,d_i,v_i,t,E_i,p_i,q_i)"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: b
+  secondary: x
+  secondary_note: "an HPA-style extraction of Fred Dretske's 'Knowledge and the Flow of Information,' applied directly to sharpen the K_t/atomic-claim/Delta_t apparatus developed in M0005-M0009; classified secondary x (cross_model) because it is very plausibly the direct primary source behind this reconstruction's ALREADY-TRACKED main-corpus files 2321 and 2324, which record a 'probability is not knowledge' NEGATIVE CONVERGENCE finding explicitly citing Dretske by name -- this document supplies the exact underlying argument (Dretske's own semantic-information condition and the urn/pink-ball counterexample) that later finding depends on"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0010
+importance: critical
+confidence: high
+about: >
+  Extracts Dretske's core semantic-information theory and applies it to sharpen KnowledgeOS's K_t
+  apparatus. **CROSS-PASS SIGNIFICANCE, flagged up front**: this reconstruction's main-corpus pass
+  already tracked (as files 2321 and 2324) a negative-convergence finding that "probability IS
+  knowledge itself" receives No/No/No across independent traditions including Dretske specifically.
+  THIS document is very plausibly the direct primary source underlying that later finding -- it
+  independently derives, from Dretske's own text, the identical thesis that high probability does
+  NOT constitute knowledge, using Dretske's own urn/pink-ball example as the counterexample. This
+  pass reaching this document confirms, from the KR-SIM lane's own chronological origin point
+  (2026-09-01, ~20:20), the primary-source basis for a finding this reconstruction had previously
+  only seen already-synthesized in the main corpus.
+
+  **DELIVERS DRETSKE'S SEMANTIC-INFORMATION CONDITION FORMALLY**: signal r carries the information
+  that s is F (relative to background knowledge k) iff P(F_s|r,k)=1 while P(F_s|k)<1 -- i.e.
+  information is defined via probability-RAISING-TO-CERTAINTY relative to a signal, not via a
+  probability value per se. Uses this to derive the central warning: p_i approx 1 does NOT imply
+  k_i is knowledge, because the relevant information must actually be carried by the signal, not
+  merely correlated with the truth via background statistics (the pink-ball urn example: correctly
+  believing a pink ball was drawn, based only on knowing the statistical distribution rather than on
+  receiving the pink-ball-specific signal, is NOT knowledge).
+
+  **DELIVERS THE SEVEN-COMPONENT ATOMIC KNOWLEDGE CLAIM**: k_i=(O,d_i,v_i,t,E_i,p_i,q_i) --
+  observation, dimension, claimed value, time, evidence/information source, epistemic probability,
+  AND (genuinely new relative to M0009's six-component tuple) q_i = "information sufficiency/support
+  status," explicitly distinguishing whether the evidence carries the SPECIFIC information required,
+  not merely raises probability via generic background statistics.
+
+  **DELIVERS CHANNEL THEORY AS THE FORMAL BASIS FOR "EXTRACTION != DETERMINATION"**: a measuring
+  instrument (or document, sensor, API, log, interview) is a communication channel between source
+  and receiver; channel RELIABILITY/CALIBRATION/CONDITIONS are prerequisites for the signal to carry
+  information at all (the voltmeter-calibration example) -- giving the already-established
+  Extraction!=Determination invariant an explicit theoretical grounding: source -> channel -> signal
+  -> information -> determination -> knowledge, richer than the earlier source->K mapping.
+
+  **DELIVERS THE PER-DIMENSION IDEAL-STATE/ACTUAL-STATE FORMALIZATION**: P_i*(x) = indicator
+  concentrated on the true value x_i*; P_{i,t}(x) = current epistemic distribution; knowledge
+  gap_{i,t} = D(P_i*, P_{i,t}) for an appropriate divergence D; for a binary dimension, the simple
+  case reduces to epistemic gap = 1-p_i when the proposition is true -- but this is explicitly
+  flagged as ONLY the probabilistic-accuracy gap, NOT the complete knowledge gap, because it omits
+  informational sufficiency.
+
+  **DELIVERS THE VECTOR-VALUED, NON-AGGREGATABLE KNOWLEDGE GAP**: G_t=(G_{1,t},...,G_{n,t}), with an
+  explicit worked counterexample showing two knowledge states with identical aggregate gap
+  (G_t=0.3) but radically different per-dimension profiles (concentrated in one dimension vs. spread
+  evenly) -- "KnowledgeOS should preserve the VECTOR... before calculating any aggregate measure,"
+  a concrete argument against collapsing Delta_t to a scalar.
+
+  **DELIVERS ZERO AS A THREE-WAY SPLIT**: Z_t=(Z_truth, Z_information, Z_contract) -- truth gap
+  D(P_t,P*) (does the epistemic state match the actual state), information gap (does the evidence
+  actually carry the required information, as opposed to merely correlating with truth),
+  contract gap D(K_t,I_t) (does the state satisfy the purpose-dependent epistemic contract) -- a
+  genuinely finer decomposition than M0006's contract-only redefinition of Zero, explicitly
+  preserving three previously-conflatable notions (knowledge, information, ideal state).
+
+  **DELIVERS LORD'S AND SĀRATHI'S FIRST CONCRETE OPTIMIZATION FORMULAS**: Lord's dimension-discovery
+  rule d* = argmax_d E[Delta-G_t | investigate d] (which new dimension would most reduce epistemic
+  uncertainty); Sarathi's action-selection rule a_t* = argmax_a E[epistemic improvement|a]/cost(a)
+  (cost-adjusted expected epistemic gain) -- the pass's first fully worked optimization objectives
+  for these two previously only qualitatively described roles.
+
+  **DELIVERS THE AVERAGE-INFORMATION VS PARTICULAR-SIGNAL DISTINCTION**: channel capacity (average
+  information) does NOT determine how much a particular signal reveals; a small, specific signal
+  (e.g. "port 8081 is reachable") can eliminate a huge hypothesis space -- "information quantity !=
+  knowledge value," proposed as a formal KnowledgeOS principle.
+
+  **CLOSES WITH AN EXPLICIT, EXPANDED GAP LIST**: how to define the actual state X* when it is
+  itself unobservable; which divergence D is appropriate; how dependent dimensions interact; how
+  truth differs from confidence; how temporal identity/revision works -- explicitly NOT yet a
+  finished theory, but "a much stronger foundation than simply defining K_t as a probability
+  vector... Dretske specifically warns us against that simplification."
+introduces:
+  - concept: "Dretske's semantic-information condition P(F_s|r,k)=1 while P(F_s|k)<1, as the formal basis for 'probability != knowledge'"
+  - concept: "The seven-component atomic knowledge claim k_i=(O,d_i,v_i,t,E_i,p_i,q_i), adding information-sufficiency status q_i to M0009's six-component tuple"
+  - concept: "Channel theory (source->channel->signal->information->determination->knowledge) as the formal grounding for Extraction!=Determination, including channel reliability/calibration as a prerequisite for information transfer"
+  - concept: "The three-way Zero split Z_t=(Z_truth,Z_information,Z_contract), distinguishing truth-matching, information-sufficiency, and contract-satisfaction as three separately measurable gaps"
+  - concept: "Lord's dimension-discovery optimization d*=argmax_d E[Delta-G_t | investigate d] and Sarathi's cost-adjusted action-selection a_t*=argmax_a E[epistemic improvement|a]/cost(a) -- first concrete optimization objectives for these roles"
+  - concept: "The vector-valued, explicitly non-aggregatable knowledge gap G_t=(G_1,t,...,G_n,t), with a worked counterexample against scalar collapse"
+  - concept: "Average information (channel capacity) vs. particular-signal information as distinct quantities; 'information quantity != knowledge value' proposed as a formal principle"
+defines: []
+refines:
+  - concept: "M0009's six-component atomic claim k_i=(q_i,v_i,p_i,E_i,t_i,A_i), refined here into a seven-component form adding information-sufficiency q_i and reframing via Dretske's channel/signal theory rather than KST alone"
+  - concept: "M0006's Zero(K_t,G,EC)-as-contract-satisfaction, refined here into a three-way split (truth/information/contract) rather than a single contract-satisfaction predicate"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "VERY LIKELY the direct primary source behind this reconstruction's already-tracked main-corpus files 2321/2324's 'probability is not knowledge' negative-convergence finding (which names Dretske explicitly) -- confirms, from the KR-SIM lane's own chronological origin, the primary-source argument (semantic-information condition, pink-ball urn counterexample) that later finding synthesizes. Should be cross-checked against files 2321/2324's exact wording once this pass or a future pass permits direct comparison."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0010 as very plausibly the direct primary source behind already-tracked main-corpus files 2321/2324's Dretske-citing 'probability is not knowledge' negative-convergence finding, delivering the semantic-information condition, a seven-component atomic claim (adding information-sufficiency q_i), channel theory grounding Extraction!=Determination, a three-way Zero split, and first concrete Lord/Sarathi optimization objectives."
+anchor_test:
+  anchor: "This reconstruction's already-tracked main-corpus files 2321/2324 ('probability is not knowledge' negative convergence, Dretske named explicitly)"
+  supports_dimension: "Very plausibly the direct primary source of that later, already-synthesized finding -- delivers the identical underlying argument (semantic-information condition, pink-ball urn counterexample) independently and chronologically earlier within the KR-SIM lane's own history"
+  refines_or_contradicts: "refines (M0009's atomic claim and M0006's Zero redefinition); ancestor-of (files 2321/2324, not yet directly cross-checked)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'p_i approx 1 NOT-IMPLIES k_i is knowledge, because the evidence must carry the relevant information and survive the channel/determination conditions' -- an exact match in substance to the already-tracked files 2321/2324 negative-convergence finding, independently derived here from Dretske's own text and pink-ball urn example."
+  - "The explicit citation of Dretske's urn/pink-ball counterexample as the primary evidentiary basis for 'knowledge != high probability' is the same counterexample family (statistical-distribution-knowledge vs. specific-signal-knowledge) that a Dretske-citing negative-convergence finding would need to draw on."
+undefined_concepts:
+  - "The precise choice of divergence D for the per-dimension knowledge gap (left open, 'which divergence D is appropriate' explicitly listed as a remaining gap)"
+  - "How to define the actual state X* when it is itself unobservable -- explicitly flagged as unresolved"
+open_questions:
+  - "Whether this document is cited, or its arguments repeated near-verbatim, in already-tracked main-corpus files 2321/2324 -- a direct textual comparison would confirm rather than merely strongly suggest the primary-source relationship flagged here."
+tier2_triggered: true
+tier2_reason: "Very plausibly the direct primary source of an already-tracked main-corpus negative-convergence finding (files 2321/2324), and independently delivers substantial new formal apparatus (semantic-information condition, seven-component atomic claim, channel theory, three-way Zero split, first concrete Lord/Sarathi optimization objectives, vector-valued non-aggregatable gap) -- critical importance and full tier-2 treatment warranted."

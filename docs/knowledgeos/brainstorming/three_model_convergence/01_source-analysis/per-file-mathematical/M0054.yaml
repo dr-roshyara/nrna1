@@ -1,0 +1,67 @@
+sequence: M0054
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-101343_direct-answers-to-the-satc-closure-questions.md
+title: "Direct Answers to the Sat_c Closure Questions -- a Twelve-Item FAQ Restating M0052's Findings (PB-2 Through PB-5, Zero_reasoned, Zero-Does-Not-Imply-Truth) in Condensed Q&A Form, Followed by a Verbatim Second Copy of M0053's Eval_c/H-EVAL-01/Fifteen-Case-Experiment Section"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c1
+  secondary_note: "the first half restates (in condensed FAQ form, not verbatim prose) findings already fully recorded under M0052 (PB-2 non-totality, PB-3 reason-vocabulary gap, PB-4 U-propagation, PB-5 well-foundedness, Zero_reasoned, Zero-does-not-imply-Truth); the second half is a verbatim second copy of the 'Eval_c(K_t,r,Gamma_t)/H-EVAL-01/fifteen-case Epistemic Evaluation Semantics Experiment' section first recorded under M0053"
+source_role: DUPLICATE
+canonical_source: M0052
+importance: low
+confidence: high
+about: >
+  Twelve direct Q&A pairs consolidating the KR-SIM-2026-09-02-D findings already fully recorded
+  under M0052: (1) yes, the eight Sat_c can be specified without implementation, and doing so
+  already surfaced findings; (2) no, the eight do not yet have coherent interpretations (three
+  executable: content/evidence/provenance; five blocked: status/consistency/governance/temporal/
+  operational, each with a named blocker); (3) Sat should remain [PROP], now for structural
+  reasons rather than mere unimplementedness; (4) factivity is not shown unnecessary, only that no
+  current Sat_c class carries it (Sat(K,r)=top does not imply Truth(K)); (5) PB-2 (Sat_content
+  non-totality under contradiction) is a real defect, left OPEN among three unchosen repairs; (6)
+  PB-3 (missing UNDERDETERMINED reason) matters methodologically, not as a one-word fix, recorded
+  as "reason vocabulary completeness = OPEN"; (7) PB-4 shows blocked classes contaminate composite
+  satisfaction under Kleene conjunction (arity>=4 => U for every tested combination); (8) Zero_
+  reasoned is a legitimate [PROP], demonstrated distinct from Zero_weak via a separating case; (9)
+  the Zero_strict=>Zero_reasoned=>Zero_weak chain is experimentally supported but not yet a proven
+  theorem; (10) Zero does not imply Truth (case B1: false attribution with Zero_weak=Zero_reasoned=
+  true) -- "probably the most important conceptual result of the experiment"; (11) which Zero
+  reading is correct remains a normative/governance decision, not something the experiment can
+  select; (12) the next step is repair (PB-2/PB-3/PB-5) before introducing candidate governance/
+  temporal/operational evaluators, then rerunning the same deterministic cases B1-B4.
+
+  **THE SECOND HALF (from the unlabeled '#' section onward) IS A VERBATIM SECOND COPY** of the
+  Eval_c(K_t,r,Gamma_t)->EVal_c reformulation, hypothesis H-EVAL-01, the "discover the codomain
+  rather than presuppose it" principle, and the fifteen-case "Epistemic Evaluation Semantics
+  Experiment" proposal -- identical in every sentence and equation to the content first recorded
+  under M0053. Not re-summarized here; see M0053 for the full record of that material.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "M0052's full set of findings (PB-2 through PB-5, Zero_reasoned, Zero-does-not-imply-Truth, the recommended repair-first next step), restated in condensed Q&A form"
+  - concept: "M0053's Eval_c/H-EVAL-01/fifteen-case Epistemic Evaluation Semantics Experiment section, reproduced verbatim a second time"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0054 as a low-value consolidation -- a twelve-item FAQ restating M0052's findings, followed by a verbatim second copy of M0053's Eval_c/H-EVAL-01 section. No independently new substance; full detail recorded under M0052 and M0053."
+anchor_test:
+  anchor: "M0052's Sat_c closure findings and M0053's Eval_c reformulation"
+  supports_dimension: "Restates both without adding new content"
+  refines_or_contradicts: "repeats (M0052, M0053)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Section-by-section comparison confirms the second half's text (from 'Yes. I would adopt this as the current research verdict' onward) is identical, sentence for sentence and equation for equation, to M0053's own second half."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Entirely a restatement (Q&A form) of M0052 plus a verbatim second copy of M0053's own second half; no independently new finding warrants tier-2 treatment beyond what is already recorded under those two canonical sources."

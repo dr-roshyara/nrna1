@@ -1,0 +1,198 @@
+sequence: 832
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-114405_step_204_transition-algebra-and-invariant-preservation.md
+title: "Step 204 -- Transition Algebra and Invariant Preservation (PHASE-B-ADJACENT MILESTONE, delivers 0831's promised Transition Algebra, DISCOVERS THREE FUNDAMENTALLY DIFFERENT TRANSITION KINDS, NO new invariant delivered -- an unusually concept-dense file that stops short of I-series formalization): Delivers the Canonical Transition Contract T_τ=(Pre,Input,Authority,Policy,Effect,Post,Invariant,Lineage) and 'A Transition Is More Than a State Mutation' -- Delivers the Precise Composability Biconditional Composable(τ_1,τ_2)⟺Post(τ_1)⊇Pre(τ_2) -- Delivers the Four-Valued Transition Model (Semantic,Authority,Policy,Execution) and 'Failure of Execution≠Invalidity of Preceding Decision' -- Delivers Rollback≠Reversal and the Compensation-Not-Inverse Pattern (Payment≠Refund^-1) -- Delivers Idempotency, Commutativity, and a Partial-Order (Not Total-Order) Model of Transitions -- Delivers Causation≠Correlation for Event Identity and Lineage as a Causal Graph, Explicitly Distinct From Temporal Ordering -- Delivers 'GovernanceValid≠RiskFree' and 'Mathematics Can Characterize Consequences; Governance Determines Acceptable Consequences' -- Delivers a Ten-Property Transition Taxonomy and the Not-Yet-Implemented Transition Ledger Concept -- DISCOVERS the Central Finding: Three Fundamentally Different Transition Kinds (Epistemic/Governance/Operational) That Must Never Be Collapsed Into One Workflow, Explaining a Named Major Architecture Failure Mode -- Delivers the Chapter 1-4 Progressive-Failure-Mode Reading -- Opens Step 205's Aggregate Derivation, Explicitly Fixing the Book's Derivation Order Vocabulary→Relations→State→Transitions→Invariants→Aggregates→BoundedContexts"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily mathematical/DDD transition-algebra formalization (composability, reversibility, idempotency, causal ordering); closes with a compact re-walk of all four Gita chapters as a progressive-failure-mode reading, explicitly disciplined once more as a conceptual lens, without new Gita textual content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 832
+importance: critical
+confidence: high
+about: >
+  Directly executes the task proposed at 0831's close, opening "we have now established that KnowledgeOS
+  is better understood as a federation of semantic state machines rather than one global state machine. The
+  next question is more fundamental: when is a transition valid, and when can individually valid
+  transitions be composed into a valid process?" -- explicitly framed as the move "from a static DDD model
+  toward a formal transition system."
+
+  **§204.1-204.3 delivers the formal transition definition** `τ:S×C→S`, `τ(s,c)=s'` subject to
+  `Pre_τ(s,c)`/`Post_τ(s,s',c)`, and **the file's foundational architectural distinction**, boxed:
+  **`Transition=Intent+Precondition+Authority+Evidence+StateChange+InvariantCheck+Lineage`** -- "a domain
+  transition is a semantic operation, not a database operation." Delivers **the canonical transition
+  contract**, boxed: **`T_τ=(Pre,Input,Authority,Policy,Effect,Post,Invariant,Lineage)`**, operationalized
+  as an eight-question specification checklist; a transition failing to answer all eight is declared
+  "architecturally underspecified."
+
+  **§204.4-204.7 delivers invariant preservation as a formal implication** (`I(s)∧Pre_τ(s,c)⇒
+  I(τ(s,c))`), boxed: **`ValidTransition⇒InvariantPreservation`**, explicitly named "one of the
+  mathematical foundations of our architecture constitution." Delivers `I_local` vs. `I_global` (worked
+  through concrete `I_E`/`I_G` examples), and **the cross-context contract validity condition**, boxed:
+  **`Valid_A(x)∧Satisfies(C_{A→B},x)⇒Accept_B(x)`**, explicitly "a very important DDD principle" -- Decision
+  never reaches directly into Assessment's aggregate database.
+
+  **§204.8-204.11 delivers the precise composability biconditional**, boxed:
+  **`Composable(τ_1,τ_2)⟺Post(τ_1)⊇Pre(τ_2)`**, and the process-validity decomposition, boxed:
+  **`ProcessValidity=TransitionValidity+CompositionValidity+InvariantPreservation`**, explicitly warning
+  "every step passed" is insufficient (analogous to function composition requiring codomain-to-domain
+  compatibility), worked through a concrete Evidence→VerifiedEvidence→Assessment composition example.
+
+  **§204.12-204.14 delivers the four-valued transition model**, boxed:
+  **`T_τ=(Semantic,Authority,Policy,Execution)`**, worked through `(1,1,1,0)` ("transition was validly
+  requested/authorized, but execution failed") as strictly more informative than a single FAILED status.
+  Delivers **the file's central conservation-consistent result**, boxed: **`Failure of execution≠invalidity
+  of preceding decision`** -- `Decision.Valid=true` must be preserved alongside `Execution.Success=false`,
+  "otherwise we rewrite history incorrectly."
+
+  **§204.15-204.18 delivers reversibility formally** (`τ^{-1}` such that `τ^{-1}(τ(s))=s`) and **the
+  central irreversibility discipline**, boxed: **`Rollback≠Reversal`** (once the external world has
+  changed -- `MessageSent`, `PaymentExecuted`, `ExternalSystemUpdated` -- restoring internal state does not
+  reverse reality). Delivers the compensation pattern (`τ_c:S'→S''` rather than a true inverse), worked
+  through `Payment→Refund` explicitly **not** `Payment=Refund^{-1}`: the refund creates a new event/state
+  rather than erasing the payment.
+
+  **§204.19-204.24 delivers idempotency** (`τ(τ(s))=τ(s)`, explicitly declared per-transition, e.g.
+  `MarkEvidenceVerified` idempotent, `CreateDecision` not) as a critical distributed-systems
+  implementation consequence of the algebra, and **commutativity** (`τ_a∘τ_b=τ_b∘τ_a`), worked through
+  independent-observation-addition (commutes) versus `Approve∘Reject≠Reject∘Approve` (does not commute) --
+  concluding transitions form a **partial order** `(𝒯,≺)` rather than a total order, with concurrency
+  formally defined as **`absence of causal dependency`**.
+
+  **§204.25-204.28 re-invokes the Chapter 4 "what to do and what not to do" lens once more**, delivering
+  `Valid(Action|Context_1)≠Valid(Action|Context_2)` and **the elevation of Context from metadata to a
+  first-class architectural concern** (`Meaning(Action)=f(Action,Context)`), worked through a sharp,
+  concrete example: the bare event name "Approved" is "dangerously ambiguous" (business/technical/
+  governance/financial/security approval are all possible), crystallized: **`EventName alone does not
+  determine semantic meaning`** -- only its bounded context and contract do. Delivers a full event-identity
+  schema (`eventId,eventType,aggregateId,context,timestamp,causationId,correlationId,payload,
+  schemaVersion`), explicitly "an implementation representation, not necessarily the final canonical
+  schema."
+
+  **§204.29-204.32 delivers `Causation≠Correlation`** as distinct event-identity fields (`causationId` vs.
+  `correlationId`), lineage formalized as a causal graph `G_L=(V,E_L)` ("stronger than simply storing
+  timestamps"), and **temporal ordering explicitly separated from causal ordering** (`t_a<t_b⇏a→b`),
+  re-confirming the arc's recurring correlation-is-not-causation discipline once more at the transition
+  level, and introducing (explicitly as "a candidate extension for later, not yet a new frozen vocabulary
+  term") the `ObservedCause`/`InferredCause` distinction.
+
+  **§204.34-204.37 delivers transition safety** (`Safe(τ)=Pre∧Authority∧Policy∧Invariant∧
+  EvidenceRequirement`) explicitly disentangled from risk-freedom, boxed: **`GovernanceValid≠RiskFree`**,
+  with a formal expected-risk expression `Risk(τ)=𝔼[L(Y)|τ,C]` and an explicit, disciplined warning against
+  inventing quantitative policy thresholds merely because statistics supplies a number
+  (`PolicyValid(τ)⟺Risk(τ)≤r_max` only where policy explicitly defines such a rule), crystallized as **the
+  file's central mathematics/governance separation principle**, boxed: **`Mathematics can characterize
+  consequences; governance determines acceptable consequences`**.
+
+  **§204.38-204.39 delivers a ten-property transition taxonomy table** (Valid/Invariant-preserving/
+  Authorized/Policy-compliant/Idempotent/Reversible/Compensatable/Commutative/Causally dependent/
+  Risk-bearing) and **a proposed, explicitly not-yet-implemented "transition ledger"**
+  `TL(τ)={Pre,Post,Invariant,Authority,Policy,Evidence,Risk,Idempotency,Reversibility,Compensation,
+  Causation,Lineage}`, analogized to an ADR but focused specifically on semantic transition behavior --
+  explicitly deferred pending further testing against the existing architecture.
+
+  **§204.40-204.42 delivers the file's central and most consequential discovery**: the architecture
+  contains **three fundamentally different kinds of transitions** that must never be collapsed into one
+  workflow -- Epistemic (`Unknown→Supported`), Governance (`Proposed→Authorized`), and Operational
+  (`Planned→Executed`) -- boxed as **the three-layer transition model**
+  (`Epistemic/Governance/Operational → Know/Authorize/Act`). **Delivers the explicit diagnosis of a named
+  major architecture failure mode**: a conventional `Review→Approve→Execute` workflow that calls itself
+  complete is contrasted against the model's actual nine-question audit (what was known; what evidence
+  supported it; what was assessed; who was authorized; what policy applied; what was decided; what was
+  executed; what actually happened; what was learned afterward), "a substantially richer architecture."
+
+  **§204.43-204.44 delivers a compact Chapter 1-4 progressive-failure-mode reading**: Chapter 1 (context
+  and conflict) -- action without context is semantically incomplete; Chapter 2 (identity and state) --
+  without understanding identity, `StateChange` can be mistaken for `IdentityChange`; Chapter 3 (action and
+  consequence) -- action cannot be properly evaluated without consequence; Chapter 4 (knowledge and
+  discernment) -- without distinguishing Knowledge/Policy/Authority/Action, appropriate action cannot be
+  determined -- explicitly framed as "a coherent conceptual progression," immediately re-disciplined: "we
+  should not claim 'the Gita mathematically proves this architecture'... the Gita provides a
+  conceptual/philosophical lens through which we test questions of identity, knowledge, action, duty,
+  continuity, and discernment," with the mathematical architecture required to "independently stand on"
+  formal definitions, invariants, logic, probability/statistics, DDD principles, software architecture, and
+  empirical experimentation.
+
+  **§204.45 delivers the Step 204 verdict**: six named PASS/CONSISTENT sub-verdicts across Mathematical,
+  DDD (aggregate boundaries now derivable from consistency requirements rather than nouns), Statistical,
+  Governance, Epistemic, and Gita lens (CONSISTENT, reaffirming the Context→Identity→Action→
+  Knowledge/Discernment progression).
+
+  **Closes opening "Step 205 — Aggregate Derivation,"** posing "which objects must change atomically, and
+  therefore belong to the same Aggregate?", proposing to derive candidate boundaries from
+  `Atomicity+InvariantOwnership+TransactionBoundary+Identity+Lifecycle+Concurrency`, with two explicit test
+  questions per candidate aggregate ("why does this object own this invariant?" and "what must be
+  consistent immediately, and what can become eventually consistent?"), and explicitly and deliberately
+  fixing the book's derivation sequence, boxed: **`Vocabulary→Relations→State→Transitions→Invariants→
+  Aggregates→BoundedContexts`**, with the explicit rationale that this order "demonstrates how the
+  architecture was derived, rather than merely presenting the final architecture as if it had been designed
+  upfront." No actual repository implementation occurs within this file itself, and NO new numbered
+  invariant is introduced despite the file's substantial conceptual density -- an unusual combination for
+  this dense capstone-adjacent run.
+introduces:
+  - concept: "The canonical transition contract T_τ=(Pre,Input,Authority,Policy,Effect,Post,Invariant,Lineage) and its eight-question underspecification test"
+  - concept: "The formal invariant-preservation implication ValidTransition⇒InvariantPreservation, and I_local vs. I_global"
+  - concept: "The cross-context contract validity condition Valid_A(x)∧Satisfies(C_{A→B},x)⇒Accept_B(x)"
+  - concept: "The precise composability biconditional Composable(τ_1,τ_2)⟺Post(τ_1)⊇Pre(τ_2), and ProcessValidity's three-part decomposition"
+  - concept: "The four-valued transition model (Semantic,Authority,Policy,Execution), and 'failure of execution≠invalidity of preceding decision'"
+  - concept: "Rollback≠Reversal, and the compensation-not-inverse pattern (Payment≠Refund^-1)"
+  - concept: "Idempotency and commutativity, and transitions forming a partial order rather than a total order; concurrency as absence of causal dependency"
+  - concept: "The elevation of Context from metadata to a first-class architectural concern; 'EventName alone does not determine semantic meaning'"
+  - concept: "A full event-identity schema distinguishing causationId from correlationId"
+  - concept: "Causation≠Correlation, lineage as a causal graph, and temporal ordering explicitly separated from causal ordering"
+  - concept: "The candidate (not-yet-frozen) ObservedCause/InferredCause distinction"
+  - concept: "GovernanceValid≠RiskFree, the formal expected-risk expression, and the explicit discipline against inventing quantitative policy thresholds"
+  - concept: "'Mathematics can characterize consequences; governance determines acceptable consequences'"
+  - concept: "The ten-property transition taxonomy table and the not-yet-implemented transition ledger TL(τ)"
+  - concept: "The central discovery: three fundamentally different transition kinds (Epistemic/Governance/Operational) that must never be collapsed into one workflow"
+  - concept: "The named major architecture failure mode: a conventional Review→Approve→Execute workflow vs. the model's nine-question audit"
+  - concept: "The compact Chapter 1-4 progressive-failure-mode reading, immediately re-disciplined against overreach"
+  - concept: "The Step 204 verdict's six PASS/CONSISTENT sub-verdicts"
+  - concept: "Step 205's opening: Aggregate Derivation, and the explicitly fixed book derivation order Vocabulary→Relations→State→Transitions→Invariants→Aggregates→BoundedContexts"
+defines:
+  - concept: "The three fundamentally different transition kinds"
+    definition: "The architecture's transitions decompose into three categorically distinct kinds that must never be collapsed into a single undifferentiated 'workflow status': Epistemic transitions (changes in what is currently believed/assessed, e.g. Unknown→Supported), Governance transitions (changes in what is authorized, e.g. Proposed→Authorized), and Operational transitions (changes in what has actually been executed in the world, e.g. Planned→Executed) -- a complete business process typically composes all three, but each retains its own preconditions, postconditions, and semantics, and conflating them (as a conventional Review→Approve→Execute workflow implicitly does) hides the richer nine-question audit trail (what was known, what evidence supported it, what was assessed, who was authorized, what policy applied, what was decided, what was executed, what actually happened, what was learned afterward) the architecture is meant to preserve"
+  - concept: "Rollback≠Reversal"
+    definition: "A formal transition τ:S→S' is mathematically reversible only if a true inverse τ^-1 exists such that τ^-1(τ(s))=s; but once a transition has caused an effect in the external world outside the system's own state (a message sent, a payment executed, an external system updated), restoring the system's internal state to its prior value does not undo that external effect -- so 'rolling back' internal state must never be confused with genuinely reversing what happened, and the correct architectural response for such irreversible transitions is an explicit compensating transition (e.g. Payment→Refund) that creates a new, additional domain event/state rather than attempting to erase the original one"
+refines:
+  - concept: "0831's closing proposal of Step 204's Transition Algebra and Invariant Preservation task, and its nine named transition properties to test"
+    refinement: "DELIVERED IN FULL: the canonical transition contract, the composability biconditional, the four-valued transition model, reversibility/compensation/idempotency/commutativity/causal-ordering are each given precise formal treatment, directly fulfilling and even exceeding the nine properties named at 0831's close (adding the four-valued model, the transition taxonomy table, and the transition-ledger proposal beyond what was originally listed)"
+  - concept: "0830's earlier composability condition (Post(τ_1)⊇Pre(τ_2)) and process-validity decomposition (0825's 'LocalValidity⇏GlobalProcessValidity')"
+    refinement: "RESTATED as a precise biconditional (Composable(τ_1,τ_2)⟺Post(τ_1)⊇Pre(τ_2)) and generalized into ProcessValidity=TransitionValidity+CompositionValidity+InvariantPreservation, the arc's most compact formal statement yet of why 'every step passed' does not guarantee overall process validity"
+  - concept: "0821's causal boundary (Precedes(X,Y)⇏Causes(X,Y)) and 0825's process-level re-application (DeploymentCompleted+IncidentObserved still requires causal analysis)"
+    refinement: "Extended once more to the level of the transition algebra itself: temporal ordering (t_a<t_b) explicitly does not imply causal ordering (a→b) among transitions, and lineage is reframed as a causal graph G_L 'stronger than simply storing timestamps' -- the correlation-is-not-causation discipline now applied to the architecture's own internal event-sequencing mechanism, not only to external domain claims"
+  - concept: "0808's I1-I14 through 0831's I75 invariant series"
+    refinement: "NOT EXTENDED in this file -- despite substantial new formal content (the transition contract, the four-valued model, the three-kinds-of-transitions discovery, the risk/policy-threshold discipline), no boxed statement is crystallized into a numbered I_n invariant, an unusual gap for a file of this conceptual density within the current dense capstone run; several boxed principles here (e.g. 'failure of execution≠invalidity of preceding decision,' 'GovernanceValid≠RiskFree,' 'EventName alone does not determine semantic meaning') read as strong invariant candidates that were not formally numbered, worth flagging for the eventual canonical synthesis as possible retroactive I-series candidates"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 205's actual Aggregate Derivation, deriving candidate aggregate boundaries from Atomicity+InvariantOwnership+TransactionBoundary+Identity+Lifecycle+Concurrency -- a HIGH-PRIORITY bridge candidate given the corpus's own explicit statement that this is the mechanism for finally deriving the Bounded Context Map."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the discovery of three fundamentally different transition kinds (Epistemic/Governance/Operational) and the named major architecture failure mode (a conventional Review→Approve→Execute workflow hiding a richer nine-question audit) as one of the arc's most directly applicable diagnostic findings for real workflow design."
+  - "dimension-registry.md: record 'GovernanceValid≠RiskFree' and 'mathematics can characterize consequences; governance determines acceptable consequences' as a directly reusable separation between statistical estimation and normative policy-setting."
+  - "dimension-registry.md: record Rollback≠Reversal and the compensation-not-inverse pattern (Payment≠Refund^-1) as a directly applicable distributed-systems/Saga design principle, extending 0825's Compensation≠Erasure."
+  - "dimension-registry.md: record that this file, despite high conceptual density, introduces ZERO new numbered invariants -- flag several strong candidate principles (execution-failure/decision-validity independence, GovernanceValid≠RiskFree, EventName-alone-insufficient) as possible retroactive I-series additions for the eventual canonical synthesis to consider."
+anchor_test:
+  anchor: "0831's closing proposal of Step 204's Transition Algebra task and its nine named transition properties; 0821's/0825's causal-boundary family; 0824's/0830's composability and process-validity work; the I1-I75 invariant series"
+  supports_dimension: "Delivers the full Transition Algebra formalization directly answering 0831's closing question, exceeding the nine originally-named properties with the four-valued transition model, a ten-property taxonomy table, and a proposed transition ledger. Extends the arc's causal-boundary family to the transition-algebra level itself (temporal ordering among transitions explicitly does not imply causal ordering). Delivers the central and most consequential discovery of the file: three fundamentally different, never-to-be-collapsed transition kinds (Epistemic/Governance/Operational), directly explaining a named, realistic architecture failure mode. Delivers GovernanceValid≠RiskFree and the mathematics/governance separation principle, plus Rollback≠Reversal extending 0825's Compensation≠Erasure. Notably introduces zero new numbered invariants despite high conceptual density, an anomaly worth flagging given several boxed principles here read as strong I-series candidates. Opens Step 205's well-posed Aggregate Derivation task, explicitly fixing the book's derivation order for pedagogical transparency"
+  refines_or_contradicts: "directly delivers and extends 0831's closing proposal; extends the arc's causal-boundary family to the transition-algebra level; extends 0825's Compensation≠Erasure via Rollback≠Reversal; does not extend the I-series (zero new invariants, no contradiction, flagged as an anomaly); no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§204.40-204.42's explicit discovery of three fundamentally different transition kinds, immediately followed by the concrete contrast between a naive Review→Approve→Execute workflow and the model's actual nine-question audit trail, is directly checkable evidence of a genuinely new, high-value diagnostic finding rather than a restatement of prior results."
+  - "§204.14's worked example (Decision=Approved, Action=Failed, requiring Decision.Valid=true to be preserved alongside Execution.Success=false, 'otherwise we rewrite history incorrectly') is directly checkable evidence of the four-valued transition model's practical necessity, directly connecting to the arc's recurring history-conservation discipline (Step 197, 0824-0825)."
+  - "§204.36's explicit discipline 'we must never invent a threshold merely because statistics provides one,' immediately following the Risk(τ)≤r_max policy-threshold formula, is directly checkable evidence that the arc continues to guard against exactly the kind of statistical-overreach failure mode it has repeatedly warned about in earlier files (e.g. 0813's 'statistical confidence cannot manufacture authority')."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 205's actual Aggregate Derivation was ever delivered, and whether the derived aggregate boundaries and eventual Bounded Context Map remain consistent with 0831's candidate six-context ownership hypothesis or supersede it."
+  - "Whether any of this file's un-numbered boxed principles (e.g. 'failure of execution≠invalidity of preceding decision,' 'GovernanceValid≠RiskFree,' 'EventName alone does not determine semantic meaning') are ever retroactively assigned invariant numbers in a later file, or remain permanently outside the formal I-series despite their apparent strength."
+tier2_triggered: true
+tier2_reason: "PHASE-B-ADJACENT MILESTONE: delivers the full Transition Algebra and Invariant Preservation formalization directly answering 0831's closing question, exceeding the nine originally-named properties with the canonical transition contract, the precise composability biconditional, the four-valued transition model, and a proposed transition ledger. Delivers the central and most consequential discovery of the file: three fundamentally different, never-to-be-collapsed transition kinds (Epistemic/Governance/Operational), directly explaining a named, realistic architecture failure mode (a conventional Review→Approve→Execute workflow hiding a richer nine-question audit trail). Delivers Rollback≠Reversal and the compensation-not-inverse pattern, extending 0825's Compensation≠Erasure. Delivers GovernanceValid≠RiskFree and 'mathematics can characterize consequences; governance determines acceptable consequences,' extending the arc's statistical-overreach discipline. Extends the arc's causal-boundary family (Causation≠Correlation) to the transition algebra's own internal event-sequencing mechanism. Notably introduces ZERO new numbered invariants despite substantial conceptual density -- an anomaly worth flagging for the eventual canonical synthesis, since several boxed principles here read as strong retroactive I-series candidates. Opens Step 205's Aggregate Derivation, explicitly and deliberately fixing the book's own derivation-order narrative (Vocabulary→Relations→State→Transitions→Invariants→Aggregates→BoundedContexts) for pedagogical transparency -- a high-priority bridge candidate expected to finally derive the Bounded Context Map."

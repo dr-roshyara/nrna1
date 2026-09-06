@@ -1,0 +1,56 @@
+
+==============================================================================
+1. Are the two conjuncts INDEPENDENT?  (neither implies the other)
+==============================================================================
+  (a) F4 = K=(A,R)   Congruent=True   Expressive(I_merge_prov)=False
+      => CONGRUENT AND NOT EXPRESSIVE  -- congruence does not imply expressibility
+
+  (b) F2 = content+status   Congruent=False (fails on ['Remove', 'Revise', 'Transform']…)   Expressive(I_any_accepted)=True
+      => EXPRESSIVE AND NOT CONGRUENT  -- expressibility does not imply congruence
+
+  RESULT: the conjuncts are INDEPENDENT. Neither is redundant, so
+          Sufficient = Congruent AND Expressive is not a restatement of either.
+
+==============================================================================
+2. Would Sufficient(K,O,I) have PREDICTED the Step 281 repair?
+==============================================================================
+  The Step 280 defect: 'not asked' and 'asked+absent' are both  a not-in A.
+  Model it: a proposition p, and a state that does or does not record an inquiry.
+
+  F = K alone     F(M1)=()  F(M2)=()
+    F identifies M1 and M2? True
+    Expressive(I_was_asked)? False
+      witness: M1 vs M2 disagree on I_was_asked (False vs True)
+
+  F = (K, Q_t)    F(M1)=((), ())  F(M2)=((), ('p',))
+    F identifies M1 and M2? False
+    Expressive(I_was_asked)? True
+
+  AND THE DECISIVE PART -- is K alone CONGRUENT over these states?
+    The only operations available are Assert and Ask. Ask changes only `asked`,
+    which K does not project, so K-indistinguishability IS preserved by every
+    K-transformation.  K alone is CONGRUENT and NOT EXPRESSIVE.
+
+  => Sufficient(K, O, I) FAILS for K alone, on the EXPRESSIBILITY conjunct, the
+     moment 'was p asked?' is admitted to I.  Congruence alone reports no fault.
+
+     The criterion would therefore have located the Step 280 defect BEFORE the
+     empirical test ran, and it identifies the repair site exactly: add the
+     smallest carrier that makes I_was_asked expressible -- which is Q_t.
+
+     That is Repair B, derived from the criterion rather than selected by
+     comparison after a failure.
+
+==============================================================================
+3. Post-repair: is (K, Q_t) sufficient?
+==============================================================================
+  Expressive((K,Q_t), I_was_asked) = True
+  Congruent: Q_t is append-only under Ask, and no K-operation reads it,
+             so (K,Q_t)-indistinguishability is preserved by both. = True
+
+  Sufficient((K,Q_t), O u {Ask}, I u {I_was_asked}) = True
+
+  LIMITATION, stated: this is a bounded 3-state model of the M1/M2 distinction,
+  not a proof over the full theory. It shows the criterion DETECTS the defect and
+  ACCEPTS the repair; it does not show (K,Q_t) is sufficient for all of I.
+  The full I has never been enumerated -- that is the remaining obligation.

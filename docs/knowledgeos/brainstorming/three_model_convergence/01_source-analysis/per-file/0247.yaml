@@ -1,0 +1,76 @@
+sequence: 247
+path: docs/knowledgeos/brainstorming/kernel/20260824-160023-knowledge-as-measurable-construct-not-true-information.md
+title: "Knowledge as a Measurable Construct, Not True Information"
+date: "2026-08-24"
+bytes: 27000
+model:
+  primary: c1
+  secondary: g1
+source_role: PRIMARY_RESEARCH
+canonical_source: 247
+importance: critical
+confidence: high
+about: >
+  A major synthesis combining classical epistemology (Gettier problem, reliabilism, coherentism,
+  understanding-as-distinct-good, cited via Stanford Encyclopedia of Philosophy), Pollock & Cruz's
+  procedural/defeater account, and a Sri Vidya tantric source (Smriti vs. Shruti, Vijnanamaya Kosha,
+  "knowledge is one but understood in ten different ways") into a formal, quantifiable Knowledge Vector
+  model. Rejects "knowledge = true information" as far too weak. Central reformulation: knowledge is a
+  property of a cognitive system's relationship to reality, measurable along several independent
+  dimensions rather than a single scalar -- complementary to, and independent of, the corpus's
+  philosophically-derived Kernel Claim/Evidence/Basing chains (0216-0230 lineage).
+introduces:
+  - concept: "Eleven negative definitions establishing what knowledge is NOT: not data, not information, not belief (Belief =/> Knowledge), not truth alone (epistemic luck: a correct random guess is not knowledge), not justified belief alone (Gettier: true+justified can still be accidentally true), not confidence (a model can be confident-and-wrong, uncertain-and-correct, calibrated-but-ignorant), not memorization (Smriti/Shruti distinction from Sri Vidya reframed secularly: remembering != knowing why/whether true), not language (competence vs. performance, procedural knowledge governs action not verbal description), not coherence alone (perfectly coherent, zero contact with reality), not authority (provenance != epistemic validity), not successful prediction alone, not understanding (a further distinct epistemic good involving relations/structure/explanation)"
+  - concept: "Knowledge Vector K=(T,J,R,A,S,C,U): Truth, Justification/evidential-support, Reliability, Anti-luck/causal-appropriateness, Stability-under-defeaters, Competence/ability-to-use, Uncertainty -- knowledge is a VECTOR, not a scalar; only derive a scalar when actually needed for a decision, never as the canonical representation"
+  - concept: "Quantified dimension definitions: Reliability R(f)=P(true output|f) per cognitive process (reliabilist grounding); Anti-luck A=1-L via counterfactual robustness CR(p)=correct-counterfactual-cases/relevant-counterfactual-cases (does the reasoning still identify the cause under perturbed scenarios?); Defeater resistance DR(p)=valid-defeaters-correctly-handled/relevant-defeaters-presented, distinguishing Pollock's rebutting defeaters (evidence says P is false) from undercutting defeaters (evidence says your reason for P is unreliable); Competence tested by held-out application (100 unseen incidents), not verbal recitation; Uncertainty via information gain IG=H(X)-H(X|E), with an explicit warning that information-theoretic entropy/mutual-information is NOT automatically a measure of epistemic knowledge (citing arXiv 2209.03302)"
+  - concept: "Evidence must not be simply averaged: structured evidence (independent Observation A -> Inference -> Claim <- independent Observation B) is stronger than 100 copies of the same article representing one independent source"
+  - concept: "Knowledge Invariance (KI): independent-representations-agreeing-on-underlying-state / independent-representations-tested -- if sensor A, sensor B, language-description A, language-description B, and agent-model C all correctly track the same underlying phenomenon, X becomes a much stronger candidate for invariant knowledge; grounded in the Sri Vidya line 'one reality != one representation'"
+  - concept: "Five distinct 'amount of knowledge' metrics that must not be collapsed into one number: Knowledge Coverage (validated/relevant claims), Knowledge Reliability (correct/tested claims), Knowledge Depth (levels of causal/inferential structure traversable: fact->relation->cause->mechanism->counterfactual->general-principle), Knowledge Robustness (P(correct under relevant perturbation)), Knowledge Transfer (P(correct application in novel context))"
+  - concept: "Knowledge Profile as the reporting format: a multi-row scorecard (Coverage/Truth-accuracy/Evidence-quality/Reliability/Counterfactual/Defeater-resistance/Transfer/Temporal-stability) replacing a bare percentage like 'Agent X has 83% knowledge'"
+  - concept: "Four-state ontology: Data (truth-status?, support=0) / Belief (variable) / True belief (truth=yes, variable support) / Knowledge (truth=yes, adequate support, adequate reliability) -- with the explicit chain TRUE+unsupported != knowledge; SUPPORTED+false != knowledge; TRUE+supported+lucky != knowledge; TRUE+supported+reliable+non-lucky ~= knowledge (the operational target)"
+  - concept: "Knowledge as time-indexed, not immutable: K(p,t1) != K(p,t2) because the world/evidence/sources/assumptions/defeaters change; connects to Pollock's distinction between current/dynamic justification and historical/genetic justification"
+  - concept: "Knowledge acquisition as a TRANSFORMATION chain, not a static object: Observation --interpret--> Representation --reason--> Hypothesis --test--> Justified Claim --defeater-testing--> Knowledge -- explicitly strengthens the Dhatu-as-operator hypothesis from 0245"
+  - concept: "Data->Information->Knowledge->Understanding->Wisdom five-tier hierarchy, explicitly not collapsible, partly grounded in Sri Vidya's data/information/knowledge/understanding/wisdom-like layering (Vijnanamaya Kosha associated with wisdom and conscious choice) -- explicitly treated as a traditional conceptual model, not established neuroscience"
+  - concept: "Full architecture diagram: Reality->Observations->Representations->Reasoning->Claim->{evidence,model,provenance}->Justification->Reliability-test->Counterfactual-test->Defeater-test->Knowledge->{understanding,competence,action}"
+  - concept: "Research definition of knowledge (explicit, secular, testable, NOT a claim philosophy has settled): validated, non-accidental, sufficiently reliable cognitive access to a proposition or capability, maintained against relevant evidence and defeaters"
+  - concept: "Proposed next artifact: a formal 'Knowledge Ontology & Measurement Framework v1.0' with 15 named components (taxonomy/lifecycle/vector/evidence-model/reliability-model/defeater-model/anti-luck-model/coverage/depth/transfer/decay/Knowledge-Index/falsification-experiments/Zero-Dhatu-mapping/KnowledgeOS-mapping)"
+defines: []
+refines:
+  - concept: "0216-0230's philosophically-derived Kernel Claim/Evidence/Basing chains (KnowledgeClaim/Determination/EpistemicStanding)"
+    refinement: "Supplies a formal, quantifiable, multi-dimensional Knowledge Vector as a complementary (not competing) formalization -- grounded in classical Gettier/reliabilist epistemology plus Pollock's defeater theory, distinct from the earlier Kernel-synthesis lineage's more architecture-first approach."
+  - concept: "0244's inverse-problem operational definition of knowledge (statistically stable, invariant-under-transformation structure)"
+    refinement: "Adds the Knowledge Invariance (KI) metric as a formal, quantified instance of the same invariant-under-representation-change principle, this time grounded in classical epistemology and Sri Vidya rather than pure statistics."
+  - concept: "0245's Dhatu-as-transition/operator reframing"
+    refinement: "Reinforces the operator (not object) framing by modeling knowledge ACQUISITION itself as a transformation chain (Observation->Representation->Hypothesis->Justified-Claim->Knowledge), directly compatible with Dhatu-as-transition."
+contradicts: []
+repeats:
+  - concept: "Confidence != Knowledge/Truth"
+    canonical_source: 216
+    novelty: none
+bridge_candidates:
+  - "This file's Sri Vidya-derived Data->Information->Knowledge->Understanding->Wisdom hierarchy closely resembles the corpus's earlier Meta-Principle cluster (0110-0117, Ganesha/wisdom-maturation theme) and 0209's Knowledge!=Wisdom distinction -- a further independent convergence on the knowledge-is-not-yet-wisdom theme, this time from a different Sanskrit/tantric tradition (Sri Vidya) rather than the earlier Gita-adjacent sources. Flagged for the registry as a further reinforcement of that cluster."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: note that this file (Sri Vidya's data/information/knowledge/understanding/wisdom layering) is a further independent source reinforcing the corpus's Knowledge-is-not-yet-Wisdom convergence cluster (0110-0117 Meta-Principle cluster, 0209's Knowledge!=Wisdom via Zero/DDD/Wisdom lenses on causal inference)."
+anchor_test:
+  anchor: "0216-0230's Kernel Claim/Evidence chains; 0244's inverse-problem knowledge definition; the 0110-0117/0209 Wisdom-maturation cluster"
+  supports_dimension: "Gita/philosophical model (Sri Vidya, classical epistemology) + Mathematical/statistical model, producing a formal quantifiable Knowledge Vector complementary to the architecture-first Kernel lineage"
+  refines_or_contradicts: "refines/complements 0216-0230 and 0244/0245; independently reinforces the Wisdom-maturation convergence cluster"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Extensive citation apparatus (Stanford Encyclopedia of Philosophy entries on knowledge analysis, reliabilism, a priori justification/Gettier, coherentism, understanding; plus arXiv 2209.03302 on entropy vs. epistemic uncertainty) -- unusually rigorous academic grounding for this sub-arc"
+  - "Worked deployment-failure example testing counterfactual robustness (CR) across multiple perturbed scenarios to verify whether a causal diagnosis remains correct"
+undefined_concepts:
+  - "No formal aggregation rule specified for combining the seven Knowledge Vector dimensions into the optional scalar K* beyond an illustrative weighted-product formula, explicitly not canonical"
+open_questions:
+  - "Whether the proposed 15-component 'Knowledge Ontology & Measurement Framework v1.0' is ever actually produced"
+  - "Whether the Knowledge Vector is ever reconciled with the corpus's philosophically-derived Kernel Claim/Evidence/Basing chains into one unified vocabulary"
+tier2_triggered: true
+tier2_reason: "Critical, rigorously-sourced synthesis producing a formal, multi-dimensional, quantifiable Knowledge Vector (Truth/Justification/Reliability/Anti-luck/Defeater-resistance/Competence/Uncertainty) grounded in classical Gettier/reliabilist epistemology, Pollock's defeater theory, and a Sri Vidya conceptual layering -- complementary to and independent of the corpus's architecture-first Kernel lineage, and a further independent reinforcement of the Knowledge-is-not-yet-Wisdom convergence cluster."

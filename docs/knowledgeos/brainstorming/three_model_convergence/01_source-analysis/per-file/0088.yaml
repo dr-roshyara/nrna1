@@ -1,0 +1,124 @@
+sequence: "0088"
+path: docs/knowledgeos/brainstorming/20260822-0159-epistemic-operating-system-research-foundations.md
+title: "Epistemic Operating System for Reasoning: Research Foundations"
+date: "2026-08-22"
+bytes: 24687
+
+model:
+  primary: m
+  secondary: [x, c1]
+
+source_role: INDEPENDENT_RESEARCH
+canonical_source: null
+
+importance: critical
+confidence: high
+
+about: >
+  A rigorously-cited external-literature review (named authors, arXiv IDs) of Truth Maintenance
+  Systems, AGM belief revision theory, justification logic, epistemic logic, and provenance-enhanced
+  knowledge graphs, assembled into a candidate "Epistemic Operating System" architecture -- then
+  explicitly and carefully distinguished from KnowledgeOS (organizational governance) as a
+  complementary but distinct system, possibly a future component, never the same thing.
+
+introduces:
+  - "AGM belief revision postulates K*1..K*8 (Alchourron/Gardenfors/Makinson 1985), stated formally --
+    the corpus's FIRST genuine, citable formal axiom system (not metaphor, not analogy) with real
+    operators: Expansion (K+phi), Contraction (K-phi), Revision (K*phi)"
+  - "Justification logic: Ki-phi (agent i knows phi, justified true belief) vs Bi-phi (agent i believes
+    phi, may be false/unjustified) -- a genuine formal knowledge/belief distinction from the
+    literature, structurally adjacent to this corpus's own UNKNOWN/FALSE and Evidence/Authority
+    distinctions but not confirmed identical"
+  - "Explicit EOS-vs-KnowledgeOS boundary table (section 8): EOS = reasoning/belief-revision/truth-
+    maintenance (core unit: belief, operation: AGM revision, model: logical consistency); KnowledgeOS
+    = knowledge governance/provenance/authority (core unit: Knowledge Product, operation: lifecycle
+    transition, model: organizational authority). Explicitly 'complementary but distinct' -- EOS COULD
+    be a future component of KnowledgeOS (e.g. for AI reasoning), never treated as identical to it"
+  - "Five EOS invariants (7.3): epistemic consistency, justificatory transparency, minimal mutilation,
+    global acyclicity, truth preservation -- explicitly scoped to EOS, NOT proposed as a rival
+    KnowledgeOS kernel"
+  - "EPI-001..005 candidate invariants (Justification Transparency, Epistemic Consistency, Minimal
+    Mutilation, Provenance Homogeneity, Immutable Evidence Reference) -- a FIFTH unreconciled
+    candidate-invariant ID scheme (after C-n, INV-KOS-n, H-ZERO-n/H-KOS-n, INV-CANDIDATE-n)"
+  - "Forbidden-transitions table for EOS (6 rows): belief-without-justification, contradictory-beliefs-
+    without-resolution, revision-without-minimal-change, circular-justification, belief-update-
+    without-provenance, derived-belief-treated-as-core-belief -- structurally the same pattern family
+    as the KnowledgeOS forbidden-collapse tables (0081/0084/0085/0086) but for a DIFFERENT, explicitly
+    separate system"
+  - "Explicit research-gap #6: 'no established epistemic OS pattern... limited work on bi-temporal
+    epistemic states' -- independently converges with 0080/0081's temporal-knowledge weakness finding"
+
+defines:
+  - "AGM K*1-K*8 postulates (external, quoted, not KnowledgeOS-native): closure, success, inclusion,
+    vacuity, consistency, extensionality, superexpansion, subexpansion -- the corpus's first genuinely
+    formal (non-metaphorical) definitions"
+
+refines:
+  - "Ledger Entry 10's tracked absence 'operator with a full stated signature: zero' -- this file
+    supplies the corpus's first such operator (AGM's Expansion/Contraction/Revision), though EXTERNAL
+    to KnowledgeOS and explicitly not adopted as KnowledgeOS architecture"
+
+contradicts: []
+
+repeats:
+  - concept: "'convergence of hypotheses is not validation' / external research != architecture"
+    canonical_source: "0080"
+    novelty: none
+
+bridge_candidates:
+  - "'ECS' (referenced at 0087 as 'Epistemic Control Systems', 'trusted advancement and publication
+    gates') vs this document's 'Epistemic Operating System' -- PLAUSIBLE but NOT CONFIRMED to be the
+    same source: title and acronym expansion differ, and this document's actual content (TMS/AGM/
+    justification logic) does not obviously match 0087's characterization ('publication gates').
+    Recorded as an unconfirmed candidate resolution of the 0087 forward reference, not an identity"
+  - "Ki-phi/Bi-phi (knowledge/belief distinction) as a possible bridge to this corpus's own UNKNOWN!=
+    FALSE and Evidence!=Authority distinctions -- structural resemblance only, no connecting work done
+    by this document itself"
+
+mathematical_content: true
+gita_content: false
+kernel_content: false
+
+# MD-014 anchor_test against 0087 (Minimal_Kernel_Candidate_0087)
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []          # no clean 1:1 match; EPI-001 (Justification Transparency) and
+                                    # EPI-002 (Epistemic Consistency) are conceptually adjacent to
+                                    # 0087's Evidence Integrity, but for a DIFFERENT system (EOS, not
+                                    # KnowledgeOS) -- not counted as direct support
+  refines_or_contradicts: []
+  alternative_minimal_kernel: >
+    EOS's own 5 invariants (7.3) ARE a distinct minimal-invariant-set proposal, but the document itself
+    explicitly scopes them to a different (adjacent, possibly component) system, not as a rival
+    KnowledgeOS kernel -- recorded as a parallel candidate for a NEIGHBORING system, not a competing
+    KnowledgeOS minimal kernel
+  supplies_math_semantics: true    # AGM K*1-K*8, genuinely formal, first in the corpus
+  supplies_operator_or_transition: true   # Expansion/Contraction/Revision, formally defined (external)
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false   # worsened: introduces a FIFTH scheme (EPI-n)
+
+key_evidence:
+  - "Real, named, dated academic citations throughout (Alchourron/Gardenfors/Makinson 1985; Doyle
+    1992; Artemov 2004; Fagin/Halpern/Moses/Vardi 1995; two 2025-2026 arXiv preprints) -- the corpus's
+    most rigorously sourced single document to date"
+  - "Explicit, careful non-identification of EOS with KnowledgeOS -- a disciplined boundary-drawing
+    exercise, not a merge, directly modeling the caution this research itself must exercise for C1/C2/G"
+
+undefined_concepts:
+  - "Whether this document is in fact the 'ECS' referenced at 0087 -- left unresolved, recorded as
+    plausible-not-confirmed"
+
+open_questions:
+  - "Whether EOS ever becomes a confirmed component of a later KnowledgeOS proposal in this corpus, or
+    remains permanently adjacent/external"
+  - "Whether the five unreconciled candidate-invariant ID schemes (C-n/INV-KOS-n/H-ZERO-n/H-KOS-n/
+    INV-CANDIDATE-n/EPI-n) are ever consolidated"
+
+tier2_triggered: true
+tier2_reason: >
+  First genuinely formal (non-metaphorical, citable) axiom system in the corpus (AGM belief-revision
+  postulates), directly relevant to Ledger Entry 10's tracked absence of "operator with a signature."
+  Explicit, disciplined EOS-vs-KnowledgeOS boundary-setting exercise. Plausible but unconfirmed
+  resolution of the 0087 "ECS" forward reference. First MD-014 anchor_test application against 0087,
+  finding no direct dimension support but a fifth unreconciled candidate-invariant ID scheme.

@@ -1,0 +1,107 @@
+sequence: 2373
+path: docs/knowledgeos/brainstorming/20260903-121000_gita-on-audit-and-the-untested-assumption.md
+title: "The Gītā on the Untested Assumption -- Fourth KR-SIM Companion Study, Delivers 'Review Interrogates What Is Stated, Audit Interrogates What Is Assumed', Refuses Its Second Most-Quotable Verse (18.66, 'the Most Dangerous Verse in the Text for a Research Programme'), and Confirms Kernel Candidates NONE, Sixth Consecutive Time"
+date: "2026-09-03"
+bytes: 0
+model:
+  primary: g
+  secondary: c1
+  secondary_note: "fourth KR-SIM Gita companion study (parallel to files 2329, 2370, 2372), applied to Chapter 2/4/18 material against the KR-REP-REDUCTION-AUDIT-2026-09, delivering a sharp review-vs-audit distinction and a second explicit refusal of the series' most tempting misreading"
+source_role: BRIDGE
+canonical_source: 2373
+importance: high
+confidence: high
+about: >
+  Fourth KR-SIM Gītā companion study (parallel to this reconstruction's already-tracked files 2329,
+  2370, 2372), applied against KR-REP-REDUCTION-AUDIT-2026-09, whose decisive finding was "an assumption
+  two parties held and neither tested -- that desc=(n+1)-asc. I asserted it; review restated it in
+  better vocabulary; the tie-break falsified it, 21,369 times."
+
+  **DELIVERS CORROBORATION C-1 FOR THE VALUE OF AN AUDIT STEP SPECIFICALLY** (2.11, "you grieve for
+  those who should not be grieved for -- and you speak words of wisdom"): "Kṛṣṇa's first substantive
+  line is not a correction of Arjuna's conclusion. It is the observation that his reasoning is well-
+  formed and his premise is not examined... the defect is upstream of the argument." Corroborates "what
+  the audit gate exists to catch" -- results.md §5 was well-formed, reviewed, and improved in wording by
+  a second party, "neither pass touched the premise. The audit did, and only because its protocol said
+  'formally prove' rather than 'state'." Explicitly: "this corroborates the VALUE OF AN AUDIT STEP. It
+  supplies no method -- no way to know which premise to examine."
+
+  **DELIVERS THE SHARP REVIEW-VS-AUDIT DISTINCTION (LENS L-1)** (4.40, 4.42, saṁśayātmā vinaśyati/
+  jñāna-asinā): "an unexamined assumption and a live doubt are different failure modes. Saṁśaya is doubt
+  one HAS; the §5 error was an assumption one DOES NOT KNOW ONE HAS. The text addresses the first and is
+  silent on the second... the distinction is the whole difference between review and audit: REVIEW
+  INTERROGATES WHAT IS STATED, AUDIT INTERROGATES WHAT IS ASSUMED." This is a genuinely sharp
+  methodological distinction, independent of and beyond the already-tracked doubt≠contradiction finding
+  from file 2329.
+
+  **DELIVERS CORROBORATION C-2, EXPLICITLY 'THE MOST APT OF THE STUDY'** (2.47, reused a third time
+  across this series for a new purpose): "the audit was run knowing it might destroy the experiment's
+  headline result. It did... execute the check; do not select it by its expected outcome. A checklist
+  run only where one expects to pass is not a checklist."
+
+  **DELIVERS A SECOND EXPLICIT REFUSAL OF THE SERIES' MOST TEMPTING VERSE** (18.66, "abandoning all
+  duties, take refuge in Me alone"): "⚠️ REFUSED. This is the most dangerous verse in the text for a
+  research programme, because it licenses exactly what the governance freeze forbids: a shortcut from
+  evidence to conviction." Explicitly connects the current frozen transition (EXPERIMENT→AUDIT→
+  ADJUDICATION→THEORY-v1.3, "no shortcut into theory or kernel") to why reading 18.66 as "trust the
+  synthesis" would dissolve it. Explicitly noted: "it is the SECOND TIME this strand has had to refuse
+  its most quotable verse -- 2.50 (skill in action) was refused in the previous study for the same class
+  of reason" -- directly confirming and cross-referencing this reconstruction's already-tracked file
+  2372 refusal.
+
+  **DELIVERS THE CORROBORATION MAP**: four of eight elements get nothing, including every technical
+  finding -- "the text speaks to the posture of auditing, never to its content."
+
+  **DELIVERS A FOUR-ITEM CANDIDATE REGISTER**: G-15 (competence-is-not-verification, lens, already
+  operationalized by the audit protocol); G-16 (unexamined-assumption≠live-doubt, "the sharper of the
+  two" lenses); G-17 (execute-check-independent-of-expected-outcome, corroboration, established
+  internally not learned here); G-18 (~~set the framework aside for the synthesis~~, REFUSED).
+
+  **DELIVERS THE UPDATED RUNNING COUNT AND AN EXPLICIT ARGUMENT-SHORTENING NOTE**: "kernel candidates --
+  NONE. SIXTH CONSECUTIVE TIME. The argument is now purely structural and does not need restating at
+  length" -- extending this reconstruction's already-tracked running count (files 2370's fourth, 2372's
+  fifth) to a sixth occurrence, with the recurring argument now compressed to a bare structural
+  restatement.
+
+  **CLOSES WITH THE VALUABLE EPISTEMIC-HYGIENE OBSERVATION**: "not that two refusals in two studies
+  means the text is unproductive. A source that never requires refusal is not being read critically."
+  And: "this study's yield is two lenses, one corroboration, and one refusal. The refusal -- of the
+  text's most famous verse, because it would license the one shortcut the programme forbids -- is again
+  the most useful of the four," directly echoing file 2372's identical closing structure and confirming
+  a consistent pattern across the series: the refusal of the most tempting misreading is repeatedly
+  valued as the study's single most useful output.
+introduces:
+  - concept: "The sharp review-vs-audit distinction: review interrogates what is stated, audit interrogates what is assumed"
+  - concept: "The second explicit refusal of the series' most tempting verse (18.66), explicitly cross-referenced against the first refusal (file 2372's 2.50), establishing a pattern of catching and refusing the most quotable/attractive misreading in each pass"
+  - concept: "The updated running count (sixth consecutive zero-kernel-candidate outcome) with an explicit note that the recurring argument is now compressed to bare structural restatement"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked files 2329, 2370, 2372 companion-study pattern and kernel-verdict running count"
+    refinement: "EXTENDED to a sixth consecutive occurrence, with an explicit cross-reference confirming a repeated pattern of refusing each pass's most tempting misreading"
+  - concept: "This reconstruction's already-tracked doubt≠contradiction finding (file 2329)"
+    refinement: "SHARPENED into a distinct, more general methodological distinction: unexamined assumption (one does not know one has) versus live doubt (one has), mapping onto audit versus review respectively"
+contradicts: []
+repeats:
+  - "Structurally near-identical to files 2329, 2370, 2372; this record captures the incremental review-vs-audit distinction, the second explicit refusal (with cross-reference), and the updated running count."
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as the fourth KR-SIM Gita-companion study, delivering the sharp review-interrogates-what-is-stated/audit-interrogates-what-is-assumed distinction, a second explicit refusal of the series' most tempting verse (cross-referenced against file 2372's first refusal), and the sixth-consecutive-time zero-kernel-candidate running count."
+anchor_test:
+  anchor: "This reconstruction's already-tracked files 2329, 2370, 2372 kernel-verdict running count and refusal pattern"
+  supports_dimension: "Extends the running count to six and confirms a repeated cross-study pattern of refusing each pass's most tempting misreading"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether a seventh or further KR-SIM Gita-companion study exists elsewhere in the corpus, continuing the running tally and the refusal-of-the-most-tempting-verse pattern."
+tier2_triggered: true
+tier2_reason: "Fourth KR-SIM companion study delivering a sharp, generalizable review-vs-audit distinction and a second explicit, cross-referenced refusal of the series' most tempting misreading, confirming a sixth consecutive zero-kernel-candidate outcome. Classified importance high given the substantial structural repetition of files 2329/2370/2372, though the review-vs-audit distinction and the cross-study refusal pattern are genuinely notable."

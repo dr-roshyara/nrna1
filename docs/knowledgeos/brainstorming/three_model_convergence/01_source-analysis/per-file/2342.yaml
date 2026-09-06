@@ -1,0 +1,73 @@
+sequence: 2342
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/09_equality-identity-audit.md
+title: "Step-292/09 — Equality and Identity, Boundary Preserved: the Third Equivalence Level Naming (Syntactic Identity ≠ Observational Equivalence ≠ Semantic Equivalence, the Middle Level Not Previously Named), and 'Silence Is Not Refutation' Epistemic Hygiene for ≡_sem"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "delivers a genuine new synthesis naming a previously-unnamed 'observational equivalence' level between syntactic identity and semantic equivalence, directly relevant to this reconstruction's already-tracked four-relation equality apparatus, plus an important epistemic-hygiene distinction between an unaddressed question and a refuted one"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2342
+importance: high
+confidence: high
+about: >
+  Tests Reiter's unique-names axioms (do(a_1,s_1)=do(a_2,s_2)⊃a_1=a_2∧s_1=s_2, "syntactic identity of
+  constructed terms... complete, decidable at the term level, exactly what a history needs") against the
+  corpus's own ≡_sem (semantic equivalence of knowledge contents) -- "a different question at a
+  different level."
+
+  **DELIVERS THE REFUTATION**: "[NEG] P5 REFUTED. Reiter provides no bridge from syntactic term identity
+  to semantic equivalence, and does not claim to."
+
+  **DELIVERS AN IMPORTANT EPISTEMIC-HYGIENE PRINCIPLE**: "what must not be inferred: ≡_sem is OPEN and
+  NOT refuted. The standing instruction holds: it must not be asked a question it was not designed for.
+  Reiter's silence on it is not evidence against it." This explicitly guards against conflating "an
+  external source does not address X" with "X is refuted" -- a distinction with broad methodological
+  applicability beyond this specific case.
+
+  **DELIVERS THE GENUINE NEW SYNTHESIS -- A THIRD EQUIVALENCE LEVEL, NAMED FOR THE FIRST TIME**: A5
+  ("observational equivalence does not imply situation identity -- two situations with identical fluent
+  values remain distinct") yields: "[EXP] NEW SYNTHESIS: this gives the programme a third equivalence
+  level to keep apart, where it previously tracked two: syntactic identity (unique names) ≠
+  observational equivalence (same fluent values) ≠ semantic equivalence (≡_sem, OPEN). The middle level
+  was not previously named in the corpus. Naming it is useful; it resolves nothing, and ≡_sem remains
+  exactly as open as before." This directly bears on this reconstruction's already-tracked four-relation
+  equality apparatus (=,≡,≈_X,≅_λ) from earlier project phases -- "observational equivalence" is a strong
+  candidate correspondence to the already-tracked ≈_X (observational-equivalence) relation, now given an
+  independent naming and worked counterexample (two situations, identical fluent values, distinct
+  identity) from a completely different formal source.
+
+  **CLOSES WITH THE EXPLICIT NON-BEARING DECLARATION**: "Step 288/290's equality work is untouched.
+  Reiter must not be cited as bearing on it."
+introduces:
+  - concept: "The 'silence is not refutation' epistemic-hygiene principle: an external source not addressing a question is not evidence against that question's open status"
+  - concept: "The independently-worked counterexample for observational equivalence not implying identity (A5), corroborating this reconstruction's already-tracked approx_X observational-equivalence relation from a completely different formal source"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked four-relation equality apparatus (=,≡,≈_X,≅_λ)"
+    refinement: "GIVEN A NAMED, INDEPENDENTLY-DERIVED MIDDLE LEVEL ('observational equivalence', a strong candidate correspondence to approx_X) with its own worked counterexample from Reiter's situation calculus"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as naming the previously-unnamed 'observational equivalence' level between syntactic identity and semantic equivalence, a strong candidate correspondence to this reconstruction's already-tracked approx_X relation, plus the 'silence is not refutation' epistemic-hygiene principle."
+anchor_test:
+  anchor: "This reconstruction's already-tracked four-relation equality apparatus (=,≡,≈_X,≅_λ)"
+  supports_dimension: "Independently names and works a counterexample for a middle equivalence level strongly corresponding to the already-tracked approx_X relation"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The 'observational equivalence' level named here is directly comparable against this reconstruction's already-tracked ≈_X relation for a possible correspondence, though the mandate warns naming alone 'resolves nothing'."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers a genuine new synthesis naming a previously-unnamed middle equivalence level (observational equivalence) with an independent worked counterexample, and an important epistemic-hygiene principle distinguishing an unaddressed question from a refuted one. Classified importance high given the direct relevance to this reconstruction's already-tracked equality apparatus."

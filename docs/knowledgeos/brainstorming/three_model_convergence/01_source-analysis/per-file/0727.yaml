@@ -1,0 +1,171 @@
+sequence: 727
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-130050_step-140-knowledgeos-logical-component-architecture.md
+title: "Step 140 -- Delivers Finer-Grained Component-Level Elaboration of 0717's Logical Architecture (Application/Domain/Assurance-Graph/Platform-Services/Ports Layers), Largely Consolidating Prior Distinctions, With Genuinely Valuable New Contributions: Graph Rebuildability ('Projection Can Be Reconstructed From Authoritative State'), Registry≠Graph, a Named Checker-Plugin Taxonomy, LA-01, Context Integrity (ContextID/Version/Hash) Enabling Reconstruct(Action,t), and -- Most Significantly -- the FIRST Proposed Formal Architecture Decision Records (ADR-KOS-01 Through ADR-KOS-05) -- Opens Step 141, Deployment and Runtime Architecture"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 140 -- KnowledgeOS Logical Component Architecture', promised at 0726's close; adds component-level granularity to 0717's Logical Architecture (application services, named domain-owned object lists, a checker-plugin taxonomy, storage categories), largely consolidating rather than revising prior distinctions, while delivering the reconstruction's first proposed formal Architecture Decision Record series (ADR-KOS-01..05) -- a genuinely significant step toward institutionalizing the accumulated synthesis, even though explicitly still 'proposed, not adopted'"
+source_role: PRIMARY_RESEARCH
+canonical_source: 727
+importance: critical
+confidence: high
+about: >
+  Delivers `DDD Model→Logical Components` as the next architectural boundary, restating that technology
+  selection (Spring Boot/Laravel/PostgreSQL/Kafka/Neo4j/microservices) is deliberately postponed. Delivers a
+  refined five-layer logical diagram (Application/Orchestration → Domain → Cross-Context Graph →
+  Ports/Adapters → external systems), reconfirming `BoundedContext≠Microservice` and the modular-platform-
+  first strategy from 0716/0717/0725. Delivers Application-vs-Domain-vs-Entity service distinctions
+  (`ApplicationService≠GodService`) and per-domain-component object/responsibility lists for Governance,
+  Knowledge, Evidence, Assurance, and Agent Execution — each consolidating (not revising) prior schemas from
+  0724, with the Agent Execution component explicitly "deliberately subordinate" (`consumes→Knowledge/
+  Governance/Assurance`, `produces→Recommendation/Action`, never owning Decision/Policy/
+  ArchitectureAuthority).
+
+  Delivers the Context Service as an application-layer composition capability (`Context(T,S,t,A)=
+  Relevant(Governance,Knowledge,Evidence,Assurance,Authorization)`), explicitly `ContextPackage≠
+  KnowledgeSource` (never a second knowledge database). Reconfirms the Assurance Graph as
+  `RelationshipNavigation`, not transactional authority ("the graph connects authoritative state; it does
+  not necessarily own it," consistent with 0725/0726). **Delivers Graph rebuildability, a genuinely valuable
+  operational-resilience property not previously stated this precisely**: "projection can be reconstructed
+  from authoritative state" — if the graph is destroyed but domain state remains intact, the graph can be
+  rebuilt from the underlying bounded-context events, "this significantly reduces architectural risk" — a
+  concrete disaster-recovery argument extending the Assurance-Graph-as-projection finding.
+
+  **Delivers `Registry≠Graph`**, a valuable clarifying distinction extending 0719's/0721's registry-
+  classification discipline: the Registry answers "what exists?" while the Graph answers "how are things
+  related?" — the existing registry is provisionally positioned as a `Platform Registry` (not domain
+  knowledge) unless implementation evidence proves otherwise.
+
+  Delivers the Deterministic assurance engine as a separated logical capability (Rule→Checker Selection→
+  Execution→Evidence→Verdict→Verification, "the engine should not contain the entire Assurance domain"),
+  with **a named seven-item Checker Plugin taxonomy** (`ArchitectureChecker, DependencyChecker,
+  RepositoryChecker, SecurityChecker, RuntimeChecker, NexusChecker, KubernetesChecker`) — the most itemized
+  concrete plugin list in the reconstruction — each implementing a common `Checker` port
+  (`verify(rule,subject,context)→VerificationResult`), reaffirming "the checker should not decide
+  governance."
+
+  Reconfirms the Agent Port/adapter pattern (Claude/Codex/Future-X adapters) and the pointer-layer
+  architecture diagram (`AGENTS.md→KnowledgeOS entrypoint→{Claude,Codex}→Agent Application Port→
+  KnowledgeOS`), directly consolidating 0717's/0721's/0726's prior versions without new resolution.
+  Delivers Adapter responsibilities (authenticate, call external API, translate, produce domain-compatible
+  data, preserve provenance — "it should not embed business decisions") with worked Nexus and Git adapter
+  examples.
+
+  Delivers a five-category Storage-architecture taxonomy (Transactional domain state; Evidence store,
+  optimized for immutable records; Graph projection, optimized for relationship traversal; Artifact
+  storage, external/source-controlled; Agent operational state) with the persistence decision explicitly
+  left `Undecided` (one database vs. many), and the Recommended architectural sequence
+  `Modules→Contracts→Persistence boundaries→Deployment boundaries`, explicitly rejecting
+  `Microservices→discover domains`.
+
+  **Delivers "one important correction," a precise ownership-boundary clarification**: KnowledgeOS does not
+  own "Agent" in the sense of owning the actual agent implementation — it owns only the platform
+  representation (`AgentIdentity`, `AgentSession`); `ClaudeImplementation∉KnowledgeOSDomain`. The identical
+  principle is applied to Nexus: KnowledgeOS may hold a `NexusReference` but should not own
+  `NexusRepositoryLifecycle` unless Nexus management is itself an explicit KnowledgeOS business capability.
+
+  **Delivers `LA-01`** ("Logical Architecture" rule, a new distinct numbered series): "core domain modules
+  must not depend directly on external infrastructure SDKs" — `Domain→Port←Adapter`. Delivers cross-context
+  dependency minimization (`Assurance↛Governance.DecisionEntity`; instead `Assurance→DecisionReference`) and
+  a worked Read-side composition example for a concrete agent task ("tell me what I need to know before
+  migrating Nexus") — "this is the key AI architecture": the agent receives `TaskRelevantContext`, never the
+  full schema, "more efficient, safer, easier to govern," formalized as `Context=Filter(Graph,Task,Actor,
+  Time,Scope)`, with the explicit rejection "the agent should not simply receive `SELECT * FROM knowledge`."
+
+  **Delivers Context integrity and Context-to-action traceability**, directly extending 0711's/0715's/0725's
+  context-hashing and provenance discipline: a `ContextPackage` should carry `ContextID`, `ContextVersion`,
+  and potentially `ContextHash`, with `Action→ContextID` establishing that an action was performed using a
+  specific `KnowledgeState(t)`. This enables **`Reconstruct(Action,t)`** — "reconstruct the information and
+  authority available to the agent when it acted... a major capability for trustworthy AI engineering,"
+  directly consolidating 0716's audit-reconstruction concept into concrete traceable fields.
+
+  **Delivers the reconstruction's FIRST proposed formal Architecture Decision Record series
+  (ADR-KOS-01 through ADR-KOS-05), a genuinely significant step toward institutionalizing the accumulated
+  synthesis** (§140.52): ADR-KOS-01 (KnowledgeOS is a modular bounded-context platform); ADR-KOS-02 (the
+  Assurance Graph is a cross-context projection); ADR-KOS-03 (agent integrations use a common semantic
+  contract); ADR-KOS-04 (agent-local files are pointer/operational layers, not authoritative knowledge — the
+  pointer-layer principle recast, for the first time, as a candidate formal ADR rather than a numbered
+  invariant); ADR-KOS-05 (deterministic assurance is authoritative wherever mechanically verifiable) —
+  explicitly "these should remain proposed until validated against the actual organizational architecture."
+  This is a meaningfully different kind of artifact than the AFR/CM/IR/LA numbered-invariant series produced
+  throughout Steps 128-140: it packages the accumulated synthesis into named, adoptable governance
+  decisions, the format this repository's own actual governance discipline (ADR-XXX naming) would
+  recognize.
+
+  Delivers Step 140's verdict, giving the logical component architecture "a coherent shape" (Governance/
+  Knowledge/Evidence/Assurance/AgentExecution, supported by ApplicationServices/Registry/Policy-
+  Authorization/AssuranceGraph/Adapters, connected to Claude/Codex/Git/CI-CD/Nexus/Kubernetes), with the
+  most important decision restated: "do not equate bounded contexts with deployable services."
+
+  **Closes by opening "Step 141 — Deployment & Runtime Architecture,"** distinguishing `LogicalArchitecture`
+  from `DeploymentArchitecture` and posing an eleven-item runtime-inspection checklist (what currently runs?
+  what runs in the repo/CI/locally? what requires a server? what persists state? where does deterministic
+  assurance execute? where should the Assurance Graph be materialized? which parts need isolation/can remain
+  local?) — "this is where the KnowledgeOS architecture becomes an actual runtime architecture, rather than
+  only a DDD model." Given the established 0717-0721 mode-change pattern, this promise should be tracked
+  with calibrated (not escalating) attention per the 0694 meta-finding. No actual code execution, repository
+  inspection, or verified filesystem/architecture claim reported anywhere in this file; every component,
+  diagram, and worked example remains a target-architecture specification.
+introduces:
+  - concept: "Graph rebuildability -- 'projection can be reconstructed from authoritative state,' a concrete disaster-recovery argument"
+  - concept: "Registry≠Graph (Registry answers 'what exists?', Graph answers 'how are things related?')"
+  - concept: "A named seven-item Checker Plugin taxonomy"
+  - concept: "LA-01 -- core domain modules must not depend directly on external infrastructure SDKs"
+  - concept: "'One important correction' -- KnowledgeOS owns only the platform representation of an agent, never the agent implementation itself"
+  - concept: "Context integrity (ContextID/ContextVersion/ContextHash) enabling Reconstruct(Action,t)"
+  - concept: "The reconstruction's FIRST proposed formal Architecture Decision Record series, ADR-KOS-01 through ADR-KOS-05"
+  - concept: "Opens Step 141 -- Deployment and Runtime Architecture"
+defines:
+  - concept: "Graph rebuildability"
+    definition: "The Assurance Graph, being a derived projection rather than a primary source of truth, can always be reconstructed from the authoritative bounded-context state (and the events that state emits) if the graph's own storage is lost -- a property that significantly reduces the architectural risk of treating the graph as a critical, irreplaceable store"
+  - concept: "ADR-KOS series (candidate)"
+    definition: "A proposed, not-yet-adopted set of five formal Architecture Decision Records packaging the reconstruction's accumulated conclusions into named governance decisions: KnowledgeOS as a modular bounded-context platform (KOS-01), the Assurance Graph as a cross-context projection (KOS-02), a common agent semantic contract (KOS-03), agent-local files as non-authoritative pointers (KOS-04), and deterministic assurance as authoritative wherever mechanically verifiable (KOS-05)"
+  - concept: "Reconstruct(Action,t)"
+    definition: "Given a recorded Action and its associated ContextID, the platform can reconstruct exactly which knowledge, decisions, evidence, and authorizations were available to the agent at the time it acted -- a reproducibility capability enabled by context integrity fields (ContextID/ContextVersion/ContextHash) and Action→ContextID traceability"
+refines:
+  - concept: "0717's Logical Architecture"
+    refinement: "Given finer component-level granularity (named application services, per-domain object/responsibility lists, a concrete checker-plugin taxonomy, a five-category storage taxonomy) without fundamentally revising the six-layer structure"
+  - concept: "0725's/0726's Assurance-Graph-as-projection finding"
+    refinement: "Extended with the concrete rebuildability/disaster-recovery property: the graph can always be reconstructed from authoritative bounded-context state if lost"
+  - concept: "0719's/0721's registry-classification discipline"
+    refinement: "Sharpened into the precise distinction Registry≠Graph (existence vs. relationship), with the registry provisionally positioned as a Platform Registry pending implementation evidence"
+  - concept: "0711's/0715's/0725's context-hashing and provenance discipline"
+    refinement: "Operationalized into concrete ContextPackage fields (ContextID/ContextVersion/ContextHash) and the Action→ContextID traceability link enabling Reconstruct(Action,t)"
+  - concept: "the corpus's long-tracked pointer-layer principle and its notation proliferation (A1/AFR-24/AAI-01-family/PLP-01/CM-04)"
+    refinement: "Recast for the first time as a candidate formal Architecture Decision Record (ADR-KOS-04) rather than a numbered invariant -- a meaningfully different artifact type moving toward institutional adoption rather than further invariant-notation accumulation"
+  - concept: "0716's audit-reconstruction concept"
+    refinement: "Given concrete, implementable field-level support via ContextID/ContextVersion/ContextHash and Action→ContextID"
+contradicts: []
+repeats:
+  - "Substantially consolidates 0717's Logical Architecture, 0725's/0726's Assurance-Graph-as-projection finding, and the established Anti-Corruption-Layer/pointer-layer discipline, rather than introducing an extensively different architectural framework."
+bridge_candidates:
+  - "Read 0728 (Step 141 — Deployment & Runtime Architecture) with calibrated (not escalating) attention per the 0694 meta-finding: given the established 0717-0721 mode-change pattern that never delivered genuine empirical archaeology, track whether this file's runtime-inspection promise is fulfilled or continues the hypothetical/promise-then-defer pattern. Also check whether the proposed ADR-KOS-01..05 series is ever picked up, expanded, or formally adopted anywhere later in the corpus."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Graph rebuildability, Registry≠Graph, the named Checker Plugin taxonomy, LA-01, and 'one important correction' (KnowledgeOS owns only the platform representation of an agent)."
+  - "dimension-registry.md: record Context integrity (ContextID/ContextVersion/ContextHash) enabling Reconstruct(Action,t), and -- most significantly -- the reconstruction's FIRST proposed formal Architecture Decision Record series, ADR-KOS-01 through ADR-KOS-05, packaging the accumulated synthesis into adoptable governance decisions for the first time."
+  - "dimension-registry.md: flag Step 141 (0728) for calibrated tracking of whether its promised runtime/deployment-architecture inspection is fulfilled or continues the corpus's established promise-then-defer pattern (per 0694)."
+anchor_test:
+  anchor: "0717's Logical Architecture; 0725's/0726's Assurance-Graph-as-projection finding; 0719's/0721's registry-classification discipline; 0711's/0715's/0725's context-hashing/provenance discipline; the corpus's pointer-layer-principle notation proliferation; 0716's audit-reconstruction concept; the 0694 calibrating meta-finding"
+  supports_dimension: "Delivers finer-grained component-level elaboration of 0717's Logical Architecture, largely consolidating prior-established distinctions. Contributes several genuinely valuable refinements: Graph rebuildability (a concrete disaster-recovery property), Registry≠Graph, a named Checker Plugin taxonomy, LA-01, and a precise ownership-boundary correction distinguishing platform representation from actual agent implementation. Delivers concrete Context-integrity fields enabling Reconstruct(Action,t), directly operationalizing prior audit-reconstruction and context-hashing proposals. Most significantly, delivers the reconstruction's FIRST proposed formal Architecture Decision Record series (ADR-KOS-01..05) -- a genuinely different kind of artifact moving the accumulated synthesis toward institutional adoption rather than further invariant-notation accumulation, notably recasting the long-proliferating pointer-layer principle as a candidate ADR for the first time. Closes with a well-motivated continuation into Step 141's promised runtime architecture, appropriately flagged for calibrated (not escalating) tracking given the established 0717-0721 mode-change pattern"
+  refines_or_contradicts: "directly and substantially extends 0717's Logical Architecture, 0725's/0726's Assurance-Graph-as-projection finding, 0719's/0721's registry-classification discipline, 0711's/0715's/0725's context-hashing/provenance discipline, and 0716's audit-reconstruction concept; recasts (without contradicting) the pointer-layer principle as a candidate ADR for the first time; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§140.19's explicit statement 'projection can be reconstructed from authoritative state... this significantly reduces architectural risk' is directly quotable evidence of a concrete, previously unstated disaster-recovery property extending the Assurance-Graph-as-projection finding."
+  - "§140.52's five named candidate ADRs (ADR-KOS-01 through ADR-KOS-05), explicitly held as 'proposed until validated,' is directly checkable evidence of the reconstruction's first attempt to package its accumulated conclusions into a formal, adoptable governance-decision format rather than an internal invariant-numbering scheme."
+  - "§140.49-140.51's ContextID/ContextVersion/ContextHash fields paired with Action→ContextID and the explicit Reconstruct(Action,t) capability is directly checkable evidence of concrete, implementable support for trustworthy AI-action audit reconstruction."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 141's actual content (0728), once read, delivers genuine runtime/deployment-architecture inspection findings, or continues the hypothetical/promise-then-defer pattern established across the 0717-0721 mode-change arc."
+  - "Whether the proposed ADR-KOS-01 through ADR-KOS-05 series is ever picked up, expanded, formally adopted, or explicitly abandoned anywhere later in the corpus."
+tier2_triggered: true
+tier2_reason: "Delivers finer-grained component-level elaboration of 0717's Logical Architecture, largely consolidating prior distinctions, with genuinely valuable refinements: Graph rebuildability, Registry≠Graph, a named Checker Plugin taxonomy, LA-01, and a precise agent-ownership-boundary correction. Delivers concrete Context-integrity fields enabling Reconstruct(Action,t). Most significantly, delivers the reconstruction's FIRST proposed formal Architecture Decision Record series (ADR-KOS-01..05), recasting the pointer-layer principle as a candidate ADR for the first time -- a meaningful step toward institutional adoption. Opens Step 141's runtime-architecture continuation, flagged for calibrated tracking given the established mode-change pattern."

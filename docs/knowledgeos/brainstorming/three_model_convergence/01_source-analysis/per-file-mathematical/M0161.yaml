@@ -1,0 +1,82 @@
+sequence: M0161
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-181002_review-yes2.md
+title: "Controlled theory patch from the Handbook of Knowledge Representation: FR-1 through FR-12"
+date: "20260902-181002"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0161
+importance: critical
+confidence: high
+about: >
+  A follow-up to M0156's Handbook review, proposing a disciplined "controlled theory patch" rather
+  than another broad research section: twelve numbered FR items (FR-1 through FR-12), most promoted
+  from candidate to explicit STRONG (theory-level) status, plus a genuinely new six-way typed
+  UNKNOWN decomposition and a DerivationLineage concept stronger than ordinary Provenance.
+introduces:
+  - "A six-way typed UNKNOWN decomposition: U_rep (not represented), U_der (not derivable under S), U_avail (derivable but unavailable under resource boundary), U_evid (insufficient evidence), U_eval (evaluation cannot determine), U_scope (outside declared scope) — explicitly NOT to be flattened into one enum value, extending EVal=(Value,Reason,Boundary,...) rather than the flat T/F/U model — the most granular UNKNOWN typing in this reconstruction's read order, synthesizing Williamson's three-way (M0147) and Gödel's system-relative (M0150) classifications with two further computational-boundary-derived kinds"
+  - "DerivationLineage (FR-8): stronger than ordinary provenance — 'derived epistemic content has a dependency lineage that may be invalidated when supporting commitments are revised, contracted or superseded'; Support(q)={p,p→q,...} as a candidate dependency-structure representation, distinguishing derivation dependency from mere origin-provenance"
+  - "A general meta-theoretical principle explicitly generalized BEYOND revision: 'Semantic invariants constrain admissible operations but do not, by themselves, select a unique operation unless an additional selection criterion is established' — explicitly declared applicable to equality, evaluation, contradiction, aggregation, transition, and policy semantics, not merely to the AGM-derived revision-underdetermination finding it originates from — a candidate reusable methodological rule for the whole corpus"
+  - "Model multiplicity as a candidate Determination foundation (FR-12): |ℳ(K,Γ)|=0 (inconsistency under the relevant model semantics) / =1 (model-level uniqueness) / >1 (underdetermination) — with the explicit warning ModelUniqueness≠KnowledgeDetermination, i.e. model uniqueness alone does not constitute a KnowledgeOS determination"
+  - "DiscriminativePower(e,H) as a candidate evidence-quality property (evidence evaluated by which distinctions it preserves among admissible hypotheses) — explicitly NOT reviving N_eff (PairwiseDistinguishability⇏FamilyComplexity remains the frozen negative result)"
+  - "The recommended controlled artifact 'KR-HR — KnowledgeOS Theory Integration from Handbook of Knowledge Representation', with an explicit promotion tiering: FR-1–FR-7 'eligible for theory promotion after corpus reconciliation', FR-8–FR-10 'strong candidates requiring one additional validation pass', FR-11–FR-12 'research candidates', while Contr/Zero/Sat/Equality/δ/Kernel-selection explicitly 'remain open' and 'unchanged'"
+defines: []
+refines:
+  - "Promotes several items already tracked as candidates in M0156 to explicit 'STRONG' (near-theory-level) status here: Rep≠Reason≠Eval≠Det (FR-3), K^exp≠K^der (FR-1), Derive_S(K,q) reasoning-relativity (FR-2), Avail_S(K,B)⊆Cn_S(K) bounded derivation (FR-4), Revision≠Contraction≠Update (FR-5), non-monotonic evolution permitted (FR-6), DomainKnowledge≠TaskKnowledge≠ReasoningMechanism (FR-10) — while Representation Adequacy (FR-7) is marked 'STRONG CANDIDATE → promote' and DerivationLineage/Temporal-Persistence-Separation (FR-8/FR-9) remain 'STRONG CANDIDATE' pending validation"
+  - "The already-tracked Persistence≠Knowledge distinction (via Event Calculus, M0156): given the further boxed formulation NoKnownChange⇏NoChange and explicitly connected to the future δ research"
+  - "The already-established anti-N_eff negative result (frozen since FR-001, tracked through M0159's own comparison matrix): reaffirmed here via DiscriminativePower(e,H), explicitly distinguished from reviving the frozen finding"
+contradicts: []
+repeats:
+  - "The rejection-table discipline (§18), now explicitly restated as a numbered 'do NOT implement' list of 11 items (AGM=KnowledgeOS-revision, EventCalculus=δ, DescriptionLogic=ontology, FDE=evaluation, four-valued-knowledge, CWA, Query=Sat, TELL=requirement-insertion, ModelUniqueness=Determination, DistributedKnowledgeLogic=social-ontology, N_eff) — consistent with, and consolidating, every prior rejection across this sub-thread"
+bridge_candidates:
+  - "Whether the 'KR-HR' artifact was ever actually created as a standalone document, paralleling KR-KRR-2026-09/KR-DL-2026-09"
+  - "Whether the general meta-theoretical uniqueness-constraint principle (constraints≠unique-selection) is ever explicitly invoked again for the specific domains it names (equality, evaluation, contradiction, aggregation, transition, policy) — a candidate reusable rule not yet cross-applied anywhere else in this reconstruction's read order"
+  - "Whether the six-way typed UNKNOWN decomposition (U_rep/U_der/U_avail/U_evid/U_eval/U_scope) is ever reconciled against M0159's own nine-distinction ℛ_req inventory, which does not explicitly name this six-way split"
+mathematical_content: >
+  Restates the K^exp≠K^der, Derive_S, Avail_S⊆Cn_S, Revision/Contraction/Update, and adequacy
+  formalisms from M0156 in a more consolidated FR-numbered form, and states |ℳ(K,Γ)|∈{0,1,>1} for the
+  model-multiplicity Determination candidate — no new derivations beyond the six-way UNKNOWN typing
+  and the DerivationLineage/meta-theoretical-uniqueness principles, which are themselves stated
+  informally rather than fully formalized.
+gita_content: null
+kernel_content: >
+  Functions as the disciplined 'controlled patch' stage between M0156's broad research review and a
+  not-yet-located formal KR-HR artifact, promoting several already-discussed items to explicit STRONG
+  status while carefully keeping Contr/Zero/Sat/Equality/δ/Kernel-selection untouched — the clearest
+  single statement in this sub-thread of exactly which theory items are ready for promotion versus
+  which remain research-only.
+registry_updates:
+  - "Introduces the most granular UNKNOWN typing yet (six kinds), synthesizing prior Williamson/Gödel classifications with new computational-boundary-derived kinds"
+  - "Introduces DerivationLineage as a concept stronger than ordinary Provenance"
+  - "States a general, cross-domain meta-theoretical principle (constraints≠unique-selection) explicitly applicable beyond its origin (revision) to equality, evaluation, contradiction, aggregation, transition, and policy semantics"
+  - "Names an unlocated 'KR-HR' artifact as the next expected formal-artifact stage"
+anchor_test:
+  anchor: true
+  supports_dimension: "Six-way UNKNOWN typing, DerivationLineage, general uniqueness-constraint meta-principle, model-multiplicity Determination candidate, FR promotion tiering"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Semantic invariants constrain admissible operations but do not, by themselves, select a unique operation unless an additional selection criterion is established.\" — the general meta-theoretical principle, explicitly generalized beyond revision"
+  - "\"ModelUniqueness ≠ KnowledgeDetermination\" (boxed) — the explicit warning against over-adopting the model-multiplicity candidate"
+  - "\"FR-1–FR-7: eligible for theory promotion after corpus reconciliation. FR-8–FR-10: strong candidates requiring one additional validation pass. FR-11–FR-12: research candidates. Contr/Zero/Sat/Equality/δ: remain open. Kernel selection: unchanged.\" — the document's own closing promotion tiering"
+undefined_concepts:
+  - "The exact formal shape of DerivationLineage beyond the informal Support(q)={p,p→q,...} sketch"
+  - "Whether the six-way UNKNOWN typing is claimed exhaustive"
+open_questions:
+  - "Was the 'KR-HR' artifact ever created?"
+  - "Is the general uniqueness-constraint meta-principle ever explicitly invoked for equality, evaluation, contradiction, aggregation, transition, or policy semantics elsewhere in this reconstruction's sequence?"
+tier2_triggered: true
+tier2_reason: >
+  Introduces the most granular UNKNOWN typing yet (six kinds), a new DerivationLineage concept
+  stronger than ordinary Provenance, and states a general cross-domain meta-theoretical principle
+  (constraints do not uniquely determine an operation) explicitly declared applicable across six
+  named domains — a candidate reusable rule not yet cross-applied anywhere else in this
+  reconstruction's read order.

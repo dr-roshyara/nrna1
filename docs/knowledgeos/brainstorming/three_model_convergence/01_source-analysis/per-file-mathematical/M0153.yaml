@@ -1,0 +1,86 @@
+sequence: M0153
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180012_review-yes22.md
+title: "Review of the Levesque & Lakemeyer extraction (M0151): disciplined adjudication"
+date: "20260902-180012"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0153
+importance: critical
+confidence: high
+about: >
+  RESOLVES M0151's flagged bridge_candidate: this is the adjudication review of the Levesque &
+  Lakemeyer "Logic of Knowledge Bases" extraction, following the same disciplined pattern as every
+  other extraction→adjudication pair in this sub-thread. Downgrades ASK=Sat_c, TELL=requirement-
+  addition, Only-Knowing=Zero, and four-valued-belief=Contr from 'established' to
+  'candidate/supporting evidence', while confirming Explicit/Derived representation, Query≠
+  Evaluation≠Determination, and successor-state/persistence as genuine contributions.
+introduces:
+  - "Query≠Evaluation≠Determination: a clean three-way separation not previously stated this precisely — 'Does K entail p?' (query) vs. 'Should p receive Standing=positive?' (evaluation) vs. 'Should p become a determination?' (determination)"
+  - "ExistentialKnowledge≠IdentifiedInstanceKnowledge — the corrected KnowledgeOS value of the de dicto/de re distinction, reframed from M0151's rejected 'requirement satisfaction' mapping to Identity/Grounding research (example: knowing a PostgreSQL-using service exists ≠ knowing WHICH service does)"
+  - "KnowGap(K,π) as a candidate refinement of Zero: a system may have Gap(K,π)≠∅ without knowing the gap exists — Zero is therefore NOT simply Gap=∅ but potentially BoundaryKnown(K,π)∧NoUnrepresentedRequiredDistinction(K,π), explicitly flagged as a research hypothesis, not adopted"
+  - "K|_π (subject-matter epistemic projection) explicitly distinguished from the corpus's own canonical structural projection π_K(K_t): 'our canonical projection was a structural projection; K|_π is a subject-matter epistemic restriction. We should not conflate them.' — a precise disambiguation of two similarly-named but distinct projection concepts"
+  - "Full FR (Formal Representation & Reasoning) candidate theory layer, FR.1-FR.10: Explicit Representation, Derived Representation (Cn_S), Query (ASK_S), Update (TELL_S), Subject-Matter Projection (K|_π), Epistemic Boundary, Representation Reduction (ρ_S with adequacy conditions), Bounded Reasoning (AvailableDerivation⊆LogicalClosure), Reasoning Complexity, Action-Conditioned Knowledge (Succ_S candidate, explicitly 'not yet the final δ')"
+  - "A four-way convergence naming Gödel(derivability)→Williamson(accessibility)→Shieber(process/basing)→Levesque(explicit/implicit/bounded reasoning) as jointly filling Derivable_S(p)/Accessible_S(p)/ExplicitlyRepresented(p)/Determined(p) — a structured four-predicate research space"
+  - "A full seven-source convergence table (§26): Plato (knowledge/reality distinction), Davidson (interpretation/triangulation/truth), Williamson (factivity/accessibility/limits), Gödel (derivability/formal boundaries/meta-level), Description Logic (structured representation/subsumption/consistency), Shieber (basing/process reliability/evidence lineage), Levesque/Lakemeyer (explicit/implicit reasoning, ASK/TELL, bounded belief, subject-matter boundary, successor-state reasoning) — CONFIRMING Plato and Davidson as genuine sources in this reading programme, still unlocated as separate extracted documents anywhere in this reconstruction's read order"
+  - "Recommended experiment KR-LL-2026-09 with 14 concrete test cases (E1-E14) spanning explicit/derivable/unrepresented propositions, de dicto/de re existential knowledge, contradictory explicit beliefs, three distinct reasons for Unknown (no-information/reasoning-system-cannot-derive/subject-matter-outside-boundary), TELL-then-reasoning, action effects on fluents (change vs. persistence, representation vs. truth), and cross-reasoning-system comparison"
+defines: []
+refines:
+  - "M0151's central overclaim ('definitive formal foundation for KnowledgeOS's core architecture'): explicitly REJECTED and reclassified — 'Levesque–Lakemeyer = formal KR/epistemic-reasoning evidence' not 'Levesque–Lakemeyer = KnowledgeOS theory'"
+  - "M0151's ASK[α,e]=YES⟺e⊨Kα → Sat(K_t,r) mapping: explicitly rejected as ASK≠Sat_c; ASK is reclassified as ASK_S(K,α)→QueryResult, 'one input into evaluation', not evaluation itself"
+  - "M0151's TELL[α,e]→'adding requirements to ℛ_t' mapping: explicitly rejected as a TYPE ERROR — 'Requirements and knowledge are different types' — TELL is reclassified as an epistemic-state update operation, TELL_S(K,α)→K', distinct from ℛ_t→ℛ_{t+1}"
+  - "M0151's Only-Knowing→Zero claim (the most complete external Zero candidate flagged at M0151): explicitly downgraded to OnlyKnowing→Zero-candidate, NOT OnlyKnowing=Zero — 'Only-knowing can provide a formal model for one aspect of epistemic completeness, but Zero is broader'"
+  - "M0151's noted structural convergence between the four-valued B operator and this corpus's own FDE apparatus: here made explicit and firmly bounded — 'Four-valued belief ≠ Contr' and 'B/N ≠ Zero' remain intact, reaffirming (not merely noting) the already-established KR-CONTR-FDE finding that four values are insufficient"
+  - "M0151's successor-state-axioms→δ claim: downgraded to a 'candidate formal structure' and 'research framework', with the more precise candidate signature δ:(A_t,Event_t,Determination_t,Context_t)→A_{t+1} proposed instead of a bare Situation-Calculus transplant"
+contradicts: []
+repeats:
+  - "The rejection-table discipline structure (§ throughout), identical methodology to M0138/M0142/M0145/M0147/M0150 — 'downgrade from established to candidate/supporting evidence' applied uniformly across Only-Knowing/TELL/ASK/four-valued-semantics/successor-state-axioms"
+  - "Confirms M0152's own findings on Basing/Reliability as NOT solved by this book, showing correct cross-awareness between the Levesque/Lakemeyer thread and the Shieber thread (§25 items 4-5) — unlike the earlier M0146/M0147 desynchronization concerning Contr"
+bridge_candidates:
+  - "RESOLVES M0151's own flagged bridge_candidate (the missing adjudication review) — closed by this document"
+  - "Plato and Davidson, first flagged as unlocated at M0152, are now independently reconfirmed as real sources via this document's own §26 convergence table — still not located as separate extracted documents anywhere in this reconstruction's read order"
+  - "Whether KR-LL-2026-09's 14 test cases (E1-E14) were ever executed"
+mathematical_content: >
+  Restates K_t^{exp}≠K_t^{der,S}=Cn_S(K_t^{exp})≠A_t (explicit≠derived≠attributed, compatible with
+  Gödel's Derivable≠True≠Known), the corrected ASK_S/TELL_S signatures, K|_π as subject-matter
+  projection, and the candidate δ signature (A_t,Event_t,Determination_t,Context_t)→A_{t+1} — all
+  framed as corrections/refinements of M0151's claims, not new derivations.
+gita_content: null
+kernel_content: >
+  Completes the extraction→adjudication pattern for the fourth external source in this KR-integration
+  sub-thread (after Brachman&Levesque/M0136-M0138-M0139, DL Handbook/M0141-M0142-M0143, and now
+  Levesque&Lakemeyer/M0151-M0153), and gives the corpus's own K^exp≠K^der≠A_t distinction its most
+  precise statement yet, explicitly tied to the Gödel derivability≠truth≠knowledge result.
+registry_updates:
+  - "RESOLVES M0151's flagged bridge_candidate: the missing adjudication review, now located"
+  - "Confirms Plato and Davidson as genuine sources in this reading programme via an independent second convergence-table citation (§26), corroborating M0152's own naming of them"
+  - "Fourth complete extraction→adjudication instance in this reconstruction's read order (after Brachman&Levesque, DL Handbook, and — partially — the Reiter/Williamson pairs where one half remained unlocated)"
+anchor_test:
+  anchor: true
+  supports_dimension: "ASK/TELL correction, Query≠Evaluation≠Determination, Zero (KnowGap refinement), K|_π vs. structural projection disambiguation, Plato/Davidson reconfirmation"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Levesque–Lakemeyer = formal KR/epistemic-reasoning evidence, NOT Levesque–Lakemeyer = KnowledgeOS theory.\" — the document's own central correction"
+  - "\"TELL is an epistemic-state update operation... It should not be equated with ℛ_t→ℛ_{t+1}. Requirements and knowledge are different types. This is precisely the sort of type error our recent work has been trying to eliminate.\""
+  - "\"OnlyKnowing → Zero candidate, not OnlyKnowing = Zero.\" — the corrected relationship to M0151's Zero claim"
+  - "Source convergence table naming Plato, Davidson, Williamson, Gödel, Description Logic, Shieber, Levesque/Lakemeyer (§26) — independent confirmation of the two unlocated sources"
+undefined_concepts: []
+open_questions:
+  - "Were Plato and Davidson ever extracted/reviewed as separate documents anywhere in this reconstruction's 282-file sequence?"
+  - "Was KR-LL-2026-09 (E1-E14) ever executed?"
+tier2_triggered: true
+tier2_reason: >
+  Resolves M0151's own flagged bridge_candidate (a genuinely missing adjudication review, now
+  located), independently reconfirms Plato and Davidson as real unlocated sources via a second
+  convergence-table citation, and delivers several precise corrections (ASK≠Sat_c, TELL type error,
+  OnlyKnowing≠Zero, K|_π vs. structural-projection disambiguation) completing the fourth full
+  extraction→adjudication pair in this sub-thread.

@@ -1,0 +1,136 @@
+sequence: 2237
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-230100_step_290_reviewer-accepts-289-and-drafts-step-290-n1-equality-observational-adjudication-mandate.md
+title: "Reviewer Accepts Step 289's Execution and Drafts the Step 290 N-1 Equality/Observational-Relation Adjudication Mandate -- REVEALS STEP 289's ACTUAL EXECUTED OUTCOME: THE {O,T} BOOTSTRAP CLAIM IS REFUTED, {≡} IS THE UNIQUE MINIMAL CYCLE CUT, FOUR CYCLES NOT THREE, 30 NOT 32 NON-DEGENERATE ≈_X RELATIONS"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "reviewer commentary accepting/locking Step 289's executed findings, followed by the literal Step-290 N-1 adjudication research mandate -- the first primary-source confirmation this reconstruction has of Step 289's ACTUAL execution outcome, as distinct from the two prior Step-289 research mandates (files 2235, 2236) it was drafted from"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2237
+importance: critical
+confidence: high
+about: >
+  Reviewer commentary confirming Step 289 "is a materially stronger step than 288, because it does exactly
+  what the programme requires: it audits its predecessor rather than inheriting its headline," followed by
+  the literal "REFINED STEP 290 — N-1 EQUALITY/OBSERVATIONAL RELATION ADJUDICATION" mandate. This is the
+  first primary-source evidence this reconstruction has of Step 289's ACTUAL EXECUTED outcome (as opposed
+  to the two prior Step-289 research mandates at files 2235/2236, which only posed the questions).
+
+  **MAJOR CORRECTION TO THE ALREADY-TRACKED {𝒪,𝒯}-BOOTSTRAP FINDING**: "The correction from '𝒪/𝒯 is the
+  bootstrap cut' to '≡ is the unique minimal cycle cut; 𝒪/𝒯 is a downstream derivation blocker' is important
+  and should be preserved." Six items are explicitly "locked from 289":
+
+  1. **The 288 bootstrap claim is refuted**: "{𝒪,𝒯} does not break the cycles. {≡} is the unique minimal cut
+  of size 1. Four cycles, not three. Prerequisite ≠ cycle member." (This directly revises the already-tracked
+  file-2235-sourced "three dependency cycles, all through one node; bootstrap boundary is 𝒪/𝒯 ratification"
+  finding — Step 289's actual execution independently audited and REFUTED its own predecessor's claim, per
+  the mandate's own discipline of not assuming the Step-288 conclusion was correct.)
+
+  2. **Two different boundaries exist and must not be conflated**: {≡} breaks the dependency cycles; {𝒪,𝒯}
+  unblocks eight derivable prerequisites — these are DIFFERENT kinds of boundary.
+
+  3. **The declaration/derivation fork**: Declaration route (≡ normatively declared, cycle breaks) vs
+  Derivation route (𝒯→congruence→≡, so equality re-enters through transformation) — "precisely the
+  unresolved bootstrap."
+
+  4. **THE 30-VS-32 CORRECTION**: "≈_∅ is universal. ≈_full is discrete. Therefore only 30 non-degenerate
+  observational relations remain. This should replace all earlier '32 usable choices' language" — a direct
+  revision of the already-tracked "32 distinct ≈_X relations empirically established" finding (traced to
+  file 2235), narrowing it via a degeneracy audit exactly matching the already-tracked degeneracy-audit
+  principle's own prescribed application.
+
+  5. **THE K-ORDER CORRECTION**: "289 correctly catches that the corpus already contains a candidate K
+  join-semilattice claim. Therefore 'K has no candidate order' is too strong. But neither should it be
+  upgraded to 'K is a lattice.' The correct status is approximately: candidate semilattice/order claim
+  exists; closure/proof status remains open" — a nuanced correction to the already-tracked "never infer a
+  K-order from Σ" discipline, distinguishing "no established K-order" from "a candidate K-order claim exists
+  but is unproven."
+
+  6. **261.23 SPLIT INTO TWO BLOCKS**: "Equality conditions: 1,2,3,6. Representation conditions: 4,5.
+  Therefore resolving equality does not automatically release the representation block" — a structural
+  refinement of the already-tracked Step-261 §261.23 six-condition gate, distinguishing which conditions
+  equality-resolution can and cannot affect.
+
+  7. The five withheld items (unnamed in this commentary) are confirmed correctly withheld from governance
+  escalation.
+
+  The reviewer then proposes Step 290 as a **narrowly-scoped N-1-only adjudication**, not a general equality
+  investigation: "Are ≡ and ≈ actually two distinct corpus relations, or are the two registers describing one
+  relation under different terminology? ... Does the corpus contain enough evidence to adjudicate this, or
+  must Governance declare the distinction?" — explicitly "a corpus-integrity question first, and only
+  secondarily a governance question."
+
+  The Step-290 mandate body: §1 binds five prior findings as established-unless-falsified (explicitly stating
+  Step 288's {𝒪,𝒯}-bootstrap claim "is superseded and refuted by Step 289; do not reproduce that claim").
+  §2 poses eight audit questions (Q1-Q8) about whether the corpus explicitly distinguishes or conflates ≡/≈.
+  §3 requires a complete relation register (11-field schema: source/section/symbol/name/operands/definition/
+  procedure/parameter/dependency/explicit-distinction/explicit-synonymy/status). §4 requires testing actual
+  distinguishability via corpus-only counterexamples (K₁≡K₂∧¬(K₁≈K₂) or the converse), forbidding invented
+  hypotheticals — "report UNDECIDABLE FROM CURRENT CORPUS rather than constructing a hypothetical." §5 audits
+  whether the 30 non-degenerate ≈_X candidates actually instantiate the corpus's original ≈ or merely one
+  possible formalization, preserving "bounded candidate family ≠ selected canonical relation." §6 separates
+  equality/congruence/observational-equivalence/transformation-semantics, forbidding inferring ≡=≈ merely
+  from cycle-dependency existence. §7 requires an explicit two-branch (Declaration/Derivation) analysis
+  without selecting a branch. §8 re-confirms the 261.23 equality-block(1,2,3,6)/representation-block(4,5)
+  split and requires stating explicitly whether N-1 adjudication would satisfy any condition. §9 defines a
+  five-way N-1 classification outcome vocabulary: N-1A DISTINCT / N-1B SAME / N-1C DERIVABLE COLLAPSE / N-1D
+  GOVERNANCE-CHOICE / N-1E CORPUS-CONTRADICTION — explicitly forbidding "OPEN" as a final answer, "the
+  purpose of N-1 is to classify WHY it remains unresolved, if it remains unresolved." §10 a five-part
+  evidence threshold before any conclusion may be promoted, else "INSUFFICIENT — NOT DECIDABLE FROM CORPUS."
+  §11 nine required negative checks (explicitly: philosophical sources NOT used; governance preference NOT
+  used as evidence). §12 required deliverables (REFINED-STEP-290.md 13-section structure + 10 numbered
+  research/step-290/ documents + t290_n1_audit.py executable). §13 mandatory stopping rule — STOP immediately
+  after N-1 classification, explicit list of 9 forbidden downstream continuations (operation registry, 𝒪_core,
+  transformation semantics, δ, identity repair, equality decision procedure, invariant enumeration, kernel
+  selection, Governance recommendation) — "If N-1 returns GOVERNANCE-CHOICE, the next act is Governance — not
+  another research loop attempting to manufacture a mathematical answer." §14 final discipline: the central
+  question is not "which relation should KnowledgeOS use" but "has the corpus already distinguished ≡ and ≈,
+  or does choosing require authority?"
+
+  Closing note explicitly separates an unrelated housekeeping warning (".claude/sessions/2026-08-31.md") from
+  the research dependency graph — "should be fixed separately... should not contaminate the N-1 result or
+  become another research blocker."
+introduces:
+  - concept: "The first primary-source confirmation of Step 289's ACTUAL executed outcome: {O,T}-bootstrap claim REFUTED, {≡} is the unique minimal cycle cut, FOUR cycles (not three), 30 (not 32) non-degenerate ≈_X relations, a nuanced K-order status ('candidate semilattice/order claim exists; closure/proof status remains open'), and the 261.23 equality-block(1,2,3,6)/representation-block(4,5) split"
+  - concept: "The declaration-vs-derivation fork for ≡ (normative declaration breaks the cycle vs derivation route 𝒯→congruence→≡ re-enters equality through transformation) -- 'precisely the unresolved bootstrap'"
+  - concept: "The five-way N-1 classification vocabulary (N-1A DISTINCT / N-1B SAME / N-1C DERIVABLE COLLAPSE / N-1D GOVERNANCE-CHOICE / N-1E CORPUS-CONTRADICTION), explicitly forbidding 'OPEN' as a terminal answer"
+defines:
+  - concept: "Two distinct boundary types that must not be conflated: {≡} (breaks dependency cycles) vs {O,T} (unblocks eight derivable prerequisites)"
+  - concept: "The 261.23 equality-block (conditions 1,2,3,6) vs representation-block (conditions 4,5) split"
+refines:
+  - concept: "This reconstruction's already-tracked {O,T}-bootstrap-boundary finding (file 2235's reviewer-B mandate, which posed but did not assume this conclusion)"
+    refinement: "REFUTED by Step 289's own independent audit -- corrected to {≡} as the unique minimal cycle cut, with {O,T} demoted to a separate downstream derivation-unblocking boundary"
+  - concept: "This reconstruction's already-tracked '32 distinct ≈_X relations empirically established' finding (traced to file 2235)"
+    refinement: "NARROWED to 30 non-degenerate relations via degeneracy-audit application (≈_∅ universal, ≈_full discrete, both excluded) -- 'this should replace all earlier 32 usable choices language'"
+  - concept: "This reconstruction's already-tracked Σ-order≠K-order / no-K-order-from-Σ discipline"
+    refinement: "NUANCED: a candidate K join-semilattice claim exists in the corpus independently of Σ, so 'K has no candidate order' is too strong -- though 'K is a lattice' remains unestablished; correct status is candidate-claim-exists/closure-open"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "The actual executed REFINED-STEP-289.md artifact (as distinct from the two prior research mandates at files 2235/2236) that produced the findings locked here -- not yet directly encountered in this reconstruction's own sequential order; flag for direct grounding if later encountered."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as the first primary-source confirmation of Step 289's actual executed outcome (refuting the {O,T}-bootstrap claim, establishing {≡} as the unique minimal cycle cut, narrowing 32→30 non-degenerate ≈_X relations, nuancing the K-order status, splitting 261.23 into equality/representation blocks), and as the founding source of the Step 290 N-1 adjudication mandate with its five-way classification vocabulary."
+anchor_test:
+  anchor: "This reconstruction's already-tracked {O,T}-bootstrap-boundary and 32-relation findings (traced to file 2235)"
+  supports_dimension: "Directly REFUTES and REVISES these prior findings with Step 289's own independent audit outcome -- a genuine self-correcting chain within the corpus's own equality research programme"
+  refines_or_contradicts: "refines (corrects the prior tracked findings with a more precise, independently-audited result)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The exact phrase '{O,T} does not break the cycles. {≡} is the unique minimal cut of size 1. Four cycles, not three' is directly checkable against the actual REFINED-STEP-289.md artifact if directly encountered later in the sequential read, for exact traceability of this reconstruction's corrected understanding."
+undefined_concepts:
+  - "The exact identity of 'the five withheld items' referenced in point 7 of the locked findings, not enumerated in this commentary."
+open_questions:
+  - "Whether the actual REFINED-STEP-289.md executed artifact (producing these locked findings) is directly encountered later in the sequential read, distinct from the two prior research-mandate drafts already tracked at files 2235 and 2236."
+  - "Whether Step 290's N-1 adjudication outcome (one of N-1A through N-1E) is directly encountered later in the sequential read."
+tier2_triggered: true
+tier2_reason: "Delivers the first primary-source confirmation of Step 289's actual executed outcome, directly refuting and revising this reconstruction's already-tracked {O,T}-bootstrap-boundary and 32-relation findings, plus founding the Step-290 N-1 adjudication mandate with its five-way classification vocabulary. Classified importance critical and confidence high given the direct corrective and connective significance."

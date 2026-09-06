@@ -1,0 +1,58 @@
+sequence: 50
+path: docs/knowledgeos/brainstorming/20260817-145153-ai-engineering-platform-6-role-model.md
+title: AI Engineering Platform — Six-Role Model (conversational transcript)
+date: 2026-08-17
+bytes: 13902
+doc_type: conversational transcript extending the four-role model to six roles
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [governance, domain_model, ddd, evidence]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+status: DR
+maturity: developing
+importance: medium
+
+introduces:
+  - communication_and_knowledge_engineer_as_nervous_system_and_memory
+  - knowledgeos_domain_vs_ai_engineering_platform_layer_split   # independently converges with root-level material
+  - do_not_redesign_platform_while_using_it_to_discover_itself
+  - observations_become_capabilities_only_after_repeated_evidence
+defines:
+  - six_role_model   # Governance, Communication, Knowledge, Architecture, Implementation, Verification Engineer
+hypotheses:
+  - option_a_six_role_model_recommended
+  - option_b_communication_knowledge_as_governance_subcapabilities
+  - option_c_defer
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge]
+open_questions:
+  - which_integration_option_ADR_AIP_04
+
+depends_on: [47]
+extends: [47, 48]
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: []
+connects_to: [47, 48]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Supplies a second and third independent data point (after 0049) for the multi-track convergence
+  hypothesis: this conversational thread's platform-vs-domain layer split and evidence-before-
+  promotion discipline structurally parallel the separately-tracked root-level material's core
+  distinctions, with no citation between the two tracks. Strengthens but does not prove that a single
+  coherent C1 model spans both tracks; the alternative (shared surface vocabulary without deep
+  structural agreement) remains equally live.

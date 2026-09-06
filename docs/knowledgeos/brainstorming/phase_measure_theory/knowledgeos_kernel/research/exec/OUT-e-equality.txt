@@ -1,0 +1,56 @@
+==============================================================================
+E4 — D285-5 REVALIDATED UNDER ALL FOUR CORPUS RELATIONS
+==============================================================================
+  o1 != o2 : True      (differ only in Pi)
+
+  relation             antecedent holds   property substantive?    note
+  ------------------------------------------------------------------------------------------------
+  A structural  =      False              VACUOUS                  Pi is inside id -> different ids -> different sets
+  B semantic    ==     True               SUBSTANTIVE *but see E2* equal IF Pi is discarded -- but that CHOICE is Decision 3, OPEN
+  C observational ~    True               SUBSTANTIVE              equal under cardinality-only observation
+  D provenance   =_lam False              VACUOUS                  explicitly compares Pi -> unequal by construction
+
+==============================================================================
+E3 — IS THE HIERARCHY  history ⊊ structural ⊊ semantic  CORPUS?
+==============================================================================
+  Corpus (246) defines FOUR relations: structural · semantic · observational · provenance-sensitive.
+  'history' equality is NOT among them.
+  The chain 'history ⊊ structural ⊊ semantic' appears ONLY in verification-lane artifacts.
+  => the HIERARCHY is a verification-lane construct (DERIVED), not CORPUS.
+
+  What CAN be tested from the corpus four:
+    structural => semantic ?  True   (holds on this witness)
+    semantic  => structural?  False   (FAILS -> inclusion is STRICT)
+    provenance => semantic ?  True   (holds: D is defined AS semantic + Pi)
+  => structural ⊊ semantic  WITNESSED.   D ⊆ semantic  BY DEFINITION.
+  => observational is NOT comparable without fixing the permitted-observation set.
+
+==============================================================================
+E5 — WHAT DOES D285-5 ACTUALLY ESTABLISH?
+==============================================================================
+  NOT: "delta is non-injective."
+  NOT: "delta is non-injective in o."
+  ONLY, and precisely:
+
+      There EXIST o1 != o2 and a state K0 such that
+          delta(K0,o1) ==_semantic delta(K0,o2)
+      under a semantic projection that DISCARDS Pi.
+
+  That is: non-injectivity MODULO a chosen semantic quotient.
+  It is NOT a property of delta. It is a property of delta COMPOSED WITH that quotient.
+  Under the corpus's relation D (provenance-sensitive), the same delta IS injective on this witness.
+
+  => D285-5 does not establish non-injectivity of delta.
+     It establishes that SOME quotients collapse operationally-distinct results,
+     and that the quotient must therefore be named. That is weaker and correct.
+
+==============================================================================
+E6 — IDENTITY BOUNDARY: is the grantId collision the same problem?
+==============================================================================
+  D285-5's property : two OPERATIONS, one semantic RESULT   -> a QUOTIENT choice
+  grantId collision  : two AUTHORITY ACTS, one IDENTIFIER      -> an ID-ASSIGNMENT defect
+
+  Different layers. The first is about an equivalence relation on states;
+  the second is about a key collision on a different object.
+  => D285-5 does NOT imply a general identity rule for authority acts.
+     Citing it as motivation for typing humanActRef is an OVERREACH. (Correction to my own R5.)

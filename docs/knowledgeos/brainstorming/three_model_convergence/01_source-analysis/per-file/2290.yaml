@@ -1,0 +1,77 @@
+sequence: 2290
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260901-020447_step_286_hpa-gita-chapter-02-as-a-kernel-level-refinement.md
+title: "Gītā Chapter 2 HPA (kernel-level refinement pass) -- Delivers Reframe(K_t)→K'_t as a Fact-Free Knowledge Transformation Operator, and 'Mis-modelled' as a Zero Category (a Fourth Unreconciled Zero Decomposition)"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a third Chapter-2 pass treating the chapter as a kernel-level refinement rather than a separate layer, delivering Reframe as a distinct knowledge-transformation operator and extending the thread's already-multiple Zero decompositions with a fourth variant"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2290
+importance: high
+confidence: high
+about: >
+  A third Chapter-2 pass: "Chapter 2 shows what a knowledge-processing system must do when knowledge exists
+  but the correct interpretation/action is unclear," explicitly treated as "a kernel-level refinement, not a
+  separate philosophical layer." Delivers 𝒦𝒪𝒮_t=(K_t,Z_t,B_t,M_t,O_t,δ) with 𝒩∉K_t preserved.
+
+  **DELIVERS Reframe(K_t)→K'_t AS A FACT-FREE KNOWLEDGE-TRANSFORMATION OPERATOR**: grounded in the referenced
+  observation that "Kṛṣṇa does not merely supply additional information; he progressively reframes Arjuna's
+  conceptual model" — K_t={P_1,P_2,P_3} becomes K'_t={P'_1,P'_2,P'_3} where the SAME propositions are
+  reinterpreted under a different conceptual structure, giving "Knowledge transformation≠Knowledge
+  accumulation." This is a genuinely distinct operator from the already-tracked Purify/Transform/Discriminate
+  candidates — it specifically targets INTERPRETIVE RESTRUCTURING of existing content without adding or
+  removing propositions, complementing rather than duplicating the already-tracked purification and
+  discrimination operators.
+
+  **DELIVERS 'MIS-MODELLED' AS A ZERO CATEGORY, A FOURTH UNRECONCILED ZERO DECOMPOSITION**: Z_t={unknown,
+  uncertain, contradictory, unqualified, mis-modelled} — explicitly emphasizing "a knowledge system may have
+  many facts and still have wrong model... Zero≠missing data detector only. It becomes an epistemic boundary
+  detector." This is a FOURTH distinct Zero decomposition in this thread (after the three-way Z_1/Z_2/Z_3
+  split in file 2273, Zero≠Saṁśaya in file 2286, and Zero=gaps+distortions in file 2287), none of which have
+  been explicitly reconciled with each other — "mis-modelled" specifically connects to the Reframe operator
+  above as its corresponding remedy.
+
+  Reinforces the three-way Knowledge≠Decision≠Action≠Result non-collapse chain (Knowledge≠Decision;
+  Decision≠Action; Action≠Result), and the mode-dependent Buddhi formalization Buddhi(K_t,Z_t,M_t)→D_t
+  (matching the already-tracked mode-sensitivity findings, files 2277-2288). Provides a thirteenth kernel
+  tuple 𝔎_t=(K_t,Z_t,M_t,B,𝒪,δ). Closes proposing (once more) the derivation of a minimal operator algebra
+  𝒪_K={o_1,...,o_n} tested against ten explicit per-operator properties (input/output state, preconditions,
+  invariants, K-vs-Σ effect, evidence-consumption, Observation/Event/Action production, Buddhi-requirement,
+  mode-dependence).
+introduces:
+  - concept: "Reframe(K_t)→K'_t: a knowledge-transformation operator that reinterprets existing propositions under a different conceptual structure without adding or removing content -- distinct from Purify/Transform/Discriminate"
+  - concept: "'Mis-modelled' as a Zero category, a fourth unreconciled Zero decomposition in this thread, specifically corresponding to the Reframe operator as its remedy"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked multiple competing Zero decompositions (files 2273, 2286, 2287)"
+    refinement: "EXTENDED with a fourth unreconciled variant explicitly including 'mis-modelled' (wrong conceptual model despite abundant facts), tied to the newly-introduced Reframe operator as its remedy"
+  - concept: "This reconstruction's already-tracked knowledge-transformation and mode-dependent Buddhi findings"
+    refinement: "ADDS the Reframe operator as a distinct interpretive-restructuring transformation, complementing rather than duplicating the existing Purify/Discriminate candidates"
+contradicts: []
+repeats:
+  - "Substantial overlap with files 2288-2289 (Kernel-level Chapter-2 refinement, mode-dependent Buddhi, Knowledge≠Decision≠Action≠Result chain); this record captures the incremental Reframe operator and the fourth Zero decomposition."
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering the Reframe(K_t)→K'_t knowledge-transformation operator and a fourth unreconciled Zero decomposition including 'mis-modelled', tied together as operator-and-remedy."
+anchor_test:
+  anchor: "This reconstruction's already-tracked multiple competing Zero decompositions across the thread (files 2273, 2286, 2287)"
+  supports_dimension: "Adds a fourth unreconciled variant explicitly including 'mis-modelled', paired with a new Reframe operator as its corresponding remedy"
+  refines_or_contradicts: "refines (though contributes yet another unreconciled competing formulation)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The 'mis-modelled' Zero category is directly comparable against the already-tracked three prior Zero decompositions (files 2273, 2286, 2287) to confirm this is a fourth, unreconciled variant."
+undefined_concepts: []
+open_questions:
+  - "Whether the four competing Zero decompositions proposed across this thread (files 2273, 2286, 2287, 2290) are ever explicitly reconciled into one formulation, and whether Reframe is directly tested as a candidate kernel operator later in the sequential read."
+tier2_triggered: true
+tier2_reason: "Delivers a genuinely distinct operator (Reframe, fact-free interpretive restructuring) paired with a fourth unreconciled Zero decomposition ('mis-modelled'), extending the thread's already-substantial but still-unresolved Zero-decomposition proliferation. Classified importance high given the substantive new operator concept, short of critical since the overall content substantially overlaps the immediately preceding documents."

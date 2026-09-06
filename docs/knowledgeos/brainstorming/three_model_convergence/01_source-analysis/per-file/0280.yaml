@@ -1,0 +1,88 @@
+sequence: 280
+path: docs/knowledgeos/brainstorming/kernel/20260825-122752-floridi-philosophy-of-information-levels-of-abstraction-extraction.md
+title: "Floridi's Philosophy of Information: Levels of Abstraction Extraction"
+date: "2026-08-25"
+bytes: 26000
+model:
+  primary: c1
+  secondary: g1
+source_role: PRIMARY_RESEARCH
+canonical_source: 280
+importance: critical
+confidence: high
+about: >
+  Direct execution of 0279's proposed reading order and cross-book-intersection discipline: Luciano
+  Floridi's Philosophy of Information, engaged with an explicit 'Keep' vs. 'Do NOT directly adopt' Zero-Lens
+  split -- a disciplined application the corpus had NOT consistently applied at 0276/0278, and a positive
+  signal that the 0279 methodological correction is being followed through. Introduces Levels of Abstraction
+  (LoA) as 'probably the single most valuable idea in the entire book for KnowledgeOS', reframing the
+  topic-boundary question as a boundary of abstraction/purpose/scope/observability rather than ontology.
+  Reframes 'knowledge is not just truth' via Floridi's semantic-information-to-knowledge progression
+  (data->meaningful->truthful->relevant->ACCOUNTED->knowledge), formalizes the Question->Answer->Account
+  cycle, and produces an explicitly-versioned, explicitly-provisional 'Knowledge Space Model v0.2' (a
+  seventh candidate in the Kernel-structure-synthesis family) pending testing against Williamson next.
+introduces:
+  - concept: "Central Floridi thesis adopted as directional guidance, not as a frozen model: semantic information -> knowledge -> reality; semantic information = well-formed+meaningful+truthful data; knowledge = relevant semantic information that is properly ACCOUNTED FOR"
+  - concept: "Reframed Knowledge Space pipeline: System/Domain -> Level of Abstraction -> [observables, behaviour, relations] -> Data -meaning-> Information -truth-> Semantic Information -relevance-> Knowledge -account-> Well-Founded Knowledge -- Knowledge Space is NOT a collection of 'knowledge objects' but a structured space where informational descriptions at different LoAs relate to systems/questions/evidence/truth/relevance/accounts"
+  - concept: "Words/sentences explicitly validated as NOT Kernel primitives of Knowledge itself, belonging instead to a representation/expression layer: representation -> data -> meaning -> truth -> relevance -> account -> knowledge, none of these steps collapsing WORD=KNOWLEDGE"
+  - concept: "Level of Abstraction (LoA) formalized: an observable is an interpreted typed variable representing a system feature (system can be physical/conceptual/mathematical/moral/etc.); a LoA is a finite non-empty set of observables; answers the corpus's long-standing topic-boundary question -- 'a Knowledge Space boundary should normally be a boundary of abstraction, purpose, scope and observability', NOT necessarily an ontological boundary; worked four-LoA 'Car' example (brand/model/year -> engine/transmission/fuel -> combustion/thermodynamics/materials -> molecular/chemical/quantum) showing the SAME object yields a different Knowledge Space per LoA"
+  - concept: "Refinement of the corpus's founding 'infinite knowledge' intuition: 'a Knowledge Space is potentially unbounded in extension, but every usable knowledge representation is bounded by a selected Level of Abstraction, purpose, context and scope'; a Gradient of Abstraction allows movement across LoAs"
+  - concept: "Formal 'behaviour' concept: at a given LoA, not every combination of observable values is allowed -- the allowed combinations form a predicate, Floridi's 'behaviour' of the system at that LoA; three formally distinguished boundary types: SCOPE boundary, SEMANTIC boundary, VALIDITY/BEHAVIOURAL boundary"
+  - concept: "Chess files/ranks example: observing chess by files alone, or ranks alone, cannot reconstruct the game; combined partial LoA views recover a richer model -- CONCLUSION: 'a topic does NOT necessarily need one boundary; a topic can be a PROJECTION into a particular knowledge space'; major architectural consequence: KnowledgeOS should support OVERLAPPING knowledge spaces rather than forcing a single topic tree"
+  - concept: "Four-condition semantic-information test (data exists / is well-formed / the well-formed data is meaningful / the meaning is truthful) directly answering the corpus's 'does this make sense' question; worked 'purple elephants negotiate database treaties' example showing syntactic-validity/meaningfulness/truthfulness/relevance/knowledge-status as five separately-judged, non-collapsible properties"
+  - concept: "False information reframed as NOT semantic information in the strict sense but pseudo-information/misinformation; Claim proposed with six separate status fields: syntactic_status, semantic_status, truth_status, relevance_status, evidential_status, account_status"
+  - concept: "Question taxonomy validated and formalized via Floridi's Network Theory of Account: semantic information answers a question, but the answer generates FURTHER questions; knowledge emerges when questions are correctly answered through an appropriate network of informational relations; Why-questions subdivided into How-come(historical)/What-for(teleological)/How-does-it-work(functional), with worked Berlin and boiling-kettle examples showing the same surface 'why' representing fundamentally different question types; full cycle Question -> Answer -> [raises further questions] -> Account -> Knowledge"
+  - concept: "'Concreteness of an answer' formalized as multi-dimensional ANSWER QUALITY (correctness/specificity/completeness/relevance/scope/granularity/evidence/accountability), explained via LoA: an answer correct at LoA-1 may be insufficient at LoA-3; worked cascading-LoA example ('application slow because database overloaded' -> 'why is database overloaded' -> 'why is that query slow') directly formalizing the corpus's intuitive 'knowledge depth' mechanism"
+  - concept: "Rejection of the flat Word->Sentence->Topic->Knowledge model, replaced with Knowledge Space = [Representation, Semantics, Epistemics] converging through Level of Abstraction -> Questions -> Answers -> Accounts -> Knowledge"
+  - concept: "'Knowledge is not just truth' headline finding: truthful+relevant information can still be EPISTEMICALLY LUCKY; the missing piece is the ACCOUNT connecting information appropriately to its supporting informational sources -- explicitly resonant with the corpus's existing Evidence/Provenance/Verification/Justification/Observations/Deterministic-Assurance/Architectural-decisions work"
+  - concept: "Worked full CLAIM structure for 'Berlin is the capital of Germany' with nine branches: expression(sentence)/meaning(proposition)/context(political geography)/LoA(national capitals)/truth(verified)/relevance(question-dependent)/evidence(sources-observations)/account(historical-institutional explanation)/temporal validity"
+  - concept: "Explicit Kernel-scope warning via Floridi's 'UTI challenge' (is a grand unified theory of information possible?): Floridi leans NON-REDUCTIONIST -- different information concepts logically interdependent but MUTUALLY IRREDUCIBLE; direct architectural conclusion: 'we should NOT attempt to put everything into the Kernel'; proposed minimal-invariants Kernel with three extensible spaces (semantics/epistemics/structure) surrounded by domain-space/methodology/governance"
+  - concept: "Informational Structural Realism engaged but explicitly NOT adopted as metaphysics; the extracted architectural insight: models commit minimally to structures/structural objects, knowledge is obtained through observables and LoAs, and 'relations may be as fundamental to the model as objects'"
+  - concept: "EXPLICIT Zero-Lens 'Keep' list (nine items rated strong-to-extremely-strong Kernel candidates): Level of Abstraction, Observable, Behaviour/constraints, Semantic information (to be generalized, not blindly copied), Truthfulness (a Kernel-level concern, not a boolean field), Relevance (contextual/question/agent/purpose-dependent), Question->Answer->Account ('extremely strong candidate... may become one of the core KnowledgeOS dynamics'), Network of information flow, Structural objects+relations"
+  - concept: "EXPLICIT Zero-Lens 'Do NOT directly adopt' list: Floridi's metaphysical claim Reality=Information ('we don't need to solve metaphysics in order to build a Knowledge Kernel'); the claim 'humans are the only known semantic engines'; Floridi's exact epistemological definition of knowledge (treated as research evidence, not a constitutional KnowledgeOS definition)"
+  - concept: "Four formally distinguished Knowledge Space boundary types: Representation boundary (word/sentence/document/diagram/code), Semantic boundary (concept/proposition/reference/predicate/relation), Epistemic boundary (truth/evidence/relevance/account/confidence/uncertainty), Abstraction boundary (scope/LoA/purpose/context/observables/behaviour)"
+  - concept: "Explicitly versioned 'Knowledge Space Model v0.2' -- a SEVENTH candidate in the corpus's Kernel-structure-synthesis family: a 17-item candidate Kernel (Entity/System, Identity, Relation, Observable, Level of Abstraction, Context, Purpose, Proposition/Claim, Question, Answer, Evidence, Truth/Correctness, Relevance, Account, Temporality, Provenance, Constraint/Behaviour), with Word/Sentence/Document/Topic/Article/Book/Manifesto/Constitution explicitly excluded as representational/organizational structures built ON TOP of, not inside, the Kernel"
+  - concept: "Floridi's own observation that information can be approached through different SPACES (probability space, modal space, state space, inference space, data space) reframes the central 'what is Knowledge Space' question: perhaps NOT one mathematical space but a STRUCTURED FAMILY of interrelated spaces -- Data Space (symbols/expressions/documents), Semantic Space (propositions/meanings/references), Epistemic Space (knowledge/evidence/beliefs), further connected to State Space (dynamics/change), Modal Space (possible states), Inference Space (reasoning paths) -- with LoA proposed as the coordinate system/interface relating these spaces; self-described as 'the most valuable result of reading this book'"
+  - concept: "Final architectural verdict and reframed central question: Floridi does not give the final Kernel, but a 'credible mathematical/philosophical vocabulary for turning our previously intuitive Knowledge Space idea into a model that can potentially be formalized and quantified'; research should stop asking 'what things belong inside KnowledgeOS' and start asking 'what structures and transformations are INVARIANT when knowledge is represented, abstracted, questioned, verified, related, and accounted for?'"
+  - concept: "Explicit non-freezing continuation of 0279's discipline: Knowledge Space Model v0.2 produced but explicitly held pending testing against Williamson next, since 'Floridi's biggest unresolved assumption is precisely what makes semantic information become knowledge' (relevance + account) -- exactly the cross-book-intersection methodology 0279 proposed, now actually being executed"
+defines: []
+refines:
+  - concept: "0279's cross-book-intersection discipline and 19-question Zero-Lens Extraction template"
+    refinement: "Directly executes the discipline: an explicit Keep/Do-NOT-adopt split is applied to Floridi, and the resulting Kernel candidate is explicitly versioned ('v0.2') and held provisional pending the next book -- the first file to actually demonstrate the corrective methodology 0279 proposed, in contrast to 0276/0278's more literal single-source treatment of McGinn"
+  - concept: "The corpus's topic-boundary question (open since early in the corpus) and 0268/0269's Topic-as-projection conclusion"
+    refinement: "Grounds 'Topic is a projection, not a primitive' directly in Floridi's LoA/behaviour framework and the chess files/ranks example, upgrading it from an architectural intuition to a formally-motivated conclusion"
+  - concept: "The corpus's founding 'knowledge can be infinite if you go deeper' intuition"
+    refinement: "Refines into: Knowledge Space is unbounded in extension, but every usable representation is bounded by a selected LoA/purpose/context/scope -- directly formalizing the previously intuitive 'go deeper' mechanism via Floridi's Gradient of Abstraction and the cascading-LoA answer-quality example"
+  - concept: "0268-0271's Assertion-primitive investigation and the six-way (now seven-way) Kernel-structure-synthesis family"
+    refinement: "Proposes a materially different, LoA/Observable/Question-Answer-Account-centered seventh candidate, explicitly held as v0.2/provisional rather than final -- consistent with (not resolving) the family's continued non-canonical status"
+contradicts: []
+repeats:
+  - concept: "Statistical/confidence measures alone do not constitute knowledge; the Kernel should not manufacture a single truth value"
+    canonical_source: 267
+    novelty: none
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: extend the K-1/Kernel-Candidate unresolved_equivalence family with a SEVENTH candidate: this file's explicitly-versioned 'Knowledge Space Model v0.2' (Entity/Identity/Relation/Observable/LoA/Context/Purpose/Proposition/Question/Answer/Evidence/Truth/Relevance/Account/Temporality/Provenance/Constraint), held provisional pending the next book per the 0279 cross-book-intersection discipline -- the first candidate in the family explicitly framed as an intermediate checkpoint rather than a finished proposal."
+  - "dimension-registry.md: note this file as a positive instance of the 0279 methodological correction being followed through (explicit Keep/Do-NOT-adopt Zero-Lens split), in contrast to 0276/0278's more literal single-source treatment of McGinn -- does not retroactively resolve that tension, but demonstrates the corrective discipline now being applied consistently."
+anchor_test:
+  anchor: "0279's cross-book-intersection discipline; the topic-boundary/Topic-as-projection question; the corpus's founding open-ended-knowledge intuition; the six-way Kernel-structure-synthesis family"
+  supports_dimension: "Western-analytic-philosophy-of-information model (Floridi) directly and disciplinedly extending the Engineering KnowledgeOS model via Levels of Abstraction, formal boundary types, and the Question-Answer-Account cycle, explicitly separating adoptable structural mechanisms from non-adoptable metaphysical claims"
+  refines_or_contradicts: "refines the topic-boundary question, the founding open-ended-knowledge intuition, and the Kernel-structure-synthesis family (seventh, provisional candidate); no contradiction; directly executes rather than contradicts 0279's discipline"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "No formal criteria given for how 'behaviour' (the admissible-combination predicate at a given LoA) would actually be computed or validated for a real KnowledgeOS domain"
+open_questions:
+  - "Whether Knowledge Space Model v0.2 survives, is revised, or is rejected once tested against Williamson (as explicitly planned) and the remaining books in the 0279 research program"
+  - "Whether the proposed family-of-spaces model (Data/Semantic/Epistemic/State/Modal/Inference spaces, related via LoA) is ever formally developed further"
+  - "Whether the seventh Kernel-structure candidate is ever explicitly compared against the prior six"
+tier2_triggered: true
+tier2_reason: "Direct, disciplined execution of 0279's cross-book-intersection methodology: introduces Levels of Abstraction as the corpus's strongest candidate mechanism for the long-standing topic-boundary question, formalizes the Question-Answer-Account knowledge cycle, reframes 'knowledge is not just truth' via Floridi's accounted-information progression, and produces an explicitly-versioned, explicitly-provisional 'Knowledge Space Model v0.2' (seventh Kernel-structure candidate) held pending further cross-book testing -- with an explicit Keep/Do-NOT-adopt Zero-Lens split demonstrating the corrective discipline 0279 called for, in positive contrast to 0276/0278's more literal single-source treatment of McGinn."

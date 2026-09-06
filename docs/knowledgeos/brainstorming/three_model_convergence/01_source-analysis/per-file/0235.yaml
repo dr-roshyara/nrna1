@@ -1,0 +1,78 @@
+sequence: 235
+path: docs/knowledgeos/brainstorming/20260824-145631-topological-extraction-of-astrom-stochastic-control-theory-duplicate.md
+title: "Topological Extraction of Åström's Stochastic Control Theory"
+date: "2026-08-24"
+bytes: 22500
+model:
+  primary: c1
+  secondary: g1
+source_role: PRIMARY_RESEARCH
+canonical_source: 235
+importance: critical
+confidence: high
+about: >
+  RESOLVED corpus-integrity note: at the time this file was read, no matching twin had yet been
+  encountered to verify the filename's "-duplicate" claim. The very next primary-corpus file (0236,
+  `kernel/20260824-151311-topological-extraction-of-astrom-stochastic-control-theory.md`, no "-duplicate"
+  suffix) was subsequently verified via diff to be byte-identical to this file -- confirming this is
+  indeed a duplicate pair, but with the "-duplicate"-suffixed copy appearing BEFORE its non-suffixed
+  twin in reading order (the reverse of every prior instance: 0181/0190/0198/0217/0220 all had the
+  duplicate suffix appear on the LATER file). This is a sixth instance of the corpus's recurring
+  duplicate-capture pattern, and the first with duplicate-before-original ordering. Per this reconstruction's
+  established convention (earlier sequence number = canonical_source), 0235 remains canonical_source for
+  both files despite the filename semantics suggesting otherwise. Content: applies a topological lens
+  (state space/trajectory/continuity/neighborhoods/limits/invariants) to Astrom's stochastic control
+  theory, continuing 0233, explicitly distinguishing what the book establishes from the topological
+  abstraction being transferred. This is genuine, substantive content -- it was correctly treated as
+  primary analytical material even before the duplicate relationship was confirmed.
+introduces:
+  - concept: "KnowledgeOS reframed as a space of possible knowledge states + transitions between states, not a collection of knowledge objects (state-space framing)"
+  - concept: "Knowledge state != knowledge history: the current point is not identical to the path that reached it (Markov-derived), a second fundamental non-identity paralleling the Vani lens's expression!=meaning"
+  - concept: "Knowledge evolution modeled as transitions between states (Knowledge State A -> Transition Function -> Knowledge State B) rather than mutation of records"
+  - concept: "Knowledge-transformation continuity/sensitivity property: if tiny evidence changes produce completely different knowledge, that transformation has a measurable topological/perturbational property (connects directly to sensitivity analysis/bootstrap/perturbation-testing from 0234)"
+  - concept: "Refinement != limit: a representation obtained by successive refinement is not necessarily identical to its limiting semantic object -- ask whether a transformation preserves the property that matters, not merely whether it executed successfully"
+  - concept: "Semantic Stability Region (explicitly labeled a KnowledgeOS transfer, NOT an Astrom concept): the neighborhood of admissible evidence/state perturbations within which the governed conclusion remains materially unchanged -- stability as a property of a region, not a single value"
+  - concept: "Knowledge should be studied as a trajectory (K(t0)->K(t1)->K(t2)...) not merely a versioned collection of snapshots"
+  - concept: "Attractor research question explicitly flagged as NOT attributable to Astrom (the source does not develop attractor theory in the inspected material): could a knowledge process have stable regions toward which repeated evidence/validation tends to converge?"
+  - concept: "Sampling as a topology-preserving question: what structural information survives converting continuous engineering reality -> observations -> sampled evidence -> stored knowledge; stored knowledge != complete reality, it is a sampled projection"
+  - concept: "Representation-transformation invariant-preservation question, directly extending the Escher lens: which properties (meaning/relationships/authority/provenance/temporal-validity/constraints) must survive when the same knowledge crosses JSON/knowledge-graph/database/prose representations -- 'store relationships; generate expressions'"
+  - concept: "Candidate principle: canonicality belongs to invariant semantic structure, not to a particular representation (topological equivalence under transformation, not surface-form identity)"
+  - concept: "Connectedness question: can we move from one valid knowledge state to another through valid transitions, or are two regions (e.g. conflicting architectural interpretations, incompatible domain models) genuinely disconnected and should not be merged"
+  - concept: "Boundary conditions / domain of validity as a first-class Knowledge Rule component (assumptions/validity-domain/boundary-conditions/failure-conditions), directly extending the corpus's governance and deterministic-assurance work"
+  - concept: "Twelve-row topological fact table (state summarizes future-relevant info -> state is a point in state space; future depends on current state not full history -> state!=trajectory; stability is neighborhood behavior; validity!=mere computability; representation!=underlying process; etc.), each rated for KnowledgeOS relevance"
+  - concept: "Combined four-lens synthesis (Vani/Paninian/Karaka/Topological) culminating in the strongest research-hypothesis formulation yet: 'Knowledge is not a document, string, embedding, snapshot, or history. It is a structured state in a space of possible knowledge states, connected by evidence-governed transitions, with invariants that must survive representation changes.' -- explicitly NOT promoted to an architectural principle yet"
+defines: []
+refines:
+  - concept: "0233's Astrom initial assessment"
+    refinement: "Applies a specifically topological (rather than probabilistic/control-theoretic) lens to the same source, producing the Semantic Stability Region concept and the invariant-under-representation-transformation principle not present in 0233."
+  - concept: "0224's ModelApplicability / applicability-domain formalism"
+    refinement: "Reframes applicability domain topologically as boundary conditions on a valid region in state space, directly compatible with 0224's A_M={x,theta,c,t | M is applicable} formalism."
+contradicts: []
+repeats:
+  - concept: "Sensitivity/perturbation testing as a stability measure"
+    canonical_source: 234
+    novelty: low
+bridge_candidates:
+  - "The invariant-preservation-under-representation-transformation principle strongly parallels the corpus's earlier Escher lens (0202/0230) and Siva-Sakti lens (transformation without identity loss) -- not logged as a new unresolved_equivalence since it is presented explicitly as this research's own topological transfer, not an independent source convergence."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0233's Astrom assessment; Escher/Siva-Sakti lenses; 0224's ModelApplicability formalism"
+  supports_dimension: "Mathematical/statistical model + Gita/philosophical model (lens system) -- topological reinterpretation producing the Semantic Stability Region concept and a sharpened canonicality-as-invariant-structure principle"
+  refines_or_contradicts: "refines 0233 and 0224; reinforces the Escher/Siva-Sakti lens tradition without merging with it"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Explicit, repeated discipline distinguishing Astrom-established facts from the research's own topological transfer (e.g. attractor theory explicitly flagged as NOT in the source; Semantic Stability Region explicitly flagged as a KnowledgeOS transfer, not an Astrom concept)"
+undefined_concepts:
+  - "No formal metric given for 'Semantic Stability Region' membership beyond the qualitative same-governed-conclusion criterion"
+open_questions:
+  - "Whether the Semantic Stability Region concept is ever formalized further or connected to the corpus's other stability/entropy work (0225's epistemic volatility)"
+tier2_triggered: true
+tier2_reason: "Critical topological reinterpretation producing the Semantic Stability Region concept, a knowledge-state-as-trajectory-not-snapshot principle, and a sharpened canonicality-as-invariant-structure formulation; confirmed (via 0236) to be the canonical copy of a duplicate pair with an unusual duplicate-before-original filename ordering, the sixth such instance in the corpus."

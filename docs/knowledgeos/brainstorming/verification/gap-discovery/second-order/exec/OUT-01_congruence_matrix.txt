@@ -1,0 +1,54 @@
+
+==============================================================================
+SO-EXP-01  CONGRUENCE MATRIX — executing Step 259 s259.9 (17 rows, all 'UNRESOLVED')
+==============================================================================
+  bounded state space: 208 states
+  abstractions: 6   operations: 8   variants: 2
+  cells to compute: 96
+
+
+  ---- operation dependency variant: BLIND (ignores provenance / supersession history) ----
+  abstraction                       Add     Remove     Revise  Transform  Supersede      Merge   Withdraw     Reject
+  ------------------------------------------------------------------------------------------------------------------
+  F1 content-only                  PASS       FAIL       FAIL       FAIL       PASS       FAIL       PASS       PASS
+  F2 content+status                PASS       FAIL       FAIL       FAIL       FAIL       FAIL       FAIL       FAIL
+  F3 id+content+status             PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+  F4 K=(A,R) [TERMINAL]            PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+  F5 K=(A,R)+mergesrc              PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+  F6 full state [control]          PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+
+  ---- operation dependency variant: SENSITIVE (reads provenance / supersession history) ----
+  abstraction                       Add     Remove     Revise  Transform  Supersede      Merge   Withdraw     Reject
+  ------------------------------------------------------------------------------------------------------------------
+  F1 content-only                  PASS       FAIL       FAIL       FAIL       FAIL       FAIL       PASS       PASS
+  F2 content+status                PASS       FAIL       FAIL       FAIL       FAIL       FAIL       FAIL       FAIL
+  F3 id+content+status             PASS       PASS       FAIL       FAIL       FAIL       PASS       PASS       PASS
+  F4 K=(A,R) [TERMINAL]            PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+  F5 K=(A,R)+mergesrc              PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+  F6 full state [control]          PASS       PASS       PASS       PASS       PASS       PASS       PASS       PASS
+
+==============================================================================
+WITNESSES for the TERMINAL model F4 = K=(A,R)
+==============================================================================
+
+  No congruence failure found for F4 in either variant, over this domain.
+
+==============================================================================
+SUMMARY
+==============================================================================
+  [blind    ] F1 content-only            FAILS on ['Remove', 'Revise', 'Transform', 'Merge']
+  [blind    ] F2 content+status          FAILS on ['Remove', 'Revise', 'Transform', 'Supersede', 'Merge', 'Withdraw', 'Reject']
+  [blind    ] F3 id+content+status       CONGRUENT(tested)
+  [blind    ] F4 K=(A,R) [TERMINAL]      CONGRUENT(tested)
+  [blind    ] F5 K=(A,R)+mergesrc        CONGRUENT(tested)
+  [blind    ] F6 full state [control]    CONGRUENT(tested)
+  [sensitive] F1 content-only            FAILS on ['Remove', 'Revise', 'Transform', 'Supersede', 'Merge']
+  [sensitive] F2 content+status          FAILS on ['Remove', 'Revise', 'Transform', 'Supersede', 'Merge', 'Withdraw', 'Reject']
+  [sensitive] F3 id+content+status       FAILS on ['Revise', 'Transform', 'Supersede']
+  [sensitive] F4 K=(A,R) [TERMINAL]      CONGRUENT(tested)
+  [sensitive] F5 K=(A,R)+mergesrc        CONGRUENT(tested)
+  [sensitive] F6 full state [control]    CONGRUENT(tested)
+
+  Per s259.16, every PASS above reads 'no counterexample found in the tested
+  domain', never 'congruence proven'.  Every FAIL is a genuine refutation:
+  a single counterexample suffices.

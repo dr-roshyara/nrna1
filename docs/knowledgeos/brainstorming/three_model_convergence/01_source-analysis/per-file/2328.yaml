@@ -1,0 +1,182 @@
+sequence: 2328
+path: docs/knowledgeos/brainstorming/20260902-122338-what-eleven-experiments-established-a-synthesis.md
+title: "What Eleven Experiments Established -- the KR-SIM Lane's Own Major Synthesis: 'the Programme Has Repeatedly Defined a Projection and Asked It to Do the Work of the Structure It Projects From', the Factivity-Impossibility Theorem (K=Γ(E,Q,C,EC) Unsatisfiable), Confirms 'Corroboration≠Derivation Is Doing Real Work' and Gītā Tiering Placed ZERO New Primitives, and Concludes the Kernel Question Is Downstream of Four Unresolved Others"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "the KR-SIM lane's own comprehensive synthesis of eleven formal experiments (kernel-reduction, Theory v1.1 simulation, the nine-step v1.2 chain) -- rigorous mathematical/statistical/domain-design assessment of the same kernel-candidacy and epistemic-state questions this reconstruction's Gita thread has independently investigated; a strong candidate identification for (or a major component of) file 2319's unidentified 'Path B'"
+source_role: BRIDGE
+canonical_source: 2328
+importance: critical
+confidence: high
+about: >
+  IMPORTANT METHODOLOGICAL NOTE FOR THIS RECONSTRUCTION: this document is the KR-SIM lane's own
+  synthesis of eleven formal experiments run 2026-09-01/02 (referenced in this reconstruction's own
+  session log for 2026-09-04 as "the KnowledgeOS theory simulation lane"). It lives at
+  `docs/knowledgeos/brainstorming/` root (not inside `mathematical_ideas_that_can_be_implemented/`, so
+  it is correctly PRIMARY corpus per MD-020) and references outputs stored in
+  `docs/knowledgeos/research/{kernel-reduction,theory-v1.1-simulation,theory-v1.2-simulation}/`, all
+  outside this reconstruction's primary-corpus scope. Recorded here as PRIMARY SOURCE EVIDENCE from a
+  differently-scoped, code-and-experiment-backed research lane -- not adopted as this reconstruction's
+  own finding, and its status vocabulary (`[EXP]`, `[DEF]`, `[OPEN]`, `[INF]`) is that lane's own, not
+  MD-018's. Explicitly self-described: "a research synthesis. Nothing here is canonical KnowledgeOS
+  architecture, and nothing below promotes any prior result."
+
+  **DELIVERS THE CENTRAL STRUCTURAL DIAGNOSIS (PART I)**: "The programme has repeatedly defined a
+  projection and then asked it to do the work of the structure it projects from" -- shown as the SAME
+  underlying mistake appearing five times (Eval_c/Sat_c collapsing nine situations into U; the boundary
+  𝓑/Zero having three non-equivalent readings; 𝓑/Gap being attribute-lossy; ZeroLens/DetectGap being
+  recoverable only as a lossy projection; and, most consequentially, E_t/K_t=Γ(E_t,...) where "Γ cannot
+  be factive, because its domain excludes truth"). "This is a structural diagnosis, not a metaphor."
+
+  **DELIVERS THE FACTIVITY-IMPOSSIBILITY THEOREM (M-1)**: DEF-1 factivity and K=Γ(E,Q,C,EC) are jointly
+  UNSATISFIABLE `[EXP]` -- witnessed by two worlds differing in truth producing a bit-identical epistemic
+  state (Γ, being a function of E, returns identical K, true in one world and false in the other);
+  reproduced at scale (420/10,000 paired worlds); "no Sat_c class requires factivity, so the family has
+  nowhere to attach truth." Explicitly NOT established: "that KnowledgeOS should be non-factive."
+
+  **DELIVERS MINIMALITY-IS-REPRESENTATION-RELATIVE (M-2)**: |K_min|=13 under one algebra, 8 under
+  another -- "not conflicting measurements... solutions to different optimization problems. A
+  minimality claim without a fixed admissible algebra is not a claim." Directly relevant to this
+  reconstruction's already-tracked proliferation of roughly fourteen distinct "minimal kernel tuple"
+  proposals across the Gītā thread (files 2260-2318): this finding formally explains WHY that
+  proliferation occurred and cautions against treating any single one as "the" minimal kernel absent a
+  declared algebra.
+
+  **DELIVERS THE ZERO CHAIN AS A DERIVED RESULT (M-4)**: Zero_strict⇒Zero_reasoned⇒Zero_weak, "proved
+  in two lines and machine-checked over 1,620,000 assignments including every choice of which reason-
+  buckets close: 0 counterexamples" -- independent of the reason partition. This is a formally PROVEN
+  (not merely hypothesized) Zero-taxonomy result, directly relevant to this reconstruction's already-
+  tracked proliferation of Zero decompositions across the Gītā thread (up to seven distinct variants,
+  files 2273-2316) -- suggesting a formal ordering relation among at least some of those variants may be
+  independently derivable, though not identical vocabulary.
+
+  **DELIVERS EVIDENCE-CLASS/CONTRADICTION BLOCKAGE AS ONE DECISION (M-5, M-6)**: under Kleene
+  conjunction with 5/8 evaluator classes undefined, every composite requirement of arity≥4 is
+  permanently U; residual blockage traced to exactly two undefined items -- ⪰ (epistemic-status
+  ordering) and Contr (contradiction predicate) -- shown NOT independent ("the only contradiction repair
+  that is total, three-valued and preserves absence≠negation routes Sat_content through
+  Sat_consistency... four open items are one decision").
+
+  **DELIVERS A FIVE-ROW 'WHAT IS NOT ESTABLISHED' TABLE**: no operator is confirmed a KnowledgeOS
+  primitive (DetectGap is the only settled case, settled NEGATIVELY); the eight requirement classes'
+  exhaustiveness is untestable; the reason vocabulary's exhaustiveness is OPEN; Zero∈𝒦 is NOT TESTED;
+  boundary formal completeness is OPEN (37 of 41 typed distinctions rest on provenance alone).
+
+  **DELIVERS THE STATISTICAL GOVERNING FACT AND FOUR METHODOLOGICAL CORRECTIONS**: "model uncertainty
+  dominates sampling uncertainty by a wide margin... across 150,000 randomized trials the suite produced
+  exactly one non-vacuous result. Seven of eleven experiments used no randomization at all and produced
+  more." S-1 vacuity is mandatory (a property whose antecedent never activates passes meaninglessly); S-2
+  put the interval on the quantity with sampling error (a previously-published 95% CI was on a
+  deterministic quantity; corrected to a stronger, non-probabilistic statement); S-3 declare the design
+  (fifteen arms shared one paired world-stream, not independent observations); S-4 seed reproducibility
+  is not robustness. Consequence for design: "randomized testing is the wrong instrument for semantic
+  discrimination... use adversarial deterministic cases, exhaustive enumeration over small structured
+  spaces, and witnesses" -- the three methods that actually produced this document's results.
+
+  **DELIVERS FOUR DOMAIN-DESIGN FINDINGS (PART IV)**: D-1 -- "the constitutional four-layer separation"
+  (philosophy→mathematics→primitive→DDD-object→architecture, explicitly banned as a direct pipeline)
+  "held under pressure. Buddhi, Sārathi and Zero are lenses, and the Gītā tiering placed ZERO new
+  primitives, and the one item that reached the kernel question (Zero-as-non-collapse) was tested rather
+  than promoted. corroboration≠derivation is doing real work." **This is a DIRECT, INDEPENDENT
+  CONFIRMATION, from this differently-scoped experimental lane, of the same finding this
+  reconstruction's own Gītā thread arrived at repeatedly (files 2291/2293's 'FULL GĪTĀ TRACK CLOSED,
+  18/18 chapters, ZERO new primitives')** -- a genuine cross-lineage convergence worth weighing carefully
+  once global reclassification/cross-model comparison opens, though it remains two independently-run
+  processes converging on the same conclusion, not proof the conclusion is architecturally final. D-2 --
+  several corpus distinctions (Evidence≠Knowledge, Determination≠Knowledge, Reject≠Accept, a four-way
+  unknown taxonomy, the decision lane Determination→Proposal→Decision→Authorization→Action) survived
+  adversarial testing with zero fabrications in 10,000 trials. D-3 -- three notions of necessity (formal/
+  functional/domain) DISAGREE for Discriminate/Select/Revise -- "collapsing them would have produced a
+  confident and wrong kernel." D-4 -- invariant custody: a reduction can shrink |𝒦| while INCREASING the
+  number of operators whose removal breaks an invariant (eliminating "Challenge" moved custody of "a
+  verdict must be challengeable" from one operator to two) -- "cardinality minimization is blind to
+  this," directly relevant to this reconstruction's already-tracked minimal-kernel proliferation.
+
+  **DELIVERS SIX 'WHAT SHOULD IMPROVE' FINDINGS**: symbol collisions (E denotes both Evidence and
+  EpistemicState); specification defects hide until adversarially attacked (three defects invisible
+  until deliberately tested, would have been silently implemented otherwise); over-specification is as
+  dangerous as under-specification (37 of 41 typed distinctions do no work); **corpus hygiene** --
+  explicitly: "a derived analysis lane writes its output into the primary corpus (325 files, all one
+  day), and the exclusion rule is a hard-coded folder list that cannot see a lane created after it was
+  written. Provenance should be a property of the artifact, not its directory. Every corpus count must
+  carry a timestamp: the primary corpus grew ~1.7% during a single session" -- THIS IS THE EXACT PROBLEM
+  this reconstruction itself just diagnosed and repaired via MD-020's manifest refresh, independently
+  arrived at by this other lane about its own corpus discipline; sequencing bias (measuring before
+  repairing biases toward optimism); the status vocabulary needs one more term ("refuted as reading A,
+  surviving as reading B" -- exactly Zero's own situation, refuted as a state/missingness-representation,
+  surviving as a derived view).
+
+  **DELIVERS THE EXPLICIT KERNEL-CANDIDACY VERDICT**: "the kernel cannot be selected, and the reason is
+  not that the work is unfinished. Kernel membership is a question about operations; operation semantics
+  (δ), equality (≡,≈,≅_λ) and the closure predicate are all open... A kernel selected now would be a
+  selection of a representation, disguised as a discovery about knowledge." This directly parallels (and
+  may be the primary-source basis for) this reconstruction's already-tracked session-log note that the
+  KR-SIM lane separately closed "the Gītā strand... for kernel candidacy" -- here delivering the
+  parallel, more general verdict that NO candidate kernel (Gītā-derived or otherwise) can currently be
+  selected, for structural reasons independent of which lens produced it.
+
+  **DELIVERS THE REFRAME 'ABANDON DEFINE-PROJECTION-THEN-RECOVER; ADOPT DEFINE-STRUCTURE-THEN-DERIVE-
+  PROJECTION'** with a three-row mapping table, and a four-experiment ordered research programme: N-1
+  decide factivity (an architectural decision, not an experiment: "may any KnowledgeOS component assert
+  Knows?" -- shown R1[rename K_t] and R2[externalize factivity] are behaviourally identical, R2
+  additionally making measurable that "88.25% of the kernel's claims survived external verification");
+  N-2 define Contr and its fourth value; N-3 define ⪰; N-4 test or drop the 37 unsupported typed
+  distinctions.
+
+  **CLOSES WITH THE REOPENED CENTRAL QUESTION**: "What mathematical structure must an epistemic state
+  preserve under all admissible representations and transitions? The programme began by asking which
+  operators belong to the kernel. Eleven experiments have shown that question to be downstream of at
+  least four others: the type of K_t, the definition of semantic equivalence, the contradiction
+  predicate, and the status ordering. The kernel question is not hard because the answer is elusive. It
+  is hard because it was asked first." Appendix tabulates all eleven experiments with their surviving
+  results, and reports "self-corrections recorded across the chain: six" -- each found by a later
+  experiment attacking an earlier one, explicitly named as "the only reason to run them in a chain."
+introduces:
+  - concept: "The central structural diagnosis: repeatedly defining a projection and asking it to do the work of the structure it projects from, shown as one mistake appearing five times"
+  - concept: "The factivity-impossibility theorem: DEF-1 factivity and K=Gamma(E,Q,C,EC) are jointly unsatisfiable, with a two-world witness and 420/10,000-scale reproduction"
+  - concept: "Minimality-is-representation-relative: |K_min| differs by admissible algebra (13 vs 8), explaining why multiple 'minimal kernel' proposals can each be locally correct yet mutually inconsistent"
+  - concept: "The Zero chain as a machine-checked derived result (Zero_strict=>Zero_reasoned=>Zero_weak, 0 counterexamples over 1.62M assignments)"
+  - concept: "The explicit kernel-candidacy verdict: the kernel cannot currently be selected because operation semantics, equality, and the closure predicate are all open -- a structural, not a completeness, blocker"
+  - concept: "The independent confirmation of 'corroboration≠derivation is doing real work' with Gita tiering placing zero new primitives, matching this reconstruction's own Gita-thread finding"
+  - concept: "The corpus-hygiene finding about derived lanes writing into a hard-coded-excluded primary corpus -- the exact problem this reconstruction diagnosed and repaired via MD-020, independently discovered by this other lane about itself"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked roughly fourteen prior 'minimal kernel tuple' proposals across the Gita thread"
+    refinement: "GIVEN A FORMAL EXPLANATION for their mutual inconsistency: minimality is representation-relative, so each proposal may be a correct answer to a different, undeclared optimization problem"
+  - concept: "This reconstruction's already-tracked file 2291/2293 finding ('FULL GĪTĀ TRACK CLOSED, 18/18 chapters, ZERO new primitives')"
+    refinement: "INDEPENDENTLY CONFIRMED by a differently-scoped, experiment-backed research lane (D-1), strengthening but not proving that finding, since the two processes are not fully independent (they may share upstream assumptions)"
+  - concept: "This reconstruction's already-tracked file 2319 unidentified 'Path B' and file 2316's proliferation of Zero decompositions"
+    refinement: "This document is a strong candidate for constituting (or substantially overlapping with) the material file 2319 referred to as 'Path B', and delivers a formally proven Zero-implication chain (Zero_strict=>Zero_reasoned=>Zero_weak) that may partially order some of the tracked Zero-decomposition variants"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Whether this document (or the eleven experiments it synthesizes) is precisely file 2319's unidentified 'Path B', given the strong thematic and methodological overlap (admissibility-not-truth boundary, non-collapse discipline, kernel-cannot-be-selected verdict) -- not yet confirmed by direct comparison of exact wording."
+  - "The full experiment artifacts this document summarizes (docs/knowledgeos/research/{kernel-reduction,theory-v1.1-simulation,theory-v1.2-simulation}/) are outside this reconstruction's primary-corpus scope and were not read directly; this synthesis is the only view of them available within scope."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as the KR-SIM lane's own comprehensive experimental synthesis -- the factivity-impossibility theorem, the representation-relative-minimality finding explaining the Gita thread's proliferation of minimal-kernel proposals, the machine-checked Zero implication chain, and the explicit verdict that the kernel cannot currently be selected for structural reasons. A strong candidate for file 2319's 'Path B', and an independent confirmation of the Gita thread's own 'zero new primitives' finding."
+anchor_test:
+  anchor: "This reconstruction's already-tracked ~14 minimal-kernel-tuple proposals, the Gita-thread 'zero new primitives' closure finding, the many Zero decompositions, and file 2319's unidentified Path B"
+  supports_dimension: "Explains the minimal-kernel proliferation via representation-relativity, independently confirms the zero-new-primitives finding, delivers a machine-checked Zero implication chain, and is a strong candidate identification for Path B"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "D-1's explicit confirmation ('Gita tiering placed zero new primitives... corroboration≠derivation is doing real work') is directly comparable, word for word in spirit, against this reconstruction's already-tracked file 2291/2293 closure finding."
+  - "The Zero_strict=>Zero_reasoned=>Zero_weak machine-checked chain is directly comparable against this reconstruction's already-tracked five-to-seven Zero decomposition variants (files 2273, 2286, 2287, 2290-2292, 2299, 2309, 2316) to test for partial reconciliation."
+  - "The kernel-cannot-be-selected verdict is directly comparable against this reconstruction's already-tracked repeated 'Step 291' operator-discovery proposals within the Gita thread (files 2260, 2275, 2300, 2302, 2310) to assess whether those proposals would be similarly blocked by the same structural gaps (operation semantics, equality, closure predicate all open)."
+undefined_concepts: []
+open_questions:
+  - "Whether this document (or the KR-2026-09-01/theory-v1.1/v1.2 experiment chain it summarizes) is in fact file 2319's 'Path B', requiring direct comparison against file 2319's exact wording."
+  - "Whether the four next-step experiments this document recommends (N-1 through N-4) were subsequently executed within the KR-SIM lane -- outside this reconstruction's scope to verify directly, but relevant context for interpreting any later corpus references to their outcomes."
+tier2_triggered: true
+tier2_reason: "The KR-SIM lane's comprehensive, formally rigorous synthesis of eleven experiments -- delivers a proven factivity-impossibility theorem, explains the Gita thread's proliferation of minimal-kernel proposals via representation-relative minimality, independently confirms the 'zero new primitives' Gita-tiering finding, and concludes the kernel question cannot currently be answered for structural reasons. Classified importance critical given its direct, substantive bearing on this reconstruction's own central open questions (Path B identification, kernel-tuple proliferation, Zero-decomposition proliferation)."

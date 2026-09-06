@@ -1,0 +1,91 @@
+sequence: 1011
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-200600_step_286_gita-kos-conceptual-translation-register-v0.1.md
+title: "Gita-KnowledgeOS Conceptual Translation Register v0.1: An Apparent PRE-REVISION Original Register (19 GK Entries, Distinct Numbering) That -- Despite a Filename Timestamp LATER Than the Disciplined Knowledge-Atma-Destruction and Krishna-Omega-Rejection Findings -- Re-Presents Both Constructs at a Materially WEAKER, Already-Superseded Level of Correction, Raising an Open Chronology-vs-Content Tension"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "an apparent pre-revision original translation register (GITA-KOS-TRANSLATION-REGISTER-v0.1), 19 GK entries with a numbering distinct from the already-tracked revised 16-entry register (file 0997)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1011
+importance: critical
+confidence: medium
+about: >
+  "Gītā → KnowledgeOS Conceptual Translation Register," artifact ID "GITA-KOS-TRANSLATION-REGISTER-v0.1,"
+  status "RESEARCH VOCABULARY (Not Canonical Architecture)." Delivers a full nineteen-entry GK-01...GK-19
+  table with a DIFFERENT numbering scheme than this reconstruction's already-tracked sixteen-entry "revised
+  286 register" (file 0997): here GK-09=Sañjaya/Reporter, GK-16=Guṇa, GK-17=Mokṣa, GK-18/19 are the
+  KnowledgeOS-native `Ω`/Zero constructs folded into the GK-numbering itself -- a structure this reconstruction
+  has not seen elsewhere, strongly suggesting this is the PRE-REVISION ORIGINAL that the "revised 286
+  register" (cited as deriving from a `20260831-183219` prompt, per file 0997) subsequently reorganized down
+  to 16 entries.
+
+  **⚠️ RAISES AN OPEN CHRONOLOGY-VS-CONTENT TENSION**: this file's OWN FILENAME TIMESTAMP (`200600`, i.e.
+  20:06) is LATER than every disciplined closure document this reconstruction has just processed (files
+  0996/0998's Knowledge-Ātma destruction and Kṛṣṇa=Ω rejection, confirmed as final at ~19:40-20:02). Yet this
+  register's OWN CONTENT re-presents both constructs at a materially WEAKER level than those already-
+  established final verdicts: **§3.2 (Ātman≠Knowledge Ātma) treats `𝒦_ātma` as a still-live "research
+  construct inspired by the analogy," NOT as the DESTROYED (RX) construct this reconstruction has tracked as
+  formally settled since files 0975/0979/0980, reconfirmed in files 0996 and 0998's "did NOT introduce
+  Knowledge Ātma (destroyed, RX)" closing statement.** **§3.3 and the GK-01 table row classify Kṛṣṇa→`Ω` as
+  an "Analogy,"** not the explicit "REJECTED — the arrow is NOT identity" verdict this reconstruction has
+  tracked as settled since files 0988/0996/0998. If this file's content genuinely postdates those closures,
+  it would constitute a further methodological RELAPSE in the pattern this reconstruction has already
+  flagged once, severely, at file 0971 -- though far milder in degree (no "source code" escalation, still
+  hedged with "Analogy"/"hypothesis" labels throughout, and its own §6 Governance Status correctly disclaims
+  canonical status). The alternative, more likely reading is that this is simply the chronologically-EARLIER
+  v0.1 draft, filed/saved at this later timestamp for reference, preserved (not superseded-and-deleted) as
+  the corpus's own historical record of the pre-revision state -- consistent with the standing instruction
+  to record duplicates/superseded material without silently treating later-filed material as automatically
+  authoritative. **This reconstruction records the tension rather than resolving it.**
+
+  Otherwise substantially repeats already-tracked corrections in their earlier, less rigorous form:
+  Arjuna≠simple-Knower (§3.1, already corrected via file 0990's GK-02 treatment); Kṣetra→Knowledge Field and
+  Kṣetra-jña→Knower (§3.4-3.5, already ratified per files 0986, 0996-0998); Karma→Operation and
+  Karma-phala→Result distinctness (§3.6-3.7, already the H-K06/07 finding); Sañjaya→Observer/Reporter (§3.8,
+  a materially weaker "architectural metaphor" framing than the already-tracked corpus-native, six-principle
+  formalization); Buddhi→Discrimination (§3.9, "strong heuristic," consistent with the still-open status per
+  files 0988/0998's "still requiring careful treatment" bucket); Zero→Boundary of Knowledge (§3.10, correctly
+  disclaimed as a KnowledgeOS-native construct, not a Gītā term).
+
+  Delivers the three-level translation rule (`Gītā term→philosophical interpretation→KnowledgeOS research
+  construct`, never `=`) already tracked as the programme's foundational discipline (files 0988, 0990,
+  0999), and a vocabulary hierarchy diagram not previously seen in this exact layout.
+introduces:
+  - concept: "The apparent pre-revision original nineteen-entry GK register (GITA-KOS-TRANSLATION-REGISTER-v0.1), with a numbering scheme distinct from the already-tracked sixteen-entry revised register (file 0997)"
+  - concept: "The open chronology-vs-content tension: this file's filename timestamp is later than the disciplined Knowledge-Atma-destruction and Krishna-Omega-rejection closures, yet its content re-presents both at a materially weaker, already-superseded level"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked, finalized Knowledge-Atma destruction (RX, files 0975, 0979, 0980, 0996, 0998) and Krishna=Omega rejection (files 0988, 0996, 0998)"
+    refinement: "POTENTIALLY IN TENSION WITH: this register's own content treats both constructs at a materially weaker, pre-destruction/pre-rejection level, despite its filename timestamp being later than the disciplined closures -- recorded as an open tension, not resolved, since the more likely explanation is that this is a preserved earlier v0.1 draft rather than a genuine relapse"
+contradicts:
+  - concept: "File 0996/0998's explicit final verdict that Knowledge Atma was destroyed (RX) and Krishna=Omega was rejected"
+    contradicted_by: "This register's own content, which treats both as live analogies/hypotheses rather than settled negative results -- though the contradiction is most plausibly explained by this being an earlier draft rather than a genuine later regression"
+repeats:
+  - "Substantially repeats already-tracked GK-numbered corrections (Arjuna, Ksetra/Ksetra-jna, Karma/Phala, Sanjaya, Buddhi, Zero) in an earlier, less rigorous form than this reconstruction's already-documented final treatments."
+bridge_candidates:
+  - "Whether this v0.1 register is explicitly cited elsewhere in the corpus as the predecessor to the revised 286 register (file 0997), which would resolve the chronology question."
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the open chronology-vs-content tension between this file's late filename timestamp and its content's weaker, pre-destruction treatment of Knowledge Atma and Krishna=Omega -- flagged for future resolution, not resolved here."
+anchor_test:
+  anchor: "This reconstruction's already-tracked final Knowledge-Atma destruction and Krishna=Omega rejection verdicts (files 0975-0980, 0988, 0996, 0998)"
+  supports_dimension: "Raises an open tension between this file's late timestamp and its content's weaker, superseded-level treatment of both constructs"
+  refines_or_contradicts: "potentially contradicts, though most plausibly explained as an earlier draft rather than a genuine regression"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The GK-01/GK-05 classifications in this file's table (Analogy/Hypothesis) are directly checkable against files 0988/0996/0998's explicit REJECTED/RX verdicts for the same constructs."
+undefined_concepts: []
+open_questions:
+  - "Whether this v0.1 register genuinely postdates the disciplined closure documents (a relapse) or is a preserved earlier draft filed later (the more likely explanation)."
+  - "Whether this v0.1 register is explicitly referenced elsewhere as the predecessor superseded by the revised 286 register (file 0997)."
+tier2_triggered: true
+tier2_reason: "Raises an open chronology-vs-content tension between this file's late filename timestamp and its content's materially weaker, pre-destruction/pre-rejection treatment of already-settled constructs (Knowledge Atma, Krishna=Omega), a pattern this reconstruction has previously flagged severely at file 0971. Classified importance critical given the potential methodological-discipline implications; confidence medium given the genuine ambiguity about whether this reflects a relapse or a preserved earlier draft."

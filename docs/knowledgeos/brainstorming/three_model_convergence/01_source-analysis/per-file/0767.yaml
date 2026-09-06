@@ -1,0 +1,124 @@
+sequence: 767
+path: docs/knowledgeos/brainstorming/phase_measure_theory/external_research/20260828-225646_three-distinct-information-pathways.md
+title: "Three Distinct Information Pathways (DeepSeek-Sourced/Hybrid Dialogue, per 0762's Caution): Delivers the Source-Plane/Knowledge-Plane Distinction and Three New 'Constitutional Invariants for Sources' (Source≠Knowledge, LLM Output≠Knowledge, Retrieval≠Knowledge Creation) -- an Independent External Re-Derivation Strongly Convergent With the Primary Corpus's Own 0750 Finding 'RAG Is Therefore Not the Architecture' -- Delivers 'the Epistemic Retrieval Loop' (Zero→Gap→Sārathi→Retrieval→Observation→Evidence→Knowledge→Zero, 'a Closed-Loop Epistemic Investigation System, Not a Question-Answering System') -- a FOURTH Independent Artifact Characterizing Lord as 'Orient/Synthesize,' Not Action-Selection"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "DeepSeek-sourced/hybrid dialogue per 0762's caution; delivers architecture content only, no direct Gita textual analysis, though it continues using Zero/Lord/Sārathi lens terminology"
+source_role: EXTERNAL_RESEARCH
+canonical_source: 767
+importance: high
+confidence: medium
+about: >
+  Continues the external_research/ dialogue chain, opening by praising a prior (off-record) analysis as
+  "the fundamental distinction that elevates KnowledgeOS from 'another RAG system' to a true epistemic
+  platform. The answer to 'Where does ChatGPT get its information?' is the key that unlocks the entire
+  architecture." Per 0762's provenance caution, recorded as external/skepticism-requiring content.
+
+  **Delivers "the core insight: three distinct information pathways,"** a three-row comparison table:
+  **(A) Model Knowledge** (Training→Parameters→LLM Response; implicit, non-traceable, non-governed;
+  "interpret, but do not treat as authoritative"); **(B) External Retrieval** (Source→Retrieval→Context→
+  LLM; explicit, traceable, but ungoverned; "source of evidence candidates, not knowledge"); **(C)
+  KnowledgeOS Knowledge** (Observation→Assertion→Evidence→Epistemic State; explicit, traceable, governed,
+  versioned; "the authoritative Knowledge State"). Delivers the critical-error warning: `LLM Response≠
+  KnowledgeOS Knowledge`, `Retrieved Document≠KnowledgeOS Knowledge`, `Training Data≠KnowledgeOS
+  Knowledge`.
+
+  **Delivers "the Source Plane vs. Knowledge Plane distinction,"** explicitly named "the most important
+  architectural contribution of your analysis": Source Plane answers "where did this information come
+  from?", Knowledge Plane answers "what do we currently represent as knowledge?", and the Epistemic Engine
+  (Zero/Lord/Sārathi) answers "how justified, complete, current, and coherent is that knowledge?" -- a
+  genuinely clean three-tier architectural decomposition.
+
+  Delivers a ten-stage ingestion pipeline (External Source→Source Connector→Raw Artifact→Document Parser→
+  Structural Model→Semantic Parser→Observations→Candidate Assertions→Evidence Objects→Knowledge State
+  Update→{Zero, Lord}→Sārathi), explicitly presented as the "precise formalization of Document→Observation→
+  Interpretation→Assertion→Evidence→Knowledge... established in our earlier work."
+
+  **Delivers "the Epistemic Retrieval Loop," explicitly named "perhaps the most powerful contribution"**:
+  instead of `Query→Retrieve→Answer`, KnowledgeOS implements `Zero→Gap→Sārathi→Retrieval→Observation→
+  Evidence→Knowledge→Zero` -- "a closed-loop epistemic investigation system, not a question-answering
+  system." Delivers a complete worked diagram (Knower→Intent→Semantic Reconstruction→Dimension Discovery→
+  Knowledge State→{Zero, Lord, Evidence}→Sārathi→Investigation Plan→Source Retrieval→[Documents/APIs/Git]→
+  Observation→Candidate Assertions→Evidence Model→Knowledge State'→back to Zero).
+
+  **Delivers three new "constitutional invariants for sources,"** each with a worked instance list --
+  **Invariant 1: Source≠Knowledge** (`Document≠Knowledge`, `API Response≠Knowledge`, `Git Repository≠
+  Knowledge`); **Invariant 2: LLM Output≠Knowledge** (`LLM Output→Candidate Interpretation→Epistemic
+  Processing→Knowledge`); **Invariant 3: Retrieval≠Knowledge Creation** (`Retrieve(Q)→EvidenceCandidates→
+  Evaluate→Knowledge`) -- plus the overarching principle: "sources provide information; KnowledgeOS
+  constructs governed knowledge from it. LLMs interpret; KnowledgeOS evaluates and governs. Retrieval
+  supplies evidence candidates; it does not automatically create knowledge." **This is a strong,
+  independently-derived external re-affirmation, substantively convergent with the primary corpus's own
+  0750 finding "RAG is therefore not the architecture" and "retrieval ranking is not epistemic ranking"** --
+  recorded here as an independent corroboration from a different source, not as a novel discovery, and
+  consistent with 0762's caution, not assumed to add authority beyond what 0750 already established within
+  the primary corpus's own primary reasoning voice. Adds yet another unnumbered "constitutional invariants"
+  set to the reconstruction's tracked proliferation of parallel invariant catalogs.
+
+  Delivers a three-layer architecture diagram (Source Layer / Cognitive Layer / Action Layer, all feeding
+  Knowledge State→{Zero, Lord, Sārathi}), with six implementation implications: Source Connectors as
+  "first-class citizens... epistemic components that understand the provenance, reliability, and context
+  of their sources" (not mere "data loaders"); Semantic Reconstruction as a core capability; **Candidate
+  Assertions held in a pending state until evaluated -- "not automatically promoted to knowledge"**;
+  Evidence Objects stored with full provenance; **"Zero drives Retrieval": gaps identified by Zero become
+  the basis for investigation plans generated by Sārathi**; and **"LLMs are Tools, not the Knowledge State
+  ... their output is processed through the epistemic pipeline."**
+
+  **Delivers a fourth independent artifact (after 0763, 0765, 0766) characterizing Lord's role**, here
+  glossed as "Lord (orient/synthesize)" in the Epistemic Engine summary -- again consistent with the
+  analytical/orientation characterization, never action-selection, further (unverified, external)
+  corroborating context for the open `CON-02` question.
+
+  Closes with a direct RAG-vs-KnowledgeOS comparison: RAG (`Query→Retrieve Chunks→LLM→Answer`) vs.
+  KnowledgeOS (`Intent→Semantic Reconstruction→Dimension Discovery→Knowledge State→Zero[Diagnose]→
+  Sārathi[Plan]→Retrieve Evidence→Observe→Assert→Evaluate→Update Knowledge State→Present`) -- "RAG asks
+  what chunks are relevant to this question? KnowledgeOS asks what do we need to know, what do we know,
+  what are the gaps, what evidence exists, and how should we investigate?" -- "this is the fundamental
+  difference. KnowledgeOS is an epistemic investigation system, not a question-answering system." No
+  actual code execution, repository inspection, or verified filesystem/architecture claim is made anywhere
+  in this file.
+introduces:
+  - concept: "The three distinct information pathways: (A) Model Knowledge, (B) External Retrieval, (C) KnowledgeOS Knowledge -- with explicit non-equivalence warnings"
+  - concept: "The Source Plane vs. Knowledge Plane vs. Epistemic Engine three-tier architectural decomposition"
+  - concept: "The Epistemic Retrieval Loop: Zero→Gap→Sārathi→Retrieval→Observation→Evidence→Knowledge→Zero, replacing Query→Retrieve→Answer"
+  - concept: "The three 'constitutional invariants for sources': Source≠Knowledge, LLM Output≠Knowledge, Retrieval≠Knowledge Creation"
+  - concept: "'Zero drives Retrieval' -- gaps become the basis for investigation plans"
+  - concept: "'LLMs are Tools, not the Knowledge State'"
+  - concept: "The direct RAG-vs-KnowledgeOS comparison closing the file"
+defines: []
+refines:
+  - concept: "0750's 'RAG is therefore not the architecture' and 'retrieval ranking is not epistemic ranking' findings"
+    refinement: "Independently, externally re-derived and substantively extended into the three-plane decomposition (Source Plane/Knowledge Plane/Epistemic Engine) and the Epistemic Retrieval Loop -- a convergent, though separately-sourced and unverified, elaboration of the same core distinction the primary corpus's own c1 voice had already established"
+  - concept: "0763's/0765's/0766's Lord characterizations (candidate-generation/synthesis, pattern-identification, resolve/synthesize/orient)"
+    refinement: "A fourth independent artifact glosses Lord as 'orient/synthesize' -- continuing the same consistent analytical characterization across all four DeepSeek-sourced artifacts encountered so far, without this reconstruction treating the consistency itself as proof against the R5/action-selector characterization flagged at 0758-0759"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read the next external_research/ files (what-we-can-directly-use-practical-assessment, and the many later hpa-* files confirmed via 0762's directory listing) with high attention: check whether the corpus's own primary hpa-* voice explicitly evaluates or corroborates this Source-Plane/Knowledge-Plane distinction and the Epistemic Retrieval Loop."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file's Source-Plane/Knowledge-Plane/Epistemic-Engine decomposition and Epistemic Retrieval Loop as a strong, independently-derived external convergence with the primary corpus's own 0750 finding ('RAG is therefore not the architecture') -- corroborating, not novel, given 0762's caution."
+  - "dimension-registry.md: record this file as a fourth independent artifact (after 0763, 0765, 0766) consistently characterizing Lord as analytical/orientation work, relevant unverified context for the open CON-02 question."
+anchor_test:
+  anchor: "0750's 'RAG is therefore not the architecture' and 'retrieval ranking is not epistemic ranking' findings; 0763's/0765's/0766's Lord characterizations; 0758-0759's open CON-02 question"
+  supports_dimension: "Delivers a strong, independently-derived external convergence with 0750's own core RAG-vs-governed-knowledge distinction, substantively extended into a clean three-plane architectural decomposition (Source Plane/Knowledge Plane/Epistemic Engine) and an Epistemic Retrieval Loop replacing the conventional Query→Retrieve→Answer pattern. Delivers three worked 'constitutional invariants for sources' directly reinforcing the same discipline. Provides a fourth consistent (unverified, external) data point on Lord's analytical characterization"
+  refines_or_contradicts: "convergent with (not contradicting) 0750's own finding; provides a fourth consistent but still unverified data point on the open CON-02 question"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit three-row pathway table (Model Knowledge/External Retrieval/KnowledgeOS Knowledge) with the paired warnings 'LLM Response≠KnowledgeOS Knowledge, Retrieved Document≠KnowledgeOS Knowledge, Training Data≠KnowledgeOS Knowledge' is directly quotable evidence of this file's central, corroborating architectural claim."
+  - "The explicit statement 'Zero→Gap→Sārathi→Retrieval→Observation→Evidence→Knowledge→Zero. This is a closed-loop epistemic investigation system, not a question-answering system' is directly quotable evidence of the Epistemic Retrieval Loop as this file's most substantive structural contribution."
+undefined_concepts: []
+open_questions:
+  - "Whether the Source-Plane/Knowledge-Plane distinction and the Epistemic Retrieval Loop are ever explicitly cross-referenced or corroborated by the corpus's own primary hpa-* governance voice in a subsequent file."
+tier2_triggered: true
+tier2_reason: "Delivers a strong, independently-derived external convergence with the primary corpus's own 0750 finding, substantively extended into a clean three-plane architectural decomposition and an Epistemic Retrieval Loop. Delivers a fourth consistent (unverified) data point on Lord's analytical characterization, relevant to the open CON-02 question. Recorded per 0762's caution as corroborating external content, not independently verified."

@@ -1,0 +1,51 @@
+sequence: 58
+path: docs/knowledgeos/brainstorming/20260819-204431-kos-ddd-architecture-review-v3.md
+title: KnowledgeOS DDD Architecture v3.0 (self-correction of 0057)
+date: 2026-08-19
+bytes: 10847
+
+model:
+  primary: c1
+  secondary: [ddd, domain_model, governance]
+
+source_role: CRITICAL_REVIEW
+canonical_source: 57
+
+importance: medium
+confidence: high
+
+about: >
+  Same-thread self-correction of 0057, four minutes later: replaces a five-layer technology stack
+  with SEVEN bounded contexts (Knowledge Product as core domain, plus Governance/Evidence/Semantic/
+  Delivery/Intelligence/Platform-Administration), each with an aggregate. Explicitly rejects "layers"
+  as the wrong DDD primitive.
+
+introduces:
+  - seven_bounded_context_knowledgeos_model
+  - knowledgeproduct_aggregate
+  - domain_services_replacing_runtime_layer
+
+defines: []
+refines:
+  - concept: knowledgeos_five_layer_architecture
+    canonical_source: 57
+    change: "5 technology layers -> 7 bounded contexts with aggregates; layers explicitly rejected as the wrong DDD primitive"
+contradicts:
+  - "0057's layered architecture, superseded same-thread"
+repeats: []
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence:
+  - "'I would not create layers. I would create bounded contexts.'"
+  - "a near-duplicate of this file exists later in the log (flag for DUPLICATE_REPRODUCTION when reached)"
+
+undefined_concepts: [knowledge]
+open_questions: []
+
+tier2_triggered: true
+tier2_reason: "Explicit same-thread self-correction of the immediately preceding file (0057), replacing a layered architecture with a 7-context DDD model."

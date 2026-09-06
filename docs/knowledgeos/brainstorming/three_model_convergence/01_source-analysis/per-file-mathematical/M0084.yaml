@@ -1,0 +1,73 @@
+sequence: M0084
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-125117_comparative-analysis-of-candidate-configuration-models.md
+title: "The Best Model for KnowledgeOS Theory -- A Comparative Analysis: Capstone Adjudication of the M0081-M0083 Simulation Sub-Thread, Comparing Four Linga:Yoni Configurations (1:1, N:1, 1:N, N:N) and Selecting Multiple-Proposers x Multiple-Fields as 'Best' via an Informal Scorecard, Concluding With a Naive Argmax-of-Mean-Evaluation 'Truth' Rule"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: x
+  secondary_note: "explicit capstone/adjudication of the immediately preceding M0081 (3 Linga/1 Yoni), M0082 (1 Linga/2 Yoni), and M0083 (3 Linga/2 Yoni) simulations -- names and compares all four combinatorial configurations (1:1, N:1, 1:N, N:N), selects N:N ('multiple proposals x multiple fields') as the best fit via an informal, unweighted qualitative scorecard, and closes with a concrete but naive arithmetic-mean-based 'Truth = argmax_i mean_j E(L_i,Y_j)' consensus rule that does not engage the corpus's own, considerably more rigorous I.J.-Good-style evidence-weighting apparatus already developed for exactly this cross-evaluator aggregation problem (M0044 and related Sat_c work)"
+source_role: ADJUDICATION
+canonical_source: M0084
+importance: medium
+confidence: high
+about: >
+  Names and systematically compares the four combinatorial Linga:Yoni configurations explored
+  across the sub-thread's recent simulations: Model 1 (1 Linga:1 Yoni, single assertion/single
+  context), Model 2 (N Linga:1 Yoni, multiple assertions/single context), Model 3 (1 Linga:N Yoni,
+  single assertion/multiple contexts, i.e. M0082's configuration), and Model 4 (N Linga:N Yoni,
+  multiple assertions/multiple contexts, i.e. M0083's configuration). Scores each against an
+  informal, unweighted qualitative rubric (Multiple Sources / Cross-Validation / Robustness /
+  Complexity), assigning fit scores 1/5, 2/5, 3/5, 5/5 respectively with no defined scoring
+  procedure -- the ranking is asserted, not derived.
+
+  Concludes Model 4 (N:N) is the "ideal" KnowledgeOS configuration because it alone satisfies six
+  named requirements (Multiple Sources, Multiple Contexts, Cross-Validation, Evidence
+  Aggregation, Conflict Resolution, Consensus Formation) -- again asserted via qualitative
+  argument rather than derived from any formal criterion.
+
+  Delivers the sub-thread's most concrete "truth rule" to date: Truth = argmax_i ( (1/m)
+  sum_j E(L_i,Y_j) ), i.e. select the proposal with the highest mean evaluation across all
+  evaluation fields, implemented as a literal Python `determine_truth()` method (sum evaluations
+  per proposal across fields, divide by field count, return the argmax). This is a genuine,
+  concrete (if crude) aggregation operator -- but it is an unweighted arithmetic mean with no
+  connection made to the corpus's own, considerably more developed I.J.-Good-style evidence-
+  weighting apparatus (M0044 and the Sat_c experiments, M0044-M0056), which already treats
+  exactly this cross-evaluator/cross-context aggregation problem with much greater rigor
+  (weighted evidence combination, non-factivity results, executed experiments). No cross-
+  reference to that existing corpus content is made anywhere in this document.
+introduces:
+  - concept: "The naive unweighted-mean 'Truth = argmax_i mean_j E(L_i,Y_j)' aggregation rule, presented as a concrete Python method -- a real (if crude) formal proposal, distinct from the sub-thread's earlier purely qualitative outcome taxonomies (M0082, M0083)"
+defines: []
+refines:
+  - concept: "Consolidates and closes the M0081-M0083 simulation sub-thread by naming its four configurations as Models 1-4 and selecting one as the sub-thread's terminal position"
+contradicts: []
+repeats:
+  - concept: "The sub-thread's already-established cross-contextual-validation / robust-knowledge theme (M0082, M0083), now framed as a comparative-model selection exercise"
+bridge_candidates:
+  - concept: "The naive argmax-of-mean-evaluation rule is a structurally simpler cousin of the corpus's Sat_c/evidence-weighting apparatus (M0044-M0056) -- a candidate site for the eventual reclassification pass to compare formally, since neither document cross-references the other"
+mathematical_content: true
+gita_content: false
+kernel_content: false
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0084 as the capstone adjudication of the M0081-M0083 simulation sub-thread, naming the four Linga:Yoni configurations as Models 1-4, selecting N:N as 'best' via an informal unweighted scorecard, and proposing a naive unweighted-mean argmax truth rule with no engagement with the corpus's existing, more rigorous evidence-weighting apparatus."
+anchor_test:
+  anchor: "M0081-M0083's simulation sub-thread, and the corpus's separately-developed Sat_c/evidence-weighting apparatus (M0044-M0056), neither of which this document formally connects"
+  supports_dimension: "Weak -- supplies a concrete but unweighted aggregation operator (argmax of mean evaluation) as the sub-thread's terminal position; the informal scorecard method used to select it is not itself a formal contribution"
+  refines_or_contradicts: "refines (M0081, M0082, M0083, by naming and closing the sub-thread)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The comparative scorecard (Section 6.1) assigns numeric fit scores (1/5, 2/5, 3/5, 5/5) via unweighted checkmark counts with no stated scoring formula -- the ranking is asserted by inspection, not derived."
+  - "The 'determine_truth()' Python method concretely implements Truth = argmax_i mean_j E(L_i,Y_j) -- a real, if unweighted and unjustified, aggregation rule, distinct from the sub-thread's earlier purely qualitative outcome taxonomies."
+undefined_concepts:
+  - "The scoring procedure behind the 1/5-5/5 'Overall' fit ratings in the comparative summary table -- no formula given, only qualitative checkmarks"
+  - "Why unweighted arithmetic mean (rather than any weighted combination, e.g. the corpus's own I.J.-Good-style evidence weighting) is the correct aggregation rule for Truth"
+open_questions:
+  - "Whether the naive argmax-of-mean-evaluation rule proposed here was ever formally compared against the corpus's existing Sat_c/evidence-weighting apparatus (M0044-M0056) -- no such comparison appears in this document or (so far) elsewhere in this pass."
+tier2_triggered: false
+tier2_reason: "Supplies a concrete but crude, unweighted aggregation operator as the terminal position of an already low-rigor simulation sub-thread; the comparative-model selection method is informal and asserted rather than derived, and no connection is made to the corpus's own considerably more developed evidence-weighting apparatus. Recorded as the sub-thread's capstone for corpus completeness; not tier-2."

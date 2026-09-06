@@ -1,0 +1,150 @@
+sequence: 757
+path: docs/knowledgeos/brainstorming/phase_measure_theory/how_to_combine/20260828-144815_step_combine_combine-prompt-2.md
+title: "Combine-Prompt 2 (EXCEPTIONAL META-LEVEL FINDING, continuing 0755/0756) -- PHASE 1 STATUS REPORT: Historical Archaeology COMPLETE, Reporting on Its Own Close Reads (~15 Pivotal Documents, Not the Full 565,263-Line Corpus) That the Zero and Lord Lens-to-Algebra Transitions ARE Confirmed Semantic Shifts (CON-01: Zero Shifted From Absence-Detection Lens to Goal-Gap Algebra Unacknowledged; CON-02: Lord's Name Reused From Ω-Observation to Action Selection) -- Confirms the 8-Primitive M₄₉ Kernel 'Survived 50 Attack Classes... No Counterexample Found in Tested Scenarios, Explicitly Not a Proof' -- Reports the Decisive Open Item EG-05 (Whether Repository Validation for Steps 101-124 Actually Ran Remains NOT ESTABLISHED) -- Names Six Hypothetical Concepts That 'Must Not Be Reported as Architecture' (Including Ātma-as-Kernel and the Knowledge Atom) -- Halts at an Explicit Human/Architectural Review Gate Before Phase 2, Never Entering It"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "reports on, but does not itself perform, close analysis of the Gita-derived R3 lens material (Zero/Lord/Sārathi); confirms specific semantic-shift findings (CON-01/CON-02) directly bearing on how the g1/c1 discipline was or was not honored elsewhere in this corpus"
+source_role: PRIMARY_RESEARCH
+canonical_source: 757
+importance: critical
+confidence: high
+about: >
+  A complete "PHASE 1 STATUS REPORT — Historical Archaeology COMPLETE" produced by the parallel synthesis
+  effort whose master prompt is 0755 and whose refined Phase-1 instructions are 0756. Reports **corpus
+  statistics for `phase_measure_theory/`: 408 files / ~387 distinct / 565,263 lines / 65½ hours**, and
+  confirms all seven Phase-1 deliverables are on disk (corpus-inventory.md, reasoning-timeline.md,
+  claim-registry.md [26 claims], decision-registry.md [10 methodological + 7 architectural],
+  contradiction-registry.md [7 contradictions], experiment-registry.md [4 experiments],
+  open-questions.md [6 epistemic gaps + 12 substantive + 3 process], regime-comparison-matrix.md). **States
+  explicitly "Phase 2 is NOT entered. Per instruction, this report ends at the human review gate."**
+
+  **Delivers what is ESTABLISHED "by the corpus, at the corpus's own stated standard"**: (1) the
+  five-regime structure (R1-R5) with near-total vocabulary turnover between regimes, six dated turning
+  points, and an explicit corpus-internal mode change at Step 109 ("we now change mode," marked as a direct
+  read, `⟦READ⟧`); (2) **EXP-01's negative result: no simple scalar aggregation operator suffices** --
+  duplicate invariance and corroboration sensitivity are property requirements, and dependency resolution
+  must precede aggregation (backed by a property matrix + CSV artifact, `⟦READ⟧`); (3) **EXP-02's scoped
+  result: the 8-primitive M₄₉ kernel "survived 50 attack classes,"** with the report explicitly preserving
+  the corpus's own precise, hedged wording — "no counterexample found in tested scenarios, explicitly not a
+  proof" (`⟦READ⟧`); (4) the evidence standard rose monotonically across regimes (visible in the regime
+  matrix's bottom row), with the corpus upgrading its own epistemic machinery at least twice by explicit
+  recorded methodological decision (`MD-06`, `MD-08/09`).
+
+  **Delivers what is STRONGLY SUPPORTED**: the action/decision separation (Lord proposes, Sārathi decides,
+  Knower owns the frame), stated in R3 and preserved through the R5 formalization (`C-014`, `C-021`,
+  `CON-03`); `Determination≠extraction` (R1) as a load-bearing distinction, echoed structurally by R5's
+  acceptance/commitment step though the specific mapping remains unverified (`OQ-03`); and **the Step-100/
+  109 boundary (theory construction vs. conformance testing) confirmed as "real in the documents, not an
+  artifact of naming"** (backed by direct reads at both 109 and 100's section headings).
+
+  **Delivers what is explicitly HYPOTHETICAL, with the strong instruction it "must not be reported as
+  architecture"**: Knowledge-is-not-the-Kernel-object (`C-001`), the Knowledge Atom (`C-010`), **Ātma-as-
+  Kernel (`C-012`)**, the epistemic-OS framing (`C-026`), the R2 dimension theory (`C-006`), and Option 3's
+  content (`AD-01/OQ-06`) -- a direct, explicit caution against this reconstruction's own risk of ever
+  treating any of these six concepts as settled architecture rather than tracked hypotheses, should they be
+  encountered in the primary corpus's own source files.
+
+  **Delivers what CHANGED historically** (framed as "the evolution the book must preserve," directly
+  honoring 0756's Historical Integrity rule): the object of inquiry itself shifted across regimes
+  (*definition of KnowledgeOS* → *knowledge state* → *Knower–Kernel relation* → *primitives* → *system +
+  real repository*); the claim discipline itself shifted (R2's "complete model" claims → R5's "survives
+  within tested scope" claims, explicitly the corpus correcting its own claim-form, `CON-04`); **and, most
+  significantly, both of the two priority Lens→Algebra semantic-shift contradictions flagged as open items
+  at 0756 are now CONFIRMED, not merely suspected**: **`CON-01` — Zero shifted from an absence-detection
+  lens to a goal-gap algebra, with the meaning shift itself unacknowledged in the corpus**; **`CON-02` —
+  Lord's name was reused, from Ω-observation to action selection, for a genuinely different concept**.
+
+  **Delivers what remains CONTRADICTORY**: `CON-01`/`CON-02` (the two priority lens→algebra semantic
+  shifts, now confirmed rather than merely hypothesized), `CON-05` (closure numbering), `CON-06` (freeze
+  decisions unhonoured -- described as "a two-corpus process pattern"), `CON-07` (question numbering) --
+  four of the report's own seven tracked contradictions named explicitly.
+
+  **Delivers what remains UNVALIDATED**: most significantly, **"everything past Step 50's scope"** -- the
+  conformance suite (Steps 101-124) and self-verification (Steps 123-124) are specified only at the
+  `⟦TITLE⟧` level, with their actual execution explicitly `NOT ESTABLISHED`, flagged as **`EG-05`, "the
+  decisive open item"** governing "the entire validation story"; the implementation chain (Steps 145-156,
+  vertical slice, constitution v1.0) has unknown specification-vs-build status (`EG-04`); both surviving
+  evidence algebras never had their selection criterion actually applied (`OQ-11`); and all three formal
+  algebras' fidelity to their originating lenses remains unverified (`EG-01/02`).
+
+  **Delivers a seven-item, explicitly prioritized Phase-2 investigation agenda**: (1) `EG-05`/`OQ-07` --
+  read Steps 109-124 to determine whether repository validation actually ran, "the entire validation story
+  pivots here"; (2) `CON-02`+`CON-01` -- read the specific source documents (`025g`/`025d`) against the
+  lens documents to determine whether the semantic shifts were ever noticed in-corpus, and where "the
+  homeless Ω concept should live"; (3) `OQ-06` -- recover Option 1/2/3 from source document `125403` and
+  neighbours; (4) `OQ-08` -- read Step 100's per-dimension Result blocks; (5) `EG-06` -- map R2's objects
+  (atom, dimensions, 24 questions) onto the Step-49 kernel to determine what survived and what was silently
+  dropped; (6) `PQ-02` -- rule on evidential weighting of "the 76-docs/hour material" before Phase 2 counts
+  anything from it; (7) only then may the concern-map separation (0755's Phase 2) proceed "without
+  flattening the evolution."
+
+  **Delivers an explicit "depth declaration"**: this Phase-1 report is "grounded in content-derived
+  filenames, timestamps, series enumeration, and direct reads of ~15 pivotal documents (lens origins, all
+  three algebra formalizations, both experiments, Steps 100/109 heads, R1 turning points). Not a full read
+  of 565k lines." Every `⟦C⟧`-tagged item is verbatim from an actual read; every `⟦TITLE⟧`-grounded cell
+  says so explicitly; gaps say `NOT ESTABLISHED` rather than being filled -- a rigorous, self-limiting
+  epistemic-honesty declaration, though one that also concretely establishes this parallel synthesis
+  effort's findings rest on a substantially smaller direct-read sample (~15 documents) than this
+  reconstruction's own file-by-file close reading of the full sequential corpus.
+
+  Closes: "STOP. Awaiting the human/architectural review gate before Phase 2." -- confirming (consistent
+  with 0756's proposed checkpoint) that this parallel effort deliberately halted at exactly this gate,
+  rather than proceeding autonomously into interpretation. No further Phase-2/3/4 content is delivered in
+  this file itself. No actual code execution or verified repository claim is made in THIS file beyond
+  reporting the described corpus-archaeology findings themselves.
+introduces:
+  - concept: "The corpus statistics: 408 files / ~387 distinct / 565,263 lines / 65½ hours (phase_measure_theory/, per the parallel synthesis effort's own count)"
+  - concept: "EXP-01's negative result: no simple scalar aggregation operator suffices; dependency resolution must precede aggregation"
+  - concept: "EXP-02's scoped, explicitly-hedged result: the 8-primitive M₄₉ kernel survived 50 attack classes ('no counterexample found... explicitly not a proof')"
+  - concept: "CONFIRMED CON-01: Zero shifted from an absence-detection lens to a goal-gap algebra, unacknowledged"
+  - concept: "CONFIRMED CON-02: Lord's name reused, from Ω-observation to action selection, for a different concept"
+  - concept: "The six explicitly named HYPOTHETICAL concepts that 'must not be reported as architecture' (Knowledge-is-not-the-Kernel-object, the Knowledge Atom, Ātma-as-Kernel, the epistemic-OS framing, the R2 dimension theory, Option 3's content)"
+  - concept: "EG-05, 'the decisive open item': whether repository validation for Steps 101-124 actually ran remains NOT ESTABLISHED"
+  - concept: "The confirmed real Step-100/109 boundary (theory construction vs. conformance testing)"
+  - concept: "The seven-item prioritized Phase-2 investigation agenda"
+  - concept: "The explicit 'depth declaration': ~15 pivotal documents directly read, not the full 565k-line corpus"
+defines: []
+refines:
+  - concept: "0756's flagged open item, whether Zero→Zero-Algebra and Lord→Lord-Algebra represent genuine unbridged semantic shifts"
+    refinement: "CONFIRMED, not merely hypothesized: this report's CON-01 and CON-02 findings establish both as real, acknowledged-in-the-registry (though unacknowledged-in-the-original-corpus) semantic shifts -- Zero moved from an absence-detection lens to a goal-gap algebra, and Lord's name was reused for the unrelated concept of action selection, displacing its original Ω-observation meaning"
+  - concept: "0756's proposed human/architectural review gate between Phase 1 and Phase 2"
+    refinement: "Confirmed as actually honored in this execution: the report explicitly halts ('STOP. Awaiting the human/architectural review gate before Phase 2') rather than proceeding autonomously into Phase 2's concern-separation work"
+  - concept: "0756's named R5 landmark experiments (Step 050, Step 100, Step 109)"
+    refinement: "Step 100/109's boundary status is now confirmed 'real in the documents, not an artifact of naming'; Step 109 specifically marked as where the corpus itself declares a mode change ('we now change mode'); but whether the actual repository-validation execution described at Steps 101-124 occurred remains explicitly unresolved (EG-05), the single most decisive open item carried into Phase 2"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read the remaining how_to_combine/ files (combine-prompt-3 through 6, halfway-point-progress-review, the qualification/next-instruction files, step_combine_remaining-todos) with high attention: check whether the human/architectural review gate was passed and Phase 2 (concern separation) or later phases were ever actually entered, and whether EG-05 (the decisive validation-execution question) was ever resolved."
+  - "When this reconstruction's own sequential pass reaches the primary-corpus source documents referenced here by internal ID (e.g. '025g'/'025d' for the Zero/Lord lens material, '125403' for Option 1/2/3, Steps 100/109/101-124/145-156), read them with heightened attention given the specific open items flagged in this report."
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the confirmed CON-01/CON-02 semantic-shift findings (Zero: absence-detection lens→goal-gap algebra, unacknowledged; Lord: Ω-observation→action selection, name reused) as resolving 0756's flagged open item -- these ARE real, corpus-confirmed epistemic-bridge gaps, not merely suspected."
+  - "dimension-registry.md: record EG-05 ('the decisive open item': whether Steps 101-124 repository validation actually ran) as the single most consequential open question surfaced by this parallel synthesis effort -- watch for direct resolution when this reconstruction's own sequential pass reaches those files."
+  - "dimension-registry.md: record the six explicitly named HYPOTHETICAL concepts (including Ātma-as-Kernel and the Knowledge Atom) that 'must not be reported as architecture' -- apply the same caution in this reconstruction's own eventual canonical synthesis if/when these concepts are encountered."
+  - "dimension-registry.md: record the corpus statistics (408 files/~387 distinct/565,263 lines/65½ hours) and the explicit 'depth declaration' (~15 pivotal documents directly read) as a methodological comparison point against this reconstruction's own full sequential close-reading approach."
+anchor_test:
+  anchor: "0755's master prompt; 0756's refined Phase-1 instructions and flagged Zero/Lord/Sārathi open item; 0753's Gita-Chapter-4-derived architectural principles; this reconstruction's own governing epistemic discipline and its own corpus-size tracking (progress.tsv)"
+  supports_dimension: "Delivers a complete, halted-at-the-review-gate Phase-1 status report from the parallel synthesis effort, CONFIRMING (not merely suspecting) that the Zero and Lord lens-to-algebra transitions represent genuine, unacknowledged semantic shifts (CON-01, CON-02) -- directly resolving the open item flagged at 0756. Delivers EG-05 as 'the decisive open item' governing the entire validation story (whether Steps 101-124 repository validation actually ran remains unresolved). Delivers six explicitly named concepts (including Ātma-as-Kernel) that must never be reported as settled architecture. Delivers a rigorous, self-limiting depth declaration distinguishing this parallel effort's ~15-document direct-read sample from a full corpus read -- a valuable methodological contrast point against this reconstruction's own full sequential close-reading approach. Confirms the human/architectural review gate was genuinely honored (Phase 2 not entered)"
+  refines_or_contradicts: "directly resolves (confirms) the open item 0756 flagged regarding Zero/Lord lens-to-algebra semantic shifts; substantially extends 0755/0756's meta-level findings about this corpus's own methodological structure; no contradiction found with this reconstruction's own findings so far"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit CON-01/CON-02 entries under 'What CHANGED historically,' naming Zero's absence-detection→goal-gap-algebra shift and Lord's Ω-observation→action-selection name reuse as confirmed findings (not hypotheses), is directly quotable evidence resolving 0756's flagged open item."
+  - "The explicit statement 'everything past Step 50's scope... execution NOT ESTABLISHED (EG-05 — the decisive open item)' is directly quotable evidence that the corpus's own claimed repository-conformance validation (Steps 101-124) has not actually been confirmed as executed by this parallel synthesis effort's own close reading."
+  - "The closing 'depth declaration' explicitly stating '~15 pivotal documents... Not a full read of 565k lines' is directly quotable evidence distinguishing this parallel effort's evidentiary basis from a full corpus read, relevant context for weighing its findings against this reconstruction's own methodology."
+undefined_concepts: []
+open_questions:
+  - "Whether the human/architectural review gate this report explicitly halts at was ever passed, and whether Phase 2 (concern separation) or later phases were subsequently entered -- to be checked against the remaining how_to_combine/ files."
+  - "Whether EG-05 (repository validation execution for Steps 101-124) is ever resolved, either by this parallel synthesis effort or by this reconstruction's own eventual reading of the relevant primary-corpus source files."
+  - "Whether this reconstruction's own eventual §29-gated canonical synthesis should explicitly cross-reference the confirmed CON-01/CON-02 findings and the six HYPOTHETICAL-only concepts named here, when and if the corresponding primary-corpus source files are reached in this reconstruction's own sequential pass."
+tier2_triggered: true
+tier2_reason: "EXCEPTIONAL META-LEVEL FINDING (continuing 0755/0756): a complete Phase-1 status report from the parallel synthesis effort, CONFIRMING both priority lens-to-algebra semantic shifts flagged as open items at 0756 (Zero's absence-detection→goal-gap-algebra shift; Lord's Ω-observation→action-selection name reuse), each unacknowledged in the corpus itself. Delivers EG-05 as 'the decisive open item' -- whether the corpus's own claimed repository-conformance validation (Steps 101-124) actually ran remains NOT ESTABLISHED. Delivers six explicitly named concepts (including Ātma-as-Kernel and the Knowledge Atom) that must never be reported as settled architecture. Delivers a rigorous depth declaration distinguishing a ~15-document direct-read sample from a full corpus read, and confirms the human/architectural review gate was genuinely honored rather than bypassed."

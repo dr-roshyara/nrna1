@@ -1,0 +1,109 @@
+sequence: "0108"
+path: docs/knowledgeos/brainstorming/20260822-101729-kashmiri-shaivism-prakasa-vimarsa-lens.md
+title: "Kashmir Śaivism (Prakāśa-Vimarśa) lens for KnowledgeOS -- two extraction passes + first executed P5 decision"
+date: "2026-08-22"
+bytes: 20074
+model:
+  primary: g
+  secondary: [x, c1]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+importance: critical
+confidence: high
+about: >
+  Two extraction passes (9 lenses each) over Kashmir Śaivism's Prakāśa-Vimarśa (light/illumination and
+  self-reflective-awareness) and Pratyabhijñā (recognition) doctrines -- a non-dualist school
+  genuinely distinct from Nyāya/Vaiśeṣika realism and Advaita Vedanta. ⭐ Contains the corpus's FIRST
+  explicitly executed P5-style validation decision, with a clean negative kernel-promotion result:
+  "Add to Kernel? No new constitutional invariant survives the necessity test," while explicitly
+  strengthening several already-tracked candidates.
+
+introduces:
+  - "⭐ First executed P5 decision in the corpus (0107 stated the test criterion but did not apply it):
+    'Add to Kernel? No. No new constitutional invariant survives the necessity test.' / 'Strengthens
+    Existing Kernel? Yes -- H-KOS-Agent, Identity preservation, Transformation integrity, Unknown/
+    uncertainty, Reasoning provenance.' A clean, disciplined NEGATIVE result: substantial research
+    content, explicitly zero kernel-level promotion -- the first clean falsification-style outcome in
+    the corpus, not merely another reshaping or restatement"
+  - "'Tripartite Epistemic Integrity' (Knower/Knowing/Known preservation) explicitly classified
+    'Constitutional candidate' but immediately mapped as REINFORCING H-KOS-Agent-001, not a new entry"
+  - "'Epistemic Recognition Engine' (Pratyabhijñā-derived: 'recognize the correct epistemic
+    relationship', not 'generate answer') explicitly classified 'Mechanism, not kernel'"
+  - "Explicit outcome summary: 'Research contribution: HIGH. Kernel impact: NONE. Architecture impact:
+    HIGH. Reasoning engine impact: HIGH.' -- a four-axis outcome classification, the clearest such
+    summary format in the corpus so far"
+  - "Confirms 'Vedic Mathematics' (still unlocated) grouped explicitly alongside Vāṇī/Vedanta/Nyāya as
+    'a validation lens for KnowledgeOS, not a source of kernel law' -- consistent characterization
+    across files, still not directly located in the read corpus"
+  - "Final Extraction Matrix (8 rows): Prakāśa->Knowledge visibility (Mechanism), Vimarśa->Knowledge
+    self-awareness (Reasoning mechanism), Trika->Knower-knowing-known (Existing constitutional
+    support), Pratyabhijñā->Epistemic recognition (Reasoning engine), Śakti->Capability layer
+    (Architecture boundary), Tattvas->Layered knowledge model (Architecture), Maya->Epistemic
+    limitation (Existing invariant support), Manifestation cycles->Knowledge lifecycle (Mechanism) --
+    every row lands OUTSIDE the kernel category"
+  - "Three named 'New Architecture Concepts Worth Exploring Later' (explicitly deferred, not adopted):
+    Epistemic Recognition Engine, Self-reflective Reasoning Layer, Layered Knowledge Evolution Model"
+
+defines: []
+
+refines:
+  - "0107's stated but unexecuted P5 criterion ('does KnowledgeOS become impossible without this?'):
+    this file is the first to actually run it against a full set of candidates and report a clean
+    negative kernel-promotion result"
+  - "Maya (epistemic limitation) explicitly mapped to reinforce Unknown Preservation, not a new entry"
+
+contradicts: []
+
+repeats:
+  - concept: "Knower/Knowing/Known trinity (Tripuṭī)"
+    canonical_source: "0086"
+    novelty: none
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "No new registry entries warranted -- every candidate in this file explicitly maps to reinforcing
+    an existing entry (Agency, Identity, Transformation, Unknown Preservation, Reasoning Provenance) or
+    is classified 'mechanism/reasoning-engine, not kernel'"
+  - "WATCH MARKER continuation: 'Vedic Mathematics' remains an unlocated but consistently-characterized
+    forward reference across 0105/0107/0108"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Unknown Preservation", "Transformation Integrity"]
+  refines_or_contradicts: >
+    No new reshaping -- this file is notable precisely for NOT reshaping the anchor, instead executing
+    a disciplined rejection of new kernel candidates while reinforcing existing ones. A positive
+    counter-example to the ongoing reshaping churn (fifteen non-identical shapes as of 0105).
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true   # no new scheme introduced
+
+key_evidence:
+  - "First clean, explicitly-executed P5-style falsification result in the corpus: substantial research
+    content (20KB, two full 9-lens passes) yielding ZERO new kernel candidates, with reasons stated"
+  - "A four-axis outcome classification (Research contribution / Kernel impact / Architecture impact /
+    Reasoning engine impact), the clearest disciplined outcome-reporting format found so far"
+
+undefined_concepts:
+  - "'Vedic Mathematics' -- still unlocated, now referenced consistently across three files (0105 via
+    implication, 0107, 0108) as a completed, non-kernel-impact validation lens"
+
+open_questions:
+  - "Whether the 'Vedic Mathematics' lens-extraction document is ever located in the primary reading
+    order, or remains permanently an external/adjacent reference"
+
+tier2_triggered: true
+tier2_reason: >
+  The corpus's first cleanly executed P5-style validation decision, with an explicit, reasoned NEGATIVE
+  kernel-promotion result -- directly relevant to the MD-018 status_chain discipline (this is the first
+  file to explicitly test and REJECT candidates at the "supported" stage rather than merely proposing
+  more). A methodologically important positive counter-example to the reshaping churn tracked since
+  0087.

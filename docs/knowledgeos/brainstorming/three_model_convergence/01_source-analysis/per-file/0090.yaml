@@ -1,0 +1,146 @@
+sequence: "0090"
+path: docs/knowledgeos/brainstorming/20260822-0203-truth-seeking-machine-knowledgeos-core-question-refinement.md
+title: "Truth-seeking machine: KnowledgeOS core-question refinement"
+date: "2026-08-22"
+bytes: 20569
+
+model:
+  primary: x
+  secondary: [c1, g]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: "0089"
+
+importance: critical
+confidence: high
+
+about: >
+  First ~440 lines closely reproduce 0089's content near-verbatim (same section titles: layer
+  separation, six-lens mapping, Kernel Definition candidate, logical brain analogy) -- recorded as a
+  repeat, canonical_source 0089. The genuinely new material follows: four new architectural-gap
+  hypotheses (Decision Coupling, Revisability/Fallibilism, Observation-vs-Inference, Justification
+  Strength/Type), each independently critically reviewed and refined into an INV-KOS-* candidate; a
+  restructured three-layer Constitutional Model (PRESERVE/GOVERN/ENABLE); a fourth kernel-question
+  reformulation; and the corpus's most complete Forbidden Transformations table (7 rows) to date. Also
+  contains a genuine in-corpus self-correction: an explicit rejection of a premature "architecturally
+  complete" claim made earlier in the same document.
+
+introduces:
+  - "Four new architectural-gap hypotheses, each stated then independently reviewed and REFINED (not
+    accepted as-is): H-KOS-Decision-001 (Knowledge->Action coupling: decisions must be flagged stale
+    when supporting knowledge changes) -> refined to INV-KOS-Decision-001; H-KOS-Revisability-001
+    (fallibilism: no knowledge state irrevocably finalized) -> the reviewer EXPLICITLY SOFTENS this
+    ('too strong' -- legitimate terminal states exist: archived historical fact, final legal judgment,
+    mathematical proof) into INV-KOS-Revisability-001 (preserve the POSSIBILITY of revision while
+    preserving historical identity/provenance of prior states); H-KOS-Inference-001 (Observation !=
+    Inference, extending the Evidence!=Authority/Observation!=Decision/Assessment!=Authority/
+    Projection!=Source family) -> INV-KOS-Inference-001; H-KOS-Justification-001 (logic type/strength:
+    monotonic vs non-monotonic, deductive/inductive/abductive/probabilistic) -> the reviewer explicitly
+    warns against building 'a logic taxonomy kernel', narrows to INV-KOS-Justification-001 (preserve
+    the NATURE of justification, not store all logic types)"
+  - "A genuine in-corpus self-correction: after one voice in the document declares the research phase
+    'definitively, exhaustively complete... architecturally complete', a second voice in the SAME
+    document explicitly rejects this ('I would not yet accept the conclusion architecturally
+    complete'), restating the discipline: Observation -> Invariant candidate -> Evidence across domains
+    -> Constitutional invariant -> Possible kernel enforcement. A live, autonomous demonstration
+    (independent of this research's own MD-014 discipline) of the exact candidate-vs-canonical caution
+    MD-014 requires"
+  - "Restructured three-layer 'Updated KnowledgeOS Constitutional Model': PRESERVE (Identity, Meaning/
+    Context, Evidence, Authority, Temporal validity, Uncertainty, Provenance -- 7 items, Provenance now
+    distinct from Evidence for the first time), GOVERN (Transformation, Revision, Contradiction,
+    Inference, Justification, Decision coupling), ENABLE (Reasoning engines, AI agents, Analytics,
+    Simulation -- non-dimensional capabilities layer)"
+  - "Fourth kernel-question reformulation: 'What epistemic corruptions must KnowledgeOS make
+    impossible?' (after: what components?; what transformations to prevent?; how to move closer to
+    justified truth without corruption?)"
+  - "Most complete Forbidden Transformations table yet (7 rows): Evidence->Authority, Observation->
+    Decision, Inference->Observation, Revision->Identity Loss, Context Removal->Meaning Preservation,
+    Confidence->Truth, Knowledge->Automatic Action"
+  - "Proposed next artifact: 'KnowledgeOS Constitutional Invariant Map v1.0 -- Extended Epistemic
+    Reasoning Layer' with 7 columns (Invariant/Dimensions/Forbidden Collapse/Evidence/Strength/
+    Validation Target/Notes) -- the richest map schema proposed so far (0084: 5 cols; 0085: 4 cols)"
+  - "Explicit final strength grading of the four new candidates: Decision coupling = Strong;
+    Revisability = Very strong; Observation-vs-Inference = Very strong; Justification type = Candidate
+    (weakest of the four, explicitly flagged for caution)"
+
+defines: []
+
+refines:
+  - "0089's six-vs-seven dimension tension: NOT cleanly resolved, but reorganized -- an intermediate
+    table in this file lists the 'State' layer as 'Identity, Evidence, Authority, Temporal, Unknown,
+    Context' (six, WITH Context, Transformation moved to a separate 'Movement' layer), while the LATER
+    'Updated Constitutional Model' lists PRESERVE as seven items (adds Provenance, distinct from
+    Evidence, for the first time). Dimension count and membership remain unstable across this single
+    file's own successive tables -- recorded precisely, not smoothed into one count"
+  - "H-KOS-Decision-001/Revisability-001/Inference-001/Justification-001 REUSE the existing H-KOS-*
+    naming convention (from 0083/0086), rather than inventing a new scheme -- a rare positive
+    counter-example to the general ID-scheme-proliferation problem tracked since Ledger Entry 25"
+  - "0083's Observation!=Evidence!=Assessment!=Authority family: extended with Observation!=Inference
+    (H-KOS-Inference-001), explicitly motivated by an AI-specific failure mode (model-generated
+    statements treated as observations)"
+
+contradicts:
+  - "Internal, same-document: an 'architecturally complete' claim is made, then explicitly rejected a
+    few paragraphs later by a second voice in the same document -- not resolved into a single verdict,
+    both positions recorded"
+
+repeats:
+  - concept: "layer separation table, six-lens mapping (Vedanta/EpistemicOS/TMS-AGM/Zero/Vāṇī/
+    Topology), Kernel Definition (candidate), logical brain analogy, updated architectural position"
+    canonical_source: "0089"
+    novelty: none
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+# MD-014 anchor_test against 0087 (Minimal_Kernel_Candidate_0087)
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity", "Authority Separation", "Unknown Preservation (as Uncertainty)", "Transformation Integrity (as Movement/GOVERN layer)"]
+  refines_or_contradicts: >
+    Substantially REFINES (restructures, not merely corroborates or contradicts): 0087's flat 6-item
+    list is reorganized into a 3-layer model (PRESERVE/GOVERN/ENABLE) with Context and Provenance added
+    to PRESERVE (now 7 items in this file's own later table, 6 with Context in an earlier table within
+    the SAME file) and Revision/Contradiction/Inference/Justification/Decision-coupling added to GOVERN.
+    Dimension count remains unstable even within this single document's own successive tables.
+  alternative_minimal_kernel: >
+    Yes -- the 3-layer PRESERVE/GOVERN/ENABLE model is a structurally different proposal (layered, not
+    flat) from 0087's flat six-dimension list, the most substantial restructuring of the anchor so far.
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false   # the 7-row forbidden-transformations table is informal
+                                             # prohibition, not a formally-signed operator
+  connects_pramana_vedanta_gita_to_c1c2: false   # Vedanta/Jñāna lens repeated from 0089, not newly
+                                                    # connected to C1/C2 structures here
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true   # PARTIAL positive: H-KOS-* reused rather than a new scheme
+                                            # invented, though the underlying dimension-count and
+                                            # layer-shape questions remain unresolved
+
+key_evidence:
+  - "A genuine, autonomous in-corpus self-correction against a premature completeness claim, occurring
+    independently of this research's own MD-014 discipline -- direct evidence the source corpus itself
+    values the same candidate-vs-canonical caution this research has now formalized"
+  - "Two non-identical dimension-count tables (six with Context in one place, seven with Provenance in
+    another) within the SAME single document, neither reconciled with the other"
+  - "The reused H-KOS-* naming convention is a rare positive counter-example to the otherwise-growing
+    ID-scheme-proliferation problem (6 schemes tracked as of 0089)"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether the PRESERVE/GOVERN/ENABLE three-layer restructuring is adopted, revised again, or
+    abandoned in later files"
+  - "Whether Context and Provenance are ever cleanly reconciled as permanent members of the core
+    dimension set, or remain contested as they are here"
+
+tier2_triggered: true
+tier2_reason: >
+  The richest single-file engagement with the 0087 anchor so far: four new, individually critically-
+  reviewed candidate invariants (one explicitly softened, one explicitly narrowed against scope creep),
+  a restructured three-layer constitutional model, the corpus's most complete forbidden-transformations
+  table, a fourth kernel-question reformulation, and a genuine autonomous self-correction against
+  premature "architecturally complete" claims -- directly and substantially relevant to §14/§18/§23 and
+  to the ongoing MD-014 anchor-corroboration tracking.

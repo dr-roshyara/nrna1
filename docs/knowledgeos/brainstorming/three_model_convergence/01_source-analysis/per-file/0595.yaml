@@ -1,0 +1,178 @@
+sequence: 595
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-100603_step-025q-models-hypotheses-prediction-model-selection-and-scientific-revision.md
+title: "A Formal Scientific Method for Engineering Knowledge (Observation→Hypothesis→Model→Prediction→Test→Revision), With Model≠Assertion, ModelScore≠Truth (AIC/BIC Are Not Truth Mechanisms), Calibration≠Accuracy, and Underdetermination (EvidenceInsufficientForModelSelection) Framed as Another Form of Zero; ModelFailure→KnowledgeGap→EvidenceAcquisition Elegantly Reconnects Scientific Reasoning to Zero/Lord/Sārathi; 'KnowledgeOS Can Learn Without Training an AI'; a Seven-Value ModelFailureType Taxonomy; Verdict '25Q — PASS'; Opens Step 25R (Decision Theory, Utility, Risk, Value of Information and Rational Action) — Flagged for Possible Topic Overlap With 0557's Step 15"
+date: "2026-08-28"
+bytes: 16314
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 25Q -- Models, Hypotheses, Prediction, Model Selection and Scientific Revision', opened at 0594's close to address whether models themselves can be wrong without confusing model failure with evidence failure"
+source_role: PRIMARY_RESEARCH
+canonical_source: 595
+importance: high
+confidence: high
+about: >
+  Opens Step 25Q directly executing 0594's closing commitment, establishing that a causal model (25P) is
+  itself "a hypothesis about how the world behaves" that must never silently become Truth. Delivers the
+  central pipeline **`Observation→Hypothesis→Model→Prediction→Test→Revision`**, explicitly framed as "the
+  beginnings of a scientific method for engineering knowledge."
+
+  **Delivers the file's central formal distinction**: **`PredictionError≠ModelFalse`** without further
+  analysis, worked through six named alternative explanations for a failed prediction (wrong model,
+  probabilistic prediction, insufficient sample, absent assumed condition, intervening variable,
+  measurement error). Delivers a five-stage Model lifecycle (Candidate→Proposed→Testable→
+  Supported→Established) with named alternative transitions (Proposed→Refuted, Supported→Weakened,
+  Established→Revised), and the formal distinction **`Assertion≠Model`** -- a model contains relationships
+  between variables, not a single fact claim, formalized as `M=(Variables,Relations,Assumptions,
+  Parameters,Scope,Predictions,Version)`.
+
+  **Delivers the file's key methodological principle -- Assumptions as first-class knowledge**: a model
+  `A→B` implicitly assuming `C=True` actually predicts `A∧C→B`; if `C=False`, prediction failure does not
+  necessarily refute the model, worked through a CPU-vs-database-bottleneck scaling example -- "the model
+  did not necessarily fail. Its applicability conditions were violated." Delivers a structured, auditable
+  Prediction object `(Model,Input,Time,ExpectedOutcome,Uncertainty,Assumptions)` with a worked concrete
+  example.
+
+  **Delivers formal prediction-scoring machinery**: numerical/classification error measures, and proper
+  scoring rules for probabilistic predictions (Brier score `BS=(p-y)²`), grounding **Calibration≠Accuracy**
+  (a model repeatedly predicting `P(Event)=0.8` is well-calibrated only if roughly 80% of those cases
+  actually occur; 40% would indicate overconfidence) -- explicitly flagged as mattering for Sārathi.
+  Delivers a multidimensional `ModelAssessment=(PredictiveAccuracy,Calibration,Robustness,Applicability,
+  Complexity,Stability)`, rejecting a bare `model_quality=0.91` scalar. Delivers Overfitting as a distinct
+  formal concern (`HistoricalFit` vs. `PredictiveValidity`) and a caution against automatically preferring
+  more complex models.
+
+  **Delivers the file's central formal deliverable -- ModelScore≠Truth**: AIC/BIC and similar model-
+  selection criteria explicitly declared NOT universal truth mechanisms -- a lower score means a relative
+  ranking under that criterion, never `Model=True`. Delivers a disciplined competing-models treatment:
+  KnowledgeOS should preserve `{M_1,M_2}` rather than deleting a weaker model, with `Compare(M_1,M_2,D,C)`
+  formally allowing three outcomes (`M_1 preferred`, `M_2 preferred`, `Indistinguishable`), the third
+  explicitly named "extremely important." **Delivers Underdetermination formally reframed as another form
+  of Zero**: `EvidenceInsufficientForModelSelection`, directly extending the corpus's established Zero
+  mechanism into the model-selection layer.
+
+  **Delivers Scientific revision as event addition, directly mirroring 0591's (25M) revision architecture**:
+  `ModelRevision=NewModelEvent, not deletion`, with explicit model lineage tracking
+  (`M_1→M_2→M_3`, each version recording predecessor, changed assumptions/parameters/structure, reason, and
+  supporting evidence). Delivers **model falsification requiring model likelihood, not merely prediction
+  failure**: refutation strength depends on `P(O|M)`, not on the mere occurrence of an unexpected
+  observation, formalized via Bayesian model comparison `P(M_i|D)∝P(D|M_i)P(M_i)`, with the explicit
+  caution that priors must be stated, never secretly invented. **Delivers a disciplined honesty result**:
+  worked `P(M_1|D)=0.55` vs. `P(M_2|D)=0.45` example -- declaring "M1 is correct" would be unjustified; the
+  correct status is `ModelsCompeting`, "much more honest" -- with model averaging
+  (`P(Y|D)=Σ_i P(Y|M_i,D)P(M_i|D)`) available under genuine model uncertainty.
+
+  **Delivers a DDD `ModelRegistry` bounded-context concept** (Model, ModelVersion, Assumption, Prediction,
+  PredictionResult, ModelAssessment, ModelComparison, ModelRevision), with the generic KnowledgeOS layer
+  providing provenance/epistemic infrastructure while the domain context owns model semantics. Delivers a
+  formal Model Contract `MC=(InputSchema,OutputSchema,Assumptions,ValidityDomain,Version,EvaluationMethod)`,
+  explicitly analogous to an API contract, without which "a model cannot be safely reused." Delivers the
+  domain-driven insight that a model is meaningful only inside its bounded context (worked
+  SecurityRiskModel vs. HotelRevenueModel example, directly extending 0590's no-universal-ontology
+  principle), with explicit versioned `ModelOutputContract`s for cross-context model-result exchange.
+
+  Delivers a six-stage Prediction lifecycle (Created→Published→Observed→Evaluated→Scored→
+  ModelAssessmentUpdated) feeding a complete learning loop
+  (`MODEL→PREDICTION→WORLD→OBSERVATION→COMPARISON→MODEL ASSESSMENT→MODEL REVISION→MODEL`). **Delivers the
+  file's important reframing of "learning" for KnowledgeOS**: `ModelRevision` based on accumulated
+  evidence, explicitly NOT necessarily "LLM Retraining" -- a broader concept spanning improved rules,
+  revised models, better evidence, corrected ontology, better causal models, and calibrated predictions.
+
+  **Delivers a further elegant connection to Zero/Lord/Sārathi, directly paralleling 25P's Identifiable=
+  False→Zero pattern**: a model repeatedly failing due to a missing variable populates
+  `Zero=MissingVariable`, with Lord able to request `Observation(NewVariable)`, formalized as
+  `ModelFailure→KnowledgeGap→EvidenceAcquisition`.
+
+  Delivers a seven-value `ModelFailureType={ParameterError,DataError,AssumptionViolation,StructuralError,
+  MeasurementError,DistributionShift,UnknownCause}`, explicitly framed as far more useful than a bare
+  `model_failed=true` Boolean. Delivers Distribution shift (`D_old≠D_new` degrading prediction quality) and
+  Temporal model drift (`M(t_1)` may not describe `W(t_2)`) as distinct, named engineering failure modes,
+  reconfirming `ExpiredModel≠FalseModel`. Delivers Model governance as its own dimension:
+  `TechnicalValidity≠GovernanceApproval`, explicitly echoing 0593's GovernanceTruth≠TechnicalTruth
+  separation applied to models specifically. Delivers model provenance and reproducibility formalisms
+  (`Prediction=f(ModelVersion,InputSnapshot,Parameters)`, deterministic replay, `RandomSeed` recording for
+  stochastic models).
+
+  **Delivers seven labeled falsification tests (A-G), ALL PASS**: model vs. assertion; prediction failure
+  (a single failed prediction should not automatically refute a probabilistic model); assumption violation
+  (classified separately from ModelFalse); competing models (`ModelSelection=Undetermined` when evidence is
+  insufficient); model revision (new model does not erase the old); reproducibility; model drift (changed
+  environment invalidates applicability without proving universal falsity).
+
+  **Delivers Step 25Q's verdict**: **"25Q — PASS,"** with the key result: "KnowledgeOS can represent models
+  as first-class, versioned epistemic artifacts whose predictions can be compared with observations and
+  whose validity can be revised without destroying historical model states" -- "a major step toward a
+  genuine self-correcting knowledge system."
+
+  **Closes by identifying the next fundamental problem -- probability alone does not determine rational
+  action**: worked `P(Outage)=5%` example (acceptable for a minor loss, potentially unacceptable for a
+  critical production system), formalized as **`Probability alone does not determine rational action`**.
+  **Opens "Step 25R — Decision Theory, Utility, Risk, Value of Information and Rational Action,"** posing
+  the architectural question "When should Lord request more evidence rather than make a decision now?" and
+  introducing Value of Information `VOI(E)=ExpectedUtility(with E)-ExpectedUtility(now)`, explicitly framed
+  as potentially explaining why Zero→Lord→Sārathi "is not merely an AI workflow, but a principled decision-
+  making system." **Notable corpus-integrity observation**: Step 25R's title ("Decision Theory, Utility,
+  Risk, Value of Information and Rational Action") substantially overlaps the subject matter of the
+  corpus's much earlier Step 15 (0557, "Decision Theory and Action Selection," which already introduced
+  Sārathi and Value of Information) and of 0585/0586's already-formalized Lord/Sārathi utility/risk
+  algebras -- flagged for tracking alongside the confirmed 25N/25C title collision (0591/0592), though not
+  yet confirmed as a literal duplicate since 25R's title differs from 25C's. No actual code execution
+  reported.
+introduces:
+  - concept: "PredictionError≠ModelFalse — a failed prediction requires further diagnostic analysis (six named alternative explanations) before it can refute a model"
+  - concept: "ModelScore≠Truth — AIC/BIC and similar model-selection criteria are explicitly declared not universal truth mechanisms, only relative rankings under a stated criterion"
+  - concept: "Underdetermination (EvidenceInsufficientForModelSelection) formally reframed as another form of Zero, directly extending the established Zero mechanism into the model-selection layer"
+  - concept: "Model falsification requires model likelihood P(O|M), not merely the occurrence of a prediction failure — grounded in Bayesian model comparison with explicit, non-invented priors"
+  - concept: "'KnowledgeOS can learn without training an AI' — ModelRevision based on accumulated evidence is explicitly a broader concept of learning than LLM retraining"
+  - concept: "ModelFailure→KnowledgeGap→EvidenceAcquisition, an elegant further connection between scientific model reasoning and the Zero/Lord/Sārathi loop, directly paralleling 25P's causal-identifiability pattern"
+  - concept: "A seven-value ModelFailureType taxonomy (ParameterError/DataError/AssumptionViolation/StructuralError/MeasurementError/DistributionShift/UnknownCause), replacing a bare model_failed Boolean"
+  - concept: "'Step 25R — Decision Theory, Utility, Risk, Value of Information and Rational Action', flagged for possible topic overlap with 0557's Step 15 and 0585/0586's already-formalized Lord/Sārathi utility/risk algebras"
+defines:
+  - concept: "Model (formal structure)"
+    definition: "M=(Variables,Relations,Assumptions,Parameters,Scope,Predictions,Version), formally distinct from an Assertion (a single fact claim); assumptions are explicit, first-class components whose violation can explain prediction failure without refuting the model"
+  - concept: "Calibration"
+    definition: "A probabilistic model is well-calibrated when its stated probabilities match observed frequencies (e.g. P(Event)=0.8 predictions should be followed by the event roughly 80% of the time); explicitly distinct from raw predictive Accuracy"
+  - concept: "Scientific inference chain"
+    definition: "H→M→P→O→E→Assessment(M)→Revision(M) — Hypothesis, Model, Prediction, Observation, resulting Evidence, Model Assessment, and Model Revision as a complete, auditable pipeline"
+  - concept: "Model Contract"
+    definition: "MC=(InputSchema,OutputSchema,Assumptions,ValidityDomain,Version,EvaluationMethod) — an API-contract-like structure required before a model can be safely reused across contexts"
+refines:
+  - concept: "0591's (25M) revision-as-event-addition architecture (Revision=EventAddition+StateReDerivation)"
+    refinement: "Directly mirrored for models specifically: ModelRevision=NewModelEvent, not deletion, with explicit model lineage tracking (predecessor, changed assumptions/parameters/structure, reason, supporting evidence)"
+  - concept: "0582's/0584's/0591's/0593's/0594's formal Zero treatment"
+    refinement: "Extended twice more: EvidenceInsufficientForModelSelection is framed as another form of Zero, and a missing modeled variable feeds Zero=MissingVariable via ModelFailure→KnowledgeGap→EvidenceAcquisition — directly paralleling 25P's causal-identifiability-to-Zero pattern"
+  - concept: "0590's no-universal-ontology DDD principle"
+    refinement: "Extended into the model-management domain: a model is meaningful only inside its bounded context (worked SecurityRiskModel vs. HotelRevenueModel example), with explicit versioned ModelOutputContracts for cross-context exchange"
+  - concept: "0593's GovernanceTruth≠TechnicalTruth separation"
+    refinement: "Directly echoed for models specifically: TechnicalValidity≠GovernanceApproval — a model can be mathematically valid but unauthorized for production use"
+  - concept: "0578's/0592's evidence-aggregation-model-dependence discipline (no universal aggregation function)"
+    refinement: "Extended into model comparison specifically: model scoring (AIC/BIC, Bayesian posterior) is explicitly relative to a stated criterion, never an absolute truth indicator"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Track whether 'Step 25R — Decision Theory, Utility, Risk, Value of Information and Rational Action' (next file) substantially overlaps 0557's Step 15 ('Decision Theory and Action Selection') and/or 0585's/0586's already-formalized Lord/Sārathi utility/risk algebras — a possible further instance of the corpus's step-renumbering/topic-revisitation pattern (alongside the confirmed 25N/25C collision at 0591/0592), though the titles differ so this is not yet a confirmed collision"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the scientific-method pipeline (Observation→Hypothesis→Model→Prediction→Test→Revision), PredictionError≠ModelFalse, the five-stage model lifecycle, Assertion≠Model, and the formal Model structure with first-class Assumptions."
+  - "dimension-registry.md: record ModelScore≠Truth (AIC/BIC not truth mechanisms), Calibration≠Accuracy, Underdetermination as another form of Zero (EvidenceInsufficientForModelSelection), model falsification requiring likelihood not mere prediction failure, and the ModelsCompeting honesty result over premature model selection."
+  - "dimension-registry.md: record the DDD ModelRegistry/Model Contract, the learning loop and 'KnowledgeOS can learn without training an AI,' ModelFailure→KnowledgeGap→EvidenceAcquisition, the seven-value ModelFailureType taxonomy, TechnicalValidity≠GovernanceApproval, verdict '25Q — PASS,' and Step 25R's opening — flagged for possible topic overlap with 0557's Step 15."
+anchor_test:
+  anchor: "0594's closing commitment to Step 25Q (can KnowledgeOS learn its model is wrong); 0591's (25M) revision-as-event-addition architecture; 0582's/0584's/0591's/0593's/0594's formal Zero treatment; 0590's no-universal-ontology DDD principle; 0593's GovernanceTruth≠TechnicalTruth separation; 0557's Step 15 (Decision Theory and Action Selection)"
+  supports_dimension: "Delivers a comprehensive, well-structured formalization of scientific model management for KnowledgeOS — hypothesis testing, calibration, model selection under underdetermination, Bayesian model comparison with explicit non-invented priors, and a disciplined refusal to declare a marginally-favored model 'correct' (ModelsCompeting). Directly and cleanly extends three previously-established architectural patterns into the model-management layer: 0591's event-addition revision architecture (models revised via new events, never destructive mutation), 0582's-through-0594's Zero mechanism (underdetermination and missing variables both formally populate Zero), and 0590's no-universal-ontology DDD principle (models are meaningful only within their bounded context). Delivers the important reframing that KnowledgeOS 'learning' need not mean LLM retraining, a broader and more defensible notion of a self-correcting epistemic engineering system. Surfaces a corpus-integrity observation worth tracking: the opened Step 25R's title substantially overlaps 0557's much earlier Step 15 and 0585's/0586's already-formalized Lord/Sārathi utility/risk algebras, though not yet a confirmed literal title collision like the 25N/25C case"
+  refines_or_contradicts: "directly executes 0594's closing commitment to Step 25Q; directly mirrors 0591's (25M) revision-as-event-addition architecture for models specifically; extends 0582's-through-0594's Zero mechanism into model-selection underdetermination and missing-variable model failure; extends 0590's no-universal-ontology principle into model management; echoes 0593's GovernanceTruth≠TechnicalTruth separation for models; possible topic overlap with 0557's Step 15 and 0585's/0586's utility/risk formalization flagged, not yet resolved as duplication or contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked CPU-vs-database-bottleneck scaling example (increasing server capacity fails to reduce response time because the database, not the CPU, was the actual bottleneck) is directly checkable, concrete evidence grounding the abstract Assumptions-are-first-class-knowledge principle in a realistic engineering scenario, demonstrating that a model's failure can stem from a violated applicability condition rather than the model's core relationship being wrong."
+  - "The worked P(M_1|D)=0.55 vs. P(M_2|D)=0.45 example, with the explicit conclusion that declaring 'M1 is correct' would be unjustified and the correct status is ModelsCompeting, is directly checkable evidence of the file's disciplined epistemic honesty — refusing to convert a marginal statistical preference into a definitive model selection."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25R — Decision Theory, Utility, Risk, Value of Information and Rational Action' is executed as its own dedicated corpus file, and whether it substantially duplicates or productively extends 0557's Step 15 and 0585's/0586's already-formalized Lord/Sārathi utility/risk/VOI content"
+tier2_triggered: true
+tier2_reason: "Delivers a comprehensive, well-structured formalization of scientific model management as a genuine extension of KnowledgeOS's epistemic architecture — hypothesis testing, calibration, disciplined model selection under underdetermination, Bayesian model comparison with explicit non-invented priors, and a notably honest refusal to declare a marginally-favored model definitively correct. Cleanly and consequentially extends three previously-established architectural patterns into the model-management layer (0591's event-addition revision architecture, the corpus's established Zero mechanism now covering both model underdetermination and missing modeled variables, and 0590's no-universal-ontology DDD principle applied to models specifically), together with the valuable reframing that KnowledgeOS's 'learning' need not mean LLM retraining. Surfaces a corpus-integrity observation directly relevant to the reconstruction's own tracking obligation: the newly opened Step 25R substantially overlaps the subject matter of 0557's much earlier Step 15 and 0585's/0586's already-formalized Lord/Sārathi utility/risk/VOI algebras, worth tracking alongside the confirmed 25N/25C collision even though not yet a confirmed literal duplicate."

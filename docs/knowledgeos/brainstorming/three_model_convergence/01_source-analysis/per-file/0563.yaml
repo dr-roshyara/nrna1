@@ -1,0 +1,283 @@
+sequence: 563
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-161157_step-020-uncertainty-probability-ambiguity-incompleteness-conflict-and-confidence.md
+title: "LANDMARK: Full Typed-Uncertainty Taxonomy — Eight Distinct Uncertainty Types (Unknown/Incomplete/Ambiguous/Imprecise/Probabilistic/Conflicting/Indeterminate/ModelUncertain), None Interchangeable; 'KnowledgeOS Shall Never Force Heterogeneous Uncertainty Into a Single Scalar Confidence Value at the Kernel Level'; LLMReportedConfidence≠CalibratedProbability; 'No Universal Uncertainty Propagation Formula' (Explicit Sixth+ Instance of the No-Universal-Formula Pattern); Fifteen Canonical U1-U15 Invariants; Opens Step 21 (Goals, Intentions, Decisions, Actions, Utility, Risk, Constraints, and Outcomes)"
+date: "2026-08-27"
+bytes: 26139
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 0562's closing 'Step 20 -- Uncertainty, Probability, Ambiguity, Incompleteness, Conflict, and Confidence', itself explicitly framed as the last piece before the core theoretical model could be declared closed"
+source_role: PRIMARY_RESEARCH
+canonical_source: 563
+importance: critical
+confidence: high
+about: >
+  Directly executes 0562's closing "Step 20," opening with the observation that the corpus has repeatedly
+  used informal words like "unknown," "uncertain," "confidence," "support," and "probability" that, left
+  informal, would eventually make the mathematical model inconsistent. Delivers the file's governing
+  principle: **`Uncertainty is not one quantity`**, more precisely
+  **`Unknown≠Ambiguous≠Incomplete≠Imprecise≠Conflicting≠Probabilistic`**, and
+  **`LLM confidence≠calibrated probability`**.
+
+  **Delivers the file's foundational six-case worked example**, all describing the single statement
+  "the Nexus server is running version 3.72": Case A (no evidence, `Unknown`), Case B (ambiguous referent,
+  `Ambiguous`), Case C (known entity, missing attribute, `Incomplete`), Case D (conflicting authoritative
+  sources, `Conflict`), Case E (an interval-only source statement, `Imprecise`), Case F (a repeated-
+  measurement probability estimate, `Probabilistic`) -- six genuinely distinct epistemic conditions,
+  concluding `KnowledgeOS must preserve the type of uncertainty`.
+
+  **Formalizes Uncertainty as a structured object rather than a scalar**: explicitly rejects `U∈[0,1]` in
+  favor of `𝒰=(Type,Scope,Object,Representation,Source,Basis,TemporalScope,Resolution)`, with `Type` drawn
+  from an eight-member taxonomy `𝒰_types={Unknown,Incomplete,Ambiguous,Imprecise,Probabilistic,
+  Conflicting,Indeterminate,ModelUncertain}`.
+
+  **Formalizes Unknown**: `Unknown(A)` means neither A nor ¬A is sufficiently established, explicitly
+  distinct from `False(A)`. **Delivers the Open-World Assumption as an explicit KnowledgeOS principle**:
+  `Absence of evidence≠Evidence of absence` -- a missing `HasOwner(Nexus)` fact yields `Unknown`, never
+  `¬HasOwner(Nexus)`, "essential for enterprise knowledge." **Formalizes Incomplete knowledge** as known
+  structure plus missing components, connected directly to the corpus's Discrepancy model. **Formalizes
+  Ambiguity as a set of known candidate interpretations** (`Ambiguity(x)={c_1,...,c_n}`), explicitly
+  distinct from Unknown -- "we have known alternatives" -- with an LLM permitted to extract candidate
+  referents but the kernel forbidden from arbitrarily selecting one.
+
+  **Formalizes Imprecision as interval-valued, explicitly distinct from probability**
+  (`CPU∈[0.80,0.90]` does NOT mean every value is equally likely) -- **`IntervalUncertainty≠Probability`**.
+  Formalizes Probability rigorously via a probability measure `P:ℱ→[0,1]`, and delivers **`Probability is
+  model-relative`**: `P(A)=0.8` does not mean "reality is 80% true," only that under a specified
+  probabilistic model and information state that probability is assigned -- echoing the corpus's recurring
+  model-relativity theme (0556 causal, 0560 semantic).
+
+  **Delivers Bayesian probability** `P(A|E)=P(E|A)P(A)/P(E)` as supportable "where statistically
+  justified," alongside the crucial caution **`Not every uncertainty should be probabilized`**, worked
+  through a concrete example: assigning `P=0.97` to a governing constitutional requirement for approval
+  actually WORSENS the representation, since the real issue is `NormativeValidity`, not probabilistic
+  uncertainty at all -- directly reinforcing 0561's Normative/Descriptive rule separation.
+
+  **Delivers the file's central conceptual disambiguation -- four distinct senses of "confidence"**:
+  Statistical confidence (interval/procedure property), Subjective confidence (a person's degree of
+  belief), Model confidence (an AI's internal/reported confidence), Epistemic support (assertion support
+  strength) -- explicitly must not be conflated. **Delivers the file's hard invariant**:
+  **`LLMReportedConfidence≠CalibratedProbability`**: an LLM's stated "95% confident" must be stored as
+  `LLMReportedConfidence=0.95`, never treated as `P(SameServer)=0.95`, unless the model is demonstrably
+  calibrated for that task. **Formalizes Calibration empirically**: among predictions assigned p=0.8,
+  roughly 80% should be correct for the model to be calibrated in that region, and delivers
+  `Calibration(Model,Task,Context)` as strictly preferable to `Calibration(Model)` alone (an LLM well
+  calibrated for text classification may be poorly calibrated for infrastructure-identity questions).
+
+  **Formalizes Conflict as a distinct epistemic category, not a probability value**: `Conflict(A,¬A)`
+  can coexist with high certainty ABOUT the conflict's existence while remaining uncertain which side is
+  correct -- `Conflict is a property of the evidence state, not simply a probability value`. Delivers
+  **Conflict-probability coexistence**: `Conflict(A,¬A)` and `P(A|E)=0.8` can both hold simultaneously; the
+  probability is a synthesis result, the conflict remains as preserved provenance and must not be erased.
+
+  **Formalizes Indeterminacy**, stronger than mere not-knowing: `Indeterminate = not derivable and not
+  refutable under the current [formal] model`, connecting directly to 0561's four-valued reasoning-result
+  taxonomy. **Delivers `ModelUncertainty≠ParameterUncertainty`**: uncertainty arising from choice of
+  statistical model itself (two valid models yielding `P_1(A)=0.8` vs `P_2(A)=0.55`) is categorically
+  different from uncertainty in an estimated parameter within a chosen model (`p̂=0.8`,
+  `p∈[0.74,0.85]`) -- "a standard statistical distinction." Formalizes **Measurement uncertainty** as a
+  third distinct category (`CPU∈[78%,82%]` from ±2% instrument error), explicitly warning it "should not
+  automatically become `P(CPU=80)=0.95`" -- **`ErrorInterval≠Probability`**.
+
+  **Delivers Uncertainty propagation with type-dependent semantics**: deterministic interval propagation
+  (`x∈[1,2]`, `y=2x+1`⟹`y∈[3,5]`) is categorically different from probabilistic distribution
+  transformation for `Y=2X+1` -- **`Propagation semantics depend on uncertainty type`**, motivating typed
+  uncertainty storage over a bare `confidence=0.8` field, worked through four concrete typed-uncertainty
+  record examples (interval/probabilistic/ambiguity/conflict). **Formalizes an Uncertainty object**
+  `U=(Type,Target,Scope,Representation,Basis,Magnitude,Source,TemporalScope,PropagationRule)`, with
+  `PropagationRule` singled out as particularly important.
+
+  **Delivers `EpistemicStatus≠UncertaintyType`**: `Σ=Supported` can coexist with `U=Probabilistic`, or
+  `Σ=Disputed` with `U=Conflict` -- genuinely orthogonal dimensions, worked through a concrete "probably
+  running 3.72" vs. "3.72 or 3.73" contrast showing the latter must not be assigned an invented
+  probability. **Delivers `Unknown does not imply UniformProbability`**: KnowledgeOS must not assign
+  `P(A)=0.5` merely because there are two possibilities, an "unjustified assumption." **Delivers the
+  general invariant `No numerical confidence without a defined basis`**, naming five legitimate bases
+  (statistical model, calibrated classifier, Bayesian posterior, expert elicitation, measurement model)
+  and explicitly excluding raw LLM felt-confidence from automatically qualifying.
+
+  **Delivers Evidence uncertainty vs. proposition uncertainty**: uncertainty in the evidence itself (e.g. a
+  possibly-misconfigured monitoring system) can propagate into uncertainty about the supported proposition.
+  **Delivers Source uncertainty formalized via the corpus's established Bayesian reliability model**
+  (`Rel(S,A)~Beta(α,β)`), creating a hierarchical statistical model when warranted, directly reusing
+  0562's reliability-estimation machinery. **Delivers Uncertainty propagation through inference**: whether
+  uncertainty in A propagates deterministically, probabilistically (`P(B|A)`), or causally (`P(B|do(A))`)
+  into B depends entirely on the applicable rule's semantics -- **`There is no universal uncertainty
+  propagation formula`**, explicitly elevated to a major architectural principle: `Every uncertainty type
+  has its own semantics and propagation rules`, preventing "a mathematically invalid universal 'confidence
+  engine.'" This is a clean, explicit additional instance of the corpus's recurring "no universal formula"
+  architectural pattern (previously confirmed at 0545/0546, 0554, 0556, 0561, arguably 0560), this time
+  applied to uncertainty propagation itself.
+
+  **Connects decision-making under uncertainty directly to Sārathi (0557)**: standard expected-utility
+  formulas `EU(a)=Σ_s P(s|K)U(a,s)` (discrete) and its integral form are valid "only when the uncertainty
+  has a defensible probabilistic model"; otherwise interval decision analysis, minimax, robust
+  optimization, worst-case analysis, or human escalation are required. Formalizes Risk conceptually as
+  `Risk(a)=f(Likelihood,Impact,Uncertainty,Reversibility)`, with the explicit caution that likelihood must
+  not be invented if unavailable -- **`Unknown probability must not be replaced by an arbitrary
+  probability`**: a high-impact action with unknown likelihood should trigger escalation rather than an
+  assumed value, worked through a concrete "human approval required" example.
+
+  **Delivers `RequiredEpistemicStrength=f(ActionRisk)`**, directly connecting Step 20 to Step 19's
+  risk-adjusted epistemic-requirement principle (0562), worked via a contrasting "show a possible
+  explanation" (0.95 sufficient) vs. "delete production data" (0.95 likely insufficient) example. **Delivers
+  a formal robust decision-making criterion** `a*=argmax_a min_{P∈𝒫} EU_P(a)` over a plausible-distribution
+  set 𝒫, extending 0557's robust/minimax decision theory. **Delivers Uncertainty reduction as an explicit
+  action type**: information-gathering formalized as `a_info:K→K'` where ideally `U(K')<U(K)`, with the
+  explicit caveat that this does not mean all uncertainty must be eliminated. **Formalizes Value of
+  Information** `VOI=EU(with information)-EU(without information)`, possibly minus acquisition cost,
+  directly reprising and generalizing 0557's EVSI/VOI formalization to the general uncertainty-reduction
+  case, delivering the framing **"Active Epistemic Management"** as "a significant distinction from
+  ordinary RAG systems."
+
+  **Extends Zero**: can now detect `UncertaintyTooHighForPurpose`, worked through a concrete Nexus-version
+  "Supported but Not decision-ready" example, delivering **`Supported≠Sufficient`**. Extends Lord (query
+  system of record, request human confirmation, perform independent measurement), with the goal reframed
+  from "reduce uncertainty to zero" to **`reduce uncertainty enough for the intended purpose`**. Extends
+  Sārathi: formalizes decision readiness
+  `Ready(K,P)=SufficientEvidence∧AcceptableUncertainty∧NoCriticalConflict∧ApplicableGovernance`.
+
+  **Delivers a typed extension of the discrepancy model**: `d_uncertainty` now includes MissingValue,
+  AmbiguousIdentity, InsufficientPrecision, UncalibratedProbability, ConflictingEvidence, and
+  ModelUncertainty as named deficiency subtypes. **Formalizes a richer epistemic-state structure for
+  assertions** `EA=(Status,Support,Uncertainty,Conflict,Provenance,TemporalScope)`, and a
+  **structured truth space rejecting bare True/False**:
+  `TruthStatus(A)=(Support(A),Refutation(A),Uncertainty(A),Commitment(A))`, explicitly permitting
+  simultaneous non-zero support AND refutation to represent genuine dispute -- "not necessarily a bug."
+
+  **Delivers the file's central architectural-humility principle**: `No forced resolution` -- KnowledgeOS
+  must be permitted to return `Unresolved` as a valid, non-failure epistemic result, explicitly stated as
+  an architectural principle: "the system must be able to represent 'we do not know' without converting it
+  into an invented answer." Delivers a full Uncertainty lifecycle (Unknown→Evidence acquired→Ambiguity
+  identified→Candidates generated→Evidence assessed→Uncertainty characterized→Corroborated/resolved/
+  remains uncertain→Commitment decision), explicitly contrasted with a naive "retrieve→answer" RAG pattern.
+
+  **Delivers four proposed DDD bounded contexts for uncertainty/decision concerns**: Epistemic Context
+  (uncertainty, epistemic status, support, conflict), Statistical Context (probability, distributions,
+  calibration, estimation), Decision Context (risk, utility, thresholds, action readiness), Evidence
+  Context (evidence, provenance, source assessment) -- explicitly preventing probability concepts from
+  "contaminating the entire domain model." Delivers a DDD Ubiquitous-Language caution: "confidence" must
+  not become one shared field across bounded contexts (`Confidence_LLM` vs `Confidence_Statistical` are
+  different concepts entirely) -- "precisely the type of semantic ambiguity DDD helps us avoid," directly
+  echoing 0560's semantic theory.
+
+  **Formalizes two distinct domain objects**: `UncertaintyAssessment=(Type,Target,Basis,Scope,
+  Representation,Provenance)` and `ProbabilisticAssessment=(RandomVariable,Distribution,Model,Prior,
+  Posterior,Calibration)`, explicit about making the statistical boundary architecturally visible.
+
+  **Delivers a three-tier computability assessment**: deterministically computable (unknown-state
+  detection, missing fields, ambiguity sets, interval arithmetic, temporal uncertainty, evidence conflict,
+  logical indeterminacy, constraint uncertainty, provenance); statistically computable (probability
+  distributions, posteriors, confidence intervals, calibration, expected utility, Bayesian updating);
+  AI-assisted (extracting ambiguity/candidates/uncertainty expressions from language) -- with the explicit
+  caution `AI extraction does not make an uncertainty claim mathematically valid`.
+
+  **Delivers the file's central formal deliverable -- fifteen canonical invariants (U1-U15)**: Unknown≠
+  False; AbsenceOfEvidence≠EvidenceOfAbsence; Ambiguity≠Unknown; Imprecision≠Probability; Conflict≠
+  Probability; EpistemicStatus≠UncertaintyType; LLMConfidence≠CalibratedProbability; no numerical
+  confidence without a defined basis; not every uncertainty should be probabilized; every uncertainty type
+  has explicit propagation semantics; unknown probability must not be replaced by an arbitrary probability;
+  conflict must preserve the competing claims; decision thresholds are governance/policy, not universal
+  mathematical constants; the system may legitimately return Unresolved; uncertainty must be represented
+  according to its actual semantic type.
+
+  **Delivers Step 20's compact mathematical core** (the eight-type uncertainty taxonomy, the uncertainty
+  assessment structure, the probability measure, Bayesian updating, expected-utility decision-making,
+  robust minimax decision-making, and value-of-information) -- "distinct mathematical mechanisms rather
+  than one universal 'confidence formula.'" **Delivers Step 20's verdict**: THEORETICALLY RESOLVED AT THE
+  FRAMEWORK LEVEL, with the file's single strongest architectural decision explicitly stated:
+  **"KnowledgeOS shall never force heterogeneous uncertainty into a single scalar confidence value at the
+  kernel level"** -- a scalar may be derived for a specific decision model downstream, but the underlying
+  structured uncertainty is never collapsed at the kernel: `Structured Uncertainty→Derived Decision
+  Metric`, never `Uncertainty→One Universal Confidence Number`.
+
+  **Delivers a consolidated fourteen-stage sources-to-outcome pipeline** spanning Reality through
+  DomainState/Evidence/Assertion/Meaning/Validity/EpistemicState/KnowledgeState/DerivedKnowledge/
+  Discrepancy/CandidateActions/Decision/AuthorizedAction/DomainEvent/NewObservation, cross-cut by
+  `Identity+Semantics+Time+Evidence+Provenance+Authority+Reliability+Uncertainty+Rules+Governance` --
+  explicitly described as "approaching a closed mathematical architecture rather than a collection of
+  philosophical definitions."
+
+  **Closes by identifying a remaining gap DESPITE the near-closure framing**: KnowledgeState, IdealState,
+  and Discrepancy have been defined, along with reasoning, uncertainty, evidence, time, and semantics, but
+  the transition from knowledge to action and the meaning of "Action" itself have not been FULLY
+  formalized -- posing "what is an Action? What is a Decision? What is a Goal? What is an Outcome?" **Opens
+  "Step 21 — Goals, Intentions, Decisions, Actions, Utility, Risk, Constraints, and Outcomes,"** explicitly
+  framed as the step that will "let us test whether the entire KnowledgeOS loop is actually operational
+  rather than merely descriptive" -- noteworthy because Step 15 (0557) already delivered a substantial
+  formal treatment of actions, utility, risk, and decision-making via Sārathi, raising an open question
+  about the relationship (extension vs. overlap/redundancy) between Step 15 and the newly opened Step 21.
+introduces:
+  - concept: "The foundational uncertainty taxonomy: Unknown≠Ambiguous≠Incomplete≠Imprecise≠Conflicting≠Probabilistic, with Uncertainty formalized as a structured typed object rather than a scalar in [0,1]"
+  - concept: "The Open-World Assumption made explicit as a KnowledgeOS architectural principle: Absence of evidence≠Evidence of absence"
+  - concept: "Ambiguity formalized as a set of known candidate interpretations, explicitly distinct from Unknown (known alternatives vs. no information at all)"
+  - concept: "IntervalUncertainty≠Probability and ErrorInterval≠Probability — imprecision and measurement error must not be silently converted into probability distributions"
+  - concept: "Probability is model-relative — a probability value only has meaning relative to the specified probabilistic model and information state, never a claim about how 'true' reality is"
+  - concept: "Four distinct, non-conflatable senses of 'confidence' (statistical, subjective, model/AI, epistemic support), with the hard invariant LLMReportedConfidence≠CalibratedProbability"
+  - concept: "Calibration formalized empirically and made task/context-relative (Calibration(Model,Task,Context)), not a single property of a model"
+  - concept: "Conflict formalized as a distinct epistemic category — a property of the evidence state, not a probability value — explicitly able to coexist with a synthesized probability while the conflict is preserved as provenance"
+  - concept: "ModelUncertainty≠ParameterUncertainty≠MeasurementUncertainty — three genuinely distinct statistical uncertainty categories that must not be collapsed"
+  - concept: "'There is no universal uncertainty propagation formula' — propagation semantics depend entirely on the uncertainty type and the applicable rule's own semantics, a further explicit instance of the corpus's recurring 'no universal formula' pattern"
+  - concept: "'Unknown probability must not be replaced by an arbitrary probability' — a high-impact action with unknown likelihood should trigger escalation, never an assumed default probability"
+  - concept: "Value of Information generalized beyond decision-specific EVSI (0557) into a general uncertainty-reduction framework, delivering 'Active Epistemic Management' as distinct from ordinary retrieval-augmented generation"
+  - concept: "'No forced resolution' as an explicit architectural principle — the system must be permitted to legitimately return Unresolved rather than manufacturing an answer"
+  - concept: "Four proposed DDD bounded contexts (Epistemic, Statistical, Decision, Evidence Context) explicitly preventing probability concepts from contaminating the whole domain model, and a Ubiquitous-Language caution against a single shared 'confidence' field"
+  - concept: "The file's single strongest architectural decision: KnowledgeOS shall never force heterogeneous uncertainty into a single scalar confidence value at the kernel level"
+  - concept: "Fifteen canonical Step-20 invariants (U1-U15) governing uncertainty, probability, and confidence"
+  - concept: "'Step 21 — Goals, Intentions, Decisions, Actions, Utility, Risk, Constraints, and Outcomes' as the corpus's next named research phase, explicitly framed as testing whether the KnowledgeOS loop is operational rather than merely descriptive — with a noted potential overlap against Step 15's (0557) already-substantial action/decision/utility/risk theory"
+defines:
+  - concept: "Uncertainty object"
+    definition: "𝒰=(Type,Scope,Object,Representation,Source,Basis,TemporalScope,Resolution), or in its fuller form U=(Type,Target,Scope,Representation,Basis,Magnitude,Source,TemporalScope,PropagationRule) — explicitly rejecting a bare scalar U∈[0,1]"
+  - concept: "Eight-member uncertainty type taxonomy"
+    definition: "𝒰_types={Unknown,Incomplete,Ambiguous,Imprecise,Probabilistic,Conflicting,Indeterminate,ModelUncertain} — the corpus's first complete typed classification of epistemic uncertainty"
+  - concept: "TruthStatus (structured, non-binary)"
+    definition: "TruthStatus(A)=(Support(A),Refutation(A),Uncertainty(A),Commitment(A)) — replacing bare True/False, explicitly permitting simultaneous nonzero support and refutation"
+  - concept: "UncertaintyAssessment and ProbabilisticAssessment (distinct domain objects)"
+    definition: "UA=(Type,Target,Basis,Scope,Representation,Provenance) vs. PA=(RandomVariable,Distribution,Model,Prior,Posterior,Calibration) — an explicit architectural boundary between epistemic-uncertainty concerns and statistical-probability concerns"
+refines:
+  - concept: "The corpus's informal, unspecified use of 'unknown,' 'uncertain,' 'confidence,' and 'probability' throughout the entire prior 40+ file arc"
+    refinement: "Made fully explicit and typed via the eight-member uncertainty taxonomy, preventing the terms from being silently conflated or collapsed into a single scalar"
+  - concept: "0562's Bayesian reliability-estimation formalism (Rel(S,A)~Beta(α,β))"
+    refinement: "Directly reused as the mechanism for Source uncertainty, creating a hierarchical statistical model that lets evidential conclusions inherit source-reliability uncertainty"
+  - concept: "0557's EVSI/VOI decision-theoretic value-of-information formalization"
+    refinement: "Generalized from a decision-specific formula into a general uncertainty-reduction framework (VOI=EU(with info)-EU(without info)-Cost), applicable to Lord's evidence-gathering action selection broadly, not only within a single decision"
+  - concept: "0557's robust/minimax decision-making under multiple possible causal-model worlds"
+    refinement: "Generalized into a formal robust decision criterion over an uncertainty set of plausible probability distributions 𝒫: a*=argmax_a min_{P∈𝒫} EU_P(a)"
+  - concept: "0561's four-valued reasoning result states {Derived,Refuted,Undetermined,Inapplicable}"
+    refinement: "Connected directly to the newly formalized Indeterminate uncertainty type — 'not derivable and not refutable under the current model'"
+  - concept: "0560's semantic Ubiquitous-Language discipline (Term≠Concept, no shared 'Customer' field across bounded contexts)"
+    refinement: "Extended identically to 'confidence' — LLM confidence and statistical confidence must not share one field, precisely the semantic-ambiguity failure mode DDD is meant to prevent"
+  - concept: "The recurring 'no universal formula, typed pluggable methods' architectural pattern (0545/0546, 0554, 0556, 0561, arguably 0560)"
+    refinement: "Confirmed again, explicitly, for uncertainty propagation: 'there is no universal uncertainty propagation formula' — every uncertainty type carries its own propagation semantics"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 21 — Goals, Intentions, Decisions, Actions, Utility, Risk, Constraints, and Outcomes' is executed as its own dedicated corpus file, and specifically whether it substantively extends 0557's (Step 15) already-delivered formal Action/Decision/Utility/Risk/Sārathi theory or significantly overlaps/duplicates it — this file's own framing ('let us test whether the entire KnowledgeOS loop is actually operational') suggests a verification/integration purpose rather than fresh theory, but this should be verified once Step 21 is read"
+  - "Whether the corpus's authors ever explicitly reconcile the apparent tension between 0561's/0562's closing framings (each suggesting the theory was near closure) and this file's own closing identification of a still-unresolved action/decision gap, given that Step 15 had already substantially addressed exactly that gap five steps earlier"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the eight-member uncertainty type taxonomy, the Open-World Assumption, Ambiguity-as-known-candidate-set, IntervalUncertainty≠Probability/ErrorInterval≠Probability, and Probability is model-relative."
+  - "dimension-registry.md: record the four distinct senses of confidence with LLMReportedConfidence≠CalibratedProbability as a hard invariant, task/context-relative Calibration, Conflict as a distinct evidence-state category coexisting with synthesized probability, and ModelUncertainty≠ParameterUncertainty≠MeasurementUncertainty."
+  - "dimension-registry.md: record 'there is no universal uncertainty propagation formula' as an explicit additional confirmed instance of the recurring no-universal-formula pattern, 'unknown probability must not be replaced by an arbitrary probability,' Value of Information generalized to Active Epistemic Management, 'no forced resolution' (legitimate Unresolved), the four DDD bounded contexts, the fifteen U1-U15 invariants, Step 20's central 'never force uncertainty into one scalar at the kernel level' decision, and 'Step 21 — Goals, Intentions, Decisions, Actions, Utility, Risk, Constraints, and Outcomes' as the next named research phase (flagged for possible overlap with Step 15)."
+anchor_test:
+  anchor: "0562's Step-20 directive (explicitly framed as the last piece before the theory could be closed); 0557's Sārathi/EVSI/robust-decision theory; 0561's four-valued reasoning results; 0560's semantic Ubiquitous-Language discipline; 0562's Bayesian reliability formalism; the recurring 'no universal formula' pattern"
+  supports_dimension: "LANDMARK delivering the corpus's first complete, rigorous typed-uncertainty taxonomy, cleanly separating six informally-used terms (unknown, ambiguous, incomplete, imprecise, conflicting, probabilistic) that had been used loosely throughout the entire prior 40+ file research arc. Delivers the file's single strongest architectural decision — KnowledgeOS shall never force heterogeneous uncertainty into one scalar confidence value at the kernel level — directly consistent with and a capstone instance of the corpus's recurring anti-universal-formula design philosophy, alongside the hard LLMReportedConfidence≠CalibratedProbability invariant central to responsible AI-assisted epistemic architecture. Generalizes 0557's decision-specific value-of-information and robust decision-making machinery into a system-wide uncertainty-reduction framework, and delivers the crucial architectural-humility principle that the system may legitimately return Unresolved rather than manufacturing precision. Notably, despite 0561's and 0562's closing framings each suggesting the theoretical model was nearing closure, this file's own closing section identifies a still-unresolved action/decision-theory gap that Step 15 (0557) had already substantially addressed — flagged here as an open question about the relationship between the two steps"
+  refines_or_contradicts: "directly and fully executes 0562's Step-20 directive; reuses 0562's Bayesian reliability formalism for source uncertainty; generalizes 0557's EVSI/VOI and robust decision-making machinery; connects to 0561's four-valued reasoning results via the Indeterminate uncertainty type; extends 0560's Ubiquitous-Language discipline to 'confidence'; reconfirms the recurring no-universal-formula pattern for uncertainty propagation; possible unresolved overlap with 0557's (Step 15) action/decision theory flagged as an open question, not a contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The six-case worked example (Cases A-F), all describing the identical Nexus-version statement under six genuinely distinct epistemic conditions, is a directly checkable, concrete demonstration that a single scalar confidence value cannot represent the range of situations the corpus itself constructs, grounding the taxonomy's necessity in an inspectable example rather than an abstract claim."
+  - "The explicit example that assigning P=0.97 to a constitutional approval requirement WORSENS the representation (because the real issue is NormativeValidity, not probability) is a checkable, falsifiable illustration of 'not every uncertainty should be probabilized,' directly reusable to test whether any later implementation violates this invariant."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 21 — Goals, Intentions, Decisions, Actions, Utility, Risk, Constraints, and Outcomes' is executed as its own dedicated corpus file"
+  - "Whether Step 21 substantively extends or significantly overlaps/duplicates 0557's (Step 15) already-delivered formal Action/Decision/Utility/Risk/Sārathi theory — flagged given this file's own framing suggests testing operational completeness rather than introducing wholly new theory"
+  - "Whether the fifteen U1-U15 invariants are ever cross-referenced against the corpus's many other independently-numbered invariant schemes from this same research program in a future canonical reference"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first complete, rigorous typed-uncertainty taxonomy (eight distinct uncertainty types), cleanly separating terms — unknown, ambiguous, incomplete, imprecise, conflicting, probabilistic — that had been used loosely and interchangeably throughout the entire prior 40+ file research arc. Delivers the file's single strongest, most quotable architectural decision: 'KnowledgeOS shall never force heterogeneous uncertainty into a single scalar confidence value at the kernel level,' a capstone instance of the corpus's recurring anti-universal-formula design philosophy, alongside the hard LLMReportedConfidence≠CalibratedProbability invariant central to responsible AI-governance architecture. Generalizes 0557's decision-specific value-of-information and robust minimax decision-making into a system-wide uncertainty-reduction framework ('Active Epistemic Management'), and delivers the crucial architectural-humility principle permitting a legitimate Unresolved result rather than manufactured precision. Closes with fifteen canonical U1-U15 invariants and a noteworthy open question: despite 0561's and 0562's closing framings each suggesting the theoretical model was approaching closure, this file identifies a still-unresolved action/decision gap that Step 15 (0557) had already substantially addressed — worth tracking once Step 21 is read to determine whether it extends or duplicates that earlier theory."

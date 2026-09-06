@@ -1,0 +1,89 @@
+sequence: "0135"
+path: docs/knowledgeos/brainstorming/20260822-140622-paninian-grammar-compiler-architecture-parallel.md
+title: "Compiler-architecture parallel (KIR, semantic-compiler phases); source self-corrects an unverified performance-simulation overclaim"
+date: "2026-08-22"
+bytes: 26000
+model:
+  primary: c1
+  secondary: [g, m]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0130"
+importance: high
+confidence: high
+about: >
+  Three linked turns: (1) a compiler-architecture parallel for the Sanskrit/Semantic-Compiler idea,
+  introducing "Knowledge Intermediate Representation (KIR)" (a compiler-IR analogy) and a six-phase
+  semantic-compiler pipeline (Lexical Meaning Extraction -> Semantic Parsing -> Context Binding ->
+  Knowledge Type Checking -> Evidence Linking -> Expression Generation), plus a proposed "Semantic
+  Interpretation Context" bounded-context candidate answering 0134's DDD prompt; (2) an UNVERIFIED
+  performance simulation (LLM-only vs. Semantic-Compiler vs. Hybrid) with specific numeric claims
+  (5-20x speed, 95%+ accuracy); (3) the source EXPLICITLY RETRACTS those numbers: "No. Not yet. My
+  previous numbers were an architectural estimate, not a real simulation... I should not have presented
+  the 5-20x and 95% figures as if they had been measured" -- proposing an actual CPU-only benchmark
+  instead. A genuine, quotable self-correction event.
+
+introduces:
+  - "KIR (Knowledge Intermediate Representation): a compiler-IR-analogy YAML frame (type/identity/
+    action/actor/object/evidence/confidence/status) -- a fifth sibling in the already-tracked
+    case/event-frame representation family, added to the existing unresolved_equivalence entry"
+  - "Six-phase 'semantic compiler' pipeline: Lexical Meaning Extraction / Semantic Parsing / Context
+    Binding / Knowledge Type Checking / Evidence Linking / Expression Generation -- the first time the
+    previously informal Semantic Compiler idea is decomposed into named phases"
+  - "'Semantic Interpretation Context' proposed as a Supporting Bounded Context candidate, directly
+    answering 0134's DDD-refinement prompt -- itself only a proposal, not adopted"
+  - "A 'Semantic Type System' sketch (Entity Types: Person/Organization/System/Document/Policy/Event/
+    Decision/Claim/Evidence; Relation Types: CREATES/APPROVES/CAUSES/SUPPORTS/CONTRADICTS/
+    DERIVED_FROM/INVALIDATES) -- a candidate type vocabulary, not adopted"
+  - "EXPLICIT SELF-RETRACTION of unverified quantitative claims (5-20x speed, 95%+ accuracy figures)
+    with a proposed real CPU-only benchmark plan instead -- a concrete, source-internal instance of the
+    Confidence≠Truth discipline already tracked in this corpus, worth recording as a quotable example"
+
+defines: []
+
+refines:
+  - "Strengthens (adds a fifth sibling to) the existing case/event-frame unresolved_equivalence registry
+    entry (0099/0130) with KIR -- not reconciled, not merged"
+
+contradicts: []
+
+repeats:
+  - {concept: "Semantic Compiler pipeline (Meaning Root -> Rules -> Expression), Karaka roles, Zero as neutral reference", canonical_source: "0130", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+registry_updates:
+  - "Unresolved Equivalence Registry: KIR added as a fifth sibling to the case/event-frame family
+    (0099/0130) -- see dimension-registry.md"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; adds a candidate mechanism/representation, self-corrects an overclaim."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "The source's explicit retraction of its own unverified performance-simulation numbers ('I should
+    not have presented... as if they had been measured') is a clean, quotable, source-internal instance
+    of the epistemic discipline this reconstruction requires of itself -- worth flagging even though it
+    introduces no new kernel content"
+  - "KIR extends (does not resolve) the already-tracked representation-proliferation pattern; five
+    sibling representations now exist for the same territory, none reconciled"
+
+undefined_concepts: []
+open_questions:
+  - "Whether a later file actually runs the proposed CPU-only benchmark and reports real (not estimated)
+    numbers -- worth watching, parallel to the DDD-execution watch from 0134"
+
+tier2_triggered: true
+tier2_reason: >
+  New candidate mechanisms (KIR, six-phase compiler pipeline, Semantic Interpretation Context) plus a
+  notable source-internal self-retraction of an unverified quantitative claim.

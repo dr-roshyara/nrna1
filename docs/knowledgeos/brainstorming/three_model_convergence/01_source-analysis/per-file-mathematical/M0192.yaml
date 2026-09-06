@@ -1,0 +1,49 @@
+sequence: M0192
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-183101_review-read-attached-document-variant.md
+title: "Content subset of M0191 (verbatim identical to its second concatenated review section — encoding-basis-vs-semantic-carrier, EXP-0, softened adequacy formulation)"
+date: "20260902-183101"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0192
+importance: low
+confidence: high
+about: >
+  Verbatim-identical text to M0191's second concatenated review section (the "I read the attached
+  document" review sharpening EXP-1 into encoding-basis-vs-semantic-carrier, proposing EXP-0
+  Representation Independence tied to frozen FR-001, and softening the adequacy formulation from
+  Loss=0 to Adequacy≥τ) — already recorded in full at M0191. Not manifest-DUPLICATE-flagged, but
+  substantively redundant; recorded at minimal depth per standing discipline.
+introduces: []
+defines: []
+refines:
+  - "Identical content to M0191's second review section — see M0191 for the complete analysis"
+contradicts: []
+repeats:
+  - "M0191's entire second-section content (encoding-basis/semantic-carrier split, non-monotonic-adequacy hypothesis, EXP-0, softened master formulation, six-experiment program summary)"
+bridge_candidates: []
+mathematical_content: >
+  Identical to M0191's second section — see that record.
+gita_content: null
+kernel_content: >
+  Fully redundant with M0191; no content here beyond what M0191 already captures.
+registry_updates:
+  - "Confirmed as a content subset of M0191 — no new registry entry warranted"
+anchor_test:
+  anchor: false
+  supports_dimension: null
+  refines_or_contradicts: "refines (identical to M0191's second section)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: null

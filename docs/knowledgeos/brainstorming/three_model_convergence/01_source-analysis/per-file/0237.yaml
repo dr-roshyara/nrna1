@@ -1,0 +1,60 @@
+sequence: 237
+path: docs/knowledgeos/brainstorming/kernel/20260824-151337-sankshipt-ganit-shabdkosh-multi-lens-extraction-knowledge-ontology.md
+title: "Sankshipt Ganit Shabdkosh — Multi-Lens Extraction, Knowledge Ontology"
+date: "2026-08-24"
+bytes: 21000
+model:
+  primary: g1
+  secondary: c1
+source_role: PRIMARY_RESEARCH
+canonical_source: 237
+importance: high
+confidence: medium
+about: >
+  A preliminary/preparatory assessment (not yet a full extraction -- ends with "My preliminary verdict:
+  Yes, absolutely worth doing") of a Hindi mathematics dictionary/encyclopedia (Sankshipt Ganit Shabdkosh),
+  proposing a 17-lens extraction matrix and explicitly recommending combining this source with Astrom's
+  stochastic control theory into one common structural framework: objects -> relations -> transformations
+  -> states -> trajectories -> invariants -> decisions -> feedback. Treats the dictionary as a knowledge
+  ontology disguised as a glossary rather than 500 isolated definitions.
+introduces:
+  - concept: "Reframing the dictionary as an implicit ontology answering 'what kinds of things exist in mathematical thought': Objects (numbers/sets/functions/equations/geometric-objects/graphs/vectors/structures), Relations (equality/ordering/membership/adjacency/dependence/transformation/implication), Operations, Properties (continuity/symmetry/boundedness/invariance/dimensionality/stability)"
+  - concept: "Seventeen-lens extraction matrix: Ontological/Relational/Transformational/Topological/Invariant/Temporal/Measurement/Logical/Classification/Graph/Optimization/Control/Epistemological/Historical/Linguistic/Pedagogical/Architectural, each with a defining question"
+  - concept: "Mathematics-as-concept-graph reinterpretation: nodes=concepts, typed edges (depends-on/transforms-to/generalizes/specializes/equivalent-to/applied-to/historically-influenced-by), turning the dictionary into a mathematical concept graph rather than a glossary"
+  - concept: "Invariant lens as potentially the most powerful: systematically extract what mathematics considers invariant under transformation, directly extended to a KnowledgeOS pipeline question (Document->Parser->Representation->Graph->API: what must remain invariant -- provenance/authority/temporal-validity/relationships/semantic-identity/constraints/evidence-lineage)"
+  - concept: "Measurement lens: Reality->Measurement->Number+Unit->Representation, explicitly identified as almost exactly the corpus's Observation->Evidence->Knowledge distinction"
+  - concept: "Epistemological lens reconstructs mathematics as a knowledge production pipeline: Axiom/Assumption->Definition->Rule->Derivation->Theorem/Result->Application"
+  - concept: "Classification lens raises knowledge-engineering questions the dictionary's own classification-of-data material provokes: mutual exclusivity, multi-membership, exhaustiveness, intrinsic-vs-purpose-dependent classification, classification revision under new evidence"
+  - concept: "Control-theoretic lens explicitly bridges to Astrom: proposes KnowledgeOS itself as a knowledge-control system (Reality->Observation->Knowledge-State->Assessment->Decision->Action->New-Observation feedback loop)"
+  - concept: "Pedagogical lens: the source's own material on math labs/kits/clubs reveals an implicit epistemology of learning (Learner->Observation->Experiment->Pattern->Conjecture->Reasoning->Knowledge), contrasted with memorize-repeat-exam"
+  - concept: "Proposed unified structural framework spanning this book and Astrom: objects -> relations -> transformations -> states -> trajectories -> invariants -> decisions -> feedback, explicitly proposed as a common structural vocabulary before any KnowledgeOS mapping"
+  - concept: "Three-layer extraction methodology proposed for the eventual full pass: Layer 1 Faithful extraction (what the book says), Layer 2 Structural extraction (objects/relations/transformations/invariants/methods/states), Layer 3 Cross-domain interpretation (explicitly marked as 'lens-derived inference,' never attributed to the authors)"
+defines: []
+refines:
+  - concept: "0235/0236's topological lens on Astrom (transformation-invariant question)"
+    refinement: "Extends the same what-survives-transformation question to a second, unrelated source (a mathematics dictionary), reinforcing it as a cross-source structural pattern rather than an Astrom-specific finding."
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "The proposed unified objects->relations->transformations->states->trajectories->invariants->decisions->feedback framework spanning this Hindi-language mathematics source and Astrom (Swedish/English control theory) is a notable candidate cross-tradition structural convergence -- not yet logged as unresolved_equivalence since this file only PROPOSES the combination as a preliminary hypothesis, not yet executed as an actual extraction to compare."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0235/0236's topological Astrom extraction"
+  supports_dimension: "Gita/philosophical model (Hindi/Sanskrit mathematical tradition) + Mathematical/statistical model, explicitly proposed for unification via a shared objects/relations/transformations/invariants/states/trajectories/decisions/feedback vocabulary"
+  refines_or_contradicts: "refines/extends the invariant-under-transformation theme from 0235/0236; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether the full three-layer, 17-lens extraction of this dictionary is ever actually performed in a later file"
+  - "Whether the proposed unified objects/relations/transformations/states/trajectories/invariants/decisions/feedback framework spanning this book and Astrom is ever executed and cross-compared"
+tier2_triggered: true
+tier2_reason: "High-value preparatory assessment reframing a Hindi mathematics dictionary as an implicit knowledge ontology, proposing a 17-lens extraction matrix and an explicit unification framework with the Astrom stochastic-control material; not yet a full extraction, so held short of critical tier pending the actual execution."

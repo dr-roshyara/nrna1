@@ -1,0 +1,188 @@
+sequence: M0030
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-222111_prompt-kernel-reduction-and-minimality-experiment.md
+title: "Prompt: KnowledgeOS Kernel Reduction and Minimality Experiment -- the Full Executable Protocol for M0026/M0029's Kernel-Minimality Programme, Featuring the Semantic-Smuggling Test, Three Independent Notions of 'Necessary,' a Formal Reach(S) Minimality Criterion, Pareto (Not Single-Winner) Kernel Search, and a 'STOP -- Granularity Unstable' Success Condition"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: b
+  secondary: c1
+  secondary_note: "an extremely long, fully executable Claude Code CLI research prompt operationalizing the kernel-minimality cross-validation programme first proposed abstractly in M0026 and concretized in M0029's 13-operator/15-capability sketch; itself delivers no experimental results (explicitly [PROP] throughout), but is the most rigorous single experimental-design document in this pass"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0030
+importance: critical
+confidence: high
+about: >
+  A complete, copy-paste-ready research prompt for a formal KNOWLEDGE OS KERNEL REDUCTION /
+  MINIMALITY (ablation) EXPERIMENT, explicitly framed as NOT an attempt to canonize a kernel: "The
+  objective is to discover which capabilities are genuinely irreducible and which candidate
+  operators can be absorbed into compositions of others."
+
+  **FIXES THE CANDIDATE OPERATOR SET C0 (THE PASS'S FINAL KERNEL CANDIDATE)**: {Observe, Interpret,
+  Represent, Relate, Discriminate, Hypothesize, Infer, DetectGap, Challenge, Validate, Revise,
+  Determine, Select} -- 13 operators, consolidating and finalizing the evolving kernel candidates
+  from M0026 (7 ops) and M0029 (10 ops, Interpret-first).
+
+  **DELIVERS FIVE DISTINCT, EXPLICITLY NOT-EQUIVALENT NOTIONS OF MINIMALITY**: (A) Cardinality
+  minimality (|C*| smallest); (B) Semantic minimality (no operator removable without losing an
+  irreducible capability); (C) Compositional minimality (every retained operator contributes a
+  capability the others cannot reproduce); (D) Architectural minimality (no separate domain
+  responsibility introduced when one is naturally derivable from another); (E) Cognitive
+  universality (required by every epistemic system) -- the primary experiment targets semantic +
+  compositional minimality specifically; cardinality is explicitly only a secondary result.
+
+  **DELIVERS THE SEMANTIC-SMUGGLING TEST, THE EXPERIMENT'S MOST IMPORTANT METHODOLOGICAL
+  SAFEGUARD**: when testing whether operator X is removable, it is INVALID to redefine a remaining
+  operator to silently absorb X's function under a new name (e.g. removing DetectGap by redefining
+  Validate to "also detect all gaps" is NOT a valid reduction; likewise removing Interpret by
+  folding it into Represent, removing Challenge by folding it into Validate, removing Determine by
+  folding it into Infer, removing Select by folding it into Determine) -- a formal SMUGGLING=TRUE/
+  FALSE flag must be reported and justified for every claimed reduction.
+
+  **DELIVERS 24 CANDIDATE CAPABILITIES (C1-C24)** constructed independently of the operator names
+  (acquire observation, preserve/construct meaning, construct representation, relate claims,
+  discriminate alternatives, formulate hypotheses, infer, detect epistemic insufficiency, challenge
+  a claim/model, validate, revise state, determine inquiry adequacy, select next action, represent
+  context/time/uncertainty/assumptions, preserve provenance/alternatives, support
+  non-identifiability, distinguish observation from interpretation, support semantic equivalence
+  without representation identity, produce smallest adequate answer, support learning from new
+  observations) -- explicitly must be modified if the corpus shows redundancy/gaps/mergers/splits,
+  never optimized merely to shrink the operator set.
+
+  **DELIVERS AN ABSTRACT OPERATOR ALGEBRA WITH TYPED CARRIERS**: each operator o_i: S_i -> S_j
+  where S_i, S_j range over explicitly typed epistemic artifacts (Observation, Evidence,
+  SemanticRepresentation, Hypothesis, Model, Claim, AlternativeSet, RequirementSet, EpistemicState,
+  DecisionProposal) -- NOT all operators act directly on K_t; composite operations f = o3 o o2 o o1
+  are only valid when types match, and every proposed reduction must document input/output type,
+  pre/postconditions, semantic/epistemic effect, information loss, new assumptions introduced, and
+  whether smuggling occurred.
+
+  **DELIVERS THE FORMAL Reach(S) MINIMALITY CRITERION**: for operator subset S subset-of O, define
+  Reach(S) as the set of capabilities constructible by valid typed compositions within S; semantic
+  minimality becomes: find S such that C_required subset-of Reach(S) AND for every o in S,
+  C_required NOT-subset-of Reach(S minus {o}) -- with the explicit warning that Reach(S) "cannot
+  simply be declared to include every function the researcher wishes it to include" -- composition
+  rules must be explicit.
+
+  **DELIVERS SIXTEEN NAMED CANONICAL SCENARIOS** (basic infrastructure observation, numeric
+  observation, network observation, conflicting evidence, ambiguous semantics ("available" -- what
+  does it mean?), temporal revision, missing evidence -> "cannot determine," competing hypotheses,
+  model criticism, semantic interpretation depends on context/purpose, inquiry-relative adequacy
+  (migration feasibility vs. downtime-free migration), smallest adequate answer, action selection
+  under cost, non-identifiability, provenance conflict, representation equivalence) -- the same
+  Nexus-server example family used throughout M0009-M0029, now formalized as a fixed test suite.
+
+  **DELIVERS TEN NAMED SIMULATION PROPERTIES (P1-P10)** for randomized/property-based testing:
+  revision-on-contradiction, non-fabrication-under-non-identifiability, provenance-preservation,
+  temporal-consistency (a t2 state change must not erase historical t1 truth), semantic-distinction
+  preservation, adequacy-is-not-mere-generation, no-information-creation (echoing M0018's
+  data-processing anti-hallucination law), alternative-preservation, context-sensitivity, and
+  challenge/validation-distinction (unchallenged models must not be automatically validated).
+
+  **DELIVERS A CAUSAL/MODEL-CRITICISM EXPERIMENT REQUIREMENT EXPLICITLY ECHOING M0029's UNSEEN
+  'FREEDMAN' REFERENCES**: requires a synthetic example where "Model A fits observed data well but
+  causal interpretation is invalid," testing whether the kernel distinguishes
+  association/prediction/explanation/causal-claim, with the explicit slogans "fit != validation,
+  regression != causality, estimation != identification" attributed to "previous research" --
+  strongly suggesting the missing Freedman source concerned exactly this causal-inference/model-
+  criticism material, reinforcing (not resolving) the corpus-integrity question raised in M0029.
+
+  **DELIVERS THREE INDEPENDENT, POTENTIALLY DISAGREEING NOTIONS OF 'NECESSARY'**: (1) Empirically
+  necessary (the simulator cannot perform required scenarios without it); (2) Formally necessary
+  (no valid typed composition of remaining operators provides the capability); (3) DDD-necessary
+  (the responsibility is a genuinely distinct domain concept that should not be collapsed even if
+  software composition is technically possible) -- explicitly: these CAN disagree without
+  contradiction (e.g. Select might be computationally derivable from Determine, yet DDD analysis
+  might still conclude epistemic-determination and action-selection are genuinely distinct
+  responsibilities).
+
+  **DELIVERS A DDD ANALYSIS REQUIREMENT TARGETING THE ALREADY-FLAGGED PREDICATE/OPERATION AMBIGUITY
+  FOR Zero, IdealState, Inquiry, Governance, Authorization, Select, Determine** -- with explicit
+  working hypotheses (Zero=predicate; IdealState=state/target construct; Inquiry=domain input;
+  Governance=external constraint; Authorization=governance mechanism; Select=decision/action
+  mechanism), all explicitly flagged as hypotheses to be TESTED, not assumed, directly continuing
+  M0029's reclassification of Zero as a possible state predicate.
+
+  **DELIVERS THE PARETO-KERNEL-SEARCH REQUIREMENT**: search for MULTIPLE Pareto-optimal kernel
+  candidates (e.g. K1=8 ops with higher coupling vs K2=10 ops with cleaner domain separation)
+  evaluated along cardinality/semantic-coverage/compositionality/coupling/interpretability/
+  falsifiability/domain-cohesion/implementation-independence/evidence-strength -- explicitly
+  forbidding collapse into one arbitrary weighted score without a sensitivity analysis over
+  weights.
+
+  **DELIVERS A CONTROLLED, DELIBERATELY WEAK STATUS VOCABULARY FOR THE FINAL CLASSIFICATION
+  TABLE**: IRREDUCIBLE-CANDIDATE / DERIVABLE-CANDIDATE / REDUNDANT-CANDIDATE / COUPLED / AMBIGUOUS /
+  UNSUPPORTED / UNRESOLVED -- explicitly forbidding CANONICAL / PROVEN / FINAL / TRUE KERNEL
+  language "unless a genuinely formal proof exists, and even then distinguish the theorem's scope
+  from KnowledgeOS architectural status."
+
+  **DELIVERS THE 'CRITICAL STOP CONDITION' AS A DEFINED SUCCESS OUTCOME**: if the 13-operator
+  formulation proves too semantically unstable for meaningful minimality testing, the experiment
+  must STOP REDUCTION and report exactly that -- explicitly framed as "a successful research
+  result, not a failure," reframing the actual research frontier from "which operator do we
+  delete" to "what is the correct mathematical type and semantic granularity of an epistemic
+  primitive" -- potentially the single most important methodological safeguard in the whole
+  document, since it forbids a forced, premature answer.
+
+  **PROPOSES ALTERNATIVE KERNEL FORMALISMS BEYOND A FLAT OPERATOR SET**: K=(S,T,O) (state space +
+  transformations) or K=(P,R,delta) (primitive capabilities, admissible composition relations,
+  state-transition mechanism) -- explicitly warns the experiment may reveal the kernel's correct
+  SHAPE is not a flat set at all.
+
+  **DEFINES TWENTY NAMED FAILURE CATEGORIES (F1-F20)** for classifying ablation failures
+  (representation/semantic-interpretation/relation/discrimination/hypothesis-generation/inference/
+  gap-detection/challenge/validation/revision/determination/action-selection/context/temporal/
+  provenance/alternative-preservation/non-identifiability/governance-confusion failures, plus F19
+  implementation-artifact and F20 simulator-artifact -- explicitly NOT counted as kernel failures).
+
+  **REQUIRES EIGHTEEN NAMED EXPERIMENTAL ARTIFACT FILES** under a dedicated
+  docs/knowledgeos/research/kernel-reduction/ directory (from 01-research-question.md through
+  FINAL-kernel-reduction-report.md), explicitly isolated from canonical architecture documents and
+  from production code.
+
+  **ENDS WITH TWELVE FINAL RESEARCH QUESTIONS (Q1-Q12)** and a closing principle explicitly ranking
+  "semantic irreducibility" above "numerical smallness": "a smaller model that hides
+  responsibilities inside overloaded operators is NOT better... optimize for semantic
+  irreducibility before numerical smallness."
+introduces:
+  - concept: "The finalized C0 13-operator kernel candidate {Observe,Interpret,Represent,Relate,Discriminate,Hypothesize,Infer,DetectGap,Challenge,Validate,Revise,Determine,Select}"
+  - concept: "Five distinct, explicitly non-equivalent minimality notions (cardinality/semantic/compositional/architectural/cognitive-universality), with semantic+compositional as the primary target"
+  - concept: "The semantic-smuggling test, with a formal SMUGGLING=TRUE/FALSE flag required for every claimed operator reduction"
+  - concept: "The formal Reach(S) minimality criterion: C_required subset-of Reach(S) AND no proper subset of S achieves this"
+  - concept: "Three independent, potentially disagreeing notions of 'necessary' (empirical/formal/DDD-necessary)"
+  - concept: "The Pareto-kernel-search requirement, forbidding a single-winner collapse without weight-sensitivity analysis"
+  - concept: "The critical stop condition: instability of semantic granularity is a valid, successful research outcome, not a forced smaller kernel"
+  - concept: "Alternative kernel formalisms beyond a flat operator set: K=(S,T,O) or K=(P,R,delta)"
+  - concept: "A controlled seven-value status vocabulary for the final classification, explicitly excluding CANONICAL/PROVEN/FINAL/TRUE-KERNEL language"
+defines: []
+refines:
+  - concept: "M0026's abstract seven-operation kernel candidate and M0029's ten-operation reordering, consolidated here into the final 13-operator C0"
+  - concept: "M0029's tentative reclassification of Zero as a possible state predicate, now made an explicit, testable DDD-analysis hypothesis alongside IdealState/Inquiry/Governance/Authorization/Select/Determine"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "The causal/model-criticism experiment's explicit slogans ('fit != validation, regression != causality, estimation != identification', attributed to 'previous research') strongly echo the unresolved 'Freedman' forward-reference flagged in M0029 -- reinforcing rather than resolving the open corpus-integrity question about whether a dedicated Freedman extraction exists elsewhere in this pass."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0030 as the complete, executable experimental-design protocol for the kernel-minimality question raised in M0026/M0029, delivering the finalized 13-operator C0 candidate, the semantic-smuggling test, the formal Reach(S) minimality criterion, three independent notions of 'necessary,' Pareto (not single-winner) kernel search, and a 'critical stop condition' treating semantic-granularity instability as a valid successful outcome rather than forcing a premature answer."
+anchor_test:
+  anchor: "M0026/M0029's kernel-minimality programme and this reconstruction's own anti-overclaim/falsification-first discipline"
+  supports_dimension: "Operationalizes the programme into a fully executable, rigorously safeguarded protocol (semantic-smuggling test, Reach(S) criterion, Pareto search, controlled status vocabulary, critical stop condition) -- the most methodologically careful single document in this pass"
+  refines_or_contradicts: "refines (M0026's and M0029's kernel candidates, consolidated into the final C0)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The semantic-smuggling test's explicit invalid-reduction examples (DetectGap into Validate, Interpret into Represent, Challenge into Validate, Determine into Infer, Select into Determine) give concrete, falsifiable content to what would otherwise be an abstract minimality claim."
+  - "'If the experiment reveals that the current 13-operator formulation is too unstable to support meaningful minimality testing... STOP REDUCTION... this is a successful research result, not a failure' -- an explicit, principled refusal to force a premature answer, directly modeling this reconstruction's own anti-overclaim discipline."
+undefined_concepts:
+  - "The precise identity of the 'Freedman' source whose causal-inference slogans ('fit != validation,' etc.) are echoed here without attribution to a specific document in this pass"
+open_questions:
+  - "Whether this exact experimental protocol is ever actually executed later in this pass (a dedicated kernel-reduction research directory and its numbered artifacts), and if so what the results were."
+  - "Whether the missing 'Freedman' source (flagged in M0029, echoed again here) ever surfaces as a dedicated file in the remaining ~252 files of this pass."
+tier2_triggered: true
+tier2_reason: "The most methodologically rigorous single document in this pass: finalizes the 13-operator kernel candidate, delivers the semantic-smuggling test and the formal Reach(S) minimality criterion, three independent (and potentially disagreeing) notions of necessity, Pareto kernel search, and a principled 'stop rather than force a premature answer' condition -- critical importance and full tier-2 treatment unambiguously warranted."

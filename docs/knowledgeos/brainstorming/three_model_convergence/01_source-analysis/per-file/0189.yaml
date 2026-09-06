@@ -1,0 +1,57 @@
+sequence: "0189"
+path: docs/knowledgeos/brainstorming/kernel/20260824-010504-knowledgeos-multi-lens-brainstorming-synthesis-dossier.docx
+title: "The .docx (Word) format twin of 0188's synthesis dossier -- same filename stem, captured 45 seconds later, matching 0187's 'Download the Word document' link -- recorded minimally as a format-duplicate, not independently parsed"
+date: "2026-08-24"
+bytes: 49507
+model:
+  primary: c1
+  secondary: []
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: "0188"
+importance: low
+confidence: high
+about: >
+  A binary .docx file matching the "Download the Word document" link referenced in 0187 (sandbox path
+  KnowledgeOS_Multi_Lens_Brainstorming_Synthesis_for_Claude.docx), captured in the primary corpus 45
+  seconds after 0188's identically-stemmed .md file. Given the matching filename stem, near-identical
+  timestamp, and file size consistent with a Word rendering of 0188's ~32KB markdown text (with DOCX XML/
+  formatting overhead), this is treated as the same dossier content in a different distribution format
+  rather than independently parsed -- per the corpus's own established practice of producing parallel .md/
+  .docx pairs for external distribution (matching 0187's explicit dual-download-link pattern). Not opened
+  via binary extraction since the .md twin (0188) has already been read in full and recorded; this record
+  exists solely to satisfy resume.py's mechanical per-manifest-entry consistency requirement.
+
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - {concept: "Entire synthesis dossier content (format twin of 0188)", canonical_source: "0188", novelty: none}
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+registry_updates: []
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; format-duplicate of 0188."
+  alternative_minimal_kernel: "none"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Directly confirms 0187's explicit dual-format (.docx/.md) distribution pattern for the synthesis
+    dossier commissioned for external adversarial review"
+
+undefined_concepts: []
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: "Binary format twin of already-recorded file 0188; not independently parsed."

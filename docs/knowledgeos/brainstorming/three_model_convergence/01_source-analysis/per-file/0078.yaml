@@ -1,0 +1,61 @@
+sequence: 78
+path: docs/knowledgeos/brainstorming/20260821-2108-how-to-integrate-current-eks-into-knowledgeos-kernel.md
+title: How to Integrate Current EKS into KnowledgeOS Kernel (revised, after reading 0077)
+date: 2026-08-21
+bytes: 17443
+
+model:
+  primary: c1
+  secondary: [ddd, governance]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: 75
+
+importance: medium
+confidence: high
+
+about: >
+  Revises 0075's kernel-extraction plan after engaging with 0077's older baseline: proposes
+  reconstructing EKS, PKS, and the proposed KnowledgeOS architecture INDEPENDENTLY before a
+  convergence analysis - a methodology strikingly parallel to this very research's own governing
+  discipline (§2: reconstruct before converging).
+
+introduces:
+  - three_candidate_architectural_loops   # Observation / Knowledge / Governance
+  - reconstruct_independently_then_converge_methodology
+  - eks_pks_knowledgeos_convergence_study_proposed
+
+defines: []
+refines:
+  - concept: kernel_extraction_plan
+    canonical_source: 75
+    change: "extract kernel FROM EKS alone -> reconstruct EKS/PKS/proposed-architecture independently, THEN converge"
+
+contradicts: []
+repeats:
+  - concept: smallest_stable_kernel_minimality_question
+    canonical_source: 75
+    novelty: low   # third occurrence, still deferred
+
+bridge_candidates: []   # methodological parallel, not a cross-lens theoretical relationship
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+key_evidence:
+  - "'reconstruct EKS and PKS independently, reconstruct the proposed KnowledgeOS architecture independently, and then perform a convergence analysis to discover which capabilities are genuinely common' - parallels this research's own governing method (§2)"
+  - "three candidate loops: Observation / Knowledge / Governance - proposed as possible architectural DIMENSIONS, not yet confirmed"
+
+undefined_concepts: [knowledge]
+open_questions:
+  - "smallest stable technology-neutral kernel hosting both EKS and PKS - deferred a third time"
+  - "are the three loops genuine architectural dimensions or EKS-specific features"
+
+tier2_triggered: true
+tier2_reason: >
+  States a research methodology (reconstruct EKS/PKS/proposed-architecture independently, then
+  converge) strikingly parallel to this very convergence research's own governing discipline (§2) -
+  arrived at independently inside the corpus for a narrower C1-internal question. Recorded as
+  useful corroboration of sound method, explicitly not elevated to a bridge_candidate since it is
+  methodological parallel, not a cross-lens theoretical claim.

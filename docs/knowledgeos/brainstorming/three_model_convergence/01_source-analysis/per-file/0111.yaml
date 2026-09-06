@@ -1,0 +1,106 @@
+sequence: "0111"
+path: docs/knowledgeos/brainstorming/20260822-105719-quranic-epistemology-lens-al-haqq-isnad.md
+title: "KnowledgeOS Quranic Epistemology Lens -- Al-Haqq, Isnad, first non-Indian religious tradition"
+date: "2026-08-22"
+bytes: 9753
+model:
+  primary: x
+  secondary: [g, c1]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+importance: critical
+confidence: high
+about: >
+  ⭐ First genuinely non-Indian religious/philosophical tradition engaged in the corpus: Islamic/
+  Quranic epistemology, 9 lenses (Al-Haqq/reality, Ayat/signs, human limitation, verification-before-
+  acceptance, Niyyah/intention, Al-Furqan/criterion, Isnad/chain-of-transmission, Tadabbur/reflection,
+  certainty-humility balance). Isnad supplies a THIRD independent cross-tradition corroboration for
+  provenance/chain-of-custody thinking (after Western TMS/AGM and Nyaya), explicitly and correctly
+  disciplined: classified mechanism, not kernel, with a sharp stated reason. Closes with an explicit,
+  clean negative-import list and a five-tradition "deeper convergence" claim, flagged for the
+  convergence-is-not-validation caution already established at 0085.
+
+introduces:
+  - "Isnad (chain of transmission: statement + reporter-chain + reliability assessment) -- classified
+    'Mechanism/representation, Not kernel' with a precise stated reason: 'KnowledgeOS can exist
+    without religious transmission chains, but cannot exist without provenance.' A THIRD independent
+    cross-tradition corroboration for Reasoning Provenance/Evidence Integrity (after Western TMS/AGM,
+    0088, and Nyaya, 0092-0097) -- disciplined, not conflating the specific historical mechanism with
+    the general principle it exemplifies"
+  - "Al-Furqan (criterion/separation of truth from falsehood) -- reinforces Fallacy Detection/
+    contradiction-management, not newly sourced"
+  - "Niyyah (intention of the knower) -- reinforces Agency, not a new candidate"
+  - "⭐ Explicit, clean negative-import list: 'Do NOT import: Revelation authority model, Religious
+    truth hierarchy, Theology as kernel logic, Moral judgement engine -- because KnowledgeOS is
+    domain-independent.' The clearest boundary statement yet applied to a non-Indian tradition,
+    confirming the corpus's correspondence-not-architecture discipline generalizes across traditions"
+  - "'The deeper convergence': an 8-stage pipeline (Reality->Observation->Evidence->Context->Reasoning
+    ->Knowledge State->Revision->Action) claimed common across FIVE traditions now (Vedic, Nyaya,
+    Kashmir Saivism, Zero, Quranic epistemology) -- a sixteenth-ish reshaping, framed as an EMERGENT
+    CONVERGENCE CLAIM rather than a fresh proposal. FLAGGED per 0085's own prior caution
+    ('convergence of hypotheses is not validation'): structural convergence across traditions is
+    suggestive, not confirmatory, and this document does not itself apply that caution"
+
+defines: []
+
+refines:
+  - "Reasoning Provenance / Evidence Integrity: independently corroborated a third way (Isnad), with
+    the clearest-stated distinction yet between a tradition-specific mechanism and the general
+    principle it supports"
+
+contradicts: []
+
+repeats:
+  - concept: "verification-before-acceptance, human epistemic limitation/humility, agent accountability"
+    canonical_source: "0092"
+    novelty: low
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "Reasoning Provenance entry: third cross-tradition corroboration added (Isnad), still not meeting
+    MD-012's full independence bar (same research effort/date) but a genuinely different textual
+    tradition, strengthening the correspondence pattern"
+  - "Fallacy Detection entry: Al-Furqan added as a further correspondence, not merged"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity", "Unknown Preservation", "Agency"]
+  refines_or_contradicts: >
+    Sixteenth-ish reshaping, but framed as convergence-across-traditions rather than a fresh proposal --
+    flagged for the same convergence-is-not-validation caution 0085 already established, which this
+    document does not itself apply.
+  alternative_minimal_kernel: "An 8-stage convergence pipeline, claimed (not demonstrated) common across five traditions."
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false   # this file is NOT about Pramana/Vedanta/Gita directly;
+                                                    # it is a structurally PARALLEL non-Indian tradition
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "First genuinely non-Indian religious/philosophical tradition engaged in the corpus -- a real
+    broadening of the comparative evidence base beyond Sanskrit sources"
+  - "Third independent cross-tradition corroboration of provenance/chain-of-custody thinking, with the
+    clearest-yet explicit distinction between tradition-specific mechanism and general principle"
+  - "A five-tradition convergence claim not itself checked against the corpus's own established
+    convergence-is-not-validation caution (0085)"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether further non-Indian, non-Abrahamic traditions (e.g. Buddhist epistemology beyond Dignaga,
+    Chinese/Confucian, Greek) are engaged in later files, continuing this broadening"
+  - "Whether the five-tradition convergence claim is ever tested against the convergence-is-not-
+    validation caution, or continues to accumulate uncritically"
+
+tier2_triggered: true
+tier2_reason: >
+  First non-Indian religious tradition in the corpus; third independent cross-tradition corroboration
+  of provenance (Isnad), disciplined and precisely reasoned; explicit clean negative-import list
+  confirming the correspondence-not-architecture discipline generalizes; and a five-tradition
+  convergence claim flagged against the corpus's own prior convergence-is-not-validation caution.

@@ -1,0 +1,48 @@
+sequence: 317
+path: docs/knowledgeos/brainstorming/kernel/corpus/README.md
+title: "corpus/ README — Inert by Decision"
+date: "2026-08-25"
+bytes: 707
+model:
+  primary: c1
+  secondary: null
+source_role: CRITICAL_REVIEW
+canonical_source: 316
+importance: medium
+confidence: high
+about: >
+  Directory README, part of the four-file group recorded together at 0316. Declares corpus/ 'INERT BY
+  DECISION' -- nothing moved here, all 141 kernel documents stay in kernel/ root. Names four role-anomaly
+  files deliberately left in place, two of which this reconstruction has already independently processed
+  as its own files 0256 and 0283. Minimal record per the standing instruction on readme-type files; full
+  content captured at 0316.
+introduces: []
+defines: []
+refines:
+  - concept: "0311's role-anomaly finding"
+    refinement: "Names the four specific role-anomaly files by ID (full content recorded at 0316)"
+contradicts: []
+repeats:
+  - concept: "Full content of this README group"
+    canonical_source: 316
+    novelty: none
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0316 (primary record of this README group)"
+  supports_dimension: "See 0316"
+  refines_or_contradicts: "see 0316"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Minimal treatment per standing instruction on readme-type files; full content recorded at 0316."

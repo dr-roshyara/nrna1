@@ -1,0 +1,58 @@
+sequence: 24
+path: docs/knowledgeos/KnowledgeOS_Domain_Model_Falsification_Report.md
+title: Engineering Knowledge Domain Model — Falsification Report
+date: 2026-08-02
+bytes: 13630
+doc_type: deliberate falsification test against the domain model at sequence 0020
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [ddd, contradiction, evidence, validation, domain_model]
+source_role: CRITICAL_REVIEW
+canonical_source: 20
+
+status: RF
+maturity: established        # for the 3 falsified claims specifically
+importance: high
+
+introduces:
+  - independence_of_subject_vs_independence_of_evolution
+  - acl_performing_identity_mapping_is_not_an_acl
+  - falsified_is_not_unevidenced
+  - mutual_scope_exclusion_as_positive_evidence_for_two_contexts
+  - observation_of_one_instance_restated_as_a_rule
+defines: []
+hypotheses:
+  - U1_undiscoverable_from_artifacts
+  - U6_shared_ARB_suggests_peers_not_hierarchy
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 24th consecutive file
+  - independent_evolution   # criterion used is crude (not-authored-in-one-day); sufficient evidence unstated
+open_questions:
+  - U1_through_U6
+
+depends_on: [20]
+extends: [20]
+refines: [20]
+renames: []
+contradicts: [20]
+supersedes: [20]       # per-domain: D-2, D-3, D-7 confidence rescored
+repeats: [10]
+connects_to: [8, 10, 15, 18, 20]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Executes a systematic, artifact-based falsification landing three of four sought falsifiers
+  against a prior domain model (0020); produces a general-purpose DDD test (an ACL performing an
+  identity mapping is not an ACL, directly transferable to §25 admissibility); and draws a precise,
+  reusable epistemic distinction (falsified is not the same as unevidenced) directly applicable to
+  this research's own §14/§15 gap and contradiction classification.

@@ -1,0 +1,43 @@
+sequence: 2267
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260901-010904_step_286_sentence-vs-dimension-chapter-13-duplicate.md
+title: "DUPLICATE (byte-identical) of file 2266's Sentence-vs-Dimension / Knowledge Atom Document"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "byte-identical duplicate confirmed via checksum despite the 'chapter-13' filename hint, minimal record per standing duplicate-file convention"
+source_role: DUPLICATE
+canonical_source: 2266
+importance: minor
+confidence: high
+about: >
+  Byte-identical (checksum-confirmed) duplicate of the already fully-analyzed Sentence-as-Candidate-
+  Representation / Knowledge Atom document at sequence 2266, despite its filename suggesting a Chapter-13
+  connection -- content is confirmed identical to 2266, not distinct Chapter-13 material.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - "Byte-identical duplicate of file 2266."
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "File 2266's already-comprehensive analysis"
+  supports_dimension: "None beyond confirming a duplicate copy of this content exists"
+  refines_or_contradicts: "duplicate, no independent content"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Byte-identical duplicate of already-analyzed file 2266; no independent tier-2 content."

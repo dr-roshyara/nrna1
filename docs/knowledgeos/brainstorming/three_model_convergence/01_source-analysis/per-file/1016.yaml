@@ -1,0 +1,83 @@
+sequence: 1016
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/07-GK-REGISTRY-RECONCILIATION.md
+title: "07 -- GK Registry Reconciliation: The Definitive Full Crosswalk of All Twenty Distinct GK Terms Across the Two Colliding Registers, Naming the 'Worst' Collision (GK-16 = Guna in One Document, Sanjaya in the Other), Adopting a Mandatory /v0.1-or-/r286 Citation-Qualification Rule, and Formally Recommending (Not Deciding) v0.1's Numbering as the Base to Extend"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual, definitive GK-registry-reconciliation artifact, directly resolving the collision flagged in file 1015"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1016
+importance: critical
+confidence: high
+about: >
+  "07 · GK Registry Reconciliation," status "RECONCILED — 19 v0.1 entries × 16 r286 entries → 20 distinct
+  terms; 6 ID collisions; 1 term agrees" [likely a minor internal miscount, since §1 itself shows 8 IDs
+  agreeing, not 1 -- recorded as observed, not corrected].
+
+  **§1 delivers the definitive full crosswalk of all twenty distinct terms**: 8 IDs agree (Kṛṣṇa,
+  Arjuna, Kṣetra, Kṣetra-jña, Ātman, Karma, Karma-phala, Sārathi, Jñāna); 6 collide (Sañjaya `GK-09/v0.1`
+  vs `GK-16/r286`; Buddhi `GK-10/v0.1` vs `GK-09/r286`; Dharma `GK-12/v0.1` vs `GK-10/r286`; Vairāgya
+  `GK-14/v0.1` vs `GK-11/r286`; Yoga `GK-15/v0.1` vs `GK-12/r286`; Guṇa `GK-16/v0.1` vs `GK-14/r286`; Mokṣa
+  `GK-17/v0.1` vs `GK-15/r286`); Manas exists only in v0.1 (`GK-11`); `Ω` and Zero exist only in v0.1
+  (`GK-18`, `GK-19`).
+
+  **§2 NAMES THE "WORST" COLLISION**: **`GK-16` means Guṇa in v0.1 and Sañjaya in r286** -- "a citation of
+  `GK-16` could mean the strongest finding [Sañjaya, the observation-layer recovery] or an unexamined one
+  [Guṇa, flagged not opened]." Also flags `GK-09` as doubly dangerous: "same term (Sañjaya) has two IDs AND
+  one ID has two terms."
+
+  **§3 ADOPTS THE FORMAL CITATION RULE**: "Always spell the term. Where an ID is used, qualify it:
+  `GK-nn/v0.1` or `GK-nn/r286`. A bare `GK-nn` is not a resolvable reference in this programme." Confirms
+  retroactive application: prior artifacts used r286 throughout.
+
+  **§4 DELIVERS A FORMAL RECOMMENDATION TO THE REGISTRY OWNER (explicitly NOT a decision)**: "One numbering
+  must become authoritative... Recommended: adopt v0.1's numbering and extend it, since renumbering the
+  smaller set is cheaper and v0.1 is the document that declares itself a register." **But explicitly flags
+  three v0.1 classifications that need strengthening before adoption**: `Kṣetra-jña` Candidate→RATIFIED;
+  `Sañjaya` Analogy→corpus-native construct; `Jñāna→Knowledge` Partial→REFUTED (relocate to `δ`). Closes:
+  "Not adopted. Not renumbered. Recorded for the registry owner." This is a disciplined recommendation with
+  its own governance-boundary respected, consistent with file 1015's already-tracked finding that the
+  programme has reached a governance boundary.
+introduces:
+  - concept: "The definitive full twenty-term GK crosswalk table between v0.1 and r286, with explicit collision flags for all six colliding terms"
+  - concept: "The named 'worst' collision: GK-16 means Guna (unopened, flagged not opened) in v0.1 but Sanjaya (the observation-layer recovery, one of the strongest findings) in r286"
+  - concept: "The mandatory GK-nn/v0.1-or-/r286 citation-qualification rule, with a bare GK-nn declared unresolvable"
+  - concept: "The formal, disciplined recommendation to the registry owner to adopt v0.1's numbering as the base (cheaper to extend), contingent on first strengthening three named v0.1 classifications"
+defines:
+  - term: "GK-nn/v0.1 and GK-nn/r286"
+    definition: "The mandatory disambiguated citation format for any GK-numbered term, required because a bare GK-nn is not resolvable across the two colliding registers"
+refines:
+  - concept: "This reconstruction's already-tracked GK-numbering collision (file 1015's cross-mapping table)"
+    refinement: "COMPLETED into the definitive full twenty-term crosswalk, with the collision severity explicitly ranked (GK-16 named 'worst') and a formal citation rule adopted"
+  - concept: "This reconstruction's already-tracked file-1011 v0.1-vs-r286 chronology tension"
+    refinement: "FURTHER RESOLVED: this file confirms v0.1 is, despite its weaker classifications, structurally MORE COMPLETE (19 vs 16 entries, uniquely carrying Omega and Zero as explicit constructs) and recommends it as the numbering BASE to extend -- while explicitly requiring three of its classifications be strengthened first, directly matching this reconstruction's own critical read of file 1011's weaker treatment"
+contradicts: []
+repeats:
+  - "The core collision content substantially repeats file 1015's §2 cross-mapping table; this file's distinctive contribution is the complete twenty-term crosswalk, the ranked-severity analysis, the formal citation rule, and the disciplined non-binding recommendation to the registry owner."
+bridge_candidates:
+  - "Whether the registry owner ever acts on this recommendation to adopt and extend v0.1's numbering."
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the definitive full twenty-term GK crosswalk and the named 'worst' collision (GK-16 = Guna/v0.1 vs Sanjaya/r286) as the canonical reference for resolving any future bare GK-nn citation encountered in this reconstruction's remaining pass."
+  - "dimension-registry.md: record the mandatory GK-nn/v0.1-or-/r286 citation rule as a directly applicable disambiguation convention for this reconstruction's own remaining processing."
+anchor_test:
+  anchor: "This reconstruction's already-tracked GK-numbering collision (file 1015) and file-1011 chronology tension"
+  supports_dimension: "Completes the collision analysis into a definitive crosswalk and delivers a disciplined, non-binding recommendation consistent with the already-tracked governance-boundary finding"
+  refines_or_contradicts: "confirms and completes prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The twenty-term crosswalk table is directly checkable against files 0997 and 1011's own register content for exact consistency."
+undefined_concepts: []
+open_questions:
+  - "Whether the registry owner ever formally adopts v0.1's numbering as recommended."
+tier2_triggered: true
+tier2_reason: "Delivers the definitive full twenty-term GK crosswalk with a ranked-severity collision analysis, a mandatory citation-qualification rule directly useful for this reconstruction's own remaining processing, and a disciplined non-binding recommendation to the registry owner. Classified importance critical and confidence high given its direct, complete, and immediately actionable content."

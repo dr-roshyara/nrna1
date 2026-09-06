@@ -1,0 +1,112 @@
+sequence: 449
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-162358_proposed-order-of-investigation.md
+title: "LANDMARK METHODOLOGY: Twenty-Question Ordered Research Programme (Observation→...→Mathematical Space, Deliberately Mathematics-Last) with an Explicit Eight-Stage Per-Question Validation Pipeline and a Five-Status Classification Scheme (ESTABLISHED/HYPOTHESIS/SUPPORTED-BY-LENS/MATHEMATICALLY-FORMALIZED/OPEN)"
+date: "2026-08-26"
+bytes: 11258
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "explicitly sequences Gita-chapter observation and the four established lenses as one stage within a broader per-question validation pipeline"
+source_role: PRIMARY_RESEARCH
+canonical_source: 449
+importance: critical
+confidence: high
+about: >
+  A landmark methodological file establishing the most rigorous, disciplined research programme structure
+  produced anywhere in this reconstruction's sequential pass, explicitly reorganizing how the remainder of
+  the KnowledgeOS mathematical formalization (following 0446's ten flagged open questions) should proceed.
+  States the governing rule up front: "your understanding is the hypothesis. The lenses are instruments for
+  examination, not proof" -- explicitly forbidding jumping directly into mathematical object definitions
+  before the human's own conceptual understanding has been elicited and tested.
+
+  Proposes an explicit **eight-stage validation sequence** through which every unresolved concept must pass:
+  (1) the established knowledge model; (2) the Bhagavad-gita, read chapter by chapter; (3) the Lord Lens; (4)
+  the Krishna Lens; (5) the Zero Lens; (6) the DDD Lens; (7) mathematical consistency; (8) eventual
+  KnowledgeOS implementation -- later consolidated into a leaner explicit six-step methodology per question:
+  Step 1 (the human's own understanding, expressed informally, without mathematics); Step 2 (Gita
+  observation -- does the text give a relevant observation for this question?); Step 3 (apply Lord/Krishna/
+  Zero/DDD lenses strategically); Step 4 (mathematical interpretation -- can the concept be represented
+  rigorously?); Step 5 (KnowledgeOS implication -- what would the system need to represent or do?); and Step
+  6, a genuinely new formal contribution: an explicit **five-value status classification** for every
+  resolved concept -- ESTABLISHED, HYPOTHESIS, SUPPORTED_BY_LENS, MATHEMATICALLY_FORMALIZED, or OPEN --
+  explicitly designed to "prevent us from accidentally turning a philosophical interpretation into an
+  architectural fact," the corpus's most granular research-status taxonomy to date (more granular than any
+  prior binary/tertiary classification used in this arc).
+
+  Delivers an explicit, carefully ordered **twenty-phase question programme**, deliberately organized so
+  that foundational ontological/epistemological concepts are resolved BEFORE any measure-theoretic or
+  probabilistic mathematics is introduced: (1) Observation; (2) Dimension; (3) Statement; (4) Value; (5)
+  Knowledge; (6) Known/Unknown Dimension Space; (7) Epistemic State; (8) Evidence; (9) Truth versus
+  Knowledge; (10) Ideal State; (11) Actual-Ideal Gap; (12) Uncertainty; (13) Relevance/Priority; (14)
+  Sufficient Knowledge; (15) Understanding; (16) Guidance; (17) Decision; (18) Knowledge Evolution; (19)
+  Time; and, deliberately last, (20) the Mathematical Space (Omega, F, mu) -- explicitly stating "only after
+  the above questions have been answered conceptually should we define" the measure-theoretic apparatus,
+  a decisive reversal of the corpus's earlier, much longer measure-theory-first arc (0327-0340 and beyond).
+
+  Each phase supplies a rich set of sharpening sub-questions not previously posed this precisely. Phase 4
+  (Value) asks whether "Version=unknown/conflicting/estimated/range/probability-distribution/not-applicable"
+  are each genuinely values, or whether some of this is actually epistemic status surrounding the value --
+  a sharp distinction not previously isolated this cleanly. Phase 7 (Epistemic State) lists an eleven-item
+  candidate vocabulary (KNOWN/UNKNOWN/ABSENT/UNRESOLVED/CONFLICTING/ASSUMED/INFERRED/CONFIRMED/REJECTED/
+  NOT_ASSESSED/NOT_APPLICABLE) and poses genuinely new combinatorial questions: are these states mutually
+  exclusive; can a statement be simultaneously "inferred and uncertain"; can something be "known absent"; can
+  something be "unknown but suspected." Phase 9 (Truth versus Knowledge) explicitly requires this
+  distinction to be resolved BEFORE formalizing probability. Phase 10 (Ideal State) poses a new, previously
+  unasked question: "is the ideal state itself part of knowledge?" Phase 12 (Uncertainty) similarly demands
+  resolution before probability: "only after your conceptual definition should we decide where measure
+  theory belongs." Phase 20 (Mathematical Space) poses nine explicit placement questions for where
+  probability, logic, graph theory, order theory, and decision theory each properly belong within the final
+  formal architecture.
+
+  Closes by launching the programme with Question 1 (What is an Observation?), explicitly instructing that
+  the mathematical definition be set aside "for a moment" in favor of the human's own informal understanding
+  first -- "give me your understanding first. Then we will test it through the Gita and the lenses before
+  defining it mathematically" -- directly enacting the methodology just established rather than merely
+  describing it.
+introduces:
+  - concept: "Explicit eight-stage (later six-step) validation pipeline that every unresolved KnowledgeOS concept must pass through: human's own understanding -> Gita chapter-by-chapter observation -> Lord/Krishna/Zero/DDD lenses -> mathematical consistency -> KnowledgeOS implication -> final status classification"
+  - concept: "Five-value research-status classification scheme: ESTABLISHED, HYPOTHESIS, SUPPORTED_BY_LENS, MATHEMATICALLY_FORMALIZED, OPEN -- the corpus's most granular status taxonomy to date, explicitly designed to prevent philosophical interpretation from silently becoming architectural fact"
+  - concept: "Twenty-phase ordered research programme (Observation->Dimension->Statement->Value->Knowledge->Known/Unknown-Dimension-Space->Epistemic-State->Evidence->Truth-vs-Knowledge->Ideal-State->Actual-Ideal-Gap->Uncertainty->Relevance/Priority->Sufficient-Knowledge->Understanding->Guidance->Decision->Knowledge-Evolution->Time->Mathematical-Space), deliberately deferring all measure-theoretic/probabilistic formalization to the very last phase"
+  - concept: "Value/epistemic-status disambiguation question: whether 'unknown/conflicting/estimated/range/probability-distribution/not-applicable' values of a dimension are genuinely values, or epistemic status surrounding the value"
+  - concept: "New combinatorial epistemic-state questions: are the eleven candidate epistemic states mutually exclusive; can a statement be simultaneously inferred and uncertain; can something be known-absent; can something be unknown-but-suspected"
+  - concept: "New question: is the ideal state itself part of knowledge?"
+  - concept: "Explicit methodological requirement that Truth-vs-Knowledge and Uncertainty both be conceptually resolved BEFORE any probability formalization is attempted"
+defines:
+  - concept: "Five-value status classification"
+    definition: "ESTABLISHED, HYPOTHESIS, SUPPORTED_BY_LENS, MATHEMATICALLY_FORMALIZED, OPEN -- assigned to every resolved concept to prevent philosophical interpretation from being silently treated as architectural fact"
+refines:
+  - concept: "0446's ten remaining fundamental mathematical open questions"
+    refinement: "Given a disciplined, ordered research programme (twenty phases) and a rigorous per-question validation methodology, rather than being addressed ad hoc"
+  - concept: "0427/0430/0431/0433's chapter-by-chapter falsification-testing discipline"
+    refinement: "Generalized beyond testing architectural hypotheses against Gita chapters into a full eight-stage validation pipeline applicable to any unresolved concept, now including explicit mathematical-consistency and KnowledgeOS-implication stages"
+  - concept: "The corpus's much earlier measure-theory-first research arc (0327-0340 and surrounding files)"
+    refinement: "Explicitly and deliberately reversed: the mathematical space (Omega,F,mu) is now placed LAST in the research order, only after twenty conceptual/ontological/epistemological questions have been resolved"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the twenty-phase ordered research programme and the explicit eight-stage/six-step per-question validation methodology as the corpus's most disciplined research-management structure to date."
+  - "dimension-registry.md: record the five-value status classification scheme (ESTABLISHED/HYPOTHESIS/SUPPORTED_BY_LENS/MATHEMATICALLY_FORMALIZED/OPEN) for tracking future resolution of each phase."
+  - "dimension-registry.md: record the deliberate mathematics-last ordering, reversing the corpus's earlier measure-theory-first arc, and the new sharpening sub-questions (value/epistemic-status disambiguation, epistemic-state combinatorics, ideal-state-as-knowledge)."
+anchor_test:
+  anchor: "0446's ten remaining mathematical open questions; 0427/0430/0431/0433's chapter-by-chapter falsification-testing discipline; the corpus's earlier measure-theory-first research arc"
+  supports_dimension: "LANDMARK methodological file establishing the corpus's most disciplined research programme to date: a twenty-phase ordered question sequence (Observation through Mathematical Space, deliberately mathematics-last) with an explicit eight-stage/six-step per-question validation pipeline and a new five-value status classification scheme. Directly operationalizes a path forward for 0446's ten flagged open mathematical questions and generalizes the corpus's chapter-by-chapter falsification-testing discipline into a universal validation methodology for any unresolved concept"
+  refines_or_contradicts: "refines/operationalizes 0446's open questions into an ordered, disciplined programme; generalizes 0427/0430/0431/0433's falsification-testing discipline; explicitly and deliberately reverses the corpus's earlier measure-theory-first sequencing (0327-0340) into a mathematics-last approach"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "Every one of the twenty phases is explicitly and self-consciously left open by the file itself, pending the described six-step validation process -- this is the file's own methodological starting point, not an incidental gap"
+open_questions:
+  - "Whether the corpus actually follows this twenty-phase order in subsequent files, or deviates from it"
+  - "Whether the five-value status classification scheme is consistently applied to each resolved phase going forward"
+  - "How Question 1 (What is an Observation?) is actually answered in the very next file, given the file explicitly launches that question at its close"
+tier2_triggered: true
+tier2_reason: "Landmark methodological file establishing the corpus's most disciplined and rigorous research programme structure to date: a twenty-phase ordered question sequence deliberately deferring all mathematical/measure-theoretic formalization to the very last phase, an explicit eight-stage (six-step) per-question validation pipeline spanning conceptual understanding, textual observation, lens application, mathematical interpretation, and architectural implication, and a genuinely new five-value status classification scheme preventing philosophical interpretation from silently becoming architectural fact. Represents a deliberate, explicit reversal of the corpus's much earlier measure-theory-first research sequencing."

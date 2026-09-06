@@ -1,0 +1,110 @@
+sequence: 2245
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-234334_step_286_hpa-gita-chapter-05-atma-as-bounded-knower-locus-not-knowledge.md
+title: "Gītā Chapter 5 HPA -- Ātma as Bounded Knower-Locus, Not Knowledge: Corrects the Proposed Ātma=Knowledge/Paramātmā=Knowledge-Space Equation, Delivers Two New Hypotheses (Epistemic Scope/Boundedness; Obscuration vs Absence)"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a distinct Gītā Chapter 5 (Bhagavad Gita As It Is) hypothesis document under Step 286, focused specifically on correcting a previously-proposed Ātma/Paramātmā equation and distinct from file 2242's Karma-yoga action-decomposition document"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2245
+importance: high
+confidence: high
+about: >
+  A Chapter-5 reading under Step 286's philosophical-source programme, correcting a previously-proposed
+  equation (not otherwise directly encountered in this reconstruction's own sequential order) that Ātma =
+  knowledge and Paramātmā = the whole Knowledge Space. The corrected formulation: "Ātma is not best modelled
+  as 'knowledge.' Ātma is better modelled as a bounded knower/knowledge-bearing locus. Paramātmā is not
+  simply 'the whole Knowledge Space.' It is much closer to a universal knower, whose scope of awareness is
+  not bounded to one body." Explicitly: "I would not promote those equations."
+
+  Grounds this in 5.15-5.18 (individual entity as aṇu/limited vs Supreme as vibhu/unlimited, both conscious
+  but not equal in scope; individual conscious only "within the limited jurisdiction of the body" vs
+  Supersoul "conscious of all bodies"). Proposes the corrected KnowledgeOS correspondence: Ātma∼bounded
+  Knower, Paramātmā∼universal Knower, with K_Ātma⊆𝒦 as the abstraction — explicitly labelled "a KnowledgeOS
+  correspondence, not a claim that the Gītā defines a mathematical knowledge space." Corrects the naive
+  Paramātmā=𝒦 reading to Paramātmā→"universal knowing relation to 𝒦" (a relation, not a set-identity).
+
+  **DELIVERS TWO GENUINELY NEW RESEARCH HYPOTHESES (not promoted to architecture)**:
+
+  (1) **Epistemic scope/boundedness**: Scope(N) for a Knower N — distinguishing "knowledge ≠ knowing scope."
+  Proposed abstraction: Scope(𝒜_K)=bounded domain/context vs hypothetically Scope(𝒫)=universal domain. Ties
+  to the already-tracked Kṣetra/Kṣetrajña investigation and proposes revised Knowledge-Ātma terminology:
+  "Knowledge Ātma = persistent epistemic identity of a bounded knower" — 𝒜_K:K₀→K₁→K₂→... as an identity
+  persisting ACROSS knowledge states rather than being the knowledge itself, explicitly classified "strong
+  corroboration of an existing KnowledgeOS property, rather than a new architectural primitive."
+
+  (2) **Obscuration vs absence**: from 5.15-16's ajñāna-covers/jñāna-reveals structure ("knowledge → revelation,
+  rather than knowledge → creation"), proposes G_t=absence+obscuration as potentially richer than the prior
+  G_t=𝒦−K_t formulation — three-way partition (known/unknown/obscured) explicitly flagged "a research
+  hypothesis, not something we should immediately add to the model." Tentatively sketches (but explicitly
+  refuses to formalize as an operator) a "revelation" construct ρ(K_t,G_t)→K_{t+1}, kept as hypothesis
+  H_revelation rather than architecture, citing the corpus's unresolved δ/transformation/observation/
+  qualification/commitment distinctions as the reason not to formalize yet.
+
+  Also derives, from 5.18's "equal vision" verse combined with its commentary's same-quality≠same-quantity
+  warning: "Equality of kind ≠ Equality of scope" and "same epistemic type ≠ same epistemic capacity" —
+  explicitly hypothesis-only, potentially relevant to human/AI/system/organizational/universal-knowledge
+  comparisons.
+
+  Reinforces (R6 corroboration, not derivation) the already-tracked Command≠Transformation/Action≠Result
+  distinction via 5.10-12, and derives a further corroboration: "knowledge transforms the epistemic agent"
+  (5.11's purification framing) rather than mere fact-accumulation (K_{t+1}=K_t+new-facts). Corrects an
+  implied "Moksha=|𝒦|→∞" or "K_t→𝒦" hypothesis to "liberation ↔ transformation of the Knower's epistemic
+  condition," i.e. "Moksha ≠ maximum information" but "Moksha = a transformed relation between Knower,
+  Knowledge and Reality."
+
+  A ten-row research register is proposed (soul-conscious→bounded-Knower/corroboration; limited-knowledge→
+  K_t-bounded-scope/corroboration; unlimited-Supreme→universal-Knower/hypothesis; soul≠body→Knower≠
+  represented-state/strong-corroboration; obscuration→missingness-modes/new-hypothesis; revelation→possible
+  operation/hypothesis; equal-quality-different-quantity→type≠scope/interesting-hypothesis; knowledge-
+  changes-action→operationally-consequential/corroboration; knowledge-toward-liberation→transformation≠
+  accumulation/corroboration; steadiness-equanimity→possible-epistemic-property/hypothesis).
+
+  Explicit rejection: "I would not put this into the KnowledgeOS ontology: Atma=Knowledge, Paramatma=
+  Knowledge Space. It is too strong and collapses three different things: Knower ≠ Knowledge ≠ Knowledge
+  Space." Provides the corrected structural diagram (Knowledge Space 𝒦 contains/scopes Knowledge State K_t;
+  bounded Knower Ātma and universal Knower Paramātmā both "know" K_t via a knowing relation). Final verdict:
+  "Chapter 5 = R6/R4 corroboration + several new hypotheses," not a new primitive — the two genuinely
+  interesting new candidates being boundedness/scope-of-knowing and obscuration-vs-absence, explicitly
+  preferred over "Ātma = knowledge."
+introduces:
+  - concept: "The corrected Ātma-as-bounded-Knower / Paramātmā-as-universal-Knower formulation, replacing a rejected Ātma=Knowledge/Paramātmā=Knowledge-Space equation -- Knower ≠ Knowledge ≠ Knowledge Space kept as three distinct things"
+  - concept: "The epistemic-scope/boundedness hypothesis: Scope(N) for a Knower N, distinguishing 'knowledge ≠ knowing scope'"
+  - concept: "The obscuration-vs-absence hypothesis: G_t=absence+obscuration as a potentially richer epistemic-gap decomposition than G_t=K−K_t, with a three-way known/unknown/obscured partition"
+  - concept: "The revised Knowledge-Ātma terminology: 'persistent epistemic identity of a bounded knower' (A_K:K_0→K_1→K_2→...) rather than the knowledge itself -- classified strong corroboration of an existing property, not a new primitive"
+defines: []
+refines:
+  - concept: "An unrecorded prior proposal (not directly encountered in this reconstruction's sequence) equating Ātma=knowledge and Paramātmā=whole Knowledge Space"
+    refinement: "EXPLICITLY REJECTED and replaced with the bounded-Knower/universal-Knower formulation, keeping Knower/Knowledge/Knowledge-Space as three distinct things"
+  - concept: "This reconstruction's already-tracked Command≠Transformation/Action≠Result and Zero/missingness findings"
+    refinement: "REINFORCED via independent Chapter-5 correspondence (5.10-12 purification framing; 5.15-16 obscuration framing), with the obscuration-vs-absence hypothesis proposed as a potential refinement of the Zero/missingness model's gap representation"
+contradicts: []
+repeats:
+  - "Shares source material (Gītā Chapter 5, including 5.18's equal-vision verse) with file 2242's Karma-yoga document, but pursues a distinct thread (Ātma/Paramātmā/Knower-scope vs Composite Action/Attribution) with non-overlapping hypotheses."
+bridge_candidates:
+  - "The unrecorded prior Ātma=knowledge/Paramātmā=Knowledge-Space proposal this document corrects -- not directly encountered in this reconstruction's own sequential order; flag if encountered later, likely earlier in corpus time given this document responds to it."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as correcting a rejected Ātma=Knowledge/Paramātmā=Knowledge-Space equation and delivering two new research hypotheses (epistemic scope/boundedness; obscuration vs absence), both explicitly not promoted to architecture."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Command≠Transformation, Zero/missingness, and Kṣetra/Kṣetrajña findings"
+  supports_dimension: "Reinforces these via independent Chapter-5 correspondence and proposes two new hypotheses (scope-of-knowing; obscuration-vs-absence) as candidate refinements, not yet promoted"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit rejection of 'Atma=Knowledge, Paramatma=Knowledge Space' is directly checkable against any later-encountered corpus artifact making that original proposal, for exact traceability of what is being corrected here."
+undefined_concepts: []
+open_questions:
+  - "Whether the original Ātma=Knowledge/Paramātmā=Knowledge-Space proposal this document corrects is directly encountered elsewhere in the sequential read."
+  - "Whether the obscuration-vs-absence hypothesis (G_t=absence+obscuration) is later tested against the Zero/missingness model formally."
+tier2_triggered: true
+tier2_reason: "Delivers two genuinely new, carefully hedged research hypotheses (epistemic scope/boundedness; obscuration vs absence) and explicitly corrects a rejected prior Ātma/Paramātmā equation, reinforcing several already-tracked findings via independent Chapter-5 correspondence. Classified importance high given the substantive new hypotheses and corrective content, short of critical since nothing here overturns an established architectural finding."

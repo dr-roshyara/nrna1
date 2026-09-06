@@ -1,0 +1,194 @@
+sequence: 603
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-101241_step-025y-evidence-integrity-cryptographic-provenance-authenticity-tamper-detection-and-chain-of.md
+title: "The Corpus's Cryptographic-Provenance Layer — Integrity≠Authenticity≠Authority≠Truth; 'A Signed False Statement Remains a Signed False Statement'; the Disciplined Anti-Hype Conclusion 'Do We Need Blockchain? No'; OrphanKnowledge/Zero_provenance Further Extends 0598's Capstone Zero Unification; LLMOutputIntegrity≠LLMOutputTruth Extends the Recurring AI-Governance Boundary Into Cryptographic Terms; a Seven-Dimensional Evidence Assessment Vector Replacing Any Scalar Score; Verdict '25Y — PASS'; Opens Step 25Z (Action, Intervention, Control, Risk and Feedback) — the Final Lettered Step in the 25A–25Z Experimental Sub-Arc Opened at 0572, Self-Described as 'Likely One of the Most Important Steps in the Entire KnowledgeOS Experiment' — Prediction≠Intervention"
+date: "2026-08-28"
+bytes: 19027
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 25Y -- Evidence Integrity, Cryptographic Provenance, Authenticity, Tamper Detection and Chain of Custody', opened at 0602's close to address whether KnowledgeOS can prove its epistemic history has not been altered or fabricated"
+source_role: PRIMARY_RESEARCH
+canonical_source: 603
+importance: critical
+confidence: high
+about: >
+  Opens Step 25Y directly executing 0602's closing commitment, delivering the file's central formal
+  separation, explicitly self-described as often incorrectly collapsed into one thing:
+  **`Integrity≠Authenticity≠Authority≠Truth`**. **Delivers each of the four properties precisely defined
+  and mutually irreducible**: Integrity (`Hash(x)`, verifies content has not changed, never establishes
+  truth); Authenticity (`Verify(PublicKey,Signature,Document)`, establishes producer identity, never
+  correctness); Authority (`Authorized(a,q,t)`, formally distinguishing `Authentication≠Authorization`,
+  worked authenticated-but-unapproved-employee example); Truth (explicitly beyond cryptography's reach --
+  a signed statement can be `Signed(Document)=True` while `Truth(Document)=False`, delivering the file's
+  precisely stated headline principle: **"a signed false statement remains a signed false statement"** --
+  **`Cryptographic proof establishes properties of the artifact, not automatically properties of
+  reality`**).
+
+  Delivers a formal Evidence object `(Content,Hash,Origin,Producer,Timestamp,Signature,Context,
+  Provenance)`, a versioned Hash structure (`(Algorithm,Digest)`, preventing future-migration ambiguity),
+  and the important Canonical-representation caveat (worked JSON-whitespace counterexample) requiring
+  `Hash(raw artifact)` and `Hash(canonical representation)` to be treated as answering distinct questions
+  -- delivering **`ArtifactIdentity≠SemanticIdentity`**.
+
+  Delivers Chain of custody as a formal provenance pipeline (Production→Collector→Storage→KnowledgeOS→
+  Assessment), with Immutable evidence preferred and mistakes handled non-destructively via a formal
+  `Correction` event (`OriginalEvidence,CorrectedEvidence,Reason,Authority,Time`), directly extending
+  0591's/0601's non-destructive revision discipline into the cryptographic layer. Delivers Merkle
+  structures and hash chains for tamper-evidence, with the explicit caveat **`MerkleIntegrity≠Truth`**.
+  **Delivers the file's most notable single architectural conclusion, explicitly framed as disciplined
+  anti-hype resistance**: "Do we need blockchain? No" -- a tamper-evident knowledge history does NOT
+  automatically require blockchain, achievable instead via seven named conventional mechanisms
+  (cryptographic hashes, signatures, append-only storage, Merkle structures, trusted timestamps, access
+  controls, immutable object storage), explicitly warning "blockchain should not be introduced merely
+  because 'immutable knowledge' sounds blockchain-like" -- directly consistent with the corpus's recurring
+  discipline against importing adjacent-field technology or terminology without verifying genuine fit
+  (0599's Byzantine-consensus differentiation, 0601's/0602's distributed-systems-terminology caution).
+
+  Delivers digital signatures, Signature-time validity, Key rotation (`KeyID`+`KeyVersion` tracked
+  separately, preventing historical signatures from becoming uninterpretable), and Key revocation with the
+  precise temporal question `KeyStatus(t_{signature})` -- was the key valid WHEN signed, distinct from
+  whether it is valid today. Delivers Trusted timestamping (`Commitment(E,t)`, proving temporal existence
+  relative to a timestamping mechanism, never proving the content's truth).
+
+  **Delivers a complete epistemic provenance graph** (Source→Artifact→{Hash,Signature,Timestamp}→
+  Observation→Evidence Assessment→Assertion→Derivation→Conclusion), with formal bidirectional
+  traceability: backward traversal for `EndToEndTraceability`, and **forward provenance
+  (`Descendants(E)`) enabling formal Impact analysis** -- a worked cascading-invalidation example
+  (`E_1 invalidated→Assertion A invalidated→Derivation D invalidated→Decision D2 requires review→Action
+  A_3 potentially affected`), explicitly named "an extremely powerful operational capability." Delivers
+  Evidence invalidation as non-destructive (`Invalid(E)≠Deleted(E)`, a formal `Invalidate(E,t,reason)`
+  event).
+
+  **Delivers a formal, seven-factor Evidence trust hierarchy replacing simple scalar trust**:
+  `Assessment(E)=f(Integrity,Authenticity,Authority,Reliability,Independence,TemporalValidity,
+  SemanticValidity)`, "much more rigorous" than a single number, worked through a concrete structured
+  example (`Integrity:HIGH, Authenticity:HIGH, Authority:LOW, Reliability:UNKNOWN, Truth:UNKNOWN`)
+  explicitly contrasted as more informative than a bare `EvidenceScore=0.72`. **Delivers the file's key
+  formal deliverable -- a seven-dimensional Evidence assessment vector**
+  `A(E)=(I,Au,Auth,R,Ind,T,S)`, formalizing **`VectorAssessment>SingleConfidenceScore`**, directly
+  extending the corpus's established anti-scalar discipline (0592/25N, 0599/25U) into the cryptographic-
+  integrity layer. Delivers Relevance (`Rel(E,q)`) as a distinct dimension -- genuine, authentic evidence
+  can still be irrelevant to a specific question -- and Evidence sufficiency (`Sufficient(E_1,...,E_n,q)`)
+  as domain- and decision-specific, formalizing **`EvidenceSufficiency depends on decision context`**.
+
+  Delivers Chain of custody explicitly recognized as a DDD domain concept, not merely a technical concern,
+  for five named bounded contexts (compliance, legal evidence, security incidents, financial transactions,
+  governance decisions) where the domain may impose stronger custody invariants. Delivers a formal
+  Anti-tampering invariant (original evidence must remain retrievable after correction/invalidation) and a
+  Provenance invariant (`Conclusion→Derivation→Evidence→Origin`, with an untraceable chain producing the
+  weaker `Untraceable` epistemic status). **Delivers a further, consistent extension of 0598's capstone
+  Zero unification**: `OrphanKnowledge` and a new named `Zero_{provenance}` variant, for a conclusion whose
+  provenance cannot be established -- worked "Migration is safe, Provenance: missing" example, explicitly
+  requiring such a conclusion NOT be treated as equivalent to a fully-traceable one.
+
+  Delivers Cryptographic provenance formally shown complementary to, not a substitute for, Semantic
+  provenance (a perfectly authentic signed document still requires separate `Meaning(Document)`
+  determination, connecting to 0600/25V). **Delivers the recurring corpus AI-governance discipline
+  extended into cryptographic terms**: `LLMOutputIntegrity≠LLMOutputTruth` -- an LLM's output can be
+  cryptographically proven unaltered while saying nothing about its correctness, still requiring
+  independent evidence and derivation. Delivers a formal seven-field AI provenance record (`ModelID,
+  ModelVersion, Prompt/InstructionContext, InputReferences, GenerationTime, ToolCalls, OutputHash`)
+  enabling AI-output reproducibility and audit, paired with an explicit information-governance caveat:
+  provenance completeness must coexist with privacy/security/access-control/data-minimization
+  requirements -- **`Provenance completeness must coexist with information governance`**, delivering
+  Access-controlled provenance (`CanSee(Provenance)` vs. `CanSee(Content)` as separately grantable
+  permissions). Delivers `Integrity≠Availability` as a further distinct dimension (an artifact can be
+  perfectly tamper-protected while temporarily unreachable).
+
+  **Delivers nine labeled falsification experiments (A-I), ALL PASS**: modified artifact
+  (`HashMismatch`); signed false statement (`Authenticity=True`, `Truth=Unknown/False`); authenticated-but-
+  unauthorized actor (`Authenticated=True`, `Authorized=False`); invalidated evidence propagates via the
+  dependency graph; a swapped artifact under an unchanged database ID (`IntegrityViolation`); a corrected
+  evidence record (original remains accessible, correction creates a new record); three replicas of
+  identical signed evidence (`IndependentSources=1`, not 3 -- directly reconfirming 0602's
+  `Replication≠Corroboration` in the cryptographic setting); a convincing but unsupported LLM conclusion
+  (`OutputIntegrity=True` possibly, `EvidenceSupport=Insufficient` -- cannot become authoritative merely
+  because well-written); a valid document using an obsolete semantic definition
+  (`CryptographicIntegrity=True`, `SemanticValidity=RequiresHistoricalContext`, connecting to 0600/25V).
+
+  Delivers a computability reconfirmation for the cryptographic layer, with the explicit conclusion that
+  the computationally expensive component is generally NOT cryptography itself but storage, indexing,
+  retention, and access control.
+
+  **Delivers Step 25Y's verdict**: **"25Y — PASS,"** with four boxed central separations
+  (`Integrity≠Authenticity`, `Authenticity≠Authority`, `Authority≠Truth`, `Traceability≠Correctness`) and
+  the file's summary statement: "Cryptography makes the epistemic history tamper-evident and attributable.
+  It does not magically make the history true." **Delivers an architectural synthesis** -- the corpus's
+  most complete single end-to-end epistemic chain notation to date (eleven stages, Source through Action),
+  with eight named cross-cutting dimensions (Identity, Semantics, Time, Provenance, Authority, Uncertainty,
+  Integrity, Causality), explicitly described as "beginning to look less like a conventional knowledge
+  graph and more like a computable epistemic system."
+
+  **Closes by identifying the final unaddressed foundational boundary -- action itself**: KnowledgeOS is
+  ultimately intended to support actions that change the world, posing "how does KnowledgeOS reason about
+  actions whose consequences are uncertain, irreversible, costly, or potentially dangerous?" -- explicitly
+  marking the transition from epistemology into decision and control theory. **Opens "Step 25Z — Action,
+  Intervention, Control, Risk and Feedback,"** the FINAL LETTERED STEP of the 25A-25Z experimental
+  sub-arc opened at file 0572 -- posing the closed control loop
+  `Knowledge→Decision→Intervention→World→Observation→Knowledge` and twelve named topics to formalize
+  (action preconditions, authorization, expected utility, risk, reversibility, blast radius, intervention
+  effects, feedback, monitoring, rollback, stopping conditions, human approval, safe failure). Delivers
+  the step's key mathematical distinction, directly reusing 0594's (25P) do-calculus machinery:
+  **`Prediction≠Intervention`** (`P(Y|X)` does not automatically determine `P(Y|do(X))`), explicitly self-
+  described as "likely one of the most important steps in the entire KnowledgeOS experiment." No actual
+  code execution reported.
+introduces:
+  - concept: "The four-way separation Integrity≠Authenticity≠Authority≠Truth, with the precisely stated headline principle that 'a signed false statement remains a signed false statement'"
+  - concept: "The disciplined anti-hype architectural conclusion 'Do we need blockchain? No' — a tamper-evident knowledge history achievable via conventional cryptographic mechanisms, explicitly warning against introducing blockchain merely because 'immutable knowledge' sounds blockchain-like"
+  - concept: "A seven-dimensional Evidence assessment vector A(E)=(I,Au,Auth,R,Ind,T,S) replacing any single scalar evidence-confidence score"
+  - concept: "OrphanKnowledge and Zero_provenance, a further consistent extension of 0598's capstone Zero unification, for conclusions whose provenance chain cannot be established"
+  - concept: "LLMOutputIntegrity≠LLMOutputTruth, extending the corpus's recurring AI-governance discipline into cryptographic terms specifically"
+  - concept: "Formal forward provenance (Descendants(E)) enabling systematic Impact analysis when evidence is later invalidated"
+  - concept: "'Step 25Z — Action, Intervention, Control, Risk and Feedback', the final lettered step of the 25A-25Z experimental sub-arc opened at 0572, self-described as likely one of the most important steps in the entire KnowledgeOS experiment"
+defines:
+  - concept: "Four-way cryptographic-epistemic separation"
+    definition: "Integrity (has the artifact been altered?) / Authenticity (who produced it?) / Authority (were they permitted to assert this?) / Truth (is the claim actually true?) — four independently verifiable, mutually irreducible properties of an evidentiary artifact"
+  - concept: "Impact analysis via forward provenance"
+    definition: "Impact(E)=Descendants(E) — the set of conclusions, derivations, decisions, and actions that depend on a given evidence item, computable to systematically identify what must be reconsidered when that evidence is later invalidated"
+  - concept: "Evidence assessment vector"
+    definition: "A(E)=(Integrity,Authenticity,Authority,Reliability,Independence,TemporalValidity,SemanticValidity) — a seven-dimensional structured assessment explicitly preferred over any single confidence scalar, since a scalar hides which epistemic dimension it actually represents"
+  - concept: "Zero_provenance / OrphanKnowledge"
+    definition: "The formal epistemic status for a conclusion whose derivation chain back to originating evidence cannot be established — such a conclusion must not be treated as equivalent to a fully-traceable one, regardless of how plausible it appears"
+refines:
+  - concept: "0591's/0601's non-destructive, event-addition revision architecture"
+    refinement: "Extended into the cryptographic-evidence layer specifically: evidence corrections and invalidations are formal events (Correction, Invalidate) that never delete or silently overwrite the original evidentiary record"
+  - concept: "0599's Byzantine-consensus differentiation and 0601's/0602's distributed-systems-terminology caution"
+    refinement: "Directly paralleled by the file's own explicit 'do we need blockchain? No' conclusion — the same disciplined resistance to importing adjacent-field technology/terminology without verifying genuine domain necessity, now applied to a specific, concretely named technology"
+  - concept: "0592's (25N) and 0599's (25U) anti-scalar-confidence discipline"
+    refinement: "Extended into evidence integrity/authenticity assessment specifically via the seven-dimensional Evidence assessment vector, directly paralleling the earlier evidence-support and trust vectors"
+  - concept: "0598's capstone unification (Zero=Unresolved epistemic/proof obligation)"
+    refinement: "Extended with a further concrete instance: Zero_provenance/OrphanKnowledge, for conclusions with unestablished provenance chains"
+  - concept: "0602's (25X) Replication≠Corroboration invariant"
+    refinement: "Directly reconfirmed in the cryptographic-evidence setting: three replicas of identical signed evidence still constitute one independent source, not three, per this file's own falsification test G"
+  - concept: "0562's/0577's/0583-0586's/0588's/0591's/0594's/0597's/0598's/0600's recurring LLM/AI-governance boundary"
+    refinement: "Extended into cryptographic terms specifically: LLMOutputIntegrity≠LLMOutputTruth, and a formal AI-provenance record required for reproducibility/audit of AI-generated assertions"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25Z — Action, Intervention, Control, Risk and Feedback' is executed as its own file, and whether it succeeds in formally distinguishing Prediction from Intervention (reusing 0594's do-calculus machinery) for the architecture's action-taking layer specifically. Note this is explicitly the FINAL LETTERED step of the 25A-25Z experimental sub-arc opened at file 0572 -- track what naming scheme, if any, the corpus adopts for subsequent experimental steps once the alphabet is exhausted (e.g. 25AA, a new numeral, or a fresh Step-N sequence)."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the four-way Integrity≠Authenticity≠Authority≠Truth separation, the 'do we need blockchain? No' anti-hype conclusion, the formal Evidence object and versioned Hash structure, and the ArtifactIdentity≠SemanticIdentity distinction with the canonical-representation caveat."
+  - "dimension-registry.md: record Chain of custody as a DDD domain concept, forward provenance/Impact analysis, the seven-dimensional Evidence assessment vector replacing scalar confidence, OrphanKnowledge/Zero_provenance (further extending 0598's capstone Zero unification), and LLMOutputIntegrity≠LLMOutputTruth."
+  - "dimension-registry.md: record the nine-test falsification suite (ALL PASS, including a direct reconfirmation of 0602's Replication≠Corroboration), verdict '25Y — PASS,' the eleven-stage/eight-cross-cutting-dimension architectural synthesis, and Step 25Z's opening as the final lettered step of the 25A-25Z sub-arc, reusing 0594's Prediction≠Intervention distinction."
+anchor_test:
+  anchor: "0602's closing commitment to Step 25Y (evidence integrity, not previously addressed anywhere in the corpus); 0591's/0601's non-destructive revision architecture; 0599's Byzantine-consensus differentiation and 0601's/0602's distributed-systems-terminology caution; 0592's/0599's anti-scalar-confidence discipline; 0598's capstone Zero unification; 0602's Replication≠Corroboration invariant; the recurring LLM/AI-governance boundary; 0594's (25P) do-calculus machinery (Prediction≠Intervention)"
+  supports_dimension: "Delivers the corpus's complete cryptographic-provenance layer, directly executing 0602's closing commitment and addressing a genuinely new dimension (evidence integrity and authenticity) not previously treated anywhere in the extensive research program. Delivers a precisely stated, well-motivated four-way separation (Integrity≠Authenticity≠Authority≠Truth) grounded in a memorable, concrete formulation ('a signed false statement remains a signed false statement') directly relevant to how any real Kernel would need to reason about cryptographically-verified but not necessarily true evidence. Delivers a notable, disciplined anti-hype architectural conclusion — explicitly rejecting blockchain as an unnecessary technology import — directly consistent with and reinforcing the corpus's recurring pattern of resisting adjacent-field terminology/technology without verifying genuine domain fit (previously demonstrated for Byzantine consensus at 0599 and distributed-systems terminology at 0601/0602). Delivers a further, consistent extension of 0598's capstone Zero unification (Zero_provenance/OrphanKnowledge) and extends the corpus's established anti-scalar-confidence discipline into cryptographic evidence assessment via a seven-dimensional vector. Closes by identifying action/intervention as the final foundational boundary and opening the last lettered step (25Z) of the entire 25A-25Z experimental sub-arc, directly reusing 0594's do-calculus Prediction≠Intervention distinction and self-describing the upcoming step as likely the most important in the entire research program — a significant structural milestone for tracking the corpus's naming-scheme evolution going forward"
+  refines_or_contradicts: "directly executes 0602's closing commitment to Step 25Y; extends 0591's/0601's non-destructive revision architecture into the cryptographic layer; directly parallels 0599's/0601's/0602's disciplined resistance to unjustified adjacent-field imports via the 'no blockchain needed' conclusion; extends 0592's/0599's anti-scalar-confidence discipline via the seven-dimensional evidence vector; extends 0598's capstone Zero unification with a further instance; directly reconfirms 0602's Replication≠Corroboration invariant; extends the recurring LLM-governance boundary into cryptographic terms; directly reuses 0594's Prediction≠Intervention do-calculus distinction to open Step 25Z; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit 'do we need blockchain? No' architectural conclusion, with the accompanying seven-item list of conventional mechanisms that achieve tamper-evidence without a blockchain and the explicit warning against introducing it merely because 'immutable knowledge sounds blockchain-like,' is directly checkable evidence of a disciplined, non-hype-driven engineering judgment, directly consistent with the corpus's demonstrated pattern of resisting unjustified adjacent-field technology imports."
+  - "Falsification test G (three replicas of identical signed evidence yielding IndependentSources=1, not 3) is directly checkable evidence that this file's cryptographic-evidence treatment is fully consistent with 0602's earlier Replication≠Corroboration invariant, demonstrating the corpus applies the same evidence-independence discipline uniformly across both the distributed-systems layer and the cryptographic-integrity layer rather than treating them as unrelated concerns."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25Z — Action, Intervention, Control, Risk and Feedback' is executed as its own dedicated corpus file, and whether it succeeds in formally distinguishing Prediction from Intervention for the architecture's action-taking layer, reusing 0594's do-calculus machinery"
+  - "What naming/numbering scheme the corpus adopts for subsequent experimental steps once the 25A-25Z lettered sequence (opened at file 0572) is exhausted after Step 25Z"
+tier2_triggered: true
+tier2_reason: "Delivers the corpus's complete cryptographic-provenance layer, directly executing 0602's closing commitment and addressing a genuinely new dimension — evidence integrity and authenticity — not previously treated anywhere in the extensive research program. Delivers a precisely stated, memorably formulated four-way separation (Integrity≠Authenticity≠Authority≠Truth: 'a signed false statement remains a signed false statement') of direct relevance to how any real Kernel built on this research would need to distinguish cryptographic verification from epistemic truth. Delivers a notable, disciplined anti-hype architectural conclusion explicitly rejecting blockchain as an unnecessary import, directly consistent with and reinforcing the corpus's demonstrated recurring pattern of resisting adjacent-field technology/terminology without first verifying genuine domain fit (Byzantine consensus at 0599, distributed-systems terminology at 0601/0602). Delivers a further consistent extension of 0598's capstone Zero unification and extends the established anti-scalar-confidence discipline into cryptographic evidence assessment via a seven-dimensional vector, while directly reconfirming 0602's Replication≠Corroboration invariant in the cryptographic setting. Closes with genuine structural significance: identifying action/intervention as the final foundational epistemic boundary and opening Step 25Z — explicitly the LAST LETTERED STEP of the entire 25A-25Z experimental sub-arc opened at file 0572 — directly reusing 0594's do-calculus Prediction≠Intervention distinction and self-describing the upcoming step as likely the most important in the entire research program, marking a significant milestone for this reconstruction to track going forward."

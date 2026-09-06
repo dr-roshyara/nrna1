@@ -1,0 +1,62 @@
+sequence: 60
+path: docs/knowledgeos/brainstorming/20260819-205757-ddd-correction-verification-verdict.md
+title: DDD Correction Verification Verdict (external, arxiv-sourced)
+date: 2026-08-19
+bytes: 20500
+
+model:
+  primary: m
+  secondary: [engineering_knowledgeos, ddd, evidence, governance]
+
+source_role: CRITICAL_REVIEW
+canonical_source: 58
+
+importance: high
+confidence: high
+
+about: >
+  External-literature (arxiv 2025-2026 context-governance/provenance papers) verification of 0058's
+  seven-context DDD model. Validates the governance/delivery reframe while refusing to freeze
+  aggregate boundaries as written; raises a "context-shaped architecture" warning; states AI may
+  propose/transform knowledge but cannot independently confer authority.
+
+introduces:
+  - context_shaped_architecture_warning   # bounded contexts should not be inferred from noun phrases
+  - product_version_as_better_aggregate_lifecycle_candidate
+
+defines: []
+refines:
+  - concept: seven_bounded_context_model
+    canonical_source: 58
+    change: "KnowledgeProduct as one aggregate -> should NOT automatically contain every knowledge element; ProductVersion proposed instead"
+contradicts: []
+repeats:
+  - concept: ai_proposes_never_confers_authority
+    canonical_source: null   # independently arrived at; structurally parallel to root-level 0014/0018
+    novelty: "independent - see bridge_candidates"
+
+bridge_candidates:
+  - "AI may propose/transform knowledge but cannot independently confer authority - structurally
+     identical in SHAPE to root-level 0018's evidence-earns/governance-grants and 0014's provenance-
+     vs-standing split. Independently arrived at via external literature, not citation. Recorded as
+     bridge_candidate per MD-012, not confirmed."
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence:
+  - "'its strongest original contribution remains the explicit relationship between Method, Binding, and Evidence' - THIRD independent endorsement (0001 origin, 0057 direct citation, this file's independent external-literature reaffirmation)"
+  - "AI may propose/transform knowledge but cannot independently confer authority"
+
+undefined_concepts: [knowledge]
+open_questions:
+  - "which KnowledgeOS invariants require synchronous consistency vs asynchronous event/projection propagation"
+
+tier2_triggered: true
+tier2_reason: >
+  External, arxiv-sourced verification with real substantive refinements (aggregate boundary
+  correction, context-shaped-architecture warning) rather than mere confirmation. Delivers the third
+  independent endorsement of Method/Binding/Evidence as KnowledgeOS's standout contribution -
+  triangulated across origin (0001), direct citation (0057), and independent external reaffirmation
+  (this file) - the strongest load-bearing-construct evidence in the corpus so far.

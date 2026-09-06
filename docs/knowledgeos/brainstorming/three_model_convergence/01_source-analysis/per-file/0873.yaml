@@ -1,0 +1,49 @@
+sequence: 873
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-110559_step_245_constructing-an-actual-knowledge-state-k-0-duplicate.md
+title: "Step 245 -- Constructing an Actual Knowledge State K_0 (Duplicate): BYTE-IDENTICAL DUPLICATE of File 0872, Confirmed via Direct Diff"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: c1
+  secondary: none
+  secondary_note: "byte-identical duplicate; no independent content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 872
+importance: low
+confidence: high
+about: >
+  This file's own filename explicitly declares it a duplicate ("-duplicate.md" suffix), and a direct
+  byte-level diff against file 0872 (`20260830-110509_step_245_constructing-an-actual-knowledge-state-k-0.md`)
+  confirms zero differences. Per the standing instruction to leave duplicate files alone, this record does
+  not re-derive or repeat 0872's substantive findings (the epistemic-status-not-primitive finding, the
+  narrow proven closure theorem, the Content/Qualification/Governance decomposition, the mandate-
+  compliance-gap observation) -- see 0872's record for the full analysis.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - "0872 (Step 245 — Constructing an Actual Knowledge State K_0): byte-identical, confirmed via direct diff. Canonical source is 0872."
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 246's adversarial test as opened at the close of 0872 (unaffected by this duplicate)."
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: note this file as a confirmed byte-identical duplicate of 0872; no new findings to register."
+anchor_test:
+  anchor: "0872's full content"
+  supports_dimension: "Byte-identical duplicate; contributes no independent content beyond 0872"
+  refines_or_contradicts: "none — pure duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Direct byte-level diff (`diff` command) between this file and 0872 returned zero output, confirming exact identity."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Confirmed byte-identical duplicate of file 0872 per direct diff. Classified importance low per the standing duplicate-file-handling instruction."

@@ -1,0 +1,241 @@
+sequence: 808
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-015928_step_183-pre_architecture-and-gita-alignment-review-of-steps-1-182.md
+title: "Step 183-pre -- Architecture and Gita Alignment Review of Steps 1-182 (CAPSTONE SELF-CRITIQUE MILESTONE, unscheduled review checkpoint before Step 183): EXPLICITLY REJECTS THREE OF THE CORPUS'S OWN EARLIER GITA-DERIVED MATHEMATICAL FORMULAS AS NOT VALIDATED ARCHITECTURE (Knowledge-Decay Exponential K_decayed=K0·e^{-λt}, the Divine-Intervention Threshold Function, and the Binary Epistemic-Reward Function) -- Establishes the Symmetric Hard Rule 'No Gita-Derived Equation Becomes an Architectural Rule Unless Independent Software/Domain Evidence Supports It' AND 'No Software Structure Becomes Validated by Gita Merely Because a Metaphor Can Be Constructed' -- Explicitly Forbids Literalizing Krishna as a Software Component (KrishnaService/LordKnowledgeRepository/Omniscient Agent), Directly Bearing on the Long-Tracked CON-02 Question -- Delivers the Central Methodological Finding 'The Gita Lens Is Not Primarily Giving Us Components. It Is Giving Us Invariants and Questions About Transitions' -- Delivers the Three-Layer Separation Model (Philosophical Lens → Epistemic Theory → Software Architecture, 'Only the Bottom Layer Becomes Software Architecture') -- Consolidates Fourteen High-Confidence Architectural Invariants I1-I14 -- Delivers a Chapter-by-Chapter Alignment Verdict Table (Chapters 1-4, All STRONG to VERY STRONG) and a Five-Lens Convergence Table (DDD/Math/Statistics/Zero/Gita) -- Reframes the Upcoming Step 183 Reconstruction Test"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: g1
+  secondary: c1
+  secondary_note: "an explicit, formal Architecture+Gita Alignment Review; simultaneously the arc's most significant methodological self-critique, applying the mathematician/statistician epistemic-discipline lens retroactively to the corpus's own earlier Gita-derived mathematics"
+source_role: PRIMARY_RESEARCH
+canonical_source: 808
+importance: critical
+confidence: high
+about: >
+  An unscheduled review checkpoint inserted before Step 183 ("Step 183-pre" in the filename), opening "I
+  think we should do this before Step 183. In fact, I would make it a formal Architecture + Gita Alignment
+  Review, because after 182 steps we have enough material that continuing linearly risks adding concepts
+  faster than we validate them." Delivers the framing verdict up front: "the core KnowledgeOS architecture
+  is substantially aligned with what we discovered, but some of the later Gita-derived mathematical
+  formulations are too literal and should NOT be promoted into the software architecture."
+
+  **§1 delivers the correctly-framed validation question**: not "does KnowledgeOS implement the Bhagavad
+  Gita?" but "do the architectural principles discovered independently through EKS/PKS/AIP, DDD,
+  mathematics/statistics, governance experiments and software evidence remain coherent when viewed through
+  the Gita Chapters 1-4 lens?" -- explicitly maintaining two non-contaminating directions,
+  `Software/EKS→GitaLens` and `Gita→ArchitecturalHypothesis`, "consistent with our established evidence
+  discipline."
+
+  **§2 delivers a full traffic-light assessment table** across nineteen architecture areas: twelve rated
+  🟢 Strong (Evidence/provenance, Knowledge lineage, Temporal evolution, Observation/interpretation/
+  determination separation, Governance boundary, Authority separation, Deterministic assurance, Unknown
+  preservation, Conflict representation, Decision lineage, AI/non-AI boundary, Domain/bounded-context
+  thinking); five rated 🟡 Incomplete (Trust, Consensus, Permission→Power, Evidence→Legitimacy,
+  Rules→Implementation); and five rated 🔴 explicitly rejected as architecture (Mathematical
+  quantification of epistemic states -- "not yet justified"; "knowledge decay = exponential function";
+  "epistemic reward"; "divine intervention = threshold function"; "Gita metaphors treated as software
+  objects").
+
+  **§3 delivers the review's single most important structural finding**: "the architecture was not
+  invented from Gita" -- core structures (evidence, verification, governance, authority, lineage, scope,
+  uncertainty, contradictions, decision boundaries, deterministic replay, separation of concerns,
+  constitutional constraints) were independently discovered by the arc's own prior experiments BEFORE the
+  Chapter 4 mathematical mapping, evidenced concretely by a real software finding (an asymmetry in election
+  invariant checks where one path used `withoutGlobalScopes()` and another did not, concluding
+  business-invariant checks must be scope-independent) -- crystallized: **"the Gita is functioning as a
+  validation lens, not as the source code specification. That is the correct relationship."**
+
+  **§4-§17 delivers a chapter-by-chapter re-derivation and verdict**: **Chapter 1** (Arjuna's crisis:
+  `Situation→Observation→Conflict→InabilityToDetermineAction`) validated as **STRONG**, directly matching
+  the arc's own `Knowledge≠Decision`, `Decision≠Action`, and the full
+  `Evidence→Determination→Decision→Authorization→Execution` pipeline -- "Chapter 1 validates the separation
+  between knowing and acting." **Chapter 2** (Knower≠changing field, `Knower≠KnowledgeState`) validated as
+  **VERY STRONG**, directly connecting to `K_t` as one state in a larger history and to "a new state does
+  not necessarily know the old state" -- paired with an explicit, hard-boundary warning: **"we should not
+  implement 'Atma' as a literal software entity"**; the useful abstraction is "persistent epistemic
+  identity/history versus transient knowledge state," not "the software has a soul," explicitly named
+  "category error" if literalized. **Chapter 2 non-attachment** (the system must not become attached to
+  one answer/architecture/implementation/agent/document/state; `K_1→K_2` means supersession or correction,
+  never deletion, "particularly strong in Steps 180-182") rated **Excellent alignment**. **Chapter 3**
+  (knowledge incomplete until it enters action, but `Knowledge⇏AutonomousAction`, instead
+  `Knowledge→Decision→Authorization→Action`) validated as **VERY STRONG**, directly grounding "why the
+  KnowledgeOS constitutional boundary saying it is not an autonomous decision maker is so important."
+  Delivers **the "do not own the result" principle**: an agent should optimize for `EvidenceQuality`,
+  `Traceability`, `CorrectClassification`, `Reproducibility`, never for `Winning` ("I must prove my answer
+  was right" named dangerous), connecting to "verification must not simply become a mechanism for
+  manufacturing authority."
+
+  **§9-§17 delivers the deepest and most self-critical section, on Chapter 4**: correctly credits Chapter
+  4's genuine strong contribution -- epistemic lineage `𝓛(A_t)=Provenance(A_t)={S_0,S_1,...,S_n}` and the
+  invariant **"knowledge without provenance≠established knowledge"** -- as "a very strong architectural
+  match," then **explicitly retracts three specific prior mathematical formulas as unjustified
+  architecture**: (1) **the knowledge-decay exponential** `K_t^{decayed}=K_0e^{-λt}` -- "I do not recommend
+  keeping this as a KnowledgeOS architectural equation... the Gita says that knowledge can be lost over
+  transmission/history. It does not give us evidence that organizational knowledge decays exponentially.
+  That was our mathematical invention," boxed **`Gita insight≠empirical decay law`**; (2) **the
+  divine-intervention threshold function** `𝓘(t)=1 if Δ(K_t,I_t)>θ` (mapping Krishna's intervention when
+  dharma declines) -- "interesting? Yes. Validated software architecture? No... this should remain
+  conceptual inspiration for an anomaly/remediation mechanism rather than formal KnowledgeOS law"; (3) **the
+  binary epistemic-reward function** `R(K)∈{R_max,R_min}` (with the prior implementation reportedly reduced
+  to `verified=1.0, candidate=0.5, otherwise=0`) -- explicitly rejected as "too crude for the architecture
+  we have now developed," directly conflicting with the arc's own established `Confidence≠Truth` and
+  `Verification≠Authority` principles: "an epistemic reward score risks undoing our own work." Delivers
+  **the explicit methodological correction**, boxed: the same discipline applied to software evidence must
+  apply to Gita: `Source→Interpretation→Hypothesis→Experiment→Validation`, never `Source→Equation→
+  Architecture` -- "that would violate our own epistemic discipline."
+
+  **§14-§17 delivers Chapter 4's actual strongest contribution**, reframed and boxed: **"knowledge can be
+  transmitted, transformed, lost, restored, and recontextualized"** -- mapping to
+  `Artifact→Interpretation→Determination→Decision` where each transition may change semantic fidelity,
+  requiring `Lineage`, not merely `Storage`. Delivers **the careful translation of "Krishna knows previous
+  states"**: explicitly not `KnowledgeOS=Krishna`, but `LocalAgentMemory⊆InstitutionalHistoricalKnowledge`
+  (`K_agent,t≠K_institutional,total`), directly explaining why persistent institutional knowledge must
+  survive individual actor turnover (agents disappearing, developers leaving/joining,
+  `Agent_{t_1}≠Agent_{t_2}` not implying `InstitutionalMemory_{t_2}=∅`) -- **"this is exactly the problem
+  KnowledgeOS is designed to solve."**
+
+  **§17 delivers the file's hardest boundary statement, directly bearing on this reconstruction's
+  long-tracked CON-02 (Lord's characterization) question**: **"Krishna should NOT become an architectural
+  component"** -- a "Krishna lens" may ask "what would complete/global knowledge look like?" but the
+  architecture must never model `KrishnaService`, `LordKnowledgeRepository`, or an `omniscient agent`, as
+  doing so "would destroy the distinction between philosophical lens and engineering model."
+
+  **§18-§20 delivers the four-chapter validation summary** (Ch1: "knowledge does not automatically produce
+  action"; Ch2: "the Knower/current actor state is not identical to the complete historical knowledge
+  field"; Ch3: "knowledge must participate in action, but action must remain governed"; Ch4: "knowledge has
+  lineage, can be lost/distorted, and requires restoration through principled understanding") as "an
+  extremely coherent progression," and re-confirms the software architecture's own independently-derived
+  Reality→Observation→Evidence→Assessment→Determination→Governance→Decision→Authorization→Action→State
+  diagram closely matches this structure, crystallized as **"KnowledgeOS participates in a recursive
+  organizational learning loop. That is more important than any individual Gita metaphor."**
+
+  **§21-§23 delivers where the software is genuinely strongest** (`StablePrinciples≠ChangingImplementation`
+  stratification, cross-validated across DDD/governance/KnowledgeOS/deterministic assurance/Chapters 2-4)
+  and **KnowledgeOS's validated "negative identity"** -- explicitly defined by what it must NOT become:
+  repository, LLM, truth oracle, similarity engine, autonomous decision maker -- "a system's identity is
+  partly defined by what it is not," connected to "our Zero lens." **Delivers the honest carry-forward of
+  remaining weaknesses from "the old Step 8 assessment"**: Trust, Consensus, Permission→Power,
+  Power→Acceptance, Evidence→Legitimacy, Rules→Implementation remain genuinely incomplete, and explicitly
+  states the Gita "does not magically solve these gaps... they remain software/domain questions."
+
+  **§24 delivers a revised working architectural definition**, boxed: **"KnowledgeOS = governed
+  infrastructure for preserving, evaluating, relating, and evolving organizational epistemic states"** --
+  explicitly rejecting both "KnowledgeOS is a knowledge management architecture" and "KnowledgeOS is an AI
+  platform" as too weak, with `Reality≠Knowledge≠Decision≠Action`.
+
+  **§25-§27 delivers the review's single most important methodological discovery**, boxed: **"the Gita
+  lens is not primarily giving us components. It is giving us invariants and questions about transitions"**
+  -- worked through four explicit component-vs-question contrasts (`Krishna=Component` rejected in favor
+  of `CompleteKnowledge→BoundaryQuestion`; `Arjuna=ActorClass` rejected in favor of `ActorKnowledge≠
+  TotalKnowledge`; `Dharma=DatabaseField` rejected in favor of `NormativeIntegrity` as a question;
+  `Karma=WorkflowStep` rejected in favor of `Knowledge↔Action`). Delivers **the five-lens convergence
+  table** (DDD: "what does this mean in this bounded context?"; Mathematics: "what are the states,
+  relations and invariants?"; Statistics: "what evidence justifies the determination?"; Zero: "what is
+  unknown or outside the representation?"; Gita: "what persists, changes, acts, and carries wisdom across
+  states?"), plus the Lord/Vedanta lens as an even more global "what is the whole space within which these
+  states exist?" question, explicitly "useful without requiring us to turn metaphysics into software."
+
+  **§28 delivers the file's central governing rule for all future work**, boxed twice, symmetrically:
+  **"no Gita-derived equation becomes an architectural rule unless independent software/domain evidence
+  supports it"** AND **"no software structure becomes 'validated by Gita' merely because a metaphor can be
+  constructed"** -- explicitly "protects the intellectual integrity of the entire experiment."
+
+  **§29 consolidates fourteen high-confidence architectural invariants surviving the full 1-182 review**,
+  boxed `I_1` through `I_14`: `I1: Observation≠Interpretation`; `I2: Evidence≠Determination`;
+  `I3: Determination≠Decision`; `I4: Decision≠Authorization`; `I5: Authorization≠Execution`;
+  `I6: CurrentState≠HistoricalState`; `I7: Unknown≠False`; `I8: Conflict≠Error`; `I9: Authority≠Evidence`;
+  `I10: GovernanceAuthority≠EpistemicAuthority`; `I11: Provenance must survive transformation`;
+  `I12: Correction must preserve history`; `I13: Implementation may evolve without silently changing
+  constitutional invariants`; `I14: KnowledgeOS must not become the decision authority merely because it
+  stores the decision` -- "considerably more valuable than the speculative mathematical mappings."
+
+  **§30 explicitly demotes six named constructs to "research hypothesis," not architecture**:
+  `KnowledgeDecayFunction`, `EpistemicRewardFunction`, `DharmaThreshold`, `UniversalAcceptanceFunction`,
+  `NumericalTrustScore`, `NumericalWisdomScore` -- "they may become useful experimental constructs. But
+  they are not justified architecture."
+
+  **§31 delivers the final alignment verdict**: "the architecture is not invalidated by Chapters 1-4. Quite
+  the opposite" -- Separation+Persistence+Lineage+Action+Context+Humility-toward-uncertainty are all
+  reinforced, but the Gita does not validate every prior invented equation. Delivers **the three-layer
+  separation model** as "the most important architectural result of the review": Philosophical Lens
+  (Gita/Vedanta/Zero, generates questions) → Epistemic Theory (mathematics/statistics/evidence/uncertainty,
+  validated by evidence) → Software Architecture (EKS/PKS/AIP/DDD/governance) -- **"only the bottom layer
+  becomes software architecture."** Closes by explicitly **reframing Step 183's own reconstruction test**:
+  not merely "can we reconstruct why?" but whether "the entire architecture is capable of reconstructing
+  the evolution from observation→knowledge→determination→decision→action→new state, while preserving what
+  was known, what was unknown, who knew it, who had authority, and how the meaning changed over time."
+introduces:
+  - concept: "The formal Architecture + Gita Alignment Review as an unscheduled checkpoint inserted before Step 183, explicitly motivated by 'continuing linearly risks adding concepts faster than we validate them'"
+  - concept: "The traffic-light assessment table across nineteen architecture areas (12 Strong / 5 Incomplete / 5 explicitly Rejected)"
+  - concept: "'The architecture was not invented from Gita' -- core structures independently pre-dated the Chapter 4 mathematical mapping, evidenced by a concrete software finding (the withoutGlobalScopes() election-invariant asymmetry)"
+  - concept: "The explicit retraction of three prior Gita-derived mathematical formulas: the knowledge-decay exponential K_t^decayed=K_0e^{-λt}, the divine-intervention threshold function, and the binary epistemic-reward function"
+  - concept: "The methodological correction: Gita material must follow Source→Interpretation→Hypothesis→Experiment→Validation, never Source→Equation→Architecture"
+  - concept: "'Krishna should NOT become an architectural component' -- an explicit hard boundary against KrishnaService/LordKnowledgeRepository/omniscient-agent literalization"
+  - concept: "'The Gita lens is not primarily giving us components. It is giving us invariants and questions about transitions' -- the review's central methodological discovery"
+  - concept: "The five-lens convergence table (DDD/Mathematics/Statistics/Zero/Gita) plus the Lord/Vedanta lens's more global question"
+  - concept: "The symmetric hard rule: no Gita-derived equation becomes architecture without independent evidence, and no software structure becomes 'Gita-validated' merely via constructed metaphor"
+  - concept: "The consolidated fourteen high-confidence architectural invariants I1-I14 surviving the full Steps 1-182 review"
+  - concept: "The explicit demotion of six named constructs (KnowledgeDecayFunction, EpistemicRewardFunction, DharmaThreshold, UniversalAcceptanceFunction, NumericalTrustScore, NumericalWisdomScore) to research-hypothesis status, not architecture"
+  - concept: "The three-layer separation model: Philosophical Lens → Epistemic Theory → Software Architecture, with only the bottom layer becoming software architecture"
+  - concept: "The revised working KnowledgeOS definition: governed infrastructure for preserving, evaluating, relating, and evolving organizational epistemic states"
+  - concept: "The honest carry-forward of unresolved weak areas from 'the old Step 8 assessment' (Trust, Consensus, Permission→Power, Power→Acceptance, Evidence→Legitimacy, Rules→Implementation)"
+  - concept: "KnowledgeOS's validated 'negative identity': explicitly not a repository, LLM, truth oracle, similarity engine, or autonomous decision maker"
+  - concept: "The reframed Step 183 test: full-chain reconstruction of observation→knowledge→determination→decision→action→new state, preserving what was known/unknown/who knew/who had authority/how meaning changed"
+defines:
+  - concept: "The three-layer separation model"
+    definition: "A disciplined stratification of the entire KnowledgeOS research programme into three layers: the Philosophical Lens (Gita, Vedanta, the Zero lens) which generates questions but commits to no equations; the Epistemic Theory layer (mathematics, statistics, evidence, uncertainty formalisms) which may become formal theory only where independently justified by evidence; and the Software Architecture layer (EKS, PKS, AIP, DDD, governance mechanisms) which is the only layer that becomes actual software architecture -- named 'the most important architectural result of the review' because it retroactively explains why several earlier Gita-derived equations were legitimate as inspiration but illegitimate as architecture: they were promoted directly from the top layer to the bottom, skipping the required evidence-validation middle layer"
+  - concept: "'The Gita lens gives invariants and questions about transitions, not components'"
+    definition: "The correct way to use Gita source material architecturally is never to map a named entity (Krishna, Arjuna, Dharma, Karma) onto a named software component (a service, a class, a database field, a workflow step) -- that conflates metaphor with identity; the correct extraction is instead a structural question or invariant the entity's narrative role suggests (Krishna's completeness suggests asking 'what is the boundary of complete knowledge?'; Arjuna's limited knowledge suggests 'actor knowledge is not total knowledge'; Dharma's normative weight suggests asking about normative integrity as a property, not a stored value; Karma's action-orientation suggests investigating the knowledge-action relationship, not literally modeling 'a karma step')"
+  - concept: "The symmetric hard rule on Gita-architecture promotion"
+    definition: "Two paired, deliberately symmetric constraints protect the research programme's intellectual integrity: (1) no equation or formula derived from Gita interpretation may become an architectural rule unless independent software or domain evidence separately supports it -- a philosophical insight is not itself evidence; and (2) conversely, no existing software structure may be retroactively declared 'validated by the Gita' merely because an interpreter can construct a metaphor connecting them -- structural resemblance is not validation in either direction"
+refines:
+  - concept: "The entire 'Step N' arc's repeatedly qualitative Chapter-4-derived invocations across 0794-0807 (CurrentActorState≠CompleteSystemHistory, Memory≠Knowledge, Decision_t=f(K_t,Policy_t,Authority_t), etc.)"
+    refinement: "RETROSPECTIVELY VALIDATED as a class: this review explicitly confirms that the arc's practice throughout Steps 167-182 -- extracting a structural lesson or invariant from the Gita material without literalizing it into a software component -- was exactly the correct methodology, in contrast to the earlier (pre-Step-167, evidently pre-dating this reconstruction's current read-through) mathematical mappings (decay function, intervention threshold, reward function) that this review now explicitly retracts"
+  - concept: "0794's explicit self-disciplining of the Krishna/Atma metaphor ('a conceptual analogy, not a literal equivalence between theology and software architecture') and 0798's similar AI-capability≠architecture discipline"
+    refinement: "Both are directly reconfirmed and generalized here into the review's central hard rule and the explicit 'Krishna should NOT become an architectural component' boundary -- 0794's isolated self-correction is now shown to be an instance of a general governing principle the corpus applies retroactively across its own entire prior output, not a one-off catch"
+  - concept: "The long-tracked CON-02 open question (Lord's true characterization -- Lord_R2 analytical/synthesis role vs. Lord_R5 'action selector' role, still unresolved through 0780's Sarathi-conflation hypothesis)"
+    refinement: "NOT DIRECTLY RESOLVED as a textual/historical question (this file does not address which prior corpus author characterized 'Lord' which way), but this file DOES establish a forward-looking governance constraint directly relevant to CON-02's underlying stakes: regardless of how 'Lord' was previously characterized, the architecture going forward must never literalize Krishna/Lord into an architectural component (KrishnaService, LordKnowledgeRepository, omniscient agent) -- narrowing the practical consequence of CON-02 without resolving its historical-attribution question"
+  - concept: "The arc's proliferating invariant-notation series (KOS-EPI-001-018, C-001-C-040+, AFR-01-36, PF-1-9, AF-F-1-23, MV-F-1-22, GN-01-43, L1-L8/A-H at 0793-0794, R/H/U/Q at 0804)"
+    refinement: "This file introduces YET ANOTHER independent invariant series, I1-I14, explicitly presented as the consolidated survivors of the full Steps 1-182 review -- rather than reconciling the prior series, it appears to supersede or summarize them at a higher level of abstraction without explicit cross-referencing, adding to (rather than resolving) this reconstruction's long-tracked invariant-notation-proliferation observation"
+contradicts:
+  - concept: "The corpus's own earlier Gita-Chapter-4 mathematical derivation (not yet directly read by this reconstruction's sequential pass, evidently located earlier in the corpus's non-linear timeline) proposing K_t^decayed=K_0e^{-λt} as a knowledge-decay law"
+    contradiction: "This file explicitly and directly retracts this formula as unjustified architecture: 'I do not recommend keeping this as a KnowledgeOS architectural equation... that was our mathematical invention,' boxed Gita insight≠empirical decay law -- a genuine, named self-correction of prior corpus content, not a silent supersession"
+  - concept: "The corpus's own earlier divine-intervention threshold function 𝓘(t)=1 if Δ(K_t,I_t)>θ, mapping Krishna's Chapter-4 intervention"
+    contradiction: "Explicitly demoted from 'formal KnowledgeOS law' to 'conceptual inspiration for an anomaly/remediation mechanism' -- 'validated software architecture? No'"
+  - concept: "The corpus's own earlier binary/discrete epistemic-reward function R(K), reportedly implemented as verified=1.0/candidate=0.5/otherwise=0"
+    contradiction: "Explicitly rejected as 'too crude for the architecture we have now developed' and as directly conflicting with the arc's own established Confidence≠Truth and Verification≠Authority principles -- 'an epistemic reward score risks undoing our own work'"
+repeats: []
+bridge_candidates:
+  - "Locate and read the original corpus file(s) containing the retracted K_t^decayed=K_0e^{-λt}, divine-intervention threshold, and epistemic-reward formulas -- these evidently predate this reconstruction's current sequential position and were likely encountered (or will be encountered) elsewhere in the corpus's non-linear timeline; flag them explicitly as SUPERSEDED/RETRACTED when found, citing this file (0808) as the retracting authority."
+  - "Read whichever primary-corpus files follow, expecting the actual Step 183 (now reframed by this review) full-chain reconstruction test."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file as a CAPSTONE SELF-CRITIQUE MILESTONE -- the arc's first explicit, named retraction of specific prior mathematical formulas (knowledge decay, divine intervention, epistemic reward), directly instantiating this reconstruction's own foundational epistemic mandate at the corpus's own initiative."
+  - "dimension-registry.md: record the three-layer separation model (Philosophical Lens → Epistemic Theory → Software Architecture) as the review's single most important structural result and a directly reusable governance framework for the remainder of the corpus."
+  - "dimension-registry.md: record 'the Gita lens is not primarily giving us components. It is giving us invariants and questions about transitions' as the review's central, highly quotable methodological finding, and 'Krishna should NOT become an architectural component' as a hard boundary directly relevant to the long-tracked CON-02 question."
+  - "dimension-registry.md: record the fourteen consolidated invariants I1-I14 as a major (though still unreconciled against prior series) consolidation point, and flag the six explicitly demoted 'research hypothesis' constructs for tracking wherever they may resurface later in the corpus."
+  - "dimension-registry.md: flag for future synthesis work that this file references 'the old Step 8 assessment' -- implying an early, not-yet-directly-encountered-in-this-reconstruction's-sequential-pass architectural weakness assessment (Trust/Consensus/Permission→Power/etc.) that should be sought and cross-referenced when located."
+anchor_test:
+  anchor: "The entire arc's practice since Step 167 of extracting structural lessons from Gita material without literalizing it (0794's, 0798's isolated self-disciplining instances); the long-tracked CON-02 question about Lord's characterization; the arc's proliferating invariant-notation series; the corpus's own established epistemic-discipline mandate (never silently convert hypothesis→definition, analogy→mathematics, resemblance→identity) that this entire reconstruction project itself operates under"
+  supports_dimension: "Delivers the arc's first explicit, named, self-initiated retraction of specific prior mathematical formulas as unjustified architecture -- not a silent supersession but a directly quoted, reasoned rejection, exactly matching the epistemic discipline this reconstruction's own governing prompt requires of itself. Delivers the central methodological finding that the Gita lens should yield invariants and questions, never literal components, retroactively validating and generalizing 0794's and 0798's earlier isolated self-corrections into a stated general principle. Delivers a hard boundary against literalizing Krishna as an architectural component, directly narrowing (without fully resolving) the practical stakes of this reconstruction's long-tracked CON-02 question. Consolidates fourteen invariants surviving the full 1-182 review, though without reconciling them against the arc's many prior parallel notation series -- itself a genuine, honestly-flagged gap. Delivers the three-layer separation model, explicitly named the review's most important result, directly reusable for the remainder of the corpus and for this reconstruction's own eventual canonical synthesis work"
+  refines_or_contradicts: "explicitly and directly CONTRADICTS (retracts, not merely refines) three specific prior corpus mathematical formulas by name, citing this file itself as the authority for the retraction; generalizes and validates 0794's and 0798's isolated self-disciplining instances into a named general rule; narrows without resolving the long-tracked CON-02 question; adds a new invariant series (I1-I14) without reconciling it against the arc's prior series, extending rather than resolving this reconstruction's own tracked notation-proliferation observation"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§10-§12's explicit, named retraction of three specific prior formulas (K_t^decayed=K_0e^{-λt}, the divine-intervention threshold function, and the binary epistemic-reward function), each with a stated reason and an explicit verdict ('validated software architecture? No'), is directly checkable evidence of a genuine self-correction event, not a silent supersession -- the clearest example in the entire arc so far of the corpus applying its own falsification discipline to its own prior mathematical output."
+  - "§17's explicit statement 'Krishna should NOT become an architectural component,' listing three specific forbidden component names (KrishnaService, LordKnowledgeRepository, omniscient agent), is directly quotable evidence of a hard, named boundary directly relevant to this reconstruction's long-tracked CON-02 question."
+  - "§29's consolidated list of fourteen boxed invariants I1-I14, immediately following the explicit demotion of six named constructs to 'research hypothesis' in §30, is directly checkable evidence of the review's disciplined separation between what survives evidentiary scrutiny and what does not."
+undefined_concepts: []
+open_questions:
+  - "Where in the corpus's non-linear timeline the original K_t^decayed=K_0e^{-λt}, divine-intervention threshold, and epistemic-reward formulas were first introduced -- this reconstruction's sequential pass has not yet directly encountered them, implying they exist earlier in the corpus's actual timeline than the files processed so far, or in a not-yet-reached subdirectory; when found, they should be explicitly cross-referenced as RETRACTED BY 0808."
+  - "What 'the old Step 8 assessment' refers to -- an apparently early architectural weakness assessment (rating Trust/Consensus/Permission→Power/etc. as low-confidence) that this reconstruction has not yet directly identified in its sequential pass; likely located earlier in the corpus's non-linear timeline."
+  - "Whether the newly consolidated I1-I14 invariant series was ever explicitly reconciled with the arc's many prior parallel notation series, or itself superseded again by a later consolidation."
+  - "Whether the reframed Step 183 test (full-chain reconstruction preserving what was known/unknown/who knew/who had authority/how meaning changed) was actually delivered by the next file, given this review's insertion before it."
+tier2_triggered: true
+tier2_reason: "CAPSTONE SELF-CRITIQUE MILESTONE: the arc's first explicit, named, self-initiated retraction of specific prior mathematical formulas (knowledge-decay exponential, divine-intervention threshold, binary epistemic-reward function) as unjustified architecture, exactly instantiating this reconstruction's own foundational epistemic mandate through the corpus's own self-applied discipline. Establishes a symmetric hard rule governing all future Gita-architecture interaction, and a hard boundary explicitly forbidding literalization of Krishna as a software component -- directly narrowing (without fully resolving) the long-tracked CON-02 question. Delivers the central methodological finding that the Gita lens yields invariants and questions, never components, and the three-layer separation model (Philosophical Lens → Epistemic Theory → Software Architecture), explicitly named the review's most important result. Consolidates fourteen high-confidence invariants surviving the full 1-182 review, while honestly carrying forward unresolved weaknesses (Trust/Consensus/Permission→Power) from an as-yet-unlocated earlier 'Step 8 assessment.' Reframes the upcoming Step 183 test into a more demanding full-chain reconstruction requirement."

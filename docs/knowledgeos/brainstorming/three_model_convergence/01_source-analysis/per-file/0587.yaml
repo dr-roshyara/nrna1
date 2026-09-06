@@ -1,0 +1,277 @@
+sequence: 587
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-093700_step-025i-knowledge-identity-algebra.md
+title: "LANDMARK OF FIRST-ORDER IMPORTANCE TO THE THREE-MODEL-CONVERGENCE MANDATE: The Corpus's First Dedicated, Rigorous Formal Treatment of Knowledge Atma — Explicitly Distinguished From Knower Atma for the First Time ('KnowledgeAtma≠KnowerAtma. A Human Knower Is an Actor/Source. Knowledge Atma Is an Epistemic Entity'), Grounded in a Worked Independent-Knowers (Alice/Bob) Example; Three Rejected Candidate Definitions Before Converging on a Two-Level Meaning-Identity/Record-Identity Split; a Five-Layer World→Observation→Representation→Assertion→Knowledge Model Resolving 'What Is Observation?'; Three Distinct Identity Relations (Exact/Structural/Semantic); Six Falsification Tests, All PASS; a Further Pipeline Correction (Observation→Representation→Evidence→Assertion→Assessment→Knowledge); Verdict '25I — PASS, With One Semantic Boundary Still Open'; Opens Step 25J (Semantic Equivalence, Refinement, Contradiction and Knowledge Merge)"
+date: "2026-08-28"
+bytes: 22163
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 25I -- Knowledge Identity Algebra', explicitly committed at 0586 as the corpus's first dedicated formal treatment of Knowledge Atma and Knower Atma, bridging the mathematical/DDD arc to the corpus's earlier Vedantic/Gita philosophical thread for the first time with genuine rigor"
+source_role: PRIMARY_RESEARCH
+canonical_source: 587
+importance: critical
+confidence: high
+about: >
+  Opens "Step 25I — Knowledge Identity Algebra," confirming this is "the right next step" beyond "what is
+  evidence?" toward the deeper question: "what exactly is the identity of a piece of knowledge, and how
+  does KnowledgeOS distinguish the underlying observation from its representations, assertions,
+  interpretations, and derivations?" -- explicitly framed as necessary for computing duplication,
+  provenance, contradiction, refinement, versioning, temporal evolution, evidence independence, and
+  knowledge merging, and ultimately for defining "a stable **Knowledge Atma**."
+
+  **Delivers the file's foundational five-layer model, directly resolving the corpus's much earlier
+  recurring "what is observation?" concern**: `World(W)→Observation(O)→Representation(R)→Assertion(A)→
+  Knowledge(K)`, with each layer given a precise formal role -- World (what actually exists), Observation
+  (a bounded interaction/event producing an observable result, formalized as
+  `O=(Subject,Target,Method,Time,Environment,RawResult,Actor)`, worked through a concrete Nexus-API-query
+  instance, explicitly NOT "everything"), Representation (the encoded artifact -- text, JSON, database
+  row, image, log, document, API response), Assertion (a proposition extracted or constructed from a
+  representation), Knowledge object (a governed epistemic object containing the assertion plus its
+  epistemic context). Delivers the sharpened correction **`Observation≠Evidence`**
+  (`Evidence=Transform(O)`), directly refining the corpus's earlier looser usage of these terms
+  interchangeably.
+
+  **Delivers the file's central formal deliverable -- a rigorous set of identity distinctions worked
+  through six paired experiments**: RepresentationIdentity via hashing (`Hash(R)`, byte-level identity);
+  **Same representation, different observation** (identical script output at two different times: `R_1=
+  R_2` but `O_1≠O_2` because `Time(O_1)≠Time(O_2)`) yielding
+  **`RepresentationIdentity≠ObservationIdentity`**; **Same observation, different representations**
+  (machine output vs. human description of the same event: `R_1≠R_2` while both trace to `O_1`); **Same
+  assertion, different evidence** (database record vs. administrator statement both supporting the
+  identical proposition: `A(E_1)=A(E_2)` but `E_1≠E_2`) yielding **`EvidenceIdentity≠AssertionIdentity`**.
+  Delivers a canonical Assertion structure `(Subject,Predicate,Object,Context)`, worked through a
+  three-paraphrase normalization example ("Nexus version is 3.69" / "Nexus runs version 3.69.0" /
+  "Installed Nexus = 3.69.0" normalizing to one canonical form).
+
+  **Delivers a careful treatment of semantic equivalence as genuinely harder than exact identity**: a
+  worked "the Nexus server is current" vs. "Nexus 3.69.0 is installed" example demonstrates that
+  equivalence depends on a reference time and authoritative version source --
+  `SemanticEquivalent(A_1,A_2,C,t)` is explicitly context-dependent, with the crucial caution that
+  `LLM-equivalence must not automatically become DeterministicIdentity`. **Delivers the file's central
+  formal deliverable -- three genuinely distinct, non-interchangeable identity relations**: Exact identity
+  (`x≡_exact y`, same canonical bytes/identifier), Structural identity (`x≡_struct y`, same normalized
+  structure), Semantic equivalence (`x≡_sem,C y`, same meaning under a specified context) -- a clean,
+  formally precise taxonomy not previously delivered this rigorously anywhere in the corpus.
+
+  **Delivers the central Knowledge-identity problem, worked through a concrete motivating example**: the
+  same proposition observed in two different years (`K_1: A, observed 2025` vs. `K_2: A, observed 2026`)
+  demonstrates that knowledge identity cannot be assertion alone -- it must include epistemic context.
+  Delivers a first conceptual formula `KID=CanonicalAssertion+Context+EpistemicState+Validity`, then
+  **the file's central methodological deliverable -- three explicitly rejected candidate definitions of
+  Knowledge Atma before converging on the correct structure**: Candidate A (`Atma(K)=Identity(A)`,
+  rejected -- "A-identity alone is insufficient," since it collapses distinct epistemic records supporting
+  the same proposition); Candidate B (`Atma(K)=Identity(E)`, rejected -- "E-identity alone is
+  insufficient," since it would treat independent corroborating evidence as different Atmas); Candidate C
+  (`K=(A,C,V,P,S)`, closer but still flawed since provenance can change without changing the underlying
+  proposition) -- this disciplined, self-correcting derivation process, explicitly documenting and
+  rejecting its own intermediate attempts rather than presenting only a final polished answer, is a
+  distinctive and valuable methodological feature of this file.
+
+  **Delivers the file's central architectural resolution -- a two-level identity split**:
+  **`KnowledgeMeaningIdentity`** (what proposition/context does this knowledge represent?) versus
+  **`KnowledgeRecordIdentity`** (which concrete epistemic record/version is this?), explicitly stated to
+  "solve many problems," worked through the corpus's now-familiar independent-corroboration example: two
+  evidence sources supporting the same proposition share `MeaningIdentity` while carrying distinct
+  `RecordIdentity` -- "exactly what we need for evidence aggregation," directly resolving the
+  corroboration-counting problem the corpus has revisited across 0562/0573/0578/0580.
+
+  **Delivers Knowledge refinement** (`A_2⪰A_1`, more detail rather than contradiction, worked via a
+  version→build-number example) and a careful, context-dependent formalization of Contradiction
+  (`A_1⊥A_2` only when Subject/Context/Time all align, reconfirming 0567's/0568's/0573's/0574's/0582's
+  temporal-scope-conflict discipline) and Temporal evolution (differing-time assertions are `A_1→A_2`
+  state evolution, never contradiction). Delivers a stateful knowledge-state formula
+  `K_t=State(Assertions,Evidence,Context,Time,Provenance,Validity,Dependencies)`, explicitly replacing
+  the naive "bag of facts" framing `K={A_1,A_2,...}`.
+
+  **Delivers a precise AI/human provenance treatment**: an AI-generated assertion is `Assertion`, but
+  explicitly `≠independent observation` (its identity does not establish truth or independent evidentiary
+  weight); a human assertion is similarly distinguished by whether it traces to personal observation or
+  secondhand evidence, formalized via two contrasted worked provenance-graph lineage chains (LLM-
+  extraction path vs. human-observation path) -- "these should not have identical epistemic treatment."
+  Delivers **Information compression and auditability**: derived knowledge (e.g. a 50-byte assertion from
+  a 10MB log) must retain lineage to its source representation rather than discarding it, since
+  provenance/auditability would otherwise be lost -- **`DerivedKnowledge must retain lineage to source
+  representations`**.
+
+  **Delivers the file's key structural insight -- knowledge identity must be governed, not merely
+  content-derived**: `Hash(currentRepresentation)` is explicitly insufficient as a knowledge-object
+  identity, since identity must persist through transformation while state evolves --
+  **`KnowledgeIdentity is persistent; KnowledgeState evolves`**, formalized via an explicit non-mutation
+  state-transition requirement (`K_1--StateTransition-->K_2`, never in-place mutation), directly extending
+  0565's/0574's/0582's history-preservation discipline into the knowledge-identity layer specifically.
+  Delivers an event-sourcing formalization `K_t=Fold(Observations_{0..t},Rules)` and formal deterministic
+  replay `Replay(Events_{0..t},ModelVersion)→K_t`, explicitly named "one of the strongest computational
+  properties we have obtained."
+
+  **Delivers EpistemicLag reconfirmed within this new identity framework** (`W_{t+1}≠W_t` while
+  `K_{t+1}=K_t` when the world changes without observation -- reconfirming 0574's central
+  `RealityCanChangeWithoutKnowledgeChanging` finding via a fresh derivation) and Freshness/staleness as
+  explicitly domain-specific policy (`FreshnessPolicy` belongs to the domain/contract, not a universal
+  formula).
+
+  **Delivers Knowledge equivalence as a genuinely distinct, purpose-relative relation**: `K_1≈_C K_2`,
+  worked through a concrete example where `NexusVersion=3.69` and `NexusVersion=3.69.0` are equivalent for
+  a migration policy but NOT for a patch-compliance policy -- `KnowledgeEquivalence is purpose-relative`.
+  **Delivers a crucial reframing of Zero's evaluation question**: Zero should never ask "are these
+  knowledge objects identical?" but rather "is the available knowledge SUFFICIENT for this requirement?"
+  (`Sufficient(K,r,C)`), formally separating `Identity` from `Sufficiency` -- a genuinely important
+  clarification directly relevant to 0567's/0582's Zero/sufficiency machinery, resolving a potential
+  ambiguity about how identity relates to Zero's satisfaction evaluation.
+
+  **Delivers the file's central formal deliverable -- the provisional Knowledge Atma definition, explicitly
+  and deliberately marked as provisional, requiring further testing**: **"Knowledge Atma is the stable
+  identity of a governed epistemic entity whose meaning is determined by its canonical assertion and
+  applicable context, while its concrete records, evidence, representations and derivations may evolve
+  independently,"** formalized as `KAID=Identity(CanonicalAssertion,Context)`, with a separate `KRecordID`
+  identifying a particular version/record of that entity.
+
+  **Delivers the file's most historically and mandate-significant deliverable -- an explicit list of what
+  Knowledge Atma is NOT, culminating in the corpus's first rigorous formal distinction between Knowledge
+  Atma and Knower Atma**: Knowledge Atma is explicitly stated to be none of `DocumentID`, `EvidenceID`,
+  `LLMOutputID`, or `HumanID`, and, most critically: **`KnowledgeAtma≠KnowerAtma`**, with the precise
+  clarifying statement **"a human knower is an actor/source. Knowledge Atma is an epistemic entity."**
+  This is the first genuinely rigorous, worked mathematical distinction between the two Atma concepts
+  anywhere in the corpus, directly building on and finally delivering what 0586's pivotal closing turn
+  explicitly promised. **Delivers the concrete grounding example, of first-order significance to why the
+  distinction is architecturally necessary**: Alice and Bob independently observe the identical Nexus
+  version (`Knower(Alice)≠Knower(Bob)`, `O_A≠O_B`, `E_A≠E_B`), yet both support the `SameAssertion` --
+  demonstrating that `SameKnowledgeMeaning` can genuinely coexist with `DifferentKnowers`, explicitly
+  identified as "exactly the distinction our architecture requires" -- the corpus's clearest concrete
+  worked demonstration that Knowledge Atma (the epistemic entity/proposition) and Knower Atma (the
+  observing/asserting agent) must be formally separate mathematical objects, directly resolving the
+  question 0586's closing turn had opened.
+
+  **Delivers a consolidated identity graph diagram**: `World→Observation→Representation→Assertion→
+  Knowledge Meaning ID`, branching into distinct `Knowledge R1`/`Knowledge R2` records, each traced back
+  to its own Evidence source (Human vs. LLM) -- "much cleaner than treating everything as 'knowledge.'"
+
+  **Delivers a precise computability assessment**: exact representation identity (`Hash(R)`), observation
+  identity (structured event ID), assertion identity (canonical serialization+hash), knowledge record
+  identity (stable ID+version), provenance (graph relations), temporal validity (interval evaluation) --
+  ALL "ordinary computation." **Delivers the file's key precise localization of the one genuinely hard
+  remaining problem**: `SemanticEquivalent(A_1,A_2,C)` requires ontology, domain rules, external version
+  data, and potentially LLM semantic interpretation -- **`Semantic equivalence is the difficult boundary,
+  not identity itself`**, reconfirming the `SemanticEquivalenceCandidate`/governed-acceptance pattern
+  (0562/0578/0580/0584's recurring LLM-candidate-then-governed-acceptance discipline).
+
+  **Delivers six labeled falsification tests, ALL PASS**: exact byte-identical files created at different
+  times correctly distinguish observation identity from representation identity; two different documents
+  supporting the same proposition correctly share assertion identity while differing at the representation
+  level; the same assertion recorded at different times correctly becomes distinct temporal knowledge
+  records; human and LLM producing the identical assertion correctly retain distinguishable provenance and
+  evidentiary independence despite sharing assertion meaning; an LLM paraphrase of an already-known
+  document correctly produces `NewWorldEvidence=0` despite `RepresentationGain>0`, explicitly flagged "a
+  very important invariant"; and a world change occurring without observation correctly leaves `K`
+  unchanged.
+
+  **Delivers Step 25I's verdict, explicitly weaker than a full unqualified PASS**: **"25I — PASS, with one
+  semantic boundary still open,"** delivering the file's headline stabilization result: the clean five-way
+  separation `World≠Observation≠Representation≠Assertion≠Knowledge` and the three-way separation
+  `Identity≠Equivalence≠Sufficiency`, explicitly called "a very important stabilization of the theory."
+  Delivers the file's honestly-scoped statement of the single remaining unresolved issue -- Semantic
+  Equivalence and Refinement, which "cannot be solved by hashes" and requires ontology, domain semantics,
+  context, rules, and potentially an LLM -- with the crucial, reassuring qualification that the corpus now
+  knows "exactly where the non-deterministic/semantic boundary is," explicitly contrasted as "much better
+  than vaguely saying 'AI understands meaning.'"
+
+  **Delivers the corpus's most complete single consolidated full-loop architecture notation to date**:
+  `WORLD→OBSERVATION→EVIDENCE→ASSERTION→KNOWLEDGE→CONTRACT→ZERO→LORD→SĀRATHI→DECISION→ACTION→WORLD`, with
+  Governance controlling admissibility throughout, and the explicit reconfirmation "the entire
+  computational kernel remains feasible on normal PC hardware."
+
+  **Delivers the file's final, genuinely significant architectural correction to the corpus's own theory**:
+  the earlier `Evidence→Knowledge` shorthand (previously already corrected once at 0573 to
+  `Evidence→Assessment→Assertion→Commitment→KnowledgeState`) is now further refined into the more precise
+  six-stage pipeline **`Observation→Representation→Evidence→Assessment→Assertion→Knowledge`** (as stated
+  in the file's own text), explicitly justified as "a better DDD boundary" separating an observation-as-
+  event from a representation-as-artifact from evidence-as-epistemically-usable-artifact from
+  assertion-as-proposition from assessment-as-support-evaluation from knowledge-as-governed-resulting-
+  epistemic-state -- a second genuine theory correction produced through dedicated verification work, this
+  time triggered specifically by the identity-algebra analysis rather than an adversarial falsification
+  exercise.
+
+  **Closes by explicitly declining to jump to another abstract concept**, instead proposing to "attack the
+  semantic boundary experimentally." **Opens "Step 25J — Semantic Equivalence, Refinement, Contradiction
+  and Knowledge Merge,"** proposing five concrete worked assertion variants
+  (`A_1="Nexus 3.69"`, `A_2="Nexus version 3.69.0"`, `A_3="Nexus is up to date"`, `A_4="Nexus 3.70"`,
+  `A_5="Nexus 3.69 was installed last year"`) to be algorithmically tested for six distinct relations
+  (Equivalent? Refinement? Contradiction? TemporalEvolution? IndependentEvidence? Mergeable?) --
+  explicitly framed as "likely to be one of the last genuinely difficult semantic problems before we can
+  claim that the KnowledgeOS mathematical model has a computationally closed core." As with the entire
+  25A-25I sub-arc, no report of actual executed code appears; this remains rigorous symbolic/formal
+  reasoning throughout.
+introduces:
+  - concept: "The corpus's first rigorous, worked formal distinction between Knowledge Atma and Knower Atma, culminating a pattern of increasingly frequent passing philosophical-thread callbacks (0567, 0582, 0584, 0586) into a genuine, substantive mathematical treatment — 'a human knower is an actor/source. Knowledge Atma is an epistemic entity'"
+  - concept: "The Alice/Bob independent-knowers worked example, of first-order importance to the Knowledge-Atma/Knower-Atma distinction: SameKnowledgeMeaning can coexist with DifferentKnowers, explicitly identified as 'exactly the distinction our architecture requires'"
+  - concept: "A disciplined, self-documenting derivation of Knowledge Atma's provisional definition, explicitly presenting and rejecting two intermediate candidate formulations (assertion-identity alone; evidence-identity alone) before converging on the correct two-level structure — a distinctive methodological feature showing the reasoning process itself, not only a final answer"
+  - concept: "The two-level identity split KnowledgeMeaningIdentity vs KnowledgeRecordIdentity, resolving the corpus's long-standing evidence-corroboration-counting problem (independently supporting evidence sources share meaning identity while carrying distinct record identity)"
+  - concept: "A resolved five-layer World≠Observation≠Representation≠Assertion≠Knowledge model, directly answering the corpus's original 'what is observation?' concern by giving Observation a precise, bounded formal structure rather than an undifferentiated catch-all"
+  - concept: "Three genuinely distinct, non-interchangeable identity relations — exact identity, structural identity, semantic equivalence — the corpus's first formally precise identity taxonomy"
+  - concept: "The reframing of Zero's evaluation question from 'are these knowledge objects identical?' to 'is the available knowledge sufficient for this requirement?', formally separating Identity from Sufficiency"
+  - concept: "'DerivedKnowledge must retain lineage to source representations' — an explicit auditability requirement preventing knowledge compression from discarding provenance"
+  - concept: "'KnowledgeIdentity is persistent; KnowledgeState evolves' — knowledge identity must never be a mere hash of current content, since it must persist through transformation while the underlying state legitimately changes"
+  - concept: "The precise localization of the one genuinely hard remaining problem — semantic equivalence, not identity itself — explicitly contrasted as far more useful than vaguely claiming 'AI understands meaning'"
+  - concept: "A second genuine theory correction to the corpus's own evidence-to-knowledge pipeline (Observation→Representation→Evidence→Assessment→Assertion→Knowledge), refining 0573's earlier correction with an explicit Representation stage"
+  - concept: "'Step 25J — Semantic Equivalence, Refinement, Contradiction and Knowledge Merge', explicitly framed as likely one of the last genuinely difficult semantic problems before the KnowledgeOS mathematical model can claim a computationally closed core"
+defines:
+  - concept: "Formal Observation"
+    definition: "O=(Subject,Target,Method,Time,Environment,RawResult,Actor) — a bounded interaction/event producing an observable result, distinct from Evidence (Evidence=Transform(O))"
+  - concept: "Three identity relations"
+    definition: "Exact identity (x≡_exact y, same canonical bytes/identifier); Structural identity (x≡_struct y, same normalized structure); Semantic equivalence (x≡_sem,C y, same meaning under context C)"
+  - concept: "Two-level knowledge identity"
+    definition: "KnowledgeMeaningIdentity (what proposition/context does this knowledge represent?) vs KnowledgeRecordIdentity (which concrete epistemic record/version is this?) — two independently supporting evidence sources share MeaningIdentity but have distinct RecordIdentity"
+  - concept: "Provisional Knowledge Atma definition"
+    definition: "'The stable identity of a governed epistemic entity whose meaning is determined by its canonical assertion and applicable context, while its concrete records, evidence, representations and derivations may evolve independently.' Formalized: KAID=Identity(CanonicalAssertion,Context), with KRecordID for the specific version/record — explicitly marked provisional"
+  - concept: "Knowledge Atma vs Knower Atma"
+    definition: "KnowledgeAtma≠KnowerAtma — a human knower is an actor/source; Knowledge Atma is an epistemic entity. Different knowers, different observations, different evidence can all support the identical assertion (SameKnowledgeMeaning with DifferentKnowers)"
+  - concept: "Knowledge equivalence (purpose-relative)"
+    definition: "K_1≈_C K_2 — epistemic equivalence for a specific context/purpose, distinct from identity; NexusVersion=3.69 and 3.69.0 may be equivalent for a migration policy but not for a patch-compliance policy"
+  - concept: "Refined evidence-to-knowledge pipeline (second correction)"
+    definition: "Observation→Representation→Evidence→Assessment→Assertion→Knowledge — a further, more precise DDD-boundary refinement of the pipeline first corrected at 0573"
+refines:
+  - concept: "0586's pivotal closing turn explicitly naming 'Atma / Knowledge Identity' as the corpus's next mathematical frontier and directly invoking Knowledge Atma and Knower Atma"
+    refinement: "Directly and substantively delivered: the corpus's first rigorous, worked mathematical distinction between the two Atma concepts, grounded in a concrete independent-knowers example, with an explicit provisional formal definition of Knowledge Atma"
+  - concept: "The corpus's much earlier, recurring, informal use of 'observation' throughout the entire prior arc"
+    refinement: "Given its first precise, bounded formal structure (O=(Subject,Target,Method,Time,Environment,RawResult,Actor)), directly resolving the original 'what is observation?' concern first raised much earlier in the research program"
+  - concept: "0573's first correction to the Evidence→Knowledge pipeline (adding an explicit Commitment stage)"
+    refinement: "Further refined into a six-stage pipeline explicitly separating Observation (event), Representation (artifact), Evidence (epistemically usable artifact), Assertion (proposition), Assessment (support evaluation), and Knowledge (governed resulting state) — 'a better DDD boundary'"
+  - concept: "0562's/0573's/0578's/0580's recurring evidence-corroboration-counting problem (multiple sources supporting one proposition risking double-counting or improper identity collapse)"
+    refinement: "Definitively resolved via the two-level KnowledgeMeaningIdentity/KnowledgeRecordIdentity split, explicitly stated to be 'exactly what we need for evidence aggregation'"
+  - concept: "0565's/0574's/0582's history-preservation and non-mutation discipline"
+    refinement: "Extended directly to knowledge-object identity itself: 'KnowledgeIdentity is persistent; KnowledgeState evolves', with an explicit non-mutation state-transition requirement rather than in-place identity change"
+  - concept: "0574's central RealityCanChangeWithoutKnowledgeChanging finding"
+    refinement: "Independently reconfirmed a further time within this new identity-algebra framing via a fresh EpistemicLag derivation"
+  - concept: "0567's/0582's Zero/sufficiency machinery"
+    refinement: "Clarified with a crucial distinction: Zero's Sufficient(K,r,C) evaluation is explicitly about sufficiency, never identity — resolving a potential ambiguity about how the newly-formalized identity relations interact with Zero's own evaluation logic"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25J — Semantic Equivalence, Refinement, Contradiction and Knowledge Merge' is executed as its own dedicated corpus file, and whether it successfully closes the one remaining semantic boundary this file explicitly identified as still open"
+  - "Trace whether the provisional Knowledge Atma definition (KAID=Identity(CanonicalAssertion,Context)) is later tested, refined, or formally finalized in a subsequent file, given this file's own explicit caution that it should be 'tested further'"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the corpus's first rigorous, worked formal distinction between Knowledge Atma and Knower Atma, grounded in the Alice/Bob independent-knowers example, and the disciplined three-candidate derivation process (rejecting assertion-only and evidence-only definitions) converging on the two-level KnowledgeMeaningIdentity/KnowledgeRecordIdentity split."
+  - "dimension-registry.md: record the resolved five-layer World≠Observation≠Representation≠Assertion≠Knowledge model directly answering the corpus's original 'what is observation?' concern, the three distinct identity relations (exact/structural/semantic), and the precise localization of semantic equivalence as the one remaining genuinely hard problem."
+  - "dimension-registry.md: record the provisional Knowledge Atma definition, purpose-relative knowledge equivalence, the reframing of Zero's evaluation as Sufficiency-not-Identity, six falsification tests (all PASS), the verdict '25I — PASS, with one semantic boundary still open,' the second correction to the evidence-to-knowledge pipeline (adding an explicit Representation stage), and 'Step 25J — Semantic Equivalence, Refinement, Contradiction and Knowledge Merge' as the next research phase."
+anchor_test:
+  anchor: "0586's pivotal closing turn naming 'Atma / Knowledge Identity' and directly invoking Knowledge Atma/Knower Atma; the corpus's much earlier, recurring 'what is observation?' concern; 0573's first pipeline correction; 0562's/0573's/0578's/0580's recurring evidence-corroboration problem; 0565's/0574's/0582's history-preservation discipline; 0574's RealityCanChangeWithoutKnowledgeChanging finding"
+  supports_dimension: "LANDMARK OF FIRST-ORDER IMPORTANCE TO THE THREE-MODEL-CONVERGENCE MANDATE delivering the corpus's first dedicated, substantive, mathematically rigorous treatment of Knowledge Atma, culminating a pattern of increasingly frequent passing philosophical-thread callbacks (0567, 0582, 0584, 0586) into a genuine formal result — the explicit, worked distinction KnowledgeAtma≠KnowerAtma, grounded in a concrete independent-knowers example, directly fulfilling the commitment made at 0586. Delivers a disciplined, self-documenting derivation process explicitly presenting and rejecting intermediate candidate definitions before converging on a genuinely useful two-level identity structure (meaning identity vs. record identity) that definitively resolves the corpus's long-standing evidence-corroboration-counting problem. Delivers the corpus's first precise, bounded formal structure for Observation, directly resolving the original 'what is observation?' concern raised much earlier in the research program, three genuinely distinct identity relations (exact/structural/semantic), and a second genuine correction to the corpus's own evidence-to-knowledge pipeline. Delivers six falsification tests all passing and a carefully honest verdict explicitly acknowledging one remaining open semantic boundary rather than overclaiming full closure, closing by opening the next concrete experiment aimed at that boundary"
+  refines_or_contradicts: "directly and substantively fulfills 0586's explicit commitment to formalize Knowledge Atma and Knower Atma; resolves the corpus's much earlier 'what is observation?' concern; extends 0573's first pipeline correction with a further, more precise refinement; definitively resolves the recurring evidence-corroboration problem from 0562/0573/0578/0580; extends 0565's/0574's/0582's history-preservation discipline to knowledge-object identity itself; independently reconfirms 0574's RealityCanChangeWithoutKnowledgeChanging finding; clarifies 0567's/0582's Zero/sufficiency machinery; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit, worked Alice/Bob independent-knowers example (different Knower, different Observation, different Evidence, yet identical supported Assertion) is directly checkable, concrete evidence grounding the abstract KnowledgeAtma≠KnowerAtma distinction in an inspectable, realistic scenario rather than only a philosophical assertion, and is the corpus's clearest demonstration that the two concepts are genuinely mathematically distinct rather than merely terminologically distinguished."
+  - "The disciplined presentation and explicit rejection of two intermediate candidate Knowledge Atma definitions (Candidate A: assertion-identity alone, rejected for collapsing distinct epistemic records; Candidate B: evidence-identity alone, rejected for treating independent corroboration as different Atmas) before converging on the two-level meaning/record split is directly checkable evidence of genuine mathematical derivation work, not merely assertion of a predetermined conclusion."
+  - "The formal Observation structure O=(Subject,Target,Method,Time,Environment,RawResult,Actor), worked through a concrete instance, is directly checkable, implementation-ready evidence resolving the corpus's much earlier, recurring, informal use of 'observation' into a precise, bounded data structure."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25J — Semantic Equivalence, Refinement, Contradiction and Knowledge Merge' is executed as its own dedicated corpus file, and whether it successfully closes the one remaining semantic boundary this file explicitly left open"
+  - "Whether the provisional Knowledge Atma definition (KAID=Identity(CanonicalAssertion,Context)) is later tested, refined, or formally finalized, given the file's own explicit caution that it requires further testing"
+tier2_triggered: true
+tier2_reason: "LANDMARK OF FIRST-ORDER IMPORTANCE TO THE THREE-MODEL-CONVERGENCE MANDATE delivering the corpus's first dedicated, substantive, mathematically rigorous treatment of Knowledge Atma, directly fulfilling the explicit commitment made at 0586 to formalize this concept and its distinction from Knower Atma. Delivers the corpus's clearest worked mathematical grounding for KnowledgeAtma≠KnowerAtma via a concrete independent-knowers (Alice/Bob) example — a human knower is an actor/source, while Knowledge Atma is an epistemic entity — the culmination of a pattern of increasingly frequent passing philosophical-thread callbacks (0567, 0582, 0584, 0586) into a genuine, tested formal result of direct relevance to this reconstruction's own research mandate of reconstructing and eventually comparing multiple theoretical foundations of KnowledgeOS. Delivers a disciplined, self-documenting derivation process explicitly presenting and rejecting two intermediate candidate identity definitions before converging on a genuinely useful two-level structure (meaning identity vs. record identity) that definitively resolves the corpus's long-standing evidence-corroboration-counting problem across multiple prior files. Delivers the corpus's first precise, bounded formal structure for Observation, directly resolving the research program's original 'what is observation?' concern, three genuinely distinct identity relations, and a second, genuine correction to the corpus's own evidence-to-knowledge pipeline. Delivers six falsification tests all passing and a carefully honest, appropriately qualified verdict acknowledging one remaining open semantic boundary rather than overclaiming full closure, closing by opening the concrete next experiment (Step 25J) aimed directly at that boundary."

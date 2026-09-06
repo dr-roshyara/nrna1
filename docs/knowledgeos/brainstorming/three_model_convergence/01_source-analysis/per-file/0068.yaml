@@ -1,0 +1,40 @@
+sequence: 68
+path: docs/knowledgeos/brainstorming/20260821-121929-business-translator-capability.md
+title: Business Translator Capability Proposal
+date: 2026-08-21
+bytes: 9171
+
+model:
+  primary: c1
+  secondary: [governance]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: low
+confidence: high
+
+about: "Proposes a Business Translator/Executive Interpretation capability between Architecture/Governance and human decision-makers, distinct from the Communication Engineer role (0050)."
+
+introduces:
+  - business_translator_capability
+
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: communication_capability_as_cross_cutting
+    canonical_source: 50
+    novelty: low
+
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence: []
+undefined_concepts: [knowledge]
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: "Minor role-model extension; no formal/math/Gita/Kernel content."

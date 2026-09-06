@@ -1,0 +1,147 @@
+sequence: M0044
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-004757_i-j-good-probability-and-the-weighing-of-evidence-seven-missing-elements.md
+title: "I. J. Good, Probability and the Weighing of Evidence (1950) -- Seven Missing Elements: Weight of Evidence as a Hypothesis-Relative, Non-Additive-Under-Dependence Relation; Eighteen New EW-Numbered Candidate Invariants; the Sixth Occurrence of Brown-Hwang and Seventh of Freedman; and a New Unattributed Citation (Dretske)"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: x
+  secondary_note: "a rigorous new primary source (I. J. Good's 1950 statistical-epistemology monograph) audited for KnowledgeOS consequences -- the first source in this pass to formalize evidence as intrinsically comparative/relational (hypothesis-vs-hypothesis) rather than an intrinsic scalar property, and to directly engage the still-open Select/kernel-primitive debate from M0037/M0041"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0044
+importance: critical
+confidence: high
+about: >
+  Audits I. J. Good's *Probability and the Weighing of Evidence* (1950) for KnowledgeOS
+  consequences, explicitly framed as filling a gap: "KnowledgeOS has been developing evidence,
+  probability, uncertainty, hypotheses, validation and determination separately. Good gives us a
+  rigorous conceptual bridge between them: evidence changes the relative standing of hypotheses."
+  The central finding is explicitly NOT "make KnowledgeOS Bayesian" but to introduce an
+  evidence-assessment layer between Evidence and Determination.
+
+  **DELIVERS WEIGHT OF EVIDENCE AS AN INTRINSICALLY RELATIONAL (HYPOTHESIS-COMPARATIVE) OBJECT**:
+  F(E;H,H̄) = O(H|E)/O(H) = P(E|H)/P(E|H̄) (the likelihood ratio), with logarithmic weight
+  W=log F making evidence additive across independent observations (Final plausibility = Initial
+  plausibility + Weight of evidence) -- but explicitly non-additive under dependence: W(E_1,E_2)
+  != W(E_1)+W(E_2) unless the experiments are independent under the competing hypotheses. This
+  directly strengthens an "evidence dependence" open problem from prior corpus into a mathematically
+  grounded requirement, and gives a formal account of the "double counting" problem (three
+  correlated observations of the same underlying fact must not be summed as three independent
+  weights).
+
+  **DELIVERS EVIDENCE POLARITY (Support/Weakening/Neutral via F>1/<1/=1)** and rejects a universal
+  scalar `evidence_strength` field in favor of a DDD candidate EvidenceAssessment structure keyed by
+  (evidence, targetHypothesis, competingHypothesis, context, model).
+
+  **DELIVERS PRECISION != DETERMINATION (EW-04)**: P(E|H) can be precise while P(H|E) and P(H) are
+  not -- directly reinforcing the KnowledgeOS `Determine` problem and Titelbaum's epistemic-standards
+  work (M0032/M0033/M0036).
+
+  **DELIVERS REJECT != ACCEPT (EW-03) AND PAIRWISE-SUPERIORITY != GLOBAL DETERMINATION**: rejecting
+  H_1 in favor of H_2 under a two-hypothesis comparison does not establish H_2 as globally true if a
+  third hypothesis H_3 exists -- reinforcing "Determination requires an adequately scoped alternative
+  space" and distinguishing comparative/exclusive/global/insufficiently-scoped determination.
+
+  **DELIVERS GOOD'S TRICHOTOMY (axioms/rules/suggestions) AS A DIRECT EXTERNAL ANALOGUE OF THE
+  KNOWLEDGEOS THEOREM/INVARIANT/HEURISTIC PROBLEM**: mapped to Formal Law != Application Rule !=
+  Heuristic -- a genuinely useful external validation of the classification discipline M0043 had just
+  formalized as [DEF]/[AX]/[THM]/[COR]/[EMP]/[ARCH]/[OPEN].
+
+  **DELIVERS "APPROXIMATION PROVENANCE MUST SURVIVE TRANSFORMATION" (EW-06)**: if M'≈M is used for
+  convenience, Result(M') must not silently become Result(M) -- explicitly identified as "almost
+  exactly the anti-fabrication problem we have been dealing with," and motivating a second
+  provenance type (InferenceProvenance, distinct from SourceProvenance): "under what
+  inferential/model assumptions did this result arise?"
+
+  **DELIVERS "SELECT RELEVANT EVIDENCE" AS A NEW CANDIDATE OPERATOR, EXPLICITLY LEFT [OPEN] AS TO
+  KERNEL MEMBERSHIP**: directly engages the unresolved 13-vs-8 kernel debate (M0037/M0040/M0041/
+  M0043) by asking whether relevance-selection is irreducible, part of Discriminate, part of
+  Inquiry, part of Evidence assessment, or infrastructure -- "Good gives evidence for the function,
+  not for its kernel membership," an explicit methodological caution against over-attributing kernel
+  status to a demonstrated functional need.
+
+  **STRENGTHENS DOUBT ABOUT `Select` AS KERNEL-PRIMITIVE**: Evidence -> Hypothesis Assessment ->
+  Decision, where Decision additionally requires Utility/Cost/Consequence, suggesting Select may sit
+  downstream of the epistemic kernel entirely -- proposes distinguishing Select_epistemic from
+  Select_decision, explicitly noting "this could materially change the interpretation of the recent
+  13-operator kernel experiment."
+
+  **DELIVERS INFORMATION QUANTITY != EVIDENCE WEIGHT != SEMANTIC ADEQUACY != KNOWLEDGE** via Good's
+  own Chapter 6.9 distinction between Shannon information (-log p, entropy H=-Σp_i log p_i) and
+  hypothesis-relative weight of evidence -- "one of the cleanest cross-source conclusions so far,"
+  directly preventing KnowledgeQuality=InformationQuantity, KnowledgeGain=EntropyReduction, and
+  KnowledgeGain=EvidenceWeight as candidate (mis)identifications.
+
+  **DELIVERS AN 18-ITEM EW-01 THROUGH EW-18 CANDIDATE-INVARIANT REGISTRY**, explicitly labeled
+  "research hypotheses, not canon" -- the most systematic evidence-specific invariant catalogue in
+  the pass, covering relational weight, dependence semantics, reject-vs-accept, precision-vs-
+  determination, evidence-content-vs-effect, approximation provenance, decision-vs-truth thresholds,
+  proxy non-identity, evidence polarity, hypothesis-space scoping, comparative-vs-global
+  determination, model uncertainty, relevance, significance/estimation/determination, information-
+  vs-weight, standards-dependence, dependence-blocks-summation, and practical-vs-logical certainty.
+
+  **DELIVERS AN EXPLICIT [NEG] ANTI-IMPORT LIST** -- Bayesianism-as-universal-epistemology, numeric
+  probability as universal uncertainty representation, log-odds as universal measure, maximum
+  likelihood as universal inference rule, entropy-as-knowledge, significance-testing-as-
+  determination, simplicity-as-truth-criterion, mandatory subjective priors, unevidenced
+  independence assumptions, and Good's own 1950 terminology as DDD language -- an unusually
+  disciplined negative-import list, itself grounded in Good's own text ("this book actually supports
+  our decision not to reduce KnowledgeOS to Bayesianism").
+
+  **REVISES THE ATOMIC CLAIM MODEL** from the earlier binary k_i=(O,d_i,v_i,t,E_i,p_i,q_i) to
+  k_i=(O,d_i,𝒱_i,t,E_i,A_i,S_i,q_i), where 𝒱_i may be an interval, distribution, or set rather than
+  a single value -- reinforcing Good's estimation discussion (best value/interval/distribution/
+  confidence-interval) as a reason atomic claims cannot always be binary-valued.
+
+  **SIGHTS "BROWN-HWANG" A FOURTH TIME** (Sec 32, "this reinforces our Brown-Hwang conclusion: M_t
+  != M*") and **"FREEDMAN" A SEVENTH TIME** (Sec 63, in a source list alongside Good, Titelbaum,
+  Brown-Hwang, Davidson, Dretske and the Measure Theory work) -- both still without any dedicated
+  extraction found anywhere in this pass's own sequence. **INTRODUCES A NEW UNATTRIBUTED CITATION,
+  "DRETSKE"** (same Sec 63 list) -- very plausibly Fred Dretske (information-theoretic
+  epistemology, *Knowledge and the Flow of Information*), consistent with this document's own
+  information-vs-knowledge themes, but likewise never independently extracted in this pass -- flagged
+  alongside Freedman and Brown-Hwang as a third open corpus-integrity question for the eventual
+  reclassification pass.
+introduces:
+  - concept: "Weight of Evidence W(E;H_1,H_2)=log[P(E|H_1)/P(E|H_2)] as the central hypothesis-comparative evidence object, additive only under independence"
+  - concept: "The EW-01 through EW-18 candidate-invariant registry, explicitly labeled research hypotheses rather than canon"
+  - concept: "Good's axioms/rules/suggestions trichotomy as an external analogue validating the DEF/AX/THM/OPEN classification discipline just formalized in M0043"
+  - concept: "SelectRelevant(E,Q,H,C) as a new candidate operator, explicitly left open as to kernel-primitive status -- directly engaging the 13-vs-8 kernel debate"
+  - concept: "The explicit [NEG] anti-import list against Bayesian-universalism, itself grounded in Good's own text"
+  - concept: "The revised atomic claim model k_i=(O,d_i,V_i,t,E_i,A_i,S_i,q_i) permitting interval/distribution/set-valued V_i"
+  - concept: "Information Quantity != Evidence Weight != Semantic Adequacy != Knowledge, via Good's own Shannon-information-vs-weight-of-evidence distinction"
+defines: []
+refines:
+  - concept: "The prior 'evidence dependence' open problem, strengthened from an open concern into a mathematically grounded requirement (independence conditions for weight additivity)"
+  - concept: "The Titelbaum-derived Epistemic Standards S^epi concept (M0032/M0033/M0036), given independent statistical support: Assessment=f(Evidence,Standards,Model,Context,Inquiry)"
+  - concept: "M0037/M0041's open question about whether Select belongs in the irreducible kernel, sharpened into a proposed Select_epistemic vs Select_decision split"
+contradicts: []
+repeats:
+  - concept: "Several already-established non-collapse claims (Zero!=ProbabilityZero, Challenge!=Reject!=Accept!=Determine, Representation!=Semantic Identity), here given independent statistical grounding from Good rather than re-derived"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0044 as the I. J. Good (1950) audit -- delivers weight of evidence as a hypothesis-comparative, dependence-sensitive object, an 18-item EW-numbered candidate-invariant registry, an explicit anti-Bayesian-universalism import list, and directly engages the still-open Select/kernel-primitive question. Fourth Brown-Hwang sighting, seventh Freedman sighting, and a new unattributed citation (Dretske) all flagged as open corpus-integrity questions."
+anchor_test:
+  anchor: "The still-open 13-vs-8 kernel-minimality debate (M0037/M0040/M0041/M0043) and the recurring unattributed Freedman/Brown-Hwang citations"
+  supports_dimension: "Directly engages the Select-operator kernel-membership question with a proposed epistemic/decision split, and adds a third recurring unattributed citation (Dretske) to the open corpus-integrity list"
+  refines_or_contradicts: "refines (M0032/M0033/M0036 epistemic standards; M0037/M0041 kernel debate; prior evidence-dependence open problem)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'Do not sum evidence scores merely because observations are distinct' (EW-02) -- a mathematically grounded (not merely cautionary) requirement, since weight additivity in Good's own framework strictly requires independence of the experiments under the competing hypotheses."
+  - "'This could materially change the interpretation of the recent 13-operator kernel experiment' -- an explicit acknowledgment that this new source may retroactively revise a settled-seeming finding (M0037's 13-operator baseline), rather than merely supplementing it."
+  - "Sec 63's source list ('Good, Titelbaum, Brown-Hwang, Davidson, Dretske and the Measure Theory work') places a new name (Dretske) alongside the two already-flagged unattributed citations (Freedman, Brown-Hwang), all still without dedicated extraction anywhere in this pass."
+undefined_concepts:
+  - "The precise formal content of the proposed structure-preserving mapping between Good's evidence model and the KnowledgeOS epistemic state K_t -- named as 'the next serious mathematical step,' not attempted here"
+open_questions:
+  - "Whether Dretske (Fred Dretske's information-theoretic epistemology) receives a dedicated extraction anywhere later in this pass, alongside the still-unresolved Freedman and Brown-Hwang citations."
+  - "Whether SelectRelevant/Select_epistemic vs Select_decision is later tested against the kernel experiment's own ablation protocol."
+tier2_triggered: true
+tier2_reason: "A substantial new primary source delivering the pass's first rigorous, hypothesis-comparative formalization of evidence weight, an 18-item candidate-invariant registry, a direct engagement with the still-open kernel-primitive Select question (with potential to revise M0037's 13-operator finding), and a third recurring unattributed cross-reference (Dretske) alongside Freedman and Brown-Hwang. Critical importance and full tier-2 treatment warranted."

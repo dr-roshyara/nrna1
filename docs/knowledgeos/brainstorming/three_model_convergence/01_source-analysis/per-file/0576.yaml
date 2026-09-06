@@ -1,0 +1,231 @@
+sequence: 576
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-182235_step-025a-5-property-based-falsification-of-the-knowledge-state.md
+title: "CAPSTONE OF THE 25A SUB-ARC — DECISIVE HONESTY FINDING: 'We Have Not Yet Executed Thousands of Randomized Transitions in an Actual Program' — Explicit Confirmation That No Actual Code Has Ever Been Run Across the Entire 25A.1-25A.5 Experimental Sub-Arc, Despite 'Executable'/'PASS'/'Experiment' Language Throughout; Six Genuinely New Discovered Threats (Circular Dependencies, Evidence Identity, Scale/O(N+M) Recomputation, Stale Rule Versioning, Changing Ontology, Temporal Authority); K=(V,E,R,T,P,D,M) — 'KnowledgeOS Is Increasingly Revealing Itself as a Governed Temporal Epistemic Graph'; Fourteen Invariant Attacks (I1-I14, Extending 0575's I1-I10 by Four); a Seventeen-Row Overall 25A Status Table; Final Verdict 'CONDITIONAL PASS' — 'the Model Survives the First Attack, but Its Missing Mathematics Is Now Visible'; Opens Step 25B (Adversarial End-to-End KnowledgeOS Simulation) — Finally Proposing to Test the WHOLE KnowledgeOS Concept, Not Only the Knowledge-State Kernel"
+date: "2026-08-27"
+bytes: 16272
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the fifth and closing sub-experiment of the 25A minimal-executable-kernel sub-arc, directly executing '25A.5 -- Property-Based Falsification of the Knowledge State' committed at 0575"
+source_role: PRIMARY_RESEARCH
+canonical_source: 576
+importance: critical
+confidence: high
+about: >
+  Opens "Step 25A.5 — Property-Based Falsification of the Knowledge State," announcing a deliberate
+  methodological shift: "we now move from constructing examples to trying to break the model," with the
+  explicit mathematician's/statistician's stance that "a model is not validated because we can construct
+  cases that work. We need to search for counterexamples." Delivers the experiment's governing existential
+  question against the ten invariants frozen at 0575: `∃ e_1,...,e_n such that I_j(K_n)=False?`.
+
+  **Delivers a proposed adversarial event-generation vocabulary** (evidence types: Evidence,
+  DuplicateEvidence, ConflictingEvidence, StaleEvidence, InvalidEvidence, LLMOutput, DerivedEvidence; event
+  types: Add, Assess, Commit, Conflict, Resolve, Invalidate, Retract, Supersede, Derive), worked through a
+  concrete ten-step example history, with the explicit observation "the order matters."
+
+  **Delivers fourteen individually attacked invariants (I1-I14), extending 0575's ten-item set by four
+  newly promoted invariants discovered through this falsification exercise itself**:
+
+  I1 Historical immutability (attacked via retract-then-inspect-earlier-snapshot; **Conceptually PASS**);
+  I2 Explicit revision (attacked via attempted silent mutation without an event; correctly rejected,
+  yielding the named domain rule `NoSilentMutation`); I3 Provenance (attacked via a fabricated,
+  unsupported assertion attempting commitment; **PASS conceptually**, "one of the strongest properties of
+  the model"); I4 Explicit conflict (attacked via identical-context/time/scope contradictory assertions,
+  correctly preserved rather than silently replaced; **PASS conceptually**); I5 Temporal validity (attacked
+  via disjoint validity intervals, correctly yielding `Conflict=False` where a naive implementation would
+  wrongly yield `True`; **PASS conceptually**, exposing the implementation requirement that conflict
+  detection must evaluate temporal overlap); I6 Preserve Unknown (attacked via attempted forced commitment
+  of an unevidenced value, correctly yielding `Status=Unknown`, neither True nor False; **PASS
+  conceptually**, "essential"); I7 Dependency propagation (attacked via a three-hop chain and invalidation,
+  correctly propagating impact -- but this attack is where the falsification exercise finds its first
+  genuine, unresolved gap: **what happens if the dependency graph contains a cycle?**, explicitly flagged as
+  "not yet formally resolved"); I8 AI boundary (attacked via unsupported LLM claim vs. genuine document
+  extraction, correctly distinguishing `Commit=False` from potential commitment based on underlying
+  evidence, not LLM assertion; **PASS conceptually**); I9 Replayability (attacked via double replay of the
+  same history requiring identical results; **PASS for deterministic operations**, but exposing that LLM
+  extraction is genuinely nondeterministic across runs, requiring a full `LLMExecution=(model,version,
+  prompt,context,input,output,time)` provenance record so the EPISTEMIC RECORD remains reproducible as an
+  event even when the underlying AI process itself is not); I10 Idempotency (attacked via double
+  registration of identical evidence; **PASS conceptually, assuming stable evidence identity** -- a
+  qualifying phrase that itself exposes the falsification exercise's second genuine unresolved gap: HOW is
+  evidence identity determined at all?); I11 No hindsight (a NEWLY PROMOTED invariant, not in the original
+  ten, explicitly noted as deserving promotion by this very experiment -- `KnowledgeBasis(D_t)=K_t`, never
+  `K_current`; attacked via dramatically changing current knowledge and recalculating the historical
+  decision, correctly unchanged; **PASS conceptually**); I12 World/knowledge independence (a second newly
+  promoted invariant -- both `K_t=K_{t+1}` despite `W_t≠W_{t+1}` under a silent world event, AND
+  `K_t≠K_{t+1}` despite `W_t=W_{t+1}` under pure knowledge revision, must both be permitted; **PASS
+  conceptually**, "one of the foundational properties of the architecture"); I13 Revision must not imply
+  falsehood (a third newly promoted invariant -- invalidating an assertion's only evidence must yield
+  `Unknown`, never `False`; **PASS conceptually**, "especially important for statistical reasoning"); I14
+  Conflict resolution must preserve history (a fourth newly promoted invariant -- a resolved conflict must
+  mark the losing assertion `Superseded`, never erase it; **PASS conceptually**).
+
+  **Delivers the file's central formal deliverable -- the discovery of two genuine, non-hand-wavable
+  computational threats through the falsification exercise itself**, explicitly named "exactly what we
+  wanted from 25A.5":
+
+  **Threat 1 -- Circular Dependencies**: formalized via a worked `A_1⊢A_2, A_2⊢A_1` example demonstrating
+  a naive dependency-propagation algorithm could recurse forever; delivers a concrete recommended kernel
+  policy, `AcyclicDerivationGraph`, explicitly tagged **PROPOSED, not yet established**, with two
+  alternative options named but not adopted (explicitly represent strongly connected components; define a
+  fixed-point semantics) -- the corpus's first genuine algorithmic-soundness threat discovered through
+  active falsification rather than proposed abstractly.
+
+  **Threat 2 -- Evidence Identity**: formalized via a worked example contrasting two near-identical
+  document statements ("Nexus version 3.69" vs. "Nexus version is 3.69."), demonstrating
+  `EvidenceIdentity≠Hash(Text)` -- the two statements might be independent, copied, semantically
+  equivalent, derived from the same system, or entirely unrelated, and this cannot be resolved by naive
+  textual identity, explicitly deferred to "a later identity-resolution problem" (connecting directly to
+  0552's/0560's/0565's established identity-resolution machinery, now shown to apply to Evidence itself,
+  not only Entities).
+
+  **Delivers four further threats discovered through continued falsification**: Threat 3 -- scale/
+  recomputation cost (a long derivation chain under a single invalidation could require `O(N+M)`
+  recomputation at production scale, motivating future dependency indexes/incremental recomputation/cached
+  assessments/affected-subgraph calculation, but explicitly deprioritized -- "optimization is not yet the
+  priority. Correctness comes first," directly extending 0575's complexity finding); Threat 4 -- stale
+  rules (an assertion derived under `RuleVersion=r_1` may yield a different result if recomputed under
+  `RuleVersion=r_2`, requiring `RuleVersion`/`ModelVersion` to become part of provenance, not merely
+  evidence -- "extremely important. Knowledge is derived under a computational context"); Threat 5 --
+  changing ontology (an assertion interpreted under `OntologyVersion=O_1` may require reassessment when
+  `O_2` changes an entity's or relationship's meaning, showing ontology "is not merely static metadata. It
+  can become part of epistemic lineage," directly extending 0560's semantic-versioning theory); Threat 6 --
+  source authority changes (a source's evidence does not become false when the source later loses
+  authority, but its CURRENT APPLICABILITY may change, reconfirming `Truth≠Authority` and delivering a new
+  finding that `Authority(t)` -- Authority itself -- needs explicit temporal semantics, extending 0562's
+  authority theory with a temporal dimension not previously stated this explicitly).
+
+  **Delivers a falsification summary explicitly separating surviving principles from newly discovered
+  requirements**: ten surviving core principles reconfirmed unbroken by the attack (WorldState≠
+  KnowledgeState, HistoricalKnowledgeImmutable, Unknown preserved, Conflict explicit, LLMOutput≠Knowledge,
+  Provenance required, TemporalValidity required, Revision explicit, Replayability required, Decision
+  history protected) versus five genuinely NEW requirements the falsification exercise itself produced
+  (EvidenceIdentity, DependencyCycleHandling, RuleVersionLineage, ModelVersionLineage,
+  OntologyVersionLineage, TemporalAuthority) -- explicitly characterized as "not necessarily new bounded
+  contexts yet. They are requirements exposed by falsification," a careful epistemic distinction between
+  discovered gaps and architectural commitments.
+
+  **Delivers the file's central formal deliverable -- a significantly richer KnowledgeState structure**
+  `K=(V,E,R,T,P,D,M)` (epistemic objects, evidence/support relations, assessments/rules, temporal
+  semantics, provenance, dependency/derivation, model/ontology/rule versions), explicitly superseding the
+  simpler `K={A_1,...,A_n}` framing and every prior KnowledgeState candidate structure in the arc (0572's
+  original six-field formula, 0574's seven-field structure, 0575's further-minimized six-field version).
+  Delivers the file's headline architectural characterization: **"KnowledgeOS is increasingly revealing
+  itself as a governed temporal epistemic graph,"** explicitly marked **STRONG EMERGING ARCHITECTURAL
+  RESULT** rather than a final definition -- careful epistemic-status labeling applied even to the file's
+  own most significant single architectural claim.
+
+  **Delivers the file's single most important, decisive honesty finding -- explicitly resolving the
+  ambiguity that has persisted across the entire 25A.1-25A.5 sub-arc about whether any actual code was ever
+  executed**: **"We have not yet executed thousands of randomized transitions in an actual program in this
+  response. Therefore I will not falsely label this as a completed property-based software test. The
+  honest status is: 25A.5 = formal/adversarial falsification completed conceptually, and Automated
+  property-based execution = still required. That distinction matters for the scientific integrity of the
+  project."** This is the corpus's clearest, most decisive, and most explicit confirmation that -- despite
+  the "executable state machine," "PASS," "attack," and "experiment" vocabulary used pervasively throughout
+  the entire 25A.1-25A.5 sequence -- NO actual code has ever been run at any point in this sub-arc; every
+  single "experiment," "attack," and "result" delivered across 0572-0576 has been rigorous, disciplined
+  HAND-EXECUTED formal/conceptual reasoning, not literal program execution, directly resolving (in the
+  negative, for actual code execution) the open question this reconstruction has been tracking since
+  0572's admitted failed execution attempt.
+
+  **Delivers the file's central formal deliverable -- a comprehensive seventeen-row Overall Step 25A
+  status table**, synthesizing 25A.1 through 25A.5 into a single reference summary: Minimal state
+  (Viable); Evidence pipeline (Viable); Assessment (Viable, mathematics incomplete); Assertion lifecycle
+  (Viable); Temporal state (Viable); Conflict representation (Viable); Revision (Viable, algebra
+  incomplete); Retraction (Viable, dependency algorithm incomplete); Provenance (Viable); Historical
+  snapshots (Viable); LLM boundary (Viable); Replayability (Viable conceptually); Idempotency (Viable);
+  **Circular dependencies (Unresolved)**; **Evidence identity (Unresolved)**; **Statistical aggregation
+  (Unresolved)**; **Rule/model versioning (New requirement)** -- the corpus's most complete single
+  consolidated status table for the entire 25A minimal-kernel sub-arc.
+
+  **Delivers the file's final, decisive verdict for the whole 25A sub-arc**: **"25A — CONDITIONAL PASS,"**
+  with an explicit, carefully reasoned justification for why NOT a bare "PASS" (genuine unresolved
+  mathematical/computational questions were discovered) and why NOT "FAIL" (no foundational distinction was
+  shown to be internally impossible) -- crystallized into the file's headline research-methodology
+  statement: **"the model survives the first attack, but its missing mathematics is now visible. That is
+  exactly what a good research model should do."**
+
+  **Delivers a clarified, tightened definition of the emerging KnowledgeOS Kernel**:
+  `KnowledgeOS Kernel = Temporal+Provenance+Evidence+Assessment+Assertion+Revision+Dependency`, with
+  `Unknown` and `Conflict` explicitly positioned as first-class epistemic STATES, never errors, and above
+  this foundation the layered chain `EpistemicContract→Sufficiency→Zero→Lord→Sārathi` -- "a significant
+  architectural boundary," the corpus's cleanest single statement of what belongs inside the true kernel
+  versus what is built atop it.
+
+  **Closes by recommending "Step 25B — Adversarial End-to-End KnowledgeOS Simulation,"** explicitly
+  described as moving beyond the minimal knowledge-state kernel experiment to construct a complete
+  simulated KnowledgeOS case around the Nexus migration problem, incorporating the FULL originally-promised
+  heterogeneous input set (Documents, Database, Internet, HumanInstruction, Rules, Constitution, ADR,
+  LLMOutput) through the complete pipeline `Input→Evidence→Knowledge→EpistemicContract→Zero→Lord→Sārathi→
+  Governance→Action→Outcome`, with deliberately injected wrong information, conflicting evidence,
+  hallucinations, stale information, changing requirements, and failed actions -- explicitly framed as
+  **"the point where we can finally test whether the whole KnowledgeOS concept, rather than just its
+  knowledge-state kernel, actually works end-to-end."** This closing framing explicitly acknowledges that
+  everything tested across 25A.1-25A.5 covered only the knowledge-STATE kernel in isolation, never the full
+  Zero/Lord/Sārathi/Governance/Action loop this whole 46+-step research program set out to validate,
+  positioning Step 25B as the genuinely decisive test the entire arc has been building toward.
+introduces:
+  - concept: "The decisive, explicit confirmation that no actual code has ever been executed across the entire 25A.1-25A.5 experimental sub-arc, despite pervasive 'executable'/'PASS'/'experiment'/'attack' language — everything delivered has been rigorous hand-executed formal/conceptual reasoning, not literal program execution, an honesty finding of first-order importance for correctly assessing this research program's genuine computational-verification status"
+  - concept: "Circular Dependencies as a genuine, non-hand-wavable computational threat discovered through active falsification — a naive dependency-propagation algorithm over a cyclic derivation graph could recurse forever, requiring an explicit kernel policy decision (proposed: AcyclicDerivationGraph, not yet established)"
+  - concept: "Evidence Identity as a genuine, distinct identity-resolution problem — EvidenceIdentity≠Hash(Text), since near-identical textual claims may be independent, copied, semantically equivalent, or entirely unrelated, requiring the corpus's established entity-identity-resolution machinery to be extended to evidence objects themselves"
+  - concept: "Four newly promoted invariants (I11-I14) discovered and explicitly elevated by the falsification exercise itself, rather than proposed abstractly in advance: No hindsight, World/knowledge independence, Revision must not imply falsehood, Conflict resolution must preserve history"
+  - concept: "Temporal semantics extended to Authority itself (Authority(t)) — a source losing authority does not falsify its prior evidence, but does change its current applicability, requiring authority to carry explicit temporal validity like other epistemic properties"
+  - concept: "The richer, superseding KnowledgeState structure K=(V,E,R,T,P,D,M), explicitly marked a strong emerging architectural result rather than a final definition, alongside the headline characterization 'KnowledgeOS is increasingly revealing itself as a governed temporal epistemic graph'"
+  - concept: "The final 25A sub-arc verdict 'CONDITIONAL PASS', with an explicit, principled justification distinguishing it from both an unearned bare PASS and an overly harsh FAIL — 'the model survives the first attack, but its missing mathematics is now visible'"
+  - concept: "The tightened, final definition of the KnowledgeOS Kernel proper (Temporal+Provenance+Evidence+Assessment+Assertion+Revision+Dependency, with Unknown and Conflict as first-class states), distinguished from the layered EpistemicContract→Sufficiency→Zero→Lord→Sārathi built atop it"
+  - concept: "'Step 25B — Adversarial End-to-End KnowledgeOS Simulation', explicitly framed as the first point where the WHOLE KnowledgeOS concept (not merely its isolated knowledge-state kernel) will finally be tested end-to-end"
+defines:
+  - concept: "Richer KnowledgeState structure (25A.5, superseding all prior candidates)"
+    definition: "K=(V,E,R,T,P,D,M) — epistemic objects (V), evidence/support relations (E), assessments/rules (R), temporal semantics (T), provenance (P), dependency/derivation (D), model/ontology/rule versions (M)"
+  - concept: "AcyclicDerivationGraph (PROPOSED kernel policy)"
+    definition: "The kernel's derivation graph should initially prohibit cycles (Premises→Conclusion directionality required), with circular logical structures deferred to a later formal fixed-point semantics if needed — not yet established"
+  - concept: "LLMExecution provenance record"
+    definition: "LLMExecution=(model,version,prompt,context,input,output,time) — required so the epistemic RECORD of an AI extraction remains reproducible as an event, even though the underlying AI generation process itself may be genuinely nondeterministic across runs"
+  - concept: "The tightened KnowledgeOS Kernel definition"
+    definition: "KnowledgeOS Kernel = Temporal+Provenance+Evidence+Assessment+Assertion+Revision+Dependency, with Unknown and Conflict as first-class epistemic states (not errors); layered above it: EpistemicContract→Sufficiency→Zero→Lord→Sārathi"
+refines:
+  - concept: "0575's ten-item invariant set (I1-I10)"
+    refinement: "Extended by four newly promoted invariants (I11 No hindsight, I12 World/knowledge independence, I13 Revision must not imply falsehood, I14 Conflict resolution must preserve history), explicitly discovered and elevated through this file's own falsification exercise rather than proposed abstractly in advance"
+  - concept: "0552's/0560's/0565's established three-valued entity-identity-resolution machinery (Match/ResolveIdentity→{Same,Distinct,Unknown})"
+    refinement: "Shown, through active falsification, to apply equally to Evidence identity itself, not only Entity identity — a genuinely new application domain for the existing identity-resolution theory, explicitly flagged as an unresolved gap requiring future work"
+  - concept: "0575's O(N+M) complexity estimate and its explicit deferral of optimization"
+    refinement: "Reconfirmed and extended with concrete future mitigation strategies (dependency indexes, incremental recomputation, cached assessments, affected-subgraph calculation), while maintaining the same explicit priority ordering (correctness before optimization)"
+  - concept: "0560's semantic/ontology-versioning theory ('SemanticModelVersion must be part of knowledge provenance')"
+    refinement: "Directly extended with the finding that changing ontology can invalidate previously-derived knowledge requiring reassessment, elevating ontology from static metadata to a genuine component of epistemic lineage"
+  - concept: "0562's Authority theory (Authority is contextual, scoped, and temporally governed)"
+    refinement: "Sharpened with the explicit, newly-stated requirement that Authority itself needs formal temporal semantics (Authority(t)), distinguishing a source's current applicability from the historical validity of evidence it once supported"
+  - concept: "0572's admitted failed tool-execution attempt, and the ambiguous 'executable'/'PASS' language used throughout 0572-0575"
+    refinement: "Definitively and explicitly resolved: this file confirms, in the clearest terms yet, that no actual code was ever successfully executed across the entire 25A.1-25A.5 sub-arc — all 'PASS' verdicts throughout this sequence refer to disciplined hand-executed conceptual/formal verification, never literal program execution"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25B — Adversarial End-to-End KnowledgeOS Simulation' is executed as its own dedicated corpus file, and critically, whether it finally involves genuine executed code — this is now the single highest-priority open question for the entire research program's ultimate computational-verification status, directly following from this file's own explicit confirmation that no code has been run anywhere in the 25A sub-arc"
+  - "Trace whether the six newly discovered threats (Circular Dependencies, Evidence Identity, scale/recomputation cost, RuleVersionLineage, OntologyVersionLineage, TemporalAuthority) are explicitly resolved in Step 25B or a later step, or remain part of the corpus's growing unresolved-questions backlog alongside 0570's seven-domain inventory"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the decisive honesty finding that no actual code has been executed anywhere across the entire 25A.1-25A.5 sub-arc, the fourteen invariant attacks (I1-I14, four newly promoted), and the two genuine computational threats discovered through active falsification (Circular Dependencies, Evidence Identity)."
+  - "dimension-registry.md: record the four further threats (scale/O(N+M) recomputation, RuleVersionLineage, OntologyVersionLineage, TemporalAuthority), the richer superseding KnowledgeState structure K=(V,E,R,T,P,D,M), and the headline characterization 'KnowledgeOS is increasingly revealing itself as a governed temporal epistemic graph.'"
+  - "dimension-registry.md: record the seventeen-row overall Step 25A status table, the final sub-arc verdict '25A — CONDITIONAL PASS' with its explicit not-PASS/not-FAIL justification, the tightened KnowledgeOS Kernel definition, and 'Step 25B — Adversarial End-to-End KnowledgeOS Simulation' as the next research phase, explicitly framed as finally testing the whole KnowledgeOS concept rather than only the isolated knowledge-state kernel."
+anchor_test:
+  anchor: "0572's admitted failed tool-execution attempt and the ambiguous executable/PASS language used throughout 0572-0575; 0575's frozen I1-I10 invariant set and O(N+M) complexity finding; 0552's/0560's/0565's identity-resolution machinery; 0560's semantic-versioning theory; 0562's authority theory; the corpus's original heterogeneous-input model promised since much earlier in the arc"
+  supports_dimension: "CAPSTONE OF THE 25A SUB-ARC delivering the corpus's most decisive single epistemic-honesty finding to date: an explicit, unambiguous confirmation that no actual code has ever been executed across the entire five-part 25A.1-25A.5 experimental sequence, resolving the open question this reconstruction has tracked since 0572's admitted failed execution attempt — every 'PASS' verdict throughout this sub-arc refers to rigorous hand-executed conceptual falsification, never literal program execution. Delivers genuine, non-trivial new discoveries produced by the falsification methodology itself rather than merely reconfirming prior claims: two significant unresolved computational threats (circular derivation dependencies risking infinite recursion; evidence identity resolution, extending established entity-identity theory to evidence objects for the first time) plus four further threats (scale, rule/model versioning, ontology versioning, temporal authority). Delivers four newly promoted invariants discovered through the attack process itself, a richer superseding KnowledgeState structure explicitly marked as an emerging (not final) architectural result, and the sub-arc's honestly-reasoned final verdict 'CONDITIONAL PASS' with a principled justification for why it is neither a full pass nor a failure. Closes by explicitly acknowledging that everything tested so far covered only the isolated knowledge-state kernel, never the full Zero/Lord/Sārathi/Governance/Action loop — positioning the newly-opened Step 25B as the genuinely decisive end-to-end test this entire research program has been building toward"
+  refines_or_contradicts: "extends 0575's I1-I10 invariant set with four newly promoted invariants; extends 0575's complexity finding with concrete future mitigation strategies; extends 0552's/0560's/0565's identity-resolution theory to evidence objects; extends 0560's ontology-versioning theory and 0562's authority theory with new temporal dimensions; definitively resolves the ambiguous executable/PASS language used throughout 0572-0575 by explicitly confirming no code was ever run; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit statement 'We have not yet executed thousands of randomized transitions in an actual program in this response. Therefore I will not falsely label this as a completed property-based software test... That distinction matters for the scientific integrity of the project' is directly checkable, unambiguous textual evidence conclusively resolving whether any actual code execution occurred across the entire 25A.1-25A.5 sub-arc, of the highest importance for correctly characterizing this research program's true computational-verification status in any future synthesis."
+  - "The worked Circular Dependencies example (A_1⊢A_2 and A_2⊢A_1, risking infinite recursion under naive propagation) is a directly checkable, concrete demonstration of a genuine algorithmic-soundness gap, distinct from the many prior invariant confirmations in the arc precisely because it identifies something the theory does NOT yet handle, rather than confirming something it already claimed to handle."
+  - "The Evidence Identity example (two near-identical textual claims from different documents, explicitly NOT resolvable via Hash(Text)) is a directly checkable, realistic scenario demonstrating a genuine open problem, extending the corpus's established entity-identity-resolution theory into a domain (evidence identity) it had not previously been explicitly applied to."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25B — Adversarial End-to-End KnowledgeOS Simulation' is executed as its own dedicated corpus file, and critically, whether it finally involves genuine executed code, given this file's explicit confirmation that no code has been run anywhere in the 25A sub-arc"
+  - "Whether the six newly discovered threats (Circular Dependencies, Evidence Identity, scale/recomputation cost, RuleVersionLineage, OntologyVersionLineage, TemporalAuthority) are explicitly resolved in Step 25B or a later step"
+tier2_triggered: true
+tier2_reason: "CAPSTONE OF THE 25A SUB-ARC delivering the corpus's single most important epistemic-honesty finding to date: an explicit, unambiguous confirmation that no actual code has ever been executed across the entire five-part 25A.1-25A.5 experimental sequence, definitively resolving the open computational-verification question this reconstruction has tracked since 0572's admitted failed execution attempt. Delivers genuine, non-trivial new discoveries produced by the falsification methodology's own active search for counterexamples, rather than merely reconfirming prior theory: two significant unresolved computational threats (circular derivation dependencies risking infinite recursion; evidence identity resolution extending established entity-identity theory into a new domain) plus four further threats (scale, rule/model versioning, ontology versioning, temporal authority), each representing a genuine gap the falsification exercise itself surfaced rather than a restated invariant. Delivers four newly promoted invariants discovered through the attack process, a richer superseding KnowledgeState structure carefully marked as an emerging rather than final result, and the sub-arc's honestly-reasoned final verdict 'CONDITIONAL PASS' with a principled justification for why it is neither an unearned full pass nor an overly harsh failure ('the model survives the first attack, but its missing mathematics is now visible — that is exactly what a good research model should do'). Closes by explicitly and honestly acknowledging that everything validated across the entire 25A sub-arc covered only the isolated knowledge-state kernel, never the full Zero/Lord/Sārathi/Governance/Action loop that is this research program's actual ultimate objective — positioning the newly-opened Step 25B as the genuinely decisive end-to-end test the whole program has been building toward."

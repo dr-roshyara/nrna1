@@ -1,0 +1,114 @@
+sequence: "0097"
+path: docs/knowledgeos/brainstorming/20260822-0239-knowledgeos-pramana-registry-nyaya-sutra-extraction.md
+title: "KnowledgeOS extraction from Dasti & Phillips' 'The Nyāya-sūtra: Selections with Early Commentaries'"
+date: "2026-08-22"
+bytes: 8145
+
+model:
+  primary: g
+  secondary: [x, c1]
+
+source_role: INDEPENDENT_RESEARCH
+canonical_source: null
+
+importance: high
+confidence: high
+
+about: >
+  A review of a second real, named academic source -- Matthew Dasti & Stephen Phillips' "The
+  Nyāya-sūtra: Selections with Early Commentaries" (a genuine, well-known Oxford translation) --
+  proposing a process-centric (not relation-centric, cf. 0094) reframing of KnowledgeOS around Pramāṇa
+  as knowledge-generating process rather than static knowledge objects. Introduces Pramāṇābhāsa
+  (knowledge-source imitator, distinct from Hetvābhāsa) and a Git-like "Commentary Lineage" framing.
+  Produces a NINTH unreconciled candidate-ID naming scheme (ADR-KOS-EPI-nnn), substantially overlapping
+  in content with several already-tracked registry entries.
+
+introduces:
+  - "Process-centric reframing (distinct axis from 0094's relation-centric reframing): 'Knowledge is
+    not primarily a stored thing. Knowledge is the output of a reliable process.' Object -> Knowledge
+    Source (Pramāṇa) -> Valid Cognition -> Successful Action, replacing Data->Information->Knowledge"
+  - "Pramāṇābhāsa (knowledge-source IMITATOR) -- distinct from Hetvābhāsa (pseudo-REASON, 0092): a
+    source that only APPEARS genuine, mapped directly to hallucinated citations/false confidence/
+    plausible-but-unsupported answers/outdated assumptions"
+  - "'Commentary Lineage': Sūtra -> Commentary -> Later Commentary -> Refinement, explicitly compared
+    to 'Git for institutional reasoning' -- a fresh angle on provenance/revisability as VERSIONED
+    INTERPRETIVE lineage, not merely evidentiary chain-of-custody"
+  - "Knowledge Production Pipeline / Verification Engine (process-centric) and 'Cognitive Review Mode'
+    / 'Epistemic Escalation' (doubt triggers deeper verification only on contradiction/uncertainty/
+    challenge)"
+  - "⭐ NINTH unreconciled candidate-ID scheme: ADR-KOS-EPI-001..005 (Knowledge is Process-Generated;
+    Evidence Source Registry; Knowledge Source vs Knowledge Imitator; Doubt Escalation; Commentary
+    Lineage) -- substantially overlapping in content with already-tracked registry entries (Reasoning
+    Provenance, Evidence Authenticity, Unknown Preservation, Revisability) under yet another new prefix"
+  - "'Nyāya-inspired' architecture diagram: Epistemic Governance Layer -> Knowledge Production Engine
+    (Observation/Inference/Testimony) -> Validation Engine -> Knowledge Objects -> Action/Decision --
+    an eighth reshaping, itself a process-pipeline shape similar to 0096's but with different layer
+    names/count (5 stages here vs 4 at 0096)"
+
+defines: []
+
+refines:
+  - "0096's Evidence Authenticity / Hetvābhāsa-derived pseudo-evidence concern: Pramāṇābhāsa targets
+    the SOURCE (is this actually a valid knowledge-generating process?) rather than the EVIDENCE ITEM
+    (is this citation real?) -- a related but distinct concern, recorded as possible_correspondence"
+  - "0090's Revisability (H-KOS-Revisability-001): Commentary Lineage gives revisability a specific
+    historical-precedent shape (textual commentary tradition), reinforcing but not superseding the
+    existing candidate"
+
+contradicts: []
+
+repeats:
+  - concept: "four Pramāṇas / knowledge-source taxonomy, doubt as structured escalation trigger"
+    canonical_source: "0092"
+    novelty: low
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+# MD-015 registry updates (see 01_source-analysis/dimension-registry.md)
+registry_updates:
+  - "NEW cross-reference: Pramāṇābhāsa (0097) added as possible_correspondence to Evidence Authenticity
+    (0096) -- related, not merged"
+  - "Revisability: Commentary Lineage (0097) added as a reinforcing angle, not a new entry"
+  - "Ninth ID scheme (ADR-KOS-EPI-n) noted; no reconciliation performed per standing instruction"
+
+# MD-014 anchor_test against 0087 (Minimal_Kernel_Candidate_0087)
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity", "Unknown Preservation"]
+  refines_or_contradicts: >
+    Eighth reshaping (process-pipeline shape, 5 stages, differs from 0096's 4-stage pipeline in both
+    count and stage names) -- confirms process-pipeline is becoming a recurring but still-unstable
+    shape family, not a single converged structure.
+  alternative_minimal_kernel: "Yes -- a fifth-stage process pipeline, distinct in detail from 0096's four-stage version."
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false   # worsened: ninth scheme (ADR-KOS-EPI-n)
+
+key_evidence:
+  - "A second real, named, well-known academic source (Dasti & Phillips) diversifying the evidence
+    base beyond Matilal (0096) and the Stanford Encyclopedia (0092)"
+  - "Two consecutive files (0096, 0097) each propose a distinct process-pipeline reshaping of the
+    anchor, differing in stage count and naming -- process-pipeline as a shape family is recurring but
+    not yet stable"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether Pramāṇābhāsa and Evidence Authenticity (0096) are ever explicitly merged or kept
+    permanently distinct by a later file"
+  - "Whether the ninth ID scheme (ADR-KOS-EPI-n) is the last new scheme, or whether the proliferation
+    continues in subsequent files"
+
+tier2_triggered: true
+tier2_reason: >
+  Second real named academic source; a process-centric (not relation-centric) reframing distinct from
+  0094's axis; Pramāṇābhāsa as a genuinely new source-authenticity concept; a Git-like Commentary
+  Lineage framing for revisability; and a ninth unreconciled candidate-ID scheme substantially
+  overlapping already-tracked registry content -- relevant to the MD-015 registry and the ongoing
+  process-pipeline-shape tracking.

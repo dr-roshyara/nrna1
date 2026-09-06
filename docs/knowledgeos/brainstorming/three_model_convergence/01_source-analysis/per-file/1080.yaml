@@ -1,0 +1,76 @@
+sequence: 1080
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/03_operation-registry-audit.md
+title: "03 -- Operation Registry Audit (Step 291 mandate SS5): Exhaustive 22-Operation Corpus Registry, Quantifying With Hard Counts the Already-Tracked 'T's Membership Rule Missing' Finding -- 22 Named, 8 Typed, ZERO With a Semantic Body, ZERO With Operation Identity, ZERO Governance-Ratified; Confirms 4 of the 8 Typed Operations Are NOT K-to-K, Directly Substantiating File 1078's 'Equality-Dependence Is Wider Than T' Finding"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the third numbered Step-291 prose artifact, a comprehensive, disciplined operation-registry audit grounding the already-tracked closure findings with hard counts"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1080
+importance: major
+confidence: high
+about: >
+  "03 — Operation Registry Audit (mandate §5)." Delivers an exhaustive, disciplined table of every operation
+  the corpus names (22 total, "Only operations the corpus names are listed. No operation is invented (mandate
+  §21)"), scored across seven dimensions (exists, typed, semantic definition, observable, identity,
+  governance status, missing specification): `Revise`, `Transform`, `Supersede`, `Merge` (the only operation
+  with laws, per already-tracked file 1077's `060`-derived findings: non-destructive, idempotent modulo `≡`,
+  commutativity "not imposed," associativity "a design goal"), `Split`, `Withdraw` (already-tracked identity-
+  breaking effect, files 1041/1048), `Promote`, `Assess`, `Authorize` (flags the already-tracked `G-66`:
+  "`authorities.yaml` is an enum, not an evaluator"), `Reject`, `Validate`, `Reintroduce`, `Replay`,
+  `Determine`, `Qualify` (already-tracked `G1` irreducible body), `Resolve`/`Normalize`/`Compare` (the already-
+  tracked partial-epistemic-function family, file 1038), `Deduplicate`, `Remove`, `Closure(Identity)` -- plus
+  five PROSE-ONLY operations with NO corpus registry entry at all (`Retract`, `Publish`, `Apply`, `Verify`,
+  `Policy evaluation`), flagged: "named in the Step-288 mandate; NO corpus registry entry."
+
+  **DELIVERS THE QUANTIFIED CAPSTONE COUNT, DIRECTLY SUBSTANTIATING WITH HARD NUMBERS THE ALREADY-TRACKED
+  'MEMBERSHIP RULE MISSING' FINDING (file 1076/1079)**: "operations with a corpus registry entry: 22 · typed
+  (an explicit signature): 8 · with a semantic definition (a body): 0 · with operation identity: 0 ·
+  governance-ratified: 0 · named only in prose, no entry: 5." Boxed: "22 NAMED · 8 TYPED · ZERO WITH A BODY ·
+  ZERO WITH IDENTITY · ZERO RATIFIED."
+
+  **DELIVERS A PRECISE, QUANTIFIED CONFIRMATION OF THE ALREADY-TRACKED FILE-1078 FINDING THAT EQUALITY-
+  DEPENDENCE EXTENDS BEYOND `𝒯`**: "4 of the 8 typed ones are NOT `K→K` -- `Assess`, `Authorize`, `Compare`,
+  `Resolve`/`Normalize`. `259.7`'s warning holds: 'we must not manufacture a false universal algebra.'" This
+  is the exact operation-level evidence that grounds the file-1078 claim in concrete named operations rather
+  than a general statement.
+
+  Confirms the STATUS block's closing admission: "UNKNOWN whether the 5 prose-only operations belong in `𝒪`"
+  -- an honest, disciplined refusal to resolve a scope question the registry itself does not answer.
+introduces:
+  - concept: "The exhaustive 22-operation corpus registry with the definitive quantified count: 22 named, 8 typed, ZERO with a semantic body, ZERO with operation identity, ZERO governance-ratified -- the hard-count grounding for the already-tracked 'membership rule missing' and 'N-4 not closed' findings"
+  - concept: "The named identification of the 5 prose-only operations (Retract, Publish, Apply, Verify, Policy evaluation) that appear in the Step-288 mandate but have no corpus registry entry at all"
+  - concept: "The precise identification of exactly which 4 of the 8 typed operations are not K-to-K (Assess, Authorize, Compare, Resolve/Normalize), grounding file 1078's 'equality-dependence is wider than T' claim in named operations"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked 'T's membership rule missing' and 'equality-dependence wider than T' findings (files 1076, 1078, 1079)"
+    refinement: "QUANTIFIED with hard counts and named operations: 22 registry entries, 8 typed, 0 bodies, 0 identities, 0 ratified; the exact 4 non-K-to-K typed operations (Assess, Authorize, Compare, Resolve/Normalize) named explicitly"
+contradicts: []
+repeats:
+  - "Consolidates already-tracked per-operation findings scattered across earlier files (Merge's laws from file 1077/060, Withdraw's identity-breaking effect from files 1041/1048, Qualify's G1 irreducibility and the Resolve/Normalize/Compare family from file 1038, Authorize's G-66 enum-not-evaluator gap) into a single comprehensive registry table."
+bridge_candidates:
+  - "The five prose-only operations (Retract, Publish, Apply, Verify, Policy evaluation) are flagged as named in the Step-288 mandate with no corpus registry entry -- worth watching whether a later file supplies their registry entries."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the exhaustive 22-operation registry audit and its capstone quantified count (22 named, 8 typed, 0 bodies, 0 identities, 0 ratified), the 5 prose-only operations with no registry entry, and the precise naming of the 4 non-K-to-K typed operations grounding the equality-dependence-wider-than-T finding."
+anchor_test:
+  anchor: "This reconstruction's already-tracked 'membership rule missing' and 'equality-dependence wider than T' findings (files 1076, 1078, 1079)"
+  supports_dimension: "Grounds both findings in a comprehensive, quantified 22-operation registry with hard counts and named operations"
+  refines_or_contradicts: "refines (quantifies) the prior tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The 22-operation count and the 0-body/0-identity/0-ratified counts are directly checkable against the corpus's own per-operation citations enumerated in this file's table for exact verification."
+undefined_concepts: []
+open_questions:
+  - "Whether the 5 prose-only operations (Retract, Publish, Apply, Verify, Policy evaluation) are ever given corpus registry entries in a later step."
+tier2_triggered: true
+tier2_reason: "Delivers an exhaustive, disciplined 22-operation registry audit that quantifies with hard counts the already-tracked closure and equality-dependence findings (files 1076, 1078, 1079), confirming zero operations have a semantic body, identity, or governance ratification, and precisely naming the four typed operations that fall outside the K-to-K transformation set. Classified importance major and confidence high given the comprehensiveness and disciplined evidentiary grounding of this audit."

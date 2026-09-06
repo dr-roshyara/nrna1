@@ -1,0 +1,76 @@
+sequence: M0174
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-182019_final-closure-open-item-register.md
+title: "FINAL CLOSURE / OPEN-ITEM REGISTER — the capstone reconciliation of the entire ratification-tension arc"
+date: "20260902-182019"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0174
+importance: critical
+confidence: high
+about: >
+  The formal HPA artifact M0173 recommended, and the capstone reconciliation of the entire
+  ratification-tension arc (M0159-M0173): a clean, authoritative closure register that formally
+  DOWNGRADES M0171/M0172's 'hereby RATIFIED' Contr/EVal/Determination/δ specifications back to
+  PARTIALLY OPEN/OPEN status, confirming the disciplined M0166/M0169/M0170/M0173 position prevailed.
+  Tallies exactly 4 CLOSED items, 3 PARTIALLY CLOSED items (with explicit corrections applied), 4
+  OPEN items, and 4 BLOCKED items, with the explicit final verdict 'We are close. But not yet
+  closed.'
+introduces:
+  - "The definitive formal reversal of M0172's ratification claims: Contr is marked 🟡 PARTIALLY OPEN (not RATIFIED — 'numeric threshold semantics ❌ OPEN — Unjustified; universal isolation theorem ❌ OPEN — Overclaimed'), EVal is marked 🟡 PARTIALLY OPEN ('totality claimed ❌ OPEN — Overclaimed; determinism claimed ❌ OPEN — Overclaimed; non-destructive claimed ❌ OPEN — Overclaimed'), Determination is marked 🔴 OPEN ('No formal specification exists' — directly reversing SPEC-DET's 'hereby RATIFIED' claim), and δ is marked 🔴 OPEN ('Only signature exists' — directly reversing SPEC-DELTA's 'hereby RATIFIED' claim)"
+  - "A clean four-tier final tally: 4 items CLOSED (C1 ℛ_req framework, C2 Representation Adequacy, C3 ABK-1-as-representation-candidate, C4 Non-Explosion Principle), 3 items PARTIALLY CLOSED with explicit corrections (P1 Contr, P2 EVal, P3 Standing semantics), 4 items OPEN with explicit missing-specification lists (O1 Determination, O2 Semantic Equivalence, O3 Canonical Operations, O4 Transition/δ), 4 items BLOCKED with explicit dependencies (B1 Composition, B2 Executable Adequacy, B3 Kernel Reduction, B4 Kernel Selection)"
+  - "A reduced, three-way operation taxonomy for O_core (finally reconciling the multiple prior candidate-operator-set variants into one categorized list): State-transforming (Assert/Retract/Supersede/Merge/Split/Support/Refute), Observational (Query/Trace/Explain/Compare), Governance (Authorize/Validate) — 'need reduction', not yet a formal specification"
+  - "A per-item closure-criteria table (Part 5) specifying exactly what would be needed to close each remaining OPEN/PARTIALLY-CLOSED item — the most actionable single closure checklist in this reconstruction's read order"
+  - "The final closure graph (Part 6), color-coded end-to-end from Question/Task through Theory v1.3, all downstream of EVal marked 🟡/🔴 — the authoritative, reconciled version of every prior closure-graph variant in this arc (M0169's, M0170's, M0173's)"
+  - "Confirmation of Executable Adequacy (introduced at M0173) as a formally tracked BLOCKED item (B2), dependent on O1-O4 — the concept survives into the authoritative register"
+defines: []
+refines:
+  - "Every prior item in this arc: the C1-C4/P1-P3/O1-O4/B1-B4 structure is a direct formalization of M0173's own corrections and closure graph, now presented as the authoritative HPA register rather than an adjudication response"
+contradicts:
+  - "FORMALLY AND AUTHORITATIVELY REVERSES M0171/M0172's 'hereby RATIFIED' declarations for Contr, EVal, Determination, and δ — this is not a new independent contradiction but the FORMAL RESOLUTION of the conflict already flagged at M0165/M0167/M0168/M0171/M0172 versus M0166/M0169/M0170/M0173: this register is the artifact where the disciplined position is formally adopted as the corpus's own tracked status, superseding the pro-ratification thread's declarations"
+repeats:
+  - "The four closure packages (C1-C4, now renamed Package 1-4) from M0173, restated with concrete expected output filenames (SPEC-EVAL-2026-v1.0, SPEC-DET-2026-v1.0, SPEC-CONTR-2026-v1.0, SPEC-DELTA-2026-v1.0, SPEC-OPS-2026-v1.0, SPEC-COMP-2026-v1.0, SPEC-EQUIV-2026-v1.0, SPEC-EXEC-ADEQ-2026-v1.0, SPEC-KERNEL-2026-v1.0, SPEC-KERNEL-SELECT-2026-v1.0, THEORY-v1.3-2026-09-02.md) — notably, some of these filenames (SPEC-EVAL, SPEC-DET, SPEC-CONTR, SPEC-DELTA) are IDENTICAL to the filenames M0171/M0172 already used for their (now-reversed) ratified specs, meaning this register treats those same documents as needing to be REDONE/CORRECTED under the same names rather than superseded by new ones"
+bridge_candidates:
+  - "Whether Package 1-4 were ever actually executed to produce corrected (not overclaimed) versions of SPEC-EVAL/SPEC-DET/SPEC-CONTR/SPEC-DELTA, SPEC-OPS, SPEC-COMP, SPEC-EQUIV, SPEC-EXEC-ADEQ, SPEC-KERNEL, SPEC-KERNEL-SELECT, and ultimately THEORY-v1.3-2026-09-02.md"
+  - "Whether this register itself was ever revisited/updated after any of Package 1-4's work, given it explicitly says 'Action: Proceed to Package 1 — EVal + Determination'"
+mathematical_content: >
+  No new mathematical content — this is a status-tracking register formalizing corrections already
+  established at M0166/M0169/M0170/M0173.
+gita_content: null
+kernel_content: >
+  Serves as the capstone, authoritative resolution of the entire ratification-tension arc spanning
+  M0159 through M0173: formally reverses the premature 'hereby RATIFIED' declarations for Contr/
+  Eval/Determination/δ, replacing them with an honest 4-CLOSED/3-PARTIAL/4-OPEN/4-BLOCKED tally and
+  an explicit 'we are close, but not yet closed' verdict — the clearest single closing statement on
+  KnowledgeOS's kernel-selection readiness anywhere in this reconstruction.
+registry_updates:
+  - "CAPSTONE: formally and authoritatively resolves the ratification-tension arc (M0159-M0173) toward the disciplined position, reversing M0171/M0172's premature ratifications"
+  - "Gives the most actionable single closure checklist (per-item closure criteria) and the most complete final closure graph in this reconstruction's read order"
+  - "Reconciles the multiple candidate-operator-set variants into one three-way taxonomy (State-transforming/Observational/Governance), still requiring reduction"
+anchor_test:
+  anchor: true
+  supports_dimension: "Capstone resolution of the ratification-tension arc; formal reversal of premature ratifications; final closure graph and package plan; operation-taxonomy reconciliation"
+  refines_or_contradicts: "refines (formalizes M0173's corrections); contradicts (formally reverses M0171/M0172's ratification claims)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "\"Numeric threshold semantics | ❌ OPEN — Unjustified\" and \"Universal isolation theorem | ❌ OPEN — Overclaimed\" (Contr, P1) — the formal reversal of SPEC-CONTR's 'hereby RATIFIED' status"
+  - "\"Totality claimed | ❌ OPEN — Overclaimed\" (EVal, P2) — the formal reversal of SPEC-EVAL's 'hereby RATIFIED' status"
+  - "\"Determination | 🔴 OPEN — No formal specification exists\" and \"δ | 🔴 OPEN — Only signature exists\" — the formal reversal of SPEC-DET's and SPEC-DELTA's 'hereby RATIFIED' status"
+  - "\"We are close. But not yet closed.\" (boxed, closing verdict)"
+undefined_concepts: []
+open_questions:
+  - "Were Packages 1-4 ever executed, and did they produce a genuine THEORY-v1.3-2026-09-02.md?"
+tier2_triggered: true
+tier2_reason: >
+  Formally and authoritatively resolves the entire ratification-tension arc (M0159-M0173) by
+  reversing M0171/M0172's premature 'hereby RATIFIED' declarations for Contr, EVal, Determination,
+  and δ, replacing them with an honest, itemized 4-CLOSED/3-PARTIAL/4-OPEN/4-BLOCKED closure register
+  — the capstone document of this entire arc.

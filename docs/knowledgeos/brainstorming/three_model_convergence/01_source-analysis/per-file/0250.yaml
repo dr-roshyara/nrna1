@@ -1,0 +1,44 @@
+sequence: 250
+path: docs/knowledgeos/brainstorming/kernel/20260824-160645-knowledge-as-a-continuously-changing-body-of-facts-duplicate.md
+title: "Knowledge as a Continuously Changing Body of Facts (duplicate of 0249)"
+date: "2026-08-24"
+bytes: 8500
+model:
+  primary: c1
+  secondary: null
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 249
+importance: low
+confidence: high
+about: >
+  Byte-identical duplicate of 0249 (verified via diff). Ninth instance of the corpus's recurring
+  duplicate-capture pattern, standard ordering, and notably captured only 8 minutes after its twin.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Entire content of 0249"
+    canonical_source: 249
+    novelty: none
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0249"
+  supports_dimension: "none (duplicate)"
+  refines_or_contradicts: "identical to 0249"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "diff against 0249's source file returned no output -- byte-identical"
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Verified byte-identical duplicate of 0249; no independent analytical content."

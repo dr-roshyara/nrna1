@@ -1,0 +1,174 @@
+sequence: 531
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-130026_closure-02-interpretation.md
+title: "LANDMARK (Double Closure): Computational Closure 2 (Interpretation) Declared Architecturally Closed / Semantically Open; Computational Closure 3 (Epistemic Admission Boundary) Fully Closed With an Eleven-State Epistemic Status Vocabulary (Unknown...Absent); Assertion≠Proven Truth; Three Distinct Uncertainties U_sem≠U_epi≠U_dom; Ambiguity≠Error"
+date: "2026-08-27"
+bytes: 20346
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly continues the corpus's active Computational Closure research program (0522->0525->0526->0527->0528->0529/0530), executing the named 'Computational Closure 2 — Interpretation' step and then, within the same file, closing an additional boundary the file itself names 'Epistemic Admission'"
+source_role: PRIMARY_RESEARCH
+canonical_source: 531
+importance: critical
+confidence: high
+about: >
+  A double-landmark file closing two major computational boundaries in a single continuous session,
+  explicitly following the same discipline as before: "define -> formalize -> attack with counterexamples ->
+  determine what is computable -> identify what remains policy-dependent."
+
+  **PART A — Computational Closure 2 (Interpretation).** Establishes `Interpretation≠Assertion`
+  ("this is what the source appears to mean," not "this proposition is accepted knowledge"). **Delivers
+  the file's first major theoretical improvement**: Interpretation is formalized as a PARTIAL function
+  `Interpret:𝒪_s×𝒞×𝒪_n×ℛ×ℳ⇀ℐ` (not total), since ambiguous observations may yield one, multiple,
+  insufficient, or no valid interpretation. **Delivers a second major refinement**: interpretation should
+  produce a SET, not a single result -- `Interpret(O_s,...)->𝒫(ℐ)` (worked through "the old system is no
+  longer supported," yielding three candidate referents for "old system"), each candidate carrying its own
+  provenance and qualification. **Establishes `Deterministic acquisition≠Deterministic interpretation`**:
+  Capture(x) is deterministic, but Interpret is configuration-dependent
+  (`Interpret(O_s,θ)={I_1,...,I_n}`, θ=ontology/grammar/context/rules/model/parser/LLM/domain vocabulary).
+
+  **Proposes a layered "interpretation stack"** rather than one opaque LLM call: Source Observation ->
+  Structural Analysis -> Syntactic Analysis -> Entity/Reference Resolution -> Semantic Role Extraction ->
+  Domain Mapping -> Candidate Interpretation -> Validation, with different technologies participating at
+  each layer (worked for PDF structure, Java code structure, and SQL structure -- "largely deterministic"
+  at this layer). **Delivers the architectural rule `Technology≠Semantic Authority`**: neither a parser nor
+  an LLM automatically establishes truth by generating a candidate structure. Reference resolution
+  (resolving "it") is explicitly a `CandidateInterpretation`, never an accepted fact, since it is itself an
+  inference. **Delivers the file's central mathematical principle**: `Meaning=f(Content,Context)` -- worked
+  through a version statement whose meaning changes entirely once System/Environment/Host/ObservedAt context
+  is attached.
+
+  **Formalizes Dimension Discovery** as `DimensionDiscovery:O_s->CandidateDimensions`, explicitly distinct
+  from ordinary entity extraction, and delivers a critical governance rule: Dimension Discovery must NOT
+  silently change the ontology -- an LLM-proposed dimension is only ever a `CandidateDimension`; only
+  Governance can promote it to an `ApprovedDimension` -- "protects the KnowledgeOS ontology from
+  uncontrolled LLM expansion." Reconfirms `Interpretation≠EpistemicAssessment` and `LLM(Interpretation)
+  ⇏Knowledge`.
+
+  **Delivers a major epistemic-discipline finding**: `Ambiguity≠Error` -- multiple simultaneously valid
+  interpretations of "Nexus is running" should be PRESERVED until context resolves them, not collapsed or
+  treated as a failure -- "ambiguity is itself an epistemic state." Delivers a parallel finding,
+  `InterpretationConfidence≠EpistemicSupport` -- an LLM can be extremely confident in a wrong
+  interpretation. **Delivers the file's most consequential new formal distinction**: three genuinely
+  different uncertainties -- semantic uncertainty U_sem (what does the source mean?), epistemic uncertainty
+  U_epi (how well-supported is the proposition?), and domain uncertainty U_dom (what is actually true in
+  the domain?) -- `U_sem≠U_epi≠U_dom`, "a significant strengthening of our earlier four-dimensional
+  epistemic model." Proposes a non-epistemic interpretation lifecycle (Observed->Parsed->Structured->
+  Interpreted->Candidate->Validated->{Accepted,Rejected,Ambiguous}) explicitly belonging to semantic
+  reconstruction, not epistemic status. Names a "Semantic Reconstruction" bounded context (concepts:
+  SemanticInterpretation, CandidateDimension, CandidateEntity, CandidateRelationship, CandidateProposition,
+  Ambiguity, InterpretationMethod, InterpretationEvidence) explicitly barred from owning truth, final
+  epistemic status, domain authority, or governance decisions.
+
+  **Declares Part A's closure verdict**: Source Observation = CLOSED; Interpretation =
+  **ARCHITECTURALLY CLOSED, SEMANTICALLY OPEN** -- the mechanism is known, but the interpretation result
+  itself may legitimately remain ambiguous, incomplete, multiple, AI-assisted, human-assisted, or
+  domain-dependent, explicitly "not a defect. Trying to make interpretation always deterministic would
+  actually damage the model."
+
+  **PART B — the Epistemic Admission Boundary (named mid-file "Computational Closure 3 — Epistemic
+  Admission," later renamed at the file's close to make way for a further "Computational Closure 3 — The
+  Knowledge State").** Poses a genuine design fork before proceeding: should KnowledgeOS allow an Assertion
+  with an explicitly unresolved epistemic state (Unknown/Hypothesized/WeaklySupported), or require a minimum
+  admission threshold first? States and then confirms the recommendation: **`Assertion≠Proven Truth`**.
+
+  **Delivers a seven-point rationale** for why a minimum-threshold (binary Known/Unknown) admission model
+  would be architecturally disastrous: it would destroy the Zero Lens's ability to detect gaps (no
+  representation for Unknown/Hypothesized); destroy the Lord Lens's ability to generate candidates (no
+  place for a Hypothesized assertion to reside); sever the Observation->Interpretation->Candidate->Assertion
+  provenance chain; damage auditability (no record of what was considered but not yet accepted); make the
+  corpus's standing incomplete-question problem (Arjuna's "those") unsolvable; collapse the Unknown≠Absent
+  distinction; and break the learning trajectory Hypothesized->WeaklySupported->StronglySupported.
+
+  **Delivers the file's central formal result -- the corpus's first complete eleven-state epistemic status
+  vocabulary** for Σ: Unknown, Hypothesized, Reported, WeaklySupported, ModeratelySupported,
+  StronglySupported, Confirmed, Conflicting, Stale, Invalidated, Absent -- each with a defining meaning and
+  a worked Nexus-version example. Formalizes the Admission Boundary
+  `Admit:CandidateAssertion×Evidence×Rules×Context->Assertion`, explicitly noting admission requires NEITHER
+  StronglySupported NOR Confirmed NOR Truth -- "a much lower, more defensible boundary": admission means
+  only "this proposition is now part of the Knowledge State, with an explicit epistemic status."
+
+  **Re-runs the corpus's established eight-case test suite against this new admission model**, assigning a
+  concrete epistemic state to each: Database->StronglySupported; Document->WeaklySupported;
+  Internet(unknown site)->WeaklySupported with caveats; Human statement->Reported; LLM output->Hypothesized;
+  Incomplete question->no assertion created, gap detected, clarification requested; Conflicting
+  sources->both assertions coexist, tagged Conflicting; Unknown value->Assertion(Unknown) -- an explicit,
+  first-class representable state rather than an absence of representation.
+
+  **Delivers the file's second most consequential finding**: the Assertion (with explicit epistemic state)
+  is the single source of truth for KnowledgeOS, but "truth" here is redefined as "this is what we currently
+  represent, with this degree of support, uncertainty, and validity" -- explicitly NOT "this is factually
+  correct in reality," formalizing **`Knowledge≠Reality`**.
+
+  **Closes with a complete extended pipeline** (Input->Artifact->SourceObservation->
+  SemanticInterpretation->CandidateAssertion->EpistemicAssessment->Assertion->Zero->Lord->Sārathi), six
+  named constitutional invariants (Assertion≠Proven Truth; admission does not require verification; Unknown
+  is a valid epistemic state, not an absence; epistemic status can evolve; multiple epistemic states can
+  coexist as Conflicting; provenance is preserved), and the explicit declaration "The Epistemic Admission
+  Boundary is computationally closed," proceeding next to a phase now retitled "Computational Closure 3 —
+  The Knowledge State."
+introduces:
+  - concept: "Interpretation formalized as a PARTIAL function (Interpret:𝒪_s×𝒞×𝒪_n×ℛ×ℳ⇀ℐ), not a total one, since ambiguous observations may yield zero, one, or multiple interpretations"
+  - concept: "Interpretation should produce a set/power-set of candidate interpretations (Interpret(O_s,...)->𝒫(ℐ)), each with its own provenance, rather than one forced result"
+  - concept: "Deterministic acquisition≠Deterministic interpretation: Capture(x) is deterministic while Interpret(O_s,θ) is configuration-dependent and non-deterministic"
+  - concept: "The layered interpretation stack (Structural->Syntactic->Entity/Reference Resolution->Semantic Role Extraction->Domain Mapping->Candidate Interpretation->Validation), replacing 'LLM interpretation' as one opaque operation"
+  - concept: "Technology≠Semantic Authority: neither a parser nor an LLM automatically establishes truth by producing a candidate structure"
+  - concept: "Meaning=f(Content,Context) — the file's central mathematical principle for interpretation"
+  - concept: "Dimension Discovery must not silently change the ontology: LLM-proposed dimensions are only CandidateDimensions until Governance promotes them to ApprovedDimensions"
+  - concept: "Ambiguity≠Error: multiple valid interpretations should be explicitly preserved as an epistemic state, not collapsed or treated as failure"
+  - concept: "InterpretationConfidence≠EpistemicSupport: an LLM's confidence in an interpretation is not evidence of its truth"
+  - concept: "Three formally distinct uncertainties: semantic uncertainty (U_sem, what does the source mean), epistemic uncertainty (U_epi, how well-supported is the proposition), and domain uncertainty (U_dom, what is actually true), with U_sem≠U_epi≠U_dom"
+  - concept: "The 'Semantic Reconstruction' bounded context, explicitly barred from owning truth, final epistemic status, domain authority, or governance decisions"
+  - concept: "Interpretation declared ARCHITECTURALLY CLOSED, SEMANTICALLY OPEN — the mechanism is known but the result may legitimately remain ambiguous, incomplete, or multiple, which is not a defect"
+  - concept: "The corpus's first complete eleven-state epistemic status vocabulary for Σ: Unknown, Hypothesized, Reported, WeaklySupported, ModeratelySupported, StronglySupported, Confirmed, Conflicting, Stale, Invalidated, Absent"
+  - concept: "Assertion≠Proven Truth: an Assertion is a knowledge claim with an explicit epistemic status, not a verified fact, and can legitimately be Unknown or Hypothesized"
+  - concept: "The Admission Boundary Admit:CandidateAssertion×Evidence×Rules×Context->Assertion requires neither StronglySupported nor Confirmed nor Truth — a deliberately low, defensible threshold"
+  - concept: "Knowledge≠Reality (redefined): Assertion-truth means 'what we currently represent, with this degree of support/uncertainty/validity,' never 'factually correct in reality'"
+  - concept: "Unknown≠Absent: KnowledgeOS must be able to distinguish 'we don't know' from 'it doesn't exist' as two distinct, explicit epistemic states"
+defines:
+  - concept: "Epistemic State Space Σ (eleven states)"
+    definition: "Unknown (dimension exists, value unknown), Hypothesized (candidate value proposed, not evaluated), Reported (source reported, unverified), WeaklySupported, ModeratelySupported, StronglySupported (increasing evidence strength), Confirmed (verified via multiple independent sources), Conflicting (multiple sources disagree), Stale (once known, possibly no longer current), Invalidated (was believed, now disproven), Absent (determined not to exist)"
+  - concept: "Interpretation (partial function)"
+    definition: "Interpret:𝒪_s×𝒞×𝒪_n×ℛ×ℳ⇀𝒫(ℐ) — a partial function from a Source Observation, Context, Ontology, Rules, and interpretation Method to a set of candidate interpretations, which may be empty, singleton, or multi-valued"
+  - concept: "Admit (Epistemic Admission Boundary)"
+    definition: "Admit:CandidateAssertion×Evidence×Rules×Context->Assertion — the operation by which a candidate proposition enters the Knowledge State with an explicit epistemic status, requiring neither strong support nor confirmation nor truth"
+refines:
+  - concept: "0526-0530's Observation-closure work and the proposed 'Computational Closure 2 — Interpretation' next phase"
+    refinement: "Executes Computational Closure 2 in full, declaring Interpretation architecturally closed but semantically (legitimately) open, and immediately proceeds to close a further boundary (Epistemic Admission) within the same file"
+  - concept: "0525's four-part epistemic state Σ=(Acquisition,Support,Uncertainty,Validity)"
+    refinement: "Superseded/extended by a concrete eleven-value enumerated status vocabulary for the epistemic-state dimension, giving Σ actual named values rather than only abstract axes"
+  - concept: "0492's Discrepancy/Coherence framework and the corpus's broader four-dimensional epistemic model"
+    refinement: "Strengthened by the three-way uncertainty split (U_sem≠U_epi≠U_dom), sharpening what 'uncertainty' actually refers to at each pipeline stage"
+  - concept: "0528/0530's NumberOfAIOutputs≠AmountOfIndependentEvidence and Instruction≠Knowledge findings"
+    refinement: "Both are consistent with and reinforced by the new eleven-state Σ vocabulary (e.g. Hypothesized for AI-generated candidates, Conflicting for disputed multi-source claims)"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Note the file's internal renaming inconsistency: it names the Epistemic Admission work 'Computational Closure 3 — Epistemic Admission' mid-file, then at closure calls the NEXT phase 'Computational Closure 3 — The Knowledge State' — the numbering appears to silently absorb Epistemic Admission into Closure 2's scope or renumber it; trace how subsequent files refer to this closure's number"
+  - "Reconcile the eleven-state Σ vocabulary introduced here against 0525's four-part Σ=(Acquisition,Support,Uncertainty,Validity) and any later epistemic-state formalizations to determine whether they are merged, superseded, or kept as complementary levels of description"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Interpretation's formalization as a partial, set-valued function, the layered interpretation stack, Technology≠Semantic Authority, Meaning=f(Content,Context), the CandidateDimension/ApprovedDimension governance rule, Ambiguity≠Error, and the three-way uncertainty split U_sem≠U_epi≠U_dom."
+  - "dimension-registry.md: record Interpretation's closure verdict (architecturally closed, semantically open) and the Semantic Reconstruction bounded context's explicit non-ownership of truth/epistemic status/domain authority/governance."
+  - "dimension-registry.md: record the corpus's first complete eleven-state epistemic status vocabulary (Σ), the Assertion≠Proven Truth decision with its seven-point rationale, the low-threshold Admission Boundary, the re-run eight-case test against the new admission model, and the Knowledge≠Reality redefinition."
+anchor_test:
+  anchor: "0526-0530's Observation-closure sequence; 0525's Σ=(Acquisition,Support,Uncertainty,Validity); 0528/0530's independent-evidence and Instruction≠Knowledge findings; the corpus's standing incomplete-question problem"
+  supports_dimension: "DOUBLE LANDMARK: closes Computational Closure 2 (Interpretation, architecturally closed/semantically open) with major new principles (partial/set-valued interpretation, Technology≠Semantic Authority, Meaning=f(Content,Context), Ambiguity≠Error, the three-way U_sem/U_epi/U_dom uncertainty split), then closes a further Epistemic Admission Boundary with the corpus's first complete eleven-state epistemic status vocabulary and the formal decision Assertion≠Proven Truth, redefining Knowledge≠Reality along the way"
+  refines_or_contradicts: "directly extends 0526-0530's closure sequence; supersedes/enriches 0525's abstract four-axis Σ with concrete named states; reinforces 0528/0530's independent-evidence and Instruction-vs-Knowledge findings; resolves the corpus's incomplete-question problem within the new Admission model (Case 6: no assertion, gap detected)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The seven-point rationale against threshold-based admission is a rare instance in the corpus of an explicit, itemized architectural stress-test of a REJECTED alternative design, giving unusually strong documented justification for the Assertion≠Proven Truth decision rather than mere assertion of preference."
+  - "The re-run of the corpus's established eight-case test suite against the new eleven-state Σ vocabulary, assigning a specific concrete status to each case, is directly checkable evidence that the new vocabulary is expressive enough to cover the full range of previously-tested scenarios."
+undefined_concepts: []
+open_questions:
+  - "Whether the file's internal renumbering (Epistemic Admission named 'Closure 3' mid-file, then the next phase also called 'Closure 3 — The Knowledge State') reflects a deliberate absorption of Epistemic Admission into Closure 2's scope, or a simple drafting inconsistency — worth tracking in subsequent files' closure numbering"
+  - "How the new eleven-state Σ vocabulary is reconciled with 0525's four-axis Σ=(Acquisition,Support,Uncertainty,Validity) going forward — as a replacement, an enrichment, or two complementary levels of description"
+tier2_triggered: true
+tier2_reason: "DOUBLE LANDMARK closing two major computational boundaries in one file: Computational Closure 2 (Interpretation) is formalized as a partial, set-valued, non-deterministic function with a new layered interpretation stack, the Technology≠Semantic Authority and Meaning=f(Content,Context) principles, a governance rule protecting the ontology from uncontrolled LLM-proposed dimensions, the Ambiguity≠Error principle, and a three-way uncertainty split (U_sem≠U_epi≠U_dom) strengthening the corpus's epistemic model — declared architecturally closed but legitimately semantically open. Immediately following, the Epistemic Admission Boundary is fully closed with the corpus's first complete eleven-state epistemic status vocabulary, the formal decision Assertion≠Proven Truth (backed by a rare, itemized seven-point rejection of the threshold-based alternative), a re-run of the established eight-case test suite validating the new model, and a redefinition of Knowledge≠Reality — collectively the most consequential single-file contribution yet to the corpus's active Computational Closure research program."

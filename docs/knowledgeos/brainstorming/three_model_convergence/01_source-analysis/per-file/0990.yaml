@@ -1,0 +1,102 @@
+sequence: 990
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-190336_step_286_hpa-prompt-instructions-gap-update-and-methodological-standardization.md
+title: "HPA Prompt Instructions: Gap Update & Methodological Standardization -- The Master Consolidation/Execution-Instructions Document Synthesizing Both Gap-Update Artifacts, Delivering the Formal H-K Identifier Disambiguation Table and Naming a New, Not-Yet-Encountered Bridge Candidate ('01-GAP-UPDATE-FROM-REVISED-286.md')"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the HPA's own formal execution-instructions/standardization document, consolidating two upstream gap-update artifacts (file 0985 and a not-yet-encountered '01-GAP-UPDATE-FROM-REVISED-286.md')"
+source_role: PRIMARY_RESEARCH
+canonical_source: 990
+importance: critical
+confidence: high
+about: >
+  "PROMPT INSTRUCTIONS: GAP UPDATE & METHODOLOGICAL STANDARDIZATION," status "EXECUTION AUTHORIZED," listing
+  two input artifacts: `01-GAP-UPDATE-FROM-REVISED-286.md` (NOT YET DIRECTLY ENCOUNTERED by this
+  reconstruction -- a new bridge candidate) and `02-GAP-UPDATE-FROM-HPA-REVIEW-D285-5.md` (= file 0985,
+  already fully documented).
+
+  **Parts 1-4 substantially restate content already documented via files 0985-0987**: the governing equality
+  rule ("a property stated without naming its equality relation is not a well-formed proposition"); the
+  per-artifact equality-relation table (D285-1 weak/D285-2 holds/D285-4 correct-no-equality/D285-5
+  template/D285-6 corrected/D285-7 correct-no-equality); the Sañjaya recovery closing three gaps (`(W,Ω)`
+  referent layer promoted `G3→G5`; `Observation` primitive closed as discovery gap; `Σ₀`/`Sañjaya_K` layer
+  distinction); the `GK-13` Jñāna correction (Tripuṭī `Jñātā·Jñāna·Jñeya` = knower·knowing·known); the
+  D285-6 correction (`(𝒜,ℛ)=_semantic π_K(K_t)`, not unqualified `=`).
+
+  **Part 5 DELIVERS GENUINELY NEW, DIRECTLY USEFUL CONTENT: THE FORMAL H-K IDENTIFIER DISAMBIGUATION TABLE**,
+  resolving two identifier collisions found in the corpus's own hypothesis register: **`H-K04`** was used for
+  BOTH "Kṣetra-jña" (Part 3 of an earlier document) AND "Equanimity" (Part 15) -- disambiguated as `H-K04`
+  (Kṣetra-jña) vs **`H-K04e`** (Equanimity); **`H-K06`** was used for BOTH "Karma" AND "Failed
+  Action/Negative Knowledge" -- disambiguated as `H-K06` (Karma/Phala) vs **`H-K06f`** (Failed action,
+  matching the already-tracked `H-K06f` posterior-changed criterion from file 0988); and **`H-K13`** is
+  formally assigned to Jñāna. **This directly resolves an identifier-collision risk this reconstruction had
+  not previously flagged as explicit**, and confirms `H-K06f`'s naming (already used without derivation in
+  file 0988) traces to this exact disambiguation act.
+
+  **Part 5 also formally records a Sañjaya mis-prioritization finding**: `GK-16 Sañjaya` was placed in
+  "Priority 3 (exploratory)" by an earlier, not-yet-encountered prompt, when the evidence shows it belongs in
+  Priority 1 (touches a named blocker, is a ratified primitive with a formalized corpus construct, and
+  refines `GK-04` which the same prompt itself ranks Priority 1) -- recorded as "a recommendation to HPA," not
+  a unilateral reclassification.
+
+  **Part 6 delivers a consolidated eight-row gap register** (three closed by recovery, one corroborated
+  absent, one irreducible blocker (`Qualify` has no body, `G1`) unchanged, two new items), closing "no
+  innovation used anywhere."
+
+  **Part 7 spells out, for the first time in full, the formally MANDATED seven-section D285-x template**
+  (Property Statement/Trivial vs Substantive/Execution/Qualification/Equality Specification/Independence/
+  Classification), explicitly exempting D285-8 ("not a test artifact and asserts no property").
+
+  **Part 9 delivers a consolidated SIX-ITEM list of governing principles** boxed together for the first time:
+  (1) every D285 hypothesis must be typed before testing; (2) every equality-dependent hypothesis must
+  specify its equality relation; (3) a property without a named equality relation is not well-formed; (4)
+  corroboration≠derivation, corroboration stronger when independently required; (5) the Gītā provides
+  candidate distinctions, KOS research determines survival; (6) **"The corpus is richer than the model built
+  from it"** -- a new, pithy closing principle not previously seen boxed in this exact form.
+introduces:
+  - concept: "The formal H-K identifier disambiguation table resolving two collisions in the corpus's own hypothesis register: H-K04 (Ksetra-jna) vs H-K04e (Equanimity); H-K06 (Karma/Phala) vs H-K06f (Failed action); H-K13 assigned to Jnana"
+  - concept: "The formal recommendation-to-HPA finding that Sanjaya (GK-16) was mis-prioritized as exploratory when it should be Priority 1"
+  - concept: "The full, formally mandated seven-section D285-x template, spelled out in complete form for the first time (Property Statement/Trivial-Substantive/Execution/Qualification/Equality Specification/Independence/Classification)"
+  - concept: "The consolidated six-item list of governing principles, including the new closing principle 'The corpus is richer than the model built from it'"
+defines:
+  - term: "H-K04e"
+    definition: "The disambiguated identifier for the Equanimity hypothesis, distinguished from H-K04 (Ksetra-jna)"
+  - term: "H-K06f"
+    definition: "The disambiguated identifier for the Failed-Action/Negative-Knowledge hypothesis, distinguished from H-K06 (Karma/Phala); traces directly to this document's disambiguation act"
+refines:
+  - concept: "File 0988's use of the identifier 'H-K06f' without derivation"
+    refinement: "TRACED to its origin: this document's formal disambiguation of the H-K06 identifier collision"
+  - concept: "This reconstruction's already-tracked Sanjaya-mis-prioritization observation"
+    refinement: "CONFIRMED as a formally recorded finding in this document (Part 5, Defect 2), recommended to HPA rather than unilaterally corrected"
+contradicts: []
+repeats:
+  - "Parts 1-4 substantially repeat content already fully documented via files 0985-0987 (equality rule, Sanjaya recovery, GK-13 Jnana correction, D285-6 correction); this document's distinctive new content is the H-K identifier disambiguation (Part 5), the formalized seven-section template (Part 7), and the consolidated six-item governing-principles list (Part 9)."
+bridge_candidates:
+  - "'01-GAP-UPDATE-FROM-REVISED-286.md' -- named as a primary input artifact but not yet directly encountered by this reconstruction; likely contains the original Sanjaya recovery and GK-13 correction derivations."
+  - "The original, not-yet-encountered prompt that mis-prioritized Sanjaya as 'Priority 3 (exploratory)' alongside GK-04's Priority-1 ranking."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal H-K identifier disambiguation table (H-K04/H-K04e, H-K06/H-K06f, H-K13=Jnana) as a directly reusable reference for interpreting any future hypothesis citations."
+  - "dimension-registry.md: record the Sanjaya mis-prioritization finding and the full seven-section D285-x template as consolidated methodological reference points."
+anchor_test:
+  anchor: "Files 0985-0988's already-documented gap-update and D285-x findings; file 0988's unexplained use of 'H-K06f'"
+  supports_dimension: "Consolidates and standardizes prior findings; directly traces file 0988's H-K06f identifier to its origin in this document's disambiguation act"
+  refines_or_contradicts: "confirms and consolidates prior findings; resolves an identifier-provenance question"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The H-K06f identifier used without derivation in file 0988 is directly traceable to this document's Part 5 disambiguation act, confirming both files' internal consistency."
+undefined_concepts: []
+open_questions:
+  - "The content of '01-GAP-UPDATE-FROM-REVISED-286.md', not yet directly encountered."
+  - "The identity of the original prompt that mis-prioritized Sanjaya as exploratory."
+tier2_triggered: true
+tier2_reason: "Delivers the formal H-K identifier disambiguation table (directly resolving an unexplained identifier in file 0988) and the fully spelled-out seven-section D285-x template and six-item governing-principles consolidation, while substantially repeating content already documented via files 0985-0987. Classified importance critical and confidence high given its role as the master standardization/execution-instructions document for the entire equality/gap-update sub-track."

@@ -1,0 +1,188 @@
+sequence: 806
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-015345_step_181_the-what-if-two-truths-disagree-experiment.md
+title: "Step 181 -- The 'What If Two Truths Disagree?' Experiment (MAJOR SYNTHESIS MILESTONE, delivers 0805's promised contradiction-resolution formalization): Delivers 'Conflict Is First an Epistemic Fact, Not an Error,' Rejects Both 'Latest Wins' (Timestamp⇏Truth) and 'Highest Confidence Wins' -- Delivers Contradiction⇒SemanticAlignment (Scope/Time/Version Checks Before Declaring Contradiction) and an Eight/Nine-Category Conflict-Type Taxonomy -- Delivers 'Resolution Does Not Imply Deletion,' the Explicit Warning 'KnowledgeOS Should Not Become a Fake Bayesian Oracle,' and Evidence-Independence/Triangulation⇏Truth -- Delivers the AI Epistemic Contract (Detect/Expose/Preserve/Assess/Recommend, Never Delete or Invent Resolution) -- Delivers Source Authority as Proposition-Dependent (Authority(Source,Proposition)≠Authority(Actor)) -- Delivers 'Unresolved Disagreement Is Often More Truthful Than False Consensus' and KnowledgeSituation as the New Unit of Retrieval -- Opens Step 182's 'Who Owns the Truth?' Experiment With the Stated Hypothesis 'There Is No Universal Owner of Organizational Truth'"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily mathematical/statistical/DDD conflict-semantics formalization; explicitly re-invokes 'the deeper Chapter 4 theme' once to motivate non-destructive correction, without new Gita textual engagement"
+source_role: PRIMARY_RESEARCH
+canonical_source: 806
+importance: critical
+confidence: high
+about: >
+  Directly continues 0805, opening "we now examine one of the most difficult problems in KnowledgeOS: what
+  should happen when two pieces of apparently valid knowledge disagree?... the central mistake would be to
+  assume that every disagreement means that one side is simply 'wrong.'"
+
+  **§181.1-181.4 delivers the first principle**, boxed: **"conflict is first an epistemic fact, not an
+  error"** -- `ConflictDetected(C_1,C_2)` recorded, never an immediate `C_1=Wrong`/`C_2=Wrong` verdict.
+  Delivers the rejection of two naive resolution heuristics with worked counterexamples: **"latest wins"**
+  (a fresher `K_2` from a stale document can be weaker than an older `K_1` from a production test, boxed
+  `Timestamp⇏Truth`) and **"highest confidence wins"** (`P(C_1)=0.90` vs `P(¬C_1)=0.85` cannot be
+  compared without knowing whether the numbers are comparable/calibrated/independently-derived, boxed
+  **"confidence alone does not resolve semantic conflict"**).
+
+  **§181.5-181.10 delivers `Contradiction⇒SemanticAlignment`**: before declaring contradiction, the
+  architecture must verify claims share compatible time (`FirewallOpen(t_1)` vs `FirewallClosed(t_2)` with
+  `t_1≠t_2` may just mean the firewall changed), scope (`FirewallOpen(Production)` vs
+  `FirewallClosed(Test)` concern different environments), and version (`Nexus supports X, v3.70` vs `Nexus
+  does not support X, v3.69` -- "the system evolved," boxed **"version difference can explain apparent
+  contradiction"**). Delivers **an eight-category provisional conflict classification** (Different
+  scope/time/version/interpretation, Incomplete evidence, Genuine contradiction, Correction,
+  Supersession), "much richer than `conflict=true`." Delivers **different interpretation as a distinct
+  category**: "the migration is safe" meaning no-data-loss to one engineer and no-service-interruption to
+  another is semantic ambiguity, not contradiction, directly connecting to DDD's bounded-context
+  discipline (the same word "safe" or "approval" can carry different meanings across
+  SecurityContext/OperationsContext or different governance contexts) -- "KnowledgeOS must not flatten all
+  organizational language into one universal ontology prematurely."
+
+  **§181.11-181.16 delivers the claim tuple** `C=⟨Proposition,Context,Scope,Time,Source⟩`, **genuine
+  contradiction as requiring materially equivalent context/scope/time**, and **the resolution pipeline**,
+  boxed: `Conflict→Preserve→Classify→Escalate/Investigate` -- explicitly not automatic resolution. Delivers
+  **"resolution does not imply deletion,"** boxed, motivated by preserving `C_1` even after a correcting
+  `C_2` arrives, "to understand how the organization arrived here." Delivers **competing-evidence
+  transparency**: preserve both `E_1→C` and `E_2→¬C` explicitly, with any later reliability-based
+  determination keeping the reasoning visible (`E_1→[stronger]→C`, `E_2→[weaker]→¬C`).
+
+  **§181.17-181.23 delivers the Bayesian lens with an explicit warning**: `Odds(C|E_1)=Odds(C)·LR_1` is a
+  useful principled framework, but boxed **"KnowledgeOS should not become a fake Bayesian oracle"** --
+  most enterprise evidence lacks reliable probability models, so arbitrary `confidence=0.9473` values
+  should not be manufactured merely because statistics makes it possible. **Delivers evidence
+  independence** (five documents all copying one source `E_0` are not five independent pieces of evidence,
+  `EvidenceCount=5⇏EvidenceStrength=5×`, "an extremely important insight for AI-based knowledge systems"),
+  directly extending 0793's "three-agent problem" to document/evidence corroboration specifically, and
+  notes provenance/lineage tracking can reveal this common-ancestor structure. Delivers **source
+  diversity/triangulation**: `Triangulation(C)` (multiple independent evidence *types* converging) as more
+  informative than repeated copies, but explicitly bounded, boxed: **`Triangulation⇏Truth`** -- "three
+  correlated sources can still be wrong."
+
+  **§181.24-181.28 delivers "disagreement itself becomes knowledge"**: two experts legitimately
+  disagreeing over genuinely ambiguous evidence should not be forced into consensus -- the system may
+  represent `Disputed(P)` as valuable organizational knowledge, worked through an architecture-specific
+  example directly resonant with the arc's own bounded-context work: `ArchitectA:BC=X` vs
+  `ArchitectB:BC=Y` should become an explicit `BoundaryDispute(X,Y)` fed into an architecture decision
+  process, "much healthier than silently choosing whichever document was indexed last." Delivers
+  **epistemic resolution vs. governance resolution** (again distinguished, reconfirming 0803's
+  Epistemic/Governance split): epistemic resolution determines which proposition is better supported;
+  governance resolution may still choose `ActAsIf(¬P)` "because of risk tolerance or policy" --
+  `Evidence⇏Decision`. Delivers **`ResolutionAuthority=f(ConflictType)`**: a technical/domain authority
+  resolves factual production-behavior questions; Governance resolves adoption questions.
+
+  **§181.29-181.31 delivers the file's central AI-safety contribution**, boxed:
+  **`Conflict→Classification→ResponsibleContext→ResolutionMethod`**, explicitly not `Conflict→AI picks
+  winner`. **Delivers "AI should surface conflict, not conceal it"**: an AI's output should be "the
+  knowledge base contains conflicting evidence... the conflict has not been resolved," never a confidently
+  asserted single answer absent an explicit resolution basis -- crystallized into **the AI epistemic
+  contract**: `DetectConflict, ExposeConflict, PreserveProvenance, AssessEvidence, RecommendInvestigation`
+  permitted; `DeleteConflict` and `InventResolution` forbidden.
+
+  **§181.32-181.35 delivers domain-rule-based deterministic resolution**: `Supersedes(Version_2,Version_1)`
+  can mechanically resolve a conflict only because an explicit domain rule exists, "not because 'newer is
+  always better,'" and similarly a `SourcePriority` hierarchy (Production>Staging>Documentation) is valid
+  only if explicitly domain-defined, never assumed universally. Delivers **source authority as
+  proposition-dependent**, boxed: **`Authority(Source,Proposition)` distinct from `Authority(Actor)`** -- a
+  Board decision record is authoritative for organizational direction but not for actual runtime CPU usage,
+  `Quality(E,Context)` rather than a universal evidence-quality property.
+
+  **§181.36-181.38 delivers the complete conflict model**: `ConflictCandidate=⟨C_1,C_2,Context,Scope,Time,
+  Evidence,DetectionBasis⟩`, a nine-category `ConflictType` taxonomy (ScopeDifference/
+  TemporalDifference/VersionDifference/SemanticDifference/InsufficientEvidence/Contradiction/
+  Correction/Supersession/Dispute, explicitly experimental, not frozen), and
+  `Resolution=⟨Conflict,Method,Determination,Authority,Time⟩`. **Delivers `ConflictStatus=Unresolved` as
+  explicitly legitimate**, boxed: **"unresolved disagreement is often more truthful than false
+  consensus."**
+
+  **§181.39-181.42 re-invokes "the deeper Chapter 4 theme"** (different states not automatically possessing
+  the same knowledge) to motivate non-destructive correction once more (`K_2` explaining
+  `Corrects(K_1)`, history preserved), delivers **the institutional-memory conflict graph** (conflict as a
+  first-class relationship alongside Observation/Evidence/Claim/Investigation/Determination/Decision), and
+  crystallizes **`KnowledgeSituation` as the new unit of retrieval**, explicitly replacing "a document" --
+  `Claims+Evidence+Relationships+TemporalState+Conflict+Determination` -- worked through a contrasting
+  conventional-RAG-vs-KnowledgeOS retrieval example, "one of the strongest architectural implications
+  emerging from our experiments."
+
+  **§181.43 delivers the Step 181 verdict**: the hypothesis "when two truths disagree, the system should
+  choose the better one" is **explicitly rejected as an architectural primitive**, replaced by the boxed
+  pipeline **`Detect→Contextualize→Classify→Preserve→Investigate→Resolve when authorized`** and
+  **"conflict is not necessarily failure"** (it may represent genuine uncertainty, changing reality,
+  different scopes/meanings, correction, competing expert interpretations, or unresolved organizational
+  knowledge).
+
+  **Closes opening "Step 182 — The 'Who Owns the Truth?' Experiment,"** distinguishing
+  `KnowledgeOwnership`, `DecisionAuthority`, `DomainExpertise`, and `Accountability` as four boxed, distinct
+  concepts, and delivering **an explicit stated hypothesis** (rare for this arc's otherwise open-ended
+  framings, as previously seen at 0803/0804): boxed **"there is no universal owner of organizational
+  truth"** -- instead, "bounded authorities over specific kinds of determinations." No actual repository
+  implementation occurs within this file itself; every tuple, taxonomy, and invariant remains a conceptual
+  specification pending Step 182's ownership formalization.
+introduces:
+  - concept: "'Conflict is first an epistemic fact, not an error'; ConflictDetected(C_1,C_2) recorded before any verdict"
+  - concept: "The rejection of 'latest wins' (Timestamp⇏Truth) and 'highest confidence wins' with worked counterexamples"
+  - concept: "Contradiction⇒SemanticAlignment: scope/time/version checks required before declaring genuine contradiction"
+  - concept: "The eight/nine-category conflict-type taxonomy, including 'different interpretation' as a DDD bounded-context-language phenomenon"
+  - concept: "The claim tuple C=⟨Proposition,Context,Scope,Time,Source⟩; 'resolution does not imply deletion'"
+  - concept: "The explicit warning 'KnowledgeOS should not become a fake Bayesian oracle'"
+  - concept: "Evidence independence extended to document/evidence corroboration (EvidenceCount=5⇏EvidenceStrength=5×), and Triangulation(C)⇏Truth"
+  - concept: "'Disagreement itself becomes knowledge': Disputed(P) as a legitimate epistemic state, worked through a directly self-resonant BoundaryDispute(X,Y) architecture example"
+  - concept: "ResolutionAuthority=f(ConflictType); epistemic resolution vs. governance resolution reconfirmed"
+  - concept: "The AI epistemic contract: DetectConflict/ExposeConflict/PreserveProvenance/AssessEvidence/RecommendInvestigation permitted; DeleteConflict/InventResolution forbidden"
+  - concept: "Domain-rule-based deterministic resolution (Supersedes, SourcePriority) explicitly requiring an explicit domain rule, never assumed universally"
+  - concept: "Source authority as proposition-dependent: Authority(Source,Proposition)≠Authority(Actor); Quality(E,Context)"
+  - concept: "The complete conflict model: ConflictCandidate, the nine-category ConflictType taxonomy, and Resolution tuples"
+  - concept: "'Unresolved disagreement is often more truthful than false consensus'"
+  - concept: "KnowledgeSituation as the new unit of retrieval, replacing 'a document,' named one of the arc's strongest architectural implications"
+  - concept: "The Step 181 verdict: rejecting 'choose the better one' as an architectural primitive, replaced by Detect→Contextualize→Classify→Preserve→Investigate→Resolve when authorized"
+  - concept: "Step 182's opening: KnowledgeOwnership/DecisionAuthority/DomainExpertise/Accountability distinguished, with the stated hypothesis 'there is no universal owner of organizational truth'"
+defines:
+  - concept: "Contradiction⇒SemanticAlignment"
+    definition: "Before two apparently conflicting claims can be classified as a genuine logical contradiction, the architecture must first verify they refer to sufficiently comparable states -- the same time, the same scope/environment, and the same version -- since an apparent conflict frequently dissolves once these dimensions are checked (a firewall claim from two different times, environments, or software versions is not a contradiction but simply a description of two different states); only claims that remain in tension after this alignment check constitute a genuine contradiction requiring further epistemic handling"
+  - concept: "KnowledgeSituation as the unit of retrieval"
+    definition: "Rather than retrieving a single document or a single claim in response to a query, a mature KnowledgeOS should retrieve a KnowledgeSituation: the full relevant bundle of claims, supporting and conflicting evidence, their relationships, temporal state, any unresolved conflict, and the current determination status -- so that a query about a genuinely disputed or uncertain proposition surfaces the dispute itself ('evidence A supports X, evidence B indicates otherwise, here is each one's provenance') rather than silently returning one answer as if it were uncontested"
+  - concept: "The AI epistemic contract for conflict handling"
+    definition: "An AI agent encountering conflicting knowledge is permitted and expected to detect the conflict, expose it explicitly in its output, preserve the provenance of both sides, assess the relative strength of the competing evidence, and recommend further investigation -- but it must never silently delete or suppress one side of a conflict, and must never invent a resolution (declare a winner) without an explicit, domain-appropriate resolution basis and the applicable authority to do so"
+refines:
+  - concept: "0805's opening of Step 181 and its promised contradiction representation/detection/resolution formalization"
+    refinement: "DELIVERED IN FULL: the rejection of naive resolution heuristics, the semantic-alignment precondition for genuine contradiction, the nine-category conflict taxonomy, the AI epistemic contract, and the Step 181 verdict rejecting 'choose the better one' as an architectural primitive"
+  - concept: "0793's evidence-independence graph and 'the three-agent problem' (correlated agent outputs are not independent confirmations)"
+    refinement: "Directly extended from AI-agent-output correlation to document/evidence-corroboration correlation specifically: five documents copying the same original source do not constitute five independent pieces of evidence, and provenance/lineage tracking is explicitly identified as the mechanism for detecting this common-ancestor structure -- the same underlying statistical-independence discipline, now applied to a documentary-evidence domain rather than an AI-agent-consensus domain"
+  - concept: "0803's two-function Epistemic/Governance model (E and G) and 'Evidence≠Claim'/'Evidence⇏Decision' family"
+    refinement: "Directly reapplied to the specific case of conflict resolution: epistemic resolution (which proposition is better supported) is explicitly distinguished from governance resolution (what the organization will adopt or act as if true), with the same Evidence⇏Decision principle now shown to govern conflict resolution specifically, not merely ordinary decision-making"
+  - concept: "0805's Contradiction≠Change/Evolution and its four-situation taxonomy (Unknown/Contradiction/Supersession/Correction)"
+    refinement: "Substantially expanded into a nine-category ConflictType taxonomy that subsumes and refines 0805's four categories (adding ScopeDifference, TemporalDifference, VersionDifference, SemanticDifference, InsufficientEvidence, and Dispute as further-differentiated conflict subtypes)"
+  - concept: "0798's/0787's bounded-context discovery arc"
+    refinement: "Directly and explicitly reused as a worked example of Disputed(P): 'ArchitectA:BC=X and ArchitectB:BC=Y' becoming an explicit BoundaryDispute(X,Y) rather than an arbitrary silent selection -- a second notable instance (after 0805's 8-candidate-to-5-confirmed callback) of the arc using its own prior architectural process as a worked epistemic-discipline example"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 182's actual formalization of KnowledgeOwnership/DecisionAuthority/DomainExpertise/Accountability and confirmation or refutation of its stated hypothesis (no universal owner of organizational truth)."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record 'conflict is first an epistemic fact, not an error' and 'unresolved disagreement is often more truthful than false consensus' as two of the arc's most quotable epistemic-humility principles."
+  - "dimension-registry.md: record the AI epistemic contract for conflict handling (detect/expose/preserve/assess/recommend, never delete/invent) as a directly actionable, concrete AI-agent behavioral specification."
+  - "dimension-registry.md: record 'KnowledgeOS should not become a fake Bayesian oracle' as a directly quotable anti-false-precision warning, extending 0805's earlier anti-over-formalization discipline into the specific domain of conflict resolution."
+  - "dimension-registry.md: record KnowledgeSituation as the new unit of retrieval, explicitly self-named one of the arc's strongest architectural implications, as a directly applicable RAG-architecture design principle."
+  - "dimension-registry.md: record the second notable instance of the arc self-referentially using its own prior bounded-context discovery process (ArchitectA/ArchitectB BC dispute) as a worked epistemic-discipline example."
+anchor_test:
+  anchor: "0805's opening of Step 181 and its promised contradiction-resolution formalization; 0793's evidence-independence/three-agent-problem discipline; 0803's Epistemic/Governance two-function model; 0805's four-situation conflict taxonomy; 0787's/0798's bounded-context discovery arc"
+  supports_dimension: "Delivers the full contradiction representation/detection/resolution formalization directly answering 0805's closing question, including the rejection of two naive heuristics with worked counterexamples and the semantic-alignment precondition for genuine contradiction. Directly extends 0793's evidence-independence discipline from AI-agent correlation to document/evidence-corroboration correlation. Directly reapplies 0803's Epistemic/Governance split to conflict resolution specifically. Substantially expands 0805's four-situation taxonomy into a nine-category ConflictType classification. Delivers a concrete, actionable AI epistemic contract for conflict handling and a notable second self-referential use of the arc's own bounded-context discovery process as a worked example. Crystallizes KnowledgeSituation as a new retrieval unit, self-identified as one of the arc's strongest architectural implications. Delivers the Step 181 verdict rejecting a naive resolution primitive in favor of a disciplined multi-stage pipeline. Opens Step 182 with an explicit stated hypothesis, maintaining the arc's falsification-oriented methodology"
+  refines_or_contradicts: "directly delivers and extends 0805's opening and its promised formalization; extends 0793's evidence-independence discipline to a new domain; directly reapplies 0803's Epistemic/Governance split; substantially expands 0805's four-situation taxonomy; self-referentially reuses 0787's/0798's bounded-context work as a worked example; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§181.19's fully worked evidence-independence example (five documents all copying one original E_0, EvidenceCount=5⇏EvidenceStrength=5×, 'an extremely important insight for AI-based knowledge systems') is directly checkable evidence of 0793's three-agent-problem discipline extended to a new domain."
+  - "§181.26's directly self-resonant BoundaryDispute(X,Y) worked example (ArchitectA:BC=X vs. ArchitectB:BC=Y) is directly checkable evidence of the arc reusing its own prior architectural process as a worked epistemic-discipline case study."
+  - "§181.30-181.31's explicit AI epistemic contract (DetectConflict/ExposeConflict/PreserveProvenance/AssessEvidence/RecommendInvestigation permitted; DeleteConflict/InventResolution forbidden) is directly quotable evidence of a concrete, actionable AI-agent behavioral specification for conflict handling."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 182's KnowledgeOwnership/DecisionAuthority/DomainExpertise/Accountability formalization was ever carried out, and whether it confirmed the stated hypothesis ('there is no universal owner of organizational truth') or found a more nuanced result."
+  - "Whether the nine-category ConflictType taxonomy was ever reconciled with 0805's four-situation taxonomy and the arc's broader family of unresolved epistemic-state classification systems (0801, 0802, 0805)."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the full contradiction representation/detection/resolution formalization directly answering 0805's closing question, rejecting two naive resolution heuristics with worked counterexamples and delivering the semantic-alignment precondition for genuine contradiction. Extends 0793's evidence-independence discipline to document-corroboration specifically, and directly reapplies 0803's Epistemic/Governance split to conflict resolution. Delivers a concrete, actionable AI epistemic contract for conflict handling, an explicit anti-false-precision warning ('fake Bayesian oracle'), and a notable self-referential reuse of the arc's own bounded-context discovery process as a worked example. Crystallizes KnowledgeSituation as a new unit of retrieval, self-identified as one of the arc's strongest architectural implications. Delivers 'unresolved disagreement is often more truthful than false consensus' as a quotable epistemic-humility capstone. Opens Step 182 with an explicit stated hypothesis about the non-existence of a universal truth-owner, maintaining the arc's disciplined falsification methodology."

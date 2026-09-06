@@ -1,0 +1,213 @@
+sequence: 707
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-124629_step-122-knowledgeos-evidence-execution-protocol.md
+title: "Step 122 -- Delivers Arguably the Single Most Concrete, Directly Operational Artifact in This Entire Reconstruction: the Eight-Stage Evidence Execution Protocol (Claim→Locate→Inspect→Trace→Test→Observe→Classify→Report), a Five-Level Traceability-Strength Scale (T0-T4), a Five-Level Ordinal Confidence Scale (C0-C4) Explicitly Rejecting LLM Percentage-Confidence, the Anti-Hallucination Rule ('If Evidence Is Insufficient, the Agent MUST Preserve UNKNOWN'), and, Most Practically, a Complete Per-Constitutional-Rule BYPASS MATRIX (a Genuine 'Red-Team' Test Suite for C1-C7) -- Delivers AgentAssuranceScore=f(EvidenceCompleteness,Traceability,Verification,EpistemicDiscipline) as a Precise Critique of Naive LLM-Answer-Similarity Evaluation -- Delivers a Concrete, Executable-Sounding Self-Verification Query Example and a Realistic MIXED Constitutional-Health-Check Dashboard (PASS/WARN/FAIL Across C1-C7, the First Non-Binary Illustrative Result in This Reconstruction) -- Opens Step 123 -- Self-Verification of KnowledgeOS, Naming a Concrete Test Suite 'KOS-SV-01' With Seven C1-C7-Mapped Test Families"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 122 -- KnowledgeOS Evidence Execution Protocol', promised at 0706's close as making the conformance methodology executable by Claude/Codex; delivers the most concrete, directly operational specification produced anywhere in this reconstruction, including a complete per-rule bypass-test matrix functioning as a genuine 'red-team' suite for the ratified Constitution"
+source_role: PRIMARY_RESEARCH
+canonical_source: 707
+importance: critical
+confidence: high
+about: >
+  **Delivers the Evidence Execution Protocol (EEP), an eight-stage sequence (`E1` Claim through `E8`
+  Report), arguably the single most concrete and directly operational specification produced anywhere in
+  this reconstruction**, crystallized around the crisp central principle: "an agent must prove an
+  architectural claim from evidence; it must not prove it from plausibility." Delivers `E1` Claim with a
+  falsifiability requirement and a clean six-way claim-type taxonomy (Structural/Behavioral/Governance/
+  Temporal/Assurance/Operational); `E2` Locate with the negative-evidence rule crisply reconfirmed
+  (`NotFound(Location)≠Absent(System)`, directly extending 0693's/0694's negative-evidence discipline);
+  `E3` Inspect distinguishing `DeclaredArchitecture`/`ImplementedArchitecture`/`VerifiedBehavior` as
+  distinct evidence types; and `E4` Trace with **a genuinely valuable five-level Traceability-strength scale
+  (`T0` No link through `T4` Verified causal/implementation relationship)**, the most granular such scale in
+  this reconstruction, directly extending 0687's/0700's/0701's traceability-evidence disciplines.
+
+  Delivers `E5` Test with a clean six-type test hierarchy (Static/Unit/Integration/Architecture/Deployment/
+  Runtime) and `E6` Observe requiring genuine runtime inspection for operational claims (a "runs rootless"
+  claim explicitly requiring runtime evidence, not merely a configuration file). Delivers `E7` Classify with
+  the `FACT|INFERENCE|TARGET|GAP` four-way epistemic classification precisely defined with concrete
+  examples for each, directly crystallizing 0705's/0706's epistemic-classification work into an operational
+  reporting standard, and `E8` Report with a concrete eight-field structured report format
+  (`CLAIM/FACTS/EVIDENCE/INFERENCE/VERIFICATION/GAP/TARGET/CONFIDENCE`) and a full worked example --
+  "this format prevents architectural contamination."
+
+  Delivers a practical investigation-artifact ID convention (`CLAIM-042`, `EVIDENCE-091`, `TEST-017`,
+  `FINDING-008`, `DECISION-031`) making "the graph machine traversable," a formal Evidence object schema, and
+  Evidence immutability (corrections create `E_2` rather than silently overwriting `E_1`, directly extending
+  0672's/0677's historical-immutability discipline).
+
+  **Delivers a five-level ordinal Confidence scale (`C0` Unknown through `C4` Verified), explicitly and
+  precisely rejecting arbitrary LLM percentage-confidence as a substitute**: "an LLM saying 'I'm 95% sure'
+  does not establish a quantitative probability... `LLMConfidence≠EvidenceConfidence`" -- directly and
+  precisely extending 0687's/0694's/0704's evidence-derived-confidence discipline with a clean ordinal (not
+  false-precision cardinal) scale, a genuinely valuable and currently applicable AI-evaluation principle.
+
+  **Delivers the Agent stopping rule, directly and usefully extending 0699's meta-methodological "a negative
+  finding is valuable, not a failure" principle into the agent's own reporting behavior specifically**: "I
+  found the rule and implementation reference, but no executable verification. Therefore implementation is
+  supported, enforcement is unverified. **This is a successful investigation, not a failure.**" Delivers the
+  crisply formalized **Anti-hallucination rule**: "If evidence is insufficient, the agent MUST preserve
+  UNKNOWN. It must not fill the gap using general knowledge" -- a sharp, currently critical AI-safety
+  principle directly extending the corpus's central epistemic-honesty discipline into mandatory agent
+  behavior.
+
+  Delivers five Investigation modes (Architecture reconstruction/Governance verification/Assurance
+  verification/Runtime verification/Knowledge reconstruction) as a clean task-structuring taxonomy, and
+  Avoid-name-based-conclusions reconfirmed with a concrete five-question diagnostic checklist for any
+  suspiciously-named service (`Who calls it? When? What happens if it fails? Is the result persisted? Can it
+  be bypassed?`), directly extending the corpus's naming-proves-nothing family into an actionable
+  investigative procedure.
+
+  **Delivers the Enforcement test crystallized as the single most important diagnostic question for real
+  security/governance auditing -- "Can the invariant be bypassed?"** -- directly and precisely extending
+  0693's/0703's deterministic-enforcement discipline, culminating in **the file's single most operationally
+  valuable deliverable: a complete per-constitutional-rule Bypass matrix, functioning as a genuine "red-team"
+  test suite for the ratified Constitution (0705)**, pairing each of `C1`-`C7` with both a Primary test and
+  an explicit Bypass test (e.g. `C1`: provenance required / direct-persistence bypass; `C2`: authority
+  required / unauthorized-promotion bypass; `C7`: feedback path exists / finding-dead-end bypass) --
+  "this is becoming a practical assurance suite," one of the most directly reusable artifacts produced
+  anywhere in this reconstruction.
+
+  Delivers a ten-item Agent execution contract (a concrete, literally followable checklist for any
+  engineering agent) and Claude/Codex symmetry precisely clarified: "the important symmetry is NOT identical
+  configuration. It is: `SameAuthority+SameEvidenceRules+SameConstitution+SameEpistemicDiscipline`" --
+  directly extending and sharpening 0690's/0700's/0705's/0706's pointer-layer/symmetry discipline with a
+  precise definition of what symmetry actually requires (behavioral/epistemic, not configuration-level).
+  Delivers a concrete illustrative seven-directive `AGENTS.md` contract and parallel `.claude/`/`.codex/`
+  treatments (the most concrete illustrative agent-instruction template in this reconstruction) and a full
+  Evidence Execution Report template.
+
+  **Delivers a precise, currently important critique of naive LLM-evaluation metrics, reframing agent
+  evaluation around evidence quality rather than answer quality**: "a highly articulate but unsupported
+  answer should score poorly. A cautious, evidence-backed answer should score highly," formalized as
+  `AgentAssuranceScore=f(EvidenceCompleteness,Traceability,Verification,EpistemicDiscipline)` -- "much more
+  useful than measuring only `LLMAnswerSimilarity`" -- directly and genuinely extending the corpus's
+  deterministic-assurance discipline into agent-performance-evaluation specifically, with
+  `WeightedCompleteness` ensuring a critical missing link (e.g. Authority) is not diluted by many present-
+  but-non-critical technical links, directly extending 0699's/0702's/0705's Vector>Scalar/weighted-evidence
+  discipline.
+
+  Delivers the Evidence graph (`Claim→^{supportedBy}Evidence`, `→^{verifiedBy}Test`, `→^{observedAt}
+  Runtime`, `→^{interpretedAs}Finding`, `→^{classifiedAs}Status`) with the elegant recursive observation that
+  "the process of understanding the architecture becomes part of KnowledgeOS knowledge," directly
+  crystallizing into **the recursive property "KnowledgeOS can use its own evidence protocol to verify
+  KnowledgeOS"** (`KnowledgeOS→SelfObservation→SelfVerification`, "the beginning of self-assuring
+  architecture"), illustrated with **the closest thing to an actual executable check specification anywhere
+  in this reconstruction**: `Query: AuthoritativeDecision WHERE Provenance=NULL. Result: 0. Then: C1=PASS` --
+  explicitly and correctly identified as "far stronger than documentation stating 'all decisions have
+  provenance.'"
+
+  **Delivers a Constitutional health check concept with the first REALISTIC, NON-UNIFORM illustrative
+  dashboard result in this entire reconstruction**: a worked example showing `C1/C2/C3/C5=PASS`,
+  `C4/C6=WARN`, `C7=FAIL` -- the first time an illustrative constitutional/conformance dashboard in this
+  corpus shows a genuinely mixed, partial result rather than either uniform success or uniform blank
+  placeholders, a small but notable maturation in the corpus's own illustrative style. Delivers the
+  recurring, precisely restated caution against single-score reduction (an `87%` aggregate could conceal a
+  catastrophic authority failure, directly restating 0699's/0702's/0705's Vector>Scalar discipline), and
+  **the newly and precisely named concept of `Constitutional drift`**: a regression where a previously-
+  satisfied rule (`C_1: PASS→FAIL`) fails in a later release -- "it should itself become an observable
+  event" -- a valuable refinement of 0692's drift taxonomy specifically for temporal regression of
+  constitutional conformance, distinct from 0689's/0692's static governance-drift concept (approved-rule-
+  versus-actual-control) and from 0704's knowledge-drift concept (documentation-versus-reality staleness).
+
+  Delivers the Self-governance loop (`KnowledgeOS→ConstitutionalCheck→Finding→Governance→Remediation→
+  Verification→KnowledgeOS`), "the system applying its own operating principles to itself," directly
+  consolidating and closing the recursive-governance property introduced at 0706 (`Constitution⊂
+  AuthoritativeKnowledge`).
+
+  Delivers Step 122's verdict, notably confident given the file's concreteness: "STEP 122 — EVIDENCE
+  EXECUTION PROTOCOL: DEFINED... this gives Claude and Codex a common engineering-evidence discipline
+  without duplicating KnowledgeOS knowledge into their local harnesses" -- consistent with the corpus's
+  calibrated pattern (the protocol is fully specified but not itself executed within this file).
+
+  **Closes by opening "Step 123 — Self-Verification of KnowledgeOS,"** naming a concrete test suite,
+  **`KOS-SV-01`**, with seven test families directly mapped one-to-one onto the ratified Constitution
+  (`SV_1`=Provenance through `SV_7`=Feedback), posing the decisive question: **"Can KnowledgeOS produce
+  machine-verifiable evidence that its own constitutional rules are currently satisfied?"** -- explicitly
+  framed as the foundation for "KnowledgeOS as a self-assuring engineering system rather than merely a
+  governed knowledge platform," via the progression `KnowledgeOS→Self-Knowledge→Self-Verification→Self-
+  Governance`. No actual code execution, repository inspection, or verified filesystem/relationship claim is
+  reported anywhere in this file.
+introduces:
+  - concept: "The Evidence Execution Protocol (EEP): an eight-stage, arguably the most concrete and directly operational specification in this entire reconstruction (Claim→Locate→Inspect→Trace→Test→Observe→Classify→Report)"
+  - concept: "A five-level Traceability-strength scale (T0-T4), the most granular in this reconstruction"
+  - concept: "A five-level ordinal Confidence scale (C0-C4) explicitly rejecting LLM percentage-confidence as false precision"
+  - concept: "The Agent stopping rule: honestly reporting insufficient evidence is 'a successful investigation, not a failure', extending 0699's meta-methodological principle into agent behavior specifically"
+  - concept: "The crisply formalized Anti-hallucination rule: if evidence is insufficient, the agent MUST preserve UNKNOWN, never filling gaps from general knowledge"
+  - concept: "'Can the invariant be bypassed?' as the single most important enforcement-diagnostic question, culminating in a complete per-rule Bypass matrix (a genuine 'red-team' test suite for C1-C7)"
+  - concept: "AgentAssuranceScore=f(EvidenceCompleteness,Traceability,Verification,EpistemicDiscipline), a precise critique of naive LLM-answer-similarity evaluation"
+  - concept: "The precise clarification that Claude/Codex symmetry means SameAuthority+SameEvidenceRules+SameConstitution+SameEpistemicDiscipline, not identical configuration"
+  - concept: "The closest thing to an actual executable check specification anywhere in this reconstruction: a concrete Query/Result/Verdict self-verification example"
+  - concept: "The first REALISTIC, non-uniform illustrative constitutional-health-check dashboard in this reconstruction (mixed PASS/WARN/FAIL across C1-C7)"
+  - concept: "Constitutional drift: a precisely named regression concept (a previously-satisfied rule later failing), distinct from static governance drift and knowledge drift"
+  - concept: "Opens Step 123 — Self-Verification of KnowledgeOS, naming a concrete test suite KOS-SV-01 with seven C1-C7-mapped test families"
+defines:
+  - concept: "NotFound(Location)≠Absent(System) (negative evidence rule)"
+    definition: "Failing to find evidence of a capability in the locations searched does not establish that the capability does not exist anywhere in the system; an agent must report 'no evidence found in the inspected locations,' never the stronger and unjustified 'the capability does not exist'"
+  - concept: "The Bypass matrix"
+    definition: "For each constitutional rule (C1-C7), a paired Primary test (confirming the rule's mechanism exists) and Bypass test (actively attempting to circumvent the mechanism, e.g. direct database persistence bypassing a provenance service, or unauthorized promotion bypassing an authority check) — together forming a practical, reusable assurance/red-team test suite"
+  - concept: "AgentAssuranceScore"
+    definition: "A function of EvidenceCompleteness, Traceability, Verification, and EpistemicDiscipline used to evaluate an AI agent's investigative output — deliberately not a function of answer fluency or LLM-answer-similarity, since an articulate but unsupported answer should score poorly while a cautious, evidence-backed answer should score highly"
+  - concept: "Constitutional drift"
+    definition: "The specific temporal-regression phenomenon where a constitutional rule that was previously satisfied (PASS) in an earlier release becomes violated (FAIL) in a later release; this regression should itself be treated as an observable, reportable event, distinct from static governance drift (approved rule vs. actual control) and knowledge drift (documentation staleness relative to reality)"
+refines:
+  - concept: "0693's/0694's negative-evidence discipline"
+    refinement: "Directly restated with a formal notation (NotFound(Location)≠Absent(System)) as part of the E2 Locate stage"
+  - concept: "0687's/0700's/0701's traceability-evidence disciplines"
+    refinement: "Directly extended with a five-level granular traceability-strength scale (T0-T4)"
+  - concept: "0705's/0706's epistemic-classification work"
+    refinement: "Directly crystallized into an operational E7 reporting standard (FACT|INFERENCE|TARGET|GAP) with concrete worked examples"
+  - concept: "0672's/0677's historical-immutability discipline"
+    refinement: "Directly extended into Evidence immutability specifically (corrections create new evidence records rather than overwriting)"
+  - concept: "0687's/0694's/0704's evidence-derived-confidence discipline"
+    refinement: "Directly extended into a clean five-level ordinal confidence scale explicitly rejecting LLM percentage-confidence as false precision"
+  - concept: "0699's meta-methodological principle that a negative finding is valuable, not a failure"
+    refinement: "Directly and usefully extended into the agent's own reporting behavior specifically (the Agent stopping rule)"
+  - concept: "the corpus's central epistemic-honesty discipline"
+    refinement: "Directly extended into a mandatory agent behavior rule: the Anti-hallucination rule (preserve UNKNOWN, never fill gaps from general knowledge)"
+  - concept: "the corpus's naming-proves-nothing family"
+    refinement: "Directly extended into a concrete, actionable five-question investigative checklist for suspiciously-named services"
+  - concept: "0693's/0703's deterministic-enforcement discipline"
+    refinement: "Directly and precisely extended into 'can the invariant be bypassed?' as the central diagnostic question, culminating in the complete per-rule Bypass matrix"
+  - concept: "0690's/0700's/0705's/0706's pointer-layer/symmetry discipline"
+    refinement: "Directly sharpened with a precise definition of what Claude/Codex symmetry actually requires: shared authority/evidence-rules/constitution/epistemic-discipline, not identical configuration"
+  - concept: "the corpus's deterministic-assurance discipline"
+    refinement: "Directly and genuinely extended into agent-performance-evaluation specifically (AgentAssuranceScore), critiquing naive LLM-answer-similarity metrics"
+  - concept: "0699's/0702's/0705's Vector>Scalar/weighted-evidence discipline"
+    refinement: "Directly extended into WeightedCompleteness (critical missing links must not be diluted by many non-critical present links) and restated once more against single-score constitutional dashboards"
+  - concept: "0706's recursive Constitution⊂AuthoritativeKnowledge property"
+    refinement: "Directly extended and completed with a concrete self-verification illustration and a closed Self-governance loop diagram"
+  - concept: "0692's drift taxonomy, 0689's static governance drift, and 0704's knowledge drift"
+    refinement: "Directly extended with a fourth, precisely distinguished drift concept: Constitutional drift (temporal regression of a previously-satisfied rule)"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0708 (Step 123 — Self-Verification of KnowledgeOS) with continued attention: this file names a concrete test suite (KOS-SV-01) with seven families directly mapped to C1-C7, posing the decisive question of whether KnowledgeOS can produce machine-verifiable self-verification evidence -- a natural, well-motivated continuation of the constitution-testing arc."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Evidence Execution Protocol (EEP, E1-E8) as arguably the single most concrete, directly operational artifact produced in this reconstruction, along with the Bypass matrix (a genuine red-team test suite for C1-C7), the anti-hallucination rule, and the AgentAssuranceScore critique of naive LLM-evaluation."
+  - "dimension-registry.md: record the first realistic, non-uniform illustrative constitutional-health-check dashboard (mixed PASS/WARN/FAIL) and the newly named Constitutional drift concept, distinguished from static governance drift and knowledge drift."
+  - "dimension-registry.md: flag Step 123 (0708) as a natural continuation naming a concrete test suite (KOS-SV-01) directly mapped to C1-C7."
+anchor_test:
+  anchor: "0705's ratified Constitution v0.1 and its intersection equations; 0706's recursive Constitution⊂AuthoritativeKnowledge property and Bootstrap paradox; 0693's/0703's deterministic-enforcement discipline; 0687's/0694's/0704's evidence-derived-confidence discipline; 0699's meta-methodological principle; the corpus's naming-proves-nothing family and central epistemic-honesty discipline; 0690's/0700's/0705's/0706's pointer-layer/symmetry discipline; 0699's/0702's/0705's Vector>Scalar discipline; 0692's/0689's/0704's drift taxonomy family"
+  supports_dimension: "Delivers arguably the single most concrete, directly operational artifact produced anywhere in this reconstruction: the eight-stage Evidence Execution Protocol, complete with a five-level traceability scale, a five-level ordinal confidence scale explicitly rejecting LLM percentage-confidence, a crisply formalized anti-hallucination rule, and, most valuably, a complete per-constitutional-rule Bypass matrix functioning as a genuine red-team test suite for the newly-ratified Constitution. Delivers a precise, currently important critique of naive LLM-evaluation metrics (AgentAssuranceScore) and a sharp clarification of what Claude/Codex symmetry actually requires. Delivers the closest thing to an executable self-verification specification and the first realistic, non-uniform illustrative dashboard result in this reconstruction, alongside a newly and precisely distinguished Constitutional-drift concept. Continues the calibrated methodology-only pattern (the protocol is specified, not executed, within this file) while representing a genuine qualitative advance in operational concreteness over prior methodology-proposal files"
+  refines_or_contradicts: "directly and genuinely extends 0693's/0694's negative-evidence discipline, 0687's/0700's/0701's traceability-evidence disciplines, 0705's/0706's epistemic-classification work, 0672's/0677's historical-immutability discipline, 0687's/0694's/0704's evidence-derived-confidence discipline, 0699's meta-methodological principle, the corpus's naming-proves-nothing family and central epistemic-honesty discipline, 0693's/0703's deterministic-enforcement discipline, 0690's/0700's/0705's/0706's pointer-layer/symmetry discipline, the corpus's deterministic-assurance discipline, 0699's/0702's/0705's Vector>Scalar discipline, and 0706's recursive Constitution⊂AuthoritativeKnowledge property; directly and precisely distinguishes Constitutional drift from 0689's/0692's governance drift and 0704's knowledge drift; no contradiction found; no new C/K/S/A-style invariant notation introduced, so no collision risk"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§122.37-122.38's complete per-constitutional-rule Bypass matrix, pairing every C1-C7 rule with an explicit primary test and an explicit circumvention/bypass test, is directly checkable, concrete evidence of a genuine, reusable red-team assurance suite -- one of the most operationally valuable artifacts produced anywhere in this reconstruction."
+  - "§122.52's concrete self-verification example (a literal-sounding database query 'AuthoritativeDecision WHERE Provenance=NULL' returning 0, therefore C1=PASS) is directly checkable, concrete evidence of the closest approach to an actual executable verification specification found anywhere in this reconstruction, explicitly and correctly contrasted against mere documentation assertion."
+  - "§122.53's constitutional-health-check dashboard example, showing a genuinely mixed PASS/WARN/FAIL result across C1-C7, is directly checkable evidence of the first non-uniform illustrative conformance result in this reconstruction, a small but real maturation in the corpus's own illustrative style away from all-PASS or all-blank placeholders."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 123's actual content (0708), once read, attempts even a hypothetical worked application of the KOS-SV-01 test suite to a concrete self-verification scenario, given the concreteness this file (0707) has already established for the underlying protocol."
+tier2_triggered: true
+tier2_reason: "Delivers arguably the single most concrete, directly operational artifact produced anywhere in this reconstruction: the eight-stage Evidence Execution Protocol, complete with a five-level traceability scale, a five-level ordinal confidence scale explicitly rejecting LLM percentage-confidence, a crisply formalized anti-hallucination rule, and, most valuably, a complete per-constitutional-rule Bypass matrix functioning as a genuine red-team test suite for the ratified Constitution. Delivers a precise critique of naive LLM-evaluation metrics (AgentAssuranceScore), a sharp clarification of Claude/Codex symmetry, the closest thing to an executable self-verification specification in this reconstruction, and a newly and precisely distinguished Constitutional-drift concept. Opens Step 123 naming a concrete test suite (KOS-SV-01) directly mapped to C1-C7."

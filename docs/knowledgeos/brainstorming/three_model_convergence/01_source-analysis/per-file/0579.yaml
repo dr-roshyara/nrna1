@@ -1,0 +1,207 @@
+sequence: 579
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-182708_step-025c-1-compare-candidate-evidence-algebras.md
+title: "LANDMARK — 0578's ADVANCE PREDICTION CONFIRMED: A Twelve-Item Common Test Suite and a Color-Coded Ten-Requirement Comparison Matrix Across Five Candidate Frameworks Yield the Architectural Decision 'KnowledgeOS Should Not Adopt a Single Universal Evidence-Aggregation Mathematics' — Qualitative/Set-Based Epistemic State Named PRIMARY KERNEL CANDIDATE, Weighted Scoring Explicitly REJECTED AS KERNEL (a Concrete +5/-5=0 Counterexample Destroying the Conflict/Unknown Distinction), Bayesian/Dempster-Shafer/Fuzzy Logic Each Relegated to Specialized Inference-Engine Roles Above the Kernel; 'Evidence Does Not Have One Universal Meaning' Named 'Probably the Most Important Conclusion of 25C.1'; the Crisp Principle 'AI May Propose; Kernel Must Determine'; Verdict '25C.1 — PASS'; Opens Step 25C.2 (Independent Evidence Combination) as the One Remaining Critical Mathematical Hole"
+date: "2026-08-27"
+bytes: 15458
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the structured comparative experiment committed at 0578, directly executing 'Step 25C.1 -- Compare Candidate Evidence Algebras' and testing 0578's own explicit advance prediction"
+source_role: PRIMARY_RESEARCH
+canonical_source: 579
+importance: critical
+confidence: high
+about: >
+  Opens "Step 25C.1 — Compare Candidate Evidence Algebras," explicitly reaffirming 0578's methodological
+  commitment: "we now do the comparison rather than choosing a framework by preference... evaluate
+  candidates against the actual requirements we have derived, not against abstract elegance." Delivers the
+  governing question: "what mathematical machinery should KnowledgeOS use to aggregate evidence?"
+
+  **Delivers the file's foundational deliverable -- a common twelve-item KnowledgeOS test suite**, applied
+  uniformly to every candidate framework using a single running hypothesis `H="Rollback is safely
+  available"`: one strong evidence item; duplicate evidence; independent corroboration; dependent/copy
+  evidence; contradictory evidence; missing evidence; stale evidence; uncertain measurement; qualitative
+  evidence; LLM-derived evidence; evidence retraction; historical reconstruction -- with the explicit
+  qualifying principle that failing an important requirement does not automatically make a candidate
+  useless, "but it cannot be the universal KnowledgeOS epistemic kernel."
+
+  **Delivers the file's central formal deliverable -- five individually evaluated candidates, each with a
+  specific, differentiated verdict**:
+
+  **Candidate A -- Bayesian probability**: credited with explicit uncertainty, sequential updating,
+  principled evidence combination, predictive reasoning, decision integration, and mature statistical
+  theory; delivers three specific, named problems (Problem 1: dependence -- Bayesian inference does NOT
+  solve evidence dependency, it merely requires it be solved via an explicit dependency model; Problem 2:
+  priors -- some KnowledgeOS propositions, like whether a governance step is required, are normative/
+  documentary questions for which a probability prior is fundamentally inappropriate; Problem 3: qualitative
+  evidence -- assigning `P(E|H)` to a qualitative human report converts the probability into an explicit
+  modeling assumption rather than an observed quantity). Verdict: **"Excellent inference engine" but "Not
+  sufficient as the entire KnowledgeOS evidence model"** -- Status: **CANDIDATE FOR STATISTICAL CONTEXT**.
+
+  **Candidate B -- Dempster-Shafer**: credited for the `Bel(H)≤Pl(H)` interval representing incomplete
+  knowledge without forcing a precise distribution, worked through a concrete "probably one of these two
+  configurations" example; delivers two named problems (conflict -- combination rules can behave
+  problematically under strong conflict, which "is important because conflict is a first-class KnowledgeOS
+  state" that must never be silently hidden by a mathematical operator; source dependence -- the framework
+  does not itself determine source independence, still requiring an `EvidenceGraph`). Verdict:
+  **"Useful for epistemic uncertainty" but "Not sufficient as the KnowledgeOS foundation by itself"** --
+  Status: **CANDIDATE FOR UNCERTAINTY CONTEXT**.
+
+  **Candidate C -- Qualitative/set-based epistemic algebra**: explicitly identified as "much closer to
+  what we developed in 25C" (directly reusing 0578's `𝒜(H)=(S_H,C_H,U_H,L_H)` structure), worked through a
+  concrete four-set example correctly yielding `Conflicted` rather than a misleading `P(H)=0.51`; credited
+  for naturally handling six named epistemic states (Unknown, Supported, Challenged, Conflicted,
+  Superseded, Retracted); limited by not itself answering probability-of-failure or expected-utility
+  questions. Verdict: **"Excellent candidate for the KnowledgeOS kernel" but "Insufficient for
+  quantitative inference alone"** -- Status: **PRIMARY KERNEL CANDIDATE**, the single most favorably
+  evaluated candidate in the entire comparison.
+
+  **Candidate D -- Weighted scoring**: worked through a concrete four-row weighted-evidence table, then
+  formally rejected via a decisive counterexample: `E_1=+5` and `E_2=-5` yield `Score(H)=0`, which is
+  mathematically identical to "nothing is known" despite the true epistemic state being "strong evidence
+  exists on both sides" -- delivering **`WeightedScore≠EpistemicState`**, the file's single most concrete
+  and immediately persuasive rejection argument of any candidate in the comparison. Verdict: **REJECTED AS
+  KERNEL**, though explicitly noted as potentially still useful inside Sārathi for prioritization,
+  heuristics, UI ranking, and action ranking.
+
+  **Candidate E -- Fuzzy logic**: credited for representing vague concepts like architectural compatibility
+  or capability maturity, but sharply warned `μ_H=0.8` does NOT mean `P(H)=0.8`; delivers a seven-item list
+  of what fuzzy logic does NOT solve (provenance, evidence independence, historical validity, retraction,
+  conflict, truth, source authority). Verdict: **"Useful specialized reasoning mechanism" but "Not the
+  kernel."**
+
+  **Delivers the file's central formal deliverable -- a color-coded ten-requirement × five-candidate
+  comparison matrix** (Unknown, Conflict preservation, Evidence provenance, Dependency representation,
+  Temporal validity, Quantitative uncertainty, Qualitative evidence, Explainability, Retraction, Decision
+  optimization), with the Qualitative candidate scoring consistently strongest (mostly 🟢) and Weighted
+  scoring scoring consistently weakest (mostly 🔴), providing the concrete evidentiary basis for the
+  file's architectural conclusion -- the corpus's first delivery of a genuine, uniformly-applied,
+  multi-candidate quantitative-style comparison matrix for a mathematical framework decision.
+
+  **Delivers the file's central architectural deliverable, EXPLICITLY CONFIRMING 0578's OWN ADVANCE
+  PREDICTION from the immediately preceding file**: "the result is surprisingly clear" -- explicitly
+  rejecting `KnowledgeOS=Bayesian`, `KnowledgeOS=DempsterShafer`, and `KnowledgeOS=FuzzyLogic` as the
+  foundational identity, instead delivering
+  **`KnowledgeOS Kernel = Qualitative Epistemic State + Evidence Graph + Provenance + Temporal Semantics`**,
+  with specialized mathematical engines sitting ABOVE it -- precisely and directly matching 0578's stated
+  prediction that "the final answer will not be one universal algebra... a composable epistemic
+  mathematics in which qualitative state, provenance/dependency graphs, statistical models and decision
+  mathematics each do the job they are actually suited for," now confirmed through an actual structured
+  comparison rather than remaining a prediction.
+
+  **Delivers a proposed five-layer KnowledgeOS mathematical stack architecture diagram** (Decision Math
+  [Utility/Risk/Policy] → Inference Engines [Bayesian/D-S/Logic/Fuzzy/Causal/etc.] → Epistemic Assessment
+  [Support/Challenge/Uncertainty/Conflict] → Evidence Graph [Provenance/Dependency/Temporal Validity] →
+  Knowledge Kernel [Assertions/State/Revision/History]) -- the corpus's most complete, concretely-layered
+  mathematical-architecture diagram to date, directly incorporating and refining 0578's five-layer proposal
+  with named example engines at the inference layer.
+
+  **Delivers a significant DDD consequence**: "Evidence" is itself a bounded context, `StatisticalInference`
+  another, with a worked context-map diagram showing Assessment Context dispatching to four named parallel
+  reasoning contexts (Bayesian, Causal, Logical Reasoning, Fuzzy Reasoning) before converging on Decision
+  Context -- "this allows KnowledgeOS to use the appropriate mathematics for the problem."
+
+  **Delivers a genuinely new problem discovered through this comparison -- `ReasoningModelSelection`**:
+  given `E_1,E_2,E_3`, deciding WHICH reasoning engine (Bayesian, logical, causal, fuzzy, human review)
+  should even receive them is explicitly identified as "not itself an inference problem" but "a
+  model-selection/reasoning-strategy problem," flagged "this will become important later" -- a distinct
+  meta-level problem not previously named in the corpus, sitting above the inference layer itself.
+
+  **Delivers the file's central formal deliverable -- "probably the most important conclusion of 25C.1"**:
+  **`Evidence does not have one universal meaning`**, demonstrated through four contrasted worked examples
+  ("the server is running RHEL 9.8" -- observational; "migration is permitted" -- normative; "the
+  probability of failure is 12%" -- statistical; "the migration caused the outage" -- causal), each
+  requiring the SAME evidence to potentially participate in completely different reasoning domains --
+  yielding the conclusion **"Evidence is more fundamental than any individual inference framework."**
+
+  **Delivers a refined formal architecture notation** `E --[Graph]--> 𝒜 --[Model]--> I --[Decision]--> D`
+  (Evidence, Epistemic Assessment, Inference Result, Decision), with each arrow explicitly carrying
+  different semantics -- a compact restatement of the layered pipeline first proposed at 0578, now
+  labeled with the specific transformation each arrow represents.
+
+  **Delivers the file's central governance-boundary deliverable -- a seven-item deterministic vs.
+  four-item AI-assisted operation split**: EvidenceIdentity, ProvenanceResolution, TemporalValidity,
+  ConflictDetection, DependencyTraversal, KnowledgeRevision, and EpistemicContractEvaluation should ideally
+  be deterministic; Extraction, Classification, HypothesisGeneration, and CandidateInterpretation may be
+  AI-assisted -- "the governed kernel should not depend on an LLM's intuition for fundamental state
+  transitions." Delivers the file's central crisp architectural principle, explicitly called "one of the
+  clearest principles emerging from our experiments": **`AI may propose; Kernel must determine`**,
+  formalized as `AIOutput→Candidate` then `DeterministicGovernedProcess→KnowledgeState`.
+
+  **Delivers Step 25C.1's verdict**: **"25C.1 — PASS"** (notably, an unqualified PASS, not "CONDITIONAL
+  PASS" like every prior sub-experiment since 0573 -- the strongest single verdict delivered anywhere in
+  the 25A/25B/25C sub-arc), with the concrete architectural decision recorded: **"KnowledgeOS should not
+  adopt a single universal evidence-aggregation mathematics"**, instead **"KnowledgeOS uses a framework-
+  independent epistemic kernel and pluggable inference mathematics."** Delivers the final kernel/engine
+  split: the kernel maintains Evidence+Provenance+Dependency+TemporalValidity+Assessment+Conflict+
+  KnowledgeState, while specialized engines separately perform Probability, CausalInference,
+  LogicalInference, FuzzyInference, and DecisionOptimization.
+
+  **Closes by explicitly identifying one critical mathematical hole deliberately left unresolved
+  throughout the entire 25C/25C.1 comparison**: "if two independent pieces of evidence support the same
+  proposition, how much stronger does the proposition become?" -- explicitly acknowledged as unable to be
+  postponed forever. **Opens "Step 25C.2 — Independent Evidence Combination,"** proposing concrete
+  numerical experiments starting from `P(H)=0.5` and testing independent, partially dependent, perfectly
+  duplicated, contradictory, and differently-reliable evidence combinations against Bayesian, Dempster-
+  Shafer, and other approaches -- but explicitly committing, once more, to derive KnowledgeOS's own
+  combination axioms FIRST and only then test which framework satisfies them, with an open, genuinely
+  unresolved possibility explicitly named: "that is the point where we can determine whether KnowledgeOS
+  needs a new composition algebra of its own, with Bayesian mathematics becoming merely one implementation
+  of a specialized inference operator" -- a bold, unresolved architectural question left deliberately open
+  for the next experiment. As with the entire 25A/25B/25C sub-arc, no actual code execution is reported.
+introduces:
+  - concept: "A common, uniformly-applied twelve-item test suite run against every candidate mathematical framework using a single shared hypothesis, providing a genuinely comparable evaluation basis rather than five independent, differently-scoped assessments"
+  - concept: "The confirmed architectural decision — explicitly matching the prior file's own advance prediction — that KnowledgeOS's evidence-aggregation mathematics is composable rather than universal: a qualitative epistemic-state kernel with pluggable specialized inference engines above it"
+  - concept: "The decisive weighted-scoring counterexample (E_1=+5, E_2=-5 yielding Score=0, mathematically indistinguishable from complete absence of evidence despite representing strong bidirectional evidence) as the single most concrete rejection argument delivered against any candidate in the comparison"
+  - concept: "A color-coded, uniformly-scored ten-requirement × five-candidate comparison matrix — the corpus's first genuine multi-candidate quantitative-style comparison for a mathematical-framework architectural decision"
+  - concept: "'Evidence does not have one universal meaning', explicitly named the most important conclusion of the comparison — the same evidential content can be observational, normative, statistical, or causal depending on which reasoning domain receives it"
+  - concept: "ReasoningModelSelection as a genuinely new, distinct meta-level problem — deciding which inference engine should receive a given piece of evidence is not itself an inference problem but a separate model-selection/reasoning-strategy problem"
+  - concept: "The crisp architectural principle 'AI may propose; Kernel must determine', explicitly self-identified as one of the clearest principles the whole research program has produced"
+  - concept: "An unqualified 'PASS' verdict (not 'CONDITIONAL PASS') — the strongest single sub-experiment verdict delivered anywhere in the entire 25A/25B/25C experimental sub-arc"
+  - concept: "The explicit, deliberately deferred open question of whether KnowledgeOS ultimately needs its own novel composition algebra, with Bayesian mathematics reduced to merely one implementation of a specialized inference operator — left genuinely unresolved for Step 25C.2"
+defines:
+  - concept: "Five-layer KnowledgeOS mathematical stack (refined, with named inference engines)"
+    definition: "Decision Math (Utility/Risk/Policy) → Inference Engines (Bayesian/D-S/Logic/Fuzzy/Causal/etc.) → Epistemic Assessment (Support/Challenge/Uncertainty/Conflict) → Evidence Graph (Provenance/Dependency/Temporal Validity) → Knowledge Kernel (Assertions/State/Revision/History)"
+  - concept: "Refined formal evidence-to-decision architecture notation"
+    definition: "E --[Graph]--> 𝒜 --[Model]--> I --[Decision]--> D, with Evidence, Epistemic Assessment, Inference Result, and Decision as the four distinct objects, each arrow carrying its own transformation semantics"
+  - concept: "Deterministic-vs-AI-assisted kernel operation split"
+    definition: "Deterministic: EvidenceIdentity, ProvenanceResolution, TemporalValidity, ConflictDetection, DependencyTraversal, KnowledgeRevision, EpistemicContractEvaluation. AI-assisted: Extraction, Classification, HypothesisGeneration, CandidateInterpretation"
+refines:
+  - concept: "0578's five-layer evidence-architecture proposal and its explicit advance prediction of a composable (not universal) final algebra"
+    refinement: "Directly confirmed through an actual structured, uniformly-scored comparison of four named candidate frameworks against a common test suite, upgrading the prediction from a stated hypothesis to a demonstrated architectural conclusion"
+  - concept: "0578's provisional Qualitative aggregated-evidence structure ℰ(H)=(S_H,C_H,U_H,L_H)"
+    refinement: "Explicitly identified as 'Candidate C' in this comparison and awarded the strongest single evaluation ('PRIMARY KERNEL CANDIDATE'), directly reused and re-validated rather than superseded"
+  - concept: "0578's individual, specific critiques of Bayesian, Dempster-Shafer, Fuzzy logic, and Weighted scoring"
+    refinement: "Extended with a concrete, decisive numerical counterexample specifically for weighted scoring (the +5/-5=0 case) not previously delivered this concretely, and formalized into an explicit status label for each candidate (CANDIDATE FOR STATISTICAL CONTEXT, CANDIDATE FOR UNCERTAINTY CONTEXT, PRIMARY KERNEL CANDIDATE, REJECTED AS KERNEL)"
+  - concept: "0562's/0566's/0577's recurring AI-governance boundary principle (LLMOutput⇒CandidateAssertion, LLM is one component inside the epistemic architecture)"
+    refinement: "Crystallized into the crisp, memorable formulation 'AI may propose; Kernel must determine', explicitly self-identified as one of the clearest principles the entire research program has produced"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25C.2 — Independent Evidence Combination' is executed as its own dedicated corpus file, and critically, whether it resolves the deliberately deferred open question of whether KnowledgeOS needs its own novel composition algebra, or confirms Bayesian mathematics as merely one specialized inference operator within the already-adopted pluggable-engine architecture"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the twelve-item common test suite, the five individually evaluated candidate verdicts and status labels (Bayesian: CANDIDATE FOR STATISTICAL CONTEXT; Dempster-Shafer: CANDIDATE FOR UNCERTAINTY CONTEXT; Qualitative/set-based: PRIMARY KERNEL CANDIDATE; Weighted scoring: REJECTED AS KERNEL via the concrete +5/-5=0 counterexample; Fuzzy logic: not the kernel), and the color-coded ten-requirement comparison matrix."
+  - "dimension-registry.md: record the confirmed architectural decision (matching 0578's advance prediction) that KnowledgeOS uses a framework-independent qualitative epistemic kernel with pluggable specialized inference engines, the refined five-layer mathematical stack, and the DDD consequence that Evidence is itself a bounded context distinct from StatisticalInference."
+  - "dimension-registry.md: record 'evidence does not have one universal meaning' as the most important conclusion of 25C.1, the new ReasoningModelSelection meta-problem, 'AI may propose; Kernel must determine,' the unqualified verdict '25C.1 — PASS,' and 'Step 25C.2 — Independent Evidence Combination' as the next research phase, with the explicit open question of whether KnowledgeOS ultimately needs its own novel composition algebra."
+anchor_test:
+  anchor: "0578's individual critiques of Bayesian/Dempster-Shafer/Fuzzy-logic/Weighted-scoring and its explicit advance prediction of a composable (not universal) final answer; 0578's provisional qualitative evidence structure ℰ(H)=(S_H,C_H,U_H,L_H); 0562's/0566's/0577's AI-governance boundary principle; the recurring no-universal-formula architectural pattern"
+  supports_dimension: "LANDMARK delivering the corpus's first genuine, structured, uniformly-scored multi-candidate comparison for a major mathematical-architecture decision, directly confirming the immediately preceding file's own explicit advance prediction through an actual comparative experiment rather than leaving it as a stated hypothesis. Delivers five individually evaluated and specifically-verdicted candidate frameworks, a color-coded comparison matrix providing concrete evidentiary grounding, and the single most persuasive rejection counterexample in the arc (weighted scoring's +5/-5=0 collapse of the conflict/unknown distinction). Delivers 'evidence does not have one universal meaning' as the file's own self-identified most important conclusion, a genuinely new meta-level problem (ReasoningModelSelection) not previously named, and the crisp, self-identified clearest architectural principle of the entire program ('AI may propose; Kernel must determine'). Delivers the strongest single verdict of the entire 25A/25B/25C sub-arc (an unqualified 'PASS', not 'CONDITIONAL PASS'), confirming a genuine architectural resolution — KnowledgeOS's evidence mathematics is composable, not universal — while honestly leaving one further deep mathematical question (independent-evidence combination strength, and whether a wholly novel composition algebra is needed) explicitly open for the next experiment"
+  refines_or_contradicts: "directly executes and confirms 0578's own explicit advance prediction; reuses and re-validates 0578's qualitative evidence structure as the winning kernel candidate; extends 0578's individual framework critiques with a concrete decisive counterexample for weighted scoring; crystallizes 0562's/0566's/0577's AI-governance principle into its clearest single formulation yet; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The color-coded ten-requirement × five-candidate comparison matrix, with the Qualitative candidate scoring consistently strongest and Weighted scoring consistently weakest across nearly every row, is directly checkable, concrete evidentiary support for the file's architectural conclusion, rather than an assertion made without a systematic comparative basis."
+  - "The +5/-5=0 weighted-scoring counterexample is directly checkable, minimal, and immediately persuasive: it demonstrates in one line of arithmetic that a naive weighted-sum evidence model is mathematically indistinguishable between 'nothing is known' and 'strong evidence exists on both sides,' a genuinely decisive rejection argument rather than a general objection."
+  - "The explicit confirmation that this file's own verdict ('25C.1 — PASS') precisely matches the immediately preceding file's (0578's) stated advance prediction ('a composable epistemic mathematics... rather than one universal algebra') is directly checkable by comparing the two files, and represents a rare, explicit instance in this research program of a stated hypothesis being tested and confirmed by a subsequent dedicated experiment."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25C.2 — Independent Evidence Combination' is executed as its own dedicated corpus file, and whether it resolves the deliberately deferred question of whether KnowledgeOS needs its own novel composition algebra"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first genuine, structured, uniformly-scored multi-candidate comparison for a major mathematical-architecture decision, directly confirming the immediately preceding file's own explicit advance prediction through an actual comparative experiment rather than leaving it as an unverified hypothesis — a notable instance of the research program checking its own stated predictions. Delivers five individually evaluated candidate frameworks each with specific, differentiated verdicts and status labels, a color-coded comparison matrix providing concrete evidentiary grounding for the architectural conclusion, and the single most persuasive rejection counterexample delivered anywhere in the arc (weighted scoring's +5/-5=0 collapse of the crucial conflict/unknown distinction). Delivers 'evidence does not have one universal meaning' as the file's own self-identified most important conclusion, a genuinely new meta-level problem (ReasoningModelSelection, distinct from inference itself), and the clearest, most crisply-stated single architectural principle of the entire research program ('AI may propose; Kernel must determine'). Delivers the strongest single sub-experiment verdict anywhere in the 25A/25B/25C sub-arc (an unqualified 'PASS'), confirming a genuine, well-evidenced architectural resolution while honestly leaving one further deep mathematical question — the exact strength of independent-evidence combination, and whether KnowledgeOS ultimately needs a wholly novel composition algebra of its own — explicitly and deliberately open for the next experiment, Step 25C.2."

@@ -1,0 +1,61 @@
+sequence: 27
+path: docs/knowledgeos/KnowledgeOS_Relationship_Ontology.md
+title: KnowledgeOS — Relationship Ontology
+date: 2026-08-02
+bytes: 17556
+doc_type: strategic DDD relationship model (chain, concept-kind-owner table, invariant/choice split)
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [ddd, domain_model, invariants, governance, contradiction]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+status: DR
+maturity: developing
+importance: high
+
+introduces:
+  - eleven_invariants_vs_eight_implementation_choices
+  - dp_n_discovered_as_capability_anchor
+  - knowledge_space_as_declared_scope_not_folder
+  - i11_restated_knowledge_does_not_execute_but_constrains
+defines:
+  - c1_through_c13_concepts_with_kind_and_owner
+hypotheses:
+  - H1_i12_capability_may_read_across_boundary_never_own
+  - H2_engineering_domain_as_owner   # REJECTED on evidence
+  - H3_knowledge_space_nesting
+  - H4_operational_state_attaches_to_artifact_or_knowledge
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge]
+open_questions:
+  - RO1_adopt_dp_n_as_named_layer
+  - RO2_are_knowledge_spaces_nested_or_adjacent
+  - RO3_repair_or_withdraw_i7_breached
+  - RO4_does_runtime_adapter_need_declared_owner
+
+depends_on: [13, 14, 20]
+extends: [20]
+refines: [2, 3, 14, 18]
+renames: []
+contradicts: []
+supersedes: []
+repeats: [13, 20]
+connects_to: [2, 3, 13, 14, 18, 20]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Delivers the corpus's clearest durable/changeable structural split (11 invariants vs 8
+  implementation choices), directly transferable to §31's Kernel-component formal-status
+  requirement. Restates I-11 into a precise, checkable claim about knowledge's non-executing,
+  constraining causal role. Flags an unresolved provenance dispute: both this file and 0013,
+  same day, independently claim to have discovered/named DP-n as the capability anchor.

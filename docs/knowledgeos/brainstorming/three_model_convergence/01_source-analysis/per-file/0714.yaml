@@ -1,0 +1,191 @@
+sequence: 714
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-125255_step-128-knowledgeos-context-map-and-dependency-direction.md
+title: "Step 128 -- Delivers the Explicit Target Context Map (Governance→Knowledge→Assurance→Engineering→Evidence→Knowledge closed loop), Three Explicitly Enumerated Forbidden Dependencies Directly Fulfilling 0712's Promised Infrastructure/Agent→Authority Test, and the Reconstruction's First Numbered Architecture Fitness Rule Catalog (AFR-01 Through AFR-10) -- Applies AFR-01 Directly and Concretely to the Long-Tracked Pointer-Layer Test Case ('.claude/memory/ Becomes Primary Architectural Knowledge Source' → FAIL) -- Delivers the 'Should Be / Is / Why-Proof' Semantic Triangle and 'Governed Engineering Actor' as the Correct AI-Agent Model -- Crystallizes 'Authority Flows Downward; Evidence Flows Upward' -- Opens Step 129, the Architecture Fitness Model, Promising to Convert These Principles Into Executable, Automatable Checks"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 128 -- KnowledgeOS Context Map and Dependency Direction', promised at 0712's close; delivers the explicit target context map, the promised dependency-direction test (naming three forbidden dependencies including the exact Infrastructure/Agent→Authority anti-pattern), and the reconstruction's first numbered, concrete architecture fitness rule catalog -- among the most directly actionable synthesis deliverables in the reconstruction"
+source_role: PRIMARY_RESEARCH
+canonical_source: 714
+importance: critical
+confidence: high
+about: >
+  Delivers the explicit target Context Map as a closed semantic feedback loop: `Governance→Knowledge→
+  Assurance→Engineering→Evidence→Knowledge`, with each edge individually justified (§128.2-128.8): Governance
+  establishes what is organizationally binding (`Governance→Knowledge`); Knowledge translates governance into
+  reusable engineering meaning; Assurance needs Knowledge's expectation to evaluate reality
+  (`Knowledge→Assurance`); Assurance observes/evaluates but does not own engineering
+  (`Assurance→EngineeringState`, explicitly NOT ownership); Engineering produces evidence
+  (`Runtime→Observation→Evidence`); and, critically, `Evidence↛Authority` automatically -- "one of the
+  central boundaries."
+
+  **Delivers Findings ownership precisely** (§128.9-128.10, directly extending the corpus's Detection≠
+  Authority/Assurance≠Governance family): Assurance owns Detection (`Assurance→FindingDetected`); Governance
+  owns Disposition (`Finding→Governance`), with an explicit five-branch disposition lifecycle (Remediate/
+  Accept Risk/Exception/Investigate/False Positive), "this avoids mixing technical verification with
+  organizational decision-making."
+
+  **Delivers a precisely reasoned Shared-Kernel warning** (§128.11-128.12) against a tempting large shared
+  Evidence model across all contexts: "a large shared model creates coupling" -- a shared kernel, if any,
+  "should therefore be extremely small," potentially only `Identity+Reference+Version+ProvenanceMetadata`,
+  never the entire Knowledge domain -- directly extending 0698's semantic-core-minimality discipline into
+  context-mapping terms. Delivers Published Language candidates (`GovernanceDecisionApproved,
+  GovernanceExceptionGranted, KnowledgePublished, EvidenceCaptured, FindingDetected, VerificationCompleted`)
+  and reconfirms the Anti-Corruption-Layer discipline with four concrete external-system examples
+  (Kubernetes, Nexus, Git, CI/CD), each with an explicit "KnowledgeOS ≠ [external system]" boundary
+  statement (e.g. "the CI system remains the authority for the pipeline execution itself").
+
+  **Places the AI agent (Claude/Codex) explicitly at the application/integration layer** (§128.18-128.22),
+  consuming governed context and producing evidence/recommendations/actions, with the critical rule "the
+  agent must not become an upstream context": `Agent→Governance` (as truth-determination) is explicitly
+  rejected in favor of `Agent→Recommendation→Governance` -- "the agent is downstream from authority" -- with
+  a recommendation schema (`producedBy=Agent, basedOn=Evidence, proposedFor=Decision`) making AI contribution
+  explicit without granting authority. Delivers the Claude/Codex symmetry principle: both harnesses must
+  consume the `SameKnowledgeAuthority/SameEvidenceDiscipline/SameGovernanceBoundary/SameActionConstraints`,
+  explicitly NOT `SameConfigurationFiles` -- the harnesses may differ operationally, but the semantic contract
+  must not.
+
+  **Delivers the file's central, directly promised test -- three explicitly enumerated forbidden
+  dependencies (§128.23-128.26), directly fulfilling 0712's close-of-file promise to test the
+  `Infrastructure/Agent→Authority` anti-pattern**: (1) `Runtime→"Current reality"→Automatically authoritative
+  knowledge→Governance` is forbidden, "because observation does not automatically establish organizational
+  intent... Runtime can tell us what IS. It cannot necessarily tell us what SHOULD BE"; (2)
+  `Agent→Inference→Authoritative Architecture` is forbidden, with the corrected chain given explicitly as
+  `Agent→Inference→Evidence→Validation→Governance→Authority`; (3) `Assurance→Violation→Automatic policy
+  change` is forbidden, with the corrected chain `Assurance→Finding→Governance→Decision`. Delivers the
+  master dependency rule: "Technical contexts must not define organizational authority."
+
+  Delivers DDD relationship-type classification for the context map (§128.27: Governance→Knowledge as
+  Upstream/Downstream; Knowledge→Assurance as Published Language; Assurance→External Systems as
+  Customer/Supplier), a candidate Context ownership table (§128.28, explicitly caveated "candidate
+  ownerships, not established organizational facts"), and the Ownership-essential principle (§128.29:
+  without ownership a bounded context "becomes only a technical grouping," requiring a genuinely empirical
+  next phase inspecting actual repositories/teams/deployment ownership/Jira/APIs/documentation/ADRs -- a
+  concrete, specific empirical-engagement commitment continuing the corpus's repeated promise-then-defer
+  pattern, consistent with the calibrating meta-finding established at 0694).
+
+  **Delivers the reconstruction's first numbered, concrete Architecture Fitness Rule catalog (AFR-01 through
+  AFR-10), the most directly actionable synthesis deliverable in the reconstruction to date** (§128.30-
+  128.39): AFR-01 "No agent component may become the system of record for authoritative organizational
+  knowledge" (directly protects the KnowledgeOS boundary); AFR-02 "Authoritative knowledge must have
+  explicit provenance and authority"; AFR-03 "External system models must not leak directly into
+  KnowledgeOS domain semantics" (use adapters); AFR-04 "Assurance detects conformance; governance determines
+  disposition"; AFR-05 "Agent recommendations must remain distinguishable from authoritative decisions";
+  AFR-06 "Material agent actions require traceable authorization"; AFR-07 "Every material change must
+  produce sufficient evidence for post-action verification"; AFR-08 "Constitutional rules must be
+  independently testable where technically feasible"; AFR-09 "Historical authoritative states must remain
+  reconstructable"; AFR-10 "Unknown must remain a valid epistemic outcome" ("the system must never
+  manufacture certainty merely because an agent is expected to provide an answer").
+
+  **Delivers a Context-map test directly and explicitly applying AFR-01 to the long-tracked pointer-layer
+  test case (§128.40-128.42), the most precise, formal resolution of this recurring illustrative thread to
+  date**: the proposal "Let the Claude `.claude/memory/` directory become the primary source of
+  architectural knowledge because the agent already uses it" is explicitly tested against AFR-01 and
+  produces `FAIL` — "`AgentLocalMemory≠AuthoritativeKnowledge`." A parallel test of Codex's `AGENTS.md`
+  concludes it is acceptable only as a pointer/operating contract (`AGENTS.md→KnowledgeOS`, never
+  `AGENTS.md=KnowledgeOS`), and a final symmetric statement fixes the boundary precisely: `.claude/` owns
+  agent behavior/hooks/workflow/configuration/pointers; KnowledgeOS owns authoritative engineering
+  knowledge/governance/evidence/decisions — directly and formally converging with, and giving precise
+  vocabulary to, this very repository's own actual `.claude/`-vs-`docs/knowledgeos/` split. A Nexus-config
+  test (§128.43) is delivered in parallel: `NexusConfig→Observation/Evidence`, never automatically a
+  `GovernanceDecision`.
+
+  **Delivers "the fundamental semantic triangle,"** a valuable new capstone conceptual framework
+  (§128.44-128.45): `Should Be (Governance+Knowledge) / Is (Runtime+Observation) / Why-Proof
+  (Evidence+Assurance)`, explicitly called "one of the most useful conceptual models for KnowledgeOS," with
+  the Assurance system's role precisely stated as evaluating the relationship `ShouldBe↔Is` using `Evidence`.
+  Delivers "where AI fits" in this triangle (§128.46-128.47): AI operates across the triangle's boundaries as
+  a "reasoning participant" but "does not own any vertex," with the file explicitly rejecting both
+  `UserInterface` and `Automation` as adequate models for the AI agent in favor of **`Governed Engineering
+  Actor`** — with explicit `Identity+Delegation+Evidence+ActionScope` fields — a new, precise naming
+  generalizing the corpus's prior `AgentAuthority`/A-series invariant discipline into a single agent-role
+  concept.
+
+  Delivers Context-map maturity as three explicitly distinguished levels (current-state reconstruction /
+  target context map / fitness rules), directly extending the corpus's ArchitectureClaim≠
+  ImplementationFact discipline (0693/0694/0706/0710) into context-mapping terms — "this prevents target
+  architecture from being accidentally presented as current architecture."
+
+  Delivers Step 128's verdict (context map formally established, converging on the same Core =
+  Governance/Knowledge/Evidence/Assurance as 0712, with Runtime/Git/Nexus/CI-CD/IAM as external/supporting
+  and Claude/Codex as agent/application-integration contexts), and the file's memorable capstone resulting
+  principle: **"Authority flows downward; evidence flows upward"** (`Authority→ExpectedState→Engineering`;
+  `Engineering→Observation→Evidence→Governance`, meeting at Assurance).
+
+  **Closes by opening "Step 129 — KnowledgeOS Architecture Fitness Model,"** promising to convert the AFR
+  principles above into genuinely executable, automatable checks capable of inspecting repository structure,
+  dependencies, configuration, agent harnesses, KnowledgeOS APIs, governance records, evidence, and CI
+  pipelines — formalized as the pipeline `Architecture Principle→Fitness Rule→Automated Check→Evidence→
+  Verdict`, explicitly named "the bridge from DDD architecture to deterministic architectural assurance." No
+  actual code execution, repository inspection, or verified filesystem/dependency claim reported anywhere in
+  this file — all context-map tests (including the `.claude/memory/` and Codex/Nexus tests) remain
+  hypothetical illustrative applications of the stated fitness rules, not empirical findings.
+introduces:
+  - concept: "The explicit target Context Map as a closed semantic feedback loop: Governance→Knowledge→Assurance→Engineering→Evidence→Knowledge"
+  - concept: "Three explicitly enumerated forbidden dependencies, directly fulfilling the promised Infrastructure/Agent→Authority test"
+  - concept: "The Shared-Kernel warning: if any, extremely small (Identity+Reference+Version+ProvenanceMetadata), never the whole Knowledge domain"
+  - concept: "The Agent-must-not-become-an-upstream-context rule: Agent→Recommendation→Governance, never Agent→Governance"
+  - concept: "The Claude/Codex symmetry principle: same semantic contract (authority/evidence/governance/action constraints), not same configuration files"
+  - concept: "AFR-01 through AFR-10 — the reconstruction's first numbered, concrete Architecture Fitness Rule catalog"
+  - concept: "The formal, precise resolution of the pointer-layer test case via direct AFR-01 application (.claude/memory/ FAIL)"
+  - concept: "The 'Should Be / Is / Why-Proof' fundamental semantic triangle"
+  - concept: "'Governed Engineering Actor' as the correct model for the AI agent, rejecting UserInterface and Automation framings"
+  - concept: "The capstone principle: Authority flows downward; evidence flows upward"
+  - concept: "Opens Step 129 — the Architecture Fitness Model, promising Architecture Principle→Fitness Rule→Automated Check→Evidence→Verdict"
+defines:
+  - concept: "Assurance owns Detection; Governance owns Disposition (Findings ownership)"
+    definition: "A failed assurance check produces a Finding; Assurance's domain responsibility ends at detecting and reporting it (Assurance→FindingDetected); the organizational response (remediate, accept risk, grant exception, investigate, or classify as false positive) belongs exclusively to Governance (Finding→Governance) — this prevents technical verification from silently becoming organizational decision-making"
+  - concept: "The three forbidden dependencies"
+    definition: "(1) Runtime state must not automatically become authoritative knowledge feeding Governance (observation ≠ organizational intent); (2) Agent inference must not directly become authoritative architecture (must instead route through Evidence→Validation→Governance→Authority); (3) an Assurance violation must not automatically trigger a policy change (must instead route through Finding→Governance→Decision) — together these instantiate the master rule that technical contexts must not define organizational authority"
+  - concept: "AFR-01"
+    definition: "No agent component may become the system of record for authoritative organizational knowledge"
+  - concept: "The fundamental semantic triangle"
+    definition: "KnowledgeOS's architecture can be expressed as three distinct states: Should Be (Governance+Knowledge), Is (Runtime+Observation), and Why/Proof (Evidence+Assurance); the assurance system evaluates the relationship between Should-Be and Is using Evidence, and AI operates across the triangle's boundaries as a reasoning participant without owning any single vertex"
+  - concept: "Governed Engineering Actor"
+    definition: "The correct architectural model for an AI agent (Claude/Codex): neither a passive UserInterface nor an unconstrained Automation, but an actor with explicit Identity, Delegation, Evidence, and Action-scope fields, operating within — never above — the governance boundary"
+refines:
+  - concept: "the corpus's Detection≠Authority/Assurance≠Governance family (0712 et al.)"
+    refinement: "Directly extended into a precise Findings-ownership rule (Assurance owns Detection, Governance owns Disposition) with an explicit five-branch disposition lifecycle"
+  - concept: "0698's semantic-core-minimality principle"
+    refinement: "Directly extended into context-mapping terms via the Shared-Kernel warning: a shared kernel, if adopted at all, must be extremely small (Identity+Reference+Version+ProvenanceMetadata only)"
+  - concept: "0687's/0697's/0712's Anti-Corruption-Layer discipline"
+    refinement: "Reconfirmed with four concrete external-system examples (Kubernetes, Nexus, Git, CI/CD), each paired with an explicit 'KnowledgeOS≠[external system]' boundary statement"
+  - concept: "the corpus's long-tracked pointer-layer test case (0687→0690→0693→0695→0697→0701→A1-A3 series)"
+    refinement: "Given its most precise, formal resolution to date: direct application of AFR-01 to the exact '.claude/memory/ becomes primary architectural knowledge source' scenario, producing an explicit FAIL, plus a symmetric Codex AGENTS.md test and a precise final boundary statement matching this very repository's own .claude/-vs-docs/knowledgeos/ split"
+  - concept: "the corpus's ArchitectureClaim≠ImplementationFact discipline (0693/0694/0706/0710)"
+    refinement: "Directly extended into context-mapping terms via the explicit three-level Context-map maturity distinction (current-state reconstruction / target context map / fitness rules)"
+  - concept: "0709's/0710's AgentAuthority/A-series invariant discipline"
+    refinement: "Generalized into a single new agent-role concept, 'Governed Engineering Actor,' with explicit Identity+Delegation+Evidence+ActionScope fields"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0715 (Step 129 — KnowledgeOS Architecture Fitness Model) with continued high attention: this file's own explicit promise to convert the AFR-01..AFR-10 catalog into genuinely executable, automatable checks (Architecture Principle→Fitness Rule→Automated Check→Evidence→Verdict) is a natural, well-motivated, and potentially significant continuation — check specifically whether it delivers concrete, inspectable check logic or continues the established hypothetical/promise-then-defer pattern."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the explicit target Context Map (closed feedback loop), the three explicitly enumerated forbidden dependencies fulfilling 0712's promised Infrastructure/Agent→Authority test, and the AFR-01..AFR-10 fitness rule catalog -- the most directly actionable synthesis deliverable in the reconstruction to date."
+  - "dimension-registry.md: record the formal resolution of the long-tracked pointer-layer test case via direct AFR-01 application (.claude/memory/ FAIL), the 'Should Be/Is/Why-Proof' semantic triangle, and 'Governed Engineering Actor' as the correct AI-agent model."
+  - "dimension-registry.md: flag Step 129 (0715) for its explicit promise to convert the AFR catalog into genuinely executable, automatable architecture-fitness checks."
+anchor_test:
+  anchor: "0712's promised Step 128 test; the corpus's Detection≠Authority/Assurance≠Governance family; 0698's semantic-core-minimality principle; 0687's/0697's/0712's Anti-Corruption-Layer discipline; the long-tracked pointer-layer test case (0687-0710); the corpus's ArchitectureClaim≠ImplementationFact discipline; 0709's/0710's AgentAuthority/A-series discipline; this repository's own actual .claude/-vs-docs/knowledgeos/ split"
+  supports_dimension: "Delivers the explicit target Context Map, directly fulfills 0712's promised dependency-direction test by naming three concrete forbidden dependencies (including a precise, corrected chain for each), and delivers the reconstruction's first numbered, concrete Architecture Fitness Rule catalog (AFR-01..AFR-10) -- among the most directly actionable synthesis deliverables to date. Gives the long-tracked pointer-layer test case its most precise, formal resolution yet via direct AFR-01 application, converging with this very repository's own actual .claude/-vs-docs/knowledgeos/ split. Delivers a valuable new capstone conceptual framework (the semantic triangle) and a precise new agent-role concept (Governed Engineering Actor). Closes with a well-motivated, natural continuation into Step 129's promised executable fitness checks"
+  refines_or_contradicts: "directly and precisely extends the corpus's Detection≠Authority/Assurance≠Governance family, 0698's semantic-core-minimality principle, 0687's/0697's/0712's Anti-Corruption-Layer discipline, the long-tracked pointer-layer test case, the corpus's ArchitectureClaim≠ImplementationFact discipline, and 0709's/0710's AgentAuthority/A-series discipline; no contradiction found; no new invariant-ID-scheme collision (AFR-01..AFR-10 is a genuinely new, distinct numbering scheme from the A/C/S/K series, appropriately scoped to architecture-fitness rules specifically rather than general constitutional invariants)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§128.24-128.26's three explicitly enumerated forbidden dependencies, each with an explicit corrected chain, is directly checkable evidence that this file fulfills 0712's specific close-of-file promise to test the Infrastructure/Agent→Authority anti-pattern, rather than merely restating prior generalities."
+  - "§128.30-128.39's AFR-01 through AFR-10 catalog, each rule stated as a single boxed formal sentence, is directly checkable, concrete evidence of the reconstruction's first numbered, non-hypothetical architecture-fitness rule set."
+  - "§128.40's direct application of AFR-01 to the exact '.claude/memory/ becomes primary architectural knowledge source' scenario, producing an explicit FAIL verdict, is directly quotable evidence of the most precise formal resolution the long-tracked pointer-layer test case has received in this reconstruction."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 129's actual content (0715), once read, delivers genuinely executable/automatable fitness-check logic (even pseudocode) for the AFR-01..AFR-10 catalog, or continues the established hypothetical/promise-then-defer pattern flagged by the 0694 calibrating meta-finding."
+  - "Whether the AFR-01..AFR-10 numbering scheme is ever cross-referenced with the C1-C7 Constitution (0705) or the A1-A3 agent-invariant series (0706/0709/0710) in a later file, or remains a permanently separate, non-reconciled numbering track."
+tier2_triggered: true
+tier2_reason: "Delivers the explicit target Context Map, directly fulfills 0712's promised dependency-direction test via three concretely enumerated forbidden dependencies, and delivers the reconstruction's first numbered, concrete Architecture Fitness Rule catalog (AFR-01..AFR-10) -- among the most directly actionable synthesis deliverables to date. Gives the long-tracked pointer-layer test case its most precise, formal resolution yet via direct AFR-01 application, converging with this repository's own actual .claude/-vs-docs/knowledgeos/ split. Delivers a valuable new capstone framework (the semantic triangle) and a precise new agent-role concept (Governed Engineering Actor). Closes with a well-motivated continuation into Step 129's promised executable fitness checks."

@@ -1,0 +1,96 @@
+sequence: 1086
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/09_negative-results.md
+title: "09 -- Negative Results, Classified (Step 291 mandate SS16): The 25-Item Definitive Negative-Results Ledger for the Entire Step-291 Package -- Flags SIX Self-Corrections to This Reconstruction's Own Prior Tracked Claims, and Delivers a Striking NEW Finding (#21) That DOWNGRADES the Already-Tracked 'N-4 Is the Unambiguous Single Root' Claim (file 1072) to NOT ESTABLISHED, Citing 7 Independent Source Nodes"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the ninth numbered Step-291 prose artifact, the definitive negative-results consolidation ledger for the whole package"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1086
+importance: critical
+confidence: high
+about: >
+  "09 — Negative Results, Classified (mandate §16)." Delivers a disciplined 25-item negative-results ledger
+  for the entire Step-291 package, using a strict permitted-label vocabulary (REFUTED / NOT ESTABLISHED /
+  UNDECIDABLE / BLOCKED / UNDER-SPECIFIED / NORMATIVE / DERIVABLE) and an explicit forbidden-word list
+  (FALSE, IMPOSSIBLE, PROVEN, CLOSED, CRITICAL, "unless earned").
+
+  **CONSOLIDATES 25 NEGATIVE RESULTS, MOST ALREADY TRACKED IN DETAIL ACROSS FILES 1076-1085**: the already-
+  tracked `{𝒪,𝒯}`-cut REFUTED (#1, file 1082); `𝒪`/`𝒯`/`𝒪_K` not in equality cycles REFUTED (#2, file 1082);
+  "`𝒪` not closed" UNDER-SPECIFIED (#3, file 1079); `𝒪` derivability NOT ESTABLISHED (#4, file 1085); `𝒪_K`
+  enumerability NOT ESTABLISHED (#5, file 1081); observation type UNDER-SPECIFIED (#6, file 1076); `≡_K`
+  definable-without-`𝒪_K` REFUTED as an undefinability claim (#7, file 1079); `≡` full decidability REFUTED
+  (#8, `012 §35`); `≡`=`≈` NOT ESTABLISHED (#9, N-1A, files 1066-1067); `≡`/`≈` semantic distinguishability
+  UNDECIDABLE (#10, file 1066); the join-semilattice NOT ESTABLISHED (#11) and its refutation itself REFUTED
+  (#12, file 1073's C-7); evolution-monotonicity REFUTED (#13, file 1073); lattice/partial-order NOT
+  ESTABLISHED (#14-15, file 1083); the vacuous supersession PASS UNDER-SPECIFIED (#16, files 1077/1083); `=`
+  not-a-congruence REFUTED (#17, already tracked) and `=` unconditional decidability REFUTED (#18); global
+  congruence now BLOCKED (#19, `259`); the degenerate-endpoint terminology correction (#20, files 1077/1083);
+  `261.23` conditions 4-5 REFUTED as equality-affected (#22, file 1084); `Qualify`'s unique-irreducibility NOT
+  ESTABLISHED (#23, connecting to the already-tracked file-1038 Qualify/Resolve/Normalize/Compare family); the
+  5 prose-only operations' `𝒪`-membership UNDER-SPECIFIED (#24, file 1080); and the already-tracked
+  `259.7`/`259.8` near-miss REFUTED-as-inconsistency (#25, file 1078).
+
+  **DELIVERS A STRIKING GENUINELY NEW FINDING (#21) THAT DIRECTLY DOWNGRADES THE ALREADY-TRACKED FILE-1072
+  CAPSTONE CLAIM**: "`N-4` is THE earliest legitimate act — 🔴 NOT ESTABLISHED — DOWNGRADED: MEASURED: 7
+  INDEPENDENT SOURCE NODES, all resolvable (`10`)." This is a significant, not-yet-fully-explained correction
+  to file 1072's already-tracked capstone finding that "the surface's single root is now unambiguously
+  `N-4`" -- this file's own item #21 asserts that finding is itself NOT ESTABLISHED and DOWNGRADED, citing a
+  measurement (attributed to a still-unread document `10` in this same package) of SEVEN independent source
+  nodes, all resolvable, rather than the single `N-4` root previously claimed. This directly extends this
+  reconstruction's tracked chain of self-corrections and flags an open question for the next file(s) in this
+  package to resolve.
+
+  **DELIVERS THE PROGRAMME'S OWN QUANTIFIED SELF-ASSESSMENT**: "25 negative results. 9 REFUTED · 9 NOT
+  ESTABLISHED · 1 UNDECIDABLE · 2 BLOCKED · 4 UNDER-SPECIFIED." And, critically: "SIX of the twenty-five are
+  CORRECTIONS TO THIS PROGRAMME'S OWN PRIOR CLAIMS (#1, #2, #3, #7, #20, #21), and TWO are near-misses I
+  caught before publishing (#16, #25)." This is the most explicit, quantified self-audit of the programme's
+  own error-correction rate that this reconstruction has yet encountered.
+
+  **DELIVERS THE §16-DISCIPLINE CLOSING RECONCILIATION**, naming the exact three violated-then-corrected
+  rules across the whole multi-step programme: "'not proven' ≠ 'refuted'" (Step 289's overclaim, corrected
+  by #11/C-7); "'not enumerated' ≠ 'not closed'" (Steps 288-290's overclaim, corrected by #3); "'candidate
+  definition' ≠ 'contradiction'" (`G-67`, Steps 288-289's overclaim, withdrawn by Step 290). And confirms the
+  §17 independence test: "Every conclusion above is `R6` -- corpus/technical derivation... no Gītā, Cavell,
+  Chalmers, process-algebra or AGM material is used anywhere in Step 291, not even for classification."
+introduces:
+  - concept: "The definitive 25-item negative-results ledger for the Step-291 package, using a strict permitted-label vocabulary and explicitly forbidding overclaiming words"
+  - concept: "The striking new finding (#21) that downgrades file 1072's already-tracked 'N-4 is the unambiguous single root' capstone claim to NOT ESTABLISHED, citing a measurement of 7 independent source nodes attributed to a still-unread subsequent document"
+  - concept: "The programme's own explicit, quantified self-audit: 6 of 25 negative results are corrections to its own prior claims, and 2 are near-misses caught before publishing"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked capstone finding that N-4 is the unambiguous single root of the governance surface (file 1072)"
+    refinement: "DOWNGRADED to NOT ESTABLISHED by this file's own item #21, citing a measurement of 7 independent source nodes (attributed to a still-unread document in this same package) -- an open correction requiring confirmation from a subsequent file"
+  - concept: "This reconstruction's already-tracked individual findings across files 1076-1085 (O/T/O_K collision, closure analysis, operation registry, observation inventory, governance-vs-derivation boundary)"
+    refinement: "CONSOLIDATED into a single, disciplined 25-item negative-results ledger with strict label vocabulary and explicit self-audit of correction/near-miss counts"
+contradicts:
+  - concept: "This reconstruction's already-tracked file-1072 capstone claim that N-4 is the unambiguous single root of the equality/kernel governance surface"
+    contradicted_by: "This file's item #21, which labels that same claim NOT ESTABLISHED and DOWNGRADED, citing a 7-independent-source-node measurement"
+repeats:
+  - "Consolidates, with minor additional evidence citations, the great majority of already-tracked findings from files 1076 through 1085 into a single unified ledger."
+bridge_candidates:
+  - "Document '10' (cited as the source of the 7-independent-source-node measurement for item #21) has not yet been directly read in this reconstruction's sequence -- expected as a subsequent file in the step-291 package."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the 25-item negative-results ledger, the striking new downgrade of the file-1072 'N-4 is the unambiguous single root' claim (item #21, citing 7 independent source nodes), and the programme's explicit self-audit (6 of 25 are self-corrections, 2 are caught near-misses)."
+anchor_test:
+  anchor: "This reconstruction's already-tracked file-1072 capstone claim that N-4 is the unambiguous single root of the governance surface"
+  supports_dimension: "Downgrades this claim to NOT ESTABLISHED via a new measurement citing 7 independent source nodes, pending confirmation from a subsequent document"
+  refines_or_contradicts: "directly contradicts (downgrades) the prior tracked capstone finding"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The N-4-downgrade claim (#21) cites a still-unread document '10' as its source; this should be directly verified against that document once encountered in the sequential read."
+undefined_concepts: []
+open_questions:
+  - "What exactly are the 7 independent source nodes that downgrade the N-4-is-sole-root claim, and how does this reconcile with file 1072's already-tracked capstone finding -- to be resolved by reading the cited document '10', expected as a subsequent primary-corpus sequence."
+tier2_triggered: true
+tier2_reason: "Delivers the definitive 25-item negative-results ledger for the entire Step-291 package with a strict, disciplined label vocabulary, and a striking new finding (#21) that downgrades the already-tracked file-1072 capstone claim that N-4 is the unambiguous single governance root, citing a measurement of 7 independent source nodes pending confirmation from a subsequent document. Classified importance critical and confidence high given the definitive, well-evidenced, and directly-corrective nature of this consolidation."

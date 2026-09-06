@@ -1,0 +1,78 @@
+sequence: M0123
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-162002_we-can-implement-the-proposed-fde-mapping.md
+title: "We Can Implement the Proposed FDE Mapping -- An Implementation-Oriented Elaboration of M0119/M0120's KR-CONTR-FDE Proposal: Concrete Standing/Boundary Record Structures, Four Experimental Adapters (Classical/K3/FDE/Structured), an Artifact Directory Layout, and a Disciplined Correction -- Implement Contr(p)=S+(p) AND S-(p) as a Candidate Detector to Be TESTED Against Epistemic Contr, Not Assumed as Its Definition"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "an implementation-elaboration document translating M0119/M0120's KR-CONTR-FDE proposal into concrete code structures (Standing/Boundary records, four experimental adapters, an artifact directory layout) -- mostly operationalizes already-recorded research content rather than introducing new findings, with one genuinely disciplined methodological correction applied at the implementation level"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0123
+importance: medium
+confidence: high
+about: >
+  Proposes implementing the FDE-inspired evaluation layer as a sandboxed experiment, explicitly
+  bounded: "implement the candidate evaluation mechanism, not 'FDE as KnowledgeOS logic.'" Proposes
+  a small pipeline (Evidence -> EvidenceAssessment -> Standing(positive/negative support) ->
+  Evaluation(+Boundary/Reason, Context, Provenance) -> Determination -> AttributedState), with the
+  experimental core Standing(p)=(S+,S-) in {0,1}^2 giving four interpretations (positive support,
+  negative support, conflict, no support).
+
+  **EXPLICITLY REFUSES TO REIFY PRIEST'S VALUES AS A KNOWLEDGEOS DOMAIN PRIMITIVE**: rejects an
+  enum KnowledgeState{TRUE,FALSE,BOTH,NEITHER} as premature ontology, proposing instead an
+  experimental-only record Standing(positive,negative) kept separate from a record Boundary(facet,
+  condition,context,provenance) -- reinforcing that (0,0) can mean no-evidence, not-assessed,
+  unobservable, underdetermined, or theory-incomplete, none of which FDE alone can distinguish.
+
+  **PROPOSES FOUR EXPERIMENTAL ADAPTERS** (Classical/K3/FDE/Structured, not four KnowledgeOS
+  states) tested against the fourteen scenarios from M0120, measuring required-distinction ->
+  representation -> preserved/collapsed -> reason-for-collapse, with distinction preservation
+  (not value count) as the key metric. Specifies a concrete artifact directory layout (experiments/
+  KR-CONTR-FDE-2026-09/ with scenarios/, models/{classical,k3,fde,structured}/, evaluators/,
+  invariants/, witnesses/, results/, verdict.md).
+
+  **APPLIES A DISCIPLINED CORRECTION AT THE IMPLEMENTATION LEVEL**: refuses to implement
+  Contr(p)=S+(p) AND S-(p) directly as the definition of Contr; instead implements it as a
+  candidate detector (FDEConflictDetector), to be TESTED for equivalence against epistemic Contr
+  across the scenarios rather than assumed identical -- "the experiment may demonstrate that FDE
+  conflict is useful for representing contradiction without demonstrating that it is identical to
+  KnowledgeOS Contr."
+
+  Closes by proposing the precise research question the implementation should answer: "can
+  independent positive/negative support plus an orthogonal boundary/reason dimension preserve all
+  distinctions that KnowledgeOS currently requires for Contr and Zero?" -- and offers to design
+  exact classes/interfaces against the actual codebase if given repository access, explicitly not
+  modifying the constitutional kernel, Theory v1.2, A_t, or production domain vocabulary.
+introduces:
+  - concept: "The disciplined implementation-level correction: implement Contr(p)=S+(p) AND S-(p) as a testable candidate detector (FDEConflictDetector), not as Contr's assumed definition"
+  - concept: "Concrete Standing/Boundary record structures and a four-adapter (Classical/K3/FDE/Structured) experimental design with a specified artifact directory layout"
+defines: []
+refines:
+  - concept: "M0119/M0120's KR-CONTR-FDE-2026-09 experiment proposal, here operationalized into concrete implementation structures"
+contradicts: []
+repeats:
+  - concept: "M0120's fourteen test scenarios and the distinction-preservation-not-value-count framing, already recorded there"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: false
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0123 as an implementation-elaboration of M0119/M0120's KR-CONTR-FDE proposal, applying a disciplined correction that implements the FDE conflict detector as a testable candidate rather than an assumed definition of Contr, with concrete Standing/Boundary code structures and a four-adapter experimental design."
+anchor_test:
+  anchor: "M0119/M0120's KR-CONTR-FDE-2026-09 proposal"
+  supports_dimension: "Operationalizes an already-designed experiment into concrete implementation structures, reinforcing the discipline against premature identity claims at the code level"
+  refines_or_contradicts: "refines (M0119, M0120)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'I would NOT implement Contr(p) = S+(p) AND S-(p) directly as the definition of Contr. I would implement it as a candidate detector' -- a precise, code-level application of the corpus's established discipline against promoting an external formalism's construct into KnowledgeOS ontology by fiat."
+undefined_concepts: []
+open_questions:
+  - "Whether KR-CONTR-FDE-2026-09 was ever actually implemented and executed as designed here."
+tier2_triggered: false
+tier2_reason: "Primarily an implementation elaboration of already-recorded research proposals (M0119/M0120), with one disciplined methodological point applied at the code level; no new experimental findings of its own. Recorded at medium importance; not tier-2."

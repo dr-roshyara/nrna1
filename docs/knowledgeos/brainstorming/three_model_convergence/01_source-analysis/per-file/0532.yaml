@@ -1,0 +1,146 @@
+sequence: 532
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-130226_closure-03-epistemic-admission.md
+title: "LANDMARK: Epistemic Admission Deepened — Four-Outcome Admission Function (Admit/Reject/Defer/RequestMoreEvidence); Purpose-Dependent Admission Connects to Ideal State; Admission≠Validation; Evidence Dependency Graphs; Conflict⇏Reject; Assertion≠Knowledge Correction; Nine-Boundary Computational Closure Status Dashboard; Evidence Named as the Next Major Closure"
+date: "2026-08-27"
+bytes: 10296
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "extends 0531's Epistemic Admission Boundary closure with substantially richer formal content (not a duplicate): a four-outcome admission function, purpose-dependence, Admission≠Validation, evidence dependency graphs, and a comprehensive nine-boundary closure status dashboard"
+source_role: PRIMARY_RESEARCH
+canonical_source: 532
+importance: critical
+confidence: high
+about: >
+  Opens confirming the prior decision ("Then we can freeze that decision as a working invariant and
+  proceed") and continues the pipeline `X->A_r->O_s->I->P_c`, addressing the boundary `P_c->Assertion` --
+  substantially deepening 0531's Epistemic Admission Boundary work with new formal machinery rather than
+  repeating it.
+
+  **Reaffirms the Assertion structure** `A=(P,E,Σ,Π,τ,C,ID)` with the crucial property `A≢Truth(P)`,
+  instead "A = KnowledgeOS's governed representation of P." **Delivers a concrete worked demonstration**
+  that the SAME proposition can be held by two epistemically non-equivalent assertions (Assertion A:
+  Σ_A=(Observed,Strong,Low,Current) vs. Assertion B: Σ_B=(Reported,Weak,High,Unknown) for the identical
+  claim "Nexus is running 3.69"), crystallizing three explicit non-implications:
+  `Assertion⇏StrongEvidence`, `Assertion⇏Certainty`, `Assertion⇏Truth`.
+
+  **Delivers the file's first major new formal contribution**: an Admission Policy Π_adm governing a
+  FOUR-OUTCOME admission function (not merely admit/reject): `Admit(P_c,E,C,Π_adm)->{Assertion, Reject,
+  Defer, RequestMoreEvidence}` -- explicitly warning against defining `Admit(P)=True` as meaning `P=True`.
+  Admission is instead "whether P is permitted to enter the governed Knowledge State," dependent on
+  purpose, context, source, provenance, evidence, epistemic rules, governance, and required assurance
+  level.
+
+  **Delivers a major new principle**: admission is purpose-dependent -- `Admit(P,Π_1)≠Admit(P,Π_2)`, worked
+  through a contrast between an exploration policy (tolerating Weak support) and a production-migration
+  policy (requiring Strong support) -- explicitly connected to the corpus's established Ideal State theory:
+  when an assertion's epistemic state falls short of what the Ideal State requires, "Assertion exists" but
+  "Knowledge State does not satisfy Ideal State" -- **this is a Discrepancy, not necessarily an invalid
+  assertion**, "an extremely important consequence."
+
+  **Delivers a second major new distinction**: `Admission≠Validation` -- Admission asks "may this
+  proposition exist as governed knowledge?" (`Candidate->Assertion`); Validation asks "does this assertion
+  satisfy a particular requirement?" (`Assertion×Constraint->ValidationResult`). An assertion can be
+  admitted yet FAIL a specific validation (worked example: a weakly-supported version assertion admitted
+  during discovery later fails a migration-readiness validation requiring verification -- "the assertion is
+  not deleted. It remains useful historical knowledge... much more powerful than a binary database model").
+
+  **Delivers a third major new distinction**: `Evidence≠Support` -- Support is not simply `|E|` but
+  `Support=f(E,Π,C,ℛ)`, since evidence differs in relevance, reliability, independence, freshness,
+  provenance, directness, and context. **Generalizes 0528/0530's independent-evidence finding into a
+  concrete mechanism**: an evidence DEPENDENCY GRAPH must be constructed (e.g. `Document->LLM` means the
+  LLM's output is not independent evidence of the same fact) -- "evidence independence must be explicitly
+  modelled," explicitly important for Zero.
+
+  **Delivers a fourth major new principle**: `Conflict⇏Reject` -- both members of a conflicting pair of
+  assertions may be admitted simultaneously, with the Knowledge State legitimately containing
+  `{Assertion A, Assertion B, Conflict C}` rather than forcing a premature choice -- "this preserves reality
+  rather than destroying evidence." **Delivers a companion principle on resolution**: when later evidence
+  resolves a conflict, the superseded assertion is NOT deleted but marked `Status:Superseded`, connecting
+  directly to the corpus's history-preservation transition model `H_{t+1}=H_t‖e_t` -- `KnowledgeState +
+  History ≠ CurrentSnapshotOnly`.
+
+  **Formalizes a genuine epistemic state-transition system**: `P_c --AdmissionPolicy--> A`,
+  `A_t --Evidence--> A_{t+1}`, `A_t,A'_t --ConflictRule--> C_t`, `C_t --Resolution--> C_{t+1}`. **Proposes a
+  DDD responsibility layering**: Semantic Reconstruction (CandidateProposition) -> Epistemic Governance
+  (AdmissionPolicy, EvidenceAssessment, EpistemicAssessment) -> Knowledge (Assertion, with Conflict/Gap/
+  Resolution as its dependents).
+
+  **Delivers the file's most consequential organizing device**: a nine-row computational-closure STATUS
+  DASHBOARD, giving the clearest single snapshot yet of the corpus's Computational Closure research
+  program: Input->Artifact=Closed; Artifact->SourceObservation=Closed; SourceObservation->Interpretation=
+  Architecturally closed (ambiguity legitimate); Interpretation->CandidateProposition=Closed; CandidateProp
+  osition->Assertion=Closed conceptually, admission policy remains configurable; Assertion->KnowledgeState=
+  Closed; Assertion<->Evidence=NEEDS a formal evidence model; Assertion<->Conflict=NEEDS conflict-rule
+  formalization; Assertion<->Gap=NEEDS gap-detector formalization -- explicitly framed as "discovering
+  where theory is genuinely closed and where further work is necessary."
+
+  **Delivers an explicit self-correction to earlier corpus theory**: rejects the earlier equation
+  `Assertion=Knowledge` as "too strong," replacing it with `Assertion∈KnowledgeState` while insisting
+  `KnowledgeState≠SetOfAssertions` -- the Knowledge State is instead the structured tuple
+  `K_t=(Assertions,Evidence,Relationships,Conflicts,Gaps,Provenance,Context,History,Constraints)`, "a
+  structured state, not simply a bag of claims" -- an important DDD correction.
+
+  **Closes by naming the next major closure boundary as Evidence**: "one of the most important mathematical
+  components of the entire system," to be tested against eleven named evidence types (direct measurement,
+  database output, document statement, human testimony, expert opinion, LLM output, derived calculation,
+  multiple independent sources, circular sources, stale sources, contradictory sources) -- if closed, the
+  epistemic-assessment function `Assess(A,E,Π,C)->Σ_A` "becomes computationally realizable rather than
+  merely philosophical."
+introduces:
+  - concept: "Four-outcome admission function Admit(P_c,E,C,Π_adm)->{Assertion,Reject,Defer,RequestMoreEvidence}, replacing a naive binary admit/reject model"
+  - concept: "Admission is purpose-dependent (Admit(P,Π_1)≠Admit(P,Π_2)), directly connecting the epistemic-admission boundary to the corpus's Ideal State theory: a gap between an admitted assertion's epistemic state and the Ideal State's requirement is a Discrepancy, not an invalid assertion"
+  - concept: "Admission≠Validation: admission decides whether a proposition may exist as governed knowledge at all; validation decides whether an already-admitted assertion satisfies a specific downstream requirement; an assertion can be admitted yet fail validation without being deleted"
+  - concept: "Evidence≠Support: Support=f(E,Π,C,ℛ), not simply the cardinality of the evidence set, since evidence differs in relevance/reliability/independence/freshness/provenance/directness/context"
+  - concept: "Evidence dependency graphs as the concrete mechanism generalizing 0528/0530's independent-evidence finding: if one piece of evidence causally depends on another (e.g. an LLM's answer derived from a document), it is not independent evidence of the same claim"
+  - concept: "Conflict⇏Reject: conflicting assertions may both be admitted and coexist in the Knowledge State alongside an explicit Conflict record, rather than forcing premature selection"
+  - concept: "Resolution does not destroy history: a superseded assertion is marked Status:Superseded rather than deleted, connecting to the H_{t+1}=H_t‖e_t history-preserving transition model"
+  - concept: "A nine-boundary computational-closure status dashboard summarizing exactly which parts of the acquisition-to-knowledge pipeline are Closed, Architecturally-closed-with-legitimate-ambiguity, Closed-conceptually-but-policy-configurable, or still Needing formal work (Evidence, Conflict-rules, Gap-detection)"
+  - concept: "Self-correction: Assertion=Knowledge (earlier corpus theory) is rejected as too strong, replaced by Assertion∈KnowledgeState with KnowledgeState≠SetOfAssertions — the Knowledge State is a structured multi-part tuple (Assertions,Evidence,Relationships,Conflicts,Gaps,Provenance,Context,History,Constraints)"
+  - concept: "Evidence named as the corpus's next major computational-closure target, with eleven concrete test-case categories proposed"
+defines:
+  - concept: "Admission Policy (Π_adm)"
+    definition: "The governing policy determining whether a Candidate Proposition may enter the governed Knowledge State as an Assertion, dependent on purpose, context, source, provenance, evidence, epistemic rules, governance, and required assurance level — not a truth function"
+  - concept: "Validation (as distinct from Admission)"
+    definition: "Assertion×Constraint->ValidationResult — a check of whether an already-admitted assertion satisfies a specific downstream requirement (e.g. a migration-readiness constraint), independent of whether the assertion itself remains admitted"
+  - concept: "Knowledge State (corrected)"
+    definition: "K_t=(Assertions,Evidence,Relationships,Conflicts,Gaps,Provenance,Context,History,Constraints) — a structured, multi-part state, not merely a set of Assertion objects"
+refines:
+  - concept: "0531's Assertion≠Proven Truth decision and eleven-state epistemic status vocabulary"
+    refinement: "Given a concrete four-outcome admission function, a purpose-dependence principle connecting it to Ideal State discrepancy, and an explicit Admission≠Validation distinction clarifying what 'admitted' does and does not guarantee"
+  - concept: "0528/0530's NumberOfAIOutputs≠AmountOfIndependentEvidence / EvidenceCount≠IndependentEvidenceCount findings"
+    refinement: "Generalized from an LLM-specific observation into a general evidence-dependency-graph mechanism applicable to any evidence type, not only AI outputs"
+  - concept: "The corpus's earlier equation Assertion=Knowledge"
+    refinement: "Explicitly corrected to Assertion∈KnowledgeState with KnowledgeState≠SetOfAssertions, given a full structured Knowledge State tuple"
+  - concept: "0492's Discrepancy Δ=(Δ_E,Δ_U,Δ_D) framework"
+    refinement: "Given a concrete new source: a purpose-dependent admission policy mismatch against the Ideal State is itself classified as a Discrepancy rather than an invalid assertion"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether the next-named closure target, Evidence, is executed in the immediately following corpus file(s), following the same define->formalize->attack->classify discipline used for Observation, Interpretation, and Epistemic Admission"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the four-outcome admission function, purpose-dependent admission and its connection to Ideal State discrepancy, and the Admission≠Validation distinction."
+  - "dimension-registry.md: record Evidence≠Support, the evidence-dependency-graph mechanism generalizing the independent-evidence finding, Conflict⇏Reject, and history-preserving resolution (Status:Superseded)."
+  - "dimension-registry.md: record the nine-boundary computational-closure status dashboard, the Assertion≠Knowledge self-correction (Assertion∈KnowledgeState, KnowledgeState≠SetOfAssertions), and Evidence as the next named closure target with its eleven proposed test categories."
+anchor_test:
+  anchor: "0531's Assertion≠Proven Truth decision and eleven-state Σ vocabulary; 0528/0530's independent-evidence findings; 0492's Discrepancy framework; the corpus's Ideal State theory"
+  supports_dimension: "LANDMARK deepening of the Epistemic Admission Boundary: introduces a four-outcome admission function, purpose-dependent admission tied formally to Ideal-State discrepancy, an Admission≠Validation distinction preserving weakly-supported assertions as useful historical knowledge, a general evidence-dependency-graph mechanism, Conflict⇏Reject (both conflicting assertions coexist), history-preserving resolution, a comprehensive nine-boundary closure-status dashboard, and an explicit self-correction of the corpus's earlier Assertion=Knowledge equation — closing by naming Evidence as the next major computational-closure target"
+  refines_or_contradicts: "extends and formalizes 0531's admission-boundary closure without contradiction; generalizes 0528/0530's independent-evidence findings; connects to and extends 0492's Discrepancy framework; explicitly corrects an identified overstatement in earlier corpus theory (Assertion=Knowledge)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The nine-boundary computational-closure status dashboard is a directly checkable, itemized self-audit of the corpus's own research progress, giving unusually precise documentary evidence of exactly which parts of the theory are closed versus still open at this point in the corpus."
+undefined_concepts: []
+open_questions:
+  - "Whether the Evidence closure (the next named target, tested against eleven proposed categories) is carried out in the immediately following file(s)"
+  - "Whether the four-outcome admission function's Defer and RequestMoreEvidence outcomes are ever given concrete algorithmic treatment, or remain conceptual"
+  - "Whether the conflict-rule formalization and gap-detector formalization (both flagged 'needs work' in the status dashboard) are closed in subsequent files"
+tier2_triggered: true
+tier2_reason: "LANDMARK deepening of the Epistemic Admission Boundary with substantial new formal machinery not present in the immediately preceding closure file: a four-outcome admission function, a purpose-dependence principle connecting admission to the corpus's established Ideal State theory via Discrepancy, an Admission≠Validation distinction preserving historical value of weakly-supported assertions, a general evidence-dependency-graph mechanism generalizing the corpus's independent-evidence findings, a Conflict⇏Reject principle allowing coexisting conflicting assertions, a history-preserving resolution mechanism, a comprehensive nine-boundary computational-closure status dashboard giving the clearest snapshot yet of the corpus's active research program, and an explicit, important self-correction of an earlier overstated equation (Assertion=Knowledge) — closing by naming Evidence as the corpus's next major computational-closure target with a concrete eleven-category test plan."

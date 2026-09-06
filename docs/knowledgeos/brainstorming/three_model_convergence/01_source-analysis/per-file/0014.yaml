@@ -1,0 +1,81 @@
+sequence: 14
+path: docs/knowledgeos/KnowledgeOS_Lifecycle_Gap_Analysis.md
+title: KnowledgeOS — Lifecycle Gap Analysis
+date: 2026-08-02
+bytes: 13718
+doc_type: lifecycle gap analysis with the ontology explicitly frozen (reclassify, do not repair)
+
+primary_model_initial: engineering_knowledgeos
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - diagnoses a defect in the document-governance state machine (statuses.yaml vs authorities.yaml)
+  - all objects are C1 document-governance artifacts (ADR-M status, methodology maturity, capability lifecycle)
+  - no kernel occurrence; zero C2 vocabulary
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [governance, knowledge_state, invariants, contradiction, evidence]
+
+status: DR
+maturity: developing
+importance: high
+
+introduces:
+  - authority_as_an_ungoverned_dimension       # has values, no transitions
+  - attestation_as_an_authority_transition     # derived -> authoritative
+  - structural_behavioral_evolutionary_gap_taxonomy
+  - a_gap_that_dissolves_rather_than_resolves  # product vs deployment via nesting
+  - checking_first_as_a_discipline_that_pays
+defines:
+  - authority_as_provenance_times_standing_refined   # provenance IMMUTABLE, standing CHANGES by governance act
+hypotheses:
+  - LG2_restate_DP2_to_separate_derivation_from_attestation
+  - LG4_two_axes_or_two_names
+  - LG5_admit_specializes_relationship
+  - LG6_where_does_obligation_attach
+operators: []
+formal_objects:
+  - authority_as_product_of_provenance_and_standing   # P x T, only T equipped with transitions is missing
+undefined_concepts:
+  - knowledge          # 14th consecutive file
+  - obligation          # LG-6; no home in an ownership-only model
+  - standing            # refined to "act-changed" but no value domain stated
+  - attestation          # named as a transition; no procedure specified
+  - type_vs_status       # the corpus's own lifecycle doc conflates them; not resolved here (LG-3)
+open_questions:
+  - LG2 restate DP-2 to separate derivation from attestation
+  - "LG3 is idea/research a status or a type - which is canonical"
+  - LG4 two axes or two names for two lifecycle pairs
+  - LG5 admit SPECIALIZES
+  - LG6 where does obligation attach
+  - "LG1 WITHDRAWN mid-document as ill-posed (authority conflated two dimensions)"
+
+depends_on: [13]
+extends: [13]
+refines: [2, 3]        # sharpens authority = provenance x standing into two stated sub-dimensions
+renames: []
+contradicts: []        # withdraws its OWN prior claim (I-4), outside the read prefix
+supersedes: []
+repeats: [9, 10, 11, 13]
+connects_to: [2, 3, 13]
+
+bridges: []
+bridge_evidence:
+  - "NO BRIDGE RECORDED. The discipline of refusing to collapse 'derived, not yet attested' into
+     'never authoritative' is structurally identical in SHAPE to §19's Zero-Model discipline
+     (never collapse unknown/unobserved/missing/impossible/null/absence-of-evidence). But the
+     object under discipline here is a document's authority field, not a knowledge value. Flagged
+     as a shape-match to treat with suspicion, per the MD-006 term-collision rule, not as evidence
+     of a bridge."
+
+tier2_triggered: true
+tier2_reason: >
+  Refines the corpus-tracked quasi-formal definition of authority (ledger entry 2) into two
+  independently-mutable factors (provenance IMMUTABLE, standing CHANGES by governance act) and
+  diagnoses that ONE named, real-world transition (attestation) is structurally inexpressible
+  because no transition structure exists on the standing factor - the clearest formal gap diagnosis
+  in the C1 lineage so far, and a concrete, fillable operator gap (attest: derived -> authoritative).
+  Also withdraws an open question (LG-1) on discovering it presupposed a false premise - a positive
+  methodological event worth carrying to the convergence question itself.

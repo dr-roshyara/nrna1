@@ -1,0 +1,145 @@
+sequence: 537
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-134357_closure-04b-candidate-evidence-algebras.md
+title: "LANDMARK: 'There Is No Universal Scalar Evidence Algebra for KnowledgeOS' (Provisional Theorem) — Seven Candidate Aggregation Algebras Systematically Tested and Six Rejected/Demoted to Pluggable Policies; Ordering≠Combination≠Inference; Idempotence Must Apply to Dependency Classes ℰ/∼, Not Raw Evidence"
+date: "2026-08-27"
+bytes: 11275
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly continues 0536's proposed candidate-algebra survey, systematically testing each against the ten-case evidence universe already established"
+source_role: PRIMARY_RESEARCH
+canonical_source: 537
+importance: critical
+confidence: high
+about: >
+  Directly executes 0536's proposed research step: "We now move from 'define the evidence model' to 'test
+  which mathematical structure is actually admissible.'" Poses the central question -- "How should
+  independent evidential contributions be combined?" -- explicitly refusing to assume multiplication,
+  addition, probability, or any other mechanism is correct in advance, deriving requirements first.
+
+  **Systematically tests seven candidate aggregation algebras against the established ten-case evidence
+  universe** (e_1 direct API observation, e_2 exact duplicate, e_3 independent monitoring, e_4 LLM-derived
+  from e_1, e_5 stale document, e_6 irrelevant document, e_7 contradictory (¬P), e_8 weak forum evidence,
+  e_9 authoritative inventory, e_10 derived computational evidence): Candidate A (Maximum strength,
+  `A(E)=max_i s_i`) -- REJECTED, since independent corroboration has zero effect
+  (`A({e_1})=A({e_1,e_3})`), violating the desired corroboration property (though retained as a possible
+  "strongest single evidence" view); Candidate B (Arithmetic sum) -- REJECTED, since it grows unboundedly
+  under repeated duplication, violating Duplicate Invariance and enabling evidence spam; Candidate C
+  (Weighted average) -- shown INSUFFICIENT via a concrete counterexample where two equal-strength pieces
+  of evidence produce the same average as one alone (`A(e_1)=A(e_1,e_2)=0.9`), so independent corroboration
+  does not necessarily increase the assessment; Candidate D (Saturating combination,
+  `A(E)=1-∏_i(1-s_i)`, the formula 0536's experiment actually used) -- shown mathematically valid and
+  bounded, with corroboration genuinely increasing support (worked: two independent 0.8-strength items
+  yield 0.96), BUT carrying a hidden, unjustified semantic assumption that each `s_i` behaves like an
+  independent probability of success -- demoted from "constitutional" to merely "candidate"; Candidate E
+  (Bayesian, `P(H|E)`) -- mathematically rigorous but requires `P(H)` and `P(E|H)` that are "often not
+  objectively available" for arbitrary documents/human statements, recommended as an OPTIONAL inference
+  policy, never the fundamental model; Candidate F (Dempster-Shafer, `Bel(P)`/`Pl(P)`) -- attractive because
+  it maps directly onto the corpus's established `Support≠Truth` principle and tolerates unresolved
+  uncertainty, but introduces its own formal calculus, again demoted to a "useful pluggable reasoning
+  mechanism," not mandatory core; Candidate G (Pure ordinal reasoning, `Low<Moderate<Strong<VeryStrong`) --
+  praised for never pretending "Strong" equals a specific number, but insufficient alone for fine-grained
+  aggregation, hence "excellent core representation" but not sufficient for every inference problem.
+
+  **Reinforces the file's central architectural resolution** (extending 0536's): a **KnowledgeOS Core
+  Evidence Calculus** (Evidence, Proposition, Polarity, Provenance, Dependency, Quality dimensions, Context,
+  Assessment, Conflict) paired with a fully pluggable **Inference Algebra** (OrdinalPolicy, WeightedPolicy,
+  BayesianPolicy, StatisticalPolicy, DempsterShaferPolicy, RulePolicy), explicitly analogized to DDD: the
+  Evidence bounded context owns Evidence and its invariants; the Reasoning bounded context owns
+  InferenceRule and its mathematical semantics -- "this prevents the KnowledgeOS kernel from becoming a
+  giant 'AI confidence calculator.'"
+
+  **Reformulates Evidence Assessment algebraically**: `A_ρ:𝒫(ℰ)×P×C->EA` where
+  `EA=(S^+,S^-,U,Q,D,Γ)`, with an OPTIONAL policy-specific scalar projection `M_ρ(EA)->[0,1]` --
+  "Structured Assessment -> Optional Scalar," never "Evidence -> Scalar" directly.
+
+  **Delivers the file's most important structural refinement**: a formal THREE-WAY distinction between
+  Ordering (`e_1⪰e_2`, "at least as suitable as" under a policy), Combination (`e_1⊕_ρe_2`, "combine their
+  contributions"), and Inference (`Γ⊢_ρP`, "the inference rule derives P") -- `Ordering≠Combination≠
+  Inference`, "a major refinement" the corpus had not previously drawn this precisely.
+
+  **Delivers formal algebraic property requirements for any candidate aggregation operator ⊕**: Closure,
+  Commutativity (evidence arrival order must not change the final assessment -- required), Associativity
+  (highly desirable, enabling streaming updates without full recomputation), an Identity element `0_E` (no
+  additional evidential contribution), and -- the file's subtlest and most important algebraic insight --
+  Idempotence (`a⊕a=a`) with a crucial caveat: it must NOT be automatically required for genuinely
+  independent corroboration, since that would collapse `e_1⊕e_2` into behaving like `e_1⊕e_1` and destroy
+  corroboration entirely. "Idempotence must apply to evidential equivalence/dependency classes, not
+  necessarily raw evidence objects."
+
+  **Delivers a genuinely new mathematical object resolving this tension**: the evidential
+  equivalence/dependency class `[e]` and the QUOTIENT space `ℰ/∼` -- aggregation should operate on `ℰ/∼`
+  (where dependent or duplicate evidence collapses into one class) rather than on raw `ℰ`, "a mathematical
+  foundation for anti-double-counting," yielding a revised, more rigorous four-stage pipeline
+  (`ℰ --Normalize--> ℰ/∼ --AssessQuality--> Q --⊕_ρ--> EA --Inference_ρ--> Conclusion`), explicitly
+  "considerably more rigorous than the original DeepSeek formula."
+
+  **Proposes an eleven-property algebraic test table** for evaluating candidate operators (Duplicate
+  invariance, Commutativity, Associativity, Identity, Boundedness, Corroboration, Dependency awareness,
+  Contradiction preservation, Context sensitivity, Policy sensitivity, Reproducibility), "treating
+  KnowledgeOS's epistemic layer as a genuine algebraic system, rather than a collection of heuristics."
+
+  **Delivers the file's central and most consequential formal result -- a provisional theorem**: "There is
+  no universal scalar evidence algebra for KnowledgeOS," because the theory's requirements span
+  fundamentally different semantics (ordinal quality, dependency, contradiction, context, policy,
+  probabilistic uncertainty, logical entailment) that no single scalar can preserve without information
+  loss -- crystallized as `Structured Evidence Assessment is fundamental` and
+  `Scalar Evidence Score is a policy-specific projection`, explicitly named "one of the strongest
+  mathematical principles in the whole KnowledgeOS theory."
+
+  **Closes proposing the corpus's next concrete experiment**: implement four candidate algebras
+  side-by-side (`A_1=max`, `A_2=weighted mean`, `A_3=1-∏(1-s_i)`, `A_4=Bayesian update`) and automatically
+  run "the 12 laws" (referencing 0535's E1-E12) against each, producing "an actual mathematical test report
+  telling us which properties each model satisfies, rather than choosing the architecture by intuition."
+introduces:
+  - concept: "A provisional theorem: 'There is no universal scalar evidence algebra for KnowledgeOS,' since the theory's required semantics (ordinal quality, dependency, contradiction, context, policy, probability, logical entailment) cannot be preserved without loss by any single scalar — hence Structured Evidence Assessment is the fundamental object and any scalar is a policy-specific projection"
+  - concept: "Systematic rejection/demotion of seven candidate aggregation algebras (Max, Sum, Weighted Average rejected/insufficient as the core; Saturating combination, Bayesian, Dempster-Shafer, and pure Ordinal demoted from constitutional core to pluggable policy options)"
+  - concept: "A formal three-way distinction: Ordering (e_1⪰e_2) ≠ Combination (e_1⊕_ρe_2) ≠ Inference (Γ⊢_ρP) — three genuinely different mathematical operations previously conflated"
+  - concept: "A precise algebraic property checklist for candidate evidence-aggregation operators: Closure, Commutativity, Associativity, Identity, and — crucially — Idempotence restricted to evidential dependency classes rather than raw evidence, to avoid destroying genuine corroboration"
+  - concept: "The equivalence/dependency class [e] and the quotient evidence space ℰ/∼, on which aggregation should actually operate — a formal foundation for anti-double-counting"
+  - concept: "A revised four-stage aggregation pipeline (Normalize -> ℰ/∼ -> AssessQuality -> ⊕_ρ -> EA -> Inference_ρ -> Conclusion), stronger than 0534/0536's earlier pipeline proposals"
+  - concept: "An eleven-property algebraic test table (duplicate invariance, commutativity, associativity, identity, boundedness, corroboration, dependency awareness, contradiction preservation, context sensitivity, policy sensitivity, reproducibility) for evaluating any candidate aggregation operator systematically"
+defines:
+  - concept: "Evidence Assessment (algebraic form)"
+    definition: "A_ρ:𝒫(ℰ)×P×C->EA where EA=(S^+,S^-,U,Q,D,Γ) — a structured object, with any scalar M_ρ(EA)->[0,1] existing only as an optional, policy-specific downstream projection"
+  - concept: "Evidential dependency class [e] / quotient space ℰ/∼"
+    definition: "The equivalence class of evidence objects that represent the same underlying evidential contribution and must not be independently counted; aggregation operates on ℰ/∼ rather than on raw evidence ℰ"
+  - concept: "Ordering, Combination, Inference (formally distinguished)"
+    definition: "Ordering (e_1⪰e_2): e_1 is at least as suitable as e_2 under a policy. Combination (e_1⊕_ρe_2): merging their evidential contributions. Inference (Γ⊢_ρP): an inference rule derives P from premises Γ. Three genuinely distinct mathematical operations that must not be conflated"
+refines:
+  - concept: "0536's six-candidate-algebra survey and its 'Structured Evidence Calculus + Pluggable Inference Mathematics' architectural resolution"
+    refinement: "Executed in full via a systematic, case-by-case test of seven candidates against the shared ten-evidence universe, arriving at the sharper provisional theorem that NO scalar algebra can be universal, rather than merely recommending pluggability as a design preference"
+  - concept: "0535's E1-E12 laws (in particular Duplicate Idempotence and Corroboration≠Duplication)"
+    refinement: "Given a precise algebraic resolution: idempotence is required only over evidential dependency classes ℰ/∼, not over raw evidence objects, reconciling the apparent tension between wanting duplicate-invariance and wanting genuine corroboration to matter"
+  - concept: "0532's evidence dependency graph mechanism"
+    refinement: "Given a cleaner algebraic formalization as a quotient space ℰ/∼, directly usable as the input to aggregation rather than a separate graph structure consulted informally"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether the proposed next experiment (implementing A_1=max, A_2=weighted mean, A_3=saturating combination, A_4=Bayesian update side-by-side and automatically testing all twelve/eleven properties against each) is executed in a subsequent corpus file"
+  - "Reconcile this file's eleven-property algebraic test table against 0535's twelve-law E1-E12 set and 0536's eight-item post-experiment E-1..E-8 list, to determine the corpus's final canonical property checklist for evidence-assessment algebras"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the provisional theorem 'There is no universal scalar evidence algebra for KnowledgeOS,' the systematic rejection/demotion of seven candidate aggregation algebras, and the resulting Structured-Assessment/Optional-Scalar architectural principle."
+  - "dimension-registry.md: record the Ordering≠Combination≠Inference three-way distinction, the algebraic property checklist (with idempotence restricted to dependency classes), and the evidential equivalence class [e]/quotient space ℰ/∼ as the formal anti-double-counting foundation."
+  - "dimension-registry.md: record the revised four-stage aggregation pipeline and the proposed next experiment (four candidate algebras tested against the accumulated law/property set)."
+anchor_test:
+  anchor: "0536's six-candidate-algebra survey and Structured-Calculus-plus-Pluggable-Policy resolution; 0535's E1-E12 laws; 0532's dependency-graph mechanism"
+  supports_dimension: "LANDMARK formal result: systematically tests seven concrete candidate aggregation algebras against a shared evidence universe, rejecting or demoting all seven from constitutional status, and derives a provisional theorem — 'there is no universal scalar evidence algebra for KnowledgeOS' — establishing Structured Evidence Assessment as fundamental and any scalar as a policy-specific projection. Delivers a precise Ordering≠Combination≠Inference distinction and resolves the idempotence-vs-corroboration tension via a formal quotient space ℰ/∼, the corpus's cleanest algebraic treatment yet of anti-double-counting"
+  refines_or_contradicts: "directly executes and sharpens 0536's candidate-algebra survey into a formal theorem; resolves an internal tension within 0535's laws (idempotence vs. corroboration) via the dependency-class quotient construction; formalizes 0532's dependency graph as a quotient space; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The concrete numerical worked examples for Candidates C and D (e.g. A(e_1)=A(e_1,e_2)=0.9 for weighted average showing corroboration failure; 1-(0.2)(0.2)=0.96 for the saturating combination showing corroboration success) are directly checkable arithmetic, giving this file's algebra rejections genuine mathematical rigor rather than qualitative assertion."
+undefined_concepts: []
+open_questions:
+  - "Whether the proposed four-candidate side-by-side algebra experiment (max, weighted mean, saturating combination, Bayesian update) tested against the accumulated laws is executed in a subsequent file"
+  - "How the corpus's now several overlapping property/law checklists for evidence assessment (0535's E1-E12, 0536's Step-8 Laws and post-experiment E-1..E-8, this file's eleven-property table) are ultimately consolidated into one canonical reference"
+tier2_triggered: true
+tier2_reason: "LANDMARK formal result delivering the corpus's most consequential Evidence-theory conclusion to date: a provisional theorem that no universal scalar evidence algebra can exist for KnowledgeOS, reached via a systematic, case-by-case rejection of seven concrete candidate aggregation algebras (Max, Sum, Weighted Average, Saturating Combination, Bayesian, Dempster-Shafer, Ordinal) against a shared, concrete ten-evidence test universe with directly checkable numerical counterexamples. Introduces a precise Ordering≠Combination≠Inference three-way distinction not previously drawn this sharply, and resolves a genuine internal tension in the corpus's own accumulated laws (idempotence for duplicates vs. genuine corroboration mattering) via a novel formal device — the evidential dependency-class quotient space ℰ/∼ — giving the corpus its cleanest mathematical foundation yet for anti-double-counting."

@@ -1,0 +1,95 @@
+
+==========================================================================
+TEST 1  Imported assertion at t=0  -- the base case Step 265 s265.2 calls decisive
+==========================================================================
+  K0 = ['a0:Nexus.version=3.69 <vendor/import@0> sigma=Supported']
+  provenance from K alone : <vendor/import@0>                       ANSWERABLE
+  lineage   from K alone  : []   -- empty, correctly: no ancestors
+  history   from K alone  : NOT ANSWERABLE -- K carries no H; there is no
+                            way to distinguish 'imported at t=0' from
+                            'asserted at t=0 by a person'.
+  => Step 265 s265.2's base-case argument CONFIRMED by construction: at t=0
+     lineage is empty, so any model that DEFINES provenance as 'lineage of the
+     history' (L = History(T)) has nothing to define it with.  Provenance must be
+     carried, not derived.  This is the strongest single argument in Step 265.
+
+==========================================================================
+TEST 2  One-step transformation
+==========================================================================
+  K1 = ['a0:Nexus.version=3.69 <vendor/import@0> sigma=Accepted']
+  provenance unchanged?   True   -- Pi survives restatus
+  who performed the restatus, and when?  NOT ANSWERABLE FROM K
+  => Pi records the origin of the CLAIM, not the origin of the STATE CHANGE.
+     The theory has provenance for assertions and NO provenance for transitions.
+     Step 265's placement matrix has no row for transition provenance.
+
+==========================================================================
+TEST 3  Multi-step derivation
+==========================================================================
+  chain: c derives-from b derives-from a0
+  lineage(c) from K alone = ['a0', 'b']          ANSWERABLE
+  Pi(c) = <internal/rule@2>  -- says 'internal/rule', NOT 'ultimately from vendor'
+  => Lineage IS derivable from K (reachability in R_der) -- this is the one
+     genuinely computable relation in the whole theory (O(n+m)).
+     But Pi and lineage give DIFFERENT answers about origin, and the corpus uses
+     'provenance' for both in different steps.  They must not be conflated.
+
+==========================================================================
+TEST 4  Two independent sources for the same proposition
+==========================================================================
+  K4 holds ONE proposition asserted TWICE: ['<scanner/probe@4>', '<vendor/api@3>']
+  distinct propositions in K4: ['Nexus.version=3.69', 'Nexus.version=3.69']   (one)
+  distinct assertions in K4  : ['s', 'v']   (two)
+  => P != A pays off here: independent corroboration is representable as two
+     assertions of one proposition.  ANSWERABLE.  This is a genuine strength.
+     What is NOT answerable: whether the two sources are INDEPENDENT.  The theory
+     has no independence relation -- only R_der (dependence).  Absence of a
+     derives-edge is not evidence of independence (it may simply be unrecorded).
+
+==========================================================================
+TEST 5  Merge
+==========================================================================
+  merge(K_vendor, K_scanner) = ['s', 'v']
+  can we tell which branch each assertion came from?  YES via Pi.source
+  can we tell WHEN the merge happened, or WHO authorized it?  NO
+  => Assertion provenance survives merge (Step 265 s265.11 'merge test'
+     PASSES).  MERGE provenance does not exist: the merge event itself has no
+     record inside K.  Two different merge orders producing the same K are
+     indistinguishable -- and EXP-10b showed those orders can produce DIFFERENT K
+     under a latest-wins rule, so the unrecorded order is semantically load-bearing.
+
+==========================================================================
+TEST 6  Identical current states, different histories  -- the decisive test
+==========================================================================
+  H_a = assert(v)
+  H_b = assert(s); assert(v); withdraw(scanner)
+  K(H_a) = ['v']   K(H_b) = ['v']
+  structurally equal? True
+
+  Questions a real audit asks, answered from K alone:
+    what does K say now?                 ANSWERABLE     ['Nexus.version=3.69']
+    where did each assertion come from?  ANSWERABLE     via Pi
+    what is each assertion derived from? ANSWERABLE     via R_der
+    was anything ever withdrawn?         NOT ANSWERABLE
+    was this claim ever contradicted?    NOT ANSWERABLE
+    how many times has it been revised?  NOT ANSWERABLE
+    who withdrew the scanner source?     NOT ANSWERABLE
+
+  => The three ANSWERABLE questions are exactly PROVENANCE and LINEAGE.
+     The four unanswerable ones are exactly HISTORY.
+     CONCLUSION (executed): Provenance and Lineage belong to the STATE;
+     History does NOT reduce to the state, and Step 247's 𝒦_t=(K_t,H_t) is
+     therefore NECESSARY, not merely convenient.
+
+==========================================================================
+SUMMARY -- placement matrix, derived from execution
+==========================================================================
+  concept                                    placement          from K alone
+  assertion provenance (origin of a claim)   IN K (Pi)          answerable
+  lineage (ancestry via R_der)               DERIVED FROM K     answerable, O(n+m)
+  transition provenance (who changed what)   NOWHERE            NOT answerable
+  merge provenance (when/who merged)         NOWHERE            NOT answerable
+  withdrawal record                          NOWHERE            NOT answerable
+  contestation record                        NOWHERE            NOT answerable
+  evidence provenance                        OUTSIDE K (ids)    NOT answerable
+  independence of two sources                NO RELATION        NOT answerable

@@ -1,0 +1,59 @@
+sequence: 38
+path: docs/knowledgeos/KnowledgeOS_Mission_Discovery.md
+title: KnowledgeOS — Mission Discovery
+date: 2026-08-02
+bytes: 17047
+doc_type: strategic discovery answering "what is KnowledgeOS" via responsibility/non-responsibility tracing
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [governance, contradiction, domain_model, evidence]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+status: DR
+maturity: established        # for the two-missions finding and the eight-artifact mission-enactment evidence
+importance: critical
+
+introduces:
+  - two_competing_missions_ma_adopted_mb_proposed
+  - why_constrains_vs_what_constrains
+  - three_authority_systems_none_spanning_all
+  - opposite_readings_table   # diagnostic device: same evidence, opposite conclusions per mission assumed
+defines:
+  - ma_adopted_mission
+  - mb_proposed_mission
+  - policy_method_domain_knowledge_authority_split
+hypotheses:
+  - MQ1_which_mission_governs      # the central unresolved question
+  - MQ7_what_would_falsify_MA
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge, falsifier]
+open_questions:
+  - MQ1_through_MQ7
+
+depends_on: [1, 6, 9, 20, 37]
+extends: [20, 37]
+refines: [1, 6, 9]      # supplies the origin reasoning for "mission enacted, unratified"
+renames: []
+contradicts: []          # withdraws its own prior "two missions"/"mission vacant" framing, outside read prefix
+supersedes: []
+repeats: []
+connects_to: [1, 6, 9, 20, 37]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Supplies a retroactive explanatory key for ledger entry 6 (KnowledgeOS does not denote a stable
+  object): the instability is a STRUCTURAL contradiction between two live missions with different
+  customers (M-A adopted, M-B proposed-and-shut), not mere terminological drift, and identical
+  evidence is shown to support opposite conclusions depending which mission a reader assumes. This
+  propagates through every prior C1 document discussing extraction/reusability/init, requiring this
+  research to tag each C1 file's mission-assumption before any later convergence comparison.

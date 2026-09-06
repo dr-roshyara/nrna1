@@ -1,0 +1,43 @@
+sequence: 992
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/exec/OUT-e-equality.txt
+title: "OUT-e-equality.txt -- The Saved, Confirmed Execution Output of File 0991's e_equality.py Script, Content-Identical in Substance to the Findings Already Fully Recorded Under File 0991"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "saved script output, content-equivalent to file 0991's own script logic"
+source_role: DUPLICATE
+canonical_source: 991
+importance: minor
+confidence: high
+about: "The saved plaintext output of actually running file 0991's e_equality.py script. Every line matches, verbatim in substance, the print statements already documented in file 0991's full record (the four-relation equality test, the hierarchy downgrade, the injectivity-precision finding, the identity-boundary self-correction). Provides independent confirmation that the script genuinely executes as written. Per standing treatment of content-equivalent artifacts, this file receives a minimal record; full analysis remains under canonical_source 0991."
+introduces: []
+defines: []
+refines:
+  - concept: "File 0991's e_equality.py script"
+    refinement: "CONFIRMED to actually execute and produce exactly the results already documented, via this saved output file"
+contradicts: []
+repeats:
+  - "Content-equivalent to the print output already fully documented in file 0991's record."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "File 0991's e_equality.py script"
+  supports_dimension: "Confirms file 0991's script actually executes and produces the exact claimed output"
+  refines_or_contradicts: "confirms (does not contradict) file 0991's findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Line-by-line comparison against file 0991's script print statements confirms exact substantive correspondence."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Saved execution output, content-equivalent to file 0991's own script logic and already fully analyzed under that record."

@@ -1,0 +1,162 @@
+sequence: "0193"
+path: docs/knowledgeos/brainstorming/kernel/20260824-013116-logitica-extraction-preserve-reasoning-structure-not-solutions.md
+title: "Logitica (Neelabh Kumar, a critical-thinking/puzzle-solving book) extracted via the full ~28-lens register applied comprehensively to one concrete worked source for the first time in the corpus's reading order: thirteen labeled research-candidate concepts (ProblemStructure, HypothesisSet, ReverseDerivation, EvidenceNoise, etc.) and a Solution!=Understanding / Knowledge!=Answer distinction -- explicitly not justifying any Kernel change"
+date: "2026-08-24"
+bytes: 33000
+model:
+  primary: c1
+  secondary: [g]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0193"
+importance: high
+confidence: high
+about: >
+  Applies the standing 0191 extraction protocol together with the corpus's ENTIRE established lens register
+  (~28 lenses: Vani, Panini, Karaka, Navya-Nyaya, Nyaya, Escher, Siva-Sakti, Tripuṭī, Ganesha, Moksha,
+  Negative Epistemology, Leonardo, Quranic/Isnad, Biblical, Dharma, Artha, Godel, Zero, DDD, Yijing, Li,
+  Yin-Yang, Ziran, Gongfu, Ming, Jing, Shi, He, Wu) to a single concrete source -- Neelabh Kumar's
+  *Logitica: The Brain Behind the Brain* (2019), a critical-thinking/puzzle-solving pedagogy book -- the
+  first time in the corpus's reading order this reconstruction has observed the full lens register
+  comprehensively worked through against ONE non-philosophical, highly concrete source (Number Box, Number
+  Sequence, Lock-and-Key puzzle chapters) rather than abstract philosophical argument. Central thesis:
+  "knowledge should preserve the structure and reasoning required to reconstruct a solution, rather than
+  merely preserve the solution itself" -- Solution != Understanding, Knowledge != Answer. Extracts many
+  concrete, worked epistemic patterns from the puzzle examples: candidate-rule-must-be-cross-validated
+  (a rule inferred from one Number Box must be checked against another before being applied to a missing
+  value -- an evidence-sufficiency-gate pattern); explicit recognition of underdetermination (Number
+  Sequence chapter has cases with "no clear winner" among equally-compelling candidate rules, explicitly
+  distinguishing Fits-evidence from Uniquely-proven and Preferred-explanation from Only-possible-
+  explanation); a Yijing-lens transformation-pattern analysis (successive-differences technique on
+  polynomial sequences, explicitly contrasted with Fibonacci sequences which do NOT converge under that
+  method, motivating "revision history should be modeled semantically, not merely chronologically"); a
+  reverse-reasoning/non-injective-knowledge finding (the I/O Arithmetic Box's Reverse Step Process can
+  produce multiple valid candidate inputs for one output, each independently re-verified by forward
+  simulation -- directly warning that a conclusion does not necessarily uniquely determine one reasoning
+  history, with direct provenance/auditability implications); a Ziran-lens example (the author explicitly
+  rejects an over-hasty cross-box sequential-dependency inference in favor of each Number Box explaining
+  itself locally -- "do not impose structure from outside the observed object when the object itself can
+  explain the behavior," explicitly generalized to "before introducing a global rule, ask: can each local
+  object explain itself?"); a Zero/Wu-lens finding that a FAILED trial (Lock-and-Key) is itself informative,
+  eliminating a possible relation from the hypothesis space, and can even open new search directions (Wu);
+  an explicit optimality-requires-explicit-criterion principle (the Lock-and-Key chapter deliberately
+  chooses "failed trials" over "total trials" as its evaluation metric specifically because trial-counting
+  is ambiguous, generalized to "a decision cannot be called optimal until the evaluation criterion has been
+  explicitly defined"); a "junk keys" / evidence-noise observation (irrelevant elements increase worst-case
+  cost without improving knowledge quality, motivating a candidate EvidenceNoise concept with irrelevant/
+  redundant/contradictory/non-discriminating/invalid/low-confidence properties); and a duplicate-vs-
+  independent-evidence distinction (a repeated trial does not count as new information). Produces thirteen
+  explicitly labeled (A-M) research-candidate concepts, all marked "not approved domain objects": (A)
+  ProblemStructure (objective/constraints/knowns/unknowns/components/relations/failure-conditions), (B)
+  Hypothesis, (C) HypothesisSet (multiple explanations held simultaneously), (D) ValidationAttempt, (E)
+  ValidationResult (supports/contradicts/inconclusive), (F) EvaluationCriterion, (G) CandidatePreference
+  (why A was preferred over B without claiming B false), (H) NegativeObservation, (I) ReasoningPath, (J)
+  ReverseDerivation, (K) KnowledgeTransition, (L) Alternative, (M) EvidenceIndependence. Proposes a single
+  composite research object, KnowledgeInvestigation (Problem/Hypotheses/Evidence/ReasoningPaths/
+  EvaluationCriteria/Adjudication/SelectedKnowledge/UnresolvedAlternatives), explicitly framed as a research
+  hypothesis about whether KnowledgeOS needs to represent the INVESTIGATION around knowledge, not merely the
+  final knowledge object -- distinct from, but structurally resonant with, the Question/Inquiry/Hypothesis
+  machinery already tracked in the Western-epistemology-arc Kernel Candidate v0.2/v0.3 (0174/0176).
+  Explicitly reworks the existing four-layer architecture (Observation/Adjudication/Kernel/Mechanism) by
+  adding substantial content to each layer from Logitica's worked examples, while explicitly stating
+  Logitica "does NOT justify a large Kernel" -- it supports only a small existing invariant set (identity/
+  evidence/justification/relations/epistemic-status/revision) and places critical-thinking/simplicity/
+  strategy-evaluation firmly in the Mechanism layer. Explicitly lists five source ideas that must NOT become
+  KnowledgeOS law despite appearing in the source (always-choose-simplest-explanation, all-knowledge-must-
+  be-reconstructed, worst-case-is-always-the-right-criterion, every-problem-has-a-discoverable-pattern,
+  iteration-guarantees-truth). Closes with an explicit seven-field classification (SOURCE FACT: strong;
+  LENS OBSERVATION: strong; KNOWLEDGEOS RESEARCH IMPLICATION: strong; ARCHITECTURAL CANDIDATE: worth formal
+  investigation; KERNEL CHANGE: not justified by this source alone; MECHANISM CANDIDATES: strong; Governance
+  decision: not required yet), the most complete instance yet of the 0191 protocol's five-level status
+  discipline being fully and explicitly applied to a book report's conclusion.
+
+introduces:
+  - "Thirteen labeled (A-M) research-candidate concepts explicitly grounded in worked puzzle examples:
+    ProblemStructure, Hypothesis, HypothesisSet, ValidationAttempt, ValidationResult, EvaluationCriterion,
+    CandidatePreference, NegativeObservation, ReasoningPath, ReverseDerivation, KnowledgeTransition,
+    Alternative, EvidenceIndependence -- all explicitly marked as research candidates, not approved domain
+    objects"
+  - "The Solution!=Understanding / Knowledge!=Answer distinction, with a proposed two-branch Knowledge
+    structure (PROPOSITION 'what is?' vs. CAPABILITY 'can I use it?') both requiring a REASONING PATH
+    leading to RECONSTRUCTIBILITY"
+  - "A concrete, cross-validated evidence-sufficiency-gate pattern from the Number Box examples: a rule
+    inferred from one observation should not automatically become knowledge until tested against
+    independent additional observations"
+  - "A non-injective-knowledge finding from Reverse Step Process reasoning: one conclusion can have multiple
+    independently-valid supporting derivations, so provenance must not assume a single unique reasoning
+    history exists behind any given conclusion"
+  - "An explicit optimality-requires-explicit-criterion principle, grounded in the Lock-and-Key chapter's
+    deliberate choice of failed-trials over total-trials as its evaluation metric"
+  - "An EvidenceNoise research concept (irrelevant/redundant/contradictory/non-discriminating/invalid/
+    low-confidence), grounded in the 'junk keys' example -- more evidence does not automatically mean
+    better knowledge"
+  - "A composite KnowledgeInvestigation research object (Problem/Hypotheses/Evidence/ReasoningPaths/
+    EvaluationCriteria/Adjudication/SelectedKnowledge/UnresolvedAlternatives), explicitly framed as
+    investigating whether KnowledgeOS must represent the investigation process, not just the final claim"
+  - "First comprehensive full-lens-register application (all ~28 established lenses) to a single concrete,
+    non-philosophical worked source in the corpus's reading order, demonstrating the lens system functions
+    as an operational toolkit rather than purely abstract theory"
+
+defines: []
+
+refines:
+  - "Extends the four-layer architecture (Observation/Adjudication/Kernel/Mechanism) with substantial new
+    content at each layer, while explicitly confirming (not extending) the small existing Kernel invariant
+    set (identity/evidence/justification/relations/epistemic-status/revision)"
+  - "Structurally resonant with, but independently derived from, the Question/Inquiry/Hypothesis machinery
+    in the Western-epistemology-arc's Kernel Candidate v0.2/v0.3 (0174/0176) -- the KnowledgeInvestigation
+    proposal and v0.2/v0.3's Inquiry-context both converge on preserving an investigation process, not just
+    a final claim, from two independently-derived source tracks"
+
+contradicts: []
+
+repeats:
+  - {concept: "Negative Epistemology: candidate that fits evidence is not necessarily uniquely established", canonical_source: "0110", novelty: low}
+  - {concept: "26-lens canonical register applied as observation-layer instruments", canonical_source: "0161", novelty: low}
+  - {concept: "Godel-boundary: finite evidence may not uniquely determine truth", canonical_source: "0087", novelty: low}
+
+bridge_candidates:
+  - "The KnowledgeInvestigation composite object and the Western-epistemology-arc's Inquiry/Question
+    machinery (0174/0176) are two independently-derived proposals converging on the same underlying need
+    (preserve the investigation process, not just the resulting claim) -- worth flagging as a further
+    cross-tradition convergence instance for the eventual cross-model comparison phase, alongside the
+    KnowledgeAggregate vs. Kernel-Candidate-v0.2/v0.3 unresolved_equivalence already tracked"
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "None -- explicitly concludes 'Kernel change not justified by this source alone'; all thirteen labeled
+    concepts and the KnowledgeInvestigation object are logged as research candidates only"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Refines the Mechanism/Adjudication layers with substantial concrete content from worked examples; explicitly confirms rather than extends the existing small Kernel invariant set."
+  alternative_minimal_kernel: "none -- explicitly non-Kernel-changing; proposes a KnowledgeInvestigation research object at the Adjudication/research layer, not the Kernel"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "First comprehensive full-lens-register (all ~28 established lenses) application to one concrete,
+    non-philosophical worked source -- a methodological milestone demonstrating the lens system's practical
+    operational use, distinct from its more common application to abstract philosophical texts throughout
+    0165-0192"
+  - "The KnowledgeInvestigation proposal independently converges with the Western-epistemology-arc's
+    Inquiry/Question Kernel-candidate machinery (0174/0176) despite arising from an entirely unrelated
+    source (a puzzle-solving pedagogy book) -- a genuine cross-tradition convergence data point"
+
+undefined_concepts: []
+open_questions:
+  - "Whether any of the thirteen labeled research candidates (ProblemStructure through EvidenceIndependence)
+    or the KnowledgeInvestigation object are formally investigated or incorporated into a later Kernel
+    candidate version"
+
+tier2_triggered: true
+tier2_reason: >
+  First comprehensive full-lens-register application to a concrete non-philosophical source; thirteen new
+  labeled research-candidate concepts grounded in worked examples; a KnowledgeInvestigation proposal
+  independently converging with the Western-epistemology-arc's Inquiry/Question machinery.

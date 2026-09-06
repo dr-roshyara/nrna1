@@ -1,0 +1,75 @@
+sequence: 2292
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260901-021003_step_286_hpa-gita-chapter-01-as-the-opening-pathological-state-of-the-kernel.md
+title: "Gītā Chapter 1 HPA (second pass) -- Delivers the Named Principle G1 'Knowledge Is Insufficient Without Discrimination' (K_t⇏Decision_t) and the Explicit Containment Hierarchy Knower⊃Kernel/Mind⊃Buddhi⊃Operations"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a second Chapter-1 pass substantially overlapping the thread's closing document (file 2291), delivering a formally-named principle and an explicit containment hierarchy for Knower/Kernel/Buddhi/Operations"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2292
+importance: high
+confidence: high
+about: >
+  A second Chapter-1 pass, opening identically to file 2291: "Chapter 1 does not primarily add another
+  knowledge primitive. It adds the initial pathological state from which the kernel must operate." This
+  record captures the incremental content beyond the already-tracked closing document.
+
+  **DELIVERS THE NAMED PRINCIPLE 'G1 — KNOWLEDGE IS INSUFFICIENT WITHOUT DISCRIMINATION'**: explicitly
+  formalized as K_t⇏Decision_t; instead (K_t,B_t,C_t)⇒Decision_t subject to Q(K_t,C_t)=valid — "one of the
+  most important refinements from Chapter 1 for the formal kernel." NOTE: this "G1" label is a LOCAL naming
+  choice within this document (Chapter-1-derived principle #1), not to be confused with the already-tracked
+  corpus-wide "G1" designation for the unresolved Qualify problem (which this same document elsewhere also
+  uses, e.g. "Q remains our G1 unresolved operator") — a mild internal naming ambiguity within this single
+  document, worth flagging.
+
+  **DELIVERS THE EXPLICIT CONTAINMENT HIERARCHY**: Knower⊃Kernel/Mind⊃Buddhi⊃Operations-over-K_t, with K_t=
+  "state operated upon" kept separate — "this preserves the very important distinction... between the state
+  and the epistemic mechanism operating over the state... prevents us from accidentally collapsing Knower=
+  Mind=Buddhi=Knowledge." Explicitly retracts an earlier looser formulation: "I would now REMOVE the earlier
+  temptation to say 'The Knowledge Ātma is the kernel.' That is too strong."
+
+  **DELIVERS A SIX-OPERATOR PRELIMINARY ALGEBRA**: Ω:W→O (observation), ρ:O→K (representation), β:K→D
+  (discrimination), Q:K→{qualified,unqualified,undetermined} (qualification, "our G1 unresolved operator"),
+  δ:K×E→K' (revision), α:K,B,C→A (decision) — composed as 𝔎_t→_Ω O_t→_ρ K_t→_{B_t} D_t→_Q E_t→_α A_t→_δ
+  𝔎_{t+1}, with an explicit interrupt: Q(K_t)=⊥⇒Zero⇒Investigate.
+
+  Reinforces the already-tracked two-type Zero distinction (Z_1 missing-information vs Z_2 model-
+  insufficiency — a variant close to but not identical to file 2291's three-way split), and Purification=
+  discrimination-improvement rather than accumulation, formalized as (K_t,B_t,M_t)→(K_{t+1},B_{t+1},M_{t+1}).
+introduces:
+  - concept: "The named principle 'G1 — Knowledge is insufficient without discrimination', formalized as K_t⇏Decision_t vs (K_t,B_t,C_t)⇒Decision_t under Q(K_t,C_t)=valid"
+  - concept: "The explicit containment hierarchy Knower⊃Kernel/Mind⊃Buddhi⊃Operations-over-K_t, with an explicit retraction of an earlier 'Knowledge Atma is the kernel' formulation as too strong"
+  - concept: "A six-operator preliminary algebra (Omega,rho,beta,Q,delta,alpha) with a Zero-triggered interrupt on qualification failure"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked five unreconciled Zero decompositions (files 2273, 2286, 2287, 2290, 2291)"
+    refinement: "REINFORCED with a two-type variant (Z_1 missing-information vs Z_2 model-insufficiency) close to but not identical in wording to file 2291's three-way split -- yet another slight variant in the thread's unreconciled Zero-decomposition proliferation"
+  - concept: "This reconstruction's already-tracked Knowledge-Atma persistent-identity hypotheses (files 2245-2284)"
+    refinement: "EXPLICITLY RETRACTED where it implied 'Knowledge Atma = the kernel' -- 'that is too strong', replaced with the explicit containment hierarchy"
+contradicts: []
+repeats:
+  - "Substantial overlap with file 2291 (the thread's closing document); this record captures only the incremental named principle, containment hierarchy, and six-operator algebra."
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering the named principle G1 (Knowledge insufficient without discrimination), the explicit Knower⊃Kernel⊃Buddhi⊃Operations containment hierarchy with an explicit retraction of 'Knowledge Atma=kernel', and a six-operator preliminary algebra."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Knowledge-Atma hypotheses and the multiple unreconciled Zero decompositions across the thread"
+  supports_dimension: "Explicitly retracts an overly strong Knowledge-Atma=kernel formulation and adds another slight Zero-decomposition variant"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit retraction ('I would now remove the earlier temptation to say the Knowledge Atma is the kernel') is directly checkable against this reconstruction's already-tracked Knowledge-Atma hypotheses (files 2245-2284) for consistency of this self-correction."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers a formally named principle (K_t insufficient without discrimination) and an explicit containment hierarchy with a self-correcting retraction of an overly strong prior Knowledge-Atma formulation. Classified importance high given the substantive self-correction and formalization, short of critical given the substantial overlap with the already-tracked closing document (file 2291)."

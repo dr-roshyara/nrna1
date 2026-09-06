@@ -1,0 +1,61 @@
+sequence: M0148
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180001_todo-list-and-next-steps-assessment.md
+title: "TODO list and next-steps assessment: strategic reading-order recommendation"
+date: "20260902-180001"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0148
+importance: high
+confidence: high
+about: >
+  A pre-reading strategic recommendation ranking five candidate external-literature sources against
+  the corpus's open TODO list, timestamped earlier (18:00:01) than the KR-integration sub-thread's
+  actual extraction/adjudication documents (M0136-M0147, 18:00:05-18:00:23) — the planning act that
+  preceded that reading, not a synthesis of its results.
+introduces:
+  - "Ranked five-book reading order: (1) Williamson 'Knowledge and Its Limits' — Factivity/Contr/Sat/Evidence; (2) Levesque & Lakemeyer 'The Logic of Knowledge Bases' — Sat/TELL-ASK/Explicit-Implicit/Only-Knowing (flagged 'exactly what you need for Zero'); (3) Gärdenfors 'Belief Revision' / Hansson 'A Textbook of Belief Dynamics' — Lifecycle/Revision/Contraction/Supersession/Retraction, with the AGM postulates (Closure/Success/Consistency/Extensionality/Recovery); (4) Brewka 'Nonmonotonic Reasoning' / Marek & Truszczynski 'Nonmonotonic Logic' — Nonmonotonicity/Default reasoning/Circumscription/Autoepistemic logic; (5) Navarro & Rodriguez (or similar) on Deontic Logic and Legal Systems — Authority/Permission/Obligation/Prohibition/Governance"
+  - "Candidate lifecycle operators from AGM belief revision: K∘p (Revision), K−p (Contraction), Lifecycle⊇{Revision,Contraction,Supersession,Retraction} — not yet cross-referenced against any executed KnowledgeOS lifecycle research"
+  - "Candidate governance decomposition: Governance⊇{Permission,Obligation,Prohibition,Authority} — offered as a future research direction, not yet connected to the corpus's own governance/HPA-supervisory apparatus"
+defines: []
+refines: []
+contradicts:
+  - "Minor but notable pre-reading/post-reading discipline contrast, flagged for the record: this planning document states as if settled 'Evidence = Knowledge ≠ Belief' and treats Williamson's Knowledge(p)⇒Truth(p) as the primary extractable result. The ACTUAL post-reading adjudication (M0147) explicitly REJECTS adopting Knowledge=Evidence as an architectural identity, warning specifically that Williamson himself 'explicitly says the equation does not amount to an analysis of either concept' — i.e., the pre-reading hope that this book would directly hand KnowledgeOS an Evidence=Knowledge equation was correctly walked back once the source was actually read and adjudicated. This is a positive instance of the corpus's discipline improving from plan to execution, not a corpus-integrity problem, but worth recording as the clearest visible instance of that discipline in action."
+repeats: []
+bridge_candidates:
+  - "Whether 'The Logic of Knowledge Bases' (Levesque & Lakemeyer) — this document's priority-2 recommendation, specifically flagged for its 'Only-Knowing' logic as 'exactly what you need for Zero' — was ever actually extracted/reviewed anywhere in this reconstruction's read order; not yet located"
+  - "Whether the AGM belief-revision literature (priority 3), nonmonotonic-reasoning literature (priority 4), or deontic-logic/governance literature (priority 5) were ever extracted/reviewed; none yet located in this reconstruction's sequence"
+  - "The recommended reading ORDER (Williamson first, then Levesque&Lakemeyer) versus the ACTUAL processing order encountered in this reconstruction's read sequence so far (Brachman&Levesque M0136, DL Handbook M0141, Reiter/Situation-Calculus M0145, THEN Williamson M0147) — the plan was not followed in the order it specified; not itself a problem, but worth noting as a further instance of this corpus's general log-ordering looseness"
+mathematical_content: >
+  States only the AGM postulate names and the candidate operator signatures (K∘p, K−p) as
+  placeholders for a not-yet-conducted research programme; no derivations performed.
+gita_content: null
+kernel_content: >
+  Functions as the strategic roadmap that set the reading order for the entire KR-integration
+  sub-thread this reconstruction has now traced from M0136 through M0147 — the plan itself, not a
+  digest of its outcomes, and visibly less disciplined than the adjudication reviews it led to.
+registry_updates:
+  - "Identifies the reading-order plan underlying the M0136-M0147 KR-integration sub-thread"
+  - "Names three further candidate external sources (Logic of Knowledge Bases, AGM belief revision, nonmonotonic reasoning, deontic logic/governance) not yet located as extracted/reviewed anywhere in this reconstruction's sequence — bridge_candidates for continued reading later in the 282-file pass"
+  - "Records a clean, low-stakes example of this corpus's discipline improving between a pre-reading plan and its post-reading adjudication (Williamson's Evidence=Knowledge claim, hoped-for here, rejected at M0147)"
+anchor_test:
+  anchor: false
+  supports_dimension: "Reading-order plan for the KR-integration sub-thread; identifies further unlocated candidate sources"
+  refines_or_contradicts: "contradicts (mildly, pre/post-reading discipline contrast, not a corpus-integrity problem)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Read Williamson's 'Knowledge and Its Limits' first. It is the most directly relevant to your current critical path.\" — the document's own closing directive, followed (though not first in file-processing order) by the actual review at M0147"
+  - "\"Evidence = Knowledge ≠ Belief\" (boxed here) versus M0147's explicit rejection of Knowledge=Evidence as an architectural identity — the clearest pre/post-reading discipline contrast in this sub-thread"
+undefined_concepts: []
+open_questions:
+  - "Were any of priorities 2-5 (Logic of Knowledge Bases, AGM belief revision, nonmonotonic reasoning, deontic logic) ever read and processed later in this reconstruction's sequence?"
+tier2_triggered: false
+tier2_reason: null

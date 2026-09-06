@@ -1,0 +1,123 @@
+sequence: "0098"
+path: docs/knowledgeos/brainstorming/20260822-0241-knowledgeos-semantic-kernel-matilal-word-and-world.md
+title: "KnowledgeOS Semantic Kernel — Extraction from Matilal's 'The Word and the World'"
+date: "2026-08-22"
+bytes: 7952
+
+model:
+  primary: g
+  secondary: [x, c1]
+
+source_role: INDEPENDENT_RESEARCH
+canonical_source: null
+
+importance: high
+confidence: high
+
+about: >
+  A review of a second, distinct, real Matilal book -- "The Word and the World: India's Contribution
+  to the Study of Language" (Oxford, 1990) -- shifting from Nyaya epistemology (0092-0097) to Sanskrit
+  philosophy of LANGUAGE (Śabda-Pramāṇa, Pāṇinian grammar). Produces a third Context-adjacent proposal
+  (Context-Bounded Meaning), directly relevant to the ongoing Context dispute, and a ninth anchor
+  reshaping in yet another pipeline shape (two named "kernels" -- Semantic then Epistemic -- feeding a
+  Knowledge Object then Decision/Action).
+
+introduces:
+  - "Central claim: language is not a transport layer, it is a knowledge-generation mechanism --
+    World -> Language -> Meaning -> Cognition -> Knowledge, replacing Data->Message->Receiver"
+  - "Sabda-Pramana as 'KnowledgeOS Communication Protocol': ordinary statements (not only scripture)
+    generate knowledge, since most human knowledge comes through reading/listening -- reinforces
+    Śabda (testimony) as a first-class Pramāṇa already tracked since 0092"
+  - "'Meaning Resolution' directly connected to AI hallucination: a word has no meaning until resolved
+    by context+usage+sentence-structure+convention; worked example ('Release' meaning deploy/publish/
+    launch/remove-restriction depending on software/legal/business/security context) -- explicitly
+    'exactly compatible with DDD'"
+  - "ADR-KOS-SEM-001..004: Meaning precedes Knowledge; Language is a Knowledge Source;
+    ⭐ Context-Bounded Meaning ('Terms SHALL be interpreted within their bounded context') -- a THIRD
+    Context-adjacent proposal, joining 0094's Avacchedaka delimiter and 0095's Semantic Boundary
+    Precision; Semantic Lineage (reinforces 0097's Commentary Lineage / Revisability)"
+  - "'Semantic Audit Trail' worked example: term 'Authority' -> context 'Election Governance' ->
+    definition -> implementation (AuthorizationPolicy) -> runtime check (CapabilityResolver) -- a
+    concrete, DDD-native traceability chain"
+  - "⭐ Ninth anchor reshaping, a new two-named-kernel pipeline shape: Observation/Language Input ->
+    Semantic Kernel (Matilal, 'what does it mean?') -> Epistemic Kernel (Nyāya, 'why should we trust
+    it?') -> Knowledge Object -> Decision/Action -- distinct in shape from both 0096's and 0097's
+    process pipelines"
+  - "Panini -> 'KnowledgeOS Grammar Engine' (structural precision in interpretation, not covered in
+    depth here) and 'KnowledgeOS Vocabulary Governance' (named, not elaborated)"
+
+defines: []
+
+refines:
+  - "0092's Śabda (testimony) Pramāṇa: reinforced with a specific claim (ordinary statements, not only
+    authoritative texts, generate knowledge) not previously stated this explicitly"
+  - "0097's Semantic Lineage / Commentary Lineage: restated under a fourth ID scheme variant, same
+    underlying concern (preserve historical meaning/interpretation transformations)"
+
+contradicts: []
+
+repeats:
+  - concept: "context-dependent meaning, bounded context compatibility with DDD"
+    canonical_source: "0086"
+    novelty: low
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+# MD-017 relationship classification (see 01_source-analysis/dimension-registry.md, Unresolved
+# Equivalence Registry)
+relationship:
+  type: unresolved_equivalence
+  candidates: ["Context-Bounded Meaning (ADR-KOS-SEM-003)", "Context", "Semantic Boundary Precision"]
+  equivalence_status: unproven
+  note: >
+    A third file-level proposal touching the same territory as the Context dispute (0094's Avacchedaka
+    delimiter, 0095's general semantic-boundary precision). This one is explicitly DDD-sourced
+    ("Terms SHALL be interpreted within their bounded context") rather than Nyaya-sourced. All three
+    are ADDED to the existing Unresolved Equivalence Registry entry for Semantic Boundary Precision /
+    Context, not treated as three separate new relationships -- expands the same tracked group.
+
+# MD-015 registry updates
+registry_updates:
+  - "Context entry: third file-level correspondence candidate added to the existing
+    unresolved_equivalence group (Context-Bounded Meaning, 0098)"
+  - "Revisability entry: Semantic Lineage (0098) added as a further reinforcing angle alongside 0097's
+    Commentary Lineage"
+
+# MD-014 anchor_test against 0087 (Minimal_Kernel_Candidate_0087)
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity"]
+  refines_or_contradicts: >
+    Ninth reshaping -- a two-named-kernel pipeline (Semantic Kernel then Epistemic Kernel) feeding
+    Knowledge Object then Decision/Action, a new variant within the process-pipeline shape family
+    (distinct in detail from 0096's 4-stage and 0097's 5-stage versions).
+  alternative_minimal_kernel: "Yes -- a two-kernel-stage pipeline, a ninth distinct shape."
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false   # a further ADR-KOS-* sub-variant (SEM, distinct suffix from EPI)
+
+key_evidence:
+  - "Second real, distinct, named Matilal book -- confirms Matilal is a recurring, deliberately-chosen
+    scholarly source across at least two files (0096, 0098), not a one-off citation"
+  - "Third independent proposal converging on the same Context/boundary territory from a different
+    technical route (philosophy of language + DDD, rather than Nyaya logic) -- strengthens the case
+    that SOMETHING real is being pointed at, without establishing what it is or resolving the dispute"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether the three-way Context/SemanticBoundary/Context-Bounded-Meaning cluster is ever formally
+    tested for equivalence, or remains permanently a set of related-but-distinct proposals"
+
+tier2_triggered: true
+tier2_reason: >
+  Second distinct real Matilal source, shifting to philosophy of language; a third Context-adjacent
+  proposal (Context-Bounded Meaning) added to the existing unresolved_equivalence tracking per MD-017;
+  and a ninth anchor reshaping in a new two-kernel pipeline shape. Directly relevant to the ongoing
+  Context dispute and the MD-015/MD-017 registry disciplines.

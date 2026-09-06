@@ -1,0 +1,196 @@
+sequence: 738
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-131303_step-150-knowledgeos-runtime-architecture.md
+title: "Step 150 -- Delivers the Clean Three-Layer Runtime Model (Agent Harness≠KnowledgeOS Platform≠Engineering Environment) With a Full Request-Tracing Walkthrough, the Sharp AI-Safety Principle 'Instruction≠Enforcement' ('AGENTS.md Saying Never Deploy to Production Is Not a Security Boundary'), the Control-Plane-vs-Data-Plane Distinction, Five Named Runtime Boundaries, a Concrete Trust-Zone Model, Fail-Open/Fail-Closed Risk-Sensitive Policy, RT-001 Through RT-006, and Conway's-Law-Grounded Decomposition Discipline -- Delivers 'Agent Harnesses Are Clients of KnowledgeOS, Not Alternate KnowledgeOS Implementations' -- Opens Step 151, the First Executable Architecture, Promising 'KnowledgeOS Vertical Slice v0.1'"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 150 -- KnowledgeOS Runtime Architecture', promised at 0737's close; delivers a clean, precisely reasoned three-layer runtime separation directly and concretely relevant to this reconstruction's own governing .claude/.codex repository structure, with several sharp, currently and broadly applicable AI-safety/systems-architecture principles (Instruction≠Enforcement, Control Plane vs. Data Plane) among the most valuable single-file contributions in the entire Steps 120-150 arc"
+source_role: PRIMARY_RESEARCH
+canonical_source: 738
+importance: critical
+confidence: high
+about: >
+  Opens with the central boxed distinction `KnowledgeOS Platform≠Agent Harness≠Engineering Environment`,
+  delivering precise per-layer responsibility statements: Agent Harness (`.claude/`, `.codex/`, `AGENTS.md`,
+  hooks, local scripts, session tooling) — "make an AI agent operate correctly inside an engineering
+  repository"; KnowledgeOS Platform (Governance/Knowledge/Context/Evidence/Assurance/Authorization/
+  Traceability) — "provide governed semantic engineering capabilities"; Engineering Environment (Git,
+  CI/CD, Nexus, Kubernetes, Cloud, Applications, Infrastructure) — "execute and expose real engineering
+  state." This is the most direct, concretely applicable separation the reconstruction has produced given
+  this repository's own actual `.claude/`/`.codex/` split.
+
+  Delivers a full, concrete request-tracing walkthrough for the entire Golden Trace runtime sequence:
+  Context runtime (Agent→API Gateway→Context Application Service→{Governance/Knowledge/Assurance/Evidence/
+  Authorization Query}→Context Composer→ContextPackage), with the Context Composer explicitly not itself an
+  authority — "a composition mechanism"; a worked three-source context-authority-preservation example
+  (Governance says Nexus must satisfy R1; Agent memory says Nexus is already compliant; Runtime observation
+  says Nexus fails R1) where the Context Service must preserve each source's distinct semantic status
+  (`AUTHORITATIVE EXPECTATION` / `LOCAL, UNVERIFIED` / `CURRENT OBSERVATION`) rather than flatly
+  concatenating them, "the agent can then reason correctly"; Recommendation, Action-request, Authorization,
+  Execution, Evidence, and Verification runtimes, each as a concrete step-by-step diagram culminating in
+  "the runtime form of the Golden Trace."
+
+  **Delivers "why instructions are insufficient," a genuinely important, sharply worded AI-safety
+  principle** (§150.16): "suppose `AGENTS.md` says: never deploy directly to production. That is useful.
+  But it is not a security boundary. A malicious, buggy or misconfigured agent can ignore it. Therefore:
+  **Instruction≠Enforcement**. The actual authorization boundary must enforce the rule" — with the explicit
+  architectural consequence that the authorization gate must exist "inside the platform, not merely in
+  agent instructions." This is a sharp, currently and broadly applicable principle for any real
+  agentic-system design, directly extending 0709's "governance must be enforced BELOW the LLM instruction
+  layer" into a concrete runtime-sequencing illustration grounded in this reconstruction's own governing
+  `AGENTS.md`/`.claude/` structure.
+
+  **Delivers five explicitly named Runtime boundaries** (`Agent↔KnowledgeOS`; `KnowledgeOS↔External
+  Engineering`; `Governance↔Assurance`; `Action↔Authorization`; `Authoritative State↔Projections`), each
+  requiring explicit contracts, and **a concrete three-zone Trust-zone model** directly operationalizing
+  0728's trust-zone concept: Zone A (Agent Environment — Claude/Codex/local files) is explicitly stated to
+  be untrusted for authority (`AgentOutput=Untrusted assertion` until validated or governed); Zone B
+  (KnowledgeOS) is "the semantic control plane," determining what is authoritative, applicable, permitted,
+  observed, and verified; Zone C (Engineering Environment) is "operational authority" — Nexus knows what
+  repositories actually exist; KnowledgeOS knows only "what was observed and how that observation relates
+  to governance," explicitly "prevents KnowledgeOS from inventing operational truth."
+
+  **Delivers the Control-plane-vs-Data-plane distinction, a genuinely valuable, precise architectural
+  characterization borrowed from classical networking/systems-architecture terminology and applied
+  precisely to AI governance for the first time** (§150.31-150.32): KnowledgeOS is primarily the
+  `Semantic/Governance Control Plane`; engineering systems are primarily the `Execution/Operational Data
+  Plane`; the Agent acts as a `Reasoning Actor` inside the control model — "the agent is not the control
+  plane... it can recommend `Deploy version X`. But it does not define whether deployment is allowed. That
+  belongs to governance/authorization." This is a sharp, memorable, currently applicable AI-governance
+  characterization.
+
+  **Delivers Runtime resilience via a risk-sensitive fail-open/fail-closed policy**: `ExecutionPolicy=
+  f(ActionRisk)` — low-risk reads may `FailOpen` (the agent continues with local tools where policy
+  permits); governance-sensitive actions prefer `FailClosed` (`KnowledgeOS unavailable⇒No execution`),
+  directly extending 0728's offline-behavior discussion with a precise, action-sensitive policy formula.
+  Delivers a four-level Action-risk classification (`LOW/MEDIUM/HIGH/CRITICAL`) with a concrete worked
+  example table (Read Nexus configuration=LOW; Modify staging repository=MEDIUM; Deploy production=HIGH;
+  Change security policy=CRITICAL). Delivers Runtime timeout semantics (`CONTEXT_UNAVAILABLE` rather than
+  hanging indefinitely, extending 0734's/0735's named-failure-reason taxonomy), Retry semantics
+  distinguishing safe `GET` from potentially dangerous `ExecuteAction`, and **duplicate-execution
+  protection**: "same `ActionID`⇏second physical execution" unless explicitly designed as a repeatable
+  operation — a precise, valuable idempotency-enforcement principle directly consolidating 0734's/0735's
+  idempotency-key discussion into concrete execution-layer behavior. Delivers Runtime observability
+  (`TraceID/RequestID/CorrelationID/ActorID/ActionID/ExecutionID`) and the Semantic-trace-vs-Technical-trace
+  distinction, with the Golden Trace explicitly combining but not depending exclusively on either.
+
+  **Delivers `RT-001` through `RT-006`, six new runtime-security invariants** cleanly synthesizing this
+  file's discipline: the agent environment is not an authority boundary; authorization for governed actions
+  is enforced server-side; external systems remain authoritative for their own actual operational state;
+  high-risk execution fails closed when required governance/authorization state is unavailable; material
+  actions are idempotently identifiable; and technical telemetry and semantic traceability must be
+  correlatable.
+
+  Delivers a concrete initial deployment architecture diagram (Developer/Agent→HTTPS/API→`KnowledgeOS
+  Modular Application`[Context/Governance/Knowledge/Assurance/Evidence/Authorization/Action]→
+  `PostgreSQL+Outbox`→`Projection Workers`→{Graph Index, Search Index, Context Cache}), directly
+  operationalizing 0737's persistence recommendation into an actual runtime topology, with named external
+  adapters (Git/Nexus/CI/Kubernetes) and the reaffirmed "modular monolith first" recommendation, justified
+  by five concrete criteria (clear domain boundaries, one deployable unit, simple local development,
+  transactional simplicity, easy Golden Trace debugging) and "decompose only where justified" by five
+  concrete triggers (independent scaling/availability/security isolation/organizational ownership/
+  deployment independence).
+
+  **Delivers a Conway's-Law-grounded decomposition principle, a genuinely valuable organizational-
+  architecture insight not previously invoked this explicitly** (§150.53): "if `Governance` and `Assurance`
+  are genuinely separate organizational responsibilities, their software boundaries should reflect that.
+  But we should derive the software topology from the domain/organizational boundaries rather than
+  inventing services first" — directly extending the corpus's non-premature-decomposition discipline with
+  real organizational-design theory.
+
+  Delivers "runtime architecture and current KnowledgeOS," directly and concretely mapping this
+  reconstruction's own governing repository mechanisms onto the new architecture without discarding them:
+  Claude integration becomes `AgentAdapter_Claude` (explicitly not owning `GovernanceAuthority`); Codex
+  becomes `AgentAdapter_Codex` following the identical semantic contract; `AGENTS.md` becomes the
+  repository-level pointer (operating rules, local constraints, KnowledgeOS entry point, "the enterprise
+  semantic authority remains outside it"); local hooks combine `LocalFastCheck+GovernedAssurance` (existing
+  fast checks remain, enterprise governance checks additionally consult a KnowledgeOS Assurance API); the
+  existing session logger evolves toward `Session→Action→Evidence` (a `CONNECT` transformation from
+  0730's/0737's delta map); existing deterministic checks become `CheckerAdapters` referencing named Rules
+  — "we do not need to rewrite every checker immediately." Delivers a five-stage staged Runtime evolution
+  strategy (`CURRENT→CONTRACTUALIZATION→KnowledgeOS APIs→Semantic integration→Golden Trace`), "much less
+  risky than a replacement project."
+
+  **Delivers the file's most important runtime rule, a precise, memorable capstone statement of the entire
+  pointer-layer/agent-symmetry discipline in runtime terms**: "agent harnesses are clients of KnowledgeOS,
+  not alternate KnowledgeOS implementations." Delivers the most complete single target-runtime diagram in
+  the reconstruction and Step 150's verdict, restating the clean three-layer separation and the controlled
+  interaction chain (`Agent→Governed Context→Recommendation→Authorization→Action→Engineering System→
+  Evidence→Verification`).
+
+  **Closes by opening "Step 151 — The First Executable Architecture,"** explicitly declaring "we have
+  reached the point where continuing to add conceptual layers would become counterproductive," and
+  promising a genuinely concrete first implementation slice via a ten-item specification checklist
+  (repository/module structure, first database schema, first API contracts, first domain objects, first
+  events, first adapter, first deterministic checker, first Golden Trace test, minimum Claude/Codex
+  integration, Definition of Done) — promising "**KnowledgeOS Vertical Slice v0.1**" using Nexus as the
+  reference subject, deliberately kept read-only for the first execution operation, explicitly framed as
+  "where the architecture finally becomes something that can be handed to an implementation team—or to
+  Claude/Codex—to build without having to reinterpret the architecture themselves." This is a decisive
+  continuation to track for genuine implementation-level concreteness (file names, schema DDL, actual code
+  sketches). No actual code execution, repository inspection, or verified filesystem/architecture claim
+  reported anywhere in this file; every runtime sequence, boundary, and invariant remains a target
+  specification, though directly and concretely mapped onto this reconstruction's own governing repository
+  mechanisms for the first time this precisely.
+introduces:
+  - concept: "The three-layer runtime model (Agent Harness≠KnowledgeOS Platform≠Engineering Environment)"
+  - concept: "'Instruction≠Enforcement' -- AGENTS.md instructions are not a security boundary"
+  - concept: "Five named runtime boundaries and a concrete three-zone trust model"
+  - concept: "Control Plane vs. Data Plane, applied precisely to AI governance"
+  - concept: "The risk-sensitive fail-open/fail-closed policy: ExecutionPolicy=f(ActionRisk)"
+  - concept: "Duplicate-execution protection via stable ActionID"
+  - concept: "RT-001 through RT-006"
+  - concept: "The Conway's-Law-grounded decomposition principle"
+  - concept: "'Agent harnesses are clients of KnowledgeOS, not alternate KnowledgeOS implementations'"
+  - concept: "Opens Step 151 -- The First Executable Architecture, promising KnowledgeOS Vertical Slice v0.1"
+defines:
+  - concept: "Instruction≠Enforcement"
+    definition: "A written instruction to an AI agent (e.g. AGENTS.md saying 'never deploy directly to production') is useful guidance but not a security boundary, because a malicious, buggy, or misconfigured agent can simply ignore it; the actual enforcement mechanism must exist as a server-side authorization gate inside the platform, never solely as agent-facing instructions"
+  - concept: "Control Plane vs. Data Plane (applied to KnowledgeOS)"
+    definition: "KnowledgeOS functions as the semantic/governance control plane, determining what is authoritative, applicable, permitted, observed, and verified; engineering systems (Git, Nexus, Kubernetes, CI/CD) function as the execution/operational data plane, actually running and exposing real state; the AI agent is a reasoning actor operating within, but never itself constituting, the control plane"
+  - concept: "Risk-sensitive fail-open/fail-closed policy"
+    definition: "Whether the system fails open (allows an action to proceed despite unavailable governance/context state) or fails closed (blocks the action) must be a function of the action's risk level, not a single global policy: low-risk read operations may reasonably fail open, while governance-sensitive or high-risk actions must fail closed when required state cannot be confirmed"
+refines:
+  - concept: "0709's 'governance must be enforced BELOW the LLM instruction layer' principle"
+    refinement: "Given a concrete, sharply worded runtime illustration (Instruction≠Enforcement) grounded directly in this reconstruction's own governing AGENTS.md/.claude/ structure"
+  - concept: "0728's trust-zone concept and offline-behavior discussion"
+    refinement: "Operationalized into a concrete three-zone (A/B/C) runtime trust model and a precise risk-sensitive fail-open/fail-closed formula (ExecutionPolicy=f(ActionRisk))"
+  - concept: "0734's/0735's named-failure-reason taxonomy and idempotency-key discussion"
+    refinement: "Extended into concrete runtime timeout semantics (CONTEXT_UNAVAILABLE) and duplicate-execution protection via stable ActionID"
+  - concept: "the corpus's non-premature-decomposition discipline (0716/0717/0730/0737)"
+    refinement: "Extended with real organizational-design theory (Conway's Law): software topology should be derived from actual domain/organizational boundaries, not invented services-first"
+  - concept: "this reconstruction's own governing .claude/.codex repository structure"
+    refinement: "Mapped directly and concretely onto the new architecture (AgentAdapter_Claude/Codex, AGENTS.md as repository-level pointer, local hooks as LocalFastCheck+GovernedAssurance) without discarding existing mechanisms, the most precise such mapping produced in the reconstruction to date"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0739 (Step 151 — The First Executable Architecture) with the HIGHEST priority: this file's own explicit declaration that further conceptual layering would become counterproductive, paired with the promised ten-item concrete implementation checklist and 'KnowledgeOS Vertical Slice v0.1,' makes this the reconstruction's next decisive concreteness test after 0732's Golden Trace Specification. Determine whether it delivers genuine implementation-level artifacts (schema DDL, actual file/module names, concrete code sketches) or remains at the architecture-diagram level."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the three-layer runtime model, 'Instruction≠Enforcement,' the Control-Plane-vs-Data-Plane distinction, and the concrete three-zone trust model -- among the most currently and broadly applicable AI-safety/systems-architecture contributions in the entire reconstruction."
+  - "dimension-registry.md: record the risk-sensitive fail-open/fail-closed policy, duplicate-execution protection, RT-001 through RT-006, the Conway's-Law-grounded decomposition principle, and 'agent harnesses are clients of KnowledgeOS, not alternate KnowledgeOS implementations.'"
+  - "dimension-registry.md: flag Step 151 (0739) with maximum priority as the reconstruction's next decisive concreteness test, promising the first genuinely implementation-grade vertical slice specification."
+anchor_test:
+  anchor: "0709's governance-below-instruction-layer principle; 0728's trust-zone concept and offline-behavior discussion; 0734's/0735's failure-reason/idempotency discussion; the corpus's non-premature-decomposition discipline; this reconstruction's own governing .claude/.codex repository structure"
+  supports_dimension: "Delivers a clean, precisely reasoned three-layer runtime separation directly and concretely relevant to this reconstruction's own governing .claude/.codex repository structure. Delivers several sharp, currently and broadly applicable AI-safety/systems-architecture principles: Instruction≠Enforcement, the Control-Plane-vs-Data-Plane distinction, five named runtime boundaries, a concrete trust-zone model, and a risk-sensitive fail-open/fail-closed policy -- among the most valuable single-file contributions in the entire Steps 120-150 arc, applicable well beyond the theoretical KnowledgeOS scope. Delivers RT-001 through RT-006, a Conway's-Law-grounded decomposition principle, and a memorable capstone rule for agent-harness/platform separation. Closes with a decisive continuation into Step 151's promised first genuinely implementation-grade specification, flagged maximum priority"
+  refines_or_contradicts: "directly and substantially extends 0709's governance-below-instruction-layer principle, 0728's trust-zone concept and offline-behavior discussion, 0734's/0735's failure-reason/idempotency discussion, and the corpus's non-premature-decomposition discipline; no contradiction found; delivers the most precise mapping of this reconstruction's own governing repository structure onto the target architecture to date"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§150.16's explicit worked example ('AGENTS.md says: never deploy directly to production... a malicious, buggy or misconfigured agent can ignore it... Instruction≠Enforcement') is directly quotable evidence of a sharp, currently applicable AI-safety principle grounded precisely in this reconstruction's own governing repository structure."
+  - "§150.31's explicit Control-Plane-vs-Data-Plane characterization ('KnowledgeOS: Semantic/Governance Control Plane... Engineering systems: Execution/Operational Data Plane... Agent: Reasoning Actor') is directly checkable evidence of a precise architectural borrowing from classical systems terminology applied for the first time to AI-agent governance in this reconstruction."
+  - "§150.53's explicit Conway's-Law invocation ('we should derive the software topology from the domain/organizational boundaries rather than inventing services first') is directly quotable evidence of the corpus's non-premature-decomposition discipline being grounded in established organizational-design theory."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 151's actual content (0739), once read, delivers genuine implementation-level artifacts (schema DDL, actual file/module names, concrete code sketches) for KnowledgeOS Vertical Slice v0.1, or remains at the architecture-diagram level established across the preceding files."
+  - "Whether the concrete mapping of this reconstruction's own .claude/.codex repository mechanisms onto AgentAdapter_Claude/AgentAdapter_Codex is ever cross-referenced against this repository's own actual .claude/ directory contents anywhere later in the corpus."
+tier2_triggered: true
+tier2_reason: "Delivers a clean, precisely reasoned three-layer runtime separation directly relevant to this reconstruction's own governing .claude/.codex repository structure. Delivers several sharp, currently and broadly applicable AI-safety/systems-architecture principles: Instruction≠Enforcement, the Control-Plane-vs-Data-Plane distinction, five named runtime boundaries, a concrete trust-zone model, and a risk-sensitive fail-open/fail-closed policy -- among the most valuable single-file contributions in the entire Steps 120-150 arc. Delivers RT-001 through RT-006, a Conway's-Law-grounded decomposition principle, and a memorable capstone rule. Opens Step 151's decisive continuation, flagged maximum priority."

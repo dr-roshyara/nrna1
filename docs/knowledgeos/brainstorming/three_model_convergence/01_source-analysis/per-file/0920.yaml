@@ -1,0 +1,197 @@
+sequence: 920
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260831-001049_step_282_required-completion-and-correction-part.md
+title: "Step 282 -- Required Completion and Correction Part: Decisively Resolves T-3 (Probability NOT REQUIRED for the Core Theory), T-4 (Non-Identifiability NOT a Core-Theory Blocker, With the Formal Unknown-Neq-Missing-Neq-NonIdentifiable Triad), and I-2 (the Apparent Policy-Sigma Circular Dependency, Resolved by Separating Semantic From Implementation Dependency) -- Delivers the Event-Derived Formalization of Q_t (Not a New K or Sigma Component, Replayable and Serializable but Not Independently Authoritative) and the Genuinely Valuable Five-Level Theory-Implementation Gap Taxonomy G0-G4 (Only G4, Theory Underspecified, Automatically Reopens Theoretical Work) -- Delivers the Final Declaration 'THEORY PROVISIONALLY CLOSED -- EMPIRICAL CERTIFICATION PENDING' -- Note: Reverts to the ORIGINAL Four-Step Roadmap Naming ('Step 284 Book Architecture Gate'), Not File 0919's Own Six-Step Revision, a Further Roadmap-Naming Inconsistency"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: c1
+  secondary_note: "the T-3/T-4 probability-and-identifiability analysis is genuine statistical/measurement-theory content; the remainder is DDD/governance-closure formalization"
+source_role: PRIMARY_RESEARCH
+canonical_source: 920
+importance: critical
+confidence: medium
+about: >
+  Directly addresses nine required corrections identified by an (unseen) supervisory review of file 0919,
+  explicitly preserving 0919's existing conclusions rather than rewriting them: "we should not rewrite
+  Step 282 from scratch conceptually. We should preserve its existing conclusions and add the missing
+  analytical machinery."
+
+  **§1 delivers a decisive T-3 (Probability) analysis**: explicitly separates the mere EXISTENCE of
+  uncertainty/incompleteness/unknown-values/competing-evidence/non-identifiability from a logical
+  REQUIREMENT for probability -- boxed **`Uncertainty≠Probability`** and boxed **`Unknown≠Random
+  Variable`**. Probability is required only if KnowledgeOS makes explicit claims of the form `P(X∈A)=p` or
+  uses probabilistic inference/likelihood/expectation/Bayesian updating/stochastic transitions, each
+  requiring at minimum a full probability space `(Ω,𝔉,P)` -- and the canonical state-transition model
+  `K_{t+1}=δ(K_t,e_t)` and all of Unknown/Missing/Supported/Refuted/Conflicted/Superseded/Provenance/
+  Lineage/Replay require none of this. Delivers the decision boxed **`T-3=NOT REQUIRED FOR THE CORE
+  THEORY`**, closed at core-theory level, with the explicit warning "it must not be reopened merely
+  because KnowledgeOS represents uncertainty," and that any future probabilistic bounded context must
+  supply its own explicit probability model rather than inheriting an implicit one.
+
+  **§2 delivers a decisive T-4 (Non-Identifiability) analysis**: formally defines non-identifiability
+  (`f(θ_1)=f(θ_2), θ_1≠θ_2` -- the observation cannot uniquely determine the underlying parameter even in
+  principle under the specified model) and delivers boxed **`Unknown≢Non-identifiable`** -- Unknown means
+  the system currently lacks a justified value; non-identifiability means the available evidence CANNOT
+  uniquely determine the value even given unlimited additional observation under the model, "these are
+  different epistemic situations." Since the core theory does not claim to infer latent parameters, boxed
+  **`T-4=NOT A CORE-THEORY BLOCKER`**, retained as a measurement/inference extension condition, delivering
+  the formal three-way distinction boxed **`Unknown≠Missing≠NonIdentifiable`** as mandatory whenever any
+  future inference context is introduced.
+
+  **§3 delivers a decisive I-2 (Circular Dependency) resolution**, separating SEMANTIC dependency from
+  IMPLEMENTATION dependency for the apparent `Policy→Assessment→Σ→Validation→Policy` cycle: the canonical
+  semantic graph is `Evidence→Assessment(parameterized by Policy)→Σ→K`, and `Σ` does NOT define Policy --
+  boxed **`Policy→Assessment→Σ does not imply Σ→Policy`**; Validation may READ `K,Σ,Policy` (an operation
+  dependency) without CONSTRUCTING the Policy against which it evaluates (never an ontological
+  dependency). Classifies the apparent cycle boxed **`I-2=IMPLEMENTATION/DEPENDENCY-GRAPH ARTIFACT`**,
+  delivering four explicit resolution criteria (Policy construction must not require the resulting `Σ`;
+  Assessment consumes rather than constructs Policy; Validation must not mutate Policy; no runtime
+  dependency cycle may actually exist).
+
+  **§4 delivers the file's most substantive new formal content: THE EVENT-DERIVED FORMALIZATION OF
+  `Q_t`**, definitively resolving the remaining open question about the inquiry-register repair selected
+  at file 0919: boxed **`Q_t=π_Q(Replay(K_0,H_t))`**, where `π_Q` extracts propositions for which an
+  inquiry event has occurred (`p∈Q_t⟺∃e∈H_t:e=Ask(p)`) -- "`Q_t` is derived from history, not
+  independently authoritative state." Delivers a replay invariant (`H_t=H_t'⇒Q_t=Q_t'`, determinism
+  required), a concrete serialization schema for `InquiryEvent` (proposition_id, inquiry_timestamp, actor/
+  context, event_id, schema_version) with `Deserialize(Serialize(e))=e` up to canonical representation
+  equality, and the file's decisive conclusion: `Q_t` is NOT a new component of minimal `K`, NOT a new
+  component of `Σ`, replayable YES, serializable YES, independently authoritative NO -- "the new
+  obligation is engineering closure, not a redesign of the theory."
+
+  **§5 delivers an EXECUTABLE, precisely-specified closure-matrix protocol** for all four closure
+  dimensions `(C_F,C_C,C_E,C_G)`, each with an explicit numbered checklist and required evidence level
+  (Formal requires `L2+`; Computational requires `L3/L4`; Empirical requires `L5` or `L6`, explicitly
+  stating "a Level-4 reference implementation test is not empirical closure"; Governance requires an
+  identified owner, identified authority, an explicit normative decision, a ratified applicable policy,
+  and a recorded effective version/date).
+
+  **§6 delivers a reclassified ten-row gap register**, transforming the register from a simple open/
+  closed binary into "what kind of incompleteness actually remains?" -- every single one of the ten named
+  gaps (`T-3, T-4, I-1, I-2, I-3, E-1, E-2, E-3, G-P1, Q_t`) is explicitly marked "Theory blocker? NO,"
+  delivering the key consolidated result boxed **`No currently identified residual gap is proven to be a
+  core-theory blocker`**, conditional on successful `I-2` verification and the absence of any undiscovered
+  formal contradiction.
+
+  **§7 delivers a genuinely valuable, reusable FIVE-LEVEL THEORY-IMPLEMENTATION GAP TAXONOMY (`G0`-`G4`)**:
+  `G0` (Exact correspondence -- theory and implementation agree); `G1` (Implemented but untested --
+  insufficient evidence); `G2` (Implemented differently -- observed behavior diverges from the formal
+  specification); `G3` (Not implemented -- theory exists, implementation absent); `G4` (Theory
+  underspecified -- implementation exposes a genuinely missing theoretical definition). Delivers the
+  crucial classification rule: boxed **`G0,G1,G3⇏theory defect`**; boxed **`G2 may indicate theory or
+  implementation defect`** (requiring further investigation, undetermined by the category alone); boxed
+  **`G4⇒theory gap`** -- "this last case is the only category that automatically reopens theoretical
+  work" -- a precise, actionable decision procedure for adjudicating any future theory-implementation
+  mismatch encountered during empirical testing.
+
+  **§8 delivers FOUR ACTIONABLE human decisions**, each in an explicit Decision/Recommendation/
+  Consequence/Authority (or Invariant) format, more operationally concrete than file 0919's own framing:
+  `HD-282-01` (probability NOT part of the core, closing `T-3`); `HD-282-02` (non-identifiability NOT a
+  core epistemic state, `Unknown` must remain distinct from `NonIdentifiable`); `HD-282-03` (inquiry state
+  should NOT be embedded in `Σ`, directly re-confirming `Q_t⊆P` as the external event-derived projection,
+  leaving minimal `K` and `Σ` unchanged); `HD-282-04` (the theory is sufficiently defined for governance
+  ratification even while empirical certification remains incomplete, PROVIDED remaining gaps are
+  confirmed non-formal-blockers -- "this is not the same as declaring theory empirically complete").
+
+  **§9 delivers a five-phase refinement execution protocol (`R1`-`R5`)** with named deliverable documents
+  (Formal verification; Implementation mapping; Real-environment evidence; Governance preparation; Closure
+  review, recalculating the four-dimension closure vector per construct, "no global closure claim is
+  permitted before this matrix is updated").
+
+  **§10 delivers Step 283's explicit ratification specification**: eleven named ratification items
+  (canonical `K`, canonical `Σ`, minimal operation universe, Policy model, Authority model, Missingness
+  model, `Q_t` inquiry semantics, terminology/UL, governance ownership, version/effective date, explicitly
+  known empirical limitations), each requiring a full evidence structure (Definition+Rationale+Evidence+
+  Owner+Version+Effective date+Known limitations), and the explicit ratification criterion boxed
+  **`No unresolved CORE formal blocker`** -- "empirical gaps may remain explicitly recorded as
+  certification debt" -- Step 283 explicitly must NOT "ratify 'the theory' as though all dimensions were
+  already empirically closed."
+
+  **§11-§12 delivers the revised closure decision and the file's final three-outcome analysis**: the
+  six-dimension closure table is retained (Formal "substantially closed — residual verification
+  required"; Computational "substantially closed"; Empirical/Governance "not closed"; DDD "substantially
+  closed"; Historical "achieved"), reaffirming boxed **`𝒯_KOS≢ℐ_EKP`** and boxed **`ℐ_EKP⊨𝒯_KOS has not yet
+  been established empirically`**. Delivers three explicitly named possible outcomes -- A (theory still
+  theoretically incomplete, "not currently supported... unless I-2 verification exposes an actual semantic
+  cycle"), B (theory provisionally closed, empirical certification pending, "the currently supported
+  outcome"), C (theory fully closed, "not permitted") -- delivering the file's final declaration boxed
+  **`THEORY PROVISIONALLY CLOSED — EMPIRICAL CERTIFICATION PENDING`**, with the crucial qualification:
+  "'provisionally closed' means no currently identified core theoretical blocker remains; it does not mean
+  that the theory has been empirically validated against the complete KnowledgeOS/EKP environment."
+
+  **§13 delivers a corrected dependency chain that NOTABLY REVERTS to the ORIGINAL four-step roadmap
+  naming** (`Step 282→Step 283 Governance Ratification→Step 284 Book Architecture Gate`), matching files
+  0917/0918's original naming rather than file 0919's own six-step revision (which had renamed Step 284 to
+  "Final Empirical Conformance" and inserted new Steps 285-286) -- **a further, unacknowledged instance of
+  roadmap-naming instability**, this time reverting rather than further revising.
+
+  **Closes with the Final Step 282 Verdict and HPA Supervisory Ruling**: "Step 282: REVISED AND ACCEPTED
+  FOR EXECUTION," confirming all nine required corrections incorporated (`T-3` analysis, `T-4` analysis,
+  `I-2` resolution, `Q_t` replay/serialization semantics, the executable closure-matrix protocol, the
+  theory-implementation gap protocol, actionable human decisions, the refinement execution protocol, and
+  Step 283's ratification specification), designating "STEP 283 — GOVERNANCE RATIFICATION" as next, with
+  the explicit caution that Step 283 must ratify the canonical normative specification, "not falsely
+  certify empirical completeness."
+introduces:
+  - concept: "The decisive T-3 resolution: probability is not required for the core theory, closed at core-theory level, with an explicit warning against reopening it merely because uncertainty is represented"
+  - concept: "The decisive T-4 resolution: non-identifiability is not a core-theory blocker, with the formal Unknown≠Missing≠NonIdentifiable triad"
+  - concept: "The I-2 circular-dependency resolution via the semantic/implementation dependency separation, with four explicit resolution criteria"
+  - concept: "The event-derived formalization of Q_t=π_Q(Replay(K_0,H_t)), definitively not a new K or Σ component, replayable and serializable but not independently authoritative"
+  - concept: "The executable closure-matrix protocol with explicit per-dimension checklists and required evidence levels"
+  - concept: "The reclassified gap register explicitly confirming no residual gap is a proven core-theory blocker"
+  - concept: "The genuinely reusable five-level theory-implementation gap taxonomy G0-G4, with G4 uniquely reopening theoretical work"
+  - concept: "Four actionable human decisions in explicit Decision/Recommendation/Consequence format"
+  - concept: "The five-phase refinement execution protocol (R1-R5) with named deliverables"
+  - concept: "Step 283's explicit eleven-item ratification specification and its 'no unresolved core formal blocker' criterion"
+  - concept: "The final declaration: THEORY PROVISIONALLY CLOSED — EMPIRICAL CERTIFICATION PENDING, with three explicitly named possible outcomes"
+  - concept: "A reversion to the original four-step roadmap naming, contradicting file 0919's own six-step revision -- a further roadmap-naming inconsistency"
+defines:
+  - concept: "The five-level theory-implementation gap taxonomy (G0-G4)"
+    definition: "A precise, actionable classification for any observed discrepancy between a formal theoretical construct and its actual implementation/observed behavior, used to determine whether the discrepancy reopens theoretical work: G0 (Exact correspondence -- theory and implementation fully agree, no gap); G1 (Implemented but untested -- an implementation exists but there is insufficient evidence to confirm its behavior matches the theory); G2 (Implemented differently -- the implementation exists and has been observed, but its behavior diverges from the formal specification -- this case is genuinely ambiguous and 'may indicate theory or implementation defect,' requiring further investigation rather than an automatic classification); G3 (Not implemented -- the theory defines the construct but no implementation of it currently exists); G4 (Theory underspecified -- exercising the implementation reveals that the theory itself lacks a definition needed to interpret or predict the observed behavior). The decision rule is: G0, G1, and G3 never by themselves indicate a theory defect (they are implementation-status facts, not evidence against the theory); G2 is genuinely inconclusive and must be investigated case by case; only G4 automatically and necessarily reopens theoretical work, since it demonstrates the theory itself, not merely its implementation, is incomplete"
+  - concept: "The event-derived Q_t formalization"
+    definition: "A precise resolution of how the inquiry register Q_t (selected as the canonical missingness repair at file 0919) relates to the rest of the KnowledgeOS state model: rather than being an independently stored, authoritative piece of state, Q_t is defined as a PROJECTION derived from the history/event log: Q_t=π_Q(Replay(K_0,H_t)), where a proposition p belongs to Q_t exactly when the history H_t contains an Ask(p) event (subject to temporal semantics). This means Q_t is fully determined by, and reconstructible from, the same history H_t that determines K_t itself -- it requires a determinism/replay invariant (identical histories must produce identical Q_t) and a canonical event-serialization schema, but crucially does NOT require adding any new primitive field to the minimal canonical Knowledge State K or the epistemic status Σ. The remaining obligation this creates is purely an engineering one (implementing replay and serialization for InquiryEvent records), not a further theoretical extension"
+refines:
+  - concept: "0919's unresolved T-3, T-4, and I-2 gap items, and its underspecified Q_t/Σ-unchanged claim"
+    refinement: "ALL FOUR DIRECTLY AND DECISIVELY RESOLVED with precise formal analysis: T-3 and T-4 both explicitly closed as non-core-blockers with formal definitions and explicit distinguishing invariants; I-2 resolved via the semantic/implementation dependency separation; and Q_t given a complete, precise event-derived formalization (π_Q(Replay(K_0,H_t))) that 0919 had left as merely 'Σ unchanged' without further specification"
+  - concept: "0919's revised six-step roadmap (Step 284=Final Empirical Conformance, Step 285=Canonical Theory Freeze, Step 286=Book Publication)"
+    refinement: "REVERTED, not extended -- this file's own corrected dependency chain (§13) uses the ORIGINAL four-step naming (Step 284=Book Architecture Gate), matching files 0917/0918 rather than 0919's own revision -- confirming the roadmap-naming instability now runs in both directions (extension and reversion) across this immediate file cluster, without any file explicitly acknowledging the inconsistency"
+  - concept: "0915's evidence-hierarchy discipline (Level 4≠Level 5≠Level 6)"
+    refinement: "DIRECTLY APPLIED in the closure-matrix protocol (§5.3): explicitly requiring L5 or L6 evidence for empirical closure and reiterating 'a Level-4 reference implementation test is not empirical closure' as a concrete enforcement rule within the executable protocol"
+contradicts:
+  - concept: "0919's revised roadmap naming (Step 284=Final Empirical Conformance/Operational Validation, Step 285=Canonical Theory Freeze, Step 286=Book Publication)"
+    detail: "This file's own corrected dependency chain (§13) reverts to the ORIGINAL naming (Step 284=Book Architecture Gate, matching 0917/0918), directly at odds with 0919's own revision within the same immediate file sequence, without acknowledgment from either file"
+repeats: []
+bridge_candidates:
+  - "Read 'STEP 283 — GOVERNANCE RATIFICATION' (the explicitly designated next step by both this file and file 0919), expecting formal ratification of the eleven named items (§10) and resolution of the four human decisions."
+  - "Watch for whether the roadmap-naming inconsistency (0917/0918's and this file's 'Book Architecture Gate' vs 0919's 'Final Empirical Conformance/Canonical Theory Freeze/Book Publication') is ever explicitly reconciled."
+  - "Watch for whether the G0-G4 theory-implementation gap taxonomy is ever applied to a concrete discovered discrepancy anywhere later in the corpus."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the decisive T-3/T-4 resolutions (probability and non-identifiability both explicitly closed as non-core-blockers) as final dispositions of two long-tracked gaps in this sub-arc's standing measurement/probability discipline."
+  - "dimension-registry.md: record the event-derived Q_t formalization as the concrete, final specification of the missingness-repair mechanism selected at file 0919, directly reusable for the gated (§29) canonical Kernel synthesis."
+  - "dimension-registry.md: record the five-level theory-implementation gap taxonomy (G0-G4) as a directly reusable, actionable decision procedure for adjudicating any future theory-implementation discrepancy, with G4 as the sole automatic theory-reopening category."
+  - "dimension-registry.md: flag the roadmap-naming inconsistency between this file and file 0919 (reversion vs revision of Step 284's designation) as a further open item alongside the sub-arc's other unreconciled naming instabilities."
+anchor_test:
+  anchor: "0919's unresolved T-3/T-4/I-2 items and underspecified Q_t/Σ claim; 0919's revised six-step roadmap; 0915's evidence-hierarchy discipline; 0918's/0919's missingness-repair investigation"
+  supports_dimension: "Decisively resolves all of 0919's unresolved gap items with precise formal analysis. Reverts, rather than extends, 0919's own roadmap-naming revision, creating a further inconsistency. Directly applies 0915's evidence-hierarchy discipline as a concrete enforcement rule in the closure-matrix protocol. Completes the multi-file missingness-repair investigation with the final event-derived Q_t specification"
+  refines_or_contradicts: "resolves 0919's open gap items; contradicts 0919's roadmap-naming revision by reverting to the original; applies 0915's evidence-hierarchy discipline concretely; completes the missingness-repair investigation"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§1.2's explicit list of what would require a probability space (P(X∈A)=p, Bayesian updating, stochastic transitions) contrasted against the explicit list of what does NOT (Unknown, Missing, Supported, Refuted, Conflicted, Superseded, Provenance, Lineage, Replay) is directly checkable evidence for the T-3=NOT REQUIRED decision."
+  - "§4.1's explicit formal equivalence (p∈Q_t⟺∃e∈H_t:e=Ask(p)) is directly checkable evidence for the event-derived Q_t formalization."
+  - "§13's dependency chain explicitly naming 'Step 284: Book Architecture Gate,' contrasted against file 0919's own §26-27 naming 'Step 284: Final Empirical Conformance/Operational Validation,' is directly checkable evidence of the roadmap-naming inconsistency between these two files."
+undefined_concepts: []
+open_questions:
+  - "Whether 'STEP 283 — GOVERNANCE RATIFICATION,' the explicitly designated next step, is ever encountered with the eleven ratification items formally resolved."
+  - "Whether the roadmap-naming inconsistency between this file and file 0919 is ever explicitly noticed and reconciled."
+  - "Whether the G0-G4 theory-implementation gap taxonomy is ever actually applied to a concrete discovered discrepancy anywhere later in the corpus."
+tier2_triggered: true
+tier2_reason: "Delivers decisive, well-reasoned resolutions of three long-tracked gap items (T-3, T-4, I-2), the final event-derived formalization of the missingness-repair mechanism (Q_t), and a genuinely reusable five-level theory-implementation gap taxonomy (G0-G4) with a precise, actionable decision rule. Also surfaces a further roadmap-naming inconsistency by reverting file 0919's own revision without acknowledgment. Classified importance critical and tier2-triggered; confidence medium reflecting reliance on an unseen prior supervisory review."

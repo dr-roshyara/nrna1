@@ -1,0 +1,63 @@
+sequence: 7
+path: docs/knowledgeos/AI_Workflow_Observation_Log.md
+title: AI Workflow Observation Log
+date: 2026-08-03
+bytes: 2134
+doc_type: observation instrument (append-only log) — designed, ZERO entries
+
+primary_model_initial: meta_research
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+confidence: high
+primary_model_initial_historical: null
+lineage_provisional: not_applicable
+lineage_evidence:
+  - concerns the AI-assisted research workflow itself (human/model handoffs, cost signals)
+  - belongs to neither KnowledgeOS lineage; it observes the process that produces the corpus
+secondary_models: [evidence, governance, validation]
+
+status: HP
+maturity: hypothetical
+importance: low
+
+introduces:
+  - cost_signals_as_evidence_basis_for_orchestration
+  - counts_carry_their_enumerations
+  - consume_vs_own_for_evidence_artifacts
+defines:
+  - observation_record_schema     # instrument schema, not a knowledge definition
+  - seven_cost_signals            # instrument schema, n=0 observations
+hypotheses:
+  - the_named_cost_signals_would_discriminate_for_or_against_an_orchestrator
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 7th consecutive file (absent here rather than misused)
+  - orchestration
+  - friction           # a recorded field with no definition or unit
+  - cost               # seven heterogeneous signals with no stated commensuration
+open_questions:
+  - which orchestration rules would evidence actually support
+  - are the seven signals the right ones
+  - when and where does the log relocate
+
+depends_on: []
+extends: []
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: [1, 3, 6]
+connects_to: [4, 6]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: >
+  No formal object, no knowledge definition (its two definitions are instrument schemas for data
+  that does not exist), no operator, no contradiction, no mathematical/probabilistic/topological
+  content (n=0 observations is not statistics), no Kernel boundary or admissibility claim, no
+  Gita/epistemic interpretation. CHECKABLE: any later finding to the contrary must be logged in
+  revisions.md.

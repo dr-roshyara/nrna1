@@ -1,0 +1,276 @@
+sequence: 562
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-160922_step-019-authority-trust-evidence-weighting-source-reliability-and-knowledge-commitment.md
+title: "CAPSTONE LANDMARK: Authority≠Reliability≠EvidentialSupport≠KnowledgeCommitment Fully Formalized — 'Knowledge Commitment Is Governed Epistemic Synthesis, Not Source Voting'; Explicit Rejection of Naive Weighted-Sum Evidence Scoring (W=w1A+w2R+w3F); Evidence Need Not Be Totally Ordered (Pareto-Style Incomparability); LLM Output Has No Intrinsic Organizational Authority; Fifteen Canonical A1-A15 Invariants; Opens Step 20 (Uncertainty, Probability, Ambiguity, Incompleteness, Conflict, and Confidence)"
+date: "2026-08-27"
+bytes: 30048
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 0561's closing 'Step 19 -- Authority, Trust, Evidence Weighting, Source Reliability, and Knowledge Commitment', itself explicitly framed as the piece needed to close the KnowledgeOS mathematical model"
+source_role: PRIMARY_RESEARCH
+canonical_source: 562
+importance: critical
+confidence: high
+about: >
+  Directly executes 0561's closing "Step 19," opening with the explicit decision to make it "a major
+  formal layer rather than merely adding a source reliability score." Poses the governing problem:
+  KnowledgeOS may hold many pieces of evidence supporting incompatible propositions -- how does it
+  determine what may be accepted, remains uncertain, is rejected, or must be escalated? Explicitly rejects
+  "choose the most trustworthy source" as too simplistic, requiring instead separation of **authority,
+  evidential support, reliability, applicability, independence, and epistemic commitment**.
+
+  **Delivers the file's foundational four-way separation**, building on the corpus's established
+  `Evidence≠Truth` and `Source≠Evidence`: **`Authority≠Reliability`**, **`Reliability≠Evidential
+  Support`**, **`Evidential Support≠Knowledge Commitment`**. Worked through a concrete three-source example
+  (a constitution requiring approval, an engineer saying approval isn't normally needed, an LLM calling it
+  routine) explicitly rejecting naive averaging (`(1+1+1)/3`) -- **"this is not a democracy"** -- yielding
+  the file's governing principle: **`Knowledge commitment is governed epistemic synthesis, not source
+  voting.`**
+
+  **Formalizes Source as a structured object** `S=(SourceID,Type,Origin,Owner,Context,AuthorityProfile,
+  ReliabilityProfile,TemporalScope,Provenance)`, and **`Source⊃Evidence`** conceptually -- a source (e.g. a
+  database) may contain relevant, irrelevant, obsolete, or erroneous information, with the specific record
+  supporting a proposition being the actual evidence. **Formalizes Evidence support as a structured, non-
+  scalar profile**: `Support(e,A)=(Direction,Strength,Specificity,Directness,Completeness)`.
+
+  **Formalizes Authority** ("who or what has the legitimate right to establish a proposition or rule in
+  this context?"), worked through a comparative authority table across seven source types (Constitution,
+  Architecture Board, System of record, Domain expert, Textbook, Internet page, LLM). **Delivers `Authority
+  is scoped`**: an Architecture Board's authority over architecture decisions does not extend to tax law; a
+  database authoritative for a customer ID is not authoritative for architectural principle, formalized as
+  `Authority(S,A,Ctx)`.
+
+  **Formalizes Reliability** as a distinct, empirically-estimable question ("how consistently does this
+  source produce information that turns out to correspond to the relevant domain state?"), `Rel(S,A,Ctx,t)`.
+  Delivers **`Reliability is an estimate, not an intrinsic metaphysical property`**, worked through a
+  concrete 990/1000 empirical-accuracy example with the explicit caution to consider sampling, independence,
+  changing conditions, selection bias, measurement error, and confidence intervals before declaring a
+  reliability figure. **Introduces a Bayesian reliability-estimation formalism**: `p~Beta(α,β)` prior,
+  updated to `p|data~Beta(α+k,β+n-k)` after k successes in n observations -- giving KnowledgeOS "a
+  principled way to represent source reliability uncertainty" as a distribution, not a point estimate.
+  Delivers **`Reliability(S)≠Reliability(S,A)`**: a source can be highly reliable generally (e.g.
+  Infrastructure) yet unreliable for a specific proposition type (e.g. Legal interpretation).
+
+  **Formalizes Applicability** `Applicable(S,A,Ctx,t)` as distinct from Authority∧Reliability: an
+  authoritative, reliable 2024 architecture decision may simply no longer apply after a 2026 superseding
+  decision -- `Authority∧Reliability does not imply Applicability`. Connects Temporal validity directly to
+  0558's Step 16 theory: `Commitment=f(Authority,Support,Reliability,Applicability,Time,...)`.
+
+  **Delivers the file's central statistical safeguard -- Independence**: five websites repeating "Nexus
+  3.69 is current" is NOT five independent confirmations if all copied one original article --
+  `EffectiveEvidence(e_1,e_2,e_3)<3`, formalized via `Independence(e_i,e_j)` and an explicit **evidence
+  dependency graph** (`DerivedFrom(B,A)`, `DerivedFrom(C,A)`) preventing "evidence inflation." Delivers
+  **Corroboration as genuinely distinct from mere source count**: true corroboration requires
+  sufficiently independent error mechanisms across converging sources (worked Database/Monitoring/Engineer
+  example) -- `Corroboration depends on independence, not merely source count`.
+
+  **Delivers `EvidenceConflict(A,¬A)` handling**: contradictory evidence must NOT collapse to `A=0.5`, but
+  instead trigger evaluation across authority, reliability, applicability, time, independence, specificity,
+  and directness. **Formalizes a multi-dimensional evidence comparison profile**
+  `W(e,A,C)=(Authority,Reliability,Directness,Specificity,Freshness,Independence,Completeness)`, explicitly
+  NOT collapsed to a single score, worked through a three-row comparison table (Old Constitution/Current DB
+  state/Engineer statement) with no mathematically universal "better" answer -- **`Evidence comparison is
+  purpose and proposition dependent`**.
+
+  **Delivers the file's key mathematical result -- Evidence need not be totally ordered**: a Pareto-style
+  partial order `e_1⪰e_2` (dominance on every relevant criterion, strictly better on one) permits genuine
+  **incomparability** (`e_1⋡e_2` and `e_2⋡e_1`), formalized as `EvidenceComparison=Incomparable` -- an
+  explicit, principled alternative to "inventing a winner." Delivers `AuthorityHierarchy is domain policy`
+  (a Constitution>Policy>Procedure>Guideline precedence must itself be a governed rule, not a universal
+  KnowledgeOS law) and proposition-specific authority preventing "global trust rankings from becoming
+  absurd," worked through a source-reliability matrix (CMDB/Monitoring/Architecture Board/Constitution/LLM
+  × Infrastructure/Architecture/Business Policy).
+
+  **Delivers the file's central LLM-governance statement**: `LLMOutput` must be modeled as "a generated
+  informational artifact, not as a trusted source of organizational truth" -- `Authority(LLM,
+  GovernanceRule)=0` unless explicitly and unusually assigned; LLM outputs become only `CandidateEvidence`/
+  `CandidateAssertion`/`CandidateInference`, formalized as `LLM→Candidate→EvidenceAssessment→
+  GovernedKnowledge` rather than `LLM→Truth` -- "one of the defining architectural properties of
+  KnowledgeOS."
+
+  **Delivers the file's central formal deliverable -- Knowledge Commitment**: a proposition can exist in
+  KnowledgeOS without being committed knowledge, via a non-linear lifecycle
+  (Candidate→Supported→Corroborated→Accepted→Committed, with branches to Rejected/Undetermined/Superseded).
+  Formalizes **`Committed_ρ(A,K,Ctx,t)`**: "under governance policy ρ, assertion A is admitted into the
+  committed knowledge state for context Ctx at time t" -- explicitly framed as superior to "KnowledgeOS
+  knows A." Delivers **purpose-sensitive commitment** `Commitment(A,P,Ctx,t)`, worked through a
+  "Nexus is a production system" example (sufficient for ArchitectureAssessment, insufficient for
+  LegalContractInterpretation).
+
+  **Formalizes a four-way Knowledge State partition** `K_t=K_C∪K_S∪K_U∪K_X` (committed/supported/
+  uncertain/rejected-or-superseded), and the crucial statement **`Committed(A)⇏A is universally true`**:
+  commitment means only that "given the evidence, semantics, authority, policy, context and temporal state,
+  KnowledgeOS is permitted to treat A as accepted knowledge" -- "epistemically much more defensible."
+  Formalizes the **commitment function** `Commit_ρ(A,K,E)→Status∈{Commit,Reject,Defer,Escalate,
+  RemainUncertain}`, and a structured commitment predicate
+  `Commit(A)=Eligible(A)∧Supported(A)∧Applicable(A)∧Governed(A)∧TemporalValid(A)∧¬UnresolvedCriticalConflict(A)`
+  -- explicitly preferred over a bare `Score(A)>0.7` threshold. Delivers **`Thresholds are policy, not
+  mathematics of truth`**.
+
+  **Delivers a careful Bayesian-reasoning boundary**: `P(A|E)` via Bayes' theorem is legitimate when its
+  assumptions hold, but `P(A|E)=0.95` does NOT automatically imply `Committed(A)` -- worked through a
+  catastrophic-failure-risk firewall-rule example yielding **`EpistemicProbability≠OperationalPermission`**,
+  explicitly flagged as "an extremely important KnowledgeOS principle." Delivers **the file's second major
+  statistical safeguard -- no naive evidence multiplication**: conditional-independence likelihood
+  multiplication (`P(E_1,...,E_n|A)=∏P(E_i|A)`) must not be applied when `E_2=Copy(E_1)`, requiring explicit
+  `Dependency(E_i,E_j)` tracking.
+
+  **Delivers Reliability learning and drift**: the Bayesian reliability update preserves uncertainty as a
+  distribution rather than a bare score, and `Rel(S,A,t)` is explicitly temporal (`Trust is not necessarily
+  stationary`), connected directly to 0558's Step 16 theory; Authority is likewise temporally governed
+  (`GovernanceVersion` changes). Delivers **`Quality(Source)≠Quality(Evidence)`**: a reliable source (e.g.
+  a generally-trustworthy database) can still produce poor evidence for a specific claim via a stale
+  record.
+
+  **Formalizes the Knowledge Assessment conclusion object**: `KA=(Assertion,SupportingEvidence,
+  ContradictingEvidence,AuthorityAssessment,ReliabilityAssessment,Applicability,TemporalAssessment,
+  IndependenceAssessment,ConflictStatus,CommitmentStatus,Rationale)`, worked through a concrete
+  structured-assessment example explicitly contrasted with a bare scalar (`A=0.73`) as "vastly more
+  informative." Positioned as "the bridge between Evidence and Knowledge State." Delivers a full Knowledge
+  Commitment lifecycle (Observed→Extracted→Assessed→Supported→Corroborated/Disputed→Commitment Decision
+  {Committed/Rejected/Deferred/Escalated/Uncertain}), with the explicit note `Disputed⇏Rejected`.
+
+  **Delivers Commitment revocation**: new critical contradicting evidence can move `Committed(A)→
+  UnderReview(A)→[possibly]Retracted(A)`, consistent with the corpus's temporal-versioning model.
+  Formalizes **Commitment as a domain event** `KnowledgeCommitted=(AssertionID,Decision,PolicyVersion,
+  DecisionMaker,EvidenceSet,Timestamp,Context)` -- "so we know WHY the assertion became committed." Delivers
+  **Human vs. Automated commitment**: some propositions (e.g. architecture-decision approval) explicitly
+  require human `CommitmentAuthority` that an LLM cannot supply; others (e.g. system-of-record monitoring
+  values) may be safely committed automatically under `AutomationPermission(A,Ctx)`, itself policy-
+  controlled.
+
+  **Delivers the file's central architectural clarification**: `Evidence→Assessment→Commitment`, with
+  `Authority` controlling WHO/WHAT may commit and `Reliability` controlling HOW MUCH evidential trust is
+  placed -- "fundamentally different dimensions." **Delivers the file's central methodological rejection**:
+  explicitly rejects the naive linear weighted-sum model `W=w_1A+w_2R+w_3F` as merely a controlled-situation
+  approximation, never the fundamental KnowledgeOS model; the fundamental model must remain a structured,
+  policy-interpreted `EvidenceProfile=(A,R,S,D,F,I,C,...)`.
+
+  **Delivers the file's general commitment function** `Commit_ρ(A,E,S,Ctx,t,P)→𝒮` where
+  `𝒮={Committed,Supported,Disputed,Uncertain,Rejected,Deferred,Escalated}` -- a seven-value result space,
+  richer than the corpus's earlier Sārathi six-value decision space (0557), reflecting the epistemic (not
+  action) nature of commitment. Refines the Knowledge State into a five-part partition
+  `K_t=(K_t^committed,K_t^supported,K_t^uncertain,K_t^disputed,K_t^historical)`, and delivers a rejection of
+  binary Known/Unknown thinking in favor of eight named epistemic states (Candidate/Supported/Corroborated/
+  Disputed/Uncertain/Committed/Rejected/Superseded).
+
+  **Delivers a consolidated six-stage evidence-to-knowledge pipeline** (Source→Evidence→EvidenceAssessment
+  →AssertionAssessment→CommitmentDecision→KnowledgeState) governed by
+  Authority+Reliability+Applicability+TemporalValidity+Independence+Conflict. **Delivers a significant
+  extension of Zero**: it can now detect `InsufficientEvidence`, `AuthorityConflict`,
+  `ReliabilityConcern`, `SourceDependence`, `TemporalExpiry`, `UnresolvedConflict`, and
+  `UncommittedCriticalKnowledge` -- reframing discrepancy from "something is missing" to the deeper
+  "we have information, but it is not sufficiently authorized or reliable to commit." Extends Lord
+  (propose independent-source acquisition, system-of-record retrieval, domain-authority consultation,
+  superseding-policy retrieval, measurement, stale-evidence revalidation) and Sārathi (evidence sufficiency
+  for action, `RequiredEvidenceLevel depends on action risk`, directly connecting Steps 15 and 19).
+
+  **Delivers Risk-adjusted epistemic requirement**: `RequiredConfidence=f(Risk,Impact,Reversibility,
+  Purpose)` -- "epistemic requirements increase with consequence," a major KnowledgeOS principle. Delivers
+  a four-class taxonomy of question types requiring genuinely different epistemic bases (Informational:
+  Supported+Committed; Decision support: CommittedCriticalKnowledge+RiskAssessment; Governance:
+  Authority+ApplicablePolicy+DecisionGovernance; Execution: Authorization+ExecutionCapability) --
+  "distinct capabilities."
+
+  **Delivers the file's central formal deliverable -- fifteen canonical invariants (A1-A15)**:
+  Source≠Evidence; Authority≠Reliability; Reliability≠EvidentialSupport; EvidentialSupport≠
+  KnowledgeCommitment; Authority is contextual; Reliability is proposition/context/temporal dependent;
+  Evidence count does not equal independent corroboration; correlated evidence must not be treated as
+  independent; contradictory evidence is preserved, not silently discarded; committed knowledge is
+  policy-governed, not metaphysical truth; LLM output has no intrinsic organizational authority; knowledge
+  commitment is contextual/temporal/purpose-dependent; operational permission cannot be inferred solely
+  from epistemic probability; critical actions may require stronger evidence than informational
+  conclusions; knowledge commitment is reversible and historically traceable.
+
+  **Delivers Step 19's compact mathematical core** (Evidence structure `E`; Source assessment `SA`;
+  Evidence assessment `EA`; Assertion assessment `AA`; the commitment function). **Delivers the file's
+  headline synthesis result**, explicitly contrasted against three rejected naive alternatives (LLM
+  confidence alone; source count alone; a single trust score): **Knowledge Commitment = Evidence Assessment
+  + Authority + Reliability + Applicability + Temporal Validity + Independence + Conflict Handling +
+  Governance Policy**, with dimensions preserved rather than collapsed.
+
+  **Delivers Step 19's verdict**: THEORETICALLY RESOLVED AT THE FRAMEWORK LEVEL, with the explicit,
+  defended implementation caveat that universal numerical formulas for authority, reliability, or evidence
+  aggregation have deliberately NOT been fixed -- "not a weakness. It is correct architecture," since these
+  quantities are domain- and policy-dependent -- another instance of the corpus's recurring "no universal
+  formula" pattern, applied to epistemic weighting itself.
+
+  **Delivers a consolidated fourteen-stage sources-to-knowledge-to-action loop**, cross-cut throughout by
+  `Identity+Semantics+Time+Evidence+Provenance+Authority+Reliability+Governance` -- explicitly noted as
+  "beginning to look less like a conventional 'AI knowledge base' and more like a formal epistemic
+  operating architecture." **Identifies one remaining issue before the core theory can be declared
+  closed**: uncertainty itself has not been formally differentiated across its many distinct kinds (Unknown
+  ≠Ambiguous≠Probabilistic≠Conflicting≠Incomplete≠Imprecise), and an LLM's stated "80% confidence" cannot
+  simply be equated with a calibrated mathematical probability. **Closes opening "Step 20 — Uncertainty,
+  Probability, Ambiguity, Incompleteness, Conflict, and Confidence,"** explicitly framed as important for
+  the corpus's original computability requirement -- determining which uncertainty representations are
+  computable, which require statistical calibration, and where the system must explicitly return
+  Unknown/Undetermined rather than manufacture precision.
+introduces:
+  - concept: "The foundational four-way epistemic separation Authority≠Reliability≠EvidentialSupport≠KnowledgeCommitment, extending the corpus's earlier Evidence≠Truth and Source≠Evidence distinctions"
+  - concept: "'Knowledge commitment is governed epistemic synthesis, not source voting' — the explicit rejection of naive multi-source averaging as a decision procedure"
+  - concept: "A Bayesian source-reliability estimation formalism (Beta-distribution updating) preserving reliability as an uncertain distribution rather than a bare point score"
+  - concept: "The evidence-independence safeguard against 'evidence inflation' — repeated evidence traceable to one common origin must not be counted as multiple independent confirmations"
+  - concept: "Evidence comparison formalized as a Pareto-style partial order permitting genuine incomparability, rejecting the demand to always produce a single 'best' evidence winner"
+  - concept: "The explicit LLM-governance statement: LLM output has no intrinsic organizational authority and enters only as CandidateEvidence/CandidateAssertion/CandidateInference, never as truth"
+  - concept: "Knowledge Commitment as a first-class, policy-governed, purpose-and-context-sensitive predicate — Committed_ρ(A,K,Ctx,t) — explicitly distinguished from metaphysical truth"
+  - concept: "EpistemicProbability≠OperationalPermission — a high calibrated probability does not automatically authorize an action, especially under catastrophic-failure risk"
+  - concept: "The explicit rejection of naive linear weighted-sum evidence scoring (W=w1A+w2R+w3F) as the fundamental KnowledgeOS model, in favor of a structured, policy-interpreted EvidenceProfile"
+  - concept: "Risk-adjusted epistemic requirement: RequiredConfidence=f(Risk,Impact,Reversibility,Purpose) — epistemic requirements increase with the consequences of the action they support"
+  - concept: "A four-class taxonomy of question types (Informational, Decision support, Governance, Execution) each requiring a genuinely different epistemic basis, not one uniform knowledge query"
+  - concept: "Fifteen canonical Step-19 invariants (A1-A15) governing authority, reliability, and knowledge commitment"
+  - concept: "'Step 20 — Uncertainty, Probability, Ambiguity, Incompleteness, Conflict, and Confidence' as the corpus's next named research phase, framed as the last piece before the core theory can be declared closed"
+defines:
+  - concept: "Source"
+    definition: "S=(SourceID,Type,Origin,Owner,Context,AuthorityProfile,ReliabilityProfile,TemporalScope,Provenance) — a producer/container of information, conceptually a superset of the evidence it may contain"
+  - concept: "Evidence support profile"
+    definition: "Support(e,A)=(Direction,Strength,Specificity,Directness,Completeness) — a structured, non-scalar profile of how evidence e bears on proposition A"
+  - concept: "Knowledge commitment predicate"
+    definition: "Committed_ρ(A,K,Ctx,t) — under governance policy ρ, assertion A is admitted into the committed knowledge state for context Ctx at time t; not a claim of universal truth"
+  - concept: "Commitment function"
+    definition: "Commit_ρ(A,E,S,Ctx,t,P)→𝒮 where 𝒮={Committed,Supported,Disputed,Uncertain,Rejected,Deferred,Escalated} — the seven-value governed outcome of synthesizing evidence, authority, reliability, applicability, time, independence, and conflict"
+  - concept: "Knowledge Assessment"
+    definition: "KA=(Assertion,SupportingEvidence,ContradictingEvidence,AuthorityAssessment,ReliabilityAssessment,Applicability,TemporalAssessment,IndependenceAssessment,ConflictStatus,CommitmentStatus,Rationale) — the bridge object between Evidence and Knowledge State"
+  - concept: "Five-part refined Knowledge State"
+    definition: "K_t=(K_t^committed,K_t^supported,K_t^uncertain,K_t^disputed,K_t^historical) — replacing a single undifferentiated fact set"
+refines:
+  - concept: "The corpus's established Evidence≠Truth and Source≠Evidence distinctions (present since early evidence-theory files, e.g. 0533-0545)"
+    refinement: "Extended into a full four-way separation adding Authority≠Reliability≠EvidentialSupport≠KnowledgeCommitment, with each concept given its own formal structure and computation"
+  - concept: "0545's Evidence Constitution (E-K1..E-K10) and 0537's provisional theorem that no universal scalar evidence algebra exists"
+    refinement: "Directly consistent with and extended by this file's explicit rejection of a naive weighted-sum evidence score (W=w1A+w2R+w3F) as the fundamental model, reaffirming evidence must remain a structured, non-collapsed profile"
+  - concept: "0557's Sārathi decision function and its six-value decision space {Execute,Investigate,Defer,Reject,Escalate,RequestApproval}"
+    refinement: "Directly connected via 'RequiredEvidenceLevel depends on action risk' — the epistemic commitment function's own seven-value result space parallels but is distinct from (epistemic, not action-oriented) Sārathi's decision space"
+  - concept: "0558's temporal validity theory (T_v, Staleness≠Age, 'no retroactive epistemic contamination')"
+    refinement: "Extended into source/authority temporal governance: Rel(S,A,t) and Authority itself both carry T_v, and 'trust is not necessarily stationary'"
+  - concept: "The recurring 'no universal formula, typed pluggable methods' architectural pattern (0545/0546, 0554, 0556, explicitly 0561)"
+    refinement: "Confirmed again for authority/reliability/evidence-aggregation weighting itself: deliberately not fixing universal numerical formulas is explicitly defended as 'correct architecture,' not a weakness"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 20 — Uncertainty, Probability, Ambiguity, Incompleteness, Conflict, and Confidence' is executed as its own dedicated corpus file, and whether it is indeed the step that the corpus's own authors regard as closing the core theoretical model, as 0561's and this file's closing framing both predict"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the four-way Authority≠Reliability≠EvidentialSupport≠KnowledgeCommitment separation, 'knowledge commitment is governed epistemic synthesis, not source voting,' the formal Source/Evidence-support structures, and the Bayesian reliability-estimation formalism."
+  - "dimension-registry.md: record the evidence-independence safeguard against evidence inflation, Pareto-style evidence incomparability, the explicit LLM-governance statement (no intrinsic organizational authority), and the formal Knowledge Commitment predicate/lifecycle/commitment function."
+  - "dimension-registry.md: record EpistemicProbability≠OperationalPermission, the explicit rejection of naive weighted-sum evidence scoring, risk-adjusted epistemic requirements, the fifteen A1-A15 invariants, Step 19's verdict, and 'Step 20 — Uncertainty, Probability, Ambiguity, Incompleteness, Conflict, and Confidence' as the next (potentially theory-closing) research phase."
+anchor_test:
+  anchor: "0561's Step-19 directive (explicitly framed as needed to close the mathematical model); 0545's Evidence Constitution and 0537's no-universal-scalar-algebra theorem; 0557's Sārathi decision function; 0558's temporal validity theory; the recurring 'no universal formula' pattern"
+  supports_dimension: "CAPSTONE LANDMARK delivering the corpus's fullest, most rigorous formalization of how heterogeneous, contradictory, differently-authoritative sources are synthesized into governed committed knowledge — explicitly rejecting every naive shortcut (source averaging, LLM confidence, single trust scores, linear weighted sums) in favor of a structured, policy-interpreted multi-dimensional evidence and authority model. Delivers the crucial statistical safeguards against evidence inflation and naive independence assumptions, a Pareto-style evidence-incomparability result avoiding forced 'best evidence' rankings, an unambiguous statement that LLM output carries no intrinsic organizational authority, and the central EpistemicProbability≠OperationalPermission principle bridging epistemic confidence and operational risk tolerance. Directly reconnects and unifies the corpus's much earlier Evidence-theory arc (0533-0545) with the later Decision (0557), Temporal (0558), Semantic (0560), and Reasoning (0561) theory into one coherent knowledge-commitment layer, closing with fifteen canonical governing invariants"
+  refines_or_contradicts: "directly and fully executes 0561's Step-19 directive; extends 0545's Evidence Constitution and reaffirms 0537's no-universal-scalar-algebra theorem via its explicit rejection of naive weighted-sum evidence scoring; connects directly to 0557's Sārathi decision function and 0558's temporal validity theory; reconfirms the recurring 'no universal formula' pattern for authority/reliability weighting; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked three-source example (constitution requiring approval, engineer saying it isn't normally needed, LLM calling it routine) explicitly rejecting naive averaging '(1+1+1)/3' is a directly checkable, concrete demonstration that simple source-voting produces an absurd result in an ordinary governance scenario."
+  - "The five-websites-copying-one-original-article example demonstrating EffectiveEvidence(e1,e2,e3)<3 is a directly checkable, realistic illustration of the evidence-independence safeguard, grounding an otherwise abstract statistical caution in a concrete, verifiable scenario."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 20 — Uncertainty, Probability, Ambiguity, Incompleteness, Conflict, and Confidence' is executed as its own dedicated corpus file, and whether it is indeed the step that closes the core theoretical model as both 0561 and this file predict"
+  - "Whether the fifteen A1-A15 invariants are ever cross-referenced against the corpus's many other independently-numbered invariant schemes from this same research program in a future canonical reference"
+tier2_triggered: true
+tier2_reason: "CAPSTONE LANDMARK delivering the corpus's fullest, most rigorous treatment of how KnowledgeOS synthesizes heterogeneous, contradictory, and differently-authoritative sources into governed committed knowledge, explicitly rejecting every naive shortcut (source-count voting, LLM confidence as truth, single trust scores, linear weighted-sum evidence formulas) in favor of a structured, policy-interpreted multi-dimensional model. Delivers rigorous statistical safeguards against evidence inflation and naive conditional-independence assumptions, a Bayesian reliability-estimation formalism preserving uncertainty as a distribution, a Pareto-style evidence-comparison result permitting genuine incomparability, and an unambiguous architectural statement that LLM output carries no intrinsic organizational authority. Delivers the central EpistemicProbability≠OperationalPermission principle and risk-adjusted epistemic requirements connecting evidentiary sufficiency directly to action consequence, unifying the corpus's much earlier Evidence-theory arc with its later Decision, Temporal, Semantic, and Reasoning theory into one coherent Knowledge Commitment layer. Closes with fifteen canonical A1-A15 invariants and a significant closing signal, echoing 0561's own prediction, that the next step (Uncertainty/Probability/Ambiguity/Confidence) is the final piece needed before the corpus's authors would consider the core KnowledgeOS theoretical model closed."

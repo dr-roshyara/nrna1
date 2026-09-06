@@ -1,0 +1,122 @@
+sequence: "0114"
+path: docs/knowledgeos/brainstorming/20260822-110850-moksha-lens-state-transformation-of-knower.md
+title: "Moksha lens: state transformation of the knower -- deepest direct Mokṣa engagement yet"
+date: "2026-08-22"
+bytes: 10273
+model:
+  primary: g
+  secondary: [x]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+importance: critical
+confidence: high
+about: >
+  The deepest, most direct engagement with Mokṣa/liberation doctrine in the corpus, explicitly
+  cross-tradition (Advaita Vedanta, Yoga, ⭐ Buddhism/Nirvāṇa -- first engagement with a heterodox/
+  nastika school, Kashmir Śaivism, Nyāya), 8 lenses, closing with an explicit five-item REJECTION list
+  ("KnowledgeOS is NOT trying to achieve human enlightenment / a consciousness engine / a truth oracle
+  / removing uncertainty / replacing humans") and a precise, disciplined classification: Liberation and
+  Avidya-removal map to "Meta-goal"/"Reasoning mechanism", explicitly NOT a new kernel dimension, and
+  explicitly ALIGNED WITH (not identical to) the "Foundational Meta-Principle" status Zero received at
+  0110.
+
+introduces:
+  - "⭐ Cross-tradition Moksha/Nirvana comparison table: Advaita Vedanta (non-duality/ignorance-
+    removal), Yoga (liberation from mental fluctuations), BUDDHISM (liberation from attachment and
+    suffering -- FIRST direct engagement with a heterodox/nastika Indian school, distinct from the
+    orthodox/astika schools covered so far), Kashmir Shaivism (recognition of true consciousness),
+    Nyaya (liberation through correct knowledge)"
+  - "Avidyā (ignorance) reframed precisely: 'the problem is not lack of information, the problem is
+    WRONG IDENTIFICATION' (a temporary state mistaken as permanent truth) -> 'Epistemic Avidyā
+    Detection', explicitly classified 'Reasoning mechanism, not kernel object'"
+  - "'Liberation State as No More Internal Contradiction' precisely NOT collapsed: 'Moksha does NOT
+    mean no contradictions exist. It means the relationship to contradictions changes' -- contradictions
+    become 'objects of reasoning', not 'system failures', reinforcing existing Contradiction handling"
+  - "⭐ Explicit five-item rejection list, the clearest mystical/consciousness-overreach refusal in the
+    corpus: KnowledgeOS is NOT (1) achieving human enlightenment, (2) a consciousness engine, (3) a
+    truth oracle, (4) removing uncertainty ('a mature system can say Unknown'), (5) replacing humans --
+    each explicitly labeled 'Reject'"
+  - "⭐ Direct, explicit link to 0110's 'Foundational Meta-Principle' status for Zero: 'This actually
+    strengthens the Zero principle: Zero = the state where distortion is minimized... but it does NOT
+    become another kernel dimension. It remains: Foundational epistemic attitude / meta-principle.'
+    Liberation is classified 'Meta-goal' in the same Classification Summary table -- the source
+    document itself treats Mokṣa and Zero as aligned under the same non-kernel status CATEGORY, though
+    not stated as formally identical"
+  - "Classification Summary (7 rows): Liberation->Meta-goal, Avidyā removal->Reasoning mechanism,
+    Witness consciousness->Zero neutrality (Meta-principle support), Karma->Knowledge history (Existing
+    dimension), Oneness->Pattern discovery (Mechanism), Ego reduction->Authority separation (Existing
+    principle), Inner harmony->Contradiction management (Existing principle) -- every row maps to an
+    already-tracked area or a non-kernel status, zero new kernel dimensions"
+  - "Final architectural insight: 'KnowledgeOS is not a machine that knows. KnowledgeOS is a system
+    that protects the possibility of knowing.'"
+
+defines: []
+
+refines:
+  - "Purification/Mokṣa correspondence row (MD-015 ledger table): first SUBSTANTIVE, disciplined,
+    cross-tradition engagement -- explicitly classified non-kernel (Meta-goal), explicitly aligned with
+    Zero's Foundational-Meta-Principle status (0110), explicitly rejecting five specific overreach
+    mappings. This SIGNIFICANTLY sharpens the correspondence row's evidence base beyond 0092's bare
+    mention and 0094's negative 'Research Only' ruling -- but does NOT promote Mokṣa to any kernel or
+    architectural status; if anything it reinforces the discipline against doing so, now with reasons"
+  - "T_purify operator hypothesis (MD-018): Avidyā-removal ('Epistemic Avidyā Detection') is the
+    corpus's most precise articulation yet of what a 'purification' operator might concretely do
+    (wrong-model detection, not information addition) -- still not formalized, still classified
+    mechanism not kernel operator"
+
+contradicts: []
+
+repeats:
+  - concept: "Knower != Known (Tripuṭī), Zero as neutral reference"
+    canonical_source: "0086"
+    novelty: none
+
+bridge_candidates:
+  - "Liberation/Moksha (Meta-goal) <-> Zero (Foundational Meta-Principle, 0110): the source explicitly
+    treats these as aligned status categories, not merely resemblant -- recorded as a strengthened
+    bridge_candidate, still NOT promoted to a confirmed bridge per MD-012 (same overall research
+    effort, not independent corroboration)"
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "Purification/Mokṣa ledger row: major update -- first substantive cross-tradition engagement,
+    explicit non-kernel classification with reasons, explicit alignment with Zero's meta-principle
+    status"
+  - "No new kernel-level registry entries -- consistent with the ongoing consolidation-phase pattern
+    (0108/0110/0112/0113/0114, five files now)"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Unknown Preservation", "Authority Separation"]
+  refines_or_contradicts: "No reshaping. Fifth consecutive-ish disciplined file in this stretch."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "First engagement with Buddhism/Nirvāṇa as a distinct (heterodox) tradition, broadening the
+    comparative base beyond orthodox Indian schools"
+  - "The clearest, most explicit five-item rejection of mystical/consciousness overreach in the corpus"
+  - "Explicit source-stated alignment between Mokṣa (Meta-goal) and Zero (Foundational Meta-Principle),
+    directly relevant to and sharpening the tracked Purification/Mokṣa correspondence row"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether guṇas (Sattva/Rajas/Tamas) are ever engaged directly -- still entirely absent even in this
+    deepest-yet Moksha engagement"
+  - "Whether the Moksha<->Zero meta-principle alignment is picked up or tested by any later file"
+
+tier2_triggered: true
+tier2_reason: >
+  The deepest, most disciplined direct engagement with Mokṣa doctrine in the corpus, explicitly
+  cross-tradition including Buddhism for the first time, closing with the clearest mystical-overreach
+  rejection list yet and an explicit source-stated alignment between Mokṣa and Zero's Foundational-
+  Meta-Principle status -- directly and substantially relevant to the MD-015 Purification/Mokṣa
+  correspondence row and the MD-018 T_purify operator hypothesis, without promoting either.

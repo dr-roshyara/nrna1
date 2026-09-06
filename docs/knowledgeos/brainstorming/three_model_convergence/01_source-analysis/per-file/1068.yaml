@@ -1,0 +1,70 @@
+sequence: 1068
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-290/04-observational-family-audit.md
+title: "04 -- Observational Family Audit (Step 290 mandate SS5): Definitively Confirms approx_X (the Step-287/289 30-Candidate Sigma-Level Family) Is NOT the Corpus's Actual approx Relation -- Different Index, Different Carrier, No Projection K-to-Sigma Exists -- and Retracts the 'usable choices' Framing of the 30-Count as a Menu"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the fourth numbered Step-290 artifact, carrying forward (not re-running) the Step-289 2240-state audit and delivering a decisive scope clarification"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1068
+importance: major
+confidence: high
+about: >
+  "04 — Observational Family Audit (mandate §5)." Explicitly does NOT re-run the 2240-state audit, carrying
+  results forward from Step 289. Answers five audit questions with a definitive, disciplined scope
+  clarification of the already-tracked `≈_X` construct (files 1057-1058) relative to the corpus's actual `≈`
+  and `≡_K` relations (the subject of files 1063-1067).
+
+  **CONFIRMS `≈_X` DOES NOT INSTANTIATE THE CORPUS'S `≈`**: "corpus `≈` is `∀O∈𝒪_K` (`261.5`); `≈_X` is
+  `π_X(Σ_1)=π_X(Σ_2)`. DIFFERENT INDEX, DIFFERENT CARRIER." Confirms `≈_X` is merely ONE formalization of
+  "observational" (not the corpus's own relation), that no primary artifact specifies which `X`, and --
+  crucially -- that **`≈_X` IS NOT EVEN THE SAME KIND OF RELATION AS `≡_K`**: "`≈_X` is `Σ`-level; `≡_K` is
+  `K`-level, and NO `π:K→Σ` EXISTS (`289 §5`) -- `Σ` is a COMPONENT of `K`." This is a decisive structural
+  clarification that the entire `≈_X`/30-candidate-family track (files 1057-1058) and the entire `≡_K`/`≈`
+  N-1 track (files 1063-1067, this window's dominant content) operate at DIFFERENT LEVELS of the corpus's own
+  ontology and were never in direct competition to begin with.
+
+  **RETRACTS THE "32/30 USABLE CHOICES" MENU FRAMING**: "30 non-degenerate candidates... this REPLACES all
+  earlier 'usable choices' language -- locked per the reviewer's item 4." Delivers the precise closing
+  distinction: "`≈_X` was built in Step 287 to BOUND a candidate space, and it did... What it is NOT is
+  evidence about the corpus's `≈`... the number 30 is seductive: it looks like an answer to 'which `≈`?' when
+  it is an answer to 'how many ways could one read `≈` AT `Σ`-LEVEL?'" Boxed: "30 IS A MEASURE OF
+  UNDER-SPECIFICATION, NOT A MENU."
+
+  Confirms the STATUS block's precise final scoping: ESTABLISHED `≈_X` is not the corpus's `≈`; no artifact
+  specifies `X`; the 30 measures under-specification · BOUNDED at 30 non-degenerate · EMPIRICALLY VERIFIED
+  (from 289, not re-run) · NORMATIVE `N-5`, and ONLY IF the `Σ`-reading is ever adopted.
+introduces:
+  - concept: "The decisive structural clarification that approx_X (Sigma-level, 30-candidate family) and equiv_K/approx (K-level, the N-1 conflict subject) operate at different levels of the corpus's ontology, with no projection from K to Sigma existing to connect them"
+  - concept: "The retraction of the '30/32 usable choices' menu framing in favor of 'a measure of under-specification, not a menu' -- the 30-count answers a different question ('how many Sigma-level readings exist') than the one it appeared to answer ('which approx is the corpus's approx')"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked approx_X 30-candidate-family finding (files 1057-1058)"
+    refinement: "SCOPE-CLARIFIED: approx_X is confirmed to not instantiate the corpus's actual approx relation at all (different index, different carrier, no K-to-Sigma projection exists), and the '30 usable choices' language is explicitly retracted in favor of 'a measure of under-specification, not a menu'"
+contradicts: []
+repeats:
+  - "Carries forward the Step-289 2240-state audit and degeneracy results (files 1057-1058) without re-running them, as explicitly stated in the mandate."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the decisive scope clarification that approx_X operates at Sigma-level (a component of K) while equiv_K/approx operate at K-level, with no projection connecting them, and the retraction of the '30 usable choices' menu framing."
+anchor_test:
+  anchor: "This reconstruction's already-tracked approx_X 30-candidate-family finding (files 1057-1058) and the separately-tracked equiv_K/approx N-1 conflict (files 1063-1067)"
+  supports_dimension: "Clarifies these two tracks operate at different ontological levels (Sigma vs K) with no connecting projection, and retracts the menu framing of the 30-count"
+  refines_or_contradicts: "refines (scope-clarifies) both prior tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The absence of a K-to-Sigma projection is attributed to '289 §5', directly checkable against file 1052's already-read Step-289 dependency-graph analysis."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers a decisive structural clarification separating the approx_X Sigma-level 30-candidate family from the K-level equiv/approx N-1 conflict, confirming no projection connects them, and formally retracts the '30 usable choices' menu framing established in files 1057-1058. Classified importance major (a scope clarification, not a new resolution of critical scale) and confidence high given the disciplined, well-evidenced nature of the audit."

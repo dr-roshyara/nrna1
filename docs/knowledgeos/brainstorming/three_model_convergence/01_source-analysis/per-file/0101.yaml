@@ -1,0 +1,53 @@
+sequence: "0101"
+path: docs/knowledgeos/brainstorming/20260822-0252-knowledgeos-keith-indian-logic-atomism-ontology-epistemology.md
+title: "KnowledgeOS extraction from Keith's 'Indian Logic and Atomism' (Nyāya + Vaiśeṣika, 9 lenses)"
+date: "2026-08-22"
+bytes: 9892
+model:
+  primary: g
+  secondary: [x, c1]
+source_role: INDEPENDENT_RESEARCH
+canonical_source: "0092"
+importance: medium
+confidence: high
+about: >
+  Reviews Arthur Berriedale Keith's real 1921 "Indian Logic and Atomism" across 9 lenses
+  (KOS-*-prefixed candidates, a further ID-scheme variant). Mostly systematic recombination of
+  already-tracked concepts. One new axis: Vaiśeṣika atomism -> knowledge GRANULARITY (decomposability
+  into independently-addressable semantic units), distinct from ontology-category-typing (0100) and
+  the Identity 6-tuple's field structure (0099). Twelfth anchor reshaping (7-layer pipeline).
+introduces:
+  - "KOS-ATOM-001: 'Knowledge should be decomposable into independently addressable semantic units' --
+    a granularity concern, new axis distinct from typing (0100) and identity-field-structure (0099)"
+  - "Twelfth anchor reshaping: 7-layer stack (Epistemic Constitution / Ontology Engine / Evidence Layer
+    / Reasoning Engine / Error Detection / Knowledge Graph / Temporal Revision / AI Agents)"
+  - "Extracted-principles summary table (7 rows) cleanly mapping each principle to its Vaiśeṣika/Nyāya source"
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - {concept: "ontology typing, pramāṇa evidence, reasoning explainability, error/contradiction preservation, temporal validity, agent accountability", canonical_source: "0092", novelty: low}
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "NEW light entry warranted: Knowledge Granularity/Atomicity (KOS-ATOM-001)"
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity", "Temporal Validity"]
+  refines_or_contradicts: "Twelfth reshaping, another 7-layer pipeline variant."
+  alternative_minimal_kernel: "Yes -- twelfth distinct shape."
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "A further ID-scheme variant (KOS-* without the H- prefix), distinct from H-KOS-*/ADR-KOS-*"
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  One genuinely new axis (knowledge granularity/atomicity), otherwise systematic recombination;
+  recorded at proportionate (medium) depth per MD-013/MD-019 efficiency discipline.

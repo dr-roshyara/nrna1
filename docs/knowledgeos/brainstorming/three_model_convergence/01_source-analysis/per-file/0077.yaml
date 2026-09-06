@@ -1,0 +1,56 @@
+sequence: 77
+path: docs/knowledgeos/brainstorming/20260801-1231-eks-current-architecture-baseline.md
+title: EKS Current Architecture Baseline (earliest, most comprehensive version)
+date: 2026-08-01
+bytes: 55197
+
+model:
+  primary: c1
+  secondary: [ddd, evidence, provenance, domain_model]
+
+source_role: FOUNDATIONAL
+canonical_source: null   # earliest EKS baseline found so far; predates 0076's later reconstruction
+
+importance: high
+confidence: high
+
+about: >
+  The earliest (2026-08-01) and most comprehensive EKS architecture reconstruction in the corpus
+  (39 sections). Confirms direct system identity with root-level material already read at 0021/0025/
+  0028 (the Observation/Recommendation/Deferred-Architecture tooling). States a genuine epistemic
+  principle: measurement becomes knowledge only through accumulated contextual/historical meaning.
+
+introduces:
+  - measurement_is_not_knowledge_principle   # via pipeline: measurement -> recommendation -> decision -> outcome -> assessment -> pattern
+  - eks_confirmed_same_system_as_root_level_material
+
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: eks_deferred_architecture_register
+    canonical_source: 25   # adjacent/out-of-scope-root set; same system, confirms identity
+    novelty: "same system, EARLIER (2026-08-01 vs the root-level file's 2026-08-04) and more comprehensive"
+
+bridge_candidates: []   # watch item recorded in notes, not flagged - too early, still C1-internal
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence:
+  - "'Measurement is not knowledge. LCOM4 = 29 is measurement. It becomes knowledge only after engineering history provides contextual meaning' - the sharpest C1 answer yet to what transforms data into knowledge"
+  - "§26 Deferred Architecture Register and §12-21 Observation architecture describe the SAME system as adjacent-set files 0021/0025/0028"
+
+undefined_concepts: [knowledge]
+open_questions: []
+
+tier2_triggered: true
+tier2_reason: >
+  Confirms direct system identity between the EKS lineage (Track 2, 0049/0075/0076) and the root-
+  level material already read in the adjacent set (0021/0025/0028 describe the identical
+  Observation/Recommendation/Deferred-Architecture tooling) - the strongest confirmation yet that
+  these are one described system, not merely a shared conversation lineage. States the corpus's
+  most precise engineering-epistemology principle to date (measurement becomes knowledge only
+  through accumulated contextual/historical meaning), recorded as a watch item for any future C2
+  knowledge-definition comparison, not asserted as a bridge.

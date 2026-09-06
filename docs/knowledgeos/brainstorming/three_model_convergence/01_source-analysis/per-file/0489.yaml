@@ -1,0 +1,138 @@
+sequence: 489
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-185440_question-22-how-do-we-prioritize-which-deficiencies-to-address-first.md
+title: "LANDMARK: Prioritization Retargeted From Deficiencies to Resolution Opportunities/Actions — Weighted Sum Demoted to One Policy Implementation, Dependency Made a Graph Constraint, Finding≠Action, Sārathi Chooses Actions Not Deficiencies"
+date: "2026-08-26"
+bytes: 25195
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the Arjuna example's asserted priority rankings are reframed as an illustrative policy outcome, not a logical consequence of the model, and reworked around candidate actions rather than automatic finding-priority"
+source_role: PRIMARY_RESEARCH
+canonical_source: 489
+importance: critical
+confidence: high
+about: >
+  Answers Question 22 (posed at 0486's close via 0485/0489's numbering): how do we prioritize which
+  deficiencies to address first?
+
+  **Part A (initial answer)** proposes prioritization as ordering "deficiencies," a scalar priority function
+  π(d,S_t,P_t,C_t)∈[0,1], seven priority factors (Severity, Urgency, Impact, Feasibility, Dependencies, Cost,
+  Risk) combined via a weighted sum π(d)=w_S·S_e+w_U·U_r+w_I·I_m+w_F·F_e+w_D·D_e+w_C·C_o+w_R·R_i, five named
+  strategies (Criticality-First, Impact-First, Feasibility-First, Balanced, Policy-Driven), a simple
+  Sort(Δ_t,π,descending) ordering, Zero/Lord/Sārathi restated in terms of priority, and an Arjuna example
+  with asserted priority rankings.
+
+  **Part B (critical review) delivers roughly a dozen corrections, explicitly building on 0488's
+  Discrepancy≠Deficiency correction**: the very first correction rejects "deficiencies" as the object being
+  prioritized -- since a discrepancy may contain a gap, conflict, coherence violation, epistemic uncertainty,
+  missing dimension, missing evidence, acceptable deviation, or something requiring no action at all --
+  reframing the priority target as
+  **{Gap,Conflict,Finding,Question,Investigation,Action,...}**, much more general than "deficiency."
+  **Corrects priority from an intrinsic property of d to a relation over context**: Priority(d|S_t,P_t,C_t,
+  R_t), since the same finding's priority varies with purpose, resources, time, dependencies, decision
+  stage, and consequences. **Fully separates Severity, Urgency, and Priority** (worked example: a critical
+  security gap with low urgency should have MEDIUM priority; a minor deadline issue with high urgency should
+  have HIGH priority) -- Severity≠Urgency≠Priority, priority is "a decision relation, not another intrinsic
+  property." **Demotes the weighted-sum formula from THE mathematical definition of priority to ONE possible
+  policy implementation**: π=F_policy(factors) is the fundamental formulation; π_weighted=Σw_i·x_i is merely
+  one implementation, since weighted addition assumes numeric representability, commensurable scales,
+  meaningful weights, allowed trade-offs, and acceptable compensability -- none of which generally hold
+  (worked example: a critical governance violation may have to dominate all other factors regardless of
+  feasibility). **Corrects sign/direction errors in the original factor combination**: high Cost should
+  generally REDUCE priority, not increase it as the original's uniformly-positive weighted sum implied; also
+  splits the ambiguous "Dependencies" factor into **DependencyBlock** (cannot proceed until a prerequisite is
+  resolved) vs. **DependencyLeverage** (resolving this unlocks many others) as two distinct concepts that
+  should not be collapsed into one scalar. **Splits "Impact" into three distinct concepts**: Consequence(d)
+  (what happens if not addressed), Benefit(d) (what is gained by resolving), and Leverage(d) (how many
+  downstream decisions become possible) -- Impact≠Benefit≠Leverage. **Demotes Feasibility-First from a
+  general principle to one situational strategy governed by policy**: "feasibility influences priority only
+  through policy" (worked example: a feasibility-first strategy might wrongly prefer a minor documentation
+  gap over a low-feasibility critical security uncertainty; a safety-critical strategy should not). **Makes
+  dependencies a graph rather than a scalar**: introduces a dependency graph G_D=(V,E) where (d_i,d_j)∈E
+  means d_j depends on d_i, converting prioritization from Sort(Δ,π) into a **constrained ordering problem**
+  Order(Δ,G_D,π,Γ) -- a higher-priority item cannot skip ahead of an unresolved hard prerequisite even if
+  π(d_1)>π(d_2). **The file's largest DDD correction**: prioritization must produce an ACTION PLAN, not
+  merely an ordered list of findings, since "a finding is not necessarily actionable" (worked example:
+  "evidence for X is insufficient" admits multiple candidate actions -- acquire evidence, ask a
+  clarification question, observe, consult another source, defer, or accept uncertainty) -- introduces
+  **Finding≠Action** and Actions(d)={a_1,...,a_n}, corrected to prioritize actions/resolution opportunities
+  rather than findings themselves. **Introduces the Resolution Opportunity object**:
+  O=(Target,Action,ExpectedEffect,Cost,Prerequisites,Context), giving Priority(O,S_t,P_t,C_t) as the proper
+  object of prioritization, "much stronger than prioritizing a deficiency itself." Restates Zero/Lord/Sārathi
+  around this corrected architecture: Zero(S_t,I_t)->Findings_t, Lord(S_t,Findings_t)->Candidates_t,
+  Sārathi(S_t,Findings_t,Candidates_t,P_t)->Action_t -- correcting Sārathi from "select the highest-priority
+  deficiency" to "selects or recommends the next action based on the prioritized resolution opportunities
+  and the current purpose." **Removes the assumed [0,1] numeric range for priority itself**: priority may be
+  an ordered set {Critical,High,Medium,Low} or p_1≻p_2≻p_3 under a policy-defined ordering ≻, with numeric
+  scoring as merely one optional implementation π:O->[0,1]. **Reworks the Arjuna example** to present the
+  original asserted rankings as "illustrative policy outcome, not a logical consequence of the model," and
+  replaces automatic finding-priority (e.g. "understanding gap = highest priority" after Bhīṣma's
+  relationship is discovered) with a table of candidate actions the system must actually evaluate. Closes
+  with a revised mathematical model (Findings F_t=Diagnose(Δ_t,S_t,P_t,C_t); Resolution opportunities
+  O_t=GenerateActions(F_t,S_t,P_t,C_t); Priority π:O_t×S_t×P_t×C_t->𝒫; Dependency graph G_t=(O_t,E_t);
+  Constrained ordering Plan_t=Order(O_t,π,G_t,Γ_t); Sārathi a_t=Sārathi(S_t,Plan_t,P_t,C_t)), ten frozen
+  invariants (most importantly "Sārathi chooses the next action, not merely the highest-scoring
+  deficiency"), a numeric verdict (Conceptually 8/10, Mathematically 6/10 pre-correction rising to ~9/10
+  post-correction, DDD 7/10), and states the corrected conceptual progression
+  State->Discrepancy->Finding->Resolution Opportunity->Priority->Action->New State as the foundation for
+  **Question 23: how does KnowledgeOS know when to stop investigating and present a decision-ready state?**
+introduces:
+  - concept: "Priority target generalized from 'deficiency' to {Gap,Conflict,Finding,Question,Investigation,Action,...}, following 0488's Discrepancy≠Deficiency correction"
+  - concept: "Priority reconceived as a context-relative relation Priority(d|S_t,P_t,C_t,R_t), not an intrinsic property of a finding/deficiency"
+  - concept: "Severity≠Urgency≠Priority fully separated as three distinct concepts, with a worked counter-example (high-severity/low-urgency -> medium priority; low-severity/high-urgency -> high priority)"
+  - concept: "Weighted-sum priority formula demoted from THE definition of priority to ONE possible policy implementation: π=F_policy(factors) is fundamental; π_weighted=Σw_i·x_i is merely an implementation choice"
+  - concept: "Cost's sign corrected (high cost should reduce, not increase, priority) and Dependencies split into DependencyBlock (prerequisite gating) vs. DependencyLeverage (downstream unlocking) as two distinct, non-collapsible concepts"
+  - concept: "Impact split into three distinct concepts: Consequence(d), Benefit(d), and Leverage(d) -- Impact≠Benefit≠Leverage"
+  - concept: "Feasibility-First demoted from a general principle to one situational policy strategy: 'feasibility influences priority only through policy'"
+  - concept: "Dependencies modeled as a graph G_D=(V,E) rather than a scalar factor, converting prioritization into a constrained ordering problem Order(Δ,G_D,π,Γ) where hard prerequisites override raw priority score"
+  - concept: "Finding≠Action: prioritization must produce an action plan, not an ordered list of findings, since a single finding admits multiple candidate resolution actions"
+  - concept: "Resolution Opportunity object O=(Target,Action,ExpectedEffect,Cost,Prerequisites,Context) introduced as the proper object of prioritization, replacing the bare deficiency/finding"
+  - concept: "Priority's numeric [0,1] range removed as a requirement: priority may be an ordered set under a policy-defined ordering ≻, with numeric scoring as one optional implementation"
+  - concept: "Sārathi corrected from 'select the highest-priority deficiency' to 'selects or recommends the next action based on the prioritized resolution opportunities and current purpose'"
+  - concept: "Question 23 launched: how does KnowledgeOS know when to stop investigating and present a decision-ready state?"
+defines:
+  - concept: "Resolution Opportunity (O)"
+    definition: "O=(Target,Action,ExpectedEffect,Cost,Prerequisites,Context) -- a candidate action addressing a finding, the proper object over which priority is computed: π(O,S_t,P_t,C_t)"
+  - concept: "Priority (final, corrected)"
+    definition: "π:O×S×P×C->(𝒫,≻), a policy-defined ordering over candidate resolution opportunities, context- and purpose-dependent, not an intrinsic property of any finding; numeric scoring in [0,1] is one optional implementation, not a requirement"
+  - concept: "Dependency graph (G_D)"
+    definition: "G_D=(V,E) where (d_i,d_j)∈E means d_j depends on d_i; prioritization becomes constrained ordering Order(Δ,G_D,π,Γ), where a hard prerequisite can override raw priority score"
+refines:
+  - concept: "0485/0488's Discrepancy≠Deficiency and Discrepancy≠Gap/Conflict corrections"
+    refinement: "Directly applied as the file's opening correction: prioritization cannot target 'deficiencies' as the fundamental abstraction, since a discrepancy may resolve to many different, non-deficiency finding types"
+  - concept: "0483/0484's Guidance≠Authorization≠Execution≠Transition separation and Sārathi=Guidance-not-authority discipline"
+    refinement: "Applied to correct Sārathi's role in prioritization: Sārathi recommends the next ACTION from a prioritized plan of resolution opportunities, never simply selects the top-scoring deficiency by fiat"
+  - concept: "0482/0488's policy-parameter discipline (quantitative thresholds/severity scales are policy choices, not mathematical truths)"
+    refinement: "Extended to the entire priority function itself: π=F_policy(factors) is fundamental, with any specific weighted-sum formula demoted to one implementation choice among several"
+contradicts:
+  - concept: "This file's own Part A (weighted-sum priority formula presented as THE mathematical definition, Sārathi selecting deficiencies directly, dependencies as a scalar factor, Arjuna rankings presented as derived)"
+    contradiction: "Part B explicitly corrects each of these as its central review findings; no unresolved contradiction remains after Part B, but Part A's claims are directly superseded within the same file"
+repeats: []
+bridge_candidates:
+  - "0477/0478/0485/0488 (Difference-vs-Distance/Discrepancy thread) extends naturally into this file's Priority-vs-Severity/weighted-sum discipline; a future canonical-theory pass should trace the full arc from raw comparison through discrepancy through prioritization as one continuous methodological thread"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the priority target generalized from Deficiency to {Gap,Conflict,Finding,Question,Investigation,Action,...}, Severity≠Urgency≠Priority, and the weighted-sum formula demoted to one policy implementation among several."
+  - "dimension-registry.md: record Dependencies modeled as a graph (constrained ordering, not a scalar factor), Impact split into Consequence/Benefit/Leverage, and Cost's sign correction."
+  - "dimension-registry.md: record Finding≠Action, the Resolution Opportunity object O=(Target,Action,ExpectedEffect,Cost,Prerequisites,Context), Sārathi corrected to select actions not deficiencies, and Question 23's launch (when to stop investigating)."
+anchor_test:
+  anchor: "0488's Discrepancy≠Deficiency correction; 0483/0484's Sārathi=Guidance-not-authority discipline; 0482/0488's policy-parameter discipline; 0485's Zero≠Δ correction"
+  supports_dimension: "LANDMARK: retargets prioritization from 'deficiencies' to a general finding-type space and ultimately to Resolution Opportunities (candidate actions), directly building on 0488's Discrepancy≠Deficiency correction; separates Severity/Urgency/Priority as three distinct concepts; demotes the weighted-sum priority formula from THE mathematical definition to one policy implementation; models dependencies as a constrained-ordering graph rather than a scalar factor; splits Impact into Consequence/Benefit/Leverage; introduces Finding≠Action and the Resolution Opportunity object as the proper prioritization target; and corrects Sārathi to select actions from a prioritized plan rather than the highest-scoring deficiency directly -- launching Question 23 on stopping criteria for investigation"
+  refines_or_contradicts: "refines/extends 0488's Discrepancy≠Deficiency correction, 0483/0484's Sārathi=Guidance-not-authority discipline, and the corpus's recurring policy-parameter discipline; Part B directly supersedes Part A's own claims within the same file, with no unresolved contradiction remaining"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The reworked Arjuna example explicitly demotes the original asserted priority rankings to 'illustrative policy outcome, not a logical consequence of the model,' and replaces automatic finding-priority with a table of candidate actions Sārathi must actually evaluate for Arjuna's purpose -- the corpus's clearest demonstration yet that priority claims require an explicit policy derivation, not bare assertion."
+undefined_concepts: []
+open_questions:
+  - "Question 23 (how does KnowledgeOS know when to stop investigating and present a decision-ready state?) -- launched here, not yet answered"
+  - "Whether the Resolution Opportunity object O=(Target,Action,ExpectedEffect,Cost,Prerequisites,Context) is consistently adopted in later files as the standard object of prioritization/action selection"
+  - "Whether the dependency graph G_D and constrained-ordering formulation Order(Δ,G_D,π,Γ) receive further formal development (e.g. cycle handling, partial dependency satisfaction) in subsequent files"
+tier2_triggered: true
+tier2_reason: "Retargets prioritization from 'deficiencies' to a general finding-type space and ultimately to Resolution Opportunities (candidate actions), directly extending 0488's Discrepancy≠Deficiency correction; fully separates Severity, Urgency, and Priority as distinct concepts with a worked counter-example; demotes the weighted-sum priority formula from THE mathematical definition of priority to one policy implementation among several, correcting a sign error (Cost) and an ambiguous conflation (Dependencies) in the process; models dependencies as a constrained-ordering graph rather than a scalar factor; splits Impact into Consequence/Benefit/Leverage; introduces Finding≠Action and the Resolution Opportunity object as the correct target of prioritization; and corrects Sārathi's role to select the next action from a prioritized plan rather than the highest-scoring deficiency directly -- launching Question 23 on investigation stopping criteria."

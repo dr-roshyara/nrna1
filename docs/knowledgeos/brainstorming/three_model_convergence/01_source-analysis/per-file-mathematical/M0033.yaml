@@ -1,0 +1,173 @@
+sequence: M0033
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-225047_titelbaum-gap-analysis-knowledgeos-conflates-evidence-and-epistemic-state.md
+title: "Titelbaum Gap-Analysis: the Seven-Component Gap Taxonomy G_t, Update-Order-Sensitivity (Jeffrey Updates Don't Commute), the Problem-of-Old-Evidence Gap, Partial Distributions K_t:D_t->A, Coupled (K_t,S_t^epi) Dynamics, a Five-Model M0-M4 Nested Kernel Experiment, and a Fourth Sighting of the Unresolved 'Freedman' Reference"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: b
+  secondary: x
+  secondary_note: "a third pass over the same Titelbaum book (after M0001's unqualified adoption and M0032's deep correction), explicitly framed as a formal gap-analysis with a 39-point numbered structure; substantially overlaps M0032 (same S^epi/Zero/relevance material) but delivers a large body of genuinely new formal content, particularly around gap taxonomy, update-order-sensitivity, and a concrete nested-model experimental design"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0033
+importance: critical
+confidence: high
+about: >
+  A third, most formally organized pass over Titelbaum's Bayesian epistemology, explicit about
+  method: "Titelbaum -> theoretical constraints and distinctions -> KnowledgeOS hypothesis -> only
+  subsequently formal/empirical/architectural validation." Substantially overlaps M0032's core
+  findings (Epistemic Standards S^epi as distinct from Evidence and from Governance; the atomic-
+  claim/attitude split; Zero must stay semantic not probabilistic-zero; relevance as a typed
+  relation) but adds a large body of genuinely new material.
+
+  **DELIVERS FOUR EXPLICIT, UNDECIDED MODELS FOR WHERE S^epi LIVES**: (A) standard-as-state
+  (S^epi inside K_t); (B) standard-as-configuration (outside K_t); (C) standard-as-learned-state
+  (S_{t+1}^epi=U_S(S_t^epi,E_t)); (D) standards-emerge-from-kernel-operations -- grounded in
+  Titelbaum's own ongoing-vs-ultimate-standards distinction (ongoing standards evolve through
+  experience).
+
+  **DELIVERS UPDATE-ORDER-SENSITIVITY AS A GENUINELY NEW MATHEMATICAL PROPERTY**: Jeffrey
+  Conditionalization updates need not commute: U(U(K,E1),E2) != U(U(K,E2),E1) -- directly relevant
+  to KnowledgeOS temporal-identity concerns, proposing "Update Order Sensitivity" as its own
+  research property rather than assuming evidence can be treated as an unordered set.
+
+  **DELIVERS THE PROBLEM-OF-OLD-EVIDENCE GAP**: information obtained previously can become newly
+  epistemically relevant (via a new hypothesis, a new inquiry, a new model, changed context, or
+  changed propositional relationships) without any new raw observation -- "new epistemic
+  relevance != new raw observation," strongly supporting the inquiry-dependent KnowledgeOS model
+  (M0019) from a different angle.
+
+  **DELIVERS THE LOGICAL-OMNISCIENCE THREE-WAY SPLIT**: LogicalEntailment != ComputedKnowledge,
+  SemanticEntailment != OperationalAvailability -- distinguishing ExplicitKnowledge (explicitly
+  represented) from DerivableKnowledge (K_t entails H but H not-in K_t as a claim) from
+  OperationallyAvailableKnowledge, a genuinely new three-way Knowledge Space refinement.
+
+  **DELIVERS PARTIAL DISTRIBUTIONS AS THE FORMAL BASIS FOR PARTIAL EPISTEMIC STATE**: K_t: D_t ->
+  A with D_t a proper subset of the full language L, rather than K_t: L -> [0,1] -- "the system
+  need not assign an epistemic value to every conceivable proposition" -- with D_t itself dynamic
+  (D_t != D_{t+1} as new inquiries introduce previously-irrelevant propositions), yielding a
+  three-way split State Value / State Domain / Inquiry Domain, and extending Knowledge Space to
+  KS_t=(K_t,R_t,D_t) (adding the domain D_t to M0029/M0032's (K_t,R_t)).
+
+  **DELIVERS A FIVE-STAGE CONFIRMATION-TO-KNOWLEDGE CHAIN**: Evidence -> Support -> Assessment ->
+  Determination -> Knowledge, rejecting Evidence -> Knowledge directly.
+
+  **FORMALIZES Zero VIA ALTERNATIVES MORE PRECISELY THAN M0032**: Alt(K_t,Q) = inquiry-relevant
+  alternatives not eliminated by K_t; Zero(K_t,I_Q,EC) candidately means "there exists a in
+  Alt(K_t,Q) that remains unresolved under EC," with adequate determination meaning
+  Alt_relevant(K_t,Q) subset-of Resolved(K_t,Q,EC) -- and introduces multiple admissible epistemic
+  states as a SET-VALUED function A(E,Q) = {K_1,K_2,...}, explicitly not necessarily conflicting
+  (a six-way status vocabulary: CONFLICT/ALTERNATIVE/UNKNOWN/UNDERDETERMINED/INCOMPATIBLE/
+  UNVALIDATED, richer than earlier four-value enumerations).
+
+  **DELIVERS COUPLED (K_t,S_t^epi) DYNAMICS AS A FORMAL TWO-TRAJECTORY MODEL**: (K_t,S_t) --E_{t+1}
+  --> (K_{t+1},S_{t+1}), richer than M0032's single K_t=Phi(...) formula, explicitly because
+  S_t^epi can itself evolve via validation/learning (S_{t+1}=U_S(S_t,E_{t+1},Validation_t)) --
+  "KnowledgeOS does not only learn facts; it may learn how to respond to facts," flagged as
+  potentially one of the most important missing theoretical capabilities.
+
+  **DELIVERS THE DATABASE-EXPERT VS ANALYST-EXPERT DISTINCTION**: Expertise != InformationVolume
+  -- expertise can mean possessing MORE information (database expert) or being BETTER AT
+  EVALUATING RELEVANCE (analyst expert) -- proposing EpistemicAuthority(e,Q) with separate
+  InformationAuthority and AnalyticalAuthority dimensions, explicitly connected to (but not
+  silently replacing) the existing "authority = provenance x standing" research line.
+
+  **DELIVERS THE FIRE-ALARM FEEDBACK MECHANISM**: prior evidence changes how LATER evidence gets
+  interpreted -- E_1 -> S_{t+1}, then E_2 + S_{t+1} -> K_{t+2} -- Evidence -> Knowledge ->
+  Epistemic Standards -> Interpretation of Future Evidence, proposed as "a fundamental mechanism
+  of epistemic learning."
+
+  **DELIVERS THE SEVEN-COMPONENT GAP TAXONOMY G_t**, the pass's most granular gap decomposition:
+  G_t = (G^data, G^semantic, G^inferential, G^evidential, G^uncertainty, G^validation,
+  G^decision) -- data gap (unavailable observation), semantic gap (unresolved meaning),
+  inferential gap (conclusion undeducible from evidence), evidential gap (insufficient support),
+  uncertainty gap (result known only within unacceptable range), validation gap (candidate
+  conclusion unvalidated), decision gap (knowledge sufficient but action not yet selectable) --
+  substantially more precise than a generic "knowledge gap," directly usable to refine Zero.
+
+  **DELIVERS THE REVISED SIX-COMPONENT AGGREGATE STATE**: E_t = (E_t, S_t^epi, A_t, K_t, R_t,
+  MetaK_t) -- total evidence, epistemic standards, attitudes, knowledge state, relations, and
+  meta-knowledge, the richest single aggregate state proposed in this pass, with a coupled
+  temporal transition (E_t,Q_t,EC_t) --U--> (E_{t+1},Q_{t+1},EC_{t+1}).
+
+  **PROPOSES A CONCRETE FIVE-MODEL NESTED KERNEL EXPERIMENT (M0-M4)**: M0 Evidence-only
+  (K_{t+1}=U(K_t,E)); M1 +standards; M2 +context; M3 +inquiry; M4 +relational structure -- with a
+  controlled-variation methodology (hold E,C,Q fixed, vary S; if M0 cannot explain observed
+  differences but M1 can, S gains empirical/model-theoretic support), plus a fully worked "Nexus
+  experiment" (varying context/standards/inquiry/acquisition-mechanism against fixed raw
+  observations to test whether K_t changes) and five named sensitivity measures (Delta_K,
+  Delta_E, Delta_S, Delta_C, Delta_Q).
+
+  **DELIVERS A DDD REINTERPRETATION SEPARATING EIGHT BOUNDED CONCEPTS**: Evidence,
+  EpistemicAssessment, KnowledgeState, EpistemicStandard, Inquiry, Validation, Decision,
+  Governance, rather than one monolithic "Knowledge" aggregate, with an explicit relationship
+  diagram.
+
+  **DELIVERS A STRUCTURED 39-ITEM SUMMARY (14+10+15)**: 14 findings "strongly supported by
+  Titelbaum" [EXT]; 10 "strong KnowledgeOS hypotheses now justified by cross-source convergence"
+  [PROP]; 15 explicitly "still unresolved" questions (including whether S^epi is part of K_t,
+  persistent, learned, or a kernel primitive; whether Determine/Interpret/Relate/Validate/
+  DetectGap/Select are primitive; the correct metric d(K_1,K_2); when representations are
+  equivalent despite differing).
+
+  **DELIVERS A FOURTH SIGHTING OF THE UNRESOLVED 'FREEDMAN' REFERENCE**: "integrating this book
+  with the previous Davidson, Dretske, Cover-Thomas, Freedman and cognitive/Bayesian work" --
+  named alongside three already-tracked sources (Davidson M0029, Dretske M0010/M0017, Cover-
+  Thomas M0018) as if equally established, still with no dedicated Freedman extraction found
+  anywhere in this pass's sequence M0001-M0032.
+
+  **CLOSES WITH THE FINAL COUPLED CANDIDATE MODEL**: (K_t,S_t^epi) --E,Q,C,EC--> (K_{t+1},
+  S_{t+1}^epi), explicitly "not yet canonized," directing the next kernel-reduction experiment to
+  deliberately try to DESTROY S^epi, Interpret, Relate, Determine, Validate, DetectGap, and
+  Select as independent primitives -- "whatever survives those elimination tests is what we can
+  legitimately begin to call the minimal KnowledgeOS epistemic mechanism."
+introduces:
+  - concept: "Four explicit undecided models for where S^epi lives (state/configuration/learned-state/emergent-from-operations)"
+  - concept: "Update-order-sensitivity: Jeffrey updates need not commute, U(U(K,E1),E2)!=U(U(K,E2),E1)"
+  - concept: "The Problem-of-Old-Evidence gap: new epistemic relevance != new raw observation"
+  - concept: "The logical-omniscience three-way split: ExplicitKnowledge/DerivableKnowledge/OperationallyAvailableKnowledge"
+  - concept: "Partial distributions K_t:D_t->A (D_t proper-subset-of L), with State-Value/State-Domain/Inquiry-Domain split, extending Knowledge Space to KS_t=(K_t,R_t,D_t)"
+  - concept: "The five-stage confirmation chain Evidence->Support->Assessment->Determination->Knowledge"
+  - concept: "Multiple admissible epistemic states as a set-valued function A(E,Q)={K_1,K_2,...}, with a six-value status vocabulary"
+  - concept: "Coupled (K_t,S_t^epi) dynamics as a formal two-trajectory model, with S_t^epi itself updatable via validation"
+  - concept: "The database-expert vs analyst-expert distinction and EpistemicAuthority(e,Q) with two dimensions"
+  - concept: "The fire-alarm feedback mechanism: prior evidence changes standards for interpreting future evidence"
+  - concept: "The seven-component gap taxonomy G_t=(G^data,G^semantic,G^inferential,G^evidential,G^uncertainty,G^validation,G^decision)"
+  - concept: "The six-component aggregate state E_t=(E_t,S_t^epi,A_t,K_t,R_t,MetaK_t)"
+  - concept: "The five-model nested kernel experiment M0-M4 with a controlled Nexus-domain worked example and five named sensitivity measures"
+  - concept: "The DDD eight-bounded-concept separation (Evidence/EpistemicAssessment/KnowledgeState/EpistemicStandard/Inquiry/Validation/Decision/Governance)"
+defines: []
+refines:
+  - concept: "M0032's single K_t=Phi(E_t,S_t,C_t,Q_t,R_t) formula, refined into the coupled two-trajectory (K_t,S_t^epi) dynamics with S_t^epi itself independently updatable"
+  - concept: "M0029/M0032's Knowledge Space KS_t=(K_t,R_t), extended to KS_t=(K_t,R_t,D_t) with an explicit domain component"
+  - concept: "M0032's Zero-via-doxastically-possible-worlds sketch, formalized more precisely via Alt(K_t,Q) and Resolved(K_t,Q,EC)"
+  - concept: "M0030's C0 13-operator kernel candidate, extended to 15 with Acquire/MaintainStandards/UpdateStandards, and given a concrete nested five-model (M0-M4) experimental test"
+contradicts: []
+repeats:
+  - concept: "The core S^epi-distinct-from-evidence-and-governance finding, the atomic-claim/attitude split, and the Coherence!=Truth!=Knowledge distinction, all already established in M0032 via the same source"
+bridge_candidates:
+  - "The fourth sighting of 'Freedman' (after M0029, M0030, M0032), now named alongside Davidson/Dretske/Cover-Thomas as an equally-established source -- the persistent absence of a dedicated Freedman extraction across four independent citations makes this an increasingly significant open corpus-integrity question."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0033 as a third Titelbaum pass delivering the seven-component gap taxonomy G_t, update-order-sensitivity, the Problem-of-Old-Evidence gap, partial distributions K_t:D_t->A, coupled (K_t,S_t^epi) dynamics, a concrete five-model (M0-M4) nested kernel experiment with a worked Nexus example, and a fourth sighting of the unresolved 'Freedman' reference."
+anchor_test:
+  anchor: "M0032's S^epi introduction and M0030's C0 kernel candidate/experimental methodology"
+  supports_dimension: "Substantially extends both with a concrete nested-model experimental design, a seven-component gap taxonomy, and coupled state/standards dynamics"
+  refines_or_contradicts: "refines (M0032's K_t formula and M0030's C0 kernel candidate)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The five-model nested kernel experiment (M0-M4) with a fully worked Nexus-domain example (varying context/standards/inquiry/acquisition against fixed observations) is the first concretely operationalized test of the S^epi hypothesis anywhere in this pass."
+  - "'Integrating this book with the previous Davidson, Dretske, Cover-Thomas, Freedman and cognitive/Bayesian work' -- Freedman named as an equally-established peer of three already-tracked sources, for the fourth time, still without appearing as its own document."
+undefined_concepts:
+  - "The precise aggregate function EpistemicQuality=f(Coherence,Calibration,Grounding,Validity,...) -- explicitly left undefined"
+open_questions:
+  - "Whether the five-model M0-M4 nested kernel experiment, or the seven-component gap taxonomy G_t, are ever actually carried out/adopted later in this pass."
+  - "Whether a dedicated Freedman extraction exists anywhere in the remaining files of this pass, now cited a fourth time without appearing."
+tier2_triggered: true
+tier2_reason: "Despite substantial overlap with M0032 (same source), delivers a large body of genuinely new formal content: update-order-sensitivity, the Problem-of-Old-Evidence gap, partial distributions, a seven-component gap taxonomy, coupled state/standards dynamics, and a concrete five-model nested kernel experiment with a worked example -- critical importance and full tier-2 treatment warranted."

@@ -1,0 +1,84 @@
+sequence: 18
+path: docs/knowledgeos/KnowledgeOS_Engineering_Progression_Model.md
+title: KnowledgeOS — Engineering Knowledge Progression Model
+date: 2026-08-02
+bytes: 16227
+doc_type: pure discovery (ontology/governance/lifecycle/schemas explicitly frozen)
+
+primary_model_initial: engineering_knowledgeos
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - all ten progression mechanisms are C1 document-governance artifacts (status, authority, ADR-M, capability lifecycle, EEP)
+  - the four-kind typology classifies HOW DOCUMENTS/CLAIMS CHANGE, not knowledge states
+  - zero occurrences of K_t, dimension of knowledge, Buddhi, operator with signature, purification, Moksha
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [governance, evidence, provenance, invariants, knowledge_state, contradiction]
+
+status: DF
+maturity: established        # for the authority decomposition specifically; DEVELOPING for the typology generally
+importance: critical         # first CRITICAL-rated file in the reading order
+
+introduces:
+  - four_progression_kinds_plus_nonprogression   # GOVERNANCE-ACT / EVIDENTIAL / WORK-EXECUTION / COMPOSITE / PROVENANCE
+  - granted_vs_earned_distinction
+  - evidence_earns_governance_grants_promotion_requires_both
+  - coupling_by_guard_not_by_fusion
+  - qualification_ul_collision_third_sense
+defines:
+  - authority_as_provenance_times_standing_AUTHORITATIVE   # sourced to the field's own header text
+  - four_progression_kinds_with_mover_reversibility_owner
+  - promotion_formula                          # crosses_bar(evidence) AND grants(act)
+hypotheses:
+  - PM1_separate_provenance_and_standing_as_fields    # supersedes and dissolves LG-1
+  - PM2_role_guard_treatment_for_standing_changes
+  - PM3_P1_P5_vocabulary_parsimony
+  - PM4_rule_on_qualification
+  - PM5_model_capability_as_explicit_composite
+operators: []               # promotion is operator-SHAPED but not formally registered here
+formal_objects:
+  - authority_factorization    # A = P x T, |A|=5 but |P|x|T|=6 -- an UNRESOLVED 5-vs-6 gap
+undefined_concepts:
+  - knowledge          # 18th consecutive file
+  - qualification        # UL collision; now a THIRD candidate sense recorded, unresolved
+  - trust                # used in the flagship quote; never positively defined
+  - evidence             # central to the EVIDENTIAL kind; "earned" characterized only by contrast
+open_questions:
+  - PM1 separate provenance and standing as fields
+  - PM2 role/guard treatment for standing changes
+  - PM3 vocabulary parsimony for P-1/P-5
+  - PM4 rule on Qualification
+  - PM5 model capability as explicit composite
+  - LG5 admit SPECIALIZES (carried)
+
+depends_on: [14]
+extends: [14]
+refines: [2, 3, 14]
+renames: []
+contradicts: []
+supersedes: [14]      # LG-1 dissolved (explained), not merely withdrawn
+repeats: []
+connects_to: [2, 3, 14]
+
+bridges: []
+bridge_evidence:
+  - "NO BRIDGE RECORDED. This is the STRONGEST candidate bridge-TARGET site identified so far: the
+     four-kind typology (deterministic-by-act / evidential-accumulation / time-driven / composite) is
+     structurally the exact SHAPE of question §26 (state transition) and §27 (purification) will ask
+     of C2 knowledge dynamics. But this file classifies DOCUMENT-GOVERNANCE change, not KNOWLEDGE
+     change. Flagged for active comparison against any later C2 dynamics material - the comparison
+     is the test the corpus must supply, not the structural resemblance itself (§41)."
+
+tier2_triggered: true
+tier2_reason: >
+  Delivers the corpus's most precise formal decomposition to date - authority shown, from its own
+  primary field text, to factor into an immutable provenance component and a governance-act-mutable
+  standing component - with a specific, previously uncaught precision defect (the 5-element value
+  set does not match the 2x3=6 combinations the claimed factorization implies; one cell is missing
+  or double-counted). Produces the corpus's first general typology of CHANGE ITSELF (four kinds plus
+  a non-progression case), with the load-bearing granted-vs-earned distinction. Dissolves a
+  previously withdrawn open question (LG-1, from 0014) by explaining exactly why its premise failed,
+  rather than merely retracting it - the strongest form of self-correction in the corpus so far.

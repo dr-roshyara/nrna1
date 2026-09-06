@@ -1,0 +1,4 @@
+CASES=36
+{'ordinary': 3, 'evidence-supported': 3, 'evidence-refuted': 3, 'unknown': 3, 'contradictory': 3, 'supersession': 3, 'replay': 3, 'policy-controlled': 3, 'authority-controlled': 3, 'policy-change': 3, 'conditional': 3, 'measurement': 3}
+{'positive': 22, 'negative': 13, 'boundary': 1}
+real 8

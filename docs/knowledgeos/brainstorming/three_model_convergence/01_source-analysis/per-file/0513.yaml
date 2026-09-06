@@ -1,0 +1,96 @@
+sequence: 513
+path: docs/knowledgeos/brainstorming/kernel/20260827-094108_question-5-updating-and-preserving-assertions.md
+title: "EARLIER-STAGE FOUNDATIONAL FILE: Assertion Update/Preservation Lifecycle and Provenance Chain — Uses the Pre-Correction Five-Dimensional Epistemic State Σ=(A,S,R,V,C), Confirming This kernel/-Directory File Chronologically Precedes Much of the Already-Processed phase_measure_theory/ Sequence"
+date: "2026-08-27"
+bytes: 15230
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "no critical-review pass present; a single-pass formal-definition document, structurally identical in format to the phase_measure_theory Question-N files but chronologically earlier in the corpus's own development"
+source_role: PRIMARY_RESEARCH
+canonical_source: 513
+importance: moderate
+confidence: high
+about: >
+  "Question 5 -- Updating and Preserving Assertions": a single-pass (no critical review) formal-definition
+  document establishing how KnowledgeOS maintains assertions over time. Structurally identical to the
+  phase_measure_theory Question-N files (Formal Definition -> Core Problem -> ... -> Summary -> Next Steps),
+  but internal evidence places it CHRONOLOGICALLY EARLIER than much of the already-processed
+  phase_measure_theory sequence: Section 11's "Complete KnowledgeOS Model" lists Epistemic State as the
+  FIVE-dimensional Sigma=(A,S,R,V,C), matching the corpus's ORIGINAL five-dimensional formulation
+  (established ~0464, "2240 states") that was later corrected to the four-dimensional
+  Sigma_A=(Acquisition,Support,Uncertainty,Validity) at 0479/0482 with Conflict externalized as a relation.
+  This confirms the kernel/ directory (entered for the first time at 0512) contains material from an
+  earlier stage of the corpus's own research history, encountered later in this reconstruction's read
+  sequence only because of directory-based manifest ordering, not true chronology.
+
+  **Establishes the core distinction**: Update≠Overwrite; Update=CreateNewVersion+PreserveHistory. Defines
+  an eight-stage Assertion Lifecycle: Created->Evaluated->Accepted->Updated->Challenged->Revised->
+  Retired/Rejected. Formalizes Update(A,E,tau)->A_new with an explicit 8-step process (receive evidence,
+  apply to current assertion, determine epistemic-state change, create new version if needed, preserve old
+  version, update provenance chain, update temporal validity, return). Names four update triggers (New
+  Evidence, Time Passage, Context Change, Challenge Resolution) and five update types (State/Value/
+  Dimension/Entity Update, Retirement). **Formalizes the Preservation Principle**: "KnowledgeOS never loses
+  the history of an assertion. Every change is recorded, and old versions remain accessible" --
+  AssertionHistory={A_tau1,A_tau2,A_tau3,...}. **Introduces a six-field Provenance structure**:
+  (VersionID,tau,Previous,Reason,Evidence,Actor), and a Versioned Assertion tuple
+  A_versioned=(A,VersionID,tau,Provenance), with a worked Nexus-version history example (3.69 Assumed ->
+  3.69 Confirmed -> 3.70 Confirmed) supporting concrete history queries ("what was the version on Monday?",
+  "when/why/who updated it?"). Defines three concrete update functions (StateUpdate, ValueUpdate, Retire)
+  and maps Zero/Lord/Sārathi to update-related roles (Zero detects staleness/weak-evidence/unresolved-
+  conflict triggering an update need; Lord suggests new dimensions/alternative values/interpretations;
+  Sārathi guides evidence collection/re-evaluation/resolution). Presents a full worked Arjuna example
+  tracing assertion updates through a conflict lifecycle: the Grandfather-relationship assertion and a
+  newly-observed Opposing-side assertion are flagged Conflict=Active, then resolved via a
+  Moral_Conflict=True inferred assertion, updating both original assertions to Conflict=Resolved -- an
+  earlier, simpler ancestor of the much more elaborate conflict/resolution machinery developed later in the
+  phase_measure_theory arc (0472-0482). Closes with a formal model (Update(A,Delta,tau)->A_new; versioned
+  assertion tuple; History(A) set; two preservation invariants -- History(A)≠empty-set for all A, and every
+  A_tau_i is in History(A)), a four-invariant summary, and Section 11's eight-item "Complete KnowledgeOS
+  Model" enumeration (Proposition(E,D,V); Assertion(P,Sigma,E,tau,Pi); Epistemic State(A,S,R,V,C) [the
+  pre-correction five-dimensional form]; Evidence(S,T,C,R,rho,K,tau); Comparison; Challenge; Update;
+  Preservation). Closes naming three next-phase questions matching the phase_measure_theory arc's actual
+  subsequent development: how to form a coherent Knowledge State from Assertions (Q6-Q8 territory); how to
+  resolve conflicts between Assertions (Q9 territory); how to measure Knowledge State quality (later
+  Discrepancy/Coherence territory) -- "culminating in a complete formal specification of KnowledgeOS."
+introduces:
+  - concept: "Eight-stage Assertion Lifecycle: Created->Evaluated->Accepted->Updated->Challenged->Revised->Retired/Rejected"
+  - concept: "Update≠Overwrite; Update=CreateNewVersion+PreserveHistory, established as the core distinction governing all assertion mutation"
+  - concept: "Six-field Provenance structure (VersionID,τ,Previous,Reason,Evidence,Actor) and the Versioned Assertion tuple A_versioned=(A,VersionID,τ,Provenance)"
+  - concept: "Four update triggers (New Evidence, Time Passage, Context Change, Challenge Resolution) and five update types (State/Value/Dimension/Entity Update, Retirement)"
+  - concept: "Two formal Preservation invariants: History(A)≠∅ for all A, and every A_τ_i is a member of History(A)"
+defines:
+  - concept: "Assertion History"
+    definition: "History(A)={A_τ1,A_τ2,A_τ3,...}, the complete, never-lost set of versioned states an assertion has passed through, each queryable by time, reason, evidence, and actor"
+  - concept: "Update (formal)"
+    definition: "Update(A,Δ,τ)->A_new, where Δ is the triggering change (new evidence, new value, new state, etc.); creates a new version while preserving the old version's full history, never overwriting it"
+refines:
+  - concept: "0454-0482's phase_measure_theory arc's epistemic-state and conflict-resolution development"
+    refinement: "Represents an earlier developmental stage of the same underlying ontology: the five-dimensional Σ=(A,S,R,V,C) here is the pre-correction form later refined to Σ_A=(Acquisition,Support,Uncertainty,Validity) with Conflict externalized (0479/0482); the simple conflict-flag-then-resolve mechanism worked here anticipates the much richer Conflict taxonomy and Resolution-as-process machinery developed later (0472-0482)"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "This file's dating evidence (pre-correction five-dimensional Epistemic State) should inform how the kernel/ directory's overall chronological relationship to phase_measure_theory/ is understood in any future canonical-theory pass reconstructing the corpus's true developmental timeline"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file as dating evidence that the kernel/ directory contains earlier-stage material (pre-correction five-dimensional Epistemic State Σ=(A,S,R,V,C)), and its Assertion Lifecycle/Update/Preservation/Provenance formalization as an earlier ancestor of the phase_measure_theory arc's later, more refined conflict-resolution machinery."
+anchor_test:
+  anchor: "0464/0479/0482's Epistemic State correction (five-dimensional Σ=(A,S,R,V,C) to four-dimensional Σ_A=(Acquisition,Support,Uncertainty,Validity) with Conflict externalized); 0472-0482's later conflict/resolution machinery"
+  supports_dimension: "Establishes the Assertion Lifecycle (eight stages), the Update≠Overwrite/CreateNewVersion+PreserveHistory distinction, a six-field Provenance structure, and formal Preservation invariants -- foundational assertion-versioning machinery later built upon extensively; its use of the pre-correction five-dimensional Epistemic State Σ=(A,S,R,V,C) is important DATING EVIDENCE establishing that this kernel/-directory file chronologically precedes the phase_measure_theory arc's Σ_A four-dimensional correction, despite being encountered later in this reconstruction's directory-ordered read sequence"
+  refines_or_contradicts: "represents an earlier developmental stage refined by 0464/0479/0482's later Epistemic State correction and 0472-0482's richer conflict-resolution machinery; not a contradiction, but supersession by later, more mature corpus content"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The five-dimensional Epistemic State Σ=(A,S,R,V,C) in Section 11's 'Complete KnowledgeOS Model' list is direct dating evidence placing this file chronologically before the corpus's four-dimensional Σ_A correction (0479/0482), confirming the kernel/ directory holds earlier-stage material encountered out of true chronological order in this reconstruction's manifest-driven sequential read."
+undefined_concepts: []
+open_questions:
+  - "What is the true chronological relationship between the kernel/ and phase_measure_theory/ directories, given this file's demonstrable earlier-stage epistemic-state formulation?"
+  - "Whether the corpus's later, more mature conflict-resolution machinery (0472-0482) was developed as a direct refinement of this file's simpler conflict-flag-then-resolve mechanism, or independently"
+tier2_triggered: false
+tier2_reason: "A foundational but non-landmark, single-pass formal-definition file establishing Assertion Lifecycle, Update/Preservation, and Provenance machinery that is later substantially refined and superseded by the phase_measure_theory arc's more mature epistemic-state and conflict-resolution development; its primary significance for this reconstruction is as dating evidence (via its pre-correction five-dimensional Epistemic State) establishing that the kernel/ directory holds materially earlier-stage corpus content than much of what has already been processed from phase_measure_theory/."

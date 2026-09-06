@@ -1,0 +1,255 @@
+sequence: 564
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-161423_step-021-goals-intentions-decisions-actions-utility-risk-constraints-and-outcomes.md
+title: "LANDMARK & BRIDGE-CANDIDATE RESOLUTION: Goal≠Intention≠Decision≠Action≠Outcome Formalized to Close the Epistemic-to-Operational Gap — Refines (Does Not Duplicate) Step 15's Action Theory Into a Full Goal/Intention/Plan/Decision/Authorization/Execution/Outcome Type Hierarchy; Sārathi Redefined as 'Decision Support and Decision Governance Orchestrator'; Four Distinct Capabilities CanRecommend≠CanDecide≠CanAuthorize≠CanExecute; Eighteen Canonical D1-D18 Invariants; Opens Step 22 (Identity, Lineage, Provenance, Causality, and Traceability), Named One of the Last Foundational Steps Before a Complete Mathematical Closure Proof"
+date: "2026-08-27"
+bytes: 26445
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 0563's closing 'Step 21 -- Goals, Intentions, Decisions, Actions, Utility, Risk, Constraints, and Outcomes'; resolves the bridge_candidate flagged at 0563 concerning overlap with 0557's (Step 15) action/decision theory"
+source_role: PRIMARY_RESEARCH
+canonical_source: 564
+importance: critical
+confidence: high
+about: >
+  Directly executes 0563's closing "Step 21," explicitly framed as closing the gap between an epistemic
+  architecture (what can KnowledgeOS know) and an operational architecture (what does it mean to decide and
+  act). Delivers the file's governing principle: **`Knowledge≠Goal≠Decision≠Action≠Outcome`**, and
+  **`A good decision is not necessarily the action with the highest probability of success`** -- it depends
+  on purpose, utility, risk, constraints, authority, reversibility, and uncertainty.
+
+  **RESOLVES the bridge_candidate flagged at 0563** (whether Step 21 substantively extends or merely
+  duplicates Step 15's already-delivered action/decision theory): this file is confirmed to be a genuine
+  REFINEMENT and TYPE-HIERARCHY FORMALIZATION layer atop 0557, not a duplicate -- it reuses 0557's
+  established mathematics (expected utility, Pareto optimality, robust minimax decision-making, risk
+  formulas) but introduces substantial new structure: an explicit Goal/Intention type layer above actions,
+  a Plan/Procedure distinction, formal Outcome classification and outcome-discrepancy feedback, decision
+  reproducibility/explanation/sensitivity/robustness formalisms, four distinct decision-related capabilities
+  (CanRecommend/CanDecide/CanAuthorize/CanExecute), and six proposed DDD bounded contexts for the whole
+  goal-to-outcome pipeline -- genuinely deepening rather than repeating Step 15.
+
+  **Delivers the file's foundational worked example**: "Nexus 3.69 is old and should be upgraded" is
+  knowledge; it does NOT yet imply "upgrade Nexus now," since goal, desired outcome, constraints, risks,
+  alternatives, authority, reversibility, and cost must all still be resolved -- **`Knowledge alone does not
+  determine action`**.
+
+  **Formalizes Goal as a structured object** `G=(GoalID,DesiredState,Purpose,Scope,Priority,Constraints,
+  Deadline,Authority)`, explicitly richer than a bare action statement ("maintain a supported Nexus
+  repository service without unacceptable production disruption" vs. "upgrade Nexus"). **Delivers
+  `Goal≠IdealState`**: a goal specifies or selects an ideal state but is not identical to it
+  (`Goal→IdealState`). Formalizes Goal as intentional direction `G:CurrentState→DesiredState`, and
+  **multiple, potentially conflicting goals** `𝒢={G_1,...,G_n}` with `Priority(G_i)≠Truth` (normative,
+  sourced from strategy/constitution/leadership/regulation/safety/contract) and explicit
+  `GoalConflict(G_1,G_2)` detection -- KnowledgeOS "must not silently optimize one while pretending both
+  were achieved."
+
+  **Formalizes Intention as distinct from Goal**: `Intention=CommitmentToGoalOrPlan` -- "what are we
+  currently committed to pursuing?" versus "what do we want?" -- worked via a Goal:UpgradeNexus /
+  Intention:PerformControlledMigrationAfterApproval example. **Formalizes Decision** `D:𝒜→a*` with the
+  crucial inclusion of an explicit no-action alternative `a_0=NoAction`, so `a*∈𝒜∪{NoAction}`. **Delivers
+  `Decision≠Action`**: a decision can exist without execution. Formalizes **Authorization as a distinct
+  gate**: `Authorized(D,Authority,Context,t)` -- a technically sound decision can still be `Authorized=
+  False`, prohibiting execution.
+
+  **Formalizes Action as a structured semantic contract**: `A=(ActionID,Preconditions,Operation,
+  ExpectedEffects,Resources,Constraints,RiskProfile,Reversibility,AuthorityRequirement)`, with formal
+  Preconditions (`Pre(A,K)=True` required before execution; `Unknown` preconditions must not be treated as
+  satisfied) and Effects (`Action:S_t→S_{t+1}`, connected to 0558's Step 16 state-transition theory).
+  Delivers **`ExpectedEffect≠GuaranteedEffect`** (deterministic vs. probabilistic action effects).
+  Formalizes **Outcome** as `ObservedResult(Action)`, worked via an "upgrade completed but synchronization
+  failed" example, and **closes the core action loop**: `Knowledge→Decision→Action→Outcome→Observation→
+  Knowledge`.
+
+  **Reuses and reconfirms 0557's/0563's established mathematics** for Utility (`U(a,s)`, `Utility≠Truth`),
+  Expected Utility (`EU(a|K)=E[U(a,S)|K]`), Risk (`Risk=f(Impact,Likelihood,Uncertainty,Exposure,
+  Reversibility)`, `Risk≠Uncertainty`, `Unknown likelihood does not imply Low risk`), Reversibility as a
+  first-class action property, and Hard vs. Soft constraints (`HardConstraint≠Preference`), with
+  `ConstraintPriority` itself a governance construct. Formalizes the **Feasible action set**
+  `𝒜_feasible(K,C)` and standard decision optimization `a*=argmax_{a∈𝒜_feasible}EU(a|K)`, alongside
+  multi-objective decision-making and **Pareto optimality** (worked three-action, three-objective
+  comparison table with no universal "best" action), directly reusing and re-illustrating 0557's Pareto
+  machinery in this new goal/intention/decision context.
+
+  **Delivers the file's central governance-separating result -- `Optimization≠Authorization`**: the
+  mathematics can determine `EU(a_1)>EU(a_2)`, but whether the organization is ALLOWED to select `a_1`
+  depends on separate policy. Delivers **DecisionRecommendation vs. Decision**: KnowledgeOS should often
+  produce only a recommendation requiring separate authorization, worked via a parallel-migration/
+  Architecture-Board-approval example -- `Recommended≠Authorized`.
+
+  **Delivers the file's central architectural refinement of Sārathi**: explicitly NOT "the AI that decides
+  everything," but **`Sārathi=Decision Support and Decision Governance Orchestrator`**, taking
+  `(K,Δ,G,𝒜,C,Risk,Policy)` and producing a `DecisionRecommendation` (or, where authorized, a `Decision`).
+  Delivers a precise, clean **Zero/Lord/Sārathi triad restatement**: `Zero=Discrepancy` (`(K,I,G)→Δ`),
+  `Lord=Possibility` (`(K,Δ,G)→CandidateActions`), `Sārathi=Decision`
+  (`(K,G,𝒜,C,Risk,Policy)→DecisionRecommendation`) -- "a very clean conceptual triad," and the core
+  transformation chain `Goal→IdealState→Discrepancy→CandidateActions→Decision→Action`.
+
+  **Formalizes Action feasibility with a four-value result space** `{Feasible,Infeasible,Unknown,
+  ConditionallyFeasible}`, worked through an unknown-backup-availability example where Lord can propose
+  verification -- directly demonstrating epistemic management becoming operational. **Introduces Action
+  Planning**: `Plan=(a_1,...,a_n)` with effects of one action establishing preconditions for the next
+  (`Effects(a_1)⊇Preconditions(a_2)`), formal `Valid(Plan,K,C)`, and the explicit distinction
+  **`Plan≠Procedure`** (a plan is context-specific; a procedure is a reusable operational recipe usable as a
+  plan component).
+
+  **Formalizes Outcome classification**: `{Success,PartialSuccess,Failure,UnexpectedOutcome,Aborted,
+  Unknown}`, with `UnknownOutcome` explicitly legitimate. Delivers **Expected vs. Actual state and
+  OutcomeDiscrepancy**: `OutcomeDiscrepancy=Distance(S_{t+1},Ŝ_{t+1})` as a genuine feedback mechanism.
+  Delivers **governed learning from outcomes**: unexpected outcomes trigger `Action→Outcome→ModelUpdate`,
+  but explicitly routed through the same Evidence-discipline pipeline as Step 19 (0562) rather than
+  automatically rewriting organizational knowledge (`Outcome→Evidence→Assessment→PotentialModelUpdate`).
+
+  **Delivers Counterfactual decision reasoning**: comparing `Outcome(a_1)` against `Outcome(a_0=NoAction)`
+  as "what would happen if we did not upgrade?" -- explicitly useful for Lord/Sārathi. Delivers a **causal-
+  validity caution**: mere co-occurrence of A and B must not be inferred as `A→B` causally -- "decision
+  quality depends on causal validity where causal claims matter," directly reusing 0556's causal theory.
+
+  **Formalizes Expected Value of action** `EV(a)=EU(a)-Cost(a)` and a risk-sensitive score
+  `Score(a)=EU(a)-λRisk(a)`, with **`λ (risk aversion) explicitly NOT universal`** -- a
+  policy/decision-model parameter, so `Different decisions do not necessarily imply different knowledge`
+  (two organizations can share identical knowledge yet reach different, equally defensible decisions under
+  different risk preferences).
+
+  **Delivers the file's central Decision provenance/reproducibility deliverable**: a full decision record
+  `D=(Goal,Alternatives,KnowledgeSnapshot,Evidence,Assumptions,Constraints,DecisionModel,ChosenAction,
+  Authority,Timestamp,Rationale)`, with **Decision reproducibility** `Decision=f(K_t,G,𝒜,C,Π_v)` (Π_v =
+  decision-policy version), directly extending 0558's/0560's/0561's/0562's reproducibility formalizations
+  into the decision layer. Delivers **Decision explanation** generated FROM the structured decision record
+  by an LLM (`StructuredDecision→LLMExplanation`, explicitly not `LLM→OpaqueDecision`), directly reusing
+  0561's Proof≠Explanation architectural boundary in the decision context.
+
+  **Delivers Decision uncertainty and sensitivity**: small expected-utility differences under large model
+  uncertainty "should not create false precision," motivating `Sensitivity(a*,Parameters)` analysis (a
+  worked "recommendation changes below 15 minutes downtime tolerance" example) as "extremely valuable to
+  human decision-makers." Delivers **Robustness** as a formal criterion: `a*` is robust if it remains the
+  argmax across most/all of a plausible parameter space `Θ`.
+
+  **Delivers Human override as a first-class governed decision path**, explicitly not treated as system
+  failure -- `HumanDecision` is recorded (original recommendation, override, authority, reason, outcome),
+  directly reusing and reconfirming 0557's first-class human-decision-modeling principle, and creating
+  "organizational learning" by later comparing recommended vs. human-selected actions vs. actual outcomes.
+
+  **Delivers the file's Step-21 domain model** -- ten named concepts explicitly NOT to be collapsed into a
+  single "task" entity (Goal, Intention, CandidateAction, Decision, Authorization, Execution, Outcome,
+  DecisionModel, RiskAssessment, UtilityAssessment) -- and **six proposed DDD bounded contexts**: Goal &
+  Intent Context, Planning Context, Decision Context, Governance Context, Execution Context, Outcome
+  Context, with explicit aggregate-boundary discipline (`Decision` references `GoalID`/
+  `KnowledgeSnapshotID`/`CandidateActionID` rather than owning them, directly reusing 0560's
+  reference-not-ownership discipline).
+
+  **Delivers a consolidated seven-stage operational architecture**: `Goal→[Zero]→Discrepancy→[Lord]→
+  CandidateActions→[Sārathi]→DecisionRecommendation→[Governance]→AuthorizedDecision→[Execution]→Action→
+  [Reality]→Outcome`, then `Outcome→Evidence→Knowledge` -- "the operational closure of the epistemic loop."
+  Delivers the compact Step-21 computational model, unifying the general decision function, the
+  probabilistic-optimum formula, the Pareto-optimum formula, and the robust-minimax formula into one
+  coherent decision layer.
+
+  **Delivers the file's most important single computational-boundary result**: four genuinely distinct
+  capabilities that must never be conflated -- `CanRecommend≠CanDecide≠CanAuthorize≠CanExecute` -- with the
+  explicit example that an LLM's ability to recommend does not imply authorization capability.
+
+  **Delivers the file's central formal deliverable -- eighteen canonical invariants (D1-D18)**: Knowledge≠
+  Goal; Goal≠Action; Decision≠Action; Recommendation≠Decision; Decision≠Authorization; Authorization≠
+  Execution; ExpectedOutcome≠ActualOutcome; Unknown Preconditions≠Satisfied Preconditions; HardConstraints
+  ≠Preferences; Utility≠Truth; Risk≠Probability; Optimization≠Authorization; action effects must be
+  empirically re-observed; decision provenance must preserve the knowledge state it depended on; high-risk
+  actions may require stronger epistemic support; NoAction is a legitimate candidate action; HumanOverride
+  is a legitimate governed decision path; the system may legitimately conclude DecisionNotReady.
+
+  **Delivers Step 21's verdict**: STRUCTURALLY RESOLVED, with the same recurring qualification as prior
+  steps -- the decision ARCHITECTURE is defined, but no single universal utility function, risk formula, or
+  optimization algorithm is selected; different bounded contexts may legitimately require expected utility,
+  robust optimization, Pareto analysis, minimax, threshold policies, rule-based decisions, or human
+  deliberation -- "the KnowledgeOS kernel should support these rather than impose one universal decision
+  theory," a further explicit instance of the corpus's recurring "no universal formula" pattern.
+
+  **Delivers a fourteen-stage consolidated full-cycle pipeline** (Reality→Observation→Evidence→Assessment
+  →Knowledge→SemanticInterpretation/Reasoning→DerivedKnowledge→[Goal+Knowledge]→Discrepancy→
+  CandidateActions→DecisionRecommendation→Authorization→Execution→Outcome→Observation), and delivers the
+  file's headline architectural self-characterization: KnowledgeOS is no longer merely "a system that knows
+  things" but **"a governed system for acquiring, representing, assessing, reasoning over, and
+  operationalizing knowledge under uncertainty,"** with the critical boundary
+  `AI→Interpretation/Candidate Generation` vs. `KnowledgeOS→Evidence/Semantics/Reasoning/Governance/
+  Decision Traceability` vs. (where permitted) `KnowledgeOS→Governed Action→Observed Reality`.
+
+  **Closes by identifying the next necessary foundation**: the closed loop lacks a formal treatment of how
+  identity is maintained ACROSS the loop over time -- connecting today's observation to yesterday's entity,
+  the document that mentioned it, the decision that depended on it, the action that changed it, the outcome
+  it produced, and the new observation afterward -- "more than ordinary IDs." **Opens "Step 22 — Identity,
+  Lineage, Provenance, Causality, and Traceability,"** explicitly named as **"one of the last foundational
+  steps before we can begin attempting a complete mathematical closure proof of the KnowledgeOS model"** --
+  a significant, strong signal that the theoretical-foundations research arc is very close to its planned
+  conclusion.
+introduces:
+  - concept: "The foundational operational-layer separation Knowledge≠Goal≠Decision≠Action≠Outcome, and the principle that a good decision is not the action with highest success probability but depends on purpose, utility, risk, constraints, authority, reversibility, and uncertainty jointly"
+  - concept: "Goal formalized as a rich structured object (desired state, purpose, scope, priority, constraints, deadline, authority), explicitly distinguished from both IdealState and from a bare action statement"
+  - concept: "Intention formalized as CommitmentToGoalOrPlan, distinct from Goal — 'what we want' versus 'what we are currently committed to pursuing'"
+  - concept: "Decision formalized to explicitly include NoAction as a legitimate alternative in the candidate action set"
+  - concept: "Authorization formalized as a distinct gate between Decision and Execution — a technically sound decision can still be unauthorized"
+  - concept: "Optimization≠Authorization — the mathematics can rank alternatives, but whether the organization may select the top-ranked one is a separate, policy-governed question"
+  - concept: "Sārathi precisely redefined as 'Decision Support and Decision Governance Orchestrator', explicitly not an autonomous decision-maker — producing DecisionRecommendation, and only where authorized, Decision"
+  - concept: "A clean restated Zero=Discrepancy / Lord=Possibility / Sārathi=Decision conceptual triad with precise function signatures for each"
+  - concept: "Plan≠Procedure — a plan is context-specific and composed from potentially reusable procedures"
+  - concept: "Formal Outcome classification and OutcomeDiscrepancy as a governed feedback mechanism into model updates, routed through the same evidence-assessment discipline as ordinary knowledge updates"
+  - concept: "Counterfactual decision comparison against an explicit NoAction baseline, and a caution against inferring causal decision validity from mere co-occurrence"
+  - concept: "Decision reproducibility, decision explanation (StructuredDecision→LLMExplanation, extending the corpus's Proof≠Explanation boundary), decision sensitivity analysis, and formal decision robustness across a plausible parameter space"
+  - concept: "The four distinct decision-related capabilities CanRecommend≠CanDecide≠CanAuthorize≠CanExecute, explicitly preventing an LLM's recommendation ability from being conflated with authorization or execution capability"
+  - concept: "Six proposed DDD bounded contexts for the whole goal-to-outcome operational pipeline (Goal & Intent, Planning, Decision, Governance, Execution, Outcome Context), with aggregate-boundary discipline via ID references"
+  - concept: "Eighteen canonical Step-21 invariants (D1-D18) governing goals, decisions, actions, and outcomes"
+  - concept: "'Step 22 — Identity, Lineage, Provenance, Causality, and Traceability', explicitly named as one of the last foundational steps before an attempted complete mathematical closure proof of the KnowledgeOS model"
+defines:
+  - concept: "Goal"
+    definition: "G=(GoalID,DesiredState,Purpose,Scope,Priority,Constraints,Deadline,Authority) — a desired state or outcome, richer than and distinct from a bare action statement or an IdealState"
+  - concept: "Intention"
+    definition: "Intention=CommitmentToGoalOrPlan — the system's or organization's current commitment to pursue a specific goal or plan, distinct from the goal itself"
+  - concept: "Action (structured semantic contract)"
+    definition: "A=(ActionID,Preconditions,Operation,ExpectedEffects,Resources,Constraints,RiskProfile,Reversibility,AuthorityRequirement)"
+  - concept: "Decision record"
+    definition: "D=(Goal,Alternatives,KnowledgeSnapshot,Evidence,Assumptions,Constraints,DecisionModel,ChosenAction,Authority,Timestamp,Rationale) — enabling decision reproducibility and explanation"
+  - concept: "Sārathi (further refined definition)"
+    definition: "Decision Support and Decision Governance Orchestrator — takes (K,Δ,G,𝒜,C,Risk,Policy) and produces DecisionRecommendation, or where authorized, Decision"
+refines:
+  - concept: "0557's (Step 15) Sārathi decision function, action formalization, expected utility, Pareto optimality, and robust/minimax decision theory"
+    refinement: "Embedded within a new, more complete Goal→Intention→Decision→Authorization→Execution→Outcome type hierarchy that did not previously exist explicitly, resolving the overlap flagged at 0563 as extension rather than duplication"
+  - concept: "0563's (Step 20) risk-adjusted epistemic requirement and value-of-information framework"
+    refinement: "Directly reused via 'high-risk actions may require stronger epistemic support' (D15) and the unknown-precondition/feasibility formalism, connecting uncertainty typing directly to action feasibility evaluation"
+  - concept: "0561's Proof≠Explanation architectural boundary"
+    refinement: "Applied identically to decisions: StructuredDecision→LLMExplanation, not LLM→OpaqueDecision"
+  - concept: "0558's/0560's/0561's/0562's reproducibility formalizations (KnowledgeStateVersion+PolicyVersion+..., RuleVersion, etc.)"
+    refinement: "Extended into the decision layer: Decision=f(K_t,G,𝒜,C,Π_v) where Π_v is the decision-policy version"
+  - concept: "0556's causal-model theory"
+    refinement: "Reapplied as an explicit caution against inferring causal decision validity from mere action-outcome co-occurrence"
+  - concept: "0560's aggregate reference-not-ownership discipline (Reference across contexts≠Ownership across contexts)"
+    refinement: "Applied to the Decision aggregate, which references GoalID/KnowledgeSnapshotID/CandidateActionID rather than embedding them"
+  - concept: "The recurring 'no universal formula, typed pluggable methods' architectural pattern (0545/0546, 0554, 0556, 0561, 0563)"
+    refinement: "Confirmed again for decision theory as a whole: the decision architecture is fixed, but no single universal utility function, risk formula, or optimization algorithm is selected"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 22 — Identity, Lineage, Provenance, Causality, and Traceability' is executed as its own dedicated corpus file, and whether it does indeed function as one of the last foundational steps before an attempted complete mathematical closure proof, as this file's own closing framing predicts"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Knowledge≠Goal≠Decision≠Action≠Outcome separation, the formal Goal/Intention structures, Decision's explicit inclusion of NoAction, Authorization as a distinct gate, and Optimization≠Authorization."
+  - "dimension-registry.md: record Sārathi's refined definition as Decision Support and Decision Governance Orchestrator, the Zero=Discrepancy/Lord=Possibility/Sārathi=Decision triad, Plan≠Procedure, Outcome classification and governed learning from outcomes, and counterfactual NoAction decision comparison."
+  - "dimension-registry.md: record decision reproducibility/explanation/sensitivity/robustness, the four distinct capabilities CanRecommend≠CanDecide≠CanAuthorize≠CanExecute, the six DDD bounded contexts, the eighteen D1-D18 invariants, Step 21's verdict, and 'Step 22 — Identity, Lineage, Provenance, Causality, and Traceability' as the next (near-final foundational) research phase."
+anchor_test:
+  anchor: "0563's Step-21 directive; 0557's (Step 15) Sārathi/action/utility/risk/Pareto/robust-decision theory; the bridge_candidate about Step 15/21 overlap flagged at 0563; 0556's causal theory; 0560's reference-not-ownership aggregate discipline; the recurring 'no universal formula' pattern"
+  supports_dimension: "LANDMARK delivering the corpus's first complete Goal/Intention/Decision/Action/Outcome type hierarchy, closing the epistemic-to-operational gap by formalizing the layers (Goal, Intention) ABOVE candidate actions that Step 15 had not addressed, while cleanly reusing and re-embedding Step 15's established decision mathematics rather than duplicating it — directly resolving the open overlap question flagged at 0563. Delivers a precise, final refinement of Sārathi's role as decision-support-and-governance-orchestrator rather than autonomous decision-maker, a crisp restated Zero/Lord/Sārathi conceptual triad, formal decision reproducibility/explanation/sensitivity/robustness machinery, and the crucial four-way capability separation (CanRecommend≠CanDecide≠CanAuthorize≠CanExecute) preventing any AI component's advisory ability from being conflated with governance authority. Closes with eighteen canonical invariants and a strong, explicit signal — naming Step 22 as one of the LAST foundational steps before an attempted complete mathematical closure proof — that the corpus's theoretical-foundations research arc is very near its planned conclusion"
+  refines_or_contradicts: "directly and fully executes 0563's Step-21 directive; resolves (as extension, not duplication) the overlap question flagged at 0563 regarding 0557's action/decision theory; reuses 0561's Proof≠Explanation boundary, 0556's causal caution, 0560's aggregate-reference discipline, and the reproducibility formalizations from 0558/0560/0561/0562; reconfirms the recurring no-universal-formula pattern for decision theory as a whole; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit resolution of the Step-15/Step-21 overlap question — this file cleanly reuses 0557's mathematics (EU, Pareto, robust minimax) rather than re-deriving it, while adding genuinely new structure (Goal, Intention, Plan≠Procedure, Outcome classification, four-way capability separation) — is directly checkable by comparing the two files' formal deliverables side by side, and resolves an open question this reconstruction itself raised at 0563."
+  - "The four-way capability separation CanRecommend≠CanDecide≠CanAuthorize≠CanExecute, illustrated by the concrete example that an LLM's recommendation ability does not imply authorization capability, is a checkable, falsifiable architectural claim directly testable against any concrete KnowledgeOS implementation for capability-boundary violations."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 22 — Identity, Lineage, Provenance, Causality, and Traceability' is executed as its own dedicated corpus file, and whether it functions as one of the last foundational steps before an attempted complete mathematical closure proof, as this file's closing framing strongly predicts"
+  - "Whether the eighteen D1-D18 invariants are ever cross-referenced against the corpus's many other independently-numbered invariant schemes from this same research program in a future canonical reference"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first complete Goal/Intention/Decision/Authorization/Execution/Outcome type hierarchy, closing the epistemic-to-operational gap by formalizing layers above candidate actions that the earlier Decision Theory step (0557) had not addressed, while cleanly re-embedding rather than duplicating that step's established mathematics — directly and satisfyingly resolving the overlap question this reconstruction itself flagged at 0563. Delivers a precise final refinement of Sārathi's role as a decision-support-and-governance orchestrator rather than an autonomous decision-maker, a crisp Zero/Lord/Sārathi conceptual triad, formal decision reproducibility/explanation/sensitivity/robustness machinery extending the corpus's established reproducibility and Proof≠Explanation principles into the decision layer, and the crucial four-way capability separation (CanRecommend≠CanDecide≠CanAuthorize≠CanExecute) that is central to any responsible AI-governance architecture. Closes with eighteen canonical D1-D18 invariants and a strong, explicit closing signal — Step 22 (Identity, Lineage, Provenance, Causality, Traceability) is named as one of the LAST foundational steps before an attempted complete mathematical closure proof of the entire KnowledgeOS model — indicating the theoretical-foundations research arc is very near its planned conclusion."

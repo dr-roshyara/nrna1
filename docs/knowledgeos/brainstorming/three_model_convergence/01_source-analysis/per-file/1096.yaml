@@ -1,0 +1,127 @@
+sequence: 1096
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/19-GITA-CANDIDATE-TIERING-COMPLETED-ALL-18-CHAPTERS.md
+title: "19 -- Gita Candidate Tiering COMPLETED (All 18 Chapters): Completes the Kernel-Candidate Tiering Survey (T4 Still 2, 0 New Primitives) but Discovers 'THE LANE CONFLICT' -- an Entire Parallel external_research Gita Lane Has Been Declaring SOLVED, on >=14 Counts, Exactly the Questions the Disciplined Research Lane Holds Rigorously OPEN, Using a FOURTH Disjoint Vocabulary at Primitive Level -- 'The Largest Single Finding of Completing the Survey Was Not a Candidate. It Was a Conflict'"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the completion of the Gita kernel-candidate tiering survey (superseding the 24-of-60 scope limit), discovering a major systemic lane conflict in the corpus"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1096
+importance: critical
+confidence: high
+about: >
+  "19 — Gītā Candidate Tiering COMPLETED · all 18 chapters adjudicated," superseding the already-tracked
+  scope limit ("24 of ~60 assessed"). Reads the ten remaining chapters (8-12, 14-18) directly rather than via
+  the correspondence register, confirming the tier counts do NOT change (T4 KERNEL still 2, 0 new primitives,
+  0 new canonical relations) but discovering something the register had concealed.
+
+  **DISCOVERS AND MEASURES A MAJOR SYSTEMIC "LANE CONFLICT" (`G-85`) -- THE MOST STRIKING FINDING OF THIS
+  FILE**: an entire parallel `external_research` Gītā lane, structured around section titles like "The
+  Missing Architecture — Solved" (×5), "The Transformation Algebra — Completed," and "The Supervisory
+  Verdict," has been DECLARING SOLVED across chapters 8-18 exactly the questions the disciplined research
+  lane (this reconstruction's already-tracked equality arc, files 1010-1094) holds rigorously OPEN, on AT
+  LEAST 14 MEASURED COUNTS: "all gaps addressed" (×8) vs. the already-tracked "0 of 13 closure-contract rows
+  satisfied" (file 1062); "Architecture Gap ✅ Solved" vs. the already-tracked "`261.23` ACTIVE — 0 of 6
+  conditions resolved, 4 FAILED" (files 1071/1084); "Type System ✅ Complete" vs. the already-tracked "`𝒪`
+  membership OPEN; 0 of 22 operations has a body, identity, or ratification" (file 1080); "Σ Theory ✅
+  Complete — three modes" vs. the already-tracked "`Σ` is FIVE axes, 2240 states; 0 of 5 ordered" (files
+  1037-1039); and, most strikingly, Chapter 15's claim to answer "the complete theory of knowledge identity...
+  what makes two knowledge objects the same" -- directly claiming to have SOLVED the exact equality question
+  this reconstruction's entire tracked research arc (files 1063-1094) establishes as its central, still-open
+  problem. Boxed: "Two lanes, one corpus, opposite verdicts on every load-bearing question. NEITHER CITES THE
+  OTHER."
+
+  **DIAGNOSES THIS AS A HIGHER-LEVEL, MORE SERIOUS INSTANCE OF THE ALREADY-TRACKED `G-68` VOCABULARY-
+  DISJUNCTION FINDING (file 1092)**: "This is `G-68`'s shape at a higher level. `G-68` recorded THREE disjoint
+  operation vocabularies. This is a DISJOINT CLOSURE STATUS -- and it is more serious, because a vocabulary
+  gap is visible on inspection while a closure-status gap is only visible IF YOU READ BOTH LANES."
+
+  **DISCOVERS A FOURTH DISJOINT VOCABULARY, THE FIRST AT PRIMITIVE LEVEL (`G-86`)**: measures the Chapter-13
+  seven-type ontology against the already-tracked ratified eight primitives (`C-022`/step-049), finding "1
+  CLEAR OVERLAP OF 8" (`Observation`) -- Entity, State (partial), Event, Proposition, Relation, Policy, Action
+  all absent from the Gītā-7, with four Gītā-only types (two of which, `KnowledgeAtma` and
+  `KnowledgeAtmaSupreme`, are `RX`). Boxed: "A seven-type ontology missing `Action`, `Policy`, `Event`,
+  `Relation` and `Proposition` cannot express admissibility, governance, transitions, or the assertion graph
+  -- i.e. cannot express the things Steps 285-291 are actually blocked on. IT IS NOT A COMPETING KERNEL; IT
+  IS A DIFFERENT SUBJECT."
+
+  **DELIVERS THREE CONCRETE, CHECKABLE TYPE ERRORS IN THE "SOLVED" FORMALIZATIONS (`G-87`, `G-88`, and part
+  of `G-85`)**, invisible from the correspondence register and only found by reading the chapters directly:
+  `E1` -- `𝒦_supreme=sup(Ω)` presupposes an order on `Ω` that measurement shows does not exist (0 of 5 `Σ`
+  axes ordered, `(Ω,𝓕,P)` does not exist per already-tracked `G-22`); `E2` -- the Chapter-14 `Σ` mapping
+  ("Supported"/"Refuted" values) targets the SUPERSEDED two-tuple `Σ_0=(D,S)` of Step 275, using values
+  absent from all five ratified axes of the actual, current `Σ`; `E3` -- Chapter 8's `𝒦_ātma`-preservation
+  claim quantifies over the unenumerated `𝒯`, "the same shape as `258.20`/`258.21`... a statement over an
+  unclosed set is not a solution." "All three are checkable, and all three were invisible from the
+  correspondence register... That is the specific reason `18`'s scope limit mattered."
+
+  **DELIVERS THE COMPLETED, CHAPTER-BY-CHAPTER TIER TABLE FOR ALL 18 CHAPTERS**, with a striking movement: T0
+  (refuted/`RX`) rises from 8 to 14 once chapters were read directly, entirely by MOVING candidates DOWN from
+  T1 (mere correspondence, no formalization checked) once their actual formalizations were found to type-
+  check badly -- "Reading the chapters directly did not add candidates. It moved SIX FROM T1 TO T0 -- because
+  the register listed their TERMS while the chapters contained their FORMALIZATIONS, and the formalizations
+  type-check badly."
+
+  **DELIVERS THE EXPLICIT NON-LICENSE BOUNDARY**: "Does NOT license: deleting, correcting or superseding the
+  `external_research` artifacts — that is a REGISTRY/GOVERNANCE act, not a research one... The conflict is
+  one of RECORD, not of derivation." And, critically, reframes the discovery as VALIDATING (not undermining)
+  the research lane's discipline: "none of this changes Steps 288-291. All remain `R6`. THE LANE CONFLICT IS
+  EVIDENCE THAT THE DISCIPLINE WORKED — the research lane reached its verdicts WITHOUT CONSULTING a parallel
+  lane that had declared victory."
+
+  Closes with the survey's own final self-assessment: "SYSTEMATIC ANSWER, COMPLETE: ≈60 candidates → 16
+  survive to T2+ → 2 reach the kernel, and both were already there. Fourteen are refuted. THE LARGEST SINGLE
+  FINDING OF COMPLETING THE SURVEY WAS NOT A CANDIDATE — IT WAS A CONFLICT."
+introduces:
+  - concept: "The major systemic lane conflict (G-85): an entire parallel external_research Gita lane declaring SOLVED, on at least 14 measured counts, exactly the questions the disciplined research lane holds rigorously open -- neither lane citing the other"
+  - concept: "The diagnosis that this lane conflict is a higher-level, more serious instance of the already-tracked G-68 vocabulary-disjunction pattern: a disjoint closure status rather than a merely disjoint vocabulary, invisible unless both lanes are read"
+  - concept: "The fourth disjoint operation/type vocabulary (G-86), the first at primitive level: the Chapter-13 seven-type ontology overlaps the ratified eight primitives in exactly one place, and cannot express the corpus's actual live blockers"
+  - concept: "Three concrete, checkable type errors (E1, E2, E3) in the external_research lane's 'solved' formalizations, invisible from the correspondence register and only discoverable by reading the chapters directly"
+  - concept: "The reframing of the lane conflict's discovery as validating, not undermining, the research lane's discipline: it reached its verdicts independently of a parallel lane that had already declared victory"
+defines:
+  - term: "G-85"
+    definition: "The lane conflict: the external_research Gita lane declares 'all gaps addressed' and equivalent completeness claims on at least 14 measured counts, while the research lane's own verdicts (0 of 13 closure rows, 0 of 6 261.23 conditions, etc.) hold the same questions open -- a strategic, estate-level conflict, not a theory-level one"
+  - term: "G-86"
+    definition: "A fourth disjoint vocabulary, the first at primitive level: the Chapter-13 seven-type Gita ontology overlaps the ratified eight KnowledgeOS primitives in only one place (Observation), missing Action, Policy, Event, Relation, and Proposition -- the very types needed to express the corpus's actual live blockers"
+  - term: "G-87"
+    definition: "Type error E1: Chapter 13's K_supreme=sup(Omega) presupposes an order on Omega that measurement shows does not exist"
+  - term: "G-88"
+    definition: "Type error E2: Chapter 14's Sigma mappings target the superseded two-tuple Sigma_0=(D,S) of Step 275, using values absent from all five axes of the ratified, current Sigma"
+  - term: "G-89"
+    definition: "Chapter 15's claim to supply a complete theory of knowledge identity directly conflicts with the research lane's established finding that the equality question remains open"
+refines:
+  - concept: "This reconstruction's already-tracked G-68 disjoint-operation-vocabulary finding (file 1092)"
+    refinement: "GENERALIZED into a higher-level, more serious pattern: not merely disjoint vocabularies but a disjoint CLOSURE STATUS between two parallel lanes of the corpus, discoverable only by reading both"
+  - concept: "This reconstruction's already-tracked ratified eight-primitive set and the already-tracked equality/closure findings across the entire equality research arc (files 1010-1094)"
+    refinement: "CONTRASTED against a rival, largely-disjoint external lane that claims these questions are already solved, with three concrete checkable type errors demonstrating the rival lane's formalizations are wrong, not merely differently scoped"
+contradicts:
+  - concept: "The external_research Gita lane's own claims of completeness (declared solved, complete architecture, complete transformation theory, complete knowledge-identity theory) across chapters 8-18"
+    contradicted_by: "This file's measured comparison against the research lane's own established verdicts (0 of 13 closure rows, 0 of 6 261.23 conditions, 0 of 22 operation bodies, 0 of 5 Sigma axes ordered), plus three concrete checkable type errors"
+repeats: []
+bridge_candidates:
+  - "The external_research directory's Gita-lane artifacts (the ten chapter analyses for chapters 8-18, plus Ch 13's rival seven-type ontology) -- confirmed to exist and cited extensively, but this reconstruction has not yet directly read them (they are placed non-normatively per this file's own note, and per standing conventions such non-normative external_research material may warrant the same treatment as the verification/ folder if encountered directly)."
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the major systemic lane conflict (G-85) between the disciplined research lane and the external_research Gita lane's completeness claims, the fourth disjoint vocabulary at primitive level (G-86), the three concrete type errors (G-87, G-88, and Ch-15's knowledge-identity overclaim), and the completed 18-chapter tier table (T4 still 2, T0 risen from 8 to 14)."
+anchor_test:
+  anchor: "This reconstruction's already-tracked G-68 vocabulary-disjunction finding (file 1092) and the entire equality research arc's established open verdicts (files 1010-1094)"
+  supports_dimension: "Generalizes G-68 into a higher-level lane-conflict discovery, and contrasts a rival lane's completeness claims against the research lane's rigorously-established open verdicts, with concrete checkable type errors"
+  refines_or_contradicts: "refines (generalizes) the prior tracked G-68 finding; directly contradicts the external_research lane's own completeness claims"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The lane-conflict comparison table (external_research claims vs. research-lane verdicts) is directly checkable against files 1037-1039, 1062, 1071, 1080, and 1084's own already-documented findings for exact consistency of the contrast."
+undefined_concepts: []
+open_questions:
+  - "Whether the external_research Gita lane's completeness claims are ever formally reconciled, corrected, or superseded via a registry/governance act, as this file explicitly declines to do so itself."
+  - "Whether the external_research directory's chapter analyses (the source of the lane-conflict claims) are directly encountered later in this reconstruction's sequential read, given their non-normative placement."
+tier2_triggered: true
+tier2_reason: "Delivers the single largest new discovery in this window: a major systemic lane conflict between the disciplined research lane and a parallel external_research Gita lane that has been declaring the corpus's central open questions SOLVED on at least 14 measured counts, including a direct false claim to have completed the exact equality theory this reconstruction's entire tracked research arc holds open. Also discovers a fourth disjoint vocabulary at primitive level and three concrete checkable type errors. Classified importance critical and confidence high given the scale, rigor, and directly-connective significance of this finding -- explicitly named by the source itself as 'the largest single finding of completing the survey.'"

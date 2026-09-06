@@ -1,0 +1,94 @@
+sequence: 222
+path: docs/knowledgeos/brainstorming/kernel/20260824-120203-shieber-theories-of-knowledge-what-must-stay-outside-the-kernel.md
+title: "Shieber, Theories of Knowledge — What Must Stay Outside the Kernel"
+date: "2026-08-24"
+bytes: 33500
+model:
+  primary: g1
+  secondary: c1
+source_role: PRIMARY_RESEARCH
+canonical_source: 222
+importance: critical
+confidence: high
+about: >
+  Joseph Shieber's "Theories of Knowledge: How to Think about What You Know" (foundations, coherence,
+  externalism, perception, memory, extended cognition, inference, testimony, social epistemology,
+  contextualism, skepticism), mined against fifteen KnowledgeOS lenses as a direct continuation of the
+  0221->0216 synthesis lineage ("the previous book gave us DOUBT->INQUIRY->ASSESSMENT->BELIEF/KNOWLEDGE
+  ->DECISION; this book adds the missing mechanistic substrate"). Produces the corpus's most refined
+  Epistemic Kernel formulation so far, a three-layer architecture (Epistemic Kernel / Epistemic
+  Mechanisms / Institutional-Operational), fifteen named K-NEW-01..K-NEW-15 invariants, and an extensive
+  Kernel-vs-outside-Kernel classification table. Note: Shieber previously appeared as a source for Kernel
+  Candidate v0.2 at 0173 (a different or earlier treatment); this file is a separate, much more extensive
+  pass, not cross-referenced to 0173.
+introduces:
+  - concept: "Input Rules + Transition Rules as the single strongest Kernel finding: EpistemicProcess = InputPolicy + TransitionPolicy, formalizing 'was this input allowed to participate?' and 'was this transformation allowed to produce the resulting claim?' -- promoted directly into the Kernel"
+  - concept: "Basing relation as distinct from evidence presence: Claim --is-based-on--> Evidence (not merely --mentions-->); EVIDENCE_PRESENT != EVIDENCE_USED_AS_BASIS; CLAIM_SUPPORT MUST BE TRACEABLE"
+  - concept: "Gettier stopped-clock anti-accident rule: TRUE_OUTCOME_BY_ACCIDENT != KNOWLEDGE; Correct(result)+Traceable(basis)+Valid(process)+Reliable(process,environment) must be distinguished from Correct(result) alone"
+  - concept: "RELIABILITY IS RELATIONAL, not an intrinsic mechanism property: ReliabilityAssessment(process, environment, conditions, population, time), motivated by the stopped-clock example (same mechanism reliable in one environment, unreliable in another)"
+  - concept: "Externalism validated as fitting KnowledgeOS's dependency on repositories/APIs/files/tests/databases/CI/agents/human testimony -- but explicitly: promote the PRINCIPLE (knowledge may depend on externally grounded reliability conditions) into the Kernel, not any specific reliability algorithm"
+  - concept: "'Mechanism != output' rule directly applied to LLMs: 'LLM says X' does not imply 'X is epistemically supported'; requires LLM_PROCESS -> RELIABILITY_PROFILE -> CONTEXT -> ASSESSMENT"
+  - concept: "Subpersonal-process warning for AI: SELF-EXPLANATION != PROCESS-TRANSPARENCY -- a system's explanation of its own process must not automatically be treated as the actual process provenance; model explanation is itself evidence/representation, not ground truth about computation"
+  - concept: "Self-knowledge attack on Transparency and Infallibility applied to AI agents: an agent's 'I verified this' cannot itself constitute verification evidence -- AgentClaim vs. VerificationEvidence must be distinct"
+  - concept: "Memory as reconstructive, not purely preservative (puzzle-assembly, not video-retrieval); COHERENCE != HISTORICAL ACCURACY, RECALL != ORIGINAL_EVIDENCE -- directly reinforces the corpus's existing Observation-immutability principle (OBSERVATION = immutable historical evidence; INTERPRETATION = mutable)"
+  - concept: "Extended Mind (Clark & Chalmers' Otto/Notebook) validates that epistemically relevant processes may cross system boundaries, but Extended Mind itself must NOT become a Kernel entity -- the specific tools (Notebook/Git/IDE/Database/LLM/Calculator/Search-engine/CI) belong outside Kernel"
+  - concept: "Deduction vs. Induction as distinct mechanism types (deduction: truth-preserving, no new information beyond premises; induction: probabilistically extends beyond premises), with only Inference/InferenceType/Validity-or-Support belonging in Kernel, not the algorithms"
+  - concept: "Raven paradox and Goodman's 'grue' problem: LOGICAL EQUIVALENCE != EVIDENTIAL EQUIVALENCE, OBSERVATION != AUTOMATIC GENERALIZATION -- evidence weighting cannot be purely syntactic/count-based"
+  - concept: "Testimony: rejects both pure presumptivism ('someone said it -> believe it') and pure inferentialism ('prove source reliability first'); externalist middle path: testimony provides knowledge when actually reliably accurate, without requiring conscious reliability-proof by the recipient"
+  - concept: "TestimonialSource as first-class (SourceIdentity/Context/Method/ReliabilityEvidence/HistoricalAccuracy/TransmissionPath), not a bare Claim.source string field"
+  - concept: "Source monitoring as Kernel-level justification for machine-maintained provenance: humans (and by AI-analogue, agents) are poor at remembering where beliefs came from -- KnowledgeOS should preserve source lineage externally rather than relying on agent memory of provenance"
+  - concept: "Social epistemology / distributed cognition (genome sequencing, Higgs-boson research, de Prony division-of-labor example) validates a 'systemic epistemic process' distinct from 'individual epistemic process' -- direct architectural rationale for the KnowledgeOS + AI Engineering Platform combination"
+  - concept: "EPISTEMIC PROCESS CLAIM -> EMPIRICAL VALIDATION rule: a designed process's reliability must be empirically tested, not assumed from design intent alone"
+  - concept: "ASSURANCE-BY-CONSTRUCTION principle: Process -> Evidence -> Verification -> Provenance -> Output, embedding assurance into the producing process rather than delegating entirely to downstream fact-checking (motivated by the book's institutional-fact-checking discussion)"
+  - concept: "Know-how / Know-wh / Know-that as distinct knowledge kinds -- Kernel vocabulary distinction only, concrete models deferred until DDD scenarios prove ownership"
+  - concept: "NO_SINGLE_UNIVERSAL_EVIDENCE_SOURCE: rationalism-vs-empiricism debate supports KnowledgeOS being source-neutral (reason/experience/memory/inference all legitimate source structures)"
+  - concept: "'Challenge without destruction' pattern from skepticism: KnowledgeStatus and DefensibilityStatus should be distinct -- a skeptical challenge can reduce confident defensibility without destroying underlying knowledge"
+  - concept: "AssertionStatus as distinct from EpistemicStanding (contextualism-motivated): a claim can be SUPPORTED epistemically yet NOT_SAFE_TO_ASSERT in a high-stakes context -- avoids making context mutate Truth directly"
+  - concept: "Pragmatic and moral encroachment explicitly kept OUTSIDE the Kernel (the book itself does not endorse either as final theory): risk/decision-threshold/safety/regulatory/moral policy influence decision/governance layers, never redefine epistemic truth itself"
+  - concept: "Three-layer epistemic architecture: EPISTEMIC KERNEL (Claim/Evidence/Basing/Provenance/EpistemicStanding/InputRules/TransitionRules/Inference/ReliabilityRelation/Revision/Challenge/TemporalIdentity) -> EPISTEMIC MECHANISMS (Deduction/Induction/Bayesian/Search/Perception/Memory/LLM/Retrieval/Simulation/Testing/Statistical) -> INSTITUTIONAL/OPERATIONAL (Governance/Authority/Risk/Decision/HumanReview/RegulatoryPolicy/Workflow/AgentOrchestration/OrganizationalRoles)"
+  - concept: "Fifteen named candidate invariants K-NEW-01..K-NEW-15 (evidence-presence!=grounding; standing depends on basing; correctness!=knowledge; reliability relative to environment; reliability!=confidence; input!=transition admissibility; coherence!=truth; memory-reconstruction!=historical-evidence; source-provenance-must-not-depend-on-memory; agent-self-explanation!=actual-provenance; assertion-requirements!=epistemic-standing; decision-thresholds-must-not-redefine-truth; knowledge-may-depend-on-external-reliable-processes; socially-distributed-processes-can-be-epistemically-constitutive; system-level-reliability-can-exceed-individual-capability)"
+  - concept: "Refined AI-hallucination model: not merely 'wrong answer' but TRUE/FALSE + BASING FAILURE + PROCESS RELIABILITY FAILURE + PROVENANCE FAILURE; worked example: agent claims repository observation that was actually pattern-memory generation -- CLAIM BASIS != CLAIM CONTENT"
+  - concept: "Two new AI-platform assurance rules: a claim must not claim a source that did not actually produce its basis; DECLARED_REASONING != ACTUAL_EPISTEMIC_PROVENANCE"
+  - concept: "Refined Kernel conceptual model diagram: Claim<-Evidence+Source-Basing->EpistemicProcess(InputRules+TransitionRules+Context)->Assessment->{EpistemicStanding, AssuranceStatus}->Assertion->Decision->Action->Outcome->NewEvidence"
+  - concept: "Sharpest Kernel formulation yet: 'The KnowledgeOS Kernel is not a database of knowledge and not a truth engine. It is a governed epistemic substrate that preserves claims, evidence, basing, provenance, epistemic processes, admissible inputs, admissible transitions, reliability conditions, assessments, challenges and revisions.'"
+defines: []
+refines:
+  - concept: "0221's Doubt->Inquiry->Assessment->Belief/Knowledge->Decision chain and the 0216 synthesis lineage"
+    refinement: "Adds the missing mechanistic substrate: Basing relation, Input/Transition rule pair, an Assurance layer distinct from Epistemic Standing, and AssertionStatus distinct from both -- deepening rather than competing with 0216's KnowledgeClaim/Evidence/Determination/Authority structure."
+  - concept: "0210/0211's Selection Procedure and evidence-as-status work"
+    refinement: "Independently reinforces Selection-Procedure-style thinking via the Gettier stopped-clock example and process-reliability-is-relational principle, arriving at a compatible but philosophically distinct (process-reliabilism vs. Achinstein's selection-procedure) justification."
+contradicts: []
+repeats:
+  - concept: "Knowledge-how vs. knowledge-that distinct kinds (Ryle)"
+    canonical_source: 221
+    novelty: low
+  - concept: "Memory/coherence != truth or historical accuracy"
+    canonical_source: 221
+    novelty: low
+bridge_candidates:
+  - "Shieber also appeared as a source for Kernel Candidate v0.2 at 0173 -- this file is a separate, far more extensive treatment, not cross-referenced. Noted for future comparison of whether the two Shieber-derived structures (0173's Kernel Candidate v0.2 vs. this file's Epistemic Kernel) are reconcilable, but not logged as a new unresolved_equivalence since this file explicitly continues the 0216/0221 lineage rather than proposing an independent competing structure."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0216/0221 synthesis lineage; Kernel Candidate v0.2 (0173, also Shieber-sourced)"
+  supports_dimension: "Gita/philosophical model (Western analytic epistemology) deepening the Engineering-KnowledgeOS synthesis lineage with a mechanistic substrate (Basing, Input/Transition rules, Assurance)"
+  refines_or_contradicts: "refines 0221/0216; does not contradict; unreconciled overlap with 0173's separate Shieber-derived Kernel Candidate v0.2 noted but not logged as equivalence"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Gettier stopped-clock example applied concretely to derive the Reliability-is-relational Kernel principle (same read(clock) process valid in a normal environment, unreliable in a stopped-clock environment)"
+  - "Concrete AI-hallucination worked example (agent claims a repository observation that was actually model pattern-memory generation) directly grounding the CLAIM BASIS != CLAIM CONTENT invariant in an AI Engineering Platform failure mode"
+undefined_concepts:
+  - "No formal specification of how InputRule/TransitionRule policies would be encoded or enforced mechanically -- named as Kernel vocabulary, not implemented"
+  - "Exact boundary between Assurance and EpistemicStanding left as a principle distinction, not a formal schema"
+open_questions:
+  - "Whether this file's Epistemic Kernel (Claim/Evidence/Basing/EpistemicProcess/Assessment/EpistemicStanding/Assurance/Assertion/Decision) is ever explicitly reconciled with 0216's KnowledgeClaim/Evidence/Determination/Authority structure into one canonical vocabulary"
+  - "Whether the fifteen K-NEW invariants are ever merged into the corpus's cumulative invariant registry alongside 0216's seventeen invariants and 0221's twenty invariants"
+tier2_triggered: true
+tier2_reason: "Critical, unusually dense continuation of the 0216/0221 synthesis lineage producing the corpus's most refined Epistemic Kernel formulation so far, with a mechanistic substrate (Basing relation, Input/Transition rules, Assurance layer distinct from Epistemic Standing), fifteen named invariants, and a concrete AI-hallucination model (basing-failure vs. mere incorrectness) directly actionable for the AI Engineering Platform."

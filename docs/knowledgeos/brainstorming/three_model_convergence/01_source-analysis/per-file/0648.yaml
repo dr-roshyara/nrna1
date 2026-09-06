@@ -1,0 +1,197 @@
+sequence: 648
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-115002_step-066-partial-observability-and-the-epistemic-boundary.md
+title: "CORPUS-INTEGRITY NOTE: Step 66 Processed Before Step 65 Due to Out-of-Order File Timestamps (065's file timestamped 115054, LATER Than 066's 115002) — LANDMARK-ADJACENT Content Nonetheless: the New Observable→Identifiable→Computable Three-Boundary Hierarchy, None of the Implications Automatically Reversible, Directly Resolving the Corpus's Long-Running 'Normal PC' Question With Unprecedented Precision; the Boxed Theorem-Like Principle 'If Two States Are Observationally Indistinguishable Under the Available Observation Model, Computation Alone Cannot Recover the Distinction' ('One of the Most Important Epistemic Limits We Have Encountered'); a Five-Way Unknown/Uncertain/Ambiguous/NonIdentified/Unobservable Distinction; 'No Downstream Computational Layer May Silently Upgrade the Epistemic Status of Its Input' as a Foundational Principle Unifying Five Prior Corpus Disciplines; Six New Named Invariants; Plain Verdict 'STEP 66 — PASS' Self-Described as 'One of the Deepest Results So Far'; Opens Step 67 (The Epistemic Type System)"
+date: "2026-08-28"
+bytes: 19573
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 66 -- Partial Observability and the Epistemic Boundary'; the corpus's own text opens 'up to Step 65, we have modeled...' confirming Step 65 (Multi-Agent Epistemic Independence and Error Propagation, promised at 0647's close) genuinely exists and precedes this file topically, even though its source file (timestamped 20260828-115054) sorts AFTER this file's timestamp (20260828-115002) in the corpus's own filesystem, causing resume.py to sequence this file first"
+source_role: PRIMARY_RESEARCH
+canonical_source: 648
+importance: critical
+confidence: high
+about: >
+  **CORPUS-INTEGRITY NOTE (file-ordering anomaly, not a content collision)**: this file's own opening
+  line -- "up to Step 65, we have modeled..." -- confirms that Step 65 ("Multi-Agent Epistemic Independence
+  and Error Propagation," explicitly promised at the close of 0647/Step 64) is a real, already-written prior
+  step this file builds on. However, Step 65's actual source file on disk carries the timestamp
+  `20260828-115054`, which sorts numerically *after* this file's timestamp (`20260828-115002`), causing
+  the corpus's `resume.py` sequencing (driven by filename/timestamp order) to present this file (Step 66)
+  immediately after 0647 (Step 64), with Step 65's file to be encountered next in the processing queue.
+  This is analogous to the corpus's two earlier passively-discovered out-of-order-file incidents noted
+  earlier in this research program: a genuine filesystem/authoring-timestamp artifact, not a content gap or
+  duplicate. This reconstruction will process Step 65's actual file immediately following this record, and
+  will cross-check its content against this file's own internal reference to confirm consistency once read.
+
+  Substantively, opens Step 66 by identifying a foundational boundary beneath the corpus's established
+  Evidence→Knowledge chain: KnowledgeOS never observes the world directly, only measurements, signals,
+  documents, events, and reports, yielding the more complete chain
+  `Reality→Observation→Measurement→Evidence→Knowledge→Decision`. Delivers Hidden state formalized
+  (`O_t~P(O_t|X_t)`, `O_t≠X_t` in general), worked through a concrete HTTP-200-does-not-imply-Healthy
+  example (directly extending 0647's `OperationalHealth≠EpistemicValidity` principle into the observation
+  layer specifically), confirmed via an observation-mistaken-for-state experiment correctly yielding
+  `UnsupportedInference`.
+
+  Delivers a formal Belief state (`b_t(x)=P(X_t=x|O_{1:t})`), explicitly allowing KnowledgeOS to represent
+  `BeliefAboutState` rather than pretending to know the actual state, confirmed via an experiment correctly
+  rejecting the collapse of a probabilistic state estimate into a bare deterministic status field. Delivers
+  Partial observability formally defined (multiple states compatible with the same observation,
+  `P(O|x_1)>0∧P(O|x_2)>0`), confirmed via an ambiguity experiment correctly yielding
+  `KnowledgeState=Ambiguous` rather than an arbitrary single-state assertion.
+
+  Delivers Measurement error formalized (`Y=X+ε`, `Measurement=Value+Uncertainty`), with a measurement-
+  treated-as-exact experiment correctly rejected when an accuracy specification exists, and Unit semantics
+  crystallized as **`Value without semantic unit is incomplete`**, confirmed via a unit-ambiguity experiment
+  (5m vs. 5ft incorrectly treated as numerically identical, correctly rejected). Delivers `Missing≠Zero`
+  reconfirmed with a null-inferred-as-zero experiment correctly rejected, and the established `MCAR/MAR/
+  MNAR` missingness-mechanism discipline reconfirmed once more specifically at the observation-layer level.
+  Delivers Selection bias (`P(X|S=1)≠P(X)`) and Sampling bias/population-scope reconfirmed with two
+  dedicated experiments (a training-data-excludes-failures scenario correctly yielding
+  `SelectionBiasWarning`; an unjustified population-transfer scenario correctly yielding
+  `UnsupportedGeneralization`).
+
+  **Delivers the file's central formal deliverable, self-described as "one of the most important epistemic
+  limits we have encountered" -- Observational equivalence and a boxed theorem-like principle**: when two
+  world states produce identical observable distributions (`P(O|x_1)=P(O|x_2)`), they are observationally
+  equivalent under the available measurements, and **"if two states are observationally indistinguishable
+  under the available observation model, computation alone cannot recover the distinction"** -- confirmed
+  via a dedicated experiment granting KnowledgeOS unlimited computation over the shared observation and
+  correctly yielding `CannotDistinguish(x_1,x_2)` regardless. Delivers a formal Observation map
+  `𝒪:X→O`, explicitly noted as potentially non-injective, with the important consequence that state
+  identification is inherently limited whenever `𝒪` fails to be injective over the relevant state space --
+  and the corresponding architectural warning that "KnowledgeOS cannot solve `ObservationArchitecture`
+  problems merely by adding more AI": if the necessary signal was never captured, no amount of inference can
+  reliably reconstruct it, confirmed via a missing-sensor experiment correctly yielding
+  `InferenceStatus=ModelDependent` rather than `Observed`.
+
+  **Delivers a genuinely new, precise five-way epistemic-state taxonomy explicitly required not to
+  collapse into one generic `unknown` flag**: `Unknown` (insufficient current knowledge), `Uncertain`
+  (multiple possibilities with assigned probabilities), `Ambiguous` (observations supporting multiple
+  interpretations), `Non-identifiable` (the quantity cannot be uniquely determined under current
+  assumptions/data), and `Unobservable` (the relevant state cannot be distinguished through the available
+  observation mechanism) -- confirmed via a dedicated experiment keeping all five statuses semantically
+  distinct.
+
+  **Delivers the file's second central formal deliverable -- a new three-boundary hierarchy directly and
+  precisely resolving the corpus's long-running "normal PC" line of inquiry (0630, 0637)**:
+  `Observable≠Computable`, `Observable≠Identifiable`, and `Identifiable≠ComputationallyCheap`, yielding
+  **`Observable→Identifiable→Computable`**, explicitly noting none of these implications is automatically
+  reversible -- a quantity may be trivially computable yet impossible to observe from available data
+  (confirmed via a computationally-feasible-but-epistemically-impossible experiment correctly yielding
+  `NotIdentifiable`), or theoretically identified yet require enormous computational resources (confirmed
+  via a large-but-identified inference problem correctly yielding `Identified=True` alongside
+  `ComputationalCost=High`). This directly and precisely reframes the corpus's earlier, less structured
+  "normal PC" discussions into a clean three-stage dependency chain, formalized as an explicit epistemic
+  boundary (`Reality→[Observation]→ObservableWorld→[Inference]→IdentifiedKnowledge→[Computation]→
+  DecisionSupport`), explicitly noted to prevent category errors between these stages.
+
+  Delivers a formal `Measurement` domain object (`Quantity, Value, Unit, Timestamp, Instrument,
+  Uncertainty, Method`) and a four-stage Evidence hierarchy (`Observation→Measurement→Evidence→Claim`),
+  worked through a concrete CPU-temperature example distinguishing a raw measurement (`78.5°C`) from a
+  derived claim ("CPU is overheating") from an AI hypothesis ("thermal paste is degraded") as three
+  genuinely distinct epistemic objects, confirmed via a hypothesis-promotion experiment correctly rejecting
+  the reclassification of an AI hypothesis as an `ObservedFact`. **Delivers an explicit cross-reference
+  back to Step 65's multi-agent theme**: an AI-generated hypothesis may enter the multi-agent ecosystem, but
+  its ancestry (`Measurement→Inference→Hypothesis`) remains fixed -- it "cannot become an independent
+  observation merely because another AI repeats it," directly foreshadowing (and confirming as already
+  covered) the exact concern Step 65 was opened to investigate.
+
+  Delivers formal Temporal state estimation (`P(X_t|X_{t-1})`, belief update `P(X_t|O_{1:t})`), reconfirming
+  the belief-state/partially-observable framing first introduced at 0625, with a stale-observation
+  experiment correctly flagging `TemporalStaleness`. Delivers `Truth(p,t)` formally time-indexed with
+  Historical truth reconfirmed (both `p_{t_0}=True` and `p_{t_1}=False` correct within their own temporal
+  contexts, confirmed via a historical-fact-retrieval experiment), `ValidTime` formally distinguished from
+  `RecordedTime`, and Event time formally distinguished from Processing time (`t_e<t_p`), confirmed via a
+  delayed-evidence experiment correctly preserving both timestamps rather than conflating them. Delivers
+  Source clock uncertainty acknowledged for distributed, multi-system integration (Git, CI/CD, production
+  monitoring, documents, human decisions, AI agents), with the explicit caution that "the architecture
+  should not assume timestamps are magically perfect."
+
+  **Delivers Step 66's synthesis -- a complete, ten-stage epistemic chain**: `Reality→State→Observation→
+  Measurement→Evidence→Inference→Knowledge→Decision→Action→Outcome`, with feedback
+  `Outcome→Observation→Evidence→Learning`. **Delivers six new, explicitly named formal invariants**:
+  `I_{Observation}` (an observation must not be silently equated with the underlying world state),
+  `I_{Measurement}` (measurement uncertainty and semantic units must be preserved where relevant),
+  `I_{Missing}` (missing data must not be interpreted as a substantive value without explicit semantics),
+  `I_{Population}` (evidence from one population must not automatically become universal knowledge),
+  `I_{Observability}` (observationally indistinguishable states must have that limitation preserved, not
+  silently resolved), and `I_{TemporalTruth}` (time-dependent observations retain their temporal scope).
+
+  **Delivers Step 66's verdict in a plain phrasing -- "STEP 66 — PASS" -- explicitly self-described as
+  "one of the deepest results so far"**: **"KnowledgeOS cannot manufacture epistemic access to a part of
+  reality that its observation architecture cannot distinguish"** -- explicitly and importantly
+  characterized as "not a software limitation. It is a mathematical limitation." Delivers a four-world
+  formal distinction (`World W`, `Observation O(W)`, `Knowledge K(O)`, `Decision D(K)`), yielding
+  `W≠O≠K≠D` in general, and **the file's crowning foundational principle**: **"no downstream computational
+  layer may silently upgrade the epistemic status of its input,"** worked through five concrete
+  non-implications that consolidate essentially every major non-collapsing distinction the corpus has
+  established across its entire history: `Measurement⇏Fact`, `Fact⇏CausalExplanation`,
+  `Prediction⇏Outcome`, `AIConsensus⇏IndependentEvidence`, and `Decision⇏Authorization`, explicitly
+  declared "becoming a coherent epistemic type system."
+
+  **Closes by proposing to formalize this accumulated vocabulary as an actual type system**, listing
+  thirteen accumulated epistemic distinctions (`Observation, Measurement, Evidence, Fact, Claim, Inference,
+  Hypothesis, Prediction, CausalEstimate, Counterfactual, Decision, Authorization, Action`), posing "can we
+  formalize them as an epistemic type system?" that would permit stating rules like
+  `Measurement⊄CausalClaim` or `AIOutput↛VerifiedFact` without ad hoc validation. **Opens "Step 67 — The
+  Epistemic Type System,"** explicitly framed as "a major transition from mathematical concepts to
+  computable architecture semantics." No actual code execution reported in this file. No corpus-integrity
+  content collision detected (the file-ordering anomaly is a timestamp/sequencing artifact, not a topic
+  duplication).
+introduces:
+  - concept: "The Observable→Identifiable→Computable three-boundary hierarchy, with none of the implications automatically reversible, precisely resolving the corpus's long-running normal-PC line of inquiry"
+  - concept: "The boxed theorem-like principle that observationally indistinguishable states cannot be resolved by any amount of computation, self-described as one of the most important epistemic limits encountered"
+  - concept: "A five-way epistemic-state taxonomy (Unknown/Uncertain/Ambiguous/Non-identifiable/Unobservable) explicitly required not to collapse into one generic flag"
+  - concept: "The foundational principle that no downstream computational layer may silently upgrade the epistemic status of its input, consolidating five major non-collapsing distinctions established across the corpus's history"
+  - concept: "Six new named invariants (I_Observation, I_Measurement, I_Missing, I_Population, I_Observability, I_TemporalTruth) extending the corpus's invariant-catalog family into the observation layer"
+  - concept: "A file-ordering anomaly: Step 66 sequenced before Step 65 due to Step 65's later filesystem timestamp, despite this file's own text confirming Step 65 already exists as a completed prior step"
+defines:
+  - concept: "Observable→Identifiable→Computable"
+    definition: "Three independent boundaries a quantity must clear before becoming decision-relevant: whether it can be observed at all given the available measurement architecture, whether the desired estimand can be uniquely determined from what is observed given the model/assumptions, and whether that identified quantity can be computed within available resources — none of these properties implies any of the others"
+  - concept: "Observationally equivalent states"
+    definition: "Two world states x_1, x_2 are observationally equivalent if they induce identical observation distributions (P(O|x_1)=P(O|x_2)); no amount of additional computation over the resulting observations can distinguish them, since the information required to do so was never captured by the observation process"
+  - concept: "No downstream computational layer may silently upgrade the epistemic status of its input"
+    definition: "A foundational KnowledgeOS principle requiring every processing stage to preserve, not inflate, the epistemic category of what it receives — a measurement must not become a fact, a fact must not become a causal explanation, a prediction must not become an outcome, AI consensus must not become independent evidence, and a decision must not become an authorization, purely by virtue of passing through another computational stage"
+refines:
+  - concept: "0647's (Step 64) OperationalHealth≠EpistemicValidity principle"
+    refinement: "Directly extended into the observation layer itself via the HTTP-200-does-not-imply-Healthy worked example, showing the same discipline applies from raw observation through to model-level health reporting"
+  - concept: "0630's/0637's established 'normal PC' computability discussion and three-way Epistemic/Computational/Mathematical failure taxonomy"
+    refinement: "Given a precise, cleanly staged three-boundary hierarchy (Observable→Identifiable→Computable) that reframes the earlier, less structured discussion into a formal dependency chain with explicit non-reversibility"
+  - concept: "0625's (Step 44) hidden-state/belief-state POMDP-like framing"
+    refinement: "Directly reconfirmed and extended with formal partial-observability definitions and a five-way epistemic-state taxonomy not previously stated this precisely"
+  - concept: "The corpus's established MCAR/MAR/MNAR missingness discipline (0606, 0617, 0645)"
+    refinement: "Reconfirmed once more specifically at the raw-observation/measurement layer, extending its applicability downward from evidence-level reasoning to sensor-level data collection"
+  - concept: "0647's closing preview of Step 65 (Multi-Agent Epistemic Independence and Error Propagation)"
+    refinement: "Directly and explicitly cross-referenced within this file (an AI-generated hypothesis cannot become independent observation merely by repetition), confirming Step 65's content already exists and precedes this file topically despite the file-ordering anomaly in processing sequence"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: read Step 65's actual source file (timestamped 20260828-115054, out of numeric sequence relative to this file) next, and cross-check its content against this file's own internal reference to it, to confirm the file-ordering anomaly is purely a timestamp artifact with no missing or duplicated substantive content."
+  - "Track whether Step 67 (The Epistemic Type System) delivers a genuinely formal type-system treatment (e.g. explicit subtyping/coercion rules between the thirteen listed epistemic categories) rather than a further narrative restatement of the same non-collapsing principles."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CORPUS-INTEGRITY FILE-ORDERING NOTE (Step 66 processed before Step 65 due to a later filesystem timestamp on Step 65's file, confirmed as a sequencing artifact via this file's own internal reference to Step 65 as an existing prior step); the new Observable→Identifiable→Computable three-boundary hierarchy; and the boxed theorem-like principle on observationally indistinguishable states."
+  - "dimension-registry.md: record the five-way epistemic-state taxonomy (Unknown/Uncertain/Ambiguous/Non-identifiable/Unobservable); the foundational 'no downstream layer may silently upgrade epistemic status' principle consolidating five major corpus disciplines; and six new named invariants (I_Observation, I_Measurement, I_Missing, I_Population, I_Observability, I_TemporalTruth)."
+  - "dimension-registry.md: record the complete ten-stage epistemic chain (Reality→State→Observation→Measurement→Evidence→Inference→Knowledge→Decision→Action→Outcome); the four-world W≠O≠K≠D distinction; the plain verdict 'STEP 66 — PASS' self-described as one of the deepest results so far; and the opening of Step 67 into a formal epistemic type system."
+anchor_test:
+  anchor: "The corpus's earlier normal-PC/computability discussions (0630, 0637); 0625's hidden-state/belief-state framing; 0647's OperationalHealth≠EpistemicValidity principle; 0647's Step-65 preview; the corpus's established MCAR/MAR/MNAR missingness discipline"
+  supports_dimension: "Delivers a genuinely significant new formal contribution — the Observable→Identifiable→Computable three-boundary hierarchy — that precisely and cleanly resolves what the corpus's earlier, more scattered normal-PC discussions had left as a looser set of related observations, correctly establishing that none of the three properties implies any other. Delivers a directly checkable, theorem-like principle about observationally indistinguishable states that the file itself correctly and modestly identifies as one of its most important results, grounded in a genuine mathematical argument (a computation over O alone cannot recover information O does not encode) rather than an assertion. Delivers a precise five-way epistemic-state taxonomy that meaningfully sharpens the corpus's recurring but previously less differentiated Unknown-adjacent vocabulary. Delivers a genuinely valuable synthesizing principle ('no downstream layer may silently upgrade epistemic status') that correctly and economically unifies five previously separately-stated non-collapsing distinctions from across the corpus's history into one coherent statement. Directly and explicitly cross-references Step 65 in a way that both confirms Step 65's genuine prior existence and demonstrates real content-level integration across the two files, supporting the conclusion that the file-ordering discrepancy is a filesystem/timestamp artifact rather than evidence of missing or duplicated content"
+  refines_or_contradicts: "directly and precisely extends 0630's/0637's normal-PC computability discussion into a clean three-boundary hierarchy; directly extends 0625's hidden-state/belief-state framing with formal definitions and a new taxonomy; directly extends 0647's OperationalHealth≠EpistemicValidity principle into the observation layer; directly and explicitly cross-references 0647's Step-65 preview, confirming Step 65's prior existence; reconfirms the corpus's established MCAR/MAR/MNAR discipline at a new (sensor/observation) layer; no contradiction found; no corpus-integrity content collision detected (the file-ordering issue is a sequencing artifact only)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The file's own opening sentence — 'up to Step 65, we have modeled...' — together with its later explicit cross-reference ('this connects back to Step 65... it cannot become an independent observation merely because another AI repeats it') is directly checkable, concrete textual evidence that Step 65 is a genuine, already-existing prior step this file assumes and builds on, directly supporting the conclusion that the observed file-ordering discrepancy (Step 65's file timestamped later than Step 66's) is a filesystem/authoring artifact rather than a content gap."
+  - "The explicit dual worked example distinguishing a computationally-trivial-but-epistemically-impossible scenario (identical observations under two states, unlimited computation still cannot distinguish them, correctly yielding NotIdentifiable) from an identifiable-but-computationally-expensive scenario (a large but theoretically identified inference problem correctly yielding Identified=True alongside ComputationalCost=High) is directly checkable, concrete evidence that the Observable→Identifiable→Computable hierarchy's claimed non-reversibility is grounded in genuinely distinct, independently constructed scenarios rather than asserted without support."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 65's actual content (once read) is fully consistent with this file's internal references to it, confirming the file-ordering anomaly is purely a timestamp artifact with no missing or duplicated substantive content"
+  - "Whether Step 67 delivers a genuinely formal type-system treatment (explicit subtyping/coercion rules) rather than a further narrative restatement of the corpus's established non-collapsing principles"
+tier2_triggered: true
+tier2_reason: "Delivers a genuinely significant new formal contribution — the Observable→Identifiable→Computable three-boundary hierarchy — precisely resolving the corpus's long-running normal-PC computability discussion with a clean, non-reversible three-stage dependency chain. Delivers a directly checkable, theorem-like principle about observationally indistinguishable states, self-described (correctly and modestly) as one of the most important epistemic limits encountered. Delivers a precise five-way epistemic-state taxonomy sharpening the corpus's recurring Unknown-adjacent vocabulary. Delivers a genuinely valuable synthesizing principle ('no downstream layer may silently upgrade epistemic status') unifying five previously separate corpus disciplines into one coherent statement. Directly and explicitly cross-references Step 65, confirming its prior existence and resolving the file-ordering anomaly as a timestamp artifact rather than a content gap. Verdict 'STEP 66 — PASS,' self-described as one of the deepest results so far. Opens Step 67 into a formal epistemic type system, explicitly framed as a major transition toward computable architecture semantics."

@@ -1,0 +1,41 @@
+sequence: 70
+path: docs/knowledgeos/brainstorming/_misc/20260819-221159-digitalization-robot-vision.md
+title: Digitalization Robot Vision (AI operator layer on KnowledgeOS)
+date: 2026-08-19
+bytes: 12529
+
+model:
+  primary: c1
+  secondary: [ddd, governance]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: low
+confidence: high
+
+about: >
+  Vision for a "Digitalization Robot" AI operator layer (4 modes: Advisor/Developer-Assistant/
+  Controlled-Executor/Autonomous-Operator) consuming KnowledgeOS as governed substrate; explicitly
+  not the core domain.
+
+introduces:
+  - digitalization_robot_four_operating_modes
+  - robot_skills_as_composable_capability_units
+
+defines: []
+refines: []
+contradicts: []
+repeats: []
+
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence: []
+undefined_concepts: [knowledge]
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: "Product-vision content already referenced forward at 0066/0069; no formal/math/Gita/Kernel content."

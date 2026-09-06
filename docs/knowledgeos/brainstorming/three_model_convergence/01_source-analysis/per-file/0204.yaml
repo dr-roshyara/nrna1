@@ -1,0 +1,159 @@
+sequence: "0204"
+path: docs/knowledgeos/brainstorming/kernel/20260824-025232-human-ai-collaboration-layer-outside-the-kernel.md
+title: "A third technical source (a Human-AI Collaboration/HCI book) completing the 0202-0203-0204 technical trilogy: eight major patterns (FEAS credibility model, Accountability Chain, Risk-x-Confidence Routing, Privacy Classification, Trust Calibration), an explicit KnowledgeOS/AI-Platform ownership table, and a new architectural layer -- Human-AI Collaboration -- explicitly kept outside the Kernel"
+date: "2026-08-24"
+bytes: 22000
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0204"
+importance: high
+confidence: high
+about: >
+  A third technical/applied source, completing a clear trilogy with 0202 (transactional domain machinery)
+  and 0203 (knowledge-access/RAG machinery): a Human-AI Collaboration/HCI research book supplying "the
+  human-AI governance, interaction, trust, feedback, and collaboration machinery." Central conclusion, the
+  file's headline finding: "Do not put Human-AI Interaction into the KnowledgeOS kernel. Put it around the
+  kernel as the Human-AI Collaboration/Assurance layer of the AI Engineering Platform" -- explicitly framing
+  human-AI collaboration as a joint cognitive system with complementary intelligences, distinguishing
+  interaction QUALITY from interaction MODE. Extracts eight major patterns with an explicit ownership
+  column (mostly assigned to the AI Engineering Platform, not KnowledgeOS core): (1) Human-AI Role
+  Allocation, called "probably the single most valuable architectural idea in the book" -- a formal
+  CollaborationPolicy schema (task/ai_role/human_role/ai_may/ai_must_not/human_must) explicitly compatible
+  with the corpus's existing governance architecture; (2) a Human Authority Boundary invariant (AI may
+  observe/retrieve/analyze/propose/explain/recommend; only Human/Governance may approve/reject/override/
+  authorize), directly reinforcing the sovereignty principle already established in this reading stretch
+  (0202's AI-output-is-not-domain-truth boundary); (3) Human-in-the-Loop formalized as an architecture
+  primitive -- a HumanInterventionPoint object (reason/required_authority/input/ai_recommendation/
+  human_decision/decision_reason/timestamp/actor), applied concretely to a knowledge-contribution pipeline
+  where AI observation must pass through human review before becoming a governed KnowledgeAssertion,
+  explicitly called "an excellent convergence with the previous Nyaya/evidence/authority model"; (4)
+  multi-dimensional AI credibility (accuracy/authenticity/completeness/timeliness/transparency/audit-
+  integrity/trust-calibration/reliability/interpretability/security/fairness/interactive-experience/
+  algorithm-literacy/sociocultural-context) explicitly rejecting a bare confidence=0.87 scalar; (5) the
+  book's own FEAS model (Fairness, Explanatory Ability, Auditability, Safety) extended by the source into a
+  KOS/AIP Trustworthiness Model adding Evidence/Accountability/Privacy/Human-Authority; (6) an
+  Accountability Chain / AIExecution object (agent/model/knowledge-snapshot/retrieval-trace/tools/
+  recommendations/human-interventions/approvals/overrides/final-decision) tracing every step to a named
+  actor, grounded in the book's own requirement that AI-error responsibility be traceable to developers/
+  operators/users; (7) Feedback formalized as a first-class architectural object (execution_id/actor/
+  observation/classification/correction/rationale/affected_artifact/authority) rather than a UX thumbs-up/
+  down, feeding a KnowledgeOS learning loop (AI-retrieves -> AI-interprets -> Human-reviews -> accept/
+  correct -> Knowledge-Observation -> Review/Governance -> Knowledge-update); (8) AI-supported search
+  reframed from "find an answer" to "fill knowledge gaps and improve user understanding," motivating a
+  Progressive Disclosure pattern (Answer/Why/Evidence/Sources/Context/Alternatives/Conflicts/Uncertainty,
+  not a bare answer string) and an "interactive epistemology" pattern where a user can challenge an AI
+  recommendation and force a re-evaluation with corrected evidence -- explicitly noted as fitting the
+  corpus's Nyaya-based architecture extremely well. Extracts a Risk-x-Confidence Routing matrix (low-risk/
+  high-confidence -> AI may act; high-risk or low-confidence -> human review or mandatory authority)
+  grounded in the book's active-learning discussion of directing human annotation toward the most
+  informative/uncertain cases. Extracts a Privacy Classification pattern (public/internal/confidential/
+  personal/sensitive/restricted artifact classes feeding a context-aware Retrieve(query, identity,
+  authorization, privacy_policy) contract, explicitly noting privacy must be evaluated as data+actor+
+  purpose+context+operation, not a static per-artifact label) and a Cultural/Linguistic Context warning
+  (models can disproportionately reflect dominant linguistic/cultural datasets, reinforcing the corpus's
+  existing context-dimension work: language/jurisdiction/culture/organization/domain/time/perspective).
+  Extracts an explicit Trust Calibration principle -- the objective is not maximum trust but ALIGNED trust
+  (actual system reliability approx. user confidence); "high confidence + low evidence = trust calibration
+  failure" proposed as an explicit AI Assurance invariant, with a Result object exposing evidence-strength/
+  source-authority/freshness/contradictions/model-uncertainty/retrieval-quality/human-review-status so
+  users can calibrate confidence themselves rather than trusting fluent language. Explicitly declines to
+  elevate anthropomorphism/emotional-AI/emotional-companionship into architecture (UX research only),
+  noting the book's own warning that anthropomorphism can increase perceived trust without increasing
+  actual reliability -- flagged as itself an adversarial concern. Produces a combined "AI Trustworthiness
+  Stack" merging this book's FEAS model with 0203's RAG assurance model (Retrieval/Grounding/Relevancy) and
+  the corpus's own Evidence/Authority/Lineage/Context into three columns (Knowledge/AI-Execution/Human).
+  Produces an explicit revised four-layer architecture diagram (AI Engineering Platform -> Knowledge Access
+  -> KnowledgeOS Core -> Knowledge Sources) inserting Human-AI-Collaboration/Human-Approval/Feedback/Trust-
+  Calibration/AI-Assurance into the top layer. Closes with an explicit KnowledgeOS-vs-AI-Platform ownership
+  table covering seventeen concepts (Evidence/Authority/Provenance/Context/Privacy-classification assigned
+  to KnowledgeOS Core; Retrieval/RAG/Agent/Workflow/Human-role-allocation/Trust-calibration/AI-
+  explainability/Feedback/Model-evaluation/Anthropomorphism/Emotional-AI/Crowdsourcing assigned to the AI
+  Platform, with Human-approval flagged as a Governance boundary item), and proposes a final architectural
+  concept -- the "Human-AI Collaboration Layer" -- sitting between AI Execution and AI Assurance, with an
+  explicit five-line ownership statement: KnowledgeOS owns knowledge authority; Retrieval owns knowledge
+  access; AI Platform owns AI execution; Human-AI Collaboration owns the boundary between machine capability
+  and human authority; Assurance verifies that boundary has not been violated.
+
+introduces:
+  - "The headline principle: Human-AI Interaction belongs around the Kernel as a Human-AI Collaboration/
+    Assurance layer of the AI Engineering Platform, never inside the Kernel itself"
+  - "A formal CollaborationPolicy schema (task/ai_role/human_role/ai_may/ai_must_not/human_must) for
+    explicit human-AI role allocation per task"
+  - "A HumanInterventionPoint object making human-in-the-loop review an explicit, structured architecture
+    primitive rather than an implicit approval button"
+  - "A multi-dimensional AI credibility/trustworthiness model (FEAS extended with Evidence/Accountability/
+    Privacy/Human-Authority) explicitly rejecting a bare confidence scalar"
+  - "An Accountability Chain / AIExecution object tracing every AI-to-human interaction step to a named
+    actor, for error-responsibility traceability"
+  - "Feedback as a first-class architectural object (execution_id/actor/observation/classification/
+    correction/rationale/affected_artifact/authority) feeding a formal KnowledgeOS learning loop"
+  - "A Risk-x-Confidence Routing matrix directing only uncertain/high-risk cases to human review, grounded
+    in active-learning theory"
+  - "A Trust Calibration invariant: 'high confidence + low evidence = trust calibration failure' --
+    the objective is aligned trust (reliability approx. confidence), not maximized trust"
+  - "An explicit seventeen-concept KnowledgeOS-vs-AI-Platform ownership table and a final 'Human-AI
+    Collaboration Layer' architectural concept with a clean five-line ownership statement completing the
+    layered architecture begun at 0202/0203"
+
+defines: []
+
+refines:
+  - "Directly extends 0202's AI-output-is-not-domain-truth boundary and 0203's Knowledge-Tool-Boundary
+    pattern with a formal human-authority/role-allocation layer, completing the 0202-0203-0204 technical
+    trilogy into one coherent layered AI Engineering Platform architecture"
+  - "Extends 0203's Three-Layer AI Assurance (Retrieval/Grounding/Intent) with a combined AI Trustworthiness
+    Stack merging FEAS, RAG assurance, and KnowledgeOS Evidence/Authority/Lineage/Context dimensions"
+  - "The interactive-epistemology pattern (user challenges AI recommendation, forces re-evaluation with
+    corrected evidence) directly operationalizes the Nyaya epistemic-route/counterexample-driven validation
+    work (0170/0177/0201) into a concrete UI/interaction pattern"
+
+contradicts: []
+
+repeats:
+  - {concept: "AI output must not silently become domain authority (AI proposes, human/governance decides)", canonical_source: "0202", novelty: low}
+  - {concept: "Context as a first-class dimension (language/jurisdiction/culture/organization/domain/time/perspective)", canonical_source: "0169", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- explicitly scoped to the AI Engineering Platform layer, not the KnowledgeOS Kernel; the
+    ownership table itself is the discipline that prevents this material from contaminating the Kernel"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Completes the 0202-0203-0204 technical trilogy into one coherent layered architecture; explicitly reinforces (does not extend) the Kernel-vs-mechanism/platform boundary via a comprehensive ownership table."
+  alternative_minimal_kernel: "none -- explicitly assigns almost every pattern in this file to the AI Engineering Platform, not the KnowledgeOS Core, consistent with Kernel minimalism"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Completes a clear three-file technical trilogy (0202 domain/DDD, 0203 RAG/retrieval, 0204 human-AI
+    collaboration/governance) into one coherent, explicitly-layered AI Engineering Platform architecture
+    with a comprehensive ownership discipline -- the strongest evidence yet that the corpus's technical
+    pivot (recommended at 0134/0187/0200/0201) is being executed systematically rather than as a one-off"
+  - "The Trust Calibration invariant ('high confidence + low evidence = trust calibration failure') is a
+    directly actionable, testable AI Assurance rule -- worth tracking whether it is formally incorporated
+    into the corpus's existing deterministic-assurance program"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the three-file technical trilogy (0202/0203/0204) is synthesized into one unified architecture
+    specification, and whether it is ever explicitly reconciled with the DDD-cycle's KnowledgeAggregate
+    hypothesis or the Western-epistemology-arc's Kernel Candidate v0.2/v0.3"
+
+tier2_triggered: true
+tier2_reason: >
+  Completes a three-file technical trilogy into one coherent layered AI Engineering Platform architecture
+  with an explicit KnowledgeOS-vs-Platform ownership table; produces a directly actionable Trust Calibration
+  assurance invariant; operationalizes Nyaya epistemic-route work into an interactive-epistemology UI
+  pattern.

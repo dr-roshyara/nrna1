@@ -1,0 +1,96 @@
+sequence: 1057
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-289/08-degeneracy-audit.md
+title: "08 -- Degeneracy Audit (Step 289 mandate SS13): Establishes a New Standing Audit Principle -- No Algebraic Property May Be Accepted From a Zero-Counterexample Result Without Checking Degeneracy -- and Further Narrows the Already-Tracked 'Exactly 32' Approx_X Finding to '30 USABLE Candidate Relations' by Identifying Two Degenerate Endpoints"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the eighth numbered Step-289 artifact, establishing a new standing methodological principle and applying it retrospectively across the entire equality/observability research arc"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1057
+importance: critical
+confidence: high
+about: >
+  "08 — Degeneracy Audit (mandate §13) · retrospective over Steps 287-288."
+
+  **DELIVERS A NEW STANDING AUDIT PRINCIPLE, EXPLICITLY PROMOTED**: "No algebraic property may be accepted
+  from a zero-counterexample result without first checking whether the tested relation is DEGENERATE" --
+  universal, empty, singleton, identity, degenerate along an axis, or otherwise incapable of meaningfully
+  exercising the property. Mandates a "REQUIRED COMPANION MEASUREMENT": every relation reported as satisfying
+  equivalence axioms must ALSO report its block count, since "1 block (universal) and `|carrier|` blocks
+  (discrete) both satisfy every axiom and carry no information." Traces this principle's origin to the
+  already-tracked `≈_S∘≈_V` universal-relation near-miss (file 1046's §J self-catch).
+
+  **Applies this principle retrospectively to all fourteen equality/observability results from Steps 287-288**,
+  finding **THREE OF FOURTEEN REQUIRE DOWNGRADE, ALL THREE AT ENDPOINTS**: `≈_∅` (the empty-subset projection)
+  is confirmed UNIVERSAL, 1 block -- "axiom-satisfying, information-free; NOT A CANDIDATE `≈`"; `≈_{A,S,R,V,C}`
+  (the full-subset projection) is confirmed DISCRETE (identical to structural equality on `Σ`), 2240 blocks --
+  "relates nothing but self... not an independent [equivalence] candidate," though it remains valid AS
+  structural equality; and the already-known `≈_S∘≈_V` composition remains downgraded as previously caught.
+  Confirms SIX of the fourteen results are "immune by construction" since they rest on POSITIVE
+  counterexamples, which cannot be vacuous by definition.
+
+  **DELIVERS A GENUINELY IMPORTANT FURTHER REFINEMENT OF THE ALREADY-TRACKED "EXACTLY 32" `≈_X` FINDING**
+  (files 1039, 1043, 1046): "'exactly 32 distinct `≈_X` relations' STANDS as a count of distinct partitions.
+  But as a count of USABLE CANDIDATE OBSERVATIONAL RELATIONS it is **30**, because two endpoints are
+  degenerate. The normative choice space `N-5` [already tracked, file 1047] IS 30, NOT 32."
+
+  **DELIVERS A GENUINELY VALUABLE SELF-AWARE META-OBSERVATION about the programme's own recurring pattern**:
+  "This is the THIRD TIME in this programme a count has needed narrowing after measurement (47 tests→4; at
+  most 32→exactly 32; 32→30 usable). The pattern is not arithmetic error -- it is reporting a computed
+  cardinality WITHOUT ASKING WHAT THE EXTREMES MEAN." This identifies a recurring, named class of
+  methodological error distinct from the already-tracked "F5 error class" (Σ-order-vs-K-order conflation) and
+  the "scaffolding contradicts body" pattern (files 1031-1032, 1034) -- a third, previously unnamed
+  recurring error class specifically about endpoint/boundary-case degeneracy in cardinality counts.
+
+  **Confirms the additional already-tracked note that `I_48`'s within-context transitivity CANNOT currently
+  be degeneracy-checked at all**, since "identity context" remains undefined and no partition can be
+  computed -- "confirms BOUNDED, not established," a further reinforcement of the already-tracked unbound-
+  parameter caveat.
+
+  **Closes with a general statement of what the rule protects against**: "A verification suite reporting
+  'reflexive ✅ symmetric ✅ transitive ✅' across a family of relations LOOKS STRONGEST EXACTLY WHERE THE
+  RELATIONS HAVE COLLAPSED -- because a degenerate relation cannot produce a counterexample to anything.
+  Degeneracy inflates a pass rate. The block-count companion measurement is the cheapest available guard, and
+  it is now mandatory in this programme."
+introduces:
+  - concept: "The new standing audit principle: no algebraic property may be accepted from a zero-counterexample result without first checking whether the tested relation is degenerate, with a mandatory block-count companion measurement"
+  - concept: "The further narrowing of the already-tracked 'exactly 32' approx_X finding to '30 usable candidate observational relations,' since the two endpoint projections (empty subset, full subset) are degenerate (universal and discrete respectively)"
+  - concept: "The self-aware, named identification of a third recurring error class in this programme: reporting a computed cardinality without asking what the extremes mean, distinct from the F5 error class and the scaffolding-contradicts-body pattern"
+  - concept: "The general principle that degeneracy inflates a pass rate, since degenerate relations cannot produce counterexamples to anything they are tested against"
+defines:
+  - term: "the degeneracy rule"
+    definition: "No algebraic property (reflexivity, symmetry, transitivity, congruence, etc.) established via a zero-counterexample exhaustive test may be accepted without first checking that the tested relation is not universal, empty, singleton, identity, or otherwise degenerate; a mandatory companion block-count measurement is the required guard"
+refines:
+  - concept: "This reconstruction's already-tracked 'exactly 32' approx_X finding (files 1039, 1043, 1046) and the N-5 normative choice-space count (file 1047)"
+    refinement: "FURTHER NARROWED to 30 usable candidate relations, since the two endpoint projections are confirmed degenerate and should not be counted as genuine observational-equality candidates"
+  - concept: "This reconstruction's already-tracked self-caught vacuous-composition near-miss (file 1046's SS J)"
+    refinement: "GENERALIZED into a formal, standing audit principle applied retrospectively to all fourteen equality/observability results from the entire Steps 287-288 arc"
+  - concept: "This reconstruction's already-tracked recurring error-class findings (F5 conflation, files 1029-1037; scaffolding-contradicts-body, files 1031-1032, 1034)"
+    refinement: "EXTENDED with a third, distinct, newly named recurring error class: reporting a computed cardinality without examining what its endpoints mean"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the new standing degeneracy-audit principle and its mandatory block-count companion measurement as directly reusable methodology for the remainder of this reconstruction's own review, and for the programme's own future verification work."
+  - "dimension-registry.md: record the further narrowing of approx_X's usable candidate space from 32 to 30 (N-5), and the self-aware identification of a third recurring error class (unexamined cardinality endpoints)."
+anchor_test:
+  anchor: "This reconstruction's already-tracked exactly-32 approx_X finding and the vacuous-composition near-miss (files 1039, 1043, 1046-1047)"
+  supports_dimension: "Establishes a new standing methodological principle and further narrows the usable candidate space from 32 to 30, while identifying a third named recurring error class"
+  refines_or_contradicts: "refines (narrows) prior findings and generalizes a prior self-catch into a standing principle"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The block-count measurements for the two degenerate endpoints (1 block for approx_empty, 2240 blocks for approx_full) are directly checkable against files 1039/1043's own already-documented executed measurements."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Establishes a new, generalizable standing audit principle (the degeneracy rule with its mandatory block-count companion measurement) and further narrows the usable approx_X candidate space from 32 to 30, while self-awarely identifying a third recurring error class in the programme's own history of unexamined cardinality reporting. Classified importance critical and confidence high given the methodological significance and rigor of these findings."

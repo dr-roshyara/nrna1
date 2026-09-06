@@ -1,0 +1,113 @@
+sequence: "0148"
+path: docs/knowledgeos/brainstorming/kernel/20260823-110248-kernel-ddd-critical-review-god-object-conflations.md
+title: "Named cross-AI review (DeepSeek) dismantles the god-object Kernel; F-1..F-5 track concludes, revealing a pre-existing domain-law capability map -- still NOT an adopted Kernel boundary"
+date: "2026-08-23"
+bytes: 52000
+model:
+  primary: c1
+  secondary: [m]
+source_role: CRITICAL_REVIEW
+canonical_source: "0147"
+importance: critical
+confidence: high
+about: >
+  Three linked segments -- the richest kernel-boundary file in the corpus so far. (1) A rigorous DDD
+  "Critical Review" explicitly attributed to a named, different AI system, "DeepSeek": a systematic
+  Falsification Table (10 claims, MOVE OUT/SPLIT/KEEP verdicts) dismantling the "god object" Kernel
+  proposed at 0144-0147, landing on six Kernel-owned capabilities (Identity, State-transition
+  admissibility, Domain history, Provenance, Contradiction detection, Evidence-reference preservation)
+  and seven CANDIDATE bounded contexts. Independently rejects numeric evidence weighting. (2) A
+  second-AI response (matching 0141-0147's voice) accepting DeepSeek's direction but challenging five
+  specific conclusions (pure-function framing, execution ownership, rule-provenance authority, evidence-
+  invariant granularity, and premature bounded-context invention). (3) The long-tracked parallel "F-1..
+  F-5" track (referenced since 0143, explained as parallel work at 0147) reports its conclusion: NOT new
+  design but confirmation of capabilities already present in a pre-existing KnowledgeOS domain law, with
+  a 9-item MUST-EXIST table and new vocabulary (KnowledgeCore, Verification Port, Conformance Gate,
+  Published Language, JustificationPath, EvidenceLinks). Confirms OQ-2/OQ-3/OQ-5 resolved. F-1..F-5's
+  own self-report: no research opened, no kernel designed/implemented, no domain model changed --
+  control returned to "the HPA." The Kernel Boundary Decision itself remains an explicitly future step.
+
+introduces:
+  - "DeepSeek's Domain Capability Map: six 'must own' Kernel capabilities (Identity, State-transition
+    admissibility, Domain history, Provenance, Contradiction detection, Evidence-reference preservation),
+    plus explicit 'may exist outside,' 'must not exist in Kernel,' and 'outside KnowledgeOS' tiers --
+    the most systematically argued kernel-reduction document in the corpus"
+  - "Independent rejection of numeric evidence weighting (from a different reviewer/angle than 0147):
+    'evidence is not numeric... weights create false precision... thresholds are arbitrary'"
+  - "Intent/Command/State pipeline formalized identically to 0147's, now with explicit bounded-context
+    ownership table"
+  - "Second-AI's five specific challenges to DeepSeek: (a) 'Kernel = pure function' demoted to
+    HYPOTHESIS; (b) adjudicate/execute race-condition concern; (c) constitutional-rule-provenance
+    authority question ('who certifies the Constitution the Kernel evaluates against?'); (d) evidence
+    handling reframed as a domain-invariant-scoping question, not blanket reference-only preservation;
+    (e) DeepSeek's seven bounded contexts explicitly demoted to CANDIDATE, per discovery-not-manufacture
+    DDD discipline"
+  - "F-1..F-5 conclusion: NOT new domain design -- confirmation of pre-existing domain law. 9-item
+    MUST-EXIST table: single admission gate, contract-conformance enforcement, identity assignment,
+    evidence admission, justification preservation + sufficiency evaluation, history recording,
+    representation-agnostic intake, epistemic-state determination, confidence assignment inside boundary"
+  - "New domain vocabulary from F-1..F-5, not previously encountered: KnowledgeCore (apparently
+    preferred over 'Kernel'), Verification Port (single admission path), Conformance Gate / Published
+    Language, JustificationPath, EvidenceLinks"
+  - "Confirms OQ-2, OQ-3, OQ-5 each resolved ('✅'); F-1..F-5's explicit self-report
+    (research_required: NO, kernel_designed: NO, domain_model_changed: NO, etc.) -- a disciplined,
+    change-nothing evidence-gathering act, mirroring this reconstruction's own restraint discipline"
+
+defines: []
+
+refines:
+  - "Sharpens (does not extend the concept set of) 0144-0147's kernel-reduction attempts with the most
+    rigorous falsification-table treatment yet"
+
+contradicts:
+  - "Rejects 0144-0146's broader 'god object' Kernel (parsing, DSL, execution, self-audit, numeric
+    weighting all inside Kernel) as architectural conflation -- explicit, itemized MOVE OUT verdicts"
+
+repeats: []
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "Extended the K1-K8/Six-Pillars unresolved_equivalence entry with two further siblings: DeepSeek's
+    six-capability map and the F-1..F-5 nine-item MUST-EXIST table. Ledger Entry 48 added."
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Evidence Integrity", "Unknown Preservation"]
+  refines_or_contradicts: "Refines the kernel-reduction thread with the most rigorous treatment yet; explicitly rejects the broader god-object framing."
+  alternative_minimal_kernel: "DeepSeek's six capabilities; F-1..F-5's nine-item MUST-EXIST table (two further unreconciled siblings)"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "First genuinely cross-model (named, different AI system 'DeepSeek') adversarial review in the
+    corpus's engineering thread -- a real multi-model convergence data point, methodologically relevant
+    to this reconstruction's own three-model-convergence theme even though it concerns implementation
+    architecture rather than philosophical epistemics"
+  - "The F-1..F-5 conclusion reframes the entire kernel-reduction exercise: capabilities are being
+    DISCOVERED as pre-existing domain law, not invented -- a significant interpretive shift for how the
+    rest of the kernel/ subdirectory should be read"
+  - "STILL not adopted: the file's own closing diagram places 'KERNEL BOUNDARY DECISION' and 'KERNEL
+    CAPABILITY MAP' as future steps after the current 'AH-5/AH-4 consolidation' stage"
+
+undefined_concepts:
+  - "AH-4 and AH-5 (referenced as concurrent hypotheses alongside AH-6 from 0143, not yet defined in
+    this reading order)"
+open_questions:
+  - "Whether a later file actually produces the final Kernel Boundary Decision the diagram anticipates"
+  - "Whether 'KnowledgeCore' formally supersedes 'Kernel' as the preferred name, or the two remain
+    used interchangeably"
+
+tier2_triggered: true
+tier2_reason: >
+  First named cross-model adversarial review in the engineering thread; the F-1..F-5 track's conclusion
+  reframes the kernel-reduction exercise as discovery of pre-existing domain law; new capability-map and
+  vocabulary siblings added to the still-unresolved representation family; Kernel boundary still not
+  adopted.

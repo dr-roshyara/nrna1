@@ -1,0 +1,71 @@
+sequence: "0132"
+path: docs/knowledgeos/brainstorming/20260822-124229-sanskrit-grammar-v1-dhatu-transformation-lens.md
+title: "Sanskrit Grammar v1 (dhātu lens) + v2 (near-duplicate of 0130) + third 'Semantic Compiler' elaboration turn"
+date: "2026-08-22"
+bytes: 39000
+model:
+  primary: g
+  secondary: [c1]
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: "0130"
+importance: low
+confidence: high
+about: >
+  Combines an earlier "v1" Sanskrit dhātu/guṇa-vṛddhi/sandhi/three-meaning-layer lens (lines 1-655,
+  precursor to and lower-novelty than later files), a "v2" section (lines 656-1293) that is
+  near-verbatim identical to file 0130's full content, and a third turn (lines 1295-1812) elaborating
+  the "Semantic Compiler" idea into an explicit bidirectional Parser-Direction/Generator-Direction
+  architecture with "Mode 1: Understanding" (parse) / "Mode 2: Expression" (generate) -- a more explicit
+  presentation of ideas already logged at 0130/0131, not a new representation or dimension.
+
+introduces:
+  - "Bidirectional 'semantic compiler' framing made explicit: Parser Direction (Expression -> Meaning)
+    and Generator Direction (Meaning -> Expression) as two named modes of the same mechanism -- a
+    presentational refinement of the already-logged EVENT/ACTOR/OBJECT/JUSTIFICATION frame, not a new
+    representation"
+
+defines: []
+
+refines:
+  - "Explicit two-mode (Understanding/Expression) elaboration of the 'Semantic Compiler' mechanism first
+    named at 0130 -- no new slot, dimension, or representation added"
+
+contradicts: []
+
+repeats:
+  - {concept: "entire v2 section (dhātu, sandhi, three meaning layers, 8-case table, temporal mood distinctions, Semantic Compiler naming) reproduces file 0130 near-verbatim", canonical_source: "0130", novelty: none}
+  - {concept: "v1 section (dhātu/guṇa-vṛddhi/sandhi/three-layer lens, precursor draft)", canonical_source: "0086", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: false
+
+registry_updates:
+  - "None -- no new registry content; strengthens (via a clearer presentation) the already-logged
+    Semantic Compiler / case-frame representation family without resolving its unresolved_equivalence"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; presentational duplicate/refinement of already-logged material."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Third instance of near-verbatim cross-file content reproduction in this stretch of the corpus
+    (0130/0131/0132 form a tightly overlapping cluster) -- a corpus-quality observation, not a new
+    research finding"
+
+undefined_concepts: []
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: >
+  No new kernel/dimension/representation content beyond what 0130 and 0131 already established; the
+  bidirectional compiler framing is a presentational refinement only.

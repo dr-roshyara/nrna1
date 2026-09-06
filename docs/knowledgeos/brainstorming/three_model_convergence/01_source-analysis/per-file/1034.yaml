@@ -1,0 +1,91 @@
+sequence: 1034
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/13-CLOSURE-AUDIT-RERUN.md
+title: "13 -- Closure Audit Re-Run: Confirms All 8 Prior Findings Fixed (287-EQUALITY -> READY-FOR-STEP-288), Introduces a New 'REFINED-STEP-287-INVARIANTS.md' Bridge Candidate Carrying the Fourth Instance of the Recurring Scaffolding-Contradicts-Body Defect, and Flags a Fresh 'Step 287' Identifier-Collision Caveat"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the closure-audit re-run confirming file 1032's eight findings fixed, and extending audit scope to a new sibling artifact"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1034
+importance: critical
+confidence: high
+about: >
+  "13 · Closure Audit — Re-run," scope explicitly extended to a NEW, not-yet-directly-encountered artifact
+  "`REFINED-STEP-287-INVARIANTS.md`" (in scope for the first time, alongside the already-tracked equality
+  track). Verdict: "287-EQUALITY → READY-FOR-STEP-288 · 287-INVARIANTS → REQUIRES-CORRECTION (2 MATERIAL)."
+
+  **CONFIRMS ALL EIGHT PRIOR FINDINGS FROM FILE 1032 (B-1, B-2, M-1 THROUGH M-5, m-1) ARE FIXED**, each with
+  exact before/after text verified. "8 of 8 fixed."
+
+  **DELIVERS THE FULL EIGHTEEN-FORBIDDEN-INFERENCES RE-CHECK ACROSS BOTH ARTIFACTS**: 287-EQUALITY scores
+  18/18 clean; the new 287-INVARIANTS artifact scores 16/18 clean, carrying two new material findings.
+
+  **DELIVERS TWO NEW FINDINGS IN THE NEWLY-SCOPED "REFINED-STEP-287-INVARIANTS.md"**: **M-6** -- a "Vacuity:
+  ✅ safe" column in §3's register reads as "in good standing," while §6 (fifty lines later) verdicts the
+  SAME candidates (`I-𝒩`, `I-Π`) as UNTESTABLE -- "the two columns measure DIFFERENT properties... and
+  nothing in §3 says so"; **M-7** -- a genuine COUNT CONTRADICTION inside the artifact itself: line 102 says
+  `I-V` is "the only one testable today," while the `ESTABLISHED` block (line 156) says "`I-V` and `I-O` are
+  the only candidates testable today" -- "one vs two," stated three times inconsistently.
+
+  **DELIVERS THE FILE'S CENTRAL, GENERALIZING META-FINDING**: names this as **"THE RECURRING PATTERN, NOW
+  FOUR INSTANCES"**, listing all four across the entire audit programme -- (1) Step 287's §4 heading vs its
+  own body, first audit, BLOCKING; (2) the "08" document's F5 body vs its own SUPERSEDED block, first audit,
+  BLOCKING; (3) the "00-INDEX" document's own 6th vs 11th headline; (4) this re-run's §6-vs-ESTABLISHED count
+  contradiction. **"All four are a local statement contradicting the document's own conclusion, and all four
+  sat in a heading, a summary row, or a count — never in an argument. The reasoning has been sound
+  throughout; the scaffolding is where this programme's errors live."** Delivers the standing procedural
+  recommendation: "after any substantive edit, re-verify every count, heading and summary row against the
+  body."
+
+  **DELIVERS A GENUINELY IMPORTANT NEW CAVEAT ON THE SPLIT VERDICT**: "287-EQUALITY is ready as a document.
+  It is NOT ready as an IDENTIFIER — the numbering collision (§0a) is unresolved, and Step 288's mandate
+  names 'the corrected 287' WITHOUT DISTINGUISHING EQUALITY FROM INVARIANTS. A registry decision should
+  precede 288, or 288 will inherit an ambiguous input." **This is a NEW instance of the already-tracked
+  identifier-collision pattern (GK-nn collisions, H-K collisions), now surfacing at the "Step 287" numbering
+  level itself: two genuinely distinct artifacts (equality and invariants) now share the single ambiguous
+  name "287."**
+introduces:
+  - concept: "A new bridge candidate, 'REFINED-STEP-287-INVARIANTS.md', a sibling artifact to the equality-track 'REFINED-STEP-287.md', not yet directly encountered"
+  - concept: "Two new findings (M-6, M-7) in the invariants artifact: a misleading 'vacuity-safe' column that reads as 'in good standing' while the same candidates are later verdicted untestable, and a genuine internal count contradiction (one vs two testable candidates, stated three times inconsistently)"
+  - concept: "The generalizing meta-finding naming the recurring scaffolding-contradicts-body defect pattern's fourth instance, with the standing procedural recommendation to re-verify counts/headings/summaries against the body after every substantive edit"
+  - concept: "The new 'Step 287' identifier-collision caveat: two genuinely distinct artifacts (equality and invariants) now share the single ambiguous name '287', requiring a registry decision before Step 288 can safely consume 'the corrected 287'"
+defines: []
+refines:
+  - concept: "File 1032's already-documented eight findings (B-1, B-2, M-1 through M-5, m-1)"
+    refinement: "CONFIRMED all fixed, closing the equality-track audit-correction loop and clearing it for Step 288"
+  - concept: "This reconstruction's already-tracked identifier-collision pattern (GK-nn collisions files 1015-1016, H-K collisions file 0990)"
+    refinement: "EXTENDED to a new instance at the Step-287 numbering level itself: two genuinely distinct sibling artifacts now share the ambiguous name '287'"
+  - concept: "This reconstruction's already-tracked recurring scaffolding-defect pattern (files 1031-1032, three prior instances)"
+    refinement: "EXTENDED to a fourth instance discovered in the newly-scoped invariants artifact, prompting the generalized standing procedural recommendation"
+contradicts: []
+repeats:
+  - "The eight-findings confirmation and the 18-forbidden-inferences re-check for the equality track substantially confirm already-documented content (file 1032); this file's distinctive new contributions are the two invariants-artifact findings, the fourth scaffolding-defect instance, and the new Step-287 identifier-collision caveat."
+bridge_candidates:
+  - "'REFINED-STEP-287-INVARIANTS.md' -- the new sibling artifact this audit reviews, not yet directly encountered in its original form."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the confirmed closure of the equality track (287-EQUALITY -> READY-FOR-STEP-288, 18/18 clean, 8/8 findings fixed)."
+  - "dimension-registry.md: record the two new invariants-artifact findings (M-6, M-7) and the fourth instance of the recurring scaffolding-defect pattern, with the standing procedural recommendation."
+  - "dimension-registry.md: record the new Step-287 identifier-collision caveat: equality and invariants artifacts share the ambiguous name '287', requiring a registry decision before Step 288."
+anchor_test:
+  anchor: "File 1032's already-documented eight findings and this reconstruction's already-tracked identifier-collision and scaffolding-defect patterns"
+  supports_dimension: "Confirms the prior findings fixed, extends both the identifier-collision and scaffolding-defect patterns to new instances"
+  refines_or_contradicts: "confirms prior findings; extends both tracked patterns"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The eight-findings confirmation is directly checkable against file 1032's own specified before/after wording for exact one-to-one correspondence."
+undefined_concepts: []
+open_questions:
+  - "The full original text of 'REFINED-STEP-287-INVARIANTS.md', not yet directly encountered."
+  - "Whether a registry decision is taken to disambiguate the 'Step 287' name before Step 288 proceeds."
+tier2_triggered: true
+tier2_reason: "Confirms the equality track's full closure and clearance for Step 288, introduces a new sibling artifact ('REFINED-STEP-287-INVARIANTS.md') with two genuine findings including a fourth instance of the recurring scaffolding-defect pattern, and flags a new Step-287 identifier-collision caveat requiring a registry decision before Step 288. Classified importance critical and confidence high given the direct, concrete, and process-significant nature of these findings."

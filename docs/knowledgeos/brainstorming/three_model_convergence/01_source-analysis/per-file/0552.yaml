@@ -1,0 +1,210 @@
+sequence: 552
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-153436_step-012-identity-entity-resolution-and-semantic-equivalence.md
+title: "LANDMARK: Full Entity/Identity/Semantic-Equivalence Theory Delivered — Representation≠Entity≠Proposition; 'Semantic Hallucination Becoming Structural Identity' Named as a Dangerous AI Failure Mode; Identity Resolution Reuses the Same Evidence/Assessment Machinery (No Separate Epistemology Needed); EntityIdentity≠AssertionIdentity≠PropositionEquivalence; KnowledgeOS Entity≠Reality; Fourteen Canonical ID1-ID14 Invariants; Opens Step 13 (Sufficiency, Completeness, Readiness for Purpose)"
+date: "2026-08-27"
+bytes: 23738
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 0551's named 'Step 12,' delivering the corpus's most complete formal treatment of entity identity, resolution, and semantic equivalence"
+source_role: PRIMARY_RESEARCH
+canonical_source: 552
+importance: critical
+confidence: high
+about: >
+  Directly executes 0551's closing "Step 12 -- Identity, Entity Resolution, and Semantic Equivalence,"
+  opening with the stakes: "if identity is wrong, everything downstream can be wrong"
+  (`Identity->Comparison->Conflict->EvidenceAggregation->Inference->Discrepancy`). Delivers the
+  foundational principle `Same name≠Same entity` and `Different name≠Different entity`, worked through the
+  "Nexus"/"Nexus Repository"/"Nexus3"/"nexus3.dgverlag.de"/"the artifact repository"/"the old Nexus
+  server" naming puzzle.
+
+  **Delivers the file's foundational three-way separation**: Representation (`r`, the textual expression)
+  ≠ Entity (`x`, the thing referred to) ≠ Proposition (`P(x)`, a statement about that entity). Maps this
+  directly to DDD (Identity/Value/Context/Aggregate/Reference), introducing a `KnowledgeEntity` domain
+  concept with stable identity independent of how it is named in any particular document, and a canonical
+  identifier `ID(x)`.
+
+  **Delivers a crucial architectural warning**: entity resolution is NOT string matching (`Normalize
+  ("Nexus3")=Normalize("nexus3")` is unsafe as an identity criterion); instead
+  `EntityResolution=f(Representation,Context,Evidence,IdentityRules)`, with the output itself carrying an
+  epistemic status. **Identifies entity resolution as itself a form of inference**, formalized as an
+  `IdentityAssertion` `I_A=(r,x,S,Ctx,Π,τ)` carrying its own support and provenance, worked through a
+  concrete example inferring `Entity("Nexus3")=Entity("nexus3.dgverlag.de")` from a single sentence.
+
+  **Delivers identity as fundamentally contextual**: `Meaning(Nexus,C_1)≠Meaning(Nexus,C_2)` -- KnowledgeOS
+  should never create a universal global identity merely from a bare name. **Delivers a Product-vs-Instance
+  distinction** (`NexusProduct≠NexusInstance_{Production}`, and generally
+  `Software≠Deployment≠Container≠Host≠Service≠Endpoint`), and formalizes entity identity as inherently
+  hierarchical/relational -- a semantic graph `G_X=(𝒳,ℛ_X)` with typed relations (`DeploymentOf`,
+  `RunsOn`, `ExposedAt`), "much stronger than storing `name=Nexus`."
+
+  **Formalizes semantic equivalence with an essential context subscript** `P_1≡_C P_2` -- "without it,
+  equivalence becomes dangerously absolute." **Delivers the file's most consequential distinction for
+  evidence theory**: `EquivalentProposition≠SameAssertion` -- two assertions of the semantically
+  equivalent proposition from different sources (a document and an API) remain formally SEPARATE
+  assertions, since their evidence, provenance, and acquisition time all differ -- "essential for evidence
+  aggregation." **Directly connects this to the duplicate-evidence problem** (0528/0532/0536-0545): if
+  Document B was copied from Document A, semantic equivalence alone is insufficient to prevent
+  double-counting -- `EvidenceDependency` and `SourceIndependence` must both be separately established,
+  "connects Step 12 directly to Step 11."
+
+  **Delivers five formally distinguished proposition/entity relationships**: Same (`x_1=x_2`), Equivalent
+  (`P_1≡P_2`), Related (`P_1∼P_2`), Contradictory (`P_1⋈P_2`), Distinct (no established relationship).
+  **Reformulates Conflict detection to depend explicitly on entity resolution and semantic comparison**:
+  `Conflict=f(EntityResolution,SemanticComparison,Context,TemporalScope,ConflictRule)`, "much stronger than
+  simply comparing strings," worked through a concrete example requiring entity-identity, environment, and
+  temporal-scope agreement to ALL be established before `3.69≠3.70` may be declared a genuine conflict --
+  "precisely why identity resolution is upstream of contradiction detection."
+
+  **Delivers a seven-value ResolutionStatus vocabulary** ({Unknown, Candidate, LikelySame, ConfirmedSame,
+  LikelyDifferent, ConfirmedDifferent, Contested}), explicitly refusing to force premature
+  Same/NotSame decisions. **Delivers a vividly-named, important AI-safety concept**: an LLM-proposed
+  identity mapping is recorded only as `CandidateIdentity`, never immediately merged, "this prevents one of
+  the most dangerous AI failure modes: semantic hallucination becoming structural identity."
+
+  **Delivers Identity Merge as a high-impact, explicitly policy-governed operation** (`Merge(x_1,x_2)`,
+  never an ordinary LLM side-effect), required to preserve original identities, evidence, provenance,
+  contexts, timestamps, decision authority, and the reason for merging -- "IdentityMerge is auditable."
+  **Delivers the reverse operation, Identity Split** (`Split(x)->x_1,x_2` with full historical provenance,
+  `Split≠Delete`), explicitly framed as "belief revision applied to entity identity." **Delivers a subtle
+  epistemological distinction**: the real-world entity may remain perfectly stable while KnowledgeOS's OWN
+  identity knowledge changes over time (`Entity_real` constant, `KnowledgeOSIdentity_t` variable).
+  **Connects identity gaps to the Ideal State**: an unresolved production-vs-staging ambiguity for a named
+  system is a legitimate `IdentityGap` discrepancy feeding directly into `Δ_E`.
+
+  **Formalizes semantic normalization/canonicalization** (surface text converted to canonical semantic
+  form, e.g. `Version(Entity(Nexus),3.69)`), with the crucial caveat `Normalization≠Validation` --
+  canonicalizing a claim never establishes its truth, only its representational form. **Delivers four
+  formally separated operations**: Syntactic extraction, Semantic normalization, Identity resolution, and
+  Validation, `Extraction≠Normalization≠IdentityResolution≠Validation`, proposed as "another KnowledgeOS
+  invariant." **Positions the LLM's role precisely**: `Text->CandidateSemanticRepresentation` --
+  entity/relation candidates the LLM extracts remain `Candidate` until independently validated, potentially
+  combined with genuinely deterministic identity evidence (a worked DNS-plus-host-inventory chain example
+  provides a "much stronger basis for entity resolution" than semantic inference alone).
+
+  **Delivers a major architectural simplification**: entity resolution requires NO separate epistemology --
+  it is modeled as ordinary evidence accumulation, `Support(x_1=x_2)=Assess(E_1,...,E_n)`, reusing the
+  corpus's already-established Evidence/Assessment machinery wholesale. **Delivers the same simplification
+  for semantic equivalence**: `SemanticEquivalence can be rule-based (via a domain ontology, e.g.
+  `Version(x,v)≡InstalledRelease(x,v)`) or AI-proposed (Candidate status)`. **Introduces an explicit
+  Ontology object** `Ω` (concepts, relations, constraints, equivalence rules) as the vocabulary in which
+  propositions become comparable, immediately flagging a recursive/reflexive property -- the ontology
+  itself is knowledge and must therefore itself be versioned and governed (`OntologyVersion`), directly
+  connecting to the reconstructibility-versioning requirement established at 0548/0550.
+
+  **Delivers the file's central theoretical-boundary acknowledgment**: semantic equivalence of arbitrary
+  natural language is not generally decidable, so `SemanticEquivalence=Determined|Supported|Candidate|
+  Unknown` rather than a promised binary answer -- "I don't know whether these mean the same thing" is
+  explicitly "a feature, not a failure." **Formalizes a semantic comparison result object**
+  `SC=(P_1,P_2,Relation,Context,Basis,Status)` with `Relation∈{Equivalent,Compatible,Contradictory,
+  Related,Independent,Unknown}`, explicitly warning that the relation itself must not be confused with its
+  epistemic certainty, and a semantic comparison algebra `Compare(P_1,P_2,C,Ω)->SC` feeding directly into
+  ConflictDetection, EvidenceAggregation, and DuplicateDetection.
+
+  **Delivers a crucial three-way distinction proven by a concrete worked example**: `EntityIdentity≠
+  AssertionIdentity≠PropositionEquivalence` -- three documents all stating "Nexus is version 3.69" remain
+  three genuinely DISTINCT assertions with an equivalent proposition, with dependency analysis then
+  determining whether their underlying evidence is actually independent for support-calculation purposes.
+  **Demonstrates that identity mistakes create epistemic errors in BOTH directions**: incorrectly merging
+  production and staging Nexus creates a false conflict; incorrectly keeping them fully separate can hide
+  a genuine real conflict -- `EntityResolution errors propagate into epistemic errors`. **Delivers identity
+  uncertainty as a first-class discrepancy**: an `IdentityStatus=Unknown` should cause Zero to produce an
+  explicit `d_identity` discrepancy rather than silently proceeding as if comparison were valid.
+
+  **Delivers the complete identity pipeline** (Raw representation -> Extraction -> Canonical semantic
+  representation -> Entity candidate -> Identity evidence -> Entity resolution -> Canonical entity ->
+  Proposition normalization -> Semantic comparison -> {Equivalent, Compatible, Contradictory, Related,
+  Independent, Unknown}) and a DDD aggregate-boundary decision explicitly keeping `EntityResolution` OUT of
+  the Assertion aggregate, in a separate Knowledge/{Entity, Assertion, SemanticRelation, Conflict,
+  Evidence} structure.
+
+  **Delivers the file's deepest philosophical/architectural boundary**: `KnowledgeOS Entity≠Reality` -- the
+  system's epistemic representation `x̂` of a presumed real entity `x` is never conflated with the entity
+  itself, "philosophically consistent with our entire theory," extending the corpus's established
+  Knowledge≠Reality principle specifically to entity identity. **Formalizes three core partial functions**:
+  `Resolve:𝓡×C⇀𝒳`, `Normalize:𝓡×Ω⇀𝒫`, `Compare:𝒫×𝒫×C×Ω->𝒬`, each explicitly required to return
+  full epistemic result objects (`ResolutionResult=(CandidateEntity,Status,Evidence,Provenance)`,
+  `ComparisonResult=(Relation,Basis,Confidence/Uncertainty,Context,Provenance)`) rather than bare values.
+
+  **Delivers the file's central formal deliverable -- fourteen canonical Step-12 invariants (ID1-ID14)**:
+  Representation≠Entity; Entity≠Assertion; AssertionIdentity≠PropositionEquivalence; SameName⇏SameEntity;
+  DifferentName⇏DifferentEntity; IdentityResolution is evidence-based; Canonicalization≠Validation;
+  SemanticEquivalence is context-dependent; UnknownIdentity must remain representable; IdentityMerge is
+  reversible/auditable; IdentitySplit preserves historical provenance; EquivalentAssertions retain
+  independent provenance; AI-proposed identity is not automatically canonical; IdentityResolution errors
+  must be revisable.
+
+  **Delivers "the deeper result"**: KnowledgeOS actually requires three semantic layers
+  (`Reality->Representation->Proposition`), with Representation branching into both EntityResolution and
+  SemanticNormalization->Proposition, then Proposition->EvidenceAssessment->Knowledge -- "a much cleaner
+  architecture." **Consolidates "the complete chain so far"** into the fullest single pipeline statement to
+  date, spanning Reality/Source through DerivedKnowledge, "becoming a genuine computational epistemic
+  architecture."
+
+  **Delivers Step 12's verdict**: STRUCTURALLY RESOLVED, with an honest implementation boundary --
+  KnowledgeOS cannot guarantee perfect semantic identity resolution for arbitrary natural language, but CAN
+  guarantee that "uncertainty about identity is itself representable, traceable, and revisable... we should
+  not promise omniscient semantic understanding."
+
+  **Closes by opening "Step 13 -- Sufficiency, Completeness, and Readiness for Purpose"**, distinguishing
+  Truth from KnowledgeCompleteness from EpistemicSufficiency from DecisionReadiness, reframing the central
+  question from "is the knowledge true?" to "do we know enough to act?"
+introduces:
+  - concept: "The three-way separation Representation≠Entity≠Proposition, with entity identity treated as a stable KnowledgeEntity independent of any particular naming"
+  - concept: "Entity resolution formalized as evidence accumulation, requiring no separate epistemology from the corpus's established Evidence/Assessment machinery — a major architectural simplification"
+  - concept: "'Semantic hallucination becoming structural identity' — a vividly named, dangerous AI failure mode prevented by keeping LLM-proposed identity mappings as CandidateIdentity until independently validated"
+  - concept: "EquivalentProposition≠SameAssertion: propositions expressing the same content from different sources remain formally distinct assertions with independent evidence and provenance, essential for correct evidence aggregation"
+  - concept: "Identity Merge and Identity Split as explicit, policy-governed, fully auditable operations — never automatic LLM side effects — with Split explicitly framed as belief revision applied to entity identity"
+  - concept: "EntityIdentity≠AssertionIdentity≠PropositionEquivalence, demonstrated via a concrete three-document worked example"
+  - concept: "Identity resolution errors propagate bidirectionally into epistemic errors: over-merging creates false conflicts, over-separating can hide genuine ones"
+  - concept: "KnowledgeOS Entity≠Reality: the system's epistemic representation of an entity is never conflated with the presumed real-world entity itself, extending the corpus's Knowledge≠Reality principle to entity identity specifically"
+  - concept: "The theoretical acknowledgment that natural-language semantic equivalence is not generally decidable, with 'I don't know whether these mean the same thing' explicitly framed as a feature, not a failure"
+  - concept: "Fourteen canonical Step-12 invariants (ID1-ID14) governing identity, entity resolution, and semantic equivalence"
+  - concept: "'Step 13 — Sufficiency, Completeness, and Readiness for Purpose' as the corpus's next named research phase, reframing the central question from truth to decision-readiness"
+defines:
+  - concept: "IdentityAssertion (I_A)"
+    definition: "(representation r, entity x, support S, context Ctx, provenance Π, validity τ) — an identity claim treated as a formal epistemic object with its own evidential basis, never an unqualified fact"
+  - concept: "Semantic Comparison result (SC)"
+    definition: "(P_1, P_2, Relation, Context, Basis, Status) where Relation∈{Equivalent,Compatible,Contradictory,Related,Independent,Unknown} — the relation and its epistemic certainty (Status) kept as separate fields, never conflated"
+  - concept: "KnowledgeOS Entity (x̂) vs. Reality (x)"
+    definition: "x̂ is the system's governed epistemic representation of a presumed real-world entity x; the two are never identified, preserving the corpus's Knowledge≠Reality discipline at the entity-identity layer"
+refines:
+  - concept: "0551's closing directive naming Step 12 and its motivating naming/phrasing puzzles"
+    refinement: "Fully executed: delivers a complete formal theory of entity identity, resolution, merge/split operations, semantic equivalence, and comparison, unified with the corpus's existing evidence-assessment machinery"
+  - concept: "0528/0532/0536-0545's recurring duplicate-evidence and independent-evidence findings"
+    refinement: "Given a precise semantic foundation via EquivalentProposition≠SameAssertion, explaining exactly why semantically identical claims from different sources must be tracked as separate assertions pending independent dependency analysis"
+  - concept: "0548's paraconsistent conflict framework and 0550's context-must-be-checked-first conflict principle"
+    refinement: "Extended by making entity resolution and semantic comparison explicit upstream prerequisites of conflict detection itself, rather than assuming entity identity is already settled"
+  - concept: "0546's Support≠Truth and the corpus's general Knowledge≠Reality discipline"
+    refinement: "Extended specifically to entity identity via KnowledgeOS Entity≠Reality, completing the corpus's non-collapse discipline across propositions, evidence, and now entities"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 13 — Sufficiency, Completeness, and Readiness for Purpose' is executed as its own dedicated corpus file, formally distinguishing Truth, KnowledgeCompleteness, EpistemicSufficiency, and DecisionReadiness"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Representation≠Entity≠Proposition separation, entity resolution as evidence accumulation (no separate epistemology needed), the 'semantic hallucination becoming structural identity' AI-safety concept, and EquivalentProposition≠SameAssertion."
+  - "dimension-registry.md: record Identity Merge/Split as auditable belief-revision-style operations, EntityIdentity≠AssertionIdentity≠PropositionEquivalence, the bidirectional identity-error-propagation finding, and KnowledgeOS Entity≠Reality."
+  - "dimension-registry.md: record the semantic-equivalence undecidability acknowledgment, the Semantic Comparison result object, the fourteen canonical ID1-ID14 invariants, and 'Step 13 — Sufficiency, Completeness, and Readiness for Purpose' as the next named research phase."
+anchor_test:
+  anchor: "0551's Step-11 conclusion and its naming/phrasing motivating puzzles for Step 12; 0528/0532/0536-0545's independent-evidence findings; 0548/0550's Conflict and paraconsistency framework; the corpus's general Knowledge≠Reality discipline"
+  supports_dimension: "LANDMARK complete formalization of entity identity, resolution, and semantic equivalence for KnowledgeOS, delivering a major architectural simplification (identity resolution reuses the existing Evidence/Assessment machinery rather than requiring new epistemology), a vividly-named AI-safety concept (semantic hallucination becoming structural identity), a precise EquivalentProposition≠SameAssertion distinction explaining the corpus's recurring duplicate-evidence caution, auditable Merge/Split operations treated as belief revision, and the extension of the corpus's Knowledge≠Reality discipline specifically to entity identity — closing with fourteen canonical invariants and a well-motivated next research phase on epistemic sufficiency for decision-making"
+  refines_or_contradicts: "directly and fully executes 0551's Step-12 directive; explains and unifies 0528/0532/0536-0545's recurring independent-evidence findings under a single semantic principle; extends 0548/0550's conflict framework by making entity/semantic resolution its explicit prerequisite; extends the corpus's Knowledge≠Reality discipline to entities; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked three-document 'Nexus is version 3.69' example, demonstrating EntityIdentity≠AssertionIdentity≠PropositionEquivalence concretely and showing exactly how dependency analysis must still apply even after semantic equivalence is established, is a directly checkable synthesis of multiple previously separate corpus threads (identity, semantic equivalence, and evidence independence) into one coherent worked case."
+  - "The DNS-plus-host-inventory worked example (nexus3.dgverlag.de -> IP address -> host inventory record) is a concrete, checkable demonstration of deterministic identity evidence combinable with LLM-proposed candidates, giving the corpus's identity-resolution theory a genuinely implementable grounding rather than a purely abstract one."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 13 — Sufficiency, Completeness, and Readiness for Purpose' is executed as its own dedicated corpus file, formally distinguishing Truth, KnowledgeCompleteness, EpistemicSufficiency, and DecisionReadiness"
+  - "Whether the fourteen ID1-ID14 invariants are ever cross-referenced against the corpus's other independently-numbered invariant schemes (EVD, E, E-K, A, K, C, U) in a future canonical reference"
+tier2_triggered: true
+tier2_reason: "LANDMARK complete formalization of entity identity, resolution, and semantic equivalence, delivering the corpus's most architecturally consequential simplification in this entire research arc: identity resolution and semantic equivalence both reduce to instances of the already-established Evidence/Assessment machinery, requiring no separate epistemology. Introduces a vividly-named, genuinely important AI-safety concept ('semantic hallucination becoming structural identity'), a precise EquivalentProposition≠SameAssertion distinction retroactively explaining why the corpus's many prior duplicate-evidence cautions were necessary, fully auditable Merge/Split operations treated explicitly as belief revision applied to identity, and a bidirectional demonstration that identity-resolution errors propagate into genuine epistemic errors in both the over-merging and over-separating directions. Extends the corpus's Knowledge≠Reality discipline specifically to entities (KnowledgeOS Entity≠Reality) and delivers fourteen canonical governing invariants, closing with a well-motivated next research phase reframing epistemic questions from truth to decision-readiness."

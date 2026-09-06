@@ -1,0 +1,76 @@
+sequence: 1079
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/04_closure-analysis.md
+title: "04 -- Closure Analysis (Step 291 mandate SSSS3,6,7): Consolidates the Already-Tracked Enumeration-vs-Closure and Six-Property Decomposition Findings (files 1076, 1078) Into a Full Eight-Item Blocker-Classification Table, Delivering the Capstone Insight That NOT ONE Blocker in the Entire equiv_K/O/T Research Arc Is an Engineering Blocker -- Two Are Merely Documentary and Repairable Without Any Decision"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the fourth numbered Step-291 prose artifact (numbering skips 02, 03), consolidating and refining the already-tracked closure and definability findings"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1079
+importance: major
+confidence: high
+about: >
+  "04 — Closure Analysis (mandate §§3, 6, 7)." Consolidates, with added precision, the already-tracked
+  findings from files 1076/1078: the enumeration-vs-closure four-mechanism table (finite enumeration PARTIAL,
+  schema PRESENT via `259.7`+`277`, admissibility predicate PRESENT-IN-FORM-ABSENT-IN-CONTENT, governance
+  boundary ASSERTED-never-discharged); the boxed critical claim "What is missing is NOT an enumeration...
+  What is missing is a MEMBERSHIP RULE saying which operations are MANDATORY"; the A-E observation-universe
+  classification (case C closest fit for observations, case B for operations); and `261.21`'s already-tracked
+  self-referential definitional defect (already tracked, files 1076/1078).
+
+  **DELIVERS A GENUINELY VALUABLE, MORE PRECISE RESTATEMENT OF THE ALREADY-TRACKED FIVE-VS-SIX PROPERTY
+  DECOMPOSITION**: "Correction to Steps 289-290: they said '`≡` is blocked on `𝒪_K`' without qualification.
+  PRECISELY: `≡`'s extension, totality, decidability, canonicality and computability are blocked. ITS
+  DEFINABILITY IS NOT. FIVE OF SIX, NOT SIX OF SIX -- and the one that survives is THE ONE THAT MATTERS FOR
+  WHETHER THE REGISTER IS COHERENT, WHICH IS WHY `N-1A` WAS DECIDABLE AT ALL." This directly connects the
+  file-1076 six-way decomposition back to explain WHY the already-tracked N-1A resolution (files 1066-1067,
+  1072) was possible at all -- a genuinely important epistemological through-line linking the entire N-1 and
+  O/T/O_K research threads together.
+
+  **DELIVERS THE GENUINELY NEW CAPSTONE SYNTHESIS OF THIS FILE**: a full eight-item blocker-classification
+  table (𝒪's mandatory-membership rule -- NORMATIVE; 𝒪_K's extension -- NORMATIVE; the 𝒪 glyph overload --
+  DOCUMENTARY; 261.21's self-reference -- DOCUMENTARY; no schema for kind-5 observation operations --
+  TYPE-THEORETIC; `Admissible(o,K)` named-not-evaluable -- FORMAL/DERIVATIONAL, routed to `G1`; 𝒯's membership
+  -- NORMATIVE; `δ`'s commit case -- FORMAL/DERIVATIONAL). Boxed capstone: "NOT ONE BLOCKER IS AN ENGINEERING
+  BLOCKER. TWO ARE DOCUMENTARY AND COULD BE REPAIRED WITHOUT ANY DECISION." This is a genuinely important,
+  disciplined synthesis across the entire equiv_K/O/T/O_K research arc (files 1052, 1063-1078): every
+  remaining obstacle is either a governance decision waiting to be made (NORMATIVE), a fixable documentation
+  defect (DOCUMENTARY), a missing type specification (TYPE-THEORETIC), or a derivational gap already routed
+  to a named gap-tracker (`G1`) -- none requires new engineering work to resolve.
+introduces:
+  - concept: "The through-line connecting the five-of-six-properties-blocked finding to the already-tracked N-1A decidability: definability survives O_K's openness precisely because it is the property that determines register coherence, which is why the N-1 conflict was resolvable at all despite O_K remaining open"
+  - concept: "The full eight-item blocker-classification table for the entire equiv_K/O/T/O_K research arc, sorted by kind (normative/documentary/type-theoretic/formal-derivational)"
+  - concept: "The capstone synthesis that not one of the eight remaining blockers is an engineering blocker -- two are merely documentary defects repairable without any decision at all"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked six-way property decomposition of the O_K blocker (file 1076)"
+    refinement: "SHARPENED into a precise 'five of six, not six of six' statement, explicitly connecting definability's survival to why N-1A (files 1066-1067, 1072) was decidable at all"
+  - concept: "This reconstruction's already-tracked O-glyph-collision and enumeration-vs-closure findings (files 1076, 1078)"
+    refinement: "CONSOLIDATED into a full eight-item blocker-classification table, delivering the capstone synthesis that none of the arc's remaining blockers requires new engineering work"
+contradicts: []
+repeats:
+  - "Substantially reproduces the already-tracked enumeration-vs-closure, A-E observation classification, and six-property decomposition findings from files 1076 and 1078."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the precise through-line connecting definability's survival to N-1A's decidability, and the capstone eight-item blocker-classification synthesis showing not one remaining blocker in the equiv_K/O/T/O_K arc is an engineering blocker."
+anchor_test:
+  anchor: "This reconstruction's already-tracked six-way property decomposition (file 1076) and O-glyph-collision finding (file 1076/1078)"
+  supports_dimension: "Sharpens the decomposition into a precise five-of-six statement connected to N-1A's decidability, and consolidates all remaining blockers into a capstone classification table showing none is an engineering blocker"
+  refines_or_contradicts: "refines (sharpens and consolidates) the prior tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The six-property table and blocker classifications are directly checkable against file 1076's own already-documented script output for exact numerical and classificatory consistency."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers a genuinely valuable synthesis connecting the six-property decomposition to the N-1A decidability finding, and a capstone eight-item blocker-classification table showing not one remaining blocker in the entire equiv_K/O/T/O_K research arc is an engineering blocker. Classified importance major and confidence high given the disciplined, well-evidenced consolidation."

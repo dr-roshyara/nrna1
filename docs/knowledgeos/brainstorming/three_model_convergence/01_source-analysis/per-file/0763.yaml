@@ -1,0 +1,113 @@
+sequence: 763
+path: docs/knowledgeos/brainstorming/phase_measure_theory/external_research/20260828-225107_c4-architecture-diagrams-system-context-to-component.md
+title: "C4 Architecture Diagrams -- System Context to Component (DeepSeek-Sourced, per 0762's caution): a Complete Four-Level PlantUML C4 Specification for KnowledgeOS -- Delivers ZeroLens/LordLens/SārathiLens as Concrete Classes With Method Signatures (LordLens.generate_candidates/synthesize/hypothesize -- Notably Closer to the 'Analytical/Candidate-Generation' R2-Style Lord Than the 'Action-Selector' R5-Style Lord Flagged as CON-02 at 0758-0759) -- Delivers an Unusual, Unexplained Design Choice: a 'Semantic Parser (Sanskrit-Style)' Using Classical Panini-Style Kāraka Case-Roles (KARTA/KARMA/KARANA/SAMPADA/APADANA/ADHIKARANA/SAMBANDHA) and Compound-Type Rules (TATPURUSHA/KARMADHARAYA/DWANDWA/BAHUWREEHI/AVYAYEEBHAVA) as the Semantic-Role-Labeling Scheme, Paired With an Equally Unexplained 'Structural Parser (C-Like)' -- Delivers a Four-Dimension EvidenceAssessor (Reliability/Relevance/Currency/Independence)"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "DeepSeek-sourced external research per 0762's explicit provenance flag ('we should not take them as it is blindly') -- recorded here as reported corpus content, not independently verified or endorsed by this reconstruction; g1 relevance limited to the Sanskrit-derived kāraka/compound-rule naming scheme and the Sārathi lens, used here as an unexplained technical implementation choice rather than argued architectural analysis"
+source_role: EXTERNAL_RESEARCH
+canonical_source: 763
+importance: standard
+confidence: medium
+about: >
+  A complete, concrete four-level C4 architecture specification for KnowledgeOS in PlantUML (System
+  Context, Container, Component, Code), explicitly flagged by 0762 as DeepSeek-generated external research
+  requiring skepticism rather than blind acceptance -- recorded faithfully as reported corpus content.
+
+  **Level 1 (System Context)**: `KnowledgeOS` positioned as an "Epistemic-Normative-Decision-Action
+  System" interacting with a `Knower` (human decision-maker owning decision and action) and a `System
+  Administrator` (governs policies/roles/authorities), and four external systems (Document Sources, API
+  Sources, LLM Services [GPT-4/Llama 3/Claude explicitly named], Enterprise Systems).
+
+  **Level 2 (Container)**: ten containers -- API Gateway, Source Layer, Semantic Reconstruction, Knowledge
+  State (Neo4j/PostgreSQL), **Zero Lens** (gap/conflict detection), **Lord Lens** (candidate generation/
+  hypothesis/synthesis), **Sārathi Lens** (contextual guidance/investigation recommendations), Decision
+  Engine, Action Executor, Knowledge UI -- with an explicit data-flow chain `Zero Lens→[feeds
+  gaps]→Lord Lens→[feeds candidates]→Sārathi Lens→[feeds guidance]→Decision Engine→Knower→Action Executor`.
+
+  **Level 3 (Component)**: internal components per container, including a "Structural Parser (C-like)"
+  (tokenizer, grammar rules, dependency detection -- the "C-like" designation is not explained in this
+  file, and its meaning -- literal C-programming-language grammar analogy vs. generic context-free
+  grammar -- is left ambiguous), and **a "Semantic Parser (Sanskrit-style)" using classical Pāṇinian
+  kāraka case-role rules as its relation-labeling scheme**: `KARTA, KARMA, KARANA, SAMPADA, APADANA,
+  ADHIKARANA, SAMBANDHA` (the traditional Sanskrit grammatical case-roles: agent, object, instrument,
+  recipient, source/ablative, locative, and relation/genitive respectively), plus **compound-type rules**
+  `TATPURUSHA, KARMADHARAYA, DWANDWA, BAHUWREEHI, AVYAYEEBHAVA` (the five classical Sanskrit compound-word
+  categories) -- an unusual, unexplained technical design choice applying classical Sanskrit grammatical
+  theory as a general-purpose natural-language semantic-role-labeling scheme, presented without
+  justification or citation for why this particular grammatical framework was chosen over more
+  conventional semantic-role-labeling schemes (e.g. PropBank/FrameNet-style).
+
+  Delivers an "Epistemic Engine" system boundary containing `ZeroLens`, `LordLens`, `SārathiLens` as
+  concrete classes with method signatures: `ZeroLens.detect_gaps(K, IdealState)→List[Gap]`,
+  `.detect_conflicts(K)→List[Conflict]`, `.assess_coherence(K)→CoherenceReport`;
+  `LordLens.generate_candidates(K, gaps)→List[CandidateDimension]`, `.synthesize(assertions)→Assertion`,
+  `.hypothesize(K, IdealState)→List[Hypothesis]`; `SārathiLens.recommend(K, gaps)→Recommendation`,
+  `.plan_investigation(gaps)→InvestigationPlan`, `.contextualize(guidance, ctx)→Guidance`. **Notably, this
+  specific artifact's `LordLens` is defined entirely around candidate-generation, synthesis, and hypothesis
+  work -- functionally closer to the "analytical" R2-style characterization of Lord than the "action
+  selector" R5-style characterization flagged as the `CON-02` semantic collision at 0758-0759** -- recorded
+  here as a data point potentially relevant to that open question, without this reconstruction drawing any
+  conclusion about which characterization is authoritative, consistent with the "do not take blindly"
+  caution and this reconstruction's own standing discipline against silently resolving open corpus
+  contradictions from a single external artifact.
+
+  **Level 4 (Code)**: concrete class definitions for core types (`Artifact`, `SourceObservation`,
+  `Proposition`, `Assertion` [with an `epistemic_state: Sigma` field], `Evidence`), the two parser
+  packages described above, the three Epistemic Lenses, and an **`EvidenceAssessor`** with four explicit
+  computed quality dimensions -- `compute_reliability(source)`, `compute_relevance(evidence, prop)`,
+  `compute_currency(evidence)`, `compute_independence(evidence, graph)` -- a reasonably well-specified,
+  concrete evidence-quality framework broadly consistent with (though not identical in vocabulary to) the
+  corpus's own repeatedly-discussed Evidence-quality concept (e.g. 0743's/0750's EvidenceQuality=f(...)
+  formulations).
+
+  Closes with a combined "Full C4 Model" diagram merging all four levels, and a short "how to use these
+  diagrams" practical guide (render via PlantUML plugin/online server/CLI; audience mapping per level;
+  customization suggestions). No actual code execution, repository inspection, or verified
+  filesystem/architecture claim is made anywhere in this file -- it is a purely prospective, illustrative
+  architecture specification, produced by an external AI system per 0762's explicit provenance flag.
+introduces:
+  - concept: "A complete four-level C4 PlantUML architecture specification for KnowledgeOS (System Context/Container/Component/Code)"
+  - concept: "ZeroLens/LordLens/SārathiLens as concrete classes with explicit method signatures"
+  - concept: "The unexplained 'Semantic Parser (Sanskrit-style)' design choice using classical Pāṇinian kāraka case-roles and Sanskrit compound-type rules as a general semantic-role-labeling scheme"
+  - concept: "The equally unexplained 'Structural Parser (C-like)' design choice"
+  - concept: "The four-dimension EvidenceAssessor (reliability/relevance/currency/independence)"
+defines: []
+refines:
+  - concept: "0758's/0759's CON-02 finding (Lord_R2 analytical vs. Lord_R5 action-selector semantic collision)"
+    refinement: "This specific artifact's LordLens is defined entirely as candidate-generation/synthesis/hypothesis work -- data potentially relevant to the CON-02 investigation, functionally closer to the R2/analytical characterization than the R5/action-selector one -- but this reconstruction draws no conclusion from a single external artifact, consistent with the 'do not take blindly' caution"
+  - concept: "The corpus's recurring EvidenceQuality=f(...) formulations (e.g. 0743, 0750)"
+    refinement: "Given a concrete, differently-vocabularied but structurally consistent implementation (reliability/relevance/currency/independence as explicit computed functions) -- an independent, externally-sourced convergence on a similar evidence-quality decomposition"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read the following external_research/ files (hpa-ruling-gn-31, distribution-theory-in-knowledgeos, methodological-discipline-second-order-reflection, three-distinct-information-pathways, what-we-can-directly-use-practical-assessment) with high attention: check whether they evaluate/critique THIS specific C4 diagram artifact, and whether the Sanskrit-kāraka semantic-parser design choice and the C-like structural-parser choice are explained, endorsed, or rejected anywhere in the corpus's own primary c1/g1 voice."
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file as DeepSeek-sourced external research (per 0762) delivering a complete, concrete C4 architecture specification with ZeroLens/LordLens/SārathiLens classes -- flag the LordLens definition (candidate-generation/synthesis/hypothesis) as a data point potentially relevant to 0758-0759's open CON-02 question, without independent verification."
+  - "dimension-registry.md: record the unexplained 'Semantic Parser (Sanskrit-style)' kāraka-based design choice as a notable, unusual technical decision requiring corroboration or critique from the corpus's own primary voice before being treated as more than an unvalidated external proposal."
+anchor_test:
+  anchor: "0762's DeepSeek provenance flag; 0758's/0759's CON-02 Lord_R2-vs-Lord_R5 semantic-collision finding; the corpus's recurring EvidenceQuality=f(...) formulations"
+  supports_dimension: "Delivers a concrete, complete four-level C4 architecture specification for KnowledgeOS from an explicitly flagged external (DeepSeek) source. The LordLens definition (candidate-generation/synthesis/hypothesis) is a potentially relevant data point for the open CON-02 investigation, recorded without independent verification per the 'do not take blindly' caution. Delivers an unusual, unexplained Sanskrit-kāraka-based semantic-parsing design choice worth watching for corroboration or critique in subsequent hpa-* review files. Delivers a concrete four-dimension EvidenceAssessor broadly convergent with the corpus's own recurring evidence-quality formulations"
+  refines_or_contradicts: "provides a data point potentially relevant to (but not resolving) 0758-0759's open CON-02 question; independently convergent with (not contradicting) the corpus's EvidenceQuality formulations; provenance-flagged per 0762, treated with appropriately reduced confidence"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit LordLens method signatures (generate_candidates, synthesize, hypothesize) with no action-execution or decision-selection methods anywhere in the class is directly checkable evidence that this specific artifact's Lord characterization aligns more closely with the R2/analytical description than the R5/action-selector description flagged at 0758-0759."
+  - "The explicit RelationRules class listing KARTA/KARMA/KARANA/SAMPADA/APADANA/ADHIKARANA/SAMBANDHA and CompoundRules listing TATPURUSHA/KARMADHARAYA/DWANDWA/BAHUWREEHI/AVYAYEEBHAVA is directly checkable evidence of the unexplained Sanskrit-grammatical-theory design choice for the semantic parser."
+undefined_concepts:
+  - "Why the 'Structural Parser' is characterized as 'C-like' is not explained anywhere in this file -- ambiguous between a literal C-programming-language grammar analogy and a generic context-free-grammar framing."
+  - "Why classical Pāṇinian kāraka theory was chosen as the semantic-role-labeling scheme, rather than a conventional computational-linguistics framework (PropBank/FrameNet-style), is not explained or justified anywhere in this file."
+open_questions:
+  - "Whether the Sanskrit-kāraka-based semantic parser design and the C-like structural parser design are explained, endorsed, corroborated, or critiqued anywhere in the corpus's own primary c1/g1 voice (e.g. in the subsequent hpa-* review files in this same subdirectory)."
+  - "Whether this specific C4-diagram artifact is the actual source document the R4/R5 formal-algebra discussion at 0756-0759 was referring to, or a separate, independently produced DeepSeek artifact."
+tier2_triggered: false
+tier2_reason: "Standard-importance DeepSeek-sourced external research (per 0762's explicit provenance caution): delivers a concrete, complete C4 architecture specification with a LordLens characterization potentially relevant to the open CON-02 question, and an unusual, unexplained Sanskrit-grammatical-theory design choice worth watching for corroboration in later files -- recorded faithfully without independent verification, consistent with the reduced-trust discipline this subdirectory requires."

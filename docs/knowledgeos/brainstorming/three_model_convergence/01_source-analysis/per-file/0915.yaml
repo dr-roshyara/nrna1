@@ -1,0 +1,208 @@
+sequence: 915
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-231637_step_280_end-to-end-empirical-closure-test.md
+title: "Step 280 -- End-to-End Empirical Closure Test: THE CULMINATING DESIGN DOCUMENT OF THE ENTIRE STEPS-260-TO-280 MATHEMATICAL-KERNEL/POLICY/AUTHORITY SUB-ARC -- Delivers 24 Named Empirical Tests (E1-E24), a Seven-Level Evidence Hierarchy Where Only Levels 4-6 Count as Substantive, Metamorphic Testing of Derived Invariants Rather Than Fixed Examples, a Mandatory 20-Percent Negative-Control Requirement, Ten Named Critical-Failure Conditions, and the Capstone Directive 'Do Not Make the Empirical Data Fit the Theory. Make the Theory Answer to the Empirical Data' -- Note: Test E3 Reverts to the Discarded Sigma=(A,S,R,V,C) Five-Dimensional Model, Contradicting File 0912's Rigorously Proven Sigma_min={Unknown,Supported,Refuted,Conflict} Result Without Acknowledgment -- Skips the Designated 'Step 279 EXECUTION' Artifact Entirely"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: c1
+  secondary: m1
+  secondary_note: "genuinely rigorous applied statistics/experimental-design methodology (stratified sampling, metamorphic testing, calibration metrics, TP/TN/FP/FN reporting, an explicit evidence hierarchy) governing the entire kernel sub-arc's empirical closure"
+source_role: PRIMARY_RESEARCH
+canonical_source: 915
+importance: critical
+confidence: medium
+about: >
+  **Skips the artifact designated by file 0914's own closing ("Step 279 EXECUTION") entirely** -- this
+  reconstruction has not encountered any file reporting concrete F1-F13 results, yet this file proceeds
+  directly to Step 280 assuming Step 279 is complete ("Predecessor: Step 279 — Policy and Authority
+  Executable Implementation"). This is the culminating, most comprehensive empirical-methodology document
+  of the entire Steps-260-through-280 mathematical-kernel/Policy/Authority reconstruction sub-arc, though
+  itself explicitly "EXECUTION-READY," not yet executed.
+
+  **§1-§2 delivers the framing question and reaffirms the four-way closure discipline** established across
+  this sub-arc (formal/computational/empirical/governance, `CC≠EC≠GC`), explicitly: "passing Step 279 does
+  not imply passing Step 280."
+
+  **§3 decomposes the central empirical question into five sub-questions** (can real KnowledgeOS states be
+  represented as `K`? epistemic states as `Σ`? evidence as `E`? transformations by `T`? governance
+  behaviour by Policy+Authority+Authorization?) -- "if any answer is no, the theory is not empirically
+  closed."
+
+  **§4 delivers "no reverse engineering by force"**: neither the implementation may be modified merely to
+  conform to theory, nor may theory be modified merely to erase an implementation anomaly -- delivering an
+  explicit eight-category `Theory↔Implementation Mismatch` classification (implementation defect,
+  incomplete implementation, incomplete theory, incorrect historical reconstruction, terminology mismatch,
+  bounded-context mismatch, undocumented governance rule, genuinely contradictory empirical evidence),
+  "the mismatch must be investigated before any correction."
+
+  **§6-§7 delivers the required empirical corpus specification**: twelve stratified case classes each
+  requiring a minimum of three cases (`N≥36` total), explicitly forbidding simply taking "the first 36
+  available cases" -- sampling must cover `Context×Operation×EpistemicStatus×PolicyState` and explicitly
+  include positive, negative, boundary, missing-data, conflicting, and historical cases.
+
+  **§9-§32 delivers TWENTY-FOUR NAMED, INDIVIDUALLY SPECIFIED EMPIRICAL TESTS (`E1`-`E24`)**, the file's
+  central deliverable, each with a precise question/procedure/pass-fail criterion: `E1` Knowledge-State
+  representation; `E2` state equality (testing all three previously distinguished relations `=,≅,≈_{O_
+  core}` are not incorrectly collapsed); **`E3` Epistemic status -- NOTABLY DERIVES `Σ=(A,S,R,V,C)`, THE
+  FIVE-DIMENSIONAL MODEL, CONTRADICTING FILE 0912's RIGOROUSLY PROVEN AND POSITIVELY-REVIEWED
+  `Σ_min={Unknown,Supported,Refuted,Conflict}≅{0,1}^2` RESULT, WITHOUT ACKNOWLEDGMENT OR RECONCILIATION**
+  -- a genuine, unaddressed regression to a model this reconstruction has already seen explicitly
+  superseded by a superior, exhaustively-proven derivation; `E4` Unknown/Missingness safety test
+  (`Missing≠False`, `Unknown≠Refuted`, "a missing value MUST NOT automatically become 0, False, Denied,
+  Refuted" -- "a fundamental epistemic safety test"); `E5` Evidence qualification; `E6` Support/Refute/
+  Conflict distinction preservation; `E7` Transformation (`Δ_K=Difference(K_predicted,K_observed)`,
+  requiring `Δ_K=0` for pass); `E8` Replay (`Replay(K_0,H)=K_n` under canonical state-equivalence, using
+  the historically-applicable policy); `E9` Provenance ("MUST NOT be inferred merely from current state");
+  `E10` Lineage (distinguishing "same result" from "same lineage"); `E11` History vs. State (a critical
+  test explicitly demonstrating `StateIdentity≠HistoryIdentity` empirically -- constructing `H_1≠H_2` with
+  `Replay(K_0,H_1)=Replay(K_0,H_2)`); `E12` Policy evaluation; `E13` Conditional resolution (must not
+  silently convert `CONDITIONAL→PASS`); `E14` Authority (`Permit⇒Scope(o)⊆Scope(a)`); `E15` Policy change
+  (verifying the old version remains historically accessible while future/historical evaluation correctly
+  diverge); `E16` Temporal policy semantics (`Applicable(t_s)=true`, `Applicable(t_e)=false`, testing the
+  half-open interval boundary precisely); `E17` Policy propagation ("empirical closure requires OBSERVED
+  convergence, not merely an architectural assertion"); `E18` Rule independence via controlled
+  intervention (changing only `X_i`, observing `Result(r_j)` -- "correlation alone does not establish
+  logical dependence"); `E19` Measurement (an ordinal `mean(X)` "requires an additional measurement
+  assumption... the implementation must not silently assume interval semantics"); `E20` Statistical
+  calibration (Brier score / ECE metrics, "no probability model may be considered empirically validated
+  merely because it returns numbers in `[0,1]`"); `E21` Contradiction (must not silently select one
+  proposition absent a formally defined resolution mechanism); `E22` Supersession (`Supersession is
+  therefore not deletion`); `E23` Explanation (must be traceable to actual state/evidence/policy/authority/
+  history objects, not accepted merely because it sounds plausible); `E24` the PRIMARY END-TO-END SCENARIO
+  TEST, the full thirteen-stage pipeline (`Observation→Qualification→Evidence→Assessment→Epistemic
+  Status→Policy Evaluation→Authority Check→Authorization→Transformation→New Knowledge State→Audit/
+  Provenance→Replay→Explanation`).
+
+  **§33 delivers a round-trip serialization invariant**: `K→Serialize(K)→Deserialize→K'` must satisfy
+  `K'≈K`, "tests that implementation representation does not destroy semantic state."
+
+  **§34 delivers METAMORPHIC TESTING, a genuinely important methodological upgrade**: empirical validation
+  must not depend exclusively on fixed expected outputs; instead define transformations `m` for which
+  THEORETICAL INVARIANTS are known (e.g. for independent operations `o_1⊥o_2`, test
+  `T(T(K,o_1),o_2)≈T(T(K,o_2),o_1)`), explicitly "if the theory does not predict commutativity, the test
+  must not assume it" -- "empirical testing must test derived invariants, not merely examples."
+
+  **§35 delivers a mandatory NEGATIVE-CONTROL REQUIREMENT**: at least 20% of the empirical suite must be
+  negative or boundary cases (invalid policy, expired policy, insufficient authority, missing/conflicting
+  evidence, malformed measurement, unauthorized policy change, stale node, contradictory assertions) --
+  "a theory that passes only positive cases has not been adequately falsified."
+
+  **§36 delivers a SEVEN-CATEGORY EMPIRICAL ERROR TAXONOMY** (`T` theory defect, `I` implementation defect,
+  `D` data problem, `G` governance mismatch, `UL` terminology mismatch, `C` context/bounded-context
+  mismatch, `E` empirical anomaly), "no mismatch may be discarded as 'implementation detail' without
+  classification."
+
+  **§37-§38 delivers rigorous statistical reporting requirements**: standard binary-classification metrics
+  (`TP,TN,FP,FN`, Accuracy/Precision/Recall), explicitly "must not replace semantic correctness... report
+  results by case class, not only globally" (since "a system can have high accuracy while systematically
+  mishandling rare but critical governance cases"); and an agreement matrix distinguishing Exact Match /
+  Semantic Match / Mismatch per domain.
+
+  **§39-§40 delivers a disciplined empirical-closure threshold**: `EC=E_semantic∧E_behavioral∧E_temporal∧
+  E_governance∧E_replay`, explicitly NOT "most tests passed" -- "a single critical contradiction in a
+  foundational construct prevents full empirical closure" -- and TEN NAMED CRITICAL FAILURE CONDITIONS
+  that automatically prevent empirical closure (e.g. `K` cannot represent a required real state; equality
+  produces a known semantic error; replay cannot reconstruct a valid historical state; unauthorized action
+  is permitted; contradictory evidence is silently collapsed; missingness is silently converted into a
+  substantive value; real KnowledgeOS behaviour requires an undefined theoretical primitive).
+
+  **§41 delivers a SEVEN-LEVEL EVIDENCE HIERARCHY**, the file's sharpest epistemic-discipline
+  contribution: Level 0 (Assertion -- someone states the theory works) through Level 6 (Independent
+  reproduction -- another implementation/test harness reproduces the result), explicitly stating "only
+  Levels 4-6 count as substantive empirical evidence" -- Level 4 (Controlled empirical test), Level 5
+  (Real KnowledgeOS validation), Level 6 (Independent reproduction). **§42 delivers the corresponding
+  independent-reproduction requirement** (`Implementation_A` and `Implementation_B` independently
+  calculating `Result_A≈Result_B`), "reduces the danger of validating an implementation against itself."
+
+  **§44 delivers the THEORY REVISION RULE**: `Contradiction→Reproduce→Classify→Locate→Correct→Retest` --
+  "the next step is not automatically to change the theory... any revision receives a new formal change
+  record," directly extending the corpus's standing anti-circularity/non-silent-repair discipline.
+
+  **§45-§47 delivers the empirical closure matrix template, ten required deliverables (`D1`-`D10`)**
+  (Empirical Case Corpus, Theory-to-Implementation Trace, End-to-End Execution Report, Empirical Closure
+  Matrix, Falsification Report, Mismatch Register, Statistical Validation Report, Replay Validation
+  Report, Governance Validation Report, and "a reproducible package sufficient for another expert to
+  independently inspect the conclusions"), and the required final report template.
+
+  **§48 delivers the file's most important philosophical framing**: boxed **`Formal∧Computational∧
+  Empirical`** is one legitimate strongest success, but boxed **`Theory falsified or materially
+  incomplete`** is EQUALLY a legitimate successful outcome -- "if real KnowledgeOS produces systematic
+  counterexamples, Step 280 has succeeded by discovering them. Failure of the theory is not failure of
+  Step 280. Failure to test the theory honestly is failure of Step 280" -- a genuinely mature
+  falsificationist framing directly consistent with, and capping, the corpus's many earlier legitimate-
+  negative-result precedents (0862, 0871, 0888, 0895).
+
+  **§49 delivers the file's final epistemic caveat**: even complete success establishes only "evidence for
+  adequacy," explicitly NOT "proof of universal correctness" -- "this distinction is essential for a
+  mathematically and statistically defensible theory."
+
+  **§50 delivers the HPA Ruling and the complete research-chain summary**: boxed **`001…271→272A→272…
+  278→279→280`**, the methodological progression `Historical Reconstruction→Formal Derivation→
+  Minimality→Policy/Authority→Executable Implementation→Empirical Falsification`, and the capstone
+  directive boxed **`Do not make the empirical data fit the theory`**; boxed **`Make the theory answer to
+  the empirical data`**. Closes "STEP 280 — READY FOR EXECUTION," with the explicit next action to execute
+  the empirical corpus against Step 279's implementation and populate the closure matrix with OBSERVED
+  evidence, not inferred status.
+introduces:
+  - concept: "The culminating design document for the entire Steps 260-280 mathematical-kernel/Policy/Authority sub-arc's empirical closure, itself skipping the designated 'Step 279 EXECUTION' predecessor artifact"
+  - concept: "Twenty-four named, individually specified empirical tests (E1-E24) covering every major theory construct established across this sub-arc"
+  - concept: "A significant unacknowledged regression: Test E3 reverts to Σ=(A,S,R,V,C), contradicting file 0912's rigorously proven and positively-reviewed Σ_min={Unknown,Supported,Refuted,Conflict} result"
+  - concept: "Metamorphic testing of derived theoretical invariants (e.g. commutativity of independent operations), rather than testing only fixed expected outputs"
+  - concept: "The mandatory 20-percent negative-control requirement for the empirical suite"
+  - concept: "The seven-category empirical error taxonomy (T/I/D/G/UL/C/E)"
+  - concept: "The disciplined empirical-closure threshold as a conjunction of five sub-criteria, plus ten named automatic critical-failure conditions"
+  - concept: "The seven-level evidence hierarchy, with only Levels 4-6 counting as substantive empirical evidence"
+  - concept: "The independent-reproduction requirement (two separate implementations independently agreeing)"
+  - concept: "The Theory Revision Rule: Contradiction→Reproduce→Classify→Locate→Correct→Retest, never an automatic theory change"
+  - concept: "The capstone falsificationist framing: theory falsification is an equally legitimate successful outcome as confirmation; failure to test honestly, not theory failure, is the only true failure of Step 280"
+  - concept: "The final epistemic caveat: even complete empirical success establishes evidence for adequacy, never proof of universal correctness"
+defines:
+  - concept: "The seven-level evidence hierarchy for empirical validation"
+    definition: "A graded classification of evidentiary strength for any claim that a theory has been empirically validated: Level 0 (Assertion -- someone simply states the theory works, no evidence); Level 1 (Static correspondence -- an implementation object superficially appears to correspond to a theory construct, without execution); Level 2 (Unit execution -- an individual component executes in isolation); Level 3 (Integration execution -- several components execute together, still without comparison to expected/observed outcomes); Level 4 (Controlled empirical test -- predicted and observed behaviour are explicitly compared); Level 5 (Real KnowledgeOS validation -- the theory reproduces representative behaviour of the actual real system, not merely synthetic fixtures); Level 6 (Independent reproduction -- a separate implementation or test harness, built independently, reproduces the same result). The file explicitly states that only Levels 4 through 6 count as substantive empirical evidence -- Levels 0 through 3, however common they may be in practice, do not by themselves establish that a theory has survived empirical contact with reality"
+  - concept: "Metamorphic testing for theoretical invariants"
+    definition: "A testing methodology that validates a theory by checking that DERIVED, THEORY-PREDICTED RELATIONSHIPS between multiple test executions hold, rather than only comparing each individual execution's output against one fixed expected value. For example, if the theory establishes that two operations o_1 and o_2 are semantically independent (o_1⊥o_2), metamorphic testing checks the derived invariant T(T(K,o_1),o_2)≈T(T(K,o_2),o_1) (order-independence) directly, rather than merely checking each individual transformation's output separately. Critically, the test must never assume an invariant the theory itself does not predict -- if the theory does not establish commutativity for a given operation pair, the test must not silently assume or check for it, since doing so would test an unstated hypothesis rather than the theory actually specified"
+refines:
+  - concept: "0912's rigorously proven Σ_min={Unknown,Supported,Refuted,Conflict}≅{0,1}^2 result"
+    refinement: "CONTRADICTED WITHOUT ACKNOWLEDGMENT by this file's own Test E3, which reverts to deriving the discarded five-dimensional Σ=(A,S,R,V,C) model -- a genuine, unresolved regression this reconstruction flags for the eventual §29-gated synthesis, directly analogous in kind to the earlier Version-1-vs-Version-2 tensions within file 0906 and 0891's/0892's discontinuity, though here occurring across a wider gap in the corpus's own step sequence"
+  - concept: "0862's/0871's/0888's/0895's earlier legitimate-negative-result precedents"
+    refinement: "CONSOLIDATED into the file's own capstone falsificationist statement (§48) -- 'failure of the theory is not failure of Step 280. Failure to test the theory honestly is failure of Step 280' -- giving this entire recurring methodological commitment its most explicit, forceful, and centrally-placed articulation in the whole reconstruction to date"
+  - concept: "The corpus's standing measurement-theory and probability discipline (0893/0895/0898/0900/0903/0908/0911/0912/0913)"
+    refinement: "EXTENDED into concrete empirical-test form via E19 (ordinal-mean requires an additional assumption) and E20 (calibration metrics required, a returned [0,1] number alone proves nothing), giving the standing discipline its most operationally concrete empirical test specification yet"
+  - concept: "0913's/0914's PASS≠Theory Proven discipline"
+    refinement: "GENERALIZED into the full seven-level evidence hierarchy and the explicit requirement that only Levels 4-6 count as substantive evidence, giving the earlier single-sentence caveat a complete, graded epistemic framework"
+contradicts:
+  - concept: "0912's Σ_min derivation, via this file's own Test E3"
+    detail: "Test E3 explicitly instructs deriving Σ=(A,S,R,V,C) for every representative empirical case, directly reverting to the five-dimensional model file 0903 identified as partially refuted and file 0912 subsequently, rigorously, and positively-reviewed-ly superseded with Σ_min={Unknown,Supported,Refuted,Conflict} -- an unacknowledged, unresolved contradiction within the corpus's own step sequence"
+repeats: []
+bridge_candidates:
+  - "Locate any file reporting the actual execution of the E1-E24 empirical tests, the F1-F13 falsification tests, or the designated 'Step 279 EXECUTION' artifact, to determine whether any concrete empirical results were ever produced for this sub-arc."
+  - "Watch for whether the E3/Σ_min contradiction is ever explicitly noticed and reconciled anywhere later in the corpus."
+  - "Watch for whether this Steps-260-280 mathematical-kernel sub-arc concludes with any further step beyond 280, given the explicit five-step roadmap (278→279→280→281 Gap Closure Verification→282 Theory Closure Decision) named in file 0910."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the twenty-four named empirical tests (E1-E24), the seven-level evidence hierarchy, the metamorphic-testing methodology, and the mandatory 20-percent negative-control requirement as the corpus's most complete and rigorous empirical-validation methodology to date, directly reusable for the gated (§29) canonical Kernel synthesis's own eventual empirical-grounding work."
+  - "dimension-registry.md: flag the unresolved contradiction between this file's Test E3 (Σ=(A,S,R,V,C)) and file 0912's rigorously proven Σ_min={Unknown,Supported,Refuted,Conflict} as an open item for eventual synthesis reconciliation."
+  - "dimension-registry.md: record the capstone falsificationist statement ('failure to test the theory honestly, not theory failure, is failure of Step 280') as the clearest, most forceful articulation yet of this reconstruction's own standing epistemic commitment to honest negative results."
+anchor_test:
+  anchor: "0912's Σ_min derivation and positively-reviewed status; 0913's/0914's PASS≠Theory-Proven discipline; the standing measurement/probability discipline (0893-0913); 0862's/0871's/0888's/0895's legitimate-negative-result precedents; 0910's five-step roadmap (278→279→280→281→282)"
+  supports_dimension: "Directly contradicts (without acknowledgment) 0912's Σ_min result via Test E3. Generalizes 0913's/0914's PASS≠Theory-Proven discipline into a complete seven-level evidence hierarchy. Extends the standing measurement/probability discipline into concrete empirical test form (E19, E20). Consolidates the corpus's recurring legitimate-negative-result commitment into its most forceful capstone statement yet"
+  refines_or_contradicts: "contradicts 0912's Σ_min result via Test E3, unacknowledged; generalizes 0913's/0914's evidentiary discipline; extends the measurement/probability discipline into concrete tests; consolidates the legitimate-negative-result precedent"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§11's explicit instruction to derive 'Σ=(A,S,R,V,C)' for every representative case is directly checkable evidence of the unacknowledged reversion away from file 0912's proven Σ_min result."
+  - "§34's explicit worked commutativity example, paired with the caveat 'if the theory does not predict commutativity, the test must not assume it,' is directly checkable evidence of the metamorphic-testing methodology's disciplined, non-presumptive character."
+  - "§48's explicit statement ('failure of the theory is not failure of Step 280. Failure to test the theory honestly is failure of Step 280') is directly checkable evidence of the file's genuinely mature falsificationist framing."
+undefined_concepts: []
+open_questions:
+  - "Whether any file reporting the actual execution of E1-E24, F1-F13, or 'Step 279 EXECUTION' is ever encountered in this reconstruction's sequential pass."
+  - "Whether the E3/Σ_min contradiction between this file and file 0912 is ever explicitly noticed and reconciled."
+  - "Whether this mathematical-kernel sub-arc continues beyond Step 280 into the previously-named Step 281 (Gap Closure Verification) and Step 282 (Theory Closure Decision)."
+tier2_triggered: true
+tier2_reason: "Delivers the culminating, most comprehensive empirical-validation methodology of the entire Steps 260-280 sub-arc (24 named empirical tests, a seven-level evidence hierarchy, metamorphic testing, mandatory negative controls, a disciplined empirical-closure threshold with ten named critical-failure conditions, and a genuinely mature capstone falsificationist statement), while surfacing an unacknowledged, unresolved contradiction with file 0912's proven Σ_min result. Classified importance critical and tier2-triggered; confidence medium reflecting the file's own not-yet-executed status and the unresolved internal contradiction."

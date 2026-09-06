@@ -1,0 +1,49 @@
+sequence: 34
+path: docs/knowledgeos/KnowledgeOS_Operational_Evidence_Register.md
+title: KnowledgeOS — Operational Evidence Register
+date: 2026-08-03
+bytes: 20388
+doc_type: append-only operational evidence register (OE-KOS-1..4), canonical source for widely-cited facts
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [evidence, provenance, governance, invariants]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+status: SR
+maturity: developing
+importance: medium
+
+introduces:
+  - five_section_entry_template          # Observation/Provenance/Claims-affected/Interpretation/Promotion
+  - two_complementary_feedback_loops      # Discovery Loop vs Operational Learning Loop
+  - dg1_safety_net_structural_blind_spot_at_scope_boundary
+defines: []
+hypotheses:
+  - MO1_delivery_decision_gate            # n=1, staged
+  - MO2_ownership_before_state            # n=1, staged
+  - IF1_implementation_finding_kind       # n=1, staged
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge]
+open_questions: []
+
+depends_on: []
+extends: [18]
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: [4, 9, 15, 32]
+connects_to: [4, 9, 15, 18, 32]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: "No formal object, operator, or Kernel/Gita content; the five-section template and DG-1 finding are structural/methodological, fully captured in Tier 1."

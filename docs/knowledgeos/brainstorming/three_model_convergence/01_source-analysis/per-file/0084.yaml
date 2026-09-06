@@ -1,0 +1,121 @@
+sequence: "0084"
+path: docs/knowledgeos/brainstorming/20260822-0121-knowledgeos-zero-concept-research-extraction-prompt.md
+title: "KnowledgeOS Zero Concept Research Extraction (prompt + executed response + grand synthesis)"
+date: "2026-08-22"
+bytes: 25101
+
+model:
+  primary: meta
+  secondary: [c1, x]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: critical
+confidence: high
+
+about: >
+  A three-layer document: (1) a disciplined "research extraction prompt" template for testing whether
+  the mathematical/philosophical concept of Zero yields useful KnowledgeOS invariants, explicitly
+  modeled on the same governance style already used for Vāṇī, topology, and external research (0080-
+  0083); (2) an executed response applying that prompt (Zero verdict: rejected as mathematics/kernel-
+  primitive/dimension, kept only as "neutral origin state" and "unresolved != negative resolution"
+  hypotheses); (3) a self-aware grand synthesis assembling EKS/PKS/AIP archaeology + Dimension
+  Independence (first direct definition of INV-KOS-001) + Expression/Meaning (INV-KOS-002) + Zero +
+  Topology + Vāṇī + external research into a stated "convergence," a reframed kernel question, an
+  explicit 6-phase roadmap (phases 1-3 marked complete/enough, kernel design marked "MUCH LATER"), and
+  a proposed first formal artifact: "KnowledgeOS Constitutional Invariant Map v1.0."
+
+introduces:
+  - "First direct definition of INV-KOS-001 (previously only implied at 0083): 'Dimension
+    Independence' -- knowledge dimensions should evolve independently; a change in one dimension must
+    not implicitly modify another (example: evidence improving must not automatically raise authority)"
+  - "H-ZERO-001 (Neutral State Preservation) and H-ZERO-002 (Transformation Origin Preservation) --
+    a new candidate-hypothesis naming convention (H-ZERO-nnn), distinct from the INV-KOS-nnn and
+    C-n (0081) naming schemes already in use -- a third parallel ID convention for the same kind of
+    object (candidate invariant), not yet reconciled"
+  - "Zero verdict, explicitly split: REJECTED -- knowledge=numerical value, trust=positive-minus-
+    negative evidence, confidence=scalar score, kernel-calculates-truth/confidence/authority (all
+    named 'dangerous', collapse independent dimensions); KEPT as hypothesis -- neutral origin state
+    (identity exists before semantic/evidence/authority/temporal resolve), UNKNOWN != FALSE != INVALID
+    != EMPTY, provenance-origin-preservation"
+  - "Explicit 6-phase roadmap: Phase 1 Architecture archaeology (done), Phase 2 Invariant discovery
+    (done), Phase 3 Mathematical/philosophical lenses (done, 'enough'), Phase 4 Constitutional
+    Invariant Map (NEXT), Phase 5 Domain independence validation (FUTURE), Phase 6 Kernel design
+    ('MUCH LATER') -- a corpus-internal staging plan structurally parallel to this research's own
+    reading-order arc, worth tracking as a forward predictor of what later files may contain"
+  - "Reframed kernel question: not 'what components should the kernel contain?' but 'which
+    transformations must the kernel prevent?' -- with a clean allowed/forbidden pairing: forbidden
+    (Evidence->Authority, Projection->Source, Expression->Meaning, Memory->Evidence, Popularity->Truth)
+    vs allowed (Meaning->new expression, Evidence->updated evidence state, Authority->explicit governed
+    change, Projection->new representation)"
+  - "Proposed first formal artifact: 'KnowledgeOS Constitutional Invariant Map v1.0' with a 5-row
+    example table (Authority Separation, Observation Separation, Projection Separation, Dimension
+    Independence [candidate], Semantic Continuity [candidate]) -- NOT yet produced as an actual
+    artifact in this document, only proposed as the recommended next step"
+  - "Explicit self-restraint, a third independent instance in this reading-order region (after 0081,
+    0082): 'Are we ready to design the kernel? No.' -- paired with 'we should avoid designing the
+    kernel until that constitution survives validation'"
+
+defines: []
+
+refines:
+  - "0083's forward-referenced INV-KOS-001: now directly defined as Dimension Independence"
+  - "0081's/0082's semantic-non-collapse / forbidden-collapse family: consolidated here into one clean
+    allowed-vs-forbidden transformation table, the most systematic statement of the pattern so far"
+
+contradicts:
+  - "Internal inconsistency, not external: this document's 'established separations' list (Evidence!=
+    Authority, Observation!=Decision, Assessment!=Authority, Projection!=Source) does NOT match 0083's
+    'EKS-08 family' list (Recorded!=Temporal truth, Derived!=Persisted, Projection!=Source, Memory!=
+    Available evidence) -- only Projection!=Source appears in both. Both are presented as 'the'
+    established EKS/PKS/AIP separations; the two four-item lists are not reconciled anywhere in the
+    read corpus so far. Recorded as an open consistency question, not resolved here."
+
+repeats:
+  - concept: "UNKNOWN as first-class, not FALSE"
+    canonical_source: "0081"
+    novelty: low
+  - concept: "Knowledge System != Knowledge Graph / topology as invariant-preservation lens"
+    canonical_source: "0082"
+    novelty: none
+
+bridge_candidates:
+  - "'Constitutional layer that protects valid transformations between knowledge dimensions' (the
+    stated convergence) as a possible bridge to a future C2 statement about knowledge purification/
+    guarding transitions -- structural resemblance only, no C2 evidence yet, and this claim is itself
+    explicitly self-described as unvalidated synthesis, not established architecture"
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+key_evidence:
+  - "A single document explicitly performing prompt-authoring, prompt-execution, and grand-synthesis
+    in sequence, each layer self-labeled by evidence status (hypothesis / candidate / rejected /
+    established) -- the corpus's cleanest example yet of its own epistemic-status discipline applied
+    to itself across all three layers"
+  - "Two non-identical 'established EKS/PKS/AIP separations' four-item lists within two files of each
+    other (0083, 0084), sharing only one member -- a genuine unreconciled inconsistency, not yet an
+    error, since neither list claims to be exhaustive or canonical"
+
+undefined_concepts:
+  - "'KnowledgeOS Constitutional Invariant Map v1.0' -- proposed here as the next artifact to build;
+    not yet located as an actual produced document in the read corpus"
+
+open_questions:
+  - "Whether the two 'established separations' lists (0083's EKS-08 family vs 0084's list) are meant
+    to be the same set, subsets of a larger set, or genuinely different framings -- not addressed by
+    either document"
+  - "Whether a 'KnowledgeOS Constitutional Invariant Map v1.0' document is later produced in the
+    reading order, and whether it matches this file's proposed 5-row example"
+
+tier2_triggered: true
+tier2_reason: >
+  A landmark self-aware checkpoint: first direct definition of INV-KOS-001, an explicit 6-phase
+  research-staging roadmap structurally parallel to this reconstruction's own reading-order arc, a
+  cleanly consolidated forbidden/allowed transformation table, a proposed first formal Constitutional
+  Invariant Map artifact, a third independent instance of explicit kernel-design restraint, and a
+  genuine unreconciled inconsistency between two "established separations" lists across 0083/0084 --
+  all directly relevant to §14 (gap analysis), §18/§23 (kernel), and this research's own eventual
+  synthesis staging.

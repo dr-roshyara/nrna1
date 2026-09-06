@@ -1,0 +1,184 @@
+sequence: 801
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-014546_step_176_the-who-knows-experiment.md
+title: "Step 176 -- The 'Who Knows?' Experiment (MAJOR SYNTHESIS MILESTONE, delivers 0800's promised actor-knowledge formalization): Delivers KnowledgeExists≠ActorKnows≠ActorCanRetrieve and 'KnowledgeOS ⊄ Actor' -- Delivers the Retrieval-Result Tuple ⟨Content,Status,Version,Validity,Provenance,EffectiveTime⟩ and 'Search≠KnowledgeRetrieval' -- Delivers Four Orthogonal Relationships (Owns/CanAccess/HasInContext/CanUse) and 'Access⇏Authority' -- Defines KnowledgeOS as 'Governed Organizational Memory and Epistemic Infrastructure,' Not a Document Repository, AI Memory, or Vector Database -- Delivers Persist(x)=f(Significance,Traceability,Governance,Reuse) Preventing 'KnowledgeOS = Everything' -- Delivers the Core Architectural Separation 'AI May Participate in the Epistemic Process Without Owning Organizational Truth or Governance Authority' -- Delivers the Seven-Proposition 'Who Knows?' Results Table and Two New Invariants (Actor-Independence; ActorContext as Projection, Not Source of Truth) -- Delivers a Directly Self-Referential Worked Multi-Agent Example (Architect/Developer/Governance/Operations Agent Context Projections) -- Opens Step 177's 'Knowledge Is Not Truth' Experiment"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: g1
+  secondary: c1
+  secondary_note: "directly continues 0800's explicit Gita-Chapter-4 framing ('we now take the Chapter 4 insight one step further') and gives it its architectural application to actor-knowledge distinctions; also delivers substantial DDD/statistical formalization"
+source_role: PRIMARY_RESEARCH
+canonical_source: 801
+importance: critical
+confidence: high
+about: >
+  Directly continues 0800, opening "we now take the Chapter 4 insight one step further. The previous
+  experiment established `CurrentState⇏HistoricalState`. But there is another distinction that is just as
+  important," boxed: **`KnowledgeExists≠ActorKnows`**, and further **`ActorKnows≠ActorCanRetrieve`**,
+  explicitly named "fundamental for KnowledgeOS and for AI-assisted engineering."
+
+  **§176.1-176.2 delivers three formal propositions** for knowledge `K`, actor `a`, time `t`:
+  `Exists(K,t)`, `Knows(a,K,t)`, `CanRetrieve(a,K,t)`, worked through a concrete example: an Architecture
+  Board decision exists in KnowledgeOS (`Exists(Decision_1)=true`), a newly started AI agent has not
+  received the relevant context (`Knows(AI_new,Decision_1)=false`), yet `CanRetrieve(AI_new,Decision_1)=
+  true` if KnowledgeOS exposes the appropriate retrieval mechanism -- "that is precisely what we want."
+
+  **§176.3-176.4 delivers the dangerous-architecture warning**: if `Knowledge_organization≈
+  Context_currentAgent`, then "when the context disappears, the agent's accessible knowledge disappears
+  with it" -- explicitly "obviously inadequate." Delivers **the required architecture**: an external
+  KnowledgeOS box (Evidence/Knowledge/Decisions/Provenance/History) that Human/AI/System each separately
+  access, boxed **`KnowledgeOS⊄Actor`**: "the actor accesses organizational knowledge. The actor does not
+  constitute organizational memory."
+
+  **§176.5-176.7 delivers the precise architectural interpretation of the Chapter-4 observation**: an
+  `Actor_{t+1}` not knowing `K_t` "is not necessarily a failure. It becomes a failure if `K_t` has been
+  lost from the organizational knowledge system," boxed **"actor memory may be incomplete; organizational
+  memory must preserve governed knowledge where required."** Delivers **the same problem exists for
+  humans, not only AI** (a new employee not knowing why a decision was made), boxed
+  `IndividualKnowledge≠OrganizationalKnowledge`, and a DDD framing: `AIContext→KnowledgeOS`, not
+  `KnowledgeOS=AIContext`, distinguishing the actor's working model from the domain's authoritative model.
+
+  **§176.8-176.10 delivers "retrieval does not equal authority"**: retrieved content is not automatically
+  `CurrentTruth` -- the AI must also receive epistemic status
+  (Established/Superseded/Invalidated/Candidate). Delivers **the retrieval-result tuple**, boxed:
+  **`Retrieve(K)=⟨Content,Status,Version,Validity,Provenance,EffectiveTime⟩`**, and **`Search≠
+  KnowledgeRetrieval`**: a traditional search returns "here are five documents containing your keywords";
+  KnowledgeOS must return artifacts' status, temporal validity, provenance, and relationship to the current
+  question.
+
+  **§176.11-176.14 delivers a statistical analogy** (an analyst's estimate depends on the historical
+  information set `I_t`; a new analyst at `t+1` has `I_{t+1}≠I_t` generally) crystallized as
+  **`Knowledge_t=Knowledge(Evidence_{≤t},Methods_t,Context_t)`**, boxed: "knowledge is not merely a static
+  object. It is associated with an information state." **Explicitly guards against relativism**:
+  distinguishes `HistoricalBelief` from `CurrentValidatedKnowledge` -- a determination can be simultaneously
+  `ReasonableAt(t_1)` and `InvalidAt(t_2)`. Extends this to governance: a `Decision_1` properly authorized
+  under `Policy_1` should not automatically become `Invalid` when `Policy_2` arrives; instead
+  `ValidUnder(Decision_1,Policy_1,t_1)` persists and Governance separately decides
+  `ReassessmentRequired(Decision_1,Policy_2)` -- "this preserves historical truth while supporting current
+  governance."
+
+  **§176.15-176.21 delivers "who knows?" as a graph problem**: `Owner(K)≠User≠Context`, and **four
+  distinct relationships** -- `Owns(a,K)`, `CanAccess(a,K)`, `HasInContext(a,K)`, `CanUse(a,K)` -- worked
+  through the example of a human owning a decision, an AI accessing it, but the AI lacking authorization to
+  use it for a particular action. Explicitly reinforces and extends the five-dimensional model
+  (Identity/Capability/Responsibility/Authority/Accountability) with a sixth, distinct concern,
+  `KnowledgeAccess` (explicitly not automatically promoted to a sixth governance role). Reconfirms
+  `Capability(AI,deploy)≠Authority(AI,deploy)` and extends it: `CanRead(AI,Decision_1)⇏
+  CanChange(AI,Decision_1)`, `CanChange(K)⇏CanAuthorize(Action)`. Delivers a partial-order diagram
+  (Authority atop Capability/Responsibility atop Knowledge atop Access), boxed **`Access⇏Authority`**,
+  worked through a symmetric AI/human example: an AI may have Access+Capability but lack production
+  Authority, while a human release authority may have Authority without Capability -- "exactly why our
+  architecture needs explicit authorization rather than relying on technical permissions alone."
+
+  **§176.22-176.26 delivers the architectural definition of KnowledgeOS itself**, boxed: **"KnowledgeOS =
+  governed organizational memory and epistemic infrastructure"** -- explicitly not a document repository,
+  not an AI memory, not a vector database (those are implementation components; "the domain purpose is
+  broader"). Delivers **what should and should not persist**: Evidence/Determinations/Decisions/
+  Authorizations/Architecture constraints/Governance records/Important outcomes should; a temporary AI
+  intermediate thought, a transient tool response, a discarded search result, a local implementation detail
+  need not -- formalized `Persist(x)=f(Significance,Traceability,Governance,Reuse)`, explicitly preventing
+  "KnowledgeOS = Everything" and the resulting `Signal/Noise ratio→0` as `N→∞` with `S` (relevant/
+  authoritative artifacts) growing slowly -- "uncontrolled accumulation increases the search space and
+  makes reliable inference harder."
+
+  **§176.27-176.31 delivers epistemic status as a first-class concept** `{Candidate,Supported,Established,
+  Disputed,Superseded,Invalidated}`, boxed **`DocumentStatus≠EpistemicStatus`** ("published" does not mean
+  every statement inside is established knowledge), and walks an AI-generated-claim lifecycle
+  (Candidate→Supported→Established/Rejected) to deliver **the core architectural separation**, boxed:
+  **"AI may participate in the epistemic process without owning organizational truth or governance
+  authority."**
+
+  **§176.32-176.34 delivers the explicit "who knows?" experiment results table** (seven tested
+  propositions, e.g. "actor memory equals organizational memory" ✗, "retrieval equals knowledge" ✗,
+  "governed external memory can support new actors" ✓ -- "the architecture survives") and **two new named
+  invariants**, boxed: **"organizational knowledge must be actor-independent"** (existence/authoritative
+  status must not depend on whether a particular human or AI currently remembers it) and **"ActorContext
+  is a projection of organizational knowledge, not its source of truth."**
+
+  **§176.35-176.36 delivers a directly self-referential worked multi-agent example**: `RelevantKnowledge=
+  f(Task,Actor,Authority,Time)`, illustrated with four distinct agent roles each receiving a different
+  valid context projection from the same governed repository (Architect Agent → architecture decisions +
+  constraints; Developer Agent → implementation rules + relevant ADRs; Governance Agent → decisions +
+  authority + evidence; Operations Agent → authorized actions + execution constraints), explicitly noting
+  "this is exactly where our Agent architecture becomes powerful," delivering the chain
+  `Task→RelevantKnowledge→AllowedTools→AllowedActions` and `KnowledgeAccess→Capability→Authorization→
+  Execution`.
+
+  **§176.37 delivers the Step 176 final synthesis**, extending the architecture from "Knowledge Lifecycle"
+  to "Knowledge+Actor+Time+Authority," boxed the central model:
+  **`OrganizationalKnowledge→[retrieval]→ActorContext→[reasoning]→Determination/Decision→[authority]→
+  Action`**, closing the complete loop:
+  **`K_t→Context_t→Reasoning_t→Decision_t→Authorization_t→Execution_t→Outcome_t→K_{t+1}`.**
+
+  **Closes opening "Step 177 — The 'Knowledge Is Not Truth' Experiment,"** explicitly named "one of the
+  most important ones for our architecture": KnowledgeOS containing "the Nexus migration is safe" is not
+  automatically `Truth` -- it may be `Claim`, perhaps `Evidence`-supported, perhaps accepted as
+  `Knowledge`, later invalidated by new evidence, requiring a formal distinction across seven terms:
+  `Truth, Claim, Evidence, Belief, Knowledge, Determination, Decision`. No actual repository implementation
+  occurs within this file itself; every proposition, tuple, and invariant remains a conceptual
+  specification pending Step 177's truth/knowledge distinction.
+introduces:
+  - concept: "The three-proposition formalism KnowledgeExists(K,t)/ActorKnows(a,K,t)/ActorCanRetrieve(a,K,t), worked through the newly-started-AI-agent example"
+  - concept: "The dangerous-architecture warning (Knowledge_organization≈Context_currentAgent) and the required external-KnowledgeOS architecture, boxed KnowledgeOS⊄Actor"
+  - concept: "The same actor-knowledge problem applies to humans, not only AI (new-employee example); IndividualKnowledge≠OrganizationalKnowledge"
+  - concept: "The retrieval-result tuple Retrieve(K)=⟨Content,Status,Version,Validity,Provenance,EffectiveTime⟩; Search≠KnowledgeRetrieval"
+  - concept: "Knowledge_t=Knowledge(Evidence_≤t,Methods_t,Context_t); the explicit anti-relativism guard (HistoricalBelief≠CurrentValidatedKnowledge, ReasonableAt(t_1)∧InvalidAt(t_2) simultaneously true)"
+  - concept: "ValidUnder(Decision_1,Policy_1,t_1) persisting alongside a separately-decided ReassessmentRequired(Decision_1,Policy_2)"
+  - concept: "The four orthogonal relationships Owns/CanAccess/HasInContext/CanUse, and the extension of the five-dimensional governance model with a distinct KnowledgeAccess concern"
+  - concept: "Access⇏Authority, worked through a symmetric AI-has-access-lacks-authority / human-has-authority-lacks-capability example"
+  - concept: "The architectural definition: 'KnowledgeOS = governed organizational memory and epistemic infrastructure,' explicitly not a document repository/AI memory/vector database"
+  - concept: "Persist(x)=f(Significance,Traceability,Governance,Reuse), preventing 'KnowledgeOS = Everything' and Signal/Noise→0"
+  - concept: "Epistemic status as a first-class concept, DocumentStatus≠EpistemicStatus, and the core architectural separation: AI may participate in the epistemic process without owning organizational truth or governance authority"
+  - concept: "The seven-proposition 'who knows?' experiment results table"
+  - concept: "Two new invariants: organizational knowledge must be actor-independent; ActorContext is a projection of organizational knowledge, not its source of truth"
+  - concept: "The directly self-referential worked multi-agent context-projection example (Architect/Developer/Governance/Operations Agent)"
+  - concept: "The Step 176 final synthesis loop: K_t→Context_t→Reasoning_t→Decision_t→Authorization_t→Execution_t→Outcome_t→K_{t+1}"
+  - concept: "Step 177's opening: the 'Knowledge Is Not Truth' experiment across seven terms (Truth/Claim/Evidence/Belief/Knowledge/Determination/Decision)"
+defines:
+  - concept: "The three-proposition actor-knowledge formalism"
+    definition: "Three logically independent propositions about a knowledge artifact K, actor a, and time t must be kept distinct: Exists(K,t) (the artifact is present somewhere in the governed organizational knowledge system), Knows(a,K,t) (the specific actor currently possesses or is aware of it, e.g. within an AI's current context window or a human's memory), and CanRetrieve(a,K,t) (the actor has a mechanism available to fetch it on demand even without currently possessing it) -- an artifact can exist and be retrievable by an actor who does not currently know it, which is the desired steady state for a well-architected knowledge system rather than a failure mode"
+  - concept: "KnowledgeOS as governed organizational memory and epistemic infrastructure"
+    definition: "The domain purpose of KnowledgeOS is broader than any single implementation component (document repository, AI memory, vector database) -- it is the governed infrastructure that holds organizational knowledge external to any individual actor (human or AI), so that the knowledge's existence and authoritative status never depends on whether a particular current actor happens to remember or currently possess it; actors access this infrastructure through task/authority/time-scoped projections rather than owning or constituting the memory themselves"
+  - concept: "Persist(x)=f(Significance,Traceability,Governance,Reuse)"
+    definition: "Not every piece of information an actor (human or AI) produces or encounters should become permanent organizational knowledge -- transient artifacts like an AI's intermediate reasoning steps, a discarded search result, or a local implementation detail need not persist, while artifacts whose future meaning depends on their history (evidence, determinations, decisions, authorizations, architecture constraints, governance records, important outcomes) should; without this filter, uncontrolled accumulation drives the signal-to-noise ratio toward zero as the corpus grows, making retrieval and reliable inference progressively harder rather than better"
+refines:
+  - concept: "0800's opening of Step 176 and its promised formalization of KnowledgeExists/ActorKnows/ActorCanRetrieve"
+    refinement: "DELIVERED IN FULL: the three-proposition formalism, the dangerous-architecture diagnosis and required external-KnowledgeOS remedy, the retrieval-result tuple, epistemic status as a first-class concept, and the two new named invariants directly answering 0800's promised property ('organizational knowledge must not depend on the accidental memory of the current actor or current AI context')"
+  - concept: "0793's/0796's/0797's Capability(a,x)⇏Authority(a,x) and the corpus's five-dimensional governance model (Identity/Capability/Responsibility/Authority/Accountability)"
+    refinement: "Extended with a sixth, deliberately NOT-promoted-to-governance-role dimension, KnowledgeAccess, and further decomposed into four distinct relationships (Owns/CanAccess/HasInContext/CanUse), delivering Access⇏Authority as a new orthogonality alongside the previously established Capability⇏Authority"
+  - concept: "0798's/0799's AI capability≠Architecture and AI-as-participant discipline"
+    refinement: "Sharpened into the core architectural separation, explicitly boxed: 'AI may participate in the epistemic process without owning organizational truth or governance authority' -- the arc's most compact single-sentence statement of this recurring principle to date"
+  - concept: "0800's directly self-referential AI-context-window discussion (AIContext_{t+1}≠History; agent consumes but does not own organizational memory)"
+    refinement: "Extended into a fully worked multi-agent architecture (Architect/Developer/Governance/Operations Agent, each receiving a distinct governed context projection from the same underlying repository) -- this worked example describes, with striking precision, the kind of multi-session, multi-context AI-agent operating structure this very reconstruction task itself instantiates, recorded here as an observed resonance rather than an asserted intentional reference"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 177's actual formal distinction across Truth/Claim/Evidence/Belief/Knowledge/Determination/Decision, explicitly named one of the most important experiments in the arc."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the three-proposition actor-knowledge formalism (Exists/Knows/CanRetrieve) and the boxed KnowledgeOS⊄Actor architecture diagnosis as directly applicable, precisely stated AI-agent-architecture principles."
+  - "dimension-registry.md: record 'AI may participate in the epistemic process without owning organizational truth or governance authority' as the arc's most compact statement yet of its recurring AI-as-participant-not-authority principle."
+  - "dimension-registry.md: record Persist(x)=f(Significance,Traceability,Governance,Reuse) and the Signal/Noise→0 argument as a directly applicable anti-accumulation discipline, relevant to this reconstruction's own growing per-file record corpus."
+  - "dimension-registry.md: flag the worked multi-agent context-projection example (Architect/Developer/Governance/Operations Agent) as unusually precisely resonant with this reconstruction's own multi-session, context-window-bounded operating structure -- observed resonance only, no intentional-reference claim."
+anchor_test:
+  anchor: "0800's opening of Step 176 and its promised KnowledgeExists/ActorKnows/ActorCanRetrieve formalization; the corpus's five-dimensional governance model and Capability≠Authority thread; 0798's/0799's AI-as-participant discipline; 0800's self-referential AI-context-window discussion"
+  supports_dimension: "Delivers the full three-proposition actor-knowledge formalism directly answering 0800's closing promise, including the dangerous-architecture diagnosis and its required external-KnowledgeOS remedy. Delivers the retrieval-result tuple, epistemic status as a first-class concept, and Persist(x) as a principled anti-accumulation filter. Extends the five-dimensional governance model with a sixth, deliberately-not-promoted KnowledgeAccess dimension and delivers Access⇏Authority as a new orthogonality. Sharpens the corpus's recurring AI-as-participant discipline into its most compact statement yet. Delivers the seven-proposition experiment results table and two new named invariants directly fulfilling 0800's promised property. Extends 0800's self-referential AI-context-window discussion into a fully worked multi-agent architecture example with striking resonance to this reconstruction's own operating structure. Opens Step 177's Truth/Claim/Evidence/Belief/Knowledge/Determination/Decision distinction, explicitly named one of the arc's most important upcoming experiments"
+  refines_or_contradicts: "directly delivers and extends 0800's opening and its promised formalization; extends the corpus's Capability≠Authority thread with a new Access⇏Authority orthogonality; sharpens 0798's/0799's AI-as-participant discipline into its most compact form yet; extends 0800's self-referential AI-context-window discussion into a full worked example; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§176.2's fully worked example (Exists(Decision_1)=true, Knows(AI_new,Decision_1)=false, CanRetrieve(AI_new,Decision_1)=true, 'that is precisely what we want') is directly checkable evidence of the three-proposition formalism being applied concretely rather than left abstract."
+  - "§176.31's boxed core architectural separation 'AI may participate in the epistemic process without owning organizational truth or governance authority' is directly quotable evidence of the file's most compact statement of the arc's recurring AI-participant principle."
+  - "§176.35-176.36's fully worked four-agent context-projection example (Architect/Developer/Governance/Operations Agent, each receiving a distinct governed projection of the same repository), explicitly stated to be 'exactly where our Agent architecture becomes powerful,' is directly checkable evidence of a concrete, self-referentially resonant multi-agent architecture worked example."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 177's Truth/Claim/Evidence/Belief/Knowledge/Determination/Decision distinction was ever actually carried out, and whether it reconciles with this file's own epistemic-status vocabulary {Candidate,Supported,Established,Disputed,Superseded,Invalidated}."
+  - "Whether the newly introduced KnowledgeAccess dimension and the four relationships (Owns/CanAccess/HasInContext/CanUse) were ever formally reconciled with the corpus's five-dimensional governance model (Identity/Capability/Responsibility/Authority/Accountability, established at 0796) into one unified relation system."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the full three-proposition actor-knowledge formalism directly answering 0800's closing promise, including the dangerous-architecture diagnosis and its required external-KnowledgeOS remedy, worked through a concrete AI-agent example. Delivers the retrieval-result tuple, epistemic status as a first-class concept, and a principled anti-accumulation filter (Persist(x)) preventing 'KnowledgeOS = Everything.' Extends the governance model with a new Access⇏Authority orthogonality and sharpens the corpus's recurring AI-as-participant discipline into its most compact statement yet. Delivers the seven-proposition experiment results table and two new named invariants. Extends 0800's self-referential AI-context-window discussion into a fully worked multi-agent architecture example with striking, directly applicable resonance to this reconstruction's own operating structure. Opens Step 177's Truth/Claim/Evidence/Belief/Knowledge/Determination/Decision distinction, explicitly named one of the arc's most important upcoming experiments."

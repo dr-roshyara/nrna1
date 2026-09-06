@@ -1,0 +1,48 @@
+sequence: 437
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-151244_second-correction-sarathi-does-not-own-the-frame.md
+title: "Duplicate of 0436's Final Section (Second Correction Onward: Nine Sarathi Role Functions, Final Architecture)"
+date: "2026-08-26"
+bytes: 11129
+model:
+  primary: g1
+  secondary: c1
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 436
+importance: low
+confidence: high
+about: >
+  Byte-for-byte duplicate (confirmed via diff, zero output) of 0436's final section -- the "Sarathi does not
+  own the frame" second correction, all nine Sarathi Role Functions grounded in Chapter 2, the refined
+  seven-row role table, the full closed-loop architecture diagram, and the final KnowledgeOS=Sanjaya-
+  capability+Sarathi-capability formula. This file extracts exactly the non-duplicated tail of 0436 (that
+  file's lines 712-1250) as a standalone document. Recorded minimally per the established cross-file
+  duplicate protocol; not self-declared as "-duplicate" in the filename but confirmed byte-identical via
+  diff to the corresponding span.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "0436's entire final section: the 'Sarathi does not own the frame' correction, all nine Sarathi Role Functions, the refined role table, the closed-loop architecture diagram, and the KnowledgeOS=Sanjaya-capability+Sarathi-capability formula"
+    canonical_source: 436
+    novelty: "none -- byte-identical to 0436's lines 712-1250, verified via diff"
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0436"
+  supports_dimension: "Cross-file duplicate of 0436's final section; no independent evidentiary weight"
+  refines_or_contradicts: "none -- duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "NOT TRIGGERED -- byte-identical duplicate of 0436's final section, confirmed via diff"

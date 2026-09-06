@@ -1,0 +1,246 @@
+sequence: 560
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-160410_step-017-ontology-concepts-semantics-and-domain-models.md
+title: "LANDMARK: Full DDD-Grounded Semantic Theory — 'KnowledgeOS Does Not Own All Meaning'; Word≠Concept≠Entity≠Assertion≠Rule; Bounded Contexts and Ubiquitous Language Formalized as KnowledgeOS's Semantic Boundary Mechanism; Ontology≠Knowledge≠Governance; A Proposed Semantic Kernel and Eight Tentative DDD Bounded Contexts; Fourteen Canonical SE1-SE14 Invariants; Opens Step 18 (Rules, Inference, Logic, Constraints, and the KnowledgeOS Reasoning Engine)"
+date: "2026-08-27"
+bytes: 25246
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 0558's closing 'Step 17 -- Ontology, Concepts, Semantics, and Domain Models', itself explicitly named as one of the last major foundations before a complete formal KnowledgeOS specification"
+source_role: PRIMARY_RESEARCH
+canonical_source: 560
+importance: critical
+confidence: high
+about: >
+  Directly executes 0558's closing "Step 17," opening with an explicit architectural warning: introducing
+  an "ontology" naively risks becoming a giant taxonomy attempting to define the meaning of everything --
+  "the wrong direction" from a DDD/mathematical perspective. Delivers the file's governing principle:
+  **`KnowledgeOS does not own all meaning`** -- it owns "the semantic mechanisms by which meanings are
+  declared, scoped, related, compared, and governed."
+
+  **Delivers the file's foundational example**: the word "Backup" carries at least five distinct meanings
+  across contexts (data copy, execution process, business-continuity capability, database artifact,
+  contractual obligation) -- `Word≠Concept` and `Same word≠Same meaning`. **Formalizes Lexeme vs Concept**,
+  explicitly framed as preventing "one of the most dangerous failures in an enterprise knowledge graph:
+  semantic false merging." **Formalizes Concept as a structured object**
+  `Concept=(ConceptID,Meaning,Context,Constraints,Relations,Terminology)`, with `Context` identified as the
+  crucial field, and **contextual meaning** `Meaning(c,C)` -- "exactly what DDD bounded contexts formalize."
+
+  **Formalizes Bounded Context** `BC=(Concepts,Terms,Rules,Relationships,Context)`, worked through a
+  three-way "Customer" example (Sales=contracting organization; Identity=authenticated principal;
+  Billing=invoice recipient) -- `Term("Customer",BC_1)≠Term("Customer",BC_2)` despite identical lexical
+  form. Delivers the symmetric case, **`Different terms⇏Different concepts`** (Employee/Staff Member/
+  Personnel may denote one concept), requiring explicit semantic equivalence representation. Formalizes
+  **Ubiquitous Language** as the DDD mechanism mapping `Term→Concept` per bounded context, which
+  KnowledgeOS should preserve rather than inventing its own universal meaning.
+
+  **Delivers `SemanticDefinition∈KnowledgeState`**: even a definition like "Backup means a copy of
+  recoverable data" is itself an assertion carrying evidence, provenance, validity, context, and epistemic
+  status -- "even definitions can change." **Formalizes `Ontology≠InstanceKnowledge`**: ontology defines
+  what kinds of concepts/relationships exist (`BackupArtifact subtypeOf DataArtifact`); knowledge describes
+  concrete instances (`BackupArtifact(B_123)`). Formalizes an ontology model
+  `𝒪=(C,R,𝒜,𝒦)` (concepts, relations, axioms, terminology mappings).
+
+  **Delivers `RelationshipType is semantically significant`**: a bare graph edge `A→B` could mean is-a,
+  part-of, depends-on, causes, precedes, implements, contradicts, supports, derived-from, or governed-by --
+  "we cannot use an undifferentiated graph edge." Formalizes **typed relations**
+  `r=(Source,Type,Target,Context,Constraints)`, then extends this into full **relation epistemology**
+  `r=(Source,Type,Target,Σ,Evidence,Provenance,TemporalScope)`, allowing "we believe Nexus depends on this
+  firewall rule" without asserting absolute truth.
+
+  **Formalizes ontological axioms as explicit, provenance-bearing semantic rules** (e.g.
+  `Employee⊆Person`), sourced from domain experts, standards/textbooks, organizational governance, or
+  derived inference -- explicitly not to be treated identically. **Delivers the file's central governance-
+  separating result -- `Semantics≠Governance`**: an ontology answers "what is this thing?" (`ProductionChange
+  subtypeOf Change`) while a constitution answers "what must/must not happen?" ("all production changes
+  require approval"). Extends this to `DescriptiveSemantics≠NormativeRules` (`Ontology: Migration is a
+  Change` vs `Policy: Migration→RequiresApproval`), proposed as a core KnowledgeOS invariant.
+
+  **Delivers a clean three-layer semantic architecture**: Concept (what something means) / Assertion (what
+  is claimed) / Rule (what follows or must happen), worked through a Backup/ProductionSystem∧CriticalBackup
+  ⇒RestoreTestRequired example. Formalizes a semantic universe `ℳ=(𝒞,ℛ,𝒜,𝒫,𝒢)` (concepts, typed relations,
+  axioms, predicates/rules, governance semantics) -- explicitly recommended to remain distinct bounded
+  concerns rather than one monolithic ontology. Formalizes contextual concept identity
+  `ConceptID+ContextID`, rejecting the dangerous assumption of `GlobalConceptMeaning`.
+
+  **Delivers Cross-context mapping and Semantic Alignment**: `Alignment(C_1,C_2,M)` with mapping types
+  (Equivalent/BroaderThan/NarrowerThan/RelatedTo/TranslatesTo/PartiallyCorrespondsTo), itself an epistemic
+  object carrying Support (Weak/Moderate/Strong). **Delivers `SemanticSimilarity≠SemanticIdentity`**:
+  KnowledgeOS must never automatically infer "Application"="System" from apparent similarity -- only a
+  `CandidateEquivalent` proposal, accepted or not via evidence and context.
+
+  **Delivers the file's central LLM-boundary statement for semantics**: an LLM may propose that several
+  terms "refer to overlapping concepts," outputting only a `CandidateSemanticMapping`; the kernel evaluates
+  context, definitions, constraints, evidence, and authority -- **"LLM proposes; KnowledgeOS governs."**
+  Formalizes stable **Concept identity independent of terminology** (`ConceptID=C_472` persisting across
+  "Nexus"/"Nexus Repository"/"Repository Manager"/"Nexus OSS"). **Formalizes `Concept≠Entity`** (class vs
+  concrete instance) and **entity membership** `InstanceOf(Nexus_DGNEX,NexusRepositoryManager)` as itself an
+  epistemically-graded semantic relation.
+
+  **Delivers contextual entity identity and Identity Resolution**: an entity may have different contextual
+  representations across bounded contexts (Infrastructure/Application/Security), requiring
+  `Match(e_1,e_2,C)→{Same,Distinct,Unknown}` -- an explicit three-valued result KnowledgeOS should never be
+  forced to collapse to binary when evidence is insufficient, directly echoing the corpus's established
+  identity-resolution theory (0552). **Delivers `SemanticDifference≠SemanticConflict`**: two disagreeing
+  meanings for "Customer" across contexts are not automatically a conflict -- conflict requires
+  incompatibility "within the same semantic context and applicable scope." **Modifies the corpus's conflict
+  model** from `C=(A_i,A_j,Rule,Context,Status,τ)` to `Conflict=Conflict_{M,Ctx,ρ}(A_i,A_j)`, explicitly
+  parameterized by the applicable semantic model -- the same textual pair may conflict under one
+  interpretation and not under another.
+
+  **Delivers Ontology versioning and Semantic migration**: semantic models evolve (e.g. `Application`
+  splitting into `Application`+`ApplicationService` between ontology versions); historical knowledge must
+  remain interpretable under its original ontology version, requiring `SemanticModelVersion` as part of
+  knowledge provenance, plus explicit migration operations (Merge/Split/Rename/Refine/Generalize). Delivers
+  **"No retroactive semantic rewriting"**: 2025 assertions must not be silently reinterpreted using 2026
+  semantics after a concept split -- `HistoricalKnowledge must retain its semantic context/version` --
+  explicitly connected back to Step 16's temporal-knowledge theory.
+
+  **Delivers Semantic reasoning and its model-relativity**: a worked syllogism (`Dog⊆Animal`, `Rex∈Dog`
+  ⟹`Rex∈Animal`) formalized as `𝒪,K⊨P`, with the explicit caveat `Inference is model-relative` --
+  validity depends entirely on the ontology actually defining the subsumption -- "echoes our causal model
+  principle" (connecting to 0556). Delivers **Semantic contradiction** as a distinct species of conflict:
+  when an ontology asserts `A∩B=∅` but KnowledgeOS receives both `A(x)` and `B(x)`, the result is a
+  `SemanticConstraintViolation`, categorically different from two arbitrary assertions merely disagreeing.
+
+  **Delivers a significant extension of Zero**: Zero can now detect `SemanticDiscrepancy` -- missing
+  required relationship, invalid type, impossible combination, undefined concept, context mismatch,
+  ontology constraint violation, ambiguous identity. Extends Lord (propose glossary inspection, expert
+  consultation, bounded-context comparison, candidate semantic mapping creation for an `UndefinedConcept`)
+  and Sārathi (`SemanticConflict may require governance, not algorithmic resolution` -- recommending
+  `EscalateToDomainAuthority` rather than arbitrarily selecting a definition).
+
+  **Delivers the file's central architectural deliverable -- the Semantic Kernel**:
+  `SK=(ConceptRegistry,ContextRegistry,RelationRegistry,OntologyRegistry,MappingRegistry,
+  SemanticRuleRegistry)`, whose responsibility is strictly to "maintain the governed semantic structures
+  used by the knowledge system" -- explicitly NOT deciding truth, action, risk acceptability, or evidence
+  sufficiency: `SemanticKernel≠ReasoningEngine≠DecisionEngine`.
+
+  **Delivers eight tentative DDD bounded contexts for KnowledgeOS itself**: Knowledge, Semantics, Identity,
+  Causal Reasoning, Discrepancy, Decision, Governance, Temporal History -- explicitly "interact but should
+  not collapse into one enormous aggregate." Delivers **aggregate-boundary discipline**: an `Assertion`
+  should reference a `ConceptID`/`EntityID` rather than embed the whole ontology --
+  `Reference across contexts≠Ownership across contexts`. Reformulates the assertion structure as a
+  reference-based semantic tuple `A=(SubjectID,PredicateID,ObjectID,ContextID,Σ,Evidence,T_v,T_k)`, and
+  extends the bare RDF-style triple `(S,P,O)` into `(S,P,O,Σ,E,Π,T,Ctx)` -- explicitly framed as why this
+  architecture is richer than an ordinary knowledge graph.
+
+  **Delivers Semantic identity persistence under concept evolution**: a ConceptID remains stable across
+  terminology/document/ontology-version changes, but when a concept splits (`C_1→C_2,C_3`) the historical
+  identity is preserved and the split explicitly recorded -- `Identity evolution must be explicit`. Delivers
+  **semantic alignment as itself epistemic**: an `Equivalent?` mapping between concepts carries an
+  `AlignmentStatus` (Candidate→Evidence→Assessment→AcceptedAlignment), meaning ontology mapping participates
+  in the corpus's general epistemic lifecycle rather than requiring a second theory.
+
+  **Connects Step 17 back to the corpus's original heterogeneous-input model** (documents, databases,
+  Internet, rules, manifesto, human instructions, scope, constitution, settings, ADRs, textbooks, AI/LLM
+  outputs), delivering a worked source-to-semantic-role mapping table (Constitution→normative rule,
+  ADR→architectural concept/decision, Textbook→external conceptual knowledge, Database→instance/state
+  evidence, Document→claims/evidence, Human instruction→context/policy/intent, LLM output→candidate
+  interpretation, Internet→external evidence) -- "the source itself becomes part of provenance and
+  authority assessment."
+
+  **Delivers the file's central summarizing invariant**: `Meaning is contextual, typed, versioned, and
+  governed`, and **`Term≠Concept≠Entity≠Assertion≠Rule`**, explicitly called "perhaps the most important
+  semantic invariant of Step 17." **Delivers the file's central formal deliverable -- fourteen canonical
+  invariants (SE1-SE14)**: Word≠Concept; Same word⇏Same concept; Different words⇏Different concepts;
+  Meaning is context-dependent; Concept≠Entity; Concept≠Assertion; Ontology≠Knowledge; Ontology≠Governance;
+  SemanticSimilarity≠SemanticIdentity; SemanticDifference≠SemanticConflict; Semantic mappings have epistemic
+  status; Semantic models are versioned; Historical knowledge retains its original semantic context; LLM
+  semantic interpretation is candidate knowledge until governed.
+
+  **Delivers Step 17's compact mathematical core** (semantic system `𝒪_C=(C,R,A,T,M)`; bounded context
+  `BC=(𝒪_C,ContextID,Policy)`; the reference-based assertion structure; semantic inference `K,𝒪_C⊢P`;
+  semantic conflict `Conflict_𝒪(A_i,A_j)`; identity resolution `Match`), and a computational-viability
+  assessment paralleling every prior step: concept lookup, context resolution, typed-relation validation,
+  ontology-constraint checking, mapping application, identity matching, version compatibility, rule-based
+  inference, and conflict detection are all deterministically computable once concepts/relations are
+  explicit; only semantic EXTRACTION from natural language remains AI-assisted, again resolved via
+  `AI/LLM→CandidateSemanticInterpretation` then `Kernel→DeterministicSemanticEvaluation` then
+  `Governance/Evidence→Acceptance` -- explicitly noted as "becoming consistent throughout our model."
+
+  **Delivers Step 17's verdict**: STRUCTURALLY RESOLVED, with one DELIBERATE limitation explicitly stated
+  and defended -- no single universal ontology formalism (OWL, RDF, SHACL, Common Logic, etc.) has been
+  chosen, and the file explicitly recommends NOT choosing one yet, reasoning that different semantic tasks
+  (DDD context modeling, constraint validation, semantic inference) may warrant different representations,
+  and forcing one technology onto all of KnowledgeOS "would be an architectural mistake."
+
+  **Delivers "Where we are now"**: a consolidated ten-stage sources-to-decision-to-event loop, governed
+  throughout by `Semantics+Identity+Time+Provenance+Evidence+Policy`. **Identifies one remaining subtle but
+  major gap**: rules themselves come in fundamentally different kinds (mathematical implication, logical
+  rule, causal law, business rule, architectural constraint, constitutional rule, statistical model,
+  heuristic, LLM-generated hypothesis) that "cannot all be treated as the same thing." **Closes opening
+  "Step 18 — Rules, Inference, Logic, Constraints, and the KnowledgeOS Reasoning Engine,"** posed as
+  defining "the boundary between knowledge representation and actual reasoning" and explicitly flagged as
+  "particularly important."
+introduces:
+  - concept: "'KnowledgeOS does not own all meaning' — the governing architectural principle that the system owns semantic MECHANISMS (declaring, scoping, relating, comparing, governing meaning) rather than a single universal taxonomy of all meaning"
+  - concept: "Lexeme vs Concept, formalized to prevent 'semantic false merging' — the same word can denote genuinely different concepts across bounded contexts, and different words can denote the same concept"
+  - concept: "Bounded Context and Ubiquitous Language adopted directly as KnowledgeOS's own semantic-boundary mechanism, mapping Term→Concept per context rather than inventing a universal meaning"
+  - concept: "Semantics≠Governance and DescriptiveSemantics≠NormativeRules — an ontology answers 'what is this thing?' while a constitution/policy answers 'what must happen?', proposed as a core KnowledgeOS invariant"
+  - concept: "A clean three-layer semantic architecture: Concept (meaning) / Assertion (claim) / Rule (consequence under conditions)"
+  - concept: "SemanticSimilarity≠SemanticIdentity and the LLM-governance boundary for semantics: an LLM proposes CandidateSemanticMapping; the kernel evaluates and governs acceptance"
+  - concept: "The conflict model reparameterized by semantic model: Conflict_{M,Ctx,ρ}(A_i,A_j) — the same textual pair of statements may conflict under one semantic interpretation and not under another"
+  - concept: "'No retroactive semantic rewriting' — historical knowledge retains its original semantic context/ontology version even after concepts split, merge, or are renamed"
+  - concept: "Semantic contradiction as a distinct species of conflict, arising from an explicit ontological disjointness axiom rather than two arbitrary assertions merely disagreeing"
+  - concept: "A dedicated Semantic Kernel (concept/context/relation/ontology/mapping/rule registries), explicitly NOT a reasoning or decision engine — pure governed semantic-structure maintenance"
+  - concept: "Eight tentative DDD bounded contexts proposed for KnowledgeOS's own architecture: Knowledge, Semantics, Identity, Causal Reasoning, Discrepancy, Decision, Governance, Temporal History"
+  - concept: "Aggregate-boundary discipline: Reference across contexts≠Ownership across contexts — assertions reference ConceptIDs/EntityIDs rather than embedding the whole ontology"
+  - concept: "The extended relation/triple structure (S,P,O,Σ,E,Π,T,Ctx), explicitly framed as why this architecture is richer than an ordinary RDF-style knowledge graph"
+  - concept: "Fourteen canonical Step-17 invariants (SE1-SE14) governing ontology, concepts, and semantics"
+  - concept: "The deliberate, explicitly-defended decision NOT to select a single universal ontology formalism (OWL/RDF/SHACL/Common Logic) before the domain theory is complete"
+  - concept: "'Step 18 — Rules, Inference, Logic, Constraints, and the KnowledgeOS Reasoning Engine' as the corpus's next named research phase, framed as defining the knowledge-representation/reasoning boundary"
+defines:
+  - concept: "Concept"
+    definition: "Concept=(ConceptID,Meaning,Context,Constraints,Relations,Terminology) — a stable conceptual identity independent of the words used to express it, with Context as the crucial interpretive field"
+  - concept: "Bounded Context (KnowledgeOS formalization)"
+    definition: "BC=(Concepts,Terms,Rules,Relationships,Context) — a semantic boundary within which a term maps to a specific concept via Ubiquitous Language"
+  - concept: "Typed relation (with epistemology)"
+    definition: "r=(Source,Type,Target,Σ,Evidence,Provenance,TemporalScope) — a relation is itself epistemically graded knowledge, not an asserted absolute truth"
+  - concept: "Semantic Kernel"
+    definition: "SK=(ConceptRegistry,ContextRegistry,RelationRegistry,OntologyRegistry,MappingRegistry,SemanticRuleRegistry) — maintains governed semantic structures; explicitly not a reasoning or decision engine"
+  - concept: "Reference-based assertion structure"
+    definition: "A=(SubjectID,PredicateID,ObjectID,ContextID,Σ,Evidence,T_v,T_k) — an assertion references semantic identities rather than embedding definitions, preserving bounded-context separation"
+refines:
+  - concept: "The corpus's conflict/contradiction model, most recently refined at 0558 for temporal scope"
+    refinement: "Further reparameterized by the applicable semantic model: Conflict_{M,Ctx,ρ}(A_i,A_j) — the same pair of statements may or may not conflict depending on which semantic interpretation applies"
+  - concept: "0552's Identity/Entity-resolution theory (Match→{Same,Distinct,Unknown})"
+    refinement: "Extended to contextual entity identity across bounded contexts (e.g. the same underlying entity represented differently in Infrastructure/Application/Security contexts), requiring the same three-valued Match resolution"
+  - concept: "0558's bitemporal assertion structure and 'no retroactive epistemic contamination'"
+    refinement: "Extended with 'no retroactive semantic rewriting' — historical assertions retain their original ontology/semantic-model version and must not be silently reinterpreted under a later, evolved ontology"
+  - concept: "0556's 'inference is model-relative' principle for causal models"
+    refinement: "Extended identically to semantic inference: K,𝒪_C⊢P is valid only relative to the ontology 𝒪_C actually asserting the relevant subsumption/axiom"
+  - concept: "The recurring 'AI interprets; Kernel verifies, stores, computes, and governs' architectural pattern (confirmed at 0554 inference, 0556 causality, 0557 decision-making, 0558 temporal extraction)"
+    refinement: "Confirmed a fifth time for semantic extraction/interpretation: AI/LLM→CandidateSemanticInterpretation, then Kernel→DeterministicSemanticEvaluation, then Governance/Evidence→Acceptance"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 18 — Rules, Inference, Logic, Constraints, and the KnowledgeOS Reasoning Engine' is executed as its own dedicated corpus file"
+  - "Trace whether the eight tentative DDD bounded contexts proposed here (Knowledge/Semantics/Identity/Causal Reasoning/Discrepancy/Decision/Governance/Temporal History) are later formalized into a definitive context map, and whether they reconcile with any bounded-context proposals made elsewhere in the corpus"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record 'KnowledgeOS does not own all meaning,' the Lexeme≠Concept distinction, the formal Concept and Bounded Context structures, Ubiquitous Language adoption, and Semantics≠Governance/DescriptiveSemantics≠NormativeRules."
+  - "dimension-registry.md: record the three-layer Concept/Assertion/Rule architecture, SemanticSimilarity≠SemanticIdentity, the semantic-model-reparameterized conflict formula, 'no retroactive semantic rewriting,' and semantic contradiction as a distinct species of conflict."
+  - "dimension-registry.md: record the Semantic Kernel, the eight tentative DDD bounded contexts, the reference-based assertion/triple structures, the fourteen SE1-SE14 invariants, Step 17's verdict (deliberately deferring a universal ontology formalism), and 'Step 18 — Rules, Inference, Logic, Constraints, and the KnowledgeOS Reasoning Engine' as the next named research phase."
+anchor_test:
+  anchor: "0558's Step-17 directive; the corpus's conflict model (most recently refined for temporal scope at 0558); 0552's Identity/Entity-resolution theory; 0556's model-relative causal inference; the recurring 'AI interprets, Kernel governs' pattern (0554/0556/0557/0558)"
+  supports_dimension: "LANDMARK delivering the corpus's first full DDD-grounded semantic theory, directly importing Bounded Context and Ubiquitous Language as KnowledgeOS's own semantic-boundary mechanism rather than inventing a competing formalism. Establishes the crucial Semantics≠Governance separation, a dedicated Semantic Kernel with a carefully bounded non-role (not a reasoning or decision engine), and eight tentative DDD bounded contexts for KnowledgeOS's own architecture. Extends the corpus's conflict, identity-resolution, model-relative-inference, and AI-governance-boundary machinery into the semantic domain with minimal new theory, demonstrating strong internal coherence. Delivers a deliberately deferred, explicitly justified decision not to commit to a universal ontology formalism, consistent with the corpus's broader 'no universal formula, typed pluggable methods' architectural pattern"
+  refines_or_contradicts: "directly and fully executes 0558's Step-17 directive; extends the conflict model, 0552's identity resolution, 0556's model-relative inference, and the recurring AI-governance-boundary pattern into the semantic domain; extends 0558's temporal non-contamination principle with an analogous semantic non-rewriting principle; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The three-way worked 'Customer' example (Sales=contracting organization, Identity=authenticated principal, Billing=invoice recipient) is a directly checkable, concrete demonstration of Word≠Concept grounded in an entirely ordinary enterprise scenario, not an abstract or exotic case."
+  - "The explicit, defended refusal to select a universal ontology formalism (OWL/RDF/SHACL/Common Logic) before the domain theory is complete is a checkable methodological commitment consistent with the corpus's independently-confirmed 'no universal formula, typed pluggable methods' pattern seen at 0545/0546 (evidence), 0554 (inference), and 0556 (causality) — this file does not name it as a fourth instance of that pattern explicitly, but the reasoning given is structurally identical, worth flagging for the eventual canonical-theory reconciliation pass."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 18 — Rules, Inference, Logic, Constraints, and the KnowledgeOS Reasoning Engine' is executed as its own dedicated corpus file"
+  - "Whether the deliberate deferral of a universal ontology formalism should be counted as a fourth confirmed instance of the corpus's recurring 'no universal formula, typed pluggable methods' architectural pattern (previously confirmed at 0545/0546, 0554, 0556) in the eventual canonical-theory reconciliation pass"
+  - "Whether the eight tentative DDD bounded contexts proposed here are later reconciled into a definitive context map"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first complete, DDD-grounded semantic theory for KnowledgeOS, directly importing Bounded Context and Ubiquitous Language rather than inventing a parallel formalism, and establishing the crucial Semantics≠Governance separation between descriptive ontology and normative policy/constitution. Delivers a carefully-scoped Semantic Kernel with an explicit non-role (not a reasoning or decision engine), eight tentative DDD bounded contexts for KnowledgeOS's own architecture, a reference-based assertion structure preserving cross-context aggregate boundaries, and fourteen canonical SE1-SE14 invariants. Extends the corpus's established conflict-detection, identity-resolution, model-relative-inference, and AI-governance-boundary machinery cleanly into the semantic domain, and delivers a deliberately deferred, explicitly justified refusal to commit to a universal ontology formalism — consistent with, and arguably a fourth instance of, the corpus's recurring 'no universal formula' architectural pattern. Closes by identifying that rules themselves come in fundamentally different, non-interchangeable kinds, opening Step 18 (Rules, Inference, Logic, Constraints, and the Reasoning Engine) as the corpus's next named foundational research phase."

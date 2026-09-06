@@ -1,0 +1,46 @@
+sequence: 65
+path: docs/knowledgeos/brainstorming/20260820-231930-event-driven-architecture-refinement.md
+title: Event-Driven Architecture Refinement for KnowledgeOS
+date: 2026-08-20
+bytes: 17289
+
+model:
+  primary: c1
+  secondary: [ddd]
+
+source_role: IMPLEMENTATION
+canonical_source: null
+
+importance: low
+confidence: high
+
+about: >
+  Applies event-driven architecture (domain events, idempotent consumers, transactional outbox) to
+  KnowledgeOS; states "producer owns the fact, consumer owns the reaction" as a governing principle.
+
+introduces:
+  - producer_owns_fact_consumer_owns_reaction
+  - idempotency_as_kernel_adjacent_principle
+
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: modular_monolith_kernel
+    canonical_source: 63
+    novelty: none
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true   # reuses 0063's sense
+
+key_evidence:
+  - "'Producer owns the fact. Consumer owns the reaction.'"
+
+undefined_concepts: [knowledge]
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: "Implementation-architecture content (event-driven design). Idempotency/deduplication parallel to 0034's RD-7 is noted but too routine to flag as a bridge_candidate."

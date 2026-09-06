@@ -1,0 +1,102 @@
+sequence: "0147"
+path: docs/knowledgeos/brainstorming/20260823-105200-ddd-interrogation-intent-vs-command-and-evidence-weighting-red-flag.md
+title: "DDD interrogation of 0144-0146; explicitly rejects numeric evidence weighting; reveals the corpus reflects PARALLEL multi-agent work (resolves the unencountered-artifact discrepancy pattern)"
+date: "2026-08-23"
+bytes: 20000
+model:
+  primary: c1
+  secondary: []
+source_role: CRITICAL_REVIEW
+canonical_source: "0146"
+importance: critical
+confidence: high
+about: >
+  A rigorous DDD-based adversarial interrogation of the kernel-reduction proposals at 0144-0146,
+  refusing to accept them as architecture, treating them instead as "candidate architectural
+  hypotheses" to be challenged. Critically, the file explicitly states "let Claude finish F-1…F-5,
+  while we use this document as a parallel architectural hypothesis to challenge against the resulting
+  domain model" -- revealing that the corpus reflects genuinely PARALLEL multi-agent collaborative work
+  (a "Claude" track producing F-1..F-5 and governance artifacts; this file's voice doing independent DDD
+  critique), which explains the recurring "unencountered artifact" pattern tracked since 0136 (see
+  Ledger Entry 47). Explicitly rejects 0146's numeric evidence-weighting scheme as a "red flag" and
+  introduces a crisp Intent≠Command DDD distinction.
+
+introduces:
+  - "Intent ≠ Command: Intent Candidate (what the human appears to mean, produced by interpretation) vs.
+    Authorized Command (a post-governance-evaluation request to change domain state) -- a seven-stage
+    pipeline: Human Expression -> Interpretation -> Intent Candidate -> Governance Evaluation ->
+    Authorized Command -> Domain Command Handling -> Aggregate -> Domain Event"
+  - "Explicit rejection of 0146's numeric Evidence Weighting model: 'mechanism score ≠ evidence weight
+    ≠ domain confidence ≠ authority... The Kernel should not silently turn 0.8 > 0.3 into therefore
+    truth/authority. That is precisely the kind of semantic laundering the architecture has been trying
+    to prevent' -- citing an apparently-already-resolved OQ-5: 'Confidence is a domain-owned structured
+    epistemic attribute, not a mechanism confidence score'"
+  - "Challenges 'priority as integers' in the Constitutional DSL: asks who owns rule priority and
+    whether it is constitutional law (domain) or an implementation algorithm -- a DDD ownership question
+    left open, not resolved"
+  - "Rejects 'Kernel self-versioning as KnowledgeOS state': 'KnowledgeOS history ≠ Kernel software
+    history' -- software versioning belongs to engineering, not the domain"
+  - "Proposes splitting the recurring generic RESOLVED/AMBIGUOUS/MISMATCH/UNRESOLVED status vocabulary
+    into three layer-specific vocabularies (Interpretation: UNRESOLVED/AMBIGUOUS; Governance:
+    NOT_AUTHORIZED/INSUFFICIENT_EVIDENCE/CONFLICT; Domain: admissible/rejected transition) rather than
+    one generic enum reused across layers -- a refinement of the existing vocabulary-proliferation
+    pattern, not a fifth sibling"
+  - "Reframes the Kernel from 'Constitutional Adjudicator owning parsing+persistence+execution+workflow'
+    to 'the authoritative domain decision mechanism' only, with Interpretation Context and Governance
+    Context as separate upstream bounded contexts"
+
+defines: []
+
+refines:
+  - "Directly corrects 0146's numeric evidence-weighting proposal (see key discrepancy note); does not
+    rewrite 0146's own record, per historical-record-preservation discipline"
+  - "Sharpens (does not contradict) the compiler/interpretation-outside-kernel boundary already
+    established at 0135-0145, adding the Intent/Command distinction as a further refinement"
+
+contradicts:
+  - "0146's numeric Evidence Weighting scheme (0.0-1.0 weights, 1.5x threshold) is explicitly rejected
+    as an unjustified 'mechanism confidence -> domain authority' collapse"
+
+repeats: []
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "Ledger Entry 47 added: resolves the unencountered-artifact discrepancy pattern (parallel multi-agent
+    work), records the explicit rejection of 0146's evidence-weighting scheme, and the layered status-
+    vocabulary refinement"
+  - "0146.md cross-referenced with a brief addendum noting the correction (not rewritten)"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity", "Identity Preservation"]
+  refines_or_contradicts: "Refines the K1-K8/Six-Pillar kernel-reduction threads; explicitly contradicts 0146's evidence-weighting proposal."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "Directly explains the corpus-wide discrepancy pattern tracked since 0136 (unencountered
+    'Constitution v1.0,' 'Port Contract,' OQ items, F-1..F-5): the corpus reflects genuinely parallel
+    multi-agent work, not a corpus-integrity problem or a loosely-speaking source. De-escalates further
+    individual tracking of this pattern as a new discrepancy each time it recurs."
+  - "A substantive, well-reasoned rejection of numeric evidence-weighting -- directly continues the
+    corpus's Confidence≠Truth discipline into the implementation-architecture domain"
+
+undefined_concepts: []
+open_questions:
+  - "Whether F-1 through F-5 (the parallel 'Claude' track's output) are ever encountered later in this
+    reading order, and whether they resolve or further complicate the six-vs-eight-pillar kernel
+    question"
+
+tier2_triggered: true
+tier2_reason: >
+  Resolves a corpus-wide discrepancy pattern (parallel multi-agent authorship), explicitly rejects a
+  prior file's evidence-weighting proposal, and introduces a substantive Intent≠Command DDD distinction.

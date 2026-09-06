@@ -1,0 +1,177 @@
+sequence: 733
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-130841_step-146-golden-trace-to-implementable-domain-model.md
+title: "Step 146 -- Translates the Golden Trace's Concrete Objects Into Actual DDD Building Blocks: Per-Aggregate Lifecycles and Invariant IDs (D-INV/A-INV), the Precisely Stated Aggregate Boundary Test ('What Invariant Would Break if Updated Separately?'), the Sharpest Formulation Yet of Aggregate≠Graph, DM-001 Through DM-007 (Six New Core Domain Invariants Including Action=Intent≠Execution=Fact), Shared-Kernel Resistance, and the Published-Language Pattern -- Delivers the Elegant Two-Flow Definition 'KnowledgeOS = Governance Flow ∩ Engineering Flow, Bridged by Assurance' -- Opens Step 147, Domain Events & Integration Contracts"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 146 -- Golden Trace → Implementable Domain Model', promised at 0732's close; delivers thorough, standard tactical-DDD elaboration (aggregate boundaries, lifecycles, invariants, value objects, domain events) directly grounded in the Golden Trace's now-concrete objects, largely applying established DDD discipline rigorously rather than introducing extensive new architectural territory, while contributing several genuinely valuable capstone-level invariants and a precise Aggregate-vs-Graph distinction"
+source_role: PRIMARY_RESEARCH
+canonical_source: 733
+importance: critical
+confidence: high
+about: >
+  Opens with the first principle `Aggregate=ConsistencyBoundary`, `Entity≠Aggregate`, and derives a
+  candidate aggregate map directly from the Golden Trace's objects (Governance: Decision/Policy/Exception/
+  Disposition; Knowledge: Claim; Assurance: Rule/Verification/Finding; Evidence: Evidence/Observation;
+  Agent: Agent/Session/Task/Recommendation/Action/Authorization/Execution). Delivers per-aggregate lifecycle
+  state machines and named invariant candidates for Decision (`D-INV-001..004`: stable identity, only
+  authorized authority can make it effective, an effective Decision cannot be silently modified,
+  supersession preserves historical traceability), Policy (kept distinct from Decision — `Decision`
+  answers "what was decided?", `Policy` answers "what rule or expectation governs behavior?"), Exception
+  (`Exception≠DeleteRule`; `Rule+Exception→ModifiedApplicability`, "the original rule remains historically
+  visible"), Claim (machine-addressable structure with subject/predicate/value/status/validity/provenance;
+  the reaffirmed separation that a `VERIFIED` claim about observed reality does not automatically become
+  `GOVERNANCE AUTHORITY` — a verified observation of Nexus's current version does not itself establish what
+  version Nexus must run), Rule (immutable by version, `R42:v1≠R42:v2`), Verification (immutable once
+  completed — a repeated check creates `Verification_new`, never overwrites `Verification_old`), and Finding
+  (a full structured object, not a text field on Verification).
+
+  Delivers Agent-context decomposition into three distinct candidate aggregates (`AgentAggregate` for
+  stable identity/configuration, `SessionAggregate` for one interaction lifecycle, `ActionAggregate` for a
+  proposed/executed engineering action), with the explicit caution "do not make Session a giant Aggregate"
+  — a long-running session with dozens of actions should reference, not transactionally contain, them.
+  Delivers Task and Recommendation as distinct structured objects (`Recommendation≠Action`; the agent can
+  recommend an upgrade without requesting its execution), with private reasoning explicitly excluded from
+  the persisted domain model.
+
+  **Delivers `Action=intent` vs. `Execution=fact`, a precisely stated and sharpened version of 0732's
+  already-established distinction**: "the Action may have been valid even if Execution failed," worked
+  through a concrete example (`Action A42{operation=ReadNexusConfiguration}` remains a valid intent even if
+  its `Execution E42{status=SUCCESS/FAILURE}` differs). **Delivers an honestly unresolved architectural
+  question with a working interim recommendation** (§146.53-146.54): whether `Execution` belongs to
+  Agent/Action or to a separate Engineering Execution context — reasoned toward the latter, since the
+  actual fact of execution belongs to the authoritative external system (Kubernetes/Nexus), with KnowledgeOS
+  recording only the execution reference and evidence, "this preserves external authority."
+
+  **Delivers the Aggregate boundary test, a genuinely valuable, concrete, reusable DDD heuristic**
+  (§146.55): "what invariant would be broken if these objects were updated separately? If the answer is
+  None, then they probably do not belong in the same Aggregate" — worked through four concrete example
+  pairs, all resolved as separate aggregates: Action+Authorization (separate lifecycle/authority/
+  expiration/audit requirements); Rule+Verification (a Rule persists, a Verification is one execution
+  against one version); Evidence+Verification (the same evidence can support multiple verifications);
+  Decision+Policy (one Decision may establish multiple Policies that outlive the specific decision
+  document). Delivers `DM-001`: "an Aggregate exists to protect a consistency boundary, not to model every
+  semantic relationship."
+
+  **Delivers `Aggregate≠Graph`, explicitly called "perhaps the most important DDD distinction of this
+  step"** (§146.61-146.62): the Aggregate answers "what must change consistently?"; the Graph answers "what
+  is related to what?" — worked through a concrete example showing a `Decision`'s graph relationships
+  (`governs, appliesTo, motivatedBy`) that its Aggregate does not need to transactionally contain — the
+  sharpest single formulation of this distinction across the entire reconstruction, directly crystallizing
+  scattered prior statements (0716, 0725, 0730) into one precise DDD-theoretic rule.
+
+  Delivers Transaction-boundary discipline reconfirmed (one Aggregate per transaction, never a cross-
+  context mega-transaction spanning Governance/Knowledge/Evidence/Assurance/Agent at once — "the latter
+  destroys bounded-context autonomy") and cross-context eventual consistency via events, directly
+  consolidating 0725's outbox/eventual-consistency discipline and 0727's graph-rebuildability finding into
+  the tactical layer.
+
+  **Delivers `DM-002` through `DM-007`, six new core domain invariants, genuinely valuable capstone-level
+  rules synthesizing much of the Golden Trace's discipline into compact statements**: DM-002 ("an agent
+  recommendation is never itself an authorization"); DM-003 ("an authorization is never evidence that an
+  action succeeded"); DM-004 ("an execution fact is never equivalent to a governance decision"); DM-005
+  ("a verification result must identify the exact rule version evaluated"); DM-006 ("evidence used by
+  assurance must remain historically reconstructable"); DM-007 ("cross-context relationships do not imply
+  aggregate ownership").
+
+  **Delivers the complete semantic chain**, unifying the entire Golden Trace's causal path into one boxed
+  statement: `Intent→Recommendation→Authorization→Execution→Observation→Evidence→Verification→Finding→
+  Disposition`, paired with the Governance-side chain `Decision→Policy→Rule→ExpectedState`, "the two chains
+  meet at: Verification." **Delivers the file's central, elegant two-flow definition of KnowledgeOS, "a
+  much stronger definition than simply 'AI engineering knowledge management'"**: `Governance flow
+  (Decision→Policy→Rule→Expectation) ∩ Engineering flow (Intent→Action→Execution→Observation→Evidence)`,
+  bridged by `Assurance (Expectation+Evidence→Verification→Finding)`.
+
+  Delivers Domain events per-context (`DecisionBecameEffective, ClaimVerified, EvidenceCaptured,
+  VerificationCompleted, FindingRaised, ActionRequested, ActionExecuted, ActionAuthorized`), reaffirming
+  event ownership belongs to the transition-owning context, and the Domain-event-vs-Integration-event
+  distinction: an internal `DecisionBecameEffective` is conceptually distinct from an externally-published,
+  independently-versioned `EffectiveDecisionPublished` contract. Delivers a Value-Object catalog (fifteen
+  typed IDs, `ValidityPeriod{validFrom<validUntil}`, `Scope`, `Provenance`), with the precise rationale for
+  typed (not raw-string) identifiers: preventing accidental cross-type assignment at compile time and
+  making APIs self-documenting.
+
+  **Delivers Shared-Kernel resistance, an explicit caution against premature domain-object sharing**: "at
+  this stage we should resist creating a large `SharedKernel`... `Governance` and `Assurance` should not
+  share rich domain classes simply because they have similar words" — a tiny shared kernel, if any, should
+  hold only primitive identity conventions, timestamps, and correlation identifiers, directly extending
+  0716's/0722's semantic-core-minimality discipline. **Delivers the Published-Language pattern as the
+  preferred cross-context communication mechanism**, worked through a concrete `DecisionReference{id,
+  status, validity, authority}` schema that Assurance consumes without importing Governance's internal
+  entity, directly operationalizing 0714's/0716's prior published-language proposals into a concrete example.
+
+  Delivers Step 146's verdict: "Aggregates protect local invariants; Events/contracts connect contexts; the
+  Assurance Graph represents cross-context relationships" — a clean, precise answer to "where should
+  KnowledgeOS put the boundaries?"
+
+  **Closes by opening "Step 147 — Domain Events & Integration Contracts,"** promising to formalize
+  `Commands+DomainEvents+IntegrationEvents+Queries+Contracts` and posing the key interaction-architecture
+  question: "which communication must be synchronous, which can be asynchronous, and which must never cross
+  a boundary at all?" — a natural, well-motivated continuation of standard tactical DDD/integration-
+  architecture work, directly extending 0725's/0726's earlier command/query/event pattern discussion with
+  Golden-Trace-grounded specificity. No actual code execution, repository inspection, or verified
+  filesystem/architecture claim reported anywhere in this file; every aggregate, invariant, and worked
+  example remains a candidate target specification, though it is now directly grounded in 0732's concrete
+  Golden Trace objects rather than abstract placeholders.
+introduces:
+  - concept: "Per-aggregate lifecycle state machines and named invariant IDs (D-INV/A-INV series) directly grounded in the Golden Trace"
+  - concept: "The Aggregate boundary test: 'what invariant would be broken if these objects were updated separately?'"
+  - concept: "Aggregate≠Graph, the sharpest single formulation of this distinction in the reconstruction"
+  - concept: "DM-001 through DM-007, six new core domain invariants"
+  - concept: "The honestly unresolved Execution-ownership question, with a reasoned interim recommendation"
+  - concept: "The elegant two-flow definition: KnowledgeOS = Governance flow ∩ Engineering flow, bridged by Assurance"
+  - concept: "Shared-Kernel resistance and the concrete Published-Language pattern (DecisionReference)"
+  - concept: "Opens Step 147 -- Domain Events & Integration Contracts"
+defines:
+  - concept: "Aggregate boundary test"
+    definition: "For any two candidate domain objects, ask whether an invariant would be broken if they were updated independently and inconsistently; if no invariant would break, the two objects belong in separate aggregates rather than one shared consistency boundary"
+  - concept: "Aggregate≠Graph"
+    definition: "An Aggregate answers 'what must change consistently in one transaction?'; the Assurance Graph answers 'what is related to what?' -- a node's graph relationships (e.g. a Decision governing a Policy, applying to a service, motivated by a Finding) never imply that those related objects must be transactionally contained within the same aggregate"
+  - concept: "Action=intent vs. Execution=fact"
+    definition: "An Action records what was requested and remains a valid record of that intent regardless of outcome; an Execution records what actually happened when the action was carried out -- the two are deliberately never merged, since a valid, properly authorized Action can still have a failed Execution"
+refines:
+  - concept: "0732's Golden Trace concrete objects"
+    refinement: "Directly translated into formal DDD building blocks: aggregate boundaries, lifecycle state machines, and named invariants for every object surfaced by the trace"
+  - concept: "0725's transaction-boundary and eventual-consistency discipline"
+    refinement: "Reaffirmed at the tactical aggregate level: one aggregate per transaction, cross-context propagation exclusively via events"
+  - concept: "0716's/0725's/0730's scattered graph-vs-aggregate distinctions"
+    refinement: "Crystallized into the sharpest single formulation in the reconstruction, explicitly named 'perhaps the most important DDD distinction of this step'"
+  - concept: "0716's/0722's semantic-core-minimality principle"
+    refinement: "Extended into an explicit Shared-Kernel-resistance caution, with a precisely bounded exception (identity conventions, timestamps, correlation IDs only)"
+  - concept: "0714's/0716's published-language proposals"
+    refinement: "Operationalized into a concrete worked cross-context contract example (DecisionReference) that Assurance consumes without importing Governance's internal entity"
+  - concept: "0732's Action/Execution distinction"
+    refinement: "Sharpened into the precise formula 'Action=intent, Execution=fact,' with an honestly unresolved question about which bounded context Execution ultimately belongs to"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0734 (Step 147 — Domain Events & Integration Contracts) with standard attention: check whether the sync/async/never-cross-boundary classification is genuinely derived from the Golden Trace's specific events, and whether the unresolved Execution-context-ownership question is addressed."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Aggregate boundary test, the sharpest formulation of Aggregate≠Graph in the reconstruction, and DM-001 through DM-007 (including Action=intent≠Execution=fact and the reconfirmed 'agent recommendation is never itself an authorization')."
+  - "dimension-registry.md: record the elegant two-flow definition of KnowledgeOS (Governance flow ∩ Engineering flow, bridged by Assurance), Shared-Kernel resistance, and the concrete Published-Language pattern (DecisionReference)."
+  - "dimension-registry.md: note the honestly unresolved Execution-ownership question (Agent/Action vs. separate Engineering Execution context) as an open architectural item."
+anchor_test:
+  anchor: "0732's Golden Trace concrete objects; 0725's transaction-boundary/eventual-consistency discipline; 0716's/0725's/0730's graph-vs-aggregate distinctions; 0716's/0722's semantic-core-minimality principle; 0714's/0716's published-language proposals"
+  supports_dimension: "Delivers thorough, standard tactical-DDD elaboration directly grounded in the Golden Trace's now-concrete objects -- per-aggregate lifecycles, named invariants (D-INV/A-INV/DM series), and a candidate aggregate map. Contributes several genuinely valuable capstone-level items: the reusable Aggregate boundary test, the sharpest single formulation of Aggregate≠Graph in the reconstruction, DM-001..DM-007's compact synthesis of the Golden Trace's discipline, the elegant two-flow definition of KnowledgeOS, and Shared-Kernel resistance paired with a concrete Published-Language example. Honestly surfaces and reasons through an unresolved architectural question (Execution's bounded-context ownership) rather than asserting a premature answer. Closes with a well-motivated continuation into Step 147's domain-events/integration-contracts formalization"
+  refines_or_contradicts: "directly and substantially extends 0732's Golden Trace objects, 0725's transaction-boundary discipline, 0716's/0725's/0730's graph-vs-aggregate distinctions, 0716's/0722's semantic-core-minimality principle, and 0714's/0716's published-language proposals; no contradiction found; sharpens 0732's Action/Execution distinction into a precisely stated intent-vs-fact formula"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§146.55's precisely stated Aggregate boundary test, worked through four concrete example pairs each resolved as separate aggregates, is directly checkable evidence of a genuinely reusable DDD heuristic applied consistently and correctly."
+  - "§146.61-146.62's explicit Aggregate≠Graph statement, called 'perhaps the most important DDD distinction of this step,' with a worked example showing a Decision's graph relationships not implying aggregate containment, is directly quotable evidence of the sharpest formulation of this distinction across the entire reconstruction."
+  - "§146.70's boxed two-flow definition (Governance flow ∩ Engineering flow, bridged by Assurance) is directly checkable evidence of an elegant, precise alternative characterization of KnowledgeOS distinct from and stronger than 'AI engineering knowledge management.'"
+undefined_concepts: []
+open_questions:
+  - "Whether Step 147's actual content (0734), once read, resolves the honestly-flagged Execution-ownership question (Agent/Action vs. a separate Engineering Execution context) with a definitive architectural decision."
+  - "Whether the file's own candidate answer for Execution ownership (favoring a separate Engineering Execution context, preserving external authority) is retained consistently in subsequent files, or revised."
+tier2_triggered: true
+tier2_reason: "Delivers thorough, standard tactical-DDD elaboration directly grounded in the Golden Trace's now-concrete objects. Contributes the reusable Aggregate boundary test, the sharpest single formulation of Aggregate≠Graph in the reconstruction, DM-001..DM-007's compact synthesis (including Action=intent≠Execution=fact), the elegant two-flow definition of KnowledgeOS, and Shared-Kernel resistance paired with a concrete Published-Language example. Honestly surfaces an unresolved architectural question rather than asserting a premature answer. Opens Step 147's well-motivated continuation."

@@ -1,0 +1,141 @@
+sequence: 973
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/20260831-182217_step_286_draft-gita-hypothesis-programme-dictionary-as-input-layer.md
+title: "STEP 286 -- Gita to KnowledgeOS Hypothesis Research Programme (Dictionary as Input Layer) -- THE MOST RIGOROUS TREATMENT OF THE THETA-OPERATOR/TRANSFORMATION-ALGEBRA CONTROVERSY IN THIS ENTIRE SUB-ARC: Explicitly Requires a Fourteen-Property Formal Specification Per Operator BEFORE Composition, Mandates Type-Checking With the Instruction 'If It Cannot Be Type-Checked: Reject the Composition. Do Not Invent Types to Rescue It,' and Delivers a Three-Test Falsification Framework Including the Brilliant 'KnowledgeOS Independence Test' ('Would We Have Arrived at This Principle Without the Gita? If YES, the Gita May Be a Conceptual Lens, but It Is Not the Foundation') -- Continues the Disciplined Lineage (0969/0970/0972), Explicitly Guarding Against File 0971's Exact Overclaim"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual research-programme specification for Step 286, continuing the disciplined kernel-track lineage"
+source_role: PRIMARY_RESEARCH
+canonical_source: 973
+importance: critical
+confidence: medium
+about: >
+  Opens: "The objective of Step 286 should not be to produce a beautiful Gītā–KnowledgeOS dictionary. The
+  dictionary is only the input layer. The actual research programme should determine whether any of those
+  proposed correspondences survive scrutiny" -- **CONTINUING THE DISCIPLINED KERNEL-TRACK LINEAGE
+  ESTABLISHED IN FILES 0969/0970/0972**, this document explicitly names the specific edition ("Bhagavad
+  Gītā As It Is") again, reiterating its strong theological framing (Chapter 13.3: "Kṛṣṇa is the knower in
+  all fields") and explicitly warning "our KnowledgeOS translation must not flatten the Gītā's hierarchy
+  into 'Arjuna = Knower.'"
+
+  **§1 delivers THE FILE'S CENTRAL REFRAMING OF THE STEP-286 QUESTION**: not "how can we integrate the
+  Bhagavad Gītā into KnowledgeOS?" but **"which structural ideas from the Gītā, if any, provide
+  sufficiently precise and independently defensible hypotheses about KnowledgeOS to justify further formal,
+  architectural, or governance investigation?"** -- delivering a nine-stage research pipeline (Gita
+  concept→candidate translation→research hypothesis→attempt to falsify→formal/semantic test→DDD test→
+  architectural test→empirical test→research verdict) explicitly contrasted against the rejected shortcut
+  "Gita→KnowledgeOS concept→architecture."
+
+  **§2 delivers A FIVE-LAYER SOURCE-EVIDENCE CHAIN**: boxed **`[S] Source text→[C] Commentary→[P]
+  Philosophical interpretation→[R] Research analogy→[H] KnowledgeOS hypothesis`**, explicitly "a [P] or [R]
+  statement must never silently become [S]" -- a further, independently-articulated variant of file 0970's
+  seven-layer hierarchy, confirming this discipline recurs as a stable feature of the corrected kernel-track
+  lineage rather than a one-off statement. Delivers a genuinely important specific correction: **"Kṛṣṇa→Ω
+  can only be a KnowledgeOS research abstraction, never a textual definition"** -- directly, explicitly
+  guarding against the exact decorative "𝒦_supreme=sup(Ω)" formulas this reconstruction flagged in files
+  0943 and 0954 as theologically-loaded pseudo-mathematics.
+
+  **§3 delivers A TWELVE-ROW RESEARCH REGISTER (`GK-01` through `GK-12`)** -- Kṛṣṇa, Arjuna, Kṣetra,
+  Kṣetra-jña, Ātman, Karma, Karma-phala, Sārathi, Buddhi, Dharma, Vairāgya/tyāga, Yoga -- each explicitly
+  marked **Verdict: OPEN, Evidence: TBD**, with the explicit caution "do not assume these are hypotheses
+  merely because they are in the table. The table is a research queue" -- correctly treating every
+  correspondence as genuinely unresolved rather than pre-decided.
+
+  **§4 delivers A THREE-TIER PRIORITIZATION** (Priority 1 Kernel/epistemology: Kṣetra, Kṣetra-jña,
+  Knowledge, Ātman/persistence, Karma; Priority 2 Governance/AI; Priority 3 exploratory), correctly
+  resourcing investigation toward the constructs most load-bearing for the kernel.
+
+  **§5-15 delivers ELEVEN INDIVIDUAL HYPOTHESIS INVESTIGATIONS (H-K01 through H-K11)**, each treating its
+  named correspondence as an open research question with explicit tests and complications rather than an
+  established fact.
+
+  **§16 delivers THE FILE'S CENTRAL, MOST RIGOROUS CONTRIBUTION: THE MOST DISCIPLINED TREATMENT OF THE
+  THETA-OPERATOR/TRANSFORMATION-ALGEBRA CONTROVERSY IN THIS ENTIRE SUB-ARC**, explicitly demoting
+  `Θ_A,Θ_T,Θ_K,Θ_I,Θ_X` to "a separate research track," explicitly forbidding the question "what does each
+  one mean?" in favor of "does the Gītā-derived vocabulary reveal five genuinely distinct transformation
+  classes?", and requiring, for EVERY proposed operator, a FOURTEEN-PROPERTY FORMAL SPECIFICATION (Input/
+  Output/Domain/Codomain/Precondition/Postcondition/Actor/Authority/Evidence/Identity/Persistence/
+  Composition/Replayability/Observability) -- vastly more rigorous than any of this reconstruction's
+  previously-tracked operator treatments (files 0936, 0937, 0945, 0953, 0955, 0958, 0965-0967, 0971, none
+  of which delivered anything close to this level of required specification) -- **THEN EXPLICITLY REQUIRES
+  TYPE-CHECKING THE COMPOSITION `Θ_X∘Θ_I∘Θ_K∘Θ_T∘Θ_A` ITSELF, DELIVERING THE FILE'S SHARPEST, MOST DIRECTLY
+  APPLICABLE RULE**: **"If it cannot be type-checked: Reject the composition. Do not invent types to rescue
+  it."** -- THIS IS A DIRECT, EXPLICIT, PROSPECTIVE GUARD AGAINST EXACTLY THE OVERCLAIM this reconstruction
+  found already committed in file 0971 (which asserted this precise composition as "complete" with no type-
+  checking whatsoever) -- had this file's rule been applied to file 0971's claim, it would have been
+  rejected outright.
+
+  **§17 delivers THE FILE'S SECOND MAJOR CONTRIBUTION: A THREE-TEST FALSIFICATION FRAMEWORK** every
+  surviving hypothesis must pass: **Test A — Gītā fidelity** (YES/PARTIAL/INTERPRETIVE/NO -- is the mapping
+  actually supported by the source?); **Test B — KnowledgeOS independence, THE FILE'S MOST BRILLIANT
+  METHODOLOGICAL DEVICE**: "would we have arrived at this principle without the Gītā? [YES/NO/UNKNOWN]...
+  If YES, then the Gītā may be a conceptual lens, but it is NOT the foundation of the KnowledgeOS
+  proposition" -- **THIS TEST, APPLIED RETROACTIVELY, WOULD DIRECTLY REFUTE FILE 0971's CENTRAL CLAIM**
+  ("the Gītā is the source code"), since virtually every KnowledgeOS principle claimed to derive from the
+  Gita (non-attachment/EC=FALSE-acceptable, equanimity/evidence-neutrality, iterative refinement) is
+  independently and more naturally motivated by ordinary software-engineering and epistemology
+  considerations having nothing to do with the Gita text; **Test C — Technical usefulness** (does the
+  mapping produce a formal/DDD/architectural/governance consequence or empirical test? if none: "interesting
+  analogy only").
+
+  **§19-20 delivers A FALSIFICATION MATRIX and A RESEARCH VERDICT SCALE** (implied, section headers only
+  directly read); **§21 delivers "WHAT STEP 286 MUST NOT DO"**; **§22 delivers FIVE REQUIRED OUTPUTS** (R1
+  Source Evidence Register, R2 Translation Register, R3 Hypothesis Register, R4 Falsification & Independence
+  Report, R5 Research-to-Architecture Report); **§23 delivers THE CENTRAL RESEARCH PRINCIPLE** (closing
+  statement, consistent with files 0969's/0970's/0972's culminating discipline).
+introduces:
+  - concept: "The fourteen-property formal specification required per Theta-operator before any composition may be attempted (Input/Output/Domain/Codomain/Precondition/Postcondition/Actor/Authority/Evidence/Identity/Persistence/Composition/Replayability/Observability)"
+  - concept: "The explicit type-checking requirement and rejection rule for the operator composition: 'if it cannot be type-checked, reject the composition; do not invent types to rescue it' -- a direct, prospective guard against file 0971's exact overclaim"
+  - concept: "The three-test falsification framework (Gita fidelity / KnowledgeOS independence / Technical usefulness), especially the brilliant KnowledgeOS Independence Test, which retroactively refutes file 0971's 'the Gita is the source code' claim"
+  - concept: "A five-layer source-evidence chain ([S] Source text/[C] Commentary/[P] Philosophical interpretation/[R] Research analogy/[H] KnowledgeOS hypothesis), a further independently-articulated variant of file 0970's discipline"
+  - concept: "The explicit correction that 'Krishna->Omega can only be a KnowledgeOS research abstraction, never a textual definition,' directly guarding against files 0943's/0954's decorative supremum formulas"
+defines:
+  - concept: "The KnowledgeOS Independence Test"
+    definition: "For any proposed Gita-derived KnowledgeOS principle, ask: would this principle have been arrived at through ordinary software-engineering, epistemological, or architectural reasoning even without any reference to the Gita? If the answer is YES, the Gita may still serve as a useful conceptual lens or naming source for the principle, but it is explicitly NOT the foundation or origin of that principle -- the principle's actual justification lies elsewhere, and claiming the Gita as its source would misattribute genuine independent engineering/mathematical reasoning to a religious text. Only when the answer is genuinely NO or UNKNOWN does the Gita's contribution warrant being treated as load-bearing rather than merely illustrative"
+refines:
+  - concept: "Files 0970's and 0972's disciplined source-evidence hierarchies"
+    refinement: "INDEPENDENTLY RE-ARTICULATED in a five-layer form ([S]/[C]/[P]/[R]/[H]), confirming this discipline is a stable, recurring feature of the corrected kernel-track lineage rather than a single document's idiosyncrasy"
+  - concept: "This reconstruction's entire tracked history of undefined, untyped Theta-operator compositions (files 0936, 0937, 0945, 0953, 0955, 0958, 0965-0967, 0971)"
+    refinement: "DIRECTLY, EXPLICITLY SUPERSEDED by a rigorous fourteen-property specification requirement and an explicit type-checking rejection rule -- the most disciplined treatment of this recurring problem encountered anywhere in this reconstruction's tracking"
+  - concept: "File 0971's 'the Gita is not an analogy, it is the source code' claim"
+    refinement: "DIRECTLY, RETROACTIVELY REFUTED (though not explicitly named) by this file's KnowledgeOS Independence Test, which would classify virtually every claimed Gita-derived KnowledgeOS principle as independently motivated (Test B = YES), meaning the Gita is at most a conceptual lens, never the claimed 'source code'"
+  - concept: "Files 0943's and 0954's decorative 'Krishna=sup(Omega)' formulas"
+    refinement: "EXPLICITLY, DIRECTLY CORRECTED: 'Krishna->Omega can only be a KnowledgeOS research abstraction, never a textual definition' -- this file draws exactly the distinction those two files' decorative formulas collapsed"
+contradicts:
+  - concept: "File 0971's undefined five-operator composition and its 'complete transformation algebra'/'source code' claims"
+    contradiction: "This file's explicit rule ('if it cannot be type-checked, reject the composition') and its KnowledgeOS Independence Test together constitute a direct, prospective methodological refutation of file 0971's approach and conclusions, though this file does not explicitly name file 0971"
+repeats: []
+bridge_candidates:
+  - "Whether the fourteen-property per-operator specification is ever actually completed for any of the five Theta operators, and whether the resulting composition passes or fails the required type-check."
+  - "Whether the twelve GK-numbered hypotheses (GK-01 through GK-12) are ever resolved to a definite verdict."
+  - "Whether the five required outputs (R1-R5) are ever produced as distinct artifacts."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file's fourteen-property per-operator specification requirement and its explicit type-checking rejection rule as the most rigorous treatment of the Theta-operator/transformation-algebra controversy in this entire sub-arc, directly and prospectively guarding against the exact overclaim already committed in file 0971."
+  - "dimension-registry.md: record the KnowledgeOS Independence Test as a directly reusable, powerful methodological device that retroactively refutes file 0971's central claim, and should be applied by any future synthesis work assessing the genuine versus merely-decorative contribution of the Gita material to this corpus."
+  - "dimension-registry.md: record the explicit correction 'Krishna->Omega can only be a research abstraction, never a textual definition' as directly repudiating files 0943's/0954's decorative supremum formulas."
+anchor_test:
+  anchor: "File 0971's severe 'source code' overclaim and its undefined operator composition; files 0943's/0954's decorative 'Krishna=sup(Omega)' formulas; files 0970's/0972's disciplined source-evidence hierarchies"
+  supports_dimension: "Delivers the most rigorous operator-specification and type-checking requirement in this sub-arc, directly and prospectively guarding against file 0971's exact overclaim. Its KnowledgeOS Independence Test retroactively refutes file 0971's central claim. Explicitly corrects files 0943's/0954's decorative supremum formulas. Independently re-articulates the disciplined source-evidence hierarchy established in files 0970/0972"
+  refines_or_contradicts: "prospectively and retroactively contradicts/refutes file 0971's overclaim and undefined operator composition; corrects 0943's/0954's decorative formulas; extends 0970's/0972's discipline"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit instruction 'if it cannot be type-checked: reject the composition. Do not invent types to rescue it' is directly checkable against file 0971's own use of the identical Theta_X-compose-...-compose-Theta_A composition asserted as 'complete' with no type-checking performed."
+  - "The KnowledgeOS Independence Test's criterion ('would we have arrived at this principle without the Gita? If YES, the Gita is a lens, not the foundation') is directly checkable against file 0971's 'the Gita is not an analogy, it is the source code' claim for the retroactive-refutation finding."
+  - "The correction 'Krishna->Omega can only be a research abstraction, never a textual definition' is directly checkable, word-for-word, against files 0943's and 0954's own boxed 'K_supreme=sup(Omega)' formulas."
+undefined_concepts: []
+open_questions:
+  - "Whether the fourteen-property per-operator specification is ever completed and the resulting composition's type-check outcome."
+  - "Whether the twelve GK-numbered hypotheses reach a definite verdict."
+  - "Whether the five required outputs (R1-R5) are ever produced."
+tier2_triggered: true
+tier2_reason: "Delivers the most rigorous, directly reusable methodological apparatus for evaluating Gita-derived KnowledgeOS claims encountered in this entire sub-arc -- a fourteen-property per-operator specification with an explicit type-checking rejection rule, and a three-test falsification framework whose KnowledgeOS Independence Test retroactively refutes file 0971's most extreme overclaim. Classified importance critical given the direct, prospective and retroactive corrective significance of these methodological devices for this reconstruction's overall assessment of the Gita-integration sub-arc's reliability; confidence medium given this remains a research-programme specification whose actual execution and findings are not yet observed."

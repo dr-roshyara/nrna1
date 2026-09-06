@@ -1,0 +1,44 @@
+sequence: M0008
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-201200_whole-knowledge-theory-as-research-level-theory-duplicate.md
+title: "DUPLICATE of M0006 (checksum-confirmed, filename itself says 'duplicate')"
+date: "2026-09-01"
+bytes: 18066
+model:
+  primary: b
+  secondary: none
+  secondary_note: "byte-identical duplicate of M0006 (Knowledge Theory -- Integrated Research Model), confirmed by md5 checksum during manifest construction; the on-disk filename itself already contains the word 'duplicate'"
+source_role: DUPLICATE
+canonical_source: M0006
+importance: low
+confidence: high
+about: >
+  Checksum-confirmed byte-identical duplicate of M0006 ("Knowledge Theory — Integrated Research
+  Model," the 29-section crystallization of M0005). No independent content. See M0006.yaml/M0006.md
+  for the full record.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "M0006 in its entirety (byte-identical duplicate)"
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "M0006"
+  supports_dimension: "none -- duplicate"
+  refines_or_contradicts: "none"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "md5 checksum match against M0006 during manifest construction; filename contains 'duplicate'"
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Checksum-confirmed duplicate; no independent content to analyze."

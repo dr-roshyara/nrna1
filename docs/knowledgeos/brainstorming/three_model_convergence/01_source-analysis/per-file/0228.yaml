@@ -1,0 +1,85 @@
+sequence: 228
+path: docs/knowledgeos/brainstorming/kernel/20260824-140348-statistical-learning-first-pass-ddd-assessment-of-reasoning-patterns.md
+title: "Statistical Learning — First-Pass DDD Assessment of Reasoning Patterns"
+date: "2026-08-24"
+bytes: 62000
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 228
+importance: critical
+confidence: high
+about: >
+  A two-pass extraction from "The Elements of Statistical Learning" (Hastie/Tibshirani/Friedman),
+  continuing the technical-pivot arc. Pass 1: a broad DDD-lensed survey of fourteen reasoning patterns
+  (model assessment/selection, bias-variance, cross-validation/leakage, bootstrap, regularization,
+  ensembles, association rules, clustering, graphical models, multiple-testing/FDR, sparsity, MDL,
+  decision theory, dimensionality reduction). Pass 2, explicitly stricter: separates SOURCE FACT from
+  KnowledgeOS INTERPRETATION for thirty numbered facts, producing twelve candidate invariants (KOS-ML-01
+  through KOS-ML-12) and six research themes (KR-01 through KR-06). Central verdict, both passes: do not
+  import 'machine learning' as a bounded context -- extract only the underlying reasoning DISCIPLINE
+  (how do we know a discovered pattern/explanation/model is worth trusting), never the algorithms
+  themselves, into KnowledgeOS architecture.
+introduces:
+  - concept: "Explicit extraction discipline: source fact vs. KnowledgeOS interpretation vs. candidate method vs. architecture decision -- four distinct epistemic tiers, none automatically promoted to the next"
+  - concept: "Assessment as a first-class, non-authoritative domain concept distinct from Observation/Evidence/Recommendation/Decision -- construction and assessment of a knowledge candidate must be semantically distinct objects (KOS-ML-01)"
+  - concept: "Cross-validation/leakage-control as the single highest-confidence extraction: an assessment is invalid if information from the assessment population leaked into the construction of the assessed artifact -- generalizes into a candidate 'Knowledge Evaluation Leakage Gate' and KOS-ML-02/03 (assessment boundary must declare construction-evidence vs. assessment-evidence; leakage must not improperly influence construction)"
+  - concept: "AssessmentContext object (candidateRef/evidenceSet/excludedEvidenceSet/evaluationMethod/evaluator/timestamp/provenance) as a candidate first-class metadata concept"
+  - concept: "Pipeline-assessment principle (KOS-ML-04): the assessment boundary must cover the entire knowledge-production pipeline (retrieval->filtering->transformation->inference->synthesis), not merely the final agent output artifact -- directly relevant to AI Engineering Platform assurance"
+  - concept: "Bias-variance reframed as knowledge over/under-fitting: too little constraint -> many unstable explanations; too much constraint -> stable but systematically distorted explanation -- candidate method 'assess stability versus explanatory fit'"
+  - concept: "Regularization/lasso reframed as Knowledge Sparsification: prefer the smallest set of claims/evidence sufficient to explain observed phenomena; removal process must remain evidence-based/traceable/reversible/explainable (PROPOSED, not adopted)"
+  - concept: "MDL reframed as knowledge parsimony (candidate 'Knowledge Parsimony Assessment'): explicitly warns MDL is a selection criterion, not a truth oracle -- shorter != true"
+  - concept: "Ensemble/random-forest reframed as Independent Assessment Aggregation, with an explicit governance warning: multiple assessments are not automatically independent assessments if they depend on the same evidence -- motivates 'Independence provenance' as a required metadata concept (KOS-ML-10), explicitly connected to the corpus's own V-3 independence-gate work"
+  - concept: "Association rules (support/confidence/lift) reframed as ObservedAssociation discovery, with an explicit semantic-boundary requirement: ObservedAssociation/Correlation/CausalClaim must never collapse into one object (KOS-ML-07)"
+  - concept: "Apriori's anti-monotonic pruning generalized into a domain-independent technique: use proven monotonic constraints to eliminate impossible candidate branches before expensive reasoning, explicitly compatible with the corpus's deterministic-gate philosophy"
+  - concept: "Clustering/hierarchical-clustering reframed as bounded-context/architecture-boundary DISCOVERY (not authority): the underlying dissimilarity measure must be documented, and discovered structure is evidence, not authority, since dendrograms can impose hierarchy even where none exists in the underlying data"
+  - concept: "Graphical models reframed as knowledge-relationship modeling with semantically typed edges (supports/contradicts/depends-on/derived-from/supersedes) rather than a generic RELATED_TO edge; absence of an edge (conditional independence) carries meaning as important as presence of one"
+  - concept: "Structure/strength/inference three-way separation from graphical-model theory (does relationship R exist? how strong is R? what should we infer from R?) proposed as a KnowledgeOS domain-model distinction"
+  - concept: "False Discovery Rate reframed as Discovery Error Control for large-scale automated knowledge/pattern mining: a controlled proportion of expected false discoveries, not zero false discoveries, as the realistic target; discovery scale itself becomes an epistemic risk factor (multiple-testing analogy for AI-generated candidate patterns)"
+  - concept: "Rare-but-important knowledge preservation warning: frequency-based discovery filters can systematically exclude rare-high-consequence knowledge (worked example: 'this migration procedure failed once under a very specific condition') -- frequency != importance (KOS-ML-11)"
+  - concept: "Model bias vs. estimation bias distinction reframed as Domain limitation != Inference limitation -- 'our evidence cannot represent this phenomenon' is epistemically different from 'our inference method failed to recover it'"
+  - concept: "Twelve candidate invariants KOS-ML-01..12 (Assessment Separation, Assessment Boundary, Leakage Prevention, Pipeline Assessment, Criterion Explicitness, Metric Relativity, Association/Causation Separation, Discovery/Authority Separation, Complexity Awareness, Independence Awareness, Rare-Evidence Preservation, Method Assumption Disclosure)"
+  - concept: "Six research themes for the backlog: KR-01 Knowledge Assessment, KR-02 Epistemic Leakage & Boundary Control, KR-03 Knowledge Stability & Uncertainty, KR-04 Knowledge Complexity & Parsimony, KR-05 Knowledge Discovery, KR-06 Discovery Error & Independence"
+  - concept: "Full statistical-learning-to-KnowledgeOS translation table (22 rows: overfitting->over-specialization, leakage->epistemic contamination, lasso->sparsification, FDR->discovery error control, loss function->evaluation objective, etc.) as the consolidated deliverable"
+  - concept: "Explicit five-stage promotion pipeline for every extracted fact: SOURCE FACT -> DDD INTERPRETATION -> KNOWLEDGEOS RESEARCH HYPOTHESIS -> EXPERIMENT/ARCHITECTURE ANALYSIS -> GOVERNANCE -> ADOPT/ADAPT/REJECT, explicitly none of these extracted facts yet promoted past hypothesis"
+defines: []
+refines:
+  - concept: "0216/0221/0222's Assessment/Determination-not-Claim-state distinction and 0210's evidence-acquisition provenance model"
+    refinement: "Supplies a rigorous statistical-methodology justification (the cross-validation leakage example) for why Assessment must be a separate, boundary-declaring object, sharpening the earlier philosophically-grounded distinction with a concrete, quantified failure mode (3% reported error vs. 50% true error from contaminated validation)."
+  - concept: "0206's earlier Pattern Recognition extraction (Reject/Abstain, Reliability!=Accuracy, three-engine Statistical Reasoning Boundary)"
+    refinement: "Extends that arc with a second, complementary statistical-learning text, adding leakage/independence/discovery-error concerns not covered by 0206's engine-boundary treatment."
+contradicts: []
+repeats:
+  - concept: "Association != Causation"
+    canonical_source: 208
+    novelty: low
+  - concept: "No universal metric constitutes truth; different assessment criteria (AIC/BIC/CV/bootstrap) can legitimately disagree"
+    canonical_source: 213
+    novelty: low
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0216-0227 synthesis lineage; 0206's Statistical Pattern Recognition extraction"
+  supports_dimension: "Mathematical/statistical model -- rigorous, dual-pass extraction producing twelve candidate invariants and six research themes, most valuably the quantified leakage-contamination example grounding the Assessment/Construction separation"
+  refines_or_contradicts: "refines the whole synthesis lineage; reinforces 0206/0208/0213; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Concrete leakage-contamination example: variables selected using the complete dataset before cross-validation produced a reported 3% error vs. a true error of 50% -- a quantified, dramatic illustration directly grounding KOS-ML-02/03"
+  - "Worked rare-pattern example ('this migration procedure failed once under a very specific condition') directly motivating KOS-ML-11's frequency-is-not-importance warning"
+undefined_concepts:
+  - "No formal criteria given for how 'independence provenance' (KOS-ML-10) would be computed or verified beyond the qualitative warning"
+  - "No concrete schema for a future Statistical Learning -> KnowledgeOS Method Catalogue, only the proposed four-pass extraction methodology (concept extraction / DDD translation / compatibility analysis / adoption classification)"
+open_questions:
+  - "Whether the six KR-01..06 research themes are ever taken up as dedicated backlog items"
+  - "Whether the twelve KOS-ML invariants are ever reconciled with the corpus's other accumulating invariant sets (0216's 17, 0222's 15 K-NEW, 0223's 12-item list)"
+tier2_triggered: true
+tier2_reason: "Critical, methodologically disciplined dual-pass extraction (broad survey then strict fact/interpretation separation) producing twelve candidate invariants and six research themes; its most valuable single contribution is a quantified leakage-contamination example that rigorously grounds the Assessment/Construction separation already present in the corpus's architecture lineage."

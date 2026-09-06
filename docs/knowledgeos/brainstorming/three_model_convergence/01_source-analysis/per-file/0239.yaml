@@ -1,0 +1,59 @@
+sequence: 239
+path: docs/knowledgeos/brainstorming/kernel/20260824-152254-swar-gyan-orthographic-decomposition-pipeline-for-dhatu-extraction.md
+title: "Swar Gyan — Orthographic Decomposition Pipeline for Dhātu Extraction"
+date: "2026-08-24"
+bytes: 15800
+model:
+  primary: g1
+  secondary: c1
+source_role: PRIMARY_RESEARCH
+canonical_source: 239
+importance: medium
+confidence: high
+about: >
+  A concrete applied-NLP research design combining a Hindi/Sanskrit primer (Swar Gyan, teaching aksara
+  decomposition: consonant/vowel/matra/conjunct construction) with statistical/ML inference to recover
+  dhatu (Sanskrit verbal roots) from surface forms. Explicit correction: the book teaches orthographic
+  decomposition, NOT dhatu extraction itself -- dhatu inference requires morphology/lexical-knowledge/
+  grammar/derivational-history/semantic-compatibility beyond character decomposition. Proposes a
+  six-layer hybrid pipeline (deterministic grammar layer + statistical inference layer) and a four-model
+  (A-D) comparative experiment design to test whether the decomposition actually contributes predictive
+  information.
+introduces:
+  - concept: "Hybrid pipeline architecture: Layer A deterministic grammar (Unicode->Aksara->Matra->Conjunct->Morphological-candidate) feeding Layer B statistical inference (phonological/morphological/suffix/prefix/inflection/contextual/semantic/frequency features -> P(dhatu|word,context))"
+  - concept: "Explicit level ladder of statistical methods appropriate to the problem, ordered by interpretability: frequency statistics -> Bayesian inference (P(D|W,C) with explicit uncertainty, e.g. root-A 0.91/root-B 0.05/other 0.04) -> HMM/CRF sequence labeling -> clustering (word-family discovery without supervision) -> dimensionality reduction (PCA/UMAP/t-SNE as empirical test of a linguistic hypothesis) -> supervised ML (start with interpretable statistical models before transformers, to understand which features actually identify a root)"
+  - concept: "Four-model comparative experiment design (Model A: surface-word->dhatu; B: aksara-decomposition->dhatu; C: +matra+phonology+morphology; D: +context+semantic-features) with a full metric set (accuracy/top-1/top-5/precision/recall/F1/calibration/uncertainty/error-by-morphological-class) to empirically test whether the decomposition layer contributes predictive information"
+  - concept: "Reversed-direction learning proposal: instead of only word->dhatu, learn dhatu->transformation-rules->surface-form, then invert for dhatu candidates -- explicitly framed as closer to the Panini/Sanskrit lens than ordinary NLP"
+  - concept: "Dhatu reframed as a latent structural center via graph methods: build a transformation-family graph (root -> derived forms) and apply graph clustering/community-detection/embeddings/centrality/manifold-analysis to find the root as a structural center rather than a dictionary lookup"
+  - concept: "Reaffirmed KnowledgeOS principle applied to this domain: statistical model proposes candidates, deterministic linguistic/knowledge system validates -- probabilistic inference should not silently become authoritative knowledge"
+  - concept: "Central testable hypothesis: can deterministic Indic orthographic decomposition + Paninian morphological structure + statistical inference recover latent semantic roots with measurable accuracy? -- explicitly proposed as an actual experiment, not merely an architectural metaphor"
+defines: []
+refines:
+  - concept: "0238's Paninian sandhi/composition-boundary work"
+    refinement: "Supplies a concrete, testable applied pipeline (aksara decomposition -> morphology -> statistics -> semantic validation) grounding the abstract Panini lens in an actual proposed experiment with measurable accuracy metrics."
+contradicts: []
+repeats:
+  - concept: "Candidate != authority; ML output must be validated, not silently promoted"
+    canonical_source: 226
+    novelty: none
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "0238's Paninian/sandhi work; the corpus's statistical-inference arc"
+  supports_dimension: "Gita/philosophical model (Sanskrit linguistics) + Mathematical/statistical model -- a concrete testable applied-linguistics experiment design, tangential to core Kernel architecture but reinforcing the candidate-not-authority discipline"
+  refines_or_contradicts: "refines/grounds 0238; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether this proposed Model A-D comparative experiment is ever actually conducted and reported in a later file"
+tier2_triggered: false
+tier2_reason: "Medium-importance, concrete applied-NLP research design (Sanskrit dhatu extraction) tangential to core KnowledgeOS Kernel architecture; primarily reinforces the already-established candidate-not-authority discipline in a specific linguistic-engineering domain rather than introducing new Kernel-level architecture."

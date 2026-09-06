@@ -1,0 +1,79 @@
+sequence: 223
+path: docs/knowledgeos/brainstorming/kernel/20260824-121835-rescorla-bayesian-models-of-the-mind-pluggable-reasoning-mechanisms.md
+title: "Rescorla, Bayesian Models of the Mind — Pluggable Reasoning Mechanisms"
+date: "2026-08-24"
+bytes: 41000
+model:
+  primary: c1
+  secondary: g1
+source_role: PRIMARY_RESEARCH
+canonical_source: 223
+importance: critical
+confidence: high
+about: >
+  Michael Rescorla's "Bayesian Models of the Mind" (2024), direct continuation of the 0216->0221->0222
+  synthesis lineage. Central architectural verdict: Bayesian inference should be a supporting epistemic
+  mechanism, not the KnowledgeOS Kernel itself -- "semantic epistemic kernel + pluggable reasoning
+  mechanisms." Strongest philosophical contribution: a probability number is not itself epistemic
+  meaning -- the same mathematical distribution (PDF) can represent entirely different things depending
+  on what it is about; probability must always carry semantic reference. Produces twelve numbered
+  "ZERO-01..ZERO-12" gap-exposure findings, a formal research-outcome record (KOS-RESEARCH-BAYES-001),
+  and the most technically detailed epistemic pipeline in the corpus so far.
+introduces:
+  - concept: "Bayes's theorem (synchronic) vs. Conditionalization (diachronic, governs credence change over time) as a distinct pair -- motivates EpistemicStateTransition as first-class"
+  - concept: "Credal State distinct from PDF/probability distribution: the mathematical object alone does not identify semantic content (a distribution over speed vs. size vs. distance looks identical mathematically)"
+  - concept: "SemanticReference as a Kernel-level requirement: NoProbabilityWithoutSemanticReference invariant -- P(x) is insufficient, need P(speed=x) with variable/unit/context/hypothesis/time bound to it"
+  - concept: "EpistemicState (hypotheses/credence/evidence-basis/model-context/timestamp/provenance) and EpistemicTransition (priorState+evidence+inferenceRule->posteriorState) as new core Kernel elements, allowing prior->posterior modeling without mandating Bayesian inference"
+  - concept: "Hypothesis distinguished from Claim: a hypothesis is something against which uncertainty can be distributed (H1/H2 competing states), not yet an assessed assertion"
+  - concept: "Inference Port pattern: KnowledgeOS Kernel -> EpistemicState -> Inference Port -> {Bayesian Engine, Deductive Engine, Other Engines} -- the DDD-safe architecture explicitly rejecting KnowledgeOS-Kernel-equals-Bayesian-Engine"
+  - concept: "PriorBelief as first-class with mandatory origin/calibrationContext/provenance -- motivated by Rescorla's own acknowledgment that Bayesian cognitive models often postulate priors without explaining their etiology (a genuine open problem in the source discipline itself)"
+  - concept: "Assumption provenance as a new provenance category distinct from Evidence provenance (worked example: prior 'most services are REST', origin=historical project data, scope=DGX services, last-calibrated, evidence=342 repos, known-exceptions=17)"
+  - concept: "K-BAY-01 invariant: every persisted probabilistic epistemic transition must preserve sufficient information (prior+evidence+model+parameters+method-version+context) to reconstruct the resulting state -- not just the posterior scalar"
+  - concept: "MathematicalValidity != EpistemicValidity: a Bayesian computation can be mathematically correct while epistemically inappropriate if the prior is badly calibrated or the likelihood model is wrong"
+  - concept: "Twelve ZERO findings (gaps a naive Bayesian KnowledgeOS implementation would silently omit): ZERO-01 prior origin unexplained; ZERO-02 probability without semantic grounding; ZERO-03 incomplete hypothesis space (P(H1)+P(H2)=1 can silently exclude a true H3); ZERO-04 posterior != complete world knowledge, evidence coverage unrepresented; ZERO-05 likelihood model origin/validity untraced; ZERO-06 inference performed without recording environment; ZERO-07 utility function origin/justification outside probability theory; ZERO-08 ModelPrediction vs. ModelExplanation vs. ModelRealityClaim conflated (realism vs. instrumentalism); ZERO-09 no ModelFailure/Challenge/Retirement/Replacement representation; ZERO-10 exact vs. approximate inference not distinguished; ZERO-11 EpistemicValidity confused with ComputationalFeasibility (Bayesian intractability); ZERO-12 InferenceCorrectness can coexist with RepresentationError (correctly computing P(X) while X is the wrong variable)"
+  - concept: "InferenceAssessment ten-dimension model (mathematical validity, semantic validity, evidence adequacy, model adequacy, calibration, environmental fit, approximation quality, provenance, temporal validity, decision suitability) explicitly stronger than a single confidence scalar"
+  - concept: "Predictive coding explicitly classified as Supporting Research/Mechanism Candidate, NOT Kernel principle -- grounded in Rescorla's own stated equivocal empirical support, a rare case of the source author's own epistemic humility being directly inherited into the classification"
+  - concept: "Bayesian cue combination pattern: multiple noisy evidence sources integrated without collapsing their individual provenance (EvidenceSet with per-item provenance feeding a CombinedAssessment)"
+  - concept: "Dead-reckoning / slow-speed-prior worked example: observed behavior can result from interaction among multiple epistemic assumptions (prior+cue-reliability+uncertainty+distance+expected-utility), not one deterministic rule -- directly relevant to explaining AI agent behavior"
+  - concept: "AI-confidence guard: 'AI confidence without an explicit epistemic object is not KnowledgeOS evidence' -- a bare confidence=0.91 is merely a claim about the model's own confidence unless backed by hypothesis/evidence/method/context/calibration/provenance"
+  - concept: "Concrete worked agent-output example (Hypothesis/Prior/Evidence/LikelihoodModel/Posterior/Assurance/Decision fields) presented as epistemically inspectable, contrasted with a bare 'I am 91% confident'"
+  - concept: "Formal research-outcome record KOS-RESEARCH-BAYES-001: status 'architecturally significant -- accepted as research input, not yet constitutionalized,' with explicit twelve-item Promote-to-Kernel-research list and explicit non-promotion of 'KnowledgeOS = Bayesian system'"
+  - concept: "Three deepest new principles: epistemic quantities are meaningless without semantic identity; epistemic state is a stateful object, not merely a scalar assessment; an epistemic transition must be distinguishable from the mathematical mechanism used to calculate it"
+  - concept: "Revised three-tier architecture: CORE (Claim/Hypothesis/Evidence/Basing/Provenance/SemanticReference/EpistemicState/EpistemicTransition/EpistemicStanding/Challenge-Revision/AssuranceContract) -> SUPPORTING (Bayesian/Statistical/Deduction/Induction/Retrieval/Simulation/Calibration/Verification/Testing/ModelEvaluation/ExpectedUtility/Risk) -> INFRASTRUCTURE (LLMs/Databases/VectorStores/Git/APIs/CI-CD/Agents/Sensors)"
+defines: []
+refines:
+  - concept: "0222's Epistemic Kernel (Claim/Evidence/Basing/EpistemicProcess/Assessment/EpistemicStanding/Assurance/Assertion/Decision) and 0216's KnowledgeClaim/Evidence/Determination/Authority structure"
+    refinement: "Adds EpistemicState and EpistemicTransition as new core Kernel elements (stateful, not scalar), SemanticReference as a mandatory attachment to any probabilistic quantity, and an Inference-Port pattern making Bayesian/deductive/statistical inference explicitly pluggable and non-authoritative -- directly continuing rather than competing with the 0216/0221/0222 lineage."
+contradicts: []
+repeats:
+  - concept: "Bayesian belief-revision apparatus (prior/evidence/posterior, calibration, model uncertainty)"
+    canonical_source: 212
+    novelty: low
+  - concept: "AssumptionLedger / provenance-of-assumptions"
+    canonical_source: 205
+    novelty: low
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0216/0221/0222 synthesis lineage; 0205/0212's Bayesian and Assumption-Ledger work"
+  supports_dimension: "Mathematical/statistical model deepening the Engineering-KnowledgeOS synthesis lineage with a stateful EpistemicState/EpistemicTransition layer and mandatory semantic grounding for probabilistic quantities"
+  refines_or_contradicts: "refines 0216/0221/0222 and reinforces/deepens 0205/0212; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Twelve numbered ZERO findings, each with a concrete illustrative example (e.g. ZERO-03's P(H1)+P(H2)=1 silently excluding a true, unconsidered H3) -- an unusually systematic gap-analysis format"
+  - "Formal KOS-RESEARCH-BAYES-001 record with explicit status ('accepted as research input, not yet constitutionalized') and an explicit non-promotion list, modeling disciplined research-to-architecture governance"
+undefined_concepts:
+  - "No formal schema given for how SemanticReference itself would be validated or enforced mechanically -- named as a Kernel-level semantic requirement, not implemented"
+open_questions:
+  - "Whether KOS-RESEARCH-BAYES-001 is ever formally adjudicated (constitutionalized, rejected, or superseded) in a later governance file"
+  - "Whether the twelve-item 'promote to Kernel research' list is ever reconciled with 0216's 17 invariants and 0222's fifteen K-NEW invariants into one cumulative candidate vocabulary"
+tier2_triggered: true
+tier2_reason: "Critical, technically detailed continuation of the 0216-0222 synthesis lineage: introduces EpistemicState/EpistemicTransition as stateful Kernel objects, mandates semantic grounding for all probabilistic quantities, produces a systematic twelve-item gap analysis (ZERO-01..12), and formally records the outcome as KOS-RESEARCH-BAYES-001 with explicit non-constitutionalized status -- a disciplined example of the corpus's own research-to-architecture governance in action."

@@ -1,0 +1,38 @@
+sequence: 74
+path: docs/knowledgeos/brainstorming/_misc/20260819-225858-kos-ipo-stock-market-path.md
+title: KnowledgeOS IPO / Stock Market Path + IP Strategy (business content)
+date: 2026-08-19
+bytes: 15743
+
+model:
+  primary: c1
+  secondary: []
+
+source_role: PRIMARY_RESEARCH
+canonical_source: 73
+
+importance: low
+confidence: high
+
+about: "Contains 0073's content plus ~900 additional lines of business/legal IP strategy (patents, NDAs, confidentiality levels). Confirmed by diff not an exact duplicate."
+
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: kos_ipo_business_discussion
+    canonical_source: 73
+    novelty: low
+
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: "Pure business/legal-strategy content, no theoretical relevance."

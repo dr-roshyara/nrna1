@@ -1,0 +1,116 @@
+sequence: 1041
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-288/01-EQUALITY-REGISTER-RECONCILIATION.md
+title: "01 -- Equality Register Reconciliation (Step 288 SS3): Enumerates NINE Distinct Corpus Registers, and Delivers Arguably the Single Most Important Finding of the Entire Equality-Research Arc -- the Corpus Gives EQUIV_K (Semantic) and APPROX (Observational) THE IDENTICAL FORMULA in Different Loci, a Genuine Internal Contradiction Left Unresolved"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual mandate-driven Step 288 register-reconciliation artifact, the first document in the newly-organized research/step-288/ package"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1041
+importance: critical
+confidence: high
+about: >
+  "01 — Equality Register Reconciliation (mandate §3)," the first numbered artifact in the newly-organized
+  `research/step-288/` package (explicitly placed there, with a recorded placement rationale, to avoid
+  colliding with the existing `research/01-...` through `13-...` numbering).
+
+  **§3.1 DELIVERS THE DEFINITIVE ENUMERATION OF NINE DISTINCT CORPUS EQUALITY/IDENTITY REGISTERS**, each
+  precisely dated and sourced, spanning `08-27` through `08-30`: R1 (`25I.11`, three relations); R2 (`25J.5`,
+  an implication chain with an explicit corpus question mark); R3 (`25J.26`, seven typed relation edges); R4
+  (`25S.36/43`, three identity notions); R5 (**`246`**, the four already-extensively-tracked state relations);
+  R6 (**`258.1`**, a NEW corpus locus, three relations by carrier); R7 (`258.4`, four object-level relations);
+  R8 (`260`, candidate vs proven behavioural equivalence); R9 (**`261.1`**, a NEW corpus locus with **SIX**
+  state-level relations, "the widest state-level register"); plus three further loci (`264.15` value-level;
+  `195.21/52` Identity/Continuity/Similarity; `012§36/46` a six-value relation codomain). **"No corpus
+  artifact reconciles them"** -- this document is the first attempt.
+
+  **§3.2 delivers a precise six-way sorting of every relation**: genuinely different relations (different
+  carriers/information); different NAMES for ONE relation (`≡_struct`(R1)≡`=_S`(R7)≡`E_struct`(R2)≡`=`
+  (R5,R9) -- "four names, one relation"); relations at different LEVELS (value vs state; object vs reference;
+  history vs state); INCOMPATIBLE definitions (flagged for §3.3); overloaded notation (`≅` alone carries four
+  distinct relations: `≅_λ`,`≅_I`,`≅_P`,`≅_H`; `≡` carries six: `≡_exact,≡_struct,≡_sem,≡_K,≡_D,≡_𝒯`); and
+  things that are NOT equalities at all (`Similarity` is evidence-for, `⪯` is an order, `Validate` is an
+  assessment).
+
+  **§3.3 DELIVERS ARGUABLY THE MOST IMPORTANT FINDING OF THE ENTIRE EQUALITY-RESEARCH ARC**: the corpus's own
+  `261.1`/`246` explicitly declare `≡` (semantic) and `≈` (observational) "distinct, not interchangeable" --
+  yet TWO SEPARATE CORPUS LOCI GIVE THEM THE IDENTICAL FORMULA: `258.8`/`261.21` define
+  `K_1≡_K K_2 ⟺ ∀O∈𝒪_K: O(K_1)=O(K_2)` ("an observational/behavioral notion"), while `261.5` defines
+  `K_1≈K_2 ⟺ ∀O∈𝒪_K: O(K_1)=O(K_2)` -- **THE IDENTICAL FORMULA.** Boxed: **"`≡_K` and `≈` share one formula
+  while being listed as distinct."** "Either `≈` collapses into `≡` (violating the corpus's own non-
+  interchangeability warning), or `≡` has no definition at all -- the observational one being the only one
+  offered." Explicitly left `NORMATIVE`, unresolved, "no branch preferred here" -- this is a genuine internal
+  corpus contradiction, not a research-lane gap, discovered here for the first time in this reconstruction's
+  tracking.
+
+  **§3.4 delivers the single most complete reconciled matrix across the entire equality-research programme**,
+  covering eight named relations (`=`,`≡`,`≈`,`≅_λ`/`≅_P`,`≅_I`,`≅_H`/`∼_H`/`≡_𝒯`,`Continuity`,`≡_D`) across
+  thirteen dimensions (level, corpus definition, source, decision procedure, computability, equivalence
+  properties, congruence, provenance-inclusion, governance-inclusion, identity-involvement, dependencies,
+  contradictions, normative decisions) -- consolidating and cross-referencing every finding this reconstruction
+  has tracked across files 1005-1040 into one definitive table. Notably confirms `=`'s congruence failure is
+  now labeled "EXECUTED `06§G`" (a cross-reference to file 1039's own concrete demonstration) and the id/
+  mutable-state contradiction as "EXECUTED `06§H`" (also file 1039).
+
+  **§3.5 DELIVERS A GENUINELY IMPORTANT HARDENING of the already-tracked hierarchy-rejection finding**: the
+  implication lattice among equality relations is not merely unmeasured but **POSITIVELY FORBIDDEN as a
+  strict chain** -- `25J.5`'s own implication arrow carries an explicit corpus question mark
+  (`E_exact⇒E_struct⇒?E_sem`); a NEW corpus locus **`261.9`** states boxed **"No universal equality hierarchy
+  has yet been proven"**; and `258.19` explicitly states the relations "should NOT be interpreted as a strict
+  mathematical hierarchy... separate semantic constructs connected by explicit rules." Concludes: "`D285-5`'s
+  `history⊊structural⊊semantic` chain is therefore not merely unmeasured -- it is FORBIDDEN." This is a
+  materially stronger conclusion than the already-tracked "not corpus, withdrawn" finding (files 0991,
+  0993-0994, 1036-1037) -- the corpus doesn't merely fail to support a hierarchy, it explicitly warns against
+  ever treating these relations as one.
+introduces:
+  - concept: "The definitive nine-register enumeration (R1-R9 plus three further loci) of every corpus equality/identity relation register, precisely dated and sourced"
+  - concept: "Two new corpus loci, '258.1' and '261.1', the latter carrying SIX state-level relations, the widest state-level register encountered"
+  - concept: "THE CENTRAL FINDING: the corpus's own 258.8/261.21 (for equiv_K) and 261.5 (for approx) give the IDENTICAL formula for two relations explicitly declared distinct and non-interchangeable elsewhere -- a genuine internal corpus contradiction, left unresolved as NORMATIVE"
+  - concept: "The comprehensive thirteen-dimension reconciled matrix across eight named equality/identity relations, consolidating the entire equality-research programme's findings into one definitive table"
+  - concept: "A new corpus locus, '261.9', boxed: 'No universal equality hierarchy has yet been proven' -- and 258.19's explicit statement that the relations must not be interpreted as a strict hierarchy at all"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked four-relations (Step 246) and five-relations (plus behavioural equivalence, file 1036) findings"
+    refinement: "SUPERSEDED by the full nine-register enumeration, showing the four/five-relation framings were themselves incomplete snapshots of a much larger, unreconciled corpus landscape"
+  - concept: "This reconstruction's already-tracked distinctness of equiv (semantic) and approx (observational) equality, treated as settled since file 0989 (Step 246)"
+    refinement: "DIRECTLY CONTRADICTED by a newly-discovered internal corpus inconsistency: two loci define both relations with the identical formula, despite another locus declaring them non-interchangeable -- a genuine corpus self-contradiction, not a research gap"
+  - concept: "This reconstruction's already-tracked 'history is not corpus, hierarchy withdrawn' finding (files 0991, 0993-0994, 1036-1037)"
+    refinement: "HARDENED: the corpus does not merely fail to establish a hierarchy, it explicitly forbids interpreting these relations as a strict mathematical hierarchy at all"
+  - concept: "This reconstruction's already-tracked executable demonstrations (file 1039, congruence failure and id-contradiction)"
+    refinement: "CONFIRMED cross-referenced directly in this document's matrix as 'EXECUTED 06 SS G/H'"
+contradicts:
+  - concept: "The already-tracked corpus claim (Step 246/261.1) that equiv (semantic) and approx (observational) equality are distinct and non-interchangeable"
+    contradicted_by: "Two other corpus loci (258.8/261.21 and 261.5) that define both relations identically, producing a genuine internal corpus contradiction"
+repeats: []
+bridge_candidates:
+  - "'258.1', '258.4', '258.8-19', '260', '261.1-21' -- the extensive new corpus locus family cited throughout this document; not yet directly encountered in original form."
+  - "'012 SS36/46' -- already partially tracked via file 1038, now further cross-referenced here."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the definitive nine-register enumeration of all corpus equality/identity relations."
+  - "dimension-registry.md: record the central finding that the corpus's own definitions of equiv_K and approx are formula-identical despite being declared distinct elsewhere -- a genuine internal corpus contradiction, unresolved."
+  - "dimension-registry.md: record the hardened finding that the corpus explicitly forbids treating equality relations as a strict hierarchy, per a new locus 261.9 and 258.19."
+  - "dimension-registry.md: record the comprehensive thirteen-dimension reconciled matrix as the canonical summary reference for the entire equality-research programme."
+anchor_test:
+  anchor: "This reconstruction's already-tracked four/five-relations findings and the equiv-vs-approx distinctness claim (files 0989-1040)"
+  supports_dimension: "Supersedes the incomplete relation-count findings with a definitive nine-register enumeration, and discovers a genuine internal corpus contradiction between two relations previously treated as cleanly distinct"
+  refines_or_contradicts: "supersedes (via completion) prior relation-count findings; directly contradicts the previously-assumed distinctness of equiv and approx"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The identical-formula finding for equiv_K and approx is directly checkable against a future direct encounter with corpus loci 258.8, 261.5, and 261.21."
+  - "The comprehensive reconciled matrix is directly checkable against this reconstruction's own already-documented findings across files 1005-1040 for consistency."
+undefined_concepts: []
+open_questions:
+  - "Whether the equiv_K/approx formula-identity contradiction (§3.3) is ever resolved by a governance act."
+  - "The full content of corpus loci 258.1-19 and 261.1-21, not yet directly encountered."
+tier2_triggered: true
+tier2_reason: "Delivers the definitive nine-register enumeration of every corpus equality/identity relation, and discovers arguably the single most important finding of the entire equality-research arc: the corpus's own definitions of semantic and observational equality are formula-identical despite being declared distinct elsewhere, a genuine internal contradiction left unresolved. Classified importance critical and confidence high given the scale, rigor, and structural significance of these findings, consolidated into the most comprehensive reconciled matrix encountered so far."

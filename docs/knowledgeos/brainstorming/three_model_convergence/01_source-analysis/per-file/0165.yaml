@@ -1,0 +1,91 @@
+sequence: "0165"
+path: docs/knowledgeos/brainstorming/kernel/20260823-225443-lens-system-read-through-ddd-separation-of-concerns.md
+title: "26-lens system re-read through DDD's four-layer separation; ten proposed Chinese philosophical lenses (Yijing, Li, Yin-Yang, Ziran, Gongfu, Ming, Jing, Shi, He, Wu), all explicitly Observation-layer only, none adopted"
+date: "2026-08-23"
+bytes: 14000
+model:
+  primary: g
+  secondary: [c1]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0161"
+importance: high
+confidence: high
+about: >
+  Re-reads 0161's canonical 26-lens system through DDD's four-layer separation of concerns (Observation
+  / Adjudication / Kernel / Mechanism), confirming the same classification. Notes a geographic/cultural
+  gap: the lens system is Indian/Sanskrit, Western/formal, and Semitic, with no East Asian/Chinese
+  epistemic lenses. Proposes ten candidate Chinese lenses (Yijing/I-Ching pattern-of-change, Li/ritual-
+  propriety form-as-knowledge-carrier, Yin-Yang complementarity-not-contradiction, Ziran/self-so natural-
+  vs-imposed-order, Gongfu/practice embodied-knowledge, Ming/name-rectification naming-as-consequential,
+  Jing/resonance non-representational-knowing, Shi/situational-strategic context-dependent-knowledge,
+  He/harmony harmonious-integration, Wu/nothingness generative-absence), each explicitly placed only in
+  the Observation layer -- "none of these would change the Kernel." Also presents an idealized "Kernel is
+  boring" target sketch (KnowledgeAggregate + ConflictRecord + Lifecycle), presented as illustrative, not
+  as a proven consistency-boundary conclusion given the still-unresolved aggregate-boundary question
+  tracked throughout the ten-round cycle.
+
+introduces:
+  - "Ten candidate Chinese philosophical lenses, each with a named question and explicit Observation-
+    layer-only placement: Yijing (pattern of change vs. identity preservation), Li (form as knowledge
+    carrier, complementary to Vāṇī), Yin-Yang (complementarity, not contradiction, as an alternative to
+    Western resolution/Hegelian synthesis), Ziran (natural vs. imposed structure, placed in the
+    Adjudication layer alongside DDD/Zero), Gongfu (embodied/practical vs. propositional knowledge),
+    Ming (naming as consequential, complementary to Vāṇī), Jing (resonance/non-representational knowing,
+    complementary to Tripuṭī), Shi (situational/context-dependent knowledge), He (harmonious integration
+    vs. mere conflict-resolution), Wu (absence as generative potential, explicit complement to Zero)"
+  - "Wu lens explicitly reframes Zero's absence-as-boundary-failure question into absence-as-creative-
+    potential -- a genuinely distinct complementary reading worth tracking alongside the existing Zero
+    lens, though not adopted"
+  - "An idealized 'Kernel is boring' target sketch: KnowledgeCore Admission Boundary containing
+    KnowledgeAggregate (Identity/SNF/Relations/JustificationPath/Context) + ConflictRecord (disagreement
+    preservation/supersession tracking/resolution history) + Lifecycle (Admission/Revision/Supersession/
+    Removal-without-deletion) -- presented illustratively, not as a proven consistency boundary given the
+    still-unresolved status of the aggregate question tracked since 0144"
+
+defines: []
+
+refines:
+  - "Confirms (does not extend the substance of) 0161's 26-lens four-tier classification via a DDD
+    separation-of-concerns reading"
+
+contradicts: []
+
+repeats:
+  - {concept: "26-lens system, observation/adjudication/kernel/mechanism four-layer classification", canonical_source: "0161", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: false
+
+registry_updates:
+  - "None -- ten proposed lenses recorded here as candidates, none adopted into the 26-lens canonical
+    register (consistent with the source's own discipline against silent register growth, per 0163)"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; proposes candidate lenses and an illustrative (unproven) Kernel sketch, adopts nothing new."
+  alternative_minimal_kernel: "Illustrative KnowledgeAggregate+ConflictRecord+Lifecycle sketch -- explicitly not a proven consistency boundary"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "The ten Chinese lens proposals genuinely expand the cross-tradition scope of the corpus's own lens
+    system beyond Indian/Sanskrit, Western, and Semitic sources -- a potentially relevant further data
+    point for this reconstruction's own broader interest in cross-tradition convergence, though the
+    source itself treats these as unadmitted proposals only"
+
+undefined_concepts: []
+open_questions:
+  - "Whether any of the ten Chinese lenses are ever formally admitted to the corpus's own lens register
+    in a later file"
+
+tier2_triggered: true
+tier2_reason: >
+  Ten new candidate lenses expanding the cross-tradition scope of the corpus's own methodology, all
+  explicitly unadopted, plus an illustrative (not proven) Kernel target sketch.

@@ -1,0 +1,91 @@
+sequence: M0195
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-184001_review-read-the-actual-results.md
+title: "Second, more precise review of the KR-ZERO-ALGEBRA-2026-09 execution: exact witness counts (131 redundancy/63 cancellation), a NEW boundary-blocking statistic (16.03% of visibly-unchanged cases rejected once full contract considered), H10's exact-agreement-except-residual finding, a cardinality-vs-structure reframing, and a fully detailed six-family KR-ZERO-GROUP-2026-09 protocol including a minimal-eliminable-subset-family object 𝒵(D,T,Π)"
+date: "20260902-184001"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0195
+importance: critical
+confidence: high
+about: >
+  A second, statistically more precise pass over the same KR-ZERO-ALGEBRA-2026-09 execution results
+  M0194 already reviewed, adding exact witness counts, a new empirical boundary-blocking statistic
+  not present in M0194, a precise H10 residual-vs-contract-unresolved finding, and a substantially
+  more developed six-family KR-ZERO-GROUP-2026-09 follow-up protocol including a genuinely new
+  candidate mathematical object (the minimal-eliminable-subset family 𝒵(D,T,Π)).
+introduces:
+  - "Precise witness counts for the two individual/group Zero counterexamples: 131 redundancy witnesses (∀x∈S:Zero(x)⇏Zero(S)) and 63 cancellation witnesses (Zero(S)⇏∀x∈S:Zero(x)), out of 4,203 total tested element cases — the first exact figures in this thread (M0194 reported the phenomenon but not these counts)"
+  - "NEW BOUNDARY-BLOCKING STATISTIC (not in M0194): of 1,223 cases where the visible result remained unchanged after removal, 196 (16.03%) were rejected once the full boundary contract (provenance, uncertainty, scope, contradiction) was considered — direct empirical confirmation of 'same visible result does not imply same epistemic state,' described as 'central to the Zero Lens'"
+  - "Precise confluence-failure statistic: simultaneous, forward-sequential, and reverse-sequential processing diverged in 169/1,189 cases, with a concrete identified mechanism — removing one element (ref1) causes two other tokens to become adjacent, activating a context-dependent transformation that would not otherwise fire — generalized to 'elimination changes future applicability,' flagged as potentially 'one of the most important properties of the system'"
+  - "H10 precise finding: D−Eliminated ≡ ContractUnresolved(D) held EXACTLY in all 1,182 tested cases, while TransformationResidual (a third candidate remainder notion) DIFFERED from both — establishing a genuine three-way empirical separation (Eliminated-complement, contract-unresolved, transformation-residual) rather than the assumed Invariant⊕Difference⊕Remainder decomposition"
+  - "A cardinality-vs-structure reframing of the base-5/10/20/30 question: the observed failures (redundancy needs contextual multiplicity; cancellation needs interaction; the boundary result needs a richer carrier like (Value,Boundary,Provenance,...)) are about STRUCTURE, not the number of available values — reformulated as 'Is the missing mathematics a richer number system, or a richer carrier?', explicitly recommending BOTH be tested rather than assuming either"
+  - "A fully detailed six-family KR-ZERO-GROUP-2026-09 protocol: (A) Redundancy [x,x,...,x]; (B) Cancellation [+x,-x]; (C) Synergy — two individually-necessary elements whose combination produces an eliminable structure (a genuinely new family not named at M0189/M0194); (D) Higher-order interaction — Zero({x,y,z}) while every pair fails; (E) Overlapping groups — does Zero({a,b})∧Zero({b,c}) imply Zero({a,b,c})?; (F) Minimal Zero sets — find 𝒵_min={S: Zero(S)∧∀S'⊊S,¬Zero(S')}"
+  - "A genuinely new candidate mathematical object: the minimal-eliminable-subset family 𝒵(D,T,Π)={S⊆D : S is minimally Zero} — proposed as potentially the natural mathematical object in place of a Zero predicate, explicitly framed as 'much closer to combinatorics, hypergraphs, closure systems, or rewriting theory than ordinary arithmetic' — 'but we should let the experiment decide'"
+  - "An explicit methodological success framing for the Vedic strand: 'Vedic heuristic → formal candidate → experiment → failure/survival' (not 'Vedic concept → KnowledgeOS law') — 'the Vedic strand [is] methodologically productive even though its initial algebraic formulation failed'"
+  - "A comprehensive [EXP]/[OPEN]/[NEG] status ledger (10 EXP, 5 OPEN, 4 NEG items) — the most complete single-document status accounting for the Zero-algebra thread so far, ending with the explicit boxed confirmation 'Theory v1.2 remains unchanged'"
+defines:
+  - "𝒵(D,T,Π)={S⊆D : S is minimally Zero} — the minimal-eliminable-subset family, a candidate replacement mathematical object for the Zero predicate"
+refines:
+  - "M0194's headline findings: sharpens 'Zero is not element-wise' into precise witness counts (131/63) and adds the previously-unreported boundary-blocking (16.03%) and H10 (exact-except-residual) statistics"
+  - "The reviewer explicitly cautions against M0194's stronger 'terminating, non-confluent rewriting' phrasing, preferring 'a terminating, non-confluent rewriting process in the tested finite regime' — narrowing the claim to the tested generator/implementation rather than a universal characterization"
+contradicts: []
+repeats:
+  - "The established discipline distinguishing [EXP]/[OPEN]/[NEG] status tags, and the explicit non-ratification safeguard ('Theory v1.2 remains unchanged')"
+bridge_candidates:
+  - "Whether KR-ZERO-GROUP-2026-09's six families (A-F) were ever executed, and whether 𝒵(D,T,Π) was ever formally characterized"
+  - "Whether the cardinality-vs-structure reframing (richer number system vs. richer carrier) was ever resolved by a subsequent experiment"
+mathematical_content: >
+  Provides the precise numeric evidence underlying M0194's qualitative findings (131/63 witness
+  counts, 169/1,189 confluence failures, 1,223/196=16.03% boundary-blocking rate, 1,182 exact H10
+  agreements), and introduces a genuinely new candidate mathematical object — the minimal-eliminable-
+  subset family 𝒵(D,T,Π) — reframing the entire Zero-algebra question away from element-wise
+  predicates and number-base comparison toward combinatorial/hypergraph/closure-system structure.
+gita_content: >
+  Restates the Vedic-material demotion as a positive methodological outcome (heuristic survived as
+  productive inspiration despite its specific algebraic formulation being refuted), consistent with
+  the established anti-reification discipline.
+kernel_content: >
+  Deepens M0194's empirical account with exact statistics and introduces the minimal-eliminable-
+  subset family as a candidate unifying object for the whole Zero-algebra thread, while explicitly
+  reconfirming (via the reviewed experiment itself) that none of this touches Theory v1.2 or kernel
+  selection.
+registry_updates:
+  - "Precise witness counts (131 redundancy, 63 cancellation) for the individual/group Zero non-implications"
+  - "NEW: boundary-blocking statistic — 16.03% (196/1,223) of visibly-unchanged-after-removal cases rejected once the full boundary contract is considered"
+  - "NEW: H10 precise three-way separation — D-Eliminated≡ContractUnresolved exactly (1,182/1,182), but TransformationResidual differs from both"
+  - "NEW: cardinality-vs-structure reframing of the base-N comparison question"
+  - "NEW candidate mathematical object: 𝒵(D,T,Π), the minimal-eliminable-subset family"
+  - "Fully detailed six-family (A-F) KR-ZERO-GROUP-2026-09 protocol, including a new 'Synergy' family"
+anchor_test:
+  anchor: true
+  supports_dimension: "Precise witness/confluence/boundary/H10 statistics; cardinality-vs-structure reframing; minimal-eliminable-subset family object; six-family KR-ZERO-GROUP protocol"
+  refines_or_contradicts: "refines (M0194's qualitative account, now with exact statistics and a narrower, more careful rewriting-system claim)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"131 and 63 witnesses respectively\" — exact redundancy/cancellation counts"
+  - "\"1,223 cases where the visible result remained unchanged after removal, but 196 of those were rejected once the full boundary contract was considered\" — 16.03%"
+  - "\"A ≡ C in all 1,182 tested cases... but transformation residual B differs\" — the H10 three-way separation"
+  - "\"Is the missing mathematics a richer number system, or a richer carrier?\""
+  - "\"𝒵(D,T,Π) = {S⊆D: S is minimally Zero}\""
+undefined_concepts:
+  - "The precise formal closure/combinatorial structure that 𝒵(D,T,Π) is conjectured to form — left open pending KR-ZERO-GROUP-2026-09"
+open_questions:
+  - "Was KR-ZERO-GROUP-2026-09's six-family protocol ever executed?"
+  - "Was the cardinality-vs-structure question (richer number system vs. richer carrier) ever resolved?"
+tier2_triggered: true
+tier2_reason: >
+  Supplies precise, previously-unreported empirical statistics (exact witness counts, a new 16.03%
+  boundary-blocking rate, an exact H10 three-way remainder separation) for the executed KR-ZERO-
+  ALGEBRA-2026-09 experiment, introduces a genuinely new candidate mathematical object (the minimal-
+  eliminable-subset family 𝒵(D,T,Π)), and reframes the thread's central open question from
+  cardinality (which number base) to structure (which carrier) — a substantive methodological and
+  empirical advance beyond M0194's initial review.

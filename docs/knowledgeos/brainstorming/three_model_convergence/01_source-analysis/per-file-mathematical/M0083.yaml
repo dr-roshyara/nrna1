@@ -1,0 +1,65 @@
+sequence: M0083
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-124934_simulation-three-proposers-two-evaluation-fields.md
+title: "Simulation: 3 Linga (Proposers) and 2 Yoni (Evaluation Fields) -- Polyphallic Polygynous Inquiry: A 3x2 'Matrix of Inquiry' Generalizing M0081/M0082 to Multiple Proposals in Multiple Contexts, With a Consensus/Divergence/Partial-Dominance Outcome Taxonomy Mirroring M0082's Agreement/Divergence/Complementarity Split, and the Same Undefined Numeric 'Emotion' Appendage"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: x
+  secondary_note: "combinatorial generalization of M0081 (3 proposers, 1 field) and M0082 (1 proposer, 2 fields) to a full 3x2 configuration -- three proposals each entering two evaluation contexts, presented as a 'matrix of inquiry' with strength/weight/evaluation matrices, but the underlying arithmetic (a fixed per-context multiplicative factor applied to a fixed per-proposer strength) is exactly the mechanism already used in M0082, merely tabulated over more cells; no new formal content"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0083
+importance: low
+confidence: high
+about: >
+  Generalizes the sub-thread's 1-proposer/1-field and 1-proposer/2-field configurations (M0081,
+  M0082) to a 3-proposer/2-field "matrix of inquiry": three "Linga" proposals (each with a fixed
+  strength and confidence) each enter two "Yoni" evaluation contexts (each applying a fixed
+  multiplicative "context factor" -- 1.0 for Yoni1, 0.8 for Yoni2), producing a 3x2 evaluation
+  matrix whose entries are the direct arithmetic product of the chosen constants (evaluations
+  3,2,1 for Yoni1 and 2.4,1.6,0.8 for Yoni2) -- no epistemic content beyond the invented numbers.
+
+  Restates, as a three-way outcome taxonomy over the 3x2 configuration, the same distinction
+  introduced informally in M0082 for the 1x2 case: (1) Consensus -- both fields agree on the
+  ranking of all three proposals; (2) Divergence -- the two fields disagree on the ranking;
+  (3) Partial Dominance -- different proposals dominate different fields. This is a direct
+  relabeling of M0082's Agreement/Divergence/Complementarity split for a multi-proposer setting,
+  not a new taxonomic contribution. Frames the configuration as "cross-contextual validation" /
+  "robust knowledge that survives testing in multiple contexts" -- an informal restatement of
+  the corpus's existing, far more rigorously developed cross-context robustness themes (Sat_c/
+  evidence-weighting, M0044-M0056) with no formal connection made to that apparatus.
+
+  Repeats the sub-thread's undefined numeric "emotion" appendage (Confidence/Competitiveness/
+  Anxiety for the three Linga; Overwhelm/Curiosity for the two Yoni) with no domain or
+  measurement basis, following the exact pattern of M0081 and M0082.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "M0082's Agreement/Divergence/Complementarity outcome taxonomy, directly relabeled here as Consensus/Divergence/Partial-Dominance for a 3-proposer x 2-field configuration -- no new taxonomic content"
+  - concept: "The sub-thread's undefined numeric 'emotion' assignment pattern (M0081, M0082), applied here to a 3 Linga/2 Yoni configuration"
+  - concept: "The corpus's existing, more rigorous cross-context robustness themes (Sat_c/evidence-weighting, M0044-M0056), restated informally as 'robust knowledge' with no formal engagement"
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "M0082's Agreement/Divergence/Complementarity taxonomy and the corpus's Sat_c/evidence-weighting cross-context robustness work, neither formally engaged"
+  supports_dimension: "none -- combinatorial generalization of an already-recorded informal pattern, no new formal machinery"
+  refines_or_contradicts: "neither (direct relabeling of M0082's taxonomy, not a refinement)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The reported evaluation matrix (3,2,1 for Yoni1; 2.4,1.6,0.8 for Yoni2) is the direct arithmetic product of the arbitrarily chosen strength values (3,2,1) and context factors (1.0, 0.8) -- confirming the 'simulation' supplies no content beyond its own invented constants, as with M0081 and M0082."
+undefined_concepts:
+  - "The 'context factor' (1.0 vs 0.8) -- no domain, unit, or justification given for its value or its multiplicative role"
+  - "All numeric 'emotion' quantities in Part 7 -- same undefined status as M0081/M0082"
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Combinatorial generalization of M0081/M0082's already-recorded informal pattern to a 3x2 configuration, with no new formal machinery and only a direct relabeling of the already-noted outcome taxonomy; recorded for corpus completeness only."

@@ -1,0 +1,57 @@
+sequence: 233
+path: docs/knowledgeos/brainstorming/kernel/20260824-142848-astrom-stochastic-control-theory-initial-assessment.md
+title: "Åström, Introduction to Stochastic Control Theory — Initial Assessment"
+date: "2026-08-24"
+bytes: 8200
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 233
+importance: high
+confidence: medium
+about: >
+  Initial (not exhaustive) assessment of Karl Astrom's Introduction to Stochastic Control Theory, a
+  scanned 150-page source. Central hypothesis: the deepest connection is not "stochastic control ->
+  AI agent control" but a general epistemic loop -- uncertain environment -> observation -> sufficient
+  state -> estimation -> decision -> action -> new observation -- making the STATE ESTIMATE an explicit
+  intermediate object between raw evidence and action-driving knowledge. Explicit source-boundary caution:
+  this particular volume does not appear to develop Kalman filtering or dynamic programming in depth, so
+  those concepts must not be attributed to it.
+introduces:
+  - concept: "State as sufficient information: Astrom defines stochastic state as the minimum information needed to predict the FUTURE PROBABILITY DISTRIBUTION, not the exact future -- reframed as 'what is the minimum sufficient knowledge/context for a governed decision?'"
+  - concept: "Information-timeliness principle: system performance depends on information available when a control signal must be determined; delayed measurements directly degrade performance"
+  - concept: "Refined epistemic chain: Observation -> Evidence -> State Estimation -> State/Belief -> Prediction -> Decision -> Control/Action -> Observation, inserting an explicit STATE ESTIMATION stage between evidence and decision (page-8 diagram: environment -> observed signal -> estimator -> feedback)"
+  - concept: "Uncertainty as intrinsic to the state model, not after-the-fact metadata: stochastic state models carry both mean and covariance, with future conditional distributions computed recursively"
+  - concept: "Markov/sufficient-history principle: whether a knowledge state can be defined making future reasoning depend on a bounded sufficient state rather than the entire historical record"
+  - concept: "Convergence taxonomy for the assurance vocabulary: convergence with probability one / convergence in probability / mean-square convergence kept distinct -- 'stable,' 'converged,' 'repeatable,' 'assured' should not collapse into one concept"
+  - concept: "Model-precondition regularity as a Zero Lens candidate: Astrom imposes finite-variance/continuity conditions before a stochastic model is even legitimate"
+  - concept: "Stability != finite/measurable result: an integral (loss evaluation) can exist even when the underlying dynamic system is unstable -- directly relevant to deterministic assurance"
+defines: []
+refines:
+  - concept: "0225's HSMM state formalism"
+    refinement: "Supplies a control-theoretic justification (sufficient-statistic state definition, information-timeliness) for treating state as an explicit estimated object distinct from raw observation, complementing the HSMM formalism with the classical stochastic-control framing of the same problem."
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0225's HSMM formalism; 0232's handover-protocol classification scheme"
+  supports_dimension: "Mathematical/statistical model -- initial assessment reframing the epistemic loop around an explicit state-estimation stage, using the same INVESTIGATE/ADAPT/RECORD-ONLY classification vocabulary established at 0232"
+  refines_or_contradicts: "refines/complements 0225; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Explicit source-boundary caution: the uploaded 150-page volume does not appear to contain a large modern treatment of Kalman filtering or dynamic programming, so those concepts must not be attributed to this source -- disciplined source-fidelity practiced in real time"
+undefined_concepts: []
+open_questions:
+  - "Whether a fuller extraction of this source (beyond this initial assessment) follows in a later file"
+tier2_triggered: true
+tier2_reason: "High-value initial assessment introducing an explicit state-estimation stage into the epistemic chain (sufficient state, information-timeliness, intrinsic uncertainty, convergence taxonomy) with disciplined source-boundary caution against over-attributing unaddressed topics (Kalman filtering, dynamic programming) to this particular volume."

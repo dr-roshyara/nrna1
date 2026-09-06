@@ -1,0 +1,46 @@
+sequence: 465
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-173318_question-4a-what-exactly-is-an-epistemic-state.md
+title: "Near-duplicate of 0464's Question 4A section (standalone extraction, one added closing sentence)"
+date: "2026-08-26"
+bytes: 12342
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "same five-dimensional Epistemic State content as 0464's second half"
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 464
+importance: low
+confidence: high
+about: >
+  Confirmed via diff to be a standalone extraction of 0464's Question 4A section (0464 lines 429-907),
+  differing only trivially: this file omits 0464's leading "#" separator line and adds one closing sentence
+  at the very end ("This will define the operations for maintaining the knowledge state over time."). No
+  other content differs. Same five-dimensional Epistemic State formalization
+  Σ=(Acquisition,Support,Resolution,Validity,Conflict), 2240-state space, per-dimension transitions, and the
+  corrected Bhīṣma grandfather/enemy Conflict-dimension resolution -- all already fully recorded at 0464.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - "Confirmed via diff: byte-identical to 0464's lines 429-907 (the Question 4A section) except for one omitted leading '#' line and one added closing sentence at file end."
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0464's five-dimensional Epistemic State formalization"
+  supports_dimension: "Near-duplicate; no new content beyond one closing sentence"
+  refines_or_contradicts: "none -- duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Confirmed near-duplicate of 0464's Question 4A section; no new content warranting Tier 2."

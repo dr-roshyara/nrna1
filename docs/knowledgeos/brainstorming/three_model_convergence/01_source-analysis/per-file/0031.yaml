@@ -1,0 +1,45 @@
+sequence: 31
+path: docs/knowledgeos/KnowledgeOS_Phase_B_Evidence_Reconciliation.md
+title: KnowledgeOS — Phase B.5 Evidence Reconciliation
+date: 2026-08-03
+bytes: 14731
+doc_type: governance gate classifying findings into Validated/Correction/Defect/Decision-Required
+
+primary_model_initial: meta_research
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [engineering_knowledgeos, evidence, governance, contradiction]
+source_role: VERIFICATION_RECONSTRUCTION
+canonical_source: 15
+
+status: SR
+maturity: developing
+importance: low
+
+introduces:
+  - c1_elevated_to_platform_design_requirement_candidate
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge]
+open_questions:
+  - D1_through_D10
+
+depends_on: [15, 19]
+extends: [15]
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: [15, 19]
+connects_to: [15, 19]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: "Pure classification/reconciliation of prior findings; no new formal object, operator, or Kernel/Gita content beyond an occurrence-count update, fully captured in Tier 1."

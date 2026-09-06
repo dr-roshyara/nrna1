@@ -1,0 +1,68 @@
+sequence: 49
+path: docs/knowledgeos/brainstorming/20260816-204714-track2-eks-semantic-discovery.md
+title: Track 2 — EKS Semantic Discovery (conversational transcript)
+date: 2026-08-16
+bytes: 9121
+doc_type: conversational transcript - domain-discovery-before-architecture semantic research (Rule/Authority/Scope)
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [ddd, domain_model, governance, zero, invariants]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+status: DR
+maturity: developing
+importance: high
+
+introduces:
+  - rule_authority_scope_applicability_semantic_chain
+  - mechanism_records_authority_does_not_create_it
+  - three_senses_of_scope_kept_apart   # subject / authority / evaluation
+  - unknown_ne_does_not_apply_ne_not_applicable   # candidate invariant, SC-2
+  - domain_discovery_before_architecture_as_explicit_posture
+defines:
+  - rule_definition
+  - subject_authority_evaluation_scope
+  - three_valued_applicability_states   # SPECIFIED(v) / UNSPECIFIED / NOT_APPLICABLE
+hypotheses:
+  - unknown_ne_does_not_apply_candidate_invariant   # SC-2, not yet ruled beyond candidate status
+  - four_scope_dimensions_sufficient   # system location, environment, artifact kind, lifecycle phase
+operators: []
+formal_objects:
+  - three_valued_applicability_classification   # NOT formally closed; no combination rules given
+undefined_concepts:
+  - knowledge          # named only as a FUTURE reconciliation question, explicitly warned against premature unification
+  - environment          # flagged as the next semantic gap, no governed vocabulary
+  - conflict              # deferred until the chain above it stabilizes
+open_questions:
+  - governed_vocabulary_for_environment
+  - rule_relationship_semantics_supersedes_refines_exception_contradicts
+  - lifecycle_business_meaning_effective_expired_revoked_suspended_superseded
+  - knowledge_vocabulary_reconciliation_without_forcing_one_generic_type
+
+depends_on: []
+extends: []
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: []
+connects_to: []      # no direct citation links found to files 0001-0048; a possible separate track
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  States a three-valued applicability logic (SPECIFIED/UNSPECIFIED/NOT_APPLICABLE) with an explicit
+  non-collapse axiom ("unknown applicability must never be treated as non-applicability") - the
+  sharpest and most precisely stated anticipation anywhere in the corpus so far of the discipline §19
+  (Zero Model) will demand, though arising from a structurally different object (Rule applicability,
+  not knowledge value/existence) via a track with NO citation links to the rest of the C1 material
+  read so far - flagging a possible multi-track structure within the C1 lineage itself that the
+  eventual Model C reconstruction must check for reconciliation, not assume away.

@@ -1,0 +1,90 @@
+sequence: 1002
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-195256_step_288_reviewer-b-evidence-freeze-and-d288-decision-procedure-closure-mandate.md
+title: "Reviewer B -- Evidence Freeze and D288 Decision-Procedure Closure Mandate: Names the Next Research Phase 'D288 -- Decision-Procedure Closure' With Four Explicit Targets (Semantic/Observational/Provenance-Sensitive Equality Plus Qualify), Freezes the Current Evidence Package, and Bans New Sanskrit Expansion Until All Four Are Resolved"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "Reviewer B's commissioning mandate for the next research phase, delivered ~12 minutes after the four-way gap-classification review (file 1001)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1002
+importance: critical
+confidence: high
+about: >
+  A synthesis of "three artifacts as a single evidence package" (this reconstruction's already-documented
+  files, likely including 0993/1001 and the still-unencountered third gap-update artifact), delivering a
+  fifteen-row "current state to freeze" table (all already tracked, e.g. `W`/`Ω` recovered, `Qualify` still
+  `G1` and still the `π_K` blocker, equality `G1` under-specified not absent, `history⊊structural⊊semantic`
+  a verification-lane construct not corpus fact) and a compact restatement of already-tracked findings
+  (Sañjaya's `Reality≠Observation≠Knower` three-way separation with `𝒩∉O`, the narrowly-quoted D285-5 result).
+
+  **DELIVERS THE FORMAL COMMISSIONING OF THE NEXT RESEARCH PHASE, NAMED "D288 — DECISION-PROCEDURE CLOSURE,"
+  WITH FOUR EXPLICIT PRIMARY TARGETS**: (1) `≡` semantic equality -- what is "same knowledge semantics,"
+  what is the semantic carrier, is `Π` included (must respect the still-open Decision 3); (2) `≈`
+  observational equality -- what is the permitted observation set, is it parameterised by `Ω`/role/access
+  level/purpose, can it be decided or only characterised; (3) `≅_λ` provenance-sensitive equality -- what
+  counts as "relevant provenance," noting this "especially" changes the D285-5 injectivity result; (4)
+  `Qualify` -- inputs/output type, what information it requires from `W`/`Ω`/`O`/provenance/kernel, "can it
+  actually be defined without introducing an unratified primitive?"
+
+  **Explicitly reiterates the promotion-chain law as the single most important governance rule to carry
+  forward**: `Correspondence⇏Type⇏Primitive⇏Canonical Architecture` -- "do not promote any of these into
+  architecture merely because a plausible definition can be written."
+
+  **Delivers a genuinely valuable programme-level meta-observation not previously stated in this exact
+  form**: "The protocol is now successfully falsifying its own hypotheses" -- with a six-item evidence list
+  (`𝒦_ātma` destroyed, `Θ_total` rejected, universal knower rejected as KnowledgeOS projection only,
+  `Jñāna→Knowledge` rejected, unrestricted `δ` non-injectivity weakened, `humanActRef` inference withdrawn),
+  closing: "That is a very good sign. The process is no longer functioning as a confirmation exercise." This
+  is the file's own explicit self-assessment of the disciplined falsification pattern this reconstruction has
+  independently tracked and vindicated across files 0970-0999.
+
+  **Closes with THE FORMAL FREEZE-AND-SCOPE-LOCK RECOMMENDATION**: "freeze this package as the current
+  D285/D287 evidence state and make the next prompt EXCLUSIVELY about closing `≡`, `≈`, `≅_λ`, and `Qualify`
+  — WITH NO NEW SANSKRIT EXPANSION until those four are resolved or explicitly classified as irreducible G1
+  gaps." **This is the explicit commissioning boundary for whatever research this reconstruction encounters
+  immediately downstream: any further Sanskrit-mapping work would represent either a violation of this
+  explicit scope lock, or evidence that the four targets were resolved/classified first.**
+introduces:
+  - concept: "The formally named next research phase 'D288 -- Decision-Procedure Closure,' with four explicit primary targets: semantic equality, observational equality, provenance-sensitive equality, and Qualify"
+  - concept: "The explicit scope-lock recommendation: no new Sanskrit-mapping expansion until all four D288 targets are resolved or classified as irreducible G1 gaps"
+  - concept: "The programme-level self-assessment that the protocol is 'successfully falsifying its own hypotheses,' with a six-item evidence list, marking a genuine shift away from confirmation-exercise behavior"
+defines:
+  - term: "D288 -- Decision-Procedure Closure"
+    definition: "The formally named next research phase targeting the four remaining G1 (under-specified) formalisms: semantic equality, observational equality, provenance-sensitive equality, and Qualify"
+refines:
+  - concept: "This reconstruction's already-tracked equality-relations and Qualify gaps (files 0974, 0991, 0993, 1001)"
+    refinement: "FORMALIZED into a named, scoped next research phase (D288) with four explicit, individually specified targets"
+  - concept: "This reconstruction's already-tracked pattern of the corpus's own disciplined self-falsification (files 0970-0999, the Step-25X track's genuine corrections and destructions)"
+    refinement: "EXPLICITLY SELF-ASSESSED by the corpus itself in this file as evidence the protocol is 'no longer functioning as a confirmation exercise' -- a direct meta-level confirmation of this reconstruction's own independently-tracked vindication"
+contradicts: []
+repeats:
+  - "The fifteen-row frozen-state table and the compact Sanjaya/D285-5 restatements substantially repeat content already documented via files 0974-1001; this file's distinctive contribution is the formal D288 commissioning and the explicit scope-lock recommendation."
+bridge_candidates:
+  - "The third gap-update artifact this file also references as part of 'the three artifacts,' still not directly encountered."
+  - "Whether the D288 research phase (semantic/observational/provenance-sensitive equality plus Qualify) is subsequently executed, and whether the explicit Sanskrit-expansion scope-lock is honored."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal commissioning of 'D288 -- Decision-Procedure Closure' with its four explicit targets, and the explicit scope-lock recommendation banning new Sanskrit expansion until they are resolved or classified as irreducible G1 gaps."
+  - "dimension-registry.md: record the programme's own explicit self-assessment that the protocol is successfully falsifying its own hypotheses, as a meta-level confirmation of this reconstruction's independently-tracked vindication of the disciplined kernel-track."
+anchor_test:
+  anchor: "This reconstruction's already-tracked equality-relations/Qualify gaps and the disciplined self-falsification pattern (files 0970-1001)"
+  supports_dimension: "Formally commissions the next research phase targeting these exact gaps, and delivers the programme's own explicit self-assessment of its disciplined falsification behavior"
+  refines_or_contradicts: "confirms and formalizes prior findings into a scoped next-phase mandate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The four D288 targets are directly checkable against files 0974/0991/0993/1001's own already-documented gap findings for consistency."
+undefined_concepts: []
+open_questions:
+  - "Whether the D288 research phase is subsequently executed as commissioned here, and whether its explicit Sanskrit-expansion scope-lock is honored in the immediately following corpus material."
+  - "The identity of the third gap-update artifact referenced but not yet directly encountered."
+tier2_triggered: true
+tier2_reason: "Formally commissions the next research phase ('D288 -- Decision-Procedure Closure') with four explicit, individually specified targets, delivers an explicit scope-lock recommendation, and includes the programme's own valuable self-assessment that it is successfully falsifying its own hypotheses. Classified importance critical and confidence high given its role as the forward-commissioning mandate this reconstruction should watch for compliance with in immediately subsequent files."

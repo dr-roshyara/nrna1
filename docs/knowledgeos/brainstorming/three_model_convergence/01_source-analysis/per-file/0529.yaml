@@ -1,0 +1,138 @@
+sequence: 529
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-125515_the-core-insight-three-distinct-information-pathways.md
+title: "LANDMARK: The Observation Boundary Is Declared Computationally Closed — Full DDD Type Schemas for Artifact/SourceObservation/SemanticInterpretation/CandidateAssertion/EpistemicAssessment/Assertion; All Eight Adversarial Test Cases Executed and Pass; Three Distinct Information Pathways; Source Plane vs. Knowledge Plane Restated"
+date: "2026-08-27"
+bytes: 27669
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "opens as a secondary-model (g1) elaboration on 0499's Three Information Pathways / Source Plane / Epistemic Retrieval Loop material ('This is a brilliant and necessary architectural clarification. You have identified the fundamental distinction...'), then transitions into the primary model's (c1) Domain-Authority persona executing 0528's proposed eight-case adversarial test to formally close the Observation boundary"
+source_role: PRIMARY_RESEARCH
+canonical_source: 529
+importance: critical
+confidence: high
+about: >
+  A large, multi-part landmark file combining four distinct movements. **Part 1** (secondary-model
+  elaboration) restates and extends 0499's Three Information Pathways (A. Model Knowledge:
+  Training->Parameters->LLM Response, implicit/non-traceable/non-governed; B. External Retrieval:
+  Source->Retrieval->Context->LLM, explicit/traceable/ungoverned; C. KnowledgeOS Knowledge:
+  Observation->Assertion->Evidence->Epistemic State, explicit/traceable/governed/versioned -- the
+  authoritative Knowledge State), crystallizing the critical error to avoid: `LLM Response≠KnowledgeOS
+  Knowledge`, `Retrieved Document≠KnowledgeOS Knowledge`, `Training Data≠KnowledgeOS Knowledge`. Restates
+  0499's Source Plane/Knowledge Plane/Epistemic Engine split, an ingestion pipeline diagram, the Zero->Gap->
+  Sārathi->Retrieval->Observation->Evidence->Knowledge->Zero "epistemic retrieval loop" (explicitly "a
+  closed-loop epistemic investigation system, not a question-answering system"), three constitutional
+  invariants for sources (Source≠Knowledge, LLM Output≠Knowledge, Retrieval≠Knowledge Creation), a
+  Source/Cognitive/Action three-layer architecture diagram, six implementation implications, and a final
+  RAG-vs-KnowledgeOS contrast ("KnowledgeOS is an epistemic investigation system, not a question-answering
+  system").
+
+  **Part 2** shifts into the Domain-Authority persona explicitly resolving Option 3 (paralleling and
+  extending 0528): delivers five justifications for the Two-Level Observation Model (preserves the
+  epistemic chain; prevents silent conflation of LLM output with fact; supports auditability via
+  `Assertion->InterpretedObservation->SourceObservation->Artifact` lineage; enables different reliability
+  models per source type; aligns with the existing `X_t->O_t->R_t->A_t->K_t` theory), then delivers
+  concrete, fully-typed DDD schemas for `SourceObservation` and `InterpretedObservation` (with explicit
+  invariants: "SourceObservation documents what was produced, not what it means"; "InterpretedObservation is
+  an interpretation; it is not yet knowledge"), a formal signature chain
+  `Observe:A×M×C->O_s`, `Interpret:O_s×C->O_i`, `Construct:O_i->P_c`, `Assess:P_c×K_t×I_t->Assertion`, a
+  "Five Cases Revisited" table giving concrete SourceObservation/InterpretedObservation pairs for
+  Database/Document/Human/LLM/Sensor (notably the Human case yields BOTH an interpreted proposition AND a
+  separate `Human_belief(...)` structure), four named DDD bounded contexts (Acquisition/Semantic
+  Reconstruction/Knowledge/Epistemic Governance) each with explicit root aggregates/entities/value objects,
+  six numbered key invariants (SourceObservation immutability; InterpretedObservation cannot exist
+  independently; CandidateAssertion cannot exist independently; an Assertion may reference multiple
+  CandidateAssertions/Evidence; every Assertion needs at least one provenance link; no CandidateAssertion
+  automatically becomes an Assertion), and complete `KnowledgeState`/`SystemState` type definitions.
+
+  **Part 3** refines the model per 0528's SourceObservation/SemanticInterpretation split ("I approve the
+  refinement... cleaner and more mathematically precise than bundling interpretation into the observation
+  itself"), delivering the FINAL observation pipeline (`Input->Artifact->SourceObservation->
+  SemanticInterpretation->CandidateAssertion->EpistemicAssessment->Assertion`) with fully concrete typed
+  schemas for all six objects (Artifact, SourceObservation, SemanticInterpretation -- now including an
+  `alternatives:List<AlternativeInterpretation>` field for preserving multiple candidate interpretations,
+  CandidateAssertion -- with an explicit status enum {Pending,UnderReview,Rejected,Accepted},
+  EpistemicAssessment, Assertion -- with a `lineage` field), and the five key invariants plus the critical
+  provenance-chain invariant `Assertion.lineage -> SemanticInterpretation -> SourceObservation -> Artifact`.
+
+  **Part 4 -- the file's central event -- formally executes all eight adversarial test cases proposed at
+  0528** and declares victory: Case 1 (Database Result) -- clean, high trust; Case 2 (Unstructured Document)
+  -- clean, validity correctly flagged Stale due to a dated reference; Case 3 (Internet Page, unknown site)
+  -- clean, weak support/high uncertainty correctly captured; Case 4 (Human Statement, "I believe...") --
+  clean, the semantic structure explicitly carries a `belief:true` flag distinguishing reported belief from
+  direct observation; Case 5 (LLM Answer) -- clean, AI_Generated acquisition with None support and
+  VeryHigh uncertainty correctly marks LLM output as low-trust; Case 6 (Conflicting Sources, DB says 3.69.0
+  vs. LLM says 3.70.0) -- clean, conflict modeled relationally per the corpus's established Conflict theory;
+  Case 7 (Incomplete Question, Arjuna's "those with whom I have to fight") -- clean, the model explicitly
+  refuses to construct a CandidateAssertion when the target is underdetermined, instead triggering
+  GapDetection{gap:MissingTarget,severity:High,type:Semantic} and a clarification question -- "the model
+  stops at interpretation and does not prematurely assert knowledge"; Case 8 (Stale Source, a 2025
+  observation superseded by a 2026 observation) -- clean, validity is updated to Stale while history is
+  preserved without deletion. **All eight cases survive cleanly** (a summary verdict table confirms
+  ✅ for every case).
+
+  **Delivers the file's central formal conclusion**: "The Observation boundary is computationally closed,"
+  with the model shown to (1) preserve provenance at every step, (2) never conflate source/interpretation/
+  knowledge, (3) handle different source types with different reliability models, (4) detect gaps, (5)
+  handle conflicts relationally, (6) handle temporal staleness without losing history, (7) prevent silent
+  conflation of LLM output with knowledge, and (8) maintain full auditability via the provenance chain.
+  **Restates the final invariant set**, explicitly re-affirming 0528's `NumberOfAIOutputs≠
+  AmountOfIndependentEvidence` finding verbatim ("The number of AI outputs does not equal the amount of
+  independent evidence") alongside `Artifact≠SourceObservation≠SemanticInterpretation≠CandidateAssertion≠
+  Assertion`, the two key per-type invariants, `LLM Output≠Knowledge`, and the lineage-completeness
+  requirement. **Closes with the corpus's explicit named decision**: "The Observation boundary is
+  computationally closed. We can now proceed to the next step of formalizing the Knowledge State and its
+  transitions with this clean observation model as the foundation" -- directly resolving the bridge_candidate
+  flagged at 0527/0528 regarding the eight-case test's outcome.
+introduces:
+  - concept: "Complete, fully-typed DDD schemas for the entire Observation pipeline (Artifact, SourceObservation, SemanticInterpretation with an alternatives field, CandidateAssertion with a four-state status enum, EpistemicAssessment, Assertion with a lineage field) — the corpus's most concrete implementation-ready specification of the acquisition pipeline to date"
+  - concept: "Four fully-specified DDD bounded contexts (Acquisition, Semantic Reconstruction, Knowledge, Epistemic Governance) each with named root aggregates, entities, and value objects"
+  - concept: "Complete KnowledgeState and SystemState type definitions integrating the entire Observation pipeline into the corpus's broader Knowledge/Understanding/Norms/Actor/World/Context/Guidance/Decision state model"
+  - concept: "The formal declaration 'The Observation boundary is computationally closed', reached by executing all eight adversarial test cases proposed at 0528 and confirming a clean pass for each"
+  - concept: "Concrete evidence that the model handles gaps correctly: an underdetermined question (Case 7) is refused a CandidateAssertion and instead routed to explicit GapDetection and clarification, never silently guessed"
+  - concept: "Concrete evidence that staleness is handled without information loss: a superseded observation (Case 8) has its epistemic validity updated to Stale while its historical record is preserved"
+defines:
+  - concept: "SourceObservation (final typed schema)"
+    definition: "{id, artifact_id, content, method, observed_at, context, provenance} — documents what was produced, not what it means; immutable once created"
+  - concept: "SemanticInterpretation (final typed schema)"
+    definition: "{id, source_observation_id, semantic_structure, interpreter, confidence, alternatives, interpreted_at, context, provenance} — an interpretation, not yet knowledge; explicitly preserves alternative interpretations of the same observation"
+  - concept: "CandidateAssertion (final typed schema)"
+    definition: "{id, semantic_interpretation_id, proposition, status∈{Pending,UnderReview,Rejected,Accepted}, assessed_at, context, provenance} — cannot become an Assertion without passing through EpistemicAssessment"
+  - concept: "Assertion (final typed schema)"
+    definition: "{id, proposition, epistemic_state, evidence, lineage, asserted_at, context, provenance} — the Knowledge State entry, whose lineage must trace back through SemanticInterpretation and SourceObservation to an Artifact"
+refines:
+  - concept: "0528's proposed eight-case adversarial test plan for the Observation boundary"
+    refinement: "Executed in full: all eight cases (database result, unstructured document, Internet page, human statement, LLM answer, conflicting sources, incomplete question, stale source) worked through concretely and confirmed to pass, formally closing the Observation boundary"
+  - concept: "0528's frozen working model X->Artifact->O_s->I_s->P_c->Σ->A->K_t and its five critical invariants"
+    refinement: "Given complete, concrete, implementation-ready typed schemas for every stage, plus a sixth invariant (Assertion.lineage traceability) and explicit reaffirmation of NumberOfAIOutputs≠AmountOfIndependentEvidence"
+  - concept: "0499's Three Information Pathways, Source Plane/Knowledge Plane split, and Zero->Gap->Sārathi->Retrieval epistemic retrieval loop"
+    refinement: "Restated with an explicit critical-error warning (LLM Response≠KnowledgeOS Knowledge, Retrieved Document≠KnowledgeOS Knowledge, Training Data≠KnowledgeOS Knowledge) and three named constitutional invariants for sources"
+contradicts: []
+repeats:
+  - "Part 1 substantially repeats 0499's Three Information Pathways, Source Plane/Knowledge Plane distinction, and epistemic retrieval loop content, reframed as a secondary-model elaboration rather than new research"
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal declaration 'The Observation boundary is computationally closed,' the complete DDD type schemas for the six-stage acquisition pipeline, and the four fully-specified bounded contexts."
+  - "dimension-registry.md: record the eight-case adversarial test execution and its clean pass across all cases, with special note of Case 7 (gap detection over premature assertion) and Case 8 (staleness without history loss)."
+  - "dimension-registry.md: note the reaffirmation of NumberOfAIOutputs≠AmountOfIndependentEvidence within the final invariant set, and the corpus's stated next research direction (formalizing Knowledge State transitions)."
+anchor_test:
+  anchor: "0528's frozen model and eight-case test proposal; 0527's Question A; 0526's Acquisition Closure; 0499's Three Information Pathways and epistemic retrieval loop"
+  supports_dimension: "LANDMARK completion of the corpus's Observation-closure research arc (0522->0525->0526->0527->0528->0529): executes all eight proposed adversarial test cases against the frozen acquisition pipeline, confirms a clean pass for every case (including principled gap-detection over premature assertion, and staleness handling without history loss), delivers complete implementation-ready DDD type schemas for the full pipeline, and formally declares 'The Observation boundary is computationally closed' — the concrete resolution of the bridge_candidate flagged at 0527 and 0528"
+  refines_or_contradicts: "directly executes and resolves 0528's proposed test plan; extends 0526/0527/0528's formal model into concrete implementation-ready schemas; restates (without contradiction) 0499's Three Information Pathways and epistemic retrieval loop material"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The eight fully worked test cases, each ending in an explicit ✅ Clean verdict with a concrete populated schema instance, constitute the corpus's most rigorously executed single validation exercise to date — a genuine adversarial test rather than a mere assertion of correctness."
+undefined_concepts: []
+open_questions:
+  - "Whether the next stated research direction (formalizing Knowledge State and its transitions building on this closed Observation model) is carried out in the immediately following corpus file(s)"
+  - "Whether the four DDD bounded contexts specified here (Acquisition, Semantic Reconstruction, Knowledge, Epistemic Governance) are later reconciled with 0527's more tentative four-context proposal, which used slightly different context names (Semantic Reconstruction vs. this file's identical naming — largely consistent, but the aggregate/entity assignments differ in detail)"
+tier2_triggered: true
+tier2_reason: "LANDMARK completion of the corpus's multi-file Computational-Closure-of-Observation research arc: executes all eight previously-proposed adversarial test cases in full concrete detail, confirms a clean pass for every one (including principled refusal to assert under an incomplete question, and correct staleness handling with history preservation), delivers complete implementation-ready DDD type schemas for the entire six-stage acquisition pipeline plus four fully-specified bounded contexts, and formally declares 'The Observation boundary is computationally closed' — directly resolving an explicitly flagged bridge_candidate from two immediately preceding files and marking the successful conclusion of a sustained, multi-step formal research program."

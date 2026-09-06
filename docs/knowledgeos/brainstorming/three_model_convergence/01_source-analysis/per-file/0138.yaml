@@ -1,0 +1,107 @@
+sequence: "0138"
+path: docs/knowledgeos/brainstorming/20260822-143217-benchmark-verification-reinterpreted-knowledgeos-v1-1-layers.md
+title: "v0.2 accuracy projection (additive-accuracy fallacy) then rigorously self-rejected; new semantic-vs-epistemic-accuracy distinction; KOS-SCB/KOS-EV benchmark split"
+date: "2026-08-22"
+bytes: 30000
+model:
+  primary: c1
+  secondary: [m]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0137"
+importance: high
+confidence: high
+about: >
+  Three linked turns. (1) Reinterprets 0137's 74.2% result as expected for a "lexer + primitive
+  parser," not a failure -- reframing only. (2) Proposes "KOS-SCB v0.2" with a 7-stage pipeline and
+  projects 93-95% accuracy by ADDING per-stage percentage gains to the 74.2% baseline
+  (74.2+20+10+25+15+19+25 ~ 95%). (3) A rigorous SELF-REJECTION of turn 2's arithmetic: "Accuracy
+  improvements are not additive... We cannot make that inference," reclassifying every numeric
+  projection from "projected accuracy" to "target hypothesis requiring measurement," explicitly
+  REJECTing "93-95% projection," "LLM accuracy can be matched," and "Semantic Compiler = KnowledgeOS"
+  in a KEEP/REJECT table. Introduces a new semantic-accuracy-vs-epistemic-correctness distinction and
+  proposes splitting benchmarking into two separate suites (KOS-SCB semantic, KOS-EV epistemic).
+
+introduces:
+  - "Explicit naming and rejection of an 'additive accuracy fallacy': per-stage percentage-point gains
+    cannot be summed to project overall accuracy, because different stages' fixes likely overlap on the
+    same underlying failures -- a genuine statistical/methodological self-correction"
+  - "New distinction: SEMANTIC accuracy (did we correctly parse the expression's meaning) vs. EPISTEMIC
+    correctness (do we have sufficient grounds to believe the claim is true) -- explicitly named as
+    'not the same problem,' with the example that a compiler can be semantically correct while
+    KnowledgeOS must still report EpistemicState=UNKNOWN for lack of evidence"
+  - "Proposed benchmark split: KOS-SCB (Semantic Compiler Benchmark, expression->meaning metrics) vs.
+    KOS-EV (Epistemic Validation Benchmark, meaning->knowledge-state metrics) -- previously conflated
+    in 0135/0136/0137's single benchmark"
+  - "A KEEP/REJECT classification table applied to every element of the prior turn's v0.2 proposal --
+    KEEP: the layered pipeline, Karaka-inspired roles (as hypothesis), type system, context binding
+    (as hypothesis), canonical KIR, UNKNOWN state; REJECT: the 93-95% numeric projection, 'LLM accuracy
+    can be matched,' and 'Semantic Compiler = KnowledgeOS'"
+  - "Proposes an 'Identity Preservation' benchmark category testing Similarity≠Identity directly (e.g.
+    'reviewed' must not collapse into 'approved'; 'probably approved' must not collapse into
+    'approved') and a transformation-invariance category testing Transformation≠Identity-Loss (revision
+    K1->K2 must preserve identity continuity without silently overwriting K1)"
+
+defines: []
+
+refines:
+  - "Reinforces (renames, does not extend) the already-tracked Similarity≠Identity and
+    Transformation≠Identity-Loss principles by proposing concrete benchmark tests for them"
+  - "Reframes the Gödel-stage naming: 'Gödel's contribution is the self-referential/formal-encoding
+    insight, not a particular JSON representation' -- a precision correction on the source's own
+    earlier loose Gödel-labeling of pipeline stages (0135/0136/0137)"
+
+contradicts:
+  - "Turn 2's additive 93-95% accuracy projection is explicitly contradicted and rejected by turn 3
+    within the same file -- both are recorded; the rejection is the file's own final position"
+
+repeats:
+  - {concept: "seven-stage semantic compiler pipeline, KIR, UNKNOWN state need", canonical_source: "0137", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: true
+gita_content: false
+kernel_content: false
+
+registry_updates:
+  - "None -- no dimension/representation status change; the additive-accuracy self-correction and the
+    semantic/epistemic-accuracy distinction are recorded here as key_evidence, not adopted as kernel
+    content"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity"]
+  refines_or_contradicts: "Self-contradicts and self-corrects within the file; final position is the disciplined KEEP/REJECT table."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "A clean, named methodological self-correction (the additive-accuracy fallacy) -- a second instance
+    of the source catching its own quantitative overclaim within two files of the first (0136's
+    unfulfilled-benchmark-promise concern), suggesting a recurring discipline pattern worth continued
+    tracking rather than a one-off"
+  - "DISCREPANCY NOTE (not escalated to a consolidation checkpoint per MD-016, since nothing here
+    requires choosing among alternatives): turn 3 states 'this is completely consistent with the v1.1
+    DDD decision to keep the Semantic Compiler outside the core and treat it as a candidate adapter' --
+    but per Ledger Entry 43, the DDD refinement pass was only PROPOSED at 0134, not executed in any file
+    read so far. This file treats an apparently unexecuted decision as already settled. Recorded as an
+    open question, not adopted as fact by this reconstruction."
+
+undefined_concepts: []
+open_questions:
+  - "Whether a 'KnowledgeOS Reference Architecture v1.1' / DDD decision document was actually produced
+    somewhere between 0134 and 0138 (not yet encountered in the read corpus) -- if so it should be
+    read and reconciled; if not, this file's reference to it is a premature/unearned citation"
+  - "Whether a later file actually runs the proposed KOS-SCB/KOS-EV split benchmark with the Identity
+    Preservation and transformation-invariance categories, per the 'measure it, don't project it' final
+    recommendation"
+
+tier2_triggered: true
+tier2_reason: >
+  A named methodological self-correction (additive-accuracy fallacy), a new semantic-vs-epistemic-
+  accuracy distinction, a benchmark-split proposal, and a discrepancy note about an apparently
+  unexecuted "v1.1 DDD decision" being cited as already settled.

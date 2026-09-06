@@ -1,0 +1,15 @@
+==================================================================================================
+AFFECTED FALSIFICATION TESTS RE-RUN (F1,F3,F5,F6,F10) under Repair B
+==================================================================================================
+ID    VERDICT  WHY AFFECTED                                OBSERVED
+F1    PASS     policy-free must not be interpreted as absenceUNKNOWN(NoApplicablePolicy) ; inquiry=('Asked'
+F3    PASS     conflict must not collapse into unknown     CONFLICT(incompatible)
+F5    PASS     missing policy != no inquiry                missing=UNKNOWN(NoApplicablePolicy); never-ask
+F6    PASS     expired != nonexistent                      Applicable(t>t_e)=False; in history=True
+F10   PASS     replay must preserve historical state       old=v1; new=v2
+
+  5/5 PASS
+
+  NOTE: F1 and F5 are the two that genuinely EXERCISE the repair —
+        'no applicable policy' (asked, absent) is now distinct from 'never enquired' (not asked).
+        Before the repair these were the same observation.

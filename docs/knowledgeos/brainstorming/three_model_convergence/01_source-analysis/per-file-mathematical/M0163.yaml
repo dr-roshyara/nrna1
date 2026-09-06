@@ -1,0 +1,82 @@
+sequence: M0163
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-182001_r-req-required-distinction-universe.md
+title: "ℛ_req — Required Distinction Universe (repeated) + FDE Kernel Candidate Test Vectors"
+date: "20260902-182001"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0163
+importance: critical
+confidence: high
+about: >
+  This file contains M0159's entire ℛ_req specification repeated VERBATIM TWICE within itself (an
+  internal source-file duplication, not a cross-file manifest duplicate), followed by genuinely new
+  content: a concrete executable test-vector document (TV-RREQ-FDE-2026-V1) applying M0159's own
+  Separation Test against a candidate FDE (Belnap-Dunn four-valued) kernel architecture, with actual
+  JSON test states and PASS/FAIL/PARTIAL diagnostic results. This is the first empirical execution of
+  ℛ_req-adequacy testing anywhere in this reconstruction's read order.
+introduces:
+  - "Concrete FDE kernel candidate architecture: maps propositions to the truth-value powerset 𝒫({T,F}), yielding N (neither, ∅), T (just true, {T}), F (just false, {F}), B (both, {T,F})"
+  - "Test Vector 1 (D-1.1, Knowledge Status): three JSON test states (Contradictory via conflicting sensor evidence, Unknown via no evidence, Underdetermined via a rule with a Neither-valued antecedent) — RESULT: PARTIAL FAIL. Standard FDE maps both the unassessed proposition (P_2, Unknown) and the missing-antecedent rule evaluation (P_3, Underdetermined) to the SAME value N=∅, failing to separate Unknown from Underdetermined without an explicit operational/metadata wrapper — a concrete, reproducible demonstration of a specific FDE collapse"
+  - "Test Vector 2 (D-1.2, Justification Mode): two JSON states (Inferred lineage via derivation A→B, Assumed via axiom/default) — RESULT: FAIL under pure FDE logic. v(B)={T} identically in both states; 'truth valuations alone in FDE contain no structural lineage' — pure FDE collapses Inferred and Assumed unless extended into a 'Justification-Annotated Bilattice' or 'Labeled Deductive System' — naming two specific candidate extension architectures not previously present in this reconstruction's corpus"
+  - "Test Vector 3 (D-2.1, Currency & Validity): two JSON states (Stale via a mutated dependency, Expired via TTL exceeded) — RESULT: FAIL. 'Temporal mechanics are orthogonal to static FDE truth values' — requires an 'integrated frame time projection', both collapsing to the same {T} value under pure FDE"
+  - "Test Vector 4 (D-3.2, Absence-of-Evidence vs. Evidence-of-Absence): two JSON states (empty observations vs. an explicit negative sensor result) — RESULT: PASS. FDE naturally distinguishes N=∅ (non-observation) from F={F} (explicit negative observation) — explicitly named 'one of FDE's primary structural strengths over classical logic'"
+  - "Overall compliance verdict: 'FAIL (Unaugmented FDE)' across the four Tier-P1 tests (1 PASS, 1 PARTIAL FAIL, 2 FAIL) — concluding that pure 4-valued FDE is 'necessary but insufficient' as a standalone KnowledgeOS kernel, and that an ℛ_req-compliant kernel requires FDE 'wrapped in an Annotated/Graded Labeled Frame Space that pairs FDE truth values with explicit justification graphs and temporal validity intervals'"
+defines: []
+refines:
+  - "Directly empirically operationalizes M0159's own abstract Separation Test (§5.1) against a concrete architecture for the first time in this reconstruction's read order — moving from formal specification to executed test vectors with JSON states and diagnostic PASS/FAIL results"
+  - "Independently reconfirms, via concrete new test data rather than restated argument, the corpus's own long-established KR-CONTR-FDE finding (M0116-M0137) that FDE alone is insufficient and requires the Standing×Boundary×Context×Provenance structured representation — this document's proposed 'Annotated/Graded Labeled Frame Space' is a specific architectural instantiation of that same already-frozen conclusion, now derived independently from the ℛ_req formalization rather than from the original KR-CONTR-FDE experimental line"
+contradicts:
+  - "Does NOT resolve M0160's flagged source-characterization discrepancy: this file, despite bearing a different filename ('required-distinction-universe' vs. M0159's 'required-distinction-set-analysis') and containing additional test-vector content, still reproduces M0159's exact same 4-category / ~9-distinction inventory and 2 verification criteria (duplicated, not expanded) — the '8 categories, 47 core distinctions, 12 gaps, 5 verification criteria' characterization from M0160 remains unmatched by any document located in this reconstruction's read order so far"
+repeats:
+  - "M0159's entire §1-6 content, verbatim, TWICE within this single file — an internal source-quality anomaly (a within-file duplication distinct from the manifest's cross-file DUPLICATE flagging, which did not flag this file as a duplicate since its added test-vector content makes it byte-distinct)"
+bridge_candidates:
+  - "Whether the 'Justification-Annotated Bilattice' or 'Labeled Deductive System' extension architectures named here as candidate FDE-augmentation approaches are ever taken up as formal research directions elsewhere in this reconstruction's sequence"
+  - "M0160's flagged discrepancy remains unresolved even after this document — the fuller 'ℛ_req v0.1' (8 categories/47 distinctions) implied there is still not located anywhere in this reconstruction's read order"
+mathematical_content: >
+  Gives concrete FDE truth-value computations (v(φ)∈{∅,{T},{F},{T,F}}) over specific JSON-encoded
+  test states, and states the diagnostic conclusion that D-1.1/D-1.2/D-2.1 all fail or partially fail
+  the Separation Test while D-3.2 passes — the first genuinely executable (not merely formally
+  stated) test results for ℛ_req-adequacy in this reconstruction's read order.
+gita_content: null
+kernel_content: >
+  Provides the first concrete, executed test-vector evidence for exactly which parts of ℛ_req a
+  pure-FDE kernel candidate satisfies and fails, giving the already-frozen 'FDE is insufficient'
+  finding (KR-CONTR-FDE) a fresh, independently-derived empirical confirmation via the newly-
+  formalized ℛ_req apparatus (M0159), and naming two specific candidate extension architectures
+  (Justification-Annotated Bilattice, Labeled Deductive System) not previously present in this
+  corpus.
+registry_updates:
+  - "First executed (not merely formally specified) ℛ_req-adequacy test-vector suite in this reconstruction's read order, applied to a concrete FDE kernel candidate"
+  - "Independently reconfirms the frozen KR-CONTR-FDE 'FDE insufficient' finding via a different formal route (ℛ_req's Separation Test rather than the original KR-CONTR experimental line)"
+  - "Notes an internal within-file duplication of M0159's full content (distinct from a cross-file manifest DUPLICATE)"
+  - "M0160's flagged '8 categories/47 distinctions' discrepancy remains unresolved even after this document"
+anchor_test:
+  anchor: true
+  supports_dimension: "Executed ℛ_req-adequacy test vectors against FDE; independent reconfirmation of FDE's insufficiency; candidate FDE-augmentation architectures (Justification-Annotated Bilattice, Labeled Deductive System)"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Standard 4-valued FDE maps both unassessed propositions (P_2) and rule evaluations with missing antecedents (P_3) to the same logical value N (∅). FDE fails to separate Unknown from Underdetermined without an explicit operational/metadata wrapper.\" — the D-1.1 diagnostic, a concrete demonstrated collapse"
+  - "\"Pure 4-valued First-Degree Entailment (FDE) is necessary but insufficient as a standalone KnowledgeOS kernel.\" — the document's own overall verdict"
+  - "\"FDE naturally distinguishes non-observation (N=∅) from explicit negative observation (F={F}). This is one of FDE's primary structural strengths over classical logic.\" — the one PASS result (D-3.2)"
+undefined_concepts:
+  - "The exact formal shape of the proposed 'Annotated/Graded Labeled Frame Space' — named as the required architectural enhancement but not itself specified"
+open_questions:
+  - "Are 'Justification-Annotated Bilattice' and 'Labeled Deductive System' ever developed further as candidate KnowledgeOS architectures elsewhere in this reconstruction's sequence?"
+  - "Is M0160's flagged '8 categories/47 distinctions' ℛ_req characterization ever matched by a located document?"
+tier2_triggered: true
+tier2_reason: >
+  Provides the first genuinely executed (JSON test states, diagnostic PASS/FAIL results) ℛ_req-
+  adequacy test suite in this reconstruction's read order, independently reconfirming the frozen
+  KR-CONTR-FDE 'FDE insufficient' finding via a different formal route and naming two new candidate
+  extension architectures, while leaving M0160's flagged source-characterization discrepancy
+  unresolved.

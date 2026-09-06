@@ -1,0 +1,109 @@
+sequence: M0015
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-205400_the-gap-is-much-smaller-but-not-filled-three-models-converge-but-not-completely.md
+title: "The Gap Is Much Smaller but Not Filled: Three Models Converge but Not Completely -- Contains an Explicit KnowledgeOS/Dretske/Kallenberg 'No/No/No, Strong Negative Convergence' Table Row, ALMOST CERTAINLY the Direct Source of Already-Tracked Main-Corpus Files 2321/2324's Named Finding"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: x
+  secondary: b
+  secondary_note: "the explicit synthesis/verdict document following M0010 (Dretske) and M0014 (Kallenberg), directly posing and answering this reconstruction's own central question ('do the three models converge?') in KnowledgeOS/Dretske/Kallenberg terms -- classified primary x (cross_model) because it IS the cross-model convergence assessment, not a supporting document for one"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0015
+importance: critical
+confidence: high
+about: >
+  Directly answers "have the three models (KnowledgeOS corpus, Dretske, Kallenberg) converged?":
+  "Yes -- the gap has become much smaller -- but I would not say we have filled it completely...
+  the three models converge substantially, but not completely."
+
+  **CROSS-PASS SIGNIFICANCE, THE STRONGEST MATCH IN THIS PASS SO FAR**: delivers an explicit
+  12-row convergence table with a row reading almost verbatim as the already-tracked main-corpus
+  finding: "Probability is knowledge itself | KnowledgeOS: No | Dretske: No | Kallenberg: No |
+  Strong negative convergence" -- and a second row "One scalar probability defines knowledge |
+  No | No | No | Strong negative convergence." This is ALMOST CERTAINLY the direct primary-source
+  document (or an immediate sibling of it) behind this reconstruction's already-tracked main-corpus
+  files 2321/2324, which record exactly this No/No/No negative-convergence finding citing
+  KnowledgeOS/Dretske/Kallenberg. Unlike M0010 and M0014 (which separately supply the Dretske- and
+  Kallenberg-side arguments), THIS document is the one that explicitly tabulates all three
+  traditions side by side and states the negative-convergence verdict in the same three-way form
+  the main corpus later records -- the strongest single candidate for direct lineage found so far
+  in this pass.
+
+  **DELIVERS TEN ADDITIONAL STRONG-CONVERGENCE ROWS** (world!=observation, observation!=knowledge,
+  information!=knowledge, evidence/provenance-matters, context-matters, uncertainty-matters,
+  temporal-knowledge-state, new-observations-change-state, dependencies-matter, representation!=
+  reality) -- i.e. the three traditions agree on TEN non-collapse/temporal/dependency principles in
+  addition to the two negative-convergence rows.
+
+  **DELIVERS THE FULL LAYERED PIPELINE**: X (world/latent state) -> Y_t (observation) -> E_t
+  (evidence) -> F_t (information structure) -> Pi_t (probabilistic representation) -> K_t
+  (KnowledgeOS epistemic state) -> Zero -> Determination -> Decision -> Authorization -> Action ->
+  Y_{t+1} -- the pass's most complete single-diagram synthesis of M0009-M0014's accumulated
+  apparatus.
+
+  **EXPLICITLY REJECTS BOTH K_t={p_1,...,p_n} AND K_t=Pi_t**: "Pi_t is A POSSIBLE MATHEMATICAL
+  REPRESENTATION SUPPORTING PART OF K_t," not K_t itself -- because K_t additionally contains
+  provenance, semantic dimensions, claims, evidence, determinations, qualification, revision,
+  conflicts, applicability, governance context, decisions, and actions, none of which a
+  probabilistic representation alone can carry.
+
+  **NAMES FIVE EXPLICIT REMAINING GAPS (A-E)**: (A) K_t's formal definition, still unresolved;
+  (B) the semantic dimension d_i's formal membership/atomicity/independence/composability
+  criteria, still unestablished; (C) the transformation Phi: Pi_t -> K_t itself, not yet formally
+  defined, with no proof of what information it preserves or loses; (D) the truth/reality problem
+  -- if X* (the actual world state) is unknown, the TRUE knowledge gap D(Pi_t,Pi*) may itself be
+  unobservable, requiring a rigorous treatment of verification/calibration/approximation/error/
+  confidence/sufficiency; (E) minimality of the proposed primitive set (Observation, Evidence,
+  Proposition, Relation, State, Event, ...) -- not proven irreducible.
+
+  **DELIVERS THE FORMAL CONVERGENCE VERDICT, EXPLICITLY TWO-LEVEL**: "Yes at the structural level"
+  (the three traditions converge on the same non-collapse architecture, World!=Observation!=
+  Information!=Probability!=Knowledge) but "No at the formal level -- not yet" (no proven
+  structure-preserving mapping KnowledgeOS cong Dretske cong Kallenberg exists, and none should be
+  claimed) -- replaced instead with a containment hypothesis: KnowledgeOS superset-or-equal
+  information-flow-layer superset-or-equal probabilistic-representation-where-applicable, "with
+  the exact maps still to be constructed." This is a precise, formally-hedged instance of exactly
+  this reconstruction's own founding discipline (correspondence != equivalence, no premature
+  circular validation), independently applied by the KR-SIM lane to its own three traditions.
+
+  **PROPOSES THE NEXT CONCRETE RESEARCH STEP**: construct Phi: (Observation, Evidence, F_t, Pi_t)
+  -> K_t rigorously and test whether the atomic semantic-dimension claim can serve as K_t's minimal
+  carrier, "and survives the falsification tests" before claiming "a genuinely unified mathematical
+  model rather than merely convergence by analogy."
+introduces:
+  - concept: "The explicit three-way (KnowledgeOS/Dretske/Kallenberg) 'No/No/No, strong negative convergence' table rows for 'probability is knowledge itself' and 'one scalar probability defines knowledge' -- almost certainly the direct source of already-tracked main-corpus files 2321/2324"
+  - concept: "The five named remaining gaps A-E (K_t definition, semantic-dimension criteria, Phi:Pi_t->K_t transformation, the unobservable-true-gap problem when X* is unknown, minimality of the primitive set)"
+  - concept: "The two-level convergence verdict: structural convergence (yes) vs. formal/proven-isomorphism convergence (no, not yet), with a containment hypothesis (KnowledgeOS superset-or-equal info-flow-layer superset-or-equal probabilistic-layer) replacing any claimed isomorphism"
+defines: []
+refines:
+  - concept: "Consolidates M0009-M0014's accumulated apparatus into a single layered pipeline and a single explicit convergence verdict, replacing several partially-overlapping earlier formulations of the same question (M0004, M0007, M0013)"
+contradicts: []
+repeats:
+  - concept: "The already-established rejections K_t!={p_i} and K_t!=Pi_t from M0014, restated here as the header result without new argument"
+bridge_candidates:
+  - "ALMOST CERTAINLY the direct primary-source document behind already-tracked main-corpus files 2321/2324's 'probability is not knowledge, No/No/No across KnowledgeOS/Dretske/Kallenberg' negative-convergence finding -- the strongest single lineage candidate identified in this pass so far, given the near-verbatim table-row match. Should be prioritized for direct textual comparison if/when this reconstruction is able to cross-check both documents side by side."
+  - "The two-level convergence verdict (structural yes / formal-isomorphism no) is an independent, precisely-hedged restatement of this reconstruction's own founding anti-circular-validation discipline, now applied by the KR-SIM lane to exactly the same three-tradition question this reconstruction itself investigates (Gita/mathematics/engineering), though here instantiated with KnowledgeOS/Dretske/Kallenberg rather than Gita/mathematics/engineering."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0015 as ALMOST CERTAINLY the direct primary source of already-tracked main-corpus files 2321/2324's 'No/No/No, strong negative convergence' finding on probability-is-knowledge, given a near-verbatim matching table row naming KnowledgeOS/Dretske/Kallenberg explicitly. Also delivers the pass's most complete layered pipeline synthesis, five named remaining gaps (A-E), and a precisely two-level (structural-yes/formal-no) convergence verdict directly paralleling this reconstruction's own anti-circular-validation discipline."
+anchor_test:
+  anchor: "This reconstruction's already-tracked main-corpus files 2321/2324 ('probability is not knowledge,' No/No/No across KnowledgeOS/Dretske/Kallenberg)"
+  supports_dimension: "ALMOST CERTAINLY the direct primary source -- near-verbatim table-row match naming all three traditions and the identical negative-convergence verdict"
+  refines_or_contradicts: "ancestor-of (files 2321/2324, strongly suggested, not yet directly textually confirmed)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Table row: 'Probability is knowledge itself | KnowledgeOS: No | Dretske: No | Kallenberg: No | Strong negative convergence' -- a near-verbatim match to the already-tracked main-corpus files 2321/2324 finding, naming all three traditions explicitly and stating the identical negative-convergence verdict."
+  - "'We do NOT currently have a proven structure-preserving mapping KnowledgeOS cong Dretske cong Kallenberg. And we should NOT claim that.' -- an explicit, precisely-worded refusal of premature isomorphism claims, directly instantiating this reconstruction's own founding anti-circular-validation rule."
+undefined_concepts:
+  - "The precise formal content of the proposed transformation Phi: Pi_t -> K_t -- named as the next concrete research target, not yet constructed in this document"
+open_questions:
+  - "Direct textual comparison between this document and already-tracked main-corpus files 2321/2324 would confirm (or refine) the 'almost certainly the direct source' hypothesis raised here -- worth flagging for a future cross-pass reconciliation step, potentially at the global-reclassification stage (MD-004)."
+tier2_triggered: true
+tier2_reason: "Contains a near-verbatim match to an already-tracked main-corpus negative-convergence finding (files 2321/2324), making it the strongest single lineage candidate identified in this pass so far; also delivers the pass's most complete layered-pipeline synthesis, five clearly named remaining gaps, and a precisely two-level convergence verdict -- critical importance and full tier-2 treatment clearly warranted."

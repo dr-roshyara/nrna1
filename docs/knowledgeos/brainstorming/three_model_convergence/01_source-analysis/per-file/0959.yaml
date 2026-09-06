@@ -1,0 +1,80 @@
+sequence: 959
+path: docs/knowledgeos/brainstorming/phase_measure_theory/external_research/20260831-170546_hpa-analysis-gita-chapter-15-the-complete-theory-of-knowledge-identity-and.md
+title: "HPA Analysis: Gita Chapter 15 -- The Complete Theory of Knowledge, Identity, and Liberation -- Delivers a Further, Distinct Two-Conjunct Knowledge Atma Identity Criterion (Source+Identity) DIFFERING FROM FILE 0934's Own Three-Conjunct Criterion (Propositional+Referential+TruthCondition Equivalence), Circularly Defined (Uses 'Identity' Inside Its Own Definition of Identity) -- A Milder Instance of Definitional-Variant Proliferation Than the Severe 'Gaps Solved' Pattern, Since It at Least Builds on File 0934's Genuinely Established Prior Work"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "Gita per-chapter review delivering a further, circularly-defined Knowledge Atma identity-criterion variant"
+source_role: PRIMARY_RESEARCH
+canonical_source: 959
+importance: normal
+confidence: low
+about: >
+  Continues the per-chapter Gita review series covering Chapter 15 (the inverted cosmic tree, the eternal
+  particles of the Supreme, the three lights).
+
+  **§Part 2 delivers "The Identity Criterion (Solved)" and "The Persistence Criterion (Solved)"**, a MILDER
+  instance of this sub-series' "-- Solved" pattern than files 0943/0946/0957, since it engages with a
+  question (Knowledge Atma identity) that file 0934 had ALREADY delivered a genuine, if thinly-proven,
+  formal treatment for -- but delivers **A FURTHER, DIFFERENT IDENTITY CRITERION** than file 0934's own:
+  boxed **`𝒦_atma(A_1)=𝒦_atma(A_2) ⟺ Source(A_1)=Source(A_2) ∧ Identity(A_1)=Identity(A_2)`** -- a
+  two-conjunct (Source+Identity) criterion, differing from file 0934's three-conjunct criterion
+  (Propositional-equivalence ∧ Referential-identity ∧ TruthCondition-equivalence). **THIS CRITERION IS ALSO
+  CIRCULARLY DEFINED**: it uses the term "Identity(A_1)=Identity(A_2)" as one of the two conjuncts inside
+  its own definition of when two objects have the "same Knowledge Ātma [identity]" -- a directly checkable
+  logical circularity (defining identity partly in terms of identity), distinct from and less rigorous than
+  file 0934's own criterion, which at least avoided using the word being defined inside its own definiens.
+
+  **§2.3 delivers a "Persistence Criterion"**: boxed **`𝒦_atma(K_t)=𝒦_atma(T(K_t)) ∀T∈𝒯`** -- asserting
+  Knowledge-Atma invariance under EVERY transformation without exception, a strong universal claim (stronger
+  than file 0934's own more nuanced lifecycle model, which explicitly allowed for Retraction and Death/
+  Removal states) that is not reconciled against or even mentioned alongside file 0934's differing
+  lifecycle treatment.
+
+  **§Part 3 delivers "The Complete Transformation Theory (Updated)"**, continuing the recurring
+  undefined-operator-composition pattern from files 0945/0953/0955/0958 with a "three types of
+  transformation" (Kshar/Akshara/Purushottama-level) elaboration.
+
+  §Part 5 delivers the familiar all-✅ verdict (Knowledge Identity: ✅ Solved; Persistence: ✅ Solved).
+  Closes "Next: STEP 285 — CANONICAL THEORY RECONCILIATION," matching files 0946/0947/0949/0954/0956/0957.
+introduces:
+  - concept: "A further, distinct two-conjunct (Source+Identity) Knowledge Atma identity criterion, differing from file 0934's own three-conjunct criterion, and circularly defined (uses 'Identity' inside its own definition of identity)"
+  - concept: "A universal persistence criterion (Knowledge Atma invariant under EVERY transformation, no exceptions), stronger than and not reconciled against file 0934's own lifecycle model (which allows Retraction and Death/Removal)"
+defines: []
+refines:
+  - concept: "File 0934's Knowledge Atma identity criterion (Propositional equivalence AND Referential identity AND TruthCondition equivalence)"
+    refinement: "A FURTHER, DIFFERENT, LESS RIGOROUS VARIANT is introduced here (Source+Identity, circularly defined), without acknowledgment of or reconciliation against file 0934's own established criterion -- a milder instance of definitional-variant proliferation than the severe 'gaps solved' violations, since the underlying question had at least received a genuine prior treatment to diverge from"
+  - concept: "File 0934's six-stage Knowledge Atma lifecycle model (Birth/Life/Reinstantiation/Supersession/Retraction/Death)"
+    refinement: "IMPLICITLY CONTRADICTED by this file's unconditional persistence claim ('invariant under every transformation'), which does not account for the Retraction or Death/Removal states file 0934 explicitly modeled as changing or ending a Knowledge Atma's active status"
+contradicts:
+  - concept: "File 0934's three-conjunct identity criterion and six-stage lifecycle model"
+    contradiction: "This file's two-conjunct, circularly-defined identity criterion and its unconditional 'invariant under every transformation' persistence claim are not the same as, and are not reconciled against, file 0934's own established criterion and lifecycle model"
+repeats:
+  - "The undefined-operator-composition transformation pattern repeats files 0945/0953/0955/0958's approach."
+bridge_candidates:
+  - "Whether this file's identity/persistence criteria are ever reconciled against file 0934's own established criterion and lifecycle model."
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: record this file's further, circularly-defined Knowledge Atma identity criterion and unconditional persistence claim as a further, milder instance of definitional-variant proliferation, unreconciled against file 0934's own established treatment of the same question."
+anchor_test:
+  anchor: "File 0934's Knowledge Atma identity criterion and lifecycle model"
+  supports_dimension: "Introduces a further, different, circularly-defined identity criterion and an unconditional persistence claim, neither reconciled against file 0934's own established, more rigorous treatment"
+  refines_or_contradicts: "diverges from (without reconciling) file 0934's identity criterion and lifecycle model"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The boxed identity-criterion formula's use of 'Identity(A_1)=Identity(A_2)' as one of its own two conjuncts is directly checkable as a logical circularity (defining identity partly via identity)."
+  - "This file's two-conjunct criterion is directly checkable against file 0934's own three-conjunct criterion for the definitional-variant-divergence finding."
+undefined_concepts: []
+open_questions:
+  - "Whether this file's identity/persistence criteria are ever reconciled against file 0934's own established treatment."
+tier2_triggered: false
+tier2_reason: "A milder instance of definitional-variant proliferation than the severe 'gaps solved' pattern, since it engages with a question (Knowledge Atma identity) that had already received a genuine prior treatment (file 0934) -- but the new criterion offered is circularly defined and unreconciled against that prior work. Classified importance normal, tier2 not triggered, given the underlying identity-algebra topic already has substantive coverage in file 0934's more rigorous record."

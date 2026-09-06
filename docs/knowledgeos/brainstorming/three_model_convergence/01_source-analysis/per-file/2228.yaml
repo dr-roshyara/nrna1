@@ -1,0 +1,117 @@
+sequence: 2228
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-201424_step_287_reviewer-drafts-step-287-invariants-research-and-falsification-mandate.md
+title: "Step 287 -- Invariants Research and Falsification Mandate: THE LITERAL ORIGIN OF THE VACUITY/DEGENERACY-AUDIT DISCIPLINE That Became a Standing Programme-Wide Rule ('No Vacuous Invariant Counts as Substantively Established'), Delivering the Original 12-Item Candidate Invariant Matrix (I-01 Through I-12) and the Four-Class Invariant Taxonomy That the Already-Tracked '7 Candidates, 0 Established' Finding Directly Derives From"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the founding mandate for the entire already-tracked Step-287-Invariants research programme, delivering the literal origin of the degeneracy-audit discipline"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2228
+importance: critical
+confidence: high
+about: >
+  "STEP 287 — INVARIANTS `ℐ`," status "RESEARCH/TYPING/FALSIFICATION," explicitly NOT "STEP 287 — Invariants:
+  Canonical." The founding mandate for the entire already-tracked Step-287-Invariants research programme
+  (already tracked via `REFINED-STEP-287-INVARIANTS.md`'s "7 candidates, 0 established" finding, file 1117's
+  headline 13), directly deriving from the already-tracked Step-286 ontology (file 2227) with the precise
+  question shift: Step 286 asked "What exists?"; Step 287 asks "What must remain true?"
+
+  **DELIVERS THE LITERAL ORIGIN OF THE VACUITY/DEGENERACY-AUDIT DISCIPLINE THIS RECONSTRUCTION HAS TRACKED
+  BECOMING A STANDING PROGRAMME-WIDE RULE ACROSS THE ENTIRE EQUALITY RESEARCH ARC (files 1057-1058, 1069,
+  1077, 1083, 1092, 1116)**: `§18`, "The Vacuity Problem," directly cites "the exact defect discovered in
+  D285-5: a relation can silently carry the conclusion" and delivers the founding methodological requirement:
+  "For every invariant: 1. establish that the antecedent can actually hold; 2. establish that the transition
+  class is non-empty; 3. establish that the equality relation permits meaningful comparison; 4. only then
+  evaluate preservation." Boxed: "NO VACUOUS INVARIANT COUNTS AS SUBSTANTIVELY ESTABLISHED." This is the
+  DIRECT, LITERAL ANCESTOR of the already-tracked standing rule ("no algebraic property may be accepted from
+  a zero-counterexample result without a degeneracy check," file 1058) that this reconstruction has tracked
+  catching multiple vacuous PASSes throughout the entire subsequent research arc (`≈_∅`/`≈_{full}`, file
+  1058; `≈_S∘≈_V`, file 1088; the supersession-merge model, file 1077/1083's "second vacuous PASS").
+
+  **DELIVERS THE ORIGINAL 12-ITEM CANDIDATE INVARIANT MATRIX (`I-01` THROUGH `I-12`)**, the direct
+  predecessor of the already-tracked "7 candidates, 0 established" `REFINED-STEP-287-INVARIANTS` finding:
+  `I-01` Knower identity persistence (strong candidate); `I-02` relevant provenance survival ("open"); `I-03`
+  admissibility outcome-independence (supported, already-tracked `I-V`'s direct ancestor -- see below);
+  `I-04` `Command≠Transformation` (supported, already-tracked typing invariant); `I-05` `Validity≠Outcome`
+  (supported); `I-06` Knower-not-in-observed-state (supported candidate, already-tracked `𝒩∉K`); `I-07`
+  Reality≠Observation (supported); `I-08` Observation≠Interpretation (supported candidate, already-tracked
+  `C14`, file 1106); `I-09` observation-status preservation (candidate); `I-10` semantic-state preservation
+  under selected transformations (open); `I-11` provenance-sensitive preservation (open); `I-12` universal
+  observer-independent state invariant ("open/likely too strong").
+
+  **DELIVERS THE PRECISE ORIGIN OF THE ALREADY-TRACKED `I-V` INVARIANT (`CORPUS-SUPPORTED`, "one of only two
+  invariants testable today," already-tracked across files 1104/1109/1111)**: `I-05`/`I_ADM` here proposed
+  as "Validity≠Outcome," "Admissibility is evaluated from the applicable Preconditions, Invariants, Authority
+  and NOT from the eventual outcome," with the precise, disciplined refinement rejecting an earlier weaker
+  notation: "This should NOT be expressed as `Outcome⊥Valid`... The correct formulation is predicate-level:
+  `Outcome(o)` is NOT A CONJUNCT of `Admissible(o,K)`."
+
+  **DELIVERS THE ORIGINAL FOUR-CLASS INVARIANT TAXONOMY**, the direct ancestor of the already-tracked
+  "`𝓘` is NOT one mathematical object" finding (already-tracked, file 1117's headline 13's "layer invariants
+  hold statically, with no `δ`; forcing them into the transition schema makes them vacuously true. Merging
+  them under one symbol is a category error"): Identity invariants (`𝒩` persistence, provenance), Typing
+  invariants (`Command≠δ`, `𝒩∉K`), Transition invariants (`P(K_t)→P(K_{t+1})`, admissibility, lineage), and a
+  proposed fourth class, Layer invariants (`Reality≠Observation`, `Observation≠Knower`, `Observation≠
+  Interpretation`). Explicitly flags "whether these all legitimately belong to one mathematical object `ℐ`
+  is itself a Step-287 RESEARCH QUESTION" -- directly anticipating the already-tracked later finding that
+  `ℐ` is not one object.
+
+  **DELIVERS THE ORIGINAL, PRECISE FALSIFICATION PROTOCOL**: for each candidate `P`, find a witness `K_0,o`
+  such that `P(K_0)` holds, `¬P(δ(K_0,o))`, and `Admissible(o,K_0)` -- explicitly noting "an invariant that
+  only survives BECAUSE NO ADMISSIBLE TRANSITION HAS BEEN TESTED is not established," the direct methodological
+  ancestor of the already-tracked disciplined falsification-attempt requirement applied throughout Steps
+  288-291's already-tracked negative-results ledgers.
+
+  **DELIVERS THE FULL, EXPLICIT "WHAT STEP 287 MUST NOT DO" LIST (§22)**, a ten-item prohibition catalogue
+  including several already-tracked standing disciplines at their origin: "assume semantic equality includes
+  `Π`" (already-tracked Decision 3); "assume observational equality without defining the observation set"
+  (already-tracked `𝒪_K` blocker); "repair rejected `Θ` constructions... introduce `𝒦_ātma`... introduce a
+  universal Knower into the formal KnowledgeOS model" (already-tracked `RX` rejections, file 2227).
+
+  Confirms the disciplined final boundary statement (§26): "Step 286: Ontology ⇓ Step 287: Invariant Research
+  ⇓ Future step: Invariant Canonization" -- and the explicit recommendation, matching the already-tracked
+  final status: "write Step 287 now, but label it explicitly `RESEARCH/FALSIFICATION`, not `CANONICAL`...
+  do NOT let an apparently obvious formal object become canonical merely because the architecture needs a
+  name for it."
+introduces:
+  - concept: "The literal origin of the vacuity/degeneracy-audit discipline (no vacuous invariant counts as substantively established), directly citing the D285-5 defect and becoming the founding methodological requirement that this reconstruction has tracked catching multiple vacuous passes throughout the entire subsequent research arc"
+  - concept: "The original 12-item candidate invariant matrix (I-01 through I-12), the direct predecessor of the already-tracked 7-candidates-0-established REFINED-STEP-287-INVARIANTS finding"
+  - concept: "The precise origin of the already-tracked I-V invariant (I-05, Validity is not a conjunct of Admissibility), including the explicit rejection of an earlier weaker orthogonality notation"
+  - concept: "The original four-class invariant taxonomy (Identity, Typing, Transition, Layer), directly anticipating the already-tracked finding that the invariant universe is not one mathematical object"
+  - concept: "The precise falsification protocol requiring a genuine admissible-transition witness, the methodological ancestor of the disciplined negative-results ledgers applied throughout Steps 288-291"
+defines:
+  - term: "I-01 through I-12"
+    definition: "The original 12-item candidate invariant register: Knower identity persistence, provenance survival, admissibility outcome-independence, Command-not-Transformation, Validity-not-Outcome, Knower-not-in-state, Reality-not-Observation, Observation-not-Interpretation, observation-status preservation, semantic-state preservation, provenance-sensitive preservation, and a universal observer-independent invariant flagged as likely too strong"
+refines:
+  - concept: "This reconstruction's already-tracked degeneracy-audit/vacuous-PASS discipline (files 1057-1058, 1069, 1077, 1083, 1092)"
+    refinement: "TRACED TO ITS LITERAL ORIGIN: this document's SS18 vacuity-problem section founds the exact discipline this reconstruction has tracked being applied repeatedly throughout the entire subsequent research arc"
+  - concept: "This reconstruction's already-tracked 7-candidates-0-established REFINED-STEP-287-INVARIANTS finding and I-V invariant (files 1104, 1109, 1111, 1117)"
+    refinement: "TRACED TO THEIR ORIGIN: the original 12-item matrix and the precise I-05/I_ADM derivation of what became the CORPUS-SUPPORTED I-V invariant"
+  - concept: "This reconstruction's already-tracked finding that the invariant universe 𝓘 is not one mathematical object (file 1117's headline 13)"
+    refinement: "TRACED TO ITS ORIGIN: this document's proposed four-class taxonomy (Identity, Typing, Transition, Layer) explicitly anticipates and motivates the later finding"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as the literal origin of the vacuity/degeneracy-audit discipline (a standing programme-wide rule applied repeatedly throughout the equality research arc), the original 12-item candidate invariant matrix, the precise origin of the I-V invariant, and the four-class invariant taxonomy that anticipates the later finding that the invariant universe is not one mathematical object."
+anchor_test:
+  anchor: "This reconstruction's already-tracked degeneracy-audit discipline (files 1057-1058, 1069, 1077, 1083, 1092) and the 7-candidates-0-established Invariants finding (file 1117)"
+  supports_dimension: "Traces the standing degeneracy-audit rule to its literal origin and grounds the invariants finding at its founding mandate with the original 12-item matrix"
+  refines_or_contradicts: "refines (grounds at the origin) the prior tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The vacuity-discipline origin and the I-V invariant derivation are directly checkable against files 1057-1058, 1077, 1083, and 1104/1109/1111's own already-documented findings for exact consistency of this origin grounding."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers the literal origin document for the entire already-tracked Step-287-Invariants research programme, most importantly founding the vacuity/degeneracy-audit discipline this reconstruction has tracked becoming a standing programme-wide rule applied repeatedly throughout the entire subsequent equality research arc. Also delivers the original 12-item candidate invariant matrix, the precise I-V invariant origin, and a four-class invariant taxonomy that directly anticipates the later established finding that the invariant universe is not one mathematical object. Classified importance critical and confidence high given the foundational, standing-discipline-establishing significance of this document."

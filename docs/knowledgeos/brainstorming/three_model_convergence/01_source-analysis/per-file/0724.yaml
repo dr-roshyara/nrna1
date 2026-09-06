@@ -1,0 +1,196 @@
+sequence: 724
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-125843_step-137-the-knowledgeos-domain-model.md
+title: "Step 137 -- Delivers the Finalized Eighteen-Object Canonical KnowledgeOS Domain Model With Full Conceptual Schemas, Aggregate Candidates, a Mutable-vs-Immutable Persistence Distinction, a Categorized Graph-Edge Taxonomy, the Complete End-to-End 'Strongest Chain,' and the Precise Capstone Definition 'KnowledgeOS Is a Governed Engineering Knowledge and Assurance Platform...' -- DECISIVELY RESOLVES the Three-Way Candidate-Fundamental-Unit Question by Quiet Supersession: Neither TraceableKnowledgeEpisode (0703) Nor GovernedEngineeringFact (0710) Is Ever Mentioned, the Eighteen-Object Multi-Aggregate Model Effectively Replacing the 'Single Fundamental Unit' Quest Without Explicit Acknowledgment -- Opens Step 138, Aggregates/Commands/Domain Events"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 137 -- The KnowledgeOS Domain Model', promised at 0723's close; finalizes the eighteen-object canonical domain model built incrementally since 0711 (nine objects) through 0722/0723 (sixteen/eighteen-concept lists), with full conceptual schemas, aggregate candidates, and the reconstruction's most complete end-to-end semantic chain -- and, by never mentioning either 0703's TraceableKnowledgeEpisode or 0710's GovernedEngineeringFact, effectively and finally resolves the long-tracked three-way candidate-fundamental-unit question through quiet supersession rather than explicit reconciliation"
+source_role: PRIMARY_RESEARCH
+canonical_source: 724
+importance: critical
+confidence: high
+about: >
+  Opens restating `Domain Model≠Database Model≠API Model`, then delivers the finalized eighteen-object
+  canonical KnowledgeOS domain model with full conceptual (not implementation) schemas for each: Authority
+  (id/type/scope/validity/delegation); Decision (identity/title/rationale/authority/status/effective
+  period/supersedes/governed objects, lifecycle `Draft→Reviewed→Approved→Effective→Superseded`); Policy
+  (`Decision→establishes→Policy`, kept a distinct concept from Decision); Exception
+  (scope/reason/authority/validFrom/validUntil/affectedPolicy/conditions, "expiration is particularly
+  important... should not silently become permanent"); Knowledge (explicitly NOT a generic all-containing
+  aggregate, but a category/root concept around specific Claims); Claim (subject/predicate/object-value/
+  status/validity/provenance/supporting evidence, distinguished from Evidence); Evidence (identity/source/
+  capturedAt/capturedBy/content-reference/integrity/provenance, referencing rather than duplicating its
+  source); Observation (explicitly temporal, `Observation→supports→Claim`, with a precise worked contrast:
+  "Nexus runs 3.69.0" is a Claim, "at 10:32 the Nexus API returned version 3.69.0" is an Observation);
+  FitnessRule (identity/version/expression/scope/severity/source policy/checker, with `Rule≠Checker`
+  reconfirmed: "one rule could theoretically have multiple checkers"); Verification
+  (`=Rule+Subject+ObservedState+Time+Result`, verdicts `PASS/FAIL/UNKNOWN/NOT_APPLICABLE`, "why UNKNOWN
+  matters" — an absent result must never automatically become PASS); Finding (typed:
+  `NON_CONFORMANCE/EVIDENCE_GAP/CONFLICT/STALE_KNOWLEDGE/UNAUTHORIZED_CHANGE/ARCHITECTURE_DRIFT`);
+  Recommendation (`≠Decision`); Authorization (`=Actor+Action+Scope+Authority+Validity`, distinct from
+  agent capability); Action (linked to Actor/Authorization/Target/Timestamp/Evidence); Agent
+  (identity/implementation/version/capabilities/trust-policy profile); Session
+  (agent/task/context/recommendations/actions/observations/evidence, "session state should remain
+  subordinate to governed domain state"); Artifact (GitCommit/PullRequest/ContainerImage/NexusRepository/
+  KubernetesDeployment, referenced through integration contracts, never owned); and RuntimeState (observed
+  from an ExternalSystem, never owned by KnowledgeOS).
+
+  **This file constitutes the decisive, if implicit, resolution of the reconstruction's long-tracked
+  three-way candidate-fundamental-unit question.** Despite explicitly framing itself as deriving "the first
+  canonical semantic model" and despite 0723's close explicitly flagging this file as the natural place to
+  address the question, **this file never once mentions 0703's `TraceableKnowledgeEpisode` or 0710's
+  `GovernedEngineeringFact` by name.** It instead finalizes, without comment on the prior competing
+  proposals, the eighteen-object multi-aggregate model that has been incrementally built since 0711's
+  nine-object information model, through 0722's sixteen-concept ownership matrix and 0723's eighteen-object
+  candidate list. The effective resolution is that the reconstruction's own trajectory abandoned the
+  "single fundamental unit" framing (one aggregate root that everything else derives from) in favor of a
+  multi-aggregate model organized into five ownership groups (Governance: Decision/Policy/Exception/
+  Authority; Knowledge: Claim; Evidence: Observation/Evidence; Assurance: FitnessRule/Verification/Finding;
+  Agent: Agent/Session/Recommendation/Authorization/Action; External: Artifact/RuntimeState) — a genuine and
+  significant architectural conclusion (multiple first-class aggregates coordinated by relationships is more
+  defensible DDD practice than forcing one universal fundamental unit), but one arrived at through quiet
+  supersession rather than an explicit "TraceableKnowledgeEpisode and GovernedEngineeringFact are hereby
+  superseded by/reconciled into the following model" statement. This is recorded as a decisive finding for
+  the eventual §29-gated canonical synthesis: the three-way question does not get an explicit answer, but it
+  does get a de facto one.
+
+  Delivers the three fundamental axes (Authority: who may decide? / Knowledge: what do we know/believe? /
+  Reality: what actually happened?), with Assurance connecting `Expected↔Observed` and Governance deciding
+  the disposition when they differ, and the three-state model (`ExpectedState, ObservedState,
+  EffectiveState=ExpectedState+ApplicableGovernanceExceptions`, `Conformance=Compare(EffectiveState,
+  ObservedState)`) explicitly called "one of the most important semantic relationships in the entire
+  model," consolidating 0716's/0721's prior EffectiveState formula into the canonical model directly.
+
+  Delivers the complete canonical relationship graph (unifying the Governance/Assurance side, the Reality
+  side, and the Agent side into one diagram meeting at the Assurance Graph) and "one graph, different
+  ownership," reconfirming 0722's ownership matrix in explicit graph-annotation form. Delivers Aggregate
+  candidates directly derived from the ownership groups (Decision/Policy/Exception for Governance; Claim for
+  Knowledge; EvidenceRecord for Evidence; FitnessRule/Verification/Finding for Assurance; Session for Agent;
+  Action for Execution), explicitly "candidates, not final implementation decisions."
+
+  **Delivers a genuinely valuable Mutable-vs-Immutable persistence-relevant distinction** (§137.28-137.31):
+  More-mutable concepts (Policy, Knowledge lifecycle, current applicability, workflow state) vs.
+  Primarily-immutable concepts (Evidence, Observation, Verification execution, Action record, historical
+  decision versions), with the precise reasoning that Verification should probably be immutable (a new
+  execution creates `Verification_2` rather than editing `Verification_1`, "this preserves auditability"),
+  the same for Evidence (append-oriented, immutable captured records rather than in-place versioning), and
+  the same for Action ("we should not rewrite history to say it happened differently... naturally
+  event-like and historical") — "this distinction will later influence persistence architecture," a mature,
+  event-sourcing-adjacent design principle not previously stated this precisely.
+
+  Delivers a Domain-event enumeration (`DecisionApproved, PolicyChanged, ExceptionGranted,
+  KnowledgeVerified, EvidenceCaptured, VerificationCompleted, FindingRaised, ActionAuthorized,
+  ActionExecuted`) with an explicit event chain for a production change
+  (`ActionAuthorized→ActionExecuted→EvidenceCaptured→VerificationCompleted`), "these events should be
+  considered domain semantics first. Messaging technology comes later," reconfirming 0712's/0716's
+  event-ownership and technology-independence discipline.
+
+  **Delivers a comprehensive, systematically categorized Graph-edge taxonomy organized by owning context**
+  (§137.34), the most complete such organization in the reconstruction: Governance
+  (`authorizes, governs, establishes, supersedes, excepts`); Knowledge (`states, describes, derivedFrom,
+  validDuring`); Evidence (`supports, observedBy, capturedFrom`); Assurance
+  (`evaluates, verifiedBy, producesFinding`); Execution (`performedBy, authorizedBy, changes, produces`) —
+  extending 0700's/0711's/0716's prior relationship-vocabulary work with an explicit per-owning-context
+  organization for the first time. Delivers Graph-edge integrity (every important edge should answer "why
+  does this relationship exist?" via `Source/Evidence/EstablishedAt/EstablishedBy` metadata) and the
+  temporal graph `G(t)` enabling `HistoricalTrace`, worked through concrete Historical-query
+  (`RuntimeState(t)→Verification(t)→Rule(t)→EffectivePolicy(t)→Decision(t)`) and Current-query
+  (`Service→CurrentDecision→CurrentPolicy→CurrentRules`) examples.
+
+  Delivers a principled Agent-context-generation algorithm (`G_T=RelevantSubgraph(G,T,t)`, filtered by
+  authority/validity/scope/evidence-quality/permissions, output `ContextPackage`), a ten-field
+  ContextPackage structure template, Context provenance (every item retains a `SourceID`, "an agent can
+  answer 'where did this information come from?' without relying on its own language-model memory"), and
+  worked Agent-response/action-provenance examples (`Recommendation R17 basedOn:[D42,K17,E91,F31]`;
+  `Action A81` with agent/session/recommendation/authorization/target/evidence fields, "now we have
+  accountability") — directly consolidating 0710's/0711's/0716's/0717's/0723's context-construction and
+  accountability discipline.
+
+  **Delivers "the strongest chain," the most complete single end-to-end semantic chain diagram in the
+  reconstruction**: `Authority→Decision→Policy→Rule→Context→Recommendation→Authorization→Action→Evidence→
+  Verification`, with `Finding` feeding back into `Governance`, and the corresponding Closed-loop
+  architecture diagram (`GOVERNANCE→EXPECTATION→ASSURANCE→AGENT→EXECUTION→REALITY→EVIDENCE→VERIFICATION→
+  {PASS,FAIL→GOVERNANCE}`), named "the KnowledgeOS closed engineering loop."
+
+  **Delivers the file's precise final characterization of KnowledgeOS**, explicitly rejecting three
+  inadequate prior framings ("a repository of engineering documents," "an AI assistant platform," "merely an
+  architecture governance tool") in favor of: "**KnowledgeOS is a governed engineering knowledge and
+  assurance platform that connects organizational intent, engineering decisions, agent actions, runtime
+  observations, and evidence**" — arguably the single cleanest, most comprehensive "what is KnowledgeOS"
+  definition produced anywhere in the reconstruction to date. Delivers the semantic-center capstone equation
+  `GovernedExpectation↔ObservedReality↔Evidence`, with agents as controlled actors operating between them.
+
+  Delivers Step 137's verdict, finalizing the eighteen concepts into five boxed groups (Authority/Decision/
+  Policy/Exception; Knowledge/Claim/Observation/Evidence; FitnessRule/Verification/Finding; Agent/Session/
+  Recommendation/Authorization/Action; Artifact/RuntimeState), "the crucial relationships form the Assurance
+  Graph."
+
+  **Closes by opening "Step 138 — Aggregates, Commands and Domain Events,"** promising to go one level
+  deeper into tactical DDD: which concepts can change independently, which state transitions require
+  invariants, and what commands/events cross bounded-context boundaries — deriving
+  `Aggregates+Commands+DomainEvents+CrossContext Contracts`, explicitly framed as the step that "will
+  finally allow us to translate the KnowledgeOS semantic model into an implementable DDD architecture
+  without prematurely choosing databases, microservices, or frameworks." No actual code execution,
+  repository inspection, or verified filesystem/architecture claim reported anywhere in this file; every
+  schema, diagram, and worked example remains a target-architecture specification.
+introduces:
+  - concept: "The finalized eighteen-object canonical KnowledgeOS domain model with full conceptual schemas"
+  - concept: "DECISIVE (implicit) resolution of the three-way candidate-fundamental-unit question via quiet supersession"
+  - concept: "The Mutable-vs-Immutable persistence-relevant distinction"
+  - concept: "The systematically categorized Graph-edge taxonomy organized by owning context"
+  - concept: "'The strongest chain' — the most complete single end-to-end semantic chain diagram in the reconstruction"
+  - concept: "The precise capstone definition: 'KnowledgeOS is a governed engineering knowledge and assurance platform...'"
+  - concept: "The semantic-center equation: GovernedExpectation↔ObservedReality↔Evidence"
+  - concept: "Opens Step 138 — Aggregates, Commands and Domain Events"
+defines:
+  - concept: "The three-state model (ExpectedState/ObservedState/EffectiveState)"
+    definition: "EffectiveState=ExpectedState+ApplicableGovernanceExceptions; Conformance=Compare(EffectiveState,ObservedState) — the canonical formalization of how a governance exception legitimately modifies what counts as compliant without altering the underlying base policy"
+  - concept: "Mutable vs. Immutable domain concepts"
+    definition: "Policy, knowledge lifecycle, current applicability, and workflow state are relatively mutable and may be updated in place; Evidence, Observation, Verification executions, Action records, and historical decision versions are primarily immutable and should be appended to (a new record superseding, never overwriting, the old) to preserve auditability — a distinction intended to inform later persistence-architecture decisions"
+  - concept: "The strongest chain"
+    definition: "The complete end-to-end semantic path Authority→Decision→Policy→Rule→Context→Recommendation→Authorization→Action→Evidence→Verification, with Finding feeding back into Governance — the fullest single-diagram expression of the reconstruction's entire governed-engineering lifecycle"
+refines:
+  - concept: "0703's TraceableKnowledgeEpisode and 0710's GovernedEngineeringFact (the three-way candidate-fundamental-unit question)"
+    refinement: "Effectively and finally resolved via quiet supersession: neither proposal is mentioned, and the reconstruction's own incremental trajectory (0711→0722→0723→0724) settles on an eighteen-object multi-aggregate model rather than a single fundamental unit -- a de facto architectural conclusion never explicitly stated as such"
+  - concept: "0716's/0721's EffectiveState=BaseArchitecture+ApplicableExceptions formula"
+    refinement: "Directly consolidated into the canonical domain model's three-state model as one of its most important relationships"
+  - concept: "0700's/0711's/0716's relationship/edge vocabularies"
+    refinement: "Extended with the first systematically categorized graph-edge taxonomy organized explicitly by owning bounded context"
+  - concept: "0710's/0711's/0716's/0717's/0723's context-construction and accountability discipline"
+    refinement: "Directly consolidated into a principled agent-context-generation algorithm (G_T=RelevantSubgraph(G,T,t)) and concrete Recommendation/Action provenance examples"
+  - concept: "the corpus's several prior partial characterizations of what KnowledgeOS is (0705's Constitution, 0716's Assurance Graph, 0723's accountability graph)"
+    refinement: "Consolidated into a single, precise, comprehensive capstone definition explicitly rejecting three inadequate framings"
+contradicts: []
+repeats:
+  - "Substantially consolidates and finalizes the object model incrementally built across 0711 (nine objects), 0722 (sixteen concepts), and 0723 (eighteen candidates), rather than introducing an entirely new object set."
+bridge_candidates:
+  - "Read 0725 (Step 138 — Aggregates, Commands and Domain Events) with standard attention: check whether the tactical-DDD derivation (aggregate boundaries, commands, cross-context contracts) surfaces any further reconsideration of the eighteen-object model's completeness, and whether the quiet supersession of TraceableKnowledgeEpisode/GovernedEngineeringFact is ever explicitly acknowledged anywhere later in the corpus."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the DECISIVE finding that the three-way candidate-fundamental-unit question (0703's TraceableKnowledgeEpisode, 0710's GovernedEngineeringFact, 0711's KnowledgeObject/Claim pairing) is resolved via quiet supersession -- the finalized eighteen-object canonical domain model at 0724 never mentions either named proposal, settling instead on a multi-aggregate model without explicit reconciliation."
+  - "dimension-registry.md: record the finalized eighteen-object canonical KnowledgeOS domain model with full schemas, the Mutable-vs-Immutable persistence distinction, the categorized graph-edge taxonomy, 'the strongest chain' end-to-end diagram, and the precise capstone definition of KnowledgeOS."
+  - "dimension-registry.md: flag this file (0724) as a primary candidate reference artifact for the eventual §29-gated canonical synthesis, specifically for its role in resolving (by omission) the fundamental-unit question."
+anchor_test:
+  anchor: "0703's TraceableKnowledgeEpisode and 0710's GovernedEngineeringFact (the three-way candidate-fundamental-unit question, tracked since 0703); 0711's nine-object information model; 0716's/0721's EffectiveState formula; 0700's/0711's/0716's relationship vocabularies; 0710's/0711's/0716's/0717's/0723's context-construction and accountability discipline; 0705's/0716's/0723's prior partial KnowledgeOS characterizations"
+  supports_dimension: "Delivers the finalized eighteen-object canonical KnowledgeOS domain model with complete conceptual schemas, consolidating the incremental object-model work built since 0711. Most significantly, this file constitutes the decisive, if entirely implicit, resolution of the reconstruction's long-tracked three-way candidate-fundamental-unit question: neither prior named proposal (TraceableKnowledgeEpisode, GovernedEngineeringFact) is ever mentioned, and the reconstruction's own trajectory settles on a multi-aggregate model instead of a single fundamental unit -- a genuine architectural conclusion reached via supersession rather than explicit reconciliation. Delivers a valuable Mutable-vs-Immutable persistence distinction, the most systematically categorized graph-edge taxonomy in the reconstruction, the fullest single end-to-end semantic chain diagram, and the cleanest, most comprehensive capstone definition of what KnowledgeOS is produced anywhere in the reconstruction. Closes with a well-motivated continuation into Step 138's standard tactical-DDD derivation"
+  refines_or_contradicts: "directly and substantially extends 0711's nine-object information model, 0716's/0721's EffectiveState formula, 0700's/0711's/0716's relationship vocabularies, 0710's/0711's/0716's/0717's/0723's context-construction/accountability discipline, and 0705's/0716's/0723's prior KnowledgeOS characterizations; effectively supersedes (without contradiction, but also without explicit acknowledgment) 0703's TraceableKnowledgeEpisode and 0710's GovernedEngineeringFact as candidate fundamental units"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "A full-text scan of this file's eighteen-object canonical model, all schema definitions, and both the Step 137 and Step 138 opening sections shows zero occurrences of 'TraceableKnowledgeEpisode' or 'GovernedEngineeringFact,' directly checkable evidence that the reconstruction's explicit close-of-file promise (from 0723) to potentially reconcile the three-way candidate-fundamental-unit question resolves instead via silent supersession by a different model altogether."
+  - "§137.47's explicit definitional statement, rejecting three named inadequate framings before stating the final one, is directly quotable evidence of the reconstruction's cleanest single capstone characterization of what KnowledgeOS is."
+  - "§137.28-137.31's Mutable-vs-Immutable distinction, with three concrete worked justifications (Verification, Evidence, Action), is directly checkable evidence of a genuinely reusable, not-previously-stated-this-precisely persistence-architecture design principle."
+undefined_concepts: []
+open_questions:
+  - "Whether the quiet supersession of TraceableKnowledgeEpisode (0703) and GovernedEngineeringFact (0710) by this file's eighteen-object model is ever explicitly acknowledged anywhere later in the corpus, or remains permanently unaddressed -- this should be flagged prominently for the eventual §29-gated canonical synthesis as a resolved-by-omission open item."
+  - "Whether Step 138's tactical-DDD derivation (0725) treats the eighteen-object model as settled and final, or introduces further refinement/contraction of the object set."
+tier2_triggered: true
+tier2_reason: "Delivers the finalized eighteen-object canonical KnowledgeOS domain model with complete conceptual schemas. Most significantly, constitutes the decisive (if entirely implicit) resolution of the long-tracked three-way candidate-fundamental-unit question via quiet supersession -- neither TraceableKnowledgeEpisode nor GovernedEngineeringFact is ever mentioned, and the reconstruction settles on a multi-aggregate model instead. Delivers a valuable Mutable-vs-Immutable persistence distinction, the most systematically categorized graph-edge taxonomy in the reconstruction, the fullest end-to-end semantic chain diagram, and the cleanest capstone definition of KnowledgeOS produced anywhere in the reconstruction. Opens Step 138's well-motivated tactical-DDD continuation."

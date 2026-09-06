@@ -1,0 +1,111 @@
+sequence: M0115
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-155901_hpa-final-ruling-hilbert-space-decision-recorded.md
+title: "HPA Final Ruling: Hilbert Space in KnowledgeOS -- Complete Decision: Formally Closes the KR-HILBERT-2026-09 Sub-Thread (M0107-M0111) -- Hilbert Space ADOPTED Only as Vocabulary, REJECTED as Foundational Theory/N_eff-Functional/Semantic-Equivalence/Independence-Measure/Truth-Mechanism -- BUT CONTAINS A SUBTLE SELF-CONTRADICTION: Part 3.2 Correctly Marks 'The Answer Lies Between Them' as NOT FROZEN (Per M0111's Explicit Withdrawal), Yet Parts 2.3 and 5.2 of the SAME Document Restate That Exact Unearned Claim as 'the Deepest Finding' and 'the Experiment's Most Valuable Finding' Without M0111's Required Caveat"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "the formal HPA ruling closing out the entire KR-HILBERT-2026-09 sub-thread (M0107's protocol, M0108's naive-proposal-then-refutation, M0111's detailed trajectory account), consolidating a full hypothesis-by-hypothesis verdict table and decision record -- but its own internal discipline is undermined by a self-contradiction: Part 3.2 correctly withholds freezing 'the answer lies between them' (per M0111's explicit withdrawal of that exact claim as 'the worst possible destination for an unearned claim'), yet Parts 2.3 and 5.2 of this SAME document restate the identical claim as the experiment's 'deepest' and 'most valuable' finding, without repeating the required caveat that 'between' presupposes an ordering and a proof that neither exists"
+source_role: ADJUDICATION
+canonical_source: M0115
+importance: high
+confidence: high
+about: >
+  Declares "Hilbert space is NOT adopted as a foundational framework for KnowledgeOS," summarizing
+  KR-HILBERT-2026-09's result: "Hilbert space supplies a well-defined joint object (the spectrum)
+  and a vocabulary for stating what is missing -- and otherwise reproduces the existing obstructions
+  in new coordinates rather than removing them... partially confirmed in the weakest sense... a
+  useful vocabulary, not a solution."
+
+  **PRESENTS THE FULL HYPOTHESIS-BY-HYPOTHESIS VERDICT TABLE**, with mechanism detail not previously
+  this fully consolidated in this reconstruction's record: H1 (K_t as vector) REFUTED -- "Unknown,
+  Absent, NotAssessed, Contradiction collapse onto zero vector" (a specific, concrete failure
+  mechanism -- all four distinct epistemic-boundary conditions map to the SAME zero vector, a direct
+  Hilbert-space analogue of the corpus's already-tracked 9-situations-collapse-to-U pattern); H3
+  (orthogonality=independence) REFUTED via the X~Uniform{-1,0,1}/Y=1[X=0] witness (Cov=0,
+  deterministic dependence); H6 (amplitude=probability=truth) REFUTED because "truth is not in the
+  domain of the representation" -- explicitly connecting the Hilbert-space finding to the corpus's
+  established DEF-1/Gamma-domain factivity problem (M0111 Phase 2), a genuine cross-thread
+  convergence; H7 (spectral functional=N_eff) REFUTED (all four functionals fail on
+  equicorrelation); H8 (Hilbert distance=semantic equivalence) REFUTED (transitivity fails via the
+  sorites construction); H9 (basis invariance) PARTIALLY CONFIRMED (rotation-invariant, not
+  rescaling-invariant); H12 (genuine reduction) REFUTED -- "no reduction on any question tested,"
+  the most sweeping single verdict in the table.
+
+  **DELIVERS "CAN DO" / "CANNOT DO" SYNTHESIS TABLES**: can represent block/duplicate structure
+  exactly, supply a well-defined joint object (the spectrum), rotation-invariant summaries, a
+  similarity geometry, second-moment dependence, a Born-rule probability measure, and a vocabulary
+  for the gap; cannot represent equicorrelation's contribution to multiplicity burden (up to 50x
+  under), the tail behavior governing the burden, rescaling invariance, a valid semantic
+  equivalence relation, probabilistic independence, truth/factivity/the Gamma-domain problem, or
+  Unknown/Absent/NotAssessed/Contradiction as distinct states.
+
+  **PRESENTS THE DECISION TABLE WITH ONE NEW PRECISION NOT PREVIOUSLY RECORDED**: "orthogonality as
+  independence -- REJECTED -- only under Gaussian restriction" -- i.e. explicitly notes the
+  orthogonality-independence correspondence is not universally false but holds ONLY under a
+  Gaussian assumption, a sharper qualification than a blanket rejection.
+
+  **SIGNIFICANT INTERNAL SELF-CONTRADICTION, FLAGGED NOT RESOLVED**: Part 3.2 explicitly states
+  "what is NOT frozen: 'The answer lies between them'" -- correctly honoring M0111's explicit
+  withdrawal of that exact claim (recorded there as withdrawn from both the working document and
+  the frozen register itself, "the worst possible destination for an unearned claim," because
+  'between' presupposes a formally defined ordering on candidate functionals and a proof that the
+  sought functional lies in that interval, and neither exists). YET Part 2.3 of THIS SAME DOCUMENT,
+  titled "The Deepest Finding," states without qualification: "the two natural routes bracket the
+  truth from opposite sides... the measured family-level burden lies between them and is captured
+  by neither" -- and Part 5.2's "Final Statement" repeats it as "the experiment's most valuable
+  finding," boxed as a headline claim: "The two natural routes bracket the truth from opposite
+  sides." Neither restatement carries M0111's required caveat about the missing ordering/proof.
+  This is either (a) a permissible looser use of 'lies between' as an informal, non-mathematical
+  description of the bracketing pattern (pairwise overestimates, spectral underestimates, measured
+  value in between) that Part 3.2's stricter formal-freeze language correctly withholds from
+  canonization, or (b) a genuine drift back toward the exact overclaim M0111 worked to excise --
+  left unresolved for the eventual reclassification pass, consistent with this reconstruction's
+  standing discipline of flagging rather than silently adjudicating such tensions.
+
+  **RECONFIRMS ALL CONSEQUENCES ALREADY ESTABLISHED**: Theory v1.2 unchanged; FR-001 strengthened
+  (not reopened) by "a second failed route from the opposite direction"; Kernel unchanged, still
+  NOT SELECTABLE; N_eff remains off the critical path; the new research question for future work
+  restated verbatim from M0108/M0111 (does P(M_n<=x) depend on joint-dependence information beyond
+  the spectrum; the decisive check is whether two covariance structures share a spectrum but differ
+  in extreme-value behavior). Closes with the explicit sequencing confirmation: "Next: KR-CONTR-
+  2026-09," directly linking this closure to M0114's protocol.
+introduces:
+  - concept: "The specific H1 failure mechanism: Unknown, Absent, NotAssessed, and Contradiction all collapse onto the SAME zero vector in the tested Hilbert embedding -- a direct Hilbert-space analogue of the corpus's established 9-situations-collapse-to-U pattern"
+  - concept: "The explicit cross-thread connection between H6's refutation and the corpus's established DEF-1/Gamma-domain factivity problem ('truth is not in the domain of the representation')"
+  - concept: "The Gaussian-restriction qualification for orthogonality-as-independence: rejected as a universal correspondence, but not rejected under a Gaussian assumption specifically"
+  - concept: "The self-contradiction between Part 3.2's correct non-freezing of 'the answer lies between them' and Parts 2.3/5.2's unqualified restatement of the identical claim as the experiment's headline finding, within the same document"
+defines: []
+refines:
+  - concept: "M0107's KR-HILBERT-2026-09 protocol and M0108/M0111's partial reports of its execution, here formally consolidated into a closing governance ruling"
+  - concept: "M0111's explicit withdrawal of the 'lies between' claim, partially honored (Part 3.2) and partially not honored (Parts 2.3, 5.2) within this same document"
+contradicts:
+  - concept: "This document's own Part 3.2 ('what is NOT frozen: the answer lies between them') is contradicted by its own Parts 2.3 and 5.2, which restate the identical claim without qualification as the experiment's headline finding -- an internal self-contradiction within one ruling"
+repeats:
+  - concept: "M0107/M0108/M0111's already-recorded Hilbert-space findings (delta-packing 222x-over, spectral 50x-under, FR-001 strengthened, KR-EXTREME as the next research question), restated here in consolidated ruling form"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0115 as the formal closing ruling for KR-HILBERT-2026-09, consolidating the full hypothesis-by-hypothesis verdict (H1/H3/H6/H7/H8/H12 refuted, H9 partially confirmed) with new mechanism detail (H1's zero-vector collapse; H6's connection to the Gamma-domain factivity problem; the Gaussian-restriction qualification for H3), while flagging a self-contradiction: Part 3.2 correctly withholds freezing 'the answer lies between them' per M0111's explicit withdrawal, yet Parts 2.3/5.2 of this same document restate the identical unqualified claim as the experiment's headline finding."
+anchor_test:
+  anchor: "M0107's KR-HILBERT protocol, M0108's naive-proposal-then-refutation, and M0111's explicit withdrawal of the 'lies between' claim"
+  supports_dimension: "Formally closes the Hilbert-space sub-thread with a comprehensive, mostly-disciplined decision record, while itself exhibiting the exact kind of unearned-claim drift its own predecessor document (M0111) worked to excise"
+  refines_or_contradicts: "refines (M0107, M0108, M0111); contradicts (its own Part 3.2, via Parts 2.3 and 5.2)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Part 3.2: 'What is NOT frozen: The answer lies between them' -- directly contradicted by Part 2.3's 'The Deepest Finding: ...the measured family-level burden lies between them and is captured by neither' and Part 5.2's boxed 'most valuable finding' restating the same claim, all within one document."
+  - "'H1 -- REFUTED -- Unknown, Absent, NotAssessed, Contradiction collapse onto zero vector' -- the specific mechanism, confirming the Hilbert embedding reproduces the corpus's established many-to-one collapse pattern in new coordinates."
+  - "'Orthogonality as independence -- REJECTED -- only under Gaussian restriction' -- a precise qualification sharper than a blanket rejection, not previously recorded with this specificity in this reconstruction's account of the Hilbert sub-thread."
+undefined_concepts: []
+open_questions:
+  - "Whether the Part 3.2 vs Parts 2.3/5.2 self-contradiction was ever noticed or reconciled elsewhere in the corpus, or whether the 'lies between' framing was permitted to stand as an informal (non-frozen) description alongside its formal non-adoption."
+tier2_triggered: true
+tier2_reason: "Formally closes a major research sub-thread with a comprehensive verdict table and new mechanism-level detail, but also surfaces a genuine, specific self-contradiction within a single governance ruling -- the same document both correctly withholds and unqualifiedly restates the exact overclaim ('the answer lies between them') its own predecessor document explicitly withdrew as unearned. A concrete corpus-integrity finding meeting the tier-2 bar."

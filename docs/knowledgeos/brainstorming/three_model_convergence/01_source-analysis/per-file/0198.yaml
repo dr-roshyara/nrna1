@@ -1,0 +1,51 @@
+sequence: "0198"
+path: docs/knowledgeos/brainstorming/kernel/20260824-021011-chalmers-conscious-mind-research-extraction-protocol-rerun-duplicate.md
+title: "Verified byte-identical duplicate of 0197 (diff empty); filename self-labeled '-duplicate' -- third such instance in this reading stretch, after 0181 and 0190"
+date: "2026-08-24"
+bytes: 24000
+model:
+  primary: c1
+  secondary: []
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: "0195"
+importance: low
+confidence: high
+about: >
+  Verified via `diff` to be byte-for-byte identical to file 0197 (empty diff output). Filename self-labeled
+  "-duplicate," the third such instance in this reading stretch (after 0181, 0190). No new content;
+  recorded minimally per MD-012/protocol discipline for verified duplicates.
+
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - {concept: "Entire Chalmers protocol-rerun extraction content", canonical_source: "0195", novelty: none}
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+registry_updates: []
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; verified byte-identical duplicate of 0197."
+  alternative_minimal_kernel: "none"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Third self-labeled '-duplicate' filename encountered (after 0181, 0190), confirming this is a stable,
+    recurring feature of the corpus's own capture/rename process"
+
+undefined_concepts: []
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: "Verified exact duplicate; no independent content."

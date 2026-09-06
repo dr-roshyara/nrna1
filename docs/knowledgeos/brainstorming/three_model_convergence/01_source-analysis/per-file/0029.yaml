@@ -1,0 +1,45 @@
+sequence: 29
+path: docs/knowledgeos/KnowledgeOS_Platform_Discovery_Coverage_Map.md
+title: KnowledgeOS — Platform Discovery Coverage Map
+date: 2026-08-03
+bytes: 10767
+doc_type: coverage/reconciliation map over already-established findings (fresh discovery declined)
+
+primary_model_initial: meta_research
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [engineering_knowledgeos, evidence, domain_model]
+source_role: VERIFICATION_RECONSTRUCTION
+canonical_source: null
+
+status: SR
+maturity: developing
+importance: low
+
+introduces:
+  - r1_prompt_unplaced_in_capability_model
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge, prompt]
+open_questions:
+  - R1_where_does_prompt_belong_in_the_capability_model
+
+depends_on: [1, 8, 11, 15]
+extends: []
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14, 15, 18, 20, 27]
+connects_to: [8, 11, 15]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: "Pure aggregation of prior findings; no formal object, operator, or Kernel/Gita content. R-1 is a small open item, captured in Tier 1."

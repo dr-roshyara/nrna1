@@ -1,0 +1,77 @@
+sequence: 1066
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-290/03-distinguishability-audit.md
+title: "03 -- Distinguishability Audit (Step 290 mandate SS4): Delivers the Definitive Resolution of N-1 by Splitting It Into N-1A (ESTABLISHED: the Corpus Explicitly Distinguishes equiv From approx by Design) and N-1B (UNDECIDABLE: Whether a Witness Pair Actually Separating Them Can Be Constructed), Refusing to Invent a Hypothetical Just to Force a Distinction"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the third numbered Step-290 artifact, delivering the definitive resolution of the long-tracked N-1 conflict by splitting it into two independently-assessed claims"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1066
+importance: critical
+confidence: high
+about: >
+  "03 — Distinguishability Audit (mandate §4)," attempting to construct the two required witnesses that
+  would settle whether `≡` and `≈` are genuinely semantically distinguishable, not merely declared distinct.
+
+  **CONFIRMS, WITH FULL EXECUTED EVIDENCE (file 1063), THAT BOTH REQUIRED WITNESSES ARE UNDECIDABLE FROM
+  CURRENT CORPUS**: W1 (`∃K_1,K_2: K_1≡K_2` and NOT `K_1≈K_2`) fails because the only two definitions ever
+  offered for `≡_K` ARE the observational formula itself, so using either to build W1 would make it "vacuously
+  empty BY CONSTRUCTION, not by fact"; W2 (`∃K_1,K_2: K_1≈K_2` and NOT `K_1≡K_2`) fails because `𝒪_K` is not
+  closed. Explicitly honors the mandate's prohibition against inventing examples: "It would have been easy to
+  write a pair differing in provenance and declare `≡` blind to it; THAT WOULD HAVE ASSUMED DECISION 3's
+  ANSWER in order to manufacture a distinction. DECLINED." Boxed: "NO HYPOTHETICAL WAS CONSTRUCTED."
+
+  **DELIVERS THE DEFINITIVE RESOLUTION OF THE LONG-TRACKED N-1 CONFLICT (files 1041, 1047, 1054-1055, 1057-
+  1065), SPLITTING IT INTO TWO INDEPENDENTLY-ASSESSED CLAIMS WITH DIFFERENT EVIDENCE STRENGTHS**: **"N-1A" --
+  "the corpus DISTINGUISHES `≡` from `≈`" -- is ✅ ESTABLISHED**, resting entirely on explicit corpus design
+  statements at five loci and two notations (`246`'s "non-interchangeable"; `261.1`'s "should NOT be
+  collapsed"; `261.20`'s "requires a typed FAMILY... should NOT be conflated"; `261.25`'s distinct tuple
+  positions; `261.19`'s "no single equality relation is adequate," which PRESUPPOSES plurality). **"N-1B" --
+  "`≡` and `≈` are SEMANTICALLY DISTINGUISHABLE" -- is 🔴 UNDECIDABLE**, since no witness is constructible.
+  **Explicitly warns these two claims "must NOT be conflated."** Delivers the file's own precise closing
+  characterization of the corpus's actual position: "A register can distinguish two slots WITHOUT YET
+  EXHIBITING A PAIR THAT SEPARATES THEM -- and that is EXACTLY the corpus's position: a typed family with one
+  slot filled, one slot empty, and a candidate proposal to fill the empty one with the filled one's formula."
+  This directly synthesizes files 1063's (candidate-vs-assertion) and 1065's (glyph-reuse diagnosis) findings
+  into the programme's most precise, final statement of what the N-1 conflict genuinely is and is not.
+
+  **Reconfirms the comprehensive nine-item negative-checks discipline** (already tracked, file 1063), all
+  explicitly recorded as EXECUTED.
+introduces:
+  - concept: "The formal split of N-1 into two independently-assessed claims: N-1A (the corpus explicitly declares equiv and approx distinct by design, ESTABLISHED) and N-1B (equiv and approx are semantically distinguishable, UNDECIDABLE from current corpus material)"
+  - concept: "The precise, final characterization of the corpus's actual position on equiv/approx: a typed family with one slot (approx) filled and another (equiv) empty, with a candidate proposal to fill the empty slot using the filled slot's formula -- distinguishing without yet exhibiting a distinguishing witness"
+defines:
+  - term: "N-1A"
+    definition: "The claim that the corpus explicitly, by design, declares equiv (semantic equality) and approx (observational equivalence) to be distinct, non-interchangeable relations -- established on the basis of five corpus loci and two notations"
+  - term: "N-1B"
+    definition: "The claim that equiv and approx are actually semantically distinguishable, i.e. that a witness pair exists satisfying one relation but not the other -- undecidable from current corpus material, since no independent procedure for equiv exists and the observation set for approx is not closed"
+refines:
+  - concept: "This reconstruction's long-tracked N-1 conflict (files 1041, 1047, 1054-1055, 1057-1065)"
+    refinement: "DEFINITIVELY RESOLVED via a formal split into N-1A (established) and N-1B (undecidable), synthesizing the candidate-vs-assertion finding (file 1063) and the glyph-reuse diagnosis (file 1065) into the programme's most precise final statement of the conflict's actual nature"
+contradicts: []
+repeats:
+  - "The witness-construction attempts and negative-checks discipline substantially confirm file 1063's already-documented findings; this file's distinctive, resolving contribution is the formal N-1A/N-1B split."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the definitive resolution of the long-tracked N-1 conflict via its formal split into N-1A (ESTABLISHED: the corpus declares equiv and approx distinct by design) and N-1B (UNDECIDABLE: whether they are semantically distinguishable) -- the programme's most precise final statement of this conflict."
+anchor_test:
+  anchor: "This reconstruction's long-tracked N-1 conflict (files 1041, 1047, 1054-1055, 1057-1065)"
+  supports_dimension: "Delivers the definitive, formal resolution of the conflict via a precise two-claim split with independently assessed evidence strengths"
+  refines_or_contradicts: "resolves (via precise decomposition) prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The N-1A/N-1B split and the witness-construction failures are directly checkable against files 1063 and 1065's own already-documented findings for exact consistency."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers the definitive, formal resolution of the long-tracked N-1 conflict by splitting it into two independently-assessed claims (N-1A established, N-1B undecidable), synthesizing the candidate-vs-assertion and glyph-reuse findings into the programme's most precise final characterization of the conflict's actual nature. Classified importance critical and confidence high given the disciplined, rigorous, and conclusive nature of this resolution."

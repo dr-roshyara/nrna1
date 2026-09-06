@@ -1,0 +1,91 @@
+sequence: 368
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260825-233525_justification-comes-from-predetermined-facts-and-rules.md
+title: "Second Perplexity-Document Review: Strong-Mathematical-Evidence Mislabeling Corrected Again; Seven-Way Reality/Observation/Evidence/Fact/Claim/Hypothesis/Derived-Knowledge Distinction; FACT Declared Sole Next Research Focus"
+date: "2026-08-25"
+bytes: 5144
+model:
+  primary: c1
+  secondary: null
+source_role: CRITICAL_REVIEW
+canonical_source: 368
+importance: high
+confidence: high
+about: >
+  A second, distinct external-Perplexity-document review, structurally parallel to 0366's Section 1/
+  Section 2 pattern but this time reviewing a Perplexity summary of the corpus's OWN prior conclusions from
+  0366/0367 rather than an independent Perplexity proposal -- explicitly noted as "a research framework that
+  records the conclusions and questions from our discussion, rather than providing new independent
+  research." Confirms Perplexity correctly captured the seven-stage chain (Observation->Evidence->Fact->
+  Comparison->Rule/Logic->Justification->Knowledge), the three key clarifications ((F_t,R_t)|-K;
+  O_t->E->F; S_t-compare-F_<=t->K_t), the probability/logic division of labor (I->P(F|I)->F-hat, then
+  F-hat+S_t+R_t->K_t), and the identification of "The Fact Problem" as the next research problem -- "our
+  strongest working hypothesis" so far. REPEATS THE SAME CORRECTIVE PATTERN as 0366's internal Section-1-
+  vs-Section-2 critique: Perplexity again mislabels hypotheses as "Strong Mathematical Evidence," this time
+  for Fact-establishment-as-I->P(F|I) and temporal-validity-as-F_t, explicitly refusing to conclude
+  "Fact=probabilistic object" -- only that information-to-probabilistic-fact-extraction is ONE possible
+  regime. Sharpens the Fact-Problem research question one step further: not just "what is a Fact?" but
+  "What is a Fact in relation to Reality, Observation, Evidence and Knowledge?", explicitly naming the
+  danger that the chain Observation->Evidence->[Fact]->Knowledge has a genuinely UNKNOWN boxed object at
+  its center. Proposes a seven-way conceptual distinction requiring investigation: Reality vs. Observation
+  vs. Evidence vs. Fact vs. Claim vs. Hypothesis vs. Derived Knowledge, illustrated via a worked example
+  ("the database contains version=3.69" -- is that an observation, evidence, a fact, a claim, or
+  Knowledge?) extended to a multi-source corroboration question (if three independent databases agree, what
+  changes?) and a conflicting-source temporal question (document says 3.69, live system says 3.70 -- is
+  that F1!=F2, i.e. two distinct facts, or one fact with different temporal validity?) -- explicitly
+  flagged as "real research questions, not architecture questions." Elevates one specific Perplexity
+  observation to serious investigation status: "Knowledge is not necessarily something that has to be
+  stored as a separate object; it can be derived from the relationship between current state and
+  accumulated facts" -- formalized as Knowledge(t)=Reasoning(CurrentState(t), Facts_<=t, Rules_t) as an
+  explicit alternative to Knowledge(t)=stored-collection-of-facts, with a direct Kernel-design implication
+  (still hypothesis): the Kernel may not need to store Knowledge as such, only the substrate from which
+  Knowledge can be reconstructed. Closes with an explicit "good"/"needs caution" ledger for the Perplexity
+  document (good: correctly captured the conceptual breakthrough, correctly separated probability from
+  logic, correctly identified the Fact Problem, correctly refrained from Kernel design; needs caution: some
+  claimed "mathematical evidence" is hypothesis, Facts should not be assumed probabilistic, a measurable-
+  space ontology should not be assumed, the exact Closure() formulation is not yet established) and declares
+  a single, narrowed next research focus: FACT -- "the missing bridge between what we observe and what we
+  know."
+introduces:
+  - concept: "Second instance of the corpus's Perplexity-critique pattern (first at 0366 Section 1 vs Section 2): explicitly identifies this Perplexity document as a RECORDING of the corpus's own prior conclusions rather than independent research -- an important source-provenance distinction for future citation discipline"
+  - concept: "Repeated Strong-Mathematical-Evidence mislabeling correction, this time targeting Fact-establishment-as-I->P(F|I) and temporal-validity-as-F_t -- explicit refusal to conclude 'Fact=probabilistic object,' downgrading it to 'information->probabilistic fact extraction as a possible regime'"
+  - concept: "Sharpened Fact-Problem formulation: 'What is a Fact in relation to Reality, Observation, Evidence and Knowledge?' -- explicitly naming the Observation->Evidence->[Fact]->Knowledge chain's central boxed object as genuinely unknown, a 'potentially dangerous gap'"
+  - concept: "Seven-way conceptual distinction requiring investigation: Reality vs. Observation vs. Evidence vs. Fact vs. Claim vs. Hypothesis vs. Derived Knowledge -- illustrated via a worked single-source example (database version=3.69), a multi-source corroboration extension (three independent databases agreeing), and a conflicting-temporal-source extension (document says 3.69, live system says 3.70 -- F1!=F2 or one fact with different temporal validity?)"
+  - concept: "Knowledge(t) = Reasoning(CurrentState(t), Facts_<=t, Rules_t) elevated to serious-investigation status as an explicit alternative to Knowledge(t)=stored-collection-of-facts, with the direct (still-hypothesis) Kernel implication that the Kernel may preserve only the reconstructable substrate, not Knowledge itself"
+  - concept: "Explicit good/needs-caution ledger for evaluating an external AI-tool's research contribution, and the declaration of FACT as the corpus's sole next research focus ('the missing bridge between what we observe and what we know'), explicitly deferring all Kernel discussion"
+defines: []
+refines:
+  - concept: "0366's Section-1-vs-Section-2 Perplexity-critique pattern (downgrading Knowledge-Space=(Omega,F) from Strong Mathematical Evidence to hypothesis)"
+    refinement: "Repeated against a second, distinct Perplexity document and a different mislabeled claim (Fact-as-probabilistic-object), establishing this corrective pattern as a recurring discipline applied consistently across multiple external-AI-tool contributions, not a one-off correction"
+  - concept: "0366 Section 5's Fact-based comparison-and-closure pipeline and its closing 'What is a Fact?' research question"
+    refinement: "Sharpened into 'What is a Fact in relation to Reality, Observation, Evidence and Knowledge?' and decomposed into a concrete seven-way conceptual distinction with worked multi-source and temporal-conflict examples, giving the abstract question testable shape"
+  - concept: "0365's Knowledge-extraction-vs-Knowledge-storage distinction"
+    refinement: "Given a concrete formalization Knowledge(t)=Reasoning(CurrentState(t),Facts_<=t,Rules_t), explicitly elevated from a general architectural hypothesis to a specific candidate model worth serious investigation, with the same still-hypothesis Kernel-preserves-substrate-not-Knowledge implication"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file's repetition of the Strong-Mathematical-Evidence-mislabeling correction pattern (now applied to a second Perplexity document and a second claim, Fact-as-probabilistic-object) as establishing a recurring corpus discipline."
+  - "dimension-registry.md: record the seven-way Reality/Observation/Evidence/Fact/Claim/Hypothesis/Derived-Knowledge distinction and the sharpened Fact-Problem formulation as the corpus's declared sole next research focus."
+  - "dimension-registry.md: record the Knowledge(t)=Reasoning(CurrentState(t),Facts_<=t,Rules_t) formalization as a concrete elevation of the Knowledge-extraction-vs-storage hypothesis (0365)."
+anchor_test:
+  anchor: "0366's Section-1-vs-Section-2 Perplexity critique and Section 5's Fact-based pipeline; 0365's Knowledge-extraction-vs-storage distinction"
+  supports_dimension: "Mathematical/architectural model, methodological: a second instance of the corpus's recurring Perplexity-critique discipline, sharpening the Fact-Problem into a seven-way conceptual distinction with worked corroboration/conflict examples, and elevating the Knowledge-as-derived-not-stored hypothesis to a concrete Reasoning(CurrentState,Facts,Rules) formalization -- declares FACT as the corpus's sole next research focus"
+  refines_or_contradicts: "refines 0366 (repeats and reinforces its Strong-Mathematical-Evidence correction pattern); refines 0366 Section 5 (sharpens the Fact-Problem question, adds the seven-way distinction); refines 0365 (concretizes Knowledge-as-derived into a specific Reasoning formalization)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "The identity/provenance of this second Perplexity document being reviewed -- not itself encountered as a separately numbered file in this reconstruction's sequential pass, referenced only secondhand through this file's critique"
+open_questions:
+  - "Whether the seven-way Reality/Observation/Evidence/Fact/Claim/Hypothesis/Derived-Knowledge distinction is resolved in the immediately following files (the declared next research focus)"
+  - "Whether the multi-source-corroboration and conflicting-temporal-source worked examples are ever formally tested"
+  - "Whether Knowledge(t)=Reasoning(CurrentState(t),Facts_<=t,Rules_t) survives scrutiny as a genuine alternative to a stored-Knowledge model"
+tier2_triggered: false
+tier2_reason: "NOT TRIGGERED"

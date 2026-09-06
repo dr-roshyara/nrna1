@@ -1,0 +1,153 @@
+sequence: "0200"
+path: docs/knowledgeos/brainstorming/kernel/20260824-022039-research-direction-formal-model-before-technical-scenario-testing.md
+title: "Third explicit phase-redirection in the corpus (after 0134, 0187): an explicit 50/35/15 Technical/Formal-mathematical/Philosophical weighting recommendation, a proposed 'Phase X -- Formal Epistemic Architecture' with fifteen sub-questions, and the first concrete mathematical Knowledge-Object tuple notation K=(c,tau,s,p,d,e,a,sigma) with typed relation predicates in this reading stretch"
+date: "2026-08-24"
+bytes: 12500
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0200"
+importance: critical
+confidence: high
+about: >
+  A third explicit research-direction/phase-redirection declaration in the corpus's reading order (after
+  0134's P5/SNF research-phase closure and 0187's brainstorming-phase closure) -- distinct from both in
+  that it does not merely close a phase but proposes a specific forward weighting and concrete formal
+  research agenda. Opens by explicitly rejecting further philosophical reading ("I would not go deeper into
+  philosophy right now") and recommends a "Technical first, with a formal/mathematical layer underneath"
+  sequence: Philosophical research -> [we have enough] -> FORMAL/MATHEMATICAL MODEL -> TECHNICAL/DDD
+  SCENARIO TESTING -> FALSIFICATION -> only then architectural principles. Proposes an explicit 50/35/15
+  weighting (Technical/architectural/DDD 50%, Formal/mathematical 35%, Philosophical 15%), with an explicit
+  rationale: continued philosophical accumulation risks "philosophy -> more philosophy -> more conceptual
+  distinctions -> increasingly sophisticated ontology -> little evidence about whether it works," explicitly
+  named as "exactly the wrong direction for KnowledgeOS." Proposes concrete technical scenario tests using
+  real EKS/PKS/AI-Engineering-Platform knowledge (e.g. does a passing test PROVE an architectural claim, or
+  merely SUPPORT a behavioral claim short of architectural truth; does implementation realization establish
+  architectural correctness). Proposes formalizing recurring relationships as the highest-value mathematical
+  topic (explicitly NOT modal logic, NOT category theory, NOT probability -- yet): a typed relation
+  vocabulary (supports/contradicts/entails/assumes/depends-on/realizes/implements/refines/generalizes/
+  specializes/maps-to/equivalent-under/tests/falsifies), and the corpus's first concrete Knowledge-Object
+  mathematical tuple notation in this reading stretch: K = (c, tau, s, p, d, e, a, sigma) representing
+  Content/Type/Scope/Provenance/Dependencies/Evidence/Assumptions/Status, with formally-named relation
+  predicates Supports(E,C), Contradicts(C1,C2), Depends(C,A), Realizes(I,A), Tests(T,C), Maps(C1,C2) --
+  distinct from and more concrete than the earlier P5/SNF mathematical survey work tracked at 0087/0134/
+  0141. Also proposes formalizing evidence support with entailment-vs-support distinguished notationally
+  (E,A,S |- C vs. E |= C vs. "E supports C," explicitly called "radically different relationships"), and
+  formalizing Williamson's competing-theories comparison as T1,T2,T3 evaluated by Conseq(Ti) against
+  Evidence and Constraints. Recommends a four-scenario DDD falsification exercise (is a bounded context a
+  knowledge boundary/semantic theory/organizational boundary/all three; is an ADR a claim/decision/
+  evidence-backed-commitment/institutional-fact; does a passing test prove an architectural claim -- "probably
+  not," reframed as test-result-supports-behavioral-claim but not test-result-proves-architectural-truth;
+  does implementation realization establish architectural correctness -- again "probably not"), explicitly
+  framed as producing falsifiable research rather than conceptual accumulation. Proposes reversing
+  philosophy's role from constructive extraction to adversarial testing: "can this philosophical principle
+  survive contact with engineering reality?" with a formalize->engineering-example->counterexample->
+  survives? pipeline, worked through Williamson (does theory-comparison-by-consequences actually produce
+  better architectural decisions than ordinary ADR review?), Chalmers (can the domain-semantics/
+  implementation-behavior bridge actually be explicitly represented?), and DDD (can "semantic boundary"
+  actually be formalized?). Names a formal "Phase X -- Formal Epistemic Architecture" research phase with an
+  explicit research question ("what is the minimal formal structure required to represent, compare, justify,
+  test, and govern engineering knowledge across abstraction levels?") and fifteen numbered sub-questions
+  (what is a knowledge object/claim/evidence/assumption/bridge; what kinds of dependency exist; what
+  constitutes contradiction/equivalence/realization/verification; how are competing theories represented,
+  consequences derived, counterexamples represented, uncertainty represented; how does knowledge change over
+  time). Explicitly reaffirms the standing discipline that the Kernel must not be touched yet, restating a
+  nine-step governed promotion pipeline (Observation -> Formalization -> Candidate model -> Scenario testing
+  -> Falsification -> Cross-source convergence -> Candidate principle -> Governance -> ONLY THEN Kernel
+  consideration). Closes with a five-step strongest recommendation: (1) technical/DDD scenarios using real
+  EKS/PKS/AI-Engineering-Platform knowledge, (2) formalize the recurring relations (especially evidence->
+  claim->inference->consequence->test and theory->interpretation->realization->verification), (3)
+  mathematicalize only what survives scenario testing (explicitly not starting from mathematics and
+  searching for a problem to apply it to), (4) use philosophy adversarially, brought back only when a
+  formalization hits a genuine conceptual problem, (5) falsify aggressively.
+
+introduces:
+  - "An explicit 50/35/15 (Technical/Formal-mathematical/Philosophical) research-weighting recommendation
+    for the corpus's next phase, with an explicit rationale against continued philosophical accumulation"
+  - "The corpus's first concrete Knowledge-Object mathematical tuple notation in this reading stretch:
+    K = (c, tau, s, p, d, e, a, sigma) for Content/Type/Scope/Provenance/Dependencies/Evidence/Assumptions/
+    Status, plus formally-named relation predicates (Supports, Contradicts, Depends, Realizes, Tests, Maps)"
+  - "An entailment-vs-support formal distinction: E,A,S |- C (derivability under assumptions and scope) vs.
+    E |= C (semantic entailment) vs. 'E supports C' (a weaker relation), explicitly called radically
+    different and requiring separate formal treatment"
+  - "A fourteen-item typed relation vocabulary for knowledge-object relationships (supports/contradicts/
+    entails/assumes/depends-on/realizes/implements/refines/generalizes/specializes/maps-to/equivalent-
+    under/tests/falsifies) proposed as the highest-value mathematical formalization target, ahead of modal
+    logic, category theory, or probability"
+  - "A named 'Phase X -- Formal Epistemic Architecture' research phase with an explicit research question
+    and fifteen numbered sub-questions spanning knowledge-object/claim/evidence/assumption/bridge
+    definition, dependency typology, contradiction/equivalence/realization/verification criteria, theory
+    representation, consequence derivation, counterexample representation, uncertainty representation, and
+    temporal knowledge change"
+  - "An adversarial philosophy-testing pipeline (formalize -> engineering example -> counterexample ->
+    survives?) explicitly reversing philosophy's role from constructive-extraction to adversarial-testing,
+    worked through Williamson/Chalmers/DDD examples"
+  - "A four-scenario DDD falsification set (bounded-context identity, ADR identity, does-a-passing-test-
+    prove-architecture, does-implementation-establish-correctness) each with a tentative 'probably not'
+    verdict and a proposed refined weaker relation to replace the naive strong one"
+
+defines: []
+
+refines:
+  - "A third explicit phase-transition declaration (after 0134 and 0187), distinct in kind: rather than
+    simply closing a reading phase, it proposes a concrete forward research weighting and a formal
+    mathematical agenda"
+  - "Extends the corpus's earlier P5/SNF mathematical survey work (0087/0134/0141) with a distinct, more
+    concrete Knowledge-Object formalization target grounded in the accumulated epistemology-arc findings
+    (Chalmers's bridging principles, Williamson's theory-comparison, Shieber's basing relation) rather than
+    the earlier mathematical-foundations survey"
+  - "Reaffirms and restates (via a nine-step pipeline) the standing discipline against touching the frozen
+    Kernel prematurely, consistent with every prior book-extraction file's closing caveat in this stretch"
+
+contradicts: []
+
+repeats:
+  - {concept: "Governed promotion pipeline: observation -> candidate -> scenario testing -> falsification -> convergence -> governance -> only then Kernel consideration", canonical_source: "0187", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: true
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- proposes a research phase and formal notation, not a Kernel change; explicitly restates the
+    nine-step governed-promotion discipline"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Proposes a new formal-mathematical research direction building on but distinct from the earlier P5/SNF mathematical survey; explicitly reaffirms the frozen-Kernel discipline."
+  alternative_minimal_kernel: "none -- proposes a Knowledge-Object formal tuple (K = (c,tau,s,p,d,e,a,sigma)) as a candidate mathematical structure for the broader epistemic model, explicitly not a Kernel proposal"
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Third explicit phase-redirection declaration in the corpus's reading order (0134, 0187, this file) --
+    worth tracking as a recurring self-correcting rhythm in the corpus's own research process: periods of
+    philosophical accumulation are repeatedly and explicitly interrupted by calls to formalize/test/falsify
+    before continuing to read"
+  - "The first concrete (not merely surveyed) mathematical Knowledge-Object formalization proposal in this
+    stretch of the reading order -- worth watching whether a later file actually executes this Phase X
+    formal-epistemic-architecture agenda, given the corpus's demonstrated tendency (per 0169's dual-voice
+    sections and 0196's Wave-1 status) to have multiple parallel actors pursuing different recommended
+    directions simultaneously"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the proposed 'Phase X -- Formal Epistemic Architecture' with its fifteen sub-questions is ever
+    actually executed in a later file"
+  - "Whether the K=(c,tau,s,p,d,e,a,sigma) Knowledge-Object tuple notation or the typed relation predicates
+    (Supports/Contradicts/Depends/Realizes/Tests/Maps) are picked up and formally developed later"
+  - "Whether the proposed 50/35/15 weighting is actually followed in the immediately subsequent files, or
+    whether philosophical-lens reading continues regardless"
+
+tier2_triggered: true
+tier2_reason: >
+  Third explicit phase-redirection declaration with a concrete forward weighting; first concrete
+  mathematical Knowledge-Object tuple formalization in this reading stretch; a named formal research phase
+  with fifteen sub-questions; a reversed adversarial-philosophy-testing methodology.

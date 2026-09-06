@@ -1,0 +1,41 @@
+sequence: "0109"
+path: docs/knowledgeos/brainstorming/20260822-101842-sakta-tantra-woodroffe-lens-extraction.md
+title: "KnowledgeOS extraction from Woodroffe's Śākta Tantra work (byte-identical duplicate of 0107)"
+date: "2026-08-22"
+bytes: 8069
+model:
+  primary: g
+  secondary: []
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: "0107"
+importance: low
+confidence: high
+about: >
+  Byte-for-byte identical to 0107 (diff confirms zero differences, same byte count 8069). No new
+  content. Per MD-009, never counted as independent evidence.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - {concept: "entire document content", canonical_source: "0107", novelty: none}
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: false
+key_evidence:
+  - "Direct diff against 0107 confirms byte-for-byte identity"
+undefined_concepts: []
+open_questions: []
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "None -- exact duplicate, no new content."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+tier2_triggered: false
+tier2_reason: "Exact duplicate of 0107 (verified by diff) -- no independent content to analyze, per MD-009."

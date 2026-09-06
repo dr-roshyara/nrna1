@@ -1,0 +1,59 @@
+sequence: 240
+path: docs/knowledgeos/brainstorming/kernel/20260824-152415-zero-lens-definition-structure-recoverable-from-source-alone.md
+title: "Zero Lens — Definition Structure Recoverable from Source Alone"
+date: "2026-08-24"
+bytes: 12500
+model:
+  primary: g1
+  secondary: c1
+source_role: PRIMARY_RESEARCH
+canonical_source: 240
+importance: medium
+confidence: high
+about: >
+  Formalizes the Zero Lens as the foundational first lens of the 0238/0239 dhatu-extraction methodology:
+  "remove as much prior structure as possible and ask what can be recovered from the source/data alone."
+  Explicitly positions Zero before Ganesha/Leonardo/Krishna/Panini/Topology/Shani in that local six-lens
+  framework's sequence. Central discipline: Zero Lens observes, does not explain; used as an explicit
+  anti-confirmation-bias mechanism against circularly training a model to rediscover an assumption
+  secretly encoded into the labeled data.
+introduces:
+  - concept: "Zero Lens core question: if we assume nothing about what the structure is supposed to be, what structure can we actually observe? (What survives when labels, theories, interpretations, and predefined categories are removed?)"
+  - concept: "Five-stage discovery hierarchy: Stage 0 Zero (raw characters) -> Stage 1 Statistical (frequencies/co-occurrences/n-grams/transition-probabilities/mutual-information/entropy) -> Stage 2 Unsupervised ML (clustering/PCA/UMAP/spectral/latent-variable) -> Stage 3 Linguistic structure (aksara/matra/morpheme/dhatu) -> Stage 4 Paninian rules (formal transformation) -> Stage 5 Semantic inference (meaning)"
+  - concept: "Anti-confirmation-bias experimental design: train unsupervised discovery on zero-labeled data first, THEN compare the independently-discovered latent structure against traditional dhatu theory as a test of the theory's explanatory power, rather than training with the theory's labels baked in ('confirmation by construction')"
+  - concept: "Panini reframed as a testable hypothesis, not an unquestioned ontology: how much of the observed (Zero-discovered) transformation structure do traditional Paninian rules explain, and where does observed data violate or extend the assumed rule system?"
+  - concept: "Zero applied to the earlier Expression!=Meaning principle: before assuming meaning, determine what is actually observable in the expression (characters/positions/repetitions/transitions/co-occurrences/transformations) -- prevents circular reasoning from expression straight to meaning"
+  - concept: "Complete seven-lens sequence with Zero first: Zero(observe)->Ganesha(define)->Leonardo(discover alternatives)->Krishna(understand why)->Panini(model transformations)->Topology(analyse structure)->Shani(establish invariants)"
+defines: []
+refines:
+  - concept: "0238's Ganesha/Leonardo/Krishna/Panini/Topology/Shani six-lens framework"
+    refinement: "Adds Zero as the mandatory first lens in the sequence, confirming this local framework shares Zero's definition and role with the corpus's main 26-lens system even though Krishna/Shani remain unreconciled names."
+  - concept: "0239's dhatu-extraction experiment design (Model A-D)"
+    refinement: "Reframes the experiment as Zero-first: discover latent word families with zero linguistic labels, THEN test whether they correspond to traditional dhatu structure, rather than training directly against known-dhatu labels."
+contradicts: []
+repeats:
+  - concept: "Statistical model proposes, deterministic/traditional system validates -- must not silently become authority"
+    canonical_source: 226
+    novelty: none
+bridge_candidates:
+  - "This file's use of 'Zero' matches the corpus's main Zero Lens definition (observe before assuming ontology) closely enough to suggest the local Ganesha/Leonardo/Krishna/Panini/Topology/Shani framework (0238) is a specialized extension of the main 26-lens system sharing at least three lenses (Zero/Ganesha/Leonardo) verbatim, rather than a wholly independent tradition. Noted, not logged as a new unresolved_equivalence."
+mathematical_content: true
+gita_content: true
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "0238's six-lens framework; the corpus's main Zero Lens"
+  supports_dimension: "Gita/philosophical model -- confirms shared Zero-Lens definition between the local dhatu-extraction lens framework and the corpus's main 26-lens system"
+  refines_or_contradicts: "refines 0238/0239; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether the Zero-first discovery hierarchy is ever actually executed as an experiment against a real Sanskrit corpus"
+tier2_triggered: false
+tier2_reason: "Medium-importance methodological formalization of Zero Lens applied to the dhatu-extraction experiment design; confirms shared lens definitions between the local six-lens framework and the corpus's main 26-lens system, but does not introduce new Kernel-architecture content beyond the anti-confirmation-bias experimental discipline."

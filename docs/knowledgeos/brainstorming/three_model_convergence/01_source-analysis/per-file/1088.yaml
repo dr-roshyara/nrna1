@@ -1,0 +1,122 @@
+sequence: 1088
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/REFINED-STEP-288.md
+title: "REFINED STEP 288 v3 -- Equality Decision-Procedure Reconciliation: THE COMPREHENSIVE LIVING-DOCUMENT SYNTHESIS OF THE ENTIRE EQUALITY RESEARCH ARC, With Steps 289/290's Corrections Embedded Inline (WITHDRAWN N-1 boxed, REFUTED bootstrap-boundary boxed) -- a Previously-Flagged Bridge Candidate (Confirmed Existing Since File 1036), Now Directly Read, Delivering Several Genuinely New Findings Not Previously Tracked at This Precision"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the v3 living-document synthesis of the entire Step-288 equality reconciliation, rewritten against the post-287 baseline with Step 289/290's corrections embedded inline; a previously-flagged bridge candidate now directly read"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1088
+importance: critical
+confidence: high
+about: >
+  `REFINED-STEP-288.md` — "v3 — rewritten against the post-287 corrected baseline," superseding v1/v2/v2.1,
+  package `step-288/01`…`step-288/08` + `exec/t288_audits.py`, verdict "EQUALITY REMAINS OPEN — precisely
+  bounded." This is the comprehensive living-document synthesis of the ENTIRE equality-decision-procedure
+  research arc this reconstruction has tracked in extraordinary depth across files 1010-1087 -- a bridge
+  candidate first confirmed to exist by file 1036 but not directly read until now. Its defining structural
+  feature: Step 289's and Step 290's corrections are embedded LIVE, inline, as boxed retraction notices
+  directly inside the original v1/v2 prose they correct, rather than as separate documents -- "CHANGE CLASS:
+  CORRECTION (a false claim), not refinement. Recorded at source, not silently rewritten," applied twice: once
+  to the already-tracked N-1 "corpus contradiction" WITHDRAWN-by-Step-290 finding (files 1067/1072), and once
+  to the already-tracked "𝒪/𝒯 is the unique bootstrap boundary" claim REFUTED-BY-STEP-289 (file 1052).
+
+  **THE CENTRAL QUANTIFIED VERDICT (already tracked in its component parts)**: "Nine registers. One
+  definitional contradiction [struck through and boxed WITHDRAWN inline]. Zero proven congruences. Zero
+  governance-authorized relations." A full ten-link dependency chain (`Identity→state equality→semantic
+  equality→observational relation→provenance-sensitive relation→quotient/canonicalization→operation
+  congruence→δ semantics→kernel sufficiency→canonical kernel selection`), with the disciplined verdict "Not
+  one arrow is ESTABLISHED. The first is BOUNDED; the rest are open, blocked, normative or contradictory."
+
+  **DELIVERS SEVERAL GENUINELY NEW FINDINGS NOT PREVIOUSLY TRACKED AT THIS PRECISION**:
+
+  (1) **A THREE-WAY RIVALRY FOR INDEXING `≈`**, not previously tracked as a three-way split: the corpus
+  indexes `≈` by `𝒪_K` (`258.8`, `261.5`, `261.21`); `25I.35` indexes by POLICY/PURPOSE (a rival not
+  previously cross-referenced against the already-tracked `≈_X` Σ-axis-subset construct, files 1057-1058);
+  and `≈_X` indexes by Σ-AXIS SUBSET. "Three rivals, and MINE is the one with no corpus locus" -- i.e. `≈_X`
+  is explicitly self-identified as a researcher-constructed candidate with no direct corpus grounding, unlike
+  the other two indexing schemes. Delivers a seven-item checklist for what a K-level observational relation
+  would require, finding "SEVEN OF SEVEN MISSING."
+
+  (2) **THE PRECISE QUANTIFICATION OF THE LEVEL-DISCIPLINE PROMOTION AUDIT**: "Eleven levels... 15 promotions
+  audited: 2 VALID (both theorems, both executed), 3 UNPROVEN, 10 INVALID" -- including the already-tracked
+  Σ-order≠K-order category error (files 1037-1039) now precisely counted among ten total invalid promotions.
+
+  (3) **A NEWLY-CITED, GENUINELY IMPORTANT UNPROVEN THEORETICAL RESULT FOR BEHAVIOURAL VS LABEL EQUIVALENCE**:
+  `258.13`/`258.14` state the biconditional `F(H_1)=F(H_2)⟺H_1∼_H H_2` (naive fold-equality equivalent to
+  strong behavioural equivalence) as "'A MAJOR THEORETICAL RESULT' that 'WE HAVE NOT DEMONSTRATED YET.'" This
+  is a significant unproven theorem this reconstruction has not previously tracked in this precision.
+
+  (4) **THE LIKELY ORIGIN OF THE "VACUOUS PASS" METHODOLOGICAL LESSON**, applied repeatedly in later steps
+  (files 1077, 1083's explicitly-tallied "second vacuous PASS"): §15 reports the FIRST instance, `≈_S∘≈_V`
+  returning "0 transitivity violations" -- discovered to be the UNIVERSAL RELATION, hence a vacuous pass
+  ("caught in the transcript before publication"). This establishes the standing rule "A PASSING ALGEBRAIC
+  PROPERTY IS NOT EVIDENCE OF A MEANINGFUL RELATION WHEN THE RELATION IS DEGENERATE" and the "required
+  companion measurement" (every equivalence-axiom report must also report its block count) -- directly
+  explaining the origin of the block-count discipline already tracked as applied throughout files 1057-1083.
+
+  (5) **THE `id=H(P,e,c,t,Π)` HASH CONSTRUCTION'S FORMAL DISPOSITION**: "NOT PROMOTED. Classified as `CORPUS
+  PRINCIPLE vs LATER CONSTRUCTION CONFLICT` — governance (`N-14`)," with the corpus's own PRIOR-RULING-AGAINST
+  citations (`25I.29`: "cannot simply be `Hash(currentRepresentation)`," `25I.30`, `258.2`, `258.18`, `38.26`,
+  `195.53 I_51`) -- a genuinely striking finding that the corpus had already ruled against this construction
+  BEFORE it was proposed.
+
+  (6) **AN EXPLICIT SECTION-14 BOUNDARY STATEMENT DISCIPLINING THIS ARTIFACT'S SCOPE AGAINST THE ALREADY-
+  TRACKED STEP-285 CANONICAL-STATE RESULT**: "Step 288 does NOT reopen Step 285... Nothing in this step bears
+  on that result, and nothing here should be read as reopening it," honoring the mandate's §27 prohibitions
+  "by silence."
+
+  (7) **THE ARTIFACT'S OWN SELF-CHECK LOG, EIGHT CORRECTIONS ACROSS ITS v1→v2→v3 REVISION HISTORY**, including
+  the already-tracked "register originates at Step 246" → corrected to "`25I.11`, 08-28 -- 246 ranks 10th by
+  density" (file 1037), and the newly-precise self-diagnosis: "Eight corrections. Six sat in a summary, a
+  count, or a heading; two in an evidence base; one in reading my own executed output as substantive when it
+  was vacuous. THE LAST IS A NEW FAILURE MODE FOR THIS LOG: A PASSING TEST THAT PASSES FOR THE WRONG REASON."
+
+  **CONFIRMS AND CONSOLIDATES THE FULL ALREADY-TRACKED STATUS TAXONOMY** (ESTABLISHED / BOUNDED / NORMATIVE /
+  TECHNICALLY OPEN / BLOCKED / DEFERRED), the already-tracked 20-item normative decision register (N-1
+  through N-20, file 1061), the §25 closure-criterion 12-row audit ("2 partial, 10 failed" -- already
+  tracked, file 1062's near-identical audit), and the §26 four-required-answers summary.
+introduces:
+  - concept: "The three-way rivalry for indexing approx (O_K, 25I.35's policy/purpose, and the researcher-constructed approx_X Sigma-axis-subset, the last explicitly self-identified as having no corpus locus)"
+  - concept: "The 258.13/258.14 unproven major theoretical result: the biconditional equating naive fold-equality with strong behavioural equivalence, explicitly flagged as not yet demonstrated"
+  - concept: "The precise quantification of the level-discipline promotion audit: 15 promotions tested, 2 valid, 3 unproven, 10 invalid"
+  - concept: "The likely origin instance of the 'vacuous PASS' methodological lesson (approx_S composed with approx_V returning 0 transitivity violations because it is the universal relation), establishing the standing block-count-reporting discipline applied throughout the later research arc"
+  - concept: "The formal disposition of the id=H(P,e,c,t,Pi) hash construction as NOT PROMOTED, a CORPUS PRINCIPLE vs LATER CONSTRUCTION CONFLICT (N-14), with the corpus's own prior rulings against it predating its proposal"
+  - concept: "The explicit Section-14 boundary statement disciplining this artifact against reopening the Step-285 canonical-state result, honoring the mandate's prohibitions by silence"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked bridge-candidate flag for REFINED-STEP-288.md (confirmed existing since file 1036, not yet directly read)"
+    refinement: "DIRECTLY READ: confirmed to be the comprehensive living-document synthesis of the entire equality research arc, with Step 289/290's corrections embedded inline rather than as separate documents"
+  - concept: "This reconstruction's already-tracked N-1 withdrawal (files 1067/1072) and bootstrap-boundary REFUTED finding (file 1052)"
+    refinement: "CONFIRMED to appear as live, boxed, inline corrections within this v3 artifact itself, exactly matching this reconstruction's already-tracked resolution chronology"
+  - concept: "This reconstruction's already-tracked 'vacuous PASS' methodological discipline (files 1057-1058, 1077, 1083)"
+    refinement: "TRACED TO ITS LIKELY ORIGIN: the approx_S composed with approx_V universal-relation catch in this file's §15, predating and explaining the later 'second vacuous PASS' tally in file 1083"
+contradicts: []
+repeats:
+  - "Consolidates virtually the entire already-tracked equality research arc (nine registers, nine-of-nine bootstrap-boundary correction, N-1 withdrawal, the 20-item normative decision register, the closure-criterion audit) into a single self-contained living document."
+bridge_candidates:
+  - "025v, step-017, step-039, step-022, step-073, step_203, 025k/l/m/o/t/w -- reconfirmed still deferred/unread, matching the already-tracked bridge-candidate list from files 1058/1062/1073."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the three-way approx-indexing rivalry, the 258.13/258.14 unproven major theoretical result, the precise 15-promotion level-discipline audit (2 valid/3 unproven/10 invalid), the likely origin of the vacuous-PASS discipline (approx_S composed with approx_V), the id=H(...) hash construction's NOT-PROMOTED disposition, and the explicit Section-14 boundary against reopening Step 285."
+anchor_test:
+  anchor: "This reconstruction's already-tracked bridge-candidate flag for REFINED-STEP-288.md and its component findings (N-1 withdrawal, bootstrap-boundary correction, vacuous-PASS discipline)"
+  supports_dimension: "Directly reads and confirms this comprehensive living-document synthesis, delivering several genuinely new findings not previously tracked at this precision"
+  refines_or_contradicts: "refines (consolidates and precisely quantifies) the prior tracked findings; introduces several genuinely new findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The embedded WITHDRAWN and REFUTED boxes are directly checkable against files 1067/1072 (N-1 withdrawal) and file 1052 (bootstrap-boundary correction) for exact chronological and substantive consistency."
+undefined_concepts: []
+open_questions:
+  - "Whether 25I.35's policy/purpose indexing scheme for approx is directly encountered and analyzed in its own right later in the sequential read (file 25I has been referenced multiple times but its own full content has not yet been directly read in this reconstruction's sequence)."
+tier2_triggered: true
+tier2_reason: "Delivers the comprehensive, previously-flagged bridge-candidate living-document synthesis of the entire equality research arc, with Step 289/290's corrections embedded live inline, and several genuinely new findings not previously tracked at this precision: a three-way approx-indexing rivalry, an unproven major theoretical result (258.13/258.14), a precisely-quantified 15-promotion level-discipline audit, the likely origin of the vacuous-PASS methodological discipline, and the id=H(...) hash construction's formal NOT-PROMOTED disposition. Classified importance critical and confidence high given the density, rigor, and directly connective nature of this synthesis."

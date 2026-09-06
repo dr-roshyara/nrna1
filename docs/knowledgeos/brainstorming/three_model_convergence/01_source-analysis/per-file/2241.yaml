@@ -1,0 +1,105 @@
+sequence: 2241
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-233234_step_290_reviewer-b-accepts-290-as-correction-of-the-288-289-equality-thread.md
+title: "Reviewer-B Accepts Step 290 as Correction of the 288-289 Equality Thread -- Adds the Z-1 Cycle Downgrade (≈→≡→≈ was NOT a hard cycle, only an unratified-candidate dependency), the P1/P2/P3 Three-Proposition Breakdown, and the Final Locked Canonical Step-290 Statement"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a second, independent reviewer's ACCEPT-REFINED/CORRECTIVE verdict on the actual executed REFINED-STEP-290 artifact ('the actual Step 290 artifact... full 363-line content'), substantially overlapping with file 2240's approval but adding the Z-1 cycle-downgrade finding and the final locked canonical statement"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2241
+importance: high
+confidence: high
+about: >
+  A second, independent reviewer's classification of Step 290 as "ACCEPT — REFINED / CORRECTIVE," reading
+  "the actual Step 290 artifact in the uploaded material, including its full 363-line content." Substantial
+  overlap with file 2240's approval (confirms N-1A=DISTINCT well-supported at the claimed level, confirms
+  G-67's withdrawal as a genuine methodological repair rather than a mere downgrade, confirms ≈_X correctly
+  kept distinct from the corpus's own ≈, confirms the 32→30 non-degenerate correction, confirms 261.23=0/6
+  satisfied by N-1A) — this record focuses on the GENUINELY NEW content beyond file 2240:
+
+  **THE Z-1 CYCLE-DOWNGRADE FINDING (new, significant)**: "Previously ≈→≡→≈ was treated as a cycle. After
+  Step 290: ≈→≡ is only a dependency arising from an unratified candidate proposal. Therefore Z-1 should not
+  be treated as a hard architectural cycle. The remaining basis for {≡} as the minimal cut comes from Z-2/
+  Z-4." This is a further refinement of the already-tracked dependency-cycle findings (files 2237, 2239):
+  one of the cycles motivating {≡}'s status as unique minimal cut is now itself downgraded from a "hard
+  dependency" to a "dependency introduced by a candidate hypothesis" — the reviewer explicitly recommends
+  this correction be "locked."
+
+  **THE P1/P2/P3 THREE-PROPOSITION BREAKDOWN (new)**: P1 "≡ and ≈ occupy distinct conceptual/register
+  slots" (ESTABLISHED); P2 "≡ is currently defined by the observational formula" (NOT ESTABLISHED); P3 "≡
+  should ultimately be defined by that observational formula" (NORMATIVE/OPEN) — offered as an optional
+  future clarification of the already-confirmed "YES for the distinction itself... NO for ≡'s content"
+  verdict (matching file 2240's parallel precision correction from an independent angle).
+
+  **THE NOTATION-DRIFT FINDING (new)**: Step 261's two apparent relation-family listings (261.1: =·≡·≈·≅I·
+  ≅P·≅H; 261.20/261.25: =str·≡sem·≈obs·SameId·≡H·≡P) are correctly read as "notation drift inside one
+  register," not an independent second register — "precisely the kind of distinction that prevents
+  artificial inflation of the corpus's conceptual complexity." Flags one overclaim-risk phrase ("perfectly
+  consistent in content") as slightly too strong, preferring "consistent in the corresponding relation
+  inventory, despite notation drift."
+
+  **A SECOND, INDEPENDENT WORDING-PRECISION FLAG (parallel to file 2240's)**: around whether "N-1′ is
+  blocked because O_K's extension is missing" vs "≡_K is definable without it" could confuse readers,
+  recommending the sharpened phrasing: "The candidate definition is syntactically/formally expressible
+  without a closed O_K, but its evaluation and architectural validation are blocked until O_K is closed."
+
+  **CONGRUENCE INDEPENDENCE**: reinforces (from an independent angle) that 258.9 gives an INDEPENDENT basis
+  for congruence (K₁≡K₂⇒o(K₁)≡o(K₂)) not dependent on observational equivalence, keeping equality/
+  congruence/observational-equivalence/transformation-semantics as four separate concepts — "equality is not
+  automatically a congruence."
+
+  **EXPLICIT REFUSAL TO REOPEN 288**: "I would not reopen 288 just because Step 290 corrected it... the
+  research history should remain visible rather than rewriting history until nobody can see what was wrong.
+  This is particularly valuable for KnowledgeOS because the research itself is becoming evidence about the
+  governance/research process."
+
+  **THE FINAL LOCKED CANONICAL STATEMENT (recommended as the state to carry forward)**: "N-1A — DISTINCT is
+  established. The corpus explicitly distinguishes semantic equality ≡ from observational equivalence ≈ as
+  separate relation slots. The apparent contradiction identified in Steps 288-289 is withdrawn because the
+  corpus's loci defining ≡ are explicitly self-labelled candidate proposals, not ratified definitions.
+  Consequently, ≡ remains technically open in content, N-1′ remains downstream of closure of O_K, and Step
+  261 §261.23 remains completely unsatisfied (0/6). The next legitimate research act is therefore N-4, not
+  governance adjudication of ≡ vs ≈." A seven-row final status matrix (Established/Bounded/Normative/
+  Technically open/Blocked/Withdrawn/Deferred) is offered as "exactly how I would want the research ledger
+  to look."
+
+  Diagram of Step 290's three functions: adjudication(≡ vs ≈)→DISTINCT; correction(G-67)→WITHDRAWN;
+  boundary(N-1/N-4)→BLOCKED.
+introduces:
+  - concept: "The Z-1 cycle-downgrade: one of the equality-dependency cycles previously treated as a hard architectural cycle (≈→≡→≈) is downgraded to a dependency arising only from an unratified candidate proposal -- {≡}'s status as minimal cut now rests on Z-2/Z-4 rather than Z-1"
+  - concept: "The P1/P2/P3 three-proposition breakdown of the N-1A verdict, offered as a sharper future clarification"
+  - concept: "The notation-drift finding for Step 261's two apparent relation-family listings (261.1 vs 261.20/261.25), read as one register with notation drift rather than a second independent register"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked dependency-cycle findings (files 2237, 2239: four cycles, {≡} unique minimal cut)"
+    refinement: "FURTHER REFINED: one contributing cycle (Z-1) is downgraded from hard dependency to candidate-hypothesis-induced dependency; {≡}'s minimal-cut status now rests on the remaining Z-2/Z-4 basis"
+  - concept: "This reconstruction's already-tracked N-1A=DISTINCT precision correction (file 2240's typed-slot-vs-semantic-non-equivalence distinction)"
+    refinement: "INDEPENDENTLY CORROBORATED via the parallel P1/P2/P3 breakdown, reached by a second independent reviewer"
+contradicts: []
+repeats:
+  - "Substantial overlap with file 2240's review (both are independent APPROVE/ACCEPT verdicts on the same executed REFINED-STEP-290 artifact, both flag the same core precision concern about N-1A's exact scope, both confirm the 32-to-30 correction and the 261.23=0/6 finding) -- this record captures only the genuinely incremental content (Z-1 downgrade, P1/P2/P3 breakdown, notation-drift finding, final locked statement)."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document's incremental contribution beyond file 2240 -- the Z-1 dependency-cycle downgrade (candidate-hypothesis-induced, not a hard cycle), the P1/P2/P3 breakdown, the Step-261 notation-drift finding, and the final locked canonical Step-290 statement."
+anchor_test:
+  anchor: "This reconstruction's already-tracked dependency-cycle findings (files 2237, 2239) and the N-1A precision correction (file 2240)"
+  supports_dimension: "Further refines the cycle findings (Z-1 downgraded) and independently corroborates the precision correction via a second reviewer's parallel P1/P2/P3 breakdown"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The Z-1/Z-2/Z-4 cycle-labeling scheme is directly checkable against the actual REFINED-STEP-290.md artifact if directly encountered later in the sequential read."
+undefined_concepts: []
+open_questions:
+  - "Whether Z-2 and Z-4 (the remaining basis for {≡}'s minimal-cut status after Z-1's downgrade) are directly defined and distinguished anywhere else in the corpus, or only referenced here by label."
+tier2_triggered: true
+tier2_reason: "Delivers a genuine incremental refinement (Z-1 cycle downgrade) to the already-tracked dependency-cycle findings, plus a second independent corroboration of the N-1A precision correction and the final locked canonical Step-290 statement. Classified importance high (not critical) given the substantial overlap with the already-recorded file 2240."

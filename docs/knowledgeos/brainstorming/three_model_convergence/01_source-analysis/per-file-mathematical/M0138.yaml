@@ -1,0 +1,86 @@
+sequence: M0138
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180019_review-document-much-more-useful.md
+title: "Review of the Brachman & Levesque extraction (M0136): disciplined adjudication"
+date: "20260902-180019"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0138
+importance: critical
+confidence: high
+about: >
+  A disciplined adjudication review of M0136's Brachman & Levesque extraction, separating (1) what
+  the source establishes, (2) what it offers as candidate formalism, (3) what KnowledgeOS can
+  actually adopt now, and (4) what still requires KnowledgeOS's own experiments/decisions —
+  explicitly rejecting several of M0136's own "KnowledgeOS Translation" claims as overreach while
+  accepting others as strong research candidates.
+introduces:
+  - "Explicit rejection table (§17): Sat=FOL-entailment, Zero=CWA, 'Zero=Δ=∅ universally', Boundary=FrameAxiom, δ=SituationCalculus, DL=Boundary-taxonomy, Identity=unique-names+domain-closure, YES/NO/UNKNOWN-sufficiency — all marked ❌, versus an accept list (specialized reasoners, explicit/implicit distinction, TELL/ASK, entailment-as-content-evaluator, nonmonotonicity, successor-state reasoning, expressiveness/tractability tradeoff, abduction) marked ✅"
+  - "Refined candidate: Entailment is not Sat itself but 'a candidate semantic mechanism for the CONTENT dimension of evaluation' — narrowing M0136's proposed Sat(K_t,r)⟺K_t⊨Content(r) to a component, not the whole of Sat, because KnowledgeOS evaluation already spans evidence/provenance/status/boundary/context/temporal/operational/governance/contradiction dimensions"
+  - "Explicit/implicit knowledge architecture: K^exp (represented) vs. K^imp = Cn_S(K^exp) (closure under an EXPLICITLY SELECTED reasoning semantics S) — generalizing M0136's single-entailment proposal to a semantics-parameterized closure operator"
+  - "New candidate distinction: Zero_requirements ≠ Completeness_world — a KB may be complete with respect to a declared vocabulary while radically incomplete with respect to reality; explicitly offered as a refinement replacing the overstated Zero⟺vivid-KB mapping"
+  - "New five-stage proposed pipeline: Explicit Representation → Reasoning → Implicit Knowledge → Evaluation → Determination → Decision → Transition — replacing a Sat-centric formulation with reasoning/entailment/evaluation as explicitly separated stages"
+  - "T1-T5 candidate theoretical commitments for Theory v1.3, all explicitly marked PROP/strong-candidate, none kernel-promoted: T1 (K^exp≠K^imp), T2 (Cn_S(K), semantics-dependent reasoning), T3 (Eval_c(Cn_S(K),r,Γ) — evaluation may consume implicit knowledge, with provenance marking it derived not asserted), T4 (K_{t+1}=Succ_S(K_t,e_t), persistence semantics for δ), T5 (Explain(K,O)→H, abduction ≠ determination ≠ knowledge)"
+  - "Recommended new research artifact KR-KRR-2026-09 (Knowledge Representation and Reasoning Integration), with 4 sections (source-established / KnowledgeOS-compatible hypotheses / rejected translations / experiments required) and 7 named future experiments: KR-EXP-IMPLICIT, KR-ENTAIL, KR-ABD, KR-DELTA, KR-FRAME, KR-NONMON, KR-CWA"
+  - "Proposed comparator test: Zero_KO =? CWA — explicitly framed as a test expected to fail and thereby strengthen Zero's own definition by documenting precisely how it differs"
+defines: []
+refines:
+  - "M0136's Sat candidate (Sat(K_t,r)⟺K_t⊨Content(r)): reclassified from 'candidate for Sat itself' to 'candidate for the content dimension of evaluation only' — directly resolving this reconstruction's own M0136 bridge_candidate concern about compatibility with R1's non-factivity, by simply denying Sat=Entailment outright rather than reconciling it"
+  - "M0136's Zero candidate (vivid-KB / CWA): explicitly REJECTED as KnowledgeOS theory claims ('Zero≠CWA', 'too strong' for Δ=∅-universally), replaced with Zero_requirements≠Completeness_world as the safer, narrower result"
+  - "M0136's δ candidate (situation calculus / successor-state axioms): downgraded from 'candidate formalism' to 'a strong δ RESEARCH BASIS, not yet a δ definition' — T4 explicitly labeled 'research formalism, not yet δ definition'"
+  - "M0136's Boundary=FrameAxiom mapping: downgraded to 'candidate analogy only', with an open question of whether Boundary actually names several different things (semantic/evaluation/scope/transformation/evidence persistence)"
+contradicts:
+  - "Surface-level tension, flagged not resolved: this document's rejection-table entry 'Zero = Δ = ∅ universally ❌ Too strong' appears, read literally, to reject the exact biconditional this reconstruction's own corpus froze at M0132 (Zero⟺Δ=∅⟺K_t⊨EC_t, Gap Theory v1.0 FROZEN). Read charitably, the rejection targets equating that internal biconditional with the EXTERNAL vivid-KB/completeness notion M0136 imported (Zero_requirements vs. Completeness_world), not the internally frozen result itself — but the document's own wording does not make this distinction explicit, and a literal reading produces a direct clash with a FROZEN result. Requires reconciliation at the eventual global-reclassification pass."
+repeats:
+  - "TRUE≠BELIEVED≠KNOWN discipline (long-standing corpus principle) — explicitly invoked here as reinforced by the explicit/implicit/derived/determined distinction table"
+  - "Abduction≠Determination, Explanation≠Knowledge — consistent with the corpus's standing separation of evidence, decision, and authority"
+bridge_candidates:
+  - "The apparent Zero=Δ=∅ tension flagged under contradicts above — needs explicit reconciliation, not yet attempted here or elsewhere in this reconstruction's read order"
+  - "Whether KR-KRR-2026-09 was ever actually created and whether any of the seven named experiments (KR-EXP-IMPLICIT, KR-ENTAIL, KR-ABD, KR-DELTA, KR-FRAME, KR-NONMON, KR-CWA) were executed — not yet located in this reconstruction's sequence"
+  - "Whether the proposed Zero_KO=?CWA comparator test was ever run, and if so what it found"
+mathematical_content: >
+  Refines rather than proves: K^imp=Cn_S(K^exp) as a semantics-parameterized closure (S left
+  unspecified, a placeholder for classical/default/probabilistic/DL reasoning); E_content(K,r) as a
+  three-valued {T,F,U} candidate NOT frozen; K_{t+1}=Succ_S(K_t,e_t) as an unspecified transition
+  family; MinimalGap(K,r) sketched via K∪H⊨r ∧ K⊭r ∧ H minimal, offered as a candidate replacement
+  for Gap:={r|¬Sat(K,r)}. All explicitly PROP-status, none derived or proved within this document.
+gita_content: null
+kernel_content: >
+  Functions as the disciplined adjudication half of a review pair with M0136 (the extraction it
+  reviews), applying the same "review corrects overreach" pattern this reconstruction has tracked
+  since M0135's ⚖️-marked corrections — though this document does not use the ⚖️ notation, its role is
+  identical: preventing an external source's own translations from being silently adopted as
+  KnowledgeOS architecture.
+registry_updates:
+  - "Sixth instance of the review-corrects-external-source-overreach pattern (structurally parallel to M0135's ⚖️ corrections of an internal proposal, now applied to an external-literature extraction)"
+  - "Flags a literal-reading tension against the FROZEN Zero=Δ=∅ result from M0132 — the first time in this reconstruction that a later document's rejection table appears to clash with an explicitly FROZEN prior result, even if likely reconcilable on a charitable reading"
+anchor_test:
+  anchor: true
+  supports_dimension: "Sat/Evaluation decomposition, Zero (tension flagged), δ (downgraded to research basis), Boundary (downgraded to analogy), Gap (MinimalGap candidate)"
+  refines_or_contradicts: "refines (primarily); contradicts (surface-level, on Zero=Δ=∅, flagged not resolved)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"We should not simply copy those translations into Theory v1.3.\" — the document's own stated purpose"
+  - "\"Entailment is a candidate semantic mechanism for the CONTENT dimension of evaluation.\" — the central refinement of M0136's Sat proposal"
+  - "\"Zero = Δ = ∅ universally | ❌ Too strong\" (§17 table) — the flagged literal-reading tension against M0132's FROZEN result"
+  - "\"I would therefore treat this as a high-value theoretical input that can move several TODOs from 'undefined' to 'formal researchable candidate,' but not yet as grounds for Theory v1.3 ratification.\""
+undefined_concepts:
+  - "The reasoning semantics parameter S in Cn_S(K) — left as a placeholder, no candidate S is chosen or ruled out here"
+  - "MinimalGap(K,r) — sketched informally via K∪H⊨r∧K⊭r∧H-minimal, no formal minimality criterion (e.g. subset-minimality vs. cardinality-minimality) specified"
+open_questions:
+  - "Does the 'Zero=Δ=∅ universally ❌ too strong' rejection genuinely conflict with M0132's FROZEN Zero theorem, or is it narrowly targeting the external vivid-KB import? Requires explicit reconciliation."
+  - "Was KR-KRR-2026-09 ever created, and were any of its seven named experiments executed?"
+tier2_triggered: true
+tier2_reason: >
+  Flags an apparent literal-reading clash between this document's rejection table and the FROZEN
+  Zero=Δ=∅ result from M0132 — a genuine internal-consistency question this reconstruction has not
+  seen before in this specific form (a later document's explicit rejection table vs. an explicitly
+  frozen prior result) — plus a substantial, disciplined re-scoping of nearly every claim in M0136.

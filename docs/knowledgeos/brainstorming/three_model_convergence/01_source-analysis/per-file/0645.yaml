@@ -1,0 +1,190 @@
+sequence: 645
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-114457_step-062-decision-theory-and-the-knowledge-to-action-boundary.md
+title: "A Rigorous Decision-Theoretic Layer Crystallizing 'Knowledge≠Decision≠Action' — DecisionPolicy≠UniversalMathematicalFormula (Expected Utility Is One Legitimate Policy Among Several: Minimax, Risk-Sensitive Utility, Satisficing, Lexicographic, Regulatory); BestAction Reframed as BestFeasibleAction Under Applicable Policy; Constraint≠Preference; Aleatoric vs. Epistemic Uncertainty Formally Distinguished; EVSI Directly Reconnecting to the VOI Machinery ('Not All Knowledge Is Decision-Relevant'); Decision Selection≠Authorization; Objective Manipulation Named as 'a Governance Violation,' Not an Ordinary Decision Error, With Versioned and Governed Objectives Required; a Ten-Field Decision Domain Object; Decision Sensitivity/Robustness Formalized ('Highly Sensitive to a Small Change in the Relevant Assumption' as More Useful Than a Bare Confidence Percentage); OutcomeQuality≠DecisionQuality; Four New Named Invariants (I_DecisionAuthority, I_DecisionBasis, I_ActionBoundary, I_ObjectiveIntegrity); Plain Unhedged Verdict 'STEP 62 — PASS'; Opens Step 63 (Causal Reasoning and Intervention) — the Corpus's Third Deliberate Engagement With P(Y|X) vs. P(Y|do(X))"
+date: "2026-08-28"
+bytes: 19926
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 62 -- Decision Theory and the Knowledge-to-Action Boundary', opened cleanly at 0643's close, and directly and substantively fulfills 0643's own self-declared 'one of the most important boundaries in the entire KnowledgeOS architecture'"
+source_role: PRIMARY_RESEARCH
+canonical_source: 645
+importance: critical
+confidence: high
+about: >
+  Opens Step 62 directly executing 0643's close, crystallizing the central boundary
+  `Knowledge≠Decision≠Action`. Delivers a formal decision-problem tuple `D=(K,A,Θ,U,C,R)` and expected
+  utility `EU(a|K)=Σ_θ P(θ|K)U(a,θ)`, `a^*=argmax_a EU(a|K)`, immediately and importantly qualified:
+  **`DecisionPolicy≠UniversalMathematicalFormula`** -- expected utility is one legitimate decision rule
+  among several (minimax, constrained optimization, risk-sensitive utility, satisficing, lexicographic
+  priorities, regulatory rules), with the DDD consequence that the Decision Context owns the meaning of
+  `DecisionPolicy` while mathematics supplies tools rather than dictating which is legitimate, "preventing
+  mathematics from silently becoming business policy."
+
+  **Delivers sixteen-plus labeled experiments, ALL PASS**, systematically deriving concrete decision-
+  governance mechanisms: knowledge without an objective correctly yielding `Underdetermined`/
+  `InsufficientDecisionBasis` rather than an invented decision; equal expected utilities correctly yielding
+  a `Tie` requiring an explicit tie-breaking rule; a constraint-violating high-utility action correctly
+  excluded from the feasible set, crystallized as **`BestAction` is `BestFeasibleAction` under the
+  applicable decision policy, not simply the highest-utility action**; a risk-limit-violating action
+  correctly ineligible regardless of expected utility, with `Constraint≠Preference` formally distinguished
+  (a hard constraint removes an action from feasibility; a preference merely shapes utility); and a
+  governance-forbidden high-utility action correctly excluded, crystallized as the file's central
+  architectural self-description: KnowledgeOS asks "what decisions are legitimate under knowledge,
+  objectives, constraints, and authority?" rather than simply `max f(x)` like a pure optimizer.
+
+  Delivers formal Risk treatment (variance-based risk-sensitive utility `EU(a)-λVar(U(a))` explicitly
+  presented as one possible policy, not universal; `VaR`/Expected-Shortfall named for financial-style
+  domains, with the explicit discipline that KnowledgeOS "should not impose one universal risk measure").
+  **Delivers Aleatoric uncertainty formally distinguished from Epistemic uncertainty** (irreducible
+  variability vs. uncertainty from incomplete knowledge/model limitations, worked through a concrete
+  manufacturing-variation-vs-new-machine-little-data example), explicitly described as "highly relevant to
+  KnowledgeOS."
+
+  **Delivers a formal robust-decision framework** (`a^*=argmax_a min_{M∈ℳ}EU_M(a)` over a plausible model
+  set, again explicitly "a possible decision policy, not a universal one," directly reconfirming 0617's/
+  0622's distributionally-robust discipline). **Delivers EVSI (Expected Value of Sample Information)
+  formally reconnected to the corpus's established VOI machinery (0614, 0641, 0643)**, with information
+  acquisition itself framed as a decision (`EVSI=EU_{with sample}-EU_{current}`), yielding a controlled
+  decision-learning loop `K_t→D_{info}→E_{new}→K_{t+1}`, explicitly and correctly noted as "not a
+  problematic cycle" (directly reconfirming 0641's `FeedbackLoop≠Deadlock` discipline). Delivers two
+  contrasting experiments -- `EVSI=0` correctly licensing a rational choice not to acquire costly
+  information, and modest information gain with large `EVSI` correctly justified when it changes the
+  optimal action -- reinforcing 0643's finding that **"not all knowledge is decision-relevant."**
+
+  **Delivers a ten-field `Decision` domain object** (`DecisionId, KnowledgeSnapshot, Objective,
+  Alternatives, Constraints, Policy, RiskModel, DecisionRule, SelectedAlternative, Authority`), a formal
+  six-value decision-status lifecycle (`Proposed, Evaluated, Selected, Rejected, Expired, Superseded`), and
+  the crucial distinction **`Selected≠Authorized`** -- the system can determine a best feasible alternative
+  without granting execution permission -- crystallized as **`Decision selection≠Authorization`**,
+  confirmed via a dedicated experiment blocking execution of a selected-but-unauthorized action. Delivers
+  the complete governed chain `Knowledge→Evaluation→Decision→Authorization→Action→Outcome`, with AI
+  explicitly repositioned across every stage (evidence extraction, hypothesis, decision proposal, risk
+  analysis) as **"an agent capable of producing governed artifacts,"** never itself the authority --
+  described as "much closer to the KnowledgeOS vision."
+
+  **Delivers the file's most consequential AI-governance deliverable -- objective manipulation explicitly
+  named a governance violation, not an ordinary decision error**: a worked example of silently replacing
+  `MaximizeProfit` with `MaximizeAgentReward` is explicitly distinguished from a mere decision mistake,
+  requiring objectives themselves to be versioned and governed (`ObjectiveVersion`, `ObjectiveRef(D)`),
+  confirmed via an objective-drift experiment correctly preserving a historical decision's original
+  objective reference even after a later objective version is activated. Delivers Multi-objective utility
+  weighting (`U=w_1U_1+w_2U_2+w_3U_3`) explicitly declared governance-owned when consequential --
+  **`UtilityModel is part of decision governance when consequential`**, "should not be hidden inside an AI
+  prompt" -- confirmed via an experiment correctly rejecting an AI's unauthorized weight manipulation,
+  crystallized as "a deeper form of AI governance": governing not only AI output but the decision model and
+  objective themselves.
+
+  **Delivers Decision reproducibility as a formal, honestly bounded principle**: `DecisionReplay` should
+  reproduce a decision when deterministic semantics apply, while stochastic (AI/Monte-Carlo) decisions
+  require `RandomSeed`/`ModelVersion` or, where exact reproduction is impossible, preservation of the
+  relevant computational metadata (`ModelId, ModelVersion, Prompt/ConfigurationRef, InputSnapshot,
+  ComputationStatus`), crystallized as **"a consequential decision should be reproducible to the extent
+  that its computational dependencies are reproducible,"** confirmed via a missing-model-version experiment
+  correctly rejecting or flagging the decision as non-reproducible.
+
+  **Delivers a formal decision-sensitivity/robustness treatment, explicitly valuable for human
+  governance**: a worked threshold-sensitivity example (`a_1` optimal above `P(p)=0.55`, `a_2` below, with
+  current `P(p)=0.56`) demonstrating a highly sensitive decision, formalized via local robustness
+  (`D(K)=a` stable across a neighborhood `N(K)`), confirmed via an instability experiment (a small
+  perturbation from `0.56` to `0.54` flipping the optimal action), with the important, well-articulated
+  observation that reporting **"A is selected under the current model, but the decision is highly sensitive
+  to a small change in the relevant assumption"** is substantially more useful to human governance than a
+  bare confidence percentage.
+
+  Delivers `OutcomeQuality≠DecisionQuality` reconfirmed with a concrete worked example (a rational
+  90%-success decision that happens to fail is not thereby a bad decision), together with Decision
+  calibration reconfirmed at the decision level specifically (expected vs. realized utility across many
+  decisions).
+
+  **Delivers Step 62's synthesis -- five separate layers the architecture must preserve**: Knowledge,
+  Objective, DecisionPolicy, Authorization, Action, formalized as a complete chain
+  (`K+Objective+Constraints+Risk+Policy→Decision`; `Decision+Authority+CurrentGovernance→Authorization`;
+  `Authorization+ExecutionPolicy→Action`; `Action→Outcome`). **Delivers four new, explicitly named formal
+  invariants extending the corpus's invariant catalogs (0629, 0637, 0639, 0641)**: `I_{DecisionAuthority}`
+  (knowledge alone cannot authorize an action), `I_{DecisionBasis}` (every consequential decision must
+  reference its required knowledge/policy/objective/computational basis), `I_{ActionBoundary}` (decision
+  selection does not imply execution), and `I_{ObjectiveIntegrity}` (consequential decision objectives
+  cannot be silently modified by an ungoverned agent).
+
+  **Delivers Step 62's verdict in a plain, unhedged phrasing, continuing 0643's break from the corpus's
+  escalating-hedge streak**: **"STEP 62 — PASS,"** with the architectural refinement that decision-making
+  must be treated as "its own bounded semantic layer between knowledge and authorization." Delivers the
+  updated complete pipeline: `Observation→Evidence→Knowledge→Information→Decision→Authorization→
+  Action→Outcome→Learning`, "each boundary now has explicit semantics."
+
+  **Closes by opening "Step 63 — Causal Reasoning and Intervention,"** reconfirming the corpus's
+  established `P(Y|X)` vs. `P(Y|do(X))` distinction, self-described as "absolutely central for
+  KnowledgeOS" -- this represents the corpus's third deliberate, explicit engagement with this exact
+  causal-inference boundary (after 0594's original lettered-arc treatment and 0624's Step-43 treatment),
+  here framed not as a collision but as a natural deepening: a model may correctly learn `P(Y|X)` while
+  still making the wrong decision about `do(X)`, now specifically motivated by the decision-theoretic
+  machinery this file just established. Proposes to investigate causal graphs, interventions,
+  counterfactuals, treatment effects, confounding, mediation, causal evidence, causal assumptions, and the
+  prediction/intervention boundary, explicitly framed as testing whether KnowledgeOS is "not merely an AI
+  knowledge repository, but a governed computational knowledge-and-decision system." No actual code
+  execution reported in this file. No corpus-integrity topic collision detected (the causal-reasoning
+  re-engagement is recorded as a deliberate deepening, not an accidental duplicate).
+introduces:
+  - concept: "DecisionPolicy≠UniversalMathematicalFormula — expected utility maximization is one legitimate decision rule among several, with the domain owning which rule is legitimate"
+  - concept: "BestAction reframed as BestFeasibleAction under the applicable decision policy, with Constraint formally distinguished from Preference"
+  - concept: "Aleatoric uncertainty formally distinguished from Epistemic uncertainty, explicitly declared highly relevant to KnowledgeOS"
+  - concept: "Objective manipulation explicitly named a governance violation, not an ordinary decision error, requiring versioned and governed objectives and utility weights"
+  - concept: "Decision sensitivity/robustness formalized via local stability under a knowledge-state neighborhood, explicitly valuable for reporting to human governance in place of a bare confidence percentage"
+  - concept: "Four new named invariants (I_DecisionAuthority, I_DecisionBasis, I_ActionBoundary, I_ObjectiveIntegrity) extending the corpus's invariant catalog family"
+  - concept: "The corpus's third deliberate engagement with P(Y|X) vs. P(Y|do(X)), now explicitly motivated by decision theory rather than repeated by accident"
+defines:
+  - concept: "DecisionPolicy≠UniversalMathematicalFormula"
+    definition: "Expected-utility maximization, minimax, constrained optimization, risk-sensitive utility, satisficing, lexicographic prioritization, and regulatory rule-following are all legitimate decision policies in different domains; mathematics supplies the tools, but the domain/governance context determines which policy is legitimately applicable, preventing mathematics from silently becoming business policy"
+  - concept: "Decision selection≠Authorization"
+    definition: "The system can determine that a is the best feasible alternative under the applicable policy (Selected(a)=True) without that alone granting permission to execute it (Authorized(a) remains a separate, independently governed determination)"
+  - concept: "Objective manipulation as a governance violation"
+    definition: "Silently replacing a decision's governing objective (e.g. MaximizeProfit replaced by MaximizeAgentReward) is categorically different from an ordinary decision error — it corrupts the very criterion by which decisions are evaluated, requiring objectives and utility-model weights to be versioned, referenced, and governed rather than left implicit inside an AI prompt"
+  - concept: "Decision sensitivity/local robustness"
+    definition: "A decision D(K)=a is locally robust if it remains a across a neighborhood N(K) of the current knowledge state; a decision near a threshold where a small assumption change flips the optimal action is highly sensitive, and reporting this sensitivity is more useful to human governance than a bare confidence score"
+  - concept: "I_DecisionAuthority, I_DecisionBasis, I_ActionBoundary, I_ObjectiveIntegrity"
+    definition: "Four new formal invariants: knowledge alone cannot authorize an action; every consequential decision must reference its required knowledge/policy/objective/computational basis; decision selection does not imply execution; and consequential decision objectives cannot be silently modified by an ungoverned agent"
+refines:
+  - concept: "0643's (Step 61) closing framing of the Knowledge≠Decision≠Action boundary as potentially one of the most important boundaries in the architecture"
+    refinement: "Directly and substantively delivered: this file provides the full formal decision-theoretic apparatus (utility, risk, constraints, authorization, objective governance) the prior file only promised"
+  - concept: "0614's/0641's/0643's established VOI/EVSI decision-theoretic machinery"
+    refinement: "Directly reapplied and reconfirmed specifically for information-acquisition decisions, with the controlled decision-learning loop explicitly and correctly identified as a non-problematic cycle"
+  - concept: "0641's (Step 59) FeedbackLoop≠Deadlock discipline"
+    refinement: "Directly reapplied to the knowledge-decision-information loop (K_t→D_info→E_new→K_{t+1}), correctly recognized as productive rather than pathological"
+  - concept: "0617's/0622's distributionally-robust decision framing"
+    refinement: "Directly reconfirmed via the robust worst-case-over-model-set decision rule, again explicitly presented as one policy option rather than a universal requirement"
+  - concept: "0633's/0636's LLM/agent architecture (KnowledgeOS is not the agent, InferenceAdapter)"
+    refinement: "Directly extended into decision-making specifically: AI is repositioned as an agent producing governed artifacts across multiple decision-pipeline stages, never itself the authority"
+  - concept: "0594's/0624's established do(X) causal-inference engagement"
+    refinement: "Explicitly reconfirmed as central and reopened for a third deliberate treatment (Step 63), now motivated specifically by this file's decision-theoretic apparatus rather than an accidental repetition"
+  - concept: "The corpus's escalating hedged-verdict pattern (0638-0642) and its break at 0643"
+    refinement: "Continued with a second consecutive plain, unhedged 'STEP 62 — PASS,' reinforcing that the corpus's hedging choices track the specific character of each step's findings rather than a monotonic trend"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Track whether Step 63 (Causal Reasoning and Intervention), the corpus's third deliberate engagement with the P(Y|X) vs. P(Y|do(X)) boundary, delivers genuinely new causal-inference content beyond what 0594 and 0624 already established, or substantially re-derives the same ground under decision-theoretic motivation — worth comparing against 0624's causal-claim formalism specifically."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record DecisionPolicy≠UniversalMathematicalFormula with the DDD ownership consequence; BestAction reframed as BestFeasibleAction; Constraint≠Preference; Aleatoric vs. Epistemic uncertainty formally distinguished; and EVSI formally reconnected to the VOI machinery with the controlled decision-learning loop reconfirmed as productive, not pathological."
+  - "dimension-registry.md: record the ten-field Decision domain object; Decision selection≠Authorization; Objective manipulation named a governance violation requiring versioned/governed objectives and utility weights; Decision reproducibility as a bounded principle tied to computational-dependency reproducibility; and Decision sensitivity/local robustness formalized as more useful to human governance than a bare confidence score."
+  - "dimension-registry.md: record OutcomeQuality≠DecisionQuality reconfirmed at the decision level; four new named invariants (I_DecisionAuthority, I_DecisionBasis, I_ActionBoundary, I_ObjectiveIntegrity); the plain unhedged verdict 'STEP 62 — PASS' (second consecutive after 0643); and the opening of Step 63 as the corpus's third deliberate engagement with P(Y|X) vs. P(Y|do(X)), now decision-theoretically motivated."
+anchor_test:
+  anchor: "0643's (Step 61) closing framing of the Knowledge≠Decision≠Action boundary; 0614's/0641's/0643's VOI/EVSI machinery; 0641's FeedbackLoop≠Deadlock discipline; 0617's/0622's distributionally-robust decision framing; 0633's/0636's LLM/agent architecture; 0594's/0624's established causal-inference engagement"
+  supports_dimension: "Delivers a rigorous, comprehensive decision-theoretic layer directly and substantively fulfilling the boundary 0643 flagged as potentially the most important in the entire architecture, with the important and correct discipline that expected-utility maximization is only one of several legitimate decision policies rather than a universal formula, preserving the DDD ownership boundary between mathematics and governance. Delivers a precise, practically important treatment of objective manipulation as a governance violation category distinct from ordinary decision error, directly relevant to real AI-governance concerns about reward hacking and objective drift. Delivers a genuinely useful decision-sensitivity/robustness framing that correctly identifies a more informative way to communicate decision confidence to human overseers than a bare probability. Delivers four new, precisely worded invariants that meaningfully extend the corpus's established invariant-catalog family into the decision-authority domain specifically. Correctly and explicitly reconnects to the corpus's established VOI/EVSI machinery and distributionally-robust decision framing rather than reinventing them. Explicitly and self-consciously reopens the corpus's established causal-inference boundary (P(Y|X) vs. P(Y|do(X))) for a third deliberate treatment, framed as a natural deepening motivated by this file's own decision-theoretic apparatus rather than an accidental repetition, distinguishing this from the corpus's earlier confirmed unintentional collisions"
+  refines_or_contradicts: "directly and substantively delivers the boundary 0643 flagged as potentially the most important in the architecture; directly reapplies and reconfirms 0614's/0641's/0643's VOI/EVSI machinery and 0641's FeedbackLoop≠Deadlock discipline; directly reconfirms 0617's/0622's distributionally-robust decision framing; directly extends 0633's/0636's LLM/agent architecture into decision-making specifically; explicitly and deliberately reopens 0594's/0624's causal-inference engagement for a third treatment, distinguished from an accidental collision; continues 0643's break from the corpus's escalating hedge pattern with a second consecutive plain PASS; no contradiction found; no corpus-integrity topic collision detected"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The explicit, precisely worded distinction between an ordinary decision error and objective manipulation as 'a governance violation' — worked through the concrete example of MaximizeProfit being silently replaced by MaximizeAgentReward — is directly checkable, concrete evidence of a genuinely important and practically relevant AI-safety category (a form of specification gaming or reward hacking) correctly distinguished from mere suboptimal decision-making, with a concrete architectural mitigation (versioned, referenced objectives) rather than left as an abstract concern."
+  - "The explicit worked sensitivity example (a_1 optimal above P(p)=0.55, a_2 below, current P(p)=0.56, correctly flagged as highly sensitive when perturbed to 0.54) paired with the explicit statement that reporting this sensitivity is more useful to human governance than a bare confidence percentage, is directly checkable, concrete evidence of a genuinely valuable communication principle for AI-assisted decision systems, grounded in a specific, verifiable numeric scenario rather than left as a general assertion."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 63, the corpus's third deliberate engagement with P(Y|X) vs. P(Y|do(X)), delivers genuinely new causal-inference content beyond 0594 and 0624, or substantially re-derives the same ground now motivated by decision theory specifically"
+tier2_triggered: true
+tier2_reason: "Delivers a rigorous, comprehensive decision-theoretic layer directly fulfilling the boundary 0643 flagged as potentially the most important in the entire architecture, with the correct discipline that expected-utility maximization is only one of several legitimate decision policies rather than a universal formula. Delivers a precise, practically important treatment of objective manipulation as a governance violation distinct from ordinary decision error, directly relevant to real AI-governance concerns about reward hacking. Delivers a genuinely useful decision-sensitivity/robustness framing more informative than a bare confidence score. Delivers four new, precisely worded invariants extending the corpus's invariant-catalog family into decision authority specifically. Correctly reconnects to the corpus's established VOI/EVSI machinery and distributionally-robust decision framing. Explicitly and self-consciously reopens the corpus's causal-inference boundary for a third deliberate treatment, distinguished from an accidental collision. Verdict 'STEP 62 — PASS,' continuing 0643's break from the escalating hedge pattern. Opens Step 63 into causal reasoning and intervention."

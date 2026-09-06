@@ -1,0 +1,196 @@
+sequence: M0037
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-235201_minimality-is-representation-dependent-directive-and-restructure.md
+title: "Minimality Is Representation-Dependent: the Extended V8-V12 Experiment Delivers FOUR Minimal Kernels of Cardinality 8 (Not 13), the 'Invariant Custody' Concept, Represent Exposed as a Definitional Artifact, Challenge Not Proven Primitive (Absorbed by Hypothesize+Infer Under V8), a Seven-Operation Revise Collapse, and a New Brown-Hwang (Kalman-Style) State Enrichment Proposal"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: b
+  secondary: c1
+  secondary_note: "a second, deeper adjudication of the kernel-reduction experiment (extending M0035), now covering an EXTENDED run with representational variants V8-V12 and an information-closure/'invariant custody' analysis not present in the earlier report -- the single most mathematically consequential result being that |K_min|=13 under the original algebra and |K_min|=8 under an expanded one, proven NOT to be a statistical disagreement but evidence that the semantic algebra itself was underdetermined"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0037
+importance: critical
+confidence: high
+about: >
+  Adjudicates an EXTENDED run of the kernel-reduction experiment (M0030's protocol, first
+  adjudicated in M0035), now including representational variants through V12 and a new invariant-
+  custody analysis. Headline result: "the KnowledgeOS kernel has 13 operators" is explicitly
+  WRONG -- V12 produces four minimal kernels of cardinality 8, and 13!=8 is proven NOT a
+  statistical disagreement but "solutions to different formal systems," i.e. the admissible
+  semantic algebra was never fixed.
+
+  **DELIVERS THE FOUR CARDINALITY-8 MINIMAL KERNELS FROM V12**: all four contain the core
+  {Observe, Qualify, Relate, Infer, Validate, Revise} (6 operators), plus a binary choice between
+  {Interpret | Represent} and a binary choice between {DetectGap | Determine} -- suggesting the
+  system's true structure may be "a 6-operator core + 2 semantic choices" rather than one uniquely
+  determined flat list.
+
+  **DELIVERS THE BIJECTION-FLAW DISCOVERY AS A METHODOLOGICAL SELF-CRITIQUE**: the protocol's own
+  capability list (C1-C13) was effectively in one-to-one correspondence with the 13 named
+  operators, which would make apparent operator-irreducibility potentially CIRCULAR (removing O_i
+  trivially removes C_i by construction); the audit finds the experiment was rescued from
+  triviality only because Claude's actual implementation introduced SHARED semantic atoms across
+  capabilities, breaking the intended bijection -- "the most informative part of the experiment
+  came from a semantic model not actually specified adequately by the original protocol."
+
+  **DELIVERS CAPABILITY CLOSURE AS A FORMALLY DECIDABLE QUESTION, DISTINCT FROM THE UNDECIDABLE
+  'HAVE WE FOUND EVERY PRIMITIVE'**: for-all c in C_required, there-exists o in C: c in
+  Reach(o,...) -- an operator-first search can silently miss an unowned capability, while a
+  capability-indexed model exposes the hole; proposes the revised research pipeline Corpus ->
+  Capability Inventory -> Semantic Normalization -> Primitive Types -> Closure -> Minimality
+  (replacing Operator List -> Ablation -> Kernel) as "probably the most valuable result of the
+  entire experiment."
+
+  **CONFIRMS DetectGap's DERIVABILITY MORE STRONGLY, WITH CAREFUL WORDING DISCIPLINE**: DetectGap
+  = difference-decision o norm-comparison survives 8/8 original variants AND 12/12 representational
+  variants, "the only operator derivable in all 12 representations" -- but the correct scientific
+  wording is "[EXP] strong derivability evidence" (a sampled-representation result), not
+  "[THEOREM] universally derivable" (which would require quantifying over ALL admissible
+  representations, not just 12 sampled ones).
+
+  **EXPOSES Represent AS A DEFINITIONAL/MEASUREMENT ARTIFACT, THE PASS'S CLEAREST NEGATIVE RESULT**:
+  removing Represent loses only capability C3 (Representation itself), because C3 is the ONLY
+  capability that names that carrier -- "the irreducibility is definitional," combined with low
+  corpus support, yielding "Represent is NOT currently evidence for a primitive," recommended for
+  removal from any serious candidate kernel while remaining in the research vocabulary.
+
+  **CONFIRMS Interpret REMAINS UNRESOLVED, WITH A REFINED DPI CORRECTION**: the information-
+  theoretic result (I(X;S)=1.5 vs I(X;S')=0.5, 1 bit lost) is real but does not prove Interpret is
+  primitive, since coupled representations (V1/V12) permit Interpret and Represent to derive each
+  other -- "information loss under one representation != semantic primitive necessity." The DPI
+  correction is stated with full precision: I(X;Z)<=I(X;S') holds only when Z is a function of S'
+  ALONE; if Z=f(S',Context), recovery through the additional context is possible.
+
+  **DELIVERS THE CRITICAL FINDING THAT Challenge IS NOT PROVEN PRIMITIVE**: variant V8 removes
+  Challenge entirely and still achieves 13 operators, 25/25 capabilities, 16/16 scenarios --
+  Challenge's responsibility does not disappear, it MOVES to Hypothesize+Infer, demonstrated via
+  the new invariant-custody experiment: custody(I9, K_V0)={Challenge} but
+  custody(I9, K_V8)={Hypothesize, Infer}.
+
+  **INTRODUCES 'INVARIANT CUSTODY' AS A GENUINELY NEW AND IMPORTANT DDD/MATHEMATICAL CONCEPT**:
+  Custody(I,K) = {o in K : invariant I fails when o is removed} -- a reduction can shrink |K'|<|K|
+  while INCREASING |Custody(I,K')|>|Custody(I,K)|, meaning fewer operators but MORE CONCENTRATED
+  responsibility for a given invariant -- explicitly flagged as "one of the most interesting
+  mathematical/DDD ideas produced by the whole experiment," since a cardinality-minimal kernel can
+  be objectively worse in cohesion/change-isolation/invariant-ownership than a larger one.
+
+  **DELIVERS THE THREE-WAY NON-EQUIVALENCE (MATHEMATICAL MINIMALITY / FUNCTIONAL NECESSITY /
+  DOMAIN RESPONSIBILITY) AS AN EMPIRICALLY DEMONSTRATED PRINCIPLE FOR Discriminate**: Discriminate
+  is derivable in 11/12 representations, YET DDD analysis argues it may remain a distinct
+  responsibility because Buddhi-like discrimination has its own domain vocabulary -- "derivable
+  NOT-IMPLIES mergeable," recommended as a permanent classification dimension.
+
+  **DELIVERS Select AS A BOUNDED-CONTEXT QUESTION, NOT A MINIMALITY QUESTION**: Select consumes
+  Objective and produces Decision, but the kernel experiment owns neither Objective's production
+  nor any consumer of Decision -- the next investigation should be a CONTEXT MAP, not another
+  ablation.
+
+  **EXPOSES A SERIOUS SIMULATOR LIMITATION FOR Revise**: the corpus actually distinguishes SEVEN
+  operations (Update, Revise, Supersede, Correct, Invalidate, Retract, Expire) that the simulator
+  collapses into one undifferentiated "Revise" -- genuinely open (named Q-4) whether these are
+  different domain operations or different policies over one state-transition mechanism, with
+  worked counterexamples (Invalidate(x) != Supersede(x,y); Expire(x,t) != Retract(x)).
+
+  **DELIVERS TWO ADDITIONAL STATISTICAL-METHODOLOGY CRITIQUES**: the 15 randomized arms are likely
+  correlated/paired (drawn from the same scenario/random world), so 150,000 trials do not
+  constitute 150,000 independent observations, though the report's avoidance of significance
+  testing means this does not invalidate its conclusions; and five-seed reproducibility (identical
+  failure sets across seeds 1/7/13/101/2718) establishes only "seed reproducibility" (determinism
+  conditional on seed) not "statistical robustness" (robustness to generator specification or all
+  seeds).
+
+  **DELIVERS THE FINAL, MOST CAREFUL REWORDING OF THE HEADLINE CLAIM**: "14 powers were irreducible
+  relative to the tested capability model and semantic algebra" -- NOT "14 irreducible powers
+  required by epistemology" -- since the capability set C1-C25 was inherited from the same
+  protocol author, not independently derived, reinforcing Q-14 as "the deepest robustness
+  question."
+
+  **INTRODUCES A NEW EXTERNAL SOURCE, 'BROWN-HWANG' (KALMAN-FILTER-STYLE ESTIMATION THEORY), NOT
+  YET SEPARATELY EXTRACTED IN THIS PASS**: proposes enriching the epistemic state to
+  E_t=(K_t,U_t,M_t,H_t,F_t) -- semantic/epistemic content, UNCERTAINTY STRUCTURE, ACTIVE
+  MODEL/ASSUMPTIONS, ADMISSIBLE ALTERNATIVES, ACCUMULATED EVIDENCE -- explicitly motivated by
+  estimation-theory concepts (X-hat_t vs U_t vs M_t) analogous to Kalman-filter state/uncertainty
+  separation; flagged as "not yet canon" but "exposes why the current kernel experiment can only go
+  so far," since the simulator's epistemic state answers only "can this carrier be generated,"
+  never "does the resulting state preserve semantic adequacy, uncertainty, provenance, calibration,
+  alternatives, temporal identity, inquiry-relative validity" -- Reachability != Epistemic
+  adequacy, "perhaps the single most important limitation of the simulation."
+
+  **FORMALIZES THE PROPOSED SEMANTIC KERNEL EQUIVALENCE EXPERIMENT MORE RIGOROUSLY**: an external
+  behavior function B(K,W,Q,E,C) producing (K', Assessment, Alternatives, Gap, Revision,
+  Decision-eligibility); two kernels are behaviorally equivalent iff B(K_1,.)=B(K_2,.) for every
+  admissible test case (or distributionally equivalent for stochastic systems); PLUS a required
+  preservation vector P=(Meaning,Evidence,Warrant,Uncertainty,Alternatives,History,Identity,
+  Context,Inquiry,Authorization) -- behavioral equivalence alone is insufficient if one kernel
+  silently loses provenance or uncertainty.
+
+  **PROPOSES A SEVEN-LEVEL RESEARCH HIERARCHY, REPLACING THE OPERATOR-FIRST APPROACH**: Level 1
+  Ontology (what objects exist) -> Level 2 State (K_t's mathematical type) -> Level 3 Semantics
+  (representation equivalence R_1 =_sem R_2) -> Level 4 Adequacy (sufficiency for inquiry Q) ->
+  Level 5 Transition (K_t->K_t+1) -> Level 6 Invariants (what must survive every transition) ->
+  Level 7 Kernel (only now: what transformations are irreducible) -- "much more mathematically
+  defensible" than jumping straight to operator ablation.
+
+  **PROPOSES A NEW KERNEL SHAPE, NOT A FLAT LIST**: K = (P, R, delta, I) -- primitive epistemic
+  powers, admissible composition/typing relations, state-transition/commit semantics, protected
+  epistemic invariants -- extended, per Brown-Hwang, to K = (P, R, delta, I, U) adding U for
+  epistemic uncertainty/assessment semantics; explicitly [PROP], not yet tested by the executed
+  experiment.
+
+  **DELIVERS THE FINAL MATHEMATICAL VERDICT**: the experiment has NOT solved kernel minimality; it
+  has instead "falsified the assumption that kernel minimality can be determined independently of
+  semantic representation" -- the correct sequence is Representation -> Capability -> Reachability
+  -> Minimality, not Operator -> Ablation -> Kernel, since 13 and 8 are BOTH legitimate minima
+  under different declared semantic systems. Final deepened research question: "What mathematical
+  structure must an epistemic state preserve under all admissible representations and
+  transitions?" -- explicitly "the real KnowledgeOS theory problem," to be addressed via state
+  semantics + independently-derived capability inventory + semantic equivalence + invariant-
+  preservation BEFORE any further minimality experiment.
+introduces:
+  - concept: "The four cardinality-8 minimal kernels from V12: a 6-operator core {Observe,Qualify,Relate,Infer,Validate,Revise} plus binary choices {Interpret|Represent} and {DetectGap|Determine}"
+  - concept: "The bijection-flaw self-critique: the original capability set was a near-bijection with the operator names, potentially making irreducibility circular, rescued only by Claude's implementation introducing shared atoms"
+  - concept: "Capability closure as a formally decidable question distinct from the undecidable 'have we found every primitive,' with a revised research pipeline (Corpus->Capability Inventory->Semantic Normalization->Primitive Types->Closure->Minimality)"
+  - concept: "'Invariant custody' Custody(I,K)={o in K: I fails when o removed}, showing a reduction can shrink cardinality while increasing custody concentration for a given invariant"
+  - concept: "The three-way non-equivalence (mathematical minimality/functional necessity/domain responsibility) empirically demonstrated for Discriminate: derivable NOT-IMPLIES mergeable"
+  - concept: "Select as a bounded-context question (Objective/Decision ownership), not a minimality question"
+  - concept: "The seven-operation Revise collapse (Update/Revise/Supersede/Correct/Invalidate/Retract/Expire simulated as one), flagged genuinely open as Q-4"
+  - concept: "The Brown-Hwang-motivated enriched epistemic state E_t=(K_t,U_t,M_t,H_t,F_t), a new estimation-theory-style state decomposition"
+  - concept: "The rigorous Semantic Kernel Equivalence Experiment formalization: behavior function B(K,W,Q,E,C) plus a ten-dimensional preservation vector P"
+  - concept: "The seven-level research hierarchy (Ontology/State/Semantics/Adequacy/Transition/Invariants/Kernel), replacing operator-first ablation"
+  - concept: "The kernel SHAPE K=(P,R,delta,I), extended to (P,R,delta,I,U) with U for uncertainty/assessment semantics"
+defines: []
+refines:
+  - concept: "M0035's first adjudication of the kernel experiment, now extended with the V8-V12 results, invariant custody, the Represent-as-artifact finding, and the Challenge-not-primitive (V8) finding"
+  - concept: "M0030's original C0 kernel candidate, now shown to be one of at least two legitimate minima (13 vs 8) depending on the semantic algebra"
+contradicts: []
+repeats:
+  - concept: "The DPI-precision correction and DetectGap's derivability, already established in M0035, restated here with the extended 12/12 result and sharper wording discipline"
+bridge_candidates:
+  - "The newly-introduced 'Brown-Hwang' source (Kalman-filter/estimation-theory style state decomposition) is not yet independently extracted anywhere in this pass -- worth watching for a dedicated Brown-Hwang document later in the log, analogous to the still-unresolved 'Freedman' reference."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0037 as the extended kernel-experiment adjudication delivering four cardinality-8 minimal kernels (proving |K_min| is representation-dependent, not statistically disputed), the 'invariant custody' concept, Represent exposed as a definitional artifact, Challenge shown not proven primitive (absorbed by Hypothesize+Infer under V8), a seven-operation Revise collapse flagged as genuinely open, and a new Brown-Hwang-motivated Kalman-style state enrichment proposal E_t=(K_t,U_t,M_t,H_t,F_t)."
+anchor_test:
+  anchor: "M0035's first kernel-experiment adjudication and M0030's original C0 candidate"
+  supports_dimension: "Extends the adjudication with the crucial |K_min|=8-vs-13 representation-dependence result and the invariant-custody concept, both major refinements of the pass's kernel-minimality methodology"
+  refines_or_contradicts: "refines (M0035, M0030)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "V12 producing four cardinality-8 minimal kernels (versus the original 13), with the explicit demonstration that 13!=8 reflects two different formal systems rather than a statistical disagreement -- the pass's clearest empirical confirmation that kernel minimality is representation-relative."
+  - "custody(I9,K_V0)={Challenge} but custody(I9,K_V8)={Hypothesize,Infer} -- a concrete worked instance of 'invariant custody' showing responsibility migration under reduction, not elimination."
+  - "'The irreducibility is definitional, because C3 is the only capability that names that carrier' -- the clearest demonstrated case in this pass of a spuriously 'irreducible' operator (Represent) that is actually a measurement artifact of the capability model itself."
+undefined_concepts:
+  - "The precise identity and content of 'Brown-Hwang' -- introduced here for the first time, not yet independently extracted"
+  - "The exact resolution of Q-4 (whether Update/Revise/Supersede/Correct/Invalidate/Retract/Expire are distinct operations or policies over one mechanism)"
+open_questions:
+  - "Whether a dedicated Brown-Hwang extraction appears later in this pass, analogous to the Titelbaum/Davidson/Rescorla pattern already seen."
+  - "Whether the proposed seven-level research hierarchy and the (P,R,delta,I,U) kernel shape are ever formally pursued as the next research stage, as this document recommends over another ablation run."
+tier2_triggered: true
+tier2_reason: "Delivers the pass's clearest proof that kernel minimality is representation-dependent (four cardinality-8 kernels vs. the original 13), introduces the genuinely important 'invariant custody' concept, exposes Represent as a definitional artifact and Challenge as not proven primitive, flags a serious Revise-collapse limitation, and introduces a new Kalman-style state-enrichment proposal from an as-yet-unextracted source -- critical importance and full tier-2 treatment unambiguously warranted."

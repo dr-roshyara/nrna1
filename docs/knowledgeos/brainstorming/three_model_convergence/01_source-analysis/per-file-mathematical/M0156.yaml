@@ -1,0 +1,101 @@
+sequence: M0156
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180013_review-handbook-treatment.md
+title: "Review of the Handbook of Knowledge Representation: revision/update/contraction, event calculus, and task knowledge"
+date: "20260902-180013"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: EXTERNAL_LITERATURE
+  secondary_note: >
+    A disciplined treatment of the (van Harmelen/Lifschitz/Porter) Handbook of Knowledge
+    Representation, extracting implications against the corpus's own open TODOs rather than
+    summarizing the book. Covers belief revision/update/contraction (AGM), Event Calculus,
+    multi-agent epistemic logic, model-based diagnosis, knowledge engineering/Problem-Solving
+    Methods, ontology engineering, and constraint programming — the broadest single-document sweep
+    of external KR&R literature in this reconstruction's read order.
+source_role: PRIMARY
+canonical_source: M0156
+importance: critical
+confidence: high
+about: >
+  Fills what the document itself calls "the missing middle" of KnowledgeOS theory — Representation→
+  Reasoning→Evaluation→Determination — and, most importantly, introduces a genuinely new three-way
+  decomposition of epistemic change (Revision/Contraction/Update) plus an Event-Calculus-derived
+  "release" concept and a task-knowledge/Problem-Solving-Method layer not previously present in this
+  reconstruction's corpus.
+introduces:
+  - "Revision/Contraction/Update as three DISTINCT epistemic-change operators: Revision(K_t,φ) (new information about an otherwise static world, addressing incomplete/incorrect prior belief), Contraction(K_t,φ) (deliberate removal of a commitment, with dependent derived commitments also requiring removal), Update(K_t,ΔWorld) (the world itself changed, making a previously-correct representation outdated) — explicitly NOT interchangeable, a major new decomposition for the corpus's δ/lifecycle research"
+  - "The iterated-revision problem: K_1 alone (after one revision) may not contain sufficient information to determine a SECOND revision K_1→K_2 — the preference/revision structure itself may need updating, not just the propositional content — motivating a candidate (K_t,Λ_t) pairing where Λ_t=preferences+provenance+authority+revision-regime+context; 'a very strong argument against treating the knowledge state as a self-sufficient mathematical object'"
+  - "AGM's own underdetermination result used as a general KnowledgeOS principle: the AGM postulates constrain rational revision without uniquely selecting one revision function — 'a set of invariants can constrain a transition without uniquely specifying the transition operator'"
+  - "Event Calculus formalized: events initiate/terminate fluents, with a further RELEASE operation — once a fluent is released from the inertia/persistence rule, its truth is no longer determined by persistence and 'may vary between models' without becoming false — a genuinely new mechanism, explicitly analogized to 'epistemic situations in which a previously valid determination loses its governing condition without automatically becoming false'"
+  - "Multi-agent epistemic logic's three-way knowledge split: individual K_i(p), common C_G(p), and DISTRIBUTED D_G(p) — several agents can collectively possess enough information to establish something no individual agent possesses alone; reframed as a candidate JointSupport(E_G,p|Γ), explicitly NOT to be imported as a primitive D_G operator"
+  - "Perfect recall / memory-state distinction: Observed(p) ≠ CurrentlyAccessible(p) ≠ PreviouslyKnown(p) — Known_t(p)≠Known_{t+1}(p) does not imply p became false, it may mean memory/accessibility changed — reinforcing the already-proposed Accessibility factor (M0147)"
+  - "Model-based reasoning's diagnosability apparatus: discriminating test inputs and minimal discriminating sets, formalized as Hypotheses→Predictions→Observations→Discrimination — 'evidence is valuable partly because it can discriminate among competing hypotheses' — explicitly noted NOT to supply a family-level N_eff formula, reaffirming FR-001's freeze"
+  - "Model≠Reality / Model-failure≠World-failure: Eval(Model,Observation)=F does not automatically imply Observation=F or that the world violates a rule — requires ModelValidity(Γ) as a separate prerequisite, a new distinction for the corpus's assurance discipline"
+  - "Knowledge-engineering task layer: Problem-Solving Method (PSM) as a knowledge-level specification of a reusable reasoning pattern, with an explicit task taxonomy (classification/diagnosis/assessment/monitoring/prediction/design/configuration/assignment/planning/scheduling); DomainKnowledge≠TaskKnowledge≠ReasoningMechanism — 'extremely compatible with DDD', proposing a Domain-Model→Task-Model→PSM→Reasoning-Operations→Determination layering"
+  - "Knowledge roles: the same domain fact can serve as data, abstraction rule, or causal rule depending on task — Fact≠RoleOfFact≠InferenceUse, semantic role is task-relative, directly compatible with the corpus's own 'start with responsibility and boundary before vocabulary' DDD principle"
+  - "Ontology engineering's anti-overcommitment principle, given as independent methodological corroboration of the corpus's own long-standing discipline: 'do not encode distinctions not required by the intended questions' and 'do not impose stronger domain assumptions than the evidence warrants' — explicitly connected to the corpus's own repeated refusals (Krishna=Ω, Zero-as-primitive, FDE-as-KnowledgeOS-logic, a particular δ, a particular equality, N_eff)"
+  - "Multiple-compatible-models framework for Determination: K→{M_1,...,M_n} with observations narrowing the set; |M_compatible|=0 (inconsistent)/1 (determined)/>1 (underdetermined) — a candidate formal model for Determination, explicitly not yet adopted"
+  - "The full FR.1-FR.17 candidate theory layer (Formal Representation, Reasoning and Epistemic Change) — extending M0151/M0153's FR.1-FR.10 with FR.7-FR.9 (Revision/Contraction/Update as distinct operators), FR.10-FR.11 (Temporal State, Persistence≠Knowledge/Truth), FR.12-FR.13 (Representation Adequacy, Computational Boundedness), FR.14-FR.15 (Task Knowledge, PSM), FR.16 (Epistemic Lineage), FR.17 (Multiple Compatible Models)"
+  - "Hard constraints vs. preferences from constraint programming: HardConstraint(r) vs. Preference(r), with distinct violation semantics — reinforcing Policy≠Preference≠Evidence≠Truth and warning against reducing every evaluation to True/False"
+  - "Complete vs. partial/incomplete inference from constraint propagation: local-consistency algorithms may derive some but not all consequences — FailureToDerive(p) does NOT mean ¬Derivable(p) — an independent grounding for TheoryIncomplete≠EvidenceInsufficient"
+defines: []
+refines:
+  - "Query≠Evaluation≠Determination (already established via M0151/M0153's Levesque&Lakemeyer review): given a further independent grounding here via the model-based-reasoning chapter's precise inconsistency-must-be-criterion-relative argument"
+  - "Reasoning-system relativity (Der_S(K,q), tracked since Gödel/M0150 and Levesque&Lakemeyer/M0151): given a concrete formal tuple S=(L,Σ,R,I,Sem,B) — language/vocabulary/inference-rules/inference-procedure/semantics/computational-boundary — the most complete such tuple given in this reconstruction's read order"
+  - "The Zero anti-reification principle (Unknown≠Absent family): given a further independent grounding via the ontologies-vs-data-models distinction (¬Represented(x)⇏¬Exists(x)) and the nonmonotonic-reasoning discussion (¬Known(p)⇏Known(¬p))"
+  - "The Structure→Projection→Induced-Equivalence→Information-Loss→Adequacy research programme (tracked since M0043-M0098): given strong independent corroboration via the qualitative-reasoning chapter's abstraction/prediction-preservation discussion, explicitly framed as 'almost exactly the principle we independently reached'"
+  - "Contr's criterion-relativity (already an open item): reinforced via the model-based-reasoning chapter's explicit statement that inconsistency must be precisely defined per predictor — Contr_c(K,Γ) offered as a candidate name, still OPEN"
+contradicts: []
+repeats:
+  - "The rejection-table discipline, now spanning seven items: Contr=logical-inconsistency, ASK=Sat, TELL=requirement-insertion, EventCalculus=KnowledgeOS-δ, FDE=KnowledgeOS-evaluation, Zero=closed-world-reasoning, AGM=KnowledgeOS-revision-algorithm — all explicitly REJECTED, same disciplined structure as every prior extraction review in this sub-thread"
+bridge_candidates:
+  - "Whether the Revision/Contraction/Update three-way decomposition is ever adopted as, or reconciled against, the corpus's own δ research (Reiter-derived successor-state semantics, M0145/M0146/M0155) — the two decompositions (Add/Remove/Persist vs. Revision/Contraction/Update) address different aspects of state change and are not shown here to be unified"
+  - "Whether the Event Calculus 'release' concept is ever taken up as a formal mechanism for the corpus's own Determination-losing-its-governing-condition research"
+  - "Whether the multi-agent Distributed Knowledge concept (D_G) is ever formally connected to Shieber's distributed-epistemic-process concept (M0152) — both address multi-source/multi-agent epistemic combination but from different formal traditions, not reconciled here"
+  - "Whether the (K_t,Λ_t) pairing (state plus revision-structure) is ever adopted as a formal KnowledgeOS state representation, given how directly it argues against treating K_t as self-sufficient"
+mathematical_content: >
+  States the AGM revision/contraction schema, the (K_t,Λ_t) pairing motivation, Event Calculus
+  initiation/termination/persistence/release predicates, the multi-agent K_i/C_G/D_G operators, the
+  reasoning-system tuple S=(L,Σ,R,I,Sem,B), and the multiple-compatible-models framework for
+  Determination (|M_compatible|∈{0,1,>1}) — all cited/adapted from the Handbook's own established
+  survey content, not new derivations performed by this document.
+gita_content: null
+kernel_content: >
+  Gives the corpus's epistemic-change (lifecycle/revision/retraction) research its most complete
+  external grounding yet via the Revision/Contraction/Update triad and the Event Calculus release
+  mechanism, and introduces a genuinely new task-knowledge/Problem-Solving-Method layer directly
+  compatible with the corpus's own DDD discipline.
+registry_updates:
+  - "Eleventh instance of the cross-domain external-literature corroboration pattern — the broadest single-document sweep, spanning belief revision, event calculus, multi-agent logic, model-based diagnosis, knowledge engineering, ontology engineering, and constraint programming"
+  - "Introduces the Revision/Contraction/Update triad as a candidate decomposition of epistemic change, distinct from (and not yet reconciled with) the corpus's own Add/Remove/Persist successor-state decomposition of δ"
+  - "Introduces the Event Calculus 'release' mechanism as new candidate machinery for Determination losing its governing condition without becoming false"
+  - "Extends the FR candidate theory layer from FR.1-FR.10 (M0151/M0153) to FR.1-FR.17"
+anchor_test:
+  anchor: true
+  supports_dimension: "Revision/Contraction/Update triad (new δ/lifecycle decomposition), Event Calculus release, multi-agent distributed knowledge, task-knowledge/PSM layer, multiple-compatible-models Determination framework"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Revision addresses an incomplete/incorrect belief state about a static world, whereas update addresses a belief state that has become out-of-date because the world changed.\" — the book's own core distinction, cited verbatim"
+  - "\"K_t alone may not contain sufficient information to determine its future transition semantics.\" (boxed) — the iterated-revision finding"
+  - "\"Do not encode distinctions that are not required by the intended questions... do not impose stronger domain assumptions than the evidence warrants.\" (boxed) — the ontology-engineering anti-overcommitment principle, explicitly tied to the corpus's own repeated refusals"
+  - "\"Extract structural constraints and independently supported distinctions; do not import an external formalism wholesale into KnowledgeOS.\" — the document's own closing methodological summary"
+undefined_concepts:
+  - "Whether Λ_t (the proposed revision-structure companion to K_t) has any concrete formal shape beyond the informal list preferences+provenance+authority+revision-regime+context"
+  - "The exact relationship (if any) between the Revision/Contraction/Update triad and the Add/Remove/Persist successor-state decomposition — not addressed"
+open_questions:
+  - "Is the Revision/Contraction/Update triad ever reconciled with the Reiter-derived successor-state δ decomposition anywhere later in this reconstruction's sequence?"
+  - "Is the Event Calculus 'release' mechanism ever taken up as formal machinery for KnowledgeOS?"
+tier2_triggered: true
+tier2_reason: >
+  Introduces a genuinely new three-way decomposition of epistemic change (Revision/Contraction/
+  Update) not previously present in this corpus and not yet reconciled with the existing
+  successor-state δ decomposition, plus the Event Calculus "release" mechanism and a new
+  task-knowledge/Problem-Solving-Method layer directly compatible with the corpus's DDD discipline —
+  the broadest single-document external-literature sweep in this reconstruction's read order.

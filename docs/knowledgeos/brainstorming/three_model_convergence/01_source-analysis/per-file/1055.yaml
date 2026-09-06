@@ -1,0 +1,96 @@
+sequence: 1055
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-289/03-bootstrap-boundary.md
+title: "03 -- Bootstrap Boundary (Step 289 SSSS5, 15): Formally Distinguishes TWO Different Boundaries -- the Acyclicity Boundary {equiv} and the Derivation Boundary {O,T} -- and Delivers the Crucial Refinement That {equiv} Only Breaks the Cycles Under a DECLARATION Route; Under a DERIVATION Route the Cycle Reasserts Itself"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the third numbered Step-289 artifact, delivering the definitive analysis distinguishing the acyclicity boundary from the derivation boundary"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1055
+importance: critical
+confidence: high
+about: >
+  "03 — Bootstrap Boundary (mandate §§5, 15)," formally classifying and refuting the prior Step-288 claim
+  under an explicit A-F evidence scale: "F — NOT ESTABLISHED. And, as stated, REFUTED," with the exact
+  supporting execution evidence (`{O,T}` fails, `{≡}` succeeds).
+
+  **Delivers a disciplined caveat on what survives of the refuted claim**: "`𝒪`/`𝒯` IS a hard blocker, and no
+  incoming derivation edge into it was found... That part stands. What fails is the inference from 'it is an
+  unresolved prerequisite of the cycles' to 'it is the cycle-breaking node.'"
+
+  **Delivers a comprehensive search for any derivation route TO `𝒪`/`𝒯`**, testing six candidate routes and
+  finding all but one circular or inapplicable: deriving from `K` (circular, `K` is downstream); from
+  invariants `ℐ` (downstream of `≡`); from a minimality proof (blocked, `259`); from the ratified 8
+  primitives (NEW corpus citation "`C-022`/`049`": ratifies primitives, not operations, "the 8 have never been
+  shown minimal against an operation space"); enumerating a forced lower bound (NEW corpus reference
+  "`256.2`/`259.7`": "14 forced, upper bound 18 -- a candidate set, never a membership rule"); and
+  DECLARING MEMBERSHIP -- "the only route with no unmet precondition." Boxed: "No derivation route to `𝒪`/`𝒯`
+  was found in the ratified material. This is an ABSENCE OF EVIDENCE for an incoming edge, not a proof that
+  none exists," explicitly applying the already-tracked negative-knowledge discipline (`225.11`/`224.11`).
+
+  **DELIVERS THE DEFINITIVE FORMAL STATEMENT that the corpus's own Step 261 halt independently confirms the
+  computed {equiv} result**: "`261.23`: 'final kernel selection must stop while EQUALITY remains ambiguous.'
+  The corpus located the block at equality. Step 288's `𝒪`/`𝒯` gloss moved it, and the computed graph moves
+  it back. Independent confirmation of `261.23`'s own wording, by a method `261` did not use."
+
+  **DELIVERS THE GENUINELY IMPORTANT CENTRAL REFINEMENT OF THIS ENTIRE STEP**: formally distinguishes TWO
+  DIFFERENT BOUNDARIES that must not be conflated -- the ACYCLICITY boundary `{≡}` (breaks all four feedback
+  loops) versus the DERIVATION boundary `{𝒪,𝒯}` (unblocks the eight derivable prerequisites: `≈`, congruence,
+  minimality, bindings, canonicalization, merge, invariants, sufficiency). Boxed: "Cutting the cycles ≠
+  unblocking the derivation. `{≡}` does the first; `{𝒪,𝒯}` does the second... Minimum set for ACYCLICITY:
+  `{≡}`. Minimum set for PROGRESS: `{≡,𝒪,𝒯}`." **This is a genuinely important sharpening**: the already-
+  tracked capstone {equiv} result (files 1049-1052) breaks the CYCLES but does NOT, by itself, unblock the
+  rest of the programme's derivable content -- both `𝒪`/`𝒯` and `≡` are ultimately needed, for different
+  reasons.
+
+  **DELIVERS A GENUINELY CRUCIAL EPISTEMIC SUBTLETY, previously unstated**: `≡` can be resolved TWO WAYS,
+  which are NOT EQUIVALENT: (1) "BY DECLARATION -- a governance act fixing `≡`; breaks the cycles immediately,
+  and does NOT need `𝒪`"; (2) "BY DERIVATION -- select `≡` by requiring congruence (`258.9`); needs `𝒯` and
+  `δ` FIRST." Concludes: "`{≡}` is a cut ONLY UNDER THE DECLARATION ROUTE. Under the derivation route the
+  cycle REASSERTS ITSELF through `𝒯→congruence→≡`. This is the precise sense in which the problem is
+  UNDERDETERMINED: the formal material cannot select `≡`, and an authority can." No recommendation is made
+  between the two routes.
+introduces:
+  - concept: "The formal A-F evidence-scale classification and refutation of the prior O/T bootstrap claim"
+  - concept: "The comprehensive six-route search for a derivation path to O/T, finding all but 'declare membership' circular or inapplicable, including two new corpus references: C-022/049 (primitives ratified, operations not) and 256.2/259.7 (14 forced operations, upper bound 18, a candidate set not a membership rule)"
+  - concept: "The independent confirmation that the computed {equiv} minimal cut matches the corpus's own Step 261 wording ('kernel selection must stop while equality remains ambiguous'), by a method the corpus itself did not use"
+  - concept: "The formal distinction between the acyclicity boundary ({equiv}, breaks the cycles) and the derivation boundary ({O,T}, unblocks the eight derivable prerequisites) -- two genuinely different boundaries, both ultimately needed"
+  - concept: "The crucial, previously unstated epistemic subtlety: equiv resolved by declaration breaks the cycles without needing O; equiv resolved by derivation (requiring congruence) needs T and delta first, and the cycle reasserts itself through that route"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked capstone minimal-cut finding (files 1049-1052, 1054: the unique minimal bootstrap cut is {equiv})"
+    refinement: "SHARPENED with the crucial distinction between the acyclicity boundary and the derivation boundary, and the further refinement that {equiv} only functions as a cut under a declaration route, not a derivation route"
+  - concept: "This reconstruction's already-tracked Step 261 stop-gate finding (files 1003, 1005, 1015, 1021, 1045)"
+    refinement: "CONFIRMED as independently matching the rigorously computed {equiv} result, via a method the corpus's own Step 261 did not itself use"
+contradicts:
+  - concept: "The prior Step-288 claim that the bootstrap boundary is O/T ratification"
+    contradicted_by: "Formal A-F evidence-scale classification: REFUTED as stated, with the surviving partial truth (O/T is a hard blocker with no known incoming derivation edge) explicitly preserved"
+repeats: []
+bridge_candidates:
+  - "'C-022'/'049' and '256.2'/'259.7' -- new corpus references for the primitive-ratification and forced-operation-count findings; not yet directly encountered."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal distinction between the acyclicity boundary {equiv} and the derivation boundary {O,T}, and the crucial refinement that equiv-by-declaration breaks the cycles while equiv-by-derivation does not (the cycle reasserts itself)."
+  - "dimension-registry.md: record the confirmation that the computed {equiv} minimal cut independently matches the corpus's own Step 261 wording, and the comprehensive six-route search finding no derivation path to O/T."
+anchor_test:
+  anchor: "This reconstruction's already-tracked capstone minimal-cut finding and Step 261 stop-gate finding (files 1003, 1045, 1049-1052, 1054)"
+  supports_dimension: "Sharpens the capstone finding with the acyclicity-vs-derivation distinction and confirms independent alignment with the corpus's own stop-gate wording"
+  refines_or_contradicts: "refines and sharpens prior findings; directly contradicts the prior O/T bootstrap-boundary claim"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The acyclicity-boundary and derivation-boundary node sets are directly checkable against file 1052's own already-documented execution results."
+undefined_concepts: []
+open_questions:
+  - "'C-022'/'049' and '256.2'/'259.7', not yet directly encountered."
+  - "Whether a governance body ever chooses between the declaration and derivation routes for resolving equiv."
+tier2_triggered: true
+tier2_reason: "Delivers a genuinely important sharpening of the already-tracked capstone minimal-cut finding, formally distinguishing the acyclicity boundary from the derivation boundary and revealing the crucial epistemic subtlety that {equiv} only functions as a cut under a declaration route, not a derivation route. Classified importance critical and confidence high given the rigor, executed grounding, and structural significance of these findings."

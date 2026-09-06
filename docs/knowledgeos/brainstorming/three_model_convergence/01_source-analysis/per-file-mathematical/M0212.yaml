@@ -1,0 +1,87 @@
+sequence: M0212
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-093503_agree-with-interpretation.md
+title: "Reframes KR-ZERO-ORDER as mechanism-discovery (not a universal higher-order law); introduces a new formal 'interaction order' ord_{T,Π}(S;D); proposes 'counterfactual structural decomposition' methodology for irreducible witnesses; escalates the denominator discrepancy to FIVE figures (1395/1496/1475/1500, plus 90.04%/7.89% vs 89.7%/8.24%); commissions KR-ZERO-MECHANISM-2026-09 and resequences ORDER→MECHANISM→CARRIER→REPRESENTATION-REDUCTION"
+date: "20260903-093503"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0212
+importance: critical
+confidence: high
+about: >
+  Reframes the corpus's KR-ZERO-ORDER-2026-09 higher-order-Zero results as evidence for a
+  mechanism-discovery research question, not a universal law: "Zero_{T,Π}(S;D) is predominantly
+  locally determined, but not universally singleton-determined." Introduces a genuinely new formal
+  quantity (interaction order), a new counterfactual-structural-decomposition analysis method for
+  irreducible witnesses, escalates the thread's ongoing denominator-discrepancy problem with two
+  further unreconciled figures, and resequences the whole research programme so that the
+  mathematical carrier is discovered from the mechanism rather than assumed in advance.
+introduces:
+  - "A new formal quantity, the interaction order: ord_{T,Π}(S;D)=min{k: Zero(S;D) is decidable from admissible information of order ≤k} — explicitly marked a research definition, not yet a ratified mathematical construct — with the interpretive hypothesis (to be tested, not assumed) that ord=1 corresponds to independent/local eliminability, ord=2 to pairwise interaction, ord=3 to genuine three-way interaction"
+  - "A new analysis methodology, 'counterfactual structural decomposition,' replacing mere classification of the 115 irreducible cases: for every irreducible witness, ask 'what changes when the interaction-producing structure is removed?' and identify the minimal structural feature F⊆R on which Zero(S;D) depends — with a proposed reporting table (Witness/T/S/k/Structural cause/Minimal dependency), explicitly naming the last two columns as 'the actual scientific target'"
+  - "ESCALATION OF THE DENOMINATOR DISCREPANCY: two further unreconciled figures beyond the already-tracked 1395/1496/1475 (M0198/M0200) — a total of 1500, and a SECOND percentage pair (90.04%/7.89%) alongside the already-established 89.7%/8.24% — explicitly demanding a full accounting identity N_generated=N_eligible+N_excluded+N_vacuous+N_invalid+... before any percentage is treated as a headline empirical estimate: '1500≠1395≠1496≠1475... cannot simply be left implicit'"
+  - "A resequenced research programme: ORDER→MECHANISM→CARRIER→REPRESENTATION-REDUCTION, explicitly REJECTING the more direct ORDER→REPRESENTATION-REDUCTION sequence used by the parallel M0196-M0210 track — because 'the carrier should be discovered from the mechanism,' with explicit carrier-hypothesis mappings: duplicate interaction→multiset; pairwise relation→graph; higher-order relation→hypergraph; state-dependent rewriting→relational/rewrite-state representation"
+  - "A new commissioned experiment, KR-ZERO-MECHANISM-2026-09, with three explicit gates: (1) Denominator/accounting reconciliation; (2) Complete witness extraction for irreducible cases; (3) Mechanism classification + minimal dependency analysis — 'only after those pass should we decide whether the next formal object is a graph, hypergraph, multiset, rewrite system, or something else,' making the empirical-to-mathematical-structure transition 'evidence-driven rather than theory-driven'"
+defines:
+  - "ord_{T,Π}(S;D)=min{k: Zero(S;D) is decidable from admissible information of order ≤k} — the interaction order, a provisional research definition"
+refines:
+  - "M0194/M0195/M0198's already-established higher-order-Zero findings: reframed from 'Zero is predominantly singleton-determined, with a non-negligible higher-order class' into a sharper, more actionable research question about the STRUCTURAL MECHANISM producing higher-order behavior, rather than merely its frequency"
+contradicts:
+  - "An implicit risk (not asserted as fact but explicitly guarded against) of treating KR-ZERO-ORDER's aggregate statistics as evidence for a 'universal higher-order Zero law' — explicitly rejected in favor of the mechanism-discovery framing"
+  - "The parallel representation-reduction track's (M0196-M0210) more direct ORDER→REPRESENTATION-REDUCTION sequencing — this document argues for inserting MECHANISM and CARRIER discovery stages first"
+repeats:
+  - "The established discipline against promoting an algebra/projection/lattice/graph/hypergraph/rewriting-system before the evidence justifies it — restated here specifically for carrier selection"
+bridge_candidates:
+  - "Whether the 1500 total and the 90.04%/7.89% percentage pair are ever reconciled against the 1395/1496/1475/89.7%/8.24% figures already tracked at M0198/M0200"
+  - "Whether KR-ZERO-MECHANISM-2026-09 was ever actually executed, and whether it produced the counterfactual-structural-decomposition table for the 115 irreducible witnesses"
+  - "Whether the interaction-order ord_{T,Π}(S;D) concept is ever formally adopted or tested against the ord=1/2/3 interpretive hypotheses"
+mathematical_content: >
+  Introduces a genuinely new formal quantity (interaction order) as a candidate structural measure
+  for the Zero-algebra thread's higher-order phenomena, provisionally scoped as a research
+  definition rather than a ratified construct, and proposes a disciplined evidence-driven sequencing
+  (mechanism before carrier) for resolving the thread's long-open 'what carrier does eliminability
+  live in?' question.
+gita_content: null
+kernel_content: >
+  Sharpens the Zero-algebra thread's higher-order findings into an actionable mechanism-discovery
+  research question, while surfacing a worsening (not yet reconciled) corpus-denominator-discrepancy
+  problem — now spanning five distinct total-count figures and two distinct percentage pairs across
+  this reconstruction's tracking.
+registry_updates:
+  - "New formal quantity: interaction order ord_{T,Π}(S;D), a provisional research definition"
+  - "New methodology: counterfactual structural decomposition for irreducible Zero witnesses"
+  - "Denominator-discrepancy escalation: two new unreconciled figures (1500 total; 90.04%/7.89% percentage pair) alongside the already-tracked 1395/1496/1475/89.7%/8.24%"
+  - "New resequenced research programme: ORDER→MECHANISM→CARRIER→REPRESENTATION-REDUCTION, explicitly diverging from the parallel track's more direct sequencing"
+  - "New commissioned experiment: KR-ZERO-MECHANISM-2026-09 (three gates: accounting reconciliation, witness extraction, mechanism classification)"
+anchor_test:
+  anchor: true
+  supports_dimension: "Interaction order concept; counterfactual structural decomposition methodology; escalated denominator discrepancy; resequenced ORDER→MECHANISM→CARRIER→REPRESENTATION-REDUCTION programme; KR-ZERO-MECHANISM-2026-09 commissioned"
+  refines_or_contradicts: "refines (M0194/M0195/M0198's higher-order-Zero findings, sharpened into a mechanism question); contradicts (the parallel track's more direct ORDER→REPRESENTATION-REDUCTION sequencing)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Zero_{T,Π}(S;D) is predominantly locally determined, but not universally singleton-determined.\""
+  - "\"ord_{T,Π}(S;D)=min{k: Zero(S;D) is decidable from admissible information of order ≤k}\""
+  - "\"1500≠1395≠1496≠1475... cannot simply be left implicit.\""
+  - "\"ORDER → MECHANISM → CARRIER → REPRESENTATION REDUCTION\""
+undefined_concepts:
+  - "The precise relationship between 'admissible information of order ≤k' and the corpus's existing k=1/k=2/k=3/irreducible classification — named but not formally connected"
+open_questions:
+  - "Are the 1500/90.04%/7.89% figures ever reconciled with the other tracked denominators?"
+  - "Was KR-ZERO-MECHANISM-2026-09 ever executed?"
+  - "Is the interaction-order concept ever formally adopted?"
+tier2_triggered: true
+tier2_reason: >
+  Introduces a genuinely new formal quantity (interaction order) and a new counterfactual-structural-
+  decomposition analysis methodology for the Zero-algebra thread's higher-order phenomena, escalates
+  the thread's ongoing denominator-discrepancy problem to a fifth unreconciled total-count figure and
+  a second unreconciled percentage pair, and proposes a resequenced, evidence-driven research
+  programme (mechanism before carrier) that explicitly diverges from the parallel representation-
+  reduction track's more direct sequencing.

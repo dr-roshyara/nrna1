@@ -1,0 +1,123 @@
+sequence: M0012
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-203200_dynamic-epistemic-logic-against-the-method-and-separation-rule.md
+title: "Dynamic Epistemic Logic Against the Method and Separation Rule -- an Adversarial Review Downgrading an Overclaimed 'Exact Correspondence,' Delivering K_t != Possible-Worlds, the Four-Value Sigma-as-Evidence-Status Structure, and the Conflict-Is-Not-Logical-Inconsistency Result"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: b
+  secondary: c1
+  secondary_note: "an adversarial-review document that audits an earlier KR-SIM lane document (referred to as '01 -- Dynamic Epistemic Logic', compared against '00 -- Method, Provenance, and the Separation Rule'), explicitly correcting an overclaimed 'exact correspondence' down to 'partial/structural' -- a clean, self-applied instance of the same anti-overclaim discipline this reconstruction enforces"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0012
+importance: high
+confidence: high
+about: >
+  Reviews an earlier document's comparison of Dynamic Epistemic Logic (DEL) against the evolving
+  KnowledgeOS K_t model, delivering the strong negative result DEL !cong K_t (DEL is not a
+  foundation for Sigma, though it may model particular epistemic regimes over parts of K_t) --
+  compatible with, and independently reinforcing, the Dretske-derived direction (M0010).
+
+  **K_t != POSSIBLE-WORLDS, STRENGTHENED**: the corpus had already rejected storing epistemic state
+  as Kripke-style possible worlds (M,w); this document treats DEL's own carrier-mismatch analysis as
+  making that rejection considerably stronger (not merely a philosophical preference) -- explicitly
+  logged as "research conclusion / compatibility constraint, not yet kernel theorem."
+
+  **DOWNGRADES AN OVERCLAIMED 'EXACT CORRESPONDENCE'**: the reviewed document claimed Q_t cong 𝒜_i
+  (KnowledgeOS's "asked" set exactly corresponds to DEL's agent awareness set); this review
+  explicitly rejects the "exact" label -- "a proposition can be asked but not understood, known but
+  never asked, aware of but not queried, queried and forgotten, queried but outside awareness" --
+  and replaces it with "candidate structural correspondence... semantic equivalence has not been
+  demonstrated." A clean, in-corpus, self-applied instance of exactly this reconstruction's own
+  anti-overclaim discipline (resemblance != identity).
+
+  **DELIVERS Sigma AS A FOUR-VALUE EVIDENCE-STATUS STRUCTURE, EXPLICITLY NOT A KNOWLEDGE OPERATOR**:
+  Sigma(phi) in {(0,0)=Unknown, (1,0)=Supported, (0,1)=Refuted, (1,1)=Conflict}, with the formal
+  proof that Sigma != K_i under the standard S5 mapping (since K_i-phi -> phi is required by S5,
+  but Sigma(phi)=(1,0) does not entail phi -- admission is explicitly not a truth function).
+
+  **DELIVERS THE CONFLICT-IS-NOT-LOGICAL-INCONSISTENCY RESULT**: ordinary normal epistemic logic
+  with axiom D forbids K_i-phi AND K_i-not-phi simultaneously, but KnowledgeOS explicitly permits
+  Sigma(phi)=(1,1) (Conflict) as a legitimate state -- because Evidence_1 |- Support(phi) and
+  Evidence_2 |- Refute(phi) can coexist without requiring K-phi AND K-not-phi. This pushes Conflict
+  to an evidence/status layer distinct from any ordinary epistemic-logic knowledge operator --
+  "a much healthier model."
+
+  **DELIVERS THE LOGICAL-OMNISCIENCE MISMATCH AS A DESIGN CONSTRAINT**: DEL's standard closure
+  (K_i-phi and (phi->psi) implies K_i-psi) does not hold for KnowledgeOS's assertion set, which is
+  explicitly NOT deductively closed (Cn(A) != A) -- formalizing the requirement that KnowledgeOS
+  must distinguish stored/asserted knowledge from derivable consequences, explicit knowledge from
+  awareness, information, and evidence, none of which may be collapsed.
+
+  **SEPARATES GOVERNANCE FROM THE EPISTEMIC-LOGIC STACK ENTIRELY**: DEL's event precondition is a
+  truth/semantic condition, not an authorization condition -- Truth(pre(e)) != Authorized(e), giving
+  formal grounding to the already-established architectural separation KnowledgeOS Kernel !=
+  Governance (LLM proposes -> Lord evaluates -> Governance authorizes -> Executor acts).
+
+  **REFINES (RATHER THAN ACCEPTS) THE REVIEWED DOCUMENT'S REVISION ARGUMENT**: agrees that
+  KnowledgeOS Revision != standard DEL product update, but rejects the reviewed document's own
+  falsifier ("product update only ever restricts W") as technically too crude (DEL product update
+  creates pairs (w,e), not simple subset restriction; public announcement, not general product
+  update, is closer to pure restriction) -- replacing it with a stronger argument: KnowledgeOS
+  revision includes EventAddition + StateReDerivation, explicitly allowing correction, retraction,
+  refutation, reinterpretation, and model revision, which general DEL product update does not
+  capture.
+
+  **ORGANIZES THE ACCUMULATING EXTERNAL THEORIES INTO NON-OVERLAPPING JOBS**: Dretske/information
+  theory answers "how does information get from observation to an epistemic state"; probability/
+  statistics answers "how uncertain is a claim" (with P != Knowledge, reinforcing M0010); DEL
+  answers "how does an epistemic state change under epistemic events"; decision theory answers
+  "given K_t, what should we do"; belief revision answers "how should K_t change under
+  new/conflicting information" -- explicitly: "none of them gets to define the KnowledgeOS Kernel
+  by itself."
+
+  **CORRECTS A TERMINOLOGICAL RISK IN THE EARLIER 'SEPARATION RULE' DOCUMENT**: flags the phrase
+  "these are regimes over a substrate, not the substrate" as risking the false impression that the
+  Kernel/substrate is already known, and replaces it with "external theories are candidate regimes
+  over aspects of KnowledgeOS, not candidates for the KnowledgeOS Kernel itself" -- explicitly
+  leaving the Kernel's actual content (e.g. a candidate {Observe, Discriminate, Qualify, Transform,
+  ...} primitive set) as still open.
+
+  **DELIVERS A TEN-ITEM NON-COLLAPSE CHAIN** as the accumulated evidence base: Observation !=
+  Evidence != Information != Probability != Determination != Knowledge != Ideal State != Truth;
+  Decision != Action; Proposal != Decision; Epistemic Update != Governance Authorization -- the
+  most complete non-collapse list in this pass so far, drawing on Dretske (M0010), DEL (this
+  document), and the earlier K_t/I_t apparatus (M0005-M0009) jointly.
+introduces:
+  - concept: "The four-value Sigma evidence-status structure {Unknown,Supported,Refuted,Conflict}, formally proven != any standard S5 knowledge operator K_i"
+  - concept: "The Conflict-is-not-logical-inconsistency result: Sigma(phi)=(1,1) is a legitimate evidence-layer state, not K_i-phi AND K_i-not-phi"
+  - concept: "The logical-omniscience mismatch as an explicit KnowledgeOS design constraint: assertion set != its deductive closure"
+  - concept: "Truth(pre(e)) != Authorized(e), formally separating epistemic-update semantics from governance-authorization semantics"
+  - concept: "The organization of five external theories (Dretske/information, probability/statistics, DEL, decision theory, belief revision) into distinct, non-overlapping explanatory jobs, none of which defines the Kernel alone"
+  - concept: "The ten-item accumulated non-collapse chain (Observation/Evidence/Information/Probability/Determination/Knowledge/IdealState/Truth/Decision/Action/Proposal/GovernanceAuthorization, pairwise distinguished)"
+defines: []
+refines:
+  - concept: "Downgrades an earlier document's claimed 'exact correspondence' Q_t cong 𝒜_i to 'candidate structural correspondence, semantic equivalence not demonstrated' -- a self-applied anti-overclaim correction within the KR-SIM lane's own corpus"
+  - concept: "Rejects and replaces an earlier document's technically-too-crude falsifier for 'Revision != DEL product update' (product update 'only restricts W') with a stronger argument based on EventAddition+StateReDerivation vs. simple conditioning"
+contradicts: []
+repeats:
+  - concept: "P != Knowledge (already established via Dretske, M0010), restated here as one column of the theory-organization table without new argument"
+bridge_candidates:
+  - "The self-applied downgrade of 'exact correspondence' to 'structural/partial correspondence' is a clean, concrete instance of this reconstruction's own resemblance-!=-identity discipline, arising natively within the KR-SIM lane's adversarial-review practice rather than imported from outside."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0012 as an adversarial review delivering K_t != possible-worlds (strengthened), a four-value Sigma evidence-status structure formally distinct from any S5 knowledge operator, the Conflict-is-not-logical-inconsistency result, the logical-omniscience mismatch design constraint, Truth(pre(e))!=Authorized(e) separating epistemic update from governance, and a self-applied downgrade of an overclaimed 'exact correspondence' to 'structural/partial' -- the latter a clean native instance of this reconstruction's own anti-overclaim discipline."
+anchor_test:
+  anchor: "This reconstruction's own anti-overclaim discipline (resemblance != identity, never let the strongest statement exceed the evidence)"
+  supports_dimension: "Delivers a clean, self-applied instance of the same discipline (downgrading 'exact correspondence' to 'structural/partial') arising natively within the KR-SIM lane's adversarial-review practice"
+  refines_or_contradicts: "refines (an earlier reviewed document's overclaims; also refines M0005-M0010's accumulated apparatus with a ten-item non-collapse chain)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit downgrade of Q_t cong 𝒜_i from 'exact' to 'candidate structural correspondence, semantic equivalence not demonstrated,' with five concrete counterexamples (asked-but-not-understood, known-but-never-asked, etc.) -- a clean, native instance of this reconstruction's own anti-overclaim discipline."
+  - "The formal proof that Sigma(phi)=(1,0) does not entail phi under the S5 mapping K_i-phi->phi, establishing Sigma != K_i rigorously rather than merely by analogy."
+undefined_concepts: []
+open_questions:
+  - "Whether the reviewed '00/01' documents themselves (Method/Provenance/Separation Rule, and Dynamic Epistemic Logic) appear later or earlier in this pass's chronological log, which would let this reconstruction compare this review against its primary target directly."
+tier2_triggered: true
+tier2_reason: "Delivers several rigorously argued formal results (Sigma as a four-value evidence-status structure provably distinct from any S5 knowledge operator, the Conflict-is-not-logical-inconsistency result, the logical-omniscience mismatch, Truth-vs-Authorization separation) and a clean self-applied anti-overclaim correction of a prior document's exact-correspondence claim -- substantial, high-confidence forward progress warranting a full tier-2 record."

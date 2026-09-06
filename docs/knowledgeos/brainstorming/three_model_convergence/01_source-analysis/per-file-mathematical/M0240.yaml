@@ -1,0 +1,129 @@
+sequence: M0240
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-020642_defining-the-remaining-formal-todos-semantic-environment-first.md
+title: "KR-KERNEL-EQUIVALENCE-CAPABILITY-PROOF-2026-09 design specification (four concatenated review passes): the deepest formal apparatus yet for the kernel-minimality proof — capability IDENTITY/GRANULARITY/BASIS (diagnosing the historical 13-vs-12-vs-8 cycle as a granularity artifact), COUNTERFACTUAL capability removal K^{-c} (defeating 'operator removal ≠ capability removal' gaming), a formal CAPABILITY CONSERVATION theorem against 'capability laundering' across bounded contexts, transition-system refinement ⊑_𝔠, and a contract-relative fix to the ambiguous 'lossless simulation' term — while explicitly keeping Theory v1.2 frozen and treating all of this as proof-object design specification, not a new theory version"
+date: "20260904-020642"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0240
+importance: critical
+confidence: high
+about: >
+  A very long (3055-line), four-pass self-correcting review chain, each pass responding to and
+  deepening the previous one, that produces the most complete formal design specification yet for
+  the still-unbuilt Kernel Minimality proof object (KR-KERNEL-EQUIVALENCE-CAPABILITY-PROOF-2026-09).
+  Pass 1 lays out the semantic environment/trace/equivalence/capability/irreducibility/minimality
+  dependency chain in the correct order (Semantic Trace before Semantic Equivalence). Pass 2 finds
+  five genuine gaps (behavior-set inclusion too weak; K_adm/K_sat circularity; compositional-vs-
+  semantic irreducibility conflation; a missing Capability Separation Lemma; a missing capability-
+  realization formalism) plus DDD extensions (ownership, no-capability-laundering, system-level
+  composition). Pass 3 diagnoses a genuinely new, deeper layer — capability IDENTITY and GRANULARITY
+  — as the actual root cause of the corpus's long-tracked 13-vs-12-vs-8 operator instability, plus
+  COUNTERFACTUAL capability removal. Pass 4 refines pass 3's claims (softening "meaningless" to
+  "relative"), fixes the ambiguous "lossless" term by grounding it in contract-observability, and
+  elevates capability conservation to a formal theorem — while explicitly declining to promote any
+  of this past "formal-proof design specification," keeping Theory v1.2 frozen.
+introduces:
+  - "PASS 1 — Semantic environment as an 8-tuple 𝔈=(𝒳,𝒬,𝒞,ℋ,𝒮,ℐ,𝒜,𝒯); Kernel implementation as a 5-tuple K=(X_K,δ_K,𝒞_K,I_K,O_K), explicitly preventing '13 operators = 13 necessary things'"
+  - "PASS 1 — Semantic Trace Tr_K(s,n)=(o_0..o_n;i_0..i_n;δ_0..δ_{n-1}), deliberately defined BEFORE semantic equivalence (an explicit ordering correction to M0235-M0238's presentation), with a candidate (not-yet-theorem) observable set 𝒪=(State,Gap,Determination,Revision,History,InvariantStatus,Attribution,Transition)"
+  - "PASS 1 — the explicit separation, restated at maximal clarity: EXPERIMENTAL irreducibility (∃s∈S_tested) vs MATHEMATICAL irreducibility (∀K'∈𝔎_adm,∃s∈𝔖_adm) — 'your experiments establish the former unless the admissible implementation space is formally characterized'"
+  - "PASS 1 — a 4-stage statistical evidence ladder: Experiment → statistical evidence → conjecture → formal proof, with an explicit warning against experiments silently becoming universal mathematical claims"
+  - "PASS 1 — a proved Theorem (Conditional Semantic Kernel Minimality) with 5 named conditions (semantic completeness, capability completeness, irreducibility, semantic equivalence, capability preorder) and a proof-by-contradiction sketch"
+  - "PASS 2 — catches that plain behavior-set inclusion Beh(K1)⊆Beh(K2) is TOO WEAK for lossless simulation, since state histories/transition structure/provenance/timing/invariants/causal dependencies can differ while final behavior sets agree (worked example K_A:K0→K1→K2 vs K_B:K0→K2) — recommends a trace-simulation mapping Φ_12(Tr_K1(s))≡_𝔠 Tr_K2(s), with behavior inclusion demoted to a CONSEQUENCE rather than the definition"
+  - "PASS 2 — corrects a circularity: distinguishes 𝔎_adm (all admissible implementations) from 𝔎_sat={K∈𝔎_adm:K⊨𝔠} (those satisfying the contract), giving MinKer(𝔠)=Min_⪯cap(𝔎_sat)"
+  - "PASS 2 — splits irreducibility into two genuinely different notions: Irred_comp(c) (compositional: C\\{c}⊭_𝔠c) vs Irred_sem(c) (semantic: ∀K'∈𝔎_adm, K'⊭c⟹K'⊭𝔠) — 'only the second is strong enough for Kernel minimality'"
+  - "PASS 2 — names the hidden gap in the minimality proof and supplies the missing Capability Separation Lemma: K'≺_cap K* ⟹ ∃c∈C_irr(K*) not realizable by K' — with an explicit proof-chain diagram closing the gap"
+  - "PASS 2 — formal capability-realization apparatus: c∈𝒞_sem (semantic capability) vs K⊨c (realization); Cap(K)={c∈𝒞_sem:K⊨c}; Cap:𝔎_adm→𝒫(𝒞_sem)"
+  - "PASS 2 — a four-level statistical evidence ladder (E_sample→E_empirical→E_generalization→E_proof) plus a required experimental-power record tuple (n,p̂,CI,scenario coverage,generator,seed,effect size) for every irreducibility experiment"
+  - "PASS 2 — DDD extensions: KernelResponsibility≠KernelCapability≠KernelImplementation (4-layer table); an ownership invariant Owner(K_t)=Kernel/Owner(GovernanceDecision)=Governance/Owner(ActionExecution)=ExecutionContext; the NO-CAPABILITY-LAUNDERING principle — 'capability relocation outside the Kernel does not constitute capability elimination'; Cap_Kernel≠Cap_System with the explicit warning against 'proving' a smaller Kernel by moving capabilities into Governance"
+  - "PASS 2 — a system-level composition model KOS=Kernel∘Reasoning∘Representation∘Governance∘Execution (bounded-responsibility composition, not sequential algorithm), with 𝔠_epi⊆𝔠_KOS, and Zero made explicitly contract-parametric: Zero:(D,T,Π,S,𝔠)→{Zero,NonZero,Undetermined}"
+  - "PASS 2 — a full three-layer (Semantic foundations / Capability mathematics / Minimality), 7-lemma + 3-theorem proof-object skeleton, plus a 19-row status table (the most granular yet, including 🚫 REJECTED for operator-count minimization and 🚫 DO NOT START for Theory v1.3/new broad philosophy extraction)"
+  - "PASS 3 (deeper correction) — flags that trace-mapping simulation is still too operational; proposes a genuine transition-REFINEMENT relation K1⊑_𝔠 K2 over explicit semantic transition systems ℳ_K=(X_K,Σ_K,δ_K,λ_K,I_K), with a forward-simulation relation R⊆X1×X2 (standard bisimulation-style forward condition) plus observational/invariant preservation — 'much stronger than their traces look equivalent'"
+  - "PASS 3 — the single most important new diagnostic: capability IDENTITY is undefined — before proving c∈C_irr we must know when two purported capabilities are 'the same capability,' otherwise minimality can be artificially manufactured (e.g. naming Determine vs SelectAnswer as independent capabilities when semantically identical) — introduces c1≡_𝒞c2 and capability equivalence classes [[c]]_𝒞, explicitly drawing the parallel to the representation-reduction finding that 'different representations/mechanisms do not necessarily constitute different semantic mechanisms'"
+  - "PASS 3 — the GRANULARITY problem, named 'the deepest unresolved mathematical issue': merging or splitting named capabilities (e.g. Interpret'={Observe,Interpret}) changes whether a third capability (Determine) appears irreducible or derivable — 'minimality is meaningless until semantic granularity is controlled' — requires a formal capability BASIS ℬ⊆𝒞 (every contract-required capability semantically derivable from ℬ) — explicitly identified as THE root cause of the historical 13→12→8 operator cycle"
+  - "PASS 3 — formalizes the system-vs-Kernel projection ρ:𝒞_KOS→{Kernel,Representation,Reasoning,Governance,Execution,...} and a conservation principle c∈Cap(KOS)⟹c remains system-realized regardless of layer ownership — 'someone could prove Kernel with 8 capabilities is smaller than Kernel with 13 by simply moving five capabilities into Governance... mathematically that would be a false reduction'"
+  - "PASS 3 — corrects the evidence-ladder framing: statistical generalization and formal proof should be PARALLEL categories (E_empirical ∥ E_proof), not stages of one ladder, since 'statistical generalization ⇏ mathematical proof' even under perfect population-level evidence"
+  - "PASS 3 — COUNTERFACTUAL capability removal K^{-c} = the class of admissible implementations whose semantic behavior does not realize c (replacing naive syntactic deletion K\\{c}), motivated by a worked example where modifying Interpret to silently absorb Determine's function defeats a naive operator-deletion test ('syntactically yes, semantically no') — gives Irred(c|𝔠)⟺∀K'∈𝔎_adm^{-c}, K'⊭𝔠 — cements 'operator removal ≠ capability removal' as a permanent methodological principle"
+  - "PASS 3 — a clean three-way disambiguation of 'minimality': A.Capability minimality (no unnecessary semantic capabilities — the current research's actual target), B.Implementation minimality (no unnecessary implementation structure — explicitly not needed), C.Architectural minimality (Kernel owns no responsibility belonging elsewhere — the DDD track's target) — 'these are not the same'"
+  - "PASS 4 (final refinement) — softens Pass 3's 'minimality is meaningless until granularity is controlled' to 'capability minimality is RELATIVE to a specified semantic capability space and granularity' — reframed as 'Minimality is contract- and capability-space-relative,' consistent with the corpus's repeated context/transformation/preservation-relativity findings, rather than declaring minimality undefined"
+  - "PASS 4 — orders capability-identity work correctly: Capability Semantics → Capability Identity → Capability Equivalence → Capability Basis (not jumping straight to a basis); proposes a concrete formal capability structure c=(I_c,O_c,Γ_c,ℐ_c) (admissible inputs, contract-observable outputs, permitted state/transition relation, invariants), with c1≡_𝔠c2⟺Beh_𝔠(c1)=Beh_𝔠(c2)"
+  - "PASS 4 — distinguishes THREE relations replacing the earlier single trace-equivalence idea: (A) Internal transition equivalence ≅_int (very strong, usually unnecessary), (B) Behavioral/observational equivalence ≡_sem (the actual contract-level relation), (C) Refinement/simulation ⊑_𝔠 (one implementation refines another) — dependency chain Transition Structure→Simulation→Observation→Semantic Equivalence"
+  - "PASS 4 — resolves the ambiguous 'lossless' term explicitly: lossless RELATIVE TO THE CONTRACT means only contract-observable distinctions (ω∈Obs_𝔠) must be preserved, not full internal state — with an explicit tie-back warning: 'otherwise we accidentally turn Kernel minimality into an information-preservation problem — which our representation research already showed is the wrong abstraction'"
+  - "PASS 4 — elevates a formal CAPABILITY CONSERVATION theorem (the mathematical version of 'no capability laundering'): Cap_KOS^before=Cap_KOS^after even though Cap_Kernel^before≠Cap_Kernel^after, i.e. ΔCap_Kernel≠ΔCap_KOS, with a responsibility-projection formalization ρ:𝒞_KOS→ℬ and 𝔠_Kernel=ρ^{-1}(Kernel)∩𝔠_KOS"
+  - "PASS 4 — a two-reduction minimality structure: Reduction A (semantic reduction K1⊑_𝔠K2) + Reduction B (capability reduction via 𝔎_adm^{-c}) — 'Kernel minimality = semantic completeness + absence of contract-preserving capability reduction,' stronger than the earlier operator-removal formulation"
+  - "PASS 4 — the most complete proof-object skeleton yet: 12 definitions, 5 lemmas, 4 theorems (Completeness/Minimality/Existence/Uniqueness), plus an explicit rejection of any future capability-COUNT theorem ('|B|=N should never be evidence that the Kernel has N primitives... cardinality is secondary')"
+  - "PASS 4 — a final six-question prerequisite list (what is a semantic capability; when are two the same; what granularity is legitimate; what does counterfactual removal mean; what is contract-preserving simulation; how does Kernel responsibility project from system responsibility) and an explicit versioning decision: 'I would therefore keep Theory v1.2 frozen and treat this new material as the formal-proof design specification — not as Theory v1.3'"
+defines:
+  - "K^{-c} — the counterfactual capability-restriction class of admissible implementations not semantically realizing c"
+  - "[[c]]_𝒞 — capability equivalence classes under c1≡_𝒞c2"
+  - "ℬ⊆𝒞 — a capability basis under a fixed contract/equivalence/admissible-implementation-class triple"
+  - "ρ:𝒞_KOS→ℬ — the responsibility-projection map from system capabilities to bounded contexts (Kernel/Representation/Reasoning/Governance/Execution/...)"
+  - "K1⊑_𝔠 K2 — contract-preserving transition-system refinement/simulation"
+refines:
+  - "M0235-M0239's kernel-minimality apparatus: supplies the missing Capability Separation Lemma, corrects the 𝔎_adm/𝔎_sat circularity, splits compositional vs semantic irreducibility, and — most significantly — identifies capability IDENTITY and GRANULARITY as the deepest unresolved layer, directly explaining the historical 13-vs-12-vs-8 operator instability as a granularity artifact rather than a counting error"
+contradicts:
+  - "Pass 3's own 'minimality is meaningless until granularity is controlled' — softened by Pass 4 to 'minimality is relative to capability space and granularity,' since minimality is not undefined, only contract/granularity-relative"
+  - "The document's own earlier direction-ambiguous ⪰_cap/⪯_cap definitions (Pass 1) — corrected to a single primitive relation by Pass 2"
+repeats:
+  - "The Zero∉Prim(K_epi) exclusion and the Kernel/DDD boundary already established in M0235-M0239, restated here as premises within the deeper apparatus"
+bridge_candidates:
+  - "Whether KR-KERNEL-EQUIVALENCE-CAPABILITY-PROOF-2026-09 (the fully specified 19/12-definition proof-object skeleton) was ever actually produced as a standalone artifact"
+  - "Whether the capability-identity/granularity/basis problem was ever resolved for the historical 13/12/8 operator candidates specifically — i.e. was a canonical basis ℬ ever constructed and checked against them"
+  - "Whether the Capability Conservation theorem was ever formally connected to the earlier DDD boundary table (Kernel/Representation/Reasoning-Regime/Zero-Lens/Governance/Execution) from M0234-M0235"
+mathematical_content: >
+  The deepest and most complete formal apparatus yet assembled for the kernel-minimality proof:
+  semantic environment/trace/transition-system definitions; a corrected capability-simulation
+  relation grounded in contract-relative trace refinement rather than weak behavior-set inclusion;
+  a Capability Separation Lemma closing a real proof gap; the split of compositional vs semantic
+  irreducibility; capability identity/equivalence/granularity/basis as a newly-identified
+  foundational layer explaining the historical operator-count instability; counterfactual capability
+  removal K^{-c}; a formal Capability Conservation theorem against cross-context capability
+  laundering; and a full 12-definition/5-lemma/4-theorem proof-object skeleton.
+gita_content: null
+kernel_content: >
+  The most complete kernel-minimality proof-object design specification produced in this
+  reconstruction, arrived at through four successive self-correcting review passes. Diagnoses
+  capability identity and granularity — not operator counting, not even semantic equivalence alone —
+  as the deepest remaining obstacle to a genuine Kernel Minimality Theorem, directly explaining the
+  corpus's long-tracked 13-vs-12-vs-8 operator instability. Explicitly declines to promote this work
+  past design-specification status, keeping Theory v1.2 frozen.
+registry_updates:
+  - "Capability IDENTITY/GRANULARITY/BASIS apparatus — diagnosed as the root cause of the historical 13-vs-12-vs-8 operator-count instability"
+  - "Counterfactual capability removal K^{-c}, replacing naive syntactic operator deletion"
+  - "Capability Separation Lemma, closing the hidden-assumption gap in the minimality proof"
+  - "Capability Conservation theorem (formal 'no capability laundering'), with responsibility-projection ρ:𝒞_KOS→ℬ"
+  - "Three-way minimality disambiguation: Capability minimality ≠ Implementation minimality ≠ Architectural minimality"
+  - "Contract-relative fix for the ambiguous 'lossless simulation' term, tying back explicitly to the representation-reduction thread's information-preservation-is-the-wrong-abstraction finding"
+  - "Explicit versioning discipline: Theory v1.2 remains frozen; this material is design specification, not Theory v1.3"
+anchor_test:
+  anchor: true
+  supports_dimension: "Capability identity/granularity/basis apparatus explaining the 13-vs-12-vs-8 instability; counterfactual capability removal; Capability Separation Lemma; Capability Conservation theorem against capability laundering; three-way minimality disambiguation; contract-relative 'lossless' fix"
+  refines_or_contradicts: "refines (M0235-M0239's kernel-minimality apparatus, given its deepest layer yet); contradicts (Pass 3's own overclaimed 'meaningless until granularity controlled,' self-corrected by Pass 4 to 'relative to granularity')"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Minimality is meaningless until semantic granularity is controlled.\" ... corrected to: \"Capability minimality is relative to a specified semantic capability space and granularity.\""
+  - "\"Operator removal ≠ capability removal.\""
+  - "\"Someone could 'prove': Kernel with 8 capabilities is smaller than Kernel with 13. by simply moving five capabilities into Governance. Mathematically that would be a false reduction.\""
+  - "\"Otherwise we accidentally turn Kernel minimality into an information-preservation problem — which our representation research already showed is the wrong abstraction.\""
+  - "\"I would therefore keep Theory v1.2 frozen and treat this new material as the formal-proof design specification—not as Theory v1.3.\""
+undefined_concepts: []
+open_questions:
+  - "Was KR-KERNEL-EQUIVALENCE-CAPABILITY-PROOF-2026-09 ever produced as a standalone artifact?"
+  - "Was a canonical capability basis ℬ ever constructed and checked against the historical 13/12/8 operator candidates?"
+tier2_triggered: true
+tier2_reason: >
+  Delivers the deepest formal apparatus yet in this reconstruction's kernel-minimality thread across
+  four self-correcting review passes: capability identity/granularity/basis (diagnosed as the actual
+  root cause of the historical 13-vs-12-vs-8 operator instability), counterfactual capability
+  removal, a Capability Separation Lemma closing a genuine proof gap, and a formal Capability
+  Conservation theorem against cross-bounded-context capability laundering — while explicitly
+  maintaining strict versioning discipline (Theory v1.2 remains frozen; this is design specification
+  only).

@@ -1,0 +1,108 @@
+sequence: 1036
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/REFINED-STEP-287.md
+title: "REFINED STEP 287 -- Equality, Identity, Semantics, Observability (vNext, Frozen Open): The Actual, Fully-Corrected Equality Artifact, Confirming ALL Files 1026-1034 Corrections Applied, and Delivering Two Major New Discoveries -- an Earlier Corpus Antecedent ('25I.11') Predating Step 246, and a FIFTH Equality Relation (Behavioural Equivalence, Upstream of K) That REFINED-STEP-288 Itself Already Uncovered"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual, fully-corrected REFINED-STEP-287 (equality) artifact, resolving the long-tracked bridge candidate named since file 1020"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1036
+importance: critical
+confidence: high
+about: >
+  "Refined Step 287 vNext — Equality, Identity, Semantics, Observability," version "vNext (precision
+  correction, not conceptual expansion)," verdict "OPEN," freeze_status "NOT FROZEN." **Directly resolves the
+  long-tracked "REFINED-STEP-287.md" bridge candidate** (files 1020-1022, 1026, 1029, 1031-1034).
+
+  **CONFIRMS EVERY CORRECTION FROM FILES 1026, 1029, AND 1031-1034 GENUINELY, COMPLETELY INCORPORATED**:
+  §0a's numbering-collision notice (matching file 1035's own notice verbatim); the full ten-row CHANGE
+  CONTROL table matching files 1031-1032's own findings one-to-one; §3's fully corrected "≈ narrows" heading
+  (fixing B-1); §4's fully corrected heading and per-axis order audit (fixing M-2, M-3, Issue 4); §8's
+  six-column decomposition and corpus-CONSTRUCT terminology; §13's Step-288 boundary; §14's explicit
+  non-closure statement; and the complete twelve-row §12 phrasing-discipline table, the single most complete
+  "do not write / write instead" reference across the entire equality-closure programme.
+
+  **§1 DELIVERS A GENUINELY IMPORTANT NEW DISCOVERY**: "Step 246 is NOT the origin: `25I.11` (2026-08-28)
+  states the same warning over THREE relations, `≡_exact`/`≡_struct`/`≡_sem,C`, and indexes semantic equality
+  BY CONTEXT" -- an EARLIER corpus antecedent (dated 28 August, before the 31 August Step-246 citation this
+  reconstruction has tracked throughout), pointing to a new bridge candidate,
+  "14-GAP-UPDATE-FROM-THE-025-ALGEBRA-SEAM.md §1." **This reveals the four-relations finding this
+  reconstruction has tracked as originating at "Step 246" (files 0989-0994, 1005, 1019, 1026, 1031) actually
+  has an even earlier corpus precedent with a DIFFERENT relation count (three, context-indexed) --
+  potentially yet another layer to the escalating notation/formulation history.**
+
+  **§3 DELIVERS THE MOST SIGNIFICANT NEW FINDING IN THIS FILE, EXPLICITLY DATED AND SOURCED TO "REFINED-STEP-
+  288.md §1"** -- **CONFIRMING STEP 288 HAS ALREADY BEEN EXECUTED (contrary to files 1030's/1034's
+  recommendation to wait)**: "behavioural equivalence IS in the corpus" -- the artifact's own prior claim that
+  it was absent is explicitly withdrawn. `CORPUS` Step 260 ("minimality of the knowledge state") makes
+  behavioural equivalence "THE FOUNDATION OF MINIMALITY": it distinguishes CANDIDATE `≡_𝒯^cand` from PROVEN
+  `≡_𝒯^prov` behavioural equivalence, states "at this stage we have the former," and proposes "the candidate
+  state is therefore an equivalence class of HISTORIES" -- meaning **`K` is proposed as `ℋ/≡_𝒯`** (a quotient
+  of the history set), **NOT downstream of `δ` but UPSTREAM of `K` itself**. Step 260.11 warns "the quotient
+  is NOT automatically implementable." **Consequence explicitly stated: "there are FIVE relations in play,
+  not four" -- a genuinely major revision to the "four corpus relations" framing this reconstruction has
+  tracked as foundational since file 0989 (Step 246), now shown incomplete by the corpus's own further
+  material.** The fifth relation "inherits `𝒪`'s defect: `𝒯` has never been enumerated against the ratified 8
+  primitives."
+
+  **Also delivers, within §3, a precise external-literature classification (never imported as architecture)**:
+  weak bisimulation IS the correct technical name for the behavioural sense of observational equivalence, and
+  `≈_X` (label-projection) is explicitly the WEAKER sense -- "the two senses must never be conflated."
+
+  **§14 delivers the mandated final non-closure statement**: "Step 287 does NOT close equality. It
+  establishes exactly what is known, what is bounded, what is normative, and what remains technically
+  unspecified. The corpus has named equality-related constructs but has not supplied the decision procedures
+  and semantic commitments required to make them executable."
+
+  **The STATUS block delivers the complete, definitive ESTABLISHED/BOUNDED/NORMATIVE/TECHNICALLY-OPEN/
+  DEFERRED classification**, now including the fifth-relation finding under TECHNICALLY OPEN
+  ("`≡_𝒯^prov` -- proven behavioural equivalence; the corpus holds only `≡_𝒯^cand`... and `𝒯` is
+  unenumerated").
+introduces:
+  - concept: "A new bridge candidate, '25I.11' (2026-08-28), an EARLIER corpus antecedent to the already-tracked Step 246 four-relations finding, warning over a different set of THREE relations (equiv_exact/equiv_struct/equiv_sem,C) indexed by context"
+  - concept: "Confirmation that REFINED-STEP-288.md exists and has already been consulted for a correction to this document, contrary to the earlier recommendation (files 1030, 1034) to wait for a corrected 287 before commissioning 288"
+  - concept: "The major new finding that a FIFTH equality relation exists in the corpus: behavioural equivalence over histories (K proposed as H/equiv_T, from corpus Step 260), distinguishing candidate from proven forms, upstream of K rather than downstream of delta"
+  - concept: "The precise external-literature classification that weak bisimulation is the correct name for behavioural observational equivalence, explicitly distinguished from and weaker than the label-projection approx_X already tracked"
+defines: []
+refines:
+  - concept: "This reconstruction's long-tracked 'REFINED-STEP-287.md' bridge candidate (files 1020-1022, 1026, 1029, 1031-1034)"
+    refinement: "DIRECTLY RESOLVED: the actual, definitive, fully-corrected document is now read in complete form, confirming every reviewer correction was genuinely incorporated"
+  - concept: "This reconstruction's foundational 'four corpus relations' finding, tracked since file 0989 (Step 246)"
+    refinement: "REVISED: a fifth relation (behavioural equivalence over histories, from Step 260) is now explicitly acknowledged as also present in the corpus, upstream of K rather than at the same level as the original four"
+  - concept: "This reconstruction's already-tracked Step-246 origin for the four-relations non-interchangeability warning"
+    refinement: "SHOWN TO HAVE AN EVEN EARLIER CORPUS ANTECEDENT: '25I.11' (2026-08-28) makes a similar warning over a different, three-relation, context-indexed formulation"
+contradicts: []
+repeats:
+  - "Substantially confirms content already documented via files 1026, 1029, 1031-1035; this file's major distinctive contributions are the 25I.11 earlier-antecedent discovery and the fifth-relation (behavioural equivalence) finding, both genuinely new."
+bridge_candidates:
+  - "'25I.11' (2026-08-28) and '14-GAP-UPDATE-FROM-THE-025-ALGEBRA-SEAM.md' -- the earlier corpus antecedent and its gap-update document; not yet directly encountered."
+  - "'REFINED-STEP-288.md' -- now confirmed to exist and already consulted; not yet directly encountered by this reconstruction."
+  - "Corpus 'Step 260' (minimality of the knowledge state) and its sub-locus '260.11' -- the source of the fifth (behavioural) equality relation; not yet directly encountered."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the direct resolution of the long-tracked 'REFINED-STEP-287.md' bridge candidate, confirming every reviewer correction was genuinely and completely incorporated."
+  - "dimension-registry.md: record the major new finding that a fifth equality relation (behavioural equivalence over histories, from corpus Step 260) exists, revising the foundational 'four corpus relations' framing."
+  - "dimension-registry.md: record the new earlier corpus antecedent '25I.11' (2026-08-28), predating the already-tracked Step 246 citation, with a different three-relation formulation."
+  - "dimension-registry.md: record confirmation that REFINED-STEP-288.md exists and has already been consulted, contrary to the earlier recommendation to wait."
+anchor_test:
+  anchor: "This reconstruction's long-tracked REFINED-STEP-287 bridge candidate and the foundational four-corpus-relations finding (files 0989-0994, 1005, 1019, 1026, 1029, 1031-1035)"
+  supports_dimension: "Directly resolves the bridge candidate and delivers two major new findings revising and extending the foundational equality-relations framing"
+  refines_or_contradicts: "confirms prior corrections; revises (extends) the four-relations framing to five"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "Every section of this document is directly checkable against files 1026, 1029, 1031-1035's own already-documented correction recommendations for exact one-to-one correspondence."
+  - "The fifth-relation (behavioural equivalence) finding is directly checkable against a future direct encounter with corpus Step 260 and REFINED-STEP-288.md."
+undefined_concepts: []
+open_questions:
+  - "The content of '25I.11', '14-GAP-UPDATE-FROM-THE-025-ALGEBRA-SEAM.md', 'REFINED-STEP-288.md', and corpus 'Step 260', none yet directly encountered."
+tier2_triggered: true
+tier2_reason: "Directly resolves the long-tracked 'REFINED-STEP-287.md' bridge candidate, confirming every prior correction was genuinely incorporated, and delivers two major new discoveries: an earlier corpus antecedent (25I.11) to the foundational four-relations finding, and a fifth equality relation (behavioural equivalence over histories, from Step 260) that revises this reconstruction's long-tracked four-relations framing. Classified importance critical and confidence high given the direct resolution and the significance of these new findings."

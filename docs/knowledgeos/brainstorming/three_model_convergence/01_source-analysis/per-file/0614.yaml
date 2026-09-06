@@ -1,0 +1,199 @@
+sequence: 614
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-102459_step-034-information-acquisition-value-of-information-active-learning-and-the-next-best-epistemic.md
+title: "The Long-Tracked Resource-Allocation Topic FINALLY Delivered — Formal EVPI/EVSI/NVOI and the First Formal NextBestEpistemicAction Definition; InformationValue≠UncertaintyReduction (Decision Relevance Is Necessary); DecisionBoundaryUncertainty (Uncertainty Near a Threshold Matters, Far From It Is Harmless); an Eight-Stage Information-Acquisition Hierarchy; the Genuine Causal Observation-vs-Intervention Distinction Applied to Information Gathering Itself; the Genuinely Important 'Value of Contradiction'/'Expected Value of Disconfirmation' Result — A Precise Operational Popperian Strategy ('Find the Cheapest High-Quality Evidence Capable of Changing My Conclusion'); Seven Numbered Architectural Principles; Verdict 'STEP 34 — PASS'; Opens Step 35 (Epistemic Resource Allocation, Attention Scheduling, Knowledge Triage and Portfolio Optimization) Cleanly"
+date: "2026-08-28"
+bytes: 21236
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 34 -- Information Acquisition, Value of Information, Active Learning and the Next-Best Epistemic Action', opened cleanly at 0613's close -- finally delivering the resource-allocation/Next-Best-Information capability first proposed at 0609 and twice deferred/renumbered since (0610, 0611)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 614
+importance: critical
+confidence: high
+about: >
+  Opens Step 34 directly executing 0613's clean transition, delivering the file's foundational distinction:
+  inference asks "what can we conclude from what we know?" while Step 34 asks **"what should we learn
+  next?"** -- explicitly noting KnowledgeOS cannot investigate everything (worked million-uncertain-
+  assertion scale example). **This is the corpus's final, successful landing of the resource-allocation
+  topic this reconstruction has tracked across three prior renamings/deferrals (originally "Step 31" at
+  0609, deferred to a future "Step 32" at 0610, bypassed a second time at 0611)**.
+
+  **Delivers the file's central formal deliverable -- decision-theoretic Value of Information machinery**:
+  `EVPI=L_0-L_{PI}` (Expected Value of Perfect Information, an upper bound), and
+  `EVSI(I)=L_0-E_Y[min_d E[L(d,θ)|K,Y]]` (Expected Value of Sample Information for a realistic,
+  imperfect information action), combined into `NVOI(I)=EVSI(I)-Cost(I)`, explicitly named "the core
+  mathematical idea." **Delivers the corpus's first formal definition of `NextBestEpistemicAction`**:
+  `I*=argmax_{I∈𝓘} NVOI(I)`.
+
+  **Delivers the file's second central formal deliverable -- a precise separation between information
+  value and mere uncertainty reduction**: `InformationValue≠UncertaintyReduction`, worked through a
+  contrasted pair of examples (resolving RAM uncertainty when the migration architecture has a large safety
+  margin has near-zero decision value; resolving backup-restorability uncertainty when execution critically
+  depends on it has extremely high value), formalizing `DecisionSensitivity(A,D)` as the governing factor.
+  Delivers `DependencyClosure+DecisionCriticality=EpistemicPrioritization`, directly reusing 0612's (Step
+  32) `Closure(A)` machinery, and domain-owned `Criticality(D)` that KnowledgeOS consumes without inventing.
+
+  **Delivers a genuinely useful new concept -- Decision Boundary Uncertainty**: uncertainty far from a
+  governing threshold (e.g. a `Risk<5%⇒AutomaticApproval` rule) is largely harmless, while uncertainty
+  straddling the boundary (worked `Risk∈[4%,7%]` crossing a `5%` threshold example) is critical and
+  investigation-worthy, formalized as a conceptual triage rule
+  `Priority(A)∝DecisionImpact(A)×Uncertainty(A)` (explicitly not yet a universal formula). Delivers worked
+  net-value comparisons showing higher raw `EVSI` does not guarantee prioritization once cost is accounted
+  for.
+
+  Delivers Human attention and Compute formally recognized as epistemic resources with their own costs
+  (`Cost_{human}(I)`), and Operational risk incorporated into `Cost(I)` for investigations that are
+  themselves risky. **Delivers a formal eight-stage information-acquisition hierarchy** (existing evidence
+  → existing independent evidence → read-only observation → automated validation → simulation → controlled
+  experiment → expert investigation → operational intervention), with explicit "search existing evidence
+  first" discipline preventing unnecessary duplicate investigation. Delivers `Sufficient(E,A,D)` as
+  decision-relative (the same screenshot can be sufficient to establish "is it running?" but insufficient
+  for "is it production-ready?").
+
+  Delivers "epistemic active learning" as a generalization of the ML active-learning concept beyond model
+  training to the entire knowledge system (spanning AI models, architecture, infrastructure, governance,
+  and business knowledge), formal entropy-based Information Gain (`IG(Q)=H(K)-E[H(K|Q)]`), and the
+  explicit caution **`InformationGain≠DecisionValue`** -- a high-entropy-reducing query about an irrelevant
+  detail can have lower decision value than a lower-entropy-reducing query about something decision-
+  critical, formalized conceptually as Decision-Weighted Information Gain. Delivers "Value of
+  clarification" as a distinct information-action category -- semantic clarification (e.g. establishing
+  what "production-ready" means in a specific bounded context) can dramatically reduce semantic uncertainty
+  more effectively than acquiring another raw data point, directly reconnecting to the corpus's DDD
+  bounded-context meaning-ownership discipline.
+
+  Delivers a formal ten-value epistemic-action-category enum (`Retrieve, Observe, Measure, Validate,
+  Clarify, Experiment, Simulate, Ask, Compare, Recalculate`), and a formal investigation-selection policy
+  `SelectNext(K,D,𝓘)→I*` explicitly considering VOI, Cost, Risk, Dependency, and Criticality together.
+  **Delivers an important limitation reconfirming the corpus's established assurance-gate discipline
+  applied specifically to information-gathering actions**: the system must not autonomously execute every
+  selected information action; `ActionAuthority(I)` is required, with a three-tier
+  (`ReadOnly, OperationallySensitive, HumanApprovalRequired`) classification, and `Authorize(I,K)` must be
+  evaluated before execution "the same assurance principle we established for ordinary actions." Delivers
+  the crucial recognition that information actions can themselves modify reality (worked "restart to test
+  recovery" example, explicitly `Experiment+Intervention`, requiring higher assurance than passive
+  observation), formally reconfirming the corpus's established `Observe`/`do(X=x)` causal distinction
+  applied to information-gathering specifically -- causal uncertainty may sometimes require genuine
+  intervention to resolve, with `VOI_{causal}` explicitly required to include `InterventionRisk`.
+
+  Delivers Sequential/adaptive information acquisition (`I_1→Observation→I_2(y_1)→...`) as generally more
+  efficient than deciding all investigations upfront, formalized as an investigation policy
+  `π:K_t→I` feeding a closed epistemic control loop (`Assess→Select→Acquire→Update→Reassess`), explicitly
+  "substantially more powerful than a static knowledge repository." Delivers a formal stopping rule
+  (`NVOI(I)≤0` for all feasible investigations, or governance-sufficient decision confidence, explicitly
+  not necessarily reducible to a single scalar), and the Satisficing principle --
+  **`SufficientKnowledgeForAction`**, not perfect knowledge, as the actual practical objective, with a
+  formal, criticality-dependent `Sufficient(K,D)` predicate. Delivers a formal Epistemic budget concept
+  (`Σ_i Cost(I_i)≤B`, an explicit resource-constrained optimization problem), and Investigation
+  interaction effects (`Value(I_1,I_2)≠Value(I_1)+Value(I_2)`, both complementarities and redundancies
+  possible), with provenance again identified as the mechanism for detecting redundant investigations, and
+  Independent corroboration recognized as capable of producing high combined value when genuinely
+  independent (worked runtime-inspection-plus-independent-monitoring example).
+
+  **Delivers the file's third central formal deliverable, self-identified as a subtle and important
+  insight -- the Value of Contradiction**: an investigation can be highly valuable even when it
+  INCREASES uncertainty, by revealing that a strongly-held belief may be false, formalized as
+  **`InformationValue can come from discovering that we are wrong`** -- directly extending 0613's parallel
+  finding (new evidence can legitimately increase reported uncertainty) into the investigation-SELECTION
+  domain specifically. **Delivers the file's central strategic principle, a precise operational
+  application of Popperian falsification to investigation selection**: the optimal investigation strategy
+  should NOT be "find evidence supporting my conclusion" but rather **"find the cheapest high-quality
+  evidence capable of changing my conclusion"** -- explicitly "a much stronger epistemic strategy," giving
+  concrete, actionable form to the falsifiability principle introduced informally at 0609 (Step 30).
+  Delivers a formal Falsification-priority rule: critical claims with both high decision impact and high
+  current uncertainty should generally receive high falsification-test priority.
+
+  **Delivers ten labeled falsification experiments (A-J), ALL PASS**: preferring a moderate-cost
+  independent decision-changing investigation over a cheap-but-redundant one; correctly assigning low
+  priority to an irrelevant but highly uncertain assertion; correctly assigning high priority to a
+  moderately uncertain but critical precondition; correctly assigning low decision value to an entropy-
+  reducing but decision-irrelevant investigation; correctly gating an expensive investigation behind a
+  cheaper pre-check; correctly prioritizing a potentially disconfirming investigation; correctly reducing
+  the priority of and requiring authorization for an operationally dangerous investigation; correctly
+  requiring an authorization gate for a privileged-access information action; correctly still classifying
+  an uncertainty-revealing investigation as beneficial; correctly issuing `StopInvestigation` when no
+  feasible action has positive net value.
+
+  **Delivers Step 34's verdict**: **"STEP 34 — PASS,"** with the core formulation
+  `I*=argmax_I[EVSI(I)-Cost(I)]` subject to Authorization, Safety, Resource, and Governance constraints,
+  and **seven numbered architectural principles**: (1) uncertainty reduction is not automatically
+  valuable; (2) decision impact determines information value; (3) information has cost; (4) human
+  attention is a scarce epistemic resource; (5) contradictory evidence can be highly valuable; (6) the
+  cheapest decision-changing investigation should generally be preferred; (7) information acquisition
+  itself requires governance.
+
+  Delivers an explicit architecture-level progression recap (Knowledge Representation → Knowledge
+  Consistency → Knowledge Validation → Uncertainty Propagation → now Knowledge Acquisition), explicitly
+  declaring "the architecture is becoming an active epistemic system," and the corpus's most complete
+  single closed-loop notation to date, a thirteen-stage full cycle from Reality through Knowledge
+  Revision and back.
+
+  **Closes cleanly, with no renumbering collision, by identifying the next deeper problem -- competing
+  decisions sharing one finite epistemic resource pool**: multiple decisions requiring evidence, compute,
+  expert time, validation capacity, and operational access simultaneously, reframing the problem as
+  **"portfolio-level epistemic resource optimization,"** explicitly larger than any single decision's VOI
+  calculation. **Opens "Step 35 — Epistemic Resource Allocation, Attention Scheduling, Knowledge Triage
+  and Portfolio Optimization,"** combining VOI, Risk, DecisionCriticality, DependencyImpact, Cost, Urgency,
+  Freshness, and HumanCapacity, with the ultimate objective "maximize organizational decision quality per
+  unit of epistemic resource." No actual code execution reported.
+introduces:
+  - concept: "The final, successful landing of the resource-allocation/Next-Best-Information topic first proposed at 0609 and twice deferred/renumbered since (0610, 0611), now formally delivered as Step 34"
+  - concept: "Formal decision-theoretic VOI machinery: EVPI (upper bound), EVSI (realistic imperfect-information value), and NVOI=EVSI-Cost, yielding the corpus's first formal NextBestEpistemicAction definition"
+  - concept: "InformationValue≠UncertaintyReduction — decision relevance (DecisionSensitivity(A,D)) is a necessary filter before any uncertainty-reduction is treated as valuable"
+  - concept: "Decision Boundary Uncertainty — uncertainty far from a governing threshold is largely harmless; uncertainty straddling the boundary is critical and investigation-worthy"
+  - concept: "A formal eight-stage information-acquisition hierarchy, with explicit 'search existing evidence first' discipline preventing unnecessary duplicate investigation"
+  - concept: "Information actions themselves formally recognized as capable of intervention (not merely observation), requiring VOI_causal to include InterventionRisk"
+  - concept: "The Value of Contradiction / Expected Value of Disconfirmation — information value can come from discovering we are wrong, operationalized as 'find the cheapest high-quality evidence capable of changing my conclusion' rather than confirmation-seeking"
+  - concept: "Seven numbered architectural principles for information acquisition, synthesizing the entire step's findings"
+  - concept: "'Step 35 — Epistemic Resource Allocation, Attention Scheduling, Knowledge Triage and Portfolio Optimization', reframing single-decision VOI into a portfolio-level resource-allocation problem across competing decisions"
+defines:
+  - concept: "Expected Value of Sample Information and Net Value of Information"
+    definition: "EVSI(I)=L_0-E_Y[min_d E[L(d,θ)|K,Y]] measures the expected decision-quality improvement from a realistic (imperfect) information action I; NVOI(I)=EVSI(I)-Cost(I) nets out the acquisition cost, and I*=argmax_I NVOI(I) defines the Next Best Epistemic Action"
+  - concept: "Decision Boundary Uncertainty"
+    definition: "The portion of an assertion's uncertainty range that straddles a governing decision threshold; uncertainty entirely on one side of the boundary is low-priority, while uncertainty spanning the boundary is high-priority for investigation regardless of its absolute magnitude"
+  - concept: "Value of Contradiction"
+    definition: "An investigation that increases reported uncertainty by revealing a strongly-held belief may be false is not a failure — it can carry very high information value precisely because it prevents a potentially wrong decision from being made on overconfident grounds"
+  - concept: "Expected Value of Disconfirmation strategy"
+    definition: "The optimal epistemic investigation strategy targets the cheapest high-quality evidence capable of CHANGING the current conclusion, rather than evidence that merely confirms it — a concrete, actionable operationalization of falsifiability applied to investigation selection specifically"
+refines:
+  - concept: "0609's/0610's/0611's twice-deferred and twice-renumbered resource-allocation/Next-Best-Information topic"
+    refinement: "Finally and successfully delivered as Step 34, resolving this reconstruction's longest-tracked open bridge candidate with the actual formal VOI/NVOI/NextBestEpistemicAction machinery promised across three prior naming attempts"
+  - concept: "0612's (Step 32) dependency closure machinery (Closure(x))"
+    refinement: "Directly reused for epistemic prioritization: DependencyClosure+DecisionCriticality=EpistemicPrioritization, connecting the algebraic dependency graph to the practical question of what to investigate next"
+  - concept: "0609's (Step 30) informal Popperian falsifiability engagement (Falsifier(H), preference for falsifiable claims)"
+    refinement: "Given a concrete, actionable operational strategy for investigation selection specifically: find the cheapest evidence capable of changing the conclusion, not merely confirming it, directly extending the earlier claim-formulation-level principle into an action-selection-level strategy"
+  - concept: "0613's (Step 33) subtle finding that new evidence can legitimately increase reported uncertainty"
+    refinement: "Directly extended into the investigation-selection domain: an investigation that increases uncertainty by revealing a belief may be false is explicitly recognized as potentially highly valuable, not merely tolerated"
+  - concept: "The corpus's established Observe/do(X=x) causal distinction (0594/25P and subsequent files)"
+    refinement: "Extended to information-gathering actions themselves: some investigations are genuine interventions (Experiment+Intervention) requiring higher assurance than passive observation, with causal VOI explicitly required to include intervention risk"
+  - concept: "The corpus's recurring assurance-gate/authorization discipline (0604/25Z and subsequent files)"
+    refinement: "Directly reused for information-gathering actions specifically: the system must not autonomously execute every VOI-justified investigation, requiring explicit ActionAuthority(I) and a three-tier authorization classification"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 35 — Epistemic Resource Allocation, Attention Scheduling, Knowledge Triage and Portfolio Optimization' is executed as its own file cleanly, and whether it succeeds in deriving a genuine portfolio-level resource-allocation solution across competing decisions rather than treating each decision's VOI in isolation."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the final successful landing of the resource-allocation topic (Step 34), the formal EVPI/EVSI/NVOI machinery and the first formal NextBestEpistemicAction definition, and InformationValue≠UncertaintyReduction with the Decision Boundary Uncertainty concept."
+  - "dimension-registry.md: record the eight-stage information-acquisition hierarchy, the information-action-as-intervention recognition (VOI_causal must include InterventionRisk), the satisficing/SufficientKnowledgeForAction principle, and the epistemic budget/portfolio framing."
+  - "dimension-registry.md: record the Value of Contradiction and the Expected Value of Disconfirmation strategy (find the cheapest evidence capable of changing the conclusion), the ten-test falsification suite (ALL PASS), the seven numbered architectural principles, verdict 'STEP 34 — PASS,' and Step 35's clean opening (portfolio-level epistemic resource optimization)."
+anchor_test:
+  anchor: "0609's/0610's/0611's twice-deferred and twice-renumbered resource-allocation topic; 0612's dependency closure machinery; 0609's informal Popperian falsifiability engagement; 0613's subtle uncertainty-can-legitimately-increase finding; the corpus's Observe/do(X=x) causal distinction and its recurring assurance-gate/authorization discipline"
+  supports_dimension: "Delivers the corpus's final, successful landing of the resource-allocation/Next-Best-Information capability first proposed at 0609 and twice deferred and renumbered since — resolving this reconstruction's longest-tracked single open bridge candidate with genuine, substantive decision-theoretic formalism (EVPI/EVSI/NVOI, the first formal NextBestEpistemicAction definition). Delivers a precisely stated, practically important separation between information value and mere uncertainty reduction, grounded in concrete worked examples of decision-irrelevant versus decision-critical uncertainty. Delivers a genuinely useful new concept (Decision Boundary Uncertainty) with direct practical value for triaging validation effort. Delivers a concrete, actionable operationalization of Popperian falsifiability specifically for investigation selection — seek disconfirming evidence, not confirming evidence — directly extending 0609's earlier claim-level falsifiability principle into an action-selection strategy, paired with the important, subtle recognition (extending 0613's parallel finding) that an investigation increasing uncertainty by revealing a false belief can be highly valuable rather than a failure. Correctly extends the corpus's established causal (observation-vs-intervention) and authorization-gate disciplines into the information-gathering layer itself, recognizing that some investigations are themselves world-changing interventions requiring elevated assurance"
+  refines_or_contradicts: "finally and successfully delivers the resource-allocation topic tracked since 0609/0610/0611; directly reuses 0612's dependency closure machinery for epistemic prioritization; extends 0609's informal falsifiability principle into a concrete investigation-selection strategy; directly extends 0613's subtle uncertainty-can-legitimately-increase finding into the investigation-selection domain; extends the corpus's Observe/do(X=x) causal distinction and its authorization-gate discipline into information-gathering actions specifically; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked RAM-uncertainty-vs-backup-restorability-uncertainty contrast (resolving RAM within a wide safety margin has near-zero decision value; resolving backup restorability when execution critically depends on it has extremely high value) is directly checkable, concrete evidence grounding the abstract InformationValue≠UncertaintyReduction principle in a realistic engineering scenario, demonstrating the necessity of decision-relevance filtering before any uncertainty-reduction effort is prioritized."
+  - "The explicit strategic reframing from 'find evidence supporting my conclusion' to 'find the cheapest high-quality evidence capable of changing my conclusion' is directly checkable, actionable evidence of a genuine, implementable Popperian falsification strategy for automated investigation selection, distinguishing this file's treatment from a merely rhetorical endorsement of falsifiability."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 35 — Epistemic Resource Allocation, Attention Scheduling, Knowledge Triage and Portfolio Optimization' is executed as its own dedicated corpus file, and whether it succeeds in deriving a genuine portfolio-level resource-allocation solution across competing decisions rather than treating each decision's VOI independently"
+tier2_triggered: true
+tier2_reason: "Delivers the corpus's final, successful landing of the resource-allocation/Next-Best-Information capability first proposed at 0609 and twice deferred and renumbered since (0610, 0611) — resolving this reconstruction's longest-tracked single open bridge candidate with genuine, substantive decision-theoretic formalism (EVPI/EVSI/NVOI machinery, the first formal NextBestEpistemicAction definition). Delivers a precisely stated, practically important separation between information value and mere uncertainty reduction, and a genuinely useful new concept (Decision Boundary Uncertainty) with direct practical value for triaging validation effort in real systems. Delivers a concrete, actionable operationalization of Popperian falsifiability specifically for investigation selection — seek disconfirming rather than confirming evidence — directly extending 0609's earlier claim-level falsifiability principle into an action-selection strategy, paired with the important recognition that an investigation increasing uncertainty by revealing a false belief can be highly valuable. Correctly extends the corpus's established causal and authorization-gate disciplines into the information-gathering layer itself, recognizing that some investigations are genuine world-changing interventions requiring elevated assurance rather than passive observations."

@@ -1,0 +1,65 @@
+sequence: 36
+path: docs/knowledgeos/KnowledgeOS_Ontology_Cross_Product_Validation.md
+title: KnowledgeOS — Ontology Cross-Product Validation
+date: 2026-08-02
+bytes: 17556
+doc_type: falsification by projection into three product domains (hospital, ERP, PublicDigit)
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [ddd, contradiction, evidence, invariants, domain_model]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+status: RF
+maturity: established        # for the 10 surviving invariants and the withdrawn/reasoned I-4 finding
+importance: high
+
+introduces:
+  - structural_vs_transformational_relationships   # explains 4 missing relations as one coherent gap
+  - publicdigit_masks_two_of_three_failures         # concrete single-instance-masking demonstration
+  - product_vs_deployment_specialization_needed
+  - inert_vs_attested_projection
+defines: []      # specializes/constrains/instantiates/attests named but explicitly NOT admitted
+hypotheses:
+  - S1_through_S4_candidate_specializations   # none admitted
+  - H5_engineering_method_as_layer            # neither confirmed nor refuted
+  - H6_runtime_adapter_outside_core_ontology  # SUPPORTED, disappeared in both new domains
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 36th consecutive file
+  - deployment           # needed specialization; not itself defined
+  - attestation           # 4th appearance (0002/0014/0018/here); no formal procedure given
+open_questions:
+  - CV1_is_I4_scoped_or_withdrawn
+  - CV2_does_ontology_need_product_vs_deployment
+  - CV3_where_does_external_authority_attach
+  - CV4_admit_transformational_relationships_as_a_group
+  - CV5_adopt_strategic_ontology_candidate_status
+
+depends_on: [27]
+extends: [27]
+refines: [27]
+renames: []
+contradicts: []        # falsifies then withdraws its OWN I-4 claim within the same document
+supersedes: []
+repeats: [14, 18, 27]   # third independent path to the authority provenance/standing diagnosis
+connects_to: [14, 18, 27, 35]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Falsifies then re-diagnoses I-4 across two hypothetical product domains, converging with 0014 and
+  0018 on the same mechanical cause via a THIRD independent method (external cross-domain
+  falsification vs internal gap analysis vs internal formal decomposition) - the strongest triple
+  corroboration in the corpus for any single diagnosis. Produces a coherent structural-vs-
+  transformational taxonomy explaining four missing relationships at once. Demonstrates, concretely
+  and with real evidence (not merely argued), that single-instance validation can mask multi-instance
+  defects - directly applicable as a methodological caution to this research's own convergence claims.

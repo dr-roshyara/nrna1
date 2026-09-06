@@ -1,0 +1,97 @@
+sequence: 2295
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260901-021906_step_286_kernel-state-stays-at-the-eight-ratified-primitives-gita-as-lens-only.md
+title: "Kernel State Stays at the Eight Ratified Primitives, Gītā as Lens Only -- Delivers the Thread's Fullest Explicit Eight-Primitive/Gita Correspondence Table, the Kernel-State≠Kernel-Algebra Distinction, and an Eight-Operator Candidate Algebra"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "delivers the thread's most explicit named eight-primitive kernel state with a full row-by-row Gita-lens correspondence table, and the Kernel-State-vs-Kernel-Algebra separation"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2295
+importance: high
+confidence: high
+about: >
+  Opens: "Given the reconciliation we established in Step 285, I would keep the canonical kernel state exactly
+  at the eight ratified primitives, while using the Gītā-derived concepts as a philosophical interpretation/
+  lens, not as additional primitives."
+
+  **DELIVERS THE THREAD'S FULLEST NAMED EIGHT-PRIMITIVE TABLE**: K_t={Entity,State,Event,Observation,
+  Proposition,Relation,Policy,Action}, with an explicit full correspondence table mapping each of the eight to
+  a Gītā-lens term and an epistemic-process role: Entity↔Kṣetra(field/object, "what the knowledge concerns"),
+  State↔"changing condition of the field", Event↔Karma/Kriyā("what changes the state"), Observation↔Indriya→
+  Manas("raw epistemic input"), Proposition↔Jñeya("that which is to be known", "candidate knowledge"),
+  Relation↔Sambandha("how knowledge elements are connected"), Policy↔Dharma("what ought to constrain action/
+  judgment"), Action↔Karma("what the system does"). This is the thread's clearest, most complete explicit
+  naming of the ratified eight primitives with a full one-to-one Gītā correspondence, more explicit than any
+  prior file in this window that referenced "the eight primitives" only abstractly.
+
+  **DELIVERS EXPLICIT NON-PRIMITIVE STATUS FOR Buddhi/Manas/Kṣetra/Kṣetrajña/Guṇa/Yoga/Mokṣa**: Buddhi≢
+  Primitive; instead Buddhi="discriminative operator over K_t"; Manas="processing/coordination aspect";
+  Kṣetra="field represented by the kernel"; Kṣetrajña="knower perspective, outside K_t"; Guṇa="mode/state
+  influencing kernel operation"; Yoga="class of transformations/discipline"; Mokṣa="limiting/transcendent
+  epistemic condition" — reaffirms the already-tracked non-primitive classification for these terms with
+  slightly refined phrasing for each.
+
+  **DELIVERS THE KERNEL-STATE≠KERNEL-ALGEBRA DISTINCTION**: "The eight primitives describe what exists in the
+  kernel state. They do not yet completely describe what the kernel does... Kernel State ≠ Kernel Algebra" —
+  an explicit architectural separation between the state vocabulary (ratified) and the operator vocabulary
+  (still candidate), directly parallel to file 2294's Kernel≠Primitive/Aggregate-Boundary distinction but
+  drawn one level lower (state vs operators, rather than kernel-as-boundary vs primitives-as-vocabulary).
+
+  **DELIVERS AN EIGHT-OPERATOR CANDIDATE ALGEBRA** (explicitly marked non-canonical): Observe:W→O,
+  Interpret:O→P, Relate:(P,E,S,...)→R, Discriminate:K_t→{accept,reject,qualify}, Revise:K_t→K_{t+1},
+  Act:K_t→A, Transition:(K_t,A)→Event, Update:(K_t,Event)→K_{t+1} — "But only the eight primitives are
+  canonical at this point. These operators remain candidates until independently derived and formally
+  tested" — a further (roughly the dozenth) distinct operator-list proposal in the thread, explicitly
+  hedged as non-canonical, unlike most prior proposals.
+
+  **DELIVERS THE EXPLICIT THREE-STEP DISCIPLINE CHAIN**: "correspondence ⇏ primitive ⇏ canonical architecture"
+  — a compact restatement of the thread's governing discipline, attributed explicitly to "what Step 286
+  warned against" (the corpus's own internal self-reference to its discipline-setting step).
+
+  **DELIVERS A THREE-LEVEL ARCHITECTURAL DIAGRAM**: Knower(𝒩/Kṣetrajña)→observes/knows→KnowledgeOS
+  Kernel(eight primitives+Buddhi discrimination layer)→Knowledge evolution — with the closing formulation:
+  "The eight primitives define what the KnowledgeOS kernel knows and represents; Buddhi defines the
+  discriminative capability through which the kernel operates on that state."
+
+  Closes proposing the next research target: "define the Buddhi operator algebra over the eight-primitives
+  kernel, including how the three Guṇa modes change the permitted/selected operations."
+introduces:
+  - concept: "The thread's fullest explicit named eight-primitive/Gita-lens correspondence table (Entity/State/Event/Observation/Proposition/Relation/Policy/Action, each mapped to a Gita term and epistemic role)"
+  - concept: "The explicit Kernel-State≠Kernel-Algebra architectural separation"
+  - concept: "An eight-operator candidate algebra (Observe/Interpret/Relate/Discriminate/Revise/Act/Transition/Update), explicitly hedged as non-canonical pending independent derivation"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked abstract references to 'the eight ratified KnowledgeOS primitives'"
+    refinement: "GIVEN THE THREAD'S FULLEST EXPLICIT NAMING with a full row-by-row Gita-lens correspondence table for the first time in this window"
+  - concept: "This reconstruction's already-tracked non-primitive classifications for Buddhi/Manas/Kshetra/Kshetrajna/Guna/Yoga/Moksha"
+    refinement: "REAFFIRMED with slightly refined phrasing for each ('discriminative operator over K_t', 'processing/coordination aspect', etc.)"
+  - concept: "This reconstruction's already-tracked Kernel≠Primitive distinction (file 2294's DDD Aggregate-Boundary framing)"
+    refinement: "PARALLELED one level lower via the Kernel-State≠Kernel-Algebra separation (state vocabulary is ratified; operator vocabulary remains candidate)"
+contradicts: []
+repeats:
+  - "Overlaps thematically with files 2293/2294 (both apply the Steps-285-287 discipline across the full corpus) but delivers the thread's most explicit named eight-primitive correspondence table, not previously seen at this level of completeness in this window."
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering the thread's fullest explicit eight-primitive/Gita correspondence table, the Kernel-State≠Kernel-Algebra distinction, and an eight-operator candidate algebra explicitly hedged as non-canonical."
+anchor_test:
+  anchor: "This reconstruction's already-tracked eight-ratified-primitives boundary and non-primitive classification of Gita-lens terms"
+  supports_dimension: "Delivers the fullest explicit named correspondence table between the eight primitives and Gita terms, and formally separates kernel state from kernel algebra"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The eight-operator candidate algebra (Observe/Interpret/Relate/Discriminate/Revise/Act/Transition/Update) is directly comparable against file 2294's fifteen-item operation family and the thread's other operator proposals for eventual reconciliation."
+undefined_concepts: []
+open_questions:
+  - "Whether 'define the Buddhi operator algebra over the eight-primitives kernel, including Guna-mode effects on permitted operations' (this document's proposed next research target) is directly commissioned and executed later in the sequential read."
+tier2_triggered: true
+tier2_reason: "Delivers the thread's most complete, explicitly named eight-primitive/Gita-lens correspondence table and the Kernel-State≠Kernel-Algebra architectural separation. Classified importance high (not critical) since it reaffirms and sharpens already-tracked classifications rather than introducing a wholly new structural finding."

@@ -1,0 +1,138 @@
+sequence: 395
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-015913_conceptual-problems-solved-but-not-all.md
+title: "Third Landmark Self-Assessment: Dimensions Can Affect Each Other (Recalculate not Append); Knowledge != Determination != Decision; Conflict Itself Is Knowledge; Priority Is Not Knowledge; Nine Unsolved Problems; Nine-Stage Research-Maturity Position Marker"
+date: "2026-08-26"
+bytes: 9858
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 395
+importance: critical
+confidence: high
+about: >
+  A third landmark self-assessment synthesis (after 0391 and 0392), opening with a precise honest framing:
+  "We have solved a lot of the conceptual problems, but we have not solved all of them," immediately
+  followed by an explicit separation of established-through-reasoning findings from genuinely-undefined
+  questions. Reviews TEN "what we have established" findings, several GENUINELY NEW beyond 0391-0394:
+
+  (1) Unknown dimension != non-existent dimension: D*={d1,d2,...} exists independent of observer knowledge,
+  a dimension can exist even when nobody knows about it; (2) D_t subset-of D* incompleteness means OUR
+  KNOWLEDGE is incomplete, NOT that the underlying state is incomplete -- a crucial ontology/epistemology
+  separation; (3) GENUINELY NEW: DIMENSIONS CAN AFFECT EACH OTHER -- a dimension is not necessarily
+  independent; discovering a new dimension can change the INTERPRETATION OR DETERMINED VALUE OF OTHER
+  DIMENSIONS, so D_{t+1}!=D_t can require State_{t+1}=Recalculate(D_{t+1},Information_{t+1}) rather than
+  simply appending one more fact -- explicitly named "one of the strongest results we have reached," a
+  cross-dimensional-interaction finding not present in 0389-0393's treatment of dimensions as largely
+  independently-discoverable; (4) Knowledge is time-dependent, K_Monday->K_Tuesday must preserve the
+  trajectory without deleting the historical record; (5) GENUINELY NEW: new information can reveal that
+  PREVIOUS KNOWLEDGE WAS LESS COMPLETE than believed, even when the newly-discovered dimension's value is
+  known with 100% certainty -- a retrospective completeness-revision finding; (6) GENUINELY NEW: KNOWLEDGE
+  != DETERMINATION, formalized as Delta-Knowledge != Delta-Determination -- Knowledge can increase (a new
+  fact enriches KnowledgeOS) while the existing business/architectural DETERMINATION remains unchanged; (7)
+  GENUINELY NEW: KNOWLEDGE != DECISION -- KnowledgeOS does not have to decide; it can present evidence-A/
+  evidence-B/reasoning-A/reasoning-B/conflict/relevant-dimensions/owner-decision, yielding the chain
+  Knowledge->Determinations->Human/Business-Decision, with KnowledgeOS explicitly NOT arbitrarily collapsing
+  conflicting knowledge; (8) GENUINELY NEW AND SIGNIFICANT: CONFLICT ITSELF IS KNOWLEDGE -- worked example
+  (security says non-compliant, architecture says compliant): KnowledgeOS should PRESERVE BOTH and warn the
+  owner, explicitly not manufacturing a single answer merely because a decision is required; (9) GENUINELY
+  NEW: PRIORITY IS NOT KNOWLEDGE -- Threat->Priority belongs to the decision/investigation context, NOT to
+  the definition of Knowledge itself; a dimension unimportant for today's decision remains part of the
+  knowledge space; (10) reconfirms Knowledge!=Probability, consolidating for the first time all FIVE
+  sources of needed uncertainty into one list (uncertain values; incomplete observations; undiscovered
+  dimensions; incomplete evidence; uncertain extraction), with probability positioned as "a regime for
+  representing epistemic uncertainty," not Knowledge itself.
+
+  Then catalogs NINE explicit "what we have NOT solved" open problems: (1) Knowledge still not formally
+  defined, though a strong candidate is given ("an evolving determination about an observed state, based on
+  identified dimensions, their values, evidence, reasoning, relationships and temporal context"); (2) the
+  "ideal state" I_t still not formally defined among four restated candidate meanings; (3) THE BIGGEST
+  MATHEMATICAL PROBLEM, explicitly named: "How can we reason about the unknown portion of the dimension
+  space when we don't even know what its elements are?" -- explicitly "deeper than ordinary probability,"
+  unsolved; (4) Completeness(K_t) still lacks a mathematically defensible definition because its denominator
+  (the complete dimension space) may itself be unknown; (5) "extraction" still not formally defined across
+  its eight candidate constituent operations (observation/interpretation/dimension-identification/value-
+  determination/inference/comparison/reasoning/evidence-evaluation); (6) uncertainty over dimensions
+  ("probably one of the hardest problems") understood conceptually (known-dimension-uncertain-value vs
+  dimension-itself-unknown) but with NO mathematical model yet; (7) the exact relationship between
+  Reality/complete-state and Observed/reconstructed-state remains an open research problem; (8) correctness
+  of K_t not formally defined despite being known to be time-dependent (relative to information-at-t,
+  underlying-state, reference-state, applicable-rules, and later-discovered dimensions); (9) the necessary
+  mathematical representation not yet determined among eight candidate structures (sets/dimensions/vectors-
+  state-spaces/relationships/probability/temporal-structures/evidence/logical-reasoning), explicitly named
+  "precisely where the independent mathematics research should continue."
+
+  Restates "we have NOT reached the Kernel yet" as "perhaps the most important conclusion," precisely
+  reformulating the Kernel admission question: "What is the minimum information that must be preserved so
+  that KnowledgeOS can reconstruct and recalculate these evolving knowledge states?" -- listing TEN candidate
+  Kernel elements to eventually test (Identity/Dimension/Value/Evidence/Provenance/Time/Relationship/
+  Reasoning/Determination/CONFLICT -- the last item, Conflict, a new addition directly reflecting finding
+  #8 above) against the Remove(X)=>does-a-fundamental-capability-disappear? Zero-Lens criterion, explicitly
+  "we should not answer that yet." Produces a NINE-STAGE research-maturity position diagram (RESEARCH ->
+  What is the phenomenon? -> Dimensions/State -> Observation/Evidence -> Extraction/Determination ->
+  KNOWLEDGE -> [Time/change, Uncertainty] -> Knowledge trajectory -> What must be preserved? -> KERNEL
+  ADMISSION -> ARCHITECTURE), with an explicit self-located position marker: "we are around the Knowledge ->
+  trajectory -> preservation boundary. We are NOT YET at architecture. And I think that is exactly where we
+  should be." Closes by reducing the entire research programme to ONE question: "Given that the complete
+  state may have potentially infinite dimensions, how can an observer construct, evaluate, and continuously
+  revise a knowledge state without knowing the dimensions that remain undiscovered?" -- and, crucially,
+  announces an explicit methodological pivot: "I would now challenge our own model with EXTERNAL research
+  rather than continue assuming that every conclusion we reached in this dialogue is correct" -- directly
+  reinforcing 0392's reactivated Pritchard-comparison recommendation with an even more general commitment to
+  external adversarial testing of the entire internally-developed model.
+introduces:
+  - concept: "Dimensions can affect each other: discovering a new dimension can change the interpretation or determined value of OTHER already-known dimensions, requiring State_{t+1}=Recalculate(D_{t+1},Information_{t+1}) rather than simple fact-appending -- a cross-dimensional-interaction finding, 'one of the strongest results we have reached'"
+  - concept: "Retrospective completeness revision: new information can reveal that PREVIOUS knowledge was less complete than believed, even when the newly-discovered dimension's own value is known with 100% certainty"
+  - concept: "Knowledge != Determination, formalized as Delta-Knowledge != Delta-Determination: Knowledge can increase (enrichment) while an existing business/architectural determination remains unchanged"
+  - concept: "Knowledge != Decision: KnowledgeOS presents evidence/reasoning/conflict/relevant-dimensions rather than deciding; chain Knowledge->Determinations->Human/Business-Decision, with KnowledgeOS explicitly forbidden from arbitrarily collapsing conflicting knowledge into a single answer"
+  - concept: "CONFLICT ITSELF IS KNOWLEDGE: when two authoritative sources disagree (worked security-vs-architecture compliance example), KnowledgeOS should preserve BOTH positions and warn the owner rather than manufacturing a single answer -- a significant new principle with direct Kernel-content implications (Conflict added as a tenth candidate Kernel element)"
+  - concept: "PRIORITY IS NOT KNOWLEDGE: Threat->Priority belongs to the decision/investigation context, not to Knowledge's definition; a dimension unimportant for today's decision remains genuinely part of the knowledge space"
+  - concept: "Consolidated five-source list for why probability may be needed (uncertain values; incomplete observations; undiscovered dimensions; incomplete evidence; uncertain extraction), the corpus's first single consolidated enumeration of all uncertainty sources together"
+  - concept: "Nine explicit 'what we have NOT solved' open problems, each precisely stated, including 'the biggest mathematical problem' (how to reason about the unknown portion of a dimension space whose elements are themselves unknown, explicitly deeper than ordinary probability) and Completeness(K_t)'s undefined-denominator problem"
+  - concept: "Ten candidate Kernel elements for eventual Zero-Lens testing (Identity/Dimension/Value/Evidence/Provenance/Time/Relationship/Reasoning/Determination/Conflict), with Conflict newly added reflecting the Conflict-itself-is-Knowledge finding"
+  - concept: "Nine-stage research-maturity position diagram with an explicit self-located checkpoint: 'around the Knowledge->trajectory->preservation boundary,' 'not yet at architecture,' judged as the correct position"
+  - concept: "Single-question reduction of the entire research programme: how can an observer construct/evaluate/continuously-revise a knowledge state without knowing the dimensions that remain undiscovered, given a potentially infinite complete state"
+  - concept: "Explicit methodological pivot toward EXTERNAL adversarial testing: 'I would now challenge our own model with external research rather than continue assuming that every conclusion we reached in this dialogue is correct' -- generalizing 0392's Pritchard-specific recommendation into a broader commitment"
+defines: []
+refines:
+  - concept: "0389-0393's Dimension-uncertainty research (treating dimensions largely as independently discoverable, each with its own value)"
+    refinement: "Extended with cross-dimensional interaction: discovering one dimension can change the interpretation/value of OTHER already-known dimensions, requiring recalculation rather than simple appending -- a structurally new complication for the dimension-discovery/state-extraction model"
+  - concept: "0378/0380/0392's Determination formalization attempts"
+    refinement: "Sharply distinguished from Knowledge itself (Delta-Knowledge!=Delta-Determination) and from Decision (Knowledge->Determinations->Decision chain), clarifying that KnowledgeOS's own output is neither raw Knowledge nor a final Decision but a Determination that a human/business layer acts upon"
+  - concept: "0370's order-theoretic partial-order reframing of SUPERSEDED/RECONCILED/CONTESTED states and 0369's Institutional-lens (Searle) engagement"
+    refinement: "Given a concrete, non-adjudicated resolution principle: genuine conflict between authoritative sources (e.g. security vs architecture) should be PRESERVED as knowledge, not collapsed -- extending the corpus's CONTESTED-state handling with an explicit Kernel-content implication (Conflict as a candidate element)"
+  - concept: "0391's eighteen-row status table and 0392's twenty-two-item Q1-Q22 catalog"
+    refinement: "Given a third independent status-assessment pass, adding several genuinely new findings (dimension-interaction/recalculation, Knowledge!=Determination, Knowledge!=Decision, Conflict-is-Knowledge, Priority-is-not-Knowledge) not previously captured in the first two landmark syntheses"
+  - concept: "0392's reactivated Pritchard-comparison recommendation"
+    refinement: "Generalized into an explicit, broader methodological commitment to challenge the ENTIRE internally-developed model with external research, not merely to compare against Pritchard specifically"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the dimension-interaction/recalculation finding (State_{t+1}=Recalculate(D_{t+1},Information_{t+1})) as a structurally new complication for the dimension-discovery/state-extraction model (0389-0393)."
+  - "dimension-registry.md: record Knowledge != Determination and Knowledge != Decision as two new non-collapse findings, alongside the Conflict-itself-is-Knowledge principle and Priority-is-not-Knowledge finding."
+  - "dimension-registry.md: record the tenth candidate Kernel element (Conflict) and the nine explicit unsolved-problem catalog as this file's contribution to the ongoing pre-Kernel-design discipline (0391/0392)."
+  - "dimension-registry.md: record the explicit methodological pivot toward external adversarial model-testing as a generalization of 0392's Pritchard-specific recommendation."
+anchor_test:
+  anchor: "0389-0393's Dimension-uncertainty research; 0391/0392's landmark self-assessment syntheses; 0378/0380/0392's Determination formalization attempts; 0369/0370's institutional/conflict-handling lenses"
+  supports_dimension: "Mathematical/architectural model, third landmark self-assessment: introduces dimension-interaction/recalculation as a structurally new complication, establishes Knowledge!=Determination!=Decision as a three-way non-collapse chain, introduces the significant Conflict-itself-is-Knowledge principle with a direct Kernel-content implication, catalogs nine explicit unsolved problems including 'the biggest mathematical problem' (reasoning about an unknown dimension space's unknown elements), and announces an explicit methodological pivot toward external adversarial testing of the entire internally-developed model"
+  refines_or_contradicts: "refines 0389-0393 (dimension-interaction complication); refines 0378/0380/0392 (Knowledge/Determination/Decision three-way separation); refines 0369/0370 (Conflict-itself-is-Knowledge as a concrete non-adjudication principle); extends 0391/0392's landmark syntheses with genuinely new findings not previously captured; generalizes 0392's Pritchard-specific recommendation into a broader external-testing commitment"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "The precise formal criterion for when a dimension-discovery event triggers cross-dimensional recalculation versus when it can be handled by simple appending -- named as a phenomenon, not formalized"
+open_questions:
+  - "Whether the dimension-interaction/recalculation finding is ever given a formal mathematical treatment"
+  - "Whether Conflict is retained as a candidate Kernel element through subsequent Zero-Lens testing"
+  - "Whether the announced pivot toward external adversarial research (beyond Pritchard specifically) is followed through with additional named external sources in the immediately following files"
+  - "Whether any of the nine explicit unsolved problems (especially 'the biggest mathematical problem') receive dedicated treatment in subsequent files"
+tier2_triggered: true
+tier2_reason: "Third landmark self-assessment synthesis (after 0391, 0392), introducing several genuinely new findings not previously captured: dimensions can affect each other, requiring State-recalculation rather than simple fact-appending ('one of the strongest results'); Knowledge != Determination != Decision as an explicit three-way non-collapse chain; the significant Conflict-itself-is-Knowledge principle (conflicting authoritative determinations should be preserved, not collapsed, with Conflict added as a tenth candidate Kernel element); and Priority-is-not-Knowledge. Catalogs nine explicit unsolved problems including 'the biggest mathematical problem' (reasoning about an unknown dimension space whose elements are themselves unknown). Produces a nine-stage research-maturity position diagram with an explicit self-located checkpoint, and announces an important methodological pivot: the corpus commits to challenging its own internally-developed model with external research rather than assuming its own conclusions are correct, generalizing 0392's Pritchard-specific recommendation."

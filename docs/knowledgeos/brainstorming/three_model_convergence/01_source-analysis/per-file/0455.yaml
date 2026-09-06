@@ -1,0 +1,145 @@
+sequence: 455
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-170313_observer-asks-knowledgeos-reconstructs-the-dimensions.md
+title: "Dimension Discovery Formalized as a Capability (Question 2A), Then Corrected: Candidate≠Relevant≠Observed Dimension, DimensionAssessment Introduced as a New Undefined Object, Question 2B Launched"
+date: "2026-08-26"
+bytes: 24404
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "formalizes Dimension Discovery via the Arjuna/Bhishma natural-language-intent example; Sanskrit grammar lens placed at the Intent-to-CandidateDimension boundary"
+source_role: PRIMARY_RESEARCH
+canonical_source: 455
+importance: critical
+confidence: high
+about: >
+  Directly continues 0454's resolution of Question 2 (Dimension) by confirming a key architectural
+  separation: **ObserverIntent != DimensionSpecification** -- Arjuna expresses intent in natural language
+  ("Show me those with whom I have to fight"), never names dimensions (Dimension=RelationshipToMe,
+  Dimension=Role, ...); that reconstruction is the explicit responsibility of Sarathi/KnowledgeOS. Formalizes
+  Analyze(Q_0,CurrentState,Context)->CandidateDimensions as the process bridging Knower intent and the formal
+  knowledge model, and revises the definition of Dimension accordingly: a dimension is not something the
+  observer explicitly supplies but part of the semantic reconstruction performed by KnowledgeOS, worked
+  through D_1=Person, D_2=ConflictSide, D_3=RelationshipToArjuna, D_4=Role as question-derived candidates,
+  with D_5=FamilyRelationship, D_6=TeacherRelationship subsequently revealed by observation
+  (Question->CandidateDimensions->Observation->DiscoveredDimensions).
+
+  Names **DimensionDiscovery(Q,K,C)->D_candidate** as a new working capability (not yet a domain object),
+  explicitly distinguishing "what dimensions might be relevant" (pre-observation) from "what dimensions have
+  actually been revealed" (post-observation) as "extremely important." Gives Zero a precise new role: compare
+  D_observed with D_represented and report D_observed\D_represented as a newly exposed epistemic boundary
+  ("Zero doesn't invent the dimension... it detects the gap"). Gives Lord Lens a further role: ask what
+  dimensions could exist that have not yet been considered at all (horizon-derived D_L). Establishes three
+  dimension sources (question-derived D_Q, observation-derived D_O, horizon-derived D_L) with
+  D_investigation=D_Q union D_O union D_L, "subject to further evaluation." Reframes Sarathi as "the
+  capability that navigates the epistemic investigation," with an explicit six-step internal decision
+  sequence (what did the Knower ask -> implied dimensions -> discovered dimensions -> unresolved dimensions ->
+  new questions -> what to investigate next). Restates the overall architecture as
+  Question->DimensionDiscovery->Observation->Knowledge->Zero->NewDimensions->NewQuestions->Guidance, explicitly
+  rejecting the naive Question->Answer model, and records a new KnowledgeOS principle: "The Knower specifies
+  intent, not the epistemic schema; KnowledgeOS/Sarathi reconstructs the dimensions necessary to investigate
+  that intent and may discover additional dimensions as observation proceeds." Explicitly declines to proceed
+  to Question 3 (Statement), instead naming a more fundamental question -- how KnowledgeOS derives dimensions
+  from natural-language intent and observed state -- as **Question 2A: Dimension Discovery**, and flags a
+  future need for language/logic/DDD-semantics/domain-model/Sanskrit-grammar lenses.
+
+  Develops Question 2A systematically: formalizes D=DiscoverDimensions(Q,K_context,C) and expands the source
+  taxonomy from three to **seven sources** -- question-derived D_Q, context-derived D_C, domain-derived
+  D_Domain, observation-derived D_O, Zero-derived D_Z, Lord-derived D_L, and pattern-derived D_Pattern (learned
+  recurring patterns, e.g. Side/Role/Relationship/Obligation in conflict situations) -- with
+  D_discovered=Union(all seven) and a refinement loop D_{t+1}=Refine(D_t,O_t,Z_t,L_t). Supplies seven discovery
+  heuristics (entity extraction, relationship extraction, attribute extraction, domain ontology, observation
+  pattern, Zero gap detection, Lord horizon expansion) and a fully worked seven-step Arjuna/Bhishma example.
+  Lists six implementation requirements (intent understanding, domain ontology, pattern recognition, gap
+  detection, horizon expansion, iterative refinement) and a DDD role table (Knower/KnowledgeOS-Sarathi/Zero
+  Lens/Lord Lens/Domain Model). Proposes Question 3 (Statement), Question 4 (Value), Question 5 (Relationship)
+  as the next steps, while flagging the still-unaddressed Sanskrit grammar lens need.
+
+  Delivers a **major corrective critical review** of Question 2A: accepts the Dimension Discovery capability
+  but rejects collapsing every generated candidate into an actual dimension of the observed state --
+  "protects us from hallucinated dimensions." Reframes the union formula as producing a **candidate set only**,
+  D^candidate_t=Union(...), which must then pass through DimensionAssessment to become D^adopted. Establishes
+  **three distinct, non-collapsible concepts**: CandidateDimension, RelevantDimension, ObservedDimension
+  (illustrated by Weaponry: technically a candidate, but irrelevant to Arjuna's immediate question). Produces
+  a dynamic epistemic-lifecycle diagram: Intent -> Candidate Dimension Discovery -> Dimension Assessment
+  {relevant, irrelevant, uncertain, unresolved} -> Observation -> Observed Dimensions -> New Dimensions
+  Discovered -> Reassessment. Sharpens Zero further by distinguishing **two different Zero findings**:
+  D^observed\D^represented (exposed-by-observation-but-not-represented) versus D^candidate\D^investigated
+  (candidate-but-not-yet-investigated). Sharpens Lord Lens to output D^possible (a possible dimension worth
+  considering), never D^true, giving the nested-horizon relation D^known subset-of D^candidate subset-of
+  D^possible subset-of 𝒟 (the potentially unbounded, not-necessarily-enumerable dimension space) -- explicitly
+  tied to the corpus's infinite-knowledge-space hypothesis. Reframes Sarathi precisely as "orchestrator of
+  dimension discovery and investigation," not the origin of dimensions.
+
+  Introduces a further critical separation: **DimensionDiscovery != ValueDiscovery** (d=RelationshipToArjuna
+  may be discovered with v=UNKNOWN, later resolved to v=Grandfather), flagged as "critical when we reach
+  Question 4," and clarifies the resulting pipeline Intent->DimensionDiscovery->Observation->ValueDiscovery
+  ->Statement: **a Statement is constructed only after the relevant dimension and value are both established**,
+  not extracted directly from the initial question. Reclassifies D_Pattern as a learning mechanism generating
+  candidates only (Pattern->Candidate, never Pattern->Fact) -- "another important Zero safeguard." Places the
+  Sanskrit grammar lens specifically at the Intent->CandidateDimension boundary
+  (NaturalLanguage->SemanticStructure->CandidateDimensions), explicitly not yet assumed to be the
+  implementation mechanism. Accepts Question 2A with this refinement, producing the final formal statement
+  (Q,K_t,C)->D^candidate_t->D^assessed_t and the recursive candidate-refinement formula
+  D^candidate_{t+1}=Refine(D^candidate_t,O_t,Z_t,L_t,P_t).
+
+  Closes by naming **one major thing that remains undefined**: the new object **DimensionAssessment** --
+  when does a candidate dimension become an accepted dimension of the current observation/knowledge state?
+  -- proposing a candidate status vocabulary (UNKNOWN, RELEVANT, OBSERVED, INFERRED, ACCEPTED, REJECTED,
+  NOT_APPLICABLE), explicitly identified as the boundary between Dimension Discovery and Knowledge, distinct
+  from (and prior to) Question 3 (Statement). Launches **Question 2B — When does a candidate dimension become
+  a dimension of the knowledge state?**, noting this will require defining "dimension status" and that Zero
+  will be particularly important there.
+introduces:
+  - concept: "ObserverIntent != DimensionSpecification: the Knower expresses natural-language intent; KnowledgeOS/Sarathi is solely responsible for reconstructing the relevant dimensions"
+  - concept: "DimensionDiscovery(Q,K,C)->D_candidate named as a new working capability (not yet a domain object)"
+  - concept: "Seven-source Dimension Discovery taxonomy: question-derived, context-derived, domain-derived, observation-derived, Zero-derived, Lord-derived, pattern-derived"
+  - concept: "Three non-collapsible dimension-lifecycle concepts: CandidateDimension, RelevantDimension, ObservedDimension, connected by an explicit DimensionAssessment stage (relevant/irrelevant/uncertain/unresolved)"
+  - concept: "Two distinct Zero findings distinguished: D^observed\\D^represented (exposed-but-unrepresented) versus D^candidate\\D^investigated (candidate-but-uninvestigated)"
+  - concept: "Lord Lens sharpened to output D^possible (never D^true), with nested horizon D^known subset D^candidate subset D^possible subset 𝒟 (potentially unbounded, not assumed enumerable)"
+  - concept: "DimensionDiscovery != ValueDiscovery: a dimension can be known while its value remains UNKNOWN, later resolved by observation"
+  - concept: "Statement is CONSTRUCTED only after dimension AND value are both established (Intent->DimensionDiscovery->Observation->ValueDiscovery->Statement), never extracted directly from the initial question"
+  - concept: "Pattern->Candidate, never Pattern->Fact: pattern-derived dimensions are a learning mechanism generating candidates only, another Zero safeguard against hallucinated dimensions"
+  - concept: "Sanskrit grammar lens explicitly placed at the Intent->CandidateDimension boundary (NaturalLanguage->SemanticStructure->CandidateDimensions), not assumed to be the implementation mechanism"
+  - concept: "New undefined object DimensionAssessment: when does a candidate dimension become an accepted dimension of the knowledge state? Candidate status vocabulary: UNKNOWN/RELEVANT/OBSERVED/INFERRED/ACCEPTED/REJECTED/NOT_APPLICABLE"
+  - concept: "Question 2B launched: When does a candidate dimension become a dimension of the knowledge state?"
+defines:
+  - concept: "Dimension Discovery (final working definition)"
+    definition: "The process by which KnowledgeOS derives and evaluates candidate semantic axes from the Knower's intent, context, domain knowledge, observations, epistemic gaps, possible horizons, and learned patterns, without requiring the Knower to explicitly specify those dimensions. Formally (Q,K_t,C)->D^candidate_t->D^assessed_t, with D^candidate_{t+1}=Refine(D^candidate_t,O_t,Z_t,L_t,P_t)"
+refines:
+  - concept: "0454's consolidated Dimension definition (d:Observation/Entity/Relation->V_d)"
+    refinement: "Adds the prior discovery pipeline: dimensions are not observer-supplied but reconstructed by KnowledgeOS via a seven-source candidate-generation-then-assessment process, explicitly rejecting a naive union-of-candidates-equals-dimensions collapse"
+  - concept: "0453's Zero-scope-limitation and Lord-as-horizon-expansion"
+    refinement: "Sharpened into two distinct, non-collapsible Zero findings and a Lord output constrained to D^possible (never D^true), nested within an explicitly unbounded/non-enumerable dimension space 𝒟"
+  - concept: "0454's Statement=(Subject,Dimension,Value) first-order form"
+    refinement: "Statement is now explicitly constructed only after both DimensionDiscovery and ValueDiscovery complete -- not derived directly from the initial question"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - concept: "Sanskrit grammar lens for Intent->SemanticStructure->CandidateDimensions parsing (mentioned as raised earlier in the corpus, not yet cross-referenced to a specific prior file in this pass)"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Dimension Discovery as a named capability with a seven-source taxonomy, the Candidate/Relevant/Observed dimension separation, and DimensionAssessment as a newly exposed undefined object."
+  - "dimension-registry.md: record DimensionDiscovery!=ValueDiscovery and the Statement-construction-order refinement (Intent->DimensionDiscovery->Observation->ValueDiscovery->Statement)."
+  - "dimension-registry.md: record Question 2B launched (when does a candidate dimension become accepted?)."
+anchor_test:
+  anchor: "0454's consolidated Dimension definition and twelve-item status checkpoint; 0452/0453's Zero/Lord/Sarathi triad; 0449's twenty-phase disciplined methodology"
+  supports_dimension: "Directly extends 0454 by formalizing Dimension Discovery as a named capability with a seven-source taxonomy and a corrective candidate/relevant/observed separation that guards against hallucinated dimensions; sharpens Zero and Lord's outputs; establishes Statement's construction order; exposes DimensionAssessment as a new undefined object and launches Question 2B"
+  refines_or_contradicts: "refines 0454's Dimension/Statement definitions and 0453's Zero/Lord roles; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Continues the Bhagavad-gita Chapter 1 Bhishma/Arjuna test case; natural-language intent 'Show me those with whom I have to fight' used as the running worked example throughout"
+undefined_concepts:
+  - "DimensionAssessment (when a candidate dimension becomes an accepted dimension of the knowledge state) -- explicitly named as the file's one major remaining gap, deferred to Question 2B"
+open_questions:
+  - "Question 2B: when does a candidate dimension become a dimension of the knowledge state? (launched at file close, not yet answered)"
+  - "Whether/how the Sanskrit grammar lens is eventually operationalized at the Intent->CandidateDimension boundary"
+  - "Whether the seven-source taxonomy (D_Q,D_C,D_Domain,D_O,D_Z,D_L,D_Pattern) is later reconciled with 0454's simpler four-way (dimension/value/statement/relationship) ontology"
+tier2_triggered: true
+tier2_reason: "Formalizes Dimension Discovery as a named capability with a seven-source taxonomy, then delivers a major corrective refinement (candidate!=relevant!=observed dimension, guarding against hallucinated dimensions), sharpens both Zero and Lord Lens outputs precisely, establishes the construction order of Statement relative to Dimension/Value discovery, and exposes a new undefined object (DimensionAssessment) that launches Question 2B."

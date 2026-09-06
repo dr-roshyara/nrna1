@@ -1,0 +1,77 @@
+sequence: 1084
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/06_261-gate-audit.md
+title: "06 -- 261.23 Six-Condition Audit (Step 291 mandate SS4): THIRD Reconfirmation of the Already-Tracked Step-261 Gate (files 1041/1052/1062/1071), Now Integrating the Fresh Step-291 Evidence (files 1079-1081) Into a Precise 0-RESOLVED/2-PARTIAL/4-FAILED Quantified Verdict, and Delivering the Observation That Five Full Steps of Equality Work Have Never Touched Conditions 4-5"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the sixth numbered Step-291 prose artifact, the third re-confirmation of the Step-261 gate integrating fresh Step-291 evidence"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1084
+importance: major
+confidence: high
+about: >
+  "06 — `261.23` Six-Condition Audit (mandate §4)." The THIRD reconfirmation of the already-tracked Step-261
+  six-condition kernel-selection gate (files 1041, 1052, 1062, 1071), this time integrating the fresh Step-291
+  evidence gathered in this same package (files 1079-1081) into a precise, quantified per-condition verdict.
+
+  **DELIVERS THE PRECISE QUANTIFIED CAPSTONE VERDICT**: condition 1 (observation set) FAILED, directly citing
+  the already-tracked file-1081 finding that 0 of 10 candidate observations are declared permitted and the
+  two working members are unregistered; condition 2 (operation registry) FAILED but explicitly "NARROWER than
+  reported," citing the already-tracked file-1080 22/8/0/0/0 count and the already-tracked file-1079 finding
+  that the missing item is a mandatory-membership rule, not an enumeration; condition 3 (provenance placement)
+  PARTIAL, decidable once condition 2 closes; condition 4 (assertion semantics) FAILED, representation block,
+  orthogonal to equality; condition 5 (temporal semantics) FAILED, representation block, and "Step 288
+  WORSENED it by showing `≡` is a time-indexed family"; condition 6 (identity semantics) PARTIAL, one real
+  narrowing (`I_48`) but "5 of 11 identity kinds absent." Boxed: "0 RESOLVED · 2 PARTIAL · 4 FAILED."
+
+  **RECONFIRMS THE ALREADY-TRACKED TWO-BLOCK STRUCTURE FOR THE THIRD TIME** (equality block = 1,2,3,6;
+  representation block = 4,5) and **DELIVERS A GENUINELY VALUABLE NEW META-OBSERVATION**: "Conditions 4 and 5
+  have NOT MOVED IN ANY OF STEPS 287-291. They are ORTHOGONAL to the entire equality programme. FIVE STEPS OF
+  EQUALITY WORK HAVE NOT TOUCHED THEM, which is ITSELF THE EVIDENCE that they are a separate block -- and a
+  reason not to expect equality closure to release the gate." This turns the entire multi-step research
+  arc's own five-step track record into direct empirical evidence for the already-tracked two-block
+  separation, rather than merely asserting it structurally.
+
+  **DELIVERS THE MANDATE'S DEMANDED "PROCEDURE EXISTS" VS "COMPLETE OVER ITS DECLARED UNIVERSE" DISTINCTION,
+  APPLIED TO ALL THREE EXISTING EQUALITY PROCEDURES**: `≈` (`261.5`), `=` (`246`), and `≡_D` (`264.15`) all
+  have procedures, but "NONE is complete over its declared universe" -- `≈`'s universe `𝒪_K` is not closed,
+  `=`'s canonicalization is unbound, and `≡_D` is "the WRONG LEVEL." Boxed: "Three procedures exist. NONE is
+  complete over its declared universe."
+
+  Confirms the STATUS block: CORPUS all six conditions verbatim · MEASURED 0/2/4 · DERIVED condition 2 is
+  narrower than reported, conditions 4-5 untouched by five steps · NORMATIVE all six · DEFERRED any release.
+introduces:
+  - concept: "The precise quantified 0-RESOLVED/2-PARTIAL/4-FAILED verdict for the Step-261 six-condition gate, integrating all fresh Step-291 evidence (observation inventory, operation registry, closure analysis)"
+  - concept: "The meta-observation that five full research steps of equality work never touching conditions 4-5 is itself empirical evidence for the two-block separation, not merely a structural assertion"
+  - concept: "The three-procedures-exist-none-complete finding: approx, =, and equiv_D each have a stated procedure, but none is complete over its own declared universe"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Step-261 six-condition gate and two-block structure (files 1041, 1052, 1062, 1071)"
+    refinement: "RECONFIRMED a third time with precise quantification (0/2/4) integrating fresh Step-291 evidence, and strengthened via the new empirical meta-observation that five research steps never touching conditions 4-5 is itself evidence for the block separation"
+contradicts: []
+repeats:
+  - "Reconfirms the already-tracked six-condition gate and two-block structure from files 1041, 1052, 1062, and 1071, now for the third time."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the precise 0-RESOLVED/2-PARTIAL/4-FAILED quantified verdict for the Step-261 gate, the empirical meta-observation that five steps never touching conditions 4-5 evidences the two-block separation, and the three-procedures-exist-none-complete finding."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step-261 six-condition gate and two-block structure (files 1041, 1052, 1062, 1071)"
+  supports_dimension: "Reconfirms and precisely quantifies the gate for the third time, integrating fresh evidence and adding an empirical meta-observation strengthening the two-block separation"
+  refines_or_contradicts: "refines (reconfirms and quantifies) the prior tracked finding"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The per-condition verdicts are directly checkable against files 1079, 1080, and 1081's own already-documented Step-291 findings for exact consistency of the integration."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers the third reconfirmation of the already-tracked Step-261 six-condition gate, now precisely quantified (0 resolved, 2 partial, 4 failed) with fresh Step-291 evidence integrated, plus a genuinely valuable empirical meta-observation that five research steps never touching conditions 4-5 is itself evidence for the two-block gate structure. Classified importance major and confidence high given the disciplined, well-evidenced consolidation."

@@ -1,0 +1,198 @@
+sequence: 657
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-120900_step-073-identity-trust-and-cryptographic-provenance.md
+title: "Step 73 CONFIRMED as Genuinely New Corpus Territory — Cryptographic Identity, Signatures, Key Lifecycle/Revocation, Merkle-Style Tamper Evidence Explicitly NOT Blockchain, Capability-Based Least-Privilege Authorization, and Trust Formally Proven Non-Transitive; Five Distinct Named Graphs (Knowledge/Provenance/Dependency/Authority/Trust) Explicitly Required Never to Collapse Into One; Notably (Unlike 0654) EXPLICITLY Cross-References and Revises 0654's Eight-Primitive Kernel to Nine by Adding Identity — a Rare Positive Counter-Example to the Steps-70-72 Unacknowledged-Divergence Pattern; a Second GodObjectRisk-Style Anti-Pattern FAIL on a Universal TrustObject; Verdict 'STEP 73 — PASS'; Closes by Opening Step 74 Into Causal Inference Under Intervention — A LIKELY FIFTH Collision Candidate Against the Corpus's Already-Extensive Causal-Inference Program (0594, 0624, 0645/0646)"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 73 -- Identity, Trust and Cryptographic Provenance', opened at 0656's close; CONFIRMS this reconstruction's provisional assessment at 0656 that this file opens genuinely new corpus territory, distinct from the unacknowledged-repetition pattern confirmed across Steps 70-72"
+source_role: PRIMARY_RESEARCH
+canonical_source: 657
+importance: critical
+confidence: high
+about: >
+  **CONFIRMS the provisional assessment at 0656**: Step 73 opens genuinely new corpus territory --
+  "can we trust the provenance itself?" -- moving into a trust layer not previously addressed in the
+  corpus's prior 72 steps. Delivers **`Provenance≠AuthenticProvenance`** and a formal six-concept
+  separation (`Identity, Authenticity, Integrity, Authority, Trust, Provenance`), with Identity explicitly
+  shown to prove nothing about truth (confirmed via an identity-implies-truth experiment, Rejected -- PASS).
+  Delivers Authenticity (`VerifySignature(a,Agent_A)→True/False`) and Integrity (`H(a)` cryptographic
+  hashing) formally distinguished from Truth, confirmed via a tampered-artifact experiment
+  (`IntegrityViolation` -- PASS) and a signed-false-claim experiment (a validly signed statement can still
+  be `Conflicted` against independent evidence -- PASS), crystallizing **`Integrity≠Truth`** and
+  **`Authenticity is orthogonal to truth`** -- "cryptography protects provenance and integrity; it does not
+  manufacture truth," a precisely stated and practically important architectural caution.
+
+  Delivers Authority formalized as action-type-scoped (`Authority(Agent_A,DecisionType_X)` independent of
+  `Authority(Agent_A,DecisionType_Y)`), confirmed via an authority-overreach experiment (PASS), and Trust
+  formalized as a four-argument relation `Trust(x,y,C,t)` (confidence, trustee, context, time), explicitly
+  not a boolean, with contextual trust confirmed via a trust-transfer experiment (high software-architecture
+  reliability does not confer high financial-decision authority -- Rejected -- PASS) and Reliability
+  formally distinguished from Trust (`Reliability(A,C)=correct/evaluated outcomes` versus Trust's broader
+  incorporation of authority, security, provenance, policy, and historical behavior), confirmed via a
+  reliability-alone experiment (99% accuracy does not automatically confer full trust when identity is
+  compromised -- PASS).
+
+  **Delivers the file's first central formal deliverable -- cryptographic identity and provenance chains**:
+  asymmetric-key signing (`σ=Sign_sk(H(a))`, `Verify_pk(a,σ)`), confirmed via a signature-verification
+  experiment (PASS); Key compromise formally acknowledged as undermining cryptographic trust
+  (`CryptographicTrust depends on KeyManagement`), confirmed via a compromised-key experiment (PASS);
+  Identity lifecycle (`Active, Suspended, Revoked, Expired`) with Temporal identity validity -- a signature
+  made before revocation remains historically valid, requiring `IdentityValidityAtTime`, confirmed via a
+  historical-signature experiment (PASS), directly and explicitly connecting to the corpus's established
+  temporal-epistemics discipline (`ValidTime≠RecordedTime`, 0648). Delivers a full Cryptographic provenance
+  chain (`A_0→Sign→A_1→Transform→A_2→Sign→A_3`, each edge carrying `InputHash, OutputHash, ActorIdentity,
+  TransformationVersion`), confirmed via a broken-provenance-chain experiment (hash mismatch --
+  `ProvenanceIntegrityViolation` -- PASS) and a forged-edge experiment (`GraphIntegrityViolation` -- PASS).
+
+  **Delivers the file's second central formal deliverable -- Merkle-style tamper evidence explicitly and
+  deliberately NOT blockchain**: `H_root=H(H_1,...,H_n)` hash trees for scalable tamper evidence over large
+  provenance structures, with an explicit, disciplined architectural caution -- "we do not need blockchain...
+  the architectural requirement is `TamperEvidence`, not `Blockchain`" -- confirmed via a blockchain-
+  assumption experiment (replacing ordinary append-only storage with blockchain "solely because knowledge
+  must be trustworthy" -- `NotRequired` -- PASS), a genuinely valuable act of technological restraint
+  directly consistent with the corpus's established anti-overengineering discipline (paralleling 0656's
+  "no universal strong consistency" and "no generic merge" anti-pattern FAILs).
+
+  Delivers a formal five-layer trust model (`Identity, Authenticity, Integrity, Epistemic validity,
+  Authority`) unified as `TrustAssessment(a)=f(Identity, Authenticity, Integrity, Authority,
+  EpistemicSupport, Context, Time)`, explicitly declared as requiring no single boolean, confirmed via a
+  single-trust-flag experiment (a bare `trusted=true` flag correctly rejected as insufficient given
+  valid identity/integrity but absent authority and weak evidence -- PASS). **Delivers a second instance of
+  the corpus's established God-Object anti-pattern FAIL, now applied to a universal `TrustObject`**
+  (combining identity, authorization, reliability, truth, evidence, risk, and reputation into one object --
+  `GodObjectRisk` -- boxed FAIL), directly paralleling 0650's original `KnowledgeObject` God-Object FAIL and
+  0656's generic-merge/universal-consistency anti-pattern FAILs, confirming this is now an established,
+  consistently-reapplied architectural discipline rather than a one-off finding.
+
+  Delivers Authority chains and delegation (`Authority_A delegates Authority_B`, with delegation strictly
+  scope-bounded), confirmed via an authority-over-delegation experiment (`DelegationViolation` when a
+  delegate attempts to grant scope it never possessed -- PASS), and Authority formalized as a typed
+  capability object (`Capability=(Subject, Action, Resource, Scope, Validity)`), confirmed via a capability-
+  mismatch experiment (PASS). Delivers this capability model applied uniformly across humans and AI agents
+  (`Person≠UniversalAuthority`; AI agents require `CapabilitySet_A` scoped to specific operations like
+  `ReadKnowledge`/`CreateHypothesis`/`RunAnalysis`, never automatically extending to
+  `AuthorizePayment`/`DeleteEvidence`), confirmed via role-overreach and unrestricted-AI-agent experiments
+  (both PASS -- the latter yielding `GovernanceFailure`), crystallizing the explicit Least-privilege
+  principle `Capability(A)⊆RequiredCapabilities(A)`.
+
+  **Delivers the file's third central formal deliverable -- Trust proven non-transitive**: `Trust(A,B)=High
+  ∧ Trust(B,C)=High` does NOT imply `Trust(A,C)=High`, confirmed via a transitive-trust experiment
+  (Rejected -- PASS), crystallized as "trust is not generally a transitive relation," explicitly framed as
+  preventing "dangerous trust propagation through agent networks" -- a genuinely important and mathematically
+  correct result (trust networks are well-known in the security literature to be non-transitive in general,
+  and this file correctly identifies and formalizes the architectural consequence). Delivers five explicitly
+  distinct, deliberately non-collapsed graphs (`G_K` Knowledge, `G_P` Provenance, `G_D` Dependency, `G_A`
+  Authority, `G_T` Trust), confirmed via a graph-collapse experiment (a single generic
+  `relation(source,target,type)` representation -- `SemanticAmbiguity` -- boxed FAIL, a fourth instance of
+  the anti-pattern-FAIL convention).
+
+  Delivers Trust-aware evidence assessment (`Assessment(E)=(Authenticity, Integrity, SourceReliability,
+  ContextFit, TemporalValidity, Independence)`), confirmed via a perfect-content-unreliable-source experiment
+  (`AuthenticEvidence≠ReliableEvidence` -- PASS), directly and genuinely synthesizing this file's
+  cryptographic-trust machinery with the corpus's earlier evidence-independence discipline (0649, 0655).
+  Delivers `VerifiableEpistemicProvenance` as the explicit synthesis of Epistemic provenance ("why do we
+  believe this?") and Cryptographic provenance ("can we verify the recorded history?") -- "a major
+  architectural concept."
+
+  **Delivers the file's fourth central formal deliverable -- Identity explicitly promoted to the kernel,
+  WITH an explicit, direct cross-reference to 0654's earlier kernel** (unlike the unacknowledged divergences
+  confirmed across Steps 70-72): "earlier our kernel was `K_OS=Artifact+Type+Provenance+Event+Invariant+
+  State+Transformation+Policy`. Do we need to add identity? I believe Identity should now be considered a
+  kernel-level concern... [while] `PKI/HSM/KeyVault/etc.` remain infrastructure," yielding an explicitly
+  updated kernel `K_OS=Artifact+Type+Identity+Provenance+Event+Invariant+Transformation+Policy` (State
+  reframed as the operational projection, consistent with 0654's own Logical-versus-Operational-kernel
+  distinction). **This is a rare positive counter-example within the Steps 65-72 span's established pattern
+  of unacknowledged content divergence/repetition -- this file correctly and explicitly builds on, cites,
+  and revises its own immediately relevant prior architectural decision rather than silently re-deriving or
+  diverging from it**, providing an important calibration point: the corpus's model line is capable of
+  proper self-reference, so the Steps 70-72 lapses are a genuine, non-universal methodological finding
+  rather than an inherent limitation of the entire remaining corpus.
+
+  Delivers a new `SemanticTrustBoundary` between `UnverifiedInput` and `TrustedKnowledgeState`, confirmed via
+  an AI-generated-trusted-artifact experiment (a fully signed, provenanced, but evidence-free AI claim is
+  correctly `AuthenticatedClaim` but `NotVerifiedKnowledge` -- PASS), crystallizing what the file itself
+  calls "perhaps the most important distinction of Step 73": a secure AI platform must not confuse "who
+  said this?" with "why should we believe this?"
+
+  Delivers Step 73's verdict **"STEP 73 — PASS,"** with the major result "trustworthy provenance = Identity
+  + Authenticity + Integrity + Epistemic provenance + Context + Authority. Not merely Hash. Not merely
+  Signature. And certainly not AI confidence." Delivers a consolidated architecture diagram unifying
+  epistemic-type and identity/authenticity/integrity branches into one evidence/claim/knowledge/decision
+  pipeline.
+
+  **Closes by identifying a further subtle issue exposed by the trust layer -- causal inference under
+  intervention**: observing `Decision_A` before `Outcome_A` does not establish that the decision caused the
+  outcome, motivating a distinction between `TemporalOrder, Dependency, CausalInfluence, Intervention,
+  CounterfactualEffect`. Opens "Step 74 — The next mathematical boundary: causality of knowledge" (note: this
+  is the file's own section header, an unusual descriptive rather than topic-named heading, paralleling
+  0655's similarly irregular "Step 72" heading). **This closing framing is a LIKELY new collision candidate
+  against the corpus's already-extensive, multiply-deepened causal-inference program** (0594's original
+  causal-reasoning treatment, 0624's Step-43 causal-hallucination/typed-relation discipline, and 0645/0646's
+  confirmed-deliberate Step-63 deepening of identification theory) -- the specific vocabulary previewed here
+  (temporal order versus dependency versus causal influence versus intervention versus counterfactual
+  effect) closely tracks concepts this reconstruction's own records confirm were already substantially
+  developed at 0624 and 0646 (do-calculus-style intervention, counterfactual reasoning, `NotIdentified`
+  formalized). Flagged as the FIFTH collision/overlap candidate accumulated across the Steps 65-74 span,
+  pending direct confirmation once 0658 is read. No actual code execution reported in this file.
+introduces:
+  - concept: "CONFIRMED genuinely new corpus territory: cryptographic identity, signatures, key lifecycle/revocation, Merkle-style tamper evidence, and capability-based least-privilege authorization"
+  - concept: "Provenance≠AuthenticProvenance and a formal six-concept separation (Identity, Authenticity, Integrity, Authority, Trust, Provenance), with Integrity≠Truth and Authenticity is orthogonal to truth as the file's central epistemic-security caution"
+  - concept: "An explicit, disciplined rejection of blockchain in favor of TamperEvidence via Merkle-style hash trees — a genuine act of technological restraint directly consistent with the corpus's established anti-overengineering discipline"
+  - concept: "Trust formally proven non-transitive (Trust(A,B)=High ∧ Trust(B,C)=High does not imply Trust(A,C)=High), with five explicitly non-collapsed named graphs (Knowledge/Provenance/Dependency/Authority/Trust)"
+  - concept: "A rare positive counter-example to the Steps-70-72 unacknowledged-divergence pattern: this file explicitly cross-references and revises 0654's eight-primitive kernel to nine by adding Identity, correctly citing its own prior architectural decision"
+  - concept: "A fourth instance of the corpus's established anti-pattern-FAIL convention (a universal TrustObject, GodObjectRisk), and a fifth (a collapsed universal relation() graph, SemanticAmbiguity)"
+  - concept: "A LIKELY fifth collision/overlap candidate: Step 74's closing preview (temporal order vs dependency vs causal influence vs intervention vs counterfactual effect) closely tracks the corpus's already-extensive causal-inference program (0594, 0624, 0645/0646)"
+defines:
+  - concept: "Integrity≠Truth / Authenticity is orthogonal to truth"
+    definition: "A cryptographic hash proves content is unchanged (integrity); a valid signature proves an identity authored/signed a statement (authenticity); neither proves the statement's content is actually true — cryptography protects provenance and integrity, it does not manufacture truth"
+  - concept: "Trust(x,y,C,t) is not generally transitive"
+    definition: "High trust from x toward y and from y toward z does not imply high trust from x toward z; trust propagation through agent networks must not be assumed, preventing a specific and realistic security failure mode"
+  - concept: "TamperEvidence, not Blockchain"
+    definition: "The architectural requirement for verifiable, tamper-evident provenance history can be met with conventional cryptographically-linked append-only storage (e.g. Merkle-style hash trees); adopting blockchain specifically because 'knowledge must be trustworthy' is an unjustified technology choice not derived from actual requirements"
+  - concept: "Capability(A)⊆RequiredCapabilities(A) (least privilege)"
+    definition: "An agent (human or AI) should receive only the typed capabilities (Subject, Action, Resource, Scope, Validity) its bounded responsibility actually requires, never broad or role-based access that exceeds its specific task — applied uniformly to humans and AI agents"
+  - concept: "SemanticTrustBoundary"
+    definition: "A boundary between UnverifiedInput and TrustedKnowledgeState that no artifact crosses merely because an AI (or any actor) generated and signed it; an authenticated, provenanced claim without supporting evidence remains an AuthenticatedClaim, not NotVerifiedKnowledge — the corpus's clearest statement of 'who said this' versus 'why should we believe this'"
+refines:
+  - concept: "0654's (Step 70's) eight-primitive kernel K_OS=(Artifact,Type,Provenance,Event,Invariant,State,Transformation,Policy)"
+    refinement: "EXPLICITLY and correctly cross-referenced and revised: this file adds Identity as a ninth kernel-level concern (K_OS=Artifact+Type+Identity+Provenance+Event+Invariant+Transformation+Policy, with State as the operational projection), directly citing 0654's kernel by name rather than silently diverging from or re-deriving it — a genuine positive counter-example to the pattern confirmed at 0654/0655/0656"
+  - concept: "0648's temporal-epistemics discipline (ValidTime≠RecordedTime)"
+    refinement: "Directly extended into cryptographic identity specifically via IdentityValidityAtTime — a signature made before key revocation remains historically valid, paralleling the corpus's established historical-truth-versioning treatment"
+  - concept: "0650's GodObjectRisk anti-pattern FAIL (universal KnowledgeObject) and 0656's generic-merge/universal-consistency anti-pattern FAILs"
+    refinement: "Directly and consistently reapplied to a new concrete case (a universal TrustObject) and a further new case (a collapsed universal relation() graph), confirming this is now an established, recurring architectural discipline across at least four distinct instances in the corpus rather than a one-off finding"
+  - concept: "0649's/0655's evidence-independence discipline"
+    refinement: "Directly and genuinely synthesized with this file's cryptographic-trust machinery via Trust-aware evidence assessment and AuthenticEvidence≠ReliableEvidence, producing the unified VerifiableEpistemicProvenance concept"
+  - concept: "0594's/0624's/0645-0646's causal-inference program"
+    refinement: "LIKELY OVERLAPPED, NOT YET CONFIRMED: Step 74's closing preview (temporal order, dependency, causal influence, intervention, counterfactual effect) closely tracks vocabulary already substantially developed across the corpus's causal-inference program; flagged as the fifth collision/overlap candidate in the Steps 65-74 span, pending direct comparison once 0658 is read"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "HIGH PRIORITY: read Step 74's actual file (0658) and directly compare against 0594's, 0624's, and 0645/0646's already-processed causal-inference content — determine whether this is a further deliberate deepening (as confirmed for 0645/0646 itself), an unacknowledged collision continuing the Steps-70-72 pattern, or a genuinely distinct angle (e.g. connecting causal inference specifically to the decision/outcome/learning loop and the trust layer, which the prior causal-inference treatments may not have addressed)."
+  - "Note for eventual §29 synthesis: this file's clean, explicit cross-reference to 0654's kernel (contrasted with 0654's own silent divergence from 0630, and 0655's/0656's silent overlaps with 0640/0649/0641) suggests the unacknowledged-repetition pattern may be uneven across specific sub-topics (kernel/compositional-correctness/concurrency) rather than a uniform degradation of the entire remaining corpus — worth tracking whether later files continue to show good versus poor self-reference on a topic-by-topic basis."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CONFIRMATION that Step 73 delivers genuinely new corpus territory (cryptographic identity, signatures, key lifecycle, Merkle-style tamper evidence explicitly rejecting blockchain, capability-based least-privilege authorization); Integrity≠Truth and Authenticity is orthogonal to truth as the central epistemic-security caution; and Trust formally proven non-transitive with five explicitly non-collapsed named graphs."
+  - "dimension-registry.md: record the rare POSITIVE counter-example to the Steps-70-72 pattern — this file explicitly cross-references and correctly revises 0654's eight-primitive kernel to nine by adding Identity, citing its prior decision by name rather than silently diverging; and the fourth/fifth instances of the established anti-pattern-FAIL convention (universal TrustObject GodObjectRisk; collapsed universal relation() graph SemanticAmbiguity)."
+  - "dimension-registry.md: record the LIKELY fifth collision/overlap candidate — Step 74's closing preview of causal-inference vocabulary (temporal order, dependency, causal influence, intervention, counterfactual effect) closely tracking the corpus's already-extensive causal-inference program (0594, 0624, 0645/0646); flag as high priority for direct confirmation at 0658."
+anchor_test:
+  anchor: "0656's provisional assessment that Step 73 opens genuinely new ground; 0654's eight-primitive kernel; 0650's/0656's established anti-pattern-FAIL convention; 0648's temporal-epistemics discipline; 0649's/0655's evidence-independence discipline; the corpus's already-extensive causal-inference program (0594, 0624, 0645/0646); the Steps-65-72 pattern of unacknowledged content divergence"
+  supports_dimension: "CONFIRMS the provisional assessment at 0656 that Step 73 delivers genuinely new, well-developed corpus content: a coherent cryptographic-identity and trust model with several precisely stated and practically important results (Integrity≠Truth, Trust's non-transitivity, the explicit rejection of blockchain in favor of proportionate tamper-evidence, capability-based least privilege applied uniformly to humans and AI). Most significantly for this reconstruction's ongoing methodological tracking, this file provides a clean, positive counter-example to the unacknowledged-divergence pattern confirmed across Steps 70-72: it explicitly names and correctly revises 0654's kernel rather than silently diverging from or re-deriving it, demonstrating the corpus's model line retains the capacity for proper self-reference and that the Steps-70-72 lapses are a genuine, topic-localized methodological finding rather than a uniform degradation of the remaining corpus. At the same time, this file's own closing preview raises a plausible fifth collision candidate against the corpus's causal-inference program, continuing this reconstruction's vigilant tracking of the pattern into Step 74"
+  refines_or_contradicts: "confirms 0656's provisional new-territory assessment; explicitly and correctly extends 0654's kernel with proper cross-reference (a positive counter-example to the Steps-70-72 pattern); directly extends 0648's temporal-epistemics discipline and 0649's/0655's evidence-independence discipline; consistently reapplies the established anti-pattern-FAIL convention (0650, 0656); flags a fifth, not-yet-confirmed overlap candidate against the corpus's causal-inference program; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "This file's §73.62-73.63 directly quotes 0654's own kernel formula verbatim ('earlier our kernel was K_OS=Artifact+Type+Provenance+Event+Invariant+State+Transformation+Policy') before revising it, providing directly checkable, concrete evidence of correct self-reference — a positive counter-example to the silent kernel divergence confirmed at 0654 (against 0630) and the silent content overlaps confirmed at 0655/0656 (against 0654/0640/0649/0641)."
+  - "The transitive-trust experiment (§73.51, Trust(A,B)=High ∧ Trust(B,C)=High incorrectly concluding Trust(A,C)=High, correctly Rejected) and the blockchain-assumption experiment (§73.31, replacing append-only storage with blockchain 'solely because knowledge must be trustworthy,' correctly assessed NotRequired) are directly checkable, concrete evidence of genuinely new, well-reasoned architectural content grounded in real security and distributed-systems considerations."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 74's actual content (0658), once read, substantially overlaps the corpus's already-extensive causal-inference program (0594, 0624, 0645/0646) as a fifth unacknowledged collision, continues as a deliberate and explicitly-signaled deepening, or addresses a genuinely distinct angle (e.g. specifically connecting causal inference to the decision/outcome/learning loop introduced across Steps 66-73)."
+tier2_triggered: true
+tier2_reason: "CONFIRMS genuinely new corpus territory (cryptographic identity, trust, capability-based authorization) with several precisely stated, practically important results (Integrity≠Truth, Trust's non-transitivity, the disciplined rejection of blockchain, least-privilege applied uniformly to humans and AI). Provides a rare, clean, positive counter-example to the Steps-70-72 unacknowledged-divergence pattern by explicitly citing and correctly revising 0654's own kernel. Consistently reapplies the established anti-pattern-FAIL convention (two further instances: TrustObject GodObjectRisk, collapsed relation() graph). Flags a fifth, not-yet-confirmed collision candidate against the corpus's causal-inference program in its closing preview of Step 74. Verdict 'STEP 73 — PASS.'"

@@ -1,0 +1,68 @@
+
+==============================================================================
+SO-EXP-05  Deriving the minimum Sigma structure (Step 272, uncommissioned)
+==============================================================================
+  Step 272's six named sources, with the value sets this experiment gives them:
+    distinguishability    ['asked', 'not_asked']
+    evidence_assessment   ['none', 'support', 'refute', 'both', 'insufficient']
+    contradiction         [False, True]
+    missingness           ['present', 'absent']
+    supersession          [False, True]
+    inference             ['asserted', 'derived']
+
+  coherent situations generated: 56
+  mandatory distinctions (from the class-1/2 operations of SO-EXP-03): 9
+
+  => coarsest partition preserving every distinction: 50 equivalence classes over 56 situations
+
+==============================================================================
+Which of the six sources is IRREDUCIBLE?
+==============================================================================
+  source dropped          classes   harmful collisions
+  ----------------------------------------------------
+  (keep all)                   56                    0
+  distinguishability           48                    8
+  evidence_assessment          24                    8
+  contradiction                48                    8
+  missingness                  28                   28
+  supersession                 28                   28
+  inference                    28                   28
+
+  IRREDUCIBLE sources: ['distinguishability', 'evidence_assessment', 'contradiction', 'missingness', 'supersession', 'inference']  (6/6)
+
+==============================================================================
+DERIVED MINIMUM SIGMA STRUCTURE
+==============================================================================
+  Sigma is not an enum.  The minimum structure that loses no mandatory
+  distinction is the product of the irreducible sources:
+
+      Sigma = distinguishability x evidence_assessment x contradiction x missingness x supersession x inference
+
+  cardinality of the full product : 56 coherent situations
+  cardinality after quotienting by
+  the mandatory distinctions      : 50 classes
+
+  So a faithful Sigma needs 50 distinguishable values, and they are NOT
+  linearly ordered -- they are points in a 6-dimensional product.
+
+  SEPARATION Step 272 explicitly requires:
+    epistemic  : distinguishability, evidence_assessment, contradiction, missingness
+    lifecycle  : supersession
+    governance : (none of the six -- authority is a SEPARATE axis, s187, and
+                  s271 lists it outside Sigma)
+    derivation : inference   (a provenance/lineage fact, not an epistemic one)
+
+  => Even within Step 272's own six inputs, TWO are not epistemic at all.
+     A Sigma built from all six would re-conflate exactly what s272 demands be
+     separated.  The epistemic core is FOUR-dimensional.
+
+  epistemic-only projection: 14 distinct epistemic states
+  epistemic distinctions to preserve: 7
+  minimum epistemic Sigma values: 13
+
+  This partially discharges the commissioned Step 272.  It does NOT close it:
+  the value sets above are this session's modelling of the six named sources,
+  and a different (defensible) value set changes the counts.  What is robust and
+  does not depend on the value sets is the STRUCTURAL result: Sigma is a product
+  of independently-varying axes, and two of Step 272's own six inputs belong to
+  other axes.

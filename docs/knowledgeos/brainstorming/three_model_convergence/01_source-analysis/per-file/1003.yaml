@@ -1,0 +1,99 @@
+sequence: 1003
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/05-GAP-UPDATE-TWO-REVIEWERS-FIVE-FILES.md
+title: "05 -- Gap Update: Two Reviewers, Five Files: Delivers the Major New Finding That the Corpus's Own Step 261 SS261.23 ALREADY HALTED at the Identical Equality-Ambiguity Stop-Gate Before This Research Programme Began, for Six Named Reasons Including Two That Are Literally D288's Own Targets -- Demoting the E1-E7 Novelty Claim to a Re-Discovery"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the master consolidation document for the two-reviewer, five-file gap-update round (files 0990, 0999, 1000, 1001, 1002)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1003
+importance: critical
+confidence: high
+about: >
+  "05 · Gap Update — Two Reviewers, Five Files," inputs explicitly identified as HPA's prompt instructions
+  (file 0990) plus Reviewer A's readiness review (file 0999) and three Reviewer B syntheses (files 1000,
+  1001, 1002) -- confirming this reconstruction's own file-sequence tracking of these five documents.
+
+  **§2 applies the four-way gap classification (file 1001) to EVERY tracked gap in a comprehensive table**,
+  delivering a genuinely important honest self-correction: **"I closed FOUR discovery gaps and ZERO formal
+  gaps. Every one of the four 'closures' leaves its formal gap untouched. '3 gaps closed' should have read
+  '3 discovery gaps closed; 0 formal gaps closed.' Language corrected throughout."**
+
+  **§5 DELIVERS THE MAJOR NEW FINDING OF THIS FILE, HEADED "THE CORPUS ALREADY STOPPED AT OUR GATE"**: a new
+  corpus reference, **"Step 261 §261.23,"** states that `≡_K` (kernel-level equality) CANNOT be declared
+  final, listing SIX reasons: (1) the observation set is not fully closed; (2) the operation registry is not
+  fully closed; (3) provenance placement unresolved; (4) assertion semantics unresolved; (5) temporal
+  semantics unresolved; (6) identity semantics unresolved -- and quotes the corpus's own governing rule:
+  "The governing prompt explicitly says that final kernel selection must stop while equality remains
+  ambiguous. We therefore obey that gate."
+
+  **This is a genuinely major, disciplined self-demotion**: "The corpus reached the same stop-gate, by its
+  own route, BEFORE this programme -- and reasons 1 and 2 are exactly D288's targets 2 [observational
+  equality] and `𝒪` [operation-space enumeration]. This is independent corroboration of `E1-E7`'s verdict
+  from a source that PREDATES it. It also means the equality gap is not a discovery of the verification
+  lane -- the research lane found it at Step 261 and correctly halted. Recorded, and it SLIGHTLY DEMOTES my
+  `E1-E7` NOVELTY CLAIM: the gap was known; what `E1-E7` adds is the per-relation decision-procedure audit."**
+  This directly confirms this reconstruction's own tracked E1-E7 findings (files 0989-0994) were, by the
+  corpus's own honest self-assessment, a re-discovery-plus-refinement of an already-known, already-obeyed
+  halt condition, not a first discovery.
+
+  **§5 also delivers a further precision on `Qualify`**: names a NEW corpus reference, the "Knowledge
+  Qualification Problem" framework (`20260825-233107`), supplying `Φ:K̂_t→{Knowledge,Not-Knowledge}` and the
+  law **`P(k|I)=0.97 ⇏ k∈K`** ("probability≠knowledge qualification") -- but explicitly clarifies "`Φ` is
+  NOT `Qualify`'s body: `Φ` qualifies an extracted STATE; `Qualify` qualifies an OBSERVATION. Different
+  layers -- the discovery gap narrows, the formal gap does not move."
+
+  **§6 verifies (not re-executes) HPA's six mandated actions**, all confirmed complete via cross-reference to
+  files 0990/0993/0995-0997.
+
+  **§7 delivers a nine-row net gap position**, including confirmation that the Sanskrit-expansion scope-lock
+  (file 1002) IS being honored: **"No new Sanskrit expansion — honoured; `GK-14/15` remain recorded and
+  undeveloped."**
+introduces:
+  - concept: "'Step 261 §261.23' -- a new corpus reference recording that the corpus's OWN earlier research already halted final kernel selection at the same equality-ambiguity gate this programme independently rediscovered, for six named reasons, two of which are literally D288's own targets"
+  - concept: "The 'Knowledge Qualification Problem' framework ('20260825-233107'), supplying Phi: state-to-{Knowledge,Not-Knowledge} and the law P(k|I)=0.97 not-implies k in K -- explicitly distinguished as a different layer from Qualify"
+  - concept: "The honest self-correction: '3 gaps closed' should read '3 discovery gaps closed, 0 formal gaps closed' -- applied to every tracked gap in a comprehensive table"
+  - concept: "The disciplined self-demotion of the E1-E7 equality investigation's novelty claim, given the corpus's own prior, independent halt at the identical gate"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked E1-E7 equality-investigation findings (files 0989-0994) and their OPEN verdict"
+    refinement: "REFRAMED as a re-discovery-plus-refinement of an already-known, already-obeyed corpus halt condition (Step 261 §261.23), not a first discovery -- the corpus itself had already stopped at this exact gate before the D285-x programme began"
+  - concept: "This reconstruction's already-tracked 'gaps closed' language (files 0985, 0990, 0993)"
+    refinement: "FORMALLY CORRECTED throughout: '3 gaps closed' becomes '3 discovery gaps closed, 0 formal gaps closed' under the newly adopted four-way classification"
+  - concept: "This reconstruction's already-tracked Qualify-has-no-body finding (file 0974, Step 170)"
+    refinement: "FURTHER PRECISED: additional corpus material exists (the Knowledge Qualification Problem's Phi function), but it operates at a different layer (state-qualification, not observation-qualification) and does not supply Qualify's body -- the formal gap does not move"
+  - concept: "File 1002's explicit Sanskrit-expansion scope-lock recommendation"
+    refinement: "CONFIRMED HONORED: GK-14/GK-15 remain recorded and undeveloped as of this file"
+contradicts: []
+repeats:
+  - "Substantially consolidates content already documented across files 0985-1002; its major distinctive contribution is the Step 261 §261.23 finding and the honest 'discovery gaps vs formal gaps' language correction."
+bridge_candidates:
+  - "'Step 261 §261.23' -- the original corpus location where the equality-ambiguity halt was first recorded; watch for direct encounter, given its step number suggests it originates much earlier in the corpus."
+  - "The 'Knowledge Qualification Problem' framework document ('20260825-233107') -- watch for direct encounter."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the major finding that corpus Step 261 §261.23 already halted final kernel selection at the same equality-ambiguity gate this programme independently rediscovered, demoting the E1-E7 novelty claim to a re-discovery-plus-refinement."
+  - "dimension-registry.md: record the honest language correction '3 gaps closed' -> '3 discovery gaps closed, 0 formal gaps closed,' and the Knowledge Qualification Problem's Phi function as a distinct, non-substituting layer for Qualify."
+  - "dimension-registry.md: record confirmation that the Sanskrit-expansion scope-lock (file 1002) is being honored (GK-14/15 undeveloped)."
+anchor_test:
+  anchor: "This reconstruction's already-tracked E1-E7 equality findings (files 0989-0994) and Qualify-has-no-body finding (file 0974)"
+  supports_dimension: "Reveals the corpus itself already halted at the identical gate before this programme, demoting the novelty claim, and further precises the Qualify gap with a distinct, non-substituting corpus construct"
+  refines_or_contradicts: "refines (demotes the novelty of, while confirming the substance of) prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The six reasons Step 261 SS261.23 gives for the equality-ambiguity halt are directly checkable against D288's own four named targets (files 1002) for the claimed correspondence (reasons 1 and 2 matching D288 targets)."
+undefined_concepts: []
+open_questions:
+  - "The original location and full content of corpus Step 261 §261.23."
+  - "The full content of the Knowledge Qualification Problem framework document (20260825-233107)."
+tier2_triggered: true
+tier2_reason: "Delivers a major, disciplined self-demoting finding: the corpus's own Step 261 §261.23 already halted at the identical equality-ambiguity gate before this research programme began, for reasons directly matching D288's own targets -- plus an honest correction of the 'gaps closed' language and a further precision on Qualify. Classified importance critical and confidence high given the rigor and direct traceability of these findings."

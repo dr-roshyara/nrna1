@@ -1,0 +1,53 @@
+sequence: 754
+path: docs/knowledgeos/brainstorming/phase_measure_theory/how_to_combine/20260828-140743_two-missing-distinctions-in-the-chapter-4-analysis-duplicate.md
+title: "DUPLICATE of 0753 (Gita Chapter 4 -- What to Do Versus What Not to Do) -- confirmed byte-identical via diff; first file discovered under the new how_to_combine/ subdirectory"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: g1
+  secondary: c1
+  secondary_note: "duplicate file, no independent content"
+source_role: DUPLICATE
+canonical_source: 753
+importance: none
+confidence: high
+about: >
+  Confirmed byte-identical duplicate of sequence 0753
+  (docs/knowledgeos/brainstorming/phase_measure_theory/20260828-140338_gita-chapter-4-what-to-do-versus-what-not-to-do-distinction.md,
+  already DONE/critical/major-synthesis) via `diff` (exit 0, no output). Filename explicitly
+  self-identifies as "-duplicate" (titled "two missing distinctions in the Chapter 4 analysis," matching
+  0753's Principle IV-A/IV-B content). Skipped per standing instruction; canonical content and analysis
+  live at 0753. Notable: this is the first file discovered under the new
+  `phase_measure_theory/how_to_combine/` subdirectory, which per resume.py's next-file report continues
+  with a distinct "how_to_combine" arc (combine-prompt-1..6, master-prompt, halfway-point-progress-review,
+  etc.) -- flagged as an upcoming structural/register shift to watch for at the next non-duplicate file.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - "Full byte-identical duplicate of 0753 (Gita Chapter 4 -- What to Do Versus What Not to Do)."
+bridge_candidates:
+  - "The next file (0755) is the first non-duplicate file in the newly discovered how_to_combine/ subdirectory -- read with high attention to determine what this new arc is (a synthesis/combination-instruction arc, per its sibling filenames: master-prompt-reconstruct-evolution-of-thought-before-flattening-into-topics, step_combine_combine-prompt-1..6, halfway-point-progress-review)."
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: note the discovery of the how_to_combine/ subdirectory as a new corpus arc, distinct in register from the Step-NNN architecture sequence -- flag for observation at the next non-duplicate file."
+anchor_test:
+  anchor: "0753"
+  supports_dimension: "none -- duplicate"
+  refines_or_contradicts: "none -- duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "diff against 0753's source file returned exit 0 with no output -- byte-identical."
+undefined_concepts: []
+open_questions:
+  - "What the how_to_combine/ subdirectory arc actually is, and how it relates to (or diverges from) the Step-NNN sequential architecture arc read so far."
+tier2_triggered: false
+tier2_reason: "duplicate file, no independent analysis triggered"

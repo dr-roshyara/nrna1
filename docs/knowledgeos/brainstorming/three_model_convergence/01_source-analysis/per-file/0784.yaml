@@ -1,0 +1,174 @@
+sequence: 784
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-011213_step_160_current-state-evidence-mapping.md
+title: "Step 160 -- Current-State Evidence Mapping (MAJOR SYNTHESIS MILESTONE, delivers 0783's promised register): Moves From 'What Should KnowledgeOS Be?' to 'What Can We Prove KnowledgeOS Is Today?' -- Delivers Five Non-Interchangeable Evidence Classes (E1 Documentary Through E5 Historical) and 'Architectural Authority≠Implementation Evidence' -- Delivers a Sixteen-Row Master Evidence-Mapping Matrix (Agent Integration Aligned; Governance/Knowledge/Provenance/Evidence/Decision Partial; Inquiry/Determination/Authorization/Conflict-Handling Unknown) -- Delivers THE MAJOR ARCHITECTURAL DISCOVERY: 'KnowledgeOS Does NOT Primarily Suffer From Absence of Engineering Mechanisms... the Larger Problem Is SEMANTIC INTEGRATION Between Them' -- Delivers the Five-Category Delta Taxonomy (D1 Formalization/D2 Integration/D3 Enforcement/D4 Evidence/D5 Missing Capability), Prioritizing D1/D2/D4 Over D5 Because 'We May Already Possess 60-80% of the Technical Mechanisms Needed' -- Delivers 'Graph Should Not Silently Become Authoritative' (G=P(K), a Rebuildable Projection, Never the Reverse) -- Opens Step 161, Semantic Contract Reconstruction"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "pure DDD/architecture-evidence-mapping synthesis; no direct Gita content, though it operationalizes prior Gita-derived findings (historical continuity, ActionDisposition) into concrete evidence-mapping targets"
+source_role: PRIMARY_RESEARCH
+canonical_source: 784
+importance: critical
+confidence: high
+about: >
+  Directly continues 0783, opening "yes. We continue with Step 160 — Current-State Evidence Mapping. This
+  is the point where we deliberately move from architectural reasoning to architectural archaeology,"
+  reframing the governing question from "what should KnowledgeOS be?" to "**what can we prove KnowledgeOS
+  is today?**", constructing `TARGET↔CURRENT↔EVIDENCE` for every major architectural proposition.
+
+  **§160.2 delivers the Evidence Mapping Record schema** (`AM-XXX`: Concept/Target statement/Current
+  implementation/Evidence/Source/Evidence type/Status/Confidence/Gap/Next verification), governed by the
+  rule "one architectural claim may have many pieces of evidence, but every evidence item must have a
+  traceable origin." **§160.3-160.4 delivers five non-interchangeable evidence classes**: `E1 Documentary`
+  (architecture documents, ADRs, specifications, governance decisions), `E2 Repository` (source code,
+  configuration, directory structure, schemas, tests), `E3 Runtime` (logs, executions, runtime behavior,
+  infrastructure observations), `E4 Experimental` (controlled experiments and reproducible tests), `E5
+  Historical` (previous states, decisions, changes, evolution records) -- explicitly `E1≠E2`: "a document
+  saying that something exists does not prove that the implementation exists." Delivers the evidence
+  hierarchy (`E2+E3+E4` required for implementation claims; `E1` may be authoritative for architectural
+  intent alone), boxed as **`Architectural Authority≠Implementation Evidence`**.
+
+  **Delivers per-concept evidence mappings, each with an explicit, disciplined verdict, several grounded in
+  real, previously-confirmed repository artifacts**: Knowledge → `PARTIALLY EVIDENCED`; Provenance →
+  `PARTIAL`; deterministic assurance → `CURRENT=STRONG` but `FULL EPISTEMIC ASSURANCE=PARTIAL`; **governance
+  → `OBSERVED+DESIGNED`**, explicitly citing "Architecture Board; Softwareeinführungsprozess; IT Change
+  Management; governance gates; architecture decisions; implementation constitution; package/naming
+  standards; coding standards" -- the reconstruction's confirmed-genuine real-world governance references
+  (0689); **agent integration → `AgentEdge=OBSERVED`**, citing real repository artifacts
+  `.claude/.codex/AGENTS.md/hooks/memory/session logging`; **memory → `Memory=CURRENT` but `Memory
+  Governance=PARTIAL`**, explicitly citing the real `.claude/memory/` mechanism; Claude/Codex symmetry →
+  `CONCEPTUALLY ALIGNED`, implementation conformance requiring separate verification; DDD boundaries →
+  `PARTIAL/UNKNOWN` (`BC_designed≠BC_implemented`); aggregate boundaries → requires an actual
+  `Invariant(Evidence)` and transactional consistency boundary, "this prevents DDD cargo cult"; **Inquiry
+  → `NOT YET ESTABLISHED`** (similarity to prompts/tickets/tasks/issues/investigations is not identity);
+  Determination → possible `DeterminationGap` if current artifacts contain only `PASS/FAIL/COMMENT` without
+  a first-class Determination object; Decision → explicitly refuses to prematurely collapse Architecture/
+  Business/Governance/Agent-recommendation/Technical decisions into one generic structure; **Authorization
+  → `UNKNOWN`, "one of our highest-priority unknowns,"** with a precise three-way separation: Authentication
+  answers who the actor is, Authorization answers what that actor may do, Governance answers whether the
+  action should be permitted in the first place; Execution → exists operationally, but "governed execution"
+  incomplete unless retrospectively traceable to Decision/Authorization/Actor/Action/Evidence/Result;
+  historical lineage → `PARTIAL`, with the explicit **Archive≠Lineage distinction** ("an archive answers
+  'do we still have the old information?'; lineage answers 'how did the current state arise from the
+  previous state?' KnowledgeOS requires the second").
+
+  **§160.28 delivers a sixteen-row master evidence-mapping matrix**, the file's central deliverable
+  (Capability/Current evidence/Target/Status): Agent integration → **Aligned**; Deterministic checking →
+  Partial/Strong; Governance, Architecture registry, Knowledge, Provenance, Evidence, Decision, Execution
+  lineage, Historical continuity → Partial; Inquiry, Determination, Authorization, Conflict handling →
+  Unknown; Unknown semantics, ActionDisposition → Target (not yet even attempted).
+
+  **§160.29 delivers "the major architectural discovery," the file's single most consequential
+  conclusion**: "KnowledgeOS does NOT primarily suffer from absence of engineering mechanisms. We have many
+  mechanisms. The larger problem is: **SEMANTIC INTEGRATION** between them" -- Logging, Memory, Governance,
+  Architecture, Verification, and Agents "already exist in different forms," and the actual architectural
+  challenge is making their relationships explicit through `Meaning+Identity+Lineage+Authority+Time` --
+  arguably the single most important strategic conclusion of this entire reconstructed arc.
+
+  **§160.30-160.32 delivers a direct implementation-strategy consequence**: "we should NOT start by
+  creating ten new services. Instead: first establish semantic contracts" and only then determine which
+  existing mechanisms already satisfy them -- "classic DDD discipline." Delivers "why we should not create
+  the database schema yet": `DomainModel→PersistenceModel`, never the reverse. Delivers a candidate
+  eight-field Semantic Contract template (Name/Definition/Identity/Lifecycle/Invariants/Owner/Authority/
+  Relationships/Temporal semantics/Evidence requirements), worked through a concrete eight-field Evidence
+  contract example, explicitly "a candidate model, not yet a final schema."
+
+  **§160.33-160.34 delivers "graph clarification," a genuinely important, precise architectural principle**:
+  "the graph should not automatically become the source of truth" -- `Canonical domain records→derived
+  graph`, formalized as `G=P(K)` (a projection function over canonical knowledge `K`), with the crucial
+  directional asymmetry: `K→G` is safe if `G` can be rebuilt, but `G→K` may not be possible -- **"graph
+  should not silently become authoritative" unless explicitly decided otherwise**.
+
+  **§160.35 delivers the Architecture Baseline conclusion**: "KnowledgeOS already contains substantial
+  implementation mechanisms. The main architectural work ahead is not simply adding functionality. It is:
+  making semantics, authority, provenance, lineage, and boundaries explicit."
+
+  **§160.36-160.37 delivers a five-category Delta taxonomy, "much better than one undifferentiated
+  backlog"**: `D1 Formalization` (concept exists implicitly but lacks explicit semantic representation),
+  `D2 Integration` (mechanisms exist separately but lack governed relationships), `D3 Enforcement` (rule
+  exists but is not mechanically enforced), `D4 Evidence` (behavior exists but cannot yet be adequately
+  proven), `D5 Missing capability` (the concept itself is not currently represented). Delivers an explicit
+  prioritization, `D1/D2/D4` before large-scale `D5` work, reasoned from the major architectural discovery:
+  "we may already possess 60–80% of the technical mechanisms needed, but they are distributed across
+  different architectural surfaces. The first objective should therefore be **semantic consolidation, not
+  massive implementation expansion**."
+
+  **§160.38 delivers the Step-160 exit condition** (an eight-field per-concept table: Concept/Definition/
+  Current artifact/Evidence/Owner/Target boundary/Gap/Verification method) as "the bridge between
+  architecture and implementation."
+
+  **Closes by opening "Step 161 — Semantic Contract Reconstruction,"** explicitly scoped to "reconstruct
+  the canonical semantic contracts for the core KnowledgeOS concepts without yet committing them to
+  database tables or microservices," with a candidate nine-stage chain
+  (`Observation→Inquiry→Evidence→Knowledge→Determination→Decision→Authorization→Action→Execution`)
+  surrounded by `Identity, Provenance, Authority, Context, Time, Lineage`, carrying forward "the strictest
+  DDD test": "if two concepts cannot be distinguished by their meaning, invariant, lifecycle, authority, or
+  relationship to other concepts, we should not create two concepts merely because our previous diagrams
+  contained two boxes." No actual repository code execution or independently-verified filesystem inspection
+  is performed within this file itself; every evidence-mapping verdict remains a disciplined hypothesis
+  awaiting direct repository confirmation, consistent with the file's own governing epistemic rigor.
+introduces:
+  - concept: "The reframed governing question: not 'what should KnowledgeOS be?' but 'what can we prove KnowledgeOS is today?'"
+  - concept: "The Evidence Mapping Record schema (AM-XXX) and the five non-interchangeable evidence classes E1-E5"
+  - concept: "Architectural Authority≠Implementation Evidence"
+  - concept: "'The major architectural discovery': KnowledgeOS's real gap is semantic integration between existing mechanisms, not missing mechanisms"
+  - concept: "The Semantic Contract template (Name/Definition/Identity/Lifecycle/Invariants/Owner/Authority/Relationships/Temporal semantics/Evidence requirements)"
+  - concept: "DomainModel→PersistenceModel, never the reverse ('why we should not create the database schema yet')"
+  - concept: "'Graph should not silently become authoritative' -- G=P(K) as a rebuildable projection, directional asymmetry K→G safe, G→K not necessarily possible"
+  - concept: "The five-category Delta taxonomy: D1 Formalization/D2 Integration/D3 Enforcement/D4 Evidence/D5 Missing capability"
+  - concept: "The D1/D2/D4-before-D5 prioritization, reasoned from '60-80% of mechanisms already exist'"
+  - concept: "The Archive≠Lineage distinction"
+  - concept: "The Authentication/Authorization/Governance three-way separation"
+  - concept: "The sixteen-row master evidence-mapping matrix"
+  - concept: "Step 161's opening: Semantic Contract Reconstruction, carrying forward 'the strictest DDD test'"
+defines:
+  - concept: "'The major architectural discovery' (semantic integration, not missing mechanisms)"
+    definition: "An architecture audit that finds many individual engineering mechanisms already exist (logging, memory, governance artifacts, architecture documentation, verification checks, agent integrations) but discovers they are not related to each other through explicit, governed semantics (meaning, identity, lineage, authority, time) has identified a fundamentally different -- and typically smaller-scope -- problem than an architecture that is genuinely missing capabilities outright; the correct response is establishing semantic contracts and integrating existing mechanisms, not building large amounts of new functionality"
+  - concept: "Graph should not silently become authoritative"
+    definition: "When canonical domain knowledge K is represented in a graph structure G via a projection function G=P(K), the direction K→G is architecturally safe because G can always be rebuilt from K if lost; the reverse direction G→K is not guaranteed to be recoverable, so treating the graph itself as the authoritative source of truth (rather than a derived, rebuildable view over the canonical domain records) risks permanent, silent loss of authoritative state unless that choice is made explicitly and deliberately"
+  - concept: "The five-category Delta taxonomy (D1-D5)"
+    definition: "Remaining architectural work should be classified into five distinct categories rather than one undifferentiated backlog: D1 Formalization (the concept already exists implicitly but lacks an explicit semantic representation), D2 Integration (separate mechanisms exist but lack governed relationships connecting them), D3 Enforcement (a rule is defined but not mechanically enforced), D4 Evidence (a behavior exists but cannot yet be adequately proven with traceable evidence), D5 Missing capability (the concept itself has no current representation at all) -- each category implies a different, appropriately-scoped kind of remediation work"
+  - concept: "Authentication vs. Authorization vs. Governance"
+    definition: "Three distinct questions that must never be conflated: Authentication establishes who the acting entity actually is; Authorization determines what that specific, authenticated actor is permitted to do; Governance determines, independently of any specific actor, whether a given action should be permitted to occur at all under current policy -- a system can correctly authenticate and authorize an actor for an action that governance has not actually sanctioned as a category of action"
+refines:
+  - concept: "0783's Step 159 baseline and its recommendation of Step 160"
+    refinement: "DELIVERED: the full Current-State Evidence Mapping specified, with a sixteen-row master matrix and a five-category Delta taxonomy replacing the theoretical target architecture with a disciplined, evidence-graded assessment"
+  - concept: "0781's confirmed real repository artifacts (.claude/, .codex/, AGENTS.md, .claude/memory/, hooks, session logging) and 0689's confirmed-genuine Softwareeinführungsprozess/ITCM references"
+    refinement: "Directly incorporated as concrete E2/E3-class evidence grounding several of this file's specific per-concept verdicts (AgentEdge=OBSERVED, Memory=CURRENT, Governance=OBSERVED+DESIGNED)"
+  - concept: "0759's/0783's Continuity≠Memory and Archive-vs-Lineage-adjacent findings"
+    refinement: "Given the precise, directly applicable Archive≠Lineage distinction, formalized specifically for the current-state evidence-mapping exercise"
+  - concept: "0781's ActionDisposition model"
+    refinement: "Explicitly reclassified in the master matrix as 'Target' status (conceptual only, not yet evidenced or even attempted at the evidence-mapping stage) alongside 'Unknown semantics' -- confirming it remains a design proposal rather than an established or even partially-evidenced architecture element as of this file"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 161 (Semantic Contract Reconstruction) and eventual concrete semantic-contract definitions for Observation/Inquiry/Evidence/Knowledge/Determination/Decision/Authorization/Action/Execution, tested against 'the strictest DDD test.'"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record 'the major architectural discovery' (KnowledgeOS's real gap is semantic integration between existing mechanisms, not missing mechanisms) as arguably the single most important strategic conclusion of this reconstructed arc -- a primary reference finding for the eventual §29-gated canonical synthesis."
+  - "dimension-registry.md: record the five non-interchangeable evidence classes (E1-E5), 'Architectural Authority≠Implementation Evidence,' and the five-category Delta taxonomy (D1-D5) as directly reusable, general-purpose architecture-governance discipline."
+  - "dimension-registry.md: record 'graph should not silently become authoritative' (G=P(K), directional asymmetry) as a precise, valuable architecture principle."
+  - "dimension-registry.md: record the sixteen-row master evidence-mapping matrix's specific verdicts (Agent integration Aligned; Inquiry/Determination/Authorization/Conflict-handling Unknown; ActionDisposition still Target) as a primary reference snapshot of the corpus's own self-assessed architecture maturity at this point in its development."
+anchor_test:
+  anchor: "0783's Step 159 baseline and its recommendation of Step 160; 0781's confirmed real repository artifacts; 0689's confirmed-genuine governance references; 0759's/0783's Continuity/Archive-Lineage findings; 0781's ActionDisposition model"
+  supports_dimension: "Delivers the full Current-State Evidence Mapping recommended at 0783's close, with a sixteen-row master matrix grading each major architectural concept's actual evidentiary status against real, previously-confirmed repository artifacts. Delivers 'the major architectural discovery' -- arguably the single most important strategic conclusion of this reconstructed arc -- that KnowledgeOS's real challenge is semantic integration between already-existing mechanisms, not missing mechanisms outright, directly reshaping the recommended implementation strategy toward semantic-contract establishment over new-service creation. Delivers five non-interchangeable evidence classes, a precise Authentication/Authorization/Governance separation, the Archive≠Lineage distinction, 'graph should not silently become authoritative,' and a disciplined five-category Delta taxonomy with an explicit, well-reasoned prioritization. Closes opening Step 161 with 'the strictest DDD test' carried forward"
+  refines_or_contradicts: "directly delivers and extends 0783's recommended Step 160; directly incorporates 0781's/0689's confirmed real-world evidence; extends 0759's/0783's continuity findings; reclassifies 0781's ActionDisposition model as still-Target status; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§160.29's explicit statement 'KnowledgeOS does NOT primarily suffer from absence of engineering mechanisms... the larger problem is: SEMANTIC INTEGRATION between them' is directly quotable evidence of the file's single most consequential strategic conclusion."
+  - "§160.37's explicit statement 'we may already possess 60-80% of the technical mechanisms needed, but they are distributed across different architectural surfaces. The first objective should therefore be semantic consolidation, not massive implementation expansion' is directly quotable evidence of the resulting, directly actionable implementation-strategy recommendation."
+  - "The sixteen-row master evidence-mapping matrix, with its explicit per-capability status column (Aligned/Partial/Strong/Unknown/Target), is directly checkable evidence of the corpus's own disciplined, non-overclaiming self-assessment at this point in its development."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 161 (Semantic Contract Reconstruction) was ever actually delivered, and whether it produced concrete, finalized semantic contracts for the nine core concepts named at this file's close."
+  - "Whether the D1/D2/D4-priority implementation strategy recommended here was ever actually adopted and carried forward into subsequent architecture or implementation work."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the full 'Current-State Evidence Mapping' recommended at 0783's close, with a sixteen-row master matrix grading each major architectural concept's evidentiary status against real, previously-confirmed repository artifacts. Delivers 'the major architectural discovery' -- arguably the single most important strategic conclusion of this reconstructed arc -- that KnowledgeOS's real challenge is semantic integration between already-existing mechanisms, not missing mechanisms, directly reshaping the recommended implementation strategy. Delivers five non-interchangeable evidence classes, a precise Authentication/Authorization/Governance separation, the Archive≠Lineage distinction, 'graph should not silently become authoritative,' and a disciplined five-category Delta taxonomy with explicit prioritization reasoning."

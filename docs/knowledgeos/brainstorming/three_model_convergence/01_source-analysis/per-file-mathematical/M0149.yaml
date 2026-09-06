@@ -1,0 +1,80 @@
+sequence: M0149
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180003_extraction-williamson-knowledge-and-its-limits.md
+title: "EXTRACTION: Knowledge and Its Limits (Williamson, 2000)"
+date: "20260902-180003"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: EXTERNAL_LITERATURE
+  secondary_note: >
+    The source extraction M0147 reviewed and adjudicated — located here, one sequence position after
+    its own review (M0147 at 18:00:15 vs. this extraction at 18:00:03), another instance of the
+    corpus's file-timestamp-vs-logical-order anomaly (the review appears earlier in this
+    reconstruction's read order than the extraction it reviews, though the extraction's raw
+    timestamp is earlier in the day).
+source_role: PRIMARY
+canonical_source: M0149
+importance: critical
+confidence: high
+about: >
+  A disciplined extraction of Williamson's "knowledge first" thesis (knowledge as an unanalysable
+  primitive mental state, Evidence=Knowledge, anti-luminosity, margin for error, anti-KK, Fitch's
+  paradox of unknowability, the knowledge rule of assertion), ending with the extraction's OWN
+  recommendation to adopt Evidence=Knowledge into KnowledgeOS Theory v1.2 — the exact claim M0147's
+  adjudication explicitly rejected.
+introduces:
+  - "Fitch's Paradox of Unknowability, given in full formal derivation (Part 7.1): from K(p∧¬Kp)⊃(Kp∧¬Kp) (factivity+distribution) and the 'no one can know an unknown truth' non-possibility, weak verificationism (∀p(p⊃◇Kp)) is shown to entail ∀p(p⊃Kp) — i.e. if all truths were knowable, all truths would be known; since not all truths are known, not all truths are knowable. A genuinely new formal result not previously present in this reconstruction's corpus."
+  - "The Moorean twist: it is impossible to KNOW that p is true-and-unknown (self-undermining) — directly relevant to this corpus's own Gap/Zero cannot-be-known-as-Gap/Zero implication drawn in Part 7.2"
+  - "The Mr Magoo margin-for-error argument (Part 5.2) as a concrete worked instance of anti-KK: sorites-style reasoning over tree-height discrimination showing knowledge does not entail knowledge-of-knowledge — the specific argument underlying the anti-KK principle M0147 adjudicated more abstractly"
+  - "The knowledge rule of assertion: 'one should assert p only if one knows p' — explaining Moore's paradox and the lottery case, extended by this extraction (not yet adjudicated pro/con here) to a KnowledgeOS Assert operation"
+  - "The phenomenal-conception-of-evidence critique: Williamson's argument that 'the phenomenal is empty' (a converging-to-the-empty-set argument, analogous to the open-interval sequence (0,1),(0,1/2),(0,1/4),...) against grounding evidence in private appearances rather than knowledge"
+  - "The direction-of-fit table: Desire (mind→world, aspires to action) / Action (world→mind, satisfies desire) / Belief (mind→world, aspires to truth) / Knowledge (world→mind, satisfies belief) — knowledge as belief's success condition, a structural analogy not previously present in this corpus"
+defines: []
+refines:
+  - "This extraction's own §11.1 explicitly recommends adopting 'Evidence = Knowledge ✅' into KnowledgeOS Theory v1.2 — this is the EXACT claim M0147's adjudication (already processed in this reconstruction, one sequence earlier) explicitly rejects, quoting Williamson's own caveat that the equation 'does not amount to an analysis of either concept.' This completes, in reverse file order, the extraction→adjudication pairing already partially recorded at M0147: the extraction's own recommendation is now visible and confirms M0147's rejection was correctly targeted, not a strawman."
+  - "Anti-KK / knowledge iteration non-closure (already adjudicated at M0147 as 'Knowledge Iteration Non-Closure'): given its full underlying argument here (Mr Magoo, sorites-style discrimination limits) rather than only the adjudicated conclusion"
+contradicts: []
+repeats:
+  - "Anti-luminosity, margin-for-error, TRUE≠BELIEVED≠KNOWN — all already recorded in full at M0147's adjudication; this document is their source, not new analysis beyond what M0147 already extracted and mostly rejected/narrowed"
+bridge_candidates:
+  - "Whether Fitch's Paradox of Unknowability (genuinely new formal content, not mentioned in M0147's own summary of this same extraction) is ever picked up as a research candidate for KnowledgeOS's Zero/Gap-cannot-be-known-as-such implication — M0147 did not address Fitch's paradox specifically, only the broader anti-luminosity/margin-for-error/structural-unknowability themes"
+  - "Whether the knowledge rule of assertion is ever connected to the corpus's own Assertion→Responsibility candidate (M0147 §25) beyond the shared theme — the two documents use overlapping but not identical formal apparatus"
+mathematical_content: >
+  States the Fitch's-paradox derivation as a five-step modal argument (K distributes over
+  conjunction; factivity; impossibility of knowing an unknown truth; weak verificationism; the
+  knowability-implies-known conclusion), the Mr Magoo sorites argument, and the direction-of-fit
+  table — all cited as Williamson's own established philosophical arguments, not new derivations
+  performed by this extraction.
+gita_content: null
+kernel_content: >
+  Completes, by being located one sequence after its own review, the extraction→adjudication pairing
+  for the Williamson source (M0149→M0147 in logical order, M0147→M0149 in this reconstruction's file
+  order) — the same "review found before its extraction" anomaly already seen for the Reiter source
+  (M0145's review, still lacking its own extraction as of this record).
+registry_updates:
+  - "Confirms M0147's rejection of Evidence=Knowledge was correctly targeted: this extraction's own §11.1 explicitly recommends adopting exactly that equation"
+  - "Introduces Fitch's Paradox of Unknowability as new formal content not covered in M0147's own summary of this same source — a bridge_candidate for the Zero/Gap-cannot-be-known-as-such research line"
+  - "Second instance in this specific sub-thread of a review being encountered before its own extraction (after the still-fully-unlocated Reiter/Situation-Calculus extraction underlying M0145) — the extraction here IS located, unlike Reiter's, so this instance is FULLY resolved rather than left open"
+anchor_test:
+  anchor: false
+  supports_dimension: "Confirms M0147's rejection target; introduces Fitch's paradox as new content"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Evidence = Knowledge | ✅ | Evidence in KnowledgeOS = knowledge\" (§11.1) — the extraction's own recommendation, directly contradicted by M0147's adjudication"
+  - "\"If all truths are knowable, then all truths are known. Since not all truths are known, not all truths are knowable.\" — Fitch's paradox conclusion, new content"
+  - "\"Gap: A gap cannot be known as a gap. Zero: Zero cannot be known as Zero.\" (§7.2 implication) — a formal argument for a conclusion M0147 reached by a different route (structural unknowability)"
+undefined_concepts: []
+open_questions:
+  - "Is Fitch's Paradox of Unknowability ever taken up as a formal research candidate anywhere later in this reconstruction's sequence, given it was not addressed in M0147's own adjudication of this same extraction?"
+tier2_triggered: true
+tier2_reason: >
+  Introduces Fitch's Paradox of Unknowability as genuinely new formal content not covered in
+  M0147's own adjudication summary of this same source, and confirms (via its own explicit §11.1
+  recommendation) that M0147's rejection of Evidence=Knowledge was correctly targeted at a real
+  claim rather than a strawman — completing the extraction→adjudication pairing for this source.

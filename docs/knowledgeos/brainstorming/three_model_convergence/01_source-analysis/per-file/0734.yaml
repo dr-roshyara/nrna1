@@ -1,0 +1,169 @@
+sequence: 734
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-130912_step-147-domain-events-and-integration-contracts.md
+title: "Step 147 -- Delivers Thorough, Concrete Command/Query/Event/Integration-Event Cataloging Per Bounded Context Directly Grounded in the Golden Trace, Seven Named Integration-Contract Schemas, and IC-001 Through IC-010 -- Delivers the Genuinely Valuable Deterministic Execution Gate CanExecute(Action)=AuthorizationValid∧ContextValid∧RequiredAssurancePassed∧SubjectAvailable and a Specific Named Failure-Reason Taxonomy for AI-Consumable Error Handling -- Largely Operationalizes Prior-Established Principles Rather Than Introducing Extensive New Territory -- Opens Step 148, API & Contract Architecture, Promising 'KnowledgeOS Platform API Contract v1'"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 147 -- Domain Events & Integration Contracts', promised at 0733's close; delivers thorough, concrete command/query/event cataloging per bounded context and named integration-contract schemas directly grounded in the Golden Trace, largely operationalizing already-established DDD/eventual-consistency/CQRS principles rather than introducing extensive new architectural territory, with the deterministic execution-gate formula and a named AI-consumable failure-reason taxonomy as its standout original contributions"
+source_role: PRIMARY_RESEARCH
+canonical_source: 734
+importance: critical
+confidence: high
+about: >
+  Opens with the guiding principle "aggregates communicate through explicit contracts, not shared object
+  graphs" and delivers the four-mechanism interaction taxonomy (`Command=intent/request, Query=read,
+  Domain Event=internal fact, Integration Event=cross-boundary fact`), with the precise clarifying
+  distinction "a domain event... does NOT mean every other context must immediately do something." Delivers
+  a comprehensive command/event catalog per bounded context directly derived from the Golden Trace's
+  objects: Governance (twelve commands, twelve events spanning the full Decision/Policy/Exception
+  lifecycles); Knowledge (Claim commands/events); Evidence (deliberately conservative ingestion-only
+  commands: `CaptureObservation, RegisterEvidence, LinkEvidence`); Assurance (Rule/Verification/Finding
+  commands/events); Agent (Session/Task/Recommendation/Action commands/events); Authorization (its own
+  controlled command/event boundary, `EvaluateAuthorization/ApproveAction/DenyAction/RevokeAuthorization`);
+  and Action/Execution, with the explicit separation of `RequestAction` from actual execution
+  (`PrepareAction/AuthorizeAction/ExecuteAuthorizedAction/CancelAction`) preventing `RequestAction` from
+  "accidentally becoming `ExecuteAction`." Delivers the complete Golden Trace event chain as a single
+  end-to-end sequence directly tied to 0732's specific trace.
+
+  Delivers the Synchronous-vs-Asynchronous classification (synchronous for `GetContext, EvaluateAuthorization,
+  GetVerificationStatus`; asynchronous for `EvidenceIngestion, GraphProjection, Notification,
+  LongRunningVerification`), with Authorization explicitly required to be synchronous for high-risk actions
+  ("the caller should know the authorization decision before execution... not fire-and-forget") and Execution
+  permitted to be asynchronous for deployments/migrations/long-running verification. Delivers a nine-row
+  Consistency classification table (Decision activation/Authorization/Action state/Evidence registration/
+  Verification record: `Strong/local`; Graph projection/Search index/Notifications/Analytics: `Eventual`),
+  "a much healthier model than trying to make everything strongly consistent," directly consolidating
+  0725's/0727's/0733's transaction-boundary discipline into one summary table.
+
+  Reconfirms the Transactional Outbox pattern (worked dual-write-failure example: without an outbox, a
+  committed Decision leaves downstream Knowledge/Graph never notified if the broker fails) and delivers
+  Idempotency requirements for consumers (an event may be delivered more than once; consumer processing
+  must not produce duplicate semantic effects), an Event envelope schema
+  (`eventId/eventType/eventVersion/occurredAt/producer/correlationId/causationId/payload`), and the precise
+  Correlation-vs-Causation distinction: `CorrelationID` answers "which workflow does this belong to?" (e.g.
+  `GT-NEXUS-001`); `CausationID` answers "which event/action caused this event?" — extending 0732's TraceID
+  distinction into per-event causal chains. Delivers Event versioning discipline (`AdditiveChange` before
+  `BreakingChange`; a genuine semantic break requires a new version).
+
+  **Delivers seven concrete, minimal, deliberately narrow integration-contract schemas**, each explicitly
+  contrasted with what it deliberately excludes: `EffectiveDecision` (decisionId/authority/scope/
+  effectiveAt/policyReferences — "notice what is deliberately absent: internal persistence fields, internal
+  workflow objects, UI data, implementation details"); `EvidenceRegistered`; `VerificationCompleted`
+  (including `ruleId+ruleVersion`, "sufficient for downstream projections"); `FindingRaised`; `ActionRequested`
+  (including `contextId+traceId`); and `ActionAuthorized` — "the execution layer needs this contract, not
+  the complete Authorization aggregate." Delivers `IC-001`: "external API models must not cross into the
+  domain layer unchanged" — reconfirming the Anti-Corruption-Layer discipline with a worked Nexus-adapter
+  translation chain (`Nexus API response→NexusObservation→EvidenceRegistered`).
+
+  Delivers CQRS-style query-architecture separation with an explicit "but don't overengineer CQRS" caution
+  — "we do not need `CQRS+EventSourcing+Microservices` simply because we have events... a modular
+  application can implement these concepts very effectively," directly reinforcing 0716's/0730's/0733's
+  technology-independence discipline. Delivers a `ContextIndex` read-model sketch and a `ContextCache`
+  distinguished precisely from authority (`Cache≠Authority`, requiring explicit `Validity`/`SourceVersion`
+  fields) and Stale-context protection preconditions (`ContextAge<threshold`, or matching `ContextVersion`)
+  before high-risk actions.
+
+  **Delivers `CanExecute(Action)`, a genuinely valuable, precise deterministic execution-gate formula**
+  (§147.45-147.48): `AuthorizationValid∧ContextValid∧RequiredAssurancePassed∧SubjectAvailable` — "a
+  powerful deterministic execution gate," directly unifying the previously separate Authorization/Context/
+  Assurance architectural threads into one composable precondition, worked through a concrete convergence
+  diagram (`Action→{Authorization,Context,Assurance}→EXECUTE`). **Delivers a specific, named failure-reason
+  taxonomy explicitly designed for AI-consumable error handling** (`AUTHORIZATION_DENIED, CONTEXT_EXPIRED,
+  ASSURANCE_FAILED, REQUIRED_EVIDENCE_MISSING, SUBJECT_UNAVAILABLE`), explicitly contrasted with a generic
+  `ERROR` response: "this is important for agents... the agent can then reason over a semantic failure...
+  rather than: API returned 403. The former is a domain-level explanation" — a precisely reasoned,
+  currently and broadly applicable API-design principle specifically for agent-consumed systems.
+
+  Delivers Command authorization (commands themselves require risk-scoped authorization, e.g.
+  `ExecuteProductionAction` requiring stronger authority than `RequestAction`) and the Agent capability
+  model (`AgentCapability⊆PlatformCapability`, `AuthorizedCapability=Capability∩Policy∩Scope`), a precise
+  composition formula extending 0717's/0723's/0730's agent-permission discipline. Delivers a Contract
+  hierarchy diagram (Agent→Application→Domain→Integration Layer→{Knowledge,Assurance,Governance}→
+  Projections) and the explicit three-flow separation (Command flow: `Intent→Command→Aggregate`; Event
+  flow: `Aggregate→Event→OtherContexts`; Query flow: `Agent→Query→ReadModels`), with "Golden Trace as
+  interaction architecture" rendering the entire scenario as one complete end-to-end interaction diagram.
+
+  **Delivers `IC-003` through `IC-010`, eight additional interaction invariants** consolidating this file's
+  discipline into compact statements: commands express intent, events express facts; queries never mutate
+  state; cross-context communication uses published contracts; external API models terminate at adapters;
+  event consumers must be idempotent; high-risk authorization must be evaluated before execution; the graph
+  may be temporarily stale but must be rebuildable (reconfirming 0727's graph-rebuildability finding); and
+  a recommendation cannot directly trigger execution without the required action/authorization path.
+
+  Delivers Step 147's verdict, three boxed principle groups summarizing the file's interaction architecture:
+  `Commands→Aggregates→Events→Context Projections`; `Queries→Governed Read Models→Agent`; and
+  `Action→Authorization→Execution→Evidence→Verification` — "a complete interaction model without requiring
+  premature commitment to a particular broker, database, or microservice architecture."
+
+  **Closes by opening "Step 148 — API & Contract Architecture,"** promising to make these contracts concrete
+  at the actual API boundary for Claude, Codex, CI/CD, engineering systems, governance clients, assurance
+  checkers, and graph consumers, posing the key question: "what is the minimum stable KnowledgeOS contract
+  that all agents can rely upon, independent of how KnowledgeOS is internally implemented?" — promising
+  "the KnowledgeOS Platform API Contract v1" and establishing "the boundary between the existing
+  `.claude`/`.codex` mechanisms and the future centralized KnowledgeOS platform." No actual code execution,
+  repository inspection, or verified filesystem/architecture claim reported anywhere in this file; every
+  command, event, contract schema, and invariant remains a target specification, now directly grounded in
+  the Golden Trace rather than abstract placeholders.
+introduces:
+  - concept: "The four-mechanism interaction taxonomy (Command/Query/Domain Event/Integration Event) with a comprehensive per-context catalog"
+  - concept: "The nine-row Consistency classification table (Strong/local vs. Eventual)"
+  - concept: "The Correlation-ID vs. Causation-ID distinction"
+  - concept: "Seven concrete, deliberately minimal integration-contract schemas"
+  - concept: "CanExecute(Action) -- a deterministic execution-gate formula unifying Authorization/Context/Assurance"
+  - concept: "A specific named failure-reason taxonomy for AI-consumable error handling"
+  - concept: "The Agent capability composition formula (AuthorizedCapability=Capability∩Policy∩Scope)"
+  - concept: "IC-001 through IC-010"
+  - concept: "Opens Step 148 -- API & Contract Architecture, promising the KnowledgeOS Platform API Contract v1"
+defines:
+  - concept: "CanExecute(Action)"
+    definition: "A material action may proceed only when four independently-verifiable conditions all hold: AuthorizationValid (a still-valid, granted authorization exists), ContextValid (the governing context has not expired or been superseded), RequiredAssurancePassed (any mandated pre-execution checks have passed), and SubjectAvailable (the target system is reachable) -- unifying the previously separate Authorization, Context, and Assurance architectural threads into one composable, deterministic precondition"
+  - concept: "Named failure-reason taxonomy"
+    definition: "When CanExecute fails, the platform returns a specific named reason (AUTHORIZATION_DENIED, CONTEXT_EXPIRED, ASSURANCE_FAILED, REQUIRED_EVIDENCE_MISSING, SUBJECT_UNAVAILABLE) rather than a generic error code, allowing an agent to reason over the semantic cause of the failure rather than an opaque technical status like an HTTP 403"
+  - concept: "Correlation ID vs. Causation ID"
+    definition: "CorrelationID identifies which overall workflow/trace an event belongs to (e.g. GT-NEXUS-001); CausationID identifies the specific prior event or action that directly produced this event -- the two answer different questions ('which workflow?' vs. 'what caused this specific step?') and must be tracked separately in the event envelope"
+refines:
+  - concept: "0725's/0733's transaction-boundary and eventual-consistency discipline"
+    refinement: "Consolidated into a single nine-row consistency classification table distinguishing Strong/local operations from Eventual ones"
+  - concept: "0732's TraceID/entity-ID distinction"
+    refinement: "Extended with per-event CausationID tracking, distinguishing workflow-level correlation from step-level causation"
+  - concept: "0687's/0697's/0712's/etc. Anti-Corruption-Layer discipline"
+    refinement: "Reconfirmed as IC-001 with a concrete worked Nexus-adapter translation chain"
+  - concept: "0716's/0730's/0733's technology-independence discipline"
+    refinement: "Extended into query-architecture terms via 'don't overengineer CQRS' -- CQRS/event-sourcing/microservices are not required merely because events exist"
+  - concept: "0717's/0723's/0730's agent-permission and capability discipline"
+    refinement: "Given a precise composition formula: AuthorizedCapability=Capability∩Policy∩Scope"
+  - concept: "0727's graph-rebuildability finding"
+    refinement: "Reconfirmed as IC-009 within the interaction-invariant series"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0735 (Step 148 — API & Contract Architecture) with standard attention: check whether it delivers a genuinely concrete 'KnowledgeOS Platform API Contract v1' specification, and whether it addresses the boundary between the existing .claude/.codex mechanisms and a future centralized platform with any new content beyond what 0717/0721/0726 already established."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the four-mechanism interaction taxonomy with its comprehensive per-context command/event catalog, the nine-row consistency classification table, and seven concrete minimal integration-contract schemas -- all directly grounded in the Golden Trace."
+  - "dimension-registry.md: record CanExecute(Action) (the deterministic execution-gate formula), the named AI-consumable failure-reason taxonomy, the Correlation-vs-Causation-ID distinction, and IC-001 through IC-010."
+  - "dimension-registry.md: note this file largely operationalizes prior-established DDD/eventual-consistency/CQRS principles rather than introducing extensive new territory, with CanExecute and the failure-reason taxonomy as its standout original contributions."
+anchor_test:
+  anchor: "0725's/0733's transaction-boundary/eventual-consistency discipline; 0732's TraceID distinction; the corpus's Anti-Corruption-Layer discipline; 0716's/0730's/0733's technology-independence discipline; 0717's/0723's/0730's agent-permission discipline; 0727's graph-rebuildability finding"
+  supports_dimension: "Delivers thorough, concrete command/query/event/integration-event cataloging directly grounded in the Golden Trace, largely operationalizing already-established DDD/eventual-consistency/CQRS principles into a comprehensive, implementation-ready reference (per-context command catalogs, seven minimal integration-contract schemas, a nine-row consistency classification table). Its standout original contributions are the deterministic execution-gate formula CanExecute(Action), unifying Authorization/Context/Assurance into one composable precondition, and a specific named failure-reason taxonomy explicitly designed for AI-consumable error handling rather than generic error codes -- both directly and currently applicable to real agentic-system API design. Closes with a well-motivated continuation into Step 148's promised concrete API contract specification"
+  refines_or_contradicts: "directly and substantially extends 0725's/0733's transaction-boundary discipline, 0732's TraceID distinction, the corpus's Anti-Corruption-Layer discipline, 0716's/0730's/0733's technology-independence discipline, 0717's/0723's/0730's agent-permission discipline, and 0727's graph-rebuildability finding; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§147.45-147.48's CanExecute(Action)=AuthorizationValid∧ContextValid∧RequiredAssurancePassed∧SubjectAvailable formula, paired with the named failure-reason taxonomy and the explicit contrast 'the agent can then reason over a semantic failure... rather than: API returned 403,' is directly checkable evidence of a precisely reasoned, currently applicable AI-consumable API-design principle."
+  - "§147.32-147.37's seven integration-contract schemas, each explicitly noting what internal fields are deliberately excluded, is directly checkable evidence of a disciplined, minimal published-language design applied consistently across every bounded context."
+  - "§147.41's explicit statement 'we do not need CQRS+EventSourcing+Microservices simply because we have events... a modular application can implement these concepts very effectively' is directly quotable evidence of continued technology-independence discipline resisting fashionable-infrastructure creep."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 148's actual content (0735), once read, delivers a genuinely concrete 'KnowledgeOS Platform API Contract v1' with actual endpoint/method signatures, or remains at the level of conceptual contract categories already established in prior files."
+  - "Whether the file's IC-001..IC-010 series is ever cross-referenced with or reconciled against the AFR/AF/DM/GT/GG/GE/GC/GA/RA/CM/LA series produced across the surrounding files."
+tier2_triggered: true
+tier2_reason: "Delivers thorough, concrete command/query/event/integration-event cataloging per bounded context directly grounded in the Golden Trace, largely operationalizing prior-established DDD/eventual-consistency/CQRS principles into an implementation-ready reference. Standout original contributions: CanExecute(Action), a deterministic execution-gate formula unifying Authorization/Context/Assurance, and a specific named failure-reason taxonomy explicitly designed for AI-consumable error handling. Delivers seven minimal integration-contract schemas and IC-001 through IC-010. Opens Step 148's well-motivated continuation promising a concrete API contract specification."

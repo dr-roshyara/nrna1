@@ -1,0 +1,44 @@
+sequence: 217
+path: docs/knowledgeos/brainstorming/kernel/20260824-111611-knowledgeos-epistemic-architecture-synthesis-ddd-consolidation-duplicate.md
+title: "KnowledgeOS — Epistemic Architecture Synthesis (duplicate of 0216)"
+date: "2026-08-24"
+bytes: 44000
+model:
+  primary: c1
+  secondary: null
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 216
+importance: low
+confidence: high
+about: >
+  Byte-identical duplicate of 0216 (verified via diff), the corpus's recurring self-labeled
+  "-duplicate" capture pattern (fifth instance: 0181, 0190, 0198, and this one).
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Entire content of 0216"
+    canonical_source: 216
+    novelty: none
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0216"
+  supports_dimension: "none (duplicate)"
+  refines_or_contradicts: "identical to 0216"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "diff against 0216's source file returned no output -- byte-identical"
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Verified byte-identical duplicate of 0216; no independent analytical content."

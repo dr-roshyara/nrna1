@@ -1,0 +1,235 @@
+sequence: 580
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-182835_step-025c-2-independent-evidence-combination.md
+title: "LANDMARK: 0579's Deferred 'Novel Composition Algebra?' Question RESOLVED IN THE NEGATIVE — First Actual Worked Numerical Bayesian Calculations in the Corpus (Likelihood-Ratio Arithmetic, LR=9.5→P≈90.5%; Combined LR=42.75→P≈97.7%; Contradicted LR→P≈72.8%), Confirming Bayesian Mathematics as a Legitimate Specialized Inference Engine WITHIN the Already-Adopted Layered Architecture, Never the Epistemic Kernel Itself; 'Inference Is a Projection of KnowledgeState, Not the KnowledgeState Itself'; ArtifactMultiplicity≠InformationMultiplicity; 'Inference Depends on a Model' Formalized Into a Reproducible InferenceResult Record; ModelPlurality (Preserving Multiple Valid Inference Results Rather Than Picking One as 'the Truth'); Ten Named Formal Properties (A1-A10); Verdict '25C.2 — PASS'; Opens Step 25C.3 (Evidence Dependence and Information Value), the First Explicit Bridge to Information Theory and VOI for Lord's Epistemic Actions"
+date: "2026-08-27"
+bytes: 17143
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the concrete, deferred sub-experiment committed at 0579, directly executing 'Step 25C.2 -- Independent Evidence Combination' and resolving the open novel-composition-algebra question left explicitly unanswered there"
+source_role: PRIMARY_RESEARCH
+canonical_source: 580
+importance: critical
+confidence: high
+about: >
+  Opens "Step 25C.2 — Independent Evidence Combination," attacking the question deliberately postponed at
+  0579: "when several pieces of evidence support the same proposition, how should KnowledgeOS combine
+  them?" Explicitly frames this as where "the statistician's discipline becomes essential," warning
+  against the tempting but incorrect rule `more sources⇒more certainty`, "only true under specific
+  assumptions."
+
+  **Delivers the corpus's first actual worked numerical Bayesian calculations**, a genuinely new kind of
+  content distinct from every prior file's purely symbolic/qualitative treatment: starting from an
+  explicitly-labeled **experimental prior** `P(H)=0.5` (not a KnowledgeOS principle), evidence `E_1`
+  (restore test success) with `P(E_1|H)=0.95`, `P(E_1|¬H)=0.10` yields likelihood ratio `LR_1=9.5` and
+  `P(H|E_1)≈90.5%`; adding genuinely independent evidence `E_2` (`LR_2=4.5`) under conditional independence
+  yields combined `LR_12=42.75` and `P(H|E_1,E_2)≈97.7%`, demonstrating "the legitimate case where
+  independent evidence increases statistical confidence substantially"; adding contradictory evidence
+  `E_3` (a failed rollback test, `LR_3=0.0625`) correctly REDUCES the posterior to `≈72.8%`. **Delivers a
+  crucial architectural reconfirmation immediately after the first calculation**: "we have NOT said
+  'KnowledgeOS now knows rollback will succeed.' We have established `P(H|E_1)≈0.905` under the assumptions
+  of the model. That is statistical inference, not epistemic truth" -- formalized as
+  **`Probability≠KnowledgeState`**, explicitly stated to confirm 0579's layered architecture.
+
+  **Delivers `IndependentEvidence must be established, not assumed`**: worked through a concrete attack
+  where naively multiplying likelihood ratios for a dependent `E_2=f(E_1)` "manufactures certainty" --
+  mathematically wrong. **Delivers a confirmatory perfect-duplicate experiment**: `E_2=E_1` correctly
+  yields `P(H|E_1,E_2)=P(H|E_1)`, "no additional information," formalized as
+  **`Aggregate(E,E)=Aggregate(E)`**, explicitly reconfirming the idempotency requirement first derived at
+  0578.
+
+  **Delivers the file's central architectural insight -- the real input to inference is an Evidence Graph,
+  not a flat evidence set**: formalized via three distinct dependency cases with explicit information-gain
+  behavior -- Case A duplicate (`E_2=E_1`, information gain 0); Case B dependent (`E_2=f(E_1)`, gain less
+  than the naive independent calculation); Case C independent (`E_1⊥E_2|H`, potential gain `>0`) -- "the
+  beginning of an evidence-combination theory."
+
+  **Delivers the file's key epistemic-representation deliverable**: for the contradicted scenario, the
+  correct KnowledgeOS state preserves BOTH the statistical result (`P(H|E)=0.728`) AND the qualitative
+  epistemic state (`Support={E_1,E_2}`, `Challenge={E_3}`, `Conflict=true`) simultaneously, worked through
+  a concrete structured record explicitly contrasted with a bare `confidence=72.8%` field --
+  **`EpistemicAssessment+StatisticalInference`** must coexist, "much richer than storing" a bare number.
+
+  **Delivers a further named requirement -- `Reliability belongs in the model, not as an arbitrary score`**
+  (uncalibrated evidence should be represented via its own `P(E|H)`/`P(E|¬H)` likelihood parameters rather
+  than discarded or scored ad hoc) and **`EvidenceCount≠EvidenceStrength`** (one direct successful restore
+  test outweighing ten weak human statements, "KnowledgeOS must not use source count").
+
+  **Delivers the file's most concrete common-cause-dependence worked example**: three apparent reports
+  (Infrastructure/Operations/Manager) all traced to one underlying monitoring dashboard, visualized as a
+  three-branch dependency diagram, versus a second, contrasting diagram showing three genuinely
+  independent physical restore tests legitimately combining. **Delivers the file's crucial named
+  distinction**: **`ArtifactMultiplicity≠InformationMultiplicity`** -- "three documents can represent one
+  underlying fact. One experiment can generate several genuinely distinct observations. This is an
+  epistemic identity problem, not merely a database deduplication problem" -- directly extending 0576's
+  Evidence Identity threat with a sharper, named formal distinction.
+
+  **Delivers a worked demonstration of non-monotonic inference alongside monotonic evidence history**:
+  `P(H)` moves `0.5→0.905→0.977→0.728` as evidence sequentially arrives and then contradicts, while
+  `E_1,E_2,E_3` remain permanently part of the historical record regardless -- formalized as
+  **`InferenceState is revisable; EvidenceHistory is cumulative`**, explicitly stated to "perfectly match
+  the result from 25A.3" (0574's history-monotonic/content-non-monotonic principle), a further independent
+  confirmation of that established architectural distinction.
+
+  **Delivers a worked retraction scenario** (`E_3` later found invalid, `Status(E_3)=Invalid`, recomputation
+  returns the posterior toward `97.7%` while the historical record preserves why the inference changed),
+  yielding the file's central new architectural principle: **`Inference is a projection of KnowledgeState,
+  not the KnowledgeState itself`** -- since retracting evidence necessarily requires `I_{t+1}` to be
+  recalculated from `K_{t+1}`, inference results can never be treated as first-class persistent state in
+  their own right.
+
+  **Delivers a reproducible `InferenceResult` record structure**
+  `(H,Probability,Model,ModelVersion,InputKnowledgeSnapshot,Assumptions)`, worked through a concrete
+  example, explicitly designed to answer "why did KnowledgeOS say rollback had a 72.8% probability?" with
+  `K_17+Model_1.2+Assumptions_X⇒0.728` -- "much stronger than 'the AI estimated 72.8%.'" Delivers a clean
+  formal inference contract `Inference(K,H,M,C)→R` (knowledge snapshot, hypothesis, model, assumptions/
+  context, result) -- "a clean DDD/application boundary."
+
+  **Delivers the file's key normative-question boundary case**: attempting `P(ApprovalRequired)` for a
+  purely normative proposition ("Architecture Board approval is mandatory") is explicitly "usually the
+  wrong operation" -- the correct mechanism is `RuleEvaluation(K,Policy)→Required`, formalized as
+  **`NotEveryPropositionRequiresStatisticalInference`**, explicitly identified as "a major reason we
+  rejected a universal Bayesian KnowledgeOS" -- directly connecting this file's numerical Bayesian work
+  back to 0579's architectural rejection of Bayesian-as-universal-kernel.
+
+  **Delivers a formal four-mode reasoning taxonomy**: Deductive/normative (`Rules+Facts→Conclusion`);
+  Statistical (`Evidence+Model→Probability/Distribution`); Causal (`Evidence+StructuralModel→
+  CausalInference`); Semantic/fuzzy (`Evidence+ConceptModel→DegreeOfApplicability`) -- "KnowledgeOS chooses
+  the appropriate mechanism." Delivers a proposed **`ReasoningContract`** domain object (Question type,
+  Applicable model, Required evidence, Assumptions, Output semantics, Acceptable uncertainty), explicitly
+  designed to prevent "an LLM from casually selecting whatever reasoning mechanism produces the desired
+  answer" -- a governance mechanism for the reasoning-selection layer itself.
+
+  **Delivers the file's central AI-governance safety scenario**: an LLM asserting "there is a 92% chance
+  the migration will succeed" with no traceable model, inputs, assumptions, or calculation must be treated
+  as an unsupported assertion, formalized as **`NumericalPrecision≠EpistemicValidity`** and requiring
+  explicit **`Semantic provenance`** for any generated number (who/what generated it, using which model,
+  from which knowledge snapshot, under which assumptions) -- absent that, numerical AI output remains
+  `CandidateInference`, never committed knowledge.
+
+  **Delivers the file's central formal deliverable -- ten named formal properties (A1-A10) established by
+  25C.2**: A1 Duplicate idempotency (`E⊕E=E`); A2 Independent evidence can accumulate under suitable
+  conditions (`Information(E_1,E_2)>Information(E_1)`); A3 Dependent evidence must not be double-counted;
+  A4 Contradiction must remain visible; A5 Inference depends on a model; A6 Inference depends on
+  assumptions; A7 Inference depends on the knowledge snapshot; A8 Retraction requires recomputation; A9
+  Numerical output without a model is not valid statistical inference; A10 Not all knowledge questions are
+  statistical.
+
+  **Delivers a refined candidate KnowledgeOS evidence algebra**, three-tiered:
+  `ℰ_H=(Support_H,Challenge_H,Unknown_H,Dependency_H,Temporal_H,Provenance_H)` →
+  `Assessment_H=A(ℰ_H,C)` → `Inference_H=M(Assessment_H,K_t,C)`, with `M` an explicit, named reasoning
+  model -- the corpus's most complete single formalization of the evidence-to-inference pipeline to date.
+  **Delivers the file's central architectural diagram**: Evidence→Evidence Graph→Epistemic Assessment,
+  fanning out to FIVE named parallel engines (Rule/Statistical/Causal/Logical/Semantic-Fuzzy)→Inference→
+  Decision, with the explicit principle "the kernel does not care which inference mathematics is used, as
+  long as the inference contract is explicit."
+
+  **Delivers a further careful separation -- `EvidenceAggregation≠WorldEventComposition`**: independent
+  evidence under the same model is legitimately commutative (`Infer(E_1,E_2)=Infer(E_2,E_1)`), but
+  sequential real-world EVENTS are generally not commutative (`Event_1→Event_2≠Event_2→Event_1`) -- "another
+  reason the temporal model must remain separate," a subtle distinction not previously stated this
+  precisely.
+
+  **Delivers a worked conflicting-priors scenario**: two analysts with different priors (`P_1(H)=0.5` vs
+  `P_2(H)=0.9`) receiving identical evidence produce genuinely different, both-valid posteriors, formalized
+  as **`Inference(E,Model,Prior,Assumptions)`**, never a bare property of the evidence alone. Delivers the
+  resulting new architectural principle **`ModelPlurality`**: KnowledgeOS should preserve multiple valid
+  inference results from different models side by side (worked concrete two-model example, 0.72 vs 0.84)
+  "rather than pretending one is universally 'the truth.'"
+
+  **Delivers a genuinely new concept -- `ModelSelection`**, posed as the next major open question ("when
+  should KnowledgeOS trust one inference model over another?"), explicitly distinguished from evidence
+  aggregation itself, with a worked four-item selection heuristic (normative question→rule engine;
+  measurable stochastic phenomenon→statistical model; causal intervention question→causal model; vague
+  linguistic category→fuzzy/semantic model) -- "this will become essential to Zero/Lord/Sārathi," directly
+  paralleling 0579's ReasoningModelSelection meta-problem.
+
+  **Delivers Step 25C.2's verdict, DEFINITIVELY RESOLVING the deferred question left explicitly open at
+  0579**: **"25C.2 — PASS,"** with the crucial qualifying finding: **"Bayesian mathematics works very well
+  as a specialized inference engine, but only after KnowledgeOS has modeled evidence dependency,
+  provenance, temporal scope and assumptions. It should NOT become the epistemic kernel itself."** This
+  definitively answers, in the NEGATIVE, 0579's explicitly posed open question of whether "KnowledgeOS
+  needs a new composition algebra of its own" -- the answer is no wholly novel algebra is required;
+  Bayesian mathematics is confirmed as legitimately usable, but strictly as one pluggable inference engine
+  within the already-adopted layered architecture, exactly as 0579's own comparison had anticipated.
+
+  **Delivers the file's final consolidated architecture formula**:
+  `KnowledgeOS = EpistemicKernel + EvidenceGraph + InferenceEngines + DecisionMathematics`, with the
+  EpistemicKernel precisely enumerated (Evidence+Assertion+Assessment+Conflict+TemporalValidity+
+  Provenance+Revision), the InferenceEngine formalized as `(𝒜,M,C)→InferenceResult`, and the
+  DecisionEngine formalized as `(InferenceResult,Goal,Constraints)→Recommendation` -- the corpus's most
+  complete single top-level architecture equation produced by the entire 25A/25B/25C sub-arc.
+
+  **Closes by opening "Step 25C.3 — Evidence Dependence and Information Value,"** proposing to formally
+  investigate "how much new information does `E_2` provide given `E_1`?" via conditional information
+  `I(E_2;H|E_1)`, explicitly connecting this to `VOI(a)` for Lord's epistemic actions (directly extending
+  0557's/0567's Value-of-Information machinery) and predicting this will establish "a mathematically
+  rigorous bridge from Evidence→Information→Investigation→Zero/Lord" -- the first explicit statement that
+  information theory itself will be incorporated into the KnowledgeOS mathematical toolkit, alongside
+  statistics, logic, and decision theory. Still no report of actual executed code -- though this file's
+  worked likelihood-ratio arithmetic represents the corpus's first genuine numerical (if hand-computed)
+  calculation, a step closer to computational verification than the purely symbolic/qualitative reasoning
+  of every prior file in the arc.
+introduces:
+  - concept: "The corpus's first actual worked numerical Bayesian calculations (concrete likelihood-ratio arithmetic yielding specific posterior probabilities), a genuinely new kind of content distinct from every prior file's purely symbolic or qualitative treatment"
+  - concept: "The definitive negative resolution of 0579's deferred question — KnowledgeOS does NOT need a wholly novel composition algebra; Bayesian mathematics is confirmed valid strictly as a specialized pluggable inference engine within the already-adopted layered architecture"
+  - concept: "'Inference is a projection of KnowledgeState, not the KnowledgeState itself' — a new architectural principle derived directly from the retraction-recomputation requirement, establishing that inference results can never be treated as independent, persistent first-class state"
+  - concept: "ArtifactMultiplicity≠InformationMultiplicity — a sharpened, formally named version of the corpus's evidence-lineage concern, explicitly classified as an epistemic identity problem rather than a database deduplication problem"
+  - concept: "EvidenceAggregation≠WorldEventComposition — evidence combination under a fixed model is legitimately commutative, while sequential real-world events generally are not, a subtle distinction not previously stated this precisely"
+  - concept: "ModelPlurality — the principle that KnowledgeOS should preserve multiple valid inference results from genuinely different models side by side, rather than collapsing them into one privileged 'true' answer"
+  - concept: "A reproducible InferenceResult record structure and formal inference contract Inference(K,H,M,C)→R, giving numerical inference outputs the same reproducibility guarantees already established for other KnowledgeOS artifacts"
+  - concept: "A ReasoningContract domain object governing which reasoning mechanism may be applied to which question type, explicitly preventing an LLM from casually selecting whichever mechanism produces a desired answer"
+  - concept: "NumericalPrecision≠EpistemicValidity and the mandatory Semantic provenance requirement for any generated number — a concrete AI-governance safety rule for a common, realistic LLM failure mode (a confident percentage with no traceable basis)"
+  - concept: "Ten named formal properties (A1-A10) consolidating the file's derived evidence-combination requirements"
+  - concept: "'Step 25C.3 — Evidence Dependence and Information Value', the first explicit incorporation of information theory (conditional information I(E_2;H|E_1)) into the KnowledgeOS mathematical toolkit, bridging directly to Value of Information for Lord's epistemic actions"
+defines:
+  - concept: "InferenceResult record"
+    definition: "(Hypothesis,Probability,Model,ModelVersion,InputKnowledgeSnapshot,Assumptions) — makes any numerical inference output fully reproducible and auditable"
+  - concept: "Inference contract"
+    definition: "Inference(K,H,M,C)→R — knowledge snapshot, hypothesis, mathematical model, assumptions/context, result — a clean DDD/application boundary for any inference engine"
+  - concept: "Refined three-tier evidence algebra (25C.2)"
+    definition: "ℰ_H=(Support_H,Challenge_H,Unknown_H,Dependency_H,Temporal_H,Provenance_H) → Assessment_H=A(ℰ_H,C) → Inference_H=M(Assessment_H,K_t,C)"
+  - concept: "Final consolidated KnowledgeOS architecture equation"
+    definition: "KnowledgeOS = EpistemicKernel + EvidenceGraph + InferenceEngines + DecisionMathematics, with EpistemicKernel=Evidence+Assertion+Assessment+Conflict+TemporalValidity+Provenance+Revision"
+refines:
+  - concept: "0579's explicit, deliberately unresolved question of whether KnowledgeOS needs a wholly novel evidence-composition algebra of its own"
+    refinement: "Definitively resolved in the negative through actual worked Bayesian calculations demonstrating the framework works correctly once dependency/provenance/temporal/assumption modeling is in place — Bayesian mathematics is confirmed as a legitimate specialized inference engine, never the epistemic kernel"
+  - concept: "0578's idempotency derivation (x⊕x=x for duplicate evidence)"
+    refinement: "Reconfirmed via an actual numerical demonstration (P(H|E_1,E_1)=P(H|E_1)) rather than only an abstract algebraic statement"
+  - concept: "0574's/0575's history-monotonic-vs-content-non-monotonic architectural principle"
+    refinement: "Independently reconfirmed through a fresh numerical worked example (P(H) rising then falling as evidence arrives, while the evidence history remains permanently cumulative), explicitly self-identified by the file as matching 0574's earlier result"
+  - concept: "0576's Evidence Identity threat (EvidenceIdentity≠Hash(Text))"
+    refinement: "Sharpened into the more precisely named ArtifactMultiplicity≠InformationMultiplicity distinction, explicitly reclassified as an epistemic identity problem rather than a database deduplication concern"
+  - concept: "0579's ReasoningModelSelection meta-problem"
+    refinement: "Directly reconfirmed and renamed ModelSelection, with a concrete four-item worked selection heuristic (normative→rule, stochastic→statistical, causal→causal, vague-linguistic→fuzzy/semantic) not previously delivered this specifically"
+  - concept: "0557's/0567's Value of Information machinery (VOI for information-gathering actions)"
+    refinement: "Explicitly connected for the first time to formal information theory (conditional information I(E_2;H|E_1)), opened as the governing mathematical bridge for Step 25C.3"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25C.3 — Evidence Dependence and Information Value' is executed as its own dedicated corpus file, and whether it delivers the promised rigorous bridge from Evidence→Information→Investigation→Zero/Lord via formal information theory and VOI"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the corpus's first actual worked numerical Bayesian calculations, the definitive negative resolution of 0579's novel-composition-algebra question (Bayesian confirmed as a specialized inference engine, never the kernel), and 'Inference is a projection of KnowledgeState, not the KnowledgeState itself.'"
+  - "dimension-registry.md: record ArtifactMultiplicity≠InformationMultiplicity, EvidenceAggregation≠WorldEventComposition, ModelPlurality, the InferenceResult reproducibility record and formal inference contract, the ReasoningContract governance object, and NumericalPrecision≠EpistemicValidity with its mandatory Semantic provenance requirement."
+  - "dimension-registry.md: record the ten named A1-A10 formal properties, the refined three-tier evidence algebra, the final consolidated KnowledgeOS architecture equation, the verdict '25C.2 — PASS,' and 'Step 25C.3 — Evidence Dependence and Information Value' as the next research phase, the first explicit incorporation of information theory into the KnowledgeOS mathematical toolkit."
+anchor_test:
+  anchor: "0579's explicitly deferred question of whether KnowledgeOS needs a novel composition algebra; 0578's idempotency derivation; 0574's/0575's history-monotonic/content-non-monotonic principle; 0576's Evidence Identity threat; 0579's ReasoningModelSelection problem; 0557's/0567's Value of Information machinery"
+  supports_dimension: "LANDMARK delivering the corpus's first actual worked numerical calculations (concrete Bayesian likelihood-ratio arithmetic producing specific posterior probabilities), definitively and negatively resolving 0579's own explicitly deferred question about whether KnowledgeOS needs a wholly novel evidence-composition algebra — Bayesian mathematics is confirmed valid strictly as one pluggable inference engine, never the epistemic kernel itself, exactly as 0579's comparison had anticipated. Delivers a genuinely new architectural principle (inference as a mere projection of, never a substitute for, KnowledgeState), a sharpened evidence-identity distinction (ArtifactMultiplicity≠InformationMultiplicity), and several concrete new AI-governance safety mechanisms (a ReasoningContract preventing LLM reasoning-mechanism cherry-picking; mandatory semantic provenance for any generated number). Delivers ten named formal properties, the corpus's most complete single top-level architecture equation, and closes by opening the first explicit incorporation of formal information theory into the KnowledgeOS toolkit, directly bridging to Lord's Value-of-Information machinery established much earlier in the arc"
+  refines_or_contradicts: "definitively and negatively resolves the open question 0579 explicitly left deferred; reconfirms 0578's idempotency result numerically; independently reconfirms 0574's/0575's history/content-monotonicity distinction; sharpens 0576's Evidence Identity threat into ArtifactMultiplicity≠InformationMultiplicity; reconfirms and renames 0579's ReasoningModelSelection as ModelSelection; connects 0557's/0567's VOI machinery to formal information theory for the first time; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The three sequential worked Bayesian calculations (LR_1=9.5→P≈90.5%; combined LR_12=42.75→P≈97.7%; contradicted→P≈72.8%) are directly checkable, concrete numerical arithmetic — the corpus's first genuine numbers produced through actual calculation rather than symbolic assertion, and directly reproducible by hand or code to verify correctness."
+  - "The explicit verdict statement 'Bayesian mathematics works very well as a specialized inference engine, but only after KnowledgeOS has modeled evidence dependency, provenance, temporal scope and assumptions. It should NOT become the epistemic kernel itself' is directly checkable against 0579's own explicitly posed open question ('does KnowledgeOS need a new composition algebra of its own, with Bayesian mathematics becoming merely one implementation of a specialized inference operator?'), confirming a clean, traceable resolution of a specific, named open research question from the immediately preceding file."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25C.3 — Evidence Dependence and Information Value' is executed as its own dedicated corpus file, and whether it delivers the promised formal information-theoretic bridge to Value of Information for Lord's epistemic actions"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first actual worked numerical calculations — concrete Bayesian likelihood-ratio arithmetic yielding specific posterior probabilities across a sequential evidence scenario (support, corroboration, and contradiction) — a genuinely new kind of content distinct from every prior file's purely symbolic or qualitative reasoning, and a small but real step closer to computational verification. Definitively and negatively resolves the specific open question 0579 had explicitly deferred (whether KnowledgeOS needs a wholly novel evidence-composition algebra): Bayesian mathematics is confirmed valid strictly as a specialized, pluggable inference engine within the already-adopted layered architecture, never as the epistemic kernel itself. Delivers a genuinely new architectural principle (inference as a mere projection of, never a substitute for, KnowledgeState, directly required by the retraction-recomputation obligation), a sharpened, formally-named evidence-identity distinction (ArtifactMultiplicity≠InformationMultiplicity), and concrete new AI-governance safety mechanisms (a ReasoningContract preventing an LLM from cherry-picking its own reasoning mechanism; mandatory semantic provenance for any AI-generated numerical claim). Delivers ten named formal properties (A1-A10), the corpus's most complete single top-level KnowledgeOS architecture equation to date, and closes by opening the first explicit incorporation of formal information theory (conditional information, bridging directly to established Value-of-Information machinery) into the program's mathematical toolkit."

@@ -1,0 +1,95 @@
+sequence: M0255
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-110500_theory-01-primitives-and-signatures.md
+title: "Theory 01 — Primitives and Signatures: Document 01 of a NEW 15-document consolidated theory series (dated after the Theory v1.2 freeze, 'kernel NOT SELECTED') — the reconstruction's first fully epistemic-status-tagged ([DEF]/[EXP]/[REC]/[OPEN]) formal specification, fixing six primitive objects + one typed elimination operator, the three canonical predicates (Zero/Adequacy/Realization) with an explicit index-set non-identity proof sketch, a new FR-003 anti-circularity candidate requiring disjointness on the TRIPLE (Π,Q,T) with two concrete worked KR-BRIDGE-02 failure cases, and an explicit open declaration that KnowledgeOS still has NO declared mathematical carrier"
+date: "20260904-110500"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0255
+importance: critical
+confidence: high
+about: >
+  The opening document of an apparently new, structurally distinct 15-document consolidated theory
+  series ("Document 01 of 15," dated 2026-09-04, explicitly "Theory v1.2 FROZEN · kernel NOT
+  SELECTED"). Unlike the discursive review-chain documents of M0235-M0254, this is a terse, tightly
+  scoped formal reference document using a disciplined per-statement epistemic tagging convention
+  ([DEF]/[EXP]/[REC]/[OPEN]) throughout. It fixes the six primitive objects and one operator
+  underlying the whole theory, gives final clean forms of the three canonical predicates with an
+  explicit proof that they are three distinct quantities over three distinct index sets, introduces
+  a new FR-003 anti-circularity candidate rule with two concrete worked failure cases from
+  KR-BRIDGE-02, and explicitly reiterates that KnowledgeOS still lacks a declared mathematical
+  carrier — the single most load-bearing open problem named in the whole series.
+introduces:
+  - "Six primitive objects + one operator, given exact signatures: D (data/case, a finite multiset of records r); T (transformation, T:𝒟→ℛ); R (representation, R=T(D), derived not primitive); Q (inquiry, Q:𝒟→Y); Π (observable, Π:ℛ→O); O (decoder, O:ℛ→Y); C (constraint, a predicate on R) — with E_S (elimination) as the one operator"
+  - "The tested experimental record schema r=(value,source,tag,timestamp), optionally a derived rank — explicitly flagged [DEF] AND immediately disclaimed: 'this is an experimental carrier and is NOT declared to be the mathematical carrier of KnowledgeOS'"
+  - "The inquiry frame Π_frame=(Q,C,O) — 'what is asked, what must hold, how the answer is decoded' — with the decoder O explicitly FIXED IN ADVANCE, never chosen after seeing R: 'choosing O post hoc converts realization into curve-fitting'"
+  - "A rigorously TYPED elimination operator: E_S(R) = the representation obtained by removing S AND RE-ESTABLISHING the level's invariants — with an explicit [EXP] warning that naive set subtraction D\\S is INVALID wherever a field is relative (e.g. within-group rank), since it 'leaves stale ranks and silently produces a representation that the level's own rules forbid' — [REC]: 'every elimination operator must declare the level it acts at. An untyped E_S is a defect, not a simplification'"
+  - "Final clean forms of the three canonical predicates: Zero_{T,Π}(S;D)⟺Π(T(D))=Π(T(E_S(D))); Adequate(T,Q)⟺Ĥ(Q|T(D))=0; Realized(T,Q,O)⟺O(T(D))=Q(D) — with an explicit index-set argument for their non-identity: Zero is indexed by (T,Π) AND the subset S; Adequacy by (T,Q) AND the population; Realization by (T,Q,O) AND the case — 'they are not three readings of one quantity. They are three quantities over three different index sets'"
+  - "A NEW anti-circularity requirement, candidate FR-003: Π and Q must read DISJOINT fields, and disjointness must be discharged on the TRIPLE (Π,Q,T), not merely the pair (Π,Q) — because Π reads T(D), not D, and T can derive an output field from sources Π never declared, so a pairwise-disjoint declaration can still hide an effective shared read"
+  - "Two concrete worked failure cases from KR-BRIDGE-02 motivating FR-003: (1) rank=f(value,tag) because T_D ranks within tag group ⟹ Π falling back to rank effectively reads {value,tag} ⟹ if Q reads {source,tag}, they SHARE tag despite a declared disjoint pair; (2) dedup selects survivors by value ⟹ surviving source/tag/time columns depend on value ⟹ record COUNT depends on value ⟹ even Π_arity, which declares NO field reads at all, effectively reads {value}"
+  - "A sharp methodological principle: 'Declaration is not verification. Two hand-written provenance maps were wrong; a perturbation test caught both, code review caught neither. The effective read-set must be COMPUTED through T's provenance and VERIFIED empirically' — [REC]: promote to FR-003 once a second independent adopter exists (citing this repository's own governance standard ES-006.1)"
+  - "An explicit, maximally load-bearing [OPEN] declaration: 'KnowledgeOS has no declared mathematical carrier. Every experiment used a deliberately small numerical carrier so that fibers would collide and adequacy would be measurable. That is a calibration choice, not an ontological one' — with a table explicitly disclaiming that the tested carrier (value/source/tag/time, |D|≤6, 4-8 distinct values, argmax/tag-counts/deciles) IS a knowledge representation, a value domain, or business inquiries — 'the move from this to documents, claims, entities, relations, provenance, contradictions, temporal states and evidence is the open research problem. No result in this set should be quoted without its carrier'"
+  - "A final consolidated 4-rule TYPE DISCIPLINE table: E_S level-declaration+invariant-reestablishment ([DEF]+[EXP]); Π/Q read-disjointness on the triple, empirically verified ([EXP], candidate FR-003); O fixed before R is seen ([DEF]); transformation family strictly sequential (R_{k+1}=T_k(R_k)) OR parallel (R_k=T_k(D)), never silently mixed ([EXP], load-bearing because 'document 04 shows the DPI applies to one and not the other')"
+defines:
+  - "Π_frame=(Q,C,O) — the inquiry frame"
+  - "The typed elimination operator E_S with explicit level-declaration and invariant-reestablishment requirements"
+  - "FR-003 (candidate) — the triple-disjointness anti-circularity requirement"
+refines:
+  - "The corpus's long-running Zero/Adequacy/Realization apparatus (KR-ZERO-ALGEBRA, KR-REP-REDUCTION, M0219/M0232): consolidates all three into final clean signatures with an explicit, rigorous index-set-based proof of their pairwise non-identity, replacing the more discursive earlier treatments"
+  - "The read-disjointness guard first raised around M0221-M0233 (KR-BRIDGE-01/02): sharpened here into a formally candidate rule (FR-003) with the exact triple-vs-pair distinction and two concrete named failure cases"
+contradicts: []
+repeats:
+  - "The already-established finding that KR-BRIDGE-02 caught two of its own design flaws (M0233): the same two failure cases (rank-fallback tag-sharing; dedup-by-value record-count dependency) are restated here as the canonical motivating examples for the new FR-003 rule"
+bridge_candidates:
+  - "Whether this 15-document series is the actual 'proof object' / 'formal specification' repeatedly named as the next mandated artifact across M0239-M0244 (e.g. KR-KERNEL-EQUIVALENCE-CAPABILITY-PROOF-2026-09) under a different naming convention, or an entirely separate consolidated effort"
+  - "Whether documents 02-15 of this series exist in this corpus and were processed at later sequence positions"
+  - "Whether this series ever addresses or cross-references the concurrently-developed KR-ALGEBRA/Contribution research (M0245-M0254), given no such reference appears in this opening document"
+  - "Whether FR-003 was ever actually promoted (a second independent adopter per ES-006.1)"
+mathematical_content: >
+  Final clean signatures for the six primitives and the elimination operator; final canonical forms
+  of Zero/Adequacy/Realization with an explicit index-set-based proof of their non-identity; a new
+  triple-disjointness anti-circularity candidate rule (FR-003) with two concrete worked failure
+  cases; a consolidated 4-rule type-discipline table.
+gita_content: null
+kernel_content: >
+  Explicitly reconfirms "kernel NOT SELECTED" as of this document's date, consistent with the
+  M0235-M0244 kernel-minimality thread's own conclusion that a specific named operator set has not
+  been proved — this document instead consolidates the representation/observation/elimination
+  apparatus that any eventual kernel candidate must operate within.
+registry_updates:
+  - "Final six-primitive+one-operator signature set for the whole theory"
+  - "Final canonical Zero/Adequacy/Realization forms with explicit index-set non-identity proof"
+  - "New FR-003 candidate: Π/Q disjointness must be discharged on the triple (Π,Q,T), not the pair, with two concrete worked failure cases"
+  - "Explicit, maximally load-bearing open declaration: KnowledgeOS has no declared mathematical carrier"
+  - "Consolidated 4-rule type-discipline table"
+anchor_test:
+  anchor: true
+  supports_dimension: "Opening document of a new 15-document consolidated theory series; final primitive signatures; final Zero/Adequacy/Realization forms with index-set non-identity proof; new FR-003 triple-disjointness rule; explicit no-declared-carrier open problem"
+  refines_or_contradicts: "refines (consolidates the corpus's Zero/Adequacy/Realization apparatus and read-disjointness guard into final, rigorously-tagged forms)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"All statements here are [DEF] unless tagged otherwise — definitions are stipulated, carry no truth claim, and are replaced rather than refuted.\""
+  - "\"An untyped E_S is a defect, not a simplification.\""
+  - "\"Declaration is not verification. Two hand-written provenance maps were wrong; a perturbation test caught both, code review caught neither.\""
+  - "\"KnowledgeOS has no declared mathematical carrier... No result in this set should be quoted without its carrier.\""
+undefined_concepts: []
+open_questions:
+  - "Is this 15-document series the actual proof object repeatedly demanded across M0239-M0244?"
+  - "Do documents 02-15 exist in this corpus, and do they ever cross-reference the KR-ALGEBRA/Contribution thread (M0245-M0254)?"
+  - "Was FR-003 ever promoted per ES-006.1?"
+tier2_triggered: true
+tier2_reason: >
+  Opens a new, structurally distinct 15-document consolidated theory series with rigorous per-
+  statement epistemic tagging — the reconstruction's most disciplined single formal specification
+  to date — fixing final primitive signatures, proving the Zero/Adequacy/Realization non-identity
+  via an index-set argument, introducing a new anti-circularity candidate rule (FR-003) with two
+  concrete worked failure cases, and explicitly reiterating the still-unresolved carrier problem as
+  the single most load-bearing open item in the entire theory.

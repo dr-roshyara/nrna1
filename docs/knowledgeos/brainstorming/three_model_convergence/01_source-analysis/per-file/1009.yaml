@@ -1,0 +1,83 @@
+sequence: 1009
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/D285-5-ACTION-RESULT-TEST.md
+title: "D285-5 -- Action/Result Formal Test: The Actual Original Artifact at the Root of the Entire Equality-Investigation Saga, Now Directly Encountered in Its AMENDED Form With Four Formal Retroactive Corrections Written Directly Into the Source Document Itself"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual D285-5 artifact, the original source document whose over-claimed non-injectivity result this reconstruction has tracked being corrected across files 0989-0994, 1001-1003, 1005, 1007-1008; now encountered in its amended, self-correcting final form"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1009
+importance: critical
+confidence: high
+about: >
+  The actual D285-5 artifact, status "BOTH PROPERTIES REQUIRED — second holds only under semantic equality.
+  AMENDED 2026-08-31 (reviewers A+B): two claims weakened, one citation withdrawn." This is the original
+  source document at the root of the entire equality-investigation saga this reconstruction has tracked being
+  progressively corrected across many downstream files -- now encountered directly, WITH its own corrections
+  already written into the primary source.
+
+  **§1 (Property 1, `o≠δ(K,o)`)**: trivially type-required, cites `Command≠Transformation` (`§256.21-22`,
+  boxed -- the corpus reference this reconstruction has tracked since file 0989).
+
+  **§2 delivers the property's own SUPERSEDED-WORDING notice, written directly into the artifact**: "the
+  strong form below is NOT what this artifact establishes... Reviewer B: 'I would treat the old stronger
+  wording as SUPERSEDED, not merely annotated.' Done." The original execution trace is retained (two
+  operations differing in provenance/actor/authority producing the identical resulting state, confirmed via
+  `exec/t285_reconcile.py` T-E) as "the route to the operative claim," explicitly distinguished from the
+  superseded general non-injectivity claim.
+
+  **§3 delivers the original equality-qualification finding** (already tracked extensively): under structural
+  equality (`Π` inside the identity hash) the antecedent never fires (vacuously true, useless); only under
+  semantic equality is the property "required and load-bearing." Closes: "Philosophy asked the question; the
+  equality typing answered it."
+
+  **§4 (Independence)**: the Gītā corroborates a property KnowledgeOS derives independently (`§256.21`);
+  classified `R5` on the mathematics, `R2` on the philosophical contribution.
+
+  **§8 DELIVERS THE FOUR FORMAL AMENDMENTS WRITTEN DIRECTLY INTO THE ORIGINAL SOURCE ARTIFACT ITSELF** (not
+  merely in a downstream review document): (1) the `history⊊structural⊊semantic` hierarchy citation is
+  WITHDRAWN, confirmed non-corpus (already tracked, file 0991/0993); (2) `=_semantic` is confirmed a research
+  construct that "silently resolved" the still-open Step 254 Decision 3 (already tracked); (3) the property
+  establishes LESS than non-injectivity -- non-injectivity modulo a chosen quotient only, injective under
+  `≅_λ` (already tracked); (4) the `grantId` citation is WITHDRAWN as a different-layer defect (already
+  tracked). Closes: "The HPA review accepted this artifact as written. These amendments come from applying
+  the review's own equality mandate more deeply — the methodology found them, and it found them in the
+  artifact the methodology was built from." Cross-references "Full analysis: `E1-E7-EQUALITY-INVESTIGATION.md`"
+  (= this reconstruction's already-documented file 0994).
+
+  **This file is therefore the closing bookend of the entire equality-investigation arc**: the original
+  over-claim, now amended in place with its own four corrections, confirming this reconstruction's tracked
+  narrative (files 0989-0994, 1001-1003, 1005, 1007-1008) accurately reflects the corpus's own final,
+  disciplined self-correction of its own foundational artifact.
+introduces: []
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked non-injectivity over-claim and its correction (files 0989-0994, 1001-1003, 1005, 1007-1008)"
+    refinement: "CLOSES THE LOOP: the original D285-5 source artifact itself now carries all four corrections written in place, confirming the entire tracked correction narrative was genuinely, formally applied back to its origin document, not merely recorded in downstream review artifacts"
+contradicts: []
+repeats:
+  - "The four amendments substantially repeat content already documented via files 0989-0994, 1001-1003, 1005, 1007-1008; this file's distinctive significance is being the original source artifact now amended in place, closing the correction loop at its point of origin."
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record that the original D285-5 source artifact has now been amended in place with all four corrections (history-hierarchy withdrawal, semantic-equality-as-research-construct, non-injectivity-only-modulo-quotient, grantId-citation-withdrawal), closing the equality-investigation correction loop at its point of origin."
+anchor_test:
+  anchor: "This reconstruction's already-tracked equality-investigation correction narrative (files 0989-0994, 1001-1003, 1005, 1007-1008)"
+  supports_dimension: "Confirms the correction narrative was genuinely applied back to the original source artifact, closing the loop"
+  refines_or_contradicts: "confirms prior findings by showing their application at the point of origin"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "All four amendments in §8 are directly checkable against files 0991/0993-0994's own already-documented equality-investigation findings for exact consistency."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "The actual original D285-5 source artifact, now encountered amended in place with all four corrections from the equality-investigation programme, closing the correction loop at its point of origin and confirming this reconstruction's tracked correction narrative was genuinely and formally applied. Classified importance critical and confidence high given its role as the foundational document for the entire action/result-and-equality research arc."

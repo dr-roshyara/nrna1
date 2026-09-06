@@ -1,0 +1,123 @@
+sequence: 488
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-185100_question-19-what-is-a-discrepancy-between-current-and-ideal-filed-as-q21.md
+title: "LANDMARK: Discrepancy≠Deficiency (Deficiency⊆Discrepancy); Coherence Reframed as a Finding, Not a Discrepancy Dimension; Zero Split Into Compare Then Diagnose; New Sufficient/Adequate(S,P) Predicate Independent of Δ=∅"
+date: "2026-08-26"
+bytes: 17545
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "corrects the Arjuna 'After Moral Resolution: None' step to allow Δ_3≠∅ while the state remains sufficient for the purpose"
+source_role: PRIMARY_RESEARCH
+canonical_source: 488
+importance: critical
+confidence: high
+about: >
+  A further critical-review pass on Question 19's discrepancy model (responding to the 0485/0487 lineage:
+  "your current definition says... A discrepancy is a structured representation..."), delivering roughly a
+  dozen additional corrections beyond 0485's already-established Discrepancy/Zero≠Δ/non-symmetry work. This
+  file contains ONLY a review (no paired initial answer in this file), and closes by stating its central
+  correction should apply "before moving to Q20" -- even though, in the corpus's actual read sequence, Q20
+  (0486) has already been processed, suggesting this file's internal chronology diverges from its position
+  in the sequential corpus (a minor corpus-ordering observation, not a content contradiction).
+
+  **The central new correction**: "A discrepancy is not necessarily a deficiency" -- worked example: K_t:
+  Version=3.90 against I_t:Version>=3.85 produces a numerical difference but **no deficiency** at all.
+  Therefore **Discrepancy≠Deficiency; Deficiency⊆Discrepancy** -- a major refinement of 0485's discrepancy
+  model, which had conflated "difference" with "deficiency" throughout. Makes the purpose/context dependency
+  fully explicit: Δ_t=Compare(K_t,I_t,C_t,P_t), since the same knowledge may be sufficient for purpose P_1
+  but insufficient for P_2. Reinforces 0485's non-symmetry finding with the sharper framing that the
+  Knowledge-to-Ideal relationship is fundamentally **directional** (K→I, since the Ideal State is normative
+  and the Knowledge State is descriptive), recommending discrepancy be understood primarily as "a structured
+  comparison relation" with numerical distance as an optional derived metric, never the primary concept.
+  **Renames Δ_E to Δ_K** (Knowledge discrepancy) to avoid confusion with Evidence (ℰ) and Epistemic State
+  (Σ), giving Δ_t=(Δ_K,Δ_U,Δ_X). **Reframes Coherence Violation from a discrepancy dimension to a Finding**:
+  Coherent(K_t,C_t,P_t) is a predicate over state; a violation is a finding f_c∈Findings_t that may then
+  CONTRIBUTE to discrepancy, rather than being merely another numeric distance dimension -- explicitly
+  preserving Q8's coherence-vs-truth distinction. **Generalizes the Deficiency object into a broader schema**
+  δ_i=(Type,Source,Target,Relation,Context,Status,Provenance), with Deficiency demoted to one possible
+  classification of Type alongside AcceptableDeviation, UnknownValue, ConstraintViolation, Conflict, and Gap.
+  **Corrects Severity's assumed [0,1] range**: the scale itself is a policy choice (reconnecting to Q16's
+  "quantitative thresholds are policy parameters"), not a mathematical necessity -- Severity(d,P,C)∈
+  S_severity, where S_severity may be {Low,Medium,High,Critical}, [0,1], or another ordered scale.
+  **Demotes the normalized coverage-ratio measures** (e.g. |𝒟_I\𝒟_K|/|𝒟_I|) to valid "only under specific
+  assumptions" (finiteness, equal dimension importance, comparability, equal contribution) that are not
+  generally true (worked example: SecurityStatus vastly outweighs DocumentationStyle) -- reframed as "an
+  optional normalized coverage metric under a uniform-weight assumption," not the general measurement.
+  Establishes a cleaner four-stage hierarchy: **Comparison->Discrepancy->Measurement Vector->Optional
+  Scalar**, with a parallel **Discrepancy->Classify->{Gap,Conflict,AcceptableDeviation,...}** branch. Splits
+  Zero's role once more: Δ_t=Compare(S_t,I_t,C_t,P_t) is NOT Zero's construction -- Zero is
+  Diagnose(Δ_t,S_t,P_t), a distinct downstream lens answering "which differences matter, and what kind are
+  they?" -- deepening 0485/0486's Zero≠Δ correction by separating Compare (a prior, non-Zero stage) from
+  Zero's Diagnosis. Restates a_t does not automatically change S_t (an action must be authorized/executed to
+  produce an event, reinforcing Q17/Q20's governance discipline). **Corrects the Arjuna example's final
+  claim** that moral resolution leaves "Remaining Deficiencies: None" as too strong: one resolved discrepancy
+  does not imply Δ=∅ (there may remain unresolved factual questions, uncertainty, alternative
+  interpretations, unexamined consequences, domain-state differences, epistemic limitations) -- reworks the
+  example so Δ_3={RemainingUncertainty,UnresolvedConsequence}≠∅ while the state may still be adequate for
+  the purpose. **Introduces the file's most important new concept**: a Sufficient/Adequate(S_t,P) predicate
+  strictly independent of Δ_t=∅ -- Δ_t≠∅ does NOT imply Inadequate(S_t,P), and Adequate(S_t,P) does NOT imply
+  Δ_t=∅ -- "a state may contain discrepancies while still being adequate for the current purpose," flagged
+  as "extremely important for Question 12 and the eventual decision theory." Closes with ten frozen
+  invariants, a final revised definition, and an architectural diagram positioning
+  Comparison->Discrepancy->{Classification, Zero, Measurement/Score, Lord->Sārathi->Action} as the complete
+  chain, with the closing recommendation: "Do not model discrepancy as a collection of 'deficiencies.' Model
+  it first as a structured comparison result. Gaps, conflicts, violations, and acceptable deviations are
+  classifications of that result."
+introduces:
+  - concept: "Discrepancy≠Deficiency; Deficiency⊆Discrepancy -- a numerical difference need not be a deficiency at all (e.g. Version=3.90 exceeding a >=3.85 requirement)"
+  - concept: "Δ_E renamed Δ_K (Knowledge discrepancy) to avoid confusion with Evidence (ℰ) and Epistemic State (Σ)"
+  - concept: "Coherence Violation reframed from a discrepancy dimension to a Finding f_c∈Findings_t produced by the predicate Coherent(K_t,C_t,P_t), which then contributes to discrepancy rather than being another numeric distance component"
+  - concept: "Generalized comparison-finding schema δ_i=(Type,Source,Target,Relation,Context,Status,Provenance), with Deficiency demoted to one Type classification among AcceptableDeviation/UnknownValue/ConstraintViolation/Conflict/Gap"
+  - concept: "Severity's value range corrected from a fixed [0,1] to a policy-chosen ordered scale S_severity (which MAY be [0,1], or an ordinal set like {Low,Medium,High,Critical})"
+  - concept: "Normalized coverage-ratio measures (e.g. |D_I\\D_K|/|D_I|) demoted to an optional uniform-weight-assumption metric, not the general measurement, since dimensions are not generally of equal importance"
+  - concept: "Four-stage hierarchy: Comparison->Discrepancy->Measurement Vector->Optional Scalar, parallel to Discrepancy->Classify->{Gap,Conflict,AcceptableDeviation,...}"
+  - concept: "Zero's role split further: Δ_t=Compare(S_t,I_t,C_t,P_t) is a prior stage, not Zero's own construction; Zero=Diagnose(Δ_t,S_t,P_t) answers which differences matter and what kind they are"
+  - concept: "Sufficient/Adequate(S_t,P) predicate introduced as strictly independent of Δ_t=∅: Δ_t≠∅ does not imply Inadequate(S_t,P), and Adequate(S_t,P) does not imply Δ_t=∅ -- a state can be adequate for a purpose while carrying unresolved discrepancies"
+defines:
+  - concept: "Discrepancy (final, corrected)"
+    definition: "A structured, directional, context- and purpose-dependent representation of the differences between a Current State and an applicable Ideal State, preserving their semantic nature; may classify as gaps, conflicts, violations, uncertainties, or acceptable deviations. Formally Δ_t=Compare(S_t,I_t,C_t,P_t)=(Δ_K,Δ_U,Δ_X); not itself a scalar distance."
+  - concept: "Sufficient/Adequate(S_t,P)"
+    definition: "A decision predicate over state and purpose, logically independent of discrepancy emptiness: a state may be adequate for a purpose despite Δ_t≠∅, and a state with Δ_t=∅ is not automatically guaranteed adequate for every purpose"
+  - concept: "Generalized comparison-finding object (δ_i)"
+    definition: "δ_i=(Type,Source,Target,Relation,Context,Status,Provenance) -- a single structured comparison finding; Deficiency, Conflict, Gap, AcceptableDeviation, ConstraintViolation, and UnknownValue are all possible values of Type"
+refines:
+  - concept: "0485's Discrepancy (Δ) model, its non-symmetry proof, and its Zero≠Δ correction"
+    refinement: "Deepened with Discrepancy≠Deficiency (a genuinely new distinction not present in 0485), a directional K->I framing sharper than mere non-symmetry, a renaming of Δ_E to Δ_K, and a further split of Zero into a downstream Diagnose stage distinct from the prior Compare stage"
+  - concept: "0472/0480's Coherence≠Truth discipline (Q8) and the general contradistinction between predicates and metrics"
+    refinement: "Applied to reframe Coherence Violation as a Finding produced by a predicate Coherent(...), never merely another numeric discrepancy dimension"
+  - concept: "0482's policy-parameter discipline (quantitative thresholds are policy parameters, not mathematical truths)"
+    refinement: "Extended to Severity's value range itself: the choice of scale (ordinal vs. [0,1]) is a policy decision, not a mathematical necessity"
+  - concept: "0485's empty-discrepancy boundary (Δ_t=∅⇏Truth/Completeness)"
+    refinement: "Extended with a new, logically independent predicate Sufficient/Adequate(S_t,P), explicitly decoupling adequacy-for-purpose from discrepancy emptiness in both directions"
+contradicts:
+  - concept: "0485/0487's Arjuna worked example (Δ_3=∅ after moral resolution)"
+    contradiction: "This file explicitly corrects that ending as too strong -- one resolved discrepancy does not imply the full discrepancy set becomes empty -- and reworks the example so Δ_3≠∅ while the state remains adequate for the purpose"
+repeats: []
+bridge_candidates:
+  - "0477/0478/0485/0488 form one continuous, repeatedly-deepened Difference-vs-Distance/Discrepancy thread; a future canonical-theory pass should treat all four together rather than as independent contributions"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Discrepancy≠Deficiency (Deficiency⊆Discrepancy), the Δ_E->Δ_K rename, and Coherence Violation reframed as a Finding rather than a discrepancy dimension."
+  - "dimension-registry.md: record Zero split further into Compare (prior stage) then Diagnose (Zero's own function), Severity's value range corrected to a policy-chosen scale, and coverage-ratio measures demoted to a uniform-weight-assumption special case."
+  - "dimension-registry.md: record the new Sufficient/Adequate(S_t,P) predicate, logically independent of Δ_t=∅ in both directions, and the corrected Arjuna example (Δ_3≠∅ while still adequate for the purpose)."
+anchor_test:
+  anchor: "0485's Discrepancy (Δ) model and Zero≠Δ correction; Q8's Coherence≠Truth discipline; 0482's policy-parameter discipline; 0485's empty-discrepancy boundary"
+  supports_dimension: "LANDMARK: introduces Discrepancy≠Deficiency (Deficiency⊆Discrepancy) as a major refinement of the discrepancy model; reframes Coherence Violation as a Finding rather than a discrepancy dimension; further splits Zero into a downstream Diagnose stage distinct from a prior Compare stage; corrects Severity's value range to be policy-chosen rather than fixed to [0,1]; corrects the Arjuna example's overly strong 'no remaining deficiencies' claim; and introduces the new Sufficient/Adequate(S_t,P) predicate, logically independent of discrepancy emptiness in both directions -- flagged as important for the corpus's still-pending decision theory"
+  refines_or_contradicts: "refines 0485's Discrepancy model, Q8's Coherence≠Truth discipline, and 0482's policy-parameter discipline; explicitly contradicts and corrects 0485/0487's Arjuna example ending (Δ_3=∅); no unresolved contradiction with the corpus's core architecture"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The corrected Arjuna example (Δ_3={RemainingUncertainty,UnresolvedConsequence}≠∅ while still adequate for the purpose) is the corpus's clearest illustration yet that resolving a moral/epistemic crisis does not require driving all discrepancy to zero -- only reaching sufficiency for the purpose at hand."
+undefined_concepts: []
+open_questions:
+  - "How Sufficient/Adequate(S_t,P) is formally defined (its own function signature and semantics are named but not yet specified) -- flagged as feeding into a still-pending decision theory"
+  - "Whether this file's internal reference to correcting the model 'before moving to Q20' reflects a genuine chronological inversion relative to 0486 (Q20), or merely loose phrasing -- a minor corpus-sequencing question, not a content contradiction"
+  - "Whether the generalized δ_i=(Type,Source,Target,Relation,Context,Status,Provenance) comparison-finding schema is consistently adopted in later files, superseding the various Deficiency-object tuples proposed across 0485/0486/0487"
+tier2_triggered: true
+tier2_reason: "Introduces Discrepancy≠Deficiency (Deficiency⊆Discrepancy) as a major refinement distinguishing mere numerical difference from genuine deficiency; reframes Coherence Violation as a Finding produced by a predicate rather than a discrepancy dimension, preserving Q8's coherence-vs-truth discipline; further splits Zero into a downstream Diagnose stage distinct from a prior Compare stage, deepening the corpus's persistent Zero≠Δ discipline; corrects Severity's value range to be policy-chosen rather than mathematically fixed to [0,1]; demotes normalized coverage-ratio measures to a uniform-weight special case; corrects the Arjuna worked example's overly strong claim that moral resolution empties the discrepancy set; and introduces the new Sufficient/Adequate(S_t,P) predicate, logically independent of discrepancy emptiness in both directions -- explicitly flagged as important for the corpus's still-pending decision theory."

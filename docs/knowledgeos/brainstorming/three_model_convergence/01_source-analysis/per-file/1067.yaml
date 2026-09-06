@@ -1,0 +1,83 @@
+sequence: 1067
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-290/02-definition-comparison.md
+title: "02 -- Definition-by-Definition Comparison (Step 290 SSSS2, 3): FORMALLY WITHDRAWS the 'Corpus Contradiction' Characterization That This Reconstruction Tracked as Arguably the Most Important Finding Since File 1041 -- the equiv/approx Formula-Identity Was Never a Contradiction, Only a Misread MODALITY (Candidate, Not Assertion)"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the second numbered Step-290 artifact, delivering the final disciplined self-correction that closes the entire equiv/approx N-1 saga"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1067
+importance: critical
+confidence: high
+about: >
+  "02 — Definition-by-Definition Comparison (mandate §§2, 3)." Lays out all five actual definitions the
+  corpus supplies for state/history-level equality relations (D1 `=`; D2 `≈` over histories; D3 `≈` over
+  states; D4 `≡_K` from `261.21`; D5 `≡_K` from `258.8`), confirming "D3 and D4 are CHARACTER-FOR-CHARACTER
+  the same predicate. That is the fact Steps 288-289 found" -- explicitly owning and re-examining this
+  reconstruction's own already-tracked headline finding (file 1041).
+
+  **FORMALLY WITHDRAWS THE "CORPUS CONTRADICTION" CHARACTERIZATION** this reconstruction has carried since
+  file 1041 as "arguably the most important finding of the entire equality-research arc," propagated through
+  files 1047, 1054-1055, 1057-1062. **Names the exact inference that was wrong**: "Inference made: D3=D4 ⟹
+  either `≈` collapses into `≡`, or `≡` is undefined ⟹ CORPUS CONTRADICTION. THE INFERENCE TREATS D4 AS AN
+  ASSERTION. IT IS NOT." Quotes `261.21` in full: "Instead, define a CANDIDATE semantic equality:
+  `K_1≡_K K_2⟺∀O∈𝒪_K:O(K_1)=O(K_2)`... However: `𝒪_K` is not yet completely closed. Therefore this is A
+  CANDIDATE FORMAL DEFINITION, NOT A COMPLETED THEOREM." Boxed: **"D4 and D5 are PROPOSALS TO FILL the
+  `≡_sem` slot. Proposing `≡:=≈`'s formula is NOT ASSERTING `≡=≈`."**
+
+  **DELIVERS THE PRECISE, DEFINITIVE, TWO-SPEECH-ACT DISTINCTION THAT RESOLVES THE ENTIRE SAGA**: an ASSERTION
+  ("`≡_K` IS `∀O∈𝒪_K`") would make `≡` and `≈` the same relation and the register would genuinely
+  contradict itself; a CANDIDATE ("`≡_K` COULD BE `∀O∈𝒪_K`; not a theorem") leaves the register standing and
+  merely creates a ratification question. "BOTH LOCI PERFORM THE SECOND ACT. This is the WHOLE of the
+  correction -- the FORMULAS were read correctly; the MODALITY was not." This is a genuinely rare and
+  important class of self-correction: not a factual error (the shared-formula observation itself, tracked
+  since file 1041, was and remains correct), but an interpretive/linguistic error in how a correctly-observed
+  fact was characterized.
+
+  **DELIVERS THE PRECISE ASYMMETRIC STRUCTURE THAT WAS THE ACTUAL SITUATION ALL ALONG**: "`≈` is the relation
+  WITH A DEFINITION; `≡` is the relation WITH A NAME. The corpus's candidate move is therefore the NATURAL
+  one -- define the unfilled slot using the filled one -- and its own reason for not ratifying it is that the
+  filled one is ITSELF CONDITIONAL on an unclosed `𝒪_K`. THE BLOCKER IS `𝒪_K`, NOT A CONTRADICTION." This
+  precisely reframes the entire arc's central obstacle: not a corpus-level logical inconsistency requiring
+  arbitration between two conflicting readings, but a single, already-well-known unresolved dependency
+  (`𝒪_K`'s closure) that was always the true root cause.
+
+  **DELIVERS THE STATUS BLOCK'S EXPLICIT, FORMAL WITHDRAWAL**: "WITHDRAWN: the contradiction reading."
+introduces:
+  - concept: "The formal withdrawal of this reconstruction's own long-tracked 'corpus contradiction' characterization for the equiv/approx formula-identity finding, replacing it with a precise assertion-versus-candidate speech-act distinction"
+  - concept: "The precise diagnosis that the correction is purely interpretive (a misread modality), not factual: the shared-formula observation itself remains correct and unchanged"
+  - concept: "The final asymmetric characterization: approx is the relation with a definition; equiv is the relation with only a name, and the true blocker was always the unclosed observation set O_K, not a logical contradiction"
+defines: []
+refines:
+  - concept: "This reconstruction's long-tracked characterization of the equiv/approx formula-identity as 'a genuine internal corpus contradiction' (files 1041, 1047, 1054-1055, 1057-1062)"
+    refinement: "FORMALLY WITHDRAWN: the shared formula was correctly observed, but its status was misread as an assertion when both loci explicitly self-label it a candidate/proposal; the corpus's register was never contradictory, only incomplete, with the true blocker being the unclosed observation set O_K"
+  - concept: "This reconstruction's already-tracked candidate-vs-assertion finding (file 1063) and glyph-reuse diagnosis (file 1065)"
+    refinement: "SYNTHESIZED into the definitive, final resolution: the withdrawal of the contradiction reading, replaced by the precise assertion-versus-candidate speech-act framework"
+contradicts:
+  - concept: "This reconstruction's own already-tracked characterization (files 1041, 1047, 1054-1055, 1057-1062) that the equiv/approx conflict constitutes a genuine internal corpus contradiction"
+    contradicted_by: "This file's explicit, formal withdrawal of that characterization, replacing it with the assertion-versus-candidate speech-act distinction and the O_K-blocker reframing"
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal withdrawal of the 'corpus contradiction' characterization for the equiv/approx formula-identity finding, and the precise closing reframing: the corpus register was never contradictory, only incomplete, with the unclosed observation set O_K as the true and only blocker."
+anchor_test:
+  anchor: "This reconstruction's long-tracked 'corpus contradiction' characterization for the equiv/approx conflict (files 1041, 1047, 1054-1055, 1057-1062)"
+  supports_dimension: "Formally withdraws this characterization via a precise assertion-versus-candidate speech-act distinction, reframing the true blocker as the unclosed observation set"
+  refines_or_contradicts: "directly contradicts (withdraws) this reconstruction's own prior tracked characterization"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The withdrawal is directly checkable against files 1041, 1047, 1054-1055, and 1057-1062's own already-documented 'contradiction' characterizations for the exact claim being reversed."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers a genuinely major, disciplined self-correction: the formal withdrawal of this reconstruction's own long-tracked characterization of the equiv/approx formula-identity finding as a genuine internal corpus contradiction, replaced by a precise assertion-versus-candidate speech-act distinction that reframes the true blocker as the unclosed observation set O_K, not a logical inconsistency. Classified importance critical and confidence high given the rigor, precision, and reversal-significance of this closing finding."

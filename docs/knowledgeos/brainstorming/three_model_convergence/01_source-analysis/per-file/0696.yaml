@@ -1,0 +1,202 @@
+sequence: 696
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-123552_step-111-actual-knowledgeos-component-inventory.md
+title: "Step 111 -- Delivers the Reconstruction's Most Substantive DDD-Archaeology Methodology Yet: ObservedBehavior>ComponentName as a Central Reconstruction Rule, Aggregate-Ownership Violation Detection, Semantic Collision (SameTerm→DifferentMeaning) and Semantic Duplication (DifferentTerms→SameMeaning), a Five-Pattern Architecture-Smell Taxonomy (Hub/Circular-Dependency/Shared-Database-Coupling/Orphan/Duplicate-Capability), and a Genuinely Valuable Three-Outcome Diagnostic (Coherent / Fragmented / Monolithic) Directly Answering 0695's Closing Question -- Cross-References 'Earlier Bounded-Context Analysis' Candidates (Evidence/Voting/Appointment-Mandate/Contestation/Adjudication) Matching This Repository's Actual Voting-Platform Domain, Explicitly Cautioning Against Assuming Those Boundaries Apply to KnowledgeOS's Own Meta-Level Architecture -- Continues the Calibrated Methodology-Only Pattern -- Opens Step 112 -- Semantic Ownership Reconstruction, Self-Declared to Pose 'One of the Most Important Findings in the Entire Reconstruction': Does KnowledgeOS Have a Genuine Semantic Core, or Is 'Knowledge' Currently an Aggregation of Technically Related but Semantically Different Mechanisms?"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 111 -- Actual KnowledgeOS Component Inventory', promised at 0695's close; delivers the reconstruction's most substantive DDD-archaeology methodology yet, directly engaging (though still illustratively) the coherent-core-vs-overlapping-subsystems question posed at 0695's close"
+source_role: PRIMARY_RESEARCH
+canonical_source: 696
+importance: high
+confidence: high
+about: >
+  Delivers a formal `Component=(Responsibility+Data+Behavior+Interface+Dependency+Evidence)` definition and
+  a twelve-field component-identity tuple, with the foundational distinction `Class≠Module≠Package≠Service≠
+  Application≠DeploymentUnit≠BoundedContext` (a `KnowledgeService.java` file correctly NOT assumed to equal
+  a full bounded context, PASS), directly extending 0687's/0694's naming-proves-nothing family into
+  architectural-unit-type conflation specifically, and `ComponentID` stability across renaming
+  (`KnowledgeService→EngineeringKnowledgeService` remaining the same logical component, PASS), extending
+  0672's/0677's/0691's identity-stability discipline.
+
+  **Delivers the file's central reconstruction rule -- `ObservedBehavior>ComponentName`**: a component named
+  `KnowledgeManager` that actually reads Git, parses Markdown, creates embeddings, and writes vector data is
+  correctly reclassified as `KnowledgeIngestion/Indexing`, not `KnowledgeAuthority` (PASS) -- directly and
+  genuinely extending 0688's `NameMatch≠SemanticConformance` and 0693's/0694's naming-proves-nothing family
+  into responsibility-reconstruction specifically.
+
+  Delivers Data ownership formally distinguished from mere reading (`Reads(Data)≠Owns(Data)`, PASS) and
+  Aggregate-ownership DDD reconstruction (`Aggregate→Invariant→Owner`, two unrelated services independently
+  setting `decision.status=APPROVED` without passing through a shared invariant boundary correctly flagged
+  as a potential aggregate-boundary violation, `OBS`), directly extending the corpus's DDD-archaeology
+  discipline with a concrete, checkable diagnostic pattern. Delivers Command/Query ownership reconstruction
+  with duplicate-business-responsibility detection (`OBS`) and the important **`DuplicateReadModel≠
+  DuplicateDomainOwnership`** distinction (two `GET /decisions` endpoints -- one UI projection, one
+  authoritative domain API -- correctly NOT automatically flagged as duplicate domain capability, PASS),
+  extending 0687's/0693's semantic-versus-surface-duplication discipline.
+
+  Delivers Interface reconstruction (Inbound/Outbound) with Sync/Async classification, including a concrete
+  `DRIFT` result (documented event-driven architecture contradicted by actual synchronous REST calls
+  everywhere), extending 0692's unified drift taxonomy with a new worked instance. Delivers Dependency-
+  layer reconstruction with the important, precisely reasoned caution that **dependency direction must be
+  interpreted semantically, not by simplistic layer rules** -- infrastructure calling domain logic "could be
+  valid depending on dependency inversion" (PASS) -- a genuinely valuable corrective against naive layering-
+  violation detection.
+
+  **Delivers Domain-versus-Technical-service reconstruction, Ubiquitous-language extraction, and two
+  precisely named DDD-archaeology risk patterns**: Semantic collision (`SameTerm→DifferentMeaning`, e.g.
+  "Knowledge" meaning document/embedding/claim/fact/decision/observation depending on module, `OBS`,
+  "dangerous") and Semantic duplication (`DifferentTerms→SameMeaning`, e.g. Evidence/Artifact/SourceRecord
+  potentially indicating accidental duplication) -- directly and genuinely extending 0687's/0688's/0689's
+  ubiquitous-language disciplines with two distinct, precisely characterized failure modes. Delivers
+  Component cohesion/coupling analysis with a vivid low-cohesion anti-pattern example (`KnowledgeManager`
+  simultaneously importing Git, managing users, performing embeddings, approving architecture, sending
+  emails, and writing audit records, correctly flagged `DRIFT/DECOMPOSITION CANDIDATE`) and the constructive,
+  positive counterpart -- `HighCohesion+HighCoupling` clustering around a coherent concept correctly yielding
+  a `BOUNDARY CANDIDATE` result (an Evidence-related cluster of data/commands/rules/APIs/tests), a genuinely
+  useful non-anti-pattern classification outcome.
+
+  **Cross-references "the earlier bounded-context analysis" candidates by name -- Evidence, Voting,
+  Appointment/Mandate, Contestation, Adjudication -- which closely match this repository's own actual
+  voting-platform domain (per this repository's governing CLAUDE.md, describing a "Public Digit Voting
+  Platform")**, with the important, explicit methodological caution that "we must NOT assume those
+  boundaries apply automatically" to KnowledgeOS's own reconstruction -- a genuinely significant discipline
+  preventing the corpus from conflating the actual product domain's bounded contexts with KnowledgeOS's own
+  meta-level tooling architecture, tested via a concrete illustrative mismatch (`EvidenceContext` specified
+  architecturally but implementation logic scattered across eight unrelated modules, correctly flagged
+  `DRIFT`).
+
+  Delivers Runtime identity (`LogicalComponent→DeploymentUnit→RuntimeInstance`, extending 0691), Component
+  lifecycle (`Active/Experimental/Deprecated/Retired`), Component ownership with `Owner=Unknown` itself
+  treated as a governance finding (extending 0687's ownership discipline), and Component criticality
+  explicitly NOT based on code size (a 50-line authorization service controlling production changes
+  correctly potentially `Critical`, PASS), directly extending 0683's/0691's risk-proportional-assurance
+  discipline. Delivers a fifteen-field component-evidence-card template as "the atomic unit of
+  reconstruction."
+
+  **Delivers a formal Component relationship graph with a five-pattern architecture-smell taxonomy,
+  explicitly framed as signals rather than automatic violations**: Hub component (`Degree(C)≫average`),
+  Circular dependency (`A→B→C→A`), Shared-database coupling (`A,B,C→DB`), Orphan (`Degree(C)=0`), and
+  Duplicate capability (`Capability(A)=Capability(B)`), directly extending 0687's/0689's/0693's/0695's
+  Architecture Evidence Graph family with a concrete, currently reusable smell-detection vocabulary.
+
+  Delivers Agent component relationships specifically (Claude/Codex mapped against KnowledgeOS/Repository/
+  Verification/Evidence), including a directly relevant illustrative scenario -- "Claude modifies repository
+  directly but bypasses KnowledgeOS governance," correctly flagged `OBS/DRIFT` -- and incompatible Claude/
+  Codex verification mechanisms correctly flagged as potential `assurance fragmentation` (`OBS`), directly
+  extending 0693's/0695's agent-boundary disciplines, alongside the ideal-versus-dangerous agent-relationship
+  diagram (shared `KnowledgeOS`+Common Rules/Evidence/Governance versus private-per-agent architecture),
+  restating 0690's/0695's `KnowledgeFragmentation` caution.
+
+  Delivers a seven-state Component inventory status model (`Confirmed/Candidate/Legacy/External/Duplicate/
+  Overlapping/Unknown`), directly extending 0693's conformance-status taxonomy into component-specific
+  categories, with two apparently duplicate components explicitly NOT triggering immediate deletion --
+  `DuplicateCandidate`, not `DeleteOne` (PASS) -- a mature, disciplined engineering caution, and a
+  Reconstruction-confidence formula extending 0687's/0694's evidence-derived-confidence discipline.
+
+  **Delivers the file's most novel and valuable capstone contribution -- a genuinely useful three-outcome
+  architectural diagnostic, directly answering the coherent-core-versus-overlapping-subsystems question
+  posed at 0695's close**: Outcome A -- Coherent (`Components≈ArchitecturalBoundaries`); Outcome B --
+  Fragmented (`OneConcept→ManyOverlappingComponents`); Outcome C -- Monolithic (`ManyConcepts→
+  OneLargeComponent`), worked through with two illustrative examples (Evidence/Governance/Agent-control/
+  Runtime-assurance all sharing one massive service and shared tables, correctly flagged a potential
+  `MonolithicKnowledgeOSCore`, `OBS`; and the converse -- Evidence existing across four unrelated
+  implementations while Governance exists in three different mechanisms, correctly flagged
+  `ArchitectureFragmentation`) -- "these lead to very different architectural conclusions," and, crucially,
+  the explicit discipline that this diagnostic must NOT trigger immediate redesign: "First
+  `ObservedArchitecture`. Then `TargetArchitecture`. Then `Gap`. Only afterward `Remediation`" -- directly
+  and precisely extending 0692's "dangerous shortcut" anti-pattern caution into component-level architecture
+  diagnosis specifically.
+
+  No explicit new named invariants section appears in this file, consistent with the recent methodology-
+  heavy steps (0692-0695)'s organizational rather than atomic-invariant-introducing character.
+
+  Delivers Step 111's verdict continuing the calibrated methodology-only pattern (no verbatim "TBD" phrase
+  this time, but functionally equivalent): "the actual component inventory methodology is now defined... the
+  next empirical artifact is: `KnowledgeOS Actual Component Inventory` with evidence attached to every
+  significant claim" -- methodology delivered, empirical application again deferred.
+
+  **Closes by opening "Step 112 — Semantic Ownership Reconstruction,"** explicitly self-declared to pose
+  "one of the most important findings in the entire reconstruction": **does the current KnowledgeOS
+  implementation have a genuine semantic core, or is 'knowledge' currently an aggregation of technically
+  related but semantically different mechanisms?** -- a direct, substantive continuation of this file's own
+  Coherent/Fragmented/Monolithic diagnostic, tracing `Data→Meaning→Invariant→Owner→BoundedContext`. No
+  actual code execution, repository inspection, or verified filesystem/component claim is reported anywhere
+  in this file.
+introduces:
+  - concept: "The central reconstruction rule ObservedBehavior>ComponentName"
+  - concept: "Aggregate-ownership DDD violation detection: independent unauthorized mutation of shared aggregate state without a common invariant boundary"
+  - concept: "DuplicateReadModel≠DuplicateDomainOwnership"
+  - concept: "Dependency direction must be interpreted semantically, not by simplistic layer rules — infrastructure calling domain logic may be valid under dependency inversion"
+  - concept: "Two precisely named DDD-archaeology risk patterns: Semantic collision (SameTerm→DifferentMeaning) and Semantic duplication (DifferentTerms→SameMeaning)"
+  - concept: "A five-pattern architecture-smell taxonomy (Hub/Circular-dependency/Shared-database-coupling/Orphan/Duplicate-capability), explicitly framed as signals not automatic violations"
+  - concept: "Cross-reference to 'the earlier bounded-context analysis' candidates (Evidence, Voting, Appointment/Mandate, Contestation, Adjudication) matching this repository's own actual voting-platform domain, with an explicit caution against assuming those boundaries apply to KnowledgeOS's own meta-level architecture"
+  - concept: "A genuinely valuable three-outcome architectural diagnostic: Coherent / Fragmented / Monolithic, directly answering 0695's closing question"
+  - concept: "The discipline that architectural diagnosis must precede, never substitute for, decision: ObservedArchitecture→TargetArchitecture→Gap→Remediation"
+  - concept: "Opens Step 112 — Semantic Ownership Reconstruction, self-declared to pose one of the most important findings in the entire reconstruction: does KnowledgeOS have a genuine semantic core?"
+defines:
+  - concept: "ObservedBehavior>ComponentName"
+    definition: "A component's actual responsibility must be determined from its observed commands, queries, data mutations, and dependencies, never from its name or documentation claims alone — a component named 'KnowledgeManager' that actually performs Git reading, Markdown parsing, and embedding generation is an ingestion/indexing component, regardless of its name"
+  - concept: "Semantic collision vs. Semantic duplication"
+    definition: "Semantic collision (SameTerm→DifferentMeaning) is when one term (e.g. 'Knowledge') carries incompatible meanings across different modules; Semantic duplication (DifferentTerms→SameMeaning) is the reverse — different terms (Evidence, Artifact, SourceRecord) that actually denote the same underlying concept, potentially indicating accidental architectural duplication"
+  - concept: "The three-outcome architectural diagnostic (Coherent/Fragmented/Monolithic)"
+    definition: "Given a reconstructed component inventory, the relationship between components and intended architectural boundaries falls into one of three broad patterns: Coherent (components approximately align with architectural boundaries), Fragmented (one concept is implemented across many overlapping components), or Monolithic (many distinct concepts are implemented within one large component) — each implying a materially different architectural conclusion and remediation path"
+refines:
+  - concept: "0687's/0694's naming-proves-nothing family and 0688's NameMatch≠SemanticConformance"
+    refinement: "Directly and genuinely extended into architectural-unit-type conflation (Class≠Module≠...≠BoundedContext) and responsibility-reconstruction specifically (ObservedBehavior>ComponentName)"
+  - concept: "0672's/0677's/0691's identity-stability discipline"
+    refinement: "Directly extended into ComponentID stability across implementation renaming"
+  - concept: "0687's/0693's semantic-versus-surface-duplication discipline"
+    refinement: "Directly extended with DuplicateReadModel≠DuplicateDomainOwnership"
+  - concept: "0692's unified drift taxonomy"
+    refinement: "Directly extended with a new concrete DRIFT instance (documented event-driven architecture contradicted by actual synchronous calls)"
+  - concept: "0687's/0688's/0689's ubiquitous-language disciplines"
+    refinement: "Directly and genuinely extended with two precisely characterized risk patterns: Semantic collision and Semantic duplication"
+  - concept: "0687's/0689's/0693's/0695's Architecture Evidence Graph family"
+    refinement: "Directly extended with a concrete, currently reusable five-pattern architecture-smell taxonomy"
+  - concept: "0683's/0691's risk-proportional-assurance discipline"
+    refinement: "Directly extended into component criticality explicitly decoupled from code size"
+  - concept: "0687's ownership discipline"
+    refinement: "Directly extended: an unestablished component owner is itself a governance finding"
+  - concept: "0693's conformance-status taxonomy"
+    refinement: "Directly extended into a seven-state component inventory status model, with duplicate candidates explicitly not triggering immediate deletion"
+  - concept: "0690's/0695's KnowledgeFragmentation caution"
+    refinement: "Directly restated via the ideal-versus-dangerous agent-relationship diagram and the assurance-fragmentation experiment"
+  - concept: "0692's 'dangerous shortcut' anti-pattern caution"
+    refinement: "Directly and precisely extended into component-level architecture diagnosis specifically: the Coherent/Fragmented/Monolithic diagnostic must not trigger immediate redesign without the full Observed→Target→Gap→Remediation sequence"
+  - concept: "0695's closing question (one coherent KnowledgeOS core, or overlapping subsystems?)"
+    refinement: "Directly and substantively engaged (though still illustratively) via the three-outcome diagnostic, and explicitly carried forward into Step 112's self-declared 'one of the most important findings in the entire reconstruction'"
+  - concept: "the corpus's earlier bounded-context analysis (Evidence, Voting, Appointment/Mandate, Contestation, Adjudication)"
+    refinement: "EXPLICITLY CROSS-REFERENCED and explicitly NOT assumed to transfer automatically to KnowledgeOS's own reconstruction — a genuinely important methodological discipline preventing product-domain/meta-tooling-domain conflation"
+  - concept: "the calibrated methodology-only pattern (0692-0695)"
+    refinement: "Continued consistently, without escalation: methodology fully defined, empirical population again deferred to the next step"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0697 (Step 112 — Semantic Ownership Reconstruction) with calibrated vigilance, specifically for whether it substantively engages its own self-declared 'one of the most important findings in the entire reconstruction' question about KnowledgeOS's genuine semantic core."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the file's most valuable DDD-archaeology contributions: ObservedBehavior>ComponentName, aggregate-ownership violation detection, Semantic collision vs. Semantic duplication, dependency-direction-must-be-interpreted-semantically, and the five-pattern architecture-smell taxonomy."
+  - "dimension-registry.md: record the genuinely valuable three-outcome diagnostic (Coherent/Fragmented/Monolithic) directly answering 0695's closing question, and the cross-reference to 'the earlier bounded-context analysis' (Evidence/Voting/Appointment-Mandate/Contestation/Adjudication) matching this repository's actual voting-platform domain, with the explicit caution against assuming those boundaries transfer to KnowledgeOS's own architecture."
+  - "dimension-registry.md: record continuation of the calibrated methodology-only pattern; flag Step 112 (0697) as posing the corpus's own self-declared most important finding: does KnowledgeOS have a genuine semantic core?"
+anchor_test:
+  anchor: "0695's closing question (coherent core vs. overlapping subsystems); 0687's/0688's/0693's/0694's naming-proves-nothing family; 0687's/0693's semantic-versus-surface-duplication discipline; 0692's unified drift taxonomy; 0687's/0688's/0689's ubiquitous-language disciplines; 0687's/0689's/0693's/0695's Architecture Evidence Graph family; 0683's/0691's risk-proportional-assurance discipline; 0690's/0695's KnowledgeFragmentation caution; 0692's 'dangerous shortcut' anti-pattern caution; the corpus's earlier bounded-context analysis (Evidence/Voting/Appointment-Mandate/Contestation/Adjudication)"
+  supports_dimension: "Delivers the reconstruction's most substantive DDD-archaeology methodology yet, with several genuinely valuable, precisely reasoned principles coherently extending prior corpus disciplines: ObservedBehavior>ComponentName, aggregate-ownership violation detection, Semantic collision/duplication, dependency-direction-must-be-interpreted-semantically, and a concrete five-pattern architecture-smell taxonomy. Most significantly, delivers a genuinely novel and valuable three-outcome diagnostic (Coherent/Fragmented/Monolithic) that directly and substantively engages the question posed at 0695's close, and explicitly cross-references this reconstruction's own earlier bounded-context analysis (matching this repository's real voting-platform domain) with an important methodological caution against conflating product-domain boundaries with KnowledgeOS's own meta-tooling architecture. No new invariants (consistent with the recent methodology-heavy run). Continues the calibrated methodology-only pattern without escalation, and opens Step 112 posing the corpus's own self-declared most important forthcoming finding"
+  refines_or_contradicts: "directly and genuinely extends 0687's/0688's/0693's/0694's naming-proves-nothing family, 0687's/0693's semantic-versus-surface-duplication discipline, 0692's unified drift taxonomy, 0687's/0688's/0689's ubiquitous-language disciplines, 0687's/0689's/0693's/0695's Architecture Evidence Graph family, 0683's/0691's risk-proportional-assurance discipline, 0687's ownership discipline, 0693's conformance-status taxonomy, 0690's/0695's KnowledgeFragmentation caution, and 0692's dangerous-shortcut caution; directly and substantively engages (rather than merely repeats) 0695's closing question; explicitly cross-references and correctly does not conflate with the corpus's earlier bounded-context analysis; no contradiction found; no new invariants introduced, so no collision risk"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§111.68-111.71's three-outcome diagnostic (Coherent/Fragmented/Monolithic), worked through with two concrete illustrative examples (a monolithic-core scenario and a fragmented-evidence/fragmented-governance scenario), is a directly checkable, precisely reasoned, and genuinely novel analytical framework distinct from anything delivered earlier in this reconstruction."
+  - "§111.41's explicit cross-reference to 'the earlier bounded-context analysis' (Evidence, Voting, Appointment/Mandate, Contestation, Adjudication) — names that closely match this repository's own actual voting-platform product domain per its governing CLAUDE.md — combined with the explicit caution against assuming these boundaries transfer automatically to KnowledgeOS's reconstruction, is directly checkable evidence of a genuine and important methodological discipline distinguishing the product's domain model from the meta-level tooling architecture this corpus is reconstructing."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 112's actual content (0697), once read, substantively engages its own self-declared most important question (does KnowledgeOS have a genuine semantic core, or is 'knowledge' an aggregation of semantically different mechanisms) with a comparably novel analytical contribution, or continues the calibrated methodology-only pattern without further diagnostic innovation."
+tier2_triggered: true
+tier2_reason: "Delivers the reconstruction's most substantive DDD-archaeology methodology yet, with several genuinely valuable, precisely reasoned principles (ObservedBehavior>ComponentName, aggregate-ownership violation detection, Semantic collision/duplication, dependency-direction-semantic-interpretation, a five-pattern architecture-smell taxonomy) coherently extending prior corpus disciplines. Delivers a genuinely novel three-outcome architectural diagnostic (Coherent/Fragmented/Monolithic) directly and substantively answering the question posed at 0695's close, and explicitly cross-references this reconstruction's own earlier bounded-context analysis (matching this repository's real voting-platform domain) with an important caution against conflating it with KnowledgeOS's own architecture. No new invariants. Opens Step 112 posing the corpus's own self-declared most important forthcoming finding."

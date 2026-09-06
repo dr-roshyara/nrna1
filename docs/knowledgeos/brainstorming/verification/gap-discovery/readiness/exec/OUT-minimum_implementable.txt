@@ -1,0 +1,138 @@
+
+==============================================================================
+A. THE READINESS DEPENDENCY GRAPH
+==============================================================================
+  a reference kernel's transitive requirement set: 18 constructs
+    ['Assertion', 'Equality', 'Evidence', 'History', 'Identity', 'InvariantReg', 'K', 'O_core', 'Operations', 'Policy', 'Proposition', 'Provenance', 'Rejection', 'Relation', 'RelationType', 'Replay', 'Sigma', 'Transformation']
+
+  NOT required by the kernel (11): ['Assessment', 'Authority', 'Authorization', 'Determination', 'Gamma', 'Lineage', 'Measurement', 'Missingness', 'Orphan', 'Q_t', 'Qualification']
+
+==============================================================================
+B. WHICH REQUIRED CONSTRUCTS ARE BLOCKED, AND BY WHAT CLASS
+==============================================================================
+
+  class A:
+     K [formal+L5]
+
+  class D:
+     Equality [clear-all-lanes]
+     Evidence [formal]
+     InvariantReg [NOT ENUMERATED]
+     Proposition [formal]
+     Relation [formal]
+     Sigma [formal]
+
+  class D?:
+     Identity [clear-all-lanes]
+
+  class G:
+     Policy [RATIFIED]
+
+  class I:
+     History [formal]
+
+  class O:
+     O_core [NOT FROZEN]
+     Operations [0 canonical]
+
+  class T:
+     Rejection [CONTRADICTORY]
+     Replay [formal]
+     Transformation [no body]
+
+  required AND unblocked: ['Assertion', 'Provenance', 'RelationType']
+
+==============================================================================
+C. TOPOLOGICAL ORDER OF THE BLOCKERS  ->  THE CRITICAL PATH
+==============================================================================
+  dependency order (earliest first), blockers marked:
+    1. Identity          <-- BLOCKED [D?]
+    2. Policy            <-- BLOCKED [G]
+    3. Proposition       <-- BLOCKED [D]
+    4. Provenance      
+    5. RelationType    
+    6. Equality          <-- BLOCKED [D]
+    7. Assertion       
+    8. Evidence          <-- BLOCKED [D]
+    9. Relation          <-- BLOCKED [D]
+   10. Sigma             <-- BLOCKED [D]
+   11. K                 <-- BLOCKED [A]
+   12. History           <-- BLOCKED [I]
+   13. InvariantReg      <-- BLOCKED [D]
+   14. O_core            <-- BLOCKED [O]
+   15. Operations        <-- BLOCKED [O]
+   16. Transformation    <-- BLOCKED [T]
+   17. Rejection         <-- BLOCKED [T]
+   18. Replay            <-- BLOCKED [T]
+
+==============================================================================
+D. THE FIRST IRREDUCIBLE BLOCKER ON THE PATH
+==============================================================================
+  blockers in dependency order: ['Identity', 'Policy', 'Proposition', 'Equality', 'Evidence', 'Relation', 'Sigma', 'K', 'History', 'InvariantReg', 'O_core', 'Operations', 'Transformation', 'Rejection', 'Replay']
+
+  The earliest blockers with NO blocked dependency are the true starting points:
+     Identity         class D?  status: clear-all-lanes
+     Policy           class G   status: RATIFIED
+     Proposition      class D   status: formal
+     Evidence         class D   status: formal
+     Relation         class D   status: formal
+
+  READING: everything downstream of these cannot legitimately begin.
+  Note the chain  InvariantReg -> O_core -> Operations -> Transformation -> Rejection/Replay:
+  it is LINEAR. There is no parallel route to a transition function.
+
+==============================================================================
+E. MINIMUM IMPLEMENTABLE SUBSET  (§15)
+==============================================================================
+  Required (transitively) for a reference kernel : 18
+  Of those, currently unblocked                  : 3
+  Of those, blocked                              : 15
+
+  JUSTIFIED EXCLUSIONS -- constructs the research programme produced that a
+  kernel does NOT require:
+     Assessment       formal
+     Authority        narrow-ratified
+     Authorization    formal-only
+     Determination    formal
+     Gamma            formal+L5p
+     Lineage          clear-all-lanes
+     Measurement      formal-only
+     Missingness      formal
+     Orphan           clear-all-lanes
+     Q_t              formal
+     Qualification    formal
+
+  Each exclusion is a DEPENDENCY fact: no construct in `need` depends on it.
+  Measurement, Missingness, Determination, Q_t, Assessment, Qualification,
+  Gamma and Authorization are all reachable ONLY from constructs the kernel
+  does not require -- so a kernel can be built without them, and a kernel that
+  has them is not thereby more correct.
+
+==============================================================================
+F. SENSITIVITY — the one modelling edge that changes the answer
+==============================================================================
+  The edge  InvariantReg -> {K, Sigma, Policy}  is a MODELLING CHOICE of this
+  script: it says the mandated invariant register contains invariants over the
+  epistemic layer as well as the structural one. That edge is what drags Sigma,
+  Evidence and Policy into the kernel's requirement set.
+
+  Test the alternative: InvariantReg -> {K} only (structural invariants only).
+
+  variant requirement set: 15 constructs
+    ['Assertion', 'Equality', 'History', 'Identity', 'InvariantReg', 'K', 'O_core', 'Operations', 'Proposition', 'Provenance', 'Rejection', 'Relation', 'RelationType', 'Replay', 'Transformation']
+
+  DROPS OUT of the minimum if invariants are structural-only (3):
+     Evidence         formal  [D]
+     Policy           RATIFIED  [G]
+     Sigma            formal  [D]
+
+  variant: required 15 · unblocked 3 · blocked 12
+
+  => THE ANSWER TO §15 IS CONDITIONAL ON ONE UNRESOLVED QUESTION:
+       does the mandated invariant register contain EPISTEMIC invariants,
+       or only STRUCTURAL ones?
+     If structural-only : the kernel needs 15 constructs and Sigma/Evidence/
+                          Policy are OUT of the minimum.
+     If epistemic too   : the kernel needs 18 and they are IN.
+     Nothing in the corpus settles this, because the register (G-67) has never
+     been enumerated. RECORDED AS: BLOCKED — REQUIRES DERIVATION.

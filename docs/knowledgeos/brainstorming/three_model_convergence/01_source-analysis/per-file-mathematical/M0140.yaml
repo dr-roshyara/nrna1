@@ -1,0 +1,84 @@
+sequence: M0140
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180023_review-krr-extraction.md
+title: "KnowledgeOS Theory — Missing Formal Part (X.1-X.19) + HPA Supervisory Advisory: ADOPT"
+date: "20260902-180023"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0140
+importance: critical
+confidence: high
+about: >
+  A two-part document: first, a full proposed formal theory section (numbered X.1-X.19) inserting a
+  typed epistemic pipeline (Representation→Reasoning→Derivation→Evaluation→Determination→Decision→
+  Transition, with Explanation as a separate abductive path) between Knowledge Representation theory
+  and KnowledgeOS evaluation; second, an "HPA Supervisory Advisory" that reviews and formally
+  recommends ADOPTING it as "KR Integration — Proposed Theory Extension" (not Theory v1.3), with
+  every individual proposition kept at [PROP] pending ratification.
+introduces:
+  - "The formal typed epistemic pipeline as a numbered theory section (X.1-X.19), superseding the informal pipeline sketches of M0138/M0139 with boxed, numbered propositions and explicit restrictions on each"
+  - "X.7: derivation provenance requirement — a derived proposition must retain (α,𝒮,Π) where Π records derivation provenance; Explicit(α)≠Derived(α)"
+  - "X.10: precise separation of Completeness_𝒱(K) (vocabulary-relative completeness, the external 'vivid knowledge' notion) from Zero(K,I,Γ,L) (KnowledgeOS's own still-open boundary question) — Completeness_𝒱≠Zero and NoKnownGap≠Complete kept as two distinct boxed propositions"
+  - "X.12: Gap's candidate minimal-support-completion formalization — K∪H⊨r ∧ K⊭r ∧ H minimal under an explicitly declared criterion — explicitly marked research candidate only, not adoptable as Gap's definition"
+  - "X.15: Planning is explicitly separated from epistemic determination — 'a plan can be computationally valid while the knowledge on which it is based is epistemically inadequate'"
+  - "X.16: the constitutional requirement for specialized reasoners is reframed as a declaration obligation — every reasoning result must declare its semantics, applicable domain, provenance, limitations, and epistemic status, rather than requiring one universal reasoning formalism"
+  - "The critical correction explicitly named: remove the implicit equation Sat(K_t,r)≡K_t⊨Content(r) from canonical theory; replace with the pipeline fragment K_t^E→Cn_S→K_t^{I,S}→Eval_content→EVal_content, and the containment Eval_content⊆Eval_c"
+  - "HPA Supervisory Advisory formal recommendation: ADOPT the proposed extension as 'KR Integration — Proposed Theory Extension' (explicitly NOT Theory v1.3), individual propositions marked [PROP] until ratified"
+defines: []
+refines:
+  - "M0138/M0139's informal pipeline and rejection-table content: restated here as numbered, boxed theory propositions (X.1-X.19) with explicit restrictions attached to each (e.g. X.1's 'KnowledgeOS does not assume K^{I,S}=K_t nor K^{I,S}=Truth'), a more rigorous treatment than the prior two documents in this same triad"
+  - "M0138's flagged 'Zero=Δ=∅ universally ❌ too strong' tension (this reconstruction's own record): PARTIALLY DE-ESCALATED by X.10's more careful wording here — this document never states 'Zero≠Δ=∅' as a rejected identity; it states only Completeness_𝒱≠Zero (an external vividness notion vs. KnowledgeOS's boundary question), which is compatible with M0132's internally FROZEN Zero⟺Δ=∅⟺K_t⊨EC_t result being left untouched. Supports the 'charitable reading' hypothesis offered in M0138's own record, without fully closing the question, since M0138's literal wording remains as written."
+contradicts:
+  - "Repeats, rather than resolves, the TODO-register desynchronization first flagged at M0139: this document's own tables (§2.3, §4.1, and the closing 'What This Section Actually Closes' table in the proposal half) list 'Non-evidential invariance [OPEN] — Still requires decision' THREE further times, still with no apparent awareness of M0137's 'DECISION-01 [DECIDED]: non-evidential invariance principle' from the same date. This strengthens (does not merely repeat) the finding: the desynchronization is persistent across at least three documents (M0139 and twice within M0140), not a single slip."
+repeats:
+  - "The rejection-table content (Sat≠Entailment, Zero≠CWA, Boundary≠FrameAxiom, δ≠SituationCalculus) restated near-verbatim from M0138/M0139"
+  - "The seven named future experiments (KR-EXP-IMPLICIT through KR-CWA) restated identically from M0139, still with no confirmation any were executed"
+bridge_candidates:
+  - "Whether 'KR Integration — Proposed Theory Extension' was ever ratified by HPA (moving individual [PROP] items to [ESTABLISHED]/kernel), or remains permanently at proposal status — not yet resolved in this reconstruction's read order"
+  - "The persistent non-evidential-invariance TODO-register desynchronization (now 3 occurrences) — whether any later document in this corpus explicitly reconciles the KR-KRR sub-thread's TODO register against M0137's decision-layer register"
+mathematical_content: >
+  Restates Cn_S(K_t^E)=K_t^{I,S}, Eval_content(K_t^E,r,S)=Entails_S(K_t^E,Content(r)),
+  Eval_content⊆Eval_c, the abduction operator Explain(K,O,Γ)→ℋ, the minimal-Gap candidate
+  K∪H⊨r∧K⊭r∧H-minimal, and K_{t+1}=Succ_S(K_t,e_t) — all as numbered boxed propositions rather than
+  new derivations; identical mathematical content to M0138/M0139, reformatted into formal theory-
+  section style.
+gita_content: null
+kernel_content: >
+  The most fully worked-out single statement yet of the "typed epistemic pipeline" replacing the
+  Sat-centric formulation — explicitly correcting the canonical theory's implicit
+  Sat(K_t,r)≡K_t⊨Content(r) equation, and receiving formal (if [PROP]-only) HPA endorsement as
+  a named extension, distinct from and not modifying the frozen Theory v1.2 baseline.
+registry_updates:
+  - "Third HPA Supervisory-marked document in the KR-KRR sub-thread (after implicit authority in M0139) — an escalating governance-formalization pattern specific to this sub-thread"
+  - "Strengthens the non-evidential-invariance desynchronization finding from a single occurrence (M0139) to three occurrences within this document alone"
+  - "Provides supporting (not conclusive) evidence for the charitable-reading resolution of M0138's flagged Zero=Δ=∅ tension, via X.10's more careful Completeness_𝒱≠Zero wording"
+anchor_test:
+  anchor: true
+  supports_dimension: "Full typed epistemic pipeline (X.1-X.19), Sat-equation correction, Zero/Completeness separation, TODO-register desynchronization (persistent)"
+  refines_or_contradicts: "refines (pipeline formalization, Zero/Completeness clarification); contradicts (TODO-register desynchronization, now 3x)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"We should remove the implicit equation Sat(K_t,r)≡K_t⊨Content(r) from the canonical theory.\" — the document's own stated critical correction"
+  - "\"KnowledgeOS is not one function that maps knowledge directly to truth. It is a typed epistemic pipeline.\" — flagged by the HPA Advisory as 'the single most important theoretical insight'"
+  - "\"Completeness_𝒱(K) ... whereas Zero(K,I,Γ,L) is the still-open KnowledgeOS boundary question. Therefore Completeness_𝒱≠Zero.\" (X.10) — the more careful successor to M0138's looser 'Zero=Δ=∅ universally ❌' wording"
+  - "Recommendation: ADOPT the proposed extension as 'KR Integration — Proposed Theory Extension' (HPA Supervisory Advisory, closing lines)"
+undefined_concepts:
+  - "The exact ratification procedure/timeline by which [PROP]-marked items in this extension would ever become [ESTABLISHED] — not specified here"
+open_questions:
+  - "Was 'KR Integration — Proposed Theory Extension' ever formally ratified, partially or fully?"
+  - "Is the persistent non-evidential-invariance desynchronization ever explicitly reconciled anywhere later in this reconstruction's sequence?"
+tier2_triggered: true
+tier2_reason: >
+  Provides the most rigorous single statement yet of the typed epistemic pipeline correcting the
+  Sat-centric formulation, receives formal (if provisional) HPA endorsement, offers supporting
+  evidence toward resolving M0138's flagged Zero/Completeness tension, and simultaneously strengthens
+  (via a third and fourth occurrence) the persistent non-evidential-invariance TODO-register
+  desynchronization against M0137's DECISION-01.

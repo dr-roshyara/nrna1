@@ -1,0 +1,63 @@
+sequence: 57
+path: docs/knowledgeos/brainstorming/20260819-204018-kos-product-architecture-v2.md
+title: KnowledgeOS Product Architecture v2.0 (reviews an uploaded prior architecture document)
+date: 2026-08-19
+bytes: 20172
+
+model:
+  primary: c1
+  secondary: [ddd, governance, domain_model]
+
+source_role: CRITICAL_REVIEW
+canonical_source: 1   # explicitly reviews/cites root-level material containing P1 (Method/Binding/Evidence)
+
+importance: high
+confidence: high
+
+about: >
+  Reviews an EXPLICITLY UPLOADED prior KnowledgeOS architecture document and proposes "v2": a
+  five-layer commercial "Knowledge Product Operating System" architecture (Experience/Runtime/
+  Intelligence/Product/Source layers), with Knowledge Product as the atomic unit and a commercial
+  product line (Core/Studio/Graph/AI/Connectors) - squarely M-B-style reasoning per 0038's diagnosis.
+
+introduces:
+  - knowledge_product_as_atomic_unit
+  - five_layer_commercial_architecture
+  - commercial_product_line_core_studio_graph_ai_connectors
+
+defines: []
+refines:
+  - concept: method_binding_evidence
+    canonical_source: 1
+    change: "cited and endorsed VERBATIM as 'one of the strongest original ideas' - not independently reinvented"
+contradicts: []
+repeats:
+  - concept: method_binding_evidence_decomposition
+    canonical_source: 1
+    novelty: none   # direct citation, not rediscovery
+
+bridge_candidates:
+  - "PROVENANCE finding, not a theoretical bridge: this document directly cites/reviews root-level
+     material (P1, Method/Binding/Evidence, named identically to 0001). Resolves the narrower
+     multi-track PROVENANCE question (shared conversation thread exists) but does NOT confirm or
+     advance any G/M/C1/C2 theoretical bridge_candidate (e.g. 0049's Zero-Model observation remains
+     separately unconfirmed)."
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence:
+  - "'I reviewed the uploaded KnowledgeOS architecture/product framing document' - direct citation, not inference"
+  - "'Method / Binding / Evidence Model ... this is actually one of the strongest original ideas in your architecture. Keep it.'"
+  - "commercial product line (§9) is a live instance of 0038's diagnosed M-B (proposed, unapproved mission) reasoning"
+
+undefined_concepts: [knowledge]
+open_questions: []
+
+tier2_triggered: true
+tier2_reason: >
+  Direct citation of root-level material (P1, Method/Binding/Evidence) resolves part of the
+  multi-track provenance question raised at 0049/0050/0052 - this is one shared conversation
+  thread's material reviewed in a separate session, not two fully isolated tracks. Also a live
+  instance of 0038's M-B (commercial-product mission) reasoning pattern.

@@ -1,0 +1,107 @@
+sequence: 2246
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-234601_step_286_hpa-gita-chapter-06-dhyana-yoga-epistemic-regulation-and-recovery-hypotheses.md
+title: "Gītā Chapter 6 (Dhyāna-yoga) HPA -- Epistemic Regulation and Recovery Hypotheses: Delivers H1 (Epistemic Regulation/Stability), H2 (Epistemic Continuity Across Interruption), H3 (Knowledge≠Realization)"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a complete Chapter 6 (Dhyāna-yoga, Bhagavad Gita As It Is) reading under Step 286's philosophical-source programme, judged 'much more relevant to KnowledgeOS than Chapter 5' for its process model of epistemic regulation/attention/failure/recovery"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2246
+importance: high
+confidence: high
+about: >
+  A complete Chapter-6 (Dhyāna-yoga) reading, judged "much more relevant to KnowledgeOS than Chapter 5 in
+  one particular respect: it gives us a fairly elaborate model of epistemic regulation, attention, state
+  transition, failure, recovery, persistence and realization." Explicitly: "I would not yet promote any of
+  this into architecture."
+
+  Central structural finding: the chapter's movement is unregulated-mind→discipline→concentration→stability→
+  realization, giving "epistemic system ≠ passive knowledge store — there is an agent/process that regulates
+  how knowledge is acquired and used." Invokes the chariot model (Self=passenger, Intelligence=driver,
+  Mind=driving instrument, Senses=horses, Objects=roads) as a KNOWER→INTELLIGENCE→MIND→SENSES→OBSERVATIONS→
+  KNOWLEDGE conceptual chain, "far more interesting than simply saying Ātma = knowledge."
+
+  **DELIVERS THREE NAMED HYPOTHESES CARRIED FORWARD**:
+
+  **H1 — Epistemic Regulation/Stability**: from the mind-wanders-and-returns discipline (abhyāsa+vairāgya,
+  "practice and detachment"), gives "deviation ≠ system failure" — a full cycle Attention→Deviation→
+  Recognition→Regulation→Return→Stability, proposed to extend the already-tracked pipeline W→Ω(Omega)→O→
+  Qualify→E→K_t with a candidate K_t→(epistemic regulation)→K_{t+1} step. The lamp-in-windless-place metaphor
+  (6.19) and the samādhi description (6.20-23) suggest a "Stable Epistemic State" abstraction: K_{t+1}≈K_t
+  not because nothing happens but because "perturbations no longer cause epistemically invalid transitions."
+  Explicitly connects to the unresolved Σ=(A,S,R,V,C) five-axis space — proposes the falsifiable research
+  question "is 'stability' already representable by the existing five axes, or does it expose a genuine
+  missing dimension?" — explicitly warning "we should not add a sixth axis based on Chapter 6." Selected as
+  "the most important new candidate from Chapter 6," preferred over Moksha.
+
+  **H2 — Epistemic Continuity Across Interruption**: from verses 37-45 (the unsuccessful yogī) and
+  specifically verse 43 ("previous consciousness is revived"), gives "interrupted epistemic progression ≠
+  epistemic reset" — K₀→K₁→K₂→[interruption]→[recovery]→K₃ with prior epistemic trajectory preserved.
+  Proposes a four-row comparison table distinguishing this from three already-tracked concepts: Provenance Π
+  (where an assertion/state came from), Replay H (how an operation/state can be reconstructed), Lineage
+  (derivational/history relationship), and the candidate fourth "Epistemic continuity" (what prior learning
+  remains available after interruption) — explicitly "we should not create the fourth thing yet," but
+  raising the question whether existing lineage machinery already covers it.
+
+  **H3 — Knowledge≠Realization**: from verse 6.8's jñāna+vijñāna distinction and its purport ("book knowledge
+  without realization is useless"), gives "Representation of knowledge ≠ realization of knowledge" —
+  explicitly connected to and reinforcing this reconstruction's already-tracked Step-286 Jñāna correction
+  (Jñāna≢Knowledge-primitive), classified R6 corroboration, "particularly important because it may provide
+  an independent philosophical corroboration of something our formal theory already needs."
+
+  Also reinforces (further strengthening the already-tracked file-2245 Ch5 correction) Knower≠Knowledge via
+  the chapter's explicit "duality of knowledge and knower" language, calling Chapter 6 "actually hostile to
+  our earlier simplistic formulation Ātma=Knowledge." Strengthens the Ātma=bounded-Knower/Paramātmā=universal-
+  Knower correspondence via 6.29-30 (Supersoul seen in all beings; individual soul not present in all
+  hearts) — "becomes better supported than it was after Chapter 5," while reaffirming Paramātmā≢𝒦 (a knower,
+  not the knowledge-space abstraction itself).
+
+  Further revises the Moksha hypothesis (continuing the already-tracked file-2245 correction) from "nearly
+  infinite knowledge" to "Moksha ∼ stable realization of the Knower's proper epistemic relation," and adds a
+  new corollary from the chapter's explicit rejection of cessation-as-void: "termination of one regime ≠
+  absence of all state" — proposing Moksha as a possible "regime transition" rather than K_t=𝒦, hypothesis
+  only.
+
+  A 14-row Chapter-6 classification register is proposed. Explicit closing verdict: "Chapter 6 = potentially
+  R6 + genuine new hypotheses. No new KnowledgeOS primitive should be promoted yet." H1 and H2 are the two
+  primary candidates carried forward, with H3 as a secondary but methodologically important corroboration.
+introduces:
+  - concept: "H1 — Epistemic Regulation/Stability: a full Attention→Deviation→Recognition→Regulation→Return→Stability cycle, proposed as a candidate K_t→(epistemic regulation)→K_{t+1} extension to the existing W→Ω→O→Qualify→E→K_t pipeline, with the falsifiable research question of whether stability is already representable within Σ's five axes"
+  - concept: "H2 — Epistemic Continuity Across Interruption: interrupted progression ≠ reset, with a four-way comparison against Provenance/Replay/Lineage distinguishing a candidate fourth concept (what prior learning remains available after interruption) not yet created"
+  - concept: "H3 — Knowledge≠Realization: representation of knowledge ≠ realization of knowledge, explicitly tied to and reinforcing the already-tracked Step-286 Jñāna≢Knowledge-primitive correction"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Ātma=bounded-Knower/Paramātmā=universal-Knower correspondence (file 2245)"
+    refinement: "STRENGTHENED via independent Chapter-6 correspondence (6.29-30), while reaffirming Paramātmā≢K (the knowledge-space abstraction) is a knower, not a set-identity"
+  - concept: "This reconstruction's already-tracked Moksha revision (file 2245: 'Moksha = a transformed relation between Knower, Knowledge and Reality')"
+    refinement: "FURTHER REFINED to 'stable realization of the Knower's proper epistemic relation,' plus a new regime-transition corollary from the chapter's rejection of cessation-as-void"
+  - concept: "This reconstruction's already-tracked Step-286 Jñāna correction (Jñāna≢Knowledge-primitive)"
+    refinement: "INDEPENDENTLY REINFORCED via Chapter 6's jñāna+vijñāna distinction, classified as important corroboration"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Whether H1/H2/H3 are directly tested against the corpus's operation-semantics or Σ-axis machinery later in the sequential read (this reconstruction's already-tracked '16 Ch5-7 gap update' file 1095 may be exactly that follow-up)."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering three named hypotheses (H1 Epistemic Regulation/Stability, H2 Epistemic Continuity Across Interruption, H3 Knowledge≠Realization), all explicitly not promoted to architecture, plus a strengthening of the already-tracked Ātma/Paramātmā and Moksha correspondences."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Ātma/Paramātmā correction (file 2245), Moksha revision, and Jñāna≢Knowledge-primitive finding"
+  supports_dimension: "Strengthens the Ātma/Paramātmā and Moksha correspondences via independent Chapter-6 evidence, reinforces the Jñāna correction, and delivers three new named hypotheses not yet tested against the corpus"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "H1's falsifiable research question (whether stability is representable within the existing five Σ axes) is directly testable against the already-tracked Σ=(A,S,R,V,C) machinery if pursued later in the sequential read."
+undefined_concepts: []
+open_questions:
+  - "Whether H1 (Epistemic Regulation/Stability), H2 (Epistemic Continuity), and H3 (Knowledge≠Realization) are directly tested against the corpus later in the sequential read, and what the accept/reject outcomes are."
+tier2_triggered: true
+tier2_reason: "Delivers three carefully-hedged, named research hypotheses (H1, H2, H3) not yet promoted to architecture, strengthens two already-tracked correspondences (Ātma/Paramātmā, Moksha) via independent evidence, and reinforces the already-tracked Jñāna correction. Classified importance high given the substantive new hypotheses and connective strengthening, short of critical since no established finding is overturned."

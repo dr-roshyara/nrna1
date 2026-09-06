@@ -1,0 +1,76 @@
+sequence: 1074
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-290/10-evidence-index.md
+title: "10 -- Evidence Index (Step 290 mandate SS12 item 13): The Closing Evidence-Threshold Audit for the Entire Step-290 Package -- Consolidates Every Corpus Locus and Executed Witness Into a Single Traceable Index and Confirms the Mandate SS10 Evidence Threshold Is MET for N-1A but NOT MET (UNDECIDABLE) for Semantic Distinguishability"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the tenth and final numbered Step-290 artifact, the closing evidence-index and threshold-check capstone"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1074
+importance: major
+confidence: high
+about: >
+  "10 — Evidence Index (mandate §12 item 13)." The closing document of the ten-part Step-290 package (matching
+  the ten-document pattern of Step-289, file 1062, and extending Step-288's eight-document pattern, file
+  1048). Consolidates every primary-corpus locus cited across the entire package into a single evidence table
+  with its precise role and evidentiary class (CORPUS / CORPUS-definition / CORPUS-candidate / CORPUS-
+  proposal), covering all already-tracked loci from files 1063-1073 (`246`, `261.1/5/8/19/20/21/23/25`,
+  `258.8/9/11/23/30/37`, `012 §35`, `264.15`, `060 §60.42/71`).
+
+  **CONSOLIDATES THE EXECUTED EVIDENCE**: the Step-290 script (`t290_n1_audit.py`, already tracked file
+  1063) delivering the 20-entry register, 5-defined/15-named split, the shared-formula-under-two-symbols
+  finding, both `≡_K` loci confirmed CANDIDATE/PROPOSAL, and distinguishability failing loudly on two absent
+  definitions; carried-forward evidence from Step-289's exec (30 non-degenerate `≈_X`, not re-run) and
+  Step-288's exec (`=` not a congruence, hash canonicalization-relative, `id` re-keys on withdrawal) --
+  reconfirming the disciplined "carried, not re-run" methodology already established (file 1068).
+
+  **DELIVERS AN EXPLICIT, DISCIPLINED "NOT USED" NEGATIVE-EVIDENCE CHECKLIST**: "No philosophical source --
+  no Gītā material, no Cavell, no Chalmers, no process algebra imported as architecture. (External literature
+  appears NOWHERE in this step, not even for classification.)" No governance preference. No hypothetical
+  state pair (already tracked, file 1066's refusal to invent a witness). No verification-lane artifact used
+  as a definition, only as the target of C-7's correction (already tracked, file 1073). This directly mirrors
+  and reconfirms the disciplined negative-checks methodology this reconstruction has tracked since file 1063.
+
+  **DELIVERS THE FORMAL, CLOSING EVIDENCE-THRESHOLD CHECK AGAINST THE MANDATE'S OWN §10 REQUIREMENTS**: all
+  five requirements (at least one primary definition; all materially conflicting primary definitions
+  compared verbatim; an explicit comparison; no hidden normative assumption -- explicitly confirming "the one
+  temptation... to build a witness... was DECLINED, since it would have presupposed Decision 3"; no imported
+  philosophical/external premise) are confirmed MET. Boxed final verdict, closing the entire Step-290
+  package: "Threshold met for `N-1A`. NOT met for semantic distinguishability, which is reported
+  UNDECIDABLE." This is the package's own final, formal self-certification of its own evidentiary rigor,
+  directly reconfirming (not extending) the already-tracked N-1A/N-1B split (file 1066) and the withdrawal
+  finding (files 1067/1072).
+introduces:
+  - concept: "The consolidated, single-table evidence index for the entire Step-290 package, tracing every N-1 verdict component back to its exact corpus locus and evidentiary class"
+  - concept: "The formal, closing evidence-threshold self-certification against the mandate's own five §10 requirements, confirming the threshold is met for N-1A and explicitly not met (UNDECIDABLE) for semantic distinguishability"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked disciplined negative-checks methodology (file 1063) and the N-1A/N-1B split (file 1066)"
+    refinement: "FORMALLY CONSOLIDATED and self-certified against the mandate's own evidence-threshold requirements, with no new substantive finding beyond confirming the rigor of the already-established resolution"
+contradicts: []
+repeats:
+  - "Consolidates, without introducing new substantive findings, the corpus loci and executed evidence already tracked in detail across files 1063-1073."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the closing Step-290 evidence-index and threshold self-certification, confirming the mandate's evidence requirements are met for N-1A and explicitly unmet (UNDECIDABLE) for semantic distinguishability -- closing the ten-document Step-290 package."
+anchor_test:
+  anchor: "This reconstruction's already-tracked N-1A/N-1B split (file 1066) and disciplined negative-checks methodology (file 1063)"
+  supports_dimension: "Formally consolidates and self-certifies these findings against the mandate's own evidence-threshold requirements, closing the Step-290 package"
+  refines_or_contradicts: "refines (consolidates and certifies) the prior tracked findings; introduces no new substantive claim"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The full corpus-locus evidence table is directly checkable against files 1063-1073's own already-documented citations for exact consistency of the consolidation."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers the closing, formal evidence-index and threshold self-certification for the entire ten-document Step-290 package, confirming the mandate's own evidentiary requirements are met for N-1A and explicitly unmet (UNDECIDABLE) for semantic distinguishability. Classified importance major (a rigor-consolidation capstone rather than a new substantive finding) and confidence high given its disciplined, well-evidenced nature."

@@ -1,0 +1,85 @@
+sequence: 987
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/D285-4-TRANSFORMATION-TAXONOMY.md
+title: "D285-4 -- Transformation Taxonomy: The Actual, Definitive D285-4 Artifact Delivering the Formal Type-Checking Proof That Destroys the Five-Theta-Operator 'Complete Transformation Algebra,' Replacing It With a Six-Class Taxonomy (Four Kernel-Relevant) and an Explicit Acyclic Dependency Graph Among the Four Kernel Classes"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the D285-4 artifact proper, applying the frozen seven-stage/seven-section D285-x template"
+source_role: PRIMARY_RESEARCH
+canonical_source: 987
+importance: critical
+confidence: high
+about: >
+  The actual D285-4 artifact (previously known only by cross-reference and outcome, via files 0973, 0975,
+  0980, 0984), delivering the formal, definitive record of the Θ-algebra's destruction.
+
+  **§1 delivers a SIX-CLASS TRANSFORMATION TAXONOMY** (replacing, not extending, the operator-algebra
+  framing): Epistemic (`δ(K,e)`; Assert/Retract/Supersede/Merge), Operational (`𝒪_sem` five families, "272A"
+  -- a new corpus step reference), Evidential (`Qualify`, `LinkEvidence`, `e.state`), Normative (`Policy`
+  versioning, `I-11`), Agent/Knower (outside, per D285-2), External world (`W`, `Ω` -- outside, "not in any
+  claimed model"). **Only the first four are kernel-relevant.**
+
+  **§2 delivers the corpus's standing nine-stage pipeline diagram** (`Intent→Guidance→Decision→Operation→
+  Authorization→Execution→Transition→Result→Observation`) with the two boundary annotations explicitly
+  marked as "standing corpus invariants, not proposals": `Zero/Lord/Sārathi ∉ State Mutation Boundary`
+  (gating Authorization) and "only validated domain events mutate K" (gating Execution/Transition).
+
+  **§3 DELIVERS THE FORMAL, DEFINITIVE TYPE-CHECKING TABLE** that rejects `Θ_X∘Θ_I∘Θ_K∘Θ_T∘Θ_A`: `Θ_A`
+  (`𝕂×𝒪⇀𝕂`), `Θ_T` (`𝕂×Event⇀𝕂`, needs an Event which `Θ_A` does not return), `Θ_K` (`𝒩→𝒩`, codomain `𝒩` not
+  `𝕂` -- cannot compose), `Θ_I` (`Q_t→Q_t`, different carrier again), `Θ_X` (`W→W`, `W` not in the model at
+  all). **Conclusion, quoting the governing rule (Step 286 §16 -- a new corpus reference)**: "If it cannot be
+  type-checked: reject the composition. Do not invent types to rescue it" -- **REJECTED (`RX`)**. "What
+  survives is the taxonomy, not the algebra. Five names for transformations across five carriers is a
+  classification; calling it a composable operator family was the error."
+
+  **§4 delivers a dependency graph among the four kernel classes** (Evidential→Epistemic; Normative
+  →Operational; Operational→Epistemic; Epistemic→History), explicitly acyclic, and explicitly distinguished
+  from an EARLIER-TRACKED cycle (`Evidence→Policy→K→Assertion→Evidence`) which "runs through objects, not
+  through these classes" -- a disciplined guard against conflating two different graphs.
+
+  **Template §7 (seven-way classification)**: mathematical Θ-algebra `RX`; architectural taxonomy `R6`; DDD:
+  four kernel classes map to service/command/event/policy layers; analogy: the five-fold naming is `R2` at
+  best; corroboration/unresolved/governance: none.
+introduces:
+  - concept: "The formal six-class transformation taxonomy (Epistemic/Operational/Evidential/Normative/Agent-Knower/External-world), with only the first four kernel-relevant"
+  - concept: "'272A' -- a new corpus step reference for the operational five-families of 𝒪_sem"
+  - concept: "'Step 286 §16' -- a new corpus reference supplying the governing type-checking discipline rule ('if it cannot be type-checked: reject the composition')"
+  - concept: "The explicit acyclic dependency graph among the four kernel-relevant transformation classes, distinguished from an earlier-tracked object-level cycle"
+defines:
+  - term: "the six transformation classes"
+    definition: "Epistemic, Operational, Evidential, Normative (kernel-relevant); Agent/Knower, External world (outside the kernel)"
+refines:
+  - concept: "The five-Θ-operator 'complete transformation algebra,' already known via cross-reference (files 0973, 0975, 0980, 0984) to have been destroyed"
+    refinement: "DELIVERS THE FULL, DEFINITIVE TYPE-CHECKING PROOF for the first time: the exact domain/codomain mismatch for each of the five operators, showing four incompatible carriers (𝕂, 𝒩, Q_t, W) in one composition chain"
+  - concept: "This reconstruction's already-tracked K-collision and layer-boundary findings (Knower∉K from file 0986/D285-2)"
+    refinement: "CONFIRMED and reused directly: the Agent/Knower transformation class is explicitly marked outside the kernel, citing D285-2"
+contradicts: []
+repeats:
+  - "The outcome (Θ-algebra REJECTED, RX) substantially repeats what files 0973/0975/0980/0984 already established by cross-reference; this file supplies the full formal derivation for the first time."
+bridge_candidates:
+  - "'272A' and 'Step 286 §16' -- watch for whether this reconstruction directly encounters these corpus step references elsewhere."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the full, definitive type-checking proof (four incompatible carriers 𝕂/𝒩/Q_t/W) that formally rejects the five-Θ-operator composition, superseding the previously cross-referenced-only outcome."
+  - "dimension-registry.md: record the six-class transformation taxonomy (four kernel-relevant) as the disciplined replacement for the rejected operator-algebra framing."
+anchor_test:
+  anchor: "Files 0973, 0975, 0980, 0984's already-cross-referenced Theta-algebra rejection outcome"
+  supports_dimension: "Supplies the full, definitive formal type-checking derivation for an outcome this reconstruction had previously only known by cross-reference"
+  refines_or_contradicts: "confirms and formally completes the already-known rejection outcome"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The domain/codomain table for Θ_A/Θ_T/Θ_K/Θ_I/Θ_X is directly checkable against the taxonomy's own class definitions in §1 (carriers 𝕂, 𝒩, Q_t, W correspond to Epistemic, Agent/Knower, an inquiry-tracking construct, and External-world respectively)."
+undefined_concepts: []
+open_questions:
+  - "Whether '272A' and 'Step 286 §16' are directly encountered elsewhere in this reconstruction's sequential pass."
+tier2_triggered: true
+tier2_reason: "Delivers the full, definitive formal type-checking proof for the Theta-algebra rejection outcome this reconstruction had previously only known by cross-reference, plus a genuinely new six-class transformation taxonomy and dependency graph. Classified importance critical and confidence high given the direct, complete, technically verifiable derivation."

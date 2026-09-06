@@ -1,0 +1,198 @@
+sequence: 654
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-120623_step-070-the-minimal-knowledgeos-kernel.md
+title: "Step 70 Delivers a Second, Genuinely Distinct Eight-Primitive Kernel K_OS=(A,T,P,E,I,S,X,R) — Confirmed via Direct Comparison to Overlap Only Three of Eight Elements With 0630's Earlier Frozen Kernel 𝒫={Entity,State,Event,Observation,Proposition,Relation,Policy,Action}, With NO Cross-Reference or Reconciliation Attempted in Either Direction — a Genuine, Confirmed Corpus-Integrity Inconsistency, Not Yet a Collision; Delivers Design-by-Contract Transformation Semantics, Compositional Provenance, a Hexagonal/Ports-and-Adapters DDD Mapping, Provider≠Authority, Seven Necessity-Confirming 'Kernel-Removal FAIL' Results (a Fourth Distinct FAIL Convention), Verdict 'STEP 70 — PASS'; Closes by Opening Step 71 — Compositional Correctness of KnowledgeOS, Explicitly Promising Content (ContractComposition, InvariantComposition, ProvenanceComposition) That Substantially Overlaps 0640's Already-Processed Step 58 Compositionality Treatment (LANDMARK, Two Genuine FAILURE DETECTED Results) — a Second, High-Priority Unresolved Topic-Collision Candidate"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 70 -- The Minimal KnowledgeOS Kernel', opened cleanly at 0653's close, which itself previewed exactly this file's eight-primitive kernel verbatim"
+source_role: PRIMARY_RESEARCH
+canonical_source: 654
+importance: critical
+confidence: high
+about: >
+  Opens Step 70 explicitly declaring a shift from horizontal theory expansion to software architecture:
+  "what is the smallest executable system that can preserve all the mathematical properties we have
+  established?" **Delivers the kernel hypothesis `K_OS=(A,T,P,E,I,S,X,R)`** -- Artifact, Epistemic Type,
+  Provenance, Event, Invariant, State, Transformation, Rule/Policy -- exactly matching the eight primitives
+  previewed at 0653's close, now developed in full via a systematic necessity-justification methodology:
+  each primitive is tested by imagining its removal and observing the resulting failure mode.
+
+  **CONFIRMS, via direct comparison, that this eight-primitive kernel is genuinely and substantially
+  distinct from 0630's (Step 49's) earlier "frozen eight-primitive kernel" `𝒫={Entity, State, Event,
+  Observation, Proposition, Relation, Policy, Action}`**: only three of eight elements overlap (`State`,
+  `Event`, `Policy`); the remaining five in each kernel are entirely different (`Artifact, Type, Provenance,
+  Invariant, Transformation` here versus `Entity, Observation, Proposition, Relation, Action` at 0630).
+  **Critically, this file makes NO reference whatsoever to 0630's earlier kernel, its freeze declaration, or
+  any need to reconcile the two** -- 0630 explicitly described its kernel as "frozen" with a general
+  derivability test intended to prevent exactly this kind of uncontrolled future proliferation, yet this
+  file introduces a second, differently-composed "minimal kernel" twenty-one steps later without
+  acknowledging the earlier one exists. **This is a confirmed, concrete corpus-integrity finding**: not
+  necessarily a content contradiction (the two kernels address different aspects -- 0630's is closer to a
+  pure epistemic/logical ontology, this file's is closer to a software-implementation kernel with explicit
+  provenance/transformation/invariant-as-executable-check emphasis), but a genuine consistency lapse in the
+  corpus's own stated discipline (0630's explicit "frozen" declaration and derivability test were not
+  applied here), requiring eventual adjudication under this reconstruction's §29 cross-model synthesis about
+  whether these represent two compatible layers (logical ontology vs. software kernel) or a genuine drift.
+
+  Delivers each of the eight primitives justified via a dedicated removal experiment, **seven of which yield
+  a distinctive "kernel-removal FAIL" result** (a fourth, methodologically distinct use of "FAIL" in this
+  corpus, alongside the genuine adversarial "FAILURE DETECTED" discoveries at 0640/0649 and the deliberate
+  anti-pattern FAIL at 0650): removing Artifact identity prevents tracking `DerivedFrom`/`Version`/
+  `Conflict`/`Impact` (FAIL); removing Epistemic Type allows an untyped statement to be silently interpreted
+  as `Fact` (FAIL); removing Provenance prevents distinguishing `IndependentEvidence` from
+  `RepeatedAIOutput` (FAIL), directly extending 0649's multi-agent-independence discipline; removing Event
+  history makes "why did knowledge change?" unanswerable (FAIL); removing Invariant checking allows an
+  invalid probability (`P(A)=1.4`) to be structurally accepted (FAIL); removing explicit Transformation
+  records allows an implicit `Prediction→Fact` conversion (FAIL); removing Policy allows a decision to
+  auto-execute without authorization (FAIL). The eighth primitive, State, receives a distinctively different
+  verdict -- **"PASS WITH PERFORMANCE FAILURE"** (a fifth distinct hedged/qualified verdict phrasing, novel
+  in kind): an event log without state projection remains theoretically computable but becomes operationally
+  inefficient (full replay required per query), crystallizing that `StateProjection` is "operationally
+  necessary even if not logically fundamental" -- directly motivating a Logical-kernel-versus-operational-
+  kernel distinction (`K_L=(A,T,P,E,I,X,R)` without State, versus `K_O=K_L+StateProjection+Indexes+Caching`).
+
+  **Delivers the file's first central formal deliverable -- `Provider≠Authority`**, directly and explicitly
+  extending 0649's `AI Output≠Evidence≠Fact≠Truth` epistemic firewall into the computational-provider
+  dimension: an LLM producing a `Hypothesis` does not thereby gain authority to declare `VerifiedFact`,
+  confirmed via a provider-authority experiment (LLM output auto-assigned `Authority=Verified` -- FAIL,
+  correctly rejected in the corrected design). Crystallizes that KnowledgeOS's kernel job is to control
+  "What, Why, FromWhat, UnderWhichRules, WithWhichAuthority, WithWhichType, WithWhichProvenance" -- "a very
+  different architecture from an AI chatbot" -- and that "AI is a computational participant, not the
+  epistemic authority," explicitly declared "probably one of the most important architectural conclusions so
+  far": KnowledgeOS should not be `LLM+Memory` but `GovernedSemanticKernel+ComputationalProviders`.
+
+  **Delivers the file's second central formal deliverable -- transformations formalized via Design by
+  Contract**: `X=(InputType, OutputType, Preconditions, Procedure, Postconditions, ProvenanceRule)`,
+  confirmed via a violated-precondition experiment (invalid-unit measurement rejected -- PASS) and a
+  missing-postcondition experiment (evidence created without provenance -- `TransformationInvalid` -- PASS).
+  Delivers formal Composition (`X_2∘X_1` valid only if `Post(X_1)⇒Pre(X_2)`), confirmed via an invalid-
+  composition experiment (mismatched types -- `CompositionError` -- PASS), crystallizing that "we don't need
+  one giant reasoning algorithm; we need valid transformations that can be composed" -- **directly
+  echoing and re-deriving 0637's/0641's Context Contract Algebra machinery in a new, kernel-specific
+  formulation**.
+
+  **Delivers the file's third central formal deliverable -- Compositional provenance formally required**:
+  `Anc(c)⊇Anc(e)∪{m}` for a composed transformation chain, confirmed via a provenance-composition experiment
+  (a valid two-step composition that nonetheless loses the original measurement reference -- correctly
+  flagged `CompositionInvalid` -- PASS), yielding new invariant `I_{CompositionalProvenance}`. Delivers
+  Atomicity for trusted state transitions (`Artifact+Event+RequiredProvenance` must commit as one
+  consistent transition), confirmed via a partial-commit experiment (database failure between artifact
+  creation and provenance persistence -- `TransactionRollback`/`RecoverableIncompleteState` required, not
+  silent apparent validity -- PASS), crystallizing **`Mathematical invariant → Software invariant`**,
+  explicitly declared "the bridge we were looking for" -- the clearest single statement in the corpus so far
+  of how its mathematical program is meant to become actual database/transaction engineering.
+
+  Delivers Event ordering formalized via partial order rather than a false global total order (directly
+  relevant to integrating Git/Jira/CI/telemetry/human/AI event sources with differing clocks), confirmed via
+  a false-global-ordering experiment (PASS), and `Timestamp≠CausalOrder` with Lamport-style logical clocks
+  explicitly distinguished from true causality (`Ordering≠Causality`), confirmed via an ordering-implies-
+  causation experiment (Rejected -- PASS) -- directly extending the corpus's established `Correlation⇏
+  CausalClaim` discipline (0624, 0645, 0667) into the event-infrastructure layer specifically.
+
+  **Delivers the file's fourth central formal deliverable -- an explicit Hexagonal/Ports-and-Adapters DDD
+  mapping**: the kernel as `DomainCore` surrounded by `Ports` and `InfrastructureAdapters` (`LLMAdapter,
+  GitAdapter, JiraAdapter, DatabaseAdapter, StatisticalEngineAdapter`), explicitly identified as "directly
+  compatible with the DDD/hexagonal direction we have been using," confirmed via two adapter-substitution
+  experiments (replacing the LLM provider, and replacing the database technology, both correctly preserving
+  `CoreInvariantPreserved`/equivalent behavior -- both PASS), crystallizing **`Domain semantics dominate
+  infrastructure`** and an explicit exclusion list for what does NOT belong in the trusted kernel
+  (`VectorSearch, LLM, Embedding, PromptManagement, SpecificDatabaseTechnology, SpecificCloudProvider,
+  SpecificAgentFramework`).
+
+  Delivers a minimal executable kernel loop (`Input→Classify→Validate→Transform→CheckInvariants→
+  Commit→ProjectState`), explicitly declared "executable on a normal computer," worked through a concrete
+  Measurement-to-Evidence example -- **though, consistent with every step since Step 51, this remains a
+  conceptual walkthrough, not actually executed code**.
+
+  **Delivers Step 70's theorem candidate**: "a minimal KnowledgeOS kernel requires typed artifacts,
+  provenance, explicit transformations, eventual state, executable invariants, and policy-controlled
+  transitions." Delivers Step 70's verdict **"STEP 70 — PASS,"** explicitly emphasized as "our first
+  credible software architecture target" -- reframing the corpus's own self-assessment from "is the
+  mathematics interesting?" to "the mathematics can be compiled into a small set of executable semantic
+  contracts," an explicitly stronger claim than any prior step's verdict. Delivers a refined architecture
+  formula: `KnowledgeOS=SemanticKernel+KnowledgeGraph+InferenceEngines+AI Agents+Governance+
+  External Adapters`. Reconfirms the normal-PC conclusion specifically for the kernel (`O(n)`/`O(n log n)`
+  operations), with expensive computation isolated to optional providers.
+
+  **Closes by identifying compositional correctness as the next unresolved boundary**: "`Valid(X_1)` and
+  `Valid(X_2)` do not automatically imply `Valid(X_2∘X_1)`," opening "Step 71 — Compositional Correctness of
+  KnowledgeOS," explicitly promising to examine `ContractComposition, InvariantComposition,
+  ProvenanceComposition, TransactionComposition, WorkflowCorrectness, AgentComposition`, and posing the
+  question "if every bounded context is locally correct, under what conditions is the whole KnowledgeOS
+  system correct?" as the point "where DDD bounded contexts, formal methods, and the mathematics we have
+  developed from Steps 1-70 finally meet in one place." **This closing framing substantially and directly
+  overlaps the corpus's ALREADY-PROCESSED Step 58 (0640), which this reconstruction recorded as a LANDMARK
+  step specifically and explicitly titled around Safety/Liveness/Compositionality, delivering the corpus's
+  first two genuine "FAILURE DETECTED" results (a mutable live-knowledge-reference hazard and a TOCTOU
+  authorization race) under the Compositionality heading.** Step 71's promised scope (contract, invariant,
+  provenance, transaction, workflow, and agent composition) is neither cross-referenced against, nor
+  explicitly distinguished from, 0640's Step 58 compositionality content -- **flagged as a second, high-
+  priority, unresolved topic-collision/deepening candidate requiring direct comparison once Step 71's actual
+  file (0655) is read**, structurally parallel to the already-tracked but still-unreconciled 0618/0597
+  collision. No actual code execution reported in this file. No corpus-integrity content collision fully
+  confirmed within this file's own content (the kernel-divergence and Step-58/Step-71 overlap are both
+  flagged as open questions pending further reading, not yet adjudicated contradictions).
+introduces:
+  - concept: "CONFIRMED (via direct primitive-by-primitive comparison): a second, substantially distinct eight-primitive kernel (K_OS=(A,T,P,E,I,S,X,R)), overlapping only three of eight elements with 0630's earlier frozen eight-primitive kernel, with zero cross-reference between the two — a genuine, concrete corpus-integrity consistency finding"
+  - concept: "A fourth distinct 'FAIL' usage convention in this corpus: deliberate necessity-justification via removal experiments (seven kernel-removal FAILs), methodologically distinct from genuine adversarial FAILURE DETECTED discoveries (0640, 0649) and the deliberate anti-pattern FAIL (0650)"
+  - concept: "A fifth distinct hedged/qualified verdict phrasing: 'PASS WITH PERFORMANCE FAILURE' (State primitive), motivating the Logical-kernel-versus-Operational-kernel distinction"
+  - concept: "Provider≠Authority, directly extending 0649's AI Output≠Evidence≠Fact≠Truth epistemic firewall into the computational-provider dimension"
+  - concept: "Design-by-Contract transformation semantics with formal composition rules (Post(X_1)⇒Pre(X_2)) and compositional provenance (Anc(c)⊇Anc(e)∪{m}), crystallizing Mathematical invariant→Software invariant as the corpus's clearest statement of its mathematics-to-engineering bridge"
+  - concept: "An explicit Hexagonal/Ports-and-Adapters DDD architecture mapping for the kernel, with an explicit exclusion list for what must remain outside the trusted kernel"
+  - concept: "A second, high-priority, UNRESOLVED topic-overlap flag: Step 71's promised compositional-correctness scope substantially overlaps 0640's already-processed, LANDMARK Step 58 Compositionality content, with no cross-reference in either direction"
+defines:
+  - concept: "K_OS=(A,T,P,E,I,S,X,R)"
+    definition: "This file's candidate minimal software kernel: Artifact, Epistemic Type, Provenance, Event, Invariant, State, Transformation, Rule/Policy — justified via removal experiments, each confirming a distinct necessary role; genuinely distinct from 0630's earlier eight-primitive ontological kernel 𝒫={Entity,State,Event,Observation,Proposition,Relation,Policy,Action}, overlapping in only three elements"
+  - concept: "Provider≠Authority"
+    definition: "A computational provider (e.g. an LLM) producing an artifact of a given epistemic type (e.g. Hypothesis) does not thereby gain the authority to promote it to a higher epistemic status (e.g. VerifiedFact); the kernel retains epistemic authority while providers remain interchangeable computational participants"
+  - concept: "Mathematical invariant → Software invariant"
+    definition: "A mathematically stated requirement (e.g. Provenance(a)≠∅) becomes, at the implementation level, a concrete database/transaction-atomicity requirement — explicitly identified as 'the bridge' connecting the corpus's mathematical program to actual software engineering"
+  - concept: "Logical kernel versus Operational kernel"
+    definition: "K_L=(A,T,P,E,I,X,R) is the mathematically fundamental kernel (State is theoretically reconstructible from Events); K_O=K_L+StateProjection+Indexes+Caching adds operationally necessary but logically non-fundamental elements for practical performance"
+  - concept: "I_CompositionalProvenance"
+    definition: "Valid transformations must preserve required ancestry across composition — a composed transformation chain's ancestor set must be a superset of each component transformation's ancestor set plus its own direct inputs, preventing provenance loss through valid-looking pipeline composition"
+refines:
+  - concept: "0630's (Step 49) frozen eight-primitive kernel 𝒫={Entity,State,Event,Observation,Proposition,Relation,Policy,Action}"
+    refinement: "NOT explicitly refined, extended, or reconciled — a second, substantially different eight-primitive kernel is introduced without acknowledgment, despite 0630's explicit 'frozen' declaration and general derivability test intended to prevent exactly this kind of uncontrolled parallel proliferation; flagged as an open corpus-integrity question for eventual §29 adjudication"
+  - concept: "0649's AI Output≠Evidence≠Fact≠Truth epistemic firewall"
+    refinement: "Directly and explicitly extended into the computational-provider dimension via Provider≠Authority, generalizing the AI-specific firewall to any computational provider (LLM, statistical engine, causal engine)"
+  - concept: "0637's/0641's Context Contract Algebra"
+    refinement: "Re-derived in a new, kernel-specific formulation via typed transformation contracts (InputType, OutputType, Preconditions, Procedure, Postconditions, ProvenanceRule) and formal composition rules, applying the same underlying discipline at the primitive-kernel level rather than the bounded-context level"
+  - concept: "0624's/0645's/0667's Correlation⇏CausalClaim discipline"
+    refinement: "Directly extended into the event-infrastructure layer specifically via Timestamp≠CausalOrder and Ordering≠Causality, addressing distributed multi-source event integration (Git, Jira, CI, telemetry, human, AI)"
+  - concept: "0640's (Step 58) LANDMARK Compositionality treatment"
+    refinement: "POTENTIALLY DUPLICATED, NOT YET RECONCILED: Step 71, opened at this file's close, promises to examine contract/invariant/provenance/transaction/workflow/agent composition and 'when is the whole system correct if every bounded context is locally correct' — territory closely overlapping 0640's already-processed Step 58, which delivered the corpus's first two genuine FAILURE DETECTED results under an explicit Compositionality heading; no cross-reference to Step 58 appears in this file, flagged as a second high-priority topic-collision candidate requiring direct comparison once Step 71's file is read"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "HIGHEST PRIORITY, NEW: read Step 71's actual file (0655) and directly compare its content against 0640's (Step 58's) already-processed Compositionality treatment — determine whether Step 71 is a genuine, deliberate deepening (as was confirmed for the 0645/0646 Step-63-vs-0594/0624 case), a further undetected corpus-integrity collision (as with 0618/0597), or a distinct but adjacent concern (kernel-level composition vs. bounded-context-level composition) that happens to share vocabulary."
+  - "CARRIED FORWARD, STILL OPEN: 0630's eight-primitive kernel versus this file's eight-primitive kernel — determine in later files (if the corpus ever explicitly revisits Step 49 or attempts a full architectural consolidation) whether these are ever explicitly reconciled, declared as two distinct valid layers (ontological vs. software-implementation), or left as an acknowledged inconsistency."
+  - "CONTINUING, UNRESOLVED: whether ANY file in the remaining corpus ever reports genuinely executed/running code — this file's kernel loop (§70.58-59) remains a conceptual walkthrough, not executed code, continuing the established pattern even at the point of maximal architectural concreteness."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CONFIRMED second, substantially distinct eight-primitive kernel K_OS=(A,T,P,E,I,S,X,R), overlapping only three of eight elements with 0630's earlier frozen kernel, with zero cross-reference in either direction — a genuine corpus-integrity consistency finding requiring eventual §29 adjudication."
+  - "dimension-registry.md: record the fourth distinct FAIL-usage convention (kernel-removal necessity tests, seven instances) and the fifth distinct hedged verdict ('PASS WITH PERFORMANCE FAILURE'); Provider≠Authority extending 0649's epistemic firewall; Design-by-Contract transformation semantics with compositional provenance (I_CompositionalProvenance); and 'Mathematical invariant→Software invariant' as the corpus's clearest mathematics-to-engineering bridge statement."
+  - "dimension-registry.md: record the explicit Hexagonal/Ports-and-Adapters DDD kernel architecture with an explicit non-kernel exclusion list; verdict 'STEP 70 — PASS,' explicitly the corpus's first credible software-architecture target; and the SECOND high-priority unresolved topic-overlap flag — Step 71's promised compositional-correctness scope versus 0640's already-processed LANDMARK Step 58 Compositionality content."
+anchor_test:
+  anchor: "0653's closing preview of this exact eight-primitive kernel; 0630's (Step 49) earlier frozen eight-primitive kernel and its general derivability test; 0649's AI Output≠Evidence≠Fact≠Truth epistemic firewall; 0637's/0641's Context Contract Algebra; 0640's (Step 58) LANDMARK Compositionality treatment with its two genuine FAILURE DETECTED results; the corpus's established Correlation⇏CausalClaim discipline; the single most significant open tracked question (genuine executed code)"
+  supports_dimension: "Delivers the corpus's most concrete and directly software-architecture-relevant deliverable to date — a genuinely well-justified minimal kernel with a systematic necessity-testing methodology, Design-by-Contract transformation semantics, compositional-provenance requirements, and an explicit, DDD-consistent Hexagonal/Ports-and-Adapters mapping — crystallized in the corpus's clearest statement yet of how its mathematics is meant to become software ('Mathematical invariant→Software invariant'). Simultaneously, directly and checkably CONFIRMS a genuine corpus-integrity consistency lapse: this file's eight-primitive kernel overlaps only three of eight elements with 0630's earlier explicitly 'frozen' eight-primitive kernel, and makes no attempt to reconcile, extend, or even acknowledge the earlier kernel's existence, despite 0630's own explicit general derivability test designed to prevent exactly this outcome. Additionally surfaces a second, structurally similar but topically distinct concern: Step 71's promised scope substantially overlaps already-processed Step 58 (0640) Compositionality content without cross-reference, requiring direct comparison once read. Both findings are properly flagged as open corpus-integrity questions rather than adjudicated as errors, consistent with this reconstruction's discipline of never silently converting resemblance into identity or absence-of-reference into contradiction"
+  refines_or_contradicts: "directly executes 0653's closing kernel preview; CONFIRMS a genuine, substantial divergence from 0630's earlier eight-primitive kernel with no cross-reference (flagged, not yet adjudicated); directly extends 0649's epistemic firewall via Provider≠Authority; re-derives 0637's/0641's Context Contract Algebra at the kernel level; extends the corpus's Correlation⇏CausalClaim discipline into event infrastructure; flags a second unresolved topic-overlap candidate against 0640's Step 58; leaves the corpus's single most significant open question (genuine executed code) still unresolved despite reaching maximal architectural concreteness"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "A direct, element-by-element comparison of this file's kernel set {Artifact, Type, Provenance, Event, Invariant, State, Transformation, Policy} against 0630's recorded kernel set {Entity, State, Event, Observation, Proposition, Relation, Policy, Action} shows exactly three shared elements (State, Event, Policy) and five non-overlapping elements on each side, directly and mechanically confirming this is a substantially different kernel, not a restatement or minor refinement, with no textual cross-reference to 0630 anywhere in this file."
+  - "This file's closing text (§70.66-Step 71 opening) explicitly names the same conceptual territory (contract/invariant/provenance/transaction composition, bounded-context correctness) that this reconstruction's own 0640 record already documents as 0640's (Step 58's) LANDMARK subject matter, with zero cross-reference to Step 58 in either direction — directly and checkably raising a second, structurally analogous topic-overlap question to the already-tracked 0618/0597 collision."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 71's actual content (0655), once read, explicitly acknowledges and distinguishes itself from 0640's Step 58 Compositionality treatment, deepens it deliberately, or represents an undetected corpus-integrity collision requiring reconciliation under this reconstruction's §29 process."
+  - "Whether any later file in the corpus explicitly reconciles this file's eight-primitive software kernel against 0630's earlier eight-primitive ontological kernel, or whether the two are left as a standing, never-adjudicated inconsistency through the end of the primary corpus."
+tier2_triggered: true
+tier2_reason: "Delivers the corpus's most concrete software-architecture deliverable to date (Design-by-Contract transformations, compositional provenance, an explicit Hexagonal/DDD kernel mapping, and the clearest mathematics-to-engineering bridge statement in the corpus). CONFIRMS, via direct comparison, a genuine and substantial corpus-integrity consistency lapse: a second eight-primitive kernel overlapping only three of eight elements with 0630's earlier 'frozen' kernel, introduced with zero cross-reference despite 0630's own explicit anti-proliferation safeguard. Surfaces a second, structurally analogous unresolved topic-overlap flag against 0640's already-processed LANDMARK Step 58 Compositionality content. Introduces two further distinct verdict/failure-marking conventions (kernel-removal FAIL, PASS WITH PERFORMANCE FAILURE), continuing this reconstruction's close tracking of the corpus's evolving self-verification vocabulary. Verdict 'STEP 70 — PASS,' explicitly the corpus's first credible software-architecture target."

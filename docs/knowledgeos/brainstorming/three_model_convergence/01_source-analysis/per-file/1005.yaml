@@ -1,0 +1,102 @@
+sequence: 1005
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/D288-SCOPE-DECISION-PROCEDURE-CLOSURE.md
+title: "D288 -- Scope: Decision-Procedure Closure: The Actual D288 Scoping Artifact, Delivering the Major Simplifying Result That Only ONE of Four Equality/Qualify Blockers Is a Genuine Irreducible Formal Gap -- Three Are a Single Open Governance Question (Step 254 Decision 3) Away From Closure"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual D288 scoping artifact, disciplined to scope (not execute) per its own mandate, which forbids taking normative decisions"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1005
+importance: critical
+confidence: high
+about: >
+  The actual D288 scoping artifact commissioned by file 1002's mandate, status "SCOPED, NOT EXECUTED — 3 of
+  4 targets are NORMATIVE and cannot close without a human act." Delivers per-target derivability analysis
+  for all four D288 targets, disciplined to scope rather than execute since executing three of four would
+  itself constitute a forbidden normative decision.
+
+  **Target 1 (`≡` semantic equality)**: blocked entirely on the already-tracked Step 254 Decision 3 (open:
+  is `Π` inside `≡`?). "The question IS the decision. Both answers are formally consistent; the corpus
+  declines to choose." Classified **NORMATIVE, not `G1`-irreducible — `G1`-pending-a-decision**. Delivers the
+  exact consequence of each branch: `Π` inside ⇒ D285-5's property VACUOUS and `≅_λ` collapses into `≡`; `Π`
+  outside ⇒ the property is SUBSTANTIVE.
+
+  **Target 2 (`≈` observational equality)**: the FORM is derivable (it is a FAMILY of relations `≈_𝒬` indexed
+  by a declared observation/query set, not one relation), but the SET itself is NORMATIVE per bounded
+  context, since "`K_A(Reality)≠K_B(Reality)` is a corpus principle." Cites the already-tracked Sañjaya
+  parameterisation (`Knowledge=f(Access_Level,Role,Purpose)`).
+
+  **Target 3 (`≅_λ` provenance-sensitive equality)**: introduces a NEW corpus reference, **"step-105,"**
+  quoting "What matters is decision-relevant provenance, not private chain-of-thought" -- a corpus-supported
+  relevance PRINCIPLE, though not a full predicate definition. Classified NORMATIVE with a corpus-supported
+  constraint. **Flags this target as mattering most**: "`≅_λ` is the relation under which `δ` IS injective on
+  D285-5's witness. Defining it therefore changes an existing published result."
+
+  **Target 4 (`Qualify`)**: unlike the other three, **explicitly classified `G1` IRREDUCIBLE ON CURRENT
+  EVIDENCE** — "not a pending decision... no corpus passage states necessary-and-sufficient qualification
+  criteria." Explicitly reconfirms `Φ` (the Knowledge Qualification Problem's state-qualification function)
+  is NOT `Qualify`'s body (different layer: state vs observation).
+
+  **DELIVERS THE FILE'S CENTRAL, MAJOR SIMPLIFYING RESULT**: "Three of four are one decision away; the
+  fourth is a genuine formal gap. That is a materially better position than 'four blockers.' The equality
+  cluster is not a mathematical wall — it is a single open governance question (Decision 3) plus two
+  context-parameterisations. Only `Qualify` is irreducible."
+
+  **§4 delivers "the one question that unlocks the most"**: Step 254 Decision 3, with a full five-row
+  consequence table for both branches (`Π` inside vs outside `≡`), covering D285-5's substantiveness,
+  `≅_λ` vs `≡` distinctness, D285-6's projection legitimacy, provenance-blindness handling, and audit
+  strength. **"No recommendation is offered. Both branches are formally consistent; the choice is about what
+  KnowledgeOS wants equality to MEAN, which is exactly why the corpus left it open."**
+
+  **§3 explicitly justifies non-execution**: "Proceeding would break a gate the research lane set for itself
+  before this programme existed" (citing Step 261 §261.23, already tracked via file 1003).
+
+  **§5 confirms discipline compliance**: no new relation invented, `Qualify` not solved by assumption, no
+  Sanskrit expansion (GK-14/GK-15 still undeveloped), `Sañjaya=Ω` not canonical, `=_semantic` still not
+  promoted.
+introduces:
+  - concept: "'step-105' -- a new corpus reference supplying the decision-relevance principle for provenance ('decision-relevant provenance, not private chain-of-thought')"
+  - concept: "The major simplifying finding that only ONE of the four D288 blockers (Qualify) is a genuine irreducible formal gap; the other three collapse to a single open governance question (Decision 3) plus two context-parameterisations"
+  - concept: "The full five-row consequence table for Decision 3's two branches, covering D285-5 substantiveness, the-lambda-vs-equiv distinctness, D285-6 legitimacy, provenance-blindness handling, and audit strength"
+  - concept: "The family-of-relations reformulation of observational equality: not one relation approx, but a family approx_Q indexed by a declared query set Q"
+defines:
+  - term: "approx_Q (observational equality family)"
+    definition: "Observational equality parameterised by a declared permitted-observation/query set Q; the form (a family indexed by Q) is derivable from the corpus's own definition, while the specific set Q is a normative, per-bounded-context choice"
+refines:
+  - concept: "This reconstruction's already-tracked four D288 targets (file 1002) and the equality/Qualify gaps (files 0991, 0993, 1001, 1003)"
+    refinement: "SHARPLY DIFFERENTIATED: three of four (semantic, observational, provenance-sensitive equality) are shown to be NORMATIVE (one decision or context-parameterisation away from closure), while only Qualify remains a genuine G1 irreducible formal gap -- a materially better, more precise position than treating all four as equally blocked"
+  - concept: "Step 254 Decision 3, already tracked as open (files 0993, 0994)"
+    refinement: "SHOWN TO BE THE SINGLE MOST LEVERAGED OPEN QUESTION in the entire equality cluster: its resolution would settle D285-5's substantiveness, the equiv/lambda distinctness, and D285-6's projection legitimacy all at once"
+contradicts: []
+repeats:
+  - "Substantially builds on already-tracked equality/Qualify findings (files 0991-0994, 1001-1003); its distinctive contribution is the disciplined per-target derivability analysis and the major three-normative/one-irreducible simplification."
+bridge_candidates:
+  - "'step-105' -- the original corpus location for the decision-relevant-provenance principle; watch for direct encounter."
+  - "Whether Step 254 Decision 3 is ever formally resolved by a human governance act later in the corpus."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the major simplifying finding that only Qualify is a genuine G1 irreducible formal gap among the four D288 targets; the other three (semantic, observational, provenance-sensitive equality) each reduce to a single normative decision or context-parameterisation."
+  - "dimension-registry.md: record Step 254 Decision 3's full five-row consequence table as the single most leveraged open governance question in the equality cluster."
+  - "dimension-registry.md: record the new corpus reference 'step-105' (decision-relevant provenance principle)."
+anchor_test:
+  anchor: "This reconstruction's already-tracked D288 targets and equality/Qualify gaps (files 0991-0994, 1001-1003)"
+  supports_dimension: "Sharpens the equality-cluster gap analysis into a materially clearer three-normative/one-irreducible structure, and delivers the full decision-consequence table for the single most leveraged open question"
+  refines_or_contradicts: "refines and sharpens prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The five-row Decision-3 consequence table is directly checkable against files 0991/0993/0994's own already-documented D285-5/D285-6 findings for consistency under each branch."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 254 Decision 3 is ever formally resolved later in the corpus by a human governance act."
+  - "The original location of corpus reference 'step-105'."
+tier2_triggered: true
+tier2_reason: "Delivers the disciplined per-target derivability analysis for D288's four targets, culminating in the major simplifying result that only Qualify is a genuine irreducible formal gap while the other three collapse to a single open governance question (Step 254 Decision 3) plus two context-parameterisations. Classified importance critical and confidence high given its rigorous, actionable, and directly cross-checkable content."

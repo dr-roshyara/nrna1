@@ -1,0 +1,73 @@
+sequence: 1078
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/01_omega-tau-reconciliation.md
+title: "01 -- O/O_K/T Reconciliation (Step 291 mandate SS2): Prose Write-Up of the Already-Tracked Second Glyph Collision (file 1076), Adding a Genuinely Valuable Self-Caught Near-Miss ('the same failure mode as G-67') and the New Consequence That Equality-Dependence Extends Beyond T via Assess's Determination Condition"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the first numbered Step-291 prose artifact, elaborating the already-tracked O-glyph-collision script (file 1076)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1078
+importance: major
+confidence: high
+about: >
+  "01 — `𝒪`/`𝒪_K`/`𝒯` Reconciliation (mandate §2)." Prose write-up substantially reproducing the already-
+  tracked findings of file 1076's `t291_omega_tau_audit.py` script: the four-symbol reconciliation table, the
+  `𝒪` glyph collision (operation family vs observation index), `261.21`'s third object `𝒪_K`, the `259.7`
+  five-kind classification verbatim, and the classification "`𝒯⊆𝒪` is a subset relation (kind 1 of five);
+  `𝒪_K` relates to kind 5" directly correcting Step 289-290's collapsed `{𝒪,𝒯}` cut candidate.
+
+  **DELIVERS A GENUINELY VALUABLE, NEW SELF-CAUGHT NEAR-MISS**: "`259.8`... AND AN INCONSISTENCY I NEARLY
+  REPORTED. A first extraction of §259.8 merged these into one nine-item list, which would have contradicted
+  `259.7`'s typing. IT DOES NOT -- I checked the section verbatim before reporting. `259.7` and `259.8` are
+  consistent." Explicitly self-diagnoses this near-miss's failure mode: "(Recorded because the near-miss is
+  THE SAME FAILURE MODE AS `G-67`: an apparent inconsistency created by MY OWN READING, not by the corpus.)"
+  This is a genuinely important piece of methodological self-awareness -- explicitly recognizing and naming
+  a recurring error class (reader-introduced apparent inconsistency) and catching an instance of it before it
+  became a second G-67-style false finding.
+
+  **DELIVERS A NEW SUBSTANTIVE CONSEQUENCE NOT PRESENT IN FILE 1076'S SCRIPT**: "Consequence: congruence
+  generalizes beyond `𝒯`. `Assess`'s test is a DETERMINATION CONDITION on a NON-STATE-TRANSFORMING operation,
+  and it is still stated in terms of `≡`. So EQUALITY-DEPENDENCE IS WIDER THAN `𝒯` -- `04` and `08` carry
+  this." This broadens the scope of the entire equality-dependency research arc beyond the already-tracked
+  `𝒯`-centric framing (files 1069-1070).
+
+  Confirms the STATUS block's explicit open question, not previously flagged: "UNKNOWN whether `𝒪_K⊆𝒪` or
+  is independent" -- an honest admission that even after the three-way separation, the relationship between
+  `𝒪_K` and `𝒪` itself remains unresolved.
+introduces:
+  - concept: "The explicit self-caught near-miss where a first extraction nearly reported 259.7/259.8 as contradictory, checked verbatim, and found consistent -- explicitly named as the same failure mode as G-67 (reader-introduced apparent inconsistency, not a genuine corpus defect)"
+  - concept: "The new consequence that equality-dependence generalizes beyond T: Assess (a non-state-transforming, kind-2 operation) also carries a determination condition stated in terms of equiv, widening the scope of the congruence/equality-dependency research arc"
+  - concept: "The explicit open admission that whether O_K is a subset of O or an independent object remains UNKNOWN even after the three-way separation"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked O-glyph collision and Step-289 graph-collapse correction (file 1076)"
+    refinement: "ELABORATED in prose form with a genuinely valuable methodological self-catch (the 259.7/259.8 near-miss, explicitly linked to the G-67 failure mode) and a new substantive consequence (equality-dependence extends beyond T via Assess)"
+contradicts: []
+repeats:
+  - "Substantially reproduces file 1076's already-tracked O/T/O_K reconciliation table, glyph-collision diagnosis, and 259.7 five-kind classification."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the self-caught 259.7/259.8 near-miss (explicitly the same failure mode as G-67) and the new consequence that equality-dependence generalizes beyond T via Assess's determination condition."
+anchor_test:
+  anchor: "This reconstruction's already-tracked O-glyph collision and Step-289 graph-collapse correction (file 1076)"
+  supports_dimension: "Elaborates this finding with a valuable methodological self-catch and a new consequence widening the equality-dependency scope beyond T"
+  refines_or_contradicts: "refines (elaborates) the prior tracked finding"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The reconciliation table and glyph-collision diagnosis are directly checkable against file 1076's own already-documented script output for exact consistency."
+undefined_concepts:
+  - "Whether O_K is a subset of O or an independent object -- explicitly left UNKNOWN by this file's own STATUS block."
+open_questions:
+  - "Whether O_K subset-of O or independence is resolved in a subsequent Step-291 document."
+tier2_triggered: true
+tier2_reason: "Elaborates the already-tracked O-glyph-collision finding (file 1076) with a genuinely valuable self-caught methodological near-miss explicitly linked to the recurring G-67 failure mode, plus a new consequence widening equality-dependence beyond T via Assess. Classified importance major and confidence high given the disciplined, self-aware nature of the near-miss catch."

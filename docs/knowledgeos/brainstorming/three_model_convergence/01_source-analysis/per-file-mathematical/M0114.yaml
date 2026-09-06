@@ -1,0 +1,184 @@
+sequence: M0114
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-155900_prompt-minimum-machinery-to-represent-contradiction.md
+title: "KR-CONTR-2026-09 -- Contradiction, Evaluation Domain and Zero: The Full 38-Section Protocol for TODO Group B (the Immediate-Next Experiment Confirmed Across M0109-M0113), With Four Candidate Approaches, Fifteen-Plus-Second-Order Adversarial Cases, a Formal Separation-Matrix/Minimality Methodology, Ten Invariant Candidates I1-I10, Eight Targeted Negative-Result Hypotheses NEG-1 Through NEG-8, an A-F Decision Gate and K0-K4 Kernel Verdict -- Followed by a Supervisory Review Confirming 'APPROVED -- READY FOR EXECUTION', Self-Described as 'the Most Rigorously Constructed Experiment Prompt in the Entire KnowledgeOS Programme'"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "the full, extremely rigorous 38-section protocol resolving TODO Group B (Contr), the priority-1 immediate-next-experiment confirmed across M0109-M0113 -- comparable in scope and discipline to M0097 (KR-M2O) and M0107 (KR-HILBERT); followed by a supervisory review approving it for execution, though the review itself supplies no execution results, only a readiness confirmation"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0114
+importance: critical
+confidence: high
+about: >
+  Specifies KR-CONTR-2026-09, instructing the executing agent (senior mathematician/statistician/
+  DDD architect/knowledge engineer) that the purpose is "NOT to make contradiction work" but to
+  determine the minimum semantic/evaluation machinery required if contradiction is to be
+  represented without collapsing into other forms of epistemic non-satisfaction. Explicitly notes
+  the protocol's authority is the research programme itself, not Claude, and must not be attributed
+  to Claude as author.
+
+  **STATES THE CENTRAL MISSION QUESTION** and ten things the experiment must determine (evaluation-
+  domain expressiveness; required distinctions; minimum evaluation domain; whether a fourth value C
+  is actually necessary; whether structured evaluation is superior; whether contradiction is a
+  property of content/evidence/state/assessment/combination; how contradiction interacts with Zero;
+  whether Zero must remain a lens rather than a value; hidden semantic collapse; kernel
+  implications), with the critical instruction "do not start from the assumption that KnowledgeOS
+  needs a fourth truth value" -- the experiment must discover the minimum required representation,
+  not confirm a predetermined design.
+
+  **PRESERVES THE AUTHORITATIVE BASELINE**: Theory v1.2 unchanged, no v1.3; FR-001 remains frozen,
+  not reopened or rerun; Factivity is an independent decision track, and contradiction must NOT be
+  made to depend on the final factivity decision, requiring the experiment operate with epistemic
+  content whose worldly truth is not directly available.
+
+  **PRESERVES SEVEN ALREADY-ESTABLISHED NON-COLLAPSE DISTINCTIONS** as explicit constraints:
+  contradiction != uncertainty, != absence, != insufficient evidence, != theory incompleteness,
+  != unobservable, != not-assessed -- each with a worked minimal-pair example distinguishing the
+  two conditions being conflated.
+
+  **MANDATES WORLD/EPISTEMIC-STATE SEPARATION**: the evaluator may know ground truth; the simulated
+  KnowledgeOS agent must not; preserves World!=Observation!=Evidence!=Interpretation!=
+  EpistemicState!=Evaluation!=KnowledgeAttribution; Contr(p,K_t) must initially mean "the epistemic
+  representation simultaneously contains incompatible commitments concerning p," explicitly NOT
+  "the world makes both p and not-p true" -- whether this definition survives is itself
+  experimental.
+
+  **FORMALIZES THE RESEARCH QUESTION**: Contr(p,K_t) iff Pos(p,K_t) AND Neg(p,K_t), explicitly not
+  assumed final, to be tested against provenance/confidence/temporal/source/context differences,
+  explicit retraction, supersession, mere coexistence, and conflicting observations/
+  interpretations/models.
+
+  **SPECIFIES FOUR CANDIDATE APPROACHES TO BE FAIRLY TESTED**: Candidate A (fourth value {T,F,U,C},
+  with eight sub-questions about C's primitiveness, derivability, provenance/polarity/evidence
+  requirements, coexistence with U, and confidence asymmetry); Candidate B (delegate contradiction
+  to an independent Contr relation outside Sat, without modifying the evaluation codomain);
+  Candidate C (exclusive-by-construction, bottom-equiv-(not-p-in-K AND p-not-in-K), explicitly
+  flagged as likely vulnerable to silently converting contradictory into false/absent/invalid, but
+  "do not assume failure before testing"); Candidate D (structured evaluation EVal=(value, reason,
+  provenance, evidence, context, time, polarity), with the exact tuple to be DISCOVERED via
+  reduction, not assumed).
+
+  **SPECIFIES THE MINIMUM-EVALUATION-DOMAIN METHODOLOGY**: not "which candidate do we like" but
+  "what is the minimum representational structure required to separate the tested semantic
+  classes," via an explicit separation matrix (a required-distinctions table with at least eleven
+  named pairs: true/false, false/unknown, unknown/absent, absent/not-assessed, not-assessed/not-
+  applicable, insufficient-evidence/underdetermined, underdetermined/unobservable, and four
+  contradiction-vs-X pairs), formalized as: a representation R:S->D is adequate iff for all (x,y)
+  in the required-distinction set R_req, x!=y implies R(x)!=R(y) -- explicitly allowing a
+  structured representation to satisfy this even when sharing the same primary value field.
+
+  **SPECIFIES FIFTEEN NAMED ADVERSARIAL CASES** (Unknown, Absent, Not-assessed, Insufficient
+  evidence, Underdetermined, Unobservable, Direct contradiction, Conflicting sources, Conflicting
+  observations, Unequal-confidence contradiction, Retraction, Supersession, Different contexts,
+  Different times, Model conflict) PLUS TEN SECOND-ORDER COMBINATION TESTS (contradiction combined
+  with insufficient evidence, different provenance, temporal separation, context separation, high/
+  low confidence, supersession, retraction, model disagreement, unobservable, not-assessed) --
+  explicitly designed to discover "whether C is actually one state or whether contradiction itself
+  has internal structure."
+
+  **MANDATES A ZERO-INTERACTION SUB-EXPERIMENT**: explicitly forbids assuming Zero<=>Delta=empty-
+  set "as a matter of convenience," testing instead whether Contradiction=>Zero, Contradiction
+  =/=>Zero, or contradiction requires a separate Zero classification -- and mandates that Zero
+  remain a lens ("examines what the current representation does not adequately represent") rather
+  than becoming an evaluation value, testing whether ZeroLens(K_t) can expose contradiction without
+  Contradiction becoming identical to Zero.
+
+  **REQUIRES MINIMALITY ANALYSIS VIA SYSTEMATIC FIELD REMOVAL**: for a structured R=(v,r,p,e,c,t,s),
+  test R_{-f} for every field f, recording "f is empirically necessary for the tested
+  representation" only if removal collapses a required distinction, and explicitly refusing to
+  call any surviving field "universally necessary" -- an experimental minimality result only.
+
+  **MANDATES STATISTICAL DISCIPLINE AND VACUITY GUARDS**: separates deterministic semantic witnesses
+  from randomized stress tests from Monte Carlo frequency estimates; forbids "vacuous success"
+  (passing merely because all contradictory cases collapse to U, or because everything is
+  classified C) via four required test types (positive capability, negative separation,
+  completeness, minimality).
+
+  **SPECIFIES TEN REQUIRED INVARIANT CANDIDATES (I1-I10)**, each to be tested not assumed: Contr!=
+  Unknown, !=Absent, !=NotAssessed, !=InsufficientEvidence, !=Unobservable, !=TruthFailure, !=Zero
+  (unless a formal mapping is established), DetectContradiction!=ResolveContradiction,
+  ResolveContradiction!=DetermineTruth, and historical-vs-current contradiction may differ (tested,
+  not assumed).
+
+  **SPECIFIES FIVE ADDITIONAL DEDICATED SUB-EXPERIMENTS**: contradiction-and-time (whether a common
+  temporal frame is required, giving Contr(p,C,t) rather than Contr(p) if so, with explicit note
+  this could affect ==_sem and lifecycle but must not modify those theories yet); contradiction-and-
+  context; contradiction-and-provenance (three source-attribution configurations); confidence (0.99/
+  0.01 vs 0.51/0.49 asymmetric-confidence contradiction, testing whether confidence imbalance
+  dissolves structural contradiction); evidence-vs-claim contradiction (EvidenceConflict!=
+  ClaimContradiction as a candidate separation); and model conflict (whether ModelConflict is a
+  distinct concept from epistemic contradiction).
+
+  **SPECIFIES EIGHT ACTIVELY-SOUGHT CRITICAL NEGATIVE RESULTS (NEG-1 through NEG-8)**: a fourth
+  value cannot distinguish important contradiction subtypes; structured evaluation still collapses
+  required distinctions; contradiction is context-dependent and cannot be represented without
+  context; contradiction is temporal and cannot be represented statically; source conflict !=
+  epistemic contradiction; contradiction cannot be reduced to Sat; Zero cannot be determined from
+  contradiction alone; a supposedly minimal representation loses provenance or temporal
+  distinctions -- "a negative result is a successful research outcome."
+
+  **SPECIFIES A FULL 23-SECTION REQUIRED OUTPUT TEMPLATE**, a seven-value classification discipline
+  ([EXT]/[CORPUS]/[INF]/[PROP]/[EXP]/[NEG]/[OPEN]) with explicit forbidden silent promotions
+  ([PROP]->[EXP], [EXP]->invariant, [EXP]->architecture, [EXT]->KnowledgeOS-law), an A-F decision
+  gate (three-valued-sufficient / fourth-value-required / structured-evaluation-required / more-
+  than-four-values-required / contradiction-outside-Sat / question-underdetermined -- with an
+  explicit escape hatch to define a new status if none fits, "do not force the result into A-F"),
+  and a K0-K4 kernel verdict (no implication / existing capability sufficient / existing capability
+  needs new representation / new irreducible capability indicated / kernel conclusion blocked --
+  "a K3 verdict requires a genuine irreducibility argument. Importance is not irreducibility"),
+  culminating in a 15-row final supervisory summary table.
+
+  **CLOSES WITH THE GOVERNING METHODOLOGICAL PRINCIPLE**: "represent what the evidence requires; do
+  not represent what the theory merely wishes to have," specifically warning against BOTH errors --
+  collapsing contradiction into uncertainty for lack of a value, AND promoting contradiction to a
+  primitive merely because it feels intuitively important -- "the experiment must decide between
+  those two errors by constructive separation, adversarial witnesses, minimality analysis, and
+  explicit DDD semantics."
+
+  **THE FOLLOWING SUPERVISORY REVIEW APPROVES THE PROMPT** ("APPROVED -- READY FOR EXECUTION,"
+  self-described as "the most rigorously constructed experiment prompt in the entire KnowledgeOS
+  programme"), verifying it correctly implements the earlier-stated corrections (Factivity does not
+  block Contr; no fourth-value assumption; minimum-domain discovery over candidate preference), and
+  confirming a fifteen-item checklist of prompt-quality criteria -- but the review supplies NO
+  execution results, only a readiness confirmation; this document does not report whether KR-CONTR-
+  2026-09 was actually run.
+introduces:
+  - concept: "The full KR-CONTR-2026-09 protocol: four fairly-tested candidate contradiction representations, a formal minimum-evaluation-domain/separation-matrix methodology, fifteen named adversarial cases plus ten second-order combinations, ten invariant candidates I1-I10, eight actively-sought negative results NEG-1-NEG-8, an A-F decision gate, and a K0-K4 kernel verdict"
+  - concept: "The mandatory Zero-interaction sub-experiment explicitly forbidding the Zero<=>Delta=empty-set convenience assumption and requiring Zero remain a lens distinct from Contradiction"
+  - concept: "The five dedicated sub-experiments on contradiction's interaction with time, context, provenance, confidence, and evidence-vs-claim distinction, plus the ModelConflict candidate separation"
+  - concept: "The explicit warning against both collapse errors: contradiction-into-uncertainty (for lack of a value) and contradiction-into-primitive (for intuitive importance)"
+defines: []
+refines:
+  - concept: "TODO Group B (Contr) from M0109/M0113, here fully operationalized as the confirmed priority-1 immediate-next experiment"
+  - concept: "FR-001 and the established non-collapse discipline (unknown/absent/not-assessed/insufficient-evidence/underdetermined/unobservable), all preserved as explicit test constraints"
+  - concept: "The corpus's Zero Lens work (M0057-M0100), reused here as the boundary the contradiction experiment must not conflate with"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0114 as the full 38-section KR-CONTR-2026-09 protocol operationalizing TODO Group B (Contr), the confirmed priority-1 next experiment across M0109-M0113 -- four candidate representations, a formal separation-matrix/minimality methodology, fifteen-plus-ten adversarial cases, ten invariant candidates, eight targeted negative results, an A-F decision gate and K0-K4 kernel verdict, approved for execution by a supervisory review that itself supplies no execution results."
+anchor_test:
+  anchor: "TODO Group B from M0109/M0113 (the confirmed priority-1 next experiment), FR-001, and the corpus's established Zero Lens and non-collapse discipline"
+  supports_dimension: "Operationalizes the pass's confirmed immediate-next research priority into a fully rigorous, executable protocol comparable to M0097 and M0107, explicitly preserving all previously-established non-collapse constraints and the Zero-as-lens discipline"
+  refines_or_contradicts: "refines (M0109, M0113, FR-001, the Zero Lens work)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'Do not start from the assumption that KnowledgeOS needs a fourth truth value' -- explicitly flagged by the supervisory review as 'the single most important line in the prompt,' directly preventing the exact predetermined-design confirmation this reconstruction has flagged as a recurring risk pattern across the corpus."
+  - "'A K3 verdict requires a genuine irreducibility argument. Importance is not irreducibility' -- a precise, quotable articulation of the kernel-minimality discipline already established elsewhere in the corpus, reapplied here specifically to the contradiction question."
+  - "The eight actively-sought NEG-1 through NEG-8 negative-result hypotheses, stated before execution, exemplify the corpus's established discipline of designing experiments capable of concluding 'this does not work' as a successful outcome."
+undefined_concepts:
+  - "Whether KR-CONTR-2026-09 was actually executed -- this document and its approving review supply the protocol and a readiness confirmation only, no results"
+open_questions:
+  - "Whether KR-CONTR-2026-09 was executed, and if so which of the A-F decision-gate statuses and K0-K4 kernel verdicts were reached, and which of NEG-1 through NEG-8 were confirmed."
+tier2_triggered: true
+tier2_reason: "A fully rigorous, comprehensive 38-section experimental protocol operationalizing the pass's confirmed immediate-next research priority (TODO Group B, Contr), comparable in scope and discipline to M0097 and M0107 -- with a formal separation-matrix minimality methodology, ten invariant candidates, eight targeted negative results, and explicit dual-error framing (neither collapsing contradiction for convenience nor promoting it for intuitive importance). Comfortably meets the tier-2 bar."

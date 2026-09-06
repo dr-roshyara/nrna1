@@ -1,0 +1,88 @@
+sequence: 13
+path: docs/knowledgeos/KnowledgeOS_Meta_Model.md
+title: KnowledgeOS — Canonical Meta-Model
+date: 2026-08-02
+bytes: 15020
+doc_type: strategic DDD semantic meta-model (CANDIDATE, not adopted); six-dimension artifact classification
+
+primary_model_initial: engineering_knowledgeos
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - the six dimensions classify REPOSITORY ARTIFACTS (nature, representation, governance-status,
+    authority-scope, evidence-status, operational-state), not knowledge states
+  - "no K_t, no dimension of knowledge itself, no value assigned to a knowledge object, no Buddhi, no operator, no purification"
+  - the six-concept ontology (Mission, Engineering Knowledge/Capability/Artifact, PKS, Product) is pure C1
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [ddd, domain_model, governance, evidence, invariants, knowledge_dimension]
+
+status: DR
+maturity: developing
+importance: high
+
+introduces:
+  - orthogonal_necessary_sufficient_dimension_admissibility_test
+  - knowledge_is_not_artifact              # the load-bearing edge; dissolves a 3x-repeated corpus error
+  - derived_quantities_vs_dimensions       # some functions of dimensions are not themselves axes
+  - level_mixing_as_a_named_recurring_error
+  - falsification_test_for_a_classification_scheme
+  - orthogonality_demonstrated_by_use_not_argued
+defines:
+  - knowledgeos_instance_as_cartesian_product   # NATURE x REPRESENTATION x GOV-STATUS x SCOPE x EVIDENCE x OPERATIONAL
+  - lifecycle_regime_derived_from_nature
+  - validation_method_derived_from_representation_and_nature
+  - intent_derived_from_governance_status_and_owner
+  - six_concept_dependency_chain            # Mission -> Capability -> Knowledge -> {Artifact, PKS -> Product}
+hypotheses:
+  - MM2_evidence_and_operational_state_as_enforced_fields
+  - MM3_is_derived_intent_sufficient
+  - MM4_does_operational_state_belong_to_artifact_or_to_the_rule_it_carries
+operators: []
+formal_objects:
+  - cartesian_product_of_six_dimensions     # first in the reading order; OWNER used in a derived
+                                             # function but NOT itself declared as a dimension - an
+                                             # unacknowledged 7th coordinate
+undefined_concepts:
+  - knowledge          # 13th consecutive file; now given a FORMAL ROLE (the carried content) but still no positive definition
+  - orthogonal          # used per the admissibility rule; no formal independence criterion beyond one example
+  - sufficient
+  - necessary
+  - container          # PKS defined by "a declared boundary"; no boundary formalism given
+  - mission            # root of the dependency chain; enacted-unratified, never defined as an object
+open_questions:
+  - MM1 adopt RQ-002
+  - MM2 should evidence-status and operational-state become enforced frontmatter fields
+  - MM3 is derived intent sufficient or does it need its own value
+  - MM4 does operational-state belong to the artifact or to the rule it carries
+  - MQ1 ratify the enacted mission (carried from 0006)
+
+depends_on: [1, 3, 5, 6, 9]
+extends: [5]          # operational-state subsumes BOUNDARY/TRIGGER/ADVISORY
+refines: [3]           # a parallel, more granular claim/artifact classification
+renames: []
+contradicts: []
+supersedes: []         # supersedes its own withdrawn INTENDED proposal
+repeats: []
+connects_to: [1, 3, 5, 6, 9]
+
+bridges: []
+bridge_evidence:
+  - "NO BRIDGE RECORDED. This is the STRONGEST C1 candidate so far for later structural transfer to
+     C2 (per MD-007): it develops a dimension-admissibility test, a derived-vs-axis distinction, and
+     a Cartesian-product object definition - exactly the apparatus §17/§18 ask the corpus to build
+     for KNOWLEDGE dimensions and values, but applied here to ARTIFACTS. No transfer has been
+     observed. Recorded as a reference point to check later C2 material against, not as evidence of
+     a bridge - a plausible structural fit is not itself a bridge (§41)."
+
+tier2_triggered: true
+tier2_reason: >
+  States the corpus's first Cartesian-product definition of an object (six dimensions), applies a
+  formal orthogonal/necessary/sufficient admissibility test with one dimension REJECTED on the same
+  rule the author's own prior proposal was rejected by, and resolves a corpus-wide recurring error
+  (three prior instances of "X does not exist" meaning "no artifact carries X") via a definitional
+  split. Flags an unacknowledged seventh coordinate (OWNER, used in a derived function but never
+  itself tested for admissibility) and an internal near-miss where the document's own Knowledge/
+  Artifact split is not applied to its own open question (MM-4).

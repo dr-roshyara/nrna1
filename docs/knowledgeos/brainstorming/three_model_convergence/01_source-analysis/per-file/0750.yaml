@@ -1,0 +1,243 @@
+sequence: 750
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-135032_step-156-knowledgeos-operating-model-revision.md
+title: "Step 156 -- KnowledgeOS Operating Model (REVISION, MAJOR SYNTHESIS MILESTONE): a Complete Rewrite of 0744 That Silently Supersedes It by Building Entirely on 0745's Epistemic Kernel -- Delivers 'KnowledgeOS Is an Operating System, Not a Knowledge Database,' Actor=(Identity,Role,Authority,Scope), Memory≠Authority, 'RAG Is Therefore Not the Architecture,' 'Retrieval Ranking Is Not Epistemic Ranking' (Semantic Similarity≠Epistemic Authority), the Candidate-Determination Pattern, the Fifteen-Stage Master Operating-Model Diagram, the Five Control Planes, a Concrete Eleven-Row Agent Authority Matrix, 'The Human-in-the-Loop Formulation Is Too Weak,' the Sharpest Single AI-Hallucination-Chain Warning in the Reconstruction ('I Found Something'→'It Is True'→'We Should Do It'→'I Did It'), a Twelve-Category Failure Taxonomy, and the Three-Lifecycle Decomposition (Epistemic+Governance+Execution) -- Never Explicitly Cross-References or Retracts 0744's Now-Superseded L0-L5 Ladder -- Closes by Opening Step 157, KnowledgeOS Domain Model & Bounded Context Validation"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "explicitly opens 'Step 155A established the Epistemic Kernel,' building the entire operating model directly and exclusively on 0745's corrected epistemic framework, and closes §156.38 by stating the Gita Chapter 4 lens 'now fits cleanly' via a direct translation table, with the explicit disciplined boundary 'conceptual correspondence≠theological proof' reasserted"
+source_role: PRIMARY_RESEARCH
+canonical_source: 750
+importance: critical
+confidence: high
+about: >
+  Filename marks this a "-revision" of Step 156; the file's own heading and body are a complete,
+  self-contained rewrite (not a diff/patch) that opens by explicitly stating "Step 155A established the
+  Epistemic Kernel" and reframes the central question as "how does KnowledgeOS operate when a real human,
+  AI agent, governance body, evidence source, and engineering system interact?" It never once mentions or
+  cross-references 0744's provisional L0-L5 epistemic ladder -- the earlier version is silently superseded
+  by omission rather than explicitly retracted, functionally resolving the contradiction identified at 0745
+  by simply not reintroducing the rejected pattern anywhere in this replacement content.
+
+  **Delivers "KnowledgeOS is an operating system, not a knowledge database,"** contrasting a conventional
+  Document→Index→Search→Answer pipeline against the full governed lifecycle, boxed as
+  `KnowledgeOS=Operating System for Governed Knowledge`, explicitly not `Document Management System`.
+
+  **Delivers the fundamental actor model**: `Actor=(Identity,Role,Authority,Scope)` with
+  `Authority=Authority(Scope,Time)` (directly reusing 0745's `Authority(X,S,T)` formalization), guarding
+  against "the AI is allowed to do this because it can technically call the API" -- **`Human Intent≠
+  Workflow Instruction`**. Delivers Intent→Governed Bootstrap (identifies actor, resolves responsibility,
+  discovers applicable process, establishes scope, validates authority), explicitly restating an existing
+  cross-corpus invariant: "human declares intended responsibility; runtime discovers process identity;
+  governed bootstrap binds the two."
+
+  **Delivers "the actor must never self-authorize"**: `Capability≠Authority`, `Identity≠Role≠Authority`.
+  Delivers a Cold Boot model (a fresh agent starts with unknown local state and must not invent its own
+  role, instead following Cold Boot→Portal→Governed Bootstrap→Identity→Commission/Intent→Role→Scope→
+  Authority→Operating Context). **Delivers `Memory≠Authority`, a genuinely important new invariant**: an AI
+  agent remembering "I was the Architecture Reviewer yesterday" does not make it the Architecture Reviewer
+  today -- authority must be re-resolved from the governed runtime each time, explicitly tied to the prior
+  finding that "Claude/Codex harnesses must not own engineering truth." Delivers the AI-harness-ownership
+  diagram (multiple harnesses, one governed engineering truth): `Multiple agents→One governed engineering
+  truth`.
+
+  Delivers Inquiry as the operating entry point with a ten-field problem-contract schema (a close but
+  distinct variant of 0745's ten-field Inquiry schema), worked through a concrete "can Nexus 3.69.0 be
+  migrated" example contrasted against mere conversational "tell me about Nexus." Delivers
+  `Context=f(Actor,Inquiry,Scope,Authority,Time,Knowledge)` -- **"the agent does not get the entire
+  KnowledgeOS. It gets Governed Context"** -- a nine-item context-boundary list, and "context assembly is
+  therefore a governed operation," explicitly rejecting letting an LLM "arbitrarily assemble its own
+  context from the repository," routed instead through Inquiry→Context Resolver→Governance→Applicable
+  Knowledge→Evidence→Context Package→Agent.
+
+  **Delivers "RAG is therefore not the architecture,"** a precise and currently applicable positioning
+  statement: `RAG⊆KnowledgeRetrieval` but `KnowledgeOS≠RAG` -- "a vector search result has no authority
+  merely because it was retrieved." **Delivers "retrieval ranking is not epistemic ranking,"** a sharp
+  statistical-discipline principle with a worked similarity-score example (0.94 vs 0.81): neither
+  `Authority(A)>Authority(B)` nor `Truth(A)>Truth(B)` follows from higher retrieval similarity, boxed as
+  `Semantic similarity≠Epistemic authority` -- a genuinely valuable, directly applicable RAG/LLM-system
+  safety principle.
+
+  Delivers Evidence acquisition (documents/repositories/runtime systems/logs/databases/Registry/human
+  testimony/external authoritative sources) and
+  `EvidenceQuality=f(Source,Method,Completeness,Freshness,Reliability,Context)`, explicitly rejecting "one
+  magical global confidence score." **Delivers the Candidate Determination pattern**: "the word
+  *candidate* is important. AI reasoning is not automatically authoritative," worked through a concrete
+  backup-verification example. **Delivers deterministic assurance retaining INCONCLUSIVE** (a second,
+  independent worked example: missing restore-test evidence yields `INCONCLUSIVE`, not `FAIL`, "unless the
+  rule actually defines missing restore evidence as failure" -- "this is where our statistical discipline
+  prevents overclaiming"). Delivers "human judgment remains explicit" -- human review reframed as "an
+  explicit epistemic boundary," not a failure of automation.
+
+  Delivers Determination≠Decision (worked "migration prerequisites satisfied" vs. "proceed with
+  migration" example), `DecisionValid=f(Decision,Authority,Scope,Policy,Time)`, and Authorization as a
+  distinct gate: Architecture Board approval of a migration architecture does NOT automatically authorize
+  an agent to delete the old Nexus instance. Delivers the Action schema (actor/authority/intent/target/
+  scope/time/expected effect) and `DomainAction≠TechnicalCommand`. Delivers Observation (does not assume
+  success -- a service starting and a port accepting connections is "not yet 'migration successful'"),
+  Evidence, and Verification (`VERIFIED/NOT VERIFIED/INCONCLUSIVE`, again explicitly retaining
+  INCONCLUSIVE as legitimate). Delivers Governance feedback (six possible outcomes) and Knowledge evolution
+  preserving supersession history, never silent overwrite.
+
+  **Delivers "the complete operating model," a fifteen-stage master vertical pipeline** (HUMAN/SYSTEM/AI
+  ACTOR→INTENT→GOVERNED BOOTSTRAP→IDENTITY+ROLE→INQUIRY→CONTEXT CONSTRUCTION→KNOWLEDGE+PROVENANCE→
+  EVIDENCE→CANDIDATE DETERMINATION→{DETERMINISTIC ASSURANCE, HUMAN REVIEW}→DETERMINATION→DECISION→
+  AUTHORIZATION→ACTION→EXECUTION→OBSERVATION→EVIDENCE→VERIFICATION→GOVERNANCE→KNOWLEDGE UPDATE), under
+  `Identity+Authority+Provenance+Context+Time` -- substantially more complete than 0744's nine-stage cycle
+  or 0745's twelve-stage pipeline, functioning as this arc's definitive synthesis diagram.
+
+  **Delivers "the Five control planes"**: Identity/Knowledge/Epistemic/Governance/Execution-Assurance --
+  "KnowledgeOS isn't one pipeline... a much cleaner architecture than treating everything as 'AI
+  workflow.'" **Delivers the AI agent's exact position**: primarily an `Epistemic Worker`, sometimes an
+  `Action Executor` when explicitly authorized, with eight default (ungated) responsibilities
+  (Discover/Interpret/Analyze/Correlate/Question/Propose/Explain/Verify) versus five requiring explicit
+  grant (Decide/Approve/Modify/Execute/Publish).
+
+  **Delivers "this resolves the 'agent autonomy' problem,"** reframing the simplistic "should AI be
+  autonomous?" into "autonomous in which capability, within which scope, under which authority?" -- a
+  genuinely valuable AI-governance reframing, worked through a "fully autonomous in retrieval, but
+  human-authorized for production changes" example. **Delivers a concrete eleven-row Agent authority
+  matrix** (capability vs. default AI authority: Yes for read/retrieve/analyze/produce-candidate/challenge/
+  propose; No-unless-delegated for governance decisions, authoritative-knowledge changes, architecture
+  approval, production execution) -- the most concretely tabulated AI-permission specification in the
+  reconstruction.
+
+  **Delivers "the 'human in the loop' formulation is too weak"** -- an explicit critique of a common but
+  vague AI-governance phrase, replaced by "Human Authority at defined epistemic/governance boundaries"
+  (determination, approval, exception, authority delegation, knowledge publication; boundary domain-
+  specific).
+
+  **§156.38 delivers "Gita Chapter 4 lens now fits cleanly,"** a direct translation table (Authoritative
+  source→Transmission→Reception→Inquiry→Understanding→Knowledge→Action→Result, mapped onto Source→
+  Provenance→Context→Inquiry→Determination→Decision→Action→Observation→Verification) -- "the architectural
+  correspondence is strong," paired with the reasserted boundary `Conceptual correspondence≠theological
+  proof`.
+
+  **Delivers "the strongest new principle"**: `No governed action without a reconstructable path from
+  intent to authority to evidence to decision` -- explicitly scoped so trivial technical actions do not
+  require a heavyweight workflow, only "governed consequential" ones must be reconstructable. Delivers the
+  Traceability equation (`Trace(A)={Actor,Intent,Inquiry,Context,Knowledge,Evidence,Determination,
+  Decision,Authority,Authorization,Action,Observation,Verification}`), boxed as `Traceability=
+  reconstructability`, not merely "there is a log." **Delivers "audit log versus epistemic trace,"** a
+  precise, valuable distinction: a conventional audit log states what happened; an epistemic trace explains
+  *why* the action was legitimate.
+
+  Delivers the causal boundary `Reasoning→Decision` vs. `Decision→Action→Effect`, distinguishing Epistemic
+  failure ("was the decision justified?") from Operational failure ("was the authorized action executed
+  correctly?"). **Delivers a twelve-category Failure taxonomy** (IDENTITY/AUTHORITY/CONTEXT/PROVENANCE/
+  EVIDENCE/REASONING/DETERMINATION/GOVERNANCE/AUTHORIZATION/EXECUTION/OBSERVATION/VERIFICATION_FAILURE),
+  explicitly "much more useful than `AI_ERROR`," reframing wrong-answer diagnosis from "why did the AI
+  hallucinate?" to "at which boundary did correctness fail?" -- "a professional engineering diagnosis."
+
+  **Delivers the architecture decision `KnowledgeOS Operating Model=Epistemic Lifecycle+Governance
+  Lifecycle+Execution Lifecycle`**, each given a precise transition formula (Epistemic:
+  Inquiry→Knowledge→Evidence→Determination; Governance: Determination→Decision→Authorization→Governance;
+  Execution: Action→Execution→Observation→Verification), self-assessed as "perhaps the cleanest
+  decomposition we have reached so far," with an intersection diagram forming the closed loop.
+
+  **Delivers the constitutional principle "no silent transitions,"** an explicit five-item list of
+  transitions (Claim→Determination, Determination→Decision, Decision→Authorization, Authorization→Action,
+  Action→Verified Effect) that must never be silently inferred. **Delivers "why this is important for AI
+  agents," arguably the sharpest single AI-hallucination/overreach-pattern articulation anywhere in the
+  reconstruction**: an LLM naturally wants to collapse "I found something" into "it is true" into "we
+  should do it" into "I did it" -- "KnowledgeOS must structurally prevent these semantic collapses... one
+  of the strongest reasons for the architecture."
+
+  Verdict: `STEP 156 — PASSED`, with a full architectural-decision paragraph and the master invariant
+  chain (`Intent→Inquiry→Context→Evidence→Determination→Decision→Authorization→Action→Observation→
+  Verification→Governance→Knowledge`) under `Identity+Authority+Provenance+Context+Time`. **Delivers three
+  named architecture layers** before proceeding further: Layer 1 Epistemic Constitution (155A), Layer 2
+  Operating Model (this file), Layer 3 Implementation Architecture (deferred) -- boxed as `Ontology→
+  Operating Model→Implementation`, explicitly contrasted against the anti-pattern `Technology→Services→
+  retroactive semantics`.
+
+  **Closes by opening "Step 157 — KnowledgeOS Domain Model & Bounded Context Validation"** -- a rigorous
+  DDD classification test (Entities/Value Objects/Aggregates/Domain Events/Policies/Bounded Contexts/
+  outside-the-domain-model) applied to the operating model just established, explicitly to "test whether
+  our actual implementation architecture is consistent with the epistemic and operating constitution we
+  have now established." This closing question differs in framing from 0744's Step-157 opening
+  ("minimum irreducible domain model") though both aim at the same DDD-reduction exercise -- flagged as an
+  open item for whichever actual Step 157 file is reached next. No actual code execution, repository
+  inspection, or verified filesystem/architecture claim reported anywhere in this file.
+introduces:
+  - concept: "'KnowledgeOS is an operating system, not a knowledge database' (KnowledgeOS=Operating System for Governed Knowledge, not Document Management System)"
+  - concept: "Actor=(Identity,Role,Authority,Scope), Authority=Authority(Scope,Time); Human Intent≠Workflow Instruction"
+  - concept: "'The actor must never self-authorize': Capability≠Authority, Identity≠Role≠Authority; the Cold Boot model"
+  - concept: "Memory≠Authority"
+  - concept: "'RAG is therefore not the architecture': RAG⊆KnowledgeRetrieval but KnowledgeOS≠RAG"
+  - concept: "'Retrieval ranking is not epistemic ranking': Semantic similarity≠Epistemic authority"
+  - concept: "The Candidate Determination pattern -- AI reasoning is not automatically authoritative"
+  - concept: "The fifteen-stage master operating-model pipeline diagram"
+  - concept: "The Five control planes: Identity/Knowledge/Epistemic/Governance/Execution-Assurance"
+  - concept: "The AI agent's exact position: Epistemic Worker, sometimes Action Executor when explicitly authorized"
+  - concept: "'This resolves the agent autonomy problem': autonomy reframed as capability x scope x authority"
+  - concept: "The eleven-row Agent authority matrix"
+  - concept: "'The human-in-the-loop formulation is too weak' -- replaced by Human Authority at defined epistemic/governance boundaries"
+  - concept: "'The strongest new principle': no governed action without a reconstructable path from intent to authority to evidence to decision"
+  - concept: "Traceability=reconstructability; 'audit log versus epistemic trace'"
+  - concept: "The twelve-category Failure taxonomy (IDENTITY_FAILURE...VERIFICATION_FAILURE)"
+  - concept: "KnowledgeOS Operating Model=Epistemic Lifecycle+Governance Lifecycle+Execution Lifecycle (three-lifecycle decomposition)"
+  - concept: "'No silent transitions' constitutional principle"
+  - concept: "'Why this is important for AI agents' -- the LLM semantic-collapse-chain warning (found→true→should→did)"
+  - concept: "Ontology→Operating Model→Implementation (three architecture layers, vs. the Technology→Services→retroactive-semantics anti-pattern)"
+defines:
+  - concept: "Memory≠Authority"
+    definition: "An AI agent's own memory of having previously held a role or authority (e.g. 'I was the Architecture Reviewer yesterday') does not itself confer that authority in the present; authority must be re-resolved from the governed runtime at each operating cycle, never assumed from persisted agent memory"
+  - concept: "Semantic similarity≠Epistemic authority (retrieval ranking is not epistemic ranking)"
+    definition: "A higher vector-similarity score for a retrieved document relative to a query does not establish that the document is more authoritative or more true than a lower-scoring one; similarity measures retrieval relevance to a query, never epistemic status, and must never be silently treated as a proxy for authority or truth in a RAG-based system"
+  - concept: "The Candidate Determination pattern"
+    definition: "AI reasoning over evidence and knowledge produces a Candidate Determination, never a final one -- the word 'candidate' marks that the output must reference its claim, evidence, rule, method and context, and must pass through deterministic assurance or human review before becoming an actual Determination"
+  - concept: "'No silent transitions' constitutional principle"
+    definition: "Five specific transitions in the operating lifecycle (Claim→Determination, Determination→Decision, Decision→Authorization, Authorization→Action, Action→Verified Effect) must always be explicit, recorded steps; the system must never let one silently collapse into or be inferred from the next"
+  - concept: "The LLM semantic-collapse-chain warning"
+    definition: "A language model's natural tendency to collapse four distinct epistemic/governance steps into one: 'I found something' (observation) silently becomes 'it is true' (truth claim), which silently becomes 'we should do it' (decision), which silently becomes 'I did it' (unauthorized action) -- KnowledgeOS's entire staged pipeline exists structurally to prevent exactly this chain of collapses"
+  - concept: "Audit log versus epistemic trace"
+    definition: "A conventional audit log records only what happened (e.g. a timestamped API call); an epistemic trace additionally reconstructs the full chain of actor, intent, inquiry, context, evidence, determination, decision and authorization that made the action legitimate -- explaining why the action was justified, not merely that it occurred"
+refines:
+  - concept: "0744's provisional L0-L5 epistemic ladder"
+    refinement: "SILENTLY SUPERSEDED (never explicitly cross-referenced or retracted): this complete rewrite of Step 156 is built entirely on 0745's rejection of linear epistemic ladders and never reintroduces the L0-L5 scale anywhere; the corpus resolves the contradiction identified at 0745 by replacement rather than explicit correction note, leaving the earlier open question ('will 0744's ladder ever be explicitly retracted?') technically still open even as it is functionally abandoned"
+  - concept: "0744's master operating equation and fifteen-... (nine-stage) cycle"
+    refinement: "Replaced by a substantially more granular and complete fifteen-stage master pipeline, incorporating the Candidate Determination gate, the deterministic-assurance-vs-human-review fork, and explicit Execution/Observation/Evidence/Verification separation not present in 0744's compressed nine-stage cycle"
+  - concept: "0745's twelve-stage epistemic pipeline and Inquiry/Authority(X,S,T) formalizations"
+    refinement: "Directly reused and operationalized into the concrete governed-bootstrap, cold-boot, and context-construction mechanics that 0745 itself did not specify at the operating-actor level"
+  - concept: "0744's/earlier files' AI-role capability lists (positive/negative)"
+    refinement: "Converted into a concrete, tabulated eleven-row Agent authority matrix -- the most operationally specific AI-permission specification format used so far in the reconstruction"
+  - concept: "The reconstruction's recurring 'human in the loop' framing (used loosely across many earlier files)"
+    refinement: "Explicitly critiqued as too weak and replaced with 'Human Authority at defined epistemic/governance boundaries,' a scoped, boundary-specific formulation"
+  - concept: "0736's/0744's/0745's treatment of Gita Chapter 4"
+    refinement: "Delivers a direct, compact eight-stage translation table between the Gita-derived transmission sequence and the KnowledgeOS operating sequence, reasserting 'conceptual correspondence≠theological proof' as the disciplined boundary"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever file is actually reached as 'Step 157' next with high attention: 0744 and 0750 propose two differently-framed Step-157 openings (minimum irreducible domain model vs. domain model & bounded context validation) -- check which framing the actual next Step-157 file adopts, and whether it reconciles the two."
+  - "Track whether the twelve-category Failure taxonomy, the Five control planes, and the eleven-row Agent authority matrix are picked up and reused anywhere later in the corpus, or remain single-file contributions."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record that 0750 (Step 156 revision) silently supersedes 0744's rejected L0-L5 epistemic ladder by complete replacement, never explicit retraction -- resolving the 0745-identified contradiction by omission."
+  - "dimension-registry.md: record 'RAG is therefore not the architecture,' 'retrieval ranking is not epistemic ranking' (semantic similarity≠epistemic authority), and Memory≠Authority as precise, currently applicable AI/RAG-system safety invariants."
+  - "dimension-registry.md: record the LLM semantic-collapse-chain warning ('I found something'→'it is true'→'we should do it'→'I did it') as arguably the sharpest single AI-hallucination/overreach-pattern articulation in the reconstruction."
+  - "dimension-registry.md: record the Five control planes, the eleven-row Agent authority matrix, the twelve-category Failure taxonomy, and the three-lifecycle decomposition (Epistemic+Governance+Execution) as genuinely new, concretely operational architectural contributions."
+anchor_test:
+  anchor: "0744's Step 156 (original, containing the rejected L0-L5 ladder); 0745's Epistemic Kernel and Authority(X,S,T); 0736's Gita Chapter 4 findings; the reconstruction's recurring loose 'human in the loop' framing; 0742's/0743's INCONCLUSIVE-preserving assurance discipline"
+  supports_dimension: "A complete, self-contained rewrite of Step 156 built entirely on 0745's corrected Epistemic Kernel, silently superseding 0744's rejected L0-L5 ladder by never reintroducing it. Delivers several genuinely new, precisely stated, currently applicable AI/RAG-safety invariants (RAG≠architecture, semantic similarity≠epistemic authority, Memory≠Authority) and arguably the reconstruction's sharpest single AI-hallucination-chain warning. Delivers concrete operational tooling (the eleven-row Agent authority matrix, the twelve-category Failure taxonomy, the Five control planes) exceeding the specificity of prior equivalent lists. Explicitly critiques and replaces the vague 'human in the loop' framing. Closes with a differently-framed Step-157 opening than 0744's, creating an open reconciliation question for whichever actual Step-157 file is reached next"
+  refines_or_contradicts: "silently supersedes/refines 0744 (functionally resolving 0745's identified contradiction by replacement); directly builds on and operationalizes 0745; reasserts and extends the Gita-Chapter-4 disciplined-correspondence boundary; no new contradiction found within this file itself"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The file's opening line, 'Step 155A established the Epistemic Kernel,' is directly quotable evidence that this revision was deliberately composed to build on and incorporate 0745's corrections, rather than being an independent parallel draft."
+  - "The complete absence of any L0-L5, ladder, or linear-ordering language anywhere in this file's 1702 lines (confirmed by full read) is directly checkable evidence that 0744's rejected pattern was not reintroduced -- functional supersession without explicit textual retraction."
+  - "§156.49's four-step collapse chain ('I found something'→'it is true'→'we should do it'→'I did it'), explicitly named 'one of the strongest reasons for the architecture,' is directly quotable evidence of the file's sharpest AI-safety contribution."
+undefined_concepts: []
+open_questions:
+  - "Whether 0744's L0-L5 ladder is ever explicitly named and retracted anywhere later in the corpus, or remains silently superseded by this revision without any direct cross-reference -- functionally resolved but not textually documented as a correction."
+  - "Whether the actual next 'Step 157' file (whichever is reached first in sequence) adopts 0744's 'minimum irreducible domain model' framing, 0750's 'domain model & bounded context validation' framing, or reconciles the two explicitly."
+  - "Whether the twelve-category Failure taxonomy and the eleven-row Agent authority matrix are reused or extended anywhere later in the corpus, or remain single-file contributions."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: a complete rewrite of Step 156 that silently supersedes 0744's rejected L0-L5 epistemic ladder by building entirely on 0745's corrected Epistemic Kernel and never reintroducing the rejected pattern. Delivers several precise, currently applicable AI/RAG-safety invariants (RAG≠architecture, semantic similarity≠epistemic authority, Memory≠Authority) and arguably the reconstruction's sharpest single AI-hallucination-chain warning (the four-step collapse pattern). Delivers concrete operational artifacts exceeding prior specificity (the eleven-row Agent authority matrix, the twelve-category Failure taxonomy, the Five control planes, the three-lifecycle decomposition). Explicitly critiques and replaces the reconstruction's recurring vague 'human in the loop' framing. Closes with a differently-framed Step-157 opening than 0744's own, creating an explicit open reconciliation question."

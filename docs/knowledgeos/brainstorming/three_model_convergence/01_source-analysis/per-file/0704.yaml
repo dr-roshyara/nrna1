@@ -1,0 +1,248 @@
+sequence: 704
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-124431_step-119-knowledgeos-control-loop-evidence-test.md
+title: "Step 119 -- Delivers a Refined Seven-Stage Per-Transition-Scored Control-Loop Maturity Model (C0-C6) With the Vivid 'A Control Loop Is Only as Strong as Its Weakest Critical Transition' Principle -- Delivers the Consolidated 'Agent Hallucination Boundary' (AgentAssertion≠Evidence, AgentRecommendation≠Decision, AgentCapability≠Authority Bundled as One Named Boundary for the First Time) and a Five-Level Evidence-Priority Hierarchy -- Delivers 'KnowledgeOS Must Preserve Epistemic Status,' EXPLICITLY SELF-DECLARED 'Arguably One of the Most Important Architectural Properties Discovered in the Reconstruction' -- Delivers a Clean Five-Stage Knowledge-Promotion Pipeline and, Most Significantly, the Candidate KnowledgeOS Constitution (K1-K7), a Major Consolidating Synthesis Directly Setting Up Step 120's Explicit Promise to Derive 'the KnowledgeOS Architecture Constitution' as an Authoritative Contract for Claude, Codex, and Other Agents"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 119 -- KnowledgeOS Control-Loop Evidence Test', promised at 0703's close; applies the newly proposed four-level graduated-capability ladder's underlying logic through a richer, more varied per-experiment verdict vocabulary (still entirely hypothetical), and delivers a major consolidating Candidate KnowledgeOS Constitution (K1-K7) directly setting up Step 120's constitution-drafting promise"
+source_role: PRIMARY_RESEARCH
+canonical_source: 704
+importance: critical
+confidence: high
+about: >
+  Delivers the control-loop hypothesis `KnowledgeOS=ReferenceState+Observation+Comparison+Governance+
+  Action+Verification+Learning`, with the central operation `Compare(Expected,Observed)` followed by a
+  controlled response, and, notably, a richer per-experiment verdict vocabulary than the corpus's prior
+  simple PASS/FAIL/OBS/DRIFT convention -- verdicts here include `Reference missing`, `AMBIGUOUS`,
+  `PARTIAL`, `Human verification` (vs. `Deterministic control`), `NON-DETERMINISTIC`, `INVALID CLOSURE`, and
+  `KNOWLEDGE DRIFT` -- applying a more audit-checklist-style assessment to each hypothetical scenario while
+  remaining entirely illustrative throughout.
+
+  Delivers Reference-state provenance and precedence semantics (a checker reporting a discrepancy with no
+  identifiable authoritative reference correctly yielding `ExpectedState=Unknown`, "Reference missing";
+  conflicting architecture-versus-team-documentation references with no resolvable authority correctly
+  yielding `GovernanceAmbiguity`/`AMBIGUOUS`, explicitly "a semantic problem, not a search problem"),
+  directly extending 0687's/0689's authority-provenance disciplines into reference-conflict resolution
+  specifically. Delivers Deterministic-versus-human comparison explicitly separated (a human's visual
+  diagram comparison correctly yielding "Human verification," not "Deterministic control," PASS), directly
+  extending 0693's deterministic-assurance discipline, alongside a genuinely notable new AI-reliability
+  concern: **identical inputs producing different compliance results depending on which agent evaluates
+  them, correctly flagged `NON-DETERMINISTIC`/"weak assurance"** -- a precise, currently important caution
+  about LLM-based evaluation reproducibility not framed quite this explicitly elsewhere in this
+  reconstruction.
+
+  Delivers Difference-to-Classification (extending 0692's D1-D6 taxonomy) and Governance routing (extending
+  0689's/0703's classification-to-path disciplines), with Governance decisions required to actually exist
+  rather than a bare "Resolved" click (directly restating 0692's/0693's Remediation≠Verification discipline)
+  and Agent remediation requiring explicit `AgentIdentity`+`DelegatedAuthority` (a Git account correctly
+  distinguishing human provenance from unproven agent-session provenance, `PARTIAL`), extending 0690's
+  agent-attribution discipline.
+
+  **Delivers `FindingClosed⇒VerificationAddressesFinding` formalized as an explicit invariant with its own
+  distinct severity label**: a remediation of unrelated code formatting, verified only by passing unit
+  tests, correctly yields **`INVALID CLOSURE`** when the original finding (an unauthorized dependency) was
+  never actually addressed -- directly and precisely extending 0703's "verify the actual violated condition,
+  not a proxy" principle into a named, formally distinct closure-failure classification.
+
+  **Delivers Knowledge drift formally introduced as a THIRD explicit drift type, alongside Implementation
+  drift (`Code≠Architecture`) and Runtime drift (`Runtime≠Deployment`)**: Knowledge drift (`Knowledge≠
+  Reality` -- correct code and correct runtime with stale documentation correctly flagged `KNOWLEDGE DRIFT`)
+  -- a genuinely useful named addition to 0692's unified nine-type drift taxonomy, distinct from (though
+  overlapping in spirit with) that taxonomy's Semantic drift entry, worth tracking as a further refinement
+  rather than a duplicate.
+
+  Delivers `ObservedTruth≠AuthoritativeKnowledge`, a clean, precisely stated distinction directly extending
+  the corpus's Recommendation≠Decision/Observation≠Fact family into the knowledge-update-authorization
+  context specifically: `Observation→KnowledgeChangeProposal`, never `Observation→AutomaticAuthority` (a
+  runtime database-technology change correctly requiring authorization verification before any
+  documentation update, PASS), directly extending the corpus's Agent≠Authority family. Delivers Human-in-
+  the-loop boundaries explicitly scaled by risk (low-risk metadata auto-updates acceptable; architecture-
+  authority changes require approval, PASS), extending 0683's risk-proportional-assurance discipline.
+
+  **Delivers a refined seven-stage, explicitly PER-TRANSITION-SCORED control-loop maturity model**: `C0`
+  Observe, `C1` Detect, `C2` Assure, `C3` Govern, `C4` Remediate, `C5` Verify, `C6` Learn -- with the
+  important, precisely stated methodological principle "the current implementation should be evaluated
+  level by level rather than given one vague maturity label," directly and genuinely extending 0699's
+  Vector>Scalar principle and 0701's/0703's prior maturity/capability ladders into an explicitly per-
+  transition-graded operationalization. **Delivers the vivid, precisely reasoned Control-loop integrity
+  principle**: "a control loop is only as strong as its weakest critical transition" -- worked through with
+  two symmetric illustrative cases: excellent observation/detection/assurance (`C0=C1=C2=5`) with zero
+  governance (`C3=0`) correctly yielding a mere `DetectionSystem`, not a `ClosedLoopKnowledgeOS`; and,
+  conversely, excellent governance (`C3=5`) with zero runtime observation (`C0=0`) correctly yielding a mere
+  `GovernanceRepository`, not "a closed engineering feedback system" -- directly and vividly extending
+  0700's/0701's/0702's CriticalPathCompleteness discipline into the control-loop context specifically, one
+  of the reconstruction's clearest illustrations of that principle.
+
+  **Delivers the two-sided Top-down/Bottom-up architecture reconfirmed with a crisp consolidating diagram**
+  (`Governance↕KnowledgeOS↕Engineering`), directly restating 0685's/0691's dual-direction-closure discipline,
+  and, for the first time this explicitly, a clean statement of **why the agent layer belongs in the
+  middle**: agents consume `GovernedKnowledge`, produce `Recommendations`, may execute `AuthorizedActions`,
+  and generate `Observations`+`Evidence` -- crystallized as `Agent=Participant in the Knowledge Loop, not
+  the owner of organizational truth` -- a valuable, clean synthesis directly connecting the agent-
+  architecture work (0690, 0693, 0695, 0703) into this two-sided model.
+
+  **Delivers the consolidated "Agent hallucination boundary," bundling three previously-scattered
+  distinctions into one named boundary concept for the first time in this reconstruction**: `AgentAssertion
+  ≠Evidence` (unless evidence provenance exists), `AgentRecommendation≠Decision`, and `AgentCapability≠
+  Authority` -- explicitly declared "these three distinctions should become central to the AI engineering
+  platform" -- directly and usefully consolidating threads previously delivered separately across 0690,
+  0693, 0697, 0698, 0699, and 0702-0703 into a single, memorably named boundary. Delivers Deterministic-
+  assurance-boundary reconfirmed with the crisp statement "the LLM conclusion cannot override the
+  deterministic result" (an LLM's "compliant" conclusion correctly overridden by a deterministic checker's
+  `FAIL`, PASS), directly restating 0693's/0703's machine-check-wins principle.
+
+  **Delivers the most complete Evidence-priority hierarchy in this reconstruction**: `DeterministicVerified
+  Evidence>ToolObservedEvidence>HumanAssertion>AgentAssertion>Inference` -- with the mature, precisely
+  qualified caveat "this does not mean human evidence is unimportant... it means the epistemic status
+  differs" -- directly extending 0687's/0688's/0691's/0698's/0701's evidence-hierarchy family into its most
+  granular five-level ranking.
+
+  **Delivers "KnowledgeOS must preserve epistemic status," EXPLICITLY SELF-DECLARED "arguably one of the
+  most important architectural properties discovered in the reconstruction"** -- a capstone-level claim
+  worth recording with full weight given the source's own emphasis -- with six explicit epistemic states
+  (`Observed, Verified, Asserted, Inferred, Proposed, Authoritative`), directly and genuinely consolidating
+  the corpus's entire epistemic-firewall/epistemic-honesty program (tracked since the earliest steps of this
+  reconstruction) into a single named architectural property.
+
+  **Delivers a clean, five-stage Knowledge-promotion pipeline**: `Raw→Observed→Supported→Validated→
+  Authoritative`, with the final `Validated→Authoritative` transition explicitly requiring authority
+  (`Promotion→Authority`; an agent auto-declaring a discovered pattern as "a new enterprise architecture
+  standard" without delegated authority correctly flagged a governance violation, PASS), directly extending
+  0690's/0696's/0697's/0701's/0702's knowledge-promotion-lifecycle discipline into its most complete
+  pipeline form yet.
+
+  **Delivers the control-loop invariant -- three foundational rules bundled as "a semantic assurance
+  constitution"**: `No authoritative knowledge change without valid authority`; `No governance closure
+  without verification evidence`; `No evidence claim without provenance` -- directly previewing and setting
+  up the file's own capstone deliverable.
+
+  **Delivers the file's single most significant contribution -- the Candidate KnowledgeOS Constitution
+  (K1-K7), a major consolidating synthesis condensing the accumulated invariants of roughly 119 preceding
+  files into seven foundational "constitutional" principles for the first time**: `K1` Provenance
+  (`KnowledgeObject→Provenance`); `K2` Authority (`AuthoritativeChange→Authority`); `K3` Verification
+  (`ClosedFinding→VerificationEvidence`); `K4` Temporal validity (`CurrentKnowledge→Validity`); `K5`
+  Epistemic separation (`Inference≠Fact`); `K6` Agent boundary (`AgentCapability≠Authority`); `K7`
+  Traceability (`Action→Decision/Authorization`) -- explicitly and carefully labeled "candidate
+  constitutional invariants," consistent with the corpus's epistemic-honesty discipline. **Note the
+  notation-scheme variance**: this is the second use of a non-`I_{Name}` invariant notation in this
+  reconstruction (a `K`-prefixed scheme, following 0698's `S`-prefixed scheme), again restating/
+  consolidating already-tracked substance under new symbolic labels rather than introducing wholly new
+  atomic claims -- though the SYNTHESIS itself (choosing exactly these seven as the constitutional core) is
+  a genuinely significant editorial/architectural act in its own right, distinct from a mere notational
+  restatement.
+
+  **Delivers the deeper architectural conclusion with the most complete negative-identity list in this
+  reconstruction**: KnowledgeOS is explicitly and precisely declared to be none of `KnowledgeGraph`, `RAG`,
+  `AgentPlatform`, or `GovernanceRepository` (four exclusions, the most complete such list delivered
+  anywhere in this reconstruction), crystallized positively as `KnowledgeOS=GovernedKnowledge+
+  EngineeringState+Evidence+Agents+Feedback` -- directly continuing and further sharpening the corpus's
+  now seven-plus-file convergent-formulation family (0688, 0697, 0698, 0699, 0701, 0702, 0703, 0704) for
+  its central open architectural question.
+
+  Delivers Step 119's verdict continuing the calibrated methodology-only pattern: "STEP 119 — CONTROL-LOOP
+  MODEL: PASS... this is the architectural test model, not yet a claim that every stage exists today."
+
+  **Closes by opening "Step 120 — KnowledgeOS Constitutional Invariants," explicitly and directly promising
+  to consolidate the accumulated body of candidate rules into "a small set of non-negotiable architectural
+  invariants"** -- explicitly naming the risk of "creating another enormous rule catalog" and posing the
+  sharp consolidating question: "What are the few invariants that, if violated, fundamentally change
+  KnowledgeOS into something else?" -- with seven named candidate categories (`Provenance+Authority+
+  EpistemicStatus+TemporalValidity+DeterministicVerification+Traceability+Feedback`, closely but not
+  identically matching this file's own K1-K7 list) to be tested, deduplicated, and formalized into **"the
+  KnowledgeOS Architecture Constitution"** -- explicitly declared to become "the authoritative architectural
+  contract" for Claude, Codex, and other agents going forward. This is a major upcoming synthesis milestone
+  for the c1/g1 model line specifically (an internal consolidation within this model's own reconstruction,
+  distinct from and not in tension with this larger three-model-convergence project's own still-active §29
+  gate against premature cross-model canonical synthesis) and should be read with high priority and full
+  attention to detail. No actual code execution, repository inspection, or verified filesystem/relationship
+  claim is reported anywhere in this file.
+introduces:
+  - concept: "A richer, audit-style per-experiment verdict vocabulary (Reference missing/AMBIGUOUS/PARTIAL/NON-DETERMINISTIC/INVALID CLOSURE/KNOWLEDGE DRIFT), distinct from the corpus's prior simple PASS/FAIL/OBS/DRIFT convention"
+  - concept: "A genuinely notable new AI-reliability concern: identical inputs producing different compliance results depending on which agent evaluates them, flagged NON-DETERMINISTIC"
+  - concept: "FindingClosed⇒VerificationAddressesFinding formalized with a distinct severity label: INVALID CLOSURE"
+  - concept: "Knowledge drift introduced as a third explicit drift type (alongside Implementation drift and Runtime drift), extending 0692's unified drift taxonomy"
+  - concept: "A refined seven-stage, explicitly per-transition-scored control-loop maturity model (C0-C6), with the vivid 'weakest critical transition' integrity principle"
+  - concept: "A clean statement of why the agent layer belongs between governance and engineering: Agent=Participant in the Knowledge Loop, not the owner of organizational truth"
+  - concept: "The consolidated 'Agent hallucination boundary,' bundling AgentAssertion≠Evidence, AgentRecommendation≠Decision, and AgentCapability≠Authority into one named boundary for the first time"
+  - concept: "The most complete Evidence-priority hierarchy in this reconstruction (five levels)"
+  - concept: "'KnowledgeOS must preserve epistemic status', explicitly self-declared arguably the most important architectural property discovered in the reconstruction"
+  - concept: "A clean five-stage Knowledge-promotion pipeline (Raw→Observed→Supported→Validated→Authoritative)"
+  - concept: "The Candidate KnowledgeOS Constitution (K1-K7), a major consolidating synthesis directly setting up Step 120's promise to derive an authoritative architectural contract"
+  - concept: "The most complete negative-identity list in this reconstruction (KnowledgeOS≠KnowledgeGraph/RAG/AgentPlatform/GovernanceRepository)"
+  - concept: "Opens Step 120 — KnowledgeOS Constitutional Invariants, a major upcoming synthesis milestone for the c1/g1 line"
+defines:
+  - concept: "The Agent hallucination boundary"
+    definition: "A named consolidation of three distinctions that must all hold for an AI-agent-integrated knowledge system to avoid confusing AI output with organizational truth: AgentAssertion≠Evidence (an agent's claim is not evidence unless backed by actual tool-execution/observation provenance), AgentRecommendation≠Decision (an agent's suggestion is not an authorized organizational decision), and AgentCapability≠Authority (an agent's technical ability to perform an action does not confer the authority to do so)"
+  - concept: "Control-loop integrity ('weakest critical transition')"
+    definition: "A control loop's overall strength is bounded by its weakest critical transition stage, not by the average or the strongest stage; excellent detection with zero governance yields a mere detection system, and excellent governance with zero runtime observation yields a mere governance repository — neither constitutes a genuine closed-loop KnowledgeOS"
+  - concept: "KnowledgeOS must preserve epistemic status"
+    definition: "Every knowledge item in the system must retain an explicit marker of its epistemic status along a spectrum (Observed, Verified, Asserted, Inferred, Proposed, Authoritative) and this status must never be silently upgraded (e.g. an Inference must never silently become Authoritative); self-declared arguably the most important architectural property discovered across this entire reconstruction"
+  - concept: "The Knowledge-promotion pipeline"
+    definition: "Raw→Observed→Supported→Validated→Authoritative — a five-stage pipeline through which a piece of information must pass before being treated as organizational knowledge, with the final Validated→Authoritative transition requiring explicit delegated authority, never occurring automatically regardless of how well-supported the information is"
+  - concept: "The Candidate KnowledgeOS Constitution (K1-K7)"
+    definition: "Seven candidate constitutional invariants consolidating the reconstruction's accumulated findings: K1 Provenance, K2 Authority, K3 Verification, K4 Temporal validity, K5 Epistemic separation, K6 Agent boundary, K7 Traceability — explicitly held as candidates pending further testing and deduplication in Step 120, not yet a ratified constitution"
+refines:
+  - concept: "0687's/0689's authority-provenance disciplines"
+    refinement: "Directly extended into reference-conflict resolution specifically: conflicting authoritative sources with no resolvable precedence constitute a semantic governance problem, not a search problem"
+  - concept: "0693's deterministic-assurance discipline"
+    refinement: "Directly extended with a novel non-determinism concern: identical inputs yielding different results across different evaluating agents constitutes weak assurance"
+  - concept: "0692's D1-D6 discrepancy taxonomy and 0689's/0703's governance-classification disciplines"
+    refinement: "Directly restated and extended for the reverse (bottom-up) control-loop context"
+  - concept: "0692's/0693's Remediation≠Verification discipline and 0703's verify-the-actual-condition refinement"
+    refinement: "Directly and precisely formalized as FindingClosed⇒VerificationAddressesFinding, with a distinct severity label (INVALID CLOSURE)"
+  - concept: "0692's unified nine-type drift taxonomy"
+    refinement: "Directly extended with a third explicit drift type (Knowledge drift: Knowledge≠Reality), distinct from Implementation drift and Runtime drift"
+  - concept: "the corpus's Recommendation≠Decision/Observation≠Fact family and Agent≠Authority family"
+    refinement: "Directly and precisely extended into the knowledge-update-authorization context specifically: ObservedTruth≠AuthoritativeKnowledge, Observation→KnowledgeChangeProposal never AutomaticAuthority"
+  - concept: "0683's risk-proportional-assurance discipline"
+    refinement: "Directly extended into human-in-the-loop knowledge-update-approval scaling"
+  - concept: "0699's Vector>Scalar principle and 0701's/0703's maturity/capability ladders"
+    refinement: "Directly and genuinely extended into an explicitly per-transition-scored seven-stage control-loop maturity model (C0-C6), with the vivid weakest-critical-transition integrity principle"
+  - concept: "0685's/0691's dual-direction architectural closure discipline"
+    refinement: "Directly restated with a crisp Governance↕KnowledgeOS↕Engineering diagram, and, for the first time this explicitly, a clean rationale for the agent layer's middle position"
+  - concept: "0690's, 0693's, 0697's, 0698's, 0699's, 0702's, and 0703's previously scattered agent-authority/evidence/recommendation distinctions"
+    refinement: "Directly and usefully consolidated into one named 'Agent hallucination boundary' for the first time"
+  - concept: "0693's/0703's 'the machine check wins over the AI assertion' principle"
+    refinement: "Directly restated: an LLM's conclusion cannot override a deterministic checker's result"
+  - concept: "0687's/0688's/0691's/0698's/0701's evidence-hierarchy family"
+    refinement: "Directly extended into its most granular five-level ranking (DeterministicVerifiedEvidence>ToolObservedEvidence>HumanAssertion>AgentAssertion>Inference), with a mature qualifying caveat"
+  - concept: "the corpus's entire epistemic-firewall/epistemic-honesty program (tracked since the earliest steps)"
+    refinement: "Directly and genuinely consolidated into a single named architectural property (preserve epistemic status), explicitly self-declared one of the reconstruction's most important discoveries"
+  - concept: "0690's/0696's/0697's/0701's/0702's knowledge-promotion-lifecycle discipline"
+    refinement: "Directly extended into its most complete five-stage pipeline form (Raw→Observed→Supported→Validated→Authoritative)"
+  - concept: "0688's, 0697's, 0698's, 0699's, 0701's, 0702's, and 0703's convergent formulations of the corpus's central tension"
+    refinement: "Directly and further sharpened with the most complete negative-identity list in this reconstruction (four explicit exclusions) and the positive formula KnowledgeOS=GovernedKnowledge+EngineeringState+Evidence+Agents+Feedback"
+  - concept: "the accumulated invariant catalog across roughly 119 preceding files"
+    refinement: "Consolidated for the first time into a seven-item Candidate KnowledgeOS Constitution (K1-K7), directly setting up Step 120's explicit constitution-drafting promise"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0705 (Step 120 — KnowledgeOS Constitutional Invariants) with HIGH priority and full attention: this file's own close explicitly promises to derive 'the KnowledgeOS Architecture Constitution' -- a major consolidating synthesis milestone for the c1/g1 model line, testing and deduplicating the seven candidate categories named at this file's close against the K1-K7 list delivered here."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the file's most significant contributions: the consolidated Agent hallucination boundary, 'KnowledgeOS must preserve epistemic status' (self-declared one of the most important properties discovered), the five-stage knowledge-promotion pipeline, and especially the Candidate KnowledgeOS Constitution (K1-K7) -- a major synthesis directly setting up Step 120."
+  - "dimension-registry.md: record Knowledge drift as a third explicit drift type (alongside Implementation and Runtime drift), the vivid control-loop-integrity 'weakest critical transition' principle, and the most complete negative-identity list yet for the corpus's central tension (KnowledgeOS≠KnowledgeGraph/RAG/AgentPlatform/GovernanceRepository)."
+  - "dimension-registry.md: flag Step 120 (0705) as a HIGH-PRIORITY read -- the corpus's own explicit promise to derive 'the KnowledgeOS Architecture Constitution' as an authoritative contract for Claude, Codex, and other agents."
+anchor_test:
+  anchor: "0687's/0689's authority-provenance disciplines; 0693's deterministic-assurance discipline; 0692's unified drift taxonomy; the corpus's Recommendation≠Decision/Observation≠Fact and Agent≠Authority families; 0699's Vector>Scalar principle; 0701's/0703's maturity/capability ladders; 0685's/0691's dual-direction closure discipline; 0690's/0693's/0697's/0698's/0699's/0702's/0703's scattered agent-authority/evidence distinctions; 0687's/0688's/0691's/0698's/0701's evidence-hierarchy family; the corpus's entire epistemic-firewall program; 0690's/0696's/0697's/0701's/0702's knowledge-promotion-lifecycle discipline; 0688's/0697's/0698's/0699's/0701's/0702's/0703's central-tension formulations"
+  supports_dimension: "Delivers several genuinely valuable consolidating syntheses and one significant new AI-reliability concern (cross-agent non-determinism in compliance evaluation). Most significantly, this file performs the reconstruction's first major CONSOLIDATION of accumulated principles into named, bundled concepts: the 'Agent hallucination boundary' (three previously scattered distinctions unified), 'KnowledgeOS must preserve epistemic status' (explicitly self-declared one of the most important properties discovered in the entire reconstruction), a clean five-stage knowledge-promotion pipeline, and -- the file's single most significant deliverable -- the Candidate KnowledgeOS Constitution (K1-K7), condensing roughly 119 files' worth of accumulated invariants into seven foundational principles for the first time. This directly and explicitly sets up Step 120's promise to derive a ratified 'KnowledgeOS Architecture Constitution' intended as an authoritative contract for Claude, Codex, and other agents -- a major upcoming synthesis milestone warranting high-priority attention at the next file"
+  refines_or_contradicts: "directly and genuinely extends 0687's/0689's authority-provenance disciplines, 0693's deterministic-assurance discipline, 0692's unified drift taxonomy (with a new third drift type), the corpus's Recommendation≠Decision/Observation≠Fact and Agent≠Authority families, 0699's Vector>Scalar principle, 0701's/0703's maturity/capability ladders, 0685's/0691's dual-direction closure discipline, the corpus's scattered agent-authority/evidence distinctions (now consolidated), 0687's/0688's/0691's/0698's/0701's evidence-hierarchy family, the corpus's entire epistemic-firewall program, 0690's/0696's/0697's/0701's/0702's knowledge-promotion-lifecycle discipline, and the corpus's central-tension convergent formulations; no contradiction found; the K1-K7 notation is a new labeling scheme (following 0698's S1-S6 precedent) restating already-tracked substance, not a collision risk"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§119.57's explicit self-declaration -- 'KnowledgeOS must preserve epistemic status... this is arguably one of the most important architectural properties discovered in the reconstruction' -- is a directly quotable, self-flagged capstone claim consolidating this reconstruction's entire epistemic-honesty program into a single named property."
+  - "§119.63-119.64's Candidate KnowledgeOS Constitution (K1-K7) is directly checkable, concrete evidence of the reconstruction's first explicit consolidation of its accumulated invariant catalog into a small, named constitutional core, directly and explicitly setting up Step 120's constitution-drafting promise."
+  - "§119.40-119.43's symmetric weakest-critical-transition illustrations (excellent detection with zero governance yielding a mere DetectionSystem; excellent governance with zero observation yielding a mere GovernanceRepository) are directly checkable, vivid, and precisely reasoned demonstrations of the control-loop-integrity principle."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 120's actual content (0705), once read, genuinely tests and deduplicates the seven named candidate categories into a coherent, ratified 'KnowledgeOS Architecture Constitution,' and how closely that ratified set matches or diverges from this file's own K1-K7 Candidate Constitution."
+tier2_triggered: true
+tier2_reason: "Delivers several genuinely valuable consolidating syntheses: the named 'Agent hallucination boundary' (unifying three previously scattered distinctions), the self-declared most-important-property-discovered 'KnowledgeOS must preserve epistemic status,' a clean five-stage knowledge-promotion pipeline, a refined per-transition-scored control-loop maturity model with the vivid weakest-critical-transition integrity principle, and, most significantly, the Candidate KnowledgeOS Constitution (K1-K7) -- the reconstruction's first consolidation of its accumulated invariants into a small constitutional core. Delivers a genuinely notable new AI-reliability concern (cross-agent non-determinism) and the most complete negative-identity list yet for the corpus's central tension. Opens Step 120 as a major, high-priority upcoming synthesis milestone: deriving 'the KnowledgeOS Architecture Constitution' as an authoritative contract for Claude, Codex, and other agents."

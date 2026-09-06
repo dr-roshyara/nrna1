@@ -1,0 +1,86 @@
+sequence: 338
+path: docs/knowledgeos/brainstorming/kernel/refinement_phase/20260825-190639_much-better-than-the-previous-version.md
+title: "Session-1/Session-2 Track Separation and the Six-Layer Extraction Target"
+date: "2026-08-25"
+bytes: 9085
+model:
+  primary: c1
+  secondary: null
+source_role: CRITICAL_REVIEW
+canonical_source: 338
+importance: critical
+confidence: high
+about: >
+  A direct governance/methodology response to 0337 Part 2 (KNOWLEDGE-CONCEPT-EXTRACTION-001), continuing
+  the C-15/HPA governance strand (0323, 0329) and naming for the first time in this reconstruction's pass
+  the two-session process structure underlying it: 'Session 1' (the research/extraction track producing
+  the Knowledge-concept extraction) and 'Session 2' (the formal-adjudication track handling C-15, Kernel
+  law, F-CM/C-items, amendment classes, rulings). Approves 0337 Part 2's result as methodologically sound
+  (three-register discipline maintained, no model chosen, nothing promoted), highlights its provenance
+  correction on 'Knowledge Space' as exemplary and generalizes it into a standing methodological rule
+  ('never infer conceptual continuity merely from identical terminology; compare meaning, purpose, and
+  surrounding model'), and explicitly reframes Phase 1 as having already possessed a coherent conceptual
+  direction (relationship -> justification -> context -> knower/object -> state evolution) before the
+  book-extraction phase began. Explicitly warns against letting the K-1..K-11 model inventory harden into
+  architecture, and revises the per-document extraction procedure from isolated summarization to a
+  differential procedure (what does this document add/contradict/refine/invalidate relative to the
+  existing concept map). Produces a six-layer target for the whole exercise (what we originally thought /
+  what research introduced / what contradictions appeared / what concepts survived both phases / what
+  remains unresolved / what, if anything, belongs in the Kernel -- explicitly the OUTPUT, not the starting
+  assumption). Formalizes the Session-1/Session-2 non-contamination rule: Session 1 may discover 'the
+  brainstorming suggests X'; Session 2 may later ask 'does X invalidate or require changing the current
+  law?' -- the two streams must not mix. Explicitly instructs: do not start the Knowledge Space extraction
+  yet, and keep Session 2 (adjudication, including C-15) frozen until the research-extraction track has
+  caught up.
+introduces:
+  - concept: "Explicit approval of 0337 Part 2's provenance correction as exemplary methodology, generalized into a standing rule: 'never infer conceptual continuity merely from identical terminology. Compare meaning, purpose, and surrounding model' -- directly reinforcing the corpus's own MD-017-style discipline against silently converting resemblance into identity"
+  - concept: "Reframing of Phase 1 (brainstorming/ root) as having possessed a coherent pre-research conceptual direction, not a random idea collection: What is Knowledge? -> relationship -> justification -> context -> knower/object -> state evolution, contrasted with Phase 2's reframing: What is Knowledge relative to? -> Knowledge Space/Participant/Time/Capacity/Projection/Measurement -- both diagrams explicitly kept as 'a very meaningful evolution,' not a replacement"
+  - concept: "Explicit warning against letting the K-1..K-11 research inventory (0337 Part 2) become architecture: 'that's excellent research inventory. But it is not yet saying K-2 is correct... and especially not K-2+K-3+Knowledge Space=the KnowledgeOS architecture' -- the extraction 'explicitly preserves all competing models and says no model chosen. That's exactly what we want'"
+  - concept: "Revised per-document extraction procedure, replacing isolated-summary reading with a DIFFERENTIAL procedure: DOCUMENT -> extract claims -> extract concepts -> extract definitions -> extract relationships -> extract contradictions -> extract provenance -> attach to existing concept map; reframed guiding question: not 'what does this document say?' but 'what does this document add, contradict, refine, or invalidate compared with what we already extracted?' -- a close structural parallel to this reconstruction's own per-file YAML schema (introduces/refines/contradicts/repeats fields)"
+  - concept: "Preliminary, explicitly-not-frozen Knowledge concept map: KNOWLEDGE -> [RELATIONSHIP (justification/evidence/reasoning), STATE/CHANGE (evolution-time/revision/contraction), PARTICIPANT (context/access/capacity)] -> KNOWLEDGE SPACE -> PROJECTION -> measurement/regime -- with an explicit requirement that each box carry its own epistemic status (strongly supported by Phase 1 / later research / hypothesis / contradiction / external theoretical position) traveling WITH the concept, not collapsed into the diagram"
+  - concept: "Restated critical unresolved question as the corpus's clearest open item: 'does change create a new identity?' -- explicitly framed as a place to NOT jump ahead, even though the Knowledge-Space model may eventually supply an elegant answer; the documents must establish this, not the researcher's intuition"
+  - concept: "Direct connection to C-15: the C-15 review's Epistemic-status+Lifecycle-status+History triad is juxtaposed against the new extraction's temporal chain (Knowledge Space -> participant -> information-available-at-t -> projection -> knowledge-at-t -> later information -> revision/contraction/supersession), raising but explicitly NOT YET DECIDING whether retraction is a lifecycle concern or a consequence of temporal epistemic evolution -- justifying the decision to extract Knowledge fully before continuing the C-15 refinement"
+  - concept: "Explicit standing instruction to Session 1: 'The Knowledge extraction is accepted as a research artifact. Do not revise it into architecture and do not start Knowledge Space yet. Before moving to the next concept, produce the next document-level extraction using the same discipline... Preserve Phase 1 and Phase 2 provenance. Do not reconcile competing models. Do not convert repeated ideas into consensus.'"
+  - concept: "Formal naming and separation of the two-session governance process, first named explicitly in this reconstruction's pass: SESSION 1 = research/extraction track (brainstorming corpus -> document-by-document extraction -> Knowledge -> Knowledge Space -> KnowledgeOS -> Kernel concepts -> research synthesis); SESSION 2 = formal adjudication track (current Kernel law -> F-CM/C-items -> falsification -> adjudication -> rulings) -- 'the two streams should not contaminate each other'"
+  - concept: "Non-contamination protocol: Session 1 may discover 'the brainstorming suggests X'; Session 2 may later ask 'does X invalidate or require changing the current law?' -- explicitly framed as 'extremely important' separation, directly extending 0323's own BRAINSTORMING->FORMAL KERNEL->ADJUDICATION pipeline discipline with an operational two-track implementation"
+  - concept: "Six-layer target for the entire exercise, explicitly reframing the goal away from 'read N documents': Layer 1 what did we originally think (Phase 1); Layer 2 what did research introduce (Phase 2); Layer 3 what contradictions appeared; Layer 4 what concepts survived both phases; Layer 5 what remains genuinely unresolved; Layer 6 (only then) what, if anything, belongs in the KnowledgeOS Kernel -- explicitly 'the OUTPUT of the exercise, not its starting assumption'"
+  - concept: "Explicit endorsement of 0337 Part 2's self-imposed boundary (stopping before Knowledge Space/KnowledgeOS/KnowledgeCore/Kernel) as 'the correct boundary,' and final recommendation: continue Session 1 one document at a time using the Knowledge extraction as an accumulating concept ledger, while keeping Session 2 frozen on adjudication until the research-extraction track has caught up"
+defines: []
+refines:
+  - concept: "0337 Part 2's KNOWLEDGE-CONCEPT-EXTRACTION-001 (eleven-model K-1..K-11 catalog, provenance correction, Phase-1-original relationship finding)"
+    refinement: "Explicitly approved as methodologically correct and generalized into standing rules; the K-model inventory is explicitly protected from premature architectural collapse"
+  - concept: "0323's BRAINSTORMING -> FORMAL KERNEL -> ADJUDICATION -> FALSIFICATION pipeline"
+    refinement: "Given a concrete operational implementation: named Session 1 (research/extraction) and Session 2 (formal adjudication) tracks, with an explicit non-contamination protocol"
+  - concept: "0323's C-15/W:C-15 Epistemic-Status+Lifecycle-Status+History triad"
+    refinement: "Explicitly juxtaposed against (not yet merged with) the new Knowledge-Space-derived temporal chain, raising but deliberately deferring the question of whether retraction is a lifecycle concern or a temporal-epistemic-evolution consequence"
+  - concept: "This reconstruction's own MD-017 discipline (never merge by resemblance)"
+    refinement: "Independently and explicitly generalized by this governance strand into the rule 'never infer conceptual continuity merely from identical terminology' -- a close structural convergence between the two independently-run methodologies"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal naming of the Session-1 (research/extraction) vs Session-2 (formal adjudication) track separation, extending the BRAINSTORMING->FORMAL KERNEL->ADJUDICATION pipeline first noted at 0323."
+  - "dimension-registry.md: record the six-layer extraction target (what-we-thought / what-research-introduced / contradictions / survivors / unresolved / Kernel-membership-as-output) as the governing methodology for the ongoing cross-corpus Knowledge-concept extraction (0337 Part 2 and its successors)."
+  - "dimension-registry.md: note the explicit deferral of the retraction-as-lifecycle-vs-temporal-evolution question, connecting to the C-15/W:C-15 unresolved_equivalence entry."
+anchor_test:
+  anchor: "0337 Part 2's KNOWLEDGE-CONCEPT-EXTRACTION-001; 0323's C-15/BRAINSTORMING-FORMAL-KERNEL-ADJUDICATION pipeline; this reconstruction's own MD-017 discipline"
+  supports_dimension: "Governance/methodology strand: formalizes the two-track (research-extraction vs. formal-adjudication) process underlying the C-15/HPA governance work, approves and generalizes 0337 Part 2's provenance-correction methodology, and defers the retraction-lifecycle-vs-temporal-evolution question pending further document-by-document extraction"
+  refines_or_contradicts: "refines 0337 Part 2 (approves and generalizes its methodology), refines 0323 (operationalizes its pipeline into named tracks), converges independently with this reconstruction's own MD-017 discipline"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "Full definition of 'F-CM' and 'C-items' referenced in the Session-2 track diagram -- not spelled out in this file, presumably referring to the same HPA adjudication-workbook items (W:F-CM-1a/1b, W:C-n) named in 0329's namespace disambiguation"
+open_questions:
+  - "Whether the retraction-as-lifecycle-vs-temporal-evolution question is ever resolved in a later document"
+  - "Whether Session 1's document-by-document extraction (as instructed here) continues to produce further numbered KNOWLEDGE-CONCEPT-EXTRACTION artifacts encountered later in this reconstruction's sequential pass"
+  - "Whether Session 2 (formal adjudication, including C-15/W:C-15) does in fact remain frozen as instructed, or resumes before the research-extraction track catches up"
+tier2_triggered: true
+tier2_reason: "A direct governance/methodology response to 0337 Part 2, formally naming and separating the Session-1 (research/extraction) and Session-2 (formal adjudication) tracks underlying the C-15/HPA governance strand for the first time in this reconstruction's pass, generalizing 0337 Part 2's provenance-correction methodology into a standing rule, revising the per-document extraction procedure into a differential (add/contradict/refine/invalidate) form, and producing a six-layer target for the entire cross-corpus Knowledge-concept reconstruction exercise with Kernel-membership explicitly as the output, not the starting assumption."

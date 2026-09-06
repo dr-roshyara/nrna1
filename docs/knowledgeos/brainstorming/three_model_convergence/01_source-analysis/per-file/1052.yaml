@@ -1,0 +1,82 @@
+sequence: 1052
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-289/exec/OUT-t289_bootstrap_v2.txt
+title: "OUT-t289_bootstrap_v2.txt -- CONFIRMS THE CAPSTONE RESULT: the Minimal Bootstrap Cut for the Entire Equality/Kernel Dependency Graph Is PROVEN, by Exhaustive Search, to Be the UNIQUE Single Node {equiv} -- Neither {O}, {T}, {O,T} Nor {delta} Alone Suffice; Resolving What 'equiv' Formally Means Is the One Decision That Breaks Every Circular Dependency in the Programme"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the corrected v2 execution output, confirming this reconstruction's own inference from file 1051 with rigorous, exhaustive proof"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1052
+importance: critical
+confidence: high
+about: >
+  The corrected (v2) execution output of the Step-289 dependency-graph script: 27 nodes, 42 edges (one fewer
+  than v1, confirming file 1050's edge removal), and now exactly FOUR ELEMENTARY CYCLES (down from five in
+  file 1051's v1 run), the spurious `K↔equiv_T` definitional artifact having been correctly removed. All four
+  remaining cycles are genuine and ALL pass through the single node `equiv`: `approx↔equiv`,
+  `congruence↔equiv`, `approx→equiv→bindings→approx`, `congruence→equiv→delta→congruence`.
+
+  **CONFIRMS, WITH RIGOROUS EXHAUSTIVE PROOF, THIS RECONSTRUCTION'S OWN INFERENCE FROM FILE 1051**: the
+  minimal feedback vertex set (bootstrap cut) over the twelve RESOLVABLE (governance-decidable) nodes is
+  **SIZE 1**, and there is EXACTLY ONE such minimal cut set: **`{equiv}`**. "MINIMAL CUT SIZE = 1. number of
+  distinct minimal cut sets = 1. `['equiv']`." This is a proven, unique, singular result -- not one of several
+  equally-good options.
+
+  **DELIVERS THE DEFINITIVE PROBE TABLE, DIRECTLY REFUTING SEVERAL PLAUSIBLE ALTERNATIVE CANDIDATES**:
+  `{O}` alone -- acyclic? **FALSE**; `{T}` alone -- **FALSE**; `{O,T}` together -- **FALSE** (directly refuting
+  the already-tracked suspicion, tested explicitly in file 1049's script design, that the operation/
+  transformation pair alone might be the master gate); `{delta}` alone -- **FALSE**; only `{O,T,equiv}`,
+  `{equiv}` alone, and `{delta,equiv}` achieve acyclicity -- and since `{equiv}` alone already suffices at the
+  minimum size, the larger sets are simply supersets that also work, not independently minimal.
+
+  **THIS IS THE CAPSTONE, MOST RIGOROUS, SINGLE MOST ACTIONABLE FINDING IN THE ENTIRE EQUALITY/KERNEL
+  RESEARCH ARC TRACKED ACROSS FILES 0989-1052**: of the twenty normative decisions enumerated in the
+  definitive decision register (file 1047, N-1 through N-20), and despite the already-tracked, informal
+  observation that N-4 (operation/transformation-set ratification) "gates" several other decisions, THE ACTUAL
+  RIGOROUS GRAPH-THEORETIC ANALYSIS PROVES THAT RESOLVING `equiv` (i.e., settling the definitional
+  entanglement between semantic equality `≡` and observational equality `≈` -- the already-tracked N-1
+  conflict discovered in file 1041 -- together with Decision 3 and the corpus's own undecidability findings)
+  IS THE SINGLE, UNIQUE, PROVABLY MINIMAL DECISION that would break every circular dependency currently
+  blocking the equality/kernel research programme. This sharpens and, in a precise formal sense, SUPERSEDES
+  the already-tracked N-4 "master gate" informal finding: N-4 (`𝒪`/`𝒯`) is necessary for many DOWNSTREAM
+  derivations (as `DERIVED_ONLY` nodes depend on it), but it is NOT, by itself, sufficient to break the
+  programme's actual CIRCULAR dependencies -- only resolving `equiv` achieves that.
+introduces:
+  - concept: "The rigorously proven, unique minimal bootstrap cut for the entire equality/kernel dependency graph: the single node {equiv}, confirmed by exhaustive search with no other size-1, size-2, size-3, or size-4 cut needed"
+  - concept: "The explicit refutation, by direct probe, that {O}, {T}, {O,T}, or {delta} alone suffice to break the programme's circular dependencies -- only {equiv} does"
+  - concept: "The formal sharpening of the already-tracked N-4 master-gate finding: N-4 (operation/transformation ratification) is necessary for many downstream derivations but is not itself the decision that breaks the programme's actual circular dependencies -- resolving equiv is"
+defines: []
+refines:
+  - concept: "File 1051's inference (pending confirmation) that the genuine minimal bootstrap cut is size 1, {equiv} alone"
+    refinement: "CONFIRMED with rigorous, exhaustive proof: the minimal cut is exactly size 1, and the unique minimal cut set is {equiv}"
+  - concept: "This reconstruction's already-tracked N-4 master-gate finding (file 1047: N-4 gates N-3, N-5, N-11 and the technical half of N-2)"
+    refinement: "FORMALLY SUPERSEDED IN PRECISION by the rigorous graph-theoretic result: N-4 is necessary for downstream derivations but not sufficient to break the programme's actual circular dependencies; resolving equiv (N-1's underlying conflict, together with Decision 3) is the unique minimal decision that does"
+  - concept: "This reconstruction's already-tracked N-1 conflict (the equiv/approx formula-identity contradiction, file 1041)"
+    refinement: "ELEVATED, via this rigorous proof, to the single most consequential open decision in the entire equality/kernel research programme -- resolving it alone breaks every currently identified circular dependency"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the capstone, rigorously proven finding: the unique minimal bootstrap cut for the entire equality/kernel dependency graph is the single node {equiv} -- resolving the equiv/approx definitional entanglement (N-1) is the single most consequential open decision in the entire research programme, formally superseding the informal N-4 master-gate observation in precision."
+anchor_test:
+  anchor: "File 1051's inference and this reconstruction's already-tracked N-4 master-gate and N-1 equiv/approx-conflict findings (files 1041, 1047, 1049, 1051)"
+  supports_dimension: "Confirms, with rigorous exhaustive proof, that the minimal bootstrap cut is the unique single node {equiv}, formally sharpening and superseding the informal N-4 finding"
+  refines_or_contradicts: "confirms file 1051's inference; refines (sharpens/supersedes in precision) file 1047's N-4 finding"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The minimal-cut result and the probe table are directly reproducible by executing file 1050's v2 script."
+undefined_concepts: []
+open_questions:
+  - "Whether the programme subsequently acts on this finding by prioritizing the resolution of 'equiv' (the N-1 conflict and Decision 3) above all other normative decisions."
+tier2_triggered: true
+tier2_reason: "Confirms, with rigorous exhaustive graph-theoretic proof, that the unique minimal bootstrap cut for the entire equality/kernel research programme's dependency structure is the single node {equiv} -- a capstone, singularly actionable finding that formally supersedes in precision the already-tracked informal N-4 master-gate observation. Classified importance critical and confidence high given the rigorous, exhaustive, and directly reproducible nature of this proof."

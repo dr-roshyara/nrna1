@@ -1,0 +1,136 @@
+sequence: 541
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-140653_step-001-operational-independence.md
+title: "LANDMARK: Operational Independence Test Fully Specified — Independence Evidence Vector (Source/Acquisition/Provenance/Method/Temporal/CommonAncestor) Replaces a Scalar Score; 'Independence Must Be Established, Not Assumed'; OperationallyIndependent≠StatisticallyIndependent Sharpens the Evidence-Architecture/Statistical-Inference-Policy Boundary"
+date: "2026-08-27"
+bytes: 8974
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 0540's proposed 'Operational Independence Test' as its concrete Step 1, following an explicit one-step-at-a-time discipline"
+source_role: PRIMARY_RESEARCH
+canonical_source: 541
+importance: critical
+confidence: high
+about: >
+  Opens with an explicit incremental discipline: "we will proceed one step at a time, and I will not jump
+  ahead until each step is mathematically and architecturally defensible," beginning with "Step 1:
+  Operational Independence." Poses the concrete question: "Can KnowledgeOS determine whether two evidence
+  items are independent using computable information?"
+
+  **Delivers the file's foundational distinction**: True Independence (a metaphysical fact KnowledgeOS
+  cannot generally prove) versus Operationally Established Independence (independence relative to an
+  explicit, declared evidence model), formalized as
+  `Ind_ρ(e_i,e_j,G,C)->{Independent,Dependent,Unknown}`. Defines the inspectable evidence-metadata tuple
+  `M(e)=(Source,AcquisitionEvent,Timestamp,Actor,Method,ParentEvidence,Transformation,Location,Content,
+  Context)`, worked through a concrete DB-observation-vs-LLM-summary pair.
+
+  **Delivers a first fully deterministic rule**: if `e_i⤳e_j` in the provenance graph, then
+  `Ind(e_i,e_j)=Dependent`, requiring no LLM judgment at all. **Delivers a common-ancestry finding**: two
+  LLMs both reading the same document, with no direct edge between them, must default to `Unknown`
+  independence rather than an assumed `Independent`, since `CommonAncestor(e_i,e_j)⇒Independent≠Confirmed`
+  unless the policy supplies a justified conditional-independence model. **Delivers an important negative
+  finding**: different sources do NOT automatically mean independent -- two documents both ultimately from
+  Reuters are not proven independent merely because their URLs/records differ -- `DifferentSource⇏
+  Independent`. **Delivers the corresponding positive case**: two genuinely separate sensors with
+  independent acquisition mechanisms, hardware, and provenance CAN be established as
+  `OperationallyIndependent` under a declared policy -- "notice the word operationally."
+
+  **Delivers the file's central representational innovation**: rather than a Boolean or scalar, independence
+  is represented as a vector `I(e_i,e_j)=(i_S,i_A,i_P,i_M,i_T,i_C)` (Source, Acquisition, Provenance,
+  Method, Temporal independence, and Common-ancestor status), each valued in
+  `{Confirmed,Rejected,Unknown}`, explicitly rejecting a collapsed `IndependenceScore=0.87` since a single
+  number "would obscure why the evidence is considered independent" -- delivering "much more auditable"
+  structured output.
+
+  **Formalizes the decision rule**: `Ind_ρ(e_i,e_j,G,C)` returns Dependent if dependency is established,
+  Independent only if ALL required conditions hold (where "required" is explicitly policy-dependent -- a
+  high-risk security decision may require very strong independence, exploratory research weaker), and
+  Unknown otherwise. **Delivers a precisely-stated central epistemic principle**: the three-valued result
+  `𝕀={I,D,U}` is strictly better than a Boolean `{True,False}` because `Unknown≠False` and `Unknown≠True`
+  -- crystallized as "Absence of evidence for independence is not evidence of dependence, but neither is it
+  evidence of independence."
+
+  **Delivers a DDD `IndependenceAssessment` domain object** (EvidenceA, EvidenceB, SourceRelation,
+  AcquisitionRelation, ProvenanceRelation, MethodRelation, CommonAncestor, Result, Policy, Basis,
+  Timestamp), explicitly "a domain object, not merely a database flag," with two formal domain invariants:
+  `Dependent(e_i,e_j)⇒¬Independent(e_i,e_j)` and `Unknown(e_i,e_j)⇒¬ConfirmedIndependent(e_i,e_j)`.
+
+  **Works through six concrete test cases with explicit expected results**: exact duplicate ->
+  Dependent/SameContribution; LLM transformation of a source -> Dependent; two LLMs reading the same
+  document -> Unknown (absent a justified conditional-independence model); two genuinely independent
+  sensors -> Independent under the declared policy; two websites copying the same underlying source ->
+  Dependent/Correlated; missing provenance -> Unknown.
+
+  **Delivers the file's central provisional law**: "Independence must be established, not assumed," with
+  its computational form -- `Independence(e_i,e_j)=Confirmed` only when the declared policy's conditions
+  are actually satisfied, `Unknown` otherwise.
+
+  **Delivers the file's most important statistical nuance**: `OperationallyIndependent⇏
+  StatisticallyIndependent` -- two sensors with genuinely separate acquisition events and hardware may
+  still share the same environmental bias, so operational independence is only "evidence about possible
+  statistical independence," never proof of it; a statistical model must still separately justify its own
+  conditional-independence assumption (`P(E_1,E_2|H)=P(E_1|H)P(E_2|H)`) before Bayesian multiplication is
+  applied -- "exactly why Evidence Architecture and Statistical Inference Policy must remain separate,"
+  sharpening the corpus's Kernel/Policy boundary (0539) with a rigorous statistical justification.
+
+  **Delivers the file's closing conclusion**: operational independence is "computable in a qualified
+  sense" -- KnowledgeOS can deterministically inspect Provenance, Dependency, Common ancestry, Acquisition
+  events, Sources, Methods, and Context to produce Independent/Dependent/Unknown per a declared policy, but
+  "must not claim universal statistical independence merely from metadata."
+
+  **Closes naming "Step 2"**: the Evidence Identity/Equivalence Calculus (largely already delivered at
+  0540, but framed here as requiring testing "with concrete examples rather than defining it abstractly"),
+  noting this is "where deterministic hashing, canonicalization, semantic comparison, provenance, and LLM
+  assistance all meet."
+introduces:
+  - concept: "The Operational Independence Test Ind_ρ(e_i,e_j,G,C)->{Independent,Dependent,Unknown}, formally distinguishing metaphysically-true independence (unprovable) from operationally-established independence (relative to a declared policy)"
+  - concept: "A deterministic dependency rule requiring no LLM judgment: provenance-graph adjacency e_i⤳e_j alone establishes Dependent"
+  - concept: "CommonAncestor(e_i,e_j)⇒Independent≠Confirmed: shared upstream ancestry between two otherwise-unconnected evidence items defaults independence to Unknown, not Confirmed"
+  - concept: "DifferentSource⇏Independent: distinct sources/records/URLs do not by themselves prove independence, since they may share an unrecorded common origin"
+  - concept: "The independence evidence vector I(e_i,e_j)=(Source,Acquisition,Provenance,Method,Temporal independence, Common-ancestor status), replacing a collapsed scalar IndependenceScore with an auditable structured object"
+  - concept: "The three-valued independence principle: Unknown≠False and Unknown≠True — absence of evidence for independence is not evidence of dependence, but neither is it evidence of independence"
+  - concept: "The provisional law 'Independence must be established, not assumed,' with policy-dependent 'required conditions' varying by risk context"
+  - concept: "OperationallyIndependent⇏StatisticallyIndependent — operational independence evidence is not proof of statistical (conditional) independence, since shared unmodeled biases can still correlate operationally-independent observations; a statistical model must separately justify its own independence assumption"
+defines:
+  - concept: "Ind_ρ(e_i,e_j,G,C)"
+    definition: "A policy-relative, evidence-graph-aware, three-valued function returning Dependent (if provenance-graph dependency is established), Independent (if all policy-required independence conditions hold), or Unknown (otherwise)"
+  - concept: "Independence evidence vector I(e_i,e_j)"
+    definition: "(i_S,i_A,i_P,i_M,i_T,i_C) — Source, Acquisition, Provenance, Method, Temporal independence, and Common-ancestor status, each valued Confirmed/Rejected/Unknown — an auditable structured alternative to a scalar independence score"
+  - concept: "IndependenceAssessment (DDD domain object)"
+    definition: "{EvidenceA, EvidenceB, SourceRelation, AcquisitionRelation, ProvenanceRelation, MethodRelation, CommonAncestor, Result, Policy, Basis, Timestamp} — a first-class domain object recording an independence determination and its full justificatory basis"
+refines:
+  - concept: "0540's closing proposal for an Operational Independence Test"
+    refinement: "Fully specified with a concrete decision rule, a structured independence-evidence vector, a DDD domain object, six worked test cases, and a formal provisional law ('Independence must be established, not assumed')"
+  - concept: "0540's UnknownDependency≠Independence principle"
+    refinement: "Given a precise three-valued logical justification (Unknown≠False, Unknown≠True) and worked through concrete common-ancestor and missing-provenance cases"
+  - concept: "0538's Bayesian conditional-independence critique"
+    refinement: "Sharpened via the explicit OperationallyIndependent⇏StatisticallyIndependent distinction: even genuinely separate acquisition mechanisms do not by themselves justify the Bayesian conditional-independence assumption, since shared unmodeled environmental bias can still correlate them"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 2' (testing the Evidence Identity/Equivalence Calculus with concrete examples, including deterministic hashing, canonicalization, semantic comparison, and LLM assistance) is executed as its own distinct file, given 0540 already delivered much of this calculus abstractly"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Operational Independence Test Ind_ρ(e_i,e_j,G,C), the deterministic provenance-dependency rule, CommonAncestor⇒Independent≠Confirmed, and DifferentSource⇏Independent."
+  - "dimension-registry.md: record the independence evidence vector (replacing a scalar independence score), the three-valued Unknown≠False/Unknown≠True principle, and the provisional law 'Independence must be established, not assumed.'"
+  - "dimension-registry.md: record OperationallyIndependent⇏StatisticallyIndependent as a key statistical nuance sharpening the Evidence-Architecture/Statistical-Inference-Policy boundary, and the six worked independence test cases with their expected outcomes."
+anchor_test:
+  anchor: "0540's proposed Operational Independence Test and Identity/Equivalence/Independence/Dependency separation; 0538's Bayesian conditional-independence critique; 0539's Kernel/Policy boundary"
+  supports_dimension: "LANDMARK full specification of the Operational Independence Test proposed at the close of 0540: a policy-relative, three-valued decision function backed by a deterministic provenance rule, an auditable independence-evidence vector, a DDD domain object, six worked test cases, and a formal provisional law distinguishing established from assumed independence. Its statistical closing nuance (OperationallyIndependent⇏StatisticallyIndependent) meaningfully sharpens 0538's earlier conditional-independence critique and 0539's Kernel/Policy boundary with a rigorous justification for why statistical inference assumptions must remain a separate, explicit policy layer"
+  refines_or_contradicts: "directly and fully executes 0540's closing research proposal; sharpens 0538's Bayesian independence critique and 0539's Kernel/Policy separation; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The six worked test cases, each with a concrete provenance structure and an explicit expected three-valued outcome, constitute a directly checkable specification test suite for the Operational Independence Test — the corpus's clearest, most implementation-ready single specification of an independence-determination algorithm to date."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 2' (the Evidence Identity/Equivalence Calculus tested with concrete examples, spanning hashing/canonicalization/semantic-comparison/LLM-assistance) is developed as its own dedicated corpus file, distinct from 0540's earlier abstract treatment"
+  - "Whether the independence evidence vector I(e_i,e_j) is ever formally integrated into the broader Evidence Assessment object EA established across 0533-0540"
+tier2_triggered: true
+tier2_reason: "LANDMARK complete specification of the Operational Independence Test directly proposed at the close of 0540: a policy-relative three-valued decision function grounded in a fully deterministic provenance rule, an auditable independence-evidence vector replacing a collapsed scalar score, a formal DDD domain object with governing invariants, six concrete worked test cases with explicit expected outcomes, and a precisely-stated central epistemic principle (three-valued Unknown≠False≠True). Its closing statistical nuance — that operational independence is not proof of statistical independence, since shared unmodeled bias can still correlate operationally-separate observations — delivers a rigorous, previously-missing justification for why the corpus insists Evidence Architecture and Statistical Inference Policy must remain architecturally separate, directly sharpening two of the arc's earlier findings (0538's Bayesian critique, 0539's Kernel/Policy boundary)."

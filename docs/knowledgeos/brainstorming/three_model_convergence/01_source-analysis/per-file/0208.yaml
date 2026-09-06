@@ -1,0 +1,80 @@
+sequence: 208
+path: docs/knowledgeos/brainstorming/kernel/20260824-032635-causal-inference-what-if-association-versus-intervention.md
+title: "Causal Inference: What If — Association versus Intervention"
+date: "2026-08-24"
+bytes: 20500
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 208
+importance: critical
+confidence: high
+about: >
+  Hernán & Robins' "Causal Inference: What If", mined via Zero Lens plus twelve architectural
+  lenses (Causal Question, Counterfactual, Identification, Assumption, Causal Graph, Confounding,
+  Selection Bias, Measurement Bias, Positivity/Coverage, Consistency, Intervention, Target Trial,
+  Time-Varying Knowledge, Sensitivity/Triangulation, Machine Learning). Central distinction:
+  association (data show a relationship) is never the same epistemic status as causation (evidence
+  supports that intervening on X would change Y). Directly extends and operationalizes 0205's
+  (Freedman) causal-assurance apparatus with an explicit identification/estimation pipeline,
+  counterfactual outcomes, causal graphs, and a target-trial specification schema.
+introduces:
+  - concept: "Observational Knowledge vs. Causal Knowledge as never-equal epistemic statuses"
+  - concept: "CausalQuestion schema (population/intervention/comparator/outcome/time-horizon/estimand)"
+  - concept: "Counterfactual outcomes Y1/Y0 as first-class KnowledgeOS objects, not ordinary observations"
+  - concept: "Identification vs. Estimation distinction: IDENTIFIABILITY -> ESTIMATION -> UNCERTAINTY -> ROBUSTNESS -> EPISTEMIC STATUS pipeline, with ABSTAIN as the not-identified branch"
+  - concept: "Exchangeability / Positivity / Consistency as named identifying-assumption conditions, stored with provenance and status"
+  - concept: "CausalGraph as distinct from a semantic/associative knowledge graph, with explicit edge semantics for confounding, selection bias, measurement bias, effect modification"
+  - concept: "Confounding Lens as a first-class anti-false-inference mechanism (CAUSAL CLAIM REVIEW output template)"
+  - concept: "Selection-Bias Lens: 'why are these observations present in the evidence set?'"
+  - concept: "Measurement-Bias Lens: the observation mechanism itself becomes part of the evidence model"
+  - concept: "Positivity/Coverage as an Evidence Coverage Check (claim scope vs. evidence support population)"
+  - concept: "Consistency Lens: intervention must be well-defined enough that 'X happened' has one meaning (multiple-versions-of-treatment problem)"
+  - concept: "Target Trial / Target Experiment specification schema (eligibility/treatment/comparator/assignment/time-zero/follow-up/outcome/estimand/analysis-plan)"
+  - concept: "Time-varying knowledge: treatment-confounder feedback can bias traditional adjustment even with confounders measured; KnowledgeOS's evolving knowledge lifecycle is inherently longitudinal"
+  - concept: "Sensitivity/Triangulation Lens: multiple methods/assumptions/graphs converging on ROBUST vs. SENSITIVE causal conclusion"
+  - concept: "Prediction != causal inference as a proposed KnowledgeOS architectural invariant"
+  - concept: "Four epistemic result types: Descriptive / Associational / Causal / Counterfactual — must not collapse into one another"
+  - concept: "Causal Reasoning & Assurance Layer primitive list (CausalQuestion, CausalClaim, Intervention, Comparator, Outcome, Population, TimeZero, TimeHorizon, Estimand, Counterfactual, CausalGraph, Assumption, IdentifiabilityAssessment, Confounder, Mediator, Collider, SelectionMechanism, MeasurementMechanism, EffectModifier, SensitivityAnalysis, CausalEstimate, CausalEvidence)"
+  - concept: "Two proposed constitutional principles: no associational->causal promotion without explicit question/intervention/assumptions/identifiability/sensitivity; predictive validity and causal validity must remain distinct"
+defines: []
+refines:
+  - concept: "0205's CAUSAL-INFERENCE-GATE and Claim Maturity Ladder (Observed->Descriptive->Associative->Explanatory->Causal) and NOT_IDENTIFIABLE outcome"
+    refinement: "Operationalizes the same identifiability-gated abstain principle with a concrete IDENTIFIABILITY->ESTIMATION->UNCERTAINTY->ROBUSTNESS pipeline, adds counterfactual outcomes, causal graphs (confounding/selection/measurement bias), and the Target Trial specification schema not present in 0205."
+contradicts: []
+repeats:
+  - concept: "Assumption as a first-class, provenance-tracked object (AssumptionLedger)"
+    canonical_source: 205
+    novelty: medium
+  - concept: "'We can't tell from the data' as a legitimate, non-failure epistemic outcome"
+    canonical_source: 205
+    novelty: low
+bridge_candidates:
+  - "0205's five-rung Claim Maturity Ladder vs. this file's four epistemic result types (Descriptive/Associational/Causal/Counterfactual) — logged as unresolved_equivalence; different granularity, not obviously identical mappings (0205 splits Explanatory from Causal; this file collapses that distinction but adds Counterfactual as a separate, harder tier)."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: new unresolved_equivalence — Claim Maturity Ladder (0205) vs. four-epistemic-type taxonomy (0208), both governing when an inference may be promoted to a stronger claim type."
+anchor_test:
+  anchor: "Statistical/mathematical Kernel-candidate track (0205/0206) and the corpus's technical pivot (0202-0206)"
+  supports_dimension: "Mathematical/statistical model — extends the causal-assurance boundary begun at 0205 with a concrete identification/estimation/sensitivity pipeline and causal-graph machinery"
+  refines_or_contradicts: "refines 0205 (same causal-assurance goal, more operational machinery); does not reference the Kernel/K-1 candidates directly"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Target Trial worked example (mandatory ADR review vs. standard review, 12-month follow-up, average causal risk difference) directly ported into an engineering-governance scenario"
+  - "Confounding worked example (architecture review vs. project quality, confounded by team experience) with explicit ABSTAIN conclusion when exchangeability is NOT ESTABLISHED"
+undefined_concepts:
+  - "Exact persisted schema for CausalGraph edge semantics (confounding/selection/measurement-bias edge types) — only illustrated, not formally specified"
+  - "How the proposed Causal Reasoning & Assurance Layer's twenty-one primitives map onto any existing Kernel candidate's aggregate/value-object structure"
+open_questions:
+  - "Whether the four-epistemic-type taxonomy (Descriptive/Associational/Causal/Counterfactual) is ever formally reconciled with 0205's five-rung Claim Maturity Ladder"
+  - "Whether the proposed 'formal taxonomy of claim types and corresponding inference obligations' (this file's closing line) is ever produced as its own dedicated source"
+tier2_triggered: true
+tier2_reason: "Critical extension of the mathematical/statistical Kernel-candidate track: introduces counterfactual outcomes, causal graphs, identification-vs-estimation pipeline, and a Target Trial specification schema, directly operationalizing 0205's causal-assurance apparatus with concrete architectural primitives and two proposed constitutional invariants."

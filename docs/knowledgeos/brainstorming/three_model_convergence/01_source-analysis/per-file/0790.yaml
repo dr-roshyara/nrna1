@@ -1,0 +1,139 @@
+sequence: 790
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-012222_step_165_aggregate-and-consistency-boundary-derivation.md
+title: "Step 165 -- Aggregate and Consistency-Boundary Derivation (MAJOR SYNTHESIS MILESTONE, delivers 0789's promised register): 'Aggregate = State+Invariants+Transactional Consistency,' the Test Being 'What Must Change Together?' -- Delivers the Final Three-Tier Aggregate Classification (Strong: Evidence/Knowledge/Decision/Authorization; Medium: Determination/Inquiry; Weak: Action/Execution/Observation) -- Delivers a Formal Mathematical Consistency Model c→(I_i)→S_i'→Event_i and the Cross-Aggregate Invariant Test (a True Strong Consistency Invariant vs. Tolerable Eventual Coordination) -- Delivers Process≠Aggregate ('a Long-Running Business Process... Does Not Imply Its Stages Are One Aggregate; the Process Coordinates Them') -- Delivers the Correct Hierarchy BoundedContext⊃Aggregates⊃Entities/ValueObjects -- Opens Step 166, Process Managers, Sagas and Long-Running Consistency, With 'a Process Coordinates Domain Boundaries; It Must Not Become a Substitute for Domain Ownership'"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "pure DDD aggregate-boundary-derivation synthesis; no Gita content in this file"
+source_role: PRIMARY_RESEARCH
+canonical_source: 790
+importance: critical
+confidence: high
+about: >
+  Directly continues 0789, opening "we now move from events to the question of ownership," posing the
+  governing question "which domain boundary is responsible for deciding whether that transition is
+  legal?" -- "this is where we derive aggregates."
+
+  **§165.1 delivers the DDD rule**: "the aggregate is not a convenient collection of related objects. It
+  is a consistency boundary that protects invariants," formalized `Aggregate=State+Invariants+
+  Transactional Consistency`, with the fundamental test "what must change together?"
+
+  **Delivers per-concept aggregate analysis with concrete invariants and ownership boundaries**: Evidence
+  (`E=(id,source,observation,provenance,integrity,status)`, invariants `Source(E)≠∅`, `Provenance(E)≠∅`,
+  `Accepted(E)⇒IntegrityVerified(E)`; ruled a strong aggregate candidate; explicitly does NOT own the
+  Knowledge claims it supports -- "Evidence owns Evidence. Not Knowledge" -- because one Evidence item may
+  support several claims, `E_1→{K_1,K_2,K_3}`, and embedding Knowledge inside Evidence would create
+  unnecessary coupling); Knowledge (`K=(id,claim,status,validity,authority,version)`, invariants
+  `Status(K)`, relationships `supports(E,K)` and `supersedes(K_1,K_2)`; also ruled a strong aggregate
+  candidate, explicitly not owning Evidence).
+
+  **§165.48-165.49 delivers explicit AI-contribution-artifact analysis, directly connecting to the real
+  existing KnowledgeOS system**: `CandidateArtifact⇒OriginKnown`, `Accepted⇒EvaluationRecorded`, with
+  whether this belongs to a distinct "AI Contribution context" or the broader Knowledge context explicitly
+  left open. Delivers a direct reminder that the real existing architecture already has concepts around
+  "agents; sessions; artifacts; hooks; governance; verification; memory; registries" -- "we should
+  therefore not invent a theoretical aggregate and assume it maps directly to the implementation" -- with
+  the explicit return to "the `Current↔Target↔Evidence` discipline" established at 0784.
+
+  **§165.50 delivers a formal mathematical consistency model**: for aggregate `A_i` with state `S_i` and
+  invariant set `I_i(S_i)`, a command `c` produces `S_i'=Transition(S_i,c)` only if `I_i(S_i')=true`, after
+  which `Event_i` may be emitted -- boxed `c→(I_i)→S_i'→Event_i`.
+
+  **§165.51-165.53 delivers the cross-aggregate invariant test**: for a candidate joint invariant
+  `I_AB(A,B)`, ask whether it is a genuinely strong consistency invariant (justifying combining `A` and `B`
+  into one aggregate) or whether eventual coordination is tolerable, worked through two contrasting
+  examples -- a one-directional implication (`AuthorizationGranted⇒DecisionExists`) does NOT require one
+  aggregate (Decision can precede Authorization asynchronously), whereas a hypothetical strict biconditional
+  holding "at every instant" (`AuthorizationGranted⟺DecisionApproved`) might require tighter consistency --
+  but even then, the file cautions to first investigate "whether the invariant belongs to a higher-level
+  process rather than a single aggregate."
+
+  **§165.54-165.55 delivers `Process≠Aggregate`**: "a long-running business process (`Decision→
+  Authorization→Execution`) does NOT imply Decision+Authorization+Execution are one aggregate. The process
+  coordinates them," potentially via a `Saga/ProcessManager` pattern, "but we should only introduce that
+  pattern if needed." Delivers **"the correct hierarchy"**: `BoundedContext⊃Aggregates⊃Entities/
+  ValueObjects`, separately noting "processes coordinate aggregates. Events communicate facts. Commands
+  request actions. Policies constrain transitions."
+
+  **§165.56 delivers "Step 165 result," the file's central deliverable: a final, explicitly provisional
+  three-tier aggregate classification**: **Strong aggregate candidates**: `Evidence, Knowledge, Decision,
+  Authorization`; **Medium candidates**: `Determination, Inquiry`; **Weak/provisional candidates**:
+  `Action, Execution, Observation` -- "not final. It is the result of applying the invariant/consistency
+  test." **This notably reclassifies Decision and Authorization as aggregate candidates at the finer-
+  grained aggregate level, refining (not contradicting) 0787's bounded-context-level analysis, which had
+  folded Decision into an existing Governance bounded context and modeled Authorization as a boundary
+  object between Governance and Operations** -- an aggregate can exist within a bounded context, so
+  Decision-as-aggregate is consistent with Decision-belonging-to-the-Governance-BC, and this reconstruction
+  records the refinement as a legitimate deepening across DDD granularities rather than a conflict.
+
+  **§165.57 delivers "what we have learned," two central architectural principles**: "a domain concept
+  earns an aggregate boundary by possessing invariants that require local consistency -- not simply
+  because it is an important noun" and "a bounded context earns its boundary because its model, language,
+  ownership and invariants differ -- not because we want another service" -- explicitly proposed to
+  "remain central to the architecture."
+
+  **Closes by opening "Step 166 — Process Managers, Sagas and Long-Running Consistency,"** posing "who
+  coordinates the journey between them?" if Evidence/Knowledge/Determination/Governance/Authorization/
+  Operations are separate consistency boundaries, examining whether KnowledgeOS needs
+  `ProcessManager`/`Saga`/`Workflow`/`Case` concepts or whether existing governance mechanisms already
+  provide coordination, delivering the governing principle for that examination: **"a process coordinates
+  domain boundaries; it must not become a substitute for domain ownership"** -- explicitly framed as "the
+  next place where we can test whether the architecture we have derived from Chapters 1-4 and our
+  established KnowledgeOS lenses remains internally coherent." No actual repository implementation or code
+  execution occurs within this file itself; every aggregate classification remains explicitly provisional.
+introduces:
+  - concept: "The DDD aggregate test: Aggregate=State+Invariants+Transactional Consistency; 'what must change together?'"
+  - concept: "'Evidence owns Evidence. Not Knowledge' -- the same evidence supporting multiple claims argues against embedding"
+  - concept: "The AI-contribution-artifact analysis (CandidateArtifact⇒OriginKnown, Accepted⇒EvaluationRecorded), left open between an 'AI Contribution context' and the broader Knowledge context"
+  - concept: "The formal mathematical consistency model: c→(I_i)→S_i'→Event_i"
+  - concept: "The cross-aggregate invariant test: a genuinely strong consistency invariant justifies one aggregate; a weaker implication tolerates eventual coordination"
+  - concept: "Process≠Aggregate: a long-running business process's stages are coordinated by a process, not automatically merged into one aggregate"
+  - concept: "The correct hierarchy: BoundedContext⊃Aggregates⊃Entities/ValueObjects, with Processes/Events/Commands/Policies as separate coordinating mechanisms"
+  - concept: "The final three-tier aggregate classification: Strong (Evidence/Knowledge/Decision/Authorization), Medium (Determination/Inquiry), Weak (Action/Execution/Observation)"
+  - concept: "The two central architectural principles closing Step 165 (aggregate boundaries earned by consistency invariants, not noun-importance; bounded contexts earned by model/language/ownership/invariant differences, not service-count desire)"
+  - concept: "Step 166's opening: Process Managers, Sagas and Long-Running Consistency, with 'a process coordinates domain boundaries; it must not become a substitute for domain ownership'"
+defines:
+  - concept: "The cross-aggregate invariant test"
+    definition: "When a candidate joint invariant I_AB(A,B) is proposed to justify merging two candidate aggregates A and B into one, determine whether it is a genuinely strong consistency invariant that must hold within a single transaction, or whether it can tolerate eventual (asynchronous) coordination -- a one-directional implication typically tolerates separation, while a strict biconditional required to hold at every instant is a stronger signal for merging, though even then the possibility that the invariant actually belongs to a coordinating process (rather than either aggregate) should be investigated first"
+  - concept: "Process≠Aggregate"
+    definition: "A long-running business process that moves through several distinct domain stages (e.g. Decision→Authorization→Execution) does not thereby require those stages to be combined into one transactional aggregate -- the process itself (potentially realized as a Saga or Process Manager pattern) is the mechanism that coordinates the separate aggregates over time, while each aggregate retains its own local consistency boundary; the process pattern should only be introduced when genuinely needed, not by default"
+refines:
+  - concept: "0789's Step 164 event model and its recommendation of Step 165"
+    refinement: "DELIVERED: the actual aggregate-boundary determinations via a rigorous invariant/consistency test, culminating in a three-tier classification (Strong/Medium/Weak) explicitly marked provisional"
+  - concept: "0787's bounded-context-level determination (Decision folded into Governance; Authorization as a boundary object between Governance and Operations)"
+    refinement: "Refined at the finer-grained aggregate level: Decision and Authorization are here classified as Strong aggregate candidates -- consistent with, not contradicting, 0787's BC-level analysis, since an aggregate can exist within a bounded context (Decision-as-aggregate fits inside the Governance BC) and a boundary-object role is compatible with independent aggregate status on either side of the boundary"
+  - concept: "0784's Current↔Target↔Evidence discipline and 0781's real-repository findings"
+    refinement: "Explicitly reinvoked at the AI-contribution-artifact analysis point, directly warning against inventing a theoretical aggregate without first checking whether the existing real KnowledgeOS implementation (agents, sessions, artifacts, hooks, governance, verification, memory, registries) already embodies the proposed boundary"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 166 (Process Managers, Sagas and Long-Running Consistency) and the actual determination of whether KnowledgeOS needs a dedicated process/saga/workflow concept, or whether existing governance mechanisms already suffice."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the final three-tier aggregate classification (Strong: Evidence/Knowledge/Decision/Authorization; Medium: Determination/Inquiry; Weak: Action/Execution/Observation) as the culminating aggregate-level DDD determination of this reconstructed arc -- a primary reference finding for the eventual §29-gated canonical synthesis."
+  - "dimension-registry.md: record the cross-aggregate invariant test and Process≠Aggregate as directly reusable, general-purpose DDD aggregate-boundary-derivation discipline."
+  - "dimension-registry.md: record the two closing architectural principles (aggregate boundaries earned by consistency invariants, not noun-importance; bounded contexts earned by model/language/ownership/invariant differences, not service-count desire) as a compact restatement of this arc's entire anti-over-modeling discipline."
+anchor_test:
+  anchor: "0789's Step 164 event model and its recommendation of Step 165; 0787's bounded-context-level Decision/Authorization determination; 0784's Current↔Target↔Evidence discipline"
+  supports_dimension: "Delivers the culminating aggregate-level DDD determination of this reconstructed arc, via a rigorous invariant/consistency test yielding a three-tier classification (Strong: Evidence/Knowledge/Decision/Authorization; Medium: Determination/Inquiry; Weak: Action/Execution/Observation), explicitly provisional. Delivers a formal mathematical consistency model, a precise cross-aggregate invariant test distinguishing genuine strong consistency from tolerable eventual coordination, and Process≠Aggregate with the correct BoundedContext⊃Aggregates⊃Entities/ValueObjects hierarchy. Refines (does not contradict) 0787's bounded-context-level Decision/Authorization determination at the finer aggregate granularity. Explicitly reinvokes the Current↔Target↔Evidence discipline to prevent theoretical aggregates from being assumed to map directly onto the real implementation. Closes with two compact, general architectural principles and opens Step 166's process/saga question with an explicit domain-ownership-preserving governing rule"
+  refines_or_contradicts: "directly delivers and extends 0789's recommended Step 165; refines (at a finer DDD granularity, not contradicting) 0787's bounded-context-level determination; directly reinvokes 0784's evidentiary discipline; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§165.56's explicit three-tier classification (Strong: Evidence, Knowledge, Decision, Authorization; Medium: Determination, Inquiry; Weak: Action, Execution, Observation), boxed and explicitly marked 'not final,' is directly quotable, decisive evidence of the file's culminating aggregate-level determination."
+  - "§165.57's explicit two-principle closing statement ('a domain concept earns an aggregate boundary by possessing invariants that require local consistency -- not simply because it is an important noun'; 'a bounded context earns its boundary because its model, language, ownership and invariants differ -- not because we want another service') is directly quotable evidence of the arc's compact anti-over-modeling discipline restatement."
+  - "§165.58's explicit governing principle for Step 166, 'a process coordinates domain boundaries; it must not become a substitute for domain ownership,' is directly quotable evidence of the file's disciplined framing for the next step."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 166 (Process Managers, Sagas and Long-Running Consistency) was ever actually delivered, and whether KnowledgeOS was determined to need a dedicated process/saga concept or found existing governance mechanisms sufficient."
+  - "Whether the AI-contribution-artifact boundary question (a distinct 'AI Contribution context' vs. the broader Knowledge context) left explicitly open here is ever resolved."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the culminating aggregate-level DDD determination of this reconstructed arc via a rigorous invariant/consistency test, yielding a three-tier classification (Strong: Evidence/Knowledge/Decision/Authorization; Medium: Determination/Inquiry; Weak: Action/Execution/Observation). Delivers a formal mathematical consistency model, the cross-aggregate invariant test, and Process≠Aggregate with the correct BoundedContext⊃Aggregates⊃Entities/ValueObjects hierarchy. Refines 0787's bounded-context-level analysis at a finer granularity without contradiction. Closes with two compact architectural principles restating the arc's entire anti-over-modeling discipline, and opens Step 166's process/saga question with an explicit domain-ownership-preserving rule."

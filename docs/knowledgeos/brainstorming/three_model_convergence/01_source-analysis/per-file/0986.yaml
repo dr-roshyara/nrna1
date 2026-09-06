@@ -1,0 +1,99 @@
+sequence: 986
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/D285-2-KNOWER-STATE-BOUNDARY.md
+title: "D285-2 -- The Knower/State Boundary: The Actual D285-2 Artifact, Confirming Knower Not-Equal-K and Knower-Not-In-K as ALREADY-RATIFIED CORPUS (Not a Hypothesis), Directly Resolving Two Long-Tracked Bridge Candidates ('31.19' and 'FA-4'/'GN-31'), and Delivering the Programme's Own Explicit Identification of Its ONE Genuine Philosophical Contribution (Which Predates the Programme)"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the D285-2 artifact proper, applying the frozen seven-stage/seven-section D285-x template"
+source_role: PRIMARY_RESEARCH
+canonical_source: 986
+importance: critical
+confidence: high
+about: >
+  The actual D285-2 artifact (previously known only by cross-reference from files 0973-0985), formatted per
+  the HPA-mandated seven-section D285-x template. Tests `Knower≠K` and `Knower∉K`.
+
+  **§2 DELIVERS A STATUS UPGRADE THIS RECONSTRUCTION HAD NOT ANTICIPATED**: this is not merely a tested
+  hypothesis but **ALREADY-RATIFIED CORPUS** -- `FA-4-concept-terminology-reconciliation.md` (RATIFIED,
+  **"GN-31"**, a NEW corpus reference), row `Knower`, records it as `H-KOS-Agent-001` / **Kṣetrajña** --
+  "protected first-class agent," graded **`[E]` CONVERGENT** ("the only concept with the same Sanskrit
+  lineage on both sides"), and the ratification record ITSELF already names the Gītā lineage -- **so
+  `kṣetra-jña` did not enter through this D285-x research programme; it was already there**, predating it.
+
+  **§3 delivers the formal treatment**: `Knower` persists across `K_t→K_{t+1}` (✅, via `I-1` goal-ownership);
+  `K` definable without `Knower` (✅); `Knower` definable without `K` (🟡 partially, relationally defined as
+  goal-owner); `Knower∈K` is **REFUTED** (🔴, would make the goal's owner a member of the goal's subject,
+  violating the standing corpus invariant "Zero/Lord/Sārathi ∉ State Mutation Boundary").
+
+  **§4 DIRECTLY RESOLVES THE LONG-TRACKED BRIDGE CANDIDATE "31.19"**: the Gītā source (13.3) identifies
+  Kṛṣṇa as knower "in all fields" -- a UNIVERSAL knower level distinct from the individual `kṣetra-jña`.
+  KnowledgeOS-side check: the individual level is needed and already ratified; **the universal level is
+  explicitly REJECTED (`RX`) because the corpus's own ratified information-theoretic impossibility theorem,
+  cited here in full for the first time as `31.19`: "No algorithm can recover information that the
+  observation function destroys," DIRECTLY CONTRADICTS a total-knowledge oracle.** Declared "the most
+  valuable result of the Gītā lens in this step, and it is a NEGATIVE one... the mapping must stop at one
+  level, and the reason is mathematical, not doctrinal."
+
+  **§ Template §6 (Independence) DELIVERS THE FILE'S OWN EXPLICIT SELF-CLASSIFICATION AS THE PROGRAMME'S ONE
+  GENUINE PHILOSOPHICAL CONTRIBUTION**: "NOT independent -- FA-4 records `Kṣetrajña` with the same Sanskrit
+  lineage on both sides, grade `[E]`. The concept entered via the lens. **This is the one genuine
+  philosophical contribution, and it predates this programme**" -- **DIRECTLY, EXPLICITLY CONFIRMING file
+  0980's capstone finding** ("the entire Step-25X track's only genuinely non-independent contribution
+  predates the research programme itself").
+
+  **§7 (seven-way classification)**: mathematical `R5`; architectural: already ratified; DDD: external
+  actor, not an aggregate member; corroboration: explicitly marked ✗ ("contribution, not corroboration");
+  sub-result `H-K03b` (universal knower) = `RX`, contradicts `31.19`.
+
+  **§5 delivers a disciplined negative-result closure**: the Knower/state boundary "does not decide between
+  `K_t` and `(𝒜,ℛ)` -- both exclude the Knower... eliminates nothing. Recorded so it is not later cited as
+  evidence for a state choice it cannot support" -- an explicit anti-overclaiming guard.
+introduces:
+  - concept: "GN-31 -- the ratification identifier for FA-4-concept-terminology-reconciliation.md's row on `Knower`/Kṣetrajña, graded [E] CONVERGENT"
+  - concept: "The full statement of corpus reference '31.19': the information-theoretic impossibility theorem, 'No algorithm can recover information that the observation function destroys,' used here to refute a universal/omniscient knower reading of Krishna"
+  - concept: "The explicit, file-native distinction between corroboration and (non-independent) contribution: this file is classified as the latter, not the former, and self-identifies as the programme's one genuine philosophical contribution"
+  - concept: "The standing corpus invariant 'Zero/Lord/Sārathi ∉ State Mutation Boundary,' used to refute Knower∈K"
+defines:
+  - term: "H-K03b"
+    definition: "The sub-result testing whether a universal/omniscient knower level (per Gita 13.3's Krishna-as-knower-in-all-fields) has a KnowledgeOS image; verdict RX, refuted by corpus reference 31.19"
+refines:
+  - concept: "This reconstruction's long-tracked bridge candidate '31.19' (an information-theoretic impossibility theorem, previously known only by name)"
+    refinement: "DIRECTLY RESOLVED: full statement now recorded -- 'No algorithm can recover information that the observation function destroys' -- and its concrete application (refuting a universal knower) documented"
+  - concept: "This reconstruction's long-tracked bridge candidates 'FA-4' and 'GN-75'-adjacent ratification references"
+    refinement: "DIRECTLY RESOLVED: FA-4-concept-terminology-reconciliation.md's ratified row on Knower/Kṣetrajña (GN-31, grade [E]) is now fully quoted and its consequences drawn out"
+  - concept: "File 0980's capstone finding that the Step-25X track's only genuinely non-independent contribution predates the research programme"
+    refinement: "DIRECTLY, EXPLICITLY CONFIRMED by this file's own self-classification as exactly that one contribution (Kṣetrajña/Knower), via a dedicated 'Independence' template section"
+  - concept: "This reconstruction's already-tracked Knower/state-boundary question (raised abstractly in earlier hypothesis-queue references)"
+    refinement: "FORMALLY RESOLVED as ratified corpus, not merely a tested hypothesis, with a disciplined non-overclaiming closure (does not decide K_t vs (A,R))"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "GN-31 and FA-4-concept-terminology-reconciliation.md -- watch for whether this reconstruction directly encounters the full ratification document elsewhere."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the full resolution of bridge candidates '31.19' (information-theoretic impossibility theorem) and 'FA-4'/'GN-31' (ratified Knower/Kṣetrajña terminology entry)."
+  - "dimension-registry.md: record this file's explicit self-classification as the Step-25X programme's ONE genuine, non-independent philosophical contribution (Kṣetrajña/Knower), predating the programme -- directly confirming file 0980's capstone finding."
+  - "dimension-registry.md: record the disciplined negative-result closure: the Knower/state boundary does not decide between K_t and (A,R); both models exclude the Knower equally."
+anchor_test:
+  anchor: "File 0980's capstone finding on the programme's one non-independent contribution; this reconstruction's long-tracked '31.19' and 'FA-4'/'GN-31' bridge candidates"
+  supports_dimension: "Directly resolves both bridge candidates and directly confirms file 0980's capstone finding via the file's own explicit self-classification"
+  refines_or_contradicts: "confirms (resolves) both bridge candidates; confirms file 0980's finding"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The full text of corpus reference 31.19 ('No algorithm can recover information that the observation function destroys') is now directly quotable and checkable against wherever it is later encountered in this reconstruction's own earlier or later per-file records."
+  - "The FA-4/GN-31 ratification quote is directly checkable against the FA-4-concept-terminology-reconciliation.md document itself, if/when this reconstruction encounters it directly."
+undefined_concepts: []
+open_questions:
+  - "Whether FA-4-concept-terminology-reconciliation.md is directly encountered elsewhere in this reconstruction's sequential pass, given its ratified status suggests it originates earlier in the corpus."
+  - "Whether corpus reference 31.19's original source document (presumably an earlier, lower-numbered step) is directly encountered."
+tier2_triggered: true
+tier2_reason: "Directly resolves two long-tracked bridge candidates ('31.19', 'FA-4'/'GN-31') with full quoted content, and delivers the programme's own explicit self-identification of its one genuine non-independent philosophical contribution, directly confirming file 0980's capstone finding. Classified importance critical and confidence high given the direct, quotable, cross-checkable resolution of prior open questions."

@@ -1,0 +1,54 @@
+sequence: M0204
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-092004_response-correct-procedurally.md
+title: "Restates the established KR-ZERO≠KR-REP-DATASET distinction and Q-independence discipline; one minor new point (synthetic benchmark = validation tool, not research evidence)"
+date: "20260903-092004"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0204
+importance: low
+confidence: high
+about: >
+  Substantially restates content already established at M0198/M0201/M0203 (KR-ZERO empirical cases
+  are not automatically the R5..R1 dataset the new representation-reduction protocol needs; Q must
+  be established independently of R_n; N_viol=0⟺Ĥ(Q|R)=0 as a finite-support equivalence, reported
+  alongside rather than instead of each other). One genuinely additional point: a synthetic
+  benchmark is useful as a later validation test of the implementation, but must not itself serve as
+  evidence for the research claim.
+introduces:
+  - "The validation-vs-evidence distinction for synthetic benchmarks: 'the synthetic benchmark would be useful later as a validation test of the implementation, but it should not be the evidence for the research claim' — a minor but genuine methodological addition not stated in quite this form at M0198-M0203"
+defines: []
+refines:
+  - "M0198/M0201's KR-ZERO-vs-KR-REP-DATASET non-identity and Q-independence discipline, restated with the same k=1/k=2/k=3/irreducible statistics already on record"
+contradicts: []
+repeats:
+  - "The already-recorded 89.7%/1.8%/0.2%/8.24% KR-ZERO-ORDER statistics (M0198)"
+  - "The Q-must-not-be-derived-from-R_n discipline (M0201)"
+  - "The N_viol=0⟺Ĥ(Q|R)=0 finite-support equivalence, reported separately as structural witness vs. information-theoretic summary (M0198/M0201)"
+bridge_candidates: []
+mathematical_content: >
+  No new mathematical content beyond what M0198/M0201/M0203 already established.
+gita_content: null
+kernel_content: >
+  A restatement/consolidation document with one minor addition (synthetic-benchmark-as-validation-
+  not-evidence), continuing the audit-before-implement sequencing already established.
+registry_updates: []
+anchor_test:
+  anchor: false
+  supports_dimension: null
+  refines_or_contradicts: "refines (restates M0198/M0201/M0203)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"The synthetic benchmark would be useful later as a validation test of the implementation, but it should not be the evidence for the research claim.\""
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: null

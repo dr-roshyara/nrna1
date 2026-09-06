@@ -1,0 +1,48 @@
+sequence: 63
+path: docs/knowledgeos/brainstorming/20260820-115444-poa-vs-ddd-decision-hierarchy.md
+title: POA vs DDD Decision Hierarchy for KnowledgeOS
+date: 2026-08-20
+bytes: 14063
+
+model:
+  primary: c1
+  secondary: [ddd, governance]
+
+source_role: IMPLEMENTATION
+canonical_source: null
+
+importance: medium
+confidence: high
+
+about: >
+  Positions Pattern-Oriented Architecture (POA) beneath DDD in a decision hierarchy and catalogues
+  patterns (Hexagonal/Event-Driven/CQRS/Plugin) for KnowledgeOS. Introduces a "Modular KnowledgeOS
+  Kernel" - a THIRD distinct sense of "Kernel" in the corpus (a Linux-kernel-inspired code module,
+  not the portability-kernel or an epistemic Kernel).
+
+introduces:
+  - modular_monolith_kernel   # a literal code module, Linux-kernel-inspired - NOT the portability kernel, NOT an epistemic Kernel
+  - poa_beneath_ddd_decision_hierarchy
+
+defines: []
+refines: []
+contradicts: []
+repeats: []
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true   # flagged for the term-collision tracking, NOT because it is epistemic
+
+key_evidence:
+  - "'Modular KnowledgeOS Kernel ... this is much closer to the Linux kernel philosophy we discussed' - a code module, not a portability-test object or an epistemic construct"
+
+undefined_concepts: [knowledge]
+open_questions: []
+
+tier2_triggered: true
+tier2_reason: >
+  Introduces a THIRD distinct sense of "Kernel" in the corpus (a literal code-organization module,
+  Linux-kernel-inspired), alongside the root-level portability kernel and any future epistemic
+  Kernel. Per MD-006's term-collision rule, none of the three senses is assumed equivalent.

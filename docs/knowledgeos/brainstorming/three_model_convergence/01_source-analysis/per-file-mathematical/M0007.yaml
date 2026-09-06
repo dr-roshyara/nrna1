@@ -1,0 +1,91 @@
+sequence: M0007
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-195500_distinguish-genuinely-missing-from-merely-not-yet-formalized.md
+title: "Distinguish Genuinely Missing From Merely Not Yet Formalized -- a Seven-Gap Status Audit of M0005/M0006's K_t Theory, Adding the Nine-Component System State Tuple and the Five-Component Epistemic Distance Decomposition d_E"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: b
+  secondary: c1
+  secondary_note: "third same-day consolidation in the M0005/M0006/M0007 triad (3 minutes after M0006), mostly restating the same K_t/I_t/Delta_t apparatus as a seven-gap status audit rather than independently deriving new theory; two genuinely new concrete elements: a nine-component System State tuple and a five-component epistemic-distance decomposition d_E"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0007
+importance: medium
+confidence: high
+about: >
+  A status-audit document (3 minutes after M0006), explicitly framed as distinguishing "genuinely
+  missing" concepts from concepts that exist but are "merely not yet formalized." Restates the same
+  Observation->K_t->IdealState->Gap->Zero->Lord->Proposal->Sarathi->Decision->Action->new-Observation
+  loop as M0005/M0006, and repeats the Knower-owns-frame / Proposal!=Decision / Extraction!=
+  Determination / Ownership+Non-collapse invariants without new argument.
+
+  **GENUINELY NEW #1 -- SYSTEM STATE VS KNOWLEDGE STATE**: the corpus (cited, not this document's
+  own invention) explicitly separates a larger System State from the narrower Knowledge State,
+  giving a nine-component tuple: (K_t, U_t, X_t, I_t, Q_t, C_t, N_t, P_t, G_t) -- Knowledge State,
+  and eight further unnamed-in-this-document components (U/X/I/Q/C/N/P/G), of which I_t is later
+  specified as itself decomposable: I_t=(I_t^K, I_t^U, I_t^D) with "an explicit revision function"
+  (not given in full here). This is the first appearance in this pass of a KnowledgeOS-level state
+  tuple with MORE than the seven components M0001 used, and explicitly distinguishes System State
+  (the whole tuple) from Knowledge State (just K_t) -- a non-collapse the earlier M0001-M0006
+  documents in this pass did not make explicit.
+
+  **GENUINELY NEW #2 -- FIVE-COMPONENT EPISTEMIC DISTANCE**: d_E(K_t, I_t^K) is explicitly NOT a
+  single scalar but a vector: d_E = (d_Dim, d_Value, d_Epistemic, d_Relationship, d_Coherence) --
+  the first concrete proposed decomposition of the Delta_t=D(K_t,I_t) "distance" function that
+  M0005/M0006 left as an open five-qualitative-category list (missing/incorrect/uncertain/
+  contradictory/obsolete); this document's five components are DIFFERENT axes (dimension-coverage,
+  value-accuracy, epistemic-confidence, relational-structure, internal-coherence) rather than the
+  earlier failure-mode categories -- an unresolved_equivalence-type relationship between the two
+  five-part decompositions that this pass should track without merging.
+
+  **RESTATES, WITH A CLEAN MATURITY TABLE**: a green/yellow/red status snapshot across sixteen
+  areas (Observation->knowledge concept and Ideal State: green/strong; K_t atomicity, probability
+  semantics, truth/evidence/confidence distinction, D(K_t,I_t) mathematical completeness: yellow/
+  major-unresolved; Zero universality, 8-primitive kernel, six-tuple, Knowledge Space as fundamental
+  space, Gita-cong-Mathematics-cong-EKS: red/not-established) -- explicitly: "we are no longer
+  missing a bunch of concepts. We are missing the formal glue that proves whether the concepts
+  actually form one coherent theory," and explicitly declines to freeze the Kernel, six-tuple, or
+  Knowledge Space.
+
+  **RESTATES THE THREE-MODEL CONVERGENCE QUESTION** as G cong M cong EKS, explicitly "not
+  established," with the same "correspondence is not equivalence... convergence of hypotheses is
+  not validation" warning already independently delivered by M0004 -- a third, independent
+  restatement (after M0004) of this reconstruction's own founding discipline from within the KR-SIM
+  lane, this time attached to a formal maturity table rather than a methodology essay.
+introduces:
+  - concept: "The nine-component System State tuple (K_t,U_t,X_t,I_t,Q_t,C_t,N_t,P_t,G_t), explicitly distinguished from the narrower Knowledge State K_t alone -- not seen in this pass's earlier files (M0001-M0006)"
+  - concept: "I_t's own internal decomposition I_t=(I_t^K,I_t^U,I_t^D) with an (unspecified-here) explicit revision function"
+  - concept: "The five-component epistemic distance vector d_E=(d_Dim,d_Value,d_Epistemic,d_Relationship,d_Coherence), a different five-way decomposition of Delta_t than M0005/M0006's missing/incorrect/uncertain/contradictory/obsolete categories"
+defines: []
+refines:
+  - concept: "M0005/M0006's Delta_t=D(K_t,I_t) discrepancy function, by proposing a concrete vector-valued form (d_E) -- though this is a DIFFERENT five-way decomposition than M0005/M0006's own, not a formalization of the same one; flagged as unresolved_equivalence per M0004's taxonomy rather than assumed identical"
+contradicts: []
+repeats:
+  - concept: "The bulk of M0005/M0006's K_t/I_t/Delta_t/Zero/Lord/Sarathi loop, the Knower-owns-frame and Extraction!=Determination invariants, and the Ownership+Non-collapse pairing, restated here as a status audit without new argument for most of the document"
+  - concept: "The three-model convergence question (G cong M cong EKS, not established, correspondence!=equivalence) already independently delivered by M0004 -- a third restatement within this pass of this reconstruction's own founding anti-resemblance discipline"
+bridge_candidates:
+  - "A third independent restatement (after M0004 and implicitly M0005/M0006) of the 'correspondence is not equivalence / convergence of hypotheses is not validation' principle, now attached to a formal traffic-light maturity table across sixteen named areas -- useful as calibration evidence for how consistently the KR-SIM lane holds this discipline across many independent turns."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0007 as a seven-gap status audit of the M0005/M0006 K_t theory, adding a nine-component System State tuple (K_t,U_t,X_t,I_t,Q_t,C_t,N_t,P_t,G_t) and a five-component epistemic distance vector d_E=(d_Dim,d_Value,d_Epistemic,d_Relationship,d_Coherence) -- the latter flagged as an unresolved_equivalence against M0005/M0006's own five-category Delta_t breakdown, not assumed identical."
+anchor_test:
+  anchor: "This reconstruction's own founding 'correspondence != equivalence, no circular validation' discipline (also independently delivered by M0004)"
+  supports_dimension: "A third independent within-pass restatement of the same discipline, now attached to a formal maturity table"
+  refines_or_contradicts: "refines (M0005/M0006, via the maturity table and the new System State / distance-vector concepts)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The nine-component System State tuple (K_t,U_t,X_t,I_t,Q_t,C_t,N_t,P_t,G_t), cited as already present in the corpus but not previously surfaced in this pass's M0001-M0006 -- a concrete, larger state structure than M0001's own seven-component tuple."
+  - "The five-component d_E=(d_Dim,d_Value,d_Epistemic,d_Relationship,d_Coherence) as the first concrete vector-valued proposal for Delta_t=D(K_t,I_t), distinct from M0005/M0006's own five-category (missing/incorrect/uncertain/contradictory/obsolete) breakdown -- two independently-proposed five-part decompositions of the same open question, not yet reconciled."
+undefined_concepts:
+  - "The full expansion of U_t,X_t,Q_t,C_t,N_t,P_t,G_t in the nine-component System State tuple -- named but not defined in this document"
+  - "The explicit revision function for I_t=(I_t^K,I_t^U,I_t^D), referenced but not given"
+open_questions:
+  - "Whether the nine-component System State tuple and its I_t sub-decomposition are defined more fully in a source document this pass has not yet reached, and whether that source reconciles the two competing five-part Delta_t/d_E decompositions."
+tier2_triggered: true
+tier2_reason: "Introduces two genuinely new concrete structures (the nine-component System State tuple and the five-component epistemic-distance vector d_E) not present in this pass's earlier M0001-M0006 files, and delivers a third independent within-pass restatement of the three-model non-equivalence discipline attached to a formal maturity table -- warrants a tier-2 record despite being substantially a status-audit repeat of M0005/M0006."

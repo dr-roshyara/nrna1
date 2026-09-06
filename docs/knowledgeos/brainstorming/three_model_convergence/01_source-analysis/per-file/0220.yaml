@@ -1,0 +1,44 @@
+sequence: 220
+path: docs/knowledgeos/brainstorming/kernel/20260824-113404-knowledge-kernel-architecture-integrative-summary-seven-works-duplicate.md
+title: "Knowledge Kernel Architecture — Integrative Summary (duplicate of 0219)"
+date: "2026-08-24"
+bytes: 15200
+model:
+  primary: g1
+  secondary: c1
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 219
+importance: low
+confidence: high
+about: >
+  Byte-identical duplicate of 0219 (verified via diff), sixth instance of the corpus's recurring
+  self-labeled "-duplicate" capture pattern.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Entire content of 0219"
+    canonical_source: 219
+    novelty: none
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0219"
+  supports_dimension: "none (duplicate)"
+  refines_or_contradicts: "identical to 0219"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "diff against 0219's source file returned no output -- byte-identical"
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Verified byte-identical duplicate of 0219; no independent analytical content."

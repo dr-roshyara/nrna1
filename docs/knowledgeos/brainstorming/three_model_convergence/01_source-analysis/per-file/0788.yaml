@@ -1,0 +1,150 @@
+sequence: 788
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-011730_step_163_context-map-and-translation-boundaries.md
+title: "Step 163 -- Context Map and Translation Boundaries (MAJOR SYNTHESIS MILESTONE, delivers 0787's promised register): Delivers the Full KnowledgeOS Context Map With Deliberately Distinct Relationship Verbs (Observes/Supports/Informs/Authorizes -- 'They Prevent Us From Pretending That Every Arrow Means the Same Thing'), 'The AI Must Not Self-Promote' (Candidate→Evaluation→GovernedStatus), the Real-Repository-Grounded Hooks Model (Policy→Rule→Hook→EnforcementEvidence, 'a Hook Is Not Itself Governance. It Is an Enforcement Mechanism'), and THREE INTERACTING CYCLES (Epistemic↔Governance↔Operational, 'KnowledgeOS Is Therefore Not Merely One Loop... Nested Governance/Epistemic Loops') -- Delivers Ten Numbered Architectural Propositions P1-P10 Consolidating the Whole Arc -- Opens Step 164, Domain Events and State Transitions, Explicitly Warning 'Events Are Not Commands and Not Entities'"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "pure DDD context-map/translation-boundary synthesis; no direct Gita content in this file, though it operationalizes prior Gita-derived findings (candidate-status non-promotion, historical continuity) into consolidated architectural propositions"
+source_role: PRIMARY_RESEARCH
+canonical_source: 788
+importance: critical
+confidence: high
+about: >
+  Directly continues 0787, opening "we now have the semantic contracts and the first invariant-derived
+  boundaries. The next question is: how can these contexts collaborate without collapsing their distinct
+  meanings into one universal model? This is where the architecture becomes genuinely DDD."
+
+  **§163.1 delivers the fundamental principle**: `Context_A≠Context_B` does not preclude communication --
+  it requires an explicit translation contract, `Model_A→[Translation]→Model_B`, never `Model_A=Model_B`.
+
+  **§163.2 delivers the full KnowledgeOS context map**, refining 0787's provisional diagram with
+  **deliberately distinct relationship verbs**: `GOVERNANCE(Policy/Authority/Decision)→[Authorization]→
+  OPERATIONS(Action/Execution)→[observes]→EVIDENCE(Observation/Source/Provenance/Integrity)→[supports]→
+  KNOWLEDGE(Claim/Validity/Status)→[informs]→DETERMINATION(Method/Context/Rationale)→[informs]→
+  GOVERNANCE`, with the explicit note: "notice the deliberate use of different relationship verbs...
+  observes, supports, informs, authorizes. Those verbs matter. They prevent us from pretending that every
+  arrow means the same thing."
+
+  Delivers the Observation→Evidence translation boundary as genuinely contextual (the same Observation --
+  e.g. "Nexus responds on port 8081" -- can become Evidence for multiple distinct Inquiries without its
+  historical meaning being mutated), and continues through the remaining named translation boundaries
+  (Evidence→Knowledge, "probably the most important translation boundary," and onward through
+  Knowledge→Determination, Determination→Governance, Governance→Authorization, Authorization→Operations,
+  Execution→Observation), each treated with the established discipline of contextual, non-collapsing
+  translation rather than identity.
+
+  **§163.35 delivers "the AI must not self-promote,"** a precise, directly applicable AI-governance
+  principle: "a candidate artifact should not be able to say 'I am now authoritative knowledge.' Instead:
+  `Candidate→Evaluation→GovernedStatus`" -- "this principle is central to trustworthy AI engineering."
+
+  **§163.36-163.38 delivers "the role of hooks," directly grounding the architecture in real repository
+  mechanisms**: "your existing hooks and governance mechanisms can be understood through this model. A
+  hook is not itself governance. It is an enforcement mechanism implementing a governance invariant":
+  `Policy→Rule→Hook→EnforcementEvidence`, worked through a concrete example (policy: "certain files may
+  not be modified directly" → rule `R_1` → hook: pre-operation validation → result `PASS/FAIL` →
+  verification-record evidence), explicitly connecting "the conceptual architecture to the actual
+  KnowledgeOS implementation." Delivers the resulting **"architecture governance loop"**: `Policy→Rule→
+  Enforcement→Evidence→Determination→Decision→Policy evolution` -- "KnowledgeOS is therefore not merely
+  one loop. It potentially contains nested governance/epistemic loops."
+
+  **§163.39-163.40 delivers "the deeper architecture," identifying three interacting cycles**: the
+  **Epistemic cycle** (`Observation→Evidence→Knowledge→Determination`), the **Governance cycle**
+  (`Determination→Decision→Authorization`), and the **Operational cycle** (`Action→Execution→
+  Observation`), together `Epistemic↔Governance↔Operational` -- "this is the architectural synthesis."
+  Delivers the file's single-paragraph consolidated architectural definition: "a governed feedback system
+  in which observations become contextualized evidence, evidence informs knowledge, knowledge supports
+  determinations, determinations inform authoritative decisions, decisions constrain authorized action,
+  execution produces new observations, and the resulting lineage remains reconstructable across time" --
+  "currently our strongest architectural definition."
+
+  **§163.41 delivers the explicit labeling discipline**: this remains `TARGET ARCHITECTURAL MODEL`, not
+  `CURRENT IMPLEMENTATION CLAIM` -- "the evidence mapping from Step 160 remains authoritative for
+  determining how much of this exists today," directly maintaining the CURRENT/TARGET/DELTA discipline
+  established at 0783.
+
+  **§163.42 delivers the "Context Map — provisional final"** diagram, identical in structure to 0787's
+  §162.48 diagram but with the relationship verbs made fully explicit throughout, surrounded by
+  `Identity+Provenance+Lineage+Context+Authority+Time`.
+
+  **§163.43 delivers ten numbered architectural propositions, `P1` through `P10`, consolidating the whole
+  reconstructed arc's key conclusions**: `P1` bounded contexts own meaning, not merely tables; `P2`
+  integration must use explicit semantic contracts; `P3` Evidence/Knowledge/Determination/Decision must
+  not be collapsed merely because they form a process; `P4` Governance owns authoritative decisions; `P5`
+  Authorization is the operational permission boundary; `P6` Execution generates new observations; `P7`
+  **agent output is candidate material until governed**; `P8` historical continuity belongs to the
+  system's lineage, not solely to agent memory; `P9` Unknown and inconclusive states must be preserved;
+  `P10` deterministic assurance should remain deterministic wherever the underlying rule is deterministic
+  -- a genuinely valuable, compact consolidated summary functioning as the closest thing to a finished
+  "constitution" this arc has produced.
+
+  **Closes by opening "Step 164 — Domain Events and State Transitions,"** posing "what actually happens in
+  the domain, and what state transitions are legitimate?", naming eight candidate domain events
+  (`EvidenceCaptured, KnowledgeProposed, KnowledgeConfirmed, DeterminationEstablished, DecisionMade,
+  AuthorizationGranted, ActionExecuted, ExecutionObserved`), with the explicit governing caution: "we must
+  be careful: events are not commands and not entities. Step 164 should therefore derive the event model
+  from the invariants rather than simply inventing an event for every verb" -- explicitly framed as "the
+  bridge from our DDD theory into the eventual event/command/API architecture, while still keeping
+  implementation decisions subordinate to the domain model." No actual repository implementation or code
+  execution occurs within this file itself; every architectural statement remains explicitly labeled
+  TARGET, consistent with the file's own governing discipline.
+introduces:
+  - concept: "The fundamental translation principle: Context_A≠Context_B does not preclude communication, but requires an explicit translation contract, never identity"
+  - concept: "The full KnowledgeOS context map with deliberately distinct relationship verbs (observes/supports/informs/authorizes)"
+  - concept: "'The AI must not self-promote': Candidate→Evaluation→GovernedStatus"
+  - concept: "'The role of hooks': Policy→Rule→Hook→EnforcementEvidence, directly grounding the architecture in real repository mechanisms"
+  - concept: "The 'architecture governance loop': Policy→Rule→Enforcement→Evidence→Determination→Decision→Policy evolution"
+  - concept: "The three interacting cycles: Epistemic↔Governance↔Operational"
+  - concept: "The consolidated single-paragraph architectural definition ('a governed feedback system in which...')"
+  - concept: "The explicit TARGET ARCHITECTURAL MODEL vs. CURRENT IMPLEMENTATION CLAIM labeling discipline"
+  - concept: "The ten numbered architectural propositions P1-P10, consolidating the whole arc's key conclusions"
+  - concept: "Step 164's opening: Domain Events and State Transitions, with the explicit caution 'events are not commands and not entities'"
+defines:
+  - concept: "'The AI must not self-promote'"
+    definition: "A candidate epistemic artifact produced by an AI agent (a claim, determination, or proposal) can never grant itself authoritative status by asserting it -- it must pass through an explicit Candidate→Evaluation→GovernedStatus pipeline before it can be treated as governed knowledge, regardless of how confidently or fluently it is expressed"
+  - concept: "'The role of hooks' (Policy→Rule→Hook→EnforcementEvidence)"
+    definition: "A repository hook (or any similar automated enforcement mechanism) is not itself an act of governance -- it is the mechanical enforcement of a governance-established rule, which itself derives from a governance policy; the chain Policy→Rule→Hook→EnforcementEvidence keeps the actual governance decision (the policy) conceptually distinct from its mechanical enforcement (the hook) and the evidence that enforcement produces, preventing the enforcement mechanism from being mistaken for the governance act itself"
+  - concept: "The three interacting cycles (Epistemic/Governance/Operational)"
+    definition: "KnowledgeOS's overall behavior decomposes into three distinct but interlocking cycles: the Epistemic cycle (Observation→Evidence→Knowledge→Determination, concerned with what is known), the Governance cycle (Determination→Decision→Authorization, concerned with what is decided and permitted), and the Operational cycle (Action→Execution→Observation, concerned with what actually happens) -- each cycle feeds the next, and the system as a whole is their interaction, not any single one of them alone"
+refines:
+  - concept: "0787's Step 162 boundary derivation and its recommendation of Step 163"
+    refinement: "DELIVERED: the full context map with explicit, differentiated relationship verbs, named translation boundaries for each context-pair, and the consolidated ten-proposition (P1-P10) summary of the whole arc's key conclusions"
+  - concept: "0787's provisional architecture diagram (§162.48)"
+    refinement: "Refined with fully explicit, differentiated relationship-verb labels (observes/supports/informs/authorizes) rather than unlabeled arrows, directly preventing the DDD anti-pattern of treating every cross-context relationship as semantically identical"
+  - concept: "0781's real-repository hooks/AGENTS.md/session-logging findings"
+    refinement: "Given a precise architectural placement: hooks are explicitly modeled as the enforcement layer of a Policy→Rule→Hook→EnforcementEvidence chain, directly connecting the conceptual architecture to actual repository mechanisms rather than remaining abstract"
+  - concept: "0783's/0784's TARGET/CURRENT/DELTA discipline"
+    refinement: "Directly reaffirmed at this file's most ambitious point: even the file's own strongest consolidated architectural definition is explicitly labeled TARGET ARCHITECTURAL MODEL, not CURRENT IMPLEMENTATION CLAIM, with 0784's evidence mapping cited as the authoritative source for actual current-state determination"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 164 (Domain Events and State Transitions) and the actual invariant-derived event model for the eight named candidate domain events."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the ten numbered architectural propositions P1-P10 as the closest thing to a finished 'constitution' this reconstructed arc has produced -- a primary reference artifact for the eventual §29-gated canonical synthesis."
+  - "dimension-registry.md: record 'the role of hooks' (Policy→Rule→Hook→EnforcementEvidence) as a directly applicable, real-repository-grounded architectural placement for enforcement mechanisms."
+  - "dimension-registry.md: record the three interacting cycles (Epistemic↔Governance↔Operational) and the consolidated single-paragraph architectural definition as the arc's strongest summary characterization of KnowledgeOS as a whole."
+  - "dimension-registry.md: record 'the AI must not self-promote' as a precise, directly applicable AI-governance principle."
+anchor_test:
+  anchor: "0787's Step 162 boundary derivation and its recommendation of Step 163; 0781's real-repository hooks findings; 0783's/0784's TARGET/CURRENT/DELTA discipline"
+  supports_dimension: "Delivers the full KnowledgeOS context map with deliberately distinct, non-collapsing relationship verbs across all named context boundaries. Delivers 'the AI must not self-promote' and 'the role of hooks,' the latter directly grounding the architecture in real repository enforcement mechanisms. Delivers the three interacting cycles (Epistemic/Governance/Operational) and the arc's strongest single-paragraph consolidated architectural definition, explicitly and disciplinedly labeled TARGET rather than CURRENT. Delivers ten numbered architectural propositions (P1-P10) functioning as the closest thing to a finished constitutional summary this arc has produced. Closes opening Step 164 with an explicit caution against naive event-per-verb modeling"
+  refines_or_contradicts: "directly delivers and extends 0787's recommended Step 163; refines 0787's provisional context-map diagram with explicit relationship-verb differentiation; directly grounds 0781's real-repository findings in a concrete architectural placement; reaffirms 0783's/0784's TARGET/CURRENT discipline; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§163.2's explicit statement 'notice the deliberate use of different relationship verbs... those verbs matter. They prevent us from pretending that every arrow means the same thing' is directly quotable evidence of the file's central DDD-discipline contribution."
+  - "§163.36's explicit statement 'a hook is not itself governance. It is an enforcement mechanism implementing a governance invariant,' paired with the worked Policy→Rule→Hook→EnforcementEvidence example, is directly quotable, decisive evidence of the file's real-repository architectural grounding."
+  - "§163.43's ten numbered propositions P1-P10 are directly checkable evidence of the arc's most compact, consolidated summary of its own key conclusions."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 164 (Domain Events and State Transitions) was ever actually delivered, and what invariant-derived event model it produced for the eight named candidate events."
+  - "Whether the ten P1-P10 propositions are ever formally adopted as a governance-ratified constitutional document, or remain a single-file summary."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the full KnowledgeOS context map with deliberately distinct, non-collapsing relationship verbs across all named context boundaries. Delivers 'the AI must not self-promote' and 'the role of hooks,' the latter directly grounding the architecture in real repository enforcement mechanisms (Policy→Rule→Hook→EnforcementEvidence). Delivers the three interacting cycles (Epistemic/Governance/Operational) and the arc's strongest single-paragraph consolidated architectural definition, explicitly and disciplinedly labeled TARGET. Delivers ten numbered architectural propositions (P1-P10) functioning as the closest thing to a finished constitutional summary this reconstructed arc has produced."

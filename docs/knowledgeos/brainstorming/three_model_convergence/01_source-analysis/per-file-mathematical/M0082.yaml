@@ -1,0 +1,70 @@
+sequence: M0082
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-124810_simulation-one-proposer-two-evaluation-fields.md
+title: "Simulation: One Linga (Proposer) and Two Yoni (Evaluation Fields) -- Monophallic Polygynous Inquiry: A Single Proposal Entering Two Contexts, With an Informal Agreement/Divergence/Complementarity Outcome Taxonomy and an Undefined Averaging 'Reconciliation Function', Followed by the Same Low-Rigor Emotion-Assignment Appendage Seen in M0081"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: x
+  secondary_note: "complementary configuration to M0081 (3 Linga/1 Yoni) -- here 1 Linga (single proposal) enters 2 Yoni (two evaluation contexts). Restates, without new formal machinery, the already-established theme that a single assertion may be supported in one context and refuted in another; contributes an informal three-way outcome taxonomy (Agreement/Divergence/Complementarity) and an undefined arithmetic-mean 'Reconciliation' operation, then appends the same low-rigor numeric 'emotion' assignment pattern as M0081"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0082
+importance: low
+confidence: high
+about: >
+  Simulates one proposal ("Nexus version is 3.69") entering two evaluation fields/contexts
+  (Yoni_1 = "Production", Yoni_2 = "Staging"), each with its own "receptivity" parameter; a toy
+  Python class runs the same proposal through both, producing "Supported" in one context and
+  "Rejected" in the other purely as a function of an arbitrarily chosen receptivity threshold
+  (0.8 vs 0.4 against a fixed 0.5 cutoff) -- no epistemic content beyond the chosen constants.
+
+  Introduces an informal THREE-WAY OUTCOME TAXONOMY for evaluating one proposition across two
+  contexts: (1) Agreement/Consensus -- both fields concur; (2) Divergence -- the fields produce
+  contradictory evaluations ("true" vs "false"); (3) Complementarity -- both fields judge the
+  proposition true, but true-in-different-senses/contexts (not a real disagreement). This
+  three-way split is a genuine, if informal, taxonomic distinction not identical to the sub-
+  thread's earlier binary agree/disagree framings, and is loosely related to (but does not engage
+  formally with) the corpus's already-established, far more rigorous treatment of cross-evaluator
+  disagreement in the Sat_c / evidence-weighting experiments (M0044-M0056) and the multi-agent
+  EpistemicRole generalization (M0079).
+
+  Proposes an undefined "Reconciliation" operation as a plain arithmetic mean of two evaluation
+  scores -- Reconcile = (Evaluation_1 + Evaluation_2)/2 -- with no stated domain, unit, or
+  justification for averaging being the correct reconciliation strategy (as opposed to, e.g.,
+  the corpus's own more careful I.J.-Good-style evidence-weighting apparatus). Closes with the
+  unsupported boxed claims "Knowledge = L (+) (Y_1+Y_2)" and "Truth = the proposal accepted in
+  all fields," and repeats the same undefined numeric "emotion" table pattern seen in M0081
+  (Desire/Confidence/Anxiety/Curiosity/Vulnerability/Excitement for the Linga; Curiosity/
+  Openness/Suspicion/Joy/Frustration for each Yoni) with no domain or measurement basis.
+introduces:
+  - concept: "An informal three-way outcome taxonomy for single-proposition, multi-context evaluation: Agreement/Consensus, Divergence (contradictory), and Complementarity (both true, different senses) -- not formally connected to the corpus's existing disagreement-handling apparatus"
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "The sub-thread's already-established single-proposal-multiple-context divergence theme (cf. M0079's N-agent/EpistemicRole generalization, and more rigorously, the Sat_c/evidence-weighting cross-evaluator disagreement work M0044-M0056), now restated informally with tantric imagery and no new formal machinery"
+  - concept: "M0081's undefined numeric 'emotion' assignment pattern, applied here to a Linga-and-two-Yoni configuration"
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "M0079's N-agent/EpistemicRole generalization and the Sat_c cross-evaluator disagreement work (M0044-M0056), neither of which this document formally engages"
+  supports_dimension: "none -- informal restatement only; the Agreement/Divergence/Complementarity taxonomy is noted as a candidate for the eventual reclassification pass but is not itself a formal contribution"
+  refines_or_contradicts: "neither (informal restatement, no formal engagement)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The simulation's 'Supported'/'Rejected' split is a direct consequence of the arbitrarily chosen receptivity constants (0.8 vs 0.4 against a fixed 0.5 threshold) with no epistemic grounding -- confirming, as with M0081, that the toy code supplies no content beyond its own invented numbers."
+undefined_concepts:
+  - "The 'Reconciliation' operation (plain arithmetic mean of two evaluation scores) -- no domain, unit, or justification given"
+  - "The Agreement/Divergence/Complementarity taxonomy's formal criteria -- presented only via worked examples, no predicate definitions"
+  - "All numeric 'emotion' quantities in Part 7 -- same undefined status as M0081"
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Informal restatement of an already-established theme (single proposition evaluated divergently across contexts) using tantric imagery and undefined arithmetic operations; the three-way outcome taxonomy is a mildly interesting informal distinction but is not developed with any rigor and does not engage the corpus's existing, far more disciplined treatment of the same underlying question. Recorded for corpus completeness; not tier-2."

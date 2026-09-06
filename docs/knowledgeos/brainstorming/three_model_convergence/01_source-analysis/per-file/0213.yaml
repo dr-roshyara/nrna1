@@ -1,0 +1,66 @@
+sequence: 213
+path: docs/knowledgeos/brainstorming/kernel/20260824-094545-seven-pillars-of-statistical-wisdom-lenses-for-kernel.md
+title: "The Seven Pillars of Statistical Wisdom — Lenses for KnowledgeOS"
+date: "2026-08-24"
+bytes: 13600
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 213
+importance: critical
+confidence: high
+about: >
+  Stephen Stigler's "The Seven Pillars of Statistical Wisdom" (Aggregation/Information/Likelihood/
+  Intercomparison/Regression/Design/Residual), applied as a falsification-question generator against
+  a minimal Knowledge Kernel rather than as a source of new positive architecture. Structurally
+  different from prior extraction files (Parts 1-8, no ASCII-diagram domain models): produces ten
+  strongest observations, ten falsification questions, five most-surprising findings, five directly
+  Kernel-relevant findings, five findings explicitly excluded as not-yet-architectural, an "anti-reasoner"
+  table, and ten questions DDD analysis alone would not expose. Central finding: the seven pillars are
+  tools for MANAGING uncertainty, not eliminating it -- a Kernel that treats knowledge as certainty (or
+  even high confidence) may be missing statistical inference's core insight.
+introduces:
+  - concept: "Aggregation paradox: information gain sometimes requires discarding information (the mean is a transformation revealing signal, not a loss); a Kernel preserving all detail may be preserving noise"
+  - concept: "Diminishing information accumulation (root-n rule): the second 20 observations are worth less than the first 20; a Kernel must not treat all data as equally informative"
+  - concept: "Likelihood as calibration, not truth: the P-value is a measure of surprise, not truth; a Kernel must not treat probabilities as truth values or certainty levels"
+  - concept: "Intercomparison / radical self-reliance: inference can be made from internal data variation alone (Student's t-test), without external standards -- but this power can be abused"
+  - concept: "Regression directionality: the same relationship gives a different answer asked backwards; a Kernel must not assume symmetric relationships (direction of conditioning matters)"
+  - concept: "Design as planning-before-observation: randomization creates a basis for inference independent of modeling assumptions; a Kernel treating data as merely 'given' is blind to the structure giving it evidential meaning"
+  - concept: "Residual-as-signal: what remains after subtracting known effects is often the source of discovery, not noise to discard; a Kernel must distinguish explanatory residuals from random residuals"
+  - concept: "Rule-of-Three trap: proportional/ratio extrapolation is systematically biased in the presence of variation and measurement error"
+  - concept: "Multiple-comparison / garden-of-forking-paths warning: simultaneous-correctness probability across many statements is not automatically relevant to any single statement's uncertainty"
+  - concept: "Anti-Reasoner table mapping each of the seven pillars to a specific architectural failure mode it protects against (overfitting/false-certainty/mis-calibration/external-bias/naive-extrapolation/design-blindness/residual-neglect)"
+  - concept: "Ten DDD-blind-spot questions: standard DDD treats aggregates as identity-holders (vs. aggregation-as-identity-discarding), data as equally valuable, probabilities as truth, data as generation-independent, residuals as error, relationships as symmetric, extrapolation as valid, all data as equally informative, randomization as optional, more-data as always-better"
+defines: []
+refines:
+  - concept: "0212's diminishing-returns-adjacent 'Value of Information' principle and prior-sensitivity content"
+    refinement: "Supplies the formal statistical-historical grounding (root-n rule, de Moivre) for the diminishing-marginal-value-of-evidence principle 0212 stated qualitatively."
+contradicts: []
+repeats:
+  - concept: "P-value/probability is not a truth value, only a calibrated measure"
+    canonical_source: 206
+    novelty: low
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "Mathematical/statistical Kernel-candidate track; K-1/Kernel-boundary falsification-test methodology (0187/0188's twelve falsification tests)"
+  supports_dimension: "Mathematical/statistical model -- supplies a falsification-question methodology (not new positive domain objects) directly usable against any Kernel candidate, structurally resembling the corpus's own falsification-test discipline"
+  refines_or_contradicts: "refines/deepens prior statistical-methodology sources (0206, 0212); no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Explicit citation-grounded quotes from Stigler for every one of the ten strongest observations and ten falsification questions, unusually well-sourced compared to typical corpus extractions"
+undefined_concepts:
+  - "No concrete data structures or aggregates proposed (unlike 0205-0212) -- this file is explicitly a question-generation exercise, not a domain-modeling one"
+open_questions:
+  - "Whether any of the ten falsification questions is later applied directly against a specific Kernel candidate (e.g. K-1 or Kernel Candidate v0.2/v0.3) as a formal falsification test"
+tier2_triggered: true
+tier2_reason: "Critical methodological contribution distinct in kind from prior files: rather than proposing new Kernel structure, it generates a disciplined falsification-question set (ten DDD-blind-spot questions, an anti-reasoner table) directly usable to interrogate any Kernel candidate for silent assumptions about data, probability, symmetry, and information accumulation."

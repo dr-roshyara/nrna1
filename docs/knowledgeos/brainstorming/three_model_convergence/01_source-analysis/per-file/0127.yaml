@@ -1,0 +1,76 @@
+sequence: "0127"
+path: docs/knowledgeos/brainstorming/20260822-122537-logic-in-classical-indian-philosophy-review-nyaya-trirupa.md
+title: "Nyāya + Gödel: disciplined role-separated convergence, third executed P5 decision"
+date: "2026-08-22"
+bytes: 6217
+model:
+  primary: g
+  secondary: [m, c1]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0122"
+importance: high
+confidence: high
+about: >
+  Connects Nyāya (Pramāṇa-based valid cognition) with Gödel (external-grounding necessity), but
+  DISCIPLINEDLY keeps them as distinct lens roles rather than merging: "Nyāya = Verification/Reasoning
+  Architecture Lens" vs "Gödel = Boundary/Limit Architecture Lens" -- a clean example of the MD-017
+  non-collapse discipline being independently modeled by the source. ⭐ Third executed P5-style
+  decision (after 0108, 0110), applying what the document itself calls "the frozen classifier."
+
+introduces:
+  - "⭐ 'Applying the frozen classifier' -- third executed P5 decision, an 8-row table: New kernel
+    object=No, New constitutional article=No, New invariant=No, Existing mechanism strengthened=Yes,
+    Verification architecture strengthened=Yes, Reasoning Engine design strengthened=Yes, Provenance
+    Chain strengthened=Yes, Epistemic Avidyā Detection strengthened=Yes. The phrase 'frozen classifier'
+    implies the source's own P5 test procedure is now considered stable/settled by its author"
+  - "Disciplined role separation: Gödel explains WHY external grounding is necessary; Nyāya explains
+    HOW justified cognition is structured -- explicitly kept as two distinct lens roles, not merged
+    into one, modeling the same non-collapse discipline this research applies via MD-017"
+  - "Deeper invariant statement: 'A knowledge system must not only store what is claimed; it must
+    preserve why the claim is justified and where the justification ends.'"
+
+defines: []
+
+refines:
+  - "Reinforces (does not merge) the Gödel<->Nyāya/Pramāṇa connection with a precise division of
+    labor, a useful worked example of disciplined non-collapse"
+
+contradicts: []
+
+repeats:
+  - {concept: "Pramāṇa, external grounding via Zero/Gödel, Avidyā Detection", canonical_source: "0092", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: false
+
+registry_updates:
+  - "No new kernel entries -- third executed P5 decision, all outcomes 'mechanism strengthened', zero
+    new kernel/constitution changes"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity"]
+  refines_or_contradicts: "No reshaping; disciplined role-separated reinforcement."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Third executed P5-style decision ('frozen classifier'), all outcomes negative for new kernel
+    content -- continues the disciplined-restraint pattern"
+  - "A clean, explicit worked example of the source corpus itself NOT collapsing two related lenses
+    into one, independently modeling this research's own MD-017 discipline"
+
+undefined_concepts: []
+open_questions: []
+
+tier2_triggered: true
+tier2_reason: >
+  Third executed P5 decision; a disciplined worked example of keeping two convergent lenses (Nyāya,
+  Gödel) role-separated rather than merged, directly modeling MD-017's non-collapse principle.

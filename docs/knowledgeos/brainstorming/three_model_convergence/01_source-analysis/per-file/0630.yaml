@@ -1,0 +1,245 @@
+sequence: 630
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-104146_step-049-formal-model-reduction-consistency-checking-primitive-identification-and-computability.md
+title: "LANDMARK — The Corpus's Self-Directed Ontological Reduction, Successfully Collapsing the Sprawling 48-Step Concept Inventory Into an Eight-Primitive Frozen Mathematical Kernel 𝒫={Entity,State,Event,Observation,Proposition,Relation,Policy,Action} With Every Other Concept (Evidence/Claim/Identity/Provenance/Causality/Decision/Outcome/Learning/Drift) Formally Re-Expressed as Derived Structure; the Corpus's First Genuine Computability-Theory Engagement (Undecidability, State Explosion 2^100, a New Three-Way Epistemic/Computational/Mathematical Failure Taxonomy); a Reflexive Correction Distinguishing Probability From EpistemicConfidence; 'Supports≠Causes≠DependsOn' as a Typed-Relation Discipline Directly Preventing Step 43's Causal-Hallucination Failure Mode; 'KnowledgeOS Does Not Need a Gigantic Mathematical Ontology, It Needs a Small, Rigorously Typed Kernel' (Self-Named 'the Most Important Discovery of Step 49'); Verdict 'STEP 49 — PASS'; Opens Step 50 as an Explicit Adversarial Stress-Test ('Attempt to Break the Model') via a KnowledgeOS Reference State Machine Injected With Ten Named Failure Conditions — CONFIRMING the Freeze-Point Anticipated by 0621 and 0625"
+date: "2026-08-28"
+bytes: 25791
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 49 -- Formal Model Reduction, Consistency Checking, Primitive Identification and Computability', opened cleanly at 0629's close, and directly and fully delivers the self-audit 0629 explicitly proposed rather than introducing further theoretical concepts"
+source_role: PRIMARY_RESEARCH
+canonical_source: 630
+importance: critical
+confidence: high
+about: >
+  Opens Step 49 directly executing 0629's self-critical proposal, posing the reduction question:
+  "we have accumulated many concepts -- are they truly distinct primitives, or are some merely different
+  views of the same underlying structure?" -- explicitly framed as the point where "a mathematician... would
+  stop adding concepts and normalize the model." Delivers a first-pass seven-category grouping of the
+  corpus's accumulated concepts (Core primitives: `Entity, State, Event, Observation`; Epistemic
+  structures: `Evidence, Claim, Uncertainty`; Semantic structures: `Identity, Meaning, Context`; Relational
+  structures: `Provenance, Dependency, Causality`; Governance structures: `Policy, Authority, Decision`;
+  Operational structures: `Action, Outcome`; Evolution structures: `Learning, Revision, Drift`).
+
+  **Delivers the file's central formal deliverable -- a systematic, concept-by-concept ontological
+  reduction of every major term the corpus has accumulated since Step 1**: `Entity` acknowledged as
+  arguably reducible to `Identity+State` but retained as a domain primitive for DDD's identity-bearing-
+  object requirement; `Event` split into `DomainEvent` vs. `ObservationEvent`; `Observation=(source,t,
+  value)`, explicitly not asserting correctness of interpretation; **`Evidence` re-derived as
+  `Observation+Relevance+Context`, explicitly demoted from primitive status to "a qualified
+  observation"**; `Claim` reduced to a `Proposition` with uncertain truth status.
+
+  **Delivers a reflexive terminological self-correction, directly parallel in kind to 0623's Hard/Soft/
+  Advisory-invariant correction**: the corpus's earlier broad use of `Confidence` as a general uncertainty
+  measure is explicitly flagged as "too broad mathematically" -- **`Probability` must be formally
+  distinguished from `EpistemicConfidence`** (`P(H)=0.8` is not the same claim as `Confidence(H)=0.8`),
+  explicitly described as "an important normalization."
+
+  Delivers `Identity` reduced to a mapping `Entity→Identifier` (itself potentially uncertain under
+  ambiguous entity resolution, 0618), and `Meaning` formalized as inherently contextual
+  (`Meaning(c,t,context)`), fitting directly into the corpus's established DDD bounded-context discipline.
+  **Delivers `Provenance` explicitly demoted from a primitive object to a pure relation**
+  (`Supports(E,C)`, `DerivedFrom(C_1,C_2)`), and, critically, **`Causality` formally and explicitly
+  separated from mere `Supports`** (`Supports≠Causes`) and from **`DependsOn`**
+  (`DependsOn≠Causes` -- a system can technically depend on a component without that component being
+  causally responsible for a given outcome). Delivers a formal seven-member typed-relation set
+  `R={Supports, DependsOn, Causes, Identifies, MapsTo, Contradicts, Precedes}`, with the explicit,
+  important warning that collapsing these into a single generic `RelatedTo(A,B)` would let an AI infer
+  `RelatedTo⇒Causes`, **explicitly identified as "one of the fundamental problems we eliminated in Step
+  43"** -- a directly checkable, self-referential consistency check against 0624's causal-hallucination
+  discipline.
+
+  Delivers `Policy` formalized as `State×Action→DecisionConstraint`, with `Authority` explicitly separated
+  from `Policy` (a policy permitting an action does not itself confer authority on a given actor), and
+  `Decision` formalized as `(K,S,Policy)→Action` with `DecisionProposal` kept distinct from
+  `AuthorizedDecision` (directly reconfirming 0623's admissibility discipline). Delivers `Action`
+  (`S_t→S_{t+1}` or its stochastic form) and `Outcome` (post-action observation, potentially one-to-many).
+  **Delivers `Learning` explicitly reduced to a transition operator rather than a knowledge object**:
+  `L:(K,E)→K'` -- "learning is not itself knowledge... an important reduction" -- with `Revision` similarly
+  reduced to a state transition and `Drift` reduced to a detected difference
+  (`Drift(K_t,K_{t+1})` or `Drift(P_t,P_{t+1})`), neither being primitive.
+
+  **Delivers the file's second central formal deliverable -- the frozen candidate mathematical kernel**:
+  `𝒦=(E,S,T,O,P,R,Π,A)` (entities, states, temporal/event structure, observations, propositions, typed
+  relations, policies, actions), with every other accumulated concept formally re-expressed as derived
+  structure over this kernel (`Evidence⊆O×Context`, `Claim⊆P`, `Prov⊆R`, `Cause⊆R`, `Identity:E→ID`,
+  `L:K_t→K_{t+1}`, `D:(K,S,Π)→A`). Delivers a finite knowledge-state representation
+  (`K=(V,E,R,Metadata)`, "essentially a typed temporal graph plus domain state") and a worked graph
+  representation diagram, immediately and importantly qualified: **not everything should be forced into a
+  graph** -- graphs suit relationships/provenance/dependencies/causal structures but not transactional
+  state, large numerical arrays, time series, documents, or statistical models, requiring KnowledgeOS to be
+  explicitly **polyglot**. Delivers a storage abstraction (`Storage(K)`, deliberately not fixed to any one
+  database paradigm) and reconfirms consistency with Hexagonal Architecture (domain defines meaning,
+  infrastructure defines representation).
+
+  **Delivers the file's third central formal deliverable, a genuinely new major dimension for the corpus
+  -- an explicit computability-theory engagement**, the first of its kind: simple graph-traversal queries
+  (evidence-supports-claim) are `O(V+E)` and easily computable; temporal and provenance-ancestry queries
+  are similarly feasible; deterministic invariant checks are typically `O(1)`; but Reachability checking
+  can be far harder, worked through a concrete **State explosion** example (`|S|=2^n`, `n=100`
+  binary state variables yielding `2^{100}` unenumerable states on ordinary hardware), explicitly resolved
+  by noting that enumeration is unnecessary given abstraction, symbolic reasoning, compositional
+  verification, and invariants -- **"this is why Step 48's compositional architecture matters,"**
+  explicitly cross-referencing 0629. Delivers Causal inference and Optimization both explicitly noted as
+  having no single complexity class (ranging from tractable to `NP-hard` combinatorial problems).
+
+  Delivers the important architectural conclusion that KnowledgeOS does not need to solve every
+  mathematical problem exactly -- `Exact` where feasible and important, `Approximate` where acceptable and
+  **explicitly represented as such** (an estimate `x̂` must never be presented as the true value `x`, and
+  `ApproximateCausalEffect` must remain distinct from `ProvenCausalEffect`), formalized as a
+  `ComputationStatus` enum (`Exact, Approximate, Heuristic, Simulation, Unresolved`) and a formal
+  `ReasoningMode` taxonomy (`Formal, Deterministic, Statistical, Probabilistic, Heuristic, LLMGenerated`),
+  with LLM-generated conclusions explicitly kept as `CandidateInference`, never automatically
+  `FormalInference` -- **"this preserves our epistemic firewall,"** explicitly cross-referencing 0628's
+  `EpistemicFirewall` concept.
+
+  **Delivers the file's fourth central formal deliverable -- the computability boundary itself, engaging
+  genuine Turing-computability limits for the first time in the corpus**: some general questions about
+  arbitrary programs (e.g. "will an arbitrary program eventually terminate?") have no general decision
+  procedure, so KnowledgeOS explicitly cannot promise `UniversalVerification`. **Delivers a new, precise
+  three-way failure taxonomy that must never be conflated**: Epistemic failure
+  (`InsufficientEvidence`), Computational failure (`CannotComputeWithinBudget`), and Mathematical
+  limitation (`Undecidable`) -- explicitly strengthening 0622's (Step 41) three-valued epistemic logic by
+  adding `Uncomputable` and `Intractable` as genuinely distinct from ordinary `Unknown`.
+
+  Delivers a formal computational budget (`Budget=(Time,Memory,Cost)`), Graceful degradation
+  (`Exact→Approximate→Heuristic→Unknown`, with status always preserved through the fallback chain), and
+  the important safety principle **`No silent approximation`** -- a failed exact computation must never
+  silently return a guess presented as fact (`ApproximationUsed=True` required instead). Delivers a formal
+  computational contract `ComputeResult=(Value,Method,Status,ErrorBound,Cost)`, worked through a concrete
+  Monte Carlo example, explicitly declared "mathematically much stronger than returning only a number," and
+  Error bounds explicitly required to be genuine when claimed, never invented when absent.
+
+  **Delivers a direct, precise answer to the corpus's long-running "normal PC" question**: the core
+  architecture -- typed graph operations, relational queries, event processing, deterministic rules, many
+  statistical calculations, provenance traversal, state-machine verification, moderate simulations -- runs
+  on a normal PC; only specific workloads (massive embeddings, LLM inference, huge graph analytics,
+  large-scale Monte Carlo/optimization, enterprise-wide event histories) may require larger infrastructure,
+  explicitly characterized as "implementation-scale concerns, not contradictions in the mathematical
+  architecture." Delivers a Local-first architectural principle (`CoreKnowledgeOS` computationally
+  lightweight, external compute as `OptionalAcceleration`), with the explicit reasoning that a mandatory
+  GPU-cluster dependency for every operation would make the system far harder to deploy and verify.
+  Delivers a DDD-consistent hexagonal separation: "the domain should not know GPU" -- the domain knows
+  `InferenceRequest`; infrastructure decides local-CPU vs. remote-GPU execution.
+
+  Delivers an explicit, clean three-way separation: `MathematicalModel` (what exists, what relationships
+  mean) vs. `SoftwareArchitecture` (where behavior lives, how contexts interact) vs.
+  `InfrastructureArchitecture` (where computation and persistence execute) -- "this separation is
+  essential."
+
+  **Delivers the file's capstone reduction result and frozen final primitive set**: "many of our 48
+  concepts are not independent primitives... this is good news, it means the architecture is becoming
+  simpler." The candidate mathematical kernel is frozen as **`𝒫={Entity, State, Event, Observation,
+  Proposition, Relation, Policy, Action}`** -- eight primitives, refining 0629's own closing eleven-item
+  proposal by further collapsing `Claim` into `Proposition` and removing `Decision`/`Outcome` as derivable.
+  Delivers the complete derived-concept mapping (`Evidence=QualifiedObservation`, `Claim=Proposition`,
+  `Identity=EntityIdentityRelation`, `Provenance=TypedDependencyRelation`,
+  `Causality=TypedCausalRelation`, `Decision=PolicyConstrainedActionSelection`,
+  `Outcome=PostActionObservation`, `Learning=KnowledgeStateTransition`,
+  `Drift=Distribution/StructureDifference`), and a genuinely valuable methodological safeguard against
+  future concept proliferation: for every future proposed concept `X`, ask whether it is a new primitive or
+  derivable from the kernel; if derivable, `X∉𝒫` -- explicitly "prevents uncontrolled architectural
+  expansion," a directly self-applicable discipline given the corpus's own recurring pattern of introducing
+  new named concepts across many prior files.
+
+  **Delivers twelve labeled falsification experiments (1-12), ALL PASS, of a genuinely different character
+  from every prior step's falsification set -- these test the reduction itself rather than an epistemic
+  scenario**: confirming Evidence cannot exist without Observation (derived, not primitive); Provenance
+  cannot exist without Relations; Causality cannot safely be represented as generic `RelatedTo`; Learning
+  cannot be represented as a static object (must be a transition); Decision can be cleanly separated from
+  Action (preserving authorization/dry-run semantics); Outcome cannot be treated as Decision; Unknown
+  cannot be represented as False (three-valued distinction remains necessary); approximate computation
+  cannot be represented as exact; not every theoretical question can be computed exactly
+  (undecidability/complexity impose genuine limits); mathematical complexity does not require special
+  hardware (it determines resource requirements, not model validity); the same domain model can run on
+  local or distributed infrastructure given proper ports/contracts; and a new concept can be added without
+  expanding the primitive kernel if it is genuinely derivable.
+
+  **Delivers Step 49's verdict — "STEP 49 — PASS,"** explicitly emphasized as "a particularly important
+  PASS" because "we have not merely added another capability. We have reduced the architecture." Delivers
+  the mathematical normalization result: `Small kernel + Typed relations + Temporal state + Epistemic
+  annotations + Governed transitions`, explicitly "far more promising than a system with hundreds of
+  unrelated primitives." Delivers the emerging compact KnowledgeOS equation, both as informal shorthand
+  (`KnowledgeOS=State+Evidence+Relations+Inference+Policy+Decision+Evolution`) and as a precise three-
+  equation formal core: `K_{t+1}=Learn(K_t,Observations_t,Events_t,Policies_t,Outcomes_t)`,
+  `A_t=Decision(K_t,S_t,Policy_t)`, `S_{t+1}=F(S_t,A_t,U_t)`.
+
+  **Delivers the file's own explicitly self-named "most important discovery of Step 49"**: **"KnowledgeOS
+  does not need a gigantic mathematical ontology. It needs a small, rigorously typed kernel over which
+  richer domain concepts can be constructed" -- "that is exactly the direction a Principal Architect
+  should want."**
+
+  **Closes by explicitly proposing that Step 50 halt further theoretical expansion and instead perform a
+  formal consistency audit -- CONFIRMING the freeze-point anticipated by 0621's Track A and 0625's explicit
+  invocation**: Step 50 will construct a "KnowledgeOS Reference State Machine" and run the complete
+  pipeline (`Observation→Evidence→Claim→Validation→Decision→Authorization→Action→Outcome→Learning`),
+  then deliberately inject ten named adversarial conditions (contradiction, stale evidence, identity
+  collision, semantic mismatch, causal misclassification, unauthorized action, model drift, feedback
+  amplification, incomplete information, computational timeout), explicitly framed as stronger than another
+  conceptual PASS: **"attempt to break the model."** If the model survives, this is explicitly declared
+  sufficient evidence to move "from theory → executable reference architecture." No actual code execution
+  reported. No corpus-integrity topic collision detected.
+introduces:
+  - concept: "A systematic, concept-by-concept ontological reduction of the corpus's entire accumulated vocabulary since Step 1, explicitly demoting Evidence, Provenance, Causality, Decision, Outcome, Learning, and Drift from apparent-primitive to derived-structure status"
+  - concept: "The reflexive Probability/EpistemicConfidence distinction, correcting the corpus's earlier overly broad use of Confidence, directly parallel in kind to 0623's Hard/Soft/Advisory-invariant self-correction"
+  - concept: "Supports≠Causes≠DependsOn as a formal typed-relation discipline, with an explicit warning that collapsing relations into generic RelatedTo would recreate the causal-hallucination failure eliminated at Step 43 (0624)"
+  - concept: "The corpus's first genuine computability-theory engagement — undecidability, state explosion (2^100), and a new three-way Epistemic/Computational/Mathematical-limitation failure taxonomy strengthening the three-valued epistemic logic from 0622"
+  - concept: "A formal, mathematically stronger ComputeResult contract (Value, Method, Status, ErrorBound, Cost) replacing bare numeric return values, with No silent approximation as an explicit safety principle"
+  - concept: "The frozen eight-primitive candidate mathematical kernel 𝒫={Entity,State,Event,Observation,Proposition,Relation,Policy,Action}, with a general derivability test to prevent uncontrolled future concept proliferation"
+  - concept: "The self-named 'most important discovery of Step 49' — KnowledgeOS needs a small, rigorously typed kernel, not a gigantic mathematical ontology"
+  - concept: "Step 50 explicitly framed as an adversarial stress-test via a KnowledgeOS Reference State Machine injected with ten named failure conditions, confirming the freeze-point anticipated by 0621 and 0625"
+defines:
+  - concept: "The frozen mathematical kernel 𝒫"
+    definition: "𝒫={Entity, State, Event, Observation, Proposition, Relation, Policy, Action} — the minimal set of concepts the corpus treats as genuinely primitive after Step 49's reduction; every other concept (Evidence, Claim, Identity, Provenance, Causality, Decision, Outcome, Learning, Drift) must be expressible as a derived structure over this kernel"
+  - concept: "Probability vs. EpistemicConfidence"
+    definition: "A formal probability P(H)=0.8 is not the same mathematical object as a subjective epistemic confidence score Confidence(H)=0.8; the corpus's earlier broad use of 'Confidence' for both is corrected as imprecise"
+  - concept: "The three-way failure taxonomy (Epistemic/Computational/Mathematical)"
+    definition: "InsufficientEvidence (epistemic failure), CannotComputeWithinBudget (computational failure), and Undecidable (mathematical limitation) are genuinely distinct failure modes that must never be conflated with each other or with ordinary Unknown"
+  - concept: "No silent approximation"
+    definition: "When exact computation is infeasible and an approximation is substituted, the system must explicitly mark ApproximationUsed=True rather than silently presenting the approximate value as though it were exact"
+  - concept: "The derivability test for future concepts"
+    definition: "For any newly proposed concept X, determine whether X is a genuinely new primitive or expressible as Structure(𝒫); if derivable, X is not added to the primitive kernel, preventing uncontrolled architectural expansion"
+refines:
+  - concept: "The entirety of the corpus's accumulated vocabulary from Steps 1-48"
+    refinement: "Systematically re-derived over an eight-primitive kernel, demonstrating that the sprawling concept inventory built across 48 steps is internally reducible rather than an accumulation of independent, potentially redundant primitives"
+  - concept: "0624's (Step 43) causal-hallucination discipline (TemporalPrecedence≠Causation)"
+    refinement: "Directly and explicitly cross-referenced as the motivating reason the typed-relation set must never be collapsed into generic RelatedTo — a self-consistency check the file performs on its own architecture"
+  - concept: "0622's (Step 41) three-valued epistemic logic (T/F/U)"
+    refinement: "Explicitly strengthened with two further distinct failure categories — Uncomputable and Intractable — that must not be conflated with ordinary epistemic Unknown"
+  - concept: "0628's EpistemicFirewall concept"
+    refinement: "Directly and explicitly cross-referenced as the reason LLM-generated conclusions remain CandidateInference rather than automatically FormalInference"
+  - concept: "0629's (Step 48) compositional-verification discussion"
+    refinement: "Directly and explicitly cross-referenced as the resolution to the state-explosion problem — compositional reasoning over abstractions avoids full state enumeration"
+  - concept: "0623's Hard/Soft/Advisory-invariant reflexive self-correction"
+    refinement: "Directly paralleled by this file's own Probability/EpistemicConfidence correction — a second instance of the corpus catching and correcting its own earlier terminological imprecision within the ongoing research program"
+  - concept: "0611's/0615's/0618's/0622's/0629's recurring ordinary-hardware-feasibility discipline"
+    refinement: "Given its most precise and complete treatment to date, explicitly separating which specific operations are feasible on a normal PC from which require larger infrastructure, and explicitly declaring the distinction an implementation-scale concern rather than a mathematical-architecture contradiction"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: track whether Step 50's promised adversarial stress-test (KnowledgeOS Reference State Machine injected with ten named failure conditions: contradiction, stale evidence, identity collision, semantic mismatch, causal misclassification, unauthorized action, model drift, feedback amplification, incomplete information, computational timeout) is actually delivered as described, and whether the model genuinely survives or reveals a substantive gap — this is explicitly framed by the corpus itself as stronger than any prior step's PASS and as the definitive test before declaring the architecture ready to move from theory to executable reference architecture."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the frozen eight-primitive mathematical kernel 𝒫={Entity,State,Event,Observation,Proposition,Relation,Policy,Action} with the full concept-by-concept reduction (Evidence/Claim/Identity/Provenance/Causality/Decision/Outcome/Learning/Drift all demoted to derived structure); the Probability/EpistemicConfidence reflexive correction; and Supports≠Causes≠DependsOn as a typed-relation discipline directly preventing the Step-43 causal-hallucination failure mode."
+  - "dimension-registry.md: record the corpus's first genuine computability-theory engagement (undecidability, state explosion 2^100, the new three-way Epistemic/Computational/Mathematical-limitation failure taxonomy strengthening 0622's three-valued logic); the formal ComputeResult contract with No silent approximation; and the precise 'normal PC' answer separating implementation-scale concerns from mathematical-architecture validity."
+  - "dimension-registry.md: record the self-named 'most important discovery of Step 49' (a small, rigorously typed kernel, not a gigantic ontology); the derivability test preventing uncontrolled future concept proliferation; twelve reduction-testing falsification experiments (ALL PASS); verdict 'STEP 49 — PASS'; and the confirmed Step-50 freeze-point framed explicitly as an adversarial stress-test via a KnowledgeOS Reference State Machine."
+anchor_test:
+  anchor: "0629's (Step 48) self-critical audit proposal and its eleven-primitive preview; 0624's (Step 43) causal-hallucination discipline; 0622's (Step 41) three-valued epistemic logic; 0628's EpistemicFirewall concept; 0623's Hard/Soft/Advisory reflexive self-correction; the corpus's recurring ordinary-hardware-feasibility discipline; 0621's and 0625's anticipated Step-50 freeze point"
+  supports_dimension: "Delivers a genuinely rare and valuable kind of contribution for a rapidly expanding theoretical research program — a disciplined, self-directed act of ontological reduction that successfully collapses dozens of accumulated concepts into a small, internally consistent eight-primitive kernel, correctly demoting apparent primitives (Evidence, Provenance, Causality, Decision, Outcome, Learning, Drift) to derived structures with concrete, checkable justifications for each demotion. Delivers a second directly checkable instance of reflexive terminological self-correction (Probability vs. EpistemicConfidence), reinforcing that the corpus's epistemic-honesty discipline operates on its own prior formulations, not merely on external claims. Directly and explicitly self-audits its own typed-relation design against the corpus's earlier causal-hallucination finding (0624), demonstrating genuine internal consistency-checking rather than merely accumulating parallel disciplines. Introduces the corpus's first genuine engagement with computability theory proper (undecidability, state explosion), correctly and precisely distinguishing three failure categories that are frequently conflated in less careful treatments (epistemic insufficiency, computational infeasibility, and true mathematical undecidability), extending rather than merely repeating the established Unknown≠False≠True discipline. Delivers a precise, actionable, and honestly bounded answer to the corpus's long-running 'can this run on a normal PC' question, cleanly separating implementation-scale concerns from mathematical-architecture validity for the first time with this level of specificity. Introduces a genuinely valuable methodological safeguard (the derivability test) directly and reflexively applicable to the corpus's own demonstrated tendency to introduce new named concepts in nearly every file. Closes by explicitly confirming the freeze-point long anticipated by 0621's Track A proposal and 0625's explicit invocation, framing it specifically and concretely as an adversarial stress-test rather than a vague 'declare v1.0' ceremony, giving this reconstruction a precise, falsifiable target to verify against Step 50's actual delivered content"
+  refines_or_contradicts: "directly and fully executes 0629's self-critical audit proposal, refining its eleven-primitive preview down to a tighter eight-primitive frozen kernel; directly and explicitly cross-references and self-consistency-checks against 0624's causal-hallucination discipline; directly extends 0622's three-valued epistemic logic with two further distinct failure categories; directly and explicitly cross-references 0628's EpistemicFirewall and 0629's compositional-verification discussion; parallels 0623's reflexive self-correction pattern with a second, independent instance; gives the corpus's recurring ordinary-hardware-feasibility discipline its most precise treatment to date; confirms and specifically frames the Step-50 freeze point anticipated by 0621 and 0625; no contradiction found; no corpus-integrity topic collision detected"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The explicit, direct cross-reference — 'that would recreate one of the fundamental problems we eliminated in Step 43' — appearing immediately after the warning against collapsing typed relations into generic RelatedTo, is directly checkable, concrete evidence that this file performs genuine self-consistency checking against a specific, named earlier finding rather than merely restating general caution in the abstract."
+  - "The explicit, precisely worded three-way failure taxonomy (InsufficientEvidence / CannotComputeWithinBudget / Undecidable), together with the instruction that 'these must not be conflated,' is directly checkable, concrete evidence of a genuinely careful distinction frequently blurred in less rigorous treatments of AI system limitations, and directly extends rather than merely repeats the corpus's established Unknown≠False≠True principle by adding two further, independently named failure categories."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 50's promised adversarial stress-test (a KnowledgeOS Reference State Machine injected with ten named failure conditions) is actually delivered as described, and whether the model genuinely survives the attempt to break it or reveals a substantive gap requiring revision"
+tier2_triggered: true
+tier2_reason: "LANDMARK: delivers a genuinely rare and valuable act of self-directed ontological reduction, successfully collapsing dozens of accumulated concepts into a small, internally consistent eight-primitive frozen kernel with concrete, checkable justifications for each demotion. Delivers a second directly checkable instance of reflexive terminological self-correction (Probability vs. EpistemicConfidence), and explicitly self-audits its typed-relation design against 0624's causal-hallucination finding. Introduces the corpus's first genuine computability-theory engagement, correctly distinguishing three failure categories frequently conflated elsewhere. Delivers a precise, honestly bounded answer to the corpus's long-running normal-PC question. Introduces a genuinely valuable methodological safeguard (the derivability test) directly applicable to the corpus's own demonstrated pattern of concept proliferation. Verdict 'STEP 49 — PASS,' explicitly emphasized as more significant than a typical PASS because the architecture was reduced, not merely extended. Closes by confirming the freeze-point anticipated by 0621 and 0625, framing Step 50 concretely as an adversarial stress-test via a Reference State Machine injected with ten named failure conditions — a precise, falsifiable target for this reconstruction to verify next."

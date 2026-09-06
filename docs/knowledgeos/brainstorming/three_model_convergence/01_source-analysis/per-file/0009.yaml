@@ -1,0 +1,74 @@
+sequence: 9
+path: docs/knowledgeos/2026-08-02-knowledgeos-strategic-domain-discovery.md
+title: KnowledgeOS — Strategic Domain Discovery
+date: 2026-08-02
+bytes: 23691
+doc_type: strategic DDD discovery traced from committed artifacts (Outcome 1 of 3 permitted)
+
+primary_model_initial: kernel_ddd
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+confidence: medium
+primary_model_initial_historical: kernel_ddd   # RETIRED value (MD-006); preserved, not rewritten
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - strategic-DDD boundary work on the engineering platform: product vs platform vs runtime mount
+  - six clusters are engineering responsibilities (governance, decisions, execution, verification, evidence, knowledge-as-frozen-theory)
+  - 'Knowledge' appears as a CLUSTER NAME (research-frozen theory), not as an epistemic object with state
+secondary_models: [ddd, domain_model, governance, evidence, provenance, contradiction, meta_research]
+
+status: DR
+maturity: developing
+importance: high
+
+introduces:
+  - reuse_litmus_as_boundary_test
+  - observation_interpretation_candidate_conclusion_layering
+  - protocol_vs_records_split_for_evidence
+  - strategic_relationship_is_the_conclusion_not_the_starting_point
+  - proposing_before_searching_failure_pattern_n5
+  - stage5_work_performed_at_stage0
+defines:
+  - reuse_boundary            # could a different project adopt this unchanged?
+  - three_layer_repository_separation   # product / engineering platform / runtime mount
+  - pks_is_a_domain_not_a_bounded_context
+hypotheses:
+  - I1_through_I12_with_stated_confidence
+  - conditional_inversion_if_the_gate_opens
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 9th consecutive file; here a CLUSTER NAME and still undefined
+  - core_domain
+  - supporting_subdomain
+  - confidence         # 2nd uncalibrated ordinal scale in the corpus; not obviously 0002's scale
+  - gate               # trigger named, but what "opening" consists of is unstated
+  - cross_product_research   # admitted as valid, has NO home (resolves PENDING)
+open_questions:
+  - OQ-K1 does the ES-005.3 research clause still hold
+  - OQ-K2 where does cross-product research live (PENDING, no root)
+  - OQ-K3 has the KnowledgeOS gate opened
+  - OQ-K4 is the product discovery charter approved
+  - OQ-K5 is this track accruing over-evolution exposure
+  - OQ-K6 should "KnowledgeOS" remain the working name (charter calls it a placeholder)
+
+depends_on: []
+extends: [1, 5]
+refines: [1]
+renames: []
+contradicts: []      # contradicts the brainstorming premise, which lies outside the read prefix
+supersedes: []
+repeats: [1, 3, 6, 7, 8]
+connects_to: [1, 5, 6, 8]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Asserts an EQUIVALENCE between two independently worded tests (I-2, confidence High, argued only
+  by restatement) — a corpus-internal instance of exactly the move §12 forbids; records a
+  contradiction against a Decision-Authority ruling with the consequence that "KnowledgeOS" does
+  NOT denote a stable object across the corpus; and states a total decision procedure (the reuse
+  litmus) whose decision method is known from 0001/0008 to be unavailable.

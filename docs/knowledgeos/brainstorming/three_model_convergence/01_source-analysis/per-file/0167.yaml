@@ -1,0 +1,122 @@
+sequence: "0167"
+path: docs/knowledgeos/brainstorming/kernel/20260823-232146-adr-kos-kernel-001-kernel-scope-and-boundary-proposal.md
+title: "ADR-KOS-KERNEL-001 (PROPOSED) -- KnowledgeOS Kernel Scope and Boundary: the first formal ADR-format governance artifact produced by the brainstorming thread, explicitly non-implementation-authorizing; plus a follow-up 'future cognitive computer' analogy discussion"
+date: "2026-08-23"
+bytes: 19000
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0167"
+importance: critical
+confidence: high
+about: >
+  Produces the first formal ADR-format artifact in the corpus's own brainstorming thread:
+  "ADR-KOS-KERNEL-001 -- KnowledgeOS Kernel Scope and Boundary," Status PROPOSED, explicitly
+  "Implementation: NOT AUTHORIZED by this ADR." It resolves an altitude ambiguity (KnowledgeOS-as-
+  ecosystem vs. KnowledgeCore-as-bounded-context vs. Kernel-as-constitutional-altitude vs. Kernel-as-
+  smallest-executable-boundary) by declaring the Kernel a proper subset of KnowledgeOS, defined by "the
+  smallest authoritative boundary that must exist to preserve KnowledgeCore's constitutional invariants,"
+  explicitly ruling that conceptual relatedness is NOT sufficient justification for Kernel membership
+  (restating the DDD falsification result from 0155/0157). Enumerates six explicit exclusions (semantic
+  interpretation, truth determination, mechanism intelligence/no dependency on GPT/Claude/DeepSeek/Kimi/
+  embeddings, workflow orchestration, infrastructure, governance administration). States the still-
+  proposed hypothesis (KnowledgeAggregate + ConflictRecord + Verification Port as sole inbound admission
+  gate) as PROPOSED, NOT an implementation contract, and lists nine still-unresolved questions (rejection/
+  refusal semantics, ambiguity vs. contradiction, Confidence derivability, existing-aggregate operations,
+  identity continuity, evidence resolvability, authority adequacy, capability taxonomy, DEF-1). Declares an
+  explicit "Architectural Sequence" (Brainstorming -> Domain distinctions -> DDD scenario/invariant
+  analysis -> Smallest consistency boundary -> Kernel boundary definition -> HPA/ARB ruling -> Kernel
+  capability mapping -> Independent falsification -> Logical Architecture -> Implementation decision ->
+  Kernel implementation), confirming the Kernel Boundary Definition step has still not been reached. A
+  second, appended discussion then explores whether today's narrow Kernel could later anchor a "future
+  cognitive computer" (perception/reasoning/planning wrapped around an epistemic core), explicitly warning
+  that "the possibility of becoming part of a future computer brain must never be used to enlarge the
+  present Kernel boundary."
+
+introduces:
+  - "ADR-KOS-KERNEL-001 (PROPOSED), the corpus's own first formal ADR artifact for Kernel scope: freezes
+    vocabulary (KnowledgeOS != Kernel; Kernel is a proper subset of KnowledgeOS via KnowledgeCore), states
+    the decisive membership question ('what invariant becomes invalid if these elements change
+    independently?'), and explicitly is NOT an implementation authorization"
+  - "Six explicit Kernel exclusions as governance-level prohibitions, not merely observations: semantic
+    interpretation, truth determination, mechanism/vendor intelligence (named: GPT, Claude, DeepSeek,
+    Kimi, embeddings, vector DBs), workflow orchestration, infrastructure, governance administration"
+  - "Four-way capability taxonomy for future capability mapping: domain capabilities / boundary-invariant
+    properties / anti-capabilities-prohibitions / supporting mechanisms -- explicitly must not be
+    collapsed into one 'capability' list"
+  - "An explicit twelve-step 'Architectural Sequence' from Brainstorming through Kernel implementation,
+    confirming the current governance position sits at or before 'Kernel boundary definition'"
+  - "A 'future cognitive computer' analogy (Kernel as the epistemic-memory/integrity substrate of a larger
+    perceive/reason/plan/act system) with an explicit anti-scope-creep constraint: this future possibility
+    must never be used to enlarge the present Kernel boundary"
+
+defines:
+  - "One-sentence canonical definition proposed for ratification: 'The KnowledgeOS Kernel is the smallest
+    authoritative KnowledgeCore boundary required to preserve and enforce the constitutional integrity of
+    admitted epistemic knowledge and its lawful state transitions, while remaining incapable of becoming
+    the semantic interpreter, truth oracle, workflow engine, or external governance system.' -- PROPOSED
+    only, pending HPA/ARB ruling"
+
+refines:
+  - "Restates and formalizes into ADR/governance form the DDD boundary principle already established at
+    0155/0157 ('conceptual relationship != aggregate ownership; traceability != transactional atomicity')"
+  - "Restates the still-proposed KnowledgeAggregate+ConflictRecord+Verification-Port hypothesis already
+    seen at 0165's illustrative sketch, explicitly re-flagging it as PROPOSED, NOT an implementation
+    contract, still carrying the same nine open questions"
+
+contradicts: []
+
+repeats:
+  - {concept: "Conceptual relatedness does not establish aggregate/consistency boundary membership", canonical_source: "0155", novelty: low}
+  - {concept: "KnowledgeAggregate+ConflictRecord illustrative admission-boundary sketch", canonical_source: "0165", novelty: low}
+
+bridge_candidates:
+  - "The 'future cognitive computer' analogy (Kernel as epistemic-integrity substrate beneath a larger
+    perceive/reason/plan/act system) is a genuinely new framing not seen earlier in the corpus -- worth
+    tracking as a potential bridge between the Engineering KnowledgeOS model and any future cognitive-
+    architecture ambitions, though explicitly bounded against scope creep by the source itself"
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None to the 26-lens register. This file is itself a candidate governance artifact (ADR-KOS-KERNEL-001,
+    status PROPOSED) -- tracked here as evidence, not adopted by this reconstruction (per protocol section
+    29: no canonical synthesis until full corpus read; also the source itself states no implementation
+    authorization follows)"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Formalizes (does not extend the substance of) the boundary-principle findings of 0155/0157 into ADR/governance form; still PROPOSED, not adopted."
+  alternative_minimal_kernel: "Same KnowledgeAggregate+ConflictRecord+VerificationPort hypothesis as 0165, now framed as an ADR's stated (not yet ratified) hypothesis"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "First file in the corpus reading order to produce a governance-artifact-formatted (ADR) document
+    rather than a brainstorming/analysis prose piece -- a genuine format escalation worth tracking as a
+    milestone in the corpus's own internal governance maturity, distinct from its substantive content"
+  - "Explicit, repeated self-discipline against scope creep: 'No implementation authorization follows from
+    this ADR' (section 15) and 'the possibility of becoming part of a future computer brain must never be
+    used to enlarge the present Kernel boundary' (closing section) -- both instances of the anti-premature-
+    convergence discipline this reconstruction itself is required to maintain"
+
+undefined_concepts: []
+open_questions:
+  - "Whether ADR-KOS-KERNEL-001 is ever formally ACCEPTED (status change) later in the corpus, and by what
+    HPA/ARB act"
+  - "Whether the nine listed unresolved questions (rejection/refusal semantics, ambiguity vs. contradiction,
+    Confidence derivability, identity continuity, evidence resolvability, authority adequacy, capability
+    taxonomy, DEF-1, existing-aggregate operations) are resolved in later files"
+
+tier2_triggered: true
+tier2_reason: >
+  First formal ADR-format governance artifact in the corpus; proposes a canonical one-sentence Kernel
+  definition pending ratification; introduces a four-way capability taxonomy and an explicit twelve-step
+  architectural sequence; critical for tracking governance-maturity progression across the remaining corpus.

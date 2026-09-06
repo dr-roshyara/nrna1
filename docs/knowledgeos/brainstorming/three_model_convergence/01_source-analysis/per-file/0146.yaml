@@ -1,0 +1,83 @@
+sequence: "0146"
+path: docs/knowledgeos/brainstorming/20260823-104251-constitutional-dsl-intent-vocabulary-and-evidence-weighting-model.md
+title: "Constitutional DSL worked example, Intent Vocabulary, quantitative Evidence Weighting scheme, 15-state Kernel state machine -- implementation-level elaboration of 0145, still unadopted design sketch"
+date: "2026-08-23"
+bytes: 21000
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0145"
+importance: medium
+confidence: high
+about: >
+  Direct elaboration of 0145's Constitutional DSL sketch into a "First Cut" grammar, a worked
+  GovernanceConstitution v2.3.0 example (CONTEXT/ENTITY/EVIDENCE/RULE/CONTRADICTION_RULE/
+  TRANSITION_RULE blocks), a closed Intent Vocabulary (14 actions, 8 entity types, 6 relationships,
+  regex-based pattern grammar), a quantitative Evidence Weighting model (numeric base_weights per
+  evidence type, multiplicative modifiers, a 1.5x contradiction-resolution threshold), and a 15-state
+  Kernel state machine with explicit transitions. Ends by asking which component to build first --
+  explicitly a design proposal, nothing executed or adopted.
+
+introduces:
+  - "Quantitative Evidence Weighting scheme: numeric base_weights per evidence type (CONSTITUTIONAL=1.0
+    down to REFERENCE=0.2) with multiplicative modifiers (authority +20%, longer provenance +10%,
+    longer validity +10%, recency +10%) and an explicit contradiction-resolution threshold (weight_A >
+    weight_B * 1.5 to supersede; within 20% triggers reconciliation-or-escalation) -- the first
+    numerically quantified evidence-strength model in the corpus"
+  - "Closed Intent Vocabulary: 14 named actions (START_REVIEW, ADOPT, SUPERSEDE, ESCALATE, etc.), 8
+    entity types, 6 relationship types, with a regex+slot-filling pattern grammar -- explicitly NOT
+    general NLP, a closed recognition vocabulary"
+  - "15-state Kernel state machine (IDLE through CONFIRMED) with explicit named transitions -- a
+    concrete elaboration of 0145's 6-stage pipeline sketch"
+  - "Worked Constitutional DSL example with 5 concrete RULE definitions and 2 TRANSITION_RULE
+    definitions, illustrating priority-ordered rule evaluation with PASS/FAIL/AMBIGUOUS/CONTRADICTION
+    outcomes"
+
+defines: []
+
+refines:
+  - "Elaborates (does not extend the concept set of) 0145's Constitutional DSL, contradiction
+    vocabulary (SUPERSEDE/RECONCILE/ESCALATE/ENTRENCH reused verbatim), and state-machine pipeline into
+    concrete, illustrative syntax"
+
+contradicts: []
+
+repeats:
+  - {concept: "Constitutional DSL RULE syntax, contradiction resolution vocabulary, six-pillar/state-machine architecture", canonical_source: "0145", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- implementation-level elaboration of already-logged 0145 content; the evidence-weighting
+    numbers are illustrative design detail, not a new tracked dimension"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity"]
+  refines_or_contradicts: "Elaborates 0145's proposals into concrete (unadopted) syntax and numbers."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "First numerically quantified evidence-strength/weighting model in the corpus -- illustrative, not
+    validated against any benchmark, but a genuinely new operationalization worth tracking if a later
+    file tests or adopts it"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the specific numeric weights (1.0/0.9/0.8.../0.2, 1.5x threshold, 20% modifiers) are ever
+    tested, justified, or revised in a later file, or remain purely illustrative"
+
+tier2_triggered: true
+tier2_reason: >
+  First quantitative evidence-weighting model in the corpus, plus a concrete worked DSL example and
+  15-state Kernel state machine elaborating 0145's design sketch.

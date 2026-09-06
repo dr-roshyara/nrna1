@@ -1,0 +1,119 @@
+sequence: 374
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260825-235105_important-correction-to-the-framework.md
+title: "Full Conditionalization of the Extraction Pipeline; Four Distinct Uncertainty Types; Ideal Knowledge != Omniscience; Two Gaps (Epistemic Incompleteness vs Irreducible Uncertainty)"
+date: "2026-08-25"
+bytes: 7348
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 374
+importance: critical
+confidence: high
+about: >
+  A landmark single-layer correction (no duplication) to the entire Evidence->Reason->Fact chain developed
+  across 0371-0373: identifies that the chain was "still too deterministic" because evidence and reasoning
+  are themselves conditional and imperfect, not certain arrows. Reformulates evidence as conditional:
+  E|C,t and P(E|p,C,t)/P(p|E,C,t), illustrated via a worked non-conclusive-evidence example (a server
+  responding on port 8081 is evidence for, but not conclusive proof of, "Nexus is running" -- alternative
+  explanations include another service, a proxy, stale configuration, a test instance, an unexpected
+  process) -- crystallized as E!=p and "E supports p conditionally." Reformulates reasoning as EQUALLY
+  conditional: A=>B is revealed to actually depend on a hidden assumption set C={c1,...,cn}, so the true
+  structure is (A AND C)=>B, not an unconditional A=>B -- worked example: "if Nexus 3.69 is running AND
+  this is the production instance AND the requirement applies to this environment, THEN the system
+  violates requirement R," formalized as R(B|A,C). Consolidates into a fully conditional determination
+  D(p|E,R,C,t), with probability entering as P(p|E,R,C,t) -- explicitly noting the subtlety that "the
+  probability is conditional on the reasoning model," i.e. P(p|E,model,assumptions,C,t), not merely
+  P(p|E). Changes the meaning of "Fact" itself: not "a fact is true" but Fact_t(p|C,R,E) -- p has been
+  determined as a fact UNDER SPECIFIED conditions/evidence/reasoning at time t, explicitly allowing
+  Fact_t1(p) to be valid under one context while Fact_t2(p) is revised under new evidence/conditions.
+  Decomposes the corpus's previously monolithic 0-1 uncertainty continuum into FOUR EXPLICITLY DISTINCT
+  UNCERTAINTY TYPES that "must not be collapsed into one number too early": Evidence uncertainty
+  (P(E|p,C), how reliable is the observation?); Model/reasoning uncertainty (P(R|E,C), how reliable is the
+  reasoning model?); State uncertainty (P(S|E,C), which underlying state actually exists?); Proposition
+  uncertainty (P(p|E,R,C,t), given everything). Mathematically operationalizes the corpus's earlier
+  overlapping-elements finding (0364): a single observation O can be compatible with multiple candidate
+  underlying states S1,S2,S3 simultaneously (O~S1,S2,S3), so extraction is not O->S but O->{S1,S2,...}->
+  conditional-assessment, "exactly where probability becomes useful." Explicitly refuses to equate
+  Probability=Uncertainty: probability is "one mathematical representation of uncertainty under specified
+  assumptions," demonstrated via a worked inter-observer-disagreement example where two rational observers
+  with the same evidence and context can reach P_A(p|E,C)!=P_B(p|E,C) because their underlying MODELS
+  differ -- "same information + different model -> different epistemic state." Produces a fully conditional
+  five-stage pipeline O_<=t -[Evidence|C_t]-> E_t -[Reasoning|M_t]-> R_t -[Determination]-> F_t
+  -[Assessment]-> K_t, with each stage given an explicit conditional formula (E_t=E(O_<=t|C_t);
+  R_t=R(E_t,F_<t|M_t,C_t); F_t=D(R_t|C_t,t)) and a fully conditional probabilistic realization
+  P(F_t|O_<=t,F_<t,M_t,C_t). Produces the file's most consequential philosophical result: the corpus's
+  prior assumption that the ideal Knowledge state K_t*(p) is necessarily in {0,1} is explicitly WITHDRAWN
+  -- the ideal state may itself be conditional, K_t*(p|C_t), and may legitimately equal P(p|C_t,E_t)=0.73
+  WITHOUT this meaning Knowledge is incomplete: it could instead mean that, given everything knowable at t
+  under the available model, the proposition GENUINELY remains uncertain -- crystallized as "Ideal Knowledge
+  != omniscience," explicitly called "a very important conclusion." This directly yields a new TWO-GAP
+  distinction, resolving an ambiguity latent in every prior K_t*/K-hat_t or V_t*/V-hat_t formalization since
+  0366: Gap 1 (epistemic incompleteness, K-hat_t<K_t*, we could know more but haven't extracted it) versus
+  Gap 2 (irreducible uncertainty, even K_t* itself contains uncertainty, e.g. K_t*(p)=0.73) -- explicitly
+  named "fundamental." Reformulates the research target one final time: not "What makes a Fact a Fact?" but
+  "Under what conditions does evidence, combined with conditional reasoning and existing determinations,
+  warrant assigning a proposition a particular epistemic state?", formalized as (E,F_<=t,R,C,t) ->
+  script-E_t(p), with the probabilistic regime as only ONE of several possible realizations (others:
+  logical status, evidence interval, fuzzy truth value). Closes naming the real mathematical problem as (1)
+  how conditional evidence and conditional reasoning should COMBINE to produce an epistemic state, and (2)
+  what is INVARIANT across the different mathematical representations of that state -- proposing a
+  ten-area comparison (Bayesian probability, conditional probability, Bayesian networks, Dempster-Shafer
+  theory, fuzzy/many-valued logic, non-monotonic logic, defeasible reasoning, argumentation theory,
+  epistemic logic, temporal logic, measurement theory), concluding "probability has a precise place in our
+  model without becoming the definition of Knowledge."
+introduces:
+  - concept: "Full conditionalization correction: both Evidence (E|C,t) and Reasoning (R|E,C,t) are themselves conditional, not certain arrows -- the prior Evidence->Reason->Fact chain was 'still too deterministic'"
+  - concept: "Hidden-assumption-set correction to implication: A=>B is revealed to actually mean (A AND C)=>B for a hidden assumption set C={c1,...,cn}, formalized as R(B|A,C) rather than an unconditional A=>B"
+  - concept: "Fact reformulated from an unconditional truth-claim to Fact_t(p|C,R,E): p determined as a fact UNDER SPECIFIED conditions/evidence/reasoning at time t, explicitly permitting context-relative validity (Fact_t1(p) valid under one context while Fact_t2(p) is revised under new evidence)"
+  - concept: "Four explicitly distinct uncertainty types that must not be collapsed into one number: Evidence uncertainty P(E|p,C); Model/reasoning uncertainty P(R|E,C); State uncertainty P(S|E,C); Proposition uncertainty P(p|E,R,C,t)"
+  - concept: "Mathematical operationalization of 0364's overlapping-elements finding: a single observation O compatible with multiple candidate states (O~S1,S2,S3), so extraction is O->{S1,S2,...}->conditional-assessment, not O->S directly"
+  - concept: "Explicit Probability!=Uncertainty refutation: probability is 'one mathematical representation of uncertainty under specified assumptions,' demonstrated via an inter-observer-disagreement worked example (P_A(p|E,C)!=P_B(p|E,C) for identical evidence/context but differing models) -- 'same information + different model -> different epistemic state'"
+  - concept: "Fully conditional five-stage pipeline: O_<=t -[Evidence|C_t]-> E_t -[Reasoning|M_t]-> R_t -[Determination]-> F_t -[Assessment]-> K_t, with explicit conditional formulas for each stage and a fully conditional probabilistic realization P(F_t|O_<=t,F_<t,M_t,C_t)"
+  - concept: "WITHDRAWAL of the prior assumption K_t*(p) in {0,1}: the ideal Knowledge state may itself be conditional and irreducibly probabilistic, K_t*(p|C_t)=P(p|C_t,E_t)=0.73, WITHOUT this meaning Knowledge is incomplete -- 'Ideal Knowledge != omniscience,' explicitly called 'a very important conclusion'"
+  - concept: "New two-gap distinction resolving a latent ambiguity in every prior K_t*/K-hat_t formalization since 0366: Gap 1 (epistemic incompleteness, K-hat_t<K_t*, extractable but not yet extracted) versus Gap 2 (irreducible uncertainty, even K_t* itself is uncertain) -- explicitly named 'fundamental'"
+  - concept: "Final research-target reformulation: 'Under what conditions does evidence, combined with conditional reasoning and existing determinations, warrant assigning a proposition a particular epistemic state?', formalized as (E,F_<=t,R,C,t) -> script-E_t(p), with probability as only one of several possible regime realizations (logical status, evidence interval, fuzzy truth value being others)"
+  - concept: "Ten-area mathematical comparison programme for combining conditional evidence/reasoning into an epistemic state and finding what is invariant across representations: Bayesian probability, conditional probability, Bayesian networks, Dempster-Shafer theory, fuzzy/many-valued logic, non-monotonic logic, defeasible reasoning, argumentation theory, epistemic logic, temporal logic, measurement theory"
+defines: []
+refines:
+  - concept: "0371-0373's Evidence->Reason->Determination->Fact chain and F=(p,v)/Fact(p)<=Warrant(p|R,C,t) formalizations"
+    refinement: "Every arrow re-derived as CONDITIONAL rather than certain -- Evidence is E|C,t, Reasoning is R|E,C,t, and the implication A=>B itself depends on a hidden assumption set C, correcting the prior chain's residual determinism"
+  - concept: "0366/0372's K_t*/K-hat_t and V_t*(p)/V-hat_t(p) ideal-vs-actual gap formalizations, which implicitly assumed K_t*(p)/V_t*(p) in {0,1}"
+    refinement: "That assumption is explicitly WITHDRAWN: the ideal state may itself be conditional and irreducibly probabilistic (K_t*(p|C_t)=0.73 is possible even at the ideal limit), decomposing the single gap into two genuinely distinct gaps (epistemic incompleteness vs. irreducible uncertainty) -- the most significant correction to this formalization family to date"
+  - concept: "0364's overlapping-elements/inverse-problem finding (a single observation compatible with multiple underlying states)"
+    refinement: "Given a precise mathematical operationalization within the conditional pipeline: O~S1,S2,S3 with P(Si|O,C) distributing probability across candidate states, directly connecting the inverse-problem framing to the new fully-conditional determination formalism"
+  - concept: "0372/0373's V(p)=0.8 / assessment-vs-proposition interpretation-underdetermination discussion"
+    refinement: "Deepened via the four-way uncertainty-type decomposition (evidence/model/state/proposition), explicitly warning against collapsing these into one number prematurely -- giving the corpus's interpretation-underdetermination concern a structured, named taxonomy rather than a general caution"
+contradicts:
+  - concept: "0366/0372's implicit assumption that the ideal Knowledge state/value V_t*(p) resolves to {0,1}"
+    source: "this file's own explicit withdrawal"
+    resolution: "Explicitly corrected: the ideal state may be irreducibly probabilistic (K_t*(p|C_t)=0.73), decomposed into the two-gap distinction (epistemic incompleteness vs. irreducible uncertainty) -- an intra-arc self-correction, not a cross-source contradiction"
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the full conditionalization of the extraction pipeline (Evidence|C,t; Reasoning|E,C,t; hidden assumption set C in implications) as the corpus's most rigorous correction to the Evidence->Reason->Fact chain to date."
+  - "dimension-registry.md: record the WITHDRAWAL of K_t*(p) in {0,1} and the new Ideal-Knowledge != omniscience principle as a major correction to every prior ideal-vs-actual gap formalization (0366, 0372, 0373)."
+  - "dimension-registry.md: record the two-gap distinction (epistemic incompleteness vs irreducible uncertainty) as resolving a latent ambiguity present since 0366's K_t*/K-hat_t introduction."
+  - "dimension-registry.md: record the four-way uncertainty-type decomposition (evidence/model/state/proposition) as a structured taxonomy for the corpus's ongoing interpretation-underdetermination concern (0372/0373)."
+anchor_test:
+  anchor: "0371-0373's Evidence->Reason->Fact chain and ideal-vs-actual gap formalizations (K_t*/K-hat_t, V_t*(p)/V-hat_t(p)); 0364's overlapping-elements/inverse-problem finding; 0356's independence-of-changes invariant"
+  supports_dimension: "Mathematical model, major self-correcting landmark: fully conditionalizes the extraction pipeline (every arrow now explicit in its conditioning variables), decomposes uncertainty into four distinct, non-collapsible types, mathematically operationalizes the overlapping-elements finding, and -- most significantly -- WITHDRAWS the prior assumption that the ideal Knowledge state must be classically bivalent, establishing Ideal-Knowledge != omniscience and a genuinely new two-gap distinction (epistemic incompleteness vs irreducible uncertainty) that resolves a latent ambiguity present in every prior ideal-state formalization since 0366"
+  refines_or_contradicts: "refines 0371-0373 (full conditionalization of every pipeline arrow); explicitly corrects/withdraws an implicit assumption in 0366/0372/0373 (K_t*/V_t* in {0,1}); refines 0364 (mathematical operationalization of overlapping elements within the conditional formalism); refines 0372/0373 (four-way uncertainty-type taxonomy structuring the interpretation-underdetermination concern)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "The precise mathematical form of the ten-area comparison's target 'what is invariant across representations' -- posed as the research problem, not yet answered"
+open_questions:
+  - "Whether the two-gap distinction (epistemic incompleteness vs irreducible uncertainty) is formally integrated into the corpus's Kernel-design discipline going forward"
+  - "Whether the ten-area mathematical comparison (Bayesian/Dempster-Shafer/fuzzy/non-monotonic/defeasible/argumentation/epistemic-logic/temporal-logic/measurement-theory) is ever systematically executed"
+  - "Whether the four uncertainty types (evidence/model/state/proposition) are ever kept formally distinct in a worked Kernel example, or eventually collapsed for practicality"
+tier2_triggered: true
+tier2_reason: "Landmark single-layer correction to the entire 0371-0373 Evidence->Reason->Fact chain, fully conditionalizing every stage (Evidence|C,t; Reasoning|E,C,t; hidden assumption sets in implications), decomposing uncertainty into four explicitly non-collapsible types, and -- most significantly -- WITHDRAWING the prior implicit assumption that the ideal Knowledge state must resolve to {0,1}, establishing 'Ideal Knowledge != omniscience' and a genuinely new two-gap distinction (epistemic incompleteness vs. irreducible uncertainty) that resolves a latent ambiguity present in every prior ideal-state formalization since 0366."

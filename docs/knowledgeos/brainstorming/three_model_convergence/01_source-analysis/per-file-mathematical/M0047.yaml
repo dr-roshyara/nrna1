@@ -1,0 +1,125 @@
+sequence: M0047
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-082333_knowledgeos-theory-v1-0-formal-theory-of-epistemic-gaps.md
+title: "KnowledgeOS Theory v1.0 -- Formal Theory of Epistemic Gaps: a Ten-Class Gap Taxonomy (Coverage/Value/Uncertainty/Warrant/Contradiction/Model/Observability/Staleness/Identity/Representation), the Gap-as-Power-Set-Lattice Result Decoupling Gap Theory From K_t's Unsolved Type, Six Theorems With Proofs, and the Profound 'GapIncrease Does Not Imply KnowledgeDecrease' Finding"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c1
+  secondary_note: "a focused, self-contained deep-dive that takes M0043's DEF-21 (Gap as a requirement-set) and builds a complete formal sub-theory around it -- ten gap-type classes, a Gap algebra, a Gap lattice, six theorems with proofs -- while explicitly leaving Sat(K_t,r)'s internal definition open (M0045's GAP-3/GAP-4), proposing it as the next, narrower research question"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0047
+importance: critical
+confidence: high
+about: >
+  A dedicated, complete formal theory of the KnowledgeOS Gap, opening with the same correction
+  M0038/M0043 already made (Gap is not I_t-K_t, since heterogeneous dimensions cannot generally be
+  subtracted) but carrying it much further into a full taxonomy, algebra, and lattice structure.
+
+  **DELIVERS THE FORMAL EPISTEMIC REQUIREMENT AS A SEVEN-TUPLE**: r=(id,type,scope,content,
+  standard,priority,validity) -- richer than M0043's bare Req(EC_t) set, giving the Ideal State a
+  concrete semantic grounding: I_t=R_t (the set of epistemically relevant requirements), rather than
+  a mysterious "all possible knowledge."
+
+  **DELIVERS THE FUNDAMENTAL GAP EQUATION [DEF-G1]**: Delta_t={r in R_t: Sat(K_t,r)=0} -- with
+  Zero, Adequacy, and a clean [THM-G1] proof (Delta_t=empty iff K_t|=EC_t) all following immediately,
+  needing no subtraction, vector space, or finite dimensionality.
+
+  **DELIVERS A TEN-CLASS GAP TAXONOMY, THE MOST COMPLETE IN THE PASS** (richer than M0038's four
+  Z1-Z4 classes or M0043's undifferentiated Req set): Coverage (missing entirely), Value (dimension
+  known, value unknown -- "Unknown Value != Unknown Dimension"), Uncertainty (probability below
+  contractual threshold), Evidence/Warrant ("Having an answer != Having justified knowledge"),
+  Contradiction (conflicting admissible sources -- "the KnowledgeOS state should not silently select
+  one," must represent Conflict(p,not-p) explicitly), Model (facts known but interpretive model
+  inadequate -- the correlation-vs-causation example), Observability (cannot currently be evaluated
+  -- Observable(r,K_t)=0 must NOT automatically become Value(r)=False), Temporal/Staleness
+  ("Superseded != False"), Identity/Referential (a true claim that cannot be reliably attached to
+  the required domain identity), and Representation (information exists but the current
+  representation cannot express the required semantic distinction -- explicitly tied to the kernel
+  experiments' finding that different representation algebras produce different apparent primitive
+  counts).
+
+  **DELIVERS SIX THEOREMS WITH PROOFS**: [THM-G1] Zero equivalence (Delta_t=empty iff K_t|=EC_t);
+  [THM-G2] Gap reduction (Delta_{t+1} subset-of-or-equal Delta_t => K_{t+1} succeq_EC K_t);
+  [THM-G3] Zero equivalence for the numerical functional (G(K_t,EC_t)=0 iff Delta_t=empty, given
+  non-negative per-requirement deficit scores); [THM-G4] Contract invariance (Gap comparison across
+  time requires EC_t=EC_{t+1}, or an explicit requirement-mapping M:Req(EC_t)->Req(EC_{t+1}) --
+  "protects KnowledgeOS against moving the goalposts"); [THM-G5] the Gap control theorem (relating
+  Delta_{t+1} subset-of/subset/not-subset-of Delta_t to whether a transition is a pure epistemic
+  improvement); [THM-G6] the Gap decomposition theorem (Delta_t as a union of all ten typed classes,
+  EXPLICITLY noting the classes may overlap and are not naturally mutually exclusive -- "an obsolete
+  claim may also have insufficient evidence").
+
+  **DELIVERS A COUNTERINTUITIVE CARDINALITY-VS-QUALITY FINDING**: |K_{t+1}|<|K_t| does NOT imply
+  K_{t+1} is epistemically worse -- removing an unsupported claim can improve epistemic quality
+  despite reducing cardinality, so "knowledge quantity and knowledge quality must remain separate."
+
+  **DELIVERS BIDIRECTIONAL GAP (Delta^+/Delta^-, missing vs. contradictory)** and the resulting
+  three-way decomposition Gap = Deficit UNION Conflict UNION Insufficiency -- a cleaner top-level
+  grouping than the ten-class taxonomy, of which the ten classes are a refinement.
+
+  **DELIVERS THE STRATEGIC 'DECOUPLING' RESULT (Secs 60-61), ARGUABLY THE MOST IMPORTANT FINDING**:
+  "we do not need to solve the complete mathematical structure of K_t in order to obtain a rigorous
+  mathematical structure for the Gap" -- because, under a fixed epistemic contract, the Gap lives in
+  the power set (P(R),subset-of-or-equal) regardless of K_t's own unresolved type, with Zero as the
+  bottom element (Zero = bot_G). This directly answers part of the concern M0045 raised (GAP-1, the
+  unsolved type of K_t blocking other progress) by showing Gap theory need not wait for it.
+
+  **DELIVERS THE PROFOUND 'GapIncrease DOES NOT IMPLY KnowledgeDecrease' FINDING**: a new
+  investigation can reveal a previously invisible requirement violation (e.g., discovering a backup
+  system was never actually verified), strictly increasing Delta_t while the system has genuinely
+  become epistemically BETTER, because it has moved from Unknown to Known Gap -- "that is epistemic
+  progress." This motivates representing progress as a vector (Adequacy, GapObservability, Warrant,
+  UncertaintyReduction, ModelAdequacy) rather than collapsing it to a single scalar without an
+  explicit utility function.
+
+  **PROPOSES THE NEXT, NARROWER RESEARCH QUESTION EXPLICITLY**: "How should Sat(K_t,r) be formally
+  defined for each class of epistemic requirement?" -- directly picking up M0045's GAP-3/GAP-4
+  circularity-and-satisfaction-semantics concerns, without yet resolving them (Sat remains an
+  assumed primitive throughout this document, listed again in its own ten-item OPEN registry).
+introduces:
+  - concept: "The formal epistemic requirement seven-tuple r=(id,type,scope,content,standard,priority,validity), grounding the Ideal State in a concrete requirement set rather than an abstract 'all possible knowledge'"
+  - concept: "The ten-class gap taxonomy (Coverage/Value/Uncertainty/Warrant/Contradiction/Model/Observability/Staleness/Identity/Representation), the most complete in the pass"
+  - concept: "The Gap-as-power-set-lattice decoupling result: Gap theory can be made rigorous in P(R) independently of K_t's own unresolved mathematical type"
+  - concept: "The GapIncrease != KnowledgeDecrease finding: a new investigation revealing a previously invisible deficiency is epistemic progress, not regress, even though it strictly increases Delta_t"
+  - concept: "The cardinality-vs-quality separation: removing an unsupported claim can improve K_t despite reducing |K_t|"
+  - concept: "Progress redefined as a vector (Adequacy, GapObservability, Warrant, UncertaintyReduction, ModelAdequacy) rather than a scalar without an explicit utility function"
+  - concept: "The Contract invariance theorem (THM-G4): Gap comparison across time requires either identical epistemic contracts or an explicit requirement-mapping, protecting against goalpost-moving"
+defines:
+  - concept: "The fundamental Gap equation Delta_t={r in R_t: Sat(K_t,r)=0} (DEF-G1), needing no subtraction, metric, or vector space"
+  - concept: "The master numerical Gap functional G(K_t,EC_t)=sum_r w_r d_r(K_t,EC_t), a derived measure explicitly distinct from the semantic Gap definition"
+refines:
+  - concept: "M0038/M0043's Gap-as-requirement-set correction, given a complete ten-class taxonomy, an algebra, and a lattice structure"
+  - concept: "M0038's four Z1-Z4 gap-boundary classes, expanded into a ten-class taxonomy with explicit non-mutual-exclusivity"
+  - concept: "M0045's GAP-3/GAP-4 (semantic-equivalence circularity, satisfaction semantics), narrowed into a single precise next research question rather than resolved"
+contradicts: []
+repeats:
+  - concept: "The Semantic Gap -> Typed Gap -> Numerical Gap hierarchy, consistent with (not novel relative to) the pass's recurring 'canonicalize difference before measurement' principle"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0047 as the pass's most complete formal Gap theory -- ten-class gap taxonomy, six theorems with proofs, the K_t-decoupling result (Gap rigor achievable in P(R) without solving K_t's type), and the profound GapIncrease!=KnowledgeDecrease finding. Proposes Sat(K_t,r)'s formal definition as the next, narrower research question, continuing rather than resolving M0045's GAP-3/GAP-4."
+anchor_test:
+  anchor: "M0038/M0043's Gap-as-requirement-set correction and M0045's GAP-1/GAP-3/GAP-4 (K_t's type, semantic-equivalence circularity, satisfaction semantics)"
+  supports_dimension: "Builds a complete taxonomy/algebra/lattice on top of the requirement-set Gap definition, and shows Gap rigor is achievable independently of K_t's unresolved type -- directly responding to (without fully resolving) M0045's open gaps"
+  refines_or_contradicts: "refines (M0038, M0043, M0045)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'We do not need to solve the complete mathematical structure of K_t in order to obtain a rigorous mathematical structure for the Gap. That is an important breakthrough' -- a genuine methodological decoupling, isolating Gap theory as independently tractable ahead of the still-open K_t-type question."
+  - "'A new observation can make the Gap larger without making KnowledgeOS worse... GapIncrease != KnowledgeDecrease. This is a profound distinction' -- a non-obvious, carefully-justified finding with a worked example (an unverified backup system becoming a known, not merely invisible, deficiency)."
+  - "The document's own ten-item OPEN list (Sec 64) explicitly repeats 'the universal semantics of Sat(K_t,r)' as still unsolved, showing this document advances Gap theory without claiming to have closed the exact circularity concern M0045 raised."
+undefined_concepts:
+  - "Sat(K_t,r)'s internal definition for each requirement type -- named as the single most important next research question, not supplied here"
+  - "The precise normalization rule for combining overlapping requirement sets under Gap composition (Delta_1 (+) Delta_2)"
+open_questions:
+  - "Whether 'How should Sat(K_t,r) be formally defined for each class of epistemic requirement?' receives a dedicated treatment later in this pass."
+  - "Whether the ten gap classes are later shown to be complete (item 5 of this document's own OPEN list)."
+tier2_triggered: true
+tier2_reason: "The pass's most complete formal Gap theory -- a ten-class taxonomy, six proven theorems, a genuine methodological decoupling of Gap rigor from K_t's unresolved type, and a profound, non-obvious GapIncrease!=KnowledgeDecrease finding. Critical importance and full tier-2 treatment warranted."

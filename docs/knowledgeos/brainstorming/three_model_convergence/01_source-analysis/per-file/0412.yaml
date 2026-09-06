@@ -1,0 +1,44 @@
+sequence: 412
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-112545_zero-lens-as-foundational-epistemic-and-architectural-lens-duplicate.md
+title: "Duplicate of 0411 (Zero Lens Canonical Consolidation)"
+date: "2026-08-26"
+bytes: 23944
+model:
+  primary: c1
+  secondary: null
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 411
+importance: low
+confidence: high
+about: >
+  Byte-identical cross-file duplicate of file 0411 (confirmed via diff, zero output, identical byte count).
+  Filename explicitly self-declares "-duplicate," matching the corpus's established convention. Recorded
+  minimally per the established cross-file duplicate protocol.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Entire content duplicates 0411 (Zero Lens canonical consolidation, ZI-01..ZI-10 invariant catalog, Zero-as-meta-lens operator)"
+    canonical_source: 411
+    novelty: "none -- byte-identical cross-file duplicate, verified via diff and self-declared in filename"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0411"
+  supports_dimension: "Cross-file duplicate; no independent evidentiary weight"
+  refines_or_contradicts: "none -- duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "NOT TRIGGERED -- byte-identical duplicate of 0411, self-declared in filename, verified via diff"

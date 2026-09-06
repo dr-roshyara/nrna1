@@ -1,0 +1,97 @@
+sequence: 329
+path: docs/knowledgeos/brainstorming/kernel/classification/cluster-map.md
+title: "Kernel Corpus Conceptual Cluster Map (Phase B) -- companion to 0311's dependency-map"
+date: "2026-08-25"
+bytes: 10186
+model:
+  primary: c1
+  secondary: null
+source_role: CRITICAL_REVIEW
+canonical_source: 329
+importance: critical
+confidence: high
+about: >
+  A second landmark corpus-wide Phase B meta-analysis artifact, companion to this reconstruction's own
+  file 0311 (dependency-map.md), covering the same 141-document kernel/ corpus. Explicitly RESEARCH,
+  NON-AUTHORITATIVE, 'decides nothing, resolves nothing' -- honors a standing instruction 'do not resolve
+  those temptations, map them.' Directly names and connects to the governance/adjudication apparatus
+  first encountered at 0323 (C-15, v1.1, HPA): clarifies three DISTINCT C-n numbering namespaces (v1.1 r3
+  architecture annotations <C-1>..<C-5>; a 22-item HPA adjudication workbook W:C-1..W:C-19 plus
+  W:F-CM-1a/1b/W:Wisdom/W:CC-1; other v1.1 annotations <Z-1>/<R-1>/<A-1..3>/<r4>) and warns conflating them
+  'would corrupt every row of the matrix.' Quantifies S-1 (the two-region corpus split, matching 0311)
+  with an eight-way GENERATION-MODE classification (Book Extraction 50, Unclassified 37, Adversarial
+  Critique 27->28, Duplicate 12, Original Brainstorming 6, Response-to-prior-hypothesis 4, Architecture
+  Proposal 3->4, External Transcription 2), flagging that only 6+4=10 documents carry deliberate project
+  architectural thinking versus 50 carrying merely an author's claim about a book -- an epistemic-weight
+  warning directly relevant to this reconstruction's own model/secondary tagging discipline. Produces a
+  thirteen-cluster conceptual matrix (Identity/Knowledge/Knowledge Space/Projection/Time/Epistemic state/
+  Admission/Evidence/Justification/Boundary-aggregate/Change-supersession/Retraction/Decision-authority/
+  History-lifecycle) with document counts, competing positions, and K3/K4 maturity tags per cluster --
+  independently corroborating multiple findings this reconstruction tracked from primary-source reading
+  (the Knowledge-as-object/state/projection/capacity proliferation, the identity K3-vs-K4 tension, the
+  measurable-space Knowledge Space formalization from 0327/0328). Directly addresses and extends 0323's
+  C-15 material: shows retraction evidence concentrates in the EARLY/original region while projection
+  evidence is almost entirely extraction-era, explicitly warning a synthesis merging them would flatten
+  the S-1 distinction; flags an unresolved CQRS-read-model-vs-epistemic-projection vocabulary collision
+  in the single highest-count projection document (024119); lists three questions the corpus does NOT
+  visibly answer. Closes with a seven-item 'Temptation Map' (recurring architectural over-reach pressures,
+  tracked by arrival count, explicitly not resolved) -- T-7 ('let research become architecture') directly
+  echoes this reconstruction's own MD-017 discipline and 0311's S-3 finding about convergence points 'at
+  risk of being read as architecture.'
+introduces:
+  - concept: "Explicit namespace disambiguation, essential for correctly reading any HPA/v1.1-adjacent material in this reconstruction's sequential pass going forward: <C-1>..<C-5> = v1.1 r3 architecture annotations (e.g. <C-1> canonical-form equality is not an identity determination, <C-5> inability to determine -> UNKNOWN); W:C-1..W:C-19 plus W:F-CM-1a/1b, W:Wisdom, W:CC-1 = a 22-item HPA adjudication workbook of OPEN QUESTIONS (e.g. W:C-8 identity-continuity test, W:C-15 retraction/withdrawal representation -- the item this reconstruction's own file 0323 discusses); <Z-1>/<R-1>/<A-1..3>/<r4> = other v1.1 annotations -- explicitly warns 'conflating them would corrupt every row of the matrix'"
+  - concept: "Full eighteen-item workbook glossary for the W:C-n items referenced in the cluster matrix: capability-list re-typing, determinism, authority-adequacy checking, KnowledgeId targeting, supersession coordination locus, stale outward reference, CONFLICTED<->ConflictRecord cardinality, identity-continuity test, evidence-reference resolvability, Confidence derivability, NOT_ASSESSED representation, retraction/withdrawal representation, admission idempotency, internally impossible claim, constitutional-version binding"
+  - concept: "Quantified S-1 two-region split (matching 0311's own finding), refined into an eight-way GENERATION-MODE taxonomy with explicit epistemic-weight annotations: BOOK EXTRACTION (50, research input, an author's claim not a project position), UNCLASSIFIED (37, mode not mechanically determinable, flagged for Phase D judgment), ADVERSARIAL CRITIQUE (27, later updated to 28, 'the most Kernel-useful mode'), DUPLICATE (12, no independent weight -- matching this reconstruction's own duplicate-tracking, now with a corpus-internal count confirming its own prior 12-total claim from 0311), ORIGINAL BRAINSTORMING (6, 'the scarcest and heaviest class'), RESPONSE TO PRIOR HYPOTHESIS (4, revises a project position), ARCHITECTURE PROPOSAL (3, later 4, 'highest leakage risk per census T-7'), EXTERNAL TRANSCRIPTION (2, 'not analysis at all', naming 163922 and 130339 -- 163922 independently confirmed by this reconstruction's own file 0256 per the earlier role-anomaly cross-check)"
+  - concept: "Headline epistemic-weight warning: 'the single most important number here: 6+4=10 documents carry deliberate project architectural thinking. 50 carry an author's claim about a book. A book-derived observation must not inherit the weight of a project hypothesis. Every synthesis step should keep these apart' -- directly reinforcing this reconstruction's own model/secondary attribution and source_role discipline (PRIMARY_RESEARCH vs CRITICAL_REVIEW vs FOUNDATIONAL vs DUPLICATE_REPRODUCTION)"
+  - concept: "Live update note (2026-08-25 18:17, +8 documents since the base table): file 181038 (this reconstruction's 0327, the Knowledge Measure Theory v0.1 proposal) added as a 4th ARCHITECTURE PROPOSAL; file 181719 (this reconstruction's 0328, the adversarial critique) added as a 28th ADVERSARIAL CRITIQUE -- an external, corpus-internal reclassification of the exact two files this reconstruction just processed, independently confirming their source_role classification (0327 as architecture-proposal-weight, 0328 as adversarial-critique-weight)"
+  - concept: "Thirteen-cluster conceptual matrix, each with document count, competing positions, and K-tier: Identity (~14 docs, primitive&indefinable vs transformational/contextual vs assigned-never-derived, K3/K4); Knowledge (~30 docs, object vs state vs projection vs capacity [155510, matching this reconstruction's own 0294] vs not-the-Kernel-primitive-at-all [three named files], K3/K4); Knowledge Space (28 docs, unbounded/infinite [135642, 180730=this reconstruction's 0325] vs bounded-by-purpose vs formal state space vs measurable space (Omega,F) [181038=0327], K3); Projection (38 docs, view-only vs epistemically-meaningful vs CQRS-read-model [024119] vs measure-over-measurable-space [181038 attacked by 181719=0328], K3/K4); Time/temporal (42 docs, timestamp vs temporal identity vs hidden temporal state, K3); Epistemic state (~20 docs, seven-closed-states v1.1 SS9 vs four-valued T/F/B/N vs 8-way UNKNOWN [125708] vs state-as-primary-object, K4); Admission (35 docs, gate vs selection vs plural admission, K4); Evidence (~40 docs, evidence-as-domain vs evidence-as-input vs evidence!=authority per v1.1, K3/K4); Justification (~25 docs, structural path vs semantic content vs pramana route [164328], K4); Boundary/aggregate (~24 docs, minimal vs broad/god-object [attacked] vs preservation!=consistency!=projection, K4); Change/supersession (40 docs, transition vs new-identity vs projection-change vs non-monotonic [125708 SS21], K4); Retraction (19 docs, all three positions state/event/disappearance present, none reconciled, K4); Decision/authority (59 docs -- the largest cluster, authority-as-role vs as-property vs institutional/social [155035], K3/K4); History/lifecycle (49 docs, member vs separate-record vs append-only-projection, K3)"
+  - concept: "Structural finding on C-15 (this reconstruction's own file 0323's exact topic): retraction/withdrawal material concentrates in the EARLY/ORIGINAL region (top docs 114358/32, 233040/29, 111647/24, 113410/14, 123619/11), while projection material is almost entirely LATE/EXTRACTION-ERA (top docs 110525/34, 140251/28, 135642/20, 155035/13); temporal material spans both -- explicit consequence: retraction evidence is 'the project's own thinking,' projection evidence is 'almost entirely extraction-era,' they do not carry equal weight, and a synthesis merging them 'flattens exactly the distinction S-1 exposes' -- directly bears on 0323's own Knowledge-Space/Projection-vs-retraction reframing of C-15"
+  - concept: "Unresolved vocabulary collision, flagged not resolved: document 024119 leads the projection-cluster count (49 hits) but uses 'projection' in the CQRS READ-MODEL sense, not the epistemic sense -- 'two meanings, one word, inside one cluster,' explicitly named 'a Vani-class hazard that must be separated before any projection synthesis,' directly connecting to the corpus's own MD-017-style discipline against silent resemblance-to-identity collapse"
+  - concept: "Three explicit corpus gaps (questions the HPA asked that no document visibly answers, marked as gaps to CONFIRM in Phase D, not settled absences): can two projections differ without knowledge differing? does absence from a projection mean anything? is history part of the object or a record of transitions?"
+  - concept: "Seven-item Temptation Map (recurring architectural over-reach pressures, explicitly mapped not resolved, framed as prospective falsification tests for after formal adjudication): T-1 Enlarge the aggregate (3 arrivals); T-2 Add an eighth epistemic state (5 arrivals, three different names across the corpus: AMBIGUOUS -> catuskoti B/N -> 8-way UNKNOWN -- directly connects to this reconstruction's own tracked 0285/0286/0322 UNKNOWN-taxonomy proliferation); T-3 Make Knowledge the Kernel primitive (5 arrivals, both directions); T-4 Make identity derived/relational (2 opposed arrivals); T-5 Merge plurality into contradiction (2 arrivals, one document does it, one avoids it); T-6 Use a lens before defining it (Zero Lens, ~17 hours); T-7 Let research become architecture (3 arrivals) -- explicit framing: 'the corpus is not only a source of ideas. It is a record of where human and AI reasoning repeatedly want to expand the Kernel -- which is what makes it valuable as the future adversarial corpus, and dangerous as a synthesis input'"
+  - concept: "Explicit self-scoping close (Section 5, 'What Phase B did not do'): no cluster read, no merit ranking, no temptation resolved, no first cluster chosen for Phase D, nothing promoted, nothing written to KnowledgeOS law; counts are keyword-presence not aboutness (Phase D corrects this); provenance for 37/141 documents remains undetermined"
+defines: []
+refines:
+  - concept: "0311's S-1 two-region corpus split and its own generation-mode/provenance findings"
+    refinement: "Independently produced by a parallel Phase B artifact (companion, not duplicate), refining S-1 into an explicit eight-way generation-mode taxonomy with epistemic-weight annotations and a live-updated document count including this reconstruction's own recently-processed 0327/0328"
+  - concept: "0323's C-15 governance-strand material (v1.1, KnowledgeCore, HPA, workbook references, previously undefined in this reconstruction's per-file record)"
+    refinement: "Directly clarified: 'HPA' names the adjudication workbook's author/process; C-15 is workbook item W:C-15 (retraction/withdrawal representation), one of 22 W:C-n open questions; v1.1 r3 supplies a separate <C-n> architecture-annotation namespace -- resolves several of 0323's own flagged open questions about what these references denote"
+  - concept: "The corpus's long-tracked identity-primitive-vs-knowledge-not-primitive tension (0273/0276/0278/0318) and Daoist-ziran-vs-INV-KOS-IDENTITY-001 live tension"
+    refinement: "Independently confirmed as an unreconciled K3/K4 cluster-level finding (Identity cluster: primitive&indefinable vs transformational/contextual vs assigned-never-derived, three genuinely competing positions across ~14 documents)"
+  - concept: "This reconstruction's own duplicate-file tracking (10 verified instances as of 0311/0292, corpus census claiming 12)"
+    refinement: "Independently reconfirms the DUPLICATE generation-mode category at 12 documents corpus-wide, consistent with 0311's own prior claim"
+  - concept: "0327/0328's measurable-space Knowledge Space formalization and its adversarial correction"
+    refinement: "Independently cross-referenced within the corpus's own cluster matrix as a fourth competing 'Knowledge Space' position (measurable space (Omega,F)) and a fourth competing 'Projection' position (measure over a measurable space, explicitly noted as 'attacked by 181719')"
+  - concept: "The corpus's UNKNOWN-taxonomy proliferation (0285/0286/0322's eight-category and three-mechanism versions)"
+    refinement: "Independently identified as Temptation T-2 ('add an eighth epistemic state'), tracked corpus-wide as a five-arrival, three-different-naming pattern (AMBIGUOUS -> catuskoti B/N -> 8-way UNKNOWN)"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the namespace disambiguation (v1.1 <C-n> vs HPA workbook W:C-n vs other v1.1 annotations) as essential context for correctly reading all future C-15/HPA/v1.1-adjacent material in this reconstruction's sequential pass, resolving several open questions flagged at 0323."
+  - "dimension-registry.md: record the thirteen-cluster conceptual matrix and its K3/K4 tags as a corpus-internal, independently-produced cross-check against this reconstruction's own primary-source-derived findings (identity tension, Knowledge-Vector proliferation, Knowledge-Space formalization, UNKNOWN-taxonomy proliferation) -- broad convergence noted, no new contradiction found."
+  - "dimension-registry.md: record the Temptation Map (T-1..T-7) as a new corpus-internal meta-finding, directly corroborating this reconstruction's own MD-017 discipline (T-7 'let research become architecture') and 0311's S-3 finding."
+anchor_test:
+  anchor: "0311's dependency-map.md (Phase B companion); 0323's C-15/v1.1/HPA references; the corpus's identity-primitive tension; 0327/0328's Knowledge Measure Theory cycle; this reconstruction's own duplicate-file and UNKNOWN-taxonomy tracking"
+  supports_dimension: "Cross-cutting corpus-internal meta-analysis: a second landmark Phase B artifact independently corroborating multiple findings this reconstruction reached via primary-source reading, while resolving the v1.1/HPA/workbook namespace ambiguity left open at 0323"
+  refines_or_contradicts: "refines 0311 (companion Phase B artifact), refines/resolves 0323's open namespace questions, independently confirms the identity tension and UNKNOWN-taxonomy proliferation, cross-references 0327/0328"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "Full expansion of 'HPA' (acronym never spelled out in this file) -- likely 'Human Principal Architect' or similar role name, inferred from context (the party who names the C-15 question set and the workbook) but not explicitly defined here"
+  - "The full content of the referenced companion artifacts ../00_CENSUS.md (Phase A) and v1.1 r3 itself -- referenced but not included in this file"
+open_questions:
+  - "Whether ../00_CENSUS.md (the referenced Phase A census, with findings T-1 through T-7 per 0311) is encountered later in this reconstruction's sequential pass"
+  - "Whether Phase D deep reading (explicitly not started per this file) is ever undertaken within the corpus's own timeline, and which cluster is chosen first"
+  - "Whether the 024119 CQRS-vs-epistemic-projection vocabulary collision is ever resolved"
+  - "Whether the three named corpus gaps (projections-differ-without-knowledge-differing, absence-from-projection meaning, history-as-object-vs-record) are ever directly addressed by a later document"
+tier2_triggered: true
+tier2_reason: "A second landmark corpus-wide Phase B meta-analysis artifact (companion to this reconstruction's own file 0311), explicitly RESEARCH/NON-AUTHORITATIVE. Disambiguates three C-n numbering namespaces (resolving several of 0323's open questions about v1.1/HPA/workbook references), quantifies the corpus's two-region generation-mode split with epistemic-weight warnings, produces a thirteen-cluster conceptual matrix with K3/K4 tags independently corroborating multiple findings this reconstruction reached via primary-source reading, directly extends 0323's C-15 material with a region-concentration finding and an unresolved CQRS-vs-epistemic projection vocabulary collision, and closes with a seven-item Temptation Map of recurring architectural over-reach pressures."

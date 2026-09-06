@@ -1,0 +1,84 @@
+sequence: 11
+path: docs/knowledgeos/2026-08-02-knowledgeos-product-boundary-discovery.md
+title: KnowledgeOS — Product Boundary Discovery
+date: 2026-08-02
+bytes: 27241
+doc_type: strategic DDD product-boundary discovery (source of the MVK; annotated REFUTED IN PART by its own author)
+
+primary_model_initial: engineering_knowledgeos
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - five strategic products, extraction categories, MVK, lifecycle - all C1 objects
+  - "'kernel' occurs in three senses, all engineering: Reference Architecture (kernel), Evans Shared Kernel, Minimum Viable KnowledgeOS"
+  - zero occurrences of knowledge state, K_t, dimension, value, Buddhi, operator, purification, Moksha
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+confidence: high
+secondary_models: [ddd, domain_model, kernel, governance, evidence, provenance, contradiction, invariants]
+
+status: DR
+maturity: developing
+importance: high
+
+introduces:
+  - minimum_viable_knowledgeos_mvk
+  - portability_of_parts_is_not_sufficiency_of_the_whole
+  - knowledge_flow_authority_flow_inversion
+  - replaceable_is_not_reusable
+  - the_unbounded_kernel               # shared methodology sitting in a product path
+  - a_context_map_with_one_edge_is_the_measurement
+  - the_flywheel_may_be_a_pipeline
+  - naming_a_mechanism_is_not_exercising_it
+defines:
+  - mvk                                # EXTENSIONAL: ten layers of named artifacts
+  - four_extraction_categories         # permanent / product template / product instance / runtime adapter
+  - sp1_to_sp5_with_never_owns_clauses
+hypotheses:
+  - mvk_sufficiency                    # n=0, explicitly; later REFUTED by 0008
+  - L1_L2_L6_lifecycle_transitions
+  - PR1_to_PR5_relationship_candidates # named, deliberately unassigned
+  - AR1_to_AR8_architectural_risks
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 11th consecutive file
+  - kernel             # three senses in one document, none defined
+  - sufficiency        # the document's central concept; NO sufficiency criterion given
+  - coherent           # the modifier doing the work in the minimality question, undefined
+  - bootstrap
+  - reusable           # still interchangeable with portable and extractable
+open_questions:
+  - "G-1 the loop-closing transition has never been traversed"
+  - "G-7 the MVK is built from unratified parts"
+  - "G-11..G-14 genesis, role scaling, acquisition, strategic method (added by the refutation)"
+  - what would sufficiency mean operationally
+  - is the MVK repairable or wrongly conceived
+
+depends_on: []
+extends: [1]
+refines: [1]
+renames: [3]
+contradicts: []      # it is CONTRADICTED BY 8 and 10, which precede it in the reading order
+supersedes: []
+repeats: [1, 9, 10]
+connects_to: [1, 5, 8, 9, 10]
+
+bridges: []
+bridge_evidence:
+  - "NO BRIDGE RECORDED. This file is a candidate site for MD-007 possibility (iii) - a recorded C1
+     limitation that could motivate a deeper question. It states plainly that the platform's central
+     property is untested. But its response is entirely within C1 ('test the MVK, do not extract
+     it') and it asks NO epistemic question. Recorded as: C1 limitation identified at seq 11,
+     C2 question NOT raised."
+
+tier2_triggered: true
+tier2_reason: >
+  Poses the corpus's FIRST kernel minimality question, and poses it well (counterfactual plus
+  capability) while answering it extensionally - the gap that the later experiment exploited.
+  States a compositional result that governs §23/§31: a property holding of every element does not
+  establish the property of the set ("portability is a property of parts, sufficiency is a property
+  of the whole"). And exposes a THIRD closed verdict vocabulary (seven members, a superset of the
+  two that 0008 recorded as colliding), materially strengthening the corpus's cleanest formal
+  contradiction.

@@ -1,0 +1,62 @@
+
+==========================================================================
+EXP-1  Content-only abstraction vs. differing provenance  (Step 255 Class I)
+==========================================================================
+  K1 = ['a1:Nexus.version=3.69 <vendor/api@10> sigma=Supported']
+  K2 = ['a1:Nexus.version=3.69 <forum/scrape@10> sigma=Supported']
+  content-only says equal? True
+  explain(K1) = ['<vendor/api@10>']
+  explain(K2) = ['<forum/scrape@10>']
+
+  content-only sufficient under OPS_MINIMAL? False
+    counterexample: op=explain  ['<vendor/api@10>'] != ['<forum/scrape@10>']
+  => H1 CONFIRMED by execution: content-only is NOT a sufficient abstraction.
+
+==========================================================================
+EXP-2  Is (content + in-assertion provenance) sufficient?  (Step 265 verdict)
+==========================================================================
+  KA: A=['a1:Nexus.version=3.69 <internal/derivation@11> sigma=Supported', 'b1:Nexus.eol=2027 <vendor/api@10> sigma=Supported']
+      R=[('a1', 'b1', 'derives')]
+  KB: A=['a1:Nexus.version=3.69 <internal/derivation@11> sigma=Supported', 'b1:Nexus.eol=2027 <vendor/api@10> sigma=Supported']
+      R=[]
+  same propositions?               True
+  same per-proposition provenance? True
+  content-only equal?              True
+  content+status equal?            True
+  withdraw('vendor'):  KA -> []
+                       KB -> ['Nexus.version=3.69']
+
+  (content + in-assertion provenance) sufficient under OPS_FULL? False
+    counterexample: op=withdraw  [] != ['Nexus.version=3.69']
+  => OBSERVED: the two states agree on every proposition AND on every
+     proposition's provenance, yet withdraw() distinguishes them.
+     Therefore Pi (provenance inside the assertion, Step 265's placement) is
+     NOT what restores sufficiency -- the RELATION set R is.  Step 265's
+     placement verdict is orthogonal to the sufficiency question it is often
+     cited for; the load-bearing component is R_der.
+
+==========================================================================
+EXP-3  Is K=(A,R) itself sufficient?  ANSWER DEPENDS ON THE OPERATION SET
+==========================================================================
+  K(H_calm)   A=['a1']  R=[]
+  K(H_stormy) A=['a1']  R=[]
+  structurally equal?  True
+  K=(A,R) sufficient under OPS_MINIMAL? True
+  K=(A,R) sufficient under OPS_FULL? True
+
+  Both states are structurally IDENTICAL, so K=(A,R) cannot distinguish them.
+  Under OPS_MINIMAL/OPS_FULL as coded, no CURRENT operation distinguishes them either
+  -- because contest_count reads the CURRENT R, which is empty in both.
+
+  Now add ONE further operation that the corpus's own governance material makes
+  plausible: a policy that escalates an assertion which has EVER been contested.
+  ever_contested(H_calm,P)   = False
+  ever_contested(H_stormy,P) = True
+
+  => H3 is UNDECIDED, and H4 is CONFIRMED:
+     K=(A,R) is sufficient IFF the mandatory operation set O excludes every
+     history-sensitive predicate.  The corpus never closes O (Step 266: the
+     operation registry is missing; policy and authority are class-C).
+     Therefore "K=(A,R) is the minimal sufficient state" is NOT a theorem of
+     the corpus -- it is a consequence of an unstated choice of O.
+

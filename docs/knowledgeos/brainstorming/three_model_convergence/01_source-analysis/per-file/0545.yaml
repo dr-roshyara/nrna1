@@ -1,0 +1,166 @@
+sequence: 545
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-142250_step-004-the-evidence-aggregation-axioms.md
+title: "CAPSTONE LANDMARK: The KnowledgeOS Evidence Constitution (E-K1..E-K10) — Sixteen Fully Worked Aggregation Axioms; a Kernel/Policy Axiom Split (A1-A4 Kernel, A5-A8 Policy); a Nine-Framework Comparative Table Definitively Concludes 'There Is Probably No Single Universal KnowledgeOS Evidence Algebra' → Kernel + Pluggable Assessment Calculi; Closes Naming Step 5 — the Semantic Domain of Evidence Contribution Itself Still Undefined"
+date: "2026-08-27"
+bytes: 14590
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the culminating file of the corpus's sustained six-step Evidence-theory research arc (0532-0545), directly executing the named 'Step 4' and delivering its most consolidated, canonical axiom set yet"
+source_role: PRIMARY_RESEARCH
+canonical_source: 545
+importance: critical
+confidence: high
+about: >
+  The capstone file of the corpus's sustained, multi-file Evidence Assessment research arc
+  (0532->0533->0534->0535->0536->0537->0538->0539->0540->0541->0543->0544->0545), opening: "Step 4 is the
+  point where we turn the theory into an actual mathematical specification. I recommend we do NOT choose
+  Bayesian, Dempster-Shafer, weighted sums, etc. yet. First we define what any admissible KnowledgeOS
+  aggregation operator is required to satisfy."
+
+  **Delivers sixteen fully worked, individually justified aggregation axioms**, several sharper or more
+  concretely illustrated than any prior corpus statement: (1) Determinism -- `EA_ρ(E,P,C)=EA_ρ(E,P,C)` for
+  fixed inputs, with the important consequence that LLM output variability must be represented as an
+  explicit `InferenceUncertainty` object or handled via a deterministic policy, never hidden inside the
+  mathematical definition itself -- `LLM variability≠epistemic randomness`; (2) Permutation invariance
+  (evidence arrival order must not matter, since KnowledgeOS ingests documents, database observations, LLM
+  results, and human reviews at different times); (3) Duplicate invariance, explicitly proposed as a
+  KERNEL invariant; (4) Derived-evidence non-inflation -- `e_1≺e_2 ⇒ IncrementalIndependentSupport
+  (e_2|e_1)=0` unless policy explicitly identifies an additional independent observation contained within
+  e_2, particularly important for Document->LLM->Summary->Report chains; (5) Irrelevance invariance --
+  zero-relevance evidence leaves the assessment unchanged without being deleted, `NonRelevant≠Nonexistent`;
+  (6) Supporting monotonicity, carefully scoped as directional only (adding valid supporting evidence
+  cannot reduce the support component, and symmetrically for opposing evidence), explicitly NOT implying
+  the final conclusion becomes more certain overall, since opposing evidence can arrive simultaneously; (7)
+  Contradiction preservation, delivered with the file's sharpest concrete illustration yet of why
+  subtraction is wrong: `S^+=0.91`, `S^-=0.88` must NOT become `0.03`, because `0.03` conceals the
+  existence of a serious active conflict; (8) Conflict sensitivity, delivering a genuinely richer,
+  FOUR-VALUED conflict status
+  `Conflict_ρ(E^+,E^-,C)->{NoConflict,Potential,Active,Unresolved}`, more expressive than the corpus's
+  earlier binary conflict flag -- "conflict detection is not simply arithmetic subtraction"; (9) Dependency
+  sensitivity, delivering a concrete formal test criterion for candidate aggregation models:
+  `Agg(E∪{e_2})≠Agg(E∪{e_2^independent})` where `e_2^independent` is otherwise identical but has
+  independent provenance; (10) Unknown dependency must remain unknown -- a genuine three-valued property:
+  `UnknownDependency` implies no automatic independence credit, but critically does NOT imply Dependent
+  either, the value stays `Unknown`; (11) Corroboration -- `Corroboration_ρ(e_1,e_2)>0` for independent
+  supporting evidence, deliberately left unquantified as policy territory; (12) Temporal sensitivity,
+  delivered with a nuanced worked distinction: `Contribution(e_1)≠Contribution(e_2)` for current vs. stale
+  evidence, but `Stale≠Deleted` -- a 2024 architecture document remains valid evidence about what existed
+  in 2024, even though it is not evidence of today's architecture, showing temporal validity is
+  target-relative, not absolute; (13) Context sensitivity, `Contribution(e,P,C_1)≠Contribution(e,P,C_2)`
+  legitimately, worked through a three-way example (Nexus 3.69 being relevant to historical reconstruction,
+  irrelevant to a migration decision, and highly relevant to a 2024 audit simultaneously) --
+  "evidence has no universal relevance"; (14) Provenance preservation -- `Basis(EA)⊆E` must remain
+  recoverable, `EA->EvidenceLineage`, giving KnowledgeOS the ability to answer "why do you believe this?"
+  with an actual evidence graph; (15) No evidence creation -- `Agg(∅)=NoEvidence`, explicitly never `0.5`
+  and certainly never `Confirmed`, a critical distinction between absence of evidence and neutral evidence;
+  (16) No certainty creation from aggregation alone -- `StrongEvidence⇏Truth`; strong evidence yields only
+  `StrongSupport` under policy, with a SEPARATE, distinct "conclusion policy" (not an evidence law)
+  determining whether `StrongSupport⇒AcceptedAssertion`.
+
+  **Reconfirms the three-layer separation** (Layer A Evidence aggregation `E->EA`, "how strongly does
+  evidence support/oppose P?"; Layer B Epistemic conclusion `EA->A`, "what may the Knowledge State accept
+  about P?"; Layer C Decision `A,I,P->Decision`, "what should we do?"), giving `Evidence≠Conclusion≠
+  Decision` its cleanest formal restatement in the arc.
+
+  **Formalizes admissibility for aggregation policies**: an aggregation policy `Agg_ρ` is admissible iff it
+  satisfies the applicable axiom set `𝒜={A_1,...,A_n}`, written `Agg_ρ⊨𝒜` -- "the correct mathematical
+  way to compare Bayesian, Dempster-Shafer, weighted, saturating, etc." **Delivers the file's most important
+  structural clarification**: not every axiom must be universal -- some are KERNEL invariants (A1 Identity
+  preservation, A2 Provenance preservation, A3 Contradiction preservation, A4 No automatic independence),
+  while others are POLICY properties (A5 Corroboration rule, A6 Saturation, A7 Decision threshold, A8
+  Probability interpretation) -- "essential for DDD."
+
+  **Delivers the file's central formal deliverable -- the KnowledgeOS Evidence Constitution, a consolidated
+  ten-item kernel-principle set (E-K1 through E-K10)**: E-K1 Evidence identity (`e=e`, explicitly
+  represented); E-K2 No duplicate inflation; E-K3 Provenance preservation
+  (`Assessment⇒Basis`); E-K4 Dependency awareness (`e_i≺e_j⇒e_j` not independent of `e_i`); E-K5 Unknown is
+  not independent (`UnknownDependency⇒¬ConfirmedIndependent`); E-K6 Contradiction preservation
+  (`Support(P)>0∧Support(¬P)>0⇒Conflict retained`); E-K7 Context dependence
+  (`Contribution(e,P,C)`, never `Contribution(e)` alone); E-K8 Temporal preservation (`Stale≠Deleted`);
+  E-K9 No truth by aggregation (`EvidenceAssessment≠Truth`); E-K10 No decision by aggregation
+  (`EvidenceAssessment≠Decision`) -- "strong enough that I would consider them candidates for the
+  KnowledgeOS epistemic constitution," the arc's most polished and consolidated axiom presentation, though
+  yet another independently-numbered scheme requiring reconciliation with the corpus's several earlier EVD/E
+  axiom sets (0533, 0534, 0535, 0536).
+
+  **Delivers the file's central and most consequential comparative result -- a nine-framework evaluation
+  table**, matching Maximum, Mean, Weighted sum, Saturating aggregation, Bayesian, Dempster-Shafer,
+  Possibility theory, Argumentation frameworks, and Graph-based evidence models each against a named main
+  strength and a specific KnowledgeOS-relevant problem (e.g. Maximum avoids duplicate inflation but cannot
+  represent cumulative corroboration; Bayesian offers principled probabilistic inference but requires
+  priors, likelihoods, and dependency assumptions KnowledgeOS often cannot supply; Dempster-Shafer offers
+  explicit belief/plausibility but its combination and conflict-normalization rules are themselves policy
+  choices). **Delivers the definitive concluding statement of the entire arc**: "There is probably no
+  single universal KnowledgeOS evidence algebra," settling on `KnowledgeOS Kernel + Pluggable Assessment
+  Calculi` as "looking mathematically stronger" -- the arc's clearest and most decisive resolution of the
+  aggregation-formula question first raised at 0534.
+
+  **Delivers a complete, unified architecture diagram** integrating the entire arc: Raw Inputs -> Evidence
+  -> {Identity/Lineage, Dependency, Context, Validity} -> Evidence Graph -> Assessment Calculus (ρ) ->
+  Evidence Assessment -> {Conclusion, Conflict} -> Knowledge State -> Zero/Lord/Sārathi, explicitly noting
+  "the calculus is a replaceable policy component."
+
+  **Reframes the research question itself**: not "which formula gives the best confidence score?" but
+  "which mathematical assessment calculi satisfy the epistemic and domain invariants of KnowledgeOS?",
+  formalized as `𝒞_admissible={ρ | Agg_ρ⊨𝒜_kernel}`, with domain-specific policies permitted to impose
+  strictly stronger axiom sets `𝒜_ρ⊇𝒜_kernel`.
+
+  **Closes by opening a genuinely deeper, still-unresolved question named "Step 5"**: before any calculus
+  can rigorously be selected, KnowledgeOS must determine WHAT mathematical object is actually being
+  aggregated in the first place -- evidence strength? belief? likelihood? support? arguments? information
+  gain? -- explicitly "these are not interchangeable mathematical objects," naming the next required
+  research phase "Step 5 -- Define the semantic domain of evidence contribution," a prerequisite the arc
+  had implicitly assumed answered throughout 0532-0545 but now explicitly admits remains open.
+introduces:
+  - concept: "Sixteen fully worked, individually-justified evidence-aggregation axioms, several with sharper concrete illustrations than any prior corpus statement (e.g. the 0.91/0.88->NOT-0.03 subtraction counterexample; the four-valued Conflict status; the target-relative temporal-validity nuance)"
+  - concept: "The KnowledgeOS Evidence Constitution: a consolidated, canonical ten-item kernel-principle set (E-K1..E-K10), the arc's cleanest single axiom presentation"
+  - concept: "Formal admissibility for aggregation policies: Agg_ρ⊨𝒜 — an aggregation operator is admissible iff it satisfies a declared axiom set, the correct mathematical basis for comparing candidate frameworks"
+  - concept: "An explicit Kernel/Policy axiom split (A1-A4 kernel: Identity/Provenance/Contradiction preservation, No automatic independence; A5-A8 policy: Corroboration rule, Saturation, Decision threshold, Probability interpretation)"
+  - concept: "A nine-framework comparative evaluation table (Max/Mean/Weighted-sum/Saturating/Bayesian/Dempster-Shafer/Possibility-theory/Argumentation/Graph-based), each with a named strength and a specific problem for KnowledgeOS, delivering the definitive conclusion that no single universal evidence algebra exists"
+  - concept: "The formalized set of admissible calculi 𝒞_admissible={ρ | Agg_ρ⊨𝒜_kernel}, with domain policies permitted to impose strictly stronger axiom sets 𝒜_ρ⊇𝒜_kernel"
+  - concept: "The reframed research question: not which formula gives the best score, but which calculi satisfy KnowledgeOS's epistemic and domain invariants"
+  - concept: "'Step 5 — Define the semantic domain of evidence contribution' as a genuinely deeper, previously-unaddressed prerequisite question: whether the aggregated object is evidence strength, belief, likelihood, support, arguments, or information gain — explicitly non-interchangeable mathematical objects"
+defines:
+  - concept: "The KnowledgeOS Evidence Constitution (E-K1..E-K10)"
+    definition: "E-K1 Evidence identity; E-K2 No duplicate inflation; E-K3 Provenance preservation; E-K4 Dependency awareness; E-K5 Unknown is not independent; E-K6 Contradiction preservation; E-K7 Context dependence; E-K8 Temporal preservation; E-K9 No truth by aggregation; E-K10 No decision by aggregation — a consolidated, canonical kernel-principle candidate set for KnowledgeOS's evidence theory"
+  - concept: "Admissibility (Agg_ρ⊨𝒜)"
+    definition: "An aggregation policy ρ is admissible relative to an axiom set 𝒜 if its aggregation function Agg_ρ satisfies every axiom in 𝒜 — the formal basis for comparing candidate mathematical frameworks against KnowledgeOS's requirements rather than choosing by intuition"
+  - concept: "The Kernel/Policy axiom split for Evidence Aggregation"
+    definition: "Kernel axioms (A1 Identity preservation, A2 Provenance preservation, A3 Contradiction preservation, A4 No automatic independence) must hold under every admissible policy; policy axioms (A5 Corroboration rule, A6 Saturation, A7 Decision threshold, A8 Probability interpretation) may vary by domain"
+refines:
+  - concept: "The entire corpus's Evidence-theory research arc (0533's EVD-1..11, 0534's EVD_1..14, 0535's E1..E12, 0536's Step-8-Laws and E-1..E-8, 0537's algebraic properties, 0538's ten test criteria, 0539's frozen Kernel/Policy boundary, 0540/0543's identity/equivalence calculus, 0541's Operational Independence Test, 0544's eight-component EA)"
+    refinement: "Consolidated into a single, cleaner, canonical ten-item kernel axiom set (E-K1..E-K10), a formal Kernel/Policy axiom-admissibility framework, and a definitive nine-framework comparative table settling the arc's central recurring question with a clear conclusion — yet introducing YET ANOTHER independently-numbered axiom scheme requiring eventual reconciliation with all the earlier ones"
+  - concept: "0536-0538's provisional theorem/hypothesis that no universal scalar evidence algebra exists"
+    refinement: "Elevated from a provisional theorem/hypothesis to the arc's definitive concluding statement, backed by a systematic nine-framework strength/problem comparison rather than argument alone"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "URGENT: reconcile the now FIVE independently-numbered Evidence-theory axiom sets across the arc (0533's EVD-1..11, 0534's EVD_1..12/14, 0535's E1..E12, 0536's Step-8 Laws/E-1..E-8, this file's E-K1..E-K10) into a single canonical list — this file's E-K set is the strongest candidate for that canonical role given its consolidated, cleanly-presented form"
+  - "Trace whether 'Step 5' (defining the semantic domain of evidence contribution — evidence strength vs. belief vs. likelihood vs. support vs. arguments vs. information gain) is executed as its own dedicated file, since it retroactively questions an assumption the entire 0532-0545 arc had implicitly made"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the KnowledgeOS Evidence Constitution (E-K1..E-K10) as the arc's most consolidated axiom presentation, the formal admissibility framework Agg_ρ⊨𝒜, and the Kernel/Policy axiom split (A1-A4 kernel, A5-A8 policy)."
+  - "dimension-registry.md: record the nine-framework comparative table and its definitive conclusion (no single universal KnowledgeOS evidence algebra exists; Kernel + Pluggable Assessment Calculi is the resolution), plus the sixteen individually-worked aggregation axioms with their sharpest illustrations (the 0.91/0.88 subtraction counterexample, the four-valued Conflict status, target-relative temporal validity)."
+  - "dimension-registry.md: record 'Step 5 — Define the semantic domain of evidence contribution' as a genuinely deeper open question (evidence strength vs. belief vs. likelihood vs. support vs. arguments vs. information gain), and flag the urgent need to reconcile five independently-numbered Evidence-theory axiom sets."
+anchor_test:
+  anchor: "0533/0534/0535/0536/0537/0538/0539/0540/0541/0543/0544 — the corpus's full Evidence-theory research arc"
+  supports_dimension: "CAPSTONE LANDMARK delivering the definitive concluding result of the corpus's sustained six-step Evidence-theory research arc: a consolidated, canonical ten-item KnowledgeOS Evidence Constitution (E-K1..E-K10), a formal Kernel/Policy axiom-admissibility framework distinguishing which properties must hold universally versus which may vary by domain policy, and a systematic nine-framework comparative evaluation delivering the arc's clearest, most decisive conclusion — no single universal KnowledgeOS evidence algebra exists, settling on a Kernel-plus-pluggable-calculi architecture. Closes by opening a genuinely deeper prerequisite question (what mathematical object is actually being aggregated?) that the entire arc had implicitly assumed answered"
+  refines_or_contradicts: "consolidates and refines the entirety of 0533-0544's Evidence-theory work into its cleanest presentation; elevates 0536-0538's provisional theorem into a definitive, systematically-argued conclusion; introduces yet another independently-numbered axiom scheme (E-K1..E-K10) requiring reconciliation with four prior schemes, flagged as an urgent bridge_candidate; no substantive contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The nine-framework comparative table, mapping named mathematical formalisms (Bayesian, Dempster-Shafer, possibility theory, argumentation frameworks, graph-based models, etc.) each against a specific KnowledgeOS-relevant strength and weakness, is the corpus's most systematic and directly checkable comparative analysis of competing mathematical approaches to any single problem to date."
+  - "The concrete 0.91/0.88-must-not-become-0.03 illustration is a directly checkable numerical counterexample making tangible exactly why naive subtraction-based confidence aggregation is unacceptable — the sharpest single such illustration in the entire arc."
+undefined_concepts: []
+open_questions:
+  - "GENUINE OPEN QUESTION (named Step 5): what mathematical object is actually being aggregated in KnowledgeOS's evidence theory — evidence strength, belief, likelihood, support, arguments, or information gain? These are explicitly stated to be non-interchangeable, and the entire preceding arc (0532-0545) is now retroactively flagged as having proceeded without settling this."
+  - "How the corpus's five independently-derived Evidence-theory axiom-numbering schemes (0533 EVD-1..11, 0534 EVD_1..12/14, 0535 E1..E12, 0536 Step-8/E-1..E-8, this file's E-K1..E-K10) are ultimately reconciled into one canonical reference list"
+tier2_triggered: true
+tier2_reason: "CAPSTONE LANDMARK delivering the definitive, consolidated conclusion of the corpus's entire sustained six-step Evidence-theory research arc spanning fourteen files (0532-0545): a canonical, cleanly-presented ten-item KnowledgeOS Evidence Constitution (E-K1..E-K10), a rigorous formal admissibility framework for evaluating candidate aggregation policies against a Kernel/Policy axiom split, and — its single most consequential contribution — a systematic nine-framework comparative table that definitively settles the arc's long-running central question with a clear, well-argued conclusion: no single universal KnowledgeOS evidence algebra exists, and the architecture must instead be a fixed epistemic kernel paired with pluggable, domain-specific assessment calculi. The file's unusually self-aware closing move — naming a genuinely deeper prerequisite question (what mathematical object is actually being aggregated?) that the entire preceding arc had implicitly assumed answered — is itself a significant instance of the corpus's standing epistemic-discipline principle applied reflexively to its own multi-file research process."

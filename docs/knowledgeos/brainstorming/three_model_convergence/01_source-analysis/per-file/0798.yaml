@@ -1,0 +1,162 @@
+sequence: 798
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-014058_step_173_the-bounded-context-discovery-experiment.md
+title: "Step 173 -- The Bounded-Context Discovery Experiment (MAJOR SYNTHESIS/ARCHITECTURE-CRYSTALLIZATION MILESTONE, delivers 0797's promised merge-test methodology): Systematically Merge-Tests All Seven Adjacent Concept Pairs (Observation+Evidence Through Outcome+Observation) via Language/Invariant/Lifecycle/Ownership/ChangePressure, Delivers a Qualitative DDD Scoring Matrix -- CRYSTALLIZES THE THREE-ZONE ARCHITECTURE Epistemic→Governance→Operational→Epistemic (Feedback), the First Context Map, Candidate Semantic Contracts (DeterminationForDecision/AuthorizedAction/OutcomeObservation), and 'AI Capability≠Architecture' -- Rejects Both OneBigContext and OneServicePerNoun as Falsified Extremes -- Opens Step 174's Context-Map/Domain-Contract Experiment and the Determination_v1→Decision_v1 vs. Knowledge_v2 Immutability/Versioning Test"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily DDD strategic-boundary-discovery synthesis; no new Gita textual engagement in this file"
+source_role: PRIMARY_RESEARCH
+canonical_source: 798
+importance: critical
+confidence: high
+about: >
+  Directly continues 0797, opening "we now move from the epistemic lifecycle to the actual DDD structure...
+  the question is: which concepts belong together, and where should the boundaries be? And we must be
+  careful not to make the classic mistake: Concept→Microservice." Boxed the correct direction:
+  `DomainMeaning→Invariants→BoundedContext→ArchitecturalBoundary→DeploymentTechnology`.
+
+  **§173.1-173.9 systematically merge-tests all seven adjacent concept pairs** from the eight candidate
+  domains (Observation, Evidence, Knowledge, Determination, Decision, Authorization, Execution, Outcome),
+  each with a worked example and preliminary verdict: **Observation+Evidence** ("can plausibly form one
+  context," `Captured→Qualified→Validated→Archived`, but `Observation≠Evidence` preserved internally);
+  **Evidence+Knowledge** ("should remain semantically distinct" -- `Lifecycle(E)≠Lifecycle(K)`, evidence
+  E1-E3 remains valid historical evidence even after the K1 it supported is superseded); **Knowledge+
+  Determination** (possibly one broader "Epistemic/Assessment context," but `PersistentKnowledge≠
+  AssessmentInstance`); **Determination+Decision** ("should not be collapsed" -- `Determination⇏Decision`,
+  `EpistemicReasoning≠GovernanceChoice`); **Decision+Authorization** ("separate semantic concepts," "what
+  shall we do?" vs. "who is permitted to do it?"); **Authorization+Execution** ("strong conceptual
+  distinction" -- `TechnicalSuccess⇏AuthorizedAction`); **Execution+Outcome** ("strong candidates for one
+  operational context" despite `Execution=SUCCESS` while `Outcome=BUSINESS_FAILURE` remaining possible);
+  **Outcome+Observation** (`Outcome⊆PotentialObservations`, not `Observation=Outcome`, since observation is
+  broader than outcome alone).
+
+  **§173.10-173.18 consolidates into five candidate context groupings** (A: Observation+Evidence; B:
+  Knowledge+Assessment/Determination; C: Decision+Governance; D: Authorization; E: Execution+Outcome), then
+  runs all five candidates through **five formal DDD tests** -- Language (the word "verified" and even
+  "knowledge" itself risk meaning materially different things across contexts; explicit warning that
+  "KnowledgeOS itself risks becoming a semantic dumping ground" if the platform's own name erases the
+  established `Observation≠Evidence≠Knowledge≠Decision` distinctions), Invariants (per-concept implication
+  invariants, e.g. `Evidence⇒Provenance`, `Decision⇒DecisionAuthority`), Lifecycle (five distinct named
+  lifecycle sequences per concept), Ownership (systematically differing owners as "a strong bounded-context
+  signal"), and Change pressure (distinct causes of model change per concept) -- **delivering a qualitative
+  DDD scoring matrix** (High/Medium/Low per candidate × test), explicitly disclaimed as "not a quantitative
+  statistical score... a structured DDD discovery instrument."
+
+  **§173.19-173.23 delivers the file's central discovery**: "the strongest boundaries appear not between
+  individual nouns but between types of responsibility" -- **three broad zones, Epistemic
+  (Observation→Evidence→Knowledge→Determination, "what do we know, and what follows from it?"), Governance
+  (Decision→Authorization, "what shall we do, and who is permitted to cause it?"), and Operational
+  (Execution→Outcome, "what did we do, and what happened?")** -- crystallized into **the three-zone
+  architecture**, boxed twice: `Epistemic Domain→Governance Domain→Operational Domain` with feedback
+  `Operational→Epistemic`, i.e. **`Epistemic→Governance→Operational→Epistemic`**, explicitly "a much more
+  meaningful architecture than eight independent services," while explicitly disclaiming this as still "a
+  strategic architectural hypothesis," not yet frozen bounded contexts.
+
+  **§173.25-173.30 delivers the first context map** (an ASCII diagram of the three zones connected by
+  `Determination`, `Authorized`, and `Outcome` edges) and **anti-corruption-layer discipline**: contexts
+  must not pass their entire internal model downstream (Governance must not see Knowledge's full internal
+  model, only a translated `DeterminationSummary`; Operational receives `AuthorizedAction`, not the full
+  governance model), boxed the principle **"bounded contexts should communicate through domain contracts,
+  not through accidental sharing of internal models,"** and delivers **three candidate semantic
+  contracts**: `DeterminationForDecision` (Epistemic→Governance), `AuthorizedAction` (Governance→
+  Operational), `OutcomeObservation` (Operational→Epistemic) -- explicitly "not necessarily implementation
+  events yet... semantic contracts."
+
+  **§173.31-173.32 delivers the forward/backward symmetry**: `ForwardIntent`
+  (`Knowledge→Determination→Decision→Authorization→Execution`) and `BackwardEvidence`
+  (`Execution→Outcome→Observation→Evidence→Knowledge`), boxed into the architectural loop
+  `Knowledge→[reasoning]→Decision→[authority]→Action→[observation]→Knowledge'`, where the transformation
+  `K→K'` is "where learning, correction and evolution occur."
+
+  **§173.33-173.35 delivers "this is where AI naturally fits"**: AI participates at several specific
+  points (Observation→Classification, Evidence→Synthesis/Hypothesis, Knowledge→Recommendation,
+  Outcome→AnomalyDetection) but explicitly "does not become the bounded context. AI is an actor/capability
+  crossing contexts" -- boxed **`AI capability≠Architecture`**: "the architecture must remain meaningful if
+  the AI model is replaced. If replacing GPT/Claude/etc. destroys the domain model, the architecture is too
+  tightly coupled to the technology." Explicitly connects this to validating the corpus's own prior Agent
+  architecture (`Agent→Tools→KnowledgeOS`, "the agent should consume and produce governed artifacts. It
+  should not become the owner of the organization's knowledge model").
+
+  **§173.36-173.39 delivers two falsification attempts at the extremes**: a single giant `KnowledgeOS`
+  context (rejected -- "enormous semantic coupling," a change to authorization could contaminate epistemic
+  structures) and eight microservices, one per concept (rejected -- "distributed complexity before proving
+  independent consistency boundaries"), crystallizing **"a small number of semantically coherent bounded
+  contexts, connected through explicit domain contracts. Not a noun-driven microservice architecture"** as
+  the likely target shape. **Delivers the Step 173 verdict**: the three strategic domains, the feedback
+  loop, the three candidate semantic contracts, and five reaffirmed conceptual-inequality invariants
+  (`Evidence≠Knowledge`, `Determination≠Decision`, `Decision≠Authorization`, `Authorization≠Execution`,
+  `Execution≠Outcome`).
+
+  **Closes opening "Step 174 — Context Map and Domain-Contract Experiment,"** proposing to "simulate
+  information exchange across the three zones," asking seven boundary questions per zone transition (what
+  does upstream publish? what does downstream need? what must remain hidden? which model is authoritative?
+  what happens when upstream knowledge changes later? can the downstream decision still be reconstructed?
+  what happens when operational outcome contradicts the original determination?), and explicitly framing
+  **the immutability/versioning question** as the most important upcoming test:
+  `Determination_v1→Decision_v1` versus a later `Knowledge_v2≠Knowledge_v1` -- must governance see the new
+  knowledge automatically, or must the original decision remain anchored to the historical determination?
+  No actual repository implementation occurs within this file itself; every context, contract, and zone
+  remains a strategic hypothesis pending Step 174's deeper simulation.
+introduces:
+  - concept: "The systematic seven-pair merge-test across all adjacent candidate domains (Observation+Evidence through Outcome+Observation), each with a worked example and preliminary verdict"
+  - concept: "The qualitative DDD scoring matrix (High/Medium/Low across Language/Invariant/Lifecycle/Ownership/ChangePressure), explicitly disclaimed as a discovery instrument, not a quantitative measurement"
+  - concept: "The explicit warning that KnowledgeOS's own platform name risks becoming 'a semantic dumping ground' if it erases the established Observation≠Evidence≠Knowledge≠Decision distinctions"
+  - concept: "The three-zone architecture: Epistemic→Governance→Operational→Epistemic (with feedback), crystallized as the strongest architecture hypothesis so far"
+  - concept: "The first context map (ASCII diagram) and anti-corruption-layer discipline: contexts communicate through translated domain contracts, not shared internal models"
+  - concept: "Three candidate semantic contracts: DeterminationForDecision, AuthorizedAction, OutcomeObservation"
+  - concept: "The forward/backward symmetry: ForwardIntent and BackwardEvidence, unified into the architectural loop Knowledge→[reasoning]→Decision→[authority]→Action→[observation]→Knowledge'"
+  - concept: "'This is where AI naturally fits': AI as an actor/capability crossing contexts, never itself a bounded context"
+  - concept: "AI capability≠Architecture: the architecture must remain meaningful if the AI model is replaced"
+  - concept: "Two rejected extremes: OneBigContext (KnowledgeOS as a single giant context) and OneServicePerNoun (eight microservices), both falsified"
+  - concept: "The Step 173 verdict: three strategic domains, the feedback loop, three candidate semantic contracts, five reaffirmed conceptual-inequality invariants"
+  - concept: "Step 174's opening: the context-map/domain-contract simulation with seven boundary questions, and the Determination_v1/Knowledge_v2 immutability-versioning test"
+defines:
+  - concept: "The three-zone architecture"
+    definition: "The eight epistemic-lifecycle concepts (Observation through Outcome) group not by individual noun but by type of responsibility into three zones: Epistemic (Observation→Evidence→Knowledge→Determination, answering 'what do we know and what follows from it') answers factual questions; Governance (Decision→Authorization, answering 'what shall we do and who is permitted to cause it') answers organizational-intent questions; Operational (Execution→Outcome, answering 'what did we do and what happened') answers operational-fact questions -- connected by a feedback loop from Operational back to Epistemic, forming a closed strategic-domain cycle that is 'a much more meaningful architecture than eight independent services,' though still explicitly a hypothesis, not yet a frozen set of bounded contexts"
+  - concept: "AI capability≠Architecture"
+    definition: "AI participates as an actor/capability crossing multiple bounded contexts at specific points (classification, synthesis, hypothesis generation, recommendation, anomaly detection) but must never itself become a bounded context or the owner of the domain model -- the architecture's validity must not depend on which specific AI model performs these roles, so that replacing the underlying AI technology (e.g. swapping GPT for Claude) would not destroy or require redesigning the domain model"
+  - concept: "Domain contracts over shared internal models (anti-corruption discipline)"
+    definition: "Adjacent bounded contexts (e.g. Epistemic and Governance) must exchange information through explicit, translated semantic contracts (such as a DeterminationSummary rather than the full internal Knowledge model) rather than by directly sharing or querying each other's internal persistence or domain models -- direct sharing (e.g. Governance querying a KnowledgeDatabase, or Execution querying a DecisionDatabase) creates accidental coupling that undermines the bounded-context boundary even when the boundary is conceptually well-motivated"
+refines:
+  - concept: "0797's opening of Step 173 and its proposed Language+Invariant+Lifecycle+Ownership+ChangePressure merge-test methodology"
+    refinement: "DELIVERED: the full seven-pair merge test with worked examples, the qualitative scoring matrix, and the resulting three-zone architecture crystallization -- directly fulfilling the falsification-oriented bounded-context discovery methodology Step 173 was opened to perform"
+  - concept: "0797's two-worlds model (Epistemic vs. Operational/governance, bridged by Determination→Decision)"
+    refinement: "REFINED from two worlds into three zones by splitting 0797's single 'Operational/governance' world into separately justified Governance (Decision→Authorization) and Operational (Execution→Outcome) zones, each independently supported by the five-test DDD scoring matrix -- a genuine deepening rather than a mere restatement"
+  - concept: "0793's Capability(a,x)⇏Authority(a,x) and the corpus's recurring 'AI as participant, not authority' theme"
+    refinement: "Extended into a strategic-architecture-level principle, AI capability≠Architecture, applied not to a single actor's authority over one action but to the entire domain model's independence from any specific AI technology -- explicitly connected back to and validating the corpus's own prior Agent→Tools→KnowledgeOS harness design"
+  - concept: "0787's DDD aggregate/bounded-context analysis (Evidence/Knowledge as Strong BC Candidates, Decision folded into Governance)"
+    refinement: "Substantially extended via the full five-test scoring matrix and the resulting three-zone strategic hypothesis, which reorganizes 0787's per-concept candidate list into three responsibility-based zones rather than a flat list of individually-scored aggregate candidates -- a genuine strategic-level (not merely tactical-level) DDD deepening"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 174's actual context-map/domain-contract simulation and its resolution of the Determination_v1/Decision_v1 vs. Knowledge_v2 immutability-versioning question."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the three-zone architecture (Epistemic→Governance→Operational→Epistemic, with feedback) as the arc's strongest strategic-DDD architectural hypothesis to date, explicitly still provisional."
+  - "dimension-registry.md: record the explicit warning that KnowledgeOS's own platform name risks becoming 'a semantic dumping ground' as a directly self-aware, quotable naming-discipline caution."
+  - "dimension-registry.md: record AI capability≠Architecture and its explicit connection back to the corpus's own Agent→Tools→KnowledgeOS harness design as a directly applicable architectural-independence principle."
+  - "dimension-registry.md: record the two rejected extremes (OneBigContext, OneServicePerNoun) and the resulting 'small number of semantically coherent bounded contexts, connected through explicit domain contracts' target shape as a directly applicable anti-over-engineering and anti-under-modeling balance."
+anchor_test:
+  anchor: "0797's opening of Step 173 and its merge-test methodology; 0797's two-worlds model; 0787's DDD aggregate/bounded-context analysis; 0793's AI-as-participant discipline"
+  supports_dimension: "Delivers the full seven-pair merge test with worked examples for every adjacent concept, directly fulfilling 0797's proposed falsification-oriented bounded-context discovery methodology. Delivers the qualitative DDD scoring matrix and the central discovery that boundaries track types of responsibility rather than individual nouns. Refines 0797's two-worlds model into a three-zone architecture by splitting its single Operational/governance world into independently justified Governance and Operational zones. Delivers the first context map, anti-corruption-layer discipline, and three candidate semantic contracts. Delivers the forward/backward symmetry unified into a single architectural loop. Extends 0793's AI-as-participant discipline into the strategic-architecture-level principle AI capability≠Architecture, explicitly connecting back to validate the corpus's own prior Agent harness design. Falsifies both extreme bounded-context configurations (one giant context, one microservice per noun), landing on a disciplined middle target shape. Opens Step 174's deeper context-map simulation with an explicit immutability-versioning test as its central open question"
+  refines_or_contradicts: "directly delivers and extends 0797's opening and merge-test methodology; refines (splits, does not contradict) 0797's two-worlds model into three zones; substantially extends 0787's DDD aggregate/bounded-context analysis to the strategic level; extends 0793's AI-as-participant discipline to a strategic-architecture-level principle; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§173.19-173.23's explicit discovery 'the strongest boundaries appear not between individual nouns but between types of responsibility,' crystallized into the doubly-boxed three-zone architecture Epistemic→Governance→Operational→Epistemic, is directly quotable evidence of the file's central strategic-DDD conclusion."
+  - "§173.33-173.35's boxed 'AI capability≠Architecture,' with the explicit test 'if replacing GPT/Claude/etc. destroys the domain model, the architecture is too tightly coupled to the technology,' is directly quotable evidence of a strategic-level architectural-independence principle."
+  - "§173.36-173.38's explicit falsification of both a single giant KnowledgeOS context and eight microservices-per-noun, landing on 'a small number of semantically coherent bounded contexts, connected through explicit domain contracts,' is directly checkable evidence of a genuinely disciplined middle-ground architectural conclusion rather than an assumed default."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 174's context-map/domain-contract simulation was ever actually carried out, and how the immutability-versioning question (should Governance see new Knowledge automatically, or must a decision remain anchored to its historical determination) was resolved -- this bears directly on 0797's Experiment F finding (a decision justified at t_1 remains justified even after its knowledge basis is later invalidated)."
+  - "Whether the three-zone architecture (Epistemic/Governance/Operational) was ever explicitly reconciled with 0787's six-bounded-context analysis (Evidence/Knowledge/Determination/Decision-folded-into-Governance/Authorization/Execution) or with 0751's original six-context DDD reduction (Knowledge/Inquiry/Evidence/Assurance/Governance/Action) -- three now-distinct DDD context enumerations across the arc's history that this reconstruction should flag for eventual reconciliation."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS/ARCHITECTURE-CRYSTALLIZATION MILESTONE: delivers the full seven-pair merge test with worked examples for every adjacent concept, directly fulfilling 0797's proposed methodology, and the qualitative DDD scoring matrix. Delivers the central discovery that architectural boundaries track types of responsibility rather than individual nouns, crystallizing the three-zone architecture (Epistemic→Governance→Operational→Epistemic with feedback) as the arc's strongest strategic-DDD hypothesis to date -- refining, not merely repeating, 0797's two-worlds model. Delivers the first context map, anti-corruption-layer discipline, and three candidate semantic contracts. Extends AI-as-participant discipline to the strategic-architecture-level principle 'AI capability≠Architecture,' explicitly validating the corpus's own prior Agent harness design. Falsifies both extreme bounded-context configurations, landing on a disciplined middle target shape. Opens Step 174's deeper context-map simulation with an explicit immutability-versioning test as its central open question, directly connecting back to 0797's Experiment F finding."

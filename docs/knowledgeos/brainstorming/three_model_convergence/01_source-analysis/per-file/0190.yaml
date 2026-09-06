@@ -1,0 +1,52 @@
+sequence: "0190"
+path: docs/knowledgeos/brainstorming/kernel/20260824-010537-knowledgeos-multi-lens-brainstorming-synthesis-dossier-duplicate.md
+title: "Verified byte-identical duplicate of 0188's synthesis dossier (diff empty); filename self-labeled '-duplicate' -- second such explicit self-labeled duplicate in this reading stretch, after 0181"
+date: "2026-08-24"
+bytes: 32000
+model:
+  primary: c1
+  secondary: []
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: "0188"
+importance: low
+confidence: high
+about: >
+  Verified via `diff` to be byte-for-byte identical to file 0188 (empty diff output). The filename itself
+  is suffixed "-duplicate," the second such explicit self-labeled duplicate in this reading stretch (after
+  0181's Managing-Memory duplicate), captured 78 seconds after 0188. No new content; recorded minimally
+  per MD-012/protocol discipline for verified duplicates.
+
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - {concept: "Entire synthesis dossier content", canonical_source: "0188", novelty: none}
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+registry_updates: []
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; verified byte-identical duplicate of 0188."
+  alternative_minimal_kernel: "none"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Second explicit self-labeled '-duplicate' filename in this reading stretch (after 0181), confirming
+    this is a recurring pattern in the corpus's own capture/rename process rather than a one-off"
+
+undefined_concepts: []
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: "Verified exact duplicate; no independent content."

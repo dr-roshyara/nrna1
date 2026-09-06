@@ -1,0 +1,175 @@
+sequence: 547
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-142514_step-006-information-gain-and-value-of-evidence.md
+title: "LANDMARK: The Nine-Step KnowledgeOS Decision Loop Algorithm Delivered — ExpectedDiscrepancyReduction Formalized as More Fundamental Than EntropyReduction (K_t→I_t, Not H(K_t)→0); Lord's Evidence-Acquisition Optimization q*=argmax U_ρ(q) Fully Specified; Zero/Lord/Sārathi Cleanly Separated Into Detect/Rank/Guide; 'Much More Than RAG'; Explicit Safeguard Rejecting 'Moksha=Δ=0' as a Global Mathematical Consequence — Δ=0 Is Always Purpose/Context-Relative; Opens Step 7 (the Knowledge State Transition Algebra, 'the Mathematical Heart of the KnowledgeOS Kernel')"
+date: "2026-08-27"
+bytes: 15220
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 0546's named 'Step 6,' connecting the arc's static Evidence Assessment theory to KnowledgeOS's active behavior for the first time"
+source_role: PRIMARY_RESEARCH
+canonical_source: 547
+importance: critical
+confidence: high
+about: >
+  Opens explaining Step 6's significance: "it connects the static epistemic model to the active behavior
+  of KnowledgeOS," posing the central question: given what KnowledgeOS currently knows, which additional
+  observation, document, experiment, query, or human answer would be most valuable?
+
+  **Delivers the file's foundational three-way distinction**: `Evidence Strength≠Information Gain≠
+  Decision Value`, worked through a concrete Nexus-migration example -- knowing the exact patch version
+  adds little information, while an unknown answer to "is the production blob store backed up?" could
+  dramatically reduce migration uncertainty -- `Highest Evidence Strength≠Highest Information Gain`.
+
+  **Formalizes information gain rigorously via entropy** (`IG(e;P)=H(P)-H(P|e)`), then immediately and
+  explicitly refuses to make it universal, since entropy requires a probabilistic representation while
+  KnowledgeOS may instead have unknown values, logical constraints, competing assertions, qualitative
+  uncertainty, argument graphs, or incomplete evidence -- `InformationGain_ρ` is a policy-specific
+  measurement, never a universal KnowledgeOS law. **Delivers a more general, discrepancy-based definition**
+  instead: `IG_D(e)=D(S_t,I_t,P)-D(S_{t+1}^{(e)},I_t,P)` -- "information gain can be measured as reduction
+  in discrepancy," usable with deterministic gap counts, probabilistic uncertainty, belief functions,
+  argumentation, or domain-specific measures, not tied to information theory at all.
+
+  **Delivers Expected Information Gain and, more fundamentally, Expected Discrepancy Reduction (EDR)**:
+  since the outcome of acquiring evidence is unknown in advance,
+  `EIG(e)=Σ_o Pr(o|e,K_t)[D(K_t,I_t,P)-D(K_{t+1}^o,I_t,P)]`, generalized to
+  `EDR(e)=𝔼[D(K_t,I_t,P)-D(K_{t+1},I_t,P)|e]`. **Delivers the file's central architectural claim**:
+  ExpectedDiscrepancyReduction is MORE fundamental for KnowledgeOS than EntropyReduction, because
+  KnowledgeOS is not merely trying to reduce uncertainty -- it is trying to move `K_t` toward `I_t`,
+  formalized as `K_t->I_t` rather than `H(K_t)->0`. **Delivers a sharp, concrete counterexample proving
+  this**: two independent propositions A and B both at probability 0.5; evidence about A reduces entropy
+  substantially even though A is irrelevant to the current decision (`IG(A)>0` but `EDR(A)≈0`), while
+  evidence about B directly resolves a critical gap -- crystallized as `InformationGain≠PurposeValue`,
+  "this is why purpose P must remain in the equation."
+
+  **Formalizes Value of Evidence** `VOE_ρ(e|K_t,I_t,P,C)` (a conceptual, non-universal decomposition
+  `VOE(e)=EDR(e)×DecisionImpact(e)`), then delivers the file's second major architectural requirement:
+  **Cost must also be included** -- a worked comparison (Evidence A: EDR=0.9, cost=€10,000; Evidence B:
+  EDR=0.7, cost=€10) shows "maximum information gain alone is insufficient," requiring an explicit Cost,
+  Time, Risk, and Effort model. **Formalizes a Utility of evidence** `U_ρ(e)=Benefit_ρ(e)-Cost_ρ(e)`, with
+  a fuller weighted form `U(e)=α·EDR(e)+β·DecisionImpact(e)-γ·Cost(e)-δ·Time(e)`, explicitly noting the
+  coefficients `(α,β,γ,δ)` are policy parameters, not mathematical truths.
+
+  **Formalizes "the evidence acquisition problem" -- Lord's problem, mathematically**: given a set of
+  possible acquisition actions `𝒬` (a worked eight-item example including inspecting the filesystem,
+  querying the Nexus API, asking an infrastructure engineer, running a test, or asking an LLM to extract
+  information), `q*=argmax_{q∈𝒬} U_ρ(q|K_t,I_t,P)` -- explicitly named "potentially one of the most
+  important equations in the whole KnowledgeOS theory." **Delivers Lord's precise formal role**:
+  `Lord(K_t,I_t,P,ρ)->RankedCandidateAcquisitions`, worked through a concrete three-candidate ranked
+  example with EDR/Cost/Risk fields per candidate -- "a computationally meaningful capability."
+
+  **Delivers the cleanest three-role separation of Zero/Lord/Sārathi in the entire corpus**: Zero asks
+  "where are we deficient?" (`Zero(K_t,I_t)->Δ_t`); Lord asks "what could reduce those deficiencies?"
+  (`Lord(Δ_t)->Q`); Sārathi asks "what should we do next?" (`Sārathi(Q,constraints)->a_t`), with
+  `Lord=option generation/ranking` and `Sārathi=action guidance` explicitly distinguished, Sārathi weighing
+  current constraints, capabilities, urgency, policy, safety, dependencies, and human authority. Delivers a
+  complete architecture diagram closing the full cycle back to Zero.
+
+  **Delivers a major architectural claim contrasting KnowledgeOS with RAG**: conventional RAG is
+  `Question->Retrieve->Generate`; KnowledgeOS is `Purpose->IdealState->Discrepancy->EvidenceValue->
+  AcquisitionPlan->Evidence->Assessment->KnowledgeState` -- "a fundamentally different architecture."
+  **Demonstrates the model naturally accommodates diverse evidence sources**: human research
+  (`HumanResponse->Evidence`, Acquisition=Reported, Source=Human -- "the human's statement does not
+  automatically become truth. It enters exactly the same evidence machinery"), LLM output
+  (`LLM(D)->e`, Acquisition=Inferred, Parent=D, with `LLMOutput≠GroundTruth` and
+  `LLMOutput≠IndependentEvidence` whenever derived from existing evidence -- "one of the major
+  architectural strengths of the model"), and genuine experimental evidence (a worked
+  hypothesis/experiment/observation example, e.g. restoring a backup to an isolated environment, with
+  Acquisition=Observed and provenance Experiment->Observation, "much higher relevance to a migration
+  decision than a textual claim").
+
+  **Delivers `ExpectedValue≠ActualValue`**: an investigation can be expected to be extremely valuable but
+  turn out to provide no useful information, generating a natural feedback loop
+  `(K_t,I_t,Δ_t)->q_t->e_t->K_{t+1}` where VOE is recalculated for remaining candidates after each
+  acquisition.
+
+  **Delivers a formal, general stopping condition**: rather than relying on a scalar discrepancy threshold
+  `Δ_t≤ε` (which requires discrepancy to have a meaningful scalar or ordering), the more general condition
+  is "no candidate action has sufficient expected utility" (`∀q∈Q: U_ρ(q)≤U_min`), at which point the
+  system may recommend `AcceptCurrentState`, `AcceptUncertainty`, or `Unresolvable` -- "much more
+  realistic."
+
+  **Delivers the file's most significant epistemic-discipline safeguard**: an explicit refusal to define
+  "Moksha = Δ=0" or any similar equation as a mathematical consequence of this framework, directly
+  disciplining the corpus's much earlier philosophical Moksha-as-epistemic-completion metaphor
+  (established at 0409/0501) against being silently smuggled into the formal mathematics as a genuine
+  global terminus. The model allows `Δ->0` only for a specified purpose and context, since `I_t(P,C)` is
+  itself purpose/context-dependent and dynamic -- `Δ=0` always means only relative to the specified ideal,
+  never globally -- "a very important mathematical safeguard."
+
+  **Consolidates the formal layer** (Candidate acquisition `Q_t`, EDR(q), `U_ρ(q)=Benefit-Cost`, optimal
+  next acquisition `q*=argmax U_ρ(q)`, resulting transition `K_{t+1}=δ(K_t,Acquire(q*))`), and delivers the
+  file's central formal deliverable: **the corpus's first fully explicit, numbered KnowledgeOS Decision
+  Loop algorithm** -- a nine-step procedure (K_t; Zero(K_t,I_t)->Δ_t; GenerateCandidates(Δ_t)->Q_t;
+  EvaluateValue(Q_t,K_t,I_t,P,ρ); q*=argmax U_ρ(q); Acquire(q*)->e_t; Assess(e_t); Update(K_t,e_t)->K_{t+1};
+  Repeat) -- "the beginning of an active epistemic system."
+
+  **Delivers Step 6's verdict**: THEORETICALLY RESOLVED, qualified by the fact that EDR and `U_ρ` remain
+  policy/calculus-dependent -- the kernel need only supply the `EvidenceValueEvaluator` abstraction, not a
+  universal formula. Summarizes the theory's evolution as
+  `Evidence->EvidenceRelations->Assessment->Discrepancy->CandidateAcquisition->NewEvidence`, concluding
+  "KnowledgeOS is potentially an active knowledge acquisition system," not merely a knowledge storage/
+  retrieval system.
+
+  **Closes opening "Step 7," explicitly named the next hardest problem and recommended to precede any
+  further implementation work**: how does a newly acquired piece of evidence actually change the Knowledge
+  State? The transition function `K_{t+1}=δ(K_t,e_t)` must become "a fully specified Knowledge State
+  transition algebra," covering new assertions, updated assertions, superseded assertions, contradictions,
+  gaps becoming resolved, new gaps appearing, evidence becoming stale, conclusion retraction, provenance/
+  history, and temporal versioning -- explicitly "the mathematical heart of the KnowledgeOS kernel."
+introduces:
+  - concept: "Evidence Strength≠Information Gain≠Decision Value, a three-way distinction proving that the strongest evidence is not necessarily the most valuable to acquire"
+  - concept: "The discrepancy-based, non-entropy-dependent information gain formula IG_D(e)=D(S_t,I_t,P)-D(S_{t+1}^{(e)},I_t,P), generalizable across probabilistic, deterministic, belief-function, and argumentation-based discrepancy measures"
+  - concept: "Expected Discrepancy Reduction (EDR) formalized as more fundamental for KnowledgeOS than entropy reduction: the objective is K_t->I_t, not H(K_t)->0"
+  - concept: "A concrete counterexample proving InformationGain≠PurposeValue: reducible entropy about an irrelevant proposition has high information gain but near-zero discrepancy reduction, while a purpose-relevant proposition can have low apparent information but high value"
+  - concept: "Value of Evidence VOE_ρ(e|K_t,I_t,P,C) and a cost-inclusive Utility function U_ρ(e)=Benefit_ρ(e)-Cost_ρ(e), demonstrating that maximum information gain alone is an insufficient acquisition criterion"
+  - concept: "Lord's evidence-acquisition optimization problem formalized as q*=argmax_{q∈𝒬} U_ρ(q|K_t,I_t,P), named one of the most important equations in KnowledgeOS theory"
+  - concept: "The cleanest three-role separation of Zero/Lord/Sārathi in the corpus: Zero detects deficiency (Zero(K_t,I_t)->Δ_t), Lord ranks candidate remedies (Lord(Δ_t)->Q), Sārathi selects the actual next action under real-world constraints (Sārathi(Q,constraints)->a_t)"
+  - concept: "'Much more than RAG': KnowledgeOS's full pipeline (Purpose->IdealState->Discrepancy->EvidenceValue->AcquisitionPlan->Evidence->Assessment->KnowledgeState) contrasted explicitly against conventional RAG's Question->Retrieve->Generate"
+  - concept: "A general, calculus-agnostic stopping condition for evidence acquisition: no candidate action has sufficient expected utility, rather than requiring a scalar discrepancy threshold"
+  - concept: "An explicit epistemic-discipline safeguard rejecting 'Moksha=Δ=0' or any similar equation as a global mathematical consequence of the framework: Δ=0 is always relative to a specified purpose/context, never a global terminus"
+  - concept: "The corpus's first fully explicit, numbered KnowledgeOS Decision Loop algorithm (nine steps from current state through Zero/candidate-generation/evaluation/acquisition/assessment/update/repeat)"
+defines:
+  - concept: "Expected Discrepancy Reduction (EDR)"
+    definition: "EDR(e)=𝔼[D(K_t,I_t,P)-D(K_{t+1},I_t,P)|e] — the expected reduction in discrepancy from the Ideal State resulting from acquiring evidence e, deliberately more general than and preferred over entropy-based information gain"
+  - concept: "Utility of evidence (U_ρ)"
+    definition: "U_ρ(e)=Benefit_ρ(e)-Cost_ρ(e), potentially α·EDR(e)+β·DecisionImpact(e)-γ·Cost(e)-δ·Time(e) with policy-specific coefficients — the basis for selecting the optimal next evidence-acquisition action q*=argmax U_ρ(q)"
+  - concept: "The KnowledgeOS Decision Loop (nine-step algorithm)"
+    definition: "K_t -> Zero(K_t,I_t)->Δ_t -> GenerateCandidates(Δ_t)->Q_t -> EvaluateValue(Q_t,K_t,I_t,P,ρ) -> q*=argmax U_ρ(q) -> Acquire(q*)->e_t -> Assess(e_t) -> Update(K_t,e_t)->K_{t+1} -> Repeat — the corpus's first complete, executable active-epistemic-system algorithm"
+refines:
+  - concept: "0546's InformationGain≠EvidenceStrength / EvidenceValue≠EvidenceStrength distinction and its named 'Step 6' target"
+    refinement: "Fully executed: delivers formal definitions of information gain (entropy-based and discrepancy-based), Expected Discrepancy Reduction, Value of Evidence, and Utility, culminating in Lord's precise optimization problem and a complete decision-loop algorithm"
+  - concept: "0499/0526/0544's Zero/Lord/Sārathi role definitions"
+    refinement: "Given the corpus's cleanest, most mathematically precise three-role separation to date (Detect/Rank/Guide), each formalized as a distinct function with a clear input-output signature"
+  - concept: "0409/0501's Moksha-as-epistemic-completion philosophical metaphor"
+    refinement: "Explicitly and deliberately NOT allowed to become a formal mathematical consequence of the Discrepancy framework — Δ=0 is rigorously scoped to a specified purpose/context, disciplining an earlier philosophical thread against overreach into the corpus's now-mature formal mathematics"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 7' (the Knowledge State transition algebra, K_{t+1}=δ(K_t,e_t) fully specified covering new/updated/superseded assertions, contradictions, gap resolution, staleness, retraction, provenance, and temporal versioning) is executed as its own dedicated file — explicitly recommended by this file to precede any further implementation work"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Evidence Strength≠Information Gain≠Decision Value, the discrepancy-based IG_D(e) formula, Expected Discrepancy Reduction (EDR) as more fundamental than entropy reduction for KnowledgeOS, and the InformationGain≠PurposeValue counterexample."
+  - "dimension-registry.md: record Value of Evidence VOE_ρ, the cost-inclusive Utility function U_ρ(e), Lord's formal optimization problem q*=argmax U_ρ(q), and the cleanest Zero/Lord/Sārathi (Detect/Rank/Guide) role separation in the corpus."
+  - "dimension-registry.md: record the 'much more than RAG' architectural contrast, the general utility-based stopping condition, the explicit rejection of 'Moksha=Δ=0' as a global mathematical consequence, and the corpus's first complete nine-step KnowledgeOS Decision Loop algorithm."
+anchor_test:
+  anchor: "0546's InformationGain≠EvidenceStrength finding and named Step-6 target; 0499/0526/0544's Zero/Lord/Sārathi definitions; 0409/0501's Moksha-as-completion metaphor; 0492's Discrepancy framework"
+  supports_dimension: "LANDMARK delivering the corpus's first complete, executable active-epistemic-system algorithm (the nine-step KnowledgeOS Decision Loop), formalizing Lord's evidence-acquisition optimization problem (q*=argmax U_ρ(q)) with a rigorous cost-aware Utility function, establishing Expected Discrepancy Reduction as more fundamental than entropy-based information gain for KnowledgeOS's actual objective (K_t->I_t, not H(K_t)->0), delivering the cleanest three-role Zero/Lord/Sārathi separation to date, framing KnowledgeOS as architecturally distinct from RAG, and — critically — explicitly disciplining an earlier philosophical metaphor (Moksha=Δ=0) against becoming a smuggled-in global mathematical claim"
+  refines_or_contradicts: "directly and fully executes 0546's named Step 6; sharpens 0499/0526/0544's Zero/Lord/Sārathi definitions into their cleanest formal separation yet; explicitly and deliberately corrects/bounds 0409/0501's Moksha metaphor rather than contradicting it outright — a disciplined containment, not a reversal; extends 0492's Discrepancy framework with a full active-acquisition decision loop"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The two-proposition (A/B) counterexample proving InformationGain≠PurposeValue is a directly checkable, minimal demonstration showing why entropy reduction alone cannot serve as KnowledgeOS's evidence-value criterion — genuine mathematical falsification evidence within the file."
+  - "The explicit, deliberate rejection of 'Moksha=Δ=0' as a mathematical consequence is a rare and significant instance of the corpus policing its own cross-thread consistency, actively preventing an earlier philosophical/Sanskrit-lens finding from being silently absorbed into the corpus's now-separate formal mathematical theory without justification."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 7' (the fully specified Knowledge State transition algebra) is executed as its own dedicated corpus file, given this file's own explicit recommendation to resolve it before any further implementation"
+  - "Whether the nine-step KnowledgeOS Decision Loop is ever tested against a concrete worked scenario end-to-end"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first complete, executable KnowledgeOS Decision Loop algorithm (nine explicit steps), formalizing Lord's evidence-acquisition optimization problem with a rigorous, cost-aware Utility function and establishing Expected Discrepancy Reduction as more fundamental for KnowledgeOS than entropy-based information gain — since the system's true objective is moving K_t toward I_t, not merely reducing uncertainty, proven via a concrete counterexample (InformationGain≠PurposeValue). Delivers the cleanest Zero/Lord/Sārathi three-role separation in the corpus (Detect/Rank/Guide), a significant 'much more than RAG' architectural framing, and a general utility-based stopping condition for evidence acquisition. Most notably, it delivers an explicit epistemic-discipline safeguard actively preventing the corpus's earlier philosophical Moksha-as-completion metaphor (0409/0501) from being silently absorbed as a global mathematical consequence of the Discrepancy framework — a rare, valuable instance of cross-thread self-policing. Closes by naming Step 7 (the full Knowledge State transition algebra) as the mathematical heart of the KnowledgeOS kernel, explicitly recommended to precede any further implementation."

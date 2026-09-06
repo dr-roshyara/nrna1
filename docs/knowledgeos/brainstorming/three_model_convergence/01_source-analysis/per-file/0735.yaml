@@ -1,0 +1,180 @@
+sequence: 735
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-130939_step-148-knowledgeos-api-and-contract-architecture.md
+title: "Step 148 -- Delivers the Genuinely Significant Conclusion 'This Is the Anti-Hallucination Architecture' and 'API Design = Governance Enforcement Boundary,' the Sharply Worked Capability-Contract-vs-CRUD-Contract Principle (Three Weak/Strong Examples), ActionFingerprint/ContextFingerprint Cryptographic Authorization Binding, the Delegation Invariant, and API-001 Through API-008 -- Delivers the Minimal KnowledgeOS v1 API Surface for the Golden Trace and 'Do Not Build the Entire API Catalog First' -- Opens Step 149, Persistence & Data Architecture, Promising a Polyglot-Persistence Boundary"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 148 -- KnowledgeOS API & Contract Architecture', promised at 0734's close; delivers a concrete (though still protocol-agnostic) API contract surface directly grounded in the Golden Trace, with two genuinely significant architectural conclusions -- API design as an anti-hallucination mechanism and as a governance enforcement boundary -- elevating the file beyond routine endpoint cataloging"
+source_role: PRIMARY_RESEARCH
+canonical_source: 735
+importance: critical
+confidence: high
+about: >
+  Opens with `API≠Domain Model`, `API≠Database Schema` -- the API exposes capabilities and governed
+  interactions, not internal structures -- and delivers API domains organized around capabilities
+  (Knowledge/Governance/Context/Assurance/Evidence/Agent/Action/Authorization), never around raw database
+  tables. Delivers the Context API as "the most important initial API... the principal interface between
+  KnowledgeOS and AI agents," with a full conceptual request/response schema
+  (`ContextRequest{traceId,agentId,taskId,subject,scope,requestedAt,purpose}` →
+  `ContextPackage{contextId,generatedAt,validUntil,governance,knowledge,rules,evidence,findings,
+  permissions,provenance}`), Context provenance (every element traceable to source/reason/authority/
+  validity), and **Context minimization**: "minimum sufficient governed context," explicitly not "maximum
+  available context," improving reasoning, performance, security, and explainability. Delivers the
+  appropriately humble "why we should not freeze REST yet" (`REST vs. GraphQL vs. gRPC` deliberately left
+  open; "the stable architectural decision is: a governed Context capability must exist. Protocol is an
+  implementation decision"), directly extending 0705's/0716's technology-independence discipline into
+  protocol selection specifically.
+
+  Delivers the Agent API (`getContext, getKnowledge, getEvidence, requestVerification,
+  createRecommendation, requestAction, getActionStatus`), Agent registration and the AgentType-vs-
+  AgentInstance distinction, and Agent capability declaration explicitly distinguished from permission
+  (`MayPerform=DeclaredCapability∧Policy∧Principal∧Scope∧Context`). Delivers the Verification, Evidence,
+  Governance, and Action APIs, with the explicit domain-operations-not-field-updates principle stated
+  cleanly for the first time: `ActivateDecision` is "architecturally preferable to
+  `UpdateDecision(status="effective")`" -- a precise API-design rule directly preventing arbitrary state
+  mutation. **Delivers the explicit warning against a direct execution endpoint** ("we should be very
+  careful with an API such as `POST /execute` because it collapses Request and Execution"), reaffirming
+  `RequestAction→Authorization→Execution` at the API-shape level.
+
+  **Delivers `ActionFingerprint`/`ContextFingerprint`, a genuinely valuable cryptographic authorization-
+  binding mechanism** (§148.31-148.34), directly extending 0726's TOCTOU principle into a concrete,
+  implementable security control: an authorization can bind to `Hash(ActionDefinition)`, so that
+  `AuthorizedAction≠ModifiedAction` -- explicitly motivated by a worked attack scenario ("authorize: upgrade
+  Nexus in staging; execute: upgrade Nexus in production... could theoretically happen if the implementation
+  is poorly designed"). Delivers the High-risk action rule: "authorization must bind to Action+Context+
+  Scope."
+
+  Delivers CI/CD explicitly positioned as a symmetric consumer alongside agents (`GetApplicableRules,
+  RunVerification, RegisterEvidence, GetFindings`), with the precise statement "KnowledgeOS should not
+  become an 'AI-only' system" -- a valuable scope-broadening clarification not previously stated this
+  explicitly. Delivers Engineering adapters/port contracts (a worked `NexusPort` interface) and "no adapter
+  leakage" reconfirmed at the API-implementation level.
+
+  **Delivers the Principal-vs-DelegatedBy distinction and the Delegation invariant**, a precise security
+  principle extending 0728's human-delegation discussion into a formal constraint: "an agent cannot acquire
+  more authority through delegation than the delegating principal possesses" --
+  `Authority_agent⊆Authority_delegator`, subject to policy. Delivers API-audit fields
+  (`RequestID/Principal/TraceID/Timestamp/Operation`) and API idempotency via `IdempotencyKey`, worked
+  through a concrete retry-after-lost-response scenario, and a semantic API error-code catalog
+  (`CONTEXT_EXPIRED, AUTHORIZATION_DENIED, RULE_NOT_APPLICABLE, EVIDENCE_UNAVAILABLE,
+  ACTION_ALREADY_EXECUTED, INVALID_STATE_TRANSITION`), extending 0734's failure-reason taxonomy.
+
+  **Delivers the Capability-Contract-vs-CRUD-Contract principle, worked through three sharp, concrete
+  weak/strong API-design examples** (§148.54-148.57): weak `PATCH /actions/42{status:"AUTHORIZED"}` vs.
+  strong `AuthorizeAction(42)`; weak `POST /verification{status:"PASS"}` vs. strong
+  `ExecuteVerification(ruleId,subject)` ("the verdict is produced, not supplied by the caller"); weak
+  `POST /claims{verified:true}` vs. strong `RegisterEvidence(...)+VerifyClaim(...)` ("verification becomes
+  a domain operation"). **Delivers the file's most significant conclusion — "this is the anti-hallucination
+  architecture"** (§148.58-148.59): "the platform should make it structurally difficult for an agent to
+  manufacture authoritative state" -- `Agent↛SetClaimVerified(true)`; instead
+  `Agent→RequestVerification→DeterministicChecker→Verification` -- with an API trust-hierarchy diagram
+  (`Agent assertion=LOW → Candidate knowledge → Evidence → Deterministic verification → Governed
+  state=HIGH`). This directly converts the reconstruction's longstanding "AI collapses inference into
+  authority" governance principle into a concrete, structural API-shape decision (deliberately omitting any
+  verdict-setting endpoint) rather than leaving it as a stated policy alone -- among the most directly
+  implementable expressions of that principle in the entire reconstruction.
+
+  **Delivers "the API is therefore part of governance," a genuinely important architectural conclusion**
+  (§148.60): "API design determines: which state transitions are structurally possible... API design =
+  Governance enforcement boundary" -- elevating API design from a purely technical interface concern into
+  a first-class governance mechanism, directly consolidating the file's entire preceding discipline into one
+  precise capstone statement.
+
+  **Delivers the Minimal KnowledgeOS v1 API, a concrete, directly buildable API surface scoped specifically
+  to the Golden Trace**: seven capability groups (Context: `GetGovernedContext`; Assurance:
+  `RequestVerification, GetVerification`; Evidence: `RegisterEvidence, GetEvidence`; Agent: `CreateTask,
+  CreateRecommendation`; Action: `RequestAction, GetAction`; Authorization: `EvaluateAuthorization`;
+  Execution: `ExecuteAuthorizedAction, GetExecution`) -- "this is enough to prove the architecture." Delivers
+  "do not build the entire API catalog first" (explicitly rejecting "150 endpoints before the first
+  vertical slice works" in favor of `GoldenTrace→MinimalContracts→ReferenceImplementation`, then expand),
+  an API acceptance test tracing the full operation sequence with `TraceID` requirement, and the reconfirmed
+  Claude/Codex compatibility test (identical sequence, only the agent adapter differs).
+
+  **Delivers `API-001` through `API-008`, eight new numbered API architecture invariants** cleanly
+  synthesizing the file's discipline: external consumers cannot directly mutate authoritative domain state;
+  a verification verdict is produced by the assurance mechanism, never supplied by an untrusted caller; a
+  material action cannot bypass authorization; every material operation has trace/correlation identity;
+  external system models do not cross the port/adapter boundary; agent capability does not imply execution
+  authority; authoritative state transitions occur through explicit domain operations; and graph/search
+  projections are not authoritative mutation interfaces (explicitly reconfirming that clients must not
+  treat the graph as master state).
+
+  Delivers the complete contract architecture diagram (the fullest single API-to-execution flow diagram in
+  the reconstruction) and Step 148's verdict: "agents consume governed capabilities; they do not manipulate
+  KnowledgeOS state directly... the first API does not need to be large. It needs to be semantically
+  correct."
+
+  **Closes by opening "Step 149 — Persistence & Data Architecture,"** promising to address where state
+  actually lives and which storage mechanism is authoritative for which information type (Transactional
+  State/Evidence/Graph/Search/Event History/Agent Memory), explicitly rejecting "the common mistake of
+  choosing one database for everything" in favor of "a clear polyglot persistence boundary, while retaining
+  one authoritative transactional model per bounded context" -- a natural, well-motivated continuation
+  directly building on 0728's/0733's prior persistence-category work. No actual code execution, repository
+  inspection, or verified filesystem/architecture claim reported anywhere in this file; every API contract,
+  invariant, and worked example remains a target specification, though the Minimal v1 API is directly
+  buildable and scoped precisely to the already-specified Golden Trace.
+introduces:
+  - concept: "'This is the anti-hallucination architecture' -- deliberately omitting any verdict-setting API endpoint"
+  - concept: "'The API is therefore part of governance' -- API design = Governance enforcement boundary"
+  - concept: "The Capability-Contract-vs-CRUD-Contract principle, worked through three concrete weak/strong examples"
+  - concept: "ActionFingerprint/ContextFingerprint -- cryptographic authorization binding preventing action drift between authorization and execution"
+  - concept: "The Delegation invariant: Authority_agent⊆Authority_delegator"
+  - concept: "The Minimal KnowledgeOS v1 API, scoped precisely to the Golden Trace"
+  - concept: "'Do not build the entire API catalog first'"
+  - concept: "API-001 through API-008"
+  - concept: "Opens Step 149 -- Persistence & Data Architecture, promising a polyglot-persistence boundary"
+defines:
+  - concept: "The anti-hallucination architecture"
+    definition: "An API design discipline that structurally prevents an agent from manufacturing authoritative state: there is no endpoint through which a caller can directly set a verdict, claim status, or verification result; every such state can only be produced by invoking the deterministic mechanism that owns it (e.g. RequestVerification triggers an actual checker, rather than accepting a caller-supplied PASS/FAIL value)"
+  - concept: "API design = Governance enforcement boundary"
+    definition: "The set of operations an API exposes determines which state transitions are structurally possible at all; because of this, API design is not a purely technical interface decision but a governance decision -- it is where architectural invariants either become enforceable or are silently left open to bypass"
+  - concept: "ActionFingerprint / ContextFingerprint"
+    definition: "A cryptographic hash of an action's exact parameters (or the context it was evaluated against) that an authorization binds to, ensuring the authorized action and the executed action are provably identical -- preventing a scenario where an action is authorized under one set of parameters (e.g. a staging environment) but silently executed under different, unauthorized parameters (e.g. production)"
+  - concept: "Delegation invariant"
+    definition: "An agent acting on behalf of a human or another principal can never possess more authority than that delegating principal actually holds -- Authority_agent⊆Authority_delegator, subject to applicable policy -- preventing delegation from becoming a privilege-escalation path"
+refines:
+  - concept: "the corpus's long-tracked 'AI collapses inference into authority' governance principle"
+    refinement: "Converted from a stated policy into a concrete, structural API-shape decision: deliberately omitting any endpoint that would let a caller directly set a verdict or claim status"
+  - concept: "0726's TOCTOU principle"
+    refinement: "Extended into a concrete cryptographic mechanism (ActionFingerprint/ContextFingerprint binding) preventing authorization-to-execution parameter drift"
+  - concept: "0728's human-delegation discussion"
+    refinement: "Formalized into the precise Delegation invariant Authority_agent⊆Authority_delegator"
+  - concept: "0734's named failure-reason taxonomy"
+    refinement: "Extended with additional semantic error codes specific to the API layer (RULE_NOT_APPLICABLE, ACTION_ALREADY_EXECUTED, INVALID_STATE_TRANSITION)"
+  - concept: "0705's/0716's technology-independence discipline"
+    refinement: "Extended into protocol selection specifically ('why we should not freeze REST yet')"
+  - concept: "0728's/0733's persistence-category discussion"
+    refinement: "Positioned as the direct predecessor to Step 149's promised polyglot-persistence architecture"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0736 (Step 149 — Persistence & Data Architecture) with standard attention: check whether it delivers concrete polyglot-persistence technology guidance (even hypothetically) beyond 0728's/0733's earlier storage-category discussions, and whether it reconciles the API-001..API-008/IC-001..IC-010/DM-001..DM-007/etc. invariant families into any unified numbering."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record 'this is the anti-hallucination architecture' and 'API design = Governance enforcement boundary' -- two genuinely significant conclusions elevating API design to a governance mechanism -- plus the Capability-Contract-vs-CRUD-Contract principle."
+  - "dimension-registry.md: record ActionFingerprint/ContextFingerprint (cryptographic authorization binding), the Delegation invariant, the Minimal KnowledgeOS v1 API scoped to the Golden Trace, and API-001 through API-008."
+  - "dimension-registry.md: note this file directly and structurally operationalizes the reconstruction's AI-authority-collapse governance principle into a concrete API-shape rule for the first time, a meaningful implementation-readiness milestone."
+anchor_test:
+  anchor: "the corpus's 'AI collapses inference into authority' governance principle; 0726's TOCTOU principle; 0728's human-delegation discussion; 0734's failure-reason taxonomy; 0705's/0716's technology-independence discipline; 0728's/0733's persistence-category discussion"
+  supports_dimension: "Delivers a concrete (though appropriately protocol-agnostic) API contract surface directly grounded in the Golden Trace, with two genuinely significant architectural conclusions: API design as a structural anti-hallucination mechanism, and API design as itself a governance enforcement boundary -- both converting longstanding stated principles into concrete, implementable API-shape decisions for the first time. Delivers the sharply worked Capability-Contract-vs-CRUD-Contract principle with three weak/strong examples, a genuinely valuable cryptographic authorization-binding mechanism (ActionFingerprint/ContextFingerprint) directly extending the TOCTOU discipline, and the precise Delegation invariant. Delivers a directly buildable Minimal v1 API scoped to the Golden Trace and API-001 through API-008. Closes with a well-motivated continuation into Step 149's promised polyglot-persistence architecture"
+  refines_or_contradicts: "directly and substantially extends the corpus's AI-authority-collapse governance principle, 0726's TOCTOU principle, 0728's human-delegation discussion, 0734's failure-reason taxonomy, 0705's/0716's technology-independence discipline, and 0728's/0733's persistence-category discussion; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§148.58-148.59's explicit statement 'this is the anti-hallucination architecture... the platform should make it structurally difficult for an agent to manufacture authoritative state,' paired with the concrete Agent↛SetClaimVerified(true) example, is directly quotable evidence of the reconstruction's longstanding AI-authority-collapse principle converted into a concrete, structural API design decision."
+  - "§148.60's explicit statement 'API design = Governance enforcement boundary' is directly quotable evidence of API design being elevated from a technical interface concern to a first-class governance mechanism."
+  - "§148.31-148.34's worked ActionFingerprint attack scenario ('authorize: upgrade Nexus in staging; execute: upgrade Nexus in production') is directly checkable evidence of a genuinely valuable, currently applicable cryptographic security mechanism."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 149's actual content (0736), once read, delivers concrete polyglot-persistence guidance beyond 0728's/0733's earlier storage-category discussions."
+  - "Whether the reconstruction's many invariant-notation families (API/IC/DM/GT/GG/GE/GC/GA/AF/AFR/RA/CM/IR/LA/KOS-ARCH) are ever explicitly cross-referenced or reconciled anywhere later in the corpus, or remain scattered pending the eventual §29-gated canonical synthesis."
+tier2_triggered: true
+tier2_reason: "Delivers a concrete API contract surface directly grounded in the Golden Trace with two genuinely significant architectural conclusions: API design as a structural anti-hallucination mechanism, and API design as itself a governance enforcement boundary -- both converting longstanding stated principles into concrete API-shape decisions for the first time. Delivers the sharply worked Capability-Contract-vs-CRUD-Contract principle, a genuinely valuable cryptographic authorization-binding mechanism (ActionFingerprint/ContextFingerprint), and the precise Delegation invariant. Delivers a directly buildable Minimal v1 API and API-001 through API-008. Opens Step 149's well-motivated continuation."

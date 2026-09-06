@@ -1,0 +1,40 @@
+sequence: M0096
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-133035_lingas-millions-four-claims-rejected-duplicate.md
+title: "DUPLICATE of M0095 (Linga's Millions: Four Claims Rejected, One Structure Retained), checksum-confirmed"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: x
+  secondary: x
+  secondary_note: "checksum-confirmed duplicate of M0095 per mathematical-manifest.tsv; no independent analysis performed"
+source_role: DUPLICATE
+canonical_source: M0095
+importance: low
+confidence: high
+about: "Checksum-confirmed duplicate of M0095. See M0095.yaml/M0095.md for the full analysis."
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "none -- duplicate record"
+  supports_dimension: "none"
+  refines_or_contradicts: "neither"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Checksum-confirmed duplicate of M0095 per mathematical-manifest.tsv."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Checksum-confirmed duplicate; canonical analysis at M0095."

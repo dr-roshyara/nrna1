@@ -1,0 +1,82 @@
+sequence: 1089
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/REFINED-STEP-289.md
+title: "REFINED STEP 289 -- Dependency Graph, Bootstrap Boundary, Derivation/Governance Separation: The Living-Document Companion to REFINED-STEP-288 (file 1088), Consolidating the Already-Tracked Bootstrap-Cut Result With Step 290/291's Amendments Embedded Inline, and Naming Itself 'the LARGEST Single Reversal in This Programme'"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the living-document companion to REFINED-STEP-288 (file 1088), for Step 289's dependency-graph and bootstrap-boundary findings"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1089
+importance: major
+confidence: high
+about: >
+  `REFINED-STEP-289.md` — "DEPENDENCY GRAPH, BOOTSTRAP BOUNDARY, DERIVATION/GOVERNANCE SEPARATION," verdict
+  "the minimal bootstrap cut is `{≡}` — and Step 288's `𝒪`/`𝒯` bootstrap claim is REFUTED." The living-
+  document companion to the already-tracked `REFINED-STEP-288.md` (file 1088), consolidating this
+  reconstruction's already-tracked Step-289 bootstrap-cut result (file 1052) with Step 290's and Step 291's
+  amendments EMBEDDED LIVE inline as boxed corrections at the top of the document ("0. LOCKED FINDINGS...
+  and two corrections from Step 290"), reviewer-accepted 2026-08-31 23:01, seven items locked.
+
+  **SUBSTANTIALLY RECONFIRMS THE ALREADY-TRACKED FINDINGS FROM FILE 1052** in a single, self-contained,
+  disciplined document: the 4-cycle/`{≡}`-unique-minimal-cut headline; the two-boundary distinction
+  (acyclicity vs derivation); the six-route (later eight-route, per the embedded Step-291 amendment)
+  derivation-blocked finding; the join-semilattice C-7 correction (embedded as the Step-290 amendment); the
+  N-4-downgrade (embedded as the Step-291 amendment, matching already-tracked file 1087); the `Σ`-is-a-
+  component-of-`K`-not-an-image finding (already tracked, files 1037-1039); the degeneracy-audit rule and its
+  application to `≈_∅`/`≈_{full}`/`≈_S∘≈_V` (all three already tracked, now consolidated); and the full
+  already-tracked STATUS taxonomy and §22 ten-required-answers synthesis.
+
+  **DELIVERS ONE GENUINELY NEW METHODOLOGICAL DETAIL NOT PREVIOUSLY TRACKED AT THIS PRECISION**: the self-
+  check log's third entry, describing the already-referenced "definitional artifact" bug (files 1052/1075)
+  with new specificity: "my own graph v1 | `K→≡_𝒯` rendered a DEFINITION as a TWO-WAY DEPENDENCY, producing a
+  PHANTOM 5TH CYCLE | edge removed; BOTH GRAPHS RETAINED IN THE TRANSCRIPTS so the audit is auditable." This
+  precisely identifies the exact mechanism of the earlier graph bug (a definitional relationship wrongly
+  modelled as bidirectional) and confirms the disciplined practice of retaining both the buggy and corrected
+  transcripts for auditability.
+
+  **DELIVERS THE PROGRAMME'S OWN EXPLICIT SELF-CHARACTERIZATION OF ITS LARGEST REVERSAL**: "Five corrections.
+  THE FIRST IS THE LARGEST SINGLE REVERSAL IN THIS PROGRAMME: a headline finding of the IMMEDIATELY PRECEDING
+  STEP, refuted by executing the analysis it asserted... Step 288 reasoned about the cycles IN PROSE and
+  reported a structure; Step 289 COMPUTED it. THE PROSE WAS WRONG." This is a genuinely valuable, explicit
+  ranking of this specific correction (Step 288's bootstrap-boundary claim, already tracked file 1052) as the
+  single largest reversal across the entire multi-step research programme -- confirming its significance
+  beyond what any individual file's record could establish alone.
+
+  Confirms the §22 ten-required-answers synthesis and the disciplined "three senses, never conflated" closing
+  table (research progress substantial; architectural closure none, 0 of 13; governance ratification none, 0
+  of 21) -- already tracked structurally (file 1062's closure taxonomy), here shown in its original Step-289
+  formulation.
+introduces:
+  - concept: "The precise mechanism of the v1 dependency-graph bug: a definitional relationship (K to equiv_T) was rendered as a two-way dependency, producing a phantom fifth cycle, with both the buggy and corrected graphs deliberately retained in the transcripts for auditability"
+  - concept: "The programme's own explicit ranking of the Step-288-bootstrap-boundary correction as the single largest reversal across the entire multi-step research programme"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Step-289 bootstrap-cut result and its v1-graph-bug diagnosis (files 1052, 1075)"
+    refinement: "CONSOLIDATED into a single living document with Step 290/291's amendments embedded inline, and the v1 bug's exact mechanism precisely named (a definitional K-to-equiv_T relationship wrongly modelled as bidirectional)"
+contradicts: []
+repeats:
+  - "Substantially reproduces the already-tracked Step-289 dependency-graph, bootstrap-cut, degeneracy-audit, and join-semilattice-correction findings from file 1052 and the Step-290/291 amendments from files 1069/1072/1087, now consolidated into a single self-contained document."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the precise v1-graph-bug mechanism (a definitional relationship wrongly modelled as bidirectional, producing a phantom fifth cycle) and the programme's own explicit characterization of the Step-288-bootstrap correction as its largest single reversal."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step-289 bootstrap-cut result and dependency-graph bug diagnosis (files 1052, 1075)"
+  supports_dimension: "Consolidates this finding into a living document with later amendments embedded inline, and precisely names the v1 bug's exact mechanism"
+  refines_or_contradicts: "refines (consolidates and precisely names) the prior tracked finding"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The embedded Step-290 and Step-291 amendments are directly checkable against files 1069, 1072, and 1087's own already-documented findings for exact chronological consistency."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Consolidates the already-tracked Step-289 bootstrap-cut result into a self-contained living document with later amendments embedded inline, delivering one genuinely new methodological detail (the precise v1-graph-bug mechanism) and the programme's own explicit characterization of this correction as its largest single reversal. Classified importance major (a consolidation with one notable new detail, rather than a fresh critical finding) and confidence high given the disciplined, well-evidenced nature of the synthesis."

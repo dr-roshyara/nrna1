@@ -1,0 +1,209 @@
+sequence: 869
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-104321_step_242_kernel-candidate-reconstruction-and-formal-comparison.md
+title: "Step 242 -- Kernel Candidate Reconstruction and Formal Comparison: THE BREAKTHROUGH'S DEEPEST RESULT -- Identifies NINE Materially Different Historical Kernel Candidates in TWO Competing, Unreconciled Lineages (Artifact-Oriented vs. State-Transformation-Oriented, Sharing Only Transformation+Policy), Delivers an Executed 36-Pair Comparison (0 Equivalent / 7 Conservative Extensions / 27 Competing / 2 Incomparable), and Discovers That EVEN WITHIN A SINGLE STEP (232) THE 'OUTER' GOVERNED-TRANSFORMATION KERNEL AND THE 'INNER' FIVE-ELEMENT KERNEL ARE THEMSELVES DISJOINT EXCEPT FOR POLICY -- Reframes the Entire Kernel Question Into FOUR INDEPENDENT DIMENSIONS (What Exists? / What Is a State? / What Qualifies a State? / How Does Knowledge Evolve?) Rather Than One Competing Answer -- Explicitly RETRACTS the Earlier 8-to-5 Component Reduction Mapping as Premature, Reframing K8-vs-K5 as a Possible CATEGORY ERROR Requiring Layer-Correspondence Proof Before Any Reduction Test -- Defers the 8-to-5 Reduction to Step 243 Under a Strict New Precondition"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: c1
+  secondary_note: "the nine-candidate historical inventory and two-lineage classification are DDD/historiographical, while the formal audits (type/equality/membership/closure/composability/computability) are the primary mathematical substance"
+source_role: PRIMARY_RESEARCH
+canonical_source: 869
+importance: critical
+confidence: high
+about: >
+  Opens confirming continuity with the human-supplied mandate ("I have now read the Step 242 mandate you
+  attached... not as a new interpretation of Step 241") -- a further, third confirmation of the LLM-
+  conversation-transcript nature of this corpus stretch (cf. 0861, 0868).
+
+  **§242.0 delivers the executive result, "stronger than the earlier Step 241 formulation": there is not
+  one historical sequence of kernel refinements. There are AT LEAST TWO COMPETING KERNEL LINEAGES, plus
+  several independent mathematical representations of what a knowledge state might be.** The executed
+  reconciliation found boxed **`9 candidates`**, with a full pairwise comparison (36 pairs, matching
+  `C(9,2)`) yielding **`0 equivalent, 7 conservative extensions, 27 competing, 2 incomparable`** --
+  explicitly "an executed comparison result, not merely an interpretation."
+
+  **§242.1 delivers the complete nine-candidate inventory table** with concrete corpus origins: `K0`
+  (7-frame: artifact/type/provenance/event/invariant/state/transformation, pre-S070); `K_OS` (K0+policy,
+  S070); `K_L` (K0−state, S070); Amended K (K0 lineage+identity, S073); 201-A freeze (expanded 16-role
+  structure); `230 v0` (state/context/transformation/authority/evidence/lineage, S230); `230 v1`
+  (state/context/transformation/evidence/authority, S230); `232 v2` (230v1+policy, S232); `232 inner
+  𝔎` (graph/status/temporal-validity/lineage/policy, S232).
+
+  **§242.2-242.3 delivers the two-lineage discovery**: Lineage A, artifact-oriented
+  (`K_0⊂K_OS`, `K_L⊂K_amended⊂K_201A`; vocabulary Artifact/Type/Event/Invariant/Provenance/
+  Transformation/Policy) versus Lineage B, state-transformation-oriented (`K_230v1⊂K_232v2`; vocabulary
+  State/Context/Transformation/Evidence/Authority/Policy). The two lineages **share only `{Transformation,
+  Policy}`**; no document establishes a mapping between them; the executed comparison classifies their
+  relationship as **`COMPETING`**, not equivalent -- boxed **`Equivalence=UNPROVEN`**.
+
+  **§242.4-242.10 audits `K_8`, `K_230`, `K_230v1`, and `K_232v2` individually**: `K_8` is fundamentally
+  ontological ("what kinds of things must exist?"), with a proposed derivation set (`Evidence=
+  QualifiedObservation`, `Claim=Proposition`, `Identity=EntityIdentityRelation`,
+  `Provenance=TypedDependencyRelation`, `Causality=TypedCausalRelation`,
+  `Decision=PolicyConstrainedActionSelection`) that lacks formal construction theorems, and is shown NOT
+  demonstrably closed (`Evidence⊆O×Context` introduces `Context`, an EXTERNAL type not among the eight
+  primitives); `K_230` asks a different question ("what must participate in a governed knowledge
+  transformation?") and derives the SI/BP/EI/GA/TL/Assurance functions from 0856, but has a closure
+  problem (`T` needs policy/temporal information not cleanly in the tuple); `K_230v1` audit results:
+  `Closure=NO, Independence=NO, Computable=NO, Minimality=UNPROVEN`; `K_232v2` (adding policy) achieves
+  `Closure=YES` but explicitly NOT `WellTypedness/Totality/Determinism/Composability/Computability/
+  Minimality/Independence` -- "a real repair, but incomplete repair."
+
+  **§242.11-242.12 delivers ONE OF THE STRONGEST FINDINGS OF STEP 242**: within the SAME Step 232 file,
+  the OUTER governed-transformation kernel `K_232v2={State,Context,Transformation,Evidence,Authority,
+  Policy}` and the INNER state-qualification kernel `𝔎_5={Graph,Status,TemporalValidity,Lineage,Policy}`
+  are **not the same kernel** -- their overlap is only boxed **`{Policy}`**, and no mapping between them
+  exists anywhere in Step 232 itself. Boxed **`K_232v2≠𝔎_5`** unless a new mapping is demonstrated. This
+  reveals a previously-unremarked internal disjointness within a single prior file (this reconstruction's
+  own file 0858), not merely between historically separated files.
+
+  **§242.13-242.19 reclassifies the six Step-231 models (Set/Graph/Probabilistic/Typed-proposition/
+  Lattice/Hybrid) as alternative REPRESENTATIONS of `K`**, not additional kernel lineages -- a useful
+  taxonomic correction. Each individually re-audited: Set `INCOMPLETE AS STANDALONE`; Graph
+  `STRUCTURALLY STRONG, SEMANTICALLY INCOMPLETE`; Probabilistic "a knowledge annotation/model, not
+  demonstrated as the entire ontology"; typed proposition `STRONGEST SINGLE STATE REPRESENTATION` but
+  `NOT COMPLETE` (still needs probabilistic annotation for uncertainty/identifiability); Lattice
+  `CANDIDATE, NOT ESTABLISHED` (no proven `inf`/`sup`/meet/join); Hybrid too expressive without proven
+  minimality/independence/closure, explicitly not to become the final architecture "simply because it
+  covers more concepts."
+
+  **§242.20 delivers a three-family reclassification of the entire candidate space, explicitly labeled a
+  VERIFIER RECONSTRUCTION rather than a corpus-established fact**: Family I, Ontological kernel
+  (`K_8` and the artifact lineage, "what exists?"); Family II, Transformation kernel (`K_230`,
+  `K_230v1`, `K_232v2`, "what must participate in governed knowledge transformation?"); Family III,
+  Knowledge-state representation (`𝔎_5` and Step 231's six models, "how can the knowledge state itself be
+  represented?").
+
+  **§242.21-242.32 delivers a battery of cross-cutting foundational audits**: primitive/derived status
+  for `K_8` PARTIALLY ESTABLISHED, for `𝔎_5` UNPROVEN (no declared domains/codomains, "satisfies the
+  domain invariants" itself undefined); type audit -- `𝔎_5`'s five components each have unspecified
+  `?→?` types, "currently partially typed at best"; equality UNDEFINED across ALL SIX Step-231 models,
+  blocking Replay/Merge/Supersession; membership UNDEFINED across the competing state models; identity
+  reaffirms 0865's finding that `Identity≠State` first appears at Step 200, explicitly warning "Step 242
+  must not use that later slogan to retroactively justify K8/K5"; temporal semantics judged `STRONG`
+  (the best-defined `𝔎_5` component) but its exact kernel LOCATION remains disputed; provenance exists
+  in `K_8` (`R`), `K_230` (`E`, `L=History(T)`), and `𝔎_5` (`λ`) but **in different roles**, explicitly
+  "we cannot yet assert `λ=R=History(T)=Provenance(E)`... related but not proven equivalent"; uncertainty
+  "not yet absorbed cleanly into `𝔎_5`"; Authority is reaffirmed NOT a natural knowledge-state property
+  (a relation, `Authority(actor,action,context)`), consistent with 0863/0866's `State≠Authority`/
+  `Policy≠Authority` findings; `Validation:𝕂×X→Assessment` vs. `Transformation:𝕂×Parameters→𝕂` reaffirmed
+  as a corpus-established distinction, so validation "should not automatically be inserted into `K`";
+  Replay formalized as `f(T_1,...,T_n,K_0)` rather than `f(K_n)`, "supported inference," not formal
+  theorem.
+
+  **§242.33-242.36 delivers formal closure/composability/determinism/computability test results**:
+  `K_230v1 NOT CLOSED`; `K_232v2 CLOSED IN THE LIMITED COMPONENT SENSE` (closure does not imply
+  well-typedness/computability/minimality); composability confirmed FAIL/OPEN, directly reusing 0858's
+  governance-breaks-composition finding (`T_1,T_2∈𝒯_G` but `T_2∘T_1∉𝒯_G`) as a formal test outcome here;
+  determinism `NOT STATED`; and, most concretely, **an ACTUAL ATTEMPTED COMPUTATIONAL INSTANTIATION of
+  `𝔎_5` was made and FAILED** -- attempting to instantiate `State_0∈𝕂` and compute `T(State_0)` failed on
+  graph typing, epistemic status typing, lineage initialization, policy typing, and membership, boxed
+  **`𝔎_5 is not currently computationally instantiated`** -- a genuine, concrete (attempted-and-failed)
+  execution result, distinct from the many merely-claimed-but-untried "experiments" tracked throughout
+  0842-0862.
+
+  **§242.37-242.40 delivers the file's central methodological conclusion**: the `K_8→𝔎_5` reduction is
+  premature because the structures may not even answer the same question (`K_8` ontology; `K_230`
+  transformation system; `𝔎_5` state-qualification structure) -- asking for a reduction "may be a
+  CATEGORY ERROR unless we first prove they occupy the same mathematical layer." Delivers a preliminary
+  five-row layer table (K8 ontological/structural; K230 transformation; K231-A-F representations; K232
+  outer governed-transformation context; K232 inner `𝔎_5` state qualification/semantic kernel), again
+  explicitly `SUPPORTED INFERENCE`, not `CORPUS ESTABLISHES`. Proposes a **layering hypothesis** instead
+  of forced equivalence -- `K_state=f(K_8,G,σ,θ,λ,π)` -- reconciling the two kernels as complementary
+  LAYERS rather than a reduction target and source. **Explicitly retracts the earlier component-level
+  8→5 reduction mapping** (proposed at 0863/0865) as merely "a preliminary reduction hypothesis, not an
+  accepted mapping," boxed: **`DO NOT USE THIS MAPPING AS ESTABLISHED. It belongs to Step 243`**.
+
+  **§242.41 delivers the file's most elegant reframing: FOUR INDEPENDENT UNRESOLVED DIMENSIONS**
+  explaining why the historical candidates appear incompatible -- Dimension 1, What exists? (`K_8`);
+  Dimension 2, What is a knowledge state? (`K_231A-F`); Dimension 3, What qualifies/governs a knowledge
+  state? (`𝔎_5`); Dimension 4, How does knowledge evolve? (`K_230`/`K_232`). This dissolves much of the
+  apparent contradiction chaos catalogued at 0866 by recognizing the candidates as answering genuinely
+  DIFFERENT questions rather than competing over one answer.
+
+  **§242.42 delivers an eleven-row, seven-column formal status matrix** (Historical/Formalized/Typed/
+  Closed/Minimal/Computable/Tested) across all candidates, showing a consistent pattern of strong
+  historical grounding paired with weak-to-absent formal rigor for the newer candidates.
+
+  **§242.43-242.44 delivers an explicit, disciplined ESTABLISHED-vs-NOT-ESTABLISHED ledger** (nine boxed
+  established items, six boxed not-established items, ending boxed **`No final kernel should yet be
+  frozen`**).
+
+  **§242.45 delivers the Step 242 verdict**: boxed **`STEP 242 — CANDIDATE RECONSTRUCTION COMPLETE`**,
+  **`NO FINAL KERNEL SELECTED`**, **`8→5 reduction DEFERRED to Step 243`**. "The strongest interpretation
+  at this stage is not that K5 has replaced K8. Rather, the evidence suggests the corpus has been
+  developing different mathematical layers and lineages without formally reconciling them." Reframes the
+  central question from "can K8 be reduced to K5?" to boxed **`Are K8 and K5 even objects of the same
+  mathematical category?`**
+
+  **Closes opening Step 243 under a strict new precondition**: first establish the layer/type
+  correspondence; only then test `K_8↔𝔎_5`; if the mapping fails, "the mathematically valid result may
+  instead be `K_8 and 𝔎_5 are complementary layers`" rather than `K_8→𝔎_5`.
+introduces:
+  - concept: "The nine-candidate historical kernel inventory with concrete corpus origins (K0/7-frame through 232-inner-𝔎)"
+  - concept: "THE TWO-LINEAGE DISCOVERY: artifact-oriented Lineage A vs. state-transformation-oriented Lineage B, sharing only {Transformation, Policy}, classified COMPETING not equivalent"
+  - concept: "The executed 36-pair comparison result: 0 equivalent, 7 conservative extensions, 27 competing, 2 incomparable"
+  - concept: "THE WITHIN-STEP-232 DISJOINTNESS FINDING: the outer K_232v2 governed-transformation kernel and the inner 𝔎_5 state-qualification kernel share only {Policy}, no mapping ever demonstrated"
+  - concept: "The reclassification of the six Step-231 models as representations of K, not additional kernel lineages"
+  - concept: "The three-family reclassification (Ontological/Transformation/State-representation kernels), explicitly a verifier reconstruction, not corpus-established"
+  - concept: "The cross-candidate primitive/derived, type, equality, membership, identity, temporal, provenance, uncertainty, authority, validation, and replay audits"
+  - concept: "The provenance-in-different-roles finding: λ=R=History(T)=Provenance(E) not proven equivalent across K8/K230/K5"
+  - concept: "The formal closure/composability/determinism/computability test results, including an ACTUAL ATTEMPTED-AND-FAILED computational instantiation of 𝔎_5"
+  - concept: "THE CATEGORY-ERROR WARNING: K8→K5 reduction premature unless the structures are first proven to occupy the same mathematical layer"
+  - concept: "THE LAYERING HYPOTHESIS: K_state=f(K8,G,σ,θ,λ,π), reconciling K8 and K5 as complementary layers rather than a reduction target/source"
+  - concept: "THE EXPLICIT RETRACTION of the earlier component-level 8→5 reduction mapping as merely preliminary, not accepted"
+  - concept: "THE FOUR-DIMENSION REFRAME: What exists? / What is a state? / What qualifies a state? / How does knowledge evolve? -- explaining the apparent incompatibility of the historical candidates"
+  - concept: "The eleven-row formal status matrix (Historical/Formalized/Typed/Closed/Minimal/Computable/Tested)"
+  - concept: "The explicit established-vs-not-established ledger, ending 'no final kernel should yet be frozen'"
+  - concept: "Step 242 verdict: candidate reconstruction complete, no final kernel selected, 8→5 reduction deferred under a strict layer-correspondence precondition"
+defines:
+  - concept: "The within-Step-232 disjointness finding"
+    definition: "A specific, directly checkable discovery that the same historical source file (Step 232, this reconstruction's own file 0858) contains TWO different candidate kernels that are themselves not the same structure: the 'outer' governed-transformation kernel K_232v2={State,Context,Transformation,Evidence,Authority,Policy} (six components, describing what participates in a governed transformation) and the 'inner' kernel 𝔎_5={Graph,Status,TemporalValidity,Lineage,Policy} (five components, describing how a knowledge state itself is qualified). These two structures, despite originating in the same file and step, overlap in only one component (Policy), and no explicit mapping between them is ever given within that source material. This means even before comparing K8 (from an entirely different lineage) to 𝔎_5, there is already an unresolved internal question about how 𝔎_5 relates to its own sibling structure K_232v2 from the very same step"
+  - concept: "The four-dimension reframing of the kernel question"
+    definition: "A proposed resolution to the apparent chaos of competing kernel candidates catalogued in 0866's contradiction registry: rather than treating all candidate kernels as competing answers to one single question ('what is THE KnowledgeOS kernel?'), this file proposes that the candidates are actually answering four genuinely distinct, independently-valid questions -- (1) What exists? (answered by the ontological K8-style candidates); (2) What is a knowledge state? (answered by the Step-231 representational models); (3) What qualifies/governs a knowledge state? (answered by 𝔎_5-style semantic/governance dimension kernels); (4) How does knowledge evolve? (answered by the K230/K232-style transformation-system kernels). Under this reframing, much of the apparent contradiction between candidates dissolves not because one candidate is proven correct and the others wrong, but because they were never actually competing over the same question in the first place -- though this reframing is explicitly presented as this file's own synthesis (VERIFIER RECONSTRUCTION), not something the corpus itself establishes"
+  - concept: "The layering hypothesis (K_state=f(K8,G,σ,θ,λ,π))"
+    definition: "A proposed alternative to forcing K8 and 𝔎_5 into an equivalence or reduction relationship: rather than demanding K_8=𝔎_5 or a lossless reduction K_8→𝔎_5, the file proposes that K_8 could define the universe of primitive ontological objects, over which a genuine knowledge-state structure K_state is constructed, and 𝔎_5 could then characterize important cross-cutting dimensions of that constructed state -- expressed schematically as K_state=f(K_8,G,σ,θ,λ,π). Under this hypothesis, there is no requirement that K_8 and 𝔎_5 be the same kind of object at all; they occupy different layers of one larger architecture rather than being alternative candidates for one single role. Explicitly labeled a hypothesis, not the final mathematical architecture"
+refines:
+  - concept: "0863's/0864's/0865's earlier eight-element-kernel discovery and the proposed component-level reduction mapping (G↔(E,R), σ↔(P,O,epistemic status), etc.)"
+    refinement: "The proposed component-level mapping is EXPLICITLY RETRACTED as merely preliminary and not established -- this file corrects this reconstruction's own earlier framing (which had treated the mapping as a serious, if unaccepted, candidate) by clarifying it should not be used as a working hypothesis at all until the more fundamental layer/category question is resolved first"
+  - concept: "0866's D-06 lossy-compression concern and D-15 semantic/type reframing"
+    refinement: "SUBSTANTIALLY DEEPENED: the provenance-in-different-roles finding (λ=R=History(T)=Provenance(E) not proven equivalent) gives D-06's abstract 'lossy compression family' concern a concrete, specific worked example, and the category-error warning (K8→K5 may not even be a well-formed question) extends D-15's type-collision framing from individual symbols to entire kernel structures"
+  - concept: "0858's governance-breaks-composition finding (MathematicalComposition≠GovernedComposition)"
+    refinement: "DIRECTLY REUSED as a formal test result within this file's systematic composability audit of K_232v2, confirming the finding's continued relevance as concrete evidence against premature composability/algebra claims for any of the candidate kernels"
+contradicts:
+  - concept: "This reconstruction's own earlier treatment of the eight-to-five component reduction mapping (from 0863/0865) as a serious, pending candidate hypothesis"
+    contradiction: "This file explicitly states 'DO NOT USE THIS MAPPING AS ESTABLISHED' and reclassifies it as merely preliminary, given the newly discovered within-Step-232 disjointness between K_232v2 and 𝔎_5 and the broader category-error concern -- future synthesis work drawing on this reconstruction's own 0863-0865 records should treat that mapping with the heightened caution this file introduces, not as a stable working hypothesis."
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 243's attempt at the layer-correspondence proof and, contingent on its outcome, either a genuine 8-to-5 reduction test or a formal conclusion that K8 and 𝔎_5 are complementary, non-reducible layers."
+  - "Watch whether the within-Step-232 disjointness (K_232v2 vs 𝔎_5) is ever explicitly reconciled, and whether the four-dimension reframing is further developed or adopted as the corpus's own organizing structure."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record THE TWO-LINEAGE DISCOVERY and the executed 36-pair comparison (0/7/27/2) as the deepest, most rigorous kernel-comparison result found anywhere in this reconstruction's read-through to date -- directly relevant to the eventual gated (§29) canonical Kernel synthesis."
+  - "dimension-registry.md: record THE WITHIN-STEP-232 DISJOINTNESS FINDING (K_232v2 vs 𝔎_5 sharing only Policy) as a significant, previously-unremarked internal inconsistency within a single prior source file (this reconstruction's own file 0858) -- flag for careful handling in any future synthesis referencing 0858's kernel content."
+  - "dimension-registry.md: record THE FOUR-DIMENSION REFRAME (What exists? / What is a state? / What qualifies a state? / How does knowledge evolve?) as a candidate organizing structure for the eventual canonical Kernel synthesis, potentially dissolving much of the corpus's own extensive kernel-notation proliferation by recognizing genuinely different underlying questions rather than one contested answer."
+  - "dimension-registry.md: record the EXPLICIT RETRACTION of the component-level 8-to-5 reduction mapping -- update this reconstruction's own future references to that mapping (from 0863/0865) to reflect its now-downgraded, explicitly-not-established status."
+anchor_test:
+  anchor: "0863's/0864's/0865's eight-element kernel discovery and reduction mapping; 0866's D-06 lossy-compression and D-15 semantic-type findings; 0858's governance-breaks-composition finding and its own kernel-v2 derivation"
+  supports_dimension: "Delivers the deepest, most rigorous multi-kernel comparison in this reconstruction's read-through, discovering a genuine internal disjointness within a single prior file (0858), reframing the entire kernel question into four independent dimensions, and explicitly retracting the earlier component-level reduction mapping as premature. Directly reuses 0858's governance-breaks-composition finding as formal evidence in a new context. Provides a concrete example (provenance-in-different-roles) deepening 0866's abstract lossy-compression concern"
+  refines_or_contradicts: "substantially deepens and partially retracts this reconstruction's own earlier kernel-reduction framing (0863/0865); extends 0866's D-06/D-15 findings with concrete worked examples; reuses 0858's composability finding as formal test evidence; does not directly address the I-series or Gita-taxonomy collisions (this file contains no Gita content)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§242.0's executed comparison figures (0 equivalent, 7 conservative extensions, 27 competing, 2 incomparable) sum to exactly 36, matching C(9,2) for nine candidates -- a directly checkable internal-consistency signal that a genuine pairwise comparison was performed, not merely asserted."
+  - "§242.12's specific claim that the overlap between K_232v2 and 𝔎_5 is exactly {Policy}, both structures being directly quoted with their component lists earlier in the same file, is directly checkable evidence for the within-Step-232 disjointness finding without requiring external verification."
+  - "§242.36's specific list of instantiation-failure points (graph typing, epistemic status typing, lineage initialization, policy typing, membership) for the attempted computational instantiation of 𝔎_5 is directly checkable evidence of a genuine, concrete (if unsuccessful) execution attempt, distinct in kind from the many claimed-but-untried experiments catalogued at 0862/0863."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 243 successfully establishes the layer/type correspondence required before any K8↔𝔎_5 reduction test can proceed, and if so, what the reduction test itself reveals."
+  - "Whether the within-Step-232 disjointness between K_232v2 and 𝔎_5 is ever explicitly reconciled by a later file."
+  - "Whether the four-dimension reframing is further developed, adopted, or eventually superseded by a different organizing structure for the canonical kernel."
+tier2_triggered: true
+tier2_reason: "The breakthrough's deepest and most rigorous result to date: a genuinely executed nine-candidate, thirty-six-pair kernel comparison; the discovery that even a single prior file's own two kernel formulations are disjoint except for Policy; an elegant four-dimension reframing dissolving much of the apparent kernel-notation chaos; an actual attempted-and-failed computational instantiation; and the explicit, well-justified retraction of a previously-floated reduction mapping. Classified importance critical and tier2-triggered."

@@ -1,0 +1,165 @@
+sequence: 656
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-120724_step-072-epistemic-consistency-under-concurrency.md
+title: "CONFIRMED (Not Merely Near-Certain): Step 72 Substantially Re-Derives 0641's Already-Processed Step 59 (Concurrency and Interleaving Calculus) — a SECOND, Independently-Defined I_Concurrency Invariant Appears With Near-Identical Substance and Zero Cross-Reference; ConcurrencyConflict≠EpistemicConflict Directly Parallels 0641's ConcurrencyConflict vs. SemanticContradiction Under Different Terminology; Optimistic-Concurrency, False-Causal-Ordering, and Bounded-Context-Specific Consistency All Re-Derived From Scratch; Delivers Genuinely New Material Not in 0641 (a Formal AI-Reproducibility Function y=f_θ(x,K_t,C), a Determinism Trichotomy, TransactionBoundary≈InvariantBoundary, Saga-Style Compensating Workflows, Three New Architectural-Anti-Pattern FAILs); Verdict 'STEP 72 — PASS'; Closes by Opening the Corpus's First Genuinely New Cryptographic-Provenance/Trust Topic in Step 73 — Identity, Trust and Cryptographic Provenance"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 72 -- Epistemic Consistency Under Concurrency', opened at 0655's close under the irregular header 'Step 72 -- The next fundamental question'; CONFIRMS the near-certain collision this reconstruction flagged at 0655 against 0641's (Step 59's) already-processed Concurrency and Interleaving Calculus content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 656
+importance: critical
+confidence: high
+about: >
+  **CONFIRMS, via direct content comparison, the near-certain collision flagged at 0655**: Step 72 opens
+  "what does correctness mean when multiple actors modify or reason about knowledge simultaneously?" and
+  proceeds to re-derive, largely from scratch and without cross-reference, substantially the same territory
+  this reconstruction's own 0641 record already confirms was fully and maturely delivered under Step 59
+  ("Concurrency and Interleaving Calculus"): concurrent valid updates and commutative independent writes
+  (this file's §72.1-72.4) parallel 0641's optimistic-concurrency treatment; conflicting concurrent updates
+  and `TemporalWriteOrder≠EpistemicPriority` (§72.5-72.8) parallel 0641's `ConcurrencyConflict` versus
+  epistemic-priority discipline; optimistic-concurrency version-mismatch detection (§72.9-72.11,
+  `ExpectedVersion` vs. `CurrentVersion`) is essentially the identical mechanism 0641 already formalized;
+  false causal ordering from arrival sequence and `ArrivalOrder≠EventOrder≠CausalOrder` (§72.18-72.23)
+  directly re-derive 0641's Lamport-clock-based partial-order treatment; and Distributed consistency framed
+  as domain-specific per bounded context (`EvidenceContext: Eventual` vs. `AuthorizationContext: Strong`,
+  §72.24-72.35) occupies the same conceptual space as 0641's `ConcurrencyPolicy=f(DomainOperation,
+  Invariant)` (no single universal concurrency strategy).
+
+  **Delivers a SECOND, independently-defined `I_{Concurrency}` invariant** ("concurrent operations must not
+  silently destroy valid epistemic information") **that is substantively the same claim as 0641's own
+  `I_{Concurrency}`** ("no concurrent execution may create two incompatible [states/claims]" -- per this
+  reconstruction's 0641 record), introduced with zero cross-reference to the earlier invariant of the
+  identical name -- **this is a directly checkable naming AND content collision, distinct from and more
+  precise than the still-open 0618/0597 resemblance and the I_EvidenceIndependence/I_EpistemicIndependence
+  duplication confirmed at 0655**: here the corpus has independently produced two invariants sharing not
+  only substance but the exact same symbolic name (`I_Concurrency`) at two different points (0641, 0656)
+  without recognizing the duplication. Delivers **`ConcurrencyConflict≠EpistemicConflict`** (§72.41,
+  concurrent agents may disagree due to true conflict, different models, different versions, different
+  context, or additional evidence -- a five-cause taxonomy), directly paralleling 0641's own
+  `ConcurrencyConflict` versus `SemanticContradiction` distinction under different terminology
+  (`EpistemicConflict` here versus `SemanticContradiction` there), again without cross-reference.
+
+  Despite this substantial retread, the file delivers genuinely new material extending beyond 0641's scope:
+  **Epistemic merge formalized as a domain-specific operation, not generic infrastructure** (`M(S_A,S_B)=
+  S_A∪S_B` for independent artifacts; `M(S_A,S_B)=S_{merged}+Conflict` for genuinely conflicting claims),
+  explicitly contrasted with Git-style textual merging ("KnowledgeOS asks: what is the epistemic
+  relationship between these two artifacts? The second question is semantic"), confirmed via a semantic-
+  merge experiment (PASS) and a **generic-merge architectural-anti-pattern experiment yielding a boxed
+  FAIL** (one universal merge algorithm across evidence/claims/policies/authorizations -- `Architectural
+  Failure`), directly extending the corpus's bounded-context-ownership discipline into merge semantics
+  specifically, and continuing 0650's/0656's own established "deliberate anti-pattern FAIL" convention (as
+  distinct from genuine adversarial FAILURE DETECTED discoveries) with a second and third instance in this
+  same file (a universal-strong-consistency-policy experiment also yielding boxed FAIL as `OverEngineering`,
+  and an oversized-single-global-transaction experiment yielding boxed FAIL as
+  `PoorScalability`/`BoundedContextViolation`).
+
+  **Delivers the file's first central formal deliverable -- `DataConsistency≠DecisionSufficiency`**: a
+  replica may be internally consistent yet too stale for a particular safety-critical decision, confirmed
+  via a stale-decision experiment (a 20-minute-old replica correctly blocking a decision requiring
+  `Freshness<5min` -- PASS), crystallizing that strong consistency is not universally necessary and that
+  consistency requirements are legitimately domain-specific per bounded context.
+
+  **Delivers the file's second central formal deliverable -- `TransactionBoundary≈InvariantBoundary`**, an
+  explicit DDD heuristic connecting transaction-boundary design directly to invariant-boundary design
+  (artifacts requiring atomic joint updates under one invariant belong in one transaction; artifacts with no
+  connecting invariant may commit independently), confirmed via the oversized-transaction anti-pattern FAIL
+  above, and Saga-style distributed workflows with compensating actions for cross-context flows that cannot
+  share one ACID transaction (`Decision→Authorization→Execution→Outcome`), confirmed via a distributed-
+  workflow experiment (authorization succeeds, execution fails, partial workflow state correctly recorded,
+  not silently rolled forward -- PASS), directly reconfirming `Authorization≠Execution` and `Decision≠
+  Outcome` "survive distributed execution."
+
+  **Delivers the file's third and most novel central formal deliverable -- AI computation reproducibility
+  formalized as a genuine function of multiple independent inputs**: `Output=f(Prompt, Model, ModelVersion,
+  Tools, KnowledgeSnapshot, Parameters)`, generalized as `y=f_θ(x,K_t,C)` (task, model/configuration,
+  knowledge snapshot, context/tools), confirmed via a missing-snapshot experiment (a claim generated without
+  recording `KnowledgeSnapshotVersion` later becomes irreproducible when underlying knowledge changes --
+  `ReproducibilityFailure` -- PASS) and a same-prompt-different-knowledge experiment (different outputs from
+  identical prompts against different knowledge snapshots is correctly NOT automatically nondeterministic
+  failure -- PASS). Delivers a Determinism trichotomy (`DeterministicAlgorithm ≠ DeterministicExecution ≠
+  ReproducibleResult`), confirmed via a reproducibility-metadata experiment (complete execution metadata
+  improves reproducibility without requiring bitwise-identical output for probabilistic AI systems -- PASS)
+  -- **this AI-reproducibility formalization is genuinely new material not present in 0641's Step 59
+  treatment**, extending the corpus's provenance discipline into a concrete, practically important concern
+  for real production AI-agent systems specifically.
+
+  Delivers a consolidated KnowledgeOS concurrency model (`Versioned State + Concurrent Events + Semantic
+  Merge + Invariant Validation`, explicitly "more appropriate than simply Database+Locks"), and five named
+  invariants (`I_Concurrency` [the confirmed duplicate], `I_ConcurrentConflict`, `I_Version`, `I_Freshness`,
+  `I_Order`). Delivers Step 72's verdict **"STEP 72 — PASS,"** with the central conclusion "KnowledgeOS can
+  be concurrent without requiring epistemic chaos, but only if concurrency is modeled explicitly."
+
+  **Closes by identifying trust and cryptographic provenance as the next, genuinely new frontier**: "an
+  artifact says `Verified=True`. Who verified it? Was the verifier itself trustworthy? Can provenance be
+  forged? Can an AI agent claim another agent produced something?" -- explicitly distinguishing `Identity,
+  Authenticity, Integrity, Authority, Trust, Provenance, EvidenceQuality` as "not the same thing," and
+  opening "Step 73 — Identity, Trust and Cryptographic Provenance," explicitly framed around
+  "cryptographically verifiable epistemic history." **This appears to be the corpus's first genuinely new
+  topic introduction in several consecutive files** (unlike Steps 70-72, which each substantially
+  re-derived prior territory), and should be tracked to confirm it is not itself a further undetected
+  collision with earlier corpus content on identity/authentication (the corpus's much earlier bounded-
+  context/identity-resolution work at Steps 38-39 addressed entity identity resolution, not cryptographic
+  trust specifically, so this is provisionally assessed as new ground pending 0657's actual content). No
+  actual code execution reported in this file.
+introduces:
+  - concept: "CONFIRMED (not merely near-certain): this file substantially re-derives 0641's already-processed Step 59 Concurrency and Interleaving Calculus content across at least five distinct sub-topics (concurrent updates, version conflicts, causal ordering, distributed consistency, ConcurrencyConflict-vs-epistemic-conflict), with zero cross-reference"
+  - concept: "A SECOND, independently-named and substantively identical I_Concurrency invariant, introduced with zero awareness of 0641's earlier invariant of the same name — a directly checkable naming-and-content duplication, more precise than any prior collision flagged in this reconstruction"
+  - concept: "ConcurrencyConflict≠EpistemicConflict, directly paralleling 0641's ConcurrencyConflict vs SemanticContradiction under different terminology, with a genuinely new five-cause taxonomy for why concurrent agents may disagree"
+  - concept: "Epistemic merge as a domain-specific bounded-context operation, explicitly contrasted with Git-style textual merging, with a third architectural-anti-pattern FAIL confirming a universal generic merge algorithm is wrong"
+  - concept: "DataConsistency≠DecisionSufficiency and TransactionBoundary≈InvariantBoundary, two genuinely useful new DDD/distributed-systems heuristics not present in 0641"
+  - concept: "A formal AI-computation reproducibility function (Output=f(Prompt,Model,ModelVersion,Tools,KnowledgeSnapshot,Parameters), generalized as y=f_θ(x,K_t,C)) and a Determinism trichotomy, genuinely new material extending the corpus's provenance discipline into AI-agent reproducibility specifically"
+  - concept: "The corpus's apparent first genuinely new topic in several files — Step 73: Identity, Trust and Cryptographic Provenance — provisionally assessed as new ground, pending confirmation at 0657"
+defines:
+  - concept: "TemporalWriteOrder≠EpistemicPriority"
+    definition: "The order in which concurrent writes are committed must not determine which claim is epistemically preferred; a later but weaker claim overwriting an earlier stronger claim purely due to write-ordering (last-writer-wins) is an epistemic error, not a resolved conflict"
+  - concept: "DataConsistency≠DecisionSufficiency"
+    definition: "A data replica can be internally consistent (no corruption, well-formed) while still being too stale in wall-clock terms to satisfy a specific decision's freshness requirement; consistency and decision-readiness are separate, domain-specific concerns"
+  - concept: "TransactionBoundary≈InvariantBoundary"
+    definition: "A useful DDD/distributed-systems heuristic: artifacts that must be updated atomically to preserve a shared invariant belong within one transaction boundary; artifacts with no connecting invariant may be committed independently, and cross-context workflows spanning multiple invariant boundaries require saga-style compensating actions rather than one large ACID transaction"
+  - concept: "AI computation reproducibility function"
+    definition: "y=f_θ(x,K_t,C) — an AI agent's output is a function not only of its prompt but of model version, knowledge snapshot, tool configuration, and parameters; reproducibility requires recording all of these, and identical prompts against different knowledge snapshots legitimately producing different outputs is not automatically a nondeterminism failure"
+  - concept: "Determinism trichotomy"
+    definition: "DeterministicAlgorithm (the algorithm itself always produces the same output for the same input), DeterministicExecution (a specific run behaves predictably), and ReproducibleResult (a later re-run can approximately recover the same result via recorded metadata) are three distinct notions that must not be conflated, especially for probabilistic AI models"
+refines:
+  - concept: "0641's (Step 59's) already-processed Concurrency and Interleaving Calculus content (Lamport clocks, partial/total order, ConcurrencyPolicy=f(DomainOperation,Invariant), I_Concurrency, AuthoritativeOperationalState vs AlternativeKnowledgeState, ConcurrencyConflict vs SemanticContradiction)"
+    refinement: "CONFIRMED SUBSTANTIAL RE-DERIVATION: this file independently re-derives optimistic concurrency, causal-versus-arrival ordering, domain-specific consistency policy, and the ConcurrencyConflict-vs-epistemic-disagreement distinction, all without cross-reference, and introduces a second I_Concurrency invariant of near-identical substance under the identical name — confirming, not merely flagging, the collision this reconstruction anticipated at 0655"
+  - concept: "0655's (Step 71's) Agent composition and Failure-containment disciplines"
+    refinement: "Directly extended into the concurrent-multi-agent-reasoning case: two agents concluding different valid probabilities from the same evidence under different models must have both models preserved (CompetingModelOutputs), not merged into a single arbitrary value"
+  - concept: "0647's Model lineage / provenance discipline"
+    refinement: "Substantially and genuinely extended via the formal AI-reproducibility function and KnowledgeSnapshotVersion requirement — the corpus's first fully formalized treatment of what metadata AI-agent reproducibility actually requires"
+  - concept: "The corpus's established bounded-context-ownership discipline"
+    refinement: "Directly extended into merge semantics (Epistemic merge as a domain-specific operation, not generic infrastructure) and consistency-policy design (domain-specific consistency per bounded context), each confirmed via a dedicated architectural-anti-pattern FAIL rejecting the universal/generic alternative"
+contradicts: []
+repeats:
+  - "0641 (Concurrency and Interleaving Calculus — substantially re-derived: optimistic concurrency, causal-vs-arrival ordering, domain-specific consistency policy, ConcurrencyConflict-vs-epistemic-conflict distinction, and a second I_Concurrency invariant of near-identical substance under the identical name)"
+bridge_candidates:
+  - "Confirm whether 0657 (Step 73 — Identity, Trust and Cryptographic Provenance) is genuinely new corpus territory (no prior file has addressed cryptographic identity/authenticity/trust specifically, as distinct from the corpus's earlier entity-identity-resolution work at Steps 38-39) or represents a further undetected collision — this is the first step in several files not immediately flagged as an apparent retread, so should be read with an open, not suspicious, prior."
+  - "CARRIED FORWARD, now with FOUR total confirmed/near-certain instances (0654-vs-0630 kernel divergence flagged; 0655-vs-0654/0640/0649 confirmed triple overlap; 0656-vs-0641 now CONFIRMED): the emerging pattern across Steps 65-72 of the c1/g1 model line substantially re-deriving already-processed content without cross-reference is now well-evidenced enough to warrant explicit flagging in this reconstruction's eventual §29 cross-model synthesis as a distinct methodological finding, separate from the original 0618/0597 collision."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CONFIRMATION (not merely near-certain flag) that Step 72 substantially re-derives 0641's Step 59 Concurrency content across five distinct sub-topics, including a SECOND I_Concurrency invariant of near-identical substance under the identical name — the most precise naming-and-content duplication confirmed in this reconstruction to date."
+  - "dimension-registry.md: record the genuinely new material this file contributes — DataConsistency≠DecisionSufficiency, TransactionBoundary≈InvariantBoundary with saga-style compensating workflows, Epistemic merge as a domain-specific operation (with a third architectural-anti-pattern FAIL confirming universal merge is wrong), and the formal AI-computation reproducibility function y=f_θ(x,K_t,C) with its Determinism trichotomy."
+  - "dimension-registry.md: record verdict 'STEP 72 — PASS' and the opening of Step 73 — Identity, Trust and Cryptographic Provenance, provisionally assessed as the corpus's first genuinely new topic in several consecutive files, to be confirmed at 0657; and update the running Steps-65-72 pattern-tracking note to FOUR total confirmed/near-certain unreconciled overlap instances within this span."
+anchor_test:
+  anchor: "0655's near-certain collision flag against 0641's (Step 59's) Concurrency and Interleaving Calculus content; 0641's own I_Concurrency invariant and ConcurrencyConflict vs SemanticContradiction distinction; 0647's Model lineage/provenance discipline; the corpus's established bounded-context-ownership discipline; the emerging Steps-65-72 pattern of unacknowledged content re-derivation"
+  supports_dimension: "CONFIRMS, via direct and detailed content comparison across at least five distinct sub-topics, the collision this reconstruction anticipated at 0655, elevating the finding from 'near-certain' to 'confirmed' — the clearest and most concrete instance of the Steps-65-72 re-derivation pattern, including a directly checkable naming-and-content duplicate invariant (a second I_Concurrency). At the same time, the file makes a genuine and valuable contribution beyond 0641's scope: a formal AI-computation reproducibility function and Determinism trichotomy that meaningfully advances the corpus's provenance discipline into a concern of direct practical importance for real production AI-agent systems, plus two useful new DDD/distributed-systems heuristics (DataConsistency≠DecisionSufficiency, TransactionBoundary≈InvariantBoundary) not present in the earlier treatment. The file's closing transition into cryptographic provenance and trust appears to open genuinely new corpus territory, providing a natural point to test whether the re-derivation pattern is confined to Steps 70-72 specifically or continues further into the remaining corpus"
+  refines_or_contradicts: "CONFIRMS the collision anticipated at 0655 against 0641's Concurrency content, including a directly duplicated I_Concurrency invariant name-and-substance; directly and genuinely extends 0647's provenance discipline via the AI-reproducibility formalization; directly extends the corpus's bounded-context-ownership discipline into merge and consistency-policy design; no contradiction found; opens what is provisionally assessed as genuinely new territory (Step 73) pending confirmation"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "This file's §72.51 invariant I_Concurrency ('concurrent operations must not silently destroy valid epistemic information') and 0641's own recorded I_Concurrency ('no concurrent execution may create two incompatible [states]') share the identical symbolic name and substantively overlapping content, directly and mechanically confirming a duplicate invariant introduced independently at two different points in the corpus with zero cross-reference — the most precise naming-level duplication confirmed in this reconstruction to date."
+  - "This file's §72.41 ConcurrencyConflict≠EpistemicConflict and 0641's recorded ConcurrencyConflict vs SemanticContradiction distinction address the identical underlying architectural concern (technical version-conflict versus genuine epistemic disagreement) using different terminology for the non-technical side (EpistemicConflict vs SemanticContradiction), directly and checkably confirming substantial territorial overlap between the two files."
+undefined_concepts: []
+open_questions:
+  - "Whether 0657 (Step 73 — Identity, Trust and Cryptographic Provenance) confirms itself as genuinely new corpus territory or represents a further undetected collision, and whether the Steps-65-72 re-derivation pattern continues into Step 73 and beyond or was confined to the compositional-correctness/concurrency span specifically."
+  - "Whether this reconstruction's eventual §29 cross-model synthesis should formally reconcile or merge the two independently-defined I_Concurrency invariants (0641, 0656) as the same invariant discovered twice, given their near-identical substance and identical name."
+tier2_triggered: true
+tier2_reason: "CONFIRMS (via direct, detailed content comparison) the near-certain collision this reconstruction flagged at 0655: Step 72 substantially re-derives 0641's already-processed Step 59 Concurrency and Interleaving Calculus content across five distinct sub-topics, including a directly checkable naming-and-content duplicate invariant (a second I_Concurrency). This is the clearest and most concrete confirmed instance of the emerging Steps-65-72 re-derivation pattern in the c1/g1 model line. Simultaneously delivers genuinely new and practically valuable material (a formal AI-computation reproducibility function with a Determinism trichotomy, and two useful new DDD/distributed-systems heuristics) not present in the earlier treatment. Opens what is provisionally assessed as the corpus's first genuinely new topic in several files (Step 73 — cryptographic provenance and trust). Verdict 'STEP 72 — PASS.'"

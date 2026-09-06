@@ -1,0 +1,69 @@
+sequence: 209
+path: docs/knowledgeos/brainstorming/kernel/20260824-032927-causal-inference-through-zero-ddd-and-wisdom-lenses.md
+title: "Causal Inference Through Zero, DDD and Wisdom Lenses"
+date: "2026-08-24"
+bytes: 15200
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 209
+importance: critical
+confidence: high
+about: >
+  Direct follow-on to 0208, applying Zero/DDD/Wisdom lenses to the same Hernán & Robins material.
+  Explicitly self-labeled as the research's OWN synthesis, not a claim the source book makes. Central
+  discovery: causal inference answers "what would happen under intervention X?" while a separate
+  WISDOM layer answers "should we therefore do X?" — these must not collapse into one model, since
+  Evidence/Knowledge/Decision/Wisdom-assessment have different invariants (traceability / justified
+  inference / legitimate authority / uncertainty-consequence-applicability accounting respectively).
+  Proposes a full learning-loop domain model (Observation->Evidence->Question->Inference->Knowledge->
+  Wisdom->Decision->Action->Outcome->new Observation) and an AI-governance principle: AI supplies
+  epistemic scaffolding, never wisdom or decision authority itself.
+introduces:
+  - concept: "Three-lens triangle: Zero (what can be claimed?) / DDD (what are the domain concepts/boundaries?) / Wisdom (what should we do given what we know?)"
+  - concept: "Deeper domain reframing: not 'statistics' or 'causal inference' but 'evidence-based reasoning about interventions and decisions'"
+  - concept: "Knowledge != Wisdom distinction: causal knowledge answers 'what happens under X?'; wisdom answers 'should we do X?' — a major architectural separation"
+  - concept: "ConsequenceAssessment concept (benefit/cost/risk/externality/reversibility/time-horizon/affected-parties) as required before wisdom can act on causal knowledge"
+  - concept: "Applicability: causal effect valid in population A does not imply it should be applied to population B"
+  - concept: "Two distinct uncertainty types that must not be conflated: epistemic uncertainty (do we know X causes Y?) vs. decision uncertainty (is acting on X worthwhile?)"
+  - concept: "'DO NOT ACT YET' as an explicit wisdom-level output distinct from a causal recommendation — epistemic restraint"
+  - concept: "Reversibility / rollback cost / option value as a decision-theoretic layer above causal inference"
+  - concept: "Decision Experiment / LearningExperiment domain object (Question/Hypothesis/Intervention/Comparator/Population/SuccessCriteria/ObservationPlan/RiskConstraints/TimeHorizon/ExpectedEvidence/DecisionRule)"
+  - concept: "FACTUAL/EMPIRICAL -> CONSEQUENCES -> NORMATIVE/GOVERNANCE -> Decision separation principle: causal analysis cannot determine what ought to be valued"
+  - concept: "AI-overreach guard: AI may assist every stage (evidence, questions, hypotheses, assumptions, analyses, uncertainty, options, consequences) but must not silently collapse them into a decision"
+  - concept: "Refined workflow: Observation->Evidence->Claim->Inquiry->Assessment->Knowledge->Wisdom Assessment->Decision->Action->Outcome, distinguishing a 'verdict' (evidence insufficient) from a 'decision' (run a controlled pilot)"
+  - concept: "Candidate bounded contexts: Evidence / Reasoning / Decision, explicitly flagged as DDD hypothesis, not architectural fact"
+defines: []
+refines:
+  - concept: "0208's Causal Reasoning & Assurance Layer primitives"
+    refinement: "Adds a Wisdom/Decision layer above the causal-assurance pipeline, with CausalInquiry -> CausalAssessment -> DecisionAssessment -> Decision as a candidate aggregate chain, and separates causal validity (0208's concern) from decision suitability (this file's concern)."
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "This file's Knowledge != Wisdom distinction and 'understanding maturing into wisdom' theme strongly resembles the 0110-0117 Meta-Principle cluster's Gaṇeśa question ('how does understanding mature into wisdom?', 0117) -- an independent technical/statistical-lens source re-deriving a wisdom-maturation distinction the Gita-tradition sources proposed. Logged as unresolved_equivalence, not merged: different vocabularies (engineering-decision-theory vs. dharmic wisdom-maturation), no structure-preserving transformation demonstrated."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: new unresolved_equivalence -- this file's Knowledge/Wisdom separation vs. the 0110-0117 Meta-Principle cluster's Gaṇeśa 'wisdom-maturation' theme, a cross-tradition convergence (technical-causal-inference lens vs. dharmic-philosophical lens) independently arriving at a similar knowledge-is-not-yet-wisdom distinction."
+anchor_test:
+  anchor: "0110-0117 Meta-Principle cluster (Gaṇeśa wisdom-maturation) and Kernel Candidate v0.2/v0.3's Decision/Governance bounded contexts (0174/0176)"
+  supports_dimension: "Cross-model bridge candidate -- an engineering/statistical-lens source and a Gita/dharmic-lens source independently converge on a knowledge-is-not-yet-wisdom distinction"
+  refines_or_contradicts: "neither directly refines nor contradicts; independently arrived at, logged as unresolved_equivalence per MD-017"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Worked example: causal certainty 90% but decision suitability 40%, driven by cost x risk x applicability x reversibility x values -- demonstrates the two uncertainty types are genuinely independent, not merely relabeled"
+  - "Worked example: Policy A (+10% efficiency, -20% autonomy) vs. Policy B (+5% efficiency, +20% autonomy) -- causal analysis estimates consequences but cannot decide which value should dominate"
+undefined_concepts:
+  - "Exact ownership/ubiquitous-language/lifecycle proof needed before Evidence/Reasoning/Decision are promoted from candidate to actual bounded contexts (explicitly deferred by the source itself)"
+open_questions:
+  - "Whether the proposed 'dedicated DDD/Wisdom discovery round' (this file's closing recommendation) is ever actually conducted as a separate source in the corpus"
+  - "Whether Wisdom is ever formally reconciled with the 0110-0117 Meta-Principle cluster or remains a separate, later-arising convergence signal"
+tier2_triggered: true
+tier2_reason: "Critical architectural discovery: separates causal knowledge from wisdom/decision-suitability as distinct models with different invariants, introduces a full organizational-learning loop and an AI-governance principle (AI never becomes the source of wisdom), and surfaces a striking cross-tradition bridge candidate to the corpus's earlier Gita-derived wisdom-maturation theme (0117)."

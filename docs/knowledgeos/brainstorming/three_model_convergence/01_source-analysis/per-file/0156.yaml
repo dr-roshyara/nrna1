@@ -1,0 +1,101 @@
+sequence: "0156"
+path: docs/knowledgeos/brainstorming/kernel/20260823-114358-deepseek-kernel-twelve-fundamental-questions.md
+title: "Round 8 (very long): DeepSeek fully answers the 12 Fundamental Kernel Questions; critique introduces six concrete 'Zero case' absence stress-tests; Perplexity's parallel UNRESOLVED worksheet; Round 9 scenario-based falsification commissioned"
+date: "2026-08-23"
+bytes: 100000
+model:
+  primary: c1
+  secondary: [g, m]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0155"
+importance: critical
+confidence: high
+about: >
+  Round 8 of the Kernel-boundary cycle, a very long (2507-line) file. DeepSeek answers a canonical
+  "12 Fundamental Kernel Questions" checklist end to end for the first time (what is committed / owner /
+  identity / evidence / justification / epistemic state / confidence / mutability / invariants /
+  transition semantics / DDD classification / smallest consistency boundary), again concluding
+  KnowledgeAggregate is the answer to Q12. The critique-voice grades each answer individually, explicitly
+  marking Q12 "HYPOTHESIS -- NOT ACCEPTED" (reiterating 0155's semantic-relatedness-≠-aggregate
+  correction), and introduces six concrete "Zero case" absence-scenario stress tests operationalizing
+  the Zero-last discipline established at 0154. Perplexity then answers the same 12 questions with its
+  own parallel worksheet, reproducing its 0154 discipline of leaving every single question UNRESOLVED.
+  Round 9 is commissioned: a scenario-based falsification task against ~20 concrete domain scenarios,
+  explicitly required to produce multiple candidate consistency boundaries rather than select one. The
+  file ends mid-transition into what appears to be Kimi's next contribution.
+
+introduces:
+  - "DeepSeek's first end-to-end answered '12 Fundamental Kernel Questions' checklist -- a complete
+    (if still contested) candidate domain model, more concrete than any prior round's partial answers"
+  - "Six concrete 'Zero case' absence stress-tests: (1) candidate with no identity/evidence/
+    justification -- is it Candidate or Knowledge?; (2) claim with identity but no valid evidence --
+    can it be admitted?; (3) admitted claim whose evidence is later invalidated -- disappear/insufficient
+    /historically-valid/contested?; (4) claim with two equally valid meanings and no resolving evidence
+    -- choose/abstain/preserve-candidates/create-ambiguity-state?; (5) claim with no contradiction/
+    challenge/supersession/new evidence -- what is its state?; (6) claim with no confidence -- is that
+    0, UNKNOWN, NOT_ASSESSED, or NOT_APPLICABLE? -- a genuine operationalization of the Zero lens,
+    explicitly tied to an unread SNF/P5 finding ('UNKNOWN ≠ NOT_EXPRESSED')"
+  - "Perplexity's parallel 12-question worksheet, reproducing its established maximal-discipline stance:
+    every question given 4-5 candidate answers with cross-lens analysis, every single one left
+    explicitly UNRESOLVED"
+  - "Round 9 commissioned: scenario-based falsification against ~20 concrete domain scenarios (admission,
+    rejection, evidence invalidation, contestation, supersession, reconciliation, withdrawal, shared
+    evidence across claims, conflicting/unknown/absent evidence, unresolved interpretation), explicitly
+    required to produce MULTIPLE candidate consistency boundaries rather than prematurely select one,
+    and to attempt concrete counterexample falsification of the KnowledgeAggregate hypothesis"
+
+defines: []
+
+refines:
+  - "Reiterates and sharpens (does not merely repeat) 0155's semantic-relatedness-≠-aggregate correction,
+    applying it specifically to DeepSeek's Q12 conclusion this round"
+
+contradicts:
+  - "Critique explicitly rejects DeepSeek's Q12 conclusion (KnowledgeAggregate as the smallest
+    consistency boundary) as unestablished, for the second consecutive round"
+
+repeats:
+  - {concept: "Candidate≠Knowledge, evidence-reference≠evidence-content, mutual-definition-vs-aggregate distinction", canonical_source: "0155", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "Ledger Entry 48 Round 8 addendum added: DeepSeek's full 12-question answer set, the six Zero-case
+    stress tests, Perplexity's parallel UNRESOLVED worksheet, and the Round 9 scenario-based
+    falsification commission"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Unknown Preservation", "Evidence Integrity"]
+  refines_or_contradicts: "Advances the ontology but again rejects the KnowledgeAggregate conclusion; introduces concrete absence-scenario testing."
+  alternative_minimal_kernel: "KnowledgeAggregate (DeepSeek's Q12 answer) -- rejected again as HYPOTHESIS NOT ACCEPTED"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "The six Zero cases are the most concrete, testable operationalization of the Zero lens produced so
+    far in this cycle -- genuinely useful regardless of which Kernel hypothesis eventually wins, since
+    they directly probe the absence/undefined-state boundary this reconstruction has itself tracked
+    since early in the corpus (Unknown Preservation dimension, 0087 onward)"
+  - "Perplexity's continued willingness to leave every single question UNRESOLVED across two full rounds
+    (0154, 0156) is itself a notable, sustained instance of disciplined non-decision, distinct from
+    DeepSeek's and Kimi's pattern of committing to a best-supported hypothesis each round"
+
+undefined_concepts: []
+open_questions:
+  - "Whether Round 9's scenario-based falsification task is executed and produces the multiple candidate
+    consistency boundaries it explicitly requests"
+  - "What Kimi's continuation (referenced at the very end of this file) contains -- expected in file 0157"
+
+tier2_triggered: true
+tier2_reason: >
+  First complete end-to-end 12-question answer set from DeepSeek, six concrete Zero-case absence stress
+  tests operationalizing the standing Zero-last discipline, and Perplexity's continued maximal-discipline
+  non-decision stance across two full rounds.

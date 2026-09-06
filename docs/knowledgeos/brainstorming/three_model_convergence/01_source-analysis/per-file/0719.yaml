@@ -1,0 +1,195 @@
+sequence: 719
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-125624_step-133-repository-artifact-archaeology.md
+title: "Step 133 -- THIRD Consecutive File to Defer the Promised Mode-Change to Genuine Empirical Archaeology (0717→0718→0719→0720): Every Table Remains Unfilled ('?'), Every Worked Example Remains Hypothetical -- But Delivers Substantial New Methodology: the Eight-Way Artifact Classification (Authoritative/Derived/Observational/Evidentiary/Operational/Contextual/Temporary/Historical), the R0-R5 Registry Maturity Ladder, 'The Registry May Be More Important Than Expected,' ADR≠Decision-Entity, Seven Named Reconstruction Finding Types, the Vivid Worked 'Duplicate Authority' Scenario, 'Architecture Uncertainty Is Data,' the New AAI-01 Invariant, and the Capstone Caution 'Do Not Build a Second KnowledgeOS While Investigating the First' -- Opens Step 134, Actual Repository Reconstruction, the Fourth Consecutive Promise of the Same Concrete Empirical Transition"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 133 -- Repository/Artifact Archaeology', promised at 0718's close as the concrete, repository-specific follow-through; delivers only further methodology (classification schemes, maturity ladders, worked hypothetical examples) with every actual data table left unfilled, extending the corpus's promise-then-defer pattern to a third consecutive file in the 0717-0720 mode-change arc -- while nonetheless delivering genuinely valuable new classification and finding-taxonomy contributions"
+source_role: PRIMARY_RESEARCH
+canonical_source: 719
+importance: critical
+confidence: high
+about: >
+  Opens declaring entry into "the evidence phase," reaffirming the FACT/DERIVED/HYPOTHESIS/TARGET discipline
+  from 0718 with a worked archaeology-principle chain (`Artifact→Observation→Semantic Interpretation→
+  Architecture Classification`, illustrated: `.claude/memory/foo.md exists`→FACT: persistent local memory
+  exists→DERIVED: Claude has persistent contextual state→QUESTION: is that state authoritative?→
+  classification — explicitly warning against jumping directly to "Claude memory is the KnowledgeOS
+  knowledge base"). **This file constitutes the THIRD consecutive file in the 0717→0718→0719→0720 mode-
+  change arc to defer genuine empirical archaeology**: every data-gathering table introduced (the eight-row
+  Knowledge authority matrix at §133.8, the eight-row Claude/Codex symmetry test at §133.30) is populated
+  entirely with `?` placeholders; every worked example (the `verify-package-structure.sh` checker, the
+  session-change logger, the D42/D17/D31 duplicate-authority scenario) remains explicitly hypothetical or
+  illustrative rather than an actually inspected artifact. The file's own closing section again reframes the
+  still-undone archaeology as the next step's job (Step 134, "Actual Repository Reconstruction") — the
+  fourth consecutive promise of the same concrete empirical transition. Per the 0694 calibrating
+  meta-finding, this is recorded factually without further escalating framing, since 0717 already carries
+  the "sharpest promise" designation; this file's specific contribution to the pattern is being the third
+  deferral in that particular arc.
+
+  Despite the continued non-fulfillment, delivers substantial new, genuinely reusable methodology.
+  `DirectoryStructure≠Architecture` (worked example: a file misleadingly named `domain/KubernetesClient.java`
+  shows physical naming can mislead; dependency evidence is required, not directory names). The critical
+  data question for every knowledge-bearing store: "is this authoritative, derived, cached, temporary, or
+  merely a pointer?" — "this single classification will resolve many of the current KnowledgeOS
+  architectural ambiguities."
+
+  **Delivers an eight-way Artifact classification taxonomy, more granular than any prior scheme**:
+  Authoritative (establishes binding organizational truth), Derived (generated from authoritative
+  information), Observational (represents something observed in reality), Evidentiary (supports a claim),
+  Operational (controls execution), Contextual (helps an agent reason but is not authoritative), Temporary
+  (valid only for a limited workflow/session), Historical (preserves previous state) — worked through
+  concrete illustrative classifications: `AGENTS.md`=Operational+Contextual (not AuthoritativeArchitecture,
+  if pointer-structured); `.claude/settings.json`=OperationalConfiguration (not EnterpriseGovernanceTruth);
+  hooks=Operational+Assurance; memory=Contextual, never automatically Authoritative ("that transition
+  requires governance").
+
+  Delivers the Knowledge-promotion pipeline `ContextualKnowledge→CandidateClaim→Verification→
+  AuthoritativeKnowledge`, "a central KnowledgeOS capability," worked through a concrete Claude-discovery
+  example ("Service A appears to use Database B" is a `Claim_candidate`, never a `Fact_authoritative`, until
+  evidence and verification promote it) — directly extending 0716's/0714's candidate-relationship promotion
+  lifecycle to knowledge-item promotion specifically.
+
+  Delivers Evidence archaeology (enumerating existing mechanisms that may already record commands/tool
+  calls/test results/repository state/checks/runtime observations/agent changes/approvals — "the important
+  question is whether they are connected"), a Fragmented-evidence diagram showing siloed logs with no
+  cross-references, and an Evidence-integration test: "can we traverse from the change to its authorization,
+  implementation, evidence, and verification?" — a broken chain is recorded as a `TraceabilityGap`.
+
+  **Delivers the R0 through R5 Registry maturity ladder** (Name list→Structured catalog→Identity+metadata→
+  Relationships→Provenance+lifecycle→Evidence-backed governance) — a fourth maturity ladder (after 0718's
+  G0-G6/K0-K6/A0-A6), specifically for the registry. **Delivers a genuinely valuable pragmatic insight
+  directly reinforcing 0717's/0718's migration and anti-duplication principles**: "the registry may be more
+  important than expected" — if the existing registry already provides Identity+Relationships+Lifecycle+
+  Provenance, "creating a new 'Knowledge Graph' could be unnecessary. Instead: `ExistingRegistry→Strengthen→
+  AssuranceGraph`. This is exactly why archaeology must precede implementation."
+
+  **Delivers the important ADR≠Decision-entity distinction**: an ADR file's actual architectural role could
+  be (1) the authoritative decision itself, (2) a document representing a decision, (3) evidence supporting
+  a decision, or (4) a historical artifact — "those are architecturally different," extended by Decision
+  lifecycle archaeology (`Draft→Review→Approved→Effective→Superseded`) with the honest caution that a bare
+  `ADR-042.md` file alone represents "documentation, but not necessarily a full governance model." Delivers
+  Assurance archaeology (a Check-object field checklist: Rule/Implementation/Input/Execution/Result/
+  Evidence) and the Assurance lineage `Principle→Rule→Checker→Execution→Result→Evidence`.
+
+  Delivers Session-change-logger archaeology ("`LoggerExists≠CompleteTraceability`" — a logger must record
+  actor/task/repository/action/authorization/resulting state to be genuinely useful evidence) and the Agent
+  execution chain (`Task→Session→Context→Tool→Action→Change→Evidence→Verification`, "if some links are
+  missing, those become explicit gaps"). Delivers the Symmetry-does-not-mean-identical-files clarification
+  (Claude's `.claude/settings.json`/`commands/`/`hooks/` vs. Codex's `.codex/`/`AGENTS.md` — "acceptable";
+  the actual question is `SemanticContract_Claude=SemanticContract_Codex?`) and a refined Agent-pointer-layer
+  diagram.
+
+  Delivers the Current Architecture Record template (fifteen fields: System, Version/Date, Repository,
+  Components, Dependencies, Data Stores, Agent Interfaces, Governance, Assurance, Integrations, Runtime,
+  Evidence, Known Constraints, Known Gaps, Confidence — "each major statement should link to evidence") and
+  a three-level Confidence scale (High/Medium/Low), worked with two contrasting examples.
+
+  **Delivers "Architecture uncertainty is data," a genuinely valuable epistemic-discipline extension**:
+  rather than hedging in prose ("the system probably does X"), an uncertain claim should be recorded as a
+  structured object (`Claim`, `Status: UNKNOWN`, `Evidence required: [...]`) — "Unknown becomes a first-class
+  reconstruction result" — directly extending the corpus's long-standing Unknown-preservation discipline
+  (0693/0699/0708/AFR-10) into documentation-practice terms specifically.
+
+  **Delivers seven named Reconstruction finding types, a genuinely valuable, more precise alternative to
+  generic "technical debt"**: `MissingCapability, SemanticAmbiguity, ArchitectureViolation, TraceabilityGap,
+  DuplicateAuthority, StaleKnowledge, UnverifiedAssumption`. **Delivers a vivid, sharply worked "Duplicate
+  Authority" scenario**, the most concrete illustration of authority conflict in the reconstruction to date:
+  three separate sources (KnowledgeOS, `AGENTS.md`, Claude memory) each independently claim a DIFFERENT
+  decision (D42/D17/D31) is currently in effect — "this is not merely documentation inconsistency. It is:
+  `AuthorityConflict`" — with the precedence resolution `GovernedAuthority>GeneratedContext>AgentMemory`,
+  explicitly requiring governance, "the agent should not decide which source 'feels newer.'"
+
+  **Delivers a new named invariant, AAI-01** ("Architecture Archaeology Invariant"): "no architectural
+  conclusion may be promoted from hypothesis to fact without supporting evidence" — a new, distinctly-named
+  single-member invariant series, notationally separate from the A/C/K/S/AFR families tracked earlier.
+
+  Delivers the next concrete artifact's template ("KnowledgeOS Current Architecture Inventory," fifteen
+  sections: Repository Topology through Target Delta) and "what we must NOT do yet" — an explicit list of
+  premature technology decisions to avoid (PostgreSQL vs. graph DB, microservices vs. modular monolith,
+  Kafka vs. synchronous APIs, vector DB, a new KnowledgeOS service, a new evidence database, replacing the
+  existing registry) — "first: understand the existing system" — directly reinforcing 0716's "DDD comes
+  before technology selection."
+
+  Delivers Step 133's verdict — again a mode-transition DECLARATION rather than a fulfilled transition
+  ("the KnowledgeOS investigation has transitioned from Conceptual Design to Evidence Based Architecture
+  Archaeology," though no actual evidence was gathered in this file) — with the fundamental chain
+  `Artifact→Fact→Relationship→Current Architecture→Fitness Assessment→Target Delta` and **the memorable
+  capstone caution: "do not build a second KnowledgeOS while investigating the first"** — directly matching
+  this reconstruction's own and this repository's own anti-duplication/Canonical-Discovery discipline.
+
+  **Closes by opening "Step 134 — Actual Repository Reconstruction," the fourth consecutive promise in the
+  0717-0720 mode-change arc**: "the next step is therefore no longer another conceptual model. We need to
+  inspect the actual KnowledgeOS artifacts and populate the Current Architecture Inventory," with a
+  nine-step per-component analysis template (What exists? → What does it own? → What does it depend on? →
+  What knowledge does it contain? → What authority does it have? → What evidence does it produce? → Which
+  bounded context does it belong to? → Which target capability does it satisfy? → What is
+  missing/misaligned?), promising "the first genuinely evidence-backed CURRENT KNOWLEDGEOS ARCHITECTURE." No
+  actual code execution, repository inspection, or verified filesystem/architecture claim reported anywhere
+  in this file — every table, ladder, and worked scenario remains hypothetical.
+introduces:
+  - concept: "The eight-way Artifact classification taxonomy (Authoritative/Derived/Observational/Evidentiary/Operational/Contextual/Temporary/Historical)"
+  - concept: "The Knowledge-promotion pipeline: ContextualKnowledge→CandidateClaim→Verification→AuthoritativeKnowledge"
+  - concept: "The R0-R5 Registry maturity ladder, and 'the registry may be more important than expected'"
+  - concept: "ADR≠Decision-entity (four possible architectural roles for an ADR file)"
+  - concept: "'Architecture uncertainty is data' — recording UNKNOWN as a structured, first-class reconstruction result"
+  - concept: "Seven named Reconstruction finding types, replacing generic 'technical debt'"
+  - concept: "The vivid worked 'Duplicate Authority' scenario (three sources, three conflicting current decisions)"
+  - concept: "AAI-01 — the new Architecture Archaeology Invariant"
+  - concept: "'Do not build a second KnowledgeOS while investigating the first'"
+  - concept: "Opens Step 134 — Actual Repository Reconstruction, the fourth consecutive promise of genuine empirical archaeology"
+defines:
+  - concept: "Eight-way Artifact classification"
+    definition: "Every architecturally significant artifact should be tagged with one or more of: Authoritative (establishes binding truth), Derived (generated from authoritative information), Observational (records something observed), Evidentiary (supports a claim), Operational (controls execution), Contextual (aids agent reasoning without being authoritative), Temporary (valid only within a limited workflow/session), or Historical (preserves prior state)"
+  - concept: "Duplicate Authority"
+    definition: "A finding in which two or more sources independently and inconsistently claim to be authoritative for the same semantic fact (e.g. three different sources each naming a different decision as 'currently in effect'); this is categorically different from mere documentation inconsistency because it represents an unresolved authority conflict requiring an explicitly governed precedence rule, never an agent's ad hoc judgment about which source 'feels newer'"
+  - concept: "AAI-01"
+    definition: "No architectural conclusion may be promoted from hypothesis to fact without supporting evidence — the governing discipline for the entire archaeology phase of the reconstruction"
+  - concept: "Architecture uncertainty is data"
+    definition: "Rather than expressing uncertainty as hedged prose, an unresolved architectural claim should be recorded as a structured object with an explicit UNKNOWN status and a list of the specific evidence that would resolve it, making 'unknown' a first-class, queryable reconstruction result rather than an implicit gap"
+refines:
+  - concept: "0718's FACT/DERIVED/HYPOTHESIS/TARGET claim-classification discipline"
+    refinement: "Directly reapplied and reinforced via a worked archaeology-principle chain (.claude/memory/foo.md example), with an explicit warning against jumping from a bare fact to an unsupported architectural conclusion"
+  - concept: "0716's/0714's node/relationship candidate-promotion lifecycle"
+    refinement: "Directly extended to knowledge-item promotion specifically via ContextualKnowledge→CandidateClaim→Verification→AuthoritativeKnowledge"
+  - concept: "0693's/0699's/0708's/AFR-10's Unknown-preservation discipline"
+    refinement: "Directly extended into documentation-practice terms via 'architecture uncertainty is data' — a structured, evidence-required UNKNOWN claim object rather than hedged prose"
+  - concept: "0717's/0718's migration and anti-duplication principles"
+    refinement: "Directly reinforced with a concrete potential payoff scenario: if the existing registry already provides sufficient graph semantics, a new Knowledge Graph 'could be unnecessary'"
+  - concept: "0716's 'DDD comes before technology selection'"
+    refinement: "Directly reinforced with an explicit list of premature technology decisions to defer (PostgreSQL vs. graph DB, Kafka vs. synchronous APIs, vector DB, a new KnowledgeOS service, replacing the existing registry)"
+  - concept: "this repository's own and the corpus's own anti-duplication/Canonical-Discovery discipline (ES-005.4; 0718's Architecture reconstruction rule)"
+    refinement: "Crystallized into the memorable capstone caution 'do not build a second KnowledgeOS while investigating the first'"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0720 (Step 134 — Actual Repository Reconstruction) with the HIGHEST decisive-tracking priority: this is now the fourth consecutive file in the 0717-0720 arc explicitly promising genuine, repository-specific empirical archaeology. Determine definitively whether it is finally fulfilled (even partially -- a single concretely inspected, named artifact would suffice to break the pattern) or extends the promise-then-defer structure a fourth time. This is the most decisive open empirical question currently carried by the reconstruction."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the eight-way Artifact classification taxonomy, the R0-R5 Registry maturity ladder with 'the registry may be more important than expected,' the Knowledge-promotion pipeline, and ADR≠Decision-entity -- genuinely valuable new classification methodology delivered despite continued non-fulfillment of the mode-change promise."
+  - "dimension-registry.md: record seven named Reconstruction finding types, the vivid worked 'Duplicate Authority' scenario, 'architecture uncertainty is data,' the new AAI-01 invariant, and the capstone caution 'do not build a second KnowledgeOS while investigating the first.'"
+  - "dimension-registry.md: record that this is the THIRD consecutive file (0717→0718→0719) deferring the promised mode-change to genuine empirical archaeology, now deferred a fourth time to Step 134 (0720) -- flagged for maximum-priority decisive tracking at the next file."
+anchor_test:
+  anchor: "0717's mode-change promise and 0718's negative resolution; 0693's/0699's/0708's/AFR-10's Unknown-preservation discipline; 0716's/0714's promotion-lifecycle discipline; 0716's technology-independence discipline; this repository's own and the corpus's own anti-duplication/Canonical-Discovery discipline; the 0694 calibrating meta-finding on promise-then-defer"
+  supports_dimension: "Constitutes the third consecutive file in the 0717-0720 mode-change arc to defer genuine empirical archaeology -- every data-gathering table remains entirely unfilled, every worked example remains hypothetical. Despite this, delivers substantial new, genuinely reusable methodology: the most granular Artifact classification taxonomy in the reconstruction (eight categories), a fourth maturity ladder (Registry R0-R5) with a valuable pragmatic anti-duplication payoff insight, the ADR≠Decision-entity distinction, seven precise Reconstruction finding types replacing generic technical debt, a vivid worked Duplicate-Authority scenario, the 'architecture uncertainty is data' extension of the Unknown-preservation discipline, a new AAI-01 invariant, and the memorable capstone 'do not build a second KnowledgeOS while investigating the first.' Closes with the fourth consecutive promise of the same concrete empirical transition, now flagged for maximum-priority decisive tracking"
+  refines_or_contradicts: "directly and substantially extends 0718's FACT/DERIVED/HYPOTHESIS/TARGET discipline, 0716's/0714's promotion-lifecycle discipline, 0693's/0699's/0708's/AFR-10's Unknown-preservation discipline, 0717's/0718's migration and anti-duplication principles, and 0716's technology-independence discipline; no contradiction found; continues (does not break) the corpus's established promise-then-defer structural pattern per the 0694 calibrating meta-finding, now the third consecutive instance in the specific 0717-0720 mode-change arc; introduces a new, notationally distinct single-member invariant series (AAI-01) not yet reconciled with the A/C/K/S/AFR families"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§133.8's and §133.30's Knowledge-authority-matrix and Claude/Codex-symmetry-test tables, both entirely populated with '?' placeholders, is directly checkable evidence that this file, despite its 'Repository/Artifact Archaeology' title, performs no actual archaeology."
+  - "§133.38's worked Duplicate-Authority scenario (three sources, D42/D17/D31) is directly quotable evidence of a vivid, concrete, pedagogically valuable illustration of an authority-conflict finding type, independent of whether the reconstruction ever empirically validates it against the real KnowledgeOS ecosystem."
+  - "§133.43's Step-133-verdict statement 'the KnowledgeOS investigation has transitioned from Conceptual Design to Evidence Based Architecture Archaeology,' immediately followed by Step 134's opening 'the next step is therefore no longer another conceptual model,' is directly checkable evidence that the declared transition and the actual transition are, once again, not the same event."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 134's actual content (0720), once read, finally delivers genuine, repository-specific archaeology (even a single concretely named and inspected artifact would suffice to break the pattern), or extends the promise-then-defer structure a fourth consecutive time -- this is now the single most decisive open empirical question in the reconstruction."
+  - "Whether the new AAI-01 invariant is ever cross-referenced with, or reconciled into, the existing A1-A3/C1-C7/K1-K7/AFR-01..AFR-30 notation families, or remains a permanently separate, single-member series."
+tier2_triggered: true
+tier2_reason: "Constitutes the third consecutive file in the 0717-0720 mode-change arc to defer genuine empirical archaeology -- every data-gathering table remains unfilled. Despite this, delivers the most granular Artifact classification taxonomy in the reconstruction, a fourth maturity ladder (Registry R0-R5) with a valuable anti-duplication payoff insight, ADR≠Decision-entity, seven precise Reconstruction finding types, a vivid worked Duplicate-Authority scenario, 'architecture uncertainty is data,' a new AAI-01 invariant, and the memorable capstone 'do not build a second KnowledgeOS while investigating the first.' Closes with the fourth consecutive promise of the same empirical transition, flagged for maximum-priority decisive tracking at the next file."

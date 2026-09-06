@@ -1,0 +1,91 @@
+sequence: M0173
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-182022_review-document-to-the-end.md
+title: "Decisive counter-adjudication: rejects the 'hereby RATIFIED' claims, introduces Executable Adequacy, gives the final closure graph"
+date: "20260902-182022"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0173
+importance: critical
+confidence: high
+about: >
+  The single most decisive and comprehensive counter-adjudication in the entire ratification-tension
+  arc (surpassing M0166/M0169/M0170 in explicitness): reviews the pro-ratification thread's own
+  'hereby RATIFIED' declarations verbatim and REJECTS them directly, downgrading Contr and EVal to
+  candidate/overclaimed status, confirming Determination is 'completely missing from the actual
+  document' (indicating this review responds to an EARLIER state of the thread, predating M0172's
+  SPEC-DET/SPEC-DELTA additions — a further log-ordering finding), and introducing a genuinely new
+  bridging concept, Executable Adequacy, plus the most complete single closure graph and a concrete
+  four-package final work plan.
+introduces:
+  - "A precise ABK-1 representation/kernel distinction: 'ABK-1 representation: CLOSED as a validated candidate. ABK-1 kernel: NOT CLOSED.' — the test suite proves ABK-1 is adequate for the TESTED ℛ_req, not that 'ABK-1 is the KnowledgeOS kernel'"
+  - "Executable Adequacy, EA(K,O,Q,Γ): a genuinely new missing bridge concept — 'the representation and operations together can answer the required questions while preserving every required distinction and producing an auditable transition... the real bridge from representation theory to kernel theory. Without it, ABK-1 can be perfectly adequate as a representation while still being insufficient as a kernel' — not named in any prior document in this arc"
+  - "The most complete single closure graph in the entire ratification-tension arc (§15): Question/Task→ℛ_req(Q,Γ)→Representation Adequacy→ABK-1*→Reasoning S→EVal→{Standing,Boundary}→Contr→Determination→Decision→Operations→δ→Composition→Semantic Equivalence→Executable Adequacy→Kernel Reduction→Kernel Selection, with ABK-1 explicitly starred as 'remains a validated representation candidate, not yet the kernel'"
+  - "A concrete four-package final closure work plan: C1 (Evaluation+Determination, preserving Truth≠Evaluation≠Determination), C2 (Contr+Boundary, without falsely identifying Contr=FDE, establishing what isolation actually means), C3 (Operations+δ+Composition — determine which operations are genuinely state-transforming, define δ, explicitly allow Composition to remain parameterized/underdetermined if evidence does not select one rule), C4 (Equivalence+Executable-Adequacy+Reduction, then perform Reduction→Kernel Selection)"
+  - "The clearest, most concise final master-status verdict in the entire arc: Discovery 🟢 CLOSED; ℛ_req foundation 🟢 CLOSED; Representation candidate 🟢 CLOSED/VALIDATED; Contr/EVal 🟡 'substantially reconstructed, but overclaimed in the document'; Determination 🔴 missing; Operations/δ 🔴 missing; Composition 🔴 unresolved; Semantic equivalence 🔴 unresolved; Executable adequacy 🔴 missing bridge; Kernel reduction/selection 🔴 not yet possible; Theory v1.3 🔴 NOT READY"
+  - "An operation-taxonomy correction to the growing 15-item candidate operation list: distinguishes State-transforming operations from Observation/Query/Assurance operations (Query/Trace/Explain/Compare likely do NOT belong in the state-transition kernel) and Constitutional/Governance operations (Authorize/Validate belong to a different layer) — the candidate operation set 'needs reduction', not blanket adoption"
+defines: []
+refines:
+  - "The ℛ_req circularity correction (already made independently at M0166): 'ℛ_req is the non-negotiable subset of distinctions required by the system kernel' is rejected as circular (the kernel has not yet been selected) — restated as ℛ_req(Q,Γ)⊆𝒟, Adequacy(R,Q,Γ)⟺ℛ_req(Q,Γ)⊆Preserved(R,Γ) — a second, independent instance of the exact same correction"
+  - "The non-explosion principle for Contr (tracked since KR-CONTR-FDE): explicitly reaffirmed CLOSED, while the exact Contr_scope isolation-boundary algorithm and the 'universal global immunity' theorem are both marked OPEN — the non-explosion PRINCIPLE and its specific ALGORITHMIC INSTANTIATION are for the first time explicitly separated into different closure statuses"
+  - "EVal's flat-value-domain collapse problem (long tracked since the FDE research, M0116-M0137): given its most precise restatement yet — the document's threshold-based four-state classification (ACCEPTED/REFUTED/CONTRADICTION/UNDERDETERMINED) is shown to conflate insufficient-evidence/theory-incomplete/unobservable/underdetermined/epistemically-inaccessible into the same low-standing outcome, exactly the collapse this reconstruction's FDE work already established must not happen"
+  - "The S+/S- numeric evidence-weight rejection (echoing M0170's rejection of weighted evidence W): 'we previously rejected introducing arbitrary scalar evidence weighting into the kernel... source reliability≠evidence standing, evidence quality≠process reliability, positive/negative support≠probability, scalar weighting requires an aggregation theory, cross-frame aggregation remains unresolved' — connects directly to the Composition research's frame-dependence finding"
+contradicts:
+  - "DIRECTLY AND EXPLICITLY REJECTS the pro-ratification thread's (M0171/M0172) own language: quotes 'SPEC-CONTR ... is hereby RATIFIED' and 'SPEC-EVAL ... is hereby RATIFIED' verbatim and states 'the text itself has not earned those ratifications. This is exactly the kind of premature closure we have been trying to prevent' — recommending their status be changed to [RATIFICATION CANDIDATE] or [PROPOSED — VALIDATED IN TESTED SCOPE]. This is the most explicit, most directly-quoting rejection anywhere in the ratification-tension arc (M0166/M0169/M0170 argued the same conclusion but without quoting the exact 'hereby RATIFIED' phrasing being rejected)."
+  - "Confirms Determination is 'completely missing from the actual document' and δ is 'only a signature' at review time — meaning this review responds to a state of the pro-ratification thread PRIOR TO M0172's SPEC-DET/SPEC-DELTA additions, despite this review appearing at a LATER M-number in this reconstruction's sequence. This is a further instance of the corpus's recurring file-timestamp-vs-logical-order anomaly: the review (correctly) does not yet know about content that, in THIS reconstruction's read order, was already processed one sequence earlier (M0172)."
+repeats:
+  - "The four-notion equality inventory (=, ≡, ≈, ≅_λ) and the parameterized ≡_sem^{Q,Γ,O} candidate (tracked since M0166/M0170) — restated, still OPEN, 'not yet closed as an executable equivalence relation'"
+  - "The Composition underdetermination finding (union/majority/last-wins/strict/intraframe-only all survived tested criteria) — restated as 'composition rule is underdetermined... a significant research result, but not a selected kernel law', explicitly permitting Composition to remain deliberately unresolved rather than forced to a premature choice"
+bridge_candidates:
+  - "Whether Executable Adequacy (EA(K,O,Q,Γ)) is ever formally developed further anywhere in this reconstruction's sequence"
+  - "Whether the four-package closure plan (C1-C4) was ever executed, and if so whether it produced Theory v1.3"
+  - "Whether this review's status-downgrade recommendation ([RATIFICATION CANDIDATE]/[PROPOSED — VALIDATED IN TESTED SCOPE]) was ever actually applied to the M0171/M0172 specifications"
+mathematical_content: >
+  Restates ℛ_req(Q,Γ)⊆𝒟/Adequacy(R,Q,Γ) with the circularity correction, separates the non-explosion
+  principle from its algorithmic instantiation, and introduces EA(K,O,Q,Γ) as a new (informally
+  stated) bridging relation between representation adequacy and kernel theory — no new formal proofs,
+  but the most precise closure-status accounting given anywhere in this arc.
+gita_content: null
+kernel_content: >
+  Delivers the decisive, most explicit rejection of the pro-ratification thread's premature
+  'hereby RATIFIED' declarations, reaffirms the disciplined non-ratification position with the
+  clearest final status register in the entire arc, and introduces Executable Adequacy as the
+  missing bridge between representation theory and kernel theory — while incidentally surfacing a
+  further instance of the corpus's file-timestamp-vs-logical-order anomaly (this review does not yet
+  know about M0172's content, despite following it in this reconstruction's read order)."
+registry_updates:
+  - "Most explicit, most directly-quoting rejection of the pro-ratification chain's 'hereby RATIFIED' language anywhere in this reconstruction — decisively closing (in the disciplined direction) the M0165-M0172 ratification-tension arc"
+  - "Introduces Executable Adequacy (EA(K,O,Q,Γ)) as a genuinely new bridging concept"
+  - "Further instance of the file-timestamp-vs-logical-order anomaly: this review predates (in content-awareness) M0172's SPEC-DET/SPEC-DELTA additions despite following them in this reconstruction's M-sequence"
+  - "Gives the clearest, most concise final master-status verdict for the entire epistemic-representation/kernel-selection research programme in this reconstruction"
+anchor_test:
+  anchor: true
+  supports_dimension: "Decisive rejection of 'hereby RATIFIED' claims; Executable Adequacy bridge concept; final closure graph and four-package work plan; clearest master-status verdict; log-ordering anomaly re Determination/δ"
+  refines_or_contradicts: "refines (ℛ_req correction, non-explosion/algorithm separation); contradicts (M0171/M0172's ratification declarations, decisively and explicitly)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"But the text itself has not earned those ratifications. This is exactly the kind of premature closure we have been trying to prevent.\" — the document's own explicit, quoted rejection"
+  - "\"Without it, ABK-1 can be perfectly adequate as a representation while still being insufficient as a kernel.\" — the Executable Adequacy motivation"
+  - "\"Determination is completely missing from the actual document... Det remains OPEN.\" — confirming this review predates M0172's SPEC-DET addition"
+  - "🔴 Theory v1.3: NOT READY (final master-status verdict, §Final verdict)"
+undefined_concepts:
+  - "The exact formal shape of Executable Adequacy EA(K,O,Q,Γ) — stated informally, not given a precise mathematical definition"
+open_questions:
+  - "Was the four-package closure plan (C1-C4) ever executed?"
+  - "Was Executable Adequacy ever formally developed?"
+  - "Were M0171/M0172's ratification statuses ever actually downgraded per this review's recommendation?"
+tier2_triggered: true
+tier2_reason: >
+  Delivers the most explicit, directly-quoting rejection of the pro-ratification thread's "hereby
+  RATIFIED" declarations anywhere in this reconstruction, decisively resolving the ratification-
+  tension arc toward the disciplined position with the clearest final status register given, while
+  introducing Executable Adequacy as a genuinely new bridging concept and surfacing a further
+  instance of the corpus's file-timestamp-vs-logical-order anomaly.

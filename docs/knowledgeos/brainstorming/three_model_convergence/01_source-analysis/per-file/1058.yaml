@@ -1,0 +1,85 @@
+sequence: 1058
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-289/05-step-261-gate-audit.md
+title: "05 -- Step 261 §261.23 Gate Audit (Step 289 mandate SS8, Re-Audited Not Re-Quoted): Confirms the Gate Is STRENGTHENED by the Computed {equiv} Minimal Cut, and Delivers a Genuinely Important Structural Decomposition -- the Six-Condition Gate Is a CONJUNCTION of Two Independent Blocks, an Equality Block and a Separate Representation Block, So Resolving Equality Would NOT Release the Latter"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a second-order re-audit of the Step 261 stop-gate, explicitly testing whether the gate's own validity holds up under Step 289's rigorous new evidence rather than merely re-quoting it"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1058
+importance: critical
+confidence: high
+about: >
+  "05 — Step 261 §261.23 Gate Audit (mandate §8) — re-audited, not re-quoted," explicitly honoring the
+  mandate directive: "Do not assume that because Step 261 is older it is still correct."
+
+  **Delivers a slightly refined condition-by-condition tally versus file 1045's already-tracked "0/6
+  resolved" audit**: condition 1 (observation set) NARROWED (bounded at 30 usable, per file 1057, though
+  still not closed); condition 2 (operation registry) UNCHANGED; condition 3 (provenance placement) NARROWED
+  (technical half decidable via `258.31`, but gated on condition 2); condition 4 (assertion semantics)
+  UNCHANGED; **condition 5 (temporal semantics) explicitly DEGRADED** -- worse than merely unresolved, since
+  `≡` is now shown to be a `(C,t)`-indexed family, an active worsening not present in file 1045's tally;
+  condition 6 (identity semantics) NARROWED via `I_48`. Boxed final tally: **"0 resolved · 3 narrowed · 2
+  unchanged · 1 degraded."**
+
+  **DELIVERS THE DEFINITIVE VERDICT THAT THE GATE IS ACTIVELY STRENGTHENED, NOT MERELY INHERITED**, on three
+  independent grounds, none of which is "because 261 said so": (1) "the gate's own criterion is met by
+  MEASUREMENT" -- the computed minimal cut is `{≡}`, meaning "equality is precisely the node whose ambiguity
+  holds the structure together... `261.23`'s wording is confirmed by a method `261` did not use. (And it
+  corrects Step 288, which had moved the block to `𝒪`/`𝒯`.)"; (2) a genuinely NEW ground the corpus's own
+  Step 261 did not have -- the already-tracked `≡`/`≈` definitional conflict, meaning "selecting a kernel
+  over a self-contradictory equality register would be selecting over an undefined term"; (3) a second new
+  ground -- `=` (structural equality), long assumed trivially available, is EXECUTED not a congruence and
+  decidable only relative to an unfixed canonicalization.
+
+  **DELIVERS A GENUINELY IMPORTANT, PREVIOUSLY UNSTATED STRUCTURAL DECOMPOSITION OF THE STOP-GATE, EXPLICITLY
+  FRAMED AS "CUTTING THE OTHER WAY" (an honest counter-finding)**: the six bundled `261.23` conditions are NOT
+  equally load-bearing -- `≡` alone sits inside the actual feedback structure (all four graph cycles); `𝒪`,
+  `𝒯`, `𝒪_K` are hard upstream blockers but not cycle members; condition 3 (provenance placement) is
+  DOWNSTREAM of `≡` via the `Π→≡` edge, not an independent blocker; and CONDITIONS 4 AND 5 (assertion
+  semantics, temporal semantics) ARE "ORTHOGONAL TO EQUALITY ENTIRELY." **Concludes the six-condition gate is
+  a CONJUNCTION OF TWO INDEPENDENT BLOCKS**: an equality block (conditions 1, 2, 3, 6) and a SEPARATE
+  representation block (conditions 4, 5) -- "Conditions 4 and 5 do not block EQUALITY; they block KERNEL
+  SELECTION for separate reasons. Reporting them under a gate labelled 'while equality remains ambiguous'
+  CONFLATES TWO BLOCKS, and could cause a future step to believe that resolving equality releases them. IT
+  WOULD NOT." Explicitly clarifies this is "a refinement of the gate's structure, NOT a proposal to release
+  any part of it. All six remain unresolved; the gate holds." This is a genuinely valuable, previously
+  unstated structural insight that prevents a specific, plausible future misreading of the already-tracked
+  {equiv} capstone result.
+introduces:
+  - concept: "The refined six-condition tally distinguishing narrowed, unchanged, and explicitly degraded conditions, adding the finding that condition 5 (temporal semantics) is actively worse, not merely unresolved"
+  - concept: "The three independent grounds strengthening the Step 261 gate beyond mere inheritance: the computed {equiv} minimal cut matching the gate's own wording, the newly-discovered equiv/approx definitional conflict, and the executed non-congruence finding for structural equality"
+  - concept: "The structural decomposition of the six-condition Step 261 gate into two independent blocks -- an equality block (conditions 1,2,3,6) and a separate representation block (conditions 4,5, orthogonal to equality entirely) -- explicitly preventing the future misreading that resolving equality would release the representation block"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Step 261 gate audit (file 1045: 0 of 6 resolved, 2 narrowed, 4 untouched)"
+    refinement: "REFINED into a slightly different tally reflecting Step 289's additional evidence (0 resolved, 3 narrowed, 2 unchanged, 1 explicitly DEGRADED for condition 5), and confirmed the gate is actively strengthened, not merely inherited, on three independent grounds"
+  - concept: "This reconstruction's already-tracked capstone {equiv} minimal-cut finding (files 1049-1052, 1054-1055)"
+    refinement: "EXPLICITLY CONNECTED to the corpus's own Step 261 wording as independent confirmation by a different method, while also revealing the gate bundles a second, genuinely separate representation block that equality resolution would not touch"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the three independent grounds strengthening the Step 261 gate (the computed {equiv} minimal cut, the equiv/approx conflict, the executed non-congruence finding), and the refined tally including the explicit degradation of condition 5 (temporal semantics)."
+  - "dimension-registry.md: record the genuinely important structural decomposition of the Step 261 gate into two independent blocks (equality: conditions 1,2,3,6; representation: conditions 4,5), explicitly preventing the future misreading that resolving equality would release the representation block."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step 261 gate audit and capstone {equiv} minimal-cut finding (files 1045, 1049-1052, 1054-1055)"
+  supports_dimension: "Refines the gate audit with a slightly updated tally and delivers a genuinely important structural decomposition into two independent blocks"
+  refines_or_contradicts: "refines prior findings with updated evidence and a new structural decomposition"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The three independent strengthening grounds are directly checkable against files 1041, 1052, and 1056's own already-documented findings for exact consistency."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Confirms the Step 261 stop-gate is actively strengthened by Step 289's rigorous new evidence on three independent grounds, and delivers a genuinely important structural decomposition of the gate into two independent blocks (equality and representation), explicitly preventing a plausible future misreading of the capstone equiv-cut result. Classified importance critical and confidence high given the governance-significance and rigor of this second-order self-audit."

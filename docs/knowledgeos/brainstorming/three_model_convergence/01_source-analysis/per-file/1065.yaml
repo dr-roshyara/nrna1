@@ -1,0 +1,72 @@
+sequence: 1065
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-290/01-relation-register.md
+title: "01 -- Corpus Relation Register (Step 290 mandate SS3): Resolves the '261.20/25' Reference as the SAME Register as 261.1, Merely a Second Notation -- Identifying the Likely Root Cause of the Entire N-1 Confusion as Glyph Reuse WITHIN One Document, Not a Genuine Content-Level Contradiction"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the first numbered Step-290 artifact, delivering the definitive relation-register audit and a likely root-cause diagnosis for the N-1 conflict"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1065
+importance: critical
+confidence: high
+about: >
+  "01 — Corpus Relation Register (mandate §3)," the full twenty-entry register (matching and completing file
+  1063's script transcription), 5 of 20 entries carrying an actual definition, 15 naming only.
+
+  **DELIVERS A GENUINELY IMPORTANT RESOLUTION OF THE '261.20/25' REFERENCE INTRODUCED IN FILE 1063**: the
+  seven-tuple `𝔎=(K,=_str,≡_sem,≈_obs,SameId,≡_H,≡_P)` (`261.25`) is confirmed to be **THE SAME REGISTER AS
+  `261.1`, JUST IN A SECOND NOTATION** -- "Six-for-six against `261.1`": `≅_I↔SameId`, `≅_P↔≡_P`, `≅_H↔≡_H`.
+  **CONFIRMS THE ALREADY-TRACKED NINE-REGISTER COUNT (file 1041) STANDS UNCHANGED** -- this is not a tenth
+  register.
+
+  **DELIVERS A GENUINELY VALUABLE, POTENTIALLY DE-ESCALATING DIAGNOSIS OF THE LIKELY ROOT CAUSE OF THE ENTIRE
+  N-1 CONFUSION**: "`261` is INTERNALLY INCONSISTENT IN GLYPHS while PERFECTLY CONSISTENT IN CONTENT -- and
+  that drift is a PLAUSIBLE CAUSE OF THE CONFUSION Step 290 is resolving. `≡_H`/`≡_P` in the second notation
+  REUSE the `≡` glyph that the first notation RESERVES for semantic equality. A reader tracking glyphs rather
+  than sections would see `≡` doing FOUR JOBS." This is a materially important reframing of the already-
+  tracked N-1 conflict (files 1041, 1047, 1054-1055, 1057-1063): the appearance of a genuine content-level
+  contradiction in the corpus's equality relations may substantially trace to a SINGLE DOCUMENT'S OWN
+  internally inconsistent glyph choices across two of its own notations, rather than a deeper substantive
+  disagreement about what the relations actually mean. This directly complements file 1063's already-tracked
+  finding (the shared observational formula for `≡_K` is self-labelled a candidate, not an assertion) with a
+  second, independent, disciplined explanation for why the conflict appeared genuine at first reading.
+
+  **Confirms the STATUS block's summary**: "the two `≡_K` loci are self-labelled candidates" (already tracked,
+  file 1063) and "15 relations have no definition" -- reiterating the extensive gap in the corpus's own
+  equality-relation specification.
+introduces:
+  - concept: "The resolution that '261.20/25' is the same register as 261.1 in a second notation, not a distinct tenth register -- the nine-register count stands"
+  - concept: "The likely root-cause diagnosis for the entire N-1 confusion: Step 261 is internally consistent in content but internally inconsistent in glyphs across its two notations, with the equiv glyph doing four different jobs when read across sections rather than within one"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked N-1 conflict and nine-register enumeration (files 1041, 1047, 1054-1055, 1057-1063)"
+    refinement: "MATERIALLY REFRAMED: a substantial part of the apparent conflict is diagnosed as a glyph-reuse artifact within a single document (261), not necessarily a genuine content-level disagreement -- complementing file 1063's candidate-vs-assertion finding with an independent explanation"
+  - concept: "File 1063's newly-introduced '261.20/25' reference"
+    refinement: "RESOLVED as the same register as the already-tracked 261.1, expressed in a second, internally-inconsistent notation"
+contradicts: []
+repeats:
+  - "Substantially completes the already-tracked twenty-entry register transcription from file 1063; this file's distinctive contribution is resolving the 261.20/25 identity and diagnosing the likely glyph-reuse root cause of the N-1 confusion."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the resolution that '261.20/25' is the same register as 261.1 in a second notation (nine-register count stands), and the likely root-cause diagnosis that the N-1 confusion substantially traces to glyph reuse within a single corpus document, not necessarily a genuine content-level contradiction."
+anchor_test:
+  anchor: "This reconstruction's already-tracked N-1 conflict and nine-register enumeration (files 1041, 1063)"
+  supports_dimension: "Materially reframes the conflict's likely origin as a glyph-reuse artifact within one document, complementing the candidate-vs-assertion finding"
+  refines_or_contradicts: "refines (potentially de-escalates) the prior finding's characterization as a genuine content-level contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The six-for-six correspondence between the two notations is directly checkable against a future direct encounter with corpus sections 261.1 and 261.25."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Resolves the newly-introduced '261.20/25' reference as the same register as the already-tracked 261.1 in a second notation, and delivers a genuinely valuable, potentially de-escalating diagnosis of the likely root cause of the entire N-1 confusion: glyph reuse within a single corpus document rather than a genuine content-level contradiction. Classified importance critical and confidence high given the disciplined, well-evidenced nature of this diagnostic finding."

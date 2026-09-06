@@ -1,0 +1,82 @@
+sequence: 1077
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/exec/t291_equality.py
+title: "t291_equality.py -- Step 291 Equality Re-Verification (mandate SS13, SS14): Independently Reproduces the Already-Tracked 32-Distinct/2-Degenerate/30-Non-Degenerate Result and CORRECTS Its Terminology ('not a candidate' -> 'degenerate endpoint'); Executes a Supersession-Based Merge Model, Confirms C-7's NOT-ESTABLISHED/NOT-REFUTED Verdict, and Self-Diagnoses the Test Itself as a Degenerate, Non-Evidentiary Total-Order Artifact"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the third Step-291 executable script, independently re-verifying two already-tracked results and correcting one terminology overclaim"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1077
+importance: major
+confidence: high
+about: >
+  `t291_equality.py` — "STEP 291: independent re-verification of 32->30 and the merge/join-semilattice claim
+  (mandate §13, §14)." Executable script re-deriving, from scratch, the already-tracked 2240-state
+  observational-family enumeration (files 1057-1058, 1068).
+
+  **INDEPENDENTLY REPRODUCES THE 32-DISTINCT/2-DEGENERATE/30-NON-DEGENERATE RESULT (asserts `len(SIG)==2240`,
+  measures 32 syntactically distinct axis subsets collapsing to distinct mathematical projections, finds
+  exactly 2 degenerate endpoints -- universal and discrete)**, matching the already-tracked file-1068 result
+  exactly. **DELIVERS A SMALL BUT GENUINE TERMINOLOGY CORRECTION**: "CORRECT TERMINOLOGY (mandate §13): 32
+  mathematically distinct projections; 2 degenerate endpoints; 30 non-degenerate candidates. ==> The
+  endpoints are DEGENERATE, not INVALID. The corpus supplies no validity criterion for them, so 'invalid'
+  would be my word, not its. EARLIER ARTIFACTS SAID 'NOT A CANDIDATE' -- THAT IS TOO STRONG AND IS CORRECTED
+  HERE TO 'DEGENERATE ENDPOINT'." This is a disciplined, precise language-level self-correction applied to
+  this reconstruction's own already-tracked characterization (files 1057-1058) of the two excluded endpoints.
+
+  **DELIVERS AN EXECUTED TEST OF WHETHER MERGE IS A JOIN, IN TWO STAGES**: first, confirms `PureClaimSetUnion`
+  (plain set union) satisfies commutativity/associativity/idempotence -- "reproduces `060 §§60.39-60.41`"
+  (already-tracked scope-restriction, file 1058/1073). Second, and more importantly, **constructs an
+  EXECUTABLE minimal supersession-based merge model** (`sup_merge`, later-version-wins per subject) responding
+  to `060.42`'s objection that the real merge involves supersession, and finds the three laws "HOLD for this
+  minimal supersession model." **CRITICALLY SELF-DIAGNOSES THIS RESULT AS NON-EVIDENTIARY**: "DEGENERACY
+  CHECK (mandate §18): is that vacuous? The test space is 3 states over ONE subject with a TOTAL VERSION
+  ORDER. A total order makes 'max' a join BY CONSTRUCTION. So the PASS is an ARTIFACT OF THE MODEL'S TOTAL
+  ORDER, NOT EVIDENCE about KnowledgeOS's merge. => RECORDED AS NON-EVIDENCE." Explicitly refuses to model
+  `060.42`'s further-named obstacles (contradiction, temporal validity, semantic equivalence, probabilistic
+  update, policy) since "modelling them would be inventing architecture (mandate §21)" -- a disciplined
+  refusal directly consistent with this reconstruction's already-tracked no-invented-hypotheticals discipline
+  (file 1066).
+
+  **DELIVERS THE FINAL, EXECUTED-EVIDENCE-BACKED VERDICT ON `(𝕂,merge,∅)`, DIRECTLY CONFIRMING THE ALREADY-
+  TRACKED C-7 SPLIT (file 1073)**: "NOT ESTABLISHED. `060 §60.71`: 'Not proven... we cannot yet assert
+  KnowledgeOS is a semilattice.' Laws hold for `PureClaimSetUnion` ONLY. NOT REFUTED -- retraction concerns
+  state EVOLUTION, a different operation. No lattice is inferred from merge existing. No AGM comparison is
+  used." This is the executed-evidence backing for the C-7 correction this reconstruction already tracked
+  from file 1073's prose-level analysis.
+introduces:
+  - concept: "The terminology correction from 'not a candidate' to 'degenerate endpoint' for the two excluded axis-subset projections (universal, discrete), on the disciplined ground that the corpus supplies no validity criterion to justify the stronger word"
+  - concept: "The executed supersession-based merge model (later-version-wins per subject) constructed to test 060.42's objection, whose PASS result is then self-diagnosed as a non-evidentiary artifact of the test's own total-order construction rather than genuine evidence about KnowledgeOS's actual merge operation"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked 32-distinct/30-usable finding and its 'not a candidate' terminology for the two degenerate endpoints (files 1057-1058, 1068)"
+    refinement: "TERMINOLOGY CORRECTED: 'not a candidate' is 'too strong'; the corrected term is 'degenerate endpoint', since the corpus supplies no validity criterion to justify calling them invalid"
+  - concept: "This reconstruction's already-tracked C-7 correction to the join-semilattice verdict (file 1073: NOT ESTABLISHED for the algebraic structure, REFUTED only for the evolution-monotonicity gloss)"
+    refinement: "CONFIRMED WITH EXECUTED EVIDENCE: an independently constructed supersession-based merge model does satisfy the join-semilattice laws, but this PASS is itself diagnosed as a non-evidentiary artifact of the test's total-order construction, directly supporting (not weakening) the NOT-ESTABLISHED verdict"
+contradicts: []
+repeats:
+  - "Independently reproduces the already-tracked 2240-state enumeration and 32/2/30 breakdown (files 1057-1058, 1068) and the PureClaimSetUnion join-semilattice confirmation (file 1058), as an explicit re-verification exercise per the Step-291 mandate."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the terminology correction ('not a candidate' -> 'degenerate endpoint'), the executed supersession-merge model self-diagnosed as a non-evidentiary total-order artifact, and the executed-evidence confirmation of the already-tracked C-7 NOT-ESTABLISHED/NOT-REFUTED verdict for (K, merge, empty)."
+anchor_test:
+  anchor: "This reconstruction's already-tracked 32/30 finding (files 1057-1058, 1068) and the C-7 join-semilattice correction (file 1073)"
+  supports_dimension: "Independently re-verifies both findings with fresh executed evidence, correcting one term of art and confirming the other's verdict via a self-diagnosed non-evidentiary test"
+  refines_or_contradicts: "refines (terminology-corrects and evidence-confirms) both prior tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The 2240-state enumeration and 32/2/30 breakdown are directly checkable against files 1057-1058 and 1068's own already-documented results for exact numerical consistency."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers a disciplined, executable independent re-verification of two already-tracked findings, correcting one terminology overclaim ('not a candidate' to 'degenerate endpoint') and providing fresh executed evidence for the already-tracked C-7 join-semilattice verdict via a self-diagnosed non-evidentiary supersession-merge test. Classified importance major and confidence high given the disciplined, well-evidenced re-verification methodology."

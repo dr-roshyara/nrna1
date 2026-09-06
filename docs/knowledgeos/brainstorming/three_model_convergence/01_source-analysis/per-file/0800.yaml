@@ -1,0 +1,186 @@
+sequence: 800
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-014420_step_175_the-state-does-not-know-its-past-experiment.md
+title: "Step 175 -- The 'State Does Not Know Its Past' Experiment (MAJOR SYNTHESIS/KERNEL MILESTONE, delivers 0799's promised formal identifiability treatment): GIVES THE CORPUS'S GOVERNING GITA-CHAPTER-4 ARCHITECTURAL OBSERVATION ITS FIRST RIGOROUS MATHEMATICAL TREATMENT -- Delivers History→CurrentState as Many-to-One (H_1≠H_2 With Current(H_1)=Current(H_2)) via a Worked Numeric Counterexample (100→80 vs. 120→80), the Statistical-Identifiability Framing, and 'Historical State Is Not Identifiable From Current State Alone' -- Scores Four Architectural Models (State-Only FAILS; Versioned Partial; Event-History and Snapshot+Lineage PASS) -- Delivers 'Memory≠Knowledge' Explicitly Named as Where 'Our Gita Lens and KnowledgeOS Converge' -- Delivers Decision_t=f(K_t,Policy_t,Authority_t) as a Temporally-Anchored Invariant and 'NewKnowledge≠RewrittenHistory' -- Delivers a Directly Self-Referential AI-Context-Window Discussion (AIContext_{t+1}≠History; the Agent Consumes Organizational Memory, It Does Not Become Its Authoritative Owner) -- Opens Step 176's 'Who Knows?' Experiment Distinguishing KnowledgeExists/ActorKnows/ActorCanRetrieve"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: g1
+  secondary: c1
+  secondary_note: "explicitly and extensively engages Gita Chapter 4 as the file's stated organizing premise ('we now test one of the deepest architectural observations from Bhagavad Gita Chapter 4'), converting a repeatedly qualitative architectural lesson into a rigorous mathematical/statistical identifiability treatment -- both g1 (Gita-sourced motivation) and c1 (mathematical formalization) are primary in this file, recorded here as g1-primary given the file's own explicit framing"
+source_role: PRIMARY_RESEARCH
+canonical_source: 800
+importance: critical
+confidence: high
+about: >
+  Directly continues 0799, opening explicitly: "we now test one of the deepest architectural observations
+  from Bhagavad Gita Chapter 4 against our KnowledgeOS model: a new state does not necessarily contain
+  knowledge of its previous state. We should translate that philosophical observation into a mathematically
+  precise architectural question. The question is: can the past be reconstructed from the current state
+  alone? The answer is generally no."
+
+  **§175.1-175.4 delivers the formal treatment**: state transitions `S_t→[T_t]→S_{t+1}`, invertibility
+  requiring `S_t=T_t^{-1}(S_{t+1})`, "but real business and knowledge systems are generally not
+  invertible." **Delivers the simplest counterexample**: `S_0=100`, History A (`100→80`) versus History B
+  (`120→80`), both yielding identical current state `S_1=80` while `S_0^A≠S_0^B` -- formalizing `History→
+  CurrentState` as **many-to-one**, so the inverse `CurrentState→History` is not uniquely defined, boxed:
+  **"historical state is not identifiable from current state alone."** Explicitly imports the **statistical
+  identifiability lens**: a parameter is identifiable when distinct values cannot generate the same
+  observable distribution; analogously, `H_1≠H_2⇒Current(H_1)≠Current(H_2)` is the condition real systems
+  "rarely satisfy."
+
+  **§175.5-175.6 delivers a concrete KnowledgeOS worked example**: `Architecture Status=APPROVED` tells us
+  the current state but not who proposed it, what evidence existed, which alternatives were rejected, or
+  what the Architecture Board knew -- "the current state has compressed them away," formalized as
+  information-reducing projection `S=Projection(H)` where `|H|>|S|` in information content.
+
+  **§175.7-175.13 delivers the four-model test** (directly answering 0799's promised comparison): **Model
+  A (current state only)**: worked example of `Knowledge.status` overwritten from `Established` to
+  `Superseded` with no record of the original basis -- boxed **`FAIL`** for consequential historical
+  reconstruction. **Model B (versioned state)**: reconstructable sequence `K_1→K_2→K_3`, but delivers
+  **`Versioning≠Provenance`** -- a version number alone does not tell us `Cause(K_1→K_2)`. **Model C (event
+  history)**: `S_t=F(E_1,...,E_t)` makes history explicit, but explicitly resists the temptation to
+  conclude "therefore everything must be event-sourced" -- event sourcing is named "one implementation
+  strategy" among several (immutable versions, snapshots, append-only provenance, decision records, audit
+  trails, temporal databases), chosen per domain requirement. **Model D (snapshot+lineage)**: "may be
+  particularly suitable for KnowledgeOS," combining historical state with causal/provenance relationships
+  via explicit edges like `K_1→[revisedBecause]→E_2→K_2`.
+
+  **§175.14-175.19 delivers the key requirement**, boxed: **"a consequential artifact must remain anchored
+  to the epistemic state against which it was created"** -- explicitly stronger than "keep audit logs"
+  ("audit logs are technical. Anchoring is semantic"). Delivers a worked governance scenario (an
+  Architecture Board decision from six months ago -- "why did the Board approve this?" cannot be honestly
+  answered by "because the architecture is approved," which is circular) and **three distinct required
+  query types**: `WhatIsTrueNow(x)` (current-state), `WhyWasDecisionMade(d,t)` (historical explanation,
+  formalized `Explain(D,t)→{EvidenceState,KnowledgeState,Determination,Decision,Authority,Context}`), and
+  `WhatChanged(x,t_1,t_2)` (change/diff).
+
+  **§175.20-175.22 delivers the direct translation of the Gita-Chapter-4 observation into a formal
+  architectural rule**, boxed twice: **"CurrentState does not imply HistoricalKnowledge"** and **"if
+  historical justification is required, historical epistemic state must be explicitly preserved"** --
+  immediately bounded against overreach: not `StoreEverythingForever`, but a policy-driven
+  `RetentionRequirement=f(Risk,Law,Governance,Traceability)` across three named retention levels (current
+  state / version history / full provenance-decision lineage).
+
+  **§175.23-175.24 delivers the file's most quotable capstone**, explicitly and directly named as the
+  convergence point of the corpus's dual methodology: **"this is where our Gita lens and KnowledgeOS
+  converge"** -- boxed **`Memory≠Knowledge`**: a bare event record ("architecture approved at 14:32") is
+  memory; "the architecture was approved because evidence X supported determination Y under rule Z" is
+  structured knowledge/provenance. "Memory can support knowledge reconstruction. It does not automatically
+  constitute it." Delivers the companion point that raw logs alone are insufficient without explicit
+  semantic links `Evidence→Determination→Decision`.
+
+  **§175.25-175.26 delivers a directly self-referential AI-context-window discussion**: "an AI agent may
+  operate today with `Context_t`. Tomorrow it receives `Context_{t+1}`. The new context may not contain
+  everything that mattered yesterday" -- boxed **`AIContext_{t+1}≠History`**, "the agent should not be
+  assumed to 'remember' merely because the platform has current knowledge." Distinguishes `AgentMemory`
+  (ephemeral, contextual) from `OrganizationalKnowledge` (governed, attributable, versioned, discoverable,
+  independently verifiable), boxed: **"the agent consumes organizational memory; it does not become its
+  authoritative owner."**
+
+  **§175.27-175.29 delivers a Bayesian-inference analogy**: posterior `P(θ|Y_{1:t})` at time `t` remains a
+  valid posterior state relative to its information set even after a later posterior `P(θ|Y_{1:t+1})` is
+  computed -- `InformationSet_t≠InformationSet_{t+1}`, `Knowledge_t≠Knowledge_{t+1}`, "precisely our
+  temporal epistemic model." Delivers **the file's strongest formalization**, boxed:
+  **`Decision_t=f(K_t,Policy_t,Authority_t)`**, explicitly "one of the strongest formalizations we have
+  produced" -- when `K_{t+1}≠K_t`, this does NOT retroactively become
+  `Decision_t=δ(K_{t+1},Policy_{t+1},Authority_{t+1})`; `Decision_t` remains a historical function of its
+  own temporal inputs.
+
+  **§175.30 delivers policy-change handling**: a historical `Decision_1` does not automatically become
+  invalid merely because `Policy_2≠Policy_1` later; Governance may instead initiate an explicit
+  `Reassessment` producing `Determination_2→Decision_2`, boxed **`NewKnowledge≠RewrittenHistory`**.
+
+  **§175.31-175.34 delivers the complete temporal chain** (`E_1→K_1→D_1→Decision_1→Authorization_1→
+  Execution_1` at `t_1`; `Outcome_1→E_2→K_2` at `t_2`, potentially `K_2→D_2→Decision_2`), boxed: **"history
+  is a sequence of epistemic and governance states, not merely a sequence of database updates."** Delivers
+  the refinement that "the old state" is not one thing -- there may be distinct Observation/Evidence/
+  Knowledge/Policy/Decision/Authorization/Execution states, and a given decision may require only some
+  preserved, explicitly preventing overengineering via "domain-relevant temporal anchors" rather than one
+  gigantic `SystemSnapshot_t`. Boxed the architectural principle: **"preserve the information necessary to
+  reconstruct the meaning of consequential transitions"** -- not "preserve every byte ever produced."
+
+  **§175.35-175.37 delivers the experiment result**: a four-model comparison table (Current
+  state/History/Causality/Decision reconstruction columns) -- State-only fails all but current state;
+  Versioned partial on causality/reconstruction; Event history and Snapshot+lineage both pass fully
+  (event history's causality/reconstruction marked conditional on sufficient semantic information in the
+  events). Explicitly rejects "event sourcing wins" as the conclusion in favor of **"semantic temporal
+  provenance is required where historical reconstruction matters."** **Delivers the file's central
+  meta-statement**: "the Chapter 4 lens has generated an architectural testable proposition... this is now
+  more than a metaphor" -- boxed the formal proposition itself and the Step 175 verdict: the architecture
+  "passes the experiment only after adding temporal semantics," yielding the revised core model
+  `O_t→E_t→K_t→D_t→Decision_t→A_t→X_t→R_{t+1}→K_{t+1}` with historical anchoring
+  `Decision_t→D_t→K_t→E_t` and the fundamental rule: **`K_{t+1}` may supersede `K_t`, but must not silently
+  rewrite the historical meaning of `Decision_t`.**
+
+  **Closes opening "Step 176 — The 'Who Knows?' Experiment,"** explicitly framing a deeper question beyond
+  "what is remembered?": **"who possesses the knowledge of the past?"** -- introducing three entities
+  (Human, AI, System) and worked scenarios where each may hold historical knowledge the others lack (System
+  has the record but AI's current context does not; a human remembers an unrecorded event; an AI generated
+  an earlier determination the current model instance cannot access). Distinguishes **`KnowledgeExists`**
+  from **`ActorKnows`** from **`ActorCanRetrieve`**, promising to formalize the boxed property: **"organizational
+  knowledge must not depend on the accidental memory of the current actor or current AI context."** No
+  actual repository implementation occurs within this file itself; every model, query type, and invariant
+  remains a conceptual specification pending Step 176's actor-knowledge formalization.
+introduces:
+  - concept: "The formal identifiability treatment of the Gita-Chapter-4 'state does not know its past' observation, explicitly named 'now more than a metaphor'"
+  - concept: "The worked numeric counterexample (S_0=100, History A 100→80, History B 120→80, identical current state S_1=80) establishing History→CurrentState as many-to-one"
+  - concept: "'Historical state is not identifiable from current state alone,' imported from the statistical-identifiability lens"
+  - concept: "The four-model architectural test (state-only/versioned/event-history/snapshot+lineage), each scored against Current/History/Causality/Decision-reconstruction"
+  - concept: "Versioning≠Provenance (a version number tells us there was a newer version, not why the transition occurred)"
+  - concept: "The explicit resistance to 'therefore everything must be event-sourced'; event sourcing named one implementation strategy among several"
+  - concept: "'A consequential artifact must remain anchored to the epistemic state against which it was created' -- anchoring as semantic, distinct from technical audit logging"
+  - concept: "The three distinct required query types: WhatIsTrueNow(x), WhyWasDecisionMade(d,t)=Explain(D,t), WhatChanged(x,t_1,t_2)"
+  - concept: "'Memory≠Knowledge,' explicitly named as where 'our Gita lens and KnowledgeOS converge'"
+  - concept: "The directly self-referential AI-context-window discussion: AIContext_{t+1}≠History; AgentMemory vs. OrganizationalKnowledge; 'the agent consumes organizational memory; it does not become its authoritative owner'"
+  - concept: "The Bayesian-posterior analogy for temporal knowledge states, and the strongest formalization Decision_t=f(K_t,Policy_t,Authority_t)"
+  - concept: "NewKnowledge≠RewrittenHistory (policy changes trigger explicit Reassessment, not retroactive decision invalidation)"
+  - concept: "'History is a sequence of epistemic and governance states, not merely a sequence of database updates'"
+  - concept: "'The old state is therefore not one thing' -- domain-relevant temporal anchors preventing overengineering, vs. one gigantic SystemSnapshot"
+  - concept: "The Step 175 verdict: the revised temporally-anchored core model and the fundamental rule K_{t+1} may supersede K_t but must not silently rewrite Decision_t's historical meaning"
+  - concept: "Step 176's opening: 'who possesses the knowledge of the past?' -- KnowledgeExists vs. ActorKnows vs. ActorCanRetrieve"
+defines:
+  - concept: "Historical-state identifiability"
+    definition: "Borrowed directly from statistical parameter identifiability: history is identifiable from current state only if distinct histories always produce distinct current states (H_1≠H_2⇒Current(H_1)≠Current(H_2)); when this fails -- as the worked 100→80/120→80 counterexample shows it generally does for real business and knowledge systems -- the current state alone cannot determine which history actually occurred, and the architecture must therefore explicitly preserve additional information (version, provenance, lineage) wherever historical reconstruction is genuinely required"
+  - concept: "Memory≠Knowledge"
+    definition: "A bare recorded fact or event ('architecture approved at 14:32') constitutes memory -- it records that something occurred -- but does not by itself constitute knowledge, which additionally requires the semantic justification structure connecting evidence to determination to decision ('the architecture was approved because evidence X supported determination Y under rule Z'); memory can support knowledge reconstruction but does not automatically constitute it, and raw logs alone -- however voluminous -- are insufficient without these explicit semantic links, explicitly named as the point where the corpus's Gita-derived epistemic lens and its KnowledgeOS architectural work converge"
+refines:
+  - concept: "0799's opening of Step 175 and its promised four-model identifiability comparison (state-only/versioned/event-lineage/snapshot+provenance)"
+    refinement: "DELIVERED IN FULL: the formal many-to-one counterexample, the statistical-identifiability framing, all four models scored in a comparison table, and the explicit conclusion 'semantic temporal provenance is required where historical reconstruction matters' rather than a single implementation strategy (event sourcing) declared the automatic winner"
+  - concept: "The arc's repeated, purely qualitative Chapter-4-motivated invocations across 0794, 0795, 0796, 0797, 0799 (CurrentActorState≠CompleteSystemHistory, CurrentKnowledge≠HistoricalKnowledge, CurrentAuthority≠HistoricalAuthority, Current(K) vs. Lineage(K))"
+    refinement: "GIVEN THEIR FIRST RIGOROUS MATHEMATICAL GROUNDING: every one of these prior qualitative Chapter-4-derived distinctions is now shown to follow from a single precise mathematical fact -- History→CurrentState is generally a many-to-one (non-identifiable) mapping -- unifying five separate prior architectural principles under one formal justification rather than five independent qualitative appeals to the same metaphor"
+  - concept: "0797's Experiment F worked verdict (a decision justified at t_1 remains justified even after its knowledge basis is later invalidated) and 0799's resolved temporal experiment (KnowledgeSnapshot-anchored basedOn edges)"
+    refinement: "Given a compact formal restatement, Decision_t=f(K_t,Policy_t,Authority_t), explicitly named 'one of the strongest formalizations we have produced' -- and extended to the policy-change case (Policy_2≠Policy_1 triggers Reassessment, not automatic historical invalidation), generalizing the earlier knowledge-only worked example to the full (knowledge, policy, authority) triple"
+  - concept: "This reconstruction's own operating context (an AI processing a corpus across compaction boundaries) and the corpus's own repeated AI-participant-not-authority discipline (0793, 0796, 0797)"
+    refinement: "Directly and explicitly extended into an AI-context-window-specific discipline (AIContext_{t+1}≠History, agent consumes but does not own organizational memory) that describes, with unusual precision, the exact structural situation this reconstruction itself is in -- a genuinely self-referential moment worth flagging without overclaiming the corpus intended this application"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 176's actual formalization of KnowledgeExists/ActorKnows/ActorCanRetrieve and the 'organizational knowledge must not depend on accidental actor memory' property."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file as the arc's first genuinely rigorous mathematical (statistical-identifiability) grounding of the corpus's central, repeatedly-invoked Gita-Chapter-4 architectural principle -- explicitly self-described by the corpus as converting a metaphor into a testable proposition."
+  - "dimension-registry.md: record Memory≠Knowledge, explicitly named the convergence point of 'our Gita lens and KnowledgeOS,' as one of the arc's most quotable and portable capstone principles."
+  - "dimension-registry.md: record Decision_t=f(K_t,Policy_t,Authority_t) as unifying five prior separately-invoked Chapter-4-derived distinctions (0794/0795/0796/0797/0799) under one precise mathematical justification."
+  - "dimension-registry.md: flag the AI-context-window discussion (AIContext_{t+1}≠History; 'the agent consumes organizational memory; it does not become its authoritative owner') as directly and unusually self-referentially applicable to this very reconstruction's own operating structure across context-window/compaction boundaries -- record as an observed resonance, not an asserted intentional reference by the corpus's author."
+anchor_test:
+  anchor: "0799's opening of Step 175 and its promised four-model identifiability comparison; the arc's five prior qualitative Chapter-4-motivated invocations (0794-0797, 0799); 0797's Experiment F and 0799's resolved temporal experiment; the corpus's repeated AI-participant-not-authority discipline"
+  supports_dimension: "Delivers the full formal identifiability treatment promised at 0799's close, including a worked numeric counterexample, the statistical-identifiability framing, and a complete four-model comparison table with an honest, non-single-strategy-privileging conclusion. Unifies five previously separate qualitative Chapter-4-derived architectural distinctions under one precise mathematical fact (History→CurrentState is generally non-identifiable), explicitly declaring the corpus's own governing metaphor 'now more than a metaphor.' Delivers Memory≠Knowledge as the explicit convergence point of the corpus's dual epistemic/architectural methodology. Extends 0797's Experiment F and 0799's resolved temporal experiment into the compact, general formalization Decision_t=f(K_t,Policy_t,Authority_t), explicitly self-assessed as one of the arc's strongest formalizations. Delivers a directly self-referential AI-context-window discussion with unusual precision to this reconstruction's own operating situation. Opens Step 176's actor-knowledge formalization, extending the epistemic discipline from 'what is known' to 'who knows it'"
+  refines_or_contradicts: "directly delivers and extends 0799's opening and its promised comparison; unifies (rather than merely repeats) the arc's five prior qualitative Chapter-4 invocations under one formal justification; extends 0797's and 0799's worked temporal-anchoring results into a general formal invariant; extends the corpus's AI-participant discipline into a context-window-specific principle; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§175.2-175.3's fully worked numeric counterexample (S_0=100, History A 100→80 vs. History B 120→80, both yielding S_1=80) and the boxed conclusion 'historical state is not identifiable from current state alone' is directly checkable evidence of a genuinely rigorous, not merely asserted, mathematical treatment."
+  - "§175.23's explicit statement 'this is where our Gita lens and KnowledgeOS converge,' immediately followed by the boxed Memory≠Knowledge principle, is directly quotable evidence of the file's self-aware methodological convergence point."
+  - "§175.25-175.26's AI-context-window discussion ('an AI agent may operate today with Context_t. Tomorrow it receives Context_{t+1}. The new context may not contain everything that mattered yesterday' / 'the agent consumes organizational memory; it does not become its authoritative owner') is directly checkable evidence of a principle unusually precisely applicable to this very reconstruction's own cross-compaction operating structure."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 176's actual formalization of KnowledgeExists/ActorKnows/ActorCanRetrieve was carried out, and whether it produced a concrete mechanism satisfying 'organizational knowledge must not depend on the accidental memory of the current actor or current AI context.'"
+  - "Whether this file's Memory≠Knowledge principle was ever explicitly reconciled with the arc's many other near-synonymous distinctions (Record≠History≠Truth at 0794, HistoricalTruth≠CurrentTruth at 0797, CurrentKnowledge≠HistoricalKnowledge at 0797) into one consolidated epistemic-state vocabulary, or whether these remain a still-unreconciled family of closely related but not identical distinctions."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS/KERNEL MILESTONE: gives the corpus's own governing Gita-Chapter-4 architectural observation its first genuinely rigorous mathematical (statistical-identifiability) treatment, explicitly self-described as converting a metaphor into a testable proposition, with a fully worked numeric counterexample and a complete four-model comparison table yielding an honest, non-privileging conclusion. Unifies five previously separate qualitative Chapter-4-derived distinctions across the arc under one precise mathematical fact. Delivers Memory≠Knowledge as the explicit, quotable convergence point of the corpus's dual Gita/architecture methodology. Extends prior worked temporal-anchoring results (0797's Experiment F, 0799's resolved temporal experiment) into the general formal invariant Decision_t=f(K_t,Policy_t,Authority_t), self-assessed as among the arc's strongest formalizations. Delivers a directly self-referential AI-context-window discussion applicable with unusual precision to this reconstruction's own operating structure. Opens Step 176's actor-knowledge formalization, extending epistemic discipline from what-is-known to who-knows-it."

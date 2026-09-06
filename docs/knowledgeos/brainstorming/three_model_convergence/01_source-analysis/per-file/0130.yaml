@@ -1,0 +1,93 @@
+sequence: "0130"
+path: docs/knowledgeos/brainstorming/20260822-125015-vedic-sanskrit-grammar-v2-word-order-semantic-normal-form.md
+title: "Vedic Sanskrit Grammar v2 + word-order/Semantic-Normal-Form thread -- three linked candidate representations"
+date: "2026-08-22"
+bytes: 21000
+model:
+  primary: g
+  secondary: [c1, m]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0099"
+importance: high
+confidence: medium
+about: >
+  Three linked conversational turns (Vedic/Pāṇinian grammar lens v2; word-order-invariance /
+  "Semantic Normal Form"; "Artificial Semantic Language"/"Artha Language" naming) all converging on one
+  architectural thesis: "Meaning should not depend on the accidental arrangement of expressions; meaning
+  should be reconstructed from invariant relationships." Introduces THREE distinct case/event-frame
+  representations (8-slot Vibhakti table; 5-slot ACTION/ACTOR/OBJECT/JUSTIFICATION/CONDITION frame;
+  6-slot KARTA/KRIYA/KARMA/HETU/KALA/DESHA frame), none reconciled with each other or with the 0099
+  Identity 6-tuple. Explicitly self-classified as mechanism, not kernel, throughout.
+
+introduces:
+  - "'Semantic Compiler' analogy: Meaning Root -> Transformation Rules -> Expression, modeled directly
+    on a compiler pipeline (Source -> Compiler Rules -> Executable)"
+  - "'Semantic Normal Form (SNF)': different sentences with the same underlying semantic structure
+    normalize to one canonical EVENT/ACTOR/OBJECT/JUSTIFICATION/CONDITION frame -- a candidate mechanism"
+  - "Sanskrit 8-case (Vibhakti) table mapped to 8 KnowledgeOS relational roles (Actor/Object/Instrument/
+    Purpose/Source/Provenance/Context/Recipient) -- a candidate new_representation"
+  - "6-slot Sanskrit-native event frame (KARTA/KRIYA/KARMA/HETU/KALA/DESHA = Actor/Action/Object/Cause/
+    Time/Place) -- a second, distinct candidate new_representation from the same file"
+  - "'Semantic sandhi': when two contexts merge (e.g. 'AI Governance' + 'Data Protection'), the correct
+    KnowledgeOS behavior is a governed integration rule producing a new coherent concept, not naive
+    string concatenation -- refines the pre-existing sandhi-as-boundary-transformation reading"
+  - "Explicit Gödel-grounded self-limitation: 'We should not claim all meanings can be represented
+    perfectly -- that would violate Gödel' -- a disciplined negative constraint on the ASL/Artha-Language
+    proposal itself, continuing the corpus's Gödel-grounding thread (0122-0127)"
+
+defines: []
+
+refines:
+  - "Temporal Validity: 'Event time ≠ Knowledge state time', modeled on Vedic subjunctive/optative/
+    injunctive moods (witnessed vs. unwitnessed, possible/conditional futures) -- see registry"
+  - "Reinforces (does not extend) 'Representation ≠ Identity' / 'Expression ≠ Meaning' via cross-language
+    (English/German/Sanskrit) paraphrase examples, already established prior to this file"
+
+contradicts: []
+
+repeats:
+  - {concept: "three-layer meaning model (Yogārtha/Yogarūḍhārtha/Rūḍhārtha), sandhi as combination", canonical_source: "0086", novelty: low}
+  - {concept: "Gödel-grounded representational limitation", canonical_source: "0122", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: false
+
+registry_updates:
+  - "New Unresolved Equivalence Registry entry: Identity 6-tuple (0099) vs. the three case/event-frame
+    representations introduced here (8-slot / 5-slot / 6-slot) -- all candidate new_representations,
+    none merged, per MD-017"
+  - "Temporal Validity: refinement note added ('Event time ≠ Knowledge state time')"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Temporal Validity", "Identity Preservation"]
+  refines_or_contradicts: "Refines only; three new representation candidates added, none promoted or merged."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "Three distinct case/event-frame representations proposed within a single file, none reconciled
+    with each other or with the pre-existing Identity 6-tuple -- a clear instance of the representation-
+    proliferation pattern MD-017 was adopted to track without premature merging"
+  - "The file's own explicit Gödel-based self-limitation ('would violate Gödel' to claim perfect
+    representability) is a disciplined negative constraint applied by the source itself, not by this
+    research -- consistent with the corpus's demonstrated restraint pattern"
+
+undefined_concepts:
+  - "Whether 'Semantic Normal Form', 'Semantic Invariance Layer', 'Semantic Invariant Language', and
+    'Artha Language' name one mechanism or several -- used near-interchangeably within the same file"
+open_questions:
+  - "Which (if any) of the three case/event-frame representations, or the Identity 6-tuple, would survive
+    a future formal comparison; whether a structure-preserving transformation exists between any pair"
+
+tier2_triggered: true
+tier2_reason: >
+  Introduces three new candidate relational/event representations plus a Temporal Validity refinement,
+  none promoted or merged -- a genuine representation-proliferation instance requiring MD-017 discipline.

@@ -1,0 +1,162 @@
+sequence: 1038
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/15-GAP-UPDATE-FROM-STEPS-012-038-195.md
+title: "15 -- Gap Update From Steps 012/038/195 (Identity-Continuity Seam): Delivers the FIRST GENUINE CLOSURE on the Equality Axis (I_48: Transitive Within an Identity Context), Recovers a NINTH Relation ('Continuity') Absent From Every Prior Register, Proves Semantic Equality Is UNDECIDABLE in General (Not Merely Unspecified), and Reframes Qualify as One of a Family of Four Partial Epistemic Functions"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a further disciplined discovery-and-correction document, continuing the algebra-seam excavation begun in file 1037, triggered by explicit user direction"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1038
+importance: critical
+confidence: high
+about: >
+  "15 — Gap Update From Steps 012 · 038 · 195 (the identity-continuity seam)," triggered by explicit user
+  direction, verdict: "one open problem in Step 288 is RESOLVED · one standing gap CLOSES · one Level-5 claim
+  is DOWNGRADED · a relation absent from every register is RECOVERED." These three files are ranked 1st, 3rd,
+  4th by "corpus sweep" density and predate everything Step 288 v2 was built on.
+
+  **§1 DELIVERS THE PROGRAMME'S FIRST GENUINE CLOSURE ON THE EQUALITY AXIS**: the transitivity problem (five
+  loci flag it unsafe, including the already-tracked `KnowledgeContamination` finding) is RESOLVED for
+  identity equivalence `≅_I` by CONTEXT-RELATIVIZATION -- a new numbered corpus invariant, **`I_48`:
+  "Identity equivalence must be transitive WITHIN A DEFINED IDENTITY CONTEXT,"** grounded in
+  `RealWorldIdentity≠DomainObjectIdentity` and "identity is contextual." **"`≅_I` IS an equivalence relation
+  within an identity context, and is NOT one across contexts. Quotients therefore exist per-context and are
+  undefined globally."** Two load-bearing provisos explicitly noted: this resolves `≅_I`, NOT `≡` (semantic
+  equality's transitivity remains genuinely open, though `25I.11`'s context-indexing is "the same move"); and
+  "identity context" itself is an unbound parameter -- "the problem is relocated into a smaller, better-named
+  box," at Level 4 exactly like `≅_λ`'s `λ` and `≈`'s `𝒪`. Also delivers `195.15`'s checkable invariant naming
+  the violation: `A≡B∧B≡C∧A≢C` = an identity consistency violation.
+
+  **§2 RECOVERS A NINTH RELATION, "CONTINUITY," ABSENT FROM ALL FIVE PRIOR RECONCILED REGISTERS**: `195.21/
+  195.51` distinguish three questions -- Identity ("is it the same entity?"), Continuity ("does the history
+  of one connect meaningfully to the other?"), Similarity ("how much does it resemble the other?") -- "they
+  should not collapse," and Similarity is explicitly EVIDENCE FOR Identity/Continuity, never either of them.
+  `Continuity(x,y)=f(IdentityRelation,TransitionLineage,DomainRules,Evidence)` (`195.51`) is FUNCTIONALLY
+  defined, distinct from `≅_H` (histories) and `≅_I` (references). **DELIVERS `195.24`'S BOXED FINDING**:
+  **Identity and Lineage are ORTHOGONAL**, independently confirmed by a NEW cross-referenced corpus locus
+  "`261.9`" ("Identity and Provenance equality are independent dimensions") -- "two loci, one finding."
+  Consequence: "the register is 9 relations, not 8."
+
+  **§3 DELIVERS A GENUINELY SIGNIFICANT DOWNGRADE**: structural equality `=` is NOT innocently decidable --
+  three loci show decidability is CONDITIONAL on canonicalization, which is ITSELF an epistemic operation
+  ("`Canonicalization must follow evidence, not precede it`," `38.85`; "canonicalization is not truth,"
+  `012§27`). **"The corrected count is: ZERO state-level relations are unconditionally at Level 5. Step 288's
+  'one state-level relation reaches Level 5' was itself too generous."** This is the SAME unbound-parameter
+  defect already found in `≈`'s `𝒪` and `≅_λ`'s `λ`, now discovered for `=` as well -- "I had simply not
+  seen that `=` has one too."
+
+  **§4 DELIVERS A GENUINE NARROWING (NOT CLOSURE) OF A LONG-STANDING GAP, "`G-62` `Compare` UNDEFINED"**:
+  `012§46` supplies a full SIGNATURE, `Compare:𝒫×𝒫×C×Ω→𝒬` with codomain
+  `{Equivalent,Compatible,Contradictory,Related,Independent,Unknown}`, plus two partial companion functions
+  `Resolve` and `Normalize`. **DELIVERS A MAJOR REFRAMING OF THE PROGRAMME'S CENTRAL `QUALIFY` BLOCKER**:
+  "`012§46` shows it is one of a FAMILY OF FOUR partial epistemic functions -- `Qualify`·`Resolve`·
+  `Normalize`·`Compare` -- ALL PARTIAL, all with signatures, NONE with bodies. `Qualify` is not unique. It is
+  the instance of a pattern. What the kernel is missing is a DISCIPLINE FOR PARTIAL EPISTEMIC FUNCTIONS, not
+  one function." This directly reframes every already-tracked "Qualify is the single irreducible blocker"
+  finding (files 1005, 1007, 1018-1020, 1035) into a broader, more precisely-posed structural gap.
+
+  **§5 DELIVERS A THEOREM-SHAPED IMPOSSIBILITY RESULT FOR SEMANTIC EQUALITY**: `012§35`: "Semantic
+  equivalence is generally NOT FULLY DECIDABLE. For arbitrary natural language, `P_1≡P_2` is not generally
+  decidable" -- "`≡` can NEVER reach Level 5 in the Boolean sense. This is a THEOREM-SHAPED LIMIT, not a work
+  item." The corpus's own conclusion: the system must be able to say "I don't know whether these mean the
+  same thing" -- "that is a FEATURE, not a failure," cross-referenced as "the same rule as `224.11`, `25S.4`
+  and `38.22` -- four independent loci."
+
+  **§6 delivers a reconciliation of FOUR rival equality-decision codomains** (not the previously-tracked two,
+  file 1037's `25S.3`): `38.10` (6 values), `012§35` (4 values), `012§36/46` (6 values) -- sorted by `012§36`'s
+  own principle, "THE RELATION ITSELF SHOULD NOT BE CONFUSED WITH ITS EPISTEMIC CERTAINTY," into two
+  orthogonal dimensions (Relation=what holds; Status=how well we know it), with `25S.3` flagged as an
+  internally CONFLATED codomain mixing both. Offers a DERIVED (not corpus) reconciliation
+  `Decide_≡:𝒦×𝒦→(Relation×Status)`, explicitly noting this is "the SAME defect shape as `Σ`'s 10-value
+  flattening of five axes (`08`)... second occurrence of that pattern, still not a promoted finding."
+
+  **§7 delivers an entirely new dimension absent from Step 288**: a DECISION-THEORETIC LAYER treating equality
+  as classification under ASYMMETRIC LOSS (`38.18-23`: false-merge vs false-split costs, precision-favoring
+  abstention policy -- "`UnknownIdentity` should generally remain `Unknown` rather than being silently
+  merged"; "probabilistic identity must not silently become confirmed identity") -- explicitly flagged as
+  "Level 4 · PARAMETERIZED, with every parameter unbound," and inheriting the already-tracked "no probability
+  space `(Ω,𝓕,P)`" gap (`G-22`/`MT-1`), so any stated `P(Same)=0.98` "has no measure-theoretic referent in
+  this theory."
+
+  **§8 confirms the already-tracked `grantId` identifier-collision finding is CORPUS-ANTICIPATED, not
+  original**: `38.26` names the general failure class (misconfiguration, identifier reuse, environment
+  copying) -- "my `grantId` collision is an instance of a corpus-named failure class, not a novel finding...
+  the credit is the corpus's."
+
+  **§9 delivers two further gaps**: `Closure(Identity)`/`AffectedKnowledge(x)` (identity-revision propagation,
+  paralleling the already-known `Closure(Assumption)`); and a STRUCTURAL TENSION for the kernel itself:
+  `038`/`195` require the kernel to be "a graph federation... `G_K+G_P+G_I+TemporalState+EpistemicControl`,"
+  with graphs that "must NOT be collapsed" -- yet the already-tracked canonical kernel `ℛ` was independently
+  reduced to only 3 fields (`G-55`/`D-5`), producing an open structural question: "Either `ℛ` is a union of
+  graphs the theory says must not be collapsed, or the kernel is missing a component." Explicitly cautioned
+  against over-reading: `195.44` itself warns "we must not over-engineer."
+
+  **§11 delivers the definitive net-effect table on Step 288**, closing: "Step 288's verdict still stands:
+  the equality problem is mapped, not solved. BUT ONE THING CLOSED: `≡_I` is transitive within a context
+  (`I_48`). And one thing got worse: `=` no longer reaches Level 5 unconditionally, so the completeness
+  matrix now has NO unconditional Level-5 state-level relation at all."
+
+  **§13 discloses further unread files**, flagging "`025v`, `step-017` and `step-039`" as constituting "the
+  semantic-translation thread `38.89` opens, and it is unexamined."
+introduces:
+  - concept: "The first genuine closure on the equality axis: I_48, identity equivalence is transitive within a defined identity context, resolving the transitivity problem for approx_I (though not for equiv, which remains open)"
+  - concept: "The ninth relation, Continuity, absent from all five prior reconciled registers, functionally defined and orthogonal to Identity/Lineage (confirmed by two independent corpus loci, 195.24 and 261.9)"
+  - concept: "The significant downgrade that structural equality (=) is conditional on an unspecified, evidence-driven canonicalization, meaning zero state-level relations are unconditionally at Level 5"
+  - concept: "The reframing of Qualify as one instance of a family of four partial epistemic functions (Qualify/Resolve/Normalize/Compare), all partial with signatures but no bodies -- the kernel is missing a discipline for partial epistemic functions, not one function"
+  - concept: "The theorem-shaped impossibility result that semantic equivalence for arbitrary natural language is not generally decidable, so equiv can never reach Level 5 in the Boolean sense"
+  - concept: "The reconciliation of four rival equality-decision codomains into two orthogonal dimensions (Relation vs Status), with a derived (not corpus) two-dimensional decision function"
+  - concept: "The entirely new decision-theoretic layer treating equality resolution as classification under asymmetric loss, with an abstention-favoring policy, blocked on the already-tracked missing probability space"
+  - concept: "The structural kernel tension: the corpus's graph-federation requirement (G_I as a separate, non-collapsible graph) versus the already-tracked reduction of R to three fields"
+defines:
+  - term: "I_48"
+    definition: "A numbered corpus invariant (from Step 195): identity equivalence must be transitive within a defined identity context, though the parameter 'identity context' remains unbound"
+  - term: "Continuity"
+    definition: "A ninth relation, absent from every prior register, distinct from Identity and Similarity, functionally defined as f(IdentityRelation, TransitionLineage, DomainRules, Evidence), and orthogonal to Identity"
+refines:
+  - concept: "This reconstruction's already-tracked transitivity-may-fail finding (file 1037, KnowledgeContamination)"
+    refinement: "PARTIALLY RESOLVED for identity equivalence via context-relativization (I_48), while explicitly leaving semantic equality's transitivity open"
+  - concept: "This reconstruction's already-tracked 'Qualify is the single irreducible blocker' finding (files 1005, 1007, 1018-1020, 1035)"
+    refinement: "REFRAMED as one instance of a family of four partial epistemic functions, none with a body -- the underlying gap is a missing discipline for partial functions, not a unique blocker"
+  - concept: "This reconstruction's already-tracked structural-equality Level-5 (decidable) status (files 1019, 1026, 1031, 1036)"
+    refinement: "DOWNGRADED: decidability is conditional on an unspecified, evidence-driven canonicalization, so zero state-level relations are unconditionally Level 5"
+  - concept: "This reconstruction's already-tracked two-codomain equality-decision finding (file 1037's 25S.3)"
+    refinement: "EXPANDED to four rival codomains, reconciled via a Relation-vs-Status orthogonal-dimension principle"
+  - concept: "This reconstruction's already-tracked kernel-reduction finding (K reduced structures, R to 3 fields)"
+    refinement: "PLACED IN TENSION with the corpus's own graph-federation requirement, an open structural question for the kernel"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "'025v', 'step-017', 'step-039', 'step-073', 'step_203' -- the semantic-translation thread and other unread files explicitly flagged."
+  - "'261.9' (Identity and Provenance equality are independent dimensions) -- a new corpus locus, not yet directly encountered."
+  - "'G-22'/'MT-1' (no probability space) -- the already-tracked measure-theoretic gap, cross-referenced again here."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the first genuine equality-axis closure (I_48, identity equivalence transitive within a context)."
+  - "dimension-registry.md: record the ninth relation, Continuity, and its orthogonality to Identity (confirmed by two independent loci)."
+  - "dimension-registry.md: record the downgrade of structural equality's Level-5 status (conditional on unspecified canonicalization -- zero unconditional Level-5 state relations)."
+  - "dimension-registry.md: record the reframing of Qualify as one of a family of four partial epistemic functions (Qualify/Resolve/Normalize/Compare)."
+  - "dimension-registry.md: record the theorem-shaped undecidability of general semantic equivalence, and the decision-theoretic (asymmetric-loss) layer as a new dimension of the equality problem."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Qualify-blocker, structural-equality-decidability, and transitivity findings (files 1005-1037)"
+  supports_dimension: "Delivers the programme's first genuine closure, a major reframing of the central blocker, and a significant downgrade of a previously solid finding"
+  refines_or_contradicts: "refines (resolves, reframes, downgrades) multiple already-tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The I_48 invariant and the Continuity relation are directly checkable against a future direct encounter with Step 195."
+  - "The Qualify-family reframing is directly checkable against Step 012 SS46's own four-function signature list."
+undefined_concepts: []
+open_questions:
+  - "The full content of Steps 012, 038, and 195, cited extensively but not yet directly encountered in original form."
+  - "Whether 'identity context' (I_48's unbound parameter) is ever formally defined."
+  - "Whether the kernel's graph-federation-vs-reduced-R tension is ever resolved."
+tier2_triggered: true
+tier2_reason: "Delivers the programme's first genuine closure on the equality axis (I_48), recovers a ninth relation absent from every prior register, proves a theorem-shaped undecidability result for semantic equivalence, significantly downgrades structural equality's Level-5 status, and reframes the central Qualify blocker as one instance of a family of four partial epistemic functions. Classified importance critical and confidence high given the density, rigor, and structural significance of these findings."

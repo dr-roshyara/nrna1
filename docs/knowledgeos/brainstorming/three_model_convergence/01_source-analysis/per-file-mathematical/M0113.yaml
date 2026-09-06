@@ -1,0 +1,87 @@
+sequence: M0113
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-155902_knowledgeos-complete-todo-register-revised-approved.md
+title: "KnowledgeOS Complete TODO Register (Revised, Approved): Verbatim Repeat of M0109 Followed by an Approval Review That Catches a Genuine Diagram-vs-Text Internal Inconsistency in M0109 Itself (the Dependency Diagram Places Reduction BEFORE delta/Lifecycle/Composition While the Text Says Reduction Depends on Composition), Supplies a Corrected Consolidated Dependency Diagram, and Softens Group H's 'Mathematical Foundation of the Entire Kernel' Claim to 'a Candidate Mathematical Foundation... Must Be Tested'"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "the first ~576 lines are a verbatim repeat of M0109's full TODO register (already fully recorded in this reconstruction's M0109 entry); after a lone '#' section break, an approval review catches a genuine internal diagram/text inconsistency M0109 itself contains, which this reconstruction's own M0109 record did not previously flag"
+source_role: ADJUDICATION
+canonical_source: M0113
+importance: high
+confidence: high
+about: >
+  Restates M0109's complete ten-group (A-J) TODO register verbatim (executive summary, six key
+  corrections, current-state diagram, master roadmap, six TODO types, all ten group sections A-J
+  with sub-TODOs and candidates, the summary dependency graph, the priority-order table, and the
+  what-NOT-to-do table) -- see this reconstruction's M0109 entry for the full content analysis, not
+  repeated here.
+
+  **THE APPROVAL REVIEW (after the section break) CATCHES A GENUINE INTERNAL INCONSISTENCY IN
+  M0109 ITSELF**: notes that M0109's own Summary dependency-graph diagram places Reduction BEFORE
+  delta, Lifecycle, and Composition in its structural-lane flow, while M0109's own Group I text
+  explicitly states "Reduction depends on ==_sem, Composition, and the Invariant framework" -- the
+  diagram and the text disagree about whether Reduction precedes or follows Composition. "That is
+  inconsistent."
+
+  **SUPPLIES A CORRECTED, CONSOLIDATED DEPENDENCY DIAGRAM**: merges the previously-separate Semantic
+  Lane and Structural Lane into a single flow -- {Factivity, Contr, >=} -> Evaluation Semantics ->
+  ==_sem/Identity -> {delta, Lifecycle} -> Composition -> Reduction (fed also by Projection/
+  Invariant) -> Kernel Candidate -> Minimality Test -> HPA Ratification -> Theory v1.3? -- explicitly
+  noting "even that should be understood as a dependency map, not necessarily a mandatory execution
+  sequence."
+
+  **SOFTENS GROUP H's OVERCLAIM**: M0109's Group H states "this may be the mathematical foundation
+  of the entire KnowledgeOS kernel" -- the reviewer notes "the experiment has not established that
+  yet," proposing instead "this is a candidate mathematical foundation for the kernel and must be
+  tested against the remaining semantic and structural problems," explicitly preserving "research
+  direction != established architecture" discipline.
+
+  Confirms agreement with all nine of M0109's substantive corrections (Factivity does not block
+  Contr; Contr as immediate next experiment; >= analyzable in parallel with the admissibility!=
+  ranking!=selection distinction preserved; ==_sem as candidate prerequisite only; delta/Lifecycle
+  separate; Projection/Invariant as parallel lane; Composition separated from Reduction; Kernel
+  selection depends on whatever proves load-bearing, not "unfinished"; N_eff off the critical
+  path), delivering a final verdict of "[APPROVED] with one diagram/dependency consistency
+  correction," reconfirming the immediate next experiment as B (Contradiction/Evaluation Domain/
+  Zero), Factivity as "an explicit decision track" (note: written before, or without incorporating,
+  the R1 resolution reported in M0110/M0111/M0112 -- this document still treats Factivity as an
+  open decision track rather than DECIDED, consistent with its position in the corpus preceding
+  that resolution), and FR-001 as frozen. Explicitly declines to create Theory v1.3, reopen N_eff,
+  rerun FR-001, or start another kernel-reduction experiment, characterizing the programme's current
+  position as "the semantic-definition/evaluation gate, not the kernel-selection gate."
+introduces:
+  - concept: "The specific diagram-vs-text internal inconsistency in M0109 (Reduction's position relative to Composition/delta/Lifecycle), caught here and not previously flagged in this reconstruction's M0109 record"
+  - concept: "The corrected, consolidated single-flow dependency diagram merging the Semantic and Structural lanes"
+  - concept: "The softened Group-H framing: 'a candidate mathematical foundation... must be tested' replacing 'may be the mathematical foundation of the entire kernel'"
+defines: []
+refines:
+  - concept: "M0109's TODO register, approved here with one specific diagram-consistency correction and one wording softening"
+contradicts:
+  - concept: "M0109's own dependency-graph diagram, shown here to disagree with M0109's own Group I text about Reduction's position relative to Composition"
+repeats:
+  - concept: "M0109's entire TODO register content (executive summary, six corrections, ten groups A-J, priority order, what-not-to-do list) -- see M0109's own dimension-registry entry"
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0113 as approving M0109's TODO register with one specific correction -- M0109's own dependency diagram contradicted its own Group I text about Reduction's position relative to Composition/delta/Lifecycle -- supplying a corrected consolidated single-flow diagram, and softening Group H's kernel-foundation overclaim to a properly hedged 'candidate... must be tested' framing. Written before (or without incorporating) the R1 factivity resolution reported in M0110/M0111/M0112."
+anchor_test:
+  anchor: "M0109's TODO register"
+  supports_dimension: "Catches a genuine internal diagram/text inconsistency in an already-processed document and supplies a specific correction, plus one disciplined overclaim softening"
+  refines_or_contradicts: "refines (M0109); contradicts (M0109's own dependency-graph diagram, per its own text)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'The diagram currently places Reduction before delta, Lifecycle and Composition, while the text says Reduction depends on Composition and the invariant framework... That is inconsistent' -- a precise, specific catch of a genuine internal contradiction within M0109 itself, not previously flagged in this reconstruction's own M0109 record."
+undefined_concepts: []
+open_questions:
+  - "Whether this document was produced before or after the R1 factivity resolution (M0110/M0111/M0112) -- it treats Factivity as still an open decision track, suggesting it may predate that resolution despite following M0109/M0110/M0111/M0112 in this pass's processing sequence."
+tier2_triggered: true
+tier2_reason: "Catches a genuine, specific internal diagram/text inconsistency in an already-processed foundational document (M0109) and supplies a corrected consolidated dependency diagram, plus a disciplined overclaim softening -- a real corpus-integrity contribution, though narrower in scope than M0109 itself."

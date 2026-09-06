@@ -1,0 +1,65 @@
+sequence: 16
+path: docs/knowledgeos/KnowledgeOS_Governed_Retrieval_Positioning_Validation.md
+title: KnowledgeOS — Governed-Retrieval Positioning Validation (external input)
+date: 2026-08-03
+bytes: 10950
+doc_type: external-literature validation/reconciliation via a five-question review protocol
+
+primary_model_initial: meta_research
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - "protected constructs (Method/Binding/Evidence, P4, Portability Ladder) are all C1, first defined at 0001"
+  - provenance is located within existing C1 governance constructs (authority = provenance x standing, CAP-001 identity)
+  - no epistemic-lineage vocabulary present
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [engineering_knowledgeos, evidence, provenance, validation, governance]
+
+status: DR
+maturity: developing
+importance: medium
+
+introduces:
+  - five_question_review_protocol       # named, reusable procedure
+  - check_before_recording              # changes a proposal's SHAPE before evaluation
+  - unjustified_originality_is_the_problem_originality_is_not
+  - sp5_pattern_third_occurrence        # dispersed-not-missing, generalized
+defines: []
+hypotheses:
+  - U_GR_2_does_provenance_become_its_own_domain   # gated on operational evidence, not literature
+  - candidate_positioning_sentence                  # deferred behind mission ratification
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 16th consecutive file
+  - provenance         # extensively LOCATED, never positively defined
+  - governed_retrieval # the source's own central term; candidate vocabulary, not adopted
+  - positioning        # purpose-layer concept; relationship to "mission" is only ordering
+open_questions:
+  - U_GR_1 does the sponsor adopt the positioning sentence
+  - U_GR_2 does provenance become its own domain
+  - U_GR_3 does "Retrieval Boundary" enter the ubiquitous language
+
+depends_on: [1, 2, 11]
+extends: [2]
+refines: [11]
+renames: []
+contradicts: []
+supersedes: []
+repeats: [2, 9, 11]
+connects_to: [1, 2, 11]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: >
+  No formal object introduced or altered, no knowledge-concept definition stated or attacked, no
+  operator, no contradiction (all findings are confirmations/enrichments plus one new gap), no
+  mathematical/probabilistic/topological content, no Kernel boundary or admissibility claim, no
+  Gita/epistemic interpretation. The two reusable ideas (check-before-recording; the SP-5 pattern's
+  third occurrence) are fully captured in Tier 1 and need no deeper formal treatment. CHECKABLE: any
+  later finding to the contrary must be logged in revisions.md.

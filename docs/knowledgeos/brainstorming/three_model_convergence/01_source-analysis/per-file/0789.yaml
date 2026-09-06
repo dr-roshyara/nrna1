@@ -1,0 +1,131 @@
+sequence: 789
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-012048_step_164_domain-events-and-legitimate-state-transitions.md
+title: "Step 164 -- Domain Events and Legitimate State Transitions (MAJOR SYNTHESIS MILESTONE, delivers 0788's promised register): 'A Domain Event Represents a Meaningful Fact That Has Already Occurred' -- Delivers Command≠Event, Event≠State, Event≠Relationship, and the Event Derivation Rule (Invariant+State Transition+Domain Significance⇒Candidate Event) -- Delivers a Four-Category, Twenty-One-Event Provisional Taxonomy (Epistemic/Governance/Authorization/Operational) and the Naming Rule Event=Past Tense+Domain Fact -- Delivers Domain Event≠Audit Event and 'Domain Signal Versus Technical Noise' (Does This Fact Matter to the Domain Model or Its Invariants?) -- Delivers the Explicit Restraint List: NOT Every Concept an Aggregate, NOT Every Transition an Event, Kafka/Event-Sourcing/CQRS/Microservices NOT Required -- 'KnowledgeOS Should Derive Its Event Model From Domain Invariants... Rather Than Deriving Its Domain Model From an Infrastructure Messaging Technology' -- Opens Step 165, Aggregate and Consistency-Boundary Derivation"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "pure DDD event-modeling synthesis; no Gita content in this file"
+source_role: PRIMARY_RESEARCH
+canonical_source: 789
+importance: critical
+confidence: high
+about: >
+  Directly continues 0788, opening by naming and rejecting the obvious shortcut: "the danger now is to
+  jump directly to 'let's create an event for every arrow.' We will NOT do that." Delivers the strict
+  governing rule: **"a domain event represents a meaningful fact that has already occurred"** -- explicitly
+  not a command, method call, API endpoint, database update, or intention.
+
+  **§164.1-164.3 delivers three foundational non-collapse distinctions**: `Command≠Event` (Command = a
+  request for an action, e.g. `ApproveArchitectureChange`; Event = the fact that it occurred, e.g.
+  `ArchitectureChangeApproved`; `Command→possibly Event`, not every command produces its requested event);
+  `Event≠State` (an event says something happened; state says what is true now, e.g. `KnowledgeConfirmed`
+  the event vs. `Knowledge.status=CONFIRMED` the state; "we must not assume event sourcing simply because
+  events exist"); `Event≠Relationship` (not every relationship, e.g. `EvidenceSupportsKnowledge`, needs a
+  corresponding event; `EvidenceAcceptedAsSupport` could be one if the acceptance is itself a meaningful
+  domain occurrence).
+
+  **§164.4 delivers the event derivation rule**: `Invariant+State transition+Domain significance⇒
+  Candidate Event` -- the disciplined method for deciding whether any given fact deserves formal event
+  status.
+
+  Delivers a worked, explicitly provisional Evidence-lifecycle state set (`Captured, Validated, Accepted,
+  Rejected, Superseded`), "we should not yet freeze this exact state machine," as a worked instance of
+  applying the derivation rule.
+
+  **§164.52 delivers a complete, provisional four-category, twenty-one-event candidate taxonomy**:
+  **Epistemic events** (`EvidenceCaptured, EvidenceValidated, KnowledgeProposed, KnowledgeConfirmed,
+  KnowledgeContested, KnowledgeSuperseded, DeterminationProposed, DeterminationEstablished`); **Governance
+  events** (`DecisionProposed, DecisionMade, DecisionDeferred, DecisionEscalated, DispositionRefrain`);
+  **Authorization events** (`AuthorizationRequested, AuthorizationGranted, AuthorizationDenied,
+  AuthorizationExpired`); **Operational events** (`ActionCreated, ActionExecuted, ExecutionFailed,
+  ExecutionOutcomeObserved`) -- explicitly "this taxonomy remains provisional."
+
+  **§164.53-164.54 delivers the event naming rule**: `Event=Past Tense+Domain Fact` (good:
+  `KnowledgeConfirmed`, `DecisionMade`, `AuthorizationGranted`, `ActionExecuted`; bad: `ConfirmKnowledge`,
+  `MakeDecision` -- "those are commands"), with the corresponding command list
+  (`ProposeKnowledge, ConfirmKnowledge, EstablishDetermination, MakeDecision, RequestAuthorization,
+  GrantAuthorization, CreateAction, ExecuteAction`).
+
+  **§164.55-164.58 delivers three further precise distinctions**: "rejection is also a fact," with an
+  explicit domain-rejection-vs-technical-rejection split (`AuthorizationDenied` is domain-specific;
+  `MalformedRequestRejected` is technical -- "the event taxonomy should not mix these carelessly");
+  **Domain event≠Audit event** (a system can have domain events without treating every audit-log entry as
+  one); and **"domain signal versus technical noise,"** with the explicit criterion "does this fact matter
+  to the domain model or its invariants?" -- worked through a concrete telemetry example (file opened,
+  HTTP request received, process started, database query executed), explicitly warning that treating all
+  such noise as domain events causes `EventVolume→enormous`, "and the domain model disappears inside
+  telemetry."
+
+  **§164.59-164.62 delivers the Step-164 synthesis**: `Command→Invariant Evaluation→State Transition→
+  Domain Event` and `Domain Event→Lineage→New State/Observation` -- "this gives us a causal architecture
+  rather than a collection of arbitrary messages." Delivers the complete conceptual loop restated with
+  `Invariant+Authority+Provenance+Time` governing every transition. **Delivers an explicit, disciplined
+  "what Step 164 has NOT established" list**: not every concept is an aggregate; not every transition is
+  an event; events need not be persisted forever; **Kafka is not required; Event Sourcing is not required;
+  CQRS is not required; microservices are not required** -- "those remain architecture decisions. This is
+  deliberate." **Delivers the file's central architectural consequence, a strong technology-independence
+  principle**: "**KnowledgeOS should derive its event model from domain invariants and legitimate state
+  transitions, rather than deriving its domain model from an infrastructure messaging technology**" --
+  "that principle should eventually become part of the architectural constitution."
+
+  **Closes by opening "Step 165 — Aggregate and Consistency-Boundary Derivation,"** posing "who owns that
+  transition?", boxed as "what must change atomically?" and "what invariant must this boundary protect?",
+  naming six candidates to test (Evidence, Knowledge, Determination, Decision, Authorization, Action), and
+  explicitly framing the objective as avoiding "the two classic failures: one giant aggregate... and an
+  aggregate for every noun. We will derive the boundaries from consistency requirements, not from
+  object-oriented intuition." No actual repository implementation or code execution occurs within this
+  file itself; every event and taxonomy remains explicitly provisional.
+introduces:
+  - concept: "The strict domain-event definition: 'a meaningful fact that has already occurred,' not a command/method call/API endpoint/database update/intention"
+  - concept: "Command≠Event, Event≠State, Event≠Relationship"
+  - concept: "The event derivation rule: Invariant+State transition+Domain significance⇒Candidate Event"
+  - concept: "The four-category, twenty-one-event provisional taxonomy (Epistemic/Governance/Authorization/Operational)"
+  - concept: "The event naming rule: Event=Past Tense+Domain Fact"
+  - concept: "Domain rejection vs. technical rejection; Domain event≠Audit event"
+  - concept: "'Domain signal versus technical noise': does this fact matter to the domain model or its invariants?"
+  - concept: "The explicit 'what Step 164 has NOT established' restraint list (no forced aggregates/events/Kafka/Event-Sourcing/CQRS/microservices)"
+  - concept: "'KnowledgeOS should derive its event model from domain invariants... rather than from an infrastructure messaging technology'"
+  - concept: "Step 165's opening: Aggregate and Consistency-Boundary Derivation, avoiding one-giant-aggregate and aggregate-per-noun"
+defines:
+  - concept: "The strict domain-event definition"
+    definition: "A domain event is a record of a meaningful fact that has already occurred within the domain -- distinct from a command (a request for something to happen), a method call or API endpoint (technical invocation mechanisms), a database update (a persistence-layer side effect), or an intention (a plan not yet realized); an event's defining property is that it reports something that has genuinely already happened and is domain-significant"
+  - concept: "'Domain signal versus technical noise'"
+    definition: "Before promoting any observed fact to formal domain-event status, ask whether that fact actually matters to the domain model or its invariants -- purely technical occurrences (a file being opened, an HTTP request arriving, a database query executing) that carry no domain significance belong in ordinary telemetry/logging, not the domain event model; treating every technical occurrence as a domain event causes event volume to explode and buries the actual domain model inside undifferentiated technical noise"
+refines:
+  - concept: "0788's Step 163 context map and its recommendation of Step 164"
+    refinement: "DELIVERED: the full, disciplined domain-event derivation methodology, a provisional twenty-one-event taxonomy across four categories, and an explicit technology-independence principle for the event model"
+  - concept: "0787's kernel principle (small, stable, authoritative, high burden of proof) and 0787's/0788's general anti-over-modeling discipline"
+    refinement: "Directly extended into the event-modeling domain: the same discipline that prevented every noun from becoming a bounded context now prevents every state transition or verb from becoming a domain event, via the identical burden-of-proof pattern (Invariant+State transition+Domain significance⇒Candidate Event)"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 165 (Aggregate and Consistency-Boundary Derivation) and the actual aggregate-boundary determinations for the six named candidates (Evidence, Knowledge, Determination, Decision, Authorization, Action)."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the strict domain-event definition, Command≠Event/Event≠State/Event≠Relationship, and the event derivation rule as directly reusable DDD event-modeling discipline."
+  - "dimension-registry.md: record 'domain signal versus technical noise' as a precise, directly applicable criterion for preventing event-model explosion from technical telemetry."
+  - "dimension-registry.md: record 'KnowledgeOS should derive its event model from domain invariants... rather than from an infrastructure messaging technology' as a strong, explicitly proposed constitutional principle maintaining technology independence."
+anchor_test:
+  anchor: "0788's Step 163 context map and its recommendation of Step 164; 0787's kernel principle and anti-over-modeling discipline"
+  supports_dimension: "Delivers a rigorous, disciplined domain-event derivation methodology directly answering the question posed at 0788's close, with three foundational non-collapse distinctions (Command≠Event, Event≠State, Event≠Relationship) and an explicit derivation rule preventing naive event-per-verb modeling. Delivers a provisional twenty-one-event taxonomy across four categories, a precise naming rule, domain-vs-technical rejection and domain-vs-audit event distinctions, and 'domain signal versus technical noise' as a concrete anti-explosion criterion. Delivers a strong, explicitly proposed constitutional principle maintaining technology independence from any specific messaging/event-sourcing infrastructure. Closes opening Step 165's aggregate-boundary derivation with the same anti-over-modeling discipline established since 0787"
+  refines_or_contradicts: "directly delivers and extends 0788's recommended Step 164; directly extends 0787's/0788's anti-over-modeling discipline into event modeling; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit boxed rule 'a domain event represents a meaningful fact that has already occurred,' paired with the explicit exclusion list (not a command, method call, API endpoint, database update, or intention), is directly quotable evidence of the file's central definitional discipline."
+  - "§164.62's explicit statement 'KnowledgeOS should derive its event model from domain invariants and legitimate state transitions, rather than deriving its domain model from an infrastructure messaging technology' is directly quotable evidence of the file's strong technology-independence constitutional proposal."
+  - "The explicit 'what Step 164 has NOT established' list, naming Kafka/Event Sourcing/CQRS/microservices as all explicitly not required, is directly checkable evidence of the file's disciplined restraint against premature technology commitment."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 165 (Aggregate and Consistency-Boundary Derivation) was ever actually delivered, and what aggregate-boundary determinations it produced for Evidence/Knowledge/Determination/Decision/Authorization/Action."
+  - "Whether the provisional twenty-one-event taxonomy is ever finalized or explicitly revised in a later step."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers a rigorous, disciplined domain-event derivation methodology with three foundational non-collapse distinctions (Command≠Event, Event≠State, Event≠Relationship) and an explicit derivation rule preventing naive event-per-verb modeling. Delivers a provisional twenty-one-event taxonomy, a precise naming rule, and 'domain signal versus technical noise' as a concrete event-explosion-prevention criterion. Delivers a strong, explicitly proposed constitutional principle maintaining technology independence (no Kafka/Event-Sourcing/CQRS/microservices requirement), directly extending the arc's established anti-over-modeling discipline into event modeling."

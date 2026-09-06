@@ -1,0 +1,59 @@
+sequence: 1053
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-289/01-dependency-graph.md
+title: "01 -- Dependency Graph (Step 289 mandate §3): The Written Formalization of the Already-Executed Dependency Graph and Bootstrap-Cut Result, Adding a Genuinely Useful Six-Way Dependency Classification Distinguishing Hard Blockers From Merely Derivable Prerequisites"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the first numbered artifact in the step-289 package, the written formalization of files 1049-1052's already-executed dependency-graph analysis"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1053
+importance: normal
+confidence: high
+about: >
+  "01 — Dependency Graph (mandate §3)," the written formalization of the already-executed 27-node, 42-edge
+  dependency graph and minimal-cut result (files 1049-1052), presented as a full edge-citation table matching
+  the script's edges exactly, with the same audit note explaining the removed `K→≡_𝒯` spurious edge.
+
+  **Delivers a genuinely useful new organizing taxonomy, §16 "Dependency ≠ Blocker,"** classifying all 27
+  nodes into six categories: HARD BLOCKER (`𝒪`,`𝒯`,`𝒪_K`,`≡`,`δ`,`Qualify`); SOFT DEPENDENCY (`policy→δ`,
+  `evidence→canonicalization`); DERIVABLE PREREQUISITE (`≈`,`congruence`,`minimality`,`bindings`,
+  `canonicalization`,`merge`,`invariants`,`sufficiency` -- eight nodes that follow automatically once upstream
+  decisions are made, matching the already-tracked `DERIVED_ONLY` set from files 1049-1052); GOVERNANCE
+  PREREQUISITE (`Π`,`id_context`,`assertion`,`temporal`); IMPLEMENTATION PREREQUISITE (`state_rep`,`=`,
+  `projection`); DOCUMENTATION DEPENDENCY (the already-tracked `≅`/`≡` glyph overloading). Closes: "Not every
+  dependency is inflated into a blocker: 8 of 27 nodes are derivable prerequisites" -- a disciplined caution
+  against treating the whole dependency graph as uniformly blocking, when in fact a third of it will resolve
+  automatically once the hard blockers (and especially `equiv`, per file 1052's capstone result) are settled.
+introduces:
+  - concept: "The six-way dependency classification (hard blocker / soft dependency / derivable prerequisite / governance prerequisite / implementation prerequisite / documentation dependency) for all 27 nodes in the Step-289 dependency graph"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked RESOLVABLE/DERIVED_ONLY node partition (files 1049-1052)"
+    refinement: "FURTHER SUBDIVIDED into six finer categories, distinguishing hard blockers from softer dependencies and prerequisites of different kinds"
+contradicts: []
+repeats:
+  - "Substantially repeats the edge list and audit note already documented via files 1049-1052; this file's distinctive contribution is the six-way dependency taxonomy."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the six-way dependency classification (hard blocker/soft dependency/derivable prerequisite/governance prerequisite/implementation prerequisite/documentation dependency) as a directly reusable organizing scheme for the Step-289 dependency graph's 27 nodes."
+anchor_test:
+  anchor: "This reconstruction's already-tracked dependency-graph and minimal-cut findings (files 1049-1052)"
+  supports_dimension: "Adds a finer six-way organizing taxonomy to the already-established graph structure"
+  refines_or_contradicts: "refines (subdivides) prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The edge list is directly checkable against files 1049-1052's own already-documented script and execution output for exact one-to-one correspondence."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Substantially formalizes the already-executed dependency graph and minimal-cut result (files 1049-1052) with a genuinely useful but incremental six-way dependency taxonomy. Classified importance normal given its consolidating character; confidence high given direct correspondence to the already-verified executable evidence."

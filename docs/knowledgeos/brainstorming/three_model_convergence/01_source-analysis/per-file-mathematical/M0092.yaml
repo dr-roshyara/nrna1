@@ -1,0 +1,100 @@
+sequence: M0092
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-131749_hpa-supervisory-ruling-linga-yoni-complete-research-framework.md
+title: "HPA Supervisory Ruling: Linga-Yoni Hypothesis -- Complete Research Framework: Formally Accepts the Linga-Yoni Triad as a Research Hypothesis (Not Architecture), Rejects Kernel=Linga/Offspring=Knowledge/Offspring=Truth/Reconciliation=Orgasm, Commissions the Model A/B/C Test as 'STEP 282 -- LINGA-YONI TRIAID EMPIRICAL TEST', Renames M0090's Test Targets as Five Formal Hypotheses LY-H1-H5 With Matching Falsification Tests LY-T1-T5 -- BUT ALSO REJECTS 'Closure = Temporal Event', DIRECTLY CONTRADICTING M0091's Own Immediately-Preceding Verdict and the Corpus's Established M0073-M0080 Closure-as-Event Finding"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: x
+  secondary_note: "the formal 'HPA Supervisory Ruling' capstone consolidating M0090's decisive-experiment proposal and M0091's corrections into a single accepted research framework (Status: ACCEPTED AS RESEARCH HYPOTHESIS, not canonical architecture) -- restates the Linga/Yoni/Offspring formalization, the Model A/B/C comparison, and a rejection table, but contains a significant, apparently unnoticed internal contradiction: it rejects 'Closure = Temporal Event' ('Closure is a condition, not necessarily an event'), directly reversing M0091's own verdict table one document earlier ('Closure = temporal event -- [EXP] Supported by prior experiment') and the corpus's firmly established closure-as-event-not-state finding from M0073/M0074/M0076/M0078/M0080"
+source_role: ADJUDICATION
+canonical_source: M0092
+importance: high
+confidence: high
+about: >
+  Issues a formal ruling accepting the Linga(Initiation)->Yoni(Transformation)->Offspring
+  (Emergence) triad as a research hypothesis, explicitly NOT canonical architecture, governed by
+  "Hypothesis -> Test -> Falsify -> Revise." Restates the Linga/Yoni functional separation table
+  (Linga: Initiation/Differentiation/Proposal/Projection; Yoni: Reception/Relation/Challenge/
+  Assessment/Reconciliation/Transformation, mutually exclusive by construction), the formal
+  functions L_t(K_t,Q_t)->P_t and Y_t(P_t,E_t,H_t,C_t,S_t,R_t)->O_t, and the composite equation
+  K_{t+1} = Offspring(Yoni(Linga(K_t,Q_t),E_t,H_t,C_t,S_t,R_t)).
+
+  **RENAMES M0090's IMPLICIT TEST TARGETS AS FIVE FORMAL HYPOTHESES (LY-H1-LY-H5)** with matching
+  named falsification tests (LY-T1-LY-T5) and, for LY-T1, a fully worked empirical protocol
+  (Setup/Execute/Measure/Pass-if/Fail-if pseudocode) -- operationalizing M0090/M0091's decisive
+  experiment considerably more concretely than either predecessor.
+
+  **REJECTS**, in a formal table: Kernel=Linga (too strong; Linga is one function among many),
+  Offspring=Knowledge, Offspring=Truth, Reconciliation=Orgasm (reconciliation is a process, not an
+  event), and Lord-Lens=Linga's-vision (Lord is an independent lens) -- consistent with M0090/
+  M0091's already-established positions.
+
+  **SIGNIFICANT INTERNAL CONTRADICTION -- FLAGGED, NOT SILENTLY RESOLVED**: this same rejection
+  table also rejects "Closure = Temporal Event," reasoning "Closure is a condition, not necessarily
+  an event." This DIRECTLY REVERSES two things: (1) M0091's own verdict table, produced one
+  document earlier in this exact sub-thread, which explicitly lists "Closure = temporal event --
+  [EXP] Supported by prior experiment"; and (2) the corpus's firmly established closure-as-event-
+  not-state finding, confirmed across M0073, M0074, M0076, M0078, and M0080 (culminating in M0080's
+  "closure-as-state is refuted by revision, while closure-as-event survives as a historical fact").
+  This document's own rejection appears to conflate "Closure" (the historically-persistent
+  ClosureEvent) with "Closed(K_t,Q)" (the revisable current-state predicate, per M0080's own
+  distinction) -- i.e. it may be correctly rejecting "closure is a permanent condition" while
+  mislabeling the rejected claim as "temporal event," when the established result is precisely the
+  opposite: closure-as-CONDITION/STATE is what gets refuted by revision, while closure-as-EVENT is
+  what persists. If so, this is a labeling/terminology slip rather than a genuine substantive
+  reversal, but as stated the document's own text asserts the opposite of the corpus's established
+  position and must be recorded as an unresolved tension for the reclassification pass to
+  adjudicate, not corrected here.
+
+  **COMMISSIONS "STEP 282 -- LINGA-YONI TRIAID EMPIRICAL TEST"**: names the Model A/B/C comparison
+  test using a main-corpus-style "STEP" numbering convention (distinct from this reconstruction's
+  own M-sequence numbering), with an explicit objective, method (implement Models A/B/C, generate
+  adversarial cases, compare distinguishability, record results), and success/failure criteria
+  matching M0091's decisive question. The "STEP 282" label is itself a new potential cross-
+  lineage/naming-collision candidate: it is unclear whether this refers to an actual main-corpus
+  Step 282 or is a locally-invented step number specific to this KR-SIM sub-thread.
+
+  Closes with the explicit final statement: "The Linga-Yoni hypothesis is now: Not architecture.
+  Not canonical. Not proven. A research hypothesis to be tested," governed by "Do not declare. Do
+  not assume. Test. Falsify. Revise." -- exemplary closing discipline, undermined only by the
+  Closure-as-event/condition contradiction noted above.
+introduces:
+  - concept: "Five formally named hypotheses LY-H1 (Initiation vs transformation distinguishability) through LY-H5 (cycle necessity), each with a matching named falsification test LY-T1-LY-T5"
+  - concept: "A fully worked empirical test protocol for LY-T1 (Setup/Execute/Measure/Pass-if/Fail-if), the first such concrete protocol in this specific sub-thread"
+  - concept: "The 'STEP 282 -- LINGA-YONI TRIAID EMPIRICAL TEST' commissioning label, using main-corpus-style Step numbering -- a new naming-collision/cross-lineage candidate, not yet verified against the actual main corpus"
+defines: []
+refines:
+  - concept: "M0090's KR-LINGA-YONI-2026-09-02 protocol and M0091's three-competing-models design, here formally accepted and operationalized as a commissioned test"
+contradicts:
+  - concept: "M0091's own immediately-preceding verdict ('Closure = temporal event -- [EXP] Supported by prior experiment') and the corpus's established closure-as-event-not-state finding (M0073, M0074, M0076, M0078, M0080) -- this document instead rejects 'Closure = Temporal Event,' an apparent unresolved terminology slip or genuine reversal, flagged for the reclassification pass"
+repeats:
+  - concept: "M0090/M0091's Linga/Yoni/Offspring formalization and rejection of Kernel=Linga/Offspring=Knowledge/Offspring=Truth/Reconciliation=Orgasm"
+bridge_candidates:
+  - concept: "The 'STEP 282' commissioning label -- candidate cross-lineage bridge to verify whether an actual main-corpus Step 282 exists and, if so, whether its content matches this document's Linga-Yoni empirical test"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0092 as the formal HPA Supervisory Ruling accepting the Linga-Yoni triad as a research hypothesis (not architecture), formalizing five hypotheses LY-H1-H5 with matching tests LY-T1-T5 and a worked LY-T1 protocol, commissioning 'STEP 282' as the empirical test -- while flagging a significant, apparently unresolved internal contradiction: this document rejects 'Closure = Temporal Event,' directly reversing M0091's own immediately-preceding verdict and the corpus's established M0073-M0080 closure-as-event-not-state finding."
+anchor_test:
+  anchor: "M0090's decisive-experiment proposal, M0091's three-competing-models refinement, and the corpus's established closure-as-event-not-state finding (M0073-M0080)"
+  supports_dimension: "Formalizes and operationalizes M0090/M0091's protocol into a commissioned test with a worked falsification protocol; simultaneously introduces an apparent unresolved contradiction with the corpus's own established closure finding"
+  refines_or_contradicts: "refines (M0090, M0091); contradicts (M0091's own verdict table and M0073/M0074/M0076/M0078/M0080's closure-as-event finding)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Part 2's rejection table lists 'Closure = Temporal Event | Closure is a condition, not necessarily an event' -- this is the OPPOSITE of M0080's own confirmed finding ('closure-as-state is refuted by revision, while closure-as-event survives as a historical fact') and of M0091's verdict one document earlier ('Closure = temporal event -- [EXP] Supported by prior experiment')."
+  - "The worked LY-T1 protocol (Setup/Execute/Measure/Pass-if P0!=O0 and Initiation-function!=Transformation-function/Fail-if P0=O0) is the first fully concrete empirical test procedure in this specific Linga-Yoni sub-thread, a genuine operationalization advance over M0090/M0091's purely descriptive designs."
+undefined_concepts:
+  - "Whether 'STEP 282' refers to an actual main-corpus Step or is a sub-thread-local invention -- not verified in this pass"
+  - "Whether the Closure=Temporal-Event rejection is a genuine substantive reversal of the corpus's established position or a terminology slip conflating Closed(K_t,Q) (state, correctly rejected as permanent) with ClosureEvent(t,...) (event, correctly NOT rejected per M0080) -- left unresolved here"
+open_questions:
+  - "Whether 'STEP 282 -- LINGA-YONI TRIAID EMPIRICAL TEST' was ever actually executed, and if so with what result for LY-H1-LY-H5."
+  - "Whether the Closure=Temporal-Event contradiction noted here was ever caught and corrected elsewhere in the corpus, or whether it stands as a genuine, unresolved internal inconsistency to be adjudicated in the eventual global-reclassification pass."
+tier2_triggered: true
+tier2_reason: "Formalizes and operationalizes the Linga-Yoni research programme with a concrete empirical test protocol and a commissioned experiment, and -- more importantly -- surfaces a significant, apparently unresolved internal contradiction with the corpus's own established closure-as-event finding, directly reversing the verdict of the immediately preceding document (M0091) in the same sub-thread. This contradiction is exactly the kind of corpus-integrity finding this reconstruction's discipline requires flagging rather than silently resolving."

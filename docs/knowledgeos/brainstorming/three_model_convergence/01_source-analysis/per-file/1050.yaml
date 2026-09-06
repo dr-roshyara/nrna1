@@ -1,0 +1,55 @@
+sequence: 1050
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-289/exec/t289_bootstrap_v2.py
+title: "t289_bootstrap_v2.py -- A Self-Correcting Revision of File 1049's Dependency Graph, Removing One Spurious 'Definitional Artifact' Edge (K to equiv_T) That Created a False Two-Cycle With Its Own Definitional Converse"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a self-correcting revision of file 1049's dependency-graph script, removing one edge identified as a definitional artifact"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1050
+importance: normal
+confidence: high
+about: >
+  A revised version of file 1049's `t289_bootstrap.py`, explicitly titled "(v2, definitional artifact
+  removed)." The only substantive change: removes the edge `("K","equiv_T","K is proposed as a quotient of
+  histories","CORPUS 258.12/260")` while retaining its converse `("equiv_T","K","the quotient IS the
+  state","CORPUS 258.12")`. This eliminates a spurious two-node cycle (`K↔equiv_T`) that was an artifact of
+  stating the same DEFINITIONAL identity (`K` is defined AS the quotient `equiv_T`) as two directed edges
+  instead of one -- a genuine, disciplined self-correction to the graph's edge-audit discipline ("A and B are
+  mentioned together is NOT an edge" extended here to "a definition is not two dependencies"). All other
+  edges, the cycle-detection algorithm, the RESOLVABLE/DERIVED_ONLY partition, and the minimal-cut search
+  logic are unchanged from file 1049.
+introduces:
+  - concept: "The disciplined removal of a spurious definitional-identity two-cycle (K and equiv_T) from the Step-289 dependency graph, refining the edge-audit discipline to exclude definitional restatements counted as bidirectional dependencies"
+defines: []
+refines:
+  - concept: "File 1049's forty-one-edge dependency graph"
+    refinement: "CORRECTED to forty edges, removing one spurious definitional-artifact edge (K to equiv_T) that created a false two-cycle with its own converse"
+contradicts: []
+repeats:
+  - "Nearly identical to file 1049's script, differing only in the removal of one edge and the corresponding title annotation; full analysis of the shared structure remains under canonical_source 1049."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the disciplined removal of the spurious K-equiv_T definitional two-cycle in the Step-289 dependency graph's v2 revision."
+anchor_test:
+  anchor: "File 1049's dependency graph"
+  supports_dimension: "Corrects one spurious edge in file 1049's graph"
+  refines_or_contradicts: "refines (corrects) file 1049's graph"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Direct diff against file 1049's script confirms the single edge removal and title change; all other content is identical."
+undefined_concepts: []
+open_questions:
+  - "Whether this v2's execution results differ meaningfully from v1's, given the removed edge was part of a two-cycle rather than a longer cycle -- pending the saved execution output."
+tier2_triggered: false
+tier2_reason: "A minor, disciplined self-correction removing one spurious definitional-artifact edge from file 1049's dependency graph, with all other structure unchanged. Classified importance normal given its narrow, corrective scope; confidence high given the direct, verifiable diff against file 1049."

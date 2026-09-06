@@ -1,0 +1,74 @@
+sequence: M0155
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180004_extraction-reiter-knowledge-in-action-SOURCE.md
+title: "EXTRACTION: Knowledge in Action (Reiter, 2001) — SOURCE"
+date: "20260902-180004"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: EXTERNAL_LITERATURE
+  secondary_note: >
+    RESOLVES M0145's flagged unlocated source: this is the Reiter Situation Calculus extraction
+    M0145 reviewed. Also underlies M0146's "FINAL DERIVATION" content. Covers foundational situation-
+    calculus axioms, the frame problem/successor-state axioms, regression, basic action theories,
+    Golog (including Reactive Golog/RGolog interrupts and stGolog stochastic actions/MDP), knowledge
+    and sensing, and progression/STRIPS.
+source_role: PRIMARY
+canonical_source: M0155
+importance: high
+confidence: high
+about: >
+  The full extraction underlying both M0145 (review) and M0146 (formal derivation), giving the
+  situation calculus's complete formal apparatus. Introduces two mechanisms not covered in either
+  M0145 or M0146's summaries: Reactive Golog (RGolog) condition-action interrupts with DoR semantics,
+  and stGolog stochastic actions with Markov-Decision-Process value functions.
+introduces:
+  - "Reactive Golog (RGolog): condition-action rules φ→α compiled to (πx)[φ(x)?;α(x)], with an n-rule interrupt procedure and DoR semantics interleaving program execution with rule-triggered interrupts/exogenous actions — genuinely new content not present in M0145's or M0146's own summaries of this source"
+  - "stGolog stochastic actions and MDP apparatus in full: choice(β,a) abbreviating nature's stochastic outcomes, prob(a,β,s) as a probability-of-outcome predicate, stDo as the stochastic program-execution relation, probF(ψ,γ) as sentence probability via summation over (probability,situation) pairs, value(do(a,σ))=value(σ)+reward(a,σ)-cost(a,σ), and eValue(γ) as expected value over initial-state distribution and stochastic execution — the full formal detail behind M0145's brief 'probability and MDPs should NOT be theory-core' recommendation"
+  - "The Precondition Interaction Problem for concurrent actions: Poss(startMoveLeft,s)≡¬movingLeft(s) and Poss(startMoveRight,s)≡¬movingRight(s) can each individually hold while their conjunction (concurrent execution) should be impossible — 'the converse of the foundational axiom need not hold' — a subtlety not mentioned in M0145/M0146's concurrency coverage"
+  - "The Natural-World Assumption (all actions are natural) with a determinism theorem: executable(do(c,s))∧executable(do(c',s))∧NWA⊃c=c' — natural-world evolution is provably deterministic"
+  - "Progression's formal definition and its key limitation theorem: progression is NOT always first-order definable; finite progression is SECOND-ORDER definable — a precision not present in M0145/M0146's informal progression discussion"
+defines: []
+refines:
+  - "Confirms and completes the source content M0145 and M0146 both drew on — its own §11.1 table repeats the exact overreach claims M0145's adjudication rejected: 'Sat: Entailment K_t⊨Content(r)', 'Zero: Complete knowledge under closed-world assumption', 'Contr: Knowledge of contradictions; inconsistency detection' — confirming M0145's corrections were targeted at real claims in this document, not a strawman (the same extraction→adjudication confirmation pattern already seen for M0149/M0147 on Williamson)"
+contradicts: []
+repeats:
+  - "Successor-state axioms, the frame problem, the Do-macro composition algebra (sequence/choice/iteration/test), the Regression Theorem, basic action theory structure, knowledge/sensing accessibility apparatus, and natural/concurrent actions — all already recorded in full formal detail at M0145 and M0146; this document is their common source, not new analysis"
+bridge_candidates:
+  - "Whether RGolog's interrupt/exogenous-action mechanism (DoR semantics) is ever taken up as a candidate for KnowledgeOS's own event-origin/governance research (EventOrigin∈{Agent,System,External,Natural,Scheduled}, flagged at M0145) — not addressed in either M0145 or M0146"
+  - "Whether the stGolog/MDP apparatus (probF, value, eValue) is ever revisited given M0145's explicit deprioritization of probability/MDP work"
+mathematical_content: >
+  States the full situation-calculus foundational axioms (unique names, second-order induction,
+  subhistory), effect-axiom normal forms and the causal-completeness/explanation-closure axioms
+  underlying the successor-state-axiom derivation, the Regression Theorem, the Do-macro definitions
+  (including the second-order iteration fixpoint), the K-fluent successor-state axiom with
+  accessibility-property/introspection correspondences (reflexivity=truth, transitivity=positive
+  introspection, Euclidean=negative introspection), the Dynamic Closed-World Assumption closure
+  formula, RGolog's DoR semantics, and the full stGolog/MDP probability and value apparatus — all
+  Reiter's established formalism, not new derivations by this extraction.
+gita_content: null
+kernel_content: >
+  Completes this reconstruction's picture of the situation-calculus source underlying the
+  dynamic-lane research (M0145, M0146), adding two previously-unrecorded mechanisms (RGolog
+  interrupts, stGolog/MDP) that neither adjudicating document discussed in formal detail.
+registry_updates:
+  - "RESOLVES M0145's flagged unlocated Reiter source"
+  - "Introduces RGolog/DoR interrupt semantics and the full stGolog/MDP apparatus as content not covered in either M0145's review or M0146's derivation"
+anchor_test:
+  anchor: false
+  supports_dimension: "Resolves M0145's unlocated source; introduces RGolog and stGolog/MDP detail not previously recorded"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Sat | Entailment: K_t⊨Content(r)\" / \"Zero | Complete knowledge under closed-world assumption\" / \"Contr | Knowledge of contradictions; inconsistency detection\" (§11.1) — the exact overreach claims M0145's adjudication rejected, now confirmed present in the source"
+  - "\"executable(do(c,s)) ∧ executable(do(c',s)) ∧ NWA ⊃ c=c'\" — the natural-world determinism theorem, new detail"
+  - "\"Progression is not always first-order definable. Finite progression is second-order definable.\" — precision on progression's limits"
+undefined_concepts: []
+open_questions:
+  - "Is RGolog's interrupt mechanism ever connected to KnowledgeOS's own EventOrigin/governance research?"
+tier2_triggered: false
+tier2_reason: null

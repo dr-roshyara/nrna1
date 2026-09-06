@@ -1,0 +1,71 @@
+sequence: 1081
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/02_observation-inventory.md
+title: "02 -- Observation Inventory (Step 291 mandate SS6): Delivers the Sharpest Single Finding of the Entire O_K Closure Arc -- the Corpus's OWN Two Load-Bearing Observations (TraceOrigin, ExplainRevision, Used as the Corpus's Own Congruence Counterexample and the Basis for Decision 3's Decidability) Are Themselves UNTYPED and UNREGISTERED"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the second numbered Step-291 prose artifact, delivering the sharpest concrete evidence yet for the O_K-closure arc"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1081
+importance: critical
+confidence: high
+about: >
+  "02 — Observation Inventory (mandate §6)." Assembles the strongest corpus-supported inventory of ten
+  candidate observations (`TraceOrigin(x)`, `ExplainRevision(x)`, `Assess(K,x)`, `Authorize(...)`,
+  `Compare(P_1,P_2,C,Ω)`, `orphan`, `circular_dependency`, `Lineage`, the five `Σ`-axis readings already-
+  tracked as `≈_X`'s components (file 1068), and `deg_ℛ`/graph queries across `G_I`/`G_K`/`G_P`), each scored
+  for locus, kind, typing, and evidence of permitted-observation status. Reconfirms the already-tracked case-
+  C/schema-at-E classification (files 1076/1079) with the disciplined why-not-A/B/D reasoning restated.
+
+  **DELIVERS THE SHARPEST, MOST CONCRETE SINGLE FINDING OF THE ENTIRE `𝒪_K`-CLOSURE RESEARCH ARC (files
+  1052, 1063-1080)**: "The strongest single fact in this inventory: the two observations the corpus actually
+  USES TO DO WORK -- `TraceOrigin` AND `ExplainRevision` -- appear ONLY as counterexample devices in
+  `258.15`/`258.16`. THEY ARE UNTYPED, UNREGISTERED, AND LOAD-BEARING. They are what make Decision 3's
+  technical half DECIDABLE IN PRINCIPLE (`258.31`), and they are NOT IN ANY REGISTRY." Boxed capstone: "THE
+  OBSERVATION UNIVERSE IS NOT MERELY UNCLOSED. ITS TWO WORKING MEMBERS ARE UNREGISTERED." This is a genuinely
+  striking result that sharpens every already-tracked abstract statement about `𝒪_K`'s openness (files 1052,
+  1076, 1079) into a concrete, damning observation: the corpus's own arguments already DEPEND on specific
+  observations to do real epistemic work, yet those exact observations have never been formally typed or
+  entered into any registry.
+
+  Confirms the STATUS block's quantified measurement: "0 of 10 [candidate observations] are declared
+  PERMITTED by the corpus; 2 of 10 are load-bearing and unregistered." Closes with an honest open admission:
+  "UNKNOWN whether kinds 2/3 [Assess, Authorize] count as observations" -- directly connecting to file 1078's
+  already-tracked "equality-dependence wider than 𝒯" finding by leaving the observation-status of `Assess`/
+  `Authorize` explicitly unresolved.
+introduces:
+  - concept: "The sharpest concrete finding of the entire O_K-closure arc: the corpus's own two load-bearing, actually-used observations (TraceOrigin, ExplainRevision) -- which make Decision 3's technical half decidable in principle -- are themselves untyped and absent from any registry"
+  - concept: "The precise quantified measurement that 0 of 10 candidate observations are declared permitted by the corpus, while 2 of 10 are load-bearing and unregistered"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked O_K-openness and closure-classification findings (files 1052, 1076, 1079)"
+    refinement: "SHARPENED from an abstract closure statement into a concrete, damning finding: the corpus's own arguments already depend on two specific, unregistered, untyped observations to do real epistemic work"
+contradicts: []
+repeats:
+  - "Reconfirms the already-tracked case-C/schema-at-E observation-universe classification (files 1076, 1079) with restated why-not-A/B/D reasoning."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the sharpest concrete finding of the entire O_K-closure arc -- the corpus's own load-bearing observations (TraceOrigin, ExplainRevision) are untyped and unregistered despite doing real epistemic work -- and the quantified measurement that 0 of 10 candidate observations are declared permitted."
+anchor_test:
+  anchor: "This reconstruction's already-tracked O_K-openness and closure-classification findings (files 1052, 1076, 1079)"
+  supports_dimension: "Sharpens these abstract findings into a concrete, striking result: the corpus's own load-bearing observations are themselves unregistered and untyped"
+  refines_or_contradicts: "refines (concretizes) the prior tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The TraceOrigin/ExplainRevision unregistered finding is directly checkable against 258.15/258.16 and 258.31's already-implied Decision-3 dependency for exact verification."
+undefined_concepts:
+  - "Whether Assess and Authorize count as observations -- explicitly flagged UNKNOWN by this file's own STATUS block."
+open_questions:
+  - "Whether TraceOrigin and ExplainRevision are ever formally typed and registered in a later corpus artifact."
+tier2_triggered: true
+tier2_reason: "Delivers the sharpest, most concrete single finding of the entire O_K-closure research arc: the corpus's own load-bearing observations (TraceOrigin, ExplainRevision), which make Decision 3's technical half decidable in principle, are themselves untyped and absent from any registry. Classified importance critical and confidence high given the striking, well-evidenced, and directly-connective nature of this finding."

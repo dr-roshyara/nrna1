@@ -1,0 +1,240 @@
+sequence: 628
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-104043_step-047-epistemic-control-self-correction-feedback-safety-and-prevention-of-knowledgeos-self-dec.md
+title: "The Corpus's Anti-Self-Deception Layer — the Self-Referential Learning Problem Formalized (Policy-Induced Distribution Shift, 'the Data-Generating Process Is Not Independent of the Decision System'); 'Learning Convergence≠Truth' and the Named Danger of Being 'Stable AND Wrong'; a New 'Epistemic Firewall' Concept Preventing Unvalidated Learning From Reaching Critical Decisions; a Five-Stage Knowledge Maturity State Machine (Raw→Candidate→Validated→Trusted→Operational, With Formal Demotion to Questioned/Invalidated); 'No Irreversible Confidence Inflation' and the Named 'Epistemic Hysteresis' Failure Mode; the Central Principle 'KnowledgeOS Must Not Be the Sole Authority for Validating Its Own Critical Knowledge'; Meta-Learning Explicitly Flagged as 'Powerful but Dangerous' and Requiring Governance; Verdict 'STEP 47 — PASS'; Opens Step 48 (Global Invariants, Formal System Properties, Compositional Verification and KnowledgeOS Correctness) — the Explicit Beginning of the Move Toward a KnowledgeOS Formal Specification"
+date: "2026-08-28"
+bytes: 22165
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 47 -- Epistemic Control, Self-Correction, Feedback Safety and Prevention of KnowledgeOS Self-Deception', opened cleanly at what the file itself calls a continuation from 'Step 46', and delivers the substantive content that the 0627 stub only announced -- CONFIRMS the tracked corpus-integrity observation raised at 0627"
+source_role: PRIMARY_RESEARCH
+canonical_source: 628
+importance: critical
+confidence: high
+about: >
+  **RESOLVES, IN PART, THE CORPUS-INTEGRITY OBSERVATION RAISED AT 0627**: this file opens by explicitly
+  summarizing "Step 45 established governed learning... Step 46 established the problem of learning
+  stability: a system that learns from its own outputs can amplify its own mistakes" -- treating the single-
+  sentence characterization of Step 46 (essentially identical to 0627's stub content) as sufficient
+  acknowledgment, then proceeds to deliver the FULL substantive treatment of self-correction, feedback
+  safety, and epistemic control under the title **"Step 47."** This suggests either that Step 46 was always
+  intended as a brief one-paragraph pivot rather than a full step (in which case 0627's anomalously small
+  size is less alarming than initially assessed, though still a directly observable structural outlier
+  relative to every other step in the plain-numbered sequence), or that the true Step-46 content was lost
+  and this file silently absorbed its intended scope under a renumbered title. Either way, **the promised
+  substantive treatment of learning stability, self-correction, feedback safety, and epistemic control IS
+  delivered here**, resolving the practical open question (though not the strict numbering-integrity
+  question) raised at 0627.
+
+  Opens by posing the deeper architectural question: **"How can KnowledgeOS learn from itself without
+  becoming an epistemic closed loop?"** -- explicitly framed as "not merely an AI problem" but "a
+  mathematical, statistical, architectural, and governance problem." **Delivers the file's foundational
+  formal deliverable -- the self-referential learning problem, precisely diagnosed**: `K_t→Decision_t→
+  Outcome_t→K_{t+1}` appears healthy, but "the system's own assumptions influenced the evidence it later
+  observes," formalized as Self-generated evidence and a Confirmation loop
+  (`Belief→Action→Observation→BeliefStrengthening`), worked through a concrete engineering example
+  (`Architecture_A` recommended based on a belief that it reduces incidents; most new projects then adopt
+  it; observed incident reduction may actually stem from `NewProjects` having better general engineering
+  practices) -- **directly and substantively connecting 0624's (Step 43) confounding machinery specifically
+  to self-referential learning**, demonstrating that "the system has now strengthened its own causal
+  hypothesis using data influenced by its own policy."
+
+  **Delivers the file's second central formal deliverable -- Policy-induced distribution shift, formalized
+  as fundamental**: the system's own policy `π_t` changes the distribution of future observations
+  (`P(O_{t+1}|π_t)`), meaning **the data-generating process is not independent of the decision system**,
+  yielding a formal Closed-loop learning structure (`Policy→Data→Model→Policy`) explicitly requiring
+  stability analysis.
+
+  Delivers formal Epistemic stability (`M_{t+1}=L(M_t,D_t)`, aiming for `M_t→M*` or an acceptable region)
+  with the crucial caution **`Learning convergence≠Truth`** -- a system can converge to a wrong model.
+  **Delivers the named danger of being "Stable AND Wrong"**, explicitly described as "worse than obvious
+  instability because it may appear trustworthy," formalizing `Stability(M)` and `Validity(M)` as two
+  genuinely separate properties (`Stability=True` while `Validity=False` is possible).
+
+  **Delivers the file's third central formal deliverable -- External epistemic anchors, formally defined
+  and required for critical knowledge**: `Anchor(A)` as evidence/validation whose epistemic generation is
+  sufficiently independent of the system's current belief/policy, explicitly reconfirming 0622's
+  `Human-in-the-loop≠Independent human validation` principle (a human merely reviewing an AI conclusion
+  creates dependency; genuine independence requires `Human→SourceEvidence` directly). Delivers Anchor
+  diversity requirements (`AnchorSet={A_1,...,A_n}`, not sharing a hidden common source) and **Common-mode
+  epistemic failure**, directly reconfirming the corpus's established `CommonCause` discipline (0592, 0617,
+  0622, 0625) now applied specifically to epistemic anchors: **`EpistemicRedundancy≠NumberOfOpinions`** --
+  true redundancy requires diversity of source, method, model, measurement, and reasoning path.
+
+  Delivers the Champion/Challenger pattern (0626) extended into Adversarial review -- the challenger's role
+  is explicitly to ask "what would falsify the current conclusion?" rather than "can I support the current
+  conclusion?", formalized as `FalsificationPressure` and a deliberate resource allocation
+  (`Budget_falsification`) reserved specifically to attempt disproof of the preferred hypothesis for
+  critical decisions. Delivers Bayesian downward belief revision explicitly required
+  (`P(H|E,E^-)` can and should decrease under contradictory evidence `E^-`), formalized as
+  **`No irreversible confidence inflation`** -- `Confidence_{t+1}≥Confidence_t` regardless of evidence is
+  explicitly rejected as unacceptable. **Delivers a named failure mode -- Epistemic hysteresis**: excessive
+  persistence where confidence barely moves (`0.99→0.98`) despite genuinely contradictory evidence,
+  explicitly flagged as potentially statistically unjustified, requiring the update mechanism to have
+  explicit responsiveness.
+
+  Delivers a formal learning-rate treatment (`θ_{t+1}=θ_t+α_tΔ_t`, too-large `α_t` causing oscillation,
+  too-small causing sluggish adaptation), immediately and importantly qualified: **`KnowledgeOS is not
+  merely gradient descent`** -- some revisions are symbolic (`Rule_A→Rule_B`), others probabilistic
+  (`P(H)→P(H|E)`), others structural (`Graph_t→Graph_{t+1}`), requiring the architecture to support
+  heterogeneous learning operators (`L_Bayes, L_Stat, L_Rule, L_Graph, L_Human`), each with different
+  guarantees. Delivers Learning provenance (`LearningMethod` recorded per update,
+  `K_t→^{Evidence,Method,Policy}K_{t+1}` fully auditable).
+
+  **Delivers the file's fourth central formal deliverable -- Meta-learning explicitly flagged as "powerful
+  but dangerous"**: `L_{t+1}=MetaLearn(L_t,Experience)` introduces genuine second-order self-reference (the
+  learning mechanism itself evolving), requiring `LearningPolicy` itself to be governed -- **"an AI agent
+  should not silently change the rules by which its own knowledge is updated,"** directly and explicitly
+  extending 0623's/0626's AI-agent-boundary discipline into the meta-learning domain specifically. Delivers
+  the Frozen learning core concept for high-criticality systems (the learning mechanism itself remains
+  fixed; only parameters/knowledge content adapt -- `StableLearningMechanism+AdaptiveKnowledge`) and
+  Controlled adaptation via `Validation→Approval→VersionPromotion`, explicitly paralleling 0626's model-
+  promotion lifecycle. Delivers a Safe learning architecture pipeline requiring `Support` and `Falsify` to
+  coexist at every candidate-learning stage.
+
+  Delivers Exploration-vs-exploitation with an explicit epistemic-exploration policy
+  (`a^*=argmax_a[ExpectedDecisionValue(a)+λ·InformationGain(a)]` subject to `Safety(a)=True`), and the
+  important, precisely worded safety-first discipline: **"KnowledgeOS must not say 'this experiment would
+  teach us a lot, therefore perform it'"** -- `InformationGain` is explicitly subordinate to `SafetyPolicy`.
+
+  **Delivers the file's fifth central formal deliverable, a genuinely important new named architectural
+  concept -- the `EpistemicFirewall`**: a formal boundary preventing `UnvalidatedLearning` from directly
+  influencing `CriticalDecisions`. Delivers a five-stage Knowledge maturity lifecycle
+  (`Raw→Candidate→Validated→Trusted→Operational`), with `Candidate≠Trusted` and a formal `Promote(K)` gate
+  (`Evidence∧Validation∧Scope∧Freshness∧NoCriticalConflict`). **Delivers a complete Knowledge state machine
+  including formal Demotion** (`Trusted→Questioned→Invalidated`, plus `Operational→Deprecated`), explicitly
+  described as "essential for self-correction," with `Trusted` explicitly reframed as "a current epistemic
+  state, not a permanent property." Delivers Epistemic debt reconfirmed and generalized (unresolved
+  conflicts, stale claims, unvalidated hypotheses, missing evidence, uncertain mappings) as a queryable,
+  domain-scoped quantity (`EpistemicDebt(K,Context)`), directly extending 0615's/0620's/0625's established
+  debt-concept family.
+
+  Delivers Self-correction formalized precisely: `ErrorDetected⇒CorrectionCandidate`, explicitly never
+  `ErrorDetected⇒AutomaticHistoryRewrite`, directly reconfirming 0626's history-preservation discipline. A
+  Correction loop is given (`Prediction→Observation→ErrorDetection→RootCauseAnalysis→CorrectionCandidate→
+  Validation→Promotion→FuturePrediction`), with Correction quality explicitly requiring its own validation
+  (a correction can itself be wrong), yielding a Recursive validation chain requiring an explicit stopping
+  rule (`MarginalExpectedValue<Cost` and acceptable `DecisionRisk`), directly reconnecting to the corpus's
+  established VOI machinery (0614) to avoid endless revalidation.
+
+  **Delivers the file's sixth central formal deliverable -- the strongest external safeguard, explicitly
+  labeled as such**: `RealityGap_t=Distance(Prediction_t,Observation_t)`, with repeated growth in the
+  reality gap triggering investigation -- "the strongest protection against self-deception is ultimately
+  reality." **Delivers the file's own self-declared strongest principle -- "one of the strongest principles
+  of Step 47"**: **`KnowledgeOS must not be the sole authority for validating its own critical knowledge`**
+  -- an external or independent validation path must exist for critical knowledge, explicitly clarified as
+  not requiring universal human involvement (independence can come from another measurement system,
+  independent test, formal proof, external source, controlled experiment, or a separately designed model
+  -- "human involvement is one possible mechanism, not the only one"). Delivers a formal assurance
+  hierarchy (`Evidence→Validation→IndependentValidation→GovernedPromotion`) and Criticality-dependent
+  learning autonomy (`LowRisk→AutomaticLearning`, `HighRisk→IndependentValidation`,
+  `CriticalRisk→FormalVerification`), together with a major DDD/governance restatement: the learning
+  mechanism belongs to `LearningContext`, risk policy to `GovernanceContext`, and business invariants to
+  the relevant `DomainContext` -- KnowledgeOS coordinates these three without collapsing them into one
+  global model.
+
+  **Delivers twelve labeled falsification experiments (1-12), ALL PASS**: self-strengthened belief from
+  policy-influenced evidence correctly recognized as dependent, not independent, confirmation; convergence
+  to a stable-but-wrong model correctly not treated as correctness; challenger-champion disagreement
+  correctly preserved and investigated rather than silently resolved; confidence correctly permitted to
+  decrease under new evidence; a demoted trusted claim correctly retaining its history rather than being
+  deleted; an unsupported AI hypothesis correctly blocked from becoming operational knowledge without
+  independent evidence; an information-maximizing-but-safety-violating exploration candidate correctly
+  blocked; an accuracy-improving-but-invariant-violating model update correctly rejected for promotion;
+  same-source validation results correctly not counted as independent; a historical decision correctly
+  remaining reproducible via its original knowledge state despite later disproof; policy-induced
+  distribution shift correctly represented explicitly; and simultaneously rising confidence and prediction
+  error correctly flagged by the calibration/reality-gap mechanism as epistemic instability or model
+  failure.
+
+  **Delivers Step 47's verdict — "STEP 47 — PASS,"** establishing a formal foundation for "epistemic
+  control": the system must determine "whether its own learning process remains trustworthy," not merely
+  learn. **Delivers seven core principles** (self-generated evidence is not automatically independent
+  evidence; stable knowledge is not necessarily correct knowledge; confidence must be allowed to decrease;
+  critical knowledge requires independent epistemic anchors; learning must be governed; falsification must
+  be a first-class operation; KnowledgeOS may learn from outcomes but must not use its own conclusions as
+  unquestionable proof of those conclusions).
+
+  Delivers the file's deeper formal structure -- the full closed-loop epistemic system representation
+  `K_t→^{π_t}A_t→^{World}O_{t+1}→^{L_t}K_{t+1}`, with the critical caveat that `O_{t+1}` is not
+  automatically independent of `K_t` -- and a new formal epistemic-state object
+  `E_t=(K_t,π_t,S_t,O_t)` with evolution `E_{t+1}=F(E_t,A_t,O_{t+1})`, explicitly declared "a dynamic
+  epistemic system." Delivers a comprehensive architectural-threshold summary listing every major
+  dimension developed since the corpus's inception (Knowledge, Uncertainty, Identity, Semantics,
+  Provenance, Time, Causality, Decision, Governance, Learning, Self-Correction, Epistemic Control),
+  explicitly described as "a very substantial architecture."
+
+  **Closes by posing the fundamentally mathematical question of global system-wide correctness**: can the
+  combined interaction of `Learning+Causality+Governance+TemporalEvolution+Decision` be shown to preserve
+  its critical invariants, requiring "a global invariant framework." **Opens "Step 48 — Global Invariants,
+  Formal System Properties, Compositional Verification and KnowledgeOS Correctness,"** cleanly, explicitly
+  framed as "the point where we begin moving toward KnowledgeOS Formal Specification," previewing global
+  invariants, local-vs-global correctness, compositional verification, safety/liveness properties,
+  consistency, provenance preservation, temporal correctness, epistemic integrity, and "the possibility of
+  a formal KnowledgeOS correctness contract." No actual code execution reported. No corpus-integrity topic
+  collision detected against any other file besides the partial resolution of 0627's Step-46 anomaly noted
+  above.
+introduces:
+  - concept: "The self-referential learning problem formally diagnosed: a system's own policy influences the evidence it later observes, directly connecting confounding (0624) to self-referential learning specifically"
+  - concept: "Policy-induced distribution shift formalized as fundamental — the data-generating process is not independent of the decision system"
+  - concept: "The named danger of being Stable AND Wrong, with Stability(M) and Validity(M) formalized as two genuinely separate properties — Learning convergence≠Truth"
+  - concept: "No irreversible confidence inflation and the named Epistemic hysteresis failure mode (excessive persistence despite contradictory evidence)"
+  - concept: "Meta-learning explicitly flagged as powerful but dangerous, requiring governed LearningPolicy — extending the AI-agent-boundary discipline into meta-learning specifically"
+  - concept: "The EpistemicFirewall, a new named architectural concept preventing unvalidated learning from directly influencing critical decisions"
+  - concept: "A five-stage Knowledge maturity state machine (Raw→Candidate→Validated→Trusted→Operational) with formal demotion (Trusted→Questioned→Invalidated), Trusted explicitly reframed as a current state, not a permanent property"
+  - concept: "The file's own self-declared strongest principle: KnowledgeOS must not be the sole authority for validating its own critical knowledge"
+defines:
+  - concept: "Anchor(A) (epistemic anchor)"
+    definition: "Evidence or validation whose epistemic generation is sufficiently independent of the system's current belief/policy, required to be operationalized per domain, with diversity of source/method/model/measurement/reasoning path required to avoid common-mode epistemic failure (EpistemicRedundancy≠NumberOfOpinions)"
+  - concept: "Stable AND Wrong"
+    definition: "A learning system can converge to a stable model that is nonetheless incorrect, which is more dangerous than obvious instability because a stable model appears trustworthy — Stability(M) and Validity(M) are formally separate properties that can diverge"
+  - concept: "EpistemicFirewall"
+    definition: "A formal architectural boundary preventing unvalidated (Candidate-level) learning output from directly influencing critical decisions, requiring a knowledge item to pass through the full maturity/promotion gate before it can inform high-stakes action"
+  - concept: "Epistemic hysteresis"
+    definition: "A failure mode in which a belief-update mechanism responds insufficiently to genuinely contradictory evidence (e.g. moving from 0.99 to only 0.98 confidence), reflecting statistically unjustified excessive persistence rather than appropriate stability"
+  - concept: "KnowledgeOS must not be the sole authority for validating its own critical knowledge"
+    definition: "For critical knowledge, an external or independent validation path (another measurement system, independent test, formal proof, external source, controlled experiment, or separately designed model — not necessarily a human) must exist outside the system's own self-assessment"
+refines:
+  - concept: "0627's Step-46 stub and its unresolved central question"
+    refinement: "Substantively addressed: this file explicitly treats the one-sentence characterization of Step 46 as sufficient acknowledgment and proceeds to deliver the full promised treatment of learning stability, self-correction, feedback safety, and epistemic control under the title Step 47 — the practical content gap is resolved, though the strict numbering/sizing anomaly at 0627 remains a directly observable structural fact"
+  - concept: "0624's (Step 43) confounding machinery"
+    refinement: "Directly and substantively connected to self-referential learning specifically: a system's own recommendation policy can confound the causal evidence it later collects about its own recommendations"
+  - concept: "0622's (Step 41) Human-in-the-loop≠Independent human validation principle"
+    refinement: "Directly reconfirmed and generalized into the broader epistemic-anchor framework — independent validation requires direct examination of source evidence, not mere review of an AI conclusion, and human involvement is only one of several possible independence mechanisms"
+  - concept: "The corpus's established CommonCause discipline (0592, 0617, 0622, 0625)"
+    refinement: "Directly reapplied to epistemic anchors specifically: multiple anchors sharing a hidden common source constitute common-mode epistemic failure, not genuine redundancy"
+  - concept: "0623's/0626's AI-agent-boundary and LearningContext/GovernanceContext discipline"
+    refinement: "Directly extended into meta-learning: an AI agent must not silently change the rules by which its own knowledge is updated, requiring LearningPolicy itself to be governed"
+  - concept: "0615's/0620's/0625's debt-concept family (Epistemic Debt, Conflict Debt, Complexity Debt)"
+    refinement: "Epistemic Debt reconfirmed and generalized as a domain-scoped, queryable quantity (EpistemicDebt(K,Context)) rather than a single global measure"
+  - concept: "0614's (Step 34) VOI/active-learning machinery"
+    refinement: "Directly reapplied to recursive correction-validation loops, providing the explicit stopping rule (MarginalExpectedValue<Cost, acceptable DecisionRisk) that prevents endless revalidation"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Track whether Step 48 (Global Invariants, Formal System Properties, Compositional Verification and KnowledgeOS Correctness) genuinely delivers a formal specification/verification treatment distinct from the corpus's established prose-plus-falsification-experiment pattern, given its explicit self-description as 'the point where we begin moving toward KnowledgeOS Formal Specification.'"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the self-referential learning problem and policy-induced distribution shift formalized as fundamental; the named danger of being Stable AND Wrong (Learning convergence≠Truth); No irreversible confidence inflation and the named Epistemic hysteresis failure mode; and Meta-learning explicitly flagged as powerful but dangerous, extending the AI-agent-boundary discipline."
+  - "dimension-registry.md: record the new EpistemicFirewall concept; the five-stage Knowledge maturity state machine with formal demotion; the file's own self-declared strongest principle (KnowledgeOS must not be the sole authority for validating its own critical knowledge); and the formal three-way DomainContext/LearningContext/GovernanceContext coordination without collapse."
+  - "dimension-registry.md: record twelve falsification experiments (ALL PASS), seven core principles, the closed-loop epistemic-state formalism E_t=(K_t,π_t,S_t,O_t), verdict 'STEP 47 — PASS', the partial resolution of 0627's Step-46 anomaly, and the clean opening of Step 48 explicitly framed as beginning the move toward a KnowledgeOS Formal Specification."
+anchor_test:
+  anchor: "0627's Step-46 stub and its unresolved central question; 0624's (Step 43) confounding machinery; 0622's (Step 41) Human-in-the-loop≠Independent human validation principle; the corpus's established CommonCause discipline; 0623's/0626's AI-agent-boundary discipline; 0615's/0620's/0625's debt-concept family; 0614's (Step 34) VOI machinery"
+  supports_dimension: "Delivers the substantive content that 0627's stub only announced, directly resolving the practical open question raised there while confirming the corpus's own internal treatment of Step 46 as a brief one-paragraph pivot. Delivers a genuinely important, precisely diagnosed self-referential learning problem, directly and substantively connecting the corpus's earlier confounding machinery (0624) to the specifically dangerous case of a system whose own policy shapes the evidence it later collects about itself — a sophisticated and practically important extension rather than a restatement. Delivers the memorably named 'Stable AND Wrong' danger with a clean formal separation (Stability(M) vs. Validity(M)) that gives the corpus's established non-overclaiming discipline a new, sharper articulation specifically for learning systems. Introduces a genuinely useful new architectural concept (EpistemicFirewall) with direct practical relevance to any system that must prevent unvalidated AI output from reaching high-stakes decisions. Delivers a complete, well-structured knowledge-maturity state machine with explicit demotion paths, extending the corpus's established provisional/candidate-status discipline into a fully worked lifecycle. Delivers the file's own self-declared strongest principle (no self-certification for critical knowledge) with a careful, precise clarification that avoids the common overcorrection of assuming independence requires human involvement specifically. Closes by explicitly and self-consciously framing the newly opened Step 48 as the beginning of a formal-specification phase, giving this reconstruction a concrete, trackable claim to verify against Step 48's actual delivered content"
+  refines_or_contradicts: "resolves, in substance if not strictly in numbering, the open question left by 0627's stub; directly and substantively connects 0624's confounding machinery to self-referential learning; directly reconfirms and generalizes 0622's Human-in-the-loop≠Independent human validation principle; directly reapplies the corpus's CommonCause discipline to epistemic anchors; directly extends 0623's/0626's AI-agent-boundary discipline into meta-learning; reconfirms and generalizes the corpus's debt-concept family; directly reapplies 0614's VOI machinery to recursive correction-validation stopping criteria; no contradiction found; no new corpus-integrity topic collision detected"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit worked Architecture_A/incident-reduction example, in which the system's own recommendation policy causes most new projects to adopt the architecture, making the observed incident reduction potentially attributable to unmeasured confounding (better general engineering practices in new projects) rather than the architecture itself, is directly checkable, concrete evidence of a genuinely sophisticated and practically important connection between the corpus's earlier confounding machinery (0624) and the specifically dangerous case of self-referential policy-driven data collection."
+  - "The explicit, precisely worded rejection of 'this experiment would teach us a lot, therefore perform it,' immediately following the formal epistemic-exploration-policy equation with an explicit Safety(a)=True constraint, is directly checkable, concrete evidence of a genuinely important AI-safety principle correctly subordinating information-seeking behavior to safety policy rather than leaving the tradeoff implicit or unresolved."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 48 genuinely delivers a formal specification/verification treatment distinct from the corpus's established prose-plus-falsification-experiment pattern, consistent with its explicit self-description as beginning the move toward a KnowledgeOS Formal Specification"
+tier2_triggered: true
+tier2_reason: "Delivers the substantive content that 0627's stub only announced, resolving the practical open question raised there. Delivers a genuinely important, precisely diagnosed self-referential learning problem directly connecting the corpus's confounding machinery (0624) to self-referential policy-driven data collection specifically. Delivers the memorably named 'Stable AND Wrong' danger with a clean formal separation between stability and validity. Introduces a genuinely useful new architectural concept (EpistemicFirewall) with direct practical relevance to preventing unvalidated AI output from reaching high-stakes decisions. Delivers a complete, well-structured knowledge-maturity state machine with explicit demotion paths. Delivers the file's own self-declared strongest principle (no self-certification for critical knowledge) with a careful clarification avoiding the human-involvement overcorrection. Closes by explicitly framing the newly opened Step 48 as beginning a formal-specification phase, giving this reconstruction a concrete, trackable claim to verify. Verdict 'STEP 47 — PASS'."

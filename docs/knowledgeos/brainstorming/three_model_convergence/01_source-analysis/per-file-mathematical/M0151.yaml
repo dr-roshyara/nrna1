@@ -1,0 +1,96 @@
+sequence: M0151
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180006_extraction-levesque-lakemeyer-logic-of-knowledge-bases.md
+title: "EXTRACTION: The Logic of Knowledge Bases (Levesque & Lakemeyer, 2000)"
+date: "20260902-180006"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: EXTERNAL_LITERATURE
+  secondary_note: >
+    This is exactly the source flagged unlocated at M0148 (priority-2 recommended reading,
+    specifically for its "Only-Knowing" logic, flagged there as "exactly what you need for Zero").
+    Disciplined extraction of TELL/ASK formal semantics, the κL epistemic-logic language, the
+    Representation Theorem, Only-Knowing (O), Only-Knowing-About (O(π)), four-valued explicit belief
+    (B, avoiding logical omniscience), EOC, and AOL (Situation Calculus + Only-Knowing).
+source_role: PRIMARY
+canonical_source: M0151
+importance: critical
+confidence: high
+about: >
+  The most formally complete external candidate for Zero seen anywhere in this reconstruction's read
+  order: Only-Knowing (Oα ⟺ e={w | e⊨α}, "α is ALL that is known") plus a full Representation
+  Theorem making TELL/ASK operations reducible to objective first-order entailment via an explicit
+  RES/reduction function — a mechanizable formal definition, not merely a philosophical analogy.
+  Also introduces a four-valued explicit-belief (B) operator structurally convergent with this
+  corpus's own independently-derived FDE evaluation apparatus.
+introduces:
+  - "TELL/ASK given full formal semantics: ASK[α,e]=YES⟺e⊨Kα; TELL[α,e]=e∩{w | e,w⊨α} — not informal signatures as in prior extractions (M0136/M0141) but complete truth-conditional definitions"
+  - "The K operator: e,w⊨Kα ⟺ for every w'∈e, e,w'⊨α — standard epistemic-logic possible-worlds semantics, with objective/subjective/mixed sentence classification"
+  - "De dicto vs. de re distinction formalized: K∃xP(x) ('known that a P exists') ≠ ∃xKP(x) ('an x known to be a P') — de re implies de dicto but not conversely; explicitly flagged as 'critical for evaluation semantics... knowing that a requirement is satisfied (de dicto) vs. knowing WHICH requirement is satisfied (de re)' — a genuinely new distinction not previously present in this corpus's evaluation vocabulary"
+  - "The Representation Theorem (full statement): for finite objective KB, TELL[α,ℜ[KB]]=ℜ[KB∧‖α‖_KB] and ASK[α,ℜ[KB]]=YES⟺KB⊨‖α‖_KB, where ‖·‖_KB is a reduction function eliminating K operators via the RES function — 'the ‖·‖ function is analogous to a compiler for epistemic content'"
+  - "Only-Knowing (O operator), the candidate formal Zero definition: e,w⊨Oα ⟺ for every w', w'∈e ⟺ e,w'⊨α — 'e consists EXACTLY of the world states where α is true' — this is the strongest, most complete external candidate for Zero=knowing-nothing-is-missing seen anywhere in this reconstruction, backed by a full characterization theorem (ASK[α,ℜ[KB]]=YES⟺⊨(OKB⊃Kα))"
+  - "Determinate sentences: δ is determinate if it uniquely determines an epistemic state, with a theorem that for any determinate δ there is an objective φ such that ⊨Oδ≡Oφ — the formal underpinning making the Representation Theorem possible"
+  - "Only-Knowing-About (O(π)): all the agent knows about a specific SUBJECT MATTER π (a set of atomic sentences) is α — computed via e-π-minimal clauses and prime implicates (P(φ,π) = conjunction of prime implicates of φ mentioning π) — explicitly proposed for 'focused boundary queries... what is known vs. not known about a topic'"
+  - "Stable sets and stable expansions (autoepistemic logic connection): Γ stable iff closed under FOL entailment, K-introspective, and negative-introspective; theorem that e⊨Oα iff e's basic belief set is a stable expansion of {α} — connects Only-Knowing to nonmonotonic/default reasoning and 'the closed world assumption as only-knowing'"
+  - "Four-valued explicit belief (B), avoiding logical omniscience: situations are four-valued (True-only/False-only/Both-conflict/Neither-unknown), beliefs NOT closed under implication (satisfiable: {Bp,B(p⊃q),¬Bq}), a valid sentence need not be believed, and INCONSISTENT beliefs are representable WITHOUT triggering omniscience/explosion ({Bp,B¬p,¬Bq} is satisfiable) — structurally convergent with, though independently derived from, this corpus's own FDE four-valued evaluation apparatus (Standing(S+,S-), M0137)"
+  - "Complexity results for B: propositional tautological entailment co-NP-complete, CNF linear (O(mn)), FOL with existential generalization undecidable, FOL WITHOUT existential generalization decidable — concrete complexity bounds paralleling the DL Handbook's complexity table (M0141)"
+  - "The △ operator for quantifying-in with explicit belief: marks terms evaluated at substitution-time inside modal contexts (Teach(father(tom),sara)∧¬BTeach(father(tom)△,sara)) — solving a term-reference problem this corpus has not previously named"
+  - "EOC (Explicit Only-knowing with Complete introspection) and AOL (Action + Only-Knowing Logic): AOL directly combines Situation Calculus (S0, do(a,s), fluents, Poss, successor-state axioms) with Only-Knowing, giving Knows(φ,t) and OKnows(φ,t) defined via an accessibility-across-situations relation K(s1,s2) — the FIRST source in this reconstruction's read order to formally unify the 'dynamic lane' (Reiter/M0145-M0146) and the 'epistemic lane' (Williamson/M0147) into one language"
+defines: []
+refines:
+  - "M0136's earlier, weaker Sat(K_t,r)⟺K_t⊨Content(r) proposal (rejected at M0138/M0140 as conflating Sat with mere content entailment): this document's Only-Knowing apparatus is a substantially more complete formal machinery for the SAME underlying question (what does a knowledge state's completeness/satisfaction actually mean?), operating at the level of the whole epistemic state rather than a single proposition"
+  - "The corpus's own four-factor FDE evaluation representation (Standing×Boundary×Context×Provenance, M0137): given an independent external convergence via the B operator's four-valued situations, though the two apparatuses are not shown to be formally identical here — a bridge_candidate, not a proven equivalence"
+  - "The dynamic-lane/epistemic-lane split (M0146 vs. M0147): AOL provides the first formal language in this reconstruction's read order that natively spans both, via situations-plus-accessibility"
+contradicts: []
+repeats:
+  - "TELL/ASK, explicit/implicit belief (K^exp≠K^imp=Cn_S(K^exp)), Knowledge Level vs. Symbol Level — all previously extracted from Brachman & Levesque (M0136); this document gives the same content but with FULL formal semantics rather than informal signatures, representing a genuine deepening rather than mere repetition"
+  - "Successor-state axioms and the frame problem (§11.2) — identical formula to M0136/M0145/M0146, repeated here as part of the AOL synthesis"
+bridge_candidates:
+  - "This extraction's own closing recommendation ('Recommendation: Integrate... Only-knowing → Zero definition... into KnowledgeOS Theory v1.2') follows the exact overreach pattern the corpus's disciplined adjudications have consistently corrected for every other extraction in this sub-thread (M0136→M0138, M0141→M0142, M0149→M0147) — a corresponding adjudication review of THIS extraction has not yet been located in this reconstruction's read order; flagged as an open bridge_candidate given the established pattern strongly predicts one exists or should exist"
+  - "Whether the B-operator's four-valued situation semantics is ever formally compared against this corpus's own FDE Standing(S+,S-) apparatus for actual equivalence, rather than merely noted as a structural convergence"
+  - "Whether de dicto/de re (a genuinely new distinction introduced here) is ever taken up as a formal requirement for the Evaluation representation research line"
+  - "Whether AOL's unification of dynamic and epistemic lanes is ever adopted or tested against the corpus's own separately-tracked δ (Reiter-derived) and Zero (Williamson/Gödel-derived) research"
+mathematical_content: >
+  States the full K/O/O(π)/B operator semantics, the Representation Theorem with its RES/reduction
+  functions, the determinate-sentence theorem, the prime-implicate characterization of O(π), stable
+  sets/expansions, the propositional stable-expansion computation algorithm, complexity results for
+  B, and the AOL Knows/OKnows definitions via cross-situation accessibility — all cited as
+  Levesque & Lakemeyer's established formal results, not new derivations performed by this extraction.
+gita_content: null
+kernel_content: >
+  Supplies this reconstruction's most complete and mechanizable external candidate for Zero
+  (Only-Knowing, with a full Representation Theorem reducing it to objective FOL entailment), a
+  genuinely new de dicto/de re distinction for Evaluation, and the first formal unification of the
+  dynamic (Reiter) and epistemic (Williamson) lanes via AOL — the highest-density single external
+  source encountered in this KR-integration sub-thread.
+registry_updates:
+  - "Resolves M0148's priority-2 flagged source (Logic of Knowledge Bases) as now located"
+  - "Ninth instance of the cross-domain external-literature corroboration pattern — the strongest yet on Zero specifically, via a fully mechanized Only-Knowing formalism"
+  - "Notes a structural (not proven) convergence between the B operator's four-valued situations and this corpus's own independently-derived FDE four-valued Standing apparatus"
+  - "First source to formally unify the dynamic and epistemic lanes (AOL) — a candidate resolution direction for the corpus's own tracked dynamic-lane/epistemic-lane split"
+anchor_test:
+  anchor: true
+  supports_dimension: "Zero (Only-Knowing, most complete candidate yet), Evaluation (de dicto/de re), dynamic/epistemic lane unification (AOL), FDE convergence (B operator)"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"e,w⊨Oα ⟺ for every w', w'∈e ⟺ e,w'⊨α\" — the full formal definition of Only-Knowing, the strongest Zero candidate in this reconstruction's read order"
+  - "\"Having a knowledge base means that these sentences are all that is known. This not only implies believing certain sentences, it also implies not believing others.\" — cited by the extraction as the basis for 'Zero = knowing that nothing is missing, not just having no known gaps'"
+  - "\"{Bp, B¬p, ¬Bq} — inconsistent beliefs without omniscience\" — the four-valued B operator's explicit demonstration that contradiction need not trigger explosion, structurally paralleling this corpus's own FDE finding"
+undefined_concepts:
+  - "Whether the reasoning semantics S in K^imp=Cn_S(K^exp), as used throughout this extraction, is meant to be instantiated by the K/O/B logics given here, or remains a free parameter as in the Brachman&Levesque extraction — not addressed explicitly"
+open_questions:
+  - "Is there an adjudication review of this specific extraction anywhere in this reconstruction's sequence, paralleling the reviews given to every other major extraction in this sub-thread?"
+  - "Does the B-operator/FDE convergence get formally tested for equivalence anywhere later in this reconstruction?"
+tier2_triggered: true
+tier2_reason: >
+  Supplies the most complete, mechanizable external formal candidate for Zero seen in this
+  reconstruction (Only-Knowing plus a full Representation Theorem), introduces a genuinely new
+  de dicto/de re distinction for Evaluation, provides the first formal unification of the dynamic
+  and epistemic lanes (AOL), and notes a striking structural convergence between an independently
+  derived four-valued belief logic and this corpus's own FDE apparatus.

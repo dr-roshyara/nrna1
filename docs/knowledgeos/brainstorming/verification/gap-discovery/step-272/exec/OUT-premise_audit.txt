@@ -1,0 +1,85 @@
+
+==============================================================================
+A. CORPUS STATE — does Step 272 exist, and what is the highest step?
+==============================================================================
+  files in phase_measure_theory : 545
+  highest step number           : 280
+  steps 272-278 present         : [272, 273, 274, 275, 276, 277, 278]
+  missing below the maximum     : [217, 229, 268]
+
+  step 272 file present?        : YES
+    273  21:44  20260830-214401_step_273_knowledge-state-sufficiency-and-minimal
+    274  21:43  20260830-214317_step_274_knowledge-state-algebra-and-closure.md
+    275  21:46  20260830-214639_step_275_epistemic-state-reconstruction-and-dime
+    276  21:54  20260830-215434_step_276_foundational-gap-reconciliation-and-clo
+    276  21:54  20260830-215443_step_276_foundational-gap-reconciliation-and-clo
+    276  21:59  20260830-215918_step_276_foundational-gap-reconciliation-and-clo
+    277  22:01  20260830-220134_step_277_transformation-inventory-and-o-core-clo
+    278  22:14  20260830-221415_step_278_policy-authority-integration-and-execut
+    278  22:16  20260830-221629_step_278_policy-authority-integration-and-execut
+    278  22:21  20260830-222159_step_278_policy-authority-integration-temporal-s
+
+==============================================================================
+B. IS SIGMA STILL THE FRONTIER? — where each step went
+==============================================================================
+  Step 273: Σ-mentions=21   STEP 273 — CANONICAL KNOWLEDGE-STATE SUFFICIENCY AND MINIMALITY
+  Step 274: Σ-mentions=6    STEP 274 — CANONICAL KNOWLEDGE-STATE ALGEBRA AND CLOSURE
+  Step 275: Σ-mentions=48   STEP 275 — CANONICAL EPISTEMIC STATE RECONSTRUCTION AND DIMENSION SEPA
+  Step 276: Σ-mentions=28   STEP 276 — FOUNDATIONAL GAP RECONCILIATION AND CLOSURE AUDIT
+  Step 277: Σ-mentions=4    STEP 277 — CANONICAL TRANSFORMATION INVENTORY AND \(O_{core}\) CLOSURE
+  Step 278: Σ-mentions=2    STEP 278 FINAL — POLICY–AUTHORITY INTEGRATION, TEMPORAL SEMANTICS, AND
+
+==============================================================================
+C. D-0 — was O_core authorised?  (independent re-verification)
+==============================================================================
+  files containing 'O_core'                    : 9
+      20260830-214317_step_274_knowledge-state-algebra-and-closure.md
+      20260830-214401_step_273_knowledge-state-sufficiency-and-minimality.md
+      20260830-214639_step_275_epistemic-state-reconstruction-and-dimension-
+      20260830-215434_step_276_foundational-gap-reconciliation-and-closure-a
+      20260830-215443_step_276_foundational-gap-reconciliation-and-closure-a
+      20260830-215918_step_276_foundational-gap-reconciliation-and-closure-a
+      20260830-220134_step_277_transformation-inventory-and-o-core-closure.m
+      20260830-224242_step_272a_core-operation-universe-derivation.md
+      20260830-231637_step_280_end-to-end-empirical-closure-test.md
+
+  governance-notes.md highest GN               : GN-73
+  governance-notes entries for O_core / 'operation universe': 0
+  files named *HPA* in docs/                    : 2
+      docs/knowledgeos/brainstorming/phase_measure_theory/external_research/# HPA RULING — GN-31
+      docs/knowledgeos/brainstorming/phase_measure_theory/gita_chapter4/# HPA Response: Gītā Chapters 1-4 — Phil
+
+  => D-0 CONFIRMED and STRENGTHENED. Every occurrence of O_core is inside
+     Stratum-1 research narrative. No declaring artifact, no governance note, and
+     the cited "attached HPA response" is not in the repository.
+     The canonical-construction pass measured 5 occurrences in 1 file; the
+     premise has since propagated into MORE steps.
+
+==============================================================================
+D. DID 272-278 ADOPT THE SECOND-ORDER FINDINGS?
+==============================================================================
+  congruence-vacuity (SO-2)                        occurrences=0    NOT ADOPTED
+  invariant-expressibility (SO-3)                  occurrences=1    ADOPTED
+  K-sufficiency (commissioned by 277 for 278)      occurrences=1    ADOPTED
+  AuthorityAct typed (the ONE innovation)          occurrences=0    NOT ADOPTED
+  Context given a type                             occurrences=0    NOT ADOPTED
+  R restored to 8 fields                           occurrences=0    NOT ADOPTED
+
+==============================================================================
+E. VERIFICATION-TREE CENSUS — is the corpus still being written?
+==============================================================================
+  package                    .md files
+  .                                 71
+  spec                              45
+  gap-discovery                     40
+  prompts                           34
+  findings                          17
+  independent                       15
+  plan                              12
+  reports                            7
+  canonical-construction             7
+  TOTAL                            248
+
+  newest verification artifact : 2026-08-30 23:17:24
+  newest research artifact     : 2026-08-30 23:16:37
+  now                          : 2026-08-30 23:17:24

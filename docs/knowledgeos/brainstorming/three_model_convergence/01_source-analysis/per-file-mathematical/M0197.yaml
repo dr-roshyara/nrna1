@@ -1,0 +1,49 @@
+sequence: M0197
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-090001_review-do-not-give-claude-the-harness-with-expectations.md
+title: "Content subset of M0189 (verbatim identical KR-ZERO-ALGEBRA-2026-09 21-section Claude Code CLI prompt + closing remarks)"
+date: "20260903-090001"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0197
+importance: low
+confidence: high
+about: >
+  Verbatim-identical text to M0189's KR-ZERO-ALGEBRA-2026-09 protocol section (the full 21-section
+  Claude Code CLI prompt and its closing "one important change from the Python harness" remarks) —
+  already recorded in full at M0189. Not manifest-DUPLICATE-flagged, but substantively redundant;
+  recorded at minimal depth per standing discipline.
+introduces: []
+defines: []
+refines:
+  - "Identical content to M0189's KR-ZERO-ALGEBRA-2026-09 protocol — see M0189 for the complete analysis"
+contradicts: []
+repeats:
+  - "M0189's entire 21-section protocol and closing remarks"
+bridge_candidates: []
+mathematical_content: >
+  Identical to M0189's protocol section — see that record; no content here beyond what M0189 already
+  captures.
+gita_content: null
+kernel_content: >
+  Fully redundant with M0189; no content here not already captured there.
+registry_updates:
+  - "Confirmed as a content subset of M0189 — no new registry entry warranted"
+anchor_test:
+  anchor: false
+  supports_dimension: null
+  refines_or_contradicts: "refines (identical to M0189's protocol section)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: null

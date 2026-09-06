@@ -1,0 +1,35 @@
+sequence: 72
+path: docs/knowledgeos/brainstorming/_misc/20260819-225329-ip-protection-secrecy-strategy.md
+title: IP Protection / Secrecy Strategy for KnowledgeOS (business content)
+date: 2026-08-19
+bytes: 6440
+
+model:
+  primary: c1
+  secondary: []
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: low
+confidence: high
+
+about: "Business/IP-protection strategy for commercializing KnowledgeOS; no engineering theory."
+
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats: []
+
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: "Pure business/IP strategy content, no theoretical relevance."

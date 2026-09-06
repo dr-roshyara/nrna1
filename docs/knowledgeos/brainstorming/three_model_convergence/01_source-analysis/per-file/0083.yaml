@@ -1,0 +1,125 @@
+sequence: "0083"
+path: docs/knowledgeos/brainstorming/20260822-0113-research-review-expression-meaning-invariance.md
+title: "Research Review: Expression, Meaning, and Invariance in Knowledge Systems"
+date: "2026-08-22"
+bytes: 26035
+
+model:
+  primary: x
+  secondary: [c1]
+
+source_role: INDEPENDENT_RESEARCH
+canonical_source: null
+
+importance: critical
+confidence: high
+
+about: >
+  A two-part document: (1) an external-literature research review (Davis/Shrobe/Szolovits 1993
+  knowledge-representation theory, philosophy of language, oral/written/digital transmission research,
+  invariant graph learning, provenance research) testing a prior, not-yet-read "Vāṇī" hypothesis that
+  treated expression/speech as carrying sacred authority; (2) an interpretive follow-up connecting the
+  verdict to the EKS-08 invariant family and to the topology discussion opened at 0082. Verdict:
+  Expression != Meaning is externally well-supported as a KERNEL INVARIANT TO PRESERVE, but Expression
+  as a KERNEL DIMENSION, and "Vāṇī as kernel principle"/"sacred authority model," are explicitly NOT
+  supported.
+
+introduces:
+  - "First appearance in the reading order of 'Vāṇī' (a term with clear Vedic/Sanskrit -- sacred-speech
+    -- origin) and of a 'sacred authority model' associated with it. NOTE: the proposal that introduced
+    Vāṇī as a candidate kernel/authority concept is NOT itself in the read corpus at this position --
+    this document only tests and responds to it, so its original content and source_role cannot yet be
+    classified. Recorded as a forward/external reference, not as confirmed G/C2 content."
+  - "Verdict: Vāṇī as kernel principle / sacred authority model = NOT SUPPORTED (domain-specific, not
+    universal); Expression != Meaning = SUPPORTED as a kernel invariant, explicitly NOT as a sixth
+    kernel dimension -- it belongs to the representation/projection layer"
+  - "EKS-08 invariant family, referenced as already-established (Recorded != Temporal truth; Derived !=
+    Persisted; Projection != Source; Memory != Available evidence), extended with a fifth candidate:
+    Expression != Meaning. NOTE: 'EKS-08' itself is a forward/external reference -- not yet directly
+    encountered as its own document in this reading order"
+  - "INV-KOS-002 (candidate): 'KnowledgeOS SHALL preserve semantic identity when knowledge changes
+    expression, representation, or medium' -- explicitly candidate-status, evidence=external research
+    only, EKS/PKS/AIP validation status = needs validation. Implies an INV-KOS-001 exists elsewhere,
+    not yet located in the read corpus (forward reference)"
+  - "Dimension-model simplification: Knowledge Identity splits into Kernel dimensions (Semantic,
+    Evidence, Authority, Temporal, Lifecycle) vs. Representation (Expression, Language, Format, Medium,
+    Projection) -- Expression placed firmly outside the kernel"
+  - "Forbidden-collapse generalization (extends 0081's semantic non-collapse family): Document!=
+    Knowledge, AI-summary!=Source, Confidence!=Authority, Popularity!=Truth, Representation!=Meaning --
+    five instances of one general prohibition: 'a representation change must not silently become a
+    semantic change'"
+  - "Topology reframed a second time (after 0082): not 'KnowledgeOS uses topology' but 'topology may
+    describe what remains invariant while knowledge undergoes transformation' -- directly tied to the
+    transformation-invariant question rather than to state-space continuity as in 0082"
+  - "Reframing of KnowledgeOS's purpose: 'not a knowledge storage kernel... a constitutional layer
+    preserving separation between knowledge dimensions while allowing controlled evolution' -- kernel
+    framed as being about 'protected relationships,' not objects"
+  - "P4/P5 vocabulary referenced as an existing established layer -- forward/external reference, not
+    defined in this document"
+
+defines: []
+
+refines:
+  - "0080/0081's dimension lists: the representation-layer/kernel-layer split here is a genuine
+    refinement -- it explicitly REMOVES 'expression' as a candidate dimension rather than adding one,
+    the corpus's first instance of a dimension candidate being tested and rejected rather than merely
+    proposed"
+  - "0082's topology discussion: re-anchored from state-space continuity to transformation-invariance
+    (what survives a representation change), a distinct but related topological reading"
+
+contradicts: []
+
+repeats:
+  - concept: "assessment/expression does not confer authority; authority requires a human/governed act"
+    canonical_source: "0014"
+    novelty: low
+  - concept: "Knowledge System != Knowledge Graph"
+    canonical_source: "0080"
+    novelty: none
+
+bridge_candidates:
+  - "Vāṇī / 'sacred authority model' as a possible first indirect contact point with a future G (Gītā/
+    epistemic KnowledgeOS, C2) proposal -- NOT itself confirmed G content in this document (which only
+    tests and rejects it as universal kernel law); recorded as a forward-pointing candidate only. If a
+    primary G-model document is later found that originates the Vāṇī proposal, this file becomes its
+    first external critical-review companion, analogous to 0026's relationship to 0002"
+  - "'Constitutional layer preserving separation between knowledge dimensions' framing as a possible
+    bridge to a future C2 statement about maintaining distinctions/non-collapse as a purification-
+    adjacent discipline -- structural resemblance only, no C2 evidence yet"
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+key_evidence:
+  - "Nine-source external literature synthesis (Davis/Shrobe/Szolovits 1993; philosophy-of-language
+    semantics; oral/written/digital transmission research; invariant graph learning/IRM; W3C-adjacent
+    provenance-authenticity research; ontological-commitment theory; KR-justification critique)"
+  - "Explicit two-column verdict table separating what the external research supports from what it does
+    not, applied directly to the Vāṇī hypothesis component-by-component"
+  - "Same-region cross-reference density: directly extends 0081's EKS-08-family reasoning and 0082's
+    topology discussion within two files of each"
+
+undefined_concepts:
+  - "Vāṇī (introduced, not defined -- its originating document is not yet located in the read corpus)"
+  - "EKS-08 (referenced as an established invariant family; not yet directly encountered as its own
+    document)"
+  - "INV-KOS-001 (implied by 'INV-KOS-002 (candidate)' naming; not yet located)"
+  - "P4/P5 vocabulary (referenced as established; not defined here)"
+
+open_questions:
+  - "Whether EKS/PKS/AIP already contain evidence that semantic identity survives representation
+    change -- explicitly posed as the correct next step, not yet answered"
+  - "Where/what the original Vāṇī proposal document is, and whether it belongs to C1, C2, or G once
+    located -- cannot be resolved from this file alone (MD-012 discipline: no inference from style)"
+
+tier2_triggered: true
+tier2_reason: >
+  First appearance in the reading order of Vāṇī and an associated "sacred authority model" -- a term
+  with clear Vedic/Sanskrit origin, tested here and explicitly rejected as universal kernel law, but
+  flagged as a possible first indirect contact point with a future G-model document once its source is
+  located (MD-012 bridge_candidate discipline applied strictly: not itself classified as G/C2 content).
+  Also extends the EKS-08 invariant family with a fifth non-collapse instance, introduces a named
+  candidate invariant (INV-KOS-002), and reframes both the dimension-model boundary and the topology
+  discussion opened at 0082 -- directly relevant to §16/§18/§23 and to the eventual G<->C1/C2 bridge
+  question this research is charged with resolving only from evidence, never by assumption.

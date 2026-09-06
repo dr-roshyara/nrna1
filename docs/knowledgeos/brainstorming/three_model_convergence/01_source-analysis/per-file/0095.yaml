@@ -1,0 +1,143 @@
+sequence: "0095"
+path: docs/knowledgeos/brainstorming/20260822-0232-knowledgeos-extraction-tarka-nyaya-reasoning-lifecycle.md
+title: "KnowledgeOS Extraction from Tarka / Nyāya (review of a named external paper)"
+date: "2026-08-22"
+bytes: 9528
+
+model:
+  primary: g
+  secondary: [x, c1]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: "0092"
+
+importance: high
+confidence: high
+
+about: >
+  A review of a distinctly-named external source ("Tarka - The Indian Science of Logical Analysis"
+  paper, not the Stanford Encyclopedia material cited at 0092) covering largely the same ground already
+  logged in detail at 0092-0094 (four Pramāṇas, 16 categories, five-membered syllogism, Tarka as
+  non-independent reductio-ad-absurdum assistant, Hetvābhāsa). Genuinely new: a DDD-flavored
+  "definition precision" candidate (over-/under-extension boundaries) directly relevant to the Context
+  dispute, a clean "Reasoning Gate, not Answer Generator" framing, and a SIXTH non-identical anchor
+  reshaping -- a nine-item "Constitutional Invariants" list that adds "Relations" as one more flat item
+  alongside Context (kept separate, unmerged) rather than adopting 0094's more radical
+  relations-replace-attributes framing.
+
+introduces:
+  - "INV-KOS-ReasoningLifecycle-001, INV-KOS-Pramana-001, INV-KOS-InferenceBoundary-001,
+    INV-KOS-ArgumentStructure-001, INV-KOS-ReasoningGate-001 -- five candidates restating 0092-0094's
+    already-logged Pramāṇa/inference/syllogism/Tarka content under the INV-KOS-* prefix (reusing the
+    existing scheme, consistent with the positive consolidation pattern, not a new naming scheme)"
+  - "INV-KOS-SemanticBoundary-001 (NEW, DDD-flavored): 'KnowledgeOS SHALL preserve defining
+    characteristics and boundaries that distinguish a concept from related concepts' -- motivated by
+    the paper's discussion of definitional over-extension/under-extension/impossible-characteristics,
+    explicitly connected by the document itself to 'Context boundary, Semantic identity, Ubiquitous
+    language.' A DDD-native (not Sanskrit-sourced) articulation of a boundary-precision concern
+    structurally adjacent to, but not identical to, the Context dispute and to Avacchedaka (0094)"
+  - "'Reasoning Gate, not Answer Generator': Tarka filters (invalid reasoning / insufficient evidence /
+    contradiction -> accepted reasoning path) rather than generates -- INV-KOS-ReasoningGate-001
+    formalizes 'KnowledgeOS SHALL separate hypothesis generation from epistemic validation'"
+  - "⭐ Sixth non-identical anchor reshaping: 'Updated Kernel Model' lists NINE 'Constitutional
+    Invariants' -- Identity, Context, Evidence, Authority, Transformation, Time, Uncertainty, Knower,
+    Relations -- with Context kept as a FLAT, separate, unmerged item (treatment A, not 0091's merge or
+    0094's delimiter reframing) and 'Relations' added as a NINTH flat item alongside the others, NOT
+    replacing the attribute/dimension shape as 0094's own H-KOS-Relation-001 argued it should. This is
+    a notable divergence: a later file citing the same Tarka/Nyāya material absorbs 'relations matter'
+    as one more item in a list, not as the paradigm shift 0094 itself proposed"
+  - "Six-candidate 'Final Verdict' strength table (5-star: Reasoning lifecycle, Pramāṇa-aware evidence
+    model, Observation/inference separation, Argument chain preservation; 4-star: Semantic boundary
+    precision, Fallacy detection) -- a star-rating convention, joining the emoji (0090) and text-grade
+    (0092) informal strength-signaling styles already in use, none reconciled with any other"
+  - "Closing six-lens convergence restated (Vāṇī/Zero/Vedanta/TMS-AGM/Topology/Nyāya-Tarka), producing:
+    'KnowledgeOS is not a knowledge repository. It is an epistemic reasoning substrate that preserves
+    the relationships, evidence, context, and reasoning paths required for trustworthy truth
+    discovery.'"
+
+defines: []
+
+refines:
+  - "0094's H-KOS-Relation-001 (relationships replace attributes as the kernel's true subject): this
+    file's own 'Updated Kernel Model' does NOT adopt that framing -- it adds 'Relations' as a ninth
+    flat list item instead, alongside Context (kept unmerged). Recorded as evidence that 0094's more
+    radical reframing has not (yet) propagated even to a file citing closely related material, not as
+    a refutation of it"
+  - "the Context dispute: adds a fourth, DDD-native articulation (INV-KOS-SemanticBoundary-001,
+    over-/under-extension) that is related to but not identical with the three already-tracked
+    treatments (flat/merged/delimiter) -- recorded as a possible_correspondence, not merged into the
+    Context entry, since it is framed as a general concept-definition concern, not specifically about
+    Context as a dimension"
+
+contradicts: []
+
+repeats:
+  - concept: "four Pramāṇas, 16 categories, five-membered syllogism, Tarka as Apramāṇa/reductio,
+    Hetvābhāsa fallacy taxonomy"
+    canonical_source: "0092"
+    novelty: none
+  - concept: "Tarka as assistant, not independent knowledge source / reasoning that tests vs produces"
+    canonical_source: "0093"
+    novelty: low
+
+bridge_candidates:
+  - "INV-KOS-SemanticBoundary-001 as a possible_correspondence to the Context entry's delimiter
+    treatment (0094) -- related boundary-precision concern, not confirmed identical; recorded
+    separately per the registry's non-collapse discipline (MD-015)"
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+# MD-015 registry updates (see 01_source-analysis/dimension-registry.md)
+registry_updates:
+  - "NEW ENTRY WARRANTED: Semantic Boundary Precision (INV-KOS-SemanticBoundary-001) -- related to but
+    distinct from Context; cross-referenced, not merged"
+  - "Context: further evidence of instability -- a SIXTH file-level treatment (flat, unmerged),
+    consistent with treatment A, adds to the cross-document disagreement already tracked (does not
+    itself resolve OPEN/UNRECONCILED status)"
+  - "Relation/Sambandha: noteworthy non-uptake -- this file, despite citing closely related Nyāya
+    material, does not adopt 0094's relations-replace-attributes framing, instead treating Relations
+    as an additional flat item. Recorded as evidence the hypothesis has not propagated, not as
+    evidence against it (absence of uptake in one later file is not falsification)"
+
+# MD-014 anchor_test against 0087 (Minimal_Kernel_Candidate_0087)
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity", "Unknown Preservation"]
+  refines_or_contradicts: >
+    Sixth non-identical anchor reshaping (nine flat items: Identity, Context, Evidence, Authority,
+    Transformation, Time, Uncertainty, Knower, Relations). Context kept flat/unmerged (treatment A),
+    contradicting 0091's merge without engaging 0094's delimiter argument. "Relations" added as a
+    peer item, NOT adopted as a paradigm replacement -- notable non-uptake of 0094's more radical
+    framing by a file citing adjacent material.
+  alternative_minimal_kernel: "Yes -- nine flat items, a sixth distinct shape across six files touching the anchor."
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true   # restates 0092-0094's argued mappings, not new independent argument
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true   # positive: consolidates toward INV-KOS-* rather than inventing a new scheme
+
+key_evidence:
+  - "A distinctly-named external source ('Tarka - The Indian Science of Logical Analysis' paper),
+    different from 0092's Stanford Encyclopedia citations, independently converging on the same core
+    Nyāya content -- a second, differently-sourced corroboration of the same material, though still
+    within the same overall research effort/date"
+  - "Non-uptake of 0094's relations-replace-attributes framing by a closely-adjacent later file, evidence
+    of how unstable/unpropagated that reframing currently is"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether INV-KOS-SemanticBoundary-001 and the Context dispute are ever explicitly connected or
+    merged by a later file, or remain permanently separate concerns"
+  - "Whether any later file explicitly engages with and either adopts or rejects 0094's relations-
+    replace-attributes framing, rather than silently reverting to flat-list treatment as this file does"
+
+tier2_triggered: true
+tier2_reason: >
+  Sixth non-identical anchor reshaping; a new DDD-flavored candidate (Semantic Boundary Precision)
+  relevant to but distinct from the Context dispute; and a notable non-uptake finding -- a file citing
+  closely adjacent Nyāya material does not adopt 0094's own relations-replace-attributes reframing,
+  evidence relevant to how settled (or unsettled) that hypothesis currently is. Directly relevant to
+  the MD-015 dimension registry and the ongoing Context/Relation tracking.

@@ -1,0 +1,160 @@
+sequence: 540
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-140232_evidence-identity-equivalence-and-dependency-calculus.md
+title: "LANDMARK: Evidence Identity, Equivalence, and Dependency Calculus Fully Formalized — Directly Resolves 0539's Flagged Gap; Identity≠Equivalence≠Independence≠Dependency Five-Way Separation; Provisional Theorem 'Evidence Multiplicity≠Evidential Independence'; Honest Epistemic-Limits Admission That Absolute Independence Is Not Computable From Documents Alone (A Boundary Condition, Not a Failure)"
+date: "2026-08-27"
+bytes: 11898
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly answers 0539's explicitly flagged open problem ('what exactly constitutes epistemic equivalence?'), delivering the named 'Evidence Identity and Dependency Calculus' 0539 called for"
+source_role: PRIMARY_RESEARCH
+canonical_source: 540
+importance: critical
+confidence: high
+about: >
+  Directly resolves 0539's flagged open problem, opening: "This is more fundamental than choosing the
+  aggregation formula. If KnowledgeOS gets this wrong, every downstream confidence, conflict, gap, and
+  conclusion can be wrong." Poses the central question: when do two pieces of evidence constitute the same
+  evidential contribution, when are they dependent transformations, and when are they genuinely independent
+  observations?
+
+  **Delivers the file's foundational three-way (later five-way) separation**: Identity (`e_1=e_2`, a
+  literal data/infrastructure-level sameness -- same hash, same observation ID); Equivalence (`e_1∼e_2`,
+  different records expressing the same underlying evidential content, worked via two differently-phrased
+  documents both stating "Nexus 3.69 is installed"); Independence (`e_1⊥e_2`, genuinely separate acquisition
+  events, worked via an API report and an independent filesystem inspection both reporting 3.69) --
+  crystallized as `Equivalence≠Independence`, "crucial." Then adds **Dependency as richer than
+  Equivalence**: a worked chain (Database->LLM->Architecture report->Human summary,
+  `e_1->e_2->e_3->e_4`) shows later items may have entirely DIFFERENT semantic content while their
+  epistemic ancestry remains related, giving `Dependency≠Equivalence`.
+
+  **Formalizes an Evidence Graph** `G_E=(V,E)` with typed provenance edges (DERIVED_FROM, INTERPRETED_AS,
+  REVIEWED_BY), explicitly "not merely metadata. It affects the mathematics of evidence aggregation."
+  **Introduces `UnderlyingObservation(e)=o`**, formalizing when multiple representations (a database
+  record, a screenshot, an LLM extraction, a human report) all trace to one underlying event --
+  "much more precise than simply saying 'duplicate.'" **Formalizes provenance as a causal partial order**
+  `e_j≺e_i` ("e_i was produced using e_j"), giving the conservative rule `Dependency⇒NonIndependent`, while
+  explicitly noting the converse fails (`NonIndependent⇏DirectDependency`) since two sources can share a
+  common ancestor without one directly producing the other.
+
+  **Delivers a subtle and statistically important finding on common-source dependency**: two LLM outputs
+  (`LLM_A`, `LLM_B`) both derived from one original document, with neither directly producing the other, are
+  still not independent observations in the relevant epistemic sense -- requiring a first-class
+  `CommonSource(e_i,e_j)` relationship "to protect against correlated evidence inflation."
+
+  **Delivers three formally named epistemic dependency classes**: Class 1 Same contribution (`e_i≡e_j`,
+  count once); Class 2 Dependent contribution (`e_i⤳e_j`, never treated as independent corroboration);
+  Class 3 Independent contribution (`e_i⊥e_j`, no shared dependency established, may contribute
+  independently under the selected policy).
+
+  **Directly resolves 0539's central flagged question with the corpus's clearest statement yet of the
+  Unknown-Dependency principle**: `UnknownDependency≠Independence`; conservatively,
+  `UnknownDependency⇒DoNotAssumeIndependentCorroboration`, explicitly named "a very strong candidate for a
+  kernel invariant." **Delivers an important statistical qualification immediately after**, preventing
+  over-application of that principle: unknown dependency does NOT mean the evidence is useless -- it only
+  means "we cannot safely quantify its incremental independent evidential contribution"; the evidence may
+  still be relevant, historically useful, supportive, contradictory, or useful for discovery --
+  `UnknownIndependence≠NoEvidence`.
+
+  **Formalizes the Evidence Identity relation `∼_E` as a genuine mathematical equivalence relation**
+  (Reflexivity, Symmetry, Transitivity), but with the crucial qualifier "according to an explicitly
+  declared equivalence policy," since semantic equivalence is not always automatically decidable. **Delivers
+  a critical LLM-boundary rule**: an LLM may PROPOSE `e_i∼_Ee_j` based on semantic similarity, but "must not
+  silently establish the mathematical fact" -- the proposal must pass through an explicit
+  Proposed->Confirmed pipeline via rule, human, or deterministic check -- `LLM judgment≠authoritative
+  epistemic fact`.
+
+  **Delivers a five-concept DDD model**: Evidence, Provenance, EvidenceIdentity (EvidenceId,
+  UnderlyingObservationId, EquivalenceClass, IdentityConfidence), DependencyAssessment (EvidenceA,
+  EvidenceB, Relationship, Status, Basis), and EvidenceAssessment (PositiveSupport, NegativeSupport,
+  Uncertainty, DependencyStructure, Quality, Qualifications) -- explicitly noting "EvidenceAssessment does
+  not contain Truth." **Formalizes the emerging mathematical structure** as a complete pipeline:
+  `ℰ --∼_E--> ℰ/∼_E`, `D:(ℰ/∼_E)²->{Dependent,Independent,Unknown}`, `Q:ℰ/∼_E->𝒬`, `⊕_ρ->EA` --
+  "becoming a genuine computational calculus."
+
+  **Delivers an explicit warning against a mathematically wrong definition**: `Independent(e_i,e_j)=
+  SemanticDifference(e_i,e_j)` is WRONG, since two semantically identical statements (two independent
+  sensors both reporting "temperature=20°C") can be genuinely independently observed -- crystallized as
+  `SemanticEquivalence≠EvidentialIndependence`, "fundamental."
+
+  **Proposes six concrete new test cases (A-F)** with explicit expected outcomes: exact duplicate -> 1
+  contribution; semantic duplicate -> 1 contribution; independent identical observations (same proposition
+  but genuinely ⊥) -> 2 contributions; LLM transformation of a source -> 1 independent contribution overall
+  (the LLM output does not add a second contribution); common-source outputs -> not independent; unknown
+  provenance -> do not assume independence.
+
+  **Delivers the file's central formal result -- a provisional theorem**: "Evidence multiplicity is not
+  equivalent to evidential independence," formalized as `|E|≠|IndependentContributions(E)|`, and more
+  strongly `InformationVolume≠EvidenceStrength` -- "ten documents copied from one source do not necessarily
+  provide ten pieces of evidence."
+
+  **Closes with an honest progress ledger and a profound epistemic-limits admission**: strongly established
+  now are Evidence Identity, Evidence Equivalence, Evidence Dependency, Common-Source Detection, and Unknown
+  Dependency; still open is "how can KnowledgeOS computationally determine independence?" -- answered with
+  unusual philosophical honesty: "Absolute epistemic independence is generally not computable from
+  arbitrary documents alone... we cannot magically prove metaphysical independence. That is not a failure
+  of KnowledgeOS. It is a boundary condition of the problem." Proposes the next concrete research step: an
+  Operational Independence Test `Independence_ρ(e_i,e_j,G_E,C)->{Confirmed,Rejected,Unknown}`, to be tested
+  against the corpus's full established heterogeneous input taxonomy (documents, databases, Internet
+  sources, rules, manifests, human instructions, scope, constitution, settings, ADRs, textbooks, AI/LLM
+  outputs) as "the next computational-closure test."
+introduces:
+  - concept: "A rigorous five-way separation: Identity (e_1=e_2, literal data-level sameness) ≠ Equivalence (e_1∼e_2, same underlying content, different records) ≠ Independence (e_1⊥e_2, genuinely separate acquisition) ≠ Dependency (e_1≺e_2, causal provenance link, richer than Equivalence since dependent items may have different semantic content)"
+  - concept: "The Evidence Graph G_E=(V,E) with typed provenance edges, formally shown to affect the mathematics of aggregation, not merely serve as metadata"
+  - concept: "UnderlyingObservation(e)=o, formalizing when multiple heterogeneous representations (database record, screenshot, LLM extraction, human report) trace to one underlying event — more precise than 'duplicate'"
+  - concept: "CommonSource(e_i,e_j) as a required first-class relationship distinct from direct dependency, protecting against correlated evidence inflation when two outputs share an ancestor without one producing the other"
+  - concept: "Three named epistemic dependency classes: Same contribution (e_i≡e_j), Dependent contribution (e_i⤳e_j), Independent contribution (e_i⊥e_j)"
+  - concept: "UnknownDependency≠Independence, with the conservative rule UnknownDependency⇒Do-not-assume-independent-corroboration, immediately qualified by UnknownIndependence≠NoEvidence to prevent over-application"
+  - concept: "The Evidence Identity relation ∼_E formalized as a genuine mathematical equivalence relation (reflexive/symmetric/transitive), qualified as holding only relative to an explicitly declared equivalence policy since semantic equivalence is not always automatically decidable"
+  - concept: "LLM judgment≠authoritative epistemic fact for equivalence claims: an LLM may only PROPOSE candidate equivalences, which must pass through a Proposed->Confirmed governance pipeline"
+  - concept: "The explicit rejection of Independent(e_i,e_j)=SemanticDifference(e_i,e_j) as mathematically wrong, via a worked independent-sensors counterexample — SemanticEquivalence≠EvidentialIndependence"
+  - concept: "The provisional theorem: Evidence multiplicity is not equivalent to evidential independence (|E|≠|IndependentContributions(E)|), and more strongly InformationVolume≠EvidenceStrength"
+  - concept: "An explicit, philosophically grounded admission that absolute epistemic independence is generally not computable from arbitrary documents alone — a genuine boundary condition of the problem, not a failure of the architecture — motivating a proposed Operational Independence Test with a three-valued {Confirmed,Rejected,Unknown} outcome"
+defines:
+  - concept: "Identity (e_1=e_2)"
+    definition: "Two evidence records are literally the same data object (same hash, same observation ID, same acquisition event) — a data/infrastructure-level property"
+  - concept: "Equivalence (e_1∼e_2)"
+    definition: "Two distinct evidence records represent the same underlying evidential content according to an explicitly declared equivalence policy — formalized as a true mathematical equivalence relation (reflexive, symmetric, transitive) relative to that policy"
+  - concept: "Independence (e_1⊥e_2)"
+    definition: "Two evidence objects derive from genuinely separate acquisition events with no established shared evidential dependency — logically distinct from semantic equivalence, since independently-acquired evidence can express identical propositions"
+  - concept: "UnderlyingObservation(e)"
+    definition: "The single real-world event or state that a given evidence object o is a representation of; multiple heterogeneous evidence objects sharing the same UnderlyingObservation value are representations of one event, not multiple independent observations"
+  - concept: "Operational Independence Test"
+    definition: "Independence_ρ(e_i,e_j,G_E,C)->{Confirmed,Rejected,Unknown} — a policy-relative, evidence-graph-aware, three-valued test for whether two evidence objects can be treated as independent, explicitly acknowledging that absolute metaphysical independence cannot be proven"
+refines:
+  - concept: "0539's explicit admission that the epistemic-equivalence relation ∼ was undefined, and its proposed 'Evidence Identity and Dependency Calculus' next theory"
+    refinement: "Directly and fully delivered: the relation ∼_E is now formally defined as an equivalence relation relative to an explicit policy, with Identity/Equivalence/Independence/Dependency cleanly separated and multiple concrete governing rules and test cases supplied"
+  - concept: "0539's Unknown Dependency≠Independence principle"
+    refinement: "Given a precise mathematical statement and an important qualifying nuance (unknown dependency limits only the incremental-independent-contribution calculation, not the evidence's overall usefulness)"
+  - concept: "0532/0534/0536/0537/0538's recurring independent-evidence and dependency-graph findings"
+    refinement: "Unified into a single coherent five-concept identity/equivalence/dependency calculus with a formal DDD model and a provisional theorem (evidence multiplicity≠evidential independence), superseding the corpus's earlier, more scattered treatments of the same underlying problem"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether the proposed Operational Independence Test is formally specified and tested against the corpus's full heterogeneous input taxonomy in a subsequent corpus file, as the file's own closing directive requires"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the rigorous Identity≠Equivalence≠Independence≠Dependency separation, the Evidence Graph, UnderlyingObservation(e), and CommonSource(e_i,e_j) as a required first-class relationship against correlated evidence inflation."
+  - "dimension-registry.md: record the resolution of 0539's flagged gap — UnknownDependency≠Independence with its UnknownIndependence≠NoEvidence qualification — the formalized equivalence relation ∼_E relative to an explicit policy, and the LLM-judgment≠authoritative-epistemic-fact governance rule for equivalence claims."
+  - "dimension-registry.md: record the provisional theorem (Evidence multiplicity≠evidential independence, InformationVolume≠EvidenceStrength), the rejection of Independent=SemanticDifference, and the honest admission that absolute independence is not computable from documents alone — a boundary condition motivating the proposed Operational Independence Test."
+anchor_test:
+  anchor: "0539's flagged open problem (undefined equivalence relation ∼) and its Unknown Dependency≠Independence principle; 0532/0534/0536/0537/0538's independent-evidence findings"
+  supports_dimension: "LANDMARK direct resolution of the corpus's explicitly flagged open problem: formalizes a rigorous five-way Identity/Equivalence/Independence/Dependency separation with a full Evidence Graph, UnderlyingObservation and CommonSource mechanisms, three named dependency classes, a properly qualified Unknown-Dependency principle, an equivalence relation ∼_E relativized to an explicit policy with an LLM-proposal-requires-confirmation governance rule, a rejected wrong-definition counterexample, six concrete test cases, and a provisional theorem (evidence multiplicity≠evidential independence) — closing with a philosophically grounded, honest admission that absolute independence cannot be computed from documents alone, framed as a boundary condition rather than a failure"
+  refines_or_contradicts: "directly and completely resolves 0539's flagged gap; sharpens and properly qualifies 0539's Unknown Dependency≠Independence principle; unifies and supersedes several earlier, more scattered corpus treatments of independent evidence (0528/0530/0532/0534/0536/0537/0538) into one coherent formal calculus; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The independent-sensors counterexample (two sensors both reporting temperature=20°C, semantically identical but evidentially independent) is a directly checkable, minimal demonstration that rules out the tempting but wrong equation Independent=SemanticDifference — genuine mathematical falsification evidence within the file itself."
+  - "The explicit acknowledgment that absolute epistemic independence is not computable from arbitrary documents alone is a rare instance of the corpus stating a genuine, permanent theoretical limit rather than merely an unresolved-for-now research gap, giving this finding unusual epistemic weight."
+undefined_concepts: []
+open_questions:
+  - "Whether the proposed Operational Independence Test (a policy-relative, three-valued Confirmed/Rejected/Unknown function) is formally specified and tested against the corpus's heterogeneous input taxonomy in the immediately following file(s)"
+  - "How the CommonSource(e_i,e_j) relationship is computed in practice when provenance information is incomplete or absent, given the file's own admission that independence cannot be proven from documents alone"
+tier2_triggered: true
+tier2_reason: "LANDMARK file directly and fully resolving an explicitly flagged open problem from the immediately preceding file: it formalizes a rigorous, mathematically precise Identity/Equivalence/Independence/Dependency separation (five distinct concepts previously conflated across the corpus's Evidence-theory arc), introduces the Evidence Graph, UnderlyingObservation, and CommonSource mechanisms as first-class formal objects, properly qualifies the corpus's Unknown-Dependency principle to avoid over-application, formalizes the equivalence relation ∼_E relative to an explicit governance policy with an LLM-proposal-requires-confirmation rule, delivers a directly checkable counterexample refuting a tempting wrong definition, proposes six concrete test cases with explicit expected outcomes, states a genuine provisional theorem (evidence multiplicity≠evidential independence), and closes with a philosophically significant, honest admission that absolute epistemic independence cannot be computed from documents alone — a permanent theoretical boundary condition rather than a temporary research gap, one of the more intellectually mature moments in the entire corpus."

@@ -1,0 +1,56 @@
+
+==============================================================================
+SO-EXP-02  Congruence vs. invariant-expressibility
+==============================================================================
+  s        = ['a:p@vendor/Accepted', 'b:q@forum/Accepted']
+  Merge blind      -> objs=['z:(p+q)@internal/Proposed']  merged=[]
+  Merge sensitive  -> objs=['z:(p+q)@internal/Proposed']  merged=[('z', ['forum', 'vendor'])]
+
+  F4(blind result)     = ((('z', '(p+q)', 'internal', 'Proposed'),), ())
+  F4(sensitive result) = ((('z', '(p+q)', 'internal', 'Proposed'),), ())
+  F4 distinguishes them? False
+  F5 distinguishes them? True
+
+  READING: F4 is congruent for Merge/sensitive precisely BECAUSE F4 projects
+  away the `merged` record.  The provenance the sensitive variant exists to
+  preserve is invisible in F4.  Congruence is satisfied vacuously.
+
+==============================================================================
+Is the corpus's own merge-provenance invariant EXPRESSIBLE in each abstraction?
+==============================================================================
+  Invariant under test (s256.9, restated s257.20):
+        Prov(x3) >= Prov(x1) u Prov(x2)
+  A predicate is EXPRESSIBLE in abstraction F iff its truth value is determined
+  by F(state) -- i.e. it cannot differ between two states F identifies.
+
+  state_holds    : invariant TRUE   (merged = [('z', ['forum', 'vendor'])])
+  state_violates : invariant FALSE  (merged = [])
+
+  invariant(state_holds)    = True
+  invariant(state_violates) = False
+
+  abstraction                identifies the two states?   invariant expressible?
+  ----------------------------------------------------------------------------
+  F1 content-only            True                         NO
+  F2 content+status          True                         NO
+  F3 id+content+status       True                         NO
+  F4 K=(A,R) [TERMINAL]      True                         NO
+  F5 K=(A,R)+mergesrc        False                        YES
+  F6 full state [control]    False                        YES
+
+  => DERIVED RESULT.  The terminal model K=(A,R) is:
+       * CONGRUENT for every mandatory state-transforming operation tested
+         (SO-EXP-01, both dependency variants, 208-state domain), AND
+       * UNABLE TO EXPRESS the merge-provenance invariant that the corpus's own
+         s256.9 / s257.20 propose as possibly mandatory.
+
+  These two facts are consistent, and together they show that s259.15's
+  congruence criterion is NECESSARY BUT NOT SUFFICIENT for state adequacy.
+  A second criterion is required:
+
+        For every mandatory invariant I,  I must be expressible as a
+        predicate on the candidate state.
+
+  The corpus states the congruence criterion (259.15) and separately states the
+  invariant (256.9) and never composes them.  This is the same 'correct local
+  results that are never composed' pattern the first-order pass recorded.

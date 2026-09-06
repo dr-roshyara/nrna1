@@ -1,0 +1,85 @@
+sequence: 1051
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-289/exec/OUT-t289_bootstrap.txt
+title: "OUT-t289_bootstrap.txt -- The v1 Execution Output Revealing a Genuinely Important Self-Diagnosed Modelling Bug: the Spurious K-equiv_T Definitional 2-Cycle (Involving Two Non-Resolvable Nodes) Rendered the ENTIRE Minimal-Cut Search Unsolvable at Every Size Up to 4, Not Because the Real Problem Is Unsolvable but Because That One Miscoded Edge Could Never Be Broken by Any Resolvable-Node Cut"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the saved execution output of file 1049's original (v1) t289_bootstrap.py script, together with an appended self-diagnosis explaining the discovered bug that motivated file 1050's v2 fix"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1051
+importance: critical
+confidence: high
+about: >
+  The saved execution output of file 1049's original `t289_bootstrap.py` (v1: 27 nodes, 43 edges, matching
+  the pre-fix graph including the spurious `K→equiv_T` edge).
+
+  **DELIVERS THE EXECUTED CYCLE ENUMERATION**: exactly FIVE elementary cycles found in the dependency graph:
+  `K↔equiv_T` (the spurious definitional artifact); `approx↔equiv` (the already-tracked N-1 conflict, files
+  1041, 1047, 1049, now formally confirmed as a graph cycle by execution); `congruence↔equiv`; `approx→equiv
+  →bindings→approx`; `congruence→equiv→delta→congruence`.
+
+  **DELIVERS A GENUINELY IMPORTANT, STRIKING NEGATIVE RESULT AND ITS SELF-DIAGNOSIS**: the exhaustive
+  minimal-cut search over the 12 RESOLVABLE (governance-decidable) nodes returns **ZERO cut sets at every
+  size from 1 through 4** -- a result that, read naively, would suggest the bootstrap problem requires
+  cutting five or more governance decisions simultaneously, or is not solvable via resolvable nodes at all.
+  **The appended self-diagnosis explains this is entirely an ARTIFACT, not a genuine finding**: "REASON:
+  `258.12` is a DEFINITION (`K=H/≡_𝒯`), not a dependency in both directions. Rendering an equation as a
+  2-cycle is a modelling artifact, and the mandate forbids calling that a cycle." Because `K` is NOT itself a
+  RESOLVABLE node (it is `DERIVED_ONLY`), the spurious `K↔equiv_T` 2-cycle can NEVER be eliminated by removing
+  ANY combination of resolvable nodes -- meaning this single miscoded edge alone was sufficient to poison the
+  ENTIRE exhaustive search, forcing every candidate cut size to fail regardless of how many of the four
+  GENUINE remaining cycles (all of which pass through the resolvable node `equiv`) a given cut would
+  otherwise have eliminated. **This is a valuable, generalizable methodological lesson**: a single incorrectly
+  modelled edge involving only non-decidable nodes can silently render an entire exhaustive combinatorial
+  search structurally unsolvable, producing a misleadingly severe negative result that has nothing to do with
+  the substantive difficulty of the real problem.
+
+  **Confirms the disciplined fix documented in file 1050 (v2)**: "`T→equiv_T` is retained" -- only the
+  spurious reverse direction is removed, preserving the genuine dependency that `equiv_T` (the history
+  quotient) is indexed by the transformation family `T`.
+
+  This file's cycle enumeration, once the spurious edge is excluded, STRONGLY SUGGESTS (though this specific
+  file does not itself confirm the v2 re-run's numeric result) that the genuine minimal cut is very likely
+  size 1, `{equiv}` alone -- since all four remaining genuine cycles pass through that single node. This
+  reconstruction notes this as a strong inference from the cycle list, pending direct confirmation from a v2
+  execution output if one is subsequently encountered.
+introduces:
+  - concept: "The executed confirmation of exactly five elementary cycles in the Step-289 dependency graph, one spurious (a definitional artifact) and four genuine, all four genuine cycles passing through the single resolvable node 'equiv'"
+  - concept: "The genuinely important, generalizable methodological lesson that a single incorrectly modelled edge involving only non-decidable (derived-only) nodes can silently poison an entire exhaustive combinatorial search, producing a misleadingly severe null result unrelated to the real problem's difficulty"
+  - concept: "The strong inference, pending direct confirmation, that the genuine minimal bootstrap cut for the corrected (v2) dependency graph is size 1, the single node 'equiv' alone"
+defines: []
+refines:
+  - concept: "File 1049's dependency-graph script and file 1050's v2 correction"
+    refinement: "GROUNDED with the actual executed output, revealing the specific mechanism by which the spurious K-equiv_T edge poisoned the entire minimal-cut search, and confirming the disciplined nature of the v2 fix"
+  - concept: "This reconstruction's already-tracked equiv/approx N-1 conflict (files 1041, 1047)"
+    refinement: "FORMALLY CONFIRMED, by direct execution, as a genuine two-node graph cycle -- one of exactly four real cycles in the entire dependency structure, all sharing the single node 'equiv'"
+contradicts: []
+repeats:
+  - "The cycle list and the RESOLVABLE/DERIVED_ONLY counts substantially confirm file 1049's already-documented script design; this file's distinctive contribution is the actual executed output, the striking zero-cuts-found artifact, and its explicit self-diagnosis."
+bridge_candidates:
+  - "A v2 execution output (with the spurious edge removed), which would directly confirm whether the minimal cut is indeed size 1 ({equiv}) -- not yet directly encountered."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the executed confirmation of exactly four genuine dependency cycles in the Step-289 graph, all passing through the single node 'equiv', and the generalizable lesson that one spurious definitional edge among non-resolvable nodes can silently poison an entire exhaustive minimal-cut search."
+  - "dimension-registry.md: record the strong inference (pending direct confirmation) that the genuine minimal bootstrap cut is size 1, the single node 'equiv' alone -- meaning resolving the equiv/approx definitional conflict (N-1) may be the single decision that breaks every remaining circular dependency in the entire equality/kernel research programme."
+anchor_test:
+  anchor: "File 1049's dependency-graph script and this reconstruction's already-tracked N-4 master-gate and N-1 equiv/approx-conflict findings"
+  supports_dimension: "Confirms by direct execution that all four genuine cycles pass through the single node 'equiv', suggesting a materially sharper master-gate finding than N-4 alone"
+  refines_or_contradicts: "refines and sharpens prior findings via direct execution"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The five-cycle enumeration and the zero-cuts-found result are directly reproducible by executing file 1049's script, and the self-diagnosis is directly checkable against file 1050's v2 edge removal."
+undefined_concepts: []
+open_questions:
+  - "Whether a v2 execution output exists confirming the minimal cut is indeed size 1 ({equiv}), not yet directly encountered."
+tier2_triggered: true
+tier2_reason: "Delivers the actual executed cycle enumeration for the Step-289 dependency graph and a genuinely important, generalizable methodological lesson: one spurious definitional edge among non-resolvable nodes silently poisoned an entire exhaustive minimal-cut search, producing a misleadingly severe null result. The corrected cycle structure strongly suggests the genuine minimal bootstrap cut is a single node ('equiv'), a materially sharper finding than the already-tracked N-4 master gate. Classified importance critical and confidence high given the executed, directly reproducible nature of this evidence."

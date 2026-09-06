@@ -1,0 +1,46 @@
+sequence: 47
+path: docs/knowledgeos/brainstorming/20260819-104748-ai-engineering-lifecycle-five-responsibilities-governance.md
+title: AI Engineering Lifecycle — Five Responsibilities & Governance (conversational transcript)
+date: 2026-08-19
+bytes: 12452
+doc_type: conversational AI-assistant transcript describing a governance/workflow role model
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [governance, domain_model]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+status: SR
+maturity: developing
+importance: medium
+
+introduces:
+  - role_model_vs_workflow_state_machine_distinction
+  - five_responsibilities_governance_architecture_implementation_verification_communication
+  - four_layer_reorganization_authority_governance_workflow_verification
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge, dd_kes_discipline]
+open_questions: []
+
+depends_on: []
+extends: []
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: []
+connects_to: []
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: "No formal object, operator signature, contradiction, or mathematical/Gita/Kernel content; a structural governance/workflow discussion, fully captured in Tier 1."

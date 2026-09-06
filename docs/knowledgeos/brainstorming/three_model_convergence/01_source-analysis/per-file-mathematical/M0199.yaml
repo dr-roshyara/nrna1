@@ -1,0 +1,52 @@
+sequence: M0199
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-090002_untitled-5.md
+title: "Concrete file-request for the KR-REP audit (cases.jsonl, subsets.jsonl, property-results.json, emit_corpus.py, CORPUS-AUDIT.md) — restates M0198's R1-R4/R5-R2 category-error warning as an operational instruction, no new theoretical content"
+date: "20260903-090002"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0199
+importance: medium
+confidence: high
+about: >
+  A short operational follow-up specifying which artifacts the production auditor should inspect
+  first (corpus/cases.jsonl primary, corpus/subsets.jsonl secondary, property-results.json as
+  aggregate-verification ground truth, emit_corpus.py for reproducibility, CORPUS-AUDIT.md for
+  context), explicitly excluding the 481-witness tail file as a primary dataset, and restating
+  M0198's R1-R4-vs-R5→R2 category-error warning in operational form ("don't generate anything else
+  yet").
+introduces:
+  - "A concrete artifact priority order for the audit: cases.jsonl (primary, 1395 records) > subsets.jsonl (secondary, 14,194 records) > property-results.json (aggregate ground truth, ~4.7KB) > emit_corpus.py (reproducibility) > CORPUS-AUDIT.md (context) — an operational sequencing not itself present in M0198"
+  - "A concrete audit checklist restated as questions: does the schema support the frozen KR-ZERO claims; is the 1,395 denominator internally consistent; how are minimal_k/irreducible encoded; can the 115 irreducible cases be independently characterized; how do case-level and subset-level grains relate"
+defines: []
+refines:
+  - "M0198's audit-before-implement protocol: narrows PHASE A/B (inventory/classify) into a concrete, ordered file-request list"
+contradicts: []
+repeats:
+  - "M0198's R1-R4-representation-classes-vs-R5→R2-reduction-hierarchy category-error warning, restated operationally: 'I would not ask for or construct a KR-REP-DATASET from the existing KR-ZERO R1-R4 labels... That would be a category error'"
+bridge_candidates: []
+mathematical_content: null
+gita_content: null
+kernel_content: >
+  Purely operational continuation of M0198's audit protocol; no new theoretical or empirical content.
+registry_updates: []
+anchor_test:
+  anchor: false
+  supports_dimension: null
+  refines_or_contradicts: "refines (M0198's audit protocol, made concrete)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"I would not ask for or construct a KR-REP-DATASET from the existing KR-ZERO R1-R4 labels... That would be a category error.\""
+undefined_concepts: []
+open_questions:
+  - "Was cases.jsonl/subsets.jsonl ever actually attached and inspected per this request?"
+tier2_triggered: false
+tier2_reason: null

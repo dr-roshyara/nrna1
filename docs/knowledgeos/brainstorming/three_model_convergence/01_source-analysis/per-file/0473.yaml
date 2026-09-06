@@ -1,0 +1,46 @@
+sequence: 473
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-175149_verdict-on-the-preceding-question.md
+title: "Confirmed duplicate: exact tail (last 740 lines / Part C) of 0472"
+date: "2026-08-26"
+bytes: 12143
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "same Coherence review content as 0472's Part C"
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 472
+importance: low
+confidence: high
+about: >
+  Confirmed via diff (zero output) to be byte-identical to the final 740 lines of 0472 (Part C: the second
+  critical review, which classified the revised Coherence document "Accepted as Working Model," introduced
+  the "constraints" renaming, refined contradiction to require temporal overlap and dimension-specific value
+  semantics, corrected Zero's scope to include gaps, introduced the five-way Incoherent/Unknown/Incomplete/
+  Conflicted/Unresolved status taxonomy, and launched Question 9 with four named conflict forms). No new
+  content. All substantive material already fully recorded at 0472.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - "Confirmed via diff: byte-identical to 0472's final 740 lines (Part C)."
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0472's Part C (Coherence review, Question 9 launch)"
+  supports_dimension: "Full duplicate; no new content"
+  refines_or_contradicts: "none -- duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Confirmed full duplicate of 0472's Part C; no new content warranting Tier 2."

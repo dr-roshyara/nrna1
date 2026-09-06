@@ -1,0 +1,100 @@
+sequence: "0150"
+path: docs/knowledgeos/brainstorming/kernel/20260823-110950-kernel-domain-level-brainstorming-admission-hypotheses.md
+title: "DeepSeek proposes 'Kernel = Admission Boundary' (4 competing hypotheses); critique-voice marks confidence-as-Kernel-invariant UNPROVEN, proposes 6-state epistemic lifecycle, commissions round-3 with 14 lenses"
+date: "2026-08-23"
+bytes: 40000
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0148"
+importance: critical
+confidence: high
+about: >
+  Round 2 of the DeepSeek/critique-voice kernel-boundary cycle (round 1 = 0148). DeepSeek systematically
+  works through 13 domain-level questions (core act, aggregate purpose, admission meaning, minimum
+  capacity, what's outside, thing-vs-boundary, domain-event meaning, knowledge/evidence relationship,
+  capacity limits, small/large-kernel risk tests) and lands on "Kernel = Admission Boundary of the
+  KnowledgeAggregate" as its best-supported hypothesis among four competing ones. The critique-voice
+  rejects accepting this as decided, applying 12 named architectural lenses and rating each area with a
+  🟢/🟡/🔴 confidence marker -- most notably marking "confidence is a Kernel invariant" UNPROVEN (🔴),
+  a genuine walk-back of the unquestioned assumption from 0144-0148. Proposes a 6-state epistemic
+  lifecycle candidate and a reusable anti-God-Aggregate responsibility test. Commissions an even larger
+  round-3 DeepSeek prompt (14 lenses, CORE/SUPPORTING/OUTSIDE/UNKNOWN matrix, 10 assumptions to
+  challenge, 3-5 required competing hypotheses) -- the Kernel boundary remains unresolved.
+
+introduces:
+  - "DeepSeek's four competing Kernel hypotheses: A) Admission Boundary (best-supported), B) Epistemic
+    Decision Core, C) Knowledge Consistency Boundary, D) Constitutional Transition Engine -- a further
+    sibling in the K1-K8/Six-Pillars representation family"
+  - "Confidence-as-Kernel-invariant marked UNPROVEN (🔴): three competing models proposed (confidence as
+    intrinsic property / as a derived epistemic assessment / as a contextual projection) -- directly
+    challenges the unquestioned assumption carried through 0144-0148"
+  - "Candidate 6-state epistemic lifecycle: CandidateProposed -> CandidateAdmitted -> KnowledgeCreated
+    -> KnowledgeQualified -> KnowledgeContested -> KnowledgeSuperseded -- questioning whether
+    KnowledgeCreated is the fundamental domain event or merely the first of several, a sixth sibling in
+    the recurring status-vocabulary-proliferation pattern"
+  - "Reusable anti-God-Aggregate responsibility test: 'If responsibility X is removed, which invariant
+    breaks? If none, X is not Kernel responsibility' -- a clean, general-purpose DDD filter, useful
+    independent of which Kernel hypothesis is eventually adopted"
+  - "12 named critique lenses (Bounded Context, Aggregate/invariant, Domain-event/lifecycle,
+    Constitutional-governance, EKS/PKS-historical-continuity, Representation-independence, Epistemic,
+    Observation/Evidence, SNF-semantic, Sanskrit/compiler, Lifecycle, Conway/Context-map), each applied
+    systematically with a strength rating"
+  - "Round-3 commissioning prompt: 14 lenses (adds Deterministic-assurance, Responsibility-allocation,
+    Anti-God-Aggregate to the 12), a full CORE/SUPPORTING/OUTSIDE/UNKNOWN Responsibility Matrix over 14
+    candidate capabilities, and 10 explicit assumptions to challenge -- explicitly still domain
+    discovery, not implementation"
+
+defines: []
+
+refines:
+  - "Directly challenges (does not merely repeat) DeepSeek's own 0148 six-capability map by questioning
+    whether confidence and history genuinely belong inside the aggregate boundary, rather than accepting
+    them as already-settled"
+
+contradicts:
+  - "Marks 'confidence is essential to the Kernel' (asserted without challenge at 0144-0148) as UNPROVEN"
+
+repeats:
+  - {concept: "admission-boundary framing, six-ish capability list, evidence-content vs. evidence-reference distinction", canonical_source: "0148", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "Ledger Entry 48 addendum (Round 2): DeepSeek's four hypotheses added as a further sibling; the
+    confidence-as-invariant walk-back and the 6-state lifecycle vocabulary recorded"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Unknown Preservation"]
+  refines_or_contradicts: "Challenges (does not adopt) 0148's confidence-as-Kernel-invariant assumption; proposes a further unreconciled kernel-boundary hypothesis."
+  alternative_minimal_kernel: "DeepSeek's Hypothesis A (Admission Boundary) -- a further unreconciled sibling"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "The explicit UNPROVEN rating on confidence-as-Kernel-invariant is a genuine self-correcting move in
+    the cross-AI review cycle -- an assumption accepted uncritically across four prior files (0144-0148)
+    is now flagged and not yet resolved"
+  - "Two full rounds of DeepSeek-brainstorming-then-critique have NOT converged on a single Kernel
+    hypothesis; the round-3 prompt is larger and more exhaustive than round 2's, suggesting the cycle
+    may continue for several more files before (if ever) a decision is reached"
+
+undefined_concepts: []
+open_questions:
+  - "Whether round 3's larger lens set and responsibility matrix actually produces a converged, adopted
+    Kernel boundary, or continues the pattern of hypothesis-then-critique without resolution"
+
+tier2_triggered: true
+tier2_reason: >
+  Genuine walk-back of a previously unquestioned Kernel-invariant assumption (confidence), a new
+  candidate epistemic-lifecycle vocabulary, a reusable anti-God-Aggregate test, and confirmation that
+  two full review rounds have not yet converged on the Kernel boundary.

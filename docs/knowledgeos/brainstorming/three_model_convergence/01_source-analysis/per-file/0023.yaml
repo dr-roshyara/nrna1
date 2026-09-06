@@ -1,0 +1,48 @@
+sequence: 23
+path: docs/knowledgeos/KnowledgeOS_Engineering_Decision_Model_Discovery.md
+title: KnowledgeOS — Engineering Decision Model Discovery
+date: 2026-08-03
+bytes: 15363
+doc_type: strategic discovery, reconciled against existing canon decision model
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [governance, domain_model, evidence, contradiction]
+
+status: DR
+maturity: developing
+importance: medium
+
+introduces:
+  - catalog_vs_log_asymmetry_for_decision_classes   # engineer decisions pre-enumerated; governance decisions discoverable only retrospectively
+  - i1_knowledge_not_artifact_underwrites_deletion_litmus
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge, decision]
+open_questions:
+  - U_DM_1_is_the_catalog_log_asymmetry_a_defect_or_correct_shape
+  - U_DM_2_freeze_as_ungoverned_decision_type
+  - U_DM_3_retire_PM6
+  - U_DM_4_decision_model_adoption_test_unevenly_met
+  - U_DM_5_is_domains_decision_silence_permanent_or_dormant
+
+depends_on: [9, 13, 18]
+extends: [13]         # applies Knowledge!=Artifact (0013) as a load-bearing precondition
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: [9, 22]
+connects_to: [9, 13, 18, 22]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: "No formal object, operator, mathematical/probabilistic/topological content, Kernel boundary/admissibility claim, or Gita content. Findings are structural/DDD, fully captured in Tier 1."

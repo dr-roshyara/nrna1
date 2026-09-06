@@ -1,0 +1,161 @@
+sequence: 659
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-120938_step-075-decision-theory-under-uncertainty.md
+title: "CONFIRMED Sixth Collision: Step 75 Substantially Re-Derives 0645's Already-Processed Step 62 Decision Theory Content (Expected Utility, Decision≠Authorization, Constraint≠Preference, EVSI/EVPI Value-of-Information Machinery) and Introduces a THIRD Confirmed Exact-Name Invariant Duplicate, I_DecisionAuthority, Matching 0645's Own I_DecisionAuthority Verbatim, With Four Further New-Named Sibling Invariants Not Exact Matches; Delivers Genuinely New Elaboration (Reversibility as a Formal Decision Dimension, an Active-Learning Investigation-Recommendation Loop via EVPI, a Five-Member Decision-Class Taxonomy); Verdict 'STEP 75 — PASS'; Closes Opening Step 76 — Multi-Objective Decisions and Value Conflicts, Provisionally Assessed as Genuinely New Ground (Pareto Optimality, Governance of the Objective Function) Not Previously Addressed in This Depth"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 75 -- Decision Theory Under Uncertainty', opened at 0658's close; CONFIRMS the sixth collision this reconstruction flagged at 0658 against the corpus's already-established Step 62 decision-theory content (0645)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 659
+importance: critical
+confidence: high
+about: >
+  **CONFIRMS the sixth flagged collision from 0658**: Step 75 substantially re-derives 0645's (Step 62's)
+  already-processed decision-theory content. This file independently re-derives: the expected-utility
+  formula `EU(A)=∑P(O_i|do(A))U(O_i)` with `A*=argmax EU(A)` subject to constraints (confirmed via a worked
+  numeric experiment, `EU(A)=76`, PASS); `Utility≠Evidence` (confirmed via a utility-treated-as-probability
+  experiment, PASS); Decision optimization restricted to the feasible/allowed policy space
+  (`A*=argmax_{A∈𝒜_allowed}EU(A)`, confirmed via a utility-versus-policy experiment, PASS) -- substantively
+  the same principle as 0645's `BestAction reframed as BestFeasibleAction under applicable policy`; **`Decision
+  ≠Authorization`** (confirmed via a deploy-decision-without-authority experiment, PASS) -- an EXACT
+  restatement of 0645's own already-established `Decision Selection≠Authorization` distinction, with zero
+  cross-reference; Hard constraints versus preferences (confirmed via a two-legally-permissible-actions
+  experiment, PASS) -- substantively identical to 0645's `Constraint≠Preference`, again with zero cross-
+  reference; and `EvidenceConflict≠ValueConflict` (a stakeholder rejecting evidence-supported action A on
+  ethical-cost grounds, confirmed via a dedicated experiment, PASS) -- territorially adjacent to, though not
+  a verbatim restatement of, 0645's decision/authority-boundary work.
+
+  **Delivers a THIRD confirmed exact-name invariant duplication in this session's Steps 65-75 span**: this
+  file's invariant set includes **`I_{DecisionAuthority}`** ("execution requires appropriate authority"),
+  **matching, symbol-for-symbol, one of 0645's own four named invariants** (this reconstruction's 0645
+  record explicitly lists `I_DecisionAuthority, I_DecisionBasis, I_ActionBoundary, I_ObjectiveIntegrity`),
+  with substantively identical content and zero cross-reference. The file's remaining four invariants
+  (`I_{DecisionKnowledge}`, `I_{DecisionPolicy}`, `I_{DecisionUncertainty}`, `I_{DecisionProvenance}`) are
+  NOT exact-name matches with 0645's `I_DecisionBasis`/`I_ActionBoundary`/`I_ObjectiveIntegrity`, though
+  `I_DecisionPolicy` (governed decisions record applicable policy version) and `I_DecisionProvenance`
+  (evidential/analytical lineage remains traceable) occupy substantively adjacent territory to 0645's
+  `I_ObjectiveIntegrity` (versioned/governed objectives) and `I_DecisionBasis` respectively -- this is a
+  partial, not total, invariant-set collision, following the same pattern established at 0658 (two exact
+  matches out of four, two territorially-adjacent non-matches).
+
+  Delivers Risk formalized as `Probability×Consequence` with a catastrophic-low-probability example
+  (`P=0.001, Loss=-€100M`), confirmed via a policy-forbids-catastrophic-risk experiment (PASS), and Robust
+  decision-making under probability-interval uncertainty (`min_{p∈[0.6,0.9]}EU(A,p)`), confirmed via a
+  probability-interval experiment (PASS) and a distributional-model-uncertainty experiment (Normal versus
+  heavy-tailed models yielding materially different risk estimates, `ModelUncertainty` required to remain
+  visible -- PASS) -- this Robust/minimax framing directly overlaps 0645's own already-noted "Minimax,
+  Risk-Sensitive Utility" policy alternatives, again without cross-reference.
+
+  **Delivers the file's most genuinely valuable new elaboration -- Value of information formalized via
+  EVPI and connected to an active-learning loop**: `EVPI=EU(perfect-information decision)-EU(decision now)`,
+  confirmed via an information-acquisition experiment (a €100 measurement expected to improve decision value
+  by €2,000 correctly recommends `CollectInformation` -- PASS) and an uncertainty-driven-investigation
+  experiment (KnowledgeOS cannot distinguish two models and identifies a discriminating measurement --
+  `InvestigationRecommendation` -- PASS), reframing the architecture's question from "what should we do now?"
+  to "what should we learn next?" -- **this genuinely extends 0645's EVSI-based value-of-information
+  machinery (EVSI addresses sample information; EVPI addresses the idealized perfect-information bound) into
+  a concrete active-learning loop** (`Knowledge→InformationAcquisition→UpdatedKnowledge→Decision`), a
+  legitimate and mathematically standard complementary treatment rather than pure duplication, though the
+  underlying "not all knowledge is decision-relevant"/VOI insight itself was already established at 0645.
+
+  Delivers **Reversibility formalized as an explicit new decision dimension**: `DecisionProfile=
+  (ExpectedUtility, Risk, Uncertainty, Reversibility, Cost, ConstraintCompliance)`, confirmed via a
+  reversible-preferred-under-uncertainty experiment (two actions with equal expected utility, the
+  reversible one preferred under a stated robustness policy -- PASS) -- genuinely new concrete formalization,
+  though reversibility itself was already named as a relevant consideration in 0658's own closing preview of
+  this exact step, so its appearance here is expected rather than a surprise finding.
+
+  Delivers Decision timing/validity (`Decision=f(K,t)`, `ValidUntil`, decisions expiring into `Stale`
+  status), confirmed via delayed-action and expired-decision experiments (both PASS), and Decision-policy
+  versioning (`DecisionValidUnder(P^(1))` distinguished from `CurrentlyExecutableUnder(P^(2))`), confirmed
+  via a policy-version-mismatch experiment (PASS) -- directly paralleling 0645's already-established
+  governed/versioned-objectives discipline. Delivers a Decision provenance graph unifying Evidence, Causal
+  Model, Utility Model, Context, and Policy as joint decision dependencies, confirmed via an unexplained-
+  decision experiment (`DecisionProvenanceIncomplete` -- PASS).
+
+  Delivers `Recommendation≠Decision` (an LLM's stated recommendation must not be silently stored as the
+  actual `Decision` without evaluation), confirmed via an unevaluated-LLM-recommendation experiment (PASS)
+  -- directly and explicitly paralleling this file's own immediately preceding sibling file's (0658's)
+  `Recommendation≠EvidenceOfRecommendationCorrectness`, a related but distinct concern (one about validation
+  after the fact, one about authority before the fact), suggesting a genuinely coherent, non-duplicative
+  thematic thread across these two specific files. Delivers a Human-in-the-loop qualification (explicit
+  policy-granted automated-agent authority within a bounded domain, e.g. auto-scaling within `[1,20]`
+  instances, legitimately produces a valid decision without requiring human involvement for every trivial
+  case, confirmed via a bounded-autonomous-decision experiment, PASS) and a five-member Decision-class
+  taxonomy (`AdvisoryDecision, AutomatedDecision, HumanDecision, DelegatedDecision, EmergencyDecision`),
+  confirmed via a decision-class-confusion experiment (an advisory recommendation treated as executable
+  authorization -- `GovernanceViolation` -- PASS) -- genuinely useful new elaboration not present in 0645's
+  more foundational treatment.
+
+  Delivers a consolidated Decision domain object (`D=(Alternatives, KnowledgeSnapshot, CausalModel,
+  ProbabilityModel, UtilityModel, Constraints, RiskModel, Policy, Authority, Timestamp, Validity)`,
+  eleven fields) -- structurally similar to, though not identical in field composition to, 0645's own
+  already-established ten-field Decision domain object, again without cross-reference.
+
+  **Delivers Step 75's verdict "STEP 75 — PASS,"** with the closing chain "Causal/Probabilistic Knowledge →
+  Utility → Risk → Constraints → Policy → Decision → Authorization" and a full closed-loop reformulation
+  (`Observe→Represent→Validate→Infer→Model→Decide→Authorize→Act→Observe→Evaluate→Learn`), explicitly declared
+  "a genuine computational architecture."
+
+  **Closes by identifying multi-objective decision theory as the next unavoidable problem**: a single
+  scalar utility `U(a)` is insufficient when stakeholders hold genuinely conflicting objectives
+  (`CostMinimization` vs. `QualityMaximization` vs. `RiskMinimization`), requiring a vector utility
+  `U(a)=(U_1(a),...,U_n(a))`. Opens "Step 76 — Multi-Objective Decisions and Value Conflicts," previewing
+  Pareto optimality, stakeholder conflict, tradeoffs, weights, fairness, and -- most significantly --
+  "who is allowed to decide the objective function itself?", explicitly framed as "governance of the
+  decision model," described as "likely to become one of the most important architectural layers." **This
+  appears to be provisionally new corpus territory** -- no prior file in this reconstruction's records has
+  addressed multi-objective/Pareto decision theory or objective-function governance specifically, though
+  0645's own stakeholder-preference material (`DecisionPolicy≠UniversalMathematicalFormula`) is a directly
+  relevant precursor that this new step should be expected to build on explicitly -- to be confirmed once
+  0660 is read. No actual code execution reported in this file.
+introduces:
+  - concept: "CONFIRMED sixth collision: Step 75 substantially re-derives 0645's already-processed Step 62 Decision Theory content (expected utility, Decision≠Authorization, Constraint≠Preference), with a THIRD confirmed exact-name invariant duplicate (I_DecisionAuthority)"
+  - concept: "A partial (not total) invariant-set collision pattern now confirmed twice (0658 and 0659): roughly half of each file's new invariant set exactly duplicates a prior step's invariant names, while the remainder are genuinely distinct siblings occupying adjacent territory"
+  - concept: "A genuine, legitimate extension of 0645's EVSI value-of-information machinery via EVPI and a concrete active-learning investigation loop — a defensible mathematical companion treatment rather than pure duplication"
+  - concept: "Reversibility formalized as an explicit DecisionProfile dimension, and a five-member Decision-class taxonomy (Advisory/Automated/Human/Delegated/Emergency) — genuinely new elaboration"
+  - concept: "Provisionally new corpus territory: Step 76 (Multi-Objective Decisions and Value Conflicts), explicitly raising 'who is allowed to decide the objective function itself?' as governance of the decision model — to be confirmed at 0660"
+defines:
+  - concept: "The partial invariant-collision pattern"
+    definition: "Across the two most severe collision instances confirmed this session (0658 against 0646, 0659 against 0645), roughly half of the newly introduced invariant names exactly duplicate a specific prior step's invariant of the same name and substantially the same content, while the other half are genuinely new siblings occupying adjacent but distinct territory — suggesting the model line partially recalls invariant themes from the relevant prior step without recalling the specific already-assigned names for all of them"
+refines:
+  - concept: "0645's (Step 62's) already-processed Decision Theory content (Decision Selection≠Authorization, Constraint≠Preference, EVSI, four named invariants I_DecisionAuthority/I_DecisionBasis/I_ActionBoundary/I_ObjectiveIntegrity, a ten-field Decision domain object)"
+    refinement: "CONFIRMED SUBSTANTIAL RE-DERIVATION: this file independently re-derives Decision≠Authorization and Constraint≠Preference verbatim in substance, introduces a THIRD confirmed exact-name invariant duplicate (I_DecisionAuthority), and constructs a structurally similar but not identical eleven-field Decision domain object, all without cross-reference — confirming the sixth flagged collision at the same severity tier as 0656 (I_Concurrency) and just below 0658 (I_Causal+I_Intervention, two exact matches)"
+  - concept: "0645's EVSI-based value-of-information machinery"
+    refinement: "Genuinely and legitimately extended, not merely duplicated, via the complementary EVPI concept and a concrete active-learning investigation-recommendation loop — a defensible mathematical elaboration consistent with standard decision-theory practice (EVSI and EVPI are recognized companion concepts), though the underlying VOI insight itself was already established"
+  - concept: "0658's Recommendation≠EvidenceOfRecommendationCorrectness"
+    refinement: "Directly and coherently complemented (not duplicated) by this file's Recommendation≠Decision — the two form a genuinely non-redundant pair addressing pre-execution authority (this file) versus post-execution validation (0658) of AI recommendations, suggesting a deliberate and coherent thematic thread across these two specific adjacent files despite their other confirmed overlaps with earlier steps"
+contradicts: []
+repeats:
+  - "0645 (Decision≠Authorization, Constraint≠Preference, and the I_DecisionAuthority invariant — exact-name duplicate)"
+bridge_candidates:
+  - "HIGH PRIORITY: confirm whether 0660 (Step 76 — Multi-Objective Decisions and Value Conflicts) is genuinely new corpus territory (no prior file has addressed Pareto optimality or objective-function governance specifically) or represents a further undetected collision; this is the second step in the Steps 73-76 span provisionally assessed as new ground (after 0657), providing a further calibration point for how localized versus pervasive the Steps 65-75 repetition pattern actually is."
+  - "Carried forward: the Steps 65-75 span has now accumulated a well-evidenced pattern across at least four distinct step-pairs (Step70/71 vs prior kernel and Step58; Step72 vs Step59; Step74 vs Step63; Step75 vs Step62) of PARTIAL invariant-set collisions (roughly half exact-name matches, half genuinely new siblings) — this refined characterization (partial rather than total collision) should be carried into the eventual §29 synthesis as a more precise description of the methodological finding than a simple 'duplicate versus new' binary."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CONFIRMATION of the sixth flagged collision — Step 75 substantially re-derives 0645's Step 62 Decision Theory content, with a THIRD confirmed exact-name invariant duplicate (I_DecisionAuthority), following the same PARTIAL invariant-set collision pattern established at 0658 (roughly half exact matches, half genuinely distinct siblings)."
+  - "dimension-registry.md: record the genuinely new/legitimate elaboration this file contributes — EVPI as a defensible mathematical complement to 0645's EVSI, an active-learning investigation loop, Reversibility as a formal DecisionProfile dimension, a five-member Decision-class taxonomy, and Recommendation≠Decision as a coherent complement (not duplicate) of 0658's Recommendation≠EvidenceOfRecommendationCorrectness."
+  - "dimension-registry.md: record verdict 'STEP 75 — PASS' and the provisional new-territory assessment for Step 76 (Multi-Objective Decisions and Value Conflicts, objective-function governance) — the second step in the Steps 73-76 span assessed as potentially new ground, pending confirmation at 0660."
+anchor_test:
+  anchor: "0658's flagged sixth collision candidate against the corpus's decision-theory program; 0645's four named invariants (I_DecisionAuthority, I_DecisionBasis, I_ActionBoundary, I_ObjectiveIntegrity) and its Decision≠Authorization/Constraint≠Preference/EVSI machinery; 0658's Recommendation≠EvidenceOfRecommendationCorrectness; the accumulating Steps-65-75 partial-invariant-collision pattern"
+  supports_dimension: "CONFIRMS the sixth flagged collision from 0658: this file substantially re-derives 0645's Decision Theory content, including a third confirmed exact-name invariant duplicate (I_DecisionAuthority), following the now-established partial-collision pattern (roughly half of each new invariant set duplicates a prior step's names, half are genuinely new). At the same time, this file's EVPI/active-learning extension of 0645's EVSI machinery is a genuinely legitimate mathematical elaboration rather than pure repetition, and its Recommendation≠Decision principle coherently complements rather than duplicates 0658's own closely related but distinct Recommendation≠EvidenceOfRecommendationCorrectness — together these two adjacent files (0658, 0659) show the model line capable of genuine, non-redundant thematic coherence even while each independently re-derives an earlier, different step's content. This refined, more precise characterization (partial collision, not total; some genuine complementary extension alongside real duplication) should inform how this reconstruction eventually describes the Steps 65-75 finding in its §29 synthesis, avoiding an overstated blanket claim of pure repetition"
+  refines_or_contradicts: "CONFIRMS the sixth collision anticipated at 0658 against 0645's Decision Theory content and its I_DecisionAuthority invariant specifically; genuinely and legitimately extends 0645's EVSI machinery via EVPI and an active-learning loop; coherently complements (not duplicates) 0658's Recommendation≠EvidenceOfRecommendationCorrectness via Recommendation≠Decision; provisionally opens new territory at Step 76, pending confirmation; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "This file's §75.50 invariant I_DecisionAuthority ('execution requires appropriate authority') shares the identical symbolic name and substantively identical content with one of 0645's own four already-established invariants of the same name, directly and mechanically confirming a third exact-name duplication in this session's tracked pattern, following I_Concurrency (0656 vs 0641) and I_Causal/I_Intervention (0658 vs 0646)."
+  - "This file's §75.9-75.10 Decision≠Authorization experiment (a KnowledgeOS-preferred deployment action correctly yielding Decision=ApprovedPreference but Authorization=Denied when the executing agent lacks deployment authority) is substantively identical in structure and conclusion to 0645's own already-established Decision Selection≠Authorization distinction, directly and checkably confirming territorial overlap independent of the invariant-name evidence above."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 76's actual content (0660), once read, confirms genuinely new territory (Pareto optimality, objective-function governance) or represents a further, seventh collision candidate against some not-yet-identified prior corpus content."
+  - "Whether the refined 'partial invariant-set collision' characterization (roughly half exact-name matches, half genuinely distinct siblings) holds as a consistent pattern across further files in this span, or whether later files show either total collision or total novelty instead."
+tier2_triggered: true
+tier2_reason: "CONFIRMS the sixth flagged collision from 0658: Step 75 substantially re-derives 0645's already-processed Decision Theory content, including a third confirmed exact-name invariant duplicate (I_DecisionAuthority), following the now well-established partial invariant-set collision pattern. Simultaneously delivers a genuinely legitimate mathematical extension (EVPI complementing 0645's EVSI, an active-learning loop) and a coherent, non-duplicative thematic pairing with 0658's own Recommendation≠EvidenceOfRecommendationCorrectness via this file's Recommendation≠Decision. Provisionally opens new territory in its closing preview of Step 76 (multi-objective decision theory, objective-function governance), to be confirmed at 0660. Verdict 'STEP 75 — PASS.'"

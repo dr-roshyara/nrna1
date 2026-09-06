@@ -1,0 +1,101 @@
+sequence: M0191
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-183103_review-now-coherent-enough.md
+title: "Zero-algebra research architecture matures: Zero Witness/Eliminate≠Delete made first-class, Representation-Induced Zero + EXP-0 falsification mechanism tied to frozen FR-001, a disciplined six-experiment research lane (EXP-0..EXP-5), and an explicit 'don't touch Theory v1.2 or kernel selection' scope boundary"
+date: "20260902-183103"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0191
+importance: critical
+confidence: high
+about: >
+  Two concatenated reviews maturing M0189/M0190's Transformation-relative Zero formalism into a full
+  research architecture. Introduces Method Selection M(D,I,C,R)→T as an independent research object
+  with three selection kinds (human-declared/rule-based/learned, the last explicitly deferred to
+  avoid circularity — "choose whatever transformation makes the desired information disappear"),
+  makes the Zero Witness first-class with an explicit Eliminate(x)≠Delete(x) safety distinction,
+  treats Representation itself as an experimental axis via an observability ladder (R0 symbols
+  through R5 epistemic interpretation), and derives "Representation-Induced Zero" — the finding that
+  a coarser representation can produce a Zero judgment a richer one refutes — as a genuine
+  falsification mechanism explicitly connected to the corpus's own frozen FR-001 result. Concludes
+  with a disciplined five/six-experiment research-lane proposal (EXP-0 through EXP-5) and an explicit
+  recommendation NOT to touch Theory v1.2 or kernel selection.
+introduces:
+  - "The full research-object tuple 𝒵=(D,I,C,R,M,T,Π,x) adding Method M (selected transformation method) to M0189's Zero apparatus, with M(D,I,C,R)→T as an independent research question distinct from T itself"
+  - "Three method-selection kinds, with an explicit ordering constraint: M_human(D,I)→T (first experiments), M_rule(D,I,C,R)→T (reproducible), M_θ(D,I,C,R)→T (learned — explicitly deferred: 'the model could simply learn: Choose whatever transformation makes the desired information disappear. That would destroy the validity of the Zero experiment')"
+  - "The Zero Witness made first-class: ZR_x=(T,Π,D,D\\x,Π(T(D)),Π(T(D\\x)),W_x) with W_x=⟨Observation,Transformation,PreservationComparison,DecisionBasis⟩ — and the safety distinction Eliminate(x)≠Delete(x): a Zero judgment records a justified epistemic decision (status=ZERO, witness, transformation, contract) without necessarily destroying the original material"
+  - "An observability ladder R0 (symbols/positions) → R1 (structural relations) → R2 (tokens/morphology) → R3 (syntax) → R4 (semantics) → R5 (epistemic interpretation), with each transition asked 'what distinction became observable?' and 'what previously invisible distinction became preservable?'"
+  - "REPRESENTATION-INDUCED ZERO: if ρ_{R1}(a)=ρ_{R1}(b) while ρ_{R2}(a)≠ρ_{R2}(b), then Zero_{R1}(x) can hold while ¬Zero_{R2}(x) — termed a 'representation-induced Zero candidate' rather than a valid Zero until survival under a richer representation is tested; gives a genuine falsification mechanism (R_i→R_{i+1}, test whether prior Zero judgments survive)"
+  - "EXP-0 — Representation Independence (added by the second reviewer): tests Zero_{R1,Π}(x)⟺Zero_{R2,Π}(x) under a declared semantics-preserving mapping f:R1→R2, with three outcomes — Stable (equivalence holds), Representation-induced (coarser rep. produces a false/coarse Zero), Incomparable (neither representation preserves enough to establish equivalence) — explicitly connected to the corpus's own frozen FR-001 result: 'representation and distinguishability must not be conflated with equivalence'"
+  - "A five-experiment core research program (EXP-1 Representation Capacity across R2..R30+structured; EXP-2 Representation-Induced Zero across representation levels; EXP-3 Transformation Families including Vedic-inspired candidates; EXP-4 Method Selection tested against a fixed benchmark for circularity; EXP-5 Minimal Adequate Carrier R*=argmin_R Complexity(R) s.t. Loss(R,Π)=0), refined by the second reviewer into six (adding EXP-0) with the master formulation softened to R*=argmin_{R∈𝔯} Complexity(R) subject to Adequacy(R,D,Π,I,C,R_reasoning)≥τ rather than requiring Loss=0 exactly"
+  - "The second reviewer's sharpened EXP-1: separates 'encoding basis' B∈{2,3,5,8,10,20,30,...} (secondary — affects only computational efficiency/compactness) from 'semantic carrier' (V_2,V_3,...,V×Reason,V×Reason×Boundary, relational/graph — the scientifically important axis), explicitly warning 'base 10 ≠ 10-valued epistemic algebra'"
+  - "A striking hypothesized (not yet empirically confirmed) result the second reviewer proposes testing: Loss(R_30,Π)>Loss(R_S,Π) even though 30>10 — flagged as demonstrating, if true, that 'representation adequacy is not monotonic in the number of available values,' explicitly called 'a very important KnowledgeOS result'"
+  - "Explicit methodological principle, stated twice and boxed: 'Do not choose the algebra first. Discover the required structure from preservation experiments' — the corpus's clearest statement yet of the anti-premature-formalization discipline, directly citing 'our previous kernel experiments' as the motivating precedent"
+defines:
+  - "The full architecture pipeline: Representation→Observation→Method→Transformation→Preservation(Π)→Zero/Retain→Witness→(Algebra discovered from required operations, not chosen in advance)"
+  - "ZR_x=(T,Π,D,D\\x,Π(T(D)),Π(T(D\\x)),W_x) — the Zero Result record, with W_x as its auditability witness"
+refines:
+  - "M0189/M0190's Transformation-relative Zero: adds Method M as an explicit research object, makes the Witness first-class, and treats Representation as an experimental axis rather than a fixed background assumption"
+  - "The corpus's own frozen FR-001 (representation/distinguishability ≠ equivalence): EXP-0 is explicitly designed as a direct application of FR-001 to the Zero apparatus"
+contradicts: []
+repeats:
+  - "The Vedic-material-as-inspiration-only discipline already established at M0189, now stated as a table of ten graded claim statuses (EXT/PROP/EXP/OPEN) and the explicit negative 'Vedic Mathematics ≠ KnowledgeOS Algebra'"
+bridge_candidates:
+  - "Whether EXP-0 through EXP-5 (or the six-experiment revised program) were ever actually executed as a research lane"
+  - "Whether the hypothesized non-monotonic Loss(R_30,Π)>Loss(R_S,Π) result was ever tested"
+  - "How this Zero-algebra research lane's disciplined 'don't touch Theory v1.2 or kernel selection' scope boundary relates to the concurrently-processed ratification-tension arc (M0159-M0187), which repeatedly failed to observe an equivalent scope discipline"
+mathematical_content: >
+  Extends M0189's counterfactual Zero definition with a genuine falsification mechanism
+  (Representation-Induced Zero / EXP-0) tied to an already-frozen corpus result (FR-001), and
+  reframes the adequacy-vs-complexity tradeoff from a hard Loss=0 constraint to a soft
+  Adequacy(R,...)≥τ threshold — a materially more realistic formulation for real (non-idealized)
+  data.
+gita_content: >
+  Restates the Vedic-material-as-inspiration-only discipline in table form (ten graded claim
+  statuses), reaffirming 'Vedic Mathematics ≠ KnowledgeOS Algebra' and placing Vedic material's
+  proper entry point at Method/Transformation (heuristic source) rather than as mathematical
+  foundation.
+kernel_content: >
+  Explicitly and disciplinedly scopes itself OUT of the kernel-selection/Theory-v1.2 question
+  ("don't change Theory v1.2 and don't touch kernel selection... create this as a new research
+  lane") — a notably more disciplined scope boundary than most of the concurrently-processed
+  ratification-tension arc documents, which repeatedly blurred research findings into premature
+  theory-ratification claims.
+registry_updates:
+  - "New: Zero Witness made first-class (W_x, ZR_x record) with an Eliminate(x)≠Delete(x) safety distinction"
+  - "New: Representation-Induced Zero and EXP-0, a genuine falsification mechanism for the Zero apparatus, explicitly tied to the corpus's own frozen FR-001 result"
+  - "New: six-experiment disciplined research-lane proposal (EXP-0..EXP-5), softened adequacy formulation (Adequacy≥τ replacing Loss=0)"
+  - "New: explicit encoding-basis-vs-semantic-carrier separation for the base-10-vs-20-vs-30 question, with a hypothesized non-monotonic-adequacy result flagged as potentially significant"
+  - "Explicit, disciplined scope boundary ('don't touch Theory v1.2 or kernel selection') — a positive counter-example to the concurrently-processed ratification-tension arc's repeated scope violations"
+anchor_test:
+  anchor: true
+  supports_dimension: "Zero Witness/Eliminate≠Delete; Representation-Induced Zero tied to FR-001; six-experiment research lane; disciplined scope boundary against Theory v1.2/kernel-selection encroachment"
+  refines_or_contradicts: "refines (M0189/M0190's Zero formalism, and the corpus's own frozen FR-001 result, now applied to a new domain)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Eliminate(x) ≠ Delete(x)\" — the safety distinction for Zero-judged material"
+  - "\"Zero_{R1}(x) ∧ ¬Zero_{R2}(x)\" — the Representation-Induced Zero falsification signature"
+  - "\"Loss(R_30,Π) > Loss(R_S,Π) even though 30 > 10\" — the hypothesized non-monotonic-adequacy result"
+  - "\"Do not choose the algebra first. Discover the required structure from preservation experiments.\""
+  - "\"My recommendation: don't change Theory v1.2 and don't touch kernel selection. Create this as a new research lane.\""
+undefined_concepts:
+  - "The precise form of the 'structured representation' R_S referenced in the hypothesized non-monotonic-adequacy experiment"
+open_questions:
+  - "Was the six-experiment Zero-algebra research lane (EXP-0..EXP-5) ever actually executed?"
+  - "Was the hypothesized Loss(R_30,Π)>Loss(R_S,Π) non-monotonicity result ever tested?"
+tier2_triggered: true
+tier2_reason: >
+  Matures the Zero-algebra thread with two genuinely new structural contributions — a first-class,
+  auditable Zero Witness with an Eliminate≠Delete safety guarantee, and a Representation-Induced Zero
+  falsification mechanism (EXP-0) explicitly and correctly tied to the corpus's own frozen FR-001
+  result — while modeling an unusually disciplined scope boundary (explicitly declining to touch
+  Theory v1.2 or kernel selection) that contrasts sharply with the concurrently-processed
+  ratification-tension arc's repeated scope violations.

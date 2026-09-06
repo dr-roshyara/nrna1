@@ -1,0 +1,104 @@
+sequence: 467
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-173435_question-5-updating-and-preserving-assertions.md
+title: "LANDMARK: Update/Preserve Formalized (Versioning, Provenance Chain, Assertion Lifecycle) and the Full Eight-Component KnowledgeOS Model Consolidated for the First Time, Correctly Incorporating the Corrected Five-Dimensional Epistemic State"
+date: "2026-08-26"
+bytes: 26597
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the Arjuna grandfather/opposing-side/moral-conflict worked example is now correctly versioned through a Conflict field alone (None->Active->Resolved), consistent with 0464's correction"
+source_role: PRIMARY_RESEARCH
+canonical_source: 467
+importance: critical
+confidence: high
+about: >
+  A two-part file whose **first half (lines 1-494) is genuinely new content** (Question 5: Updating and
+  Preserving Assertions) and whose **second half (lines ~495-1292) is a confirmed near-duplicate of the
+  entirety of 0466** (identical except one added leading "#" line, verified via diff).
+
+  **New content**: defines Update ("changing an assertion's content or epistemic state in response to new
+  evidence, without losing the history of what was previously known") and Preservation ("maintaining
+  provenance, history, and temporal validity so KnowledgeOS can trace how knowledge evolved"), with the
+  core invariant **Update != Overwrite**; formally, **Update = Create New Version + Preserve History**.
+  Formalizes an eight-state **Assertion Lifecycle** (Created -> Evaluated -> Accepted -> Updated ->
+  Challenged -> Revised -> Retired/Rejected) with a full diagram. Defines the Update operation
+  Update(A,E,tau) -> A_new, an eight-step update process, a four-trigger table (New Evidence, Time Passage,
+  Context Change, Challenge Resolution), and a five-type taxonomy (State Update, Value Update, Dimension
+  Update, Entity Update, Retirement).
+
+  Formalizes Preservation via an **Assertion History** set {A_tau1, A_tau2, ...} and an explicit six-
+  component **Provenance Chain** (Version ID, Timestamp, Previous Version, Change Reason, Evidence, Actor),
+  yielding a **Versioned Assertion** A_versioned=(A,VersionID,tau,Provenance). Works a three-version Nexus-
+  version history example (Assumed 3.69 -> Confirmed 3.69 -> Confirmed 3.70) supporting history queries
+  ("what was the version on Monday," "when/why/who updated it"). Defines three concrete update functions
+  (StateUpdate, ValueUpdate, Retire) and extends Zero/Lord/Sārathi to the update process (Zero detects
+  stale/weak/unresolved-conflict/open-resolution states needing update; Lord suggests new dimensions,
+  alternative values, alternative interpretations; Sārathi guides evidence collection, re-evaluation,
+  resolution).
+
+  **Correctly re-runs the Bhīṣma grandfather/opposing-side/moral-conflict worked example using the corrected
+  discipline established at 0464**: the relationship assertion (Grandfather) is never altered or logically
+  contradicted by the new Side_In_Conflict assertion (Opposing); instead a separate **Conflict** field on
+  both assertions evolves None -> Active -> Resolved as the normative (not logical) nature of the tension is
+  recognized -- directly consistent with, and independently confirming, 0464's Conflict-dimension-only
+  resolution pattern, showing that correction has now propagated correctly into this later file's own
+  reasoning (unlike 0463's earlier lapse). Produces a compact version-history table tracking Value/State/
+  Conflict columns across three timestamps for the Grandfather assertion alone.
+
+  Formalizes the general Update function Update(A,Delta,tau)->A_new (Delta = any change: evidence, value,
+  state), the versioned-assertion tuple with id/previous/reason/evidence/actor fields, a History(A) set, and
+  two Preservation invariants (History(A) is never empty; every A_tau_i belongs to History(A)). Closes with
+  the **first full eight-component consolidation of the entire KnowledgeOS knowledge model built across this
+  arc**: (1) Proposition (E,D,V); (2) Assertion (P,Sigma,E,tau,Pi); (3) **Epistemic State (A,S,R,V,C)** --
+  explicitly using the corrected five-dimensional form from 0464, confirming that correction has been
+  properly incorporated; (4) Evidence (S,T,C,R,rho,K,tau); (5) Comparison; (6) Challenge; (7) Update;
+  (8) Preservation. Proposes three remaining questions for the next phase -- forming a coherent Knowledge
+  State from a set of Assertions, resolving conflicts between Assertions, and measuring the quality of a
+  Knowledge State -- explicitly aimed at "a complete formal specification of KnowledgeOS."
+introduces:
+  - concept: "Assertion Lifecycle formalized as an eight-state sequence: Created -> Evaluated -> Accepted -> Updated -> Challenged -> Revised -> Retired/Rejected"
+  - concept: "Update = Create New Version + Preserve History (Update != Overwrite), with a formal Update(A,E,τ)->A_new operation, an eight-step process, four triggers, and five update types"
+  - concept: "Preservation formalized via an Assertion History set and a six-component Provenance Chain (Version ID, Timestamp, Previous Version, Change Reason, Evidence, Actor), yielding a Versioned Assertion tuple"
+  - concept: "First full eight-component consolidation of the entire KnowledgeOS knowledge model: Proposition, Assertion, Epistemic State (corrected five-dimensional form), Evidence, Comparison, Challenge, Update, Preservation"
+  - concept: "Confirmation that 0464's Conflict-dimension-only resolution pattern (grandfather/opposing-side tension localized to a separate Conflict field, resolved as normative not logical) has correctly propagated into this file's own worked example, unlike 0463's earlier lapse"
+defines:
+  - concept: "Update (formal)"
+    definition: "Update(A,E,τ)->A_new: creates a new assertion version incorporating new evidence E at time τ, while preserving the prior version in the assertion's history -- never an in-place overwrite"
+  - concept: "Provenance Chain"
+    definition: "Provenance=(VersionID,τ,Previous,Reason,Evidence,Actor): the record attached to each assertion version tracing its origin, cause, and history"
+  - concept: "Versioned Assertion"
+    definition: "A_versioned=(A,VersionID,τ,Provenance), queryable via History(A)={A_versioned^(1),A_versioned^(2),...}, with the invariant that History(A) is never empty"
+refines:
+  - concept: "0461's Knowledge Atom / Assertion formalization"
+    refinement: "Extended with a full versioning and provenance-chain model, formalizing how an Assertion changes over time without losing its history"
+  - concept: "0464's five-dimensional Epistemic State and Conflict-dimension resolution pattern"
+    refinement: "Correctly incorporated into both the consolidated eight-component model and this file's own re-run of the Bhīṣma worked example, confirming the correction's propagation"
+contradicts: []
+repeats:
+  - "Confirmed via diff: this file's lines ~495-1292 are identical to the entirety of 0466's content, except for one added leading '#' line -- a full duplicate reproduction of 0466 appended after the genuinely new Update/Preserve material."
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Update/Preserve formalization (versioning, provenance chain, assertion lifecycle) and the first full eight-component KnowledgeOS model consolidation."
+  - "dimension-registry.md: record confirmation that 0464's Conflict-dimension-only resolution pattern has correctly propagated into this file's own worked example."
+anchor_test:
+  anchor: "0461's Assertion/Knowledge-Atom formalization; 0464's five-dimensional Epistemic State and Conflict-dimension resolution; 0462's Evidence formalization"
+  supports_dimension: "LANDMARK: formalizes Update and Preservation with a full versioning/provenance-chain model and an eight-state Assertion Lifecycle; consolidates the entire eight-component KnowledgeOS knowledge model for the first time (Proposition/Assertion/EpistemicState/Evidence/Comparison/Challenge/Update/Preservation), correctly using 0464's corrected five-dimensional Epistemic State and Conflict-dimension resolution pattern in its own worked example"
+  refines_or_contradicts: "refines 0461's Assertion model with versioning/provenance; correctly incorporates and confirms 0464's corrections rather than repeating 0463's lapse; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Continues the Bhīṣma grandfather/opposing-side/moral-conflict worked example, this time versioned over time with the corrected Conflict-dimension-only resolution pattern from 0464"
+undefined_concepts: []
+open_questions:
+  - "How does a coherent Knowledge State form from a set of Assertions? (proposed as the immediate next question)"
+  - "How are conflicts between Assertions resolved in general (beyond the single worked example)?"
+  - "How is the quality of a Knowledge State measured?"
+tier2_triggered: true
+tier2_reason: "Formalizes Update and Preservation with a full versioning/provenance-chain model and an eight-state Assertion Lifecycle, then delivers the first full eight-component consolidation of the entire KnowledgeOS knowledge model built across this arc, correctly incorporating 0464's corrected five-dimensional Epistemic State and Conflict-dimension resolution pattern into its own worked example rather than repeating 0463's earlier lapse."

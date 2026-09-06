@@ -1,0 +1,85 @@
+sequence: 1090
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/exec/t291b_graph_universe.py
+title: "t291b_graph_universe.py -- AUDIT B: Graph-Universe Reconstruction -- Tests Whether the Already-Tracked {equiv} Unique Minimal Bootstrap Cut (files 1052/1069/1082) Was Only Unique Over a RESTRICTED 13-Node Candidate Set, and Whether Uniqueness Survives Being Tested Over the FULL 29-Node Universe -- a Direct Self-Audit of the Research Programme's Single Most Load-Bearing Result"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a follow-up Step-291b audit script directly probing the scope-validity of the programme's most load-bearing prior result"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1090
+importance: major
+confidence: high
+about: >
+  `t291b_graph_universe.py` — "AUDIT B: state the graph universe explicitly and recompute. The 29-node vs
+  13-node question: they are NOT two graphs. 29 = the node universe; 13 = the subset searched for cuts.
+  Cycles are computed on the FULL 29; cuts are SELECTED from the 13." A follow-up executable script
+  explicitly auditing the scope precision of the already-tracked `{≡}` unique minimal bootstrap cut (files
+  1052, 1069, 1082).
+
+  **DELIVERS A DISCIPLINED, EXPLICIT RECONSTRUCTION OF THE GRAPH-CONSTRUCTION METHODOLOGY**, rebuilding the
+  graph directly from the already-tracked `t291_bootstrap.py` (file 1075) source, and stating the exact edge-
+  generation rules for the first time in this precision: "admitted: a cited passage states that B REQUIRES
+  SOMETHING FROM A; rejected: co-mention... definitions: an IDENTIFICATION... contributes ONE edge, in the
+  direction of determination, not two (Step 289 v1 artifact removed [already-tracked file 1089 bug fix]);
+  candidates: a CANDIDATE proposal is modelled as its own node (`equiv_cand`), NOT as a definitional edge
+  (Step 290 correction [already-tracked file 1069]); blocked: blocked dependencies ARE included -- blockage
+  is a status, not an absence; transitive: NOT included; only direct dependencies are edges."
+
+  **DELIVERS THE GENUINELY IMPORTANT METHODOLOGICAL CLARIFICATION THAT THE 29-NODE VS 13-NODE DISTINCTION IS
+  NOT TWO COMPETING GRAPHS**: "29 and 13 are NOT two graphs. One graph; a restricted CANDIDATE SET for
+  cuts." Cycles are always computed over the full 29-node universe; feedback-vertex-set (cut) SEARCH is
+  restricted to the 13 decision-resolvable nodes (already-tracked `RESOLVABLE` set, file 1075), on the
+  disciplined ground that a cut through a purely derivable node "cannot be 'decided'."
+
+  **DIRECTLY PROBES A POTENTIAL SCOPE OVERCLAIM IN THE PROGRAMME'S OWN MOST LOAD-BEARING RESULT**: the script
+  computes the minimal feedback-vertex-set TWICE -- once restricted to the 13 resolvable nodes (reproducing
+  the already-tracked `{≡}` unique cut), and once over the FULL, UNRESTRICTED 29-node universe, "a DIFFERENT
+  question." Explicitly flags the audit's own concern: "if the full-universe result differs from `{equiv}`...
+  REPORTED AS A SEPARATE RESULT (mandate B): over the FULL universe the minimal cut is NOT unique... A cut
+  through a DERIVABLE node is not actionable: it cannot be 'decided'. But it must be reported, because
+  UNIQUENESS WAS CLAIMED WITHOUT STATING THE CANDIDATE SET." This is a genuinely disciplined, self-critical
+  audit directly targeting whether the already-tracked "unique minimal cut" claim (a result this reconstruction
+  has treated as load-bearing across files 1052, 1069, 1082, 1085, and 1087) was stated with sufficient
+  scope precision, or whether it silently smuggled in a restriction (to decision-resolvable nodes) without
+  disclosing it as such.
+
+  This is executable script content only (not yet showing its own printed output in this record); its
+  execution results -- specifically whether the full-29-node-universe minimal cut set equals exactly
+  `{equiv}` or is a larger, non-unique set including derivable-only nodes -- are the load-bearing evidentiary
+  content this file's own logic anticipates, expected as a subsequent sequence.
+introduces:
+  - concept: "The explicit, precise statement of the graph-construction edge-generation rules used throughout the equiv_K/O/T/O_K dependency-graph research thread (admitted/rejected/definitions/candidates/blocked/transitive), consolidating rules previously applied but not stated this precisely"
+  - concept: "The methodological clarification that the 29-node and 13-node graphs are not two competing graphs but one graph with cycles computed on the full universe and cuts searched over a restricted, decision-resolvable candidate subset"
+  - concept: "The self-audit directly probing whether the already-tracked {equiv} unique minimal cut result was scope-precise: testing whether uniqueness holds over the full 29-node universe, or only over the restricted 13-node candidate set, with an explicit commitment to report a scope overclaim if found"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked {equiv} unique minimal bootstrap cut result (files 1052, 1069, 1082, 1085, 1087)"
+    refinement: "SUBJECTED TO A DIRECT SELF-AUDIT testing whether the claimed uniqueness holds over the full 29-node universe or only over the restricted 13-node decision-resolvable candidate set -- pending confirmation from this script's own execution output"
+contradicts: []
+repeats:
+  - "Rebuilds the graph directly from the already-tracked t291_bootstrap.py script (file 1075) rather than reconstructing it independently."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the explicit edge-generation rules for the equiv_K/O/T/O_K dependency graph, the methodological clarification that the 29-node and 13-node views are one graph with different search scopes, and the self-audit directly testing whether the already-tracked {equiv} unique minimal cut claim held sufficient scope precision -- pending its own execution output."
+anchor_test:
+  anchor: "This reconstruction's already-tracked {equiv} unique minimal bootstrap cut result (files 1052, 1069, 1082, 1085, 1087)"
+  supports_dimension: "Directly self-audits whether this load-bearing result's uniqueness claim held sufficient scope precision, testing the full 29-node universe against the restricted 13-node candidate set"
+  refines_or_contradicts: "refines (self-audits) the prior tracked finding; outcome pending execution output"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The graph reconstruction directly reuses file 1075's already-read t291_bootstrap.py source; this script's own execution output (expected as a subsequent sequence) will confirm whether the {equiv} uniqueness claim survives the full-universe test."
+undefined_concepts: []
+open_questions:
+  - "Whether the {equiv} minimal cut remains unique when tested over the full 29-node universe, or whether additional derivable-only nodes also independently break every cycle -- to be confirmed by this script's execution output, expected as a subsequent primary-corpus sequence."
+tier2_triggered: true
+tier2_reason: "Delivers a disciplined, self-critical audit directly probing whether the research programme's single most load-bearing result (the {equiv} unique minimal bootstrap cut) held sufficient scope precision, explicitly committing to report a scope overclaim if the full-universe test reveals non-uniqueness. Classified importance major (a rigorous self-audit of a critical prior finding, pending its own output confirmation) and confidence high given the disciplined, well-evidenced construction."

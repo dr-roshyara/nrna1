@@ -1,0 +1,143 @@
+sequence: 376
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260825-235754_conditional-evidence-problem-research-synthesis.md
+title: "The Uploaded Synthesis Itself: Eight-Regime Conditional-Evidence-Combination Survey (Bayesian/Dempster-Shafer/Fuzzy/Non-monotonic/Argumentation/Epistemic-Logic/Temporal-Logic/Measurement), Now Corrected by 0375"
+date: "2026-08-25"
+bytes: 18155
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 376
+importance: critical
+confidence: high
+about: >
+  This is the actual "uploaded synthesis" document that file 0375 reviewed and corrected (confirmed by
+  verbatim matches: this file's Section 4 states "The Kernel preserves raw evidence: observations,
+  assertions, measurements," and Section 3 proposes "the invariant might be the set of possible worlds or
+  states that are consistent with the evidence" -- both quoted and critiqued in 0375). Timestamped 16
+  seconds after 0375 (23:57:38 vs 23:57:54), confirming the near-simultaneous save of critique-then-source
+  or source-then-critique. A well-structured, book-grounded standalone research synthesis titled "The
+  Conditional Evidence Problem," directly addressing the exact question the corpus reached at 0374/0375:
+  "how does conditional evidence combine to produce an epistemic state, and what is invariant across
+  representations?"
+
+  Section 1 grounds the problem in KST's actual formalism: the response function r(R,K)=P(observing-R|K)
+  (7.2), Bayesian update P(K|r) propto P(r|K)P(K) (10.11/10.27), and the Assessment Update L_{n+1}(K)=
+  u(R_n,Q_n,L_n) with convex or multiplicative update rules (Chapter 10) -- concluding KST provides "one
+  specific implementation of conditional evidence combination, not a general theory," and explicitly listing
+  what KST does NOT establish (a general evidence-combination theory; the correctness of any particular
+  update rule; whether Bayesian updating is the only valid approach; how to handle conflicting evidence; how
+  to model evidence structure beyond response patterns).
+
+  Section 2 is the file's core contribution: an EIGHT-REGIME SURVEY of conditional-evidence-combination
+  mechanisms, each given core formalism / evidence-combination-mechanism / what-it-models / strengths /
+  weaknesses / explicit KnowledgeOS-relevance: (2.1) BAYESIAN PROBABILITY (P(H|E)=P(E|H)P(H)/P(E); coherent
+  per Kolmogorov axioms, optimal per Dutch-book arguments, but requires priors/likelihoods and struggles to
+  represent "no information"); (2.2) DEMPSTER-SHAFER THEORY (mass function m:2^Theta->[0,1], Bel(A)/Pl(A),
+  Dempster's combination rule (m1 (+) m2)(A); handles ignorance naturally and distinguishes belief from
+  plausibility, with Bayesian probability as a special case, but has a controversial combination rule and
+  is less well-understood); (2.3) FUZZY/MANY-VALUED LOGIC (membership function mu:Theta->[0,1], no single
+  standard combination rule -- min/max, product, Lukasiewicz, etc.; models vagueness/graded-truth rather
+  than degrees-of-belief, but has controversial philosophical foundations and can be confused with
+  probability); (2.4) NON-MONOTONIC LOGIC (defeasible entailment Gamma|-_defeasible phi, default rules with
+  exceptions, preferential entailment, circumscription; models withdrawable conclusions and common-sense
+  reasoning, but has multiple competing formalisms and rule-based rather than numerical evidence
+  combination); (2.5) ARGUMENTATION THEORY (Arguments->Attack-relations->Acceptable-sets, Dung's formal
+  semantics; models reasoning-as-debate and justification/defeat, but is computationally complex and treats
+  evidence as propositions rather than observations); (2.6) EPISTEMIC LOGIC (K_i-phi with K/T/4/5 axioms,
+  possible-worlds semantics; models knowledge as factive belief with logical closure, but assumes logical
+  omniscience and is static unless extended dynamically -- evidence combination not directly modeled); (2.7)
+  TEMPORAL LOGIC (Box-phi/Diamond-phi/phi-Until-psi; models time-dependent truth, but evidence combination
+  is not its focus); (2.8) MEASUREMENT THEORY (f:X->R with representation conditions; models numerical
+  attribute representation via empirical-to-numerical relation mappings, connects to Kalman-filter-style
+  evidence updating, but assumes numerical representation and is less suited to qualitative reasoning).
+
+  Section 3 examines KST's own invariance structure: the multiple equivalent representations (family of
+  sets K-script, surmise system sigma, entailment P-script, skill map tau, connected via Galois connections)
+  are shown to be equivalent BECAUSE they all determine the same knowledge structure K-script itself -- "the
+  representations are equivalent because they determine the same K-script." Extends this to the harder
+  conditional-evidence-combination question, proposing FIVE candidate invariants (the set of possible states
+  K in K-script; the posterior distribution P(K|evidence); the set of plausible states {K|P(K|evidence)>tau};
+  the state ordering K1>=K2 based on evidence; the revision operation itself) and states the now-corrected
+  research hypothesis (0375's critique target): different evidence-combination mechanisms might produce
+  different REPRESENTATIONS of the same underlying epistemic state, with the invariant being "the set of
+  possible worlds/states that are consistent with the evidence" -- explicitly caveated within this very
+  section: "KST does not show that different evidence combination MECHANISMS are equivalent. It shows that
+  different REPRESENTATIONS of the same structure are equivalent" (a limitation the document itself flags,
+  even though its own proposed invariant later treats mechanism-equivalence too casually, per 0375's
+  critique).
+
+  Section 4 states the "Kernel preserves raw evidence" claim later rejected by 0375 as dangerous
+  terminology, and proposes a Kernel/Regime/Projection architecture (Kernel preserves raw evidence,
+  structure, and temporal ordering; Regime determines the combination mechanism, output representation, and
+  update rule; Projection is the resulting epistemic state) with an explicit research hypothesis: different
+  evidence-combination mechanisms are different REGIMES projecting the same substrate into different
+  epistemic-state spaces -- again citing KST's multiple-representations finding as supporting evidence while
+  explicitly flagging the challenge that KST's representations are equivalent but different combination
+  MECHANISMS may not be.
+
+  Section 5 proposes a four-stage research programme (Formalize the Evidence Problem; Compare Combination
+  Mechanisms via an eight-row comparison table listing each regime's input/output/combination-rule/
+  invariant; Identify Invariants across five candidates; Relate to KnowledgeOS via the Kernel/Regime/
+  Projection framing, explicitly listing what varies across regimes -- representation of uncertainty,
+  update mechanism, output type -- versus what might be invariant -- raw evidence, the set of possible
+  states if the domain is fixed, possibly the set of evidence-consistent states).
+
+  Sections 6-8 close by naming the single most important unanswered question -- "what is invariant across
+  different conditional evidence combination mechanisms when applied to the same epistemic substrate?" --
+  with five sub-questions (same consistent states? same ordering? same justification structure? what
+  assumptions produce agreement? under what conditions are they equivalent?), explicitly calling this "a
+  mathematical question that can be investigated formally," and a final consolidated summary of what KST
+  establishes/does-not-establish/what-is-now-needed, concluding "the kernel/regime/projection architecture
+  provides a framework for investigating these questions without committing to any particular evidence
+  combination mechanism" and that the conditional evidence problem is "the mathematical core of
+  KnowledgeOS."
+introduces:
+  - concept: "Systematic eight-regime survey of conditional-evidence-combination mechanisms (Bayesian, Dempster-Shafer, Fuzzy/Many-valued logic, Non-monotonic logic, Argumentation theory, Epistemic logic, Temporal logic, Measurement theory), each given explicit core formalism, combination rule, strengths, weaknesses, and KnowledgeOS relevance -- the corpus's most systematic single-document regime comparison to date"
+  - concept: "KST's own invariance structure precisely characterized: multiple representations (sets/surmise/entailment/skill-map) are equivalent BECAUSE they determine the same knowledge structure K-script -- 'the invariant is the knowledge structure itself,' explicitly NOT extended by KST itself to different evidence-combination mechanisms"
+  - concept: "Five candidate Kernel/regime invariants across evidence-combination mechanisms: the set of possible states; the posterior distribution; the set of plausible states (thresholded); the state ordering; the revision operation itself -- an explicit enumeration the corpus can test against"
+  - concept: "Kernel/Regime/Projection architecture as explicitly proposed in this document (Kernel preserves raw evidence/structure/temporal-ordering; Regime determines combination-mechanism/output-representation/update-rule; Projection is the resulting epistemic state) -- the specific formulation 0375 partially rejects (raw evidence) and partially refines (regime concept retained, substrate reconceived via provenance/relations rather than raw evidence)"
+  - concept: "Eight-row Stage-2 comparison table (Mechanism x Input/Output/Combination-Rule/Invariant) systematically tabulating all eight regimes -- a concrete artifact for the corpus's ongoing regime-comparison research"
+  - concept: "The document's own self-flagged limitation, present within Section 3 itself: KST shows representation-equivalence, not evidence-combination-mechanism-equivalence -- the document explicitly notes this caveat even while its own research hypothesis in the same section risks conflating the two (the exact tension 0375 corrects)"
+defines: []
+refines:
+  - concept: "0359/0360's KST engagement and Galois-connection multiple-representations finding"
+    refinement: "Given a precise characterization of WHAT is invariant in KST's own multiple-representations result (the knowledge structure K-script itself), sharply distinguished from the harder, unresolved question of invariance across DIFFERENT evidence-combination mechanisms (Bayesian/Dempster-Shafer/etc.), which KST does not address at all"
+  - concept: "0369's Ten-Lens Matrix (which already listed Nonmonotonic logic, Causal theory, Information theory without detailed treatment)"
+    refinement: "Given full detailed treatment for Nonmonotonic logic (defeasible entailment, default rules, circumscription) and additionally for Dempster-Shafer theory and Argumentation theory, which 0369 had not yet detailed -- substantially filling out the corpus's regime taxonomy"
+  - concept: "0374's four-way uncertainty-type decomposition (evidence/model/state/proposition) and ten-area mathematical comparison programme"
+    refinement: "Given concrete formal grounding for six of the ten named areas (Bayesian, Dempster-Shafer, fuzzy/many-valued logic, non-monotonic logic, argumentation theory, epistemic logic, temporal logic, measurement theory all now have explicit core formalisms), operationalizing 0374's abstract list into a genuine comparative reference"
+contradicts:
+  - concept: "This document's own Section 4 claim that 'the Kernel preserves raw evidence: observations, assertions, measurements' and Section 3's proposed possible-worlds/states invariant"
+    source: "0375's critical review of this exact document"
+    resolution: "0375 explicitly corrects both: raw evidence is rejected as dangerous terminology (evidence requires interpretation relative to a hypothesis, and is better modeled as a relation Supports(O,p,C,t)); the possible-worlds/states invariant is downgraded from implied conclusion to untested hypothesis, since different regimes disagree about what 'consistent' means. This file itself, notably, already flags a related internal caveat in Section 3 (representation-equivalence != mechanism-equivalence) without fully resolving the tension -- 0375 supplies the missing correction."
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file as the identified source of the 'uploaded synthesis' critiqued at 0375, cross-referencing both records so the correction chain (0376 proposes -> 0375 corrects) is traceable."
+  - "dimension-registry.md: record the eight-regime survey and its Stage-2 comparison table as the corpus's most systematic single-document regime-comparison reference to date, substantially filling out 0369's Ten-Lens Matrix (Dempster-Shafer, Non-monotonic logic, Argumentation theory now fully detailed)."
+  - "dimension-registry.md: record the five candidate Kernel/regime invariants (possible states, posterior distribution, plausible-states threshold, state ordering, revision operation) as concrete test targets for the corpus's ongoing invariance research."
+anchor_test:
+  anchor: "0375's critique (this file's own reviewer); 0359/0360's KST Galois-connections finding; 0369's Ten-Lens Matrix; 0374's ten-area mathematical comparison programme"
+  supports_dimension: "Mathematical model, systematic reference document (now corrected): the eight-regime survey with explicit formalisms substantially fills out the corpus's regime taxonomy (0369), precisely characterizes what is and is not invariant in KST's own multiple-representations result, and proposes a Kernel/Regime/Projection architecture whose 'raw evidence' and 'possible-worlds invariant' claims are directly corrected by the very next file in sequence (0375) -- an unusually clean example of the corpus's propose-then-critique discipline operating across two adjacent, near-simultaneously-timestamped files"
+  refines_or_contradicts: "refines 0359/0360 (precise KST-invariance characterization); refines 0369 (fills out Dempster-Shafer/Non-monotonic/Argumentation detail); refines 0374 (formal grounding for the ten-area comparison programme); is itself corrected by 0375 (raw-evidence and possible-worlds-invariant claims)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Doignon & Falmagne, Knowledge Spaces -- response function r(R,K), Bayesian update (10.11/10.27), Assessment Update L_{n+1}=u(R_n,Q_n,L_n) (Chapter 10), Galois connections (Chapter 6)"
+  - "Dung's formal argumentation semantics (Arguments->Attack-relations->Acceptable-sets), cited by name"
+undefined_concepts:
+  - "Whether this document is itself AI-generated (structurally similar in register to the Perplexity documents at 0366/0368) or independently authored -- not explicitly labeled, unlike the Perplexity documents which were named"
+open_questions:
+  - "Whether the eight-row Stage-2 comparison table is ever formally tested against the six-regime experiment proposed in 0375"
+  - "Whether the five candidate invariants (possible states/posterior/plausible-states/ordering/revision-operation) are ever individually adjudicated"
+  - "Whether the Kernel/Regime/Projection architecture, once corrected per 0375, is reformulated and re-proposed in a later file"
+tier2_triggered: true
+tier2_reason: "Identified as the actual 'uploaded synthesis' document critiqued at 0375 (confirmed via verbatim textual matches, e.g. 'the Kernel preserves raw evidence: observations, assertions, measurements'). A systematic, book-grounded eight-regime survey of conditional-evidence-combination mechanisms (Bayesian/Dempster-Shafer/Fuzzy/Non-monotonic/Argumentation/Epistemic-Logic/Temporal-Logic/Measurement-Theory), each with explicit formalism, substantially filling out the corpus's regime taxonomy (0369) and operationalizing 0374's ten-area comparison programme. Precisely characterizes what IS invariant in KST's own Galois-connection multiple-representations result while proposing (and, per its own Section 3, partially self-flagging as unresolved) an extension to evidence-combination-mechanism invariance that 0375 goes on to correct."

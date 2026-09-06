@@ -1,0 +1,75 @@
+==============================================================================
+DERIVATION TEST — is O forced by the corpus's own non-collapse laws?
+==============================================================================
+  non-collapse laws extracted (distinct) : 26
+  laws with a forcing consequence        : 17
+  operations FORCED                      : 14
+
+  OPERATION      FORCED BY                                    weight
+  --------------------------------------------------------------------------
+  <serialize>    Expression != Meaning                          71  (not an operation - a STRUCTURE)
+  Authorize      Decision != Authorization                      45
+                 Evidence != Authority                          45
+                 EpistemicStrength != GovernanceStatus          11
+  Revise         Identity != State                              41
+  Supersede      Identity != State                              41
+  Promote        Candidate != Knowledge                         26
+  Qualify        Observation != Evidence                        20
+  Add            UNKNOWN != ABSENT                              19
+                 Proposition != Assertion                       10
+  <D_t>          UNKNOWN != ABSENT                              19  (not an operation - a STRUCTURE)
+  Determine      Determination != Decision                      19
+  Derive         Provenance != Lineage                          18
+  Replay         State != History                               12
+  Assess         UNRESOLVED != INVALID                          11
+                 Validation != Assessment                       11
+                 EpistemicStrength != GovernanceStatus          11
+  Validate       Validation != Assessment                       11
+                 Validate !~ Transform                           1
+  Remove         Remove != Withdraw                              1
+  Withdraw       Remove != Withdraw                              1
+  Reject         Reject != Remove                                1
+
+==============================================================================
+RESULT 1 — what IS derivable
+==============================================================================
+  |O_forced| = 14
+  Add, Assess, Authorize, Derive, Determine, Promote, Qualify, Reject, Remove, Replay, Revise, Supersede, Validate, Withdraw
+
+==============================================================================
+RESULT 2 — what is NOT forced by any law
+==============================================================================
+  Transform      named in the corpus, forced by NO non-collapse law
+  Merge          named in the corpus, forced by NO non-collapse law
+  Split          named in the corpus, forced by NO non-collapse law
+  Reintroduce    named in the corpus, forced by NO non-collapse law
+
+  forced-but-unnamed (new): ['Derive', 'Determine', 'Qualify']
+
+==============================================================================
+RESULT 3 — the closure question
+==============================================================================
+  Is O_forced CLOSED?  i.e. does membership follow from the laws alone?
+
+  NO -- and the reason is exact:
+   * 'Transform', 'Merge', 'Split' are named in 256.2 and forced by NO law.
+     A corpus that never states 'Merge != X' gives no entailment that Merge
+     must exist. Their necessity is asserted, not entailed.
+   * 'Qualify' and 'Determine' ARE forced (by Observation!=Evidence and
+     Determination!=Decision) but appear in NEITHER 256.2 NOR 259.7.
+     The corpus's own enumeration MISSES two operations its own laws force.
+
+  => The laws under-determine O in one direction and over-determine the
+     enumeration in the other. Set-membership is therefore NOT derivable.
+
+==============================================================================
+RESULT 4 — what IS derivable without any human input
+==============================================================================
+  (a) a NON-EMPTY LOWER BOUND: the 14 forced operations MUST be in O.
+  (b) an UPPER BOUND: O subset of (256.2 union 259.7 union forced) = 18 candidates.
+  (c) the CLASS PARTITION (259.7) and the congruence rule (259.8) --
+      these are derivable, because congruence is a property of an algebra's
+      operations on its carrier: an operation reading H is not an operation on K.
+  (d) NOT derivable: which members of (upper - lower) are MANDATORY.
+
+  |lower| = 14  |upper| = 18  |undetermined band| = 4

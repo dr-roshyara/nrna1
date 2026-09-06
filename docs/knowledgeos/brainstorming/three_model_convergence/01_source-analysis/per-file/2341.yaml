@@ -1,0 +1,63 @@
+sequence: 2341
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/08_regression-progression.md
+title: "Step-292/08 — Regression and Progression: New Synthesis -- Progression for the State, History Retained for Audit, Regression as the Mechanism That Makes Retention Useful Rather Than Merely Dutiful; the Regression Theorem's Guarantee Is Not Currently Available (Only Its Shape Transfers)"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "delivers a genuine new synthesis combining progression, history-retention, and regression into one coherent three-part picture, with the precise reason progression alone is insufficient and an explicit caveat that the regression theorem's formal guarantee does not currently transfer"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2341
+importance: high
+confidence: high
+about: >
+  Confirms the already-tracked "[EXP] regression and progression agree on 12/12 checks across 6 action
+  sequences × 2 fluents (A3). Executed, not asserted" (already summarized in file 2332).
+
+  **DELIVERS THE PRECISE REASON PROGRESSION ALONE IS INSUFFICIENT (P10)**: "progression computes A_{t+1}
+  and discards the history. KR-HISTORY established that the kernel writes history (and reads it 0
+  times). Progression satisfies the read behaviour and not the write obligation."
+
+  **DELIVERS A GENUINE NEW SYNTHESIS**: "both are needed, for different reasons... progression for the
+  state, history retained for audit, regression as the mechanism that makes retention useful rather than
+  merely dutiful." This is the thread's clearest three-part reconciliation of progression, history-
+  retention, and regression into complementary, non-redundant roles.
+
+  **DELIVERS AN EXPLICIT CAVEAT ON THE REGRESSION THEOREM'S TRANSFERABILITY**: "regression's guarantee is
+  the regression theorem, which holds for regressable queries over a basic action theory. KnowledgeOS has
+  no basic action theory, so the guarantee is not currently available -- only the mechanism's shape is."
+  This precisely qualifies the already-tracked "regression SUPPORTED" verdict: the mechanism (query
+  rewriting back to S_0) is usable as a design pattern, but its formal correctness guarantee is not yet
+  established for KnowledgeOS specifically.
+introduces:
+  - concept: "The three-part synthesis: progression for state, history retained for audit, regression as the mechanism making retention useful rather than merely dutiful"
+  - concept: "The precise reason progression alone is insufficient: it satisfies the read behavior (computing A_t+1) but not the write obligation (retaining history)"
+  - concept: "The explicit caveat that the regression theorem's formal guarantee does not transfer to KnowledgeOS absent a basic action theory -- only its mechanism shape does"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked file 2332 'regression SUPPORTED, progression SUPPORTED but insufficient alone' findings"
+    refinement: "GIVEN THE PRECISE READ/WRITE-OBLIGATION DISTINCTION for why progression is insufficient, and a genuine new synthesis reconciling all three mechanisms into complementary roles, with an explicit caveat on the regression theorem's non-transferable formal guarantee"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering the three-part progression/history-retention/regression synthesis and the caveat that the regression theorem's formal guarantee does not currently transfer to KnowledgeOS."
+anchor_test:
+  anchor: "This reconstruction's already-tracked file 2332 regression/progression findings"
+  supports_dimension: "Delivers the precise read/write distinction and a coherent three-part synthesis with an explicit non-transferability caveat"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers a genuine new synthesis reconciling progression, history-retention, and regression into complementary roles, with the precise read/write-obligation distinction and an explicit caveat that the regression theorem's formal guarantee does not currently transfer. Classified importance high given the incremental synthesis beyond file 2332."

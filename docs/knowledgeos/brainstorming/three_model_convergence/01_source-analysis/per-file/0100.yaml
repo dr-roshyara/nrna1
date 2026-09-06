@@ -1,0 +1,122 @@
+sequence: "0100"
+path: docs/knowledgeos/brainstorming/20260822-0249-knowledgeos-tarka-sangraha-ontology-pramana-reasoning.md
+title: "KnowledgeOS extraction from Annambhaṭṭa's Tarka-Saṅgraha (Nyāya-Vaiśeṣika synthesis, 8 lenses)"
+date: "2026-08-22"
+bytes: 8815
+
+model:
+  primary: g
+  secondary: [x, c1]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: "0092"
+
+importance: high
+confidence: high
+
+about: >
+  A review of the real Tarka-Saṅgraha (Annambhaṭṭa, 17th century), a Nyāya-Vaiśeṣika synthesis
+  textbook, organized as 8 "lenses" each producing an H-KOS-* candidate. Primarily a systematic
+  recombination of already-tracked concepts (Pramāṇa, reasoning trace, relations-as-first-class,
+  semantic precision, agent reasoning) under one coherent 7-layer architecture, with two genuinely new
+  contributions: an ontology-category typing requirement (Vaiśeṣika-sourced, ⭐ first substantive
+  Vaiśeṣika content beyond a single prior mention) and a 5-state error/knowledge vocabulary distinct
+  from 0096's similarly-shaped one.
+
+introduces:
+  - "⭐ First substantive Vaiśeṣika ontology content (previously only a single passing mention, 0094's
+    Abhāva-as-one-of-seven-Vaiśeṣika-categories): H-KOS-Ontology-001 -- 'every knowledge object SHALL
+    have an explicit ontological category describing what kind of entity, property, relation, event,
+    or absence it represents.' A category-TYPING requirement (what KIND of thing is this, prior to any
+    field values), distinct from but related to the Identity 6-tuple (0099) and Avacchedaka type
+    system (0099)"
+  - "H-KOS-ErrorState-001 (Mithyājñāna/erroneous cognition): a 5-state discrete vocabulary VALID/
+    UNKNOWN/CONFLICTED/SUPERSEDED/INVALID -- overlapping but NOT identical to 0096's Reasoning
+    Verification Engine vocabulary (VALIDATED/QUESTIONABLE/CONFLICTED/INVALID/UNKNOWN): SUPERSEDED is
+    new here, VALID/VALIDATED and UNKNOWN/QUESTIONABLE differ in naming -- a near-duplicate discrete-
+    vocabulary proposal, not merged"
+  - "Six other H-KOS-* candidates, all substantially restating already-tracked concepts: H-KOS-Pramana-
+    001 (preserve how knowledge became known), H-KOS-ReasoningTrace-001 (preserve inference chain, ~=
+    Reasoning Provenance), H-KOS-KnowledgeGraph-001 (relations first-class, ~= Relation/Sambandha),
+    H-KOS-SemanticPrecision-001 (prevent ambiguous predicates, ~= Semantic Boundary Precision/Context-
+    Bounded Meaning cluster), H-KOS-AgentReasoning-001 (preserve reasoning agent identity, ~= Agency)"
+  - "Eleventh anchor reshaping: 7-layer 'KnowledgeOS Constitutional Model' -- Truth Constitution /
+    Ontology Layer ('what exists?') / Pramana Layer ('how known?') / Reasoning Layer ('how concluded?')
+    / Semantic Layer ('what does it mean?') / Evidence Graph / Revision Engine ('how corrected?')"
+  - "Clean summary table: 'New Invariant Set Extracted From Tarka-Saṅgraha', 7 rows, ID+one-line purpose"
+  - "Final characterization: 'Knowledge is not a stored object. Knowledge is a justified relationship
+    between reality, observer, evidence, reasoning, and conclusion.'"
+
+defines: []
+
+refines:
+  - "0094's Abhāva (absence) mention: expanded from a single Vaiśeṣika-category reference into a
+    dedicated ontology-typing requirement covering entity/property/relation/event/absence"
+
+contradicts: []
+
+repeats:
+  - concept: "Pramāṇa as valid-knowledge-source system, relations-as-first-class, reasoning-chain
+    preservation, semantic precision, agent-reasoning preservation"
+    canonical_source: "0092"
+    novelty: low
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+# MD-017 relationship classification
+relationship:
+  type: unresolved_equivalence
+  candidates: ["H-KOS-ErrorState-001 (5-state vocabulary)", "0096's Reasoning Verification Engine vocabulary"]
+  equivalence_status: unproven
+  note: >
+    Two five-state discrete epistemic vocabularies, overlapping but not identical in membership and
+    naming (SUPERSEDED is new; VALID vs VALIDATED, UNKNOWN vs QUESTIONABLE differ). Both consistent
+    with the corpus's general preference for discrete over scalar states (0081), but not shown to be
+    the same taxonomy.
+
+registry_updates:
+  - "NEW entry warranted: Ontology Category Typing (H-KOS-Ontology-001) -- first substantive Vaiśeṣika
+    content, cross-referenced to but distinct from the Identity 6-tuple/Avacchedaka cluster"
+  - "Cross-reference added: two competing 5-state discrete vocabularies (0096, 0100), tracked as
+    unresolved_equivalence, not merged"
+  - "Six other candidates in this file substantially restate existing registry entries; no new entries
+    warranted for those (recorded as repeats/reinforcement in this file's own record instead)"
+
+# MD-014 anchor_test against 0087
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Evidence Integrity", "Unknown Preservation"]
+  refines_or_contradicts: "Eleventh reshaping (7-layer stack), a new pipeline variant."
+  alternative_minimal_kernel: "Yes -- 7-layer shape, an eleventh distinct variant."
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true   # positive: all 7 candidates reuse H-KOS-*
+
+key_evidence:
+  - "First substantive engagement with Vaiśeṣika ontology (as opposed to Nyāya epistemology/logic),
+    after 87 preceding primary-corpus files with only a single passing mention"
+  - "A second near-duplicate discrete-state vocabulary (following the Fallacy-001/Failure-001 naming
+    near-duplicate at 0093/0094), suggesting this is a recurring pattern in the thread, not an isolated
+    event"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether Vaiśeṣika's other ontological categories (substance, quality, action, universal,
+    particular, inherence) are engaged in more depth by a later file, or whether this remains the only
+    substantive Vaiśeṣika content"
+  - "Whether the two competing 5-state vocabularies (0096, 0100) are ever reconciled or one is dropped"
+
+tier2_triggered: true
+tier2_reason: >
+  First substantive Vaiśeṣika ontology content in the corpus, producing a genuine new candidate
+  (ontology-category typing); a second near-duplicate discrete-state vocabulary; and an eleventh anchor
+  reshaping. Otherwise largely a systematic recombination of already-tracked Nyāya concepts under one
+  coherent architecture -- recorded efficiently per MD-013, with most of its 7 candidates logged as
+  reinforcement rather than new registry entries.

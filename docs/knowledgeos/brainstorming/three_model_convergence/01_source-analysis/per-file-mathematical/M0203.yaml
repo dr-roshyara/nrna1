@@ -1,0 +1,70 @@
+sequence: M0203
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-092001_agreed-sufficiently-constrained.md
+title: "Denominator-discipline fix (|N| vs. |N_n| conflict caught) and the frozen 7-point KR-REP-DATASET-2026-09 contract"
+date: "20260903-092001"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0203
+importance: high
+confidence: high
+about: >
+  Catches one genuine internal inconsistency in the prior audit specification (M0201/M0202): the
+  proposed level-metric formulas implicitly used the full source count |N|, while the missing-field
+  policy requires excluding incomplete levels — these two statements conflict. Fixes it by defining
+  A_n/F_n/entropy explicitly over the valid support N_n={i:R_{n,i}≠NULL}, not |N|, and freezes the
+  dataset contract into 7 explicit invariants before declaring the specification stage complete.
+introduces:
+  - "The caught denominator inconsistency: level metrics (A_n,F_n,Ĥ_n(Q|R),Ĥ_n(R|Q)) must be computed over the valid empirical support N_n, NOT the full source corpus size |N|=1395 — 'your current formulas use |N|, but your missing-field policy says incomplete levels are excluded. Those two statements conflict'"
+  - "Explicit formulas fixing the inconsistency: A_n=(1/|N_n|)Σ_{i∈N_n}C_n(R_{n,i}); F_n=(1/|N_n|)Σ_{i∈N_n}𝟙[O_n(R_{n,i})=Q_i] — both restricted to N_n"
+  - "An explicit dual-quantity distinction: |N|=1395 (source corpus size) versus |N_n| (usable empirical support at level n) — 'we should never silently normalize [the 1395/1496/1475 denominator] differences away'"
+  - "A stricter n* guard: for the primary canonical n*, require Comp_n=1 (full completeness) at any level used; a partial-support result may additionally be reported but must be explicitly labeled as such — narrower than M0201's Comp_n=1∧A_n=1∧N_viol=0∧Ĥ(Q|R)≤ε compound condition, isolating completeness as a separate prerequisite gate"
+  - "The frozen 7-point dataset contract for 𝒟_REP: (1) no synthetic intermediate states; (2) Q_i established independently from R_n; (3) every missing representation explicitly NULL/UNOBSERVED; (4) every metric reports its actual denominator N_n; (5) completeness reported separately; (6) KR-ZERO's original classifications remain provenance fields, not newly inferred labels; (7) no empirical result promoted to a population-level theorem"
+defines:
+  - "𝒟_REP={(D_i,Q_i,R_{5,i},R_{4,i},R_{3,i},R_{2,i},R_{1,i},C_{1..5},O_{1..5})}_{i=1}^N — the frozen dataset contract"
+refines:
+  - "M0201/M0202's audit specification: catches and fixes the |N|-vs-|N_n| denominator inconsistency, freezes the contract into 7 explicit invariants"
+contradicts:
+  - "The prior formulas' implicit use of |N| for level metrics, corrected to N_n"
+repeats:
+  - "The established discipline (never fabricate missing data, never promote empirical results to theorems, keep provenance fields distinct from newly-inferred labels) — now codified as 3 of the 7 frozen contract points"
+bridge_candidates:
+  - "Whether the corrected |N|-vs-N_n formulas were applied before any actual audit execution"
+mathematical_content: >
+  A narrow but genuine mathematical correction: identifies and fixes an internal inconsistency
+  between an implicit full-corpus denominator and an explicit missing-field exclusion policy in the
+  level-metric formulas — the kind of small but real error this reconstruction's discipline exists to
+  catch before implementation.
+gita_content: null
+kernel_content: >
+  Marks the declared end of the specification stage for the KR-REP-DATASET audit ("at this point I
+  would not invent any further mathematics. The next artifact should be the actual extraction/audit
+  implementation") — a disciplined stopping point consistent with the thread's audit-before-implement
+  methodology.
+registry_updates:
+  - "Caught and fixed |N|-vs-N_n denominator inconsistency in the level-metric formulas"
+  - "Frozen 7-point 𝒟_REP dataset contract, marking the declared end of the specification stage"
+anchor_test:
+  anchor: false
+  supports_dimension: "|N|-vs-N_n denominator fix; frozen 7-point dataset contract; stricter Comp_n=1 n* guard"
+  refines_or_contradicts: "refines (M0201/M0202's audit specification, correcting an internal inconsistency)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Your current formulas use |N|, but your missing-field policy says incomplete levels are excluded. Those two statements conflict.\""
+  - "\"|N|=1395 source corpus size versus |N_n| usable empirical support at level n.\""
+undefined_concepts: []
+open_questions:
+  - "Was the corrected denominator discipline applied before any actual audit execution?"
+tier2_triggered: false
+tier2_reason: >
+  A narrow but genuine internal-consistency correction (|N| vs. N_n) plus a consolidation/freezing of
+  the already-established audit contract into 7 explicit invariants — incremental relative to
+  M0201/M0202 rather than introducing a new structural finding.

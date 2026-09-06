@@ -1,0 +1,200 @@
+sequence: 902
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-214401_step_273_knowledge-state-sufficiency-and-minimality.md
+title: "Step 273 -- Canonical Knowledge-State Sufficiency and Minimality: RESOLVES the 'Steps 272-273 Absent' Gap Flagged at File 0901 -- Confirms Step 273 Exists, Authored 44 Seconds After Step 274 (a Ninth Step-Reordering-by-Authoring-Timestamp Instance), and References a Still-Unseen 'HPA Response' Establishing Step 272's Dependency Order (Corpus->O->K-sufficiency->K-minimality->K-identity->Sigma->Policy->T->Computational Closure) -- Delivers the Required-Neq-Primitive Methodological Safeguard, the Deletion/Replacement/Information-Loss Test Triad, a Twelve-Item Counterexample Catalogue, THE Sigma PROBLEM (Three Competing Models), and the Formal Candidate Theorem P_273, All Explicitly Not Yet Proven"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "rigorous discrete-mathematics/DDD minimality methodology, directly paralleling and logically preceding 0901's Step 274 closure protocol"
+source_role: PRIMARY_RESEARCH
+canonical_source: 902
+importance: critical
+confidence: medium
+about: >
+  **Resolves the "Steps 272-273 absent" gap flagged at file 0901**: this file confirms Step 273 does
+  exist in the corpus, but is authored 44 seconds AFTER Step 274 (file 0901) per source timestamps
+  (20260830-214401 vs. 20260830-214317) -- **a ninth confirmed instance of the step-number-vs-authoring-
+  order inversion pattern**, structurally identical to the earlier Step 259/260 self-correction. Step 272
+  itself, however, remains genuinely unlocated in this reconstruction's sequential pass -- this file opens
+  referencing "the attached HPA response" as having already established Step 272's dependency order
+  (`Corpus→O→K-sufficiency→K-minimality→K-identity→Σ→Policy→T→Computational Closure`) and identified `G-T`
+  and `G-S` as the remaining mathematical blockers -- **a further instance of the referenced-but-unseen-
+  material pattern** (after Q14/CB-2 at 0892, the closure artifact at 0896, artifacts A-J at 0897), this
+  time explicitly cautioning against treating the HPA response's own claim that "G-K and G-I are closed"
+  as license to stop testing them.
+
+  **§273.0-273.1 delivers the mandate**: not to restate `K=(A,R,Σ,E_L)` (Step 272's proposed candidate)
+  but to DERIVE it -- boxed **`K_canonical=the minimal state representation sufficient to preserve every
+  mandatory distinction and operation of KnowledgeOS`**. Step 272's candidate components (Assertions,
+  Relationships, epistemic Status, Evidence Links, with History/Lineage/Policy/Authority classified
+  external) are explicitly treated as "the starting hypothesis, not a completed proof."
+
+  **§273.3-273.5 delivers the first foundational sub-question and a load-bearing identity distinction**:
+  what exactly is an Assertion -- a bare proposition `P`, `(P,id,context)`, or a richer tuple -- "do not
+  place metadata into Assertion simply because it is useful"; tests whether Proposition and Assertion must
+  be distinguished (does KnowledgeOS need "the proposition P exists" separate from "someone asserted P at
+  time t in context C"?); **delivers `AssertionIdentity≠PropositionIdentity`** -- explicitly warns against
+  assuming `P=P⇒a_1=a_2`, since two independent assertions can express the same proposition, "likely
+  important for provenance and evidence."
+
+  **§273.6-273.7 delivers two further component-specific minimality tests**: Relationship semantics
+  (`r=(x,type,y)`, testing whether context/time/source/confidence/validity/status attributes are actually
+  semantically necessary, not merely implementation-convenient); and **a major candidate reduction for
+  Evidence Links**: could `E_L⊆R`, i.e. could `supports(E,P)` be simply a typed relationship, making `E_L`
+  derivable from `R` rather than a separate primitive?
+
+  **§273.9-273.10 delivers the formal DELETION TEST and REPLACEMENT TEST, the core minimality methodology
+  of this step**: for candidate component `X`, construct `K^{-X}` and check `∃o∈𝒪_core:o(K,x)≠o(K^{-X},x)`
+  -- if such an operation exists, `X` is required; if not, `X` is not justified as a primitive component.
+  Crucially separates from this **the further Replacement Test**: a component may be REQUIRED yet not
+  PRIMITIVE if it can be reconstructed from other components (e.g. `E_L=f(R)`), delivering boxed
+  **`Required≠Primitive`** as "essential."
+
+  **§273.12-273.13 delivers "THE `Σ` PROBLEM," a central unresolved issue posed as three explicitly
+  competing models**: Model A -- single status (`Σ:P→S`); Model B -- structured multi-dimensional
+  epistemic state (`Σ:P→S_1×S_2×⋯`); Model C -- derived assessment (`Σ=f(A,R,E)`). Delivers the general
+  test for status primitivity: if `Supported(P)` is fully determined by `E(P)` and a fixed assessment
+  function, storing it introduces redundancy; if it represents "an accepted epistemic commitment not
+  recoverable from current evidence," it may be genuinely primitive -- "this distinction must be
+  demonstrated."
+
+  **§273.14-273.20 delivers a battery of further boundary/representation tests**: temporal semantics (is
+  validity encoded internally in `K_t`, or does it belong entirely to History -- "do not conflate temporal
+  validity with history"); context semantics ("operation necessity decides membership," not intrinsic
+  appeal); contradiction representation (the state must represent `{P,¬P}` without automatically resolving
+  to `Unknown`, tested across four possible representation strategies); Unknown-vs-NotRepresented (absence
+  from `A` does not automatically mean epistemic Unknown -- these may need to remain distinct); Refuted-
+  vs-False (`EpistemicAssessment≠TruthValue`, since evidence may refute an assertion under a given
+  evidence regime without establishing metaphysical falsity); Supersession (does it require a relationship
+  `R(P_1,P_2)`, potentially eliminating the need for a dedicated lifecycle field); Retract (`P∉A` vs.
+  `P∈A∧Status(P)=Retracted` -- "these are semantically very different," contingent on whether historical
+  traceability requires the assertion to remain represented).
+
+  **§273.21-273.22 delivers open Merge/Split scoping questions**: Merge left explicitly unresolved by
+  Step 272, with seven distinct open sub-questions (does it create a new state? combine assertion/
+  relationship sets? preserve conflicting assertions? require conflict resolution/provenance/authority?)
+  -- "do not define merge until these questions are answered"; Split explicitly questioned as to whether it
+  is a genuine KnowledgeOS semantic primitive at all, or merely an architectural convenience to be removed
+  from the core operation set if no semantic requirement is demonstrated.
+
+  **§273.23-273.24 delivers the state-closure requirement** (`K'∈𝒦` for every state-changing operation,
+  explicitly "directly prepares G-S," the same gap file 0901/Step 274 subsequently attacks in its own
+  closure theorem) and five candidate invariants (`I1`-`I5`: type validity, relationship validity,
+  evidence-reference validity, status validity, identity consistency), explicitly flagged as provisional
+  -- "do not assume these exact invariants. Derive them from the final types."
+
+  **§273.25-273.27 delivers the state-equality investigation**: three explicitly distinguished candidate
+  relations (Representation equality -- exact structural equality; Structural equivalence -- isomorphism
+  preserving semantic structure; Observational equivalence `K_1≈_𝒪K_2`), posing "which relation does
+  KnowledgeOS actually mean when it says 'same Knowledge State'?" as "a central proof obligation"; requires
+  identity to be genuinely computable (`Identity(K_1,K_2)→Boolean` via an actual executable procedure, "do
+  not claim computability without an executable procedure"); and delivers the `SemanticIdentity` vs.
+  `RepresentationHash` distinction for canonical serialization (two semantically equivalent states may
+  encode differently unless canonicalization is explicitly defined).
+
+  **§273.28-273.29 delivers "the strongest practical proof method for minimality," THE INFORMATION-LOSS
+  TEST**: for any proposed reduction `K→K^-`, construct a pair `K_1,K_2` that become indistinguishable
+  after the reduction, then check whether some mandatory operation should distinguish them -- if so, `K^-`
+  is insufficient. **Delivers a mandatory twelve-item counterexample catalogue** (same proposition/
+  different assertion; same assertion/different evidence; same evidence/different assessment; contradictory
+  evidence; missing evidence; superseded assertion; retracted assertion; context-dependent assertion;
+  temporally valid assertion; identical current state/different history; identical structure/different
+  provenance; observationally equivalent but structurally different states), each required to identify
+  which candidate `K` components preserve the corresponding distinction.
+
+  **§273.30 delivers the FORMAL CANDIDATE THEOREM `P_273`**: if every mandatory KnowledgeOS operation is
+  observationally computable from `K=(A,R,Σ,E_L)` plus explicitly declared external inputs, and each
+  component passes the deletion/replacement test, then `K` is observationally minimal relative to
+  `𝒪_core` -- explicitly "do not call this a theorem until the premises are actually demonstrated."
+
+  **§273.31 delivers what this file itself calls "one of the most important methodological safeguards of
+  this step": the SEMANTIC-NECESSITY vs. REPRESENTATION-NECESSITY distinction**, correcting Step 272's own
+  framing -- `EvidenceLinks required` does NOT imply `EvidenceLinks primitive`; `Σ required` does not imply
+  `Σ stored` (it may be entirely derived) -- directly formalizing and generalizing the Required≠Primitive
+  distinction from §273.10.
+
+  **§273.32-273.33 delivers the DDD-mapping discipline**: only AFTER the mathematical analysis is complete
+  should candidate components be mapped to DDD categories (Entity/Value-Object/relation/service), with an
+  explicit warning against forcing a one-to-one correspondence -- a mathematical relation may legitimately
+  be implemented as an entity association, value object, projection, or domain-service result; and
+  implementation-mapping fidelity must be classified exact/structural/behavioral/approximate/absent, "do
+  not call an approximate mapping a validation."
+
+  **§273.34-273.35 delivers a twelve-artifact required-documentation list** (canonical type specification,
+  assertion semantics, relationship semantics, evidence-link minimality, sigma-primitive-vs-derived,
+  deletion tests, counterexample catalogue, identity analysis, state algebra, DDD mapping, implementation
+  trace, updated closure matrix) and a fifteen-lettered final-verdict format (A through O).
+
+  **§273.36 delivers a NON-NEGOTIABLE RULE with four explicit conjunctive preconditions** before
+  `K=(A,R,Σ,E_L)` may be declared canonical: every primitive component genuinely necessary; every
+  non-primitive component derivable or externally accessible; every mandatory core operation computable;
+  no required semantic distinction lost -- "do not conclude `K=(A,R,Σ,E_L)` is canonical merely because
+  Step 272 proposed it."
+
+  **§273.37 delivers the strategic objective and an eight-stage dependency-chain diagram**
+  (`𝒪_core→Requirements(K)→Candidate K→Deletion/Replacement/Counterexample Tests→K_minimal→State
+  Algebra→G-T,G-S→Computational Closure`), explicitly stating the purpose of Step 273 "is not to make `K`
+  larger. It is to make `K` smaller, more precise, and provable" -- directly logically PRECEDING file
+  0901/Step 274's own closure work on the SAME candidate `K=(A,R,Σ,E_L)`, confirming this file's correct
+  intended reading order is before, not after, Step 274 despite the later file-path/timestamp position.
+introduces:
+  - concept: "Resolution of the 'Steps 272-273 absent' gap flagged at file 0901 -- Step 273 exists, authored 44 seconds after Step 274, a ninth step-reordering-by-authoring-timestamp instance"
+  - concept: "A further referenced-but-unseen-material instance: 'the attached HPA response' establishing Step 272's dependency order and the G-T/G-S gap identification"
+  - concept: "AssertionIdentity≠PropositionIdentity, motivated by provenance/evidence requirements"
+  - concept: "The candidate Evidence-Links-as-derived-relationship reduction (E_L⊆R, supports(E,P) as a typed relationship)"
+  - concept: "The formal Deletion Test and Replacement Test, and the Required≠Primitive distinction"
+  - concept: "THE Σ PROBLEM: three explicitly competing models (single status / structured multi-dimensional / derived assessment)"
+  - concept: "The battery of representation-boundary tests: temporal validity vs history, contradiction representation, Unknown vs NotRepresented, Refuted vs False, Supersession-as-relationship, Retract's two competing semantics"
+  - concept: "Merge and Split scoping questions, explicitly left unresolved pending semantic necessity demonstration"
+  - concept: "The three-way state-equality investigation (Representation equality / Structural equivalence / Observational equivalence) as a central proof obligation"
+  - concept: "THE INFORMATION-LOSS TEST, described as the strongest practical proof method for minimality, plus the mandatory twelve-item counterexample catalogue"
+  - concept: "THE FORMAL CANDIDATE THEOREM P_273, explicitly not yet a theorem"
+  - concept: "The Semantic-necessity vs Representation-necessity methodological safeguard, correcting Step 272's own framing"
+  - concept: "The non-negotiable four-conjunct rule before K=(A,R,Σ,E_L) may be declared canonical"
+defines:
+  - concept: "The Deletion Test and Replacement Test (minimality methodology)"
+    definition: "A two-stage formal minimality methodology for determining Knowledge State components: the Deletion Test asks, for candidate component X of K=(X,Y), whether removing it (forming K^{-X}=Y) causes some mandatory operation o∈𝒪_core to produce a different result on the reduced state than on the full state (∃o:o(K,x)≠o(K^{-X},x)) -- if so, X is REQUIRED. The Replacement Test then separately asks whether a required component can nonetheless be reconstructed (derived as a function of other retained components, e.g. E_L=f(R)) rather than stored as its own independent primitive -- if so, the component is required but NOT primitive. This two-stage structure prevents the common error of concluding that a component belongs in the canonical kernel merely because some operation depends on the information it carries, when that information might be fully recoverable from other, already-retained components"
+  - concept: "Semantic necessity vs Representation necessity"
+    definition: "A methodological distinction, presented as one of the step's most important safeguards, between two different senses in which a piece of information can be 'required' by KnowledgeOS: semantic necessity means some mandatory operation's correct behavior depends on that information being available in some form (it must exist somewhere, in some derivable or accessible form); representation necessity (equivalently, primitivity) means the information must be explicitly stored as its own independent field/component of the canonical state K. The safeguard is that semantic necessity does NOT imply representation necessity -- 'EvidenceLinks required' does not imply 'EvidenceLinks primitive'; 'Σ required' does not imply 'Σ stored' rather than derived on demand. Conflating the two leads to an unnecessarily large kernel that stores redundant, reconstructible information as if it were foundational"
+refines:
+  - concept: "0901's Step 274 closure theorem candidate P_274 and its use of K=(A,R,Σ,E_L)"
+    refinement: "LOGICALLY PRECEDES 0901 despite being authored after it and appearing later in file-path order -- this file's own methodology (deletion/replacement/information-loss testing) is precisely the derivation process that would need to produce the K=(A,R,Σ,E_L) candidate 0901 subsequently takes as its starting point for closure testing, confirming the intended reading order is 273→274 not 274→273"
+  - concept: "The corpus's status-vocabulary proliferation and Σ investigations (e.g. 0900's orthogonality test)"
+    refinement: "REFRAMED via THE Σ PROBLEM's three explicit competing models (single status / structured multi-dimensional / derived assessment), giving the ongoing status-space investigation a precise formal choice-structure rather than an open-ended list of candidate terms"
+  - concept: "0894's/0897's/0900's/0901's external-reference and hidden-dependency placement pattern"
+    refinement: "EXTENDED to Assertion identity and Evidence Links specifically: AssertionIdentity≠PropositionIdentity parallels the earlier Identity≠Equality findings, and the E_L⊆R reduction test extends the required-vs-primitive discipline to a concrete, testable candidate simplification"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Locate and read Step 272 (the source of 'the HPA response' and the dependency-order claim referenced here), if it exists anywhere in the corpus's file-path order, to verify the G-T/G-S gap identification and the initial K=(A,R,Σ,E_L) proposal independently."
+  - "Read whichever file executes this Step 273 protocol (the twelve required artifacts, the deletion/replacement tests, the twelve-item counterexample catalogue) and delivers the fifteen-lettered final verdict, given the established pattern of protocol files preceding their own execution."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Deletion Test / Replacement Test / Information-Loss Test triad as the corpus's most complete minimality-testing methodology to date, directly reusable for the gated (§29) canonical Kernel synthesis."
+  - "dimension-registry.md: record the Semantic-necessity vs Representation-necessity safeguard as a directly reusable methodological distinction to prevent kernel bloat in the eventual synthesis."
+  - "dimension-registry.md: record THE Σ PROBLEM's three explicit competing models as the clearest formal statement yet of the long-running epistemic-status-space investigation's remaining choice."
+  - "dimension-registry.md: note the ninth confirmed step-reordering-by-authoring-timestamp instance (273 authored after 274), and the further referenced-but-unseen 'HPA response' and Step 272 material."
+anchor_test:
+  anchor: "0901's Step 274 closure theorem and its use of K=(A,R,Σ,E_L); 0900's orthogonality test and status-vocabulary investigation; 0894's/0897's external-reference placement pattern; 0890's identity/equality formalization"
+  supports_dimension: "Logically precedes and grounds 0901's closure work by supplying the derivation methodology (deletion/replacement/information-loss tests) that would need to produce K=(A,R,Σ,E_L) in the first place. Reframes 0900's status investigation via the three explicit Σ-problem models. Extends 0890's Identity≠Equality findings to AssertionIdentity≠PropositionIdentity"
+  refines_or_contradicts: "logically precedes and grounds 0901's Step 274 work; reframes 0900's Σ investigation; extends 0890's identity/equality findings"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§273.5's explicit worked distinction (two independent assertions a_1≠a_2 with content(a_1)=content(a_2)) is directly checkable evidence for AssertionIdentity≠PropositionIdentity."
+  - "§273.9's formal deletion-test criterion (∃o∈𝒪_core:o(K,x)≠o(K^{-X},x)) is directly checkable evidence for the rigor of the minimality methodology."
+  - "§273.31's explicit correction quoting Step 272's own language ('Assertions, relationships, epistemic state and evidence links are required') immediately followed by the Required≠Primitive distinction is directly checkable evidence of this file's disciplined self-correction of an inherited (still-unseen) prior claim."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 272 itself (the source of the referenced 'HPA response' and dependency-order claim) is ever located anywhere in the corpus's file-path order."
+  - "Whether a subsequent file actually executes this Step 273 protocol and delivers the fifteen-lettered final verdict resolving the Σ problem, the Merge/Split scoping questions, and the twelve-item counterexample catalogue."
+  - "Whether the candidate E_L⊆R reduction (Evidence Links as derived relationships) is ultimately accepted or rejected."
+tier2_triggered: true
+tier2_reason: "Resolves the Steps-272-273 gap flagged at file 0901, delivers the corpus's most complete minimality-testing methodology (Deletion/Replacement/Information-Loss tests), the Semantic-necessity vs Representation-necessity safeguard, THE Σ PROBLEM's three explicit competing models, and the formal candidate theorem P_273. Classified importance critical and tier2-triggered; confidence medium reflecting reliance on the still-unlocated Step 272 and its referenced HPA response."

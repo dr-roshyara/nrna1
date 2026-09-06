@@ -1,0 +1,50 @@
+sequence: M0056
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-102324_kr-sim-2026-09-02-g-commissioning-notes.md
+title: "KR-SIM-2026-09-02-G Commissioning Notes -- Verbatim Duplicate of M0055's Part 2 (the Experiment H Review and the KR-SIM-2026-09-02-G Proposal)"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c1
+  secondary_note: "content-identical to M0055's second section (from 'Yes. I have the old experiment result and the full H -- Repair Phase and Re-ordered Re-run context' onward) -- same PB-2/PB-3/PB-5 findings, same Zero_strict=>Zero_reasoned=>Zero_weak [DERIVED] classification, same Zero-primitive-status correction, same four-experiment re-ordered sequence, same final status table, same KR-SIM-2026-09-02-G proposal"
+source_role: DUPLICATE
+canonical_source: M0055
+importance: low
+confidence: high
+about: >
+  Verbatim duplicate of the second half of M0055 (the confirmed "Experiment H -- Repair Phase and
+  Re-ordered Re-run" review): PB-2's strongest candidate repair (R_b, delegating to undefined
+  Sat_consistency) explicitly not adopted as premature theory selection; PB-3/PB-5 remain open;
+  Zero_strict=>Zero_reasoned=>Zero_weak classified [DERIVED]; the correction of "Zero is the
+  closure predicate of the whole theory" to a tested-model-only claim; the re-ordered research
+  sequence (Contr/Consistency -> Status order -> Eval -> Sat -> Zero -> kernel); and the proposal
+  of "KR-SIM-2026-09-02-G -- Contradiction and Epistemic Status Semantic Closure" as the next
+  experiment. All content already fully recorded under M0055; not re-summarized here.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "M0055's entire Part 2 (Experiment H review, the PB-2/PB-3/PB-5 findings, the Zero-primitive-status correction, the re-ordered research sequence, the final status table, and the KR-SIM-2026-09-02-G proposal), reproduced verbatim"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0056 as a verbatim duplicate of M0055's Part 2. No independently new substance; full detail recorded under M0055."
+anchor_test:
+  anchor: "M0055's Experiment H review and re-ordered research sequence"
+  supports_dimension: "Reproduces it verbatim; contributes no new dimension"
+  refines_or_contradicts: "repeats (M0055, in full)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Section-by-section, sentence-by-sentence identical to M0055's Part 2, including the same status table and the same proposed KR-SIM-2026-09-02-G experiment."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Verbatim duplicate of content already fully recorded and tier2-triggered under M0055; no independently new finding warrants a second tier-2 treatment."

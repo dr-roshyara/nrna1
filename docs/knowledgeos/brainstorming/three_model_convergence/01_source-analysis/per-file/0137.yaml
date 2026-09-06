@@ -1,0 +1,91 @@
+sequence: "0137"
+path: docs/knowledgeos/brainstorming/20260822-141513-semantic-compiler-cpu-prototype-benchmark-first-run.md
+title: "First EXECUTED, MEASURED CPU-only benchmark (120-case KOS-SCB v0.1): 74.2% accuracy, a genuine negative/limiting empirical result"
+date: "2026-08-22"
+bytes: 15000
+model:
+  primary: c1
+  secondary: [m]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0135"
+importance: critical
+confidence: high
+about: >
+  Delivers the CPU-only benchmark 0135 promised (and 0136 failed to deliver, presenting only labeled
+  "theoretical projections" instead). Two rounds: a 4-sentence pilot exposing an English/German
+  extraction asymmetry, then a 120-case KOS-SCB v0.1 benchmark with numbers explicitly labeled
+  "measurements of the prototype running here, not estimates": 74.2% overall semantic accuracy,
+  0.0081ms mean latency, ~123,000 parses/sec, ~0.05MB peak memory, 6 false accepts among 20 deliberately
+  ambiguous cases. The FIRST empirically measured (not argued/philosophical) negative result in the
+  corpus: "The computational model is cheap. The semantic model is hard." Proposes decomposing the
+  single-layer KIR into three intermediate representations (Surface AST -> Semantic AST -> Knowledge
+  IR) as the next step, and explicitly reconnects the false-accept failures to the need for a
+  first-class UNKNOWN state, invoking "our earlier Zero + Tarka + Gödel + Nyāya research."
+
+introduces:
+  - "First EXECUTED, MEASURED (not estimated) benchmark in the corpus for this thread: 120-case
+    KOS-SCB v0.1, 74.2% semantic accuracy, explicitly reported as insufficient for KnowledgeOS"
+  - "Three-tier representation decomposition proposal: Surface AST -> Semantic AST -> Knowledge IR,
+    replacing the single-layer KIR that the benchmark showed insufficient -- logged as new_decomposition"
+  - "Explicit architectural asymmetry finding: 'Computation is cheap. Semantic correctness is
+    expensive' -- reframes the engineering challenge from hardware capability to semantic-model
+    precision"
+  - "Proposed hybrid architecture where a small LLM only proposes candidate KIRs for ambiguous cases,
+    which a deterministic Semantic Type Check + Epistemic Validation layer then accepts/marks unknown --
+    'the LLM becomes a semantic hypothesis generator, not the epistemic authority'"
+
+defines: []
+
+refines:
+  - "Directly resolves the discipline concern flagged at 0136 (unfulfilled benchmark promise) by
+    actually running and reporting the benchmark, with continued explicit self-caution about
+    over-extrapolating from a microbenchmark"
+  - "Reinforces (does not extend) Unknown Preservation by connecting the 6 false-accept failures to
+    the operational need for a first-class UNKNOWN state distinct from TRUE/FALSE"
+
+contradicts:
+  - "0136's implicit 'kernel is complete, architecture is complete' framing is undercut by 0137's own
+    measured 74.2% accuracy result -- the source itself, two files later, supplies evidence against its
+    own prior overclaim, though it does not explicitly retract 0136's completeness language"
+
+repeats: []
+
+bridge_candidates: []
+
+mathematical_content: true
+gita_content: false
+kernel_content: false
+
+registry_updates:
+  - "New Unresolved-adjacent entry (new_decomposition, not unresolved_equivalence): single-layer KIR
+    vs. three-layer Surface-AST/Semantic-AST/Knowledge-IR decomposition -- see dimension-registry.md"
+  - "Ledger Entry 44 added: first executed, measured empirical benchmark and its genuine negative result"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Unknown Preservation"]
+  refines_or_contradicts: "Refines (via measured evidence) the KIR representation family; empirically undercuts 0136's completeness claim without explicitly naming it."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "The first genuinely EMPIRICAL (measured, numeric, falsifiable) result in the entire corpus, as
+    opposed to argued/philosophical negative rulings (0108/0110/0127) -- a qualitatively different kind
+    of evidence, still candidate-status only per this reconstruction's discipline"
+  - "Explicit self-caution maintained even after a real measurement: 'not evidence that the full
+    architecture is already faster or more accurate than DeepSeek' -- continued epistemic restraint"
+
+undefined_concepts: []
+open_questions:
+  - "Whether a later file (KOS-SCB v0.2, explicitly proposed as the next step) actually implements the
+    three-tier Surface-AST/Semantic-AST/KIR pipeline and reruns the 120 cases, and whether accuracy
+    improves toward the source's own stated >95% target -- actively watch"
+
+tier2_triggered: true
+tier2_reason: >
+  First executed, measured empirical benchmark in the corpus, producing a genuine negative/limiting
+  result and a new three-tier representation decomposition proposal.

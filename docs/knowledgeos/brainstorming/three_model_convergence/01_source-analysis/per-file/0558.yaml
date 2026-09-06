@@ -1,0 +1,218 @@
+sequence: 558
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-160001_step-016-temporal-knowledge-events-state-evolution-and-knowledge-versioning.md
+title: "LANDMARK: Full Temporal/Bitemporal Knowledge Theory — Five Distinct Time Axes (T_e≠T_o≠T_k≠T_d≠T_v); World State X_t≠Knowledge State K_t (KnowledgeOS Can Be Wrong About the World); Bitemporal Assertions and Historical Knowledge Replay K(t); 'No Retroactive Epistemic Contamination'; Fifteen Canonical T1-T15 Invariants; Opens Step 17 (Ontology, Concepts, Semantics, and Domain Models) as One of the Last Major Foundations Before a Complete Formal KnowledgeOS Specification"
+date: "2026-08-27"
+bytes: 25177
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 0557's closing 'Step 16 -- Temporal Knowledge, Events, State Evolution, and Knowledge Versioning'"
+source_role: PRIMARY_RESEARCH
+canonical_source: 558
+importance: critical
+confidence: high
+about: >
+  Directly executes 0557's closing "Step 16," opening with the observation that time has so far only been
+  treated as a property of an assertion, which is insufficient: `time of observation ≠ time of validity ≠
+  time of belief ≠ time of decision ≠ time of event`. Without this separation KnowledgeOS could assert
+  "Nexus is version 3.69" without being able to answer when that was true, when it was known, or when it
+  was decided upon.
+
+  **Delivers the file's foundational example**: `Nexus=3.69` (2024), `3.70` (2025), `3.72` (2026) are NOT
+  contradictory once temporal scope is respected -- `Contradiction requires compatible temporal scope`,
+  refining Step 9's conflict model. **Formalizes five distinct temporal concepts** for an assertion `A`:
+  Valid time `T_v(A)`, Observation time `T_o(A)`, Knowledge time `T_k(A)`, Decision time `T_d(A)`, Event
+  time `T_e(A)` -- worked through a concrete four-date Nexus-upgrade scenario (event 08-20, observation
+  08-25, knowledge-incorporation 08-26, decision 08-27) demonstrating all four differ. **Refines the
+  assertion structure** from `A=(P,E,Σ,Π,τ,Context,ID)` to `A=(P,E,Σ,Π,T_v,T_o,T_k,Context,ID)`, with
+  decision time belonging to the Decision event rather than the assertion itself.
+
+  **Formalizes valid time as an interval** `T_v=[t_start,t_end)`, permitting unknown start and/or end
+  (`Unknown temporal boundary≠false`), and **formalizes Event≠State**: an event like `Upgrade(Nexus,3.69,
+  3.70)` has an occurrence time, while the resulting state `Version(Nexus)=3.70` has a validity interval.
+  Delivers two parallel state-transition systems: domain/world state evolution
+  `X_{t+1}=δ_X(X_t,e_t)` versus knowledge-state evolution `K_{t+1}=δ_K(K_t,o_t)`.
+
+  **Delivers the file's central theoretical result -- World State ≠ Knowledge State**:
+  `X_t≠K_t`, worked through a concrete discrepancy example (world has Nexus=3.72, knowledge holds
+  Nexus=3.69) yielding the profound stated limitation: **"a knowledge system cannot detect an unknown
+  discrepancy without some new evidence or observation"** -- explicitly adopted as accepted theory. Connects
+  this to an event-sourcing/DDD perspective: `X_t=Fold(δ_X,X_0,H_X)` for domain history, and analogously
+  `K_t=Fold(δ_K,K_0,H_K)` for KnowledgeOS's own epistemic history -- **two distinct histories, `H_X`
+  (world/domain events) and `H_K` (epistemic events)**, with `H_X` generally containing an event before
+  `H_K` contains knowledge of it. This is stated to solve an important philosophical problem: `EventOccurred`
+  can be represented without `KnowledgeOfEvent` -- "reality does not wait for KnowledgeOS to observe it."
+
+  **Delivers Knowledge Lag** `L(A)=T_k(A)-T_e(A)` as a proposed operational metric, and **Staleness**,
+  carefully distinguished from mere Age: `Staleness=f(Age,Volatility,Context)`, worked through a volatility
+  comparison table (software version=Medium, IP address=High, PhD degree=Very Low, CPU load=Extremely High)
+  demonstrating that a 30-day-old assertion's usefulness depends entirely on what kind of fact it describes.
+  Delivers `TemporalValidity is partly epistemic and partly policy-governed` (source, domain rule, expiry
+  date, observation policy, volatility policy).
+
+  **Delivers Temporal Conflict analysis**: two propositions with disjoint validity intervals are not
+  contradictory (`Conflict requires temporal compatibility`); overlapping-but-contradictory intervals yield
+  a genuine `TemporalConflict` scoped to the overlap window, rather than a flat `Conflict=True`.
+
+  **Delivers the file's second major formal deliverable -- Bitemporal Knowledge**: valid time (when true in
+  the domain) versus transaction/knowledge time (when KnowledgeOS recorded it), `(T_v,T_k)`, worked through
+  a two-row bitemporal example table enabling historical reconstruction. **Delivers the file's central
+  auditability principle**: reconstructing "what did KnowledgeOS believe on August 24?" must use `K_2026-
+  08-24`, never `K_now` -- formalized as historical replay `K(t)=Fold(δ_K,K_0,H_K^{≤t})`. **Delivers
+  Decision Reconstruction and the major invariant "No retroactive epistemic contamination"**: a decision
+  must be reconstructed and evaluated using only the knowledge state that existed at decision time, never
+  knowledge learned afterward.
+
+  **Formalizes Knowledge Version** `KV_t` as a named snapshot (assertions, entity identities, conflicts,
+  accepted conclusions, policies, ontology version, provenance), and delivers **`Version≠Timestamp`**
+  (an identifier is not temporal metadata; a logical state can span many events) and **`Event≠Snapshot`**
+  (an event says something changed, a snapshot says what the resulting state is -- both must be preserved).
+  **Formalizes a canonical Event structure**: `e=(EventID,Type,AggregateID,Payload,Actor,OccurredAt,
+  RecordedAt,Provenance,CorrelationID)`, worked through a firewall-change example distinguishing
+  `OccurredAt` from `RecordedAt` as important for incident reconstruction.
+
+  **Delivers a named catalog of KnowledgeOS's own epistemic events** (EvidenceObserved, AssertionCreated/
+  Updated/Retracted, ConflictDetected, ResolutionCompleted, EntityResolved/Merged, KnowledgeCommitted).
+  **Formalizes Retraction and Revision as history-preserving operations**: retracting a false assertion does
+  not erase it (`Retract(A)` creates a new epistemic event; the historical fact that KnowledgeOS once held
+  it remains), and a superseding assertion is recorded via `Supersedes(A_2,A_1)` with the old assertion
+  remaining historically visible -- `Revision preserves history`. Delivers a complete epistemic-lineage
+  pipeline (Source→Observation→Assertion→Assessment→Acceptance→Decision→Action→Outcome→New Observation),
+  each node carrying its own temporal semantics.
+
+  **Delivers Temporal propagation through derivation**: for a derived assertion `A_3=f(A_1,A_2)`, its
+  validity interval is generally the (dependency-specific) intersection of its parents' intervals --
+  explicitly flagged as a rule of the particular derivation semantics, not a universal temporal law.
+  Formalizes computable temporal operations (`Overlap`, `Before`, `During`, `Contains`) and **introduces
+  Allen-style interval relations** (Before, Meets, Overlaps, Starts, During, Finishes, Equals, plus
+  inverses) as a way to normalize natural-language temporal statements into a finite relational model.
+
+  **Delivers `TemporalValue≠TemporalUncertainty`**: an event's timestamp being uncertain (e.g. "around the
+  middle of August," represented as `T_e∈[start,end]`) is a genuinely distinct dimension from confidence in
+  that timestamp -- "temporal knowledge can itself be uncertain," integrating directly with the corpus's
+  epistemic-state machinery. **Delivers `Planned≠Occurred` and `PredictedEvent≠ObservedEvent`**, with a full
+  prediction lifecycle (Hypothesis→Prediction→Expected Event→Observation→Actual Event→Prediction Evaluation,
+  yielding Confirmed/Refuted/Unobserved) and **Temporal learning** -- repeated prediction error triggers
+  `ModelReassessment`, closing another learning loop (`PredictionError→Evidence→ModelReassessment`).
+
+  **Delivers a Time-aware extension of the Zero/Lord/Sārathi architecture**: Zero can now detect
+  `ExpiredAssertion`, `StaleEvidence`, `TemporalConflict`, `MissingTemporalBoundary`, and
+  `FutureAssumptionPresentedAsFact`; Lord can propose revalidation/timestamp-retrieval actions; Sārathi can
+  ask whether information "is still sufficiently current to make this decision," formalized via a purpose-
+  and-volatility-dependent freshness function `Fresh_ρ(A,P)=f(Age,Volatility,Purpose,Context,Policy)`.
+
+  **Delivers a formal complete temporal-state model**: `T_A=(T_v,T_o,T_k)` for assertions, `T_e=(OccurredAt,
+  RecordedAt)` for events, `T_d=(DecisionAt,EffectiveFrom,EffectiveUntil)` for decisions -- distinct
+  temporal semantics per object type rather than one universal timestamp. Formalizes the complete state
+  model (`X_{t+1}=δ_X(X_t,e_t)`, `K_{t+1}=δ_K(K_t,o_t)`, `o_t=Obs(X_t,Sensor/Source)`), and delivers
+  **the epistemic observation boundary theorem**: `K_t is generated from observations of X, not directly
+  from X` — `K_t≢X_t` — "the mathematical basis for epistemic uncertainty."
+
+  **Delivers Temporal versioning of governance artifacts themselves**: Policy, Ontology, and Inference-Rule
+  versions must each be temporally versioned, so that a decision made under `PolicyVersion=P_1` is never
+  retrospectively evaluated against a later `P_2`. Delivers a Reproducibility formalization: a historical
+  reasoning result should be reconstructible from `KnowledgeStateVersion+PolicyVersion+OntologyVersion+
+  InferenceModelVersion+EvidenceVersions` -- "extremely important for deterministic assurance."
+
+  **Delivers the file's central formal deliverable -- fifteen canonical Step-16 invariants (T1-T15)**:
+  EventTime≠ObservationTime; ObservationTime≠KnowledgeTime; KnowledgeTime≠DecisionTime; WorldState≠
+  KnowledgeState; Event≠State; Event≠Snapshot; Version≠Timestamp; TemporalConflict requires compatible
+  temporal scope; historical knowledge must be reconstructible; historical decisions must be evaluated
+  against knowledge available at decision time; retraction does not erase historical knowledge events;
+  Prediction≠Observation; temporal uncertainty is itself representable; policy/ontology/inference rules are
+  temporally versioned; staleness is purpose/context dependent.
+
+  **Delivers the file's compact mathematical core**: domain evolution, observation, knowledge evolution,
+  historical-knowledge replay, temporal validity, the refined bitemporal assertion structure, and decision
+  reconstruction, gathered into "a coherent temporal state-transition system." **Delivers a computational-
+  viability assessment**: for finite event histories and explicit temporal intervals, state reconstruction,
+  snapshotting, ordering, overlap, expiration, staleness, decision-basis reconstruction, temporal conflict,
+  and version lineage are all deterministically computable; the hard remaining part is natural-language
+  temporal extraction, again resolved via the recurring architectural separation **"AI interprets; Kernel
+  verifies, stores, computes, and governs"** (an LLM proposes a `CandidateTemporalRelation`; the temporal
+  engine computes `Before(...)` deterministically once normalized; governance decides sufficiency of
+  support) -- explicitly flagged as "becoming a recurring architectural pattern."
+
+  **Delivers Step 16's verdict**: THEORETICALLY RESOLVED AT THE FRAMEWORK LEVEL, with the summarizing
+  principle **"KnowledgeOS is not a timeless database of facts. It is a temporally evolving epistemic state
+  machine that maintains knowledge about an independently evolving domain"** — `World evolves ∥ Knowledge
+  evolves`, connected only through observation. Consolidates the now nine-stage complete epistemic-action-
+  temporal loop (`X_t→Event→X_{t+1}`; `X_t→Observation→Evidence`; `Evidence→Assessment→K_t`;
+  `K_t→Zero→Δ_t`; `Δ_t→Lord→Actions`; `Actions→Sārathi→Decision`; `Decision→Authority→Action`;
+  `Action→World→X_{t+1}`; `X_{t+1}→Observation→Evidence_{t+1}`), with both `H_X` and `H_K` preserved.
+
+  **Delivers a numbered recap of everything formally addressed so far** (Epistemic state, Evidence,
+  Conflict, Resolution, Epistemic transitions, Uncertainty propagation, Identity, Semantic equivalence,
+  Sufficiency, Decision readiness, Causality, Action selection, Time, State evolution, Historical knowledge
+  reconstruction — fifteen items) and **identifies the one major remaining missing capability**: all of this
+  assumes KnowledgeOS can represent concepts and their meaning CONSISTENTLY across different domains — worked
+  through the "Backup/Recovery/Restore/Recoverability/RTO/Business Continuity" example, and the harder
+  cross-bounded-context question of preventing incorrect concept merging across differing meanings of the
+  same word.
+
+  **Closes by opening "Step 17 — Ontology, Concepts, Semantics, and Domain Models,"** explicitly framed as
+  where "DDD bounded contexts, ontologies, semantic models, Ubiquitous Language, concept identity, and
+  KnowledgeOS's semantic kernel come together," and explicitly identified as **"one of the last major
+  foundations before we can attempt a complete formal specification of KnowledgeOS itself"** — a significant
+  signal that the corpus's own author(s) regard the theoretical-foundations arc as nearing its planned
+  completion.
+introduces:
+  - concept: "Five distinct temporal axes for a single assertion (event, observation, knowledge, decision, validity time), formally separated to prevent silently substituting one for another"
+  - concept: "The theorem-like result World State≠Knowledge State (X_t≠K_t), with the explicit accepted limitation that a knowledge system cannot detect an unknown discrepancy without new evidence or observation"
+  - concept: "Two distinct, related-but-not-identical histories: H_X (domain/world event history) and H_K (KnowledgeOS's own epistemic history), enabling EventOccurred to be represented without KnowledgeOfEvent"
+  - concept: "Bitemporal knowledge (valid time × knowledge/transaction time) enabling historical knowledge replay K(t) and preventing today's knowledge from contaminating reconstructions of what was believed in the past"
+  - concept: "'No retroactive epistemic contamination' — a decision must be reconstructed and evaluated using only the knowledge available at decision time, never knowledge learned afterward"
+  - concept: "Staleness formally distinguished from mere Age via a volatility function, since the usefulness of an aging assertion depends entirely on how rapidly its underlying fact can change"
+  - concept: "Retraction and Revision as history-preserving epistemic operations — a retracted or superseded assertion is never erased, only marked, keeping the historical record auditable"
+  - concept: "Allen-style interval relations (Before, Meets, Overlaps, Starts, During, Finishes, Equals) as a way to normalize natural-language temporal statements into a finite, computable relational model"
+  - concept: "TemporalValue≠TemporalUncertainty — an uncertain event timestamp and confidence in that timestamp are genuinely distinct representable dimensions"
+  - concept: "A time-aware extension of the Zero/Lord/Sārathi architecture, detecting expired/stale/conflicting/missing temporal information and reasoning about purpose-dependent freshness requirements"
+  - concept: "Temporal versioning of governance artifacts themselves (Policy, Ontology, Inference Rules), required for reproducible historical reasoning results"
+  - concept: "Fifteen canonical Step-16 invariants (T1-T15) governing temporal knowledge, events, and state evolution"
+  - concept: "'Step 17 — Ontology, Concepts, Semantics, and Domain Models', explicitly framed as one of the last major foundations before a complete formal KnowledgeOS specification"
+defines:
+  - concept: "Bitemporal assertion (refined)"
+    definition: "A=(P,E,Σ,Π,T_v,T_o,T_k,Context,ID) — proposition, evidence, epistemic state, provenance, validity interval, observation time, knowledge-incorporation time, semantic context, identity"
+  - concept: "Event structure"
+    definition: "e=(EventID,Type,AggregateID,Payload,Actor,OccurredAt,RecordedAt,Provenance,CorrelationID) — a standard event-sourcing structure adapted to the epistemic architecture"
+  - concept: "Knowledge lag"
+    definition: "L(A)=T_k(A)-T_e(A) — the delay between a real-world event occurring and KnowledgeOS incorporating knowledge of it, proposed as an operational metric"
+  - concept: "Staleness"
+    definition: "Staleness=f(Age,Volatility,Context) — explicitly distinguished from raw Age, since usefulness of an aging fact depends on how rapidly its underlying reality can change"
+refines:
+  - concept: "Step 9's conflict/contradiction model"
+    refinement: "Contradiction requires compatible temporal scope — two propositions asserting different values are not actually contradictory if their validity intervals are temporally disjoint"
+  - concept: "The original assertion structure A=(P,E,Σ,Π,τ,Context,ID) carried throughout the entire prior arc"
+    refinement: "Refined into a bitemporal structure A=(P,E,Σ,Π,T_v,T_o,T_k,Context,ID), separating validity, observation, and knowledge-incorporation time, with decision time relocated to the Decision event"
+  - concept: "0557's closed epistemic-action loop (K_t→Zero→Δ_t→Lord→𝒜_t→Sārathi→Decision_t→Authority→Action_t→World→Outcome_t→Observation→Evidence_{t+1}→Assessment→K_{t+1})"
+    refinement: "Extended into a nine-stage world/knowledge dual-evolution loop explicitly separating domain-state transitions (X_t) from knowledge-state transitions (K_t), connected only through observation"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 17 — Ontology, Concepts, Semantics, and Domain Models' is executed as its own dedicated corpus file, and whether it is indeed treated as one of the final foundational steps before an attempted complete formal KnowledgeOS specification, as this file explicitly signals"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the five distinct temporal axes, the refined bitemporal assertion structure, the World State≠Knowledge State theorem, and the two distinct histories H_X/H_K enabling EventOccurred without KnowledgeOfEvent."
+  - "dimension-registry.md: record bitemporal knowledge and historical replay K(t), 'no retroactive epistemic contamination,' Staleness≠Age, Retraction/Revision as history-preserving operations, and Allen-style interval relations."
+  - "dimension-registry.md: record the time-aware Zero/Lord/Sārathi extension, temporal versioning of governance artifacts, the fifteen canonical T1-T15 invariants, Step 16's verdict, and 'Step 17 — Ontology, Concepts, Semantics, and Domain Models' as the next named research phase, explicitly flagged as one of the last major foundations before a complete formal KnowledgeOS specification."
+anchor_test:
+  anchor: "0557's Step-15/closing directive; Step 9's conflict/contradiction model; the assertion structure A=(P,E,Σ,Π,τ,Context,ID) carried since early in the arc; 0557's closed epistemic-action loop"
+  supports_dimension: "LANDMARK delivering the corpus's first full formalization of time as a multi-axis, bitemporal, epistemically-governed dimension of KnowledgeOS, resolving a foundational gap left implicit throughout the entire prior 37-file research arc (every worked example used a single undifferentiated timestamp τ). Delivers the theorem-like World State≠Knowledge State result with its profound accepted limitation about undetectable unknown discrepancies, a complete historical-replay and non-retroactive-contamination framework essential for auditability, and fifteen canonical governing invariants. Explicitly signals, via its own closing framing, that the theoretical-foundations arc is entering its final stages (Step 17 named as 'one of the last major foundations')"
+  refines_or_contradicts: "directly and fully executes 0557's Step-16 directive; refines Step 9's conflict model (temporal scope compatibility) and the assertion structure used throughout the entire arc since well before this window; extends 0557's closed epistemic-action loop into a dual world/knowledge state-evolution system; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The four-date worked Nexus-upgrade scenario (event 08-20, observation 08-25, knowledge-incorporation 08-26, decision 08-27) is a directly checkable, concrete demonstration that all four temporal axes can genuinely diverge in a realistic operational scenario, grounding the otherwise abstract T_e≠T_o≠T_k≠T_d claim."
+  - "The explicit statement 'a knowledge system cannot detect an unknown discrepancy without some new evidence or observation,' presented as a limitation the theory explicitly accepts, is a checkable, falsifiable epistemic commitment rather than an aspirational claim, and is consistent with the corpus's broader discipline of never silently converting hypothesis into certainty."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 17 — Ontology, Concepts, Semantics, and Domain Models' is executed as its own dedicated corpus file"
+  - "Whether the fifteen T1-T15 invariants are ever cross-referenced against the corpus's many other independently-numbered invariant schemes from this same research program in a future canonical reference"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first complete, rigorous formalization of time in KnowledgeOS — five distinct temporal axes, bitemporal assertions, historical knowledge replay, and the theorem-like World State≠Knowledge State result with its profound accepted limitation that unknown discrepancies cannot be detected without new observation. Delivers a full auditability framework (no retroactive epistemic contamination, history-preserving retraction/revision, temporal versioning of governance artifacts themselves) essential for any production epistemic system, extends the Zero/Lord/Sārathi architecture with time-awareness, introduces Allen-style interval relations for computable temporal reasoning, and closes with fifteen canonical governing invariants (T1-T15). Explicitly and significantly signals, in its own closing framing, that the corpus's theoretical-foundations research arc is approaching its planned completion, naming Step 17 (Ontology/Concepts/Semantics/Domain Models) as one of the last major foundations before an attempted complete formal specification of KnowledgeOS itself."

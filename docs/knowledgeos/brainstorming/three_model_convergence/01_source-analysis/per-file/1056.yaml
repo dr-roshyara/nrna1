@@ -1,0 +1,104 @@
+sequence: 1056
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-289/07-sigma-k-boundary-audit.md
+title: "07 -- Sigma-K Boundary Audit and Hidden-Order Propagation Audit (Step 289 SSSS11, 12): Discovers a Severe Overclaim -- 'K Is a Join-Semilattice' -- Propagated Across FIVE Separate Verification-Lane Artifacts, Despite the Corpus's Own Source Explicitly Refusing the General Claim, and Directly Refuted by the Already-Executed Retraction Demonstration"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the seventh numbered Step-289 artifact, delivering a genuinely severe discovery of a multi-artifact overclaim about the knowledge state's algebraic structure"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1056
+importance: critical
+confidence: high
+about: >
+  "07 — `Σ→K` Boundary Audit · and the hidden-order propagation audit (mandate §§11, 12)."
+
+  **§11 formally confirms the already-tracked `Σ`-is-not-an-image-of-`K` finding with full rigor**: no
+  mapping `π:K→Σ` is specified anywhere in the corpus; `Σ` is a COMPONENT of `K` under the tuple readings
+  (`285`, `273`, canonical construction), and `258.35` (already tracked, file 1046) says `K` "should be
+  defined EXTENSIONALLY through behavioural sufficiency, not as a tuple at all." Concludes: "`Σ_1⪯Σ_2⟹K_1⪯K_2`
+  is not merely unproven -- it is NOT EVEN TYPE-CORRECT."
+
+  **§12 DELIVERS A MAJOR, GENUINELY SEVERE NEW DISCOVERY**: a corpus-wide sweep for lattice/order/growth
+  terminology reveals that the corpus's own primary source ("step-060 — Epistemic Algebra and Knowledge State
+  Ordering," §§60.38-71) EXPLICITLY REFUSES the claim that `𝕂` (the knowledge state) is a join-semilattice --
+  quoting `60.42`: "This works for `PureClaimSetUnion`. KnowledgeOS does more than set union... Therefore the
+  real merge operator MAY NOT SATISFY the semilattice laws"; `60.71`: "Does knowledge form a lattice? NOT
+  PROVEN... we CANNOT YET ASSERT: KnowledgeOS is a semilattice." **YET FIVE SEPARATE VERIFICATION-LANE
+  ARTIFACTS ASSERT IT ANYWAY**, each explicitly named: "`KNOWLEDGE-STATE-ALGEBRA.md:89`" ("merge IS a join-
+  semilattice but not a lattice"); "`THEORY-CLOSURE-AUDIT.md:149`"; "`KNOWLEDGE-STATE-FINAL-AUDIT.md:29`";
+  "`step_282_theory-closure-decision.md:219`"; and "`POLICY-EQUALITY-AND-COMPOSITION.md:73`" ("`(𝕂,merge,∅)`
+  is a JOIN-semilattice -- adding knowledge only grows the state").
+
+  **DELIVERS THE PRECISE FORMAL REASON THIS IS THE F5 ERROR CLASS, NOT A WORDING QUIBBLE**: "A join-
+  semilattice INDUCES a partial order: `K_A⊑K_B⟺K_A⊔K_B=K_B`. Asserting `(𝕂,merge,∅)` is a join-semilattice
+  IS asserting a `K`-ORDER." Identifies THREE SEPARATE DEFECTS: (1) scope loss -- `060`'s restricted result
+  (`PureClaimSetUnion`) is dropped when generalized to `𝕂`; (2) verdict inversion -- `060.71` says "cannot yet
+  assert," the artifacts assert anyway; (3) a particularly insidious instance in
+  `POLICY-EQUALITY-AND-COMPOSITION` §3, where the false `𝕂`-order claim is stated as merely "a pleasing
+  duality" (an aesthetic aside) and is EXPLICITLY ABSENT FROM THE SAME DOCUMENT'S OWN CLASSIFICATION TABLE,
+  which correctly lists the DIFFERENT, genuinely `(Policy,∧)` meet-semilattice claim as "PROVEN (executed
+  laws)" -- "an unclassified `K`-order claim rode in beside a proven `Policy` one," meaning the false claim
+  was never even subjected to the same verification discipline as its neighbor.
+
+  **DELIVERS A DIRECT, ALREADY-EXECUTED REFUTATION OF THE MONOTONICITY PREMISE**: "Adding knowledge only
+  grows the state" requires monotone growth, but the corpus's own retraction/withdrawal mechanism (Article 8,
+  `I-12`), ALREADY EXECUTED (files 1039, 1042: withdrawal re-keys the assertion id and dangles every
+  `ℛ`-edge), directly demonstrates shrinkage: "Retraction shrinks. Monotone growth is REFUTED for `𝕂`."
+
+  **Delivers a comprehensive propagation table** confirming the scope of the defect and its containment: the
+  genuinely proven `(Policy,∧)` meet-semilattice result is correctly scoped to `Policy` and does NOT transfer
+  to `𝕂` ("separate mathematical objects"); the `Σ` product order (already tracked) remains correctly a
+  conditional construction; and confirms the already-tracked repairs to `287`/`08-FINDINGS`/`00-INDEX` for the
+  `Σ`-vs-`K` distinction are holding.
+
+  **§10 delivers a further definitive negative result**: policy equality does NOT transfer to `K` under any
+  of four tested notions (identifier, structural, extensional, semantic), with the genuinely important
+  observation that extensional and semantic equality are "NOT COMPUTABLE" even for the much simpler `Policy`
+  object -- confirming two Policy-level findings ("policy equality≠equal output"; "version must be part of
+  identity") generalize as METHODOLOGY, not as transferable algebra.
+introduces:
+  - concept: "The major discovery that five separate verification-lane artifacts falsely assert the knowledge state K forms a join-semilattice, despite the corpus's own primary source (step-060) explicitly refusing this general claim while proving it only for a restricted case (PureClaimSetUnion)"
+  - concept: "The precise formal demonstration that asserting a join-semilattice structure IS asserting a K-order, making this overclaim structurally identical to the already-tracked F5 error class"
+  - concept: "The particularly insidious instance where the false K-order claim rode in as an unclassified aesthetic aside beside a genuinely proven, correctly classified Policy claim, in the same document"
+  - concept: "The direct, already-executed refutation of the monotone-growth premise via the corpus's own retraction mechanism, which demonstrably shrinks rather than grows the state"
+  - concept: "The formal confirmation that K, under 258.35's extensional reading, may not be a tuple at all, meaning Sigma-order-to-K-order inferences are not merely unproven but not even type-correct"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Sigma-order-not-K-order finding (files 1029, 1031, 1035-1037, 1043, 1046, 1052-1055)"
+    refinement: "COMPLETED with the formal type-correctness argument (no pi:K to Sigma mapping exists) and extended to a materially more severe, independently discovered overclaim: five verification-lane artifacts falsely assert K itself is a join-semilattice"
+  - concept: "This reconstruction's already-tracked executed retraction demonstration (files 1039, 1042: withdrawal re-keys the id and dangles references)"
+    refinement: "REUSED as a direct refutation of the monotone-growth premise underlying the false join-semilattice claim"
+contradicts:
+  - concept: "Five named verification-lane artifacts' claim that (K, merge, empty-set) is a join-semilattice for the whole knowledge state"
+    contradicted_by: "The corpus's own primary source (step-060) explicitly refusing this general claim, proving it only for a restricted PureClaimSetUnion case, and the already-executed retraction demonstration showing monotone growth is refuted"
+repeats: []
+bridge_candidates:
+  - "'step-060' (Epistemic Algebra and Knowledge State Ordering) and its sub-loci 60.38-71, the source that correctly refuses the general join-semilattice claim; not yet directly encountered."
+  - "The five named verification-lane artifacts asserting the false claim (KNOWLEDGE-STATE-ALGEBRA.md, THEORY-CLOSURE-AUDIT.md, KNOWLEDGE-STATE-FINAL-AUDIT.md, step_282_theory-closure-decision.md, POLICY-EQUALITY-AND-COMPOSITION.md) -- these appear to live in the excluded verification/ folder and are cited/discussed here, not directly read as primary source; not otherwise encountered."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the major discovery that five verification-lane artifacts falsely assert K forms a join-semilattice, directly contradicting the corpus's own primary source (step-060) and refuted by the already-executed retraction demonstration."
+  - "dimension-registry.md: record the formal type-correctness argument confirming Sigma-order-to-K-order inferences are not merely unproven but not even type-correct, since no mapping pi:K to Sigma exists and K may not be a tuple at all (258.35)."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Sigma-order-not-K-order finding and executed retraction demonstration (files 1029, 1031, 1035-1039, 1042-1043, 1046, 1052-1055)"
+  supports_dimension: "Discovers a materially more severe, independently found overclaim propagated across five separate verification-lane artifacts, directly refuted by already-executed evidence"
+  refines_or_contradicts: "extends and completes prior findings; directly contradicts five named verification-lane artifacts' claims"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The join-semilattice overclaim and its refutation are directly checkable against a future direct encounter with step-060 and the five named verification-lane artifacts."
+  - "The monotone-growth refutation is directly checkable against files 1039 and 1042's own already-documented executed retraction demonstration."
+undefined_concepts: []
+open_questions:
+  - "The full content of 'step-060' and the five named verification-lane artifacts, not yet directly encountered (the latter appear to live in the excluded verification/ folder per standing instructions)."
+  - "Whether the five verification-lane artifacts are subsequently corrected to restore the PureClaimSetUnion scope restriction."
+tier2_triggered: true
+tier2_reason: "Delivers a major, genuinely severe discovery: a false claim that the knowledge state forms a join-semilattice, propagated across five separate verification-lane artifacts despite the corpus's own primary source explicitly refusing the general claim, directly refuted by the already-executed retraction demonstration. Classified importance critical and confidence high given the scope, severity, and rigorous grounding of this finding."

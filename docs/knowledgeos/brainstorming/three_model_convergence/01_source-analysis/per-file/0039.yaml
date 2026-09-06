@@ -1,0 +1,57 @@
+sequence: 39
+path: docs/knowledgeos/KnowledgeOS_Meta_Model_Discovery.md
+title: KnowledgeOS — Meta-Model Discovery
+date: 2026-08-03
+bytes: 13509
+doc_type: strategic discovery testing convergence of five independently-produced classification passes
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [ddd, domain_model, evidence, contradiction, knowledge_dimension]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+status: DR
+maturity: established        # for the confirmed-kind list and the refuted meta-edge
+importance: high
+
+introduces:
+  - five_pass_self_corroboration_method
+  - kind_vs_dimension_value_discipline_applied   # Governance and Product both rejected as kinds
+  - fourth_unreconciled_ontology_guard
+defines:
+  - confirmed_kind_list         # Domain, Process, Capability, Knowledge, Artifact, Runtime Asset, Container(cand.), Projection, Purpose(cand.)
+hypotheses:
+  - U_MM_1_is_kind_a_nature_value_or_separate_axis
+  - U_MM_4_purpose_as_a_kind
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge, archetype_vs_kind]
+open_questions:
+  - U_MM_1_through_U_MM_5
+
+depends_on: [13, 18, 27]
+extends: [13, 18, 27]
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: []
+connects_to: [13, 18, 20, 24, 27, 35, 37]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Refutes "Domains own Capabilities" as the THIRD independent, differently-methoded corroboration of
+  the same negative result (after 0020's direct DDD adjudication and 0027's archetype-relationship
+  test) - the strongest multi-method corroboration template in the C1 lineage. Confirms, via a SECOND
+  instance, a structural reading-order/authorial-order divergence in this corpus first flagged at
+  0033/REV-001: 0035 (read three positions earlier) explicitly reviews THIS document, meaning the
+  governed reading order does not track authorial dependency order. Directly affects how this
+  research's own depends_on/extends fields should be interpreted downstream.

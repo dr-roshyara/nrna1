@@ -1,0 +1,69 @@
+sequence: 35
+path: docs/knowledgeos/KnowledgeOS_Ontology_Discovery.md
+title: KnowledgeOS — Ontology Discovery
+date: 2026-08-03
+bytes: 18582
+doc_type: strategic discovery — archetype-level relationship ontology (elevates 0027)
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [ddd, domain_model, invariants, contradiction, knowledge_dimension]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+status: DR
+maturity: developing
+importance: high
+
+introduces:
+  - four_evidenced_partial_orders     # Authority/Production/Realization/Containment - content for the 0003 [AN] flag
+  - domain_as_classification_archetype  # scopes meaning, owns nothing - orthodox DDD rediscovered
+  - which_is_above_answerable_only_per_relation
+  - decision_plus_operational_scar_justification_standard
+  - mvk_failure_rediagnosed_as_unmodeled_containment_edge
+defines:
+  - realizes_owns_constrains_generates_relations   # reused from 0027, not newly minted
+  - four_partial_orders_as_evidenced_chains         # NOT formally verified as order-theoretic objects - see Tier 2
+hypotheses:
+  - U_ONT_1_is_container_a_genuine_archetype        # settling test precisely stated
+  - U_ONT_2_purpose_more_fundamental_than_container
+  - U_ONT_3_cap_ast_link_undeclared
+  - U_ONT_4_empty_matrix_cells_absence_vs_evidence_of_absence
+operators: []
+formal_objects:
+  - four_directed_chains_labelled_partial_orders    # chains over named elements, NOT verified as
+                                                     # order relations over a general carrier set;
+                                                     # no reflexivity/antisymmetry/transitivity check
+undefined_concepts:
+  - knowledge          # 35th consecutive file
+  - partial_order        # label used; formal axioms never checked (see Tier 2)
+  - archetype             # adopted as terminology via UL/governance act; not itself defined
+open_questions:
+  - U_ONT_1_through_U_ONT_5
+
+depends_on: [27]
+extends: [27]
+refines: [3]        # gives content to the "four partial orders" vocabulary flagged [AN] there
+renames: []
+contradicts: []     # refutes a REVIEWER's hierarchy hypothesis, not a prior corpus document
+supersedes: []
+repeats: [27]
+connects_to: [3, 8, 11, 13, 27]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Supplies the first content-bearing instance of the "four partial orders" vocabulary flagged
+  undefined at seq 3 - but precise analysis shows these are four evidenced DIRECTED CHAINS over
+  named elements, not verified partial orders over a stated carrier set (no reflexivity, antisymmetry,
+  or transitivity check is performed anywhere). Refutes a reviewer's proposed single-stack hierarchy
+  edge-by-edge against evidence. States the corpus's most rigorous relation-admission discipline
+  (decision-plus-operational-scar). Re-diagnoses the MVK failure (0008/0011) specifically as an
+  unmodeled containment edge. Flagged as the C1 lineage's closest approach to genuine order-theoretic
+  structure, with an explicit caution against importing the "partial order" label as already rigorous.

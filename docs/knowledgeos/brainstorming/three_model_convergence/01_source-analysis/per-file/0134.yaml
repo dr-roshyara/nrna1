@@ -1,0 +1,88 @@
+sequence: "0134"
+path: docs/knowledgeos/brainstorming/20260822-140426-research-phase-closure-ddd-refinement-review-prompt.md
+title: "Source declares its own research phase 'closed'; proposes (does not execute) a DDD refinement prompt for KnowledgeOS Reference Architecture v1.1"
+date: "2026-08-22"
+bytes: 9500
+model:
+  primary: c1
+  secondary: [g, m]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0087"
+importance: high
+confidence: high
+about: >
+  A source-internal boundary declaration ("The research phase has produced enough material... The next
+  step should not be more extraction") followed by a detailed but UNEXECUTED prompt for a DDD-based
+  architectural refinement pass on "KnowledgeOS Reference Architecture v1.0." Proposes bounded-context
+  identification, a KEEP/MODIFY/REMOVE validation test for each existing candidate dimension, four
+  unresolved Core-Domain candidates, an INV-KOS-XXX invariant format, a candidate domain-event
+  vocabulary, and an explicit "Not KnowledgeOS" negative-space list. This reconstruction's own primary-
+  evidence pass is NOT affected -- the source's self-declared closure is a fact about the source
+  corpus's narrative, not a decision this reconstruction adopts (§29 gate unchanged, 1068 primary files
+  remained at this point).
+
+introduces:
+  - "Explicit KEEP/MODIFY/REMOVE validation test applied per-dimension (Identity/Evidence/Authority/
+    Context/Transformation/Temporal/Reasoning/Contradiction/Agent) -- a disciplined template, not yet
+    executed against any dimension in this file"
+  - "Four Core-Domain candidates left as an open question: Knowledge Identity / Epistemic Evolution /
+    Meaning Preservation / Wisdom Formation -- none selected"
+  - "INV-KOS-XXX invariant format (Name/Statement/Why required/Failure scenario/Domain boundary/
+    Enforcement mechanism) with four illustrative examples, all formalizing already-tracked principles
+    (Vāṇī's Expression≠Meaning, Navya-Nyāya's Similarity≠Identity), not new claims"
+  - "Candidate domain-event vocabulary: KnowledgeCreated, EvidenceAdded, BeliefRevised,
+    MeaningTranslated, ContradictionDetected, WisdomDerived"
+  - "Explicit negative-space list: 'Not KnowledgeOS' = language engine / database / chatbot / LLM
+    wrapper / ontology repository / truth machine, plus an explicit 'Forbidden Actions' list (no
+    database design, no technology selection, no code, no scope expansion) for the next session"
+
+defines: []
+
+refines:
+  - "Reframes (does not resolve) all previously-tracked dimensions as candidates for a KEEP/MODIFY/
+    REMOVE test rather than settled kernel content -- consistent with, not contradicting, this
+    reconstruction's own candidate-status discipline"
+
+contradicts: []
+
+repeats:
+  - {concept: "Zero as meta-principle not entity/aggregate/service/DB object", canonical_source: "0110", novelty: low}
+  - {concept: "Gödel representation≠reality boundary; Sanskrit semantic compiler pipeline", canonical_source: "0122", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: false
+
+registry_updates:
+  - "Ledger Entry 43 added; ⚑ WATCH MARKER (0105) updated -- this is the first file proposing a concrete
+    execution template for the long-deferred kernel/DDD reduction step, still not executed"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither directly promotes nor rejects any dimension; proposes the test, does not run it."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "First source file to explicitly declare its own research phase closed and propose a concrete
+    (if unexecuted) reduction template -- directly relevant to the standing ⚑ WATCH MARKER"
+  - "The source's declared closure does not bind this reconstruction's own §29-gated primary-evidence
+    pass, which continues unchanged"
+
+undefined_concepts: []
+open_questions:
+  - "Whether a later file actually executes this DDD-refinement prompt (produces 'KnowledgeOS Reference
+    Architecture v1.1'), and if so whether it respects the maturity-ceiling/candidate-status discipline
+    already established -- continue watching per the updated WATCH MARKER"
+
+tier2_triggered: true
+tier2_reason: >
+  Source-internal declaration of research-phase closure plus a concrete (unexecuted) DDD reduction
+  template -- directly updates the standing ⚑ WATCH MARKER for the long-deferred kernel-reduction step.

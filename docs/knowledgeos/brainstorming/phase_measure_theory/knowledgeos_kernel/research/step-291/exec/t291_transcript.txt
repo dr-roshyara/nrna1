@@ -1,0 +1,271 @@
+==============================================================================
+STEP 291  BOOTSTRAP RE-AUDIT   (O, T, O_K SEPARATED)
+==============================================================================
+nodes 29  edges 44
+
+CORPUS BASIS for the separation (mandate s2):
+  259.7  five kinds of operation: state-transformations | assessments |
+         governance | audit/history | OBSERVATION operations
+  259.7  'Not every operation has the form T: K -> K'
+  259.8  Revise/Transform/Supersede/Merge/Split/Withdraw/Promote enter the
+         primary congruence test; Assess and Authorize get DIFFERENT tests
+  => T is a SUBSET of O (kind 1); O_K relates to kind 5. THREE objects.
+
+cycles found: 3
+   congruence -> equiv -> congruence
+   congruence -> equiv -> delta -> congruence
+   approx -> equiv_cand -> equiv -> bindings -> approx
+
+--- exhaustive minimal-cut search over resolvable nodes ---
+  size 1: 1 cut set(s)
+      ['equiv']
+
+--- targeted probes (mandate s9) ---
+   cut ['O']                          -> acyclic? False
+   cut ['T']                          -> acyclic? False
+   cut ['O_K']                        -> acyclic? False
+   cut ['O', 'T']                     -> acyclic? False
+   cut ['O', 'O_K', 'T']              -> acyclic? False
+   cut ['equiv']                      -> acyclic? True
+   cut ['delta']                      -> acyclic? False
+   cut ['congruence']                 -> acyclic? False
+   cut ['equiv_cand']                 -> acyclic? False
+   cut ['approx']                     -> acyclic? False
+
+--- DEGENERACY CHECK on the zero-results (mandate s18) ---
+  Q: could 'cut {O} -> False' be vacuous (empty/universal test space)?
+     graph has 29 nodes, 44 edges, 3 cycles -> NON-EMPTY, NON-TRIVIAL
+     O is in 0 of 3 cycles  <- measured
+     T is in 0 of 3 cycles  <- measured
+     O_K is in 0 of 3 cycles  <- measured
+     equiv is in 3 of 3 cycles  <- measured
+     => the result is substantive, not vacuous: the graph HAS cycles and the
+        membership counts differ across nodes.
+
+--- is {equiv} still the UNIQUE minimal cut? ---
+  size-1 cuts among resolvable nodes: ['equiv']
+
+==============================================================================
+SCOPE: conclusions hold for THIS audited edge list. No O, T or O_K is proposed.
+==============================================================================
+==============================================================================
+STEP 291  OMEGA / TAU RECONCILIATION AND CLOSURE AUDIT
+==============================================================================
+
+--- symbol reconciliation ---
+
+  O          [256.2 / 259.7 / 272A]
+     def   : the operation family; 259.7 splits it into FIVE kinds
+     type  : family of heterogeneous signatures   scope: whole system
+     closed: NOT ENUMERATED                       canonical: no   procedure: no
+
+  T          [258.9 / 259.8 / 260]
+     def   : state-transforming operations only; 'T: K -> K'
+     type  : subset of O (kind 1)                 scope: semantic state
+     closed: NOT ENUMERATED                       canonical: no   procedure: no
+
+  O_K        [261.21]
+     def   : 'the closed set of permitted state OBSERVATIONS'
+     type  : observation functions on K           scope: state observations
+     closed: explicitly NOT CLOSED                canonical: no   procedure: no
+
+  O(261.5)   [261.5]
+     def   : used as the index of ~ over HISTORIES: forall O in O
+     type  : observations                         scope: histories
+     closed: NOT ENUMERATED                       canonical: no   procedure: no
+
+--- COLLISION FOUND ---
+  The glyph 'O' carries TWO meanings:
+    (a) 256.2/259.7/272A : the OPERATION family
+    (b) 261.5            : the index of ~ over histories, i.e. OBSERVATIONS
+  261.21 then introduces O_K for 'permitted state observations'.
+  => O is overloaded across operations and observations. DOCUMENTARY defect.
+  => T subset O (259.7 kind 1). O_K relates to kind 5. THREE distinct objects,
+     which Step 289's graph had collapsed into a single {O,T} cut candidate.
+
+--- ENUMERATION vs CLOSURE (mandate s7) ---
+
+  mechanism : finite enumeration
+  evidence  : 256.2 gives 9; 259.7 adds 8 more; 277 declares classification CLOSED, minimality OPEN
+  verdict   : PARTIAL - a CANDIDATE list (14 forced, upper bound 18), never a membership rule
+
+  mechanism : a closed type/schema/interface
+  evidence  : 259.7's FIVE-KIND classification + explicit signatures (Assess: K x X -> Assessment; Authorize: Actor x Action x Policy -> Decision)
+  verdict   : PRESENT - the corpus supplies a schema, and 277 calls classification CLOSED
+
+  mechanism : a declared admissibility predicate
+  evidence  : 259.8: operations enter the congruence test 'IF AND ONLY IF the corpus establishes them as state-changing'; 42.9/42.41 Admissible(o,K)
+  verdict   : PRESENT IN FORM, ABSENT IN CONTENT - the predicate is named, not evaluable
+
+  mechanism : a governance boundary
+  evidence  : 261.23 cond 2 treats registry closure as a precondition; 259 as a precondition
+  verdict   : ASSERTED, never discharged
+
+  => CRITICAL: 'not enumerated' != 'not closed'.
+     The corpus has a SCHEMA (five kinds, typed signatures) and 277 declares
+     CLASSIFICATION CLOSED while MINIMALITY OPEN. What is missing is not an
+     enumeration; it is a MEMBERSHIP RULE saying which operations are MANDATORY.
+
+--- observation universe: classification A-E (mandate s6) ---
+  A explicitly closed                NO - none enumerated anywhere
+  B schema-closed, not enumerated    PARTIAL - 259.7 kind 5 names 'observation operations' but gives NO schema for them
+  C semantically bounded, not formally closed CLOSEST FIT - 261.21 says O_K is 'the closed set of permitted state observations', i.e. closure is ASSUMED IN THE DEFINITION and then denied in the same section
+  D open                             NO - 261.21 asserts a boundary exists
+  E undetermined                     APPLIES TO THE SCHEMA QUESTION
+
+  => OBSERVATIONS: case C (semantically bounded, not formally closed), with the
+     schema question at E. NOTE the self-reference: 261.21 DEFINES O_K as
+     'the closed set of permitted state observations' and then boxes
+     'O_K is not yet completely closed'. The definition presupposes what the
+     caveat withdraws. DOCUMENTARY + FORMAL.
+  => OPERATIONS: closer to case B - a five-kind schema exists; membership does not.
+
+--- is closure of O/T NECESSARY for the candidate ==_K to be DEFINED? ---
+  definability               NO  - 261.21's formula is WELL-FORMED for any set O_K
+  totality                   YES - a total predicate needs O_K's extension
+  decidability               YES - and 012 s35 bounds it independently of O_K
+  canonicality               YES - 'which O_K' is exactly the normative question
+  computability              YES - needs the extension AND each O evaluable
+  operational completeness   YES - needs T's membership
+
+  => The six are NOT interchangeable. ==_K is DEFINABLE without closing O/T;
+     it is not TOTAL, DECIDABLE, CANONICAL or COMPUTABLE without it.
+     Step 289/290 said '== is blocked on O_K'. Precisely: its EXTENSION is
+     blocked; its DEFINITION is not.
+
+==============================================================================
+==============================================================================
+STEP 291  EQUALITY RE-VERIFICATION (mandate s13, s14)
+==============================================================================
+|Sigma| = 7*5*4*4*4 = 2240   [CORPUS-VERIFIED, Q4A ss2.2-2.6]
+
+--- s13: independent re-verification of 32 -> 30 ---
+  syntactically distinct axis subsets      : 32   [MEASURED]
+  mathematically distinct projections      : 32   [MEASURED]
+  degenerate endpoint: X={}                     blocks=1     UNIVERSAL
+Traceback (most recent call last):
+  File "/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/exec/t291_equality.py", line 28, in <module>
+    print(f"  degenerate endpoint: X={sorted(X) if X else '{}':<22} blocks={b:<5} {kind}")
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported format string passed to list.__format__
+==============================================================================
+STEP 291  EQUALITY RE-VERIFICATION (mandate s13, s14)
+==============================================================================
+|Sigma| = 7*5*4*4*4 = 2240   [CORPUS-VERIFIED, Q4A ss2.2-2.6]
+
+--- s13: independent re-verification of 32 -> 30 ---
+  syntactically distinct axis subsets      : 32   [MEASURED]
+  mathematically distinct projections      : 32   [MEASURED]
+  degenerate endpoint: X=(empty)                blocks=1     UNIVERSAL
+  degenerate endpoint: X=A,C,R,S,V              blocks=2240  DISCRETE
+  non-degenerate candidates                : 30   [MEASURED]
+
+  CORRECT TERMINOLOGY (mandate s13):
+    32 mathematically distinct projections; 2 degenerate endpoints;
+    30 non-degenerate candidates.
+  ==> The endpoints are DEGENERATE, not INVALID. The corpus supplies no
+      validity criterion for them, so 'invalid' would be my word, not its.
+      Earlier artifacts said 'not a candidate' - that is TOO STRONG and is
+      corrected here to 'degenerate endpoint'.
+
+--- s14: is merge a JOIN? ---
+  PureClaimSetUnion  commutative  PASS   [MEASURED]
+  PureClaimSetUnion  associative  PASS   [MEASURED]
+  PureClaimSetUnion  idempotent   PASS   [MEASURED]
+  => set union IS a join-semilattice op. This reproduces 060 ss60.39-60.41.
+
+  now a merge WITH supersession (060.42's objection), modelled minimally:
+    idempotent  : True   [MEASURED]
+    commutative : True   [MEASURED]
+    associative : True   [MEASURED]
+    -> laws happen to HOLD for this minimal supersession model.
+    DEGENERACY CHECK (mandate s18): is that vacuous? The test space is 3 states
+    over ONE subject with a total version order. A total order makes 'max' a
+    join by construction. So the PASS is an artifact of the model's total order,
+    NOT evidence about KnowledgeOS's merge.
+    => RECORDED AS NON-EVIDENCE. 060.42 lists contradiction, temporal validity,
+       semantic equivalence, probabilistic update and policy as further
+       obstacles; none is modelled here, and modelling them would be inventing
+       architecture (mandate s21).
+
+  VERDICT on (K, merge, empty):
+    NOT ESTABLISHED.  060 s60.71: 'Not proven ... we cannot yet assert
+    KnowledgeOS is a semilattice.'  Laws hold for PureClaimSetUnion only.
+    NOT REFUTED - retraction concerns state EVOLUTION, a different operation.
+    No lattice is inferred from merge existing. No AGM comparison is used.
+
+==============================================================================
+
+==============================================================================
+STEP 291  s10: AUDIT OF 'N-4 IS THE EARLIEST LEGITIMATE ACT'
+==============================================================================
+
+SOURCE nodes (in-degree 0)  : ['O', 'Qualify', 'assertion', 'evidence', 'id_context', 'policy', 'temporal']
+of which RESOLVABLE by a decision: ['O', 'Qualify', 'assertion', 'evidence', 'id_context', 'policy', 'temporal']
+
+--- leverage: how many nodes each resolvable SOURCE unlocks ---
+   O            reaches  20 nodes   [MEASURED]
+   id_context   reaches  17 nodes   [MEASURED]
+   policy       reaches  16 nodes   [MEASURED]
+   evidence     reaches   2 nodes   [MEASURED]
+   Qualify      reaches   1 nodes   [MEASURED]
+   temporal     reaches   1 nodes   [MEASURED]
+   assertion    reaches   1 nodes   [MEASURED]
+
+--- VERDICT on 's10' ---
+  'earlier' has FIVE possible meanings (mandate s10). Measured against meaning 1
+  (upstream in the dependency graph):
+
+    N-4 (O) is A source node. It is NOT THE ONLY source node.
+
+  The resolvable sources above are ALL independent roots with no incoming edge.
+  Therefore:
+      "N-4 is THE earliest legitimate act"        -> TOO STRONG. DOWNGRADED.
+      "N-4 is the highest-LEVERAGE independent root" -> supported by measurement.
+
+  Competing legitimate first acts (all independent, none blocking another):
+      N-4  (O / T)          N-8  (define 'identity context')
+      N-13 (canonicalisation policy, via 'evidence')
+      plus the policy / assertion / temporal roots, and the registry items.
+  The corpus does not select among them.
+==============================================================================
+==============================================================================
+AUDIT B  GRAPH-UNIVERSE RECONSTRUCTION
+==============================================================================
+
+FULL NODE UNIVERSE                : 29   ['K', 'O', 'O_K', 'Pi', 'Qualify', 'T', 'approx', 'assertion', 'assess_det', 'bindings', 'canon', 'congruence', 'delta', 'equiv', 'equiv_T', 'equiv_cand', 'evidence', 'id_context', 'identity', 'invariants', 'kernel', 'merge', 'minimality', 'policy', 'projection', 'state_rep', 'struct_eq', 'suff', 'temporal']
+DECISION-RESOLVABLE SUBSET        : 13   ['O', 'O_K', 'Pi', 'Qualify', 'T', 'assertion', 'delta', 'equiv', 'equiv_cand', 'evidence', 'id_context', 'policy', 'temporal']
+DERIVABLE-ONLY SUBSET             : 16   ['K', 'approx', 'assess_det', 'bindings', 'canon', 'congruence', 'equiv_T', 'identity', 'invariants', 'kernel', 'merge', 'minimality', 'projection', 'state_rep', 'struct_eq', 'suff']
+overlap (must be empty)           : []
+union covers universe?            : YES
+DOCUMENTARY nodes (no node - they are defects ABOUT nodes, not nodes): 
+     O-glyph overload, 261.21 self-reference, unregistered observations, kind-5 type
+EXCLUDED nodes and why            : none excluded; every node named in an admitted edge is present
+
+EDGE-GENERATION RULES
+  admitted   : a cited passage states that B REQUIRES SOMETHING FROM A
+  rejected   : co-mention; "both concepts appear in one document"
+  definitions: an IDENTIFICATION (K = H/equiv_T) contributes ONE edge, in the
+               direction of determination, not two (Step 289 v1 artifact removed)
+  candidates : a CANDIDATE proposal is modelled as its own node (equiv_cand),
+               NOT as a definitional edge  (Step 290 correction)
+  blocked    : blocked dependencies ARE included - blockage is a status, not an absence
+  transitive : NOT included; only direct dependencies are edges
+GRAPH USED FOR CYCLES             : the FULL 29-node graph
+GRAPH USED FOR FVS SELECTION      : cuts are SEARCHED over the 13 resolvable
+                                    nodes, but tested for acyclicity on the FULL graph
+  ==> 29 and 13 are NOT two graphs. One graph; a restricted CANDIDATE SET for cuts.
+
+RECOMPUTED: nodes 29  edges 44  cycles 3
+   congruence -> equiv -> congruence
+   congruence -> equiv -> delta -> congruence
+   approx -> equiv_cand -> equiv -> bindings -> approx
+
+--- FVS over the RESTRICTED candidate set (13 resolvable) ---
+  size-1 cuts: [['equiv']]   -> unique: True
+
+--- FVS over the UNRESTRICTED universe (all 29 nodes) — a DIFFERENT question ---
+  size-1 cuts: ['equiv']
+  count: 1  -> unique: True
+
+==============================================================================

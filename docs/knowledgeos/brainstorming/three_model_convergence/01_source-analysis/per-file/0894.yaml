@@ -1,0 +1,194 @@
+sequence: 894
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-194332_step_265_provenance-placement.md
+title: "Step 265 -- Provenance Placement: DELIVERS THE LONG-RUNNING PROVENANCE-PLACEMENT THREAD'S MOST COMPLETE RESOLUTION YET (Traced Through 0863/0865/0869/0874/0883/0884/0886/0888/0890) -- Tests Four Named Candidate Placements (Π⊆K / Π⊆History / Π⊆ExternalAudit / Π⊆ExternalContext) Against an Eleven-Operation Mandatory Test Matrix, Reapplies and Reconfirms 0883's Decisive Provenance-at-t=0 Counterexample, Delivers the Load-Bearing 'Provenance Reference≠Provenance Object' Distinction Yielding a Smaller Defensible Kernel, Delivers 'Provenance Preservation Does Not Imply Provenance-Sensitive Semantic Equality' as a Major Architectural Result, and Closes With a Disciplined Three-Tier VERIFIED/DERIVED-RECOMMENDED/NOT-PROVEN Epistemic Classification Rather Than Overclaiming -- Note: This File Is Titled Step 265 but Delivers PROVENANCE Content, Not the 'Proposition Identity and Semantic Equality' Promised at the Close of File 0893 -- an Eighth Step-Number-vs-Content Mismatch"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "rigorous applied mathematics/DDD synthesis resolving a long-running cross-file research thread"
+source_role: PRIMARY_RESEARCH
+canonical_source: 894
+importance: critical
+confidence: high
+about: >
+  **Opens noting a step-content mismatch**: file 0893 explicitly promised "Step 265 — Proposition Identity
+  and Semantic Equality" as its next step, but this file, also labeled Step 265, delivers PROVENANCE
+  PLACEMENT content instead -- **an eighth confirmed instance of step-number-vs-delivered-content
+  mismatch** in this reconstruction's tracking (extending the step-reordering/authoring-order family first
+  confirmed at 208/209 and most recently at the 259/260 self-correction pair) -- though here the mismatch
+  is between a PROMISED next topic and the ACTUALLY DELIVERED topic under the same step number, a subtly
+  different variant of the pattern than the pure authoring-order inversions seen earlier. This file instead
+  substantively resumes and resolves the provenance-placement investigation that has been the corpus's
+  single most persistently-revisited mathematical thread across this entire mathematical-kernel sub-arc
+  (0863→0865→0869→0874→0883→0884→0886→0888→0890).
+
+  **Opens with the governing methodological framing**: boxed **`provenance must be preserved somewhere`**
+  does NOT entail boxed **`Provenance⊆K`** -- four candidate placements must be tested against mandatory
+  operations rather than selected by architectural preference.
+
+  **§265.1-265.2 reaffirms and reapplies 0883's decisive provenance-at-t=0 counterexample**, now stated
+  with maximal clarity: `Π` (origin of an assertion) and `History(T)` (sequence of transformations) are
+  "genuinely different" concepts; at the initial state `K_0`, before any transformation, `History(T)=∅`,
+  yet an assertion in `K_0` may still have originated from a document, measurement, external system, human
+  statement, or other knowledge source -- therefore boxed **`History(T)=∅` does not imply `Provenance=∅`**,
+  and boxed **`Provenance≠History(T)`** in the general case -- "the executed audit explicitly identifies
+  this as the base-case failure of the reduction," directly continuing (not merely repeating) 0883's/
+  0886's earlier finding.
+
+  **§265.3 names the four candidates under test**: Candidate A (`Π⊆K`), Candidate B (`Π⊆H`), Candidate C
+  (`Π⊆ExternalAudit`), Candidate D (`Π⊆ExternalContext`) -- each evaluated against eight criteria
+  (mandatory operations, deterministic access, persistence, merge/split, replay, equality, validation,
+  explanation).
+
+  **§265.4-265.5 delivers the file's single most load-bearing distinction**: boxed **`EvidenceReference≠
+  EvidenceObject`** (already established for Evidence) is explicitly generalized to provenance: let `π` be
+  a provenance REFERENCE and `P_π` the actual provenance record/object -- then boxed **`π∈K` does not
+  imply `P_π∈K`** -- "this gives a potentially much smaller kernel. The state may preserve the identity of
+  the provenance relationship while the detailed provenance object lives elsewhere." This directly answers
+  the open question 0865/0888/0890 had each left dangling (whether provenance belongs "inside" or
+  "outside" K) by dissolving the false binary: the REFERENCE belongs inside, the OBJECT need not.
+
+  **§265.6 formally REFUTES Candidate B** (`Π=History(T)`) as a universal identity via the base-case
+  counterexample, while preserving a weaker surviving claim: `History(T)⊇InternalLineage` -- History can
+  reconstruct internal transformation lineage but cannot replace external provenance.
+
+  **§265.7 shows Candidate C is insufficient alone**: pure external-audit storage is vulnerable to
+  `Merge(K_1,K_2)` destroying the provenance association unless `K` retains a deterministic identifier
+  resolving into the external record -- "that moves us back toward `π∈K`" -- a genuine dependency-driven
+  argument rather than an architectural preference.
+
+  **§265.8 formally REFUTES Candidate D**: Provenance and Context answer genuinely different questions
+  ("under what circumstances does this assertion apply?" vs. "where did this assertion originate?") --
+  boxed **`Provenance≠Context`**.
+
+  **§265.9 delivers an eleven-row mandatory-operation test matrix** (Know/Compare/Challenge/Update/
+  Preserve/Merge/Split/Replay/Validation/Explanation/Equality), most requiring provenance in some form,
+  yielding the crucial observation boxed **`Provenance is operationally required, but not every operation
+  requires provenance to participate in semantic equality`** -- explicitly preventing provenance from
+  being overloaded with identity semantics, directly consistent with, and refining, 0886's history-
+  affects-operation-vs-history-affects-state distinction.
+
+  **§265.10-265.13 delivers four concrete operational tests**: Persistence (boxed **`Persist(K)⇒
+  Persist(ProvenanceReference)`**, NOT necessarily the full object); Merge (provenance association must
+  survive, but "the provenance objects themselves need not be copied into the merged state"); Split
+  (lineage `A_1,A_2→Origin(A)` must be preserved, favoring a durable reference); Replay (requires the pair
+  `(Π_0,H)`, not `H` alone -- "exactly the distinction established by the base-case test").
+
+  **§265.14 delivers a second major architectural result**: for `K_1={A_{Π_1}}`, `K_2={A_{Π_2}}` with
+  `P_1=P_2` but `Π_1≠Π_2`, whether `K_1,K_2` are "equal" depends entirely on which equality notion is
+  invoked (`K_1≡K_2` may hold for semantic equality; `K_1≅_ΠK_2` may fail for provenance-sensitive
+  equality) -- boxed **`Provenance preservation does not imply provenance-sensitive semantic equality`**
+  -- explicitly reapplying Step 261's equality-notion separation to resolve a concrete open case.
+
+  **§265.15-265.16 delivers Validation and Explanation tests**: validation requires `K` to store
+  "sufficient provenance identity for deterministic resolution" without storing the complete provenance
+  graph; explanation requires BOTH `Π` and `History(T)` together (`A→Π→Source→Evidence→
+  TransformationHistory`) -- reinforcing `Provenance≠History` as complementary rather than redundant
+  paths.
+
+  **§265.17 delivers "the two-lineage model"**, a clean diagram separating the Provenance branch ("where
+  did this assertion originate?") from the History branch ("how did this state evolve?") as complementary,
+  not competing, lineages -- explicitly attributed to "the corpus's reconciliation."
+
+  **§265.18-265.20 delivers the smallest defensible placement and the proposed architecture**: boxed
+  **`ProvenanceReference⊆K`**, boxed **`ProvenanceObject⊆ExternalProvenanceStore`**, with `π∈K` as "its
+  stable anchor" -- smaller than embedding the entire provenance graph into the kernel. Proposed:
+  `A=(id,P,e,c,t,π)`, `π∈𝒫ℐ`, `ResolveProvenance:𝒫ℐ→ProvenanceObject`, `History(A)=(T_1,…,T_n)` kept
+  separate -- boxed **`ProvenanceReference≠History`**. Lists six concrete advantages: persistence, merge
+  preservation, replay, explanation, equality flexibility, minimal kernel, and a clean DDD aggregate/
+  reference boundary ("the assertion owns the reference to its origin; the provenance subsystem owns the
+  provenance graph itself").
+
+  **§265.21 delivers a disciplined three-tier epistemic classification, explicitly refusing to
+  overclaim**: boxed **`VERIFIED: provenance cannot universally be derived from History(T)`**; boxed
+  **`DERIVED/RECOMMENDED: store a stable provenance reference in K`**; explicitly NOT boxed **`PROVEN:
+  full provenance object belongs in K`** -- a textbook demonstration of the evidentiary-hygiene discipline
+  this entire mathematical-kernel sub-arc has been building since files 0888-0890's six-level evidence
+  vocabulary.
+
+  **§265.22 delivers a seven-row final placement matrix** (provenance reference in `K` marked "strongest
+  current placement" 🟢; full object in `K` marked "possible, but not minimal" 🟡; full provenance in `H`
+  and provenance-as-context both marked "refuted" 🔴; external-audit-alone marked "insufficient alone" 🟡;
+  provenance-object-external-plus-reference-in-K marked "preferred" 🟢; internal lineage in `H` marked
+  "valid" 🟢).
+
+  **§265.23 delivers the resulting clean model** with two explicitly distinct relations: `A→^π Origin` and
+  `A_t→^{History(T)}A_{t+1}→^{History(T)}⋯`.
+
+  **The Step 265 verdict** is boxed **`PROVENANCE PLACEMENT: SUBSTANTIALLY RESOLVED`**, with the full
+  synthesis paragraph and the three final boxed formulas (`π∈K`; `ProvenanceObject⇏K`; `Provenance≠
+  History(T)`), explicitly cross-validated against "the executed reconstruction" as independently
+  supporting the same separation.
+
+  **Delivers a nine-row Research-Band status table** summarizing overall theory progress at this point:
+  K representation "largely constrained," Assertion type "constrained," Proposition type "constrained,"
+  Status algebra "partially constrained," External context "classified," Provenance placement
+  "**substantially resolved**" (bolded), Computability "NEXT," Implementation correspondence "not yet
+  established," Falsification "not yet performed."
+
+  **Closes opening "Step 266 — Computability Audit,"** reframing the central question from "where should
+  provenance live?" to boxed **`Can every currently claimed KnowledgeOS construct actually be computed,
+  decided, persisted, replayed and validated?`** -- explicitly requiring computability testing of equality,
+  membership, validation, replay, provenance lookup, minimality, and the operation registry, and
+  identifying every point where human judgment remains hidden.
+introduces:
+  - concept: "An eighth step-number-vs-content mismatch variant: file 0893 promised 'Step 265 — Proposition Identity and Semantic Equality' but this Step 265 delivers Provenance Placement content instead"
+  - concept: "The reapplication and reconfirmation of 0883's decisive provenance-at-t=0 counterexample, now stated as the base-case failure of the Π=History(T) reduction"
+  - concept: "The four named candidate placements A/B/C/D (Π⊆K / Π⊆H / Π⊆ExternalAudit / Π⊆ExternalContext), each formally tested rather than chosen by preference"
+  - concept: "The load-bearing Provenance Reference≠Provenance Object distinction (π∈K does not imply P_π∈K), yielding a smaller defensible kernel"
+  - concept: "The formal refutation of Candidate B (Π=History(T)) and Candidate D (Provenance=Context) as universal identities"
+  - concept: "Candidate C's insufficiency-alone finding: external audit storage requires a stable K-side reference to survive Merge"
+  - concept: "The eleven-row mandatory-operation test matrix and the crucial observation that provenance is operationally required but not always semantically identity-relevant"
+  - concept: "Provenance preservation does not imply provenance-sensitive semantic equality, as a major architectural result"
+  - concept: "The two-lineage model: Provenance branch (origin) vs History branch (evolution), complementary not competing"
+  - concept: "The disciplined three-tier VERIFIED/DERIVED-RECOMMENDED/NOT-PROVEN epistemic classification, explicitly refusing to overclaim full-provenance-object-in-K"
+  - concept: "The nine-row Research-Band status table summarizing overall theory progress, with Computability flagged NEXT"
+  - concept: "Opens Step 266 — Computability Audit"
+defines:
+  - concept: "Provenance Reference vs Provenance Object"
+    definition: "A distinction generalizing the corpus's established Evidence-Reference≠Evidence-Object separation to provenance: π denotes a provenance REFERENCE (a stable, deterministically resolvable identifier or pointer associated with an assertion), while P_π denotes the actual provenance RECORD/OBJECT (the full origin graph -- source documents, measurements, external systems, chains of custody, etc.). The critical formal consequence is that π∈K does not imply P_π∈K: the Knowledge State can preserve the IDENTITY of the provenance relationship (enough to deterministically resolve, merge-preserve, and explain an assertion's origin) while the full provenance object is stored and maintained by an external provenance/audit subsystem, resolved on demand via ResolveProvenance:𝒫ℐ→ProvenanceObject. This yields a materially smaller kernel than embedding the complete provenance graph inside K, while still satisfying every mandatory operation's provenance-dependent requirements"
+  - concept: "Provenance preservation does not imply provenance-sensitive semantic equality"
+    definition: "A finding demonstrating that satisfying the operational requirement to preserve provenance associations (so that Merge, Split, Replay, Validation, and Explanation all function correctly) is logically independent from whether provenance participates in the semantic equality relation used to determine whether two Knowledge States are 'the same.' Concretely: two states K_1={A_{Π_1}}, K_2={A_{Π_2}} with identical propositions (P_1=P_2) but different provenance (Π_1≠Π_2) may be judged equal under ordinary semantic equality (K_1≡K_2, if provenance is not treated as semantic content) while being judged distinct under a provenance-sensitive equality notion (K_1≇_ΠK_2). Both preservation and non-identity-relevance can hold simultaneously without contradiction, because they answer different questions (can the origin be resolved? vs. does the origin distinguish states?) -- directly applying Step 261's mandate that equality notions must not be conflated to resolve a concrete open provenance-equality case"
+refines:
+  - concept: "0883's decisive provenance-at-t=0 counterexample and 0886's refined 'irreducible from T-history, not proven semantically constitutive of K' conclusion"
+    refinement: "RESOLVED (not merely refined) into a concrete, implementable architectural recommendation: the base-case counterexample is reaffirmed as VERIFIED, and the previously open 'is it semantically constitutive' question is answered by the reference/object distinction -- the REFERENCE is constitutive of K's structure (needed for deterministic resolution and merge-safety), while the OBJECT is explicitly NOT required to be, resolving the tension between irreducibility and non-constitutivity that 0886 had left open"
+  - concept: "0865's 'Provenance-as-sole-cross-phase-invariant' finding and the 0865→0869→0874 kernel-comparison sub-arc's repeated inconclusive treatment of where provenance belongs"
+    refinement: "SUPERSEDED with a disciplined, testable, and (per the file's own three-tier classification) appropriately-hedged final placement recommendation, ending the multi-file back-and-forth with a specific formal architecture (A=(id,P,e,c,t,π)) rather than a further open comparison"
+  - concept: "0888's/0889's/0890's evidence-vocabulary and congruence/equality machinery"
+    refinement: "APPLIED concretely to resolve a specific, previously-outstanding research question (provenance placement), demonstrating the machinery's practical payoff rather than remaining purely abstract"
+contradicts: []
+repeats:
+  - concept: "0883's provenance-at-t=0 counterexample and 0886's information-theoretic-irreducibility conclusion"
+    detail: "Restates the same base-case logic (History(T)=∅ at t=0 while provenance may be non-empty) in nearly identical form, though here integrated into a complete four-candidate testing framework and carried through to an actual placement recommendation rather than left as a standalone counterexample"
+bridge_candidates:
+  - "Read Step 266 (Computability Audit) next, expecting the promised computability testing of equality, membership, validation, replay, provenance lookup, minimality, and the operation registry, plus an explicit accounting of where human judgment remains hidden in the theory."
+  - "Watch for whether Step 265's originally-promised topic (Proposition Identity and Semantic Equality, per file 0893's closing) is ever delivered under a different step label or file, given this file's demonstrated topic substitution under the same step number."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the provenance-placement thread's resolution (Provenance Reference⊆K, Provenance Object⊆ExternalProvenanceStore, Provenance≠History(T)) as the corpus's most complete and actionable answer yet to a question tracked across nine prior files, directly reusable for the gated (§29) canonical Kernel synthesis."
+  - "dimension-registry.md: record the disciplined three-tier VERIFIED/DERIVED-RECOMMENDED/NOT-PROVEN classification as a model instance of the evidentiary-hygiene discipline this sub-arc has maintained since files 0888-0890."
+  - "dimension-registry.md: record the eighth step-number-vs-content mismatch (promised Proposition Identity, delivered Provenance Placement under the same Step 265 label) as a further instance of the corpus's non-linear step execution."
+anchor_test:
+  anchor: "0883's provenance-at-t=0 counterexample; 0886's refined provenance conclusion; 0865's cross-phase-invariant finding; 0890's six-notion equality formalization; 0888's/0889's evidence-vocabulary and congruence machinery"
+  supports_dimension: "Resolves, rather than merely extends, the multi-file provenance-placement investigation via the reference/object distinction. Directly applies 0890's equality-notion-separation mandate to a concrete case (provenance preservation vs provenance-sensitive equality). Demonstrates the practical payoff of 0888's/0889's evidence-vocabulary and congruence/operation-testing machinery"
+  refines_or_contradicts: "resolves 0883/0886/0865's open provenance-placement question; applies 0890's equality machinery concretely; demonstrates 0888's/0889's methodology's practical payoff"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§265.7's explicit dependency argument (external-audit-only storage is vulnerable to Merge destroying provenance association unless K retains a resolvable reference) is directly checkable evidence for why Candidate C requires a K-side anchor, strengthening rather than assuming Candidate A/the reference model."
+  - "§265.14's worked equality-notion example (K_1,K_2 with identical propositions but different provenance, judged equal under ≡ but potentially unequal under ≅_Π) is directly checkable evidence for the 'provenance preservation does not imply provenance-sensitive semantic equality' finding."
+  - "§265.21's explicit three-way boxed classification (VERIFIED / DERIVED-RECOMMENDED / explicitly NOT PROVEN) is directly checkable evidence of the file's disciplined refusal to overclaim the full-provenance-object-in-K placement."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 265's originally-promised topic (Proposition Identity and Semantic Equality) is ever delivered elsewhere in the corpus, given this file's demonstrated substitution under the same step label."
+  - "Whether Step 266's computability audit genuinely delivers the promised testing of equality/membership/validation/replay/provenance-lookup/minimality/operation-registry computability, and what 'hidden human judgment' points it identifies."
+  - "Whether the proposed architecture A=(id,P,e,c,t,π) with π as a provenance reference is ever formally reconciled with the Assertion tuple established in files 0891-0892's (contested) A=(id,P,e,c,t,Π) formulation, given the reference/object distinction newly introduced here."
+tier2_triggered: true
+tier2_reason: "Resolves the corpus's longest-running cross-file mathematical thread (provenance placement, tracked across nine prior files) with a concrete, testable, appropriately-hedged architectural recommendation via the load-bearing provenance-reference/provenance-object distinction, and delivers a second major architectural result (provenance preservation does not imply provenance-sensitive equality) directly applying Step 261's equality-notion separation. Classified importance critical and tier2-triggered."

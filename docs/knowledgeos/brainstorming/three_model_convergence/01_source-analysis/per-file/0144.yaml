@@ -1,0 +1,95 @@
+sequence: "0144"
+path: docs/knowledgeos/brainstorming/20260823-103606-kernel-eight-capacities-k1-k8-and-minimum-kernel.md
+title: "K1-K8: eight named Kernel capacities -- the strongest kernel-reduction candidate yet, still unexecuted/unadopted (updates the WATCH MARKER)"
+date: "2026-08-23"
+bytes: 15000
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0087"
+importance: critical
+confidence: high
+about: >
+  Directly answers the long-standing ⚑ WATCH MARKER for a "Constitutional Invariant Map" style
+  reduction (first raised 0105). Defines the Kernel as "an epistemic state-transition kernel" with eight
+  named capacities (K1 Identity, K2 Evidence, K3 Provenance/History, K4 Context, K5 Contradiction, K6
+  Temporal Evolution, K7 Constitutional Admissibility, K8 Deterministic State Transition), plus an
+  explicit exclusion list (Semantic Compiler, LLM, natural-language parser, workflow engine, database,
+  UI/API -- all interpretation providers or adapters, not Kernel authority). Closes with a "Kernel
+  Boundary & Capability Mapping" matrix template -- every cell "?" -- explicitly recommended as the NEXT
+  task, not completed here. References an expanding list of apparently-unencountered governance
+  artifacts (KnowledgeOS v1.1, KnowledgeAggregate, Constitution, Port Contract, OQ-2/OQ-3/OQ-5, F-1..F-5).
+
+introduces:
+  - "Eight named Kernel capacities K1-K8 with individual rationale for each -- the corpus's most
+    concrete, best-argued kernel-reduction candidate so far"
+  - "Explicit Kernel exclusion list: Semantic Compiler / SNF, LLM, natural-language parser, workflow
+    engine, database, UI/API -- all framed as replaceable providers/adapters outside Kernel authority"
+  - "Hard 'capacity ceiling' principle: 'The Kernel should be incapable of doing things that belong to
+    interpretation' -- the Kernel may only say 'Provider P submitted candidate X; Evidence E supports X;
+    transition T is admissible,' never 'the sentence means X'"
+  - "One-sentence Kernel definition: 'preserves identity, evidence, context, provenance, contradiction
+    and history, and deterministically determines whether a proposed knowledge-state transition is
+    constitutionally admissible' -- with an explicit list of what is NOT in that sentence (language,
+    intelligence, search, inference, LLMs, databases, workflows, embeddings, Sanskrit, SNF)"
+  - "'Kernel Boundary & Capability Mapping' exercise proposed as the next task: a matrix of existing
+    capabilities (Identity, Evidence, Observation, Provenance, Revision, Semantic compiler, SNF, LLM,
+    Workflow, Governance) x {Kernel?/Supporting?/External?} -- presented as an EMPTY TEMPLATE, not
+    executed"
+
+defines: []
+
+refines:
+  - "Reframes (does not contradict) EKS/PKS as candidates for capability mapping against the Kernel
+    boundary, explicitly warning 'we should not decide that from names'"
+
+contradicts: []
+
+repeats:
+  - {concept: "compiler/LLM/workflow/database exclusion from kernel authority", canonical_source: "0139", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "New unresolved_equivalence entry: K1-K8 vs. anchor's six dimensions (0087) vs. Identity 6-tuple
+    (0099) -- new_representation, not merged. See dimension-registry.md."
+  - "Ledger Entry 46 added, updating the ⚑ WATCH MARKER (0105/0134/0140): the strongest reduction
+    candidate yet, STILL not executed or adopted -- the capability-mapping matrix is an unfilled template."
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Evidence Integrity", "Temporal Validity", "Unknown Preservation"]
+  refines_or_contradicts: "Proposes an alternative six-to-eight-capacity minimal kernel; not merged with the anchor's own six dimensions."
+  alternative_minimal_kernel: "K1-K8 (Identity, Evidence, Provenance/History, Context, Contradiction, Temporal Evolution, Constitutional Admissibility, Deterministic State Transition)"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "This file is the direct, substantive answer the ⚑ WATCH MARKER (0105) has been tracking since
+    file 0105 -- the strongest, most disciplined kernel-reduction proposal in the corpus, explicitly
+    still unexecuted as an adopted boundary (only a template matrix, not a filled one)"
+  - "K7 (Constitutional Admissibility) and K8 (Deterministic State Transition) are genuinely new
+    candidate content with no clean counterpart in the anchor's six dimensions or the Identity 6-tuple"
+  - "The unencountered-governance-artifact list has grown to include KnowledgeOS v1.1, KnowledgeAggregate,
+    Constitution, Port Contract, OQ-2/OQ-3/OQ-5, and F-1..F-5 -- specific and numerous enough that these
+    documents very likely exist elsewhere in the corpus (plausibly under kernel/), not merely loose
+    language"
+
+undefined_concepts:
+  - "F-1 through F-5 (unexpanded acronym/list, likely 'Findings' or similar -- unconfirmed)"
+open_questions:
+  - "Whether a later file actually fills in the Kernel Boundary & Capability Mapping matrix"
+  - "Whether K1-K8 gets adopted, revised, or superseded by a later kernel-reduction attempt"
+
+tier2_triggered: true
+tier2_reason: >
+  Directly resolves the standing ⚑ WATCH MARKER with the corpus's strongest kernel-reduction candidate
+  yet (K1-K8), explicitly still unexecuted/unadopted; new candidate representation logged per MD-017.

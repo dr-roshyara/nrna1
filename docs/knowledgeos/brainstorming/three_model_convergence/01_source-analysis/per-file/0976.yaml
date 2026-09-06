@@ -1,0 +1,74 @@
+sequence: 976
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/R1-SOURCE-EVIDENCE-REGISTER.md
+title: "R1 -- Source Evidence Register: A Compact, Disciplined Ten-Entry [S]/[C]/[P]-Tagged Register Explicitly Flagging E-10 (Krishna as Supreme Personality of Godhead) With a Red Marker 'BLOCKS ANY Krishna=Omega IDENTITY CLAIM' -- Continues the Executed Disciplined Kernel-Track Lineage, Directly Guarding Against the Exact Overclaim Committed in Files 0943/0954/0971"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual executed R1 deliverable specified in file 0973's required-outputs list"
+source_role: PRIMARY_RESEARCH
+canonical_source: 976
+importance: normal
+confidence: high
+about: >
+  A compact (31-line), disciplined ten-entry ([E-01] through [E-10]) source-evidence register, each entry
+  tagged with what the source text `[S]` actually says, what the specific edition's commentary `[C]` adds,
+  and what philosophical interpretation `[P]` is used -- directly implementing the discipline files 0970/
+  0973 established (see file 0973's §2), opening "a [P] or [R] statement must never silently become [S]."
+
+  **Entry `E-10` DELIVERS THE FILE'S MOST IMPORTANT SAFEGUARD, EXPLICITLY FLAGGED WITH A RED MARKER**:
+  "Kṛṣṇa as Supreme Personality of Godhead -- a person, explicitly not an abstraction -- 🔴 BLOCKS ANY
+  `Kṛṣṇa=Ω` IDENTITY CLAIM" -- **A DIRECT, EXPLICIT, STANDING GUARD AGAINST THE EXACT DECORATIVE MAPPING
+  ALREADY COMMITTED IN FILES 0943, 0954, AND (MOST SEVERELY) 0971**, continuing the disciplined lineage's
+  now-repeated (files 0970, 0973, 0975, and here) explicit rejection of this specific overclaim.
+
+  **Entry `E-02` records the source's genuine two-level-knower structure** (Kṛṣṇa as universal knower
+  distinct from the individual knower) as source evidence only, without yet drawing any KnowledgeOS
+  conclusion -- this is the raw evidentiary basis that file 0975's D285-8 appendix later formally tested
+  and refuted via the information-theoretic impossibility theorem.
+
+  **The closing "Two things the register deliberately does NOT contain" section delivers an explicit,
+  reusable discipline statement**: (1) "No Sanskrit term is treated as a KnowledgeOS type... `Kṣetrajña`
+  appears in ratified FA-4, but it got there through the architecture's own lineage -- R1 records the
+  source, not the ratification"; (2) "No verse is cited as authority for a mathematical proposition. Where a
+  formal result exists, it is cited from the corpus (`31.19`, `§256.21`, `I-1`), never from the text" --
+  **revealing a further new corpus reference, `§256.21`**, alongside the already-noted `31.19` and `I-1`
+  references from file 0975, all bridge candidates for this reconstruction's future encounter.
+introduces:
+  - concept: "A compact, disciplined [S]/[C]/[P]-tagged ten-entry source-evidence register, the actual executed R1 deliverable"
+  - concept: "An explicit red-flagged standing guard against the Krishna=Omega identity claim (entry E-10), continuing the disciplined lineage's repeated rejection of this specific overclaim"
+  - concept: "A further new corpus reference, '§256.21,' alongside the already-noted '31.19' and 'I-1' references"
+defines: []
+refines:
+  - concept: "Files 0970's, 0973's, and 0975's repeated explicit rejection of the Krishna=Omega mapping"
+    refinement: "FURTHER REINFORCED via a standing, explicitly red-flagged register entry (E-10) rather than a one-off statement, embedding the guard directly into the evidence register itself"
+  - concept: "File 0975's D285-8 appendix's formal refutation of the 'universal knower' concept"
+    refinement: "TRACED BACK to its raw evidentiary basis here (entry E-02), confirming the register-to-appendix pipeline this disciplined research programme specified is genuinely being followed"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "The corpus references '31.19,' '§256.21,' and 'I-1' -- none yet directly encountered by this reconstruction at its current sequential position (likely much earlier in the overall corpus)."
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the further corpus reference '§256.21' alongside the already-tracked '31.19' and 'I-1' references from file 0975, all as bridge candidates."
+  - "dimension-registry.md: record entry E-10's explicit red-flagged guard against the Krishna=Omega mapping as continued reinforcement of the disciplined lineage's repeated rejection of this specific overclaim."
+anchor_test:
+  anchor: "Files 0943's/0954's/0971's Krishna=Omega decorative mapping; file 0975's D285-8 appendix"
+  supports_dimension: "Delivers a standing, explicitly red-flagged register entry guarding against the Krishna=Omega mapping, and traces file 0975's universal-knower refutation back to its raw evidentiary source"
+  refines_or_contradicts: "reinforces (does not contradict) the disciplined lineage's rejection of the Krishna=Omega mapping"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Entry E-10's explicit red-flag text is directly checkable, word-for-word, against files 0943's/0954's/0971's own Krishna=Omega/source-code claims for the standing-guard finding."
+undefined_concepts: []
+open_questions:
+  - "The specific content and location of the '31.19,' '§256.21,' and 'I-1' corpus references."
+tier2_triggered: false
+tier2_reason: "A compact, disciplined evidence register directly implementing and reinforcing the already-established kernel-track discipline; contributes confirmatory but not qualitatively new structural content beyond what files 0973/0975 already established. Classified importance normal, tier2 not triggered; confidence high given the artifact's transparent, itemized structure."

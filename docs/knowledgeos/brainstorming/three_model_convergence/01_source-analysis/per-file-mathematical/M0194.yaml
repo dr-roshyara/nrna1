@@ -1,0 +1,97 @@
+sequence: M0194
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-184000_review-of-kr-zero-algebra-commissioning-kr-zero-group.md
+title: "KR-ZERO-ALGEBRA-2026-09 EXECUTED: confirms the flagged 'major result' — Zero is genuinely NOT element-wise (duplicate witness D=[x,x] refutes individual⟹group; cancellation witness D=[+c,-c] refutes group⟹individual) — refutes 9 of 11 algebraic hypotheses, finds heuristic-vs-counterfactual agreement only 55.75% with strong over-elimination bias, characterizes L as terminating-but-non-confluent rewriting, and commissions KR-ZERO-GROUP-2026-09"
+date: "20260902-184000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0194
+importance: critical
+confidence: high
+about: >
+  Reviews the ACTUAL EXECUTION of the KR-ZERO-ALGEBRA-2026-09 protocol specified at M0189 (1,200
+  generated cases per hypothesis family, deterministic execution) — the first confirmation in this
+  reconstruction that a protocol this reconstruction has itself just processed was subsequently
+  carried out. The central result: the flagged adversarial prediction from M0189 — that an
+  individually-Zero-but-jointly-non-Zero witness would be "a major result" proving Zero is not
+  element-wise — is CONFIRMED, alongside its converse (a cancellation witness where neither element
+  is individually Zero but the pair jointly is). Of 11 candidate algebraic hypotheses (H1-H11), 9 are
+  REFUTED and only 2 (termination, monotone decrease) are confirmed. The reviewer reframes this not
+  as failure but as "destroying several overly strong algebraic assumptions and revealing the actual
+  structure of the problem," generalizes Zero to a subset-level predicate Zero_{T,Π}(S;D), and
+  commissions a follow-up protocol KR-ZERO-GROUP-2026-09.
+introduces:
+  - "CONFIRMED WITNESS 1 (Duplicate case): D=[x,x] — each x is individually Zero, but Zero({x1,x2},D) is FALSE — formally Zero(x,D)∧Zero(y,D) ⇏ Zero({x,y},D), confirming the exact adversarial prediction M0189 flagged as potentially 'a major result'"
+  - "CONFIRMED WITNESS 2 (Cancellation case): D=[+c,-c] — neither +c nor -c is individually Zero, but the pair jointly is — Zero({x,y},D) ⇏ Zero(x,D)∧Zero(y,D) — termed 'emergent eliminability,' the converse direction, not explicitly anticipated at M0189"
+  - "A full hypothesis-outcome table for H1-H10 (from M0189's H-list): L²=L REFUTED; L_A L_B=L_B L_A REFUTED (order/context-sensitive); individual-Zero⟹group-Zero REFUTED; group-Zero⟹individual-Zero REFUTED; Zero-independent-of-reference REFUTED (reference-relative); Zero-independent-of-contract REFUTED (contract load-bearing); Invariant=Zero REFUTED; Remainder=D-Eliminated REFUTED (transformation-relative); RuleEliminable=CounterfactualZero REFUTED; iteration-terminates CONFIRMED; iteration-monotone-decreasing CONFIRMED"
+  - "A concrete empirical measurement of the heuristic-vs-formal-counterfactual gap: agreement only 55.75%, with a strong ASYMMETRIC over-elimination bias — 1,559 elements removed by the heuristic rule despite failing the formal counterfactual test, versus only 301 true-Zero elements the heuristic incorrectly retained — the first quantified empirical confirmation that a heuristic elimination proxy diverges materially from the formal Zero definition it was meant to approximate"
+  - "A generalized subset-level Zero definition: Zero_{T,Π}(S;D) ⟺ Π(T(D))=Π(T(D\\S)) for S⊆D, with the original element-level Zero_{T,Π}(x) now explicitly demoted to 'the element-level special case' (S={x}) — marked [PROP] not [DEF]"
+  - "Characterization of the elimination operator L as a TERMINATING BUT NON-CONFLUENT REWRITING SYSTEM, not a projection: since L_A L_B(D)≠L_B L_A(D) is possible (different legitimate elimination orders reach different final states D2≠D4), the appropriate mathematical regime is rewriting theory, not classical algebra — 'we didn't choose rewriting theory. The experiment is telling us that rewriting theory may be the appropriate mathematical regime'"
+  - "A structural parallel to the corpus's own broader KnowledgeOS principle: 'Determination is inquiry-relative' (from the ratification-tension arc's Det apparatus) mirrored by the newly-established 'Eliminability is preservation-relative' for Zero — noted as 'a very promising structural parallel' though not explicitly cross-referenced to the concurrent arc by name"
+  - "Commissioning of KR-ZERO-GROUP-2026-09: central question 'What is the minimal mathematical structure of group-level eliminability?', investigating singleton-vs-group Zero, pairwise vs. higher-order Zero, cancellation, redundancy, order-dependence, minimal Zero subsets, maximal eliminable subsets, overlapping Zero subsets, and whether the resulting family structure is best described by rewriting systems, hypergraphs, closure systems, or lattices — 'only after that should we ask whether an algebra exists'"
+defines:
+  - "Zero_{T,Π}(S;D) ⟺ Π(T(D))=Π(T(D\\S)) for S⊆D — generalizing M0189-M0193's element-only Zero_{T,Π}(x)"
+  - "The updated research architecture object 𝒵=(D,S,I,C,R,M,T,Π,W), replacing the earlier element-only 𝒵=(D,I,C,R,M,T,Π,x) (M0191)"
+refines:
+  - "M0189's Zero_{T,Π}(x) apparatus and its H1-H11 hypothesis list: subset-generalized, with 9 of 11 hypotheses now REFUTED by genuine empirical execution rather than remaining open"
+  - "M0189's open question of whether L is a 'projection,' 'rewriting system,' 'fixed-point operator,' or 'something else': RESOLVED (empirically) as a terminating, non-confluent rewriting system"
+contradicts:
+  - "M0189-M0193's implicit assumption (never asserted as fact, but left open) that Zero might be a straightforward element-wise predicate — directly refuted by both confirmed witnesses"
+repeats:
+  - "The established discipline of explicit negative results and non-ratification: 'I would not create Theory v1.3, select a kernel operator, call L a projection, declare Zero an invariant, claim Vedic Mathematics has been validated, introduce a particular algebra, or conclude rewriting theory is the correct framework' — the experiment itself is reported as having maintained the same safeguards"
+bridge_candidates:
+  - "Whether KR-ZERO-GROUP-2026-09 was ever actually executed"
+  - "Whether the 'Determination is inquiry-relative' / 'Eliminability is preservation-relative' structural parallel is ever explicitly connected to the ratification-tension arc's own Det apparatus (no direct cross-reference appears here, continuing the established cross-thread desynchronization pattern)"
+  - "The precise located source of the full KR-ZERO-ALGEBRA-2026-09 execution artifacts (results.md, counterexamples.md, property-results.json, seeds.json, witnesses/) that M0189's protocol specified as required output — not itself the document being read here, only reviewed secondhand"
+mathematical_content: >
+  The most consequential empirical result in the Zero-algebra thread: a genuine, executed
+  falsification experiment refuting 9 of 11 candidate algebraic hypotheses with concrete numeric
+  witnesses (1,200 cases/family; 55.75% heuristic-formal agreement; 1559-vs-301 asymmetric error
+  counts), confirming that Zero requires a subset-level (not element-wise) formulation and that the
+  elimination operator is best modeled as a terminating, non-confluent rewriting system rather than a
+  projection or algebra in the classical sense.
+gita_content: null
+kernel_content: >
+  Demonstrates the Zero-algebra thread's disciplined empirical methodology paying off precisely as
+  designed: an adversarial protocol (M0189) explicitly built to avoid confirming its own hypotheses
+  did in fact refute most of them, producing a genuinely new mathematical characterization (subset-
+  level Zero, non-confluent rewriting) rather than either false confirmation or silent theory repair.
+registry_updates:
+  - "MAJOR EMPIRICAL RESULT: individual-Zero⟹group-Zero and its converse both REFUTED via concrete witnesses (duplicate case, cancellation case) — Zero is not an element-wise predicate"
+  - "9 of 11 candidate Zero-algebra hypotheses (H1-H10 from M0189) REFUTED by genuine execution; only termination and monotone-decrease confirmed"
+  - "Quantified heuristic-vs-formal-Zero divergence: 55.75% agreement, asymmetric over-elimination bias (1559 vs. 301)"
+  - "New generalized subset-level Zero definition Zero_{T,Π}(S;D), demoting the element-only version to a special case"
+  - "Elimination operator L empirically characterized as a terminating, non-confluent rewriting system, resolving M0189's open projection-vs-rewriting-vs-fixed-point question"
+  - "New follow-up protocol commissioned: KR-ZERO-GROUP-2026-09"
+anchor_test:
+  anchor: true
+  supports_dimension: "Confirmed individual/group-Zero witnesses; 9-of-11 hypothesis refutation; heuristic-formal divergence quantified; subset-level Zero definition; non-confluent-rewriting characterization; KR-ZERO-GROUP commissioned"
+  refines_or_contradicts: "refines (generalizes M0189's Zero definition and resolves its open projection/rewriting question); contradicts (refutes 9 of the 11 candidate hypotheses M0189 posed as open)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Zero(x,D) ∧ Zero(y,D) ⇏ Zero({x,y},D)\" — the confirmed duplicate-case witness, matching M0189's flagged 'major result' prediction exactly"
+  - "\"Zero({x,y},D) ⇏ Zero(x,D) ∧ Zero(y,D)\" — the confirmed cancellation-case witness"
+  - "\"1559 elements were removed by the heuristic despite not satisfying the counterfactual criterion, whereas only 301 true Zero elements were retained\" — the quantified over-elimination bias"
+  - "\"We didn't choose rewriting theory. The experiment is telling us that rewriting theory may be the appropriate mathematical regime.\""
+undefined_concepts:
+  - "The precise family structure (rewriting system / hypergraph / closure system / lattice) that minimal Zero subsets form — left for KR-ZERO-GROUP-2026-09"
+open_questions:
+  - "Was KR-ZERO-GROUP-2026-09 ever executed?"
+  - "Is the Determination-inquiry-relative / Eliminability-preservation-relative parallel ever explicitly connected to the ratification-tension arc?"
+tier2_triggered: true
+tier2_reason: >
+  Reports the actual, executed empirical results of the KR-ZERO-ALGEBRA-2026-09 protocol this
+  reconstruction just processed at M0189, confirming the exact adversarial "major result" prediction
+  flagged there (Zero is not element-wise, via two concrete witnesses), refuting 9 of 11 candidate
+  algebraic hypotheses, quantifying a substantial heuristic-vs-formal-Zero divergence, generalizing
+  Zero to a subset-level predicate, and empirically resolving the open projection-vs-rewriting-system
+  characterization question in favor of terminating, non-confluent rewriting — a genuinely
+  significant empirical advance, not merely another review or status re-adjudication.

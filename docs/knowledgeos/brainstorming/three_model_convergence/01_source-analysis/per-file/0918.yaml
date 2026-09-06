@@ -1,0 +1,162 @@
+sequence: 918
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-234402_step_281_correction-and-missing-part.md
+title: "Step 281 Correction and Missing Part: Addresses All Ten of 0917's Required Corrections -- Explicitly RETRACTS a Premature Canonicalization ('I Should Not Have Selected the Typed-Sigma Repair as Canonical Before Completing the Candidate Comparison') -- Delivers the Seven-Mandatory-States Register (M1-M7, With Orphan/M7 Explicitly NOT Automatically Epistemic), a Formal Necessity/Irreducibility/No-Redundant-Distinction Minimality Criterion, the Three-Option Sigma-Placement Analysis (Explicitly Left Open, Not Decided by Preference), and 'Absence Cannot Generate Negative Epistemic Evidence' -- Fully ACCEPTED as Execution-Ready by the Appended Review, the Fifth Consecutive Overclaim-Review-Correction Cycle"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "rigorous discrete-mathematics/DDD minimality-repair methodology directly extending the K/Σ minimality discipline"
+source_role: PRIMARY_RESEARCH
+canonical_source: 918
+importance: critical
+confidence: medium
+about: >
+  Opens with a genuinely disciplined self-correction: "I should not have selected the typed-`Σ` repair as
+  canonical before completing the candidate comparison" -- explicitly retracting a premature
+  canonicalization from the (unseen) prior Step 281 draft, directly addressing all ten corrections from
+  file 0917's appended review.
+
+  **§281.1-§281.2 reaffirms the precise defect** (`𝒜=Set(Assertion)` cannot distinguish Not-Asked from
+  Asked-and-Absent) and delivers **THE SEVEN MANDATORY STATES REGISTER** (`M1` Not Asked, `M2` Asked+
+  Absent, `M3` Asked+Unknown, `M4` Supported, `M5` Refuted, `M6` Conflicted, `M7` Orphan) -- explicitly
+  noting `M7` "is not automatically an epistemic status. It may instead be a structural condition of an
+  assertion/document," foreshadowing the file's central architectural separation.
+
+  **§281.3-§281.5 delivers three fully, precisely specified candidate repairs**: Option A (an explicit
+  `⊥_p=(id,p,BOTTOM,t,π)` bottom assertion, "very small extension" but risking `⊥` becoming semantically
+  overloaded unless precisely bounded); Option B (an inquiry register `Q_t⊆P` recording actually-queried
+  propositions, "semantically strong but potentially expands the top-level state representation");
+  Option C (a typed epistemic interpretation `ε_t:P→ℰ`), refined into two sub-variants -- C1 (collapsing
+  Asked+Absent into Unknown, explicitly rejected: "the E4 failure provides evidence against making that
+  assumption automatically") and C2 (`Σ*=I×E`, a genuine product of an inquiry dimension and an epistemic-
+  result dimension, "semantically stronger but potentially less minimal") -- "C cannot be accepted merely
+  because it is elegant."
+
+  **§281.6 delivers a genuinely reusable FORMAL MINIMALITY CRITERION**, directly generalizing the `K`-
+  minimality/`Σ`-minimality methodology from files 0902-0904/0912: for a repair `R*=R_0+ΔR`, minimality
+  requires (M1) Necessity -- every component of `ΔR` is required to distinguish at least one mandatory
+  state pair; (M2) Irreducibility -- no proper subset `ΔR'⊂ΔR` can distinguish all mandatory states; (M3)
+  No redundant distinction -- the repair must not distinguish states the mandatory operation set cannot
+  itself distinguish.
+
+  **§281.7 delivers a mandatory-state distinguishability matrix comparing A/B/C**, exposing a crucial
+  finding: **NONE of the three candidates distinguishes `M7/M4` (Orphan vs. Supported), because
+  orphanhood is not inherently epistemic** -- "the missingness repair and the orphan representation are
+  two related but distinct problems. They must not be artificially solved by one overloaded status
+  mechanism."
+
+  **§281.8-§281.9 delivers a fully separate, disciplined ORPHAN ANALYSIS**: three sub-types -- `O1` (a
+  valid, legitimately-unrelated independent assertion), `O2` (a structurally incomplete assertion missing
+  a required relationship), `O3` (an ingested but semantically unclassified document) -- concluding boxed
+  **`Orphan∉Σ_epistemic`** and boxed **`Orphanhood=structural/relational condition`**, preserving boxed
+  **`Epistemic State≠Structural Connectivity State`**. Formalizes the actual EKP `orphan_document`
+  condition via a `Document→Ingested→Qualified?→SemanticallyLinked?` pipeline, explicitly warning against
+  turning "an implementation artifact into an epistemic proposition."
+
+  **§281.10-§281.11 delivers the Σ-placement analysis, explicitly refusing to prematurely decide**: three
+  options -- `Σ-A` (add an inquiry dimension directly into the existing `Σ` tuple, `Σ=(I,A,S,R,V,C)` --
+  yet a FOURTH distinct `Σ` structural variant appearing in this file cluster, alongside `Σ_min` from
+  0912, `Σ=(A,S,R,V,C)` from 0915's E3, and `Σ=(Direction,Strength)` from 0917's review); `Σ-B`
+  (missingness stays entirely in the inquiry/evidence layer, outside `Σ` proper -- consistent with 0912's
+  own original exclusion finding); `Σ-C` (a genuine two-level product `Σ=Σ_inquiry×Σ_epistemic`) --
+  explicitly: "the evidence from E4 establishes only that the overall KnowledgeOS representation must
+  preserve the distinction. It does not, by itself, prove that the distinction must be encoded in the
+  existing `Σ` tuple... placement in `Σ` remains a design decision until minimality is demonstrated" --
+  delivering the working (not yet canonical) candidate boxed **`C*=typed inquiry+epistemic semantics`**,
+  `ε_t(p)=(I_t(p),E_t(p))`.
+
+  **§281.12-§281.14 delivers three further consequence results**: revised transformation semantics
+  delivering boxed **`Absence cannot generate negative epistemic evidence`** (explicitly prohibiting an
+  implicit `NotAsked→Refuted` transition merely because `p∉A`); an equality consequence (inquiry state
+  becoming observable means `I_{K_1}(p)≠I_{K_2}(p)` alone can now establish `K_1≉_OK_2`, "the exact
+  connection between the missingness defect and the earlier equality theory"); and a new replay invariant,
+  boxed **`Replay preserves inquiry semantics`**, requiring replayed histories to correctly reconstruct
+  the inquiry state, not merely the epistemic result.
+
+  **§281.15-§281.19 delivers a fully executable empirical apparatus**: a twelve-field per-test recording
+  template and seven concretely specified re-test cases (`E4-R1` through `E4-R7`, each with a precise
+  setup and expected representation, matching the seven mandatory states exactly); the five affected
+  falsification tests (`F1,F3,F5,F6,F10`) each with an explicit justification for why missingness affects
+  them; the finalized six-status gap classification (`CLOSED/PARTIAL/OPEN/BLOCKED/NORMATIVE/EMPIRICAL`,
+  each precisely defined); a ten-condition Internal Closure Criterion `IC_281`; and an eleven-stage repair
+  governance pipeline (`Defect reproduced→...→HPA review→Ratification→Canonical status`).
+
+  **§281.20-§281.23 delivers fifteen explicit success criteria, a corrected (mostly PENDING) status
+  matrix, and the corrected supervisory verdict, EXPLICITLY WALKING BACK the earlier premature
+  canonicalization**: "the previous Step 281 conclusion ['typed epistemic state is the canonical repair']
+  was premature. The corrected conclusion is: typed inquiry/epistemic semantics is the leading repair
+  candidate. It has not yet earned canonical status" -- delivering the final five-stage HPA correction
+  chain (`Step 280 EC=NOT ACHIEVED→missingness defect correctly localized→candidate repair formally
+  specified→minimality+invariant+orphan+empirical verification→only then: canonical repair`), and
+  designating "STEP 281 — CONDITIONALLY ACCEPTED→CORRECTED FOR EXECUTION," explicitly: "the next
+  execution is not yet Step 282."
+
+  **The appended supervisory review FULLY ACCEPTS this corrected document as execution-ready** (all ten
+  of 0917's identified issues confirmed ✅ resolved in a consolidated tracking table, an eight-category
+  assessment table entirely ✅), concluding boxed **`Step 281 Corrected is ACCEPTED as execution-ready`**
+  -- **the fifth consecutive overclaim-review-correction cycle in this immediate file neighborhood (278,
+  279, 280, 281), and the second (after 0914) to reach full acceptance on its corrected pass** --
+  reaffirming the dependency chain through Step 284 and designating "Next: STEP 281 EXECUTION" (a further
+  unencountered artifact).
+introduces:
+  - concept: "The explicit retraction of a prior premature Σ-typing canonicalization decision, made before completing the required candidate comparison"
+  - concept: "The seven mandatory states register (M1-M7), with M7 (Orphan) explicitly flagged as not automatically epistemic"
+  - concept: "The formal Necessity/Irreducibility/No-redundant-distinction minimality criterion, directly generalizing the K/Σ minimality methodology"
+  - concept: "The mandatory-state distinguishability matrix revealing that none of the three candidate repairs distinguishes Orphan from Supported, since orphanhood is not inherently epistemic"
+  - concept: "The three-way orphan sub-typology (O1 valid independent, O2 structurally incomplete, O3 ingested-but-unclassified) and the Epistemic State≠Structural Connectivity State separation"
+  - concept: "A FOURTH distinct Σ structural variant (Σ-A: Σ=(I,A,S,R,V,C)) appearing in this file cluster, alongside Σ_min, Σ=(A,S,R,V,C), and Σ=(Direction,Strength)"
+  - concept: "The explicit refusal to prematurely decide Σ's placement: 'placement in Σ remains a design decision until minimality is demonstrated'"
+  - concept: "Absence cannot generate negative epistemic evidence, prohibiting an implicit NotAsked→Refuted transition"
+  - concept: "The new replay invariant: Replay preserves inquiry semantics"
+  - concept: "The fully executable E4-R1 through E4-R7 re-test protocol matching all seven mandatory states"
+  - concept: "The fifth consecutive overclaim-review-correction cycle, and the second to reach full acceptance on its corrected pass"
+defines:
+  - concept: "The formal repair minimality criterion (Necessity, Irreducibility, No redundant distinction)"
+    definition: "For an original state representation R_0 and a proposed repair R*=R_0+ΔR (where ΔR is the added structure), the repair is minimal if and only if three conditions jointly hold: (M1) Necessity -- every individual component of ΔR is required to distinguish at least one pair of mandatory states that would otherwise be conflated; (M2) Irreducibility -- no proper subset ΔR'⊊ΔR is by itself sufficient to distinguish all the mandatory state pairs (i.e. nothing in ΔR is redundant given the rest); (M3) No redundant distinction -- the repair must not introduce distinctions between states that no mandatory KnowledgeOS operation can actually observe or act upon, even if those distinctions would be conceptually interesting. This directly generalizes the K-component Deletion Test (0902-0904) and the Σ_min power-set derivation (0912) into a reusable three-part criterion applicable to any future theory-defect repair"
+  - concept: "The Orphan/Epistemic State separation"
+    definition: "A disciplined architectural finding that an 'orphan' object (an assertion or document that exists in the system, a∈A, but has no relationships to other knowledge objects, Rel(a)=∅) must NOT be automatically classified as having epistemic status Unknown or any other epistemic value. Instead, orphanhood is a genuinely different kind of fact -- a structural/relational connectivity condition -- with (at minimum) three distinct sub-cases: O1 (the assertion legitimately and permanently has no required relationship, a valid state), O2 (a relationship is required by the domain but has not yet been established, an incomplete state), O3 (the underlying document has been ingested into the system but has not yet undergone semantic qualification at all). Conflating any of these with an epistemic status would incorrectly promote what is fundamentally an implementation/structural artifact (a document sitting unlinked in a repository) into a substantive epistemic claim about a proposition's truth-support, which the theory must not permit"
+refines:
+  - concept: "0917's ten required corrections from the appended supervisory review"
+    refinement: "ALL TEN DIRECTLY ADDRESSED with precise formal content: executable candidate representations (A/B/C), a formal minimality criterion (M1/M2/M3), a separate orphan analysis (O1/O2/O3), an executable E4-R1-R7 re-test protocol, a finalized six-status gap classification, a ten-condition internal closure criterion, an explicit three-option Σ-placement analysis (rather than a premature decision), full EKP orphan formal semantics, an eleven-stage repair governance pipeline, and fifteen explicit success criteria -- each independently confirmed ✅ resolved by the appended follow-up review"
+  - concept: "0912's Σ_min derivation and its original exclusion of Missingness from Σ"
+    refinement: "DIRECTLY RE-ENGAGED as Option Σ-B, one of three now-explicit candidate placements for missingness relative to Σ -- this file does not decide between them, correctly treating the placement question as still genuinely open pending minimality proof, rather than either reaffirming or silently overriding 0912's exclusion"
+  - concept: "The escalating multi-way Σ-representation inconsistency (Σ_min from 0912, Σ=(A,S,R,V,C) from 0915, Σ=(Direction,Strength) from 0917)"
+    refinement: "FURTHER DEEPENED to a fourth distinct variant (Σ-A: Σ=(I,A,S,R,V,C)) proposed as one candidate option here, though this file itself does not commit to it -- the proliferation of Σ structural variants across this file cluster continues to grow without cross-reconciliation"
+  - concept: "The unseen prior draft's premature 'typed-Σ repair is canonical' claim"
+    refinement: "EXPLICITLY RETRACTED within this same file: 'I should not have selected the typed-Σ repair as canonical before completing the candidate comparison' -- a directly observable instance of the corpus correcting its own overclaiming in real time, structurally similar to (though smaller in scope than) file 0906's two-version internal self-correction"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 'STEP 281 EXECUTION' (this review's explicitly designated next artifact), expecting the actual selection among candidates A/B/C, concrete E4-R1 through E4-R7 results, and a determination of IC_281."
+  - "Watch for whether the now four-way Σ-representation inconsistency (Σ_min, Σ=(A,S,R,V,C), Σ=(Direction,Strength), Σ-A=(I,A,S,R,V,C)) is ever explicitly noticed and reconciled anywhere later in the corpus."
+  - "Watch for whether the Σ-placement question (Σ-A/Σ-B/Σ-C) is ever formally resolved, and whether Σ-B (consistent with 0912's exclusion) is the eventual choice."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal repair minimality criterion (Necessity/Irreducibility/No-redundant-distinction) as a directly reusable, generalized methodology applicable to any future theory-defect repair, for the gated (§29) canonical Kernel synthesis."
+  - "dimension-registry.md: record the Orphan/Epistemic-State separation (O1/O2/O3 sub-typology) as a directly reusable architectural finding."
+  - "dimension-registry.md: escalate the tracked Σ-representation inconsistency to a fourth distinct variant (Σ-A=(I,A,S,R,V,C)), alongside Σ_min, Σ=(A,S,R,V,C), and Σ=(Direction,Strength) -- an increasingly urgent open item for eventual synthesis reconciliation."
+  - "dimension-registry.md: record the explicit retraction of a premature canonicalization claim within this file as a further directly-observable instance of the corpus's real-time self-correction discipline."
+anchor_test:
+  anchor: "0917's ten required corrections and named gap register; 0912's Σ_min derivation and missingness exclusion; the escalating Σ-representation inconsistency (0912, 0915, 0917); 0906's internal two-version self-correction precedent"
+  supports_dimension: "Fully resolves all ten of 0917's corrections with precise formal content. Directly re-engages, without resolving, 0912's missingness-exclusion question via the explicit three-option Σ-placement analysis. Further escalates the Σ-representation inconsistency to a fourth variant. Directly parallels 0906's self-correction precedent via its own explicit retraction of a premature canonicalization"
+  refines_or_contradicts: "fully resolves 0917's corrections; re-engages (without resolving) 0912's missingness-exclusion question; escalates the Σ-representation inconsistency; parallels 0906's self-correction precedent"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§281.7's explicit distinguishability matrix, with M7/M4 marked 'NO' for all three candidates, is directly checkable evidence for the orphan-is-a-distinct-problem finding."
+  - "§281.10's explicit statement ('placement in Σ remains a design decision until minimality is demonstrated') is directly checkable evidence of the file's disciplined refusal to prematurely commit to any of the three Σ-placement options."
+  - "The opening sentence ('I should not have selected the typed-Σ repair as canonical before completing the candidate comparison') is directly checkable evidence of an explicit, self-acknowledged retraction of a prior overclaim."
+undefined_concepts: []
+open_questions:
+  - "Whether 'STEP 281 EXECUTION,' this file's own review-designated next artifact, is ever encountered with concrete candidate selection and E4-R1 through E4-R7 results."
+  - "Whether the now four-way Σ-representation inconsistency is ever explicitly noticed and reconciled anywhere later in the corpus."
+  - "Whether the Σ-placement question (Σ-A/Σ-B/Σ-C) is ever formally resolved."
+tier2_triggered: true
+tier2_reason: "Delivers a genuinely reusable formal minimality criterion generalizing the K/Σ minimality methodology, a disciplined Orphan/Epistemic-State separation with a three-way sub-typology, an explicit refusal to prematurely resolve the Σ-placement question, and an explicit, self-acknowledged retraction of a prior overclaim. Escalates the tracked Σ-representation inconsistency to a fourth variant. Classified importance critical and tier2-triggered; confidence medium reflecting the continued absence of concrete execution results."

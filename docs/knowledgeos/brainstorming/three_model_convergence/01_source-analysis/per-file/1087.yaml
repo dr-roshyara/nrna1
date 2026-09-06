@@ -1,0 +1,98 @@
+sequence: 1087
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/10_recommendation-and-next-act.md
+title: "10 -- Next Legitimate Act (Step 291 mandate SSSS10,17,24,25): THE STEP-291 CLOSING CAPSTONE -- Definitively Resolves File 1086's Flagged #21, CORRECTING File 1072's 'N-4 Is the Unambiguous Single Root' to 'N-4 Is the Highest-Leverage Independent Root Among SEVEN', Self-Catches a Conflation Between Two Senses of 'Earlier' §10 Explicitly Warned Against, Declares STOP-B+STOP-D, and Delivers the Programme's Required Minimal Honest Final Statement About O/T"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the tenth and final numbered Step-291 prose artifact, the closing capstone of the entire package"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1087
+importance: critical
+confidence: high
+about: >
+  "10 — Next Legitimate Act (mandate §§10, 17, 24, 25)." The closing capstone of the Step-291 package,
+  directly resolving the open question this reconstruction flagged from file 1086's item #21.
+
+  **DEFINITIVELY MEASURES AND EXPLAINS THE DOWNGRADE OF FILE 1072'S ALREADY-TRACKED CAPSTONE CLAIM ("N-4 is
+  the unambiguous single root")**: measures SEVEN source nodes (in-degree 0, all resolvable by a decision) in
+  the dependency graph: "`O  Qualify  assertion  evidence  id_context  policy  temporal` <- SEVEN." Measures
+  leverage (nodes reachable) for each: `O` reaches 20, `id_context` reaches 17, `policy` reaches 16,
+  `evidence` reaches 2, `Qualify`/`temporal`/`assertion` each reach 1. Boxed: "'N-4 is THE earliest legitimate
+  act' → NOT ESTABLISHED. DOWNGRADED. 'N-4 is the highest-LEVERAGE independent root' → supported by
+  measurement." Delivers the precise correction: "`𝒪` is A source node, not THE source node. Six others have
+  no incoming edge either." This is the definitive resolution this reconstruction flagged as pending from
+  file 1086: file 1072's already-tracked capstone finding is CORRECTED, not simply reaffirmed -- `N-4`
+  remains the single HIGHEST-LEVERAGE root among seven independent, equally-legitimate candidate first acts.
+
+  **DELIVERS A GENUINELY IMPORTANT SELF-CAUGHT METHODOLOGICAL CONFLATION**: tests all five meanings of
+  "earlier" the mandate's §10 requires be kept separate (upstream-in-dependency-graph; prerequisite-for-
+  derivation; prerequisite-for-governance; prerequisite-for-implementation; prerequisite-for-canonicalization)
+  against `N-4`, finding meanings 4 (implementation) and 5 (canonicalization) DISAGREE: canonicalization needs
+  `evidence` (`38.85`), "a SEPARATE root," while implementation needs operations. Boxed: "Meanings 4 and 5
+  disagree. THEY WERE BEING CONFLATED. (That is exactly what §10 warned against, and I HAD DONE IT.)" This is
+  a genuinely valuable, explicit self-catch of exactly the kind of conflation the mandate anticipated and
+  warned against -- directly analogous to the already-tracked `259.7`/`259.8` near-miss (file 1078).
+
+  **DELIVERS THE §17 COMPETING-FIRST-ACTS TABLE**: `N-4` (mandatory-membership rule, node `O`, leverage 20,
+  independent, unblocked); `N-8` (define "identity context", node `id_context`, leverage 17, independent,
+  unblocked); `N-13` (canonicalization/evidence policy, node `evidence`, leverage 2, independent, unblocked);
+  policy semantics (node `policy`, leverage 16, independent, unblocked); `N-3` (`𝒪_K`'s extension, BLOCKED by
+  `N-4`); `N-1′` (ratify `261.21`'s candidate, BLOCKED by `N-3`←`N-4`, already-tracked chain, file 1072).
+  Reconfirms the already-tracked file-1085 finding that the four documentary items "require no decision at
+  all... can be repaired NOW, by nobody's authority."
+
+  **DECLARES THE FORMAL STOP CONDITION**: "STOP-B, with a STOP-D qualification." STOP-B: "a precise normative
+  boundary is identified: mandatory membership of `𝒪`/`𝒯`, and no derivation crosses it (8 routes tested,
+  already-tracked file 1085)." STOP-D: "a new dependency DOES INVALIDATE the assumption that `N-4` is THE
+  earliest act: seven independent roots exist, and meanings 4 and 5 of 'earlier' disagree" -- an explicit,
+  disciplined acknowledgment that this file's own findings invalidate a prior assumption from within the same
+  package (file 1072, technically a Step-290 finding this Step-291 file itself measures against and corrects).
+
+  **DELIVERS THE §25 REQUIRED FINAL STATEMENT -- THE SMALLEST HONEST CLAIM ABOUT `𝒪`/`𝒯` SUPPORTED BY
+  EVIDENCE**: "The corpus supplies a five-kind classification of operations, typed signatures for eight of the
+  twenty-two it names, and a subset relation `𝒯⊆𝒪`. It supplies no rule saying which operations are
+  MANDATORY, and no operation has a semantic body, an identity, or a ratification. Nothing more can be
+  claimed." Explicitly disciplined negative scope: "it does not say `𝒪` is open, closed, minimal, complete, or
+  derivable; it does not name a member; it does not say the classification is right. It is the LARGEST
+  statement the evidence supports and NO LARGER." This closes the entire equiv_K/O/T/O_K research arc (files
+  1052, 1063-1087) with its most disciplined, minimal, and defensible summary statement.
+introduces:
+  - concept: "The definitive resolution and correction of file 1072's 'N-4 is the unambiguous single root' capstone claim: N-4 is A source node with the highest leverage among SEVEN independent source nodes, not the unique root"
+  - concept: "The self-caught conflation between meaning-4 (implementation prerequisite) and meaning-5 (canonicalization prerequisite) senses of 'earlier', which the mandate's §10 explicitly warned against and which this file admits having committed"
+  - concept: "The formal STOP-B+STOP-D declaration: a precise normative boundary is identified (mandatory operation membership) while a new dependency invalidates a prior assumption from within the same research arc"
+  - concept: "The §25 required minimal honest final statement about O/T, explicitly bounded to what the evidence supports and no larger"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked file-1072 capstone claim that N-4 is the unambiguous single root of the equality/kernel governance surface"
+    refinement: "CORRECTED: measurement reveals SEVEN independent source nodes (O, Qualify, assertion, evidence, id_context, policy, temporal); N-4/O remains the highest-leverage root (reaches 20 nodes) but is not uniquely THE earliest legitimate act -- the correction traces to a self-caught conflation between the implementation-prerequisite and canonicalization-prerequisite senses of 'earlier'"
+  - concept: "This reconstruction's already-tracked file-1086 flagged open question about item #21's N-4 downgrade"
+    refinement: "FULLY RESOLVED: the downgrade is confirmed and precisely explained via the seven-source-node measurement and the meanings-4-vs-5 conflation diagnosis"
+contradicts:
+  - concept: "This reconstruction's own already-tracked characterization of file 1072's finding as an unqualified capstone (\"the surface's single root is now unambiguously N-4\")"
+    contradicted_by: "This file's explicit correction: N-4 is the highest-leverage root among seven independent roots, not the unique earliest act, per a self-caught conflation of two distinct senses of 'earlier'"
+repeats:
+  - "Reconfirms the already-tracked eight-route derivation-blocked finding (file 1085) and the four-documentary-items-need-no-decision finding (file 1085)."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the definitive correction to the N-4-single-root claim (seven independent source nodes measured, N-4 the highest-leverage but not unique), the self-caught meanings-4-vs-5 conflation, the formal STOP-B+STOP-D declaration, and the §25 minimal honest final statement about O/T closing the entire equiv_K/O/T/O_K research arc."
+anchor_test:
+  anchor: "This reconstruction's already-tracked file-1072 capstone claim (N-4 the unambiguous single root) and the file-1086 flagged open question about item #21"
+  supports_dimension: "Definitively resolves and corrects the prior capstone claim via a precise seven-source-node measurement and a self-caught conflation diagnosis"
+  refines_or_contradicts: "directly contradicts (corrects) the prior tracked capstone finding; fully resolves the flagged open question"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The seven-source-node measurement and leverage counts are directly checkable against file 1082's already-read 29-node, 44-edge dependency graph for exact structural verification."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers the definitive closing capstone of the Step-291 package, resolving this reconstruction's own flagged open question (file 1086's item #21) by correcting file 1072's prior capstone claim via a precise seven-source-node measurement and a self-caught conflation between two senses of 'earlier' that the mandate explicitly warned against. Also delivers the formal STOP-B+STOP-D declaration and the required minimal honest final statement about O/T, closing the entire equiv_K/O/T/O_K research arc spanning files 1052 and 1063-1087. Classified importance critical and confidence high given the definitive, self-correcting, and directly connective nature of this closure."

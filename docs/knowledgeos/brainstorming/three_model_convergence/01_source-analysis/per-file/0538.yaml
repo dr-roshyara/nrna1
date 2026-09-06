@@ -1,0 +1,125 @@
+sequence: 538
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-134514_next-experiment-four-evidence-algebras.md
+title: "LANDMARK: Tri-Role Discipline (Mathematician+Statistician+DDD-Architect) Adopted; Calibration Introduced as a Genuine Statistical Test (Probability≠Confidence Score); Bayesian Conditional-Independence Assumption Shown to Produce Severe Overconfidence on Real Dependency Chains; Conflict Promoted to Its Own DDD Bounded Context; Ten Adversarial Stress Cases Proposed for a Formal Evidence-Calculus Test Report"
+date: "2026-08-27"
+bytes: 8115
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly continues 0537's proposed four-candidate-algebra experiment, adding statistical rigor (calibration, conditional-independence critique) not previously present in the corpus's Evidence-theory arc"
+source_role: PRIMARY_RESEARCH
+canonical_source: 538
+importance: critical
+confidence: high
+about: >
+  Opens adopting an explicit tri-role discipline for all subsequent Evidence-theory work: Senior
+  mathematician (algebraic structure, invariants, proofs, counterexamples), Senior statistician
+  (uncertainty, dependence, sampling assumptions, calibration, likelihood, robustness), and Senior DDD
+  architect (bounded contexts, aggregates, invariants, policies, events, implementation boundaries) --
+  "We do not choose mathematics because it looks useful. We test candidate mathematics against the
+  semantics and invariants of KnowledgeOS."
+
+  **Delivers an important correction to the prior experiment's framing**: the four candidates (Max,
+  Weighted Mean, Saturating combination, Bayesian Updating) should not all be called "evidence algebras" in
+  the same sense -- they actually span THREE distinct layers: Layer 1 Evidence representation
+  (`e=(P,π,ρ,κ,τ,δ,...)`), Layer 2 Evidence aggregation (`⊕_ρ`), Layer 3 Inference
+  (`Γ⊢_ρP` or `P(H|E)`), crystallized as `Aggregation≠Inference` -- "Bayesian inference is not merely an
+  alternative 'score formula.' It is a much richer inferential framework."
+
+  **Delivers a consolidated ten-item test-criteria list (A-J)**: Duplicate invariance; Independent
+  corroboration; Order invariance (commutativity); Associativity (critical since evidence may arrive
+  continuously); Contradiction preservation (the output can never be a single `Score(P)=0.73`, it must
+  retain `Support(P)` and `Support(¬P)` separately); Dependency awareness (an LLM restatement of an
+  observation is not independent of it); Irrelevance (zero-relevance evidence must not materially
+  strengthen P); Temporal validity (`Stale evidence≠nonexistent evidence`, it remains historically
+  valuable); Context dependence; Policy dependence.
+
+  **Delivers a genuinely new, rigorously statistical property not previously present in the corpus**:
+  Calibration -- if a system states `P(H)=0.9`, then among all cases it classifies near 0.9, approximately
+  90% should actually satisfy H, if the number is genuinely intended as a calibrated probability; otherwise
+  "0.9 is merely a number pretending to be probability," crystallized as `Probability≠Confidence Score` --
+  explicitly given as one reason the corpus should not casually convert KnowledgeOS's epistemic states into
+  probabilities.
+
+  **Delivers a second major statistical critique**: Bayesian multiplication commonly assumes conditional
+  independence (`P(E_1,E_2|H)=P(E_1|H)P(E_2|H)`), but a realistic evidence chain (Database->LLM->Report->
+  Human presentation) is NOT four independent observations -- it is a linear dependency chain
+  `E_1->E_2->E_3->E_4` -- so treating them as independent "can produce severe overconfidence," directly
+  validating the corpus's decision (0532/0534/0536/0537) to make the dependency graph a first-class
+  KnowledgeOS concept rather than an afterthought.
+
+  **Delivers a refined, four-bounded-context DDD structure**, extending the corpus's prior three-context
+  models: Evidence bounded context (Evidence, Observation, Provenance, Dependency, Polarity,
+  EvidenceQuality, EvidenceAssessment); a NEWLY PROMOTED, independent Conflict bounded context (Conflict,
+  ConflictRule, ConflictStatus, ResolutionReference -- previously folded into Evidence or Reasoning, now
+  given its own explicit responsibility); Reasoning bounded context (InferenceRule, InferencePolicy,
+  Inference, Conclusion); Knowledge State bounded context (Assertion, KnowledgeState, StateTransition,
+  Coherence). Delivers three explicit ownership invariants: `Evidence does not own Truth`,
+  `LLM does not own Truth`, `Inference does not own Evidence`.
+
+  **Delivers an explicitly-labeled HYPOTHESIS (not a conclusion)**: a predictive table estimating how the
+  four candidate algebras will likely perform on Duplicate/Corroboration/Dependency/Contradiction/
+  Probability-semantics properties, explicitly stated to require actual experimental confirmation rather
+  than being accepted on the strength of the prediction alone -- sound epistemic discipline mirrored in the
+  file's own methodology.
+
+  **States the architectural conclusion the corpus is converging toward**: a full pipeline
+  `RawInputs->Observations->Evidence->EvidenceGraph->Assessment->Inference->Conclusion`, alongside
+  `KnowledgeState<->IdealState<->Discrepancy` and the established `Zero->Detect`, `Lord->Expand`,
+  `Sārathi->Navigate` triad, reaffirming "The LLM is therefore not the epistemic foundation. It is one
+  possible producer/transformer of observations and candidate propositions."
+
+  **Closes proposing ten explicit adversarial stress cases** for the next experiment (100 copies of the
+  same document; 100 LLMs reading the same document; 10 genuinely independent measurements; 5 contradictory
+  authoritative sources; stale plus current evidence; highly reliable but irrelevant evidence; weak but
+  independent evidence; evidence chains; missing provenance; deliberately misleading evidence), aimed at
+  producing "a KnowledgeOS Evidence Calculus Test Report" with a Pass/Fail/Conditional verdict for every
+  mathematical law -- explicitly framed as determining "what belongs in the KnowledgeOS kernel, what
+  belongs in a policy, and what must remain an optional statistical inference mechanism."
+introduces:
+  - concept: "An explicit tri-role research discipline (Senior mathematician + Senior statistician + Senior DDD architect) adopted for all subsequent Evidence-theory work, with the governing rule that mathematics must be tested against KnowledgeOS's semantics, never chosen for apparent usefulness alone"
+  - concept: "A sharpened three-layer distinction (Evidence representation / Evidence aggregation / Inference), with Aggregation≠Inference explicitly separating formula-choice from full inferential-framework-choice"
+  - concept: "Calibration as a genuine statistical test property: a stated probability should match observed frequency among similarly-scored cases, or it is 'merely a number pretending to be probability' (Probability≠Confidence Score)"
+  - concept: "A concrete critique of the Bayesian conditional-independence assumption on realistic evidence chains, showing that treating a linear dependency chain (Database->LLM->Report->Human presentation) as four independent observations can produce severe overconfidence"
+  - concept: "Conflict promoted to its own independent DDD bounded context (Conflict, ConflictRule, ConflictStatus, ResolutionReference), distinct from both Evidence and Reasoning"
+  - concept: "Three explicit ownership invariants: Evidence does not own Truth; LLM does not own Truth; Inference does not own Evidence"
+  - concept: "Ten explicit adversarial stress-test scenarios proposed for the next experiment, aimed at producing a formal Pass/Fail/Conditional Evidence Calculus Test Report per mathematical law"
+defines:
+  - concept: "Calibration"
+    definition: "A stated probability P(H)=p is calibrated if, among all cases the system classifies at approximately p, approximately p-fraction actually satisfy H; an uncalibrated number is 'merely a number pretending to be probability'"
+refines:
+  - concept: "0537's proposed four-candidate-algebra comparison and the corpus's evolving Evidence/Assessment/Reasoning bounded-context split"
+    refinement: "Adds explicit statistical rigor criteria (calibration, conditional-independence critique) not previously present, and splits the DDD structure into four bounded contexts by promoting Conflict to its own independent context"
+  - concept: "0532/0534/0536/0537's recurring evidence-dependency-graph mechanism"
+    refinement: "Given a concrete statistical justification via the conditional-independence critique — a realistic Database->LLM->Report->Human chain is a linear dependency, and treating it as independent evidence produces severe overconfidence, directly motivating the dependency graph's first-class status"
+  - concept: "0533's Evidence axioms and the corpus's general Support≠Truth discipline"
+    refinement: "Extended with the explicit Probability≠Confidence Score distinction grounded in calibration, sharpening why the corpus resists casually converting epistemic states into numerical probabilities"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether the proposed ten adversarial stress-test scenarios are executed against the four candidate algebras in a subsequent corpus file, producing the named 'KnowledgeOS Evidence Calculus Test Report'"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the tri-role research discipline, the sharpened Aggregation≠Inference three-layer distinction, and the ten consolidated evidence-assessment test criteria (A-J)."
+  - "dimension-registry.md: record Calibration (Probability≠Confidence Score) as a new statistical test property, and the conditional-independence critique showing realistic evidence chains can produce severe overconfidence if treated as independent."
+  - "dimension-registry.md: record the refined four-bounded-context DDD structure (Evidence/Conflict/Reasoning/Knowledge State, with Conflict newly promoted to its own context), the three ownership invariants, and the ten proposed adversarial stress-test scenarios for the next experiment."
+anchor_test:
+  anchor: "0537's four-candidate-algebra experiment proposal and Ordering≠Combination≠Inference distinction; 0532/0534/0536's dependency-graph mechanism; 0533's Support≠Truth discipline"
+  supports_dimension: "LANDMARK methodological deepening of the corpus's Evidence Assessment research: adopts a tri-role (mathematician/statistician/DDD-architect) discipline, introduces Calibration as a rigorous statistical test distinguishing genuine probability from mere confidence scoring, delivers a concrete conditional-independence critique showing realistic evidence chains produce severe overconfidence if naively treated as independent, promotes Conflict to its own DDD bounded context, and proposes ten concrete adversarial stress-test scenarios to formally settle what belongs in the KnowledgeOS kernel versus a pluggable policy versus an optional statistical mechanism"
+  refines_or_contradicts: "directly extends 0537's proposed four-candidate experiment with genuine statistical rigor (calibration, independence critique) not previously present; refines the corpus's evolving DDD bounded-context structure by promoting Conflict independently; reinforces the corpus's Support≠Truth discipline via the Probability≠Confidence Score distinction; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The Database->LLM->Report->Human-presentation dependency-chain example, explicitly reused from earlier files but now given a concrete statistical justification (conditional-independence violation causing severe overconfidence under naive Bayesian aggregation), demonstrates a genuine cross-disciplinary (mathematics+statistics) strengthening of an argument the corpus had previously made only qualitatively."
+undefined_concepts: []
+open_questions:
+  - "Whether the ten proposed adversarial stress-test scenarios are executed against the four candidate algebras (Max, Weighted Mean, Saturating combination, Bayesian) in a subsequent corpus file, producing the named formal test report"
+  - "Whether the hypothesis table's predictions (about which algebras will pass/fail which properties) are confirmed or refuted by that eventual experiment"
+tier2_triggered: true
+tier2_reason: "LANDMARK methodological deepening delivering the corpus's first explicit adoption of a formal tri-role (mathematician/statistician/DDD-architect) research discipline for Evidence theory, introducing Calibration as a genuinely new and rigorous statistical test property (Probability≠Confidence Score) not previously present anywhere in the corpus, and a concrete conditional-independence critique demonstrating that realistic evidence dependency chains produce severe overconfidence under naive Bayesian treatment — directly and quantitatively justifying the corpus's recurring dependency-graph mechanism for the first time on statistical rather than purely conceptual grounds. Also promotes Conflict to its own independent DDD bounded context and proposes ten concrete, specific adversarial stress-test scenarios as the next step toward a formal, verdict-bearing Evidence Calculus Test Report."

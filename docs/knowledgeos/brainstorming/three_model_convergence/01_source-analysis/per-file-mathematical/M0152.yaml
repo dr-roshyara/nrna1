@@ -1,0 +1,107 @@
+sequence: M0152
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180018_review-book-as-a-whole.md
+title: "Review of Shieber (epistemology textbook): the Basing relation and epistemic process reliability"
+date: "20260902-180018"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: EXTERNAL_LITERATURE
+  secondary_note: >
+    A whole-book review of a Shieber epistemology textbook (24-lecture structure covering
+    foundationalism/coherentism, internalism/externalism, perception, memory, testimony, social
+    epistemology, skepticism) — a fourth/further major external epistemology source in this
+    sub-thread, NOT the adjudication of M0151 (Levesque&Lakemeyer) that was flagged as an open
+    bridge_candidate there; that bridge_candidate remains unresolved. This document itself references
+    a prior reading chain "Plato → Davidson → Williamson → Gödel → Description Logic → and now
+    Shieber" — naming two further sources (Plato, Davidson) not otherwise located in this
+    reconstruction's read order.
+source_role: PRIMARY
+canonical_source: M0152
+importance: critical
+confidence: high
+about: >
+  Introduces the "Basing relation" as a candidate missing middle layer between Evidence and
+  Determination — Evidence→Basing→Process→Determination, with Reliability(Process,Environment,
+  Context) as an explicit, environment-relative evaluable property — argued to be one of the
+  highest-value missing pieces in KnowledgeOS theory, alongside a strengthened epistemic-lineage
+  model of Provenance and a descriptive/normative process distinction directly relevant to AI-
+  generated determinations.
+introduces:
+  - "The Basing relation: Base(e,d|Γ) — 'determination d is epistemically based on evidence e under context Γ', later refined to Basing=(E,P,D,Γ,Π) (evidence set, process, determination, context, provenance) — distinguishing Evidence exists ≠ Evidence supports proposition ≠ Determination was actually based on evidence ≠ Determination was produced by a reliable process"
+  - "Explicit Epistemic Process category: Process:Evidence→Determination, with P=(type,implementation,inputs,outputs,environment,provenance) and Reliable(P,Γ) as an environment-relative evaluable property — Reliable(P,Γ1) ⇏ Reliable(P,Γ2) — illustrated by the stopped-clock case (apparently good evidence + accidentally true conclusion ≠ knowledge, because the producing process is unreliable in that environment)"
+  - "DeterminationAdequacy = Evidence + Basing + Process + Context — a candidate four-dimensional decomposition, explicitly 'not an equation of values, but distinct dimensions an evaluator may inspect'"
+  - "Strengthened Provenance via EpistemicLineage: Source→Acquisition→Evidence→Process→Determination, distinguishing 'ordinary provenance' (where an artifact came from) from 'epistemic provenance' (why a determination exists, what evidence originally supported it, which process transformed it) — with the explicit consequence Accessible(e,t)=False ⇏ PreviouslySupported(d,e)=False (the 'forgotten evidence' problem)"
+  - "Descriptive vs. normative epistemic layers: ObservedProcess≠NormativelyAcceptedProcess, ObservedDetermination≠AcceptedDetermination — explicitly applied to AI systems: 'retrieval→LLM synthesis→unsupported assumption→answer' is a descriptive fact whose epistemic acceptability is a separate normative/governance question; 'we must never infer epistemic validity merely from the fact that a process successfully produced an output'"
+  - "Generate ≠ Preserve ≠ Transform as a candidate operation classification for δ research, mapped to Observation(generative)/Memory-retrieval(preservative)/Inference-Reconciliation(transformational)/Verification(evaluative)"
+  - "Zero/accessibility strengthening: NoEvidence ≠ EvidenceUnavailable ≠ EvidenceForgotten ≠ EvidenceOfAbsence — a four-way split extending (not identical to) Williamson's three-way Unknown classification (M0147) and Gödel's system-relative Unknown_S (M0150)"
+  - "Three-level evidence chain: Source→Process→Evidence, with SourceSystem(e)=S and Reliability(S,Γ) — treating Evidence as produced by a system/process rather than an atomic thing with intrinsic quality"
+  - "EpistemicProcess ⊄ InternalState (an Extended-Mind-style architectural point, explicitly NOT adopting 'Extended Mind' as a thesis): 'epistemic process boundaries cannot be assumed to coincide with the boundary of the agent' — directly relevant to AI+retrieval+database+verifier chains, which should be preserved as distinct components rather than collapsed into one 'knower'"
+  - "Distributed epistemic processes (social externalism): EpistemicProcess = IndividualProcess ∪ DistributedProcess, with Reliability(P,Γ) potentially a property of a network rather than an individual source — DistributedProcess=(Nodes,Edges,Roles,Transformations,Controls), explicitly a research candidate, not a primitive"
+  - "Source-monitoring failure lesson: Presentation≠Reliability, AuthorityCue≠EvidenceQuality, Confidence≠Truth — reinforcing the existing Evidence/Authority/Provenance/Determination/Verification separation with an argument for machine-readable source lineage over human memory of provenance"
+  - "SourceReliability(s,Γ) ≠ EvidenceStanding(e) ≠ DeterminationStanding — a highly reliable source can give bad evidence on a particular question, and vice versa"
+  - "InformationEffect(δ) classification candidate: preservative/deductive-extractive/inductive-expansive/reconstructive/evaluative — from the deduction-extracts/induction-extends distinction, explicitly NOT proposed as 'Deduction vs Induction' primitives but as a general operator-property research dimension for δ"
+  - "KnowledgeStanding ≠ Assurance, CanAssertKnowledge ≠ HasKnowledge — from the skepticism discussion, explicitly noted as 'extraordinarily compatible with our recent R1 decision' (factivity retained externally, Verification separate)"
+  - "Explicit negative results: pragmatic encroachment (Knowledge should not derive from Risk/Stake(Γ)) and contextualism (context should not automatically redefine Standing/truth) both EXPLICITLY REJECTED by the source itself as inadequate solutions — preserved instead as KnowledgeStanding≠DecisionThreshold with DecisionThreshold=f(Knowledge,Risk,Authority,Purpose)"
+  - "Candidate SEVEN-factor evaluation representation: EVal=(Standing,Boundary,Reliability,Accessibility,Context,Provenance,Assurance) — a THIRD proposed extension to the frozen four-factor FDE representation (after M0147's fifth-factor Accessibility proposal and M0150's sixth-factor DerivabilityStatus proposal), explicitly 'not adopted... the research target exposed by Shieber'"
+  - "Recommended research artifact KR-SHIEBER-2026-09 — Basing, Process Reliability and Epistemic Lineage, with five sub-experiments: S1 (Basing, testing whether it is a distinct required relation), S2 (Process Reliability, six named process types P1-P6 with identical conclusions but different processes), S3 (Epistemic Lineage / forgotten-evidence formalization), S4 (Assurance vs. Standing, four comparison cases), S5 (Distributed vs. Individual Process)"
+  - "Revised critical path: Evidence→Basing→Process→Reliability→Evaluation→Standing/Boundary→Contr/Zero→Determination→Assurance→Decision→δ, with Provenance/Context/Time/Authority orthogonal"
+defines: []
+refines:
+  - "The Evidence→Determination link (long-implicit in this corpus's pipeline): explicitly identified as 'too coarse', refined into Evidence --Basing--> Process --Execution--> Determination, with Reliability(Process,Γ) evaluated independently — the Basing relation is presented as THE single highest-value missing piece uncovered in this reconstruction's entire external-literature sub-thread by the document's own closing assessment"
+  - "The corpus's own R1 factivity decision (K_t→A_t, Verification separate, M0110-M0112): given independent philosophical grounding via KnowledgeStanding≠Assurance/CanAssertKnowledge≠HasKnowledge, explicitly flagged by the document as 'extraordinarily compatible'"
+  - "The already-tracked FDE finding that contradiction should trigger examination rather than automatic invalidity (KR-CONTR research, M0116-M0127): given independent corroboration via the 'surprising evidence should not simply be dismissed... Conflict→Reassessment→Revision, not Conflict→False' argument — explicitly noted by the document as 'already consistent with our FDE research', i.e. this document (unlike M0146/M0147) shows correct awareness that FDE/Contr research is ongoing and established, NOT treating it as a not-yet-started item"
+  - "The three proposed evaluation-factor extensions now form a recognizable pattern across independent sources: M0147 (Accessibility, 5th factor), M0150 (DerivabilityStatus, 6th factor), this document (Reliability + Assurance, up to a 7-factor candidate) — none adopted, all explicitly flagged research targets, but the frozen four-factor FDE representation (Standing×Boundary×Context×Provenance, M0137) is under sustained, repeated pressure toward expansion across three independent external-literature encounters"
+contradicts: []
+repeats:
+  - "The rejection-table discipline (§24): explicitly rejects Knowledge=JTB, Externalism=KnowledgeOS-ontology, Coherence=Knowledge, Context→different-truth, Bayes=kernel, Social-network=Knowledge, Know-how=Proposition — same structure as M0138/M0142/M0145/M0147/M0150"
+bridge_candidates:
+  - "M0151's own flagged bridge_candidate (an adjudication review of the Levesque&Lakemeyer Only-Knowing extraction) remains UNRESOLVED — this document is not that review, it is an entirely separate source"
+  - "Two further unlocated sources are named in this document's own closing lineage: Plato and Davidson — neither located anywhere in this reconstruction's read order as extracted/reviewed documents"
+  - "Whether KR-SHIEBER-2026-09 and its five sub-experiments (S1-S5) were ever executed — not yet located"
+  - "Whether the now three-times-independently-proposed evaluation-factor expansion (Accessibility/DerivabilityStatus/Reliability+Assurance) is ever consolidated into a single tested candidate representation, rather than three separate untested proposals"
+mathematical_content: >
+  Introduces Base(e,d|Γ) and Basing=(E,P,D,Γ,Π) as candidate relational structures, Reliable(P,Γ) as
+  an environment-indexed predicate, DeterminationAdequacy and EVal as candidate n-ary factor tuples,
+  and D_t=Determine(E_t,B_t,P_t,Γ_t,Π_t) as a candidate determination function — all explicitly
+  framed as research targets/hypotheses, not derivations or adopted definitions.
+gita_content: null
+kernel_content: >
+  Argues the Basing relation is "now one of the highest-value missing pieces in the KnowledgeOS
+  theory" and gives the corpus's AI-generated-claims discipline (LLM confidence≠Knowledge, tracked
+  since Williamson/M0147) its sharpest concrete grounding yet via the descriptive/normative process
+  distinction, directly naming the retrieval→LLM-synthesis→unsupported-assumption→answer pipeline as
+  a case requiring separate normative acceptability judgment.
+registry_updates:
+  - "Tenth instance of the cross-domain external-literature corroboration pattern — the first to introduce a genuinely new relational primitive (Basing) rather than only corroborating or narrowing existing constructs"
+  - "Names Plato and Davidson as two further unlocated external sources read in this same lineage, expanding the known-but-unlocated-source list (alongside Reiter/Situation-Calculus from M0145 and the still-open Levesque&Lakemeyer adjudication)"
+  - "Identifies the three-times-independently-proposed evaluation-factor expansion pattern (Accessibility/DerivabilityStatus/Reliability+Assurance) as a recognizable structural feature of this KR-integration sub-thread, worth reconciling at the eventual global-reclassification pass"
+  - "Correctly shows awareness that FDE/Contr research is ongoing and established (unlike the desynchronized M0146/M0147), treating 'Conflict→Reassessment' as already consistent with existing FDE findings rather than a not-yet-started item"
+anchor_test:
+  anchor: true
+  supports_dimension: "Basing relation (new), Process/Reliability, epistemic lineage/Provenance, descriptive/normative process distinction (AI-generated claims), third evaluation-factor-expansion proposal, Assurance≠Standing (R1 corroboration)"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Shieber gives us a missing middle layer: Evidence --Basing/Process--> Determination --Evaluation--> Standing\" — the document's own central finding"
+  - "\"We must never infer epistemic validity merely from the fact that a process successfully produced an output.\" — the descriptive/normative principle, directly applicable to LLM-generated determinations"
+  - "\"I think this is now one of the highest-value missing pieces in the KnowledgeOS theory.\" — the document's own closing assessment of the Basing relation"
+  - "\"Conflict → Reassessment → Revision, rather than Conflict → False... that is already consistent with our FDE research.\" — correct cross-thread awareness, contrasting with M0146/M0147's desynchronization"
+undefined_concepts:
+  - "The exact formal criterion for Reliable(P,Γ) — left as an evaluable property with no proposed decision procedure"
+  - "How Basing=(E,P,D,Γ,Π) relates formally to the corpus's own already-tracked Evaluation=Status×TypedBoundary factorization (M0137) — not addressed, left as an open research question"
+open_questions:
+  - "Were the Plato and Davidson sources named in this document's own lineage ever located/processed elsewhere in this reconstruction's sequence?"
+  - "Is there ever a formal reconciliation of the three independently-proposed evaluation-factor expansions (Accessibility, DerivabilityStatus, Reliability+Assurance) into one tested candidate?"
+  - "Was KR-SHIEBER-2026-09 (S1-S5) ever executed?"
+tier2_triggered: true
+tier2_reason: >
+  Introduces the Basing relation — argued by the document itself to be one of the highest-value
+  missing theoretical pieces found in this entire sub-thread — plus a strengthened epistemic-lineage
+  provenance model directly relevant to AI-generated-claims discipline, and identifies a recognizable
+  cross-source pattern (three independent proposed expansions to the frozen evaluation representation)
+  while also naming two further unlocated external sources (Plato, Davidson).

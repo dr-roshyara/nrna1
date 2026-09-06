@@ -1,0 +1,83 @@
+sequence: M0004
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-163238_do-not-trigger-consolidation-proliferation-is-itself-a-finding.md
+title: "Do Not Trigger Consolidation — Proliferation Itself Is a Finding: the Six-Way Relationship Taxonomy and the phi_ij Representation-Equivalence Framing of R_DDD(K_t)~R_Gita(K_t)~R_math(K_t), a Near-Exact Statement of THIS Reconstruction's Own Convergence Question"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: x
+  secondary: b
+  secondary_note: "a KR-SIM lane methodology/steering document (not itself new object-level math) that explicitly poses the cross-model convergence question -- R_DDD(K_t) ~ R_Gita(K_t) ~ R_math(K_t), requiring demonstrable structural equivalence rather than resemblance -- in terms directly parallel to this reconstruction's own three-model-convergence mandate; classified primary x (cross_model) for that reason, secondary b since it arises from and instructs the mathematical/DDD-engineering lane specifically"
+source_role: BRIDGE
+canonical_source: M0004
+importance: high
+confidence: high
+about: >
+  A steering/methodology document (advice to "tell Claude" how to continue the KR-SIM lane's own
+  internal reading pass at its checkpoint 0098), arguing explicitly AGAINST premature consolidation:
+  "the proliferation itself is now becoming a research finding, rather than a problem to immediately
+  repair." At this point the lane's OWN internal corpus has already reshaped its anchor eight times
+  and produced nine unreconciled candidate-ID schemes, with canonical kernel status still "not yet
+  established" and maturity <=3 -- explicitly framed as "exactly what we should expect during
+  discovery," not evidence of failure.
+
+  **DELIVERS A SIX-WAY RELATIONSHIP TAXONOMY** for classifying any new candidate against existing
+  ones, more granular than this reconstruction's own introduces/defines/refines/contradicts/repeats
+  fields: (1) New concept (genuinely new semantic entity); (2) New representation (same candidate,
+  different expression); (3) New decomposition (same candidate, different components); (4)
+  Refinement (existing concept, added semantics); (5) Genuine contradiction (cannot both hold); (6)
+  **Unresolved equivalence** (two formulations MIGHT be the same thing, equivalence not yet
+  established) -- explicitly instructed to be recorded as its own relationship type
+  (`type: unresolved_equivalence`, `equivalence_status: unproven`) RATHER THAN merging into a new
+  canonical concept. "Never merge candidate IDs merely because they appear semantically related."
+
+  **DELIVERS THE phi_ij TRANSFORMATION-EQUIVALENCE FRAMING**: given competing representations
+  R_1(K),...,R_n(K) of a candidate kernel K, ask whether there exists a structure-preserving
+  transformation phi_ij: R_i -> R_j such that phi_ij(R_i(K)) ≅ R_j(K); if so, the different "kernels"
+  are not competing theories but different coordinate systems / representations of ONE underlying
+  structure -- explicitly framed as "a much more powerful result than simply selecting the best six
+  dimensions."
+
+  **DELIVERS THE EXPLICIT CROSS-MODEL CONVERGENCE STATEMENT**: K_t in a space 𝒦 with candidate
+  representations R_DDD(K_t), R_Gita(K_t), R_math(K_t), and potentially R_engineering(K_t); "the
+  convergence question becomes R_DDD(K_t) ~ R_Gita(K_t) ~ R_math(K_t), where '~' must eventually mean
+  demonstrable structural equivalence or a precisely bounded correspondence, NOT 'sounds similar.'"
+  This is, almost verbatim, THIS RECONSTRUCTION'S OWN stated mandate (three-model convergence,
+  circular-validation forbidden, resemblance != identity) -- delivered from inside the KR-SIM lane's
+  own methodology, independently, on 2026-09-01, i.e. before or concurrently with this reconstruction
+  project's own formation. A strong bridge candidate: the SAME convergence question, independently
+  and precisely formulated, from a different vantage point within the same overall research effort.
+introduces:
+  - concept: "Six-way relationship taxonomy for candidate classification: new concept / new representation / new decomposition / refinement / genuine contradiction / unresolved equivalence"
+  - concept: "phi_ij: R_i -> R_j structure-preserving transformation between competing kernel representations, with phi_ij(R_i(K)) cong R_j(K) as the criterion for 'different coordinate systems of one structure' rather than competing theories"
+  - concept: "The explicit cross-model convergence statement R_DDD(K_t) ~ R_Gita(K_t) ~ R_math(K_t) ~ R_engineering(K_t), with '~' required to mean demonstrable structural equivalence, not resemblance"
+defines: []
+refines:
+  - concept: "Reframes 'proliferation of candidate kernel shapes / unreconciled ID schemes' from a problem requiring immediate consolidation into a research finding to be analyzed on its own terms -- a methodological refinement of how to treat the lane's own registry growth"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "R_DDD(K_t) ~ R_Gita(K_t) ~ R_math(K_t) ~ R_engineering(K_t), with '~' meaning demonstrable structural equivalence rather than resemblance -- a near-exact independent restatement of this reconstruction's own three-model-convergence mandate and its anti-circular-validation, anti-resemblance-as-identity discipline, arising from within the KR-SIM lane itself."
+  - "The unresolved_equivalence relationship type as a candidate missing dimension in this reconstruction's own per-file relationship vocabulary (introduces/defines/refines/contradicts/repeats) -- worth considering for the eventual global-reclassification pass (MD-004), since several cross-model correspondences already tracked in the main registry (e.g. G-108 Kernel_engineering!=Kernel_epistemic) are exactly this kind of not-yet-proven-equivalent-or-distinct relationship."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0004 as a strong bridge-candidate document, independently formulating this reconstruction's own three-model convergence question (R_DDD~R_Gita~R_math, structural equivalence not resemblance) from inside the KR-SIM lane, plus a six-way relationship taxonomy including 'unresolved_equivalence' as a distinct category worth considering for MD-004 global reclassification."
+anchor_test:
+  anchor: "This reconstruction's own three-model-convergence mandate and its 'resemblance != identity, no circular validation' discipline"
+  supports_dimension: "Independently and near-verbatim restates the same convergence question and the same anti-resemblance discipline, from inside the KR-SIM lane's own methodology"
+  refines_or_contradicts: "neither -- independent convergence on the research question itself, not a shared answer"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'the convergence question becomes R_DDD(K_t) ~ R_Gita(K_t) ~ R_math(K_t)... where \"~\" must eventually mean demonstrable structural equivalence or a precisely bounded correspondence, not \"sounds similar\"' -- an independent, near-verbatim statement of this reconstruction's own founding mandate and its central methodological safeguard."
+undefined_concepts:
+  - "The precise formal definition of phi_ij and the notion of 'preserving relevant structure' (cong) -- proposed as a research direction, not yet formalized in this document"
+open_questions:
+  - "Whether this reconstruction's own eventual global-reclassification pass (MD-004) should adopt 'unresolved_equivalence' as a formal relationship type alongside introduces/defines/refines/contradicts/repeats, particularly for cross-model correspondences already flagged as open (e.g. G-108, 'Path B')."
+tier2_triggered: true
+tier2_reason: "Delivers a near-exact independent restatement of this reconstruction's own three-model convergence mandate and anti-resemblance discipline, plus a genuinely useful six-way relationship taxonomy (especially 'unresolved_equivalence') not currently present in this reconstruction's own per-file schema -- both flagged as strong candidates for the upcoming global-reclassification scoping."

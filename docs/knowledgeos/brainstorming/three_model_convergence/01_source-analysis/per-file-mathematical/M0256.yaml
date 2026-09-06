@@ -1,0 +1,87 @@
+sequence: M0256
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-111000_theory-02-the-three-question-separation.md
+title: "Theory 02 — The Three-Question Separation: explicitly declared 'the load-bearing result of the programme' — final [EXP]-tagged (deliberately not [THM]) statement that Eliminability/Preservation/Realization are three distinct, non-implying questions, with a FOURTH bridge experiment (KR-BRIDGE-03, previously unrecorded in this pass, run at 13× the informative strata of BRIDGE-02) still not refuting H1, a new explicit [DEFECT] finding that the original KR-REP-REDUCTION design could never exhibit the Preservation-does-not-give-Realization separation, a logical-rigor point that 3.3 is NOT a corollary of 3.1+3.2, and a new testable [CONJ] (Realization⟹Adequacy) with an explicit refutation condition"
+date: "20260904-111000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0256
+importance: critical
+confidence: high
+about: >
+  Document 02 of the new 15-document consolidated theory series (M0255), explicitly self-declared
+  as "the load-bearing result of the programme." Delivers the final, rigorously epistemic-status-
+  tagged statement of the corpus's central finding — that Eliminability (Zero), Preservation
+  (Adequacy), and Realization are three genuinely distinct, non-implying questions — with a
+  business-language translation, the full experimental evidence chain for each of the three
+  pairwise non-implications (including a fourth, previously unrecorded bridge experiment,
+  KR-BRIDGE-03), a new explicit design-defect acknowledgment about the original KR-REP-REDUCTION
+  experiment, a logical-rigor clarification about corollary status, decision-relevant consequences
+  for implementation, and a new testable conjecture about ordering among the three predicates.
+introduces:
+  - "The final consolidated statement, deliberately kept [EXP] not [THM]: Zero_{T,Π}(S;D) ≠ Adequate(T,Q) ≠ Realized(T,Q,O) as three genuinely distinct questions — 'we have no proof that these must differ in general. We have demonstration that they do differ in every system tested, by independent mechanisms. Promoting this to a theorem would require proving the separations are necessary — which nobody has done, and which the epistemic-status rule exists to prevent us from doing by accident'"
+  - "A business-language translation using a concrete customer record (Customer=Müller, Order=€1,000, Channel=Online, Time=10:42, Internal ID=847291) and the question 'which channel generated the highest revenue?': Eliminability asks can I drop the timestamp without changing what I observe; Preservation asks is the channel-revenue answer still determined by what remains; Realization asks can the downstream report actually compute it from what remains — 'a system which answers one and assumes the others is wrong in a way that is invisible until it matters'"
+  - "The full evidence chain for §3.1 (Eliminability does NOT predict Preservation), now including a FOURTH bridge experiment not previously recorded in this pass: KR-REP-REDUCTION H-RR2 (Zero rate 0.0377 at the R5→R4 crossing vs. 0.0426 at the non-crossing R4→R3 — 'not distinguishable'; Zero vanishes entirely at R3); KR-BRIDGE-01 (marginal RD=-0.363, fully accounted for by redundancy as a common cause); KR-BRIDGE-02 (H1 not refuted; the one substantial candidate was an artifact of shared reads); and NEW — KR-BRIDGE-03 (5Π×5Q×7T design, gated, run at '13× the informative strata' of BRIDGE-02: 'H1 not refuted; surviving cells 14→1, substantive 0' — the negative result is 'stable under a 13-fold increase in power, which is the strongest form this evidence can currently take')"
+  - "A new explicit self-critical [DEFECT] finding about the original KR-REP-REDUCTION design (M0219): 'the design failed to operationalize' the Preservation-does-not-give-Realization separation — its transformation chain never dropped a record or a source, so the constraint C could never fail, and the only adequate level had F=1.0000 — 'the separation is real; that experiment could not exhibit it. Recorded as a design defect rather than as evidence against the separation'"
+  - "A logical-rigor clarification for §3.3 (Eliminability does NOT give Realization): explicitly NOT labeled [COR] (corollary), since 'not implied via A and not implied via B' is not a valid derivation — instead separately observed via construction: Zero is defined by Π, which is read-disjoint from Q BY CONSTRUCTION, so 'Zero carries no information about Q's recoverability by design' — 'we built them to be independent, and then verified the independence held'"
+  - "A decision-relevant consequences table for practical implementation failure modes: conflating Eliminability with Preservation → deleting fields that were 'safe to remove' and losing the answer; conflating Preservation with Realization → certifying a representation as adequate that the consumer cannot read; conflating Eliminability with Realization → both failures, silently — 'the three predicates need three separate gates in any implementation. Document 12 places those gates in the DDD model' — confirming Document 12 of the series exists and connects this apparatus to a DDD model"
+  - "A new testable [CONJ]: Realization ⟹ Adequacy — 'if a fixed decoder recovers Q from R, then R determines Q on the realized cases' — with an explicit refutation condition given but NOT yet tested: a case where O(T(D))=Q(D) holds on every observed case while the fiber is Q-heterogeneous, i.e. the decoder is right by luck"
+  - "Two remaining explicit [OPEN] items closing the document: whether the three separations must hold in general or only in the tested carriers (the [EXP]-to-[THM] gap); and whether the separations survive a non-synthetic carrier ('the central transfer problem')"
+defines: []
+refines:
+  - "The corpus's established Zero/Adequacy/Realization apparatus (M0219, M0229, M0232-M0233): consolidates all prior evidence into a single final [EXP]-tagged statement, adds the previously-unrecorded fourth bridge experiment (KR-BRIDGE-03) as further corroboration, and retroactively re-labels the original KR-REP-REDUCTION experiment's inability to exhibit the Preservation/Realization separation as an acknowledged [DEFECT] rather than counter-evidence"
+contradicts: []
+repeats:
+  - "The already-recorded KR-BRIDGE-01/02 statistics (M0229/M0233): restated here as part of the consolidated evidence table for §3.1"
+bridge_candidates:
+  - "KR-BRIDGE-03 (5Π×5Q×7T, 13× the informative strata of BRIDGE-02): a previously unrecorded fourth bridge experiment in this pass — whether its full protocol/writeup exists elsewhere in the corpus and was processed at an earlier sequence position, or whether it is introduced here for the first time"
+  - "Whether the new [CONJ] Realization⟹Adequacy was ever tested, given its explicit refutation condition"
+  - "Whether Document 12 (the DDD model placing the three gates) exists in this corpus and was processed, confirming the internal cross-reference"
+mathematical_content: >
+  A final, rigorously status-tagged statement of the three-question separation (Zero≠Adequacy≠
+  Realization) with a complete evidence chain including a fourth, higher-power bridge experiment
+  (KR-BRIDGE-03); an explicit design-defect acknowledgment distinguishing "separation not exhibited"
+  from "separation refuted"; a logical-rigor clarification against a fallacious corollary
+  derivation; and a new testable conjecture (Realization⟹Adequacy) with an explicit refutation
+  condition.
+gita_content: null
+kernel_content: >
+  Consolidates the theoretical apparatus (Zero/Adequacy/Realization) that any future Kernel
+  candidate must respect, connecting it explicitly to a DDD gating model in Document 12 of the same
+  series.
+registry_updates:
+  - "Final [EXP]-tagged Three-Question Separation statement, self-declared the programme's load-bearing result"
+  - "KR-BRIDGE-03 — a fourth bridge experiment (13× BRIDGE-02's informative strata), H1 still not refuted, surviving cells 14→1, substantive 0"
+  - "New [DEFECT] finding: the original KR-REP-REDUCTION design could never exhibit the Preservation/Realization separation (constraint C could never fail; F=1.0000 at the only adequate level)"
+  - "Logical-rigor clarification: §3.3 is NOT a corollary of §3.1+§3.2"
+  - "New [CONJ]: Realization⟹Adequacy, with an explicit untested refutation condition"
+  - "Decision-relevant implementation-failure table; confirmed cross-reference to Document 12's DDD gating model"
+anchor_test:
+  anchor: true
+  supports_dimension: "Final load-bearing three-question-separation statement; fourth bridge experiment KR-BRIDGE-03; new design-defect finding on KR-REP-REDUCTION; logical-rigor non-corollary clarification; new testable Realization⟹Adequacy conjecture"
+  refines_or_contradicts: "refines (consolidates and extends the corpus's Zero/Adequacy/Realization apparatus with a fourth experiment and a design-defect acknowledgment)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Status is [EXP], deliberately, and not [THM]... which the epistemic-status rule exists to prevent us from doing by accident.\""
+  - "\"KR-BRIDGE-03... H1 not refuted; surviving cells 14 → 1, substantive 0.\""
+  - "\"The separation is real; that experiment could not exhibit it. Recorded as a design defect rather than as evidence against the separation.\""
+  - "\"'Not implied via A and not implied via B' is not a derivation... we built them to be independent, and then verified the independence held.\""
+undefined_concepts: []
+open_questions:
+  - "Does KR-BRIDGE-03's full protocol/writeup exist elsewhere in the corpus?"
+  - "Was the new Realization⟹Adequacy conjecture ever tested?"
+  - "Does Document 12 (DDD gating model) exist in this corpus?"
+tier2_triggered: true
+tier2_reason: >
+  Self-declared "the load-bearing result of the programme" — the final, most rigorously tagged
+  statement of the corpus's central Zero/Adequacy/Realization separation finding, extended with a
+  previously unrecorded fourth bridge experiment (KR-BRIDGE-03), a new design-defect
+  acknowledgment, a logical-rigor clarification, and a new testable conjecture.

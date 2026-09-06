@@ -1,0 +1,45 @@
+sequence: 352
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260825-215434_knowledge-is-probably-not-the-kernel-object-duplicate.md
+title: "Duplicate of 0351 (filename self-declares 'duplicate')"
+date: "2026-08-25"
+bytes: 28333
+model:
+  primary: c1
+  secondary: null
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 351
+importance: low
+confidence: high
+about: >
+  Byte-for-byte duplicate of this reconstruction's own file 0351 (Knowledge Is Probably Not the Kernel
+  Object), confirmed via diff (zero-line difference). Filename self-declares '-duplicate'. The 14th
+  verified duplicate instance in this reconstruction's running count, a post-0342-census arrival.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Full content of 0351 (Knowledge Is Probably Not the Kernel Object, externally-sourced literature pass)"
+    canonical_source: 351
+    novelty: none
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this as the 14th duplicate instance."
+anchor_test:
+  anchor: "0351 (canonical source)"
+  supports_dimension: "No new content"
+  refines_or_contradicts: "none -- exact duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Confirmed byte-identical duplicate of 0351 via diff; filename self-declares 'duplicate'."

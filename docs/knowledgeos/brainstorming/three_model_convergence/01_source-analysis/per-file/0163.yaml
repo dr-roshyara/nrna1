@@ -1,0 +1,110 @@
+sequence: "0163"
+path: docs/knowledgeos/brainstorming/00_INDEX.md
+title: "Corpus governance INDEX: independent authoritative confirmation of the P4/AH-5/OQ-4 gate status, the 'frozen classifier' admitted-register system, AI-authorship provenance, and 0145/0146/0162's findings -- not itself research content"
+date: "2026-08-21 through 2026-08-23 (multi-batch)"
+bytes: 18000
+model:
+  primary: c1
+  secondary: []
+source_role: META
+canonical_source: null
+importance: critical
+confidence: high
+about: >
+  The source corpus's own provenance/intake-governance index (not research content). Documents four
+  human-commissioned rename/classification batches (2026-08-21 through 2026-08-23) covering 117 files,
+  with a "frozen classifier" system routing every lens-bearing file to an already-admitted "character"
+  section rather than creating new register rows (register size stated as "25+4"). Provides exceptionally
+  valuable independent cross-checks on this reconstruction's own findings: confirms the P4/OQ-4/AH-5
+  governance-gate status exactly as this reconstruction has tracked it (all still unresolved as of
+  2026-08-23); reveals two out-of-scope governed artifacts (an Independent DDD Critique record and a
+  Kernel-thread Reading Report) containing a formal "20-point drift catalogue"; confirms 0145/0146 are
+  explicitly retained as falsification counterexamples, never candidate architecture, exactly matching
+  this reconstruction's own contemporaneous treatment; confirms 0162's topological-lens non-admission
+  finding in the source's own words; and resolves two of this reconstruction's own "unconfirmed AI
+  attribution" flags (0152=Perplexity, plus DeepSeek/Kimi attributions) directly from original
+  pre-rename filenames.
+
+introduces:
+  - "Independent confirmation of governance-gate status matching this reconstruction's tracking exactly:
+    'register 25+4 unchanged, P4 gate unchanged, OQ-4 still UNAUTHORIZED, AH-5 still deferred' as of
+    2026-08-23 -- strong outside corroboration of the accuracy of this reconstruction's own ⚑ WATCH
+    MARKER tracking (P4 first flagged 0105/0106)"
+  - "Reveals two governed, out-of-scope (per this reconstruction's own §29 gate) artifacts: the
+    'Independent DDD Critique' record and the 'Kernel Thread Reading Report,' the latter containing a
+    formal 20-point 'drift catalogue' (C-1 through C-19+) cross-referenced against specific brainstorming
+    files -- a valuable forward-reference this reconstruction will not itself read, but whose existence
+    and gist are now on record"
+  - "0145 and 0146 explicitly confirmed by the source's OWN governance as falsification counterexamples
+    ('god-Kernel proposal,' 'most flagrant drift') never candidate architecture -- independently matching
+    this reconstruction's contemporaneous critical treatment of both files (0146's evidence-weighting
+    scheme flagged and later rejected at 0147)"
+  - "Confirms 0162's topological-lens non-admission finding in the source's own words: 'used analytically
+    throughout the critique but is not an admitted research family -- the file says so itself'"
+  - "Resolves two prior 'unconfirmed AI attribution' open questions from this reconstruction's own
+    records: 0152's original pre-rename filename literally began '# perplexity_...' (Perplexity
+    confirmed by provenance record, not merely inferred from in-text content); DeepSeek/Kimi attributions
+    for 0153/0155/0156/0158 likewise confirmed from original filenames"
+  - "Reveals the 'frozen classifier' / admitted-character-section governance system underlying the
+    entire 0080-0143 philosophical-extraction stretch: every lens-bearing file was intake-routed to an
+    already-admitted register entry, never creating a new row -- confirms from the source's own side the
+    consolidation-phase restraint pattern this reconstruction independently observed and flagged
+    throughout (first ~0108-0119)"
+  - "Scope clarification (not a contradiction): the INDEX's '117 files' count refers to a specific
+    rename/intake-tracking population across four human commissions, distinct from and much smaller than
+    the ~1,155-file primary corpus this reconstruction's own resume.py tracks across the full project
+    timeline"
+
+defines: []
+
+refines:
+  - "Independently corroborates (does not extend the substance of) this reconstruction's own tracking of
+    0105/0134/0140/0142/0143/0144-0162's governance-gate observations and the god-Kernel critique of
+    0145/0146"
+
+contradicts: []
+
+repeats: []
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+registry_updates:
+  - "Ledger Entry 51 added: comprehensive documentation of the INDEX's confirmations, the two
+    out-of-scope governed artifacts it reveals, and the resolved AI-attribution open questions"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; a governance/provenance document independently corroborating this reconstruction's own tracking, not itself a research finding."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "The single strongest piece of independent corroboration this reconstruction has encountered for its
+    own methodology and findings across ~80 files: the source's own governance apparatus confirms the
+    same gate statuses, the same falsification-vs-candidate distinction for 0145/0146, and the same
+    non-admission of the topological lens, arrived at through an entirely separate (human-directed,
+    formally governed) process rather than this reconstruction's own file-by-file reading"
+  - "META classification: this file is a provenance/curation record, not primary research content --
+    logged as source_role META, consistent with the one prior META instance in the corpus"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the two out-of-scope governed artifacts referenced here (Independent DDD Critique record,
+    Kernel Thread Reading Report) would, if read, materially change any of this reconstruction's own
+    findings -- they remain out of scope per §29 and are not read here, but their existence is now on
+    record for any future scope-authorization decision"
+
+tier2_triggered: true
+tier2_reason: >
+  The strongest independent corroboration of this reconstruction's own methodology and findings
+  encountered so far, plus resolution of two open AI-attribution questions and revelation of the
+  source's own governance apparatus underlying the entire corpus.

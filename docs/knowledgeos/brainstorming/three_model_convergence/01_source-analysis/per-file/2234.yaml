@@ -1,0 +1,158 @@
+sequence: 2234
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-222300_step_288_reviewer-b-step-288-equality-reconciliation-execution-mandate-post-287-baseline.md
+title: "Reviewer-B Step 288 Equality-Reconciliation EXECUTION Mandate (Post-287 Baseline) -- THE LITERAL SOURCE ALREADY CITED BY NAME IN THE ALREADY-TRACKED REFINED-STEP-288.md v3 (file 1088): the 28-Section Corrected Prompt That Produced the '12 Claims Corrected' Audit Outcome"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "reviewer-B commentary + the literal Step-288 execution/research prompt it recommends running against the corrected Step 287, distinct from file 2232's earlier 34-section 'REFINED STEP 288' mandate -- this is the specific 28-section prompt already cited by name (with its exact filename) in the already-tracked REFINED-STEP-288.md v3 (file 1088)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2234
+importance: critical
+confidence: high
+about: >
+  Reviewer-B's recommended "Step 288 execution/research prompt," explicitly built to correct the earlier
+  Step-288 v2 draft in light of the Step-287 corrections. This is the literal document already cited by
+  filename in the already-tracked REFINED-STEP-288.md v3 (file 1088: "Mandate: prompts/20260831-222300_
+  step_288_reviewer-b-...-execution-mandate-post-287-baseline.md -- 28 sections, and its §0 said 'do not
+  assume the existing Step-288 draft is correct; treat it as a candidate research plan that must itself be
+  audited.' It was audited: 12 claims corrected, each with BEFORE/AFTER/REASON/EVIDENCE/PROPAGATION.")
+
+  Reviewer-B's framing (before the prompt): Step 288 "should not simply 'solve equality.' It must first
+  reconcile the corpus's equality registers and determine exactly which parts are technically derivable
+  versus normatively decidable." The existing Step-288 v2 draft "is actually pointing in the right
+  direction," but should NOT be executed unchanged: it "must explicitly prevent another Σ→K level jump and
+  must treat Step 261 as a governing dependency rather than something it can silently supersede."
+
+  The 28-section prompt body (§0-§28) requires: §0 read-first list (287, Step 261 §261.19/261.23/261.27,
+  Steps 246/258/259/260/264/265/266/271, plus a corpus-wide search list of 26 terms including ≡/≈/≅/≡_D)
+  and explicitly states "Do not assume the existing Step-288 draft is correct. Treat it as a candidate
+  research plan that must itself be audited." §1 CENTRAL QUESTION reconstructs a ten-level dependency chain
+  (Identity→state equality→semantic equality→observational relation→provenance-sensitive relation→quotient/
+  canonicalization→operation congruence→δ semantics→kernel sufficiency→canonical kernel selection), marking
+  unestablished arrows OPEN/QUALIFY/NORMATIVE/TECHNICALLY OPEN. §2 HARD CORRECTION FROM STEP 287 states the
+  binding rule "Σ-order ≠ K-order" and "NEVER infer a K-order from a Σ-order," listing 14 things K may
+  depend on that Σ does not capture (content, provenance, history, assertions, governance, policy, events,
+  observations, state, deletion/retraction, contradiction resolution, lineage, identity, operations). §3
+  requires a canonical equality-register reconciliation table distinguishing at minimum A. structural state
+  equality, B. semantic state equality, C. observational equivalence, D. provenance-sensitive equivalence,
+  E. value/dimension equality, F. any additional registers (Steps 012, 025i, 025s, 038, 195, 258-261) --
+  explicitly NOT to select one prematurely but to determine whether they are genuinely different relations,
+  different descriptions of one relation, relations at different levels, incompatible definitions, or
+  overloaded notation. §4 LEVEL DISCIPLINE (mandatory) lists 11 levels (L-value...L-system/behaviour) and
+  requires every promotion between levels to be classified VALID/INVALID/CONDITIONAL/UNPROVEN. §5 IDENTITY
+  FIRST requires 12 questions per identified object (stability, immutability, version-as-identity, scope,
+  merge/transformation/retraction survival, semantic-vs-referential, collision model, canonicalization,
+  decision procedure) and specifically flags id=H(P,e,c,t,Π) as NOT to be silently promoted from candidate
+  construction to established definition. §6 DECISION 3 (Π ∈ ≡?) requires BOTH branches analyzed without
+  recommending either. §7 OBSERVATIONAL EQUIVALENCE requires formally verifying ≈_X (32 candidate
+  projections over Σ=(A,S,R,V,C)) is an equivalence relation (expected PASS as pullback of equality) while
+  explicitly forbidding promoting ≈_X-on-Σ into ≈-on-K. §8 distinguishes label/projection equivalence from
+  behavioural equivalence, forbidding importing process-algebra machinery as architecture and requiring
+  "BLOCKED BY δ / OPERATION SEMANTICS" where behavioural equivalence needs undefined δ. §9 investigates
+  ≅_λ ("relevant" provenance), distinguishing relevance PRINCIPLE from relevance PREDICATE -- if no
+  computable predicate exists, ≅_λ remains technically open. §10 CONGRUENCE (separate axis) investigates
+  K₁≡K₂ ⇒ δ(K₁,o)≡δ(K₂,o) for relevant operations, asking whether equality is operation-relative rather
+  than universal. §11 PER-OPERATION EQUALITY BINDINGS requires a matrix over Deduplicate/Merge/Retract/
+  Supersede/Validate/Replay/Authorize/Policy-evaluation/Publish/Apply/Verify, explicitly not assuming this
+  operation set is closed (tying to Step 261's operation-closure condition). §12 DEDUPLICATION requires
+  counterexamples distinguishing structural/semantic/provenance/observational/operational (in)equality.
+  §13 CANONICALIZATION/QUOTIENT investigates q:K→K/≡, noting mathematical equivalence ≠ implementable
+  canonicalization. §14 HASH/FOLD/STRUCTURAL IDENTITY forbids treating H(x)=H(y) as semantic-equality proof
+  absent established assumptions. §15 requires distinguishing TRUE/FALSE from TRUE/FALSE/UNKNOWN/
+  UNDECIDABLE result domains and "decidable relation" from "procedure that always returns a decision." §16
+  STEP 261 GATE (must be preserved) requires re-evaluating every 261 kernel-closure condition in a table
+  (condition/status/evidence/does-288-resolve-it/remaining-dependency) -- "If any condition remains open,
+  kernel selection remains open. Step 288 must consume Step 261, not silently override it." §17 defines the
+  five-way closure vocabulary (ESTABLISHED/BOUNDED/NORMATIVE/TECHNICALLY OPEN/BLOCKED) with three explicit
+  forbidden conversions: "not established"→"impossible", "available"→"established", "candidate"→
+  "canonical". §18 lists 13 REQUIRED NEGATIVE RESULTS to actively falsify (one universal equality relation;
+  semantic equality already fully specified; observational equivalence already defined at K level; ≈_X IS
+  the corpus's ≈; Σ-order implies K-order; structural equality is a congruence; hash identity is semantic
+  identity; finite-sample output equality proves equality; provenance relevance is already executable;
+  Decision 3 alone closes equality; the 32 projections close observational equivalence; Step 288 can close
+  kernel selection independent of Step 261; equality closure automatically produces an implementable
+  kernel). §19 requires 10 formal mathematical tests A-J (≈_X reflexivity/symmetry/transitivity, projection
+  containment, duplicate/degenerate projections, structural-equality properties, congruence conditions,
+  hash/fold limitations, finite-sample counterexamples, safe composition) under exec/. §20 GOVERNANCE
+  BOUNDARY forbids Step 288 from choosing Π∈≡ vs Π∉≡, a final X, a final ≈/≅_λ predicate, final Deduplicate
+  equality, final operation/equality bindings, final ID policy, final K identity/order/kernel-state --
+  instead requiring a normative decision register (DECISION ID/QUESTION/FORMALLY CONSISTENT OPTIONS/
+  TECHNICAL CONSEQUENCES/GOVERNANCE CONSEQUENCES/CURRENT STATUS/AUTHORITY). §21 requires the full 11-level
+  dependency graph and explicitly investigates whether "equality → δ → congruence → equality" forms a
+  genuine cycle, requiring the correct bootstrap boundary rather than assumption-based resolution. §22
+  REQUIRED OUTPUT ARTIFACTS lists exactly 9 numbered documents plus REFINED-STEP-288.md and exec/ --
+  matching this reconstruction's already-tracked D288-artifact family. §23 CHANGE CONTROL requires source-
+  first repair with BEFORE/AFTER/REASON/EVIDENCE/PROPAGATION IMPACT for every correction -- precisely the
+  discipline already tracked as having caught "the F5 problem." §24 REQUIRED STATUS BLOCK adds DEFERRED to
+  the five-way vocabulary and forbids using "CLOSED" globally. §25 STEP 288 CLOSURE CRITERION lists 12
+  conditions that must ALL be satisfied before equality can close -- "If ANY condition fails: equality
+  remains OPEN. Do not force closure." §26 FINAL REQUIRED CONCLUSION requires answering four separate
+  questions (ESTABLISHED/BOUNDED/TECHNICALLY OPEN/does 261's stop-gate remain active), with the explicit
+  default-expected conclusion pre-stated: "Step 288 closes some equality subproblems and sharply bounds the
+  remaining decision space, but does not close the equality contract unless every closure criterion is
+  actually satisfied." §27 ABSOLUTE PROHIBITIONS lists 15 forbidden moves (invent missing equality relation/
+  observation set/K-order from Σ; equate ≈_X with corpus ≈; equate mathematical with implementable
+  equivalence; infer semantic from structural/hash equality; infer congruence from equality; infer equality
+  from finite-sample outputs; choose governance branches; silently import external theory as architecture;
+  promote philosophical correspondence into technical requirement; declare K_t operationally equivalent to
+  (𝒜,ℛ); declare (𝒜,ℛ) the kernel; declare Step 261 superseded; declare kernel closed merely because
+  terminology is cleaner). §28 EXECUTION DISCIPLINE lists 11 phases A-K (corpus reconstruction through final
+  closure assessment), each phase ending with one of the six status labels, closing with the FINAL RULE:
+  "The objective is not to make Step 288 look complete. The objective is to discover exactly what the
+  corpus can legitimately support... The strongest acceptable result is a precisely bounded OPEN problem.
+  The weakest unacceptable result is a premature 'CLOSED' created by terminology."
+
+  Reviewer-B's closing commentary (after the prompt) states the key improvements this version makes over
+  the earlier v2 draft: prevents the Σ→K order error recurring; treats ≈_X as a bounded candidate
+  construction, not the corpus's ≈; separates identity/equality/congruence/operational semantics; makes
+  Step 261 a hard dependency/gate; prevents normative choices being smuggled in as technical conclusions;
+  distinguishes "procedure exists" from "procedure decides"; forces source-first propagation audit
+  (explicitly credited with catching "the F5 problem"); gives Step 288 explicit permission to conclude
+  "still open." Notes the v2 draft "appears to have discovered that the corpus has five non-identical
+  equality registers, including definitional conflicts between ≡ and ≈," making register reconciliation
+  "the first substantive task of 288, not a side section," and records the negative boundary already known
+  before execution: "no reconciled register, no ≡ procedure, no provenance predicate, no quotient map, no
+  proven congruence, no closed operation set, and no K-order."
+introduces:
+  - concept: "The literal 28-section Step-288 execution/research mandate already cited by exact filename and section-count in the already-tracked REFINED-STEP-288.md v3 (file 1088) -- this reconstruction now holds the primary source that produced the '12 claims corrected' audit outcome"
+  - concept: "A distinct 28-section prompt from file 2232's earlier 34-section 'REFINED STEP 288' mandate -- two independently-numbered mandate documents both feeding the same Step-288 arc, an editorial-lineage fact worth tracking"
+  - concept: "The explicit pre-stated default-expected conclusion (§26) that Step 288 should close some subproblems but not the full equality contract -- matching, almost verbatim, the eventual tracked outcome of the arc"
+defines:
+  - concept: "Level discipline vocabulary: L-value, L-assertion, L-entity/object, L-state, L-history, L-operation, L-event, L-policy, L-observation, L-provenance, L-system/behaviour (§4), with VALID/INVALID/CONDITIONAL/UNPROVEN promotion classification"
+  - concept: "The five/six-way (later seven with DEFERRED) closure vocabulary: ESTABLISHED/BOUNDED/NORMATIVE/TECHNICALLY OPEN/BLOCKED/DEFERRED (§17, §24), with three explicit forbidden conversions"
+refines:
+  - concept: "This reconstruction's already-tracked REFINED-STEP-288.md v3 (file 1088), which cites this exact document by filename and describes its outcome ('12 claims corrected, each with BEFORE/AFTER/REASON/EVIDENCE/PROPAGATION')"
+    refinement: "GROUNDED at its literal primary source -- this record now traces the already-known outcome back to the exact 28-section instrument that produced it"
+  - concept: "This reconstruction's already-tracked Step-261 stop-gate discipline and the Σ-order≠K-order correction (files 1037-1039, 1041, 1052, 1071, 1084)"
+    refinement: "TRACED to one of its explicit, deliberately-engineered sources: this prompt's §2 and §16 exist specifically to prevent recurrence of the errors those files document"
+contradicts: []
+repeats:
+  - "Substantial overlap in aims and constraints with file 2232's earlier 34-section 'REFINED STEP 288' mandate (both target the same equality-decision-procedure closure programme with similar discipline lists), though the two documents are not byte-identical and each has independent structural detail (seven-level completeness scale and two-engineer test appear in 2232; the ten-level dependency chain, 26-term search list, and 13-item negative-results list appear here)."
+bridge_candidates:
+  - "Whether the already-tracked REFINED-STEP-288.md v3's '12 claims corrected' table can be checked section-by-section against this prompt's specific requirements (e.g. §2 Σ/K-order, §16 Step-261 gate table, §18 negative results) for exact traceability -- not required by the standing research protocol but would strengthen the already-established connective finding if directly encountered again."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as the literal primary source of the already-tracked REFINED-STEP-288.md v3 execution mandate, distinct from file 2232's separate 34-section mandate, and note the striking pre-stated default-expected conclusion (§26) that closely anticipates the arc's eventual tracked outcome."
+anchor_test:
+  anchor: "This reconstruction's already-tracked REFINED-STEP-288.md v3 (file 1088) and its '12 claims corrected' audit outcome"
+  supports_dimension: "Grounds the already-tracked outcome at its literal generating instrument, confirming the outcome was produced by a deliberately over-disciplined 28-section mandate designed in direct response to the Step-287 correction"
+  refines_or_contradicts: "refines (grounds at primary source)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "§0's exact sentence 'Do not assume the existing Step-288 draft is correct. Treat it as a candidate research plan that must itself be audited' matches, near-verbatim, the already-tracked citation in file 1088."
+  - "This prompt has exactly 28 top-level numbered sections (§0 through §28), matching the already-tracked '28 sections' citation in file 1088."
+undefined_concepts:
+  - "Whether 'the F5 problem' (referenced in reviewer-B's closing commentary as caught by the source-first propagation-audit discipline) is defined anywhere else in the corpus, or remains an informal shorthand specific to this reviewer's commentary."
+open_questions:
+  - "Whether the corpus, later in the sequential read, directly documents which specific document produced file 2232's separate 34-section mandate, and how the two independently-numbered Step-288 mandates (2232's 34-section version and this 28-section version) relate editorially -- e.g. whether one supersedes the other or both were merged into the eventually-tracked REFINED-STEP-288.md v3."
+tier2_triggered: true
+tier2_reason: "This is the literal primary source of an already-extensively-tracked downstream artifact (REFINED-STEP-288.md v3, file 1088), cited there by exact filename and section count; reading it directly grounds a previously second-hand citation at its origin and confirms the pre-stated default-expected conclusion closely anticipated the arc's actual eventual outcome. Classified importance critical and confidence high given the direct, exact, and previously-unverified connective grounding this provides."

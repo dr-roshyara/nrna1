@@ -1,0 +1,168 @@
+sequence: M0106
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-142901_copy-of-the-frozen-model-reference-duplicate.md
+title: "The Frozen Model -- Master Reference: A Comprehensive Programme-Wide Index Resolving Two of the Three Previously-Unverified Quantified Claims From M0099 (1,491/1,793 = 83% Unordered Progress Claims; 37/41 Unsupported Typed-Facet Distinctions), Confirming a Substantial, Actually-Executed, Reproducible Codebase Exists Under docs/knowledgeos/research/ (NOT Covered by This Reconstruction's Current mathematical_ideas_that_can_be_implemented/ Scope), Surfacing a Tension Between This Document's 'Established' Framing of 'Kernel Writes History, Never Reads' and M0098/M0099's Explicit Downgrade of the Same Claim to Conditional/Candidate Status, and Leaving M0102's Distinct 14-vs-12 Kernel-Count Figures Still Unreconciled Against the 13-vs-8 Figures This Document Confirms"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "despite its filename ending in 'duplicate,' this is confirmed PRIMARY (not checksum-flagged) per the manifest, and is in fact the single most information-dense reference document in this pass -- a formal, tabular master index of the entire KnowledgeOS v1.1/v1.2 research programme's status, artifacts, code modules, and result files, written explicitly 'as a reference, not a proposal'"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0106
+importance: critical
+confidence: high
+about: >
+  A formal, deliberately non-promotional master reference ("nothing here promotes anything")
+  consolidating the entire KnowledgeOS v1.1/v1.2 research programme. Opens with a precise
+  three-term glossary (BASELINE = the theory experiments run against, changed only by adjudicated
+  theoretical change; FROZEN = supervisory-review-closed in that form, e.g. FR-001; PROPOSED =
+  candidate, tested or not, not adopted), with the load-bearing discipline: "freezing is not
+  promotion... a frozen [NEG] stays [NEG]," and a frozen entry may be cited, superseded by an
+  explicit act, or reopened by naming new evidence, but never silently revised or re-litigated by
+  rerunning the same experiment.
+
+  **STATES THE v1.2 BASELINE'S FOUR CONSTITUTIVE MOVES AND CURRENT STATUS**: (1) a constitutional
+  four-layer separation (Philosophy -> Epistemic mathematics -> DDD -> Architecture) with an
+  explicit ban on the inference chain Gita-concept -> mathematical-concept -> primitive -> DDD-
+  object -> architecture; (2) an eleven-value epistemic status vocabulary (ESTABLISHED, DERIVED,
+  BOUNDED, HYPOTHESIS, INTERPRETATION, CORROBORATION, NORMATIVE, TECHNICALLY OPEN, DEFERRED,
+  REFUTED, UNKNOWN) applied to every claim; (3) reopening several v1.1 closures (Observation
+  reopened; Zero demoted from construct to candidate boundary-construct; E_t!=K_t demoted from
+  correction to research distinction; Buddhi and Sarathi become lenses, not domain objects); (4)
+  three-valued class-indexed satisfaction Sat: K x R -> {top,bottom,U} over eight requirement
+  classes. States v1.2's status after thirteen experiments: Theory = B (PARTIALLY EXECUTABLE);
+  Sat = SEMANTICALLY INCOHERENT under its own proposed model; Kernel = NOT SELECTABLE (explicitly
+  "not 'unfinished'"); Factivity = OPEN.
+
+  **PRESENTS FR-001 (M0103/M0104's KR-DIST FREEZE) IN ITS FULLY DETAILED, QUANTIFIED FORM**,
+  supplying the exact regime parameters and numbers only summarized elsewhere: Lambda=(m,sigma,
+  alpha)=(40,1.0,0.05), standard error 0.1581, resolution delta=0.3099, twelve hypotheses spaced at
+  0.9*delta, endpoint span 3.068 -- confirming the corpus's already-tracked non-transitivity
+  counterexample with its exact numeric construction. Adds a methodology catch not previously
+  recorded in this pass: "a direct search for a transitivity witness inside the equicorrelated
+  space found none -- there every pair has the same separation, so the relation is vacuously
+  transitive. Non-transitivity appears only where separations vary. A homogeneous test space
+  conceals the defect." Presents the full six-row packing-vs-measured-N_eff table with exact ratios
+  (0.98, 0.99, 1.06, 4.99, 111, 222), stating "packing matches redundancy to within 6% and fails on
+  coupling by up to 222x" -- confirming and sourcing M0104's "222x" figure precisely.
+
+  **RESOLVES TWO OF THE THREE PREVIOUSLY-UNVERIFIED QUANTIFIED CLAIMS FLAGGED IN M0099**: (1)
+  "83% of progress claims in the corpus specify no ordering -- 1,491 of 1,793" -- this is the exact
+  source and denominator for M0099's cited "1,491 claims unspecified," now fully sourced and
+  quantified (83% = 1491/1793). (2) "typed facet conditions -- only 2 of 11 facets need typing; 37
+  of 41 distinctions unsupported" -- this is the exact source and denominator for M0099's cited "37
+  distinctions unsupported," now fully sourced (37/41). NEITHER document explicitly cross-
+  references the other by name, but the numbers match exactly, confirming these are genuine,
+  traceable corpus statistics rather than unsupported assertions. (3) M0099's separate "13 and 8
+  are both minima under different algebras" figure is ALSO independently confirmed here --
+  "Minimality is representation-relative -- |K_min| = 13 and 8 under two algebras -- exhaustive
+  over 16,384 subsets" -- fully sourcing that figure too, with its exact search-space size.
+  HOWEVER, M0102's DISTINCT figures ("14 irreducible powers under one representation; 12
+  irreducible operators under another") appear NOWHERE in this master reference's kernel-
+  minimality entries, which cite only 13-and-8 -- leaving M0102's 14-vs-12 figures an unreconciled
+  outlier not corroborated by this otherwise comprehensive index, strengthening the case that
+  M0102's citation is either a garbled restatement of the 13-vs-8 result or refers to a genuinely
+  separate, otherwise-undocumented sub-experiment.
+
+  **SURFACES A TENSION WITH M0098/M0099's DOWNGRADE OF 'KERNEL NEVER READS HISTORY'**: this
+  document's Section 4.2 lists, among "load-bearing established results" (not merely proposed or
+  candidate), "the kernel writes history and never reads it -- 0 reads, 0 behavioural differences,
+  static" -- presented at the same evidentiary tier as the factivity-unsatisfiability and Zero-
+  chain-derivation results. This directly conflicts with M0098's explicit critique ("the evidence...
+  does not establish a theoretical law... retrospective epistemic revision may legitimately require
+  historical information") and M0099's resulting downgrade of this exact claim to Law L3 [PROP
+  Conditional]. Whether this document's Section 4.2 framing is a looser use of "established" (i.e.
+  established-as-a-measured-fact-about-the-current-implementation, not established-as-a-
+  theoretical-law) or a genuine unreconciled tension with M0098/M0099's explicit critique is left
+  for the eventual reclassification pass; both readings are plausible from the text, and this
+  document elsewhere (Part 4 heading) explicitly warns "frozen != established... none has been
+  adjudicated and closed, so all remain open to further work," which is consistent with the milder
+  reading.
+
+  **REVEALS A SIGNIFICANT CORPUS-SCOPE GAP**: Part 5 catalogs an extensive, ACTUALLYEXECUTED,
+  reproducible codebase and result-file tree located ENTIRELY OUTSIDE this reconstruction's current
+  mathematical_ideas_that_can_be_implemented/ scope, under docs/knowledgeos/research/: kernel-
+  reduction/ (22 files: 00-INDEX, 01-19, FINAL-kernel-reduction-report.md; 12 Python modules;
+  run_all.py; 13 JSON results), theory-v1.1-simulation/ (14 files: 00-INDEX, A-L, FINAL-VERDICT.md),
+  theory-v1.2-simulation/ (22 files: 00-INDEX, A-S, FINAL-VERDICT.md, including
+  S-frozen-results-register.md -- the canonical freeze register containing FR-001 and the five
+  standing consequences -- and R-distinguishability-....md, the frozen KR-DIST experiment itself).
+  Also documents a full code inventory: kos12/ (23 Python modules mapped to specific experiment
+  letters -B through -I, including zerolens.py/zeroH.py/zeroI.py, closure.py/history.py,
+  yonizero.py, category_check.py, m2o.py/neff.py/distinguish.py), 61 JSON result files across 9
+  subdirectories (audit, closure, dist[2, FR-001's own data], evaluation, history, m2o, neff, yz,
+  zero, plus 21 top-level), reproduction commands (dependency-free standard-library Python, fixed
+  and recorded seeds), and session records at .claude/sessions/2026-09-01.md and 2026-09-02.md
+  covering "every self-correction." This CONFIRMS, for the first time in this pass with concrete
+  file-path evidence, that KR-M2O, KR-NEFF, KR-DIST, the Zero Lens experiments, the kernel-reduction
+  13-operator experiment, and the Yoni-Zero cycle were all ACTUALLY EXECUTED as real, reproducible
+  code -- not merely proposed or discussed -- directly answering several open_questions this
+  reconstruction has carried since M0097. It also means this reconstruction's current pass, scoped
+  only to mathematical_ideas_that_can_be_implemented/, has NOT yet read the canonical primary
+  sources (S-frozen-results-register.md, the FINAL-VERDICT.md files, the 22-file kernel-reduction
+  lane) that this KR-SIM sub-thread has been discussing secondhand throughout -- a scope
+  observation for the eventual global-reclassification pass to weigh.
+
+  **ADDS SEVERAL FURTHER QUANTIFIED ESTABLISHED RESULTS NOT PREVIOUSLY RECORDED WITH THIS
+  PRECISION IN THIS PASS**: "only 3 of 8 Sat_c classes are executable; five have named blockers (>=,
+  Contr, no evaluator, no temporal semantics, delta)"; "every composite of arity >= 4 is permanently
+  U, with five classes blocked (Kleene conjunction over the class set)"; "winner's curse: apparent
+  quality 0.00 -> 0.61 while real quality stays 0, 200 trials/arm, null world" (a specific,
+  previously-unquantified figure for the winner's-curse finding referenced informally in M0095/
+  M0097/M0101/M0103); "multiplicity and evidence are coupled -- at fixed evidence a real signal
+  becomes inadmissible: m > (z*sigma/signal)^2, z^2 ~ 2*ln(n)" (a new, specific formula); "channel
+  independence, not validation, does the work -- same channel detects a decoy 0.75%; independent
+  99.3%" (matches M0101's numbers exactly, confirming cross-document consistency); "11 live
+  lens/domain category violations -- one pattern accounts for 6."
+
+  Closes with explicit usage guidance: cite FR-001 and the register, not this file; to reopen a
+  frozen result, name new evidence (rerunning KR-DIST is explicitly NOT new evidence); the queue
+  Factivity -> Contr -> >= remains, with the first two framed as "decisions, not experiments"; and
+  before proposing any equation, check it against C-1 (statistical mechanism != kernel operator)
+  and the lens/domain category-error rule. Final statement: "the programme's most valuable output
+  so far is not a model. It is a set of boundaries -- places where a natural formulation was shown
+  not to work, and why. FR-001 is the first of them to be formally frozen."
+introduces:
+  - concept: "The precise BASELINE/FROZEN/PROPOSED three-term glossary and the freeze-discipline rules (cite, supersede-by-explicit-act, or reopen-by-naming-new-evidence; never silently revise or re-litigate by rerunning the same experiment)"
+  - concept: "The eleven-value epistemic status vocabulary applied to every claim in Theory v1.2 (ESTABLISHED/DERIVED/BOUNDED/HYPOTHESIS/INTERPRETATION/CORROBORATION/NORMATIVE/TECHNICALLY-OPEN/DEFERRED/REFUTED/UNKNOWN)"
+  - concept: "The exact FR-001 regime parameters (Lambda=(40,1.0,0.05), delta=0.3099) and the equicorrelated-space methodology catch (non-transitivity appears only where separations vary; a homogeneous test space conceals the defect)"
+  - concept: "The confirmed, sourced provenance for M0099's 1,491/1,793 (83%) unordered-progress-claims figure and 37/41 unsupported-typed-facet-distinctions figure"
+  - concept: "The confirmed corpus-scope finding: a substantial, actually-executed, reproducible codebase and result-file tree exists under docs/knowledgeos/research/, entirely outside this reconstruction's current pass scope"
+  - concept: "Additional quantified established results: winner's curse (0.00->0.61 apparent vs 0 real, 200 trials/arm); the multiplicity-evidence coupling formula m > (z*sigma/signal)^2; 11 live lens/domain category violations (one pattern accounts for 6)"
+defines: []
+refines:
+  - concept: "M0098/M0099's structure-first framework and freeze status, here consolidated into a master programme-wide index"
+  - concept: "M0099's three previously-unverified quantified claims -- two (1,491/1,793; 37/41) now confirmed sourced here; the third (13-vs-8) also confirmed here, while M0102's distinct 14-vs-12 figures remain unreconciled and uncorroborated by this otherwise comprehensive index"
+  - concept: "M0103/M0104's FR-001 freeze, presented here in fully quantified detail with exact regime parameters"
+contradicts:
+  - concept: "Possible tension with M0098/M0099's explicit downgrade of 'kernel never reads history' from established law to [PROP Conditional] -- this document's Section 4.2 lists the same claim among 'load-bearing established results,' though its own Part 4 heading ('frozen != established... all remain open') may reconcile the two readings; left unresolved for the reclassification pass"
+repeats:
+  - concept: "The corpus's already-tracked findings restated in consolidated, precisely quantified form: factivity-unsatisfiability (420/10,000), the Zero chain proof (1,620,000 assignments, 0 counterexamples), channel-independence result (0.75% vs 99.3%), the 13-vs-8 kernel-minimality tension"
+bridge_candidates:
+  - concept: "The unreconciled docs/knowledgeos/research/ codebase (kernel-reduction/, theory-v1.1-simulation/, theory-v1.2-simulation/) as the primary-source material this reconstruction's KR-SIM-lane documents have been discussing secondhand -- a candidate site for a future, separately-scoped reconstruction pass"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0106 as the master programme-wide reference resolving two of M0099's three previously-unverified quantified claims (1,491/1,793 progress claims; 37/41 unsupported facet distinctions; also confirming 13-vs-8 kernel minimality), revealing that a substantial, actually-executed, reproducible codebase exists under docs/knowledgeos/research/ outside this reconstruction's current scope, surfacing a possible tension with M0098/M0099's downgrade of 'kernel never reads history,' and leaving M0102's distinct 14-vs-12 kernel-count figures still unreconciled and uncorroborated by this comprehensive index."
+anchor_test:
+  anchor: "M0098/M0099's structure-first framework and freeze status, M0102's whole-programme status consolidation, and M0103/M0104's FR-001 freeze"
+  supports_dimension: "Provides sourced, quantified confirmation for most of the pass's previously-unverified statistics, and reveals a significant scope gap (an adjacent, unread primary-source codebase) directly relevant to how much confidence this reconstruction can place in its secondhand accounts of executed experiments"
+  refines_or_contradicts: "refines (M0098, M0099, M0102, M0103, M0104); possible tension with (M0098/M0099's downgrade of the kernel-history claim)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "'83% of progress claims in the corpus specify no ordering -- 1,491 of 1,793' and '37 of 41 distinctions unsupported' -- exact matches to M0099's previously-unsourced '1,491 claims' and '37 distinctions' figures, now fully traceable."
+  - "The complete file-path inventory of docs/knowledgeos/research/kernel-reduction/, theory-v1.1-simulation/, and theory-v1.2-simulation/, with specific module names (zerolens.py, closure.py, yonizero.py, m2o.py, neff.py, distinguish.py) mapped to specific experiment letters -- concrete, checkable evidence that this entire KR-SIM research thread corresponds to actually-executed code, not simulated conversation."
+  - "The Section 4.2 listing of 'the kernel writes history and never reads it' among 'load-bearing established results,' set directly against M0098's explicit critique and M0099's resulting downgrade of the identical claim to [PROP Conditional] -- an internal-consistency question spanning three related documents."
+undefined_concepts:
+  - "Whether M0102's '14 irreducible powers... 12 irreducible operators' kernel-minimality figures refer to the same 13-operator/16,384-subset experiment this document sources (with different accounting) or to a separate, undocumented experiment -- this document, despite being comprehensive, does not mention 14 or 12 anywhere in its kernel-minimality section"
+open_questions:
+  - "Whether the docs/knowledgeos/research/ codebase (kernel-reduction/, theory-v1.1-simulation/, theory-v1.2-simulation/) should be read as part of this reconstruction's scope, or remains explicitly out of scope per the governing prompt's mathematical_ideas_that_can_be_implemented/ boundary -- a scope question for governance, not resolved here."
+  - "Whether the Section 4.2 'kernel never reads history' framing as 'established' is reconcilable with M0098/M0099's explicit downgrade, or represents a genuine unresolved tension across these three documents."
+tier2_triggered: true
+tier2_reason: "Resolves two of the three previously-unverified quantified claims flagged in M0099 with exact sourcing, reveals a significant corpus-scope finding (a substantial, actually-executed, reproducible codebase entirely outside this reconstruction's current scope), surfaces a specific tension between this document's framing of 'kernel never reads history' as established and M0098/M0099's explicit downgrade of the same claim, and leaves M0102's distinct 14-vs-12 kernel-count figures conspicuously uncorroborated by this otherwise comprehensive index. A major corpus-integrity and completeness finding meeting the tier-2 bar."

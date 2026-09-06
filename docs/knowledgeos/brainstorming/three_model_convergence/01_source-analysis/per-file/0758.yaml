@@ -1,0 +1,186 @@
+sequence: 758
+path: docs/knowledgeos/brainstorming/phase_measure_theory/how_to_combine/20260828-145246_step_combine_combine-prompt-3.md
+title: "Combine-Prompt 3 (EXCEPTIONAL META-LEVEL FINDING, continuing 0755-0757) -- Phase 2A ACCEPTED, Phase 2B AUTHORIZED: Delivers the 'Provenance Feedback-Loop Risk' Discovery and the Permanent Rule Generated-Synthesis-Artifacts-Must-Never-Become-Evidence-for-Their-Own-Source-Corpus (GN-01), 'Generative Artifact Chains Are Not Independent Observations' (PQ-02, Explaining Away the 76-Docs/Hour Cluster), the Eight-Row EG-05 Resolution Table (Conformance Methodology/Archaeology/Observations/Non-Conformances/Governance-Gap ESTABLISHED, Self-Verification EXECUTION and Full Validation NOT ESTABLISHED), the Sarathi-vs-Lord-vs-Zero Formalization-Fidelity Comparison Yielding a Candidate Semantic-Preservation Test I_C(C)=I_C(F(C)), the Omega:DISPLACED→ABANDONED 'Lost Responsibility' Finding, and -- Most Significantly -- the Reframing of the Gita/Atman Investigation's Value as STRUCTURAL RATHER THAN ONTOLOGICAL ('a Conceptual Instrument for Discovering Architectural Boundaries,' Explicitly Not 'the Gita Proves the Architecture')"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "delivers the reconstruction's own sharpest, most defensible articulation of the proper role of Gita-derived material in architecture work -- structural (a conceptual instrument for discovering boundaries) rather than ontological (proof of the architecture) -- while itself performing DDD/mathematical/epistemic-governance analysis, not Gita textual analysis"
+source_role: PRIMARY_RESEARCH
+canonical_source: 758
+importance: critical
+confidence: high
+about: >
+  Directly continues 0757's Phase-1 status report as the human/architectural review response, opening
+  "Phase 2A passes the governance boundary" and authorizing Phase 2B "with one important constraint: Phase
+  2B must remain reconstruction, not book writing."
+
+  **Delivers the GN-01 ruling — ACCEPT**: a copied `20260828_1428_prompt2.md` file discovered back inside
+  the corpus must be classified `SYNTHESIS-ECHO` with `Evidential weight=0`. **Delivers the broader
+  "provenance feedback-loop risk" this individual finding exposes**: `original corpus→analysis→synthesis→
+  prompt/output copied back into corpus→future analysis→apparently independent evidence`, which "can
+  artificially reinforce a conclusion." **Delivers a permanent synthesis rule**: "generated synthesis
+  artifacts must never become evidence for the historical corpus from which they were derived," formalized
+  as `E_historical∩E_synthesis-derived=∅` for evidential purposes -- directly relevant to this
+  reconstruction's own discipline, given that this reconstruction itself produces per-file records that
+  must never later be mistaken for primary-corpus evidence.
+
+  **Delivers the PQ-02 ruling — ACCEPT, sharpened**: "generative runs count as one artifact-chain, not as
+  independent evidence per generated document." The evidentiary unit is a "reasoning lineage/artifact
+  chain" (prompt→model response→follow-up→refinement→derived artifact = one epistemic lineage unless an
+  independently introduced challenge, evidence source, experiment, or decision intervenes), formalized as
+  `N_observed documents≠N_independent evidence events`, with
+  `N_effective evidence=f(independence,provenance,challenge,new evidence)`. **Concludes the 76-docs/hour
+  cluster (flagged as a process pattern at 0757's CON-06) must NOT be treated as 76 confirmations of a
+  proposition** -- recorded as "ADOPTED — generative artifact chains are not independent observations,"
+  explicitly "not merely a corpus-cleaning rule. It is an important epistemic architecture principle."
+
+  **Delivers EG-05's precise resolution**, the report's most significant single table: an eight-row
+  ESTABLISHED/NOT-ESTABLISHED breakdown distinguishing Conformance methodology defined / Repository
+  archaeology performed / Repository observations obtained / Non-conformances discovered / **Critical
+  governance gap discovered (a real finding: "Constitution can be silently weakened because no approval
+  process exists")** / Self-verification suite defined -- all ESTABLISHED -- from Self-verification suite
+  EXECUTED and Architecture fully validated -- both explicitly `NOT ESTABLISHED`. "This distinction should
+  become permanent."
+
+  **Delivers "CON-02 is now more serious than we thought," flagged as "probably the most architecturally
+  interesting Phase-2A result"**: `Lord_R2` (analytical, not transformational) vs. `Lord_R5` (action
+  selector) share a label but the formal-algebra documents never even reference the earlier lens concept --
+  `Lord_R2≠Lord_R5` under one ubiquitous-language label, "potentially a semantic collision" from a DDD
+  perspective, explicitly NOT to be resolved by automatic renaming yet. Proposes (as an explicit hypothesis,
+  not a conclusion) that the two may belong to different conceptual contexts entirely, sketching a candidate
+  four-stage chain (Epistemic Observation→Decision Proposal→Authorization/Decision→Action) rather than
+  forcing one "Lord" object to perform all four functions.
+
+  **Delivers "the Sārathi result gives us a possible formalization criterion," flagged as "perhaps the most
+  valuable conceptual discovery of Phase 2A"**: comparing three parallel lineages -- Sārathi (original
+  invariant "Knower owns frame"→formalization→authorization semantics→invariant PRESERVED) against Lord
+  (analytical/observational→formalization→action selector→semantic DISPLACEMENT) against Zero (absence/gap
+  detection→formalization→goal-indexed discrepancy→semantic TRANSFORMATION) -- yields the candidate
+  principle: "formalization should be evaluated not only for computational closure, but also for
+  preservation of the invariants that gave the original concept its architectural meaning," formalized as a
+  testable semantic-preservation criterion: for conceptual construct `C` and its formalization `F(C)`, does
+  there exist an invariant set `I_C` such that `I_C(C)=I_C(F(C))`? -- explicitly proposed as "a powerful
+  bridge between DDD semantic integrity and mathematical formalization," a genuinely valuable, reusable
+  methodological contribution.
+
+  **Delivers the Ω finding, flagged as "potentially more important than the Lord naming problem"**: the
+  lineage `Ω:DISPLACED→ABANDONED`. If Ω represented a genuine epistemic capability that simply disappeared
+  when R5 introduced Lord-as-action-selector, this may constitute a **lost responsibility, not merely a
+  naming problem**. Poses the Phase-2B question "what responsibility did Ω perform that is no longer
+  explicitly represented in the R5 kernel?" with seven candidate answers (observation, state-space
+  perspective, epistemic boundary, uncertainty representation, context, evidence visibility, something
+  else) explicitly left undecided pending source-material recovery.
+
+  **Delivers "the most interesting emerging architecture,"** an unauthorized-as-final six-stage candidate
+  responsibility chain (`KNOWER [frame/purpose ownership] → OBSERVATION/EVIDENCE → DETERMINATION/WARRANT →
+  PROPOSAL → DECISION/AUTHORITY → ACTION`), with the explicit caveat that this diagram does NOT assert
+  Lord equals any single one of these stages -- rather it poses whether these are genuinely distinct
+  responsibilities, "precisely the kind of DDD separation we need before defining aggregates or services."
+
+  **Authorizes Phase 2B — "Concern Map + Logical Reconstruction"** under the explicit governance condition
+  "Phase 2B must reconstruct the conceptual architecture without prematurely converting it into a final
+  architecture or book structure," with a seven-stage internal order (2A Semantic archaeology → 2B-1
+  Concern separation → 2B-2 Responsibility map → 2B-3 Concept/invariant map → 2B-4 Dependency graph → 2B-5
+  Logical reconstruction → 2B-6 Contradiction impact analysis → 2B-7 Candidate architecture → STOP).
+
+  **Delivers the complete Phase-2B instruction block**, restating the GN-01/PQ-02/EG-05 governance rulings
+  as binding context, then specifying seven sub-steps in detail: 2B-1 Concern Map (sixteen candidate
+  responsibility/concept items, explicitly not assuming each is a separate component); 2B-2 Responsibility
+  Map (nine fields per concept -- responsibility/input/output/owner/authority/invariants/dependencies/
+  evidence/failure modes -- with explicit special attention to Knower/Lord/Sārathi/Ω/Determination/Zero/
+  Kernel); 2B-3 Semantic Invariant Map (distinguishing invariant/definition/analogy/implementation-choice;
+  explicit investigation targets: "Knower owns the frame," `proposal≠decision`, `extraction≠determination`);
+  2B-4 Dependency Graph (conceptual, not implementation-class-based; explicit candidate chain
+  evidence→determination→proposal→decision→action to be verified, not assumed); 2B-5 Lord/Ω Special
+  Investigation (six explicit questions, "do not merge them"); 2B-6 Formalization Fidelity (a six-value
+  classification -- PRESERVED/REFINED/TRANSFORMED/DISPLACED/ABSORBED/UNKNOWN -- applied to Zero/Lord/
+  Sārathi, explicitly "do not treat transformation as automatically erroneous. Determine whether the
+  transformation was explicit and justified"); 2B-7 Logical Reconstruction (the smallest logical model
+  explaining the strongest evidence, explicitly "NOT the final architecture," every element requiring
+  evidence source/epistemic status/dependency/unresolved questions). Specifies seven output artifacts
+  (concern-map.md, responsibility-map.md, invariant-map.md, dependency-graph.md, formalization-fidelity.md,
+  lord-omega-analysis.md, logical-reconstruction.md, plus phase-2b-findings.md). **Delivers an explicit
+  STOP CONDITION**: no book chapters, no final architecture constitution, no Phase 3, produce a five-tier
+  governance report (established/strongly supported/candidate/contradictory/unresolved) and wait for
+  architectural review.
+
+  **Delivers the file's most significant single conclusion, a mature reframing of the Gita/Ātman
+  investigation's proper architectural role**: "we are beginning to see why your original Gītā/Ātman
+  investigation may matter without requiring the final architecture to be based on the Gītā. Its
+  potentially useful contribution may be STRUCTURAL RATHER THAN ONTOLOGICAL" -- illustrated via the
+  Knower-vs-what-is-known and proposal-vs-decision distinctions functioning as "a conceptual instrument for
+  discovering architectural boundaries," explicitly and sharply distinguished from the disallowed claim
+  "the Gītā proves the architecture" -- "we should preserve exactly that distinction." This is arguably the
+  sharpest, most defensible single statement anywhere in this corpus of WHY (not merely how) Gita-derived
+  material is permitted to influence architecture without becoming its foundation.
+
+  Closes with the explicit five-tier governance-state summary: `Phase 1: ACCEPTED`, `Phase 2A: ACCEPTED`,
+  `Phase 2B: AUTHORIZED`, `Phase 3: NOT AUTHORIZED`, `Book synthesis: NOT AUTHORIZED`. No actual code
+  execution or verified repository claim is made in THIS file beyond reporting and ruling on the
+  already-produced Phase 2A findings it describes.
+introduces:
+  - concept: "The 'provenance feedback-loop risk' and the permanent rule: generated synthesis artifacts must never become evidence for their own source corpus (E_historical∩E_synthesis-derived=∅)"
+  - concept: "'Generative artifact chains are not independent observations' (PQ-02, sharpened): N_observed documents≠N_independent evidence events; N_effective evidence=f(independence,provenance,challenge,new evidence)"
+  - concept: "EG-05's precise eight-row resolution table, distinguishing what conformance work is ESTABLISHED from what remains NOT ESTABLISHED"
+  - concept: "The critical governance-gap finding: Constitution can be silently weakened because no approval process exists"
+  - concept: "Lord_R2≠Lord_R5 under one ubiquitous-language label -- a candidate DDD semantic collision, not yet resolved by renaming"
+  - concept: "The formalization-fidelity semantic-preservation test: I_C(C)=I_C(F(C)) for a conceptual construct C and its formalization F(C)"
+  - concept: "The six-value Formalization Fidelity classification: PRESERVED/REFINED/TRANSFORMED/DISPLACED/ABSORBED/UNKNOWN"
+  - concept: "Ω:DISPLACED→ABANDONED -- the 'lost responsibility' hypothesis, distinct from a mere naming problem"
+  - concept: "The candidate six-stage responsibility chain (Knower→Observation/Evidence→Determination/Warrant→Proposal→Decision/Authority→Action), explicitly not asserting Lord=any single stage"
+  - concept: "The Gita/Atman investigation's value reframed as STRUCTURAL RATHER THAN ONTOLOGICAL"
+  - concept: "The explicit governance-state summary (Phase 1/2A ACCEPTED, Phase 2B AUTHORIZED, Phase 3/Book synthesis NOT AUTHORIZED)"
+defines:
+  - concept: "SYNTHESIS-ECHO"
+    definition: "A classification for any document discovered in a historical corpus that is actually a copy of, or output derived from, this same synthesis project's own prior analysis or prompts -- such artifacts must carry Evidential weight=0, since treating them as independent historical evidence would create a self-reinforcing feedback loop"
+  - concept: "Generative artifact chain (evidentiary unit)"
+    definition: "A prompt and its full sequence of model response, follow-up response, and refinement/derived-artifact outputs constitutes exactly ONE epistemic lineage for evidentiary-weighting purposes, not one independent observation per generated document -- it counts as multiple independent evidence events only where an independently introduced challenge, new evidence source, experiment, or decision genuinely intervenes within the chain"
+  - concept: "The formalization semantic-preservation test"
+    definition: "For a conceptual construct C and a proposed formalization F(C), identify the invariant set I_C that gave C its original architectural meaning; if I_C(C)=I_C(F(C)) holds, the formalization has preserved the concept's semantic integrity (PRESERVED/REFINED); if not, the transformation must be explicitly classified (TRANSFORMED/DISPLACED/ABSORBED) and evaluated for whether it was explicit and justified, rather than assumed erroneous by default"
+  - concept: "Gita/Atman investigation's structural (not ontological) architectural value"
+    definition: "The Gita-derived lens's legitimate contribution to this architecture is as a conceptual instrument for discovering where architectural boundaries should be drawn (e.g. Knower vs. what-is-known; proposal vs. decision) -- never as a claim that the resulting architecture is thereby proven, validated, or grounded by the Gita itself; the distinction between 'useful for discovering boundaries' and 'proves the architecture' must be preserved exactly"
+refines:
+  - concept: "0757's CON-01/CON-02 confirmed semantic-shift findings"
+    refinement: "CON-02 (Lord) substantially deepened: reframed as a candidate genuine DDD semantic collision (Lord_R2≠Lord_R5 under one label) rather than a simple naming inconsistency, with an explicit hypothesis (not yet a conclusion) that the two concepts may belong to different bounded/conceptual contexts entirely"
+  - concept: "0757's CON-06 ('freeze decisions unhonoured — a two-corpus process pattern') and the 76-docs/hour material flagged for PQ-02 ruling"
+    refinement: "PQ-02 formally adopted and sharpened into a precise evidentiary-weighting principle (artifact-chain, not per-document, counting), directly resolving how the 76-docs/hour cluster must be treated: not as 76 independent confirmations"
+  - concept: "0756's EG-05 flag ('the decisive open item')"
+    refinement: "Resolved to a precise eight-row ESTABLISHED/NOT-ESTABLISHED breakdown -- conformance methodology, archaeology, observations, non-conformances, and the critical governance gap are all confirmed established; only self-verification execution and full architecture validation remain unresolved"
+  - concept: "0745's/0752's/0755's Gita-handling discipline (structural lens, never identity/proof)"
+    refinement: "Given its sharpest, most explicitly reasoned justification yet: the structural-vs-ontological distinction, explaining WHY (not just how) the discipline exists -- the lens is valuable for discovering architectural boundaries, never as proof of the resulting architecture"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read the remaining how_to_combine/ files (combine-prompt-4 through 6, halfway-point-progress-review, step_combine_remaining-todos) with high attention: check whether Phase 2B was actually executed, whether the Lord_R2 vs. Lord_R5 semantic-collision question was resolved, whether Ω's lost responsibility was ever recovered, and whether Phase 3/Book synthesis authorization status ever changed from NOT AUTHORIZED."
+  - "When this reconstruction's own sequential pass reaches the primary-corpus source documents for Zero/Lord/Sārathi/Ω formalization (referenced by internal IDs at 0756/0757), apply the formalization-fidelity six-value classification (PRESERVED/REFINED/TRANSFORMED/DISPLACED/ABSORBED/UNKNOWN) independently and compare against this parallel effort's eventual findings."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the permanent 'provenance feedback-loop risk' rule (generated synthesis artifacts must never become evidence for their own source corpus) as directly applicable to this reconstruction's own discipline -- its own per-file records must never later be mistaken for primary-corpus evidence."
+  - "dimension-registry.md: record the formalization-fidelity semantic-preservation test (I_C(C)=I_C(F(C))) as a genuinely valuable, reusable methodological principle bridging DDD semantic integrity and mathematical formalization -- worth applying when this reconstruction itself encounters lens-to-formalization transitions in the primary corpus."
+  - "dimension-registry.md: record the Omega:DISPLACED→ABANDONED 'lost responsibility' hypothesis as an open item to watch for when this reconstruction's own sequential pass reaches the relevant Zero/Lord/Sārathi/Omega source material."
+  - "dimension-registry.md: record the sharp reframing of the Gita/Atman investigation's value as STRUCTURAL RATHER THAN ONTOLOGICAL as the corpus's own clearest articulation yet of why the g1/c1 discipline exists, not merely what it forbids."
+anchor_test:
+  anchor: "0756/0757's confirmed lens-to-algebra semantic shifts (CON-01, CON-02) and EG-05; 0745's/0752's/0755's Gita-handling discipline; this reconstruction's own governing epistemic discipline against silently converting analogy/hypothesis into mathematics/definition"
+  supports_dimension: "Delivers a genuinely significant permanent evidentiary-discipline rule (the provenance feedback-loop risk and its E_historical∩E_synthesis-derived=∅ formalization) directly applicable to this reconstruction's own practice. Delivers a precise, sharpened evidentiary-weighting principle (generative artifact chains, not per-document counting) resolving how the corpus's own repeated-generation clusters must be treated. Resolves EG-05 to a precise eight-row table including a real, significant governance-gap finding. Substantially deepens the CON-02 (Lord) finding into a candidate genuine DDD semantic collision. Delivers a genuinely valuable, reusable formalization semantic-preservation test bridging DDD and mathematics. Delivers the Omega lost-responsibility hypothesis. Most significantly, delivers the corpus's sharpest, most explicitly reasoned articulation of why Gita-derived material is legitimately useful (structural, boundary-discovering) without proving or grounding the resulting architecture (never ontological) -- a mature, well-justified capstone statement of the reconstruction's own governing epistemic discipline applied to this specific parallel effort"
+  refines_or_contradicts: "directly extends and resolves 0756's/0757's flagged open items; substantially deepens rather than contradicts the CON-01/CON-02 findings; gives 0745's/0752's/0755's Gita-handling discipline its sharpest justification yet; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit boxed statement 'generated synthesis artifacts must never become evidence for the historical corpus from which they were derived,' formalized as E_historical∩E_synthesis-derived=∅, is directly quotable evidence of a permanent, directly applicable evidentiary-discipline rule discovered via a real corpus-contamination incident (the SYNTHESIS-ECHO file)."
+  - "The eight-row EG-05 resolution table, explicitly separating six ESTABLISHED items (including the critical governance-gap finding) from two NOT ESTABLISHED items (self-verification execution, full architecture validation), is directly checkable evidence of a precise, non-overclaiming resolution of the corpus's own repository-conformance-validation status."
+  - "The explicit statement 'we are beginning to see why your original Gītā/Ātman investigation may matter without requiring the final architecture to be based on the Gītā. Its potentially useful contribution may be structural rather than ontological' is directly quotable evidence of the corpus's sharpest, most explicitly reasoned justification for its own g1/c1 discipline."
+undefined_concepts: []
+open_questions:
+  - "Whether Phase 2B (Concern Map + Logical Reconstruction) was actually executed, and what its seven output artifacts (concern-map.md through logical-reconstruction.md, plus phase-2b-findings.md) concluded -- to be checked against the remaining how_to_combine/ files."
+  - "Whether the Lord_R2≠Lord_R5 candidate semantic-collision hypothesis is ever resolved into either a genuine two-concept split or a confirmed single-concept displacement, and what responsibility (if any) Ω's original meaning is found to have carried."
+  - "Whether Phase 3 and Book Synthesis authorization status ever changes from NOT AUTHORIZED anywhere later in the how_to_combine/ arc."
+tier2_triggered: true
+tier2_reason: "EXCEPTIONAL META-LEVEL FINDING (continuing 0755-0757): delivers a permanent, directly applicable evidentiary-discipline rule (the provenance feedback-loop risk) discovered via a real corpus-contamination incident, and a precise generative-artifact-chain evidentiary-weighting principle resolving how repeated-generation clusters must be counted. Resolves EG-05 to a precise eight-row table including a real, significant governance-gap finding. Substantially deepens the CON-02 (Lord) semantic-shift finding into a candidate genuine DDD semantic collision, and delivers a genuinely valuable, reusable formalization-fidelity semantic-preservation test bridging DDD and mathematics. Delivers the Omega lost-responsibility hypothesis. Most significantly, delivers the corpus's sharpest, most explicitly reasoned articulation yet of why Gita-derived material is legitimately useful (structural, boundary-discovering) without ever proving or grounding the resulting architecture."

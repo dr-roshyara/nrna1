@@ -1,0 +1,115 @@
+sequence: 1020
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/09-GAP-UPDATE-FROM-CAVELL-AND-REVIEW-ACCEPTANCE.md
+title: "09 -- Gap Update From Cavell and Review Acceptance: A SECOND PHILOSOPHICAL SOURCE (Cavell/Austin/Wittgenstein) Enters the Programme, Delivering the FIRST Candidate Primitive the Corpus Genuinely Does Not Contain (Acknowledgment, Distinct From Knowledge) and a Potentially Transformative Reframing of the Central Qualify Blocker as a Missing TERMINUS, Not a Missing Body"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the master consolidation of a genuinely new Cavell/Austin/Wittgenstein philosophical lens alongside the already-tracked Reviewer B consolidation (file 1018) and HPA review of 08 (file 1019)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1020
+importance: critical
+confidence: high
+about: >
+  Processes three files: a genuinely NEW philosophical source (`…202404_step_286_cavell-must-we-mean-what-
+  we-say-lenses-for-knowledgeos-kernel.md` -- **NOT YET DIRECTLY ENCOUNTERED, a major new bridge
+  candidate**, citing Cavell/Austin/Wittgenstein, "10 observations, 10 falsification questions, 5
+  surprises"), file 1018 (Reviewer B's consolidated position), and file 1019 (HPA's review of "08").
+
+  **§2 CONFIRMS BOTH REVIEWERS ACCEPT '08' and INDEPENDENTLY ADOPT THE SAME REFRAMING**: "the register's
+  headline changes from FOUR BLOCKERS to ONE IRREDUCIBLE BLOCKER PLUS TWO GOVERNANCE DECISIONS" --
+  formalizing file 1018's already-tracked simplification as the programme's new official framing. Confirms
+  F3/F4 held DERIVED, not promoted, "as B required."
+
+  **§3 DELIVERS THE MAJOR NEW DEVELOPMENT**: Cavell is introduced as "a SECOND philosophical source," and
+  its central move is explicitly distinguished from every prior Gītā correspondence: "The Gītā lens produced
+  correspondences. Cavell produces a STRUCTURAL OBJECTION." Quotes Cavell: "What we need is not more
+  knowledge but the willingness to forgo knowing... Knowledge and acknowledgment are not the same. Knowledge
+  can be true or false; acknowledgment can be given or withheld." Tests this against the corpus register:
+  **`Acknowledgment` as an epistemic relation is CONFIRMED ABSENT** ("`acknowledg*` never appears in typed
+  form as an epistemic concept") -- **"Cavell's contribution is a candidate NEW primitive, and it is the
+  FIRST ONE IN THIS PROGRAMME THAT THE CORPUS DOES NOT ALREADY CONTAIN."** This is a qualitatively new
+  finding-class: every prior Gītā survivor (files 0986, 0996, 0998, 1006) was corroboration or corpus-native
+  recovery, never a genuine gap the corpus lacked entirely.
+
+  **⚠️ Flags a term collision**: `acknowledged` ALREADY EXISTS as a receipt/delivery LIFECYCLE stage
+  (`created≠published≠selected≠retrieved≠acknowledged≠applied≠verified`) -- "a new `Acknowledgment` concept
+  would collide with an existing term," requiring a naming decision before any research could even begin.
+
+  Also tests `Trust` (2 files, present but thin), `Betrayal` (0 files, absent), `Avoidance` (7 files, prose
+  only, never typed) -- all flagged as further candidate absences.
+
+  **All four (Acknowledgment, Trust, Betrayal, Avoidance) are explicitly HELD as `[H]` hypotheses, NOT
+  opened**, for two disciplined reasons: (i) the standing instruction to open no new expansion until D288's
+  four targets resolve; (ii) the naming collision requires resolution first. "Recorded, queued, not
+  researched."
+
+  **§4 DELIVERS A POTENTIALLY TRANSFORMATIVE REFRAMING OF THE CENTRAL `QUALIFY` BLOCKER**: quotes Cavell,
+  "Reasons — at definite points, for definite reasons, in different circumstances — come to an end... The
+  end of reasons is not a failure but a NECESSARY STOPPING POINT," and poses the architectural question
+  verbatim: "How does the Kernel recognize and respect the end of justification? Does it treat this as a
+  gap to be filled, or as a fact to be acknowledged?" **The reframing**: "If justification terminates by
+  construction, then a TOTAL `Qualify` cannot exist, and the correct object is not a body but a DECLARED
+  TERMINUS -- structurally the same move the programme already made for the authority regress ('the
+  mechanism records authority; it does not grant authority')." **This reclassifies the entire question**
+  from "what are the necessary-and-sufficient criteria?" (which may have no answer) to "where does
+  qualification legitimately stop, and what records that stopping?" (which has a direct precedent in this
+  very estate). **Explicitly NOT YET ADOPTED**: "This does not close `Qualify`... Recorded as a candidate
+  reframing, `[H]`. `Qualify` remains `G1` on the register until tested." If this reframing is later tested
+  and survives, it would be the disciplined resolution of the single most persistent, longest-standing gap
+  this reconstruction has tracked across the entire D285-x/D288 programme.
+
+  **§6 delivers the file's own closing self-assessment**: "Cavell is the first source in this programme to
+  survive as a CHALLENGE rather than a CORRESPONDENCE. Every Gītā survivor was either corroboration or
+  recovery. `Acknowledgment`, `Trust` and `Avoidance` are absent -- which makes them the first genuine
+  `INNOVATION` candidates, and exactly why they are queued rather than opened."
+introduces:
+  - concept: "A second philosophical source, Cavell (with Austin/Wittgenstein), entering the programme as a structural objection rather than a correspondence"
+  - concept: "The Knowledge-versus-Acknowledgment distinction: knowledge can be true or false, acknowledgment can be given or withheld -- confirmed as the first candidate primitive the corpus genuinely does not contain"
+  - concept: "The term collision between a candidate new Acknowledgment epistemic concept and the existing 'acknowledged' receipt-lifecycle stage"
+  - concept: "The candidate absences Trust (2 files, thin), Betrayal (0 files, absent), Avoidance (7 files, never typed)"
+  - concept: "The potentially transformative reframing of Qualify: not a missing body of necessary-and-sufficient criteria, but a missing DECLARED TERMINUS, structurally analogous to the already-adopted authority-regress solution"
+  - concept: "The programme's own explicit distinction between 'correspondence/corroboration/recovery' survivors (every prior Gita result) and 'challenge/innovation' candidates (Cavell's contributions), the first genuine innovation candidates in the entire programme"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked 'one irreducible blocker' simplification (file 1018) and the '08' acceptance (file 1019)"
+    refinement: "FORMALIZED as the programme's new official headline framing, independently confirmed by both reviewers"
+  - concept: "The already-tracked authority-regress solution ('the mechanism records authority; it does not grant authority')"
+    refinement: "REUSED as the structural precedent for the proposed Qualify reframing (a declared terminus, not a missing body)"
+  - concept: "This reconstruction's already-tracked classification of Qualify as G1 irreducible (files 1005, 1007, 1009, 1018-1019)"
+    refinement: "CHALLENGED with a candidate reframing that could dissolve the question rather than answer it -- explicitly not yet adopted, still G1 pending testing"
+contradicts: []
+repeats:
+  - "The 'one irreducible blocker' consolidation and the 08-acceptance substantially repeat content already documented via files 1018-1019; this file's major distinctive contribution is the entirely new Cavell material."
+bridge_candidates:
+  - "The Cavell source document itself ('...202404_step_286_cavell-must-we-mean-what-we-say-lenses-for-knowledgeos-kernel.md'), with its full '10 observations, 10 falsification questions, 5 surprises' -- a major new bridge candidate, not yet directly encountered."
+  - "Whether the Qualify-as-declared-terminus reframing is subsequently tested and adopted or rejected."
+  - "Whether Acknowledgment/Trust/Betrayal/Avoidance are subsequently opened as formal research hypotheses once D288's four targets resolve."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the entry of a second philosophical source (Cavell) into the programme, delivering the first candidate primitive (Acknowledgment) the corpus genuinely does not contain -- a qualitatively new finding-class distinct from every prior Gita corroboration/recovery."
+  - "dimension-registry.md: record the potentially transformative Qualify-as-declared-terminus reframing, structurally analogous to the authority-regress solution, explicitly not yet adopted."
+  - "dimension-registry.md: record the term collision between a candidate Acknowledgment concept and the existing receipt-lifecycle 'acknowledged' stage, as a naming-decision prerequisite."
+anchor_test:
+  anchor: "This reconstruction's already-tracked one-irreducible-blocker simplification and Qualify's G1-irreducible status (files 1005, 1007, 1009, 1018-1019)"
+  supports_dimension: "Introduces a genuinely new philosophical source delivering both a novel absent-primitive finding and a potentially transformative reframing of the central Qualify blocker"
+  refines_or_contradicts: "challenges (via a candidate reframing) the Qualify-G1 classification; introduces genuinely new content"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The Acknowledgment-absence finding is directly checkable against a full-text search of the corpus for 'acknowledg*' in typed epistemic-concept form."
+  - "The Qualify reframing's structural analogy to the authority-regress solution is directly checkable against this reconstruction's already-tracked prior finding of that same principle."
+undefined_concepts: []
+open_questions:
+  - "The full content of the Cavell source document, not yet directly encountered."
+  - "Whether the Qualify-as-declared-terminus reframing is subsequently tested."
+  - "Whether Acknowledgment/Trust/Betrayal/Avoidance are subsequently opened as formal hypotheses."
+tier2_triggered: true
+tier2_reason: "Introduces a genuinely new second philosophical source (Cavell) delivering the first candidate primitive the corpus does not contain, and a potentially transformative reframing of the single most persistent gap (Qualify) in the entire D285-x/D288 programme. Classified importance critical and confidence high given the qualitative novelty and direct traceability of these findings."

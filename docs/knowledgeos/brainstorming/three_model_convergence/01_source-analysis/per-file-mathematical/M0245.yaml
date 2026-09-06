@@ -1,0 +1,96 @@
+sequence: M0245
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-021358_knowledge-algebra-is-not-an-empty-field-literature-search.md
+title: "KR-ALGEBRA prior-art literature search: connects the Zero/Kernel research programme to real established mathematical traditions (Information Algebra/Kohlas-Shenoy, Plotkin's knowledge-base informational equivalence, Cīrulis's belief algebra, epistemic algebra) and proposes a genuinely new reframing — Zero as a QUOTIENT-INDUCED ELIMINABILITY PREDICATE rather than an algebraic primitive — an 8-layer Knowledge Algebra hierarchy explicitly rejecting Kernel=Knowledge-Algebra, and a new three-sub-lane research programme (KR-ALGEBRA: Information/Knowledge/Zero Algebra) with an explicit dependency ordering"
+date: "20260904-021358"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0245
+importance: critical
+confidence: high
+about: >
+  A pivot from purely internal kernel-minimality proof-mechanics work (M0235-M0244) to an external
+  literature-anchoring exercise: identifying real, established mathematical traditions close to
+  pieces of the KnowledgeOS research programme (Information Algebra, algebraic knowledge-base
+  equivalence, belief algebra, epistemic algebra), explicitly concluding no existing framework
+  equals the full KnowledgeOS Kernel+Zero+representation-reduction programme, while proposing a
+  genuinely new mathematical reframing of Zero as an induced quotient/congruence phenomenon rather
+  than an algebraic primitive — reopening the Zero-algebra question via a different mathematical
+  lens than the empirically-closed M0239-item-20 position, but explicitly as literature-motivated
+  structural discovery, not a claim that Zero is now an algebra.
+introduces:
+  - "Information Algebra (Kohlas, Shenoy et al.) as directly relevant prior art: a two-sorted structure (Φ,D) (information objects, domains/questions) with combination ⊗ and projection/focusing, where the domain structure carries a granularity order — described as 'much closer to our research than ordinary knowledge graphs,' and offering 'a very serious external mathematical framework against which to test our Zero hypothesis'"
+  - "Plotkin's 'An Algebraic Approach to Knowledge Bases Informational Equivalence' (universal algebra/algebraic logic treatment of knowledge bases, defining categories of knowledge bases and an informational-equivalence relation) — establishing that 'informational equivalence of knowledge bases is already a legitimate mathematical problem, rather than something we invented from scratch,' while noting KnowledgeOS's K1≡_sem K2 is broader (behavior/transitions/invariants/contracts, not merely static knowledge-base content)"
+  - "Cīrulis's algebraic belief-system model (information domain + algebraic structure + entailment relation + revision operations, connected to records/ordered attributes/functional dependencies/information spaces) as prior art directly relevant to the representation-reduction question D→T(D)→R"
+  - "Epistemic algebra B=(B,0,1,¬,∧,∨,k,b) with algebraic conditions k(a∧b)=ka∧kb and ka≤a, as algebraic semantics for epistemic logic — noted as 'not the same problem as KnowledgeOS' but establishing precedent that 'knowledge can legitimately be represented as an algebraic operator over a structured semantic space'"
+  - "An explicit argument that KnowledgeOS's Zero is MATHEMATICALLY DIFFERENT from ordinary algebraic zero (additive identity x+0=x; absorbing element x0=0; zero objects/ideals/morphisms) — Zero_{T,Π}(x;D)⟺Π(T(D))=Π(T(D\\x)) is 'not an element 0. It is a counterfactual equivalence judgment,' conceptually closer to sufficient statistics, observational equivalence, quotienting, redundancy, irrelevance, database dependency, information projection, and bisimulation/refinement than to ordinary algebraic zero"
+  - "THE CENTRAL NEW HYPOTHESIS: Zero as a QUOTIENT-INDUCED ELIMINABILITY PREDICATE rather than an algebraic primitive. Define F_{T,Π}(D)=Π(T(D)); define observational equivalence D1∼_{T,Π}D2⟺F_{T,Π}(D1)=F_{T,Π}(D2); then Zero_{T,Π}(x;D)⟺D∼_{T,Π}D\\x — reframing Zero as a special case of a broader observational quotient structure D/∼_{T,Π}, rather than a standalone concept requiring its own bespoke algebra"
+  - "A 10-item investigation agenda for the quotient-induced Zero hypothesis: is ∼_{T,Π} always an equivalence relation; what does the quotient D/∼_{T,Π} look like; does Zero correspond to a congruence; when is elimination compositional/idempotent/order-independent; does repeated Zero elimination reach a unique normal form; is that normal form a canonical representation; when does the quotient admit an algebra; can the algebra be reconstructed from observed transformations"
+  - "An 8-LAYER 'Knowledge Algebra' hierarchy (explicitly proposed as layers, NOT one monolithic algebra): A.Knowledge state K∈𝒦, B.Information combination K1⊗K2 (↔Information Algebra), C.Inquiry/focus π_Q(K) (↔Information Algebra), D.Transformation T:𝒦→ℛ, E.Observation O:ℛ→𝒴, F.Equivalence K1≡_Q K2⟺O_Q(K1)=O_Q(K2), G.Elimination/Zero (Zero_{T,Π}(x)⟺D\\x≡_{T,Π}D), H.Kernel (minimal epistemic-capability set) — with an EXPLICIT REJECTION of 'the Kernel is the Knowledge Algebra'"
+  - "A stated, explicitly-flagged research hypothesis (not adopted): Knowledge Kernel = minimal semantic machinery required to operate over a knowledge/information algebra — i.e. Information Algebra ≠ Knowledge Kernel, but the Kernel may be defined relative to whatever information/knowledge algebra is eventually established"
+  - "A reformulated master research question replacing 'can we invent a Knowledge Algebra?': 'What mathematical structure is minimally sufficient to represent, combine, transform, focus, compare and revise contract-relative knowledge?' — with an explicit candidate list (information algebra, lattice, domain, ordered algebra, category, closure system, semiring, relational structure, transition algebra, or something new) and the instruction 'do not choose the answer first,' explicitly matching the Kernel research's own discipline of discovering structure from required behavior rather than declaring the carrier in advance"
+  - "A new proposed research lane, KR-ALGEBRA — Knowledge/Information Algebra Prior-Art & Structural Discovery — with three sub-lanes: A.Information Algebra (combine/focus/question), B.Knowledge Algebra (knowledge/equivalence/revision), C.Zero Algebra (elimination/quotient/preservation) — with an EXPLICIT DEPENDENCY ORDERING: 'C depends on A+B, not the other way around'"
+  - "An explicit warning against premature branding: six named existing related fields (Information Algebra, Valuation Algebra, Belief Algebra, Epistemic Algebra, Algebraic Knowledge Representation, Algebraic Logic, Knowledge Base Equivalence) requiring 'a serious prior-art map' before any novelty claim, alongside a tentatively-distinctive five-element intersection (contract-relative inquiry + representation transformation + observational equivalence + counterfactual elimination + semantic kernel minimality) 'not found combined... in the precise way your KnowledgeOS programme does' — explicitly qualified as 'not yet a novelty claim'"
+defines:
+  - "∼_{T,Π} — the observational-equivalence relation induced by F_{T,Π}(D)=Π(T(D)), from which Zero is proposed to be a derived predicate"
+refines:
+  - "The entire Zero-algebra thread (M0189-M0234, most recently closed at M0239 item 20 as 'RESEARCH CLOSED/NO ALGEBRA ADOPTED — do not invent a Zero algebra now'): reframes Zero not as requiring a bespoke new algebra, but as potentially explicable via EXISTING quotient/congruence machinery once embedded in an established Information/Knowledge Algebra framework — a literature-motivated reopening distinct from, and in some tension with, M0239's empirically-grounded closure instruction"
+contradicts: []
+repeats:
+  - "The established finding that Zero is not absence/deletion/invariant/remainder and is transformation-/contract-relative (from the earlier KR-ZERO-ALGEBRA/BRIDGE threads), used here as corroborating evidence for the quotient-induced reframing"
+bridge_candidates:
+  - "Whether KR-ALGEBRA (the proposed three-sub-lane Information/Knowledge/Zero Algebra research programme) was ever actually opened and pursued"
+  - "Whether this literature-motivated reopening of the Zero-algebra question is reconcilable with M0239 item 20's explicit closure instruction ('do not invent a Zero algebra now; only reopen if a new semantic contract or empirical result requires it') — this document reopens it via LITERATURE DISCOVERY rather than a new semantic contract or empirical result, an unresolved tension worth flagging for the eventual global-reclassification pass"
+  - "Whether the 10-item quotient/congruence investigation agenda for Zero was ever executed"
+  - "Whether Plotkin's/Cīrulis's/Kohlas-Shenoy's frameworks were ever formally compared against the KnowledgeOS Kernel's ≡_sem apparatus (M0235-M0244) to test the 'Information Algebra ≠ Knowledge Kernel' hypothesis"
+mathematical_content: >
+  A prior-art literature connection (Information Algebra, algebraic knowledge-base equivalence,
+  belief algebra, epistemic algebra) plus a genuinely new internal reframing: Zero as a derived
+  predicate of an observational quotient F_{T,Π}(D)=Π(T(D)) rather than a standalone algebraic
+  primitive, with an explicit 10-item mathematical investigation agenda (equivalence relation,
+  congruence, compositionality, idempotence, order-independence, normal form, canonical
+  representation, algebra admission, reconstructibility).
+gita_content: null
+kernel_content: >
+  Explicitly rejects "Kernel = Knowledge Algebra" while proposing the Kernel may instead be "the
+  minimal semantic machinery required to operate over a knowledge/information algebra" — a
+  hypothesis, not an adoption — situating the ongoing kernel-minimality proof work (M0235-M0244)
+  within a broader, externally-anchored algebraic landscape rather than as an isolated internal
+  construction.
+registry_updates:
+  - "Information Algebra (Kohlas/Shenoy), Plotkin's knowledge-base informational equivalence, Cīrulis's belief algebra, and epistemic algebra identified as directly relevant prior art"
+  - "New central hypothesis: Zero as a quotient-induced eliminability predicate (∼_{T,Π}) rather than an algebraic primitive, with a 10-item investigation agenda"
+  - "8-layer Knowledge Algebra hierarchy (A-H), explicitly rejecting Kernel=Knowledge-Algebra"
+  - "New proposed research lane KR-ALGEBRA (Information/Knowledge/Zero Algebra sub-lanes, C depends on A+B)"
+  - "Flagged tension: this literature-motivated Zero-algebra reopening vs. M0239 item 20's empirically-grounded closure instruction"
+anchor_test:
+  anchor: true
+  supports_dimension: "External algebraic prior art (Information Algebra, Plotkin, Cīrulis, epistemic algebra); new quotient-induced Zero hypothesis; 8-layer Knowledge Algebra hierarchy rejecting Kernel=Knowledge-Algebra; new KR-ALGEBRA research lane"
+  refines_or_contradicts: "refines (the Zero-algebra thread, given a new externally-anchored mathematical lens); contradicts (in tension with M0239 item 20's explicit 'do not invent a Zero algebra now' closure, since this reopens the question via literature discovery rather than new empirical results)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Zero may be a quotient-induced eliminability predicate rather than an algebraic primitive.\""
+  - "\"I would currently reject that identification\" [Kernel = Knowledge Algebra].\""
+  - "\"I have not found an established framework in this initial search that already combines those five things in the precise way your KnowledgeOS programme does. That is not yet a novelty claim.\""
+  - "\"We may have found that Zero should be studied as an induced quotient/eliminability phenomenon inside a broader information/knowledge algebra... a substantially stronger mathematical direction than our original Vedic-inspired hypothesis.\""
+undefined_concepts: []
+open_questions:
+  - "Was KR-ALGEBRA ever opened and pursued?"
+  - "Is the literature-motivated Zero-algebra reopening here reconcilable with M0239 item 20's explicit closure instruction?"
+  - "Was the 10-item quotient/congruence investigation agenda for Zero ever executed?"
+tier2_triggered: true
+tier2_reason: >
+  A major pivot connecting the entire Zero-algebra/kernel research programme to real, established
+  external mathematical literature (Information Algebra, algebraic knowledge-base equivalence,
+  belief algebra), while proposing a genuinely new internal reframing (Zero as quotient-induced
+  eliminability rather than algebraic primitive) that sits in explicit tension with the prior
+  empirically-grounded closure of the Zero-algebra question (M0239 item 20) — essential material for
+  the eventual global-reclassification pass.

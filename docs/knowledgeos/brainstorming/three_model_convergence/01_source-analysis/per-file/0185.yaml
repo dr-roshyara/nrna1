@@ -1,0 +1,198 @@
+sequence: "0185"
+path: docs/knowledgeos/brainstorming/kernel/20260824-005813-davidson-lens-interpretation-must-not-become-admission-reaktion-2.md
+title: "Donald Davidson's radical-interpretation philosophy formalized into a reusable 'Davidson Lens' model: interpretation must not become admission, a nine-item non-collapse family, ten D-1..D-10 findings, a D-A1..D-A10 anti-capability list, and two distinct boundaries (interpretive vs. epistemic) -- explicitly saved for later cross-agent ('Claude') comparison, not fed into current adjudication"
+date: "2026-08-24"
+bytes: 21000
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0185"
+importance: critical
+confidence: high
+about: >
+  Applies Donald Davidson's philosophy of radical interpretation (truth-conditional semantics, the
+  interlocking-belief-and-meaning problem, principle of charity, rejection of the scheme/content dualism,
+  treatment of metaphor and mood) as a sixth independent Western philosophical tradition engaged in this
+  stretch, producing the most disciplined and self-adjudicated lens file so far -- structured as findings
+  (D-1 through D-10) each already carrying an architectural verdict, rather than raw unfiltered
+  observations awaiting a companion adjudication file (contrast with 0179, 0184). Central finding: Davidson
+  independently arrives at almost exactly the corpus's own smallest-boundary/anti-reasoner problem --
+  interpretation and belief are entangled in observed linguistic behavior, and Davidson's own theory
+  requires the separation be verifiable without presupposing what it explains, mapped onto an
+  "interpretation must not become admission" architectural principle (D-1: the Kernel must not reason
+  "sentence S -> I understand S as P -> therefore P is the admitted claim"). Extends the corpus's existing
+  Question!=Claim distinction (0174, 0183) via Davidson's mood/force analysis into Form!=Force!=Epistemic-
+  Role (D-2): grammatical mood (indicative/imperative/interrogative/optative) does not determine the speech
+  act performed -- an indicative-looking LLM sentence need not be an assertion; it could be hypothesis,
+  quotation, simulation, or reported belief. Deepens provenance beyond content/source/timestamp into a
+  richer transformation-history model (origin/representation/observation-conditions/interpretation-
+  mechanism/transformation-history/authority), directly extending 0173's Shieber Lineage concept and
+  0185's own answer to "what transformations stand between the world and this admitted claim?" Applies
+  Davidson's holism (belief and meaning are interlocking, not independently inspectable from a single
+  utterance) as an "Isolation Attack" (D-3) against any assumption that a candidate carries enough self-
+  contained information to determine its own epistemic interpretation -- explicitly distinguishing semantic
+  dependence from consistency-boundary membership so this finding strengthens interpretation-context
+  requirements without implying the whole knowledge graph belongs inside one aggregate. Uses Davidson's
+  principle of charity (interpretation aims at the "right sort" of agreement, not maximal agreement) to
+  produce a "Charity Boundary" (D-4): coherence with existing knowledge may guide an interpreter but must
+  never silently become admission authority -- explicitly reinforcing the existing "identity assigned,
+  never derived" principle (C-1) rather than adding a new capability. Uses Davidson's reference-
+  inscrutability arguments (truth conditions need not settle unique expression-to-object mappings) to
+  produce "Representation Non-Sovereignty" (D-5): no representational scheme (JSON/RDF/natural-language/
+  AST/logical-form/vector-embedding/symbolic) gains epistemic authority merely because the Kernel happens
+  to use it internally -- framed as stronger than mere representation-agnostic intake: "representation is
+  infrastructure; epistemic authority is domain law." Uses Davidson's rejection of the scheme/content
+  dualism (no intelligible neutral, uninterpreted "raw content" awaiting organization by a conceptual
+  scheme) to produce a "Raw Evidence Fallacy" (D-6): KnowledgeOS must not assume evidence arrives
+  epistemically neutral and interpretation-free (selection/measurement/representation/categorization are
+  already interpretive acts) -- explicitly clarified as "the Kernel should not falsely claim that
+  interpretation did not happen," not a mandate for the Kernel to itself interpret. Produces a six-stage
+  saying-vs-asserting non-collapse chain (generated-text != asserted-claim != source-assertion != KnowledgeOS
+  -assertion != admitted-knowledge) mapped to EXPRESSION -> INTERPRETATION -> ASSERTION CANDIDATE ->
+  EPISTEMIC CANDIDATE -> ADMISSION -> KNOWLEDGE, with every arrow flagged as a potential authority
+  transition requiring its own Zero-lens "who is authorized?" question. Uses Davidson's treatment of
+  metaphor (words don't encode a hidden "metaphorical meaning"; speakers accomplish things through use, not
+  through additional semantic content in the words) to produce "Interpretation Preservation" (D-7):
+  interpretive output (e.g. an LLM paraphrase) must never silently overwrite the source expression that
+  occasioned it. Strengthens the identity-assigned-never-derived principle into "Semantic Equivalence
+  Cannot Assign Identity" (D-8): translation, paraphrase, reference equivalence, similarity, and
+  interpretive equivalence are all individually and collectively insufficient to establish KnowledgeId
+  identity, illustrated with a four-paraphrase worked example ("the server died" / "the server stopped
+  responding" / "host A failed its health checks" / "the machine became unavailable"). Produces the file's
+  most valuable single finding per its own ranking: "Pre-Epistemic Underdetermination" (D-9) --
+  interpretation uncertainty (what claim is even being made, illustrated with a sarcasm example) is
+  categorically different from epistemic uncertainty (whether a settled claim is true), and conflating them
+  by representing "which P?" indeterminacy as "is P true? UNKNOWN" is a category error -- explicitly flagged
+  as potentially materially strengthening the corpus's existing F-CM-1 ambiguity-vs-contradiction finding.
+  Identifies two topologically distinct boundaries (D-10): an interpretive boundary (expression -> candidate
+  meaning) and an epistemic boundary (candidate assertion -> admitted knowledge) which must not be
+  collapsed, since collapsing them concentrates both meaning-determination and knowledge-admission authority
+  in the same mechanism. Produces a ten-item anti-capability list D-A1..D-A10 (Kernel must not: derive
+  identity from semantic similarity, infer assertion from linguistic form alone, treat interpretation as
+  source fact, treat coherence as truth, treat agreement as truth, treat representational mapping as
+  authority, overwrite source expression with interpretation, convert interpretation uncertainty into truth
+  uncertainty, assume evidence is interpretation-free, or perform radical interpretation itself in order to
+  admit knowledge) -- explicitly characterized as "mostly ten reasons not to enlarge the Kernel." Applies a
+  DDD-lens argument that Davidson, if imported naively (InterpretationEngine/MeaningResolver/BeliefModel/
+  ContextModel/ReferenceResolver/CharityEvaluator/MetaphorInterpreter inside KnowledgeCore), would be
+  exactly wrong, and instead supports a smaller Kernel: "intelligence scales outward; epistemic authority
+  remains small." Formalizes all of the above into a compact, reusable "DAVIDSON LENS" template (primary
+  concern, non-collapse family, additional distinctions, Zero questions, DDD question, anti-reasoner test,
+  boundary hypothesis) explicitly saved for "the later Claude comparison" and explicitly NOT fed into the
+  current adjudication pass -- "more valuable as an independent falsification model after the current formal
+  decisions are frozen," a rare explicit statement of deliberate evidence-sequestration discipline.
+
+introduces:
+  - "The interpretation-must-not-become-admission principle (D-1), directly extending the corpus's anti-
+    reasoner boundary with a philosophically independent derivation from Davidson's radical-interpretation
+    programme"
+  - "Form != Force != Epistemic Role (D-2), extending Question!=Claim via Davidson's grammatical-mood-vs-
+    speech-act analysis: an indicative-looking generated sentence need not be an assertion (could be
+    hypothesis/quotation/simulation/reported-belief/generated-candidate)"
+  - "A richer provenance/transformation-history model (origin/representation/observation-conditions/
+    interpretation-mechanism/transformation-history/authority) answering 'what transformations stand
+    between the world and this admitted claim?'"
+  - "The Isolation Attack (D-3): does KnowledgeOS assume a candidate carries enough self-contained
+    information to determine its own epistemic interpretation? -- with an explicit DDD correction
+    distinguishing semantic dependence from consistency-boundary membership so the finding doesn't imply
+    aggregate over-inclusion"
+  - "The Charity Boundary (D-4): coherence with existing knowledge may guide interpretation but must never
+    silently become admission authority -- reinforces rather than extends the identity-assigned-never-
+    derived principle"
+  - "Representation Non-Sovereignty (D-5): no representational scheme gains epistemic authority merely
+    because the Kernel uses it internally -- 'representation is infrastructure; epistemic authority is
+    domain law,' stronger than mere representation-agnostic intake"
+  - "The Raw Evidence Fallacy (D-6): evidence never arrives epistemically neutral/interpretation-free; the
+    Kernel must not falsely claim interpretation did not happen, without itself being required to interpret"
+  - "A six-stage saying-vs-asserting non-collapse chain (generated-text/asserted-claim/source-assertion/
+    KnowledgeOS-assertion/admitted-knowledge all mutually distinct) mapped to an eight-stage pipeline
+    (Expression->Interpretation->Assertion Candidate->Epistemic Candidate->Admission->Knowledge)"
+  - "Interpretation Preservation (D-7): interpretive output (e.g. an LLM paraphrase or metaphor
+    resolution) must never silently overwrite the source expression that occasioned it"
+  - "Semantic Equivalence Cannot Assign Identity (D-8): translation, paraphrase, reference equivalence,
+    similarity, and interpretive equivalence are all insufficient (individually and jointly) to establish
+    KnowledgeId identity"
+  - "Pre-Epistemic Underdetermination (D-9), the file's own top-ranked finding: interpretation uncertainty
+    (what claim is being made) is categorically distinct from epistemic uncertainty (whether a settled
+    claim is true); conflating them by resolving 'which P?' indeterminacy as 'P is UNKNOWN' is a category
+    error -- explicitly flagged as potentially materially strengthening F-CM-1"
+  - "Boundary Separation (D-10): two topologically distinct boundaries -- an interpretive boundary
+    (expression->candidate meaning) and an epistemic boundary (candidate->admitted knowledge) -- must not
+    be collapsed, since collapsing them concentrates meaning-determination and knowledge-admission
+    authority in the same mechanism"
+  - "A ten-item anti-capability list D-A1..D-A10 explicitly characterized as reasons not to enlarge the
+    Kernel rather than new capabilities to add"
+  - "A compact, reusable, formally templated 'DAVIDSON LENS' model (concern/non-collapse-family/additional-
+    distinctions/Zero-questions/DDD-question/anti-reasoner-test/boundary-hypothesis) explicitly reserved
+    for a later cross-agent ('Claude') comparison and deliberately withheld from the current adjudication
+    pass -- a rare, explicit instance of the corpus's own evidence-sequestration discipline (preserving a
+    falsification model as independent of the process it will later test)"
+
+defines: []
+
+refines:
+  - "Extends the Question!=Claim distinction (0174, 0183) into the richer Form!=Force!=Epistemic-Role
+    triad via Davidson's mood/speech-act analysis"
+  - "Extends 0173's Shieber Lineage/Source concepts and 0182's Reference!=Assertion family into a full
+    transformation-history provenance model"
+  - "Materially strengthens F-CM-1 (ambiguity != contradiction) via the Pre-Epistemic-Underdetermination
+    finding (D-9), explicitly flagged by the source as one of its strongest contributions"
+  - "Reinforces (rather than extends) the identity-assigned-never-derived principle (C-1) via D-4 and D-8"
+
+contradicts: []
+
+repeats:
+  - {concept: "Identity assigned, never derived", canonical_source: "0087", novelty: low}
+  - {concept: "Mechanism outputs must remain candidates, never domain authority", canonical_source: "0087", novelty: low}
+  - {concept: "Explicit named cross-AI/cross-agent coordination reference ('Claude')", canonical_source: "0169", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- the file itself explicitly withholds this material from the current adjudication pass,
+    preserving it as an independent falsification model for later use; consistent with the corpus's
+    external-insight -> candidate -> validation -> law discipline"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Strengthens F-CM-1 and the identity/anti-reasoner boundary via nine independently-derived findings; explicitly declines to enlarge the Kernel, arguing instead for keeping interpretation outside it entirely."
+  alternative_minimal_kernel: "none -- explicit boundary hypothesis: interpretation belongs outside the smallest Kernel; the Kernel may protect an interpretation's provenance/authority without becoming its author"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Explicit statement of deliberate evidence-sequestration methodology: 'I would definitely preserve this
+    Davidson model for the later Claude comparison. I would not feed it into the current adjudication yet.
+    It is much more valuable as an independent falsification model after the current formal decisions are
+    frozen.' This is a rare, self-aware instance of the corpus's own research process protecting a
+    falsification instrument's independence -- directly analogous to this reconstruction's own discipline
+    of not merging findings prematurely (MD-017) and gating cross-model comparison until the full corpus is
+    read (protocol section 29)"
+  - "The Pre-Epistemic-Underdetermination finding (D-9) is, by the source's own ranking, its most valuable
+    contribution and a direct, material strengthening of F-CM-1 -- worth prioritizing if this
+    reconstruction's own eventual synthesis phase revisits F-CM-1's adjudication status"
+  - "Sixth independent Western philosophical tradition engaged in this stretch (after Williamson, Audi,
+    Shieber, Quine, Wittgenstein, Cavell), and the most disciplined/self-adjudicated of them all --
+    confirms an escalating rigor pattern across this run of files"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the reserved 'Davidson Lens' template is ever actually deployed in the later cross-agent
+    ('Claude') comparison the source explicitly anticipates, and what that comparison finds"
+  - "Whether D-9's Pre-Epistemic-Underdetermination finding is formally incorporated into F-CM-1's
+    adjudication in a later file"
+
+tier2_triggered: true
+tier2_reason: >
+  Nine independently-derived, well-adjudicated findings (D-1..D-10) including a materially F-CM-1-
+  strengthening result (D-9); a reusable formally-templated Davidson Lens explicitly reserved for a later
+  cross-agent comparison; a rare explicit statement of deliberate evidence-sequestration methodology.

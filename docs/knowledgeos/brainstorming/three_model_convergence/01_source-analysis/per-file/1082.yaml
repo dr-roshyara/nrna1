@@ -1,0 +1,77 @@
+sequence: 1082
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/05_dependency-graph.md
+title: "05 -- Dependency Graph, Recomputed (Step 291 mandate SS9): CLOSES FILE 1075'S OPEN QUESTION -- the {equiv} Unique Minimal Bootstrap Cut SURVIVES the Full O/T/O_K Three-Way Separation (29 Nodes, 44 Edges, Exactly 3 Cycles as Step 290 Predicted), and Measures Precisely 7 Edges That Become Traversable When {O,T,O_K} Is Cut Instead"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the fifth numbered Step-291 prose artifact, reporting the executed output of the already-tracked t291_bootstrap.py script (file 1075)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1082
+importance: critical
+confidence: high
+about: >
+  "05 — Dependency Graph, Recomputed (mandate §9)." Reports the executed output of `exec/t291_bootstrap.py`
+  (already tracked as file 1075's script), the first fully three-way-separated (`𝒪`, `𝒯`, `𝒪_K` distinct)
+  dependency-graph audit of the entire equality/kernel research programme: 29 nodes, 44 edges.
+
+  **DIRECTLY CLOSES FILE 1075'S OPEN QUESTION, CONFIRMING WITH FRESH MEASUREMENT THAT THE ALREADY-TRACKED
+  `{≡}` UNIQUE MINIMAL BOOTSTRAP CUT (files 1052, 1069) SURVIVES THE FULL THREE-WAY SEPARATION**: cycles drop
+  from Step 289's 4 to exactly 3 (matching Step 290's already-tracked prediction, file 1069, verbatim: "Step
+  290's prediction confirmed independently... Measured: 3"); `{≡}` remains acyclic and is reconfirmed the
+  UNIQUE size-1 cut, now "over 13 resolvable nodes"; `𝒪`, `𝒯`, and `𝒪_K` are each measured to be in ZERO of
+  the three cycles (`𝒪_K` measured for the first time as a separated node, confirming it is not itself
+  cycle-bearing); `≡` remains in all three cycles. Lists the three cycles explicitly: `congruence→≡→
+  congruence`; `congruence→≡→δ→congruence`; and the already-tracked Z-3-lineage cycle now remodelled as
+  `≈→≡_cand→≡→bindings→≈` (the candidate-edge remodelling directly implementing file 1069's Z-1 correction).
+
+  **DELIVERS A GENUINELY IMPORTANT NEW STRUCTURAL MEASUREMENT NOT PREVIOUSLY QUANTIFIED**: "Cutting ALL THREE
+  of `𝒪`, `𝒯`, `𝒪_K` STILL LEAVES THE GRAPH CYCLIC" -- directly confirmed by probe (`cut ['O','O_K','T'] ->
+  False`), reinforcing the already-tracked acyclicity-boundary-vs-derivation-boundary distinction (file 1052)
+  with fresh, more precise evidence: the derivation boundary `{𝒪,𝒯,𝒪_K}` unblocks exactly SEVEN named edges
+  when cut (`𝒯→δ`, `𝒪_K→≈`, `𝒪→Π`, `𝒪→bindings`, `𝒪→assess_det`, `𝒯→congruence`, `𝒯→≡_𝒯`) while leaving the
+  equality cycles fully intact. Boxed capstone, sharpest formulation yet of this already-tracked distinction:
+  "`{≡}` breaks the CYCLES; `{𝒪,𝒯,𝒪_K}` unblocks the DERIVATION. Different structural roles, neither
+  substitutable."
+
+  **DELIVERS A DISCIPLINED §18 DEGENERACY CHECK CONFIRMING THE ZERO-RESULTS ARE SUBSTANTIVE**: "Recorded
+  because the `≈_∅` incident makes this mandatory" -- directly citing the already-tracked degeneracy-audit
+  discipline established after the universal/discrete degenerate-endpoint discovery (files 1057-1058, 1068,
+  1077).
+
+  Confirms the STATUS block's honest closing admission: "UNKNOWN whether edges this list omits exist" --
+  maintaining the disciplined scope-limitation already established across the entire bootstrap-cut research
+  thread (files 1052, 1075).
+introduces:
+  - concept: "The fresh, three-way-separated confirmation that {equiv} remains the unique minimal bootstrap cut across 29 nodes and 44 edges, with O_K measured for the first time as a non-cycle-bearing node (0 of 3 cycles)"
+  - concept: "The precise measurement that cutting the full derivation boundary {O,T,O_K} still leaves the equality cycles intact, while unblocking exactly seven named derivation edges -- the sharpest quantified formulation yet of the acyclicity-boundary-vs-derivation-boundary distinction"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Step-289 bootstrap-cut minimal-cut result and its acyclicity-vs-derivation-boundary distinction (file 1052), and file 1075's pending open question of whether {equiv} survives the O/T/O_K separation"
+    refinement: "CONFIRMED WITH FRESH MEASUREMENT: {equiv} remains the unique minimal cut across the fully-separated 29-node, 44-edge graph, with exactly 3 cycles (matching Step 290's prediction, file 1069) and 7 named edges unblocked by the separate derivation-boundary cut"
+contradicts: []
+repeats:
+  - "Reconfirms and closes the already-tracked file-1075 open question about whether {equiv} survives the O/T/O_K separation."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the fresh confirmation that {equiv} remains the unique minimal bootstrap cut across the fully O/T/O_K-separated 29-node, 44-edge dependency graph (3 cycles, matching Step 290's prediction), and the precise 7-edge measurement for the separate derivation-boundary cut."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step-289 minimal-cut result and acyclicity-vs-derivation-boundary distinction (file 1052), and file 1075's pending open question"
+  supports_dimension: "Confirms with fresh, precise measurement that the minimal cut survives the full three-way node separation, closing file 1075's open question"
+  refines_or_contradicts: "refines (confirms and sharpens with fresh measurement) the prior tracked finding"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The 29-node/44-edge graph, the 3-cycle count, and the {equiv} unique-cut confirmation are directly checkable against file 1075's already-read script source and file 1069's already-tracked cycle-count prediction for exact consistency."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Closes file 1075's pending open question with fresh, precise measurement confirming the already-tracked {equiv} unique minimal bootstrap cut survives the full O/T/O_K three-way separation, exactly matching Step 290's predicted 3-cycle count, and delivers the sharpest quantified formulation yet of the acyclicity-boundary-vs-derivation-boundary distinction (7 named edges unblocked). Classified importance critical and confidence high given the definitive, well-evidenced confirmation of a load-bearing prior result."

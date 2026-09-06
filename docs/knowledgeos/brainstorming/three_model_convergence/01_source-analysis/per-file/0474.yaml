@@ -1,0 +1,141 @@
+sequence: 474
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-175458_question-9-what-is-a-conflict-and-how-is-it-resolved.md
+title: "LANDMARK: Question 9 (Conflict) Answered and Substantially Refined — Conflict-of-Assertions≠Conflict-of-Implications, Temporal/Contextual Conflict Demoted to Frame Parameters, Six Distinct Resolution Outcomes (Resolution≠Elimination), and Reframe(K,C)→K' Introduced as a New First-Class Operation Grounded in the Krishna/Sārathi 'Knowledge Transformation' Principle"
+date: "2026-08-26"
+bytes: 22698
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the Krishna/Sārathi 'changes the conceptual frame, not merely chooses a side' insight is elevated into a formal Reframe operation grounding a major new KnowledgeOS principle"
+source_role: PRIMARY_RESEARCH
+canonical_source: 474
+importance: critical
+confidence: high
+about: >
+  Answers 0472's Question 9 (What is a Conflict, and how is it resolved?), building directly on Coherence's
+  Conflict!=Incoherence principle, then undergoes a dense critical refinement.
+
+  **Part A (initial answer)** defines Conflict as "a situation in which two or more assertions cannot both
+  be fully accepted within the same scope/context/temporal framework, or generate incompatible implications
+  for the Knower's purpose," with the key insight **Conflict != Incoherence**. Proposes **five conflict
+  types** -- Logical Contradiction, Normative Conflict, Epistemic Conflict, Temporal Conflict, Contextual
+  Conflict -- each formalized and paired with resolution strategies, plus a Conflict tuple
+  (Type,Assertions,Status,Evidence,Resolution,tau) and a simple Detected->Active->InProgress->Resolved/
+  Unresolvable lifecycle. Works the Bhīṣma normative-conflict example through to a "Resolved" status via
+  reinterpretation ("Arjuna's duty to kingdom is his duty to dharma").
+
+  **Part B (critical review)** delivers roughly a dozen substantive corrections. First, **splits Conflict
+  into two distinct levels**: **Conflict_A(A1,A2)** (the assertions themselves cannot jointly be accepted
+  under the same frame) versus **Conflict_I(I1,I2|P,K,C)** (the assertions may both be true, but their
+  *derived implications* create competing requirements for the Knower) -- worked precisely via Bhīṣma:
+  Grandfather(Bhishma,Arjuna) AND Opponent(Bhishma,Arjuna) is perfectly satisfiable (no assertion-level
+  conflict), while the real tension is between the derived implications "protect grandfather" and "fight
+  opponent." States the resulting invariant **Conflict(A1,A2) != Conflict(Implication(A1),Implication(A2))**
+  as fundamental -- this precisely mechanizes WHY Normative Conflict differs from Logical Contradiction.
+
+  **Demotes Temporal and Contextual Conflict from independent conflict types to conditions of an applicable
+  Frame**: apparent temporal/contextual "conflicts" (different versions at different times; different
+  values in different environments) are usually not conflicts at all once the frame is properly accounted
+  for. Reformulates: **Conflict = ContentConflict + ApplicableFrame**, with Frame F=(Scope,Context,Time,
+  Purpose) and Conflict(A1,A2|F) -- reducing the taxonomy to three genuine conflict kinds (Logical,
+  Normative, Epistemic) parameterized by a shared frame, rather than five independent types.
+
+  Distinguishes **EvidenceConflict(E1,E2,P) from AssertionConflict**: conflicting evidence sources do not
+  automatically mean the underlying assertions conflict -- timestamps, scope, source authority, observation
+  method, and semantics must be considered first, "exactly where Zero becomes powerful."
+
+  **Delivers the file's biggest correction**: **Resolution != Elimination**. Introduces **six distinct
+  resolution outcomes** -- **Eliminated** (the conflict was only apparent), **Decided** (one side selected
+  by rule), **Reframed** (the conflict disappears after introducing a new dimension), **Accepted**
+  (consciously retained, not resolved), **Deferred** (left to a later Knower decision), and **Irreducible/
+  Unresolved** (genuinely remains) -- formalized as Resolve(C) -> {Eliminated,Decided,Reframed,Accepted,
+  Deferred,Unresolved}, explicitly rejecting the "one side wins" framing used throughout Part A.
+
+  **Delivers a philosophically profound re-reading of the Gita example**: rejects encoding "Arjuna's duty to
+  kingdom is his duty to dharma" as simply "Resolved," arguing that Krishna does not choose between Family
+  and Kingdom -- he **changes the conceptual frame** through which Arjuna understands the problem; the
+  original assertions remain true, only their meaning and relationship within the model change. States the
+  major new KnowledgeOS principle: **"Some conflicts are resolved by knowledge transformation, not merely by
+  evidence selection."** Introduces a new first-class operation, **Reframe(K,C) -> K'**, which can add a new
+  dimension, reinterpret an existing dimension, add a new relationship, change the applicable purpose, or
+  change the normative model, such that Conflict(K,C) -[Reframe]-> Conflict(K',C') can reach empty *without*
+  rejecting either original observation -- explicitly named as "exactly what we need to explain the
+  transition from Arjuna's initial understanding to Krishna's guidance."
+
+  Sharpens the lens triad with Reframe added to Sārathi's action vocabulary (Zero=Detect; Lord=Expand;
+  Sārathi=Navigate, now including Reframe alongside Ask/Investigate/CollectEvidence/Compare/Defer/Escalate;
+  Knower=Decide). Delivers a DDD correction: **Conflict is a domain object; ConflictDetection/
+  ConflictClassification/ConflictResolution/Reframing are domain operations/capabilities**, explicitly
+  warning against flattening the ontology by treating LogicalConflict, NormativeConflict, Zero, Sārathi, and
+  Lord as equal-level domain entities. Revises the conflict lifecycle from a linear
+  Detected->Active->InProgress->Resolved/Unresolvable sequence into a branching model
+  (Detected->Classified->Evaluated->{Apparent->Reframed/Eliminated; Evidence-based->Investigate;
+  Normative->Deliberate; Contextual->Scope; Genuine->RemainActive->{Resolved,Deferred,Accepted}}), with the
+  new invariant **Accepted != Resolved**. Formalizes a complete four-stage transition system:
+  K_t -[Detect]-> C_t -[Classify]-> C_t* -[Navigate]-> e_t -[Apply]-> K_{t+1}.
+
+  **Identifies three fundamentally different, orthogonal uncertainty-reduction mechanisms**: Evidence
+  acquisition (K_t -[Evidence]-> K_{t+1}), Dimension discovery (K_t -[NewDimension]-> K_{t+1}), and
+  Reframing (K_t -[Reframe]-> K_{t+1}) -- observing that "more evidence is not always the solution":
+  sometimes the wrong question is being asked, sometimes the right facts exist under the wrong dimensions,
+  sometimes the right dimensions lack sufficient evidence -- "exactly where your Gita-derived model becomes
+  more interesting than a conventional knowledge graph." Closes marking Question 9 "🟡 Accepted as a strong
+  working model, but not yet frozen," with six invariants (Conflict!=Incoherence; Conflict!=Contradiction;
+  EvidenceConflict!=AssertionConflict; Resolution!=Elimination; Acceptance!=Resolution; some conflicts
+  require Reframing), and launches **Question 10 -- What is a Gap, and how is a Gap different from a
+  Conflict?**, flagged as especially important since Zero operates on both.
+introduces:
+  - concept: "Conflict-of-assertions != Conflict-of-implications: Conflict_A(A1,A2) (assertions cannot jointly be accepted) versus Conflict_I(I1,I2|P,K,C) (both assertions true, but their derived implications compete) -- mechanizing why Normative Conflict differs from Logical Contradiction"
+  - concept: "Temporal and Contextual Conflict demoted from independent conflict types to conditions of a shared Frame F=(Scope,Context,Time,Purpose): Conflict = ContentConflict + ApplicableFrame, Conflict(A1,A2|F)"
+  - concept: "EvidenceConflict != AssertionConflict: conflicting evidence sources do not automatically imply the underlying assertions conflict"
+  - concept: "Resolution != Elimination: six distinct resolution outcomes (Eliminated, Decided, Reframed, Accepted, Deferred, Unresolved), rejecting a simple 'one side wins' model"
+  - concept: "Major new principle: some conflicts are resolved by knowledge transformation (reframing the conceptual model), not merely by evidence selection -- grounded in a re-reading of Krishna's guidance as reframing, not side-selection"
+  - concept: "New first-class operation Reframe(K,C) -> K': can add/reinterpret dimensions, add relationships, or change purpose/normative model, potentially dissolving a conflict without rejecting either original observation"
+  - concept: "DDD correction: Conflict is a domain object; ConflictDetection/Classification/Resolution/Reframing are domain operations/capabilities, not equal-level entities alongside Zero/Lord/Sārathi"
+  - concept: "Revised branching conflict lifecycle (Detected->Classified->Evaluated->{Apparent/Evidence-based/Normative/Contextual/Genuine}->...->{Resolved,Deferred,Accepted}), with Accepted != Resolved"
+  - concept: "Complete four-stage conflict transition system: K_t -[Detect]-> C_t -[Classify]-> C_t* -[Navigate]-> e_t -[Apply]-> K_{t+1}"
+  - concept: "Three orthogonal uncertainty-reduction mechanisms identified: Evidence acquisition, Dimension discovery, and Reframing -- more evidence is not always the fix; sometimes the question, the dimensions, or the conceptual frame itself is wrong"
+  - concept: "Question 10 launched: What is a Gap, and how does it differ from a Conflict? -- flagged as essential since Zero operates on both"
+defines:
+  - concept: "Conflict (two-level, corrected)"
+    definition: "Conflict_A(A1,A2): the assertions themselves cannot jointly be accepted under a shared frame F=(Scope,Context,Time,Purpose); distinct from Conflict_I(I1,I2|P,K,C): the assertions may both be true while their derived implications compete for the Knower"
+  - concept: "Reframe (new operation)"
+    definition: "Reframe(K,C) -> K': transforms the knowledge model itself (new/reinterpreted dimensions, new relationships, changed purpose or normative model) such that a prior conflict may dissolve without either original assertion being rejected"
+  - concept: "Resolve (six-outcome)"
+    definition: "Resolve(C) -> {Eliminated, Decided, Reframed, Accepted, Deferred, Unresolved}: conflict resolution is not reducible to 'one side wins'"
+refines:
+  - concept: "0472's five-way conflict/relation taxonomy and Question 9 launch (four named conflict forms)"
+    refinement: "Reduced to three genuine conflict kinds (Logical, Normative, Epistemic) parameterized by a shared Frame, with Temporal/Contextual reclassified as frame conditions rather than independent conflict types"
+  - concept: "0466/0468/0470's various Conflict formalizations (six-way relation taxonomy, relational Conflict(P1,P2,NormativeContext), generalized Conflict(P1,P2,C,τ,D))"
+    refinement: "Converges toward Conflict(A1,A2|F) with F=(Scope,Context,Time,Purpose), and further sharpened via the assertion-vs-implication split"
+  - concept: "0429-0446's Krishna/Sārathi Gita-narrative architecture"
+    refinement: "Given a precise new formal mechanism: Krishna's guidance is modeled as a Reframe operation transforming the conceptual model, not a side-selection between competing assertions"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Conflict-of-assertions!=Conflict-of-implications split and the demotion of Temporal/Contextual conflict to Frame parameters."
+  - "dimension-registry.md: record Resolution!=Elimination (six resolution outcomes) and the new Reframe(K,C)->K' operation grounded in the Krishna/Sārathi 'knowledge transformation' principle."
+  - "dimension-registry.md: record the three orthogonal uncertainty-reduction mechanisms (Evidence/DimensionDiscovery/Reframing) and Question 10's launch (Gap vs. Conflict)."
+anchor_test:
+  anchor: "0472's Coherence!=ConflictFree principle and Question 9 launch; 0429-0446's Krishna/Sārathi Gita-narrative architecture; 0466/0468/0470's overlapping Conflict formalizations"
+  supports_dimension: "LANDMARK: splits Conflict into assertion-level and implication-level forms, demotes Temporal/Contextual conflict to Frame parameters, replaces a naive 'resolution=elimination' model with six distinct outcomes, and introduces a new first-class Reframe operation directly grounded in a philosophically deepened re-reading of Krishna's guidance as conceptual-frame transformation rather than side-selection -- identifying three orthogonal uncertainty-reduction mechanisms and launching Question 10 (Gap vs. Conflict)"
+  refines_or_contradicts: "refines 0472's conflict taxonomy and 0466/0468/0470's overlapping Conflict formalizations into a unified Conflict(A1,A2|F) model; gives the Gita-narrative Krishna/Sārathi architecture (0429-0446) a precise new formal operation (Reframe); no unresolved contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Reuses the Bhīṣma grandfather/opponent worked example to precisely distinguish assertion-level compatibility from implication-level conflict, and reinterprets Krishna's guidance as a Reframe rather than a side-selection"
+undefined_concepts: []
+open_questions:
+  - "Question 10 (What is a Gap, and how does it differ from a Conflict?) -- launched here, not yet answered"
+  - "Whether the new Reframe(K,C)->K' operation is formally integrated into the corpus's consolidated operation lists (alongside Zero/Lord/Sārathi/Compare/Challenge/Update/Preserve) in a future retrospective"
+  - "Whether the three orthogonal uncertainty-reduction mechanisms (Evidence/DimensionDiscovery/Reframing) are later formalized into a single unified epistemic-action theory"
+tier2_triggered: true
+tier2_reason: "Splits Conflict into assertion-level and implication-level forms (mechanizing why Normative Conflict differs from Logical Contradiction), demotes Temporal/Contextual conflict to Frame parameters, replaces a naive resolution=elimination model with six distinct outcomes, and introduces a philosophically significant new first-class Reframe operation directly grounded in a deepened re-reading of Krishna's guidance as conceptual-frame transformation -- identifying three orthogonal uncertainty-reduction mechanisms and launching Question 10 (Gap vs. Conflict)."

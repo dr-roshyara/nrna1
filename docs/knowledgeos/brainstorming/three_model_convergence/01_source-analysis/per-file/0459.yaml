@@ -1,0 +1,125 @@
+sequence: 459
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-171848_architectural-ownership-of-semantic-reconstruction.md
+title: "0458's DDD Boundary Fully Formalized, Then the Corpus's First Concrete Technology-Stack Recommendation: Rust + Tree-sitter for the Semantic Reconstruction Engine, With Type-System-Enforced Zero-Uncertainty and an LLM≠Knowledge Invariant"
+date: "2026-08-26"
+bytes: 25730
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "Sanskrit lens explicitly retained as a replaceable, learning-only implementation port (SanskritLens) inside the Rust-based Semantic Parser interface, never the domain model itself"
+source_role: PRIMARY_RESEARCH
+canonical_source: 459
+importance: high
+confidence: high
+about: >
+  A two-part file. **Part 1** fully agrees with and mathematically formalizes 0458's architectural boundary
+  decision, restating it symbolically: KnowledgeOS ⊃ SemanticReconstruction ⊃ Parsing; Parser ⊂
+  Implementation of SemanticReconstruction; the invariant KnowledgeOS != Parser / Parser ∈ KnowledgeOS's
+  Implementation. Produces a fully detailed architecture diagram (Semantic Reconstruction Capability with
+  Structural Analysis/C-type lens and Semantic Role Analysis/Sanskrit lens sub-boxes -> Dimension Discovery
+  Capability, incorporating Zero/Lord -> Investigation Capability/Sārathi -> Knowledge Model with Observation/
+  Dimension/Statement/Value/Relationship/Evidence contracts). Restates the DDD dependency rule
+  (SemanticReconstruction -> SemanticRepresentation; Parser -> SemanticRepresentation;
+  SemanticReconstruction NOT-IMPLIES CParser or SanskritParser) and a formal capability contract
+  Reconstruct(Q,C,K) -> S with four named sub-capabilities (Structural Analysis, Semantic Role Analysis,
+  Reference Resolution, Context Extraction -- notably omitting Modality Analysis, present in 0456/0458's
+  five-way lists, a minor taxonomy variance). Gives three explicit reasons parsing engines must remain
+  replaceable (technological evolution -- future LLM/neural parsers; domain adaptation -- different parsers
+  per domain; research/learning -- learning from multiple grammatical traditions without dependency lock-in),
+  and formalizes the Learning Principle: KnowledgeOS <- LearnFrom(Sanskrit Grammar); KnowledgeOS !=
+  Implement(Sanskrit Grammar). Frames parser physical placement (in-process / separate service / external
+  library, with an explicit pros/cons table) as an implementation/infrastructure decision explicitly
+  independent of and deferred relative to the architecture. Proposes Question 3 (Statement) next, this time
+  explicitly requiring "associated epistemic status, evidence, and temporal validity" as part of a
+  Statement's definition -- directly consistent with 0457's reformulation.
+
+  **Part 2** delivers the corpus's **first concrete implementation-technology recommendation**: proposes
+  **Rust** as the core KnowledgeOS Semantic Reconstruction engine, preferred over C for a new implementation
+  while explicitly retaining "the C/Unix parser philosophy" (lexer -> parser -> AST). Introduces a
+  terminology-clarifying distinction not previously stated: **"C-type parser" != "parser implemented in C"**
+  -- the former names an architectural pattern (deterministic structural decomposition), the latter a literal
+  implementation-language choice; this resolves a latent ambiguity carried since 0456. Lists eight desired
+  parser properties (deterministic, structurally explicit, fast, memory-safe, AST/semantic-representation-
+  producing, suitable for a long-running service, extensible with multiple lenses, and -- most
+  architecturally significant -- **able to preserve uncertainty rather than silently resolve it**) and argues
+  Rust satisfies all of them. Sketches a strongly-typed `SemanticRepresentation` struct (entities, actions,
+  relations, modalities, contexts, unresolved) to establish the property "Parser Output is a typed semantic
+  representation," not an arbitrary JSON blob.
+
+  Identifies a genuinely valuable architectural insight: **Rust's type system is particularly suitable for
+  the Zero Lens**, because instead of a parser silently resolving ambiguity (e.g. "those" -> assume
+  "opponents"), the representation can explicitly encode `UnresolvedReference{expression, possible_targets,
+  status: Unknown}` -- formalized as Parser -> Uncertainty rather than Parser -> Guess, "fits our Zero
+  principle extremely well." This makes epistemic-boundary preservation a **structural, type-level
+  guarantee** rather than a downstream convention. Sketches an `EpistemicStatus` enum
+  (Unknown/Observed/Reported/Inferred/Assumed/Conflicting/Unresolved) modeling the CandidateDimension ->
+  DimensionAssessment -> {accepted, uncertain, rejected} lifecycle from 0455, directly connected to but not
+  identical to 0457's six-value epistemic-status list (renames CONTESTED to Conflicting and adds a separate
+  Unresolved value alongside Unknown -- a minor vocabulary drift worth tracking).
+
+  Proposes a `SemanticParser` interface with pluggable ports (StructuralParser, SanskritLens, DomainParser,
+  FutureParser) each producing the same intermediate semantic representation, merged as
+  SR=Merge(SR_struct,SR_semantic,SR_domain), with Dimension Discovery explicitly operating on the merged SR,
+  "not directly on the parser" -- technically reinforcing 0458's ownership boundary. Names **Tree-sitter**
+  as a concrete candidate structural-parsing engine paired with Rust as the surrounding Semantic
+  Reconstruction engine (NL -> Tree-sitter/structural analysis -> Rust semantic reconstruction -> Sanskrit
+  semantic-role lens -> Unified Semantic Representation -> Dimension Discovery), avoiding "reinventing a
+  parser generator." Reaffirms that the domain architecture must be KnowledgeOS/SemanticReconstructionCapability
+  /{Structural Analysis Port, Semantic Analysis Port, Domain Analysis Port, Reference Resolution Port}, never
+  KnowledgeOS/RustParser, formalized as Capability-contract > implementation-technology. Closes with a
+  ten-row recommendation table (Rust for the core engine and semantic reconstruction; Tree-sitter or a Rust
+  parser framework for structural parsing; Rust implementation/prototype plus external linguistic resources
+  for the Sanskrit lens; Dimension Discovery/Zero/Lord/Sārathi as native KnowledgeOS capabilities; **LLM as
+  an optional analytical provider, explicitly NOT the source of truth**) and states a new, generalizable
+  invariant: **LLM != Knowledge** -- an LLM may propose a semantic interpretation, but KnowledgeOS must
+  preserve what was parsed, what was inferred, what remains unresolved, and what evidence supports it,
+  extending 0457's "Zero and Lord are Sources, Not Authorities" invariant explicitly to LLMs. Confirms the
+  research sequence: define the Semantic Representation contract first, then design the Rust parser around
+  it -- contract-first, not implementation-first.
+introduces:
+  - concept: "First concrete implementation-technology recommendation in the corpus: Rust for the core Semantic Reconstruction engine, with Tree-sitter as a candidate structural-parsing engine, explicitly retaining 'the C/Unix parser philosophy' rather than literal C"
+  - concept: "Terminology clarification: 'C-type parser' (an architectural pattern) != 'parser implemented in C' (a literal language choice) -- resolves a latent ambiguity present since 0456"
+  - concept: "Rust's type system proposed as a structural, type-level enforcement mechanism for the Zero principle: Parser->Uncertainty (explicit UnresolvedReference type) rather than Parser->Guess (silent ambiguity resolution)"
+  - concept: "SemanticParser interface with pluggable ports (StructuralParser, SanskritLens, DomainParser, FutureParser), each producing a common intermediate representation merged via SR=Merge(SR_struct,SR_semantic,SR_domain), with Dimension Discovery operating only on the merged SR"
+  - concept: "New generalizable invariant: LLM != Knowledge -- an LLM is an optional analytical provider that may propose interpretations, never the source of truth; KnowledgeOS must independently preserve parsed/inferred/unresolved/evidentiary status, extending 0457's Zero-and-Lord-are-sources-not-authorities principle explicitly to LLMs"
+  - concept: "Confirmed contract-first research sequence: define the Semantic Representation contract before designing any concrete (Rust) parser implementation around it"
+defines:
+  - concept: "LLM != Knowledge (invariant)"
+    definition: "An LLM may propose a semantic interpretation of natural-language intent, but is an optional, replaceable analytical provider, never an authority; KnowledgeOS must independently track what was parsed, what was inferred, what remains unresolved, and what evidence supports each element"
+refines:
+  - concept: "0458's DDD architectural boundary (Semantic Reconstruction/Dimension Discovery native; parsers replaceable)"
+    refinement: "Fully formalized symbolically with a detailed layered architecture, an explicit capability contract Reconstruct(Q,C,K)->S, and three named reasons parsers must remain replaceable"
+  - concept: "0456/0457's C-type parser lens"
+    refinement: "Clarified as an architectural pattern distinct from any specific implementation language, then concretely proposed to be implemented in Rust (with Tree-sitter for structural parsing) while preserving that pattern"
+  - concept: "0455's CandidateDimension->DimensionAssessment lifecycle and 0457's six-value epistemic-status list"
+    refinement: "Given a concrete Rust enum sketch (EpistemicStatus), with a minor terminology drift (Conflicting replacing Contested; Unresolved added alongside Unknown) flagged for later reconciliation"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - concept: "0457's six-value epistemic-status list (OBSERVED/REPORTED/INFERRED/ASSUMED/CONTESTED/UNKNOWN) vs. this file's seven-value EpistemicStatus enum sketch (Unknown/Observed/Reported/Inferred/Assumed/Conflicting/Unresolved) -- unresolved_equivalence, minor vocabulary drift to track"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the corpus's first concrete technology-stack recommendation (Rust + Tree-sitter) for the Semantic Reconstruction engine, and the type-system-as-Zero-enforcement architectural insight."
+  - "dimension-registry.md: record the new LLM!=Knowledge invariant, extending Zero/Lord's sources-not-authorities principle to LLMs."
+  - "dimension-registry.md: flag the minor epistemic-status vocabulary drift between 0457's six-value list and this file's seven-value Rust enum sketch."
+anchor_test:
+  anchor: "0458's DDD architectural boundary; 0457's Zero-and-Lord-are-sources-not-authorities invariant and six-value epistemic-status list; 0455's CandidateDimension/DimensionAssessment lifecycle"
+  supports_dimension: "Fully formalizes 0458's architectural boundary, then makes the corpus's first concrete implementation-technology commitment (Rust + Tree-sitter), identifies a genuine architectural insight (type-system-enforced Zero uncertainty preservation), and extends the sources-not-authorities discipline to LLMs via a new LLM!=Knowledge invariant"
+  refines_or_contradicts: "refines 0458's architectural boundary into a concrete technology recommendation; no contradiction, though a minor epistemic-status vocabulary drift versus 0457 is flagged"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Continues the Arjuna 'Show me those with whom I have to fight' test sentence into a concrete Rust UnresolvedReference example ('those' left explicitly unresolved rather than guessed)"
+undefined_concepts: []
+open_questions:
+  - "Whether the Rust/Tree-sitter technology recommendation is ever revisited, prototyped, or superseded later in the corpus"
+  - "Whether the seven-value EpistemicStatus enum sketch here is ever formally reconciled with 0457's six-value epistemic-status list"
+  - "Whether the LLM!=Knowledge invariant is later numbered into one of the corpus's formal invariant catalogs (ZI-/LL-/INV-KOS-)"
+tier2_triggered: true
+tier2_reason: "First concrete implementation-technology recommendation in the corpus (Rust + Tree-sitter) for the Semantic Reconstruction engine; identifies a genuinely valuable architectural insight using a strongly-typed language to enforce Zero's uncertainty-preservation structurally; introduces a new, generalizable LLM!=Knowledge invariant extending the sources-not-authorities discipline to LLMs specifically."

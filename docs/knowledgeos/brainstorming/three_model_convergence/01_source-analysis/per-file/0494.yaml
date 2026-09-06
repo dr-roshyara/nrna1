@@ -1,0 +1,197 @@
+sequence: 494
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-231807_correction-chapter-3-is-not-primarily-an-epistemic-chapter.md
+title: "LANDMARK SELF-CORRECTION of 0493: New Four-Stage Source-to-Formalization Discipline Gate (Observation→Semantic Concept→Architectural Inference→Formalization); Discrepancy Demoted From a Fixed Orthogonal Vector to a Typed Set of Findings; Senses<Mind<Intelligence<Self and Smoke/Dust/Embryo Explicitly Rejected as Epistemic-Hierarchy Evidence; Eight Overreaches from 0493 Explicitly Un-Frozen"
+date: "2026-08-26"
+bytes: 33209
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "explicitly re-grades 0493's own analysis across ten dimensions (A to C+), diagnosing the core weakness as premature promotion of good concepts directly into mathematical dimensions without an intermediate architectural-inference gate"
+source_role: PRIMARY_RESEARCH
+canonical_source: 494
+importance: critical
+confidence: high
+about: >
+  A full, second, "more critical" re-reading of Bhagavad-gītā Chapter 3 (through verse 43 and purports),
+  explicitly re-reading the primary text rather than relying on prior search snippets, and delivering a
+  systematic self-correction of 0493's analysis. Central corrective thesis: "Chapter 3 does not directly
+  prove our KnowledgeOS architecture. It provides a highly structured conceptual domain from which we can
+  derive architectural abstractions. Those abstractions must be explicitly separated from what the text
+  actually says" -- introducing a new methodological discipline that recurs throughout the file.
+
+  **First correction**: Chapter 3 is not primarily an "epistemic chapter" -- 0493 leaned too heavily toward
+  Chapter3=epistemic-state->knowledge->understanding->decision->action. The chapter is titled Karma-yoga and
+  is centrally an **Action Theory with an epistemic dimension**, not an Epistemic Theory, proceeding through
+  eleven distinct movements (two paths, non-action's insufficiency, unavoidable action, prescribed duty,
+  yajña, cosmic/social cycle, exceptional persons, social example, role-specific duty, desire, sense/mind/
+  intelligence regulation) rather than a simple Knowledge->Gap->Decision->Action pipeline. **Reconfirms
+  Knowledge≠Understanding** as strongly supported, but **narrows Understanding's definition** from 0493's
+  six-field tuple to "interpretation of relationships among known propositions in context," with
+  implications/consequences/applicability/normative-significance demoted to derived facets rather than
+  direct components. **Splits Purpose into five non-collapsing concepts**: Goal≠Duty≠Intention≠Result≠
+  Orientation, extending 0493's Duty≠Goal/Intention≠Purpose pair into a fuller taxonomy, with a revised
+  Action tuple A=(Actor,Role,Operation,Duty,Intention,Orientation,Context,Outcome).
+
+  **Introduces the file's central and most consequential methodological correction**: "Normative State is
+  valid as an architectural abstraction -- but NOT as a direct Gītā fact." 0493's claim "Chapter 3 proves
+  we need Normative State" is explicitly rejected as too strong; the correct formulation is that a
+  NormativeModel is REQUIRED TO REPRESENT the domain faithfully (an architectural inference), never that the
+  text itself defines "NormativeState" (a textual claim) -- the same correction is applied identically to
+  Authority (Source≠Authority, Evidence≠Norm remain valid architectural discoveries, but not direct textual
+  assertions). **Delivers the file's most important mathematical correction**: explicitly declines to
+  freeze 0493's Δ=(Δ_E,Δ_U,Δ_N,Δ_D,Δ_Decision,Δ_A) as a fixed orthogonal vector, diagnosing that it conflates
+  three different mathematical categories -- state dimensions (what exists), relations (how things relate),
+  and deficiencies (what is missing/wrong) -- and that a single finding may simultaneously be, e.g.,
+  semantic+normative or epistemic+decision-relevant, so forcing separability into an orthogonal vector is
+  unjustified. Replaces it with **Discrepancy as a typed SET of findings**: Δ(S,C,P)=Diff(S,Expected(C,P)),
+  Δ={d_1,...,d_n}, type(d_i)∈{Epistemic,Semantic,Normative,Domain,Decision,Operational,...} -- "mathematically
+  cleaner" and avoiding an unjustified orthogonality assumption. **Identifies the chapter's actually
+  strongest insight** (previously underweighted): Same external action does NOT imply same semantic action
+  (grounded in verses 25-26's learned-vs-ignorant-person-same-outward-action point) -- ObservedAction≠
+  MeaningfulAction≠ActionIntent, worked via a concrete software example (two engineers both execute
+  deploy(); externally identical ObservedAction, but one is authorized/reviewed and the other unauthorized/
+  unreviewed) -- crystallized as **ActionIdentity≠ActionObservation**, "a very strong DDD principle."
+  **Strengthens Role/Duty**: Duty=f(Role,Context,NormativeFramework), not f(Actor) alone -- Actor≠Role≠Duty
+  modeled as a chain (Actor holds Role, Role activates Duty, Duty constrained by Norm). **Explicitly warns
+  against over-generalizing "sva-dharma"**: the text's role-duty concept is embedded in its own varṇa/
+  āśrama theological-social framework and must NOT be translated directly into "every software actor has a
+  role and therefore a duty" -- the valid, narrower abstraction is "when a normative system assigns
+  responsibilities according to roles, role-context must participate in determining applicable duties."
+  **Corrects DecisionReady's status**: 0493's claim survives as an architectural preference but is corrected
+  from a claim ABOUT the text to a design principle DERIVED FROM the case -- DecisionReady(S,C) iff
+  DecisionCriteria(S,C), never DecisionReady iff Δ=∅, with the correction that Chapter 3 itself does not
+  establish a general theorem permitting arbitrary unresolved discrepancy. **Introduces Applicable Action**:
+  ApplicableNorms+ActorRole+Context+Understanding->CandidateActions->Decision, replacing the coarser
+  "DecisionGap" concept from 0493. **Revises Sārathi's signature again**:
+  Sārathi:(State,Norms,Role,Context,Discrepancies)->Guidance->CandidateActions->Decision->Action, with Zero
+  remaining a pure DiagnosticFunction that must never itself decide. **Corrects Lord from "reasoning engine"
+  to a richer triad**: AuthoritativeKnowledge+NormativeOrientation+InterpretiveResolution, since Krishna in
+  the text functions as an authoritative source of teaching, not merely an inference engine -- crucial for
+  KnowledgeOS governance modeling. Confirms Sārathi=ContextualGuidance ("how does that apply here?"),
+  producing the clean chain Lord(what is authoritative/true/normative?)->Sārathi(how does it apply
+  here?)->Decision(what will I choose?)->Action(what will I do?). **Introduces a governance/Example
+  concept**: Behavior->Example->SocialStandard (grounded in verse 21's exemplary-leader point), mapped
+  directly to software governance mechanisms (reference implementation, architectural exemplar, approved
+  pattern, golden path). **Corrects "LearningReady" from a proposed fundamental state variable (0493) to a
+  derived concept**: Guidance≠InformationDump; Guidance=f(Understanding,Readiness,Context), but Readiness is
+  explicitly demoted, not promoted to ontology. **Delivers the file's second most important corrective
+  finding, explicitly named "perhaps the most important correction to the earlier analysis"**: the text's
+  senses<mind<intelligence<self hierarchy must NOT become KnowledgeOS's epistemic hierarchy -- "Gītā
+  hierarchy ≠ KnowledgeOS epistemic hierarchy," usable only as inspiration, never as direct mathematical
+  evidence (explicitly rejecting any Observation<Interpretation<Reasoning<Truth ladder derived from it,
+  reconfirming the corpus's long-standing rejection of a universal epistemic ladder from an entirely new
+  angle). **Applies the identical discipline to the smoke/dust/embryo covering-levels analogy**: legitimate
+  extraction is only the qualitative principle "AccessToKnowledgeCanBeObscuredToDifferentDegrees," never a
+  software confidence scale with the text's specific ontology. **Extracts a genuine causal chain**:
+  SenseObjects->Attachment/Desire->Distortion->ImpairedKnowledge->Action, demonstrating AgentState can affect
+  InterpretationOfKnowledge -- but corrects 0493's proposed "AffectiveState" as too narrow, replacing it with
+  a broader **AgentCondition** (cognitive/motivational/affective/capability/role/authority/commitments),
+  with Interpretation=f(Knowledge,AgentCondition,Context). **Delivers a cleaner separated mathematical
+  model**, rejecting 0493's overloaded ten-component 𝒳_t: S_t=(World_t,Knowledge_t,Understanding_t,Norms_t,
+  Agent_t,Context_t); E_t=Evaluate(S_t,Criteria_t); Δ_t=Diff(S_t,Criteria_t); G_t=Guide(S_t,Δ_t);
+  D_t=Decide(S_t,G_t); A_t=Execute(D_t); S_{t+1}=T(S_t,A_t,O_{t+1}). **Delivers a crucial DDD distinction:
+  Norm is not State** -- Norm/Rule/Duty/Policy/Constraint/Authority are one semantic category, State/
+  Observation/Fact/Knowledge/Understanding/Decision/Action another, worked via a four-way example (Norm:
+  "Actor in Role R should perform D"; State: "Actor currently has Role R"; Observation: "Actor performed D";
+  Evaluation: "Action conforms to applicable duty" -- four distinct semantic objects for one situation).
+  **Explicitly rejects one giant "KnowledgeOS State" Σ=(K,U,N,D,A,...)** as architecturally dangerous,
+  proposing six bounded contexts instead (Knowledge, Understanding, Normative/Governance, Decision, Action,
+  Observation), and maps the chapter's own sections onto them as a worked DDD decomposition exercise.
+  **Elevates the yajña cycle** (Duty->Yajña->Rain->Food->LivingBeings, verses 10-16) to a genuine feedback/
+  cyclic dynamical system, not merely sequential instruction -- ActionSystem=DynamicalSystem, not
+  Workflow=Step1->Step2->Step3 -- while explicitly declining to conclude "therefore KnowledgeOS should use
+  Event Sourcing" as an unsupported implementation leap. **Extracts NormApplicability=f(ActorCondition,
+  Role,Context)** from verses 17-19's self-realized-person exception, generalized without encoding the
+  theological exception literally. **Introduces Authority≠Qualification**: an instruction may be
+  authoritative while an actor may or may not be qualified to execute it, worked via a production-
+  deployment-approval governance example. **Introduces a Permission-to-Act framework**:
+  CanAct=f(Role,Authority,Qualification,Context); Can≠Should≠Will;
+  Actionability=(CanAct,ShouldAct,ReadyToAct), explicitly stronger than the prior bare "DecisionReady."
+  **Demotes DecisionGap (Δ_Decision) from a first-class discrepancy dimension**: Decision=
+  f(Understanding,Norms,Role,Context,Evidence,Options,Criteria), with the decision engine instead reporting
+  typed reasons (insufficient evidence, ambiguous norm, conflicting constraints, missing authority,
+  uncertain outcome). Freezes a final mathematical core: S=(W,K,U,N,A,C); E=Evaluate(S,P); Δ=Diff(E);
+  G=Guide(S,Δ); D=Decide(S,G); a=Execute(D); S'=T(S,a,o); and reformalizes Zero/Lord/Sārathi as capabilities
+  rather than domain entities: Z(S,P)->Δ; L(K,N,U,C)->R (an authoritative reasoning/resolution structure);
+  S_a(S,R)->G. Delivers the file's deepest DDD conclusion: "the semantic center of the model is not
+  Knowledge. It is the relationship between an Actor, a Normative Context, a Situation, an Understanding,
+  and an intended Action. Knowledge is one of the inputs required to establish that relationship" --
+  ActionMeaning=f(Actor,Role,Context,Knowledge,Understanding,Norms,Intention,Authority). Closes with an
+  explicit **eight-item "what I would NOT freeze yet" list**, walking back 0493's overreaches one by one
+  (six discrepancy dimensions; an affective state; LearningReadiness as a state variable; Event Sourcing;
+  the senses-mind-intelligence-soul epistemic hierarchy; Zero/Lord/Sārathi as literal software components;
+  decision-requires-zero-discrepancy; all-unresolved-discrepancies-can-be-ignored), a thirteen-item "what I
+  WOULD freeze" list of architecturally robust invariants, a ten-dimension letter-grade assessment of 0493's
+  own analysis (grades A to C+, with "Separation of source vs inference" scoring lowest at C+), and diagnoses
+  the core weakness as **"over-formalization too early"** -- introducing a new required four-stage gate:
+  **Source observation -> semantic concept -> architectural inference -> formalization**, "with a deliberate
+  gate between each stage." Closes recommending against directly revising Questions 16-19 from the Gita yet,
+  proposing instead a Chapter-3 semantic extraction table with four columns: Verse -> Source concept ->
+  Architectural concept -> Formal status (axiom / derived invariant / heuristic / analogy).
+introduces:
+  - concept: "New required four-stage discipline gate for source-to-formalization work: Source observation -> semantic concept -> architectural inference -> formalization, with a deliberate gate between each stage -- diagnosed as the fix for 0493's core weakness of 'over-formalization too early'"
+  - concept: "Chapter 3 reclassified as an Action Theory with an epistemic dimension, not an Epistemic Theory -- correcting 0493's implicit over-weighting toward the epistemic reading"
+  - concept: "Discrepancy demoted from a fixed orthogonal vector (Δ_E,Δ_U,Δ_N,Δ_D,Δ_Decision,Δ_A) to a typed SET of findings Δ={d_1,...,d_n}, type(d_i)∈{Epistemic,Semantic,Normative,Domain,Decision,Operational,...}, since a single finding can carry multiple types simultaneously and orthogonality/separability is unjustified"
+  - concept: "ActionIdentity≠ActionObservation: same external/observed action does not imply the same semantic action (ObservedAction≠MeaningfulAction≠ActionIntent), worked via an authorized-vs-unauthorized identical-looking deploy() example"
+  - concept: "'Architectural inference' explicitly separated from 'direct textual claim' as a new epistemic category throughout: Normative State, Authority, DecisionReady, sva-dharma-derived role/duty principles are all reclassified from 'the text proves X' to 'X is a valid, bounded architectural abstraction derived from the text'"
+  - concept: "Senses<Mind<Intelligence<Self and the smoke/dust/embryo covering-levels analogy explicitly rejected as evidence for any KnowledgeOS epistemic hierarchy or confidence scale -- usable only as inspiration"
+  - concept: "AgentCondition introduced replacing 0493's narrower AffectiveState: cognitive/motivational/affective/capability/role/authority/commitments, with Interpretation=f(Knowledge,AgentCondition,Context)"
+  - concept: "Norm is not State: Norm/Rule/Duty/Policy/Constraint/Authority form one semantic category, distinct from State/Observation/Fact/Knowledge/Understanding/Decision/Action, worked via a four-object example (Norm/State/Observation/Evaluation) for one situation"
+  - concept: "One giant 'KnowledgeOS State' explicitly rejected as architecturally dangerous; six bounded contexts proposed instead (Knowledge, Understanding, Normative/Governance, Decision, Action, Observation), with the chapter's own sections mapped onto them"
+  - concept: "The yajña cycle elevated to a genuine feedback/cyclic dynamical system (ActionSystem=DynamicalSystem), while explicitly declining the unsupported leap to 'therefore Event Sourcing'"
+  - concept: "Authority≠Qualification: an instruction may be authoritative while the actor executing it may or may not be qualified, worked via a production-deployment-approval governance example"
+  - concept: "Permission-to-Act framework: CanAct=f(Role,Authority,Qualification,Context); Can≠Should≠Will; Actionability=(CanAct,ShouldAct,ReadyToAct), superseding a bare DecisionReady"
+  - concept: "DecisionGap (Δ_Decision) demoted from a first-class discrepancy dimension to a set of typed decision-engine reasons (insufficient evidence, ambiguous norm, conflicting constraints, missing authority, uncertain outcome)"
+  - concept: "Zero/Lord/Sārathi reformalized as capabilities, not domain entities: Z(S,P)->Δ; L(K,N,U,C)->R (authoritative reasoning/resolution structure, correcting Lord from mere 'reasoning engine'); S_a(S,R)->G"
+  - concept: "Deepest DDD conclusion: the semantic center of the model is the Actor-Normative-Context-Situation-Understanding-Action relationship, with Knowledge as one input to it, not the center itself"
+  - concept: "Eight explicit overreaches from 0493 walked back and formally un-frozen"
+defines:
+  - concept: "Discrepancy (typed set, corrected)"
+    definition: "Δ(S,C,P)=Diff(S,Expected(C,P))={d_1,...,d_n}, each finding d_i carrying one or more types from {Epistemic,Semantic,Normative,Domain,Decision,Operational,...} -- replacing a fixed orthogonal discrepancy vector"
+  - concept: "Corrected mathematical core (state/evaluation/discrepancy/guidance/decision/action/transition)"
+    definition: "S=(W,K,U,N,A,C); E=Evaluate(S,P); Δ=Diff(E); G=Guide(S,Δ); D=Decide(S,G); a=Execute(D); S'=T(S,a,o) -- the file's final frozen abstract architecture"
+  - concept: "Actionability"
+    definition: "Actionability=(CanAct,ShouldAct,ReadyToAct), where CanAct=f(Role,Authority,Qualification,Context) -- a three-part refinement superseding a bare Boolean DecisionReady"
+  - concept: "Four-stage source-to-formalization discipline gate"
+    definition: "Source observation -> semantic concept -> architectural inference -> formalization, each stage requiring an explicit, deliberate gate before promotion to the next"
+refines:
+  - concept: "0493's entire Chapter-3-derived extension (Normative State, Δ_N, PerceivedConflict, Synthesis, Actor State, AffectiveState, Agency, ten-component 𝒳_t, five-way Gap taxonomy, LearningReadiness)"
+    refinement: "Systematically re-examined and reclassified: several survive as architecturally valid but re-labeled as inference-not-fact (Normative State, Authority, Role/Duty); several are explicitly walked back (fixed discrepancy vector, AffectiveState, LearningReadiness as a state variable, the senses-hierarchy-as-epistemic-hierarchy reading, literal Zero/Lord/Sārathi-as-software-components); the ten-component 𝒳_t is replaced by a cleaner six-field S_t"
+  - concept: "0492's Master invariant and Q16's epistemic discipline (never silently convert observation/hypothesis into knowledge)"
+    refinement: "Extended into an explicit, staged, four-step discipline (observation->concept->inference->formalization) specifically for source-engagement work, generalizing the single master invariant into a repeatable process gate"
+  - concept: "The corpus's long-standing rejection of a universal epistemic confidence ladder (first established well before this file, reconfirmed at multiple points including 0416/0493)"
+    refinement: "Reconfirmed from an entirely new angle: the Gita's own senses<mind<intelligence<self ordering is explicitly barred from becoming or informing any KnowledgeOS epistemic hierarchy, generalizing the non-collapse principle to source-derived metaphysical orderings specifically"
+contradicts:
+  - concept: "0493's claims that Chapter 3 'proves' Normative State, an Affective State, LearningReadiness as a state variable, and a fixed six-dimension discrepancy vector; 0493's implicit treatment of the senses/mind/intelligence hierarchy as faculty-model evidence; 0493's Sārathi(K,I,Δ)->Action-adjacent framing and Lord-as-reasoning-engine characterization"
+    contradiction: "This file explicitly and directly walks back each of these as overreach, re-deriving more carefully bounded versions or demoting them to inference/heuristic status; recorded as a genuine, deliberate self-correction within the same Gita-engagement arc, not a silent contradiction"
+repeats: []
+bridge_candidates:
+  - "0492 and 0493's overlapping state-catalog extensions (flagged as a bridge_candidate at 0493) are now further complicated by this file's rejection of both catalogs' overloaded state tuples in favor of a cleaner six-field S_t -- a future canonical-theory pass must reconcile all three state-catalog proposals (0492's seven-state extension, 0493's ten-component 𝒳_t, and 0494's six-field S_t) into one framework"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the new four-stage source-to-formalization discipline gate (observation->concept->inference->formalization) and the reclassification of Chapter 3 as Action Theory with an epistemic dimension, not an Epistemic Theory."
+  - "dimension-registry.md: record Discrepancy demoted from a fixed orthogonal vector to a typed set of findings, ActionIdentity≠ActionObservation, Norm-is-not-State, and the explicit rejection of the senses<mind<intelligence<self hierarchy (and smoke/dust/embryo analogy) as epistemic-hierarchy evidence."
+  - "dimension-registry.md: record the corrected six-field state S_t=(W,K,U,N,A,C) superseding 0493's ten-component 𝒳_t, the Permission-to-Act framework (CanAct≠ShouldAct≠WillAct), Authority≠Qualification, and the eight-item list of 0493 overreaches explicitly un-frozen."
+anchor_test:
+  anchor: "0493's entire Chapter-3-derived extension (Normative State, Δ_N, Actor State, AffectiveState, Agency, ten-component 𝒳_t, five-way Gap taxonomy); 0492's master invariant; the corpus's prior rejections of a universal epistemic ladder; 0483/0484's Sārathi=Guidance-not-authority discipline"
+  supports_dimension: "LANDMARK SELF-CORRECTION: systematically disciplines 0493's overreach with a new four-stage source-to-formalization gate (observation->concept->inference->formalization), reclassifying Chapter 3 as Action Theory rather than Epistemic Theory; demotes Discrepancy from a fixed orthogonal vector to a typed set of findings since orthogonality/separability was unjustified; introduces ActionIdentity≠ActionObservation as the chapter's actually strongest insight; explicitly rejects the senses<mind<intelligence<self hierarchy and the smoke/dust/embryo analogy as any basis for a KnowledgeOS epistemic hierarchy; replaces 0493's overloaded ten-component state with a cleaner six-field S_t and reformalizes Zero/Lord/Sārathi as capabilities; introduces Authority≠Qualification and a three-part Actionability=(CanAct,ShouldAct,ReadyToAct) framework; and closes with an explicit eight-item list of 0493 claims formally un-frozen, alongside a ten-dimension letter-grade self-assessment diagnosing 'over-formalization too early' as the root weakness"
+  refines_or_contradicts: "explicitly contradicts and corrects several of 0493's specific overreach claims (fixed discrepancy vector, AffectiveState, LearningReadiness-as-state-variable, epistemic-hierarchy reading, Lord-as-reasoning-engine); refines 0492's master-invariant discipline into a repeatable four-stage process; reconfirms the corpus's long-standing anti-universal-ladder principle from a new angle; deliberate, explicit self-correction within the same engagement arc, not a silent or unresolved contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit eight-item 'what I would NOT freeze yet' list, paired with a ten-dimension letter-grade self-assessment of the immediately preceding file (0493), is the corpus's most systematic and itemized self-audit of a single prior file's overreach found anywhere in this reconstruction to date."
+  - "The deploy()-by-two-engineers worked example (ActionIdentity≠ActionObservation) is a rare instance of the corpus translating a Gita-derived philosophical distinction into a directly recognizable software-engineering scenario, strengthening the architectural-inference (vs. textual-claim) methodology the file itself introduces."
+undefined_concepts: []
+open_questions:
+  - "Whether the proposed Chapter-3 semantic extraction table (Verse -> Source concept -> Architectural concept -> Formal status) is actually constructed in a later file"
+  - "How the three competing state-catalog proposals (0492's seven-state extension, 0493's ten-component 𝒳_t, and this file's six-field S_t) are eventually reconciled"
+  - "Whether the four-stage source-to-formalization discipline gate is applied retroactively to earlier Gita/Upanishad/Vedic-cosmology engagements in the corpus (0405-0425), or only prospectively from this file onward"
+  - "Whether Questions 16-19 are ever revised as this file recommends, given 0493 already closed the Q1-Q24 sequence and this file explicitly declines to revise them immediately"
+tier2_triggered: true
+tier2_reason: "A landmark, systematic self-correction of the immediately preceding file (0493), introducing a new required four-stage discipline gate for all future source-engagement work (Source observation -> semantic concept -> architectural inference -> formalization); demoting Discrepancy from a fixed orthogonal vector to a typed set of findings after diagnosing an unjustified separability assumption; identifying ActionIdentity≠ActionObservation as the chapter's actually strongest and previously underweighted insight; explicitly rejecting the text's own senses<mind<intelligence<self hierarchy and smoke/dust/embryo analogy as any basis for a KnowledgeOS epistemic hierarchy, reconfirming the corpus's long-standing anti-universal-ladder principle from an entirely new angle; replacing an overloaded ten-component state tuple with a cleaner six-field model and reformalizing Zero/Lord/Sārathi as pure capabilities; introducing Authority≠Qualification and a three-part Actionability framework; and closing with an explicit, itemized eight-point list of the immediately preceding file's overreaches formally un-frozen, alongside a ten-dimension letter-grade self-assessment diagnosing 'over-formalization too early' as the systemic root cause -- the corpus's most rigorous single instance yet of disciplined self-audit applied to its own immediately preceding output."

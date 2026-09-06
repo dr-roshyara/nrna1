@@ -1,0 +1,99 @@
+sequence: M0053
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-092821_review-of-v1-2-sat-stays-candidate-until-factivity-is-repaired.md
+title: "Review of v1.2 -- Sat Stays Candidate Until Factivity Is Repaired: a Divergent-Branch Document Whose First Half Is Word-for-Word Identical to a Section Already Embedded in M0051, Whose Second Half ('# re') Diverges Into a Genuinely New Eval_c(K_t,r,Gamma_t) Reformulation One Level Below Sat, Introducing Hypothesis H-EVAL-01 and a 15-Case 'Epistemic Evaluation Semantics Experiment' Proposal (Not Yet Executed)"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c1
+  secondary_note: "the first half of this document is verbatim-identical to the 'Review' section already embedded and recorded inside M0051 (same text: the [PROP]-not-[DEF] downgrade, the factivity/Gamma-determinacy problem, the Factivity Repair Experiment R1-R3, the App(K_t,r) applicability distinction, the 3-vs-4-valued contradiction caution, and the revised 14-row status table); the second half ('# re') is a genuinely distinct continuation not present in M0051 -- evidence the corpus explored two different continuations from the same starting review in two separate files"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0053
+importance: high
+confidence: high
+about: >
+  **DUPLICATE-CONTENT NOTE**: this document's entire first half (through "So my verdict... that is
+  exactly the kind of result we want the theory to expose before architecture is frozen") is
+  word-for-word identical to the "Review" section already fully recorded inside M0051.yaml/M0051.md
+  -- the [PROP]-not-[DEF] downgrade of Sat, the factivity-vs-Gamma-determinacy problem (CE-1's
+  first statement), the three-step Factivity Repair Experiment (R1 rename K_t; R2 externalize
+  factivity; R3 make Gamma partial), the caution against freezing App(r,Q_t,C_t,S_t,EC_t)'s exact
+  signature, the explicit refusal to choose between 3-valued and 4-valued contradiction semantics,
+  and the 14-row revised status table. Not re-summarized here in full; see M0051 for that content.
+
+  **THE SECOND HALF ("# re") IS GENUINELY NEW, NOT PRESENT IN M0051**: rather than M0051's own
+  continuation (which built the full eight-class Sat_c specification and reviewed the executed
+  KR-SIM-2026-09-02-B experiment), this document instead proposes going one level BELOW Sat
+  entirely: **Eval_c(K_t,r,Gamma_t) -> EVal_c**, explicitly declining to decide what an evaluation
+  value fundamentally IS before testing. The key methodological move is **"discover the codomain
+  rather than presuppose it"**: define Eval_c with only a projection v:EVal_c->V, and only THEN
+  investigate whether V={top,bot,U} is an adequate projection -- rather than starting from
+  three-valued logic as a given.
+
+  **CLARIFIES THE SCOPE OF CE-1**: Eval_c(K_t,r,Gamma_t) does NOT claim K_t|=Truth(r); it asks the
+  narrower question "given the current epistemic state, requirement, and semantic context, what can
+  legitimately be determined about satisfaction of this requirement?" Therefore CE-1 does not
+  invalidate the evaluation programme itself -- it invalidates only the STRONGER assumption that
+  knowledge attribution can automatically establish external truth. This is a useful scope
+  clarification distinguishing "the evaluation project is broken" from "a stronger downstream claim
+  about truth is unsupported," complementing (without contradicting) M0052's later, sharper
+  structural diagnosis (A-2: no attachment point for truth anywhere in the Sat_c family).
+
+  **INTRODUCES HYPOTHESIS H-EVAL-01 [PROP]**: "KnowledgeOS requires a requirement-relative epistemic
+  evaluation mechanism whose result preserves both the evaluation outcome and enough explanatory
+  structure to distinguish epistemic insufficiency, semantic-contract incompleteness, missing
+  context, contradiction, and other materially different causes" -- formalized as Eval_c:
+  (K_t,r,Gamma_t) -> EVal_c with projection v:EVal_c -> V.
+
+  **PROPOSES A NOT-YET-EXECUTED 'EPISTEMIC EVALUATION SEMANTICS EXPERIMENT'**: narrower than the
+  eight-Sat_c-implementation approach, testing the Eval interface against 15 named adversarial
+  cases (determined/corroborated requirement; insufficient evidence; contradictory evidence;
+  missing observation; unobservable target; missing semantic interpretation; missing contract/
+  context; provenance conflict; temporal conflict; governance conflict; operational precondition;
+  operational postcondition; evidence withdrawal/retraction; same K_t with different inquiry; same
+  evidence with different epistemic standards), recording EVal=(v,rho,...) without presupposing
+  that rho (reason/provenance) belongs inside the value object. Reapplies the kernel experiment's
+  own no-smuggling discipline to this new object: "can one coherent evaluation semantics distinguish
+  these cases without smuggling in truth, governance, or implementation assumptions?"
+
+  **CLOSES WITH THE CLEANEST STATEMENT OF THE STANDING 'DON'T FREEZE ARCHITECTURE BEFORE SEMANTICS
+  STABILIZE' PRINCIPLE**: "we should not optimize or minimize the kernel while the semantic objects
+  on which kernel minimality depends are still moving" -- a direct restatement (in one sentence) of
+  the discipline this pass has followed since M0037's own kernel-minimality caution.
+introduces:
+  - concept: "Eval_c(K_t,r,Gamma_t) -> EVal_c, a level below Sat_c, with the codomain V left to be discovered via testing rather than presupposed as {top,bot,U}"
+  - concept: "Hypothesis H-EVAL-01: KnowledgeOS requires a requirement-relative evaluation mechanism preserving both outcome and explanatory structure"
+  - concept: "The scope-clarification of CE-1: it invalidates the stronger truth-establishing claim, not the evaluation programme itself"
+  - concept: "The not-yet-executed 15-case 'Epistemic Evaluation Semantics Experiment' proposal, applying the kernel experiment's no-smuggling discipline to Eval_c"
+defines: []
+refines:
+  - concept: "M0051's Sat(K_t,r) formalization, reframed one level deeper as Eval_c(K_t,r,Gamma_t)->EVal_c with an undetermined codomain"
+  - concept: "M0051's/M0052's CE-1 factivity finding, given an explicit scope clarification distinguishing it from a claim that the evaluation programme itself is broken"
+contradicts: []
+repeats:
+  - concept: "The entire first half of this document (through the 14-row revised status table) is word-for-word identical to the 'Review' section already recorded in full under M0051 -- not re-summarized here"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0053 as a divergent-branch document -- its first half duplicates a section already recorded under M0051, while its second half ('# re') proposes a genuinely new Eval_c(K_t,r,Gamma_t) reformulation one level below Sat_c, hypothesis H-EVAL-01, and a not-yet-executed 15-case Epistemic Evaluation Semantics Experiment."
+anchor_test:
+  anchor: "M0051's Sat(K_t,r) formalization and the CE-1 factivity/determinacy finding"
+  supports_dimension: "Reframes Sat one level deeper as Eval_c with an undiscovered codomain, and clarifies CE-1's scope (invalidates truth-establishment, not the evaluation programme itself)"
+  refines_or_contradicts: "refines (M0051)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The document's first half is verbatim-identical (same sentences, same equations, same status table) to the 'Review' section already recorded under M0051 -- a direct textual match, not merely a thematic overlap."
+  - "'Discover the codomain rather than presuppose it' -- an explicit methodological principle for Eval_c's value space V, distinct from M0051/M0052's approach of starting from {top,bot,U} and testing it."
+undefined_concepts:
+  - "The precise internal structure of EVal_c and its projection v:EVal_c->V -- left fully open pending the proposed experiment"
+open_questions:
+  - "Whether the proposed 'Epistemic Evaluation Semantics Experiment' (15 adversarial cases) was ever executed, independently of the Sat_c-focused KR-SIM-2026-09-02-B/D experiments confirmed executed in M0051/M0052."
+tier2_triggered: true
+tier2_reason: "While roughly half of this document duplicates content already recorded under M0051, its second half introduces a genuinely distinct research direction (Eval_c one level below Sat_c, with an undiscovered codomain) and a not-yet-executed experiment proposal reapplying the no-smuggling discipline -- warranting a tier-2 note despite the overlap, primarily to flag the divergent-branch phenomenon and the new Eval_c material for the eventual reclassification pass."

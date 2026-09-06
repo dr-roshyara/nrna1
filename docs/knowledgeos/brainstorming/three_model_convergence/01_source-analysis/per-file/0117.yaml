@@ -1,0 +1,84 @@
+sequence: "0117"
+path: docs/knowledgeos/brainstorming/20260822-112442-bala-ganesha-wisdom-engine-lens.md
+title: "Bāla Gaṇeśa Wisdom Engine lens -- fifth meta-principle, explicit four-question synthesis"
+date: "2026-08-22"
+bytes: 16489
+model:
+  primary: g
+  secondary: [x]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+importance: high
+confidence: high
+about: >
+  Two-pass iconographic reading of child-Ganesha imagery (elephant head=deep context memory; large
+  ears=listening before inference; small eyes=focused attention; broken tusk=sacrifice/compression with
+  identity preservation; mouse vehicle=noise control; modaka=reward of understanding; child principle=
+  no ego attachment; obstacle-remover=epistemic blockage removal) as a "wisdom engine" metaphor. Closes
+  by explicitly organizing the whole 0110-0117 meta-principle cluster into FOUR complementary questions
+  -- the clearest synthesis of this pattern so far.
+
+introduces:
+  - "'Bāla Gaṇeśa Learning Algorithm' / 'Gaṇeśa Wisdom Engine': eight iconographic features mapped to
+    epistemic mechanisms, each explicitly classified mechanism/meta-principle territory, not kernel"
+  - "⭐ Explicit four-question synthesis, organizing the whole meta-principle cluster (0110 Zero, 0114
+    Mokṣa/removed here as #3, 0115 Shiva-Shakti as #1, 0116 Leonardo as #2, this file as #4):
+    (1) Śiva-Śakti: 'How does reality become knowledge?' -> Invariant + Manifestation;
+    (2) Leonardo: 'How do we deeply understand one context?' -> Multiple perspectives integrated;
+    (3) Mokṣa: 'How do we remove distortion?' -> Freedom from wrong identification;
+    (4) Gaṇeśa: 'How does understanding mature into wisdom?' -> Learning + memory + discrimination +
+    humility. This is the clearest organizing synthesis of the meta-principle cluster produced so far"
+  - "Final Wisdom Definition: 'KnowledgeOS becomes wise not by containing more knowledge, but by
+    continuously transforming experience into understanding through memory, reasoning, discrimination,
+    revision, and humility while preserving identity, evidence, and context.'"
+  - "Six-item epistemic-status checklist: 'This is what we know / why we know it / how certain we are /
+    what changed / what we still do not know / what we learned' -- a compact restatement mapping
+    cleanly onto Identity/Evidence/Authority-confidence/Transformation/Unknown/Learning-history"
+
+defines: []
+
+refines:
+  - "Consolidates the 0110/0114/0115/0116 meta-principle cluster into one explicit four-question
+    organizing framework -- the clearest synthesis of this recurring pattern so far, itself still
+    non-kernel"
+
+contradicts: []
+
+repeats:
+  - {concept: "context memory, focused attention, noise control, humility -- restated via new iconographic lens", canonical_source: "0092", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: false
+
+registry_updates:
+  - "Meta-Principle status category note (dimension-registry.md): fifth instance, plus the first
+    explicit organizing synthesis of the whole cluster -- update the tracking note with this framework"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "No reshaping; fifth meta-principle instance; first explicit cluster synthesis."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "First explicit organizing synthesis of the meta-principle cluster into four complementary
+    questions -- genuinely useful structure for eventual cross-model comparison, though still
+    non-kernel and not adopted by this research as more than a tracked source-corpus pattern"
+
+undefined_concepts: []
+open_questions:
+  - "Whether a fifth question/model is added later, or the four-question framework stabilizes as-is"
+
+tier2_triggered: true
+tier2_reason: >
+  Fifth meta-principle instance and, more importantly, the first explicit synthesis organizing the
+  whole 0110-0117 meta-principle cluster into four complementary questions -- the clearest structural
+  consolidation of this recurring pattern so far.

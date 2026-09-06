@@ -1,0 +1,50 @@
+sequence: 381
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-000339_conditional-evidence-and-reasoning-combine-v2-expanded.md
+title: "Concatenation Duplicate: 0380 + 0377 (No New Content)"
+date: "2026-08-26"
+bytes: 38372
+model:
+  primary: c1
+  secondary: null
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 380
+importance: low
+confidence: high
+about: >
+  Despite its "-v2-expanded" filename suggesting new content, this file is confirmed via diff to be an
+  EXACT CONCATENATION of two already-recorded files with zero novel content: lines 1-1670 are byte-
+  identical to file 0380 in full, and lines 1671-2074 are byte-identical to file 0377 in full (both
+  diffs returned empty). No new sections, no new formulas, no new synthesis connecting the two halves --
+  simply 0380 followed immediately by 0377 in one physical file. Recorded minimally per the established
+  cross-file duplicate protocol, cross-referencing both canonical sources.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Lines 1-1670 duplicate 0380 (landmark abstract-epistemic-state synthesis: U_R operator, ten-component invariant, Epistemic Representation Invariance) in full"
+    canonical_source: 380
+    novelty: "none -- verified via diff"
+  - concept: "Lines 1671-2074 duplicate 0377 (S_Kernel=(D,E,S,T,U) Kernel Hypothesis via cross-regime intersection) in full"
+    canonical_source: 377
+    novelty: "none -- verified via diff"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0380 and 0377"
+  supports_dimension: "Concatenation duplicate of two already-recorded files; no independent evidentiary weight"
+  refines_or_contradicts: "none -- duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "NOT TRIGGERED -- confirmed exact concatenation of 0380 (lines 1-1670) and 0377 (lines 1671-2074) via diff, no new content despite the '-v2-expanded' filename"

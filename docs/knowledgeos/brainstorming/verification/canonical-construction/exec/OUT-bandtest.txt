@@ -1,0 +1,53 @@
+==============================================================================
+BAND-INVARIANCE TEST
+==============================================================================
+  K-components required by the 14 FORCED operations alone:
+    ['A', 'Dt', 'EL', 'H', 'PI', 'R', 'S', 'T']
+
+  subsets of the undetermined band tested: 16
+  K-components IDENTICAL across all subsets? True
+
+    band={}                                           added components: NONE
+    band={Transform}                                  added components: NONE
+    band={Merge}                                      added components: NONE
+    band={Split}                                      added components: NONE
+    band={Reintroduce}                                added components: NONE
+    band={Transform, Merge}                           added components: NONE
+    band={Transform, Split}                           added components: NONE
+    band={Transform, Reintroduce}                     added components: NONE
+    band={Merge, Split}                               added components: NONE
+    band={Merge, Reintroduce}                         added components: NONE
+    band={Split, Reintroduce}                         added components: NONE
+    band={Transform, Merge, Split}                    added components: NONE
+    band={Transform, Merge, Reintroduce}              added components: NONE
+    band={Transform, Split, Reintroduce}              added components: NONE
+    band={Merge, Split, Reintroduce}                  added components: NONE
+    band={Transform, Merge, Split, Reintroduce}       added components: NONE
+
+==============================================================================
+REMOVAL TEST — is each component of K necessary?
+==============================================================================
+  remove A   -> breaks 16 ops (12 of them FORCED)  => REQUIRED (forced ops break)
+        forced ops broken: Add, Assess, Authorize, Derive, Determine, Promote
+  remove Dt  -> breaks  1 ops (1 of them FORCED)  => REQUIRED (forced ops break)
+        forced ops broken: Add
+  remove EL  -> breaks  5 ops (4 of them FORCED)  => REQUIRED (forced ops break)
+        forced ops broken: Assess, Qualify, Validate, Withdraw
+  remove H   -> breaks  1 ops (1 of them FORCED)  => REQUIRED (forced ops break)
+        forced ops broken: Replay
+  remove PI  -> breaks  6 ops (3 of them FORCED)  => REQUIRED (forced ops break)
+        forced ops broken: Derive, Determine, Revise
+  remove R   -> breaks  6 ops (3 of them FORCED)  => REQUIRED (forced ops break)
+        forced ops broken: Derive, Supersede, Validate
+  remove S   -> breaks  7 ops (6 of them FORCED)  => REQUIRED (forced ops break)
+        forced ops broken: Assess, Authorize, Determine, Promote, Reject, Withdraw
+  remove T   -> breaks  4 ops (2 of them FORCED)  => REQUIRED (forced ops break)
+        forced ops broken: Revise, Supersede
+
+==============================================================================
+CONCLUSION
+==============================================================================
+  The undetermined band adds NO new K-component.
+  => D-1 (which band members are mandatory) does NOT block the
+     construction of K.  It affects only the OPERATION REGISTRY.
+  => K is derivable NOW; the operation registry is not.

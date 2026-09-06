@@ -1,0 +1,69 @@
+========================================================================
+STEP 288 MATHEMATICAL AUDITS  (mandate 19 A-J)
+========================================================================
+|Sigma| = 7*5*4*4*4 = 2240   [CORPUS-VERIFIED count]
+candidate projections |P(NAMES)| = 32
+
+--- A/B/C  reflexivity, symmetry, transitivity of ~_X  (all 32 X) ---
+  all 32 X induce a partition of Sigma  : PASS
+  => reflexive, symmetric, transitive for every X    : PASS
+  REASON: ~_X is the pullback of equality along pi_X; kernel of a function is
+          always an equivalence relation. Verified, not assumed.
+  witness X={S,V}: s1~s2 True, s2~s3 True, s1~s3 True
+
+--- D  projection containment: X subset Y  =>  ~_Y refines ~_X ? ---
+  pairs X<Y checked: 211   violations on sampled pairs: 0
+  PASS (sampled)  -- and it is a THEOREM: pi_X factors through pi_Y when X subset Y.
+  LIMITATION: the loop above is a SAMPLE. The theorem, not the sample, is the evidence.
+
+--- E  are the 32 projections distinct? block counts ---
+  distinct partitions induced: 32 of 32
+  |blocks| for X=null set : 1   (the trivial relation: everything equivalent)
+  |blocks| for X=all      : 2240   (= structural equality on Sigma)
+  no axis is degenerate (every axis has >=2 values), so all 32 are distinct: CONFIRMED
+  => 'at most 32 distinct relations' is EXACT here: exactly 32.
+
+--- F  structural equality on Sigma ---
+  = is ~_{A,S,R,V,C}; blocks = 2240 = |Sigma| -> every class a singleton: PASS
+
+--- G  congruence test: structural equality on the VISIBLE part ---
+  k1 =_visible k2                     : True
+  T(k1) =_visible T(k2) on origin?    : False
+  => visible structural equality is NOT a congruence w.r.t. TraceOrigin : CONFIRMED
+  MATCHES corpus 258.10 and 258.15. This is a demonstration of the corpus's
+  claim on a toy model, NOT a proof about KnowledgeOS's real relations.
+
+--- H  hash identity is relative to canonicalization ---
+  same value, key order differs:  naive 4d7c4361240865e5 vs 9967d0299e0c3170  -> equal? False
+                                  canon 9967d0299e0c3170 vs 9967d0299e0c3170  -> equal? True
+  => H(x)=H(y) is meaningful ONLY relative to a fixed canonicalization.
+  And 38.53's ambiguity is not resolvable by any serialization:
+     '03/04/2026' under en-GB -> 2026-04-03   hash 77416243c60a6779
+     '03/04/2026' under en-US -> 2026-03-04   hash de01d747a8a7a4c8
+  => normalization is itself epistemic (38.53); canonicalization must follow
+     evidence (38.85). Structural equality inherits an UNBOUND PARAMETER.
+
+  id = H(P,e,c,t,Pi) with MUTABLE e.state:
+     before withdrawal id = 5e0a61aeb3ab
+     after  withdrawal id = 545541441539   changed? True
+     => every R-edge pointing at 5e0a61aeb3ab now dangles: StructuralValid VIOLATED : CONFIRMED
+
+--- I  agreement on a finite sample does not prove equality ---
+  f,g agree on [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]: True
+  f(10)=100  g(10)=101  differ? True
+  => equal outputs on a finite sample: NOT evidence of extensional equality : CONFIRMED
+
+--- J  composition of two equivalence relations ---
+  ~_S o ~_V  relates a,b (S differs, V same)? True
+  ~_S o ~_V  is reflexive? True
+  transitivity violations on sampled triples: 0
+  NOTE: with only 2 axes the composition happens to be total here, which is
+  itself the warning: composing projections COLLAPSES distinctions. The
+  composition of two equivalence relations is NOT in general an equivalence
+  relation - relations must not be composed casually. : RECORDED
+
+========================================================================
+SCOPE LIMIT: every result above concerns constructions DEFINED IN THIS FILE.
+None of it establishes anything about the corpus's own =, ==, ~, ~=_lambda,
+~=_I, ~=_H or Continuity. Those have no decision procedures to test.
+========================================================================

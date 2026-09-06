@@ -1,0 +1,81 @@
+sequence: M0238
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-015837_close-to-freeze-quality-four-final-corrections-to-sem-equivalence.md
+title: "KR-KERNEL-MINIMALITY-2026-09: four final corrections to Theory v1.2 — flags 'losslessly simulated' as the one remaining hidden informal term in ≡_sem/⪯_cap, renames the 'Unfalsifiable Stopping Rule' as actually falsifiable by design, adds an explicit contract-relativization qualifier to Zero's exclusion, and catches a genuine category error (equivalence class ≠ implementation) in the status ledger's Kernel definition — introducing MinKer_/≡_sem as the correctly-typed set of minimal semantic classes"
+date: "20260904-015837"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0238
+importance: high
+confidence: high
+about: >
+  A short, focused senior-review continuation of M0237's "Theory v1.2 (FROZEN)" kernel-minimality
+  formulation, delivering four named corrections plus one deeper category-error catch, before
+  recommending an actual freeze of Theory v1.2 at this boundary.
+introduces:
+  - "Correction 1: ≡_sem-as-mutual-⪯_cap-simulation is accepted conditionally, but 'losslessly simulated' is flagged as still an unformalized informal term — the next proof object must define Trace(K,h) and a formal simulation relation Trace(K1,h)⪯Trace(K2,h) between traces; verdict explicitly recorded as 'definition accepted, but operational semantics still OPEN'"
+  - "Correction 2: the MinKer formulation is endorsed as correctly avoiding assumptions of existence/uniqueness/total-ordering/scalar-complexity, with one terminology fix — 'non-dominated' (misleadingly Pareto-flavored, implying multiple explicit objectives) replaced by 'minimal elements under the semantic preorder/order'"
+  - "Correction 3: the 'Complete, Unfalsifiable Stopping Rule' name is rejected as self-contradictory — the rule is explicitly DESIGNED to be falsifiable (discovering a required-but-unrealizable capability reopens the boundary; an irreducibility witness can be defeated) — renamed 'Self-Protecting, Falsifiable Stopping Rule' or 'Conditional Admission Rule'"
+  - "Correction 4: Zero's exclusion is given an explicit scope-relativization qualifier — Zero_{T,Π}∉Prim(𝒦_epi) under (𝔠_KOS,𝔎_adm) — preventing a future contract change from being 'logically prohibited' from ever re-admitting Zero as primitive"
+  - "A DEEPER CATEGORY-ERROR CATCH on M0237's status ledger: 'K_epi is the minimal semantic equivalence class in MinKer' conflates an equivalence class with a concrete implementation — corrected hierarchy: K∈𝔎_adm (concrete implementation) → [K]_≡sem (its semantic-equivalence class) → MinKer(𝔠_KOS) (set of minimal implementations) → NEW: MinKer_/≡sem = {[K]_≡sem | K∈MinKer(𝔠_KOS)} (the set of distinct minimal semantic classes) — 'mathematically much cleaner'"
+  - "Restated frozen core (accepted): MinKer(𝔠_KOS)=Min_⪯sem{K∈𝔎_adm|K⊨𝔠_KOS}; K1≡_sem K2⟺K1⪯_cap K2∧K2⪯_cap K1 (conditional on future ⪯_cap trace-formalization); K*∈MinKer(𝔠_KOS)⟺K*⊨𝔠_KOS∧∄K'⊨𝔠_KOS:K'≺_sem K* — labeled 'the actual mathematical minimality criterion'"
+  - "The 'most important consequence': a clean four-stage conceptual pipeline — 𝔠_KOS (what must be preserved) → ⪯_cap (what can simulate what) → ≡_sem (what is semantically the same) → Min (what cannot be reduced further) — with the explicit reaffirmation that '13/12/8 operators are now correctly demoted from candidate Kernel to implementation hypotheses'"
+  - "An explicit versioning-discipline endorsement: freeze Theory v1.2 at this boundary, and do NOT let the subsequent proof-construction work 'silently become a new theory version' — a discipline point against unlabeled scope creep across theory versions"
+defines:
+  - "MinKer_/≡sem — the set of distinct minimal semantic equivalence classes, correcting the category error of treating an equivalence class as if it were itself an implementation"
+refines:
+  - "M0237's 'Theory v1.2 (FROZEN)' status ledger: the equivalence-class/implementation conflation in its Mathematical Definition row is corrected here; the stopping-rule naming ('Unfalsifiable') is corrected; ⪯_cap's 'losslessly simulated' is flagged as the one remaining informal term requiring a Trace(K,h) formalization"
+contradicts:
+  - "M0237's own naming of its stopping rule as 'Complete, Unfalsifiable' — explicitly rejected as self-contradictory given the rule's own reopening conditions"
+  - "M0237's status-ledger phrasing 'K_epi is the minimal semantic equivalence class in MinKer' — corrected as a category error"
+repeats: []
+bridge_candidates:
+  - "Whether Trace(K,h) and its simulation relation were ever formally defined in a subsequent proof-object artifact, resolving the flagged 'losslessly simulated' informal term"
+  - "Whether Theory v1.2 was ever actually frozen as a versioned artifact, or whether later documents silently drifted into an unlabeled v1.3"
+mathematical_content: >
+  Four targeted corrections (operational-semantics gap in ⪯_cap/Trace; Pareto-misleading terminology
+  fix; stopping-rule naming/falsifiability fix; Zero-exclusion contract-relativization) plus a
+  genuine category-error correction distinguishing implementations, equivalence classes, and the new
+  MinKer_/≡sem set of minimal semantic classes.
+gita_content: null
+kernel_content: >
+  A focused refinement pass on the kernel-minimality Theory v1.2 formulation (M0235-M0237): catches
+  a real category error (equivalence class vs. implementation) in the prior status ledger, corrects
+  a self-contradictory rule name, flags the one remaining informal term (trace-simulation) still
+  needing formalization, and reaffirms — with an explicit versioning-discipline point — that the
+  historical 13/12/8-operator candidates are correctly demoted to implementation hypotheses pending
+  a still-unbuilt formal proof object.
+registry_updates:
+  - "MinKer_/≡sem — the set of distinct minimal semantic equivalence classes (new, correctly-typed object)"
+  - "Renamed stopping rule: 'Self-Protecting, Falsifiable Stopping Rule' / 'Conditional Admission Rule' (was 'Complete, Unfalsifiable')"
+  - "Contract-relativized Zero exclusion: Zero_{T,Π}∉Prim(K_epi) under (C_KOS,K_adm)"
+  - "Flagged open informal term: 'losslessly simulated' in ⪯_cap requires a formal Trace(K,h) definition"
+anchor_test:
+  anchor: false
+  supports_dimension: "Category-error correction (equivalence class vs implementation); falsifiable stopping-rule naming fix; contract-relativized Zero exclusion; flagged open Trace(K,h) formalization gap"
+  refines_or_contradicts: "refines (M0237's Theory v1.2 ledger and stopping-rule naming, both corrected here)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"'losslessly simulated' remains the one hidden informal term in the foundation.\""
+  - "\"The rule is actually intended to be falsifiable... Self-Protecting, Falsifiable Stopping Rule.\""
+  - "\"An equivalence class is not itself an implementation.\""
+  - "\"13/12/8 operators are now correctly demoted from 'candidate Kernel' to implementation hypotheses.\""
+undefined_concepts: []
+open_questions:
+  - "Was Trace(K,h) and its simulation relation ever formally defined in a later proof-object artifact?"
+  - "Was Theory v1.2 actually frozen as a distinct versioned artifact going forward?"
+tier2_triggered: true
+tier2_reason: >
+  Catches a genuine mathematical category error (conflating an equivalence class with a concrete
+  implementation) in the immediately preceding document's status ledger, corrects a self-
+  contradictory rule name, and flags the one remaining unformalized informal term ("losslessly
+  simulated") in the kernel-minimality apparatus — all directly continuing the critical M0235-M0237
+  kernel-minimality thread with genuine, non-redundant refinements.

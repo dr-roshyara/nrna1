@@ -1,0 +1,81 @@
+============================================================================
+STEP 290  N-1 ADJUDICATION AUDIT
+============================================================================
+
+ASSUMPTIONS PRINTED UP FRONT (mandate s12):
+ A1 Only primary corpus text is admitted as a definition.
+ A2 A self-labelled "candidate" is NOT an assertion of the relation's identity.
+ A3 Different symbols alone do not prove distinctness; a shared formula alone does
+    not prove identity.
+ A4 No philosophical source is used. No governance preference is used.
+ A5 Results measured here are marked MEASURED; corpus facts are marked CORPUS.
+
+--- primary register: 20 entries ---
+  entries carrying an actual definition : 5
+  entries that only NAME a relation     : 15
+    246 A-D     =          := field/representation identity    [listed, not defined]
+    261.5       ~          := forall O in O:   O(H1)=O(H2)     [definition]
+    261.5       ~          := forall O in O_K: O(K1)=O(K2)     [definition]
+    261.21      ==_K       := forall O in O_K: O(K1)=O(K2)     [CANDIDATE]
+    258.8       ==_K       := forall O in O: O(K1)=O(K2)       [PROPOSAL]
+
+--- Q1: explicit distinction? ---
+  CORPUS 246      four relations listed as non-interchangeable
+  CORPUS 261.1    six relations; 'should therefore NOT be collapsed'
+  CORPUS 261.20   "KnowledgeOS requires a typed FAMILY of relations"
+  CORPUS 261.25   K = (K, =_str, ==_sem, ~_obs, SameId, ==_H, ==_P) - 7-tuple
+  CORPUS 261.20   "they should not be conflated"
+  => Q1 = YES, EXPLICITLY, at 5 independent loci, in TWO notations.
+
+--- Q5/Q6: is one formula used for both symbols? ---
+  261.5     ~       := forall O in O_K: O(K1)=O(K2)   [definition]
+  261.21    ==_K    := forall O in O_K: O(K1)=O(K2)   [CANDIDATE - "a candidate semantic equality"; "a cand]
+  => the SAME formula carries 2 distinct symbols: ['==_K', '~']
+
+--- DECISIVE: assertion of identity, or candidate proposal? ---
+  261.5     ~       -> ASSERTION
+            self-label: definition
+  261.5     ~       -> ASSERTION
+            self-label: definition
+  261.21    ==_K    -> CANDIDATE/PROPOSAL
+            self-label: CANDIDATE - "a candidate semantic equality"; "a candidate formal definition, not a completed theorem"
+  258.8     ==_K    -> CANDIDATE/PROPOSAL
+            self-label: PROPOSAL - "a stronger definition is observational"
+
+  => BOTH loci that give == a definition SELF-LABEL it as a candidate/proposal:
+     261.21 'a candidate formal definition, NOT a completed theorem'
+     258.8  'a stronger definition IS observational' (a proposal), and 258.37
+            'we still do not have the final =_X or ==_K'
+  => Therefore the corpus does NOT assert ==_K = ~. It PROPOSES filling the
+     ==_sem slot with the observational formula, and marks it unratified.
+
+--- distinguishability: exists K1,K2 with K1 == K2 but not K1 ~ K2 ? ---
+  FAIL LOUDLY: required definition ABSENT -> a decision procedure for ==  (semantic)
+  FAIL LOUDLY: required definition ABSENT -> a closed observation set O_K
+
+  => UNDECIDABLE FROM CURRENT CORPUS.
+     Constructing either witness needs (a) a procedure for == independent of the
+     observational formula, or (b) a closed O_K. Neither exists (261.21 boxes
+     'O_K is not yet completely closed'; 012 s35 makes == not fully decidable).
+     NO HYPOTHETICAL IS CONSTRUCTED. (mandate s4)
+
+--- required negative checks ---
+  [ok] == = ~ assumed because both are called 'equivalence'           NOT ASSUMED - rejected; names are not evidence
+  [ok] == != ~ assumed because symbols differ                         NOT ASSUMED - Q1 rests on explicit prose, not symbols
+  [ok] ~_X assumed to be the canonical ~                              NOT ASSUMED - ~_X is Sigma-level; corpus ~ is forall O in O_K
+  [ok] ~_X assumed to be behavioural equivalence                      NOT ASSUMED - 258.11 separates label from behaviour
+  [ok] ~=_lambda assumed equivalent to either                         NOT ASSUMED - 261.8 leaves it two-branched
+  [ok] Sigma's existence treated as proof of observational equivalence NOT ASSUMED
+  [ok] delta-congruence dependency treated as proof of semantic equality NOT ASSUMED - a dependency is not a semantic identity
+  [ok] philosophical sources used                                     NONE USED
+  [ok] governance preference used as evidence                         NONE USED
+
+--- degeneracy carry-forward (289) ---
+  ~_empty      = UNIVERSAL relation  (1 block)     -> degenerate, not a candidate
+  ~_{A,S,R,V,C}= DISCRETE relation   (2240 blocks) -> degenerate, not a candidate
+  => 30 non-degenerate ~_X candidates. NOT re-running the 2240 audit (mandate s5).
+
+============================================================================
+VERDICT INPUTS ONLY. Classification is made in REFINED-STEP-290.md, not here.
+Nothing above selects a relation, repairs the corpus, or recommends a branch.
+============================================================================

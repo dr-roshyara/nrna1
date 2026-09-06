@@ -1,0 +1,195 @@
+sequence: 829
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-110912_step_201_knowledgeos-canonical-vocabulary-freeze-v0-1.md
+title: "Step 201 -- KnowledgeOS Canonical Vocabulary Freeze v0.1 (PHASE-A DELIVERY MILESTONE: the actual execution of 0828's Phase A and the direct fulfillment of 0827's originally-proposed ontology, CONTINUES I-series to I73): Delivers a Sixteen-Term Canonical Vocabulary K=(I,S,O,E,P,A,M,U,R,D,X,L)+{Transition,Process,Invariant} Each With One Question/One Formal Role/One DDD Role, Frozen (Not Final) -- Delivers the 'Knowledge' Vocabulary Collision Resolved Into a Six-Term Hierarchy (Information/Observation/Evidence/Proposition/Assessment/KnowledgeArtifact) -- Delivers the Canonical Semantic Elevation Chain Information⇏Evidence⇏Truth⇏Authority⇏Decision⇏Outcome as 'Perhaps the Most Important Formal Rule So Far' (I73: No Semantic Elevation May Occur Implicitly, a Candidate Architecture Constitution Principle) -- Delivers Descriptive≠Normative (D(x)⇏N(x), I71) and Statistical Regularity≠Governance Legitimacy (I72), Directly Forbidding 'Most Teams Do X' From Becoming 'Teams Should Do X' -- Re-Engages the Krishna Metaphor a Further Time, Delivering Perspective Is Not the Same as Total System Knowledge -- Delivers a Six-Box Candidate Architecture Decomposition Explicitly Not Yet the Final Bounded-Context Map -- Opens Step 202's Formal Relation Matrix R_ij Task, Explicitly Positioned as the Point Where the Mathematical Model Becomes an Actual DDD Architecture"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily DDD/terminology formalization (a canonical vocabulary freeze); re-engages the Krishna/Chapter-4 metaphor and the four-chapter lens summary once more under continued discipline, without new Gita textual content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 829
+importance: critical
+confidence: high
+about: >
+  Directly executes the task named at the end of Step 200 (0827) -- "freeze the vocabulary before adding
+  further theory" -- and constitutes the concrete Phase A deliverable announced structurally, but not yet
+  performed, by 0828. Opens with the central rule, boxed: **`One concept must have one semantic identity`**
+  and conversely **`One word must not silently represent multiple concepts`**.
+
+  **§201.1 delivers the canonical architecture object**, boxed:
+  **`𝒦=(I,S,O,E,P,A,M,U,R,D,X,L)`** (Identity/State/Observation/Evidence/Proposition/Assessment/Model/
+  Uncertainty/Authority/Decision/Action/Lineage) with Transition/Process/Invariant as structural mechanisms
+  operating over them -- "our candidate vocabulary. Now we challenge every term."
+
+  **§201.2-201.18 delivers a canonical, one-question-one-formal-role definition for each of sixteen terms**,
+  each including a DDD role and (where new) an invariant. Selected results: Identity delivers
+  **`I70`: a state transition must not silently change the identity of the subject**; State delivers
+  **`CurrentState≠History`**; Observation delivers **`Observation⇏Truth`**; Proposition delivers
+  **`Proposition≠Assessment`** (the claim versus its evaluation); Model delivers `P(H|E,M_1)≠P(H|E,M_2)` as
+  the justification for versioning model identity into lineage; Uncertainty delivers
+  **`U=UncertaintyStructure`** rather than necessarily `U∈[0,1]`; Authority delivers the file's own
+  restatement **`TechnicalPermission≠DomainAuthority`** as "a permanent vocabulary rule"; Decision delivers
+  **`Decision≠Truth`**; Action delivers **`Decision≠Action`** (a decision may exist even if execution never
+  happens); Outcome delivers `Outcome=f(Action,Environment)`, "not necessarily controlled by the actor";
+  Transition clarifies `S_t=S_{t+1}` remains a legitimate transition when another dimension (process state,
+  lineage, assessment) changes; Process delivers **`Process≠Transition`**; Invariant delivers the explicit
+  scoping requirement `I_domain` may not automatically be `I_global`, "protects our bounded-context
+  architecture"; Lineage delivers **`Lineage≠Truth`**.
+
+  **§201.19-201.23 delivers the complete semantic chain**, boxed:
+  **`Observation→Evidence→Proposition→Assessment→Decision→Action→Outcome`**, with Authority constraining
+  Decision/Action, Model+Uncertainty constraining Assessment, and Lineage cross-cutting the whole chain --
+  crystallized as **"the first major synthesis"**: the architecture "is therefore no longer a collection of
+  nouns. It has a semantic flow," boxed the compact learning loop:
+  **`Knowledge_t→Decision_t→Action_t→Observation_{t+1}→Knowledge_{t+1}`**. **Delivers the Chapter 4 insight
+  in fully formal terms once more**: a new knowledge state `K_{n+1}` may not contain all information
+  explicitly available in `K_n`, but lineage permits `Trace(K_{n+1})→K_n`, boxed:
+  **`Loss of actor memory≠loss of system lineage`**, self-flagged as "one of the strongest architectural
+  consequences of the Chapter 4 lens." Makes the user's original observation precise once more:
+  `K_a(t)⊂K_system(t)` while `L(K_a(t))` remains retained, boxed: **`Epistemic continuity can be preserved
+  even when actor memory is not`**.
+
+  **§201.24 re-engages the Krishna metaphor a further time**, handling it "carefully": Krishna's
+  exceptional cross-state knowledge inspires the conceptual distinction `LocalActorPerspective` versus
+  `GlobalHistoricalPerspective` (`K_actor⊆K_system/history`), explicitly disciplined: **"we should not
+  encode 'Krishna' as a literal architectural component,"** crystallized: boxed:
+  **`Perspective is not the same as total system knowledge`** -- yet another disciplined, non-repetitive
+  extraction from this recurring lens.
+
+  **§201.25-201.30 delivers the file's central normative-governance contribution**: the user's "what to
+  do / what not to do" Chapter 4 observation is formalized as `Policy=Allowed+Forbidden+Conditional`, and
+  more fundamentally as **the Descriptive/Normative distinction**, boxed: **`D(x)⇏N(x)`** ("knowing what is
+  does not automatically determine what ought to be" -- an architectural version of the is/ought
+  distinction), crystallized as **`I71`: descriptive observations must not be silently promoted to
+  normative rules**, explicitly targeted at AI: observing "most teams do X" must not become "teams should
+  do X." Delivers the machine-learning-versus-governance distinction, boxed:
+  **`Statistical regularity≠Governance legitimacy`**, crystallized as **`I72`: observed frequency must not
+  be interpreted as normative validity without an explicit policy transition**, explicitly framed as
+  "a very strong protection against accidental AI governance."
+
+  **§201.31-201.34 delivers the resolution of a major vocabulary collision**: the word "Knowledge" is
+  identified as dangerously overloaded across seven distinct senses (raw information, evidence, assessed
+  proposition, organizational knowledge, domain knowledge, learned model, historical memory), resolved into
+  a six-term hierarchy -- `Information` (raw content), `Observation` (recorded perception),
+  `Evidence` (information used epistemically), `Proposition` (a claim), `Assessment` (evaluation of a
+  claim), and **`KnowledgeArtifact`** (an intentionally curated, reusable organizational knowledge object,
+  formalized as the tuple `KA=(Content,Propositions,Evidence,Assessment,Context,Lineage,Validity)`).
+  **Delivers a sharpened conceptual definition of KnowledgeOS itself**, boxed:
+  **`KnowledgeOS=System for governed production, preservation, assessment, transmission, and use of
+  organizational knowledge`**, explicitly "much stronger than 'AI knowledge base.'"
+
+  **§201.35-201.36 delivers a full canonical vocabulary table** (seventeen rows: the sixteen frozen terms
+  plus KnowledgeArtifact, each with its canonical question and formal role) and **six explicitly named
+  vocabulary smells to reject** going forward ("the AI knows...", "the system is confident...", "the user
+  has permission..." [meaning authority], "the decision is correct..." [meaning authorized], "the evidence
+  proves..." [meaning supports], "the current state contains the history..." [unless lineage is actually
+  preserved]).
+
+  **§201.37-201.39 delivers what the file itself calls "perhaps the most important formal rule so far":
+  the canonical semantic elevation chain**, boxed:
+  **`Information⇏Evidence⇏Truth⇏Authority⇏Decision⇏Outcome`**, with each arrow requiring an explicit named
+  mechanism (qualification/assessment/authorized decision/execution/world interaction), crystallized as
+  **`I73`: no semantic elevation may occur implicitly**, explicitly proposed as **"a candidate Architecture
+  Constitution Principle"** -- directly generalizing and formalizing 0823's/0827's repeatedly-re-affirmed
+  "no semantic elevation without an explicit transition" theme into its most precise, six-stage form yet.
+  Delivers a worked before/after implementation contrast: the naive `AI response→database record→approved`
+  pipeline versus the architecture's mandated seven-stage
+  `AI output→candidate observation/claim→qualification→evidence assessment→governance evaluation→
+  authorized decision→action` pipeline, "the difference is enormous."
+
+  **§201.40-201.43 delivers the vocabulary freeze status**: sixteen terms marked Frozen, two
+  (`KnowledgeArtifact`, `SemanticElevation`) marked "introduced and provisionally accepted, need further
+  testing." Delivers **the most important DDD consequence**: explicitly rejecting one giant
+  `KnowledgeObject` aggregate containing identity/state/evidence/decision/authority/action/uncertainty
+  together, "that would destroy bounded-context integrity" -- worked through `EvidenceAggregate` not
+  automatically owning `DecisionAggregate` (`Decision→[basedOn]→EvidenceReference` instead). Delivers **a
+  six-box candidate architecture decomposition** (Identity/Domain; Observation/Evidence;
+  EpistemicAssessment; Governance/Authority; Decision/Action; Lineage, with Process as cross-cutting
+  orchestration), explicitly qualified: **"this is not yet the final bounded-context map. It is the
+  vocabulary-derived candidate."**
+
+  **§201.44 delivers the Step 201 verdict**: the strongest result, boxed:
+  **`KnowledgeOS is not primarily a data model`** -- it is **"a semantic transition architecture"** whose
+  essential question is not "where do we store knowledge?" but **"how does information become governed
+  knowledge and subsequently legitimate action, while preserving uncertainty, authority, and lineage?"**,
+  boxed the seven-stage formal chain
+  **`Information→Evidence→Assessment→AuthorizedDecision→Action→Outcome→NewEvidence`**. Re-confirms the four
+  Gita chapters as continuing conceptual lenses (Ch.1→Context/Conflict; Ch.2→Identity/State/Outcome;
+  Ch.3→Action/Duty/Consequence; Ch.4→Knowledge/Continuity/Transmission/NormativeDiscrimination), explicitly
+  disciplined once more as "architectural interpretations, not claims about the Gita being a software
+  specification."
+
+  **Closes opening "Step 202 — what we should do next,"** recommending the vocabulary now be used to
+  construct a formal relation matrix `R_ij=Relationship(Concept_i,Concept_j)` across eleven relationship
+  types (create/support/contradict/own/reference/transform/authorize/invalidate/cardinality/lifecycle
+  dependency/bounded-context ownership), explicitly positioned as **"the point where the mathematical model
+  becomes an actual DDD architecture"** by deriving, rather than guessing, the bounded context map and
+  aggregate boundaries. No actual repository implementation occurs within this file itself.
+introduces:
+  - concept: "The canonical sixteen-term vocabulary 𝒦=(I,S,O,E,P,A,M,U,R,D,X,L)+{Transition,Process,Invariant}, each with one canonical question, one formal role, and one DDD role"
+  - concept: "Identity's invariant: a state transition must not silently change the identity of the subject -- Invariant I70"
+  - concept: "CurrentState≠History, Observation⇏Truth, Proposition≠Assessment, Decision≠Truth, Decision≠Action, Process≠Transition, Lineage≠Truth as canonical per-term inequalities"
+  - concept: "The complete semantic chain Observation→Evidence→Proposition→Assessment→Decision→Action→Outcome, with Authority/Model+Uncertainty/Lineage as constraining and cross-cutting dimensions"
+  - concept: "'Loss of actor memory≠loss of system lineage,' self-flagged as one of the strongest architectural consequences of the Chapter 4 lens"
+  - concept: "The re-engaged Krishna metaphor delivering LocalActorPerspective vs. GlobalHistoricalPerspective and 'perspective is not the same as total system knowledge,' explicitly not encoded as a literal component"
+  - concept: "The Descriptive/Normative distinction D(x)⇏N(x), an architectural is/ought boundary -- Invariant I71"
+  - concept: "Statistical regularity≠Governance legitimacy, protecting against accidental AI governance -- Invariant I72"
+  - concept: "The resolution of the 'Knowledge' vocabulary collision into a six-term hierarchy: Information/Observation/Evidence/Proposition/Assessment/KnowledgeArtifact"
+  - concept: "The sharpened definition of KnowledgeOS as a system for governed production, preservation, assessment, transmission, and use of organizational knowledge"
+  - concept: "The full canonical vocabulary table and six explicitly named vocabulary smells to reject"
+  - concept: "The canonical semantic elevation chain Information⇏Evidence⇏Truth⇏Authority⇏Decision⇏Outcome, self-flagged as 'perhaps the most important formal rule so far' -- Invariant I73, a candidate Architecture Constitution Principle"
+  - concept: "The worked before/after implementation contrast (naive AI-response-to-database pipeline vs. the mandated seven-stage governed pipeline)"
+  - concept: "The vocabulary freeze status: sixteen terms Frozen, two (KnowledgeArtifact, SemanticElevation) provisionally accepted pending further testing"
+  - concept: "The explicit rejection of one giant KnowledgeObject aggregate, and the EvidenceAggregate/DecisionAggregate basedOn-reference pattern"
+  - concept: "The six-box candidate architecture decomposition, explicitly not yet the final bounded-context map"
+  - concept: "The Step 201 verdict: KnowledgeOS is not primarily a data model but a semantic transition architecture"
+  - concept: "Step 202's opening: the formal relation matrix R_ij task across eleven relationship types, explicitly positioned as the DDD-derivation point"
+defines:
+  - concept: "The canonical semantic elevation chain"
+    definition: "The architecture's most precise formal statement of its recurring no-implicit-elevation principle: Information⇏Evidence⇏Truth⇏Authority⇏Decision⇏Outcome, meaning no artifact may silently cross from one category to the next stronger one -- each of the five arrows requires an explicit, named mechanism (Information becomes Evidence only through qualification; Evidence becomes an Assessment only through assessment; an Assessment becomes a Decision only through authorized decision; a Decision becomes an Action only through execution; an Action becomes an Outcome only through world interaction) -- crystallized as Invariant I73 ('no semantic elevation may occur implicitly') and proposed as a candidate Architecture Constitution Principle, the most compact and complete restatement yet of the theme first named at 0823 and re-affirmed at 0827"
+  - concept: "KnowledgeArtifact"
+    definition: "An intentionally curated, reusable organizational knowledge object distinct from raw information, a single observation, a piece of evidence, a proposition, or an assessment -- formalized as the tuple KA=(Content,Propositions,Evidence,Assessment,Context,Lineage,Validity) -- introduced specifically to resolve the dangerous overload of the word 'Knowledge' (which had been used across at least seven distinct senses in the corpus) and to give the deliberately-produced, durable knowledge objects KnowledgeOS is meant to manage their own distinct vocabulary slot, separate from the transient epistemic objects (observation, evidence, assessment) that feed into them"
+  - concept: "Descriptive versus Normative (D(x)⇏N(x))"
+    definition: "An architectural instantiation of the philosophical is/ought distinction: a descriptive proposition D(x) states what is observed to be the case (e.g. 'most teams do X'), while a normative rule N(x) states what should happen (e.g. 'teams should do X') -- knowing the former never by itself establishes the latter, so the architecture must never silently promote an observed regularity into a governance rule; this is crystallized as Invariant I71 (descriptive observations must not be silently promoted to normative rules) and further sharpened via Invariant I72 for the specific case of machine-learned statistical regularities (Statistical regularity≠Governance legitimacy), providing a direct, concrete safeguard against a model's learned P(Y|X) being mistaken for a governance-defined Allowed(Y|X)"
+refines:
+  - concept: "0828's Phase A proposal (Steps 201-205: Terms→Definitions→Relationships→Ownership) and 0827's originally-proposed seventeen-term ontology v0.1"
+    refinement: "DELIVERED IN FULL as the actual Terms→Definitions stage: a canonical sixteen-term vocabulary (plus the newly-introduced KnowledgeArtifact and SemanticElevation) each given one canonical question, one formal role, and one DDD role, directly fulfilling both 0827's original proposal and the first half of 0828's Phase A plan -- the Relationships/Ownership stages remain for the immediately following file(s) per Step 202's opening"
+  - concept: "0823's/0827's repeatedly re-affirmed candidate central axiom ('no semantic elevation without an explicit, governed, lineage-preserving transition')"
+    refinement: "Given its most precise and compact six-stage formal statement yet (Information⇏Evidence⇏Truth⇏Authority⇏Decision⇏Outcome), explicitly proposed for the first time as a candidate Architecture Constitution Principle with its own dedicated invariant number (I73), and paired with a concrete before/after implementation contrast making the principle's practical stakes unmistakable"
+  - concept: "The arc's recurring Krishna/Atma Chapter-4 re-engagement family (0800, 0815, 0816, 0820, 0821, 0824, 0826)"
+    refinement: "Re-engaged an eighth time, again disciplined ('we should not encode Krishna as a literal architectural component') and again producing a genuinely new, non-repetitive formalization: LocalActorPerspective vs. GlobalHistoricalPerspective and 'perspective is not the same as total system knowledge' -- continuing the pattern of extracting fresh architectural content from repeated engagement rather than diminishing returns"
+  - concept: "0808's I1-I14 through 0828's (zero new invariants) invariant series, most recently I69 at 0827"
+    refinement: "DIRECTLY EXTENDED as I70-I73, resuming the invariant-delivery streak that 0828 (Step 201's process-planning file) had interrupted -- a seventeenth invariant-bearing file overall since 0808, now eighteen files into the run counting 0828's meta-file"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 202's actual formal relation matrix R_ij across the now-frozen sixteen-term vocabulary, explicitly promised to derive (rather than guess) the Bounded Context Map and Aggregate boundaries -- a HIGH-PRIORITY bridge candidate given its direct DDD-architecture consequence."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the canonical semantic elevation chain (Information⇏Evidence⇏Truth⇏Authority⇏Decision⇏Outcome, I73) as the arc's most precise and complete restatement of its recurring central axiom, proposed as a candidate Architecture Constitution Principle."
+  - "dimension-registry.md: record the resolution of the 'Knowledge' vocabulary collision into the six-term hierarchy (Information/Observation/Evidence/Proposition/Assessment/KnowledgeArtifact) as a directly reusable terminology fix."
+  - "dimension-registry.md: record Descriptive≠Normative (I71) and Statistical regularity≠Governance legitimacy (I72) as directly applicable, concrete AI-governance safeguards against a learned P(Y|X) being mistaken for a policy-defined Allowed(Y|X)."
+  - "dimension-registry.md: record the six explicitly named vocabulary smells ('the AI knows...', 'the system is confident...', etc.) as a directly applicable writing/review checklist for the eventual canonical synthesis document itself."
+anchor_test:
+  anchor: "0828's Phase A proposal and 0827's originally-proposed ontology v0.1; 0823's/0827's repeatedly re-affirmed candidate central axiom; the arc's recurring Krishna/Chapter-4 re-engagement family; the I1-I69 invariant series"
+  supports_dimension: "Delivers the actual Terms→Definitions stage of Phase A, directly fulfilling both 0827's original ontology proposal and the first half of 0828's declared plan: a canonical sixteen-term vocabulary each with exactly one question/formal role/DDD role. Delivers the arc's most precise and compact restatement yet of its recurring central axiom, the canonical semantic elevation chain, explicitly proposed as a candidate Architecture Constitution Principle with its own invariant (I73). Resolves the dangerous 'Knowledge' vocabulary overload into a clean six-term hierarchy including the newly-introduced KnowledgeArtifact. Delivers two directly applicable AI-governance safeguards (Descriptive≠Normative, Statistical regularity≠Governance legitimacy). Re-engages the recurring Krishna/Chapter-4 lens an eighth time, again producing genuinely new, disciplined content. Correctly extends the I-series to I73 (four new invariants), resuming the delivery streak that the immediately preceding meta-file interrupted. Opens Step 202's formal relation matrix task, explicitly positioned as the point where the vocabulary becomes an actual DDD architecture"
+  refines_or_contradicts: "directly delivers 0828's Phase A plan and 0827's ontology proposal; gives 0823's/0827's central axiom its most precise form yet; extends the recurring Krishna/Chapter-4 re-engagement family; extends the I-series; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "§201.31-201.34's explicit seven-sense enumeration of the overloaded word 'Knowledge,' immediately resolved into a six-term hierarchy culminating in the newly-defined KnowledgeArtifact tuple, is directly checkable evidence of a genuine terminology-integrity fix rather than a cosmetic renaming exercise."
+  - "§201.37-201.39's explicit self-flagging 'perhaps the most important formal rule so far' for the six-stage semantic elevation chain, immediately followed by the concrete before/after implementation contrast (naive three-stage pipeline vs. the mandated seven-stage governed pipeline, 'the difference is enormous'), is directly checkable evidence connecting an abstract axiom to a concrete implementation consequence."
+  - "§201.41-201.43's explicit rejection of a single giant KnowledgeObject aggregate, worked through the EvidenceAggregate/DecisionAggregate basedOn-reference example, is directly checkable evidence of the vocabulary freeze already producing a concrete DDD design consequence before Step 202's relation-matrix work even begins."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 202's actual formal relation matrix R_ij (across the sixteen-term frozen vocabulary and eleven relationship types) was ever delivered, and whether it succeeds in deriving (rather than guessing) the Bounded Context Map and Aggregate boundaries as explicitly promised."
+  - "Whether the two provisionally-accepted terms (KnowledgeArtifact, SemanticElevation) survive further testing as promised, or are later merged/split/rejected per 0828's own burden-of-proof rule."
+tier2_triggered: true
+tier2_reason: "PHASE-A DELIVERY MILESTONE: the actual execution of 0828's declared Phase A and the direct fulfillment of 0827's originally-proposed ontology v0.1, delivering a canonical sixteen-term vocabulary each with exactly one question/formal role/DDD role, correctly resuming the invariant-delivery streak with I70-I73. Delivers the arc's most precise and complete restatement of its recurring central axiom -- the canonical semantic elevation chain Information⇏Evidence⇏Truth⇏Authority⇏Decision⇏Outcome -- explicitly proposed as a candidate Architecture Constitution Principle (I73). Resolves the dangerous 'Knowledge' vocabulary overload into a clean six-term hierarchy including the newly-introduced KnowledgeArtifact. Delivers two directly applicable, concrete AI-governance safeguards (Descriptive≠Normative I71, Statistical regularity≠Governance legitimacy I72) explicitly protecting against 'accidental AI governance.' Re-engages the recurring Krishna/Chapter-4 lens an eighth time under continued discipline, again producing genuinely new content (LocalActorPerspective vs. GlobalHistoricalPerspective). Delivers an explicit, concrete DDD consequence (rejecting one giant KnowledgeObject aggregate) even before the formal relation-matrix work begins. Opens Step 202's formal relation matrix task, explicitly positioned as the DDD-derivation point -- a high-priority bridge candidate for the immediately following file(s)."

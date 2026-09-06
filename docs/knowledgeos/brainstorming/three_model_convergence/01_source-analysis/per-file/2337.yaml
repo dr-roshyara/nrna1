@@ -1,0 +1,80 @@
+sequence: 2337
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/04_delta-transition-audit.md
+title: "Step-292/04 — Can δ Be a Successor-State Construction? Delivers the Precise Conditional Restatement 'SSA Is Available IFF Contr Is Defined First AND DECISION-02 Is Settled First', Naming the Collision as 'Candidate C of KR-CONTR-EVAL, Relocated Into the Transition', and a Five-Item Table of What δ Must Handle That the SSA Does Not"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "the detailed audit behind file 2332/2332's already-tracked SSA disqualification, delivering a precise four-property verification table, the exact experimental measurement of the gamma-plus/gamma-minus collapse, and a formal conditional restatement of when the SSA would become usable"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2337
+importance: high
+confidence: high
+about: >
+  Delivers the detailed audit behind file 2332's already-tracked "decisive limit" on the successor-state
+  axiom (SSA) as a δ candidate.
+
+  **DELIVERS THE FOUR-PROPERTY VERIFICATION TABLE (A2)**: deterministic ✔; persistence (a fluent no
+  effect axiom mentions is unchanged) ✔; regression≡progression ✔ 12/12 checks (A3); Poss gates non-
+  executable histories ✔ (A4). "The machinery works. That is not the question."
+
+  **DELIVERS THE PRECISE MEASUREMENT OF THE COLLAPSE**: "[NEG] when γ⁺ and γ⁻ both name F, the SSA
+  yields F=TRUE with no signal that the effect axioms were inconsistent. Measured: from F false AND from
+  F true, the conflicting action yields {F} in both cases." The frame solution presupposes consistent
+  effect axioms and cannot detect their inconsistency; the causal-completeness assumption is "about the
+  axiomatiser's knowledge, not a theorem."
+
+  **NAMES THE EXACT PRIOR-CORPUS COLLISION THIS MAPS ONTO**: "a transition function that resolves γ⁺∧γ⁻
+  silently in favour of γ⁺ is the same failure mode the programme has spent four experiments
+  eliminating. It is Candidate C of KR-CONTR-EVAL, relocated into the transition" -- a bridge candidate
+  directly identifying the already-tracked-elsewhere KR-CONTR-EVAL experiment's own rejected
+  "Candidate C" as structurally identical to the SSA's failure mode.
+
+  **DELIVERS THE PRECISE CONDITIONAL RESTATEMENT**: "P3 is therefore REFUTED, and the correct statement
+  is conditional: [PROP] the SSA is an available shape for δ IF AND ONLY IF contradiction is detected
+  and handled BEFORE the transition -- i.e. Contr must be defined first, and the composition/frame
+  questions (DECISION-02) settled first. δ cannot be resolved ahead of them." This sharpens file 2332's
+  looser "δ cannot be settled before Contr" into an exact biconditional with two named preconditions
+  (Contr AND DECISION-02).
+
+  **DELIVERS A FIVE-ITEM TABLE OF WHAT δ MUST HANDLE THAT THE SSA DOES NOT ADDRESS**: contradictory
+  effects (silently collapsed); provenance of the effect (absent from the construct); the evaluation
+  frame φ (absent); boundary/reason for a fluent having no value (absent -- "Reiter's fluents are
+  two-valued," directly relevant to this reconstruction's already-tracked many-valued Zero/discrimination-
+  result vocabularies throughout the Gītā thread); non-evidential invariance (DECISION-01, untested
+  against the SSA, OPEN).
+introduces:
+  - concept: "The exact biconditional restatement: SSA is available as a delta shape IFF Contr is defined AND DECISION-02 is settled, both preconditions"
+  - concept: "The explicit identification of the SSA's gamma-plus/gamma-minus collapse with the already-existing KR-CONTR-EVAL 'Candidate C' rejection"
+  - concept: "The five-item gap table (contradictory effects, provenance, evaluation frame, boundary/reason for missing value, non-evidential invariance) that any candidate delta must handle beyond the SSA"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked file 2332 decisive limit on the SSA (delta cannot be settled before Contr)"
+    refinement: "SHARPENED into an exact biconditional with two named preconditions (Contr AND DECISION-02), plus a five-item gap table of what any candidate delta must additionally handle"
+contradicts: []
+repeats:
+  - "The core disqualification (SSA silently resolves gamma-plus/gamma-minus) is already tracked in file 2332; this record captures the incremental precise measurement, the KR-CONTR-EVAL identification, and the biconditional restatement."
+bridge_candidates:
+  - "'KR-CONTR-EVAL' and its rejected 'Candidate C' -- cited as the already-existing corpus experiment structurally identical to the SSA's failure mode; not included in this file, likely already-tracked-elsewhere or encounterable in this reconstruction's remaining primary-corpus reading."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as sharpening the SSA disqualification into an exact biconditional (delta available IFF Contr defined AND DECISION-02 settled), naming the collision as identical to KR-CONTR-EVAL's rejected Candidate C, and delivering a five-item gap table for any candidate delta."
+anchor_test:
+  anchor: "This reconstruction's already-tracked file 2332 SSA disqualification"
+  supports_dimension: "Sharpens the disqualification into an exact biconditional and identifies the exact prior-corpus collision it maps onto"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether 'KR-CONTR-EVAL' and its Candidate C rejection are encountered directly elsewhere in this reconstruction's remaining primary-corpus reading."
+tier2_triggered: true
+tier2_reason: "Sharpens the already-tracked SSA disqualification into an exact biconditional restatement with two named preconditions, identifies the exact prior-corpus experiment the failure mode maps onto, and delivers a five-item gap table for any candidate delta. Classified importance high given the incremental precision beyond file 2332."

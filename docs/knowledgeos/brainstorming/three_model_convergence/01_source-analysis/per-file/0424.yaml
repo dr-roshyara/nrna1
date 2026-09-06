@@ -1,0 +1,167 @@
+sequence: 424
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-122435_remaining-undefined-things-in-the-model.md
+title: "LANDMARK: Explicitly Resolves Both 0421 Tensions (Rejects Ideal-State-as-Self-Knowledge; Rejects Non-Attachment-Based Legitimacy); Knower Decomposed into Four Roles; First Explicit Lord Lens Contract (May/May-Not); Five-Type Completeness Taxonomy; Six-Primitive Ontology-First Pivot"
+date: "2026-08-26"
+bytes: 16896
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "critically reviews the Bhagavad Gita synthesis (0421) a second, independent time, converging with 0423's disciplining but resolving different specific claims"
+source_role: CRITICAL_REVIEW
+canonical_source: 424
+importance: critical
+confidence: high
+about: >
+  A landmark disciplined critical review, explicitly treating "the uploaded Gita analysis" (0421) as "a
+  candidate answer set, not a finished model" that "claims answers to 12 questions" (matching 0421's exact
+  structure) while noting several of its answers "introduce new undefined concepts or collapse distinctions
+  we had previously established." Catalogs twenty-five (not the initially-stated ten) remaining foundational
+  gaps, later consolidated into eight domains.
+
+  Delivers the file's two most consequential contributions, EXPLICITLY RESOLVING both unreconciled tensions
+  flagged against 0421: (1) **explicitly rejects "IdealState = Knower's perspective on Omega"** (0421's Q3
+  answer) as conflating two things that must be kept separate -- S*_t (ideal characterization of the
+  OBSERVED STATE) versus N (observer/knower perspective) -- crystallized as "the Knower can observe or know
+  the ideal state; it should not therefore BE DEFINED AS the ideal state," directly vindicating the tension
+  flagged at 0421 and confirming S*_t's referent as the object, not the subject; (2) **explicitly rejects
+  "legitimacy = non-attachment to outcomes"** (0421's Q9 answer) as "philosophically interesting but not
+  sufficient for governance," replacing it with **Legitimacy = Authority + Evidence + Reason + Process +
+  Scope** (five components) and the explicit non-collapse Truth != Legitimacy (a determination can be true
+  but unauthorized, well-evidenced but outside authority, or authorized but poorly evidenced) -- directly
+  vindicating the second tension flagged at 0421.
+
+  Decomposes 0423's newly-introduced Knower/Observer (N) into FOUR distinct architectural roles that must not
+  be conflated: **Observer, Source, Interpreter, Decision Owner** -- worked via a four-stage pipeline (System
+  observes -> AI Agent interprets -> Architecture Rule evaluates -> Architect decides), explicitly warning
+  "calling all of them 'Knower' would destroy important business semantics." This is a significant refinement
+  of 0423's single unified N object into a role-differentiated structure.
+
+  Sharpens the boundary problem between Information/Evidence/Claim/Determination/Knowledge/Understanding/
+  Wisdom (a seven-term chain still overlapping and undefined), poses "what additional property transforms a
+  determination into Knowledge?" as still open (four candidate formulas offered, none adopted), and proposes
+  a six-component candidate Evidence formula (Source+Acquisition+Observation+Timestamp+Integrity+Context,
+  explicitly marked "still a hypothesis"). Reaffirms Trust(Source)!=Truth(Claim) and Truth(P) vs
+  Determination(P) as still-unresolved foundations. Introduces a new candidate minimum-semantic-unit concept,
+  **Semantic Proposition** (between a token and a full sentence), as an EIGHTH candidate in the corpus's
+  ongoing Knowledge-Unit research thread, explicitly left unformalized.
+
+  Reaffirms Relationship as a missing first-class primitive (Knowledge != Dimensions+Values; Knowledge =
+  Dimensions+Values+Relationships) and introduces a candidate seven-component Context formula
+  (Environment/Purpose/RuleSet/Organization/Actor/Time/Scope) and four distinct time concepts
+  (T_observation, T_assessment, T_decision, T_validity, yielding KnowledgeTime != RealityTime). Restates the
+  corpus's probability-disambiguation concern with a slightly different five-item list from 0419's (swapping
+  P(Event) for P(decision succeeds)), flagged as a related but not identical enumeration.
+
+  Delivers the corpus's most complete **completeness taxonomy to date, with FIVE explicit types**: Dimension
+  completeness (D_t=D*), Value completeness (all known dimensions have known values), Relationship
+  completeness (R_t=R*), Evidence completeness (all relevant evidence considered), and Model completeness
+  (the representation can adequately represent the phenomenon at all) -- unifying and extending 0393's three
+  types, 0414's Enumerative/Structural distinction, 0417's existence/detail axis, and 0419's Actual/
+  Demonstrated/Apparent taxonomy into one five-way decomposition, explicitly stating "these are not the
+  same."
+
+  Reaffirms the unknown-unknown problem as fundamentally unsolved (Lord says "there may be more," Zero says
+  "don't assume there isn't," but neither automatically discovers the missing dimension -- a genuine
+  dimension-discovery mechanism is still needed) and Recalculation's Impact(d_new,K_t) as still undefined
+  (eight candidate targets). Reaffirms DecisionSufficiency(K_t,D,C) as needed but still not formally defined
+  by the prior document (0423 introduced the concept; this file notes it remains undefined in practice).
+  Introduces DecisionOwner and DecisionAuthority as missing concepts ("KnowledgeOS should probably not
+  silently decide"), and poses the Action boundary question (recommend? authorize? execute?), concluding
+  action "must remain outside the epistemic kernel unless explicitly governed."
+
+  Delivers the file's other major formal contribution: the corpus's FIRST EXPLICIT, ENFORCEABLE **Lord Lens
+  Contract** -- Lord Lens MAY (challenge completeness, seek new dimensions, identify alternative projections,
+  question model boundaries) versus Lord Lens MAY NOT (declare religious propositions to be technical facts,
+  claim mathematical infinity has been empirically established, override evidence, resolve contradictions by
+  appeal to Omega, replace business decision authority) -- directly operationalizing 0419's three-layer
+  discipline warning (Religious/Philosophical/KnowledgeOS-abstraction) into a concrete, checkable may/may-not
+  rule set, the first of its kind in this reconstruction's sequential pass. Calls for an equivalent Zero
+  Lens contract, listing nine distinct states still requiring formal definition (UNKNOWN, ABSENT, FALSE,
+  NOT_ASSESSED, NOT_APPLICABLE, UNDEFINED, CONFLICTING, INACCESSIBLE, UNREPRESENTABLE).
+
+  Names "representation" itself -- what K_t actually IS as a data structure (graph? propositions?
+  dimensions+values? statements? models? semantic structures? evidence graphs? probability distributions?)
+  -- as "the biggest remaining conceptual gap," concluding "until we define Representation(K_t) we cannot
+  finalize the KnowledgeOS kernel." Consolidates all twenty-five gaps into an eight-domain taxonomy (Ontology,
+  Epistemology, Semantics, Logic, Infinite Space, Observation, Evolution, Decision) -- a reorganization of
+  0419's eight categories, replacing the earlier Zero/Lord domains with a dedicated Semantics domain
+  (proposition, statement, semantic unit, representation) and an Observation domain (observer, source,
+  context, time, method).
+
+  Closes with a revised whiteboard model (Omega -> R_t -> O=(N,R_t,C,T,M) -> {D_t,V_t,R_t'} -> Evidence ->
+  Reasoning -> Determination -> K_t -> DecisionSufficiency -> Decision, wrapped in Lord+Zero) and delivers
+  the reconstruction's most concrete methodological-pivot statement to date: "the next step should probably
+  NOT be another philosophical book... we now have enough philosophical material to stop and formally define
+  the KnowledgeOS ontology -- starting with just **SIX PRIMITIVES: Observation, State, Dimension, Value,
+  Evidence, Determination**. Everything else -- Knowledge, Reason, Probability, Confidence, Lord, Zero,
+  Decision -- can then be defined in relation to those primitives." This sharpens 0419's vaguer "focus on
+  formal definition, not more lenses" pivot into a concrete, named six-primitive starting point.
+introduces:
+  - concept: "Explicit rejection of 0421's 'IdealState = Knower's perspective on Omega,' resolving the tension flagged at 0421: S*_t (ideal characterization of the observed state) and N (observer/knower perspective) must be kept separate -- the Knower can know the ideal state but is not thereby defined as it"
+  - concept: "Explicit rejection of 0421's 'legitimacy = non-attachment to outcomes,' resolving the second tension flagged at 0421: Legitimacy = Authority + Evidence + Reason + Process + Scope, with Truth != Legitimacy"
+  - concept: "Knower decomposed into four distinct architectural roles: Observer, Source, Interpreter, Decision Owner -- must not be conflated under one 'Knower' label"
+  - concept: "Eighth candidate in the ongoing Knowledge-Unit research thread: 'Semantic Proposition,' a unit between token and sentence, explicitly left unformalized"
+  - concept: "Five-type completeness taxonomy: Dimension, Value, Relationship, Evidence, and Model completeness -- unifying and extending 0393/0414/0417/0419's prior partial taxonomies"
+  - concept: "First explicit, enforceable Lord Lens Contract: a concrete may/may-not rule list operationalizing 0419's Religious/Philosophical/KnowledgeOS-abstraction discipline warning"
+  - concept: "Call for an equivalent Zero Lens Contract, naming nine distinct states still requiring formal definition (UNKNOWN, ABSENT, FALSE, NOT_ASSESSED, NOT_APPLICABLE, UNDEFINED, CONFLICTING, INACCESSIBLE, UNREPRESENTABLE)"
+  - concept: "Representation(K_t) named the single biggest remaining conceptual gap -- what K_t actually IS as a data structure -- explicitly blocking Kernel finalization until resolved"
+  - concept: "Concrete six-primitive ontology-first methodological pivot: Observation, State, Dimension, Value, Evidence, Determination as the starting primitives from which everything else (Knowledge, Reason, Probability, Confidence, Lord, Zero, Decision) should be defined"
+  - concept: "DecisionOwner and DecisionAuthority as missing governance concepts, with an explicit Action boundary question (recommend/authorize/execute) and the conclusion that action must remain outside the epistemic kernel unless explicitly governed"
+defines:
+  - concept: "Legitimacy"
+    definition: "Authority + Evidence + Reason + Process + Scope, explicitly distinct from Truth"
+  - concept: "Five-type completeness"
+    definition: "Dimension completeness (D_t=D*), Value completeness (all known dimensions have known values), Relationship completeness (R_t=R*), Evidence completeness (all relevant evidence considered), Model completeness (the representation can adequately represent the phenomenon at all)"
+refines:
+  - concept: "0421's Ideal-State-as-self-knowledge claim, flagged as an unreconciled tension against 0419's S*_t"
+    refinement: "Explicitly rejected: the tension is resolved in favor of 0419's S*_t as a property of the observed object, with N (Knower) kept as a separate, non-identical concept"
+  - concept: "0421's non-attachment-based legitimacy claim, flagged as an unreconciled tension against the corpus's evidentialist work"
+    refinement: "Explicitly rejected: Legitimacy = Authority+Evidence+Reason+Process+Scope, with Truth != Legitimacy formally established"
+  - concept: "0423's newly-introduced Knower/Observer (N) as a single fourth ontological object"
+    refinement: "Decomposed into four distinct roles (Observer, Source, Interpreter, Decision Owner) that must not be conflated"
+  - concept: "0393/0414/0417/0419's various partial completeness taxonomies"
+    refinement: "Unified into a single five-type taxonomy (Dimension/Value/Relationship/Evidence/Model completeness)"
+  - concept: "0419's three-layer Lord Lens discipline warning (Religious/Philosophical/KnowledgeOS-abstraction)"
+    refinement: "Operationalized into a concrete, checkable may/may-not Lord Lens Contract"
+  - concept: "0419's methodological-pivot statement (focus on formal definition, not more lenses)"
+    refinement: "Sharpened into a concrete six-primitive starting point (Observation, State, Dimension, Value, Evidence, Determination)"
+contradicts:
+  - concept: "0421's 'IdealState = Knower's perspective on Omega'"
+    source: "this file's own explicit rejection"
+    resolution: "Rejected; S*_t and N kept as distinct, non-identical concepts"
+  - concept: "0421's 'legitimacy = non-attachment to outcomes'"
+    source: "this file's own explicit rejection"
+    resolution: "Rejected; replaced with Legitimacy=Authority+Evidence+Reason+Process+Scope, Truth!=Legitimacy"
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the explicit resolution of both tensions flagged at 0421 (Ideal-State-as-self-knowledge rejected; non-attachment-based legitimacy rejected, replaced with Authority+Evidence+Reason+Process+Scope)."
+  - "dimension-registry.md: record the four-role decomposition of the Knower (Observer/Source/Interpreter/Decision Owner), refining 0423's single N object."
+  - "dimension-registry.md: record the five-type completeness taxonomy (Dimension/Value/Relationship/Evidence/Model) as the corpus's most complete unification of its prior partial taxonomies."
+  - "dimension-registry.md: record the first explicit, enforceable Lord Lens Contract (may/may-not) and the call for an equivalent Zero Lens Contract."
+  - "dimension-registry.md: record the concrete six-primitive ontology-first pivot (Observation, State, Dimension, Value, Evidence, Determination) as the corpus's sharpest methodological-pivot statement to date, superseding 0419's vaguer formulation."
+anchor_test:
+  anchor: "0421 (both its unreconciled tensions); 0423's single N object; 0393/0414/0417/0419's completeness taxonomies; 0419's Lord Lens discipline warning and methodological pivot"
+  supports_dimension: "LANDMARK critical review explicitly resolving both tensions flagged against 0421 (rejecting Ideal-State-as-self-knowledge and non-attachment-based legitimacy), decomposing 0423's Knower into four distinct roles, unifying the corpus's completeness taxonomies into five types, delivering the corpus's first explicit enforceable Lord Lens Contract, naming Representation(K_t) as the biggest remaining conceptual gap, and sharpening 0419's methodological pivot into a concrete six-primitive ontology-first starting point"
+  refines_or_contradicts: "explicitly rejects and resolves both of 0421's flagged tensions; refines 0423's Knower object into four roles; refines/unifies 0393/0414/0417/0419's completeness taxonomies; refines 0419's Lord Lens discipline into an enforceable contract and its vague pivot into six named primitives"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "The precise boundary transforming a Determination into Knowledge (four candidate formulas offered, none adopted)"
+  - "The Semantic Proposition concept (eighth Knowledge-Unit candidate), left unformalized"
+  - "Representation(K_t) itself -- named the biggest remaining conceptual gap, explicitly blocking Kernel finalization"
+open_questions:
+  - "Whether the corpus actually follows through on the six-primitive ontology-first pivot in its subsequent sequential files, or continues applying further philosophical lenses"
+  - "Whether the Zero Lens Contract (called for but not yet produced) is delivered in a subsequent file, paralleling this file's Lord Lens Contract"
+  - "Whether the four-role Knower decomposition (Observer/Source/Interpreter/Decision Owner) is formally adopted across the corpus's subsequent K_t/observation formalizations"
+  - "Whether Representation(K_t) is ever formally resolved"
+tier2_triggered: true
+tier2_reason: "Landmark critical review explicitly resolving both substantive tensions flagged against 0421 (Ideal-State-as-self-knowledge and non-attachment-based legitimacy, both rejected with formal replacements), decomposing the newly-introduced Knower object into four distinct roles, unifying the corpus's scattered completeness taxonomies into a definitive five-type decomposition, and delivering the corpus's first explicit, enforceable Lord Lens Contract -- directly operationalizing 0419's discipline warning. Closes with the sharpest, most concrete methodological-pivot statement in this reconstruction's sequential pass: a named six-primitive ontology-first research restart."

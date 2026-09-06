@@ -1,0 +1,140 @@
+sequence: 462
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-172933_question-4-evidence-and-epistemic-state-transition.md
+title: "LANDMARK: Evidence Formalized, Then Corrected — Epistemic State Discovered to Be Multidimensional (Acquisition×Support×Resolution×Validity), Premature Lattice/Calculus Freezing Rejected, and Logical≠Normative≠Emotional≠Decision Conflict Sharply Distinguished"
+date: "2026-08-26"
+bytes: 23796
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the Bhishma grandfather/opponent dual-role example used to correct a naive 'contradiction' claim into a precise four-way conflict-type distinction"
+source_role: PRIMARY_RESEARCH
+canonical_source: 462
+importance: critical
+confidence: high
+about: >
+  Answers 0461's Question 4 (Evidence, and how it changes an Assertion's epistemic state), then undergoes a
+  major methodological correction discovering that epistemic state is multidimensional.
+
+  **Part 1 (Evidence and Epistemic State Transition, first proposal)** defines Evidence as information
+  bearing on a proposition's truth/falsity that can update an assertion's epistemic state, with the core
+  invariants Evidence != Assertion and Evidence -> Epistemic State Transition. Formalizes Evidence as a
+  seven-component tuple E=(Source,Type,Content,Reliability,Relevance,Context,tau), lists eight evidence
+  types (Direct Observation, Testimony, Documentation, Measurement, Inference, Logical Proof, Statistical
+  Evidence, Historical Evidence), and treats Evidence:Proposition->Support as a function. Refines the
+  Epistemic State set to ten values (Unknown/Hypothesized/Assumed/Inferred/Observed/Confirmed/Conflicting/
+  Unresolved/Rejected/ABSENT) and arranges them in an explicit "epistemic lattice" diagram. Defines a
+  transition function T:(Assertion,Evidence)->Assertion_new with a fourteen-row transition-rules table and
+  a five-row evidence-threshold table. Introduces a provisional evidence calculus: Support(E,P) in [-1,1],
+  Strength(E) in [0,1], aggregate S_total via weighted-sum/Bayesian-update/majority-vote, and numeric
+  epistemic-state thresholds (e.g. S>0.8 => Confirmed). Extends Zero/Lord/Sārathi to operate on evidence
+  (Zero detects missing/weak/unreliable/conflicting/stale/contextual evidence; Lord suggests new sources,
+  alternative interpretations, missing dimensions; Sārathi guides collection, verification, conflict
+  resolution). Works a five-step Arjuna evidence narrative (grandfather relationship confirmed via
+  testimony, then a "Bhishma is on the opposing side" observation creates apparent tension, resolved via a
+  new moral-conflict assertion). Formalizes Evidence Provenance and the complete Knowledge Atom with an
+  evidence set. Closes proposing Question 5 (comparing/challenging Assertions).
+
+  **Part 2 (critical correction)** delivers the file's major contributions. First, **rejects treating
+  Reliability and Relevance as intrinsic properties of evidence**: the same source can be reliable for one
+  question and unreliable for another, so Reliability must be Reliability(E,S,C) (source/context-dependent)
+  and Relevance must be Relevance(E,P) (proposition-dependent). Second, **rejects Evidence:Proposition->
+  Support as evidence intrinsically supporting a proposition**, refining to Evaluate(E,P,C)->
+  SupportAssessment with Support=f(E,P,C), worked via "CPU=45%" supporting "CPU<50%" but contradicting
+  "CPU>80%" -- identical evidence, opposite support depending on the proposition. Third, **explicitly
+  rejects calling the epistemic-state ordering a lattice** -- insufficient mathematics has been established;
+  Observed is not comparable to Conflicting in any obvious scalar sense; Conflicting/Unresolved/Rejected do
+  not sit on one linear ladder -- renaming it merely "Epistemic State Space" and leaving open whether it is
+  a partial order, lattice, bilattice, or belief-revision structure, a deliberate refusal to over-claim
+  mathematical structure prematurely (echoing 0382's earlier discipline against premature Kernel-tuple-
+  writing).
+
+  Delivers the file's most significant discovery: **Epistemic State may be multidimensional**, not a single
+  ordered/scalar status. Observes that "Observed" (a mode of epistemic acquisition) and "Confirmed" (an
+  epistemic evaluation) are not on the same axis at all, proposing instead (at least) four independent
+  dimensions -- **Acquisition** {Observed,Reported,Inferred,Calculated}, **Support/Assessment**
+  {Unassessed,Supported,StronglySupported,Contested,Rejected}, **Resolution** {Open,Resolved,Unresolved},
+  and **Validity** -- formalized as EpistemicState = Acquisition x Support x Resolution x Validity, worked
+  via two concrete multidimensional assertion profiles. This is structurally parallel to 0389's earlier
+  discovery of Dimension-uncertainty as orthogonal to Value-uncertainty, now applied one level up, to the
+  structure of epistemic status itself. Also explicitly marks the evidence calculus's fixed numeric ranges,
+  weighted-sum aggregation, and thresholds as provisional hypotheses, flagging a real mathematical risk:
+  weighted averaging is not automatically a valid epistemic calculus, since independent weak evidence is not
+  equivalent to one strong piece and duplicated evidence from the same source must not be double-counted --
+  requiring future models of **Evidence Independence** and **Evidence Correlation** before operational use.
+
+  Delivers a second major correction to Part 1's Arjuna narrative: **explicitly rejects calling Bhīṣma's
+  simultaneous grandfather/opponent status a contradiction** -- P1=(Bhishma,Relationship,Grandfather) and
+  P2=(Bhishma,Side,Opponent) are perfectly logically compatible; the conflict exists only at the Knower's
+  decision/goal level (FamilyDuty vs. WarDuty), not the proposition level. Introduces a sharp, non-
+  collapsible four-way distinction -- **Logical Contradiction != Normative Conflict != Emotional Conflict !=
+  Decision Conflict** -- correcting Part 1's imprecise "tension"/"conflict" language and giving 0395/0396's
+  earlier Conflict-is-Knowledge finding its most precise formal distinction to date. Introduces a
+  Descriptive/Normative/Causal/Decision proposition-kind taxonomy that should not share epistemic semantics,
+  a task for DDD to preserve. Extends Zero to a ten-category output including the new NormativeConflict and
+  LogicalContradiction categories, and generalizes Sārathi to select from a ten-item concrete action
+  vocabulary (ASK_KNOWER, OBSERVE, SEARCH, MEASURE, REQUEST_EVIDENCE, COMPARE, RECONCILE,
+  EXPAND_DIMENSIONS, REVISE_QUESTION, STOP) via Sārathi(K,Z,L,Q)->NextEpistemicAction. Formalizes the
+  fullest lifecycle loop yet in this arc: Knower->Intent->SemanticReconstruction->DimensionDiscovery->
+  Proposition->Evidence->Assertion->EpistemicEvaluation->KnowledgeState->{Zero->Gaps, Lord->Possibilities}->
+  Sārathi->NextEpistemicAction, then repeats. Delivers a verdict of "accepted as a conceptual foundation" but
+  explicitly flags seven specific mechanisms as provisional hypotheses, not frozen constitution (the single
+  epistemic-state lattice; reliability as intrinsic; fixed [-1,1] support values; weighted-sum aggregation;
+  numeric thresholds; Observed->Confirmed as a universal transition; and calling the structure a lattice at
+  all). Closes launching **Question 4A -- What exactly is an Epistemic State? One ordered state, or a vector
+  of independent dimensions (acquisition mode, evidential support, resolution, validity, conflict status)?**
+  -- explicitly deferred as prior to and more fundamental than Question 5, since later measure theory, Zero
+  Lens, evidence calculus, and implementation all depend on resolving it correctly.
+introduces:
+  - concept: "Major discovery: Epistemic State may be multidimensional (Acquisition x Support x Resolution x Validity), not a single ordered/scalar status -- structurally parallel to 0389's Dimension-uncertainty/Value-uncertainty split, now applied to epistemic status itself"
+  - concept: "Evidence context-dependence: Reliability(E,S,C) and Relevance(E,P), not intrinsic properties of evidence alone"
+  - concept: "Support is not a property of evidence but a function of evidence, proposition, and context: Support=f(E,P,C), worked via identical evidence (CPU=45%) supporting one proposition and contradicting another"
+  - concept: "Explicit refusal to call the epistemic-state ordering a lattice absent sufficient established mathematics -- renamed 'Epistemic State Space,' structure (partial order/lattice/bilattice/belief-revision) left explicitly open"
+  - concept: "Evidence Independence and Evidence Correlation named as required future models before the proposed weighted-sum evidence calculus can be used operationally, to prevent duplicated-evidence amplification"
+  - concept: "Sharp four-way distinction: Logical Contradiction != Normative Conflict != Emotional Conflict != Decision Conflict, correcting a naive 'contradiction' label on Bhīṣma's simultaneous grandfather/opponent status"
+  - concept: "Descriptive/Normative/Causal/Decision proposition-kind taxonomy, which should not share epistemic semantics"
+  - concept: "Sārathi generalized to a concrete ten-action vocabulary (ASK_KNOWER, OBSERVE, SEARCH, MEASURE, REQUEST_EVIDENCE, COMPARE, RECONCILE, EXPAND_DIMENSIONS, REVISE_QUESTION, STOP) via Sārathi(K,Z,L,Q)->NextEpistemicAction"
+  - concept: "Fullest lifecycle loop formalized to date: Knower->Intent->SemanticReconstruction->DimensionDiscovery->Proposition->Evidence->Assertion->EpistemicEvaluation->KnowledgeState->{Zero,Lord}->Sārathi->NextEpistemicAction, repeating"
+  - concept: "Question 4A launched: is Epistemic State one ordered value or a vector of independent dimensions? -- explicitly prior to and more fundamental than Question 5"
+defines:
+  - concept: "Evidence (formal tuple)"
+    definition: "E=(Source,Type,Content,Reliability,Relevance,Context,τ); Reliability and Relevance corrected to be context/proposition-dependent functions rather than intrinsic properties"
+  - concept: "EpistemicState (multidimensional hypothesis)"
+    definition: "EpistemicState = Acquisition x Support x Resolution x Validity, where Acquisition in {Observed,Reported,Inferred,Calculated}, Support/Assessment in {Unassessed,Supported,StronglySupported,Contested,Rejected}, Resolution in {Open,Resolved,Unresolved}"
+refines:
+  - concept: "0461's four-level Proposition/Assertion/EpistemicallyAccepted/Reality ontology and its Σ epistemic-status field"
+    refinement: "Σ (a single scalar epistemic status) is hypothesized to actually be a multidimensional product of orthogonal axes, not one ordered value"
+  - concept: "0395/0396's Conflict-is-Knowledge finding"
+    refinement: "Sharpened into a precise four-way non-collapsible distinction (Logical/Normative/Emotional/Decision conflict), correcting a naive treatment of Bhīṣma's dual grandfather/opponent status as a contradiction"
+  - concept: "0459's seven-value EpistemicStatus enum sketch"
+    refinement: "Potentially superseded by the multidimensional EpistemicState hypothesis -- flagged as an open reconciliation question"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - concept: "This file's Acquisition x Support x Resolution x Validity multidimensional epistemic-state hypothesis vs. 0389's Dimension-uncertainty/Value-uncertainty orthogonal-axis discovery -- both independently discover that a previously-assumed-scalar epistemic property is actually multidimensional; unresolved_equivalence, strong structural parallel worth formal comparison"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the major discovery that Epistemic State may be multidimensional (Acquisition x Support x Resolution x Validity), and its structural parallel to 0389's Dimension/Value-uncertainty split."
+  - "dimension-registry.md: record the rejection of premature lattice-naming and premature evidence-calculus freezing (Evidence Independence/Correlation flagged as required)."
+  - "dimension-registry.md: record the Logical!=Normative!=Emotional!=Decision conflict distinction and Question 4A's launch."
+anchor_test:
+  anchor: "0461's four-level Proposition/Assertion/EpistemicallyAccepted/Reality ontology; 0389's Dimension-uncertainty/Value-uncertainty discovery; 0395/0396's Conflict-is-Knowledge finding; 0457/0459's epistemic-status lists"
+  supports_dimension: "LANDMARK: formalizes Evidence and its epistemic-state-transition role, then discovers that Epistemic State is likely multidimensional (Acquisition x Support x Resolution x Validity) rather than a single scalar status -- structurally parallel to 0389's earlier Dimension/Value-uncertainty discovery; rejects premature lattice-naming and evidence-calculus freezing; sharply distinguishes Logical/Normative/Emotional/Decision conflict, correcting a naive contradiction claim; launches Question 4A as prior to and more fundamental than Question 5"
+  refines_or_contradicts: "refines 0461's Σ epistemic-status field into a multidimensional hypothesis; sharpens 0395/0396's Conflict-is-Knowledge finding; self-corrects Part 1's own naive contradiction claim and premature lattice/calculus commitments within the same file"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Continues the Arjuna/Bhīṣma grandfather-and-opponent worked example from 0461, used here to distinguish logical compatibility from normative/decision-level conflict"
+undefined_concepts: []
+open_questions:
+  - "Question 4A: is Epistemic State one ordered value, or a vector of independent dimensions (acquisition, support, resolution, validity, conflict status)? -- launched here, not yet answered"
+  - "Whether this file's multidimensional epistemic-state hypothesis is later formally compared to 0389's Dimension/Value-uncertainty discovery as a structurally parallel finding"
+  - "Whether Evidence Independence and Evidence Correlation are ever formally modeled before the evidence calculus is used operationally"
+  - "Whether the Descriptive/Normative/Causal/Decision proposition-kind taxonomy is later integrated into the Proposition/Assertion formalism"
+tier2_triggered: true
+tier2_reason: "Major discovery that Epistemic State may be multidimensional (Acquisition x Support x Resolution x Validity) rather than a single scalar status, structurally parallel to 0389's earlier Dimension/Value-uncertainty split; disciplined rejection of premature lattice-naming and evidence-calculus freezing; sharp new Logical!=Normative!=Emotional!=Decision conflict distinction correcting a naive contradiction claim; launches Question 4A as more fundamental than the previously-planned Question 5."

@@ -1,0 +1,160 @@
+sequence: "0176"
+path: docs/knowledgeos/brainstorming/kernel/20260824-001634-decision-power-model-aims-information-evaluation-decision.md
+title: "A decision-power/management book (Aims->Information->Evaluation->Decision) extracted into five KOS-DP-01..05 invariants and a DecisionRight/DecisionalSpace/DecisionBasis/DecisionReadiness model -- explicitly versions the Kernel candidate to 'v0.3' with new EPISTEMIC/DECISIONAL/GOVERNED-DECISION-POWER sections"
+date: "2026-08-24"
+bytes: 20000
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0176"
+importance: critical
+confidence: high
+about: >
+  Extracts a management/decision-theory book (central framework: Aims->Information->Evaluation->Decision,
+  centered on the concept of "decisional space") not as generic decision-making methodology but as a
+  "Decision Power model," continuing and versioning the Kernel-candidate track from 0174's v0.2. Central
+  thesis: Knowledge != Decision != Decision Power -- decision power is "the bounded capability to choose
+  among available alternatives under a mandate, using available information and evaluation, while carrying
+  responsibility for the choice," proposed as a genuinely new kernel-level concept, not merely a Governance-
+  context detail. Key extractions: (1) DecisionalSpace -- the set of choices an actor is actually permitted
+  and able to make in a given context, richer than a bare role label; (2) DecisionRight (preferred over the
+  vaguer "DecisionPower") -- a governed entitlement (Actor/Subject/Scope/PermittedOutcomes/AuthorityBasis/
+  Constraints/Preconditions/RiskLimit/ValidityPeriod/Delegation/Accountability) from which effective
+  DecisionPower is DERIVED (DecisionRights+Mandates+Constraints+Delegations+CurrentState), never persisted
+  as a raw primitive nor inferred from role/knowledge/seniority/AI-capability; (3) an explicit rejection of
+  the book's own 1998-era claim that computers cannot make "true" value-laden decisions, replaced with the
+  more durable architectural insight "decision support capability does not automatically imply decision
+  authority," producing three explicit AI operating modes (Advisory -> Human Decision; Delegated -> AI
+  exercises a governance-granted DecisionRight; Deterministic execution -> policy/rule/condition, arguably
+  not a "decision" in the book's sense at all); (4) DecisionKind typing (ConsideredDecision/
+  DelegatedDecision/EmergencyDecision/DeferredDecision/AutomaticDetermination/Recommendation), with
+  Recommendation != Decision and AutomaticDetermination != Human Decision as hard semantic boundaries; (5)
+  "deciding not to decide" elevated to a first-class DecisionOutcome (Chosen/Deferred/Rejected/Escalated)
+  rather than treating a null choice as an error, drawing on the book's four legitimate deferral reasons
+  (insufficient information, option parity, deliberate option preservation, unsuitability to decide now);
+  (6) a DecisionReadiness checklist (RequiredEvidenceSatisfied / RequiredQuestionsAnswered /
+  ContradictionsResolved / AuthorityPresent / AlternativesKnown / RiskAssessmentComplete /
+  PreconditionsSatisfied) gating Decision, extending 0174's Inquiry model; (7) DecisionBasis as a first-
+  class structured object (Aims/RelevantEvidence/Assessments/Alternatives/Risks/Assumptions/Constraints/
+  Values/Reasoning) replacing a bare natural-language "rationale" string, enabling reconstruction rather
+  than mere representation; (8) an explicit Fact != Value != Preference != Constraint separation for
+  decision inputs; (9) DecisionExposure/risk as a further dimension of decision power -- an actor's
+  RiskAuthority can gate approval independent of evidence quality (e.g. an Architect with LOW risk
+  authority cannot approve a HIGH-risk decision even with adequate evidence); (10) contingency/mitigation/
+  fallback/insurance/reversibility explicitly shown to ENLARGE effective decisional space (a risky option
+  becomes acceptable with rollback), making DecisionalSpace non-static; (11) a three-way distinction --
+  DecisionRight ("may I decide?") vs. DecisionCapacity ("can I reasonably decide?") vs. DecisionReadiness
+  ("should I decide now?") -- allowing a precise "authorized but not ready" system state rather than a
+  blunt "cannot decide." Produces five named KOS-DP-01..05 candidate invariants (Decision Sovereignty --
+  KnowledgeOS may expose grounds/constraints/alternatives/risk/readiness but must never infer or grant
+  decision authority from knowledge/reasoning/recommendation-quality/system-access; Explicit Decision Right;
+  Recommendation/Decision Separation; Valid Deferral; Decision Reconstruction) and explicitly rejects a
+  numeric "decision_power_score" in favor of an inspectable, deterministic structured DecisionPower object.
+  Concludes with a two-axis kernel model (Epistemic axis: "can we justify this?" vs. Decisional axis: "may
+  we choose this?") and an explicitly versioned "Candidate KnowledgeOS Kernel v0.3": the existing EPISTEMIC
+  section (Question/Evidence/Hypothesis/Assumption/Argument/Inference/Claim/Assessment/Provenance, from
+  0173-0174) plus two new sections, DECISIONAL (Aim/Alternative/DecisionBasis/DecisionReadiness/Decision)
+  and GOVERNED DECISION POWER (DecisionRight/DecisionalSpace/Constraint/Delegation/Accountability), with
+  Inquiry/Risk/Scenario/Contingency/DecisionAnalysis/Governance/Workflow/AI-Agent as surrounding contextual
+  capabilities. Closes by reformulating the KnowledgeOS mission: "KnowledgeOS preserves the epistemic basis
+  and governed decision space within which decisions can legitimately be made" -- explicitly rejecting a
+  "KnowledgeOS -> DecisionEngine -> decides" model in favor of "KnowledgeOS -> Decision Support ->
+  [sovereign] Decision Authority -> Decision."
+
+introduces:
+  - "Five named KOS-DP-01..05 candidate invariants: Decision Sovereignty (KnowledgeOS must never infer or
+    grant decision authority from knowledge possession, reasoning capability, recommendation quality, or
+    system access), Explicit Decision Right, Recommendation/Decision Separation, Valid Deferral, Decision
+    Reconstruction (an authoritative decision must be reconstructable from its DecisionBasis)"
+  - "A new candidate kernel primitive set: DecisionalSpace, DecisionRight (Actor/Subject/Scope/
+    PermittedOutcomes/AuthorityBasis/Constraints/Preconditions/RiskLimit/ValidityPeriod/Delegation/
+    Accountability), DecisionBasis (Aims/RelevantEvidence/Assessments/Alternatives/Risks/Assumptions/
+    Constraints/Values/Reasoning), DecisionReadiness (a seven-item gating checklist), DecisionOutcome
+    (Chosen/Deferred/Rejected/Escalated), DecisionKind typology"
+  - "A three-way DecisionRight/DecisionCapacity/DecisionReadiness distinction enabling a precise
+    'authorized but not ready' system state, illustrated with a worked Architect example (Right=YES,
+    Capacity=YES, Readiness=NO due to missing security evidence)"
+  - "Three explicit AI-agent operating modes with respect to decisions: Advisory (recommendation to human),
+    Delegated (governance-granted DecisionRight exercised by AI), Deterministic execution (policy/rule/
+    condition, arguably not a 'decision' at all in the source's own sense)"
+  - "'Candidate KnowledgeOS Kernel v0.3': extends 0174's v0.2 EPISTEMIC section with two new sections,
+    DECISIONAL (Aim/Alternative/DecisionBasis/DecisionReadiness/Decision) and GOVERNED DECISION POWER
+    (DecisionRight/DecisionalSpace/Constraint/Delegation/Accountability) -- continuing the explicit
+    versioning discipline first seen at 0174"
+  - "A two-axis kernel reformulation: Epistemic axis ('can we justify this?': Question/Evidence/Reasoning/
+    Inference/Claim/Assessment) vs. Decisional axis ('may we choose this?': Aim/Alternative/DecisionRight/
+    DecisionalSpace/Constraint/Risk/DecisionReadiness/Decision/Accountability), intersecting at Decision
+    Basis -> Decision Authority -> Decision"
+
+defines:
+  - "Five KOS-DP-01..05 candidate invariants (see introduces) -- PROPOSED only, not adjudicated or admitted"
+
+refines:
+  - "Directly extends and re-versions 0174's 'Kernel Candidate v0.2' into 'v0.3,' continuing the Western-
+    epistemology-arc Kernel-construction track (0171-0176) as a second, parallel track alongside the DDD/
+    Sanskrit/Chinese Kernel Boundary Discovery cycle (0144-0170)"
+  - "Extends 0174's DecisionReadiness-adjacent Inquiry/SufficiencyAssessment concept into a fully specified
+    seven-item DecisionReadiness gate distinct from, but composable with, Inquiry completion"
+
+contradicts: []
+
+repeats:
+  - {concept: "Knowledge != Decision boundary (a decision uses knowledge, does not become knowledge merely by being made)", canonical_source: "0174", novelty: low}
+  - {concept: "Explicit reject of a numeric confidence/power scalar in favor of an inspectable structured object", canonical_source: "0173", novelty: low}
+
+bridge_candidates:
+  - "The two-axis Epistemic/Decisional kernel reformulation is a genuinely reusable architectural framing
+    distinct from anything in the DDD/Sanskrit/Chinese cycle -- worth tracking whether it is picked up by
+    the corpus's own eventual Kernel Boundary Definition act, and whether it reconciles or conflicts with
+    ADR-KOS-KERNEL-001's (0167) exclusion of workflow/governance-administration from the Kernel, since
+    DecisionRight/DecisionalSpace arguably sit close to that excluded territory"
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- explicitly framed as Kernel Candidate v0.3, not frozen; the source itself proposes testing the
+    model against a governance/authority lens and a decision-theory lens before any DecisionRight/
+    DecisionalSpace/DecisionBasis/DecisionReadiness/Accountability/Delegation item is confirmed as
+    belonging in the immutable kernel versus the surrounding Governance/Decision contexts"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Extends the Western-epistemology-arc Kernel candidate (v0.2 -> v0.3) with a new Decisional/Governed-Decision-Power dimension; does not contradict the DDD-cycle hypothesis but proceeds independently of it, and potentially in tension with ADR-KOS-KERNEL-001's governance-administration exclusion."
+  alternative_minimal_kernel: "Kernel Candidate v0.3: EPISTEMIC (Question/Evidence/Hypothesis/Assumption/Argument/Inference/Claim/Assessment/Provenance) + DECISIONAL (Aim/Alternative/DecisionBasis/DecisionReadiness/Decision) + GOVERNED DECISION POWER (DecisionRight/DecisionalSpace/Constraint/Delegation/Accountability) -- the most elaborated Kernel candidate in the corpus's reading order so far"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Second consecutive explicitly-versioned Kernel candidate (v0.2 at 0174, v0.3 here) -- the versioning
+    discipline is now a confirmed pattern for this track, distinct from the DDD-cycle's unversioned
+    illustrative-sketch style. Worth continuing to track for v0.4+ and for whether the source itself ever
+    flags a tension between DecisionRight/DecisionalSpace (v0.3's new territory) and ADR-KOS-KERNEL-001's
+    (0167) explicit exclusion of 'governance administration' and 'workflow orchestration' from the Kernel
+    boundary -- this reconstruction notes the latent tension but does not resolve it (per section 29 gate)"
+  - "The DecisionRight vs. DecisionCapacity vs. DecisionReadiness three-way split, and the Recommendation
+    != Decision boundary, are both directly reusable AI-governance safeguards with clear applicability to
+    this reconstruction's own operating context (an AI process generating research records under a
+    governance protocol) -- noted as a bridge_candidate-adjacent methodological observation, not acted upon"
+
+undefined_concepts: []
+open_questions:
+  - "Whether Kernel Candidate v0.3 is further versioned (v0.4+), and whether the promised next test
+    (governance/authority lens, decision-theory lens) against DecisionRight/DecisionalSpace/DecisionBasis/
+    DecisionReadiness/Accountability/Delegation actually occurs in a later file"
+  - "Whether the latent tension between this file's GOVERNED DECISION POWER kernel section and
+    ADR-KOS-KERNEL-001's (0167) explicit governance-administration/workflow-orchestration exclusions is
+    ever explicitly raised and resolved"
+
+tier2_triggered: true
+tier2_reason: >
+  Five new named KOS-DP invariants; a substantial new DecisionRight/DecisionalSpace/DecisionBasis/
+  DecisionReadiness primitive set; second consecutive explicitly-versioned Kernel candidate (v0.3); a
+  reusable two-axis Epistemic/Decisional kernel reformulation; a latent, unresolved tension with
+  ADR-KOS-KERNEL-001's governance-exclusion clause.

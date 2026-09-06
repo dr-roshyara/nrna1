@@ -1,0 +1,62 @@
+sequence: 37
+path: docs/knowledgeos/KnowledgeOS_Ontology_Architecture_Classification.md
+title: KnowledgeOS — Ontology Architecture Classification
+date: 2026-08-02
+bytes: 17490
+doc_type: mechanical ontology-layer classification via direct schema-file parsing
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [ddd, domain_model, evidence, contradiction, governance]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+status: DR
+maturity: established        # for the key-collision proof and the three-layer classification
+importance: high
+
+introduces:
+  - mechanical_key_collision_as_decisive_placement_proof
+  - declared_scope_vs_oversight
+  - la_owns_lb_never_the_reverse   # containment direction between documentation and platform ontology
+  - cap002_reopening_implication
+defines:
+  - la_documentation_ontology_exists
+  - lb_platform_ontology_absent
+  - lc_product_ontology_partial
+hypotheses:
+  - should_scope_include_extend_beyond_docs_knowledge
+  - does_edge_vocabulary_need_governance_verbs
+  - does_cap002_deferral_reopen
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge, layer]
+open_questions:
+  - scope_include_extension_ARB
+  - governance_verbs_wait_on_lb
+  - cap002_reopening_ARB
+
+depends_on: [13, 20, 27, 35, 36]
+extends: [13, 20, 27, 35]
+refines: [36]
+renames: []
+contradicts: []
+supersedes: []
+repeats: []
+connects_to: [13, 20, 24, 27, 35, 36]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Produces the corpus's first MECHANICALLY VERIFIABLE domain-boundary contradiction: an existing
+  lint-enforced enum (bounded-contexts.yaml) already contains a "governance" key as a product-side
+  context, which would collide with any platform-side "Engineering Governance" domain added to the
+  same or a sibling enum - checkable by running the lint tool, not merely arguable. Sharpens the
+  PKS-as-projection finding with a specific mechanical block (declared scope exclusion) and draws a
+  consequential implication for a previously-deferred capability (CAP-002).

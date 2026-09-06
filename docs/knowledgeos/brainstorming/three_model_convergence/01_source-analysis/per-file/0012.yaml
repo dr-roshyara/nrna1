@@ -1,0 +1,76 @@
+sequence: 12
+path: docs/knowledgeos/2026-08-02-knowledgeos-architecture-consolidation.md
+title: KnowledgeOS — Architecture Consolidation
+date: 2026-08-02
+bytes: 21640
+doc_type: architecture consolidation / sixteen-row migration map with quoted extraction triggers
+
+primary_model_initial: engineering_knowledgeos
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - inventories C1 repository artifacts (standards, protocols, reference architecture, capability code, runtime adapter, PKS phase records)
+  - "'kernel' denotes the Reference Architecture document at DRAFT status: Kernel_engineering"
+  - zero occurrences of knowledge state, K_t, dimension, value, Buddhi, operator, purification, Moksha
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+confidence: high
+secondary_models: [ddd, governance, evidence, provenance, kernel, invariants, domain_model]
+
+status: SR
+maturity: developing
+importance: medium
+
+introduces:
+  - stable_ids_make_references_survive_relocation
+  - nine_of_sixteen_already_in_permanent_home
+  - entry_conditions_already_written_by_four_authorities
+  - extraction_by_reference_never_by_copy
+  - four_layer_runtime_model_with_anti_leak_middle_layer
+  - speculative_marked_inline
+defines:
+  - three_governed_concerns
+  - four_layer_runtime_decomposition
+  - five_migration_stages_with_quoted_entry_conditions
+hypotheses: []      # introduces none; DOWNGRADES two loop arrows to SPECULATIVE and marks one EMPTY
+operators: []
+formal_objects:
+  - identity_invariant_under_relocation   # id(c) stable, path(c) not; references bind to id
+undefined_concepts:
+  - knowledge          # 12th consecutive file
+  - kernel             # the Reference Architecture document; undefined as a concept
+  - domain_free        # measured by vocabulary absence - a test 0008/0010/0011 established is wrong
+  - reserved_namespace
+  - maturity_level     # the weakened verdict turns on it; no levels defined
+open_questions:
+  - OQ-K1 through OQ-K6 (carried)
+  - OQ-C1 does the retain-model decision permit reference-based extraction or bar the stage entirely
+  - OQ-C2 does an independent freeze still bar the key move once the structural freeze lifts
+  - G-C1 the return arrow has never been traversed
+
+depends_on: []
+extends: [11]
+refines: [9]
+renames: []
+contradicts: []
+supersedes: []
+repeats: [1, 4, 9, 11]
+connects_to: [1, 5, 9, 10, 11]
+
+bridges: []
+bridge_evidence:
+  - "NO BRIDGE RECORDED. The stable-id property is a candidate bridge TARGET (MD-006 lists
+     'Provenance -> what is the identity/history of knowledge?' as untested), but this file does no
+     connecting work: it asks nothing about knowledge identity. C1 limitation identified;
+     C2 question NOT raised."
+
+tier2_triggered: true
+tier2_reason: >
+  Quotes in full, with its burden of proof, the binding constraint that excludes an orchestrator,
+  workflow engine, STATE MACHINE or execution aggregate from the architecture until operational
+  evidence shows the governance model insufficient - bearing directly on §26 and §32, and giving a
+  sharp datable test for the C1->C2 transition (any later Kernel modelled as a transition system
+  either belongs to a different lineage, cleared this bar, or ignored it). Also introduces the
+  corpus's first location-independent identity invariant (ids stable, paths not; references bind to
+  ids), bearing on §31's identity and provenance components.

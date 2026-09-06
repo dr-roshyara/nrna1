@@ -1,0 +1,45 @@
+sequence: 2354
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/exec/t292_run.py
+title: "Step-292 exec artifact -- SKIPPED per explicit user instruction ('ignore files in steps_*'); substance already comprehensively tracked in files 2332-2347"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: none
+  secondary_note: "SKIPPED per explicit user instruction; the step-292 package's findings are already comprehensively recorded in files 2332-2347 (and 2348-2349 for the two already-processed exec JSONs)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2332
+importance: low
+confidence: high
+about: >
+  SKIPPED per explicit user instruction ("ignore files in steps_*"). Raw executable-evidence artifact
+  (JSON result or Python script) from the step-292/ package, whose complete substantive findings are
+  already comprehensively recorded in this reconstruction's files 2332 through 2347 (synthesis and
+  sub-documents 01-14), plus 2348-2349 (the first two exec/results JSONs, A1 and A2). No independent
+  content recorded.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - "Content fully covered by files 2332-2347; SKIPPED per explicit user instruction, no independent analysis performed."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "This reconstruction's already-tracked files 2332-2347"
+  supports_dimension: "n/a — skipped"
+  refines_or_contradicts: "n/a"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "SKIPPED per explicit user instruction; substance already comprehensively tracked in files 2332-2347."

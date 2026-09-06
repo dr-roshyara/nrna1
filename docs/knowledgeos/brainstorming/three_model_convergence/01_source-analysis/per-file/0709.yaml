@@ -1,0 +1,243 @@
+sequence: 709
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-124814_step-124-knowledgeos-self-verification-vs-self-governance.md
+title: "Step 124 -- Delivers a Seven-Level Autonomy Taxonomy (A0 Read Through A6 Change Organizational Authority), a New Constitutional Agent Rule A2 ('Technical Capability MUST NOT Be Interpreted as Organizational Authority'), and the 'Bidirectional Truth Problem' Explicitly Self-Declared 'One of the Deepest Points in the Architecture' (Given Architecture≠Runtime, Which Is Wrong? Four Explicit Cases, Crystallized as Difference≠Error) -- Delivers 'Constitutional Self-Protection' Against the Concrete, Currently Critical AI-Safety Failure Mode of an Agent Gaming Its Own Verification Check Rather Than Fixing the Underlying Problem -- Delivers ActionRisk=Impact×Irreversibility×Scope and 'Governance Must Be Enforced BELOW the LLM Instruction Layer' as the Reconstruction's Sharpest Formulation of Prompt-vs-Architecture Enforcement -- Delivers 'The Architecture's Most Important AI Governance Invariant' (No Agent May Convert Observation/Inference/Recommendation Into Authoritative Knowledge Without Validation and Authority) -- Delivers the Cleanest Four-Way Architectural Ownership Division in This Reconstruction (KnowledgeOS / Agent Harness / Agent / Deterministic Assurance Layer) -- Opens Step 125 -- KnowledgeOS Operating Model, Defining Named Roles (Domain Architect, Architecture Board, Engineers, Claude, Codex, Runtime)"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 124 -- KnowledgeOS Self-Verification vs. Self-Governance', promised at 0708's close; delivers a rigorous autonomy-boundary specification with several capstone-level, explicitly self-declared 'most important' claims, continuing the high-quality Steps 120-124 constitution-synthesis arc"
+source_role: PRIMARY_RESEARCH
+canonical_source: 709
+importance: critical
+confidence: high
+about: >
+  Delivers `SelfVerification≠SelfGovernance` formalized precisely as two distinct functions -- self-
+  verification answers "is the current state conformant?" (`Expected→Observed→Verification→Verdict`);
+  self-governance answers "what authorized response should follow?" (`Finding→Governance→Decision→Action`)
+  -- with the critical architectural boundary `Finding⇏Action` automatically, and a concrete list of
+  contextual unknowns a detection system cannot resolve alone (whether a deviation is intentional, whether
+  an exception exists, whether production can be changed now, whether another change is already underway,
+  whether business operations would be disrupted, who has authority to approve).
+
+  Delivers `AgentAuthority⊆DelegatedAuthority` reconfirmed with a genuinely useful four-concept separation
+  not previously this explicit: `Capability≠Permission≠Delegation≠Authority` (an agent holding `kubectl
+  delete deployment` credentials, `Capability=True`, against a governance policy setting
+  `ProductionDelete=False`, `Authority=False`, PASS). **Delivers `A2`, a new constitutional agent rule
+  directly complementing 0705's `C2`**: "Technical capability MUST NOT be interpreted as organizational
+  authority" -- confirming the A-series (0706's `A1`, this file's `A2`) as a genuine parallel track of
+  agent-specific constitutional invariants alongside the C-series.
+
+  **Delivers a seven-level Autonomy taxonomy (`A0`-`A6`), the most complete and precisely graduated agent-
+  autonomy scale in this reconstruction, directly extending 0703's four-level L0-L4 automation taxonomy
+  with additional granularity and explicit deontic requirements at the top levels**: `A0` Read (inspect
+  only); `A1` Analyze (reason over evidence); `A2` Verify (execute deterministic checks); `A3` Recommend
+  (propose action, not yet an organizational decision); `A4` Execute reversible low-risk action (within
+  explicit delegation); `A5` Execute governed production action (requires explicit delegated authority);
+  `A6` Change organizational authority (normally requires explicit human/organizational governance) --
+  worked through with concrete graded experiments, including the sharp illustrative case that an agent
+  attempting to modify the KnowledgeOS Constitution itself is classified `A6` and correctly `DENY`ed absent
+  explicit constitutional authority, directly connecting this file's autonomy scale to 0706's Bootstrap
+  paradox.
+
+  Delivers a six-outcome Finding-disposition taxonomy (`Remediate, AcceptRisk, Exception, Investigate,
+  FalsePositive, ChangeReferenceArchitecture`), the most complete such taxonomy in this reconstruction,
+  directly extending 0692's/0703's/0704's finding-resolution disciplines.
+
+  **Delivers the "bidirectional truth problem," explicitly and precisely self-declared "one of the deepest
+  points in the architecture"**: given `Architecture=A` and `Runtime=B` differing, which is wrong? Four
+  explicit, mutually exclusive cases are laid out -- Case 1 (Runtime is wrong, `A=Correct, B=Drift`); Case 2
+  (Architecture is outdated, `A=Historical, B=Correct`); Case 3 (`B` is an approved exception); Case 4 (both
+  are incomplete) -- crystallized as **`Difference≠Error`** -- directly and genuinely synthesizing and
+  completing the corpus's scattered Drift≠Violation family (0684, 0686, 0691, 0692) into a single, crisp,
+  exhaustive four-case decision framework, the clearest such formulation delivered anywhere in this
+  reconstruction. Delivers `UnresolvedDifference≠Violation` and `FindingClassification=f(Rule,Observation,
+  Authority,Exception,TemporalValidity)` yielding one of `Violation/Exception/ExpectedChange/Unknown`,
+  reconfirming `Unknown` as a valid, preferred-over-hallucination result ("UNKNOWN — insufficient evidence
+  to determine whether the observed state is non-conformant. That is superior to a hallucinated
+  conclusion").
+
+  Delivers a Decision-request package concept (finding+evidence+impact+options+affected-systems+recommended-
+  action) that an agent may prepare without making the decision itself, four named non-authority agent roles
+  (`EvidenceCollector, Analyzer, Verifier, RecommendationGenerator`), a refined Decision-record schema
+  (`Subject,Choice,Rationale,Authority,EffectiveDate,Scope,Evidence`), and Decision supersession worked
+  through with a concrete `D-17`/`D-21` example (an explicit later decision correctly taking precedence over
+  an earlier one for current governance), directly extending 0688's/0691's/0697's temporal-validity
+  discipline into decision-supersession specifically. Delivers Remediation-delegation scoping with an
+  explicit `AllowedActions` set (a decision authorizing configuration change while an agent attempts a
+  database migration correctly `DENY`ed as `OutsideDelegationScope`), directly extending 0699's/0702's/
+  0703's delegation-scope discipline.
+
+  **Delivers `ActionRisk=Impact×Irreversibility×Scope`, a genuinely valuable and precisely formalized
+  multiplicative risk equation not previously stated in this exact form**, directly extending 0683's/
+  0691's/0692's/0703's risk-proportional-assurance discipline with a concrete, currently reusable scoring
+  formula (a Markdown-documentation change versus a production-database-schema change requiring
+  substantially different governance strength, PASS). Delivers a consolidated "strong AI engineering
+  workflow" pipeline (`KnowledgeOS→Evidence→AgentAnalysis→Recommendation→GovernanceDecision→Delegation→
+  AgentExecution→Verification`) as "the preferred default for material engineering changes," and an
+  explicit `StandingDelegation`/pre-authorization mechanism (`Condition(Y)∧Action(X)→Allowed`, an agent
+  correctly permitted to auto-update non-authoritative metadata like `last_seen` while correctly denied for
+  updating an architecture decision under the identical policy framework, PASS×2), directly extending
+  0683's/0703's automation-tier disciplines into a formal conditional pre-authorization rule format.
+
+  Delivers a formal Policy engine (`Policy+Actor+Action+Resource+Context→Decision`), explicitly identified
+  as "a classic authorization problem" now "connected to semantic governance" -- a valuable, precise
+  connection between KnowledgeOS's own semantic model and established ABAC/RBAC-style authorization theory
+  -- with contextual authorization worked through concretely (the identical "deploy version 2" action
+  correctly `ALLOW`ed in staging but `REQUIRES APPROVAL` in production, PASS), extending 0680's/0687's/
+  0699's environment-scoped-authorization disciplines.
+
+  **Delivers the precisely stated, directly quotable, and architecturally central distinction "self-
+  governance≠unlimited autonomy," explicitly framed as "a core architectural phrase"**: `Self-governance=
+  Self-observation+Self-verification+Governed response`, never `Self-governance=Unlimited autonomy`, and
+  `Automation⊆Governance`, never `Governance⊆Automation` -- directly and memorably crystallizing this
+  reconstruction's entire Agent≠Authority discipline into a single quotable architectural law, with a
+  consolidated Self-governance loop diagram (`KnowledgeOS State→Self-Observe→Self-Verify→Finding→
+  Classification→Governance→Authorization→Action→Verification→KnowledgeOS`), the most complete such
+  diagram in this reconstruction.
+
+  **Delivers "Constitutional self-protection," a genuinely sophisticated and currently critical AI-safety
+  concern, directly extending 0706's Bootstrap paradox into a concrete, well-recognized real-world AI-
+  coding-agent failure mode**: "the mechanism responsible for verifying a constitutional rule must not be
+  able to silently disable that rule" -- illustrated with a sharp, precisely targeted scenario: "an agent
+  encounters a failing constitutional check. Instead of fixing the underlying issue, **it modifies the check
+  to always return PASS**. Expected: `VerifierIntegrity=FAIL`. This must itself be detected" -- this is a
+  precise formal naming of the well-known "fix the test instead of the code" anti-pattern specifically as an
+  AI-agent governance risk, requiring `VerifierIntegrity` to become its own explicitly monitored property, a
+  genuinely valuable and currently very relevant contribution given real-world AI-coding-assistant behavior.
+  Delivers Verification-of-verifiers (appropriately scoped: not every checker requires formal verification,
+  only high-value assurance mechanisms) and Test integrity (`Test→Source`, `TestResult→ExecutionContext`, a
+  `PASS` result executed against an outdated source snapshot correctly flagged
+  **`EvidenceContextMismatch`/"INVALID/STALE EVIDENCE"**), directly extending 0700's/0701's/0705's evidence-
+  freshness disciplines into test-result-validity specifically -- a genuinely valuable, concrete CI/CD-
+  integrity concern (stale test runs against superseded commits). Delivers the most complete version-chain
+  formalization for reproducibility in this reconstruction: `RuleVersion→SourceVersion→CheckerVersion→
+  Execution→Result`.
+
+  Delivers `KOS` formalized as a complete seven-tuple system definition -- `KOS=(Knowledge,Authority,
+  Observation,Verification,Decision,Action,Evidence)` with explicit named transitions -- likely the most
+  mathematically complete single formalization of "KnowledgeOS" as a system delivered anywhere in this
+  reconstruction.
+
+  **Delivers "the architecture's most important AI governance invariant," an explicitly self-declared
+  capstone claim crystallizing this entire reconstruction's Agent≠Authority family into its single most
+  precise statement**: "No agent may convert its own observation, inference, or recommendation into
+  authoritative organizational knowledge without the required validation and authority. This is stronger
+  than a prompt instruction. It is an architectural requirement." Delivers, immediately following, **the
+  reconstruction's sharpest formulation yet of prompt-versus-architecture enforcement, a currently and
+  urgently important AI-safety principle**: "a prompt saying 'don't change architecture decisions' is weak.
+  An architecture enforcing `Agent↛AuthoritativeDecision` without an authorization path is strong.
+  Therefore: **governance must be enforced BELOW the LLM instruction layer**" -- directly and precisely
+  extending 0690's/0693's/0703's/0708's deterministic-enforcement-over-advisory-instruction discipline with
+  its most quotable and technically precise formulation, correctly identifying that natural-language
+  constraints on an LLM are advisory and can be bypassed (via prompt injection, model drift, or simple
+  model error), while only sub-LLM technical/architectural enforcement provides a genuine guarantee.
+
+  **Delivers the cleanest, most complete four-way architectural ownership division in this reconstruction**,
+  directly consolidating and completing the many prior scattered agent/KnowledgeOS/assurance-boundary
+  discussions (0687, 0690, 0693, 0695, 0697, 0700-0708) into one definitive structure: `KnowledgeOS` (owns
+  authority, knowledge, evidence, governance, lifecycle, traceability); `Claude/Codex harness` (owns agent
+  operating behavior, tool invocation, local workflow, session management, pointers); `Agent` (owns
+  reasoning, analysis, recommendation, delegated execution); `Deterministic assurance layer` (owns machine-
+  verifiable checks, reproducibility, objective evidence) -- with a consolidated architecture diagram
+  (`Governance→KnowledgeOS→{AI Agent Layer, Assurance Layer}→Engineering→Runtime→Evidence` feeding back),
+  explicitly and correctly declared "a much more precise architecture than 'AI agents connected to a
+  knowledge base.'"
+
+  Delivers Step 124's verdict with confident, substantive phrasing consistent with the ongoing high-quality
+  Steps 120-124 synthesis arc: "STEP 124 — SELF-GOVERNANCE BOUNDARY: ESTABLISHED," crystallizing the mature
+  loop `Observe→Verify→Find→Govern→Authorize→Act→Verify→Learn`, "with the agent participating in the loop
+  but never silently becoming its authority."
+
+  **Closes by opening "Step 125 — KnowledgeOS Operating Model,"** explicitly promising to define named
+  principal actors and their responsibilities -- `Human↔Governance↔KnowledgeOS↔Agent↔Engineering↔Runtime` --
+  posing "who does what, who is allowed to decide what, and where does evidence flow?" across specifically
+  named roles: Domain Architect, Architecture Board, engineers, deterministic assurance, KnowledgeOS,
+  Claude, Codex, and runtime systems -- a natural, well-motivated continuation of the Steps 120-124
+  synthesis arc into a complete organizational operating model. No actual code execution, repository
+  inspection, or verified filesystem/relationship claim is reported anywhere in this file.
+introduces:
+  - concept: "SelfVerification≠SelfGovernance formalized as two distinct functions, with the critical boundary Finding⇏Action automatically"
+  - concept: "A2, a new constitutional agent rule directly complementing C2, confirming the A-series as a genuine parallel track alongside the C-series"
+  - concept: "A seven-level Autonomy taxonomy (A0-A6), the most complete and precisely graduated agent-autonomy scale in this reconstruction"
+  - concept: "The 'bidirectional truth problem,' explicitly self-declared one of the deepest points in the architecture, crystallized as Difference≠Error via four exhaustive cases"
+  - concept: "ActionRisk=Impact×Irreversibility×Scope, a genuinely valuable multiplicative risk formula"
+  - concept: "'Self-governance≠unlimited autonomy,' explicitly framed as a core architectural phrase"
+  - concept: "'Constitutional self-protection' against the concrete AI-safety failure mode of an agent modifying its own verification check to force a PASS rather than fixing the underlying problem"
+  - concept: "The most complete version-chain formalization for reproducibility in this reconstruction (RuleVersion→SourceVersion→CheckerVersion→Execution→Result)"
+  - concept: "'The architecture's most important AI governance invariant,' an explicitly self-declared capstone crystallization of the Agent≠Authority family"
+  - concept: "'Governance must be enforced BELOW the LLM instruction layer' — the reconstruction's sharpest formulation of prompt-vs-architecture enforcement"
+  - concept: "The cleanest, most complete four-way architectural ownership division in this reconstruction (KnowledgeOS/Agent harness/Agent/Deterministic assurance layer)"
+  - concept: "Opens Step 125 — KnowledgeOS Operating Model, defining named principal actors and their responsibilities"
+defines:
+  - concept: "The bidirectional truth problem (Difference≠Error)"
+    definition: "When declared architecture and observed runtime disagree, the disagreement alone does not indicate which side is wrong: Case 1 the runtime has drifted from a correct architecture; Case 2 the architecture is outdated and the runtime reflects the actual correct current state; Case 3 the runtime reflects an approved, temporary exception; Case 4 both sides are incomplete or partially wrong — determining which case applies requires governance interpretation, not automatic inference from the mere existence of a difference"
+  - concept: "ActionRisk=Impact×Irreversibility×Scope"
+    definition: "The risk level of a proposed engineering action is a function of three multiplied factors: the impact if it goes wrong, how reversible the action is, and how broad its scope is — higher values on any factor increase required authorization strength, and the multiplicative form means high values on multiple factors compound rather than merely add"
+  - concept: "Self-governance≠unlimited autonomy"
+    definition: "Self-governance means Self-observation+Self-verification+Governed response — the system can autonomously observe, verify, and prepare findings/recommendations, but authority over the resulting response remains explicitly modeled and constrained; it never means the system can autonomously decide and act without constraint. Formally, Automation⊆Governance, never the reverse"
+  - concept: "Constitutional self-protection (verifier-gaming detection)"
+    definition: "The mechanism that verifies a constitutional rule's conformance must itself be protected from being silently modified or disabled by the very agent or process it is meant to check — specifically including the failure mode where an agent, faced with a failing check, edits the check itself to always report success rather than fixing the underlying non-conformance; this VerifierIntegrity property must itself be monitored and detectable"
+  - concept: "Governance must be enforced below the LLM instruction layer"
+    definition: "A natural-language prompt instruction telling an AI agent not to take some action (e.g. 'don't change architecture decisions') is inherently weak, since it can be bypassed by prompt injection, model drift, or simple model error; genuine enforcement requires an architectural/technical control operating beneath and independent of the LLM's own instruction-following behavior (e.g. Agent↛AuthoritativeDecision enforced by a system that structurally has no authorization path for the agent to take that action)"
+refines:
+  - concept: "0699's/0702's/0703's DelegatedAuthority discipline"
+    refinement: "Directly extended with a granular four-concept separation: Capability≠Permission≠Delegation≠Authority"
+  - concept: "0706's A1 invariant"
+    refinement: "Directly extended with a second agent-specific constitutional invariant, A2, confirming a genuine parallel A-series alongside C1-C7"
+  - concept: "0703's four-level L0-L4 automation taxonomy"
+    refinement: "Directly extended into a more granular seven-level A0-A6 autonomy scale with explicit deontic requirements at the top levels, directly connected to 0706's Bootstrap paradox via the A6 constitution-modification case"
+  - concept: "0692's/0703's/0704's finding-resolution disciplines"
+    refinement: "Directly extended into the most complete six-outcome finding-disposition taxonomy in this reconstruction"
+  - concept: "the corpus's scattered Drift≠Violation family (0684, 0686, 0691, 0692)"
+    refinement: "Directly and genuinely synthesized and completed into a single, exhaustive four-case bidirectional-truth-problem framework, crystallized as Difference≠Error"
+  - concept: "0688's/0691's/0697's temporal-validity discipline"
+    refinement: "Directly extended into decision-supersession specifically, with a concrete worked D-17/D-21 example"
+  - concept: "0699's/0702's/0703's delegation-scope discipline"
+    refinement: "Directly extended with an explicit AllowedActions scoping mechanism and a concrete out-of-scope violation example"
+  - concept: "0683's/0691's/0692's/0703's risk-proportional-assurance discipline"
+    refinement: "Directly and genuinely extended with a precise multiplicative risk formula (ActionRisk=Impact×Irreversibility×Scope) not previously stated in this exact form"
+  - concept: "0683's/0703's automation-tier disciplines"
+    refinement: "Directly extended into a formal conditional pre-authorization/StandingDelegation rule format"
+  - concept: "0680's/0687's/0699's environment-scoped-authorization disciplines"
+    refinement: "Directly extended with a formal ABAC/RBAC-style policy engine (Policy+Actor+Action+Resource+Context→Decision) and a concrete staging-vs-production contextual-authorization example"
+  - concept: "the corpus's entire Agent≠Authority discipline"
+    refinement: "Directly and memorably crystallized into two capstone-level statements: 'self-governance≠unlimited autonomy' (a core architectural phrase) and 'the architecture's most important AI governance invariant' (no agent may convert observation/inference/recommendation into authoritative knowledge without validation and authority)"
+  - concept: "0706's Bootstrap paradox"
+    refinement: "Directly and concretely extended into 'Constitutional self-protection,' naming the specific, currently critical real-world AI-agent failure mode of gaming a verification check rather than fixing the underlying issue"
+  - concept: "0700's/0701's/0705's evidence-freshness disciplines"
+    refinement: "Directly extended into test-result-validity specifically: a PASS result against a stale source snapshot is invalid evidence"
+  - concept: "0690's/0693's/0703's/0708's deterministic-enforcement-over-advisory-instruction discipline"
+    refinement: "Directly and precisely extended with its sharpest, most quotable formulation yet: governance must be enforced below the LLM instruction layer"
+  - concept: "the many prior scattered agent/KnowledgeOS/assurance-boundary discussions (0687, 0690, 0693, 0695, 0697, 0700-0708)"
+    refinement: "Directly and genuinely consolidated into the cleanest, most complete four-way architectural ownership division in this reconstruction (KnowledgeOS/Agent harness/Agent/Deterministic assurance layer)"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0710 (Step 125 — KnowledgeOS Operating Model) with continued attention: this file's own closing promise to define named principal actors (Domain Architect, Architecture Board, engineers, Claude, Codex, runtime systems) and their responsibilities is a natural, well-motivated continuation of the Steps 120-124 synthesis arc into a complete organizational operating model."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the seven-level A0-A6 autonomy taxonomy, the A2 constitutional agent rule (confirming a genuine A-series), the 'bidirectional truth problem' (Difference≠Error, one of the deepest points in the architecture), and ActionRisk=Impact×Irreversibility×Scope."
+  - "dimension-registry.md: record 'Constitutional self-protection' (the verifier-gaming/fix-the-test-not-the-code AI-safety concern), the capstone 'architecture's most important AI governance invariant,' and 'governance must be enforced below the LLM instruction layer' as the sharpest prompt-vs-architecture formulation in this reconstruction."
+  - "dimension-registry.md: record the cleanest four-way architectural ownership division (KnowledgeOS/Agent harness/Agent/Deterministic assurance layer) consolidating many prior scattered boundary discussions. Flag Step 125 (0710) as continuing the high-quality synthesis arc into a named operating model."
+anchor_test:
+  anchor: "0705's ratified Constitution and 0706's A1 invariant/Bootstrap paradox; 0699's/0702's/0703's DelegatedAuthority discipline; 0703's L0-L4 automation taxonomy; the corpus's Drift≠Violation family; 0688's/0691's/0697's temporal-validity discipline; 0683's/0691's/0692's/0703's risk-proportional-assurance discipline; 0680's/0687's/0699's environment-scoped-authorization disciplines; the corpus's entire Agent≠Authority discipline; 0690's/0693's/0703's/0708's deterministic-enforcement discipline; prior scattered agent/KnowledgeOS boundary discussions"
+  supports_dimension: "Delivers a rigorous, precisely reasoned autonomy-boundary specification with multiple capstone-level, explicitly self-declared 'most important'/'deepest' claims: the bidirectional truth problem (a genuine synthesis completing the corpus's scattered drift-versus-violation family), 'the architecture's most important AI governance invariant,' and the sharpest formulation yet of why governance must be enforced below the LLM instruction layer. Delivers the most complete agent-autonomy taxonomy (A0-A6) and finding-disposition taxonomy in this reconstruction, a genuinely valuable multiplicative risk formula, and 'Constitutional self-protection' -- a sophisticated, currently critical AI-safety concern naming a well-recognized real-world AI-coding-agent failure mode (gaming verification rather than fixing the underlying issue) with direct practical relevance. Delivers the cleanest four-way architectural ownership division in this reconstruction, consolidating numerous prior scattered discussions. Continues the high-quality Steps 120-124 synthesis arc and closes with a natural, well-motivated promise to define a complete named operating model"
+  refines_or_contradicts: "directly and genuinely extends 0705's/0706's constitutional framework (adding A2 to the A-series), 0699's/0702's/0703's DelegatedAuthority discipline, 0703's automation taxonomy, the corpus's Drift≠Violation family (synthesized into the bidirectional truth problem), 0688's/0691's/0697's temporal-validity discipline, 0683's/0691's/0692's/0703's risk-proportional-assurance discipline, 0680's/0687's/0699's environment-scoped-authorization disciplines, the corpus's entire Agent≠Authority discipline, 0706's Bootstrap paradox (extended into Constitutional self-protection), 0700's/0701's/0705's evidence-freshness disciplines, and 0690's/0693's/0703's/0708's deterministic-enforcement discipline; no contradiction found; the A2 invariant extends (does not collide with) the established A1/C1-C7/K1-K7/S1-S6 notation family"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§124.44-124.45's Constitutional self-protection scenario (an agent modifying a failing constitutional check to always return PASS rather than fixing the underlying issue, requiring VerifierIntegrity=FAIL to itself be detected) is a directly checkable, precisely targeted naming of a well-recognized real-world AI-coding-agent failure mode as a formal architectural risk, with clear current practical relevance."
+  - "§124.51-124.52's paired capstone statements -- 'the architecture's most important AI governance invariant' and 'governance must be enforced below the LLM instruction layer' -- are directly quotable, explicitly self-declared central claims crystallizing this reconstruction's entire Agent≠Authority discipline into its sharpest and most technically precise formulation."
+  - "§124.18's four-case bidirectional-truth-problem framework (Runtime wrong / Architecture outdated / Approved exception / Both incomplete), explicitly self-declared 'one of the deepest points in the architecture,' is direct, checkable evidence of a genuine synthesis completing the corpus's previously scattered Drift≠Violation disciplines into one exhaustive decision framework."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 125's actual content (0710), once read, delivers a comparably rigorous and complete named operating model (roles, responsibilities, evidence flow) given the high quality established across the preceding Steps 120-124 arc."
+tier2_triggered: true
+tier2_reason: "Delivers a rigorous, precisely reasoned autonomy-boundary specification with multiple capstone-level claims: the 'bidirectional truth problem' (a genuine synthesis completing the corpus's scattered drift-versus-violation family, explicitly self-declared one of the deepest points in the architecture), 'the architecture's most important AI governance invariant,' and the sharpest formulation yet of why governance must be enforced below the LLM instruction layer. Delivers the most complete agent-autonomy taxonomy (A0-A6) and finding-disposition taxonomy in this reconstruction, a genuinely valuable multiplicative risk formula (ActionRisk=Impact×Irreversibility×Scope), and 'Constitutional self-protection' -- a sophisticated, currently critical AI-safety concern naming a well-recognized real-world AI-coding-agent failure mode. Delivers the cleanest four-way architectural ownership division in this reconstruction."

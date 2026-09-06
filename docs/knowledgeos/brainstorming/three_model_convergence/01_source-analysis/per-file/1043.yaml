@@ -1,0 +1,95 @@
+sequence: 1043
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-288/03-DECISION-PROCEDURE-MATRIX.md
+title: "03 -- Decision-Procedure Matrix (Step 288 SS4, SS15): The Definitive Capstone Completeness Matrix Delivering the Programme's Single Most Devastating Summary Statement -- ZERO Unconditional Level-5 State-Level Relations, ZERO Proven Congruences, Implementable EMPTY, Governance-Authorized EMPTY -- Consolidating Fifteen Promotion-Validity Verdicts Into One Definitive Catalog"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the third numbered Step-288 artifact, delivering the definitive level-discipline and decision-procedure completeness matrix for the entire equality-research programme"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1043
+importance: critical
+confidence: high
+about: >
+  "03 — Decision-Procedure Matrix (mandate §§4, 15)."
+
+  **§4 pins every relation to exactly one carrier level** (value/assertion/entity-object/state/history/
+  operation/event/policy/observation/provenance/system-behaviour), confirming three levels have NO relation
+  defined at all (operation, event, policy).
+
+  **§4b DELIVERS A DEFINITIVE FIFTEEN-ROW PROMOTION-VALIDITY AUDIT**, consolidating every category error and
+  valid theorem this reconstruction has tracked across the entire equality-research arc into one catalog: SIX
+  INVALID promotions confirmed EXECUTED (value-to-state promotion; Σ-structural-to-K-structural; the F5
+  Σ-order-to-K-order error, explicitly marked "binding per mandate §2"; `≈_X`-to-corpus-`≈`; finite-sample-
+  to-equality; hash-to-semantic-equality; decidable-to-congruence); TWO VALID theorems confirmed EXECUTED
+  (`X⊆Y⟹≈_Y` refines `≈_X`; `≈_X` is an equivalence relation); and several UNPROVEN/FORBIDDEN classifications
+  (corpus `≈`'s equivalence-relation status is unprovable because `𝒪_K` is not closed -- "there is no function
+  to take the kernel of"; `≡_sem`'s transitivity remains unproven; and the equality hierarchy is "UNPROVEN and
+  FORBIDDEN as a chain," directly confirming and extending file 1041's already-tracked finding).
+
+  **Re-audits every `Σ`-order/`K`-order occurrence across the entire programme and confirms CLEAN**: the
+  already-tracked F5 defect is verified repaired at every occurrence (the "08" document, `REFINED-STEP-287`
+  §4, "00-INDEX," `REFINED-STEP-288` v2 §7), with "no new `K`-order inference found" in a fresh sweep --
+  confirming the disciplined correction cycle (files 1031-1037) genuinely held. Restates the per-axis order
+  finding: "0 of 5 `Σ` component orders established," with a NEW explanatory note for `A`'s unorderability:
+  "all seven `A` values are acquisition MODES... and modes do not order."
+
+  **§15 delivers the definitive four-codomain reconciliation** (already tracked in outline via files 1037-
+  1038, now completed): `012§36`'s governing principle ("the relation itself should not be confused with its
+  epistemic certainty"), the derived `Decide_≡:𝒦×𝒦→(Relation×Status)` reconciliation, and the precise
+  distinction "a procedure that answers `Unknown` is NOT a complete equality decision procedure" -- confirming
+  `012§35`'s theorem-shaped undecidability result "is decisive and is a limit, not a work item," agreeing with
+  four independent corpus loci.
+
+  **DELIVERS THE DEFINITIVE, CAPSTONE COMPLETENESS MATRIX -- THE PROGRAMME'S SINGLE MOST COMPREHENSIVE AND
+  DEVASTATING SUMMARY STATEMENT**: a ten-relation × eight-property table (Named/Defined/Typed/Parameterized/
+  Decidable/Implementable/Governance-authorized/Congruent) covering every relation this reconstruction has
+  tracked across the entire equality-research arc (`=`,`≡`,`≈`,`≅_P`,`≅_I`,`≅_H`/`≡_𝒯`,`∼_F`,`Continuity`,
+  `≡_D`,`≈_X`). **BOXED FINAL RESULT: "ZERO unconditional Level-5 state-level relations. ZERO proven
+  congruences. Implementable: EMPTY. Governance-authorized: EMPTY."** This is the definitive, quantified
+  closure statement for the entire equality/identity research programme spanning files 0989-1043 -- every
+  relation is named and mostly defined, but not one is simultaneously decidable, implementable, governance-
+  authorized, AND congruent.
+
+  **Also confirms `≈_X`'s already-tracked "exactly 32" refinement (file 1039) is now formally adopted in the
+  BOUNDED classification**, "tightened from 'at most.'"
+introduces:
+  - concept: "The definitive fifteen-row promotion-validity audit, consolidating every category error and valid theorem this reconstruction has tracked into one comprehensive catalog"
+  - concept: "The explanatory finding that acquisition axis A cannot be ordered because its seven values are qualitatively distinct MODES, not a graded scale"
+  - concept: "The definitive, capstone ten-relation by eight-property completeness matrix for the entire equality-research programme"
+  - concept: "The single most devastating, quantified summary statement of the entire programme: zero unconditional Level-5 relations, zero proven congruences, empty implementable set, empty governance-authorized set"
+defines: []
+refines:
+  - concept: "Every already-tracked category-error, theorem, and gap finding across the entire equality-research arc (files 0989-1042)"
+    refinement: "CONSOLIDATED into one definitive fifteen-row promotion audit and one capstone completeness matrix, delivering the programme's most complete and precise summary to date"
+  - concept: "This reconstruction's already-tracked 'exactly 32' refinement for approx_X (file 1039)"
+    refinement: "FORMALLY ADOPTED into the BOUNDED classification, explicitly noted as tightened from the earlier 'at most 32' hedge"
+  - concept: "This reconstruction's already-tracked hierarchy-forbidden finding (files 1037, 1041)"
+    refinement: "CONFIRMED and re-stated as one of the fifteen promotion-audit rows, marked UNPROVEN AND FORBIDDEN"
+contradicts: []
+repeats:
+  - "Substantially consolidates already-tracked findings across the entire equality-research arc; this file's distinctive value is the definitive, unified fifteen-row promotion audit and the capstone completeness matrix with its devastating summary statement."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the definitive capstone completeness matrix and its boxed final result: zero unconditional Level-5 state-level relations, zero proven congruences, implementable empty, governance-authorized empty -- the single most comprehensive summary statement for the entire equality/identity research programme."
+  - "dimension-registry.md: record the definitive fifteen-row promotion-validity audit as a directly reusable catalog of confirmed category errors and valid theorems in this domain."
+anchor_test:
+  anchor: "Every already-tracked equality/identity finding across files 0989-1042"
+  supports_dimension: "Consolidates the entire programme's findings into one definitive, quantified capstone summary"
+  refines_or_contradicts: "confirms and consolidates prior findings into their definitive final form"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The capstone completeness matrix is directly checkable against every already-tracked finding across files 0989-1042 for exact consistency."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers the definitive, capstone completeness matrix and fifteen-row promotion-validity audit for the entire equality/identity research programme, culminating in the single most comprehensive and precise summary statement encountered: zero unconditional Level-5 relations, zero proven congruences, empty implementable and governance-authorized sets. Classified importance critical and confidence high given its role as the programme's definitive consolidation document."

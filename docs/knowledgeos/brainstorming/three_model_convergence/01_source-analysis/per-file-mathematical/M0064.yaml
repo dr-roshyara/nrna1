@@ -1,0 +1,139 @@
+sequence: M0064
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-111500_copy-of-artifact-i-zero-lens-and-gita-candidates.md
+title: "Artifact I -- The Zero Lens, the Boundary Object, and Gita-Derived Candidates: an ACTUALLY EXECUTED Test Confirming the Boundary Formulation Repairs D-0 in 6/6 Contradiction Cases Under All Three Contradiction Models, EXPLICITLY RETRACTING Experiment G's Own Prior Conclusion That the Codomain and Closure Questions Are Not Separable, Confirming DetectGap Non-Primitive via TWO Independent Lanes (Kernel-Reduction 12/12 Derivable + Zero-Boundary Projection), and Delivering a Formal Five-Tier Gita-Evidence Classification (T0-T4) for Nine Named Candidates"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: x
+  secondary: b
+  secondary_note: "the first genuinely EXECUTED test of the Zero Lens/Boundary formulation (M0057-M0062), not another review or synthesis -- runs the boundary-closure repair on concrete cases, explicitly retracts a specific finding from an earlier experiment ('Experiment G'), and cross-checks DetectGap's non-primitive status against an independent finding from the separate kernel-reduction lane (dated 2026-09-01, i.e. from the M0026-M0037 thread)"
+source_role: ADJUDICATION
+canonical_source: M0064
+importance: critical
+confidence: high
+about: >
+  Labeled "Artifact I" (continuing the H/I/J/K/L roadmap M0062 proposed), this document actually
+  IMPLEMENTS ZL(K,I,Gamma,L) -> B with boundary conditions typed {NotEstablished, Conflict,
+  Unrepresentable, TheoryIncomplete} and closure DEFINED OVER B rather than over value(EVal), then
+  tests it against concrete cases -- the first genuinely executed validation of the Zero Lens
+  breakthrough, not another conceptual review.
+
+  **CONFIRMS D-0 IS REPAIRED IN 6/6 CONTRADICTION-BEARING CASES, UNDER ALL THREE CONTRADICTION
+  MODELS**: D-0 (from the earlier "Experiment G") found that all four Zero readings (Zero_weak,
+  Zero_reasoned, and others) test only for bot/U, so a contradictory state closes under every
+  reading regardless of the three-valued/four-valued/delegated contradiction model chosen. Under
+  the new Zero_boundary reading, cases B2 and S1 (both contradiction-bearing) now correctly return
+  false across all three contradiction models -- "repaired in 6 of 6... because the boundary
+  records the conflict regardless of which value the model assigns to it."
+
+  **EXPLICITLY RETRACTS EXPERIMENT G's OWN PRIOR CONCLUSION**: "Experiment G concluded that 'the
+  codomain question and the Zero question are not separable' and recommended fixing them in one
+  step. That was wrong." The boundary formulation shows they separate cleanly: "you do not need to
+  choose among three-valued/four-valued/delegated to stop a contradictory state from closing. You
+  need closure to consult B, not value. The contradiction-model choice and the closure question are
+  independent under the boundary formulation." This is a genuine, dated, explicit [NEG] correction
+  of a specific documented finding -- a strong example of this pass's own falsification-first
+  discipline in action.
+
+  **CONFIRMS THE FACTIVITY COUNTEREXAMPLE REMAINS CORRECTLY UNTOUCHED**: B1 (the factivity case)
+  still closes under the boundary reading -- "the boundary repairs the contradiction blindness; it
+  does not repair Truth perp Closure, and should not be read as doing so." Precisely scoped: the
+  boundary fix addresses contradiction-blindness specifically, not the separate, still-open
+  factivity problem.
+
+  **TESTS AND REFINES THE DetectGap=pi_Q(ZeroLens) HYPOTHESIS (M0057 Sec 14)**: confirms |B|=|Gap|
+  exactly across all seven tested cases (correcting an earlier measurement that suggested B might
+  be richer in cardinality) -- B is instead richer in ATTRIBUTES, not cardinality. Across the seven
+  cases only three distinct boundary types occur (kind, remediable_by, blocking), and the
+  projection Gap=pi_Q(B) discards exactly two fields: kind (why it is a boundary) and
+  remediable_by (who can act) -- "the two fields the Zero_reasoned reading needs, and the two the
+  -E run had to invent buckets for." A precise, quantified characterization of what information the
+  Gap projection loses.
+
+  **CONFIRMS DetectGap's NON-PRIMITIVE STATUS VIA TWO INDEPENDENT LANES**: the separate kernel-
+  reduction lane (dated 2026-09-01, i.e. the earlier M0026-M0037 experimental thread) independently
+  found DetectGap derivable in 12 of 12 tested representations -- the only operator with that
+  property. This Zero-lane document independently proposes DetectGap is a projection of a richer
+  boundary mechanism. "Two lanes, different instruments, same verdict: not a primitive." Explicitly
+  and correctly classified as CORROBORATION, not derivation, per the standing v1.2 discipline
+  "corroboration != derivation" -- neither finding is promoted merely because they agree.
+
+  **DELIVERS A FORMAL FIVE-TIER GITA-EVIDENCE CLASSIFICATION SCHEME (T0-T4)**: T0 refuted, T1
+  correspondence, T2 typed, T3 KnowledgeOS candidate, T4 kernel candidate -- explicitly crossed
+  against v1.2's own status vocabulary so "no item is promoted on Gita evidence alone." Applies
+  this to NINE named Gita/Vedic candidates: G-1 Buddhi (T1, [INTERPRETATION] -- explicitly demoted
+  to a lens per v1.2, the discrimination requirement must come from KnowledgeOS, not the Gita);
+  G-2 the Kshetra->Observation->Information->Buddhi->Jnana->Determination pipeline (T2 typed,
+  [MODEL] -- "the simulator's pipeline was built from the protocol, not from the Gita -- this is
+  corroboration"); G-3 Jnana != information (T3, [EXP] supported, independently established via
+  Evidence!=K_t and A-2's no-Sat_c-requires-truth finding); G-4 inquiry precedes knowledge (T3,
+  [EXP] established -- measured: same K_t, different I_t, different Delta_t, Zero_1!=Zero_2); **G-5
+  Zero-as-non-collapse (T3->T4-shape, [PROP] -- "the strongest Gita-lineage contribution in this
+  pass," the only candidate that produced a testable prediction, passed it 6/6, AND corrected a
+  prior finding)**; G-6 knowledge is not closed (T3, [EXP], Zero_strict unreachable in every
+  experiment); G-7 Sarathi (T2 typed, [INTERPRETATION] -- the four-way Proposal/Decision/
+  Authorization/Action separation is established by simulation, the Gita supplies only the image);
+  G-8 Atman/ultimate object of knowledge (T0 REFUTED as an architectural item -- v1.2 explicitly
+  states the Ideal State is not Atman, not absolute truth, not complete knowledge); G-9 realization/
+  transformation of the knower (T0 for KnowledgeOS, [OPEN] out of scope -- "the system has no knower
+  to transform; a category the architecture does not host").
+
+  **EXPLICITLY STATES G-5's KERNEL STATUS REMAINS UNRESOLVED DESPITE ITS STRENGTH**: even though
+  Zero-as-non-collapse is "the only item this pass that produced a testable prediction, passed it
+  6/6, and corrected a prior finding," its kernel status is explicitly NOT advanced: "we cannot
+  conclude Zero in K, cannot conclude Zero=primitive, cannot conclude DetectGap=pi_requirement
+  (Zero). This pass tested the MECHANISM; it did not test MEMBERSHIP, and the kernel remains NOT
+  TESTED" -- a disciplined refusal to convert a strong mechanism-level result into a kernel-
+  membership claim.
+
+  **DELIVERS A SIX-ROW BEFORE/AFTER OPEN-ITEM TABLE** and a **TEN-ROW FINDINGS REGISTER**,
+  cleanly tracking what this pass changed (Contr/fourth-value now separable from Zero; U's lossiness
+  explained; DetectGap recoverable as a boundary projection) versus what remains unchanged (the
+  status-ordering blocker, factivity).
+
+  **PROPOSES THE NEXT STEP**: re-run Phase D of Experiment G with closure defined over B instead of
+  value, on the same seven cases plus a new case separating the three contradiction models --
+  explicitly to confirm that this separation is unnecessary for closure, which "would remove a
+  blocker the previous experiment declared load-bearing."
+introduces:
+  - concept: "The executed confirmation that boundary-based closure repairs D-0 in 6/6 contradiction cases under all three contradiction models, with per-case blocking-condition detail"
+  - concept: "The explicit retraction of Experiment G's 'codomain and closure are not separable' conclusion, replaced with 'closure must consult B, not value'"
+  - concept: "The quantified refinement of DetectGap=pi_Q(B): exact cardinality match (|B|=|Gap|), attribute-lossy specifically in kind and remediable_by"
+  - concept: "The cross-lane convergence on DetectGap's non-primitive status (kernel-reduction lane 12/12 derivable + Zero-lane boundary-projection hypothesis), explicitly classified as corroboration not derivation"
+  - concept: "The formal five-tier Gita-evidence classification scheme (T0 refuted / T1 correspondence / T2 typed / T3 KnowledgeOS candidate / T4 kernel candidate), crossed against v1.2's status vocabulary"
+  - concept: "The nine-item tiered Gita-candidate registry (G-1 through G-9), with G-5 (Zero-as-non-collapse) singled out as the strongest Gita-lineage contribution while its kernel status remains explicitly unresolved"
+defines: []
+refines:
+  - concept: "M0057's DetectGap=pi_requirement(ZeroLens(K,Q)) hypothesis, now quantitatively tested and refined (cardinality-preserving, attribute-lossy in exactly kind and remediable_by)"
+  - concept: "M0055/M0056's 'Experiment G' conclusion that the contradiction-model choice and the Zero closure question are coupled, explicitly retracted"
+  - concept: "The kernel-reduction experiment's (M0030/M0037) own finding that DetectGap is derivable, now independently corroborated (not derived) from a second lane"
+contradicts:
+  - concept: "Experiment G's own documented conclusion that the codomain question and the Zero question are not separable -- explicitly and specifically retracted here as wrong"
+repeats: []
+bridge_candidates:
+  - "Explicit reference to 'the kernel-reduction lane (2026-09-01)' finding DetectGap derivable in 12/12 representations -- this is the M0026-M0037 kernel-reduction thread within THIS SAME reconstruction's own KR-SIM pass, not an external cross-reference; confirms this document is drawing an intentional cross-lane connection within the corpus already processed by this pass."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0064 as the first genuinely executed validation of the Zero Lens/Boundary formulation -- confirms D-0 repaired in 6/6 contradiction cases under all three contradiction models, explicitly retracts Experiment G's own prior 'not separable' conclusion, quantitatively refines the DetectGap=pi_Q(B) hypothesis (cardinality-preserving, attribute-lossy in kind/remediable_by), confirms DetectGap's non-primitive status via two independently converging lanes, and delivers a formal five-tier Gita-evidence classification (T0-T4) applied to nine named candidates."
+anchor_test:
+  anchor: "M0057's DetectGap hypothesis, the earlier kernel-reduction experiment's (M0030/M0037) DetectGap-derivability finding, and Experiment G's own prior 'codomain/closure not separable' conclusion"
+  supports_dimension: "Executes and confirms the boundary-repair hypothesis with concrete numbers, refines the DetectGap projection quantitatively, explicitly retracts a specific prior conclusion, and corroborates (without deriving) DetectGap's non-primitive status across two independent lanes"
+  refines_or_contradicts: "refines (M0057, M0060, M0062); contradicts (Experiment G's own 'not separable' conclusion, explicitly retracted)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'Experiment G concluded that the codomain question and the Zero question are not separable... That was wrong' -- an explicit, dated, specific retraction of a documented prior finding, discovered through actual implementation and testing rather than further review."
+  - "The per-case blocking-condition table (B1 none/TheoryIncomplete, B2 content:Conflict, B3 three NotEstablished conditions, S1 content:Conflict, B4/S2/S3 none) gives concrete, checkable evidence for the 6/6 repair claim rather than an assertion."
+  - "'Two lanes, different instruments, same verdict: not a primitive... corroboration != derivation' -- a precise, disciplined statement of cross-lane convergence that stops short of promoting the shared finding to a proven theorem."
+undefined_concepts: []
+open_questions:
+  - "Whether Phase D of Experiment G is later re-run with closure defined over B (as proposed in the Next section), and whether the contradiction-model-separation case confirms closure no longer depends on the choice of contradiction model."
+  - "Whether the status ordering (succeq) blocker, explicitly noted as unchanged by this pass, is addressed in the subsequent H/I/J/K/L roadmap stages."
+tier2_triggered: true
+tier2_reason: "The first genuinely executed test of the Zero Lens/Boundary breakthrough -- confirms a concrete 6/6 repair under all three contradiction models, explicitly retracts a specific prior experimental conclusion, quantitatively refines the DetectGap projection hypothesis, corroborates DetectGap's non-primitive status across two independent lanes, and delivers a disciplined five-tier Gita-evidence classification applied to nine named candidates. Critical importance and full tier-2 treatment unambiguously warranted."

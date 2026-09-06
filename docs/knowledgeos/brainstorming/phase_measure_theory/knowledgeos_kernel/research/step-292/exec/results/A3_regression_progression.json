@@ -1,0 +1,133 @@
+{
+ "_meta": {
+  "experiment_id": "KR-REITER-2026-09",
+  "source": "Reiter 2001, Knowledge in Action",
+  "source_role": "[EXT] independent formal-methods source -- NEVER an authority",
+  "theory": "v1.2 UNCHANGED",
+  "adopted": "nothing",
+  "deterministic": true,
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "claim": "regression and progression answer the same queries",
+ "rows": [
+  {
+   "situation": [],
+   "fluent": "F",
+   "regression": false,
+   "progression": false,
+   "agree": true
+  },
+  {
+   "situation": [],
+   "fluent": "G",
+   "regression": false,
+   "progression": false,
+   "agree": true
+  },
+  {
+   "situation": [
+    "on"
+   ],
+   "fluent": "F",
+   "regression": true,
+   "progression": true,
+   "agree": true
+  },
+  {
+   "situation": [
+    "on"
+   ],
+   "fluent": "G",
+   "regression": false,
+   "progression": false,
+   "agree": true
+  },
+  {
+   "situation": [
+    "on",
+    "off"
+   ],
+   "fluent": "F",
+   "regression": false,
+   "progression": false,
+   "agree": true
+  },
+  {
+   "situation": [
+    "on",
+    "off"
+   ],
+   "fluent": "G",
+   "regression": false,
+   "progression": false,
+   "agree": true
+  },
+  {
+   "situation": [
+    "on",
+    "off",
+    "on"
+   ],
+   "fluent": "F",
+   "regression": true,
+   "progression": true,
+   "agree": true
+  },
+  {
+   "situation": [
+    "on",
+    "off",
+    "on"
+   ],
+   "fluent": "G",
+   "regression": false,
+   "progression": false,
+   "agree": true
+  },
+  {
+   "situation": [
+    "setG",
+    "on"
+   ],
+   "fluent": "F",
+   "regression": true,
+   "progression": true,
+   "agree": true
+  },
+  {
+   "situation": [
+    "setG",
+    "on"
+   ],
+   "fluent": "G",
+   "regression": true,
+   "progression": true,
+   "agree": true
+  },
+  {
+   "situation": [
+    "on",
+    "setG",
+    "off"
+   ],
+   "fluent": "F",
+   "regression": false,
+   "progression": false,
+   "agree": true
+  },
+  {
+   "situation": [
+    "on",
+    "setG",
+    "off"
+   ],
+   "fluent": "G",
+   "regression": true,
+   "progression": true,
+   "agree": true
+  }
+ ],
+ "n_checks": 12,
+ "all_agree": true
+}

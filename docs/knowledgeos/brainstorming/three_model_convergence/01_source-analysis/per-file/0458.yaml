@@ -1,0 +1,96 @@
+sequence: 458
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-171508_why-parsing-belongs-inside-knowledgeos.md
+title: "DDD Architectural Boundary Resolved: Semantic Reconstruction and Dimension Discovery Are Native KnowledgeOS Capabilities; Parsers (C-Type, Sanskrit-Type) Are Replaceable Implementation Adapters Behind a Contract"
+date: "2026-08-26"
+bytes: 6199
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "explicitly reframes the Sanskrit grammar lens as a replaceable, non-authoritative implementation adapter rather than the domain model itself"
+source_role: PRIMARY_RESEARCH
+canonical_source: 458
+importance: high
+confidence: high
+about: >
+  A focused DDD architectural-boundary decision directly following 0455-0457's Dimension Discovery/Semantic
+  Reconstruction/parser-lens work: **should natural-language parsing belong inside KnowledgeOS?** Answers
+  yes, but with an important boundary: KnowledgeOS should own the **semantic reconstruction capability**,
+  while individual parsing technologies (C-type structural, Sanskrit-type semantic) remain **replaceable
+  implementation mechanisms**. Justifies ownership because the Knower never supplies dimensions explicitly
+  (only an intention, e.g. "Show me those with whom I have to fight"), so KnowledgeOS itself must transform
+  intent into structured inquiry: KnowledgeOS ⊃ SemanticReconstruction ⊃ Parsing. If parsing were fully
+  external, an unowned architectural gap would open exactly where KnowledgeOS is supposed to understand the
+  Knower's intent (Human -> External parser -> ??? -> KnowledgeOS).
+
+  Rejects making "the parser" itself a fundamental domain object (no `KnowledgeOS.CParser` /
+  `KnowledgeOS.SanskritParser` as domain classes). Instead places parser implementations *under* an explicit
+  Inquiry/Semantic Reconstruction capability (Structural Analysis, Semantic Role Analysis, Reference
+  Resolution, Modality Analysis, Context Extraction) sitting alongside a separate Knowledge Model
+  (Observation, Dimension, Statement, Value, Relationship, Evidence) -- both are named KnowledgeOS
+  capabilities, with concrete parser implementations as swappable adapters beneath the Semantic
+  Reconstruction capability. States the DDD dependency rule explicitly: "the domain capability owns the
+  contract; parsing technologies implement the contract" -- the architecture depends on the abstract
+  SemanticRepresentation type, never concretely on CParser or SanskritParser.
+
+  Explicitly uses this boundary to **protect the corpus's Sanskrit-lens research discipline**: since the
+  Sanskrit lens is something the corpus has repeatedly said it is *learning from*, not something proven to
+  be the final implementation (directly continuing 0457's self-correction of the "universal semantic
+  ontology" overclaim), KnowledgeOS must never say "our parser is Sanskrit grammar" but rather "KnowledgeOS
+  requires semantic-role reconstruction; Sanskrit grammar provides one important lens from which we can
+  derive and test the required semantic capabilities" -- "much safer architecturally."
+
+  Establishes the precise ownership boundary: KnowledgeOS owns Intent->SemanticRepresentation->
+  DimensionCandidates->Inquiry; parsing engines merely provide NaturalLanguage->Structural/Semantic
+  Representation, entering KnowledgeOS as "replaceable analytical providers" via a full architecture
+  diagram (Knower Intent -> Semantic Reconstruction -> Dimension Discovery -> Zero/Lord/Sārathi ->
+  Investigation -> Knowledge, with structural and semantic-role parsers feeding in from outside the
+  capability boundary). Gives a deeper justification tied to Parsing != Dimension Discovery: a parser only
+  produces role-value pairs (Agent=Arjuna, Action=fight, Target=unknown, Modality=obligation);
+  KnowledgeOS itself must then reason about relevance (Dimension Discovery), gaps (Zero), and next action
+  (Sārathi) -- "that entire orchestration cannot sensibly belong to an external parser. It is the epistemic
+  responsibility of KnowledgeOS."
+
+  Closes with a formal architectural conclusion: **KnowledgeOS = SemanticReconstruction + DimensionDiscovery
+  + EpistemicOperations + KnowledgeModel**, while **Parser ∈ Implementation of SemanticReconstruction**.
+  Explicitly defers the separate infrastructure question of *where* a parser is physically deployed
+  (in-process, separate service, or external model/library) as a later implementation decision, distinct
+  from and subordinate to the architectural-ownership question this file resolves.
+introduces:
+  - concept: "Explicit DDD ownership boundary: KnowledgeOS = SemanticReconstruction + DimensionDiscovery + EpistemicOperations + KnowledgeModel, with Parser as a replaceable implementation of SemanticReconstruction (KnowledgeOS depends on the abstract SemanticRepresentation contract, never on a concrete parser type)"
+  - concept: "The domain capability owns the contract; parsing technologies implement the contract -- the corpus's first explicit statement of the DDD dependency-inversion rule applied to its own parser-lens research"
+  - concept: "Sanskrit-lens research explicitly protected by this boundary: never 'our parser is Sanskrit grammar,' always 'Sanskrit grammar provides one lens from which we derive and test required capabilities'"
+  - concept: "Deployment/infrastructure placement of a parser (in-process vs. separate service vs. external model) explicitly deferred as subordinate to and separate from the architectural-ownership decision"
+defines:
+  - concept: "KnowledgeOS (architectural composition, this file)"
+    definition: "SemanticReconstruction + DimensionDiscovery + EpistemicOperations + KnowledgeModel, where Parser (C-type structural, Sanskrit-type semantic, or any other) is a replaceable implementation living inside SemanticReconstruction, never a domain object in its own right"
+refines:
+  - concept: "0456's C-type/Sanskrit-type parser lens architecture and 0457's Semantic Reconstruction formalization"
+    refinement: "Resolves the previously-open architectural-ownership question: both capabilities belong natively inside KnowledgeOS, with concrete parsers demoted to replaceable adapters behind an explicit contract"
+  - concept: "0457's self-corrected rejection of the Sanskrit lens as a 'universal semantic ontology'"
+    refinement: "Operationalized into an architectural safeguard: the domain model depends on the abstract SemanticRepresentation contract, not on any specific parser implementation, so the corpus's Sanskrit-lens research cannot leak into the domain model as an unwarranted dependency"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the DDD architectural boundary -- Semantic Reconstruction and Dimension Discovery are native KnowledgeOS capabilities; parsers (C-type, Sanskrit-type) are replaceable implementation adapters behind an explicit SemanticRepresentation contract."
+anchor_test:
+  anchor: "0455-0457's Dimension Discovery/Semantic Reconstruction/parser-lens work; the corpus's Laravel-style layer-boundary discipline (project CLAUDE.md Rule 1: Framework Boundaries) applied here to parsing technologies instead of framework code"
+  supports_dimension: "Resolves an architectural-ownership question left open by 0455-0457: KnowledgeOS natively owns Semantic Reconstruction and Dimension Discovery; parsing technologies (C-type, Sanskrit-type) are demoted to replaceable implementation adapters behind an explicit contract, explicitly protecting the corpus's non-authoritative Sanskrit-lens research discipline"
+  refines_or_contradicts: "refines 0456/0457's parser-lens architecture into an explicit DDD ownership boundary; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Continues the Arjuna 'Show me those with whom I have to fight' test sentence and the C-type/Sanskrit-type parser distinction from 0456/0457"
+undefined_concepts: []
+open_questions:
+  - "Whether the parser deployment/infrastructure question (in-process vs. separate service vs. external model), explicitly deferred here, is ever addressed later in the corpus"
+  - "Whether this architectural boundary is later formalized as a numbered ADR-style invariant alongside the corpus's other numbered catalogs (ZI-/LL-/INV-KOS-)"
+tier2_triggered: true
+tier2_reason: "Resolves a genuine DDD architectural-ownership question left open by the immediately preceding parser-lens files, establishing that Semantic Reconstruction and Dimension Discovery are native KnowledgeOS capabilities while parsing technologies are demoted to replaceable, contract-bound implementation adapters -- directly protecting the corpus's own Sanskrit-lens epistemic discipline via an architectural mechanism rather than a mere methodological reminder."

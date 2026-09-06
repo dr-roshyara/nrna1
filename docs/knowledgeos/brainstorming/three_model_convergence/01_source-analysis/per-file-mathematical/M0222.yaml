@@ -1,0 +1,82 @@
+sequence: M0222
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-120002_review-inspected-the-uploaded-artifact.md
+title: "Direct-artifact re-adjudication of KR-REP-REDUCTION-2026-09: adds a bijection-verification requirement before the rank-direction result can be linked to Q-equivalence, introduces a new 'target leakage' guard (Q∉Inputs(T,O,C) except the evaluator), and commissions KR-REP-REDUCTION-AUDIT-2026-09 with an 11-item forensic checklist — otherwise consolidates M0219/M0221's already-recorded findings into a 16-row final status table"
+date: "20260903-120002"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0222
+importance: critical
+confidence: high
+about: >
+  A direct re-adjudication of the actual KR-REP-REDUCTION-2026-09 artifact (764 lines, inspected
+  directly rather than via a pasted summary), reaching the same substantive conclusions as M0219/
+  M0221 (DPI-derived sequential monotonicity, sequential-vs-parallel distinction, adequacy≠
+  realization via the rank-direction result, Zero uncorrelated with the boundary, multidimensional
+  reduction) but adding two genuinely new methodological safeguards not previously stated: a
+  bijection-verification requirement for the rank-encoding claim, and an explicit target-leakage
+  guard for the whole experimental design. Commissions a named forensic follow-up,
+  KR-REP-REDUCTION-AUDIT-2026-09.
+introduces:
+  - "A bijection-verification requirement for the rank-direction (ascending/descending) result: before connecting it 'strongly' to the existing Q-equivalence research, the audit must explicitly establish R_↑≅_enc R_↓ via demonstrated inverse maps f,g with g∘f=id and f∘g=id — 'if the measured values differ slightly, that can be sampling/estimation or implementation effects,' so the claim of information-equivalence must be verified, not assumed from approximately-equal entropy values"
+  - "A NEW TARGET-LEAKAGE GUARD, not previously named in this thread: the audit must establish Q∉Inputs(T), Q∉Inputs(O), and Q∉Inputs(C) (except for the independent evaluator) — otherwise the experiment risks becoming a circular pipeline where 'the answer was indirectly encoded into the transformation or decoder'; the clean architecture is D→T→R→O→Q̂ with an INDEPENDENT evaluator computing Q(D) separately, then comparing Q̂=?=Q(D) — a genuinely new experimental-validity concern for this thread"
+  - "A comprehensive 16-row final status table for the KR-REP-REDUCTION result specifically (the most complete single-document status accounting for this particular experiment): H(Q|R)=0 sufficiency [THEORY retain]; sequential DPI monotonicity [THEORY strong]; R5-adequate/R4-inadequate [EXP retain pending audit]; R5→R4 boundary [EXP retain, scoped]; '3 significant digits as universal limit' [NEG reject]; sequential non-monotone adequacy [THEORY/NEG impossible in this setup]; parallel representation comparison [PROP important new distinction]; adequacy≠realization [EXP strong candidate]; rank-direction result [EXP strong, PENDING BIJECTION AUDIT]; multidimensional reduction [EXP retain]; dimension independence [OPEN/NEG not established]; Zero-explains-boundary [NEG not supported]; Zero=preservation-criterion [reject]; general knowledge-extraction calculus [OPEN]; Theory v1.3 [DO NOT WRITE YET]; kernel modification [NO]"
+  - "A newly named forensic follow-up artifact, KR-REP-REDUCTION-AUDIT-2026-09, with an 11-item checklist: Q-leakage into T/O/C; rank ascending/descending bijection verification; raw empirical entropy vs. corrected Ĥ (e.g. Miller-Madow); N_viol/entropy correspondence; rank-tie handling; exact construction of C; deterministic reproducibility; train/test separation; exact R5→R4 boundary counts — 'we should not run another large experiment before that audit'"
+  - "A final defensible-state summary for the overall KnowledgeOS research status: 'KR-ZERO has established empirical constraints on eliminability; KR-REP-REDUCTION has demonstrated scoped contract-relative recoverability boundaries; the distinction between adequacy and realization has empirical support; a general Knowledge Algebra/Knowledge Extraction calculus remains open'"
+defines: []
+refines:
+  - "M0219's results review and M0221's business assessment: both confirmed as reaching 'essentially the same stopping point' via direct inspection of the actual 764-line artifact rather than a pasted summary"
+  - "M0219's rank-direction adequacy≠realization finding: strengthened with an explicit bijection-verification precondition before it can be linked to Q-equivalence"
+contradicts: []
+repeats:
+  - "The established DPI-derived sequential-monotonicity result, the sequential-vs-parallel representation-family distinction, the Zero-uncorrelated-with-boundary negative result, and the multidimensional-not-independent reduction correction — all restated here as confirmed background (M0219/M0221)"
+bridge_candidates:
+  - "Whether KR-REP-REDUCTION-AUDIT-2026-09 was ever actually executed"
+  - "Whether the rank ascending/descending bijection was ever formally verified"
+  - "Whether target leakage (Q into T/O/C) was ever explicitly tested and ruled out"
+mathematical_content: >
+  Adds one precise mathematical precondition (bijection verification g∘f=id, f∘g=id) before an
+  approximately-equal-entropy observation can be elevated to an information-equivalence claim, and
+  a target-leakage experimental-design guard preventing the answer from being circularly encoded
+  into the pipeline it is meant to test.
+gita_content: null
+kernel_content: >
+  Confirms the direct-artifact re-adjudication reaches the same substantive conclusions as the
+  pasted-summary reviews (M0219/M0221), while adding two genuinely new methodological safeguards
+  (bijection verification, target-leakage guard) and naming a concrete forensic follow-up artifact
+  with an 11-item checklist — the most operationally complete audit specification for this specific
+  experiment.
+registry_updates:
+  - "New bijection-verification requirement for the rank-direction adequacy≠realization claim"
+  - "New target-leakage guard (Q∉Inputs(T,O,C) except the evaluator) — a genuinely new experimental-validity concern for this thread"
+  - "Named forensic follow-up: KR-REP-REDUCTION-AUDIT-2026-09, 11-item checklist"
+  - "Most complete single-document 16-row status table for the KR-REP-REDUCTION result"
+anchor_test:
+  anchor: false
+  supports_dimension: "Bijection-verification requirement; target-leakage guard; named KR-REP-REDUCTION-AUDIT-2026-09 with 11-item checklist"
+  refines_or_contradicts: "refines (M0219/M0221's results, confirmed via direct artifact inspection)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"∃f,g: f(R_↑)=R_↓, g(R_↓)=R_↑ with g∘f=id, f∘g=id\" — the bijection-verification requirement"
+  - "\"Q ∉ Inputs(T)... Q ∉ Inputs(O)... Q ∉ Inputs(C), except for the evaluator\" — the target-leakage guard"
+  - "\"We should not run another large experiment before that audit.\""
+undefined_concepts: []
+open_questions:
+  - "Was KR-REP-REDUCTION-AUDIT-2026-09 ever executed?"
+  - "Was the rank bijection ever formally verified, and was target leakage ever explicitly ruled out?"
+tier2_triggered: true
+tier2_reason: >
+  Introduces two genuinely new methodological safeguards not previously stated in this thread — an
+  explicit bijection-verification requirement before an approximately-equal-entropy observation can
+  be elevated to an information-equivalence claim, and a target-leakage guard preventing the
+  evaluated answer from being circularly encoded into the transformation/decoder/contract pipeline —
+  and names a concrete forensic follow-up artifact with an 11-item checklist, even though the
+  surrounding substantive conclusions consolidate M0219/M0221.

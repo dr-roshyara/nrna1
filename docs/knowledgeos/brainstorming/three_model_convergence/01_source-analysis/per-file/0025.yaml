@@ -1,0 +1,43 @@
+sequence: 25
+path: docs/knowledgeos/KnowledgeOS_Deferred_Architecture_Register.md
+title: KnowledgeOS — Deferred Architecture Register
+date: 2026-08-04
+bytes: 21073
+doc_type: living register tracking deferred implementation features with activation criteria
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [governance, invariants]
+source_role: IMPLEMENTATION
+canonical_source: null
+
+status: SR
+maturity: developing
+importance: low
+
+introduces: []
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge]
+open_questions: []
+
+depends_on: [4, 18]
+extends: [4, 18]
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: [4, 18]
+connects_to: [4, 18]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: "No formal object, operator, contradiction, or Kernel/Gita content; reapplies 0004/0018's evidence-vs-governance-act patterns to implementation tooling."

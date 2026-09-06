@@ -1,0 +1,91 @@
+sequence: 1046
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-288/06-STEP-288-MATHEMATICAL-AUDITS.md
+title: "06 -- Mathematical Audits and Required Negative Results (Step 288 SSSS18-19): Delivers the Comprehensive Thirteen-Claim Falsification Catalog for the Entire Equality-Research Programme (13/13 FALSIFIED), a Self-Caught Vacuous-Composition Near-Miss, and the Crucial Epistemic-Discipline Finding That Only Two of Thirteen Are Genuine Impossibility Results"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the write-up of file 1039's executable audits, extended with a comprehensive thirteen-claim falsification catalog"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1046
+importance: critical
+confidence: high
+about: >
+  "06 — Mathematical Audits and Required Negative Results (mandate §§18, 19)," the write-up of file 1039's
+  witness script, extended substantially.
+
+  **Confirms the file-1039 ten-test results** (A-J), with two genuinely new elements. **E confirms the
+  already-tracked "exactly 32" refinement** with full mathematical statement (`|blocks|:∅→1,
+  {A,S,R,V,C}→2240`), reiterating "still `Σ`-level: not the corpus's `≈`." **J DELIVERS A DISCIPLINED SELF-
+  CAUGHT NEAR-MISS**: the witness printed "0 transitivity violations" for the composition `≈_S∘≈_V`, which
+  was "nearly recorded... as 'composition is safe.' It is the OPPOSITE." Because an intermediate state `m`
+  satisfying both conditions ALWAYS EXISTS, the composition is actually **THE UNIVERSAL RELATION** --
+  vacuously an equivalence relation, carrying ZERO information. "A vacuous PASS read as a substantive one --
+  caught in the transcript, recorded here." Reinforces the general lesson: "the composition of two
+  equivalence relations is not in general an equivalence relation, and relations must not be composed
+  casually."
+
+  **§18 DELIVERS THE COMPREHENSIVE, DEFINITIVE THIRTEEN-CLAIM FALSIFICATION CATALOG FOR THE ENTIRE EQUALITY-
+  RESEARCH PROGRAMME**, each claim explicitly attacked and FALSIFIED: (1) one universal equality relation
+  exists -- falsified by `261.19`'s own boxed conclusion; (2) semantic equality is already fully specified --
+  falsified by the `≡/≈` formula-identity conflict (file 1041's §3.3); (3) observational equivalence is
+  defined at `K` level -- falsified since `𝒪_K` is not closed; (4) `≈_X` IS the corpus's `≈` -- falsified,
+  THREE RIVAL INDEXING SCHEMES exist (corpus by `𝒪`, `25I.35` by policy, `≈_X` by axis-subset); (5) `Σ`-order
+  implies `K`-order -- falsified (introduces a new corpus reference "258.35": `K` should be EXTENSIONAL, not
+  a tuple); (6) structural equality is a congruence -- falsified, EXECUTED; (7) hash identity is semantic
+  identity -- falsified, EXECUTED; (8) finite-sample agreement proves equality -- falsified, EXECUTED; (9)
+  provenance relevance is an executable predicate -- falsified (principle, never predicate); (10) Decision 3
+  alone closes equality -- falsified (𝒪_K and 𝒯 remain open, congruence unproven); (11) the 32 projections
+  close observational equivalence -- falsified (`Σ`-level, K→Σ projection itself unspecified); (12) Step 288
+  can close kernel selection independently of Step 261 -- falsified, 0 of 6 conditions resolved (file 1045);
+  (13) equality closure automatically yields an implementable kernel -- falsified (quotient not
+  implementable, `δ`'s commit case unspecifiable). **BOXED FINAL RESULT: "13 of 13 falsified. Four by
+  execution, nine from the corpus. Zero survived."**
+
+  **DELIVERS THE FILE'S CENTRAL, EPISTEMICALLY CRITICAL DISCIPLINE FINDING**: "never convert NOT ESTABLISHED
+  into IMPOSSIBLE. Of the thirteen, only #8 and #7 are genuine IMPOSSIBILITY results (and #7 only relative to
+  an unfixed canonicalization); the rest are NOT-ESTABLISHED, and several would become true once `𝒪`/`𝒯`
+  close. #2 is a CORPUS CONTRADICTION -- repairable by a governance act, not impossible. ONLY `012§35`'s
+  undecidability of `≡` for arbitrary language is a genuine THEOREM-SHAPED LIMIT." This is a precise,
+  disciplined closing distinction that prevents the comprehensive 13/13 falsification result from being
+  misread as thirteen impossibility theorems, when in fact most are contingent gaps.
+introduces:
+  - concept: "The comprehensive, definitive thirteen-claim falsification catalog for the entire equality-research programme, with all thirteen claims falsified (four by execution, nine from the corpus)"
+  - concept: "The disciplined self-caught near-miss: the S/V composition's '0 transitivity violations' initially read as a safety confirmation was actually the universal relation, carrying zero information"
+  - concept: "'258.35' -- a new corpus reference stating K should be extensional, not a tuple, underlying the falsification of Sigma-order-implies-K-order"
+  - concept: "The precise epistemic-discipline distinction closing the falsification catalog: only two of thirteen falsified claims are genuine impossibility results; the rest are contingent, not-established gaps that could resolve once O/T close"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked executable audit findings (file 1039)"
+    refinement: "EXTENDED with the disciplined self-caught vacuous-composition near-miss and the comprehensive thirteen-claim falsification catalog"
+  - concept: "This reconstruction's already-tracked approx_X-vs-corpus-approx distinctness finding (files 1037, 1041)"
+    refinement: "SHARPENED into a formal falsification with three explicitly named rival indexing schemes (operation-indexed, policy-indexed, axis-subset-indexed)"
+contradicts: []
+repeats:
+  - "Substantially repeats and consolidates file 1039's already-documented executable audit results; this file's distinctive contributions are the self-caught composition near-miss and the comprehensive thirteen-claim falsification catalog with its epistemic-discipline closing distinction."
+bridge_candidates:
+  - "'258.35' -- the new corpus reference on K's extensionality, not yet directly encountered."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the comprehensive thirteen-claim falsification catalog (13/13 falsified) as the definitive summary of every overclaim risk in the equality-research programme, with the crucial closing distinction that only two are genuine impossibility results."
+  - "dimension-registry.md: record the disciplined self-caught vacuous-composition near-miss as a further instance of this programme's recurring pattern of catching its own overclaims before they propagate."
+anchor_test:
+  anchor: "This reconstruction's already-tracked executable audit findings and approx_X-distinctness finding (files 1037, 1039, 1041)"
+  supports_dimension: "Extends and consolidates these findings into the comprehensive, definitive thirteen-claim falsification catalog"
+  refines_or_contradicts: "confirms and completes prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The thirteen-claim falsification catalog is directly checkable against files 1037-1045's own already-documented findings for exact consistency."
+undefined_concepts: []
+open_questions:
+  - "'258.35', not yet directly encountered."
+tier2_triggered: true
+tier2_reason: "Delivers the comprehensive, definitive thirteen-claim falsification catalog for the entire equality-research programme with all claims falsified, a disciplined self-caught near-miss (the vacuous universal-relation composition), and a crucial epistemic-discipline distinction separating genuine impossibility results from contingent not-established gaps. Classified importance critical and confidence high given its role as the programme's definitive falsification summary."

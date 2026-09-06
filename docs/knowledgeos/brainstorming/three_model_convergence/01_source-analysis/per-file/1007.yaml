@@ -1,0 +1,88 @@
+sequence: 1007
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/D285-6-STATE-CANDIDATE-EVALUATION.md
+title: "D285-6 -- State Candidate Evaluation: The Actual Canonical Models A-F Artifact, Delivering the Complete Six-Model Verdict Table, the Full Primitive-by-Primitive Projection Mapping, and the Clarifying Distinction That Blocker 1 (Qualify) Needs No Governance -- Only D288's Other Three Targets Do"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual D285-6 artifact, the canonical state-candidate evaluation underlying nearly every K_t/(A,R)-projection finding this reconstruction has tracked by cross-reference"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1007
+importance: critical
+confidence: high
+about: >
+  The actual D285-6 artifact, status "OUTCOME B — LOSSY SEMANTIC PROJECTION," restated under the HPA equality
+  mandate. Property: `(𝒜,ℛ)=_semantic π_K(K_t)` after unpacking `Assertion` and modulo a declared drop.
+
+  **§3 delivers the complete six-model verdict table for the first time**: Model A (`K_t=(𝒜,ℛ,Σ,…)` complete)
+  REFUTED (ratified `K_t` contains Action/Event/Policy, verification lane excludes them); Model B
+  (`K_t=(𝒜,ℛ)`) REFUTED (FA-4 states 8 primitives, not 2); **Model C (`(𝒜,ℛ)=π_K(K_t)`) HOLDS, qualified**
+  (every verification-only item is a field of an assertion, not a new primitive); Model D
+  (`K_t=π_knowledge(S_t)`) holds, compatible with C, reverses the vantage; Model E
+  (`S_t=(K_t,E_t,H_t,G_t,Q_t)`) holds, compatible with C, "names the complement"; Model F (separate products)
+  REFUTED (Relation and Proposition shared). **Delivers the full primitive-by-primitive projection mapping**:
+  Proposition/Entity/Relation/State map directly; **Observation maps only "after Qualify"**; Event/Policy/
+  Action are DROPPED, declared external.
+
+  **§4 delivers the two load-bearing qualifications in their canonical form**: (a) `π_K` is DEFINABLE and NOT
+  COMPUTABLE because `Qualify:Observation×Policy→Evidence` "has no body in the corpus (one undefined hit,
+  Step 170)," `G1`, irreducible; (b) the observation layer is NOT missing (Sañjaya recovery, already tracked)
+  — "the structural gap is closed; only the function body remains."
+
+  **§5 delivers the full three-way equality test with the specific query-class breakdown**: structural FALSE
+  (`Assertion` is not a ratified primitive); semantic TRUE (only after unpacking Assertion, modulo the
+  declared drop); observational FALSE, with the EXACT four-item split named: answerable under `(𝒜,ℛ)`
+  (`member`, `contradicts`, `supersede`, `lineage`) vs NOT answerable (`replay`, `policy-eval`,
+  `authorize`) -- "`=_observational` failing IS what 'lossy' means... three primitives and three query classes
+  are lost, by design."
+
+  **§5b restates, in its canonical source location, the already-tracked four-line scope resolution** (files
+  0999, 1003, 1005): semantic state projection ESTABLISHED / operational equivalence NOT ESTABLISHED /
+  observational equivalence REFUTED / computable projection BLOCKED.
+
+  **§7 DELIVERS A GENUINELY IMPORTANT CLARIFYING DISTINCTION, DIRECTLY COMPLEMENTING FILE 1005'S D288-SCOPE
+  FINDING**: "Blocker 1 needs governance? NO — it needs `Qualify`. Mathematical evidence discriminates; no
+  normative choice is required." This explicitly confirms `Qualify`'s status is categorically different from
+  the equality-relation blockers (semantic/observational/provenance-sensitive equality), which file 1005
+  showed ARE normative (require a human governance act, Decision 3). D285-6 itself thus anticipates and is
+  fully consistent with D288-scope's later three-normative/one-irreducible finding.
+introduces:
+  - concept: "The complete six-model (A-F) verdict table with grounds for each refutation/confirmation"
+  - concept: "The full primitive-by-primitive projection mapping table showing exactly which ratified primitives map directly, which require Qualify, and which are dropped as external"
+  - concept: "The exact four-item split of query classes answerable vs not answerable under the (A,R) projection: member/contradicts/supersede/lineage answerable; replay/policy-eval/authorize not"
+  - concept: "The explicit clarification that Qualify's irreducibility is a mathematical/discrimination matter, not a governance matter -- directly distinguishing it from D288's other three (normative) targets"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked K_t/(A,R) projection findings (files 0968, 0974, 0985, 0993-0994, 0998-0999, 1003, 1005-1006)"
+    refinement: "GROUNDED in the canonical D285-6 source, with the complete six-model verdict table and primitive-level mapping now directly confirmed"
+  - concept: "This reconstruction's already-tracked four-line scope-resolution distinction (files 0999, 1003, 1005)"
+    refinement: "CONFIRMED in its canonical source location (D285-6 §5b itself)"
+  - concept: "File 1005's D288-scope finding that only Qualify is a genuine G1-irreducible gap while the other three targets are normative"
+    refinement: "DIRECTLY ANTICIPATED AND CONFIRMED by this file's own §7 clarification: 'Blocker 1 needs governance? NO — it needs Qualify. Mathematical evidence discriminates; no normative choice is required'"
+contradicts: []
+repeats:
+  - "Substantially repeats content already documented via files 0985, 0993-0994, 0999, 1003, 1005-1006; this file's distinctive contribution is being the actual canonical D285-6 source with the complete six-model table, the exact query-class split, and the Qualify-vs-governance clarification."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the complete six-model (A-F) verdict table and the exact primitive-by-primitive projection mapping as the canonical grounding for this reconstruction's already-tracked K_t/(A,R) findings."
+  - "dimension-registry.md: record the exact query-class split (member/contradicts/supersede/lineage answerable; replay/policy-eval/authorize not) and the clarification that Qualify's irreducibility is mathematical, not governance-dependent, unlike D288's other three targets."
+anchor_test:
+  anchor: "This reconstruction's already-tracked K_t/(A,R) projection findings and file 1005's D288-scope three-normative/one-irreducible finding"
+  supports_dimension: "Grounds all prior findings in the canonical D285-6 source and directly confirms/anticipates file 1005's Qualify-vs-governance distinction"
+  refines_or_contradicts: "confirms and grounds prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The six-model verdict table and the query-class split are directly checkable against files 0968-1006's own already-documented K_t/(A,R) findings for consistency."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "The actual canonical D285-6 state-candidate-evaluation artifact underlying nearly every K_t/(A,R)-projection finding this reconstruction has tracked, delivering the complete six-model verdict table, the exact query-class split, and a clarifying distinction (Qualify is mathematically not governance-dependent) that directly anticipates and confirms file 1005's later D288-scope finding. Classified importance critical and confidence high given its role as the canonical source for the central architectural result of the entire D285-x programme."

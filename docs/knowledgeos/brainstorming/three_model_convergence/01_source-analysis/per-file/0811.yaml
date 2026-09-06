@@ -1,0 +1,167 @@
+sequence: 811
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-020511_step_185_change-correction-refinement-or-recontextualization.md
+title: "Step 185 -- Change, Correction, Refinement, or Recontextualization? (MAJOR SYNTHESIS MILESTONE, delivers 0810's promised four-way distinction, CONTINUES the I-series notation from 0808 as I15-I20): Delivers Four Fully Worked Transition Types With Concrete Nexus Examples -- Delivers the Assertion Tuple A=(p,c,t,s,e) and 'Semantic Transition > Mere Version Number' -- INDEPENDENTLY DERIVES A BITEMPORAL MODEL (RealityTime × KnowledgeTime, T_valid≠T_known) With a Worked Security-Vulnerability Example -- Delivers the Inequality Chain Difference≠Contradiction≠Correction≠Change≠Recontextualization -- Delivers the Emerging Assertion-Lifecycle Ontology and an Explicit Self-Positioning Statement ('We Are Currently Between Hypothesis and Experiment') -- Delivers the Deepest Definition Yet: 'Evolution of Justified Organizational Meaning' -- Consolidates Six Further Invariants I15-I20 -- Opens Step 186's 'Who Is Allowed to Change the Epistemic State?' Question With an Explicit Predicted Answer ('Does Write Access Constitute Authority? ... No')"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily mathematical/statistical/DDD state-transition formalization; re-walks all four Gita chapters for this specific distinction without introducing new Gita textual content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 811
+importance: critical
+confidence: high
+about: >
+  Directly continues 0810, opening "Step 184 established that an epistemic gap must remain visible. Step
+  185 now asks a deeper question: when an old assertion differs from a new assertion, what exactly
+  happened? We must not automatically interpret `P_{t_1}=X, P_{t_2}=Y` as `X=wrong`."
+
+  **§185.1 delivers four fully worked transition types**, each with a concrete Nexus-infrastructure
+  example: **Correction** (the world did not change but the prior assertion was wrong -- "16GB RAM" later
+  corrected to "32GB RAM" for the same host/configuration/time); **Change** (the original assertion was
+  correct when made, reality subsequently changed -- Nexus version 3.69 in August, 3.8x after an upgrade,
+  formalized `Correct(X,t_1)∧Correct(Y,t_2)`, "essential for organizational memory"); **Refinement** (the
+  old statement was true but incomplete -- "Nexus runs on RHEL" later refined to "RHEL 9.8 on a specific VM
+  using rootless Podman," boxed `Refinement≠Correction`); **Recontextualization** (an apparent contradiction
+  dissolves because the bounded context changed -- "the system is approved" meaning `Approval_Architecture`
+  in one context versus `Approval_Operations` in another, "pure DDD territory").
+
+  **§185.2-185.3 delivers "semantic transition > mere version number,"** boxed, contrasting a flat
+  `v1→v2→v3` version history against a semantically-typed structure (`corrected by v2`, `refined by v3`,
+  `superseded by v4`, `valid in Context A`). Delivers **the assertion tuple**
+  `A=(p,c,t,s,e)` (proposition, context, temporal scope, semantic scope, evidence/provenance), explicitly
+  requiring dimension-by-dimension comparison rather than bare proposition-text equality.
+
+  **§185.4-185.5 delivers the statistician's warning** (temporal difference is not automatically causal --
+  `P_t=X` then `P_{t+1}=Y` does not license inferring `X→Y` without evidence, nor does observing `Y` later
+  prove `X` was wrong earlier) and **the DDD question**: `SameName≠SameConcept` (the word "Customer" across
+  two bounded contexts may represent genuinely different domain concepts), "particularly important for AI
+  retrieval." Worked through **a concrete AI-retrieval design consequence**: given three historical
+  documents about "Nexus architecture" spanning different eras, a naive AI merging them is explicitly
+  rejected in favor of constructing distinct `Architecture_2024`, `Architecture_2026,planned`, and
+  `Architecture_current` objects with their relationships made explicit.
+
+  **§185.7-185.10 independently derives a bitemporal data model, though not named as such**: delivers
+  `TruthStatus(P,t)` rather than a timeless `TruthStatus(P)`, then **two distinct time dimensions**:
+  Validity time `T_valid` ("when was the proposition true?") and Knowledge time `T_known` ("when did the
+  organization know or record it?"), worked through a security-vulnerability example (a vulnerability
+  existing from January 1, discovered March 10: `RealityState(Jan)=Vulnerable` while
+  `KnowledgeState(Jan)=Unknown`, only becoming `KnowledgeState(Mar)=Known`) -- explicitly: "we must not
+  rewrite January as 'the organization knew it was vulnerable.' It didn't." Crystallized as **the boxed
+  two-dimensional model `RealityTime × KnowledgeTime`**, "a major mathematical refinement" -- this
+  independently reconstructs the well-established database concept of bitemporal modeling (valid time vs.
+  transaction/knowledge time) purely from the arc's own epistemic-discipline reasoning, without naming or
+  presumably being aware of the existing bitemporal-database literature.
+
+  **§185.11-185.14 re-walks all four Gita chapters specifically for this file's distinction**: Chapter 2
+  (`State_{t_1}≠State_{t_2}` does not mean `State_{t_1}=error`); Chapter 4 (a later state need not preserve
+  all of an earlier one, `CurrentKnowledge≠HistoricalKnowledge`, requiring lineage); Chapter 3
+  (`Action_t→Reality_{t+1}`, an upgrade decision causing a state transition -- "the old version was not
+  necessarily 'wrong.' The action caused a state transition"); Chapter 1 (`Uncertainty→Decision→Action→
+  NewEvidence`, requiring the pre-action uncertainty itself to remain preserved).
+
+  **§185.15-185.17 delivers supersession and contradiction refinements**: **`Superseded≠False`** (a 2025
+  policy remaining historically valid while no longer currently applicable), and, for genuine same-context/
+  same-time conflicting assertions, the requirement to preserve `Conflict(P_1,P_2)` rather than immediately
+  selecting a winner (checking relative evidence strength, authority, context/timestamp/scope differences,
+  or correction status before any resolution). Delivers **the file's central inequality chain**, refining
+  0805's `Conflict≠Error`, boxed in sequence: **`Difference≠Contradiction`**, **`Contradiction≠
+  Correction`**, **`Correction≠Change`**, **`Change≠Recontextualization`**.
+
+  **§185.18-185.20 delivers the emerging assertion-lifecycle ontology**: a typed-edge knowledge-graph
+  sketch (`corrected_by/refined_by/superseded_by/contradicted_by/valid_in`), explicitly disclaimed as
+  domain-language discovery rather than an implementation commitment, and a candidate lifecycle
+  `Candidate→Supported→Determined→Superseded` with branches (`Candidate→Rejected`, `Supported→Corrected`,
+  `Supported→Refined`, `Assertion_A↔Assertion_B→Conflict`). **Delivers an explicit, disciplined
+  self-positioning statement**: the corpus names its own governing methodology sequence
+  `Observation→Hypothesis→DomainLanguage→Experiment→Invariant→Architecture` and explicitly locates itself
+  "currently between Hypothesis and Experiment" -- a rare moment of the corpus stating its own position
+  within its own declared epistemic pipeline.
+
+  **§185.21-185.22 delivers the Step 185 experiment design**: a five-case test corpus (A: Correction, B:
+  Real-world change, C: Refinement, D: Recontextualization, E: genuine Contradiction), proposing to test
+  whether an AI agent can reliably classify each and state what evidence classification would require --
+  "if the agent cannot reliably distinguish these cases, our knowledge model is not mature enough." Delivers
+  **the three-part success criterion**: preserving `HistoricalTruth` without confusing it with
+  `CurrentTruth`; preserving `CurrentTruth` without erasing `HistoricalUncertainty`; and never promoting
+  `Inference` to `Fact`.
+
+  **§185.23 delivers the file's deepest architectural statement**: KnowledgeOS is not fundamentally about
+  `DocumentVersioning`, `KnowledgeStorage`, or `AIContext`, but boxed: **"evolution of justified
+  organizational meaning"** -- "that may ultimately be the deepest definition of the system."
+
+  **§185.24 delivers the Step 185 verdict, EXPLICITLY CONTINUING 0808's I-series numbering** (a notable
+  instance of actual notation continuity rather than yet another independent series): six further boxed
+  invariants, **`I15: historical truth must not be rewritten by current knowledge`**;
+  **`I16: a change in state does not imply prior error`**; **`I17: assertions require temporal scope`**;
+  **`I18: validity time and knowledge time are distinct`**; **`I19: semantic transitions must be typed`**;
+  **`I20: contradictory assertions must remain representable until legitimately resolved`** -- "strong
+  candidates for the next version of the KnowledgeOS constitutional model."
+
+  **Closes opening "Step 186 — the next question,"** moving to authority over epistemic-state transitions
+  themselves: can an AI agent move `Candidate→Supported`? can a developer move `Supported→Determined`? can
+  an Architecture Board move `Determined→Decision`? can an automated system move `Decision→Action`? --
+  culminating in the explicit critical question, boxed: **"does having the ability to write to the
+  KnowledgeOS database constitute authority to change organizational knowledge?"**, with an explicit stated
+  prediction: **"I strongly suspect the answer will be: No."** No actual repository implementation occurs
+  within this file itself; every tuple, ontology fragment, and invariant remains a conceptual specification
+  pending Step 186's authority-over-transitions formalization.
+introduces:
+  - concept: "Four fully worked transition types with concrete infrastructure examples: Correction, Change, Refinement, Recontextualization"
+  - concept: "'Semantic transition > mere version number'; the assertion tuple A=(p,c,t,s,e)"
+  - concept: "The statistician's warning against inferring causal state-change from mere temporal succession"
+  - concept: "SameName≠SameConcept (DDD), and its concrete AI-retrieval consequence (constructing distinct temporally-indexed architecture objects instead of merging historical documents)"
+  - concept: "The bitemporal model RealityTime × KnowledgeTime (T_valid vs. T_known), independently derived and worked through a security-vulnerability example"
+  - concept: "The inequality chain Difference≠Contradiction≠Correction≠Change≠Recontextualization, refining 0805's Conflict≠Error"
+  - concept: "The emerging assertion-lifecycle ontology (typed graph edges, Candidate→Supported→Determined→Superseded with branches)"
+  - concept: "The explicit self-positioning statement: the corpus names its own methodology sequence and locates itself 'currently between Hypothesis and Experiment'"
+  - concept: "The five-case Step 185 experiment design (A-E) testing AI classification reliability, and the three-part success criterion"
+  - concept: "The deepest definition yet: KnowledgeOS as 'evolution of justified organizational meaning'"
+  - concept: "Six further consolidated invariants I15-I20, explicitly continuing 0808's I-series numbering"
+  - concept: "Step 186's opening: authority over epistemic-state transitions themselves, with the explicit predicted answer that database write access does not constitute organizational authority"
+defines:
+  - concept: "The four transition types (Correction/Change/Refinement/Recontextualization)"
+    definition: "Correction: the world did not change, but the earlier assertion was factually wrong, and new evidence demonstrates this for the same referent, property, and time. Change: the earlier assertion was correct when made, but the underlying reality has since legitimately changed (both X at t_1 and Y at t_2 are simultaneously true relative to their own times). Refinement: the earlier assertion was true but incomplete, and the later assertion adds resolution/detail without falsifying the original. Recontextualization: an apparent conflict dissolves once it is recognized that the two assertions belong to different bounded contexts (the same word or claim means something different in each) -- these four require entirely different evidentiary support and produce entirely different historical-record treatments, so collapsing them into a single 'the value changed' event destroys essential organizational meaning"
+  - concept: "The bitemporal model RealityTime × KnowledgeTime"
+    definition: "Every organizationally significant proposition has two independent temporal coordinates: validity time (T_valid, when the proposition was actually true in the world) and knowledge time (T_known, when the organization actually came to know or record it) -- these can differ substantially (a vulnerability existing since January but only discovered in March has RealityState(Jan)=Vulnerable but KnowledgeState(Jan)=Unknown), and conflating them by retroactively asserting the organization 'knew' something during a period when it had not yet discovered it constitutes a historical falsification; this independently reconstructs the established bitemporal-database concept of valid-time versus transaction-time"
+refines:
+  - concept: "0810's opening of Step 185 (closing Step 184) and its four-way Correction/Change/Recontextualization/Refinement question"
+    refinement: "DELIVERED IN FULL: all four transition types worked with concrete examples, the assertion tuple, the bitemporal model, the inequality chain, the emerging ontology, and the five-case experiment design with explicit success criteria"
+  - concept: "0805's Contradiction≠Change/Evolution and 0806's nine-category ConflictType taxonomy"
+    refinement: "Substantially refined into a precise five-term inequality chain (Difference≠Contradiction≠Correction≠Change≠Recontextualization), giving 0805's binary distinction and 0806's flat category list an explicit ordered structure showing how each concept differs from its neighbors"
+  - concept: "The arc's repeated temporal-anchoring/historical-justification family (0795's Decision(D)⇒Basis(D,t_D), 0800's Current(K) vs. Lineage(K), 0803's hindsight leakage)"
+    refinement: "Consolidated and formalized into the explicit bitemporal RealityTime×KnowledgeTime model, giving the family's many prior qualitative instances a single unifying two-dimensional mathematical structure for the first time"
+  - concept: "0808's consolidated I1-I14 invariant series"
+    refinement: "DIRECTLY EXTENDED (not superseded or duplicated) as I15-I20, demonstrating that at least this portion of the arc's proliferating invariant-notation problem is being handled correctly -- via continuation of an existing series rather than the creation of yet another independent one, a notable positive counter-example to this reconstruction's repeated notation-proliferation observation"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 186's actual formalization of authority over epistemic-state transitions and confirmation or refutation of its stated prediction (database write access does not constitute organizational authority to change knowledge)."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the independently-derived bitemporal model (RealityTime × KnowledgeTime) as a notable instance of the arc reconstructing an established formal data-modeling concept from first principles via its own epistemic discipline."
+  - "dimension-registry.md: record the inequality chain Difference≠Contradiction≠Correction≠Change≠Recontextualization as a directly reusable, precisely ordered classification refining 0805's and 0806's earlier looser taxonomies."
+  - "dimension-registry.md: record the explicit self-positioning statement ('currently between Hypothesis and Experiment') as a rare, valuable instance of the corpus stating its own location within its declared methodology pipeline."
+  - "dimension-registry.md: record I15-I20 as a positive counter-example to the notation-proliferation observation -- this series correctly continues 0808's I1-I14 rather than starting a new independent numbering."
+anchor_test:
+  anchor: "0810's opening of Step 185 and its four-way distinction question; 0805's Contradiction≠Change and 0806's ConflictType taxonomy; the arc's repeated temporal-anchoring family (0795, 0800, 0803); 0808's I1-I14 invariant series"
+  supports_dimension: "Delivers all four transition types fully worked with concrete examples, directly answering 0810's closing question. Substantially refines 0805's and 0806's looser conflict/change taxonomies into a precise ordered inequality chain. Consolidates the arc's repeated temporal-anchoring family into an explicit, independently-derived bitemporal model, a genuinely notable formal-modeling achievement. Correctly extends (rather than duplicates) 0808's I1-I14 invariant series with six further invariants, demonstrating the arc can maintain notation continuity when it chooses to. Delivers a rare explicit self-positioning statement locating the corpus within its own declared methodology pipeline. Opens Step 186 with an explicit stated prediction, maintaining the arc's falsification-oriented discipline"
+  refines_or_contradicts: "directly delivers and extends 0810's opening and its four-way question; substantially refines 0805's and 0806's taxonomies into an ordered chain; consolidates the arc's temporal-anchoring family into a unified bitemporal model; correctly extends (not duplicates) 0808's I-series; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "§185.9's fully worked security-vulnerability example (RealityState(Jan)=Vulnerable, KnowledgeState(Jan)=Unknown, KnowledgeState(Mar)=Known, with the explicit warning against rewriting January as 'the organization knew') is directly checkable evidence of a genuinely rigorous, independently-derived bitemporal distinction."
+  - "§185.20's explicit self-positioning statement, naming the corpus's own methodology sequence and stating 'we are currently between Hypothesis and Experiment,' is directly quotable evidence of a rare moment of declared methodological self-location."
+  - "§185.24's six boxed invariants I15 through I20, explicitly numbered as a direct continuation of 0808's I1-I14, is directly checkable evidence that this portion of the arc's invariant-notation practice achieved genuine continuity rather than adding yet another disconnected series."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 186's authority-over-transitions formalization was ever carried out, and whether it confirmed the stated prediction that database write access does not constitute organizational authority."
+  - "Whether the I1-I20 invariant series continued being maintained consistently through the remainder of the arc, or whether a later file introduced yet another disconnected series despite this file's positive continuity example."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers all four transition types (Correction/Change/Refinement/Recontextualization) fully worked with concrete examples, directly answering 0810's closing question. Independently derives a bitemporal data model (RealityTime × KnowledgeTime), a genuinely notable formal-modeling achievement reconstructing an established database-theory concept from the arc's own epistemic discipline. Substantially refines 0805's and 0806's looser taxonomies into a precise ordered inequality chain. Correctly extends 0808's I1-I14 invariant series with six further invariants (I15-I20), a positive counter-example to this reconstruction's repeated notation-proliferation observation. Delivers a rare explicit self-positioning statement locating the corpus within its own declared methodology pipeline, and the deepest architectural definition yet ('evolution of justified organizational meaning'). Opens Step 186 with an explicit stated prediction about authority over epistemic-state transitions."

@@ -1,0 +1,112 @@
+sequence: 342
+path: docs/knowledgeos/brainstorming/kernel/00_CENSUS.md
+title: "Kernel Brainstorming Corpus -- Phase A Census (the long-referenced companion to 0311/0329)"
+date: "2026-08-25"
+bytes: 21206
+model:
+  primary: c1
+  secondary: null
+source_role: CRITICAL_REVIEW
+canonical_source: 342
+importance: critical
+confidence: high
+about: >
+  The long-awaited Phase A census, referenced repeatedly since 0311 (its findings T-1 through T-7 were
+  cited there before being read directly) -- the third landmark corpus-wide meta-analysis artifact this
+  reconstruction has encountered (companion to 0311's dependency-map.md/Phase B and 0329's cluster-map.md/
+  Phase B). Classifies all 158 documents in kernel/ (137 at original census time, five arriving during
+  Phase A) across twelve subject clusters (C1-C12) using a four-dimension scheme (Subject/Altitude/
+  Epistemic-role/Kernel-relevance), explicitly RESEARCH/NON-AUTHORITATIVE, 'decides nothing.' Confirms
+  and dates the exact 12-duplicate register this reconstruction independently tracked and matched against
+  0311's own prior claim (nine base pairs plus three arriving during Phase A, effective distinct documents
+  130). Gives the corpus's own K3(29)/K4(10) Kernel-relevance classification (39 documents, 30% of the
+  corpus, 38 after deduplication) -- a ground-truth cross-check against this reconstruction's own
+  file-by-file importance/source_role tagging for the entire 0257-0340 stretch already read. Provides the
+  FULL detailed content of the T-1 through T-7 recurring-temptation register (previously only cited
+  secondhand via 0311), including exact document-ID chains for each. Contains a dedicated 'Measure-theory
+  thread' table (SS8) that independently classifies and dates the EXACT SAME 0327-0340 sequence this
+  reconstruction just processed (181038=0327, 181719=0328, 183652=0331, 184234=0332, 184332=0333,
+  184616=0334, 184755=0335, 190319=0337, 192351=0340), explicitly confirming 0340 (192351) as the
+  thread's own 'D/H, K3, thread RESOLUTION' -- direct external corroboration that this reconstruction
+  correctly identified 0340 as the strongest convergence point in that strand. Notes 'five independent K4
+  refutations in 78 minutes, none imported' as 'the clearest counter-example to the earlier S-4
+  generalisation' (0311's 'only four genuine self-falsification events in the whole corpus' claim, now
+  shown superseded by growth after 0311 was written). Records a set of governance 'Structure decisions'
+  explicitly attributed to 'the HPA' (still not spelled out, but now confirmed as the entity issuing
+  binding structural rulings on 2026-08-25): classification lives in metadata (this census), never in
+  filename/path; kernel/ retains its name (renaming to corpus/ considered and rejected); a SOURCE->
+  CLASSIFIED->SYNTHESIZED->ADVERSARIAL->ARCHITECTURAL-AUTHORITY status-advancement rule, with 'Kernel-
+  relevant research is not Kernel architecture' as an explicit standing rule; and a two-level directory
+  scaffold where brainstorming/ and brainstorming/kernel/ deliberately have DIFFERENT functions per
+  level rather than mirrored trees. Confirms the 99-document Phase 1 root corpus (matching 0337 Part 2)
+  'has never been censused' -- a known gap. Lists the complete inventory of derived (non-source) artifacts
+  actually existing in the corpus at this point: 00_CENSUS.md itself, classification/dependency-map.md
+  (0311), and the 20260825-130514 critique (labelled by function, not moved).
+introduces:
+  - concept: "Explicit five-phase process declaration: census -> map -> subset -> read -> synthesise -> Zero -> falsify -- this file is Phase A (classification only), 0311/0329 are Phase B (dependency/cluster mapping); Phases C (subset selection) through G (falsification) are explicitly named and their status tracked"
+  - concept: "Four-dimension classification scheme applied to all 158 documents: A-Subject (KB/ID/ES/ADM/EV/KS/EP/ST/LM/GP/EX/AR -- eleven categories); B-Altitude (PH/CM/DM/BC/AG/VO/INV/CAP/BD/PT/MECH/IMP -- twelve levels from philosophy to implementation); C-Epistemic role (O/Q/H/A/CM!/CX/F/D/R/AN/AP/SRC/DUP); D-Kernel relevance (K0 irrelevant/K1 contextual/K2 potentially relevant/K3 direct Kernel evidence/K4 Kernel-adversarial)"
+  - concept: "Explicit methodological self-limitation: classification is based on each document's opening 12-18 non-blank lines plus slug plus an objective concept-density matrix (identity/epistemic-state/admission/justification/evidence/aggregate-boundary/invariant/port/falsification token counts) -- NOT a full read; Subject and Altitude are high-confidence, Epistemic-role and K-level are explicitly PRELIMINARY, flagged rows expected to be corrected by Phase D"
+  - concept: "Confirmed twelve-duplicate register (matching this reconstruction's own tracked count and 0311's prior claim exactly): nine base pairs (managing-memory 003307/004125; synthesis-dossier 010419/010537/.docx-010504 -- three copies two formats; chalmers-rerun 020936/021011; epistemic-arch-synthesis 111317/111611; integrative-summary 112051/113404; fraser-HMM 154256/155130; knowledge-as-measurable 160023/160339; continuously-changing 160637/160645; topological-Astrom 151311/cross-folder-145631) plus three arriving DURING Phase A (shannon-weaver 101801/145948; consciousness-as-analogy 162039/150010; projection-divergence 140251/145918) plus one lossy scrollback subset (130514/130339, NOT byte-identical) -- '12 redundant copies, effective distinct documents: 130'"
+  - concept: "Full twelve-cluster corpus census (C1-C12): C1 Kernel boundary/aggregate (the 'spine of the corpus,' 24 documents, several explicitly K4 including 110248 'god-object conflations' and 113243 'preservation != consistency != projection'); C2 Identity (3 docs, including 094638 the Daoist-ziran K4 attack, 'IDENT 170 -- highest in corpus'); C3 Epistemic state/lifecycle (15 docs including the 8-way UNKNOWN Fagin material at 125708 and its K4 critique at 130514); C4 Admission/port/anti-reasoner (4 docs); C5 Evidence/justification (8 docs); C6 Knowledge Space/ontology (18 docs); C7 Epistemology sources/book extractions (9 docs, all K1-K2); C8 Statistical/ML/formal method (19 docs, K0-K1, flags 024119 as 'the only implementation-altitude document in a Kernel-discovery corpus'); C9 Lens system/method (16 docs including the Zero Lens definition timing gap and the tarka nine-attack-families instrument); C10 Governance/process/handover (7 docs, flags 020611 as a Wave-1 adjudication status report sitting in a brainstorming folder); C11 Outside-the-kernel arguments (4 docs); C12 Artifacts/misfiled material (4 role-anomaly documents, matching this reconstruction's own confirmed 0256/0283 cross-check plus the EKS-baseline and .docx-duplicate anomalies)"
+  - concept: "Full T-1..T-7 recurring-temptation register with exact document-ID chains (previously only cited secondhand via 0311): T-1 the over-large aggregate (110248->111730->113243, 'rediscovered three times, independently, the strongest signal in the corpus'); T-2 an eighth epistemic state (AMBIGUOUS-parent-103255/104148/104251 -> catuskoti B/N 164653/165635 -> 8-way UNKNOWN 125708 SS17, 'five arrivals, three names,' recurs AFTER a formal deferral); T-3 Knowledge as the Kernel primitive (asserted-against in 111545/120514/130932, asserted-for in 111317/112051, 'direct internal contradiction, both sides K3'); T-4 identity derived-or-primitive (094638 vs 115235/120122, unreconciled, both K3/K4); T-5 plurality conflated with contradiction (103542 SS19 files A/notA under contradiction-and-plurality; 110525 models them apart, 'the live F-CM-1a drift, inside the corpus'); T-6 definition lagging use (Zero Lens used from 230117, defined at 152415, ~17h gap); T-7 research-to-architecture leakage (232146 ADR draft, 111317 'proposed target model', 131125 proposed architecture, 'the three documents most at risk of a hypothesis becoming law by being well written')"
+  - concept: "Phase C candidate subset: K4 Kernel-adversarial (10 named documents) and K3 direct-Kernel-evidence (29 named documents) -- 39 documents/30% of the corpus, 38 after deduplication and excluding the lossy scrollback partial; remaining ~89 are K0-K2 ('real research, not Kernel evidence')"
+  - concept: "Explicit scope statement of what Phase A deliberately did NOT do: no merit ranking, no synthesis, no contradiction resolution, no promotion of any hypothesis, no Zero pass, nothing written to KnowledgeOS law -- T-1..T-7 'registered, not adjudicated'"
+  - concept: "Governance 'Structure decision' section explicitly attributed to 'the HPA, 2026-08-25' (the same entity/role named at 0323/0329/0338, still not spelled out but now confirmed as issuing binding structural rulings): (1) a filename carries identity/chronology/provenance only, NEVER a category code; (2) cluster membership is recorded in the census, not the path (one document may belong to several clusters, which no path could express without an arbitrary choice); (3) reclassification edits the census, never a document's name or location; (4) directory names express artifact FUNCTION, never subject and never authority; (5) not one source document was moved -- originals stay where captured"
+  - concept: "Explicit DECIDED (not open) ruling: renaming kernel/ -> corpus/ was considered and REJECTED by the HPA -- the semantic hazard it would have addressed is mitigated by rule (a SOURCE->CLASSIFIED->SYNTHESIZED->ADVERSARIAL->ARCHITECTURAL-AUTHORITY status-advancement chain) rather than by directory layout; explicit standing rule: 'a document never acquires a later status because of the directory it sits in... Kernel-relevant research is not Kernel architecture -- a document is not Kernel law because it sits in kernel/, and K3/K4 marks relevance, not standing'"
+  - concept: "Explicit HPA ruling that the two-level scaffold (brainstorming/ vs brainstorming/kernel/) must have DIFFERENT functions per level rather than mirrored trees, since mirroring created ambiguity about which to use -- a table assigning distinct roles: classification/ is corpus-wide-coordination at root vs ACTIVE-census-and-dependency-map at kernel level; corpus/ is inert-by-decision at both levels; synthesis/ is not-the-working-location at root vs RESERVED-Phase-D/E-not-started at kernel level; falsification/ is not-the-working-location at root vs RESERVED-Phase-G-not-started at kernel level -- explicit warning: 'an empty directory is not evidence that its phase has run'"
+  - concept: "Confirmation of a known gap, matching 0337 Part 2's Phase 1 finding exactly: 'the 99 root-level documents have never been censused. Only the kernel corpus has' -- a corpus-wide census would also need to reconcile the cross-folder duplicate already found (root-145631 = kernel-151311)"
+  - concept: "Complete inventory of derived (non-source) artifacts existing at this point in the corpus, explicitly stated to be the COMPLETE list: 00_CENSUS.md itself (Phase A, kernel/ root); classification/dependency-map.md (Phase B, this reconstruction's own 0311); the 20260825-130514 critique document, explicitly labelled by function IN PLACE among the sources rather than moved -- 'everything else in the tree is a source document'"
+  - concept: "Restated Phase B headline (from 0311, now cross-confirmed): the corpus is almost entirely unlinked -- exactly 1 of 141 documents cites another by ID, 98 of 141 carry no backward reference at all; every reconstructed response chain is 'a reconstruction offered for confirmation, not recorded provenance'"
+  - concept: "Explicit ID-scheme decision: the timestamp IS the ID; a parallel K-001... numbering scheme was considered and NOT adopted (would add a mapping burden; timestamps are already unique/chronological/collision-free) -- explicitly reversible later if a short human-quotable ID is wanted"
+  - concept: "Corpus growth log (SS8): three post-census arrivals recorded with preliminary classification -- 155035 (Searle institutional layer, this reconstruction's own 0293, flagged 'may be K3 on a closer read' due to Article-3-authority relevance); 155510 (knowledge-as-capacity, this reconstruction's own 0294-adjacent material); three duplicate re-saves (145918/145948/150010)"
+  - concept: "Dedicated 'Measure-theory thread (2026-08-25 18:10->19:03)' table, independently classifying and dating the EXACT SAME sequence this reconstruction processed as 0327-0340: 181038(=0327, KS/CM, H/AP, K3, 'v0.1 -- projection as measure'); 181719(=0328, KS/CM, F, K4, 'first attack'); 183652(=0331, KS/CM, F, K3, 'critique of v0.2'); 184234(=0332, ST/CM, R, K2, Roberts); 184332(=0333, ST/CM, R, K2, Aggoun&Elliott); 184616(=0334, KS/CM, F, K4, 'knowledge is not conditional expectation'); 184755(=0335, KS/CM, F, K4, 'six category errors'); 190319(=0337, KS/CM, F, K4, 'rejects the complete mathematical framework claim'); 192351(=0340, KS/CM, D/H, K3, 'THREAD RESOLUTION: relational/logical structure as the mathematical core... regimes') -- 'one proposal, eight responses'"
+  - concept: "Explicit corpus-internal observation: 'one architectural proposal drew five independent K4 refutations in 78 minutes, none imported. This is now the corpus's densest self-attacking region and the clearest counter-example to the earlier S-4 generalisation' -- directly updating/superseding 0311's own 'only four genuine self-falsification events in the whole corpus' claim, which predates this growth"
+  - concept: "Explicit corpus-capture-process observation: 'growth rate is itself an observation' -- five documents in ~90 minutes during Phase A, three of them duplicate re-saves; the 8.5% duplicate rate (12/142) is attributed to 'the capture process, not... the research'"
+defines: []
+refines:
+  - concept: "0311's S-4 finding ('only four genuine self-falsification events in the whole corpus')"
+    refinement: "Explicitly shown superseded by the Measure-theory thread's five independent K4 refutations in 78 minutes -- 'the clearest counter-example to the earlier S-4 generalisation,' a finding this census makes explicit that 0311 itself (written earlier) could not have known"
+  - concept: "0311's Phase B dependency-map.md and its 1/141-explicit-citation / 98/141-unlinked finding"
+    refinement: "Directly restated and confirmed as the Phase B headline, cross-referencing this file (Phase A) and 0311 (Phase B) as companion artifacts in the same census->map sequence"
+  - concept: "This reconstruction's own duplicate-file tracking (10 verified instances as of 0292/0311, corpus census claiming 12)"
+    refinement: "The corpus's own census CONFIRMS exactly 12 duplicates with full detail (9 base pairs + 3 Phase-A arrivals), resolving this reconstruction's own open question about the 1-2 remaining undiscovered duplicates -- now fully accounted for and named"
+  - concept: "0329's cluster-map.md and its thirteen-cluster conceptual matrix"
+    refinement: "0342 supplies a DIFFERENT, complementary twelve-cluster SUBJECT/ALTITUDE/ROLE/RELEVANCE classification (C1-C12) rather than a competing-positions matrix -- the two Phase-A/B artifacts serve different classification purposes and are not in tension"
+  - concept: "0340's relational/logical-core synthesis, this reconstruction's own assessment that it was 'likely the most mature synthesis point in the entire Measure Theory strand'"
+    refinement: "DIRECTLY AND INDEPENDENTLY CONFIRMED by the corpus's own census, which classifies 192351(=0340) as 'D/H, K3, thread RESOLUTION' -- strong external corroboration of this reconstruction's own editorial judgment"
+  - concept: "0323/0329/0338's repeated, unresolved references to 'the HPA' without full expansion"
+    refinement: "Further confirmed (though still not expanded) as the entity issuing binding structural/governance rulings dated 2026-08-25 on corpus organization (kernel/ naming, directory scaffold function, classification-as-metadata-not-filesystem)"
+  - concept: "0337 Part 2's confirmation that the 99-document Phase 1 root corpus has not been censused"
+    refinement: "Independently reconfirmed by this file's own 'known gap' note, from a different governance artifact (Phase A census vs. KNOWLEDGE-CONCEPT-EXTRACTION-001)"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the full T-1..T-7 temptation register with exact document-ID chains, superseding the secondhand citation carried since 0311."
+  - "dimension-registry.md: record the corpus's own independent classification of the Measure-theory thread (0327-0340), with explicit external confirmation that 0340 is the thread's resolution point."
+  - "dimension-registry.md: record the corpus's own S-4-superseding observation (five K4 refutations in 78 minutes) as an update to the self-falsification-event count tracked since 0311."
+  - "dimension-registry.md: close the open duplicate-count question (10 vs. 12) definitively -- 12 confirmed with full detail, matching 0311's prior claim exactly."
+  - "dimension-registry.md: record the HPA's binding structural rulings (classification-as-metadata, kernel/-naming-retained, two-level-scaffold-with-different-functions) as governance ground truth for this reconstruction's ongoing sequential pass."
+anchor_test:
+  anchor: "0311's Phase B dependency-map and its S-1/S-2/S-3/S-4 findings; 0329's Phase B cluster-map; 0323/0338's HPA references; 0327-0340's Measure-theory thread; this reconstruction's own duplicate-file tracking"
+  supports_dimension: "Cross-cutting corpus-internal meta-analysis: the long-referenced Phase A census, providing a full four-dimension classification of the entire kernel/ corpus, definitively confirming this reconstruction's duplicate count, independently corroborating this reconstruction's own assessment of 0340 as the Measure-theory thread's resolution point, and superseding 0311's S-4 self-falsification-event count with a later, denser observation"
+  refines_or_contradicts: "refines 0311 (updates S-4, confirms duplicate count and Phase B headline), refines 0329 (complementary classification scheme), independently confirms 0340's status as this reconstruction assessed it, confirms 0337 Part 2's Phase-1-uncensused gap"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "Full expansion of 'HPA' -- still not spelled out despite repeated appearances as the source of binding structural rulings (0323/0329/0338/0342)"
+  - "The referenced companion index docs/knowledgeos/brainstorming/00_INDEX.md -- not itself encountered by number in this reconstruction's sequential pass"
+open_questions:
+  - "Whether the 99-document Phase 1 root corpus is ever censused (both this file and 0337 Part 2 flag it as an open gap)"
+  - "Whether Phases C (subset selection) through G (falsification) are ever executed, given this census explicitly states none have run"
+  - "Whether the parallel K-001... ID scheme is ever adopted later, as the file notes it remains reversible"
+tier2_triggered: true
+tier2_reason: "The long-awaited Phase A census (referenced secondhand since 0311), classifying all 158 kernel/ documents across twelve subject clusters with a four-dimension scheme. Confirms this reconstruction's own duplicate-file count exactly (12), supplies the full T-1..T-7 temptation register with exact document-ID chains, independently classifies and dates the entire Measure Theory thread (0327-0340) with explicit external confirmation that 0340 is the thread's resolution point, supersedes 0311's self-falsification-event count with a denser later observation, and records binding HPA governance rulings on corpus structure (classification-as-metadata, kernel/-naming-retained, two-level-scaffold-with-different-functions) directly relevant to how this reconstruction should continue interpreting the corpus."

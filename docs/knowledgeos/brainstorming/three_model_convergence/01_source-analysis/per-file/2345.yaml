@@ -1,0 +1,53 @@
+sequence: 2345
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/12_implementation-candidates.md
+title: "Step-292/12 — Implementation Candidates (IC-1 Through IC-5): a Structured Full-Template Consolidation of Already-Tracked Findings, No New Substantive Content Beyond the Reusable Template Itself"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: none
+  secondary_note: "consolidates the five candidates already tracked in detail (delta-as-SSA, regression-as-verification, operation-registry-shape, persistence-by-construction, the three-level equivalence distinction) into a structured full-template card format, with an explicit CANONICAL-is-not-used discipline note"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2345
+importance: low
+confidence: high
+about: >
+  Consolidates the five implementation candidates already tracked in this reconstruction's records
+  (IC-1 δ-as-SSA/file 2337, IC-2 regression-as-verification/file 2341, IC-3 operation-registry-entry-
+  shape/file 2339, IC-4 persistence-by-construction/file 2338, IC-5 the three-level equivalence
+  distinction/file 2342) into a structured fourteen-field card template (Source basis, Corpus basis,
+  Formal definition, Inputs/Outputs, Preconditions, Effects, Persistence, Identity implications,
+  Provenance implications, Computability, Determinism, Failure behaviour, Current evidence, Missing
+  evidence, Maturity/Status). Opens: "Only reached after the research. Statuses per the mandate.
+  CANONICAL is not used -- no governance act makes any of this canonical." Closes with a four-item
+  "Not candidates" list (Golog/RGolog unreachable; Reiter's Knows excluded by R1; Situation=A_t refuted;
+  Poss-as-Qualify refuted) -- all already tracked. No genuinely new substantive content beyond the
+  reusable template structure itself.
+introduces: []
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked files 2337-2342 (individual implementation-candidate findings)"
+    refinement: "CONSOLIDATED into a structured fourteen-field template; no new substantive content"
+contradicts: []
+repeats:
+  - "All five implementation candidates and the four 'not candidates' are already comprehensively tracked in files 2337-2342; this document is a pure structural consolidation."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "This reconstruction's already-tracked files 2337-2342"
+  supports_dimension: "Pure structural consolidation of already-tracked findings"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Pure structural consolidation of already-comprehensively-tracked findings (files 2337-2342); no genuinely new substantive content."

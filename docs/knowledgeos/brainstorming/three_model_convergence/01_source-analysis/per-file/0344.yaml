@@ -1,0 +1,50 @@
+sequence: 344
+path: docs/knowledgeos/brainstorming/kernel/20260825-192948-relational-logical-structure-as-core-mathematics-as-regimes-duplicate.md
+title: "Duplicate of 0340 (filename self-declares 'duplicate')"
+date: "2026-08-25"
+bytes: 29862
+model:
+  primary: c1
+  secondary: null
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 340
+importance: low
+confidence: high
+about: >
+  Byte-for-byte duplicate of this reconstruction's own file 0340
+  (20260825-192351-relational-logical-structure-as-core-mathematics-as-regimes.md), confirmed via diff
+  (zero-line difference). The filename itself self-declares '-duplicate', consistent with the corpus's
+  own census (0342) tracking convention for redundant copies. This is the 13th verified duplicate
+  instance in this reconstruction's running count (beyond the 12 closed by 0342's own census, which was
+  taken before this file's timestamp 20260825-192948 arrived) -- a post-census duplicate arrival,
+  analogous to the corpus's own documented pattern of duplicates continuing to arrive during active
+  research phases (per 0342 SS8's growth log).
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Full content of 0340 (relational/logical structure as core, mathematics as regimes)"
+    canonical_source: 340
+    novelty: none
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this as a 13th duplicate instance, arriving after 0342's census was taken (post-census duplicate growth, consistent with the corpus's own documented capture-process duplication pattern)."
+anchor_test:
+  anchor: "0340 (canonical source)"
+  supports_dimension: "No new content; confirms 0340's own persistence/redundancy in the corpus's capture process"
+  refines_or_contradicts: "none -- exact duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Confirmed byte-identical duplicate of 0340 via diff; filename self-declares 'duplicate'. No independent content to analyze."

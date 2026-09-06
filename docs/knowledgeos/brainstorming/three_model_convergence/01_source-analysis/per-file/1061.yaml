@@ -1,0 +1,82 @@
+sequence: 1061
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-289/09-normative-decision-register.md
+title: "09 -- Normative Decision Register (Step 289 mandate SS14): The Final, Definitive Twenty-One-Item Decision Register, Superseding File 1047's Version, With a RIGOROUS, GRAPH-DERIVED Forced Ordering (Not Informal Priority) Directly Computed From the Dependency-Graph Analysis"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the ninth numbered Step-289 artifact, the capstone normative decision register for the entire equality/identity/kernel research programme"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1061
+importance: critical
+confidence: high
+about: >
+  "09 — Normative Decision Register (mandate §14)," explicitly binding: "NOTHING below is recommended,
+  preferred, or ranked by desirability."
+
+  **Delivers the final, definitive twenty-one-item decision register (N-1 through N-21)**, superseding file
+  1047's earlier twenty-item version, with a materially richer six-field format per record (decision
+  question, alternatives, consequences, evidence available, evidence unavailable, "why research cannot decide
+  it," authority). Confirms and completes every already-tracked open decision (N-1 the `≡`/`≈` conflict; N-2
+  Decision 3; N-3 the observation set; N-4 the operation/transformation set; N-5 the axis-subset choice, now
+  explicitly "30" not "32" per the already-tracked degeneracy finding; N-6 through N-21 covering provenance
+  relevance, transitivity, identity context, invariant ratification, decision codomains, per-operation
+  bindings, deduplication criteria, canonicalization, the `id`/mutable-state conflict, identity-scheme
+  ratification, `Continuity`'s kernel status, the `G_I`-graph question, `Merge`'s algebraic laws, the
+  decision-theoretic loss asymmetry, register ownership, and the "287" identifier collision).
+
+  **DELIVERS A GENUINELY RIGOROUS, GRAPH-DERIVED "FORCED ORDERING," EXPLICITLY DISTINGUISHED FROM PRIOR
+  INFORMAL PRIORITY OBSERVATIONS**: "from the graph, not from preference" -- confirms **N-1, N-4, N-8, N-13
+  are each INDEPENDENT PREREQUISITES** to large downstream sets (N-1 prerequisite to every `≡`-dependent
+  record; N-4 prerequisite to N-3, N-11, N-16, N-17, and N-2's technical half; N-8 unbinds `I_48`; N-13
+  unbinds `=`), while N-2(technical), N-3, N-5, N-11, N-16, N-17 are explicitly ORDERED to follow N-4. This
+  formalizes, with the same rigor as the already-tracked minimal-cut computation (files 1049-1055), which
+  decisions can be taken in any order versus which are strictly gated.
+
+  **Consolidates the already-tracked withheld-from-governance list** (file 1059) into its final form:
+  congruence, `N-18` merge laws, `N-14`'s selection (authorize only, not select), `N-5`'s two degenerate
+  endpoints, and `≡`'s total Boolean procedure (undecidable by anyone) -- five items explicitly marked as not
+  belonging on the governance decision surface at all.
+
+  This is the capstone, final governance artifact for the entire multi-file equality/identity/kernel research
+  programme this reconstruction has tracked in extraordinary depth across files 0989-1061 (the D285-x
+  hypothesis-testing arc, the equality-investigation arc, the step-288 register/decision-register package,
+  and now the step-289 dependency-graph/bootstrap-cut package) -- delivering, in one final table, every open
+  decision, its evidentiary basis, and the rigorously-derived order in which the twenty-one items must or may
+  be addressed.
+introduces:
+  - concept: "The final, definitive twenty-one-item normative decision register, superseding file 1047's twenty-item version with a richer six-field format per record"
+  - concept: "The rigorous, graph-derived 'forced ordering' of the twenty-one decisions, distinguishing four independent prerequisite decisions (N-1, N-4, N-8, N-13) from six decisions strictly ordered to follow N-4"
+defines: []
+refines:
+  - concept: "File 1047's already-documented twenty-item normative decision register"
+    refinement: "SUPERSEDED by this final, richer twenty-one-item version with a rigorously graph-derived forced ordering rather than an informal priority observation"
+  - concept: "This reconstruction's already-tracked withheld-from-governance principle (file 1059)"
+    refinement: "CONSOLIDATED into its final, complete five-item list within the definitive decision register"
+contradicts: []
+repeats:
+  - "Substantially consolidates every already-tracked open decision across the entire equality-research arc (files 1005-1060); this file's distinctive contribution is the final twenty-one-item format and the rigorous, graph-derived forced ordering."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the final, definitive twenty-one-item normative decision register (N-1 through N-21) as the canonical closing governance document for the entire equality/identity/kernel research programme, with its rigorous graph-derived forced ordering (N-1, N-4, N-8, N-13 as independent prerequisites)."
+anchor_test:
+  anchor: "File 1047's already-documented twenty-item decision register and the entire equality-research arc's open decisions (files 1005-1060)"
+  supports_dimension: "Delivers the final, superseding twenty-one-item register with a rigorously graph-derived forced ordering"
+  refines_or_contradicts: "supersedes (completes and formalizes) prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The twenty-one-item register and the forced ordering are directly checkable against files 1041-1060's own already-documented findings for exact consistency."
+undefined_concepts: []
+open_questions:
+  - "Whether any of the twenty-one normative decisions is subsequently taken by the assigned authority (ARB, PO, domain, or registry)."
+tier2_triggered: true
+tier2_reason: "Delivers the final, definitive twenty-one-item normative decision register for the entire equality/identity/kernel research programme, superseding file 1047's earlier version with a rigorously graph-derived forced ordering rather than informal priority. Classified importance critical and confidence high given its role as the canonical closing governance document for this entire multi-hundred-file research arc."

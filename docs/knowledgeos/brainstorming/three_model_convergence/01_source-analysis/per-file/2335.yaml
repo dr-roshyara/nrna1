@@ -1,0 +1,87 @@
+sequence: 2335
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/02_knowledgeos-crosswalk.md
+title: "Step-292/02 — Crosswalk With Independence Labels: Situation→History_t (Not A_t), Poss≠Qualify (Refuted as Qualify, Supported as a Gate), Reiter's Knows REFUTED (KnowledgeOS's Object Is an Attribution), Unique-Names REFUTED as ≡_sem (Syntactic≠Semantic)"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "a fourteen-row detailed crosswalk table with a five-way independence-label taxonomy (REITER-DERIVED/KnowledgeOS-DERIVED/CORROBORATED-BY-REITER/NEW-SYNTHESIS/NORMATIVE), delivering finer-grained per-construct verdicts than file 2332's higher-level synthesis, notably the A_t rename (post-R1, formerly K_t), the explicit Poss≠Qualify refutation, and the unique-names axiom's refutation as a candidate for semantic equality"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2335
+importance: high
+confidence: high
+about: >
+  Delivers a full fourteen-row crosswalk table, each row explicitly labeled with one of five
+  independence categories: REITER-DERIVED, KnowledgeOS-DERIVED, CORROBORATED BY REITER, NEW SYNTHESIS,
+  NORMATIVE. This is a finer-grained elaboration of file 2332's already-tracked synthesis, with several
+  specific verdicts not previously captured at that level of detail:
+
+  Situation (a history) → History_t, EXPLICITLY NOT A_t -- DERIVED, KnowledgeOS-DERIVED (corroborated).
+  State projection → A_t (POST-R1, FORMERLY K_t) -- DERIVED, KnowledgeOS-DERIVED. This confirms A_t as
+  the corpus's current name for what earlier material called K_t, following the already-tracked R1
+  finding (KnowledgeOS's object is an attribution, not a state carrying Knows).
+
+  do(a,s) → δ(A_t,e_t)→A_{t+1} -- BOUNDED (see 04). Fluent → a requirement's evaluation or a component of
+  A_t -- OPEN, "the corpus has no fluent notion."
+
+  Poss(a,s) → EXPLICITLY DISTINGUISHED FROM Qualify: "a precondition gate -- not Qualify" -- REFUTED as a
+  candidate for Qualify; SUPPORTED as a precondition gate in its own right, REITER-DERIVED. This is a
+  precise negative result not previously this explicit in this reconstruction's already-tracked material:
+  the already-tracked "G1"/Qualify problem (files 2292, 2298, 2306+) cannot be solved by importing Poss.
+
+  SSA → candidate shape for δ -- BOUNDED (presupposes causal completeness), consistent with file 2332's
+  already-tracked disqualification. Regression → verification mechanism -- SUPPORTED. Progression →
+  forward state update -- SUPPORTED but insufficient alone (P10). Basic action theory → OPEN, KnowledgeOS
+  has none. Golog/RGolog → workflow model, OPEN, unreachable until δ is settled.
+
+  Reiter's Knows → struck through (~~Knows~~) -- REFUTED, with the explicit gloss "R1 made KnowledgeOS's
+  object an attribution" -- labeled NORMATIVE (governance), the only row given that label, signaling this
+  is a settled architectural/governance position rather than a mathematical result.
+
+  Sensing → Observation -- OPEN (see 07).
+
+  Unique names axiom → candidate for ≡_sem -- REFUTED: "syntactic ≠ semantic," KnowledgeOS-DERIVED. This
+  is a precise, previously-uncaptured negative result: Reiter's unique-names axiom (a purely syntactic
+  identity condition) cannot serve as the corpus's semantic-equality relation ≡_sem, directly relevant to
+  this reconstruction's already-tracked four-relation equality apparatus (=,≡,≈_X,≅_λ).
+
+  Second-order induction → inherited limitation: not fully first-order decidable -- REITER-DERIVED,
+  confirming any transfer of Reiter's machinery inherits this decidability limitation.
+introduces:
+  - concept: "The A_t rename (post-R1, formerly K_t) as the corpus's current name for its central state object, confirmed in this crosswalk row"
+  - concept: "The explicit Poss≠Qualify refutation: Poss is a precondition gate, refuted as a candidate solution to the Qualify/G1 problem"
+  - concept: "The unique-names axiom's refutation as a candidate for the corpus's semantic-equality relation (equiv_sem): syntactic≠semantic"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked file 2332 synthesis of the Reiter/KnowledgeOS crosswalk"
+    refinement: "GIVEN A FULL FOURTEEN-ROW TABLE WITH EXPLICIT PER-CONSTRUCT INDEPENDENCE LABELS, including several specific verdicts (Poss≠Qualify, unique-names≠semantic-equality, the A_t/K_t rename) not previously this explicit"
+  - concept: "This reconstruction's already-tracked Qualify/G1 unresolved-operator problem (files 2292, 2298, 2306 and throughout the Gita thread)"
+    refinement: "GIVEN A NEGATIVE RESULT: Poss(a,s) is refuted as a candidate solution -- it is a precondition gate, not Qualify"
+  - concept: "This reconstruction's already-tracked four-relation equality apparatus (=,≡,≈_X,≅_λ)"
+    refinement: "GIVEN A NEGATIVE RESULT: Reiter's unique-names axiom (syntactic identity) is refuted as a candidate for the semantic-equality relation ≡_sem"
+contradicts: []
+repeats:
+  - "Restates several already-tracked file 2332 findings (SSA bounded, regression supported, Knows refuted) at a more granular per-row level; this record captures the incremental precision beyond that synthesis."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering the full fourteen-row Reiter/KnowledgeOS crosswalk with independence labels, notably the explicit Poss≠Qualify refutation and the unique-names-axiom≠semantic-equality refutation, plus confirmation of the A_t (post-R1, formerly K_t) rename."
+anchor_test:
+  anchor: "This reconstruction's already-tracked file 2332 synthesis, the Qualify/G1 problem, and the four-relation equality apparatus"
+  supports_dimension: "Delivers granular per-construct verdicts including two precise negative results (Poss≠Qualify, unique-names≠semantic-equality) not previously this explicit"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The Poss≠Qualify refutation is directly checkable against this reconstruction's already-tracked Qualify/G1 discussions throughout the Gita thread (files 2292, 2298, 2306, 2310) for consistency."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers a full crosswalk table with two precise negative results not previously captured at this granularity (Poss refuted as a Qualify candidate; the unique-names axiom refuted as a candidate for semantic equality), plus confirmation of the A_t/K_t rename. Classified importance high given the incremental precision beyond the already-tracked file 2332 synthesis."

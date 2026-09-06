@@ -1,0 +1,97 @@
+sequence: M0147
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180015_review-williamson-knowledge-and-its-limits.md
+title: "Review of Williamson's 'Knowledge and Its Limits': epistemic accessibility and structural unknowability"
+date: "20260902-180015"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: EXTERNAL_LITERATURE
+  secondary_note: >
+    Disciplined adjudication review of an extraction (itself unlocated in this reconstruction's read
+    order, like M0145's Reiter source) from Timothy Williamson's "Knowledge and Its Limits" —
+    factivity, anti-luminosity, margins for error, evidence relativity, knowledge iteration
+    non-closure, and structural unknowability, each mapped to KnowledgeOS's epistemic-core open
+    questions.
+source_role: PRIMARY
+canonical_source: M0147
+importance: critical
+confidence: high
+about: >
+  Extracts Williamson's anti-luminosity/margin-for-error/structural-unknowability philosophy as
+  formal research candidates for KnowledgeOS's Evaluation/Zero/Determination core, proposing a
+  candidate FIFTH factor (Accessibility) for the already-frozen four-factor FDE evaluation
+  representation (Standing×Boundary×Context×Provenance), and a three-way UNKNOWN classification
+  (current/access-limited/structural).
+introduces:
+  - "Epistemic Non-Transparency (anti-luminosity) principle: P(x) ⇏ Accessible(P(x)) — an epistemic property may obtain without the evaluator being able to determine that it obtains; marked [DERIVED — very strong]"
+  - "Knowledge Iteration Non-Closure: K^n(p) ⇏ K^{n+1}(p) — higher-order knowledge requires separate grounds, explicitly protecting against the AI-system error 'the system knows X, therefore it knows that it knows X'; directly extended to Verification≠MetaVerification (Verify(V) requires its own evidence/context/authority)"
+  - "Margin for error candidate: Known(p,Γ)⇒Margin(p,Γ)>0, with an explicit rejection that Margin=Confidence or that epistemic quality reduces to a scalar score — 'the required margin can vary from point to point and need not be uniform'"
+  - "Three-way UNKNOWN classification: Unknown_current (resolvable with more evidence), Unknown_access (resolvable in principle, not from current access/capability), Unknown_structural (not resolvable by the relevant epistemic system even in principle) — a genuinely new refinement of the Zero/Unknown vocabulary, marked [PROP — strong research candidate]"
+  - "Evidence decomposition candidate: Evidence(e,h,Γ)=f(Support(e,h),Standing(e),Context(Γ)) — reinforcing, with independent philosophical grounding, the corpus's own FDE-derived Standing≠Boundary≠Reason separation"
+  - "Evidence relativity/context-dependence: Same Proposition ⇏ Same Evidence; Same Evidence Content ⇏ Same Epistemic Situation — a new dimension for the cross-frame-divergence research question, reinforcing φ⊇{time,context} with independent philosophical argument"
+  - "Candidate FIFTH factor for the FDE evaluation representation: Evaluation = Standing×Boundary×Context×Provenance×Accessibility — explicitly marked 'DO NOT adopt yet', pending the recommended KR-ACCESS-2026-09 experiment"
+  - "The concrete KR-ACCESS-2026-09 experiment design: a 7-row test table (cases A-G) crossing Truth/Evidence-quality/Accessible?/Knowable?/Knowledge-outcome, introducing notation U (ordinary unknown), U_s (structurally unknowable), U_a (accessibility-limited)"
+  - "Revised critical path (§36): Accessibility (NEW, high priority) → ℛ_req → Frame semantics (φ) → Evaluation representation (5-factor test) → Contr (only after the above) → Zero → Determination → δ → Composition (split Eval vs. Transition) → Kernel selection"
+  - "Assertion-responsibility candidate: Assertion(p)→Responsibility(p), extended explicitly to LLM-generated claims: LLM confidence≠Knowledge, GeneratedAssertion≠Determination — directly supporting the corpus's anti-reasoner/deterministic-kernel-boundary discipline"
+defines: []
+refines:
+  - "TRUE≠BELIEVED≠KNOWN (long-standing corpus discipline): given independent philosophical grounding from Williamson's starting distinction between true belief and knowledge"
+  - "R1 factivity (K_t→A_t, Knows→True external/factive, Verification separate — M0110-M0112, M0135, M0137): Williamson's own factive account of knowledge (Knows(S,p)⇒True(p)) is cited as SUPPORTING the R1 separation of philosophical knowledge from KnowledgeOS's internal Admitted/Validated status — an independent corroboration rather than a new decision"
+  - "The frozen FDE evaluation representation (Standing×Boundary×Context×Provenance, 13/13 preservation, M0137): proposes Accessibility as a candidate fifth factor, explicitly not adopted, pending experiment — this is the first proposed extension to the frozen four-factor representation anywhere in this reconstruction's read order"
+  - "NoKnownGap≠Complete (long-tracked Zero distinction): given a philosophical mechanism (structural unknowability) explaining WHY the distinction holds, plus a new companion distinction Complete≠Knowable-as-Complete"
+  - "The corpus's own Composition disambiguation (TransitionComposition≠EvaluationComposition, first made explicit at M0145): repeated and endorsed here (§36 item 9) as an already-settled separation to carry forward"
+contradicts:
+  - "FIFTH instance of the same-day cross-thread desynchronization pattern (after M0139/M0140/M0143/M0146), flagged not resolved: §36's revised critical path places 'Contr — Only after the above [Accessibility/ℛ_req/Frame/Evaluation]' as step 5, phrased as though Contr research has not yet begun. This reconstruction has already tracked KR-CONTR as executed and DEFINITIVELY COMPLETED at M0127 (Status C, Kernel Verdict K2), same date. Independently corroborates M0146's identical desynchronization from a second, separately-authored document in the same sub-thread — strengthening the finding that the epistemic-limits/dynamics KR-integration sub-thread (M0136-M0147) was produced with essentially no cross-awareness of the KR-CONTR/Composition sub-thread's actual completed state."
+repeats:
+  - "The Boundary=FrameAxiom-style rejection-table pattern is echoed structurally (§33's 'Do not adopt' list: KnowledgeOS=Williamson's epistemology, Knowledge=Evidence, Sat=Knowledge, Confidence=Margin, Unknown=Unknowable, Contr=Epistemic-inconsistency, Zero=Structural-unknowability) — same disciplined-rejection methodology as M0138/M0142/M0145"
+  - "UnknownDimension≠UnknownValue (tracked since early in this reconstruction) — restated and extended with the new Resolvable/StructurallyUnknowable sub-split"
+bridge_candidates:
+  - "The underlying Williamson 'Knowledge and Its Limits' extraction itself has not been located anywhere in this reconstruction's read order, paralleling M0145's unlocated Reiter extraction"
+  - "Whether KR-ACCESS-2026-09 (the recommended accessibility/unknowability experiment with its 7-case test table) was ever actually executed — not yet located"
+  - "Whether the candidate fifth Accessibility factor is ever tested against or merged into the frozen four-factor FDE evaluation representation anywhere later in this reconstruction's sequence"
+  - "Whether E=K (Williamson's own philosophical thesis that evidence equals knowledge) bears any relation to this corpus's own E_t/K_t/A_t naming — the document explicitly warns against adopting Knowledge=Evidence as an architectural identity even though Williamson defends it philosophically, but does not address any symbol-level connection to KnowledgeOS's own E_t"
+mathematical_content: >
+  States the anti-luminosity/margin-for-error non-implications as boxed candidate principles
+  (P(x)⇏Accessible(P(x)), K^n(p)⇏K^{n+1}(p), Known(p,Γ)⇒Margin(p,Γ)>0), the evidence decomposition
+  Evidence(e,h,Γ)=f(Support,Standing,Context), and the candidate five-factor evaluation
+  representation — all framed as PROP-status research candidates or philosophical-support citations,
+  not new derivations performed within this document.
+gita_content: null
+kernel_content: >
+  Extends the epistemic-core research programme with a genuinely new candidate dimension
+  (Accessibility) not previously present in this reconstruction's tracked construct set, and gives
+  the corpus's own anti-score/anti-scalar-confidence stance independent philosophical grounding via
+  Williamson's margin-for-error argument (margin≠confidence, non-uniform across propositions).
+registry_updates:
+  - "Seventh instance of the cross-domain external-literature corroboration pattern (after M0119 Priest, M0128 Rice, M0130 Shapiro, M0133 Ziem, M0136 Brachman&Levesque, M0141 Baader/DL Handbook) — the first landing squarely on the corpus's own Evaluation/Accessibility/Zero epistemic core rather than logic or contradiction"
+  - "First proposed extension (Accessibility) to the frozen four-factor FDE evaluation representation anywhere in this reconstruction's read order — flagged PROP-only, untested"
+  - "Fifth instance of the same-day cross-thread desynchronization pattern, now corroborated by a SECOND independently-authored document (M0146 and M0147 both propose Contr as a not-yet-started next step)"
+anchor_test:
+  anchor: true
+  supports_dimension: "Zero/Unknown three-way classification, candidate fifth Accessibility factor, knowledge-iteration non-closure (Verification≠MetaVerification), evidence relativity/context, cross-thread desynchronization (5th instance)"
+  refines_or_contradicts: "refines (epistemic core strengthening); contradicts (cross-thread desynchronization on Contr's status)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Knowledge is not merely a value assigned to a proposition... Proposition + Epistemic Standing + Evidence + Accessibility + Context + Reliability + Limits.\" — the document's own central finding"
+  - "\"Zero ≠ IncompleteWork\" and \"Unknown ≠ ResolvableGap\" (boxed) — the structural-unknowability strengthening of Zero"
+  - "\"Contr | Only after the above\" (§36, step 5) — the fifth instance of the cross-thread Contr-status desynchronization"
+  - "\"I would therefore not write Theory v1.3 yet. I would first run KR-ACCESS-2026-09.\" — the document's own closing recommendation"
+undefined_concepts:
+  - "Whether the candidate Accessibility factor is orthogonal to, or overlaps with, the already-established Boundary/Context factors — not tested here, deferred to KR-ACCESS-2026-09"
+  - "The exact formal criterion distinguishing Unknown_access from Unknown_structural in a way that is itself decidable rather than merely philosophically motivated"
+open_questions:
+  - "Was KR-ACCESS-2026-09 ever executed, and if so did Accessibility prove independently load-bearing as a fifth evaluation factor?"
+  - "Is the fifth-instance Contr-status desynchronization (this document + M0146) ever explicitly reconciled against M0127's completed KR-CONTR research?"
+tier2_triggered: true
+tier2_reason: >
+  Introduces a genuinely new candidate dimension (Accessibility) as a possible fifth factor for the
+  frozen FDE evaluation representation, delivers a new three-way UNKNOWN classification strengthening
+  Zero, and independently corroborates (via a second, separately-authored document) the same-day
+  cross-thread desynchronization concerning the already-completed Contr research first flagged at
+  M0146 — now confirmed as a recurring feature of this specific sub-thread rather than an isolated
+  slip.

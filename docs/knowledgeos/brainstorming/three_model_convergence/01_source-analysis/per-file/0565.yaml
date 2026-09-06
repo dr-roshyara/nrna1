@@ -1,0 +1,278 @@
+sequence: 565
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-161800_step-022-identity-lineage-provenance-causality-and-traceability.md
+title: "LANDMARK: Identity≠Provenance≠Lineage≠Causality≠Traceability Fully Formalized as Five Distinct Typed Graphs (G_L≠G_P≠G_C); 'No Retrospective Knowledge Leakage' / Decision Reproducibility from Historical Knowledge Snapshots; Reconstructability Named as KnowledgeOS's Central Differentiator from Ordinary RAG Systems; 'A Governed Epistemic Operating System for Organizations'; Twenty Canonical I/P/L/C/T/H-Series Invariants; Opens Step 23 (Epistemic Sufficiency, Readiness, Completeness, and the Knowledge Boundary) — FLAGGED AS A LIKELY DIRECT RE-EXECUTION OF STEP 13 (0553)"
+date: "2026-08-27"
+bytes: 28055
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 0564's closing 'Step 22 -- Identity, Lineage, Provenance, Causality, and Traceability', itself named as one of the last foundational steps before an attempted complete mathematical closure proof"
+source_role: PRIMARY_RESEARCH
+canonical_source: 565
+importance: critical
+confidence: high
+about: >
+  Directly executes 0564's closing "Step 22," opening with the observation that Steps 1-21 defined states,
+  evidence, semantics, rules, uncertainty, decisions and actions, but these are useful only if KnowledgeOS
+  can reliably answer "which thing are we talking about, where did this knowledge come from, what happened
+  to it, what depended on it, and what changed because of it?" -- otherwise the system accumulates
+  sophisticated facts while losing the ability to reconstruct history. Delivers the file's governing
+  principle: **`Identity≠Provenance≠Lineage≠Causality≠Traceability`** -- related but not the same concept.
+
+  **Delivers the file's foundational worked example**: "Nexus was upgraded" requires KnowledgeOS to answer
+  at least twelve distinct sub-questions (which Nexus, prior/new version, supporting evidence for each,
+  who decided, which knowledge state, which rule, who authorized, what was actually executed, did the
+  upgrade CAUSE the observed change, what happened afterward) -- "not one graph edge. It is a chain":
+  `Entity→Observation→Evidence→Knowledge→Decision→Authorization→Action→Outcome→Observation`.
+
+  **Formalizes Identity**: `E=(EntityID,Type,Context,Identifiers,Attributes,IdentityEvidence,Validity)`,
+  and the crucial **`EntityIdentity≠EntityState`** -- a Nexus instance changing version 3.69→3.72 remains
+  the same entity, `State(e,t)` varying while `ID(e)` stays constant, "prevents version changes from
+  becoming false identity changes." Reconfirms Identity as contextual (from 0560), and formalizes
+  **Identity resolution** `ResolveIdentity(x,y,C)→{Same,Distinct,Unknown}` (reusing 0552's/0560's
+  three-valued identity machinery) with **`IdentityResolution is itself epistemic knowledge`**, connecting
+  directly to Steps 19-20 (0562/0563). Delivers `IdentityAssessment=(Evidence,MatchingCriteria,Conflicts,
+  Status)` with a five-value status `{Confirmed,Probable,Candidate,Ambiguous,Rejected}`, explicitly
+  rejecting a bare `identity_confidence=0.93` scalar without a defined probabilistic basis.
+
+  **Formalizes Provenance**: `P=(Origin,Agent,Activity,Source,Time,Transformation,ParentObjects)`, and
+  **`Source≠Provenance`**: source answers "where was information obtained?"; provenance answers "how did
+  this particular information come into existence?", worked through a six-stage
+  document→extraction→LLM-interpretation→candidate-assertion→human-validation→committed-assertion chain
+  (`Source⊆Provenance` conceptually, but `Source≠Provenance`).
+
+  **Formalizes Lineage**: `Lineage(x)=Ancestors(x)∪Descendants(x)`, distinct from Provenance
+  (`Provenance⊇Origin+Transformation+Agent+Time` vs. `Lineage=Dependency/Derivation relationships`).
+
+  **Delivers the file's most delicate distinction -- Causality**: `Sequence≠Causality` (a Decision→Action→
+  Outcome operational sequence does NOT automatically prove causality; temporal precedence `A≺B` does not
+  imply `A→_c B`). Reconfirms causal relations via intervention `P(B|do(A))` rather than mere `P(B|A)`
+  (reusing 0556's causal theory), worked through a Nexus-upgrade/synchronization-failure example listing
+  five alternative explanations (network problems, certificate expiration, storage failure, unrelated
+  deployment, external outage) requiring initial representation only as `CandidateCausalRelation`.
+  Formalizes **causal provenance** `CausalAssertion=(Cause,Effect,Mechanism,Evidence,Model,Assumptions,
+  TemporalScope,Status)`.
+
+  **Formalizes Event identity** (`Event=(EventID,Type,Actor,Subject,Time,PreState,PostState,Evidence)`),
+  **`Event≠State`**, and state transition `S_{t+1}=T(S_t,e)`. Delivers **`ModeledTransition≠
+  EmpiricallyEstablishedCausality`**: a formally-modeled state transition does not by itself prove the
+  real-world event caused every observed consequence.
+
+  **Formalizes Traceability**: `Traceability=Reachability through governed relationships`, explicitly
+  bidirectional -- **Backward traceability** ("why did we make this decision?",
+  `Decision→Knowledge→Evidence→Source`) and **Forward traceability** ("what did this decision cause?",
+  `Decision→Action→Outcome`), both essential. Delivers a consolidated twelve-stage trace graph
+  (Source→Evidence→Assertion→Knowledge→Discrepancy→Candidate Action→Decision→Authorization→Action→
+  Outcome→Observation→Evidence) with explicit warning that this is NOT merely a graph database -- **the
+  edges carry semantics**, named as eleven distinct typed relationship kinds (DerivedFrom, SupportedBy,
+  ContradictedBy, Interprets, DependsOn, DecidedFrom, AuthorizedBy, ExecutedBy, Produced, ObservedBy,
+  CausedBy), explicitly not interchangeable.
+
+  **Delivers the file's central architectural safeguard -- `BasedOn≠Caused`**: a `Decision--BasedOn-->
+  Evidence` edge is provenance; an `Action--Caused-->Outcome` edge is causal -- "a graph that merely has an
+  edge A→B is semantically insufficient." Delivers **`DerivedFrom≠Causation`** (a conclusion derived from
+  evidence does not mean the evidence caused the real-world event described), and
+  **`DecisionDependency≠PsychologicalCausation`** (evidence a decision was "based on" is not the same claim
+  as evidence "causing" the decision in a psychological/organizational sense).
+
+  **Formalizes three explicitly distinct graphs**: Lineage graph `G_L=(V,E_L)`, Provenance graph
+  `G_P=(V,E_P)`, Causal graph `G_C=(V,E_C)` -- **`G_L≠G_P≠G_C`**, though they may share nodes -- unified
+  architecturally into one typed epistemic graph `G=(V,E_semantic,E_lineage,E_provenance,E_causal,
+  E_temporal)`, explicitly contrasted with "an untyped knowledge graph."
+
+  **Delivers Temporal lineage** (e.g. `Supersedes(ADR_2,ADR_1)` carries temporal meaning; historical
+  lineage must remain intact) and **Immutable historical records**: important events/decisions are
+  append-only (`EventLog=(e_1,...,e_n)`), never rewritten to look cleaner; a `CorrectionEvent` supersedes
+  the interpretation rather than erasing history. Formalizes **Correction vs. Deletion**: a wrong assertion
+  is marked `A_1--CorrectedBy-->A_2` with `Status(A_1)=Retracted`, preserving historical truth about what
+  the system previously believed -- directly reconfirming 0558's history-preserving retraction principle.
+
+  **Formalizes Knowledge history and Snapshot reproducibility**: `K_{t+1}=Transition(K_t,e_{t+1})`, and
+  `K_t=T(K_0,e_1,...,e_t)` -- "a very powerful property," enabling "what did we know on August 10?" rather
+  than "what do we know NOW about August 10?" -- explicitly framed as different questions, directly
+  reconfirming 0558's historical-replay machinery. **Delivers Decision reproducibility and the file's
+  central epistemic-integrity invariant -- "No retrospective knowledge leakage"**: worked through a
+  concrete two-date example (August 10 decision made under `K_10`; August 15 reveals a serious previously-
+  unknown risk under `K_15`) where reviewing the earlier decision must never silently substitute the later
+  knowledge state -- directly reconfirming and extending 0558's "no retroactive epistemic contamination"
+  principle into the decision-lineage domain. Formalizes `DecisionLineage=(KnowledgeSnapshot,EvidenceSet,
+  Rules,Models,Goals,Constraints,Authority)`.
+
+  **Formalizes Action lineage and Decision vs. Execution deviation**: an executed action may diverge from
+  its originating decision (worked "decision: upgrade; actual: engineer performed rollback after migration
+  failure" example), requiring explicit `ExecutionDeviation` representation. Formalizes Outcome lineage
+  (`Outcome→Action→Decision→KnowledgeSnapshot`) and **Causal attribution as an explicit epistemic claim**:
+  whether a decision actually PRODUCED an outcome is itself a `CausalHypothesis` with its own
+  Candidate→Supported/Rejected lifecycle, never assumed from mere sequence.
+
+  **Formalizes Counterfactual traceability and provenance**: `Outcome(do(a_1))` vs. `Outcome(do(a_2))`
+  comparison (reusing 0556's do-calculus), with a worked counterfactual-result record explicitly labeled
+  `Observed:No`, carrying its causal model version, assumptions, and evidence, "prevents hypothetical
+  reasoning from being stored as observed fact."
+
+  **Delivers a formal traceability query**: `Trace(x,direction,relationTypes)→Subgraph`, worked through
+  both a concrete backward-trace example (Decision→Goal/KnowledgeSnapshot/Assertion/Evidence/Source, Rule,
+  Constraint, Authorization) and a forward-trace example (Decision→Action→Execution→Outcome→Observation→New
+  Evidence→Knowledge Update). **Delivers Blast-radius analysis**: `Dependents(A)` and
+  `Impact(A)=Reachable(A,E_depends)`, enabling "knowledge blast-radius analysis" -- worked through a
+  concrete example tracing a later-found-incorrect assertion through its dependent decision, action, and
+  outcome. **Delivers Provenance-aware re-evaluation**: when key knowledge changes, `AffectedDecisions(A)`
+  can be computed and `Reevaluate(D_i)` triggered -- "an intelligent governance loop."
+
+  **Extends Zero**: can now detect not just "current state differs from ideal" but "a critical premise
+  supporting the current decision has become invalid" -- `KnowledgeChange→DependencyImpact→Discrepancy`.
+  Extends Lord: can prioritize evidence-gathering by downstream `Impact(e)=|{d|e⇝d}|` (a graph-based
+  prioritization problem). Extends Sārathi: `Affected(D,K_new)` can trigger `DecisionReview` -- "a powerful
+  governance capability."
+
+  **Delivers six proposed DDD bounded contexts**: Identity Context (entity identity, identifiers,
+  resolution), Provenance Context (origin, agents, transformations), Lineage Context (dependency,
+  derivation, trace graph), Event Context (domain events, state transitions), Causal Context (causal
+  models, hypotheses, interventions, counterfactuals), Traceability Context (cross-context trace queries,
+  impact analysis) -- explicitly "cleaner than putting everything into one giant 'KnowledgeGraph'
+  aggregate." Delivers **`Only the Identity Context owns canonical identity`** -- other contexts reference
+  `EntityID` rather than independently redefining the entity, directly reusing 0560's reference-not-
+  ownership discipline. Delivers **`Provenance is a first-class domain concern`**, explicitly NOT reducible
+  to ordinary `created_by`/`created_at` CRUD metadata.
+
+  **Delivers `Audit≠Provenance≠Traceability`**: audit log answers "who changed this record?"; provenance
+  answers "how did this artifact arise?"; traceability answers "what does it depend on / what depends on
+  it?" -- three genuinely distinct capabilities. **Delivers a cryptographic-integrity boundary**: hash
+  chains (`h_i=Hash(h_{i-1}‖x_i)`) enable tamper detection, but **`Integrity≠Truth`** -- "a perfectly
+  preserved false statement is still false." Delivers **`Authenticity≠Authority≠Truth`**: a digital
+  signature proves who signed something, not that the signatory had authority over its content. Delivers
+  **`Authenticity≠Reliability`**: an authentically-signed document by an authorized person can still
+  contain an outdated statement.
+
+  **Formalizes a complete lineage object** `L=(NodeID,ParentNodes,RelationType,Agent,Activity,Time,
+  Context,Version,Evidence)`, with `RelationType` drawn from eight named kinds (derived, based-on,
+  generated-by, superseded-by, caused-by, observed-by, authorized-by, executed-by). Formalizes an
+  **Identity graph** `G_I=(E,R_I)` with five typed identity relations (SameAs, Represents, AliasOf,
+  ContextualRepresentationOf, FormerIdentityOf). Delivers **Identity evolution** (entity merges/splits,
+  `E_1,E_2→E_3` or `E_1→E_2,E_3`) and **"No identity retroactive rewriting"**: when two entities believed
+  distinct are later shown to be the same, the historical distinct-belief state is preserved via an
+  explicit `IdentityResolutionEvent`, never silently erased, enabling later historical decisions to be
+  re-evaluated with full transparency.
+
+  **Delivers Step 22's mathematical closure**: eight distinct formal structures (Identity resolution,
+  State transition, Lineage graph, Provenance graph, Causal model graph, Traceability query, Dependency
+  Impact, Causal intervention) explicitly described as "mathematically distinct operations." **Delivers
+  Step 22's central formal deliverable -- twenty canonical invariants across six labeled series** (I1-I3
+  identity: EntityIdentity≠EntityState, identity resolution is epistemic, UnknownIdentity≠DistinctIdentity;
+  P1-P2 provenance: Source≠Provenance, provenance must preserve origin/transformation; L1-L2 lineage:
+  lineage is typed, Derivation≠Causation; C1-C2 causal: TemporalOrder≠Causality, causal claims require
+  causal semantics; T1-T3 traceability: directional, both directions required, historical lineage must not
+  be silently rewritten; H1-H6 historical/integrity: decision evaluation uses knowledge available at
+  decision time, later knowledge must not be retroactively inserted into historical decisions, correction
+  does not require destruction of historical records, Integrity≠Truth, Authenticity≠Authority,
+  Authority≠Reliability).
+
+  **Delivers the file's headline result -- Reconstructability**, named as a first-class architectural
+  property that ordinary RAG systems generally do not provide, enumerated as ten specific reconstructable
+  questions (what did we know / why did we believe it / what semantic interpretation / what rules were
+  active / what decision was made / why / what was done / what actually happened / what do we know now /
+  what changed). Delivers the consolidated fourteen-stage full architecture pipeline (Reality→Event→State→
+  Observation→Evidence→Assessment→Assertion→Semantics/Uncertainty→EpistemicState→Commitment→KnowledgeState
+  →Reasoning→DerivedKnowledge→Zero→Discrepancy→Lord→CandidateActions→Sārathi→Decision→Governance→
+  Authorization→Execution→Action→Reality→Outcome→Observation→NewEvidence), cross-cut by
+  `Identity+Semantics+Time+Evidence+Provenance+Lineage+Causality+Authority+Uncertainty+Governance`.
+
+  **Delivers Step 22's verdict**: FOUNDATIONALLY RESOLVED, with the explicit qualification that mathematical
+  and domain semantics have been defined, but implementation technologies (graph database, event store,
+  RDF, property graph, relational representation, W3C PROV, OWL, SHACL, causal inference library, vector
+  database) have deliberately NOT been selected -- "those are implementation decisions. The domain model
+  should remain independent of them."
+
+  **Delivers the file's headline architectural self-characterization**: KnowledgeOS was originally described
+  as "an AI knowledge system" -- "that description is now far too weak." The constructed model is closer to
+  **"a governed epistemic operating system for organizations,"** maintaining
+  `Identity→Meaning→Evidence→Knowledge→Reasoning→Discrepancy→Decision→Action→Outcome→Learning`, and
+  crucially preserving the WHY behind every important transition.
+
+  **Closes by identifying one deliberately-not-skipped remaining foundational issue**: formalizing whether
+  the current Knowledge State is actually sufficient for a PARTICULAR purpose (worked "what version of
+  Nexus" vs. "safe and authorized to migrate tomorrow" contrast), naming this "Epistemic Sufficiency/
+  Readiness." **Opens "Step 23 — Epistemic Sufficiency, Readiness, Completeness, and the Knowledge
+  Boundary,"** framed as potentially one of the most important remaining steps, answering "when does
+  KnowledgeOS know enough?" -- **NOTABLE CORPUS-INTEGRITY OBSERVATION: this framing, terminology, and
+  central question (Sufficient≠Authorized≠Ready, purpose-specific readiness, "when does the system know
+  enough to act, escalate, or refuse") appear to closely and substantially overlap with Step 13's already-
+  completed treatment at file 0553 ("Sufficiency, Completeness, and Readiness for Purpose," delivering
+  Sufficient≠Authorized≠Ready, Coverage≠Sufficiency, purpose-specific Ideal States, and a
+  ReadinessCertificate artifact with ten S1-S10 invariants) -- flagged as a strong candidate for either (a)
+  a genuine deeper/different treatment continuing the arc, or (b) an unacknowledged re-derivation/repeat of
+  already-completed Step 13 content, to be resolved once file 0566 is read.**
+introduces:
+  - concept: "The foundational five-way separation Identity≠Provenance≠Lineage≠Causality≠Traceability, each formalized as its own distinct mathematical structure (typed graph or resolution function)"
+  - concept: "EntityIdentity≠EntityState — an entity's stable identifier persists across attribute/version changes, preventing state changes from being mistaken for identity changes"
+  - concept: "Source≠Provenance — provenance is the full derivation chain (extraction, interpretation, validation, commitment), of which the original source is only one link, not the whole"
+  - concept: "Sequence≠Causality — an operational Decision→Action→Outcome sequence does not by itself establish that the decision or action caused the outcome; causal claims require separate causal evidence and semantics"
+  - concept: "BasedOn≠Caused — provenance edges (what a decision was based on) and causal edges (what an action caused) are semantically distinct and must never be represented as an undifferentiated graph edge"
+  - concept: "Three explicitly distinct graphs G_L (lineage) ≠ G_P (provenance) ≠ G_C (causal), unified architecturally into one typed epistemic graph rather than an untyped knowledge graph"
+  - concept: "'No retrospective knowledge leakage' — reviewing a historical decision must use only the knowledge snapshot available at decision time, never silently substituting later knowledge, directly extending 0558's temporal non-contamination principle into decision lineage"
+  - concept: "Decision vs. Execution deviation as an explicit, first-class representable divergence — what was decided and what was actually executed can differ, and the difference must be preserved"
+  - concept: "Causal attribution formalized as an explicit epistemic claim with its own Candidate/Supported/Rejected lifecycle, never assumed automatically from a decision preceding an outcome"
+  - concept: "Blast-radius analysis — Impact(A)=Reachable(A,E_depends) — a computable graph-based query for what depends on a given piece of knowledge, enabling provenance-aware re-evaluation when that knowledge changes"
+  - concept: "Audit≠Provenance≠Traceability — three genuinely distinct capabilities that must not be conflated into one undifferentiated 'history' feature"
+  - concept: "Integrity≠Truth and Authenticity≠Authority≠Truth and Authenticity≠Reliability — cryptographic tamper-evidence, authorial authenticity, organizational authority, and factual reliability are four genuinely distinct properties"
+  - concept: "'No identity retroactive rewriting' — when entities later found to be the same were previously believed distinct, the historical distinct-belief state is preserved via an explicit IdentityResolutionEvent rather than silently erased"
+  - concept: "Reconstructability named as KnowledgeOS's central differentiator from ordinary RAG systems — the ability to reconstruct not just what was known but why, under what semantics, under what rules, and what changed"
+  - concept: "KnowledgeOS's headline architectural self-redefinition: 'a governed epistemic operating system for organizations', explicitly stated to supersede the earlier framing of 'an AI knowledge system' as now far too weak"
+  - concept: "Twenty canonical Step-22 invariants across six labeled series (I/P/L/C/T/H) governing identity, provenance, lineage, causality, traceability, and historical integrity"
+  - concept: "'Step 23 — Epistemic Sufficiency, Readiness, Completeness, and the Knowledge Boundary' opened as the corpus's next named research phase — flagged as a strong candidate for substantial overlap with the already-completed Step 13 (0553)"
+defines:
+  - concept: "Entity"
+    definition: "E=(EntityID,Type,Context,Identifiers,Attributes,IdentityEvidence,Validity) — a stable identity structure persisting across state/attribute changes"
+  - concept: "Provenance record"
+    definition: "P=(Origin,Agent,Activity,Source,Time,Transformation,ParentObjects) — the full history of an artifact's origin and derivation, of which the source is only one component"
+  - concept: "Causal assertion"
+    definition: "CausalAssertion=(Cause,Effect,Mechanism,Evidence,Model,Assumptions,TemporalScope,Status) — makes causal reasoning auditable, distinct from an ordinary provenance-based dependency claim"
+  - concept: "Lineage object"
+    definition: "L=(NodeID,ParentNodes,RelationType,Agent,Activity,Time,Context,Version,Evidence) — RelationType drawn from eight named kinds (derived, based-on, generated-by, superseded-by, caused-by, observed-by, authorized-by, executed-by)"
+  - concept: "The three-graph epistemic model"
+    definition: "G_L=(V,E_L) lineage, G_P=(V,E_P) provenance, G_C=(V,E_C) causal — explicitly distinct graphs that may share nodes, unified into one typed epistemic graph G=(V,E_semantic,E_lineage,E_provenance,E_causal,E_temporal)"
+refines:
+  - concept: "0552's/0560's three-valued identity resolution (Match/ResolveIdentity→{Same,Distinct,Unknown})"
+    refinement: "Directly reused and reconfirmed for entity identity resolution across representations, with the explicit epistemic-status framing IdentityAssessment=(Evidence,MatchingCriteria,Conflicts,Status)"
+  - concept: "0556's causal-model theory (do(X=x), P(Y|do(X)) vs P(Y|X))"
+    refinement: "Directly reused for causal lineage: Sequence≠Causality, and CausalAssertion formalized with explicit Mechanism/Model/Assumptions fields for full auditability"
+  - concept: "0558's history-preserving retraction/revision and 'no retroactive epistemic contamination' principles"
+    refinement: "Extended into decision lineage as the explicit 'no retrospective knowledge leakage' invariant, and into identity as 'no identity retroactive rewriting' — both requiring explicit correction/resolution events rather than silent rewriting"
+  - concept: "0560's aggregate reference-not-ownership discipline (Reference across contexts≠Ownership across contexts)"
+    refinement: "Applied as 'only the Identity Context owns canonical identity' — all other bounded contexts reference EntityID rather than independently redefining entities"
+  - concept: "0562's Bayesian source-reliability estimation and Authority/Reliability separation"
+    refinement: "Extended with Authenticity≠Authority≠Truth and Authenticity≠Reliability, adding cryptographic authenticity as a further genuinely distinct dimension alongside the established Authority/Reliability/Truth separations"
+  - concept: "0557's counterfactual/robust decision-making and 0556's do-calculus counterfactuals"
+    refinement: "Reused directly for counterfactual traceability (Outcome(do(a_1)) vs Outcome(do(a_2))), with an explicit provenance record format preventing hypothetical outcomes from being stored as observed fact"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: verify at 0566 whether 'Step 23 — Epistemic Sufficiency, Readiness, Completeness, and the Knowledge Boundary' substantially duplicates Step 13's already-completed treatment at file 0553 (Sufficiency, Completeness, and Readiness for Purpose — Sufficient≠Authorized≠Ready, Coverage≠Sufficiency, purpose-specific Ideal States, ReadinessCertificate, ten S1-S10 invariants), or whether it is a genuine, distinct deepening — this is the first potential direct topical repeat flagged in this ~44-file Computational Closure research program and would be a significant corpus-integrity finding if confirmed"
+  - "Trace whether the twenty I/P/L/C/T/H-series invariants are ever cross-referenced against the corpus's many other independently-numbered invariant schemes from this research program in a future canonical reference"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the five-way Identity≠Provenance≠Lineage≠Causality≠Traceability separation, EntityIdentity≠EntityState, Source≠Provenance, and the three explicitly distinct graphs G_L≠G_P≠G_C unified into one typed epistemic graph."
+  - "dimension-registry.md: record Sequence≠Causality, BasedOn≠Caused, 'no retrospective knowledge leakage' (extending 0558's temporal non-contamination principle into decision lineage), Decision vs. Execution deviation, causal attribution as an epistemic claim, and blast-radius analysis (Impact(A)=Reachable(A,E_depends))."
+  - "dimension-registry.md: record Audit≠Provenance≠Traceability, Integrity≠Truth, Authenticity≠Authority≠Truth, Authenticity≠Reliability, 'no identity retroactive rewriting,' Reconstructability as KnowledgeOS's central RAG-differentiator, the headline redefinition 'a governed epistemic operating system for organizations,' the twenty I/P/L/C/T/H invariants, Step 22's verdict, and 'Step 23 — Epistemic Sufficiency, Readiness, Completeness, and the Knowledge Boundary' as the next research phase, FLAGGED for likely overlap with Step 13 (0553)."
+anchor_test:
+  anchor: "0564's Step-22 directive (naming it one of the last foundational steps); 0552's/0560's identity-resolution machinery; 0556's causal theory; 0558's history-preserving/no-retroactive-contamination principles; 0560's reference-not-ownership discipline; 0562's Authority/Reliability separation; 0553's (Step 13) already-completed Sufficiency/Readiness theory"
+  supports_dimension: "LANDMARK delivering the corpus's first complete separation of five related-but-distinct concepts (Identity, Provenance, Lineage, Causality, Traceability) into explicitly typed, mathematically distinct graph structures, directly addressing a foundational gap left implicit across the entire prior 44-file arc: every worked example throughout the research program used an undifferentiated notion of 'this depends on that.' Delivers the crucial safeguard BasedOn≠Caused preventing provenance and causal claims from collapsing into one undifferentiated graph edge, extends the corpus's established temporal non-contamination and history-preservation principles into decision lineage and identity evolution, and delivers Reconstructability as the file's headline differentiator between KnowledgeOS and ordinary RAG systems. Delivers the corpus's strongest architectural self-redefinition yet ('a governed epistemic operating system for organizations') and twenty canonical governing invariants. Notably, however, this file's own closing section opens 'Step 23 — Epistemic Sufficiency, Readiness, Completeness, and the Knowledge Boundary' using framing and central questions that closely resemble Step 13's (0553) already-completed Sufficiency/Readiness treatment — the first flagged potential direct topical repeat in this sustained research program, requiring verification once 0566 is read"
+  refines_or_contradicts: "directly and fully executes 0564's Step-22 directive; reuses and extends 0552's/0560's identity resolution, 0556's causal theory, 0558's history-preservation and non-contamination principles, 0560's aggregate discipline, and 0562's authority/reliability separation; possible substantial topical overlap with 0553's (Step 13) Sufficiency/Readiness theory flagged as an open question requiring verification, not yet confirmed as either genuine extension or unacknowledged repeat"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The twelve-question worked 'Nexus was upgraded' example is a directly checkable, concrete demonstration that a single graph edge cannot capture the full identity/provenance/lineage/causality/traceability structure the corpus itself constructs, grounding the five-way separation's necessity in an inspectable scenario."
+  - "The explicit, worked August-10/August-15 'no retrospective knowledge leakage' example is a directly checkable, concrete illustration of a specific, falsifiable epistemic-integrity failure mode (retroactively justifying a past decision with knowledge that did not yet exist), directly reusable to test any later implementation for this exact violation."
+  - "This file's closing framing for 'Step 23' (purpose-specific sufficiency, 'when does the system know enough to act, escalate, or refuse') shares its central question and much of its terminology with Step 13's (0553) already-recorded treatment, which is directly checkable by comparing the two files' formal deliverables once 0566 is read — flagged here as an open corpus-integrity question, not yet resolved."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 23 — Epistemic Sufficiency, Readiness, Completeness, and the Knowledge Boundary' substantially duplicates Step 13's (0553) already-completed Sufficiency/Readiness treatment, or is a genuine distinct deepening — the first flagged potential direct topical repeat in this sustained research program"
+  - "Whether the twenty I/P/L/C/T/H-series invariants are ever cross-referenced against the corpus's many other independently-numbered invariant schemes from this same research program in a future canonical reference"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first complete separation of Identity, Provenance, Lineage, Causality, and Traceability into explicitly typed, mathematically distinct graph structures, resolving a foundational ambiguity left implicit across the entire 44-file prior research arc where 'depends on,' 'caused by,' and 'derived from' had been used loosely. Delivers the crucial BasedOn≠Caused safeguard preventing provenance and causal claims from being collapsed into an undifferentiated graph edge, extends the corpus's established history-preservation and non-retroactive-contamination principles into decision lineage and identity evolution, and delivers Reconstructability as the explicit architectural property distinguishing KnowledgeOS from ordinary RAG systems, alongside the corpus's strongest headline self-redefinition yet: 'a governed epistemic operating system for organizations.' Closes with twenty canonical invariants across six labeled series. Critically, however, this file's own closing section opens 'Step 23 — Epistemic Sufficiency, Readiness, Completeness, and the Knowledge Boundary' with framing and a central question that closely resemble Step 13's (0553) already-completed Sufficiency/Readiness treatment — the first flagged potential direct topical repeat across this entire sustained research program, and a corpus-integrity finding requiring verification at the very next file."

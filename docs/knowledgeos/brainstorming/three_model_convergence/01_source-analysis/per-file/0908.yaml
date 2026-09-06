@@ -1,0 +1,241 @@
+sequence: 908
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-221415_step_278_policy-authority-integration-and-executable-semantics.md
+title: "Step 278 -- Policy-Authority Integration, Governance Closure and Executable Semantics: CONFIRMS THE CORPUS BRANCHES INTO (AT LEAST) TWO DIVERGENT CONTINUATION THREADS AT STEP 277 -- This File's Header Names Predecessor 'Step 277 -- Formal Policy & Authority Models,' NOT File 0907's 'Canonical Transformation Inventory and O_core Closure,' Confirming 0906's Version-1 Policy/Authority Path Was ALSO Continued in Parallel -- Delivers the Genuinely Mature Conditional-Verdict Formalization (Permit/Deny/Conditional(c)/Unknown(u) With Five Named Resolution Strategies), the Constitutional-Authority-as-Root Recommendation With an Explicit Circularity Argument, the Governance-Policy-vs-Knowledge-About-Policy Resolution of the 'Policy Not-In K Too Strong' Overclaim, a Statistical Measurement Model for Policy Evaluation, and Thirteen Concrete Falsification Tests (F1-F13)"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: c1
+  secondary_note: "the statistical measurement model for policy evaluation (§22-23, decision-theoretic policy rules) is genuinely statistical content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 908
+importance: critical
+confidence: medium
+about: >
+  **Delivers a major structural finding confirming the corpus branches into parallel continuation
+  threads at Step 277**: this file's header explicitly names "Predecessor: Step 277 — Formal Policy &
+  Authority Models" -- a title that matches NEITHER file 0907's actual title ("Canonical Transformation
+  Inventory and `O_core` Closure," which followed 0906's Version-2 redirection) NOR any Step 277 file
+  encountered so far in this reconstruction's sequential pass. **This confirms 0906's Version-1 redirection
+  (the "Formalize the Policy/Authority Interface" path, explicitly withdrawn within 0906 by its own
+  Version 2) was ALSO pursued as a separate, parallel continuation thread**, distinct from the
+  Transformation-Inventory thread this reconstruction actually walked through at file 0907 -- the corpus at
+  this stage is not a single linear research sequence but at least two divergent, independently-continued
+  branches, both feeding into this reconstruction's shared file-timestamp ordering. This file is Step 278
+  of the PARALLEL Policy/Authority branch, not a direct continuation of 0907.
+
+  Opens declaring "Status: REVISED — READY FOR EXECUTION," itself already a self-correction of "the earlier
+  Step 278 formulation" (referenced but not directly visible in this reconstruction, per the established
+  referenced-but-unseen-material pattern) -- explicitly stating "the supervisory review is correct that the
+  earlier Step 278 formulation was too strong," withdrawing two specific prior claims: "Policy and Authority
+  are simply conditionally closed" and "Policy is external to the theory."
+
+  **§1-2 delivers the executive summary and a table of twelve supervisory corrections incorporated**,
+  establishing the file's central discipline: boxed **`formal closure, computational closure, empirical
+  closure, and governance closure are four different claims`** that "must never be conflated" -- and the
+  revised end-to-end architecture: `(K,E,C)→Policy Evaluation→PolicyVerdict`; `(A,o,C)→Authority
+  Evaluation→AuthorityVerdict`; `PolicyVerdict×AuthorityVerdict→AuthorizationDecision`;
+  `AuthorizationDecision→T→K'`.
+
+  **§3 delivers the canonical Policy model**: `π=(PolicyId, Version, Rules, Invariants, Validity,
+  Priority, AuthorityReference, Status)`, with policy versions explicitly IMMUTABLE once effective
+  (`π_v≠mutate(π_v)`; instead `π_v→π_{v+1}` via a governed change process).
+
+  **§4-§7 delivers a genuinely mature CONDITIONAL VERDICT formalization**, replacing the earlier vague
+  four-value `Verdict={Permit,Deny,Conditional,Unknown}` (where `Conditional` had no defined semantics)
+  with boxed **`Verdict=Permit∣Deny∣Conditional(c)∣Unknown(u)`**, where `Conditional(c)=(RequiredConditions,
+  SatisfiedConditions, MissingConditions, ResolutionStrategy)` and `MC=RC∖SC≠∅`. **Delivers FIVE NAMED
+  RESOLUTION STRATEGIES**: `WAIT` (required information expected later), `REQUEST` (an external actor must
+  supply information), `ESCALATE` (decision exceeds current authority level), `REASSESS` (a future event
+  requires re-evaluation), `BLOCK` (the condition cannot currently be satisfied, execution prohibited) --
+  "this makes Conditional computationally meaningful." Delivers the crucial distinction boxed
+  **`Unknown≠Conditional`** (the system cannot determine the policy result at all, vs. the applicable
+  policy IS known but required conditions remain unresolved) and a formal `Resolve:Conditional×Context→
+  Verdict` function preventing `Conditional` from becoming a permanent ambiguous state.
+
+  **§8-§9 delivers a reasoned RECOMMENDATION for the root of authority**: of four conceptual roots
+  considered (self-rooted, external, organizational, constitutional), boxed **`RootAuthority=
+  ConstitutionalAuthority`** is recommended, with an explicit justification against the alternatives --
+  self-rooted is circular (`Authority⇒Authority`), external merely relocates the question outside the
+  KnowledgeOS governance model, organizational is insufficiently stable when organizational authority
+  itself changes -- giving the chain `Constitution→Authority→Policy→Authorization→Operation`, with the
+  Constitution explicitly framed as "a meta-governance artifact," "not simply another ordinary Rule,"
+  establishing recognized authority classes, delegation rules, policy-change authority, mandatory
+  invariants, governance boundaries, and emergency-governance rules if any.
+
+  **§10-§11 delivers the Authority and Authorization models**: `Authority=(Principal, Role, Capability,
+  Scope, Validity, Delegation)`, with the explicit non-escalation invariant `A_1→A_2⇒Scope(A_2)⊆Scope(A_1)`
+  unless a constitutional rule permits otherwise ("delegation must never silently expand authority");
+  `Authorization=Combine(PolicyVerdict, AuthorityVerdict)`, delivering an explicit nine-row precedence
+  table establishing DENY-OVER-PERMIT semantics ("no positive authorization may be inferred from
+  incomplete information") -- any `Unknown` input propagates to `Unknown` output.
+
+  **§12-§19 delivers the full Policy-change governance apparatus**: a seven-stage lifecycle
+  (`Draft→Review→Validate→Authorize→Activate→Effective→Retire`); the `CanChangePolicy(a,π)` requirement
+  (`ValidPolicyChange⟺ValidAuthority∧Authorized∧ConstitutionallyPermitted`); a ten-point new-policy-
+  validity checklist ("a policy may therefore be syntactically valid but governance-invalid"); five-fold
+  `ValidatePolicy` (structural/semantic/governance/consistency/executability validation); a formal
+  half-open temporal validity interval `V(π)=[t_start,t_end)` avoiding boundary ambiguity; the
+  policy-applicability set `P_t={π∣Applicable(π,t)}`, with `∣P_t∣=0⇒PolicyVerdict=Unknown
+  (NoApplicablePolicy)` absent a constitutional default; an explicit overlapping-policy resolution
+  hierarchy (`Constitution>MandatoryPolicy>DomainPolicy>LocalPolicy`), with equal-priority contradictory
+  rules yielding `Unknown(PolicyConflict)` -- "silently choosing one policy is prohibited"; and mandatory
+  historical policy-version retention, with the crucial replay rule "replay must use `π_t` rather than the
+  current policy `π_now`."
+
+  **§21 delivers the resolution of the "Policy∉K too strong" overclaim** (an explicit self-correction of
+  the earlier, cruder Policy-external-to-K findings from files 0894/0897/0900/0901/0907): the corrected
+  distinction is boxed **`Policy as governing mechanism∉K`** while boxed **`Knowledge about Policy∈K`** --
+  a proposition like "the policy version v became effective at t" is a perfectly legitimate epistemic
+  assertion belonging inside `K`, even though the active governance mechanism itself does not -- "this
+  resolves the ontology error."
+
+  **§22-§23 delivers a genuinely statistical contribution: A MEASUREMENT MODEL FOR POLICY EVALUATION**,
+  reapplying the corpus's standing measurement discipline specifically to quantitative policy predicates:
+  `X∼𝓜(θ,σ²)`; a policy predicate should NOT automatically evaluate `X>c` when `X` is uncertain -- instead
+  define `P(θ>c∣X)` when a probabilistic model is justified, with `Permit⟺P(θ>c∣X)≥q` for a policy-defined
+  threshold `q`; if no probabilistic model is justified, the evaluator must return `Unknown
+  (UnquantifiedUncertainty)` or `Conditional(AdditionalMeasurementRequired)` rather than manufacture one --
+  reaffirming `Measurement≠Probability` and `Uncertainty≠Probability`. Delivers a decision-theoretic policy
+  rule `d(X)=argmin_aE[L(a,θ)∣X]` explicitly scoped as "the quantitative-policy evaluation model where
+  probabilistic decision theory is justified," not a universal KnowledgeOS evaluator.
+
+  **§24-§26 delivers a RULE INDEPENDENCE MODEL distinct from statistical independence**: a semantic
+  dependency relation `D(r_i,r_j)` and dependency graph `G_R=(R,E_R)`; two rules are structurally
+  independent iff `D(r_i,r_j)=D(r_j,r_i)=0` and share no policy-derived mutable intermediate; explicitly
+  distinguishes this from probabilistic `X⊥Y` -- "these are fundamentally different relations"; and delivers
+  a rule-conflict resolution protocol (scope difference / precedence / contradiction / policy invalidity)
+  -- "no arbitrary ordering may be inferred from implementation order."
+
+  **§27-§29 delivers a concrete DDD architecture**: four bounded contexts (Knowledge, Governance,
+  Transformation) with explicit aggregate roots -- `KnowledgeState` (protecting identity uniqueness and
+  state consistency), `Policy` (owning PolicyVersion/Rules/Validity/Status, with the immutable-effective-
+  version invariant), `AuthorityGrant` (owning Principal/Scope/Delegation/Validity/Revocation, with
+  `DelegatedScope⊆GrantScope`), `PolicyChangeRequest` (owning the full change workflow, with
+  `Activate(π)⇒Validated(π)∧Authorized(ChangePolicy)`), and `Transition` (owning input/operation/actor/
+  policy-version/authorization-result/transformation-result, with `Success(K')⇒Authorized∧Pre∧Post∧
+  Invariant(K')`). Delivers five canonical governance invariants `G-I1` through `G-I5` (no unauthorized
+  policy change becomes effective; effective policy versions are immutable; every governed transition
+  identifies its applicable policy version; authorization must be reproducible from recorded governance
+  context; delegation cannot silently expand authority).
+
+  **§30-§33 delivers an eventual-consistency model for distributed governance propagation**: policy
+  changes may propagate asynchronously across services, producing temporary `PolicyVersion_local≠
+  PolicyVersion_effective` divergence, resolved via either Strict mode (reject until synchronized) or
+  Grace-period mode (continue under the old version until an explicit deadline, "no implicit indefinite
+  grace period is permitted") -- delivering the crucial distinction boxed **`EventuallyConsistentGovernance
+  ≠NondeterministicAuthorization`**: every authorization decision must still record a KNOWN policy/
+  authority version even while metadata propagation itself may lag. Delivers a governance event log
+  (PolicyProposed/Validated/Authorized/Activated/Retired; AuthorityGranted/Delegated/Revoked) supporting
+  audit, replay, explanation, and temporal reconstruction.
+
+  **§34 delivers THIRTEEN CONCRETE FALSIFICATION TESTS (F1-F13)**, each with an explicit expected result:
+  policy-free transition (`Unknown(NoApplicablePolicy)`); authority-free transition (`Deny(NoAuthority)`);
+  policy conflict (`Unknown(PolicyConflict)` absent explicit precedence); authority conflict (deny-over-
+  permit: `Deny`); missing policy (`Unknown`, explicitly not `Permit`); expired policy (inapplicable);
+  revoked authority (historical replay retains the historical decision context); unauthorized policy
+  mutation (`Deny`, no activation); overlapping policy versions (deterministic precedence or `Unknown
+  (PolicyConflict)`); policy rollback (must create a NEW version, `π_4=RollbackOf(π_2)`, never mutate
+  history); authority delegation escalation (`Deny(ScopeViolation)`); governance propagation race (any
+  divergence must be explainable by declared effective-version/grace-period semantics, "no silent
+  divergence is acceptable"); statistical policy boundary (the evaluator must use the declared measurement
+  semantics, "must not silently substitute deterministic arithmetic for a probabilistic rule").
+
+  **§35-§37 delivers the four-symbol closure taxonomy** (yet a further, fourth distinct closure-vocabulary
+  variant in this immediate file neighborhood, after 0904's five-level, 0906-Version-1's four-closure-
+  types, and 0906-Version-2's Defined≠Derived≠Demonstrated≠Closed): `FC` (Formal Closure -- all symbols/
+  types/semantics defined, no undefined dependency), `CC` (Computational Closure -- executable,
+  deterministic, total, produces a defined result), `EC` (Empirical Closure -- tested against actual
+  KnowledgeOS implementation, reproducible evidence), `GC` (Governance Closure -- authority defined,
+  responsibility assigned, lifecycle defined, normative choices ratified). Delivers the explicit
+  no-premature-closure principle boxed **`FormalClosure≠CompleteClosure`**, worked via a concrete example
+  (`FC=1,CC=0,EC=0,GC=1` -- "formally and governance-defined, but not yet executable or empirically
+  tested") and a fourteen-row revised closure matrix deliberately refusing to mark computational/empirical
+  closure "merely because a formula exists."
+
+  **§38-§44 delivers an updated twelve-row gap register**, an explicit accounting of what has and has not
+  been established (mathematically: Policy≠Authority≠Authorization≠Transformation, the governance-policy-
+  vs-knowledge-about-policy distinction, conditional-verdict semantics, temporal validity semantics;
+  explicitly NOT established: any executable evaluator, policy-change implementation, distributed
+  propagation semantics, empirical validation), five explicit normative decisions requiring human/HPA
+  ratification (`N1`-`N5`: constitutional root, exact authority holder, emergency governance, policy-
+  conflict defaults, propagation mode), and an eight-part final supervisory verdict (A-H).
+
+  **Closes with the HPA RULING**: boxed **`STEP 278 — FORMAL POLICY/AUTHORITY SEMANTICS: CLOSED`** but
+  boxed **`COMPUTATIONAL CLOSURE: PENDING STEP 279`**, boxed **`EMPIRICAL CLOSURE: PENDING STEP 280`**,
+  and boxed **`GOVERNANCE CLOSURE: PENDING NORMATIVE RATIFICATION`** -- therefore boxed **`KNOWLEDGEOS
+  THEORY IS NOT YET DECLARED COMPLETE`** -- opening "Step 279 — Policy and Authority Executable
+  Implementation" and previewing "Step 280 — End-to-End Empirical Closure Test" (the full pipeline
+  `Observation→Evidence→Qualification→Assessment→Policy→Authority→Authorization→Transformation→K'→
+  Validation→Replay` against actual implementation artifacts), and delivering the file's closing
+  methodological reframing: boxed **`Can the formally specified definition survive implementation and
+  empirical falsification?`**, replacing "can we invent a plausible formal definition?" as the governing
+  question going forward, via the loop boxed **`Theory→Formalization→Implementation→Execution→
+  Observation→Falsification→Revision`**.
+introduces:
+  - concept: "MAJOR STRUCTURAL FINDING: confirmation that the corpus branches into parallel continuation threads at Step 277 -- this file's predecessor claim ('Formal Policy & Authority Models') matches neither file 0907's actual content nor any encountered Step 277, confirming 0906's Version-1 Policy/Authority path was pursued as a separate parallel thread"
+  - concept: "A further self-correction of 'the earlier Step 278 formulation,' withdrawing two specific prior overclaims (Policy/Authority simply conditionally closed; Policy external to the theory)"
+  - concept: "The mature Conditional Verdict formalization: Permit/Deny/Conditional(c)/Unknown(u), with five named resolution strategies (WAIT/REQUEST/ESCALATE/REASSESS/BLOCK) and the Unknown≠Conditional distinction"
+  - concept: "The Constitutional Authority root recommendation with an explicit circularity argument against self-rooted authority"
+  - concept: "Deny-over-permit authorization-composition semantics via a nine-row precedence table"
+  - concept: "The seven-stage policy-change lifecycle and the ten-point new-policy-validity checklist"
+  - concept: "The resolution of the 'Policy∉K too strong' overclaim: Governance Policy∉K but Knowledge about Policy∈K"
+  - concept: "A statistical measurement model for policy evaluation, reapplying the standing measurement discipline to quantitative policy predicates"
+  - concept: "Rule Independence as distinct from Statistical Independence, via a semantic dependency graph"
+  - concept: "A concrete DDD architecture with five named aggregate roots and five canonical governance invariants (G-I1 through G-I5)"
+  - concept: "EventuallyConsistentGovernance≠NondeterministicAuthorization for distributed governance propagation"
+  - concept: "Thirteen concrete falsification tests (F1-F13) for Policy/Authority/Authorization semantics"
+  - concept: "The four-symbol closure taxonomy FC/CC/EC/GC, a fourth distinct closure-vocabulary variant in this immediate file neighborhood"
+  - concept: "The HPA ruling: formal Policy/Authority semantics CLOSED, but computational/empirical/governance closure all explicitly pending"
+  - concept: "The closing methodological reframing: can the formally specified definition survive implementation and empirical falsification?"
+defines:
+  - concept: "The mature Conditional Verdict with five resolution strategies"
+    definition: "A structured refinement of the previously vague third truth-value 'Conditional' in the policy-verdict space: Verdict=Permit∣Deny∣Conditional(c)∣Unknown(u), where Conditional(c)=(RequiredConditions RC, SatisfiedConditions SC⊆RC, MissingConditions MC=RC∖SC, ResolutionStrategy s), with MC≠∅ as the existence condition. Every Conditional verdict must specify exactly one resolution strategy s∈{WAIT,REQUEST,ESCALATE,REASSESS,BLOCK}: WAIT means the required information is simply expected to arrive later without external action; REQUEST means an external actor must actively supply missing information; ESCALATE means the decision exceeds the currently available authority level and must go to a higher authority; REASSESS means a future event or changed evidence will require re-running the policy evaluation; BLOCK means the missing condition cannot currently be satisfied at all and execution is prohibited outright. This makes Conditional a computationally actionable, non-permanent state rather than an unresolved ambiguity, and is explicitly distinguished from Unknown (where the applicable policy itself cannot even be determined)"
+  - concept: "The four-symbol closure taxonomy FC/CC/EC/GC"
+    definition: "A refinement of the corpus's recurring closure-vocabulary proliferation into four independently-tracked symbols, each a binary or graded status per construct: FC (Formal Closure) holds when all symbols, types, and semantics for a construct are explicitly defined with no undefined dependency; CC (Computational Closure) holds when the construct is executable, deterministic under fixed inputs, total over its declared domain, and produces a defined result; EC (Empirical Closure) holds only when the construct has actually been tested against the real KnowledgeOS implementation with observed expected behavior and reproducible evidence; GC (Governance Closure) holds only when the construct's authority is defined, responsibility is assigned, its lifecycle is defined, and any normative choices bearing on it have been formally ratified. A construct can hold any combination of these four independently (e.g. FC=1,CC=0,EC=0,GC=1 for Policy at this stage: formally and governance-specified, but not yet executable or empirically validated), and none of the four may be inferred from another -- directly enforcing FormalClosure≠CompleteClosure"
+refines:
+  - concept: "0906's Version 1 (withdrawn) Policy/Authority redirection for Step 277"
+    refinement: "REVEALED AS A PARALLEL, INDEPENDENTLY-PURSUED THREAD rather than fully abandoned -- this file's own predecessor claim shows the Policy/Authority formalization line continued past Version 1 (through an unencountered 'Formal Policy & Authority Models' Step 277) into this substantially more mature Step 278, running alongside (not superseding, nor superseded by) the Transformation-Inventory thread this reconstruction walked through at file 0907"
+  - concept: "0894's/0897's/0900's/0901's/0907's Policy/provenance-external-to-K findings"
+    refinement: "CORRECTED as 'too strong': the prior blanket Policy∉K claim is replaced with the precise Governance-Policy∉K vs Knowledge-about-Policy∈K distinction, resolving what this file itself calls 'the ontology error' in the earlier formulation"
+  - concept: "0893's/0895's/0898's/0900's/0903's standing measurement-theory and probability discipline"
+    refinement: "REAPPLIED concretely to quantitative Policy predicates via the X∼𝓜(θ,σ²) model and the explicit Unknown(UnquantifiedUncertainty)/Conditional(AdditionalMeasurementRequired) fallback when no probabilistic model is justified, giving the standing discipline its most concrete governance-specific application yet"
+  - concept: "0898's GraphDistance≠StatisticalIndependence and 0900's three-way independence taxonomy"
+    refinement: "EXTENDED to Rule Independence specifically, delivering a fourth distinct independence-type distinction (RuleIndependence, via a semantic dependency graph) alongside Structural/Statistical/Independence-score, explicitly warned never to be confused with StatisticalIndependence"
+  - concept: "0904's/0906's evolving closure-vocabulary proliferation"
+    refinement: "ADDS A FOURTH DISTINCT VARIANT (FC/CC/EC/GC) to the neighborhood's already-competing schemes (0904's five-level Defined≠WellTyped≠Decidable≠Executable≠Validated; 0906-Version-1's four closure types; 0906-Version-2's Defined≠Derived≠Demonstrated≠Closed) -- none of the four schemes across this file cluster is stated as a strict refinement of another, though all target the same underlying goal"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever file next continues the Policy/Authority branch (Step 279 — Policy and Authority Executable Implementation, per this file's own designation), watching for whether it reconciles or remains parallel to the Transformation-Inventory branch's own Step 278 (K-Sufficiency and Transformation Minimality Test, per file 0907's designation)."
+  - "Watch for whether the two divergent branches (Transformation-Inventory vs Policy/Authority) are ever explicitly merged or reconciled anywhere later in the corpus."
+  - "Watch for whether any of the thirteen falsification tests (F1-F13) are ever actually executed."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the major structural finding that the corpus branches into (at least) two parallel continuation threads at Step 277/278 -- a Transformation-Inventory branch (0907) and a Policy/Authority branch (this file) -- as directly relevant to how this reconstruction should read subsequent 'Step 278/279/280'-labeled files going forward: check headers' Predecessor field to determine which branch a file belongs to."
+  - "dimension-registry.md: record the mature Conditional Verdict formalization (five named resolution strategies) and the deny-over-permit authorization-composition table as directly reusable governance-semantics content for the gated (§29) canonical Kernel synthesis."
+  - "dimension-registry.md: record the Governance-Policy-vs-Knowledge-about-Policy resolution of the 'Policy∉K too strong' overclaim as a genuine correction directly relevant to the K/Policy boundary question tracked since 0894/0897."
+  - "dimension-registry.md: record the four-symbol closure taxonomy FC/CC/EC/GC as a fourth distinct closure-vocabulary variant, alongside 0904's and 0906's schemes, none yet reconciled."
+anchor_test:
+  anchor: "0906's Version 1 and Version 2 competing Step-277 redirections; 0894's/0897's/0900's/0901's/0907's Policy-external-to-K findings; 0893's/0895's/0898's/0900's/0903's measurement-theory discipline; 0904's/0906's closure-vocabulary proliferation"
+  supports_dimension: "Reveals a genuine branching in the corpus's own research thread at Step 277, with this file continuing the parallel Policy/Authority line rather than the Transformation-Inventory line 0907 walked. Corrects the prior blanket Policy∉K finding into the precise Governance-Policy vs Knowledge-about-Policy distinction. Reapplies the standing measurement-theory discipline concretely to policy predicates. Adds a fourth distinct closure-vocabulary variant to the ongoing proliferation"
+  refines_or_contradicts: "reveals a parallel branch alongside (not superseding) 0907; corrects the prior Policy∉K overclaim; reapplies 0893's/0895's/0898's/0900's/0903's measurement discipline; adds a further closure-vocabulary variant alongside 0904's and 0906's"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "This file's own header line ('Predecessor: Step 277 — Formal Policy & Authority Models') failing to match file 0907's actual title ('Canonical Transformation Inventory and O_core Closure') is directly checkable evidence of the corpus's branching structure at this point."
+  - "§21's explicit worked example ('The policy version v became effective at t' as a legitimate member of K) is directly checkable evidence for the Governance-Policy-vs-Knowledge-about-Policy resolution."
+  - "§34's thirteen explicitly worked falsification tests (F1-F13), each with a precise expected verdict, are directly checkable evidence of a genuine, executable experimental protocol for Policy/Authority/Authorization semantics."
+undefined_concepts: []
+open_questions:
+  - "Whether the Transformation-Inventory branch (0907) and the Policy/Authority branch (this file) are ever explicitly merged or reconciled anywhere later in the corpus."
+  - "Whether the unencountered 'Step 277 — Formal Policy & Authority Models' predecessor file (referenced but not directly read) exists elsewhere in the corpus's file-path order."
+  - "Whether any of the thirteen falsification tests (F1-F13) are ever actually executed against a real or synthetic KnowledgeOS system."
+tier2_triggered: true
+tier2_reason: "Reveals a major structural finding (the corpus branches into parallel continuation threads at Step 277/278), delivers a genuinely mature Conditional Verdict formalization with five named resolution strategies, a reasoned constitutional-authority-root recommendation, the resolution of the 'Policy∉K too strong' overclaim, a concrete statistical measurement model for policy evaluation, a full DDD architecture with governance invariants, and thirteen concrete falsification tests. Classified importance critical and tier2-triggered; confidence medium reflecting the branching-structure ambiguity and reliance on unverified prior 'earlier Step 278' material."

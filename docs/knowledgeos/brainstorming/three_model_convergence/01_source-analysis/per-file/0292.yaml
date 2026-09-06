@@ -1,0 +1,43 @@
+sequence: 292
+path: docs/knowledgeos/brainstorming/kernel/20260825-150010-consciousness-architecture-as-analogy-for-knowledge-layers-duplicate.md
+title: "Consciousness Architecture as Analogy for Knowledge Layers (Duplicate)"
+date: "2026-08-25"
+bytes: 18329
+model:
+  primary: g1
+  secondary: null
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 253
+importance: low
+confidence: high
+about: >
+  Confirmed byte-identical duplicate of 0253 (diff run, zero differences); filename ends '-duplicate.md'.
+  Tenth verified duplicate-file instance in this corpus. No independent analytical content.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Full content of 0253 (consciousness architecture as analogy for knowledge layers)"
+    canonical_source: 253
+    novelty: none
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "0253 (canonical)"
+  supports_dimension: "None -- duplicate reproduction"
+  refines_or_contradicts: "identical to 0253"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Confirmed verbatim duplicate of 0253 (diff verified byte-identical); no independent content."

@@ -1,0 +1,158 @@
+sequence: "0094"
+path: docs/knowledgeos/brainstorming/20260822-0225-knowledgeos-extraction-navya-nyaya-relations-context.md
+title: "KnowledgeOS Extraction: Navya-Nyāya Lens"
+date: "2026-08-22"
+bytes: 21074
+
+model:
+  primary: g
+  secondary: [x, c1, m]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: critical
+confidence: high
+
+about: >
+  A substantive, historically-grounded (Gaṅgeśa Upādhyāya's 14th-century Tattvacintāmaṇi, 17th-century
+  Navadvīpa scholars) engagement with Navya-Nyāya ("New Logic") -- a genuine precision relational
+  calculus described by Daniel Ingalls as "the most precise calculus of properties produced before
+  Frege." Proposes H-KOS-Relation-001 (relationships as first-class, not object attributes) as
+  "probably one of the strongest kernel candidates discovered so far," reframes Context via Avacchedaka
+  (delimiter/boundary-condition, not a flat dimension), and produces an 8-item Kernel Formula -- a
+  fifth non-identical reshaping of the anchor across files.
+
+introduces:
+  - "⭐ H-KOS-Relation-001: 'KnowledgeOS SHALL treat epistemic relationships as first-class entities and
+    SHALL NOT reduce them into attributes of knowledge objects.' Explicitly reinterprets EVERY prior
+    forbidden-collapse pair (Evidence!=Authority, Observation!=Decision, Assessment!=Authority,
+    Expression!=Meaning, Representation!=Identity) as a RELATIONSHIP constraint, not an object
+    property -- a potential fundamental reframing of the whole dimension-based approach: is the kernel
+    about STATE COMPONENTS or about RELATIONSHIPS BETWEEN them? Sourced from Sambandha (Relation),
+    described as 'ontologically primary, not merely grammatical' in Navya-Nyāya"
+  - "H-KOS-Context-002 (Avacchedaka/delimiter): 'KnowledgeOS SHALL preserve the delimiting conditions
+    under which a proposition is valid.' REFRAMES Context (contested since 0088-0091) away from a flat
+    state-dimension toward a boundary/delimiter concept -- 'context is not metadata, context is a
+    logical boundary'"
+  - "16 Padārthas (categories) mapped onto an epistemic-inquiry LIFECYCLE (not kernel entities):
+    Observation -> Doubt -> Investigation -> Reasoning -> Challenge -> Determination -> Knowledge
+    State, formalized as H-KOS-Lifecycle-Reasoning-001"
+  - "Vāda/Jalpa/Vitaṇḍā (truth-seeking / competitive / destructive debate) -> H-KOS-Intent-001: the
+    INTENT behind reasoning matters and should be classified, not just its content"
+  - "Hetvābhāsa (5-type fallacy taxonomy, already named at 0092) -> H-KOS-Failure-001, restated from
+    0093's H-KOS-Fallacy-001 under a slightly different name -- an internal near-duplicate naming
+    event within the H-KOS-* scheme itself"
+  - "Navya-Nyāya vocabulary beyond Sambandha/Avacchedaka: Pratiyogin/Anuyogin (counter-correlate/
+    subordinate -- the two terms in a relation), Abhāva (typed, structured ABSENCE, not mere
+    'nothing'), Tādātmya (non-extensional identity), Paryāpti (completeness, a quantification
+    concept), Viśeṣaṇa-viśeṣya (qualifier-qualificand structure) -- and 'unbounded relational depth'
+    (paramparā-sambandha: relations of relations of relations) -- among the most mathematically
+    sophisticated Indian-logic content encountered in the corpus, approaching genuine formal semantics
+    (the document itself notes attempts to encode Navya-Nyāya in modern type theory)"
+  - "Updated Kernel Formula (a FIFTH non-identical reshaping of the anchor, after 0087/0089/0090/0091):
+    'Preserves' 1-8 = Identity, Evidence, Authority, Context, Transformation, Time, Uncertainty,
+    Knower (BOTH Context and Knower kept as separate items here, unlike 0091's merge/fold); 'Through'
+    9-12 = Relations, Reasoning chains, Validation processes, Revision history -- explicitly a
+    two-tier structure (preserved STATE vs. the MECHANISM that preserves it)"
+  - "Explicit demotion: 'Nyāya liberation goal' (i.e. Mokṣa) placed in the 'Research Only' category,
+    NOT among kernel-relevant candidates -- the corpus's first explicit disciplinary ruling on the
+    Purification/Mokṣa correspondence row of the MD-015 Candidate Cross-Model Correspondence Table:
+    treated as out of scope for kernel design, at least by this document's own classification"
+  - "Final Insight, a five-lens summary: Vāṇī (meaning survives expression) + Zero (identity survives
+    transformation) + Gita/Vedanta (knower and known cannot be separated) + Tarka (reasoning must be
+    governed) + Navya-Nyāya (relationships are the primitive through which knowledge exists) ->
+    'Knowledge is not a thing. Knowledge is a justified network of relationships between a knower, an
+    object, evidence, reasoning, context, and conclusion.' Explicitly called 'likely the final missing
+    piece before P4 mapping'"
+
+defines: []
+
+refines:
+  - "Context (registry entry, contested since 0088-0091): reframed via Avacchedaka from a flat state-
+    dimension into a delimiter/boundary-condition concept -- a genuinely different characterization,
+    not merely a restatement, though still not reconciled with 0091's Context-merged-into-Identity
+    treatment"
+  - "0093's H-KOS-Fallacy-001: restated here as H-KOS-Failure-001 -- a naming near-duplicate WITHIN
+    the H-KOS-* scheme itself, the first internal inconsistency in the scheme that had otherwise been
+    tracked as a positive consolidation signal"
+
+contradicts:
+  - "0091's Context-merged-into-Identity treatment: this file keeps Context as separate item #4 in its
+    8-item list, alongside Identity as item #1 -- not reconciled with 0091's merge"
+
+repeats:
+  - concept: "four Pramāṇas, five-membered syllogism, Hetvābhāsa fallacy types"
+    canonical_source: "0092"
+    novelty: low
+
+bridge_candidates:
+  - "Sambandha (relation-primacy) as a possible bridge to a future formal (M-model) relational/
+    hypergraph semantics for KnowledgeOS -- structural resemblance to graph-theoretic and type-
+    theoretic treatments only; the document itself notes unconfirmed academic attempts to encode
+    Navya-Nyāya in type theory, not yet connected to this corpus's own material by any document"
+
+mathematical_content: true
+gita_content: true
+kernel_content: true
+
+# MD-015 registry updates (see 01_source-analysis/dimension-registry.md)
+registry_updates:
+  - "NEW ENTRY WARRANTED: Relation/Sambandha (H-KOS-Relation-001) -- called 'probably one of the
+    strongest kernel candidates discovered so far'; potentially reframes the whole dimension-vs-
+    relationship question"
+  - "Context: refined (Avacchedaka/delimiter framing), still contested against 0091's merge-into-
+    Identity treatment"
+  - "Fallacy Detection: near-duplicate naming event (H-KOS-Failure-001 vs 0093's H-KOS-Fallacy-001) --
+    flagged, not silently merged"
+
+# MD-014 anchor_test against 0087 (Minimal_Kernel_Candidate_0087)
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Evidence Integrity (via relational reframing)", "Authority Separation (via relational reframing)", "Unknown Preservation"]
+  refines_or_contradicts: >
+    Substantially refines: proposes that ALL of 0087's dimensions may be better understood as
+    RELATIONSHIPS rather than object attributes -- a potential meta-level reframing of the whole
+    anchor, not just its item count. Also produces a fifth non-identical dimension-count/shape (8 items
+    + 4 mechanism items), directly contradicting 0091's Context-merge in favor of keeping Context AND
+    Knower as separate items.
+  alternative_minimal_kernel: >
+    Yes -- an 8-item "Preserves" list plus a 4-item "Through" mechanism list, the fifth distinct shape
+    across five consecutive anchor-relevant files (0087/0089/0090/0091/0094).
+  supplies_math_semantics: true   # Navya-Nyāya's typed-absence/non-extensional-identity/unbounded-
+                                    # relational-depth vocabulary is genuinely sophisticated formal
+                                    # semantics, though not adopted or notated for KnowledgeOS itself
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true   # extensive argued mapping (Sambandha->relationship
+                                                   # constraints; Avacchedaka->context boundary)
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false   # H-KOS-* scheme now shows an INTERNAL near-duplicate
+                                            # (Failure-001 vs Fallacy-001)
+
+key_evidence:
+  - "Real historical grounding (Gaṅgeśa Upādhyāya, Tattvacintāmaṇi, Raghunātha Śiromaṇi, Daniel
+    Ingalls' Frege comparison) -- among the most historically substantive single documents in the
+    corpus"
+  - "First explicit disciplinary ruling demoting the Mokṣa/liberation correspondence to 'Research
+    Only', directly relevant to the MD-015 Candidate Cross-Model Correspondence Table's Purification
+    row"
+  - "A fifth non-identical anchor reshaping, and the H-KOS-* scheme's first internal near-duplicate
+    naming event"
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether the dimension-vs-relationship reframing (H-KOS-Relation-001) is taken up seriously in
+    later files, or remains one proposal among many"
+  - "Whether Context is ever settled as a separate dimension, a delimiter/boundary concept, or merged
+    into Identity -- three incompatible treatments now exist (0089 flat dimension / 0091 merged into
+    Identity / 0094 delimiter-boundary)"
+
+tier2_triggered: true
+tier2_reason: >
+  Proposes what may be the most fundamental reframing since 0087 itself (relationships, not objects/
+  dimensions, as the kernel's true subject matter), backed by genuine, historically-grounded, and
+  mathematically sophisticated Navya-Nyāya content. Produces a fifth non-identical anchor reshaping,
+  refines the contested Context entry a third distinct way, and surfaces the H-KOS-* scheme's first
+  internal near-duplicate naming event -- all directly relevant to the MD-015 dimension registry and
+  to §18/§23.

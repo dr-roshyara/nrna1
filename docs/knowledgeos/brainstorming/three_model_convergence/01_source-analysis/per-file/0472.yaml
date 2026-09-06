@@ -1,0 +1,144 @@
+sequence: 472
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-175140_question-8-what-makes-a-knowledge-state-coherent.md
+title: "LANDMARK: Question 8 (Coherence) Answered, Twice-Refined Through Iterative Critique — Coherence≠Completeness≠Adequacy≠Truth Established as Four Independent Properties, Contradiction Redefined via Scope+Temporal-Overlap+Dimension-Semantics, a Five-Way Incoherent/Unknown/Incomplete/Conflicted/Unresolved Taxonomy, and Question 9 (Conflict) Launched With Four Already-Discovered Conflict Forms"
+date: "2026-08-26"
+bytes: 41314
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the Bhīṣma grandfather/opponent/moral-conflict example is carried through three successive refinements, finally receiving correct inference provenance (Derived(A4,{A2,A3,...})) instead of an unjustified Strong/Resolved status"
+source_role: PRIMARY_RESEARCH
+canonical_source: 472
+importance: critical
+confidence: high
+about: >
+  A three-stage landmark file (initial answer, first critical review, then a second review of a revised
+  document) answering 0471's Question 8: **What makes a Knowledge State coherent?**, properly building on
+  0471's newly established type system.
+
+  **Part A (initial answer)** defines Coherent(K_t) as a conjunction of five "dimensions" -- Logical,
+  Epistemic, Temporal, Contextual, Structural -- with the central insight **Coherence != Absence of
+  Conflict** (a state can contain unknowns/conflicts/unresolved issues and remain coherent). Gives naive
+  formalizations for each (logical contradiction via same-entity/dimension/incompatible-values; epistemic
+  coherence via a scalar Support(E,A) in [-1,1] mapped to categorical levels; temporal via a status
+  enumeration; contextual via Scope(A)=(C,Subject,Boundary,...); structural via straightforward well-
+  typedness with Evidence still embedded in the Assertion tuple, not yet adopting 0471's evidence-as-
+  relation refactor). Proposes a weighted numeric Coherence Score and works a three-state Arjuna example
+  confirming coherence persists through a normative tension.
+
+  **Part B (first critical review)** delivers ~27 corrections. Rejects "mutually consistent" for
+  **Coherence != Global Consistency**, redefining coherence to explicitly allow conflict provided it is
+  properly represented. Reclassifies the five "dimensions" as heterogeneous **predicates/conditions**
+  (well-typedness vs. consistency vs. applicability vs. justification), not dimensions in the Dimension-type
+  sense. **Majorly corrects Logical coherence**: contradiction requires **scope alignment**
+  (Contradictory(A1,A2) => CompatibleScope(A1,A2) and IncompatibleContent(A1,A2)), since e.g. differing
+  times or environments make apparently-contradictory values compatible. **Rejects the scalar [-1,1]
+  Evidence->Support model** as unjustified -- evidence is not inherently scalar and collapsing it destroys
+  Zero's ability to distinguish weak/conflicting/insufficient/irrelevant/unknown evidence, yielding
+  **Epistemic State != Support Score**. Replaces the temporal status enum with a real interval model
+  ValidityInterval(A)=[t_start,t_end), making Current(A,t) a **derived**, not primitive, predicate. Makes
+  Context a first-class typed object. Extends relationship typing beyond assertion-to-assertion, requiring
+  Source(R),Target(R) in a typed universe 𝒰 with relationship type determining legal combinations (directly
+  extending 0471's type system). Rejects treating the five predicates as mere "Zero detectors" -- Zero
+  exposes epistemic-boundary findings, Coherence remains a separate property. Rejects "Lord improves
+  coherence" (Lord expands the horizon, which may increase completeness without increasing coherence: Lord
+  != CoherenceRepair). Corrects the Arjuna example's inferred assertion A_4, which had been unjustifiably
+  labeled Strong/Resolved -- requiring explicit provenance DerivedFrom(A_4,{A_1,A_2,A_3,...}) and an
+  independently assessed epistemic state. **Rejects the Coherence Score** as creating false mathematical
+  precision from heterogeneous, non-additive properties, proposing instead a Pass/Fail/Unknown coherence
+  vector. **Establishes Coherence != Completeness** (a state can be perfectly coherent yet know nothing
+  about unconsidered dimensions) and **Coherence != Correctness/Truth** (an internally consistent assertion
+  can still be factually wrong), then **names FOUR independent evaluative properties**: **Coherence**
+  (does the model hang together?), **Completeness** (Complete(K,P): does it contain everything required for
+  the purpose?), **Adequacy** (Adequate(K,I): is the knowledge sufficient for the decision?), and
+  **Truth/Correctness** (Correct(K,X): does it correspond to reality, which KnowledgeOS may never establish
+  absolutely) -- a major conceptual clarification directly setting up the future Ideal-State and
+  measure-theoretic questions. Establishes **coherence as relational**: Coherence(A,K,C,t), eventually
+  Coherence(K|C,t,P), not a property of an isolated assertion -- connecting to the observation model's
+  purpose/context/time-dependence and 0470's Knower-relativity correction. Freezes a corrected core theory:
+  Coherent(K)=WellTyped∧LogicalConsistent∧EpistemicallyConsistent∧TemporallyConsistent∧ContextuallyConsistent,
+  with four negative invariants (Coherence != ConflictFree/Complete/Adequate/True).
+
+  **Part C (review of the revised document)** classifies the revision "ACCEPTED AS WORKING MODEL -- with 4
+  invariants still requiring clarification." Renames "coherence dimensions" to **"constraints"** throughout
+  to avoid clashing with the Dimension type. Extends WellTyped to include WellTypedRelationships and
+  ValidCardinalities, not merely object typing (worked: Supports(Evidence,Assertion) valid,
+  Supports(Person,Assertion) invalid). Further refines contradiction to require **SameTemporalScope/
+  OverlappingTemporalScope** as a missing condition (catching a residual gap: Jan-3.69 vs. Aug-3.70 should
+  not appear contradictory), and deepens it further: **contradiction depends on a dimension's value
+  semantics** (Boolean Certificate.Validity vs. multi-valued Certificate.SecurityAssessment behave
+  differently) -- Contradiction = SemanticRule(Dimension) + Scope + Time + Context + Values, explicitly
+  flagged as essential input to Question 9. Adds **Current(A,t) != True(A,t)** (interval membership is not
+  truth). Elevates the relational invariant to **Coherence(K|P,C,t,R)** (Purpose, Context, time, and
+  applicable Rules/ontology) -- "coherence under a specified epistemic frame." Corrects Zero's scope: it must
+  include **gaps**, not only violations -- Zero(K) = CoherenceViolations(K) ∪ EpistemicGaps(K) ∪
+  UnresolvedStates(K) -- flagged as essential for the future Question 10 (Gap). Renames Sārathi's output
+  from a_t ("action") to **e_t = EpistemicAction**, to avoid confusion with the human's real-world action.
+  Confirms the now-corrected Arjuna example (A_4 properly Inferred/Moderate/Open/Current, with explicit
+  Derived(A_4,{A_2,A_3,...}) provenance). Introduces a **five-way, mutually non-synonymous status
+  taxonomy** -- **Incoherent** (violates own rules), **Unknown** (lacks information), **Incomplete** (lacks
+  required dimensions for the purpose), **Conflicted** (contains incompatible assertions), **Unresolved**
+  (a recognized issue not yet resolved) -- illustrated with a concrete six-row truth table (unknown
+  certificate expiry, missing security dimension, and normative tension are all still Coherent=Yes; a
+  malformed type-violating assertion and a same-certificate-simultaneously-valid-and-invalid case are
+  Coherent=No). Closes marking Question 8 "🟢 Accepted as Working Model" with eight remaining amendments,
+  and launches **Question 9 -- What is a Conflict?**, opening with **Conflict != Contradiction** and four
+  already-discovered conflict forms: Conflict_logical (A1⊥A2), Conflict_epistemic (E1≢E2), Conflict_normative
+  (V1↛V2), Conflict_decision (A1⇒D1, A2⇒D2) -- explicitly noting "there may be more," and reconfirming
+  Bhīṣma's simultaneous grandfather/opponent status as the canonical non-logical, higher-order conflict.
+introduces:
+  - concept: "Coherence != Global Consistency, redefined to explicitly permit properly-represented conflict"
+  - concept: "Contradiction requires scope alignment and temporal overlap: Contradictory(A1,A2) <=> CompatibleScope(A1,A2) AND OverlappingTemporalScope(A1,A2) AND IncompatibleContent(A1,A2), further deepened to depend on a dimension's own value semantics (Boolean vs. multi-valued dimensions behave differently)"
+  - concept: "Epistemic State != Support Score: evidence must not be prematurely collapsed to a scalar in [-1,1], preserving the distinction between weak/conflicting/insufficient/irrelevant/unknown evidence"
+  - concept: "Temporal currency reframed as derived, not primitive: ValidityInterval(A)=[t_start,t_end), with Current(A,t) a derived membership predicate, and Current(A,t) != True(A,t)"
+  - concept: "Relationship typing generalized beyond assertion-to-assertion: Source(R),Target(R) in a typed universe 𝒰, with relationship type determining legal type combinations"
+  - concept: "Lord != CoherenceRepair: Lord expands the horizon (potentially increasing completeness), which is distinct from and does not necessarily increase coherence"
+  - concept: "Four independent evaluative properties named: Coherence, Completeness (Complete(K,P)), Adequacy (Adequate(K,I)), and Truth/Correctness (Correct(K,X), possibly never absolutely establishable)"
+  - concept: "Coherence is relational, not a property of an isolated assertion: Coherence(A,K,C,t), generalized to Coherence(K|P,C,t,R) -- coherence under a specified epistemic frame"
+  - concept: "Zero's scope corrected to include gaps as well as violations: Zero(K) = CoherenceViolations(K) ∪ EpistemicGaps(K) ∪ UnresolvedStates(K)"
+  - concept: "Sārathi's output renamed from a_t (action) to e_t (EpistemicAction), to avoid confusion with the human's real-world action"
+  - concept: "Five-way, mutually non-synonymous status taxonomy: Incoherent, Unknown, Incomplete, Conflicted, Unresolved -- illustrated with a concrete truth table showing several of these can coexist with Coherent=Yes"
+  - concept: "Question 9 launched: Conflict != Contradiction, with four already-discovered conflict forms (logical, epistemic, normative, decision) and an explicit acknowledgment that more may exist"
+defines:
+  - concept: "Coherence (final, corrected)"
+    definition: "The integrity of a Knowledge State under its structural, logical, epistemic, temporal, and contextual constraints, relative to a specified epistemic frame Coherence(K|P,C,t,R); explicitly independent of Completeness, Adequacy, and Truth"
+  - concept: "Four independent evaluative properties"
+    definition: "Coherence (internal integrity), Completeness (Complete(K,P): contains everything required for a purpose), Adequacy (Adequate(K,I): sufficient for a decision relative to an Ideal State), Truth/Correctness (Correct(K,X): corresponds to reality, possibly never absolutely establishable)"
+  - concept: "Contradiction (final, corrected)"
+    definition: "Contradiction = SemanticRule(Dimension) + Scope + Time + Context + Values: whether two assertions genuinely contradict depends on the dimension's own value semantics plus scope compatibility and temporal overlap, not raw value inequality alone"
+refines:
+  - concept: "0471's Evidence-as-external-relation and type-system corrections"
+    refinement: "Partially incorporated: flagged as necessary (Evidence should be Supports(E,A), not embedded in A) but not fully adopted within this file's own worked formalism -- a recurring partial-adoption pattern"
+  - concept: "0466's six-way relation taxonomy and 0468/0470's Conflict-as-relation corrections"
+    refinement: "Extended with a formal scope+temporal-overlap+dimension-semantics test for genuine contradiction, and four named conflict forms (logical/epistemic/normative/decision) feeding directly into the newly launched Question 9"
+  - concept: "0470's redefinition of Coherence and its Knower-relativity correction"
+    refinement: "Formalized precisely as a relational predicate Coherence(K|P,C,t,R), and split into four independent properties (Coherence/Completeness/Adequacy/Truth) for the first time"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Coherence != Completeness != Adequacy != Truth four-way separation and the relational Coherence(K|P,C,t,R) formalization."
+  - "dimension-registry.md: record the corrected contradiction test (scope + temporal overlap + dimension semantics) and Zero's corrected scope (violations + gaps + unresolved states)."
+  - "dimension-registry.md: record the five-way Incoherent/Unknown/Incomplete/Conflicted/Unresolved status taxonomy and Question 9's launch with four named conflict forms."
+anchor_test:
+  anchor: "0471's type system and Evidence-as-relation correction; 0470's redefined Coherence principle and Knower-relativity; 0462/0464/0466/0468's overlapping conflict/relation taxonomies"
+  supports_dimension: "LANDMARK: iteratively refines Question 8 (Coherence) across two full critical passes, establishing Coherence!=Completeness!=Adequacy!=Truth as four independent evaluative properties, redefining contradiction to depend on scope+temporal-overlap+dimension-semantics, correcting Zero's scope to include gaps alongside violations, producing a five-way non-synonymous status taxonomy, and launching Question 9 (Conflict) with four already-discovered conflict forms"
+  refines_or_contradicts: "refines 0471's type system into a working Coherence predicate; extends 0462/0464/0466/0468/0470's conflict/relation work into a unified four-conflict-form vocabulary feeding Question 9; partially incorporates but does not fully adopt 0471's Evidence-as-relation refactor within its own formalism"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Carries the Bhīṣma grandfather/opponent/moral-conflict worked example through three successive refinements, ending with correctly provenanced inference (Derived(A4,{A2,A3,...})) rather than an unjustified Strong/Resolved status"
+undefined_concepts: []
+open_questions:
+  - "Question 9 (What is a Conflict?), launched at file close with four named forms (logical/epistemic/normative/decision) explicitly acknowledged as possibly incomplete -- not yet answered"
+  - "Whether the four independent evaluative properties (Coherence/Completeness/Adequacy/Truth) are consistently maintained as the corpus proceeds to the Ideal State and distance-measurement questions (11-12)"
+  - "Whether 0471's Evidence-as-relation refactor is ever fully adopted into this file's own Coherence formalism, given the recurring partial-adoption pattern across this arc"
+tier2_triggered: true
+tier2_reason: "Iteratively refines Question 8 (Coherence) across two full critical passes, establishing Coherence!=Completeness!=Adequacy!=Truth as four independent evaluative properties (directly setting up the future Ideal-State/measure-theoretic questions), redefining contradiction to depend on scope, temporal overlap, and dimension-specific value semantics, correcting Zero's scope to include gaps alongside violations, producing a genuinely useful five-way non-synonymous status taxonomy with a worked truth table, and launching Question 9 (Conflict) with four already-discovered conflict forms."

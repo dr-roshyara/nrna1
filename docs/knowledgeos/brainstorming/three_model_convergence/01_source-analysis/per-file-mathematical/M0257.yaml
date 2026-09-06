@@ -1,0 +1,85 @@
+sequence: M0257
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-112000_theory-04-adequacy-information-theory-and-dpi.md
+title: "Theory 04 — Adequacy, Information Theory, and the One Theorem: consolidates the DPI as 'the only [THM] in the whole theory, and it is not ours'; the N_viol exact bias-free companion statistic to Ĥ; the corrected 'a priori impossible ≠ empirically falsified' reclassification of the adequacy-non-monotonicity hypothesis; the permanent sequential-vs-parallel scope distinction (explicitly legitimizing KR-BRIDGE-01/02/03's deliberate parallel-family design); a genuinely new multi-dimensional-reduction finding (bytes flat while cardinality falls 8×, refuting any single-scalar 'size' measure); and a properly contained bootstrap-CI estimator-hygiene defect"
+date: "20260904-112000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0257
+importance: critical
+confidence: high
+about: >
+  Document 04 of the 15-document consolidated theory series (M0255-M0256), sourced explicitly from
+  KR-REP-REDUCTION-2026-09 and its audit. Consolidates the entropy/adequacy apparatus into its
+  final rigorously-tagged form: the Data Processing Inequality as the theory's sole borrowed
+  theorem, the exact N_viol statistic as authoritative over the biased plug-in entropy estimate,
+  a corrected epistemic-status history for the adequacy-non-monotonicity hypothesis, the permanent
+  sequential-vs-parallel scope distinction, a genuinely new multi-dimensional-reduction finding
+  refuting any single-scalar reduction measure, and a properly contained bootstrap-CI defect.
+introduces:
+  - "The operational fiber Q-homogeneity definition of Adequate(D): Adequate(D)⟺|{Q(D'):T(D')=T(D)}|=1, with an explicit [DEFECT] flag that adequacy so defined is population-dependent by construction (a property of (T,Q,population), not of (T,Q)) — checked (informativeness flat across n=1500/4000/8000), not assumed, but 'the dependence is real and any transfer must re-establish it'"
+  - "N_viol = the exact number of conflicting Q-pairs within a representation fiber: N_viol=#{(D1,D2):T(D1)=T(D2), Q(D1)≠Q(D2)} — explicitly declared exact and bias-free where Ĥ (plug-in entropy estimate) has known small-sample bias, and 'authoritative for the question is adequacy exactly zero? — because that question is combinatorial, not estimative'; the Miller-Madow bias correction formula Ĥ_MM=Ĥ_plug+(K-1)/(2Nln2) is given for wherever Ĥ IS reported"
+  - "THE ONE THEOREM IN THE WHOLE THEORY, explicitly and humbly labeled: the Data Processing Inequality for a deterministic sequential chain, H(Q|R5)≤H(Q|R4)≤H(Q|R3)≤H(Q|R2) — 'proof: standard, cited, not re-derived here. This is the only [THM] in the theory, and it is not ours. Stating that plainly is the point of the status vocabulary'"
+  - "'THE CORRECTION THAT MATTERS' — the definitive final reclassification of the adequacy-non-monotonicity hypothesis (H-C): originally recorded as 'refuted a priori' — corrected to recognize the distinction a priori impossible ≠ empirically falsified: 'Hypothesis H-C was unfalsifiable in the negative direction from the start. It was not defeated by data; it was ill-posed against a sequential design. Recording it as refuted would have credited the experiment with a result it could not have produced'"
+  - "A reframing of the DPI-obeying empirical check itself: 'the empirical check was still run and is still worth having: it confirms the implementation obeys the DPI, which is a correctness check on the code, not a test of the hypothesis' — a crisp epistemic-status distinction between validating an implementation and testing a scientific claim"
+  - "THE PERMANENT SEQUENTIAL-VS-PARALLEL SCOPE DISTINCTION, elevated to a permanent feature of the theory: the DPI applies to sequential families (Rk=Tk(Rk+1)) but NOT to parallel families (Rk=Tk(D) computed directly from D, where non-monotone adequacy is perfectly possible) — 'sequential vs parallel is therefore a permanent distinction in the theory, not a detail of one design' — with the explicit confirmation that 'KR-BRIDGE-01/02/03 deliberately used a parallel family for exactly this reason,' legitimizing all three bridge experiments (including the previously-unrecorded KR-BRIDGE-03, M0256) as intentionally scope-matched designs"
+  - "A genuinely new MULTI-DIMENSIONAL-REDUCTION finding with concrete measured numbers: at R5, 37.0 bytes / 2 fields / 26,826 distinct values / Ĥ(R)=15.042; at R4, 37.0 bytes / 2 fields / 5,696 distinct values / Ĥ(R)=12.307 — 'bytes are FLAT across R5→R3 while cardinality falls 8×. Fields never change' — [NEG]: 'reduction dimensions cannot be treated as independent, and cannot be collapsed into a single size scalar... a design that measures how much was reduced with one number is measuring nothing'"
+  - "A scope-limiting entropy-floor observation: Ĥ(R)≥Ĥ(Q) at EVERY tested level (Ĥ(Q)=5.0098 bits over 39 distinct answers, against 15.04 bits at R5) — 'representation entropy never dropped below inquiry entropy in the tested chain, so the chain never approached the information-theoretic floor' — an explicit acknowledgment that the tested reduction chain never got close to its theoretical limit"
+  - "A properly CONTAINED estimator-hygiene [DEFECT]: bootstrap confidence intervals on Ĥ are INVALID in this design, because resampling with replacement duplicates cases, shrinks fiber diversity, and 'depresses conditional entropy downward,' biasing reported CIs toward 'adequate' — CONTAINMENT explicitly stated: every adequacy verdict in the programme rests on N_viol (exact) and the train/test split, NOT the bootstrap CI — 'the defect is recorded, its blast radius is stated, and no conclusion depends on it' — [REC]: a valid interval requires resampling at the fiber-structure level (not attempted, [OPEN])"
+  - "An 11-row final consolidated status register summarizing every claim in the document with its exact epistemic tag ([DEF]/[DEFECT]/[EXP]/[THM]/[COR]/[NEG]/[OPEN])"
+defines:
+  - "N_viol — the exact, bias-free combinatorial conflicting-Q-pair count within a representation fiber"
+refines:
+  - "M0219/M0221-224/M0232's original Zero/Adequacy/Realization and DPI-monotonicity findings: consolidated here into their final, most precisely status-tagged forms, with the 'a priori impossible ≠ empirically falsified' correction given its cleanest statement yet"
+contradicts:
+  - "The original recording of H-C as 'refuted a priori,' explicitly corrected here as an epistemic-status error: the hypothesis was ill-posed/structurally inapplicable to a sequential design, never actually tested against or defeated by data"
+  - "Any implicit single-scalar notion of 'representation size' or 'how much was reduced': explicitly refuted via the flat-bytes/8×-cardinality-drop finding"
+  - "The validity of the reported bootstrap confidence intervals on Ĥ: explicitly declared invalid (a contained defect)"
+repeats:
+  - "The established Zero≠Adequacy≠Realization apparatus and the sequential/parallel representation-family distinction, both already recorded earlier in the corpus (M0219 and after), restated here in final consolidated form"
+bridge_candidates:
+  - "Whether a valid fiber-structure-level resampling interval for Ĥ was ever constructed (the [REC] in §5, marked [OPEN])"
+mathematical_content: >
+  The Data Processing Inequality (cited, not re-derived) as the theory's sole borrowed theorem; the
+  exact N_viol statistic with a Miller-Madow bias-correction formula for Ĥ; a corrected epistemic-
+  status history distinguishing a-priori-impossible from empirically-falsified; a concrete
+  multi-dimensional reduction dataset refuting single-scalar size measures; a properly contained
+  bootstrap-CI estimator-hygiene defect.
+gita_content: null
+kernel_content: null
+registry_updates:
+  - "N_viol — exact, bias-free combinatorial adequacy-violation statistic, authoritative over Ĥ for exact-zero questions"
+  - "DPI reconfirmed as the theory's sole [THM], explicitly 'not ours'"
+  - "Final corrected epistemic-status statement: H-C was ill-posed/structurally inapplicable, never actually refuted by data"
+  - "Permanent sequential-vs-parallel scope distinction, explicitly legitimizing KR-BRIDGE-01/02/03's parallel-family design choice"
+  - "New multi-dimensional-reduction finding: bytes flat while cardinality falls 8× — refutes single-scalar reduction measures"
+  - "Contained [DEFECT]: bootstrap CI on Ĥ invalid; all adequacy verdicts rest on N_viol and train/test split instead"
+anchor_test:
+  anchor: true
+  supports_dimension: "DPI as the theory's sole [THM]; N_viol exact statistic; corrected a-priori-impossible-vs-empirically-falsified epistemic history; permanent sequential/parallel scope distinction; multi-dimensional-reduction finding refuting single-scalar size; contained bootstrap-CI defect"
+  refines_or_contradicts: "refines (consolidates M0219/M0232's adequacy/DPI findings into final tagged form); contradicts (the original 'refuted a priori' labeling of H-C; any single-scalar reduction-size measure; the validity of the reported bootstrap CIs)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"This is the only [THM] in the theory, and it is not ours.\""
+  - "\"A priori impossible ≠ empirically falsified.\""
+  - "\"Bytes are FLAT across R5→R3 while cardinality falls 8×... a design that measures 'how much was reduced' with one number is measuring nothing.\""
+  - "\"The defect is recorded, its blast radius is stated, and no conclusion depends on it.\""
+undefined_concepts: []
+open_questions:
+  - "Was a valid fiber-structure-level resampling interval for Ĥ ever constructed?"
+tier2_triggered: true
+tier2_reason: >
+  Consolidates the theory's sole borrowed theorem (DPI), the exact N_viol statistic, a definitive
+  corrected epistemic-status history (a-priori-impossible vs empirically-falsified), the permanent
+  sequential/parallel scope distinction legitimizing the corpus's bridge-experiment design choices,
+  a genuinely new multi-dimensional-reduction finding refuting single-scalar size measures, and a
+  properly contained bootstrap-CI estimator defect — core reference material for this new
+  15-document theory series.

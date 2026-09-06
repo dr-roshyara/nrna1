@@ -1,0 +1,56 @@
+sequence: 66
+path: docs/knowledgeos/brainstorming/20260821-120633-kos-state-durability-assurance-integration.md
+title: KOS-STATE-DURABILITY × Deterministic Assurance — Integration Model
+date: 2026-08-21
+bytes: 13541
+
+model:
+  primary: c1
+  secondary: [governance, evidence, provenance, invariants]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: high
+confidence: high
+
+about: >
+  Disciplined commission-style integration analysis (input only, decides nothing) sequencing a
+  deterministic-assurance checker against a state-durability migration track. Cites root-level
+  identifier series (ES-005.4, ES-006.1, PMR-10, R-34, R-46, EP-01) and an out-of-scope-root
+  document directly, strongly resolving the multi-track provenance question.
+
+introduces:
+  - mechanical_assurance_proves_declared_structure_not_undeclared_content
+  - assurance_root_resolution_follows_never_defines_the_evidence_boundary
+
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: ne_distinction_chain
+    canonical_source: 52
+    novelty: low   # third sub-thread instance of the same pattern (recording!=asserting, etc.)
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence:
+  - "cites docs/knowledgeos/reviews/... (OUT_OF_SCOPE_ROOT per MD-011) and root-level identifier series (ES-005.4, ES-006.1, PMR-10, R-34, R-46, EP-01) directly"
+  - "references the 2026-08-01 methodology freeze from .claude/CLAUDE.md - the same freeze this research session's own system prompt cites"
+  - "'mechanical assurance proves DECLARED STRUCTURE; architecture review discovers UNDECLARED ARCHITECTURAL CONTENT'"
+
+undefined_concepts: [knowledge]
+open_questions: []
+
+tier2_triggered: true
+tier2_reason: >
+  Strongest evidence yet (beyond 0057's single citation) that the brainstorming/ corpus and the
+  root-level/out-of-scope material share one continuous governance effort - direct citations of
+  out-of-scope-root documents and root-level identifier series (ES/PMR/R/EP), plus a shared
+  reference to the same methodology freeze this session's own system prompt cites. The earlier
+  multi-track caution is better read as stylistic variation within one effort, not separate
+  lineages - a content-based resolution, not a style-based inference (respecting MD-012).

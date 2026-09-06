@@ -1,0 +1,72 @@
+sequence: 20
+path: docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Domain_Model.md
+title: KnowledgeOS — Engineering Knowledge Domain Model
+date: 2026-08-02
+bytes: 23501
+doc_type: strategic DDD domain model (executed nine-criteria bounded-context adjudication)
+
+primary_model_initial: engineering_knowledgeos
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - adjudicates C1 governance/method/runtime/evidence domains against the C1 nine-criteria instrument
+  - "PKS context-type/instance distinction and the D-6 evidence split are pure C1 strategic DDD"
+  - zero occurrences of knowledge state, K_t, dimension of knowledge, Buddhi, operator, purification, Moksha
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [ddd, domain_model, governance, contradiction, evidence]
+
+status: DR
+maturity: developing        # explicitly known, via forward annotation, to require revision
+importance: high
+
+introduces:
+  - context_type_vs_context_instance          # D-7 PKS reclassified
+  - boundary_running_through_a_concept         # D-6 split by conflicting ownership, not convenience
+  - misplacement_found_by_meaning_vs_by_vocabulary
+  - model_must_precede_the_index
+  - rejection_names_the_criterion_it_failed
+defines:
+  - d1_through_d7_domain_verdicts
+  - d6a_d6b_as_canonical_reading_of_evidence
+  - context_type_definition
+hypotheses:
+  - d1_authorizes_d2               # marked HYPOTHESIZED; named the model's most consequential open question
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 20th consecutive file
+  - bounded_context     # applied rigorously via the nine-criteria instrument; imported from Evans, not defined here
+  - ownership            # load-bearing throughout; never positively defined
+  - baseline              # the CRITICAL 5-way UL collision; resolved by qualification convention, not by definition
+open_questions:
+  - R1_does_D1_authorize_D2_or_are_they_peers
+  - R2_baseline_collision_to_the_ARB
+  - R3_record_D6a_D6b_as_canonical
+  - R4_do_not_promote_D5_without_ARB_evidence
+
+depends_on: [10, 19]
+extends: [10, 19]
+refines: [16]          # generalizes "dispersed, not missing" into a principled ownership-based split
+renames: []
+contradicts: []        # is CONTRADICTED BY a forward-referenced falsification pass, annotated at the top
+supersedes: []
+repeats: [10]
+connects_to: [1, 9, 10, 11, 16, 19]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Executes the corpus's first full closed-criteria strategic-DDD adjudication (nine criteria applied
+  as an actual decision procedure to eight candidates, not merely cited), yielding four confirmed
+  bounded contexts, one outright rejection, one demotion, and one principled split. Discovers a
+  category error (PKS treated as a context rather than a context TYPE) with a traced real-world
+  consequence (methodology leaking into a product path). Records the corpus's most severe UL
+  contradiction ("Baseline" in five distinct senses, one belonging to a domain a prior inventory had
+  not even indexed). Forward-annotated as partially falsified by a later pass (D-2, D-3, D-7
+  confidence revised downward) - read here at original strength per §39, with the correction to be
+  applied when the reading order reaches the falsification report.

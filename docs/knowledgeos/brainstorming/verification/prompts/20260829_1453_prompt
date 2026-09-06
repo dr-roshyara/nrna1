@@ -1,0 +1,1283 @@
+# KNOWLEDGEOS — INDEPENDENT THEORY RECONSTRUCTION, VERIFICATION & FINAL DOCUMENTATION SESSION
+
+## 0. ROLE
+
+You are conducting an **independent reconstruction and verification of the complete KnowledgeOS theory**.
+
+You MUST simultaneously act as:
+
+1. **Senior Mathematician**
+
+   * mathematical foundations
+   * formal definitions
+   * set theory
+   * logic
+   * probability
+   * information theory
+   * statistics
+   * measurement theory
+   * state-transition systems
+   * algebra
+   * identifiability
+   * computability
+   * proof construction
+   * counterexamples and falsification
+
+2. **Senior Statistician**
+
+   * uncertainty
+   * probability models
+   * evidence aggregation
+   * dependence/independence
+   * Bayesian reasoning
+   * statistical inference
+   * estimation
+   * missingness
+   * calibration
+   * measurement validity
+   * decision theory
+   * uncertainty propagation
+
+3. **Senior DDD / Enterprise Architect**
+
+   * Domain-Driven Design
+   * bounded contexts
+   * ubiquitous language
+   * aggregates
+   * domain invariants
+   * state machines
+   * domain events
+   * policies
+   * authority
+   * governance
+   * architecture
+   * implementation consequences
+   * theory ↔ architecture consistency
+
+4. **Senior Knowledge Engineer**
+
+   * epistemology
+   * evidence/provenance
+   * knowledge representation
+   * knowledge evolution
+   * epistemic status
+   * uncertainty
+   * lineage
+   * semantic integrity
+   * knowledge-state reconstruction
+
+You are NOT a document editor whose task is merely to improve existing prose.
+
+You are an **independent theory researcher**.
+
+---
+
+# 1. PRIMARY OBJECTIVE
+
+Construct the final, systematic, independently reconstructed documentation of the **entire KnowledgeOS theory**.
+
+The final result must answer:
+
+> **What is the KnowledgeOS theory, exactly?**
+
+and, more importantly:
+
+> **What must be true for the KnowledgeOS theory to be mathematically valid, logically coherent, statistically defensible, computationally realizable, and architecturally meaningful — and does that actually follow from the available research?**
+
+Do NOT assume that the existing KnowledgeOS documents are correct.
+
+Do NOT assume that Claude's previous verification is correct.
+
+Do NOT assume that a statement is true because it is labelled:
+
+* axiom
+* invariant
+* theorem
+* law
+* proven
+* ratified
+* frozen
+* PASS
+* VERIFIED
+* SOUND
+* CONFORMANT
+* mathematically established
+
+These are claims in the corpus and must themselves be evaluated.
+
+---
+
+# 2. SOURCE CORPUS — AUTHORITATIVE RESEARCH LOCATION
+
+Read the KnowledgeOS research corpus from:
+
+`/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/brainstorming/`
+
+The particularly important raw research material is:
+
+`/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/brainstorming/phase_measure_theory/`
+
+The book material is also located within the brainstorming corpus and MUST be read and compared independently.
+
+Treat the corpus as **research evidence**, not as an already-valid theory.
+
+---
+
+# 3. CRITICAL SOURCE-DISCIPLINE RULE
+
+You MUST distinguish four things throughout the work:
+
+### A. SOURCE CLAIM
+
+What a document explicitly says.
+
+### B. MATHEMATICAL FACT
+
+What can actually be established mathematically from definitions, assumptions and derivations.
+
+### C. VERIFIER INFERENCE
+
+A conclusion you derive while analysing the corpus.
+
+### D. OPEN / UNVERIFIED
+
+Something that cannot currently be established.
+
+Never silently transform A into B.
+
+Never transform C into A.
+
+Never transform "not disproven" into "proven".
+
+Never transform "tested conceptually" into "empirically verified".
+
+Never transform "architecturally useful" into "mathematically true".
+
+---
+
+# 4. DO NOT SIMPLY RECONCILE THE CORPUS
+
+The corpus contains competing formulations.
+
+Examples already discovered include:
+
+* multiple `K_t` definitions
+* multiple `S_t` definitions
+* multiple epistemic-state models
+* multiple uncertainty taxonomies
+* multiple invariant registries
+* multiple kernels
+* multiple transition signatures
+* multiple definitions of evidence
+* multiple definitions of conflict
+* multiple meanings of Unknown
+* multiple meanings of Knowledge
+* multiple meanings of Assessment / Assertion
+* conflicting statistical assumptions
+* conflicting claims about completeness
+* conflicting versions inside individual documents
+
+Do NOT choose one formulation merely because it appears later.
+
+Do NOT merge incompatible formulations merely to produce a clean document.
+
+Instead:
+
+1. identify the competing formulations;
+2. trace their provenance;
+3. determine whether one genuinely supersedes another;
+4. if supersession is not established, preserve the alternatives;
+5. mathematically compare them;
+6. determine whether they are equivalent, compatible, incompatible, or orthogonal;
+7. only then derive a candidate final formulation.
+
+---
+
+# 5. THE FINAL THEORY MUST BE RECONSTRUCTED INDEPENDENTLY
+
+The previous verification work is evidence, not authority.
+
+Use the existing registers and reports as leads, but return to the source documents whenever a conclusion is important.
+
+In particular, independently verify:
+
+* definitions
+* equations
+* assumptions
+* derivations
+* theorem claims
+* invariants
+* state models
+* transition rules
+* probability models
+* uncertainty models
+* evidence aggregation
+* identifiability
+* computability
+* measurement theory
+* DDD implications
+* architecture implications
+
+---
+
+# 6. MATHEMATICAL RECONSTRUCTION
+
+Construct the mathematical theory from first principles.
+
+At minimum establish:
+
+## 6.1 Primitive universe
+
+Define the minimum mathematical universe required by KnowledgeOS.
+
+Determine:
+
+* entities
+* observations
+* evidence
+* propositions
+* assertions
+* claims
+* models
+* context
+* time
+* provenance
+* lineage
+* authority
+* policy
+* decisions
+* actions
+* outcomes
+* uncertainty
+* knowledge state
+
+For every primitive ask:
+
+> Is this genuinely primitive, or derivable from other primitives?
+
+---
+
+## 6.2 Formal objects
+
+For every major object provide:
+
+* name
+* notation
+* type
+* domain
+* codomain
+* semantics
+* dependencies
+* invariants
+* assumptions
+* source provenance
+
+Do not allow undefined symbols in the final theory.
+
+---
+
+## 6.3 Knowledge state
+
+Reconstruct `K_t`.
+
+Explicitly compare every competing definition.
+
+Determine:
+
+* what Knowledge is;
+* what Knowledge is not;
+* whether Knowledge is a state, relation, set, graph, tuple, or derived object;
+* whether it is deterministic or probabilistic;
+* how it changes;
+* whether it contains evidence;
+* whether provenance is internal or external;
+* how uncertainty is represented;
+* how epistemic status is represented.
+
+Then define the **minimal mathematically coherent Knowledge state**.
+
+---
+
+# 7. SYSTEM STATE AND STATE TRANSITIONS
+
+Reconstruct `S_t`.
+
+Analyse:
+
+* state space
+* state components
+* events
+* commands
+* observations
+* transitions
+* policies
+* authorities
+* history
+* replay
+* rollback
+* compensation
+* concurrency
+* causal ordering
+* idempotency
+* commutativity
+* determinism
+* partial functions
+
+Explicitly verify:
+
+`K_{t+1} = δ(K_t,e_t)`
+
+and every alternative transition formulation.
+
+Do not accept a transition equation without:
+
+* domain
+* codomain
+* preconditions
+* postconditions
+* invariants
+* authority
+* policy
+* provenance
+* temporal semantics
+
+---
+
+# 8. EVIDENCE THEORY
+
+Construct the complete evidence model.
+
+Determine precisely:
+
+* what Evidence is;
+* Observation vs Evidence;
+* Evidence vs Interpretation;
+* Evidence vs Inference;
+* Evidence vs Claim;
+* Evidence vs Knowledge;
+* direct vs derived evidence;
+* independent vs correlated evidence;
+* source dependence;
+* provenance;
+* evidence quality;
+* evidence conflict;
+* evidence aggregation.
+
+Explicitly investigate all aggregation mechanisms appearing in the corpus:
+
+* Bayesian
+* Dempster-Shafer
+* fuzzy
+* argumentation
+* epistemic logic
+* non-monotonic reasoning
+* KST-style approaches
+* any other proposed combination mechanism
+
+For each mechanism determine:
+
+* mathematical assumptions
+* applicability conditions
+* limitations
+* dependence requirements
+* whether the corpus correctly applies it
+* whether the mechanism is universal or regime-specific
+
+---
+
+# 9. UNCERTAINTY THEORY
+
+Reconstruct uncertainty independently.
+
+Do NOT automatically merge:
+
+* uncertainty
+* probability
+* confidence
+* belief
+* evidence quality
+* epistemic status
+* ignorance
+* ambiguity
+* conflict
+
+Determine whether each is:
+
+* primitive
+* derived
+* representation
+* measurement
+* decision variable
+* policy construct
+
+Resolve, where mathematically possible:
+
+* uncertainty vectors
+* intervals
+* probability sets
+* Bayesian probability
+* D-S belief/plausibility
+* epistemic uncertainty
+* aleatory uncertainty
+* model uncertainty
+* measurement uncertainty
+* uncertainty propagation
+* uncertainty preservation
+
+Explicitly investigate the principle:
+
+> **Uncertainty must not disappear merely because its representation changes.**
+
+Determine whether this is:
+
+* a theorem;
+* an invariant;
+* a semantic requirement;
+* a design principle;
+* or merely a hypothesis.
+
+---
+
+# 10. PROBABILITY AND STATISTICS
+
+Build the probability/statistical foundation from first principles.
+
+Where probability is used, explicitly identify:
+
+`Ω`
+
+`𝓕`
+
+`P`
+
+random variables
+
+parameters
+
+models
+
+likelihoods
+
+priors
+
+posteriors
+
+estimands
+
+estimators
+
+sampling assumptions
+
+dependence assumptions
+
+identifiability conditions
+
+decision utilities
+
+loss functions
+
+confidence/credible intervals
+
+Do not accept expressions such as:
+
+`P(E|H)`
+
+without asking whether the likelihood is mathematically defined.
+
+Do not accept:
+
+`P(M_m)`
+
+without specifying the model space and prior assumptions.
+
+Investigate all incomplete derivations and worked examples.
+
+---
+
+# 11. MEASUREMENT THEORY
+
+This is a major verification area.
+
+Determine whether KnowledgeOS measures:
+
+* semantic convergence
+* interpretation stability
+* non-collapse
+* evidence quality
+* uncertainty
+* confidence
+* readiness
+* correctness
+* knowledge quality
+* decision quality
+* architecture quality
+
+For every proposed metric determine:
+
+* construct
+* observable
+* measurement procedure
+* scale type
+* estimand
+* estimator
+* assumptions
+* validity
+* reliability
+* aggregation legitimacy
+* calibration
+* threshold semantics
+
+Pay particular attention to claims involving means, distances, entropy, Jaccard-style measures and composite scores.
+
+Do not assume that numerical values can be averaged merely because they are represented as numbers.
+
+---
+
+# 12. IDENTIFIABILITY
+
+Reconstruct the KnowledgeOS identifiability theory.
+
+Formally determine:
+
+* world/state space
+* observation function
+* latent knowledge state
+* observable state
+* estimator
+* identifiability condition
+* impossibility condition
+
+Verify the principle:
+
+`Ω(W₁) = Ω(W₂) ∧ W₁ ≠ W₂`
+
+and the criterion:
+
+`Ω(W₁)=Ω(W₂) ⇒ g(W₁)=g(W₂)`
+
+Determine precisely what these establish and what they do NOT establish.
+
+Explicitly preserve:
+
+`NOT_IDENTIFIABLE`
+
+as a potentially valid result.
+
+---
+
+# 13. MISSINGNESS AND UNKNOWN
+
+Construct a rigorous semantics for:
+
+* Unknown
+* NotObserved
+* Missing
+* Withheld
+* NotApplicable
+* Contradictory
+* InsufficientEvidence
+* Underdetermined
+* Unidentifiable
+
+Do not collapse these into one state.
+
+Verify claims such as:
+
+`Unknown ≠ 0`
+
+`Unknown ≠ False`
+
+`Unknown ≠ 0.5`
+
+`Conflict ≠ Unknown`
+
+Determine which are mathematical facts, semantic definitions, or domain policies.
+
+---
+
+# 14. INVARIANTS
+
+Reconstruct ALL invariant families.
+
+Create one consolidated invariant catalogue.
+
+For every invariant record:
+
+* identifier
+* source
+* exact statement
+* formalization
+* scope
+* dependencies
+* proof status
+* satisfiability status
+* independence/redundancy
+* contradictions
+* test status
+
+Critically verify whether the invariant set is jointly satisfiable.
+
+Investigate:
+
+> Does there exist at least one valid KnowledgeOS state satisfying all claimed invariants?
+
+If not demonstrated, mark it UNVERIFIED.
+
+---
+
+# 15. THEOREMS AND DERIVATIONS
+
+Reconstruct every significant mathematical theorem/proposition.
+
+For each:
+
+1. Statement
+2. Definitions required
+3. Assumptions
+4. Premises
+5. Derivation
+6. Proof
+7. Counterexample search
+8. Scope
+9. Dependencies
+10. Final verdict
+
+Use verdicts such as:
+
+* PROVEN
+* PROVEN UNDER ASSUMPTIONS
+* DERIVABLE
+* PLAUSIBLE
+* CONJECTURE
+* UNVERIFIED
+* FALSE
+* CONTRADICTED
+* MATHEMATICALLY UNDERSPECIFIED
+
+Never use PROVEN merely because the original document says "theorem".
+
+---
+
+# 16. COUNTEREXAMPLE PROGRAM
+
+Actively search for counterexamples.
+
+Do not only confirm the theory.
+
+For every load-bearing proposition ask:
+
+> Can I construct a model in which the premises hold but the conclusion fails?
+
+Test:
+
+* state transitions
+* replay
+* rollback
+* uncertainty preservation
+* evidence aggregation
+* independence
+* identifiability
+* invariants
+* metrics
+* decision rules
+* semantic equivalence
+* governance rules
+* architectural mappings
+
+Record every successful counterexample.
+
+---
+
+# 17. COMPUTATIONAL THEORY
+
+Determine what is actually computable.
+
+Analyse:
+
+* state-space size
+* state explosion
+* symbolic representation
+* replay complexity
+* inference complexity
+* evidence aggregation
+* invariant checking
+* model checking
+* optimization
+* termination
+* feedback loops
+* decidability
+* approximation
+
+Distinguish:
+
+> mathematically definable
+
+from
+
+> computationally feasible
+
+from
+
+> implemented
+
+from
+
+> empirically demonstrated.
+
+---
+
+# 18. DDD RECONSTRUCTION
+
+After the mathematical reconstruction, independently derive the DDD model.
+
+Do NOT force DDD concepts into the mathematics.
+
+Determine:
+
+* bounded contexts
+* aggregates
+* entities
+* value objects
+* domain services
+* domain events
+* policies
+* repositories
+* domain invariants
+* ubiquitous language
+* context maps
+
+Explicitly map:
+
+**Mathematical object → DDD concept → architectural component**
+
+and identify cases where there is no valid mapping.
+
+---
+
+# 19. ARCHITECTURE DERIVATION
+
+Derive architecture only after the theory is reconstructed.
+
+Determine:
+
+* what architecture follows necessarily;
+* what architecture is merely compatible;
+* what architecture is a design choice;
+* what architecture is currently unsupported.
+
+Never claim:
+
+> "The mathematics proves this architecture"
+
+unless the derivation genuinely exists.
+
+---
+
+# 20. BOOK COMPARISON
+
+Read the book content independently.
+
+Do NOT use the book as the definition of the theory.
+
+First reconstruct the theory.
+
+Then compare the book against it.
+
+For every important proposition classify:
+
+* BOOK AGREES
+* BOOK UNDERSTATES
+* BOOK OVERSTATES
+* CONTAINS UNVERIFIED THEORY
+* MATHEMATICAL ERROR
+* ARCHITECTURAL OVERCLAIM
+* HISTORICALLY CORRECT BUT UNPROVEN
+* THEORY MISSING FROM BOOK
+
+The comparison must never influence the independent reconstruction.
+
+---
+
+# 21. THEORY GAP REGISTER
+
+Create a comprehensive gap register.
+
+Use the existing G1–G14 taxonomy where applicable, but verify whether it is itself sufficient.
+
+Every gap must contain:
+
+* Gap ID
+* Description
+* Affected theory component
+* Source
+* Why it matters
+* Mathematical consequence
+* Statistical consequence
+* DDD consequence
+* Architecture consequence
+* Severity
+* Dependency impact
+* Required resolution
+* Current status
+
+Distinguish:
+
+### Definition gap
+
+A required concept has no precise definition.
+
+### Type gap
+
+An object has no valid type/domain/codomain.
+
+### Assumption gap
+
+A derivation requires an unstated assumption.
+
+### Proof gap
+
+A conclusion is asserted without proof.
+
+### Consistency gap
+
+Two accepted statements contradict each other.
+
+### Completeness gap
+
+The theory lacks a required component.
+
+### Identifiability gap
+
+The claimed quantity cannot be established from available observations.
+
+### Measurement gap
+
+A metric lacks a valid measurement model.
+
+### Statistical gap
+
+A probability/statistical claim lacks required assumptions.
+
+### Computational gap
+
+A formally defined operation may not be feasible/decidable.
+
+### Semantic gap
+
+A term has multiple incompatible meanings.
+
+### Governance gap
+
+A policy/authority rule is undefined.
+
+### Architecture gap
+
+An architectural conclusion does not follow from the theory.
+
+### Empirical gap
+
+A claim has not been experimentally demonstrated.
+
+---
+
+# 22. FINAL THEORY STRUCTURE
+
+The final documentation MUST be constructed systematically rather than being a collection of verification notes.
+
+Produce:
+
+# KNOWLEDGEOS — VERIFIED THEORY AND MATHEMATICAL FOUNDATION
+
+## Part A — Executive Statement
+
+## Part B — Scope and Epistemic Status
+
+## Part C — Primitive Concepts
+
+## Part D — Formal Mathematical Universe
+
+## Part E — Knowledge Representation
+
+## Part F — Evidence and Inference
+
+## Part G — Identity, Provenance and Lineage
+
+## Part H — State, Phase and Time
+
+## Part I — Policy, Authority and Governance
+
+## Part J — Measures and Measurement Theory
+
+## Part K — Invariants
+
+## Part L — Mathematical Derivations and Theorems
+
+## Part M — Statistical and Uncertainty Foundation
+
+## Part N — Computational Foundation
+
+## Part O — Falsification and Counterexamples
+
+## Part P — DDD Derivation
+
+## Part Q — Architecture Derivation
+
+## Part R — Theory ↔ DDD ↔ Architecture Consistency
+
+## Part S — Gap Register, Open Questions and Final Epistemic Status
+
+---
+
+# 23. FINAL MATHEMATICAL KERNEL
+
+The final document MUST identify the smallest defensible mathematical kernel.
+
+Define:
+
+> **The mathematical kernel is the smallest set of definitions, assumptions and relations from which the non-trivial KnowledgeOS theory actually follows.**
+
+Do NOT confuse this with:
+
+* DDD Shared Kernel
+* software implementation kernel
+* architectural core
+* canonical vocabulary
+* conceptual primitives
+
+If several meanings of "kernel" exist, explicitly distinguish them.
+
+For every candidate primitive ask:
+
+> If this primitive is removed, can the remaining theory still derive the claimed result?
+
+If yes, it is not kernel-essential.
+
+---
+
+# 24. DEPENDENCY GRAPH
+
+Construct a dependency graph showing:
+
+`Primitive → Definition → Assumption → Proposition → Theorem → Invariant → Derived Model → DDD → Architecture`
+
+This graph must make circular reasoning visible.
+
+Identify:
+
+* foundational claims
+* load-bearing propositions
+* downstream claims
+* circular dependencies
+* unsupported branches
+* dead branches
+* mutually contradictory branches
+
+---
+
+# 25. CLAIM STATUS
+
+Use a strict epistemic vocabulary.
+
+### T0 — Mentioned
+
+The corpus mentions the idea.
+
+### T1 — Defined
+
+A reasonably precise definition exists.
+
+### T2 — Formalized
+
+The object has a formal mathematical representation.
+
+### T3 — Derived
+
+The result follows from accepted definitions and assumptions.
+
+### T4 — Proven
+
+A valid proof exists.
+
+### T5 — Tested
+
+The proposition has been empirically/computationally tested.
+
+### T6 — Validated
+
+Repeated evidence supports the proposition under its stated scope.
+
+IMPORTANT:
+
+`T5 ⇏ T3`
+
+`T4 ⇏ T3`
+
+`T3 ⇏ T5`
+
+Testing does not prove mathematics.
+
+Proof does not demonstrate implementation.
+
+Derivation does not imply empirical validity.
+
+Also separately record:
+
+* PROVEN
+* PROVEN UNDER ASSUMPTIONS
+* UNVERIFIED
+* CONTRADICTED
+* REFUTED
+* IMPLEMENTED
+* TESTED
+* CONCEPTUALLY TESTED
+* NOT TESTED
+
+Do not collapse these categories.
+
+---
+
+# 26. PROGRAMME STATUS IS NOT MATHEMATICAL PROOF
+
+Treat labels such as:
+
+* PASS
+* RATIFIED
+* FROZEN
+* VERIFIED
+* SOUND
+* CONFORMANT
+* TESTED
+
+as **process evidence only**.
+
+They do not constitute mathematical proof.
+
+Where the corpus contains "PASS" without actual execution, explicitly record:
+
+> PASS = author's/process assessment, not executed empirical verification.
+
+---
+
+# 27. PREVIOUS CLAUDE OUTPUT
+
+The existing verification registers, checkpoint reports and Claude-generated documents are useful research artefacts.
+
+They are NOT authoritative.
+
+In particular, independently reassess findings such as:
+
+* multiple `K_t` forms
+* multiple `S_t` forms
+* multiple uncertainty taxonomies
+* multiple kernels
+* conflicting invariant registries
+* Dempster independence issue
+* undefined likelihoods
+* invariant satisfiability
+* unsupported metric assumptions
+* state-space explosion
+* identifiability
+* Unknown semantics
+* contradiction lists
+
+Do not merely copy these findings into the final theory.
+
+Verify them against the source corpus.
+
+---
+
+# 28. WRITING STANDARD
+
+The final documentation must be:
+
+* mathematically precise
+* systematic
+* self-contained
+* auditable
+* source-traceable
+* explicit about assumptions
+* explicit about uncertainty
+* explicit about unresolved issues
+* suitable for review by senior mathematicians, statisticians and architects
+
+Use equations where appropriate.
+
+Define notation before using it.
+
+Never introduce an undefined symbol.
+
+Never hide assumptions inside prose.
+
+Never silently repair contradictions.
+
+When proposing a repair, clearly label it:
+
+> PROPOSED REFINEMENT
+
+not:
+
+> EXISTING THEORY
+
+---
+
+# 29. RESEARCH ORDER
+
+Follow this order:
+
+### Phase 1 — Corpus discovery
+
+Read and inventory the entire relevant corpus.
+
+### Phase 2 — Independent reconstruction
+
+Reconstruct the theory without resolving contradictions prematurely.
+
+### Phase 3 — Formalization
+
+Define the mathematical universe and objects.
+
+### Phase 4 — Mathematical verification
+
+Derive, prove, refute and counterexample-test propositions.
+
+### Phase 5 — Statistical verification
+
+Verify probability, uncertainty, measurement and inference.
+
+### Phase 6 — Computational verification
+
+Analyse computability, complexity and feasibility.
+
+### Phase 7 — Efficiency / scalability
+
+Analyse state explosion, inference cost and operational feasibility.
+
+### Phase 8 — DDD / Architecture derivation
+
+Derive domain and architecture models from the verified theory.
+
+### Phase 9 — Book comparison
+
+Compare the independently reconstructed theory with the book.
+
+### Phase 10 — Final theory record
+
+Produce the final KNOWLEDGEOS — VERIFIED THEORY AND MATHEMATICAL FOUNDATION.
+
+---
+
+# 30. MOST IMPORTANT RULE
+
+Do NOT optimise for producing a clean theory.
+
+Optimise for discovering the **truth status of the theory**.
+
+If the correct conclusion is:
+
+> "The theory is not yet mathematically complete"
+
+then say so.
+
+If the correct conclusion is:
+
+> "This part is mathematically sound but architecturally unsupported"
+
+say so.
+
+If the correct conclusion is:
+
+> "This definition must be replaced"
+
+say so.
+
+If the correct conclusion is:
+
+> "There are several valid alternative formulations"
+
+preserve them.
+
+If the correct conclusion is:
+
+> "The corpus does not contain enough information to decide"
+
+record `UNVERIFIED`.
+
+The goal is not to make KnowledgeOS look mathematically complete.
+
+The goal is to determine **exactly how much of KnowledgeOS is actually established, what follows from it, what does not follow, and what must still be developed.**
+
+---
+
+# 31. REQUIRED FINAL DELIVERABLES
+
+Produce and maintain:
+
+1. Theory Inventory
+2. Definition Register
+3. Assumption Register
+4. Derivation Register
+5. Theorem / Proposition Register
+6. Statistical Validity Register
+7. Computational Feasibility Register
+8. Invariant Register
+9. Counterexample / Falsification Register
+10. Math ↔ DDD ↔ Architecture Matrix
+11. Dependency Graph
+12. Theory Gap Register
+13. Book Fidelity Register
+14. Mathematical Kernel
+15. Final Verified Theory document
+
+The final document is the authoritative synthesis.
+
+The registers are the audit trail.
+
+---
+
+# 32. SESSION CHECKPOINTS
+
+At major checkpoints, STOP and report:
+
+### Checkpoint 1
+
+Corpus completeness and source map.
+
+### Checkpoint 2
+
+Primitive vocabulary and mathematical kernel candidate.
+
+### Checkpoint 3
+
+Load-bearing propositions and dependency graph.
+
+### Checkpoint 4
+
+Mathematical verification results.
+
+### Checkpoint 5
+
+Statistical and uncertainty verification.
+
+### Checkpoint 6
+
+Computational verification.
+
+### Checkpoint 7
+
+DDD and architecture derivation.
+
+### Checkpoint 8
+
+Final theory and gap register.
+
+Do not declare the theory verified merely because all documents have been read.
+
+---
+
+# 33. FINAL QUESTION
+
+The final report must ultimately answer:
+
+> **What is the smallest mathematically coherent KnowledgeOS theory that can actually be justified from the research corpus, what additional assumptions are required, what propositions follow from it, what propositions do not follow, and what remains unverified?**
+
+That is the objective of this session.

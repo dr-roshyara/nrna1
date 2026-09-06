@@ -1,0 +1,128 @@
+[
+ {
+  "id": "F1",
+  "desc": "Policy-free transition",
+  "exp": "Unknown(NoApplicablePolicy)",
+  "obs": "UNKNOWN(NoApplicablePolicy)",
+  "verdict": "PASS",
+  "level": 4,
+  "note": ""
+ },
+ {
+  "id": "F2",
+  "desc": "Authority-free",
+  "exp": "Deny(NoAuthority)",
+  "obs": "DENY(NoAuthority)",
+  "verdict": "PASS",
+  "level": 4,
+  "note": ""
+ },
+ {
+  "id": "F3",
+  "desc": "Policy conflict",
+  "exp": "CONFLICT (no silent selection)",
+  "obs": "CONFLICT(incompatible)",
+  "verdict": "PASS",
+  "level": 4,
+  "note": ""
+ },
+ {
+  "id": "F4",
+  "desc": "Authority conflict",
+  "exp": "Deny unless precedence declared",
+  "obs": "DENY(AuthorityConflict)",
+  "verdict": "PASS",
+  "level": 4,
+  "note": ""
+ },
+ {
+  "id": "F4b",
+  "desc": "Authority conflict w/ precedence",
+  "exp": "Resolved",
+  "obs": "PASS(PrecedenceResolved:A1)",
+  "verdict": "PASS",
+  "level": 4,
+  "note": ""
+ },
+ {
+  "id": "F5",
+  "desc": "Missing policy",
+  "exp": "Unknown, no implicit default",
+  "obs": "UNKNOWN(NoApplicablePolicy)",
+  "verdict": "PASS",
+  "level": 4,
+  "note": ""
+ },
+ {
+  "id": "F6",
+  "desc": "Expired policy",
+  "exp": "Not applicable at t>=t_end",
+  "obs": "Applicable(t_e)=False; Applicable(t_e+1m)=False",
+  "verdict": "PASS",
+  "level": 4,
+  "note": ""
+ },
+ {
+  "id": "F7",
+  "desc": "Revoked authority",
+  "exp": "historical reconstructable; current denies",
+  "obs": "at t0=PASS(Permit:AR); at t1=DENY(NoAuthority)",
+  "verdict": "PASS",
+  "level": 4,
+  "note": ""
+ },
+ {
+  "id": "F8",
+  "desc": "Unauthorized policy mutation",
+  "exp": "Deny; active policy unchanged",
+  "obs": "direct mutation raised=True (FrozenInstanceError); rules still=['r1']",
+  "verdict": "PASS",
+  "level": 4,
+  "note": ""
+ },
+ {
+  "id": "F9",
+  "desc": "Active policy integrity",
+  "exp": "duplicate version identity rejected; stored state unchanged",
+  "obs": "error='duplicate version identity'; stored before=1 after=1",
+  "verdict": "PASS",
+  "level": 4,
+  "note": ""
+ },
+ {
+  "id": "F10",
+  "desc": "Historical policy replay",
+  "exp": "PolicyAt(t_old)=v1, not v2",
+  "obs": "PolicyAt(2026-03)=v1; PolicyAt(2026-08)=v2; verdict_old=PASS",
+  "verdict": "PASS",
+  "level": 4,
+  "note": ""
+ },
+ {
+  "id": "F11",
+  "desc": "Overlapping policy conflict",
+  "exp": "CONFLICT or safe failure; never arbitrary Permit",
+  "obs": "classification=CONFLICT; PolicyAt(overlap)=CONFLICT(OverlappingPolicies:v1,v1)",
+  "verdict": "PASS",
+  "level": 4,
+  "note": ""
+ },
+ {
+  "id": "F12",
+  "desc": "Governance propagation",
+  "exp": "exists tau_c: all L_i=0",
+  "obs": "tau_c=5; stale=0",
+  "verdict": "PASS",
+  "level": 3,
+  "note": "SIMULATED \u2014 no real multi-node deployment exists. Level 3, NOT empirical Level 5."
+ },
+ {
+  "id": "F13",
+  "desc": "Rule independence",
+  "exp": "r2 unchanged when r1's exclusive input changes",
+  "obs": "r2(x=1)=PASS; r2(x=999)=PASS",
+  "verdict": "PASS",
+  "level": 4,
+  "note": ""
+ }
+]

@@ -1,0 +1,89 @@
+sequence: 994
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/E1-E7-EQUALITY-INVESTIGATION.md
+title: "E1-E7 -- Equality Investigation: The Full, Definitive Formal Artifact for Reviewer B's Mandate, Delivering the Complete Eight-Attack Falsification Table and the Sharp Independence Verdict 'R6 -- The Cleanest Case of Corroboration-Not-Equal-Derivation in the Programme: Here There Is Not Even Corroboration'"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the complete, final E1-E7 formal artifact for the equality-investigation sub-track, underlying files 0989/0991/0993's already-documented findings"
+source_role: PRIMARY_RESEARCH
+canonical_source: 994
+importance: critical
+confidence: high
+about: >
+  The full, definitive E1-E7 formal artifact for Reviewer B's mandate (file 0989), consolidating and
+  completing what files 0991 (script execution) and 0993 (two-reviewer synthesis) already documented, with
+  several genuinely new specifics.
+
+  **E1 adds a genuinely new corpus locus, "262"**, quoted verbatim: "structural equality and semantic
+  equality were distinguished... structural state equality reflexive, symmetric, transitive" (EXECUTED) and
+  "Proposition semantic equality 🟡 Candidate" -- extending the already-documented Step-246/254/264.15
+  citations with a further corpus location.
+
+  **E2 delivers the full formalization table with an explicit decision-procedure column** for all five
+  relations (A-D plus value-level `≡_D`), concluding: **"One of five relations is evaluable. `≡_D` is at the
+  value level, not the state level, so it cannot stand in for `≡`."**
+
+  **E3-E6 confirm, in full formal form, the findings already documented via files 0991/0993**: the corpus
+  hierarchy is "a partial order over four relations, not the three-element chain previously cited"; the
+  non-injectivity over-claim is named and corrected; the identity-boundary table now enumerates FIVE distinct
+  identity notions (state/operation/authority-act/event/provenance), with the finding "Five identity notions,
+  one defined."
+
+  **§12 (Falsification-first) DELIVERS THE COMPLETE, PREVIOUSLY UNSEEN EIGHT-ATTACK TABLE**, honestly scored:
+  attack 2 (stronger identity rule) SUCCEEDS; attack 6 (non-injectivity does not follow) SUCCEEDS; attacks 1,
+  4, 5, 7, 8 PARTLY SUCCEED or are UNRESOLVED/CANNOT-BE-TESTED; only attack 3 (implementation artefact) fails
+  outright. Concludes: "Three attacks succeed or partly succeed. `D285-5` survives — as a narrower claim."
+
+  **§9 (Independence) DELIVERS A GENUINELY SHARP, PREVIOUSLY UNSEEN VERDICT**: the equality result is grade
+  **`R6` — independently required by KnowledgeOS**, derivable "from `id=H(P,e,c,t,Π)` and Step 246...
+  entirely, from typing alone"; the Gītā route explicitly FAILS (2.47-2.48 says nothing about equality
+  relations on states) — **"Recorded because it is the cleanest case of `corroboration≠derivation` in the
+  programme: here there is not even corroboration."** This is a materially stronger, more precisely reasoned
+  statement than anything previously captured about this result's Gītā-independence.
+
+  **§10 delivers the concrete current state of the three-question separation** (introduced abstractly in file
+  0989): A (what is an operation) UNRESOLVED; B (what state results) `δ(K,o)`, commit case unbodied; C (when
+  are states equal) four named relations, one evaluable — "C was not answered by repeating A or B."
+
+  **§14 delivers the file's own precise closing specification of what would resolve the open verdict**: "a
+  decision on `254 Decision 3` (is `Π` inside `≡`?) and a declared permitted-observation set for `≈`. Both
+  are `NORMATIVE`. Neither is taken here." -- an explicit, disciplined refusal to manufacture closure.
+introduces:
+  - concept: "Corpus locus '262': structural equality is formally reflexive/symmetric/transitive (EXECUTED); Proposition semantic equality is only a 'Candidate' status"
+  - concept: "The complete eight-attack falsification table for D285-5's semantic-equality claim, with honest per-attack scoring"
+  - concept: "The sharp R6 independence verdict for the equality result: entirely derivable from KnowledgeOS typing alone, with the Gita route explicitly failing -- 'the cleanest case of corroboration not equal derivation... here there is not even corroboration'"
+  - concept: "The precise specification of what would resolve the equality investigation's OPEN verdict: a decision on Step 254 Decision 3, plus a declared permitted-observation set for observational equality"
+defines: []
+refines:
+  - concept: "This reconstruction's already-documented equality-investigation findings (files 0989, 0991, 0993)"
+    refinement: "COMPLETED with the full eight-attack falsification table, a sharper R6 independence verdict, and the precise NORMATIVE closure specification"
+contradicts: []
+repeats:
+  - "Substantially repeats the core findings already documented via files 0989 (mandate), 0991 (execution), and 0993 (synthesis) -- this file is their definitive, complete formal artifact, with several genuinely new details (locus 262, the full eight-attack table, the R6 independence verdict)."
+bridge_candidates:
+  - "Corpus locus '262', not yet directly encountered as a primary source."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the complete eight-attack falsification table and the sharp R6 independence verdict ('the cleanest case of corroboration not equal derivation... here there is not even corroboration') as the definitive closure of the equality-investigation sub-track."
+anchor_test:
+  anchor: "Files 0989, 0991, 0993's already-documented equality-investigation findings"
+  supports_dimension: "Completes and finalizes those findings with the full eight-attack falsification table and a sharper independence verdict"
+  refines_or_contradicts: "confirms and completes prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The eight-attack table and R6 independence verdict are directly checkable against files 0989/0991/0993's own already-documented findings for consistency."
+undefined_concepts: []
+open_questions:
+  - "Corpus locus '262', not yet directly encountered."
+  - "Whether Step 254 Decision 3 is ever formally resolved and whether a permitted-observation set for observational equality is ever declared."
+tier2_triggered: true
+tier2_reason: "The complete, definitive formal artifact for the equality-investigation sub-track, delivering a previously unseen eight-attack falsification table and a sharper R6 independence verdict, while substantially consolidating content already documented via files 0989/0991/0993. Classified importance critical and confidence high given its directly quotable, cross-checkable, rigorously reasoned content."

@@ -1,0 +1,44 @@
+sequence: 246
+path: docs/knowledgeos/brainstorming/kernel/20260824-155130-fraser-hidden-markov-models-and-dynamical-systems-extraction-duplicate.md
+title: "Fraser, Hidden Markov Models and Dynamical Systems — Extraction (duplicate of 0245)"
+date: "2026-08-24"
+bytes: 24000
+model:
+  primary: c1
+  secondary: g1
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 245
+importance: low
+confidence: high
+about: >
+  Byte-identical duplicate of 0245 (verified via diff). Seventh instance of the corpus's recurring
+  duplicate-capture pattern, this time with the standard (later-file-has-suffix) ordering.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "Entire content of 0245"
+    canonical_source: 245
+    novelty: none
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0245"
+  supports_dimension: "none (duplicate)"
+  refines_or_contradicts: "identical to 0245"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "diff against 0245's source file returned no output -- byte-identical"
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Verified byte-identical duplicate of 0245; no independent analytical content."

@@ -1,0 +1,34 @@
+==========================================================================
+STEP 289 (v2, definitional artifact removed)  DEPENDENCY GRAPH / CYCLES / MINIMAL BOOTSTRAP CUT
+==========================================================================
+nodes 27  edges 42   (every edge definitional or operational, each cited)
+
+elementary cycles found: 4
+   approx -> equiv -> approx
+   congruence -> equiv -> congruence
+   approx -> equiv -> bindings -> approx
+   congruence -> equiv -> delta -> congruence
+
+nodes resolvable by a decision : 12
+nodes only derivable            : 15
+
+--- exhaustive search for the minimal cut over RESOLVABLE nodes ---
+  size 1: 1 cut set(s)   e.g. ['equiv']
+
+MINIMAL CUT SIZE = 1
+number of distinct minimal cut sets = 1
+    ['equiv']
+
+   cut ['O']                              -> acyclic? False
+   cut ['T']                              -> acyclic? False
+   cut ['O', 'T']                         -> acyclic? False
+   cut ['O', 'T', 'equiv']                -> acyclic? True
+   cut ['O', 'T', 'delta']                -> acyclic? False
+   cut ['equiv']                          -> acyclic? True
+   cut ['delta']                          -> acyclic? False
+   cut ['delta', 'equiv']                 -> acyclic? True
+
+==========================================================================
+SCOPE: the graph is the AUDITED EDGE LIST above. A different edge list gives a
+different cut. No operation set, transformation semantics or equality is proposed.
+==========================================================================

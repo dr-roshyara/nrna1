@@ -1,0 +1,79 @@
+sequence: "0140"
+path: docs/knowledgeos/brainstorming/20260822-143844-next-steps-architecture-first-then-semantic-compiler-experiment.md
+title: "Sequencing plan (architecture-first); an explicit lens-to-altitude map; further reference to an unencountered 'Constitution v1.0 FROZEN'"
+date: "2026-08-22"
+bytes: 11000
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0134"
+importance: medium
+confidence: high
+about: >
+  A fourth source-internal "stop researching" declaration (after 0134/0136/0139), this time with a
+  concrete sequencing recommendation: finish the (still-unexecuted) DDD Reference Architecture v1.1,
+  run the semantic-compiler experiment in parallel as evidence, converge the two, and only then
+  consider implementation. Defines milestone "KOS-EP01 — Architecture Convergence" with three
+  deliverables. Provides the most explicit lens-to-architectural-altitude mapping table so far.
+
+introduces:
+  - "Explicit lens-to-altitude table: Zero=meta-principle, Śiva-Śakti=explanatory lens,
+    Gaṇeśa=wisdom-lifecycle lens, Gödel=boundary/limitation lens, Escher=transformation/invariance
+    lens, Sanskrit grammar=semantic-mechanism candidate, Navya-Nyāya=semantic-modelling mechanisms,
+    Tarka=reasoning mechanism, LLM=external intelligence/expression provider -- the most explicit
+    single-table altitude classification the corpus has produced so far, consistent with (not
+    contradicting) this reconstruction's own candidate-only discipline"
+  - "Milestone 'KOS-EP01 — Architecture Convergence' with three deliverables: (A) Reference Architecture
+    v1.1, (B) KOS-SCB v0.2 experimental prototype, (C) Architecture Convergence Review reconciling the
+    two without changing the Constitution absent a genuine contradiction"
+
+defines: []
+
+refines:
+  - "Restates (does not extend) the compiler-outside-the-kernel boundary already established at
+    0138/0139"
+
+contradicts: []
+
+repeats:
+  - {concept: "kernel/compiler boundary, freeze-research recommendation", canonical_source: "0139", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+registry_updates:
+  - "None"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; a sequencing/process recommendation, not a dimension or representation claim."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "DISCREPANCY NOTE (continuation of 0138's open question, not escalated): this file refers to
+    'Constitution v1.0 FROZEN' as an already-existing frozen artifact in its process diagram, alongside
+    'Reference Architecture v1.0' -- neither has been directly encountered as an executed document in
+    the corpus read so far (only proposals: 0134's unexecuted DDD prompt, 0136's unadopted 'kernel
+    complete' claim). Recorded as an open question about whether these documents exist elsewhere in the
+    unread corpus or are being referred to loosely/aspirationally by the source itself."
+
+undefined_concepts: []
+open_questions:
+  - "Whether a 'KnowledgeOS Constitution v1.0' and/or 'Reference Architecture v1.0' document actually
+    exists and will be encountered later in the corpus, given repeated confident references to both as
+    already-settled/frozen artifacts across 0136/0138/0140 without this reconstruction having read one"
+
+tier2_triggered: false
+tier2_reason: >
+  Process/sequencing content only; the lens-to-altitude table is a useful synthesis of already-tracked
+  candidate-status classifications but introduces no new dimension, representation, or empirical result.

@@ -1,0 +1,136 @@
+sequence: 988
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-190025_step_286_reviewer-a-senior-review-of-r1-r5-with-nine-corrections.md
+title: "Reviewer A -- Senior Review of R1-R5 With Nine Corrections: A Rigorous External-Style Peer Review Delivering the Programme's Sharpest Methodological Law Yet ('Correspondence Does Not Imply Type Does Not Imply Primitive Does Not Imply Canonical Architecture'), a Critical Theological/Computational Boundary for H-K04b, and a Renamed, De-Reifying R2 Vocabulary Column"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "an independent senior-review pass over the already-documented R1-R5 (D285-1 through D285-5-equivalent) artifacts, styled as a statistician's methodological critique"
+source_role: PRIMARY_RESEARCH
+canonical_source: 988
+importance: critical
+confidence: high
+about: >
+  A rigorous "senior review" of the R1-R5 research-evidence base (the D285-x artifacts this reconstruction
+  has already documented), delivering nine numbered corrections plus a synthesis. Opens: "the programme has
+  moved substantially beyond philosophical analogy: several mappings have been tested, destroyed, or
+  independently corroborated," but flags "several methodological points that should be corrected before
+  they are used as the final basis for Step 285/286 closure."
+
+  **§1 delivers a four-category results taxonomy**: Independent convergence (Gītā corroborates KOS);
+  Existing KOS construct with Gītā correspondence (not independently derived); Useful correction (a mapping
+  destroyed, e.g. Jñāna); Rejected metaphysical projection (must not enter architecture, e.g. Kṛṣṇa=Ω).
+
+  **§2 CORRECTS `H-K06f`**: rejects "posterior changed ⇒ epistemic gain" as too strong (noisy/misleading
+  evidence can also change a posterior); replaces with a measurable-improvement criterion (`ΔU>0` or
+  information-gain `ΔI=I(H;E_{t+1}|E_t)>0`), explicitly distinguishing "new information ≠ better knowledge."
+
+  **§3 CORRECTS `H-K11`**: rejects the undefined use of `⊥` (ambiguous between orthogonality/independence/
+  incompatibility); replaces with an explicit "outcome-independence" relation: "the admissibility predicate
+  contains no outcome-dependent conjunct."
+
+  **§4 DELIVERS A GENUINELY IMPORTANT NEW PHILOSOPHICAL-BOUNDARY DISTINCTION for `H-K04b`** (the universal-
+  knower rejection this reconstruction already tracked via file 0986/D285-2, citing "31.19"): explicitly
+  separates the KnowledgeOS-COMPUTATIONAL claim ("KnowledgeOS cannot construct a universal knower from lossy
+  Ω" -- legitimately destroyed) from the Gītā's own THEOLOGICAL proposition (Kṛṣṇa as knower of all fields --
+  explicitly declared OUTSIDE the KnowledgeOS falsification domain, not itself falsified). **This is a
+  materially sharper, more careful statement than file 0986's own framing**, which this review implicitly
+  corrects without contradicting its substantive verdict.
+
+  **§5 strengthens the already-tracked Kṛṣṇa≠Ω rejection (GK-01)**: explicit diagram distinguishing
+  "philosophical inspiration/conceptual comparison" (Gītā Kṛṣṇa → KnowledgeOS research question) from
+  identity (→ Ω = observation capability); "the arrow is not identity."
+
+  **§6 delivers a genuinely new three-way architectural distinction**: `Reality ≠ Observation ≠ Knower`, with
+  an explicit four-layer diagram (Knower / State Knowledge / Observation Layer / Domain Reality), boxed
+  `Observer ≠ Knower`.
+
+  **§7 reaffirms the Jñāna→δ correction** (already tracked) as "probably the most valuable negative result,"
+  with the corrected triad `Jñātā→Knower`, `Jñeya→Known/Proposition`, `Jñāna→Knowing/Transformation`, closing
+  `Jñāna∼δ` as "a research correspondence, not an identity claim."
+
+  **§8 reaffirms the four-stage model** (`Observation→Evidence→Decision→Action`) over the destroyed five-
+  stage model, "because `Knowledge` is not a ratified primitive... prevents the vague term Knowledge from
+  becoming an architectural dumping ground."
+
+  **§9 recommends RENAMING the R2 register's "Existing KOS mapping" column to "Candidate KnowledgeOS
+  Correspondence"**, explicitly to "reduce accidental reification," with an updated six-row table
+  distinguishing Analogy / Research correspondence / Ratified lineage / Corpus-native correspondence /
+  Rejected statuses.
+
+  **§10 DELIVERS THE PROGRAMME'S SHARPEST METHODOLOGICAL LAW TO DATE**: boxed **"No Sanskrit term enters the
+  architecture merely because a correspondence exists,"** more strongly **`Correspondence⇏Type⇏Primitive
+  ⇏Canonical Architecture`**, plus a full TEN-STAGE promotion chain (Source evidence→Interpretation→
+  Candidate correspondence→Research hypothesis→Falsification→Independent derivation test→Technical
+  usefulness test→Architecture consequence→Governance decision→Canonicalization) -- explicitly the most
+  granular formal promotion pipeline this reconstruction has yet encountered, and declared "arguably the
+  most important methodological achievement of the programme so far."
+
+  **§11-12 deliver the file's synthesis**: explicitly REJECTS both "KnowledgeOS is derived from the Bhagavad
+  Gītā" and "The Gītā describes KnowledgeOS" as unsupported; adopts instead "The Gītā provides an independent
+  philosophical corpus from which candidate questions are extracted" -- directly consonant with, and
+  independently arrived at alongside, file 0980's/0984's own corroboration≠derivation framing. §12 delivers a
+  four-bucket final status ledger (Established/Corrected/Rejected/Still requiring careful treatment), the
+  last bucket naming five genuinely still-open items: Dharma, Buddhi, Vairāgya/Tyāga, the exact formal
+  definition of epistemic gain, and "the unresolved `humanActRef`/authority-act identity issue" (a
+  cross-reference to this reconstruction's own much-earlier-tracked governance-identity gap).
+
+  **§13 closes with a compact typed-pipeline formalization**: `W --Ω--> O --Qualify--> E --Assess--> D
+  --Execute--> K'`, with `𝒩∉K` and `o≠δ(K,o)` restated, and a semantic-equality non-injectivity principle:
+  `δ(K,o_1)=_semantic δ(K,o_2) ⇏ o_1=o_2`. **Explicitly recommends AGAINST re-adding the five-Θ operators to
+  Step 285** in any form: "the R4 type-check failure is evidence against that construction, not a missing
+  feature to be repaired by assertion."
+introduces:
+  - concept: "The theological/computational boundary distinction for H-K04b: the Gita's theological claim that Krishna is knower of all fields is explicitly outside the KnowledgeOS falsification domain, distinct from and not falsified by the destruction of the KnowledgeOS-side universal-knower construct"
+  - concept: "The renamed R2 vocabulary column 'Candidate KnowledgeOS Correspondence' (replacing 'Existing KOS mapping') to reduce accidental reification"
+  - concept: "The programme's sharpest methodological law: 'No Sanskrit term enters the architecture merely because a correspondence exists,' formalized as Correspondence⇏Type⇏Primitive⇏Canonical Architecture, with a full ten-stage promotion chain"
+  - concept: "The explicit three-way architectural distinction Reality≠Observation≠Knower, with a four-layer diagram"
+  - concept: "A corrected, weaker H-K06f criterion for epistemic gain requiring measurable improvement (ΔU>0 or information-gain ΔI>0), rejecting the too-strong 'posterior changed ⇒ epistemic gain'"
+  - concept: "An explicit 'outcome-independence' relation replacing an undefined use of ⊥ in H-K11"
+defines:
+  - term: "outcome-independence (H-K11 correction)"
+    definition: "The admissibility predicate Valid(o,K) contains no outcome-dependent conjunct -- an explicit relation replacing the ambiguous ⊥ symbol"
+  - term: "Candidate KnowledgeOS Correspondence"
+    definition: "The corrected name for the R2 register column formerly called 'Existing KOS mapping,' chosen to avoid implying an already-established semantic equivalence"
+refines:
+  - concept: "H-K04b's universal-knower rejection, already tracked via file 0986/D285-2 (citing corpus reference 31.19)"
+    refinement: "SHARPENED with an explicit theological/computational boundary: only the KnowledgeOS-side construction is destroyed; the Gita's own theological proposition is declared outside the falsification domain, not itself refuted -- a more careful statement than file 0986's own framing"
+  - concept: "The already-tracked GK-01 Krishna-not-equal-Omega rejection"
+    refinement: "STRENGTHENED with an explicit non-identity diagram distinguishing philosophical inspiration from identity"
+  - concept: "The already-tracked Jnana-to-delta correction and the four-stage epistemic pipeline"
+    refinement: "REAFFIRMED and given a fuller formal restatement (the corrected Jnata/Jneya/Jnana triad; the four-stage Observation-Evidence-Decision-Action pipeline)"
+  - concept: "File 0980's and 0984's corroboration-not-derivation framing"
+    refinement: "INDEPENDENTLY ARRIVED AT ALONGSIDE, via this review's own §11 synthesis rejecting both 'derived from' and 'describes' framings of the Gita-KnowledgeOS relationship"
+  - concept: "This reconstruction's much-earlier-tracked, still-unresolved humanActRef/authority-act identity issue"
+    refinement: "EXPLICITLY REAFFIRMED as still open, cross-referenced in this review's §12 'still requiring careful treatment' bucket"
+contradicts: []
+repeats:
+  - "The overall R1-R5 outcomes (Theta-algebra rejection, Krishna=Omega rejection, Jnana correction, four-stage model) substantially repeat content already documented in files 0973-0987; this review's distinctive contribution is its nine methodological corrections and the new promotion-chain law."
+bridge_candidates:
+  - "Whether Dharma, Buddhi, and Vairagya/Tyaga (named here as still requiring careful treatment) are directly tested via a future D285-x artifact."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the theological/computational boundary distinction for H-K04b as a genuine methodological refinement over file 0986's framing."
+  - "dimension-registry.md: record the programme's sharpest methodological law -- Correspondence⇏Type⇏Primitive⇏Canonical Architecture, with its ten-stage promotion chain -- as directly reusable governing discipline."
+  - "dimension-registry.md: record the renamed 'Candidate KnowledgeOS Correspondence' column and the Reality≠Observation≠Knower three-way distinction as reusable vocabulary/architecture refinements."
+anchor_test:
+  anchor: "Files 0973-0987's already-documented R1-R5/D285-x findings (Theta-algebra rejection, Knower boundary, Jnana correction, Krishna-Omega rejection)"
+  supports_dimension: "Reviews and sharpens all of the above with nine numbered corrections, and delivers the programme's most granular formal promotion-chain law to date"
+  refines_or_contradicts: "refines (sharpens, does not contradict) files 0973-0987's findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Each of the nine corrections names a specific hypothesis identifier (H-K06f, H-K11, H-K04b, GK-01, H-K03/H-K16) directly checkable against this reconstruction's already-documented D285-x per-file records for consistency."
+undefined_concepts: []
+open_questions:
+  - "Whether Dharma, Buddhi, Vairagya/Tyaga, and the epistemic-gain formal definition are subsequently tested via dedicated D285-x artifacts."
+  - "Whether the renamed 'Candidate KnowledgeOS Correspondence' column is adopted in later corpus material."
+tier2_triggered: true
+tier2_reason: "A rigorous, independent senior-review pass delivering nine substantive methodological corrections to the already-documented R1-R5 findings, including a genuinely important theological/computational boundary distinction and the programme's sharpest methodological law (a ten-stage promotion chain) to date. Classified importance critical and confidence high given its careful, well-reasoned, directly cross-checkable content."

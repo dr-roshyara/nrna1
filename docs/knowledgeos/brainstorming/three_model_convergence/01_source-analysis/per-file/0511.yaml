@@ -1,0 +1,58 @@
+sequence: 511
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-094000_question-16-epistemic-logic-file-contains-question-20-21-material.md
+title: "Minor: Bare Question-Title Index Fragment Confirming the Corpus's Internal Q-Numbering Duplication — 'Q17' Used for Both the Distance Question and the Zero/Lord/Sārathi Question"
+date: "2026-08-27"
+bytes: 756
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "no substantive analysis; a bare listing of question titles/prompts, likely a table-of-contents or numbering-reconciliation scratch fragment"
+source_role: PRIMARY_RESEARCH
+canonical_source: 511
+importance: minor
+confidence: high
+about: >
+  An 18-line fragment listing question titles and one-line prompts with no analysis, discussion, or
+  formalization -- Q16 (Epistemic Logic: observation/evidence/inference/contradiction/uncertainty/
+  resolution changing epistemic status), Q17 (Distance: measuring K_t-to-Ideal-State difference without
+  reducing to a scalar), a second, differently-worded "Question 17" (How do Zero, Lord, and Sārathi interact
+  with the transition system?), Q19 (Distance -- verbatim repeat of the Q17 Distance prompt), Question 20
+  (the complete system state and its evolution), and Question 21 (deficiency prioritization).
+
+  This file is direct, concrete evidence for the internal Q-numbering duplication/confusion already
+  observed indirectly at 0493, 0500, 0504, 0505, and 0506 (all of which referenced a pre-0486 Q-numbering
+  scheme): the label "Q17" was evidently used in the source material's own drafting history for BOTH the
+  "Distance" question (processed in this reconstruction's sequential read as 0485) and the "Zero/Lord/
+  Sārathi interaction with the transition system" question (processed as 0483) -- two genuinely different
+  questions sharing one number -- while the Distance question also separately appears labeled "Q19." The
+  file appears to be a bare table-of-contents or numbering-reconciliation scratch fragment rather than
+  primary research content, containing no new definitions, invariants, or arguments.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - "The Q17/Q19 'Distance' prompt text is verbatim-identical to the Distance question already fully processed and corrected at 0485; no new content beyond the title listing itself"
+bridge_candidates:
+  - "This file is direct documentary evidence explaining the pre-0486 Q-numbering references observed at 0493/0500/0504/0505/0506: at least two distinct numbering schemes for the Zero/Lord/Sārathi and Distance questions coexisted in the source material's own history, with 'Q17' and 'Q19' both used for the Distance question at different points -- worth citing as supporting evidence in any future canonical-theory reconciliation of the corpus's question numbering"
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: no new registry entry -- recorded in the per-file record only as documentary evidence of the corpus's internal Q-numbering duplication, supporting the sequencing observations already tracked at 0493/0500/0504/0505/0506."
+anchor_test:
+  anchor: "0483 (Zero/Lord/Sārathi interaction with the transition system, processed as Q17 in this reconstruction's sequence); 0485 (Distance/Discrepancy question, also labeled Q17/Q19 here); 0493/0500/0504/0505/0506's pre-0486 Q-numbering references"
+  supports_dimension: "Minor: a bare question-title index fragment providing direct documentary confirmation that the source corpus used the label 'Q17' for two genuinely different questions (Distance, and Zero/Lord/Sārathi's interaction with the transition system) at different points in its own drafting history, and additionally labeled the Distance question 'Q19' elsewhere -- explaining, rather than adding to, the pre-0486 Q-numbering references already observed indirectly in several prior files"
+  refines_or_contradicts: "no theoretical content to refine or contradict; purely documentary/corpus-integrity evidence"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The file itself is the key evidence: it directly shows 'Q17' used for two different questions and the Distance question separately labeled both 'Q17' and 'Q19' -- concrete documentary confirmation of the numbering ambiguity previously only inferable from later files' internal references."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "A bare, contentless question-title index fragment with no analysis, definitions, or arguments -- valuable only as documentary evidence explaining the corpus's internal Q-numbering duplication already observed indirectly at 0493/0500/0504/0505/0506, not as a source of new theoretical content."

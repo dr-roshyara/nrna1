@@ -1,0 +1,100 @@
+sequence: 985
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/02-GAP-UPDATE-FROM-HPA-REVIEW-D285-5.md
+title: "02 -- Gap Update From the HPA Supervisory Review of D285-5: Consolidates the Self-Correction of D285-6's Own Unqualified Projection Claim (Already Tracked via File 0982), Distinguishes the Review's Seven-SECTION Artifact Template From the Protocol's Seven-STAGE Hypothesis-Processing Pipeline, Adopts a Finer Seven-Way Classification Superseding the Coarser R0-RX Axis, and Delivers the Final Tally: 'Four Yes (Corroboration) -- Two No (Both Corpus-Native) -- Three RX'"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "consolidation report cross-linking the D285-5 review (file 0981) and the D285 protocol freeze (file 0984)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 985
+importance: normal
+confidence: high
+about: >
+  Headed "2 mandates ADOPTED · 1 DEFECT FOUND IN MY OWN STRONGEST CLAIM · protocol applied to 8 hypotheses
+  + 2 queue items" -- consolidating the two immediately-preceding commissioning documents (files 0981's
+  D285-5 review and 0984's seven-stage protocol freeze) into one gap-tracking update.
+
+  **§2 restates, in consolidated form, the self-correction already fully documented in file 0982**: applying
+  "obligation 3" (each test must specify its equality relation) to the author's own `D285-6` claim
+  `(𝒜,ℛ)=π_K(K_t)` reveals it is FALSE under structural equality, TRUE only under semantic equality (after
+  unpacking Assertion), and FALSE under observational equality -- confirming file 0982's script execution
+  and delivering the identical corrected statement, closing "the review's rule earned its keep on the first
+  application."
+
+  **§4 delivers a genuinely useful additional pass**, applying the equality-naming obligation across SIX
+  further D285-x artifacts (D285-1 through D285-7), finding: **D285-1** needs only "set equality on
+  primitive NAMES," which the file explicitly flags as weak -- citing a previously-unseen corpus measurement
+  reference **"GN-75," which measured `𝒜·ℛ·Σ·Q_t·𝒪` at 0 occurrences in ratified artifacts"**, concluding
+  the architecture and verification lanes "do not share names," so apparent shared-primitive overlap
+  established only vocabulary-level, not conceptual, identity -- **a further, previously-unnamed
+  qualification on this reconstruction's already-tracked K-lane-overlap finding (files 0968, 0974)**;
+  **D285-2** needs "identity persistence," explicitly `=_identity`, not `=_structural`, since "the Knower's
+  state may change while the Knower persists"; **D285-4** (the Θ-algebra rejection) correctly requires NO
+  equality relation at all, being "a type-checking result... not an equality claim"; **D285-7** likewise
+  requires none, being "a dependency trace."
+
+  **§7 delivers A GENUINELY IMPORTANT CLARIFICATION**, distinguishing TWO DISTINCT "SEVEN-PART" FRAMEWORKS
+  this reconstruction had previously encountered as closely related but now explicitly separated: the
+  review's (file 0981) **seven-SECTION artifact template** (how a D285-x document is structured) versus the
+  protocol's (file 0984) **seven-STAGE hypothesis-processing pipeline** (how a hypothesis is processed),
+  noting the protocol's classification scheme is genuinely finer than the review's: **A NEW SEVEN-WAY
+  CLASSIFICATION** (mathematical/architectural/DDD/philosophical-analogy/Gītā-corroboration/unresolved/
+  governance) explicitly supersedes the coarser single-axis `R0-RX` scale, "notably [separating]
+  architectural result from Gītā corroboration" -- a genuine methodological refinement.
+
+  **§7 delivers THE FILE'S FINAL, DEFINITIVE TALLY, THE MOST CONCISE SUMMARY STATISTIC FOR THE ENTIRE
+  DISCIPLINED FALSIFICATION PROGRAMME**: **"4 yes (corroboration) · 2 no (both corpus-native, not
+  philosophical) · 3 RX"** -- directly consistent with, and a further-refined restatement of, file 0980's
+  own capstone scorecard, explicitly re-confirming both queued items (`𝒦_ātma`, `Θ_total`) were "resolved,
+  not parked": both received `RX` with "the failing test named," explicitly rejecting the possibility of an
+  unadjudicated backlog: **"A queue whose items are never adjudicated is a backlog. Both are recorded as
+  resolved with evidence, not as pending."**
+introduces:
+  - concept: "A previously-unseen corpus measurement reference, 'GN-75,' which measured the shared-vocabulary overlap between the architecture and verification lanes at 0 occurrences in ratified artifacts -- a further qualification on the already-tracked K-lane-overlap finding"
+  - concept: "The explicit distinction between the review's seven-SECTION artifact template and the protocol's seven-STAGE hypothesis-processing pipeline, previously conflated as a single framework"
+  - concept: "A new, finer seven-way classification scheme (mathematical/architectural/DDD/philosophical-analogy/Gita-corroboration/unresolved/governance) explicitly superseding the coarser R0-RX axis"
+  - concept: "The final definitive tally: four hypotheses corroborated, two rejected as corpus-native (not philosophically derived), three destroyed (RX)"
+defines: []
+refines:
+  - concept: "File 0982's reflexive self-correction of D285-6's unqualified projection claim"
+    refinement: "CONSOLIDATED into this gap-update report, confirming the identical corrected result and extending the equality-naming audit to five further D285-x artifacts"
+  - concept: "This reconstruction's already-tracked K-lane primitive overlap finding (files 0968, 0974)"
+    refinement: "FURTHER QUALIFIED: the apparent shared primitives (Entity, Proposition, Relation) are shown, via the previously-unseen GN-75 measurement, to establish only NAME-level, not conceptual, identity between the two lanes -- a genuine, previously-unstated limitation on the strength of that earlier finding"
+  - concept: "The R0-RX single-axis classification scheme used throughout files 0973-0980"
+    refinement: "EXPLICITLY SUPERSEDED by a finer seven-way classification that separates architectural results from Gita corroboration, a distinction the coarser scale had conflated"
+  - concept: "File 0980's capstone falsification scorecard"
+    refinement: "RESTATED IN A MORE CONCISE, DEFINITIVE FORM: 4 corroboration, 2 corpus-native rejections, 3 RX destructions -- directly consistent with file 0980's own findings"
+contradicts: []
+repeats:
+  - "The D285-6 self-correction substantially repeats file 0982's own findings, now consolidated into this gap-update report."
+bridge_candidates:
+  - "The 'GN-75' corpus measurement reference -- watch for whether this reconstruction directly encounters its full source elsewhere."
+  - "The named '03-D285-PROTOCOL-CONFORMANT-HYPOTHESIS-DOSSIER.md' artifact, applying the new seven-way classification -- watch for whether this reconstruction directly encounters it as a distinct file."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the previously-unseen 'GN-75' measurement reference as a further qualification on this reconstruction's already-tracked K-lane primitive-overlap finding: the shared primitives establish only vocabulary-level, not conceptual, identity."
+  - "dimension-registry.md: record the explicit distinction between the seven-SECTION artifact template and the seven-STAGE hypothesis pipeline, and the new finer seven-way classification scheme superseding R0-RX, as directly reusable methodological refinements."
+  - "dimension-registry.md: record the final definitive tally (4 corroboration, 2 corpus-native, 3 RX) as the most concise summary statistic for the entire disciplined Gita-integration falsification programme."
+anchor_test:
+  anchor: "File 0982's self-correction of D285-6; this reconstruction's K-lane primitive-overlap finding (files 0968, 0974); file 0980's capstone scorecard"
+  supports_dimension: "Consolidates file 0982's self-correction, further qualifies the K-lane overlap finding via the new GN-75 measurement reference, and restates file 0980's capstone scorecard in a more concise, definitive final tally"
+  refines_or_contradicts: "consolidates 0982's finding; further qualifies (refines) the K-lane overlap finding; restates (confirms) 0980's scorecard"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The 'GN-75' measurement citation ('0 occurrences in ratified artifacts') is directly checkable against file 0974's own T-A primitive-comparison output for the qualification finding."
+  - "The final tally '4 yes (corroboration) · 2 no · 3 RX' is directly checkable against file 0980's own twelve-hypothesis scorecard for consistency."
+undefined_concepts: []
+open_questions:
+  - "The full source and context of the 'GN-75' corpus measurement reference."
+  - "Whether the '03-D285-PROTOCOL-CONFORMANT-HYPOTHESIS-DOSSIER.md' artifact is directly encountered elsewhere in the corpus."
+tier2_triggered: false
+tier2_reason: "A disciplined consolidation report that largely restates and cross-links already-fully-documented findings (files 0980-0984), while introducing a genuinely useful methodological refinement (the seven-section/seven-stage distinction, the finer seven-way classification) and one new qualifying data point (the GN-75 measurement). Classified importance normal given its primarily consolidating role; confidence high given its transparent, well-evidenced reasoning."

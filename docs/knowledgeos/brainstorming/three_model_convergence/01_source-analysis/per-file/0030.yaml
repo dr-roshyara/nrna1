@@ -1,0 +1,52 @@
+sequence: 30
+path: docs/knowledgeos/KnowledgeOS_Platform_Capability_Model.md
+title: KnowledgeOS — Platform Capability Model
+date: 2026-08-02
+bytes: 24068
+doc_type: 25-capability inventory (self-annotated as a same-day duplicate of a pre-existing pattern); §0 new corpus evidence
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [ddd, evidence, governance, contradiction, invariants]
+source_role: DUPLICATE_REPRODUCTION   # for the capability model proper; §0 is PRIMARY_RESEARCH (see notes in .md)
+canonical_source: null   # canonical (Platform_Capability_Pattern.md, RQ-002) lies outside this corpus's scope
+
+status: RF
+maturity: developing
+importance: medium
+
+introduces:
+  - round16_31_92file_discovery_corpus_found     # previously unindexed in reading order
+  - capability_boundary_resolution_method          # one-vs-five test via shared lifecycle/ownership/joint-exercise
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge, capability]
+open_questions:
+  - PG5_C08_double_blocked_tier2_and_tier3
+  - PG8_index_of_platform_instruments
+
+depends_on: [1, 5, 10, 11, 13, 19]
+extends: [5]           # "0 of 11 enforcing" -> "0 of 25 enforcing"
+refines: [11]           # bootstrap-readiness reconfirms parts-vs-whole
+renames: []
+contradicts: [30]       # refutes 3 of its own author's PRIOR claims (2 from earlier documents, 1 same-day)
+supersedes: []
+repeats: [5, 11]
+connects_to: [1, 5, 10, 11, 13, 19]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  §0 discovers a 92-file executed Strategic-DDD discovery corpus (Rounds 16-31), refuting three of
+  the platform's own prior claims including a same-day self-error - the "sixth occurrence" of
+  proposing-before-searching. The capability-boundary resolution method (one-vs-five capability test
+  via shared lifecycle/ownership/joint-exercise) is reusable independent of the document's own
+  self-annotated flat-taxonomy flaw. "0 of 25 enforcing" generalizes 0005's finding at platform scale.

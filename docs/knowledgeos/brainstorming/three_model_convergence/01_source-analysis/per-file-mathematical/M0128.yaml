@@ -1,0 +1,124 @@
+sequence: M0128
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-175309_rice-force-of-logic-legal-argument-through-the-knowledgeos-lens.md
+title: "Rice, The Force of Logic: Legal Argument Through the KnowledgeOS Lens -- Independently Corroborates Two Already-Established Findings From an Entirely Different Domain (Legal Reasoning): 'Reject(H1) Does Not Imply Accept(H2)' (Now Supported by Both Statistical Experiments AND Formal-Logical Analysis) and M0127's Just-Completed Structured-Evaluation Result (EvaluationStatus =/= EvaluationMeaning, via the Fallacy-Naming Pattern); Introduces a New Candidate Anti-Fabrication Invariant Invalid(Inference) Does Not Imply False(Conclusion), Catching and Rejecting an Overly-Strong Sentence in the Source Book Itself"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c
+  secondary: b
+  secondary_note: "a disciplined extraction of Stephen M. Rice's The Force of Logic (2017), read specifically through the KnowledgeOS lens immediately after the KR-CONTR-FDE-2026-09 completion (M0127) -- its most valuable contribution is independently corroborating two already-established KnowledgeOS findings from a completely unrelated domain (legal argumentation), following the same high-value cross-domain-corroboration pattern already seen with Priest's independent validation of FR-001 and the Hilbert-space rejection (M0119)"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0128
+importance: high
+confidence: high
+about: >
+  Extracts Stephen Rice's legal-logic textbook specifically for KnowledgeOS relevance, framing its
+  value as "a very practical model for structuring arguments, separating reasoning modes,
+  detecting invalid transitions, naming failures, and repairing reasoning" rather than a new
+  epistemological theory.
+
+  **INDEPENDENTLY CORROBORATES "REJECT(H1) DOES NOT IMPLY ACCEPT(H2)" FROM A COMPLETELY DIFFERENT
+  DOMAIN**: Rice's negative-premise-fallacy discussion (excluding one route does not establish
+  another; a police officer not being motivated by one reason does not establish the officer's
+  actual motivation) gives Reject(H_1) does not imply Accept(H_2) unless the hypothesis space's
+  exclusivity/completeness is established -- explicitly noted: "this is particularly strong
+  because it now has support from both our experiments and Rice's formal-logical analysis. It is
+  therefore not merely a statistical insight from the previous experiments. We now have an
+  independent logical source supporting it" -- precisely the same high-value pattern as M0119's
+  Priest-validates-FR-001/Hilbert cross-domain corroboration.
+
+  **INDEPENDENTLY CORROBORATES M0127's JUST-COMPLETED STRUCTURED-EVALUATION RESULT**: Rice's
+  treatment of fallacies as named, structured patterns (FallacyInstance = (Argument, Rule,
+  Violation, Pattern, Consequence), e.g. "INVALID because DENYING_ANTECEDENT, applied_to
+  HYPOTHETICAL_SYLLOGISM, violated INFERENCE_RULE" rather than a bare "valid=false") gives
+  independent conceptual evidence that a flat validity status is insufficient -- explicitly
+  connected: "the book provides independent conceptual evidence for our experimental finding:
+  EvaluationStatus != EvaluationMeaning," directly corroborating M0127's just-completed Status-C
+  (Structured Evaluation Required) verdict from a domain (legal argumentation) entirely unrelated
+  to the statistical/logical machinery that produced M0127's own result.
+
+  **INTRODUCES A NEW CANDIDATE ANTI-FABRICATION INVARIANT, WITH A DISCIPLINED SELF-CORRECTION
+  CAUGHT WITHIN THE SOURCE ITSELF**: Invalid(Inference) does not imply False(Conclusion) -- "when a
+  formal argument is fallacious, its conclusion is not thereby proven false. The failure is that
+  the argument does not guarantee the conclusion." Explicitly flags and REJECTS one overly-strong
+  sentence from Rice's own book ("if a premise is false or the form is invalid, the conclusion
+  necessarily cannot be true") as [NEG] -- too strong as written, since an invalid argument can
+  still have a true conclusion -- noting Rice HIMSELF later makes the correct, weaker statement
+  elsewhere in the same book. This is a disciplined example of extracting from an authoritative
+  external source while still catching and rejecting an internally inconsistent overclaim within
+  that same source, rather than importing it uncritically.
+
+  **PROPOSES A STRUCTURED ARGUMENT OBJECT AND SEVERAL FURTHER CANDIDATE CONSTRUCTS**: Argument =
+  (Premises, Inference, Conclusion, Form, Warrant); the Truth!=Validity!=Support!=Knowledge chain
+  (strongly compatible with the established Credence!=Truth and Fit!=Validity discipline);
+  ReasoningMode in {Deductive, Inductive, Analogical, Abductive,...} as a mode-sensitive dimension
+  of assessment, with induction able to supply a premise for subsequent deduction (a compositional
+  pattern directly relevant to the Composition TODO); rule applicability as a first-class property
+  distinct from rule outcome (Applicable(r,A,C) evaluated before Evaluate(r,A,C), reinforcing
+  UNKNOWN!=DOES-NOT-APPLY!=NOT-APPLICABLE); non-exclusive multi-valued failure representation
+  (Failures(A) subseteq F, rather than a single exclusive Fallacy(A) in F) -- directly relevant to
+  the just-completed structured-evaluation result's multi-dimensional Boundary metadata; a
+  repair pipeline DetectFailure->ExplainFailure->RepairProposal with RepairProposal!=Decision!=
+  Knowledge; and a meta-language framing (Argument->MetaAssessment(Argument)) reinforcing E_t!=A_t
+  and Claim!=Assessment.
+
+  **REINFORCES THE ESTABLISHED "CAPABILITY != KERNEL PRIMITIVE" DISCIPLINE**: "Logic Engine !=
+  KnowledgeOS Kernel," since Rice himself repeatedly emphasizes formal logic is only one reasoning
+  tool among deduction/induction/analogy and is explicitly "foundational but not sufficient" --
+  matching the corpus's own established conclusion from the N_eff/Hilbert/Contr work that "a useful
+  mathematical or logical capability does not become a kernel primitive merely because KnowledgeOS
+  can use it."
+
+  **DELIVERS AN EIGHT-ITEM "WHAT NOT TO EXTRACT" DISCIPLINE LIST**: rejecting claims that formal
+  logic is the KnowledgeOS kernel; that syllogistic logic is the universal KnowledgeOS logic; that
+  the six named fallacies constitute the complete KnowledgeOS error ontology; that deductive
+  validity equals epistemic validity; that legal reasoning supplies the KnowledgeOS epistemology;
+  that a fallacious argument has a false conclusion; that rejecting one hypothesis establishes
+  another; and that every argument reduces to a syllogism.
+
+  Closes by proposing three specific candidates for the next invariant/Composition test suite --
+  Reject(H1)=/=>Accept(H2); Invalid(Inference)=/=>False(Conclusion); Same-EvaluationStatus=/=>
+  Same-EvaluationMeaning -- explicitly noting "this book does not settle the Contr experiment. It
+  gives us additional source-grounded reasons to investigate composition and structured
+  evaluation, which is exactly why the next KR-COMP-2026-09 experiment remains the right research
+  direction."
+introduces:
+  - concept: "The independent, cross-domain corroboration of Reject(H1)=/=>Accept(H2) from legal-logic's negative-premise fallacy, now supported by both statistical experiments and an independent logical source"
+  - concept: "The independent, cross-domain corroboration of M0127's structured-evaluation result (EvaluationStatus!=EvaluationMeaning) via Rice's fallacy-naming pattern"
+  - concept: "The new candidate anti-fabrication invariant Invalid(Inference)=/=>False(Conclusion), with a disciplined rejection of an overly-strong sentence within the source book itself"
+  - concept: "The Structured Argument object Argument=(Premises,Inference,Conclusion,Form,Warrant) and the ReasoningMode-sensitive assessment structure"
+  - concept: "The non-exclusive multi-valued failure representation Failures(A) subseteq F, directly relevant to the just-completed structured-evaluation Boundary metadata"
+defines: []
+refines:
+  - concept: "The already-established Reject(H1)=/=>Accept(H2) finding, here independently corroborated from a second domain"
+  - concept: "M0127's just-completed KR-CONTR-FDE-2026-09 structured-evaluation result, here independently corroborated from legal argumentation theory"
+  - concept: "The corpus's established capability!=kernel-primitive discipline (N_eff/Hilbert/Contr), reinforced here via 'Logic Engine != KnowledgeOS Kernel'"
+  - concept: "The corpus's already-established UNKNOWN!=DOES-NOT-APPLY!=NOT-APPLICABLE distinction, reinforced via rule-applicability-before-rule-outcome"
+contradicts:
+  - concept: "One overly-strong sentence within the source book itself ('invalid form necessarily makes the conclusion not-true'), explicitly flagged [NEG] and rejected, with the book's own later, correct statement noted as the actual position to adopt"
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0128 as a disciplined extraction of Rice's legal-logic textbook that independently corroborates two already-established findings (Reject(H1)=/=>Accept(H2); M0127's structured-evaluation result) from a completely unrelated domain, introduces a new candidate anti-fabrication invariant (Invalid(Inference)=/=>False(Conclusion)) while catching and rejecting an overly-strong sentence within the source itself, and reinforces the established capability!=kernel-primitive discipline."
+anchor_test:
+  anchor: "The already-established Reject(H1)=/=>Accept(H2) finding, M0127's just-completed structured-evaluation result, and the corpus's capability!=kernel-primitive discipline"
+  supports_dimension: "Delivers genuine cross-domain corroboration of two major established findings from an entirely unrelated field (legal argumentation), following the same high-value pattern as M0119's Priest corroboration"
+  refines_or_contradicts: "refines (the Reject/Accept finding, M0127, the capability!=kernel-primitive discipline)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'This is particularly strong because it now has support from both our experiments and Rice's formal-logical analysis. It is therefore not merely a statistical insight from the previous experiments. We now have an independent logical source supporting it' -- explicit, deliberate cross-domain corroboration, the same high-value pattern already seen with Priest/FR-001."
+  - "'The book provides independent conceptual evidence for our experimental finding: EvaluationStatus != EvaluationMeaning' -- directly ties an external legal-logic source to the just-completed KR-CONTR-FDE-2026-09 result (M0127), corroborating it from a wholly unrelated field."
+  - "The explicit catch-and-reject of Rice's own overly-strong sentence ('invalid form necessarily makes the conclusion not-true'), noting Rice himself later states the correct, weaker position -- a genuine example of disciplined external-source extraction rather than uncritical import."
+undefined_concepts: []
+open_questions:
+  - "Whether the three proposed candidate invariants (Reject/Accept; Invalid/False; Same-Status/Same-Meaning) were formally incorporated into the next Composition/KR-COMP-2026-09 test suite."
+tier2_triggered: true
+tier2_reason: "Delivers genuine, independent cross-domain corroboration of two major already-established KnowledgeOS findings from an entirely unrelated field (legal argumentation), following the same high-value pattern already demonstrated by Priest's validation of FR-001 and the Hilbert rejection -- while introducing a new, disciplined anti-fabrication invariant and catching an overclaim within the source material itself. Comfortably meets the tier-2 bar."

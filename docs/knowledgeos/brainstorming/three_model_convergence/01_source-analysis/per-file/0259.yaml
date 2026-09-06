@@ -1,0 +1,76 @@
+sequence: 259
+path: docs/knowledgeos/brainstorming/kernel/20260824-164653-catuskoti-logic-lens-truth-need-not-be-binary.md
+title: "Catuṣkoṭi Logic Lens: Truth Need Not Be Binary"
+date: "2026-08-24"
+bytes: 15500
+model:
+  primary: g1
+  secondary: c1
+source_role: PRIMARY_RESEARCH
+canonical_source: 259
+importance: critical
+confidence: high
+about: >
+  Direct continuation of 0257/0258: extracts the catuskoti (four-valued Indian logic: True, False, Both,
+  Neither) from a comparative-religion source as a formal "logic lens" for KnowledgeOS, again explicitly
+  separating the logical structure from the source's unverified historical/civilizational claims. Maps
+  catuskoti onto EpistemicState(P) in {T,F,B,N}, adds time/context/scope parameters, reinforces the
+  Anupalabdhi/pramana connection, proposes epistemic-distribution and epistemic-entropy statistical
+  formulations, argues Decision logic != Knowledge logic, and formalizes a ten-lens extraction engine
+  (Ganesha/Pramana/Leonardo/Krishna/Shani/Zero/Dhatu/Temporal/Hofstadter/Statistical) plus a nine-component
+  Knowledge State vector KS with a Hofstadter-style self-referential MetaKS = KS(KS).
+introduces:
+  - concept: "Catuskoti four-valued logic {T, F, T&F(Both), neither T nor F(Neither)} as a KnowledgeOS logic lens, replacing binary true/false with EpistemicState(P) in {T,F,B,N}: T=evidence supports P, F=evidence supports not-P, B=evidence supports both under the current model, N=insufficient determination"
+  - concept: "EpistemicState(P,t,c,s) parameterized by time/context/scope -- apparent P and not-P support may reflect different scopes/times/interpretations rather than a genuine contradiction, connecting to the corpus's temporal lens (Kala material)"
+  - concept: "Constitutional principle: epistemic uncertainty != permission to destroy provenance -- every claim's evidence provenance must remain intact regardless of its T/F/B/N status"
+  - concept: "not-Proven(P) does not imply False(P); reinforces the not-established/undetermined distinction (P in N) against binary reasoning's dangerous 'not proven -> false' collapse"
+  - concept: "Reinforcement (not new equivalence) between the Pramana lens and the multi-valued-logic lens: absence of evidence (not-E) only legitimately reduces support for H when P(E|H) is not negligible under relevant conditions -- restates 0257's Anupalabdhi observability precondition in logic-lens terms"
+  - concept: "Epistemic distribution vector K(H) = (P(T), P(F), P(B), P(N)) per claim H, explicitly flagged as not automatically valid probabilities without defined probabilistic semantics -- a further, independently-motivated Knowledge-vector-family formulation"
+  - concept: "Epistemic entropy H(K) = -sum_i p_i log p_i over i in {T,F,B,N}; knowledge acquisition reframed as epistemic-uncertainty reduction"
+  - concept: "Knowledge quality != certainty: an investigation that increases apparent uncertainty (T/F -> B) by discovering a genuine contradiction can represent BETTER knowledge, not worse -- entropy reduction alone is an insufficient knowledge-quality measure; the goal is 'justified resolution', not maximal certainty"
+  - concept: "Contradiction = information, not merely error (Leonardo lens): under catuskoti, P-and-not-P becomes a discovery signal that the model/scope/time/definitions/evidence is wrong or incomplete, not a defect to eliminate"
+  - concept: "Ganesha-lens semantic-ambiguity check before declaring contradiction: apparent P-and-not-P (e.g. two auditors disagreeing on 'compliant') often resolves once the proposition is disambiguated (different compliance definitions) -- 'clarify the proposition before evaluating its truth'"
+  - concept: "Full pipeline: Ambiguous Claim -> Ganesha (define proposition) -> Pramana (identify evidence routes) -> Leonardo (assumptions/contradictions) -> Logic (determine epistemic state) -> Shani (invariant check) -> Knowledge State"
+  - concept: "Decision logic != Knowledge logic: a governance/decision system can act on an UNDETERMINED epistemic state (e.g. rule 'UNDETERMINED -> DO NOT APPROVE') without the underlying knowledge claim ever being asserted as False -- 'the evidence does not establish eligibility' is more defensible than 'candidate is false'"
+  - concept: "Evidence -> Pramana/Provenance -> Evaluation -> {T,F,Both/Neither} -> Knowledge State -> Legitimacy -> Governance pipeline; explicit principle: Legitimacy should not manufacture a truth value, it acts on the epistemic state per constitutional rules"
+  - concept: "Elephant-and-blind-men / six-darsanas-as-cube-walls reinterpreted rigorously: not 'everyone is equally right' but 'different observations may represent different projections of the same underlying object' -- structural comparison across perspectives converges on a common invariant (Zero)"
+  - concept: "Formalized ten-lens extraction engine, each with a one-line question: Ganesha(definition)/Pramana(epistemic origin)/Leonardo(critical discovery)/Krishna(purpose)/Shani(invariants)/Zero(invariant structure)/Dhatu(generation/transformation)/Temporal(evolution through time)/Hofstadter(self-reference)/Statistical(quantification)"
+  - concept: "Nine-component Knowledge State vector KS = (P,E,M,T,U,D,R,Z,tau) [proposition/meaning, evidence, epistemic method/pramana, truth-status, uncertainty, defeaters/contradictions, representations/perspectives, invariant structure, temporal validity] -- a further, sixth-plus, independently-proposed Knowledge-vector-family formulation"
+  - concept: "MetaKS = KS(KS): the system's knowledge about its own knowledge state -- a Hofstadter-lens self-referential construction directly echoing 0254's GEB extraction K(K)"
+defines: []
+refines:
+  - concept: "0257/0258's pramana and negative-knowledge taxonomy"
+    refinement: "Reinforces the Anupalabdhi observability precondition through a logic-lens restatement; deepens the not-established/undetermined distinction with formal EpistemicState(P,t,c,s) parameterization"
+  - concept: "The corpus's open Knowledge-vector reconciliation problem (0247/0253/0254/0255)"
+    refinement: "Adds at least two further, independently-motivated vector formulations (K(H) epistemic-distribution, KS nine-component state vector) without reconciling with any prior variant -- deepens rather than resolves the open problem"
+  - concept: "0254's GEB self-reference (K(K))"
+    refinement: "Restates the same self-referential construction as MetaKS=KS(KS), reinforcing rather than contradicting"
+contradicts: []
+repeats:
+  - concept: "Contradiction/underdetermination as discovery signal rather than pure error"
+    canonical_source: 258
+    novelty: low
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: extend the open Knowledge-Vector-family reconciliation note (0247/0253/0254/0255) to record two further independently-proposed variants from this file (K(H) epistemic-distribution vector; KS nine-component knowledge-state vector), still unresolved_equivalence -- never merge by resemblance."
+anchor_test:
+  anchor: "0247/0253/0254/0255 Knowledge Vector variants (open reconciliation problem); 0254's GEB self-reference K(K); the corpus's Evidence/Evaluation/Legitimacy pipeline"
+  supports_dimension: "Gita/philosophical model (catuskoti four-valued Indian logic) supplying a formal non-binary truth-value lens directly usable by the mathematical/statistical model (epistemic distribution, entropy)"
+  refines_or_contradicts: "refines/deepens the pramana and negative-knowledge work; adds to (does not resolve) the open Knowledge Vector reconciliation problem; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "K(H) and KS are proposed with no defined probabilistic semantics or formal validity constraints (K(H) explicitly flagged by the source itself as 'not automatically valid probabilities')"
+open_questions:
+  - "Whether K(H), KS, and the four prior Knowledge Vector variants (0247/0253/0254/0255) are ever unified into a single reconciled formalism, or remain a permanently open family"
+  - "Whether the ten-lens extraction engine formalized here becomes the corpus's stable lens vocabulary going forward, and how/whether it reconciles with the 26-lens system and 0238's Ganesha/Leonardo/Krishna/Shani naming"
+tier2_triggered: true
+tier2_reason: "Introduces a major new logic lens (catuskoti four-valued truth) with direct statistical formalization (epistemic distribution, epistemic entropy), a formalized ten-lens extraction engine, and a ninth-component Knowledge State vector with Hofstadter-style self-reference (MetaKS=KS(KS)) -- substantially deepens the open Knowledge-Vector reconciliation problem and the Evidence/Evaluation/Legitimacy pipeline architecture."

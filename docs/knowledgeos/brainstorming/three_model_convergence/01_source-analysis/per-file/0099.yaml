@@ -1,0 +1,158 @@
+sequence: "0099"
+path: docs/knowledgeos/brainstorming/20260822-0243-knowledgeos-hetvabhasa-reasoning-anti-corruption-layer.md
+title: "KnowledgeOS Evolution — Hetvābhāsa Reasoning Anti-Corruption Layer / Avacchedaka Type System"
+date: "2026-08-22"
+bytes: 9801
+
+model:
+  primary: g
+  secondary: [x, c1, m]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: critical
+confidence: high
+
+about: >
+  Maps all five named Hetvābhāsa sub-types individually onto a "Reasoning Anti-Corruption Layer,"
+  proposes Avacchedaka as a formal type-system foundation (a six-field Knowledge Identity tuple
+  including Context as a required field), argues graph/hypergraph storage is "almost mandatory"
+  (a technology-choice statement in tension with this thread's own repeated discipline), and invokes
+  "Cubical Type Theory" for a section whose actual content is generic dependent/parameterized-type
+  reasoning, not cubical-specific machinery -- a title/content precision gap. Produces a tenth anchor
+  reshaping and names a new philosopher, Bhartṛhari, alongside Matilal.
+
+introduces:
+  - "Five Hetvābhāsa sub-types individually mapped (more granular than 0092's bare naming): Savyabhicāra
+    (invalid generalization), Viruddha (opposite conclusion), Satpratipakṣa (competing reasoning),
+    Asiddha (unproven premise), Bādhita (overridden by stronger evidence) -- each given its own
+    KnowledgeOS-equivalent section as a distinct 'anti-corruption' check"
+  - "Avacchedaka -> 'the missing type system': a relation always requires Entity + Property Boundary +
+    Context Boundary + Relation Mode, illustrated by a worked JSON example (bounded_by: {domain,
+    lifecycle, authority})"
+  - "⭐ FOURTH-plus distinct Context treatment: 'Avacchedaka becomes Context-Bounded Identity' --
+    Knowledge Identity = (Entity, Property, Context, Relation, Time, Authority), a formal SIX-FIELD
+    tuple in which Context is a REQUIRED FIELD of Identity itself -- neither a flat peer dimension
+    (0089/0090), nor merged away (0091), nor a pure external delimiter (0094), but a named component
+    of a formal Identity structure. Added to the Unresolved Equivalence Registry group, not treated as
+    resolving the dispute"
+  - "'Why Graph Storage Becomes Almost Mandatory': argues relational/tabular storage cannot represent
+    'relation between relation between relation' (paramparā-sambandha, cf. 0094), proposing a property
+    graph/hypergraph (nodes: entities/concepts/agents/evidence/contexts; edges: supports/contradicts/
+    derives/limits/qualifies). FLAGGED: this is a technology-choice statement, in tension with this
+    entire thread's own repeated explicit discipline ('do not choose technology', stated verbatim at
+    0080/0088/0092/etc.) -- the document itself does not note this tension"
+  - "'Cubical Type Theory -> KnowledgeOS Type Foundation': proposes parameterized/dependent types
+    (Knowledge<Person,Context,Time,Evidence>; SecurityStatus:(system,audit-context,timestamp,assessor)
+    ->EpistemicClaim). FLAGGED: the section title names 'Cubical' type theory specifically (a real,
+    technical branch of homotopy type theory involving path types, Kan operations, and univalence) but
+    the actual content shown is generic dependent/indexed-type reasoning, engaging NONE of cubical
+    type theory's distinguishing machinery -- a title/content precision gap, not necessarily
+    deliberate misrepresentation, but should not be read as evidence of genuine cubical-type-theory
+    engagement"
+  - "⭐ Tenth anchor reshaping: 5-layer 'New KnowledgeOS Constitutional Layers' stack -- Truth
+    Constitution (Vedanta) / Epistemic Engine (Nyaya Pramana) / Semantic Engine (Matilal/Bhartṛhari,
+    NEW NAMED PHILOSOPHER) / Reasoning Integrity (Hetvabhasa Guard) / Type Kernel (Avacchedaka,
+    Dependent Types) -- the first reshaping to name Vedanta explicitly as an architectural LAYER
+    (Truth Constitution) rather than only a correspondence lens, and the first to name Bhartṛhari"
+  - "Type-error / epistemic-error analogy table: Type error<->Epistemic error, Invalid cast<->Invalid
+    inference, Null reference<->Unsupported premise, Wrong interface<->Wrong semantic context, Runtime
+    failure<->Knowledge corruption"
+  - "Final synthesis progression: Veda('what is knowledge?')->Upanishad('what is the knower?')->
+    Vedanta('HOW IS IGNORANCE REMOVED?')->Nyaya('how is knowledge justified?')->Tarka('how is
+    reasoning tested?')->Matilal('how does meaning become knowledge?')->Navya-Nyaya('how do we prevent
+    reasoning corruption?')->KnowledgeOS. NOTE: Vedanta's question is characterized as ignorance-
+    removal, the closest the corpus has come to the tracked Purification/Mokṣa territory -- but this
+    is a paraphrase, not the technical vocabulary (guṇas/Buddhi/purification/Mokṣa) itself, and is
+    recorded as new but non-doctrinal evidence"
+
+defines:
+  - "Knowledge Identity = (Entity, Property, Context, Relation, Time, Authority) -- a formal six-field
+    tuple, the most structurally explicit single Identity proposal in the corpus so far, though still
+    informally stated (no carrier sets, no axioms)"
+
+refines:
+  - "0094's H-KOS-Relation-001 / relation-primacy: reinforced via the graph-storage argument and the
+    'relation between relation between relation' point, but pushed toward a technology conclusion
+    0094 itself did not draw"
+  - "0092's bare Hetvābhāsa naming: given individual, structured treatment for all five sub-types"
+
+contradicts:
+  - "This thread's own repeated 'do not choose technology' discipline (0080/0088/0092/etc.): the graph-
+    storage-'almost mandatory' argument is a technology recommendation, not merely a candidate
+    invariant -- flagged as an internal discipline lapse, not adjudicated further"
+
+repeats:
+  - concept: "Hetvābhāsa as fallacy/pseudo-reason detection"
+    canonical_source: "0092"
+    novelty: low
+
+bridge_candidates: []
+
+mathematical_content: true
+gita_content: true
+kernel_content: true
+
+# MD-017 relationship classification
+relationship:
+  type: unresolved_equivalence
+  candidates: ["Knowledge Identity 6-tuple (Entity/Property/Context/Relation/Time/Authority)", "Context", "Semantic Boundary Precision", "Context-Bounded Meaning"]
+  equivalence_status: unproven
+  note: >
+    A fourth distinct formal treatment of Context, this one embedding it as a required field of a
+    formal Identity tuple rather than a peer dimension, a merge target, or a pure delimiter. Added to
+    the existing tracked group.
+
+registry_updates:
+  - "Context entry: fourth-plus correspondence candidate added (the 6-tuple Identity formalization)"
+  - "Relation/Sambandha entry: note the graph-storage argument as an over-extension into technology
+    choice, flagged as a discipline tension, not new grounding evidence"
+
+# MD-014 anchor_test against 0087
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Evidence Integrity", "Temporal Validity", "Authority Separation"]
+  refines_or_contradicts: >
+    Tenth reshaping (5-layer stack); the Knowledge Identity 6-tuple is the most formally explicit
+    single-Identity proposal so far, though still informal (no carrier sets/axioms). Directly touches
+    4 of 0087's original 6 dimensions (Identity, Evidence[implicitly via Relation], Temporal, Authority)
+    within one tuple.
+  alternative_minimal_kernel: "Yes -- a 6-field Identity tuple plus a 5-layer constitutional stack, a tenth distinct shape."
+  supplies_math_semantics: true   # the six-field tuple and the dependent-type proposal are genuine
+                                    # (if informal) formal content
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "First explicit formal Identity 6-tuple proposal in the corpus (Entity/Property/Context/Relation/
+    Time/Authority), directly touching 4 of the anchor's 6 original dimensions in one structure"
+  - "A title/content precision gap ('Cubical Type Theory' named, generic dependent types delivered) --
+    worth tracking as a pattern-watch, since prior files have used precise, real academic sourcing
+    (Matilal, Dasti & Phillips) whereas this is the first instance of a named formal-math term not
+    substantiated by its own content"
+  - "An internal discipline lapse: a technology-choice argument (graph/hypergraph storage 'almost
+    mandatory') within a thread that has repeatedly, explicitly disclaimed technology choices"
+  - "First characterization of Vedanta's core question as ignorance-removal, the closest approach yet
+    to the tracked Purification/Mokṣa correspondence, though still non-doctrinal"
+
+undefined_concepts:
+  - "Bhartṛhari -- named as a co-source alongside Matilal for the 'Semantic Engine' layer, not
+    elaborated in this document"
+
+open_questions:
+  - "Whether Bhartṛhari's own work (sphoṭa theory, Vākyapadīya) is engaged directly in a later file"
+  - "Whether the graph-storage technology recommendation is walked back or reinforced by a later file"
+  - "Whether genuine cubical type theory (path types, univalence) is ever engaged, or whether the label
+    remains unsubstantiated"
+
+tier2_triggered: true
+tier2_reason: >
+  First formal Identity 6-tuple proposal, directly bearing on 4 of the anchor's original dimensions; a
+  fourth-plus Context treatment added to the MD-017 unresolved_equivalence tracking; a flagged
+  technology-choice discipline lapse; a flagged title/content precision gap around "Cubical Type
+  Theory"; a tenth anchor reshaping naming Vedanta as an explicit architectural layer and introducing
+  Bhartṛhari; and the closest-yet (still non-doctrinal) approach to the tracked Purification/Mokṣa
+  territory via "how is ignorance removed?"

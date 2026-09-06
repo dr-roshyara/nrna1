@@ -1,0 +1,94 @@
+sequence: M0145
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180014_review-reiter-knowledge-in-action.md
+title: "Review of the Reiter 'Knowledge in Action' / Situation Calculus extraction: disciplined adjudication"
+date: "20260902-180014"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0145
+importance: critical
+confidence: high
+about: >
+  An adjudication review of an extraction from Reiter's "Knowledge in Action" (Situation Calculus),
+  following the same extraction→adjudication pattern as M0136→M0138 and M0141→M0142, but the source
+  extraction itself has not yet been located in this reconstruction's read order — flagged as a
+  bridge_candidate. Closes a substantial part of the missing dynamic/transition theory (δ, Boundary,
+  composition, regression/progression, sensing) while rejecting several over-strong mappings.
+introduces:
+  - "The most concrete formal candidate for δ yet in this reconstruction: X_{t+1}=Add_X(e_t,K_t) ∨ (X_t ∧ ¬Remove_X(e_t,K_t)) per state component, generalized to K_{t+1}=Apply(K_t,e_t,Add(e_t),Remove(e_t),Persist(e_t))"
+  - "Four-way decomposition of a transition: Poss (applicability) / Add (positive effect) / Remove (negative effect) / Persist — explicitly proposed as cleaner than treating Boundary/δ/Preconditions as one concept"
+  - "Boundary candidate: Boundary(K_t,e_t)={x | e_t does not invalidate x} — a persistence-based definition, explicitly marked candidate only, not Boundary=FrameAxiom"
+  - "Executable(h) ⟺ ∀e_i∈h: Poss(e_i,K_i) — a new distinction between representable / permitted / executable / actually-occurred transitions, none to be collapsed"
+  - "State≠History correction: rejects the source's own K_t=history claim, replacing it with H_t=(e_1,...,e_n) → State(H_t) = K_t, i.e. K_t≠H_t — reinforcing the corpus's own long-tracked kernel-writes-history-never-reads-it finding (M0073-M0099) from an independent external-literature angle"
+  - "Sequential transition composition, fully derived: K_{t+2}=δ(δ(K_t,e1),e2) — the FIRST fully-derived (not merely PROP) formal result in this entire external-literature sub-thread"
+  - "CRITICAL DISAMBIGUATION: TransitionComposition ≠ EvaluationComposition — explicitly separating this document's newly-derived sequential transition composition from the corpus's existing, still-undecided EVALUATION composition research (KR-COMP/KR-COMP-SEP, M0127/M0135/M0137's DECISION-02). This clarifies that 'Composition' may have been an overloaded name for two genuinely distinct problems in this corpus's own tracked TODO register."
+  - "Regression_S / Progression_S as two distinct, non-identified-with-Eval_c reasoning mechanisms (BackwardReasoning≠ForwardSimulation), each suited to different KnowledgeOS uses (query answering vs. state evolution vs. planning)"
+  - "Sensing/epistemic update candidate: WorldChange≠KnowledgeChange, Sense(e,K)→EpistemicUpdate without subject-state mutation — a new formal candidate for the Observation/Evidence/Knowledge research lane, connected explicitly to the FDE/Boundary work"
+  - "Natural/forced vs. chosen transitions: EventOrigin∈{Agent,System,External,Natural,Scheduled,...} — raising an explicitly-flagged open question about whether δ requires an actor/authority for every transition or admits exogenous transitions, connected to the governance model"
+  - "New proposed theory section DK.1-DK.9 (Dynamic Knowledge and Transition Semantics) with per-item [DERIVED]/[PROP — EXPERIMENT REQUIRED]/[OPEN] status tags — the most granularly-staged status vocabulary seen yet in this reconstruction's theory-insertion documents"
+  - "Two orthogonal lanes proposed: Epistemic lane (Observation→Evidence→Evaluation→Determination) vs. Dynamic lane (Event→Possibility→Effect→Persistence→δ→K_{t+1}), connected by K_t, with Reasoning (Regression/Progression) operating over both and Planning operating over the dynamic lane only"
+  - "Four new recommended experiments: KR-DELTA-2026-09 (successor-state/persistence), KR-EXEC-2026-09 (executable history, explicitly connected to but not conflated with Authority), KR-COMP-TRANS-2026-09 (transition composition, explicitly kept separate from evaluation-composition experiments), KR-SENSE-2026-09 (epistemic sensing)"
+defines: []
+refines:
+  - "δ (long-tracked OPEN item across this entire reconstruction, M0043-M0142): given its most concrete formal candidate yet (successor-state semantics decomposed into Add/Remove/Persist), still marked [PROP — EXPERIMENT REQUIRED], not adopted"
+  - "Boundary (OPEN since the Zero-Lens arc, repeatedly analogized to frame axioms at M0136/M0138-M0143): given the same frame-axiom analogy again, still explicitly rejected as an identity ('Boundary=FrameAxiom' in the NO column), though the persistence-based candidate is more concrete than prior versions"
+  - "Composition (OPEN since KR-COMP/KR-COMP-SEP, M0127/M0135/M0137): SPLIT into two genuinely distinct problems — TransitionComposition (now largely derived/closed for the sequential case) and EvaluationComposition (still fully open, gated on DECISION-02) — a disambiguation not previously made explicit anywhere in this reconstruction's read order"
+  - "The state/history distinction (kernel writes history, never reads it — tracked since M0073-M0080/M0135): reinforced via K_t≠H_t, H_t→State→K_t, from an independent Situation-Calculus-derived argument"
+contradicts: []
+repeats:
+  - "The now-familiar rejection-table pattern (Sat=Truth, Zero=Executable, Gap=NonEntailment, Contr=Inconsistency, Boundary=FrameAxiom — all explicitly rejected) — identical structure to M0138/M0142's reviews"
+  - "Explicit rejection of Zero=Executability, reinforcing the corpus's own Unknown≠Absent/NoEvidence≠EvidenceOfAbsence/Conflict≠Invalidity family of Zero distinctions, adding UnknownDimension≠UnknownValue as a restated instance"
+bridge_candidates:
+  - "The Reiter 'Knowledge in Action' extraction this document reviews has NOT been located anywhere in this reconstruction's read order prior to this sequence position — genuinely unlocated, unlike the M0135/M0142 forward-pointers which were resolved within a few sequences. Flagged for the eventual reclassification pass or later discovery in this same 282-file sequence."
+  - "Whether 'KR-DYN / Situation-Calculus Integration' (the recommended formal artifact, paralleling KR-KRR-2026-09/KR-DL-2026-09) was ever created — not yet located"
+  - "Whether any of the four newly-recommended experiments (KR-DELTA, KR-EXEC, KR-COMP-TRANS, KR-SENSE, all -2026-09) were ever executed"
+  - "Whether the TransitionComposition/EvaluationComposition disambiguation is picked up and reconciled against M0137's DECISION-01/DECISION-02 composition-rule research anywhere later in this reconstruction's sequence"
+mathematical_content: >
+  States the successor-state axiom F(do(a,s))≡γ+(a,s)∨(F(s)∧¬γ-(a,s)), the executable-history
+  definition, sequential composition K_{t+2}=δ(δ(K_t,e1),e2) as a DERIVED (not merely candidate)
+  result, and the epistemic accessibility relation K(s',s) with sensing as accessibility-set
+  restriction A_{t+1}⊆A_t — all cited/adapted from Reiter's formalism, with the composition result
+  being the strongest (fully derived, not [PROP]) claim in this specific external-literature
+  sub-thread so far.
+gita_content: null
+kernel_content: >
+  Provides the most complete dynamic-semantics research lane yet assembled in this reconstruction —
+  state/history/possibility/effects/persistence/δ/composition/reasoning/planning/sensing/time all
+  given candidate formal shapes in one document — while explicitly refusing to adopt Situation
+  Calculus as KnowledgeOS ontology, following the same discipline as the two prior KR-integration
+  reviews.
+registry_updates:
+  - "Third extraction→adjudication instance in this reconstruction's read order (Brachman&Levesque, DL Handbook, now Situation Calculus/Reiter) — but here the extraction half is genuinely unlocated, a new variant of the pattern"
+  - "First fully DERIVED (not PROP-only) formal result in the entire KR-integration sub-thread: sequential transition composition K_{t+2}=δ(δ(K_t,e1),e2)"
+  - "Significant disambiguation finding: Composition may have named two distinct problems (transition composition vs. evaluation composition) that this corpus's TODO register had not previously separated"
+anchor_test:
+  anchor: true
+  supports_dimension: "δ (concrete successor-state candidate), Boundary (persistence candidate), Composition (split into transition vs. evaluation), state/history distinction, Observation/sensing"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"This document can close a substantial part of the missing dynamic/transition theory, but it does not give us permission to simply import Situation Calculus as KnowledgeOS theory.\""
+  - "\"TransitionComposition ≠ EvaluationComposition\" (boxed) — the key disambiguation finding"
+  - "\"K_{t+2} = δ(δ(K_t,e1),e2)\" marked [DERIVED], the only fully-derived formal claim in this sub-thread"
+  - "\"Zero ≠ Executability\" (boxed) — explicit rejection of the extraction's 'complete satisfaction = executable situation' claim"
+undefined_concepts:
+  - "The exact criterion by which Boundary_X(e,K) (persistence candidate) would be experimentally validated or falsified — deferred to the recommended but unconfirmed KR-DELTA-2026-09 experiment"
+open_questions:
+  - "Where is the Reiter 'Knowledge in Action' extraction this document reviews? Not yet located in this reconstruction's sequence."
+  - "Does δ require an actor/authority for every transition, or can some transitions be exogenous (Natural/Forced)? Raised, not answered, connects to the governance model."
+  - "Is the TransitionComposition/EvaluationComposition disambiguation ever explicitly reconciled against M0137's composition-rule research (DECISION-01/02)?"
+tier2_triggered: true
+tier2_reason: >
+  Produces the most concrete formal δ candidate yet in this reconstruction; delivers the first fully
+  DERIVED (not merely PROP) result in the KR-integration sub-thread (sequential transition
+  composition); and surfaces a significant disambiguation — that this corpus's own "Composition"
+  TODO may have conflated two genuinely distinct problems (transition composition vs. evaluation
+  composition) — while its own source extraction remains genuinely unlocated in this read order.

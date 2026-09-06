@@ -1,0 +1,49 @@
+sequence: 444
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-160322_core-architecture-lord-krishna-knowledgeos-human-knower.md
+title: "Duplicate of 0443's Second Section (Formalized Lord→Krishna→KnowledgeOS→Human Knower Architecture)"
+date: "2026-08-26"
+bytes: 10350
+model:
+  primary: g1
+  secondary: c1
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 443
+importance: low
+confidence: high
+about: >
+  Byte-for-byte duplicate (confirmed via diff, zero output) of 0443's second "masterful synthesis" section --
+  the formalized Lord->Krishna->KnowledgeOS->Human Knower architecture, the two-Knower-position table
+  (Dhrtarastra/Arjuna), the Krishna=Knowledge/Ideal-State separation, the "activate" definition, the
+  complete epistemic lifecycle diagram, the final central statement, and the named "Zero Principle for the
+  Architecture." This file extracts exactly the non-duplicated tail of 0443 (that file's lines 483 onward) as
+  a standalone document. Recorded minimally per the established cross-file duplicate protocol; not
+  self-declared as "-duplicate" in the filename but confirmed byte-identical to the corresponding span via
+  diff.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - concept: "0443's entire second 'masterful synthesis' section: the formalized Lord/Krishna/KnowledgeOS/Human-Knower architecture, the two-Knower-position table, the Krishna/Ideal-State separation, the complete epistemic lifecycle diagram, and the named Zero Principle for the Architecture"
+    canonical_source: 443
+    novelty: "none -- byte-identical to 0443's lines 483 onward, verified via diff"
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0443"
+  supports_dimension: "Cross-file duplicate of 0443's second section; no independent evidentiary weight"
+  refines_or_contradicts: "none -- duplicate"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "NOT TRIGGERED -- byte-identical duplicate of 0443's second section, confirmed via diff"

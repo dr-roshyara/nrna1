@@ -1,0 +1,42 @@
+sequence: 21
+path: docs/knowledgeos/KnowledgeOS_Engineering_Improvement_Cycle.md
+title: The Engineering Improvement Cycle — a published domain process
+date: 2026-08-04
+bytes: 3161
+doc_type: published domain process description, explicitly not a bounded context
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [governance, invariants]
+
+status: SR
+maturity: developing
+importance: low
+
+introduces:
+  - ignored_as_complete_terminal_state    # a non-decision is data, not a gap
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge]
+open_questions: []
+
+depends_on: [18]
+extends: [18]
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: []
+connects_to: [18]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: "No formal object, no operator signature, no contradiction, no Kernel/Gita content."

@@ -1,0 +1,172 @@
+sequence: 799
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-014253_step_174_context-map-and-domain-contract-experiment.md
+title: "Step 174 -- Context Map and Domain-Contract Experiment (MAJOR SYNTHESIS MILESTONE, delivers 0798's promised context-map simulation and resolves its immutability-versioning question): Delivers the Three Fully Specified Domain Contracts (DeterminationForDecision/AuthorizedAction/OutcomeObservation) With Concrete Conceptual Tuples, the Translation Law 'Governance May Decide Upon an Epistemic Result; It Must Not Silently Redefine It,' and Anti-Corruption-Layer Discipline -- RESOLVES THE TEMPORAL EXPERIMENT: Decision_1 Retains Its Original Basis via KnowledgeSnapshot_1/Versioned Reference, Never a Live Query ('Consequential Decisions Require Stable Epistemic References') -- Delivers the Epistemic Tuple D=⟨Conclusion,EvidenceState,Method,Context,Time,Actor,Version⟩, Explicitly Excluding AI Chain-of-Thought Storage -- Delivers the Four-State Authorization/Execution Conformance Matrix and Policy-Driven Traceability Depth -- Delivers the Context-Map Verdict (Epistemic/Governance/Operational Context Ownership) While Explicitly Leaving Open Whether These Are Three Bounded Contexts or Three Zones Containing Multiple Contexts -- Opens Step 175's Formal Identifiability Test of 'A Current State Cannot, in General, Reconstruct Its Historical State'"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily DDD/statistical architecture-verification synthesis; explicitly re-invokes 'your Chapter 4 observation' to motivate the temporal experiment and previews Step 175's mathematical identifiability treatment of it, without new Gita textual engagement in this file"
+source_role: PRIMARY_RESEARCH
+canonical_source: 799
+importance: critical
+confidence: high
+about: >
+  Directly continues 0798, opening "we now test whether the three-zone architecture is a real DDD
+  architecture or merely a conceptual diagram... the decisive question is: can each context make its own
+  decisions using a stable representation supplied by the upstream context, without taking ownership of
+  the upstream model?"
+
+  **§174.1 delivers the first principle**: each context (`C_E, C_G, C_O`) has its own model
+  (`M_E, M_G, M_O`), explicitly rejecting `M_E=M_G=M_O` in favor of translation at each boundary.
+
+  **§174.2-174.9 delivers all three domain contracts as concrete conceptual tuples**, fully specifying what
+  0798 only named: **`DeterminationForDecision=⟨DeterminationId,Subject,Conclusion,BasisReference,Method,
+  Validity,Version,Timestamp⟩`** (Epistemic→Governance, explicitly not exposing the full internal Knowledge/
+  Evidence/InferenceRules/Sources/InternalReasoning model, with `BasisReference` pointing back to the
+  authoritative epistemic context rather than a direct database query -- `Governance→EpistemicReference`,
+  not `Governance→EpistemicDatabase`); **`AuthorizedAction=⟨AuthorizationId,Action,Target,Scope,
+  Constraints,ValidFrom,ValidUntil,AuthorityReference⟩`** (Governance→Operational, explicitly not exposing
+  board minutes or rejected alternatives); **`OutcomeObservation=⟨ExecutionId,ObservedState,ObservedAt,
+  Source,EvidenceReference,Result⟩`** (Operational→Epistemic, feeding back into
+  `Observation→Evidence→Knowledge'`).
+
+  **§174.4-174.5 delivers the translation law**, boxed: **"Governance may decide upon an epistemic result;
+  it must not silently redefine that result"** -- if Governance disputes an epistemic determination, the
+  correct operation is an explicit `RequestReassessment`, creating a new epistemic process, never a silent
+  reinterpretation of `Compliant` into `NonCompliant`.
+
+  **§174.10-174.16 delivers the file's central resolution -- the temporal experiment promised at 0798's
+  close**: at `t_1`, `K_1→D_1→Decision_1→A_1→X_1`; later at `t_2>t_1`, new evidence yields `K_2≠K_1`.
+  Explicitly rejects the naive architecture (`getCurrentKnowledge(subject)` queried live, silently
+  redisplaying `Decision_1` against `K_2`) as wrong, delivering **the correct architecture**: the decision
+  chain retains its original basis via explicit `basedOn` edges (`Decision_1→[basedOn]→Determination_1→
+  [basedOn]→KnowledgeSnapshot_1`), never a live reference. Delivers **snapshot versus live reference** as a
+  named architectural distinction (`KnowledgeId=4711` alone is insufficient if Knowledge 4711's meaning can
+  change; either `KnowledgeVersion=4711:v3` or an immutable `KnowledgeSnapshot_t1` is required), boxed:
+  **"consequential decisions require stable epistemic references."** Explicitly names versioning "not
+  merely technical... an epistemic fact: this decision was made against this state of knowledge. That is a
+  domain concept." **Re-invokes "your Chapter 4 observation"** ("the new state does not necessarily know
+  the old state") to motivate `Current(K)` versus `Lineage(K)` as two distinct required notions, explicitly
+  noting this does not require storing every internal state forever, only sufficient provenance where
+  historical reconstruction is required.
+
+  **§174.17-174.20 delivers a statistical analogy** (a model version `v1` producing `Estimate_v1` cannot
+  honestly be reported as generated from today's dataset -- `DatasetVersion` and `ModelVersion` must be
+  carried) and **the epistemic tuple**, boxed: **`D=⟨Conclusion,EvidenceState,Method,Context,Time,Actor,
+  Version⟩`**, "much closer to a statistically defensible claim" than a bare conclusion. Explicitly and
+  importantly **excludes AI chain-of-thought from the requirement**: "this does not mean storing
+  chain-of-thought... we need an auditable justification structure, not unrestricted model internals" --
+  the architecture needs Evidence/Method/DecisionBasis/Provenance, not private internal AI reasoning.
+
+  **§174.21-174.24 delivers contract stability and anti-corruption-layer discipline**: if Epistemic's
+  internal rule engine changes from v1 to v2, Governance should not break, because it consumes
+  `DeterminationForDecision`, not the rule engine directly -- boxed **"domain boundaries should absorb
+  internal change,"** with `EpistemicDetermination→[ACL]→GovernanceDetermination` and
+  `AuthorizedAction→[Translation]→ExecutionRequest` as explicit translation-layer patterns preventing
+  operational infrastructure concerns from leaking into governance.
+
+  **§174.25-174.29 delivers `Conformance(Execution,Authorization)`** (deterministically checkable via
+  target/version/scope matching, `∈{PASS,FAIL}`) and **the four-state authorization/execution matrix**
+  (Valid+Success/Valid+Failure/Invalid+Success/Invalid+Failure, each with a distinct interpretation),
+  explicitly requiring the system represent `Success∧Unauthorized` as a coherent, representable state
+  rather than collapsing `AuthorizationStatus` and `ExecutionStatus` into one.
+
+  **§174.30-174.32 delivers "technical success does not close the epistemic loop"**: an authorized,
+  technically successful migration can still produce `Outcome=Negative`, feeding
+  `OutcomeObservation→Evidence→Knowledge_2` -- boxed the strongest form of the loop yet:
+  **`Knowledge_t→Action_t→Observation_{t+1}→Knowledge_{t+1}`**, with `Knowledge_t≠Knowledge_{t+1}` "entirely
+  normal. Change is not architectural failure. Failure would be losing the ability to explain the
+  transition."
+
+  **§174.33-174.35 delivers the traceability graph** `Trace(X)={A,D_c,D_t,K,E,O}` for a consequential
+  action `X`, and explicitly rejects "store everything forever" in favor of **policy-driven traceability
+  depth**: `RequiredTraceability=f(Risk,Regulation,Impact,Governance)` -- a trivial action may require only
+  `Authorization→Execution`, a high-impact action the full eight-stage chain.
+
+  **§174.36-174.37 delivers the context-map verdict**: Epistemic Context owns
+  Observation/Evidence/Knowledge/Determination (or subcontexts thereof); Governance Context owns
+  Decision/Authorization and their invariants; Operational Context owns Execution/Outcome; the three
+  integration contracts formalize the boundaries. **Explicitly leaves open the file's central unresolved
+  question**: "are these three bounded contexts, or are they three domain zones containing multiple bounded
+  contexts?" -- flagging that Evidence or Decision/Authorization may eventually separate into their own
+  contexts, "derived from evidence, not aesthetics."
+
+  **§174.38 delivers the Step 174 verdict**, two boxed principles: **"a bounded context boundary is
+  justified when it protects an independent meaning, invariant, lifecycle, ownership, or change model"**
+  and **"cross-context communication should carry a stable domain meaning, not an internal
+  representation."**
+
+  **Closes opening "Step 175 — The 'State Does Not Know Its Past' Experiment,"** explicitly framed as
+  "especially important because it directly incorporates your Chapter 4 observation," proposing to formally
+  test **"a current state cannot, in general, reconstruct its historical state"** by constructing four
+  competing models (state-only, versioned, event/lineage, snapshot+provenance) and asking, "as a
+  mathematician/statistician," whether historical reconstruction is **identifiable** -- explicitly defined:
+  if two different histories `H_1≠H_2` can produce the same current state `Current(H_1)=Current(H_2)`,
+  history is "not identifiable from current state alone," promising "a mathematically precise foundation
+  for the Chapter 4 insight" and a precise specification of what KnowledgeOS must, and must not, preserve.
+  No actual repository implementation occurs within this file itself; every contract, tuple, and matrix
+  remains a conceptual specification pending Step 175's formal identifiability treatment.
+introduces:
+  - concept: "The three domain contracts as fully specified conceptual tuples: DeterminationForDecision, AuthorizedAction, OutcomeObservation"
+  - concept: "The translation law: 'Governance may decide upon an epistemic result; it must not silently redefine that result'"
+  - concept: "The resolved temporal experiment: decisions retain their original basis via explicit basedOn edges to a KnowledgeSnapshot, never a live current-knowledge query"
+  - concept: "Snapshot versus live reference; 'consequential decisions require stable epistemic references'"
+  - concept: "Versioning as an epistemic fact ('this decision was made against this state of knowledge'), not merely a technical database field"
+  - concept: "Current(K) versus Lineage(K) as two distinct required notions, motivated by 're-invoking your Chapter 4 observation'"
+  - concept: "The epistemic tuple D=⟨Conclusion,EvidenceState,Method,Context,Time,Actor,Version⟩, explicitly excluding AI chain-of-thought storage"
+  - concept: "'Domain boundaries should absorb internal change'; the anti-corruption-layer translation pattern EpistemicDetermination→[ACL]→GovernanceDetermination"
+  - concept: "Conformance(Execution,Authorization) and the four-state authorization/execution matrix, requiring Success∧Unauthorized to be representable"
+  - concept: "'Technical success does not close the epistemic loop'; the strongest form of the loop yet, Knowledge_t→Action_t→Observation_{t+1}→Knowledge_{t+1}"
+  - concept: "Policy-driven traceability depth: RequiredTraceability=f(Risk,Regulation,Impact,Governance), rejecting 'store everything forever'"
+  - concept: "The context-map verdict and its explicitly left-open central question: three bounded contexts, or three zones containing multiple bounded contexts?"
+  - concept: "The two boxed Step 174 principles on bounded-context justification and cross-context communication"
+  - concept: "Step 175's opening: the formal identifiability test of 'a current state cannot, in general, reconstruct its historical state,' via four competing models"
+defines:
+  - concept: "Snapshot versus live reference"
+    definition: "A reference to an upstream domain object (e.g. KnowledgeId=4711) is insufficient for grounding a consequential decision if the referenced object's meaning can change after the reference is taken -- the architecture must instead use either an explicit version identifier (KnowledgeVersion=4711:v3) or an immutable snapshot (KnowledgeSnapshot_t1) so that re-evaluating the reference later reproduces the same meaning the decision was actually based on, rather than silently picking up whatever the object has since become"
+  - concept: "The epistemic tuple D=⟨Conclusion,EvidenceState,Method,Context,Time,Actor,Version⟩"
+    definition: "A determination is not adequately represented by its bare conclusion (e.g. 'non-compliant') alone; a statistically and epistemically defensible determination must also carry the evidence state it was computed against, the method/rule applied, the context, the time it was made, the actor or mechanism that produced it, and a version identifier -- this does not require storing an AI's private internal reasoning or chain-of-thought, only an auditable justification structure sufficient for reconstruction and challenge"
+  - concept: "Identifiability of historical reconstruction (previewed for Step 175)"
+    definition: "A statistical/mathematical criterion for whether an architecture's current-state representation is sufficient to reconstruct its history: reconstruction is identifiable only if no two distinct histories H_1≠H_2 could have produced the same current state (Current(H_1)=Current(H_2)); if such indistinguishable histories exist, the current state alone cannot determine which history actually occurred, meaning the architecture must preserve additional lineage/provenance beyond current state wherever historical reconstruction is required"
+refines:
+  - concept: "0798's opening of Step 174 and its proposed context-map/domain-contract simulation with seven boundary questions"
+    refinement: "DELIVERED: all three domain contracts fully specified as conceptual tuples, the translation law, the resolved temporal/immutability experiment, the epistemic tuple, anti-corruption-layer discipline, the four-state conformance matrix, and policy-driven traceability depth"
+  - concept: "0798's three candidate semantic contracts (named but not yet structurally specified)"
+    refinement: "Given full conceptual field-level specifications for the first time (DeterminationForDecision, AuthorizedAction, OutcomeObservation each as explicit tuples), converting named-but-unspecified contract candidates into concrete, reviewable structures"
+  - concept: "0798's explicitly deferred immutability/versioning question (does Governance see new Knowledge automatically, or must a Decision remain anchored to its historical Determination?)"
+    refinement: "DIRECTLY RESOLVED: the correct architecture anchors Decision_1 to Determination_1 to KnowledgeSnapshot_1 via explicit basedOn edges, never a live query against current knowledge -- directly consistent with, and now formally architected around, 0797's Experiment F finding that a decision justified at t_1 remains justified even after its knowledge basis is later invalidated"
+  - concept: "0794's/0795's/0796's/0797's repeated Chapter-4-motivated invocations of the 'current state does not contain complete prior state' principle"
+    refinement: "Re-invoked once more to motivate Current(K)≠Lineage(K), but this time explicitly promising a rigorous mathematical treatment in the immediately following file (Step 175's identifiability test) rather than remaining a qualitative architectural lesson -- the arc's Chapter-4 discipline is about to receive its most formal treatment yet"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 175's actual formal identifiability analysis across the four competing models (state-only, versioned, event/lineage, snapshot+provenance) and its precise specification of what KnowledgeOS must and must not preserve."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the three fully specified domain-contract tuples (DeterminationForDecision, AuthorizedAction, OutcomeObservation) as the arc's first concrete, field-level DDD integration-contract specifications."
+  - "dimension-registry.md: record the resolved temporal experiment (decisions anchor to explicit KnowledgeSnapshot references via basedOn edges, never live queries) as the direct architectural realization of 0797's Experiment F finding."
+  - "dimension-registry.md: record the epistemic tuple D=⟨Conclusion,EvidenceState,Method,Context,Time,Actor,Version⟩ and its explicit exclusion of AI chain-of-thought storage as a directly applicable, privacy-conscious auditability specification."
+  - "dimension-registry.md: flag Step 175's promised formal identifiability treatment of the Chapter-4-derived 'state does not know its past' principle as a primary decisive reference artifact to watch for -- this reconstruction's own methodology places high value on genuinely mathematical grounding of previously qualitative architectural lessons."
+anchor_test:
+  anchor: "0798's opening of Step 174 and its proposed context-map/domain-contract simulation, especially its deferred immutability-versioning question; 0797's Experiment F finding (a decision justified at t_1 remains justified after its knowledge basis is later invalidated); 0794's/0795's/0796's repeated Chapter-4-motivated principle invocations"
+  supports_dimension: "Delivers all three domain contracts as fully specified conceptual tuples, directly fulfilling what 0798 only named. Delivers the translation law protecting epistemic results from silent governance reinterpretation. Directly resolves 0798's deferred immutability-versioning question, architecting the exact mechanism (basedOn edges to explicit KnowledgeSnapshot references) that formally realizes 0797's Experiment F finding. Delivers the epistemic tuple with an explicit, notable exclusion of AI chain-of-thought from the auditability requirement. Delivers anti-corruption-layer discipline, the four-state conformance matrix, and policy-driven traceability depth as directly applicable governance patterns. Explicitly and honestly leaves open whether the three zones are three bounded contexts or three zones containing multiple contexts, refusing to prematurely freeze the boundary. Opens Step 175 with an explicit promise to give the arc's repeatedly-invoked Chapter-4 principle its first rigorous mathematical (identifiability) treatment"
+  refines_or_contradicts: "directly delivers and extends 0798's opening and its three named-but-unspecified contracts; directly resolves 0798's deferred immutability-versioning question; formally architects the mechanism realizing 0797's Experiment F finding; extends the arc's repeated Chapter-4 invocations toward a promised formal treatment; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§174.10-174.13's fully worked resolution of the temporal experiment (rejecting the naive live-query architecture, delivering Decision_1→[basedOn]→Determination_1→[basedOn]→KnowledgeSnapshot_1 and the boxed 'consequential decisions require stable epistemic references') is directly checkable evidence that 0798's deferred immutability-versioning question is genuinely resolved, not merely restated."
+  - "§174.20's explicit statement 'this does not mean storing chain-of-thought... we need an auditable justification structure, not unrestricted model internals' is directly quotable evidence of a notable, privacy-conscious scoping decision for the epistemic tuple."
+  - "The closing framing of Step 175 as 'especially important because it directly incorporates your Chapter 4 observation' and its explicit promise of an identifiability-based mathematical treatment ('that word -- identifiable -- is important') is directly quotable evidence of the corpus about to convert a repeatedly qualitative architectural lesson into a formally testable mathematical proposition."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 175's formal identifiability analysis was ever actually carried out, and which of the four candidate models (state-only, versioned, event/lineage, snapshot+provenance) was found to satisfy identifiability for historical reconstruction."
+  - "Whether the file's explicitly left-open question (three bounded contexts vs. three zones containing multiple bounded contexts) was ever resolved by a later file, and how it reconciles with the arc's other DDD context enumerations (0751, 0787, 0798's own three-zone architecture)."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers all three domain contracts as fully specified conceptual tuples, directly fulfilling what 0798 only named, plus the translation law protecting epistemic results from silent reinterpretation. Directly and concretely resolves 0798's deferred immutability-versioning question, formally architecting the exact mechanism that realizes 0797's Experiment F finding (KnowledgeSnapshot-anchored basedOn edges rather than live current-state queries). Delivers the epistemic tuple with a notable explicit exclusion of AI chain-of-thought storage, anti-corruption-layer discipline, the four-state conformance matrix, and policy-driven traceability depth. Honestly leaves open whether the three zones constitute three bounded contexts or three zones containing multiple contexts. Opens Step 175 with an explicit promise to give the arc's repeatedly Chapter-4-motivated principle its first rigorous mathematical (statistical-identifiability) treatment -- a significant methodological escalation worth tracking closely in the next file."

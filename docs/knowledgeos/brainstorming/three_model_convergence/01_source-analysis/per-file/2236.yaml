@@ -1,0 +1,113 @@
+sequence: 2236
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-225400_step_289_reviewer-b-step-289-operations-mandate-superseded-by-2303-tightening.md
+title: "Reviewer-B Step 289 OPERATIONS Mandate (self-flagged SUPERSEDED by a later 2303-tightening) -- an Alternate, Operation-Focused Step-289 Draft Distinct From File 2235's Dependency-Graph/Bootstrap-Boundary Mandate"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "reviewer-B's alternate Step-289 draft, explicitly self-flagged in its own filename as superseded by a later '2303-tightening' revision -- treated as historical/superseded per standing convention, still read in full as it is not a byte-identical duplicate"
+source_role: SUPERSEDED
+canonical_source: 2236
+importance: minor
+confidence: high
+about: >
+  A 39-section "REFINED STEP 289 — OPERATIONS" research mandate, an alternate/parallel Step-289 draft to
+  file 2235's dependency-graph/bootstrap-boundary mandate, focused specifically on formally constraining the
+  operation space 𝒪 over ratified K_t. The document's own filename self-flags it as SUPERSEDED by a later
+  "2303-tightening" revision not yet encountered in this reconstruction's sequence -- recorded per the
+  standing convention for self-identified superseded artifacts (read in full, minimal-but-complete record,
+  no independent-dimension weight given equivalent to a live artifact).
+
+  Governing distinction (§1): operation model must be "justified by K_t and the existing corpus," not "what
+  would be convenient to implement." §2 inherits Step 285/287/288's open items (K_t RATIFIED; operation set/
+  identity/semantics, δ, equality, observability, governance all OPEN). §3 draws the operation≠transition
+  category-error distinction (o:I→O vs δ:K×𝒪→K), proposing 𝒪=𝒪_read∪𝒪_derive∪𝒪_transform∪𝒪_govern as an
+  UNTESTED hypothesis partition. §4 lists five candidate operation-carrier forms (A: command K→K'; B: typed
+  command; C: transition witness with evidence E; D: partial transformation; E: governed transition with
+  policy/authority). §5-6 investigate operation identity independently from state identity, explicitly
+  noting Step 288's id=H(P,e,c,t,Π) "does not automatically provide operation identity" -- "state identity
+  cannot be reused as operation identity without proof." §7-8 investigate four operation-equality candidates
+  (structural/semantic/behavioural/provenance-sensitive) and the critical o₁≠o₂ ∧ δ(K,o₁)=δ(K,o₂) possibility
+  (state effect does not establish operation identity). §9-11 investigate preconditions, postconditions, and
+  partiality (δ:K×O⇀K rather than total), with 9 distinct failure-mode categories that must not collapse
+  (Reject≠Undefined≠Conflict≠Unauthorized) -- connecting to the outstanding Step-285 "Resolve rejection
+  semantics — Reject ↔ I-12 ↔ Article 8" critical path. §12-14 cross-audit operations against the eight
+  primitives and against Event/Action, explicitly forbidding a ninth primitive. §15 reinforces "Policy
+  composition ≠ operation composition" (the meet-semilattice-does-not-transfer discipline already tracked
+  elsewhere). §16-18 investigate composition (associativity/identity/closure/commutativity -- explicitly to
+  seek counterexamples first), and §17 separately investigates whether δ(δ(K,o₁),o₂)=δ(K,o₂∘o₁) is
+  established rather than assumed notation. §19-20 investigate replay (5 distinct candidate meanings) and
+  determinism (4 candidate models). §21 reinforces the already-tracked Σ-order≠K-order prohibition, extending
+  it explicitly to operations: δ(K,o)=K' ⇏ K≺K', and Σ(K)≺Σ(K') ⇏ K≺K'. §22 investigates retraction/deletion
+  operations as candidate names only, connecting to Step 288's "identity can re-key under withdrawal." §23
+  explicitly forbids inferring operation algebra from Σ-structure or from Policy-∧-structure -- the three
+  algebraic domains (Σ, Policy, Operation) "must remain separate... until a formal homomorphism... is
+  demonstrated." §24 applies DDD as an analytical (not prescriptive) lens over 11 named constructs. §25
+  frames five non-preferred possible end-results (A: 𝒪 fully definable; B: candidate-but-normative; C:
+  under-specified; D: decomposes into multiple constructs; E: no unified abstraction justified). §26-27 the
+  candidate minimum transition-contract dependency set (K,o,Pre,Policy,Authority,Identity,Equality,Result,
+  Failure) and full 289-level dependency graph, echoing Step 288's cycle-cannot-be-broken-by-normative-
+  assumption finding. §28-29 the controlled Gītā Karma/Phala corroboration-only lens for operation vs
+  transformation (explicitly "Gītā correspondence ⇏ KnowledgeOS operation semantics," strongest possible
+  result "corroboration" only), and the Sañjaya W→Ω→O observation boundary kept separate from operation
+  semantics. §30-32 sixteen required mathematical experiments (T289-01 through T289-16) with a six-value
+  result vocabulary (PASS/FAIL/QUALIFY/UNDECIDABLE/NOT TESTABLE/NOT APPLICABLE), a counterexample-first
+  discipline for five named candidate laws, and a 21-row required classification matrix. §33 six explicit
+  prohibited conclusions (operations form a monoid/semigroup without proof; every operation is a state
+  transition; success means knowledge growth; operation equality follows from equal state output; "Gītā's
+  Karma defines the KnowledgeOS operation" -- "explicitly forbidden"). §34 requires an explicit before/after
+  Step-261-gate-status audit specifically for whether constraining 𝒪 permits gate advancement (expected: no,
+  𝒪-research≠𝒪-ratification). §35 lists 13 expected output artifacts (REFINED-STEP-289.md + research/step-289/
+  01-13 + exec/). §36 a ten-value provenance-discipline vocabulary (CORPUS/DERIVED/PROVEN/EMPIRICALLY
+  VERIFIED/NORMATIVE/INTERPRETATION/HYPOTHESIS/QUALIFY/DEFERRED/BLOCKED), forbidding silent HYPOTHESIS→CORPUS
+  promotion. §37 the expected final boundary statement (operation model constrained ≠ operation contract
+  closed ≠ δ established). §38 a 15-question success criterion for "two independent engineers." §39 the
+  final methodological rule: three separate mathematical objects (K_t, Σ(K_t), 𝒪) must not be conflated, each
+  with a potentially different structure (Σ: candidate partial order; Policy: demonstrated ∧-composition;
+  𝒪: structure UNKNOWN; δ: still not established as computable).
+
+  Reviewer-B's closing assessment: recommends a five-step sequencing (285→287/288→Step 289 operation
+  boundary→Step 290 rejection/authority→Step 291 δ), explicitly framing 289 as "a reconnaissance and
+  formalisation step for 𝒪, not the final operation-contract step," and states the governing new invariant:
+  "No operation algebra may be promoted merely because another domain has an algebra" (Policy-∧ ⇏
+  Operation-∧; Σ-order ⇏ K-order ⇏ 𝒪-order) -- explicitly named as "the lesson from the correction you made
+  to F5." Confirms the Gītā Karma/Phala lens is corroboration-only, preserving Step 286's discipline:
+  "philosophy may illuminate a distinction; engineering must establish it."
+introduces:
+  - concept: "An alternate, operations-focused Step-289 draft distinct from file 2235's dependency-graph/bootstrap-boundary mandate -- two independent Step-289 mandates exist in the corpus, this one self-flagged SUPERSEDED by a later 2303-tightening"
+  - concept: "The explicit operation≠transition category distinction (o:I→O vs δ:K×𝒪→K) and five candidate operation-carrier forms (command/typed-command/transition-witness/partial-transformation/governed-transition)"
+  - concept: "The extension of the already-tracked Σ-order≠K-order prohibition to a third domain: 𝒪-structure, explicitly separating Σ-structure, Policy-structure, and Operation-structure as three domains requiring a demonstrated homomorphism before any transfer"
+defines:
+  - concept: "Sixteen required mathematical experiments T289-01 through T289-16 with a six-value PASS/FAIL/QUALIFY/UNDECIDABLE/NOT-TESTABLE/NOT-APPLICABLE result vocabulary (§30)"
+  - concept: "Ten-value provenance-discipline vocabulary CORPUS/DERIVED/PROVEN/EMPIRICALLY VERIFIED/NORMATIVE/INTERPRETATION/HYPOTHESIS/QUALIFY/DEFERRED/BLOCKED (§36)"
+refines:
+  - concept: "This reconstruction's already-tracked Σ-order≠K-order and policy-composition-does-not-transfer prohibitions"
+    refinement: "EXTENDED explicitly to a third domain (operation-structure), naming the governing new invariant 'No operation algebra may be promoted merely because another domain has an algebra' as directly traceable to the F5 correction"
+contradicts: []
+repeats:
+  - "Substantial thematic overlap with file 2235's dependency-graph/bootstrap-boundary Step-289 mandate (both target Step 289, both inherit the same Step-285/287/288 baseline, both apply the degeneracy/counterexample-first discipline), though the two documents are structurally and topically distinct (this one is operations-focused; 2235 is dependency-graph/bootstrap-focused) and neither is byte-identical to the other."
+bridge_candidates:
+  - "The '2303-tightening' document this file's own filename names as its superseding revision -- not yet encountered in this reconstruction's sequence; flag for connective grounding if directly encountered later."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as a self-flagged-superseded alternate Step-289 operations mandate, distinct from file 2235's dependency-graph mandate, delivering the operation≠transition category distinction and the extension of the Σ-order≠K-order prohibition to a third (operation-structure) domain."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Σ-order≠K-order and Policy-∧-does-not-transfer prohibitions (files throughout the equality arc)"
+  supports_dimension: "Extends the prohibition pattern to a third domain (operation-structure), naming it explicitly as a governing new invariant traceable to the F5 correction"
+  refines_or_contradicts: "refines (extends the established prohibition pattern)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Self-flagged supersession is evident from the filename itself ('superseded-by-2303-tightening'); content is a distinct, non-duplicate 39-section mandate rather than a byte-identical copy, hence read in full despite the SUPERSEDED classification."
+undefined_concepts: []
+open_questions:
+  - "Whether the '2303-tightening' document that supersedes this Step-289-operations draft is directly encountered later in the sequential read, and if so, what specifically it tightens or corrects relative to this version."
+tier2_triggered: true
+tier2_reason: "Delivers substantive independent content (operation≠transition category distinction, five candidate operation-carrier forms, extension of the Σ-order≠K-order prohibition to a third operation-structure domain) despite being self-flagged as later superseded; classified importance minor per the standing convention for superseded artifacts, but tier-2 triggered because the content is non-duplicate and analytically substantive rather than a mere duplicate record."

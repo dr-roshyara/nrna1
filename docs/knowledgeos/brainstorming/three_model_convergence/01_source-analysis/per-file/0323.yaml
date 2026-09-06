@@ -1,0 +1,87 @@
+sequence: 323
+path: docs/knowledgeos/brainstorming/kernel/20260825-171853-c15-reframed-knowledge-at-a-time-in-evolving-knowledge-space.md
+title: "C-15 Reframed: Knowledge-at-a-Time in an Evolving Knowledge Space"
+date: "2026-08-25"
+bytes: 22585
+model:
+  primary: c1
+  secondary: null
+source_role: CRITICAL_REVIEW
+canonical_source: 323
+importance: critical
+confidence: high
+about: >
+  A distinct strand from the philosophical Kernel-discovery arc (0320-0322): a governance/adjudication-
+  discipline dialogue about a specific constitutional ruling item, 'C-15' (whether retraction is an
+  epistemic-state transition), inside a separate, sibling formal-KnowledgeOS-constitution process
+  (referencing v1.1, 'KnowledgeCore', multi-session governance work: 'Claude Session 1'/'Session 2', 'Wave
+  1', 'HPA ADJUDICATION'). Reframes C-15 around 'knowledge is always knowledge-at-a-time within an evolving
+  Knowledge Space', proposing that temporal change may belong to the relationship between Knowledge Space
+  and time-indexed Projection rather than to the epistemic state of a Knowledge object itself -- explicitly
+  held as a research hypothesis, not a ruling. Introduces a disciplined BRAINSTORMING -> FORMAL KERNEL ->
+  ADJUDICATION -> FALSIFICATION -> FUTURE ARCHITECTURE -> FUTURE VISION pipeline and a three-artifact
+  Falsification Matrix method (Current Law / Brainstorming Conceptual Model / Falsification Matrix) for
+  testing brainstorming hypotheses against formal constitutional text without letting brainstorming
+  silently redesign the Kernel. Critiques an external review's proposed Epistemic-State + Lifecycle-State
+  separation for C-15 (PROPOSED/ACTIVE/RETRACTED/SUPERSEDED), accepting its core finding (retraction may be
+  orthogonal to epistemic status) while explicitly rejecting its unearned leap to concrete architecture,
+  formalizing the accepted finding as hypothesis C-15-H1. Surfaces a sharp new distinction: 'currently
+  relied upon' != 'true'. This file's Knowledge Space -> time-indexed Projection -> Knowledge(t) model is
+  structurally similar to, but not explicitly reconciled with, the philosophy-arc's own snapshot/projection
+  formula lineage (S_t, K_t^A, K_t^R) tracked across 0285-0322.
+introduces:
+  - concept: "C-15 reframing: 'Knowledge is always knowledge-at-a-time within an evolving Knowledge Space' -- the temporal dimension need not be encoded as an additional Kernel state; a Projection is a time-indexed view/selection of the evolving Knowledge Space, so 'Knowledge X was true/justified at T1' does not imply 'Knowledge X must remain true/usable at T2'"
+  - concept: "Alternative C-15 model: historical knowledge does not disappear on retraction; a later projection simply does not contain it as currently-applicable knowledge -- proposed as an alternative hypothesis, explicitly NOT accepted as solving C-15 ('we must not now conclude that Projection solves C-15 -- that would be jumping from brainstorming into architecture')"
+  - concept: "Named research hypothesis: 'Maybe temporal change belongs to the relationship between Knowledge Space and Projection rather than to the epistemic state of the Knowledge object itself'"
+  - concept: "Four-way architectural separation proposed for this sibling process: KnowledgeCore (protects identity/justification/admissibility/epistemic history/continuity), Projection (answers what knowledge is relevant/visible/applicable from a perspective at a time), Knowledge Space (the broader evolving space in which knowledge exists and changes), Kernel (protects fundamental epistemic guarantees without becoming the entire cognitive system) -- a four-term architecture distinct from, and not reconciled with, the philosophy-arc's own Kernel/inside-outside-above boundary work"
+  - concept: "Worked AI-agent example: 09:00 projection 'customer is eligible' vs 14:00 projection 'customer is not currently eligible' after new evidence, explainable via P1/P2 without erasing the 09:00 knowledge -- framed as closer to a 'persistent epistemic brain' than a CRUD knowledge base"
+  - concept: "Explicit danger warning against Projection becoming a hidden state machine: absence from a projection could mean not-relevant/not-visible/not-assessed/outside-scope/unavailable/superseded/genuinely-no-longer-justified -- these are different meanings, and 'absence must not silently become an epistemic state' is explicitly connected to the corpus's own ZERO lens discipline"
+  - concept: "Disciplined research pipeline: BRAINSTORMING (Knowledge/Knowledge Space/Time/Projection/Identity/Evidence/Reasoning) -> FORMAL KERNEL (what must absolutely be protected) -> ADJUDICATION (what is actually constitutional) -> FALSIFICATION (can the broader model break the proposed minimal Kernel) -> FUTURE ARCHITECTURE (KnowledgeOS as epistemic infrastructure) -> FUTURE VISION ('brain' of an AI/computer system) -- explicit rule: brainstorming and formal Kernel work ask complementary but different questions ('what is the smallest authoritative boundary' vs 'what kind of epistemic world would make such a Kernel useful') and must not be mixed during adjudication"
+  - concept: "Recommended structured-extraction sequence for a sealed brainstorming corpus: classify+map -> extract conceptual models (Knowledge/Knowledge Space/KnowledgeOS/KnowledgeCore/Kernel/Projection/Time/Identity/Evidence/Justification/State/Change) -> Conceptual Research Map -> compare against Current Formal Kernel -> Falsification Questions -> HPA Adjudication"
+  - concept: "Conceptual Model Inventory question set for 'Knowledge' (object? state? relation? justified proposition? event? projection? something temporal?), 'Knowledge Space' (does the corpus consistently describe a larger space of possible/current/historical knowledge?), 'Projection' (mere read model, or deeper epistemic meaning?), 'Time' (metadata? part of identity? part of validity? part of history? a Knowledge Space dimension?), 'Change' (does K(t1)!=K(t2) mean the same object changed, or two distinct epistemic objects?), 'Identity' (explicitly flagged as connected to the corpus's own identity-primitive-vs-knowledge-not-primitive conflict)"
+  - concept: "Three-artifact Falsification Matrix method: A. Current Law (what KnowledgeOS constitutionally says), B. Brainstorming Conceptual Model (imagined/researched possible models), C. Falsification Matrix (where B challenges A) -- worked six-row example table (temporal dependence vs forward-only history; evolving Knowledge Space vs object-centric KnowledgeCore; time-indexed projection vs projection-as-context; disappearance-without-falsity vs ZERO [flagged 'strong compatibility']; multi-projection divergence vs stable identity; continuous change vs forward-only lifecycle)"
+  - concept: "Critique of an external review proposing Epistemic-State + Lifecycle-State separation for C-15 (states: PROPOSED/ACTIVE/RETRACTED/SUPERSEDED): core finding accepted as 'very valuable' (retraction may be orthogonal to epistemic status, retraction != false), but the leap from 'a forward-only lifecycle exists' to 'a separate lifecycle state model exists' explicitly rejected as unearned ('architecture by inference'); explicit three-way separation demanded: Finding (retraction may be orthogonal) vs Hypothesis (a lifecycle axis could represent that orthogonality) vs Proposed architecture (Kernel contains a four-state lifecycle model) -- only the Finding accepted as currently useful"
+  - concept: "Boundary-ownership reframing of C-15: who decides/asserts a retraction (KnowledgeCore / Authority / Projection / Decision Boundary / external business context / governance process) -- C-15 may not be a state-model problem but a boundary-ownership problem involving authority, agency, decision power"
+  - concept: "Sharp distinction surfaced and flagged as potentially very important for the Kernel: 'currently relied upon' != 'true' -- 'we no longer rely on X' does not mean 'X is false'"
+  - concept: "Reframing via the Knowledge Space model: instead of adding Knowledge={epistemic status, lifecycle status}, investigate whether Knowledge Space -> K123@t1/K123@t2 -> projection@t already explains retraction without treating it as a property of K123 at all -- 'is retraction a property of the object, or a time-/projection-dependent relation?'"
+  - concept: "Formal hypothesis statement C-15-H1: 'Retraction may be orthogonal to epistemic status and representable as lifecycle/process semantics without adding an epistemic state' -- to be tested against v1.1, Knowledge Space model, Projection model, Identity invariant, forward-only lifecycle, History, Agency, Authority, ZERO lens, minimal-boundary criterion"
+  - concept: "Combinatorial-explosion warning applied to the lifecycle proposal (echoing 0285's own explosion warning): Epistemic State x Lifecycle State x Authority State x Projection State machines could make 'the small Kernel explode' -- 'the ZERO lens should attack the lifecycle proposal too'"
+  - concept: "Ten-row verdict table on the external review, ranging from 'very valuable' (retraction not necessarily epistemic) through 'strong hypothesis' (orthogonality) to 'not established yet' (Kernel should contain lifecycle status) and 'premature architecture' (four lifecycle states) -- final verdict: C-15 is NOT solved, the review is reclassified as a candidate hypothesis for the brainstorming/research corpus rather than a ruling or implementation instruction"
+defines: []
+refines:
+  - concept: "The corpus's own snapshot/projection formula lineage (S_t, S_t^A, K_t^A, 0288's S_t=Project(...), 0321's K_t^A tuple, 0322's H_t-->K_t^R)"
+    refinement: "Independently arrives at a structurally similar Knowledge Space -> time-indexed Projection -> Knowledge(t) model from a different (governance/adjudication) strand of the corpus, without explicit cross-reference to the philosophy-arc's formalization; the two lineages are not reconciled here"
+  - concept: "The corpus's own ZERO-lens discipline ('absence must not silently become an epistemic state')"
+    refinement: "Directly applied to warn against Projection becoming a hidden state machine, and separately against the lifecycle proposal's potential combinatorial explosion"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - concept: "This file's four-way KnowledgeCore/Projection/Knowledge-Space/Kernel separation, structurally resembling but not reconciled with the philosophy-arc's Kernel inside/outside/above boundary (0320) and Preservation-Substrate-vs-regime separation (0285-0322)"
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: open a new unresolved_equivalence entry -- this file's Knowledge Space -> time-indexed Projection -> Knowledge(t) model (a separate governance/adjudication strand referencing v1.1/KnowledgeCore/C-15) vs. the philosophy-arc's own snapshot/projection formula lineage (S_t/K_t^A/K_t^R, 0285-0322) -- structurally similar, independently developed, not reconciled."
+  - "dimension-registry.md: record the Falsification Matrix three-artifact method and the BRAINSTORMING->FORMAL KERNEL->ADJUDICATION->FALSIFICATION pipeline as a new methodology addition, distinct from but complementary to MD-017/MD-018."
+  - "dimension-registry.md: record hypothesis C-15-H1 (retraction orthogonal to epistemic status, representable as lifecycle/process semantics) as an open, explicitly-not-yet-adjudicated research item."
+anchor_test:
+  anchor: "The corpus's own snapshot/projection formula lineage (0285-0322); the corpus's ZERO-lens discipline; the corpus's identity-primitive-vs-knowledge-not-primitive tension (0273/0276/0278/0318)"
+  supports_dimension: "Cross-cutting governance-methodology strand: introduces adjudication discipline (Falsification Matrix, sealed-brainstorming-until-adjudication) for a sibling formal-KnowledgeOS-constitution process, and independently converges on a Knowledge-Space/Projection temporal model resembling the philosophy arc's own snapshot formula lineage"
+  refines_or_contradicts: "parallels (does not explicitly refine or contradict) the philosophy-arc's snapshot/projection lineage; directly applies the corpus's ZERO lens; explicitly flags but does not resolve the identity-primitive tension"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "The referenced 'v1.1' constitutional document and 'KnowledgeCore' formal definition -- referenced but not included in this file, not yet encountered by number in this reconstruction's sequential pass"
+  - "Whether 'Claude Session 1'/'Session 2' and 'Wave 1'/'HPA ADJUDICATION' correspond to any process artifact already read in this reconstruction's primary-corpus pass"
+open_questions:
+  - "Whether this file's Knowledge Space/Projection/KnowledgeCore/Kernel four-way separation is ever explicitly reconciled with the philosophy-arc's Preservation-Substrate/Kernel-boundary lineage (0285-0322)"
+  - "Whether C-15-H1 is ever formally adjudicated, and with what ruling"
+  - "Whether the referenced v1.1 constitutional document and KnowledgeCore definition are encountered later in the sequential pass"
+  - "Whether the identity-primitive-vs-knowledge-not-primitive conflict (flagged here as relevant to the Identity conceptual-model-inventory question) is ever reconciled -- still open per 0318"
+tier2_triggered: true
+tier2_reason: "A distinct governance/adjudication-discipline strand (referencing a sibling v1.1/KnowledgeCore constitutional process, C-15 ruling item, multi-session governance work) rather than a deepening of the philosophy-reading Kernel-discovery arc. Reframes C-15 around knowledge-at-a-time within an evolving Knowledge Space, introduces a disciplined brainstorming-to-adjudication pipeline and a three-artifact Falsification Matrix method, critiques and reformulates an external review's Epistemic-State+Lifecycle-State proposal into hypothesis C-15-H1, and surfaces the 'currently relied upon != true' distinction. Its Knowledge Space/Projection temporal model structurally parallels but is not reconciled with the philosophy arc's own snapshot/projection formula lineage."

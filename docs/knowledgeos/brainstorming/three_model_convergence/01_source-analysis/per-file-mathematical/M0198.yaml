@@ -1,0 +1,104 @@
+sequence: M0198
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-090000_master-handoff-representation-reduction-under-preservation-contracts.md
+title: "MASTER RESEARCH HANDOFF: reveals KR-ZERO-ORDER-2026-09's precise higher-order-Zero statistics (89.7% singleton-determined, 8.24% irreducible), catches a dangerous R1-R4-label-vs-R5→R2-hierarchy naming collision, exposes an aggregate-only corpus-persistence integrity gap (reconstructible only via a deterministic generator+seed), and delivers a rigorous adequacy/realization/fiber-separation/information-excess theory (three numbered theorems) plus a 10-rule research discipline and an audit-before-implement protocol"
+date: "20260903-090000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0198
+importance: critical
+confidence: high
+about: >
+  The most methodologically mature document in the Zero-algebra/representation-reduction thread.
+  Reveals precise results from a previously-unreported executed experiment, KR-ZERO-ORDER-2026-09
+  (higher-order Zero interaction statistics on 1,395 cases), explicitly separates this "prior
+  evidence" from a genuinely new, not-yet-executed research question (ordered representation
+  reduction R5→R4→R3→R2 under preservation contracts), and delivers both a rigorous formal theory
+  (adequacy, realization, fiber separation, information excess, three theorems) and a disciplined
+  audit-first Claude Code CLI handoff protocol explicitly designed to prevent conceptual
+  contamination between the old and new research objects.
+introduces:
+  - "KR-ZERO-ORDER-2026-09's precise higher-order Zero-interaction statistics (1,395 total cases): k=1 (singleton-determined) 1252/1395=89.7%; k=2 25/1395=1.8%; k=3 3/1395=0.2%; irreducible 115/1395=8.24% — the first precise breakdown of HOW MUCH of Zero is higher-order versus singleton-determined, refining M0194/M0195's qualitative 'Zero is not element-wise' finding into a quantified distribution"
+  - "O2: irreducible fraction ~8.49% after removing a cancelling contract; O3 (transformation-dependence of higher-order Zero): T1-stopword 0%, T2-dedup 31.46%, T3-normalize 0.44%, T4-context 11.50%, T5-reference 0%, T6-meta-preserving 0.48%, T7-meta-destroying 0%, T8-interacting 20.59% — showing deduplication and interacting transformations are by far the dominant sources of higher-order Zero behavior; O5: 387 monotone vs. 4 non-monotone cases, refuting k(m+1)≥k(m) as a universal law"
+  - "An explicit corrective conclusion against over-generalizing the higher-order finding: 'Do NOT conclude Zero is fundamentally higher-order' — the correct interpretation is 'predominantly singleton-determined... but a non-negligible class is not' — a disciplined middle-ground reading of the 89.7%-vs-10.3% split"
+  - "A MAJOR CORPUS-INTEGRITY FINDING: property-results.json for the old KR-ZERO work is AGGREGATE ONLY — the original 1,395 case-level rows were never persisted, only 481 irreducible witnesses + 14 illustrative records were saved — but the corpus IS reconstructible because emit_corpus.py is a deterministic generator with a recorded seed, verified to reproduce the published aggregates exactly; explicit methodological lesson: 'the population should have been persisted... a stochastic or externally sourced corpus could not necessarily be recovered'"
+  - "A dangerous naming-collision warning: the OLD KR-ZERO experiment's R1-R4 labels are REPRESENTATION CLASSES (token-sequence / token+metadata / graph / structured-claim), NOT levels of a NEW R5→R4→R3→R2 reduction hierarchy — explicit prohibition: 'NEVER construct a representation hierarchy from those labels... A grep/audit found no evidence for Q(D)/R5/C(Rn)/O(Rn)/representation_hierarchy/reduction_level in the old KR-ZERO corpus artifacts' — 'KR-ZERO-ORDER != KR-REP-DATASET'"
+  - "A rigorous adequacy/realization formal theory: Adequacy (H(Q(D)|T(D))=0 ⟺ ∃ optimal decoder O*: P(O*(T(D))=Q(D))=1) is explicitly distinguished from Realization by a FIXED decoder O (requiring additionally C(T(D))=1 and O(T(D))=Q(D) a.s.) — H(Q|T)=0 does NOT imply F(T)=1, because an optimal decoder may exist even when the specified/fixed decoder fails to realize it"
+  - "Three numbered theorems: THEOREM 1 (Adequacy iff-characterization); THEOREM 2 (Factorization/Fiber Preservation: Q|_{X_Π,T}=O*∘T on the admissible domain — explicitly NOT automatically a bijection, correct terminology 'Q-equivalent'/'Q-factorized' not 'Q-isomorphic' unless bijectivity is separately established); THEOREM 3 (Information Lower Bound: H(T*)≥H(Q) for T*∈argmin over adequate transformations, with equality iff an adequate T exists with H(T|Q)=0, i.e. I(T;D|Q)=0 for deterministic T — explicit caution against assuming argmin existence, using infimum otherwise)"
+  - "N_viol(R) = #{(D_a,D_b): R(D_a)=R(D_b) ∧ Q(D_a)≠Q(D_b)} as a structural-audit complement to the information-theoretic H_hat(Q|R)=0 summary — both should always be reported together"
+  - "A three-way boundary-failure taxonomy: REPRESENTATION BOUNDARY (N_viol(R)>0 or H(Q|R)>0 — Q cannot be recovered from R); CONTRACT BOUNDARY (A(R)<1 — constraints violated); OPERATOR BOUNDARY (H(Q|R)=0 but F<1 — information present but the specified operator fails to realize it) — three genuinely distinct failure modes requiring separate diagnosis"
+  - "Terminology correction: H(T|Q) (representation information not determined by Q) must be called 'inquiry-extraneous representation relative to Q,' never 'objectively superfluous information,' since extraneousness is inquiry/contract-relative"
+  - "Explicit refutation of the naive digit-count intuition at a deeper level than M0195/M0196: 'A two-digit representation may have a LARGER information capacity than a five-digit representation depending on the encoding and alphabet... 2 digits must never be treated as automatically less informative without specifying the carrier and encoding'"
+  - "Expansion of the Zero research object to nine components: 𝒵(D,S,R,I,C,M,T,Π,W), and a more abstract carrier-level structure 𝒦_Π=(X,𝒯,𝓔,~_Π,Q) — both supersets of M0191's earlier 8-component 𝒵"
+  - "A rigorous, phased (A-F) audit-before-implement Claude Code CLI protocol: PHASE A Inventory, PHASE B Classify Artifacts (with an explicit IMPLEMENTED/PARTIAL/EMPIRICALLY-TESTED/THEORETICAL-ONLY/ABSENT/CONFLICTING status vocabulary), PHASE C Verify Old KR-ZERO (against the exact published aggregates), PHASE D Protect Against R1-R4 Collision, PHASE E Theory-to-Corpus Gap Matrix, PHASE F New Experiment Design ONLY after the audit — with an explicit required first response (repository inventory, artifact table, corpus verification, R1-R4 semantic verification, gap matrix, hierarchy evidence, recommendation) BEFORE any implementation"
+  - "A 10-item numbered Research Discipline checklist (RULE 1-10): inspect before hypothesizing; never infer a hierarchy from naming alone; never fabricate missing case-level data; separate old experiments from new theoretical constructs; separate empirical results from mathematical claims; separate adequacy from realization; separate entropy from representation size/capacity; never assume algebraic structure before proving/observing it; preserve negative results and falsifications; persist the full experimental population"
+defines:
+  - "Elim_{T,Π}(D)={S: D∈X_{Π,T} ∧ E_S(D)∈X_{Π,T} ∧ O(T(D))=O(T(E_S(D)))=Q(D)} — the formal Contractually Eliminable Set, generalizing M0189-M0196's Zero apparatus with an explicit elimination operator E_S (not assumed to equal D\\S unless justified)"
+  - "The Sequential Reduction Protocol chain notation R5=T5(D), R4=T4(R5), R3=T3(R4), R2=T2(R3), R1=T1(R2), with an explicit warning against the ambiguous Rn=Tn(Rn+1)-with-R6=D indexing unless made fully explicit"
+  - "The Experimental Metric Vector M(Rn)=(A_n,F_n,H_hat(Q|Rn),H_hat(Rn|Q),H_hat(Rn),N_viol(Rn),n) to be recorded at every reduction stage"
+refines:
+  - "M0189-M0196's counterfactual Zero apparatus: reformulated as Zero_{T,Π}(S;D)⟺Π(T(D))=Π(T(E_S(D))), now with an explicit, not-assumed elimination operator E_S"
+  - "M0195/M0196's cardinality-vs-structure and 5-digit-vs-2-digit reframings: extended with the explicit warning that digit count and information capacity are not even monotonically related without specifying encoding"
+contradicts:
+  - "Any implicit prior assumption (never asserted as established fact, but a live risk this document explicitly warns against) that the old KR-ZERO R1-R4 representation classes constitute evidence for the new R5→R2 reduction hierarchy — explicitly and repeatedly refuted: 'the old KR-ZERO experiment is... PRIOR EVIDENCE, not the new experiment'"
+repeats:
+  - "The established discipline against assuming algebraic structure (direct sum, projection) before empirical justification, restated as RULE 8 and Section 27/28's algebraic/projection cautions"
+bridge_candidates:
+  - "Whether KR-REP-REDUCTION-2026-09 (the proposed new ordered R5→R2 experiment) was ever actually designed and executed, and whether the audit phases A-F were completed first as required"
+  - "Whether the required CORPUS-THEORY-AUDIT.md report was ever produced"
+  - "Whether the reconstructed corpus/cases.jsonl (1,395 records) and corpus/subsets.jsonl (14,194 subset-level records) were ever regenerated via emit_corpus.py as instructed"
+mathematical_content: >
+  The most rigorous single formal treatment in the Zero-algebra thread: three numbered theorems
+  (adequacy iff-characterization, factorization/fiber-preservation with a corrected non-bijection
+  caveat, and an information lower bound with an explicit infimum-vs-argmin caution), a precise
+  adequacy-vs-realization distinction, a three-way boundary-failure taxonomy, and a corrected,
+  encoding-aware treatment of the "digit reduction" intuition.
+gita_content: null
+kernel_content: >
+  Demonstrates the Zero-algebra thread's research discipline reaching full methodological maturity:
+  a genuine corpus-integrity finding (aggregate-only persistence, reconstructed via deterministic
+  generator+seed) is surfaced and corrected rather than glossed over, and a specific conceptual-
+  contamination risk (R1-R4 label collision) is caught and explicitly guarded against before any new
+  experiment is designed — the most disciplined audit-before-implement protocol in this
+  reconstruction.
+registry_updates:
+  - "Precise KR-ZERO-ORDER-2026-09 higher-order-Zero statistics (89.7% singleton/10.3% higher-order-or-irreducible split, with per-transformation breakdown)"
+  - "Major corpus-integrity finding: aggregate-only persistence for the old KR-ZERO corpus, reconstructed via deterministic generator+seed — a genuine methodological lesson, not merely a caution"
+  - "Dangerous R1-R4-vs-R5→R2 naming-collision risk identified and explicitly guarded against"
+  - "Three numbered adequacy/realization/information-bound theorems; three-way boundary-failure taxonomy; corrected digit-count-vs-information-capacity relationship"
+  - "Nine-component 𝒵(D,S,R,I,C,M,T,Π,W) and abstract carrier structure 𝒦_Π=(X,𝒯,𝓔,~_Π,Q)"
+  - "10-rule Research Discipline checklist; phased (A-F) audit-before-implement protocol"
+anchor_test:
+  anchor: true
+  supports_dimension: "Precise higher-order-Zero statistics; corpus-integrity finding; R1-R4 naming-collision guard; three formal theorems; three-way boundary taxonomy; nine-component Zero object; 10-rule discipline"
+  refines_or_contradicts: "refines (M0189-M0196's Zero/adequacy apparatus, now formalized with theorems and precise statistics); contradicts (the risk of conflating old KR-ZERO R1-R4 labels with a new reduction hierarchy)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"k=1: 1252/1395=89.7%, k=2: 25/1395=1.8%, k=3: 3/1395=0.2%, irreducible: 115/1395=8.24%\""
+  - "\"property-results.json is aggregate only. The original 1,395 case-level rows were not persisted.\""
+  - "\"NEVER construct a representation hierarchy from those labels... KR-ZERO-ORDER != KR-REP-DATASET\""
+  - "\"H(Q|T)=0 does NOT by itself imply F(T)=1, because an optimal decoder may exist even when the specified/fixed decoder O does not realize it.\""
+  - "\"A two-digit representation may have a larger information capacity than a five-digit representation depending on the encoding and alphabet.\""
+undefined_concepts:
+  - "The precise carrier (subset/relational-structure/graph/hypergraph/rewriting-state/combination) on which eliminability actually lives — explicitly left open pending experimentation (Section 26)"
+open_questions:
+  - "Was KR-REP-REDUCTION-2026-09 ever designed and executed following the required audit phases A-F?"
+  - "Was CORPUS-THEORY-AUDIT.md ever produced?"
+  - "Was the old KR-ZERO corpus ever actually regenerated via emit_corpus.py per the reproducibility requirement?"
+tier2_triggered: true
+tier2_reason: >
+  Delivers the most methodologically mature single document in the Zero-algebra thread: precise,
+  previously-unreported statistics from an executed higher-order-Zero experiment (KR-ZERO-ORDER-
+  2026-09), a genuine corpus-integrity finding (aggregate-only persistence, reconstructed via
+  deterministic generator+seed) surfaced and corrected rather than glossed over, an explicit guard
+  against a dangerous naming collision (old representation-class labels vs. a new reduction
+  hierarchy), and a rigorous three-theorem formal theory of adequacy/realization/information-excess —
+  combined into a disciplined, phased audit-before-implement protocol.

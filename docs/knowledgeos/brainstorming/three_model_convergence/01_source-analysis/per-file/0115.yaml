@@ -1,0 +1,57 @@
+sequence: "0115"
+path: docs/knowledgeos/brainstorming/20260822-111434-shiva-shakti-unity-through-manifestation-convergence.md
+title: "Shiva-Shakti Unity Through Manifestation lens (third explicit meta-principle status instance)"
+date: "2026-08-22"
+bytes: 9558
+model:
+  primary: g
+  secondary: [x]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0108"
+importance: medium
+confidence: high
+about: >
+  Continues Kashmir Śaivism territory (Śiva=hidden unity, Śakti=infinite expression) across 10 lenses,
+  proposing a new "Śiva-Śakti Knowledge Principle" (Unity Through Manifestation), explicitly classified
+  "New philosophical meta-principle (not a kernel rule)" -- the THIRD explicit meta-principle status
+  instance in the corpus (after Zero at 0110, Mokṣa at 0114), continuing to stabilize this as a
+  distinct, recurring non-kernel status category.
+
+introduces:
+  - "'Unity Through Manifestation' principle: 'all knowledge domains are independent expressions of
+    deeper principles. KnowledgeOS must preserve domain autonomy while discovering invariant structures
+    that connect apparently separate realities.' Explicitly classified a meta-principle, not a kernel
+    rule -- structurally resonant with (not identical to) this research's own MD-017 unresolved-
+    equivalence discipline (preserve distinctness while tracking connection), an unintentional
+    methodological parallel worth noting but not adopting as validation"
+  - "Third explicit 'meta-principle' status classification (after Zero/0110, Mokṣa/0114) -- the
+    category is now a recurring, stabilizing pattern in the corpus's own self-classification vocabulary"
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - {concept: "Śiva-Śakti/Prakāśa-Vimarśa territory", canonical_source: "0108", novelty: low}
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates:
+  - "No new kernel entries -- reinforces the meta-principle status category pattern"
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "No reshaping; reinforces the recurring meta-principle status category."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Third instance of the 'meta-principle, not kernel' status classification -- a stabilizing pattern"
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Third explicit meta-principle status instance, confirming this as a genuine recurring category in
+  the corpus's own self-classification vocabulary, distinct from candidate kernel dimensions.

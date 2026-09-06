@@ -1,0 +1,193 @@
+sequence: M0107
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-142944_kr-hilbert-2026-09-research-and-experiment-protocol.md
+title: "KR-HILBERT-2026-09 -- Hilbert-Space Representation of KnowledgeOS: A New, Extremely Rigorous Full Experimental Protocol (32 Sections) Testing Whether K_t Can Be a Hilbert-Space Vector, Twelve Hypotheses H1-H12, Fifteen Lettered Adversarial Experiments (A-O) Including a Mandatory Test Against the Already-Frozen FR-001 (Family Structure Cannot Be Solved by Pairwise Hilbert Geometry), a Mandatory Anti-Circularity Rule, Ablation Requirements, Sixteen Adversarial Cases, and an Explicit Mapping-Matrix/Final-Verdict Template -- Governing Principle: 'Do Not Ask Hilbert Space to Explain KnowledgeOS. Ask Hilbert Space to Survive KnowledgeOS'"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "a new, extremely rigorous 32-section executable protocol (comparable in scope and discipline to M0097's KR-M2O protocol and M0078's Epistemic Closure Event protocol), designed to adversarially test a separate 'uploaded Hilbert-space assessment' document (not independently numbered in this pass) proposing that KnowledgeOS epistemic states, Zero, probability, and N_eff can all be represented within Hilbert-space mathematics (vectors, inner products, projections, spectral decomposition, Born-rule probability); explicitly instructed to test the proposal against the already-frozen FR-001 result rather than let it silently override that freeze"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0107
+importance: critical
+confidence: high
+about: >
+  Specifies KR-HILBERT-2026-09, instructing the executing agent to act as senior mathematician/
+  statistician/epistemologist/KnowledgeOS research scientist, explicitly NOT as "an implementation
+  developer who has been asked to prove or justify a predetermined architecture," with six possible
+  outcomes (CONFIRMED/PARTIALLY CONFIRMED/CONDITIONALLY VALID/REFUTED/INCONCLUSIVE/NOT TESTABLE
+  UNDER CURRENT DEFINITIONS) and the explicit instruction "do not force a positive result."
+
+  **STATES THE GOVERNING PRINCIPLE**: "DO NOT ASK HILBERT SPACE TO EXPLAIN KNOWLEDGEOS. ASK
+  HILBERT SPACE TO SURVIVE KNOWLEDGEOS" -- the proposal must survive existing definitions,
+  experiments, FROZEN NEGATIVE RESULTS (explicitly naming FR-001), adversarial cases,
+  representation changes, statistical validation, and mathematical consistency checks; any failed
+  correspondence must be recorded, never silently repaired ("a repair is a NEW hypothesis and must
+  be explicitly named and separately tested").
+
+  **MANDATES INSPECTION OF EXISTING SOURCES OF TRUTH FIRST** (Theory v1.2, Frozen Results Register,
+  FR-001, Zero Lens research, KR-ZERO, KR-CLOSURE, KR-M2O, KR-NEFF, kernel-reduction results,
+  semantic-equivalence work), explicitly refusing to treat the uploaded Hilbert document's own
+  claims ("Hilbert space is the mathematical foundation," "Zero is projection," "orthogonality is
+  independence," "Knowledge = MAP," "semantic equivalence = epsilon distance") as established
+  facts -- they are the HYPOTHESES to be tested, not the result.
+
+  **PRESERVES FIFTEEN EXISTING NON-COLLAPSE CONSTRAINTS AS HARD TEST CONSTRAINTS** (E_t!=K_t,
+  Claim!=Assessment, Credence!=Truth, Information!=Evidence, Evidence!=Justification, Fit!=
+  Validity, Selection!=Validation, Selection!=Determination, Determination!=Knowledge, Unknown!=
+  Absent, Unobserved!=Unobservable, Underdetermined!=Unobserved, NotAssessed!=Unknown,
+  Contradiction!=Unknown, Historical-identity!=current-state-equality, Family-structure!=pairwise-
+  distinguishability), explicitly stating FR-001 IS FROZEN -- "do not reopen or silently alter it"
+  -- and any Hilbert construction claiming to solve family-level complexity "must be tested AGAINST
+  FR-001 rather than replacing it."
+
+  **SPECIFIES TWELVE INDEPENDENTLY TESTABLE HYPOTHESES (H1-H12)**: H1 (K_t as a Hilbert vector
+  without losing required distinctions); H2 (inner-product geometry legitimately represents
+  semantic similarity); H3 (orthogonality legitimately represents epistemic independence); H4 (Zero
+  Lens as projection onto an unknown/boundary subspace); H5 (spectral decomposition represents
+  meaningful epistemic decomposition); H6 (Hilbert amplitudes represent epistemic probability
+  without collapsing probability into truth or knowledge); H7 (participation-ratio-style N_eff
+  represents effective hypothesis complexity under relevant dependence); H8 (Hilbert distance
+  provides a valid semantic equivalence relation); H9 (representation invariance under basis/
+  coordinate/scaling changes); H10 (Hilbert operations represent revision/contradiction/
+  supersession/uncertainty without semantic corruption); H11 (coexistence with the E_t/K_t
+  distinction); H12 (genuine explanatory/computational reduction, not mere renaming).
+
+  **MANDATES A MATHEMATICAL-DISCIPLINE RULE AGAINST NAME-SIMILARITY EQUATION**: explicitly lists
+  eleven pairs that must not be conflated merely because they share vocabulary (geometric
+  orthogonality vs probabilistic independence; vector similarity vs semantic similarity; norm vs
+  confidence; amplitude vs probability; projection vs epistemic boundary; spectral decomposition vs
+  epistemic decomposition; distance vs semantic equivalence; participation ratio vs effective
+  hypothesis complexity) -- "a mapping is accepted only if the required mathematical and epistemic
+  properties are demonstrated."
+
+  **SPECIFIES A GENERIC, NON-PREJUDGED FORMAL MODEL** H=(V,<.,.>), explicitly refusing to assume
+  finite dimensionality, separability, canonical basis, canonical inner product, canonical
+  embedding, or completeness, with separate embedding maps phi_K/phi_E/phi_H whose potential
+  identification is to be investigated, not assumed.
+
+  **SPECIFIES FIFTEEN LETTERED ADVERSARIAL EXPERIMENTS (A-O)**, each with concrete constructions:
+  A State Embedding (twelve required state types: known fact, multiple facts, uncertainty,
+  contradiction, unresolved claim, insufficient evidence, unobserved value, unobservable variable,
+  underdetermined hypothesis, superseded knowledge, revised knowledge, multiple admissible
+  hypotheses -- explicitly requiring metadata not be silently counted as represented in H); B (E_t
+  vs K_t, MANDATORY -- construct two states with identical vector but different attribution,
+  and geometrically-close-but-epistemically-different vectors); C (Semantic similarity -- requires
+  an INDEPENDENT reference criterion, explicitly forbidding defining semantic similarity via the
+  inner product itself, "otherwise the experiment is circular"); D (Semantic equivalence via
+  epsilon-ball -- must test reflexivity/symmetry/TRANSITIVITY with explicit counterexamples if it
+  fails, plus representation invariance under basis rotation/unitary/scaling transformations); E
+  (Orthogonality vs independence -- eight evidence-dependence configurations from independent
+  through causally-coupled to conditionally-independent, explicitly requiring the DEFINITIONAL-
+  vs-EMPIRICAL distinction if orthogonality was merely constructed to force zero inner product); F
+  (Zero Lens as projection -- all eleven established Zero boundary classes, testing whether distinct
+  classes collide onto the same vector); G (Zero is not a Knowledge State -- tests projection
+  idempotence P_U(P_U(K))=P_U(K) while explicitly warning not to infer semantic meaning merely
+  from mathematical idempotence); H (Probability via Born rule P(H_i|E)=|<K,e_i>|^2 -- requires
+  first defining sample space/events/priors/posteriors/truth-status independently, then testing
+  normalization/non-negativity/calibration, and explicitly high-probability!=truth and high-
+  probability!=knowledge); I (N_eff = 1/sum(w_i^2), the participation-ratio construction --
+  compared directly against the ALREADY-ESTABLISHED KR-NEFF empirical results, explicitly not "does
+  the formula produce a number" but "does this quantity track the empirically observed
+  multiplicity/evidence burden"); J (Spectral decomposition K=sum(lambda_i*e_i) -- nine open
+  questions about what K/e_i/lambda_i actually are, degeneracy, and non-uniqueness); K (Revision --
+  non-monotonic KnowledgeOS, six evidence-update types, testing whether history must remain outside
+  the state vector); L (Representation invariance, MANDATORY -- orthogonal/unitary/basis-
+  permutation/coordinate transformations, testing whether similarity/equivalence/Zero/probability/
+  N_eff/decomposition remain invariant where they should); M (Family structure/FR-001, MANDATORY --
+  explicitly required to respect the frozen result: construct families with identical pairwise
+  similarity but different higher-order dependence, testing whether pairwise Hilbert geometry can
+  distinguish them, and if not recording "[NEG] pairwise Hilbert geometry cannot solve family-level
+  complexity," then testing whether richer constructions -- tensor structure, density operators,
+  covariance operators, Gram matrices -- can preserve family-level structure, without automatic
+  promotion); N (Linga/Yoni mapping -- strictly structural correspondence only, explicitly
+  forbidding "Linga=Hilbert space" or "Yoni=Hilbert space" claims without demonstrated structure-
+  preserving correspondence); O (Kernel relevance -- testing whether projection/inner-product/
+  decomposition/state-update/similarity/probability/selection are genuinely irreducible epistemic
+  powers, with six explicit kernel-inclusion requirements: necessity, irreducibility, semantic
+  stability, representation invariance, invariant preservation, multi-scenario evidence).
+
+  **MANDATES AN ANTI-CIRCULARITY RULE**, with three explicit worked INVALID examples ("Hilbert
+  similarity works because semantic similarity is defined as Hilbert similarity"; "Hilbert
+  independence works because evidence vectors were made orthogonal"; "Zero works because unknown
+  states were defined as a subspace"), requiring a [DEF] (definitional, not experimental) label for
+  any circular result.
+
+  **MANDATES FULL STATISTICAL RIGOR AND ABLATION**: deterministic seeds, train/calibration/
+  validation/held-out separation, Wilson intervals, sensitivity analysis, and -- for every
+  successful correspondence -- an ablation removing Hilbert geometry, embedding, inner product,
+  projection, probabilistic interpretation, and basis structure individually, since "a result that
+  can be obtained equally well without Hilbert structure is not evidence that Hilbert space is
+  foundational."
+
+  **SPECIFIES SIXTEEN ADVERSARIAL TEST CASES** explicitly designed to break the mapping
+  (geometrically-close-but-semantically-different; geometrically-distant-but-semantically-
+  equivalent; orthogonal-but-statistically-dependent; correlated-but-geometrically-orthogonal;
+  unknown!=absent; contradiction!=unknown; multiple hypotheses with equal posterior; high-
+  probability-false-hypothesis; low-probability-true-hypothesis; same-channel-validation-failure;
+  basis-change instability; epsilon-transitivity failure; family-level dependence invisible
+  pairwise; revision with historical identity; same-vector-different-provenance; same-norm-
+  different-epistemic-status).
+
+  **MANDATES A THREE-WAY RESULT-TYPE SEPARATION**: Mathematical (proven from definitions/axioms) /
+  Empirical (supported by simulation/data) / Conceptual (useful structural analogy) -- "never use
+  one as evidence for another," with every result requiring all three statuses stated explicitly.
+
+  Specifies a complete deliverables structure (docs/knowledgeos/verification/KR-HILBERT-2026-09/
+  with README/protocol/mathematical-model/experiment-design/results/falsification/limitations/
+  mapping-matrix/reproducibility files plus figures/data/code directories), a full eleven-row
+  mapping matrix template (vector<->K_t?, inner product<->semantic similarity?, norm<->confidence?,
+  orthogonality<->independence?, basis<->atomic primitive?, projection<->Zero Lens?, operator<->
+  epistemic operation?, spectral decomposition<->decomposition?, squared amplitude<->probability?,
+  participation ratio<->N_eff?, subspace<->semantic region?), and an absolute version-control rule
+  (no Theory v1.3, no kernel modification, no Frozen Results Register modification, no automatic
+  [PROP]->[EXP] promotion). States success criteria explicitly: "the experiment is successful even
+  if Hilbert space is refuted... a negative result is a successful research result. Do NOT optimize
+  for 'Hilbert space wins.' Optimize for 'the evidence is clear.'" Specifies a 23-section final
+  supervisory verdict template and execution-behavior rules (continue until every hypothesis is
+  tested/blocked/classified-not-testable; keep a full experiment ledger; re-run critical findings
+  with a second generator/representation; never silently redefine after seeing results -- version
+  and restart as a new experiment instead).
+introduces:
+  - concept: "The governing principle 'ask Hilbert space to survive KnowledgeOS, not to explain it,' explicitly requiring the proposal be tested against FR-001 and the corpus's fifteen established non-collapse constraints rather than allowed to silently override them"
+  - concept: "Twelve independently testable Hilbert-representation hypotheses H1-H12, considerably more specific than any prior protocol's treatment of a formal-mathematics proposal"
+  - concept: "Fifteen lettered adversarial experiments (A-O), each with concrete adversarial constructions, including a mandatory anti-circularity rule with three worked invalid examples"
+  - concept: "The mandatory ablation requirement for every successful correspondence (remove each Hilbert component individually and test whether the claimed capability survives)"
+  - concept: "The three-way Mathematical/Empirical/Conceptual result-type separation, applied per-result rather than per-experiment"
+  - concept: "Sixteen specific adversarial test cases explicitly designed to break the Hilbert-space mapping"
+defines: []
+refines:
+  - concept: "FR-001 (M0103/M0104/M0106), reused here as an explicit hard test constraint any Hilbert family-structure claim must be tested against, not permitted to silently override"
+  - concept: "The corpus's fifteen already-established non-collapse distinctions, reused as explicit test constraints for this new protocol"
+  - concept: "KR-NEFF's already-established empirical results (M0101), used here as the direct comparison baseline for testing the Hilbert participation-ratio N_eff candidate"
+  - concept: "The corpus's Zero Lens boundary-class taxonomy (eleven classes), reused as the test target for the Zero-as-projection hypothesis"
+  - concept: "The Linga/Yoni non-identification discipline (M0085-M0099), reapplied here to forbid Linga=Hilbert-space or Yoni=Hilbert-space claims absent demonstrated structure-preservation"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - concept: "The uploaded 'Hilbert-space assessment' document being tested here (not independently numbered/located in this pass) as a candidate for its own record if it is later found or reconstructed"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0107 as the new, extremely rigorous 32-section KR-HILBERT-2026-09 protocol testing whether KnowledgeOS epistemic states/Zero/probability/N_eff can be represented in Hilbert-space mathematics, explicitly required to survive (not merely explain) KnowledgeOS -- tested against the already-frozen FR-001 and the corpus's fifteen non-collapse constraints, with twelve hypotheses, fifteen lettered adversarial experiments, a mandatory anti-circularity rule, ablation requirements, sixteen adversarial cases, and a full mapping-matrix/final-verdict template. Not yet confirmed executed in this pass."
+anchor_test:
+  anchor: "FR-001 (M0103/M0104/M0106), the corpus's fifteen established non-collapse constraints, KR-NEFF's empirical results (M0101), and the Zero Lens boundary-class taxonomy"
+  supports_dimension: "The most operationally complete protocol encountered for testing whether an entirely new formal-mathematics regime (Hilbert space) can legitimately host KnowledgeOS's existing epistemic distinctions, explicitly gated against silently overriding an already-frozen negative result"
+  refines_or_contradicts: "refines (FR-001/M0103/M0104/M0106, KR-NEFF/M0101, the Zero Lens work, the Linga-Yoni non-identification discipline)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'DO NOT ASK HILBERT SPACE TO EXPLAIN KNOWLEDGEOS. ASK HILBERT SPACE TO SURVIVE KNOWLEDGEOS' -- a sharp, quotable reformulation of this research programme's general discipline against letting an appealing new formalism silently override already-established findings, applied here specifically against FR-001."
+  - "Experiment M explicitly requires the Hilbert proposal to be tested against FR-001's own finding (pairwise distinguishability cannot carry family-level complexity) rather than allowed to claim it has solved that problem by fiat -- direct, concrete enforcement of the freeze discipline established in M0104."
+  - "The three worked anti-circularity INVALID examples ('Hilbert similarity works because semantic similarity is defined as Hilbert similarity') are a precise, actionable articulation of the circularity risk this reconstruction has repeatedly flagged across the corpus's various equivalence-relation proposals (e.g. M0094's L=Y non-identity argument, M0103's ~_Lambda non-transitivity)."
+undefined_concepts:
+  - "The identity/location of the 'uploaded Hilbert-space assessment' document this protocol is designed to test -- not independently numbered or located in this pass, referenced only via its claimed mappings (vector->K_t, projection->Zero Lens, squared amplitude->probability, participation ratio->N_eff)"
+open_questions:
+  - "Whether KR-HILBERT-2026-09 was ever executed, and if so which of H1-H12 were confirmed, refuted, or left inconclusive, and whether Experiment M (the mandatory FR-001 compatibility test) found any richer Hilbert construction (tensor structure, density operators, covariance operators) capable of preserving family-level structure."
+tier2_triggered: true
+tier2_reason: "One of the most operationally complete and methodologically disciplined experimental protocols in this pass, comparable to M0097 and M0078 -- explicitly gates a new formal-mathematics proposal against an already-frozen negative result (FR-001) and fifteen established non-collapse constraints, mandates an anti-circularity rule with worked examples, ablation, and adversarial testing, and refuses to let a mathematically elegant framework substitute for demonstrated necessity. Comfortably meets the tier-2 bar."

@@ -1,0 +1,139 @@
+sequence: 457
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-171411_mathematical-redefinition-dimension-discovery-and-natural-language-parsing.md
+title: "LANDMARK: Full Mathematical Formalization of Parsing/Dimension-Discovery (Four Invariants, Recursive Discovery Cycle), Deep Sanskrit Kāraka Analysis With Self-Corrected 'Universal Ontology' Overclaim, and a New Five-Way SemanticRole≠CandidateDimension≠Dimension≠Value≠Statement Ladder That Reformulates Question 3 Around Epistemic Status"
+date: "2026-08-26"
+bytes: 30736
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "mathematizes the C-type/Sanskrit-kāraka parsing architecture from 0456; classical six-kāraka system formalized and then explicitly de-universalized"
+source_role: PRIMARY_RESEARCH
+canonical_source: 457
+importance: critical
+confidence: high
+about: >
+  A three-part, unusually dense landmark file that fully mathematizes 0455/0456's Dimension Discovery and
+  parser-lens work, then performs a genuine self-correction and discovers a new, more complete ontological
+  ladder that reformulates Question 3.
+
+  **Part 1 (Mathematical Redefinition)** formalizes Parsing != Dimension Discovery != Knowledge as three
+  distinct capabilities with a comparison table, then defines: a parsing function P:L->S (natural-language
+  space to structured-representation space), decomposed into a structural sub-function
+  P_struct:L->T (syntax trees) and a semantic sub-function P_sem:L->R (semantic-role-structure space, worked
+  as a concrete set of (role,value) pairs for the Arjuna sentence), combined as
+  P(Q)=(P_struct(Q),P_sem(Q)). Defines Dimension Discovery as D:(S,C,K)->2^D_candidate (a POWER-SET-valued
+  function), with the discovery formula D_candidate=Union(D_Q,D_C,D_Domain,D_Pattern,D_Zero,D_Lord) (a
+  six-source variant, folding observation into the Zero/Lord sources) and a full discovery algorithm in
+  pseudocode. Fully works the Arjuna case end-to-end, producing a fourteen-element candidate-dimension set
+  from six distinct sources including D_Zero (Moral_Obligation, "Zero detects unrepresented dimension") and
+  D_Lord (Consequence, Karmic_Effect, "Lord horizon expansion").
+
+  Formalizes the **recursive discovery cycle**
+  Q_t -[P]-> S_t -[D]-> D_{t+1} -[O]-> K_{t+1} -[Zero+Lord]-> Q_{t+1}, with explicit recursive equations
+  (D_{t+1}=D(P(Q_t),K_t,C_t); K_{t+1}=Investigate(D_{t+1},K_t); Q_{t+1}=GenerateQuestions(K_{t+1},Z(K_{t+1}),
+  L(K_{t+1}))) and an explicit **termination condition**: Z(K_t)=empty-set OR
+  DecisionSufficiency(K_t,I_t)=True -- directly reusing 0423's Decision Sufficiency construct as the halting
+  criterion for the entire discovery loop. States **four mathematical invariants**: (1) Parsing!=Knowledge
+  (P(Q)!=K); (2) Discovery!=Validation (D(P(Q),K,C)!=ConfirmedDimensions); (3) Recursive Refinement
+  (D_{t+1} is a superset of D_t, or D_{t+1}!=D_t); (4) **Zero and Lord are Sources, Not Authorities**
+  (Z(K)->Candidates and L(K)->Candidates; "both suggest dimensions; neither establishes them"). Produces a
+  complete architecture diagram (Parsing Capability -> Dimension Discovery Capability -> Investigation
+  Capability/Sārathi -> Knowledge) and closes by proposing Question 3/4/5 (Statement/Value/Relationship) to
+  complete a six-component Knowledge tuple K=Knowledge(S,V,R,E,Sigma,tau) -- directly paralleling 0454's
+  eight-component Relationship tuple pattern.
+
+  **Part 2 (The Sanskrit-Type Parser: A Formal Analysis)** gives the classical **six-kāraka system** its
+  correct canonical form for the first time in the corpus -- Agent/Kartṛ, Object/Karma, Instrument/Karaṇa,
+  Source/Apādāna, Recipient/Sampradāna, Location/Adhikaraṇa (0456 had informally mixed in Sambandha/Kartavya
+  as if they were additional kārakas; this file correctly separates the six canonical kārakas from
+  supplementary semantic dimensions such as Sambandha/relation and Kartavya/obligation). Formalizes
+  Sentence->Action(Kriyā)+Roles(Kārakas), a Sanskrit parsing function P_Sanskrit:L->K_roles, a role-to-
+  dimension mapping function M:K_roles->2^D, and a combined discovery function
+  D(Q,K,C)=Union(M(P_Sanskrit(Q)),M(P_struct(Q)),O_domain(C)). Produces detailed structural-vs-Sanskrit
+  comparison tables and claims, at this stage, that the Sanskrit lens encodes a **"universal semantic
+  ontology"** that is domain-independent and could function as a "universal semantic parser for any domain"
+  -- a strong claim that Part 3 explicitly walks back.
+
+  **Part 3 (critical review of Parts 1-2)** delivers the file's most significant correction: **rejects
+  calling the Sanskrit approach a "universal semantic ontology,"** reclassifying it instead as a
+  **candidate semantic-role lens that must be tested across domains** -- a live, in-file self-correction of
+  Part 2's overclaim, consistent with the corpus's discipline of never treating an analogy/lens as
+  established fact. Adds a missing pipeline element: the Question->Parsing->Dimensions chain is replaced by
+  **Question -> Semantic Reconstruction -> Open Variables -> Candidate Dimensions -> Inquiry Assessment ->
+  Observation/Clarification**, because a Knower's question can itself be *incomplete* (worked via "Show me
+  those." -- "those" has an unresolved referent, which is **not a dimension but an epistemic/inquiry gap**,
+  requiring KnowledgeOS to ask "Who or what do you mean by 'those'?"). This makes **Zero part of the
+  language/inquiry pipeline itself**, not merely a post-processing gap check, and adds **Reference
+  Resolution** as a new named sub-analysis inside Semantic Reconstruction (alongside structural, semantic-
+  role, modality, and context analysis) via a refined architecture diagram culminating in an explicit
+  incomplete/sufficient branch (ASK KNOWER vs. INVESTIGATE).
+
+  Introduces a **five-way non-collapsible ontological ladder** -- SemanticRole (e.g. Agent) != CandidateDimension
+  (e.g. Actor) != Dimension (Actor, once accepted) != Value (Arjuna) != Statement (Actor=Arjuna) -- extending
+  0454/0455's four-way Dimension/Value/Statement/Relationship separation by prepending SemanticRole as a
+  prior, fifth layer. On this basis, **rigorously reformulates Question 3**: not merely "What is a
+  Statement?" but "What exactly constitutes a Statement in KnowledgeOS, and how do we distinguish an
+  observed statement from an inferred, reported, assumed, calculated, or hypothetical statement?" --
+  explicitly because Zero cannot function correctly without knowing a statement's epistemic status. Lists
+  seven candidate statement sources (Observation, Natural-language assertion, Inference, Calculation,
+  Relationship, External evidence, Human declaration) and six candidate epistemic-status values (OBSERVED,
+  REPORTED, INFERRED, ASSUMED, CONTESTED, UNKNOWN), worked via the identical sentence "Bhishma is Arjuna's
+  grandfather" carrying different possible epistemic statuses despite identical text. Concludes: proceed to
+  Question 3, but require that epistemic provenance and status be made **part of the question itself**,
+  rather than defining a Statement merely as (Entity, Dimension, Value).
+introduces:
+  - concept: "Full mathematical formalization of Parsing (P:L->S, decomposed into P_struct:L->T and P_sem:L->R) and Dimension Discovery (D:(S,C,K)->2^D_candidate), a six-source discovery formula, a discovery pseudocode algorithm, and a fully worked fourteen-element Arjuna candidate-dimension set"
+  - concept: "Recursive discovery cycle Q_t->S_t->D_{t+1}->K_{t+1}->Q_{t+1} with an explicit termination condition Z(K_t)=empty OR DecisionSufficiency(K_t,I_t)=True, reusing 0423's Decision Sufficiency as the loop's halting criterion"
+  - concept: "Four mathematical invariants for the parsing/discovery layer, most notably 'Zero and Lord are Sources, Not Authorities' (both produce candidates; neither establishes them)"
+  - concept: "Classical six-kāraka system given its correct canonical form (Kartṛ/Karma/Karaṇa/Apādāna/Sampradāna/Adhikaraṇa), separated from supplementary semantic dimensions (Sambandha/Kartavya) that 0456 had informally conflated with kārakas"
+  - concept: "Explicit in-file self-correction: rejects the claim that the Sanskrit-role lens is a 'universal semantic ontology,' reclassifying it as a candidate lens requiring cross-domain testing -- a live demonstration of the corpus's own epistemic discipline"
+  - concept: "Revised pipeline Question->Semantic Reconstruction->Open Variables->Candidate Dimensions->Inquiry Assessment->Observation/Clarification, making an incomplete question's unresolved referents an epistemic/inquiry gap (not a dimension) and folding Zero into the front-end language pipeline"
+  - concept: "Reference Resolution named as a new Semantic Reconstruction sub-analysis, alongside structural/semantic-role/modality/context analysis"
+  - concept: "Five-way non-collapsible ladder: SemanticRole != CandidateDimension != Dimension != Value != Statement"
+  - concept: "Question 3 rigorously reformulated to require epistemic provenance/status as part of the definition of Statement, with seven candidate statement sources and six candidate epistemic-status values (OBSERVED/REPORTED/INFERRED/ASSUMED/CONTESTED/UNKNOWN)"
+defines:
+  - concept: "Dimension Discovery (formal)"
+    definition: "D:(S,C,K)->2^D_candidate; D_candidate=Union(D_Q,D_C,D_Domain,D_Pattern,D_Zero,D_Lord)"
+  - concept: "Natural Language Parsing (formal)"
+    definition: "P:L->S, decomposed as P(Q)=(P_struct(Q),P_sem(Q)) with P_struct:L->T (syntax trees) and P_sem:L->R (semantic role sets)"
+  - concept: "Five-way epistemic ladder"
+    definition: "SemanticRole (e.g. Agent) -> CandidateDimension (e.g. Actor) -> Dimension (accepted Actor) -> Value (Arjuna) -> Statement (Actor=Arjuna); none collapsible into another"
+refines:
+  - concept: "0455/0456's Dimension Discovery capability and seven/six-source taxonomies"
+    refinement: "Fully mathematized with a power-set-valued discovery function, a recursive cycle with an explicit termination condition, and four formal invariants"
+  - concept: "0456's informal Sanskrit kāraka table (which mixed Sambandha/Kartavya in with the six kārakas)"
+    refinement: "Corrected to the canonical six-kāraka system, with Sambandha/Kartavya treated as separate supplementary semantic dimensions"
+  - concept: "0456's claim that the Sanskrit lens is a universal semantic ontology"
+    refinement: "Explicitly walked back within this same file: reclassified as a candidate lens requiring cross-domain testing, not an established universal ontology"
+  - concept: "0454's four-way Dimension/Value/Statement/Relationship ontology"
+    refinement: "Extended to a five-way ladder by prepending SemanticRole as a prior layer, and Question 3 (Statement) is reformulated to require explicit epistemic provenance/status"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - concept: "Sanskrit kāraka case-role grammar vs. Western case-grammar/semantic-role frameworks (Fillmore et al.) -- still unresolved_equivalence, no explicit cross-reference"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the full mathematical formalization of Parsing/Dimension Discovery (power-set-valued D, six-source formula, recursive cycle, four invariants incl. 'Zero and Lord are Sources, Not Authorities')."
+  - "dimension-registry.md: record the canonical six-kāraka correction and the explicit self-corrected walk-back of the 'universal semantic ontology' claim."
+  - "dimension-registry.md: record the five-way SemanticRole≠CandidateDimension≠Dimension≠Value≠Statement ladder and the reformulated, epistemic-status-centered Question 3."
+anchor_test:
+  anchor: "0455/0456's Dimension Discovery capability and parser-lens architecture; 0454's four-way ontology and Relationship tuple; 0423's Decision Sufficiency; 0453's Zero-is-not-an-authority discipline"
+  supports_dimension: "LANDMARK full mathematization of Dimension Discovery/Parsing with four formal invariants and an explicit recursive termination condition tied to Decision Sufficiency; corrects a kāraka-classification error and a universal-ontology overclaim within the same file (live epistemic self-discipline); discovers a five-way ontological ladder that reformulates Question 3 around epistemic provenance/status rather than a bare (Entity,Dimension,Value) tuple"
+  refines_or_contradicts: "refines 0455/0456's Dimension Discovery formalization and 0454's four-way ontology; self-corrects its own Part 2 overclaim within the file; no unresolved contradiction with prior files"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Continues the Arjuna/Bhishma test sentence across 0451-0457; worked epistemic-status example reuses 'Bhishma is Arjuna's grandfather' from 0454/0455"
+undefined_concepts: []
+open_questions:
+  - "Whether the reformulated Question 3 (Statement, with mandatory epistemic provenance/status) is fully answered in a subsequent file, and whether it reconciles with 0454's simpler Statement=(Subject,Dimension,Value) first-order form"
+  - "Whether the six-source discovery formula (dropping explicit observation-derived D_O in favor of folding it into D_Zero/D_Lord) is a deliberate simplification of 0455's seven-source taxonomy or an inconsistency to track"
+  - "Whether the Sanskrit kāraka system is later tested against a second, non-conflict domain to validate or falsify the (now-retracted) universality claim"
+tier2_triggered: true
+tier2_reason: "Fully mathematizes Dimension Discovery/Parsing with four formal invariants and a recursive termination condition tied to Decision Sufficiency; corrects a prior kāraka-classification informality and performs a genuine in-file self-correction of a 'universal semantic ontology' overclaim; discovers a new five-way ontological ladder that substantively reformulates Question 3 around epistemic status/provenance rather than a bare tuple."

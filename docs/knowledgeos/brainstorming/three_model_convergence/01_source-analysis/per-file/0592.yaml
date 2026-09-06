@@ -1,0 +1,199 @@
+sequence: 592
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-094210_step-025n-evidence-aggregation-algebra.md
+title: "CONFIRMED CORPUS-INTEGRITY FINDING: A Second, Substantially Fuller 'Evidence Aggregation Algebra' Under the Identical Title of 0578's Step 25C — Delivers Likelihood-Ratio/Bayesian-Odds Formalism, an Evidence Lineage Graph and Evidence Clusters, a Ten-Stage Aggregation Pipeline, Relevance≠Applicability≠Support, the DDD EvidenceAssessmentService, Sensitivity/Robustness Feeding Sārathi, the Conservative Evidence Principle, and the Central Result 'Evidence Has No Intrinsic Universal Weight' (No Universal Evidence Aggregation Function); Verdict '25N — PASS'; Opens Step 25O (Truth, Validity, Belief, Knowledge and the Epistemic Status of an Assertion), Self-Described as 'Arguably the Deepest Conceptual Step Remaining'"
+date: "2026-08-28"
+bytes: 21154
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 25N -- Evidence Aggregation Algebra', opened at 0591's close -- CONFIRMED to carry the identical title of 0578's Step 25C ('Evidence Aggregation Algebra'), already PASSed in this corpus"
+source_role: PRIMARY_RESEARCH
+canonical_source: 592
+importance: critical
+confidence: high
+about: >
+  Opens Step 25N, entering "the statistical core of the KnowledgeOS model," posing the central question:
+  how should heterogeneous evidence change justified belief without double-counting, confusing authority
+  with probability, or letting weak evidence overwhelm strong evidence. **CONFIRMS the corpus-integrity
+  finding flagged at 0591**: this step carries the identical title "Evidence Aggregation Algebra" as Step
+  25C (0578, already PASSed), and substantially covers overlapping ground (evidence-as-non-scalar,
+  independence/double-counting, requirements-first derivation, no-universal-aggregation-function), but with
+  a much fuller formal apparatus not present in 25C -- likelihood ratios, Bayesian odds updating, an
+  explicit evidence lineage graph, evidence clustering, and a twelve-stage aggregation pipeline -- making
+  this a substantive re-derivation/extension rather than a literal duplicate.
+
+  Delivers the file's opening principle -- **evidence is not a scalar**: rejects naive
+  `confidence=0.87` summed across sources, proposing instead a ten-field evidence structure
+  `E=(Content,Source,Provenance,Method,Time,Context,Reliability,Independence,Authority,Uncertainty)`.
+  **Delivers the file's central formal deliverable -- six concepts formally kept separate**: Support
+  (`Support(E,A)∈{Supports,Contradicts,Neutral,Undetermined}`, deterministic); Reliability
+  (`Reliability(E,A,C)`, explicitly context-dependent, worked Production-API-vs-human-memory example);
+  Authority (organizational/legal authority to establish or approve an assertion, formalized as
+  **`Authority≠Reliability`**, worked engineer-vs-Architecture-Board example yielding
+  **`EvidenceSupport does not imply GovernanceAuthority`**); Probability (`P(H|E)`, distinct from all
+  others); Confidence (explicitly named overloaded, proposed as a structured triple
+  `Confidence=(value,model,interpretation)` rather than a bare scalar); Independence (named "the most
+  important statistical dimension").
+
+  **Delivers a sharpened, more formally developed treatment of the corpus's established evidence-
+  independence discipline (0562/0578/0580/0588/0590)**: the classic vendor-document→human-summary/LLM-
+  summary double-counting error reconfirmed as `E_2=f(E_1)`, `E_3=g(E_1)`, yielding
+  **`EvidenceCount≠InformationCount`**; **delivers a new Evidence lineage graph** `G_E=(V,E)` for detecting
+  double-counting, and **Evidence clusters** grouping evidence by common informational origin
+  (`InformationUnits(C_1)≈1` for a dependent cluster unless additional independent observations exist).
+  Delivers conditional independence `E_1⊥E_2|H` as a richer alternative to forcing binary independence.
+
+  Delivers Evidence polarity (`Positive/Negative/Neutral/Unknown`) as a deterministic pre-probabilistic
+  layer. **Delivers the file's central quantitative deliverable -- the likelihood-ratio formalism**:
+  `LR(E)=P(E|H)/P(E|¬H)`, explicitly "much more principled than Confidence=0.8," combining under
+  conditional independence as `LR(E_1,...,E_n)=∏_i LR(E_i)`, paired with the file's key safety invariant --
+  **`No independence assumption without provenance/model justification`** -- an independence-product
+  formula must never be silently applied absent explicit justification. Delivers Bayesian odds updating
+  (`Odds(H|E)=Odds(H)×LR(E)`), explicitly requiring a valid prior, valid likelihoods, and a valid dependency
+  model, with the reconfirmed caution against fabricating probabilities absent those.
+
+  **Delivers the file's central architectural deliverable -- two formally separated, equally legitimate
+  aggregation regimes**: Statistical (`P(H|E)`) and Qualitative (`SupportState∈{Strong,Moderate,Weak,
+  Conflicted,Insufficient}`), with the explicit rule **`QualitativeSupport≠Probability`** -- regimes must
+  never be silently mixed (`Strong=0.8` forbidden absent an explicit organization-defined mapping).
+
+  Delivers a ten-stage `Aggregate(E_1,...,E_n,A)` pipeline (identify→verify provenance→dependency→
+  polarity→applicability→reliability→authority→statistical model→contradiction→aggregate assessment),
+  paired with worked example aggregate outputs for both regimes -- a rich, multi-field qualitative
+  assessment record (Support, Evidence list, IndependentEvidenceClusters, ContradictingEvidence, Authority,
+  AssessmentModel, explicit "Probability: not calculated") explicitly preferred over a bare confidence
+  score, and a parallel statistical-regime output (Prior, Evidence, Posterior, IndependenceModel,
+  Sensitivity, Assessment).
+
+  **Delivers a genuinely new concept -- sensitivity analysis and Robustness feeding directly into
+  Sārathi**: `∂P(H|E)/∂Prior` conceptually, or scenario analysis over a plausible prior range,
+  distinguishing a robust conclusion (stable across assumptions) from a fragile one (collapses under
+  plausible alternative assumptions), formalized as **`DecisionQuality depends on robustness, not only
+  point estimate`** -- Sārathi should see `Robustness(H)`, not merely `P(H)`, directly extending 0586's
+  Decision Stability/Fragility concept with a concrete statistical grounding.
+
+  Delivers a disciplined treatment of conflicting evidence (three named outcomes -- Strong+weak→Strong,
+  Strong+strong→Conflicted, Unknown-strength→Unresolved -- explicitly rejecting naive `+1-1=0`
+  cancellation), and Authority-mediated conflict resolution (worked telemetry-vs-manual-note example)
+  explicitly clarified as NOT making the authoritative source "mathematically more true," only giving it
+  stronger evidential characteristics under the model -- with `ConflictHistory` always preserved, the
+  contrary evidence never deleted.
+
+  **Delivers the file's most important single mathematical conclusion, self-identified as such**: a formal
+  abstract aggregation operator `𝒜(E_1,...,E_n;A,M)→Assessment(A)`, deliberately model-dependent, with
+  **`no universal evidence aggregation function`** existing -- worked through a High-Authority/Low-
+  Reliability vs. Low-Authority/High-Reliability tie-breaking example with explicitly no universal
+  mathematical answer, depending instead on Question+Domain+Contract+Governance. Delivers a DDD
+  recommendation for a dedicated `EvidenceAssessmentService` domain service (assertion-specific effect
+  determination) kept separate from the generic Evidence Entity (provenance/source/content/context/
+  timestamps only).
+
+  **Delivers the important, precisely stated principle that evidence has no universal support value
+  independent of the assertion it addresses**: `Support(E,A_1)≠Support(E,A_2)` for the same evidence
+  against two different assertions (worked NexusVersion example: strong for "what version is installed,"
+  irrelevant for "is the migration approved"), requiring `Relevance(E,A,C)∈{Relevant,Irrelevant,Unknown}`
+  to precede aggregation, and a further formal separation of **Applicability from Relevance** (worked
+  dev-vs-production example: `Relevant=True∧Applicable=False`), with temporal applicability
+  `Applicable(E,A,t)` requiring an explicit time parameter.
+
+  Delivers the file's most complete evidence-aggregation pipeline diagram to date (Evidence→Identity→
+  Provenance→Dependency Analysis→Relevance→Applicability→Polarity→Reliability→Authority→
+  Statistical/Qualitative Model→Conflict Analysis→Aggregate Assessment→Knowledge State), "now a robust
+  architecture." **Delivers an eight-test suite (A-H), ALL PASS**: duplicate (`InformationGain=0`); derived
+  duplicate (`IndependentSupport=0` unless genuinely new information); independent corroboration (support
+  increases); contradictory evidence (`Conflict(H)`); irrelevant evidence; stale evidence
+  (`CurrentApplicability=False`, historical validity retained); authority mismatch
+  (`Support≠Authority`); probabilistic model (posterior computable given valid likelihoods and
+  independence).
+
+  **Delivers the file's headline formal rejection**: `KnowledgeStrength≠NumberOfEvidenceItems`, replaced
+  by `KnowledgeAssessment=f(Evidence,Provenance,Dependency,Relevance,Applicability,Reliability,Authority,
+  Model)`. Honestly surfaces one genuinely unresolved statistical question -- what to do when the
+  dependency structure among evidence items is unknown -- posing five candidate strategies with explicitly
+  no universal answer, resolved by the file's **Conservative Evidence Principle**: **`Do not claim more
+  evidential strength than the dependency model justifies`** -- an independence-product likelihood-ratio
+  combination must never be computed when independence is unestablished, "a strong safety invariant."
+
+  **Delivers the file's most important architectural consequence, self-identified as such**: evidence
+  aggregation does not always need to produce a number -- an aggregate result may legitimately be
+  "unresolved, reason: dependency between E1 and E2 cannot be established, recommended next action: obtain
+  independent observation," feeding directly into `Zero` (`NeedIndependentEvidence`) and `Lord` (selecting
+  an action to acquire it) -- "elegantly reconnects the statistical layer to the Lord loop," delivering the
+  complete closed-loop notation `Evidence→Assessment→Knowledge`, with the branch
+  `Assessment→Zero→Lord→NewObservation→Evidence` when assessment is insufficient -- "genuinely closed-loop
+  epistemic reasoning."
+
+  **Delivers Step 25N's verdict**: **"25N — PASS,"** with an important qualification listing thirteen
+  proven/computable items against exactly one NOT universally computable without additional assumptions --
+  **Universal evidence weight** -- "there is no single mathematically correct number representing how
+  strong this evidence is independently of Claim+Context+Model." **Delivers the file's central architecture-
+  wide principle**: **`Evidence has no intrinsic universal weight`** -- its epistemic effect is strictly
+  relational, `Effect(E,A|C,M)`, "a very important principle."
+
+  **Closes by opening "Step 25O — Truth, Validity, Belief, Knowledge and the Epistemic Status of an
+  Assertion,"** explicitly self-described as "arguably the deepest conceptual step remaining," posing the
+  climactic question: **"Can KnowledgeOS represent what is true without pretending that it necessarily
+  knows what is true?"** -- distinguishing seven named epistemic-status categories to be formalized
+  (WorldTruth, ObservedTruth, LogicalTruth, SupportedAssertion, ProbableAssertion, GovernanceTruth,
+  Unknown), explicitly framed as the step that would determine whether "the entire KnowledgeOS
+  computational model is theoretically resolved." No actual code execution reported.
+introduces:
+  - concept: "A ten-field structured evidence object E=(Content,Source,Provenance,Method,Time,Context,Reliability,Independence,Authority,Uncertainty), replacing scalar confidence"
+  - concept: "Six formally separated evidential concepts (Support, Reliability, Authority, Probability, Confidence, Independence), each answering a distinct question and none reducible to the others"
+  - concept: "The likelihood-ratio formalism LR(E)=P(E|H)/P(E|¬H) and Bayesian odds updating Odds(H|E)=Odds(H)×LR(E), combined under conditional independence as a product, gated by the explicit invariant 'No independence assumption without provenance/model justification'"
+  - concept: "An Evidence lineage graph and Evidence clusters, formally grounding EvidenceCount≠InformationCount via provenance-derived dependency detection"
+  - concept: "Two formally separated, equally legitimate aggregation regimes (Statistical and Qualitative), which must never be silently mixed (QualitativeSupport≠Probability)"
+  - concept: "Sensitivity analysis and Robustness feeding into Sārathi (DecisionQuality depends on robustness, not only point estimate), directly grounding 0586's Decision Stability/Fragility concept in a concrete statistical mechanism"
+  - concept: "The central conclusion that no universal evidence aggregation function exists — 𝒜(E_1,...,E_n;A,M)→Assessment(A) is deliberately, unavoidably model-dependent"
+  - concept: "Relevance≠Applicability≠Support as three distinct, sequenced evidence-qualification steps, with Applicability explicitly time-dependent"
+  - concept: "The Conservative Evidence Principle — do not claim more evidential strength than the dependency model justifies — and the recognition that evidence aggregation does not always need to produce a number, legitimately reconnecting the statistical layer to Zero/Lord"
+  - concept: "'Step 25O — Truth, Validity, Belief, Knowledge and the Epistemic Status of an Assertion', self-described as arguably the deepest conceptual step remaining, distinguishing seven named epistemic-status categories"
+defines:
+  - concept: "Likelihood ratio"
+    definition: "LR(E)=P(E|H)/P(E|¬H); LR>1 favors H, LR<1 favors ¬H, LR≈1 contributes little discrimination — a more principled measure of evidential strength than a subjective confidence score"
+  - concept: "No universal evidence aggregation function"
+    definition: "𝒜(E_1,...,E_n;A,M)→Assessment(A) — the aggregation operator is unavoidably parameterized by an explicit model M; there is no universal mathematical resolution for combining evidence with differing authority/reliability profiles without reference to Question, Domain, Contract, and Governance"
+  - concept: "Evidence has no intrinsic universal weight"
+    definition: "The epistemic effect of evidence is strictly relational — Effect(E,A|C,M) — never an absolute property of the evidence item alone, independent of the specific claim, context, and assessment model"
+  - concept: "Conservative Evidence Principle"
+    definition: "Do not claim more evidential strength than the dependency model justifies — an independence-based combination formula (e.g. LR_combined=∏LR_i) must never be applied when the dependency structure among evidence items is unknown or unestablished"
+refines:
+  - concept: "0578's Step 25C 'Evidence Aggregation Algebra' (identical title)"
+    refinement: "CONFIRMED corpus-integrity finding: this step substantially covers, extends, and formally deepens 25C's ground (evidence-as-non-scalar, independence/double-counting discipline, no-universal-aggregation-function conclusion) with new formal apparatus (likelihood ratios, Bayesian odds, evidence lineage graph, evidence clusters, twelve-stage pipeline) not present in 25C — a substantive re-derivation/extension, not a contradiction, but genuinely warranting eventual reconciliation under §29"
+  - concept: "0562's/0578's/0580's/0588's/0590's recurring evidence-independence-via-provenance discipline"
+    refinement: "Formalized with new machinery specifically for this step: an explicit Evidence lineage graph and Evidence clusters, plus conditional independence (E_1⊥E_2|H) as a richer alternative to forced binary independence"
+  - concept: "0586's Decision Stability/Fragility concept"
+    refinement: "Grounded in a concrete statistical mechanism — sensitivity analysis over the prior/assumption space, formalized as Robustness(H) feeding Sārathi, directly operationalizing what 0586 introduced only qualitatively"
+  - concept: "0591's opening of 'Step 25N — Evidence Aggregation Algebra' and its flagged title collision with 0578's Step 25C"
+    refinement: "Confirmed and resolved as a substantive (not literal) duplicate/extension, per this file's own content comparison"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25O — Truth, Validity, Belief, Knowledge and the Epistemic Status of an Assertion' is executed as its own file, and whether it succeeds in formally distinguishing the seven named epistemic-status categories (WorldTruth, ObservedTruth, LogicalTruth, SupportedAssertion, ProbableAssertion, GovernanceTruth, Unknown) — explicitly self-described as arguably the deepest conceptual step remaining in the entire research program"
+  - "When the full corpus is read (§29 gate), explicitly reconcile Step 25N (0592) against Step 25C (0578): both titled 'Evidence Aggregation Algebra,' substantially overlapping in conclusion (no universal aggregation function, independence/double-counting discipline) but differing in formal apparatus (25N adds likelihood ratios, Bayesian odds, lineage graph, evidence clusters, sensitivity/robustness) — determine whether 25N supersedes 25C or the two should be merged into one canonical treatment"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the ten-field evidence structure, the six formally separated evidential concepts (Support/Reliability/Authority/Probability/Confidence/Independence), and the likelihood-ratio/Bayesian-odds formalism gated by the 'no independence assumption without justification' invariant."
+  - "dimension-registry.md: record the Evidence lineage graph and Evidence clusters, the two formally separated aggregation regimes (Statistical/Qualitative, never silently mixed), sensitivity analysis/Robustness feeding Sārathi, and the central 'no universal evidence aggregation function' conclusion."
+  - "dimension-registry.md: record Relevance≠Applicability≠Support, the Conservative Evidence Principle, 'evidence aggregation does not always need to produce a number' (reconnecting to Zero/Lord), 'Evidence has no intrinsic universal weight,' verdict '25N — PASS,' the CONFIRMED title-collision/substantive-overlap finding with 0578's Step 25C, and Step 25O's opening (self-described as arguably the deepest conceptual step remaining)."
+anchor_test:
+  anchor: "0591's flagged title collision between opened Step 25N and 0578's already-PASSed Step 25C; 0562's/0578's/0580's/0588's/0590's recurring evidence-independence-via-provenance discipline; 0586's Decision Stability/Fragility concept; 0582's/0584's Zero/governance formalization"
+  supports_dimension: "CONFIRMS the corpus-integrity finding flagged at 0591: Step 25N carries the identical title of 0578's already-PASSed Step 25C ('Evidence Aggregation Algebra'), and this file's own content comparison shows substantial ground-level overlap (evidence-as-non-scalar, independence/double-counting discipline, no-universal-aggregation-function conclusion) alongside genuinely new formal apparatus not present in 25C (likelihood ratios, Bayesian odds updating, an explicit evidence lineage graph, evidence clustering, and sensitivity/robustness analysis feeding directly into Sārathi) — establishing this as a substantive extension/re-derivation rather than either a literal duplicate or a contradiction, and directly informing how the eventual full-corpus reconciliation (§29) should treat this pair of same-titled steps. Delivers rich, independently valuable new formal content — most notably the concrete statistical grounding of 0586's previously qualitative Decision Stability/Fragility concept via sensitivity analysis, and the important architectural discovery that evidence aggregation legitimately need not always resolve to a number, correctly reconnecting the statistical evidence layer to the Zero/Lord action-selection loop"
+  refines_or_contradicts: "confirms and resolves 0591's flagged title collision with 0578's Step 25C as a substantive extension, not a contradiction; extends 0562's/0578's/0580's/0588's/0590's evidence-independence-via-provenance discipline with new formal machinery; grounds 0586's Decision Stability/Fragility concept in a concrete statistical mechanism; reconnects to 0582's/0584's Zero/governance formalization via the NeedIndependentEvidence→Lord feedback loop; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked engineer-vs-Architecture-Board Authority≠Reliability example (a technically reliable engineer's approval statement is explicitly insufficient to establish authoritative architecture approval) is directly checkable, concrete evidence grounding the abstract Authority/Reliability/Support separation, and is directly relevant to the corpus's recurring AI/human-governance discipline since it applies identically regardless of the evidence source's technical trustworthiness."
+  - "The eight-test falsification suite (A-H, all PASS), each with an explicitly stated expected outcome (e.g. Test B: IndependentSupport(E_2)=0 for a derived duplicate unless the transformation introduces genuinely new information), is directly checkable evidence supporting the claim that the proposed evidence-aggregation pipeline behaves correctly across the range of tested scenarios."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25O — Truth, Validity, Belief, Knowledge and the Epistemic Status of an Assertion' is executed as its own dedicated corpus file, and whether it succeeds in formally distinguishing the seven named epistemic-status categories — self-described as arguably the deepest conceptual step remaining in the entire research program"
+  - "How the eventual full-corpus reconciliation (§29) should treat the confirmed overlap between this file's Step 25N and 0578's Step 25C, both titled 'Evidence Aggregation Algebra': supersession, merge, or independent retention as complementary treatments"
+tier2_triggered: true
+tier2_reason: "CONFIRMS a corpus-integrity finding of direct relevance to the reconstruction's own obligation to track the corpus's recurring step-renumbering/topic-revisitation pattern: Step 25N carries the identical title of 0578's already-PASSed Step 25C, and this file substantially overlaps that earlier treatment's conclusions while introducing genuinely new, independently valuable formal apparatus (likelihood ratios, Bayesian odds updating, an explicit evidence lineage graph, evidence clustering, and a sensitivity/robustness analysis directly grounding 0586's previously qualitative Decision Stability/Fragility concept in concrete statistical terms). Delivers the corpus's most mathematically developed evidence-aggregation treatment to date, culminating in the important, precisely stated architectural conclusion that evidence has no intrinsic universal weight and that no universal evidence aggregation function exists — model-dependence is unavoidable and must be made explicit rather than hidden. Delivers a genuinely significant architectural discovery, self-identified as the file's most important consequence: evidence aggregation does not always need to resolve to a number, and an explicitly unresolved assessment correctly and elegantly reconnects the statistical evidence layer back into the Zero/Lord action-selection loop, completing a genuinely closed epistemic feedback cycle. Closes by opening Step 25O, explicitly self-described as arguably the deepest conceptual step remaining in the entire research program, targeting the corpus's central unresolved question of what 'truth' means inside a governed, non-omniscient epistemic system."

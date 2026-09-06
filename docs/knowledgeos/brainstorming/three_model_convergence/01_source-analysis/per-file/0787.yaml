@@ -1,0 +1,175 @@
+sequence: 787
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-011552_step_162_invariant-and-boundary-derivation.md
+title: "Step 162 -- Invariant and Boundary Derivation (MAJOR SYNTHESIS MILESTONE, delivers 0785's promised register): the DDD-Culminating File of the Entire Arc -- Derives Boundaries FROM Invariants (Semantic Concept→Invariant→Consistency Requirement→Boundary, Never Noun→BoundedContext) via Fourteen Numbered Invariants I-01 Through I-14 -- Delivers the Final Bounded-Context Determinations: Evidence and Knowledge as Strong BC Candidates (Distinct, Evidence Supports≠Equals Knowledge), Decision Folded Into an Existing/Strong Governance Boundary (No New 'Decision BC'), Authorization as a Boundary Object Between Governance and Operations -- Delivers the Small/Stable/Authoritative Kernel Principle (Identity/Provenance/Lineage/Authority-Reference/Integrity/Version/Correlation Only; Wisdom/Decision/Inquiry Explicitly Excluded) -- Delivers the Gita-Derived 'Context Supplied to an Actor Must Be Distinguishable From Complete Historical State' via Context Projection Projection(H,C)→Context_C, Explicitly Argued as Beneficial (Not a Limitation) for AI-Agent Safety -- Opens Step 163, Context Map and Translation Boundaries"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily DDD boundary-derivation synthesis; explicitly and carefully re-translates the Gita-Chapter-4 'only Krishna knows' insight into a precise architectural design principle (Context Projection), avoiding literal/naive translation"
+source_role: PRIMARY_RESEARCH
+canonical_source: 787
+importance: critical
+confidence: high
+about: >
+  Directly continues 0785, opening "we continue with Step 162 — Invariant and Boundary Derivation. This is
+  an important step because we now stop asking 'what concepts do we have?' and ask the more rigorous DDD
+  question: what must remain true, and where must that truth be protected?"
+
+  **§162.1 delivers the central derivation equation**: `Semantic Concept→Invariant→Consistency
+  Requirement→Boundary`, explicitly contrasted against the rejected shortcut `Noun→BoundedContext` --
+  "that distinction will protect the architecture from over-modelling." **§162.2-162.3 delivers a
+  four-category constraint taxonomy**: Semantic invariant (defines meaning, e.g. `Evidence≠Knowledge`),
+  Consistency invariant (defines what must remain jointly consistent, e.g. `Decision.authority=
+  ValidAuthority`), Governance invariant (defines what is permitted, e.g. `Execute(A)⇒Authorized(A)`),
+  Technical invariant (defines implementation safety, e.g. "only immutable evidence records may enter the
+  evidence store") -- with the explicit caution that the fourth category "should not be mistaken for a
+  domain invariant unless the domain actually requires it."
+
+  **Delivers fourteen numbered invariants, `I-01` through `I-14`** (a distinct series from 0785's
+  consolidated `I1`-`I10`, worth flagging as another unreconciled but closely-related numbering set):
+  I-01 Observation integrity (`Observation⇏Conclusion`; Observation ruled `Concept/Entity, not necessarily
+  BC`); I-02 Evidence traceability (`Evidence→Source`, `Evidence→Observation`, provenance must remain
+  reconstructable, "stronger than simply storing a URL"); I-03 Knowledge requires epistemic status
+  (`Status(K)` required, else hypothesis and confirmed knowledge become indistinguishable); I-04 Knowledge
+  must be versionable (`K_1→[superseded]→K_2`, history must be preservable, whether via event sourcing
+  explicitly "not decided"); I-05 Knowledge cannot silently overwrite contradiction (`K_1="X"` and
+  `K_2="not X"` must not simply replace one another -- `Contradiction(K_1,K_2)` modeled as a relationship,
+  "not necessarily a separate aggregate"); I-06 Determination must expose reasoning basis (`D→{E,K,C,M}`,
+  never an opaque conclusion string like "architecture approved"); I-07 **Determination≠Decision**
+  (foundational, worked example distinguishing "current architecture violates rule R" from "migration must
+  be completed before release" -- "different meanings, different authority, potentially different
+  owners"); I-08 Decision requires authority (`Decision⇒Authority`, which may be Architecture Board,
+  policy engine, delegated role, or automated governance mechanism, but must be defined); I-09
+  Recommendation≠Decision (`Recommendation_AI≠Decision_Governance`, "the AI cannot silently cross the
+  authority boundary"); I-10 Authorization≠governance (`GovernanceDecision≠Authorization`, governance asks
+  "should this be permitted?", authorization asks "is this actor permitted to perform it?"); I-11
+  Authorization must be contextual (`Auth=f(Actor,Action,Resource,Policy,Context,Time)`); I-12
+  **Action≠Execution** (`A=Intent+Target+Parameters` vs. `X=ActualEffect`, allowing "authorized but not
+  executed" to be recorded); I-13 Execution must generate observable consequences
+  (`Execution→Observation`, closing the feedback loop, "an execution without any ability to establish its
+  result creates an assurance gap"); I-14 Unknown is legitimate (`Unknown≠False`, `Unknown≠Null`).
+
+  **Delivers the file's actual DDD bounded-context determinations, the culmination of the reconstruction's
+  entire DDD-reduction arc**: **Evidence** upgraded to `Strong BC Candidate` -- "much stronger than our
+  earlier position" -- justified by concerns distinct from Knowledge (acquisition, provenance, integrity,
+  source, observation method, timestamp, relevance, immutability, verification); **Knowledge** also
+  `Strong BC Candidate`, with the explicit boundary rule "Evidence and Knowledge are not one context...
+  Evidence should not become an internal data structure of Knowledge merely for convenience" (the same
+  evidence can support different claims under different contexts); **Determination** ruled `BC Candidate`
+  but requiring further validation of genuine distinctness from Decision (resolved affirmatively by I-07);
+  **Decision** ruled **`Existing/Strong Governance Boundary`, explicitly NOT a brand-new standalone
+  "Decision BC"** -- folded instead into a broader Governance bounded context, "a significant DDD
+  refinement"; **Authorization** modeled explicitly as **"a boundary object between Governance and
+  Operations"** rather than being forced into either side, avoiding premature classification.
+
+  **§162.38-162.41 delivers the KnowledgeOS kernel principle**: the kernel should contain only concepts
+  requiring true system-wide consistency (`Identity, Provenance reference, Lineage reference,
+  AuthorityReference, Integrity, Version, Correlation`), boxed `Kernel≠UniversalDomainModel` and required
+  to be **"small, stable, authoritative"** -- "every concept added to the kernel increases coupling.
+  Therefore the burden of proof for kernel inclusion should be high." Delivers an explicit list of what
+  probably does NOT belong in the kernel: **Wisdom, Decision, Inquiry, business-specific Action,
+  domain-specific Evidence, domain-specific Knowledge** -- "should remain context-owned unless proven
+  otherwise," directly reaffirming 0783's/0785's disciplined non-promotion of Wisdom to any formal
+  architectural status.
+
+  **§162.42-162.46 delivers a genuinely careful, non-literal re-translation of the Chapter-4 "only Krishna
+  knows" insight into precise architecture**: explicitly rejects "the system remembers everything" in favor
+  of "the system preserves the lineage necessary to reconstruct relevant prior states." Delivers the
+  architectural analogue: `GlobalHistoricalContext` (available to the system of record) versus
+  `LocalActorContext` (intentionally incomplete), boxed as a design principle `SystemContext⊇ActorContext`
+  -- "the actor need not possess the complete history." **Explicitly argues this is beneficial, not a
+  limitation**: a complete memory model for every agent would be "expensive; difficult to govern;
+  potentially unsafe; difficult to invalidate; difficult to reason about" -- `Agent→RelevantContext` is
+  better than `Agent→Everything`. **Delivers Context Projection**, `Projection(H,C)→Context_C`, "the agent
+  receives a context projection appropriate to its task," so KnowledgeOS may hold broad historical lineage
+  while each agent receives only `RelevantKnowledge`. **Delivers a new invariant directly following from
+  this**: "context supplied to an actor must be distinguishable from complete historical state" --
+  otherwise the actor "may incorrectly assume: what I was given is everything that exists" -- a precise,
+  currently and directly applicable AI-agent-safety principle.
+
+  **§162.47 delivers "Step 162 major result"**: "we should NOT create a bounded context for every
+  concept... boundaries emerge from invariants, ownership, lifecycle, and consistency," with the current
+  strongest candidates explicitly named: **`Evidence, Knowledge, Governance`**, with `Determination`
+  requiring further validation and `Authorization` acting as a boundary object between governance and
+  operations.
+
+  **§162.48 delivers "provisional architecture,"** the file's central consolidated diagram: `GOVERNANCE
+  (Policy/Authority/Decision)→Authorization→OPERATIONS(Action/Execution/Runtime)→Observation→EVIDENCE
+  (Source/Provenance/Integrity)→[supports]→KNOWLEDGE(Claims/Validity/Status/Contradiction)→DETERMINATION
+  (Method/Context/Rationale)→GOVERNANCE`, explicitly noted "not a cycle because the operational feedback
+  creates the next Observation," summarized as the complete chain `Execution→Observation→Evidence→
+  Knowledge→Determination→Decision`.
+
+  **§162.49 delivers the Step-162 exit criterion**: every major concept requires `Definition+Invariant+
+  Owner+Lifecycle+Boundary+Evidence`, else "the architecture remains provisional."
+
+  **Closes by opening "Step 163 — Context Map and Translation Boundaries,"** posing "how do these bounded
+  contexts communicate without destroying their semantic independence?", boxed as `Context→Contract→
+  Translation→Context`, with six specifically named boundary crossings to examine (Evidence→Knowledge;
+  Knowledge→Determination; Determination→Governance; Governance→Authorization; Authorization→Operations;
+  Execution→Observation) -- "this is where we begin to define the actual architecture interfaces, rather
+  than merely the conceptual objects." No actual repository implementation or code execution occurs
+  within this file itself; every boundary determination remains explicitly labeled "candidate" pending
+  further verification, consistent with the file's own governing discipline.
+introduces:
+  - concept: "The central derivation equation: Semantic Concept→Invariant→Consistency Requirement→Boundary, rejecting Noun→BoundedContext"
+  - concept: "The four-category constraint taxonomy: Semantic/Consistency/Governance/Technical invariants"
+  - concept: "Fourteen numbered invariants I-01 through I-14 (a distinct series from 0785's I1-I10)"
+  - concept: "The final bounded-context determinations: Evidence and Knowledge as Strong BC Candidates (distinct); Decision folded into an existing Governance boundary, not a new 'Decision BC'; Authorization as a boundary object between Governance and Operations"
+  - concept: "The kernel principle: small, stable, authoritative; Kernel≠UniversalDomainModel; explicit exclusion list including Wisdom, Decision, Inquiry"
+  - concept: "'The system preserves the lineage necessary to reconstruct relevant prior states' (rejecting 'the system remembers everything')"
+  - concept: "GlobalHistoricalContext vs. LocalActorContext; SystemContext⊇ActorContext"
+  - concept: "Context Projection: Projection(H,C)→Context_C"
+  - concept: "'Context supplied to an actor must be distinguishable from complete historical state'"
+  - concept: "The provisional consolidated architecture diagram (Governance→Authorization→Operations→Observation→Evidence→Knowledge→Determination→Governance)"
+  - concept: "Step 163's opening: Context Map and Translation Boundaries, Context→Contract→Translation→Context"
+defines:
+  - concept: "The kernel-inclusion burden of proof"
+    definition: "A candidate concept should only be added to the small, stable, authoritative KnowledgeOS kernel if it can be shown to require true system-wide consistency shared across every bounded context (e.g. Identity, Provenance reference, Lineage reference, AuthorityReference, Integrity, Version, Correlation) -- every additional kernel concept increases coupling across the entire system, so the default assumption is exclusion, with inclusion requiring active, high-bar justification, not the reverse"
+  - concept: "Context Projection (Projection(H,C)→Context_C)"
+    definition: "Rather than granting every acting agent access to the complete historical lineage H maintained by KnowledgeOS, the system computes a task-appropriate projection of that history into a bounded Context_C relevant to the agent's current work -- the agent's limited view is a deliberate, beneficial architectural choice (reducing cost, governance burden, safety risk, and reasoning complexity), not an unfortunate limitation, provided the projected context is clearly marked as a projection rather than the complete historical record"
+  - concept: "'Context supplied to an actor must be distinguishable from complete historical state'"
+    definition: "Whenever an actor (particularly an AI agent) receives a bounded context projection rather than the full historical record, the system must make clear to that actor that what it has received is a projection, not the totality of what exists -- otherwise the actor may reason as though its limited view constitutes complete information, silently converting an epistemic gap into an unrecognized blind spot"
+refines:
+  - concept: "0785's Step 161 semantic contracts and its recommendation of Step 162"
+    refinement: "DELIVERED: the actual invariant-driven boundary derivation, with fourteen numbered invariants and the final DDD bounded-context determinations (Evidence and Knowledge Strong BC Candidates, Decision folded into Governance, Authorization as a boundary object)"
+  - concept: "0783's Step 159 candidate bounded contexts list and its explicit deferral of Wisdom as a bounded context"
+    refinement: "Substantially resolved: Evidence and Knowledge are now confirmed Strong BC Candidates (upgraded from mere candidates); Decision is explicitly reclassified as belonging within an existing Governance boundary rather than becoming its own BC -- a significant DDD refinement narrowing the eventual bounded-context count; Wisdom's exclusion from the kernel is explicitly reaffirmed"
+  - concept: "0753's/0759's/0780's Continuity-vs-Accessible-Memory and 'only Krishna knows' Gita findings"
+    refinement: "Given the most precise, carefully non-literal architectural translation yet: explicitly rejecting 'the system remembers everything' in favor of lineage-preservation-for-reconstruction, formalized via Context Projection and the new invariant requiring projected context to be distinguishable from complete historical state -- directly extending this reconstruction's tracked discipline against naive analogy-to-architecture collapse"
+  - concept: "0751's original six-context DDD reduction (Knowledge/Inquiry/Evidence/Assurance/Governance/Action)"
+    refinement: "Substantially refined here: Evidence and Knowledge confirmed as distinct Strong BC Candidates (matching 0751's original split); Decision (not explicitly a separate context in 0751) explicitly folded into Governance; Determination (not present as a distinct concept at 0751) introduced and confirmed distinct from Decision but still requiring further boundary validation"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 163 (Context Map and Translation Boundaries) and the actual definition of the six named cross-boundary contracts (Evidence→Knowledge, Knowledge→Determination, Determination→Governance, Governance→Authorization, Authorization→Operations, Execution→Observation)."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the culminating DDD bounded-context determinations of this reconstructed arc: Evidence and Knowledge as confirmed Strong BC Candidates (distinct), Decision folded into an existing Governance boundary (not a new BC), Authorization as a boundary object between Governance and Operations -- a primary reference finding for the eventual §29-gated canonical synthesis."
+  - "dimension-registry.md: record the kernel principle (small/stable/authoritative, high burden of proof for inclusion, explicit exclusion of Wisdom/Decision/Inquiry) as a directly reusable architecture-governance discipline."
+  - "dimension-registry.md: record Context Projection and 'context supplied to an actor must be distinguishable from complete historical state' as a precise, carefully non-literal architectural translation of the Chapter-4 'only Krishna knows' insight -- a genuinely valuable AI-agent-safety principle."
+  - "dimension-registry.md: record the fourteen numbered invariants I-01 through I-14 as a distinct series from 0785's I1-I10 -- flag for eventual reconciliation alongside the reconstruction's other tracked invariant series."
+anchor_test:
+  anchor: "0785's Step 161 semantic contracts and I1-I10 invariants; 0783's candidate bounded contexts and Wisdom deferral; 0753's/0780's Continuity-vs-Memory Gita findings; 0751's original six-context DDD reduction"
+  supports_dimension: "Delivers the culminating DDD bounded-context determinations of this entire reconstructed arc: Evidence and Knowledge confirmed as distinct Strong BC Candidates, Decision explicitly folded into an existing Governance boundary rather than becoming a new BC (a significant DDD refinement), and Authorization modeled as a deliberate boundary object between Governance and Operations. Delivers fourteen numbered invariants and the small/stable/authoritative kernel principle with an explicit, high-bar inclusion test. Delivers the most precise, carefully non-literal architectural translation yet of the Chapter-4 'only Krishna knows' insight (Context Projection, the distinguishability invariant), directly extending this reconstruction's tracked discipline against naive analogy-to-architecture collapse. Closes with a genuinely disciplined consolidated architecture diagram and opens Step 163's context-map/translation-boundary work"
+  refines_or_contradicts: "directly delivers and extends 0785's recommended Step 162; substantially refines 0783's candidate bounded contexts and 0751's original six-context reduction; extends 0753's/0780's Gita-derived continuity findings with a carefully disciplined architectural translation; introduces a new I-01..I-14 invariant series alongside 0785's I1-I10, worth flagging for eventual reconciliation; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§162.16's explicit statement 'Decision → Existing/Strong Governance Boundary rather than necessarily creating a brand-new Decision BC... a significant DDD refinement' is directly quotable, decisive evidence of a genuine narrowing of the eventual bounded-context count relative to 0751's/0783's earlier, more numerous candidate lists."
+  - "§162.42's explicit statement 'the architectural principle is not: the system remembers everything. It is: the system preserves the lineage necessary to reconstruct relevant prior states. That is much more rigorous' is directly quotable evidence of the file's disciplined, non-literal translation of the Chapter-4 memory insight."
+  - "§162.47's explicit boxed statement 'we should NOT create a bounded context for every concept... boundaries emerge from invariants, ownership, lifecycle, and consistency,' naming Evidence/Knowledge/Governance as the current strongest candidates, is directly checkable evidence of the file's culminating DDD determination."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 163 (Context Map and Translation Boundaries) was ever actually delivered, defining the six named cross-boundary contracts explicitly promised at this file's close."
+  - "Whether the fourteen I-01..I-14 invariants are ever explicitly reconciled against 0785's ten I1-I10 invariants (the two series overlap substantially in content but use different numbering and slightly different groupings)."
+  - "Whether Determination's boundary status (still 'requiring further validation' at this file's close) is ever formally resolved into a confirmed BC, folded into an existing context, or classified as a mere semantic relationship."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE, the DDD-culminating file of this reconstructed arc: delivers the actual invariant-driven bounded-context determinations (Evidence and Knowledge as confirmed Strong BC Candidates; Decision explicitly folded into an existing Governance boundary rather than a new BC, a significant DDD refinement; Authorization as a deliberate boundary object between Governance and Operations). Delivers fourteen numbered invariants and the small/stable/authoritative kernel principle with explicit exclusions (Wisdom, Decision, Inquiry). Delivers the most precise, carefully non-literal architectural translation yet of the Chapter-4 'only Krishna knows' insight via Context Projection and a new distinguishability invariant, directly extending this reconstruction's tracked discipline against naive analogy-to-architecture collapse."

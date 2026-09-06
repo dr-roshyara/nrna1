@@ -1,0 +1,50 @@
+sequence: 2371
+path: docs/knowledgeos/brainstorming/20260902-185001_files-to-read-one-by-one.log.md
+title: "files-to-read-one-by-one.log.md -- the same CONTROL_SELF_REFERENCE directory-listing log already substantively covered as file 2320, re-surfaced by the manifest refresh as a further-modified version"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the same control/scaffolding directory-listing log already given a full CONTROL_SELF_REFERENCE record as file 2320; appears here as a distinct manifest entry because its size/mtime changed after 2320's rename was cross-checked (the file was further appended to), not because its content or role differs"
+source_role: CONTROL_SELF_REFERENCE
+canonical_source: 2320
+importance: low
+confidence: high
+about: >
+  The identical logical file (same path, same role) already given a full CONTROL_SELF_REFERENCE record
+  as file 2320 in this reconstruction's tracking, including the two candidate leads for file 2319's
+  unidentified "Path B" (linux-analogy-kernel-os-model.md, EKS-to-Kernel integration files). Re-surfaced
+  as a distinct manifest entry by the 2026-09-04 manifest refresh (MD-020) because the on-disk file's
+  size/mtime had changed since the original size/mtime match was checked against sequence 2320 -- i.e.
+  the log was further appended to between the two manifest snapshots, not because it is a different file
+  or serves a different role. No independent content analysis performed; see file 2320 for the full
+  record.
+introduces: []
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked file 2320 CONTROL_SELF_REFERENCE record"
+    refinement: "CONFIRMED as the same logical file, further appended to between manifest snapshots"
+contradicts: []
+repeats:
+  - "Identical logical file and role to file 2320; recorded distinctly only because the manifest refresh detected a changed size/mtime, not a content or role difference."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "This reconstruction's already-tracked file 2320"
+  supports_dimension: "n/a — same file, re-surfaced by manifest refresh"
+  refines_or_contradicts: "n/a"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Same logical file and role as already-tracked file 2320; re-surfaced by the manifest refresh due to a changed size/mtime, not independent content."

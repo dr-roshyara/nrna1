@@ -1,0 +1,60 @@
+sequence: 75
+path: docs/knowledgeos/brainstorming/20260821-2032-how-to-change-eks-into-knowledgeos-kernel.md
+title: How to Change EKS into KnowledgeOS Kernel
+date: 2026-08-21
+bytes: 23563
+
+model:
+  primary: c1
+  secondary: [ddd, invariants, governance]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: high
+confidence: high
+
+about: >
+  Classifies ~20 EKS capabilities YES/PARTIAL/NO for kernel-worthiness and states six explicit
+  kernel-membership criteria, including a new dependency-direction (acyclicity) requirement not
+  present in the root-level kernel-membership work. Explicitly defers the minimality question
+  (smallest stable kernel) to future work rather than answering it.
+
+introduces:
+  - six_criterion_kernel_membership_test
+  - dependency_direction_acyclicity_criterion   # kernel must not depend on EKS/PKS; they depend on it
+  - eks_source_material_not_replaced_by_kernel
+
+defines:
+  - kernel_worthiness_classification_table   # ~20 EKS capabilities rated YES/PARTIAL/NO
+
+refines:
+  - concept: kernel_membership_test
+    canonical_source: null   # root-level material (0001/0005/0008/0011/0012), outside this pass's read-so-far scope for direct citation
+    change: "domain-free/binding-free/evidence-free (artifact property) -> adds invariant-possession, lifecycle-stability, and dependency-DIRECTION (acyclicity) as explicit further criteria"
+
+contradicts: []
+repeats: []
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+key_evidence:
+  - "'Can EKS depend on it without the kernel depending on EKS?' - the dependency-direction test, genuinely new"
+  - "kernel box lists: authority, lifecycle, evidence, identity, invariants, provenance, execution, composition"
+  - "explicitly defers minimality ('smallest stable kernel...') to a future EKS -> Kernel Extraction & Conformance Analysis - not answered here"
+
+undefined_concepts: [knowledge]
+open_questions:
+  - "what is the smallest stable kernel that EKS can run on without losing governance/evidence/provenance/repository strengths - explicitly deferred"
+
+tier2_triggered: true
+tier2_reason: >
+  States the sharpest kernel-membership methodology in the corpus so far: six explicit criteria
+  including a genuinely new dependency-direction/acyclicity requirement (kernel must not depend on
+  its consumers) not present in the root-level material's structural (domain-free/binding-free/
+  evidence-free) tests. Directly poses the §31 minimality question and explicitly defers answering
+  it to future work - recorded as an open question, not a result.

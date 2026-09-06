@@ -1,0 +1,91 @@
+sequence: 1006
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/D285-1-STATE-ONTOLOGY-MATRIX.md
+title: "D285-1 -- State Ontology Matrix: The Actual Foundational Artifact, Delivering the Full Seven-Definition K Comparison Table (K-1 Through K-7, of ~28 Measured Across the Corpus in 7 Shape-Families) and the Complete GN-75 Vocabulary-Disjointness Measurement"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual D285-1 artifact, the foundational state-ontology matrix underlying nearly every K_t/(A,R) comparison this reconstruction has tracked by cross-reference"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1006
+importance: critical
+confidence: high
+about: >
+  The actual D285-1 artifact (previously known only by cross-reference), delivering the full comparison of
+  every competing definition of `K` this reconstruction has encountered.
+
+  **§1 DELIVERS THE COMPLETE SEVEN-ROW K-DEFINITION TABLE FOR THE FIRST TIME**: K-1 (`K_t` over 8 primitives,
+  RATIFIED, "50 attack classes, no counterexample," COMPUTATIONALLY TESTED); K-2 (`K=(𝒜,ℛ)`, verification
+  lane, NOT RATIFIED, 0 occurrences in any ratified artifact per GN-75); K-3 (`K=(A,R,Σ,E_L)`, Step 272B/273,
+  "Authority: HPA self-attested, no ledger entry" -- a governance-provenance red flag not previously
+  captured); K-4 (`K_t` 10-tuple, non-authoritative, "superseded by ~120 steps"); K-5
+  (`K(t)=M(t)+iA(t)` complex, REJECTED by FA-4); K-6 (`𝒦=(K,H)`, provenance track, 2 layers); K-7
+  (`Zero(K_t)=Ω\Represented(K_t)`, Zero lens, presupposes `Ω`,`D_t`,`Z_t`). **Measured: ~28 distinct `K`
+  definitions across the corpus in 7 shape-families** -- a new quantitative scale-of-fragmentation finding.
+
+  **§2 delivers the full, executed primitive-level comparison**: ratified `K_t` (8: Action, Entity, Event,
+  Observation, Policy, Proposition, Relation, State) vs verification `(𝒜,ℛ)` (2: Assertion, Relation, with
+  Assertion expanding to Proposition/Entity/Evidence/Context/Time/Provenance), yielding SHARED (3: Entity,
+  Proposition, Relation), RATIFIED-ONLY (5: Action, Event, Observation, Policy, State), VERIFICATION-ONLY (4:
+  Context, Evidence, Provenance, Time). **Confirms the already-tracked Sañjaya-based resolution of the
+  Observation asymmetry** and the already-tracked narrowing of the "lanes agree" claim (file 1003), placed
+  here in its canonical source location.
+
+  **§3 delivers the full, complete GN-75 vocabulary measurement**: "`𝒜·ℛ·Σ·Q_t·𝒪·Provenance·Replay·
+  Measurement = 0 occurrences each. Exactly one construct on the registry carries an explicit governance act:
+  `Policy`." -- confirming and completing the partial GN-75 citation already tracked (file 0985). Closes: "This
+  is not evidence that the lanes conflict. It is evidence that they have never been placed in a shared
+  vocabulary."
+
+  **§4 delivers the definitive statement on `Knowledge`'s deliberate absence**: "The ratified model
+  deliberately does not name `Knowledge` a primitive. `K_t` is therefore NOT 'the knowledge state' in the
+  verification lane's sense — it is a STATE OVER A KNOWLEDGE-BEARING VOCABULARY. Two different objects
+  wearing one letter."
+
+  **Template §5 (Equality Specification)** delivers the already-tracked "weak relation" finding (file 0985)
+  in its canonical source form: set equality on primitive NAMES only; conceptual identity of the 3 shared
+  names remains untested. **Template §6 (Independence)**: "No Gītā input. Pure measurement... INDEPENDENT."
+introduces:
+  - concept: "The complete seven-row K-definition comparison table (K-1 through K-7), with authority/ratification status for each"
+  - concept: "The measured scale of K-definition fragmentation: approximately 28 distinct K definitions across the corpus, in 7 shape-families"
+  - concept: "K-3's flagged governance-provenance defect: 'Authority: HPA self-attested, no ledger entry' -- a self-attestation without a formal governance record"
+  - concept: "The complete GN-75 measurement: eight named constructs (Assertion/Relation/Sigma/Q_t/Operation/Provenance/Replay/Measurement) each at 0 occurrences in ratified artifacts, with Policy the only construct carrying an explicit governance act"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked partial GN-75 citation (file 0985)"
+    refinement: "COMPLETED with the full eight-construct measurement list and the Policy-governance-act finding"
+  - concept: "This reconstruction's already-tracked K_t/(A,R) comparison (files 0968, 0974, 0993, 0998-0999)"
+    refinement: "GROUNDED in its canonical source, revealing it is only 2 of ~28 measured K-definitions across 7 shape-families -- a materially broader fragmentation than previously captured"
+  - concept: "This reconstruction's already-tracked narrowing of the 'lanes agree' claim (file 1003)"
+    refinement: "CONFIRMED in its canonical source location (D285-1 itself)"
+contradicts: []
+repeats:
+  - "The primitive-level comparison, GN-75 measurement, and 'lanes agree' narrowing substantially repeat content already documented via files 0985, 0990, 0993, 0997-0999, 1003; this file's distinctive contribution is being the actual canonical D285-1 source, plus the complete seven-K-definition table and the ~28-definitions/7-shape-families fragmentation measurement."
+bridge_candidates:
+  - "K-3's flagged governance defect (Step 272B/273, 'Authority: HPA self-attested, no ledger entry') -- watch for whether this reconstruction directly encounters this artifact and its governance status."
+  - "The ~28 distinct K definitions across 7 shape-families -- watch for whether this reconstruction has already encountered, or will encounter, a fuller enumeration."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the complete seven-row K-definition table and the ~28-definitions/7-shape-families fragmentation measurement as the canonical grounding for this reconstruction's already-tracked K_t/(A,R) comparisons."
+  - "dimension-registry.md: record the complete GN-75 vocabulary-disjointness measurement (eight constructs at 0 occurrences, Policy the sole governed construct)."
+anchor_test:
+  anchor: "This reconstruction's already-tracked K_t/(A,R) comparison and GN-75 citation (files 0968, 0974, 0985, 0993, 0997-0999, 1003)"
+  supports_dimension: "Grounds all prior K-comparison findings in the canonical D285-1 source and completes the GN-75 measurement"
+  refines_or_contradicts: "confirms and grounds prior findings; reveals a materially broader K-definition fragmentation than previously captured"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The seven-row K-definition table and GN-75 measurement are directly checkable against every prior K_t/(A,R)-comparison citation across files 0968-1005 for consistency."
+undefined_concepts: []
+open_questions:
+  - "The identity and governance status of K-3 (Step 272B/273), flagged as self-attested with no ledger entry."
+  - "Whether the full ~28-K-definitions/7-shape-families enumeration is documented elsewhere in the corpus."
+tier2_triggered: true
+tier2_reason: "The actual canonical D285-1 foundation artifact underlying nearly every K_t/(A,R) comparison this reconstruction has tracked by cross-reference, delivering the complete seven-K-definition table, the ~28-definitions fragmentation measurement, and the complete GN-75 vocabulary-disjointness measurement. Classified importance critical and confidence high given its role as the grounding foundation document for the entire D285-x kernel-reconciliation programme."

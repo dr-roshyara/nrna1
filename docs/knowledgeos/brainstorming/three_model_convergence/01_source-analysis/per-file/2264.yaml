@@ -1,0 +1,106 @@
+sequence: 2264
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260901-010224_step_286_hpa-yoga-as-a-family-of-mathematical-simulations-analytical-lens.md
+title: "Gītā-Adjacent HPA -- Yoga as a Family of Mathematical Simulations: A METHODOLOGICAL REFRAME (Gītā→Operator Hypotheses, Not Primitive Hypotheses), Delivering Yoga-1/2/3 Simulations and a Yoga Operator Algebra Research Programme"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a methodological reframing document treating Yoga as a family of mathematical transformation simulations rather than software primitives, proposing a genuine formal research programme (a Yoga Operator Algebra) to test against the existing K_t/Sigma/delta/Zero/Qualify machinery"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2264
+importance: critical
+confidence: high
+about: >
+  A methodological reframing of the entire Gītā-lens research thread: "If we treat Yoga as a family of
+  mathematical simulations — rather than translating Yoga literally into software — we get a potentially
+  powerful analytical lens for KnowledgeOS." Central methodological insight, the document's own stated
+  contribution: "The Gītā may be more useful for explaining and testing the behaviour of the Kernel than for
+  defining the Kernel's primitive vocabulary" — reframing the discipline chain from "Gītā→primitive
+  hypotheses" to "Gītā→OPERATOR hypotheses," directly explaining why the already-tracked thread (files
+  2245-2263) repeatedly corroborated existing KnowledgeOS requirements without creating new primitives.
+
+  **DELIVERS THE GENERAL YOGA TRANSFORMATION MODEL**: Y:(K_t,𝒪,𝒞,𝒢)→K_{t+1}, "a method of bringing different
+  components into an intended relationship or condition," with an 11-row Gītā-to-math-to-experiment
+  translation table: Yoga→transformation/coupling operator; Dhyāna→iterative focused computation; Dharana→
+  constraint/focus operator; Buddhi→discrimination function; Manas→fluctuating working process (candidate
+  generation/attention movement); Indriya→input channels (observations); Karma→action/transition; Phala→
+  resulting state/effect; Vairāgya→independence from result (evaluate without outcome-dependent criteria);
+  Samādhi→convergence/stability condition; Mokṣa→limiting/transcendent condition (whether a process reaches
+  a defined boundary) — explicitly "analytical correspondences, not claims that the Gītā literally defines
+  these mathematical objects."
+
+  **DELIVERS THREE NAMED YOGA SIMULATIONS WITH DIRECT CORPUS CONNECTIONS**:
+
+  Yoga-1 (Discrimination): Y_B(K,x)=B(K,x), testing "can Buddhi reliably distinguish admissible from
+  inadmissible knowledge?" — directly tests the Kernel's discrimination function, with a five-value
+  discrimination codomain {admissible, inadmissible, unknown, conflicting, requires qualification} — a SIXTH
+  distinct candidate discrimination/Qualify-adjacent output vocabulary in this thread.
+
+  Yoga-2 (Concentration): Y_D(K,X)=π_X(K), EXPLICITLY IDENTIFIED as mathematically identical in form to the
+  already-extensively-tracked Step-287 ≈_X result: "Σ_1≈_XΣ_2 ⟺ π_X(Σ_1)=π_X(Σ_2)... the philosophical
+  notion of focused attention can be simulated mathematically as controlled projection" — the most direct,
+  explicit structural identification yet made between a Gītā concept and an already-established formal Step-
+  287 result (not merely corroboration-flavored analogy, but a literal shared mathematical form).
+
+  Yoga-3 (Iterative contemplation): K_{t+1}=Y(K_t), K_0→K_1→K_2→..., testing for a fixed point Y(K*)=K* — "a
+  rigorous way to investigate a philosophical idea such as mental stabilization without claiming that the
+  mathematics proves the philosophy."
+
+  **DELIVERS 'YOGA≠KNOWLEDGE'**: Y≠K and Y≠"more knowledge" — instead Y is a relationship/transformation of
+  epistemic state, giving the important corollary K_1=K_2 but Y(K_1)≠Y(K_2) is possible (same content,
+  different epistemic condition due to context/purpose/observations/uncertainty/operational-state
+  differences) — explicitly connected to "the distinction you established in Step 287 between structural,
+  semantic and observational equality."
+
+  **PROPOSES THE EIGHT-QUESTION OPERATOR-EVALUATION PROTOCOL**: for every candidate Yoga operator (Gītā
+  concept→formal operator→KnowledgeOS requirement), ask: does it type-check? is it independently required?
+  does it operate on existing primitives? does it introduce a new primitive? can it be falsified? does it
+  produce a useful simulation? does it change the Kernel model? does it merely provide philosophical
+  interpretation? — "only the strongest survivors should move toward architecture."
+
+  Final provisional research position: Yoga≈family of epistemic-state transformation simulations; Buddhi≈
+  discrimination/evaluation operator; Mind≈philosophical lens for analysing Kernel behaviour — "none of
+  these should yet be promoted to canonical KnowledgeOS terminology." Proposes the next concrete step: a
+  "Yoga Operator Algebra" (Y_B, Y_D, Y_R, Y_C,...) to be tested against the existing formal model (K_t, Σ,
+  δ, Zero, Qualify, 𝒜, ℛ) — "that could turn the Gītā investigation from philosophical commentary into a
+  genuine mathematical simulation programme."
+introduces:
+  - concept: "The methodological reframe: the Gītā thread's proper contribution is operator hypotheses (testable mathematical transformations) rather than primitive hypotheses -- explaining the pattern of consistent non-primitive-promotion already observed across files 2245-2263"
+  - concept: "Yoga-2 (Concentration), Y_D(K,X)=pi_X(K), EXPLICITLY IDENTIFIED as mathematically identical in form to the already-tracked Step-287 approx_X pullback-of-equality result -- the most direct structural (not merely analogical) connection made between a Gītā concept and an established formal Step-287 result in this entire thread"
+  - concept: "'Yoga≠Knowledge': K_1=K_2 does not imply Y(K_1)=Y(K_2), directly connected to Step 287's structural/semantic/observational equality distinction"
+  - concept: "The proposed 'Yoga Operator Algebra' (Y_B, Y_D, Y_R, Y_C,...) research programme, to be formally tested against K_t, Sigma, delta, Zero, Qualify, A, R"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Step-287 approx_X (observational-equivalence) result"
+    refinement: "GIVEN A DIRECT STRUCTURAL IDENTIFICATION (not mere analogy): Yoga-2's pi_X(K) projection operator is the same mathematical form as the already-established Step-287 approx_X pullback-of-equality result"
+  - concept: "This reconstruction's already-tracked pattern of Gītā correspondences repeatedly corroborating rather than originating KnowledgeOS requirements (the entire files 2245-2263 arc)"
+    refinement: "EXPLAINED via the operator-vs-primitive methodological distinction -- clarifying why this pattern has held consistently throughout the thread"
+  - concept: "This reconstruction's already-tracked candidate discrimination/Qualify output vocabularies (files 2252, 2254, 2260, 2263)"
+    refinement: "A SIXTH distinct candidate vocabulary is proposed (admissible/inadmissible/unknown/conflicting/requires-qualification), still not reconciled with the prior five"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Whether the proposed Yoga Operator Algebra research programme is directly commissioned and executed later in the sequential read."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering the methodological reframe (Gitā→operator hypotheses, not primitive hypotheses), the three named Yoga simulations (Yoga-1 Discrimination, Yoga-2 Concentration -- directly structurally identified with Step-287's approx_X result, Yoga-3 Iterative contemplation/fixed-point), and the proposed Yoga Operator Algebra research programme."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step-287 approx_X result and the entire Ch5-12 Gītā-lens thread's consistent corroboration-not-primitive pattern (files 2245-2263)"
+  supports_dimension: "Provides a direct structural (not analogical) identification between Yoga-2 and the established approx_X result, and methodologically explains the thread's consistent corroboration-not-primitive pattern via the operator/primitive distinction"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Yoga-2's pi_X(K) formula is directly comparable, term-for-term, against the already-tracked Step-287 approx_X formula (Sigma_1 approx_X Sigma_2 iff pi_X(Sigma_1)=pi_X(Sigma_2)) for exact structural equivalence verification."
+undefined_concepts: []
+open_questions:
+  - "Whether the proposed Yoga Operator Algebra (Y_B, Y_D, Y_R, Y_C,...) is directly formalized and tested against the corpus's K_t/Sigma/delta/Zero/Qualify machinery later in the sequential read."
+tier2_triggered: true
+tier2_reason: "Delivers a genuine methodological reframe explaining the entire Gītā-lens thread's consistent corroboration-not-primitive pattern, and provides the most direct structural (not merely analogical) identification yet made between a Gītā concept (Yoga-2/Concentration) and an already-established formal Step-287 result (approx_X). Classified importance critical given the meta-level, thread-explaining significance of this reframe and the direct structural mathematical connection it makes."

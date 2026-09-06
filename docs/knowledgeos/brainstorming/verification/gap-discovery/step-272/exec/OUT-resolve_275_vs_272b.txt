@@ -1,0 +1,152 @@
+
+==============================================================================
+0. PROVENANCE — the scale is real, and it survives a 2240 -> 4 reduction
+==============================================================================
+  Located in the corpus (NOT invented by Step 275):
+    Q14  20260826-182409   "| Support | S | None, Weak, Moderate, Strong, Very Strong |"
+    Q16  20260826-183636   same table
+    "complete mathematical model" 20260826-174215   same
+    closure-03 20260827-133340   "overall_support: SupportLevel"
+
+  Its ORIGINAL home (STEP-TRACE-B2, tracing Q14):
+    Sigma = (Acquisition, Support, Resolution, Validity, Conflict)
+          = 7 x 5 x 4 x 4 x 4 = 2240 states
+
+  Reduction sequence:
+    Q14    08-26        |Sigma| = 2240    five dimensions
+    S275   08-30 21:46  |Sigma| = 15      D x S = 3 x 5
+    S272B  08-30 22:50  |Sigma| = 4       {0,1}^2
+
+  272B's exclusions map EXACTLY onto Q14's dimensions:
+    Acquisition -> excluded (provenance)    Resolution -> excluded (272A.9)
+    Validity    -> excluded (272A.10)       Conflict   -> derived as (1,1)
+    Support     -> KEPT, collapsed 5 -> 2
+
+==============================================================================
+TEST 1 — ORTHOGONAL or NESTED?
+==============================================================================
+  Reviewer's hypothesis: Sigma _|_ Strength, coexisting.
+  Test: can the polarity bit be recovered from the grade?
+
+    Support=None        -> S bit = 0
+    Support=Weak        -> S bit = 1
+    Support=Moderate    -> S bit = 1
+    Support=Strong      -> S bit = 1
+    Support=VeryStrong  -> S bit = 1
+
+  S = (Support > None) is TOTAL and DETERMINISTIC: the binary is a QUOTIENT of
+  the graded scale. Orthogonality would require the combinations to vary freely.
+    (S bit, grade) combinations: 10 constructible, 5 possible
+    impossible: [(0, 'Weak'), (0, 'Moderate'), (0, 'Strong'), (0, 'VeryStrong'), (1, 'None')]
+  => ORTHOGONALITY REFUTED. The relation is NESTING.
+     Sigma_0 is the COARSENING of the graded model, not a peer of it.
+
+==============================================================================
+TEST 2 — Does any mandatory operation NEED the grades?
+==============================================================================
+  operation             needs grades?   reason
+  ----------------------------------------------------------------------------
+  Assert                no              writes an assertion; reads no strength
+  Retract               no              removes evidence; strength recomputed after, not read before
+  Supersede             no              replacement relation; lifecycle, not strength
+  Infer                 no              derivation structure; strength propagation is a POLICY choice
+  Merge                 no              272B's own law is OR over polarity; grades play no role
+  Support               no              asserts a link; the grade is a property of the LINK, not of Sigma
+  Refute                no              symmetric
+  Qualify               YES             decides whether an observation COUNTS as evidence -- reads a bar
+  Assess                YES             produces a verdict against a policy bar -- reads quantity/quality
+  DetectContradiction   no              needs only S AND R
+  Resolve               no              272A.9 places Resolution outside Sigma
+  Query                 no              reads whatever Sigma exposes
+  Compare               YES             RANKS two propositions -- needs an order the binary cannot give
+  Replay                no              replays operations
+  Trace                 no              lineage
+  Authorize             no              governance; 272A.7 separates it
+  Validate              no              272A.10 separates validity
+
+  operations needing grades: ['Qualify', 'Assess', 'Compare']   (3/17)
+
+==============================================================================
+TEST 3 — Must the grade live IN Sigma?
+==============================================================================
+  Apply the argument that settled D-4 (SO-EXP-08 A9): Sigma is DERIVED from the
+  evidence set. Strength is a function of the SAME set:
+      S(A)        = exists x in e : polarity(x)=support
+      R(A)        = exists x in e : polarity(x)=refute
+      strength(A) = f(e, policy)
+  Qualify / Assess / Compare all read `e` and a policy. None needs a grade
+  PRE-STORED on Sigma.
+
+  DECISIVE: strength is POLICY-RELATIVE; (S,R) is POLICY-INVARIANT.
+      two supporting items, bar=2 -> "Moderate";  bar=3 -> "Weak"
+      the same evidence, a different policy, a different grade.
+      the POLARITY of that evidence does not move when the bar moves.
+  A component whose value changes with policy cannot sit inside a
+  policy-independent Sigma. Step 271 s271.3 already boxes: Policy NOT-IN Identity(K).
+
+==============================================================================
+TEST 4 — Is the five-level scale well-typed?  (exhaustive, not hand-picked)
+==============================================================================
+  All three encodings are strictly increasing => all ADMISSIBLE for an ordinal scale.
+  Exhaustive search over portfolios of size 1-3 and thresholds 1..7,
+  for a mean-rule decision that FLIPS between admissible encodings:
+
+  flipping (portfolio, threshold) pairs found: 176
+    portfolio ['Weak'], rule mean >= 2:
+        A  1,2,3,4     mean=1.000   PROCEED=False
+        B  1,2,3,10    mean=1.000   PROCEED=False
+        C  5,6,7,8     mean=5.000   PROCEED=True
+    portfolio ['Weak'], rule mean >= 3:
+        A  1,2,3,4     mean=1.000   PROCEED=False
+        B  1,2,3,10    mean=1.000   PROCEED=False
+        C  5,6,7,8     mean=5.000   PROCEED=True
+    portfolio ['Weak'], rule mean >= 4:
+        A  1,2,3,4     mean=1.000   PROCEED=False
+        B  1,2,3,10    mean=1.000   PROCEED=False
+        C  5,6,7,8     mean=5.000   PROCEED=True
+    portfolio ['Weak'], rule mean >= 5:
+        A  1,2,3,4     mean=1.000   PROCEED=False
+        B  1,2,3,10    mean=1.000   PROCEED=False
+        C  5,6,7,8     mean=5.000   PROCEED=True
+
+  => 176 distinct decision rules over this scale FLIP under an
+     order-preserving re-encoding. The scale is at most ORDINAL, and any
+     average / threshold / percentage rule over it is MEANINGLESS in Roberts'
+     sense (first-order MT-3, here re-established exhaustively rather than by a
+     hand-picked case).
+     MT-5 also stands: no empirical relational structure was ever given for the
+     scale, so even its ORDINALITY is assumed rather than established.
+     NOTE, honestly: not every rule flips -- min/max/median are invariant, and
+     many (portfolio, threshold) pairs agree. The finding is that MEANINGFULNESS
+     must be checked per rule, not that every numeric use is wrong.
+
+==============================================================================
+RESOLUTION
+==============================================================================
+  The five options, adjudicated:
+
+    (a) part of Sigma       -> NO.  policy-relative (T3); Sigma is not.
+    (b) orthogonal to Sigma -> NO.  REFUTED (T1) -- it NESTS; 5 of 10 (bit,grade)
+                                    combinations are impossible.
+    (c) derivable           -> YES. strength = f(evidence, policy), over the same
+                                    evidence set Sigma is derived from.
+    (d) policy-dependent    -> YES. and that is precisely what excludes it from Sigma.
+    (e) obsolete            -> NO.  three operations need it: Qualify, Assess, Compare.
+
+  THEREFORE:
+
+      Sigma    = P({Support, Refute})   policy-INVARIANT, derived from evidence
+      Strength = f(evidence, policy)    policy-RELATIVE, an ASSESSMENT output
+
+  Sigma is the coarsest POLICY-INVARIANT abstraction of the evidence set.
+  Strength is a POLICY-RELATIVE refinement of the SAME evidence set.
+
+  They are neither competing definitions of Sigma nor orthogonal dimensions.
+  Step 275 and Step 272B answer DIFFERENT questions, and the contradiction
+  dissolves once Assessment is separated from Sigma -- which s271.10-11
+  (Assessment != Truth, Assessment != Inference) and 272A.7 already require.
+
+  NOT SETTLED BY THIS:
+    * the CARDINALITY. Nothing fixes five levels. Qualify/Assess/Compare need an
+      ORDER, not five names. The 5 levels are an unjustified inheritance from Q14.
+    * whether Compare is mandatory at all -- it appears in O_sem with no definition.

@@ -1,0 +1,184 @@
+sequence: 725
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-125937_step-138-aggregates-commands-and-domain-events.md
+title: "Step 138 -- Delivers Full Tactical-DDD Elaboration (Aggregate Lifecycles, Commands, Events) for the Eighteen-Object Domain Model, With Two Genuinely Significant Architectural Clarifications: 'The Assurance Graph Is a Projection of Bounded-Context State, Not the Transactional Source of Truth' and the AI-Governance Principle 'Natural Language Assertion≠Domain State Transition' Preventing Semantic Spoofing -- Delivers the Source-of-Truth Rule (Exactly One Authoritative Owner), the Nine-Step Agent Execution Contract Operationalizing the Agent Port, and the Complete KnowledgeOS Assurance Event Chain -- Appropriately Defers the Event-Sourcing-vs-Not Persistence Decision -- Opens Step 139, the Formal KnowledgeOS Context Map and Integration Contracts"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 138 -- Aggregates, Commands and Domain Events', promised at 0724's close; delivers standard, thorough tactical-DDD elaboration (lifecycle state machines, commands, events) for each of the finalized eighteen domain objects, and contributes two genuinely significant architectural clarifications not previously stated this precisely: the Assurance Graph's status as a read-side projection rather than a source of truth, and the semantic-spoofing-prevention principle distinguishing an agent's natural-language assertion from an actual governed domain event"
+source_role: PRIMARY_RESEARCH
+canonical_source: 725
+importance: critical
+confidence: high
+about: >
+  Opens with "aggregate boundaries follow invariants, not nouns" and delivers thorough tactical-DDD
+  elaboration for the eighteen-object canonical model finalized at 0724, largely consolidating and
+  operationalizing (not fundamentally revising) prior-established distinctions: Decision (lifecycle
+  `DRAFT→UNDER_REVIEW→APPROVED→EFFECTIVE→SUPERSEDED`, invariant `Effective(Decision)⇒ValidAuthority∧
+  ValidEffectivePeriod`, commands `ProposeDecision/ApproveDecision/SupersedeDecision/...`); Policy (kept
+  distinct from Decision via `Decision→establishes→Policy`); Exception (invariant
+  `Exception⇒Authorized+Scoped+TimeBound`, with `E(t)=Policy(t)+ApplicableExceptions(t)` formalized
+  precisely); KnowledgeClaim (lifecycle `PROPOSED→SUPPORTED→VERIFIED→AUTHORITATIVE→SUPERSEDED`, with
+  `DISPUTED` reachable from multiple states, and `AttachEvidence≠VerifyClaim` explicitly reaffirmed);
+  Evidence (immutable once captured, `CAPTURED→VALIDATED→RETAINED`, "a later interpretation creates new
+  domain state; it should not rewrite the original evidence"); Observation (explicitly left unresolved
+  whether it becomes its own aggregate or a value object within Evidence, "at this stage we should not
+  over-model it" — an appropriately calibrated non-decision); FitnessRule (lifecycle
+  `DRAFT→APPROVED→ACTIVE→SUPERSEDED`, "a checker implementation should reference the rule. It should not
+  define the authoritative semantics itself"); Verification ("best understood as an execution record, not a
+  mutable configuration object," `V=(Rule,Subject,Time,Evidence,Verdict)`, with the important refinement
+  `VerificationFailedToExecute≠FAIL` — a crashing checker produces `UNKNOWN`, not `FAIL`, extending the
+  reconstruction's Unknown-preservation discipline into execution-failure specifically); Finding (with the
+  precise nuance `FAIL⇏Finding universally` — `Policy(FAIL)→Disposition` — not every failure requires a
+  persistent Finding, refining 0714's/0723's Finding-creation rule; lifecycle
+  `OPEN→ACKNOWLEDGED→REMEDIATION→VERIFIED→CLOSED` or `OPEN→ACCEPTED_RISK`, crossing Assurance
+  (identifies)/Governance (disposes)/Engineering (remediates)); AgentSession (references, never copies,
+  authoritative decisions); Recommendation (usually not requiring extensive aggregate lifecycle management,
+  `Recommendation→basedOn→Context`); Authorization (explicitly marked `Authorization Context = TO BE
+  CONFIRMED` rather than prematurely creating another bounded context — an honest, appropriately deferred
+  boundary decision); and Action (lifecycle `REQUESTED→AUTHORIZED→STARTED→COMPLETED` with `FAILED`/
+  `CANCELLED` paths, invariant `MaterialAction∧Executed⇒AuthorizationExists`).
+
+  **Delivers the file's most significant architectural clarification** (§138.45-138.46), explicitly called
+  "a very important refinement": "**the Assurance Graph may therefore be a projection of bounded-context
+  state, rather than the transactional source of truth for every context**" — "bounded contexts own state;
+  Assurance Graph connects it" — resolving a latent ambiguity from 0716 (which sometimes implied the
+  Assurance Graph itself held authoritative state) by cleanly assigning it CQRS read-side/projection status:
+  each bounded context (Governance/Knowledge/Evidence/Assurance/Agent) maintains its own transactional
+  state, and the Assurance Graph is continuously derived from those states rather than being "one giant
+  GraphAggregate" — "this resolves a major architectural risk."
+
+  Delivers Transaction-boundary discipline (each bounded context transacts internally; cross-context
+  propagation happens via events, avoiding distributed transactions "wherever possible") and Eventual
+  consistency for cross-context projections, explicitly conditioned on distinguishing `AuthoritativeSource`
+  from `Projection`. **Delivers the Source-of-truth rule, explicitly called "one of the most important
+  architectural invariants"**: "exactly one authoritative owner" per semantic concept, with every other
+  representation (projections, caches, indexes, references, evidence) explicitly subordinate — worked
+  through concrete reaffirmations (`Decision_Governance` is authoritative, `Decision_AgentMemory` is not;
+  `RuntimeState_Kubernetes` is authoritative, KnowledgeOS's observation is not).
+
+  Delivers per-command authorization scoped to its semantic owner (`ApproveDecision` requires Governance
+  authority; `RunRepositoryScan` may require only agent/tool capability) and Risk-based authorization
+  (`RequiredApproval=f(ActionType,Scope,Environment,Risk,Authority)`, "the same technical tool [used] under
+  different governance conditions").
+
+  **Delivers the nine-step Agent execution contract, the most concrete, sequential agent-execution
+  specification in the reconstruction, directly operationalizing 0717's Agent Port concept**: request
+  context → receive governed context → reason → produce recommendation → request action → receive
+  authorization result → execute through tool boundary → return evidence → receive verification — explicitly
+  "the common contract for Claude and Codex," with Claude/Codex/future-agent adapters all consuming one
+  `AgentApplicationContract`, giving KnowledgeOS "model-level independence from a specific AI vendor."
+
+  **Delivers the file's second most significant contribution — event authenticity and "this prevents
+  semantic spoofing"** (§138.37-138.40), a sharp, currently and broadly applicable AI-governance principle
+  not previously stated this precisely: "an event must be emitted by the component that owns the
+  transition" — a Claude session's own transcript stating "I approve this decision" is explicitly an
+  `AgentStatement`, categorically NOT the domain event `DecisionApproved`, which requires the actual governed
+  transition to occur — crystallized as "**natural language assertion≠domain state transition**... a
+  foundational principle for AI-native systems." This is among the most directly implementable AI-safety
+  principles in the entire reconstruction (a concrete architectural mechanism — event emission restricted to
+  the owning bounded context — rather than a policy statement alone), and applies generally to any
+  LLM-driven system, well beyond KnowledgeOS's own theoretical scope.
+
+  Delivers three clean cross-context integration patterns (Synchronous query for current-knowledge
+  retrieval; Command for state-changing requests; Domain event for asynchronous propagation) and "avoid
+  event-driven everything" — an explicit, practical caution against event-sourcing zealotry, with a concrete
+  counter-example: "what rules apply to Nexus?" is naturally a query and should never become a
+  `RuleQueryRequestedEvent`.
+
+  Delivers the candidate domain-event catalog, organized by owning context (Governance: `DecisionApproved,
+  DecisionActivated, DecisionSuperseded, PolicyActivated, ExceptionApproved`; Knowledge: `ClaimProposed,
+  ClaimVerified, ClaimSuperseded`; Evidence: `EvidenceCaptured, EvidenceValidated`; Assurance:
+  `VerificationCompleted, FindingRaised, FindingClosed`; Agent/Execution: `SessionStarted,
+  RecommendationProduced, ActionAuthorized, ActionExecuted`), an explicit event/command naming convention
+  (events past-tense, commands imperative), and **"the most important event chain" — the complete
+  KnowledgeOS assurance event chain**: `DecisionApproved→ContextBuilt→RecommendationProduced→
+  ActionAuthorized→ActionExecuted→EvidenceCaptured→VerificationCompleted`, with
+  `VerificationCompleted(FAIL)→FindingRaised`, worked through a concrete graph-reconstruction example
+  showing how the Assurance Graph is continuously rebuilt from these governed facts.
+
+  **Delivers an appropriately cautious non-conclusion on event sourcing** (§138.59), directly extending the
+  reconstruction's technology-independence discipline (0705/0716/0717) into the event-sourcing-vs-not
+  decision specifically: "we should NOT yet conclude that KnowledgeOS must be event-sourced" — events can
+  remain simple integration/audit signals; the actual persistence strategy (state-oriented, event-oriented,
+  or hybrid) "the domain model does not force."
+
+  Delivers Step 138's verdict — six boxed principles (one authoritative owner per concept; commands request
+  state changes; only the owning context performs authoritative transitions; events record completed
+  transitions; evidence records what happened in the engineering world; the Assurance Graph connects these
+  independently-owned states) and the overall flow
+  `Governance→Knowledge→Agent→Authorization→Execution→Evidence→Assurance→Governance`.
+
+  **Closes by opening "Step 139 — Context Map & Integration Contracts,"** promising the first formal
+  KnowledgeOS Context Map: upstream/downstream relationships, query/command/event classification,
+  translation points, Anti-Corruption-Layer placement, and the Assurance Graph's explicit role as a
+  projection — posing the key integration question directly: "how can KnowledgeOS connect Governance,
+  Knowledge, Evidence, Assurance, Agents, Git, CI/CD, Kubernetes and Nexus without allowing any of them to
+  become the accidental owner of another context's semantics?" No actual code execution, repository
+  inspection, or verified filesystem/architecture claim reported anywhere in this file; every lifecycle,
+  command, event, and worked example remains a target-architecture specification.
+introduces:
+  - concept: "The Assurance Graph reframed explicitly as a read-side projection of bounded-context state, not a transactional source of truth"
+  - concept: "The Source-of-truth rule: exactly one authoritative owner per semantic concept"
+  - concept: "Event authenticity and 'natural language assertion≠domain state transition' -- preventing semantic spoofing"
+  - concept: "The nine-step Agent execution contract, operationalizing the Agent Port for Claude/Codex/future agents"
+  - concept: "VerificationFailedToExecute≠FAIL (a crashing checker produces UNKNOWN, not FAIL)"
+  - concept: "FAIL⇏Finding universally (Policy(FAIL)→Disposition)"
+  - concept: "Authorization Context = TO BE CONFIRMED -- an honest, deferred boundary decision"
+  - concept: "'Avoid event-driven everything' -- three clean integration patterns (query/command/event)"
+  - concept: "The complete KnowledgeOS assurance event chain"
+  - concept: "The appropriately deferred event-sourcing-vs-not persistence decision"
+  - concept: "Opens Step 139 -- the formal KnowledgeOS Context Map and Integration Contracts"
+defines:
+  - concept: "Assurance Graph as projection"
+    definition: "Each bounded context (Governance, Knowledge, Evidence, Assurance, Agent Platform) owns and transacts its own state independently; the Assurance Graph is not itself an aggregate or source of truth but a continuously reconstructed read-side projection derived from the domain events those contexts emit -- avoiding a single giant cross-context aggregate"
+  - concept: "Semantic spoofing prevention"
+    definition: "A domain event (e.g. DecisionApproved) may only be emitted by the bounded context that actually owns and performed that state transition; an agent's natural-language statement describing or claiming the same fact (e.g. a transcript saying 'I approve this decision') is a mere AgentStatement, never equivalent to the governed event, preventing an AI system from creating organizational authority through language alone"
+  - concept: "Source-of-truth rule"
+    definition: "Every semantic concept has exactly one authoritative owner; every other representation of that concept elsewhere in the system (a cache, an index, an agent's local memory copy, an observation) is explicitly a projection or reference, never a competing authority"
+refines:
+  - concept: "0716's Assurance Graph (as sometimes ambiguously described)"
+    refinement: "Clarified precisely as a read-side projection over bounded-context state, resolving latent ambiguity about whether the graph itself held authoritative data"
+  - concept: "0717's Agent Port concept"
+    refinement: "Operationalized into a concrete nine-step sequential Agent execution contract shared by Claude, Codex, and future agent adapters"
+  - concept: "0714's/0723's Finding-creation rule (FAIL→FindingCreated)"
+    refinement: "Refined with the nuance FAIL⇏Finding universally -- Policy(FAIL)→Disposition, since not every failure warrants a persistent Finding"
+  - concept: "0693's/0699's/0708's/AFR-10's Unknown-preservation discipline"
+    refinement: "Extended into execution-failure terms specifically: a crashing checker produces UNKNOWN, not FAIL"
+  - concept: "the corpus's technical-capability≠organizational-authority family and the pointer-layer principle"
+    refinement: "Given its most concrete, directly implementable architectural mechanism to date: event-emission ownership restricted to the transition-owning bounded context, preventing an agent's own narrative confidence from being mistaken for an actual governed state change"
+  - concept: "0705's/0716's/0717's technology-independence discipline"
+    refinement: "Directly extended into the event-sourcing-vs-not persistence decision, explicitly left open pending further analysis"
+contradicts: []
+repeats:
+  - "Substantially consolidates and operationalizes (via standard aggregate/command/event elaboration) the eighteen-object domain model finalized at 0724, rather than introducing an extensively different object set."
+bridge_candidates:
+  - "Read 0726 (Step 139 — Context Map & Integration Contracts) with standard-to-high attention: this file's own explicit posing of the key cross-system integration question (connecting Governance/Knowledge/Evidence/Assurance/Agents/Git/CI-CD/Kubernetes/Nexus without accidental semantic ownership) is a natural, well-motivated continuation directly building on 0717's/0721's prior integration-layer work -- check for genuinely new context-mapping content versus further consolidation of already-established Anti-Corruption-Layer discipline."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Assurance Graph's explicit reframing as a read-side projection (not a source of truth), the Source-of-truth rule (exactly one authoritative owner per concept), and the semantic-spoofing-prevention principle (natural language assertion≠domain state transition) -- among the most directly implementable AI-governance mechanisms in the reconstruction."
+  - "dimension-registry.md: record the nine-step Agent execution contract operationalizing the Agent Port, the complete KnowledgeOS assurance event chain, and the appropriately deferred event-sourcing-vs-not persistence decision."
+  - "dimension-registry.md: note this file is primarily tactical-DDD elaboration of the already-finalized eighteen-object model (0724) rather than a source of new domain objects, with the Assurance-Graph-as-projection clarification and the semantic-spoofing principle as its standout original contributions."
+anchor_test:
+  anchor: "0716's Assurance Graph; 0717's Agent Port concept; 0714's/0723's Finding-creation rule; the corpus's Unknown-preservation discipline; the corpus's technical-capability≠authority family and pointer-layer principle; 0705's/0716's/0717's technology-independence discipline; 0724's finalized eighteen-object domain model"
+  supports_dimension: "Delivers thorough, standard tactical-DDD elaboration (lifecycle state machines, commands, events) for the eighteen-object domain model finalized at 0724, largely consolidating rather than revising prior-established distinctions. Contributes two genuinely significant architectural clarifications: the Assurance Graph's precise reframing as a read-side projection rather than a transactional source of truth (resolving latent ambiguity from 0716), and the semantic-spoofing-prevention principle (natural language assertion≠domain state transition) -- among the most directly implementable, currently and broadly applicable AI-governance mechanisms in the entire reconstruction. Delivers the Source-of-truth rule, the nine-step Agent execution contract operationalizing the Agent Port, the complete assurance event chain, and an appropriately deferred event-sourcing decision. Closes with a well-motivated continuation into Step 139's formal Context Map"
+  refines_or_contradicts: "directly and substantially extends 0716's Assurance Graph, 0717's Agent Port concept, 0714's/0723's Finding-creation rule, the corpus's Unknown-preservation discipline, the corpus's technical-capability≠authority family, and 0705's/0716's/0717's technology-independence discipline; no contradiction found; consolidates rather than revises 0724's eighteen-object domain model"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§138.37-138.40's worked contrast (a Claude transcript's 'I approve this decision' as a mere AgentStatement, explicitly NOT the domain event DecisionApproved) is directly quotable evidence of a sharp, concrete, directly implementable AI-governance mechanism preventing semantic spoofing."
+  - "§138.45-138.46's explicit statement 'the Assurance Graph may therefore be a projection of bounded-context state, rather than the transactional source of truth for every context... this is a very important refinement' is directly checkable evidence of a genuine architectural clarification resolving latent ambiguity in 0716's original Assurance Graph proposal."
+  - "§138.53's nine-step Agent execution contract is directly checkable evidence of the most concrete, sequential, directly implementable agent-integration specification produced anywhere in the reconstruction."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 139's actual content (0726), once read, delivers genuinely new context-mapping/integration content or largely consolidates the Anti-Corruption-Layer discipline already established across 0687/0697/0712/0714/0717/0721."
+  - "Whether the Assurance-Graph-as-projection clarification is consistently maintained in all subsequent files, or whether the graph is later again described in terms implying it holds authoritative state."
+tier2_triggered: true
+tier2_reason: "Delivers thorough tactical-DDD elaboration for the eighteen-object domain model, largely consolidating prior-established distinctions. Contributes two genuinely significant architectural clarifications: the Assurance Graph's precise reframing as a read-side projection (resolving latent ambiguity from 0716), and the semantic-spoofing-prevention principle (natural language assertion≠domain state transition) -- among the most directly implementable AI-governance mechanisms in the reconstruction. Delivers the Source-of-truth rule, the nine-step Agent execution contract, the complete assurance event chain, and an appropriately deferred event-sourcing decision. Opens Step 139's well-motivated formal Context Map continuation."

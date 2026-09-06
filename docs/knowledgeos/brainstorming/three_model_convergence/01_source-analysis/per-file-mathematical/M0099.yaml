@@ -1,0 +1,138 @@
+sequence: M0099
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-134255_hpa-final-ruling-structure-first-framework-research-path.md
+title: "HPA Final Ruling: The Structure-First Framework -- Complete Research Path: Formal Canonical Acceptance of M0098's Projection/Invariant-Custody/Adequacy Framework, Self-Described as 'the Most Important Document in the Entire KnowledgeOS Reconstruction', Defining Zero=closure(B_pi) Explicitly, a Six-Layer Candidate Architecture and Four Structural Laws L1-L5 -- BUT L2 ('Every Projection Declares Its Kernel') REGRESSES to the Exact 'Kernel' Terminology M0098 Explicitly Corrected One Document Earlier, Plus Newly-Quantified Open-Item Counts (1,491 Unspecified Progress-Ordering Claims; 37 Unsupported Boundary Distinctions; 13-and-8-Both-Minima) Not Independently Verified in This Pass"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "the formal HPA Supervisory Ruling canonizing M0098's structure-first/projection/invariant-custody/adequacy framework as ACCEPTED research path (not yet Theory v1.3), self-declaring itself 'the most important document in the entire KnowledgeOS reconstruction' -- restates and extends M0098's content with a six-layer candidate architecture, four named structural laws, an explicit closure-based definition of Zero, and a full quantified status matrix, but contains a notable regression: its own Law L2 restates 'every projection declares its kernel,' the exact phrasing M0098 (the immediately preceding document) explicitly replaced with induced-equivalence terminology precisely because 'kernel' is mathematically dangerous for a general semantic map"
+source_role: ADJUDICATION
+canonical_source: M0099
+importance: critical
+confidence: high
+about: >
+  Formally accepts M0098's core insight ("a representation cannot recover distinctions that its
+  projection has identified") and governing principle (Structure -> Projection -> Induced
+  Equivalence -> Information Loss -> Invariant Preservation -> Adequacy) as the confirmed research
+  path, restating the unifying pattern across six named prior failures (Sat_c's value-compose-
+  Eval_c 9->1 collapse; Zero's pi_V(B) boundary-type ambiguity; Gap's pi_Q(B) kind/remediability
+  insufficiency; Balanced's scalar-compose-AF relation-type loss; K's E_t->K_t factivity-relevant
+  distinction loss; U's B->U nine-to-one collapse) under: "we repeatedly defined a projection and
+  then asked it to do the work of the structure it projects from."
+
+  **RESTATES THE INDUCED-EQUIVALENCE FORMALIZATION, THE REPRESENTATION ADEQUACY PRINCIPLE
+  (Adequate(pi,Q) => D_Q subseteq Preserved(pi)), AND THE INVARIANT CUSTODY PRINCIPLE** with an
+  explicit set-valued definition: Custody(I) = {c | c is responsible for preserving invariant I},
+  and the formal validity condition for all(I in I_required): Custody_before(I)!=empty-set =>
+  Custody_after(I)!=empty-set -- the first fully set-theoretic formalization of custody in this
+  sub-thread (M0098 stated it informally).
+
+  **DEFINES A SIX-LAYER CANDIDATE ARCHITECTURE**: Layer 0 Lenses (Zero, Yoni, Lord, Sarathi --
+  "instruments, never domain objects"); Layer 1 Structures (E_t, B_t, AF_t, M_t -- candidate
+  primary); Layer 2 Projections (Sat, Gap, U, Zero, Balanced -- "all derived, none primitive");
+  Layer 3 Attribution (A_t=Gamma(E_t,Q,C,EC) -- "not knowledge"); Layer 4 Transition+Event
+  (delta:E_t->E_{t+1}); Layer 5 History (append-only, kernel-written).
+
+  **NAMES FOUR STRUCTURAL LAWS (L1-L5, one renumbered/merged)**: L1 No projection is primitive
+  [PROP Very Strong]; L2 "Every projection declares its kernel" [PROP Very Strong] -- SEE
+  CONTRADICTION NOTE BELOW; L3 Kernel writes history, never reads [PROP Conditional -- correctly
+  downgraded from M0098's critique of the overclaimed 'established' version]; L4 Lens never on RHS
+  of domain equation [PROP Strong]; L5 Every claim of progress names its ordering [PROP Very
+  Strong].
+
+  **SIGNIFICANT INTERNAL REGRESSION -- FLAGGED, NOT SILENTLY CORRECTED**: Part 1.2 of this very
+  document correctly restates M0098's corrected principle, "every projection must declare which
+  distinctions it identifies or discards" -- but Law L2 in Part 2.2, two sections later in the SAME
+  document, reverts to "every projection declares its kernel," the exact phrasing M0098 explicitly
+  replaced one document earlier specifically because "kernel" has narrow, specific meaning for
+  structure-preserving maps between algebraic objects and is "mathematically dangerous" when used
+  loosely for a general semantic map pi:X->Y. This is either a drafting inconsistency within the
+  same ruling or a silent reversion of a just-established terminology correction -- recorded as an
+  open item for the eventual reclassification pass, not corrected here.
+
+  **GIVES ZERO AN EXPLICIT CLOSURE-BASED DEFINITION**, sharper than M0098's own treatment: Gap =
+  pi_Q(B_pi), U = pi_V(B_pi), and NEW: Zero = closure(B_pi) -- the first place in this pass Zero is
+  given a specific closure-operator-based formal definition rather than left as "boundary
+  examination" in prose; the precise meaning of "closure" here (topological? logical? transitive?)
+  is not specified.
+
+  **PROVIDES A FULL QUANTIFIED STATUS MATRIX WITH SPECIFIC, NOT-INDEPENDENTLY-VERIFIED COUNTS**:
+  cites "13 and 8 are both minima under different algebras" (for why semantic equivalence must
+  precede kernel minimality -- consistent with the corpus's already-tracked 13-vs-8 tension, now
+  given a specific resolution: both counts are genuine minima, just under different algebraic
+  structures, dissolving the apparent contradiction rather than requiring one to be wrong); "1,491
+  claims unspecified" (for why the progress ordering >= remains open); "37 distinctions
+  unsupported" (for why the exact Boundary structure remains open) -- these specific figures are new
+  to this pass and their provenance (which prior experiment produced them) is not given in this
+  document.
+
+  **FORMALIZES THE YONI-LINGA INTEGRATION AS THE SUB-THREAD'S FINAL CLOSURE**: Yoni ~
+  (H,R,Theta) (candidate space, relations, transformations), explicitly [EXT]; Linga ~
+  G:K_t x Q_t -> H_t (candidate generation), explicitly [EXT] -- "the Yoni-Linga metaphor has
+  served its purpose -- it helped us discover the distinction between interaction, reconciliation,
+  closure, and successor state. But the new structure/projection work gives us something more
+  powerful." This is the explicit terminal ruling closing the entire M0081-M0098 Linga-Yoni/Gita
+  sub-thread traced in this pass.
+
+  **COMMISSIONS KR-PROJ-2026-09-02** with an explicit five-step method (define a rich structure
+  E_t; define candidate projections pi_i; for each determine collapsed distinctions, their
+  materiality, recoverability, and invariant survival; test whether Zero is a boundary-analysis
+  lens over these losses; test whether Gap/Sat/Balanced/DetectGap are correctly understood as
+  projections), an explicit critical rule ("Do not assume Claude's four structures are correct.
+  Let the experiment try to falsify them"), and precise success/failure criteria (success: all
+  prior failures explained as projection-induced information loss; failure: some observed failure
+  cannot be so explained).
+
+  **RETIRES THE OLD KERNEL-MINIMALITY DEPENDENCY CHAIN** ("Operators -> Count -> Minimum ->
+  Kernel") in favor of the corrected chain ("Structure -> Observables -> Semantic Equivalence ->
+  Invariant Preservation -> Reduction -> Minimality"), reconfirming M0098's methodological
+  correction with an explicit "old chain (retired)" label.
+
+  Closes with a full supervisory verdict table (Structure-first framework, projection/information-
+  loss theory, invariant-custody principle, representation-adequacy principle, four candidate
+  structures, Zero-as-boundary-analysis all [PROP] at varying strength; KR-PROJ COMMISSIONED;
+  Theory v1.3 explicitly NOT YET).
+introduces:
+  - concept: "The explicit closure-based definition Zero = closure(B_pi), the first specific formal Zero definition of this kind in this pass"
+  - concept: "The set-theoretic formalization of Invariant Custody: Custody(I)={c | c responsible for preserving I}, with the explicit validity condition Custody_before(I)!=empty-set => Custody_after(I)!=empty-set"
+  - concept: "The six-layer candidate architecture (Lenses/Structures/Projections/Attribution/Transition+Event/History)"
+  - concept: "Four named structural laws L1-L5 (one law number reused/merged), each with an explicit [PROP] strength rating"
+  - concept: "The specific quantified open-item counts: 13-and-8-both-minima-under-different-algebras (dissolving the kernel-operator-count tension); 1,491 unspecified progress-ordering claims; 37 unsupported Boundary distinctions -- provenance not given"
+defines: []
+refines:
+  - concept: "M0098's projection/invariant-custody/representation-adequacy framework, here formally canonized as ACCEPTED research path"
+  - concept: "The already-tracked 13-vs-8 kernel-operator-count tension, given a specific resolution here (both are genuine minima under different algebras)"
+contradicts:
+  - concept: "This document's own Part 1.2 restatement of M0098's corrected projection principle ('declare which distinctions it identifies or discards') is contradicted two sections later by Law L2 ('every projection declares its kernel'), reverting to the exact terminology M0098 explicitly replaced -- an internal inconsistency within this single ruling, flagged for the reclassification pass"
+repeats:
+  - concept: "M0098's core insight, induced-equivalence formalization, representation adequacy principle, and invariant custody principle, restated here in canonized ruling form"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0099 as the formal HPA ruling canonizing M0098's structure-first/projection/invariant-custody/adequacy framework as ACCEPTED research path, self-described as the most important document in the reconstruction -- defining Zero=closure(B_pi), a six-layer candidate architecture, and four structural laws L1-L5, while flagging a significant internal contradiction: Law L2 ('every projection declares its kernel') reverts to the exact terminology M0098 explicitly replaced one document earlier, within this same ruling. Also flags three newly-quantified, not-independently-verified open-item counts (13-and-8-both-minima; 1,491 unspecified progress claims; 37 unsupported boundary distinctions). Formally closes the M0081-M0098 Linga-Yoni/Gita sub-thread, keeping both metaphors strictly [EXT]."
+anchor_test:
+  anchor: "M0098's projection/invariant-custody/adequacy framework, and the corpus's already-tracked 13-vs-8 kernel-operator-count tension"
+  supports_dimension: "Canonizes M0098's framework as the accepted research path and commissions its decisive test (KR-PROJ); simultaneously introduces an internal terminology regression within the same document"
+  refines_or_contradicts: "refines (M0098); contradicts (its own Part 1.2 restatement of M0098's correction, via Law L2)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Part 1.2: 'Every projection must declare which distinctions it identifies or discards' (M0098's corrected principle) versus Law L2 in Part 2.2 of the SAME document: 'Every projection declares its kernel' -- a direct, internal, apparently unnoticed terminology reversion within one ruling."
+  - "'13 and 8 are both minima under different algebras' -- the first specific resolution offered anywhere in this pass for the already-tracked 13-vs-8 kernel-operator-count tension, though its evidentiary basis is not given in this document."
+  - "'This is the most important document in the entire KnowledgeOS reconstruction' -- a strong self-assessment claim, itself worth flagging per this reconstruction's discipline of never letting a document's own confidence substitute for independent verification."
+undefined_concepts:
+  - "The precise mathematical meaning of 'closure' in Zero=closure(B_pi) (topological closure? logical closure under some inference relation? transitive closure?) -- not specified"
+  - "The provenance of the specific counts '1,491 claims unspecified' and '37 distinctions unsupported' -- cited without a traceable source in this document"
+open_questions:
+  - "Whether the L2/Part-1.2 terminology contradiction was ever noticed and corrected elsewhere in the corpus."
+  - "Whether KR-PROJ-2026-09-02 was ever executed, and if so whether the structure-first framework survived or failed the adversarial test."
+  - "The source of the 1,491/37/13-and-8 quantified counts cited in the status matrix."
+tier2_triggered: true
+tier2_reason: "Formally canonizes the pass's most important theoretical consolidation (M0098) as accepted research path with a decisive commissioned experiment, while surfacing a genuine, apparently unnoticed internal contradiction (Law L2 reverting to the exact 'kernel' terminology the same broader ruling explicitly corrects) and introducing several specific quantified claims whose provenance is not given. Meets the tier-2 bar both for its theoretical importance and for the corpus-integrity finding."

@@ -1,0 +1,45 @@
+sequence: 32
+path: docs/knowledgeos/KnowledgeOS_Operational_Validation_Report.md
+title: KnowledgeOS — Operational Validation Report (Commission 2, Run 1)
+date: 2026-08-03
+bytes: 9593
+doc_type: baseline operational-evidence report answering whether KnowledgeOS governs engineering work
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [evidence, governance, validation]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+status: SR
+maturity: developing
+importance: low
+
+introduces:
+  - preventive_vs_generative_governance_capability_distinction
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge]
+open_questions:
+  - U1_through_U11
+
+depends_on: [1, 11, 18, 26]
+extends: [11, 26]
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: []
+connects_to: [1, 11, 18, 26]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: "No formal object, operator, or Kernel/Gita content; precise but incremental restatement of the already-tracked evidence-back-edge gap as a preventive/generative capability distinction."

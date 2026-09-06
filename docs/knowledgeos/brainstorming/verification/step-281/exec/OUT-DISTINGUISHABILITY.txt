@@ -1,0 +1,16 @@
+================================================================================================
+DISTINGUISHABILITY — seven mandatory states under Repair B
+================================================================================================
+  M1 NotAsked            -> ('NotAsked', '-')
+  M2 Asked+Absent        -> ('Asked', 'Absent')
+  M3 Asked+Unknown       -> ('Asked', 'Unknown')
+  M4 Supported           -> ('Asked', 'Supported')
+  M5 Refuted             -> ('Asked', 'Refuted')
+  M6 Conflicted          -> ('Asked', 'Conflicted')
+  M7 Orphan              -> ('STRUCTURAL', "is_orphan=True, epistemic state unchanged=('Asked', 'Supported')")
+
+  distinct epistemic tuples M1-M6: 6/6  -> ALL DISTINCT
+  M7 orphan is ORTHOGONAL: same epistemic state, is_orphan True vs False
+     => M7 varies while M4 is held fixed  -> M7 distinguishable, and NOT an epistemic value.
+
+  RESULT: M1-M7 all distinguishable = True

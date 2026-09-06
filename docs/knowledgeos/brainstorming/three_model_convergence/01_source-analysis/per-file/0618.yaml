@@ -1,0 +1,198 @@
+sequence: 618
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-102917_step-038-identity-entity-resolution-equivalence-reference-integrity-and-the-mathematics-of-same.md
+title: "CONFIRMED Major Topic Overlap With 0597 (Step 25S) — Step 38 Independently Re-Derives Identity/Entity-Resolution/Same-As Territory Under a New Title With No Cross-Reference to Knowledge Atma, While Delivering Genuinely New Formal Machinery: the denotes:R→E Reference Function, a Six-Value IdentityStatus Lattice, Cost-Sensitive False-Merge/False-Split Thresholds, a Formal Identity Graph G_I With Non-Equivalence Relations, an Entity-Resolution Pipeline With Blocking for O(N²) Feasibility, and the New Top-Level Decomposition KnowledgeOS=G_K+G_P+G_I+TemporalState+EpistemicControl; Twelve Falsification Experiments (ALL PASS); Verdict 'STEP 38 — PASS'; Opens Step 39 (Bounded-Context Translation, Semantic Mapping, Conceptual Alignment and Knowledge Interoperability)"
+date: "2026-08-28"
+bytes: 24075
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 38 -- Identity, Entity Resolution, Equivalence, Reference Integrity and the Mathematics of Same', opened cleanly at 0617's close with no renumbering collision at the control-plane level, yet substantively re-treats ground already covered as a landmark at 0597 (Step 25S)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 618
+importance: critical
+confidence: high
+about: >
+  **CORPUS-INTEGRITY FINDING CONFIRMED**: this file substantially overlaps 0597's landmark "Step 25S —
+  Identity, Entity Resolution, Same-As, Distinct-From and Knowledge Atma," treating essentially the same
+  core question -- when may two references be treated as the same entity -- under a differently worded
+  title, and **without any explicit cross-reference to 0597 or to Knowledge Atma anywhere in the file**.
+  This is a materially different collision pattern from the earlier CONFIRMED 25N/25C precedent (0578/
+  0592), where the second file (0592) explicitly opened by referencing the earlier evidence-aggregation
+  algebra and extended it self-consciously. Here, Step 38 reads as an **independent re-derivation** of
+  identity/entity-resolution machinery from first principles, using its own vocabulary
+  (`denotes:R→E`, `IdentityStatus`, `CandidateSameEntity`) rather than 0597's vocabulary (`EntityIdentity`,
+  `KnowledgeMeaningIdentity`, `RecordIdentity`, Knowledge Atma). This is recorded here as a corpus-
+  integrity observation for eventual §29 cross-model reconciliation, not adjudicated in this record.
+
+  Substantively, the file opens by formally distinguishing four concepts previously conflated in ordinary
+  systems -- Identity, Similarity, Equivalence, Reference -- and delivers a formal reference/denotation
+  function `denotes:R→E` (`R` the set of references, `E` the set of entities), establishing that
+  `r_1=r_2` is neither necessary nor sufficient for `denotes(r_1)=denotes(r_2)` (worked hostname/IP/
+  description example directly reusing the corpus's recurring Nexus example). Delivers context-dependent
+  denotation (`denotes(r,c)→e`), explicitly connected to DDD: the same linguistic term can carry different
+  meanings across bounded contexts, formalized as **`RealWorldIdentity≠DomainObjectIdentity`** (worked
+  Customer/Sales-vs-Billing example) -- explicitly named "one of the most important DDD principles for
+  KnowledgeOS": KnowledgeOS must never impose a `GlobalEntityIdentity` where a domain has intentionally
+  defined separate identities.
+
+  Delivers formal probabilistic entity resolution (`P(SameEntity|r_1,r_2,C)`), explicitly distinguishing a
+  high match probability from confirmed identity, and **a six-value `IdentityStatus` lattice**
+  (`Unknown, Candidate, Probable, Confirmed, Rejected, Contextual`), described as "much safer than forcing
+  binary identity too early" -- directly parallel to, but independently named from, 0597's three-level
+  identity split. Delivers formal equality-relation properties (reflexivity/symmetry/transitivity) and the
+  important observation that **`Similarity` need not be transitive**, with a worked numeric counterexample
+  (`sim(A,B)=0.95`, `sim(B,C)=0.95`, `sim(A,C)=0.60`) demonstrating how naive threshold-based transitive
+  closure produces an accidental merge of `A` and `C`.
+
+  **Delivers the file's central formal deliverable -- a precise asymmetric-cost treatment of False Merge
+  versus False Split**, each independently characterized by its own consequence list (false merge:
+  incorrect evidence aggregation, false conflicts, incorrect history, contaminated statistics, wrong
+  ownership, wrong decisions; false split: duplicated knowledge, missed contradictions, fragmented
+  provenance, incorrect counts, duplicated investigations), explicitly declaring
+  **`Cost(FalseMerge)≠Cost(FalseSplit)`** and that identity thresholds must therefore be domain-specific.
+  Delivers formal precision/recall framing for entity resolution and a **Conservative identity principle**
+  -- **`UnknownIdentity should generally remain Unknown rather than being silently merged`** -- explicitly
+  described as analogous to the corpus's established abstention principle (0616).
+
+  Delivers Identity evidence strength varying by attribute type (`UUID`/`serialNumber` strong,
+  `name` weak), Identifier collision as a caution against treating unique identifiers as metaphysical
+  truth, and a precise **Identity-versus-State separation**: an entity's identity can remain stable while
+  its state (e.g. IP address) changes over time, directly connecting to Steps 16/17's temporal-reference
+  work. Delivers a formal **Identity hierarchy across abstraction levels**
+  (`Product→ApplicationInstance→Deployment→Process`, worked seven-sense "Nexus" example), and the
+  requirement that `EntityType(x)≠EntityType(y)` can make identity impossible or require an explicit typed
+  relation rather than a merge -- explicitly connected to DDD aggregate boundaries (`AggregateIdentity`),
+  which KnowledgeOS "must respect... when reconstructing identity."
+
+  Delivers Referential integrity and the requirement to preserve `ReferenceHistory` across entity merges
+  and splits (`Merge(x,y,t)`, `Split(x,t)`), explicitly noting that a false merge, once corrected, requires
+  **`ImpactAnalysis`** over every assertion depending on the merged identity -- formalized as a new closure
+  operation, **`Closure(Identity)`**, directly extending the corpus's established `Closure(Assumption)`
+  concept (introduced earlier in the corpus) with `AffectedKnowledge(x)`.
+
+  **Delivers a second central formal deliverable -- a formal Identity graph `G_I=(E,R)`** with explicitly
+  typed relations (`sameAs, aliasOf, instanceOf, versionOf, deployedOn, replacedBy, relatedTo`), together
+  with the crucial caution that **not all such relations are equivalence relations** -- `sameAs` may be
+  intended as identity/equivalence, `relatedTo` is not, `versionOf` is directional -- requiring relation
+  semantics to be made explicit rather than assumed. Delivers formal equivalence-class machinery (`[x]`,
+  `CanonicalEntity([x])`) for confirmed equivalence relations, paired with the caution that a
+  "same-family" relation (e.g. `sameVersionFamily`) need not imply full identity (`sameExactArtifact`).
+
+  Delivers Semantic equivalence distinguished from entity identity (two syntactically different statements
+  expressing the same proposition, worked "31GB RAM"/"MemoryCapacity=31GB" example), formal statement
+  equivalence (`S_1≡S_2`) as distinct from literal equality, and Contextual equivalence
+  (`Equivalence(S_1,S_2,C)`). **Delivers unit/format normalization as itself an epistemic operation**,
+  worked through a GB-vs-1024MB binary/decimal ambiguity example and a locale-ambiguous date-format example
+  (`03/04/2026`), concluding that normalization must never proceed silently under an unstated assumption.
+
+  **Delivers a formal eleven-stage identity-resolution pipeline** (Reference→Parsing→Normalization→
+  Context Resolution→Candidate Generation→Evidence Comparison→Dependency Check→Identity Inference→
+  Validation→Identity State→Canonicalization), together with a formal computational-feasibility treatment:
+  naive pairwise comparison is `O(N²)`, addressed via Blocking (restricting `CandidatePairs⊂E×E` to
+  plausible pairs, e.g. `sameDomain`/`sameSerialPrefix`), reconfirming the corpus's established discipline
+  (0611, 0615) that the mathematical architecture remains feasible on ordinary hardware given indexing,
+  blocking, caching, incremental resolution, and graph partitioning.
+
+  **Delivers cost-sensitive, decision-theoretic identity resolution as the file's third central formal
+  deliverable, directly connecting Steps 34/35's decision machinery to identity for the first time**:
+  probabilistic-match thresholds (`P(Match)≥τ_confirm⇒Confirmed`) should be set from the relative costs
+  `C_{FM}` (false-merge) and `C_{FS}` (false-split) rather than an arbitrary fixed threshold, with a
+  four-way decision space (`Confirm/Reject/Investigate/Abstain`) chosen by expected loss. Delivers Identity
+  investigation explicitly framed as an active-learning problem -- "what evidence would most efficiently
+  distinguish `x=y` from `x≠y`?" -- directly identified as an instance of Step 34's `NextBestEpistemicAction`.
+
+  **Delivers twelve labeled falsification experiments (1-12), ALL PASS**, distinct from 0597's own
+  falsification set: bounded-context name collision correctly not auto-merged; provably-identical differing
+  references correctly linkable via `sameEntity`; same-hostname-different-environment correctly remaining
+  contextual/ambiguous; IP change correctly treated as state change without identity change; version
+  relationship correctly typed as `versionOf` not `sameExactArtifact`; a `0.96` match probability correctly
+  remaining candidate/probable absent policy-permitted promotion; a falsified confirmed merge correctly
+  triggering split plus downstream impact analysis; cross-reference evidence aggregation correctly subject
+  to independence analysis; unit-mismatched statements correctly requiring normalization before equivalence
+  determination; a locale-ambiguous date correctly not silently normalized; a non-transitive similarity
+  relation correctly not auto-forming an equivalence class; a false merge affecting ten downstream claims
+  correctly traced via identity closure.
+
+  **Delivers Step 38's verdict — "STEP 38 — PASS,"** with the file's own explicit self-assessment: "we have
+  formalized something that is often hidden inside ordinary software systems: Identity is itself
+  knowledge." **Delivers eight core numbered principles** (Similarity≠Identity; Reference≠Entity;
+  RealWorldIdentity≠DomainIdentity; probabilistic identity must not silently become confirmed identity;
+  identity is contextual; identity changes require temporal history; identity revision requires downstream
+  impact analysis; false merge and false split are distinct epistemic failure modes; canonicalization must
+  follow evidence, not precede it).
+
+  **Delivers the file's most significant architectural crystallization -- a new top-level system
+  decomposition into three explicitly non-collapsible graphs**: the Knowledge graph (`G_K`, what is known),
+  the Provenance/dependency graph (`G_P`, why it is believed and what depends on it), and the newly
+  introduced Identity graph (`G_I`, what references and domain objects refer to), yielding
+  **`KnowledgeOS=G_K+G_P+G_I+TemporalState+EpistemicControl`**, explicitly declared richer than simply
+  "KnowledgeOS=KnowledgeGraph."
+
+  **Closes by identifying the next major DDD/mathematical question -- semantic translation across bounded
+  contexts**: once `x=y` is established as the same real-world entity, two bounded contexts (e.g.
+  `Customer_Sales`/`Customer_Billing`) may still define incompatible concepts, attributes, and invariants
+  for it, and "we must not simply merge the two domain models." **Opens "Step 39 — Bounded-Context
+  Translation, Semantic Mapping, Conceptual Alignment and Knowledge Interoperability,"** cleanly, with no
+  renumbering collision, targeting `Concept_A↔Concept_B` without assuming `Concept_A=Concept_B`, and
+  explicitly connecting to the corpus's earlier Anti-Corruption-Layer theme (0600). Central principle
+  previewed: **`Knowledge can be shared without concepts being identical`**. No actual code execution
+  reported.
+introduces:
+  - concept: "A formal reference/denotation function denotes:R→E, formally separating Reference from Entity, with context-dependent denotation denotes(r,c)→e connecting identity resolution directly to DDD bounded-context semantics"
+  - concept: "A six-value IdentityStatus lattice (Unknown/Candidate/Probable/Confirmed/Rejected/Contextual), independently named from but functionally parallel to 0597's three-level identity split"
+  - concept: "Cost-sensitive, decision-theoretic identity thresholds (C_FM vs C_FS) directly connecting Steps 34/35's decision-theoretic machinery to identity resolution for the first time, with Identity investigation framed as an active-learning instance of Step 34's NextBestEpistemicAction"
+  - concept: "A formal Identity graph G_I with explicitly typed, not-necessarily-equivalence relations (sameAs/aliasOf/instanceOf/versionOf/deployedOn/replacedBy/relatedTo)"
+  - concept: "A new top-level system decomposition: KnowledgeOS=G_K (knowledge graph) + G_P (provenance/dependency graph) + G_I (identity graph) + TemporalState + EpistemicControl"
+  - concept: "Unit/format normalization formalized as itself an epistemic operation requiring explicit context, not a mechanical transformation"
+  - concept: "A formal eleven-stage identity-resolution pipeline with Blocking to address O(N²) computational cost, reconfirming the corpus's ordinary-hardware-feasibility discipline"
+  - concept: "CONFIRMED major topic overlap with 0597's landmark Step 25S, delivered via apparent independent re-derivation with no explicit cross-reference to Knowledge Atma or 0597's terminology — a materially different collision pattern from the earlier CONFIRMED 25N/25C precedent"
+defines:
+  - concept: "denotes:R→E"
+    definition: "A formal reference-to-entity denotation function; r_1=r_2 is neither necessary nor sufficient for denotes(r_1)=denotes(r_2), and denotation is additionally context-dependent (denotes(r,c)→e)"
+  - concept: "Cost(FalseMerge)≠Cost(FalseSplit)"
+    definition: "False merge and false split are epistemically distinct failure modes with independent consequence sets and independently domain-specific costs, requiring identity-confirmation thresholds to be set from relative cost rather than a fixed arbitrary value"
+  - concept: "Closure(Identity)"
+    definition: "A new closure operation computing AffectedKnowledge(x) — the set of assertions requiring re-evaluation after an identity revision (merge or split) — directly extending the corpus's established Closure(Assumption) concept"
+  - concept: "KnowledgeOS=G_K+G_P+G_I+TemporalState+EpistemicControl"
+    definition: "A top-level architectural decomposition into three explicitly non-collapsible graphs (knowledge, provenance/dependency, identity) plus temporal state and epistemic control, superseding the simpler 'KnowledgeOS=KnowledgeGraph' framing"
+refines:
+  - concept: "0597's (Step 25S) identity/entity-resolution/same-as treatment and Knowledge Atma"
+    refinement: "CONFIRMED substantial topic overlap: both files address when two references may be treated as the same entity, both deliver a multi-valued (not binary) identity-confidence scheme, both address false-merge/false-split-type failures — but this file uses entirely independent vocabulary and formal machinery (denotes:R→E, IdentityStatus, G_I) with no explicit reference to 0597's terminology (EntityIdentity/KnowledgeMeaningIdentity/RecordIdentity, Knowledge Atma), unlike the CONFIRMED 25N/25C precedent where the later file explicitly built on the earlier one"
+  - concept: "Step 34's (0614) NextBestEpistemicAction / VOI machinery"
+    refinement: "Directly applied to identity resolution for the first time: identity investigation (e.g. a DNS lookup to resolve ambiguous match probability) is formally identified as an instance of the active-learning/VOI framework"
+  - concept: "0600's Anti-Corruption Layer / semantic-interoperability theme"
+    refinement: "Directly previewed as the subject of the newly opened Step 39, extending ACL-style boundary protection specifically to cross-bounded-context concept translation distinct from entity identity"
+  - concept: "0611's/0615's ordinary-hardware computational-feasibility discipline"
+    refinement: "Reconfirmed for entity resolution specifically: naive O(N²) pairwise comparison is addressed via blocking/indexing/caching/incremental resolution/graph partitioning rather than requiring specialized infrastructure"
+  - concept: "0616's abstention/Unknown≠False discipline"
+    refinement: "Directly reapplied to identity: the Conservative identity principle explicitly declares UnknownIdentity should generally remain Unknown rather than being silently merged, described as analogous to the corpus's established abstention principle"
+contradicts: []
+repeats:
+  - "Substantial conceptual repetition of 0597's (Step 25S) core identity/entity-resolution treatment, under independent vocabulary and with no explicit cross-reference — see bridge_candidates for the priority reconciliation item"
+bridge_candidates:
+  - "PRIORITY, CONFIRMED: 0618 (Step 38) substantially overlaps 0597 (Step 25S) on identity/entity-resolution/same-as territory, apparently via independent re-derivation (different vocabulary, no cross-reference to Knowledge Atma) rather than explicit extension — a materially different collision pattern from the CONFIRMED 25N/25C precedent (which was self-consciously extending). Requires eventual side-by-side comparison at §29 cross-model reconciliation: does 0618's G_I/three-graph decomposition supersede, extend, or merely duplicate 0597's three-level identity split and Knowledge Atma landmark? Does the corpus's own internal consistency depend on reconciling these two independently-derived treatments of the same question?"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the confirmed 0618/0597 topic-overlap corpus-integrity finding (materially distinct pattern from the 25N/25C precedent — independent re-derivation, no cross-reference), and the new formal machinery this file uniquely contributes: denotes:R→E, the six-value IdentityStatus lattice, cost-sensitive False-Merge/False-Split thresholds, the Identity graph G_I with non-equivalence relations, the eleven-stage identity-resolution pipeline with blocking, and the new top-level KnowledgeOS=G_K+G_P+G_I+TemporalState+EpistemicControl decomposition."
+  - "dimension-registry.md: record the direct connection of Step 34's NextBestEpistemicAction/VOI machinery to identity investigation, twelve falsification experiments (ALL PASS), eight core numbered principles, verdict 'STEP 38 — PASS,' and the clean opening of Step 39 (Bounded-Context Translation, Semantic Mapping) previewing 'Knowledge can be shared without concepts being identical.'"
+anchor_test:
+  anchor: "0597's (Step 25S) landmark identity/entity-resolution treatment and Knowledge Atma finalization; 0614's (Step 34) NextBestEpistemicAction/VOI machinery; 0600's Anti-Corruption Layer theme; 0611's/0615's ordinary-hardware feasibility discipline; the CONFIRMED 25N/25C (0578/0592) title-collision precedent"
+  supports_dimension: "Delivers a well-organized, independently rigorous treatment of identity/entity-resolution that, despite substantially overlapping 0597's already-landmark territory, contributes genuinely new formal machinery not present in that earlier file: the explicit denotes:R→E reference-denotation function, a precise cost-sensitive false-merge/false-split threshold framework directly connecting to the corpus's decision-theoretic machinery (Steps 34/35) for the first time in this specific context, a formally typed Identity graph explicitly warning that not all its relations are equivalence relations, and — most architecturally significant — a new top-level three-graph system decomposition (G_K+G_P+G_I) that is more elaborate and more explicit than any single-graph framing given previously in the corpus. Surfaces a corpus-integrity finding of high importance for this reconstruction's own tracking obligation, distinguishable in kind from the earlier CONFIRMED 25N/25C collision: this appears to be independent re-derivation of the same underlying question, using disjoint vocabulary and with no acknowledgment of the earlier landmark treatment, which the eventual cross-model reconciliation (§29) must resolve by comparing the two treatments side by side rather than assuming either supersedes the other"
+  refines_or_contradicts: "confirms and substantially extends 0611/0615's ordinary-hardware feasibility discipline into entity resolution specifically; directly connects 0614's VOI/active-learning machinery to identity investigation for the first time; previews direct extension of 0600's Anti-Corruption Layer theme into the newly opened Step 39; CONFIRMS a second major topic collision with 0597's landmark Step 25S, structurally distinct from the earlier CONFIRMED 25N/25C precedent since this instance shows no explicit self-aware cross-reference to the earlier treatment; no direct contradiction found between the two treatments' substantive claims, though their identity-confidence taxonomies (six-value IdentityStatus here vs. 0597's three-level split) are not obviously reconcilable without closer side-by-side reading"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit absence of any reference to '0597,' 'Step 25S,' 'Knowledge Atma,' 'EntityIdentity,' 'KnowledgeMeaningIdentity,' or 'RecordIdentity' anywhere in this 2270-line file, despite its opening question ('when may KnowledgeOS legitimately conclude that two references denote the same thing?') being materially the same question 0597 already answered as a landmark — this is directly checkable textual evidence supporting the CONFIRMED topic-overlap finding and its classification as independent re-derivation rather than self-conscious extension."
+  - "The explicit worked numeric counterexample sim(A,B)=0.95, sim(B,C)=0.95, sim(A,C)=0.60 demonstrating that naive threshold-based transitive closure produces an accidental false merge of A and C, is directly checkable, concrete evidence of a genuinely important formal caution (similarity is not necessarily transitive) with direct practical relevance to any fuzzy-matching entity-resolution implementation."
+undefined_concepts: []
+open_questions:
+  - "Whether 0618's (Step 38) treatment supersedes, extends, or merely duplicates 0597's (Step 25S) landmark identity/entity-resolution treatment and Knowledge Atma finalization — requires side-by-side comparison at the eventual §29 cross-model reconciliation stage, not adjudicated here"
+  - "Whether the six-value IdentityStatus lattice introduced here is intended to reconcile with, replace, or simply coexist alongside 0597's three-level identity split — no cross-reference is given in either direction"
+tier2_triggered: true
+tier2_reason: "CONFIRMS a second major topic collision with 0597's landmark Step 25S, structurally distinct from the earlier CONFIRMED 25N/25C precedent because this instance shows no explicit cross-reference to the earlier treatment, reading instead as independent re-derivation under disjoint vocabulary — a corpus-integrity finding of high importance for this reconstruction's own tracking obligation. Despite the overlap, delivers genuinely new formal machinery not present in 0597: the explicit denotes:R→E reference-denotation function, a cost-sensitive false-merge/false-split decision-theoretic threshold framework directly connecting to Steps 34/35 for the first time in this context, a formally typed Identity graph with an explicit non-equivalence-relation warning, and a new, more elaborate top-level three-graph system decomposition (KnowledgeOS=G_K+G_P+G_I+TemporalState+EpistemicControl) superseding the simpler single-graph framing used throughout the rest of the corpus. Verdict 'STEP 38 — PASS'; opens Step 39 cleanly into bounded-context semantic translation, directly extending the corpus's established DDD/Anti-Corruption-Layer discipline."

@@ -1,0 +1,147 @@
+sequence: 885
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-185954_step_256_formal-operation-signature-registry.md
+title: "Step 256 -- Formal Operation Signature Registry: Delivers a Nine-Operation Registry With a Semantic-Role Taxonomy (Creation/Destruction/Modification/Derivation/Replacement/Combination/Decomposition/Epistemic-Disposition/Lifecycle-Disposition), Individual Sketches Showing Add Requires Identity/Equality, Revise Hinges on Whether Identity Is Preserved (Otherwise It Is Remove+Add), Supersede and Merge Identified as the Operations Most Able to Reveal Whether Provenance Is Operationally Essential, and a NINE-BY-SIX OPERATION-TO-INFORMATION DEPENDENCY MATRIX (Mostly Honest Unresolved '?' Entries) Operationalizing the Vague 'Does Provenance Belong in K?' Question Into 'Exists T: ProvDep(T)=1?' -- Opens Step 257's Formalization of the Four Most Discriminating Operations (Revise/Transform/Supersede/Merge), Promising 'the First REAL Congruence Experiment'"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: c1
+  secondary_note: "primarily formal-methods scaffolding (signature schemas, the dependency matrix), with each operation's DDD lifecycle semantics (Reject vs Remove, Withdraw vs Remove) as secondary content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 885
+importance: critical
+confidence: high
+about: >
+  Opens noting Step 255's conclusion that the final Knowledge State cannot be minimized before the
+  mandatory transformation language `𝒯` is known, fixing `𝒯` -- "the formally typed operation family of
+  KnowledgeOS" -- as the next object of study, a prerequisite for the congruence test.
+
+  **§256.1 delivers the basic operation-signature form** (`T_i:D_i→K_i` or, with explicit context,
+  `T_i:K×P_i→K'`), explicitly forbidding forcing every operation into `T:K→K` since some operations
+  depend on external policy/authority/time/evidence.
+
+  **§256.2-256.3 delivers the nine-operation candidate registry** (Add, Remove, Revise, Transform,
+  Supersede, Merge, Split, Reject, Withdraw) with a semantic-role taxonomy (Creation/Destruction/
+  Modification/Derivation/Replacement/Combination/Decomposition/Epistemic-disposition/Lifecycle-
+  disposition), reaffirming only a subset currently has explicit signatures -- "a reconstruction target,
+  not a claim that all nine are already formally defined."
+
+  **§256.4-256.12 delivers individual operation sketches, several with genuinely important
+  findings**: `Add` requires a definition of identity/equality to distinguish set-like semantics
+  (`Add(K,x)=K∪{x}`) from identity-aware semantics (rejecting an already-existing identity), boxed
+  **`Add requires a definition of identity/equality`** -- "directly links Step 256 back to the unresolved
+  `Equality_K`"; `Remove` vs. `Withdraw` -- genuinely distinct unless the vocabulary decides otherwise,
+  since removal-as-destruction differs from removal-as-lifecycle-status-change; **`Revise` delivers the
+  file's sharpest individual finding**: revision is only a genuine state transition on one entity if
+  identity is preserved (`id(x')=id(x)`); if not, "Revision is actually `Remove(x)+Add(x')`" -- "another
+  reason why equality and identity cannot be postponed indefinitely"; `Transform` reconfirmed strongest
+  historically supported (8/9 kernel phases), requiring its parameter `p` to be explicitly typed;
+  **`Supersede` flagged as "a particularly valuable test for whether provenance/history belongs in the
+  semantic state"** (requiring identity, provenance, authority, effective time, and reason all at once);
+  **`Merge` flagged similarly**: "the operation registry itself can reveal whether provenance is
+  operationally essential" -- if the merged result's provenance is `{Provenance(x_1),Provenance(x_2)}`,
+  Merge is inherently provenance-preserving; `Split` requires an explicit semantic-preservation invariant
+  (the union of the resulting parts' meanings must preserve whatever semantics were required of the
+  original); `Reject`≠`Remove` (marks epistemic status, does not delete); `Withdraw`≠`Remove` (lifecycle/
+  availability change, object remains represented).
+
+  **§256.13 delivers the expanded thirteen-field registry schema**
+  `R(T_i)=(Name,Domain,Codomain,Pre,Post,Inv,Params,Deps,Det,Prov,Hist,Policy,Identity)`.
+
+  **§256.14-256.18 delivers determinism, precondition, and composition discipline**: every semantically
+  relevant external variable must be made explicit rather than hidden in an implicit global context,
+  boxed **`Deterministic Transformation≠Immutable Knowledge`**; domain restriction (partiality) is itself
+  part of the mathematical semantics, not error-handling, boxed **`partiality is not failure`**; operation
+  composition reaffirms the earlier non-closure finding (0858/0869/0883) -- `T_i,T_j∈𝒯⇏T_j∘T_i∈𝒯` should
+  never be assumed.
+
+  **§256.19-256.22 consolidates several prior category distinctions in one place**: KnowledgeOS is
+  better modeled as a TYPED TRANSITION SYSTEM (differently-shaped operation signatures) than a single
+  homogeneous algebra; `Validate≠Transform`; `Command≠Transformation`
+  (`Command→Decision→Transformation→NewState`); `Event≠Transformation`.
+
+  **§256.23 delivers a genuinely useful formal bookkeeping device**: every operation should carry
+  explicit `ProvDep(T_i)`, `HistDep(T_i)`, `PolicyDep(T_i)∈{0,1,?}` flags -- "a way to empirically
+  determine where history must survive."
+
+  **§256.24-256.26 identifies THREE CRITICAL/DISCRIMINATING OPERATIONS** for the next stage: `Supersede`
+  (tests identity, temporal ordering, provenance, epistemic status, state replacement, and history
+  simultaneously); `Merge` (directly tests whether provenance survives combination); `Revise` (directly
+  tests the identity-preservation question `x_t=x_{t+1}`?).
+
+  **§256.27-256.28 delivers the current provisional registry** (nine-row signature/unresolved-dependency
+  table) **and the file's most reusable new artifact: a NINE-BY-SIX OPERATION-TO-INFORMATION DEPENDENCY
+  MATRIX** (rows: Add/Remove/Revise/Transform/Supersede/Merge/Split/Reject/Withdraw; columns: Identity/
+  Evidence/Provenance/Authority/Policy/History), mostly filled with honest `?` unresolved marks rather
+  than assumed values, with only a handful of settled entries (Identity required `✓` for most operations
+  except Add). **§256.29 explains why this matters**: it converts the vague question "does provenance
+  belong in `K`?" into the operational, directly testable question boxed
+  **`∃T∈𝒯:ProvDep(T)=1?`**, further sharpening the narrowing already begun at 0884.
+
+  **§256.30-256.31 delivers the StateInformation-vs-ContextInformation split** (`Required(T)=
+  StateReq(T)∪ContextReq(T)`, only `StateReq(T)` constraining `K`) and restates the key optimization
+  problem cleanly: boxed **`K*=argmin_K Complexity(K)`** subject to semantic sufficiency for every
+  `T_i∈𝒯`.
+
+  **§256.32-256.33 delivers the Step 256 established/not-established ledger** (five established items,
+  including "operations need not share one homogeneous signature" and "Validation, Command, Event and
+  Transformation must not be conflated"; two not-established items -- the nine candidate operations are
+  not confirmed final, and no particular signature is confirmed final) and identifies Supersede, Merge,
+  Revise, and Transform as "the most important unresolved signatures... highest potential to distinguish
+  competing state/history models."
+
+  **Closes opening "Step 257 — Formalize the Four Discriminating Operations,"** proposing complete
+  ten-point mathematical definitions (domain/codomain/preconditions/postconditions/identity-behavior/
+  provenance-behavior/history-dependence/policy-dependence/determinism/composability) for `Revise,
+  Transform, Supersede, Merge`, promising this will enable "the first REAL congruence experiment"
+  (`H_1∼_FH_2` tested against `T(H_1)≠T(H_2)`), assessed as providing "substantially stronger evidence
+  about the final form of `K` than adding another candidate kernel tuple."
+introduces:
+  - concept: "The basic operation-signature form, explicitly disallowing forcing every operation into T:K→K"
+  - concept: "The nine-operation candidate registry with a semantic-role taxonomy"
+  - concept: "Individual operation findings: Add requires identity/equality; Revise hinges on identity preservation (otherwise Remove+Add); Supersede and Merge flagged as the operations most able to reveal whether provenance is operationally essential; Split requires an explicit semantic-preservation invariant"
+  - concept: "The expanded thirteen-field registry schema"
+  - concept: "The determinism/partiality/composition discipline consolidating several prior findings"
+  - concept: "The explicit ProvDep/HistDep/PolicyDep flags per operation"
+  - concept: "The identification of Supersede, Merge, and Revise as the three most discriminating operations"
+  - concept: "THE NINE-BY-SIX OPERATION-TO-INFORMATION DEPENDENCY MATRIX, mostly honest '?' entries, converting the provenance question into an operationally testable form"
+  - concept: "The StateInformation-vs-ContextInformation split (only StateReq(T) constrains K)"
+  - concept: "The restated key optimization problem K*=argmin Complexity(K) subject to semantic sufficiency"
+  - concept: "Step 257's opening: formalizing Revise/Transform/Supersede/Merge, promising the first real congruence experiment"
+defines:
+  - concept: "The operation-to-information dependency matrix"
+    definition: "A concrete, reusable bookkeeping artifact cross-tabulating the nine candidate KnowledgeOS operations (Add, Remove, Revise, Transform, Supersede, Merge, Split, Reject, Withdraw) against six categories of potentially-required information (Identity, Evidence, Provenance, Authority, Policy, History), with each cell marked ✓ (confirmed required), – (confirmed not required), or ? (genuinely unresolved). Most cells are honestly marked '?' rather than assumed, reflecting the actual state of the audit rather than a premature commitment. This directly operationalizes the previously vague question of whether a given concept (most importantly, provenance) 'belongs in' the knowledge state K: rather than debating the question abstractly, one can instead ask the concrete, checkable question of whether there exists some operation T for which ProvDep(T)=1, i.e. whether provenance information is genuinely required for that operation to be well-defined -- turning an open-ended ontological debate into a finite, operation-by-operation verification task"
+refines:
+  - concept: "0884's narrowed provenance REQUIRES-USER-DECISION question (does any mandatory operation distinguish histories solely by provenance?)"
+    refinement: "OPERATIONALIZED into the concrete, tabulated dependency-matrix question ∃T∈𝒯:ProvDep(T)=1?, with Supersede and Merge specifically flagged as the two operations most likely to settle this question -- converting a philosophical framing into a finite, checkable verification task"
+  - concept: "The equality/identity dependency chain traced since 0865/0870/0872/0882/0883"
+    refinement: "EXTENDED with a concrete demonstration that Add and Revise cannot even be provisionally defined without first resolving identity/equality -- Revise in particular is shown to collapse into Remove+Add if identity is not preserved across the operation, giving a sharp, operation-level illustration of why equality cannot be postponed"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 257's actual complete formalization of Revise/Transform/Supersede/Merge and the promised first real congruence experiment testing H_1∼_FH_2 against T(H_1)≠T(H_2)."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the operation-to-information dependency matrix as a directly reusable, concrete tool for the eventual canonical Kernel synthesis's treatment of what information genuinely belongs in the knowledge state versus in transformation parameters."
+  - "dimension-registry.md: record the operationalized provenance question (∃T∈𝒯:ProvDep(T)=1?) and the identification of Supersede/Merge as the operations most likely to settle it, directly building on 0884's narrowing."
+anchor_test:
+  anchor: "0884's narrowed provenance decision question and coarsest-sufficient-abstraction target; 0883's equality/transition ontology-dependency finding; 0858's/0869's/0883's composability non-closure findings"
+  supports_dimension: "Operationalizes 0884's provenance question into a concrete, tabulated verification task, and extends the equality/identity dependency chain with a sharp operation-level demonstration (Revise collapsing into Remove+Add without identity preservation). Delivers a directly reusable dependency-matrix artifact and consolidates several prior category distinctions (Validate/Command/Event/Transformation) in one place"
+  refines_or_contradicts: "operationalizes 0884's provenance question; extends the equality/identity dependency chain; consolidates without contradicting prior category distinctions; reaffirms the composability non-closure finding"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§256.28's explicit nine-by-six matrix, with the large majority of cells honestly marked '?' rather than filled with assumed values, is directly checkable evidence of a disciplined, non-presumptive registry rather than an asserted specification."
+  - "§256.6's explicit two-branch analysis of Revise (identity preserved → genuine revision; identity not preserved → equivalent to Remove+Add) is directly checkable evidence of the sharp operation-level identity dependency finding."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 257's actual complete formalization of Revise/Transform/Supersede/Merge is genuinely delivered, and whether the promised first real congruence experiment is executed."
+  - "Whether the operation-to-information dependency matrix's remaining '?' entries are ever resolved."
+tier2_triggered: true
+tier2_reason: "Delivers a directly reusable operation-to-information dependency matrix operationalizing the provenance question into a concrete verification task, a sharp operation-level demonstration of the equality/identity dependency (Revise collapsing into Remove+Add), and identifies the three most discriminating operations for the next stage. Primarily scaffolding/organizational work consolidating several prior findings rather than delivering major new theoretical results on its own. Classified importance critical and tier2-triggered given the directly reusable dependency-matrix artifact."

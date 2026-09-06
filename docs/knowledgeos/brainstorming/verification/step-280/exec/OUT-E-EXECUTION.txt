@@ -1,0 +1,28 @@
+ID   DOMAIN         VERDICT  LVL  OBSERVED
+----------------------------------------------------------------------------------------------------------------------
+E1   K              PASS     5    |A|=6; SemanticallyValid=(True, 'ok')
+E2   Identity       PASS     4    equal=True; reflexive=True
+E3   Sigma          PASS     4    C02.1=('Supporting', 'Weak'); C02.2=('Supporting', 'Weak'); C02.
+E4   Missingness    FAIL     4    {"unknown(no evidence)": true, "absent": true, "not-asked": "IND
+E5   Evidence       PASS     4    api=Evidence; blog=None(UnqualifiedSource)
+E6   Evidence       PASS     4    Sigma=('Contested', 'Weak'); conflictsWith=True; |e|=2
+E7   T              PASS     4    good='ok' bad='REJECTED(structure): V not in V_D'
+E8   History        PASS     4    identical=True; |A|=2
+E9   Provenance     PASS     4    Pi=vendor-sbom; |History|=1
+E10  Lineage        PASS     4    Lineage(b2)={'c81184e084'}; root Pi=api
+E11  History        PASS     4    states equal=True; histories equal=False
+E12  Policy         PASS     4    allPass=PASS; withDeny=DENY
+E13  Policy         PASS     4    missing=['y', 'z']; strategy=BLOCK
+E14  Authority      PASS     4    ok=PASS(Permit:A1); none=DENY(NoAuthority); scope=DENY(ScopeOrJu
+E15  Governance     PASS     4    |history|=2; old PID present=True
+E16  Temporal       PASS     4    t_s=True; t_e-eps=True; t_e=False
+E17  Governance     PASS     3    tau=5; stale=0
+E18  Rules          PASS     4    before=PASS; after=PASS; declared inputs r1=('x',) r2=('y',)
+E19  Measurement    PASS     2    {"ordinal/compare": true, "ordinal/mean": false, "nominal/order"
+E20  Statistics     None     0    NO CALIBRATION DATA EXISTS: no probability space (Omega,F,P) any
+E21  Contradiction  PASS     4    contradicts=True; |A|=2
+E22  Supersession   PASS     4    old retained=True; cycle='REJECTED(structure): cycle in supersed
+E23  Explanation    PASS     4    overall=DENY; per-rule={'r1': 'PASS', 'r2': 'DENY'}
+E24  End-to-End     PASS     4    Observation=OK; Evidence=OK; Qualification=OK; Assessment=OK; Po
+----------------------------------------------------------------------------------------------------------------------
+  {'PASS': 22, 'FAIL': 1, 'None': 1}

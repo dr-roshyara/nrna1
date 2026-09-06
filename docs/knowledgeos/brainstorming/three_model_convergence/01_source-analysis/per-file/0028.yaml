@@ -1,0 +1,43 @@
+sequence: 28
+path: docs/knowledgeos/KnowledgeOS_Recommendation_Lifecycle_Discovery.md
+title: Recommendation Lifecycle Discovery (EP-02)
+date: 2026-08-04
+bytes: 9444
+doc_type: living discovery instrument tracking tool usage (Run 1-2 observation records)
+
+primary_model_initial: engineering_knowledgeos
+lineage_provisional: c1_engineering_knowledgeos
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [evidence, governance]
+source_role: IMPLEMENTATION
+canonical_source: null
+
+status: SR
+maturity: hypothetical
+importance: low
+
+introduces: []
+defines: []
+hypotheses: []
+operators: []
+formal_objects: []
+undefined_concepts: [knowledge]
+open_questions: []
+
+depends_on: [18, 21, 25]
+extends: [21]
+refines: []
+renames: []
+contradicts: []
+supersedes: []
+repeats: []
+connects_to: [18, 21, 25]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: "No formal object, operator, or Kernel/Gita content; pure tool-usage telemetry at n=1-2."

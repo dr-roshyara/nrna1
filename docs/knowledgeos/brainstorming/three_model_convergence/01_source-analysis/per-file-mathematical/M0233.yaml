@@ -1,0 +1,92 @@
+sequence: M0233
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-004858_assessment-of-kr-rep-reduction-and-kr-zero-three-way-separation.md
+title: "KR-BRIDGE-02 (varying Π and Q) EXECUTED, catching TWO of its own methodological errors before adjudicating: an unsound read-disjointness gate (declared vs. actual field-derivation) and a wrong marginal-RD adjudication criterion (rediscovers the known redundancy confound instead of testing within-stratum) — corrected via Mantel-Haenszel stratified analysis; introduces the 'Π-family-size≠mechanism-count' principle; delivers a scoped negative result (31/112 cells searched); plus a richer third documented Gita-companion-study instance grading four specific outputs and naming 'the refusals are the most reliable output this strand produces'"
+date: "20260904-004858"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: GITA
+  secondary_note: "The richest documented instance yet of the Gita-material anti-reification discipline (after M0213, M0229): four specific Gita passages/outputs are individually graded (3.27=moderate-limited lens; 14.19=useful lens; 2.48=explicitly weak corroboration; 2.48a='release attachment and move on'=explicitly REFUSED as a research move), with the meta-observation 'the refusals are the most reliable output this strand produces' — turning philosophical material into a shortcut-detection mechanism rather than a theory source"
+source_role: PRIMARY
+canonical_source: M0233
+importance: critical
+confidence: high
+about: >
+  Five concatenated reviews. The most significant reports KR-BRIDGE-02-ZERO-PRESERVATION (varying Π
+  and Q, the exact next step identified at M0229/M0231) as ACTUALLY EXECUTED, revealing that the
+  experiment caught and corrected two of its own methodological errors before adjudicating any
+  result — a genuine demonstration of the research programme's self-correcting discipline operating
+  at the design-validation stage rather than only post-hoc. The remaining reviews largely consolidate
+  already-recorded KR-BRIDGE-01/KR-REP-REDUCTION findings, except for a substantially richer third
+  documented instance of the Gita-companion-study anti-reification discipline.
+introduces:
+  - "KR-BRIDGE-02-ZERO-PRESERVATION-2026-09 EXECUTED: an experiment specifically varying Π and Q (both held fixed at BRIDGE-01, M0229) to test whether a CONDITIONAL Zero-preservation bridge exists for some particular (Π,Q,T) combination"
+  - "METHODOLOGICAL ERROR 1 caught and corrected: the original read-disjointness gate (checking that Q and Π declare disjoint SOURCE fields) was UNSOUND, because a transformation can DERIVE an output field from other input fields, so declared-disjoint source reads do not guarantee the actual transformed representation is disjoint — the corrected gate must operate on the ACTUAL transformed representation and be VERIFIED EMPIRICALLY, not merely checked against declared field lists"
+  - "METHODOLOGICAL ERROR 2 caught and corrected: the first proposed adjudication criterion (marginal risk difference, RD) was WRONG because it simply rediscovers the already-known redundancy confound identified in BRIDGE-01 (M0229) rather than testing a genuine conditional relationship — the corrected criterion requires the bridge to survive WITHIN redundancy strata, using the Mantel-Haenszel stratified risk difference (a standard epidemiological method for combining stratum-specific estimates while controlling for a known confounder) — a genuine statistical-rigor upgrade over BRIDGE-01's own analysis"
+  - "The scoped negative result: 'No admissible (Π,Q,T) produced a substantive within-stratum Zero-preservation relationship replicated on both train and test' — but explicitly NOT a universal 'no-bridge law,' since only 31 of 112 candidate cells were actually searched after applying the (increasingly strict) admissibility gates and informativeness requirements — the negative result is scoped to the tested region, consistent with the thread's established discipline against overgeneralizing negative findings"
+  - "A NEW methodological principle: 'Π-family size ≠ mechanism count' — after deduplication, several apparently distinct observations (value multiset, value set, arity) become MUTUALLY DETERMINED, so what looks like multiple independent Π candidates actually tests the SAME underlying mechanism repeatedly under that transformation — an important design-quality insight preventing false statistical power from illusory observation diversity"
+  - "A third, substantially richer documented instance of the Gita-companion-study anti-reification discipline (after M0213's verse-2.50 rejection and M0229's high-level praise): four specific graded outputs — verse 3.27 (correlation can have mistaken attribution: moderate-but-limited lens/corroboration of shape); verse 14.19 (don't name an agent where evidence doesn't support one: useful interpretive lens); verse 2.48 (don't privilege outcomes/hypotheses: explicitly weak corroboration); verse 2.48a ('release attachment and move on': explicitly REFUSED as a research move) — with the explicit acknowledgment that the Gita 'provides no statistical machinery for detecting the confounder; the actual detection came from the experiment's stratification procedure'"
+  - "The meta-observation elevated as the strand's own strongest characterization: 'the refusals are the most reliable output this strand produces' — turning philosophical material into a 'shortcut-detection mechanism' (Gita passage → candidate interpretive temptation → explicit methodological refusal) rather than a source of theory, explicitly NOT 'the Gita anticipated our theory'"
+  - "A caught wording-drift risk in the Gita companion study itself: its phrase 'redundancy was causing both Zero and inadequacy' is stronger than the experimental report's own tightened scope ('within the tested deduplication regime, redundancy behaves as a common cause...') — flagged so the philosophical companion study does not accidentally re-strengthen a causal claim the primary experimental report deliberately weakened"
+  - "Explicit refusal semantics for Outcome A: 'OUTCOME A ⟹ no formal bridge hypothesis is currently licensed' — so the Gita's 2.48a ('move on') cannot mean 'declare the question resolved,' only 'continue under the newly established constraint'"
+  - "Confirmation of the full experimental sequence and its governance rule: KR-ZERO → KR-REP-REDUCTION → BRIDGE-01 → BRIDGE-02, all under 'Experiment → Audit → Adjudication → Theory v1.3,' with Theory v1.2 explicitly still frozen"
+defines: []
+refines:
+  - "M0229's BRIDGE-01 result and its own recommended next step (vary Π and Q): confirmed as directly followed up by BRIDGE-02, which discovered its own design flaws before producing any adjudicated finding"
+  - "The Gita-companion-study discipline (M0213, M0229): given its richest documented grading yet (four specific verse-level outputs with individual strength assessments)"
+contradicts: []
+repeats:
+  - "The established Eliminability≠Preservation≠Realization separation, the KR-BRIDGE-01 four-cell/redundancy-confound result, and the 'Theory v1.2 remains frozen' governance rule — restated across the concatenated reviews as background"
+bridge_candidates:
+  - "Whether any further bridge experiment (BRIDGE-03 or similar) was ever commissioned to search the remaining 81 of 112 cells not yet examined by BRIDGE-02"
+  - "Whether the Mantel-Haenszel stratified-adjustment methodology introduced at BRIDGE-02 is retroactively applied to re-analyze BRIDGE-01's own data"
+mathematical_content: >
+  Introduces a genuine statistical-methodology upgrade (Mantel-Haenszel stratified risk difference,
+  replacing an inadequate marginal-RD criterion) and a design-quality principle (Π-family size ≠
+  mechanism count, catching illusory observation diversity caused by post-transformation field
+  mutual-determination) — both concrete methodological advances discovered by the experiment
+  catching its own design flaws before adjudication.
+gita_content: >
+  Delivers the richest, most granular documented instance of the Gita-companion-study discipline in
+  this reconstruction: four individually graded verse-level outputs, an explicit acknowledgment that
+  the Gita supplies no statistical detection machinery, and the striking meta-characterization that
+  refusals (not corroborations) are the strand's most reliable output.
+kernel_content: >
+  Demonstrates the research programme's self-correcting discipline operating proactively at the
+  design-validation stage: BRIDGE-02 caught and fixed two of its own methodological errors (an
+  unsound read-disjointness gate; a confound-rediscovering adjudication criterion) before producing
+  any result, exemplifying the thread's own elevated meta-principle ('an attractive interpretation
+  must yield to an audit finding,' M0231) applied prospectively rather than only in retrospect.
+registry_updates:
+  - "KR-BRIDGE-02 (varying Π and Q) confirmed executed, with two self-caught methodological corrections: (1) read-disjointness gate must verify the actual transformed representation, not declared field lists; (2) adjudication must use within-stratum Mantel-Haenszel RD, not marginal RD"
+  - "Scoped negative result: no admissible (Π,Q,T) produced a replicated within-stratum bridge, but only 31/112 cells were searched — not a universal law"
+  - "New design-quality principle: Π-family size ≠ mechanism count (post-transformation field mutual-determination can make apparently-distinct observations test the same mechanism)"
+  - "Richest documented Gita-companion-study instance: four graded verse-level outputs, with 'refusals are the most reliable output' as the strand's own characterization"
+anchor_test:
+  anchor: true
+  supports_dimension: "BRIDGE-02 self-caught methodological errors; Mantel-Haenszel stratified adjudication; Π-family-size≠mechanism-count principle; scoped negative result; richest Gita-companion-study grading"
+  refines_or_contradicts: "refines (M0229's BRIDGE-01 result and its own vary-Π-and-Q recommendation, directly followed up)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"The original read-disjointness gate was unsound. It checked declared source-field reads, but transformations can derive output fields from other fields.\""
+  - "\"No admissible (Π,Q,T) produced a substantive within-stratum Zero-preservation relationship replicated on both train and test.\""
+  - "\"Π-family size ≠ mechanism count.\""
+  - "\"The refusals are the most reliable output this strand produces.\""
+undefined_concepts: []
+open_questions:
+  - "Was a further bridge experiment (BRIDGE-03) ever commissioned to search the remaining untested cells?"
+  - "Was the Mantel-Haenszel methodology ever retroactively applied to BRIDGE-01's own data?"
+tier2_triggered: true
+tier2_reason: >
+  Reports KR-BRIDGE-02 as executed, revealing a genuine self-correcting research discipline operating
+  at the design-validation stage (two methodological errors caught and fixed before any result was
+  adjudicated), introducing a real statistical-methodology upgrade (Mantel-Haenszel stratified
+  adjustment) and a new design-quality principle (Π-family size ≠ mechanism count), while also
+  delivering the richest documented instance of the Gita-companion-study anti-reification discipline
+  in this reconstruction — genuinely new structural and methodological content beyond the already-
+  recorded BRIDGE-01/KR-REP-REDUCTION consolidation.

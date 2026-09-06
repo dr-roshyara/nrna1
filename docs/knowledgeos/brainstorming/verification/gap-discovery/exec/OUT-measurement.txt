@@ -1,0 +1,78 @@
+
+==========================================================================
+EXP-4  Is the epistemic-status ladder safe under averaging?  (Step 264 s264.23)
+==========================================================================
+  assertions: ['Candidate', 'Candidate', 'Accepted']
+  rule under test:  mean(sigma) >= 2  ->  PROCEED
+    encoding A {'Candidate': 1, 'Supported': 2, 'Accepted': 3}:  mean=1.667  PROCEED=False
+    encoding B {'Candidate': 1, 'Supported': 2, 'Accepted': 10}:  mean=4.000  PROCEED=True
+    encoding C {'Candidate': 0, 'Supported': 5, 'Accepted': 6}:  mean=2.000  PROCEED=True
+
+  decision flips across admissible re-encodings? True
+  => MEAN over an ordinal status ladder is MEANINGLESS (Roberts). CONFIRMED by execution.
+
+  Controls -- operations that ARE ordinal-admissible:
+    min: {'A': 'Candidate', 'B': 'Candidate', 'C': 'Candidate'}  invariant=True
+    max: {'A': 'Accepted', 'B': 'Accepted', 'C': 'Accepted'}  invariant=True
+    median: Candidate   (rank-based, invariant by construction)
+
+==========================================================================
+EXP-5  AggregateSupport = sum(s_i) / (1 + log n)   (Step 270 s270.28)
+==========================================================================
+    1 item  @1.0       ->   1.0000
+    2 items @1.0       ->   1.1812
+    10 items@1.0       ->   3.0279
+    100 items@1.0      ->  17.8407
+    3 items @0.1       ->   0.1430
+
+  OBSERVED PROPERTIES:
+    * unbounded: 100 unit-strength items give 17.84, not a support DEGREE.
+    * not idempotent: agg([1.0]) = 1.0000 but agg([1.0,1.0]) = 1.1812
+      -- duplicating the SAME evidence twice increases support by
+      18.1%.
+    * dimensionally undefined: sum(s_i) has the unit of s; log n is dimensionless;
+      the quotient has the unit of s but no interpretation as a probability,
+      a likelihood ratio, or a degree of belief.
+    * n=1 gives sum/1 -- so the formula reduces to the raw strength only in the
+      singleton case, i.e. it is a DISCOUNT on plurality, not an aggregation rule.
+  => The formula is computable (Level B) but is NOT a measurement of support
+     under any declared scale (Level C fails).  Step 270's own suspicion --
+     'elegance is not derivation' -- is CONFIRMED by execution.
+
+==========================================================================
+EXP-6  IndependenceFactor = 1/(1+depth)   (Step 270 s270.1)
+==========================================================================
+  Construction: two evidence items about the same proposition.
+    e1: vendor API response,          dependency depth 0 from the root observation
+    e2: a mirror that VERBATIM COPIES the vendor API, depth 1
+  Ground truth: e2 carries ZERO additional information about the proposition;
+  the true count of independent observations is 1.
+    IndependenceFactor(e1)= 1.000
+    IndependenceFactor(e2)= 0.500
+    total 'independent weight' = 1.500   (truth: 1.000)
+  Now a genuinely independent second source at the same depth:
+    e3: an independent scanner, depth 1 from ITS own root -- also 0.500.
+    The formula assigns e2 (a verbatim copy) and e3 (an independent
+    observation) the SAME weight, because depth is a graph property and
+    independence is a statistical one.
+  => IndependenceFactor is not a measure of independence. CONFIRMED.
+     It is a path-length discount. Naming it 'independence' is the category
+     error Step 270 predicted; this executes the demonstration.
+
+==========================================================================
+EXP-7  Is 'uncertainty' in the corpus a probability?  (mandate s12)
+==========================================================================
+  The mandate requires: if probability is used, locate Omega, F, P.
+  Grep result over the primary corpus for a declared probability TRIPLE
+  attached to an epistemic quantity is reported in 07-MEASUREMENT-THEORY-GAP.md.
+  Here we test the CONSEQUENCE of not having one.
+    conf(P)   = 0.8
+    conf(¬P)  = 0.7   (mutually exclusive values of one dimension)
+    sum       = 1.5  -- exceeds 1
+  If these were probabilities on a common (Omega,F,P) with the two events
+  disjoint, the sum could not exceed 1.  They can and do, because the corpus
+  assigns confidence per-assertion with no shared sample space.
+  => 'confidence in [0,1]' is NOT a probability unless a common (Omega,F,P) is
+     declared.  The corpus declares one only inside the abandoned measure-theory
+     regime (kernel 25 Aug), never for Sigma or for assertion confidence.
+     Therefore 'uncertainty' is currently a NUMBER, not a MEASUREMENT.

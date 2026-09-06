@@ -1,0 +1,94 @@
+sequence: 1048
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-288/08-GAP-UPDATE.md
+title: "08 -- Gap Update (Step 288 SSSS22-23): The Capstone Change-Control Ledger for the Entire Step-288 Package, Formally Naming Nine New Gaps (G-67 Through G-75) and Delivering the Definitive Honest Verdict -- 'This Step Added More Gaps Than It Narrowed, and That Is the Correct Outcome'"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the eighth and final numbered artifact in the step-288 package, delivering the complete change-control ledger for every correction applied throughout"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1048
+importance: critical
+confidence: high
+about: >
+  "08 — Gap Update (mandate §§22, 23) · change control on every repaired claim" -- the final, capstone
+  document closing the eight-part `step-288/` package (files 1041-1048).
+
+  **§23 delivers a definitive twelve-row change-control ledger (C-1 through C-12)**, each tracing a specific
+  correction's before/after state, cause, evidence, and downstream propagation impact, consolidating the
+  entire equality-research arc's disciplined self-corrections into one authoritative source-first record:
+  C-1 (register origin corrected from Step 246 to `25I.11`); C-2 (behavioural equivalence's presence
+  corrected); C-3 (Fold-quotient-map retraction); C-4 (relation count corrected to nine, `Continuity`
+  recovered); C-5 (structural equality's Level-5 status made conditional); C-6 (the "which relation is THE
+  equality" framing declared MALFORMED, per `261.19`); C-7 (`Qualify` reframed as one of four partial
+  functions); C-8 (Decision 3's technical/normative decomposition); C-9 (exactly-32 tightening); C-10 (I_48's
+  status corrected from "CLOSED" to "BOUNDED," explicitly citing "mandate §24: 'do not use CLOSED globally'");
+  C-11 (the vacuous-composition near-miss, "caught before publication"); C-12 (the 2240-state-space figure
+  formally corpus-verified across five files, with the new note that `A`'s seven values are qualitative modes
+  and therefore cannot order).
+
+  **DELIVERS THE FORMAL NAMING OF NINE NEW GAPS, G-67 THROUGH G-75, EACH WITH A SEVERITY CLASS**: **G-67**
+  (class ① CORPUS CONTRADICTION, CRITICAL) -- the `≡`/`≈` formula-identity conflict; G-68 (class ② formal) --
+  the canonicalization-conditional decidability of `=`; G-69 (class ① discovery) -- `Continuity`'s absence
+  from every register; G-70 (class ② formal) -- the four rival decision codomains; G-71 (class ⑥ evidence) --
+  six of eleven operations lacking any equality analysis; G-72 (class ③ architectural) -- the `G_I`-vs-`ℛ`
+  kernel-shape tension; G-73 (class ② formal) -- the decision-theoretic layer, inheriting the already-tracked
+  `G-22` (no probability space); G-74 (class ④ implementation) -- `Closure(Identity)`/`AffectedKnowledge(x)`
+  absent from operation discussion; G-75 (class ② formal) -- `≡`'s `(C,t)`-indexed family nature, "treated
+  everywhere as one relation."
+
+  **Explicitly confirms ZERO gaps CLOSED, per an explicit mandate rule**: "Per mandate §24, 'CLOSED' is not
+  used globally in this step" -- a disciplined terminological restraint even for the genuine `I_48` narrowing.
+
+  **DELIVERS THE DEFINITIVE NET-POSITION SUMMARY AND THE PROGRAMME'S MOST HONEST CLOSING STATEMENT**: 3 gaps
+  narrowed, **9 gaps added**, **0 gaps closed**, 12 corrections applied source-first, **0 of 6 Step-261
+  conditions resolved**, **13 of 13 negative results falsified**. Closes: **"This step added more gaps than
+  it narrowed, and that is the correct outcome. A register that was thought to hold four relations holds
+  nine; two of them share a definition; the one relation everybody treated as trivially decidable turns out
+  to carry an unbound parameter. NONE OF THAT IS PROGRESS TOWARD CLOSURE -- IT IS PROGRESS TOWARD KNOWING
+  WHAT CLOSURE WOULD REQUIRE."** This is the single most disciplined, epistemically honest closing statement
+  encountered across the entire equality-research arc, explicitly reframing gap-proliferation as the correct
+  and valuable outcome of rigorous research.
+
+  **Closes with a disciplined incompleteness disclosure**, naming twelve still-unread files, flagging
+  `025v`/`step-017`/`step-039` as "the semantic-translation thread, and `Compare`'s missing body would have
+  to come from there" -- explicitly identifying where the still-open `G-62` gap's eventual resolution would
+  need to be sought.
+introduces:
+  - concept: "The definitive twelve-row change-control ledger (C-1 through C-12) for the entire equality-research arc's corrections, with before/after, cause, evidence, and propagation impact for each"
+  - concept: "Nine formally named new gaps (G-67 through G-75), each with a severity classification, consolidating the entire step-288 package's discoveries into the corpus's own gap-numbering scheme"
+  - concept: "The disciplined terminological restraint: 'CLOSED' is never used globally in this step per an explicit mandate rule (mandate §24), even for genuine narrowings like I_48"
+  - concept: "The programme's most disciplined, epistemically honest closing statement: adding more gaps than were narrowed is the correct outcome of rigorous research, since it represents progress toward knowing what closure would require, not mere gap accumulation"
+defines: []
+refines:
+  - concept: "Every already-tracked correction and discovery across the entire equality-research arc (files 1036-1047)"
+    refinement: "CONSOLIDATED into the definitive twelve-row change-control ledger and nine newly-numbered gaps, closing the entire step-288 package"
+contradicts: []
+repeats:
+  - "Substantially consolidates every already-documented correction and gap across files 1036-1047 into a formal change-control ledger; this file's distinctive contribution is the formal C-1..C-12 and G-67..G-75 numbering, plus the definitive net-position summary and its disciplined closing statement."
+bridge_candidates:
+  - "'025v', 'step-017', 'step-039' -- the semantic-translation thread, explicitly identified as the source of Compare's still-missing body; not yet directly encountered."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the definitive twelve-row change-control ledger (C-1..C-12) and the nine newly-numbered gaps (G-67..G-75) as the canonical closing record for the entire step-288 equality-research package."
+  - "dimension-registry.md: record the definitive net-position summary (3 narrowed, 9 added, 0 closed, 0/6 Step-261 conditions resolved, 13/13 falsified) and its disciplined closing principle that gap-proliferation from rigorous research is progress, not failure."
+anchor_test:
+  anchor: "Every already-tracked correction and discovery across the entire equality-research arc (files 1036-1047)"
+  supports_dimension: "Consolidates the entire arc into a formal, numbered change-control ledger and delivers the definitive, honest closing net-position summary"
+  refines_or_contradicts: "confirms and formalizes prior findings into their definitive closing form"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The twelve-row change-control ledger and nine newly-numbered gaps are directly checkable against files 1036-1047's own already-documented findings for exact one-to-one correspondence."
+undefined_concepts: []
+open_questions:
+  - "The full content of '025v', 'step-017', and 'step-039', identified as the likely source of Compare's still-missing body."
+tier2_triggered: true
+tier2_reason: "Delivers the capstone, definitive change-control ledger (C-1 through C-12) and formally numbers nine new gaps (G-67 through G-75) closing the entire equality-research step-288 package, culminating in the programme's most disciplined and epistemically honest closing statement about the value of gap-proliferation in rigorous research. Classified importance critical and confidence high given its role as the canonical closure document for this entire research arc."

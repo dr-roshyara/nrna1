@@ -1,0 +1,78 @@
+sequence: "0107"
+path: docs/knowledgeos/brainstorming/20260822-101651-sakta-tantra-woodroffe-lens-extraction-duplicate.md
+title: "KnowledgeOS extraction from Woodroffe's Śākta Tantra work (8-lens method, self-described 'duplicate')"
+date: "2026-08-22"
+bytes: 8069
+model:
+  primary: g
+  secondary: [x]
+source_role: INDEPENDENT_RESEARCH
+canonical_source: "0092"
+importance: low
+confidence: high
+about: >
+  Applies the same 8-lens extraction method used elsewhere (explicitly referencing an unlocated prior
+  pass on "Vedic Mathematics") to Sir John Woodroffe's real Śākta Tantra scholarship. Genuinely
+  disciplined but low-novelty: nearly every extracted idea is explicitly classified as "supports
+  existing invariant" rather than proposing anything new. Self-assessed by its own author as likely to
+  contribute "more to mechanisms than constitutional kernel."
+
+introduces:
+  - "'Preliminary Extraction Matrix' (7 rows), six of seven classified as supporting/candidate for
+    ALREADY-tracked concerns (Identity/Transformation, Temporal, Graph/Relation, Epistemic lifecycle,
+    Representation!=Identity, Architecture layering, Governance) -- no row proposes a genuinely new
+    kernel candidate"
+  - "'Transformation without identity loss' framed as the single strongest structural pattern --
+    explicitly a restatement/combination of already-tracked Transformation Integrity + Identity
+    Preservation, not a new candidate"
+  - "Two unlocated forward references: 'Vedic Mathematics' (a prior lens-extraction pass, not found in
+    the read corpus) and confirms 'the same P5 validation discipline' is an established, named,
+    not-yet-executed procedure (Does KnowledgeOS become impossible without this? Yes->invariant,
+    No->mechanism/representation)"
+
+defines: []
+refines: []
+contradicts: []
+
+repeats:
+  - concept: "Representation != Identity / Evidence != Authority, restated with Śākta Tantra corroboration"
+    canonical_source: "0094"
+    novelty: none
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: false
+
+key_evidence:
+  - "Explicit self-assessment of low novelty, consistent with the file's own 'duplicate' self-labeling
+    -- recorded as evidence the corpus's own authors are capable of correctly judging low-yield
+    research passes, not merely inflating everything"
+  - "A P5 validation test criterion explicitly named ('does KnowledgeOS become impossible without
+    this?') -- the sharpest single-sentence promotion criterion stated anywhere in the corpus so far,
+    though still not executed against any actual candidate in this document"
+
+undefined_concepts:
+  - "'Vedic Mathematics' -- referenced as an already-completed prior lens-extraction pass, not located
+    in the read corpus"
+
+open_questions:
+  - "Whether the Vedic Mathematics lens-extraction document exists elsewhere in the reading order"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Transformation Integrity", "Evidence Integrity"]
+  refines_or_contradicts: "No new shape; pure reinforcement."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+tier2_triggered: false
+tier2_reason: >
+  Low novelty, self-assessed as such by its own source; a sharp P5 promotion-test criterion is worth
+  noting but not itself new structure, contradiction, or formalization. Recorded at proportionate
+  (low-importance, Tier-1-scale) depth per MD-013/MD-019.

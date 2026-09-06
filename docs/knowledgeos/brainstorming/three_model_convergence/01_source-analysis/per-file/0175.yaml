@@ -1,0 +1,94 @@
+sequence: "0175"
+path: docs/knowledgeos/brainstorming/kernel/20260824-001108-knowledge-kernel-philosophical-lenses-integration-chinese-tarka-audi.md
+title: "Consolidation document merging Chinese lenses (0165/0166/0169), Tarka-Nyaya (0170), and Audi (0172) into unified observation/falsification-question lists; introduces a first mention of Gettier cases and a Tarka-to-anti-reasoner mapping table"
+date: "2026-08-24"
+bytes: 15000
+model:
+  primary: c1
+  secondary: [g]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0175"
+importance: medium
+confidence: high
+about: >
+  A formal integration document combining three already-tracked lens families -- Chinese philosophical
+  traditions (0165/0166/0169), Tarka-Nyaya (0170), and Audi's Western epistemology (0172) -- into a unified
+  structured deliverable (10 strongest observations, 10 falsification questions, 5 surprising observations,
+  5 most-relevant observations, 5 observations-not-to-adopt, a DDD-blind-spot list, a Chinese-philosophy-
+  does-not-answer list, and a final 15-question checklist), explicitly repeating the same anti-architecture
+  discipline established at 0169's original commission brief. The large majority of content is a repackaging
+  of findings already tracked in this reconstruction's records for 0165, 0166, 0169, 0170, and 0172 (naming-
+  as-normative, identity-as-relational, contradiction-vs-perspective, context-as-constitutive, absence/
+  abhava typing, vyapti anvaya/vyatireka, definitional defects avyapti/ativyapti/asambhava). Two genuinely
+  new contributions: (1) the corpus's first explicit mention of Gettier cases -- "a justified true belief
+  need not be knowledge," listed among Audi-lens observations, requiring the Kernel to handle justified
+  false beliefs differently from knowledge -- not elaborated further or attributed to a specific Gettier
+  text, simply named; (2) a "Tarka's Relationship to the Anti-Reasoner" mapping table (Part 6) explicitly
+  connecting each of 0170's T1-T10 Tarka attacks to a named "anti-reasoner" architectural function
+  (protection against invalid processes/transformations/state-changes/arguments/definitions/invariants),
+  with an explicit meta-principle: "Tarka is an independent falsification lens, not an authority... it can
+  be used to interrogate the anti-reasoner's own application to ensure a 'protection' action is not itself
+  invalid" -- a reflexive falsification-of-the-falsifier move not seen before in the corpus.
+
+introduces:
+  - "First explicit mention of Gettier cases in the corpus's reading order: 'a justified true belief need
+    not be knowledge (Gettier cases); the Kernel must handle justified false beliefs differently from
+    knowledge' -- named without further elaboration or citation, listed as observation #21 among the
+    Audi-derived findings"
+  - "A Tarka-to-anti-reasoner mapping table connecting each T1-T10 attack (from 0170) to a named anti-
+    reasoner protective function, with an explicit reflexive principle: Tarka can be used to interrogate
+    whether the anti-reasoner's OWN protective actions are themselves validly reasoned, not merely to
+    interrogate proposed Kernel capabilities"
+
+defines: []
+
+refines:
+  - "Consolidates (without substantively extending) the Chinese-lens findings from 0165/0166/0169 and the
+    Tarka findings from 0170 into one unified observation/question deliverable"
+
+contradicts: []
+
+repeats:
+  - {concept: "Ten Chinese philosophical lens observations (naming-normative, identity-relational, contradiction-vs-perspective, context-constitutive, etc.)", canonical_source: "0169", novelty: none}
+  - {concept: "Tarka-sangraha T1-T10 falsification apparatus (avyapti/ativyapti/asambhava, vyapti anvaya/vyatireka, hetvabhasa, abhava/pratiyogi, nigrahasthana)", canonical_source: "0170", novelty: none}
+  - {concept: "Audi epistemology observations (basic sources, defeasible justification, internalism/externalism, memory as preservative not generative, coherence insufficient for justification)", canonical_source: "0172", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+registry_updates:
+  - "None -- explicitly a consolidation/integration document, not a new lens-register admission; Gettier
+    mention is a bare reference, not a developed extraction"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; consolidates already-tracked Chinese/Tarka/Audi findings, adds a reflexive Tarka-vs-anti-reasoner falsification move and a bare Gettier mention."
+  alternative_minimal_kernel: "none"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "The reflexive Tarka-interrogates-the-anti-reasoner move is a genuinely novel methodological pattern --
+    applying a falsification lens not just to proposed Kernel capabilities but to the architecture's own
+    protective/exclusionary mechanism -- worth watching if reapplied elsewhere in the corpus"
+  - "Confirms this reading stretch (0165-0175) is substantially a dense consolidation/cross-referencing
+    period rather than a steady stream of independently novel content; per MD-012/MD-013 discipline,
+    records in this stretch should continue to be scored for genuine novelty against already-tracked
+    canonical sources rather than treated as independently weighty"
+
+undefined_concepts: []
+open_questions:
+  - "Whether the Gettier-cases mention is ever developed into a full extraction (as Williamson/Audi/Shieber
+    were) later in the corpus"
+
+tier2_triggered: true
+tier2_reason: >
+  First Gettier-cases mention in the corpus; a reflexive Tarka-interrogates-the-anti-reasoner falsification
+  pattern; otherwise a consolidation of already-tracked Chinese/Tarka/Audi content.

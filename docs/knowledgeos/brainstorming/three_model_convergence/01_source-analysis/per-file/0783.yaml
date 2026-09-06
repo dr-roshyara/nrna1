@@ -1,0 +1,188 @@
+sequence: 783
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-011128_step_159_knowledgeos-architecture-baseline.md
+title: "Step 159 -- KnowledgeOS Architecture Baseline (MAJOR SYNTHESIS MILESTONE, delivers 0781's promised register): 'KnowledgeOS Target Architecture Baseline v0.1' -- Formalizes CURRENT/TARGET/DELTA and a Five-State Maturity Chain (OBSERVED→DESIGNED→IMPLEMENTED→ENFORCED→ASSURED, Never Automatic), Delivers the Target Epistemic Kernel With the New ACTION DISPOSITION Branch, the Crucial DDD Test ('What Invariant Cannot Be Maintained Without This Boundary?') Preventing 'Architecture by Noun Collection,' the Full Determination≠Decision≠Authorization≠Execution Chain, the AgentEdge Abstraction (Contract(Claude)≅Contract(Codex)), Closed-World Versus Open-World Reasoning, and a Three-Layer Architecture (Epistemic/Governance/Operational) Forming 'an Epistemic Control Loop' -- Explicitly Lists Nine Strongly-Established Concepts Versus Six Newly-Introduced Concepts Requiring Further Validation, and Recommends Step 160 = Current-State Evidence Mapping as the Transition From Architecture Discovery to Architecture Governance"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily DDD/architecture-governance synthesis; g1 relevance limited to explicit incorporation of the Chapter-4-derived Wisdom/ActionDisposition and Continuity≠Memory findings, both handled with disciplined non-promotion to architecture"
+source_role: PRIMARY_RESEARCH
+canonical_source: 783
+importance: critical
+confidence: high
+about: >
+  Directly continues 0781, opening "continuing from Step 158, I recommend that we now make Step 159 the
+  Architecture Baseline, not another conceptual expansion. The purpose is to freeze what we currently
+  believe before implementation work changes the evidence."
+
+  **§159.1 delivers the formal CURRENT/TARGET/DELTA separation**: `Δ_A=A_TARGET-A_CURRENT` (missing
+  capability) versus `Δ_ACCIDENTAL=A_CURRENT-A_TARGET` (unwanted architecture) -- two distinct directions
+  of gap, not one undifferentiated "delta."
+
+  **§159.2 delivers "why we must freeze this now,"** naming a specific, concrete methodological danger:
+  "new insight → architecture changes → old evidence reinterpreted → new architecture appears
+  retrospectively inevitable" -- "that is dangerous." Delivers the required "Architecture Evolution
+  Lineage" to preserve against this: `Observation→Interpretation→Hypothesis→Experiment→Validation→
+  Decision→Current Architecture`.
+
+  **§159.3-159.4 delivers the baseline principle** ("no architectural concept becomes CURRENT merely
+  because we designed it") and **a five-state maturity chain** (`OBSERVED→DESIGNED→IMPLEMENTED→ENFORCED→
+  ASSURED`, explicitly "but not necessarily automatically" -- a design can be implemented without being
+  enforced; enforcement can exist without being assured), formalized as `Designed≠Implemented≠Enforced≠
+  Proven≠Universally True`, explicitly proposed to "become one of the foundational rules of the book and
+  KnowledgeOS itself," worked through a concrete example ("agents must not directly modify authoritative
+  knowledge": Designed → the architecture says this; Implemented → an API exists; Enforced → direct
+  mutation is technically blocked; Assured → a reproducible test demonstrates unauthorized mutation
+  fails).
+
+  Delivers a proposed current-architecture summary sentence, immediately reclassified: "**this sentence
+  should currently be classified `TARGET ARCHITECTURAL DEFINITION` until the repository audit demonstrates
+  every part**."
+
+  **§159.7 delivers "the target epistemic kernel,"** the file's central architecture diagram:
+  `OBSERVATION→INQUIRY→EVIDENCE→KNOWLEDGE→DETERMINATION→WISDOM→DECISION→ACTION DISPOSITION
+  {ACT/DEFER/REFRAIN}→AUTHORIZATION→EXECUTION→OBSERVATION`, surrounded by cross-cutting
+  `PROVENANCE/LINEAGE/CONTEXT/TIME/AUTHORITY`. **§159.8 delivers an explicit, disciplined correction**:
+  "I would NOT yet call Wisdom a bounded context... `Wisdom≠automatically BC`. At present I would treat it
+  as a candidate cross-cutting semantic capability" -- directly honoring 0759's/0769's/0770's explicit
+  Wisdom-as-function (not new domain class) discipline established across this reconstruction's earlier
+  files.
+
+  **§159.9-159.10 delivers eleven candidate bounded contexts** (Knowledge/Evidence/Inquiry/Determination/
+  Decision/Governance/Assurance/Authorization/Action-Execution/Agent Integration/Architecture) with the
+  explicit qualifier `Candidate BC≠Confirmed BC`, and **"the crucial DDD test"**: "what invariant cannot be
+  maintained without this boundary? If we cannot answer that, we should not create a bounded context
+  merely because the noun sounds important" -- explicitly named "this prevents architecture by noun
+  collection."
+
+  **§159.11-159.15 delivers a precise chain of five pairwise non-collapse principles, each with a worked
+  example**: `Evidence≠Knowledge` (evidence is partly relational -- one observation can support multiple
+  distinct inquiries); `Knowledge≠Determination` (`D=f(K,E,C,M)`); `Determination≠Decision` (worked "the
+  implementation violates rule R" vs. "the implementation shall be corrected before release" example);
+  `Decision≠Authorization` (a board decision vs. an authorization mechanism's actor-permission check);
+  `Authorization≠Execution` (authorized but not yet executed, "necessary for auditability").
+
+  **§159.16-159.17 delivers historical continuity as `Continuity≠Memory`** (`Memory_t⊆RelevantHistory` may
+  be entirely legitimate), with the direct architectural consequence: **"agent sessions should be treated
+  as ephemeral epistemic states, not authoritative history"** -- a session's observations/working
+  hypotheses/temporary memory/candidate conclusions flow into KnowledgeOS's governed historical record,
+  never functioning as that record themselves.
+
+  **§159.18-159.20 delivers the `AgentEdge` abstraction**, explicitly replacing separate
+  "ClaudeArchitecture"/"CodexArchitecture" framings: `Contract(Claude)≅Contract(Codex)` -- mechanisms may
+  differ, governance semantics must not -- "this prevents the AI vendor/tool from becoming part of the
+  domain model." Delivers a six-row architecture-ownership table (KnowledgeOS owns knowledge semantics;
+  Agent Edge owns agent integration; Repository owns source artifacts; CI/CD owns delivery automation;
+  Runtime owns execution; Governance owns authoritative decisions/policies) -- "no component should
+  silently own another domain's authority."
+
+  **§159.21-159.22 delivers `Authority(source)` rather than bare `Source`** (`Claim+Source+Authority+
+  Validity` more meaningful than `Claim+URL`), and conflicting-knowledge handling (two competing claims
+  about the same subject should never simply overwrite one another).
+
+  Delivers "no evidence found ≠ evidence does not exist" as "basic statistical/epistemological
+  discipline," and **§159.30 delivers closed-world versus open-world reasoning**: closed-world ("if it
+  isn't recorded, assume false") explicitly rejected in favor of open-world ("if it isn't recorded, truth
+  status remains unknown") for most epistemic-engineering questions -- "particularly important for AI
+  agents."
+
+  **§159.31 delivers the complete "baseline architecture" diagram**, combining GOVERNANCE (authority/
+  policy) atop the full epistemic pipeline through `ACTION DISPOSITION`, cross-cutting
+  `PROVENANCE/LINEAGE/CONTEXT/TIME/AUTHORITY/IDENTITY`, and the `AGENT EDGE` (Claude/Codex)→KnowledgeOS
+  relationship. **§159.32-159.33 delivers a formal three-layer architecture**: Layer 1 Epistemic
+  (Observation/Inquiry/Evidence/Knowledge/Determination); Layer 2 Governance (Authority/Decision/Policy/
+  Authorization/Assurance); Layer 3 Operational (Action/Execution/Runtime/Observation), forming the
+  complete feedback cycle `Observe→Know→Determine→Decide→Authorize→Act→Observe` -- "the system therefore
+  isn't merely a repository. It is an epistemic control loop." **§159.34 delivers the explicit
+  overclaiming guard**: this characterization "is currently a theoretical architectural characterization.
+  It becomes an implementation fact only if the actual platform demonstrably implements the complete
+  loop... `Target≠Current`."
+
+  **§159.35 formally freezes "KnowledgeOS Target Architecture Baseline v0.1"**, with an explicit nine-item
+  "strongly established concepts" list (provenance; evidence; deterministic assurance; governance; agent
+  separation; DDD boundaries; architectural drift; historical lineage; separation of determination and
+  decision) versus a six-item "newly introduced concepts requiring further validation" list (wisdom/
+  action disposition; explicit inquiry domain; historical context reconstruction; formal authority model;
+  epistemic state model; open-world/unknown semantics).
+
+  **§159.36 delivers "what Step 159 does NOT do,"** an explicit six-item restraint list: does not refactor
+  code, create new bounded contexts, rename existing modules, declare every concept implemented, introduce
+  unnecessary abstractions, or "turn every philosophical concept into a software class" -- "that restraint
+  is important."
+
+  **§159.37 delivers the Step-159 exit criterion**: for each major target concept, "where is the
+  corresponding current implementation, artifact, or evidence?", answered as one of
+  `FOUND/PARTIAL/MISSING/UNKNOWN`.
+
+  **Closes recommending "Step 160 = Current-State Evidence Mapping,"** where theorizing stops temporarily
+  and "the actual KnowledgeOS/EKS repository and accumulated artifacts" are used to construct
+  `TARGET↔CURRENT↔EVIDENCE`, from which the real implementation backlog is derived (`DELTA→Prioritized
+  Architecture Work`) -- "only after that should we start changing implementation. This is the point where
+  our work transitions from architecture discovery into architecture governance and controlled
+  realization." No actual repository evidence-gathering is performed within this file itself; every
+  architectural claim remains explicitly classified TARGET pending Step 160's evidence work.
+introduces:
+  - concept: "The formal CURRENT/TARGET/DELTA separation, with two distinct delta directions: Δ_A (missing capability) and Δ_ACCIDENTAL (unwanted architecture)"
+  - concept: "The Architecture Evolution Lineage: Observation→Interpretation→Hypothesis→Experiment→Validation→Decision→Current Architecture"
+  - concept: "The five-state maturity chain: OBSERVED→DESIGNED→IMPLEMENTED→ENFORCED→ASSURED, none automatic from the prior"
+  - concept: "The target epistemic kernel diagram, including the new ACTION DISPOSITION branch"
+  - concept: "'The crucial DDD test': what invariant cannot be maintained without this boundary? -- preventing 'architecture by noun collection'"
+  - concept: "The five pairwise non-collapse principles with worked examples (Evidence≠Knowledge, Knowledge≠Determination, Determination≠Decision, Decision≠Authorization, Authorization≠Execution)"
+  - concept: "'Agent sessions should be treated as ephemeral epistemic states, not authoritative history'"
+  - concept: "The AgentEdge abstraction: Contract(Claude)≅Contract(Codex)"
+  - concept: "The six-row architecture-ownership table"
+  - concept: "Closed-world versus open-world reasoning, open-world preferred for epistemic engineering"
+  - concept: "The three-layer architecture (Epistemic/Governance/Operational) forming the feedback loop 'an epistemic control loop'"
+  - concept: "'KnowledgeOS Target Architecture Baseline v0.1' with its nine established vs. six newly-introduced concept lists"
+  - concept: "'What Step 159 does NOT do' -- the explicit restraint list"
+  - concept: "The Step-159 exit criterion: FOUND/PARTIAL/MISSING/UNKNOWN per major target concept"
+  - concept: "Step 160 = Current-State Evidence Mapping, the recommended transition from architecture discovery to architecture governance"
+defines:
+  - concept: "The five-state maturity chain (OBSERVED/DESIGNED/IMPLEMENTED/ENFORCED/ASSURED)"
+    definition: "A concept's maturity within KnowledgeOS's architecture passes through five distinct states, none reached automatically from the prior: OBSERVED (directly evidenced in reality), DESIGNED (intentionally specified in the architecture), IMPLEMENTED (present in actual software/artifacts), ENFORCED (runtime/tooling actively prevents violation), and ASSURED (evidence demonstrates the required property holds) -- a design can exist without being implemented, an implementation can exist without being enforced, and an enforcement mechanism can exist without ever having been independently assured"
+  - concept: "'The crucial DDD test'"
+    definition: "Before accepting any candidate concept as a genuine bounded context, ask specifically what invariant cannot be maintained without that boundary existing -- if no answer can be given, the concept should not become a bounded context merely because its name sounds architecturally significant; this prevents 'architecture by noun collection,' where nouns accumulate bounded-context status without earning it through model, language, invariants, ownership, and lifecycle"
+  - concept: "'Agent sessions as ephemeral epistemic states'"
+    definition: "An individual AI agent session's observations, working hypotheses, temporary memory, and candidate conclusions must never be treated as KnowledgeOS's authoritative historical record -- they are inputs that may flow into that governed record, but the session itself remains ephemeral and non-authoritative, directly following from Continuity≠Memory"
+refines:
+  - concept: "0781's Step 158 conformance audit and its promised Step 159"
+    refinement: "DELIVERED: the full Architecture Baseline v0.1 specification, formalizing CURRENT/TARGET/DELTA, the five-state maturity chain, the target epistemic kernel, and the explicit strongly-established-vs-newly-introduced concept lists"
+  - concept: "0759's/0769's/0770's Wisdom-as-cross-cutting-function discipline (not a domain class)"
+    refinement: "Directly and explicitly reaffirmed: 'I would NOT yet call Wisdom a bounded context... treat it as a candidate cross-cutting semantic capability,' maintaining consistency with this reconstruction's tracked prior discipline on this specific point"
+  - concept: "0781's ActionDisposition model (ACT/REFRAIN/DEFER/ESCALATE/INVESTIGATE/REQUEST_AUTHORIZATION)"
+    refinement: "Incorporated directly into the target epistemic kernel diagram as a formal branch point after DECISION, though simplified here to three branches (ACT/DEFER/REFRAIN) rather than 0781's full six-value set -- worth noting as a minor unreconciled simplification between the two files"
+  - concept: "0759's Continuity-vs-Accessible-Memory finding and 0781's Source≠History≠AccessibleMemory audit questions"
+    refinement: "Given the direct architectural consequence: agent sessions must be treated as ephemeral, non-authoritative epistemic states, with only their governed outputs flowing into KnowledgeOS's actual historical record"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 160 (Current-State Evidence Mapping) and eventual real, filled-in FOUND/PARTIAL/MISSING/UNKNOWN determinations for each major target concept against actual repository evidence."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Step 159 (delivering 0781's promised Architecture Baseline) as a major synthesis milestone -- the formal CURRENT/TARGET/DELTA separation, the five-state maturity chain, the target epistemic kernel with the ActionDisposition branch, and 'the crucial DDD test' preventing architecture-by-noun-collection."
+  - "dimension-registry.md: record the AgentEdge abstraction (Contract(Claude)≅Contract(Codex)) and the six-row architecture-ownership table as precise, reusable governance principles directly applicable to real multi-agent engineering platforms."
+  - "dimension-registry.md: record the minor unreconciled simplification between 0781's six-value ActionDisposition set and this file's three-branch (ACT/DEFER/REFRAIN) kernel-diagram depiction."
+  - "dimension-registry.md: record the recommendation for Step 160 (Current-State Evidence Mapping) as the explicit transition point from architecture discovery to architecture governance -- watch for whichever file delivers it."
+anchor_test:
+  anchor: "0781's Step 158 conformance audit and its promised Step 159; 0759's/0769's/0770's Wisdom-as-function discipline; the corpus's extensive Determination/Decision/Authorization/Execution non-collapse tracking"
+  supports_dimension: "Delivers the full, disciplined Architecture Baseline v0.1 specification directly promised at 0781's close: the formal CURRENT/TARGET/DELTA separation with two distinct delta directions, a five-state maturity chain preventing premature 'CURRENT' status, the target epistemic kernel diagram with the ActionDisposition branch, and 'the crucial DDD test' preventing architecture-by-noun-collection. Directly reaffirms the corpus's prior Wisdom-as-function discipline. Delivers a precise chain of five pairwise non-collapse principles each with a worked example, the AgentEdge abstraction, closed-world-vs-open-world reasoning, and a three-layer architecture forming 'an epistemic control loop' with an explicit overclaiming guard. Closes with an explicit restraint list and a disciplined recommendation to transition into real evidence-gathering (Step 160) before any implementation change"
+  refines_or_contradicts: "directly delivers and extends 0781's promised Step 159; reaffirms (does not contradict) 0759's/0769's/0770's Wisdom discipline; notes a minor unreconciled simplification of 0781's ActionDisposition set"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit statement 'no architectural concept becomes CURRENT merely because we designed it,' paired with Designed≠Implemented≠Enforced≠Proven≠Universally True, is directly quotable evidence of the file's central discipline against premature architectural claims."
+  - "§159.10's explicit DDD test, 'what invariant cannot be maintained without this boundary? If we cannot answer that, we should not create a bounded context merely because the noun sounds important,' is directly quotable evidence of a precise, reusable anti-pattern-prevention principle."
+  - "§159.35's explicit nine-item established-concepts list versus six-item newly-introduced-requiring-validation list is directly checkable evidence of the file's disciplined, non-overclaiming baseline classification."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 160 (Current-State Evidence Mapping) was ever actually delivered, and what real FOUND/PARTIAL/MISSING/UNKNOWN determinations it produced against the target epistemic kernel."
+  - "Whether the minor discrepancy between 0781's six-value ActionDisposition set and this file's three-branch kernel-diagram depiction (ACT/DEFER/REFRAIN only) is ever explicitly reconciled."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the full 'KnowledgeOS Target Architecture Baseline v0.1' promised at 0781's close, formalizing CURRENT/TARGET/DELTA, a five-state maturity chain, the target epistemic kernel with the ActionDisposition branch, and 'the crucial DDD test' preventing architecture-by-noun-collection. Delivers a precise chain of pairwise non-collapse principles, the AgentEdge abstraction, closed-world-vs-open-world reasoning, and a three-layer architecture forming 'an epistemic control loop' with an explicit overclaiming guard. Closes with disciplined restraint and recommends the explicit transition to real evidence-gathering (Step 160) before any implementation change."

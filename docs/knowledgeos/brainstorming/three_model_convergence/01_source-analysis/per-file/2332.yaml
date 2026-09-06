@@ -1,0 +1,118 @@
+sequence: 2332
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/REFINED-STEP-292.md
+title: "REFINED STEP 292 — Reiter/KnowledgeOS Implementation Derivation: 'Situation = K_t' REFUTED by KnowledgeOS's OWN Prior Evidence (Not by Reiter), the 'KnowledgeOS-DERIVED · CORROBORATED BY EXTERNAL SOURCE, Never the Reverse' Independence-Labeling Principle, and δ-as-SSA's Disqualifying Silent γ⁺∧γ⁻ Resolution"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "a formal KR-SIM-lane research artifact testing Reiter's situation calculus (Knowledge in Action, 2001) against KnowledgeOS's own already-derived corpus evidence; delivers the exec/results JSON+py artifacts already noted in this reconstruction's manifest (sequences 2348-2354) and an important independence-labeling methodological principle directly comparable to this reconstruction's own Gita-thread discipline"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2332
+importance: critical
+confidence: high
+about: >
+  A formal "REFINED STEP 292" artifact from the KR-SIM lane, testing Reiter's situation calculus
+  (Raymond Reiter, "Knowledge in Action," 2001, external academic source `[EXT]`) against KnowledgeOS's
+  own prior, already-derived corpus evidence -- with executable audit code and JSON results (already
+  noted in this reconstruction's manifest as sequences 2348-2354, `step-292/exec/`). Verdict: "Situation
+  = K_t REFUTED -- and refuted by KnowledgeOS's OWN prior evidence, not by Reiter. 9 of 10 negative tests
+  refuted. One BOUNDED candidate (δ as an SSA), one SUPPORTED mechanism (regression), one method, one
+  naming. NO open item closed. Theory v1.2 unchanged; no governance act."
+
+  **DELIVERS WHAT REITER ESTABLISHES** `[EXT]`: situations are histories, not states (two situations may
+  share fluent values and differ); the successor-state axiom (SSA) genuinely solves the representational
+  frame problem, resting on the causal-completeness assumption; the regression theorem reduces reasoning
+  about a history to reasoning about S₀ (verified: agrees with progression 12/12, test A3); Poss as an
+  executability gate (verified, A4); the situation-calculus induction axiom is second-order -- "the
+  system is not fully first-order decidable. Any transfer inherits this."
+
+  **DELIVERS WHAT KNOWLEDGEOS INDEPENDENTLY ESTABLISHED BEFORE READING REITER**: KR-HISTORY T2 (identical
+  current content, different histories, no function of K_t separates them; the kernel writes history and
+  reads it 0 times, statically verified -- "this is Reiter's Situation≠State, reached independently");
+  KR-CONTR-EVAL (the evaluation obstruction is structural, not cardinal -- no flat value domain of any
+  cardinality is adequate); KR-CONTR-FDE (the surviving factorization is Status×Typed Boundary); KR-COMP
+  (composition's load-bearing parameter is the frame qualifier, not the rule); R1 (KnowledgeOS's object
+  is A_t, an attribution; no component may assert Knows); Step 291 (operation-registry membership,
+  signatures, bodies, identity, ratification -- all OPEN).
+
+  **DELIVERS WHAT REITER NEWLY ENABLES (FOUR ITEMS ONLY)**: a candidate shape for δ (the SSA), with its
+  blocking conditions named -- BOUNDED; regression as a verification mechanism ("was this determination
+  warranted at the time?") -- SUPPORTED; persistence-by-construction as a design method -- CORROBORATED; a
+  third equivalence level (syntactic≠observational≠semantic) -- NEW SYNTHESIS, naming only.
+
+  **DELIVERS THE LONG LIST OF WHAT REMAINS UNRESOLVED**: equality/≡_sem, Qualify, O/T, identity,
+  provenance placement, operation registry (membership/signatures/bodies/ratification), Contr,
+  Observation, δ, ℛ_req, DECISION-02, composition rule -- "all preserved. Reiter closes none of them."
+
+  **DELIVERS THE DECISIVE FINDING**: "the extraction's own §1.2 table maps Situation→K_t, two lines above
+  stating that situations are not states. That is a correspondence, not a derivation -- the exact failure
+  the mandate names. It is REFUTED by execution (A1: two distinct situations, one state) and by the
+  corpus (KR-HISTORY T2), and the corpus got there first." Delivers the important, generalizable
+  methodological principle: "Independence label: KnowledgeOS-DERIVED · CORROBORATED BY REITER. Never the
+  reverse." This is a formal, code-audited application of exactly the same corroboration≠derivation
+  discipline this reconstruction's own Gītā thread has applied throughout (files 2234-2321), now
+  extended to an external academic source outside philosophy entirely (AI/situation-calculus theory), and
+  with the added rule that when a corpus finding predates the external source's reading, the corpus is
+  the derivation and the external source is mere corroboration -- never the reverse, regardless of the
+  external source's rigor or authority.
+
+  **DELIVERS THE DECISIVE LIMIT ON δ-AS-SSA**: `[NEG]` "the successor-state axiom silently resolves
+  γ⁺∧γ⁻ in favour of γ⁺ -- measured, from both F true and F false. It presupposes consistent effect
+  axioms; it cannot detect their inconsistency." Consequence: "for a programme that has spent four
+  experiments preventing exactly that collapse, this is disqualifying as a drop-in and clarifying as a
+  boundary: δ cannot be settled before Contr." This directly connects to and further constrains this
+  reconstruction's already-tracked measure-theoretic thread's own open contradiction-predicate question
+  (Contr, files 2323-2324's G-109/G-110), showing that even a well-established external formalism (the
+  SSA) cannot substitute for resolving Contr first.
+
+  **DELIVERS THE NEGATIVE-TEST RESULT**: 9 of 10 negative tests (P1-P10) refuted -- "none fails because
+  Reiter is wrong. Each fails because a construct is well-defined relative to assumptions KnowledgeOS
+  does not satisfy -- causal completeness, consistent effect axioms, factive knowledge, an existing
+  action theory." Summary principle: "Reiter's machinery is available exactly to the extent that
+  KnowledgeOS supplies the assumptions it requires -- and those assumptions are precisely the programme's
+  open items."
+
+  **CLOSES WITH AN EXPLICIT NO-GOVERNANCE-ACT DECLARATION**: "none sought, none taken. Theory v1.2
+  unchanged · no v1.3 · no primitive promoted · no invariant added · kernel NOT SELECTABLE · C-1
+  restated: useful is not irreducible." The closing restated principle ("useful is not irreducible")
+  directly echoes this reconstruction's already-tracked file 2329's kernel-verdict argument point 2 ("do
+  not put a mechanism into the kernel merely because KnowledgeOS can use it").
+introduces:
+  - concept: "The formal independence-labeling principle: KnowledgeOS-DERIVED, corroborated by an external source, never the reverse -- applied here to an academic AI-theory source (Reiter) rather than a philosophical one, extending this reconstruction's own corroboration≠derivation discipline to a new domain"
+  - concept: "The disqualifying limit on the successor-state axiom as a candidate delta: it silently resolves gamma-plus/gamma-minus conflicts in favor of gamma-plus, and cannot detect inconsistent effect axioms -- so delta cannot be settled before Contr"
+  - concept: "The negative-test summary principle: Reiter's machinery is available only to the extent KnowledgeOS supplies the assumptions it requires, and those assumptions are precisely the programme's open items"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked corroboration≠derivation discipline from the Gita thread"
+    refinement: "EXTENDED to a non-philosophical external academic source (Reiter's situation calculus), with a formal, code-audited independence label confirming the corpus's own prior findings take precedence"
+  - concept: "This reconstruction's already-tracked file 2323/2324 open contradiction predicate (Contr, G-109/G-110)"
+    refinement: "FURTHER CONSTRAINED: even a well-established external delta candidate (the SSA) is disqualified as a drop-in because it cannot resolve Contr, confirming delta genuinely depends on Contr being settled first"
+  - concept: "This reconstruction's already-tracked file 2329 kernel-verdict argument point 2 ('do not put a mechanism into the kernel merely because it is usable')"
+    refinement: "REAFFIRMED via the closing restated principle 'useful is not irreducible' (C-1), applied here to Reiter's regression mechanism rather than a Gita concept"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "The exec/results artifacts this document summarizes (step-292/exec/t292_reiter_audit.py, t292_run.py, and five JSON result files) are already noted in this reconstruction's manifest as sequences 2348-2354 (PRIMARY per MD-020's refresh) -- to be encountered directly later in this reconstruction's remaining primary-corpus reading."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as refuting 'Situation=K_t' via the corpus's own prior evidence, delivering the formal 'KnowledgeOS-DERIVED, corroborated, never the reverse' independence-labeling principle applied to an external academic source, and disqualifying the successor-state axiom as a delta candidate because it cannot resolve the still-open Contr predicate."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Gita-thread corroboration≠derivation discipline and the file 2323/2324 open Contr predicate"
+  supports_dimension: "Extends the corroboration≠derivation discipline to a non-philosophical external source and further constrains the open Contr predicate by disqualifying the successor-state axiom as a drop-in delta candidate"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The five JSON result files and two Python audit scripts this document summarizes are directly encounterable later in this reconstruction's own primary-corpus reading (already listed in the manifest as sequences 2348-2354), providing the raw evidence behind this synthesis."
+undefined_concepts: []
+open_questions:
+  - "Whether the exec/results artifacts (sequences 2348-2354, to be read later in this reconstruction's remaining primary-corpus pass) confirm the specific test outcomes summarized here (A1-A4, P1-P10)."
+tier2_triggered: true
+tier2_reason: "Refutes 'Situation=K_t' using the corpus's own prior evidence rather than the external source, delivers a formal, generalizable independence-labeling principle extending this reconstruction's own corroboration≠derivation discipline to a non-philosophical academic source, and disqualifies the successor-state axiom as a delta candidate by connecting it to the still-open Contr predicate. Classified importance critical given the substantive kernel-negative findings and the methodological significance of the independence-labeling principle."

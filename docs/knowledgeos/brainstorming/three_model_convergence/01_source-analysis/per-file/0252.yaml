@@ -1,0 +1,68 @@
+sequence: 252
+path: docs/knowledgeos/brainstorming/kernel/20260824-161931-consciousness-model-refined-multi-lens-not-a-vertical-stack.md
+title: "Consciousness Model Refined — Multi-Lens, Not a Vertical Stack"
+date: "2026-08-24"
+bytes: 26000
+model:
+  primary: g1
+  secondary: c1
+source_role: CRITICAL_REVIEW
+canonical_source: 252
+importance: critical
+confidence: high
+about: >
+  A disciplined self-correction returning to the core Sankhya/kosha/chakra/Yoga consciousness-model
+  tradition after an earlier (unrecorded in this reading order) "vertical stack" mapping was judged too
+  simplistic. Central methodological correction: consciousness theory is not one architecture to rename
+  into KnowledgeOS layers -- it is a MULTI-LENS reference model (ontology/epistemology/cognition/
+  perspective/DDD/cybernetics/governance/evidence/temporal/architecture/development/AI-cognition), each
+  lens producing a distinct, non-collapsible KnowledgeOS question. Explicitly demotes chakras from
+  "architecture" to "diagnostic vocabulary," koshas to a "depth-of-understanding lens," and Yoga to a
+  "transformation lens" -- disciplined against over-literalizing a philosophical framework into
+  engineering structure.
+introduces:
+  - concept: "Twelve-lens correspondence table (Ontology/Epistemology/Cognition/Perspective/DDD/Cybernetics/Governance/Evidence/Temporal/Architecture/Development/AI-cognition), each pairing a consciousness question with a distinct KnowledgeOS question -- explicitly the model to keep, replacing any single vertical-stack mapping"
+  - concept: "Purusha/Prakriti reframed as the sovereignty principle: Purusha (immutable observer, neither cause nor effect) vs. Prakriti (changing field) maps to Knowledge content != Authority over knowledge, NOT introduced literally, but exposing the same architectural separation the corpus has been protecting elsewhere (Governance context: who may assert/approve/change/invalidate/adjudicate, kept separate from Knowledge context: claims/evidence/models/interpretations/decisions)"
+  - concept: "Manas/Buddhi/Ahamkara reframed as three FUNCTIONS, not literal modules: Manas=observation/attention/intake ('what arrived?'), Buddhi=reasoning/assessment/discrimination ('what does it mean?'), Ahamkara=standpoint/ownership/perspective/bias ('from whose standpoint?') -- explicitly generalizing to 'every knowledge system has a standpoint problem'"
+  - concept: "Sankhya's three valid knowledge sources (perception/inference/testimony) reframed into an epistemic pipeline: Reality -> {Observation, Inference, Testimony} -> Interpretation -> Claim -> Evaluation -> Knowledge State, preserving observation!=interpretation!=inference!=fact, testimony!=direct-evidence, belief!=truth"
+  - concept: "Samskaras (impressions from experience) reframed as path-dependent knowledge: Interpretation_t = f(Evidence_t, Knowledge_{t-1}) -- past knowledge changes how new evidence is interpreted, a formal path-dependence claim"
+  - concept: "Perception-failure taxonomy reframed as an observation-reliability model: distance/subtlety/obstruction/indistinguishability/sensory-faults/inattentive-mind as sources of unreliable observation, feeding an Observation object with source/conditions/completeness/reliability/uncertainty/perspective fields before it becomes Evidence"
+  - concept: "Chakras DEMOTED from architecture to a 'diagnostic vocabulary for systemic maturity and blockage': seven-item Systemic Knowledge Health checklist (Ground=is evidence stable?, Identity=are concepts/boundaries clear?, Agency=can knowledge produce legitimate action?, Relationship=are dependencies/perspectives understood?, Expression=can knowledge be communicated precisely?, Insight=can the system discover deeper patterns?, Integration=does knowledge remain coherent across contexts?) with corresponding named blockage failure modes"
+  - concept: "Koshas reframed as a depth-of-understanding lens (not component architecture): Concrete->Operational->Interpretive->Explanatory->Integrated, paralleling Annamaya/Pranamaya/Manomaya/Vijnanamaya/Anandamaya"
+  - concept: "Yoga's eight limbs reframed as a transformation lens describing HOW the system changes, not another architecture: Governance-discipline->Knowledge-structural-discipline->Noise-reduction->Focused-investigation->Continuous-reasoning->Integrated-understanding"
+  - concept: "Meta-cognition layer for AI agents: explicit self-interrogation questions (How do I know this? What assumptions am I using? What evidence supports it? Where could I be wrong? Am I authorized to act?) mapped directly onto the corpus's verification/review/governance/deterministic-assurance mechanisms"
+  - concept: "Reflexive Knowledge System definition (the culminating formulation): K + provenance + uncertainty + authority + perspective + history + assumptions + limitations + transformations -- a system capable of reasoning about its OWN epistemic state, distinguished from a normal knowledge system (K), a provenance-tracked system (K+provenance), and a trustworthy system (K+provenance+uncertainty+authority)"
+defines: []
+refines:
+  - concept: "0247/0249's Knowledge Vector and K(t) temporal formalization; 0251's critical-thinking extraction methodology"
+    refinement: "Adds the standpoint/perspective/authority dimensions (Ahamkara, Purusha/Prakriti) and the path-dependence formalization (Interpretation_t=f(Evidence_t,Knowledge_{t-1})) not present in 0247/0249/0251, and culminates in the Reflexive Knowledge System definition unifying provenance+uncertainty+authority+perspective+history+assumptions+limitations+transformations."
+  - concept: "0209's Knowledge!=Wisdom and 0247's Wisdom-cluster convergence"
+    refinement: "Adds the koshas' depth-of-understanding progression (Concrete->Operational->Interpretive->Explanatory->Integrated) as a further structural articulation of the knowledge-maturation theme, independently arrived at via the same Sankhya/kosha source tradition rather than a new independent source."
+contradicts: []
+repeats:
+  - concept: "Observation != interpretation != inference != fact; belief != truth"
+    canonical_source: 216
+    novelty: none
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0247/0249/0251's Knowledge Vector work; the corpus's sovereignty/governance-separation principle; the 0110-0117/0209/0247 Wisdom-maturation cluster"
+  supports_dimension: "Gita/philosophical model (Sankhya/kosha/chakra/Yoga) directly refining the Mathematical/statistical Knowledge Vector work with a disciplined multi-lens (not vertical-stack) methodology"
+  refines_or_contradicts: "refines 0247/0249/0251; reinforces (same-tradition, not independent) the Wisdom-maturation cluster via the koshas"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "No formal criteria given for how the seven-item Systemic Knowledge Health checklist would be measured or scored"
+open_questions:
+  - "Whether the Reflexive Knowledge System definition is ever formally adopted as a candidate Kernel principle"
+  - "Whether the twelve-lens correspondence table is ever merged with the corpus's other lens systems (the 26-lens system, the Ganesha/Leonardo/Krishna/Shani framework from 0238)"
+tier2_triggered: true
+tier2_reason: "Critical, methodologically disciplined return to the core Sankhya/kosha/chakra/Yoga tradition, explicitly self-correcting an earlier over-literal 'chakra=knowledge-layer' mapping into a twelve-lens reference model; culminates in the Reflexive Knowledge System definition (K+provenance+uncertainty+authority+perspective+history+assumptions+limitations+transformations) as the strongest single formulation of self-aware epistemic architecture in the corpus so far."

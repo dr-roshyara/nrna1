@@ -1,0 +1,152 @@
+sequence: "0196"
+path: docs/knowledgeos/brainstorming/kernel/20260824-020611-wave-1-kernel-extent-versus-contents-adjudication-status.md
+title: "First direct governance/engineering-process status update in the corpus's reading order: a git branch (kos-v11-ddd-refinement @ 3f13c4f1), an explicit Wave 1/2/3 adjudication plan, the extent-vs-contents distinction (K-1 = KnowledgeAggregate+ConflictRecord+VerificationPort), and confirmation that the 0188 synthesis dossier is deliberately SEALED as an independent post-adjudication falsification instrument (partially garbled text)"
+date: "2026-08-24"
+bytes: 3400
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0196"
+importance: critical
+confidence: medium
+about: >
+  A short, terse, and partially textually corrupted (dropped/merged words in several places, e.g.
+  "C-3exts 6->7", "two that don'n hidden state," "what was about whether it holds" -- treated as a data-
+  quality artifact of the capture process, not a content signal) governance/engineering status update,
+  distinct in register from every philosophical-lens file read so far in this stretch. Opens with "Stopped
+  and waiting. Nothing in flight; kos-v11-ddd-refinement is at 3f13c4f1, clean and pushed" -- the FIRST
+  direct evidence in this reconstruction's reading order of an actual named git branch and commit hash tied
+  to this Kernel research, confirming the philosophical/DDD brainstorming work is coupled to real,
+  version-controlled engineering activity rather than remaining purely conceptual. Answers a "preserved
+  question" (quoted verbatim: "Are we adjudicating the smallest authoritative Kernel boundary, or are some
+  of the open questions actually asking us to repair the surrounding KnowledgeOS architecture/law?") by
+  introducing a sharp, newly-named distinction: EXTENT (which aggregates, and which gate -- explicitly
+  restated as "the K-1 structure: KnowledgeAggregate + ConflictRecord, Verification Port as sole inbound
+  gate," the first time this exact three-part structure has been given the label "K-1" in this
+  reconstruction's reading order) versus CONTENTS (which members, states, events, and port obligations sit
+  inside that extent). Presents an explicit "Wave 1" adjudication table of six items -- Wisdom, C-15, C-17,
+  F-CM-1a, C-18, C-14 -- with a column confirming NONE of them touch extent; each instead repairs
+  surrounding constitutional law, vocabulary, or the Anti-Corruption Layer (Wisdom: confirms an existing
+  scope exclusion; C-15: KnowledgeCore's event/state vocabulary, retraction still passes the same gate
+  regardless of its final shape; C-17: state vocabulary or a Port Contract obligation enforced at the ACL,
+  outside the boundary; F-CM-1a: section 15's non-collapse list; C-18: the aggregate's record-keeping or
+  infrastructure, explicitly noting a new member would change contents, not extent; C-14: a section 15 row
+  or a Confidence representation). Concludes Wave 1 can be ruled with zero risk to the boundary's extent --
+  the corpus's own explicit statement that its current adjudication phase, despite extensive brainstorming
+  about the Kernel's contents, is NOT yet touching the question of what the boundary actually contains at
+  the structural level. Identifies Wave 2 (F-CM-1b: does selection sit inside?; C-3: state count extending
+  6->7; C-10: capability scope) as the first wave that CAN change extent, with Wave 3 (C-4: what crosses the
+  gate) following -- explicitly flagging this as "exactly where I would want it asked again rather than
+  assumed answered," a deliberate refusal to treat the extent question as settled. Refines a proposed
+  Wave-1 starting-item ranking: C-18 is ranked LOWER priority than initially proposed because it has the
+  most no-amendment options of any Wave 1 item (four: EvidenceLink, History, infrastructure, out-of-scope)
+  and its one amendment option already fails minimality "because a law version is a property of the act,
+  not the claim" -- a precise DDD-grounded rejection of a specific modeling option; C-15 is ranked HIGHER
+  because it has the fewest no-amendment options (its two leading options both require amendment) and
+  belongs in the opening adjudication group instead. Confirms explicitly that "the second corpus" (almost
+  certainly referring to the 0187/0188 synthesis dossier, explicitly built as "non-authoritative research
+  material to attack") remains SEALED until formal adjudication is finished, with its purpose stated
+  precisely: "to attack the result, not to help manufacture it" -- direct, source-internal confirmation of
+  the deliberate evidence-sequestration discipline this reconstruction has already inferred and flagged at
+  0185/0186/0187/0188. States a pre-condition for opening that sealed-corpus falsification phase: the
+  adjudicated Kernel must first be recorded precisely enough to be attackable (extent, contents, refusals,
+  and the tests, each with the ruling that fixed it) -- otherwise "a falsification pass against a loosely-
+  recorded boundary produces disagreement about what was [claimed], [not] about whether it holds." Closes
+  with the author explicitly "standing by," having written nothing further and started nothing, offering
+  only to record the extent-versus-contents finding as an annotation for "the next actor" -- direct evidence
+  of a deliberate governance handoff discipline (an actor stopping and waiting for explicit authorization
+  rather than proceeding unilaterally), structurally resonant with this reconstruction's own MD-019
+  standing-instruction discipline and the corpus's broader Session-Completion-Handoff-Protocol pattern
+  (cf. `docs/knowledgeos/governance/SESSION-COMPLETION-HANDOFF-PROTOCOL.md`, referenced in this repository's
+  own CLAUDE.md).
+
+introduces:
+  - "The EXTENT-vs-CONTENTS distinction for the Kernel boundary question: extent = which aggregates and
+    which gate (the named 'K-1 structure': KnowledgeAggregate + ConflictRecord + Verification-Port-as-sole-
+    inbound-gate); contents = which members/states/events/port-obligations sit inside that extent -- the
+    sharpest formal distinction yet for separating 'is the boundary right' from 'is the boundary's interior
+    right'"
+  - "First named 'K-1 structure' label for the KnowledgeAggregate+ConflictRecord+VerificationPort
+    hypothesis tracked since 0165/0167 -- a naming convention not previously observed in this
+    reconstruction's reading order"
+  - "An explicit three-wave adjudication plan: Wave 1 (Wisdom, C-15, C-17, F-CM-1a, C-18, C-14 -- none
+    touch extent, all repair surrounding law/vocabulary/ACL), Wave 2 (F-CM-1b, C-3, C-10 -- first wave that
+    CAN change extent), Wave 3 (C-4 -- what crosses the gate)"
+  - "A precise DDD-grounded rejection of one C-18 amendment option: 'a law version is a property of the
+    act, not the claim' -- fails minimality, used to justify demoting C-18's Wave-1 priority relative to
+    C-15"
+  - "Direct, source-internal confirmation that the 0187/0188 synthesis dossier ('the second corpus') is
+    deliberately sealed until formal adjudication completes, with its stated purpose being to attack the
+    adjudicated result, never to help produce it -- confirming the evidence-sequestration discipline
+    inferred from 0185/0186/0187/0188"
+  - "An explicit pre-condition for opening the sealed-corpus falsification phase: the adjudicated Kernel
+    (extent, contents, refusals, tests, each with its fixing ruling) must be recorded precisely enough to
+    be attackable, to prevent a falsification pass from degenerating into disagreement about what was
+    claimed rather than whether it holds"
+
+defines: []
+
+refines:
+  - "Directly answers the 'preserved question' about whether current adjudication work is repairing
+    surrounding law versus adjudicating the boundary itself -- the clearest, most explicit resolution of
+    this recurring tension in the corpus's reading order to date"
+  - "Confirms and sharpens 0167's ADR-KOS-KERNEL-001 hypothesis (KnowledgeAggregate+ConflictRecord+
+    VerificationPort) by giving it a formal 'K-1' extent label and explicitly separating it from the
+    still-undecided contents question"
+
+contradicts: []
+
+repeats:
+  - {concept: "KnowledgeAggregate + ConflictRecord + Verification Port as the proposed Kernel structure", canonical_source: "0165", novelty: low}
+  - {concept: "Sealed non-authoritative research dossier reserved for post-adjudication falsification attack", canonical_source: "0187", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- explicitly confirms Wave 1 changes nothing about the Kernel extent; contents-level Wave 1
+    items remain pending ruling, not recorded here as decided"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Sharpens (does not extend or contradict) the K-1 extent hypothesis via the extent-vs-contents distinction; confirms Wave 1 does not touch extent, deferring that question explicitly to Wave 2/3."
+  alternative_minimal_kernel: "Restates (formally labels as 'K-1') the existing KnowledgeAggregate+ConflictRecord+VerificationPort hypothesis as the current extent under adjudication, not yet ruled"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "First direct evidence of an actual git branch/commit (kos-v11-ddd-refinement @ 3f13c4f1) tied to this
+    research in the corpus's reading order -- confirms real engineering-repository coupling, not purely
+    conceptual brainstorming; this matches the naming of a worktree directory (.claude/worktrees/kos-v11-ddd/)
+    visible in this session's own git status at conversation start, suggesting this specific branch may be
+    directly relevant to the present repository's own state"
+  - "Direct source-internal confirmation of the deliberate evidence-sequestration discipline (the 0188
+    dossier stays sealed until adjudication completes) -- closes the loop on inferences made at 0185/0186/
+    0187/0188 with an explicit governance statement rather than leaving it as inference"
+  - "Textual corruption (dropped/merged words in at least three places) is worth flagging as a capture-
+    process data-quality note distinct from content -- the substantive claims remain legible and are
+    recorded with medium-high confidence, but exact wording in the corrupted spans should not be treated as
+    verbatim quotable"
+
+undefined_concepts: []
+open_questions:
+  - "Whether Wave 1's six items (Wisdom, C-15, C-17, F-CM-1a, C-18, C-14) are actually ruled in a later
+    file, and with what dispositions"
+  - "Whether Wave 2 (F-CM-1b, C-3, C-10) and Wave 3 (C-4) are reached and rule on the Kernel's extent"
+  - "Whether the kos-v11-ddd-refinement branch (commit 3f13c4f1) corresponds to the .claude/worktrees/
+    kos-v11-ddd/ directory visible in this repository's own git status -- worth checking directly if ever
+    operationally relevant, though out of scope for this reconstruction's own read-only corpus-reading task"
+
+tier2_triggered: true
+tier2_reason: >
+  First direct git/engineering-process evidence in the corpus; introduces the extent-vs-contents
+  distinction and the named K-1 extent structure; establishes an explicit three-wave adjudication plan;
+  directly confirms the sealed-dossier evidence-sequestration discipline inferred across four prior files.

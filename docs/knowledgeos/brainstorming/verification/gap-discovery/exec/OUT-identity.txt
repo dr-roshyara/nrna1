@@ -1,0 +1,70 @@
+
+==========================================================================
+EXP-8  'A in K?' is answered DIFFERENTLY by each defensible equality
+==========================================================================
+  K = {a1:Nexus.version=3.69 <vendor/api@10> sigma=Supported}
+
+  probe                                        structural      content-only    content+status  identity-only  
+  a_forum (same prop, other source/status)     False           True            False           False          
+  a_vend2 (same prop+prov+status, NEW id)      False           True            True            False          
+  a_vendor (identical object)                  True            True            True            True           
+
+  probes on which the four equalities DISAGREE: 2/3
+  => 'assertion in K' is NOT a well-defined predicate of the theory.
+     It is a family of four predicates, and the corpus fixes none of them.
+     Step 261 names structural vs semantic equality but does not RULE, and
+     Step 266 marks semantic equality 'yellow: domain semantics' -- i.e. open.
+     Consequence: EVERY theorem quantifying over 'A in K' is underdetermined.
+
+==========================================================================
+EXP-9  'K1 = K2 ?'  -- the four equalities partition the same 5 states differently
+==========================================================================
+  structural       -> 5 classes: {S1 vendor/Supported} | {S2 forum/Candidate} | {S3 vendor/Supported new-id} | {S4 S1 + derivation rel} | {S5 S4 without the relation}
+  content-only     -> 2 classes: {S1 vendor/Supported, S2 forum/Candidate, S3 vendor/Supported new-id} | {S4 S1 + derivation rel, S5 S4 without the relation}
+  content+status   -> 3 classes: {S1 vendor/Supported, S3 vendor/Supported new-id} | {S2 forum/Candidate} | {S4 S1 + derivation rel, S5 S4 without the relation}
+  identity-only    -> 5 classes: {S1 vendor/Supported} | {S2 forum/Candidate} | {S3 vendor/Supported new-id} | {S4 S1 + derivation rel} | {S5 S4 without the relation}
+
+  => The SAME five states fall into different numbers of equivalence classes
+     depending on the equality chosen.  'K1 = K2' therefore has no truth value
+     in the theory as it stands.  Step 260 requires the equivalence to be a
+     CONGRUENCE for the transformation algebra T -- and T is not enumerated
+     (Step 266), so the relation cannot even be constructed, let alone decided.
+
+==========================================================================
+EXP-10  Is MERGE an algebra?  (idempotent / commutative / associative)
+==========================================================================
+  A=[('x', 'Accepted')]  B=[('y', 'Accepted')]  C=[('z', 'Candidate')]
+
+  idempotent?   merge(A,A)=[('x', 'Accepted')]   == A? True
+  commutative?  merge(A,C)=[('x', 'Conflicted'), ('z', 'Conflicted')]
+                merge(C,A)=[('x', 'Conflicted'), ('z', 'Conflicted')]   equal? True
+
+  associative?  (A*B)*C = [('x', 'Conflicted'), ('y', 'Conflicted'), ('z', 'Conflicted')]
+                A*(B*C) = [('x', 'Conflicted'), ('y', 'Conflicted'), ('z', 'Conflicted')]   equal? True
+
+  second rule (latest-wins, tie->Conflicted), with a TIE at t=10:
+    (A*B)*C = [('z', 'Candidate')]
+    A*(B*C) = [('z', 'Candidate')]   equal? True
+
+  NOTE: this hand-picked triple came out ASSOCIATIVE for both rules.  A single
+  example proves nothing either way, so EXP-10b replaces it with an exhaustive
+  search over the full small state space.  The exhaustive result is the finding.
+
+==========================================================================
+EXP-10b  EXHAUSTIVE SEARCH for a non-associative merge triple (no hand-picking)
+==========================================================================
+  search space: 4 single-assertion states, 64 ordered triples
+
+  conflict-rule: associativity counterexamples found = 0
+
+  lww-rule: associativity counterexamples found = 4
+    witness A=3.69@t10  B=3.69@t10  C=3.70@t10
+      (A*B)*C = [('3.69', 'Conflicted')]
+      A*(B*C) = [('3.69', 'Accepted')]
+
+  READING (this supersedes the hand-picked triple above, which was associative):
+    The exhaustive result -- not an assertion -- is what stands.  Whichever way
+    it comes out, the finding is the same one: 'merge converges' (Step 025l) is
+    a property OF A RULE, and the corpus states the claim without naming the
+    rule.  A convergence theorem that does not name its conflict-resolution
+    operator has no content.

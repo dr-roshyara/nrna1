@@ -1,0 +1,128 @@
+sequence: "0191"
+path: docs/knowledgeos/brainstorming/kernel/20260824-010840-research-extraction-agent-prompt-for-book-knowledge-extraction.md
+title: "The governing 'Research Extraction Agent' prompt template that produced the entire 0171-0186 book-lens-extraction stretch: a five-level source/hypothesis classification, a mandatory constructive-plus-destructive extraction discipline, a 20-item 'No Architecture Drift' gate, and an explicit two-session (reading-session vs. Claude architecture-session) production model"
+date: "2026-08-24"
+bytes: 15500
+model:
+  primary: c1
+  secondary: []
+source_role: FOUNDATIONAL
+canonical_source: "0191"
+importance: critical
+confidence: high
+about: >
+  A formal, highly detailed prompt-engineering artifact -- the actual "Claude Prompt: KnowledgeOS Book
+  Research & Epistemic Fact Extraction" recommended for a SEPARATE reading session tasked purely with book
+  extraction, explicitly distinguished from the architecture-deciding session ("another Claude session").
+  This is the governing methodology template that retroactively explains the remarkably consistent
+  structure observed across the entire preceding book-lens stretch (Williamson 0171, Audi 0172, Shieber
+  0173, critical-thinking 0174, decision-power 0176, Nyaya-sutra 0177, Quine 0178, Tractatus 0179, Managing
+  Memory 0180, Cavell 0184, Davidson 0185/0186): the five-level extraction ladder (SOURCE FACT -> SOURCE
+  DISTINCTION -> SOURCE ARGUMENT -> KNOWLEDGEOS RESEARCH RELEVANCE -> ARCHITECTURAL HYPOTHESIS, each level
+  requiring explicit classification and never silently promoted), the nine research dimensions (Knowledge,
+  Truth, Evidence, Justification/Reasoning, Authority, Identity, Meaning/Interpretation, Categories/
+  Distinctions, and cross-cutting Failure-Cases/Boundaries/Limits/Self-Reference/Temporal-Structure/
+  Relations), the DDD-relevance discipline (identify concepts/relations/state-changes/invariants/ownership,
+  formulate a "DDD question raised by this source," never invent an aggregate directly), a nine-question
+  "KnowledgeOS lens" checklist (Identity/Evidence/Justification/Authority/Epistemic-State/History/
+  Interpretation/Boundaries/Limits), and a cross-lens-comparison discipline requiring explicit
+  SOURCE->CONCEPT->EXISTING-LENS->AGREEMENT-OR-TENSION->RESEARCH-QUESTION chains rather than bare
+  "this agrees with X" assertions. Establishes disagreement/contradiction as explicitly HIGH VALUE ("do not
+  try to reconcile every book... a contradiction between respected sources is often more valuable than
+  their superficial agreement") and explicitly forbids false convergence ("never write 'all philosophers
+  agree'... never force Nyaya+Davidson+Williamson+DDD into one unified theory"). Mandates strict provenance
+  discipline (book/author/chapter/section/page/paragraph/exact-terminology/short-quotation/paraphrase, with
+  an explicit PAGE UNKNOWN fallback rather than fabricated page numbers) and a rigid per-finding extraction
+  record format with a STATUS field (SOURCE FACT/LENS OBSERVATION/RESEARCH HYPOTHESIS/UNRESOLVED). Specifies
+  a mandatory 20-section "Final Book Report" template (Book Identification through Research Recommendation,
+  with an explicit mandatory section "18. What This Book Does NOT Establish"), a five-value Research
+  Recommendation vocabulary (HIGH VALUE/USEFUL/LIMITED/REDUNDANT/CONTRADICTORY), and a 12-item "No
+  Architecture Drift" pre-submission gate (did I invent an aggregate/bounded-context/Kernel-capability;
+  promote a metaphor into a domain object; treat semantic interpretation as Kernel responsibility; treat an
+  LLM as epistemic authority; equate confidence with truth, evidence with justification, authority with
+  truth, or representation with identity; resolve an unresolved question merely because the book suggests
+  an answer; silently change the Constitution -- if YES to any, STOP and rewrite as hypothesis/question).
+  Closes with two explicit methodological principles not previously stated this precisely in the corpus:
+  (1) mandatory "negative extraction" -- ask not only "what does this book teach us?" but "what would this
+  book make us stop believing about KnowledgeOS?", producing parallel constructive (useful distinctions/
+  concepts/models/relations) and destructive (challenged assumptions/counterexamples/limits/failure-modes)
+  extraction streams that both feed one KnowledgeOS research space before falsification; (2) an explicit
+  anti-premature-merging discipline -- each book must first produce its own clean, independent extraction
+  record before any cross-book comparison occurs, "to preserve the independence of the sources and prevent
+  artificial convergence" -- stating the full intended production chain: Book -> extraction -> independent
+  book report -> cross-book comparison -> falsification -> DDD scenarios -> governed architecture decision.
+
+introduces:
+  - "The formal five-level source/hypothesis classification ladder (SOURCE FACT / SOURCE DISTINCTION /
+    SOURCE ARGUMENT / KNOWLEDGEOS RESEARCH RELEVANCE / ARCHITECTURAL HYPOTHESIS), retroactively explaining
+    the consistent structure of the entire preceding book-lens extraction stretch"
+  - "Explicit two-session production model: a dedicated reading/extraction session (following this exact
+    protocol) distinguished from the architecture-deciding Claude session that later attacks the extraction
+    -- directly explaining the raw-extraction-then-companion-adjudication pattern observed repeatedly across
+    this reading stretch (0165->0166, Kimi/DeepSeek/Perplexity->0168, 0179->0182)"
+  - "A 20-item mandatory 'No Architecture Drift' pre-submission gate for extraction sessions, the most
+    complete single checklist of this discipline seen in the corpus so far"
+  - "Mandatory negative extraction: parallel constructive and destructive extraction streams from every
+    source, explicitly valuing falsification over confirmation ('a book that destroys one of our current
+    assumptions is potentially MORE valuable than a book that confirms ten of them')"
+  - "An explicit anti-premature-merging production discipline: each book produces its own independent
+    extraction record before any cross-book comparison, to preserve source independence and prevent
+    artificial convergence -- directly analogous to this reconstruction's own MD-012/MD-017 discipline
+    against merging candidates by resemblance alone"
+  - "A rigid provenance/quotation discipline (page/section citation required, PAGE UNKNOWN as an explicit
+    fallback rather than fabrication) and a mandatory disagreement-preservation rule (never reconcile
+    disagreeing sources; contradiction is explicitly higher-value than agreement)"
+
+defines: []
+
+refines:
+  - "Explains, after the fact, why every book-extraction file since 0171 has followed the same disciplined
+    format (raw observations, explicit STATUS/level tags, cross-lens comparison tables, anti-architecture-
+    drift caveats, 'what this does NOT establish' sections) -- this is the template those files were
+    produced against"
+
+contradicts: []
+
+repeats: []
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "None -- this is a methodology/process artifact, not a source of domain content itself"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; a methodology artifact explaining the production process behind the preceding book-lens extraction stretch, not itself a Kernel-boundary claim."
+  alternative_minimal_kernel: "none"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "This file retroactively explains the corpus's own internal production discipline for the entire
+    0171-0186 book-lens stretch, confirming it was produced under a formal, reusable extraction protocol
+    rather than ad hoc philosophical commentary -- important context for weighting the reliability and
+    structure of all subsequent book-extraction files this reconstruction will encounter"
+  - "The explicit two-session model (dedicated reading/extraction session + separate architecture-deciding
+    Claude session) is the clearest statement yet of the multi-agent production process this reconstruction
+    has been inferring from indirect evidence since 0147/0163/0169 -- worth treating as strong confirmation
+    of that inference going forward"
+
+undefined_concepts: []
+open_questions:
+  - "Whether this exact prompt template is reused verbatim for any book-extraction files still to come
+    later in the corpus, and whether any later file explicitly cites having followed it"
+
+tier2_triggered: true
+tier2_reason: >
+  Retroactively explains the production methodology behind the entire preceding book-lens extraction
+  stretch; the clearest confirmation yet of the corpus's multi-session/multi-agent production model;
+  introduces the mandatory negative-extraction and anti-premature-merging disciplines as formal process
+  requirements.

@@ -1,0 +1,241 @@
+sequence: 716
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-125449_step-130-the-knowledgeos-assurance-graph.md
+title: "Step 130 -- MAJOR SYNTHESIS MILESTONE: Names and Justifies the 'Assurance Graph' (Intent→Decision→Knowledge→Rule→Implementation→Runtime→Evidence→Verification→Finding→Governance) as KnowledgeOS's Semantic Backbone, Delivers Bidirectional (Forward/Backward) Traceability, the T0-T4 Traceability-Strength Scale, Graph Integrity Invariants I1-I7 Directly Unifying With the AFR Fitness-Rule Catalog, and Evidence-Backed Edges Extending Provenance From Nodes to Relationships -- Delivers the Genuinely Significant 'SemanticRetrieval+GraphTraversal' Synthesis Resolving the Corpus's Long-Tracked RAG-vs-KnowledgeOS Central Tension -- Explicitly Names 'Why This Validates the .claude/.codex Principle' -- Delivers Anti-Hallucinated-Topology Safeguards for Graph Edges and the TraceabilityCompleteness Metric Directly Reinforcing 0715's 'No Single Score' Caution -- Opens Step 131, Promising the First KnowledgeOS Logical Architecture (Domain/Application/Assurance/Integration/Infrastructure/Agent Layers) -- Does NOT Reconcile the Three-Way Candidate-Fundamental-Unit Question"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 130 -- The KnowledgeOS Assurance Graph', promised at 0715's close; combines every object derived across Steps 122-129 into a single named, justified graph construct ('Assurance Graph'), delivers genuinely novel extensions (evidence-backed edges, graph-level integrity invariants unifying with the AFR catalog, a graph-relationship epistemic lifecycle, anti-hallucinated-topology safeguards) and resolves the corpus's long-tracked RAG-vs-KnowledgeOS central tension via an explicit synthesis rather than an either/or answer -- among the most integrative synthesis milestones in the entire reconstruction to date, comparable in significance to the 0705 Constitution"
+source_role: PRIMARY_RESEARCH
+canonical_source: 716
+importance: critical
+confidence: high
+about: >
+  Poses the central question directly: "Can KnowledgeOS trace an engineering decision from organizational
+  intent all the way to implementation and runtime evidence—and back again?" and names the target construct
+  the **KnowledgeOS Assurance Graph**: `Intent→Decision→Knowledge→Rule→Implementation→Runtime→Evidence→
+  Verification→Finding→Governance`. Motivates the need for graph-like semantics with three concrete
+  relationship questions a conventional document structure cannot answer (which service implements ADR-002?
+  which evidence proves conformance? which decision authorized an exception?), with the important
+  clarifying caveat: "KnowledgeOS needs graph-like semantics even if its physical persistence is not a
+  graph database."
+
+  **Delivers Bidirectional traceability as a core capability** (§130.3-130.6): the Intent flow
+  (`Why→What→How`, forward traceability: business requirement→architecture decision→constraint→
+  implementation requirement→code/configuration→deployment) and the Evidence flow (`What happened→What
+  proves it→Does it conform?→What should change?`, backward traceability: runtime→observation→evidence→
+  verification→finding→governance), worked through concrete numeric examples (`D_42→K_17→R_11→S_A→C_X`,
+  then `C_X→O_88→E_91→V_12=PASS` → "ADR-42 is currently implemented and verified through evidence E-91";
+  and a failed-implementation counterpart producing `V_12=FAIL→Finding F_31`, explicitly called
+  "architectural drift represented explicitly").
+
+  **Delivers Drift as a graph difference**: `Drift=Difference(ExpectedGraph,ObservedGraph)`, "stronger than
+  comparing documents," with five drift levels (Structural/Behavioral/Governance/Temporal/Evidence) directly
+  unifying the corpus's previously scattered drift taxonomy (0681, 0684/0686/0687, 0689, 0691, 0692's D1-D6)
+  into graph terms specifically. Reconfirms `Drift≠Violation` via the precise formula
+  `EffectiveExpectedState=BaseArchitecture+ApplicableExceptions`, `Drift=EffectiveExpectedState-
+  ObservedState` (extends 0703/0706/0708's exception discipline).
+
+  **Delivers five concrete graph-query patterns** (§130.13-130.18) with worked traversal expressions: "Why?"
+  (causal/intent traceability), "Who?" (authorization chain), "What proves it?" (evidence chain), "What
+  changed?" (version diff), "What is affected?" (impact analysis via `Decision→Knowledge→Systems→
+  Components→Deployments`), and "What becomes invalid?" (targeted re-verification triggered by
+  supersession) — a genuinely valuable, concrete, directly implementable query catalog. **Delivers
+  Dependency-aware verification** — `Change→AffectedGraph→RelevantRules→RunOnlyRelevantVerification`,
+  explicitly flagged "potentially a major efficiency improvement" over re-running every check on every
+  change.
+
+  **Delivers the Traceability-strength scale T0 through T4** (§130.23, a new, precise, reusable metric):
+  `T0`=No link, `T1`=Textual, `T2`=Explicit reference, `T3`=Machine-linked, `T4`=Verified — enabling a
+  governance dashboard to distinguish weak from strong traceability, extending the corpus's existing
+  evidence/confidence scales (0694's E0-E5, 0707's five-level traceability scale) with a distinct,
+  edge-strength-specific formulation.
+
+  **Delivers Graph integrity invariants I1 through I7** (§130.24-130.26), directly unifying the Assurance
+  Graph with 0714's/0715's AFR fitness-rule catalog for the first time: `AuthoritativeKnowledge⇒Provenance`,
+  `AuthoritativeDecision⇒Authority`, `Verification⇒Rule`, `Verification⇒Evidence`, `MaterialAction⇒
+  Authorization`, `MaterialAction⇒Actor`, `CurrentKnowledge⇒Validity` — explicitly named "graph-level
+  fitness rules," with a worked deterministic-assertion-style integrity-check pseudocode.
+
+  **Delivers the precise naming and justification of "Assurance Graph"** as distinct from a generic
+  "Knowledge Graph" (§130.27-130.28): a conventional knowledge graph can state "Service A depends on Service
+  B"; an Assurance Graph can additionally state "this dependency is governed by Decision D42, currently
+  effective, implemented in commit C81, observed in deployment R17, and verified by Rule R11 at time T" —
+  "substantially richer," "because the graph is explicitly designed to establish trustworthy relationships."
+  Delivers Graph node authority (not all nodes equally authoritative — `AgentRecommendation.EpistemicStatus
+  =INFERRED` vs. `ArchitectureDecision.Authority=ArchitectureBoard` — must be preserved).
+
+  **Delivers Edge authority / evidence-backed edges, a genuinely novel extension of the corpus's provenance
+  discipline from nodes to relationships specifically** (§130.30-130.32): a relationship such as
+  `ServiceA-ownedBy→TeamX` should itself be backed by Evidence, "otherwise ownership becomes an ungrounded
+  assertion" — enabling explainability: "why does the system believe Team X owns Service A?" is answered by
+  traversing `OwnershipClaim→Evidence`, "evidence-backed rather than generated from LLM intuition."
+
+  **Delivers the Agent-as-graph-navigator reformulation** (§130.33-130.35), a precise, memorable restatement
+  of 0714's "Governed Engineering Actor": the agent's role is `Navigate+Interpret+Recommend`, explicitly
+  NOT `Invent+Remember+Declare` — with Context retrieval formalized as a task-relevant subgraph
+  `G_task⊆G_KOS=Relevant(Task,Authority,Knowledge,Evidence,CurrentState)`, "the semantic equivalent of
+  context retrieval," worked through a concrete Nexus-migration context-subgraph example, and Context
+  compression (`RelevantSubgraph_42` rather than `Documents_1000`).
+
+  **Delivers "SemanticRetrieval+GraphTraversal," a genuinely significant resolution of the corpus's
+  long-tracked RAG-vs-KnowledgeOS central tension** (independently reformulated at least seven times across
+  0688/0697/0698/0699/0701/0702/0709 per this reconstruction's tracking) **via explicit synthesis rather
+  than an either/or answer** (§130.38-130.40): "we should not conclude that vector search is unnecessary" —
+  semantic search finds candidate nodes (`SemanticSearch→CandidateKnowledge`), graph traversal then
+  establishes `RelevantRelationships`; `SemanticRetrieval+GraphTraversal` "is stronger than either alone" —
+  with a worked hybrid-retrieval architecture diagram (`Semantic Search`+`Graph Traversal`→`Relevant
+  Subgraph`→`Agent Context`), explicitly called "a likely direction for the AI engineering platform."
+
+  Delivers Graph freshness (Current vs. Historical, temporal graph queries `Traverse(G,t=now)` vs.
+  `Traverse(G,t=2025-06-01)`) and **Audit reconstruction/AI action reconstruction** (§130.43-130.44): given
+  `Action=A_81`, reconstruct `Context(t_{A81})` to answer "what knowledge, decisions, exceptions, evidence,
+  and authorization were applicable when the agent acted?" — "a true AI audit trail," with a concrete
+  action-reconstruction chain (`executedBy→Agent, authorizedBy→Authorization, basedOn→Context C42,
+  proposedBy→Recommendation R17, verifiedBy→Verification V88`), explicitly "substantially more defensible
+  than storing only an agent transcript."
+
+  **Delivers the "Assurance Graph as semantic backbone" hypothesis** (§130.45-130.46): documents, APIs,
+  dashboards, agent contexts, and reports become projections over the graph — directly and precisely
+  converging with 0711's `InformationModel≠DatabaseSchema≠APIContract` principle and its
+  `Context=Projection(Knowledge,Evidence,Governance,CurrentState)` reframing. **Delivers an important
+  technology-independence qualification directly extending 0705's discipline into the persistence layer**
+  (§130.47-130.48): this "does NOT mean 'implement a graph database'" — the physical implementation could be
+  relational/document/graph/event-sourced/hybrid; the requirement is `GraphSemantics`, not a specific
+  technology; the actual persistence decision (`Neo4j? Postgres? MySQL? EventStore?`) is explicitly
+  postponed pending query patterns/consistency/scale/existing architecture/operational constraints —
+  "**DDD comes before technology selection**," directly matching this very repository's own governing
+  architecture discipline (Domain layer has zero framework dependencies; infrastructure choices come last).
+
+  **Delivers "LLM memory ≠ Organizational memory," a sharp, memorable capstone contrast** (§130.49-130.50):
+  LLM memory answers "I remember we discussed Nexus"; KnowledgeOS memory answers "Decision D17 governs
+  Nexus migration, was approved by X, became effective on Y, is currently active, and is supported by
+  evidence E42." **Delivers an explicit section titled "Why this validates the `.claude`/`.codex`
+  principle"** (§130.51) — the single most direct, explicit self-tie-back of the Assurance Graph concept to
+  the corpus's long-tracked pointer-layer discipline: `LocalMemory→Convenience`; `KnowledgeOS→Authority`.
+
+  **Delivers Graph governance/epistemology extended to relationships themselves** (§130.52-130.55):
+  relationships carry `Confidence`, but preferably `Evidence+Source+Status` (worked example: `ServiceA
+  -implements→DecisionD42, Status: VERIFIED, Evidence: E91, Verified: 2026-08-28`), with **an explicit
+  anti-hallucinated-topology safeguard specifically for graph edges**: an LLM inferring a relationship from
+  semantically similar names must not be treated as fact — `AgentInference→CandidateRelationship→
+  Verification→VerifiedRelationship→[Governance]→AuthoritativeRelationship` — and a graph-relationship
+  epistemic lifecycle (`Candidate→Supported→Verified→Authoritative→Superseded`) mirroring the node-level
+  lifecycle states established earlier (0698, 0711).
+
+  **Delivers the `TraceabilityCompleteness` metric** (§130.56-130.57): `TC(D)=VerifiedRequiredRelationships
+  /RequiredRelationships`, worked through a concrete example (4/5 relationships verified = 80% completeness,
+  but if the missing relationship is specifically `Authority`, "the decision may still be invalid despite
+  high completeness") — **directly and concretely reinforcing 0715's "no single score" caution** with a
+  graph-specific worked demonstration that a high aggregate percentage can mask a critical gap. Delivers six
+  Assurance-graph health dimensions (AuthorityIntegrity/ProvenanceCompleteness/TraceabilityCompleteness/
+  TemporalValidity/VerificationCoverage/AgentActionTraceability), "a much more meaningful health model than
+  a generic 'knowledge quality score.'"
+
+  **Delivers "the graph becomes a governance instrument"** (§130.59-130.63) with four concrete, directly
+  implementable governance-report queries: which decisions have unverified implementations; which
+  production changes were executed without traceable architecture authority; which authoritative knowledge
+  objects are supported only by stale evidence (exposing "knowledge decay"); and which agent recommendations
+  are influencing production without corresponding decisions — the last explicitly flagged "particularly
+  relevant to AI governance."
+
+  Delivers Step 130's architectural conclusion ("KnowledgeOS should be understood as an evidence-backed,
+  temporally aware, governed assurance graph," preserving the chain `Why→What→How→What actually happened→
+  What proves it→What we should do") and verdict: "ASSURANCE GRAPH — CONCEPT ESTABLISHED," with AI agents
+  operating as "governed navigators and engineering actors, not as independent sources of organizational
+  truth."
+
+  **Closes by opening "Step 131 — From Assurance Graph to KnowledgeOS Architecture,"** promising to map the
+  semantic architecture derived so far onto actual platform layers (`Domain | Application | Assurance |
+  Integration | Infrastructure | Agent`), posing the key question "what should KnowledgeOS actually consist
+  of as a software architecture, without accidentally turning the semantic model into a giant monolith or a
+  collection of meaningless microservices?" — promising the first "KnowledgeOS Logical Architecture,"
+  including the exact position of Claude, Codex, deterministic assurance, external systems, and the
+  Assurance Graph itself. **Note: this file does NOT reconcile or even mention 0703's
+  `TraceableKnowledgeEpisode`, 0710's `GovernedEngineeringFact`, or 0711's `KnowledgeObject`/`Claim`
+  pairing** — it proceeds with its own graph-node vocabulary (Intent/Decision/Knowledge/Rule/
+  Implementation/Runtime/Evidence/Verification/Finding/Governance) without cross-reference, leaving the
+  three-way candidate-fundamental-unit question still open despite this file's otherwise unusually
+  comprehensive, integrative scope. No actual code execution, repository inspection, or verified graph
+  data/query-execution claim reported anywhere in this file — every worked example (D42/K17/R11/S_A/C_X,
+  the Nexus context-subgraph, the governance queries) remains a hypothetical illustrative application of
+  the stated Assurance Graph concept, not an empirical finding.
+introduces:
+  - concept: "The 'Assurance Graph' — precisely named and justified as distinct from a generic Knowledge Graph"
+  - concept: "Bidirectional traceability: Intent flow (forward) and Evidence flow (backward)"
+  - concept: "The Traceability-strength scale T0 through T4"
+  - concept: "Graph integrity invariants I1-I7, directly unifying the Assurance Graph with the AFR fitness-rule catalog"
+  - concept: "Edge authority / evidence-backed edges — provenance extended from nodes to relationships"
+  - concept: "'SemanticRetrieval+GraphTraversal' — resolving the RAG-vs-KnowledgeOS central tension via synthesis"
+  - concept: "Audit/AI-action reconstruction via Context(t_A) traversal"
+  - concept: "'Why this validates the .claude/.codex principle' — an explicit, direct self-tie-back section"
+  - concept: "Anti-hallucinated-topology safeguard and the graph-relationship epistemic lifecycle"
+  - concept: "The TraceabilityCompleteness metric TC(D), directly reinforcing 0715's 'no single score' caution"
+  - concept: "'The graph becomes a governance instrument' — four concrete governance-report query patterns"
+  - concept: "'DDD comes before technology selection' — postponing the graph-persistence technology decision"
+  - concept: "Opens Step 131 — the first KnowledgeOS Logical Architecture (Domain/Application/Assurance/Integration/Infrastructure/Agent)"
+defines:
+  - concept: "Assurance Graph"
+    definition: "A graph-semantic model of KnowledgeOS's central knowledge structure (Intent→Decision→Knowledge→Rule→Implementation→Runtime→Evidence→Verification→Finding→Governance) that, unlike a generic knowledge graph, explicitly carries Authority, Evidence, TemporalValidity, EpistemicStatus, and Verification on its nodes and edges, making relationships trustworthy and explainable rather than merely descriptive; its physical persistence need not itself be a graph database"
+  - concept: "Traceability strength (T0-T4)"
+    definition: "A graded scale for how strongly a Decision→Implementation edge is evidenced: T0 no link, T1 textual reference, T2 explicit reference, T3 machine-linked, T4 verified — enabling a dashboard to distinguish weak from strong traceability rather than treating all links as equal"
+  - concept: "Edge authority / evidence-backed edges"
+    definition: "Relationships in the Assurance Graph (not only nodes) require provenance: an ownership or dependency claim between two nodes should itself be backed by Evidence, Source, and Status, so that the graph can explain why it believes a relationship holds rather than presenting an ungrounded assertion"
+  - concept: "TraceabilityCompleteness (TC)"
+    definition: "TC(D) = VerifiedRequiredRelationships / RequiredRelationships for a governed decision D; a high TC score can still mask an invalid decision if the specific missing relationship is critical (e.g. Authority), so completeness must always be paired with a criticality weighting rather than reported as a bare percentage"
+  - concept: "Anti-hallucinated-topology safeguard"
+    definition: "An AI agent's inference that two nodes are related (e.g. from name similarity) must be represented only as a CandidateRelationship, never adopted as a VerifiedRelationship or AuthoritativeRelationship, until it passes through Verification and, where required, Governance"
+refines:
+  - concept: "the corpus's previously scattered drift taxonomy (0681, 0684/0686/0687, 0689, 0691, 0692's D1-D6)"
+    refinement: "Directly unified into graph terms as Drift=Difference(ExpectedGraph,ObservedGraph), with five drift levels (Structural/Behavioral/Governance/Temporal/Evidence)"
+  - concept: "0703's/0706's/0708's exception discipline"
+    refinement: "Directly extended into a precise formula: EffectiveExpectedState=BaseArchitecture+ApplicableExceptions, Drift=EffectiveExpectedState-ObservedState"
+  - concept: "0694's E0-E5 evidence scale and 0707's five-level traceability scale"
+    refinement: "Complemented by a distinct, edge-strength-specific T0-T4 traceability scale for Decision→Implementation links specifically"
+  - concept: "0714's/0715's AFR-01..AFR-26 fitness-rule catalog"
+    refinement: "Directly unified with the Assurance Graph for the first time via graph integrity invariants I1-I7, explicitly named 'graph-level fitness rules'"
+  - concept: "0714's 'Governed Engineering Actor' agent model"
+    refinement: "Restated precisely as the agent's Navigate+Interpret+Recommend role (vs. Invent+Remember+Declare), operationalized via task-relevant subgraph retrieval G_task⊆G_KOS"
+  - concept: "the corpus's long-tracked RAG-vs-KnowledgeOS central tension (0688/0697/0698/0699/0701/0702/0709)"
+    refinement: "Given its first explicit synthesis resolution (rather than another independent reformulation): SemanticRetrieval+GraphTraversal is stronger than either alone, semantic search finds candidates, graph traversal establishes relevant relationships"
+  - concept: "0705's technology-independence discipline"
+    refinement: "Directly extended into the persistence layer specifically: GraphSemantics is the requirement, not a graph database; the actual persistence technology decision is explicitly postponed pending query patterns/scale/constraints ('DDD comes before technology selection')"
+  - concept: "the corpus's long-tracked pointer-layer principle (0687-0714)"
+    refinement: "Given its most explicit direct self-tie-back to date via a dedicated section title, 'Why this validates the .claude/.codex principle', crystallizing LocalMemory→Convenience vs. KnowledgeOS→Authority"
+  - concept: "0698's/0711's node-level epistemic-lifecycle discipline"
+    refinement: "Directly extended to relationships/edges specifically via a parallel Candidate→Supported→Verified→Authoritative→Superseded lifecycle"
+  - concept: "0715's 'no single score' caution"
+    refinement: "Directly and concretely reinforced via the TraceabilityCompleteness worked example, showing a high aggregate percentage (80%) can still mask an invalid decision if the missing relationship is Authority-critical"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0717 (Step 131 — From Assurance Graph to KnowledgeOS Architecture) with continued high attention: this file's own explicit promise to derive the first KnowledgeOS Logical Architecture (Domain/Application/Assurance/Integration/Infrastructure/Agent layers) with the exact position of Claude, Codex, deterministic assurance, external systems, and the Assurance Graph is a natural, well-motivated, and potentially major continuation directly building on this file's synthesis. Also continue checking whether any later file finally reconciles the still-unaddressed three-way candidate-fundamental-unit question (0703/0710/0711), which this otherwise highly integrative file notably left untouched."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the naming and justification of the 'Assurance Graph' as KnowledgeOS's semantic backbone (Intent→Decision→Knowledge→Rule→Implementation→Runtime→Evidence→Verification→Finding→Governance), bidirectional traceability, the T0-T4 traceability-strength scale, and graph integrity invariants I1-I7 directly unifying with the AFR fitness-rule catalog."
+  - "dimension-registry.md: record the genuinely significant 'SemanticRetrieval+GraphTraversal' synthesis resolving the corpus's long-tracked RAG-vs-KnowledgeOS central tension, the explicit '.claude/.codex principle validation' section, and evidence-backed edges/anti-hallucinated-topology safeguards extending provenance discipline from nodes to relationships."
+  - "dimension-registry.md: flag Step 131 (0717) as a major, well-motivated continuation promising the first KnowledgeOS Logical Architecture, and flag the still-unreconciled three-way candidate-fundamental-unit question (0703/0710/0711), notably untouched even by this otherwise highly integrative file."
+anchor_test:
+  anchor: "0714's/0715's AFR fitness-rule catalog; the corpus's previously scattered drift taxonomy; 0703's/0706's/0708's exception discipline; 0694's/0707's evidence/traceability scales; the corpus's long-tracked RAG-vs-KnowledgeOS central tension (0688-0709); 0705's technology-independence discipline; the corpus's long-tracked pointer-layer principle (0687-0714); 0698's/0711's node-level epistemic lifecycle; 0715's 'no single score' caution; 0703's/0710's/0711's candidate fundamental-unit proposals (not engaged in this file)"
+  supports_dimension: "Delivers a major, highly integrative synthesis naming and justifying the 'Assurance Graph' as KnowledgeOS's semantic backbone, unifying nearly every object and discipline derived across Steps 122-130 into one coherent graph construct. Delivers several genuinely novel extensions: evidence-backed edges (provenance extended from nodes to relationships), graph integrity invariants directly unifying with the AFR fitness-rule catalog, an anti-hallucinated-topology safeguard for graph edges specifically, and a relationship-level epistemic lifecycle. Delivers the first explicit synthesis resolution (rather than restatement) of the corpus's long-tracked RAG-vs-KnowledgeOS central tension. Delivers the most direct, explicit self-tie-back of the entire reconstruction to its own pointer-layer discipline via a dedicated section title. Directly reinforces 0715's 'no single score' caution with a concrete worked demonstration. Closes with a well-motivated, major continuation into Step 131's promised Logical Architecture, while notably still leaving the three-way candidate-fundamental-unit question unaddressed"
+  refines_or_contradicts: "directly and substantially extends 0714's/0715's AFR catalog, the corpus's scattered drift taxonomy, 0703's/0706's/0708's exception discipline, 0694's/0707's evidence/traceability scales, 0705's technology-independence discipline, the corpus's long-tracked pointer-layer principle, 0698's/0711's node-level epistemic lifecycle, and 0715's 'no single score' caution; delivers the first genuine synthesis (not merely another restatement) of the corpus's long-tracked RAG-vs-KnowledgeOS central tension; no contradiction found; does NOT engage with or reconcile 0703's/0710's/0711's candidate fundamental-unit proposals, leaving that three-way question open despite this file's otherwise comprehensive integrative scope"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§130.27-130.28's explicit naming and side-by-side contrast of 'Assurance Graph' against a generic 'Knowledge Graph' statement is directly quotable evidence of a precise, well-motivated terminological and conceptual distinction with direct relevance to any real KnowledgeOS implementation choice."
+  - "§130.38-130.40's explicit statement 'we should not conclude that vector search is unnecessary... SemanticRetrieval+GraphTraversal is stronger than either alone' is directly checkable evidence that this file resolves, rather than merely restates, the corpus's long-tracked RAG-vs-KnowledgeOS central tension via genuine synthesis."
+  - "§130.51's dedicated section title 'Why this validates the .claude/.codex principle,' followed by the precise formula LocalMemory→Convenience / KnowledgeOS→Authority, is directly quotable evidence of the most explicit self-referential tie-back this reconstruction has produced connecting its own governing repository structure to the corpus's theoretical framework."
+  - "§130.56-130.57's worked TraceabilityCompleteness example (4/5 = 80% complete, yet potentially invalid if the missing relationship is Authority) is directly checkable, concrete evidence reinforcing 0715's 'no single score' caution with a graph-specific demonstration."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 131's actual content (0717), once read, delivers a genuinely concrete KnowledgeOS Logical Architecture (Domain/Application/Assurance/Integration/Infrastructure/Agent layer boundaries with explicit component placement), or continues the established hypothetical/promise-then-defer pattern flagged by the 0694 calibrating meta-finding."
+  - "Whether any later file finally reconciles the still-open three-way candidate-fundamental-unit question (0703's TraceableKnowledgeEpisode, 0710's GovernedEngineeringFact, 0711's KnowledgeObject/Claim pairing), given that even this highly integrative Assurance-Graph synthesis file left it untouched."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: names and justifies the 'Assurance Graph' as KnowledgeOS's semantic backbone, unifying nearly every object and discipline derived across Steps 122-130. Delivers several genuinely novel extensions (evidence-backed edges, graph integrity invariants unifying with the AFR catalog, anti-hallucinated-topology safeguards, a relationship-level epistemic lifecycle). Delivers the first genuine synthesis resolution of the corpus's long-tracked RAG-vs-KnowledgeOS central tension. Delivers the most direct self-tie-back of the reconstruction to its own pointer-layer discipline. Directly reinforces 0715's 'no single score' caution with a concrete demonstration. Opens Step 131's major promised Logical Architecture continuation, while still leaving the three-way candidate-fundamental-unit question unreconciled."

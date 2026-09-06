@@ -1,0 +1,86 @@
+sequence: "0131"
+path: docs/knowledgeos/brainstorming/20260822-125831-sanskrit-inspired-semantic-language-artha-research-extraction.md
+title: "External-research grounding for the Artha/Sanskrit semantic-layer idea (Karaka theory, PERIN); file self-duplicates once, then a Leonardo-lens architectural review"
+date: "2026-08-22"
+bytes: 43000
+model:
+  primary: g
+  secondary: [c1, m]
+source_role: INDEPENDENT_RESEARCH
+canonical_source: "0130"
+importance: medium
+confidence: high
+about: >
+  An externally-cited research document (Pāṇini computational-grammar literature, Karaka/vibhakti
+  semantic-role-labeling papers, and a 2020 CoNLL-winning permutation-invariant semantic parser, PERIN)
+  grounding the "Artha Language" idea introduced informally at 0130. The document body (lines ~1-554)
+  is repeated verbatim a second time in the same file (~556-1109) -- an in-file duplication, not new
+  content -- followed (~1111-1675) by a genuinely new "Leonardo-lens" architectural review synthesizing
+  it. Explicitly self-disciplined throughout: "Sanskrit is not the kernel... EXTERNAL RESEARCH ≠
+  KNOWLEDGEOS ARCHITECTURE," five ARTHA-MECH candidates all classified mechanism-layer, "Artha Language
+  as kernel: Rejected," "'Perfect meaning representation': Rejected (violates Gödel)."
+
+introduces:
+  - "PERIN (2020 CoNLL shared-task winner): a real external computational-linguistics precedent for
+    permutation-invariant / order-independent semantic graph parsing -- the first citation in the corpus
+    connecting the word-order-invariance intuition to actual modern NLP research, not only to Sanskrit
+    grammar or philosophy"
+  - "Karaka theory formalized with academic citations: Pāṇini's six Karakas (Kartā/Karma/Karaṇa/
+    Sampradāna/Apādāna/Adhikaraṇa) extended to an 8-row Vibhakti table with Sambandha/Sambodhana --
+    same territory as 0130's 8-case table, now externally grounded rather than self-derived"
+  - "Five explicitly named candidate mechanisms (ARTHA-MECH-001..005: Karaka role labeling,
+    permutation-invariant parsing, root-based lineage, semantic sandhi, case-frame representation),
+    each run through an explicit align-with-KnowledgeOS-principles test and classified strong-candidate/
+    candidate -- a disciplined mechanism-evaluation template"
+  - "An 'Evidence Boundary' table (Strong/Moderate/Weak-or-No/Unknown research evidence) -- a reusable
+    epistemic-honesty format not seen in this exact shape before"
+
+defines: []
+
+refines:
+  - "Strengthens (via external citation, not independent tradition) the same case/event-frame
+    representation family already logged as unresolved_equivalence at 0130 -- does not resolve it"
+
+contradicts: []
+
+repeats:
+  - {concept: "entire document body repeated verbatim within this same file (in-file duplication, distinct from the cross-file DUPLICATE_REPRODUCTION pattern seen twice before)", canonical_source: "0131", novelty: none}
+  - {concept: "Artha Language name, semantic sandhi, Gödel-aware self-limitation, case-frame examples", canonical_source: "0130", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: true
+kernel_content: false
+
+registry_updates:
+  - "No new registry entry -- strengthens the existing 0130 unresolved_equivalence note (case/event-frame
+    representation family) with external citation grounding; does not resolve or merge it"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "Neither; external-citation reinforcement of an already-logged candidate representation family."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "PERIN/CoNLL-2020 is the first genuinely external, non-Sanskrit, non-philosophical citation
+    supporting the word-order-independence intuition -- worth tracking as citation-grounding evidence,
+    though gathered within the same continuous research arc so it does NOT meet MD-012's independent-
+    corroboration bar"
+  - "The file duplicates its own ~550-line body verbatim before adding new content -- a data-quality
+    observation about the corpus, not a research finding"
+
+undefined_concepts: []
+open_questions: []
+
+tier2_triggered: true
+tier2_reason: >
+  First external (non-Sanskrit-tradition, non-philosophical) academic citation -- PERIN permutation-
+  invariant semantic parsing -- supporting the word-order-independence thread, plus a disciplined
+  five-mechanism evaluation template; also flags an in-file verbatim duplication as a corpus observation.

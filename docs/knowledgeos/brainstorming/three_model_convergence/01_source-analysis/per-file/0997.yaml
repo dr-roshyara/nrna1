@@ -1,0 +1,89 @@
+sequence: 997
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/R2-TRANSLATION-REGISTER.md
+title: "R2 -- Translation Register (=D285-3): The Actual Sixteen-Row Canonical Register Underlying Every GK-Numbered Citation This Reconstruction Has Tracked, Introducing Two Not-Previously-Detailed Entries (GK-14 Guna, Touching a New 'Untyped-Threshold/theta-Overload' Measurement Gap, and GK-15 Moksa) Plus the Full Priority-Tier Assignment"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual R2/D285-3 translation register: the canonical source grounding every GK-numbered citation this reconstruction has tracked across files 0973-0996"
+source_role: PRIMARY_RESEARCH
+canonical_source: 997
+importance: critical
+confidence: high
+about: >
+  The actual R2 Translation Register (= D285-3), status "16 candidate mappings (revised 286 register), none
+  canonical," revised from a not-yet-encountered `20260831-183219_step_286_revised-...` prompt (4 entries
+  added). Delivers the classification vocabulary (`TEXTUAL FACT`/`COMMENTARY`/`PHILOSOPHICAL INTERPRETATION`/
+  `ANALOGY`/`DESIGN HYPOTHESIS`/`FORMAL DERIVATION`/`GOVERNANCE DECISION`) and the full sixteen-row table
+  (GK-01 through GK-16), most of which this reconstruction has already tracked by cross-reference, plus two
+  genuinely new, not-previously-detailed entries:
+
+  **GK-14 Guṇa** (Ch. 14, 17) → "Knowledge quality," DESIGN HYPOTHESIS, explicitly "flagged, not opened,"
+  **touching a NEW corpus gap reference: "the untyped-`Threshold`/`θ`-overload measurement gap."** **GK-15
+  Mokṣa** (Ch. 18) → "Epistemic freedom," classified "PHILOSOPHICALLY ILLUMINATING only," not formalizable,
+  not falsifiable.
+
+  **GK-02 Arjuna** → "Knower + Actor," ANALOGY, explicitly noted to "conflate two roles," cross-referencing an
+  R3 identifier **"H-K02"** not present among the eleven hypotheses this reconstruction already documented
+  from file 0995's R3 register -- indicating R3 contains at least one further, not-advanced hypothesis entry
+  this reconstruction has not yet directly seen tested.
+
+  **Delivers the full Priority-tier assignment for the first time**: Priority 1 (`GK-03,04,06,07,13,05,09`);
+  Priority 2 (`GK-08,10,11,02`); **Priority 3 (`GK-14,15,12,16,01`) "recorded and not developed"** -- directly
+  confirming this reconstruction's already-tracked finding (files 0985, 0990, 0995) that `GK-16` Sañjaya was
+  placed in Priority 3 despite the evidence favoring Priority 1, with the finding "raised not overridden"
+  here and its full treatment again pointed to `01-GAP-UPDATE-FROM-REVISED-286.md §3` (the still-outstanding
+  bridge candidate, cited a further time).
+
+  **Restates, in the register's own canonical source form**, the already-tracked GK-01 Kṛṣṇa rejection
+  (Reviewer A's non-identity chain), the already-tracked column rename ("Existing KOS mapping"→"Candidate
+  KnowledgeOS Correspondence," Reviewer A correction 8) with its five-row actual-status table, and the
+  already-tracked promotion-chain law (Reviewer A correction 9, `Correspondence⇏Type⇏Primitive⇏Canonical
+  Architecture`, ADOPTED, with the full ten-stage chain).
+
+  Closes with the disciplined framing: **"nothing here is a hypothesis merely because it is in the table.
+  R3 records which entries survived becoming testable; R4 records which survived the attempt to destroy
+  them."**
+introduces:
+  - concept: "GK-14 Guna -> 'Knowledge quality,' a design hypothesis explicitly flagged but not opened, touching a new corpus gap: the untyped Threshold/theta-overload measurement gap"
+  - concept: "GK-15 Moksa -> 'Epistemic freedom,' classified philosophically illuminating only, not formalizable or falsifiable"
+  - concept: "The R3 identifier 'H-K02', referenced from GK-02 (Arjuna, Knower+Actor conflation) but not present among this reconstruction's already-documented eleven R3 hypotheses -- indicating at least one further, not-advanced R3 entry"
+  - concept: "The full Priority-tier assignment for all sixteen GK entries (Priority 1/2/3), grounding this reconstruction's already-tracked Sanjaya mis-prioritization finding in its canonical source"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked GK-numbered citations (files 0973-0996)"
+    refinement: "GROUNDED in their canonical R2/D285-3 source register, with the full sixteen-row table now directly confirmed"
+  - concept: "This reconstruction's already-tracked Sanjaya mis-prioritization finding (files 0985, 0990, 0995)"
+    refinement: "CONFIRMED in its canonical source: GK-16 is explicitly listed under 'Priority 3 (recorded and not developed)' despite the register's own note that the finding was 'raised not overridden'"
+contradicts: []
+repeats:
+  - "The GK-01 rejection, the column rename, and the promotion-chain law substantially repeat content already documented via files 0988/0990/0996; this register's distinctive contribution is being the actual canonical R2/D285-3 source, plus the two new entries GK-14/GK-15 and the full priority-tier table."
+bridge_candidates:
+  - "'01-GAP-UPDATE-FROM-REVISED-286.md §3' -- cited again as the location of the Sanjaya prioritization finding's full treatment; still not directly encountered."
+  - "The R3 identifier 'H-K02' (Arjuna, Knower+Actor conflation) -- watch for whether this reconstruction directly encounters its formal testing."
+  - "The not-yet-encountered '20260831-183219_step_286_revised-...' prompt, the source of the four added entries in this revised register."
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the two new register entries GK-14 (Guna, touching a new Threshold/theta-overload measurement gap) and GK-15 (Moksa, philosophically illuminating only)."
+  - "dimension-registry.md: record the full priority-tier assignment for all sixteen GK entries as the canonical grounding for the already-tracked Sanjaya mis-prioritization finding."
+anchor_test:
+  anchor: "This reconstruction's already-tracked GK-numbered citations and Sanjaya mis-prioritization finding (files 0973-0996)"
+  supports_dimension: "Grounds all prior GK citations in their canonical source register and confirms the mis-prioritization finding's exact context"
+  refines_or_contradicts: "confirms and grounds prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The sixteen-row GK table is directly checkable against every prior GK-numbered citation across files 0973-0996 for exact wording and status consistency."
+undefined_concepts: []
+open_questions:
+  - "The content of the not-yet-encountered '01-GAP-UPDATE-FROM-REVISED-286.md' and '20260831-183219_step_286_revised-...' files."
+  - "Whether R3's 'H-K02' (Arjuna) hypothesis is ever directly tested, or remains permanently un-advanced per its Priority-2 status."
+tier2_triggered: true
+tier2_reason: "The actual canonical R2/D285-3 translation register underlying every GK-numbered citation this reconstruction has tracked by cross-reference, introducing two new register entries and the full priority-tier assignment. Classified importance critical and confidence high given its role as the grounding source vocabulary for the entire Gita-integration research programme."

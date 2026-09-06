@@ -1,0 +1,85 @@
+sequence: 2336
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/03_situation-state-history.md
+title: "Step-292/03 — Situation≠State, the Mandatory Falsification: the Exact do(turn_on/off,...) Counterexample, and the Negative Finding That the Corpus Has No Attested Intermediate 'Situation' Level (Importing Reiter's Three-Level Model Would ADD a Level the Corpus Does Not Have)"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "the detailed falsification proof behind file 2332's already-tracked 'Situation=K_t REFUTED' verdict, delivering the exact worked counterexample and a corpus-search negative finding that no intermediate Situation level exists in the corpus at all"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2336
+importance: high
+confidence: high
+about: >
+  Delivers the exact detail behind file 2332's already-tracked "P1: Situation = KnowledgeOS state --
+  REFUTED. And refuted by KnowledgeOS's own prior evidence, not by Reiter's authority."
+
+  **DELIVERS THE EXACT WORKED COUNTEREXAMPLE (A1)**: s_1=do(turn_on,S_0), s_2=do(turn_on,do(turn_off,
+  do(turn_on,S_0))) -- state(s_1)={F}=state(s_2) (IDENTICAL) while s_1≠s_2 (DISTINCT SITUATIONS).
+  "collision_demonstrated=True. No function of the state recovers the history. Situation≠State is
+  forced, not stipulated."
+
+  **DELIVERS THE EXPLICIT SELF-CONTRADICTION CRITIQUE**: "the supplied extraction's §1.2 table maps
+  Situation→K_t state representation, do(a,s)→δ(K_t,e_t)→K_{t+1}. The mandate forbids accepting this,
+  and it is right to: the extraction's own next line contradicts its own table" -- quoting the
+  extraction's own admission that situations are histories not states -- "a source that maps
+  Situation→K_t two lines above stating that situations are not states has supplied a correspondence,
+  not a derivation."
+
+  **DELIVERS THE CORPUS-INDEPENDENT PRIOR EVIDENCE, NAMED**: KR-HISTORY-2026-09-02
+  (M-closure-event-kernel-vs-history.md, bridge candidate) ran the decisive configuration before Reiter
+  was read: K_t,K_{t+1} identical ∧ History_1≠History_2. Test T2: "can historical closure be
+  reconstructed from state alone? No -- identical current content, different histories; no function of
+  K_t separates them." Kernel reads of history: 0, statically verified. ClosureEvent∈𝒦 REFUTED [NEG].
+  Independence label reaffirmed: "KnowledgeOS-DERIVED · CORROBORATED BY REITER. Not Reiter-derived...
+  this is the strongest possible outcome for the mandate's independence requirement, and it must not be
+  inverted in later citation."
+
+  **DELIVERS A NEGATIVE CORPUS-SEARCH FINDING ON THE THREE-LEVEL MODEL**: tests whether the corpus
+  supports History→Situation→State-projection (three levels); a search of docs/knowledgeos/research/
+  finds History=7 files, knowledge-state=2, provenance=32, identity=16, Observation=18, but
+  "operation history"=0 and "event history"=0. `[NEG]`: "the corpus distinguishes History from State.
+  It has NO attested intermediate Situation level, and no distinct notions of 'operation history' or
+  'event history' at all. Therefore importing Reiter's three-level model would ADD a level the corpus
+  does not have. That requires independent evidence, not analogy. Recorded as OPEN, not adopted." This
+  is a precise, methodologically important negative finding not previously captured at this level of
+  detail: even though Situation≠State is confirmed, the additional Situation LEVEL itself (distinct from
+  both History and State) is NOT independently attested and must not be imported wholesale.
+
+  **DELIVERS THE COLLAPSE-TEST CONCLUSION**: collapsing History and State would demonstrably contradict
+  corpus evidence (KR-HISTORY T2 is a direct counterexample); collapsing "operation history"/"event
+  history" is undefined since those concepts have no corpus extension at all -- "OPEN."
+introduces:
+  - concept: "The exact worked do(turn_on,...)/do(turn_off,...) counterexample demonstrating Situation!=State by execution"
+  - concept: "The negative finding that the corpus has no attested intermediate 'Situation' level distinct from History and State, so importing Reiter's three-level model would add an unattested level"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked file 2332 'Situation=K_t REFUTED' verdict"
+    refinement: "GIVEN THE EXACT WORKED COUNTEREXAMPLE and the additional negative finding that the corpus has no attested Situation level at all, distinct from the History/State distinction itself"
+contradicts: []
+repeats:
+  - "The core verdict (Situation=K_t refuted, KnowledgeOS-derived corroborated by Reiter) is already tracked in file 2332; this record captures the incremental worked counterexample and the three-level-model negative finding."
+bridge_candidates:
+  - "'KR-HISTORY-2026-09-02' / 'M-closure-event-kernel-vs-history.md' -- cited as the corpus-internal experiment establishing History≠State independently and earlier than this Reiter reading; not included in this file."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering the exact worked Situation!=State counterexample and the negative finding that the corpus has no attested intermediate Situation level, so Reiter's three-level model cannot be imported wholesale."
+anchor_test:
+  anchor: "This reconstruction's already-tracked file 2332 Situation=K_t refutation"
+  supports_dimension: "Delivers the exact worked counterexample and a further negative finding disqualifying wholesale import of Reiter's three-level model"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether 'KR-HISTORY-2026-09-02'/'M-closure-event-kernel-vs-history.md' is encountered directly, given it is outside this reconstruction's primary-corpus scope (docs/knowledgeos/research/)."
+tier2_triggered: true
+tier2_reason: "Delivers the exact worked counterexample behind the already-tracked Situation!=State refutation, plus a precise negative finding that the corpus has no attested intermediate Situation level, blocking wholesale import of Reiter's three-level model. Classified importance high given the incremental methodological precision beyond file 2332."

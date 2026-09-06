@@ -1,0 +1,85 @@
+
+==============================================================================
+SO-EXP-06  Node marks
+==============================================================================
+
+  CLOSED/DERIVED  (10)
+    Observation     s253.6 irreducible candidate; instantiated in EKP
+    Time            s025w bitemporal model exists
+    Source          EKP owner/authority/code_refs
+    Entity          s263
+    Dimension       s263
+    Proposition     s262 verdict: typed triple
+    Provenance      s265 verdict: pi in K as a reference
+    RelationType    s263 vocabulary; 6 types live in EKP
+    History         s247 K=(K,H); s265 audit subsystem; exp_provenance T6
+    Lineage         reachability in R_der; O(n+m); implemented
+
+  CLOSED/PARAMETRIC  (5)
+    Value           s264: V_D per dimension is deployment-declared
+    K               SO-EXP-01/03: congruent for all class-1 ops, both variants; s271.35 marks K green. PARAMETRIC because minimality is relative to T (s254)
+    Operation       s256.2+s259.7: 15 named, 5 classes; set open by design (s256.32)
+    T_algebra       s256.27/s257.35 typed registry; partiality explicit
+    Equivalence     SO-EXP-01: congruence computed for the class-1 set. Relative to T, per s259.16
+
+  CLOSED/NORMATIVE  (2)
+    Authority       s187.28-29 stipulation, IMPLEMENTED 132/132 humanActRef, fail-closed. Normative in origin, empirically settled in practice
+    Governance      two-level model implemented; EKP constitution self-amends via ADR+ARB
+
+  OPEN/DERIVABLE  (10)
+    Context         G-15: untyped; EKP bounded_context is a candidate target
+    Assertion       G-55: one provenance slot cannot record two sources (s265.11)
+    Relation        G-24: edges have no id/provenance/status, yet R_der is load-bearing
+    KStar           coarsest congruent+expressive abstraction; computable once I_mandatory is closed
+    Policy          s271.35 marks Policy internal structure RED; s271 commissions the reduction
+    Rule            DS-2: Method is a field, not a typed rule
+    Evidence        G-11/G-14: qualification rule well-formed; Relevant has no procedure
+    Assessment      s271.35 Assessment semantics amber
+    Sigma           G-06: s271.35 RED; s271.36 commissions Step 272; SO-EXP-05 partially discharges
+    Measurement     G-12: no empirical relational structure; G-07 ordinal arithmetic invalid
+
+  OPEN/EMPIRICAL  (2)
+    AuthorityAct    G-57: 79 free-text strings, 0 typed objects; recorded but not machine-checkable
+    Determination   DS-1: specified at s157.22/s165.8, lost in band transition; ZERO instances
+
+  OPEN/NORMATIVE  (0)
+
+  CONTRADICTORY  (0)
+
+==============================================================================
+Totals
+==============================================================================
+  CLOSED/DERIVED        10    34.5%
+  CLOSED/PARAMETRIC      5    17.2%
+  CLOSED/NORMATIVE       2     6.9%
+  OPEN/DERIVABLE        10    34.5%
+  OPEN/EMPIRICAL         2     6.9%
+  OPEN/NORMATIVE         0     0.0%
+  CONTRADICTORY          0     0.0%
+  TOTAL                 29
+
+==============================================================================
+Is the graph acyclic NOW?
+==============================================================================
+  strongly-connected components with >1 node: 0
+  ACYCLIC.  The first-order 7-node cycle
+    Assertion -> Evidence -> Rule -> Policy -> Authority -> Assertion
+  is broken because Authority now has NO outgoing edge: s187.28-29's stipulation
+  is realised in the implementation (132/132 humanActRef, 0 typed acts inside).
+  The regress terminates OUTSIDE the system, by reference.
+  NOTE: acyclicity here is PURCHASED by that termination, and s22 of the
+  first-order mandate stands -- acyclicity does NOT imply semantic completeness.
+
+==============================================================================
+FIVE CLOSURES, computed separately (never collapsed)
+==============================================================================
+  1 SEMANTIC closure            20/29  =  69.0%   every concept has a coherent, non-overloaded meaning
+  2 COMPUTATIONAL closure       20/29  =  69.0%   every symbol typed and computable
+  3 EVIDENTIAL closure          16/29  =  55.2%   supported by execution or implementation observation
+  4 GOVERNANCE closure           2/3   =  66.7%   who may change the rules (regime level)
+  5 IMPLEMENTATION corresp.     15/29  =  51.7%   has a real instance in a running system
+
+  These are FIVE DIFFERENT NUMBERS and must not be averaged.  Governance is the
+  most closed; computational the least.  A single 'complete/incomplete' label
+  would hide that the theory is empirically strong and semantically weak in
+  exactly one region -- the Sigma / Policy / Assessment chain.

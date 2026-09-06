@@ -1,0 +1,51 @@
+[
+ {
+  "id": "E4-R1",
+  "setup": "no query",
+  "exp": "I(p)=NotAsked",
+  "obs": "('NotAsked', '-')",
+  "verdict": "PASS"
+ },
+ {
+  "id": "E4-R2",
+  "setup": "query, no assertion",
+  "exp": "I=Asked, E=Absent",
+  "obs": "('Asked', 'Absent')",
+  "verdict": "PASS"
+ },
+ {
+  "id": "E4-R3",
+  "setup": "query, insufficient evidence",
+  "exp": "E=Unknown",
+  "obs": "('Asked', 'Unknown')",
+  "verdict": "PASS"
+ },
+ {
+  "id": "E4-R4",
+  "setup": "query, supporting",
+  "exp": "E=Supported",
+  "obs": "('Asked', 'Supported')",
+  "verdict": "PASS"
+ },
+ {
+  "id": "E4-R5",
+  "setup": "query, refuting",
+  "exp": "E=Refuted",
+  "obs": "('Asked', 'Refuted')",
+  "verdict": "PASS"
+ },
+ {
+  "id": "E4-R6",
+  "setup": "query, conflicting",
+  "exp": "E=Conflicted",
+  "obs": "('Asked', 'Conflicted')",
+  "verdict": "PASS"
+ },
+ {
+  "id": "E4-R7",
+  "setup": "orphan document",
+  "exp": "Orphan=True, E(p) unchanged",
+  "obs": "orphan=True->False; E: ('Asked', 'Supported') -> ('Asked', 'Supported')",
+  "verdict": "PASS"
+ }
+]

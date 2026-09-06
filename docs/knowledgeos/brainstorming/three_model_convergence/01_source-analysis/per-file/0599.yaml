@@ -1,0 +1,208 @@
+sequence: 599
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-100905_step-025u-multi-agent-knowledge-conflict-resolution-consensus-trust-and-distributed-epistemics.md
+title: "The Corpus's Formal Multi-Agent Trust/Conflict-Resolution Layer — Trust(a,d,c,t) Contextual and Provenance-Backed, 'Trust Modifies Epistemic Weight; It Does Not Create Truth'; EpistemicConflict Explicitly Distinguished From Byzantine Consensus (a Truthful Minority With Direct Evidence May Outweigh a Majority Repeating Weak Evidence); the Self-Reinforcing-Reputation/FeedbackBias Danger; Conflict Formalized as a First-Class, Legitimately-Unresolvable Knowledge State (Not a Failure); the Self-Named Key Result — 'Corroboration Should Be Measured in Independent Information, Not Number of Agents'; Verdict '25U — PASS'; Delivers the Corpus's Most Complete Full-Cycle Notation to Date; Opens Step 25V (Semantics, Ontology, Bounded Contexts, Meaning Alignment and Semantic Interoperability) — Even Perfect Identity and Evidence Aggregation Cannot Solve Semantic Incompatibility"
+date: "2026-08-28"
+bytes: 20986
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 25U -- Multi-Agent Knowledge, Conflict Resolution, Consensus, Trust and Distributed Epistemics', opened at 0598's close to formalize disagreement resolution between simultaneously credible epistemic actors"
+source_role: PRIMARY_RESEARCH
+canonical_source: 599
+importance: critical
+confidence: high
+about: >
+  Opens Step 25U directly executing 0598's closing commitment, extending the architecture from single-
+  source reasoning to a world with seven named potential knowledge-producer types
+  (`Human,LLM,System,Sensor,Database,Agent,ExternalAuthority`), posing the central question "what should
+  KnowledgeOS do when credible sources disagree?" -- explicitly rejecting "pick the source with the
+  highest confidence" as the answer.
+
+  **Delivers `Agent≠Evidence`**: an agent produces evidence but is not itself the observation, with
+  provenance formally tracking `ProducedBy(E)=Agent`. Delivers `AgentID`/`AgentType` identity and, as the
+  file's central formal deliverable, **Trust formalized as irreducibly contextual**:
+  `Trust(a,d,c,t)` (agent, domain, context, time), explicitly rejecting a single scalar `Trust(Agent)=0.9`.
+  Delivers `Expertise≠Authority` and `Trust≠Authority` (worked infrastructure-engineer-vs-Architecture-
+  Board example) and `Reliability≠Trust` (a generally trustworthy source can be unreliable for a specific
+  measurement type).
+
+  **Delivers `AgentIndependence≠InformationIndependence`, explicitly extending the double-counting
+  principle from 25N (0578/0592) into the multi-agent setting**: two agents reading the same source
+  document are not independent merely because they are different agents, worked through a concrete
+  common-source-dependency diagram, and formalized via an Evidence independence graph `G_D=(V,E_D)`.
+
+  **Delivers a disciplined, multi-stage formal treatment of Conflict**, distinguishing genuine conflict
+  from two forms of merely apparent conflict via a nine-question diagnostic checklist (entity/time/context/
+  proposition/measurement/independence/authority/scope): temporal apparent-conflict (differing valid times,
+  `Conflict=False`) and contextual apparent-conflict (differing entity contexts, e.g.
+  production/development, `Conflict=False`), both resolvable only once identity and temporal semantics
+  precede conflict evaluation, versus genuine conflict (same entity, same time, same context, contradictory
+  values), which **`Conflict=FirstClassKnowledgeState`** and must never be silently erased ("the worst
+  possible implementation is: if conflict, choose one, delete the other"). Delivers Conflict resolution as
+  a formal inference problem with five possible outcomes
+  (`Confirmed(E_1),Confirmed(E_2),BothValid,BothInvalid,Unresolved`), including the important diagnostic
+  insight that apparent conflict can indicate `ContextMissing` (worked dual-location temperature-sensor
+  example, both readings legitimately correct) rather than a genuine contradiction requiring resolution.
+
+  **Delivers a nine-stage Conflict resolution pipeline** (Identity→Temporal→Context→Semantic proposition→
+  Dependency→Source reliability→Authority→Independent corroboration→Resolution), explicitly "much safer
+  than weighted voting." **Delivers the file's key rejection of naive trust-weighted resolution**:
+  `TrustScore≠TruthSelector`, worked through a concrete counterexample where the higher-trust source may
+  simply be repeating the lower-trust source's own evidence. Delivers Authority-mediated conflict
+  resolution (an official decision record can supersede an ordinary engineer's claim FOR GOVERNANCE STATUS
+  specifically, while the superseded claim remains preserved as historical evidence, never deleted), and
+  Direct-measurement-vs-interpretation preference explicitly attributed to measurement-method suitability
+  for a specific proposition, NOT a universal source-type hierarchy.
+
+  **Delivers Source specialization via a formal `Competence(a,q)` concept** (agent × question-type),
+  worked through a concrete six-row competence table showing an LLM can have high competence for synthesis
+  while being explicitly "not sufficient" for authoritative approval -- "much more meaningful than a
+  global trust score." **Delivers a significant, concrete AI-safety-adjacent finding, self-flagged as a
+  genuine danger**: **self-reinforcing reputation (`FeedbackBias`)** -- an agent's own prior conclusions
+  can inflate its apparent future reliability if trust is allowed to recursively reinforce itself without
+  independent validation, explicitly requiring trust NOT to self-reinforce this way. Delivers Trust
+  formalized with its own provenance (a worked `ReliabilityAssessment` structured record with basis,
+  false-positive rate, and evaluation period) -- **`trust becomes knowledge`**, a derived, versioned
+  epistemic object rather than "magic metadata."
+
+  **Delivers Multi-agent consensus formally disambiguated into three non-equivalent meanings**
+  (MajorityAgreement, WeightedAgreement, IndependentEvidenceConvergence), with an explicit architectural
+  preference for the third, worked through a contrast between three agents reading one source (weak
+  corroboration) versus three genuinely independent acquisition paths -- System API, Filesystem, Human --
+  agreeing (substantially stronger corroboration). Delivers consensus formally operating over evidence
+  clusters, not raw agents, and a domain-policy-scoped Quorum concept (`k` independent confirmations,
+  explicitly not a universal epistemic law).
+
+  **Delivers the file's central formal deliverable -- EpistemicConflict explicitly and precisely
+  distinguished from Byzantine fault-tolerant consensus**: Byzantine consensus asks whether distributed
+  nodes can agree on a value despite faulty nodes; KnowledgeOS instead asks which proposition is
+  epistemically justified given evidence of differing quality and provenance -- explicitly noting "a
+  truthful minority with direct evidence may be more valuable than a majority repeating weak evidence,"
+  formalizing **`EvidenceQuality must remain distinct from NodeCount`** -- a precise, well-motivated
+  differentiation from a well-known adjacent distributed-systems concept, preventing the corpus from
+  importing an ill-fitting consensus model.
+
+  **Delivers Human disagreement reframed via a disciplined diagnostic process rather than naive vote-
+  splitting**: worked Architect-A-vs-Architect-B safety disagreement example, explicitly rejecting an
+  immediate `50%/50%` split in favor of six diagnostic questions, delivering the important observation
+  that "often disagreement is actually `ModelDifference` rather than `FactDifference`." **Delivers Model
+  disagreement formally distinguished from evidence disagreement**, directly extending 0595's (25Q) model-
+  comparison discipline: two models using the SAME evidence can legitimately disagree (worked `5%` vs.
+  `20%` risk example), meaning the conflict resides in the models, not the observations -- "this
+  distinction is critical."
+
+  Delivers a formal nine-value `ConflictType={IdentityConflict,TemporalConflict,ContextConflict,
+  MeasurementConflict,SemanticConflict,EvidenceConflict,ModelConflict,PolicyConflict,AuthorityConflict}`
+  taxonomy, a structured `Resolution=(Conflict,Method,Evidence,Decision,Authority,ResidualUncertainty)`
+  auditability record, and the explicit, important principle that **`Conflict may remain a legitimate
+  Unresolved terminal state`** -- "that does not mean the system failed" -- feeding
+  `Zero=UnresolvedConflict`, with Lord able to select `AcquireIndependentEvidence` as the next action
+  (`Conflict→Zero→Lord→Evidence→Resolution`), directly extending the corpus's now-unified Zero mechanism
+  from 0598.
+
+  Delivers a DDD recommendation against a generic `AgentManager` owning all semantics, in favor of a
+  bounded-context-neutral `EpistemicActor` infrastructure (`ActorID,Type,Capabilities,AuthorityScopes,
+  Provenance`) paired with domain-specific `TrustPolicy`/`ConflictPolicy`/`AuthorityPolicy`. **Delivers
+  a disciplined Capability-vs-Authority separation extended into a full epistemic-permission model**
+  (`CanObserve(X),CanAssert(X),CanDerive(X),CanApprove(X),CanExecute(X)` as distinct privileges),
+  formalizing two architectural invariants directly extending the corpus's governance discipline: **`Trust
+  never substitutes for authority`** (`Trust(A)=1.0` never grants `Authority(A,ApproveChange)`), and
+  **`Trust modifies epistemic weight; it does not create truth`** -- trust affects the assessment of
+  evidence, never manufactures evidence itself.
+
+  **Delivers a disciplined statistical-aggregation caution directly connecting 25U to 25N (0578/0592)**:
+  a worked likelihood-ratio combination example (`LR_1=19`, `LR_2=15`, `LR_combined=285` IF independent)
+  explicitly warns the combined figure must NOT be applied when both sources derive from the same
+  underlying document. **Delivers the file's headline formal conclusion, self-identified as "perhaps the
+  key result of 25U"**: **`Corroboration should be measured in independent information, not number of
+  agents`**.
+
+  **Delivers eight labeled falsification tests (A-H), ALL PASS**: three agents/one source
+  (`IndependentClusters=1`, not `3`); three independent measurements (`IndependentClusters=3` if
+  independence justified); same claim/different contexts (`NoConflict`); same claim/same time/
+  contradictory (`Conflict`); trusted but unauthorized actor (`ReliableEvidence` with `Authority=False`);
+  high-confidence LLM conclusion without evidence (`Unsupported`); unresolved conflict (`→Zero`); new
+  independent evidence (`ConflictResolution` can update the epistemic state).
+
+  Delivers a computability reconfirmation, flagging `EntityResolution+DependencyAnalysis+
+  LargeGraphInference` as the potentially expensive parts at scale, explicitly framed as engineering/
+  scaling challenges rather than fundamental obstacles.
+
+  **Delivers Step 25U's verdict**: **"25U — PASS,"** with six boxed central conclusions:
+  `AgentCount≠EvidenceCount`; `Consensus≠MajorityVote`; `Trust≠Authority`; `Trust≠Truth`;
+  `Conflict≠Failure`; `IndependentEvidenceConvergence>RawAgentAgreement`. **Delivers the corpus's most
+  complete consolidated full-cycle notation to date**: `Identity→Observation→Evidence→Dependency→
+  Assessment→Knowledge→Inference→Model→Prediction→Decision→Action→Observation`, with six named
+  cross-cutting dimensions (Time, Context, Provenance, Authority, Trust, Uncertainty) and the
+  `Zero→Lord→Information/Decision Action` escape valve for when the system cannot safely proceed.
+
+  **Closes by identifying a still-deeper problem the entire preceding 25-series has implicitly assumed
+  away -- shared meaning**: worked through the corpus's now-recurring "Approved" cross-bounded-context
+  example (technically reviewed / Architecture Board authorized / manager accepted -- one word, three
+  distinct domain concepts), delivering the file's explicit closing conclusion: **"even perfect identity
+  resolution and perfect evidence aggregation cannot solve semantic incompatibility."** **Opens "Step 25V —
+  Semantics, Ontology, Bounded Contexts, Meaning Alignment and Semantic Interoperability,"** posing "how
+  can KnowledgeOS determine that two apparently identical statements actually mean the same thing?" and its
+  converse, "how can it detect when identical words represent different domain concepts?" -- explicitly
+  invoking DDD's Bounded Context, Ubiquitous Language, Context Mapping, and Anti-Corruption Layer as
+  becoming "mathematically and computationally important," and framing the step as determining whether
+  KnowledgeOS can safely integrate knowledge across domains "without collapsing their meanings into one
+  giant, ambiguous ontology." No actual code execution reported.
+introduces:
+  - concept: "Trust formalized as irreducibly contextual, Trust(a,d,c,t), explicitly rejecting a single scalar trust value per agent"
+  - concept: "EpistemicConflict explicitly and precisely distinguished from Byzantine fault-tolerant consensus — a truthful minority with direct evidence may outweigh a majority repeating weak evidence, formalized as EvidenceQuality≠NodeCount"
+  - concept: "Self-reinforcing reputation / FeedbackBias — a concrete danger where an agent's own prior conclusions inflate its future apparent reliability absent independent validation"
+  - concept: "Trust becomes knowledge — a TrustAssessment as its own derived, versioned, evidence-based epistemic object rather than magic metadata"
+  - concept: "Model disagreement formally distinguished from evidence disagreement — two models can legitimately disagree given identical evidence, extending 0595's model-comparison discipline into the multi-agent setting"
+  - concept: "The headline self-identified key result: corroboration should be measured in independent information, not number of agents"
+  - concept: "The corpus's most complete consolidated full-cycle notation to date, spanning Identity through Action with six named cross-cutting dimensions"
+  - concept: "'Step 25V — Semantics, Ontology, Bounded Contexts, Meaning Alignment and Semantic Interoperability', explicitly invoking DDD's Bounded Context/Ubiquitous Language/Context Mapping/Anti-Corruption Layer as the next mathematically important boundary"
+defines:
+  - concept: "Contextual trust"
+    definition: "Trust(a,d,c,t) — trust in an agent is a function of the domain, context, and time being evaluated, never a universal per-agent scalar"
+  - concept: "Competence(a,q)"
+    definition: "A per-question-type competence assessment for an agent, explicitly richer and more meaningful than a global trust score — an agent can be highly competent for one question type and explicitly insufficient for another (e.g. an LLM: high for synthesis, not sufficient for authoritative approval)"
+  - concept: "EvidenceQuality≠NodeCount"
+    definition: "The formal distinction between KnowledgeOS's epistemic-justification question and Byzantine consensus's agreement-despite-faults question — a small number of high-quality, directly-acquired evidence sources may outweigh a larger number of low-quality or derivative ones"
+  - concept: "Corroboration principle (the key result of 25U)"
+    definition: "Corroboration should be measured in independent information, not in number of agents — directly generalizing the 25N/25C evidence-independence discipline to the multi-agent setting"
+refines:
+  - concept: "0578's/0592's (25C/25N) evidence-independence and double-counting discipline"
+    refinement: "Extended from single-evidence-chain double-counting to the multi-agent setting: AgentIndependence≠InformationIndependence, with a worked likelihood-ratio combination example explicitly warning against combining agent-sourced LRs that share an underlying document"
+  - concept: "0562's/0577's/0583-0586's/0588's/0591's/0594's/0597's/0598's recurring LLM/AI-governance boundary"
+    refinement: "Extended into two new explicit architectural invariants for multi-agent trust: Trust never substitutes for authority, and Trust modifies epistemic weight but does not create truth"
+  - concept: "0595's (25Q) model comparison and ModelsCompeting honesty result"
+    refinement: "Extended into the multi-agent disagreement setting: apparent human/agent disagreement is often ModelDifference rather than FactDifference, requiring diagnostic questions before assuming a factual dispute"
+  - concept: "0598's capstone unification (Zero=Unresolved epistemic/proof obligation)"
+    refinement: "Extended with a further concrete instance: Zero=UnresolvedConflict, directly feeding Lord's AcquireIndependentEvidence action selection"
+  - concept: "0582's-through-0598's recurring formal Zero treatment"
+    refinement: "Given another concrete named instance (UnresolvedConflict) consistent with the 0598 capstone unification, reinforcing rather than fragmenting that unification"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25V — Semantics, Ontology, Bounded Contexts, Meaning Alignment and Semantic Interoperability' is executed as its own file, and whether it succeeds in formalizing semantic interoperability across bounded contexts using DDD's Bounded Context, Ubiquitous Language, Context Mapping, and Anti-Corruption Layer concepts specifically"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record contextual Trust(a,d,c,t), Expertise≠Authority, Trust≠Authority, Reliability≠Trust, AgentIndependence≠InformationIndependence (extending 25N/25C), and the disciplined nine-question conflict-diagnosis checklist distinguishing genuine from apparent conflict."
+  - "dimension-registry.md: record Conflict=FirstClassKnowledgeState, TrustScore≠TruthSelector, the Competence(a,q) concept, the self-reinforcing-reputation/FeedbackBias danger, Trust becomes knowledge (TrustAssessment as a derived epistemic object), and EpistemicConflict explicitly distinguished from Byzantine consensus (EvidenceQuality≠NodeCount)."
+  - "dimension-registry.md: record Model disagreement≠Evidence disagreement, the corroboration-via-independent-information key result, Trust never substitutes for authority / Trust modifies epistemic weight but does not create truth, the eight-test falsification suite (ALL PASS), verdict '25U — PASS,' the most complete full-cycle notation to date, and Step 25V's opening (semantic incompatibility beyond identity/evidence resolution)."
+anchor_test:
+  anchor: "0598's closing commitment to Step 25U (multi-agent conflict resolution beyond confidence comparison); 0578's/0592's (25C/25N) evidence-independence and double-counting discipline; the recurring LLM/AI-governance boundary (0562-0598); 0595's (25Q) model comparison and ModelsCompeting honesty result; 0598's capstone Zero unification"
+  supports_dimension: "Delivers a comprehensive, well-motivated formal treatment of multi-agent trust and conflict resolution, directly executing 0598's closing commitment. Delivers a genuinely important, precisely stated differentiation between the corpus's epistemic-conflict problem and the well-known Byzantine fault-tolerant consensus problem, correctly identifying that evidence quality (not node count) must drive resolution — a concrete instance of the corpus's discipline in not importing an ill-fitting adjacent-field concept without justification. Delivers a concrete, self-flagged AI-safety-adjacent finding (self-reinforcing reputation / FeedbackBias) directly relevant to any system that updates agent trust based on the agent's own historical outputs. Extends 0595's model-comparison discipline into the multi-agent setting by formally distinguishing disagreement arising from differing models applied to shared evidence from disagreement arising from differing evidence itself. Delivers the file's self-identified key result — corroboration should be measured in independent information, not number of agents — a clean, generalizable principle directly extending the corpus's established evidence-independence discipline (0578/0592) to the multi-agent case. Closes by correctly identifying that even a fully solved identity-and-evidence-aggregation architecture cannot resolve semantic incompatibility across bounded contexts, opening the corpus's next necessary layer explicitly grounded in DDD's own semantic-interoperability machinery"
+  refines_or_contradicts: "directly executes 0598's closing commitment to Step 25U; extends 0578's/0592's evidence-independence and double-counting discipline into the multi-agent setting; extends the recurring LLM/AI-governance boundary (0562-0598) with two new explicit trust-related architectural invariants; extends 0595's model-comparison and ModelsCompeting discipline into human/agent disagreement diagnosis; extends 0598's capstone Zero unification with a further consistent concrete instance (UnresolvedConflict); no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The precise, explicit differentiation between EpistemicConflict and Byzantine fault-tolerant consensus — 'a truthful minority with direct evidence may be more valuable than a majority repeating weak evidence,' formalized as EvidenceQuality≠NodeCount — is directly checkable evidence of the corpus's discipline in resisting an ill-fitting off-the-shelf distributed-systems solution, correctly recognizing that vote-counting semantics do not transfer to epistemic-justification semantics."
+  - "The worked likelihood-ratio combination counterexample (LR_1=19, LR_2=15, LR_combined=285 only if independent, explicitly forbidden if both sources derive from one underlying document) is directly checkable, concrete evidence connecting this file's multi-agent independence discipline to the earlier, quantitatively worked evidence-aggregation treatment at 0592 (25N), demonstrating consistent application of the same statistical principle across two independently-developed sub-arcs of the research program."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25V — Semantics, Ontology, Bounded Contexts, Meaning Alignment and Semantic Interoperability' is executed as its own dedicated corpus file, and whether it succeeds in formalizing semantic interoperability across bounded contexts using DDD's own concepts (Bounded Context, Ubiquitous Language, Context Mapping, Anti-Corruption Layer) in a mathematically/computationally precise way"
+tier2_triggered: true
+tier2_reason: "Delivers a comprehensive, well-motivated formal treatment of multi-agent trust and conflict resolution that meaningfully extends the corpus's epistemic architecture into a genuinely new dimension — coordinating disagreement among simultaneously credible, potentially non-independent knowledge producers. Delivers a precisely stated, well-justified differentiation between the corpus's epistemic-conflict problem and Byzantine fault-tolerant consensus, correctly identifying evidence quality rather than node count as the determining factor, a notable instance of disciplined resistance to importing an adjacent field's solution without verifying fit. Delivers a concrete, self-flagged AI-safety-relevant danger (self-reinforcing reputation / FeedbackBias) directly applicable to any trust-updating mechanism that consumes an agent's own historical output as evidence of the agent's reliability. Extends 0595's model-comparison discipline into human/multi-agent disagreement diagnosis, correctly separating model-driven from evidence-driven disagreement. Delivers the file's self-identified key result — corroboration measured in independent information, not agent count — a clean generalization of the corpus's established evidence-independence discipline (0578/0592) directly and quantitatively connected via a worked likelihood-ratio example. Closes by correctly identifying that even a fully-solved identity-and-evidence-aggregation architecture cannot resolve semantic incompatibility across bounded contexts, opening the corpus's next necessary architectural layer with an explicit, well-grounded connection to DDD's own established semantic-interoperability machinery."

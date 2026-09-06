@@ -1,0 +1,169 @@
+sequence: M0116
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-155903_transcript-now-perform-the-contr-experiment.md
+title: "Transcript: KR-CONTR-2026-09 EXECUTED -- 'There Are Not Three Contradiction Models, There Are Two' (M3/M4 Observationally Indistinguishable Over the Tested Domain, MD Conflates Contradiction With Absence), the Fourth-Value Question Reduced to a Corollary of the Still-OPEN Composition Problem, a SIXTH Instance of the Projection-Destroys-Structure Diagnosis Found for the First Time in the Observability/Masking Layer Rather Than a Value or Metric, and a Powerful Cross-Cutting Synthesis Unifying N_eff/Hilbert/==_sem/Contr Under One Emerging Principle -- Plus a Review Correcting 'Isomorphic' to 'Observationally Indistinguishable on the Tested Domain' and Naming 'Evaluation Masking' as a New Standing Methodological Phenomenon"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: b
+  secondary: c
+  secondary_note: "the genuine execution transcript of KR-CONTR-2026-09 (M0114's protocol) -- direct, concrete confirmation that the protocol was actually run as code, with real artifacts (V-contr-experiment.md, kos12/contr.py, run_contr.py, 10 result JSONs) -- followed by a disciplined supervisory review that tightens the execution's strongest claim and extracts a powerful cross-cutting methodological synthesis"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0116
+importance: critical
+confidence: high
+about: >
+  Reports the executed KR-CONTR-2026-09 experiment's central discovery: "the commissioned question
+  was malformed. There are not three contradiction models. There are two." M3 (three-valued,
+  UNDEFINED) and M4 (four-valued, C) are shown ISOMORPHIC as value assignments -- the relabeling
+  UNDEFINED->C, CONTRADICTORY_INPUT->CONTRADICTION commutes with both models on 8/8 tested cases,
+  0 failures -- "C is not an additional value; it is a different name for the value M3 already
+  assigns. The programme had been holding open a choice between a model and itself."
+
+  **THE SEPARATING STRUCTURE IS A PAIR, NOT A SINGLE CASE**: no single case can separate the three
+  named models, because models are functions and functions are separated by their kernels; the
+  actual separating object is a pair of corpus-attested cases -- X1 (agent holds {p,not-p}) and X2
+  (no evaluator) -- which MD (delegate-to-consistency) CONFLATES while M3/M4 distinguish. MD's
+  kernel is strictly coarser, with conflation running in one direction only (no ties to break).
+
+  **[NEG] MD RENAMES CONTRADICTION AS ABSENCE**: "the 9->U collapse relocated to the routing step,"
+  explicitly scoped: "refuted relative to the corpus's own ZI-01/ZI-09; not a general proof that
+  delegation is incoherent. If the corpus withdrew those distinctions, the refutation lapses" --
+  disciplined, conditional falsification.
+
+  **TWO OPEN ITEMS COLLAPSE INTO ONE**: M3 and M4 separate IFF the composition rule is token-
+  sensitive; the corpus supplies none, and composition is itself OPEN -- so the fourth-value
+  question is not an independent research item, it is a COROLLARY of composition. "Five items were
+  listed for this step; one wasn't a separate item."
+
+  **THE MASKING DISCOVERY -- EXPLICITLY IDENTIFIED AS A SIXTH INSTANCE OF THE RECURRING DIAGNOSIS,
+  IN A NEW LOCUS**: D-0's previously-recorded agreement among the three models was "a masking
+  artifact, and worse than recorded" -- true but incomplete that the readings tested only F and U;
+  the actual cause is that Zero_weak/Zero_kleene are EXISTENTIAL quantifiers, absorbing at U, so
+  ONE unrelated U anywhere in the state masks the model difference completely, in any bucket -- and
+  since 5 of 8 Sat classes are non-executable, saturation is the NORMAL regime, not an edge case.
+  The transcript explicitly self-identifies this as "the sixth instance of the recurring diagnosis
+  [projection-destroys-structure] -- and the first found in the readings rather than a value or
+  metric" -- extending the already-established five-row table (M0098/M0099/M0111) to a genuinely
+  new locus: the observability/aggregation layer itself, not a specific value or metric definition.
+
+  **TWO DOCUMENTED SELF-CORRECTIONS DURING EXECUTION**: (1) M3 was first encoded as returning U;
+  the authoritative evalc.py implementation actually returns UNDEFINED, OUTSIDE {T,F,U} -- "which
+  is the whole point" -- surfaced because a new result (C1) contradicted an established one (D-0),
+  triggering the discipline "a new result contradicting an established one means check the new one
+  first"; (2) test case C10 was vacuous on first write (four token-blind rules cannot separate a
+  token-relabeling, so the pass was guaranteed) -- "that's the programme's own witness requirement
+  catching my test, not a finding" -- rewritten with a genuinely token-sensitive witness rule.
+  Neither was caught by tests merely passing.
+
+  **ANTI-RIGGING AND HONEST-NEGATIVE DISCIPLINE**: buckets imported from the pre-existing
+  expG.BUCKET (not invented) then swept anyway for robustness; kernel-level separation holds 4/4
+  while reading-level separation is bucket-dependent on an assignment the corpus doesn't make --
+  kept explicitly apart, "since only the kernel result survives"; and B (the boundary object) is
+  reported to add NO discriminating power here, since value and boundary kernels coincide (M3
+  already puts the distinction in the value) -- its support stays with the earlier Experiment J.
+
+  **RECOMMENDS COMPOSITION AS THE NEXT EXPERIMENT, EXPLICITLY WITHOUT REORDERING THE QUEUE**:
+  "since the readings saturate, a Contr defined today would be unobservable in the normal regime --
+  you'd get a definition no experiment could evaluate. The lane recommends; it doesn't reorder the
+  queue." Nothing adopted; Contr still undefined; closure still unrepaired; v1.2 unchanged.
+  Confirms concrete artifacts: V-contr-experiment.md (311 lines), kos12/contr.py, run_contr.py,
+  results/contr/*.json (10 files) -- direct, checkable evidence the protocol was genuinely
+  executed as code.
+
+  **THE FOLLOWING SUPERVISORY REVIEW TIGHTENS THE ISOMORPHISM CLAIM**: rejects "M3 and M4 are
+  isomorphic" as too strong, replacing it with the precise, scoped statement M3 =_{D_tested} M4 --
+  "M3 and M4 are observationally indistinguishable under the current tested semantics" -- explicitly
+  NOT a claim that M3≅M4 as complete logical systems, since a genuine isomorphism requires
+  preservation under ALL relevant operations (Priest's many-valued-logic structure <V,D,{f_c}>),
+  not merely the eight tested cases; "the missing composition semantics are precisely where a
+  genuine distinction could appear." States the crisp resulting principle: "Value label !=
+  Semantic distinction... Semantic distinction requires operational consequences."
+
+  **INTRODUCES THE REPRESENTATION-VS-COMPOSITION SPLIT AS "PROBABLY THE BIGGEST NEW INSIGHT"**:
+  Question A (can the system represent p,not-p simultaneously?) versus Question B (what happens
+  when that state participates in further operations?) -- "your experiment has shown that Question
+  A can be answered without necessarily resolving Question B" -- proposes Layer 1 (Contradictory
+  Standing, Standing(p)=(S+(p),S-(p)), Contr(p) iff S+=1 and S-=1, FDE-inspired) versus Layer 2
+  (Composition, Compose(Standing(p),Standing(q),op), currently open), giving ContrRepresentation !=
+  ContrComposition.
+
+  **NAMES "EVALUATION MASKING" AS A NEW STANDING METHODOLOGICAL PHENOMENON [PROP]**: "a model
+  distinction at local semantic level may become unobservable after composition with an absorbing
+  aggregation operator" -- formalized: if f(a,b)=U for sufficiently many b, then a1!=a2 but
+  f(a1,b)=f(a2,b)=U; states the resulting standing rule "never validate a semantic distinction only
+  at the final aggregate output," requiring tests at atomic representation, local operation,
+  composition, aggregation, AND final observable levels -- explicitly connected to the Hilbert
+  experiment's lesson that different mathematical summaries of the same joint structure can
+  disagree.
+
+  **DELIVERS THE PASS'S MOST POWERFUL CROSS-CUTTING SYNTHESIS**: identifies N_eff (raw candidate
+  count insufficient), Hilbert (elegant representation insufficient), semantic equivalence
+  (pairwise indistinguishability insufficient for family complexity), and Contr (local distinctions
+  can vanish under aggregation) as four instances of ONE emerging principle: "a representation must
+  be evaluated together with the operations that act on it and the observables used to inspect
+  it... not merely: representation exists" -- explicitly called "one of the most important emerging
+  methodological principles in the KnowledgeOS research," complementing (not identical to) M0098's
+  projection-destroys-structure principle.
+
+  **PROPOSES KR-COMP-2026-09 (Semantic Composition and Contradiction)** as the next experiment, with
+  the decisive question "does composition create an observable semantic distinction between the
+  candidate contradiction representations that is absent at the atomic level?" and an explicit
+  possible further split: M3=_sem M4 for truth-functional composition BUT M3!=_sem M4 for
+  KnowledgeOS-specific operations (EvidenceAssessment/Revision/Supersession/ZeroLens/
+  Determination), which "would mean the distinction is not required by propositional truth-
+  functional logic, but is required by the epistemic lifecycle."
+
+  **CORRECTS A TERMINOLOGY-COLLISION RISK**: avoids overloading "kernel" (a function's mathematical
+  kernel versus the candidate KnowledgeOS Kernel), proposing "separating witness" or "observational
+  distinguishing input" instead.
+
+  **PROPOSES A CANDIDATE FR-002** (ten specific freeze items: five [EXP], three [OPEN], two [NEG]),
+  explicitly declining to freeze "M3 and M4 are isomorphic." Reaffirms Semantic-contradiction !=
+  Knowledge-attribution (Standing(p)=Both does not imply Knows(p)) against FDE's temptation to
+  conflate a semantic truth status with epistemic knowledge, and reframes Priest/FDE as "not an
+  answer; a candidate semantic representation whose operational consequences must be tested."
+introduces:
+  - concept: "The genuine executed result: M3 and M4 (three-valued UNDEFINED vs four-valued C) are observationally indistinguishable over the tested 8-case domain, via an explicit relabeling isomorphism, with the fourth-value question reduced to a corollary of the still-open composition problem"
+  - concept: "The sixth instance of the projection-destroys-structure diagnosis, located for the first time in the observability/aggregation (masking) layer rather than a specific value or metric definition"
+  - concept: "The precise correction from 'M3/M4 isomorphic' to 'M3 =_{D_tested} M4, observationally indistinguishable under the tested semantics,' grounded in Priest's <V,D,{f_c}> many-valued-logic structure"
+  - concept: "The Representation-vs-Composition split (Question A vs Question B) and the Layer-1/Layer-2 (Standing/Compose) decomposition of Contr"
+  - concept: "The named 'Evaluation Masking' methodological phenomenon [PROP], with the formal absorbing-aggregation-operator statement and the resulting standing experimental rule (test at every level from atomic to final observable)"
+  - concept: "The powerful four-way cross-cutting synthesis (N_eff/Hilbert/==_sem/Contr) unifying the pass's separate negative results under one emerging methodological principle: evaluate a representation together with its operations and observables, not merely its existence"
+  - concept: "The candidate FR-002 (ten items) and the KR-COMP-2026-09 proposal with its decisive composition question and the truth-functional-vs-epistemic-lifecycle split hypothesis"
+defines: []
+refines:
+  - concept: "M0114's KR-CONTR-2026-09 protocol, here confirmed genuinely executed with concrete artifacts"
+  - concept: "The corpus's established five-row projection-destroys-structure table (M0098/M0099/M0111), extended here to a sixth instance in a new locus"
+  - concept: "The Zero Lens's established Unknown!=Absent finding, given a concrete formal witness here (MD(p,not-p)=MD(NoAssessment) in the tested representation)"
+  - concept: "The corpus's Factivity/R1 resolution (M0110/M0111/M0112), reaffirmed here via Semantic-contradiction!=Knowledge-attribution"
+  - concept: "M0107/M0108/M0111/M0115's Hilbert-space findings, explicitly connected here to the masking discovery as a shared instance of the same principle"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - concept: "The four-way cross-cutting synthesis (N_eff/Hilbert/==_sem/Contr) as a candidate general methodological principle for the eventual reclassification pass to test against every other dual-construct or representation proposal in the corpus"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0116 as the genuine execution transcript of KR-CONTR-2026-09, confirming M3/M4 observational indistinguishability over the tested domain (with the fourth-value question reduced to a corollary of the still-open composition problem), a sixth instance of the projection-destroys-structure diagnosis located in the observability/masking layer, a named 'Evaluation Masking' methodological phenomenon, and a powerful cross-cutting synthesis unifying N_eff/Hilbert/==_sem/Contr under one principle -- with a supervisory review correcting the isomorphism claim's scope and proposing KR-COMP-2026-09 as the next experiment."
+anchor_test:
+  anchor: "M0114's KR-CONTR-2026-09 protocol, the established five-row projection-destroys-structure table, and the Zero Lens's Unknown!=Absent finding"
+  supports_dimension: "Confirms genuine execution of the confirmed priority-1 experiment, extends the projection-destroys-structure diagnosis to a sixth, genuinely new locus, and delivers the pass's most powerful cross-cutting methodological synthesis"
+  refines_or_contradicts: "refines (M0098, M0099, M0111, M0114, the Zero Lens work, M0107/M0108/M0115's Hilbert findings)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'The programme had been holding open a choice between a model and itself' -- a striking, precise articulation of the finding that M3 and M4 were never actually distinct models, merely relabelings, discovered through rigorous witness construction rather than assumed."
+  - "'That's the programme's own witness requirement catching my test, not a finding' -- a concrete, self-reported instance of the corpus's established vacuity-guard discipline operating correctly during live execution."
+  - "'A representation must be evaluated together with the operations that act on it and the observables used to inspect it... not merely: representation exists' -- explicitly synthesized across four independent prior negative results (N_eff, Hilbert, semantic equivalence, Contr), one of the strongest cross-cutting methodological statements in this entire pass."
+undefined_concepts:
+  - "The exact formal definition of 'kernel' as used for function-separation in this transcript (informally described as 'models are functions, and functions are separated by their kernels') versus the reviewer's proposed replacement terminology ('separating witness') -- the transcript's own usage was flagged by the review as a terminology-collision risk with the candidate KnowledgeOS Kernel"
+open_questions:
+  - "Whether KR-COMP-2026-09 (Semantic Composition and Contradiction) was ever executed, and if so whether M3/M4 were found genuinely distinct under any KnowledgeOS-specific composition operation."
+  - "Whether the candidate FR-002 (ten items) was ever formally frozen."
+tier2_triggered: true
+tier2_reason: "Genuine execution of the confirmed priority-1 experiment with a real, rigorously-derived negative result (M3/M4 collapse to one model), a sixth instance of the projection-destroys-structure diagnosis in a newly-identified locus (observability/masking), a named new methodological phenomenon (Evaluation Masking), and the pass's most powerful cross-cutting synthesis unifying four independent negative results under one principle. Comfortably and substantially meets the tier-2 bar."

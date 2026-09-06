@@ -1,0 +1,95 @@
+sequence: "0145"
+path: docs/knowledgeos/brainstorming/20260823-104148-constitutional-knowledge-engine-six-pillars-and-state-machine.md
+title: "Six-Pillar reduction (Identity/Evidence/Context/Provenance/Contradiction/History), Constitutional DSL, a 6-stage state-machine pipeline; a fourth 5-state contradiction vocabulary"
+date: "2026-08-23"
+bytes: 17000
+model:
+  primary: c1
+  secondary: []
+source_role: PRIMARY_RESEARCH
+canonical_source: "0144"
+importance: high
+confidence: high
+about: >
+  A distinctly different conversational voice (register/formatting differ from the surrounding files),
+  read ~5 minutes after 0144 by filename timestamp -- same conversational stretch, NOT independent
+  corroboration per MD-012 despite the resemblance. Proposes a SIX-pillar Kernel reduction (Identity,
+  Evidence, Context, Provenance, Contradiction, History) -- close to but not identical to 0144's
+  eight-capacity K1-K8 (0144 merges Provenance into K3 with History; folds Constitutional-Admissibility/
+  Deterministic-Transition into K7/K8 as separate capacities, where 0145 treats them as the surrounding
+  architecture rather than pillars). Adds a concrete Constitutional DSL sketch (RULE syntax with
+  identity/evidence/context/contradiction/history rules), an explicit rule-evaluation priority order,
+  a 6-stage state-machine pipeline, YAML data-model sketches (KnowledgeState, KnowledgeTransition), a
+  DDD folder layout, and a fourth distinct 5-state contradiction vocabulary.
+
+introduces:
+  - "Six Pillars reduction: Identity, Evidence, Context, Provenance, Contradiction, History -- a
+    close-but-distinct sibling to 0144's K1-K8, unreconciled with it"
+  - "Constitutional DSL sketch: named RULE blocks (identity_rule_001, evidence_rule_001,
+    context_rule_001, contradiction_rule_001, history_rule_001) each with CHECK clauses and a
+    PASS/FAIL/CONTRADICTION_DETECTED result -- the first concrete rule-language syntax proposal in the
+    corpus for constitutional admissibility checking"
+  - "Explicit rule-evaluation priority order: Identity -> Evidence -> Context -> Contradiction
+    (overridable by evidence) -> History (evaluated last)"
+  - "Fourth distinct 5-state contradiction-resolution vocabulary: UNRESOLVED/SUPERSEDED/RECONCILED/
+    ENTRENCHED/ESCALATED -- added to the existing 5-state-vocabulary unresolved_equivalence family
+    (0096/0100/0144)"
+  - "A 6-stage constitutional state-machine pipeline: Proposal Receipt -> Constitutional Pre-Check ->
+    State Retrieval & Binding -> Constitutional Resolution -> Transition Execution -> Post-Transition
+    Verification"
+  - "A distinct 6-item fail-closed behavior table (AMBIGUOUS/INSUFFICIENT_EVIDENCE/
+    CONTRADICTION_DETECTED/UNAUTHORIZED/CONTEXT_MISMATCH/INVALID_TRANSITION) -- a new failure-mode
+    vocabulary, not previously seen in this exact shape"
+
+defines: []
+
+refines:
+  - "Reinforces (does not extend) the compiler-outside-kernel boundary and the Sanskrit-pattern mapping
+    already established at 0135-0144, applying it to sandhi/disambiguation stages specifically"
+
+contradicts: []
+
+repeats:
+  - {concept: "constitutional admissibility as the Kernel's central question, deterministic fail-closed behavior", canonical_source: "0144", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: true
+
+registry_updates:
+  - "Extended the K1-K8 new_representation entry with 0145's Six Pillars as an unreconciled sibling
+    reduction"
+  - "Extended the 5-state-vocabulary unresolved_equivalence entry with 0144's and 0145's contradiction
+    vocabularies (now four instances total)"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Identity Preservation", "Evidence Integrity", "Provenance"]
+  refines_or_contradicts: "Proposes a sibling six-pillar reduction alongside 0144's eight-capacity one; unreconciled, not merged."
+  alternative_minimal_kernel: "Six Pillars (Identity, Evidence, Context, Provenance, Contradiction, History)"
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "Two kernel-reduction proposals (0144's eight capacities, 0145's six pillars) appear within ~5
+    minutes of each other by filename timestamp, close in content but not identical, and neither cites
+    the other -- a clean within-session instance of the corpus's recurring representation-proliferation
+    pattern, explicitly NOT independent corroboration per MD-012 despite superficial convergence"
+  - "The Constitutional DSL sketch is the first concrete rule-syntax proposal for admissibility checking
+    in the corpus -- a genuinely new candidate mechanism, though only illustrative pseudocode"
+
+undefined_concepts: []
+open_questions:
+  - "Whether a later file reconciles the six-vs-eight pillar/capacity count, or whether both remain
+    permanently unresolved siblings"
+
+tier2_triggered: true
+tier2_reason: >
+  A close-but-distinct sibling kernel-reduction proposal to 0144 (six pillars vs. eight capacities),
+  a concrete Constitutional DSL sketch, and a fourth instance of the recurring 5-state-vocabulary
+  proliferation pattern.

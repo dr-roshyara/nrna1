@@ -1,0 +1,77 @@
+
+==============================================================================
+The governed surface actually inspected
+==============================================================================
+  docs/knowledge/Knowledge-Constitution.md  (5691 B)
+  docs/knowledgeos/reviews/synthesis/model/canonical-architecture-v0.2.md  (6817 B)
+  docs/knowledgeos/reviews/synthesis/model/canonical-architecture.md  (8835 B)
+  docs/knowledgeos/reviews/synthesis/model/concern-map.md  (3771 B)
+  docs/knowledgeos/reviews/synthesis/model/dependency-graph.md  (3339 B)
+  docs/knowledgeos/reviews/synthesis/model/formalization-fidelity.md  (2637 B)
+  docs/knowledgeos/reviews/synthesis/model/invariant-map.md  (2634 B)
+  docs/knowledgeos/reviews/synthesis/model/logical-reconstruction.md  (3243 B)
+  docs/knowledgeos/reviews/synthesis/model/lord-omega-analysis.md  (4399 B)
+  docs/knowledgeos/reviews/synthesis/model/regime-transition-analysis.md  (8942 B)
+  docs/knowledgeos/reviews/synthesis/model/responsibility-map.md  (3621 B)
+
+  total governed text inspected: 52,353 chars across 11 files
+
+==============================================================================
+C1 — vocabulary disjointness (GN-75: '0 occurrences each')
+==============================================================================
+  symbol                hits in governed surface
+  ----------------------------------------------
+  script-A (𝒜)                                 0
+  script-R (ℛ)                                 0
+  Sigma (Σ)                                    0
+  Q_t                                          0
+  script-O (𝒪)                                 0
+  Provenance                                   0
+  Replay                                       0
+  Measurement                                  0
+
+  symbols with ZERO occurrences: 8/8
+  => C1 CONFIRMED
+
+==============================================================================
+C2 — operation signatures in the governed surface (GN-77 claims 0)
+==============================================================================
+  X × Y → Z (unicode)      0
+  f : A → B                0
+  \to / \rightarrow        0
+
+  total signature-shaped strings: 0
+  => C2 CONFIRMED (0)
+
+==============================================================================
+C3/C4 — pre/postconditions in the governed surface
+==============================================================================
+
+  'postcondition': 0 hit(s)
+
+  'post-condition': 0 hit(s)
+
+  'precondition': 1 hit(s)
+      …`DC(d) = (Pre, Inv, Auth, Post, Temporal, Evidence)` | READ | 042 | | **Authorization** | precondition constraint filled via governance, never a proce…
+
+  'pre-condition': 0 hit(s)
+
+  => C3 is the decisive one: if 'postcondition' is 0 across the governed surface,
+     then no operation has a declared effect, and the operation contract cannot be
+     written from canon regardless of which registry is chosen.
+
+==============================================================================
+What the governed surface DOES contain (counter-check, so the finding is not one-sided)
+==============================================================================
+  invariant                 41
+  primitive                 17
+  K_t                       14
+  authority                 39
+  policy                    14
+  transition                15
+  illegal|forbid|must not     7
+
+  READING: the canon is rich in INVARIANTS, PRIMITIVES and PROHIBITIONS and empty
+  of SIGNATURES and POSTCONDITIONS. That is GN-77's formulation, mechanically:
+  'the ratified canon defines when a transition would be ILLEGAL without ever
+   defining what a transition IS.'

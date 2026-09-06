@@ -1,0 +1,77 @@
+sequence: 226
+path: docs/knowledgeos/brainstorming/kernel/20260824-131125-hybrid-evidence-gated-temporal-inference-architecture.md
+title: "Hybrid, Evidence-Gated Temporal Inference Architecture"
+date: "2026-08-24"
+bytes: 27500
+model:
+  primary: c1
+  secondary: g1
+source_role: PRIMARY_RESEARCH
+canonical_source: 226
+importance: critical
+confidence: high
+about: >
+  A genuine convergence point: reconnects the mathematical arc (0202-0225, HMM/HSMM/Bayesian/statistical)
+  back to the corpus's original 26-lens Sanskrit/DDD lens system (Vani/Panini/Karaka/Nyaya/Navya-Nyaya/
+  Godel/Escher/Siva-Sakti/Ganesha/Leonardo/Moksha/Negative-Epistemology/Isnad/Witness/Dharma) from the
+  earlier Kernel Boundary Discovery cycle. Central proposal: use the cheapest model that answers the
+  current question with sufficient accuracy, escalating only when evidence shows it inadequate --
+  "Evidence-Gated Hybrid Temporal Inference" (EG-HTI), explicitly frozen as a research hypothesis, not
+  adopted architecture.
+introduces:
+  - concept: "Lens-as-computational-role reinterpretation table: each of the 26 lenses assigned a computational function (DDD reduces state space, Zero detects missing prerequisites, Vani/Panini normalize representations, Nyaya validates justification, Godel prevents inference->truth collapse, Wisdom decides escalation, etc.) -- the lenses become a complexity-reduction mechanism, not merely a philosophical apparatus"
+  - concept: "Eight-layer hybrid architecture: Semantic compression (Vani/Panini/Karaka/SNF) -> Evidence qualification (Nyaya/Navya-Nyaya/Isnad/Witness/Zero) -> Domain reduction (DDD/Leonardo/Dharma) -> Fast inference (HMM/deterministic) -> Selective temporal inference (HSMM) -> Deep inference (smoothing/Bayesian/offline reconstruction) -> Assurance (Godel/Zero/Negative-Epistemology/Ganesha) -> Wisdom (decide escalation/review/action)"
+  - concept: "DDD as the largest computational optimization: reducing legitimate domain state count M before inference cuts HMM cost O(TM^2) and HSMM cost O(TM^2D) quadratically (worked example: M=100->10 gives ~100x transition-space reduction)"
+  - concept: "HSMM Escalation Score E_HSMM = weighted sum of uncertainty/duration-dependence/conflict/regime-change-signal/temporal-volatility/missing-observation-complexity, with calibrated (not arbitrary) thresholds driven by false-negative/false-positive/compute-budget costs"
+  - concept: "Empirical HMM-adequacy test: KL(P_observed(duration) || P_geometric(duration)) below epsilon means HMM's implicit geometric-duration assumption is adequate; above epsilon justifies explicit HSMM duration modeling"
+  - concept: "Hybrid state model S = S_H (HMM states) union S_HS (explicit-duration states) -- not every state needs HSMM, only those with demonstrably non-geometric duration"
+  - concept: "State-specific duration bounds D_max(s) and parametric duration distributions (Poisson/Gamma/log-normal/negative-binomial/Weibull) reducing an unrestricted duration table O(D) to O(k) parameters, plus duration pruning with an explicit invariant: optimization may reduce computation, it may NOT erase uncertainty (discarded probability mass must be recorded, e.g. retained_probability:0.997/discarded_tail:0.003)"
+  - concept: "Sparse transition matrices from DDD-bounded domain lifecycles (E << M^2 legitimate transitions), reducing HSMM cost from O(TM^2D) to O(TED)"
+  - concept: "Model registry per bounded context (architecture_assessment:hmm->hsmm, governance_lifecycle:deterministic-only, semantic_identity:deterministic_snf, evidence_admissibility:rule_engine, long_term_knowledge_evolution:hsmm->bayesian) -- no single universal model"
+  - concept: "Async 'anytime' inference: online filtering fast-path response, offline smoothing/historical-correction runs in background and updates the assessment later; five-level response taxonomy (INSUFFICIENT EVIDENCE / DETERMINISTIC RESULT / FAST PROBABILISTIC / DURATION-AWARE HSMM / SMOOTHED DEEP ANALYSIS), never paying Level-4 cost for a Level-1 question"
+  - concept: "Escalation function combining entropy, state margin (p_max - p_2nd), duration-divergence R_D, and conflict, not confidence alone"
+  - concept: "Risk-sensitive escalation via ExpectedLoss = P(error) x Cost(error); computational decision theory: a* = argmin_a[C_compute(a)+C_error(a)] over {Deterministic,HMM,HSMM,Deep}"
+  - concept: "Godel-lens guard against a dangerous optimization: skipping mandatory evidence validation because a cheap model is confident is unacceptable for certain evidence classes -- Mandatory Evidence Tiers by risk class (A: full validation+HSMM/deep+human acceptance; B: deterministic+HMM+optional HSMM; C: fast path acceptable)"
+  - concept: "Negative-Epistemology-derived forbidden-shortcut list: KnowledgeOS is explicitly NOT a truth generator/semantic oracle/evidence owner/unrestricted reasoner/confidence accumulator/representation authority/automatic selector -- high probability never automatically becomes admitted knowledge, it becomes a candidate assessment subject to admission rules"
+  - concept: "Escher/Siva-Sakti-justified semantic caching: compress RawEvidence->CompressedRepresentation only if Invariant(Raw)=Invariant(Compressed); provenance-aware cache key (SemanticHash, Context, ModelVersion, EvidenceClass) preventing invalid cross-context reuse of semantically-identical-but-differently-sourced observations"
+  - concept: "Moksha-motivated model drift detection: periodically test KL(P_new||P_old) against threshold to trigger model reassessment; self-optimizing but explicitly NOT self-certifying -- external governance remains outside the inference loop"
+  - concept: "Progressive Epistemic Computation principle (formal): KnowledgeOS shall not perform more expensive inference than required by evidence/temporal-complexity/context/uncertainty/consequence; Level* = argmin_L[Compute(L)+ExpectedError(L)] subject to Assurance(L) >= RequiredAssurance"
+  - concept: "Accuracy principle: every computational shortcut must declare what it approximates and what uncertainty it introduces (worked YAML example showing why HSMM was skipped, with duration-divergence/entropy/context-completeness reasons and validation stats) -- explicitly contrasted with a bare 'AI is 97% confident'"
+  - concept: "Final combined formula: Inference = Gate_{DDD,Zero,Nyaya} composed with Normalize_{Vani,Panini,SNF} composed with Select[Deterministic,HMM,HSMM,Deep], constrained by Truth != Inference != Evidence != Authority"
+  - concept: "Named research hypothesis: Evidence-Gated Hybrid Temporal Inference (EG-HTI) -- deterministic preprocessing, HMM as default cheap baseline, selective state-specific HSMM escalation, deep inference only when uncertainty/risk justifies cost; explicitly frozen as hypothesis, not adopted"
+defines: []
+refines:
+  - concept: "0225's HSMM formalism and 0224's Model Registry concept"
+    refinement: "Adds a formal computational-cost analysis (O(TM^2), O(TM^2D), O(TED)) and an evidence-gated escalation ladder (Rules->HMM->HSMM->Deep->Human/Governance), converting the prior files' 'HSMM as one model family, not the whole system' warning into a concrete decision-theoretic mechanism."
+  - concept: "The 26-lens Sanskrit/Chinese/DDD system from the 0144-0170 Kernel Boundary Discovery cycle"
+    refinement: "Reinterprets each lens's philosophical role as a specific computational function within the hybrid inference pipeline -- the first file in this technical-pivot arc to explicitly reconnect the mathematical machinery back to the earlier lens vocabulary by name."
+contradicts: []
+repeats:
+  - concept: "Optimization must not erase uncertainty / must not turn confidence into truth"
+    canonical_source: 224
+    novelty: low
+bridge_candidates:
+  - "This file's lens-to-computational-role table is the clearest evidence yet that the corpus's two major research threads (the 0100s-0190s philosophical/Sanskrit lens-driven Kernel Boundary Discovery cycle, and the 0200s+ technical/mathematical pivot) are being deliberately synthesized by the same authorial voice, not merely running in parallel. Not logged as unresolved_equivalence (this is an explicit reconciliation attempt by the source itself, not an independent convergence needing MD-017 caution)."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "26-lens Sanskrit/DDD system (0144-0170 cycle) and the 0223-0225 mathematical/HSMM arc"
+  supports_dimension: "Cross-model convergence -- explicit reconciliation of the Gita/philosophical lens system with the Mathematical/statistical HSMM machinery into one named hybrid architecture hypothesis (EG-HTI)"
+  refines_or_contradicts: "refines both the lens system's prior standalone treatment and 0224/0225's mathematical machinery; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Concrete worked cost/error comparison table (Fast HMM cost=1/error=0.08 vs. HSMM cost=7/error=0.03 vs. Deep cost=50/error=0.02) applied to low-risk vs. high-risk vs. constitutional-governance decision scenarios, grounding the abstract decision-theoretic formula in a tangible example"
+undefined_concepts:
+  - "No empirical calibration data given for any of the named thresholds (tau_H, tau_Delta, tau_D, tau_C) -- the escalation function is specified structurally, not numerically"
+open_questions:
+  - "Whether the EG-HTI hypothesis is ever taken up as a dedicated implementation research track distinct from the general Model Registry / Mathematical Modelling Layer proposals (0223/0224)"
+  - "Whether the lens-to-computational-role table is ever extended or formally adopted as the corpus's canonical bridge between its two research arcs"
+tier2_triggered: true
+tier2_reason: "Critical explicit reconciliation between the corpus's two major research threads (26-lens Sanskrit/DDD system and the mathematical HSMM/Bayesian arc), producing a named research hypothesis (Evidence-Gated Hybrid Temporal Inference) with a formal decision-theoretic escalation ladder, computational-complexity justification, and risk-tiered mandatory-evidence gates that prevent computational optimization from silently becoming false epistemic authority."

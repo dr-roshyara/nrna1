@@ -1,0 +1,243 @@
+sequence: 584
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-183529_step-025f-governance-conflict-algebra.md
+title: "CAPSTONE: 'Is This Architecture Computable on a Normal PC?' — 'Yes, Overwhelmingly Yes for the Kernel' — Governance Conflict Formalized as a Partial Order With a Legitimate 'Unresolved' Terminal State ('Knowing That Something Cannot Be Determined Is Itself a Valid Computed Result'); a Deterministic-Kernel vs. Intelligence-Layer Architectural Split; 'The Real Bottleneck Is Not CPU' — Nearly Every Unresolved Problem Is SEMANTIC, Not COMPUTATIONAL ('Very Good News'); a Fifteen-Row Consolidated Computability Table; Explicit Naming of 'Atma' Among the Corpus's Originally-Feared Uncomputable Philosophical Terms, Now Resolved; Verdict '25F — PASS'; Opens Step 25G (Formal Lord Algebra) — 'Where We Begin to Turn KnowledgeOS From an Epistemic Model Into an Actual Computable Agent Architecture'"
+date: "2026-08-27"
+bytes: 23001
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 25F -- Governance Conflict Algebra' committed at 0583, and additionally answers a directly posed user question ('is this architecture computable on a normal PC?') with a comprehensive, honest computability assessment for the entire kernel developed across the whole 25A-25F sub-arc"
+source_role: PRIMARY_RESEARCH
+canonical_source: 584
+importance: critical
+confidence: high
+about: >
+  Opens by confirming a dual agenda: "I would do 25F first, and then explicitly test the architecture
+  against a normal PC," with an important preliminary distinction drawn between three genuinely different
+  questions -- `computable`, `computationally expensive`, and `requiring external capabilities`. Opens
+  "Step 25F — Governance Conflict Algebra," addressing the central problem left open at 0583: what happens
+  when the sources an Epistemic Contract is derived from disagree?
+
+  **Delivers the file's foundational governance principle**: **`Conflict≠Error`** -- a contradiction
+  between two governing sources can arise for seven distinct, named reasons (supersession, scope
+  difference, temporal difference, exception, differential authority, source invalidity, or genuine
+  unresolved organizational conflict), so conflict is "an input state requiring resolution," never
+  automatically a defect. Delivers a formal, context-dependent Authority relation
+  `Authority(s_1,s_2,C)` and two governance rules preceding contradiction detection itself: scope must be
+  checked first (`Scope(A)∩Scope(B)=∅⇒Conflict(A,B)=False`, worked through a concrete Production-vs-
+  Development policy example) and temporal applicability must be checked second (worked through a
+  before/after-2026 policy pair) -- both formalized into a single, cleaner effective-conflict predicate
+  `Conflict(s_1,s_2,C,t)` requiring BOTH sources applicable at the same context and time AND genuinely
+  differing conclusions.
+
+  **Delivers a formal six-outcome resolution relation** `Resolve(s_1,s_2,C,t)∈{s_1 wins, s_2 wins, both
+  coexist, exception, superseded, unresolved}`. Delivers **Supersession** (`Effective(ADR_1)=False` once
+  explicitly superseded by `ADR_2`), yielding **`HistoricalConflict≠CurrentConflict`** -- the historical
+  contradiction remains permanently in KnowledgeOS history but does not contaminate current governance,
+  directly extending 0565's/0574's history-preservation discipline into the governance layer. Delivers
+  **Explicit exception handling as a history-preserving, non-destructive operation**: a governance-
+  authorized exception must NEVER delete the base requirement; both the original rule and the exception
+  are retained side by side (`SatisfiedByException`), worked through a concrete before/after governance
+  record contrast demonstrating why simply deleting the requirement "destroys governance history."
+
+  **Delivers a sharp formal separation -- `Instruction≠AuthorizedDecision`**: an unauthorized human
+  instruction contradicting the Constitution is correctly rejected as non-binding (`Authority(HumanInstru
+  ction)<Authority(Constitution)⇒EffectiveConclusion=r`), while an AUTHORIZED governance authority's
+  explicit exception grant is treated entirely differently (`HumanDecision→AuthorizedException`) --
+  "human instruction is not one semantic category," directly extending 0567's/0577's/0583's established
+  Instruction≠Evidence and CandidateRequirement≠ContractRequirement discipline into a new, precise
+  human-authority distinction. **Delivers the file's central AI-governance reconfirmation, explicitly
+  called "a fundamental KnowledgeOS invariant"**: `AIOutput⊢¬r` never becomes binding unless independently
+  backed by an authoritative source and accepted through the governance mechanism --
+  `AIOutput cannot directly override governance`.
+
+  **Delivers the file's key mathematical refinement of authority itself -- a partial order, not a linear
+  hierarchy**: `s_1⪰_C s_2`, explicitly NOT requiring a single universal ranking (`A⪰B` does not imply
+  `B⪰C` or `A⪰C`), worked through a concrete example where security policy dominates for security
+  propositions while architecture constitution dominates for architecture-structure propositions --
+  **`Authority is context-dependent`**, a further, more rigorous instance of the corpus's recurring refusal
+  to hard-code universal governance hierarchies (already flagged at 0583).
+
+  **Delivers a formal `GovernanceResolve(C,S,t)→GR` function**, producing a five-part governance-
+  resolution result `GR=(EffectiveRules,Conflicts,Exceptions,Supersessions,UnresolvedItems)`, worked
+  through a concrete seven-step resolution algorithm over a four-source example set (Constitution, ADR_17,
+  Policy_4, Exception_2).
+
+  **Delivers the file's single most important architectural conclusion, explicitly self-identified as
+  such**: **"one of the most important conclusions so far"** -- when two equally authoritative sources
+  genuinely conflict with no precedence mechanism available, the correct result is `Unresolved`, escalating
+  to human governance -- explicitly NOT a KnowledgeOS failure but **"the correct computational result."**
+  Crystallized into the file's headline principle: **"knowing that something cannot be determined is
+  itself a valid computed result"** -- the kernel's job is not to resolve every semantic conflict, only to
+  determine WHETHER a conflict is computationally resolvable, then either `Resolve` or `Escalate`. Delivers
+  a formal three-state governance-resolution outcome space (`Resolved`/`Unresolved`/`Invalid`), worked
+  through a concrete Constitution-vs-ADR unresolved example flowing directly into Zero
+  (`ArchitectureApproval=Conflicted`) and Lord (generating `ResolveGovernanceConflict` rather than
+  guessing). Delivers a nine-step computational governance-resolution algorithm in pseudocode.
+
+  **Delivers the file's second major deliverable -- a comprehensive, directly-addressed answer to "is this
+  architecture computable on a normal PC?"**, explicitly stated: **"Yes — overwhelmingly yes for the
+  kernel."** Delivers a thirteen-item list of ordinary computational tasks the kernel comprises (graph
+  traversal, set operations, indexing, rule evaluation, dependency resolution, version comparison,
+  temporal filtering, provenance tracking, hashing, deterministic state transitions, constraint
+  evaluation, evidence classification, conflict detection), each explicitly framed as achievable on
+  conventional hardware, worked through a concrete scale estimate (`10^6` evidence/assertion nodes,
+  `10^7` relationships) declared "large for a desktop application, but still not conceptually beyond
+  ordinary database/graph technology."
+
+  **Delivers the file's central architectural deliverable -- a clean kernel/intelligence-layer split**:
+  a Deterministic Kernel (running on a Normal PC) versus an Intelligence Layer (CPU/GPU/Cloud, hosting
+  LLMs, embeddings, large models, simulation), visualized in a compact architecture diagram. Delivers
+  three concrete, worked applications of this separation: `Extraction cost≠Kernel cost` (document
+  parsing/OCR/NLP/LLM extraction is a distinct workload from the kernel itself); the Internet formalized
+  purely as an external evidence source (`Internet→Observation→Evidence`), with the explicit, notable
+  finding that KnowledgeOS's kernel would continue operating on its existing knowledge state even if the
+  Internet disappeared entirely -- "a very healthy architectural property"; and the same principle applied
+  to databases. Delivers the file's headline AI-independence statement: **`KnowledgeOS is AI-compatible,
+  but AI-independent at the kernel level`** -- "a major architectural advantage."
+
+  **Delivers the corpus's first explicit computational-complexity estimates for named kernel operations**:
+  requirement evaluation `O(|R|)`; graph traversal `O(|V|+|E|)`; conflict detection approximately
+  `O(n log n)` with appropriate indexing; hash-based identity approximately `O(size(E))` -- "nothing here
+  inherently requires exponential computation," directly extending and quantifying 0575's earlier `O(N+M)`
+  estimate for dependency propagation specifically. Delivers an honest, important qualification: certain
+  general reasoning problems (constraint satisfaction, theorem proving, combinatorial optimization, causal
+  discovery, planning) CAN be NP-hard or worse depending on formulation, but this "does not invalidate
+  KnowledgeOS" -- it only means kernel computation must remain distinguished from problem-specific
+  computation, which may legitimately be hard.
+
+  **Delivers a realistic developer-workstation hardware baseline** (8-16 cores, 32-64GB RAM, 1-4TB SSD,
+  PostgreSQL, optional graph/index layer, optional local/remote LLM), explicitly noting the exact hardware
+  figures are "not mathematically required," only "a reasonable engineering baseline" -- the kernel itself
+  could run with considerably less.
+
+  **Delivers the file's single most important insight, explicitly flagged as "perhaps the most important
+  answer"**: **"the real bottleneck is not CPU"** -- the genuine risk is not "can a computer calculate
+  this?" but **"have we defined the semantics sufficiently precisely that the computer knows what to
+  calculate?"**, worked through three sharply contrasting examples: `Authority(s_1,s_2)` is
+  computationally trivial once defined, but organizationally difficult to define in the first place;
+  `Dependency(E_1,E_2)` is trivial to store but often genuinely difficult to DETERMINE (is this evidence
+  actually independent?); `Satisfied(K,r)` is trivial to evaluate once its predicate exists, but defining
+  the predicate correctly is the hard part. Delivers the resulting formal distinction --
+  **`Semantic unresolved` versus `Computational unresolved`** -- with the file's explicit, reassuring
+  finding: "our current problems are overwhelmingly Semantic rather than Computational. That is actually
+  very good news."
+
+  **Delivers the file's central formal deliverable -- a comprehensive fifteen-row computability/normal-PC
+  status table**, explicitly self-described as "an engineering assessment," not "a scientific numerical
+  measurement," covering the entire kernel plus surrounding capabilities: thirteen kernel-layer items
+  (Evidence identity through Governance resolution) all `Yes`/`Yes` computable-and-normal-PC; Statistical
+  inference/Large Monte Carlo `Yes`/`Usually`-or-`Sometimes slow`; LLM inference `Yes`/`Depends on model`;
+  Internet acquisition marked `External dependency`/`N/A`; Human interpretation marked explicitly
+  `Not fully automatable`/`Human`; Irreducible governance conflict marked
+  `Detectable, not automatically resolvable`/`Human` -- the corpus's most complete single computability
+  reference table produced by the entire research program.
+
+  **Delivers the file's headline architectural conclusion**: **"the KnowledgeOS kernel does not require
+  extraordinary computing power"** -- the difficult part is **"formalization, not computation"**,
+  crystallized into the precise summarizing statement: "once the semantics, contracts, provenance,
+  authority relations and inference models are explicitly defined, the majority of the KnowledgeOS kernel
+  is ordinary deterministic computation executable on a normal PC."
+
+  **Delivers the file's most historically significant closing statement, of first-order importance to
+  this reconstruction's own three-model-convergence mandate**: explicitly names the ORIGINAL fear the
+  entire multi-hundred-file research program set out to test -- that concepts like "observation,
+  knowledge, evidence, truth, Zero, **Atma**, reasoning" would remain "philosophically meaningful but
+  could not actually be computed." The file explicitly and directly names **"Atma"** among this list of
+  originally-feared uncomputable terms -- the clearest, most direct acknowledgment anywhere in the corpus
+  that the earlier Gita/Vedanta-inspired philosophical vocabulary (previously echoed at 0567's "Knowledge
+  Atma" and 0582's "Atman / knowledge ideal state" callback) was a genuine, explicitly-tracked object of
+  the entire computability investigation, not merely incidental color. Delivers the file's own summary of
+  the transformations achieved that resolve this fear: `Observation→Evidence`; `Evidence→EvidenceGraph`;
+  `RequiredKnowledge→EpistemicContract`; `Gap→Zero(K,EC)`; `Contradiction→GovernanceConflict`; plus the
+  definition of the legitimate terminal state `Unresolved` rather than forcing the computer to invent an
+  answer -- "that is a major milestone."
+
+  **Delivers Step 25F's verdict**: **"25F — PASS,"** with two named governing invariants:
+  "KnowledgeOS may compute 'unresolvable' without pretending to resolve it" and "the kernel is
+  computationally feasible on ordinary PC-class hardware," with external AI, web, databases, and
+  specialized statistical computation explicitly classified as "capabilities around the kernel, not
+  prerequisites for the kernel's mathematical validity."
+
+  **Delivers the file's final consolidated full-loop architecture diagram**, the most complete visual
+  synthesis of the entire 25A-25F sub-arc, spanning `WORLD→Observations→Evidence→Evidence Graph
+  [Provenance/Dependency/Time]→KnowledgeState→Epistemic Contract→Zero`, branching into
+  `Information Actions` and `Governance Resolution` (with `Human if unresolved` as the explicit escape
+  valve for the latter), converging on `Lord→Sārathi→Decision→Action→WORLD` -- "the loop is computable."
+
+  **Closes by opening "Step 25G — Formal Lord Algebra: Choosing the Next Action,"** posing the natural
+  next question given Evidence, KnowledgeState, EpistemicContract, Zero, VOI, and governance resolution
+  are all now formally defined: "can Lord deterministically compute which epistemic or operational action
+  should happen next?" Delivers the formal target signature
+  `Lord(K,Zero,Goals,Constraints)→Action`, to be tested against ten named dimensions (several simultaneous
+  gaps, different criticalities, cost, risk, information gain, dependencies, deadlines, governance
+  blockers, human-required vs. AI actions, world-changing actions) -- explicitly framed as **"where we
+  begin to turn KnowledgeOS from an epistemic model into an actual computable agent architecture"** -- a
+  significant milestone marker, since everything through 25F has formalized only the epistemic/knowledge
+  side of the architecture, while Lord (and later Sārathi) represents the corpus's first attempt to
+  formally close the loop into genuine agentic action selection. As with the entire 25A-25F sub-arc, no
+  report of actual executed code appears; this file's computability claims are architectural and
+  complexity-theoretic reasoning, not measured benchmark results.
+introduces:
+  - concept: "'Conflict≠Error' — a governance contradiction between sources is an input state requiring resolution, not automatically a defect, with seven named legitimate reasons contradictions can arise"
+  - concept: "The effective-conflict predicate requiring scope and temporal applicability to be checked BEFORE contradiction itself is evaluated — many apparent governance conflicts dissolve once scope/time context is properly considered"
+  - concept: "'HistoricalConflict≠CurrentConflict' — a superseded source's historical contradiction remains permanently in KnowledgeOS history without contaminating current governance evaluation"
+  - concept: "'Instruction≠AuthorizedDecision' — human instructions and authorized governance decisions are formally distinct semantic categories with different override capabilities relative to the Constitution"
+  - concept: "Authority formalized as a context-dependent partial order rather than a single universal linear hierarchy, explicitly permitting different sources to dominate for different kinds of propositions"
+  - concept: "'Knowing that something cannot be determined is itself a valid computed result' — the kernel's job is to determine WHETHER a governance conflict is resolvable, not to resolve every conflict, explicitly self-identified as one of the program's most important conclusions"
+  - concept: "A direct, comprehensive answer to whether the KnowledgeOS architecture is computable on ordinary hardware — 'yes, overwhelmingly yes for the kernel' — with a clean deterministic-kernel-vs-intelligence-layer architectural split"
+  - concept: "'KnowledgeOS is AI-compatible, but AI-independent at the kernel level' — the kernel continues to function on its existing knowledge state even if external AI, Internet, or database sources become unavailable"
+  - concept: "The corpus's first explicit computational-complexity estimates for named kernel operations (requirement evaluation, graph traversal, conflict detection, hashing), each shown to be polynomial, paired with an honest acknowledgment that some downstream reasoning problems can legitimately be NP-hard without invalidating the kernel"
+  - concept: "'The real bottleneck is not CPU' — the genuine architectural risk is semantic precision (defining what concepts mean), not computational feasibility (calculating them), formalized as Semantic unresolved vs Computational unresolved, with the explicit finding that the program's remaining problems are overwhelmingly semantic"
+  - concept: "The explicit naming of 'Atma' among the corpus's originally-feared philosophically-meaningful-but-uncomputable terms, now substantially resolved through formalization — the clearest, most direct acknowledgment in the corpus that the philosophical/Vedantic thread was a genuine, tracked object of the computability investigation"
+  - concept: "'Step 25G — Formal Lord Algebra: Choosing the Next Action', explicitly framed as the point where KnowledgeOS transitions from a formalized epistemic model into an actual computable agent architecture"
+defines:
+  - concept: "Effective conflict predicate"
+    definition: "Conflict(s_1,s_2,C,t) holds only when Applicable(s_1,C,t) AND Applicable(s_2,C,t) AND Conclusion(s_1)≠Conclusion(s_2) — cleaner than raw contradiction detection, since scope/time mismatches dissolve many apparent conflicts"
+  - concept: "GovernanceResolve function"
+    definition: "GovernanceResolve(C,S,t)→GR=(EffectiveRules,Conflicts,Exceptions,Supersessions,UnresolvedItems) — the formal governance-conflict-resolution operation over a set of applicable governance sources S"
+  - concept: "Three-state governance resolution outcome space"
+    definition: "Resolved (a deterministic precedence/exception rule exists) / Unresolved (valid sources conflict with no resolution mechanism) / Invalid (a source or rule cannot legally/semantically participate)"
+  - concept: "Semantic unresolved vs Computational unresolved"
+    definition: "Semantic unresolved: the meaning of a concept is not yet defined. Computational unresolved: the meaning is known but efficient calculation is not yet solved. The program's remaining problems are classified as overwhelmingly semantic"
+refines:
+  - concept: "0583's discovered blocker 'ContractDerivation depends on a Governance Algebra' when governing sources disagree"
+    refinement: "Directly and substantially resolved: governance conflict is formalized via scope/temporal pre-filtering, a context-dependent authority partial order, supersession, and explicit exceptions, with a legitimate Unresolved terminal state for genuinely irresolvable conflicts requiring human escalation"
+  - concept: "0562's/0566's/0583's LLM-governance boundary (LLMOutput⇒CandidateAssertion/CandidateRequirement, never automatically binding)"
+    refinement: "Extended into the governance-conflict layer specifically: AI output cannot directly override governance, formalized as 'a fundamental KnowledgeOS invariant' distinct from but structurally identical to the evidence and contract-derivation boundaries"
+  - concept: "0565's/0574's history-preservation discipline (retraction/revision never erase historical records)"
+    refinement: "Extended into governance: superseded historical conflicts remain permanently visible in KnowledgeOS history without contaminating current governance evaluation (HistoricalConflict≠CurrentConflict), and authorized exceptions are recorded alongside, never in place of, the base requirement they modify"
+  - concept: "0575's O(N+M) computational-complexity estimate for dependency-invalidation propagation"
+    refinement: "Extended with a fuller set of explicit polynomial complexity estimates for named kernel operations (requirement evaluation O(|R|), graph traversal O(|V|+|E|), conflict detection ~O(n log n), hashing ~O(size(E))), paired with an honest acknowledgment that some downstream reasoning problems remain legitimately hard"
+  - concept: "0567's and 0582's rare explicit callbacks to the corpus's Atman/Vedantic philosophical thread ('Knowledge Atma', 'Atman / knowledge ideal state')"
+    refinement: "Given its clearest, most direct treatment yet: 'Atma' is explicitly named among the terms the entire research program originally feared would remain philosophically meaningful but uncomputable, with the file declaring this fear substantially resolved through the formalizations achieved across the whole 25A-25F sub-arc"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25G — Formal Lord Algebra: Choosing the Next Action' is executed as its own dedicated corpus file, and critically, whether it succeeds in formalizing Lord(K,Zero,Goals,Constraints)→Action as a genuinely computable function — this represents the research program's first attempt to formally close the loop into actual agentic action selection, distinct from everything formalized so far which addressed only the epistemic/knowledge side of the architecture"
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Conflict≠Error, the scope/temporal pre-filtering for effective conflict, HistoricalConflict≠CurrentConflict, explicit exception handling as history-preserving, Instruction≠AuthorizedDecision, and the reconfirmed AI-cannot-override-governance invariant."
+  - "dimension-registry.md: record Authority formalized as a context-dependent partial order (not a linear hierarchy), the GovernanceResolve function, the headline principle 'knowing that something cannot be determined is itself a valid computed result,' and the three-state governance resolution outcome space (Resolved/Unresolved/Invalid)."
+  - "dimension-registry.md: record the comprehensive 'yes, overwhelmingly yes for the kernel' computability answer, the deterministic-kernel/intelligence-layer split, 'KnowledgeOS is AI-compatible but AI-independent at the kernel level,' the corpus's first explicit polynomial complexity estimates, 'the real bottleneck is not CPU' / Semantic vs Computational unresolved, the fifteen-row computability table, the explicit naming of 'Atma' among originally-feared uncomputable terms, the verdict '25F — PASS,' and 'Step 25G — Formal Lord Algebra' as the next research phase, marking the transition from epistemic model to computable agent architecture."
+anchor_test:
+  anchor: "0583's discovered blocker requiring a Governance Algebra; 0562's/0566's/0583's LLM-governance boundary; 0565's/0574's history-preservation discipline; 0575's O(N+M) complexity estimate; 0567's and 0582's philosophical-thread callbacks ('Knowledge Atma', 'Atman / knowledge ideal state')"
+  supports_dimension: "CAPSTONE delivering the corpus's most direct and comprehensive answer yet to the entire research program's foundational computability question, explicitly resolving whether the KnowledgeOS kernel requires extraordinary computing power ('yes, overwhelmingly yes' it is feasible on ordinary hardware) via a rigorous kernel-vs-intelligence-layer architectural split, explicit polynomial complexity estimates, and a fifteen-row consolidated computability table — the most complete single computability assessment produced across the entire program. Delivers a genuinely rigorous formalization of governance conflict as a context-dependent partial order with a legitimate 'Unresolved' terminal state, explicitly identified as one of the program's most important conclusions ('knowing that something cannot be determined is itself a valid computed result'), directly and substantially resolving the blocker discovered at 0583. Delivers the single most important architectural insight of the file, explicitly flagged as such ('the real bottleneck is not CPU' — the program's remaining problems are overwhelmingly semantic, not computational), and delivers the clearest, most direct acknowledgment anywhere in the corpus that its earlier philosophical/Vedantic vocabulary ('Atma') was a genuine, explicitly-tracked object of this entire computability investigation, now declared substantially resolved. Closes by opening the transition from a formalized epistemic model to an actual computable agent architecture via Step 25G"
+  refines_or_contradicts: "directly executes Step 25F as opened at 0583 and substantially resolves its discovered blocker; extends the LLM-governance boundary (0562/0566/0583) into governance-conflict resolution; extends the history-preservation discipline (0565/0574) into governance; extends 0575's complexity estimate with a fuller polynomial-complexity treatment; gives 0567's and 0582's philosophical-thread callbacks their clearest, most direct treatment yet; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit, direct naming of 'Atma' among the terms ('observation, knowledge, evidence, truth, Zero, Atma, reasoning') the entire research program originally feared would remain philosophically meaningful but uncomputable is directly checkable, unambiguous textual evidence that the corpus's philosophical/Vedantic vocabulary was a genuine, tracked object of concern throughout the mathematical formalization effort, not merely incidental color — of first-order importance to this reconstruction's own three-model-convergence mandate."
+  - "The fifteen-row consolidated computability table, distinguishing 'Yes/Yes' kernel-layer items from 'External dependency/N/A' (Internet), 'Not fully automatable/Human' (human interpretation), and 'Detectable, not automatically resolvable/Human' (irreducible governance conflict), is directly checkable, concrete evidence supporting the file's headline computability claim, rather than an unsupported assertion."
+  - "The three concrete, sharply contrasting Semantic-vs-Computational examples (Authority(s1,s2) trivial to compute but hard to define organizationally; Dependency(E1,E2) easy to store but hard to determine; Satisfied(K,r) trivial once its predicate exists but the predicate itself is hard to define) are directly checkable illustrations grounding the file's central insight in inspectable, realistic scenarios rather than abstract assertion."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25G — Formal Lord Algebra: Choosing the Next Action' is executed as its own dedicated corpus file, and critically, whether it succeeds in formalizing Lord(K,Zero,Goals,Constraints)→Action as a genuinely computable function"
+tier2_triggered: true
+tier2_reason: "CAPSTONE delivering the corpus's most direct, comprehensive, and consequential answer yet to the entire research program's foundational computability question — 'yes, overwhelmingly yes for the kernel' — via a rigorous deterministic-kernel-vs-intelligence-layer architectural split, explicit polynomial complexity estimates for named kernel operations, and the most complete consolidated computability table produced anywhere in the program (fifteen rows, distinguishing kernel-computable, external-dependency, and irreducibly-human items). Delivers a genuinely rigorous formalization of governance conflict as a context-dependent authority partial order with a legitimate 'Unresolved' terminal state, explicitly self-identified as one of the program's most important conclusions ('knowing that something cannot be determined is itself a valid computed result'), directly and substantially resolving the blocker discovered at 0583. Delivers the file's single most important architectural insight, explicitly flagged as such ('the real bottleneck is not CPU' — the program's remaining problems are overwhelmingly semantic rather than computational, 'that is actually very good news'), and delivers the clearest, most direct acknowledgment anywhere in the corpus that its earlier philosophical/Vedantic vocabulary ('Atma', echoing 0567's 'Knowledge Atma' and 0582's 'Atman' callback) was a genuine, explicitly-tracked object of this entire computability investigation, now declared substantially resolved through formalization — a finding of first-order importance to this reconstruction's own three-model-convergence mandate. Closes by opening the research program's transition from a formalized epistemic model into an actual computable agent architecture via Step 25G, the first attempt to formalize Lord's action-selection function directly."

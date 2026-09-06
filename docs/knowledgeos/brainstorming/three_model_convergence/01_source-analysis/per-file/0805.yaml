@@ -1,0 +1,179 @@
+sequence: 805
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-015147_step_180_the-can-the-system-know-that-it-does-not-know-experiment.md
+title: "Step 180 -- The 'Can the System Know That It Does Not Know?' Experiment (MAJOR SYNTHESIS MILESTONE, delivers 0804's promised Unknown/KnownUnknown formalization): Delivers Unknown≠Contradictory, KnownUnknown=Unknown+KnownMissingEvidence, and an Information-Gain-Seeking Statistical Framing (X*=argmax E[H(Θ)-H(Θ|X)]) -- Delivers the Named 'Hallucination Boundary' ('An Absence of Evidence Must Never Silently Become Evidence of Absence,' ¬Evidence(C)⇏Evidence(¬C)) -- Delivers Contradiction≠Change/Evolution and 'Correction Should Preserve the Existence and Provenance of the Corrected Artifact' (D_2→[corrects]→D_1, Never Silent Overwrite) -- Sharpens KnowledgeOS's Definition to 'Governed Institutional Memory With Epistemic Lineage' -- Delivers Decision-Relevant Uncertainty and 'Formalize Only Where the Domain Semantics Justify Formalization' -- Delivers the Five-Way Step 180 Verdict Unknown≠False≠Contradictory≠Superseded≠Corrected -- Opens Step 181's 'What If Two Truths Disagree?' Experiment"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily mathematical/statistical/DDD epistemic-state formalization; the arc's now-familiar temporal-evolution discipline ('this is exactly the new state insight') is invoked once without new Gita textual engagement"
+source_role: PRIMARY_RESEARCH
+canonical_source: 805
+importance: critical
+confidence: high
+about: >
+  Directly continues 0804, opening "we now reach a deeper epistemic boundary... what happens when the
+  available evidence is insufficient? This is not a minor edge case. A trustworthy KnowledgeOS must be able
+  to say: we do not know. And, more precisely: we know that we do not know."
+
+  **§180.1-180.4 delivers the rejection of the binary True/False model** for engineering knowledge (a
+  worked "can Nexus be migrated without downtime?" example with partial, mixed evidence yielding `Unknown`,
+  not `True`/`False`), extends to three-valued logic `{True,False,Unknown}`, then delivers **`Unknown≠
+  Contradictory`** as a further necessary distinction (Case A: no evidence either way, `E=∅⇒Unknown`; Case
+  B: evidence on both sides, `E_1→C` and `E_2→¬C`, `⇒Contradictory`), and a provisional, explicitly
+  unfrozen seven-state epistemic space `{Unasserted,Candidate,Supported,Established,Contradicted,Disputed,
+  Unknown}`.
+
+  **§180.5-180.8 delivers `KnownUnknown`**, boxed: **`KnownUnknown=Unknown+KnownMissingEvidence`** ("we
+  know we don't know whether the firewall permits the connection, AND we know the missing evidence is a
+  firewall test" -- "far more useful than simply saying unknown"), delivering **unknown-as-actionable**:
+  `Unknown(C)∧EvidenceRequired(C)=E⇒NextAction=Collect(E)`. Delivers **an information-theoretic framing**:
+  the relevant question is not "what is θ?" but "what observation would reduce uncertainty about θ?",
+  formalized `X*=argmax_X E[H(Θ)-H(Θ|X)]` (expected information gain), explicitly not requiring information
+  theory to be implemented everywhere but crystallized into the boxed principle **"a good knowledge system
+  should know what evidence would be most useful next."** Explicitly connects this to the arc's own
+  experimental methodology (`Question→Hypothesis→Evidence→Evaluation→Conclusion`, with
+  `InsufficientEvidence→NextInvestigation` as a self-referential description of how the arc's own
+  step-by-step experiments have been conducted).
+
+  **§180.9-180.14 delivers "unknown must not become failure"**, boxed: **"recognizing uncertainty is
+  itself a successful epistemic outcome"** (an assessment returning `Unknown` may mean
+  `AssessmentCorrectlyIdentifiedMissingKnowledge`, not `AssessmentFailed`). **Delivers the file's central
+  AI-safety contribution, explicitly named "the hallucination boundary"**: "a language model has a strong
+  tendency to produce an answer even when evidence is insufficient... `NoEvidence⇏GeneratedFact`... instead
+  `NoEvidence→Unknown`," crystallized as the boxed safety invariant **"an absence of evidence must never
+  silently become evidence of absence,"** formalized `¬Evidence(C)⇏Evidence(¬C)` -- "a classic logical
+  error." Worked through an infrastructure-documentation example (a firewall rule not found should yield
+  `ExistenceUnknown`, not `FirewallRuleDoesNotExist`) and a statistical analogy (`p>0.05⇏H_0=True`, only
+  `EvidenceInsufficientToReject(H_0)`), delivering **`NotEstablished≠False`** and, applied to this
+  reconstruction's own methodology, **`CandidateBoundary≠ConfirmedBoundary`**, explicitly and directly
+  self-referencing the corpus's own earlier bounded-context work: "we previously had 8 Candidate BCs. After
+  analysis, 5 Confirmed BCs. That transition is meaningful precisely because we did not treat every initial
+  hypothesis as truth" -- a direct callback to 0787's/0798's DDD context-discovery arc.
+
+  **§180.17-180.22 delivers scope-dependent knowledge**: even a `Confirmed(BC)` determination means
+  `ConfirmedWithin(CurrentArchitectureScope)`, not `UniversalTruth(BC)`, formalized `Valid(K,Scope,Time)`
+  and `Knowledge=Claim+Scope+TemporalContext+Evidence`. Delivers **`Unknown(C,Scope,Time)`** as
+  necessarily local, not global (multi-tenancy known-true for `SystemA,Version1` but `Unknown` for
+  `Version2`), and **contradiction requiring matching scope** (apparently conflicting evidence across
+  different versions is not a contradiction if the scopes differ).
+
+  **§180.22-180.24 delivers the file's most important structural distinction**, boxed: **`Contradiction≠
+  Change`** -- `K_1` ("system does not support X") followed by `K_2` ("system supports X") may be evolution
+  (a new version introduced the feature), not contradiction, explicitly re-invoking "exactly the 'new
+  state' insight": `S_{t+1}` may legitimately differ from `S_t`, and the system must preserve
+  `Evolution(S_t,S_{t+1})` or "every change appears as contradiction."
+
+  **§180.25-180.27 delivers four semantically distinct situations** -- Unknown (insufficient evidence),
+  Contradiction (incompatible claims under identical scope/time), Supersession (a later valid state
+  replaces an earlier one), Correction (an earlier determination is found to have been wrong) -- with
+  **Correction singled out as especially important**: `D_2` correcting `D_1` (`Corrects(D_2,D_1)`) must
+  never erase `D_1`, since it "was part of organizational history," boxed: **"correction should preserve
+  the existence and provenance of the corrected artifact"** -- `Update(D_1)` is explicitly named "the wrong
+  semantic operation"; the correct operation is `D_2→[corrects]→D_1`.
+
+  **§180.28-180.30 delivers the KnowledgeOS-behavior contrast**: not an overwritable `knowledge.txt`, but a
+  structure preserving `K1` with its evidence/provenance/determination plus an explicit
+  `superseded/corrected by→K2` edge. Worked through a new-AI-agent-asking-"why did we choose this
+  architecture?" scenario, receiving not merely the latest answer but "the lineage of reasoning" (a full
+  `Decision_5←Determination_3←Evidence_{1,2,7}`, later refined by `Determination_8`). **Sharpens
+  KnowledgeOS's own architectural definition**, boxed: **"governed institutional memory with epistemic
+  lineage"** -- "much closer to what we are actually designing" than the earlier 0801 definition alone.
+
+  **§180.31-180.34 delivers `Unknown` as a first-class domain object**: an `Investigation` tuple
+  `⟨Question,Scope,Hypothesis,RequiredEvidence,Owner,Status,Outcome⟩`, the pipeline
+  `Unknown→Investigation→Evidence→Determination`, and explicitly rejects investigating every unknown (a
+  coffee-mug-color example has "no governance value"), delivering `InvestigationPriority=
+  f(Impact,DecisionRelevance,Risk,Cost)`, crystallizing **"not all uncertainty is equally
+  decision-relevant"** -- **decision-relevant uncertainty**, worked through a decision-boundary example
+  (`x=8±3` versus a `x<10` safety threshold, the uncertainty interval overlapping the boundary) as "an
+  excellent example of where statistics directly informs governance."
+
+  **§180.36-180.38 delivers proportional evidence burden**: `RequiredEvidence∝Risk×Impact×Uncertainty`
+  (conceptual, not a final formula), connecting to graduated `AssuranceLevel` (LowRisk→LightEvidence;
+  HighRisk→StrongEvidence+IndependentVerification), paired with an **explicit anti-over-formalization
+  warning**: rejecting a universal `confidence_score=0.873` as "false mathematical precision," boxed the
+  methodological rule: **"formalize only where the domain semantics justify formalization."**
+
+  **§180.39-180.40 delivers the Step 180 final model**, boxed: **`E_t={Claims,Evidence,Determinations,
+  Unknowns,Contradictions,Corrections,Scope,Time,Provenance}`**, with `GovernanceInput_t=
+  Projection(E_t,DecisionContext)`. **Delivers the Step 180 verdict**, boxed: **"a trustworthy knowledge
+  system must represent uncertainty explicitly"** and the five-way inequality
+  **`Unknown≠False≠Contradictory≠Superseded≠Corrected`**, crystallized: "we know what we don't know, why we
+  don't know it, and what evidence would reduce the uncertainty... a considerably more mature epistemic
+  architecture than a system that merely retrieves documents."
+
+  **Closes opening "Step 181 — The 'What If Two Truths Disagree?' Experiment,"** posing a worked
+  contradictory-knowledge scenario (`K_1`: "firewall access is available" vs. `K_2`: "firewall access is
+  not available," both provenanced and both once credible), explicitly rejecting two naive resolution
+  strategies ("choose the newest" and "choose the highest confidence" as "neither... generally
+  sufficient"), promising to formalize: **"how does an organizational knowledge system represent, detect,
+  and resolve disagreement?"** No actual repository implementation occurs within this file itself; every
+  state, tuple, and invariant remains a conceptual specification pending Step 181's contradiction-
+  resolution formalization.
+introduces:
+  - concept: "The rejection of binary True/False for engineering knowledge; Unknown≠Contradictory (insufficient evidence vs. evidence on both sides)"
+  - concept: "KnownUnknown=Unknown+KnownMissingEvidence, and unknown-as-actionable (Unknown(C)∧EvidenceRequired(C)=E⇒NextAction=Collect(E))"
+  - concept: "The information-gain-seeking statistical framing X*=argmax E[H(Θ)-H(Θ|X)], and its explicit self-referential connection to the arc's own experimental methodology"
+  - concept: "'Recognizing uncertainty is itself a successful epistemic outcome'; unknown must not be conflated with assessment failure"
+  - concept: "The named 'hallucination boundary': NoEvidence→Unknown (not GeneratedFact), and the formal safety invariant ¬Evidence(C)⇏Evidence(¬C)"
+  - concept: "NotEstablished≠False; the direct self-referential callback to the corpus's own 8-Candidate-BC→5-Confirmed-BC transition as an example of not treating hypotheses as truth"
+  - concept: "Scope-dependent knowledge: Valid(K,Scope,Time); Knowledge=Claim+Scope+TemporalContext+Evidence; Unknown(C,Scope,Time) as local, not global"
+  - concept: "Contradiction≠Change/Evolution, re-invoking the 'new state' insight for a new domain application (feature support across versions)"
+  - concept: "The four semantically distinct situations: Unknown, Contradiction, Supersession, Correction"
+  - concept: "'Correction should preserve the existence and provenance of the corrected artifact': D_2→[corrects]→D_1, never a silent Update(D_1)"
+  - concept: "The sharpened KnowledgeOS definition: 'governed institutional memory with epistemic lineage'"
+  - concept: "Unknown as a first-class domain object: the Investigation tuple, Unknown→Investigation→Evidence→Determination, and InvestigationPriority=f(Impact,DecisionRelevance,Risk,Cost)"
+  - concept: "Decision-relevant uncertainty and the decision-boundary worked example (x=8±3 vs. x<10)"
+  - concept: "RequiredEvidence∝Risk×Impact×Uncertainty, paired with the explicit anti-over-formalization rule 'formalize only where the domain semantics justify formalization'"
+  - concept: "The Step 180 final model E_t={Claims,Evidence,Determinations,Unknowns,Contradictions,Corrections,Scope,Time,Provenance}"
+  - concept: "The Step 180 verdict: the five-way inequality Unknown≠False≠Contradictory≠Superseded≠Corrected"
+  - concept: "Step 180's opening: the two-conflicting-provenanced-claims scenario and the rejection of naive resolution strategies (newest-wins, highest-confidence-wins)"
+defines:
+  - concept: "The hallucination boundary"
+    definition: "A formal safety invariant stating that the absence of evidence for a claim must never be silently converted into evidence for that claim's negation -- formally ¬Evidence(C)⇏Evidence(¬C) -- named specifically because language models have a strong tendency to produce a confident answer even when the available evidence is insufficient; the architecturally correct response to NoEvidence is the explicit state Unknown, never a GeneratedFact asserting either C or ¬C, extending the arc's earlier general hallucination-prevention discipline (0802) into a precise logical formalization"
+  - concept: "Contradiction≠Change (or Evolution)"
+    definition: "An apparent conflict between an earlier knowledge state K_1 and a later one K_2 (e.g. 'the system does not support X' followed by 'the system supports X') is not automatically a logical contradiction -- it may instead be a legitimate evolution if the underlying scope has changed (e.g. a new version introduced the feature); genuine contradiction requires incompatible claims under the SAME scope and time assumptions, so contradiction detection is impossible without first checking whether the compared claims share identical semantic and temporal scope"
+  - concept: "Correction as a non-destructive operation"
+    definition: "When an earlier determination D_1 is later found to have been based on an invalid assumption, the correct architectural operation is not to overwrite or delete D_1, but to create a new artifact D_2 that explicitly corrects D_1 via a Corrects(D_2,D_1) relation, preserving D_1's existence and provenance as part of organizational history -- this enables future actors (including AI agents) to receive not merely the latest answer but the full lineage of reasoning behind it, directly supporting the sharpened definition of KnowledgeOS as 'governed institutional memory with epistemic lineage'"
+refines:
+  - concept: "0804's opening of Step 180 and its promised Unknown/KnownUnknown/InsufficientEvidence formalization"
+    refinement: "DELIVERED IN FULL: the three-valued and richer epistemic state spaces, KnownUnknown's precise decomposition, the information-gain framing, the hallucination boundary, scope-dependent unknown, and the four-situation taxonomy (Unknown/Contradiction/Supersession/Correction) culminating in the five-way Step 180 verdict inequality"
+  - concept: "0802's naming of AI-hallucination prevention as a first-class architectural responsibility (preventing Generation→Authority without due process)"
+    refinement: "Given a sharper, more precisely named and logically formalized counterpart -- 'the hallucination boundary,' ¬Evidence(C)⇏Evidence(¬C) -- addressing a related but distinct failure mode: not the premature promotion of a generated claim to authority, but the silent conversion of missing evidence into a confident negative or positive assertion in the first place"
+  - concept: "0787's/0798's bounded-context discovery arc (the 8-candidate-to-N-confirmed context reduction)"
+    refinement: "Explicitly and directly self-referenced as a worked example of CandidateBoundary≠ConfirmedBoundary, the corpus using its own earlier architectural work as evidence for the epistemic-state discipline being formalized here -- a notable instance of the arc citing its own prior output as a case study"
+  - concept: "The arc's repeated Chapter-4-derived 'new state does not know old state' family of distinctions"
+    refinement: "Applied to a new domain: distinguishing legitimate knowledge evolution across versions from genuine logical contradiction, explicitly re-invoked as 'exactly the new state insight,' extending the family from decisions/knowledge/authority (0794-0804) to feature-support claims specifically"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 181's actual formalization of contradiction representation, detection, and resolution when two provenanced, once-credible knowledge claims genuinely conflict."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record 'the hallucination boundary' (¬Evidence(C)⇏Evidence(¬C)) as a precisely formalized, directly quotable AI-safety invariant, sharper than and complementary to 0802's earlier hallucination-prevention principle."
+  - "dimension-registry.md: record Contradiction≠Change/Evolution as a genuinely important structural distinction, with the four-situation taxonomy (Unknown/Contradiction/Supersession/Correction) as a directly reusable classification."
+  - "dimension-registry.md: record 'correction should preserve the existence and provenance of the corrected artifact' (D_2→[corrects]→D_1, never silent Update) as a directly applicable non-destructive-correction pattern."
+  - "dimension-registry.md: record the file's explicit self-referential use of the corpus's own 8-candidate-to-confirmed bounded-context reduction as a worked epistemic-discipline example, and the sharpened KnowledgeOS definition 'governed institutional memory with epistemic lineage.'"
+anchor_test:
+  anchor: "0804's opening of Step 180 and its promised Unknown/KnownUnknown/InsufficientEvidence formalization; 0802's AI-hallucination-prevention discipline; 0787's/0798's bounded-context discovery arc; the arc's repeated Chapter-4-derived temporal-evolution family"
+  supports_dimension: "Delivers the full richer epistemic state space and KnownUnknown formalization directly answering 0804's closing question. Delivers a precisely formalized 'hallucination boundary' (¬Evidence(C)⇏Evidence(¬C)) sharper than and complementary to 0802's earlier discipline. Delivers Contradiction≠Change as a genuinely important new structural distinction, with a four-situation taxonomy and a non-destructive correction pattern (D_2→[corrects]→D_1). Notably and explicitly self-references the corpus's own prior bounded-context discovery work (0787/0798) as a worked example, and sharpens KnowledgeOS's own definition. Delivers decision-relevant uncertainty and an explicit anti-over-formalization discipline balancing the arc's mathematical rigor against false precision. Delivers the Step 180 verdict's five-way inequality as a genuine epistemic-state taxonomy. Opens Step 181 with a concrete, well-posed contradiction-resolution problem, explicitly rejecting two naive resolution heuristics"
+  refines_or_contradicts: "directly delivers and extends 0804's opening and its promised formalization; sharpens 0802's AI-hallucination-prevention discipline into a precise logical formalization; directly self-references and extends 0787's/0798's bounded-context discovery arc; extends the Chapter-4-derived temporal-evolution family to feature-support claims; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§180.11's boxed safety invariant 'an absence of evidence must never silently become evidence of absence,' formalized ¬Evidence(C)⇏Evidence(¬C) with the explicit firewall-rule worked example, is directly quotable and checkable evidence of a precisely formalized hallucination-prevention principle."
+  - "§180.16's explicit self-reference ('we previously had 8 Candidate BCs. After analysis, 5 Confirmed BCs. That transition is meaningful precisely because we did not treat every initial hypothesis as truth') is directly checkable evidence of the corpus citing its own prior architectural work as a case study."
+  - "§180.27's boxed 'correction should preserve the existence and provenance of the corrected artifact,' with the explicit statement that Update(D_1) 'may be the wrong semantic operation,' is directly quotable evidence of a concrete, non-destructive correction pattern distinct from mere versioning."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 181's contradiction representation/detection/resolution formalization was ever carried out, and whether it reconciles with this file's own Contradiction≠Change distinction (i.e. how the architecture would distinguish a genuine K_1/K_2 disagreement from a scope-driven evolution when the scope itself is ambiguous or contested)."
+  - "Whether the provisional seven-state epistemic space {Unasserted,Candidate,Supported,Established,Contradicted,Disputed,Unknown} was ever reconciled with 0801's six-state vocabulary {Candidate,Supported,Established,Disputed,Superseded,Invalidated} or 0802's provisional epistemic-mode taxonomy -- three related but not identical classification systems now on record."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the full Unknown/KnownUnknown formalization directly answering 0804's closing question, including an information-gain-seeking statistical framing explicitly connected to the arc's own experimental methodology. Delivers a precisely formalized 'hallucination boundary' (¬Evidence(C)⇏Evidence(¬C)), sharper than and complementary to 0802's earlier general hallucination-prevention principle. Delivers Contradiction≠Change/Evolution as a genuinely important new structural distinction with a four-situation taxonomy and a concrete non-destructive correction pattern. Notably self-references the corpus's own prior bounded-context discovery work (0787/0798) as a worked example, and sharpens KnowledgeOS's own architectural definition to 'governed institutional memory with epistemic lineage.' Delivers decision-relevant uncertainty and an explicit, disciplined anti-over-formalization principle. Delivers the Step 180 verdict's five-way epistemic-state inequality. Opens Step 181 with a concrete, well-posed contradiction-resolution problem."

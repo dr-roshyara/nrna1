@@ -1,0 +1,70 @@
+sequence: 3
+path: docs/knowledgeos/KnowledgeOS_Architecture_Synthesis_Matrix.md
+title: KnowledgeOS — Architecture Synthesis Matrix
+date: 2026-08-03
+bytes: 13947
+doc_type: reconciliation/classification matrix (REV 2); decision-readiness input, not a ruling
+
+primary_model_initial: meta_research
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+confidence: high
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - classifies C1 concerns only: meta-model, archetypes, DP-n, context map, PKS generation
+  - no epistemic-lineage vocabulary present
+secondary_models: [governance, evidence, provenance, validation, contradiction, ddd, domain_model]
+
+status: DR
+maturity: developing
+importance: high
+
+introduces:
+  - five_bucket_epistemic_classification   # canonical/candidate/hypothesis/open/rejected
+  - definitional_guard_on_canonical
+  - one_row_one_bucket_one_citation_one_gate
+  - ladder_collision                       # two competing epistemic-strength orderings
+  - four_partial_orders                    # authority/production/realization/containment
+defines:
+  - canonical                              # adopted OR frozen OR ruled OR enforced, BY HUMANS
+  - knowledge_space                        # declared boundary + owner + constitution (not a folder)
+  - authority                              # immutable provenance x act-changed standing
+hypotheses:
+  - H5_generates_pks                       # "the platform's distinctive bet", n=0 inside AND outside
+  - H1_space_map_is_real_ownership_map     # downgraded from finding to hypothesis this pass
+  - H3_purpose_more_fundamental_than_container
+operators: []
+formal_objects: []       # "four partial orders" have NO carrier set and NO relation given -> [AN]
+undefined_concepts:
+  - knowledge            # 3rd consecutive file
+  - partial_order        # order-theoretic vocabulary with no carrier, relation, or axiom check
+  - evidence
+  - hypothesis_vs_candidate_ordering   # EXPLICITLY CONTESTED here: two ladders disagree
+open_questions:
+  - D-8 ontology reconciliation
+  - D-5 mission ratification
+  - MM-1
+  - RO-1 through RO-4
+  - PM-6
+  - which ordering is epistemically correct - candidate before hypothesis, or the reverse
+
+depends_on: [1, 2]
+extends: [1, 2]
+refines: []
+renames: []
+contradicts: []          # records TWO internal contradictions rather than committing one
+supersedes: []           # supersedes its own REV 1
+repeats: [1, 2]
+connects_to: [1, 2]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: true
+tier2_reason: >
+  Installs a state model over CLAIMS (five buckets, total and exclusive); records an explicit
+  collision between two epistemic-strength orderings which the corpus never resolves; and
+  introduces order-theoretic vocabulary ("four partial orders") with no carrier set or relation,
+  which is a marked candidate for §41 structural-vs-linguistic scrutiny.

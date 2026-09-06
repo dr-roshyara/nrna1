@@ -1,0 +1,60 @@
+sequence: 17
+path: docs/knowledgeos/KnowledgeOS_External_Positioning_Comparison_Matrix.md
+title: KnowledgeOS — External Positioning Comparison Matrix
+date: 2026-08-03
+bytes: 9768
+doc_type: external-literature positioning comparison (holdings-first, one bounded new fetch)
+
+primary_model_initial: meta_research
+primary_model_initial_historical: null
+lineage_provisional: c1_engineering_knowledgeos
+lineage_evidence:
+  - compares the C1 platform's authority/governance model against six external research areas
+  - reapplies 0002 grading and 0016 five-question protocol to C1 constructs
+  - no epistemic-lineage vocabulary present
+confidence: high
+primary_model_final: pending_global_reclassification
+classification_change: pending
+reason_for_change: pending
+secondary_models: [engineering_knowledgeos, evidence, provenance, validation, governance]
+
+status: DR
+maturity: developing
+importance: medium
+
+introduces:
+  - novelty_is_not_demonstrated_distinction
+  - three_sided_evidence         # internal / external-convergent / external-gap
+  - holdings_first_bounded_fetch_procedure
+defines: []
+hypotheses:
+  - candidate_positioning_verdict   # "governance platform that happens to use ontologies"; not adopted
+operators: []
+formal_objects: []
+undefined_concepts:
+  - knowledge          # 17th consecutive file
+  - authority           # extension claimed; not re-defined here (tracked since ledger entry 2)
+  - novelty              # graded (rediscovered/extended/unproven) with no boundary criterion stated
+open_questions:
+  - U_GR_1_D_5_sponsor_positioning_act_carried_from_0016
+  - whether the three queued literature passes will ever be read
+
+depends_on: [2, 16]
+extends: [2, 15]
+refines: [16]
+renames: []
+contradicts: []
+supersedes: []
+repeats: [2, 16]
+connects_to: [2, 15, 16]
+
+bridges: []
+bridge_evidence: []
+
+tier2_triggered: false
+tier2_reason: >
+  No formal object, no knowledge-concept definition, no operator, no contradiction (all findings are
+  confirmations, a rediscovered/extended/unproven honesty-table classification, and one explicitly
+  unadopted candidate verdict), no mathematical/probabilistic/topological content, no Kernel boundary
+  or admissibility claim, no Gita/epistemic interpretation. CHECKABLE: any later finding to the
+  contrary must be logged in revisions.md.

@@ -1,0 +1,69 @@
+==============================================================================
+A. K-CANDIDATE CONSTRUCTION — corpus R vs canonical R
+==============================================================================
+  corpus relation fields   : ['E', 'E1', 'E2', 'Q', 'R', 'Sigma', 'T', 'tau']
+  canonical relation fields: ('a1','a2','RelationType')
+  FIELDS DISCARDED         : ['E', 'Q', 'R', 'Sigma', 'tau']   (5 of 8)
+  corpus text: 'a semantic connection between two OR MORE entities' -> n-ary
+  canonical  : R subset of A x A x RelationType                     -> strictly binary
+  CONSEQUENCE (constructed):
+    Is the claim 'A1 contradicts A2' itself evidenced / dated / contestable?
+      under corpus r    : YES  (E, Sigma, tau are fields of r)
+      under canonical R : NO   (the triple has no carrier for any of them)
+
+==============================================================================
+B. RELATION-AS-ASSERTION TEST — can R be reduced to A?
+==============================================================================
+  encode as P=(E,D,V) with E=A1, D='contradicts', V=A2 : type-checks
+  BUT: V must lie in V_D, the ValueSpace declared ON the dimension.
+       V_D('contradicts') would have to be the set of ALL assertions,
+       i.e. V_D depends on A, while A depends on P, which depends on V_D.
+  => CIRCULAR:  V_D -> P -> Assertion -> A -> V_D
+  Q14 recorded this independently: 'the biggest mathematical problem ...
+     it does not naturally represent: Assertion A contradicts Assertion B'
+  VERDICT: relations are NOT reducible to P=(E,D,V). R is a genuine primitive.
+
+==============================================================================
+C. SIGMA / GAMMA — the ten mandated quadrants, constructed
+==============================================================================
+  |SIGMA| x |GAMMA| = 4x4 = 16 cells
+    (Supported ,Uncommitted ) meaningful=YES  single-scalar=IMPOSSIBLE  <- evidence is strong; no authority act yet
+    (Supported ,Committed   ) meaningful=YES  single-scalar=IMPOSSIBLE  <- the ordinary case
+    (Refuted   ,Committed   ) meaningful=YES  single-scalar=IMPOSSIBLE  <- authority committed a claim the evidence refutes
+    (Conflicted,Committed   ) meaningful=YES  single-scalar=IMPOSSIBLE  <- committed while evidence conflicts
+    (Supported ,Contested   ) meaningful=YES  single-scalar=IMPOSSIBLE  <- accepted, procedurally contested (PF-6)
+    (Unknown   ,Committed   ) meaningful=YES  single-scalar=IMPOSSIBLE  <- committed with no evidence either way
+    (Unknown   ,Uncommitted ) meaningful=YES  single-scalar=IMPOSSIBLE  <- the initial state
+    (Supported ,Rejected    ) meaningful=YES  single-scalar=IMPOSSIBLE  <- epistemically supported, administratively rejected (271.20)
+    (Refuted   ,Uncommitted ) meaningful=YES  single-scalar=IMPOSSIBLE  <- ordinary refutation
+    (Conflicted,Contested   ) meaningful=YES  single-scalar=IMPOSSIBLE  <- conflict plus contest
+  => every one of the ten is a MEANINGFUL, DISTINCT state.
+     A single status vocabulary must therefore have >= 16 values to be lossless.
+     Corpus 271.20 states the orthogonality requirement independently.
+
+  C.2  Is Sigma PRIMITIVE, DERIVED, a PROJECTION, or CONTEXT-DEPENDENT?
+    same evidence, policy(min_support=1) -> Conflicted
+    same evidence, policy(min_support=3) -> Conflicted
+    => Sigma is DERIVED and POLICY-RELATIVE, never intrinsic to the assertion.
+       Therefore 'Sigma(a)' is ill-typed; only 'Sigma(a,policy)' is well-typed.
+       The corpus relation r carries a BARE Sigma field -> ILL-TYPED in r.
+
+==============================================================================
+D. DEPENDENCY GRAPH — cycle detection over the reconstructed edges
+==============================================================================
+  nodes=24  cycles found=3
+    CYCLE: Evidence -> Policy -> K -> Assertion -> Evidence
+    CYCLE: Evidence -> Policy -> K -> Relation -> Evidence
+    CYCLE: Policy -> K -> Relation -> Sigma -> Policy
+
+  Classification:
+   * Relation -> Sigma -> Policy -> K -> Relation :
+       SEMANTIC CYCLE. Sigma is policy-relative, policy-as-content lives in K,
+       K contains Relation, Relation carries Sigma. Not a fixed point: Sigma
+       cannot be evaluated until Policy is fixed, and Policy is a member of K.
+   * Policy -> K -> ... -> Policy :
+       GOVERNANCE RECURSION, terminated by v0.2 R-1/I-11 stratification
+       (Policy-as-content in K_t  !=  Policy-in-force, versioned).
+   * Evidence -> Policy -> K -> Assertion -> Evidence :
+       SEMANTIC CYCLE via Qualify. Qualification of an observation depends on a
+       policy that is itself knowledge content. NOT terminated anywhere.

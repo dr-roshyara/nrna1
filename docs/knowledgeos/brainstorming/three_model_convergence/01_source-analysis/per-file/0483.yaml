@@ -1,0 +1,156 @@
+sequence: 483
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-184000_question-17-how-zero-lord-and-sarathi-interact-with-the-transition-system.md
+title: "LANDMARK: Zero/Lord/Sārathi Formally Bounded to a Guidance Layer, Never the Transition Mechanism — Guidance≠Authorization≠Execution≠Transition, Theorem G5 (Guidance Is Not a Prerequisite for Transition), Commit Removed From Sārathi's Vocabulary, and Question 18 Launched: Who Has Authority Over the Ideal State?"
+date: "2026-08-26"
+bytes: 85671
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the Arjuna Lord-suggests-Relationship_To_Arjuna/Moral_Obligation example is corrected to be explicitly hypothetical (CandidateDimension), not an established requirement"
+source_role: PRIMARY_RESEARCH
+canonical_source: 483
+importance: critical
+confidence: high
+about: >
+  Answers Question 17 (posed at 0482's close: how do Zero, Lord, and Sārathi interact with the transition
+  system without becoming part of the Knowledge State?), through two full critical-review passes delivering
+  roughly thirty combined corrections, culminating in a rigorous four-way Guidance/Authorization/Execution/
+  Transition separation and the launch of Question 18.
+
+  **Part A (initial answer)** proposes Zero -> Lord -> Sārathi -> Commit -> Transition as though it were the
+  mandatory architecture for every epistemic operation, with Sārathi's action vocabulary including Commit
+  directly, Zero outputting Gap/Conflict/Boundary as three co-equal sibling findings, Lord limited to
+  suggesting dimensions, and Commit:A->E treated as a near-deterministic function.
+
+  **Part B (first review)** delivers the **most important correction**: the Zero -> Lord -> Sārathi ->
+  Commit -> Transition chain is NOT mandatory -- worked via three counter-examples (evidence arriving and
+  updating an assertion directly with no Lord involvement; a conflict triggering only Sārathi clarification
+  with no Lord; a scheduled validity check causing staleness with none of the three lenses involved) --
+  reframing Zero/Lord/Sārathi as "a guidance pipeline, not a mandatory transition pipeline... a guidance
+  cycle that may propose or influence transitions; they do not constitute the transition mechanism itself."
+  Establishes Guidance (advisory) as a fundamentally separate DDD layer from Transition (authoritative).
+  **Removes Commit entirely from Sārathi's action vocabulary**: "Commitment is not an epistemic action. It
+  is an authorization/governance action" -- replaced by a three-stage pipeline
+  a_t -[Authorize]-> c_t -[Execute]-> e_t (recommended action, accepted command, domain event), with an
+  explicit Authorize(N_t,a_t,Policy_t) -> c_t function making the Knower (N) a first-class parameter for the
+  first time in the transition model. **Refines Zero's output taxonomy**: Boundary is reconceived as a
+  SUPERSET concept over Gap, Unresolvable, Unknown, Ambiguity, and InsufficientBasis -- not a third
+  co-equal sibling to Gap and Conflict, since "the available evidence does not permit us to determine X" is
+  more fundamental than a mere gap. **Reframes Lord as genuine hypothesis-space expansion**:
+  Lord:(K,I,Z) -> H (a candidate/hypothesis space including dimensions, propositions, interpretations,
+  relationships, evidence sources, and investigation paths), not merely "suggest another dimension."
+  Requires Sārathi to take an explicit Policy_t parameter, since choosing "investigate first" versus "accept
+  uncertainty" depends on purpose/risk/authority/cost/governance/time/evidence-policy -- "a policy function,
+  not simply an AI function." Corrects "only committed events change K" to "only VALIDATED domain events
+  accepted by the Knowledge State transition boundary can change K," consistent with the partial-function
+  delta:K×E⇀K. Corrects the Arjuna worked example: Lord suggesting Relationship_To_Arjuna/Moral_Obligation
+  is a hypothesis (CandidateDimension(...)), never an established requirement. Delivers the file's deepest
+  mathematical model, separating three distinct functions -- Omega(K_t,a_t)->O_t (observation/world
+  interaction), Gamma(K_t,O_t)->e_t (epistemic interpretation), delta(K_t,e_t)->K_{t+1} (state transition)
+  -- with Zero/Lord/Sārathi confined to a separate Guidance layer G_t, stating
+  **Guidance != Observation != Interpretation != Transition** as "one of the most important theoretical
+  boundaries in the whole KnowledgeOS model." Closes with a formal equation set (Detection, Expansion,
+  Navigation, Authorization, Execution, State transition, History) and the architectural invariant
+  **Zero, Lord, Sārathi not-in State Mutation Boundary; only validated domain events may mutate K**, flagging
+  that this distinction will be foundational for defining "who controls the Ideal State," since otherwise
+  Sārathi/Lord could accidentally become the authority defining what the Knower *should* know -- "a serious
+  DDD and epistemological boundary violation" -- directly anticipating Question 18.
+
+  **Part C (revised formal definition)** implements these corrections and states four foundational theorems
+  G1-G4: G1 Zero/Lord/Sārathi form an epistemic guidance cycle; G2 Guidance != Authorization != Execution !=
+  Transition; G3 only validated domain events may mutate K; G4 Zero/Lord/Sārathi do not change K.
+
+  **Part D (second review)** rates the revision "close to a formal baseline" but delivers roughly fifteen
+  further corrections. **Execute:C->E is too deterministic** -- execution can fail, so it is corrected to
+  Execute:C -> X where X = {Success(e), Failure(f), Partial(e,f)}, since "failed execution is not
+  necessarily a knowledge-state mutation." **Authorize should not return only a Command** -- corrected to
+  Authorize(N_t,a_t,Policy_t) -> AuthResult = {Authorized(c), Rejected(r), Deferred(d), Modified(c')}, with
+  only Authorized yielding an executable command. **Introduces ExecutionResult != DomainEvent** as an
+  explicit distinction in the Command -> Execution -> ExecutionResult -> {Failure, Success->Event,
+  Partial->Events+FailureInfo} -> Transition pipeline: "an event represents something that happened; a
+  command represents something that was requested." Bundles I_t, P_t, C_t into an explicit **Evaluation
+  Context** E_t=(I_t,P_t,C_t) to reduce parameter-passing noise across Zero/Lord/Sārathi. Confirms Lord as
+  hypothesis-space expansion (Lord(K_t,I_t,Z_t,C_t) -> H_t, with L_t subset-of H_t for selected candidates)
+  and hardens **Sārathi(...) -> Recommendation, never -> Command** as a protective invariant for the
+  Knower's authority. **Qualifies "Knower owns Ideal State"** -- the Knower may own purpose and decision but
+  not unilateral authority over every Ideal-State component (a Security requirement may be governed by
+  Security Policy, Compliance Regulation, Architecture Governance, or Organizational Standard, not the
+  Knower alone), reformalizing **IdealState = KnowerIntent + ApplicableNorms + Constraints + Purpose**,
+  never simply KnowerPreference -- "exactly why Q18 is important." Disambiguates three overloaded terms:
+  **Constraint** (a condition on a state), **Policy** (a rule governing decisions/actions), and **Norm** (a
+  rule governing what ought to be the case). Adds a post-transition well-formedness requirement:
+  Pre(K_t,e_t) AND K_{t+1}=delta(K_t,e_t) => Invariant(K_{t+1}), since Post alone does not guarantee the
+  resulting state remains valid. Recommends renaming Replay's versioning parameter Pi to "Execution
+  Semantics Version" to avoid confusion with authorization Policy. **Delivers the file's central remaining
+  theorem**: "the epistemic cycle is actually not always a cycle" -- renamed "Epistemic Guidance-and-
+  Transition Cycle" -- worked via two further counter-examples (an external observation producing an event/
+  transition directly; a scheduled validity check producing AssertionExpired directly), stated as
+  **Theorem G5 -- Guidance is not a prerequisite for transition**: there exists e_t such that
+  K_{t+1}=delta(K_t,e_t) without any preceding Zero/Lord/Sārathi cycle, "preventing the architecture from
+  accidentally turning the lenses into mandatory middleware." Produces the most complete recommended
+  architecture diagram in this arc (Knower -> Evaluation Context -> Zero -> Lord -> Sārathi ->
+  Recommendation -> Authority/Authorization -> Command -> Execution -> ExecutionResult -> Event ->
+  Transition -> K_{t+1}, plus a separate History->Replay branch) and a nine-object convergence narrative
+  tying together Questions 10, 11, 16, and 17 into one coherent pipeline. Closes with a final ten-item
+  correction list (six mandatory, four recommended) and, most importantly, explicitly declines to rewrite
+  Q17 from scratch, confirming Guidance != Authorization != Execution != Transition as "exactly right" and
+  launching **Question 18 -- Who has the authority to define, modify, approve, constrain, or reject the
+  Ideal State?** -- explicitly named as the point where the theory must connect epistemology, DDD,
+  governance, and normative authority.
+introduces:
+  - concept: "Zero->Lord->Sārathi->Commit->Transition explicitly rejected as a mandatory pipeline; established as an optional guidance cycle that may propose or influence transitions but never constitutes the transition mechanism itself"
+  - concept: "Commit removed entirely from Sārathi's action vocabulary: commitment is an authorization/governance action, not an epistemic one, replaced by a three-stage Recommendation->Authorization->Execution pipeline"
+  - concept: "The Knower (N) introduced as an explicit parameter in the transition model for the first time: Authorize(N_t,a_t,Policy_t) -> AuthResult"
+  - concept: "Zero's output taxonomy refined: Boundary reconceived as a superset concept over Gap/Unresolvable/Unknown/Ambiguity/InsufficientBasis, not a third co-equal sibling to Gap and Conflict"
+  - concept: "Lord reframed as genuine hypothesis-space expansion (Lord:(K,I,Z)->H, a candidate space of dimensions/propositions/interpretations/relationships/evidence-sources/investigation-paths), not mere dimension suggestion"
+  - concept: "Execute reformalized as a non-deterministic function Execute:C->X={Success(e),Failure(f),Partial(e,f)}, with ExecutionResult explicitly distinguished from DomainEvent"
+  - concept: "Authorize reformalized to return a full AuthResult={Authorized(c),Rejected(r),Deferred(d),Modified(c')}, not merely a Command"
+  - concept: "Evaluation Context E_t=(I_t,P_t,C_t) introduced to reduce parameter-passing noise across Zero/Lord/Sārathi"
+  - concept: "'Knower owns Ideal State' qualified: IdealState=KnowerIntent+ApplicableNorms+Constraints+Purpose, never simply KnowerPreference -- directly anticipating Question 18"
+  - concept: "Constraint, Policy, and Norm formally disambiguated as three distinct kinds of rules (condition-on-state, rule-governing-actions, rule-governing-what-ought-to-be)"
+  - concept: "Theorem G5: Guidance is not a prerequisite for transition -- there exists a valid state transition with no preceding Zero/Lord/Sārathi cycle, preventing the lenses from becoming mandatory middleware"
+  - concept: "Post-transition well-formedness/invariant-preservation requirement added: Pre(K_t,e_t) and K_{t+1}=δ(K_t,e_t) implies Invariant(K_{t+1})"
+  - concept: "Question 18 launched: Who has the authority to define, modify, approve, constrain, or reject the Ideal State? -- explicitly connecting epistemology, DDD, governance, and normative authority"
+defines:
+  - concept: "Ideal State (governance-qualified)"
+    definition: "IdealState = KnowerIntent + ApplicableNorms + Constraints + Purpose -- never simply the Knower's unilateral preference, since organizational policy/regulation/governance may constrain individual Ideal-State components"
+  - concept: "Constraint / Policy / Norm (disambiguated)"
+    definition: "Constraint(K): a condition on a state; Policy(a,K): a rule governing decisions/actions; Norm(K): a rule governing what ought to be the case -- three distinct kinds of rule, previously conflated"
+  - concept: "Theorem G5 (Guidance is optional)"
+    definition: "Guidance(K_t,I_t,...) is not required before every transition: there exists e_t such that K_{t+1}=δ(K_t,e_t) without a preceding Zero/Lord/Sārathi cycle"
+refines:
+  - concept: "0481's event-sourcing architecture (Event≠Operation≠Transition, δ as a partial function)"
+    refinement: "Extended upstream with an Authorize/Execute pipeline (a_t->c_t->e_t) and non-deterministic Execute:C->{Success,Failure,Partial}, plus a post-transition invariant-preservation requirement"
+  - concept: "0482's posed boundary question for Question 17 (how do Zero/Lord/Sārathi interact with the transition system without becoming part of the Knowledge State)"
+    refinement: "Fully answered via the Guidance/Authorization/Execution/Transition four-way separation and Theorem G5, with Zero/Lord/Sārathi explicitly excluded from the State Mutation Boundary"
+  - concept: "0476's KnowledgeOS≠Ideal-Owner boundary"
+    refinement: "Sharpened further: even the Knower does not unilaterally own the Ideal State, which is also shaped by applicable norms, constraints, and governance -- directly setting up Question 18"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Guidance≠Authorization≠Execution≠Transition four-way separation, Commit's removal from Sārathi's vocabulary, and Theorem G5 (Guidance is not a prerequisite for transition)."
+  - "dimension-registry.md: record Execute/Authorize reformalized with explicit result types (Success/Failure/Partial; Authorized/Rejected/Deferred/Modified), the Evaluation Context E_t=(I_t,P_t,C_t), and the Constraint/Policy/Norm disambiguation."
+  - "dimension-registry.md: record the Ideal-State governance qualification (IdealState=KnowerIntent+ApplicableNorms+Constraints+Purpose) and Question 18's launch (authority over the Ideal State)."
+anchor_test:
+  anchor: "0482's posed boundary question for Question 17; 0481's event-sourcing architecture; 0476's KnowledgeOS≠Ideal-Owner boundary; 0455's Zero/Lord/Sārathi source-of-not-authority discipline"
+  supports_dimension: "LANDMARK: fully answers Question 17 via a rigorous Guidance/Authorization/Execution/Transition four-way separation, removing Commit from Sārathi's vocabulary, reformalizing Execute and Authorize with explicit non-deterministic result types, introducing Theorem G5 (guidance is not a prerequisite for transition), and qualifying the Ideal State as governed by more than the Knower's unilateral preference -- launching Question 18 on authority over the Ideal State, the point where epistemology, DDD, governance, and normative authority must be connected"
+  refines_or_contradicts: "refines 0481's event-sourcing architecture with an upstream Authorize/Execute pipeline; fully answers 0482's posed boundary question; sharpens 0476's KnowledgeOS≠Ideal-Owner boundary into a governance-qualified Ideal State; no unresolved contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Corrects the Arjuna Lord-suggests-Relationship_To_Arjuna/Moral_Obligation example to be explicitly hypothetical (CandidateDimension), not an established requirement, reinforcing the Zero/Lord/Sārathi non-authority discipline"
+undefined_concepts: []
+open_questions:
+  - "Question 18 (Who has authority to define/modify/approve/constrain/reject the Ideal State?) -- launched here, not yet answered"
+  - "Whether the Ideal-State governance qualification (KnowerIntent+ApplicableNorms+Constraints+Purpose) is formally resolved into a concrete authority model in Question 18"
+  - "Whether Theorem G5 and the removal of Commit from Sārathi's vocabulary are consistently carried forward, given the arc's demonstrated pattern of corrections recurring across files"
+tier2_triggered: true
+tier2_reason: "Fully answers Question 17 via a rigorous Guidance/Authorization/Execution/Transition four-way separation, removes Commit entirely from Sārathi's vocabulary, reformalizes Execute and Authorize with explicit non-deterministic result types, introduces Theorem G5 (guidance is not a prerequisite for transition, preventing the lenses from becoming mandatory middleware), disambiguates Constraint/Policy/Norm, and qualifies the Ideal State as governed by more than the Knower's unilateral preference -- launching Question 18 on authority over the Ideal State, explicitly connecting epistemology, DDD, governance, and normative authority for the first time."

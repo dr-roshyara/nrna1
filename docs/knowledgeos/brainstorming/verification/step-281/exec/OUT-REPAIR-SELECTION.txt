@@ -1,0 +1,50 @@
+====================================================================================================
+STEP 281 — REPAIR SELECTION (executed)
+====================================================================================================
+
+--- ΔR (the added structure) for each candidate ---
+  ΔR(A) = one BOTTOM-valued assertion per queried proposition, stored INSIDE 𝒜
+  ΔR(B) = one set Q_t ⊆ P, stored ALONGSIDE K
+  ΔR(C2) = one map ε: P → (I,E); the E half is ALREADY derivable from e, so the genuine addition is I
+
+  *** ISOMORPHISM TEST: is C2's added component the same object as B's? ***
+     I(p)=Asked  ⟺  p ∈ Q_t          — a predicate over P and a subset of P are the same thing
+     E(p)        is a projection of Sigma(a), which is already derived from e
+     => ΔR(B) ≅ ΔR(C2).  B and C2 are THE SAME REPAIR in different notation.
+     The only real difference is PLACEMENT: C2 folds I into Sigma; B keeps Sigma untouched.
+
+--- M3 test (no redundant distinction): does any operation need (I,E) AS A PAIR? ---
+    operations examined: ['assert', 'relate', 'retract', 'merge', 'replay', 'validate', 'assess', 'contradicts', 'supersede']
+    operations requiring (I,E) as an inseparable pair: NONE
+    assess() consumes e; validate() consumes 𝒜/ℛ; contradicts() consumes P,c,t,ℛ.
+    No operation reads I and E together. => folding I into Sigma introduces a distinction
+       the mandatory operation set cannot use  => C2 VIOLATES M3 (no redundant distinction).
+
+--- Candidate A: executable falsification ---
+    after Ask(p): |𝒜|=2  (a BOTTOM assertion is now a MEMBER of 𝒜)
+    contradicts(real 3.69, BOTTOM) = True
+    is_orphan(BOTTOM) = True   <- the inquiry marker is itself an ORPHAN
+    Sigma(BOTTOM) = ('Neutral', 'None')   <- a marker with NO evidence now carries an epistemic status
+    *** A INJECTS NON-KNOWLEDGE INTO 𝒜: it inflates |𝒜|, creates spurious orphans, and gives
+        an inquiry marker an epistemic status. It also requires BOTTOM ∈ V_D, corrupting the
+        ValueSpace that makes WellFormed(P) decidable.  A is REFUTED on executed grounds. ***
+
+--- M1/M2 minimality for B ---
+    M1 Necessity   : Q_t distinguishes M1 from {M2..M6}. Remove it and 'not asked' collapses
+                     into 'absent' — the exact E4 failure. => every component of ΔR is needed.
+    M2 Irreducibility: ΔR(B) is a single set. No proper subset of a single set distinguishes
+                     the mandatory states (∅ gives back the E4 failure). => irreducible.
+    M3 No redundancy : Q_t adds exactly one bit per proposition and no ordering, no strength,
+                     no structure the operation set cannot consume. => no redundant distinction.
+
+====================================================================================================
+SELECTION:  B — the inquiry register  Q_t ⊆ P
+====================================================================================================
+  A  : REFUTED — executed. Pollutes 𝒜, corrupts V_D, creates spurious orphans, gives a
+       non-assertion an epistemic status.
+  C2 : NOT REFUTED, but NOT MINIMAL — ΔR(C2) ≅ ΔR(B), and it additionally couples I into Sigma,
+       a distinction no mandatory operation consumes. Violates M3.
+  B  : SELECTED — satisfies M1, M2, M3; leaves Sigma exactly as previously derived (Sigma stays a
+       function of e alone); adds one set outside K.
+  NOTE: per 281.10 the placement question is answered by this result — Sigma-B (missingness stays in
+       the inquiry layer), NOT Sigma-A or Sigma-C. Minimality decides it; elegance does not.

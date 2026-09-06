@@ -1,0 +1,22 @@
+================================================================================================
+MINIMALITY PROOF — removal test on ΔR (executed)
+================================================================================================
+  M1 NECESSITY — remove Q_t:
+     NotAsked -> ('?', 'Absent-or-NotAsked')    Asked+Absent -> ('?', 'Absent-or-NotAsked')    identical = True
+     => removing ΔR reproduces EXACTLY the Step 280 E4 failure. ΔR is NECESSARY.  PASS
+
+  M2 IRREDUCIBILITY — ΔR = {Q_t}, cardinality 1 as a structure.
+     Proper subsets of a singleton: only ∅.  ∅ = the M1 case above = FAILS.
+     => no proper subset is sufficient.  PASS
+
+  M3 NO REDUNDANCY — states reachable with Q_t: 5
+     Every one is produced by a DECLARED operation: Ask(p) or Assess(p,e,Policy).
+     Q_t carries one bit per proposition — no ordering, no strength, no structure beyond membership.
+     => no distinction is introduced that the mandatory operation set cannot make.  PASS
+
+  MINIMALITY: M1 PASS · M2 PASS · M3 PASS  => ΔR(B) IS MINIMAL
+
+  COMPARISON, executed in test_repair_selection.py:
+    ΔR(A)  is LARGER  — a whole assertion per query, inside 𝒜, plus a BOTTOM value in V_D.
+    ΔR(C2) is EQUAL in content (I ≅ Q_t) but adds a COUPLING of I into Σ that no operation reads.
+    ΔR(B)  is the smallest ΔR that passes M1, M2 and M3.

@@ -1,0 +1,114 @@
+sequence: 1099
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/21-GITA-DIMENSION-AND-PURIFICATION-CANDIDATES.md
+title: "21 -- Dimension, Value, Purification: A FIFTH Independent Arrival at 'No Total Order on K' (via a Pareto/Multi-Criteria Argument, Now the Best-Supported Negative Result in the Programme), a SIXTH Disjoint Operation Vocabulary, and the Discovery That equiv_D (Already Ratified) Silently Presupposes a dimension/value Layer the Ratified Eight Primitives Do Not Carry"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the newest disciplined Gita-lens batch, continuing the file-1098 convergence thread"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1099
+importance: critical
+confidence: high
+about: >
+  "21 — Dimension · Value · Purification — candidates from the newest Gītā-lens batch," verdict "a FIFTH
+  independent arrival at 'no total order on `K`' -- this time as a PARETO problem. Plus a `dimension`/`value`
+  layer that `≡_D` silently presupposes and the ratified eight primitives do not carry. Still 0 new
+  primitives."
+
+  **DELIVERS THE HEADLINE FIFTH ARRIVAL AT "NO TOTAL ORDER ON `K`"**, via a purification proposal that
+  unprompted refuses `v_{t+1}>v_t` ("'higher is not always better': uncertainty may decrease, provenance
+  completeness may increase, contradiction may decrease"), correctly identified as a PARETO/dominance
+  problem: "A Pareto order is a PARTIAL order and admits INCOMPARABLE states by construction." **Lists the
+  full five-route convergence table**, consolidating this reconstruction's already-tracked findings: (1)
+  measured, the `Σ`-axis audit (already tracked, files 1037-1039, 0 of 5 axes ordered); (2) measured,
+  retraction non-monotonicity (already tracked, EXECUTED); (3) corpus, `060 §60.71` ("cannot yet assert...
+  semilattice," already tracked, file 1058/1073); (4) corpus, `274.32` (already tracked, file 1092's second
+  join-semilattice warning); (5) this philosophical lens, Pareto not total order. Boxed: "Five routes, five
+  methods, one conclusion: there is no total order on `K`. This is now AMONG THE BEST-SUPPORTED NEGATIVE
+  RESULTS IN THE PROGRAMME."
+
+  **DELIVERS A GENUINELY VALUABLE SYNTHESIS MERGING TWO PREVIOUSLY SEPARATE REGISTER ITEMS**: sharpens
+  `M-Q3` (the missing metric) into a precise statement -- "the gap is not 'we lack a number.' It is: the
+  dimensions are HETEROGENEOUS and their improvement DIRECTIONS differ, so no scalar metric can exist without
+  a NORMATIVE WEIGHTING" -- and discovers "`M-Q3` and `M-Q4` [the undeclared loss function] are therefore the
+  SAME DECISION SEEN TWICE, which NEITHER `17` NOR `291` HAD NOTICED." A genuinely valuable cross-cutting
+  discovery unifying two previously distinct open items.
+
+  **DELIVERS A STRIKING NEW FINDING: THE ALREADY-RATIFIED `≡_D` (VALUE-LEVEL SEMANTIC EQUALITY) SILENTLY
+  PRESUPPOSES A MISSING `DIMENSION` OBJECT**: `264.15`'s already-established `3m≡_D 300cm` "holds because both
+  are values of the DIMENSION length. Without `d`, `≡_D` has nothing to quantify over." Delivers the precise
+  gap: the ratified eight primitives carry `Proposition` (the sentence) but NEITHER `dimension` NOR `value`,
+  though `≡_D` operates on the latter. Explicitly NOT promoted, recorded as `D-Q1` with two open readings ((a)
+  derived structure inside `Proposition`, cheaper; (b) missing primitives, which would CONTRADICT `C-022`'s
+  "50 attack classes, no counterexample" claim). Delivers a genuinely sharp connection to the already-tracked
+  Audit-A "wrong level" finding for `≡_D` (file 1079/1092): "This says the 'wrong level' is not merely
+  irrelevant to `K`; IT IS A LEVEL WITH NO CARRIER."
+
+  **DELIVERS THE SIXTH DISJOINT OPERATION VOCABULARY, EXPLICITLY TALLIED AGAINST THE ALREADY-TRACKED
+  SEQUENCE**: `𝒪={E,R,C,X,Q,Z,...}` (Expansion/Refinement/Correction/Contradiction-resolution/Qualification/
+  Zero-detection). Delivers the full six-item vocabulary tally table: `272A`'s `𝒪_sem` (19, already tracked);
+  `external_research`'s pseudo-algorithm (43, already tracked); the corpus registry (22, already tracked);
+  Chapter 13's type ontology (7, already tracked); `Ω_K` + 11 named operations (already tracked, file 1098);
+  and this batch's `{E,R,C,X,Q,Z}` (6). Boxed: "SIX vocabularies. `G-68` recorded three. `G-86` added a
+  fourth. This adds a sixth." **Discovers a genuinely important point of contact**: `Qualify` appears in BOTH
+  the newest two vocabularies (`Ω_K`'s `Qualify` and this batch's `Q`), "reinforcing `20 §1`: any minimal
+  kernel algebra containing `Qualify` inherits `G1`" -- a second independent construction landing on the same
+  irreducible gap.
+
+  **DELIVERS THE T0-LEVEL REFUSAL "SENTENCE = DIMENSION"** and its formal C8 constraint: "Purification ≠
+  monotonic accumulation" ("higher is not always better").
+
+  Confirms the disciplined non-license: "The Pareto finding does not supply an order -- it explains WHY NONE
+  EXISTS... The dimension/value layer is not promoted... The sixth vocabulary is not adopted... Steps 288-291
+  unchanged; all `R6`." And confirms the discipline held again: "both new sources refuse their own strongest
+  reading... BEFORE being asked to."
+introduces:
+  - concept: "The fifth independent arrival at 'no total order on K' via a Pareto/multi-criteria dominance argument, now assembled into a full five-route convergence table across two measured results and three corpus/philosophical sources"
+  - concept: "The unification of M-Q3 (no metric) and M-Q4 (no loss function) into a single decision -- heterogeneous, differently-directed dimensions admit no scalar without a normative weighting -- discovered by neither of the two prior audits that separately tracked these items"
+  - concept: "The discovery that the already-ratified equiv_D silently presupposes a missing dimension/value layer not carried by the ratified eight primitives, sharpening the already-tracked 'wrong level' finding into 'a level with no carrier'"
+  - concept: "The sixth disjoint operation vocabulary, with a genuinely important cross-vocabulary point of contact: Qualify independently appears in the two newest constructed algebras, reinforcing the G1-inheritance finding"
+defines:
+  - term: "D-Q1"
+    definition: "Are dimension and value derived structure inside Proposition, or missing primitives that equiv_D presupposes but the ratified eight do not carry? -- normative/registry, with reading (b) contradicting C-022's no-counterexample claim"
+  - term: "M-Q3'"
+    definition: "The merged recognition that M-Q3 (no metric) and M-Q4 (no loss function) are the same decision seen twice -- heterogeneous dimensions with differing improvement directions admit no scalar without a normative weighting"
+  - term: "G-91"
+    definition: "Six disjoint operation vocabularies now catalogued in the estate (up from three at G-68, four at G-86)"
+  - term: "G-92"
+    definition: "Two independently built minimal operation algebras both contain Qualify -- G1 is reachable from two independent directions, corroborating the already-tracked G1-inheritance finding"
+refines:
+  - concept: "This reconstruction's already-tracked no-total-order-on-K findings (Sigma-axis audit files 1037-1039, retraction non-monotonicity, the 060/274.32 join-semilattice warnings files 1058/1073/1092)"
+    refinement: "CONSOLIDATED into a five-route convergence table, now explicitly characterized as among the best-supported negative results in the entire research programme"
+  - concept: "This reconstruction's already-tracked separate M-Q3 (metric) and M-Q4 (loss function) register items"
+    refinement: "UNIFIED into a single decision, a synthesis neither of the two prior audits (files 1085's derivative and file 1092) had separately noticed"
+  - concept: "This reconstruction's already-tracked equiv_D 'wrong level' Audit-A finding (file 1079/1092)"
+    refinement: "SHARPENED: the wrong level is discovered to be a level with no carrier at all, since equiv_D presupposes a dimension object the ratified eight primitives do not include"
+  - concept: "This reconstruction's already-tracked disjoint-vocabulary sequence (G-68 three, G-86 four, file 1098's Omega_K count)"
+    refinement: "EXTENDED to six total disjoint vocabularies, with a genuinely important cross-vocabulary Qualify point of contact discovered"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the fifth independent arrival at no-total-order-on-K (Pareto argument, now among the best-supported negative results), the M-Q3/M-Q4 unification, the equiv_D dimension/value presupposition discovery (D-Q1), the sixth disjoint operation vocabulary (G-91), and the cross-vocabulary Qualify point of contact (G-92) reinforcing the G1-inheritance finding."
+anchor_test:
+  anchor: "This reconstruction's already-tracked no-total-order-on-K findings and the already-tracked disjoint-vocabulary sequence (G-68, G-86, Omega_K)"
+  supports_dimension: "Delivers a fifth independent convergence route for the no-total-order finding and extends the vocabulary-disjunction sequence to six, with a genuinely important cross-vocabulary Qualify discovery"
+  refines_or_contradicts: "refines (consolidates and extends) both prior tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The five-route convergence table and the six-vocabulary tally are directly checkable against files 1037-1039, 1058, 1073, 1080, 1092, and 1098's own already-documented findings for exact numerical consistency."
+undefined_concepts: []
+open_questions:
+  - "Whether D-Q1 (dimension/value as derived structure vs missing primitive) is ever formally adjudicated, given reading (b) would contradict the already-ratified C-022 primitive-completeness claim."
+tier2_triggered: true
+tier2_reason: "Delivers a fifth independent convergence route strengthening the already-tracked no-total-order-on-K finding into one of the programme's best-supported negative results, a genuinely valuable unification of two separately-tracked register items (M-Q3/M-Q4), a striking discovery that the already-ratified equiv_D silently presupposes a missing dimension/value layer, and a sixth disjoint operation vocabulary with a cross-vocabulary point of contact reinforcing the G1-inheritance finding. Classified importance critical and confidence high given the striking, well-evidenced, and directly connective nature of these findings."

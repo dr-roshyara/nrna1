@@ -1,0 +1,92 @@
+sequence: 995
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/R3-HYPOTHESIS-REGISTER.md
+title: "R3 -- Hypothesis Register: The Actual Canonical Register of All Eleven H-K Hypotheses (Plus Two Not-Advanced GK Items), Already Cross-Referenced Across Files 0973-0994, Now Directly Encountered in Full With the Complete H-K06f Criteria Table and the Full Jnata-Jnana-Jneya Tripuṭī Derivation"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the actual R3 artifact: the canonical hypothesis register underlying nearly every D285-x/H-K citation this reconstruction has already tracked"
+source_role: PRIMARY_RESEARCH
+canonical_source: 995
+importance: critical
+confidence: high
+about: >
+  The actual R3 Hypothesis Register (previously known only by cross-reference, via files 0973-0994),
+  status "9 of 16 mappings became testable hypotheses," revised 2026-08-31 with `H-K13` reassigned to Jñāna
+  per the disambiguation this reconstruction already tracked (file 0990).
+
+  **Delivers the full eleven-row hypothesis table** (H-K03 Knower/state distinction; H-K04b universal-knower
+  image test; H-K06 action/result non-identity; H-K11 outcome-independence; H-K05 an Ātman-candidate
+  invariant `P`; H-K08 Guidance≠Authority≠Decision≠Execution; H-K09 five distinct epistemic operations;
+  H-K10 Role/Obligation/Permitted/Required separability; H-K06f failed-inquiry epistemic gain; H-K13
+  Jñāna→Knowledge, explicitly marked "and it FAILS"; H-K16 Sañjaya=Ω), plus GK-01 (Kṛṣṇa→Ω) and GK-12 (Yoga)
+  explicitly marked "not advanced."
+
+  **Delivers the FULL H-K06f criteria table for the first time**, incorporating Reviewer A's already-tracked
+  revision (file 0988) verbatim in place: criterion 4 (posterior changed) is struck through and replaced with
+  the declared-metric version (`ΔU>0` or `ΔI>0`); criterion 5 ("only operational history was produced") is
+  explicitly marked NOT epistemic gain, with the closing warning: **"Treating (5) as epistemic gain is how a
+  knowledge system inflates its own evidence base — and it is exactly what a naive reading of 6.40 would
+  license."**
+
+  **Delivers the full H-K05 (Ātman) treatment for the first time**: stated against the null hypothesis that
+  ordinary provenance already suffices, with named candidates for the invariant `P` (identity, provenance,
+  lineage, historical continuity, knowledge source, epistemic identity) -- "If `P` reduces to provenance,
+  H-K05 adds nothing," explicitly flagged as tested by R4 (already known, via file 0980, to have found
+  exactly this: "ordinary provenance already supplies everything it was meant to provide," RX).
+
+  **Delivers the full Jñāna/Tripuṭī derivation** (already tracked in outline via files 0988/0990): quotes the
+  corpus's own Sanskrit gloss ("ज्ञान (Jñāna) — Knowing | Reasoning/transformation process," inside the
+  Tripuṭī `Jñātā·Jñāna·Jñeya` = knower·knowing·known), confirms `Knowledge` is "absent from the 8 ratified
+  primitives AND from the Steps 100-158 vocabulary," and closes: "Mapping a Priority-1 term onto a
+  deliberately absent primitive would have reintroduced `Knowledge` by the back door. R4 — and it reinforces
+  the ratified decision."
+
+  **Delivers the Sañjaya (H-K16) summary**, restating `W--Ω-->O`, `Knower≠Observer`,
+  `Sañjaya_K=(Observed,Inferred,Reported,Unknown,Conflicting,Unresolved)`, grade `R5` on structure, and
+  EXPLICITLY CITES its full treatment as living in **`01-GAP-UPDATE-FROM-REVISED-286.md §2`** -- **this
+  reconstruction's still-outstanding bridge candidate, named here for the third time (files 0990, 0993-
+  indirectly, and now here) without yet being directly encountered.**
+introduces:
+  - concept: "The complete eleven-row R3 hypothesis table, the canonical register underlying nearly every H-K citation this reconstruction has already tracked by cross-reference"
+  - concept: "The full H-K06f epistemic-gain criteria table, with Reviewer A's revision to criterion 4 incorporated in place, and criterion 5's explicit warning against treating mere operational history as epistemic gain"
+  - concept: "The full H-K05 (Atman) treatment, naming six candidate referents for the invariant P and explicitly flagging it as tested (and destroyed) by R4"
+defines:
+  - term: "H-K05"
+    definition: "The hypothesis that an invariant P exists across K_t transitions which ordinary provenance does not already supply -- tested against the null hypothesis that provenance suffices; candidates for P include identity, lineage, historical continuity, knowledge source, epistemic identity"
+refines:
+  - concept: "This reconstruction's already-tracked, cross-referenced-only H-K hypothesis citations (files 0973-0994)"
+    refinement: "GROUNDED for the first time in their canonical register source, confirming the exact wording, priority, and 'testable' status of each hypothesis"
+  - concept: "File 0980's already-documented finding that the Knowledge Atma construct was destroyed because 'ordinary provenance already supplies everything it was meant to provide'"
+    refinement: "CONFIRMED to be the direct resolution of H-K05 as stated here, closing the loop between this register's stated null hypothesis and R4's executed result"
+  - concept: "File 0990's H-K identifier disambiguation (H-K13=Jnana)"
+    refinement: "CONFIRMED: this register's own revision line explicitly states 'H-K13 reassigned to Jnana' per the same disambiguation act"
+contradicts: []
+repeats:
+  - "The Jnana/Tripuṭī derivation and the Sanjaya summary substantially repeat content already documented via files 0988 and 0990; this file's distinctive contribution is being the actual canonical register source, plus the full H-K06f and H-K05 tables not previously seen in full."
+bridge_candidates:
+  - "'01-GAP-UPDATE-FROM-REVISED-286.md §2' -- named here for a further time as the location of Sanjaya's full treatment; still not directly encountered by this reconstruction."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file as the actual canonical R3 hypothesis register, grounding all of this reconstruction's already-tracked H-K cross-references in their source table."
+  - "dimension-registry.md: record the full H-K06f criteria table (with Reviewer A's revision in place) and the full H-K05 Atman treatment (six candidate referents for P) as directly reusable reference content."
+anchor_test:
+  anchor: "This reconstruction's already-tracked H-K hypothesis cross-references (files 0973-0994) and file 0980's Knowledge-Atma destruction finding"
+  supports_dimension: "Grounds all prior cross-references in their canonical source register, and confirms the H-K05/Knowledge-Atma resolution loop"
+  refines_or_contradicts: "confirms and grounds prior cross-referenced findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The eleven-row hypothesis table is directly checkable against every prior H-K citation across files 0973-0994 for exact wording and status consistency."
+undefined_concepts: []
+open_questions:
+  - "The content of '01-GAP-UPDATE-FROM-REVISED-286.md', named repeatedly as the source of the Sanjaya recovery and GK-13 correction but still not directly encountered."
+tier2_triggered: true
+tier2_reason: "The actual canonical R3 hypothesis register underlying nearly every H-K citation this reconstruction has tracked by cross-reference across files 0973-0994, delivering the full H-K06f criteria table and H-K05 Atman treatment for the first time. Classified importance critical and confidence high given its role as the grounding source document for the entire Step-25X/D285-x hypothesis-testing programme."

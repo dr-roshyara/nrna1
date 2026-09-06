@@ -1,0 +1,100 @@
+sequence: 760
+path: docs/knowledgeos/brainstorming/phase_measure_theory/how_to_combine/20260828-151722_step_combine_combine-prompt-5.md
+title: "Combine-Prompt 5 (EXCEPTIONAL META-LEVEL FINDING, continuing 0755-0759) -- Book Architecture Planning: 'The Book Is a New, Curated Narrative Generated From the Archive,' Not a Compression of 408 Files Into 10 Chapters -- Proposes a Folder-Per-Chapter Structure With chapter.md+evidence-map.md+claims.md+unresolved.md So No Genuinely Unresolved Material Gets Silently 'Cleaned Up' -- Delivers the Constitutional Rule 'No Sentence in the Final Book May Silently Upgrade the Epistemic Status of the Underlying Evidence' -- Explicitly Defers Final Chapter Titles Until Phase 3B/3C Complete"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "book-architecture and documentation-discipline planning; g1 relevance only through the provisional chapter title '04-the-gita-and-the-knower' used as a worked example of the per-chapter evidence-map/claims/unresolved discipline"
+source_role: PRIMARY_RESEARCH
+canonical_source: 760
+importance: high
+confidence: high
+about: >
+  Directly continues 0759's programme-status summary by addressing the eventual book-synthesis output
+  structure (still not authorized to begin, per 0759's governance state), delivering the principle: "the
+  old timestamped files are the research archive. The book is a new, curated narrative generated from that
+  archive and from the validated architectural synthesis" -- book planned as "a separate synthesis
+  product, not a pile of rewritten session files."
+
+  Delivers a proposed final repository structure under `docs/knowledgeos/reviews/synthesis/`: `analysis/`
+  (archaeology/evidence, matching 0757's seven deliverables), `model/` (canonical architecture, formal
+  model, invariant system), `architecture/` (eventual 3C conformance/implementation-mapping results), and
+  `book/` -- a ten-chapter provisional outline plus front-matter and appendices, each chapter in its own
+  folder (`00-front-matter/`, `01-the-question/` through `10-conformance-and-reality/`, `99-appendices/`),
+  each chapter folder containing `chapter.md`/`evidence.md`/`notes.md`.
+
+  **Explicitly defers finalizing chapter titles**: "we have discovered the architecture, but we haven't
+  finished 3B/3C. The eventual book structure should emerge from the validated synthesis" -- delivers the
+  full pipeline this must follow before book architecture is even proposed as fixed: `Historical corpus→
+  Phase 1 Archaeology→Phase 2 Separation/Lineage→Phase 3A Canonical model→3B Formal consistency→3C
+  Repository conformance→BOOK ARCHITECTURE→Chapter map→Chapter evidence maps→Chapter drafts→Cross-chapter
+  consistency→Final synthesis`.
+
+  **Delivers a refined four-artifact per-chapter structure**, motivated explicitly by "what we have learned
+  about evidence vs. interpretation": `chapter.md` (the readable book text), `evidence-map.md` (chapter
+  claim→source document→exact evidence→epistemic grade), `claims.md` (distinguishing established/strongly
+  supported/synthesized/hypothesis per claim), and **`unresolved.md`, whose explicit purpose is to
+  "prevent Claude from unconsciously 'cleaning up' something that was actually unresolved"** -- a genuinely
+  valuable documentation-discipline pattern directly protecting the historical-integrity rule established
+  at 0756.
+
+  **Delivers "the biggest danger" this structure is designed to avoid**: "we do NOT want Claude to take 408
+  files and simply produce 10 chapters. That would be compression, not synthesis." Instead: "the book is
+  the final explanatory projection of the research" -- delivered as a four-layer relationship diagram
+  (`HISTORICAL CORPUS "what happened?" → ANALYSIS "what does evidence support?" → CANONICAL MODEL "what
+  architecture can we responsibly state?" → BOOK "how did we discover it?"`), each layer answering a
+  distinct question the layer below it cannot answer.
+
+  **Delivers the file's central constitutional rule for the eventual book**: "no sentence in the final book
+  may silently upgrade the epistemic status of the underlying evidence" -- explicitly grounded in "the
+  whole project has demonstrated the difference between what was observed, what was inferred, what was
+  formally derived, and what was actually tested" -- directly resonant with this reconstruction's own
+  governing epistemic discipline against silently converting hypothesis into definition. No actual code
+  execution or verified repository claim is made in this file; it is entirely prospective structural
+  planning, and the book phase itself remains unauthorized per 0759's governance state (Phase 3/Book
+  synthesis 🔒 Not authorized).
+introduces:
+  - concept: "The book as 'a separate synthesis product,' distinct from the research archive it is generated from"
+  - concept: "The four-artifact per-chapter structure: chapter.md / evidence-map.md / claims.md / unresolved.md"
+  - concept: "'The biggest danger': compressing 408 files into 10 chapters is compression, not synthesis"
+  - concept: "The four-layer relationship diagram: Historical Corpus / Analysis / Canonical Model / Book, each answering a distinct question"
+  - concept: "The book's constitutional rule: no sentence may silently upgrade the epistemic status of the underlying evidence"
+defines:
+  - concept: "unresolved.md (per-chapter artifact)"
+    definition: "A dedicated per-chapter file whose sole purpose is to record what the corpus genuinely leaves unresolved for that chapter's subject matter, existing specifically to prevent the book-writing process from unconsciously smoothing over or silently resolving a question the source material never actually answered"
+  - concept: "The book's epistemic-status constitutional rule"
+    definition: "No sentence in the final synthesized book may present a claim with a higher epistemic status (e.g. as an established fact) than the underlying evidence actually supports (e.g. an observation, inference, formal derivation, or untested hypothesis) -- narrative polish must never come at the cost of quietly overstating what the corpus actually establishes"
+refines:
+  - concept: "0756's 'SPECIAL RULE — HISTORICAL INTEGRITY' (never use later regime knowledge to rewrite an earlier document's meaning)"
+    refinement: "Operationalized into a concrete documentation artifact (unresolved.md) whose specific job is to prevent exactly this kind of silent rewriting from occurring during the book-writing phase itself, rather than only during the archaeology phase"
+  - concept: "0755's master prompt's Phase 4 (Book Synthesis) chapter-by-chapter, section-by-section discipline"
+    refinement: "Given a concrete proposed file-and-folder structure (folder-per-chapter, four artifacts each) implementing that discipline, while explicitly deferring the actual chapter titles/outline until Phases 3A-3C are complete"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read the remaining how_to_combine/ files (combine-prompt-6, halfway-point-progress-review, the qualification/next-instruction files, step_combine_remaining-todos) with high attention: check whether Phase 2C/3A-3C were ever authorized and performed, and whether this book architecture was ever actually populated with real chapter content."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the book's constitutional rule ('no sentence may silently upgrade the epistemic status of the underlying evidence') and the unresolved.md per-chapter artifact pattern as directly applicable documentation-discipline principles this reconstruction's own eventual canonical synthesis phase should consider adopting."
+anchor_test:
+  anchor: "0755's master prompt Phase 4 (Book Synthesis); 0756's Historical Integrity rule; 0759's governance state (Phase 3/Book synthesis NOT AUTHORIZED); this reconstruction's own governing epistemic discipline"
+  supports_dimension: "Delivers a concrete, disciplined book-architecture proposal explicitly designed to prevent the single biggest risk of any large-corpus synthesis project: compressing extensive historical material into a small number of chapters and thereby silently losing epistemic nuance. Delivers a genuinely valuable four-artifact per-chapter pattern (chapter/evidence-map/claims/unresolved) and a clear constitutional rule against silently upgrading epistemic status in prose -- both directly transferable to this reconstruction's own eventual §29-gated canonical synthesis. Explicitly defers finalizing chapter structure pending Phase 3A-3C completion, maintaining the same disciplined incrementalism observed throughout this how_to_combine/ arc"
+  refines_or_contradicts: "operationalizes and extends 0755's Phase 4 discipline and 0756's Historical Integrity rule; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit statement 'we do NOT want Claude to take 408 files and simply produce 10 chapters. That would be compression, not synthesis' is directly quotable evidence of the file's central organizing concern and the rationale for its proposed structure."
+  - "The boxed constitutional rule 'no sentence in the final book may silently upgrade the epistemic status of the underlying evidence' is directly quotable evidence of a precise, directly applicable documentation-discipline principle."
+undefined_concepts: []
+open_questions:
+  - "Whether Phase 3A-3C were ever authorized and performed, and whether this proposed book architecture was ever actually populated with real content, per the remaining how_to_combine/ files."
+tier2_triggered: true
+tier2_reason: "Continues the EXCEPTIONAL META-LEVEL FINDING chain (0755-0759): delivers a disciplined, concrete book-architecture proposal explicitly designed to prevent silent compression/epistemic-status-inflation of the historical corpus, including a genuinely valuable four-artifact per-chapter pattern and a constitutional epistemic-honesty rule directly transferable to this reconstruction's own eventual canonical synthesis."

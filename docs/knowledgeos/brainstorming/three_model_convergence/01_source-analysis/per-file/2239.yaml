@@ -1,0 +1,146 @@
+sequence: 2239
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-231700_step_291_reviewer-b-omega-tau-closure-audit-and-n4-earliest-act-verification-mandate.md
+title: "Reviewer-B Step 291 𝒪/𝒯 Closure-Audit and N-4-Earliest-Act Verification Mandate -- REVEALS STEP 290's ACTUAL EXECUTED OUTCOME (G-67 WITHDRAWN, N-1A SURVIVES DISTINCT, JOIN-SEMILATTICE DOWNGRADED TO NOT-ESTABLISHED, N-4 NOW THE EARLIEST ACT) AND FOUNDS THE ALREADY-TRACKED N-4 STEP-291 ARC (files 1082-1084)"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "reviewer-B's audit of Step 290's actual executed N-1 result plus the literal 25-section Step-291 research mandate -- the founding source of this reconstruction's already-tracked Step-291 N-4 arc (files 1082-1084, the ten numbered Step-291 artifacts and the vNext meta-audit)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2239
+importance: critical
+confidence: high
+about: >
+  Reviewer-B's audit of Step 290's actual executed N-1 result, followed by a 25-section Step-291 research
+  mandate. This is the founding source of this reconstruction's already-tracked Step-291 N-4 arc (the ten
+  numbered Step-291 artifacts and vNext meta-audit already tracked at files 1082-1084), and the first
+  primary-source confirmation of Step 290's actual N-1 execution outcome (as distinct from the N-1 mandate
+  already tracked at file 2237).
+
+  **STEP 290's ACTUAL EXECUTED CORRECTIONS, NOW LOCKED AS BASELINE**:
+
+  1.1 **G-67 IS WITHDRAWN**: the already-tracked "≈ collapses into ≡, or ≡ has no definition" contradiction
+  finding (from file 2237) is corrected — "the previous contradiction was a modality error." The primary
+  corpus labels the relevant definitions as CANDIDATES, not ratified conflicting definitions (Step 261.21:
+  candidate semantic equality, 𝒪_K not completely closed; Step 258.8/258.37: stronger observational
+  candidate, no final ≡_K). The reframed issue is **N-1′ — whether the candidate equality definition should
+  be ratified/retained/replaced** — do not resurrect G-67.
+
+  1.2 **N-1A SURVIVES AS DISTINCT**: the corpus distinguishes the equality relations/notations at multiple
+  loci, but four sub-distinctions must be kept separate (syntactic notation / formal definition / semantic
+  intention / canonical registry status).
+
+  1.3 **JOIN-SEMILATTICE CLAIM DOWNGRADED**: "(𝕂,merge,∅) is REFUTED" is corrected to **"NOT ESTABLISHED"**
+  — Step 060 §60.71 says "not proven," and retraction concerns evolution, not the algebraic merge claim
+  itself — "the earlier reasoning conflated two distinct claims."
+
+  1.4 **THE 289 BOOTSTRAP CLAIM CLARIFIED**: 𝒪/𝒯 does NOT lie inside the equality dependency cycles — cut
+  {≡}→acyclic, cut {𝒪,𝒯}→still cyclic, the four cycles do NOT contain 𝒪 or 𝒯. Correct distinction: 𝒪/𝒯 is
+  an UPSTREAM BLOCKER/PREREQUISITE; ≡ is the unique minimal CYCLE CUT — different structural roles (this
+  refines, without contradicting, the already-tracked file-2237 correction).
+
+  1.5 **261.23 STILL ACTIVE**, preserving the two-block split (equality conditions 1,2,3,6; representation
+  conditions 4,5) — resolving equality does not automatically release the representation block.
+
+  **THE HEADLINE RESULT, FOUNDING THE ALREADY-TRACKED N-4 ARC**: "The immediate research conclusion is: The
+  earliest legitimate act is now N-4: adjudicate/resolve the closure status of the observation/operation
+  universe (𝒪/𝒯), not N-1." Reviewer-B explicitly flags this as the single biggest thing to guard against in
+  Step 291: "That is plausible, but it is itself a research conclusion that should be tested rather than
+  inherited" — directly anticipating this reconstruction's already-tracked finding (files 1082-1084) that
+  the N-4-sole-root claim was later flagged for downgrade and corrected to "highest-leverage root among 7."
+
+  The 25-section mandate (§1-§25): §1 the five-item non-negotiable baseline above. §2 primary question —
+  precisely what 𝒪/𝒯 means (reconciliation table over 9 symbols/terms, not assuming 𝒪/𝒪_K/𝒯 are identical).
+  §3 reconstructs the closure requirement, classifying every blocker into 7 categories (DOCUMENTARY through
+  UNKNOWN), then separates 6 non-interchangeable notions (definability/totality/decidability/canonicality/
+  computability/operational completeness). §4 six-condition 261.23 audit table. §5 operation-registry audit
+  (13 status questions per operation). §6 observation-universe audit with a 5-way closure-type classification
+  (A. explicitly closed / B. schema-closed / C. semantically bounded / D. open / E. undetermined). §7 the
+  critical enumeration≠closure distinction (four candidate closure mechanisms: finite enumeration / closed
+  type-schema-interface / admissibility predicate / governance boundary). §8 derivation-route testing (6-way:
+  DERIVABLE/PARTIALLY DERIVABLE/BLOCKED/CIRCULAR/NORMATIVE/UNDER-SPECIFIED). §9 re-runs Step 289's bootstrap
+  analysis with EXECUTABLE graph analysis (not prose), verifying cycle count/membership/minimal cuts/whether
+  𝒪 or 𝒯 are cycle members/whether ≡ remains the unique minimal cut. §10 explicitly audits "N-4 is the
+  earliest legitimate act" as a headline claim requiring testing against 5 distinct meanings of "earlier"
+  (upstream-in-graph/prerequisite-for-derivation/for-governance/for-implementation/for-canonicalization),
+  "if not provable, downgrade the statement." §11 the governance/derivation boundary five-way classification
+  (Case A Derivable / B Engineering closure / C Normative closure / D Governance closure / E Mixed — "do not
+  call an engineering TODO a governance decision"). §12 forbids smuggling equality decisions (Π∈≡, ≡=≈, ≡≠≈)
+  back in while auditing 𝒪/𝒯. §13 independent re-verification of the 32→30 ≈_X result with corrected
+  terminology: "32 mathematically distinct projections; 2 degenerate endpoints; 30 non-degenerate candidates
+  — do not turn 'non-useful' into 'invalid'." §14 re-audits the K-order/join-semilattice claim, separating 6
+  distinct concepts (merge operation/state evolution/monotonicity/partial order/join-semilattice/lattice/
+  retraction), explicit warning against using AGM belief-revision theory as architectural evidence rather
+  than external classification. §15 identity audit across 5 identity kinds, re-examining id=H(P,e,c,t,Π) and
+  provenance-withdrawal consequences. §16 seven-value negative-result vocabulary (REFUTED/NOT ESTABLISHED/
+  UNDECIDABLE/BLOCKED/UNDER-SPECIFIED/NORMATIVE/DERIVABLE), forbidding FALSE/IMPOSSIBLE/PROVEN/CLOSED/
+  CRITICAL absent sufficient evidence strength — explicit distinctions "not proven"≠"refuted," "not
+  enumerated"≠"not closed," "candidate definition"≠"contradiction." §17 philosophical-independence test
+  (would the result survive with the philosophy appendix deleted?). §18 required executable audit under
+  research/step-291/exec/ testing 10 named properties, with the explicit methodological warning that the
+  Step-289/290 discovery of the universal ≈_∅ relation is "now a mandatory methodological warning" against
+  vacuous zero-counterexample results. §19 required artifact package (REFINED-STEP-291.md + 10 numbered
+  research/step-291/ documents + exec/ scripts) — directly matching the already-tracked Step-291 artifact
+  set (files 1082-1084's ten numbered documents: 02 Observation Inventory, 03 Operation Registry Audit, 04
+  Closure Analysis, 05 Dependency Graph, 06 261.23 Gate Audit, 07 Governance vs Derivation Boundary, 09
+  Negative Results, 10 Next Legitimate Act — this mandate is their literal origin). §20 the 17-section
+  REFINED-STEP-291.md structure (explicitly "no defence of Step 290" in §3, "only corrections confirmed by
+  this audit" in §2). §21 an eleven-item "no architecture by researcher decision" prohibition list. §22
+  registry/numbering discipline — do NOT renumber or overwrite, inspect the registry first, create a
+  collision report if one exists. §23 a seven-value terminology-discipline vocabulary (CORPUS/DERIVED/
+  MEASURED/INTERPRETIVE/NORMATIVE/IMPLEMENTATION/UNKNOWN) forbidding four named unproven upgrades (candidate→
+  definition→canonical→implemented→complete). §24 four-way FINAL STOP CONDITION (STOP-A demonstrable closure;
+  STOP-B precise normative boundary identified; STOP-C corpus insufficient to classify the boundary; STOP-D
+  a new dependency invalidates the N-4-earliest assumption) — directly matching the already-tracked file
+  1084's "STOP-B+STOP-D" closing capstone outcome. §25 the final required question: "What is the smallest
+  statement that KnowledgeOS can honestly claim about 𝒪/𝒯 today, without assuming any unresolved equality,
+  governance, observation, or operation semantics?"
+
+  Reviewer-B's closing assessment: "Step 290 is a significant correction and improvement over 288-289... the
+  research process is demonstrating that it can withdraw its own findings rather than accumulate them as
+  historical truth." Names the biggest risk for Step 291 explicitly: the phrase "N-4 is the earliest
+  legitimate act" is "plausible, but it is itself a research conclusion that should be tested rather than
+  inherited" — and recommends keeping three layers separate: "𝒪/𝒯 closure → equality decision → governance/
+  canonicalization," warning against "closing 𝒪/𝒯" becoming "a disguised way of deciding equality."
+introduces:
+  - concept: "The literal founding mandate of this reconstruction's already-tracked Step-291 N-4 arc (files 1082-1084) -- the ten numbered research/step-291/ artifacts, the executable audit scripts, and the four-way STOP-A/B/C/D condition vocabulary all originate here"
+  - concept: "The first primary-source confirmation of Step 290's actual executed N-1 outcome: G-67 withdrawn (modality error, not contradiction), N-1A survives DISTINCT, join-semilattice downgraded REFUTED→NOT-ESTABLISHED, 289 bootstrap claim clarified (O/T is an upstream blocker/prerequisite, NOT a cycle member; {≡} remains the unique minimal cut), and the headline N-4-is-earliest-act conclusion"
+  - concept: "Reviewer-B's explicit pre-emptive flag that the N-4-earliest-act claim 'should be tested rather than inherited' -- directly anticipating this reconstruction's already-tracked finding that N-4 was later downgraded to 'highest-leverage root among 7'"
+defines:
+  - concept: "Five-way governance/derivation boundary classification: Case A Derivable / B Engineering closure / C Normative closure / D Governance closure / E Mixed (§11)"
+  - concept: "Four-way FINAL STOP CONDITION vocabulary: STOP-A demonstrable closure / STOP-B precise normative boundary / STOP-C corpus insufficient to classify / STOP-D N-4-earliest assumption invalidated (§24), matching the already-tracked file 1084 'STOP-B+STOP-D' outcome"
+refines:
+  - concept: "This reconstruction's already-tracked file-2237 Step-290 N-1 mandate and its five-way N-1A-E classification vocabulary"
+    refinement: "GROUNDED with the actual executed N-1 outcome: N-1A DISTINCT confirmed as the classification reached, with G-67's earlier contradiction finding withdrawn as a modality error"
+  - concept: "This reconstruction's already-tracked Step-291 N-4 arc (files 1082-1084: Observation Inventory, Operation Registry Audit, Closure Analysis, Dependency Graph, 261.23 Gate Audit, Governance vs Derivation Boundary, Negative Results, Next Legitimate Act)"
+    refinement: "TRACED TO ITS LITERAL FOUNDING MANDATE -- this reconstruction now holds the primary source that generated the already-tracked ten-artifact package and its STOP-B+STOP-D closing capstone"
+  - concept: "This reconstruction's already-tracked {O,T}-upstream-blocker vs {≡}-unique-minimal-cut structural distinction (file 2237)"
+    refinement: "REINFORCED and clarified with the exact cut-test evidence (cut {≡}→acyclic; cut {O,T}→still cyclic; the four cycles do NOT contain O or T)"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "The actual executed REFINED-STEP-291.md and its ten numbered artifacts, matching this mandate's required package -- already tracked at files 1082-1084 via downstream coverage; this file grounds them at their founding mandate."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as the founding mandate of the already-tracked Step-291 N-4 arc (files 1082-1084), and as the first primary-source confirmation of Step 290's actual executed N-1 outcome (G-67 withdrawn, N-1A DISTINCT, join-semilattice downgraded to NOT-ESTABLISHED, O/T clarified as upstream blocker not cycle member, N-4 identified as (contestable) earliest act)."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Step-291 N-4 arc (files 1082-1084) and its STOP-B+STOP-D closing capstone"
+  supports_dimension: "Traces the already-tracked arc to its literal founding mandate, and grounds Step 290's actual N-1 outcome at its primary source"
+  refines_or_contradicts: "refines (grounds at primary source, with a precise corrective/clarifying account of Step 290's actual corrections)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The required artifact package (§19: 10 numbered research/step-291/ documents matching '01_omega-tau-reconciliation.md' through '10_recommendation-and-next-act.md') is directly checkable against the already-tracked file-1082-1084 Step-291 artifact titles for exact traceability."
+  - "The four-way STOP-A/B/C/D vocabulary (§24) is directly checkable against the already-tracked file 1084 'STOP-B+STOP-D' closing capstone outcome."
+undefined_concepts: []
+open_questions:
+  - "Whether the actual executed REFINED-STEP-291.md (following this mandate) states its Executive Verdict (§20.1) in a form directly comparable to this reconstruction's already-tracked coverage of the Step-291 arc, for full traceability if directly re-encountered."
+tier2_triggered: true
+tier2_reason: "Founding mandate of the already-extensively-tracked Step-291 N-4 arc (files 1082-1084), and first primary-source confirmation of Step 290's actual executed corrections (G-67 withdrawal, join-semilattice downgrade, O/T-vs-≡ structural clarification). Classified importance critical and confidence high given the direct, exact, and previously-unverified connective grounding this provides for an already-extensively-tracked downstream arc."

@@ -1,0 +1,165 @@
+sequence: 536
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-134245_evidence-algebra-step-01-define-the-universe.md
+title: "LANDMARK: The Corpus's First Documented Executed Computational Experiment — a Ten-Case Evidence-Assessment Simulation (Downloadable CSV Artifact) Empirically Confirms Duplicate Invariance and Corroboration≠Duplication, Refutes DeepSeek's Aggregation Formula as Insufficient, Sharpens Monotonicity Into Contribution-Level-Monotonic-but-Assessment-Level-Non-Monotonic, and Yields a 'Structured Evidence Calculus + Pluggable Inference Mathematics' Architectural Resolution (DDD-Analogous: Domain Defines Invariants, Policy Implements Decisions)"
+date: "2026-08-27"
+bytes: 16179
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the file's second half ('# experiment') is written in the voice of an executing system reporting results of an actual run ('I ran the experiment as a small executable epistemic model... [Download the experiment results](sandbox:/mnt/data/knowledgeos_evidence_assessment_experiment.csv)'), the corpus's first documented use of an executed computational tool rather than purely discursive mathematics"
+source_role: PRIMARY_RESEARCH
+canonical_source: 536
+importance: critical
+confidence: high
+about: >
+  A landmark, twelve-step ground-up rebuild of Evidence Assessment theory ("Evidence Algebra Step 01 —
+  Define the Universe"), directly executing 0535's proposed test program, followed by the corpus's first
+  documented EXECUTED computational experiment against a concrete ten-case test universe with a downloadable
+  CSV artifact -- a genuine methodological escalation from discursive mathematics to a runnable simulation.
+
+  **Steps 1-7 rebuild the mathematical foundations cleanly**: the universe 𝒪(observations), 𝒫(propositions),
+  𝒞(contexts), ℛ(rules), with an evidential relation `e=(o,p,r,c,π,τ)` and `ℰ⊆𝒪×𝒫×ℛ×𝒞×Π×T` (Step 1);
+  polarity separated into a clean ternary `Polarity(e)∈{+,-,0}` (supports P / supports ¬P / neither),
+  explicitly keeping richer relation types like "qualifies"/"contextualizes" as metadata rather than
+  forcing them into this core calculus (Step 2); a quality vector `Q(e)=(q_R,q_Re,q_F,q_I,q_C)` with the
+  important correction that these need NOT be numbers -- categorical values like {Unknown,Low,Medium,High}
+  are acceptable, crystallized as `Quality≠Score`, "protects the theory from prematurely committing to
+  numerical confidence" (Step 3); a dependency graph `G_E=(V_E,L_E)` with typed edges (DerivedFrom,
+  ObservedFrom, CopiedFrom, InterpretedFrom, DependsOn) yielding the crucial `Independent(e_i,e_j,G_E)`
+  operation, "without this, aggregation is unsafe" (Step 4); a normalization operator `N:ℰ->ℰ*` that
+  identifies exact/semantic/derived duplicates, superseded observations, invalid provenance, irrelevant
+  evidence, and temporal incompatibilities, worked through a DB->LLM->Document copy-chain that must
+  collapse to dependent, not independent, evidence (Step 5); a clean assessment input tuple
+  `(E_P^+,E_P^-,G_E,C,ρ)->Assess_ρ->EA` (Step 6); and a non-collapsing output object
+  `EA=(S^+,S^-,U,D,Q,Γ)`, explicitly "not EA=0.87" (Step 7).
+
+  **Step 8 states five foundational laws** (Duplicate invariance, Independent corroboration, Contradiction
+  preservation, Context dependence, Policy dependence -- largely paralleling 0535's E1-E9 under an
+  independent "Law 1-5" numbering). **Step 9 delivers a genuinely sharper refinement of monotonicity**
+  beyond 0535's single Law E6: separate directional POSITIVE monotonicity (supporting evidence can only
+  increase or maintain `Support^+`) and NEGATIVE monotonicity (contradicting evidence can only increase or
+  maintain `Support^-`), each holding at the level of individual polarity contributions. **Step 10 then
+  delivers the file's sharpest new mathematical nuance**: the OVERALL Evidence Assessment may still be
+  NON-monotonic even while each individual polarity contribution remains monotonic -- adding contradicting
+  evidence can legitimately DECREASE the system's aggregate Support^+ for P under certain aggregation
+  policies ("the system has learned something contradictory"), crystallized as
+  `EvidenceAssessment may be non-monotonic` while individual polarity contributions stay monotonic -- a
+  precise distinction the corpus had not previously drawn this sharply.
+
+  **Step 11 formally rejects a tempting naive model**: `KnowledgeConfidence=ΣEvidenceScores` is shown to
+  violate multiple established principles (double-counting, hiding contradiction, losing provenance, making
+  incomparable evidence artificially comparable, confusing support with truth), replaced by
+  `Evidence->StructuredAssessment->PolicySpecificDecision`.
+
+  **Step 12 poses the file's central open mathematical problem and delivers a decisive architectural
+  resolution**: "What algebra should combine independent evidential contributions?" -- surveying six
+  candidate models (A: Ordinal, no arithmetic; B: Weighted vector with partial ordering; C: Numeric
+  support in [0,1] with an aggregation operator ⊕; D: Probability P(H|E); E: Belief/plausibility
+  (Dempster-Shafer, Bel/Pl); F: Hybrid). **Delivers the file's central architectural recommendation**:
+  **"Structured Evidence Calculus + Pluggable Inference Mathematics"** -- the core KnowledgeOS mathematics
+  defines Evidence, Provenance, Dependency, Polarity, Quality, Conflict, and Assessment, but explicitly
+  does NOT dictate one universal numerical aggregation theory; individual policies implement
+  `ρ_deterministic`, `ρ_bayesian`, `ρ_statistical`, `ρ_ruleBased`, etc. -- explicitly analogized to DDD:
+  "the domain defines the invariants; policies implement domain-specific decisions."
+
+  **Proposes and then EXECUTES a concrete ten-evidence test universe**, the corpus's first documented run
+  of an actual computational simulation (with a downloadable CSV result artifact), reporting six major
+  empirical findings: (1) Duplicate evidence -- an exact duplicate e_2 of e_1 does NOT increase the
+  assessment (`Assess({e_1})=Assess({e_1,e_2})`), confirming Duplicate Invariance empirically; (2)
+  Independent corroboration -- an independent monitoring-system observation e_3 genuinely increases
+  support (`Assess(e_1,e_3)>Assess(e_1)`), confirming `Corroboration≠Duplication`; (3) LLM-derived evidence
+  -- an LLM restatement e_4 explicitly recorded as derived from e_1 is correctly NOT counted as independent
+  corroboration, crystallized as "an LLM can generate another representation of knowledge without
+  generating another independent observation"; (4) Stale evidence -- an old document e_5 remains in the
+  evidence graph with diminished contribution due to low Currency, confirming `Stale≠Deleted` (historical
+  evidence remains part of provenance); (5) Irrelevant evidence -- an ADR e_6 mentioning Nexus but with
+  `Relevance(e_6,P)=0.05` contributes negligibly, confirming `Evidence existence≠Evidence relevance`; (6)
+  Contradictory evidence -- e_7 (version=3.70) against e_1 (version=3.69) causes the system to preserve
+  BOTH `Support(P)` and `Support(¬P)` simultaneously, producing a concrete structured output (P:3.69/
+  strong support; ¬P:3.70/substantial support; Conflict:ACTIVE; Resolution:OPEN) rather than silently
+  picking a winner.
+
+  **Delivers the file's central conclusion**: KnowledgeOS should NOT search for one universal function
+  `f(E)->[0,1]`; the fundamental object must remain the structured `A_ρ(E,P,C)->EA` (Support(P),
+  Support(¬P), Uncertainty, Conflict, Dependencies, Qualifications), with any scalar
+  `M_ρ(EA)∈[0,1]` an explicitly SECONDARY, policy-derived quantity.
+
+  **Delivers a genuinely important empirical discovery**: the experiment EXPOSES a concrete, necessary
+  pipeline ordering -- `Normalize ≺ DependencyAnalysis ≺ QualityAssessment ≺ Aggregation ≺ Inference` --
+  "this should become an architectural invariant," vividly illustrated via a
+  Database->LLM->Report->ManagerPresentation chain that LOOKS like four sources but is epistemically ONE
+  underlying observation with three transformations. Formalizes the resulting five-stage core pipeline
+  (`N(E)=E*`, `D(E*)=G_E`, `Q(E*,G_E,P,C,ρ)`, `A_ρ(E*,G_E,P,C)->EA`, `I(EA,R,C)->Conclusion`).
+
+  **Delivers "the laws that survived the experiment" -- an eight-item E-1..E-8 list** (Duplicate Invariance,
+  Corroboration, Dependency Preservation, Contradiction Preservation, Context Relativity, Policy
+  Relativity, Assessment≠Truth, Assessment≠Conclusion) -- a THIRD independent axiom-numbering convention
+  within this single file (alongside its own earlier "Step 8" Laws 1-5 and 0535's E1-E12).
+
+  **Closes with an important honest admission**: the executed experiment used a SPECIFIC, ad hoc formula
+  (`s(e)=Reliability×Relevance×Currency×Independence` with a saturating aggregation
+  `1-∏(1-s_i)` -- itself a THIRD distinct aggregation formula in the corpus, differing from both 0534's
+  logarithmically-dampened sum and any prior proposal) that are "reasonable engineering choices" but "not
+  derived from our theory" and explicitly "must not freeze them." Names the remaining question -- what
+  algebra, if any, should KnowledgeOS use to combine independent evidence (Max, Weighted Mean,
+  Probabilistic, Bayesian, Dempster-Shafer, Ordinal, or hybrid) -- and proposes the corpus's next concrete
+  research step: systematically test each candidate algebra against the full accumulated law set (duplicate
+  invariance, corroboration, dependency, contradiction, monotonicity, non-double-counting, irrelevance,
+  evidence removal, policy changes, context changes, reproducibility) to move from "a plausible evidence
+  model" to "a formally tested evidence calculus suitable for implementation in KnowledgeOS."
+introduces:
+  - concept: "The corpus's first documented EXECUTED computational experiment: a ten-case evidence-assessment simulation with a downloadable CSV result artifact, rather than purely discursive mathematics"
+  - concept: "A sharper monotonicity/non-monotonicity distinction: individual polarity contributions remain monotonic (positive monotonicity for supporting evidence, negative monotonicity for contradicting evidence), while the OVERALL Evidence Assessment may legitimately be non-monotonic as new contradicting evidence arrives"
+  - concept: "Formal rejection of KnowledgeConfidence=ΣEvidenceScores as violating double-counting, contradiction-hiding, provenance-loss, incomparability, and support/truth-confusion principles simultaneously"
+  - concept: "Six named candidate evidence-combination algebras (Ordinal, Weighted vector, Numeric support with an aggregation operator, Probability, Belief/plausibility/Dempster-Shafer, Hybrid), posed as the corpus's central remaining open mathematical question"
+  - concept: "'Structured Evidence Calculus + Pluggable Inference Mathematics' as the corpus's architectural resolution: the domain (core KnowledgeOS mathematics) defines invariants (Evidence/Provenance/Dependency/Polarity/Quality/Conflict/Assessment), while pluggable policies (deterministic/Bayesian/statistical/rule-based) implement domain-specific aggregation decisions — explicitly analogized to DDD's domain/policy separation"
+  - concept: "Empirically confirmed via simulation: Duplicate Invariance, Corroboration≠Duplication, an LLM restatement correctly excluded from independent corroboration when its dependency is recorded, Stale≠Deleted, Evidence existence≠Evidence relevance, and simultaneous preservation of Support(P) and Support(¬P) under contradiction"
+  - concept: "The empirically-discovered necessary pipeline ordering Normalize≺DependencyAnalysis≺QualityAssessment≺Aggregation≺Inference, illustrated via a Database->LLM->Report->ManagerPresentation chain that looks like four sources but is epistemically one underlying observation with three transformations"
+  - concept: "Honest admission that the executed experiment's specific aggregation formula (a third distinct formula in the corpus, using a saturating 1-∏(1-s_i) combination) is an engineering choice, not a theoretically derived result, and must not be frozen"
+defines:
+  - concept: "Evidential relation (e, foundational form)"
+    definition: "e=(o,p,r,c,π,τ) with o∈𝒪, p∈𝒫, r∈ℛ, c∈𝒞, provenance π, temporal information τ — the atomic mathematical object of the Evidence Algebra"
+  - concept: "Polarity(e)"
+    definition: "A ternary value ∈{+,-,0} indicating whether an evidential relation supports P, supports ¬P, or does neither directly — the core calculus's minimal relation vocabulary, with richer relation types (qualifies, contextualizes) kept as separate metadata"
+  - concept: "Positive/Negative monotonicity (directional, contribution-level)"
+    definition: "Support^+(E∪{e})≥Support^+(E) if e supports P (subject to e not being invalidated/superseded); symmetrically for Support^- and ¬P — holding at the level of individual polarity contributions even when the overall aggregate assessment is non-monotonic"
+refines:
+  - concept: "0535's twelve-law axiomatic test suite (E1-E12) and its proposed twelve-scenario stress-test protocol"
+    refinement: "Directly executed against a concrete ten-case evidence universe via an actual computational simulation, empirically confirming several laws (duplicate invariance, corroboration≠duplication, dependency preservation, contradiction preservation) and sharpening the monotonicity law into a two-level (contribution-monotonic vs. assessment-non-monotonic) distinction"
+  - concept: "0534's Part 3 aggregation formula (WeightedStrength product, logarithmically-dampened sum) and 0535's falsification of it via the duplication test"
+    refinement: "Confirmed insufficient as the sole KnowledgeOS calculus via direct simulation; a third distinct ad hoc aggregation formula is tried in the experiment itself and explicitly flagged as an unfrozen engineering choice, motivating the six-candidate-algebra survey and pluggable-policy architecture"
+  - concept: "0532's four-outcome admission function and evidence-dependency-graph mechanism"
+    refinement: "Given a concrete, typed dependency-graph edge vocabulary (DerivedFrom, ObservedFrom, CopiedFrom, InterpretedFrom, DependsOn) and demonstrated empirically via the DB->LLM->Report->Manager-presentation collapse-to-one-observation example"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Reconcile the now FOUR independent axiom/law-numbering conventions across the corpus's Evidence-theory files: 0533's EVD-1..11, 0534's EVD_1..14, 0535's E1..E12, and this file's own two internal numbering schemes (Step-8 Laws 1-5, and the post-experiment E-1..E-8 list)"
+  - "Trace whether the proposed next research step (systematically comparing the six candidate evidence-combination algebras against the full accumulated law set) is executed in a subsequent corpus file"
+  - "Locate whether the downloadable CSV artifact referenced (sandbox:/mnt/data/knowledgeos_evidence_assessment_experiment.csv) or its underlying code is preserved anywhere else in the corpus or its adjacent research directories"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the corpus's first documented executed computational experiment (a ten-case evidence-assessment simulation with a CSV artifact), and its six empirical findings (duplicate invariance, corroboration≠duplication, LLM-dependency correctly excluded, stale≠deleted, existence≠relevance, simultaneous Support(P)/Support(¬P) preservation under contradiction)."
+  - "dimension-registry.md: record the sharpened monotonicity distinction (contribution-level monotonic, assessment-level potentially non-monotonic), the rejection of KnowledgeConfidence=ΣEvidenceScores, and the six named candidate evidence-combination algebras (Ordinal/Weighted-vector/Numeric/Probability/Belief-plausibility/Hybrid)."
+  - "dimension-registry.md: record the 'Structured Evidence Calculus + Pluggable Inference Mathematics' architectural resolution (DDD-analogous domain/policy split), the empirically-discovered necessary pipeline ordering (Normalize≺DependencyAnalysis≺QualityAssessment≺Aggregation≺Inference), and the honest admission that the experiment's specific aggregation formula is an unfrozen engineering choice."
+anchor_test:
+  anchor: "0535's E1-E12 laws and stress-test proposal; 0534's aggregation formula and its falsification; 0532's dependency-graph mechanism"
+  supports_dimension: "LANDMARK: the corpus's first documented executed computational experiment, directly fulfilling 0535's proposed stress-test methodology against a concrete ten-case evidence universe with a downloadable result artifact — empirically confirming Duplicate Invariance and Corroboration≠Duplication, sharpening monotonicity into a two-level (contribution-monotonic/assessment-non-monotonic) distinction, formally rejecting the naive ΣEvidenceScores model, exposing a necessary five-stage pipeline ordering, and resolving the corpus's central remaining Evidence-theory question via a DDD-analogous 'Structured Evidence Calculus + Pluggable Inference Mathematics' architecture rather than committing prematurely to one aggregation algebra"
+  refines_or_contradicts: "directly executes and empirically validates several of 0535's E1-E12 laws; reconfirms 0535's falsification of 0534's aggregation formula via independent simulation evidence; introduces a third distinct axiom-numbering convention requiring reconciliation alongside the corpus's existing EVD/E numbering schemes; no substantive contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The referenced downloadable CSV artifact and the explicit phrase 'I ran the experiment as a small executable epistemic model' constitute direct documentary evidence that an actual computational tool was invoked and produced concrete output data, a qualitatively different form of evidence from the corpus's otherwise purely discursive/formal mathematical argumentation."
+  - "The six numbered experimental findings each report a specific, checkable outcome (e.g. Assess({e_1})=Assess({e_1,e_2}) for the duplicate case) rather than a general assertion, giving this file unusually strong empirical grounding relative to the rest of the corpus's theoretical work."
+undefined_concepts: []
+open_questions:
+  - "Whether the corpus's next file executes the proposed systematic comparison of the six candidate evidence-combination algebras against the full law set"
+  - "Whether the underlying code/CSV artifact for this experiment survives anywhere in the corpus's adjacent directories, enabling direct inspection of the executed simulation"
+  - "How the corpus's now four independent axiom/law-numbering schemes for Evidence theory (0533 EVD-1..11, 0534 EVD_1..14, 0535 E1..E12, this file's Step-8 Laws 1-5 and post-experiment E-1..E-8) should ultimately be reconciled into one canonical list"
+tier2_triggered: true
+tier2_reason: "LANDMARK file marking the corpus's first documented shift from purely discursive/formal mathematics to an actually EXECUTED computational experiment (a ten-case evidence-assessment simulation with a downloadable CSV artifact), directly fulfilling 0535's proposed stress-test methodology. Delivers six concrete, checkable empirical findings validating and sharpening the corpus's evidence-assessment laws (most notably a genuinely new two-level monotonicity distinction and the LLM-dependency-exclusion finding), formally rejects a naive additive confidence model, exposes and formalizes a necessary five-stage processing pipeline ordering discovered empirically rather than merely asserted, and resolves the corpus's central open Evidence-theory question (which aggregation algebra to use) via a clean, DDD-analogous architectural principle — separating invariant domain mathematics from pluggable, policy-specific inference algebras — rather than prematurely committing to one formula."

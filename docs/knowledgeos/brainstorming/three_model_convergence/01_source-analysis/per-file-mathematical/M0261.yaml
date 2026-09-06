@@ -1,0 +1,88 @@
+sequence: M0261
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-114000_theory-08-contradiction-and-evaluation-structure.md
+title: "Theory 08 — Contradiction, Evaluation Structure, Composition, Factivity: the 'other lane' of the programme (explicitly KR-ZERO⊥KR-REP-REDUCTION), consolidating the much-earlier Contradiction/Composition/Factivity thread into final form — reframes the contradiction problem as actually a boundary/unknown problem, corrects an overclaim ('reason is the sole indispensable field'), answers the reason-expressivity objection directly, delivers a new witness-construction methodological finding ('the separating witness must have NO internal conflict'), and names DECISION-02 (is φ a frame or a partition?) as 'the single largest open governance item in the lane'"
+date: "20260904-114000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0261
+importance: critical
+confidence: high
+about: >
+  Document 08 of the 15-document consolidated theory series, explicitly self-identified as "the
+  other lane of the programme," governed separately from documents 03-07 (KR-ZERO⊥KR-REP-
+  REDUCTION). Consolidates the much-earlier Contradiction/Composition/Factivity research thread
+  (KR-CONTR-MODELS/EVAL/FDE, KR-COMP, KR-COMP-SEP, DECISION-01, DECISION-02, the factivity
+  adjudication) into its final rigorously-tagged form, with several genuine refinements: a crisper
+  reframing that the apparent contradiction problem is actually a boundary/unknown problem, a
+  corrected overclaim about reason's indispensability, a direct answer to the reason-expressivity
+  objection, a new witness-construction methodological principle, and a clear naming of DECISION-02
+  as the single largest open blocking governance item in this lane.
+introduces:
+  - "The final, crisply reframed negative result: 'KnowledgeOS requires four-valued logic' is NOT supported — flat candidates A/B/C fail the SAME SEVEN required distinctions, and their common failure lies in the unknown/boundary family, NOT in contradiction at all — 'the problem that looked like a contradiction problem is a boundary/unknown problem'"
+  - "A corrected overclaim, explicitly labeled as a correction 'by measurement, not by rewording': the original claim 'reason is the sole indispensable field' was too strong — corrected to 'a structured reason/boundary component is indispensable within the tested candidate representation language'"
+  - "A crisp, generalizable epistemic principle: 'minimum flat cardinality depends on the declared required-distinction set. There is no context-free answer to \"how many truth values do we need\"; the question is ill-posed without the distinction set'"
+  - "A new [PRP]-tagged required candidate invariant: Contr≠Satisfied — explicitly stated separately rather than assumed to follow from interface tests, because Candidate C can map contradiction to Satisfied while passing tests I1-I5"
+  - "The final cardinality-is-the-wrong-axis framing for KR-CONTR-EVAL: the structural requirement grew the state space from χ=3 to χ=21, but 'the finding is not \"we need 21 values.\" It is that cardinality is the wrong axis. Adding flat values does not buy the distinctions; adding structure does'"
+  - "A direct, previously-unrecorded answer to the reason-expressivity objection: 'a trivial Reason(x)=x would make reason is indispensable vacuous. It was tested — reason takes 10 values in the tested language, and the finding survives factorization' — closing a real methodological gap that could otherwise have made the reason-indispensability finding empty"
+  - "A three-witness composition-elimination table for KR-COMP-SEP: W1 (the commissioned witness shape) unexpectedly ELIMINATES last-wins (a C1 failure on all six surviving triples) instead of separating the three candidate rules as intended; W2 (the actual separator) separates majority from intraframe-only; C6 order-invariance eliminates last-wins a SECOND, independent time"
+  - "A new witness-construction methodological principle: 'adding internal conflict to a witness DESTROYS the separation rather than creating it. The two surviving rules differ only in what they do when NO frame conflicts internally — exactly the case the commissioned shape excludes by construction. The separating witness must have NO internal conflict'"
+  - "Two further reasons last-wins is eliminated: it reports W1 as negative-support rather than conflict (reads only the last frame, discards the internally-contradictory one entirely); and it is not well-defined on the evidence set because its output depends on enumeration order — 'a composition rule must be a function of the evidence set, not of its listing'"
+  - "A specific detail on the factivity repair: 'an earlier evaluator returned T for uninterpreted/theory-incomplete states, which was a defect and unfair to the competing candidate. The strengthened evaluator carries an explicit evaluator_exists flag'"
+  - "The two standing decisions given their final register status: DECISION-01 RATIFIED (semantic evaluation must be invariant under non-evidential variation; C6/C7 are instances), with the rank-convention result explicitly re-confirmed as NOT a further instance (21,369 tie violations, per Document 06); and DECISION-02 explicitly named as 'the single largest open governance item in the lane' — Is φ a semantic evaluation frame, or an evidence partition? [OPEN], blocking both the composition rule and the δ transition — 'nothing downstream of it may be settled by inference from the experiments — the experiments constrain it, they do not decide it'"
+defines: []
+refines:
+  - "M0116-M0132's much earlier Contradiction/Composition/Factivity findings: consolidated here into final tagged form, with a sharper contradiction-is-a-boundary-problem reframing, a corrected reason-indispensability claim, a resolved reason-expressivity objection, and a new witness-construction principle for composition-rule elimination"
+contradicts:
+  - "The original overclaim 'reason is the sole indispensable field': explicitly corrected as too strong"
+  - "The commissioned W1 witness shape's ability to separate the three composition rules as originally intended: explicitly shown to eliminate a rule outright instead"
+repeats:
+  - "The already-established rank-convention/DECISION-01 non-instantiation (M0231/M0232, Document 06's 21,369 tie violations), restated here as part of this lane's final register"
+bridge_candidates:
+  - "Whether DECISION-02 (is φ a frame or a partition?) was ever resolved — it is explicitly named the single largest open blocking governance item in this lane"
+mathematical_content: >
+  A final consolidated contradiction/evaluation-structure/composition/factivity apparatus: the
+  cardinality-is-the-wrong-axis finding; a resolved reason-expressivity objection; a witness-
+  construction principle for composition-rule elimination (no internal conflict); a required
+  Contr≠Satisfied invariant; the two standing decisions (DECISION-01 ratified, DECISION-02 open and
+  blocking).
+gita_content: null
+kernel_content: >
+  Consolidates the Factivity decision (K_t→A_t, Knows→True external/factive, Verification separate)
+  already established elsewhere in the corpus, now with a specific factivity-repair defect detail
+  (evaluator_exists flag).
+registry_updates:
+  - "Corrected reason-indispensability claim (structured reason/boundary component indispensable, not 'the sole indispensable field')"
+  - "Resolved reason-expressivity objection (reason takes 10 values, not a trivial identity, finding survives factorization)"
+  - "New witness-construction principle: the separating witness must have no internal conflict"
+  - "New [PRP] required invariant: Contr≠Satisfied"
+  - "DECISION-02 named the single largest open blocking governance item in this lane"
+anchor_test:
+  anchor: true
+  supports_dimension: "Cardinality-is-the-wrong-axis finding; resolved reason-expressivity objection; witness-construction no-internal-conflict principle; Contr≠Satisfied required invariant; DECISION-02 as the largest open blocking governance item"
+  refines_or_contradicts: "refines (the much-earlier KR-CONTR/KR-COMP/factivity findings, given final tagged consolidation and several genuine corrections); contradicts (the original 'reason is the sole indispensable field' overclaim; the commissioned W1 witness's intended separating role)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"The problem that looked like a contradiction problem is a boundary/unknown problem.\""
+  - "\"Adding flat values does not buy the distinctions; adding structure does.\""
+  - "\"Adding internal conflict to a witness DESTROYS the separation rather than creating it... the separating witness must have NO internal conflict.\""
+  - "\"This is the single largest open governance item in the lane.\""
+undefined_concepts: []
+open_questions:
+  - "Was DECISION-02 (is φ a frame or a partition?) ever resolved?"
+tier2_triggered: true
+tier2_reason: >
+  Consolidates the much-earlier Contradiction/Composition/Factivity thread into its final
+  rigorously-tagged form with several genuine refinements — a sharper contradiction-as-boundary-
+  problem reframing, a corrected overclaim, a resolved reason-expressivity objection, a new
+  witness-construction methodological principle, and DECISION-02 clearly named as the largest open
+  blocking governance item in this lane — core reference material for this consolidated theory
+  series.

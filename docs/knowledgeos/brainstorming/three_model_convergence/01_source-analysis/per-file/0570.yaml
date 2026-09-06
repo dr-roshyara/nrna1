@@ -1,0 +1,274 @@
+sequence: 570
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-181041_knowledgeos-historical-experimental-knowledge-extraction.md
+title: "LANDMARK — FIRST EXPLICIT SESSION-HANDOVER/KNOWLEDGE-TRANSFER ARTIFACT IN THE CORPUS: A New Session Explicitly Lacking the Full Prior Transcript Reconstructs the Recoverable KnowledgeOS Theory Under Rigorous Epistemic-Status Tagging ([ESTABLISHED]/[PROPOSED]/[UNRESOLVED]/[REJECTED]/[EXPERIMENTAL]/[ASSUMED]/[CONTRADICTORY]/[MISSING]) — a Real-World Instance of the Exact Cross-Session Knowledge-Continuity Problem KnowledgeOS Itself Is Designed to Solve; Delivers an Eighteen-Item Cross-Cutting Property Registry (P01-P18), a Ten-Item Rejected-Shortcuts List, a Categorized Unresolved-Questions Backlog, a Hidden-Assumptions-to-Test Table, and a Minimum Experimental Type/Operator Set; Closes 'READY FOR EXPERIMENT' — Not 'THEORY PROVEN,' Not 'PRODUCTION ARCHITECTURE FINISHED'"
+date: "2026-08-27"
+bytes: 24316
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "an explicit session/model-handover document ('Historical Experimental Knowledge Extraction'), written by a session that states it does not possess the full prior transcript, reconstructing the KnowledgeOS theory from recoverable context under rigorous epistemic-status tagging, immediately following 0569's roadmap freeze"
+source_role: PRIMARY_RESEARCH
+canonical_source: 570
+importance: critical
+confidence: high
+about: >
+  Opens with an extraordinary and structurally unique methodological admission: "I treated the uploaded
+  specification as the governing extraction brief. It explicitly requires that we distinguish established,
+  proposed, assumed, experimental, rejected, unresolved, contradictory, and missing knowledge, and that we
+  do not silently repair the old theory" (with an inline file-citation marker, `fileciteturn99file0L19-
+  L43`, indicating this was produced by an AI tool with document-citation capability referencing an
+  uploaded governing brief). Delivers the file's central limitation statement: **"I do not have the
+  complete old transcript as a searchable historical corpus in this session. I therefore cannot honestly
+  claim a lossless extraction of every equation and every rejected idea. What follows is the maximum
+  source-grounded transfer I can reconstruct from the recoverable conversation/context, with gaps
+  explicitly marked."**
+
+  **This is the FIRST explicit session-handover / cross-session knowledge-transfer artifact encountered
+  anywhere in this reconstruction's reading of the corpus** -- a genuinely novel document TYPE distinct
+  from every prior "Step N" theoretical-construction file. It is a real, concrete, in-the-wild instance of
+  precisely the cross-session knowledge-continuity problem that KnowledgeOS's own theory (Steps 16, 19, 22,
+  23) was built to formally solve: a knowledge-bearing agent (here, an AI assistant session) losing direct
+  access to its own prior epistemic history and being forced to reconstruct a governed, honestly-labeled
+  partial knowledge state from recoverable fragments rather than silently inventing or "repairing" gaps --
+  of significant, direct relevance to this reconstruction's own three-model-convergence mandate and its own
+  MD-017 discipline against silently converting hypothesis into certainty.
+
+  **Self-identifies its position in the corpus's own step sequence**: "Handover point: Step 25A.1. Next
+  objective: Minimal Formal State and Type System. Method: Senior Mathematics + Statistics + Principal
+  Architecture + DDD. Mode: Experimental falsification, not conceptual expansion" -- confirming this
+  continues directly from 0568's "Step 25A" and 0569's roadmap, adopting the finer "Step 25A.1" sub-
+  numbering for the first concrete deliverable (a minimal formal state/type system) within the newly-
+  renumbered Step 25.
+
+  **Delivers a full re-derivation of the corpus's conceptual evolution and fundamental epistemic model**,
+  each explicitly tagged `[ESTABLISHED]`: the transition from "how does an AI obtain information?" to "what
+  constitutes knowledge, how is it justified, how does it change, and when is it sufficient for a purpose?";
+  the foundational `WorldState≠KnowledgeState` separation (`S_t≠K_t`); knowledge evolution
+  `K_{t+1}=T_K(K_t,E_new,Rules,Context)` and historical reconstruction `K_t=Fold(K_0,e_1,...,e_t)`; the
+  explicit rejection of knowledge monotonicity (`K_t⊆K_{t+1}` is NOT a universal invariant); and temporal
+  hindsight-contamination protection (a decision at `t_0` must reference `K_t0`, not later knowledge).
+
+  **Delivers a re-derived Evidence Architecture pipeline** `Source→Artifact→Observation→Evidence→
+  Assessment→Assertion→Knowledge`, each stage defined, with an explicit `[UNRESOLVED]` flag on the exact
+  mathematical predicates for `Observation→Evidence` and `Assertion→CommittedKnowledge` -- honestly marking
+  genuine gaps rather than presenting the theory as fully closed. **Delivers a consolidated list of
+  seventeen core `[ESTABLISHED]` distinctions** (Knowledge≠Evidence, Evidence≠Source, Knowledge≠Reality,
+  Observation≠Evidence, Evidence≠Truth, Probability≠Truth, Confidence≠Sufficiency, Completeness≠
+  Sufficiency, Decision≠Authorization, Authorization≠Execution, Lineage≠Causality, TemporalOrder≠
+  Causality, Authenticity≠Authority, Integrity≠Truth, LLMOutput≠CommittedKnowledge, MoreKnowledge⇏
+  MoreReadiness, and the requirement that conflicting evidence and owner decisions be preserved and
+  presented, never erased).
+
+  **Delivers a re-derivation of KnowledgeState as "still the critical open area"**: explicitly `[UNRESOLVED]`
+  are ten precise questions the next session must answer (is K a set of assertions or a graph? are
+  assessments/conflicts part of K? is provenance embedded or referenced? is temporal validity inside or
+  outside assertions? what defines equality of two KnowledgeStates? what is minimally needed to reconstruct
+  `K_t`? what is immutable versus revisable? what is the canonical serialization?) -- explicitly stated
+  "these should not be guessed."
+
+  **Delivers honestly-tagged re-derivations of Uncertainty** (`[PROPOSED]` Bayesian updating NOT established
+  as the universal inference mechanism; open reliability model, evidence dependence, measurement error,
+  missing data, competing hypotheses, calibration questions) and **Causal Reasoning** (`[ESTABLISHED]`
+  `TemporalBefore⇏CausedBy`; `[PROPOSED]` do-calculus and causal graphs; `[UNRESOLVED]` full causal
+  semantics explicitly deferred to a later stage, with Step 25A required only to REPRESENT causal
+  hypotheses, not solve causal inference).
+
+  **Delivers re-derived, honestly-qualified Zero/Lord/Sārathi formulations** matching 0566's corrected
+  signatures (`Zero(K,G,I)→Δ`, `Lord(K,Δ,G,C)→CandidateActions`, `Sārathi(K,G,A,C,Π)→
+  DecisionRecommendation`), each with explicit `[UNRESOLVED]` tags on their exact internal mathematical
+  structure (the structure of `Δ`; the exact action-space mathematics; the absence of any frozen universal
+  decision function). **Delivers a re-derived Epistemic Sufficiency section** (`[ESTABLISHED]`
+  `Sufficient(K,P,C,t)`, no useful `Complete(K,Reality)` predicate, `EpistemicContract(P)`), Knowledge
+  Requirements with a `[PROPOSED]` (not established) weighted-coverage formula explicitly distinguished from
+  readiness, the three-level readiness taxonomy, Minimum Sufficient Knowledge, and Epistemic Gap
+  `Gap(K,P)=R(P)-Satisfied(K)`.
+
+  **Delivers Provenance/Lineage/Causal graph separation** (`ProvenanceGraph≠LineageGraph≠CausalGraph`),
+  Governance chain re-derivation (`Recommendation→Decision→Authorization→Execution`), and Human-AI Boundary
+  re-derivation (`LLMOutput≠Knowledge`, `LLMOutput≠Authority`, "foundational for KnowledgeOS").
+
+  **Delivers a re-derived Nexus experimental domain specification**, listing concrete recoverable
+  infrastructure facts (Nexus OSS 3.69.0, on-premises, ~256GB data, 43 repositories, 40 blob stores, RHEL
+  9.8, 8 vCPU, 31GB RAM, rootless Podman, nexus3.dgverlag.de, 10.61.133.85, port 8081) explicitly labeled
+  "historical context, not newly verified facts in this session" -- itself a careful epistemic-status
+  distinction consistent with the file's own governing discipline. **Delivers a consolidated eleven-row
+  Adversarial Nexus Test table** (contradictory version/stale evidence/identity ambiguity/duplicate
+  evidence/LLM hallucination/missing rollback/failed rollback test/missing approval/execution failure/
+  causal ambiguity/retraction), directly consolidating 0568's much longer adversarial test design into a
+  compact reference table for the next session.
+
+  **Delivers the file's explicit re-emphasis of the single most important prior experimental insight**:
+  the Rollback=Unknown→Rollback=False test demonstrating `KnowledgeGain≠GoalProgress` and
+  `MoreKnowledge⇏MoreReadiness`, explicitly flagged "this should become an explicit reference test" --
+  directly reconfirming 0568's central novel finding and elevating it to canonical reference-test status
+  for all future verification work.
+
+  **Delivers the file's central formal deliverable -- a ten-item Rejected Shortcuts list**, each tagged
+  `[REJECTED]` and explicitly forbidden from reintroduction in the next session: `LLMOutput=Truth`;
+  `LLMOutput=CommittedKnowledge`; `Confidence=Readiness`; `Completeness=Sufficiency`;
+  `TemporalOrder=Causality`; `Recommendation=Authorization`; `Authorization=Execution`; silent conflict
+  removal; summary replacing original evidence; universal claim of complete knowledge of reality -- this is
+  the corpus's first explicit "forbidden shortcuts" list as its own distinct artifact type, complementing
+  (not duplicating) the many positive invariant lists (A/U/D/S/I-P-L-C-T-H/C1-C20/etc.) scattered across
+  the prior arc by instead cataloging what must NOT be reintroduced.
+
+  **Delivers a categorized Major Unresolved Questions backlog across seven domains** (Mathematical:
+  exact KnowledgeState/Evidence structure, assessment function, evidence-aggregation algebra, conflict
+  algebra, revision operator, discrepancy mathematics, knowledge-state equality/identity, formal sufficiency
+  predicate; Statistical: reliability model, evidence dependence, Bayesian-vs-alternative inference, missing
+  data, measurement uncertainty, calibration; Causal: graph representation, intervention semantics,
+  counterfactual semantics, confounding; DDD: aggregate boundaries, value objects, entity ownership,
+  bounded contexts, context mappings; Architecture: kernel boundary, persistence model,
+  deterministic-vs-AI-assisted operations, event/state representation; Computational: complexity,
+  scalability, termination, infinite investigation loops, graph traversal complexity; Governance: authority
+  representation, override semantics, policy conflict, human approval boundaries) -- explicitly framed as
+  "the experimental backlog," the corpus's most complete single consolidated open-questions inventory to
+  date.
+
+  **Delivers a ten-row Hidden Assumptions to Test table**, each paired with its concrete failure
+  consequence if the assumption proves false (e.g. "time can be represented"→"historical reasoning fails";
+  "AI output can remain candidate material"→"hallucinations become knowledge"; "investigation can
+  terminate"→"infinite epistemic loop") -- explicitly labeled "assumptions to test, not facts," a
+  distinctively rigorous scientific-method framing not previously delivered in exactly this tabular
+  assumption/consequence form anywhere in the prior arc.
+
+  **Delivers a Minimum Experimental Kernel**: a candidate minimal type set of twenty-one named types
+  (WorldState, KnowledgeState, Event, Entity, Source, Artifact, Observation, Evidence, Assertion,
+  Assessment, Goal, IdealState, KnowledgeRequirement, EpistemicContract, Discrepancy, CandidateAction,
+  Decision, Authorization, Action, Outcome, Provenance), explicitly flagged `[EXPERIMENTAL]` and required
+  to be challenged rather than assumed correct -- "the objective is to discover the smallest model capable
+  of representing the complete first experiment." Delivers a Minimum Operators list, deliberately
+  sequenced into two tiers (foundational: observe/register_evidence/assess/commit_assertion/
+  revise_knowledge/evaluate_sufficiency/trace; only then: find_discrepancy/generate_candidate_actions/
+  evaluate_decision/authorize/execute/observe_outcome) -- explicitly designed "to prevent us from building
+  Zero, Lord and Sārathi on top of an undefined state model," a concrete methodological safeguard against
+  premature abstraction.
+
+  **Delivers the file's central formal deliverable -- an eighteen-item cross-cutting Experimental Property
+  Registry (P01-P18)**, each tagged with an honest historical status (`[ESTABLISHED]` or `[PROPOSED]`, none
+  claimed `[VERIFIED]`): P01 WorldState≠KnowledgeState; P02 historical knowledge reconstructable; P03
+  duplicate evidence handled idempotently [PROPOSED]; P04 conflict remains representable; P05 unknown
+  cannot silently become known; P06 LLM output cannot directly become committed knowledge; P07 provenance
+  remains traceable; P08 temporal order does not imply causality; P09 recommendation does not authorize
+  execution; P10 missing critical requirements block readiness; P11 retraction triggers dependency analysis
+  [PROPOSED]; P12 more information can reduce readiness; P13 historical decisions use historical knowledge;
+  P14 summary does not replace source evidence; P15 investigation has a stopping condition; P16 statistical
+  probability does not equal truth; P17 absolute completeness is not claimed; P18 outcomes feed new
+  observations/evidence -- with the crucial, explicitly stated caveat: **"Important: 'Established' means
+  established as a theoretical principle in the historical discussion. It does NOT mean experimentally
+  verified."** This P01-P18 registry is a genuinely NEW, distinct invariant-numbering scheme (yet another
+  instance of the corpus's proliferating independently-numbered invariant sets, now numbering well over a
+  dozen across this sustained research program), though its honest verified/unverified distinction makes it
+  qualitatively different in kind from the "frozen invariant" schemes (C1-C20, A1-A15, etc.) delivered
+  earlier in the arc.
+
+  **Delivers a consolidated seventeen-node conceptual Dependency Graph** (State Model→Evidence→Assessment
+  →Assertion→KnowledgeState→Epistemic Contract→Sufficiency→Discrepancy→Candidate Actions→Decision→
+  Governance→Authorization→Execution→Outcome→Observation→Knowledge Revision), with five named cross-cutting
+  concerns (Identity, Temporal Model, Provenance, Uncertainty, Governance) each mapped to the specific
+  downstream nodes they affect -- the corpus's most compact, complete single dependency-graph summary of
+  the entire theoretical architecture to date.
+
+  **Delivers the file's central self-assessment -- "What Is Actually Proven?"**, explicitly separating
+  `[ESTABLISHED CONCEPTUALLY]` items (a coherent distinction set, a plausible closed epistemic-operational
+  loop, a purpose-relative sufficiency model, a temporal knowledge concept, a governance boundary, a
+  candidate DDD decomposition) from a longer, pointed `[NOT YET VERIFIED]` list (KnowledgeState algebra
+  consistency, evidence-aggregation consistency, revision completeness, invariant enforceability, whether
+  Zero is mathematically sufficient, whether Lord's action generation is well-defined, whether Sārathi's
+  decision semantics are complete, whether the whole loop terminates, whether the model scales) --
+  "that is exactly why Step 25A exists," directly reconfirming and sharpening 0566's/0568's/0569's
+  progressively more explicit conceptual-vs-computational-verification distinction.
+
+  **Delivers explicit onboarding instructions for the next session**, split into "Must Know" (thirteen
+  numbered items -- start at Step 25A.1, do not restart the theory, do not silently improve definitions,
+  treat historical status explicitly, keep WorldState/KnowledgeState separate, preserve contradictions/
+  temporal history/provenance, keep LLM output separate from committed knowledge, keep recommendation/
+  decision/authorization/execution separate, treat sufficiency as purpose-relative, represent unknown
+  explicitly, test rather than assume computability), "Should Know" (eight items -- Nexus is the first
+  realistic domain; Zero/Lord/Sārathi roles; epistemic vs. world-changing actions; new knowledge can reduce
+  goal achievability; retraction requires dependency analysis; causal reasoning is separated from temporal
+  ordering), "Useful Historical Context" (a one-paragraph summary of the broader AI Engineering/KnowledgeOS
+  program this work belongs to), and "Deliberately Unknown" (eight items explicitly NOT to be prematurely
+  decided -- exact KnowledgeState/Evidence algebra, exact statistical/causal framework, exact ontology,
+  exact aggregate boundaries, exact persistence architecture, exact production technology).
+
+  **Delivers the file's central deliverable for continuity -- an exact starting instruction for the next
+  session**, a single boxed directive quoted verbatim, explicitly instructing the next session to continue
+  from Step 25A.1 using this document as the historical boundary, not restart or redesign the theory, act
+  under the same four-role persona (Senior Mathematician/Statistician/Principal Architect/DDD Architect),
+  define the smallest formal state and type system for an executable reference model, and mark every
+  definition with one of eight named epistemic-status tags
+  (`[ESTABLISHED]/[PROPOSED]/[ASSUMED]/[EXPERIMENTAL]/[REJECTED]/[UNRESOLVED]/[CONTRADICTORY]/[MISSING]`)
+  -- explicitly naming "Step 25A.1 — Minimal Formal State" as the concrete next deliverable, required to
+  begin with state and type definitions, NOT with Zero, Lord, or Sārathi.
+
+  **Delivers Step 25's final handover assessment table**, a compact status summary across thirteen
+  dimensions (Conceptual model: Substantially developed; Core distinctions: Established; Temporal model:
+  Conceptually established; Evidence pipeline: Conceptually established; Epistemic sufficiency:
+  Conceptually established; Zero/Lord/Sārathi: Conceptually established; Governance boundary: Established
+  conceptually; Executable semantics: **Not yet verified**; Statistical formalism: **Incomplete**; Causal
+  formalism: **Incomplete**; DDD decomposition: **Not yet verified**; Computational complexity: **Not yet
+  established**; Production architecture: **Intentionally postponed**), concluding with the file's
+  strongest and most epistemically honest final verdict in the entire arc: **"READY FOR EXPERIMENT" --
+  not "THEORY PROVEN" and certainly not "PRODUCTION ARCHITECTURE FINISHED"** -- directly extending and
+  reconfirming 0568's "READY FOR EXECUTION, not VERIFIED" distinction into an even more explicit three-way
+  contrast.
+introduces:
+  - concept: "The corpus's first explicit session-handover / cross-session knowledge-transfer artifact — a document type distinct from every prior conceptual 'Step N' file, produced by a session explicitly lacking the complete prior transcript and honestly marking what it can and cannot reconstruct"
+  - concept: "An eight-way epistemic-status tagging discipline (ESTABLISHED/PROPOSED/ASSUMED/EXPERIMENTAL/REJECTED/UNRESOLVED/CONTRADICTORY/MISSING) applied systematically across an entire theory-recovery document, of direct methodological relevance to this reconstruction's own MD-017 discipline"
+  - concept: "An explicit ten-item 'Rejected Shortcuts' list — a distinct artifact type from the corpus's many positive invariant lists, instead cataloging forbidden reintroductions for the next session"
+  - concept: "A categorized seven-domain Major Unresolved Questions backlog (Mathematical/Statistical/Causal/DDD/Architecture/Computational/Governance), the corpus's most complete single open-questions inventory to date"
+  - concept: "A ten-row Hidden Assumptions to Test table pairing each assumption with its concrete failure consequence — a distinctively rigorous scientific-method framing (assumptions to test, not facts)"
+  - concept: "A deliberately minimal, explicitly challengeable experimental type set (21 types) and a two-tier sequenced operator set, designed to prevent premature construction of Zero/Lord/Sārathi atop an undefined state model"
+  - concept: "The eighteen-item cross-cutting Experimental Property Registry (P01-P18), the corpus's first invariant-style list explicitly distinguishing theoretical-principle status from experimental verification status"
+  - concept: "The explicit, quoted exact starting instruction for the next session — a concrete, reusable handover directive naming Step 25A.1 as the next deliverable and mandating state/type definitions before any reasoning-engine (Zero/Lord/Sārathi) work"
+  - concept: "The final handover verdict 'READY FOR EXPERIMENT — not THEORY PROVEN, not PRODUCTION ARCHITECTURE FINISHED', the arc's most explicit three-way epistemic-honesty distinction yet"
+defines:
+  - concept: "Experimental Property Registry entry"
+    definition: "P0N = (Property, Historical status) where status ∈ {[ESTABLISHED], [PROPOSED]} — 'Established' means established as a theoretical principle in prior discussion, explicitly NOT experimentally verified"
+  - concept: "Minimum Experimental Kernel (type set, EXPERIMENTAL)"
+    definition: "21 named candidate types (WorldState, KnowledgeState, Event, Entity, Source, Artifact, Observation, Evidence, Assertion, Assessment, Goal, IdealState, KnowledgeRequirement, EpistemicContract, Discrepancy, CandidateAction, Decision, Authorization, Action, Outcome, Provenance), explicitly flagged as itself needing to be challenged, not assumed correct"
+  - concept: "Two-tier minimum operator set"
+    definition: "Tier 1 (foundational): observe, register_evidence, assess, commit_assertion, revise_knowledge, evaluate_sufficiency, trace. Tier 2 (only after Tier 1 is stable): find_discrepancy, generate_candidate_actions, evaluate_decision, authorize, execute, observe_outcome"
+refines:
+  - concept: "0568's proposed 'Step 25A — Build the Minimal Executable KnowledgeOS Kernel' and 0569's renumbering into Step 25 (Minimal Executable Reference Model)"
+    refinement: "Confirmed as being actively continued, with the sub-step 'Step 25A.1 — Minimal Formal State and Type System' identified as the concrete next deliverable, and an explicit directive that state/type definitions must precede any Zero/Lord/Sārathi implementation work"
+  - concept: "0568's adversarial Nexus test design (over a dozen deliberately injected conditions)"
+    refinement: "Consolidated into a compact eleven-row reference table for efficient handover, preserving the essential test cases while discarding the fuller narrative exposition"
+  - concept: "0566's C1-C20 Core Invariants and every prior step-specific invariant scheme (A/U/D/S/I-P-L-C-T-H/R/SE/DE/CA/etc.)"
+    refinement: "Complemented by a structurally distinct P01-P18 Experimental Property Registry explicitly distinguishing theoretical-principle status from experimental-verification status — not a duplicate of, but a different epistemic layer atop, the frozen invariant sets"
+  - concept: "0568's 'READY FOR EXECUTION, not VERIFIED' verdict distinction"
+    refinement: "Extended into a sharper three-way distinction — 'READY FOR EXPERIMENT,' not 'THEORY PROVEN,' and certainly not 'PRODUCTION ARCHITECTURE FINISHED' — with a full thirteen-dimension status table making the qualification concrete rather than abstract"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: trace whether 'Step 25A.1 — Minimal Formal State and Type System' is executed as its own dedicated corpus file, delivering the actual minimal type/operator definitions this handover document commissions — this would be the concrete continuation of the corpus's first genuinely experimental research thread"
+  - "Trace whether the file-citation marker 'fileciteturn99file0L19-L43' and its referenced 'uploaded specification' governing extraction brief are ever identified or recur elsewhere in the corpus — this file's provenance (produced by a session with document-citation tooling, referencing an uploaded brief) is itself a notable, checkable artifact of the corpus's own multi-session, multi-tool production process, directly relevant to the three-model-convergence reconstruction's interest in how the corpus itself was assembled across sessions/models"
+  - "Reconcile the P01-P18 Experimental Property Registry against the corpus's dozen-plus other independently-numbered invariant schemes in the eventual canonical-theory pass, noting its qualitatively different (unverified theoretical-principle) status"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the corpus's first explicit session-handover/knowledge-transfer artifact, its eight-way epistemic-status tagging discipline, the re-derived core distinctions and WorldState≠KnowledgeState foundation, and the honestly-flagged UNRESOLVED KnowledgeState-structure questions."
+  - "dimension-registry.md: record the ten-item Rejected Shortcuts list, the seven-domain Major Unresolved Questions backlog, the ten-row Hidden Assumptions to Test table, the Minimum Experimental Kernel type/operator sets, and the eighteen-item P01-P18 Experimental Property Registry with its explicit theoretical-principle-vs-verified distinction."
+  - "dimension-registry.md: record the seventeen-node conceptual dependency graph, the 'What Is Actually Proven?' established-vs-not-yet-verified self-assessment, the exact quoted next-session starting instruction naming Step 25A.1, and the final handover verdict 'READY FOR EXPERIMENT — not THEORY PROVEN, not PRODUCTION ARCHITECTURE FINISHED.'"
+anchor_test:
+  anchor: "0566's/0568's/0569's progressively sharpening epistemic-honesty verdict distinctions (COMPOSABLE→READY FOR EXECUTION not VERIFIED→this file's READY FOR EXPERIMENT not THEORY PROVEN); 0568's full adversarial Nexus test design; 0569's roadmap and Step 25/25A renumbering; the corpus's entire proliferation of independently-numbered invariant schemes across Steps 1-24"
+  supports_dimension: "LANDMARK delivering the corpus's first explicit session-handover/cross-session-knowledge-transfer artifact — a genuinely novel document type produced by a session explicitly and honestly acknowledging it lacks the complete prior transcript, and systematically reconstructing the recoverable theory under a rigorous eight-way epistemic-status tagging discipline rather than silently repairing or inventing gaps. This is a real, in-the-wild instance of precisely the cross-session knowledge-continuity problem KnowledgeOS's own theory was built to formally address, of direct methodological relevance to this reconstruction's own epistemic discipline. Delivers the corpus's most complete single consolidated inventory of open questions, rejected shortcuts, hidden assumptions, and honestly-graded (not verified) properties to date, alongside an explicit, reusable next-session starting instruction and a sharpened three-way epistemic-honesty verdict distinction ('READY FOR EXPERIMENT,' explicitly not 'THEORY PROVEN' or 'PRODUCTION ARCHITECTURE FINISHED') that extends the arc's progressively more careful self-assessment discipline to its most explicit form yet"
+  refines_or_contradicts: "directly continues 0568's proposed Step 25A and 0569's renumbering, identifying Step 25A.1 as the concrete next deliverable; consolidates 0568's adversarial test design into a compact table; complements (does not duplicate) 0566's C1-C20 and the many prior step-specific invariant schemes with a structurally distinct, honestly-unverified P01-P18 registry; sharpens 0568's 'READY FOR EXECUTION not VERIFIED' distinction into an explicit three-way 'READY FOR EXPERIMENT not THEORY PROVEN not PRODUCTION ARCHITECTURE FINISHED' framing; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit, unusual first-person methodological admission ('I do not have the complete old transcript as a searchable historical corpus in this session... What follows is the maximum source-grounded transfer I can reconstruct... with gaps explicitly marked') is directly checkable, unambiguous textual evidence of a genuine session/context boundary within the corpus's own production process — a rare, self-documenting instance of exactly the cross-session knowledge-loss phenomenon the surrounding theoretical arc is designed to formally address."
+  - "The explicit caveat attached to the P01-P18 Property Registry ('Established means established as a theoretical principle in the historical discussion. It does NOT mean experimentally verified') is a directly checkable, precise epistemic qualification distinguishing this registry from every prior 'frozen invariant' list in the corpus, and is itself a concrete, reusable methodological safeguard against overclaiming verification status — directly reusable as a template for evaluating any future invariant claims encountered later in the corpus."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25A.1 — Minimal Formal State and Type System' is executed as its own dedicated corpus file, delivering the actual minimal type/operator definitions this handover document commissions"
+  - "Whether the referenced 'uploaded specification' governing extraction brief (cited via fileciteturn99file0L19-L43) is ever identified, quoted more fully, or recurs elsewhere in the corpus"
+  - "Whether the P01-P18 Experimental Property Registry is ever explicitly reconciled against the corpus's many other independently-numbered invariant schemes in a future canonical-theory pass"
+tier2_triggered: true
+tier2_reason: "LANDMARK delivering the corpus's first explicit session-handover / cross-session knowledge-transfer artifact — a genuinely distinct document type produced by a session honestly and explicitly acknowledging it lacks the full prior transcript, reconstructing recoverable theory under a rigorous eight-way epistemic-status tagging discipline rather than silently inventing or repairing gaps. This is a rare, self-documenting, in-the-wild instance of precisely the cross-session knowledge-continuity problem the surrounding KnowledgeOS theoretical arc (Steps 16, 19, 22, 23) was formally built to solve, of first-order methodological relevance to this reconstruction's own epistemic discipline (MD-017) against silently converting hypothesis into certainty. Delivers the corpus's most complete single consolidated inventory of rejected shortcuts, unresolved questions, hidden assumptions, and honestly-graded (explicitly not verified) properties to date, a deliberately minimal and self-challenging experimental type/operator kernel designed to prevent premature abstraction, and an explicit, quotable, reusable next-session starting instruction. Closes with the arc's sharpest epistemic-honesty verdict distinction yet — 'READY FOR EXPERIMENT,' explicitly and deliberately distinguished from both 'THEORY PROVEN' and 'PRODUCTION ARCHITECTURE FINISHED' — extending the progressively more careful self-assessment discipline established at 0566/0568/0569 to its most explicit and rigorous form in the entire research program so far."

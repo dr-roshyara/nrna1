@@ -1,0 +1,115 @@
+sequence: 2265
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260901-010553_step_286_purification-as-multi-dimensional-qualification-not-more-knowledge.md
+title: "Purification as Multi-Dimensional Qualification, Not More Knowledge -- Delivers the Epistemic Purification Algebra: Six Named Operators (E/R/C/X/Q/Z), Non-Commutative Composition, and Moksha=lim Purify(K_t)"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the mathematical culmination of the Yoga-as-simulation reframe (file 2264), delivering a concrete six-operator Epistemic Purification Algebra directly grounded in the already-tracked Step-287 Sigma-axis and product-order machinery"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2265
+importance: critical
+confidence: high
+about: >
+  The mathematical culmination of the "Yoga as mathematical simulation" reframe (file 2264), refining a
+  proposed hypothesis that purification means "adding more knowledge" into: "Purification should not mean
+  simply 'adding more knowledge.' It should mean transforming a knowledge state so that it becomes richer
+  in relevant dimensions and more qualified, coherent, reliable, and discriminating along those dimensions."
+
+  **DELIVERS PURIFICATION = DIMENSION EXPANSION + DIMENSION REFINEMENT**: grounded directly in the already-
+  tracked Σ_t=(A_t,S_t,R_t,V_t,C_t) five-axis representation and its "axes should not be collapsed into one
+  scalar" finding. Dimension expansion: D_t⊆D_{t+1} (system incorporates additional relevant dimensions).
+  Dimension improvement: for existing dimension d, v_t(d)→v_{t+1}(d). Explicitly requires a per-dimension
+  order relation ⪯_d rather than a universal scalar ordering, directly citing the already-tracked Step-287
+  finding that "we cannot assume every Σ axis has a natural order," specifically flagging Acquisition A as
+  "already identified as problematic" — the requirement: "Every purification dimension requires an explicit
+  ordering or transformation semantics."
+
+  **DELIVERS SIX NAMED CANDIDATE OPERATORS**: E (Expansion, discovers a new relevant dimension d∉D_t→d∈
+  D_{t+1}); R (Refinement, improves an existing dimension, v_t(d)≺_d v_{t+1}(d)); C (Correction, changes a
+  value because new evidence shows the previous state was wrong — explicitly "Purification≠monotonic
+  accumulation... a purified knowledge state may contain LESS of something because erroneous knowledge has
+  been removed"); X (Contradiction resolution, given p,¬p, produces a "conflict-qualified state" rather than
+  arbitrarily selecting one, deferring to Buddhi/evidence/qualification); Q (the already-tracked unresolved
+  Qualify operator, with a new interpretation: "purification may not always mean resolving a gap. Sometimes
+  purification means correctly recognizing that the gap cannot currently be resolved" — explicitly connected
+  to "our recent Cavell-derived reconsideration of Qualify," the already-tracked Step-286 termination
+  hypothesis); Z (Zero detection, Z(K_t)→G_t, recognized gaps, with the corollary "the system can therefore
+  become more purified not only by knowing more, but by knowing more accurately what it does not know").
+
+  **DELIVERS BUDDHI AS THE OPERATOR-SELECTION MECHANISM**: reframes Buddhi from a discrimination-result
+  function to an operator-CHOOSING function: B(K_t,𝒪_t)→"which transformation is appropriate?" over the
+  candidate set {E,R,C,X,Q,Z,...} — a distinct, higher-order role compared to the direct discrimination
+  functions already tracked (files 2251-2264), giving "the Kernel is not merely storing knowledge. It
+  continuously discriminates what epistemic operation should happen next."
+
+  **DELIVERS YOGA AS OPERATOR COMPOSITION**: Y=O_n∘O_{n-1}∘...∘O_1, with worked examples Y_purify=Q∘C∘R∘E∘Z
+  and Y_conflict=Q∘X∘C — directly formalizing the already-tracked "Yoga Operator Algebra" proposal (file
+  2264) into concrete composed trajectories. Investigates closure, associativity, and EXPLICITLY PREDICTS
+  NON-COMMUTATIVITY: "E∘Q≠Q∘E because discovering a dimension before qualification may produce a different
+  state than qualifying before discovering it... a non-commutative epistemic algebra."
+
+  **DELIVERS THE TRAJECTORY-NOT-SCALAR PRINCIPLE**: explicitly recommends against P(K_t)="purity score" as a
+  single scalar; instead K_0→_{O_1}K_1→_{O_2}K_2→...→_{O_n}K_n as "a partially ordered trajectory" where
+  K_2 may be better than K_1 in some dimensions but incomparable in others — "this directly respects Step
+  287's product-order finding," the most explicit connection yet drawn between the purification-algebra
+  proposal and the already-established Σ product-order machinery.
+
+  **DELIVERS THE REFORMULATED MOKSHA HYPOTHESIS**: rejects Moksha=max(K); proposes instead Moksha=
+  lim_{t→T} Purify(K_t), with the limit potentially meaning dimensional completeness relative to a declared
+  horizon, maximal epistemic qualification, minimal unresolved error, maximal justified value across
+  relevant dimensions, or "ultimately a change of epistemic regime" (explicitly citing the already-tracked
+  regime-transition Moksha hypothesis from file 2255) — "the Gītā may tell us what philosophical
+  interpretation is appropriate; the mathematics must determine whether such a limit is even well-defined."
+
+  Proposes a five-question "Epistemic Purification Algebra" research programme (what is a knowledge
+  dimension; what does value mean per dimension; which operators transform dimensions/values; what algebraic
+  laws govern composition; does repeated purification converge toward a meaningful limit) — "only after
+  answering those should we ask whether Moksha has any legitimate formal role." Closing synthesis: "KnowledgeOS
+  Kernel=Mind becomes a computationally interpretable model in which Buddhi chooses epistemic operators, Yoga
+  composes them, and purification is the resulting trajectory through a multidimensional Knowledge State
+  space."
+introduces:
+  - concept: "The Epistemic Purification Algebra: Purification=Dimension Expansion+Dimension Refinement, requiring an explicit per-dimension order relation approx_d for every purification dimension"
+  - concept: "Six named candidate operators E/R/C/X/Q/Z with explicit signatures, most significantly C (Correction, making explicit that Purification≠monotonic accumulation -- a purified state may contain LESS due to error removal)"
+  - concept: "Buddhi reframed as an operator-SELECTION mechanism (choosing among E/R/C/X/Q/Z) rather than a direct discrimination-result function -- a higher-order role distinct from prior candidate discrimination functions in this thread"
+  - concept: "Yoga formalized as operator composition Y=O_n∘...∘O_1, with worked examples and an explicit non-commutativity prediction (E∘Q≠Q∘E)"
+  - concept: "The trajectory-not-scalar principle for purification, explicitly tied to the already-tracked Step-287 product-order finding on Sigma"
+  - concept: "The reformulated Moksha hypothesis: Moksha=lim_{t→T}Purify(K_t), replacing Moksha=max(K), with five candidate interpretations of the limit"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Sigma=(A,S,R,V,C) five-axis representation and Step-287 product-order/no-universal-order finding (specifically flagging Acquisition A as problematic)"
+    refinement: "DIRECTLY GROUNDS the entire Purification Algebra in this machinery, requiring an explicit per-dimension order for every purification dimension"
+  - concept: "This reconstruction's already-tracked candidate Qualify/discrimination functions (files 2252, 2254, 2260, 2263, 2264) and the Step-286 Cavell qualification-termination hypothesis"
+    refinement: "REINTERPRETED: purification via Q may mean correctly recognizing a gap cannot currently be resolved, rather than resolving it -- explicitly connected to the Cavell hypothesis"
+  - concept: "This reconstruction's already-tracked Yoga-as-operator-algebra proposal (file 2264)"
+    refinement: "FORMALIZED into concrete composed operator trajectories (Y_purify=Q∘C∘R∘E∘Z, Y_conflict=Q∘X∘C) with explicit closure/associativity/non-commutativity investigation"
+  - concept: "This reconstruction's already-tracked Moksha revisions (files 2245, 2246, 2248, 2252, 2254, 2255)"
+    refinement: "FURTHER REFORMULATED as Moksha=lim_{t→T}Purify(K_t), explicitly citing the file-2255 regime-transition interpretation as one of five candidate limit meanings"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Whether the five-question Epistemic Purification Algebra research programme is directly commissioned and its operators (E/R/C/X/Q/Z) formally tested for closure/associativity/commutativity against the corpus later in the sequential read."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering the Epistemic Purification Algebra with six named operators (E/R/C/X/Q/Z), Buddhi reframed as an operator-selection mechanism, Yoga formalized as non-commutative operator composition, and the reformulated Moksha=lim Purify(K_t) hypothesis, all directly grounded in the already-tracked Step-287 Sigma-axis/product-order machinery."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Sigma-axis/product-order machinery (Step 287), the Cavell qualification-termination hypothesis, and the Yoga-as-operator-algebra proposal (file 2264)"
+  supports_dimension: "Directly grounds a concrete six-operator algebra in the Sigma/product-order machinery, formalizes the Yoga-operator-algebra proposal into worked composed trajectories, and reinterprets Qualify via the Cavell hypothesis"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The per-dimension order requirement (approx_d) and the explicit citation of Acquisition A as a problematic axis are directly checkable against this reconstruction's already-tracked Step-287 Sigma-axis records for exact consistency."
+undefined_concepts: []
+open_questions:
+  - "Whether the six-operator Epistemic Purification Algebra (E/R/C/X/Q/Z) is directly formalized and tested for closure/associativity/non-commutativity against the corpus later in the sequential read."
+tier2_triggered: true
+tier2_reason: "Delivers the mathematical culmination of the Yoga-as-simulation reframe: a concrete six-operator Epistemic Purification Algebra directly grounded in the already-established Step-287 Sigma-axis and product-order machinery, a reframed Buddhi-as-operator-selector role, formalized non-commutative Yoga composition, and a reformulated Moksha=lim Purify(K_t) hypothesis. Classified importance critical given the depth of mathematical formalization and its direct, explicit grounding in already-established corpus machinery."

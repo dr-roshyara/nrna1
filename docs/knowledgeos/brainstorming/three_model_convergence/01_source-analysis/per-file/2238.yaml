@@ -1,0 +1,143 @@
+sequence: 2238
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-230300_step_289_reviewer-b-step-289-operations-and-transformation-semantics-tightened-mandate.md
+title: "Reviewer-B Step 289 OPERATIONS AND TRANSFORMATION SEMANTICS -- Tightened Mandate: THE '2303-TIGHTENING' THAT SUPERSEDES FILE 2236's EARLIER OPERATIONS DRAFT (timestamp 23:03 confirms the connection)"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the literal successor Step-289 operations mandate that file 2236's own filename names as its superseding revision -- the '2303-tightening' is confirmed by this file's 23:03 timestamp, resolving the open question flagged in file 2236's record"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2238
+importance: critical
+confidence: high
+about: >
+  A 31-section "STEP 289 — OPERATIONS AND TRANSFORMATION SEMANTICS" tightened mandate, confirmed by its
+  23:03 timestamp to be the literal "2303-tightening" that file 2236's own filename names as its superseding
+  revision. This resolves the open question flagged in file 2236's record about the identity of that
+  superseding document.
+
+  Reviewer-B's framing: "Step 288 has deliberately NOT closed equality, and therefore Step 289 must not
+  silently assume a final equality relation in order to define operations. At the same time, Step 289
+  cannot be postponed until equality is fully solved... The right task is therefore to define the operation
+  universe and typed operation semantics independently of choosing final equality, and to mark exactly
+  where each operation is blocked by unresolved equality/identity."
+
+  **SIX CRITICAL IMPROVEMENTS OVER THE FILE-2236 DRAFT**: (1) do not make 𝒪_core the starting assumption —
+  ask "what operation universe is actually evidenced... and which subset, if any, can be justified as
+  𝒪_core?"; (2) separate four things that must not be conflated (operation name ≠ operation type ≠ operation
+  semantics ≠ membership in 𝒪_core) — "Reject might be a decision, state transition, governance action, or
+  event-producing command depending on actual corpus semantics... do not decide this from the name"; (3)
+  MAKE EQUALITY A DEPENDENCY, NOT A PREREQUISITE (explicitly "the most important correction") — the research
+  must prove per-operation equality dependencies rather than assume them (worked candidate dependencies:
+  Replay→history identity/equivalence; Merge→object/state identity+equality; Supersede→identity/reference
+  semantics; Validate→equality only for comparing expected/current results; Add→membership/duplicate
+  semantics — none of these pre-committed, all to be proven); (4) separate 𝒪_all/𝒪_sem/𝒪_impl/𝒪_norm/𝒪_core/𝒯
+  as six distinct candidate sets whose relationships must be TESTED not assumed; (5) a genuine operation-
+  minimality test via deletion (O'=O\{o}, does a mandatory capability become unrepresentable?) AND
+  replacement (can o be represented as composition of other operations? — "otherwise two aliases could
+  falsely appear to be two independent primitives"); (6) a strong anti-prematurity gate with 8 explicit
+  prohibitions including "deriving mathematical structure from the Bhagavad Gītā."
+
+  The 31-section mandate body: §0 five-role framing (mathematician/statistician/DDD architect/knowledge-
+  representation researcher/adversarial reviewer). §1 mandatory context locking Steps 285-288's conclusions
+  (explicitly: "Step 289 MUST NOT use a chosen equality relation as an unmarked assumption"). §2 central
+  question — smallest corpus-supported operation/transformation system, "smallest must be demonstrated, not
+  asserted." §3 thirteen distinctions not to conflate (operation/command/transformation/event/assessment/
+  query/predicate/decision/projection/governance-act/policy-evaluation/history-reconstruction/implementation-
+  procedure) plus "Operation ≠ State Transition ≠ Event." §4 a 34-item candidate-operation search list
+  (explicitly instructing NOT to start from Steps 249/255/256/277's prior lists — "those are candidate
+  evidence only"). §5 a 38-field per-candidate classification schema. §6 a ten-type typed-operation taxonomy
+  (A. State transformation T:K×I⇀K through K. Equality/equivalence test Eq:X×X→{True,False,Unknown} —
+  explicitly non-exhaustive, "add another type only when corpus evidence requires it"). §7 the explicit
+  corpus warning "operation dependence does not imply state membership" (Replay may reconstruct state
+  without being a state mutation). §8-9 operation semantics reconstruction (δ_o, preconditions, post-
+  conditions, invariants, six distinct non-collapsible failure outcomes) and explicit partiality
+  investigation (nine candidate reasons an operation may be undefined on an input). §10 MANDATORY equality-
+  dependency audit table (Merge/Supersede/Replay/Remove/Validate all initialized OPEN, "the purpose is to
+  expose where Step 288 blocks Step 289 and where it does not"). §11 identity-dependency audit across eight
+  identity kinds, explicitly "state identity ≠ authority-act identity" and "state equivalence ≠ operation
+  identity." §12 composition investigation without assuming an algebra exists (candidate structures: algebra/
+  partial algebra/transition system/typed category/rewriting system/workflow/mixed typed system — "the
+  mathematical structure must be discovered"). §13 redundancy test (deletion + replacement, four-way
+  classification: primitive candidate/derived operation/alias/workflow macro/implementation convenience).
+  §14 missing-operations test over 16 mandatory capability classes (a missing operation is not automatically
+  a gap — "it may be intentionally outside the semantic core"). §15 domain-vs-implementation-operation DDD
+  discipline ("would this operation still exist if the implementation technology changed?"), explicitly
+  warning against promoting infrastructure mechanisms (repository ops, serialization, hashing, locking,
+  caching, indexing, message publishing, API calls) into the ontology. §16-18 operation-event, operation-
+  policy, and operation-governance distinctions (four-way: mathematically defined / executable / authorized
+  / admissible). §19 transformation congruence criterion (F(H1)=F(H2)⇒F(T_H(H1))=F(T_H(H2))), explicitly
+  separating criterion validity / applicability / satisfaction as three different claims. §20 a 12-item
+  operational-closure matrix (explicitly not automatically equivalent to each other). §21 eight required
+  mathematical audits (A-H: type correctness through identity sensitivity). §22 an eight-value negative-
+  knowledge vocabulary (NOT FOUND/NOT DEFINED/NOT COMPUTABLE/NOT PROVEN/NOT IMPLEMENTED/NOT NORMATIVELY
+  REQUIRED/CONTRADICTED/BLOCKED), forbidding "no evidence"→"impossible" conversion. §23 the controlled Gītā
+  corroboration-only lens (explicit "corroboration ≠ derivation" test, forbidding "Gītā concept → KnowledgeOS
+  operation"). §24 required deliverables (REFINED-STEP-289.md + 12 numbered research/step-289/ documents +
+  exec/). §25 mandatory return-to-Step-261 audit across five status categories (resolved/narrowed/unchanged/
+  made-worse/newly-exposed) over six named blockers, explicitly "do NOT reinterpret Step 261 merely because
+  Step 289 has produced new evidence." §26 dependency graph over 14 named objects with six edge types,
+  explicitly "a prerequisite is not necessarily a member of the dependent structure" — directly citing the
+  Step-289 audit's own prior "cycle/graph mistake" (the already-tracked prerequisite≠cycle-member correction
+  from file 2237) as the reason this distinction is now mandatory. §27 the critical bootstrap question,
+  five-way DERIVABLE/EMPIRICAL/NORMATIVE/IMPLEMENTATION/BLOCKED classification. §28 a 19-question REQUIRED
+  FINAL VERDICT (A through S, each YES/NO/PARTIAL or explicit list, including "R. Did this step make any
+  normative decision? YES/NO — If YES, identify it and STOP" and "S. Is Step 290 authorized? YES/NO"). §29
+  an ABSOLUTE NON-PREMISE RULE listing five forbidden premature conclusions and an eight-term non-equivalence
+  chain (identified≠typed≠defined≠derived≠demonstrated≠minimal≠closed≠canonical≠ratified). §30 STOP CONDITION
+  on encountering a genuinely normative choice. §31 the final required boundary statement: "Step 289
+  establishes what the corpus can currently support about operations and transformation semantics. It does
+  not, by itself, ratify the operation universe, transformation algebra, equality contract, Knowledge State,
+  or operational kernel."
+
+  Reviewer-B's closing rationale: the biggest improvement is that this version "doesn't make Step 289
+  secretly become Step 290," reflecting a defensible dependency architecture (Step 288's equality boundary →
+  Step 289's operation universe/typing/δ-candidates/composition/minimality/equality-deps/identity-deps → NOT
+  YET K* → state requirements → congruence/sufficiency → K-minimality). Explicitly cites the recent corpus
+  correction that "a prerequisite is not necessarily a member of the structure it constrains" (the already-
+  tracked prerequisite≠cycle-member finding from file 2237) as the reason this prompt "explicitly prevents
+  the earlier cycle/graph mistake from recurring." Final recommendation: use this as the Step-289 mandate,
+  do not add philosophy beyond the corroboration lens, and explicitly permit "the next session" to conclude
+  only a candidate (not closed) operation universe as a legitimate result — "do not let the next session
+  'helpfully' select 𝒪_core or 𝒯 at the end."
+introduces:
+  - concept: "Confirmation that the '2303-tightening' referenced in file 2236's filename is this document (timestamp 23:03) -- resolves file 2236's flagged open question"
+  - concept: "The explicit reframing of equality as a per-operation DEPENDENCY to be proven rather than a PREREQUISITE to be assumed -- reviewer-B's single most important correction, with a worked (unresolved, to-be-proven) candidate dependency table for Replay/Merge/Supersede/Validate/Add"
+  - concept: "The six-set operation taxonomy (O_all/O_sem/O_impl/O_norm/O_core/T) whose relationships must be tested rather than assumed"
+  - concept: "The ten-type typed-operation-signature taxonomy (state transformation/history transformation/assessment/query/event construction/history reconstruction/projection/governance predicate/decision/policy composition/equality test), explicitly non-exhaustive"
+  - concept: "The 19-question REQUIRED FINAL VERDICT format (§28), including the explicit self-check 'did this step make any normative decision -- if YES, identify it and STOP'"
+defines:
+  - concept: "Eight-value negative-knowledge vocabulary: NOT FOUND/NOT DEFINED/NOT COMPUTABLE/NOT PROVEN/NOT IMPLEMENTED/NOT NORMATIVELY REQUIRED/CONTRADICTED/BLOCKED (§22)"
+  - concept: "Nine-term non-equivalence chain: identified≠typed≠defined≠derived≠demonstrated≠minimal≠closed≠canonical≠ratified (§29)"
+refines:
+  - concept: "This reconstruction's already-tracked file-2236 Step-289 operations draft (self-flagged superseded)"
+    refinement: "CONFIRMED as superseded by this exact document, tightening six specific weaknesses: starting-assumption 𝒪_core, name/type/semantics/membership conflation, equality-as-prerequisite (now dependency), untested set-relationships, missing minimality test, and an insufficiently strong anti-prematurity gate"
+  - concept: "This reconstruction's already-tracked prerequisite≠cycle-member correction (file 2237, from Step 289's actual execution)"
+    refinement: "EXPLICITLY CITED here as motivating §26's dependency-graph discipline ('a prerequisite is not necessarily a member of the dependent structure') -- confirms this document is temporally downstream of, and responsive to, the Step-289 execution already tracked in file 2237"
+contradicts: []
+repeats:
+  - "Substantial structural overlap with file 2236's superseded operations draft (both are 'REFINED STEP 289 — OPERATIONS'-titled, both cover operation identity/equality/composition/minimality), consistent with this being the deliberate tightened successor rather than independent content."
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as the confirmed '2303-tightening' successor to file 2236's superseded Step-289 operations draft, delivering the equality-as-dependency-not-prerequisite reframing, the six-set O_all/O_sem/O_impl/O_norm/O_core/T taxonomy, and explicit citation of the already-tracked prerequisite≠cycle-member correction as its own motivating evidence."
+anchor_test:
+  anchor: "This reconstruction's already-tracked file-2236 superseded Step-289 operations draft and its flagged open question about the identity of the '2303-tightening' successor"
+  supports_dimension: "RESOLVES the flagged open question by timestamp confirmation, and delivers the actual tightened content superseding 2236"
+  refines_or_contradicts: "refines (supersedes file 2236 as intended)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "This file's own timestamp (20260831-230300, i.e. 23:03:00) matches the '2303-tightening' label in file 2236's filename ('superseded-by-2303-tightening'), and the content is explicitly presented as a revision of the immediately preceding operations mandate with 'six critical improvements.'"
+undefined_concepts: []
+open_questions:
+  - "Whether the actual executed REFINED-STEP-289.md operations artifact (following this tightened mandate) is directly encountered later in the sequential read, and whether its 19-question final verdict (§28) authorizes Step 290."
+tier2_triggered: true
+tier2_reason: "Confirmed as the literal '2303-tightening' successor flagged as an open question in file 2236's record, delivering substantive independent content (equality-as-dependency reframing, six-set operation taxonomy, ten-type signature taxonomy) and explicitly citing the already-tracked prerequisite≠cycle-member correction as motivating evidence. Classified importance critical and confidence high given the direct connective resolution and substantive content."

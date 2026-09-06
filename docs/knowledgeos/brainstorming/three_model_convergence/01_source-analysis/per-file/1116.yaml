@@ -1,0 +1,127 @@
+sequence: 1116
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/17-GITA-PHILOSOPHY-VS-MATHEMATICAL-AND-STATISTICAL-MODELLING.md
+title: "17 -- Gita Philosophy vs Mathematical/Statistical Modelling: THE FOUNDATIONAL SOURCE for MNAR, the Metric/Loss-Function Unification, and the Qualify-Inadmissibility Argument (Extensively Cited Throughout This Session, Now Directly Read) -- Upgrades the Join-Semilattice Overclaim From REFUTED to EXPLAINED, Tracing It to a Filtration/State Conflation the Corpus Had Already Named 'a Very Important Error' Six Days Earlier"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the foundational mathematical/statistical audit underlying numerous already-cited findings across this session's Gita-track continuation (files 1095, 1097, 1099, 1102, 1104, 1114, 1115), now directly read"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1116
+importance: critical
+confidence: high
+about: >
+  "17 — GĪTĀ PHILOSOPHICAL INTERPRETATION ↔ MATHEMATICAL/STATISTICAL MODELLING," verdict "YES for the
+  STRUCTURAL matches -- and most were already made on 2026-08-25 and CORRECTED. NO for every QUANTITATIVE
+  match: all nine die at the same TWO gaps." The foundational source document underlying MNAR, the metric/
+  loss-function unification, and the Qualify-inadmissibility argument, all extensively cited throughout this
+  session (files 1095, 1097, 1099, 1102, 1104, 1114, 1115) but not directly read until now.
+
+  **DELIVERS THE GENUINE NEW RESULT: UPGRADING THE ALREADY-TRACKED JOIN-SEMILATTICE OVERCLAIM FROM REFUTED TO
+  EXPLAINED**, via a three-way convergence (measure theory, 2026-08-25's already-noted "'a very important
+  error'" about the monotone reading; the already-tracked executed retraction, files 1058/1073; and Gītā Ch
+  6's "progress survives interruption"). Delivers the precise causal diagnosis: "The join-semilattice
+  overclaim is a FILTRATION/STATE CONFLATION. Monotonicity is a TRUE property of the INFORMATION HISTORY
+  `ℱ_t`. It was TRANSPORTED TO the EPISTEMIC STATE `K_t`, which supports retraction." Delivers the striking
+  observation that "the corpus HAD ALREADY NAMED that exact conflation, SIX DAYS EARLIER, as 'a very important
+  error.' The verification lane made it anyway, in SIX ARTIFACTS." Classifies this as "an `AUDIT-H` violation
+  of the CARRIER kind (`ℱ_t→K_t`), sitting alongside the TWO already on record (`PureClaimSetUnion→𝕂`,
+  `Σ→K`). THREE CARRIER VIOLATIONS, ONE SHAPE" -- directly extending the already-tracked Audit-H standing
+  invariant (file 1092) with a third concrete instance.
+
+  **DELIVERS THE PRECISE DOWNGRADE OF `H-G6-2` FROM HYPOTHESIS TO CORROBORATION (already partially tracked,
+  file 1095)**, here in full derivation: "'`H-G6-2` Epistemic Continuity -- a NEW hypothesis' NOW: a
+  RE-DERIVATION of an existing `2026-08-25` result. `P_t`≈(a function of)`ℱ_t`; `K_t` is the state. `ℱ_t`
+  monotone, `K_t` not." Confirms this must still not be conflated with the already-tracked `Continuity`
+  relation (`195.51`, file 1038) -- a different carrier again.
+
+  **DELIVERS THE FULL NINE-STRUCTURE MATCHING TABLE, PRECISELY SCORED**: 2 already established (bounded-
+  knower/sub-σ-algebra; progress-survives-interruption/filtration-vs-state), 2 already refuted (Knowledge=
+  conditional-expectation; martingale/submartingale analogies), 1 strong new match (obscuration/MNAR, below),
+  3 blocked on a missing metric (epistemic drift/feedback-control, equanimity/Lyapunov-stability, same-
+  quality-different-quantity/sufficiency), and 1 explicitly INADMISSIBLE (Jñāna-Vijñāna/conformal-prediction).
+
+  **DELIVERS THE FULL, RIGOROUS DERIVATION OF THE MNAR FINDING (already-cited widely, file 1097's `17§3`)**:
+  precisely identifies Ch 5's obscuration as specifically MNAR (missingness depending on the unobserved value
+  itself), "exactly the case that is NOT IDENTIFIED from the observed data alone," names the already-tracked
+  `A6`/`G-60` gap correctly, connects `M1`-`M3`'s already-tracked missingness modes to formal missing-data
+  mechanism theory (Rubin 1976), and cites Manski's partial-identification bounds as "the honest response"
+  matching the corpus's own already-tracked four-loci abstention rule. Precisely, honestly bounded: "What it
+  does NOT do: supply the carrier... A vocabulary is not a carrier."
+
+  **DELIVERS THE FULL DERIVATION OF THE METRIC/LOSS-FUNCTION GATE (`§4`) BLOCKING EVERY DYNAMIC MATCH**,
+  including a genuinely valuable "statistician's note that cuts both ways": conditional expectation is
+  optimal only under squared-error loss, so "'knowledge=`E[X|ℱ]`' silently imports a QUADRATIC LOSS,"
+  converging with the already-tracked `38.20` asymmetric-loss finding. Boxed: "Two independent loci establish
+  that the LOSS FUNCTION is a modelling CHOICE, never a fact about knowledge." Delivers the already-tracked
+  `M-Q3′` unification (file 1099) in its full original derivation here: "the gap is NOT a missing measurement;
+  it is a MISSING NORMATIVE ACT." Explicitly forbids the obvious fix: "Supplying a metric would be INVENTING
+  ARCHITECTURE -- the very move `291§21` forbids. The correct output is the DIAGNOSIS, not the metric."
+
+  **DELIVERS THE FULL, RIGOROUS ARGUMENT FOR WHY THE `Jñāna`/`Vijñāna` MATCH IS INADMISSIBLE, NOT MERELY
+  BLOCKED (`§5`)**: precisely identifies that statistical tools (conformal prediction, bootstrap, calibration)
+  WOULD furnish exactly the missing mechanism for the already-tracked `Qualify`/`G1` gap -- and delivers the
+  sharp reasoning for why that is exactly why it must be refused: "Importing a mechanism into `G1` from
+  outside the corpus is INVENTING ARCHITECTURE, not deriving it -- and the import would arrive with its OWN
+  ASSUMPTIONS (exchangeability, i.i.d. sampling) that KnowledgeOS has never established." Confirms this is
+  "the THIRD source gesturing at `Qualify`" (already-tracked Cavell, Ch 7), applying the already-established
+  discipline that three gestures at one gap are not three-fold evidence. Recorded `M-Q5`, an explicit
+  PROHIBITION.
+
+  Confirms the overall exercise's disciplined self-assessment: "the mathematics DIAGNOSES the philosophy's
+  KnowledgeOS content; the philosophy does NOT SUPPLY the mathematics." Net new gaps: 0. Net new hypotheses:
+  0 (with `H-G6-2` explicitly downgraded). Steps 288-291 unchanged, all `R6`.
+
+  Flags the highest-value unread item this file identifies: "the lost measure-theory repair (`Ω_D`/`Ω_E`, the
+  geometry ladder, `Projection_R`) -- specified 2026-08-25 19:00, NEVER CARRIED PAST 08-26, and it is the one
+  artifact that might bear on `M-Q3`."
+introduces:
+  - concept: "The upgrade of the join-semilattice overclaim from refuted to explained: it is a filtration/state conflation, with the true monotonicity property of the information history silently transported to the epistemic state, which the corpus had already named as a very important error six days before six verification-lane artifacts made it anyway"
+  - concept: "The third recorded Audit-H carrier violation of the same shape (information-history-to-state, joining the already-tracked PureClaimSetUnion-to-K and Sigma-to-K violations)"
+  - concept: "The full rigorous derivation establishing Ch 5's obscuration as specifically MNAR (not merely absence), connecting the corpus's own missingness modes to formal missing-data mechanism theory and Manski's partial identification"
+  - concept: "The full derivation of why importing external statistical mechanisms (conformal prediction, bootstrap, calibration) into the Qualify gap must be refused precisely because they would work -- they would silently import their own unestablished assumptions, constituting invented rather than derived architecture"
+  - concept: "The statistician's note that conditional expectation silently imports a quadratic loss function, converging with the already-tracked asymmetric-loss finding to establish that the loss function is a normative choice, not a fact about knowledge"
+defines:
+  - term: "M-Q1"
+    definition: "Formalize F_t-monotone/K_t-non-monotone as a stated kernel property, explaining (not merely refuting) six stale join-semilattice artifacts"
+  - term: "M-Q2"
+    definition: "Adopt MCAR/MAR/MNAR as the vocabulary for A6/G-60's missingness carrier; M1-M7 become mechanism distinctions -- interpretive, vocabulary only, supplies no carrier"
+  - term: "M-Q3"
+    definition: "A metric or divergence on epistemic states -- the single gate blocking every dynamic structural match -- normative and formal, inventing one is forbidden"
+  - term: "M-Q4"
+    definition: "A declared loss function; two corpus loci show it is a modelling choice and none is specified anywhere -- normative"
+  - term: "M-Q5"
+    definition: "An explicit prohibition: do not import conformal prediction, bootstrap, or calibration into Qualify, since the temptation is now documented and the import would arrive with unestablished assumptions"
+refines:
+  - concept: "This reconstruction's already-tracked join-semilattice overclaim correction (files 1073, 1077, 1083, 1092, 1108) and the already-tracked Audit-H standing invariant (file 1092)"
+    refinement: "UPGRADED from a refutation to a causal explanation, tracing the error to a specific named filtration/state carrier conflation the corpus had itself flagged six days earlier, and adding a third concrete Audit-H carrier-violation instance"
+  - concept: "This reconstruction's already-cited MNAR finding, metric/loss-function unification (M-Q3'), and Qualify-inadmissibility argument (files 1095, 1097, 1099, 1102, 1104, 1114, 1115)"
+    refinement: "GROUNDED at their primary source with full rigorous derivation, confirming all prior citations were accurate"
+contradicts: []
+repeats:
+  - "Reproduces, at the primary source and in full derivation, the already-cited MNAR, metric/loss-function, and Qualify-inadmissibility findings from files 1095, 1097, 1099, 1102, 1104, 1114, and 1115."
+bridge_candidates:
+  - "20260825-184332-aggoun-elliott-measure-theory-and-filtering-verification.md and the lost measure-theory repair (Omega_D/Omega_E, the geometry ladder, Projection_R, specified 2026-08-25 19:00, never carried past 08-26) -- explicitly flagged by this file as the highest-value unread item bearing on M-Q3, not yet directly read in this reconstruction's sequence."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the upgrade of the join-semilattice overclaim from refuted to explained (a named filtration/state carrier conflation, a third Audit-H violation of the same shape), the full grounded derivations of MNAR, the metric/loss-function unification, and the Qualify-inadmissibility prohibition -- confirming this file as the primary source for numerous already-cited findings across this session."
+anchor_test:
+  anchor: "This reconstruction's already-tracked join-semilattice overclaim correction (files 1073, 1077, 1083, 1092, 1108) and the widely-cited MNAR/metric/Qualify-inadmissibility findings"
+  supports_dimension: "Upgrades the join-semilattice correction into a causal explanation with a third Audit-H violation instance, and confirms all widely-cited prior findings at their primary source with full derivation"
+  refines_or_contradicts: "refines (upgrades and grounds) the prior tracked findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The filtration/state conflation diagnosis is directly checkable against files 1073, 1077, 1083, 1092, and 1108's already-documented join-semilattice correction findings for exact consistency of this upgraded causal explanation."
+undefined_concepts: []
+open_questions:
+  - "Whether the lost measure-theory repair (Omega_D/Omega_E, the geometry ladder, Projection_R) is ever directly encountered and reconciled, given this file's explicit flag that it is the highest-value unread item bearing on the metric gap M-Q3."
+tier2_triggered: true
+tier2_reason: "Delivers the foundational source document for numerous already-widely-cited findings across this session (MNAR, the metric/loss-function unification, the Qualify-inadmissibility prohibition), grounding them all with full rigorous derivation, and upgrades the already-tracked join-semilattice overclaim correction from a mere refutation to a genuine causal explanation -- tracing it to a filtration/state carrier conflation the corpus had itself flagged as a very important error six days before six verification-lane artifacts made the exact mistake anyway. Classified importance critical and confidence high given the foundational, well-evidenced, and directly connective significance of this source."

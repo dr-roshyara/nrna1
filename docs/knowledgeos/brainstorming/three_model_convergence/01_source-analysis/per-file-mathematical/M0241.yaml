@@ -1,0 +1,52 @@
+sequence: M0241
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-020658_review-478-line-proof-spec-stronger-but-not-freezable-duplicate.md
+title: "Verbatim duplicate of M0240 Pass 4 (the final review pass already fully captured at M0240) — manifest-PRIMARY but substantively redundant; minimal treatment"
+date: "20260904-020658"
+bytes: 12216
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0241
+importance: low
+confidence: high
+about: >
+  This file's entire content is identical to Pass 4 of M0240 (the final of four concatenated
+  review passes already fully recorded there: capability-identity ordering, the transition-relation
+  triple, the contract-relative "lossless" fix, the Capability Conservation theorem, the two-
+  reduction minimality structure, the 12-definition/5-lemma/4-theorem proof-object skeleton, the
+  capability-count-theorem rejection, and the final six-question prerequisite list with the decision
+  to keep Theory v1.2 frozen). Manifest marks it PRIMARY (with M0242 as its DUPLICATE), but its
+  content is a strict subset of what M0240 already captured in full detail.
+introduces: []
+defines: []
+refines:
+  - "No new content beyond M0240's Pass 4, already fully recorded there."
+contradicts: []
+repeats:
+  - "M0240 Pass 4 in its entirety: Transition Refinement/Capability Identity/Capability Granularity/Counterfactual Capability Removal endorsement; the softened 'minimality is relative' correction; capability-identity dependency ordering; the three transition relations (≅_int/≡_sem/⊑_𝔠); the contract-relative 'lossless' fix; the K_adm/K_sat elevation; the Capability Conservation theorem; responsibility projection ρ; the parallel (not ladder) statistical framing; the two-reduction minimality structure; the 12-definition/5-lemma/4-theorem skeleton; the capability-count-theorem rejection; the final six-question list; and the Theory-v1.2-remains-frozen decision"
+bridge_candidates: []
+mathematical_content: >
+  None beyond what M0240 already records in full.
+gita_content: null
+kernel_content: >
+  Duplicate of M0240's final review pass; no independent content.
+registry_updates: []
+anchor_test:
+  anchor: false
+  supports_dimension: "None — verbatim duplicate of already-recorded M0240 content"
+  refines_or_contradicts: "refines (none — identical restatement of M0240 Pass 4)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: >
+  Not triggered — this file is a verbatim duplicate of content already fully recorded and analyzed
+  at M0240 (Pass 4). Minimal treatment per standing redundant-content convention.

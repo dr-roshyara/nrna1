@@ -1,0 +1,117 @@
+sequence: 393
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-004302_important-correction-to-the-model.md
+title: "Observer-Relative Time-Varying Dimension Set D_t^A; Full K_t^A=(D_t^A,V_t^A,R_t^A,P_t^A) Formalization; Relationship Completeness (Third Completeness Type); Dimension-Change Operations (Expand/Contract/Refine/Split/Merge/Reinterpret)"
+date: "2026-08-26"
+bytes: 7091
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 393
+importance: critical
+confidence: high
+about: >
+  A direct, substantive continuation of 0389/0390's Dimension-uncertainty discovery, formalizing the
+  observer-relative, time-varying nature of the dimension set precisely for the first time. Distinguishes
+  the potentially infinite dimension space K-script-D from the observer-relative recognized subset
+  D_t^A subset-of K-script-D, explicitly noting D_t1^A != D_t2^A is entirely possible -- worked via a
+  three-time-step Nexus example (t1: Version/CPU/Memory/Repositories; t2: adds Network/Certificates/Backup/
+  Authentication; t3: adds Disaster-Recovery/External-Dependencies/Security-Configuration) -- crystallized
+  as "the state itself may not have changed in the same way as the observer's dimensional model changed."
+  Formalizes the full observer-relative knowledge state for the first time: K_t^A =
+  (D_t^A, {V_t^A(d):d in D_t^A}, R_t^A, P_t^A) -- recognized dimensions, per-dimension determined values,
+  applicable relationships/reasoning, and provenance/evidence -- explicitly "not yet the KnowledgeOS
+  definition. It is our current research model."
+
+  Reinterprets the 90-95% completeness discussion via D_t^A subset-of D_t* (observer's identified dimensions
+  within the true relevant dimension space), isolating TWO INDEPENDENT sources of incompleteness --
+  incomplete dimension coverage versus incomplete information within known dimensions -- explicitly called
+  "one of the strongest results of our discussion so far." Demonstrates via a worked example that time
+  changes BOTH dimensions and values: D_t2^A = D_t1^A union {five newly discovered dimensions} without the
+  underlying object itself changing -- "our knowledge of the object changed," and a dimension can later
+  become irrelevant when purpose shifts, crystallized as "the relevant dimension set is itself time- and
+  context-dependent."
+
+  Introduces a THIRD, genuinely new completeness type beyond 0389/0390's two-type (dimension/value)
+  taxonomy: RELATIONSHIP COMPLETENESS -- do we understand HOW the dimensions relate to each other? (worked
+  example: version=3.85 known, security-policy known, but do we know whether THIS version satisfies THAT
+  policy? -- requires an explicit relationship/rule, not merely two independently-known values). Carefully
+  walks back an earlier overclaim: "the dimensions are infinite" is corrected to the weaker, more defensible
+  "K-script-D may be unbounded/potentially infinite" -- explicitly flagged as a stronger mathematical claim
+  than established, replaced by "there is no guaranteed finite bound on the number of dimensions that may be
+  relevant to describing a state," sufficient for the research without overcommitting.
+
+  Produces a temporal knowledge-trajectory model K_t1->K_t2->K_t3->..., with each transition capable of
+  changing THREE things simultaneously: Dimensions + Values + Relationships (worked three-time-step table:
+  t1 has three dimensions with known values; t2 adds two dimensions, one with an unknown value; t3 revises
+  a previously-known value and verifies the unknown one). Introduces a genuinely new taxonomy of DIMENSION-
+  CHANGE OPERATIONS beyond simple value-updating: Knowledge can EXPAND, CONTRACT, REFINE, SPLIT, MERGE, or
+  REINTERPRET dimensions -- "a very important candidate property of Knowledge." Draws the Kernel-relevant
+  (but explicitly deferred) implication: if this model survives further research, KnowledgeOS may need to
+  preserve not merely facts but the HISTORY OF HOW THE STATE REPRESENTATION ITSELF EVOLVED (worked example:
+  at t1 four dimensions considered relevant, at t2 three more discovered, at t3 one dimension split into
+  two, at t4 a previous determination revised) -- explicitly "not declaring this a Kernel requirement yet,"
+  pending testing across different knowledge domains.
+
+  Consolidates into a refined six-stage research model: Potential Dimension Space -> Currently Relevant
+  Dimensions -> Observed Information -> Determined Values -> Relationships/Reasoning -> Knowledge State,
+  with D_t, V_t, and R_t all capable of changing at every time step. Crystallizes the file's deepest
+  consequence in one sentence: "Knowledge is not merely incomplete because we lack values. It is incomplete
+  because we may not yet know which dimensions of the state matter," yielding the sharpened research
+  question "How does an epistemic system discover, maintain, and revise its model of the dimensions that
+  are relevant to a state over time?" -- explicitly deferring probability's role until dimension, value, and
+  relationship uncertainty are each precisely determined, "not on defining the Kernel yet, and not yet on
+  forcing probability into the model."
+introduces:
+  - concept: "Observer-relative, time-varying dimension set formalized precisely: K-script-D (potentially infinite/unbounded dimension space) versus D_t^A subset-of K-script-D (observer A's currently recognized subset at time t), with D_t1^A != D_t2^A explicitly possible and the underlying state itself potentially unchanged while the observer's dimensional model changes"
+  - concept: "Full observer-relative knowledge-state formalization K_t^A = (D_t^A, {V_t^A(d):d in D_t^A}, R_t^A, P_t^A) -- recognized dimensions, per-dimension determined values, applicable relationships/reasoning, and provenance -- explicitly flagged as a research model, not yet the KnowledgeOS definition"
+  - concept: "Two independent sources of incompleteness precisely reformulated via D_t^A subset-of D_t*: incomplete dimension coverage versus incomplete information within known dimensions -- 'one of the strongest results of our discussion so far'"
+  - concept: "RELATIONSHIP COMPLETENESS introduced as a third, genuinely new completeness type alongside dimension coverage and value coverage: understanding HOW known dimensions relate to each other (worked example: knowing version and knowing security-policy separately does not entail knowing whether the version satisfies the policy)"
+  - concept: "Deliberate walkback of an overclaim: 'the dimensions are infinite' corrected to 'may be unbounded/potentially infinite,' replaced by the weaker, sufficient claim 'there is no guaranteed finite bound on the number of dimensions that may be relevant to describing a state'"
+  - concept: "Temporal knowledge trajectory K_t1->K_t2->K_t3->... where each transition can change THREE things simultaneously: Dimensions + Values + Relationships, worked via a concrete three-time-step table"
+  - concept: "New taxonomy of dimension-change operations beyond simple value-updating: Knowledge can EXPAND, CONTRACT, REFINE, SPLIT, MERGE, or REINTERPRET dimensions -- 'a very important candidate property of Knowledge'"
+  - concept: "Deferred Kernel implication: KnowledgeOS may need to preserve the HISTORY OF HOW THE STATE REPRESENTATION ITSELF EVOLVED (dimension-set changes over time, including splits and revisions), not merely accumulated facts -- explicitly not yet declared a Kernel requirement, pending cross-domain testing"
+  - concept: "Refined six-stage research model (Potential Dimension Space -> Currently Relevant Dimensions -> Observed Information -> Determined Values -> Relationships/Reasoning -> Knowledge State) with D_t/V_t/R_t all capable of independent change at every time step"
+  - concept: "One-sentence deepest-consequence crystallization: 'Knowledge is not merely incomplete because we lack values. It is incomplete because we may not yet know which dimensions of the state matter,' yielding the sharpened research question about discovering/maintaining/revising the dimension model over time, with probability's role explicitly deferred until dimension/value/relationship uncertainty are each precisely determined"
+defines: []
+refines:
+  - concept: "0389/0390's Dimension-uncertainty vs Value-uncertainty discovery and D_t/D-hat_t dimension-discovery formalization"
+    refinement: "Made explicitly OBSERVER-RELATIVE (D_t^A) and explicitly TIME-VARYING (D_t1^A != D_t2^A), with a full K_t^A=(D_t^A,V_t^A,R_t^A,P_t^A) formalization replacing the simpler D_t/D-hat_t pairing"
+  - concept: "0390's two-type completeness taxonomy (dimension coverage, value coverage) and three confidence types (C_fact/C_coverage/C_model)"
+    refinement: "Extended with a genuinely new THIRD completeness type: relationship completeness (understanding how known dimensions relate), not reducible to either dimension coverage or value coverage alone"
+  - concept: "0384's infinite Knowledge Space claim (I_t and K-script explicitly allowed to be infinite)"
+    refinement: "Epistemically disciplined: the stronger claim 'dimensions are infinite' is walked back to the weaker, defensible 'no guaranteed finite bound,' modeling appropriate mathematical caution about overclaiming"
+  - concept: "0386's recursive Knowledge->Reference-State->Comparison cycle and 0392's thirteen-step research chain"
+    refinement: "Given a new dimension-change-operations taxonomy (expand/contract/refine/split/merge/reinterpret) describing HOW the dimension set itself transforms across the temporal trajectory, not merely how values update"
+  - concept: "0391/0392's pre-Kernel-design discipline and Research-Boundary Freeze"
+    refinement: "Reinforced once more: the state-representation-history-preservation implication is explicitly deferred, 'not declaring this a Kernel requirement yet,' pending cross-domain testing"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the observer-relative, time-varying dimension-set formalization D_t^A and the full K_t^A=(D_t^A,V_t^A,R_t^A,P_t^A) knowledge-state formula as the precise successor to 0389/0390's conceptual dimension-discovery/state-extraction split."
+  - "dimension-registry.md: record Relationship Completeness as a new, third completeness type alongside Dimension and Value completeness."
+  - "dimension-registry.md: record the dimension-change-operations taxonomy (expand/contract/refine/split/merge/reinterpret) as a new candidate property of Knowledge distinct from simple value-updating."
+  - "dimension-registry.md: record the epistemic-discipline walkback of 'dimensions are infinite' to 'no guaranteed finite bound' as a model instance of avoiding mathematical overclaiming."
+anchor_test:
+  anchor: "0389/0390's Dimension-uncertainty vs Value-uncertainty discovery; 0384's infinite-Knowledge-Space claim; 0391/0392's pre-Kernel-design discipline and Research-Boundary Freeze"
+  supports_dimension: "Mathematical model, direct formalization and extension: precisely formalizes the observer-relative, time-varying dimension set D_t^A and the full knowledge-state tuple K_t^A=(D_t^A,V_t^A,R_t^A,P_t^A), introduces a genuinely new third completeness type (Relationship completeness), a new dimension-change-operations taxonomy (expand/contract/refine/split/merge/reinterpret), and models epistemic discipline by walking back an overclaim about dimensional infinitude to a weaker, defensible claim"
+  refines_or_contradicts: "refines 0389/0390 (observer-relative, time-varying, fully-tupled formalization); refines 0384 (walks back the infinite-dimensions overclaim to a weaker bounded-uncertainty claim); extends 0390's two-type completeness taxonomy with a third (relationship); reinforces 0391/0392's pre-Kernel-design discipline"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "The precise formal relationship between R_t^A (relationships/reasoning) in the K_t^A tuple and the earlier corpus-wide Determination formalization (0392's placeholder (O,E,R,C,t)->K) -- not explicitly reconciled within this file"
+open_questions:
+  - "Whether Relationship completeness is ever formally combined with Dimension and Value completeness into a single joint completeness measure"
+  - "Whether the dimension-change-operations taxonomy (expand/contract/refine/split/merge/reinterpret) is ever formalized mathematically or tested against a worked multi-step example"
+  - "Whether the deferred Kernel implication (preserving state-representation evolution history) is ever tested across multiple knowledge domains as anticipated"
+tier2_triggered: true
+tier2_reason: "Direct, substantive formalization of 0389/0390's Dimension-uncertainty discovery: precisely formalizes the observer-relative, time-varying dimension set D_t^A and the full knowledge-state tuple K_t^A=(D_t^A,V_t^A,R_t^A,P_t^A), introduces a genuinely new third completeness type (Relationship completeness, alongside Dimension and Value completeness), and a new dimension-change-operations taxonomy (Knowledge can expand/contract/refine/split/merge/reinterpret dimensions, not merely update values). Models epistemic discipline by explicitly walking back an overclaim ('dimensions are infinite') to a weaker, defensible statement ('no guaranteed finite bound'). Reinforces the corpus's pre-Kernel-design discipline while drawing a deferred but significant Kernel implication: preserving the history of how the state representation itself evolved, not merely accumulated facts."

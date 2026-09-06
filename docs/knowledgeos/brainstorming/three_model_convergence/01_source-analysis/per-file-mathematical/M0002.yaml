@@ -1,0 +1,104 @@
+sequence: M0002
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-150600_hpa-bayesian-epistemology-vol2-formal-derivations-for-knowledgeos.md
+title: "HPA Analysis: Bayesian Epistemology Volume 2 — Confirmation Theory, Decision Theory, Dutch Books, Accuracy Arguments, and Alternative Formalisms (Comparative Confidence, Ranged Credences, Dempster-Shafer) as Further KnowledgeOS Machinery, COMPOUNDING M0001's Since-Refuted Thesis Rather Than Qualifying It"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: b
+  secondary: none
+  secondary_note: "companion/continuation of M0001 (same day, 7 minutes later), extracting Titelbaum Volume 2 (justification, applications, alternatives) rather than Volume 1 (core apparatus); genuinely new formal content, not a duplicate, but its closing 'Final Statement' restates M0001's exact since-substantially-refuted thesis word-for-word in substance, now buttressed by additional apparatus (confirmation measures, decision theory, Dutch Books, accuracy arguments) -- i.e. at this point in the lane's chronology (2026-09-01 15:06) the overclaim is being REINFORCED, not yet qualified"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0002
+importance: high
+confidence: high
+about: >
+  Second HPA extraction from Titelbaum, same reviewer persona, seven minutes after M0001. Covers
+  Volume 2 (Arguments, Challenges, Alternatives) rather than Volume 1 (Introducing Credences).
+
+  **DELIVERS CONFIRMATION THEORY**: formal adequacy conditions (accepted: Equivalence, Entailment,
+  Converse Entailment, Disconfirmation Duality; rejected: Transitivity, Consequence, Special
+  Consequence, Consistency, Converse Consequence, Nicod's Criterion, each with a counterexample);
+  confirmation-as-relevance (E confirms H iff Pr(H|E)>Pr(H)); five confirmation measures d,s,r,l,z
+  with Logicality and Hypothesis Symmetry conditions (only l satisfies both).
+
+  **DELIVERS DECISION THEORY**: Savage's EU (state-independent), Jeffrey's EDT (Pr(S|A)), Causal
+  Decision Theory (Pr(A□→S)); Dominance and Sure-Thing principles.
+
+  **DELIVERS DUTCH BOOK ARGUMENTS**: the classic finite-additivity-violation book and the
+  conditionalization-violation book (concrete numeric tables), plus the Package Principle objection.
+
+  **DELIVERS ACCURACY ARGUMENTS**: Brier score, Gradational Accuracy Theorem (non-probabilistic
+  credences are always accuracy-dominated by some probabilistic one; probabilistic ones never are),
+  proper scoring rules, and the Accuracy Updating Theorem (conditionalization minimizes expected
+  inaccuracy under any proper scoring rule) -- a genuinely distinct, non-pragmatic justification for
+  probabilism/conditionalization alongside the Dutch Book argument.
+
+  **DELIVERS THE LOGICAL OMNISCIENCE PROBLEM AND PARTIAL RESPONSES**: Normality's demand that
+  cr(T)=1 for all logical truths is unsatisfiable by real agents; the Extendability Criterion
+  (a partial distribution is rational iff extendable to a complete one); Truth-Functional
+  Bayesianism as a partial, admittedly-arbitrary fix.
+
+  **DELIVERS SELF-LOCATING CREDENCES**: centered possible worlds, the two-step (HTM) update
+  (conditionalize on uncentered worlds, then redistribute over centers), the Relevance-Limiting
+  Thesis and its counterexample (the mystery-bag case), and Suppositional Consistency
+  (cr_{A&C}(B)=cr_A(B|C)).
+
+  **DELIVERS THE PROBLEM OF THE PRIORS**: the regress question (where do cr_1(H), cr_1(E) come
+  from), the washing-out-of-priors convergence result, and the likelihood-ratio reformulation of
+  Bayes's theorem that makes the prior's role explicit and separable from the evidence's role.
+
+  **DELIVERS THREE ALTERNATIVE FORMALISMS TO POINT-VALUED PROBABILITY**: Comparative Confidence
+  (a preorder ⪰ over propositions, de Finetti's six conditions, and the Scott Axiom as the exact
+  necessary-and-sufficient condition for probabilistic representability of a comparative ranking);
+  Ranged Credences (representors as sets of probability distributions, interval/convexity
+  requirements, and Dilation -- the counterintuitive phenomenon where an interval WIDENS after
+  conditioning); Dempster-Shafer theory (mass functions, belief/plausibility functions, Dempster's
+  combination rule) explicitly framed as able to represent pure ignorance directly (vacuous mass
+  function) in a way point-valued credence cannot -- this is the one piece of NEW content in this
+  document that gestures, even if not yet recognized as such by the document itself, toward moving
+  beyond exactly the point-probability formalism M0001 and this document's own closing claim insist
+  is "complete."
+
+  **RESTATES AND COMPOUNDS M0001's CLOSING THESIS**: "The Bayesian formalism provides a complete
+  mathematical foundation for KnowledgeOS's epistemic state, updating mechanism, confirmation theory,
+  decision theory, and justification," with Sigma_t=Probability Distribution over L,
+  Sigma_{t+1}=Sigma_t(.|E_t), a confirmation criterion, and an EDT/CDT decision rule -- the SAME
+  since-substantially-refuted core equation as M0001 (already contradicted by this reconstruction's
+  tracked files 2321/2324/2328), now presented as further justified rather than qualified. At this
+  point in the lane's own chronology (day 1, ~15:06), the overclaim is being reinforced with MORE
+  apparatus (confirmation/decision/Dutch-Book/accuracy theory), not yet walked back.
+introduces:
+  - concept: "Confirmation theory apparatus (adequacy conditions, five confirmation measures d/s/r/l/z, Logicality+Hypothesis-Symmetry) as candidate Zero-Lens tooling"
+  - concept: "Decision theory apparatus (Savage EU, Jeffrey EDT, Causal Decision Theory, Dominance, Sure-Thing) as candidate Sarathi-Lens tooling"
+  - concept: "The Accuracy Updating Theorem as a second, independent (non-Dutch-Book) justification for conditionalization as KnowledgeOS's transition mechanism"
+  - concept: "Three alternatives to point-valued credence -- Comparative Confidence, Ranged Credences (representors, Dilation), Dempster-Shafer mass/belief/plausibility functions -- as candidate machinery for representing epistemic gaps/ignorance the Zero Lens cannot represent with a single probability number"
+defines: []
+refines:
+  - concept: "M0001's seven-component early state tuple; this document narrows to the Sigma_t/confirmation/decision triad (Sec 13) without re-deriving the full seven-component tuple, a partial simplification"
+contradicts: []
+repeats:
+  - concept: "M0001's central, since-substantially-refuted closing thesis (Sigma_t=probability distribution, conditionalization=transition mechanism, 'now formally available to KnowledgeOS') is restated near-verbatim in this document's own Part 14 Final Statement, seven minutes later in the same research session -- not yet self-corrected at this point in the lane's chronology"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0002 as M0001's same-day companion (Titelbaum Vol.2), delivering confirmation theory, decision theory, Dutch Books, accuracy arguments, and three alternative-to-probability formalisms (Comparative Confidence, Ranged Credences, Dempster-Shafer); its closing claim COMPOUNDS rather than qualifies M0001's since-refuted thesis -- the lane's self-correction has not yet begun at this chronological point."
+anchor_test:
+  anchor: "M0001's central thesis (Sigma_t=probability distribution / conditionalization=delta), restated here"
+  supports_dimension: "Reinforces (does not yet qualify) the since-refuted founding equation, while separately introducing Dempster-Shafer as machinery capable of representing ignorance beyond point probability"
+  refines_or_contradicts: "repeats (thesis) / introduces (alternative-formalism machinery)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Part 14 'Final Statement' repeats M0001's exact since-refuted core equation (Sigma_t=Probability Distribution over L; Sigma_{t+1}=Sigma_t(.|E_t)) as if newly justified by the intervening confirmation/decision/Dutch-Book/accuracy apparatus, seven minutes after M0001 -- the self-correction visible in files 2321/2324/2328 has not yet occurred at this point in the lane's own history."
+  - "Section 11 (Dempster-Shafer) is the one place in this document that names a formalism explicitly capable of representing pure ignorance (vacuous mass function m(T)=1) rather than a point credence -- an unrecognized seed of the later move away from pure probability, framed here merely as an 'alternative' rather than a needed correction."
+undefined_concepts: []
+open_questions:
+  - "Whether the lane's later self-correction (files 2321/2324/2328) explicitly returns to or builds on the Dempster-Shafer/Ranged-Credences alternatives introduced here, or arrives at factivity-impossibility by an unrelated route -- traceable as this pass proceeds in log order."
+tier2_triggered: true
+tier2_reason: "Delivers four substantial, non-redundant bodies of formal apparatus (confirmation theory, decision theory, Dutch Book arguments, accuracy arguments) plus three genuinely distinct alternative-to-probability formalisms, while its own closing synthesis compounds rather than qualifies M0001's already-flagged since-refuted thesis -- a second data point in the lane's self-correction arc, this time showing the overclaim being reinforced rather than corrected."

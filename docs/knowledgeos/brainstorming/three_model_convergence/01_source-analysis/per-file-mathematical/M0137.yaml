@@ -1,0 +1,87 @@
+sequence: M0137
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-170000_the-research-decision-and-optimized-model.md
+title: "The Research Model, the Decision Layer, and the Optimized Model"
+date: "20260902-170000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0137
+importance: critical
+confidence: high
+about: >
+  The successor document explicitly flagged as unlocated at M0135 — confirmed here by its own text:
+  "Supersedes …155427_the-research-model-and-the-optimized-model.md as a proposal." Introduces a
+  three-register architecture (Research / Decision / Optimized Model), ratifies DECISION-01
+  (non-evidential invariance), opens DECISION-02 (semantic status of a frame), and gives 31
+  experiments' worth of load-bearing results plus a fully updated artifact map (33-file v1.2 lane,
+  FDE package, COMP/COMP-SEP results).
+introduces:
+  - "The three-register architecture: RESEARCH (what evidence can settle → experiments), DECISION (what evidence cannot settle → decision records), OPTIMIZED MODEL (what to build given both → a proposal) — explicitly framed as preventing conflation between these as the document's central purpose"
+  - "DECISION-01 [DECIDED]: the non-evidential invariance principle — E ∼_evidential E′ ⟹ Comp(E)=Comp(E′) — the first design law in the programme to originate from a decision rather than an experiment; C6 (permutation invariance) and C7 (frame-refinement invariance) ratified as INSTANCES of this principle, not free-standing criteria"
+  - "DECISION-02 [DECISION REQUIRED]: the semantic status of a frame — does φ identify semantically meaningful evaluation frames (Option B, semantic context) or merely organize evidence (Option A, representational partition)? Blocks the composition rule choice. φ={time,context} is explicitly NOT promoted to a semantic primitive by this document — it is a detection criterion, not an ontology"
+  - "The reorganized dependency chain: ℛ_req → Evaluation Representation → Typed Boundary/Reason → Composition → Aggregation → Zero → Determination, with Contradiction explicitly demoted to 'ONE required distinction, NOT the root' — a further reordering beyond M0135's Contr-first-to-third move"
+  - "Sat→Zero, never the reverse — confirmed from two independent directions (document W §8, and KR-CONTR-MODELS §6's saturation result)"
+  - "Evaluation representation formalized and measured: Evaluation = Status/Polarity × Typed Boundary/Reason, with a comparison table over 13 required distinctions: Classical preserves 1/collapses 1/not-representable 11; K3 preserves 3/collapses 10; FDE two-channel preserves 11/collapses 2; Structured preserves all 13"
+  - "Composition rule: φ⊇{time,context} REQUIRED and NON-ADDITIVE (18/90 with {time} alone 0/15, {context} alone 0/15); union, strict, and last-wins all EXCLUDED (last-wins excluded twice — once for discarding an earlier genuine conflict, once for failed well-definedness under multiset reordering); supersession subsumed by temporal separation (no separate supersession rule needed)"
+  - "A third composition shape held open as [PROP]: stop requiring the composition operator to manufacture a frame-free Standing at all — Evaluation=(frame-relative standings, divergence), with a SEPARATE determination operation deciding whether a frame-free conclusion is justified; cross-frame divergence marked [DEFERRED]"
+  - "The decision register (§B.3): six items total, two [DECIDED] (factivity/R1, DECISION-01), four still open/deferred (DECISION-02, composition rule, ℛ_req, adopting M3≅M4/𝓑)"
+  - "Revised build order: steps 1,2,4,7 of the first 7 are DECISIONS not experiments — 'the shape of a programme that has run out of things experiments can settle in this area — which is a result, not a stall'"
+defines: []
+refines:
+  - "M0135's build-order reordering (Contr moved 1st→3rd): further reordered here — Contr now sits at step 5 of 8, behind DECISION-02, ℛ_req, diagnostic readings, and the composition rule"
+  - "The Contr/Zero 'confirmed priority-1' research-line status tracked across M0109-M0127: this document does not contradict that Contr was correctly prioritized as urgent at the time, but establishes structurally that Contradiction was never the dependency-chain root — ℛ_req and Evaluation Representation precede it"
+  - "R1 factivity decision and K_t→A_t version-diff (DELETION+ADDITION+RE-SCOPING, tracked M0110-M0112, M0135): repeated verbatim with no changes, confirming stability"
+  - "M0135's artifact map: superseded with updated counts — v1.2 lane now 33 files (was 25), includes an EXPERIMENT-ID-REGISTRY.md (canonical IDs + provenance graph, with 'KR-CONTR-2026-09 retired as a live name'), a new fde/ code package (7 modules, explicitly 'EXPERIMENTAL PACKAGE. app/ NOT TOUCHED'), and new comp/comp2/fde results directories (84 machine-readable result files total, up from the prior count)"
+contradicts: []
+repeats:
+  - "The induced-equivalence-relation correction, the four-way Structure≠Projection≠Lens≠History separation, the saturation law, and the R1/factivity diagram — all repeated near-verbatim from M0135, confirming continuity rather than revision of those specific points"
+bridge_candidates:
+  - "DECISION-02 remains genuinely open at this document's writing — whether it was later decided, and what the eventual composition rule choice was, is not yet known in this reconstruction's read order"
+  - "Whether the reorganized dependency chain (ℛ_req→Eval Rep→Boundary→Composition→Aggregation→Zero→Determination) is itself later revised or ratified — not yet cross-checked against documents after M0137 in this sequence"
+  - "The FDE two-channel representation's 11/13 preservation vs. the Structured representation's 13/13: whether 'Structured' names a fully specified representation elsewhere in the corpus, or remains an upper-bound existence result — not resolved in this record"
+mathematical_content: >
+  States DECISION-01 formally (E∼_evidential E′ ⟹ Comp(E)=Comp(E′)); gives the measured 13-distinction
+  preservation table across four representation languages (Classical/K3/FDE/Structured); states the
+  φ⊇{time,context} non-additivity result (18/90 combined vs. 0/15 each alone) and the last-wins
+  well-definedness failure (E1=E2 as multisets yet lastWins(E1)≠lastWins(E2)) as measured experimental
+  findings, not new derivations performed within this document itself.
+gita_content: null
+kernel_content: >
+  The most complete single-document statement yet of the programme's structural self-understanding:
+  separates what 31 experiments established from what two decisions (R1, DECISION-01) settled instead,
+  and names exactly what remains open at each layer (DECISION-02, ℛ_req, composition rule, Contr,
+  ⪰, δ, N_eff, Zero itself — now explicitly downstream of composition).
+registry_updates:
+  - "Confirms and resolves M0135's forward-pointer: this IS the successor document naming DECISION-01/DECISION-02"
+  - "Establishes the three-register (Research/Decision/Optimized) architecture as a new top-level organizing distinction for the remaining programme"
+  - "Reorders the dependency chain, demoting Contradiction from apparent root to 'one required distinction' — a structural finding, not merely a scheduling one"
+anchor_test:
+  anchor: true
+  supports_dimension: "Decision layer (DECISION-01/02), dependency-chain reordering, evaluation-representation measurement, composition rule constraints, artifact map update"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"DECISION-01 is the first design law in this programme that came from a decision rather than an experiment. It is not weaker for that.\""
+  - "\"A/B/C in KR-CONTR-EVAL fail on the unknown family, not on contradiction. The contradiction question was never the blocker.\""
+  - "\"Sat(r) = U is useless without 'U because what?' ... Sat → Zero, never the reverse. Confirmed from two directions.\""
+  - "\"Steps 1, 2, 4 and 7 are decisions. Four of the first seven. That is the shape of a programme that has run out of things experiments can settle in this area — which is a result, not a stall.\""
+undefined_concepts:
+  - "'Structured' representation (13/13 preservation) — named in the comparison table but not further specified in this document; presumably defined in the referenced W/KR-CONTR-EVAL artifact, not read directly by this reconstruction"
+  - "The full content of DECISION-02's eventual resolution — not present in this document, which leaves it [DECISION REQUIRED]"
+open_questions:
+  - "Was DECISION-02 (semantic status of the frame) ever resolved, and if so where in this reconstruction's remaining sequence?"
+  - "Does the 'third composition shape' (frame-relative standings + divergence, with a separate determination operation) get adopted, or does the [DEFERRED] cross-frame-divergence question resurface?"
+tier2_triggered: true
+tier2_reason: >
+  Confirms and resolves the M0135-flagged unlocated successor document; introduces a genuinely new
+  top-level architectural distinction (the three-register model) and a first-ever decision-layer
+  ratification (DECISION-01); further reorganizes the dependency chain to demote Contradiction from
+  apparent root to one-of-several required distinctions — a structural, not merely scheduling, finding.

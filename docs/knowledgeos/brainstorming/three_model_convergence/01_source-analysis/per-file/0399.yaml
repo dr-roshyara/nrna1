@@ -1,0 +1,103 @@
+sequence: 399
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-102458_close-to-what-you-have-been-describing.md
+title: "Each-Sentence-Is-a-Dimension Experiment; Claim=(Subject,Dimension,Value,Context,Time); Eight Statement Roles; Document is Evidence About the State, Not the State Itself"
+date: "2026-08-26"
+bytes: 5843
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 399
+importance: high
+confidence: high
+about: >
+  A concrete methodological research experiment directly addressing 0392's Q2 ("is every fact a dimension?")
+  via a worked six-statement Nexus document. Treating every sentence as a dimension (D={d1,...,d6}) reveals
+  the statements are NOT independent: they form a dependency/relationship structure rather than a flat list
+  (worked example: d5=dependency-on-System-X and d6=System-X-undocumented jointly imply d7="Nexus has a
+  compliance concern," extending the corpus's earlier v_i=f_i(d1,...,dn) relational-state finding, 0396,
+  to the level of document statements specifically). Refines the dimension record into
+  d_i=(claim,value,source,time,confidence,justification,relationships).
+
+  Identifies a genuine problem: treating "Nexus is secure" as ONE dimension loses internal structure, since
+  "secure" itself depends on dozens of sub-dimensions (authentication, authorization, network exposure,
+  vulnerabilities, dependencies, encryption, patch level) -- proposing that a statement may not be an atomic
+  dimension but a CLAIM ABOUT dimensions, yielding a hierarchy Observation->Statement->Claim->Dimensions->
+  Values (or, considered in reverse, Dimensions+Values+Relationships->Statements), explicitly named "an
+  important unresolved question" about directionality.
+
+  Poses and resolves a deeper problem via a two-level distinction: in "Nexus runs version 2.69," is the
+  dimension Version (with value 2.69), or is the entire sentence itself the dimension? Resolves in favor of
+  the former, formalizing Claim=(Subject,Dimension,Value,Context,Time) as "much more expressive than
+  treating the sentence itself as the dimension." Introduces an EIGHT-ROLE STATEMENT TAXONOMY (Observation/
+  Fact-claim/Interpretation/Relationship/Determination/Rule/Decision/Reference-assumption), illustrated via
+  four genuinely different example sentences ("Nexus runs version 2.69" [observation] vs "Nexus should run
+  3.85" [normative/rule] vs "Nexus is non-compliant" [determination] vs "the owner decided to upgrade"
+  [decision]), explicitly warning "if we blindly call all four 'dimensions', we lose these distinctions" --
+  directly reinforcing 0392's Q2/Q16 undefined-question catalog and 0397/0398's epistemic/social-layer
+  separation with a concrete linguistic worked example.
+
+  Refines the dimension/statement definition precisely: "A dimension is an aspect along which a state can
+  be characterized; a statement is an assertion about that dimension at a particular context/time" --
+  formalized as a stable Dimension=Version paired with a time-indexed Statement_t=(Version,2.69,t), with
+  the dimension remaining constant while the state VALUE changes over time (Statement_{t+1}=(Version,3.85,
+  t+1)) -- "cleaner than making each sentence a permanent dimension," resolving a latent tension in the
+  corpus's own prior usage.
+
+  Connects this directly to the infinite-dimension hypothesis with a precise clarification: the potentially
+  infinite/unbounded thing is NOT an infinite number of SENTENCES, but an unbounded number of possible
+  ASPECTS through which the state can be characterized -- Document_t -> finite observed statements, while
+  State_t -> potentially unbounded dimensions, crystallized as "the document is evidence about the state,
+  not the state itself," explicitly named potentially crucial for KnowledgeOS. Closes by proposing a
+  concrete next experiment: take one real Nexus document, build three explicit layers (Sentence->Claim->
+  Dimension/Value), and inspect every sentence to discover which of eight roles (dimension/value/
+  relationship/observation/interpretation/rule/determination/decision, or combinations) it actually plays --
+  explicitly proposing this EMPIRICAL exercise "may tell us more about what a 'smallest unit of knowledge'
+  actually is than another abstract definition."
+introduces:
+  - concept: "Each-sentence-is-a-dimension research experiment, revealing that document statements are NOT independent but form a dependency/relationship structure (worked example: two dimensions jointly implying a third, compliance-concern dimension)"
+  - concept: "Refined dimension record d_i=(claim,value,source,time,confidence,justification,relationships)"
+  - concept: "The 'Nexus is secure' problem: a single statement can implicitly aggregate dozens of sub-dimensions (authentication/authorization/network-exposure/vulnerabilities/dependencies/encryption/patch-level), proposing that a statement may be a CLAIM ABOUT dimensions rather than an atomic dimension itself, with an explicitly unresolved question about whether Observation->Statement->Claim->Dimensions->Values or the reverse direction is correct"
+  - concept: "Two-level resolution of what a dimension actually is in a worked example: Dimension=Version (stable) with Value=2.69, versus the entire sentence 'Nexus runs version 2.69' -- resolved in favor of the former, formalized as Claim=(Subject,Dimension,Value,Context,Time)"
+  - concept: "Eight-role statement taxonomy (Observation/Fact-claim/Interpretation/Relationship/Determination/Rule/Decision/Reference-assumption), illustrated via four example sentences that would be wrongly conflated if all called 'dimensions'"
+  - concept: "Precise refined definition: a dimension is a stable aspect along which a state can be characterized; a statement is a time-indexed assertion about that dimension -- Dimension=Version constant, Statement_t=(Version,2.69,t) time-varying, cleaner than treating each sentence as a permanent dimension"
+  - concept: "Precise clarification of the infinite-dimension hypothesis: the unbounded quantity is possible ASPECTS of characterization, not the number of sentences -- 'the document is evidence about the state, not the state itself'"
+  - concept: "Concrete proposed next experiment: build a three-layer Sentence->Claim->Dimension/Value analysis of one real document, empirically discovering each sentence's actual role(s), proposed as more informative for defining 'the smallest unit of knowledge' than further abstract definition"
+defines: []
+refines:
+  - concept: "0392's Q2 ('is every fact a dimension?') and Q9 (what does 'extraction' mean, eight candidate operations)"
+    refinement: "Given a concrete worked resolution via the Claim=(Subject,Dimension,Value,Context,Time) formalization and the Statement-vs-Dimension distinction, directly answering Q2's is-the-fact-itself-the-dimension ambiguity"
+  - concept: "0396's state-is-relational-not-a-bag-of-facts principle (v_i=f_i(d1,...,dn))"
+    refinement: "Extended to the level of document statements specifically: individual sentences in a document are shown to be interdependent (one statement's truth affecting the interpretation of another), not merely abstract state dimensions"
+  - concept: "0397/0398's Epistemic layer and Social/Governance layer separation"
+    refinement: "Given a concrete linguistic worked example (four sentences playing four genuinely different statement roles -- observation, rule, determination, decision) demonstrating why conflating them under one 'dimension' label loses essential distinctions"
+  - concept: "0384's infinite-Ideal-State and 0393's dimension-set formalization"
+    refinement: "Precisely clarified: the unbounded quantity is possible characterization ASPECTS, not observed sentences/statements, sharpening the corpus's infinite-dimension hypothesis against a category confusion (unbounded aspects vs. finite linguistic projections of them)"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Claim=(Subject,Dimension,Value,Context,Time) formalization and the eight-role statement taxonomy as a concrete resolution of 0392's Q2 dimension-vs-fact ambiguity."
+  - "dimension-registry.md: record the precise infinite-dimension clarification (unbounded aspects, not sentences; document as evidence about the state, not the state itself) as sharpening 0384/0393's prior formulations."
+  - "dimension-registry.md: record the proposed three-layer Sentence->Claim->Dimension/Value empirical experiment as a concrete next research step for defining the smallest unit of knowledge."
+anchor_test:
+  anchor: "0392's Q2/Q9 undefined-question catalog; 0396's state-is-relational principle; 0397/0398's Epistemic/Social layer separation; 0384/0393's infinite-dimension formalizations"
+  supports_dimension: "Mathematical/linguistic model, concrete methodological proposal: resolves 0392's Q2 dimension-vs-fact ambiguity via a Claim=(Subject,Dimension,Value,Context,Time) formalization and an eight-role statement taxonomy, extends 0396's relational-state principle to document-statement interdependence, and precisely sharpens the infinite-dimension hypothesis (unbounded aspects, not sentences) with the crucial clarification that a document is evidence about the state, not the state itself"
+  refines_or_contradicts: "refines 0392 (concrete resolution of Q2); refines 0396 (statement-level relational interdependence); refines 0397/0398 (concrete linguistic illustration of why layers must not be conflated); refines 0384/0393 (precise infinite-dimension clarification)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "Whether Observation->Statement->Claim->Dimensions->Values or its reverse (Dimensions+Values+Relationships->Statements) is the correct directionality -- explicitly posed as an unresolved question"
+open_questions:
+  - "Whether the proposed three-layer Sentence->Claim->Dimension/Value experiment is ever actually executed on a real document"
+  - "Whether the eight-role statement taxonomy is ever formally combined with 0397's eight-question Epistemic Qualification checklist or 0398's three-type dimension taxonomy"
+tier2_triggered: false
+tier2_reason: "NOT TRIGGERED -- a concrete, valuable methodological research proposal refining the dimension/statement/claim distinction via a worked document example, but without introducing a landmark architectural reversal or new epistemic layer comparable to the tier-2-triggering files in this arc."

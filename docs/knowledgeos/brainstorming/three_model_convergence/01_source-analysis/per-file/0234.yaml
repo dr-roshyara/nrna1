@@ -1,0 +1,56 @@
+sequence: 234
+path: docs/knowledgeos/brainstorming/kernel/20260824-145220-ten-statistical-capability-families-for-knowledge-state-assessment.md
+title: "Ten (Seventeen) Statistical Capability Families for Knowledge-State Assessment"
+date: "2026-08-24"
+bytes: 22000
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 234
+importance: medium
+confidence: high
+about: >
+  A broad survey (not a single-book extraction) organizing statistical techniques into 17 capability
+  families for KnowledgeOS knowledge-state assessment (Estimation, Bayesian inference, Hypothesis
+  testing, Confidence/uncertainty, Correlation/dependency, Causal inference, Time-series/stochastic-
+  process, Stability analysis, Resampling/robustness, Dimensionality reduction, Clustering/classification,
+  Regression, Anomaly/change detection, Statistical Process Control, Monte Carlo, Optimization). Mostly
+  consolidates techniques already introduced across 0205-0233 into one prioritized catalogue rather than
+  introducing substantially new architecture; most novel contribution is applying Statistical Process
+  Control to KnowledgeOS governance itself as a measurable process.
+introduces:
+  - concept: "Statistical Process Control (SPC) applied to the knowledge process itself, not a factory: monitor architecture-decisions-per-month, review-rejection-rate, contradiction-rate, evidence-freshness, knowledge-invalidation-rate against control limits -- turning governance into a measurable process rather than subjective judgment"
+  - concept: "Five-question statistical research program: Estimation (what is the current state given evidence?), Uncertainty (how certain?), Stability (would the state survive reasonable perturbation?), Causality (associative vs. causal relationships?), Evolution (how should state change with new evidence?)"
+  - concept: "Fifteen-item prioritized technique table (Bayesian updating #1, state-space models #2, uncertainty estimation #3, hypothesis testing #4, bootstrap #5, sensitivity analysis #6, causal inference #7, change-point detection #8, dependency/graphical models #9, robust statistics #10, SPC #11, optimization #12, PCA/factor-analysis #13, clustering #14, Monte Carlo #15)"
+  - concept: "Explicit optimization/governance separation: optimization should recommend, governance should authorize"
+defines: []
+refines:
+  - concept: "0233's Astrom-derived state-estimation stage and 0225's HSMM stability/entropy work"
+    refinement: "Extends stability analysis with a concrete list of techniques (variance/sensitivity/perturbation/subsampling/influence-functions/condition-numbers/eigenvalue/Lyapunov analysis) directly usable to test whether a knowledge state is fragile under evidence perturbation."
+contradicts: []
+repeats:
+  - concept: "Uncertainty is not the same as truth; discovered structure must not automatically become canonical knowledge; correlation vs causation"
+    canonical_source: 208
+    novelty: none
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0205-0233 mathematical/statistical arc"
+  supports_dimension: "Mathematical/statistical model -- broad consolidating catalogue; most novel single contribution is applying SPC/control-charts to knowledge-process governance as a measurable process"
+  refines_or_contradicts: "consolidates the prior mathematical arc; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether the proposed 'Statistical Methods for KnowledgeOS' transfer matrix (per-technique ADOPT/ADAPT/RESEARCH/REJECT against Evidence/State/Assurance/Governance/Decision/Feedback) is ever produced"
+tier2_triggered: false
+tier2_reason: "Broad consolidating survey of statistical technique families largely restating concepts already established across 0205-0233; recorded for its one genuinely new contribution -- applying Statistical Process Control to KnowledgeOS governance as a measurable process -- but does not independently warrant full critical-tier treatment."

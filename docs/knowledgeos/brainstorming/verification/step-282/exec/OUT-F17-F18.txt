@@ -1,0 +1,33 @@
+====================================================================================================
+F17 / F18 — Q_t REPLAYABILITY AND SERIALIZATION
+====================================================================================================
+  PASS  F17.1   replay from genesis                   |Q|=3
+  PASS  F17.2   Q_t = Replay_Q(Q0,H_t)                deterministic
+  PASS  F17.3   repeated replay idempotent            Q is a SET -> idempotent
+  PASS  F17.4   temporal reconstruction               Q_at_step2=2
+  PASS  F17.5   duplicate ask is idempotent           set semantics
+  PASS  F18.1   Deserialize(Serialize(Q))=Q           bytes=86
+  PASS  F18.2   serialization deterministic           sorted -> order-independent
+  PASS  F18.3   equality after round-trip             stable under repetition
+  PASS  F17.6   replay after supersession             supersession is in R, not Q -> Q unaffected
+
+  DELETION SEMANTICS — the open question:
+    ask(p1); unask(p1) -> Q=set()
+    But 'p1 was once asked' is now UNRECOVERABLE from Q alone.
+    History still holds both events: ['ask', 'unask']
+  PASS  F17.7   un-ask recoverable from History       History retains ask+unask; Q is a projection
+
+VERDICT F17/F18:
+  Q_t is REPLAYABLE and SERIALIZABLE.  7/7 + 3/3 PASS.
+  Q_t = Replay_Q(Q_0, H_t) holds; Deserialize(Serialize(Q_t)) = Q_t holds.
+
+  CLASSIFICATION OF Q_t (the question step 282 asks):
+     NOT (1) part of theoretical state — K is still (A,R); Q is not a component.
+     NOT (3) an externally maintained register — it is reconstructed from History.
+     => (2) EVENT-DERIVED OPERATIONAL STATE.
+        Q_t is a PROJECTION of History, exactly like Sigma is a projection of e.
+        This is the same shape as an existing, accepted construct — no new kind of object.
+
+  RESIDUAL: 'unask' deletion semantics are DEFINABLE but NOT DECIDED. Q alone loses the fact
+  that p was once asked; History does not. Since Q is a projection of History, nothing is lost
+  from the SYSTEM. Whether 'unask' should exist at all is a NORMATIVE choice, not a formal gap.

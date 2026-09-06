@@ -1,0 +1,177 @@
+sequence: 668
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-121447_step-083-temporal-reasoning-and-time-dependent-truth.md
+title: "CONFIRMED Seventh Collision: Step 83 Substantially Retreads Already-Established Temporal-Epistemics Content (0648's Event Time≠Processing Time and Historical-Truth Discipline, 0657's IdentityValidityAtTime, 0661's ValidFrom/ValidUntil and Decision-Replay Machinery, 0652's ApparentContradiction≠LogicalContradiction) — Confirmed via an EXACT-NAME Invariant Match: This File's I_TemporalTruth Is Verbatim the Same Invariant Name Already Introduced at 0648 (Step 66); Delivers Genuinely New Content Alongside the Retread (a Three-Way Event/Observation/Processing-Time Split Extending 0648's Two-Way Split, the Sharp TrueAt≠KnownAt Formalization, Formal Bitemporal Valid-Time/Transaction-Time Terminology, Allen's Interval Algebra, and DriftCause Temporal Attribution Extending 0664); Six New Invariants, One Confirmed Exact-Name Collision; Verdict 'STEP 83 — PASS'; Closes Opening Step 84 — Counterfactual Reasoning, a LIKELY EIGHTH Collision Candidate Against the Corpus's Extensive Prior Counterfactual/do-Calculus Machinery (0646, 0658)"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 83 -- Temporal Reasoning and Time-Dependent Truth', opened at 0667's close; CONFIRMS the likely seventh collision flagged at 0667 against the corpus's already-established temporal-epistemics content (0648, 0657, 0661), via a directly checkable exact-name invariant match (I_TemporalTruth)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 668
+importance: critical
+confidence: high
+about: >
+  **CONFIRMS the likely seventh collision flagged at 0667**, via the clearest possible evidence: this file's
+  closing invariant set includes **`I_{TemporalTruth}`** ("claims whose truth can change must have an
+  explicit temporal interpretation") -- **an EXACT NAME MATCH to one of 0648's (Step 66's) own six named
+  invariants** (this reconstruction's 0648 record explicitly lists `I_Observation, I_Measurement, I_Missing,
+  I_Population, I_Observability, I_TemporalTruth`), introduced here with zero cross-reference to the earlier
+  invariant of the identical name. This directly and mechanically confirms the collision this
+  reconstruction anticipated, joining `I_Concurrency` (0656 vs. 0641), `I_Causal`+`I_Intervention` (0658 vs.
+  0646), and `I_DecisionAuthority` (0659 vs. 0645) as a fourth confirmed exact-name invariant duplication in
+  this session.
+
+  Beyond the invariant-name match, this file substantially retreads several distinct already-established
+  temporal-epistemics results: `EventTime≠ObservationTime≠ProcessingTime` (§83.3-83.6) directly extends but
+  substantially overlaps 0648's already-established `Event time≠Processing time` (`t_e<t_p`); Validity
+  intervals and open-ended effective-dating (§83.7-83.10) substantially overlap 0661's already-established
+  `ValidFrom`/`ValidUntil` governance-artifact effective-dating; `AuthorizedAt(A,X,t)` requiring authority
+  evaluated at action time, not merely "ever held" (§83.16-83.17), substantially overlaps 0657's
+  `IdentityValidityAtTime` and 0661's temporal governance discipline; Temporal replay using artifacts valid
+  at decision time, not current artifacts (§83.19-83.21), is substantively the same principle as 0661's own
+  `Replay(D_1)` using exactly `(K_1,M_1,P_1,C_1)` and its retroactive-reinterpretation experiment
+  (`HistoricalIntegrityViolation`); and the overlapping-versus-non-overlapping temporal-contradiction
+  treatment (§83.43-83.46, requiring `Subject+Predicate+Scope+Time` to match before a genuine contradiction
+  exists) directly restates 0652's already-established `ApparentContradiction≠LogicalContradiction`
+  discipline. None of these five distinct overlaps carry any cross-reference to their respective earlier
+  files.
+
+  Despite this substantial retread, the file delivers genuinely new content extending beyond the prior
+  treatments: **the file's first central formal deliverable -- `TrueAt(C,t)≠KnownAt(C,t)`**, a sharper and
+  more directly actionable formalization than 0648's more general `ValidTime≠RecordedTime`, worked through
+  a concrete decision-timing example (a fact true at 10:00, learned by the system at 10:30, with a decision
+  occurring at 10:15 correctly reflecting `Truth(F)=True` but `Known(F)=False` at decision time), confirmed
+  via a dedicated experiment (PASS), explicitly declared "one of the most important results of Step 83."
+  Delivers formal bitemporal database terminology -- **Valid time versus Transaction time** (`V(C)` versus
+  `T(C)`) -- a standard, precisely named database-theory concept not previously introduced under this
+  specific terminology in the corpus, confirmed via a late-arriving-knowledge experiment (both timestamps
+  preserved, PASS).
+
+  **Delivers the file's second central formal deliverable -- a four-level knowledge-state taxonomy at a
+  point in time, genuinely new granularity**: `Truth_t` (world truth), `K^org_t` (organizationally accepted
+  knowledge), `K^A_t` (an individual agent's knowledge), `K^sys_t` (KnowledgeOS's recorded knowledge),
+  confirmed via a dedicated experiment distinguishing an engineer's private knowledge of a defect (09:00)
+  from organizational acceptance (11:00) from system recording (11:05) -- PASS -- directly and genuinely
+  extending 0662's three-level agent/shared/organizational knowledge hierarchy with an explicit temporal
+  dimension.
+
+  Delivers Temporal causality with the important nuance that `ObservationTime` does not determine
+  `EventTime` (a 2026 discovery can validly establish a 2025 event, confirmed via a dedicated experiment,
+  PASS) and that causal temporal ordering (`t_cause≤t_effect`) can be violated by an incorrectly-claimed
+  reversed-order causal relationship (confirmed via a dedicated experiment, PASS). **Delivers genuinely new
+  formal content -- Temporal interval uncertainty and Allen's interval algebra**: event times represented
+  as intervals rather than points when exact timing is unknown (confirmed via a false-temporal-precision
+  experiment, PASS), with interval-overlap ordering explicitly left undetermined rather than forced
+  (confirmed via a dedicated experiment, PASS), and an explicit, if brief, citation-adjacent reference to
+  Allen's classical temporal-interval-relation vocabulary (`before, after, overlaps, during, starts,
+  finishes, meets`), crystallized as `TemporalRelation≠simple timestamp comparison` -- this is a genuinely
+  new, correctly-named classical formalism (Allen's Interval Algebra) not previously introduced in the
+  corpus, even though only briefly gestured at rather than fully developed.
+
+  Delivers Event-sourcing connection (`S_t=Fold(Event_1,...,Event_k)`) with the important honest caveat
+  `EventSourcing≠GuaranteedTruth` (an undocumented manual change with no corresponding event correctly
+  yields `EventHistoryIncomplete`, confirmed via a dedicated experiment, PASS) -- directly and genuinely
+  connecting back to 0666's observability discipline ("this brings us back to observability," §83.38, a
+  further explicit, correctly-attributed backward cross-reference, continuing the strong positive-self-
+  reference run through an eighth consecutive file). Delivers Temporal supersession requiring historical
+  reconstructability rather than physical erasure (confirmed via a dedicated experiment, PASS), directly
+  paralleling but not identical to 0652's already-established `Retracted≠NeverExisted` discipline.
+
+  **Delivers the file's third central formal deliverable -- `DriftCause` formally required to be temporally
+  attributable among `ImplementationChange`, `ArchitectureChange`, and `PolicyChange`**, directly and
+  genuinely extending 0664's architectural-drift discipline with a specific temporal-causation dimension not
+  previously this concretely specified: a governance violation can newly emerge purely from an architecture-
+  rule change with zero implementation change, confirmed via a dedicated experiment (`ImplementationChange=
+  False, ArchitectureChange=True, Violation=True` -- PASS), crystallizing that "a governance violation can be
+  caused by a rule change, not an implementation change" -- explicitly declared "extremely important."
+
+  Delivers the central historical query `Q(t)="what was true, what was known, what was governed, and what
+  was authorized at time t?"`, crystallized as **`Temporal Explainability`** ("why was this considered
+  correct and authorized then?" rather than "why does the system think this now?"), confirmed via a
+  historical-rationale-reconstruction experiment (PASS), and formal time-travel query operations
+  (`StateAt(t), KnowledgeAt(t), PolicyAt(t), AuthorityAt(t), ArchitectureAt(t)`), confirmed via a dedicated
+  experiment (PASS).
+
+  **Delivers six new named invariants, ONE of which is a CONFIRMED exact-name match to 0648's invariant of
+  the same name**: `I_{TemporalTruth}` (DUPLICATE, see above), `I_{EventTime}`, `I_{HistoricalIntegrity}`,
+  `I_{TemporalAuthority}`, `I_{TemporalUncertainty}`, `I_{TemporalSupersession}` -- the latter five are not
+  exact-name matches to previously tracked invariants, continuing the now-familiar "partial invariant-set
+  collision" pattern (one exact match, several genuinely distinct siblings).
+
+  Delivers Step 83's verdict **"STEP 83 — PASS,"** extending the core model from `Knowledge` to
+  `Knowledge(t)` and `Governance` to `Governance(t)`, with a fully temporally-indexed decision function
+  `Decision(t)=f(Knowledge(t), Uncertainty(t), CausalModel(t), DecisionModel(t), Policy(t), Authority(t),
+  Context(t))`, and a refined architecture characterization: "a temporally versioned, provenance-aware,
+  uncertainty-aware, governed knowledge-and-decision system."
+
+  **Closes by identifying counterfactual reasoning as the next boundary, previewing content that substantially
+  overlaps the corpus's already-extensive counterfactual/do-calculus machinery**: "what would have happened
+  if we had done something else?" -- explicitly framing the test as distinguishing `P(Y|X)` from
+  `P(Y|do(X))` and from `P(Y_x|X=x')`, directly and near-verbatim matching vocabulary this reconstruction's
+  own records confirm was already substantially developed at 0646 (Step 63's do-calculus-style intervention
+  deepening, `NotIdentified`) and 0658 (Step 74's `do(X=x)` intervention operator and counterfactual
+  potential-outcomes machinery, `Y(1)-Y(0)`). Opens "Step 84 -- [Counterfactual Reasoning]," flagged as a
+  LIKELY EIGHTH collision candidate in this reconstruction's ongoing tracking, pending direct confirmation
+  once 0669 is read. No actual code execution reported in this file.
+introduces:
+  - concept: "CONFIRMED seventh collision: Step 83 substantially retreads already-established temporal-epistemics content across five distinct sub-results (0648's event/processing time and historical-truth discipline, 0657's IdentityValidityAtTime, 0661's ValidFrom/ValidUntil and decision-replay machinery, 0652's ApparentContradiction≠LogicalContradiction), confirmed via a directly checkable exact-name invariant match (I_TemporalTruth, verbatim identical to 0648's invariant of the same name)"
+  - concept: "TrueAt(C,t)≠KnownAt(C,t), a sharper and more directly actionable formalization than 0648's ValidTime≠RecordedTime, explicitly declared one of Step 83's most important results"
+  - concept: "Formal bitemporal database terminology (Valid time vs Transaction time), and Allen's Interval Algebra briefly but correctly introduced as a classical temporal-relation formalism"
+  - concept: "A four-level knowledge-state taxonomy at a point in time (world truth, organizational, agent, system-recorded), extending 0662's three-level knowledge hierarchy with an explicit temporal dimension"
+  - concept: "DriftCause formally required to be temporally attributable (implementation vs. architecture vs. policy change), directly and genuinely extending 0664's architectural-drift discipline"
+  - concept: "An eighth explicit, correctly-attributed backward cross-reference ('this brings us back to observability,' referencing 0666), continuing the strong positive-self-reference run"
+  - concept: "A LIKELY EIGHTH collision candidate: Step 84's counterfactual-reasoning preview substantially overlaps the corpus's already-extensive do-calculus/counterfactual machinery from 0646 and 0658"
+defines:
+  - concept: "TrueAt(C,t)≠KnownAt(C,t)"
+    definition: "A claim can be true in the world at a given time while KnowledgeOS (or a specific decision process) has not yet learned it — a decision made before the system acquires knowledge of an already-true fact correctly reflects Known(F,t)=False even though Truth(F,t)=True, sharper than the more general ValidTime≠RecordedTime distinction because it is anchored to a specific decision-relevant moment"
+  - concept: "Valid time versus Transaction time (bitemporal modeling)"
+    definition: "Valid time (V(C)) records when a fact was true in the modeled world; Transaction time (T(C)) records when the system recorded that fact; the two are independent dimensions, and late-arriving knowledge (a fact valid earlier but recorded later) requires both to be preserved simultaneously"
+  - concept: "DriftCause temporal attribution"
+    definition: "An architecture-governance violation newly detected at time t must be attributable to a specific type of change (ImplementationChange, ArchitectureChange, or PolicyChange) that occurred, since a violation can emerge purely from a rule change with the underlying implementation completely unchanged — extending 0664's drift discipline with an explicit causal-attribution requirement"
+refines:
+  - concept: "0648's (Step 66's) Event time≠Processing time and I_TemporalTruth invariant"
+    refinement: "CONFIRMED SUBSTANTIAL RE-DERIVATION: this file's EventTime≠ObservationTime≠ProcessingTime extends 0648's two-way split to three, and this file's own I_TemporalTruth invariant is a confirmed EXACT-NAME duplicate of 0648's invariant of the same name, introduced with zero cross-reference"
+  - concept: "0657's (Step 73's) IdentityValidityAtTime and 0661's (Step 77's) ValidFrom/ValidUntil governance effective-dating and decision-replay machinery"
+    refinement: "CONFIRMED SUBSTANTIALLY OVERLAPPED: this file's AuthorizedAt(A,X,t) and temporal-replay-using-artifacts-valid-at-decision-time content directly restates the substance of 0657's and 0661's already-established temporal-validity and replay disciplines, without cross-reference"
+  - concept: "0652's (Step 68's) ApparentContradiction≠LogicalContradiction"
+    refinement: "CONFIRMED SUBSTANTIALLY RESTATED: this file's non-overlapping-versus-overlapping temporal-interval contradiction treatment (requiring Subject+Predicate+Scope+Time to match) directly restates 0652's already-established contradiction-scoping discipline in the temporal domain specifically, without cross-reference"
+  - concept: "0662's three-level agent/shared/organizational knowledge hierarchy"
+    refinement: "Directly and genuinely extended with an explicit fourth level (Truth_t, world truth) and a temporal dimension across all four levels"
+  - concept: "0664's Drift≠Violation and architecture-drift discipline"
+    refinement: "Directly and genuinely extended via DriftCause temporal attribution — the corpus's first explicit treatment of distinguishing which type of change (implementation/architecture/policy) caused a newly-detected violation"
+  - concept: "0646's (Step 63's) and 0658's (Step 74's) already-established do-calculus/counterfactual machinery"
+    refinement: "LIKELY SUBSTANTIALLY OVERLAPPED, NOT YET CONFIRMED: Step 84's opening preview poses nearly the same P(Y|X) vs P(Y|do(X)) vs P(Y_x|X=x') distinction already substantially developed at 0646 and 0658; flagged as a likely eighth collision candidate pending direct comparison once 0669 is read"
+contradicts: []
+repeats:
+  - "0648 (I_TemporalTruth invariant, exact-name duplicate; EventTime/ProcessingTime split substantially overlapped)"
+  - "0657 (IdentityValidityAtTime substantially overlapped)"
+  - "0661 (ValidFrom/ValidUntil and decision-replay machinery substantially overlapped)"
+  - "0652 (ApparentContradiction≠LogicalContradiction substantially restated in the temporal domain)"
+bridge_candidates:
+  - "HIGH PRIORITY: read Step 84's actual file (0669) and directly compare against 0646's and 0658's already-established do-calculus/counterfactual machinery — the closing preview's near-identical framing (P(Y|X) vs P(Y|do(X)) vs P(Y_x|X=x')) makes a genuine eighth collision plausible, continuing the pattern where several files in this later span (0668 now confirmed, following 0658/0659/0656) substantially retread earlier, specific prior steps even while the immediately-surrounding files (0660-0667 mostly) showed strong positive self-reference."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CONFIRMED seventh collision — Step 83 substantially retreads five distinct already-established temporal-epistemics results (0648, 0657, 0661, 0652), confirmed via an exact-name invariant match (I_TemporalTruth, identical to 0648's invariant of the same name) — the fourth confirmed exact-name invariant duplication this session."
+  - "dimension-registry.md: record the genuinely new content this file contributes despite the retread — TrueAt(C,t)≠KnownAt(C,t) (a sharper formalization than 0648's ValidTime≠RecordedTime), formal bitemporal Valid-time/Transaction-time terminology, Allen's Interval Algebra briefly introduced, a four-level temporal knowledge-state taxonomy extending 0662, and DriftCause temporal attribution extending 0664."
+  - "dimension-registry.md: record verdict 'STEP 83 — PASS' and the flagged LIKELY EIGHTH collision candidate — Step 84's counterfactual-reasoning preview substantially overlapping the corpus's already-extensive do-calculus/counterfactual machinery (0646, 0658), pending confirmation at 0669."
+anchor_test:
+  anchor: "0667's flagged likely-seventh-collision candidate; 0648's Event time≠Processing time and I_TemporalTruth invariant; 0657's IdentityValidityAtTime; 0661's ValidFrom/ValidUntil and decision-replay machinery; 0652's ApparentContradiction≠LogicalContradiction; 0662's knowledge hierarchy; 0664's Drift≠Violation discipline; 0646's/0658's do-calculus/counterfactual machinery"
+  supports_dimension: "CONFIRMS, via the clearest and most directly checkable evidence available (an exact-name invariant match), the collision this reconstruction anticipated at 0667, joining three prior confirmed exact-name invariant duplications in this session (I_Concurrency, I_Causal+I_Intervention, I_DecisionAuthority) as a fourth. The collision extends beyond the single invariant match to at least four further distinct substantial content overlaps (event/processing time, temporal validity/authorization, decision replay, and contradiction scoping), all without cross-reference to their respective earlier files. At the same time, the file delivers several genuinely valuable new contributions not present in the earlier treatments — most notably the sharper TrueAt≠KnownAt distinction, correctly-named Allen's Interval Algebra, and DriftCause temporal attribution — consistent with this reconstruction's established finding that files in this collision-prone span mix substantial retread with genuine incremental value rather than being pure duplicates. The file also delivers a further explicit, correctly-attributed backward cross-reference (to 0666's observability discipline), continuing evidence that the model line retains selective working memory even within files that substantially retread other specific earlier content"
+  refines_or_contradicts: "CONFIRMS the collision flagged at 0667 via an exact-name invariant match and four further substantial content overlaps (0648, 0657, 0661, 0652); directly and genuinely extends 0662's knowledge hierarchy and 0664's drift discipline; explicitly and correctly cross-references 0666's observability discipline; flags, but does not yet confirm, an eighth collision candidate against 0646's/0658's counterfactual machinery for Step 84; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "This file's §83.67 invariant I_TemporalTruth ('claims whose truth can change must have an explicit temporal interpretation') shares the identical symbolic name with 0648's own already-established invariant of the same name (part of 0648's six-invariant set: I_Observation, I_Measurement, I_Missing, I_Population, I_Observability, I_TemporalTruth), directly and mechanically confirming the fourth exact-name invariant duplication in this session's tracked pattern."
+  - "The temporal-replay experiment (§83.19-83.21, a 2025 decision correctly replayed using Policy_2025 rather than a 2026 policy change) is structurally and substantively identical to 0661's own decision-replay and retroactive-reinterpretation experiments (§77.9-77.18), directly and checkably confirming substantial content overlap with 0661 independent of the invariant-name evidence above."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 84's actual content (0669), once read, confirms the flagged eighth collision candidate against 0646's/0658's already-established do-calculus/counterfactual machinery, or delivers a genuinely distinct angle not previously covered."
+tier2_triggered: true
+tier2_reason: "CONFIRMS, via the clearest and most directly checkable evidence in this reconstruction (an exact-name invariant match, I_TemporalTruth, identical to 0648's invariant), the seventh collision flagged at 0667 — a fourth confirmed exact-name invariant duplication this session, joined by at least four further substantial content overlaps against 0648, 0657, 0661, and 0652, none cross-referenced. Simultaneously delivers genuinely valuable new content (TrueAt≠KnownAt, bitemporal Valid-time/Transaction-time terminology, Allen's Interval Algebra, a four-level temporal knowledge-state taxonomy, DriftCause temporal attribution) and a further explicit, correctly-attributed backward cross-reference to 0666. Flags a likely eighth collision candidate for Step 84 against the corpus's counterfactual-reasoning machinery. Verdict 'STEP 83 — PASS.'"

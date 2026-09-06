@@ -1,0 +1,44 @@
+sequence: 495
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-232221_correction-chapter-3-is-not-primarily-an-epistemic-chapter-duplicate.md
+title: "Confirmed byte-identical duplicate of 0494"
+date: "2026-08-26"
+bytes: 33209
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "identical to 0494; self-declared duplicate in filename, confirmed via diff -q (no output)"
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: 494
+importance: minor
+confidence: high
+about: >
+  Confirmed via `diff -q` (no output, byte-identical) to be an exact duplicate of 0494
+  ("correction-chapter-3-is-not-primarily-an-epistemic-chapter.md"), matching the filename's own
+  "-duplicate" suffix. No new content. See 0494.yaml for the full analysis.
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - "Byte-identical full duplicate of 0494 (confirmed via diff -q)"
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: no new entry -- recorded as a confirmed duplicate of 0494 in the per-file record only."
+anchor_test:
+  anchor: "0494"
+  supports_dimension: "None -- exact duplicate, no new content."
+  refines_or_contradicts: "identical to 0494"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Confirmed byte-identical duplicate of 0494; no new content to evaluate."

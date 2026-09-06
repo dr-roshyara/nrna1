@@ -1,0 +1,127 @@
+sequence: M0019
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-211600_inquiry-as-the-missing-top-level-entry-point.md
+title: "Inquiry as the Missing Top-Level Entry Point: Q=(T,P,C,R,Gamma), the Top-Down/Bottom-Up Duality, Smallest Adequate Answer A_Q*=argmin Complexity(A) s.t. Adequate(A,Q), 'Unknown' as a Legitimate Minimal Answer, and Inquiry as KnowledgeOS's Missing Stopping Condition"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: b
+  secondary: c1
+  secondary_note: "introduces a genuinely new first-class theoretical object (Inquiry) not present in any of M0001-M0018, reframing the entire accumulated pipeline (World->Observation->Evidence->K_t) as only the bottom-up half of a larger loop, with Inquiry supplying the missing top-down half and, crucially, a principled stopping condition"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0019
+importance: critical
+confidence: high
+about: >
+  Identifies a structural gap in all of M0001-M0018's accumulated apparatus: none of it models
+  WHY KnowledgeOS is looking for knowledge in the first place. Proposes Inquiry as a first-class
+  theoretical object, distinct from a mere linguistic question (Question subset-of Inquiry).
+
+  **DELIVERS THE FORMAL INQUIRY DEFINITION**: Q=(T,P,C,R,Gamma) -- Target (what must be
+  known/determined), Purpose (why), Context (frame), Requirements (what constitutes an adequate
+  answer), and adequacy-rules/constraints Gamma. Logged [PROP].
+
+  **DELIVERS THE TOP-DOWN/BOTTOM-UP DUALITY**: bottom-up (World -> Information -> Knowledge, all of
+  M0005-M0018's apparatus) is complemented by a top-down direction (Inquiry -> Requirements ->
+  Investigation), closing into a single loop: Inquiry -> Required Knowledge -> Investigation ->
+  Knowledge -> Answer.
+
+  **REINTERPRETS THE IDEAL STATE AS INQUIRY-DERIVED**: rather than I_t(P,C) floating independently,
+  Q -> I_Q, i.e. I_Q = IdealState(Q) -- the inquiry determines what knowledge would be sufficient,
+  making the Ideal State inquiry-relative rather than a free-standing parameter. Correspondingly,
+  Zero(K_t,I_Q,EC)=0 means "we know enough for THIS inquiry," never "we know everything."
+
+  **DELIVERS THE SMALLEST-ADEQUATE-ANSWER FORMALIZATION, EXPLICITLY A SECOND, DISTINCT MINIMIZATION
+  PROBLEM FROM M0018's MINIMAL-KERNEL OPTIMIZATION**: A_Q* = argmin_{A in Calligraphic-A(Q,K_t)}
+  Complexity(A) subject to Adequate(A,Q) -- explicitly NOT the same as K_t*'s minimal-sufficient-
+  representation optimization (M0018): "We could have K_t = very large while A_Q* = very small.
+  That is exactly what we want." Answer_Q = Projection_Q(K_t), an inquiry-dependent projection, so
+  Answer != Knowledge State.
+
+  **DELIVERS THE ADEQUATE(A,Q) PREDICATE (COMPONENTS NAMED, EXACT FORM LEFT AS RESEARCH WORK)**:
+  target satisfied AND required evidence satisfied AND required certainty satisfied AND required
+  context preserved AND required provenance preserved AND decision condition satisfied.
+
+  **DELIVERS 'UNKNOWN' / 'CANNOT BE DETERMINED' AS A LEGITIMATE SMALLEST ADEQUATE ANSWER**: when
+  Zero(K_t,I_Q,EC) != 0 (e.g. missing firewall configuration for a migration-feasibility inquiry),
+  the correct minimal answer is an explicit epistemic-status value from
+  {Determined,PartiallyDetermined,Undetermined,Conflicting,NotApplicable,Unknown} naming exactly
+  what is missing -- "much better than hallucinating a completion," directly connecting to the
+  corpus's anti-fabrication principle and to M0018's data-processing anti-hallucination law.
+
+  **DELIVERS INQUIRY-RELATIVE INVESTIGATION**: refines M0010's dimension-discovery formula
+  (d*=argmax_d E[Delta-G_t|investigate d]) into an inquiry-relative version d_Q* = argmax_d
+  E[adequacy improvement for Q|investigate d]/Cost(d) -- investigation should target only the gaps
+  that matter to the current inquiry, not all missing knowledge indiscriminately.
+
+  **DELIVERS INQUIRY AS KNOWLEDGEOS'S MISSING STOPPING CONDITION**: "without Inquiry, the system
+  has no principled reason to stop learning -- there is always more information." With Inquiry:
+  Stop iff Zero(K_t,I_Q,EC)=0 -- explicitly flagged as "one of the most important theoretical
+  functions of Inquiry," resolving an implicit open problem (when does investigation terminate)
+  that none of M0001-M0018 had named directly.
+
+  **DELIVERS ANSWER-MINIMALITY-IS-SEMANTIC-NOT-LINGUISTIC**: a 500-word answer can be more minimal
+  (in the relevant sense) than a 20-word answer if the 20-word answer omits a required
+  qualification -- minimality is measured against Adequate(A,Q), not surface length.
+
+  **CONNECTS DRETSKE'S (M0017) AND COVER-THOMAS'S (M0018) CONTRIBUTIONS THROUGH INQUIRY**:
+  Information -> Semantic Content -> Inquiry Relevance -> Knowledge -> Answer -- giving Dretske's
+  semantic-selection idea a concrete role (Inquiry determines which content matters) and
+  Cover-Thomas's sufficiency/compression apparatus a concrete target (minimum representation
+  subject to epistemic adequacy FOR THE INQUIRY, not merely for an abstract purpose P).
+
+  **DELIVERS THE 'TWO BOUNDARIES' FRAMING**: the Knowledge boundary (what can currently be
+  known/determined, K_t) and the Inquiry boundary (what needs to be known, Q/I_Q); Zero = the gap
+  between them; Answer = the minimal projection of adequate knowledge onto the inquiry. "Inquiry
+  defines the destination. Knowledge State defines what has been established. Zero identifies
+  what is still missing. Investigation reduces the relevant gap. Answer is the smallest adequate
+  projection of the resulting knowledge."
+
+  **PROPOSES THE NEXT TEST**: check this Inquiry->IdealState->Zero->SmallestAdequateAnswer model
+  against the (separately tracked) 1,155-file KnowledgeOS brainstorming corpus, to determine
+  whether Inquiry was already implicitly present under a different name, and whether it is a
+  genuinely missing primitive or a derived construct -- explicitly not yet claiming either.
+introduces:
+  - concept: "Inquiry Q=(T,P,C,R,Gamma) as a first-class theoretical object, distinct from a linguistic Question (Question subset-of Inquiry)"
+  - concept: "The top-down/bottom-up duality: World->Information->Knowledge (bottom-up) complemented by Inquiry->Requirements->Investigation (top-down), closing into one loop"
+  - concept: "The Ideal State reinterpreted as inquiry-derived: I_Q=IdealState(Q), making Zero(K_t,I_Q,EC) mean 'enough for THIS inquiry,' never 'everything'"
+  - concept: "Smallest Adequate Answer A_Q*=argmin Complexity(A) s.t. Adequate(A,Q), explicitly a SECOND, distinct minimization problem from M0018's minimal-kernel K_t* optimization"
+  - concept: "The Adequate(A,Q) predicate (target/evidence/certainty/context/provenance/decision-condition satisfaction, exact form left open)"
+  - concept: "'Unknown'/'cannot be determined' as a legitimate smallest adequate answer when Zero!=0, preventing hallucinated completion"
+  - concept: "Inquiry-relative investigation d_Q*=argmax_d E[adequacy improvement for Q|investigate d]/Cost(d), refining M0010's dimension-discovery formula"
+  - concept: "Inquiry as KnowledgeOS's missing stopping condition: Stop iff Zero(K_t,I_Q,EC)=0"
+  - concept: "Answer-minimality-is-semantic-not-linguistic"
+  - concept: "The 'two boundaries' framing (Knowledge boundary vs Inquiry boundary, Zero as the gap between them, Answer as the minimal projection of adequate knowledge onto the inquiry)"
+defines: []
+refines:
+  - concept: "M0016's Ideal State I_t(P,C), now derived from an explicit Inquiry object rather than left as an independent parameter"
+  - concept: "M0010's dimension-discovery optimization d*=argmax_d E[Delta-G_t|investigate d], now made inquiry-relative"
+  - concept: "M0018's minimal-representation optimization for K_t*, explicitly distinguished from (not replaced by) the new Answer-minimization problem A_Q*"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Inquiry as a first-class object, with Question as a proper subset, is a genuinely new candidate primitive not previously tracked anywhere in this pass (M0001-M0018) -- worth flagging for the eventual global-reclassification pass as a strong candidate addition to the accumulated K_t/Zero/I_t apparatus, and for checking against the separately-tracked main-corpus registry for an equivalent or contrasting concept."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0019 as introducing Inquiry Q=(T,P,C,R,Gamma) as a genuinely new first-class theoretical object, delivering the top-down/bottom-up duality, the Smallest-Adequate-Answer optimization (distinct from M0018's minimal-kernel optimization), 'Unknown' as a legitimate minimal answer, and Inquiry as KnowledgeOS's missing stopping condition (Stop iff Zero(K_t,I_Q,EC)=0)."
+anchor_test:
+  anchor: "This reconstruction's own corpus-boundary and gap-analysis discipline, and the pass's accumulated K_t/Zero/I_t apparatus (M0005-M0018)"
+  supports_dimension: "Introduces a genuinely new candidate primitive (Inquiry) not previously present anywhere in this pass, resolving an implicit gap (no stopping condition) none of M0001-M0018 had named"
+  refines_or_contradicts: "refines (M0016's Ideal State, M0010's dimension-discovery formula, M0018's minimal-kernel optimization, explicitly distinguished not replaced)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'Without Inquiry, the system has no principled reason to stop learning. There is always more information... Stop iff Zero(K_t,I_Q,EC)=0' -- explicitly naming and solving a gap (no termination condition) that none of the pass's prior 18 files had identified as a distinct problem."
+  - "The explicit distinction between K_t* (minimal sufficient knowledge representation, M0018) and A_Q* (smallest adequate answer, this document) as two DIFFERENT minimization problems, with a worked example showing K_t large while A_Q* stays small -- prevents a natural but incorrect merging of the two optimization problems."
+undefined_concepts:
+  - "The exact formal predicate Adequate(A,Q,K_t,EC) -- named with six qualitative components, not reduced to a precise logical/mathematical form in this document"
+  - "The exact set of candidate answers Calligraphic-A(Q,K_t) over which A_Q* is minimized -- not formally constructed here"
+open_questions:
+  - "Whether Inquiry, once tested against the separately-tracked main-corpus's own ~1,155/2,376-file registry, turns out to already exist under a different name (e.g. as part of the Sarathi/Lord machinery, or as an existing 'Purpose' or 'Goal' concept), or is confirmed as a genuinely new primitive."
+tier2_triggered: true
+tier2_reason: "Introduces a genuinely new first-class theoretical object (Inquiry) not present anywhere in the pass's prior 18 files, resolves an implicit stopping-condition gap, and delivers a second, explicitly distinct minimization problem (Smallest Adequate Answer) alongside M0018's minimal-kernel optimization -- critical importance and full tier-2 treatment warranted."

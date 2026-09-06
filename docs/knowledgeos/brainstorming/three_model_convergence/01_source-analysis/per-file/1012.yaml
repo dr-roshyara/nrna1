@@ -1,0 +1,115 @@
+sequence: 1012
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-200801_step_285_reviewer-a-knowledgeos-kernel-research-programme-steps-285-298.md
+title: "Reviewer A -- KnowledgeOS Kernel Research Programme, Steps 285-298: THE FULL ORIGIN DOCUMENT for the Sixth Roadmap Scheme Already Tracked Abstractly at File 0969, Now Directly Encountered in Complete Fourteen-Step Elaborated Form -- Which Itself CONFLICTS With File 1010's Just-Adopted Step-287/288 Content Assignment, a Third Mutually Incompatible Arrangement"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "Reviewer A's full fourteen-step research-programme proposal, reviewing three not-yet-encountered documents ('06 Critical Path', '07 Minimum Implementable KnowledgeOS', '08 Gap-Analysis Verdict')"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1012
+importance: critical
+confidence: high
+about: >
+  A response reviewing "the 08 Gap-Analysis Verdict, 07 Minimum Implementable KnowledgeOS, and 06 Critical
+  Path to Implementation" -- **three new, not-yet-directly-encountered bridge-candidate documents** -- and
+  proposing a full fourteen-step research programme (Steps 285-298).
+
+  **DIRECTLY RESOLVES THIS RECONSTRUCTION'S ALREADY-TRACKED "SIXTH ROADMAP SCHEME" (abstractly summarized at
+  file 0969: "Step 285 Canonical State Reconciliation → 286 Ontology → 287 ℐ → 288 Identity/Equality → 289
+  𝒪 → 290 Operation Semantics → 291 Rejection → 292 δ")** -- this file is confirmed to be that scheme's FULL
+  ORIGIN DOCUMENT, extending it through Step 298: 285 Canonical K Reconciliation, 286 Construct/Ontology
+  Reconciliation, 287 Invariant Register `ℐ`, 288 State Identity and Equality, 289 Operation Necessity and
+  Minimality, 290 Operation Semantics, 291 Rejection and Failure Semantics, 292 Transformation Algebra `δ`,
+  293 Kernel Contract, 294 Theory→Architecture Traceability, 295 Reference Kernel, 296 Kernel Conformance
+  Suite, 297 EKP Conformance, 298 Empirical Certification.
+
+  **⚠️ THIS SCHEME DIRECTLY CONFLICTS WITH FILE 1010's JUST-ADOPTED CRITICAL PATH**, producing a THIRD
+  mutually incompatible Step-287/288 content assignment: this file assigns 287=Invariant Register, 288=
+  Identity/Equality; file 1010 assigns 287=Qualify+Equality, 288=Invariant Registry (the two contents
+  REVERSED relative to each other); and files 1002/1005 name the same equality/Qualify closure work "D288"
+  with no separate Step 287 at all. **A further, sharply conflicting instance of the escalating roadmap-
+  naming instability this reconstruction has tracked since files 0919, 0928, 0942, 0944-0947, 0968-0969,
+  now including file 1010.**
+
+  **Delivers a genuinely important architectural diagnosis**: reframes "Blocker 1" not as a missing-theory
+  problem but as "the existing architectural canon and the formal verification theory have not yet been
+  reconciled into one canonical computational model" -- a "MISSING CANONICAL BRIDGE" between ratified `K_t`
+  and verification `(𝒜,ℛ)`, diagrammed explicitly.
+
+  **Delivers a comprehensive twenty-row inventory of missing/incomplete KnowledgeOS areas** (canonical state
+  ❌, invariant registry ❌, operation algebra ❌, transformation semantics ❌, rejection semantics ❌,
+  provenance ✅/partial -- "one of the strongest constructs" -- etc.), explicitly preferred over a bare
+  completion percentage: "This is a much more useful inventory than saying 'KnowledgeOS is 60% complete.'"
+
+  **DELIVERS A GENUINELY VALUABLE KERNEL-CORE-VS-SERVICES ARCHITECTURAL SPLIT** not previously seen: Kernel
+  Core (State, Operations, Transformations, Rejection, Replay, Invariants) vs KnowledgeOS Services
+  (Missingness, Determination, Assessment, Measurement, Governance, Authorization, etc.) -- explicitly
+  excluding `Q_t`, Missingness, Determination, Authority, Authorization, Assessment, Qualification,
+  Measurement, Lineage, Orphan from the minimal-kernel critical path per "the supplied dependency analysis"
+  (from the not-yet-encountered documents 06-08).
+
+  **Delivers the quotable thesis, endorsed as "a major thesis of the implementation-readiness chapter"**:
+  "The canon says when a transition is ILLEGAL. It never says what a transition IS."
+
+  **Delivers a refined, more careful governance/derivation-act sequence, explicitly correcting an
+  oversimplified prior claim** ("one governance act → KnowledgeOS complete" is rejected as too strong):
+  `G1 (canonical K decision) → D1 (derive ℐ) → D2 (identity/equality) → D3 (operation necessity) → G2
+  (ratify operations) → G3 (resolve rejection semantics) → D4 (derive δ) → G4 (ratify transformation
+  semantics) → implementation`.
+
+  **Delivers a new, general (not Gītā-specific) promotion principle, boxed**: "Discovery≠Derivation≠
+  Architecture≠Ratification≠Implementation," with a nine-stage pipeline (Discovery→candidate→formal
+  derivation→verification/falsification→architecture→governance→canonical specification→implementation
+  →empirical observation) -- explicitly analogous to, but distinct in scope from, the already-tracked
+  Gītā-specific "Correspondence⇏Type⇏Primitive⇏Canonical Architecture" chain (files 0988, 0990, 0999).
+
+  **Delivers a proposed restructuring of "the book"** (Part IV = what research discovered, Steps 272-298;
+  Part V = generated FROM Steps 285-296, not written ahead of them; Part VI = what remains uncertain).
+introduces:
+  - concept: "The full fourteen-step Steps-285-298 research programme, resolving this reconstruction's already-tracked abstract 'sixth roadmap scheme' (file 0969) into its complete elaborated origin document"
+  - concept: "Three new bridge-candidate documents this file reviews: '06 Critical Path to Implementation', '07 Minimum Implementable KnowledgeOS', '08 Gap-Analysis Verdict'"
+  - concept: "The Kernel-Core-vs-KnowledgeOS-Services architectural split, explicitly excluding several named constructs from the minimal-kernel critical path"
+  - concept: "The general (non-Gita-specific) promotion principle: Discovery not-equal Derivation not-equal Architecture not-equal Ratification not-equal Implementation, with its nine-stage pipeline"
+  - concept: "The refined G1/D1/D2/D3/G2/G3/D4/G4 governance-and-derivation-act sequence, correcting the oversimplified 'one governance act' framing"
+  - concept: "The quotable thesis: the canon says when a transition is illegal, never what a transition IS"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked abstract 'sixth roadmap scheme' (file 0969)"
+    refinement: "RESOLVED into its full origin document, confirming the scheme's complete fourteen-step content through Step 298"
+  - concept: "File 1010's just-adopted Step-287/288 critical-path naming"
+    refinement: "DIRECTLY CONFLICTS: this file assigns 287=Invariants/288=Identity-Equality, while file 1010 assigns the reversed content (287=Qualify-Equality/288=Invariant-Registry) -- a third mutually incompatible arrangement in the tracked roadmap-naming instability"
+  - concept: "This reconstruction's already-tracked oversimplified 'one governance act' framing"
+    refinement: "EXPLICITLY CORRECTED with a refined eight-act G1-G4/D1-D4 sequence"
+contradicts:
+  - concept: "File 1010's Step-287/288 critical-path content assignment"
+    contradicted_by: "This file's own Step-287/288 assignment, which reverses the content pairing"
+repeats:
+  - "The Blocker-1/canonical-bridge framing substantially repeats content already documented via files 0968, 0974, 0993, 0998-0999, 1006-1008; this file's distinctive contributions are the full Steps-285-298 elaboration, the Kernel-Core/Services split, and the general promotion principle."
+bridge_candidates:
+  - "'06 Critical Path to Implementation', '07 Minimum Implementable KnowledgeOS', '08 Gap-Analysis Verdict' -- three documents this file reviews but which this reconstruction has not yet directly encountered."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this file as the full origin document for the already-tracked 'sixth roadmap scheme' (file 0969), and flag its direct conflict with file 1010's Step-287/288 naming as a further instance of the escalating roadmap-naming instability."
+  - "dimension-registry.md: record the Kernel-Core-vs-Services architectural split and the general Discovery-not-Derivation-not-Architecture promotion principle as directly reusable methodological content."
+anchor_test:
+  anchor: "This reconstruction's already-tracked roadmap-naming instability (files 0919, 0928, 0942, 0944-0947, 0968-0969) and file 1010's just-adopted Step-287/288 naming"
+  supports_dimension: "Resolves the sixth scheme's full content and delivers a further, directly conflicting instance of the instability against file 1010"
+  refines_or_contradicts: "resolves (via completion) the sixth scheme; contradicts (via naming collision) file 1010"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The Step-287/288 content assignments in this file are directly checkable against file 1010's own assignments for the conflict (287: Invariants here vs Qualify-Equality there; 288: Identity-Equality here vs Invariant-Registry there)."
+undefined_concepts: []
+open_questions:
+  - "The content of the three referenced bridge-candidate documents (06/07/08), not yet directly encountered."
+  - "Which, if any, of the now at least three mutually incompatible Step-287/288 naming schemes becomes the one actually followed downstream."
+tier2_triggered: true
+tier2_reason: "Resolves this reconstruction's already-tracked abstract sixth roadmap scheme into its full fourteen-step origin document, while also delivering a further, directly conflicting instance of the escalating roadmap-naming instability against file 1010, plus genuinely valuable architectural content (Kernel-Core/Services split, general promotion principle, refined governance-act sequence). Classified importance critical and confidence high given the scale and direct traceability of its content."

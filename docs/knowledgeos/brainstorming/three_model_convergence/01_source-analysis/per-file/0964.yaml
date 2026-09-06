@@ -1,0 +1,60 @@
+sequence: 964
+path: docs/knowledgeos/brainstorming/phase_measure_theory/external_research/20260831-172247_hpa-analysis-gita-chapter-02-philosophical-contributions-to-knowledgeos.md
+title: "HPA Analysis: Gita Chapter 2 -- A SEVENTH RECURRENCE of the Named-Triad 'Gaps Solved' Pattern (Chapters 7, 8, 16, 17, 18, 1, Now 2), via 'Identity Problem -- Solved,' 'Attachment Problem -- Solved,' 'Liberation Problem -- Solved' -- No New Structural Finding Beyond Confirming the Pattern's Continued Recurrence During the Sub-Series' Backfill of Chapters 1-3"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "Gita per-chapter review, seventh recurrence of the named-triad 'gaps solved' pattern"
+source_role: PRIMARY_RESEARCH
+canonical_source: 964
+importance: normal
+confidence: low
+about: >
+  Continues the sub-series' backfill of Chapter 2 (Arjuna's crisis continued; the eternal Self; duty of the
+  warrior; Karma Yoga; the state of steady wisdom / Sthitaprajna).
+
+  **§Part 3/5 delivers A SEVENTH RECURRENCE of the exact named-triad pattern** (Chapters 7, 8, 16, 17, 18,
+  1, now 2): "The Identity Problem — Solved," "The Attachment Problem — Solved," "The Liberation Problem —
+  Solved," with the verdict table again marking Definition/Architecture/Derivation Gap all "✅ Solved" --
+  no content matching files 0941's/0944's precise requirements, as with all six prior instances. This
+  reconstruction reaffirms these gaps remain genuinely open. No qualitatively new structural finding beyond
+  confirming the pattern's continued, now seven-fold recurrence.
+
+  §Part 4 delivers a "Complete Ontology" and "Complete Cycle" restating already-established Knowledge
+  Atma/attachment/detachment vocabulary without new content. Closes "Next: STEP 285 — CANONICAL THEORY
+  RECONCILIATION."
+introduces:
+  - concept: "A seventh confirmed recurrence of the named-triad 'gaps solved' pattern"
+defines: []
+refines:
+  - concept: "Files 0943's, 0946's, 0960's, 0961's, 0962's, 0963's named-triad 'gaps solved' claims"
+    refinement: "A SEVENTH CONFIRMED RECURRENCE, with the same zero-technical-content pattern"
+contradicts: []
+repeats:
+  - "The named-triad 'gaps solved' pattern repeats without independent new technical content."
+bridge_candidates:
+  - "Whether Chapter 3 continues this pattern as the sub-series' backfill completes."
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates:
+  - "dimension-registry.md: record this as the seventh confirmed recurrence of the named-triad 'gaps solved' pattern."
+anchor_test:
+  anchor: "Files 0943's, 0946's, 0960's-0963's named-triad 'gaps solved' claims"
+  supports_dimension: "A seventh confirmed recurrence, no new content"
+  refines_or_contradicts: "confirms (seventh recurrence) the named-triad pattern"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The verdict table's three 'Solved' cells are directly checkable against the absence of matching technical content, as for the six prior instances."
+undefined_concepts: []
+open_questions:
+  - "Whether Chapter 3 continues this pattern."
+tier2_triggered: false
+tier2_reason: "A seventh, non-escalating recurrence of an already-thoroughly-documented pattern, contributing no qualitatively new finding. Classified importance normal, tier2 not triggered."

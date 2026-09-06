@@ -1,0 +1,100 @@
+sequence: 1032
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/12-FINAL-STEP-287-CLOSURE-AUDIT.md
+title: "12 -- Final Step-287 Closure Audit: A Second-Order Audit Catching TWO MORE Live Refuted Claims That the First Nine-Audit Pass Missed (Same Defect Class), Delivering an Eighteen-Forbidden-Inferences Checklist and the Genuinely Important Methodological Lesson -- Sweep on CLAIM TYPE, Not on Specific STRING Matches"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a second-order closure audit of the already-executed nine-audit pass (file 1031), catching what it missed"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1032
+importance: critical
+confidence: high
+about: >
+  "12 · Final Step-287 Closure Audit," verdict "REQUIRES-CORRECTION — 2 BLOCKING · 5 MATERIAL · 1 MINOR,"
+  scope explicitly including a second pass over "00-INDEX.md" and "08-FINDINGS-...md" references.
+
+  **DELIVERS A GENUINELY IMPORTANT DISCOVERY: THE PRIOR NINE-AUDIT PASS (FILE 1031) MISSED TWO MORE LIVE
+  CONTRADICTIONS OF THE EXACT SAME DEFECT CLASS IT HAD ALREADY FIXED ONCE**: "a heading or lead-in sentence
+  asserting what its own body refutes. The nine audits caught the §4 heading and the `08` F5 heading. They
+  missed the §3 heading and the `08` F5 body."
+
+  **B-1 (BLOCKING)**: `REFINED-STEP-287.md` §3's own heading STILL READS "the axes ARE the observations" --
+  the EXACT phrase the body explicitly refutes seven lines later ("I wrote 'the axes ARE the observations.'
+  That is not established by Q4A"). "The heading is the sentence the body corrects." Confirms the already-
+  tracked F5-propagation sweep (files 1029-1031) "checked `K`-order propagation and did NOT re-check `≈`
+  propagation into headings."
+
+  **B-2 (BLOCKING)**: the "08" document's F5 BODY (not just its heading, already fixed per file 1031) still
+  reads "It is a partial order by construction and NOT total — which is exactly what the objection demanded"
+  -- the exact refuted "partial by construction" phrase, with the SUPERSEDED block APPENDED AFTER rather
+  than replacing the original paragraph, so "a reader reaching line 121 before the block at line 130
+  receives the REFUTED CLAIM FIRST."
+
+  **Delivers five further MATERIAL findings (M-1 through M-5)** with exact replacement wording: a flat
+  "a product of per-axis orders IS a product partial order" lead-in stated as fact before its qualification
+  (two locations); §4's heading still calling the Σ structure "a CANDIDATE product PARTIAL ORDER" (still
+  implying partiality is established, should be "a CONDITIONAL product-order CONSTRUCTION"); the "08"
+  document's own component-order caveats now STALE, contradicted by the already-tracked P6 audit (file
+  1031)'s more rigorous finding that `V` and `C` are not ordered at all, not merely "arguably"; a NEW bridge
+  candidate "00-INDEX.md:229" carrying THREE overclaims in one clause (32 "candidates" not "projections,"
+  "THE" product partial order implying establishment, no Σ/K marker); and another "08" register row still
+  saying "choice bounded to 32 OPTIONS," which "reads as selectable alternatives of an established relation."
+
+  **Delivers one MINOR finding**: the verdict line "TWO specified (`=`,`≡_D`)" juxtaposes a state-level and
+  value-level relation without marking the difference at the reader's first-impression location.
+
+  **DELIVERS THE FILE'S CENTRAL, GENUINELY VALUABLE METHODOLOGICAL META-FINDING**: "Every one of the 8
+  findings sits in a HEADING, a LEAD-IN SENTENCE, a SUMMARY LINE, or a REGISTER ROW. Not one is in the body
+  of an argument. The nine audits corrected the reasoning thoroughly and UNDER-CORRECTED THE SCAFFOLDING --
+  precisely because a sweep keyed on `K_{t+1}≻K_t` finds `K`-order propagation and NOT `≈` or 'partial order'
+  propagation. The F5 sweep was too narrow, BY CONSTRUCTION. Recommendation for future passes: sweep on the
+  CLAIM TYPE ('X is Y' asserted flatly, in a heading or summary) rather than on the SPECIFIC STRING."
+  Explicitly reassures: "Nothing in the artifact's substantive reasoning is wrong. All 8 findings are
+  presentational overclaims."
+
+  **Confirms the mandated eighteen-forbidden-inferences checklist**, applied systematically: 12 clean, 6
+  carrying findings -- a directly reusable audit framework for the entire equality-closure programme.
+  Reconfirms "Do NOT run Step 288 against the current text. The corrections are surgical -- headings, two
+  lead-ins, three summary rows -- and touch no argument."
+introduces:
+  - concept: "The discovery of two further live, refuted claims (B-1, B-2) that the prior nine-audit pass (file 1031) missed, of the exact same defect class it had already caught once"
+  - concept: "The eighteen-forbidden-inferences checklist, a directly reusable, comprehensive audit framework for the equality-closure programme"
+  - concept: "The genuinely important methodological lesson: audit sweeps must key on CLAIM TYPE ('X is Y' asserted flatly in scaffolding), not on specific STRING matches, or they systematically miss propagated overclaims outside the searched pattern"
+  - concept: "A new bridge candidate, '00-INDEX.md', with a specific numbered location (line 229) carrying three overclaims in one clause"
+defines: []
+refines:
+  - concept: "File 1031's already-executed F5-propagation sweep, believed complete"
+    refinement: "SHOWN TO BE INCOMPLETE: the sweep, keyed on the specific K-order string, missed two further live contradictions of the observational-equality and partial-order claims that used different wording but the same defect pattern"
+  - concept: "This reconstruction's already-tracked observational-equality overclaim ('the axes ARE the observations,' files 1029, 1031)"
+    refinement: "CONFIRMED still live and unfixed in the actual source document's own heading, seven lines from its own refutation"
+contradicts: []
+repeats:
+  - "The substantive content of the corrections converges with files 1029-1031's already-documented findings; this file's distinctive contribution is the discovery that those corrections were not fully propagated, plus the reusable audit methodology lesson."
+bridge_candidates:
+  - "'00-INDEX.md' -- a specific corpus document (line 229 cited) carrying overclaims about Step 287's findings; not yet directly encountered."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the discovery that the prior F5-propagation sweep missed two further live contradictions, and the genuinely valuable methodological lesson: sweep on claim type, not specific string, to avoid this class of miss."
+  - "dimension-registry.md: record the eighteen-forbidden-inferences checklist as a directly reusable audit framework."
+anchor_test:
+  anchor: "File 1031's already-executed nine-audit pass and F5-propagation sweep"
+  supports_dimension: "Discovers the sweep was incomplete and delivers a reusable methodological lesson for avoiding this class of miss in future audits"
+  refines_or_contradicts: "refines (completes) the prior audit's coverage"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The B-1 and B-2 findings are directly checkable against file 1031's own already-documented P1/P7 findings, confirming these specific contradictions were not caught by that pass."
+undefined_concepts: []
+open_questions:
+  - "The '00-INDEX.md' document, not yet directly encountered."
+  - "Whether the eight corrections (B-1, B-2, M-1 through M-5, m-1) were subsequently applied."
+tier2_triggered: true
+tier2_reason: "Discovers that the prior nine-audit pass missed two further live, refuted claims of the exact same defect class, and delivers a genuinely valuable, reusable methodological lesson about audit-sweep design (claim type versus specific string matching). Classified importance critical and confidence high given the direct, concrete, and methodologically significant nature of these findings."

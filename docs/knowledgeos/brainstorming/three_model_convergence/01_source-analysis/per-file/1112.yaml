@@ -1,0 +1,115 @@
+sequence: 1112
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/34-THE-UNSCHEDULABLE-PROGRAMME-AND-THE-DIMENSION-MODEL.md
+title: "34 -- THE UNSCHEDULABLE PROGRAMME and the Dimension Model: the OPERATIONS Research Programme Has Been Proposed FOUR Times Under THREE Step Numbers and NEVER SCHEDULED -- Every Number It Claims Is Already Occupied, the Concrete Practical Cost of the Already-Tracked G-99/G-101 Registry Defects; Plus a Genuine Recovery Showing the Proposed Dimension Model Needs No New Rule Since 258.21 Already Supplies Its Membership Criterion"
+date: "2026-09-01"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "delivers the concrete, actionable practical consequence of the already-tracked registry-defect chain (G-99, G-101)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1112
+importance: critical
+confidence: high
+about: >
+  "34 — THE UNSCHEDULABLE PROGRAMME · and the dimension model," verdict "The OPERATIONS programme has now
+  been proposed FOUR times under THREE step numbers (289 ×2, 286, 290) and NEVER SCHEDULED -- every number it
+  claims is occupied. `G-99` + `G-101` have a concrete consequence: a whole research programme cannot enter
+  the queue. And the proposed dimension model `𝒟_t⊆𝒟_∞` needs no new membership rule -- `258.21` already
+  supplies it."
+
+  **DELIVERS THE SINGLE MOST CONCRETE, ACTIONABLE PRACTICAL CONSEQUENCE OF THE ENTIRE ALREADY-TRACKED
+  COLLISION/BROKEN-INTAKE-PATH CHAIN (`G-99`, file 1105; `G-101`, file 1107)**: tabulates four distinct
+  proposals for the same OPERATIONS research programme, each independently claiming an already-occupied step
+  number (two claiming already-tracked Step 289's dependency-graph/bootstrap-boundary slot; one claiming
+  already-tracked Step 286's philosophical-source-programme slot; one -- explicitly headed "REFINED-STEP-290
+  -- OPERATION SEMANTICS" -- claiming already-tracked Step 290's N-1-adjudication slot). Boxed: "FOUR
+  proposals · THREE numbers · ZERO free slots · NEVER SCHEDULED." Delivers the sharpest single instance of the
+  already-tracked `G-101` pattern: the fourth proposal EXPLICITLY LISTS "'depends on: Steps 261, 285, 286,
+  287, 288, 289'" -- it KNOWS 289 exists and still claims 290 without checking. "`G-101` in its PUREST FORM."
+
+  **DELIVERS THE PRECISE CAUSAL CHAIN CONNECTING THE ALREADY-TRACKED `G-99` AND `G-101` FINDINGS TO THIS
+  CONCRETE COST, `G-106`**: "`G-99`: an adjudicated operation (`Reframe`) never entered the registry -- a
+  broken intake path. `G-101`: two lanes minting step numbers in parallel with no shared registry. `G-106`:
+  consequence -- AN ENTIRE RESEARCH PROGRAMME CANNOT BE SCHEDULED." Boxed: "The operations programme is the
+  SINGLE MOST-BLOCKED ITEM IN THE ESTATE (`N-4`), and it is blocked TWICE -- once on ratification, and once
+  on a step number." Delivers the crucial, actionable observation: "The second block is TRIVIALLY FIXABLE and
+  NOBODY OWNS IT... assign a free slot (292+) or explicitly retire the duplicates."
+
+  **DELIVERS A DISCIPLINED ANALYSIS OF THE FOURTH PROPOSAL'S OWN CONTENT**, finding it genuinely well-
+  scoped despite its numbering error: "'Step 290 must define what it means for a KnowledgeOS operation to be
+  SEMANTICALLY VALID, without prematurely selecting the final operation set, kernel state, equality relation,
+  or implementation,'" with `authority: Research derives; Governance ratifies normative choices`. Delivers
+  three levels ("operation IDENTITY / operation SEMANTICS / operation EXECUTION") that map precisely onto the
+  already-tracked file-1092 Audit-A closure senses (identity 0 of 22, semantics/bodies 0 of 22, execution not
+  begun). Notes the proposal's own central question ("'can an operation be represented as `δ:K×O→K'`, or does
+  the corpus require a richer model?'") directly restates the already-tracked `259.7` finding ("'not every
+  operation has the form `T:K→K`,'" already tracked file 1076) "WHICH THE PROPOSAL DOES NOT CITE."
+
+  **DELIVERS A GENUINE RECOVERY-STYLE FINDING FOR THE PROPOSED DIMENSION MODEL**: `𝒟_t⊆𝒟_∞`, `d_t=|𝒟_t|`,
+  `d_{t+1}≠d_t`, identified as a THIRD/FOURTH convergence on dimensional structure (already-tracked files
+  1099, 1105, 1107's `DiscoverDimension`). **Discovers the proposal introduces `𝒟_t` without specifying its
+  membership criterion, then finds the corpus already supplies exactly this**: `258.21`'s already-cited
+  `Relevant(p)` predicate ("'for a property `p`, `Relevant(p)` if there exists a mandatory operation `T` and
+  states `K_1,K_2` differing only in `p` such that `T(K_1,c)≢_K T(K_2,c)`,'" "'This gives us a principled way
+  to discover the minimal kernel.'"). Boxed: "`𝒟_t={p:Relevant(p)}` -- the criterion EXISTS, and it quantifies
+  over `𝒯`." Delivers the precise, disciplined structural conclusion: "So the proposed new object needs NO
+  NEW RULE -- and INHERITS THE SAME BLOCKER as everything else." Delivers a genuinely subtle connection to
+  the already-tracked `258.35` anti-compositional principle: "a dimension-indexed `K_t` is COMPOSITIONAL,
+  which `258.35` forbids -- UNLESS the dimensions are themselves derived from behavioural distinctions...
+  `258.21` is exactly that derivation." Boxed: "The dimension model ESCAPES `258.35` ONLY VIA `258.21`, and
+  ONLY ONCE `𝒯` CLOSES." Recorded `D-Q3`.
+
+  **DELIVERS A THIRTEENTH GLYPH COLLISION**: `𝒟` (this proposal's dimension-set notation) adds a fourth
+  reading to the already-tracked `D`-glyph collision (already-tracked `G-105`, file 1111's `D_t` three-way
+  collision across dimensional structure, `Determination`, and a state skeleton).
+
+  Delivers `C17` (operation IDENTITY≠operation SEMANTICS≠operation EXECUTION) and confirms the disciplined
+  non-license: no step assigned or renumbered (a registry-owner act); the dimension model not adopted
+  (compositional unless routed through `258.21`, itself blocked on `𝒯`); the three-level operation separation
+  not adopted (a restatement of already-measured distinctions); `261.23` at 0 of 6, Steps 288-291 unchanged,
+  all `R6`.
+introduces:
+  - concept: "G-106, the concrete practical consequence of the already-tracked broken intake path (G-99) and parallel step-numbering (G-101): an entire research programme (OPERATIONS) has been proposed four times under three already-occupied step numbers and never scheduled, blocked twice -- on ratification and on a step number, the second block trivially fixable and unowned"
+  - concept: "The purest instance yet of G-101: a proposal that explicitly lists its own dependency on a step number it then claims for itself without checking, proving the collision is not mere oversight but a systemic failure to consult a shared registry even when the dependency is already declared"
+  - concept: "D-Q3, the discovery that a newly-proposed dimension-set object needs no new membership rule since the corpus's own 258.21 Relevant(p) criterion already supplies one, though it inherits the same T-closure blocker as everything else, and the dimension model escapes the anti-compositional 258.35 principle only through this route"
+defines:
+  - term: "G-106"
+    definition: "The OPERATIONS research programme is unschedulable: four proposals under three step numbers, zero free slots, never scheduled -- the estate's most-blocked item, blocked twice (ratification and step number), the second block trivially fixable and unowned"
+  - term: "D-Q3"
+    definition: "The proposed dimension set D_t's membership criterion already exists (258.21's Relevant(p) predicate); the dimension model escapes the 258.35 anti-compositional principle only via this route, and only once T closes"
+  - term: "M-Q8"
+    definition: "dim(K_infinity)=infinity presupposes an undefined independence relation between dimensions, and G-22 means no measure exists on K either -- formal"
+  - term: "C17"
+    definition: "Operation identity is not operation semantics is not operation execution"
+refines:
+  - concept: "This reconstruction's already-tracked broken-intake-path finding (G-99, file 1105) and parallel-step-numbering root cause (G-101, file 1107)"
+    refinement: "GIVEN A CONCRETE, MEASURABLE PRACTICAL CONSEQUENCE: an entire research programme, proposed four times, has never been schedulable because every claimed step number was already occupied"
+  - concept: "This reconstruction's already-tracked dimensional-structure convergence (files 1099, 1105, 1107) and the D-glyph collision (G-105, file 1111)"
+    refinement: "EXTENDED with a genuine recovery finding (the proposed object's membership criterion already exists in the corpus, 258.21) and a thirteenth glyph collision (a fourth reading of D)"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "step-291/00's recommendation to assign a free step-number slot or retire duplicates -- explicitly reconfirmed as urgent by this file, not yet directly read in this reconstruction's own sequential order."
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the concrete, measurable practical consequence of the broken-intake-path/parallel-numbering registry defects (G-106: an entire research programme unschedulable across four proposals and three occupied step numbers), and the recovery finding that the proposed dimension model's membership criterion already exists in the corpus (D-Q3, 258.21's Relevant(p))."
+anchor_test:
+  anchor: "This reconstruction's already-tracked broken-intake-path finding (G-99) and parallel-step-numbering root cause (G-101, files 1105/1107)"
+  supports_dimension: "Delivers the single most concrete, measurable practical consequence of these registry defects: an entire research programme proposed four times and never scheduled"
+  refines_or_contradicts: "refines (concretizes) the prior tracked root-cause findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The four-proposal, three-number, zero-slot tally is directly checkable against the corpus's own already-cited step-291/00 numbering-collision report for exact consistency of this concrete consequence."
+undefined_concepts: []
+open_questions:
+  - "Whether the OPERATIONS programme is ever formally assigned a free step-number slot (292+) or its duplicates explicitly retired, given this file's explicit flag that the fix is trivial and simply unowned."
+tier2_triggered: true
+tier2_reason: "Delivers the single most concrete, actionable practical consequence of the already-tracked registry-defect chain (G-99's broken intake path, G-101's parallel step-numbering root cause): an entire research programme has been proposed four times under three already-occupied step numbers and never scheduled, with the fix explicitly diagnosed as trivial and simply unowned. Also delivers a genuine recovery finding for a proposed dimension model, showing its membership criterion already exists in the corpus. Classified importance critical and confidence high given the concrete, measurable, and directly actionable nature of this finding."

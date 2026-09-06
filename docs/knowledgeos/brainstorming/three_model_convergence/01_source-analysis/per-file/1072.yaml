@@ -1,0 +1,88 @@
+sequence: 1072
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-290/08-decision-register.md
+title: "08 -- Decision Register (Step 290 mandate SS9): THE CAPSTONE CLOSURE OF THE ENTIRE N-1 SAGA -- Formally Classifies N-1 as N-1A (DISTINCT), WITHDRAWS G-67 (the CRITICAL 'equiv/approx contradiction' Item Tracked Since File 1041), Replaces It With the Non-Critical N-1prime (Ratification Question, Downstream of N-4), and Revises the Entire Governance Ordering So N-4 Is Now the Single Unambiguous Root"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the eighth numbered Step-290 artifact and the definitive capstone closure of the entire N-1 saga tracked since file 1041"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1072
+importance: critical
+confidence: high
+about: >
+  "08 — Decision Register (mandate §9)." Delivers the final, formal governance-register closure of the
+  entire N-1 conflict this reconstruction has tracked in extraordinary depth since file 1041.
+
+  **CLASSIFIES N-1 AS N-1A — DISTINCT**, and explicitly rejects each of the four possible alternative
+  outcomes with named reasons: N-1B (SAME) rejected on five loci in two notations (`246`, `261.1`, `261.20`,
+  `261.25`, `261.19`); N-1C (DERIVABLE COLLAPSE) rejected since `261.21` "self-labels as 'not a completed
+  theorem'"; N-1D (GOVERNANCE-CHOICE) rejected for the distinction itself (the corpus already decides that),
+  with a residual governance question surviving as the NEW item `N-1′`; and, most importantly, **N-1E
+  (CORPUS-CONTRADICTION) is explicitly named as "what Steps 288-289 claimed. WITHDRAWN."** — the formal,
+  final closure of the characterization this reconstruction tracked as critical since file 1041.
+
+  **CREATES THE NEW GOVERNANCE RECORD `N-1′`**: "Should `261.21`'s candidate identification `≡_sem:=(∀O∈
+  𝒪_K)` be RATIFIED?" with three alternatives (ratify/reject/defer), precise consequences for each, the
+  explicit note that ratification is a promotion act research cannot perform ("the candidate is defined over
+  an unclosed set, so research cannot even determine what would be ratified"), authority ARB, and **priority
+  explicitly marked NOT CRITICAL, downstream of `N-4`.**
+
+  **DELIVERS THE DEFINITIVE, FORMAL REGISTER CORRECTIONS THAT CLOSE THIS RECONSTRUCTION'S LONGEST-TRACKED
+  OPEN GOVERNANCE ITEM**: "**`G-67`** ('`≡`/`≈` share one definition while listed as distinct — CRITICAL,
+  adjudicate first') 🔴 **WITHDRAWN.** Replaced by `N-1′`: non-critical, downstream of `N-4`, and not
+  evaluable yet." Confirms "**`N-1`** (Step 288/289 register) ✅ **PERFORMED — returns `N-1A`.** Closed as a
+  research question." And explicitly supersedes the earlier ordering claim: "'`N-1` is the earliest
+  legitimate next act' — **SUPERSEDED** — the earliest act is **`N-4`** (`𝒪`/`𝒯`), which now gates `N-1′` as
+  well."
+
+  **DELIVERS THE REVISED GOVERNANCE ORDERING**, with `N-4` (`𝒪`/`𝒯`) as the unambiguous single root (no
+  incoming derivation edge), gating `N-3`, the newly-demoted `N-1′`, `N-2`'s technical half, `N-11`, and
+  `N-16`/`N-17`; with `N-8`, `N-13`, `N-12`, `N-19`, `N-20`, `N-21` independent. Boxed capstone summary: "Net
+  effect of Step 290 on the governance surface: ONE CRITICAL ITEM REMOVED, ONE NON-CRITICAL ITEM ADDED, and
+  the surface's single root is now unambiguously `N-4`."
+
+  Confirms the STATUS block: ESTABLISHED `N-1A`, the four rejections, `N-1′`'s six fields, the revised
+  ordering · WITHDRAWN `G-67` · SUPERSEDED "N-1 first" · NORMATIVE `N-1′` and the 20 carried records ·
+  BLOCKED `N-1′` behind `N-4` · DEFERRED all decisions.
+introduces:
+  - concept: "The formal N-1A classification closing the entire N-1 research question, with all four alternative outcomes explicitly rejected on named grounds"
+  - concept: "The new governance record N-1prime: the ratification question for 261.21's candidate identification, explicitly non-critical and downstream of N-4, with research explicitly unable to resolve it (the candidate is defined over an unclosed set)"
+  - concept: "The formal, final withdrawal of G-67 (the CRITICAL equiv/approx corpus-contradiction governance item, tracked since file 1041) and its replacement by the non-critical N-1prime"
+  - concept: "The revised governance ordering with N-4 as the single unambiguous root of the entire equality/kernel governance surface, superseding the earlier 'N-1 is the earliest legitimate next act' claim"
+defines:
+  - term: "N-1'"
+    definition: "The new governance question created by Step 290: should 261.21's candidate identification of equiv-semantic with the observational-equivalence formula be ratified, rejected, or deferred -- explicitly non-critical, downstream of N-4, and not currently evaluable since the candidate is defined over the unclosed observation set O_K"
+refines:
+  - concept: "This reconstruction's long-tracked N-1/G-67 governance item, classified CRITICAL since file 1041 and carried through files 1047, 1054-1055, 1057-1062"
+    refinement: "FORMALLY, DEFINITIVELY CLOSED: reclassified as N-1A (DISTINCT), with the CRITICAL corpus-contradiction framing (G-67, N-1E) explicitly WITHDRAWN and replaced by the non-critical N-1' ratification question, downstream of N-4"
+  - concept: "This reconstruction's already-tracked governance ordering claim that N-1 was 'the earliest legitimate next act' (file 1048/1058)"
+    refinement: "EXPLICITLY SUPERSEDED: N-4 (the O/T closure) is now the unambiguous single root of the governance surface, gating N-1' along with N-3, N-2's technical half, N-11, N-16/N-17"
+contradicts:
+  - concept: "This reconstruction's own already-tracked characterization (files 1041, 1047, 1054-1055, 1057-1062) of the equiv/approx conflict as G-67, a CRITICAL governance item requiring adjudication first"
+    contradicted_by: "This file's formal, final withdrawal of G-67 and its replacement with the non-critical, downstream N-1'"
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the capstone closure of the entire N-1 saga -- N-1 classified N-1A (DISTINCT), G-67 formally WITHDRAWN and replaced by the non-critical N-1' (downstream of N-4), and the governance ordering revised with N-4 as the single unambiguous root, superseding the earlier 'N-1 first' claim."
+anchor_test:
+  anchor: "This reconstruction's long-tracked N-1/G-67 governance item, CRITICAL since file 1041"
+  supports_dimension: "Delivers the formal, final closure of this item via reclassification to N-1A and withdrawal of G-67, replaced by the non-critical N-1' downstream of N-4"
+  refines_or_contradicts: "directly contradicts (withdraws) this reconstruction's own prior tracked CRITICAL classification"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The G-67 withdrawal and N-1A classification are directly checkable against files 1041 and 1048's own already-documented CRITICAL characterization for exact consistency of the reversal."
+undefined_concepts: []
+open_questions:
+  - "Whether N-1' is ever subsequently ratified/rejected/deferred by ARB once N-4 (the O/T closure) is itself resolved."
+tier2_triggered: true
+tier2_reason: "Delivers the capstone, formal, definitive closure of the entire N-1 governance saga this reconstruction has tracked as CRITICAL since file 1041: reclassifies N-1 as N-1A (DISTINCT), formally withdraws G-67, replaces it with the non-critical N-1' downstream of N-4, and revises the entire governance ordering to make N-4 the single unambiguous root. Classified importance critical and confidence high given the definitive, capstone nature of this closure."

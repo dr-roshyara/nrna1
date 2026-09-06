@@ -1,0 +1,62 @@
+sequence: M0158
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180010_research-mandate-reiter-structured-hpa.md
+title: "RESEARCH MANDATE: Reiter/KnowledgeOS Implementation Derivation — formal HPA artifact"
+date: "20260902-180010"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0158
+importance: high
+confidence: high
+about: >
+  The formal HPA Supervisory restatement of M0157's research-mandate prompt, in the same
+  numbered-Parts template used elsewhere in this reconstruction's KR-integration artifacts (Parts
+  1-15), explicitly pinning down the Step-285-291 thread's numbering: 'research/REFINED-STEP-291.md'
+  is named as the deliverable target, confirming Step 291 is this Reiter mandate's own step number.
+introduces:
+  - "Explicit confirmation of the step number: 'research/REFINED-STEP-291.md' — resolving M0157's own step-numbering ambiguity for this specific document within the Step-285-291 thread"
+  - "A formal Governance Impact section (Part 14) with explicit 'What Can Be Frozen' (successor-state transition model, operation registry structure, regression-as-verification, progression-as-forward-update — all [PROP] candidates only) vs. 'What Cannot Be Frozen' (δ=successor-state-axiom, Situation=KnowledgeOS-state, Qualification=Precondition, Observation=Sensing — each with a one-line reason) — a governance-discipline template not seen in this precise form elsewhere in this reconstruction"
+  - "Confirms Qualification/Observation remain fully OPEN through to this document's own closing verdict (§7.3, §13.2, §15.2): 'Is Observation an action? [OPEN]', 'Is Qualification a precondition? [OPEN]... an operation? [OPEN]... an epistemic boundary? [OPEN]' — 'Reiter provides vocabulary but does NOT close these questions'"
+defines: []
+refines:
+  - "Reproduces M0157's entire research design (Situation≠State, δ correspondence table, frame-problem/operation-registry candidate, regression/progression, sensing/Qualify open questions, Golog/RGolog composition, equality/identity audit, P1-P10 falsification tests, 14-file deliverable structure) in the same HPA-template style as KR-KRR-2026-09/M0139, KR-DL-2026-09/M0143, and the M0154 Levesque&Lakemeyer advisory — confirming the template is applied uniformly across BOTH the KR-integration sub-thread and the separately-discovered Step-285-291 thread"
+contradicts: []
+repeats:
+  - "All of M0157's content, reformatted into the numbered Parts 1-15 HPA template — no new substantive analysis beyond the items listed under introduces"
+bridge_candidates:
+  - "Whether research/REFINED-STEP-291.md and its 14-file companion directory were ever actually produced and committed — the exact deliverable path is now known, giving a concrete target to search for"
+  - "Same open bridge_candidates as M0157: locating Step 285-290, and reconciling Qualify/O-T/G1 with this reconstruction's own vocabulary"
+mathematical_content: >
+  Identical to M0157 — restates the successor-state axiom, the δ candidate
+  δ(K_t,e_t)=Apply(Effects(e_t),Persist(K_t,e_t)), and the equality-relation test table (=, ≡, ≈,
+  ≅_λ) against Reiter's situation/fluent distinctions — no new derivations.
+gita_content: null
+kernel_content: >
+  Confirms the HPA-template formalization pattern (informal mandate → structured HPA artifact)
+  extends to the Step-285-291 thread just as it does to the KR-integration sub-thread, and pins down
+  the exact deliverable path (REFINED-STEP-291.md) that would confirm whether this research was ever
+  actually executed.
+registry_updates:
+  - "Pins down the exact step number (291) and deliverable path (research/REFINED-STEP-291.md) for the Reiter mandate within the newly-discovered Step-285-291 thread (M0157)"
+  - "Confirms the HPA-template formalization pattern spans both the KR-integration sub-thread and the separately-discovered Step-285-291 thread"
+anchor_test:
+  anchor: false
+  supports_dimension: "Formalizes M0157; pins down Step 291 and its deliverable path; confirms Qualify/Observation remain fully open"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"research/REFINED-STEP-291.md\" (Part 15.1) — the concrete deliverable path pinning down the step number"
+  - "\"Reiter provides vocabulary but does NOT close these questions.\" (Part 7.3, on Observation/Qualification) — confirms these remain open through this document's own close"
+undefined_concepts: []
+open_questions:
+  - "Was research/REFINED-STEP-291.md (and its 14-file companion directory) ever actually produced?"
+tier2_triggered: false
+tier2_reason: null

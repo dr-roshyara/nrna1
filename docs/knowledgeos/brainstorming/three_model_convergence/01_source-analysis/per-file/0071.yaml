@@ -1,0 +1,58 @@
+sequence: 71
+path: docs/knowledgeos/brainstorming/_misc/20260819-224159-linux-analogy-kernel-os-model.md
+title: Linux Analogy — KnowledgeOS Kernel/OS Model (large compound document)
+date: 2026-08-19
+bytes: 26035
+
+model:
+  primary: c1
+  secondary: [ddd, evidence, governance]
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: high
+confidence: high
+
+about: >
+  Develops a Linux-kernel analogy into a "KnowledgeOS Kernel" definition, stated three times with
+  small variations: Identity + Lifecycle + Evidence + Authority (+ Policy/Relationships). Most of
+  the file (~2700 lines) is commercial/roadmap/programming-language-selection content, not
+  summarized further here (M-B-style product commercialization, per 0038's diagnosis).
+
+introduces:
+  - concrete_minimal_kernel_formula_three_variants   # Identity+Lifecycle+Evidence+Authority(+Policy/Relationships)
+  - kernel_definition_with_ai_explicitly_removed     # "the purer, more fundamental claim"
+
+defines:
+  - knowledgeos_kernel_v01   # Knowledge Object + Identity + Authority + Evidence + Lifecycle + Policy, with worked YAML example
+
+refines:
+  - concept: central_knowledgeos_formula
+    canonical_source: 69
+    change: "Knowledge State + Evidence + Events + Assurance + Governance -> Identity + Lifecycle + Evidence + Authority (+ Policy) - same sub-thread, different formula, same shape"
+
+contradicts: []
+repeats: []
+
+bridge_candidates: []   # deliberately NOT flagged - recurrence within one C1 sub-thread is not independent evidence per MD-012
+
+mathematical_content: false
+gita_content: false
+kernel_content: true   # the most concrete kernel-formula content in the corpus so far; still product-engineering, not epistemic
+
+key_evidence:
+  - "'KnowledgeOS Kernel = Knowledge Identity + Knowledge Lifecycle + Knowledge Evidence + Knowledge Authority'"
+  - "'KnowledgeOS is an organizational knowledge kernel that provides identity, lifecycle, authority, evidence, and relationships for enterprise knowledge objects' - stated with AI explicitly removed"
+  - "worked YAML schema example for a KnowledgeOS Kernel v0.1 object (id/type/owner/lifecycle/evidence/authority/usage)"
+
+undefined_concepts: [knowledge]
+open_questions: []
+
+tier2_triggered: true
+tier2_reason: >
+  The corpus's most concrete and most-repeated minimal-kernel formula attempt so far (3 variants in
+  one document, converging with 0069's formula from the same sub-thread two days earlier). Recorded
+  as the sharpest available REFERENCE POINT for comparing any later, more rigorous Kernel
+  construction (§23/§31) - still unambiguously a product/engineering kernel by direct Linux analogy,
+  not elevated to a bridge_candidate since the recurrence is intra-thread, not independent evidence.

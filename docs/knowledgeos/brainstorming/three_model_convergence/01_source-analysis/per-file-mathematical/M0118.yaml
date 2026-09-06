@@ -1,0 +1,90 @@
+sequence: M0118
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-160600_revised-reading-strategy-for-current-bottleneck.md
+title: "Revised Reading Strategy for the Current Bottleneck: RESOLVES the Long-Unattributed 'Freedman' and 'Brown-Hwang' Cross-References (First Flagged Around M0044) by Naming Them Explicitly in an Already-Covered Reading List ('Plato, Davidson, Dretske, Audi, Titelbaum, Rescorla, Freedman, Brown & Hwang, Good, Kallenberg, Shum, Cover & Thomas, Plus the Gita'), and Proposes an Eight-Step External-Literature Reading Sequence (Priest -> Belnap/Dunn -> Priest In Contradiction -> Doubt Truth to Be a Liar -> AGM Belief Revision -> Belief Merging -> Argumentation -> Knowledge Representation) Targeting the Contradiction/Zero Bottleneck, With an Explicit Non-Circular Extraction Protocol"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c
+  secondary: b
+  secondary_note: "a bibliographic/methodology planning document (not itself an experiment or mathematical result) recommending external non-classical-logic and belief-revision literature specifically targeted at the Contradiction/Zero bottleneck confirmed as the immediate research priority (M0109-M0116); its single most valuable contribution to this reconstruction is incidentally resolving two long-tracked unattributed cross-references (Freedman, Brown-Hwang) by naming them plainly in a list of already-covered epistemology reading"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0118
+importance: high
+confidence: high
+about: >
+  Argues that KnowledgeOS's current bottleneck ("Contradiction -> Evaluation -> Representation ->
+  Zero") calls for a shift from general epistemology reading to non-classical logic and belief-
+  revision literature, since "you have already covered a surprisingly broad epistemological
+  foundation."
+
+  **RESOLVES THE LONG-TRACKED UNATTRIBUTED "FREEDMAN" AND "BROWN-HWANG" CROSS-REFERENCES**: names
+  them plainly, without further explanation needed, in a single sentence listing the corpus's
+  already-covered reading: "Plato, Davidson, Dretske, Audi, Titelbaum, Rescorla, Freedman, Brown &
+  Hwang, Good, Kallenberg, Shum, Cover & Thomas, plus the Gita." This confirms both names refer to
+  legitimate prior external-literature sources genuinely read and incorporated earlier in the
+  corpus's epistemology/statistics reading programme (consistent with the corpus's established
+  I.J. Good evidence-weighting and Bayesian/statistical work), not fabricated or unattributed
+  citations -- resolving an open item first flagged in this reconstruction's record around M0044
+  and repeated at M0095 (third sighting).
+
+  **RECOMMENDS AN EIGHT-STEP EXTERNAL-LITERATURE READING SEQUENCE** targeting the contradiction
+  bottleneck specifically: (1) Graham Priest, An Introduction to Non-Classical Logic (the single
+  top recommendation, read for "what distinctions do different logical systems preserve, and what
+  do they deliberately collapse?" -- explicitly NOT to find "the KnowledgeOS logic"); (2) Belnap/
+  Dunn, A Useful Four-Valued Logic (emphasized as conceptually more important than Priest once
+  designing the experiment, for its two-dimensional true/false-information vs known/unknown-
+  information structure, closely matching the corpus's own contradiction problem); (3) Priest, In
+  Contradiction (explicitly warned against adopting Priest's dialetheism conclusion as a
+  KnowledgeOS assumption -- "your KnowledgeOS problem is weaker: p,not-p in E_t does not imply
+  True(p) and True(not-p)... your contradiction may be epistemic inconsistency, not ontological or
+  semantic contradiction"); (4) Priest, Doubt Truth to Be a Liar (particularly its chapter on
+  consistency and the empirical sciences, mapping onto Conflict!=Contradiction!=Revision!=
+  Retraction); (5) AGM-style belief revision (expansion/contraction/revision/consistency/minimal-
+  change/epistemic-entrenchment/belief-bases/belief-sets); (6) belief merging/inconsistent
+  information; (7) argumentation/defeasible reasoning (raising the DDD question "is Contradiction
+  actually an evaluation value, or a relation between epistemic commitments?" -- explicitly not
+  answerable from philosophy alone); (8) knowledge representation and reasoning (inconsistent
+  knowledge bases, non-monotonic reasoning, truth-maintenance systems, description logics,
+  paraconsistent knowledge bases).
+
+  **SPECIFIES A NON-CIRCULAR EXTRACTION PROTOCOL FOR EVERY EXTERNAL SOURCE**: Semantic distinction
+  -> formal carrier -> operators -> information lost -> counterexample -> KnowledgeOS
+  correspondence, with the single governing question "what can this representation distinguish
+  that another representation cannot?" -- explicitly declining the corpus's earlier fact-extraction
+  approach used for Plato/Dretske, and reaffirming discipline: "we should not decide the Contr
+  experiment before reading this material. The next experiment should remain adversarial; the books
+  provide candidate mathematical structures against which the experiment can test KnowledgeOS, not
+  answers that KnowledgeOS must adopt."
+introduces:
+  - concept: "The plain naming of Freedman and Brown-Hwang as legitimate already-covered epistemology/statistics reading, resolving a long-tracked unattributed cross-reference in this reconstruction's own record"
+  - concept: "The eight-step external-literature reading sequence targeting the contradiction bottleneck (Priest non-classical logic -> Belnap/Dunn -> Priest In Contradiction -> Doubt Truth to Be a Liar -> AGM -> belief merging -> argumentation -> knowledge representation)"
+  - concept: "The non-circular extraction protocol (semantic distinction -> formal carrier -> operators -> information lost -> counterexample -> KnowledgeOS correspondence) with the governing question 'what can this representation distinguish that another cannot?'"
+defines: []
+refines:
+  - concept: "M0114/M0116's KR-CONTR-2026-09 experiment, here supplied with candidate external mathematical structures (Belnap/Dunn's two-dimensional true/false vs known/unknown semantics) for a follow-on KR-COMP-style composition experiment"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0118 as resolving the long-tracked unattributed Freedman/Brown-Hwang cross-references (named plainly as already-covered reading), and recommending an eight-step non-classical-logic/belief-revision reading sequence targeting the Contradiction/Zero bottleneck, with a non-circular extraction protocol asking what each external representation can distinguish that another cannot."
+anchor_test:
+  anchor: "The long-tracked unattributed Freedman/Brown-Hwang citations (first flagged around M0044, repeated M0095) and M0114/M0116's KR-CONTR experiment"
+  supports_dimension: "Resolves a persistent corpus-hygiene open item by naming two previously-unattributed citations as legitimate prior reading, and supplies well-targeted candidate external structures for the contradiction/composition research line"
+  refines_or_contradicts: "refines (M0114, M0116)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'Plato, Davidson, Dretske, Audi, Titelbaum, Rescorla, Freedman, Brown & Hwang, Good, Kallenberg, Shum, Cover & Thomas, plus the Gita' -- directly resolves the long-tracked unattributed Freedman/Brown-Hwang cross-references by naming them among a list of already-covered, legitimate reading."
+  - "'Your KnowledgeOS problem is weaker: p, not-p in E_t does not imply True(p) and True(not-p)... your contradiction may be epistemic inconsistency, not ontological or semantic contradiction' -- a precise, disciplined warning against importing Priest's dialetheism conclusion wholesale, consistent with the corpus's established external-source-as-hypothesis-not-answer discipline."
+undefined_concepts: []
+open_questions:
+  - "Whether the recommended eight-step reading sequence was followed, and if so what candidate structures (e.g. Belnap/Dunn's two-dimensional semantics) were extracted for the KR-COMP composition experiment."
+tier2_triggered: true
+tier2_reason: "Resolves a persistent, long-tracked corpus-hygiene open item (the unattributed Freedman/Brown-Hwang citations) by naming them plainly as legitimate already-covered reading -- a genuine, checkable corpus-integrity finding -- while also supplying a well-targeted, disciplined external-literature reading plan for the confirmed research priority."

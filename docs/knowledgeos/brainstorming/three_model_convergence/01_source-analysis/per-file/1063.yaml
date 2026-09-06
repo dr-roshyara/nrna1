@@ -1,0 +1,104 @@
+sequence: 1063
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-290/exec/t290_n1_audit.py
+title: "t290_n1_audit.py -- A Potentially Decisive Resolution of the Long-Tracked N-1 equiv/approx Conflict: BOTH Corpus Loci That Give equiv_K the Observational Formula SELF-LABEL It as a CANDIDATE/PROPOSAL, Not an Assertion of Identity -- 'The Corpus Does NOT Assert equiv_K = approx. It PROPOSES Filling the equiv_sem Slot, and Marks It Unratified'"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the first artifact in a new research/step-290/ package, a genuinely disciplined executable adjudication script directly targeting the N-1 conflict"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1063
+importance: critical
+confidence: high
+about: >
+  "STEP 290 / N-1 AUDIT. Question: are the corpus's `≡` (semantic) and `≈` (observational) one relation or
+  two?" -- a genuinely disciplined, executable script directly targeting the long-tracked N-1 conflict (files
+  1041, 1047, 1054-1055, 1057-1062), the first artifact in a new `research/step-290/` package following the
+  closure of `step-289/`.
+
+  **Opens with five explicit assumptions printed up front** (mandate §12): only primary corpus text is
+  admitted; a self-labelled "candidate" is NOT an assertion of the relation's identity; different symbols
+  alone do not prove distinctness, nor does a shared formula alone prove identity; no philosophical source or
+  governance preference is used; results are explicitly marked MEASURED vs CORPUS.
+
+  **Transcribes the full primary register (19 entries across seven corpus loci)**, finding only 4 of 19
+  entries carry an actual definition, the rest merely NAME a relation.
+
+  **Q1 confirms the corpus EXPLICITLY distinguishes `≡` and `≈`** at five independent loci in two different
+  notations, including a NEW corpus reference **"261.20/25," a SEVEN-TUPLE typed family**
+  `K=(K,=_str,≡_sem,≈_obs,SameId,≡_H,≡_P)` -- a further, previously-uncited corpus formulation adding a
+  seventh named relation family, with explicit warnings "should therefore NOT be collapsed" and "should not
+  be conflated."
+
+  **DELIVERS THE DECISIVE, POTENTIALLY RESOLVING FINDING FOR THE N-1 CONFLICT**: confirms the same
+  observational formula (`∀O∈𝒪_K: O(K_1)=O(K_2)`) is indeed attached to both `≡_K` (at `261.21`) and `≈` (at
+  `261.5`) -- but then performs the decisive check: is this an ASSERTION of identity, or merely a CANDIDATE
+  proposal? **BOTH loci that give `≡_K` a definition SELF-LABEL IT AS A CANDIDATE/PROPOSAL, NOT AN ASSERTION**:
+  `261.21` explicitly calls it "a candidate formal definition, NOT a completed theorem"; `258.8` calls it "a
+  stronger definition IS observational" (a proposal), with a NEW corpus citation **"258.37: we still do not
+  have the final `=_X` or `≡_K`."** Concludes: **"The corpus does NOT assert `≡_K`=`≈`. It PROPOSES FILLING
+  THE `≡_sem` slot with the observational formula, and marks it UNRATIFIED."** This is a materially important
+  clarification of the already-tracked N-1 conflict (files 1041, 1060), suggesting the apparent contradiction
+  may not be a genuine internal corpus inconsistency after all, but rather a distinction between an ASSERTED
+  distinctness (`≡`≠`≈`) and a merely PROPOSED, EXPLICITLY UNRATIFIED candidate filling for `≡`'s still-
+  missing definition -- though this script explicitly defers the final classification to a separate document
+  ("REFINED-STEP-290.md," not yet directly encountered).
+
+  **Explicitly tests, and confirms as UNDECIDABLE FROM THE CURRENT CORPUS, whether a distinguishing witness
+  can even be constructed** (some `K_1,K_2` with `K_1≡K_2` but not `K_1≈K_2`): "FAIL LOUDLY: required
+  definition ABSENT" for both a semantic decision procedure and a closed `𝒪_K` -- "NO HYPOTHETICAL IS
+  CONSTRUCTED," honoring the mandate's discipline against inventing examples to force a distinction.
+
+  **Delivers a comprehensive nine-item "required negative checks" self-audit**, explicitly confirming
+  nothing was wrongly assumed (names are not evidence for either sameness or distinctness; `≈_X` is not
+  assumed to be the corpus's canonical `≈`; a dependency is not treated as a semantic identity; no
+  philosophical source or governance preference was used).
+
+  **Carries forward the already-tracked degeneracy finding (file 1057) without re-running it**, confirming 30
+  non-degenerate `≈_X` candidates, per the mandate's explicit instruction not to repeat prior audits.
+
+  **Explicitly defers all classification to a separate document**: "VERDICT INPUTS ONLY. Classification is
+  made in `REFINED-STEP-290.md`, not here. Nothing above selects a relation, repairs the corpus, or
+  recommends a branch."
+introduces:
+  - concept: "The decisive, potentially resolving finding for the N-1 conflict: both corpus loci giving equiv_K the observational formula self-label it as a candidate/proposal, not an assertion of identity -- the corpus proposes but does not assert equiv_K equals approx"
+  - concept: "A new corpus reference, '261.20/25', supplying a seven-tuple typed relation family K=(K,=_str,equiv_sem,approx_obs,SameId,equiv_H,equiv_P), with explicit warnings against collapsing or conflating its members"
+  - concept: "A new corpus reference, '258.37', explicitly stating the final forms of both structural and semantic equality (=_X, equiv_K) are still not established"
+  - concept: "The confirmed undecidability, from current corpus material alone, of constructing any witness distinguishing equiv from approx -- with an explicit refusal to invent a hypothetical example to force the question"
+defines: []
+refines:
+  - concept: "This reconstruction's long-tracked N-1 conflict (the equiv/approx formula-identity duplication, files 1041, 1047, 1054-1055, 1057-1062)"
+    refinement: "MATERIALLY CLARIFIED: the shared formula is shown to be a self-labelled CANDIDATE/PROPOSAL for equiv, not an assertion of identity with approx -- suggesting the apparent internal corpus contradiction may be resolvable as an assertion-vs-proposal distinction rather than a genuine inconsistency, though final classification is explicitly deferred"
+  - concept: "This reconstruction's already-tracked nine-register enumeration (file 1041)"
+    refinement: "EXTENDED with a new corpus locus '261.20/25' supplying a seventh named typed-relation-family formulation"
+contradicts: []
+repeats:
+  - "Substantially builds on the already-tracked N-1 conflict and register enumeration; its distinctive, potentially resolving contribution is the self-labelling analysis (candidate vs assertion) and the explicit undecidability-of-a-witness finding."
+bridge_candidates:
+  - "'REFINED-STEP-290.md' -- the document where this script's evidentiary inputs are formally classified; not yet directly encountered."
+  - "'258.37' and the full '261.20/25' seven-tuple formulation -- not yet directly encountered in original form."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the potentially resolving finding for the N-1 conflict: both corpus loci offering equiv_K the observational formula self-label it as a candidate/proposal, not an assertion -- the corpus proposes but does not assert equiv_K equals approx, and marks the proposal explicitly unratified."
+  - "dimension-registry.md: record the new corpus references 261.20/25 (a seventh typed-relation-family formulation) and 258.37 (both =_X and equiv_K's final forms still not established)."
+anchor_test:
+  anchor: "This reconstruction's long-tracked N-1 conflict (files 1041, 1047, 1054-1055, 1057-1062)"
+  supports_dimension: "Delivers a potentially resolving clarification of the conflict via a careful self-labelling analysis distinguishing assertion from proposal"
+  refines_or_contradicts: "refines (materially clarifies, potentially resolves) the already-tracked N-1 conflict"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The self-labelling analysis is directly executable and its printed output constitutes the actual evidentiary record for the candidate-versus-assertion distinction."
+undefined_concepts: []
+open_questions:
+  - "The final classification made in 'REFINED-STEP-290.md', not yet directly encountered, given this script explicitly provides inputs only."
+  - "The full content of corpus loci 261.20/25 and 258.37, not yet directly encountered in original form."
+tier2_triggered: true
+tier2_reason: "Delivers a potentially decisive, materially clarifying finding for the long-tracked N-1 conflict: the shared equiv/approx formula is shown to be a self-labelled candidate proposal, not an assertion of identity, via a disciplined, executable, and rigorously self-audited analysis. Classified importance critical and confidence high given the potential resolving significance and the executable, directly reproducible nature of this evidence."

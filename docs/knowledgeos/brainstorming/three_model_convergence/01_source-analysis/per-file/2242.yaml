@@ -1,0 +1,92 @@
+sequence: 2242
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-233945_step_286_hpa-gita-chapter-05-karma-yoga-action-attribution-decomposition-hypothesis.md
+title: "Gītā Chapter 5 (Karma-yoga) HPA -- Action/Attribution Decomposition Hypothesis: Delivers H-K5-1 (Composite Action), Ten-Row Corroboration Register, and Confirms Command≠Transformation / Outcome≠Validity as R6 Corroborations"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a Gītā Chapter 5 (Karma-yoga, Bhagavad-gītā As It Is, with purports) hypothesis-generation document under the Step-286 philosophical-source programme, dated the same evening as and immediately following the Step 290/291 equality-track documents (files 2237-2241)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2242
+importance: high
+confidence: high
+about: >
+  A disciplined Chapter-5 (Karma-yoga) reading under the Step-286 philosophical-source programme, verdict
+  "CORROBORATING SOURCE, with one new hypothesis candidate" — explicitly does not justify a new KnowledgeOS
+  primitive and does not resolve equality/Qualify/δ/kernel.
+
+  **CONFIRMS (R6 corroboration) SEVEN ALREADY-INDEPENDENTLY-DERIVED KNOWLEDGEOS DISTINCTIONS** via Gītā
+  correspondence: Action≠Result (5.2, 5.10-12) ↔ Command≠Transformation (already independently derived);
+  Validity-independent-of-outcome (5.10-12) ↔ Vairāgya formulation (Valid(o,K) contains no Outcome(o)
+  conjunct — explicit warning not to overread this as "outcome does not matter," precise formulation is
+  "validity is evaluated independently of outcome"); Knowledge≠mere-abstention (5.2); Observation≠Execution
+  (5.8-9, the purport's seeing/hearing-vs-moving/speaking distinction mapped onto Observation≠Operation);
+  Executor≠Authority (5.8-15, mapped onto the already-established "co-location≠authority, process≠authority,
+  execution-context≠governance-authority" finding); Representation≠Identity (5.18, the "equal vision" verse
+  — differing bodies vs underlying quality, explicitly NOT read as defining K₁≡K₂ or ≈, only as "an example
+  of a distinction between differing representations/forms and an invariant underlying property");
+  Changing-condition≠Identity (5.20-21). A weak/non-promoted eighth candidate: Knowledge-exposes-hidden-
+  deficiency (5.15-17) mapped weakly onto Zero(K,G,EC) — explicitly downgraded to R3/R4 given the Gītā's
+  ignorance is spiritual/metaphysical while KnowledgeOS's Zero is a typed epistemic discrepancy.
+
+  **DELIVERS THE ONE GENUINELY NEW HYPOTHESIS, H-K5-1 — COMPOSITE ACTION/ATTRIBUTION**: "Does the KnowledgeOS
+  operation theory independently require an explicit decomposition of an operation into distinct act, actor,
+  authority, context/instrument, transformation and result components?" Stimulated by the 5.8-9 purport's
+  five-factor description of action (acting person, work, situation, endeavor, fortune) — but explicitly
+  flagged as source grade [P] (purport-level), not [S] (verse-level formal ontology), since the more explicit
+  five-factor formulation belongs to Chapter 18, not Chapter 5. The test protocol: "the philosophy proposes
+  the question; KnowledgeOS itself must decide the answer" — can current operation semantics be expressed
+  WITHOUT these distinctions? If YES, reject; if NO, retain as KOS-derived structure. Explicitly tied to the
+  contemporaneous operation-semantics programme's own component list (Input/Precondition/Transformation/
+  Postcondition/Invariant/Evidence-effect/History-effect/Replay/Failure) as "precisely the area where this
+  question belongs."
+
+  A ten-row research register (candidate / Chapter-5 signal / existing KOS status / verdict) is proposed as
+  the canonical record of this chapter's findings.
+
+  Closing discipline: explicit list of eleven things Chapter 5 does NOT give (definitions of ≡, ≈,
+  observational equivalence, Qualify, δ, operation registry, canonical identity, kernel primitive, authority
+  model, replay model, rejection semantics) — "nothing from Chapter 5 should be promoted directly into the
+  canonical KnowledgeOS theory," preserving the Step-286 rule "correspondence ≠ type ≠ primitive ≠ canonical
+  architecture." Final framing: Steps 285-290's aggressive separation of state/identity/equality/observation/
+  operation/transformation is "highly compatible" with Chapter 5's parallel refusal to collapse knowing/
+  acting/agency/instruments/result/identity — "Chapter 5 independently echoes several distinctions that
+  KnowledgeOS was already forced to make, while additionally suggesting one testable question about whether
+  'operation' itself is too coarse a primitive." Explicitly confirms this reading "does not disturb the
+  conclusions of Steps 285-291."
+introduces:
+  - concept: "H-K5-1 (Composite Action/Attribution): the hypothesis that a KnowledgeOS operation may require explicit typed decomposition into act/actor/authority/context/instrument/transformation/result rather than being treated as one atomic construct -- explicitly flagged source-grade [P] not [S], not yet tested against the corpus"
+  - concept: "The ten-row Chapter-5 research register (candidate/signal/existing-status/verdict), proposed as the canonical record format for this chapter's corroboration findings"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Command≠Transformation and Vairāgya (Valid(o,K) has no Outcome(o) conjunct) findings"
+    refinement: "CONFIRMED via independent Chapter-5 philosophical correspondence, explicitly classified R6 corroboration (not derivation), with an explicit warning against overreading 'validity independent of outcome' as 'outcome does not matter'"
+  - concept: "This reconstruction's already-tracked Executor≠Authority / co-location≠authority governance finding"
+    refinement: "CONFIRMED via Chapter-5 correspondence (5.8-15), suggesting actor/executor/authority/beneficiary/accountable-party should be kept distinct in operation semantics as a good research question"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Whether H-K5-1 is directly tested against the operation-semantics programme's component list (already partially tracked via the Step-289 operations mandates at files 2236/2238) later in the sequential read, and what the accept/reject outcome is."
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering H-K5-1 (Composite Action/Attribution hypothesis, source-grade [P]) and confirming seven already-tracked KnowledgeOS distinctions as R6 corroborations via Chapter-5 Karma-yoga correspondence, with the standard non-promotion discipline preserved throughout."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Command≠Transformation, Vairāgya (outcome-independent validity), and Executor≠Authority findings"
+  supports_dimension: "Confirms these findings via independent Chapter-5 philosophical correspondence (R6 corroboration), and delivers one genuinely new untested hypothesis (H-K5-1) about operation decomposition"
+  refines_or_contradicts: "refines (corroborates existing findings, adds one new hypothesis)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "H-K5-1's exact formulation and source-grade [P] flag are directly checkable against later corpus material if the operation-decomposition question is directly tested against the corpus elsewhere in the sequential read."
+undefined_concepts: []
+open_questions:
+  - "Whether H-K5-1 (Composite Action/Attribution) is directly tested and accepted/rejected against the operation-semantics programme later in the sequential read (this reconstruction's already-tracked Ch5-7 gap-update coverage, file 1095, may bear on this)."
+tier2_triggered: true
+tier2_reason: "Delivers one genuinely new, carefully source-graded hypothesis (H-K5-1, Composite Action/Attribution) plus confirmation of seven already-tracked corroboration findings via independent Chapter-5 correspondence, with the standard disciplined non-promotion boundary preserved. Classified importance high given the substantive new hypothesis and connective confirmation value, short of critical since it introduces no structural correction to already-tracked findings."

@@ -1,0 +1,106 @@
+sequence: "0141"
+path: docs/knowledgeos/brainstorming/20260822-154923-snf-measurement-framework-mathematical-review.md
+title: "SNF measurement framework rigorously formalized (metric space, Bayesian entropy, hard-gate non-collapse); cleanest anti-fabrication instance in the corpus"
+date: "2026-08-22"
+bytes: 42000
+model:
+  primary: m
+  secondary: [c1]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0139"
+importance: critical
+confidence: high
+about: >
+  The corpus's most mathematically substantial file to date. Formalizes the SNF (Semantic Normal Form)
+  measurement idea with a semantic metric space (formal distance axioms), Bayesian posterior over
+  interpretations, and five rigorously-defined metrics (convergence C_snf, non-collapse NC_snf,
+  transformation-stability T_snf, normalized entropy H_sem, abstention). Self-corrects twice: renames
+  a proposed graph distance "SNF Structural Distance" (not "Semantic Distance") because structural
+  similarity≠semantic equivalence; distinguishes model/interpretation, representational, and epistemic
+  uncertainty as three different things. Argues NC_snf must be a hard pass/fail safety gate, not a
+  weighted composite component, with an asymmetric-risk argument (semantic collision is categorically
+  worse than false divergence). Introduces Semantic Collision Rate (CR). Reports four progressively-run
+  simulations (v0.1-v0.4), with v0.1 giving real numbers (25% injected collision rate, correctly
+  detected) and v0.2/v0.3 EXPLICITLY REFUSING to report numbers when the execution environment did not
+  return them ("I will not invent numerical results... I won't manufacture the numbers") -- the
+  cleanest anti-fabrication instance in the corpus so far.
+
+introduces:
+  - "Formal semantic metric space d: S x S -> [0,1] with the four standard metric axioms; a Bayesian
+    posterior P(theta_i | E, C) over semantic interpretations; rigorous H_sem, C_snf, NC_snf, T_snf
+    definitions with stated ranges and interpretations"
+  - "Distinction between 'SNF Structural Distance' (a Jaccard-style graph metric, what is actually
+    proposed) and 'Semantic Distance' (not yet established to exist) -- structural similarity is
+    explicitly NOT assumed to entail semantic equivalence"
+  - "Three-way uncertainty taxonomy: model/interpretation uncertainty ('which interpretation should I
+    choose') vs. representational uncertainty ('does my representation capture the meaning') vs.
+    epistemic uncertainty ('is the proposition justified') -- previously conflated as one 'semantic
+    uncertainty'"
+  - "Hard-gate architecture: Semantic Collision (NC_snf failure) must FAIL the system outright rather
+    than being averaged into a composite quality score, on an explicit asymmetric-risk argument: false
+    divergence = compiler deficiency (safe); semantic collision = knowledge corruption (unsafe)"
+  - "Semantic Collision Rate (CR): fraction of distinct-meaning pairs incorrectly mapped to the same
+    SNF -- proposed as the primary safety metric, more intuitive and more dangerous-outcome-focused
+    than NC_snf alone"
+  - "Gold-Relation/Confusion-Matrix evaluation design (v0.3): compares SNF output against an
+    independently labeled EQUIVALENT/DISTINCT/UNKNOWN relation, yielding three named failure classes
+    (false divergence, semantic collision, false certainty)"
+  - "v0.4 proposal: Bayesian calibration of the interpretation posterior (calibration error, Brier
+    score, log loss, reliability curves) -- connects the SNF thread to formal statistical calibration
+    theory for the first time"
+
+defines: []
+
+refines:
+  - "Sharpens (does not extend) the already-tracked Confidence≠Truth / anti-overclaiming discipline with
+    the cleanest instance yet: explicit refusal to report any number absent an actual execution result,
+    rather than a caveated estimate or a retraction after the fact (contrast 0135, 0138)"
+
+contradicts:
+  - "Implicitly corrects the harmonic-mean composite-score proposal from within the same file's own
+    earlier section (§4) -- superseded by the hard-gate + descriptive-metrics architecture in §6-7"
+
+repeats:
+  - {concept: "Semantic Non-Collapse as 9th benchmark dimension, UNKNOWN/abstention behavior", canonical_source: "0139", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: true
+gita_content: false
+kernel_content: false
+
+registry_updates:
+  - "Ledger Entry 45 added: mathematical formalization, hard-gate principle, and the anti-fabrication
+    discipline instance"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: ["Unknown Preservation", "Evidence Integrity"]
+  refines_or_contradicts: "Refines the SNF/KIR thread with formal mathematics; self-corrects its own composite-score proposal within the file."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: true
+
+key_evidence:
+  - "Twice-repeated explicit refusal to fabricate numbers when the execution environment failed to
+    return results ('I will not invent numerical results from the run') -- the strongest, cleanest
+    instance of the corpus's own anti-overclaiming discipline observed so far"
+  - "The asymmetric-risk argument for treating semantic collision as a hard gate rather than a
+    composite-score component is a genuinely rigorous piece of measurement-design reasoning, independent
+    of whether SNF itself ever gets adopted"
+
+undefined_concepts: []
+open_questions:
+  - "Whether a later file actually re-runs v0.2/v0.3/v0.4 successfully and reports real numbers, given
+    the stated execution-environment failure here"
+  - "Whether the hard-gate (non-collapse as pass/fail) principle gets adopted elsewhere in the corpus's
+    later architecture discussions, or remains confined to this one measurement-framework thread"
+
+tier2_triggered: true
+tier2_reason: >
+  Genuine mathematical formalization (metric space, Bayesian posterior, calibration proposal), a
+  rigorous hard-gate safety-architecture argument, and the cleanest anti-fabrication discipline instance
+  in the corpus so far.

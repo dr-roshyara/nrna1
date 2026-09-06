@@ -1,0 +1,120 @@
+sequence: 1027
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-211449_step_288_reviewer-accepts-287-as-research-diagnosis-and-drafts-step-288-mandate.md
+title: "Reviewer -- Accepts 287 as Research Diagnosis, Drafts Full 'REFINED STEP 288 -- EQUALITY DECISION-PROCEDURE CLOSURE' Mandate: A Twenty-Section Research Protocol Formally Naming the Four Governance Acts (G-EQ-1..4) for the First Time, Yet Another Distinct 'Step 288' Naming Variant Alongside the Already-Tracked 'D288'"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "a full twenty-section commissioning mandate for 'REFINED STEP 288', distinct from the already-tracked 'D288 -- Decision-Procedure Closure' (files 1002, 1005)"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1027
+importance: critical
+confidence: high
+about: >
+  Accepts Step 287 "as the correct closure of the RESEARCH DIAGNOSIS -- but NOT as closure of equality
+  itself," confirming nine already-tracked findings (four relations correctly separated, `history⊊
+  structural⊊semantic` withdrawal, Decision 3 as the major normative branch, `≈_X`'s 32-element
+  derivation, label-projection vs behavioural-equivalence distinction, product-order qualification,
+  non-injectivity-modulo-quotient, per-layer identity separation, `UNDER-SPECIFIED` not `ABSENT`/`SOLVED`,
+  Step 261 as the decisive stop-gate).
+
+  **DELIVERS A GENUINELY IMPORTANT CORRECTION to the already-tracked closure framing (file 1026)**: "What
+  closes it: a ruling on Decision 3 and a declared axis subset for `≈`" is "slightly too strong" -- those
+  two acts close only the CURRENTLY IDENTIFIED branches, not equality as a complete implementation contract,
+  since decision procedures for `≡` and `≅_λ` THEMSELVES, precise state identity, equality implementation
+  semantics, the component orders, and eventual interaction with `δ`/operations all still remain open.
+  Reframes: "These are the next normative decisions required to remove the CURRENTLY IDENTIFIED equality
+  ambiguity; they are not, by themselves, proof that the complete equality implementation contract is
+  closed."
+
+  **DELIVERS THE FULL, TWENTY-SECTION "REFINED STEP 288 — EQUALITY DECISION-PROCEDURE CLOSURE" MANDATE** --
+  distinct from and NOT to be confused with the already-tracked "D288 -- Decision-Procedure Closure" (files
+  1002, 1005), a further roadmap-naming variant. Governing question: "What is the minimum formal decision-
+  procedure specification required to make each corpus equality relation evaluable, and which parts are
+  derivable, which require normative governance, and which remain blocked by other unresolved constructs?"
+
+  **DELIVERS THE FIRST FORMAL NAMING OF FOUR SPECIFIC GOVERNANCE ACTS, `G-EQ-1` THROUGH `G-EQ-4`**: `G-EQ-1`
+  is Π inside semantic equality? (= the already-tracked Decision 3); `G-EQ-2` is what observation subset
+  defines `≈`? (= the already-tracked axis-subset choice); `G-EQ-3` is what counts as relevant provenance for
+  `≅_λ`? (= the already-tracked provenance-relevance predicate); `G-EQ-4` is what state identity rule is
+  canonical? (a NEW, not-previously-separately-named fourth governance act). Explicitly caveated as
+  provisional: "Do not assume these are the final names or the complete set."
+
+  **Details a comprehensive twenty-section research protocol** with a strict non-negotiable discipline list
+  (relation≠decision procedure≠implementation≠governance choice≠correspondence≠derivation≠canonicalization);
+  a mandated seven-column reconstruction table for each of the four relations (corpus definition/domain/
+  codomain/existing procedure/missing parameters/derivable?/governance required?/blocked by another
+  construct?); dedicated investigation protocols for structural equality (representation, identity-type
+  disambiguation), semantic equality (both Π-branches analyzed without choosing), observational equivalence
+  (confirming, not choosing, the 32-subset derivation; explicitly separating label-projection from
+  behavioural equivalence pending `δ`), and provenance-sensitive equivalence (determining whether the corpus
+  supplies a principle/predicate/field-set/algorithm/governance-rule for "relevant," citing Step 105); a
+  five-notion identity reconstruction (state/operation/authority-act/event/provenance identity), explicitly
+  flagging `id=H(P,e,c,t,Π)` and an "unresolved issue identified in TG-06" (a NEW bridge candidate); a
+  mandated dependency-graph derivation (identity→structural→semantic→postconditions→δ), explicitly checking
+  for circularity rather than assuming the proposed chain; a per-axis product-order classification
+  (corpus-defined/derivable/partially derivable/normative/absent) for all five axes; a fifteen-item decision-
+  procedure completeness checklist for "IMPLEMENTATION-READY" status; application of that checklist as a
+  matrix over the four relations; and explicit relation-to-Blocker-3 and relation-to-Blocker-1 sections,
+  the former allowing Blocker 3 to be "confirmed, narrowed, split into multiple blockers," or found to have a
+  "downstream" or "circular dependency."
+
+  **Delivers a required seven-part final verdict structure** (A: what is closed; B: what is formally
+  derivable; C: what remains under-specified; D: what requires governance; E: what is blocked by
+  δ/𝒪/ℐ/another construct; F: has Blocker 3 been confirmed/refined/split; G: the smallest legitimate next
+  act) and a five-condition stop condition, plus a mandatory evidence-discipline vocabulary
+  (CORPUS/DERIVED/VERIFIED/INFERRED/GOVERNANCE/BLOCKED/WITHDRAWN/SUPERSEDED).
+
+  **Closes with the file's own precise, single governing research question**: "Do we now know what an
+  equality relation must contain to be executable, even though we still do not know which normative equality
+  KnowledgeOS should adopt? ... Do not answer the normative question." Explains the rationale: "converts
+  Step 287's excellent diagnosis into a precise DECISION INVENTORY. Then Governance can decide a small,
+  explicit set of questions rather than being handed another large research corpus."
+introduces:
+  - concept: "The full twenty-section 'REFINED STEP 288 -- EQUALITY DECISION-PROCEDURE CLOSURE' commissioning mandate, a further roadmap-naming variant distinct from the already-tracked D288"
+  - concept: "The first formal naming of four specific governance acts, G-EQ-1 through G-EQ-4, for the equality/identity closure programme"
+  - concept: "A new bridge candidate, 'TG-06', cited as identifying an unresolved issue with the id=H(P,e,c,t,Pi) state-identity formula"
+  - concept: "The genuinely important correction that resolving Decision 3 and the axis-subset choice closes only the currently identified branches, not the complete equality implementation contract"
+  - concept: "The fifteen-item decision-procedure completeness checklist for IMPLEMENTATION-READY equality relations"
+defines:
+  - term: "G-EQ-1 through G-EQ-4"
+    definition: "The four formally named (though provisional) governance acts required for equality closure: G-EQ-1 (Pi inside semantic equality?), G-EQ-2 (observation subset for approx?), G-EQ-3 (relevant provenance for cong_lambda?), G-EQ-4 (canonical state identity rule?)"
+refines:
+  - concept: "File 1026's already-documented closure framing ('what closes it: Decision 3 and the axis subset')"
+    refinement: "CORRECTED as too strong: those two acts close only currently identified branches, not the complete equality implementation contract, which still requires decision procedures for the relations themselves, precise state identity, and eventual delta interaction"
+  - concept: "This reconstruction's already-tracked three parallel normative choices (Decision 3, observation-subset, provenance-relevance, file 1026)"
+    refinement: "FORMALLY NAMED as G-EQ-1/G-EQ-2/G-EQ-3, plus a NEW fourth governance act G-EQ-4 (canonical state identity rule) not previously separately isolated"
+  - concept: "This reconstruction's already-tracked roadmap-naming instability (files 1002, 1005, 1010, 1012, 1017)"
+    refinement: "EXTENDED with a further variant: 'REFINED STEP 288' as a distinct, more elaborate name for equality-closure work alongside the already-tracked 'D288'"
+contradicts: []
+repeats:
+  - "Substantially builds on already-tracked equality/identity findings (files 0993-0994, 1005, 1007, 1018-1019, 1021, 1026); this file's distinctive contribution is the full twenty-section commissioning mandate and the formal G-EQ-1..4 naming."
+bridge_candidates:
+  - "'TG-06' -- cited as identifying an unresolved issue with the id=H(P,e,c,t,Pi) formula; not yet directly encountered."
+  - "Whether the full REFINED STEP 288 mandate is subsequently executed as commissioned here."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal naming of governance acts G-EQ-1 through G-EQ-4 for the equality/identity closure programme, including the new G-EQ-4 (canonical state identity rule)."
+  - "dimension-registry.md: record the correction that resolving Decision 3 and the axis-subset choice closes only the currently identified branches, not the complete equality implementation contract."
+  - "dimension-registry.md: record this as a further instance of the roadmap-naming instability: 'REFINED STEP 288' as a distinct name from the already-tracked 'D288'."
+anchor_test:
+  anchor: "This reconstruction's already-tracked equality/identity closure findings and governance-act tracking (files 0993-1026)"
+  supports_dimension: "Formally names the governance acts for the first time and corrects an overstated closure claim, while commissioning a comprehensive twenty-section research protocol"
+  refines_or_contradicts: "refines (corrects) prior closure framing; formally names already-tracked governance items"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The G-EQ-1..4 governance acts are directly checkable against files 1005/1021/1026's own already-documented Decision-3/axis-subset/provenance-relevance findings for consistency."
+undefined_concepts: []
+open_questions:
+  - "'TG-06', not yet directly encountered."
+  - "Whether the full REFINED STEP 288 mandate is subsequently executed."
+tier2_triggered: true
+tier2_reason: "Delivers the full twenty-section 'REFINED STEP 288' commissioning mandate, the first formal naming of four governance acts (G-EQ-1..4, including a new fourth act), and a genuinely important correction to the already-tracked equality-closure framing. Classified importance critical and confidence high given the scale, precision, and direct traceability of this content."

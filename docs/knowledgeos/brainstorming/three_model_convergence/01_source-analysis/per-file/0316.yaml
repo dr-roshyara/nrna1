@@ -1,0 +1,60 @@
+sequence: 316
+path: docs/knowledgeos/brainstorming/kernel/classification/README.md
+title: "Kernel Classification/Corpus/Synthesis/Falsification READMEs (combined, minimal per standing instruction)"
+date: "2026-08-25"
+bytes: 3600
+model:
+  primary: c1
+  secondary: null
+source_role: CRITICAL_REVIEW
+canonical_source: 316
+importance: medium
+confidence: high
+about: >
+  Combined minimal record for four directory-README housekeeping files (0316 classification/README.md,
+  0317 corpus/README.md, 0318 synthesis/README.md, 0319 falsification/README.md), per the standing
+  instruction to give git/readme-type files minimal, non-analytical handling. Despite being README files,
+  they carry genuine corpus-governance substance worth a light note: confirm the Phase A census and Phase
+  B dependency map (0311) are 'done', with cluster-map/contradiction-map 'not started'; state the SOURCE->
+  CLASSIFIED->SYNTHESIZED->ADVERSARIAL->ARCHITECTURAL-AUTHORITY status-advancement discipline; identify
+  FOUR role-anomaly files deliberately left in place (two already directly encountered and recorded by this
+  reconstruction as 0256 and 0283); and flag a LIVE, UNRECONCILED K4-severity identity challenge (Daoist
+  ziran vs INV-KOS-IDENTITY-001, unreconciled against McGinn's identity-as-primitive claim).
+introduces:
+  - concept: "Classification-layer status ledger: Phase A census (00_CENSUS.md) = done; Phase B dependency-map.md (this reconstruction's 0311) = done; Phase B cluster-map.md = not started; Phase B contradiction-map.md = not started"
+  - concept: "Status-advancement discipline stated explicitly: 'a document never acquires a later status because of the directory it sits in; status advances only by a recorded act'; directory names express artifact FUNCTION, never subject or authority; source classification is metadata recorded in a census, never a path or filename code; pipeline SOURCE -> CLASSIFIED -> SYNTHESIZED -> ADVERSARIAL -> ARCHITECTURAL AUTHORITY"
+  - concept: "corpus/README.md declared 'INERT BY DECISION': nothing will be moved into corpus/, all 141 kernel documents stay in kernel/ root where captured; FOUR role anomalies flagged and deliberately left in place per census section 3 finding C12: 20260824-032219 (an EKS architecture baseline, not brainstorming -- from the earlier technical-pivot arc of this corpus), 20260824-163922 (a raw article, not analysis -- this reconstruction's own file 0256), 20260825-130339 (lossy scrollback -- this reconstruction's own file 0283), 20260824-010504 (.docx duplicate, not yet encountered by this reconstruction)"
+  - concept: "synthesis/README.md: Phases D/E (cluster synthesis) have NOT run; an empty subdirectory is explicitly NOT evidence a cluster has been read. Four target clusters identified by the census as highest-yield: identity/ epistemic-state/ evidence/ boundary/. Reading order recommended: identity FIRST"
+  - concept: "LIVE, UNRECONCILED K4-severity identity challenge flagged: the identity cluster 'carries a live K4 challenge (20260824-094638, Daoist ziran vs INV-KOS-IDENTITY-001), a K3 counter-position (20260825-115235/120122, McGinn: identity primitive and indefinable), and NO RECONCILIATION' -- directly connects this reconstruction's own tracked earlier finding (a Daoist ziran-derived challenge to the Identity invariant, raised as an open falsification question) with the McGinn identity-as-primitive claim engaged at this reconstruction's files 0273/0276, confirming both remain genuinely unresolved per the corpus's own census"
+  - concept: "falsification/README.md: Phase G (attacks) has NOT run; confirms this reconstruction's own file 0284 (20260825-130514, the Fagin critique) as the corpus's one real self-attack, deliberately left in place among the sources rather than moved; confirms 20260823-234750 (tarka: nine attack families) as the corpus's 'reusable' imported adversarial instrument, per census finding S-4; explicit principle: 'an attack that fails does not promote its target -- a surviving hypothesis is still a hypothesis; only a recorded governance act reaches ARCHITECTURAL AUTHORITY'"
+defines: []
+refines:
+  - concept: "0311's Phase B dependency-map findings (status ledger, role anomalies, S-4 self-falsification finding)"
+    refinement: "Confirms and operationalizes 0311's findings into an explicit directory-level status ledger and governance discipline, and names the specific four role-anomaly files by ID -- two of which this reconstruction has already independently processed as 0256 and 0283"
+  - concept: "The corpus's earlier Daoist ziran-derived challenge to the Identity invariant (tracked in this reconstruction's carried-forward summary as an open falsification question) and McGinn's identity-as-primitive claim (0273/0276)"
+    refinement: "The corpus's own Phase A census independently confirms this remains a live, UNRECONCILED K4-vs-K3 tension -- not resolved anywhere in the 141-document corpus, a significant open item for the eventual cross-model comparison phase"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: flag the identity cluster's live K4 (Daoist ziran vs INV-KOS-IDENTITY-001) vs K3 (McGinn identity-primitive) tension as explicitly UNRECONCILED per the corpus's own Phase A census -- a priority candidate for the eventual cross-model comparison phase (protocol section 29), now with external corpus-governance confirmation that no reconciliation exists anywhere in the 141-document kernel/ corpus."
+anchor_test:
+  anchor: "0311's Phase B dependency map; 0256 and 0283 (confirmed role-anomaly files); the earlier Daoist ziran/Identity-invariant challenge; McGinn's identity-as-primitive claim (0273/0276)"
+  supports_dimension: "Corpus governance/meta-analysis confirming and sharpening prior findings: identifies a specific, named, unreconciled K4-vs-K3 tension in the Gita/philosophical model's Identity dimension against the Western-analytic model's identity-as-primitive claim"
+  refines_or_contradicts: "refines 0311's findings and confirms the unresolved Daoist-ziran/McGinn identity tension; no contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether the identity cluster's live K4-vs-K3 tension (Daoist ziran vs McGinn) is ever reconciled in a later file, or remains open through to the cross-model comparison phase"
+  - "What the fourth role-anomaly file (20260824-010504, a .docx duplicate) turns out to be when this reconstruction's sequential pass reaches it"
+tier2_triggered: false
+tier2_reason: "Combined minimal record for four README-type housekeeping files, per the standing instruction; recorded lightly despite genuine governance substance (status ledger, role-anomaly confirmations, a live unreconciled identity tension) because the files are directory README artifacts, not primary source or synthesis content."

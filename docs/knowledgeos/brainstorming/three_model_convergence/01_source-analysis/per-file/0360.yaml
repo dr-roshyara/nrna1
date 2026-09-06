@@ -1,0 +1,119 @@
+sequence: 360
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260825-224907_research-extraction-knowledge-spaces-doignon-falmagne.md
+title: "Full KST Research Extraction (direct book citations) + Analysis Layer: Belief Banned from Kernel Vocabulary, Observation-Information-Representation-Epistemic-Evaluation Model"
+date: "2026-08-25"
+bytes: 94409
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 360
+importance: critical
+confidence: high
+about: >
+  A three-layer file. Layers 1-2 (lines 1-948 and 950-1897, byte-identical intra-file self-duplication --
+  extending the corpus-integrity pattern first seen at 0267 and repeated at 0343/0354) present a much more
+  detailed, directly book-cited "Research Extraction: Knowledge Spaces by Doignon & Falmagne" than 0359's
+  own summary treatment -- eighteen numbered sections (What is a Knowledge State? / What is a Knowledge
+  Space? / Status of Truth / Observed vs Inferred / Probability / Temporal Knowledge / Reconstruction /
+  Surmise Systems / Entailment / Base and Atoms / Galois Connections / Skills and Competencies / Assessment
+  vs Knowledge / Error and Luck / What KST Does NOT Model / Formal Facts Classification / Contradictions and
+  Boundaries / Final Research Synthesis Q1-Q10), each grounded in specific book definitions and theorem
+  numbers (Definition 1.2, 0.2, 1.7; Theorem 3.10, 4.4, 4.18, 5.5, 6.19, 6.25, 6.31; Chapters 7,8,10,11).
+  Systematically classifies every KST construct as FACT / MODEL / ASSUMPTION / INTERPRETATION / LIMITATION,
+  and produces an explicit eight-item comparison table of what KST does NOT model (truth, belief,
+  justification, testimony, provenance, memory, context, observer-relativity, epistemic logic, understanding,
+  explanation, institutional knowledge, historical reconstruction, changing domain truth) -- a more
+  exhaustive version of 0359's own absence-list. Layer 3 (lines 1898-2665, the genuinely NEW content in this
+  file) is a fifteen-point "analysis" response reviewing and refining the extraction: reaffirms Knowledge
+  State != Knowledge (capability, not philosophical knowledge), sharpens the Knowledge-Space-vocabulary
+  disambiguation (Q = domain; K-script = possible capability states; K_t^A = one participant's state),
+  restates the extraction-is-probabilistic/state-is-deterministic finding as "one of the strongest pieces of
+  evidence we have so far," and introduces a genuinely NEW three-level distinction sharper than 0359's own:
+  K-script != K_t^A != K-hat_t^A (space of possible states != actual latent state != ESTIMATED state), noting
+  P(K_t^A|O_<=t) is "an epistemic state of the assessor about the learner's state, not necessarily the
+  learner's state itself." Issues an explicit terminology caution: the word "projection" should NOT be used
+  for the estimated-state concept until its specific mathematical sense (Hilbert-space projection,
+  conditional expectation, geometric projection, etc.) is disambiguated -- directly relevant to the corpus's
+  own long-running measure-theory Projection vocabulary (0324, 0327, 0333). Confirms surmise systems should
+  NOT yet be called "regimes" (KST itself has no substrate/regime separation). Flags the entailment-is-not-
+  logical-entailment finding as "exactly the sort of terminology collision our DDD/Ubiquitous-Language work
+  needs to catch." Calls the Galois multiple-equivalent-representations result "probably the most
+  mathematically interesting finding," generalizing it to a hypothesis (one epistemic substrate -> {logical,
+  probabilistic, metric, ...} representations) requiring independent research to establish for GENERAL
+  epistemic structures (KST alone insufficient). Proposes a revised research model: Historical/Empirical
+  Substrate -[Regime]-> Epistemic State -[Evaluation]-> Knowledge Attribution, with probability entering only
+  at the extraction step (O_<=t -[R]-> P(S_t|O_<=t) -> S-hat_t), explicitly still a hypothesis. Recommends
+  the next research direction be epistemic logic / dynamic epistemic logic (knowledge/belief operators,
+  information states, public announcements, common/distributed knowledge, belief revision) rather than
+  further KST reading, framed as an explicit attack on the substrate/regime/epistemic-state hypothesis rather
+  than confirmation-seeking. Closes with the file's most consequential architectural recommendation: BAN
+  "Belief" from the Kernel vocabulary at this stage, since the word conflates at least eight distinct
+  referents (psychological state, propositional acceptance, confidence, expectation, disposition-to-act,
+  probability assignment, institutional position, internal model) -- illustrated via a worked "the system
+  believes election E is valid" example with five incompatible formalizations. Proposes a four-stage
+  alternative: Observation -> Information -> Representation -> Epistemic Evaluation, with a regime then
+  deciding whether a representation counts as belief/knowledge/justified-belief/competence/expectation/
+  confidence. Supplies a vague-term-to-precise-term vocabulary table (belief->acceptance/representation/
+  confidence; knowledge->leave open; certainty->confidence/logical-consequence/validity; etc.), explicitly
+  invoking a DDD principle ("do not create a domain concept merely because natural language uses a
+  convenient word"). Closes by proposing the Kernel might instead preserve what-was-observed +
+  what-was-accessible + what-was-asserted + what-was-derived + why + when + by-whom + from-what, letting a
+  regime assign the label (belief/knowledge/justified-belief/competence/expectation/confidence) --
+  explicitly flagged as "a research hypothesis, not an architecture decision."
+introduces:
+  - concept: "Full book-cited KST research extraction (eighteen sections, Definition/Theorem-numbered), superseding 0359's summary treatment with direct textual grounding -- FACT/MODEL/ASSUMPTION/INTERPRETATION/LIMITATION classification discipline applied uniformly across every extracted construct"
+  - concept: "Sharper three-level distinction: K-script (space of possible states) != K_t^A (actual latent state) != K-hat_t^A (ESTIMATED state) -- distinct from and sharper than 0359's two-level K-script != K_t^A != P(K_t^A|O_<=t), explicitly noting the probability-over-states IS an epistemic state of the ASSESSOR, not the learner's own state"
+  - concept: "Explicit terminology caution against using 'projection' for the estimated-state concept until its specific mathematical sense is disambiguated (Hilbert-space projection / conditional expectation / geometric projection), directly relevant to and extending the corpus's own long-running measure-theory Projection-vocabulary caution (0324/0327/0333)"
+  - concept: "Generalization of the Galois/multiple-equivalent-representations result into an explicit open research hypothesis: one epistemic substrate -> {logical representation, probabilistic representation, metric representation, ...}, explicitly requiring independent research beyond KST to establish for GENERAL epistemic structures"
+  - concept: "Revised (still-hypothesis) research model: Historical/Empirical Substrate -[Regime]-> Epistemic State -[Evaluation]-> Knowledge Attribution, with a separate probabilistic-extraction sub-model O_<=t -[R]-> P(S_t|O_<=t) -> S-hat_t explicitly NOT equated with Knowledge=Probability"
+  - concept: "Explicit recommendation to investigate epistemic logic and dynamic epistemic logic NEXT (knowledge/belief operators, information states, public announcements, common/distributed knowledge, temporal epistemic logic, belief revision, dynamic epistemic logic) rather than further KST reading, framed as an attack on the substrate/regime/epistemic-state hypothesis, not a confirmation search"
+  - concept: "BAN-Belief-from-Kernel-vocabulary recommendation: 'Belief' conflates at least eight distinct referents (psychological state / propositional acceptance / confidence / expectation / disposition-to-act / probability assignment / institutional position / internal model), illustrated by a worked five-way-ambiguous example ('the system believes election E is valid')"
+  - concept: "Four-stage alternative to Belief: Observation -> Information -> Representation -> Epistemic Evaluation, with O=(subject,event,time,source,content,...) as the strongest empirical-substrate candidate, I_t^A as agent-accessible information, R_t^A as the agent's current representation (NOT equated with philosophical belief), and Epistemic Evaluation as a regime-specific question (R_t^A |= P, or P(P|I_t^A)=x, or KST(R_t^A)=K, or a philosophical Knows-verdict)"
+  - concept: "Vague-term-to-precise-term vocabulary table explicitly invoking the DDD principle 'do not create a domain concept merely because natural language uses a convenient word' (belief->acceptance/representation/confidence; knowledge->leave open; knowledge state->define per regime; certainty->confidence/logical-consequence/validity; understanding->separate research problem; etc.)"
+  - concept: "Proposed Kernel-content hypothesis (explicitly a hypothesis, not architecture): what-was-observed + what-was-accessible + what-was-asserted + what-was-derived + why-it-was-derived + when + by-whom + from-what, with a regime then assigning the label (belief/knowledge/justified-belief/competence/expectation/confidence) -- 'a much stronger theory-independent foundation than putting Belief into the Kernel'"
+defines: []
+refines:
+  - concept: "0359's KST engagement (Q, K subset-of Q, (Q,K-script), ten FACT-KST items)"
+    refinement: "Given full direct-citation grounding (Definition/Theorem numbers) rather than summary treatment, and sharpened from a two-level (K-script/K_t^A/P(...)) to an explicit three-level (K-script/K_t^A/K-hat_t^A) distinction separating the assessor's belief-about-the-learner from the learner's own state"
+  - concept: "0324/0327/0333's Projection vocabulary (measure-theoretic and tuple-based)"
+    refinement: "Given an explicit caution against reusing the word 'projection' for KST's estimated-state concept without first disambiguating which mathematical sense (Hilbert-space/conditional-expectation/geometric) is intended -- extending rather than resolving the corpus's long-tracked projection-vocabulary-collision finding (0329/0345/0351/0359)"
+  - concept: "0358's Pritchard-derived Safety/Ability/Luck RegimeDerived reclassification and the corpus's ongoing distrust of loaded philosophical primitives"
+    refinement: "Extended by name to 'Belief,' now explicitly recommended for exclusion from the Kernel vocabulary pending a specific forcing research source, on grounds structurally identical to the Safety/Ability/Luck RegimeDerived argument (the word conflates modal/attribution judgments a substrate alone cannot settle)"
+  - concept: "0340's relational-core structure and 'no regime may silently redefine a core concept' invariant"
+    refinement: "Reinforced via the vague-term-to-precise-term vocabulary table and the explicit DDD principle citation, applying the no-silent-redefinition discipline specifically to natural-language epistemic vocabulary (belief, certainty, understanding, opinion, assumption, conclusion)"
+contradicts: []
+repeats:
+  - concept: "The file's own Layer 1 content (lines 1-948) is byte-identical intra-file self-duplicated as Layer 2 (lines 950-1897)"
+    canonical_source: 360
+    novelty: "none -- corpus-integrity finding, extending the intra-file self-duplication pattern first seen at 0267 and repeated at 0343 and 0354"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the sharper three-level K-script/K_t^A/K-hat_t^A distinction as a refinement of 0359's two-level distinction."
+  - "dimension-registry.md: record the explicit 'projection' terminology caution as a further entry in the corpus's ongoing measure-theory Projection-vocabulary-collision tracking (0324/0327/0333/0345/0351/0359)."
+  - "dimension-registry.md: record the BAN-Belief-from-Kernel-vocabulary recommendation and the Observation->Information->Representation->Epistemic-Evaluation four-stage model as a major new architectural hypothesis, explicitly not yet adopted."
+  - "dimension-registry.md: record this file's intra-file self-duplication (lines 1-948 = lines 950-1897) as the fourth instance of the pattern first seen at 0267 (with 0343, 0354)."
+anchor_test:
+  anchor: "0359's KST engagement; 0324/0327/0333/0345/0351's Projection-vocabulary tracking; 0358's Pritchard-derived RegimeDerived reclassification of loaded philosophical primitives; 0340's no-silent-redefinition invariant; 0267/0343/0354's intra-file self-duplication pattern"
+  supports_dimension: "Mathematical/statistical model, deepened with explicit DDD/ubiquitous-language discipline: a fuller, directly book-cited KST extraction plus a substantial analysis layer that sharpens the Knowledge-Space/actual-state/estimated-state distinction, cautions against reusing 'projection' without disambiguation, and produces the corpus's most concrete Kernel-vocabulary-discipline recommendation to date (ban Belief; use Observation/Information/Representation/Epistemic-Evaluation instead)"
+  refines_or_contradicts: "refines 0359 (sharper three-level distinction, direct citations); refines 0324/0327/0333 (projection-terminology caution); refines 0358 (extends RegimeDerived-style skepticism to Belief); refines 0340 (applies no-silent-redefinition to natural-language vocabulary); repeats within itself (0267/0343/0354 intra-file duplication pattern)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Doignon & Falmagne, Knowledge Spaces -- direct citations of Definitions 1.2/0.1/0.2/1.7/2.1/2.4/3.2/4.2/4.12/4.16/5.4/1.19/1.23/1.26 and Theorems 1.26/3.10/4.4/4.18/5.5/6.19/6.25/6.31, plus Chapters 7/8/10/11 (probability, stochastic learning, assessment algorithms)"
+undefined_concepts:
+  - "Whether the four-stage Observation->Information->Representation->Epistemic-Evaluation model is ever formally adopted or merely remains a proposed alternative to Belief"
+  - "Whether the recommended epistemic-logic/dynamic-epistemic-logic reading is ever undertaken in the tracked sequential corpus"
+open_questions:
+  - "Whether the sharper K-script/K_t^A/K-hat_t^A three-level distinction and the 0359 two-level distinction are ever formally reconciled into one canonical statement"
+  - "Whether the BAN-Belief-from-Kernel-vocabulary recommendation is ever formally adjudicated or adopted as a standing rule"
+  - "Whether the vague-term-to-precise-term vocabulary table is ever extended into a formal glossary artifact"
+tier2_triggered: true
+tier2_reason: "Three-layer file: a fuller, directly book-cited KST research extraction (superseding 0359's summary treatment) that is then intra-file self-duplicated (fourth instance of the 0267/0343/0354 pattern), followed by a genuinely new fifteen-point analysis layer sharpening the Knowledge-Space/actual-state/estimated-state distinction to three explicit levels, cautioning against unreflective reuse of 'projection' terminology, and producing the corpus's most concrete Kernel-vocabulary-discipline recommendation to date: ban 'Belief' from the Kernel, replacing it with an Observation->Information->Representation->Epistemic-Evaluation model and a vague-to-precise vocabulary table explicitly grounded in DDD ubiquitous-language discipline."

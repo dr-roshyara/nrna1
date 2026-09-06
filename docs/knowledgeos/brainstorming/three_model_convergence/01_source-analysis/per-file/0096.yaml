@@ -1,0 +1,123 @@
+sequence: "0096"
+path: docs/knowledgeos/brainstorming/20260822-0234-knowledgeos-vyapti-inference-warranting-relation-layer.md
+title: "KnowledgeOS extraction from Matilal's 'The Character of Logic in India' — Vyāpti/inference-warranting relation"
+date: "2026-08-22"
+bytes: 9286
+
+model:
+  primary: g
+  secondary: [x, c1]
+
+source_role: INDEPENDENT_RESEARCH
+canonical_source: null
+
+importance: critical
+confidence: high
+
+about: >
+  A review of a real, named academic source -- Bimal Krishna Matilal's "The Character of Logic in
+  India" -- the most specifically-attributed scholarly citation in the Nyaya/Tarka thread so far
+  (named author, named book, distinct from 0092's Stanford Encyclopedia and 0095's unnamed "Tarka
+  paper"). Centers on vyapti (the inference-warranting relation between reason and conclusion),
+  Dignaga's three conditions for a valid inferential sign (a genuine, historically important Buddhist
+  logic result), and applies both directly to a modern AI-hallucination/pseudo-evidence detection
+  problem.
+
+introduces:
+  - "H-KOS-Vyapti-001 REFINED (same ID as 0093's H-KOS-Vyapti-001, elaborated with a concrete
+    consequence clause): 'KnowledgeOS SHALL preserve the warranting relation that connects evidence to
+    conclusion. A conclusion without an explicit inference relation SHALL remain a hypothesis.' A
+    genuine ID reuse/refinement, not a collision -- the definition is tightened, not duplicated"
+  - "Liṅga (sign) / Liṅgin (signified) -- new Nyāya vocabulary distinguishing the evidence-sign from
+    what it signifies, motivating explicit separation of 'evidence-sign' from 'conclusion' as distinct
+    architectural objects"
+  - "Reasoning Verification Engine: input Claim/Evidence/Inference/Context -> output VALIDATED/
+    QUESTIONABLE/CONFLICTED/INVALID/UNKNOWN -- a DISCRETE output vocabulary, consistent with 0081's
+    DeepSeek finding that the corpus's systems prefer closed epistemic vocabularies over continuous
+    scores"
+  - "H-KOS-Dialogue-001 (Vāda/Jalpa/Vitaṇḍā as multi-agent truth discovery / adversarial-reasoning
+    detection): restates 0092/0094's debate-type taxonomy in a 'Debate Governance' framing, proposing
+    KnowledgeOS = Knowledge Graph + Argument Graph + Debate Graph"
+  - "H-KOS-EvidenceAuthenticity-001: 'KnowledgeOS SHALL distinguish evidence from pseudo-evidence by
+    evaluating whether the evidence possesses the logical force required for the conclusion' --
+    EXPLICITLY framed via a worked AI-hallucination example (a generated citation for a library feature
+    that does not exist) -- the most concrete, modern-engineering-relevant candidate in the Nyaya/Tarka
+    thread so far"
+  - "⭐ Dignāga's three conditions for a valid inferential sign (trairūpya, genuine 5th-6th century
+    Buddhist logic, historically real and precise): (1) present in the subject under consideration,
+    (2) present in similar cases, (3) absent in dissimilar cases. Applied directly to an engineering
+    worked example (service outage caused by memory leak: does this case show the evidence? do similar
+    cases? do dissimilar cases lack it?) -- structurally resembles modern case-control / Mill's-methods
+    comparative causal reasoning, a genuine cross-tradition structural resemblance not previously noted
+    in this corpus"
+  - "Inference Validation Matrix: Claim -> Evidence Sign -> {Similar Cases, Different Cases} ->
+    Validation Score -- a new architecture-component diagram operationalizing Dignāga's three
+    conditions"
+  - "⭐ Seventh non-identical anchor reshaping, in a NEW shape category: 'New Kernel Layers' is a
+    four-layer PROCESS PIPELINE (Knowledge Objects -> Inference Validation [Vyāpti/Sign Validation/
+    Counter Evidence] -> Debate/Challenge -> Truth Determination), not a flat list or grouped-pillar
+    shape like the prior six reshapings -- a genuinely different kind of structure, not just a
+    different item count"
+  - "Most Important Architectural Contributions table (8 rows) mapping each Matilal concept to a
+    KnowledgeOS impact: Vyāpti->inference-warrant relation, Liṅga/Liṅgin->evidence-sign separation,
+    Vāda->truth-seeking collaboration, Jalpa/Vitaṇḍā->adversarial-reasoning detection, Tarka->reasoning
+    validation engine, Hetvābhāsa->hallucination/pseudo-evidence detection, triple condition->automated
+    inference verification, debate tradition->argument graph"
+  - "Final Insight: 'Truth is not produced by storing more information. Truth emerges when evidence,
+    reasoning relations, objections, and validation rules are preserved together.'"
+
+defines: []
+
+refines:
+  - "0093's H-KOS-Vyapti-001: tightened with an explicit consequence clause (unwarranted conclusions
+    remain hypotheses) -- a genuine refinement via ID reuse, not a new candidate"
+  - "0092's Hetvābhāsa/pseudo-evidence concept: sharpened into a directly AI-hallucination-framed
+    candidate (H-KOS-EvidenceAuthenticity-001), the most concretely engineering-relevant framing of
+    this concept in the thread so far"
+
+contradicts: []
+
+repeats:
+  - concept: "Vāda/Jalpa/Vitaṇḍā debate taxonomy, Hetvābhāsa fallacy detection"
+    canonical_source: "0092"
+    novelty: low
+
+bridge_candidates:
+  - "Dignāga's three conditions (trairūpya) as a possible bridge to modern comparative/case-control
+    causal-inference methodology (Mill's methods) -- a genuine cross-tradition structural resemblance,
+    not yet connected by any document to an actual formal (M-model) statement of either side"
+
+mathematical_content: false
+gita_content: true
+kernel_content: true
+
+key_evidence:
+  - "The most specifically-attributed scholarly source in the Nyaya/Tarka thread: a named author
+    (Matilal) and a named, real, identifiable book, distinct from 0092/0095's less specific citations"
+  - "A worked, concrete engineering example (service-outage/memory-leak) directly applying a named
+    historical logical framework (Dignāga's conditions), the clearest source-to-engineering translation
+    in this thread"
+  - "Tension worth flagging, not resolved by the document itself: section 8 states 'confidence
+    increases' as Dignāga's conditions are satisfied, for an 'Inference Validation Matrix' producing a
+    'Validation Score' -- this edges toward the scalar-confidence framing the corpus has repeatedly
+    warned against (0082, 0089's Confidence!=Truth), even though the SAME document's own 'Reasoning
+    Verification Engine' (section 3) correctly uses a discrete, closed output vocabulary. An internal
+    inconsistency between two proposals in the same document, not adjudicated by the source itself."
+
+undefined_concepts: []
+
+open_questions:
+  - "Whether the 'confidence increases' / Validation Score language in section 8 is later recognized as
+    in tension with the corpus's own Confidence!=Truth discipline, or silently adopted"
+  - "Whether the process-pipeline shape (New Kernel Layers) is picked up by later files, or is itself
+    superseded by yet another shape"
+
+tier2_triggered: true
+tier2_reason: >
+  Most specifically-attributed scholarly source in the thread (Matilal, named book); introduces
+  Dignāga's genuine historical three-condition inference test with a direct, concrete engineering
+  worked example; produces an AI-hallucination-framed candidate (EvidenceAuthenticity) more concretely
+  engineering-relevant than prior Nyaya-derived candidates; and reshapes the anchor a seventh,
+  structurally NEW way (a process pipeline, not a flat list or grouped pillars). Also surfaces an
+  unresolved internal tension between discrete (Reasoning Verification Engine) and scalar-sounding
+  (Validation Score, "confidence increases") output framing within the same document.

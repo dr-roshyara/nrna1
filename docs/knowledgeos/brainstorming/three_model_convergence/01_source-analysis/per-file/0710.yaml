@@ -1,0 +1,223 @@
+sequence: 710
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-124910_step-125-knowledgeos-operating-model.md
+title: "Step 125 -- Delivers a Complete Seven-Actor Operating Model (Business Authority/Domain Architect/Architecture Board/Engineering/Deterministic Assurance/AI Agent/Runtime) With a Directly Actionable Operating-Model Matrix, a Nine-Level Context-Precedence Hierarchy, and the Five-Gate Control Architecture (G1 Knowledge/G2 Classification/G3 Authorization/G4 Assurance/G5 Closure) -- Delivers A3, Completing a Three-Member A-Series of Agent-Specific Constitutional Invariants -- Proposes 'GovernedEngineeringFact' as the Central Object of KnowledgeOS (Documents Are Projections, Not Truth) -- a Second Candidate Fundamental Unit Alongside 0703's TraceableKnowledgeEpisode -- Delivers the Seven-Level M0-M6 Operating-Model Maturity Ladder, Superseding 0701's Six-Level Ladder by Adding Self-Assurance (M6) as the Explicit Highest Level -- Opens Step 126 -- KnowledgeOS Information Model, Promising the First Conceptual Object-and-Relationship Model"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 125 -- KnowledgeOS Operating Model', promised at 0709's close; delivers a complete, concrete, directly actionable operating-model specification (seven actors, five gates, nine-level context hierarchy) continuing the high-quality Steps 120-125 synthesis arc, and proposes a second candidate fundamental unit (GovernedEngineeringFact) alongside 0703's TraceableKnowledgeEpisode"
+source_role: PRIMARY_RESEARCH
+canonical_source: 710
+importance: critical
+confidence: high
+about: >
+  Delivers seven precisely named principal actor classes -- `Business/Product Authority, Domain Architect,
+  Architecture Board/Governance, Engineering Team, Deterministic Assurance, AI Agent, Runtime/Operational
+  Systems` -- with the important clarification that KnowledgeOS itself is explicitly NOT an actor but "the
+  system of record and coordination substrate" through which these actors exchange governed knowledge and
+  evidence. Delivers each role's precise boundary via clean distinguishing principles directly restating and
+  organizing already-established disciplines into one coherent per-role framework:
+  `ArchitecturalRecommendation≠GovernanceDecision` (Domain Architect); `Analysis→BoardDecision` (the Board
+  consumes evidence/recommendation/impact/alternatives rather than performing analysis itself);
+  `Assurance→Evidence`, never `→OrganizationalAuthority` (Deterministic Assurance); `Agent≠
+  GovernanceAuthority` (AI Agent). Delivers `Responsible≠Authorized` reconfirmed with three concrete cross-
+  role examples (an engineer responsible for implementation without decision authority; an architect
+  recommending without approval authority; an agent executing a delegated action without authority to
+  redefine policy), directly extending 0682's/0703's Responsibility≠Authority family.
+
+  **Delivers "RACI is not enough," a precisely reasoned critique of conventional project-management RACI
+  matrices**, proposing a richer five-dimension model: `Actor+Capability+Authority+Scope+
+  EvidenceResponsibility` -- a genuinely useful methodological contribution extending standard
+  organizational-design theory with KnowledgeOS-specific evidence tracking. Delivers Authority formalized as
+  a five-way tuple `Authority=Actor×Action×Resource×Scope×Validity`, the most complete such tuple in this
+  reconstruction, and `AgentAuthority=DelegatedAuthority∩Policy`, directly extending 0709's Capability/
+  Permission/Delegation/Authority separation into a clean intersection formalization.
+
+  **Delivers a genuinely valuable, directly actionable Operating-model matrix** -- a seven-row (per actor) ×
+  five-column (Primary responsibility/Can recommend?/Can decide?/Can execute?/Produces evidence?) table --
+  the most complete single-table organizational-role summary in this reconstruction, explicitly noted as "a
+  working model, not yet a finalized organizational RACI."
+
+  **Delivers Evidence flow and Decision flow explicitly and precisely distinguished as two separate flows
+  that must not be confused**: `Evidence→Recommendation` is valid; `Evidence→Decision` is NOT automatically
+  valid without an intervening governance mechanism -- directly extending the corpus's Recommendation≠
+  Decision family into a flow-diagram-level distinction. Delivers the Domain Architect's position explicitly
+  clarified with a note that this "clarifies an important question from the earlier governance discussions"
+  (an apparent reference to real prior organizational deliberation this brainstorming draws on, consistent
+  with 0689's confirmed real-world "Softwareeinführungsprozess"/"ITCM" references): `Architect=
+  Classification/Assessment`, while `GovernancePolicy=DefinesDecisionAuthority` -- the architect applies
+  governance rules but is not automatically the sole authority source. Continues the illustrative "Nexus"
+  running example (confirmed fictional at 0698) for a worked governance-flow scenario.
+
+  Delivers Governance triggers explicitly grounded in change characteristics rather than personal judgment
+  (`BusinessImpact, ArchitectureImpact, SecurityImpact, OperationalImpact, RegulatoryImpact,
+  TechnologyRisk`), a Classification engine (`Change→Classification→{Standard/Governed/ArchitectureRelevant/
+  SecurityRelevant/HighRisk}`, extending 0689's/0692's classification disciplines), and Agent participation
+  in classification explicitly bounded (`Recommendation≠FinalClassification` unless delegated, directly
+  extending the corpus's Agent≠Authority family).
+
+  **Delivers a genuinely valuable, complete "Governance Package" evidence-assembly template** (`Change,
+  Business Intent, Affected Systems, Architecture Context, Existing Decisions, Runtime Evidence, Security
+  Evidence, Risk, Agent Analysis, Deterministic Checks, Recommendation`) -- "the human decision maker
+  receives a decision-ready evidence package rather than a pile of documents" -- directly extending 0707's/
+  0709's decision-request-package concept into a more complete, decision-support-focused format, paired
+  with a consolidating ten-question capstone list crystallizing the "engineering decision-support system"
+  identity.
+
+  Delivers Agent context construction (`Task→RelevantContext`, never the entire knowledge universe, composed
+  of `AuthoritativeKnowledge+RelevantEvidence+CurrentState+ApplicablePolicy`) and Context provenance
+  requiring `SourceID` so an agent can cite "this statement comes from ADR-042, effective since June 2026"
+  rather than "the system told me this," directly extending 0673's/0680's/0698's context-boundary
+  disciplines. **Delivers a genuinely valuable, precisely graduated nine-level Context-precedence hierarchy,
+  the most granular such ladder in this reconstruction, directly extending 0690's five-level
+  GlobalGovernance→...→TaskContext precedence chain**: `1. Constitutional rules, 2. Applicable governance
+  policies, 3. Current authoritative decisions, 4. Current architecture, 5. Verified implementation state,
+  6. Runtime observations, 7. Approved exceptions, 8. Agent inference, 9. Historical context` -- a
+  currently reusable framework for RAG/context-window prioritization design in real AI systems.
+
+  Delivers Exception handling formalized as a clean piecewise function (`Rule+Exception→EffectiveState`,
+  worked through concretely: `Effective(ServiceX,t<T)=B` while `Effective(OtherService,t)=A`), directly
+  extending 0689's/0703's/0706's/0708's exception-governance discipline, and `Conformance=ExpectedRule+
+  ExceptionContext`.
+
+  **Delivers "the Knowledge Gate," a genuinely valuable, concrete architectural enforcement mechanism
+  directly operationalizing 0709's "governance must be enforced below the LLM instruction layer"
+  principle**: `Action→KnowledgeGate` verifying five explicit conditions (relevant knowledge exists, is
+  current, authority exists, action is within scope, required evidence exists) before `ALLOW`/`BLOCK` --
+  "this is stronger than prompting... a Knowledge Gate says: action cannot execute unless conditions are
+  satisfied. That is architectural enforcement." **Delivers the five-gate operating-model control
+  architecture (`G1`-`G5`), the most complete, concrete control-point specification in this
+  reconstruction**: `G1` Knowledge Gate, `G2` Classification Gate, `G3` Authorization Gate, `G4` Assurance
+  Gate, `G5` Closure Gate, with a full worked pipeline diagram (`Change Request→G1→G2→G3→Engineering
+  Action→G4→Runtime Observation→G5→KnowledgeOS`) -- a directly implementable architecture specification.
+
+  Delivers Gate-failure handling requiring `Finding+Reason+Evidence+RequiredNextStep`, never a bare `ERROR`
+  (with a concrete illustrative message: "BLOCKED — authorization for production deployment could not be
+  established"), directly extending 0692's/0699's/0700's Finding-schema disciplines into gate-failure
+  reporting specifically, and correct Agent behavior on a blocked action (`BLOCK→Explain→
+  CollectMissingEvidence` or `BLOCK→GovernanceRequest`, never circumvention).
+
+  **Delivers `A3`, the third member of the A-series agent-specific constitutional invariants (following
+  0706's `A1` and 0709's `A2`), completing a clear, systematically numbered family**: "Agents MUST NOT
+  circumvent governance gates when required evidence or authorization is missing."
+
+  Delivers the most complete single-diagram organizational-plus-technical-actor map in this reconstruction
+  (`Business→Domain Architect→Architecture Board→KnowledgeOS→{Claude,Codex}→Engineering→Runtime→Evidence→
+  KnowledgeOS`, "the direction is deliberately circular"), and the valuable, memorable identity statement
+  **"KnowledgeOS is the continuity layer"**: without it, business decisions, architecture, code, runtime,
+  evidence, and agent context each live fragmented across separate systems; KnowledgeOS preserves
+  `Continuity`.
+
+  **Delivers the file's most significant conceptual proposal -- `GovernedEngineeringFact` as the central
+  object of KnowledgeOS, a second candidate "fundamental unit" alongside 0703's `TraceableKnowledgeEpisode`,
+  worth tracking as a distinct, potentially competing proposal for the eventual canonical synthesis**: "the
+  central object is not the document" -- `GovernedEngineeringFact` (identity+provenance+authority+
+  validity+evidence+relationships+lifecycle) is proposed as the true underlying semantic unit, with
+  documents demoted to mere `Projections` of these facts (`Document=Truth` explicitly rejected; the correct
+  direction is `GovernedKnowledge→Document`) -- illustrated with concrete projection types (Markdown, ADR,
+  architecture diagram, dashboard, agent context, API response, report) and a ten-field `KnowledgeObject`
+  schema (`ID,Type,Content,Provenance,Authority,Validity,Status,Evidence,Relationships,Version`), the most
+  complete single generic knowledge-object schema in this reconstruction, explicitly labeled "a target
+  conceptual model, not a claim about current implementation."
+
+  **Delivers a seven-level Operating-model maturity ladder (`M0`-`M6`), directly superseding and extending
+  0701's six-level Documents-through-Closed-loop maturity ladder by adding a new, explicit highest level**:
+  `M0` Documents, `M1` Indexed Knowledge, `M2` Governed Knowledge, `M3` Evidence-linked Knowledge, `M4`
+  Agent-operable Knowledge, `M5` Closed-loop Knowledge, and **`M6` Self-assuring KnowledgeOS** (verifies its
+  own constitutional conformance) -- directly and precisely unifying 0701's maturity model with 0708's self-
+  verification-suite discipline into one coherent seven-stage ladder, with `M6` explicitly identified as
+  "the ultimate target" while carefully cautioning "we must NOT claim the existing system is M6" --
+  consistent with the corpus's calibrated epistemic-honesty discipline, and directly restating
+  `CurrentKnowledgeOS≠TargetKnowledgeOS` as a required, separately-documented distinction (extending 0693's/
+  0694's/0706's ArchitectureClaim≠ImplementationFact discipline).
+
+  Delivers Step 125's verdict with confident, substantive phrasing consistent with the ongoing Steps 120-125
+  synthesis arc: "STEP 125 — KNOWLEDGEOS OPERATING MODEL: ESTABLISHED," crystallizing the central
+  organizational principle: "Agents can participate in governance workflows; they do not automatically
+  possess governance authority."
+
+  **Closes by opening "Step 126 — KnowledgeOS Information Model,"** explicitly promising the first
+  conceptual object-and-relationship model (`KnowledgeObject+Evidence+Decision+Authority+Observation+
+  Finding+Action+Verification`) and, most importantly, the relationships that make "the entire control loop
+  traversable" -- a natural, well-motivated continuation directly building toward a complete formal domain/
+  data model for KnowledgeOS. No actual code execution, repository inspection, or verified filesystem/
+  relationship claim is reported anywhere in this file.
+introduces:
+  - concept: "A complete seven-actor operating model (Business Authority/Domain Architect/Architecture Board/Engineering/Deterministic Assurance/AI Agent/Runtime), with KnowledgeOS explicitly not an actor but the coordination substrate"
+  - concept: "'RACI is not enough' — a five-dimension alternative (Actor+Capability+Authority+Scope+EvidenceResponsibility)"
+  - concept: "A directly actionable seven-row × five-column Operating-model matrix, the most complete single-table organizational-role summary in this reconstruction"
+  - concept: "Evidence flow and Decision flow explicitly distinguished as two separate flows that must not be confused"
+  - concept: "A genuinely valuable, complete 'Governance Package' evidence-assembly template for decision-ready evidence packages"
+  - concept: "The most granular Context-precedence hierarchy in this reconstruction (nine levels), extending 0690's five-level precedence chain"
+  - concept: "'The Knowledge Gate' and the five-gate operating-model control architecture (G1-G5), the most complete control-point specification in this reconstruction"
+  - concept: "A3, completing a three-member A-series of agent-specific constitutional invariants (A1 at 0706, A2 at 0709, A3 here)"
+  - concept: "'GovernedEngineeringFact' proposed as the central object of KnowledgeOS — a second candidate fundamental unit alongside 0703's TraceableKnowledgeEpisode, with documents demoted to mere projections"
+  - concept: "A seven-level M0-M6 operating-model maturity ladder, superseding 0701's six-level ladder by adding self-assurance (M6) as the explicit highest level"
+  - concept: "Opens Step 126 — KnowledgeOS Information Model, promising the first conceptual object-and-relationship model"
+defines:
+  - concept: "The five-gate control architecture (G1-G5)"
+    definition: "G1 Knowledge Gate (is the agent operating from authoritative/current knowledge?), G2 Classification Gate (is the change correctly classified?), G3 Authorization Gate (is the actor authorized?), G4 Assurance Gate (does deterministic verification pass where required?), G5 Closure Gate (has the result been verified and recorded?) — five sequential control points a governed engineering change must pass through, each capable of independently blocking progress"
+  - concept: "GovernedEngineeringFact (the central object)"
+    definition: "The true fundamental semantic unit of KnowledgeOS is not a document but a GovernedEngineeringFact — an object with identity, provenance, authority, validity, evidence, relationships, and lifecycle; documents (Markdown, ADRs, diagrams, dashboards, agent context, API responses, reports) are merely projections/representations of these underlying facts, never the facts themselves"
+  - concept: "The M0-M6 operating-model maturity ladder"
+    definition: "M0 Documents; M1 Indexed Knowledge (searchable); M2 Governed Knowledge (authority/lifecycle modeled); M3 Evidence-linked Knowledge (connected to implementation/evidence); M4 Agent-operable Knowledge (agents consume governed context, produce traceable actions); M5 Closed-loop Knowledge (runtime feeds back into governance); M6 Self-assuring KnowledgeOS (verifies its own constitutional conformance) — a seven-stage maturity model with M6 as the explicit ultimate target, never assumed to be the current state"
+refines:
+  - concept: "0682's/0703's Responsibility≠Authority family"
+    refinement: "Directly reconfirmed with three concrete cross-role examples spanning engineering, architecture, and agent execution"
+  - concept: "0687's/0697's/0699's authority-formalization discipline"
+    refinement: "Directly extended with the most complete authority tuple in this reconstruction (Authority=Actor×Action×Resource×Scope×Validity)"
+  - concept: "0709's Capability/Permission/Delegation/Authority separation"
+    refinement: "Directly extended into a clean intersection formalization: AgentAuthority=DelegatedAuthority∩Policy"
+  - concept: "the corpus's Recommendation≠Decision family"
+    refinement: "Directly extended into a flow-diagram-level distinction: Evidence flow and Decision flow must not be confused"
+  - concept: "0689's/0692's classification disciplines"
+    refinement: "Directly extended with a formal change-characteristic-driven governance-trigger model"
+  - concept: "0707's/0709's decision-request-package concept"
+    refinement: "Directly extended into a more complete, eleven-item 'Governance Package' decision-support template"
+  - concept: "0673's/0680's/0698's context-boundary disciplines and 0690's five-level precedence chain"
+    refinement: "Directly and genuinely extended into the most granular Context-precedence hierarchy in this reconstruction (nine levels)"
+  - concept: "0689's/0703's/0706's/0708's exception-governance discipline"
+    refinement: "Directly extended with a clean piecewise-function formalization of rule-plus-exception effective state"
+  - concept: "0709's 'governance must be enforced below the LLM instruction layer' principle"
+    refinement: "Directly and concretely operationalized into 'the Knowledge Gate' and the full five-gate (G1-G5) control architecture"
+  - concept: "0692's/0699's/0700's Finding-schema disciplines"
+    refinement: "Directly extended into gate-failure reporting specifically (Finding+Reason+Evidence+RequiredNextStep)"
+  - concept: "0706's A1 and 0709's A2 agent-specific constitutional invariants"
+    refinement: "Directly extended and completed with A3, confirming a systematically numbered, growing A-series family"
+  - concept: "0703's TraceableKnowledgeEpisode candidate fundamental unit"
+    refinement: "Joined by a second, distinct candidate proposal — GovernedEngineeringFact — worth tracking separately for the eventual canonical synthesis rather than assumed identical"
+  - concept: "0701's six-level KnowledgeOS maturity ladder"
+    refinement: "Directly extended and unified with 0708's self-verification-suite discipline into a seven-level M0-M6 ladder, adding self-assurance (M6) as the explicit highest level"
+  - concept: "0693's/0694's/0706's ArchitectureClaim≠ImplementationFact discipline"
+    refinement: "Directly restated as CurrentKnowledgeOS≠TargetKnowledgeOS, required to be separately documented"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0711 (Step 126 — KnowledgeOS Information Model) with continued attention: this file's own closing promise to derive the first conceptual object-and-relationship model directly continues the Steps 120-125 synthesis arc toward a complete formal domain model, and should be checked against both 0703's TraceableKnowledgeEpisode and this file's own GovernedEngineeringFact proposal for consistency or reconciliation."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the complete seven-actor operating model, the directly actionable Operating-model matrix, the nine-level Context-precedence hierarchy, and the five-gate control architecture (G1-G5) as among the most concrete, directly reusable artifacts in this reconstruction."
+  - "dimension-registry.md: record A3 completing a three-member A-series of agent-specific constitutional invariants, and GovernedEngineeringFact as a second candidate fundamental unit alongside 0703's TraceableKnowledgeEpisode -- flag both for eventual reconciliation."
+  - "dimension-registry.md: record the seven-level M0-M6 operating-model maturity ladder superseding 0701's six-level ladder. Flag Step 126 (0711) as continuing the synthesis arc toward a complete formal information model."
+anchor_test:
+  anchor: "0705's-0709's constitutional/control-loop synthesis arc; 0682's/0703's Responsibility≠Authority family; 0687's/0697's/0699's authority-formalization discipline; the corpus's Recommendation≠Decision family; 0689's/0692's classification disciplines; 0673's/0680's/0698's context-boundary disciplines and 0690's precedence chain; 0689's/0703's/0706's/0708's exception-governance discipline; 0709's below-the-LLM-layer enforcement principle; 0706's A1 and 0709's A2 invariants; 0703's TraceableKnowledgeEpisode; 0701's maturity ladder; 0693's/0694's/0706's ArchitectureClaim≠ImplementationFact discipline"
+  supports_dimension: "Delivers a complete, concrete, and directly actionable operating-model specification -- the seven-actor model, the operating-model matrix, the nine-level context-precedence hierarchy, and especially the five-gate (G1-G5) control architecture directly operationalizing 0709's below-the-LLM-layer enforcement principle -- among the most practically reusable artifacts produced anywhere in this reconstruction. Completes the A-series of agent-specific constitutional invariants (A1-A3) into a clear, systematically numbered family. Proposes a second, distinct candidate fundamental unit (GovernedEngineeringFact) worth tracking alongside 0703's TraceableKnowledgeEpisode for the eventual canonical synthesis. Extends and unifies 0701's maturity ladder with 0708's self-verification discipline into a coherent seven-level M0-M6 model. Continues the high-quality Steps 120-125 synthesis arc and closes with a natural, well-motivated promise toward a complete formal information model"
+  refines_or_contradicts: "directly and genuinely extends 0682's/0703's Responsibility≠Authority family, 0687's/0697's/0699's authority-formalization discipline, 0709's Capability/Permission/Delegation/Authority separation, the corpus's Recommendation≠Decision family, 0689's/0692's classification disciplines, 0707's/0709's decision-request-package concept, 0673's/0680's/0698's context-boundary disciplines and 0690's precedence chain, 0689's/0703's/0706's/0708's exception-governance discipline, 0709's below-the-LLM-layer enforcement principle, 0692's/0699's/0700's Finding-schema disciplines, 0706's/0709's A-series invariants (completed with A3), 0701's maturity ladder (unified with 0708's self-verification discipline), and 0693's/0694's/0706's ArchitectureClaim≠ImplementationFact discipline; introduces a second candidate fundamental unit (GovernedEngineeringFact) alongside, not contradicting, 0703's TraceableKnowledgeEpisode -- both remain open candidates pending eventual reconciliation; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§125.34-125.37's Knowledge Gate and five-gate (G1-G5) control architecture, with a full worked pipeline diagram (Change Request→G1→G2→G3→Engineering Action→G4→Runtime Observation→G5→KnowledgeOS), is directly checkable, concrete evidence of the most complete and directly implementable control-point specification produced anywhere in this reconstruction."
+  - "§125.43-125.46's GovernedEngineeringFact proposal, explicitly rejecting 'Document=Truth' in favor of 'GovernedKnowledge→Document,' is directly checkable evidence of a second, distinct candidate fundamental-unit proposal for this reconstruction's central semantic model, worth tracking separately from 0703's TraceableKnowledgeEpisode rather than assumed identical."
+  - "§125.47-125.49's seven-level M0-M6 maturity ladder, explicitly built by adding a new M6 (self-assuring KnowledgeOS) level atop what is otherwise a close match to 0701's six-level ladder, is direct, checkable evidence of a genuine unification between 0701's maturity-modeling work and 0708's self-verification-suite discipline."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 126's actual content (0711), once read, reconciles or further distinguishes the two candidate fundamental units proposed across this arc — 0703's TraceableKnowledgeEpisode and this file's GovernedEngineeringFact — or leaves both open as separate candidates."
+tier2_triggered: true
+tier2_reason: "Delivers a complete, concrete, and directly actionable operating-model specification: the seven-actor model, the operating-model matrix, the nine-level context-precedence hierarchy, and especially the five-gate (G1-G5) control architecture directly operationalizing 0709's below-the-LLM-layer enforcement principle -- among the most practically reusable artifacts in this reconstruction. Completes the A-series of agent-specific constitutional invariants (A1-A3). Proposes a second, distinct candidate fundamental unit (GovernedEngineeringFact) alongside 0703's TraceableKnowledgeEpisode. Extends and unifies 0701's maturity ladder with 0708's self-verification discipline into a coherent seven-level M0-M6 model."

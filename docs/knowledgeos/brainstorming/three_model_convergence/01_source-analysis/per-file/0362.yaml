@@ -1,0 +1,116 @@
+sequence: 362
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260825-225949_knowledge-is-temporally-situated-and-potentially-evolving.md
+title: "Knowledge Trajectory replaces Lifecycle; Ten-Step REALITY-to-KERNEL Research Pipeline; Fact-Tuple Validity Challenge"
+date: "2026-08-25"
+bytes: 16520
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 362
+importance: critical
+confidence: high
+about: >
+  Intra-file self-duplicated (lines 1-462 byte-identical to lines 464-925 -- the fifth instance of the
+  pattern first seen at 0267, repeated at 0343/0354/0360). Content is a direct continuation of the same
+  conversational thread as 0361, synthesizing 0358 (Pritchard), 0359/0360 (KST), and 0361's "Chinese
+  research" reference into a consolidated ten-step research pipeline. Corrects an unnamed prior document's
+  proposed definition "Knowledge is a continuously changing body of facts, observations, and justified
+  relationships about a changing reality" as too strong on "continuously," separating R(t) (domain/reality
+  state), O_<=t (observations available up to t), and K_t (epistemic knowledge state at t) as genuinely
+  distinct, non-collapsing quantities: a changing reality does not imply continuously changing knowledge
+  (K_t1 can equal K_t2 even when R(t1)!=R(t2)), while knowledge can change abruptly on a single observation
+  (K_t- -> K_t+). Reformulates the claim as "Knowledge is temporally situated and potentially evolving,"
+  not necessarily continuously changing. Challenges an unnamed prior Fact-tuple proposal
+  F=(claim,evidence,context,time,source,validity), specifically flagging "validity" as already constituting
+  an epistemic evaluation if stored as validity=true -- reopening the corpus's central "what must be
+  preserved versus what can be derived?" Kernel question, and proposing the Kernel investigate storing
+  Validity(F) as a derived predicate rather than a stored value. Proposes a five-stage extraction pipeline
+  R(t) -> O_<=t -> E_<=t -> S_t -> K_t (reality -> observations -> evidence/support relations -> candidate
+  epistemic state -> knowledge state), explicitly flagging the S_t -> K_t arrow as "not yet understood" and
+  as exactly where Pritchard/KST/epistemic-logic/probability regimes become relevant. Strongly endorses the
+  historical-trajectory requirement K_t0 -> K_t1 -> K_t2 -> ... (worked example: architecture-A-then-B
+  migration evidence), requiring History(K_<=t) to preserve what-was-known-at-t1 distinct from what-is-
+  known-now, supporting the corpus's historical-reconstruction hypothesis. Distinguishes FOUR separate
+  reasons Valid(F,t1) might not imply Valid(F,t2) -- world changed R(t1)!=R(t2); evidence changed
+  E(t1)!=E(t2); interpretation changed I(t1)!=I(t2); evaluation changed Eval_t1(F)!=Eval_t2(F) -- explicitly
+  warning these should not all be called "obsolescence," extending the corpus's World-Change!=Information-
+  Change!=Knowledge-Change independence invariant (0354/0356) to a four-way cause taxonomy. Replaces
+  "knowledge lifecycle" (created->active->obsolete->deleted, judged too software-artifact-oriented) with
+  "Knowledge Trajectory" (asserted->supported->confirmed->challenged->revised->superseded), explicitly not
+  implying the previous state ceased to exist -- terminologically consonant with, though not attributed to,
+  the corpus's earlier Gardenfors-derived EXPAND/REVISE/CONTRACT/CHALLENGE/SUPERSEDE/REINSTATE vocabulary
+  (0287/0357). Cautions against prematurely adopting Davidson's representation-invariance idea as
+  Knowledge=Facts+Relations+Evidence+Invariants, since that equation smuggles in four unproven assumptions
+  (facts-are-primitive; evidence-is-part-of-knowledge; relations-are-part-of-knowledge; invariants-are-part-
+  of-knowledge) -- Davidson kept at "regime/research level," not adopted as ontology. Proposes a provisional,
+  deliberately open "Knowledge (working hypothesis)" definition -- a temporally situated epistemic state of
+  propositions/observations/relationships regarded as justified or otherwise epistemically warranted under
+  specified conditions -- deliberately leaving "justified or otherwise epistemically warranted" open given
+  Pritchard's demonstrated inter-theory disagreement (0358). Consolidates into a TEN-STEP linear research
+  pipeline: REALITY/DOMAIN -> OBSERVATIONS -> INFORMATION/EVIDENCE -> EPISTEMIC STATE -> KNOWLEDGE ->
+  KNOWLEDGE TRAJECTORY -> KNOWLEDGE SPACE -> WHAT CHARACTERISTICS DEFINE IT? -> WHAT IS THE MINIMAL
+  SUFFICIENT REPRESENTATION? -> KNOWLEDGE UNIT -> KERNEL, explicitly flagging the last (characteristics-to-
+  Kernel) transition as unsolved. Explicitly credits three independent research streams as jointly informing
+  (not yet answering) that final transition: KST (knowledge state as subset of a knowledge space,
+  probabilistic assessment over candidate states), Pritchard (contested additional epistemic criteria), and
+  the "Chinese-philosophical research" (identity/context/authority/naming/transformation semantics must not
+  be assumed prematurely) -- concluding these three streams "tell us exactly what the Kernel definition
+  must eventually explain," not what it should already contain. Reformulates the central research question
+  as the necessary-and-sufficient characteristics distinguishing K_t from an arbitrary information set, and
+  which of those characteristics remain invariant under change over time -- proposed as the path to a
+  defensible Knowledge Unit and thence the Kernel.
+introduces:
+  - concept: "Explicit non-collapse via worked example: K_t1=K_t2 possible even when R(t1)!=R(t2) (reality changes without knowledge changing over a long interval), while K_t- -> K_t+ can occur abruptly on a single observation -- refines 'Knowledge is a continuously changing body of facts...' into 'Knowledge is temporally situated and potentially evolving'"
+  - concept: "Fact-tuple validity challenge: storing validity=true within F=(claim,evidence,context,time,source,validity) already performs an epistemic evaluation; proposes investigating whether the Kernel should store Validity(F) (a derived predicate) or instead preserve the information from which validity can be evaluated -- directly reopens the corpus's central preserved-vs-derived Kernel question"
+  - concept: "Five-stage extraction pipeline R(t) -> O_<=t -> E_<=t -> S_t -> K_t, with the S_t->K_t (candidate-epistemic-state-to-knowledge-state) arrow explicitly flagged as 'not yet understood' and as the exact locus where Pritchard/KST/epistemic-logic/probability regimes become relevant"
+  - concept: "Four-way non-obsolescence-collapse taxonomy for Valid(F,t1)!=Valid(F,t2): world-changed (R(t1)!=R(t2)) / evidence-changed (E(t1)!=E(t2)) / interpretation-changed (I(t1)!=I(t2)) / evaluation-changed (Eval_t1(F)!=Eval_t2(F)) -- explicit warning these must not all be conflated as 'obsolescence,' extending 0354/0356's World-Change!=Information-Change!=Knowledge-Change independence invariant into a finer four-way taxonomy"
+  - concept: "Knowledge Trajectory (asserted->supported->confirmed->challenged->revised->superseded) proposed to replace 'knowledge lifecycle' (created->active->obsolete->deleted), explicitly rejecting the lifecycle framing as too software-artifact-oriented and not implying the prior state ceased to exist"
+  - concept: "Explicit refusal to adopt Davidson's representation-invariance idea as Knowledge=Facts+Relations+Evidence+Invariants, on grounds that the equation smuggles in four unproven assumptions about what counts as primitive vs. constitutive -- Davidson retained only as a 'candidate concept of invariance' at the regime/research level, not as ontology"
+  - concept: "Provisional, deliberately open 'Knowledge (working hypothesis)' definition: a temporally situated epistemic state of propositions/observations/relationships regarded as justified or otherwise epistemically warranted under specified conditions concerning some domain of reality -- with K_t (state) and K_<=t (historical trajectory) as its two formal correlates"
+  - concept: "Ten-step linear research pipeline: REALITY/DOMAIN -> OBSERVATIONS -> INFORMATION/EVIDENCE -> EPISTEMIC STATE -> KNOWLEDGE -> KNOWLEDGE TRAJECTORY -> KNOWLEDGE SPACE -> WHAT CHARACTERISTICS DEFINE IT? -> WHAT IS THE MINIMAL SUFFICIENT REPRESENTATION? -> KNOWLEDGE UNIT -> KERNEL, extending 0361's four-level hierarchy into a full ten-stage sequence with the final characteristics-to-Kernel transition explicitly flagged unsolved"
+  - concept: "Explicit tri-stream synthesis: KST + Pritchard + 'Chinese-philosophical research' jointly specify what the Kernel definition must eventually EXPLAIN, not what it should already CONTAIN -- an explicit anti-premature-architecture discipline statement"
+defines: []
+refines:
+  - concept: "0354/0356's World-Change != Information-Change != Knowledge-Change independence invariant"
+    refinement: "Extended into a finer four-way cause taxonomy for Valid(F,t1)!=Valid(F,t2): world-changed / evidence-changed / interpretation-changed / evaluation-changed, explicitly warning against conflating all four as 'obsolescence'"
+  - concept: "0287/0357's Gardenfors-derived EXPAND/REVISE/CONTRACT/CHALLENGE/SUPERSEDE/REINSTATE knowledge-change vocabulary"
+    refinement: "Independently arrives at a terminologically consonant six-stage 'Knowledge Trajectory' vocabulary (asserted/supported/confirmed/challenged/revised/superseded), without direct attribution, replacing a software-lifecycle framing"
+  - concept: "0361's four-level Knowledge Space/State/Unit/Kernel hierarchy"
+    refinement: "Extended into a full ten-stage REALITY-to-KERNEL pipeline, inserting Reality/Observations/Information-Evidence/Epistemic-State/Knowledge/Knowledge-Trajectory stages upstream of Knowledge Space, with the final two stages (characteristics-definition, minimal-representation) matching 0361's kappa(K_t)/Phi framing"
+  - concept: "The corpus's central 'what must be preserved versus what can be derived?' Kernel question"
+    refinement: "Given a concrete new test case: whether Validity(F) should be a stored fact-tuple field or a derived predicate -- extending the same discipline already applied to Belief (0360) and Safety/Ability/Luck (0358)"
+contradicts: []
+repeats:
+  - concept: "The file's own content (lines 1-462) is byte-identical intra-file self-duplicated at lines 464-925"
+    canonical_source: 362
+    novelty: "none -- corpus-integrity finding, fifth instance of the intra-file self-duplication pattern (0267, 0343, 0354, 0360, 0362)"
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the Knowledge Trajectory vocabulary (asserted/supported/confirmed/challenged/revised/superseded) as terminologically consonant with, but independently arrived at from, the corpus's Gardenfors-derived EXPAND/REVISE/CONTRACT/CHALLENGE/SUPERSEDE/REINSTATE vocabulary (0287/0357)."
+  - "dimension-registry.md: record the four-way world/evidence/interpretation/evaluation-changed non-obsolescence-collapse taxonomy as an extension of 0354/0356's independence invariant."
+  - "dimension-registry.md: record the ten-step REALITY-to-KERNEL research pipeline as the corpus's most complete linear research-sequencing statement to date, extending 0361's four-level hierarchy."
+  - "dimension-registry.md: record this file's intra-file self-duplication as the fifth instance of the 0267/0343/0354/0360 pattern."
+anchor_test:
+  anchor: "0354/0356's temporal independence invariants; 0287/0357's Gardenfors knowledge-change vocabulary; 0358's Pritchard engagement; 0359/0360's KST engagement; 0361's four-level hierarchy and Phi/kappa formalization; the corpus's central preserved-vs-derived Kernel question (0360's Belief-banning, 0358's Safety/Ability/Luck RegimeDerived)"
+  supports_dimension: "Mathematical/architectural model, synthesizing three independent research streams (KST, Pritchard, an unnamed philosophical-lens investigation) into a ten-step REALITY-to-KERNEL research pipeline, extending the corpus's temporal-independence and preserved-vs-derived discipline to a new four-way obsolescence taxonomy and a Fact-tuple Validity challenge, while explicitly refusing premature adoption of Davidson's invariance-based Knowledge ontology"
+  refines_or_contradicts: "refines 0354/0356 (four-way obsolescence taxonomy); refines 0287/0357 (independently consonant Knowledge Trajectory vocabulary); refines 0361 (ten-step pipeline extending the four-level hierarchy); refines the corpus's preserved-vs-derived Kernel question (new Validity(F) test case); intra-file self-repeats (fifth 0267-pattern instance)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Donald Davidson's representation-invariance idea (cited but explicitly not adopted as a KnowledgeOS ontology, retained only as a candidate regime-level invariance concept)"
+undefined_concepts:
+  - "The specific unnamed prior document proposing 'Knowledge is a continuously changing body of facts, observations, and justified relationships about a changing reality' and the Fact-tuple F=(claim,evidence,context,time,source,validity) -- not itself encountered as a separately numbered file in this reconstruction's sequential pass"
+open_questions:
+  - "Whether the S_t -> K_t 'not yet understood' arrow is ever formally resolved by a later regime-comparison experiment (e.g. the Intersection Method of 0358)"
+  - "Whether Validity(F) is ever tested as a derived-vs-stored predicate in a concrete worked example"
+  - "Whether the ten-step REALITY-to-KERNEL pipeline is ever formally adopted, superseded, or merged with 0356's five-track research plan"
+tier2_triggered: true
+tier2_reason: "Intra-file self-duplicated (fifth instance of the 0267/0343/0354/0360 pattern). Consolidates three independent research streams (KST, Pritchard, an unnamed philosophical-lens investigation) into the corpus's most complete linear research-sequencing statement to date (a ten-step REALITY-to-KERNEL pipeline), introduces a four-way world/evidence/interpretation/evaluation-changed non-obsolescence-collapse taxonomy extending 0354/0356, independently arrives at a Knowledge Trajectory vocabulary consonant with the Gardenfors-derived EXPAND/REVISE/CONTRACT/CHALLENGE/SUPERSEDE/REINSTATE lineage (0287/0357), and reopens the preserved-vs-derived Kernel question via a concrete Fact-tuple Validity(F) test case."

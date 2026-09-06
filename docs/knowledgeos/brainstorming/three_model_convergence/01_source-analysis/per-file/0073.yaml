@@ -1,0 +1,37 @@
+sequence: 73
+path: docs/knowledgeos/brainstorming/_misc/20260819-225332-kos-ipo-stock-market-variant.md
+title: KnowledgeOS IPO / Stock Market Variant (business content)
+date: 2026-08-19
+bytes: 9081
+
+model:
+  primary: c1
+  secondary: []
+
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+
+importance: low
+confidence: high
+
+about: "Business discussion of KnowledgeOS as a publicly traded company (Linux/RedHat commercialization analogy). Own frontmatter flags a later near-duplicate."
+
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats: []
+
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+key_evidence:
+  - "own frontmatter: near-duplicate of _misc/20260819-225858-kos-ipo-stock-market-path.md (later in log; will be marked DUPLICATE_REPRODUCTION with canonical_source: 73 when reached)"
+
+undefined_concepts: []
+open_questions: []
+
+tier2_triggered: false
+tier2_reason: "Pure business/IPO content, no theoretical relevance."

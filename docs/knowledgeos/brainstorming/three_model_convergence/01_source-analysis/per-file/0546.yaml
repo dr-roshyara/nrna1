@@ -1,0 +1,164 @@
+sequence: 546
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-142333_step-005-what-is-the-mathematical-object-being-aggregated.md
+title: "LANDMARK: Step 5 Resolved — 'What Is the Mathematical Object Being Aggregated?' Answered by a Seven-Semantic-Domain Separation (Reliability/Relevance/Support/Probability/Belief/Plausibility/Information); the Relational Foundation Rel(E,P) Replaces Score(E,P); Two Complementary Mathematical Families Proposed (Quantitative vs. Qualitative/Argumentative Calculus) — 'Not Every Epistemic Problem Should Become a Probability Problem'; Information Gain≠Evidence Strength Reframes What Lord Should Value; Opens Step 6 (Value of Evidence)"
+date: "2026-08-27"
+bytes: 14441
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly resolves 0545's closing question, executing the named 'Step 5' with the same tri-role (mathematics/statistics/DDD) discipline established at 0538"
+source_role: PRIMARY_RESEARCH
+canonical_source: 546
+importance: critical
+confidence: high
+about: >
+  Directly resolves 0545's closing question -- "what mathematical object is actually being aggregated?" --
+  opening with the file's foundational five-way separation: `Evidence≠Support≠Belief≠Probability≠Truth`.
+  Establishes that an evidence object need not itself be a proposition (API responses, PDFs, database
+  rows, screenshots, human observations, LLM outputs, textbook statements, ADRs are all artifacts FROM
+  WHICH propositions may be extracted or supported), formalizing `Evidence object->Proposition` as itself
+  an important transformation.
+
+  **Delivers the file's central cautionary finding**: assigning a bare scalar `c(e,P)=0.8` is dangerous
+  because 0.8 could mean at least eight fundamentally different things (an 80% probability, strong
+  evidential support, source reliability, LLM confidence, a likelihood ratio, degree of belief, degree of
+  plausibility, or source quality) -- "0.8 has no epistemic meaning until its semantics are specified,"
+  explicitly named a major mathematical requirement.
+
+  **Distinguishes seven concrete semantic domains** that had previously been blurred together across the
+  corpus's Evidence-theory arc: Reliability `R(e)` (how trustworthy is the producing source/process?);
+  Relevance `Rel(e,P,C)` (is this evidence relevant to P in context C?); Evidential support `Supp(e,P,C)`
+  (to what extent does e support P?); Probability `Pr(P|E,C)` (under a specified probabilistic model);
+  Belief `Bel(P)` (a Dempster-Shafer-style quantity, substantially different from probability);
+  Plausibility `Pl(P)` (answering yet a different question); and Information/information-gain `IG(E;P)`
+  or entropy reduction (how much did the evidence reduce uncertainty, not whether the proposition is
+  true).
+
+  **Formalizes an Evidence Contribution Domain** `𝒬` (deliberately not required to be `[0,1]` -- it might
+  be an ordered scale, a vector, a belief function, a likelihood ratio, an argument structure, a set of
+  possible states, or a probability distribution), with `c_ρ:ℰ×𝒫×𝒞->𝒬`. **Delivers the file's central
+  architectural recommendation**, extending 0545's Kernel/Policy split: the KnowledgeOS kernel should NOT
+  itself choose Bayesian probability or Dempster-Shafer belief -- `KnowledgeOS Kernel = Evidence
+  Semantics+Provenance+Relations`; `Assessment Calculus = Pluggable Policy`, with Bayesian, Dempster-
+  Shafer, Argumentation, Possibility, deterministic-rule, and domain-specific calculi all available as
+  interchangeable plugins beneath the same kernel.
+
+  **Delivers the file's second major architectural finding**: the most fundamental representation of
+  evidence is RELATIONAL, not scalar -- KnowledgeOS should first construct `Rel(E,P)` (e.g. E1->supports,
+  E2->supports, E3->derived-from-E1, E4->contradicts, E5->stale-supports) rather than jumping straight to
+  `Score(E,P)`, "this relational structure is the epistemic foundation." Only given `Rel(E,P)` can a
+  policy compute `Assessment_ρ(P|E)`, worked through three genuinely non-interconvertible examples
+  (Bayesian: `Pr(P|E)`; Dempster-Shafer: `(Bel(P),Pl(P))`; Argumentation: separate accepted supporting and
+  attacking argument sets) -- "not necessarily convertible into one universal number."
+
+  **Explicitly and definitively resolves the corpus's recurring "should KnowledgeOS use one evidence
+  algebra?" question**: "No" -- the kernel defines what evidence means and how it relates; the reasoning
+  policy determines how that evidence is mathematically assessed -- "a very strong DDD boundary."
+  **Delivers a common cross-calculus interface object**, `AssessmentResult=
+  (P,Support,Opposition,Uncertainty,Basis,Context,Policy)`, whose internal `Support` field's semantics
+  differ by chosen calculus (Bayesian: `Pr(P|E)`; Dempster-Shafer: `Bel(P)`; Argumentation: accepted
+  supporting arguments) while retaining the semantics proper to that calculus rather than forcing false
+  equivalence.
+
+  **Delivers two further important distinctions**: `EvidentialSupport≠Acceptance` (a domain policy decides
+  the acceptance threshold applied to a computed support value -- one policy may accept at 0.95, another
+  requires 0.99 -- "Acceptance is a policy decision"), and reconfirms `Acceptance≠Truth`
+  (`Accepted(P)="currently accepted under policy ρ"`, never a metaphysical claim). **Reinforces that
+  Probability requires a model**: Bayesian inference needs a genuine prior, likelihood, evidence model,
+  dependency assumptions, sampling assumptions, and model adequacy that "KnowledgeOS cannot simply infer
+  from the existence of a document."
+
+  **Delivers a factored contribution function** `c_ρ(e,P,C)=g_ρ(Rel,Qual,Relia,Valid,Context,Dependency,
+  Polarity)`, with the kernel storing the dimensions and the policy-specific function `g_ρ` determining how
+  they combine. **Formalizes a clean six-stage mathematical/DDD decomposition**: Evidence semantics
+  (`e->Attributes(e)`) -> Evidence relation (`(e_i,e_j)->Relation(e_i,e_j)`) -> Proposition relation
+  (`(e,P)->Supports/Contradicts/Neutral/Unknown`) -> Assessment (`(E,P,C,ρ)->Assessment`) -> Conclusion
+  (`Assessment+ρ->Accepted/Rejected/Unresolved`) -> Knowledge State (`Conclusion->K_{t+1}`), with six
+  matching DDD concepts explicitly required NOT to be merged into one aggregate (Evidence,
+  EvidenceRelation, PropositionAssessment, Conclusion, KnowledgeState, Decision).
+
+  **Re-examines five candidate mathematical frameworks** (Weighted arithmetic, Saturating aggregation,
+  Bayesian, Dempster-Shafer, Argumentation) against this refined understanding, delivering the file's most
+  significant new insight: KnowledgeOS likely needs **two complementary mathematical families**, not one --
+  a Quantitative evidence calculus (Bayesian, Statistical, Possibility, for situations where numerical
+  uncertainty is genuinely meaningful) and a Qualitative/argumentative calculus (for conflicting
+  interpretations, rules, architectural principles, human reasoning, and normative claims), worked through
+  a concrete ADR example (ADR-001 supporting Decision A; ADR-002 attacking an assumption; the Security
+  Constitution attacking Decision A; architectural evidence supporting Decision B) where argumentation
+  theory is explicitly judged more appropriate than probability -- crystallized as a new proposed
+  KnowledgeOS principle: "Not every epistemic problem should become a probability problem."
+
+  **Delivers a refined Kernel/Policy split** (paralleling and slightly extending 0545's): KERNEL =
+  {Evidence, Proposition, Provenance, Lineage, Dependency, Context, TemporalValidity, Polarity,
+  AssessmentBasis}; POLICY = {Aggregation, Inference, Thresholds, ProbabilityModels, BeliefModels,
+  DecisionRules}.
+
+  **Delivers the file's final and arguably most consequential new distinction**: `InformationGain≠
+  EvidenceStrength` -- worked through an example where evidence moving a probability from 0.5 to 0.99
+  significantly reduces uncertainty, but that reduction is a genuinely DIFFERENT measurement from raw
+  evidential strength; "a weak piece of evidence can sometimes have enormous information value if it
+  resolves a previously critical uncertainty," giving `EvidenceValue≠EvidenceStrength` -- explicitly
+  flagged as becoming important for Lord and Sārathi, since Lord may want to select the evidence that
+  maximally reduces the current discrepancy, not simply the evidence with the highest raw strength.
+
+  **Delivers the file's closing verdict**: "Step 5... Theoretical status: substantially resolved" -- the
+  fundamental object is not a scalar score; Evidence Contribution is a policy-interpreted semantic
+  relation; Assessment is a structured object; probability, belief, likelihood, information gain, and
+  argument strength are genuinely different mathematical constructs. **Names "Step 6 -- Information Gain
+  and Value of Evidence"**: given known knowledge and gaps, how does KnowledgeOS determine which NEW
+  evidence would be most valuable to acquire? Formalizes `Value(e|K,I,P)` and a proposed selection rule
+  `e*=argmax_e ExpectedDiscrepancyReduction(e)`, explicitly framing this as the point where "Lord and
+  Sārathi begin to acquire a mathematically precise capability: not merely 'find more evidence,' but
+  identify the next evidence acquisition that provides the greatest expected reduction in uncertainty or
+  discrepancy under the current purpose and policy."
+introduces:
+  - concept: "Seven formally distinguished semantic domains for evidential contribution: Reliability, Relevance, Evidential support, Probability, Belief (Dempster-Shafer), Plausibility, and Information/information-gain — previously blurred together under the generic term 'support'"
+  - concept: "The finding that a bare numerical contribution score (e.g. 0.8) has no epistemic meaning without specifying which of at least eight distinct interpretations it carries"
+  - concept: "Rel(E,P) — the relational representation of evidence-to-proposition relationships as the epistemic foundation, prior to and more fundamental than any scalar Score(E,P)"
+  - concept: "The definitive resolution 'No' to the corpus's recurring 'should KnowledgeOS use one evidence algebra?' question, backed by a formal kernel-vs-pluggable-calculus architectural split"
+  - concept: "The proposal that KnowledgeOS needs two complementary mathematical families — a quantitative calculus (Bayesian/Statistical/Possibility) for genuine numerical uncertainty, and a qualitative/argumentative calculus for conflicting interpretations, rules, architectural principles, and normative claims — crystallized as 'not every epistemic problem should become a probability problem'"
+  - concept: "InformationGain≠EvidenceStrength and EvidenceValue≠EvidenceStrength: a weak piece of evidence can have enormous informational value if it resolves a previously critical uncertainty, reframing what Lord should optimize for when selecting evidence to acquire"
+  - concept: "Value(e|K,I,P) and e*=argmax_e ExpectedDiscrepancyReduction(e), giving Lord and Sārathi a mathematically precise evidence-selection capability, named 'Step 6' as the corpus's next research target"
+defines:
+  - concept: "Evidence Contribution Domain (𝒬)"
+    definition: "The (not necessarily numeric) domain of admissible evidential contributions c_ρ:ℰ×𝒫×𝒞->𝒬 — 𝒬 may be an ordered scale, vector, belief function, likelihood ratio, argument structure, set of possible states, or probability distribution, never assumed to be [0,1] by default"
+  - concept: "AssessmentResult (AR)"
+    definition: "(P, Support, Opposition, Uncertainty, Basis, Context, Policy) — a common cross-calculus interface object whose internal Support field's meaning is determined by the chosen assessment calculus (Bayesian probability, Dempster-Shafer belief, or accepted argumentation), never forced into false equivalence across calculi"
+  - concept: "EvidentialSupport≠Acceptance"
+    definition: "A computed support value (e.g. a probability) and the policy-determined threshold decision of whether to accept the proposition are two distinct concepts; different policies may set different acceptance thresholds over the identical support value"
+refines:
+  - concept: "0545's Kernel/Policy axiom split and its closing 'Step 5' question about the object being aggregated"
+    refinement: "Directly answered: the fundamental aggregated object is not a scalar but a policy-interpreted semantic relation, with seven distinct semantic domains formally separated and a refined Kernel={Evidence,Proposition,Provenance,Lineage,Dependency,Context,TemporalValidity,Polarity,AssessmentBasis}/Policy={Aggregation,Inference,Thresholds,ProbabilityModels,BeliefModels,DecisionRules} split"
+  - concept: "0538's Bayesian conditional-independence critique and 0537-0539's candidate-algebra survey"
+    refinement: "Extended into a two-family taxonomy (quantitative vs. qualitative/argumentative calculi), explaining WHY no single algebra suffices — different epistemic problem types (probabilistic uncertainty vs. conflicting normative/architectural claims) genuinely require different mathematical treatment, not merely different parameter settings of one framework"
+  - concept: "0544's Zero/Lord/Sārathi repositioning and Lord's discrepancy-reduction role"
+    refinement: "Given a mathematically precise evidence-selection objective (Value(e|K,I,P), e*=argmax ExpectedDiscrepancyReduction(e)), moving Lord from a qualitative 'find more evidence' directive to a quantifiable evidence-acquisition optimization"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether 'Step 6 — Information Gain and Value of Evidence' is executed as its own dedicated corpus file, giving Value(e|K,I,P) and the argmax evidence-selection rule a full formal treatment"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the seven-domain semantic separation for evidential contribution (Reliability/Relevance/Support/Probability/Belief/Plausibility/Information), the Evidence Contribution Domain 𝒬 (not necessarily [0,1]), and the relational foundation Rel(E,P) prior to any scalar Score(E,P)."
+  - "dimension-registry.md: record the definitive 'No single evidence algebra' resolution, the AssessmentResult common interface, EvidentialSupport≠Acceptance≠Truth, and the two-complementary-mathematical-families proposal (quantitative vs. qualitative/argumentative calculus) with its new principle 'not every epistemic problem should become a probability problem.'"
+  - "dimension-registry.md: record InformationGain≠EvidenceStrength / EvidenceValue≠EvidenceStrength, the Value(e|K,I,P) formalization, and 'Step 6' as the corpus's next named research target for Lord/Sārathi's evidence-acquisition strategy."
+anchor_test:
+  anchor: "0545's Kernel/Policy split and closing Step-5 question; 0538/0537's aggregation-algebra debates; 0544's Zero/Lord/Sārathi repositioning"
+  supports_dimension: "LANDMARK direct resolution of the corpus's central closing question from 0545: what mathematical object is actually being aggregated. Delivers seven formally distinguished semantic domains previously conflated under 'support,' establishes evidence relations (not scalars) as the epistemic foundation, definitively resolves the recurring one-vs-many-algebras debate with a genuine explanatory mechanism (two complementary mathematical families for genuinely different problem types), and delivers a mathematically precise reframing of evidence VALUE (via information gain / discrepancy reduction) distinct from raw evidence STRENGTH — directly sharpening Lord's role from a qualitative to a quantifiable evidence-acquisition optimizer"
+  refines_or_contradicts: "directly and completely answers 0545's closing question; extends and explains (rather than merely restates) 0537-0539's earlier no-universal-algebra conclusion; sharpens 0544's Lord/Sārathi repositioning with a concrete optimization objective; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The concrete ADR-conflict worked example (ADR-001 supporting a decision, ADR-002 attacking an assumption, a Security Constitution attacking the same decision, architectural evidence supporting an alternative) is a directly checkable demonstration that some real KnowledgeOS reasoning situations are structurally argumentative rather than probabilistic, substantiating the two-complementary-families claim with a concrete rather than purely abstract case."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 6 — Information Gain and Value of Evidence' (formalizing Value(e|K,I,P) and the evidence-selection argmax rule) is executed as its own dedicated corpus file"
+  - "Whether the proposed two-complementary-mathematical-families architecture (quantitative vs. qualitative/argumentative) is ever concretely integrated into a single implementable KnowledgeOS specification, or whether the two families require their own separate governance"
+tier2_triggered: true
+tier2_reason: "LANDMARK direct resolution of the corpus's central Evidence-theory closing question (what object is actually being aggregated?), delivering a rigorous seven-domain semantic separation, establishing relational (not scalar) representation as the epistemic foundation, and definitively explaining — rather than merely asserting — why no single universal evidence algebra can exist: some epistemic problems are genuinely probabilistic while others are genuinely argumentative, requiring two complementary mathematical families rather than one hybrid formula. Also delivers a mathematically precise and consequential new distinction (InformationGain≠EvidenceStrength, EvidenceValue≠EvidenceStrength) that reframes Lord's evidence-selection strategy from qualitative to quantifiable, opening a concrete named next research phase (Step 6: Value(e|K,I,P) and expected-discrepancy-reduction optimization)."

@@ -1,0 +1,198 @@
+sequence: 671
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-121717_step-086-mechanism-design-and-institutional-equilibrium.md
+title: "Step 86 CONFIRMED as a Rich, Coherent, Non-Duplicative Continuation of Step 85 — Mechanism≠Policy, Hidden-Type Screening With Gaming Risk, Separation-of-Duties/Dual-Control Mechanism Design With DualControl≠GuaranteedIndependence (Collusion Risk), Multi-Dimensional Independence Modeling, System-Generated vs. Agent-Provided Evidence, an AI-Agent-Specific Constitutional→Governance→Policy→TaskObjective→OptimizationPreference Hierarchy Crystallized as a Feasible-Set-First Optimization Principle (A^feasible={a:I_k(a)=True∀k}), the Valuable New 'Governance Surface' Concept (Actual vs. Governed Action Coverage) With a Principled Emergency-Path Treatment, and Mechanism Lifecycle/Versioning Explicitly Tied to Meta-Governance; a Careful, Deliberately-Distinguished I_StrategicRobustness2 Invariant Name (Not a Blind Reuse of 0670's I_StrategicRobustness) Alongside Six Further Genuinely Clean New Invariants; Verdict 'STEP 86 — PASS'; Closes Opening Step 87 — Collective Choice and Aggregation (Arrow-Type Impossibility Results, Voting Theory), Flagged for Comparison Against 0662's Collective-Decision-Governance Machinery but Provisionally Assessed as a Deeper, Distinct Formal Treatment"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 86 -- Mechanism Design and Institutional Equilibrium', opened at 0670's close as an explicitly signaled direct continuation; CONFIRMS the coherent-continuation expectation"
+source_role: PRIMARY_RESEARCH
+canonical_source: 671
+importance: critical
+confidence: high
+about: >
+  **CONFIRMS the coherent, explicitly-signaled continuation expected from 0670.** Delivers `Mechanism≠
+  Policy` -- a policy states what is allowed/forbidden; a mechanism determines how rules, information,
+  incentives, and consequences interact -- confirmed via a policy-without-enforcement-mechanism experiment
+  (`PolicyExists=True` while `Enforceability=False` -- PASS). Delivers formal Incentive compatibility
+  (`U_i(t_i,t_{-i})≥U_i(r_i,t_{-i})` for truthful behavior `t_i`), directly and coherently formalizing
+  0670's conceptual introduction of the same term, confirmed via a truthful-versus-underreported-risk
+  experiment (PASS), motivating Independent verification as a structural mechanism response to strategic
+  self-reporting (`AgentReport+IndependentEvidence→Governance`, confirmed via a repository-analysis-
+  overriding-self-report experiment, PASS).
+
+  Delivers Resource-allocation mechanism design (`∑r_i≤R` under competing agent preferences) with an
+  explicit and correctly-reasoned impossibility caution (100% fairness, efficiency, and incentive
+  compatibility simultaneously are not generally achievable -- confirmed via a dedicated experiment, PASS).
+  **Delivers the file's first central formal deliverable -- Institutional equilibrium formally distinguished
+  from ordinary Nash equilibrium**: `E*` as an equilibrium of `Behavior+Rules+Incentives+Expectations`
+  jointly, not merely individual actions, confirmed via a formally-correct-but-behaviorally-circumvented
+  governance experiment (PASS), crystallizing **`FormalGovernance≠EffectiveGovernance`** (a 90%-bypassed
+  mandatory-review policy showing `FormalCompliance=True` but `EffectiveCompliance=False`, confirmed via a
+  dedicated experiment, PASS) -- **explicitly and correctly cross-referencing both 0666's observability
+  discipline and 0670's strategic-behavior discipline together** ("this is Step 81 observability combined
+  with Step 85 strategic behavior," §86.21), a further explicit, correctly-attributed backward cross-
+  reference.
+
+  Delivers Governance Simulation as a proposed KnowledgeOS capability (testing a candidate mechanism against
+  cooperative/self-interested/risk-averse/adversarial agent types before deployment, confirmed via a
+  dedicated experiment, PASS), with an important caution against premature behavioral labeling
+  (`Adversarial=True` from a single unusual action -- `InsufficientEvidence` -- confirmed via a dedicated
+  experiment, PASS).
+
+  **Delivers the file's second central formal deliverable -- hidden-type mechanism design, correctly and
+  precisely introduced**: private information (`θ_i` known to the agent, not the organization, confirmed
+  via a dedicated experiment, PASS) and Screening (self-selection between differentiated options revealing
+  private type, e.g. `FastPath` versus `FullReview` by declared risk level, confirmed via a dedicated
+  experiment, PASS), paired with the crucial and correctly-reasoned caution that screening itself can be
+  gamed (a high-risk project falsely claiming low risk to access the fast path, confirmed via a screening-
+  manipulation-detection experiment, PASS) -- this is standard, correctly-applied mechanism-design theory
+  (screening/self-selection under asymmetric information) genuinely extending 0670's principal-agent
+  treatment with concrete architectural application.
+
+  **Delivers the file's third central formal deliverable -- separation-of-duties as formal mechanism
+  design, with a genuinely important collusion caveat**: `Requester≠Approver` as a structural conflict-of-
+  interest prevention (confirmed via a self-approval experiment, PASS), Dual control (`Approval_1∧
+  Approval_2`) for critical actions (confirmed via a single-approver-violation experiment, PASS), and the
+  crucial, correctly-reasoned caveat **`DualControl≠GuaranteedIndependence`** -- two approvers with aligned
+  incentives can simply approve each other's requests (confirmed via a collusion-risk experiment, PASS),
+  motivating `Independence(A,B,C)` to be explicitly modeled across organizational, financial, technical,
+  informational, and temporal dimensions rather than assumed from role separation alone, confirmed via an
+  organizational-separation-without-incentive-independence experiment (PASS) -- a genuinely valuable, well-
+  reasoned governance-mechanism-design insight directly relevant to real security-architecture practice.
+
+  Delivers system-generated evidence explicitly preferred over exclusively agent-provided evidence where
+  strategic manipulation is possible (`Git, CI, Runtime, Infrastructure, Logs` as independent evidence
+  sources, confirmed via a developer-claim-versus-automated-analysis experiment, PASS), directly and
+  genuinely extending 0670's independent-verification discipline. **Delivers the file's fourth central
+  formal deliverable -- a formal AI-agent-specific mechanism hierarchy, crystallized as a rigorous
+  lexicographic feasible-set-first optimization principle**: `ConstitutionalConstraints→
+  GovernanceConstraints→Policy→TaskObjective→OptimizationPreference`, confirmed via a task-speed-versus-
+  constitutional-bypass experiment (`ConstitutionalViolation` correctly rejected -- PASS), formalized as
+  `A^{feasible}={a∈A: I_k(a)=True ∀k}`, `a*=argmax_{a∈A^{feasible}}U(a)` -- "first satisfy hard constraints;
+  then optimize within the remaining feasible space," explicitly and correctly declared "much safer than
+  maximizing utility first and checking constraints afterward" -- directly and cleanly formalizing the
+  corpus's long-running feasible-policy-space optimization principle (0645, 0654, 0659) into its most
+  precise mathematical statement to date, confirmed via a constrained-optimization worked example (1000
+  actions reduced to 50 feasible, PASS), with `Governance≠Optimization` reconfirmed (`Feasible=True` does
+  not imply `Utility=Good`, PASS) and `Constraint≠Preference` reconfirmed (a soft "prefer low-cost"
+  guideline incorrectly treated as an absolute constraint -- `SemanticPolicyError` -- PASS).
+
+  Applies the full mechanism-design apparatus to a concrete architecture-governance worked example
+  (multiple stakeholder utility functions -- `U_Developer, U_Operations, U_Security, U_Architecture` --
+  requiring an explicit `ArchitectureChangeProcess` mechanism with seven defined stages, confirmed via a
+  dedicated experiment, PASS), crystallized as `Change→Classification→Evidence→GovernancePath→Decision→
+  Authorization→Implementation→Verification` explicitly declared "not merely a workflow. It is a
+  mechanism." Delivers `MechanismCorrectness=f(Feasibility, Authority, Incentives, Observability,
+  Robustness, Outcome)`, confirmed via a workflow-succeeds-but-widely-bypassed experiment
+  (`WorkflowCorrectness=True` while `MechanismEffectiveness=False` -- PASS).
+
+  **Delivers the file's fifth and most architecturally valuable central formal deliverable -- the
+  Governance Surface concept, genuinely new and practically important**: `GSurface={paths→material
+  outcomes}`, with the crucial gap identification `GSurface_{actual}>GSurface_{governed}` when uncontrolled
+  bypass paths exist (confirmed via a manual-production-credentials-bypass experiment, `GovernanceSurfaceGap`
+  -- PASS), directly and precisely operationalizing 0670's "governance is only as strong as its uncontrolled
+  bypass paths" principle into a named, testable architectural concept, paired with `Mechanism completeness`
+  as an explicit test ("does the governance mechanism cover all materially relevant action paths?",
+  confirmed via an emergency-procedure-coverage-gap experiment, PASS) and a principled treatment of
+  legitimate emergency exceptions -- not `RemoveEmergencyPath` but `EmergencyPath+EmergencyAuthority+
+  PostHocReview+Audit`, confirmed via a governed-exception-path experiment (PASS).
+
+  Delivers Mechanism lifecycle/versioning (`M_1→M_2→M_3`), explicitly and correctly cross-referencing both
+  temporal reasoning and meta-governance together ("this connects directly to TemporalReasoning and
+  MetaGovernance," §86.73, a further explicit backward cross-reference), confirmed via a historical-
+  mechanism-violation experiment (retroactively re-evaluating past decisions under a new mechanism --
+  Rejected -- PASS), and an institutional learning loop (`Governance→Outcome→Learning→Governance`), paired
+  with the important meta-level caution that mechanism adaptation is itself strategic -- agents may
+  deliberately create governance incidents anticipating a favorable future rule change, confirmed via a
+  strategic-policy-influence experiment (`StrategicPolicyInfluence`/`GovernanceInfluenceGame` -- PASS),
+  crystallizing "institutional game theory" operating across `Agent→Governance→MetaGovernance` levels
+  simultaneously.
+
+  **Delivers seven new named invariants, with one -- `I_{StrategicRobustness2}` -- explicitly and
+  deliberately DISTINGUISHED by name from 0670's `I_{StrategicRobustness}` rather than blindly reusing the
+  same name**, a small but genuinely positive sign of careful, self-aware invariant naming discipline within
+  this specific pair of adjacent files: `I_{Mechanism}`, `I_{IncentiveCompatibility}`, `I_
+  {IndependentVerification}`, `I_{GovernanceSurface}`, `I_{StrategicRobustness2}`, `I_{MechanismVersioning}`,
+  `I_{FeasibleActionSpace}` -- none of the seven are exact-name matches to any invariant tracked elsewhere
+  in this reconstruction.
+
+  Delivers Step 86's verdict **"STEP 86 — PASS,"** with the progression summary
+  `IndividualDecision→CollectiveDecision→StrategicBehavior→MechanismDesign`, explicitly declaring the
+  architecture "increasingly describing not just an intelligent system, but an institutional operating
+  system."
+
+  **Closes by identifying collective choice and aggregation as the next boundary**: "when several legitimate
+  agents disagree, how does the system produce one collective decision?", explicitly previewing formal
+  social-choice theory not previously named at this level of specificity -- voting theory, preference
+  aggregation, **Arrow-type impossibility results**, strategic voting, agenda manipulation, and the crucial
+  distinction "how can KnowledgeOS aggregate disagreement without confusing 'what most agents believe' with
+  'what the organization is legitimately authorized to decide'?" Opens "Step 87 -- [Collective Choice and
+  Aggregation]." **This should be compared against 0662's already-established collective-decision-governance
+  machinery** (`DecisionProtocol` with `Quorum`/`Veto`/`Escalation`), though the explicit naming of Arrow's
+  impossibility theorem and formal preference-aggregation theory suggests this is likely a deeper, more
+  formally rigorous treatment of a related but distinct question (0662 addressed operational decision-
+  protocol governance; Step 87 appears to address the mathematical foundations of preference aggregation
+  itself), provisionally assessed as a plausible non-collision deepening pending confirmation once 0672 is
+  read. No actual code execution reported in this file.
+introduces:
+  - concept: "CONFIRMED rich, coherent, non-duplicative continuation of Step 85: Mechanism≠Policy, formal incentive compatibility, hidden-type screening with gaming risk, and separation-of-duties/dual-control mechanism design with the crucial DualControl≠GuaranteedIndependence collusion caveat"
+  - concept: "A rigorous feasible-set-first optimization principle (A^feasible={a:I_k(a)=True∀k}, a*=argmax over the feasible set) formalizing the corpus's long-running feasible-policy-space discipline (0645, 0654, 0659) into its most precise statement to date, applied specifically to a Constitutional→Governance→Policy→TaskObjective→OptimizationPreference hierarchy for AI agents"
+  - concept: "The Governance Surface concept (GSurface_actual>GSurface_governed), genuinely new and practically valuable, precisely operationalizing 0670's 'governance is only as strong as its uncontrolled bypass paths' principle, with a principled non-removal treatment of legitimate emergency exception paths"
+  - concept: "Explicit, deliberate invariant-name differentiation (I_StrategicRobustness2 vs 0670's I_StrategicRobustness) — a small positive sign of careful naming discipline distinguishing this from the session's earlier unacknowledged exact-name collisions"
+  - concept: "Institutional game theory operating across Agent→Governance→MetaGovernance levels simultaneously, with mechanism adaptation itself recognized as strategic"
+  - concept: "A flagged comparison point: Step 87's collective-choice/Arrow-impossibility preview against 0662's already-established DecisionProtocol/Quorum/Veto machinery, provisionally assessed as a distinct, deeper formal treatment rather than a collision"
+defines:
+  - concept: "Mechanism≠Policy"
+    definition: "A policy states what is allowed or forbidden as a declarative rule; a mechanism determines how rules, information, incentives, and consequences actually interact to produce enforceable behavior — a policy can exist formally while having zero effective enforceability if no mechanism operationalizes it"
+  - concept: "FormalGovernance≠EffectiveGovernance"
+    definition: "A governance rule can be formally correct and even show 100% recorded compliance while actual organizational behavior systematically circumvents it through unrecorded or bypassed paths; institutional equilibrium must be evaluated against actual behavior, not merely the existence of correct-looking rules"
+  - concept: "DualControl≠GuaranteedIndependence"
+    definition: "Requiring two separate approvers for a critical action (dual control) does not guarantee genuine independent oversight if the two approvers have aligned incentives and can simply approve each other's requests (collusion); true independence must be explicitly modeled across organizational, financial, technical, informational, and temporal dimensions, never assumed from formal role separation alone"
+  - concept: "Governance Surface (GSurface)"
+    definition: "The set of all action paths through which organizational behavior can materially affect a governed outcome; when GSurface_actual (all paths that actually exist) exceeds GSurface_governed (paths the governance mechanism actually covers), a Governance Surface Gap exists — an uncontrolled bypass path that undermines the governed mechanism regardless of how correct that mechanism is on its own covered path"
+  - concept: "The feasible-set-first optimization principle (A^feasible={a:I_k(a)=True∀k})"
+    definition: "Action selection should always first construct the feasible action set by applying all constitutional, governance, and authority constraints as hard filters, then optimize utility only within that already-constrained feasible set — never maximize utility first and check constraints afterward, since a strategic or careless agent could otherwise select a high-utility but constraint-violating action before the check occurs"
+refines:
+  - concept: "0670's (Step 85's) conceptual introduction of incentive compatibility, strategic behavior, and I_StrategicRobustness"
+    refinement: "Directly and coherently formalized and extended: incentive compatibility given a precise mathematical definition, institutional equilibrium formally distinguished from simple Nash equilibrium, and a deliberately distinct sibling invariant (I_StrategicRobustness2) introduced rather than a blind reuse of the earlier name"
+  - concept: "0666's (Step 81's) observability discipline and 0670's (Step 85's) strategic-behavior discipline"
+    refinement: "EXPLICITLY AND CORRECTLY CROSS-REFERENCED TOGETHER ('this is Step 81 observability combined with Step 85 strategic behavior'), synthesized into FormalGovernance≠EffectiveGovernance"
+  - concept: "0670's 'governance is only as strong as its uncontrolled bypass paths' principle"
+    refinement: "Directly and precisely operationalized into the named, testable Governance Surface concept (GSurface_actual>GSurface_governed), with a principled non-removal treatment of legitimate emergency exceptions"
+  - concept: "The corpus's long-running feasible-policy-space optimization principle (0645's A_allowed, 0654's Design-by-Contract preconditions, 0659's decision optimization within feasible policy space)"
+    refinement: "Formalized into its most precise and general mathematical statement to date (A^feasible={a:I_k(a)=True∀k}, a*=argmax over the feasible set), explicitly applied to a full AI-agent-specific constraint hierarchy"
+  - concept: "0668's temporal-reasoning discipline and 0670's/0661's MetaGovernance discipline"
+    refinement: "EXPLICITLY AND CORRECTLY CROSS-REFERENCED TOGETHER ('connects directly to TemporalReasoning and MetaGovernance'), extended via mechanism lifecycle/versioning and the recognition that mechanism adaptation is itself strategic"
+  - concept: "0662's already-established DecisionProtocol/Quorum/Veto collective-decision-governance machinery"
+    refinement: "LIKELY DISTINCT, NOT YET CONFIRMED: Step 87's opening preview (voting theory, Arrow-type impossibility results, preference aggregation) suggests a deeper, more formally rigorous mathematical treatment of preference-aggregation foundations, distinct from 0662's more operational decision-protocol governance content; flagged for direct comparison once 0672 is read"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read Step 87's actual file (0672) and directly compare against 0662's DecisionProtocol/Quorum/Veto machinery — determine whether it delivers genuinely new formal social-choice-theory content (Arrow's impossibility theorem, preference-aggregation functions) as provisionally expected, or substantially retreads 0662's collective-decision-governance content."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the CONFIRMATION that Step 86 delivers a rich, coherent, non-duplicative continuation of Step 85 — Mechanism≠Policy, formal incentive compatibility, hidden-type screening, separation-of-duties/dual-control with the DualControl≠GuaranteedIndependence collusion caveat, and multi-dimensional independence modeling."
+  - "dimension-registry.md: record the Governance Surface concept (genuinely new and valuable, precisely operationalizing 0670's bypass-path principle); the feasible-set-first optimization principle (A^feasible={a:I_k(a)=True∀k}) as the corpus's most precise formalization to date of its long-running feasible-policy-space discipline; and the deliberate, self-aware invariant-name differentiation (I_StrategicRobustness2 vs 0670's I_StrategicRobustness)."
+  - "dimension-registry.md: record verdict 'STEP 86 — PASS' and the flagged comparison point for Step 87's collective-choice/Arrow-impossibility preview against 0662's DecisionProtocol/Quorum/Veto machinery, provisionally assessed as a distinct, deeper formal treatment, pending confirmation at 0672."
+anchor_test:
+  anchor: "0670's explicitly signaled forward reference to this file; 0666's observability discipline and 0670's strategic-behavior discipline; 0670's bypass-path principle; the corpus's feasible-policy-space discipline (0645, 0654, 0659); 0668's temporal reasoning and 0661's/0670's MetaGovernance discipline; 0662's collective-decision-governance machinery"
+  supports_dimension: "Delivers a rich, well-integrated, and genuinely non-duplicative continuation of Step 85's mechanism-design introduction, with standard and correctly-applied mechanism-design theory (screening under private information, separation of duties, dual control with a correctly-reasoned collusion caveat). Most valuably, precisely operationalizes 0670's more informal bypass-path caution into the named, testable Governance Surface concept, and formalizes the corpus's long-running feasible-policy-space discipline into its most rigorous mathematical statement to date. Demonstrates a small but meaningful positive sign of careful, self-aware invariant-naming discipline by deliberately distinguishing I_StrategicRobustness2 from 0670's I_StrategicRobustness rather than reusing the name — a useful additional positive data point alongside 0657's kernel citation and 0662's/0669's/0670's multiple explicit backward cross-references, further supporting this reconstruction's overall finding that the model line's memory lapses (Steps 70-75, 82-84) are localized rather than uniform across the corpus"
+  refines_or_contradicts: "directly and coherently continues 0670's mechanism-design introduction; explicitly and correctly cross-references 0666's/0670's observability-and-strategic-behavior synthesis and 0668's/0661's/0670's temporal-reasoning-and-meta-governance synthesis; directly and precisely operationalizes 0670's bypass-path principle; formalizes the corpus's feasible-policy-space discipline; flags, but does not yet confirm, a comparison against 0662's collective-decision machinery for Step 87; no contradiction found; deliberately avoids a new invariant-naming collision via careful differentiation"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The collusion-risk experiment (§86.39-86.40, two approvers with aligned incentives simply approving each other's requests despite formal dual-control separation, correctly yielding CollusionRisk) is directly checkable, concrete evidence of a genuinely important and correctly-reasoned governance-mechanism-design principle (DualControl≠GuaranteedIndependence) with direct relevance to real security-architecture practice."
+  - "The explicit deliberate naming choice I_StrategicRobustness2 (§86.83), rather than reusing 0670's I_StrategicRobustness, is directly checkable evidence that the model line, within this specific pair of adjacent files, correctly recognized the relationship between the two invariants and chose to distinguish rather than collide them — a useful positive contrast to the session's earlier unacknowledged exact-name duplications."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 87's actual content (0672), once read, confirms itself as a genuinely deeper, distinct formal social-choice-theory treatment (Arrow's impossibility theorem, preference-aggregation functions) as provisionally expected, or substantially overlaps 0662's already-established DecisionProtocol/Quorum/Veto collective-decision-governance machinery."
+tier2_triggered: true
+tier2_reason: "CONFIRMS a rich, coherent, non-duplicative continuation of Step 85's mechanism-design introduction, with standard and correctly-applied mechanism-design theory. Delivers the genuinely new and practically valuable Governance Surface concept, precisely operationalizing 0670's bypass-path caution, and formalizes the corpus's long-running feasible-policy-space discipline into its most rigorous statement to date (A^feasible={a:I_k(a)=True∀k}). Demonstrates careful, self-aware invariant-naming discipline (I_StrategicRobustness2 deliberately distinguished from I_StrategicRobustness), a positive contrast to earlier unacknowledged collisions. Flags a comparison point for Step 87 against 0662's collective-decision machinery, provisionally assessed as a distinct, deeper formal treatment. Verdict 'STEP 86 — PASS.'"

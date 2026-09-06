@@ -1,0 +1,95 @@
+sequence: M0150
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-180007_review-of-relevant-material.md
+title: "Review of Gödel's 'Wahrheit und Beweisbarkeit': formal systems, derivability, and the third boundary"
+date: "20260902-180007"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: EXTERNAL_LITERATURE
+  secondary_note: >
+    Adjudication/synthesis review of Gödel's collected "Wahrheit und Beweisbarkeit" material
+    (incompleteness, proof theory, completeness of first-order logic, proof length) against the
+    KnowledgeOS TODO register — the source extraction itself not confirmed located separately in
+    this reconstruction's read order (same pattern as the Reiter/Williamson sources).
+source_role: PRIMARY
+canonical_source: M0150
+importance: critical
+confidence: high
+about: >
+  A third external-literature synthesis (after Situation Calculus/Reiter for the dynamic lane and
+  Williamson for the epistemic-limits lane) introducing a formal-system layer S=(L,A,R,Der,Sem),
+  derivability≠truth, proof-as-inspectable-artifact, object/meta-level non-collapse, Gödel's second
+  theorem's self-assurance limitation, and a candidate SIXTH factor (DerivabilityStatus) for the
+  evaluation representation — explicitly framing "Formal Boundary" as a third fundamental boundary
+  alongside Representation and Epistemic boundaries.
+introduces:
+  - "Formal system layer: S=(L,A,R,Der,Sem) with Γ⊢_S p (derivability) explicitly distinguished from M⊨p (semantic truth) — [DERIVED — strong]"
+  - "Proof as inspectable artifact: Proof=(S,p,π), ValidProof_S(π,p) mechanically checkable, Der_S(p)⟺∃π.ValidProof_S(π,p) — a concrete, implementable proof-artifact schema (systemId/systemVersion/premises/inferenceRules/derivationSteps/conclusion/encoding/hash/provenance) proposed as 'much closer to a deterministic kernel operation than an LLM-generated explanation'"
+  - "DerivationEvidence as a new named evidence subtype: E_proof=(S,π,p,λ), supporting S⊢p but NOT automatically Truth(p) unless soundness is separately established — Sound(S) defined as S⊢p⇒⊨p, an explicit bridge condition that must be recorded, not silently assumed"
+  - "System-relative undecidability and the system-strength ordering S1≺S2, with Undecidable(p,S1) ⇏ Undecidable(p,S2) — formalizing 'no absolute UNKNOWN' via system relativity, explicitly parallel to (not identical with) Williamson's structural-unknowability distinction"
+  - "A fourth Unknown_S dimension (formal-system-relative undecidability), joining Williamson's Unknown_current/Unknown_access/Unknown_structural from M0147 — now four distinct Unknown kinds tracked across two external sources, not yet reconciled into one register"
+  - "Level Non-Collapse principle: L_n(x)≠L_{n+1}(x) unless an explicit bridge is provided — explicitly presented as a SECOND independent theoretical source (alongside Williamson's K(p)⇏K(K(p))) for the corpus's object/meta-level separation, directly extended to Verified(p)≠Verified(Verified(p))"
+  - "Gödel's second incompleteness theorem applied to KnowledgeOS assurance: a sufficiently expressive system cannot prove its own consistency from its own resources — S⊬Consistent(S) — hence 'the kernel cannot be its own ultimate proof of correctness'; proposes an Assurance Ladder S0≺S1≺S2... where S_{n+1} can establish properties of S_n unavailable internally, research-flagged as KR-META-ASSURANCE, not adopted"
+  - "Candidate SIXTH evaluation factor: EVal=(Standing,Boundary,Derivability,Accessibility,Context,Provenance) — extending M0147's already-proposed fifth factor (Accessibility) with a further candidate factor (DerivabilityStatus), explicitly 'not adopted... the next representation hypothesis to test'"
+  - "Extended Zero boundary-source decomposition: B=B_data∪B_access∪B_representation∪B_reasoning∪B_formal — five distinct boundary sources, adding B_reasoning and B_formal to the corpus's existing Zero vocabulary"
+  - "The ban on unqualified Complete(x): mandates dimension-qualified Complete_S/Complete_E/Complete_K/Complete_G, explicitly reinforcing NoKnownGap≠Complete with a formal-systems argument"
+  - "Determination is system-relative: Determination(p)→Determination(p|S,Γ) — truth may be fixed while determination outcomes differ across formal-system contexts S1,S2"
+  - "Final three-boundary synthesis, explicitly tying together all three external sources read in this sub-thread: Representation boundary (Reality→Representation), Epistemic boundary (Representation→Knowledge, from Williamson), Formal reasoning boundary (Knowledge→Derivation, from Gödel) — with Situation Calculus supplying the parallel dynamic-lane structure (Transition/Action/Persistence)"
+  - "Recommended experiment KR-GODEL-2026-09 — Derivability, Truth and Formal Boundary, with a concrete 10-case test design (derivable-and-true, derivable-but-truth-bridge-unavailable, refutable, undecidable-in-S, decidable-in-stronger-S', evidence-supported-but-not-derivable, derivable-after-extension, meta-level statement, consistency statement, statement-about-a-proof) testing whether the current representation distinguishes Truth/Derivable/Refutable/Undecidable/MetaLevel/Accessible/Known without collapsing them"
+defines: []
+refines:
+  - "The already-proposed candidate fifth Accessibility factor (M0147): extended here to a candidate sixth factor (adding DerivabilityStatus), continuing the pattern of proposing but not adopting extensions to the frozen four-factor FDE representation — SECOND such proposed extension in this reconstruction's read order"
+  - "Object/meta-level separation and Verification≠MetaVerification (already given via Williamson at M0147): given a second, independent theoretical grounding here via Gödel's incompleteness theorems, explicitly noted by the document itself as 'two independent reasons for explicit level separation'"
+  - "NoKnownGap≠Complete (long-tracked): given a third independent theoretical grounding (after the internal freeze and Williamson's structural unknowability) via formal-system-relative completeness"
+contradicts: []
+repeats:
+  - "The rejection-table pattern (§34): Gödel does NOT justify KnowledgeOS=formal-system, KnowledgeOS=theorem-prover, Contr=Inconsistency, Unknown=Undecidable, Truth=Provability, Verification=Consistency, or 'Gödel incompleteness=AI limitation' — same disciplined-rejection structure as M0138/M0142/M0145/M0147"
+bridge_candidates:
+  - "The underlying Gödel source extraction ('Wahrheit und Beweisbarkeit', likely a Gödel collected-works or Feferman-edited volume) is not itself confirmed located as a separate document in this reconstruction's read order — same pattern as M0145's Reiter source"
+  - "Whether KR-GODEL-2026-09 was ever executed"
+  - "Whether the now-four-way Unknown classification (current/access/structural from Williamson, plus system-relative-undecidable from Gödel) is ever consolidated into a single register"
+  - "Whether the candidate sixth evaluation factor (Standing×Boundary×Derivability×Accessibility×Context×Provenance) is ever tested, and how it relates to the fifth-factor proposal from M0147"
+mathematical_content: >
+  States the formal-system tuple S=(L,A,R,Der,Sem), Der_S(p)⟺∃π.ValidProof_S(π,p), Sound(S) as
+  S⊢p⇒⊨p, the system-ordering S1≺S2 with Undecidable(p,S1)⇏Undecidable(p,S2), Gödel's second theorem
+  as S⊬Consistent(S), and the assurance-ladder schema S_{n+1}⊢Consistent(S_n) while
+  S_n⊬Consistent(S_n) — all cited as Gödel's established results adapted to candidate KnowledgeOS
+  constructs, not new derivations performed within this document.
+gita_content: null
+kernel_content: >
+  Completes a coherent three-source epistemic/dynamic/formal-reasoning research triad (Situation
+  Calculus for transition, Williamson for epistemic limits, Gödel for formal-system boundaries) and
+  gives the corpus's deterministic-kernel/verification discipline its most rigorous theoretical
+  grounding yet: the kernel literally cannot be its own ultimate proof of correctness under Gödel's
+  second theorem, motivating an explicit, not-yet-adopted assurance-ladder research direction.
+registry_updates:
+  - "Eighth instance of the cross-domain external-literature corroboration pattern (after Priest, Rice, Shapiro, Ziem, Brachman&Levesque, Baader/DL Handbook, Williamson) — the first landing on formal-system/proof-theoretic boundaries specifically"
+  - "Second proposed extension (DerivabilityStatus, following M0147's Accessibility) to the frozen four-factor FDE evaluation representation, still untested"
+  - "Names 'Formal Boundary' as a third fundamental boundary type, completing a three-boundary synthesis (Representation/Epistemic/Formal-reasoning) spanning all three external sources in this sub-thread"
+anchor_test:
+  anchor: true
+  supports_dimension: "Formal-system layer, derivability≠truth, proof artifacts, level non-collapse, Gödel's second theorem/self-assurance limitation, candidate sixth evaluation factor, extended Zero boundary decomposition"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Truth ≠ Derivability ≠ Decidability ≠ Knowledge ≠ Verification\" (boxed, §1) — the document's own central finding"
+  - "\"The kernel cannot be its own ultimate proof of correctness.\" (§21) — the Gödel-second-theorem consequence for KnowledgeOS's deterministic kernel"
+  - "\"Every determination is relative to an explicit epistemic and reasoning context. The inability of a context to derive or decide a proposition must not be interpreted as falsity, absence, or absolute unknowability.\" (§ closing candidate principle) — the document's own proposed constitutional addition"
+undefined_concepts:
+  - "The exact formal criterion for when S1≺S2 holds (system-strength ordering) — left informal, cited only via the general phenomenon that stronger systems decide more"
+  - "Whether the assurance-ladder's S_{n+1} is itself subject to the same second-theorem limitation (regress) — not addressed"
+open_questions:
+  - "Was KR-GODEL-2026-09 ever executed, and did DerivabilityStatus/FormalContext prove load-bearing?"
+  - "Is the assurance ladder itself vulnerable to an infinite regress under repeated application of Gödel's second theorem, and if so how does the corpus's deterministic-kernel discipline handle that?"
+tier2_triggered: true
+tier2_reason: >
+  Introduces the corpus's most rigorous formal-system/proof-theoretic apparatus yet (derivability,
+  soundness, proof artifacts, Gödel's second theorem applied to kernel self-verification), proposes
+  a second candidate extension to the frozen FDE evaluation representation, and completes a coherent
+  three-source synthesis naming "Formal Boundary" as a third fundamental boundary type alongside
+  Representation and Epistemic boundaries.

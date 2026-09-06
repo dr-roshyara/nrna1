@@ -1,0 +1,87 @@
+sequence: M0201
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-092007_review-yes.md
+title: "KR-REP-DATASET-2026-09 Production Corpus Audit & Adapter: a rigorous 12-phase specification with a canonical n* determination rule (NULL is a valid result), a None-vs-0.0 entropy discipline, an independent-Q circularity guard, and an explicit warning against substituting KR-ZERO-ORDER's 89.7%/8.24% statistics for the new experiment's own metrics"
+date: "20260903-092007"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0201
+importance: critical
+confidence: high
+about: >
+  Delivers the most rigorous engineering-discipline artifact in the Zero-algebra/representation-
+  reduction thread: a complete 12-phase Production Corpus Audit & Adapter specification for
+  KR-REP-DATASET-2026-09, opening with an explicit honest disclaimer that the actual KR-ZERO corpus
+  files are not available for direct inspection. Each phase carries an explicit stop-condition or
+  status vocabulary preventing the audit from silently manufacturing results it cannot support.
+introduces:
+  - "A 12-phase audit protocol: (1) Corpus Discovery — search for all KR-ZERO/KR-ZERO-ORDER/KR-ZERO-ALGEBRA artifacts by keyword, including the unreconciled 1395/1496/1475 count tokens; (2) Denominator Reconciliation — a mandatory table explaining KR-ZERO-baseline/O2/O4/O6 populations, explicitly 'do not repair the historical numbers'; (3) Source Schema Discovery — a 6-value status vocabulary (VERIFIED_OBSERVED/VERIFIED_DERIVED/PARTIAL/UNOBSERVED/AMBIGUOUS/CONTRADICTORY), with VERIFIED_DERIVED permitted only for deterministic derivations from observed data; (4) Independent Q Audit; (5) Representation Reconstruction; (6) Transformation Registry; (7) Dataset Construction; (8) Completeness Audit; (9) Auditor Execution (only after completeness is established); (10) Canonical n* Determination; (11) Boundary Diagnosis; (12) Final Audit Report (14 mandatory sections)"
+  - "An explicit circularity guard for Q-independence (Phase 4): accept ONLY 'Q explicitly evaluated from raw D' or 'Q deterministically reproducible from raw D'; explicitly REJECT 'Q derived from R_n,' 'Q inferred from Zero-status,' 'Q reconstructed from the desired experimental outcome' — if independence cannot be demonstrated, Q=NULL with Q_independence_status=UNVERIFIED rather than manufactured ground truth"
+  - "An explicit warning that historical k=1/k=2/k=3/irreducible classifications (from KR-ZERO-ORDER-2026-09) are PROVENANCE CLASSIFICATIONS, not automatically R1/R2/R3/R4/R5 representation levels — restated even more forcefully than at M0198/M0200: if an intermediate representation was not actually recorded and cannot be deterministically reconstructed, R_n=NULL, and it must 'never [be] interpolate[d]'"
+  - "A formal Completeness metric: Comp_n=N_n/N_source where N_n=|{i:R_{n,i}≠NULL}| — a mandatory table (Phase 8) that must precede any level-metric calculation"
+  - "A canonical n* determination rule: n*=min{n: Comp_n=1 ∧ A_n=1 ∧ N_viol,n=0 ∧ Ĥ(Q|R_n)≤ε} — with the explicit rule that if NO level satisfies this, n*=NULL is itself 'a valid scientific result,' and the completeness requirement must NEVER be lowered merely to manufacture an n*"
+  - "A structural-identity internal-consistency check: N_viol,n=0 ⟺ Ĥ(Q|R_n)=0 for the finite empirical support — if the implementation produces disagreement between these two independently-computed quantities, the instruction is to 'stop and diagnose the implementation/data canonicalization rather than proceeding'"
+  - "A precise None-vs-0.0 entropy discipline: when N_n=0 (no observations at a level), entropy fields (H_Q_given_R, H_R_given_Q, H_R) must be set to None, not 0.0 — because zero entropy legitimately means 'a measured deterministic relationship,' whereas zero observations means the quantity is simply UNDEFINED; conflating the two would misrepresent absence-of-data as a positive empirical finding"
+  - "An explicit, forceful warning against a specific substitution error: 'we should not use the previously reported 89.7%, 1.8%, 0.2%, and 8.24% as substitutes for these metrics. Those are results from the KR-ZERO ORDER experiment, not results of the NEW representation-reduction experiment' — the sharpest statement yet of the KR-ZERO-ORDER-vs-KR-REP-DATASET non-identity first flagged at M0198"
+  - "A clear division of what can be delivered now (the frozen dataset contract, the production auditor code, schema, denominator-reconciliation logic, canonicalization logic, completeness calculation, N_viol calculation, entropy calculations, n* determination, boundary classifier, report format, an implementation prompt) versus what genuinely requires the raw corpus (the actual A_n/F_n/N_viol,n/entropy values and the actual n*) — an honest, explicit boundary between specification-readiness and result-readiness"
+defines:
+  - "Comp_n=N_n/N_source — the completeness metric gating all downstream level-metric computation"
+  - "n*=min{n: Comp_n=1 ∧ A_n=1 ∧ N_viol,n=0 ∧ Ĥ(Q|R_n)≤ε}, with n*=NULL as an explicitly valid outcome"
+  - "The three-dimension boundary diagnosis (Representation: N_viol>0∨Ĥ(Q|R)>0; Contract: A(R)<1; Operator: Ĥ(Q|R)=0∧F(R)<1), explicitly non-mutually-exclusive"
+refines:
+  - "M0198's corpus-integrity finding and M0200's stop-condition discipline: both operationalized into a complete, phase-by-phase engineering specification with explicit status vocabularies at every step"
+contradicts: []
+repeats:
+  - "The established 'never fabricate missing data' / 'preserve negative results' discipline (M0198's RULE 3/RULE 9), now given concrete mechanical form (NULL fields, None entropy, n*=NULL as a valid result)"
+bridge_candidates:
+  - "Whether this 12-phase audit was ever actually executed against the real KR-ZERO corpus files, and what its Phase 12 Final Audit Report concluded"
+  - "Whether the 1395/1496/1475 denominator reconciliation (Phase 2) was ever completed"
+mathematical_content: >
+  Formalizes the completeness-gated, NULL-preserving audit methodology first motivated at M0198/
+  M0200 into precise, computable definitions (Comp_n, n*, the structural-identity check between
+  N_viol and Ĥ(Q|R)) with explicit stop-conditions preventing any silent substitution of aggregate
+  results for the metrics a genuinely new experiment would need to produce.
+gita_content: null
+kernel_content: >
+  The most operationally disciplined document in the Zero-algebra thread: converts the corpus-
+  integrity concerns raised at M0198-M0200 into a complete, executable 12-phase audit specification
+  with explicit NULL/None/UNOBSERVED semantics throughout, guarding specifically against the failure
+  mode of treating KR-ZERO-ORDER's aggregate statistics as if they were results of the not-yet-run
+  KR-REP-DATASET experiment.
+registry_updates:
+  - "Complete 12-phase Production Corpus Audit & Adapter specification (KR-REP-DATASET-2026-09)"
+  - "New Q-independence circularity guard (rejecting Q derived from R_n or from Zero-status)"
+  - "New completeness-gated n* determination rule, with NULL as an explicitly valid scientific outcome"
+  - "New structural-identity internal-consistency check (N_viol=0 ⟺ Ĥ(Q|R)=0) with an explicit stop-and-diagnose instruction on disagreement"
+  - "New None-vs-0.0 entropy discipline for unobserved levels"
+  - "Sharpest statement yet of the KR-ZERO-ORDER-vs-KR-REP-DATASET non-identity, explicitly forbidding substitution of the 89.7%/8.24% figures for the new experiment's metrics"
+anchor_test:
+  anchor: true
+  supports_dimension: "12-phase audit protocol; Q-independence circularity guard; completeness-gated n* rule; structural-identity check; None-vs-0.0 entropy discipline; explicit substitution-error warning"
+  refines_or_contradicts: "refines (M0198/M0200's corpus-integrity findings, now given precise operational form)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"If no level satisfies this: n*=NULL, and that is a valid scientific result. Do not lower the completeness requirement to manufacture an n*.\""
+  - "\"If N_n=0, then entropy was not measured. It is not legitimately zero.\""
+  - "\"We should not use the previously reported 89.7%, 1.8%, 0.2%, and 8.24% as substitutes for these metrics. Those are results from the KR-ZERO order experiment, not results of the new representation-reduction experiment.\""
+undefined_concepts: []
+open_questions:
+  - "Was this 12-phase audit ever actually executed against the real KR-ZERO corpus files?"
+  - "Was the 1395/1496/1475 denominator reconciliation ever completed?"
+tier2_triggered: true
+tier2_reason: >
+  Delivers the most operationally rigorous engineering specification in the entire Zero-algebra/
+  representation-reduction thread: a complete 12-phase audit protocol with explicit NULL/None/
+  UNOBSERVED semantics, a genuine Q-independence circularity guard, a completeness-gated n*
+  determination rule that treats NULL as a valid scientific outcome, an internal-consistency
+  structural-identity check with an explicit stop-and-diagnose instruction, and the sharpest
+  statement yet forbidding substitution of aggregate KR-ZERO-ORDER statistics for the new
+  experiment's own metrics.

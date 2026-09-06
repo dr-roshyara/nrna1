@@ -1,0 +1,60 @@
+sequence: 2346
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/13_gap-update.md
+title: "Step-292/13 — Gap Update: 'A Source That Appeared to Solve Nine Open Problems Would Warrant Suspicion, Not Celebration' -- Restates the Already-Tracked Four-Moved/Nine-Untouched Result With a Notable Closing Epistemic Principle"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: none
+  secondary_note: "restates file 2332's already-tracked gap-movement summary (four items moved, nine untouched); delivers one notable, quotable closing epistemic principle about what a genuinely independent corroborating source should look like"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2346
+importance: low
+confidence: high
+about: >
+  Restates the already-tracked gap-movement summary from file 2332: what moved (History/State
+  relationship corroborated with formal vocabulary, status unchanged; δ's shape given one BOUNDED
+  candidate; verification-of-past-determinations given regression, SUPPORTED; equivalence levels given
+  a third named level, NEW SYNTHESIS) and what did not move (Contr, ≡_sem/equality, Qualify, Observation,
+  O/T, identity, provenance placement, δ itself [bounded not solved], ℛ_req/DECISION-02/composition-rule
+  as decisions, and the Step-291 operation-registry membership/signatures/bodies -- "nine of the
+  programme's open items are untouched," anticipated by the mandate's own caution.
+
+  **DELIVERS THE NOTABLE CLOSING EPISTEMIC PRINCIPLE**: "Reiter supplied one bounded candidate, one
+  supported mechanism, one method, and one naming. It closed no open item. That is a real result and
+  it is not a disappointing one -- an independent formal source that corroborated a corpus finding and
+  closed nothing is exactly what 'independent' is supposed to look like. A source that appeared to solve
+  nine open problems would warrant suspicion, not celebration." This is a generalizable methodological
+  principle about how to correctly interpret a genuinely independent corroboration: modest, partial
+  agreement is the EXPECTED and reassuring outcome; suspiciously comprehensive agreement would itself be
+  a red flag.
+introduces:
+  - concept: "The epistemic principle that a genuinely independent corroborating source should close few or no open items -- comprehensive agreement would itself warrant suspicion, not celebration"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked file 2332 gap-movement summary (four moved, nine untouched)"
+    refinement: "RESTATED with a notable closing epistemic principle about interpreting genuinely independent corroboration correctly"
+contradicts: []
+repeats:
+  - "The gap-movement table is already comprehensively tracked in file 2332; this record captures only the incremental closing epistemic principle."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the closing epistemic principle -- a genuinely independent source closing few or no open items is the expected, reassuring outcome, not a disappointing one."
+anchor_test:
+  anchor: "This reconstruction's already-tracked file 2332 gap-movement summary"
+  supports_dimension: "Restates the summary with a notable closing methodological principle"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Restates the already-comprehensively-tracked file 2332 gap-movement summary; delivers one notable but non-technical closing epistemic principle, not independently tier-2-worthy."

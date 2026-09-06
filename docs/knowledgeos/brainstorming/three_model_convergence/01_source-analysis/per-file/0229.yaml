@@ -1,0 +1,69 @@
+sequence: 229
+path: docs/knowledgeos/brainstorming/kernel/20260824-140628-zero-and-leonardo-lenses-on-the-adaptive-inference-kernel.md
+title: "Zero and Leonardo Lenses on the Adaptive Inference Kernel"
+date: "2026-08-24"
+bytes: 20500
+model:
+  primary: g1
+  secondary: c1
+source_role: PRIMARY_RESEARCH
+canonical_source: 229
+importance: critical
+confidence: high
+about: >
+  Applies only the Zero and Leonardo lenses (from the 26-lens system) to the AI-Efficiency Kernel
+  proposed in 0227, continuing the 0226-0228 arc. Zero asks "what happens when a prerequisite is
+  missing?"; Leonardo asks "have we understood the whole relevant bounded context?" Together: no
+  computation without sufficient basis, no decision from an incomplete context. Produces a formal
+  Epistemic Readiness primitive replacing generic confidence as the kernel's execution-control gate.
+introduces:
+  - concept: "EpistemicCondition != PrerequisiteCondition: distinguishes UNKNOWN from NO_BASIS/NOT_APPLICABLE/CONTRADICTORY -- absence of a constitutive prerequisite is not itself an epistemic state"
+  - concept: "Z-KOS Computational Gate: an inference process shall not execute when a constitutive prerequisite is absent; formalized Prerequisites(M,Q)=R, if R not subset of AvailableKnowledge then Inference(M,Q)=NoBasis (not False, not UnknownState) -- an O(1) fail-before-inference check saving expensive downstream computation"
+  - concept: "Two-dimensional readiness gate: Basis completeness B (binary per prerequisite, product of B_i=0 means NO_BASIS regardless of statistical confidence -- an anti-hallucination mechanism) vs. Context completeness C (a coverage vector across relevant dimensions: domain/authority/temporal/dependencies/operational/security, not a single ratio)"
+  - concept: "Evidence Acquisition Planner: Leonardo enables targeted retrieval of exactly the incomplete dimension(s) rather than 'retrieve everything'; formalized as E*=argmin Cost(E) subject to Prerequisites(E)=1 and ContextCompleteness(E)>=tau and Assurance(E)>=required"
+  - concept: "KnowledgeKey=(Context,Concept,Meaning,Version) replacing bare Concept identity -- same expression ('approved') in different bounded contexts (ArchitectureGovernance vs. Security) must resolve to distinct knowledge objects, both an anti-hallucination and an LLM-efficiency mechanism (search space and prompt size shrink, semantic precision rises)"
+  - concept: "Completeness scoped to the bounded context, never the universe: Completeness = Completeness_bounded-context, not Completeness_universe -- the AI needs the DecisionRelevantBoundedContext, not WorldKnowledge"
+  - concept: "'Compression must preserve epistemic readiness' invariant: ER(RawContext) must equal ER(CompressedContext) for the intended decision (or a formally accepted bound) -- stronger than merely preserving semantic similarity; explicitly connects to the Escher lens (what invariant survives transformation) as a natural next step toward a 'safe compression triad' (Zero+Leonardo+Escher)"
+  - concept: "Four-state readiness taxonomy replacing bare UNKNOWN: NO_BASIS (Zero failure) / INSUFFICIENT_CONTEXT (Leonardo failure) / CONTEXT_CONFLICT (context populated but internally contradictory, e.g. ADR says approved, governance record says rejected, runtime follows neither) / UNKNOWN (context sufficiently established, inference genuinely unresolved)"
+  - concept: "Formal Epistemic Readiness truth table R=(B,C,K) -- prerequisite basis / contextual completeness / contextual consistency -- with only B=1,C=1,K=1 (READY) entering the ordinary inference pipeline; B=0 -> NO_BASIS regardless of C,K; C=0 -> INCOMPLETE_CONTEXT; K=0 -> CONFLICTED_CONTEXT"
+  - concept: "Actionable-unknown telemetry: replacing a bare UNKNOWN with structured status+missing-dimensions YAML, enabling an agent to perform a targeted follow-up action instead of hallucinating"
+  - concept: "Full mathematical formalization: Ready(Q,E) = B(E) AND C(E,Q)>=tau_C AND K(E)=1; only if Ready=1 does the system select M*=argmin[Compute(M)+ExpectedLoss(M)] subject to Assurance(M)>=A_Q -- unifying this file's readiness gate with 0226's escalation-cost formalism"
+  - concept: "Reframed AI-efficiency question: not 'how can I make the LLM answer faster' but 'how can I determine whether an LLM is needed at all'"
+  - concept: "Epistemic Readiness Principle (formal candidate): KnowledgeOS shall distinguish absence-of-prerequisites, incomplete-contextual-understanding, contextual-conflict, and genuine-unresolved-uncertainty; expensive inference shall not be invoked until prerequisites and decision-relevant bounded context are sufficiently established"
+  - concept: "Recommended kernel component list: IdentityResolver, ContextResolver, PrerequisiteGate (Zero), ContextCompletenessEngine (Leonardo), EvidenceAcquisitionPlanner, ContextConsistencyEngine, StateResolver, InferenceRouter, ModelRegistry, AssessmentEngine, AssuranceBoundary -- LLM explicitly sits downstream of all of these, not inside the kernel"
+defines: []
+refines:
+  - concept: "0227's AI-Efficiency Kernel / Inference Router proposal and 0226's escalation-cost formalism"
+    refinement: "Inserts a mandatory readiness gate (Zero+Leonardo) BEFORE the inference router, replacing generic confidence-based routing with a structured B/C/K readiness state; unifies with 0226's M*=argmin[Compute+ExpectedLoss] formula by gating it behind Ready(Q,E)=1."
+  - concept: "0214's ziran-derived Contextual Identity challenge and 0219's adoption of it as an architectural pattern"
+    refinement: "Independently arrives at essentially the same conclusion via a different lens pair (Zero+Leonardo rather than Daoist ziran): identity must be relative to bounded context (KnowledgeKey=(Context,Concept,Meaning,Version)), not a bare concept label -- a further reinforcement of the Identity-invariant fault line already tracked in the registry."
+contradicts: []
+repeats:
+  - concept: "Local truth != context-free truth; do not import concepts across bounded contexts without translation"
+    canonical_source: null
+    novelty: low
+bridge_candidates:
+  - "This file's KnowledgeKey=(Context,Concept,Meaning,Version) independently reinforces the registry's Identity-invariant fault line (0214's ziran challenge, 0219's Contextual Identity pattern) via the Zero/Leonardo lens pair rather than Daoist philosophy or Chinese Philosophy/Nyaya/Wittgenstein/Cavell -- a third independent route to the same contextual-identity conclusion. Noted for the registry, not logged as a new separate unresolved_equivalence entry (same underlying fault line, not a new one)."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates: []
+anchor_test:
+  anchor: "0214's Identity-invariant challenge; 0219's Contextual Identity pattern; 0226/0227's escalation-cost architecture"
+  supports_dimension: "Gita/philosophical model (26-lens system) directly formalized into the Mathematical/statistical Kernel-efficiency architecture -- third independent route to the contextual-identity conclusion"
+  refines_or_contradicts: "refines 0226/0227; independently reinforces (not merges with) the 0214/0219 Identity fault line"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Worked cross-context identity example: 'approved' in ArchitectureGovernance (authority=ARB, effect=architecture-baseline-eligible) vs. 'approved' in Security (authority=SecurityBoard, effect=security-review-complete) -- same expression, different knowledge object, directly motivating KnowledgeKey"
+  - "Worked ADR-vs-governance-record-vs-runtime conflict example grounding the CONTEXT_CONFLICT state as distinct from both NO_BASIS and INCOMPLETE_CONTEXT"
+undefined_concepts:
+  - "No formal algorithm given for computing the context-completeness vector C(E,Q) beyond the qualitative dimension list, or for ContextConsistencyEngine's conflict-detection mechanism"
+open_questions:
+  - "Whether the Epistemic Readiness Principle and the four-state readiness taxonomy are ever formally merged into the corpus's cumulative invariant/state vocabulary alongside 0216/0221/0222/0225's competing state models"
+tier2_triggered: true
+tier2_reason: "Critical, tightly-scoped continuation applying two named lenses (Zero, Leonardo) to formalize a mandatory pre-inference readiness gate (NO_BASIS/INSUFFICIENT_CONTEXT/CONTEXT_CONFLICT/READY), unifying with 0226/0227's cost-based escalation formalism and independently reinforcing the registry's Identity-invariant fault line via KnowledgeKey=(Context,Concept,Meaning,Version)."

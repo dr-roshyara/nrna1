@@ -1,0 +1,147 @@
+sequence: M0130
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-175310_shapiro-varieties-of-logic-extraction.md
+title: "Shapiro, Varieties of Logic -- Extraction: A THIRD Instance of the Cross-Domain-Corroboration Pattern (After Priest/M0119 and Rice/M0128) -- Independently Validates the M3/M4 'Observationally Indistinguishable, Not Isomorphic' Correction ('Behavioral Similarity =/= Semantic Equivalence'; 'Agreement on Tested Cases =/= Global Isomorphism'), Introduces Conflict(K) =/=> Collapse(K) as the Central Candidate Question for the Now-Confirmed KR-COMP-2026-09 Composition Experiment, and Delivers Eight New KR-SHAPIRO Candidate Propositions Plus a Major Object/Meta-Level Reasoning Separation"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c
+  secondary: b
+  secondary_note: "a disciplined extraction of Stewart Shapiro's Varieties of Logic, extending the pattern of two prior external-literature extractions in this same stretch (Priest/M0119, Rice/M0128) that provide genuine independent, cross-domain corroboration of already-established KnowledgeOS findings -- here specifically validating the M3/M4 non-isomorphism correction from M0116's review, and sharpening the central question for the now-confirmed-necessary Composition experiment (KR-COMP-2026-09, per M0129)"
+source_role: PRIMARY_RESEARCH
+canonical_source: M0130
+importance: high
+confidence: high
+about: >
+  Extracts Shapiro's logical-pluralism analysis specifically for KnowledgeOS relevance, framed
+  against the current bottleneck "Contradiction -> Evaluation -> Composition -> Logic -> Meta-
+  logic." Central thesis extracted: validity/logical-consequence may be cluster concepts admitting
+  legitimate pluralism (different sharpenings for different purposes), giving the candidate
+  Validity(A|R,C,S) rather than a single primitive Validity(A).
+
+  **INDEPENDENTLY CORROBORATES THE M3/M4 NON-ISOMORPHISM CORRECTION (M0116)**: Shapiro warns that
+  two logical systems can appear behaviorally similar while differing in what their terms mean or
+  how they behave, and discusses the genuine difficulty of establishing that one framework is truly
+  equivalent to another -- giving "behavioral similarity != semantic equivalence" and "agreement on
+  tested cases != global isomorphism," explicitly noted: "this is exactly the correction we made
+  after the first Contr experiment... Shapiro independently supports our refusal to say 'M3 and M4
+  are isomorphic.' We can only say: observationally indistinguishable on the tested domain/current
+  operations." This is the third instance in this stretch of independent cross-domain corroboration
+  (following Priest validating FR-001/Hilbert in M0119, and Rice validating Reject/Accept plus the
+  structured-evaluation result in M0128).
+
+  **SEPARATES APPLICABILITY FROM VALIDITY**: Applicable(R,A,C) evaluated before Valid(R,A,C), giving
+  NotApplicable != Invalid -- independently corroborating the established UNKNOWN != DOES-NOT-APPLY
+  != NOT-APPLICABLE distinction from a purely logical (not statistical or legal) source.
+
+  **DELIVERS A MAJOR OBJECT-LEVEL/META-LEVEL SEPARATION**: object reasoning (K_t contains
+  conflicting propositions) is distinct from meta reasoning (does the reasoning system permit
+  inference from those propositions) is distinct from meta-meta reasoning (does the chosen
+  evaluator itself satisfy its governing contract) -- ObjectReasoning != MetaReasoning, directly
+  relevant to E_t != A_t and the Governance/epistemic-standard/evaluator separation. This explains
+  why self-adjudication is dangerous (a meta-theoretic claim about a logic itself requires another
+  logical perspective to assess), motivating Evaluate(x) != Evaluate(Evaluator,x) !=
+  Evaluate(EvaluationContract) -- "another independent reason why the evaluator should not silently
+  become its own ultimate authority."
+
+  **ADDS SOUNDNESS != COMPLETENESS AND DERIVABILITY != VALIDITY != TRUTH**: maps Sound(Evaluator)
+  (accepts => target contract satisfied) as a different requirement from Complete(Evaluator)
+  (contract satisfied => evaluator can derive/recognize it) -- distinguishing "the evaluator cannot
+  derive this" from "the proposition is not valid," a major epistemic-safety distinction; and
+  restates Derivable != Semantically-valid != True, fitting the already-established factivity
+  result.
+
+  **STATES THE MODEL-USEFULNESS-VS-MODEL-IDENTITY PRINCIPLE, VALIDATING THE WHOLE RESEARCH
+  DISCIPLINE**: "there is rarely a uniquely best mathematical model" for the norms underlying
+  inference and consistency, giving Model-usefulness != Model-identity-with-target -- explicitly
+  connected to the Hilbert-space experiment and generalized: "Hilbert space may model some
+  KnowledgeOS relations; Bayesian models may model some epistemic updates; paraconsistent logic may
+  model some contradiction behaviour; none therefore becomes the KnowledgeOS ontology. This
+  strongly validates our current research discipline" of examining many external formalisms
+  without any one becoming the kernel.
+
+  **STATES THE REPRESENTATION-DETERMINES-DISTINGUISHABILITY PRINCIPLE**: different possible relata/
+  structures for logical consequence (sets, sequences, multiple conclusions, multisets, n-ary
+  relations) produce different logical systems -- "the carrier/structure chosen for reasoning
+  affects which distinctions the system can preserve," giving RepresentationChoice ->
+  AvailableDistinctions -> AvailableInference, explicitly connected to the Contr experiment's
+  "Same Status =/=> Same Semantic Information" finding and flagged as "one of the strongest general
+  principles emerging from the current research."
+
+  **INTRODUCES Conflict(K) =/=> Collapse(K) AS THE CENTRAL NEW CANDIDATE FOR THE COMPOSITION
+  EXPERIMENT**: paraconsistency shows contradiction need not imply triviality/explosion (P, not-P
+  |- Q is rejected in paraconsistent systems) -- but the correct KnowledgeOS lesson is explicitly
+  NOT "use paraconsistent logic," it is the narrower Contradiction =/=> Arbitrary-Consequence, or
+  Conflict(K) =/=> Collapse(K), explicitly identified as untested and directly targeting "the issue
+  we wanted the next Composition experiment to investigate": a system could technically distinguish
+  contradiction (representation success, per M0127) while still allowing it to contaminate every
+  downstream conclusion (compositional failure) -- precisely sharpening the open question M0129
+  identified as the frame/composition bottleneck.
+
+  **DELIVERS EIGHT NEW CANDIDATE PROPOSITIONS (KR-SHAPIRO-01 THROUGH 08)**: regime-relative
+  evaluation Eval(A,R,C,S); applicability separation Applicable!=Valid; meta-level separation
+  ObjectReasoning!=MetaReasoning; derivation separation Derivable!=Valid!=True; non-collapse under
+  contradiction Conflict(K)=/=>Collapse(K); regime-relative evaluation Invalid_R(A)=/=>
+  False(Conclusion(A)); representation-determines-distinguishability; and meta-assessment-must-
+  preserve-perspective Assessment(Assessment(x))!=Assessment(x) unless an explicit meta-level
+  contract says otherwise.
+
+  **DELIVERS A TEN-ITEM "WHAT NOT TO ADOPT" DISCIPLINE LIST**, rejecting logical pluralism as
+  kernel, multiple logics as required, context-determines-truth, all-systems-equally-valid,
+  paraconsistent-logic-as-KnowledgeOS-logic, no-truth, arbitrary-validity, regime-relative-truth,
+  contradiction-as-both-true-and-false, and logic-replacing-epistemology -- explicitly noting
+  "Shapiro's own position is more disciplined: pluralism does not mean arbitrary permissiveness."
+
+  **PROPOSES AN EXPANDED ARCHITECTURE STACK**: Semantic Representation -> Reasoning Regime ->
+  Applicability -> Inference -> Validity/Support -> Assessment -> Determination -> Knowledge
+  Attribution, with Meta-Assessment positioned above the whole stack, evaluating the regime/
+  evaluator itself -- substantially richer than a simple Evidence->Logic->Knowledge chain.
+
+  **SHARPENS THE NOW-CONFIRMED KR-COMP-2026-09 COMPOSITION EXPERIMENT (M0129)** with fourteen test
+  dimensions (flat status vs structured evaluation; contradiction; unknown; not-assessed; not-
+  applicable; applicability; derivability; semantic validity; composition of operators; regime
+  switching; object/meta-level assessment; explosion/non-explosion; preservation of reasons/
+  boundaries; local equivalence vs global equivalence) and one especially important test: "Same
+  local evaluation =/=> Same compositional behaviour" -- explicitly stating "our Contr experiment
+  tested representation. The Shapiro book tells us that composition and regime semantics may still
+  differentiate representations that looked identical locally."
+introduces:
+  - concept: "The independent, cross-domain (logic-theoretic) corroboration of the M3/M4 non-isomorphism correction (behavioral similarity != semantic equivalence; agreement on tested cases != global isomorphism)"
+  - concept: "The Conflict(K)=/=>Collapse(K) candidate, sharply targeting the exact composition question this stretch has identified as the remaining bottleneck (representation success vs compositional failure)"
+  - concept: "The object-level/meta-level/meta-meta-level reasoning separation and the self-adjudication-danger argument"
+  - concept: "The Soundness!=Completeness distinction mapped onto KnowledgeOS evaluators"
+  - concept: "The Representation-Choice-Determines-Available-Distinctions principle, flagged as one of the strongest emerging general principles"
+  - concept: "Eight new candidate propositions KR-SHAPIRO-01 through 08"
+  - concept: "The sharpened fourteen-dimension test design and the decisive 'same local evaluation does not imply same compositional behaviour' test for KR-COMP-2026-09"
+defines: []
+refines:
+  - concept: "M0116's M3/M4 non-isomorphism correction, independently corroborated here from logical theory"
+  - concept: "The corpus's established capability!=kernel-primitive/model!=ontology discipline, reinforced here as a general methodological principle validated by an authoritative external source"
+  - concept: "The established UNKNOWN!=DOES-NOT-APPLY!=NOT-APPLICABLE distinction, independently corroborated via Applicable!=Valid"
+  - concept: "M0129's identification of Composition as the remaining bottleneck, here sharpened with a specific candidate test (Conflict=/=>Collapse) and a full fourteen-dimension design"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry-mathematical.md: record M0130 as a third instance of cross-domain external-literature corroboration in this stretch, independently validating M0116's M3/M4 non-isomorphism correction from logical theory, introducing Conflict(K)=/=>Collapse(K) as the sharpest candidate question for the now-confirmed KR-COMP-2026-09 composition experiment, delivering an object/meta-level reasoning separation and eight new KR-SHAPIRO candidate propositions, and stating the model-usefulness-vs-model-identity principle that validates the corpus's entire multi-external-source research discipline."
+anchor_test:
+  anchor: "M0116's M3/M4 non-isomorphism correction, the corpus's capability!=kernel-primitive discipline, and M0129's identification of Composition as the remaining bottleneck"
+  supports_dimension: "Delivers genuine independent cross-domain corroboration of an already-established correction, and sharpens the exact next experimental question with a specific, well-targeted candidate invariant"
+  refines_or_contradicts: "refines (M0116, M0127, M0129, the capability!=kernel-primitive discipline)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "'This is exactly the correction we made after the first Contr experiment... Shapiro independently supports our refusal to say M3 and M4 are isomorphic' -- explicit, deliberate cross-domain corroboration, the third such instance in this stretch."
+  - "'A system could technically distinguish contradiction while still allowing contradiction to contaminate every downstream conclusion. That would be representation success but compositional failure. Exactly the issue we wanted the next Composition experiment to investigate' -- directly and precisely sharpens M0129's identified bottleneck with a specific, testable candidate."
+  - "'There is rarely a uniquely best mathematical model... Hilbert space may model some KnowledgeOS relations; Bayesian models may model some epistemic updates; paraconsistent logic may model some contradiction behaviour; none therefore becomes the KnowledgeOS ontology' -- a general, authoritative validation of the entire multi-external-source research discipline this pass has followed since M0043."
+undefined_concepts: []
+open_questions:
+  - "Whether Conflict(K)=/=>Collapse(K) and the 'same local evaluation does not imply same compositional behaviour' test were formally incorporated into KR-COMP-SEP-2026-09 or a subsequent composition experiment."
+tier2_triggered: true
+tier2_reason: "Delivers a third instance of genuine cross-domain corroboration for an already-established correction (M3/M4 non-isomorphism), introduces a sharply-targeted new candidate invariant (Conflict=/=>Collapse) directly addressing the confirmed remaining research bottleneck, and states a general model-usefulness-vs-identity principle that validates the corpus's entire external-source research methodology. Comfortably meets the tier-2 bar."

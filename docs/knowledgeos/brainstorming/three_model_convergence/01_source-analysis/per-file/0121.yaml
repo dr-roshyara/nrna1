@@ -1,0 +1,45 @@
+sequence: "0121"
+path: docs/knowledgeos/brainstorming/20260822-114753-ganesha-wisdom-architecture-core-components.md
+title: "Gaṇeśa Wisdom Architecture: Core Components -- restatement, converged self-assessment"
+date: "2026-08-22"
+bytes: 18428
+model:
+  primary: g
+  secondary: [x]
+source_role: PRIMARY_RESEARCH
+canonical_source: "0117"
+importance: low
+confidence: high
+about: >
+  Pure restatement of the 0117/0119/0120 Ganesha wisdom-mechanism cluster (seven components, same
+  iconography, same classification: all "mechanism," two explicit rejections). Closes with the
+  source's own "the research phase has converged" self-assessment and a five-layer stack (Zero/
+  Constitution/Reasoning/Memory/Wisdom Process/Human-Agent Action) -- NOT adopted by this
+  reconstruction (1,081 primary files remain).
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats:
+  - {concept: "entire Ganesha wisdom-mechanism cluster, near-verbatim", canonical_source: "0117", novelty: none}
+bridge_candidates: []
+mathematical_content: false
+gita_content: true
+kernel_content: false
+registry_updates: []
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "None -- pure restatement."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Source's own 'research phase has converged' self-assessment noted, explicitly not adopted (MD-004/019)"
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: "Pure restatement of already-logged content (0117/0119/0120); no new structure."

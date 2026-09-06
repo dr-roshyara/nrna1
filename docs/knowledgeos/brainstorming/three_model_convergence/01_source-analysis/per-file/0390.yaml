@@ -1,0 +1,95 @@
+sequence: 390
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-002857_the-key-distinction.md
+title: "Formalized D_t/D-hat_t Dimension-Discovery vs State-Extraction Problems; KnowledgeOS Must Preserve Dimensional-Model Confidence; Is 'Dimension' the Right Primitive, or a Question/Proposition Space?"
+date: "2026-08-26"
+bytes: 5495
+model:
+  primary: c1
+  secondary: null
+source_role: PRIMARY_RESEARCH
+canonical_source: 390
+importance: critical
+confidence: high
+about: >
+  A direct formalization and consolidation of 0389's Dimension-uncertainty-vs-Value-uncertainty discovery,
+  crystallizing "that is the key distinction": when relevant dimensions of the ideal state are unknown, the
+  uncertainty is not primarily "what is the value of this known dimension?" but "what dimensions are we
+  MISSING?" Works a concrete Nexus-installation example: known dimensions (version, CPU, memory,
+  repositories, network) with good information, versus a list of candidate UNDISCOVERED dimensions
+  (identity integration, backup dependency, certificate dependency, licensing, external services, disaster
+  recovery, operational dependency) whose very relevance is unknown -- crystallized as "uncertainty about
+  the dimension space itself," not merely "uncertainty about values within known dimensions." Formalizes
+  the TWO EXTRACTION PROBLEMS precisely for the first time: D_t (the true relevant dimensions of the ideal
+  state at time t, not fully known) versus D-hat_t subset-of D_t (the discovered subset), with
+  D_t -> D-hat_t named the DIMENSION-DISCOVERY PROBLEM, and separately I_t(D-hat_t) -> K_t (what do we know
+  about the discovered dimensions) named the STATE-EXTRACTION PROBLEM -- explicit precise names for the two
+  problems 0389 had described conceptually.
+
+  Names three distinct, separately measurable epistemic properties (worked example: Dimension coverage 95%,
+  Information accuracy 99%, Reasoning confidence 90%), directly operationalizing 0389's C_coverage/C_fact/
+  C_model taxonomy with concrete illustrative numbers. Proposes the joint formulation P(D_t,I_t|O_<=t) as
+  "much closer to what you are describing than simply P(F|O)," explicitly flagged as a research hypothesis,
+  not yet assumed correct -- reinforcing 0378's discipline against premature mathematical commitment.
+
+  Draws the file's central KnowledgeOS-relevant consequence: the system cannot only store "what do we
+  know?"; it must preserve "what dimensions of the subject do we currently believe are relevant?" and "how
+  confident are we that our dimensional model is complete enough?" -- illustrated via an explicit
+  cautionary worked example: an AI system claiming "I know everything about Nexus" when it has in reality
+  only accumulated enormous information about five dimensions it happened to model, contrasted with the
+  more honest target representation "we have strong evidence concerning these dimensions, but there is
+  unresolved uncertainty about whether additional relevant dimensions exist." Crystallizes the whole
+  insight in one sentence: "Uncertainty begins not only when we don't know the value of something. It
+  begins earlier -- when we don't know what things or dimensions are relevant to know about," yielding
+  Knowledge completeness = dimension coverage + information completeness within those dimensions, with
+  uncertainty existing at BOTH levels.
+
+  Closes with a genuinely new, unresolved methodological challenge not present in 0389: is "DIMENSION" even
+  the right PRIMITIVE at all, or is what is being described more fundamentally a SPACE OF POSSIBLE
+  QUESTIONS/PROPOSITIONS about the ideal state? -- explicitly flagged as "decisive for the eventual
+  mathematical model," directly reconnecting this entire dimension-uncertainty research thread back to
+  0366's earlier Q_t^D relevant-question-space formulation (the ideal state K_t* as sufficient to answer
+  every question in Q_t^D) without yet resolving which framing (dimensions vs. questions) is more
+  fundamental.
+introduces:
+  - concept: "Precise naming and formalization of the two extraction problems first sketched conceptually in 0389: the DIMENSION-DISCOVERY PROBLEM (D_t -> D-hat_t, which dimensions exist/are relevant) and the STATE-EXTRACTION PROBLEM (I_t(D-hat_t) -> K_t, what do we know about discovered dimensions)"
+  - concept: "Concrete illustrative numeric operationalization of 0389's three confidence types: Dimension coverage 95%, Information accuracy 99%, Reasoning confidence 90% -- three explicitly distinct epistemic properties, not collapsible into one number"
+  - concept: "Explicit KnowledgeOS design consequence: the system must preserve not only accumulated facts but an explicit representation of its own believed-relevant dimension set and its confidence in that set's completeness -- illustrated via a cautionary contrast between a falsely confident 'I know everything about Nexus' claim and an honest 'strong evidence on these dimensions, unresolved uncertainty about others' representation"
+  - concept: "One-sentence crystallization: 'Uncertainty begins not only when we don't know the value of something. It begins earlier -- when we don't know what things or dimensions are relevant to know about,' yielding Knowledge-completeness = dimension-coverage + information-completeness-within-those-dimensions"
+  - concept: "New unresolved methodological challenge: is 'dimension' the right primitive at all, or is the underlying phenomenon more fundamentally a SPACE OF POSSIBLE QUESTIONS/PROPOSITIONS about the ideal state? -- explicitly flagged as potentially decisive for the eventual mathematical model, reconnecting to 0366's Q_t^D relevant-question-space formulation"
+defines: []
+refines:
+  - concept: "0389's Dimension-uncertainty vs Value-uncertainty distinction and its conceptual discovery/extraction split"
+    refinement: "Given precise names (dimension-discovery problem; state-extraction problem) and formal notation (D_t/D-hat_t/I_t(D-hat_t)), converting 0389's conceptual distinction into a named, citable two-problem structure"
+  - concept: "0389's three confidence types (C_fact/C_coverage/C_model)"
+    refinement: "Given concrete illustrative percentages (95%/99%/90%) demonstrating they are genuinely independent measurable properties, not a single collapsed number"
+  - concept: "0366's Q_t^D relevant-question-space and answerability-based Ideal Knowledge State K_t*"
+    refinement: "Reconnected via a new, explicitly unresolved methodological question: whether 'dimension' (this file's/0389's primitive) or 'question/proposition' (0366's primitive) is the more fundamental unit for modeling the ideal state's structure -- a genuine open tension between two related but not-yet-reconciled formalizations"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the formal naming of the dimension-discovery problem and the state-extraction problem, converting 0389's conceptual split into named, citable formal structures."
+  - "dimension-registry.md: record the new open tension between 'dimension' (0389/0390) and 'question/proposition' (0366's Q_t^D) as the primitive unit for the ideal state's structure, flagged as potentially decisive for the eventual mathematical model."
+  - "dimension-registry.md: record the KnowledgeOS design consequence (must preserve believed-relevant-dimension-set and dimensional-model-completeness-confidence, not just accumulated facts) as a concrete architectural implication of the dimension-uncertainty finding."
+anchor_test:
+  anchor: "0389's Dimension-uncertainty vs Value-uncertainty discovery; 0366's Q_t^D relevant-question-space and answerability-based K_t*; 0378's discipline against premature mathematical commitment"
+  supports_dimension: "Mathematical model, direct formalization and consolidation: names and formalizes 0389's conceptually-sketched dimension-discovery and state-extraction problems, operationalizes the three-confidence-type taxonomy with concrete numbers, draws a concrete KnowledgeOS design consequence (preserve dimensional-model-completeness confidence explicitly), and closes with a genuinely new, unresolved methodological challenge (dimension vs question/proposition as the more fundamental primitive), directly reconnecting to 0366's Q_t^D formulation"
+  refines_or_contradicts: "refines/formalizes 0389 (precise naming of the two extraction problems, concrete confidence-type numbers); refines 0366 (reopens the Q_t^D question-space formulation as a possible alternative primitive to 'dimension'); reinforces 0378's discipline (explicitly flags the joint P(D_t,I_t|O) formulation as an untested hypothesis)"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "Whether 'dimension' or 'question/proposition' is the more fundamental primitive for the ideal state's structure -- explicitly posed as the file's own closing open question, left unresolved"
+open_questions:
+  - "Whether the dimension-vs-question-space primitive question is resolved in the immediately following files"
+  - "Whether the joint P(D_t,I_t|O_<=t) formulation is ever tested or replaced by an alternative mathematical treatment"
+  - "Whether the concrete Dimension-coverage/Information-accuracy/Reasoning-confidence percentages (95%/99%/90%) are ever combined into a single epistemic-state formula, or remain permanently distinct"
+tier2_triggered: true
+tier2_reason: "Direct formalization and consolidation of 0389's landmark Dimension-uncertainty discovery, giving the two previously conceptual extraction problems (dimension-discovery, state-extraction) precise names and notation (D_t/D-hat_t/I_t(D-hat_t)), operationalizing the three-confidence-type taxonomy with concrete illustrative numbers, and drawing a concrete KnowledgeOS design consequence (the system must preserve its own believed-relevant-dimension-set and completeness confidence, not merely accumulated facts, illustrated via a cautionary false-confidence example). Closes with a genuinely new, unresolved methodological challenge -- is 'dimension' the right primitive, or is the underlying phenomenon more fundamentally a space of possible questions/propositions? -- reconnecting this entire research thread to 0366's earlier Q_t^D relevant-question-space formulation."

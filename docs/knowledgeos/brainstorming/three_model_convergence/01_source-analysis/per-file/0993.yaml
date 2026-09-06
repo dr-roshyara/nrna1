@@ -1,0 +1,116 @@
+sequence: 993
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/04-GAP-UPDATE-TWO-REVIEWER-ANALYSIS.md
+title: "04 -- Two-Reviewer Analysis and Gap Update: The Master Closure Document for the Equality-Research Sub-Track, Fully Quoting Corpus Step 246 (Four Equality Relations) and Step 254 Decision 3 (OPEN: Does Semantic Equality Include Governance/Authority?), Revealing D285-5's =_semantic Silently Resolved an Open Corpus Decision, and Delivering the Final Equality-Investigation Verdict 'OPEN -- Unresolved'"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the master synthesis document consolidating Reviewer A (file 0988), Reviewer B (file 0989), and the executed script (file 0991) into one closure report"
+source_role: PRIMARY_RESEARCH
+canonical_source: 993
+importance: critical
+confidence: high
+about: >
+  "04 · Two-Reviewer Analysis and Gap Update" -- consolidates Reviewer A's nine corrections (file 0988) and
+  Reviewer B's E1-E7 mandate (file 0989, executed via file 0991), status: "9 corrections from A ACCEPTED ·
+  B's mandate EXECUTED · 3 of my own results WEAKENED · 1 corpus construct recovered."
+
+  **§1 identifies the key convergence**: both reviewers independently flagged that `=_semantic` was "doing
+  load-bearing work without being defined" -- confirming file 0991's finding was anticipated by both
+  reviewers before being executed.
+
+  **§2 DELIVERS THE FULL, VERBATIM QUOTATION OF CORPUS "STEP 246," DIRECTLY RESOLVING THE BRIDGE CANDIDATE**:
+  all four state-level equality relations with their exact corpus definitions -- (A) structural `K₁=K₂`,
+  "byte-for-byte or structurally identical"; (B) semantic `K₁≡K₂`, "encode the same knowledge semantics"; (C)
+  observational `K₁≈K₂`, "every permitted observation produces the same result"; (D) provenance-sensitive
+  `K₁≅_λK₂`, "content and relevant provenance are equivalent" -- and the corpus's own statement "These are
+  not interchangeable."
+
+  **INTRODUCES A GENUINELY NEW CORPUS REFERENCE, "STEP 264.15"**: defines semantic equality at the VALUE
+  level, `v₁≡_D v₂` ("equivalence under the semantics of dimension D"), with the concrete worked example `3m
+  ≢_str 300cm` but `3m ≡_D 300cm` -- a distinct, value-level companion to Step 246's state-level relations.
+
+  **DELIVERS THE FULL, VERBATIM QUOTATION OF "STEP 254 DECISION 3," THE PRECISE OPEN CORPUS QUESTION**: "Is
+  governance/authority part of semantic equality? Should `K₁=K₂` require the same Authority/Policy/
+  Governance, or only the same epistemic content?" -- **explicitly undecided.**
+
+  **DELIVERS THE FILE'S CENTRAL, MOST IMPORTANT SELF-CRITICAL FINDING**: "`D285-5`'s `=_semantic` -- which
+  discards `Π` -- **silently resolved an open corpus decision**. The relation is named in the corpus, but the
+  projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's
+  suspicion was correct and understated." This is a genuinely severe self-diagnosed epistemic-discipline
+  violation (an unstated primitive silently deciding an open governance question), caught and corrected by
+  the corpus's own disciplined process.
+
+  **§3 delivers the full E1-E7 execution results** (matching file 0991's script exactly): E4's four-relation
+  revalidation table; E5's over-claim correction (non-injectivity only modulo the discarded-Π quotient); E6's
+  second over-claim correction (the `grantId` collision does not motivate typing `humanActRef` -- "the
+  humanActRef question stands on its own implementation evidence; it just does not follow from this
+  property"); **E7's explicit final verdict for the entire equality investigation: `OPEN — unresolved`, not
+  `RX`, not `R5`** -- a rare, disciplined non-forced-closure verdict.
+
+  **DELIVERS THE FILE'S FINAL ANSWER TO REVIEWER B'S MANDATED CLOSING QUESTION** ("is equality a missing
+  primitive, or does the corpus contain enough structure to derive it?"): **"NEITHER, precisely: the corpus
+  contains the RELATIONS but not their DECISION PROCEDURES... Equality is an under-specified corpus
+  primitive, not an absent one -- the same shape as `Qualify`, and the same class of gap (`G1`)."** --
+  **DIRECTLY, EXPLICITLY LINKS this finding to the already-tracked `Qualify`-has-no-body gap** (file 0974,
+  Step 170), placing both in the same formal gap-class for the first time.
+
+  **§4 formally accepts all nine of Reviewer A's corrections** (already tracked via file 0988), with slightly
+  fuller restatements, e.g. correction 5 now explicitly notes `𝒩∉O` (Knower not in Observation) "is a claim
+  my artifacts did not make" -- a further sharpening beyond file 0988's own statement.
+
+  **§5 delivers a nine-row consolidated gap-movement table**: equality relations `G3→G1` under-specified; the
+  `=_semantic`-as-unstated-primitive gap NEW and CONFIRMED PRESENT; the history-hierarchy-cited-as-established
+  gap NEW (verification-lane construct, not corpus); the provenance-sensitive-equality gap NEW; D285-5's
+  non-injectivity claim WEAKENED; the `humanActRef` motivation WITHDRAWN; `H-K06f` criterion 4 WEAKENED-then-
+  REPAIRED; `H-K04b`'s "theological claim destroyed" framing CORRECTED; `Qualify`-has-no-body UNCHANGED but
+  now grouped with the equality gaps. Closes: "Three of my own results are weakened and one withdrawn... The
+  corrections are the result; the artifacts are stronger for being narrower."
+introduces:
+  - concept: "The full, verbatim corpus definitions of all four Step-246 equality relations (structural, semantic, observational, provenance-sensitive)"
+  - concept: "'Step 264.15' -- a new corpus reference defining value-level semantic equality (dimension-relative equivalence, e.g. 3m equiv_D 300cm)"
+  - concept: "The full, verbatim quotation of 'Step 254 Decision 3': whether governance/authority is part of semantic equality, explicitly left OPEN by the corpus"
+  - concept: "The central finding that D285-5's =_semantic projection silently resolved an open corpus governance decision (Decision 3) by discarding provenance without acknowledging the choice"
+  - concept: "The explicit classification of the equality-relations gap into the same formal gap-class (G1, under-specified primitive) as the already-tracked Qualify-has-no-body gap"
+defines: []
+refines:
+  - concept: "This reconstruction's long-tracked bridge candidate 'Step 246' (already partially resolved via file 0991)"
+    refinement: "FULLY RESOLVED with complete verbatim corpus definitions of all four equality relations"
+  - concept: "File 0991's already-documented E4/E5/E6 execution results"
+    refinement: "CONFIRMED and consolidated, with the addition of the file's own explicit final verdict (OPEN — unresolved) and the explicit link between the equality gap and the already-tracked Qualify/G1 gap-class"
+  - concept: "File 0988's nine corrections from Reviewer A"
+    refinement: "FORMALLY ACCEPTED and slightly sharpened (e.g. the explicit N-not-in-O claim now separated out as a distinct strengthening)"
+  - concept: "This reconstruction's already-tracked open humanActRef/authority-act identity issue"
+    refinement: "FURTHER CLARIFIED: the question stands on its own implementation evidence, independent of D285-5's now-corrected non-injectivity claim"
+contradicts: []
+repeats:
+  - "Substantially consolidates content already documented via files 0988, 0989, and 0991; its distinctive new content is the full Step-246/Step-254/Step-264.15 corpus quotations and the explicit OPEN verdict plus the Qualify/G1 gap-class linkage."
+bridge_candidates:
+  - "The original locations of 'Step 264.15' and 'Step 254' -- watch for direct encounter, given their step numbers suggest they originate much earlier in the corpus."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the full verbatim corpus definitions of the four Step-246 equality relations, resolving this reconstruction's tracked bridge candidate."
+  - "dimension-registry.md: record the central self-critical finding that D285-5's semantic-equality projection silently resolved the open corpus governance question (Step 254 Decision 3)."
+  - "dimension-registry.md: record the explicit classification of the equality-relations gap into the same G1 (under-specified primitive) class as the already-tracked Qualify-has-no-body gap, and the final equality-investigation verdict OPEN — unresolved."
+anchor_test:
+  anchor: "Files 0988, 0989, 0991's already-documented reviewer corrections and equality-research execution; this reconstruction's tracked Qualify/G1 gap (file 0974)"
+  supports_dimension: "Fully resolves the Step-246 bridge candidate, delivers the central self-critical finding on Decision 3, and explicitly links the equality gap to the already-tracked Qualify/G1 gap-class"
+  refines_or_contradicts: "refines and consolidates; explicitly corrects (weakens/withdraws) three of the author's own prior results"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The full verbatim quotations of Step 246, Step 254 Decision 3, and Step 264.15 are directly checkable against any future direct encounter with those corpus locations."
+  - "The nine-row gap-movement table is directly checkable against files 0988/0989/0991's own findings for consistency."
+undefined_concepts: []
+open_questions:
+  - "The original locations of corpus references Step 264.15 and Step 254, not yet directly encountered."
+  - "Whether Decision 3 (governance/authority in semantic equality) is ever formally resolved later in the corpus."
+tier2_triggered: true
+tier2_reason: "The master closure document for the equality-research sub-track, fully quoting three corpus references (Step 246, Step 254 Decision 3, Step 264.15) and delivering a genuinely important self-critical finding (D285-5 silently resolved an open governance decision), plus an explicit, disciplined OPEN verdict and a gap-class linkage to the already-tracked Qualify/G1 gap. Classified importance critical and confidence high given its directly quotable, cross-checkable, and epistemically rigorous content."

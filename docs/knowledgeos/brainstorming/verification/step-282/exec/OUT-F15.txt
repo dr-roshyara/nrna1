@@ -1,0 +1,41 @@
+====================================================================================================
+F15 — NON-IDENTIFIABILITY TEST  (T-4)
+====================================================================================================
+STEP 1 — construct K1 != K2
+  K1 = {a}  a.Pi=srcA  id=67a2ff60c0
+  K2 = {b}  b.Pi=srcB  id=c2706fbb15
+  K1 == K2 (structural): False
+
+STEP 2 — are they observationally equivalent under O_core?
+    query(Nexus,Version)       K1=['3.69']   K2=['3.69']   same=True
+    Sigma                      K1=["('Supporting', 'Weak')"]   K2=["('Supporting', 'Weak')"]   same=True
+    |A|                        K1=1   K2=1   same=True
+    |R|                        K1=0   K2=0   same=True
+    Valid                      K1=True   K2=True   same=True
+    contradictions             K1=0   K2=0   same=True
+
+  K1 ~_Ocore K2 : True
+  => NON-IDENTIFIABILITY INSTANCE CONSTRUCTED
+
+STEP 3 — is it a MISSING PRIMITIVE or a DERIVED PROPERTY?
+    nonidentifiable(K1,K2,Ocore) = True
+    ^ computed from EXISTING structural equality and an EXISTING observation set.
+    No new primitive was introduced. The predicate is a two-line derivation.
+
+STEP 4 — can the theory STATE the distinction it cannot observe?
+    Pi(a)=srcA  vs  Pi(b)=srcB   -> the theory REPRESENTS the difference
+    Ocore cannot SEE it -> the theory also EXPRESSES the unobservability
+
+VERDICT F15:
+  Non-identifiability is a DERIVED PROPERTY of (structural equality, observation set O),
+  not a missing primitive. It is definable in two lines over constructs that already exist:
+
+      NonIdentifiable(K1,K2,O)  :=  K1 != K2  AND  O(K1) = O(K2)
+
+  Crucially the theory can BOTH represent the difference (Pi) AND express that a given
+  observation set cannot detect it. That is exactly what a non-identifiability statement
+  requires. Adding a primitive would violate M3 (no redundant distinction).
+
+  => T-4 IS NOT THEORY-CRITICAL.  TC-1..TC-8 all PASS.  Primary classification: F-derived (CLOSED).
+  Prior status 'inexpressible' was WRONG: it confused 'O cannot observe it' with
+  'the theory cannot say it'. Recorded as a correction to my own earlier claim.

@@ -1,0 +1,165 @@
+sequence: 917
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-233940_step_281_supervisory-commission-missingness-revision-and-gap-closure-verification.md
+title: "Step 281 -- Missingness Theory Revision and Gap Closure Verification: RESOLVES THE 'WAS STEP 280 EVER EXECUTED' OPEN QUESTION -- Reports EC=NOT ACHIEVED Due to Critical Failure #7 (Missingness Silently Converted Into a Substantive Value; 'Not Asked' Indistinguishable From 'Asked and Absent'), an Explicit, Positively-Framed Falsificationist Success Per 0915's Own Criteria -- Delivers a Ten-Item Named Gap Register (T-1 Through T-4, I-1 Through I-3, E-1 Through E-3) and Extends the Confirmed Roadmap to Step 283 (Governance Ratification) and Step 284 (Book Architecture Gate) -- The Appended Review's Critique of an UNADDRESSED THIRD SIGMA VARIANT, Sigma=(Direction,Strength), Reveals a Three-Way Unreconciled Inconsistency Across This File Cluster Alongside Sigma_min (0912) and Sigma=(A,S,R,V,C) (0915's E3)"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: c1
+  secondary_note: "the distinguishability/minimality repair-selection methodology is discrete mathematics; the missingness-in-Σ gap analysis touches the standing epistemic-status formalization work"
+source_role: PRIMARY_RESEARCH
+canonical_source: 917
+importance: critical
+confidence: medium
+about: >
+  **Resolves the "was Step 280 ever executed" open question this reconstruction flagged at files 0915-
+  0916**: this file's opening reports a concrete result -- boxed **`EC=NOT ACHIEVED`** -- attributed to
+  "Critical Failure #7" (one of the ten named critical-failure conditions from file 0915's own §40):
+  missingness was silently converted into a substantive value. **The theory cannot distinguish "nobody
+  ever asked" from "we asked and it isn't there" -- both collapse to the single value `a∉𝒜`.** This is
+  explicitly classified as a THEORY DEFECT (`T`), not an implementation defect -- and, per file 0915's own
+  §48 capstone falsificationist framing ("failure of the theory is not failure of Step 280... theory
+  falsified or materially incomplete" is an equally legitimate success), this is a genuinely POSITIVE
+  demonstration that the honest-testing discipline this sub-arc committed to actually functioned as
+  intended -- the theory was subjected to real testing and a real defect was found and localized, rather
+  than the empirical programme quietly validating whatever was already believed.
+
+  **Opens applying the Theory Revision Rule from file 0915**: `Contradiction→Reproduce→Classify→
+  Locate→Correct→Retest` -- explicitly stating "Step 280 completed up to Locate. Step 281 must complete
+  Correct and Retest."
+
+  **§1.1-§1.3 delivers the mandate**: repair the defect (`T-1,T-2`), choose the canonical missingness
+  representation, PROVE the repair preserves all six existing invariants (identity, equality, lineage,
+  replay, transformation, `K`-minimality), re-run `E4` and affected falsification tests, update the gap
+  register, and determine internal closure -- governed by boxed **`Minimum extension preserving all
+  mandatory distinctions`**, explicitly forbidding redesign, unnecessary complexity, silent repair, or
+  premature closure claims, and explicitly forbidding proceeding to Step 282 until missingness is
+  resolved.
+
+  **§2.1-§2.3 delivers the precise defect localization**: a four-row table showing `Unknown` and `Absent`
+  ARE distinguishable, but `Not-asked` collapses into the SAME representation as `Absent` (`a∉𝒜` for
+  both), and `Orphan` (an EKP construct -- an assertion existing with no semantic relationships) has NO
+  representation in `K` at all -- "`𝒜=Set(Assertion)` has no representation for 'a proposition that was
+  never formed.' Absence-from-a-set is a single value doing two jobs." **Delivers three named candidate
+  repairs**: Option A (an explicit `⊥`-assertion representing "not asked," clean and minimal but risking
+  conflation with "unknown"); Option B (a separate questions-asked register `Q` preserving provenance at
+  the cost of added complexity); Option C (a hybrid of both, "most complete," possibly redundant).
+
+  **§3.1-§3.4 delivers the required analysis structure**: a seven-state distinguishability requirement
+  (not-asked / asked+absent / asked+unknown / asked+supported / asked+refuted / asked+conflicted / orphan
+  -- notably `asked+conflicted` here directly corresponds to file 0912's proven `Conflict` state, showing
+  at least partial continuity with that result); minimality analysis (what must be added vs. can remain
+  unchanged, whether a smaller change exists); explicit invariant-preservation verification across all six
+  named invariants; and mandatory empirical re-testing of `E4` and affected tests before any pass claim.
+
+  **§4.1-§4.2 delivers a TEN-ITEM NAMED GAP REGISTER**, a genuinely new gap-ID naming scheme for this
+  sub-arc: `T-1` ('not asked' vs. 'absent' indistinguishable, OPEN), `T-2` ('orphan' has no `K`
+  representation, OPEN), `T-3` (no probability space, BLOCKED, deferred to measurement work -- directly
+  consistent with the standing no-probability-without-a-model discipline), `T-4` (non-identifiability
+  inexpressible, OPEN), `I-1` (fifteen of twenty-four constructs not observable, PARTIAL, documented as an
+  implementation limitation), `I-2` (a circular-dependency warning, OPEN), `I-3` (no `Authorize()` runtime,
+  PARTIAL), `Ε-1` (sixteen `PASS`es are only evidence Level 4, not Level 5, directly applying file 0915's
+  seven-level evidence hierarchy -- an honest downgrade of claimed evidentiary strength), `Ε-2` (no multi-
+  node deployment tested), `Ε-3` (no measurement executor, deferred). This is the corpus's most granular,
+  explicitly-classified gap inventory in the entire sub-arc.
+
+  **§5 delivers ten required documentation artifacts plus a set of concrete EXECUTION artifacts**,
+  including named Python test files (`test_missingness_repair.py`, `test_e4_rerun.py`,
+  `test_affected_falsification.py`, `test_invariant_preservation.py`) and corresponding output-capture
+  files -- the most concretely execution-oriented artifact list encountered in this entire sub-arc,
+  suggesting an actual code-level test harness is intended (though not directly visible in this file).
+
+  **§6-§7 delivers a traceability matrix and the required final report format**, and **§8 delivers SIX
+  NON-NEGOTIABLE RULES**: Minimum Extension; Invariant Preservation (any changed invariant must be
+  documented and justified); Empirical Verification ("do not assume it works"); No Silent Repair; No
+  Premature Closure; and boxed **`The Two Repair Principles`** -- Distinguishability (every mandatory
+  epistemic state must be distinguishable) and Minimality (the state representation must be the minimum
+  necessary to achieve that distinguishability) -- a clean two-principle summary of this entire sub-arc's
+  governing methodology.
+
+  **§10 delivers the fullest dependency-chain revelation yet**, extending beyond file 0916's confirmed
+  Step 282 to boxed **`Step 283: Governance Ratification→PENDING`** and boxed **`Step 284: Book
+  Architecture Gate→FUTURE`** -- revealing this entire mathematical-kernel/Policy/Authority reconstruction
+  sub-arc's true full extent runs through at least Step 284, and that its ultimate destination is a
+  documented "Book Architecture" artifact, connecting this sub-arc back to the corpus's earlier
+  "book-production" governance framework (GN-42/GN-43) tracked in much earlier files of this
+  reconstruction.
+
+  **The appended supervisory review delivers TEN FURTHER SEVERITY-RATED REQUIRED CORRECTIONS** (4 HIGH:
+  the orphan state is not fully analyzed as its own semantic question, "the orphan state is a real EKP
+  construct that the theory cannot represent"; the empirical re-test protocol for `E4` lacks concrete
+  setup/execute/expected/pass-fail specifications; **THE MISSINGNESS DIMENSION IN `Σ` IS NOT ADDRESSED --
+  explicitly noting the document's current working `Σ` is `Σ=(Direction,Strength)`, a THIRD DISTINCT
+  REPRESENTATION OF `Σ` in this immediate file cluster, unreconciled against both file 0912's rigorously
+  proven `Σ_min={Unknown,Supported,Refuted,Conflict}≅{0,1}^2` and file 0915's Test-E3 use of the discarded
+  five-dimensional `Σ=(A,S,R,V,C)`** -- delivering three candidate resolution options (add a missingness
+  dimension to `Σ`; keep missingness entirely outside `Σ` in the evidence layer, consistent with 0912's
+  own original exclusion finding; or a hybrid); explicit success criteria are not defined; 6 MEDIUM: the
+  three candidate repairs (A/B/C) lack precise executable representations (the review supplies concrete
+  worked pseudocode for each); the minimality criterion itself is undefined; the gap-register update
+  criteria (`CLOSED`/`PARTIAL`/`OPEN`/`BLOCKED`/`NORMATIVE`/`EMPIRICAL`) are undefined; "internal closure"
+  itself is undefined; the repair-governance approval process is undefined). Concludes boxed **`Step 281
+  is CONDITIONALLY ACCEPTED with required corrections`**, designating "Next: REVISED STEP 281" (a further
+  unencountered artifact) -- **the identical overclaim-review-correction cycle structure now confirmed for
+  a fourth consecutive step (278, 279, 280, 281)**.
+introduces:
+  - concept: "Resolution of the 'was Step 280 ever executed' open question: EC=NOT ACHIEVED, attributed to Critical Failure #7 (missingness silently converted into a substantive value), an explicit positive falsificationist success per 0915's own criteria"
+  - concept: "The precise missingness defect: 'not asked' and 'asked+absent' both collapse to a∉𝒜, and 'orphan' (an EKP construct) has no K representation at all"
+  - concept: "Three named candidate missingness repairs: A (explicit ⊥-assertion), B (questions-asked register), C (hybrid)"
+  - concept: "The ten-item named gap register (T-1 through T-4, I-1 through I-3, Ε-1 through Ε-3), the corpus's most granular explicitly-classified gap inventory in this sub-arc"
+  - concept: "The most concretely execution-oriented artifact list encountered in this sub-arc, including named Python test files"
+  - concept: "The Two Repair Principles: Distinguishability and Minimality, a clean two-principle summary of this entire sub-arc's governing methodology"
+  - concept: "Extension of the confirmed roadmap to Step 283 (Governance Ratification) and Step 284 (Book Architecture Gate), connecting this sub-arc back to the corpus's earlier book-production governance framework"
+  - concept: "A THIRD, unreconciled Σ representation variant appearing in this file cluster: Σ=(Direction,Strength), flagged by the review but not cross-checked against Σ_min (0912) or Σ=(A,S,R,V,C) (0915)"
+  - concept: "The confirmed continuation of the overclaim-review-correction cycle for a fourth consecutive step (278, 279, 280, 281)"
+defines:
+  - concept: "The precise missingness defect (T-1, T-2)"
+    definition: "A demonstrated theory defect in the canonical Knowledge State's assertion set 𝒜=Set(Assertion): the representation offers no way to distinguish a proposition that was NEVER FORMULATED as a query at all (not-asked) from a proposition that WAS formulated but for which no supporting assertion currently exists (asked-and-absent) -- both situations produce the identical observable fact a∉𝒜 for the proposition a in question. Additionally, the EKP's 'orphan' construct (an assertion that exists but carries no semantic relationships to other knowledge objects) has no representation at all within the canonical K, meaning the theory cannot even express that such states occur in the real system. Both gaps were surfaced only by actual empirical execution against representative data (Test E4), not by prior theoretical analysis -- directly illustrating the value of the empirical-closure discipline this sub-arc committed to"
+  - concept: "The Two Repair Principles"
+    definition: "A consolidated two-principle summary of the entire sub-arc's minimality/sufficiency methodology, applied here specifically to repairing a discovered theory defect: Distinguishability requires that every mandatory epistemic/missingness state (not-asked, asked-and-absent, asked-and-unknown, asked-and-supported, asked-and-refuted, asked-and-conflicted, orphan) have its own distinct representation, so that no operation can conflate two genuinely different situations; Minimality requires that the chosen repair add the SMALLEST possible additional structure sufficient to achieve that distinguishability, adding no redundant distinctions beyond what is empirically and operationally required. This directly generalizes the K-minimality and Σ-minimality methodologies established across files 0902-0904 and 0912 into a reusable template for repairing any future discovered theory defect"
+refines:
+  - concept: "0915's/0916's seven-level evidence hierarchy and the theory revision rule"
+    refinement: "DIRECTLY APPLIED: the theory revision rule (Contradiction→Reproduce→Classify→Locate→Correct→Retest) structures this entire file's mandate, explicitly picking up exactly where Step 280 left off ('completed up to Locate'). The evidence hierarchy is also directly applied via gap Ε-1, honestly downgrading sixteen claimed PASSes from Level 5 to Level 4 evidentiary strength"
+  - concept: "0915's ten named critical-failure conditions"
+    refinement: "ONE OF THE TEN (missingness silently converted into a substantive value) is confirmed to have ACTUALLY OCCURRED upon execution, giving this reconstruction its first concrete confirmation that the empirical-closure programme designed across files 0915-0916 was genuinely executed and genuinely found a real defect, not merely designed and left unexecuted like several earlier protocol-only files in this sub-arc"
+  - concept: "0912's Σ_min derivation and its explicit exclusion of Missingness from Σ (files 0912's §272A.5 lineage)"
+    refinement: "DIRECTLY TESTED AND PARTIALLY CHALLENGED: 0912 explicitly argued Missingness need not be a primitive Σ value, belonging instead to the evidence/observation layer -- this file's review raises exactly this question again as an open item ('keep missingness outside Σ, consistent with existing theory' is offered as one of three candidate options), suggesting 0912's exclusion may still be the leading candidate resolution even as the broader missingness defect is repaired elsewhere in the theory"
+  - concept: "The three-way unreconciled Σ representation inconsistency (Σ_min from 0912, Σ=(A,S,R,V,C) from 0915's E3, and now Σ=(Direction,Strength) from this file's review)"
+    refinement: "DEEPENED, not resolved -- a third distinct Σ formulation is now confirmed to coexist unreconciled in this immediate file cluster, further reinforcing this reconstruction's flagged concern that the corpus's own internal review process checks document-level completeness without systematically cross-validating mathematical content against the specific results established in sibling files"
+contradicts:
+  - concept: "0912's rigorously proven Σ_min={Unknown,Supported,Refuted,Conflict} and 0915's Σ=(A,S,R,V,C)"
+    detail: "This file's own working formulation (per the appended review's direct quotation) uses yet a third distinct Σ structure, Σ=(Direction,Strength), neither of the two prior forms already found in unreconciled tension with each other -- confirming a genuine three-way inconsistency across this cluster of files that neither this file, its review, nor any prior file in the sequence has explicitly reconciled"
+repeats: []
+bridge_candidates:
+  - "Read 'REVISED STEP 281' (this review's explicitly designated next artifact), expecting the ten required corrections addressed, including a resolved missingness-in-Σ placement decision and precise executable specifications for the three candidate repairs."
+  - "Watch for whether the three-way Σ inconsistency (Σ_min, Σ=(A,S,R,V,C), Σ=(Direction,Strength)) is ever explicitly noticed and reconciled anywhere later in the corpus."
+  - "Watch for whether Step 282 (Theory Closure Decision), Step 283 (Governance Ratification), and Step 284 (Book Architecture Gate) are ever encountered, and whether Step 284 connects back to the corpus's earlier book-production governance framework (GN-42/GN-43)."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the confirmed EC=NOT ACHIEVED result and its Critical-Failure-#7 localization as the first genuine, concrete empirical-execution result in this entire mathematical-kernel sub-arc, and as a positive demonstration of the falsificationist discipline actually functioning."
+  - "dimension-registry.md: record the ten-item named gap register (T-1 through T-4, I-1 through I-3, Ε-1 through Ε-3) as the corpus's most granular gap-classification scheme to date, directly relevant to the gated (§29) canonical Kernel synthesis's own eventual gap inventory."
+  - "dimension-registry.md: flag the newly confirmed three-way Σ representation inconsistency (Σ_min, Σ=(A,S,R,V,C), Σ=(Direction,Strength)) as an escalated open item for eventual synthesis reconciliation, now spanning three distinct files."
+  - "dimension-registry.md: record the extension of the confirmed roadmap to Step 283 (Governance Ratification) and Step 284 (Book Architecture Gate), connecting this sub-arc to the corpus's earlier book-production governance framework."
+anchor_test:
+  anchor: "0915's ten named critical-failure conditions and seven-level evidence hierarchy; 0912's Σ_min derivation and its exclusion of Missingness from Σ; 0916's confirmed roadmap through Step 282; the recurring overclaim-review-correction cycle (0908-0910, 0913-0914)"
+  supports_dimension: "Confirms one of 0915's ten critical-failure conditions actually occurred upon execution, the first genuine empirical result in this sub-arc. Directly re-engages 0912's missingness-exclusion question as a still-open item. Extends 0916's confirmed roadmap two further steps. Confirms the overclaim-review-correction cycle continuing for a fourth consecutive step. Deepens (via a third variant) the unresolved Σ-representation inconsistency"
+  refines_or_contradicts: "confirms and applies 0915's critical-failure framework; re-engages 0912's missingness-exclusion question; extends 0916's roadmap; continues the review cycle; deepens the Σ inconsistency via a third variant"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§2.1's explicit four-row distinguishability table, showing 'Not-asked' and 'Absent' both marked ❌ indistinguishable under the current representation, is directly checkable evidence for the precise missingness defect localization."
+  - "The appended review's §2.7 explicit quotation ('Current: Σ=(Direction,Strength)') is directly checkable evidence of a third, distinct Σ formulation in this file cluster, unreconciled against 0912's and 0915's own distinct Σ structures."
+  - "§10's explicit dependency-chain extension naming 'Step 284: Book Architecture Gate→FUTURE' is directly checkable evidence connecting this sub-arc's ultimate destination to the corpus's earlier book-production governance framework."
+undefined_concepts: []
+open_questions:
+  - "Whether 'REVISED STEP 281,' this file's own review-designated next artifact, is ever encountered with the ten required corrections addressed."
+  - "Whether the three-way Σ representation inconsistency (Σ_min, Σ=(A,S,R,V,C), Σ=(Direction,Strength)) is ever explicitly noticed and reconciled anywhere later in the corpus."
+  - "Whether Steps 282 (Theory Closure Decision), 283 (Governance Ratification), and 284 (Book Architecture Gate) are ever encountered, and whether Step 284 genuinely connects back to the GN-42/GN-43 book-production framework."
+tier2_triggered: true
+tier2_reason: "Resolves a major open question (Step 280 was genuinely executed, discovering a real theory defect), delivers the corpus's most granular gap-classification scheme in this sub-arc, extends the confirmed roadmap to a book-production destination, and surfaces a deepened, now three-way, unreconciled Σ-representation inconsistency across this file cluster. Classified importance critical and tier2-triggered; confidence medium reflecting the file's own conditionally-accepted, not-yet-finalized status."

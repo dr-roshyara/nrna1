@@ -1,0 +1,239 @@
+sequence: 711
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-125024_step-126-knowledgeos-information-model.md
+title: "Step 126 -- Delivers the Reconstruction's Most Complete Information Model: Full Candidate Schemas for Nine First-Class Objects (Knowledge/Evidence/Observation/Finding/Decision/Authority/Action/Verification, Plus a New Candidate 'Claim') -- Delivers Authority≠Authorization as a Genuinely Important New Distinction, ToolExecution as a First-Class Evidence Object, and Context Integrity via Cryptographic Hashing (H(ContextPackage)) -- Delivers 'KnowledgeOS as Semantic Governance Ledger' and the Four-Dimension Capstone Formula KnowledgeOS=Semantic+Temporal+Epistemic+Governance -- Delivers the Precisely Reasoned Anti-Overengineering Caution Against a Universal Metadata Table ('Shared Metadata Should Not Erase Domain Meaning') -- Proposes Five Candidate KnowledgeOS Bounded Contexts (Knowledge/Evidence/Governance/Assurance/Engineering State), Explicitly NOT Yet Confirmed -- Does NOT Reconcile 0703's TraceableKnowledgeEpisode or 0710's GovernedEngineeringFact, Leaving Both Open -- Opens Step 127 -- KnowledgeOS Domain/Bounded-Context Test, Bringing the Corpus's Own DDD Discipline Directly to Bear on These Five Candidates"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 126 -- KnowledgeOS Information Model', promised at 0710's close; delivers the most complete, systematically detailed information-model specification in this reconstruction (full candidate schemas for nine objects and fifteen relationships), continuing the high-quality Steps 120-126 synthesis arc, but does not reconcile the two competing candidate fundamental-unit proposals from 0703 and 0710"
+source_role: PRIMARY_RESEARCH
+canonical_source: 711
+importance: critical
+confidence: high
+about: >
+  Delivers the nine first-class object hypothesis (`K`=Knowledge, `E`=Evidence, `D`=Decision, `A`=Authority,
+  `O`=Observation, `F`=Finding, `X`=Action, `V`=Verification), with the important framing note that
+  "relationships... are potentially more important than the objects themselves," and the cleanest single
+  consolidated minimal-control-loop diagram in this file (`Knowledge→ExpectedState→^{compare}Observation→
+  Evidence→Finding→Decision→Authorization→Action→Verification→Knowledge`).
+
+  **Delivers full candidate schemas for every core object, the most systematically complete set in this
+  reconstruction**: `KnowledgeObject` (id/type/subject/content/status/provenance/authority/validity/
+  version/relationships, extending 0710's ten-field schema with an added `subject` field), with `type≠
+  status≠validity` explicitly separated as three distinct dimensions (an `Approved` decision may not yet be
+  `CurrentlyEffective`); `Evidence` (id/type/source/observed_at/produced_by/content-reference/version/hash/
+  epistemic_status) with a six-type taxonomy (Source/Runtime/Test/Build/Human/Agent Evidence), the most
+  complete evidence taxonomy in this reconstruction, and `Evidence≠Knowledge` reconfirmed precisely
+  ("evidence supports a proposition; knowledge represents a proposition recognized within the system's
+  epistemic/governance model"); `Observation` (id/subject/observed_state/observed_at/observer/environment/
+  evidence) with `Observation≠Evidence` illustrated cleanly (`Observation`: "Container X running" vs.
+  `Evidence`: "Runtime API response"); `Finding` (id/type/expected/observed/evidence/classification/
+  severity/status/governance) crystallized precisely as `Finding=Observation+Interpretation+RuleContext`;
+  `Decision` (id/subject/choice/rationale/authority/effective_from/effective_until/evidence/supersedes),
+  explicitly "one of the most important first-class objects," with `Decision≠Recommendation` reconfirmed and
+  `Recommendation` proposed as its own linked object (`basedOn→Evidence`, `proposedFor→Decision`); `Authority`
+  (actor/role/action_scope/resource_scope/delegation/valid_from/valid_until); `Action` (id/actor/type/
+  target/requested_by/authorized_by/started_at/completed_at/result/evidence) with `Action≠Decision`
+  reconfirmed ("Do X" vs. "X was actually done," "critical for auditability"); and `Verification` (id/rule/
+  subject/input/checker/checker_version/executed_at/result/evidence) crystallized precisely as
+  `Verification=Observation+Rule`.
+
+  **Delivers `Authority≠Authorization`, a genuinely important and precisely stated new distinction not
+  previously this explicit in this reconstruction**: `Authority` describes the basis of legitimate
+  decision/action power (a static property); `Authorization` is the actual dynamic determination
+  (`Authorize(Actor,Action,Resource,Context)→Allow/Denied`) -- directly and usefully extending 0687's/
+  0697's/0705's/0710's authority-formalization discipline with a clean static-versus-dynamic separation of
+  concepts that had previously been used somewhat interchangeably.
+
+  **Delivers a fifteen-term essential relationship vocabulary, the most complete such vocabulary in this
+  reconstruction, exceeding 0700's eleven-term list**: `derivedFrom, supportedBy, authorizedBy, governs,
+  supersedes, observedBy, producedBy, comparesWith, resultsIn, requires, implementedBy, executedBy,
+  verifiedBy, resolves, updates` -- with a clean consolidated core relationship graph connecting
+  `Authority→^{authorizes}Decision→^{governs}ExpectedState→^{comparedWith}Observation→^{supportedBy}
+  Evidence→Finding→^{resolvedBy}Action→^{verifiedBy}Verification→^{updates}Knowledge`.
+
+  **Delivers relationships themselves formalized as carrying temporal validity, a genuinely valuable
+  refinement extending the corpus's temporal-validity discipline from objects to relationships
+  specifically**: `D_1→^{governs,[t_1,t_2]}K`, with `t>t_2` correctly meaning `D_1` is no longer the current
+  governing decision. Delivers Supersession requiring an EXPLICIT relationship, never inferred from
+  timestamps alone (`D_1.created=June` and `D_2.created=July` does NOT by itself establish `D_2 supersedes
+  D_1`), directly extending 0691's/0700's temporal-consistency discipline precisely.
+
+  **Delivers `Claim` proposed as a new, distinct candidate semantic object, explicitly separated from
+  `KnowledgeObject`**: `KnowledgeObject` is the container/lifecycle object; `Claim` is its semantic assertion
+  -- "this distinction may become important for AI-generated knowledge" -- worked through with a full,
+  concrete example (Claim C42: "Service X owns Database Y," `Status: INFERRED`, evidence-linked, progressing
+  through `VERIFIED` after verification passes, to `AUTHORITATIVE` after governance promotion), crystallizing
+  the Knowledge lifecycle `Observation→Claim→Evidence→Verification→Governance→Authority` -- "more precise
+  than saying 'the agent learns.'"
+
+  Delivers Agent-generated knowledge with explicit producer/session provenance (`Claim.producedBy=
+  ClaudeSession123`), directly extending 0690's/0700's/0706's agent-attribution discipline, and, most
+  significantly, **`ToolExecution` proposed as a first-class evidence object, a genuinely valuable, concrete
+  new schema** (id/agent/session/tool/input_reference/output_reference/execution_time/environment/result),
+  directly and precisely extending 0693's/0707's/0708's tool-backed-verification discipline into a formal,
+  dedicated schema -- crystallized into the complete AI evidence chain (`Agent→Task→ToolExecution→
+  Observation→Evidence→Claim→Verification→Governance`), "substantially stronger than storing the agent's
+  final text."
+
+  **Delivers "KnowledgeOS as Semantic Governance Ledger," a valuable new architectural analogy**, explicitly
+  and appropriately caveated ("not a financial ledger, but the analogy helps explain the immutability and
+  traceability requirements") -- recording what was believed, why, by whom, under which authority, when,
+  based on what evidence, what changed, and what was verified. Delivers `Event≠State` (`DeploymentEvent`
+  versus "service is currently running version 5"), with `CurrentState=f(EventHistory)`, a classic event-
+  sourcing-adjacent distinction directly connecting KnowledgeOS's temporal-evidence discipline to
+  established software-architecture pattern theory.
+
+  **Delivers the file's cleanest capstone formula, a genuinely valuable four-dimensional decomposition of
+  the entire information architecture**: `KnowledgeOS=Semantic+Temporal+Epistemic+Governance`, built up
+  explicitly dimension by dimension (Semantic: "what does this mean?"; Temporal: "when was it true?";
+  Epistemic: "why should we believe it?"; Governance: "who is authorized to make it authoritative?") --
+  directly and genuinely synthesizing the corpus's semantic-model (0697-0701), temporal-validity, epistemic-
+  firewall, and governance-model (0689) disciplines into a single unified formula, "becoming the fundamental
+  information architecture."
+
+  **Delivers a precisely reasoned anti-overengineering caution against a universal metadata table, directly
+  extending 0698's semantic-core-minimality principle into schema-design specifically**: a candidate
+  universal object-metadata envelope (`Identity, Type, Provenance, Producer, EpistemicStatus, Validity,
+  Version, Authority`) is proposed but immediately and explicitly cautioned against over-generalization --
+  "we should not create one giant universal table/object merely because fields are common... shared metadata
+  should not erase domain meaning" -- crystallized as `CommonIdentity/Provenance` plus
+  `TypeSpecificSemantics`, "this aligns naturally with DDD principles."
+
+  **Delivers five candidate KnowledgeOS bounded contexts, explicitly and carefully NOT yet confirmed,
+  directly setting up Step 127's promised DDD validation**: `Knowledge`; `Evidence`; `Governance`
+  (`Decision+Authority+Policy`); `Assurance` (`Verification+Finding`); `Engineering State`
+  (`Observation+Action`) -- with the important, precisely stated warning "we have learned from the
+  architecture work that `ConceptualGrouping≠ConfirmedBoundedContext`... they must be validated against
+  ownership, language, lifecycle, invariants, transactions, organizational boundaries," directly extending
+  0696's/0697's DDD-archaeology discipline with an explicit self-restraint against premature bounded-context
+  declaration.
+
+  Delivers three further layer separations directly completing 0686's/0687's/0705's/0706's constitution-
+  versus-architecture-versus-implementation discipline into the information-model layer specifically:
+  `InformationModel≠DatabaseSchema` (organizational knowledge needs vs. persistence mechanics),
+  `InformationModel≠APIContract` (with the API exposing projections such as `KnowledgeView`,
+  `GovernanceView`, `EvidenceView`), and Agent context explicitly reframed as a `Projection`:
+  `Context=Projection(Knowledge,Evidence,Governance,CurrentState)` -- "the agent should not need direct
+  unrestricted access to every underlying object" -- directly extending 0680's/0698's/0710's context-
+  boundary/RAG-security disciplines, illustrated with the continuing illustrative "Nexus" query example
+  (confirmed fictional placeholder at 0698).
+
+  **Delivers the most complete `ContextPackage` schema in this reconstruction** (task/
+  authoritative_knowledge/applicable_decisions/active_exceptions/current_observations/relevant_evidence/
+  unresolved_findings/constraints/provenance), directly extending 0710's nine-level context-precedence
+  hierarchy into a concrete deliverable object, with Context freshness (`GeneratedAt+KnowledgeVersion`) and,
+  most notably, **Context integrity via cryptographic hashing -- a genuinely valuable, technically precise
+  mechanism not previously proposed in this reconstruction**: `H(ContextPackage)`, with actions able to
+  reference a `ContextHash`, "making it possible to reconstruct: which knowledge context did the agent act
+  upon?" -- a concrete, currently sound content-addressable-context-snapshot technique directly extending
+  the corpus's evidence-immutability/provenance disciplines, crystallized into the Agent action lineage
+  (`Context→Recommendation→Authorization→Action→Evidence`), explicitly identified as potentially "one of the
+  most valuable audit paths in the AI engineering platform."
+
+  Delivers the core invariant of the entire information model in a single sentence: "every material
+  engineering claim, decision, action, and verification must be semantically traceable," and the most
+  complete ten-question consolidating capstone list in this reconstruction (Current state/Historical state/
+  Authority/Provenance/Evidence/Governance/Engineering/Runtime/AI/Audit), extending 0683's/0684's/0701's/
+  0704's/0710's earlier consolidating question lists.
+
+  **Note: this file does NOT reconcile or even mention the two competing candidate fundamental-unit
+  proposals raised across the immediately preceding two files** -- 0703's `TraceableKnowledgeEpisode` and
+  0710's `GovernedEngineeringFact` -- instead delivering its own distinct nine-object-plus-Claim model
+  without cross-referencing either prior proposal by name; this leaves an open reconciliation question for
+  the eventual canonical synthesis (are these three formulations meant to converge, and if so how, or do
+  they represent genuinely distinct candidate architectures?).
+
+  Delivers Step 126's verdict with confident, substantive phrasing consistent with the ongoing Steps 120-126
+  synthesis arc: "STEP 126 — INFORMATION MODEL: ESTABLISHED," crystallizing the central result "KnowledgeOS
+  must model relationships, not merely store artifacts."
+
+  **Closes by opening "Step 127 — KnowledgeOS Domain/Bounded-Context Test,"** explicitly bringing the
+  corpus's own established DDD discipline directly to bear on the five candidate bounded contexts proposed
+  in this file, promising an explicit three-way classification (`Confirmed | Candidate | Supporting
+  Concept`) "before allowing the KnowledgeOS domain architecture to become implementation structure" -- a
+  natural, well-motivated, and significant continuation given this reconstruction's (and this repository's
+  own) strong standing DDD-governance discipline. No actual code execution, repository inspection, or
+  verified filesystem/relationship claim is reported anywhere in this file.
+introduces:
+  - concept: "The nine first-class object hypothesis with full candidate schemas for every core object, the most systematically complete information-model specification in this reconstruction"
+  - concept: "Authority≠Authorization, a genuinely important static-versus-dynamic distinction not previously this explicit"
+  - concept: "The most complete relationship vocabulary in this reconstruction (fifteen terms), with relationships themselves carrying temporal validity"
+  - concept: "Claim proposed as a new candidate object, distinct from KnowledgeObject (container/lifecycle vs. semantic assertion), worked through with a full concrete promotion-lifecycle example"
+  - concept: "ToolExecution proposed as a first-class evidence object, extending tool-backed-verification into a formal dedicated schema"
+  - concept: "'KnowledgeOS as Semantic Governance Ledger' — a valuable new architectural analogy"
+  - concept: "The capstone formula KnowledgeOS=Semantic+Temporal+Epistemic+Governance, unifying the corpus's semantic-model, temporal-validity, epistemic-firewall, and governance disciplines"
+  - concept: "A precisely reasoned anti-overengineering caution against a universal metadata table: shared metadata should not erase domain meaning"
+  - concept: "Five candidate KnowledgeOS bounded contexts, explicitly and carefully not yet confirmed, directly setting up Step 127's DDD validation"
+  - concept: "Context integrity via cryptographic hashing (H(ContextPackage)), a genuinely valuable technically precise mechanism not previously proposed in this reconstruction"
+  - concept: "This file does NOT reconcile 0703's TraceableKnowledgeEpisode or 0710's GovernedEngineeringFact — both remain open, uncross-referenced candidate fundamental units"
+  - concept: "Opens Step 127 — KnowledgeOS Domain/Bounded-Context Test, bringing the corpus's own DDD discipline directly to bear on the five candidate bounded contexts"
+defines:
+  - concept: "Authority≠Authorization"
+    definition: "Authority is the static basis of legitimate decision/action power held by an actor (a property that can be described and stored); Authorization is the dynamic, situational determination of whether a specific actor may perform a specific action on a specific resource in a specific context right now (Authorize(Actor,Action,Resource,Context)→Allow/Denied) — the two must not be conflated"
+  - concept: "Claim vs. KnowledgeObject"
+    definition: "KnowledgeObject is the persistent container/lifecycle object for a piece of organizational knowledge; Claim is the semantic assertion it carries (e.g. 'Service X owns Database Y'), which progresses through an explicit status lifecycle (Inferred→Verified→Authoritative) as evidence, verification, and governance accumulate — distinguishing the container from its evolving epistemic content"
+  - concept: "KnowledgeOS as Semantic Governance Ledger"
+    definition: "An architectural analogy (not a literal financial ledger) explaining why KnowledgeOS requires immutability and full traceability: it records what was believed, why, by whom, under which authority, when, based on what evidence, what changed, and what was verified — a durable record of organizational epistemic and governance history"
+  - concept: "KnowledgeOS=Semantic+Temporal+Epistemic+Governance"
+    definition: "The complete information architecture of KnowledgeOS decomposes into four necessary dimensions: Semantic (what does this mean?), Temporal (when was it true?), Epistemic (why should we believe it?), and Governance (who is authorized to make it authoritative?) — omitting any one dimension leaves the architecture incomplete"
+  - concept: "Context integrity via hashing"
+    definition: "A ContextPackage assembled for an agent can be hashed (H(ContextPackage)); subsequent actions the agent takes can reference this ContextHash, enabling later reconstruction of exactly which knowledge context (which decisions, evidence, exceptions, and observations) the agent was operating from when it acted — a content-addressable audit mechanism for agent context"
+refines:
+  - concept: "0710's ten-field KnowledgeObject schema"
+    refinement: "Directly extended with an additional 'subject' field and explicit type≠status≠validity separation"
+  - concept: "0687's/0697's/0705's/0710's authority-formalization discipline"
+    refinement: "Directly and usefully extended with a clean static-versus-dynamic separation: Authority≠Authorization"
+  - concept: "0700's eleven-term relationship vocabulary"
+    refinement: "Directly extended into the most complete fifteen-term vocabulary in this reconstruction, with relationships themselves now carrying temporal validity"
+  - concept: "0691's/0700's temporal-consistency discipline"
+    refinement: "Directly extended: supersession must be an explicit relationship, never inferred from timestamps alone"
+  - concept: "0690's/0700's/0706's agent-attribution discipline and 0693's/0707's/0708's tool-backed-verification discipline"
+    refinement: "Directly and precisely extended into a formal ToolExecution schema as a first-class evidence object"
+  - concept: "the corpus's semantic-model (0697-0701), temporal-validity, epistemic-firewall, and governance-model (0689) disciplines"
+    refinement: "Directly and genuinely unified into a single four-dimensional capstone formula: KnowledgeOS=Semantic+Temporal+Epistemic+Governance"
+  - concept: "0698's semantic-core-minimality principle"
+    refinement: "Directly extended into schema-design specifically: a universal metadata envelope must not erase domain-specific meaning"
+  - concept: "0696's/0697's DDD-archaeology discipline"
+    refinement: "Directly extended with an explicit self-restraint against premature bounded-context declaration, setting up Step 127's promised validation"
+  - concept: "0686's/0687's/0705's/0706's constitution-versus-architecture-versus-implementation discipline"
+    refinement: "Directly extended into the information-model layer specifically: InformationModel≠DatabaseSchema≠APIContract"
+  - concept: "0680's/0698's/0710's context-boundary/RAG-security disciplines"
+    refinement: "Directly extended with Context explicitly reframed as a Projection, and a concrete, complete ContextPackage schema"
+  - concept: "the corpus's evidence-immutability/provenance disciplines"
+    refinement: "Directly and technically extended with a novel content-addressable mechanism: Context integrity via cryptographic hashing (H(ContextPackage))"
+  - concept: "0703's TraceableKnowledgeEpisode and 0710's GovernedEngineeringFact"
+    refinement: "NEITHER reconciled nor cross-referenced by this file, which proceeds with its own distinct nine-object-plus-Claim model — an open reconciliation question flagged for the eventual canonical synthesis"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0712 (Step 127 — KnowledgeOS Domain/Bounded-Context Test) with continued attention: this file's own five candidate bounded contexts (Knowledge/Evidence/Governance/Assurance/Engineering State) are explicitly promised a rigorous DDD validation against ownership/language/lifecycle/invariants/transactions/organizational-boundary criteria, directly continuing this reconstruction's standing DDD discipline."
+  - "Note for eventual §29 synthesis: three candidate 'fundamental unit' proposals now exist across this arc without cross-reference or reconciliation -- 0703's TraceableKnowledgeEpisode, 0710's GovernedEngineeringFact, and this file's own nine-object-plus-Claim model (with KnowledgeObject/Claim as the closest analogue) -- these should be compared explicitly once the relevant portion of the corpus is fully read."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the most complete information-model specification in this reconstruction (full schemas for nine objects, a fifteen-term relationship vocabulary, relationships with temporal validity), Authority≠Authorization, and the Claim/KnowledgeObject distinction with its full worked promotion-lifecycle example."
+  - "dimension-registry.md: record ToolExecution as a first-class evidence object, 'KnowledgeOS as Semantic Governance Ledger,' the capstone formula KnowledgeOS=Semantic+Temporal+Epistemic+Governance, and Context integrity via cryptographic hashing (H(ContextPackage)) as a genuinely novel technical mechanism."
+  - "dimension-registry.md: record that this file does NOT reconcile 0703's TraceableKnowledgeEpisode or 0710's GovernedEngineeringFact, leaving a three-way open candidate-fundamental-unit question for the eventual synthesis. Flag Step 127 (0712) for its promised rigorous DDD validation of the five candidate bounded contexts."
+anchor_test:
+  anchor: "0710's KnowledgeObject schema and GovernedEngineeringFact proposal; 0703's TraceableKnowledgeEpisode; 0687's/0697's/0705's authority-formalization discipline; 0700's relationship vocabulary; 0691's/0700's temporal-consistency discipline; 0690's/0700's/0706's agent-attribution discipline; 0693's/0707's/0708's tool-backed-verification discipline; the corpus's semantic-model/temporal-validity/epistemic-firewall/governance disciplines; 0698's semantic-core-minimality principle; 0696's/0697's DDD-archaeology discipline; 0680's/0698's/0710's context-boundary disciplines"
+  supports_dimension: "Delivers the most systematically complete information-model specification in this reconstruction, with full candidate schemas for every core object and the most complete relationship vocabulary yet. Delivers several genuinely valuable new distinctions and mechanisms: Authority≠Authorization (a clean static-versus-dynamic separation), the Claim/KnowledgeObject distinction with a fully worked promotion-lifecycle example, ToolExecution as a first-class evidence object, and Context integrity via cryptographic hashing (a technically precise, currently sound mechanism not previously proposed). Delivers a genuinely valuable capstone formula unifying four major corpus disciplines (KnowledgeOS=Semantic+Temporal+Epistemic+Governance) and a precisely reasoned anti-overengineering caution against universal metadata schemas. Notably does NOT reconcile the two competing candidate fundamental-unit proposals from the two immediately preceding files (0703's TraceableKnowledgeEpisode, 0710's GovernedEngineeringFact), leaving an open three-way reconciliation question. Continues the high-quality Steps 120-126 synthesis arc and closes by directly invoking the corpus's own established DDD discipline for Step 127"
+  refines_or_contradicts: "directly and genuinely extends 0710's KnowledgeObject schema, 0687's/0697's/0705's authority-formalization discipline, 0700's relationship vocabulary, 0691's/0700's temporal-consistency discipline, 0690's/0700's/0706's agent-attribution discipline, 0693's/0707's/0708's tool-backed-verification discipline, the corpus's semantic-model/temporal-validity/epistemic-firewall/governance disciplines (unified into one formula), 0698's semantic-core-minimality principle, 0696's/0697's DDD-archaeology discipline, and 0680's/0698's/0710's context-boundary disciplines; does not contradict but also does not reconcile 0703's TraceableKnowledgeEpisode or 0710's GovernedEngineeringFact, leaving them as open, uncross-referenced candidates; no contradiction found; no new invariant-notation scheme introduced (this file is object/relationship modeling, not invariant enumeration)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§126.38-126.42's Claim/KnowledgeObject distinction, worked through with a full concrete promotion-lifecycle example (Claim C42 progressing from INFERRED through VERIFIED to AUTHORITATIVE), is directly checkable evidence of a genuinely useful new semantic-object distinction for AI-generated-knowledge tracking specifically."
+  - "§126.64-126.66's Context-integrity-via-hashing mechanism (H(ContextPackage), with actions referencing a ContextHash to reconstruct which knowledge context an agent acted upon) is directly checkable, technically precise evidence of a genuinely novel content-addressable audit mechanism not previously proposed anywhere in this reconstruction."
+  - "The complete absence of any mention of 'TraceableKnowledgeEpisode' (0703) or 'GovernedEngineeringFact' (0710) anywhere in this file, despite this file's own close engagement with candidate fundamental semantic objects, is direct, checkable evidence that these three candidate-fundamental-unit proposals remain unreconciled across this arc, an open question for the eventual canonical synthesis."
+undefined_concepts: []
+open_questions:
+  - "Whether any later file in this corpus explicitly reconciles or distinguishes the three candidate fundamental-unit proposals now on the table: 0703's TraceableKnowledgeEpisode, 0710's GovernedEngineeringFact, and this file's own KnowledgeObject/Claim pairing."
+  - "Whether Step 127's actual content (0712), once read, delivers a rigorous DDD validation of the five candidate bounded contexts (Knowledge/Evidence/Governance/Assurance/Engineering State) against the promised ownership/language/lifecycle/invariant/transaction/organizational-boundary criteria, given the high quality established across the preceding Steps 120-126 arc."
+tier2_triggered: true
+tier2_reason: "Delivers the most systematically complete information-model specification in this reconstruction, with full candidate schemas for every core object and the most complete relationship vocabulary yet (fifteen terms, now carrying temporal validity). Delivers several genuinely valuable new distinctions and mechanisms: Authority≠Authorization, the Claim/KnowledgeObject distinction with a fully worked example, ToolExecution as a first-class evidence object, and Context integrity via cryptographic hashing. Delivers a capstone formula unifying four major corpus disciplines (KnowledgeOS=Semantic+Temporal+Epistemic+Governance) and a precisely reasoned anti-overengineering schema-design caution. Notably does not reconcile the two competing candidate fundamental-unit proposals from the two immediately preceding files, leaving an open three-way reconciliation question for the eventual canonical synthesis."

@@ -1,0 +1,188 @@
+sequence: 640
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-113932_step-058-compositional-correctness.md
+title: "LANDMARK — THE FIRST GENUINE 'FAILURE DETECTED' RESULTS IN THE ENTIRE CORPUS, TWICE: a Mutable Live-Knowledge-Reference Hazard (a Decision Silently Seeing Updated Knowledge K_2 Instead of Its Own K_1 Basis) and a Classic Time-of-Check/Time-of-Use Authorization-Race Vulnerability, Both Discovered Through Genuine Adversarial Composition Testing, Both Given Concrete Architectural Corrections (Immutable KnowledgeSnapshotRef With a Hash; an Authorization Object With IssuedAt/ExpiresAt Requiring Revalidation at the Point of Execution); the Explicit Scientific Conclusion 'The Discovery of These Failures Is Good — We Are Trying to Discover Counterexamples, Not Obtain 100% PASS by Avoiding Difficult Tests,' Directly Fulfilling 0637's Earlier Scientific-Integrity Principle; a Provisional 'KnowledgeOS Compositionality Principle' Theorem-Candidate; Two Complementary, Explicitly Non-Mergeable Graphs (EvidenceGraph vs. ExecutionGraph); a Global Progress Measure via Well-Founded Ordering; a Third New Verdict Phrasing 'STEP 58 — PASS WITH CORRECTIONS'; Opens Step 59 (Concurrency and Interleaving Calculus)"
+date: "2026-08-28"
+bytes: 19627
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 58 -- Compositional Correctness', opened cleanly at 0639's close, and represents a genuine methodological escalation: the first file in the corpus's entire history to report actual FAILURE DETECTED results rather than uniform PASS"
+source_role: PRIMARY_RESEARCH
+canonical_source: 640
+importance: critical
+confidence: high
+about: >
+  **LANDMARK: THE FIRST GENUINE 'FAILURE DETECTED' RESULTS IN THE ENTIRE CORPUS'S 640-FILE HISTORY,
+  APPEARING TWICE**, directly and explicitly fulfilling the scientific-integrity principle 0637 stated one
+  arc earlier ("we should not patch the test to hide the failure"). Opens Step 58 posing the central
+  compositionality question: "does local correctness compose into global correctness?", formalized as
+  testing whether `I_A∧I_B∧Contract_{AB}⇒I_{AB}` genuinely holds, given the crucial and correctly stated
+  caution `CorrectContexts⇏CorrectComposition`.
+
+  **Delivers Failure #1 (Experiment 5, §58.10) -- a mutable live-knowledge-reference hazard**: the
+  experiment deliberately makes the Decision Context hold a mutable reference to `CurrentKnowledge` rather
+  than an immutable snapshot; when `K_1` is updated to `K_2`, the already-created decision `D_1` incorrectly
+  observes `K_2` instead of retaining its original `K_1` basis -- **"FAILURE DETECTED."** The file's own
+  precise characterization of this finding is important and exemplary: **"this is a useful failure, because
+  it identifies an implementation rule. The mathematical architecture itself survives, but a naive
+  implementation would violate it."** Delivers the concrete architectural correction:
+  `KnowledgeSnapshotRef=(SnapshotId, Version, Hash)` -- a decision must store this immutable, hash-verified
+  reference rather than a mutable live knowledge object.
+
+  **Delivers Failure #2 (Experiment 7, §58.16) -- a classic, real-world-recognized Time-of-Check/Time-of-
+  Use (TOCTOU) authorization race**: authorization is confirmed `True` at `t_1`, expires at `t_2`, and
+  execution blindly relies on the earlier check at `t_3` -- **"FAILURE DETECTED."** This is a genuine,
+  well-known security vulnerability class correctly identified through the corpus's own adversarial
+  compositional testing rather than merely asserted from prior knowledge. Delivers the concrete
+  architectural correction: a fully specified `Authorization=(DecisionId, PolicyVersion, Authority,
+  IssuedAt, ExpiresAt, AuthorizationId)` object requiring `t_execute∈[IssuedAt,ExpiresAt]` and, for
+  sensitive actions, revalidation immediately before execution, crystallized as the strengthened invariant
+  `Execute(A,t)⇒AuthorizationValid(A,t)`, explicitly distinguished from the weaker and insufficient
+  `AuthorizationValid(A,t_check)`.
+
+  Delivers nine further compositional experiments across eleven named context-pair "compositions," ALL
+  PASS, reconfirming (rather than newly discovering) established disciplines under this specific cross-
+  context framing: valid/tampered evidence mapping (content-addressable `Hash(E)` verification for
+  immutable artifacts, `IntegrityFailure` correctly detected on tampering); policy drift correctly
+  requiring `Authorize_historical(D,t)≠Authorize_current(D)` as two genuinely different queries; outcome
+  mix-up correctly caught by action-identity/correlation contract validation (a workflow-level
+  `CorrelationId` alone being "too coarse," requiring the specific `ActionId` as well); a learning-bypass
+  direct-mutation attempt correctly rejected; multi-agent concurrent decision proposals correctly triggering
+  optimistic-concurrency `ConcurrencyConflict` detection on version mismatch; eventual-consistency delay
+  correctly distinguishing `NotYetAvailable` from `DoesNotExist`, crystallized as the global epistemic rule
+  **`Absence of observed information≠Evidence of absence`** (unless a context explicitly declares closed-
+  world semantics -- Closed-world `NotFound⇒False` vs. Open-world `NotFound⇒Unknown` formally
+  distinguished per context/query); a naive semantic-inflation translation (`Verified→Authorized`)
+  correctly rejected by the ACL absent an explicit semantic rule, crystallized as
+  **"no context may infer stronger semantics than the published contract justifies,"** explicitly named
+  "one of the most important KnowledgeOS properties"; and false causality from temporal precedence
+  correctly rejected across context boundaries, reconfirming `TemporalOrder⇏Causality` "crosses multiple
+  contexts."
+
+  Delivers a formal compositional invariant algebra
+  (`I_G=I_A∧I_B∧I_{Contract}∧I_{Temporal}∧I_{Identity}∧I_{Semantic}`), and, critically, identifies a
+  further genuine architectural problem class beyond pairwise composition: a **circular cross-context
+  dependency** (`Decision→Knowledge→Evidence→Authorization→Decision`) where "every local rule may be
+  correct" yet "the system is globally impossible," correctly detected via dependency-graph cycle analysis
+  (`G_D=(Contexts,Dependencies)`), motivating a new required architectural artifact: an explicit context-
+  level Dependency Graph. Delivers the important, precise refinement that **not every cycle is bad** --
+  `FeedbackLoop≠Deadlock` -- a `Learning↔Knowledge` cycle is a legitimate, intentional feedback loop, with
+  the real question being whether the cycle prevents initialization, progress, or termination, formalized
+  as Productive cycles (`Version_next>Version_current`, genuine state progression) versus Nonproductive
+  cycles (`K_t→K_t→K_t`, no progression, "Liveness Failure" if repeated indefinitely).
+
+  **Delivers a formal Global progress measure via well-founded ordering**, a genuine, correctly applied
+  classical program-verification technique: a measure `μ(X)∈W` over a well-founded set (no infinite
+  descending chain), with every transition required to strictly decrease `μ`, proving termination for
+  finite workflows. Delivers the important, honest qualification that not every KnowledgeOS process is
+  expected to terminate -- Learning may legitimately continue indefinitely -- requiring `FiniteWorkflow` to
+  be formally distinguished from `PersistentProcess`, the latter measured by domain-specific `Progress`
+  (new evidence, reduced uncertainty, improved model performance, validated knowledge, resolved conflicts)
+  rather than termination.
+
+  Delivers global distributed-consistency treatment: a `ConsistencyContract`
+  (`Eventually: EvidencePublished→KnowledgeAvailable`, under the explicit assumption
+  `MessageInfrastructureEventuallyRecovers`), with the important requirement that if recovery never
+  happens, the system must eventually and honestly expose `IntegrationFailure` rather than silently
+  continuing to claim `Synchronized`, formalized via a four-value `IntegrationState`
+  (`Healthy, Delayed, Degraded, Failed`), explicitly described as "valuable operational knowledge."
+  **Delivers Compositional observability as a distinct architectural concern from mere monitoring**: the
+  system should be able to answer "which boundary is preventing this workflow from progressing?"
+  (`BlockedBecause(X)`), explicitly framed as part of "the explainability of workflow state," yielding
+  **two complementary graphs explicitly required never to be blindly merged**: the `EvidenceGraph`
+  ("why do we believe this?") and the `ExecutionGraph` ("what happened operationally?") -- related and
+  intersecting, but not identical.
+
+  Delivers a consolidated eleven-row Compositional correctness matrix, with two rows explicitly marked
+  "corrected" rather than plain "PASS" (Knowledge→Decision snapshot drift; Governance→Action authorization
+  race), directly matching the two failures discovered. **Delivers the file's central, explicitly stated
+  scientific-methodology conclusion**: **"the discovery of these failures is good. We are not trying to
+  obtain 100% PASS by avoiding difficult tests. We are trying to discover counterexamples,"** formalized as
+  a scientific loop `Find failure→understand failure→strengthen invariant/contract→rerun` -- this is a
+  directly checkable instance of the corpus genuinely practicing, rather than merely stating, the
+  scientific-integrity principle articulated one arc earlier at 0637.
+
+  **Delivers a provisional theorem-candidate, appropriately and honestly hedged**: the "KnowledgeOS
+  Compositionality Principle," listing six explicit preconditions (local invariants preserved; explicit
+  contracts for every cross-context interaction; semantic-preserving translations; immutable/versioned
+  references for historical state; authorization valid at the point of side effect; integration failures
+  represented explicitly) under which `LocalCorrectness+ContractCorrectness⇒RelevantGlobalCorrectness`,
+  explicitly and carefully labeled "not yet a formal mathematical theorem for all possible KnowledgeOS
+  implementations. It is a design theorem/hypothesis that we can continue to test."
+
+  **Delivers Step 58's verdict in a third distinct hedged phrasing, different again from 0638's and
+  0639's**: **"STEP 58 — PASS WITH CORRECTIONS,"** explicitly and correctly declared "stronger than simply
+  'PASS'" since it reflects genuine discovered-and-fixed hazards rather than mere caveated confidence.
+  Delivers the file's self-assessed cumulative result: `Local Safety + Local Liveness + Cross-Context
+  Contracts + Compositional Safety`, explicitly described as the architecture "increasingly behaving like a
+  real engineering system rather than a conceptual framework."
+
+  **Closes by identifying the next major limitation -- everything so far has reasoned about a single
+  execution history, while a real system requires `N≫1` simultaneous operations**, posing "does the
+  architecture remain correct under concurrency?" and naming race conditions, optimistic concurrency,
+  conflicting claims, concurrent knowledge revisions, duplicate agents, competing authorizations, event
+  interleavings, transaction isolation, and distributed ordering as the relevant concerns. **Opens "Step 59
+  — Concurrency and Interleaving Calculus,"** proposing to model multiple simultaneous workflows and test
+  operation commutativity (`T_a(T_b(X))=T_b(T_a(X))?`), explicitly framed as "the next major test before
+  we can make a serious claim that the KnowledgeOS architecture is computationally robust, rather than
+  merely logically coherent." No actual code execution reported in this file (the two discovered failures
+  are themselves hand-reasoned, not machine-detected, though this does not diminish their genuine
+  architectural validity). No corpus-integrity topic collision detected.
+introduces:
+  - concept: "The corpus's first two genuine FAILURE DETECTED results, discovered through adversarial compositional testing rather than confirmed uniformly as PASS"
+  - concept: "The mutable live-knowledge-reference hazard and its correction (KnowledgeSnapshotRef with an immutable, hash-verified reference)"
+  - concept: "The classic Time-of-Check/Time-of-Use authorization-race vulnerability and its correction (a fully specified Authorization object with IssuedAt/ExpiresAt requiring revalidation at the point of execution)"
+  - concept: "The explicit scientific-methodology conclusion that discovering failures is a good outcome, directly and practically fulfilling 0637's earlier stated scientific-integrity principle rather than merely restating it"
+  - concept: "A provisional, appropriately hedged 'KnowledgeOS Compositionality Principle' theorem-candidate with six explicit preconditions"
+  - concept: "Two complementary, explicitly non-mergeable graphs — EvidenceGraph (why we believe something) and ExecutionGraph (what operationally happened) — as a distinct compositional-observability concern"
+  - concept: "A formal global progress measure via well-founded ordering, correctly applying a classical program-verification termination technique, paired with the honest FiniteWorkflow/PersistentProcess distinction"
+defines:
+  - concept: "The mutable live-knowledge-reference hazard"
+    definition: "If a decision aggregate holds a mutable reference to 'current knowledge' rather than an immutable, versioned snapshot, a subsequent knowledge update can cause the already-created decision to silently observe the new knowledge state instead of the state that actually existed when it was made, corrupting historical decision integrity"
+  - concept: "Authorization TOCTOU race"
+    definition: "A decision's authorization is checked and found valid at time t_1, expires at t_2, and execution proceeds at t_3 relying on the stale t_1 check rather than revalidating — the corrected invariant requires Execute(A,t)⇒AuthorizationValid(A,t), verified at the actual point of execution, not merely at an earlier check"
+  - concept: "The KnowledgeOS Compositionality Principle (provisional)"
+    definition: "If (1) each context preserves its local invariants, (2) every cross-context interaction uses an explicit contract, (3) semantic translations preserve required meaning, (4) immutable/versioned references are used for historical state, (5) authorization is valid at the point of side effect, and (6) integration failures are represented explicitly, then LocalCorrectness+ContractCorrectness⇒RelevantGlobalCorrectness — explicitly a design hypothesis to continue testing, not a proven theorem"
+  - concept: "EvidenceGraph vs. ExecutionGraph"
+    definition: "Two complementary but non-identical explanatory graphs: the EvidenceGraph answers why a claim is believed (its epistemic derivation), while the ExecutionGraph answers what operationally happened (the decision/authorization/action/outcome chain) — they intersect but must not be blindly merged into one"
+refines:
+  - concept: "0637's (Step 55) scientific-integrity principle (never patch a test to hide a discovered counterexample)"
+    refinement: "Directly and practically fulfilled for the first time: this file actually discovers two genuine failures and explicitly celebrates the discovery ('the discovery of these failures is good') rather than merely restating the principle in the abstract"
+  - concept: "0629's (Step 48) LocalCorrectness⇏GlobalCorrectness compositional-correctness framework"
+    refinement: "Directly tested against concrete cross-context scenarios for the first time, surfacing two genuine architectural hazards rather than remaining a purely abstract caution"
+  - concept: "The corpus's established AbsenceOfEvidence≠EvidenceOfAbsence discipline"
+    refinement: "Reconfirmed at the compositional/distributed level via the explicit Closed-world/Open-world semantics distinction, now required to be specified per context/query"
+  - concept: "0625's (Step 44) causal-cycle-can-be-real discovery (Provenance DAG≠CausalGraph DAG)"
+    refinement: "Directly extended into the general FeedbackLoop≠Deadlock distinction for cross-context dependency cycles, with the productive/nonproductive cycle criterion based on state progression"
+  - concept: "0638's/0639's escalating hedged-verdict pattern"
+    refinement: "Continued with a third distinct phrasing ('PASS WITH CORRECTIONS'), now explicitly and correctly distinguished as stronger evidence than a merely qualified PASS, since it reflects genuinely discovered and fixed hazards"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Track whether Step 59 (Concurrency and Interleaving Calculus) surfaces further genuine FAILURE DETECTED results, continuing the newly established pattern of real adversarial discovery rather than uniform confirmation, and whether commutativity analysis (T_a(T_b(X))=T_b(T_a(X))?) yields concrete new architectural requirements the way this file's TOCTOU and mutable-reference discoveries did."
+  - "ABSOLUTE HIGHEST PRIORITY, CONTINUED: whether ANY later file in the corpus ever actually writes and/or runs genuinely executable code — this file's two failures, while genuine architectural findings, were discovered through hand-reasoning, not machine-executed tests."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the corpus's first two genuine FAILURE DETECTED results — the mutable live-knowledge-reference hazard (corrected via immutable, hash-verified KnowledgeSnapshotRef) and the classic Time-of-Check/Time-of-Use authorization-race vulnerability (corrected via a fully specified Authorization object with IssuedAt/ExpiresAt and point-of-execution revalidation) — and the explicit scientific-methodology conclusion that discovering failures is a good outcome, directly fulfilling 0637's scientific-integrity principle."
+  - "dimension-registry.md: record the global epistemic rule Absence of observed information≠Evidence of absence with explicit Closed-world/Open-world semantics per context/query; the global semantic invariant that no context may infer stronger semantics than its published contract justifies; the circular-dependency architectural problem class and the FeedbackLoop≠Deadlock/productive-vs-nonproductive-cycle distinction; and the formal global progress measure via well-founded ordering paired with the FiniteWorkflow/PersistentProcess distinction."
+  - "dimension-registry.md: record the provisional KnowledgeOS Compositionality Principle theorem-candidate; the EvidenceGraph/ExecutionGraph non-mergeable-graphs distinction; the eleven-row compositional correctness matrix (two rows explicitly 'corrected'); the third distinct hedged verdict 'STEP 58 — PASS WITH CORRECTIONS'; and the opening of Step 59 into concurrency and interleaving calculus."
+anchor_test:
+  anchor: "0637's (Step 55) scientific-integrity principle against patching tests to hide failures; 0629's (Step 48) LocalCorrectness⇏GlobalCorrectness framework; the corpus's established AbsenceOfEvidence≠EvidenceOfAbsence discipline; 0625's (Step 44) causal-cycle-can-be-real discovery; 0638's/0639's escalating hedged-verdict pattern"
+  supports_dimension: "Delivers the corpus's most significant single methodological escalation since the fifty-attack adversarial audit at 0631: for the first time in 640 files, the corpus actually discovers and reports genuine FAILURE DETECTED results rather than uniform PASS, directly and concretely fulfilling the scientific-integrity principle it had only stated in the abstract one arc earlier (0637). Both discovered failures are genuine, real-world-recognized architectural hazard classes (a mutable-reference historical-integrity bug; a classic TOCTOU authorization race), each given a precise, directly actionable architectural correction, demonstrating that the corpus's adversarial testing methodology has real diagnostic power rather than being a rhetorical device that always confirms the existing design. The explicit celebratory framing of these failures as scientifically valuable ('the discovery of these failures is good... we are trying to discover counterexamples') is directly checkable, concrete evidence of genuine scientific practice rather than confirmation-seeking. Delivers a correctly applied classical program-verification technique (well-founded-ordering termination proofs) and a genuinely useful architectural distinction (EvidenceGraph vs. ExecutionGraph) that meaningfully advances the corpus's explainability/observability discipline beyond prior files. Delivers an appropriately hedged, honestly labeled theorem-candidate (the Compositionality Principle) rather than overclaiming a proven result"
+  refines_or_contradicts: "directly and practically fulfills 0637's scientific-integrity principle for the first time with concrete discovered failures rather than restating the principle abstractly; directly tests and extends 0629's compositional-correctness framework against real scenarios; reconfirms the corpus's AbsenceOfEvidence discipline at the compositional/distributed level; directly extends 0625's causal-cycle-can-be-real discovery into a general cross-context feedback-loop distinction; continues and further diversifies the corpus's hedged-verdict pattern with a third distinct phrasing appropriately reflecting a different kind of finding (corrections made, not merely caveats noted); no contradiction found; no corpus-integrity topic collision detected"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The explicit, boxed textual marker 'FAILURE DETECTED' appearing at §58.10 and §58.16, each immediately followed by a precise architectural correction (KnowledgeSnapshotRef with a hash; a fully specified Authorization object with IssuedAt/ExpiresAt), is directly checkable, concrete evidence that this file is structurally and substantively different from every prior step in the corpus, which uniformly reported PASS for every tested scenario across fifty-plus preceding files."
+  - "The explicit, precisely worded scientific-methodology statement — 'the discovery of these failures is good. We are not trying to obtain 100% PASS by avoiding difficult tests. We are trying to discover counterexamples' — is directly checkable, concrete evidence that the corpus is not merely aware of good scientific practice in the abstract (as stated at 0637) but is here demonstrated actually practicing it, treating a discovered flaw as a positive result rather than an embarrassment to be minimized."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 59 (Concurrency and Interleaving Calculus) surfaces further genuine FAILURE DETECTED results, continuing this file's newly established pattern of real adversarial discovery, or reverts to the corpus's earlier uniform-PASS pattern"
+tier2_triggered: true
+tier2_reason: "LANDMARK: delivers the corpus's most significant single methodological escalation since the fifty-attack adversarial audit — for the first time in 640 files, the corpus actually discovers and reports genuine FAILURE DETECTED results (twice) rather than uniform PASS, directly and concretely fulfilling the scientific-integrity principle it had only stated abstractly one arc earlier (0637). Both discovered failures are genuine, real-world-recognized architectural hazard classes (a mutable-reference historical-integrity bug; a classic Time-of-Check/Time-of-Use authorization race), each given a precise, directly actionable correction. The explicit celebratory framing of these failures as scientifically valuable is directly checkable evidence of genuine scientific practice rather than confirmation-seeking. Delivers a correctly applied classical program-verification termination technique (well-founded ordering) and a genuinely useful new architectural distinction (EvidenceGraph vs. ExecutionGraph). Delivers an appropriately hedged, honestly labeled theorem-candidate rather than overclaiming a proven result. Verdict 'STEP 58 — PASS WITH CORRECTIONS,' a third distinct hedged phrasing appropriately reflecting genuine discovered-and-fixed hazards. Opens Step 59 into concurrency and interleaving calculus."

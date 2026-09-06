@@ -1,0 +1,86 @@
+sequence: 1085
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-291/07_governance-vs-derivation.md
+title: "07 -- Governance vs Derivation Boundary (Step 291 mandate SSSS8,11): THE STEP-291 SYNTHESIS CAPSTONE -- Exhaustively Tests Eight Derivation Routes for O/T (All Blocked or Circular Except the Schema and the Normative Declare-Membership Route), and Delivers the Case-E MIXED Split Proving Four Items Steps 288-290 Folded Into 'O Is Not Closed' Are Documentary/Type-Theoretic TODOs, NOT Governance Decisions -- Narrowing the Real Governance Surface to Exactly Four Items"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the seventh numbered Step-291 prose artifact, the synthesis capstone of the entire Step-291 package"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1085
+importance: critical
+confidence: high
+about: >
+  "07 — Governance vs Derivation Boundary (mandate §§8, 11)." Delivers the synthesis capstone of the entire
+  Step-291 package, exhaustively testing eight candidate derivation routes for closing `𝒪`/`𝒯` (mandate §8):
+  from `K` (CIRCULAR, `K←minimality←congruence←𝒯`); from invariants `ℐ` (CIRCULAR, downstream of `≡` per
+  already-tracked file `287`); from a minimality proof (BLOCKED, `259`'s already-tracked prohibition); from
+  the ratified 8 primitives (UNDER-SPECIFIED, `C-022`/`049` ratifies primitives not operations, never shown
+  minimal against an operation space); from the forced lower bound (PARTIALLY DERIVABLE, `256.2`/`259.7`'s
+  already-tracked 14-forced/≤18 candidate set, not a membership rule); from `259.7`'s five-kind schema
+  (PARTIALLY DERIVABLE, "the schema IS derivable and `277` calls classification CLOSED -- it bounds KINDS,
+  not MEMBERS"); from `Admissible(o,K)` (BLOCKED, routed to `G1`); and DECLARE MANDATORY MEMBERSHIP (✅
+  NORMATIVE, "the only route with no unmet precondition"). Boxed capstone: "The SCHEMA is derivable (and
+  largely derived). MANDATORY MEMBERSHIP is not. No route derives membership from already-ratified
+  material." Applies the disciplined `225.11` absence-of-evidence caveat: this finding could be SUPERSEDED
+  (not contradicted) by a later step finding a derivation route.
+
+  **DELIVERS THE STEP-291 PACKAGE'S DEFINITIVE, MOST IMPORTANT SYNTHESIS: THE CASE-E MIXED SPLIT (mandate
+  §11)**, cleanly partitioning everything this reconstruction has tracked across files 1075-1084 into three
+  categories. **CAN BE DERIVED** (already-established, no decision needed): the five-kind operation schema;
+  the 8 typed operation signatures; `𝒯⊆𝒪`/`𝒪_K⊆kind-5`; `≡_K`'s DEFINABILITY (already-tracked file 1076/1079
+  five-of-six-blocked finding); the `Assess` determination condition; and the `258-A` congruence criterion,
+  explicitly flagged "must NOT be given to governance." **IS AN ENGINEERING/DOCUMENTARY TODO, NOT A
+  GOVERNANCE DECISION**: the `𝒪` glyph overload (already-tracked file 1076/1078); `261.21`'s self-reference
+  (already-tracked file 1076/1079); registering `TraceOrigin`/`ExplainRevision` (already-tracked file 1081's
+  sharpest finding); a type for observation-kind-5. **DELIVERS THE GENUINELY CRITICAL CORRECTIVE VERDICT**:
+  "Four items that Steps 288-290 FOLDED INTO '𝒪 IS NOT CLOSED' are NOT DECISIONS AT ALL. CALLING THEM
+  GOVERNANCE QUESTIONS WOULD HAVE MANUFACTURED FOUR DECISIONS." This is a genuinely important, disciplined
+  methodological correction directly paralleling the already-tracked N-1/G-67 withdrawal (files 1067/1072):
+  just as an over-stated "corpus contradiction" was withdrawn there, here an over-broad "governance blocker"
+  characterization is corrected -- four items that appeared to require ARB decisions are shown to be mere
+  engineering/documentation repairs requiring no decision at all. **GENUINELY REQUIRES A DECISION** (narrowed
+  to exactly four items): which operations are MANDATORY (already-tracked `N-4`, "the WHOLE of the real
+  blocker"); `𝒪_K`'s extension (`N-3`); the residue of Decision 3 (`N-2`); ratify/reject the `261.21`
+  candidate (already-tracked `N-1′`, files 1072-1073).
+
+  Confirms the STATUS block: DERIVED the schema/signatures/subset-relations/definability/258-A · IMPLEMENTATION
+  4 documentary/type-theoretic TODOs, no decision needed · NORMATIVE 4 items, of which mandatory membership
+  is the only structural one · G1 `Admissible` · UNKNOWN whether a membership derivation exists.
+introduces:
+  - concept: "The exhaustive eight-route derivation audit for O/T, finding every route blocked, circular, or under-specified except the schema (partially derivable) and declaring mandatory membership normatively (the only route with no unmet precondition)"
+  - concept: "The Case-E MIXED three-way partition of the entire equiv_K/O/T/O_K research surface into what can be derived (no decision needed), what is a mere documentary/type-theoretic engineering TODO (no decision needed), and what genuinely requires a governance decision (narrowed to exactly four items)"
+  - concept: "The critical corrective finding that four items Steps 288-290 folded into 'O is not closed' are not governance decisions at all -- calling them so would have manufactured four decisions that do not exist, directly paralleling the already-tracked N-1/G-67 over-stated-ground withdrawal"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked O/T/O_K closure findings, the six-property decomposition, and the observation-inventory finding (files 1076, 1079, 1080, 1081)"
+    refinement: "SYNTHESIZED into the definitive governance-vs-derivation boundary: the O-glyph overload, 261.21's self-reference, the unregistered TraceOrigin/ExplainRevision, and the missing observation type are ALL reclassified as engineering/documentary TODOs requiring no governance decision, narrowing the genuine governance surface to exactly four items (N-1', N-2, N-3, N-4)"
+contradicts:
+  - concept: "This reconstruction's implicit prior framing (carried from Steps 288-290, files 1041/1048/1058) that 'O is not closed' constitutes an undifferentiated governance blocker"
+    contradicted_by: "This file's explicit finding that four of the items folded into that framing are not governance decisions at all, but documentary/type-theoretic repairs"
+repeats:
+  - "Consolidates already-tracked findings from files 1076, 1078, 1079, 1080, and 1081 into the definitive three-way derivation/documentary/governance partition."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the exhaustive eight-route derivation audit for O/T (all blocked except the schema and the normative declare-membership route), and the critical Case-E MIXED capstone finding that four items folded into 'O is not closed' by Steps 288-290 are not governance decisions at all -- narrowing the real governance surface to exactly four items (N-1', N-2, N-3, N-4), of which mandatory membership (N-4) is the sole structural blocker."
+anchor_test:
+  anchor: "This reconstruction's already-tracked O/T/O_K closure findings and the six-property decomposition (files 1076, 1079, 1080, 1081)"
+  supports_dimension: "Synthesizes these findings into the definitive derivation-vs-documentary-vs-governance three-way partition, correcting an over-broad governance-blocker framing carried from Steps 288-290"
+  refines_or_contradicts: "contradicts (corrects) the prior implicit undifferentiated 'O is not closed' governance framing; refines the already-tracked closure findings into a precise partition"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "The eight derivation routes and the three-way partition are directly checkable against files 1076, 1079, 1080, and 1081's own already-documented findings for exact consistency of the synthesis."
+undefined_concepts: []
+open_questions:
+  - "Whether a later step finds a derivation route for mandatory operation membership that this file's absence-of-evidence finding did not anticipate (per the explicit 225.11 discipline caveat)."
+tier2_triggered: true
+tier2_reason: "Delivers the Step-291 package's definitive synthesis capstone: an exhaustive eight-route derivation audit for O/T, and the critical Case-E MIXED partition proving four items Steps 288-290 folded into an undifferentiated governance blocker are actually documentary/type-theoretic engineering TODOs requiring no decision, narrowing the genuine governance surface to exactly four items. Classified importance critical and confidence high given the disciplined, well-evidenced, and directly corrective nature of this synthesis."

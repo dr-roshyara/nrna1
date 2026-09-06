@@ -1,0 +1,147 @@
+sequence: 468
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260826-173537_review-an-update-does-not-necessarily-create-a-new-assertion.md
+title: "LANDMARK: Proposition Identity≠Assertion Version; World-State History≠Epistemic History (Two Separate Timelines); Conflict Reframed as a First-Class Relation Conflict(P1,P2,NormativeContext) Rather Than a Per-Assertion Attribute; Retired≠Rejected; Non-Linear Epistemic Lifecycle; Δ_t-Based Knowledge-State Transition Tied to Ω_t; Most Complete End-to-End Architecture Diagram Yet"
+date: "2026-08-26"
+bytes: 13025
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "the Bhishma grandfather/opposing-side tension is now reframed a third time, moving from a per-assertion Conflict field (0464) to a first-class relational Conflict object between propositions"
+source_role: PRIMARY_RESEARCH
+canonical_source: 468
+importance: critical
+confidence: high
+about: >
+  A dense, multi-correction critical review of 0467's Update/Preserve document, delivering roughly a dozen
+  distinct refinements and explicitly rejecting 0467's claim that the knowledge model is now complete.
+
+  **Correction 1 (biggest)**: rejects "every update creates a new version" as implying every update creates
+  a new semantic assertion/proposition. Worked via P=(Nexus,Version,3.69), A1=(P,Assumed,E1) evolving to
+  A2=(P,Confirmed,E1,E2): the proposition never changes, only the assertion's epistemic relationship to it
+  does. New invariant: **Proposition Identity != Assertion Version** -- a version represents a new state of
+  our relationship to a proposition, not necessarily a new proposition.
+
+  **Correction 2**: distinguishes **epistemic evolution** (same proposition, changing epistemic status,
+  e.g. Assumed->Confirmed) from **world-state evolution** (genuinely different, temporally successive
+  propositions, e.g. Version 3.69 -> 3.70, P1!=P2) -- these must not be conflated as "the same assertion
+  updated."
+
+  **Correction 3 (major)**: KnowledgeOS needs **two separate histories**: (A) **Proposition history** --
+  what was believed about the world over time (P1->P2->P3, e.g. 3.69->3.70->3.71); (B) **Epistemic
+  history** -- how knowledge about a given proposition evolved (Unknown->Reported->Assumed->Observed->
+  Confirmed->Challenged). Formalized as **World State History != Epistemic History**, explicitly named "one
+  of the most important things Question 5 has uncovered."
+
+  **Correction 4 (Bhīṣma example, reframed a third time)**: again rejects treating grandfather-vs-opposing-
+  side as a logical conflict (both propositions can be simultaneously true), but this time goes further than
+  0464/0466/0467's per-assertion "Conflict=Active" field: proposes that the update should instead create or
+  reveal a **higher-level, first-class relational object**: **Conflict(P1,P2,NormativeContext)** or
+  **DecisionConflict(Knower,{P1,P2},Context)** -- treating conflict as a relation BETWEEN propositions/
+  assertions, not an attribute attached to each one individually, explicitly named "a very important DDD
+  boundary."
+
+  **Correction 5**: separates 0467's combined "RETIRED/REJECTED" lifecycle state into two distinct concepts:
+  **Retired** (was applicable, no longer current, remains historically valid -- e.g. an old but once-true
+  version) versus **Rejected** (failed epistemic evaluation outright -- e.g. an incorrectly reported value),
+  formalized as **Retired != Rejected**, "exactly the kind of distinction Zero should preserve."
+
+  **Correction 6**: rejects the linear Created->Evaluated->Accepted->Updated->Challenged->Revised->Retired/
+  Rejected lifecycle as epistemically too rigid, since an assertion can become challenged without becoming
+  false and can return from contested to supported after new evidence. Proposes a branching alternative
+  (Proposition->Assertion->{supported,open,contested}->{re-evaluate,revise}->loop), stating **"Epistemic
+  evolution is not necessarily a linear lifecycle."**
+
+  **Correction 7**: rejects treating History(A) as a mere version list, proposing instead a full
+  **causal/provenance graph** (Assertion A1 -[challenged by]-> Evidence E2 -[caused reevaluation]->
+  Assertion A2 -[superseded by]-> Assertion A3), formalized as **History = Temporal + Provenance + Causal
+  Evolution**, never merely a version list.
+
+  Connects the temporal model back to the corpus's founding infinite-knowledge-space hypothesis: defines
+  Omega_t as the possible knowledge space at time t, K_t subset-of Omega_t, and crucially states that
+  K_{t+1} does **not simply replace** K_t -- instead **K_t -[Delta_t]-> K_{t+1}**, where Delta_t contains new
+  propositions, new evidence, revised epistemic states, newly discovered dimensions, retired propositions,
+  resolved conflicts, and newly exposed Zero findings, with the full history H={K_0,K_1,...,K_t} preserved.
+  This is the corpus's most concrete delta-based Knowledge-State-transition formalization tied directly to
+  Omega_t.
+
+  Extends all three lenses temporally: **Zero(H_{0:t})**, not merely Zero(K_t), can ask when something was
+  first known, when uncertainty disappeared, when an assumption became evidence-supported, or when an
+  accepted assertion became stale -- "potentially very powerful for KnowledgeOS governance and
+  auditability." **Lord** can ask what dimensions were NEVER investigated (not just what is missing now),
+  exposing "unexplored regions of the knowledge space" over time. **Sārathi** becomes "the navigator through
+  knowledge history," formalized with an expanded signature
+  Sārathi:(K_t,H_t,Zero_t,Lord_t,Goal)->NextEpistemicAction, illustrated with concrete guidance strings
+  (e.g. recognizing that a normative conflict cannot be resolved by seeking more technical evidence).
+
+  **Explicitly rejects 0467's claim that the knowledge model is now complete.** Confirms 0467's own three
+  remaining questions (coherent Knowledge State formation; conflict representation/resolution; Knowledge-
+  State quality measurement) and **adds a fourth**, emerging directly from this review: **"How do we
+  distinguish world-state evolution from epistemic evolution?"** Produces the **most complete end-to-end
+  architecture diagram in this arc**, integrating every capability built from 0454 through 0467: Infinite
+  Knowledge Space Omega -> Reality/Possibility -> Observation -> Semantic Reconstruction {structural,
+  semantic, domain} -> Dimension Discovery -> Proposition -> [epistemic commitment] -> Assertion ->
+  {Evidence, Provenance, Context} -> Epistemic State -> {Zero, Lord, Comparison -> Challenge} -> Sārathi ->
+  Next Epistemic Action -> New Observation -> Update -> Knowledge State K_{t+1} -> Preserved History. States
+  the file's two "most important invariants": **"KnowledgeOS never destroys epistemic history"** and **"A
+  change in knowledge does not imply that the previous knowledge was wrong"** -- worked via Version_{t1}=3.69
+  and Version_{t2}=3.70 both being valid at their respective times, and Assumed/Confirmed both being valid
+  epistemic descriptions at different times, yielding the two-dimensional view **World State Evolution
+  (parallel to, separate from, but related to) Epistemic State Evolution**. Closes confirming the move to
+  **Question 6 -- What is a Knowledge State?**, posing K_t=? explicitly and whether it is a set, graph,
+  measure, structured state, or something richer, and whether it can legitimately contain unknown,
+  unresolved, conflicting, assumed, rejected, historical, and currently-accepted knowledge simultaneously.
+introduces:
+  - concept: "Proposition Identity != Assertion Version: an assertion version reflects a new epistemic relationship to a proposition, not necessarily a new proposition"
+  - concept: "Two separate, non-collapsible histories: World State History (proposition-level, what was believed about the world) versus Epistemic History (how knowledge about a given proposition evolved)"
+  - concept: "Conflict reframed as a first-class relational object, Conflict(P1,P2,NormativeContext) or DecisionConflict(Knower,{P1,P2},Context), rather than a per-assertion Conflict attribute -- a further refinement beyond 0464's per-assertion field"
+  - concept: "Retired != Rejected: Retired means historically valid but no longer current; Rejected means the assertion failed epistemic evaluation outright"
+  - concept: "Epistemic evolution is not necessarily a linear lifecycle: a branching supported/open/contested model with re-evaluate/revise loops replaces the linear Created->...->Retired/Rejected sequence"
+  - concept: "History = Temporal + Provenance + Causal Evolution, not merely a version list -- a full causal/provenance graph connecting assertions, evidence, and reevaluations"
+  - concept: "Delta-based Knowledge-State transition tied to the infinite-knowledge-space hypothesis: K_t subset Ω_t, K_t -[Δ_t]-> K_{t+1} (never simple replacement), with full history H={K_0,...,K_t} preserved"
+  - concept: "Zero, Lord, and Sārathi all extended temporally: Zero(H_{0:t}) inspects knowledge evolution; Lord identifies never-investigated dimensions over time; Sārathi navigates knowledge history with an expanded (K_t,H_t,Zero_t,Lord_t,Goal)->NextEpistemicAction signature"
+  - concept: "Explicit rejection of 0467's 'complete model' claim, adding a fourth foundational open question: how to distinguish world-state evolution from epistemic evolution"
+  - concept: "Most complete end-to-end architecture diagram in this arc, integrating every capability from 0454 through 0467 into one pipeline"
+  - concept: "Two new foundational invariants: KnowledgeOS never destroys epistemic history; a change in knowledge does not imply the previous knowledge was wrong"
+defines:
+  - concept: "World State History vs. Epistemic History"
+    definition: "World State History tracks successive propositions believed about reality (P1->P2->P3); Epistemic History tracks how the epistemic status of a single proposition evolved (Unknown->...->Confirmed->Challenged) -- two distinct, non-collapsible timelines"
+  - concept: "Conflict (relational, revised)"
+    definition: "Conflict(P1,P2,NormativeContext) or DecisionConflict(Knower,{P1,P2},Context): a first-class relation between propositions/assertions and a normative/decision context, not an attribute of any single assertion"
+  - concept: "Knowledge-State delta transition"
+    definition: "K_t -[Δ_t]-> K_{t+1}, where Δ_t bundles new propositions, new evidence, revised epistemic states, newly discovered dimensions, retired propositions, resolved conflicts, and newly exposed Zero findings; K_{t+1} never simply replaces K_t"
+refines:
+  - concept: "0467's Update/Preserve formalization and eight-state Assertion Lifecycle"
+    refinement: "Corrected on multiple fronts: update need not create a new proposition, the lifecycle is not linear, history is a causal graph not a version list, and Retired/Rejected are distinct outcomes"
+  - concept: "0464's per-assertion Conflict dimension (None/Active/Resolved)"
+    refinement: "Further refined into a first-class relational Conflict object between propositions, rather than a symmetric attribute duplicated onto each involved assertion"
+  - concept: "0462/0464/0466's Logical!=Normative-Conflict distinction"
+    refinement: "Given its clearest DDD-boundary treatment yet: conflict is modeled as an explicit relation with a normative/decision context, not as a flag on individual assertions"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record Proposition-Identity!=Assertion-Version and the two-history (World-State/Epistemic) split."
+  - "dimension-registry.md: record Conflict reframed as a first-class relation (Conflict(P1,P2,NormativeContext)), superseding the per-assertion Conflict field; record Retired!=Rejected and the non-linear epistemic lifecycle."
+  - "dimension-registry.md: record the Δ_t-based Knowledge-State transition tied to Ω_t, the temporal extension of Zero/Lord/Sārathi, and the two new foundational invariants (never-destroys-history; change!=previous-was-wrong)."
+anchor_test:
+  anchor: "0467's Update/Preserve/Lifecycle formalization; 0464's per-assertion Conflict dimension; 0461's founding infinite-knowledge-space Ω hypothesis; 0451's Second-Order Observation"
+  supports_dimension: "LANDMARK: delivers roughly a dozen distinct corrections to 0467, most significantly Proposition-Identity!=Assertion-Version, a two-history (World-State/Epistemic) split, Conflict reframed as a first-class relation rather than a per-assertion attribute, a non-linear epistemic lifecycle, a Δ_t-based Knowledge-State transition tied to Ω_t, and temporal extensions of Zero/Lord/Sārathi -- producing the most complete end-to-end architecture diagram in this arc and explicitly rejecting the claim that the knowledge model is complete, adding a fourth foundational open question"
+  refines_or_contradicts: "refines 0467's Update/Preserve/Lifecycle model on multiple fronts; further refines 0464's Conflict-dimension correction into a first-class relational object; no unresolved contradiction"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "Continues the Bhīṣma grandfather/opposing-side example a third time, refining its resolution from a per-assertion Conflict field into a first-class relational Conflict object"
+undefined_concepts: []
+open_questions:
+  - "The fourth foundational question added here: how to distinguish world-state evolution from epistemic evolution -- not yet formally resolved"
+  - "Question 6 (What is a Knowledge State?), confirmed as the next research target -- whether K_t is a set, graph, measure, or structured state, and whether it can validly contain unresolved/conflicting/assumed/rejected knowledge simultaneously"
+  - "Whether the causal/provenance graph model of History supersedes or extends 0467's simpler version-list History(A)"
+tier2_triggered: true
+tier2_reason: "Delivers roughly a dozen distinct, substantive corrections to 0467: Proposition-Identity!=Assertion-Version, a two-history World-State/Epistemic split, Conflict reframed as a first-class relation rather than a per-assertion attribute, Retired!=Rejected, a non-linear epistemic lifecycle, History as a causal/provenance graph, and a Δ_t-based Knowledge-State transition tied to the founding Ω hypothesis with temporally-extended Zero/Lord/Sārathi -- producing the most complete end-to-end architecture diagram in this arc and explicitly rejecting the prior claim of model completeness."

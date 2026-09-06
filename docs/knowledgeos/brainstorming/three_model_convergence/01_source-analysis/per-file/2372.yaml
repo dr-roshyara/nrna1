@@ -1,0 +1,99 @@
+sequence: 2372
+path: docs/knowledgeos/brainstorming/20260903-091500_gita-on-representation-reduction-and-preservation.md
+title: "The Gītā on Reduction and What Must Be Preserved -- Third KR-SIM Companion Study, Catches and Explicitly Refuses the 'Compactness-Is-Skill' Trap ('the 5-Digits-to-2-Digits Trap in Sanskrit Dress'), Extends Adequacy≠Realization From the Already-Tracked Ground-Not-Outcome Finding, and Confirms 'Fifth Consecutive Time' Zero Kernel Candidates"
+date: "2026-09-03"
+bytes: 0
+model:
+  primary: g
+  secondary: c1
+  secondary_note: "third KR-SIM Gita companion study (parallel to files 2329, 2370), applied to Chapter 2's reduction/preservation material against the KR-REP-REDUCTION audit; the most notable new content is an explicit, self-caught refusal of a tempting misreading (compactness as reduction-skill)"
+source_role: BRIDGE
+canonical_source: 2372
+importance: high
+confidence: high
+about: >
+  Third KR-SIM Gītā companion study (parallel to this reconstruction's already-tracked files 2329 and
+  2370), applying the same question/lens/corroboration-only discipline to Chapter 2's material against
+  the KR-REP-REDUCTION audit (outside this reconstruction's primary scope). Adds two discipline rules
+  from "the handoff" (bridge candidate, unidentified): "never infer a hierarchy from naming alone" (§36
+  Rule 2) and "separate empirical results from mathematical claims" (Rule 5).
+
+  **DELIVERS THREE CORROBORATION/LENS LOCI**: 2.22 ("worn-out garments") -- Corroboration C-1 for the
+  audit's central distinction Π(T(D))=Π(T(D∖S)) (preserving what the contract requires, not the object
+  itself), explicitly noting the lens supplies no metric ("N_viol, Ĥ(Q|R), A_n, F_n -- the entire metric
+  vector -- have no counterpart here"); 2.16 ("of the unreal there is no being") -- Lens L-1, explicitly
+  weak, a boundary exists but the text offers no help with the audit's actual difficulty (contract-
+  relative, possibly non-monotone adequacy); 18.7-9 (guṇa-typed tyāga, already tracked in file 2370) --
+  reused here for a NEW purpose, Corroboration C-2 extending the already-tracked ground-not-outcome
+  finding to a new distinction: adequacy (H(Q|T)=0, an optimal decoder exists) ≠ realization (F(T)=1,
+  the specified decoder achieves it) -- "two eliminations with identical outcomes can differ in whether
+  they were warranted."
+
+  **DELIVERS AN EXPLICIT, SELF-CAUGHT REFUSAL OF A TEMPTING MISREADING**: 2.50 ("yoga is skill in
+  action") tempts the reading "reduction is skill -- the art of doing more with less." "⚠️ REFUSED. This
+  is the '5 digits → 2 digits' trap in Sanskrit dress" -- citing the mandate's own explicit warning that
+  digit count is only one representation-capacity measure and a shorter representation may have GREATER
+  information capacity depending on encoding/alphabet. "A reading that treats compactness as a virtue
+  would import exactly the error the mandate forbids... recorded as a refusal, because it was the most
+  attractive reading available and it is wrong." This is the study's most methodologically interesting
+  moment: explicitly identifying and rejecting the single most tempting misreading in the material,
+  rather than merely reporting what corroborates.
+
+  **DELIVERS THE CORROBORATION MAP**: six of nine elements get nothing from the text, and the one that
+  "looked most promising" (compactness-as-goal) had to be refused -- "that is the expected shape when a
+  text is read rather than mined."
+
+  **DELIVERS A THREE-ITEM CANDIDATE REGISTER**: G-12 (preservation-of-inquiry-not-object, lens, already
+  the audit's own framing, adds no support); G-13 (extends G-10's ground-not-outcome finding to
+  adequacy≠realization, corroboration); G-14 (~~compactness is skill~~, REFUSED, [NEG]).
+
+  **DELIVERS THE UPDATED RUNNING COUNT**: "kernel candidates -- NONE. Fifth consecutive time, and the
+  argument is now shorter because the mandate makes it for me" -- a four-point argument (implementation
+  forbidden at this stage; C-1 usability-does-not-license-kernel-entry binds; never-infer-hierarchy-
+  from-naming-alone directly forbids deriving a kernel candidate from a verse; the programme's Gītā
+  record is questions-and-lenses-never-entities). This extends this reconstruction's already-tracked
+  running count (file 2370's "fourth consecutive time") to five.
+
+  **CLOSES WITH THE SAME GOVERNING RULE**: "the strongest statement made must never exceed the strength
+  of the available evidence... this study's honest yield is one framing corroboration, one extension of
+  an existing candidate, and one refusal. The refusal is the most useful of the three." This closing
+  line delivers a notable methodological point: a caught-and-rejected tempting misreading is explicitly
+  valued as the study's most useful output, more useful than either corroboration.
+introduces:
+  - concept: "The explicit, self-caught refusal of the 'compactness is skill' misreading, named 'the 5-digits-to-2-digits trap in Sanskrit dress' -- the study's most methodologically interesting moment"
+  - concept: "The adequacy≠realization distinction extending the already-tracked ground-not-outcome finding: two eliminations with identical outcomes can differ in whether they were warranted"
+  - concept: "The updated running count: fifth consecutive KR-SIM Gita companion study to produce zero kernel candidates"
+  - concept: "The closing methodological point: a caught-and-rejected tempting misreading is more valuable output than a corroboration"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked files 2329, 2370 companion-study pattern and kernel-verdict running count"
+    refinement: "EXTENDED to a fifth consecutive occurrence, with the argument explicitly shortened since the mandate itself now makes it"
+  - concept: "This reconstruction's already-tracked ground-not-outcome elimination finding (file 2370's G-10)"
+    refinement: "EXTENDED to a new distinction: adequacy (H(Q|T)=0) versus realization (F(T)=1) -- the same shape of distinction applied to a different pair of concepts"
+contradicts: []
+repeats:
+  - "Structurally near-identical to files 2329, 2370; this record captures only the incremental loci, the explicit trap-refusal, the adequacy/realization extension, and the updated running count."
+bridge_candidates:
+  - "'The handoff' §36/§25/§40/§19/§21D -- cited repeatedly as an unincluded governing mandate document; not identified in this file."
+mathematical_content: false
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as the third KR-SIM Gita-companion study, delivering an explicit self-caught refusal of the 'compactness is skill' misreading and extending the ground-not-outcome finding to adequacy≠realization, with the running count now at five consecutive zero-kernel-candidate outcomes."
+anchor_test:
+  anchor: "This reconstruction's already-tracked files 2329, 2370 kernel-verdict running count"
+  supports_dimension: "Extends the running count to five and delivers a notable self-caught refusal of a tempting misreading"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts:
+  - "'The handoff' -- an unincluded governing mandate document cited by section number (§36, §25, §40, §19, §21D) throughout this file."
+open_questions:
+  - "Whether a sixth or further KR-SIM Gita-companion study exists elsewhere in the corpus, continuing the running tally."
+tier2_triggered: true
+tier2_reason: "Third KR-SIM companion study delivering a notable self-caught refusal of a tempting misreading, an extension of the ground-not-outcome finding to adequacy≠realization, and an updated running count (fifth consecutive zero-kernel-candidate outcome). Classified importance high given the substantial structural repetition of files 2329/2370, though the trap-refusal moment is genuinely notable."

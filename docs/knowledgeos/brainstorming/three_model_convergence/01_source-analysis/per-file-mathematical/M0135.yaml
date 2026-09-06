@@ -1,0 +1,82 @@
+sequence: M0135
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-155427_the-research-model-and-the-optimized-model.md
+title: "The Research Model and the Optimized Model"
+date: "20260902-155427"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0135
+importance: critical
+confidence: high
+about: >
+  A comprehensive mid-programme synthesis explicitly split into a "Research Model" (Part A: the
+  object of investigation, stated formally, with what is settled vs. open) and an "Optimized Model"
+  (Part B: a [PROP] proposal for what to build now, given 26 experiments), plus a full artifact map
+  (Part C) of the adjacent docs/knowledgeos/research/ codebase this reconstruction previously
+  discovered only partially (M0106, M0111). Explicitly incorporates and honors four review rulings
+  from an earlier proposal it supersedes.
+introduces:
+  - "Full artifact map of docs/knowledgeos/research/: three lanes (theory-v1.2-simulation/ 25 files A-V, theory-v1.1-simulation/ 14 files A-L, kernel-reduction/ 22 files 01-19), each with a FINAL-VERDICT/report, plus exact code module lists (kos12/ 25 modules, kos/ 12 modules, kernel-reduction/kr/ 12 modules) and machine-readable results directory counts"
+  - "The four-way separation Structure ≠ Projection ≠ Lens ≠ History (𝒮_t / π_i / ZeroLens / History_t) as the shape the research is conducted in — explicitly not itself adopted"
+  - "The saturation law: a reading must be a function of 𝒮_t; if computed via projection π for efficiency, π must be reading-complete for it (ρ factors through π ⟺ ~_π refines ~_ρ) — decidable and testable"
+  - "Diagnostic readings: replace ρ:𝒮→Bool with ρ:𝒮_t→(verdict,Witness), where Witness names which requirements are responsible and why — the constructive fix for saturation, restoring observability"
+  - "Formal version-diff discipline requirement: 'nothing is deleted' framing rejected; K_t→A_t is classified DELETION (not rename) + ADDITION + RE-SCOPING of DEF-1, because the predicates have different truth conditions"
+  - "Revised build order (§B.6): diagnostic readings first (restores observability) → composition (closes the fourth value as corollary) → Contr definition (now observable) → K_t→A_t propagation → adjudicate M3≅M4/𝓑 → ⪰/δ/retirement — explicitly reordering Contr from first to third, framed as 'a finding, not a preference'"
+  - "Six documented instances of the design principle 'define the structure, derive the projection' (table in §B.1), the sixth (value-set-of-a-state / KR-CONTR) marked NEW and 'most actionable'"
+defines: []
+refines:
+  - "The projection-destroys-structure / induced-equivalence-relation diagnosis (tracked in this reconstruction since M0043, formalized at M0098): this document independently states the same correction — 'every projection declares what DISTINCTIONS IT IDENTIFIES, not its kernel' — with the same x1~π x2 ⟺ π(x1)=π(x2) formalization, attributed here to a review's §22, and reports the code itself was renamed from kernel() to induced_relation() with bit-identical results verified"
+  - "KR-CONTR's M3≅M4 finding and MD-exclusion (tracked M0116, M0120, M0127): reaffirmed here as 'the only survivor, not an adoption', with the isomorphism relabeling UNDEFINED↔C at 0/8 commutation failures"
+  - "The R1 factivity decision (K_t→A_t, Verification separate): given its most explicit and complete diff-table treatment yet in this reconstruction, plus a new caveat — ChannelRelation(c1,c2) is NOT required by R1 and remains unbuilt, and the underlying error rate (3320 attributions, 390 false) is explicitly unchanged by R1"
+  - "Closure-as-broken (tracked since M0073-M0080, M0092): reaffirmed — 'KR-CONTR C6 reproduces D-0: a contradictory state still has Zero_weak=Zero_reasoned=true'; §B.2's diagnostic-readings design is explicitly the design for a repair, not the repair itself"
+contradicts: []
+repeats:
+  - "The 𝓑 boundary-object status (candidate, not primary) — same position as tracked since the Phase-5/Zero-Lens arc"
+bridge_candidates:
+  - "Forward-pointer, unresolved: this document states it is SUPERSEDED AS A PROPOSAL by '20260902-170000_the-research-decision-and-optimized-model.md', which incorporates KR-CONTR-EVAL, KR-CONTR-FDE, KR-COMP, KR-COMP-SEP, an E-FDE adjudication, and introduces 'a DECISION LAYER (DECISION-01 ratified, DECISION-02 open)' — not yet located in this reconstruction's M-sequence; expected at a later sequence position given the established log-ordering-anomaly pattern"
+  - "The complete docs/knowledgeos/research/ artifact map given here (Part C) is the fullest inventory this reconstruction has seen of that adjacent, still-out-of-scope codebase — bridge_candidate for the eventual question of whether that tree should be incorporated into a unified reconstruction scope"
+  - "§C.5 lists sibling documents in this same folder ('…122338-what-eleven-experiments…', '…132000_proposed-optimized-model…', '…142217_the-frozen-model…', '…150331_the-development-of-the-model…') as inputs/records — some may already be processed under different M-numbers earlier in this sequence; not cross-checked here"
+mathematical_content: >
+  Formalizes the induced-equivalence-relation correction (x1~π x2 ⟺ π(x1)=π(x2), Y≅X/~π) and the
+  saturation/reading-completeness law (ρ factors through π ⟺ ~_π refines ~_ρ ⟺ π(s1)=π(s2)⟹ρ(s1)=ρ(s2)),
+  both stated as decidable/testable properties rather than proved theorems in this document itself
+  (the proofs/verification live in the referenced KR-CONTR experiment, V in the v1.2 lane).
+gita_content: null
+kernel_content: >
+  Directly extends the KR-CONTR/Zero/N_eff/FR-001 research lines this reconstruction has tracked
+  since M0043 with their fullest artifact-level accounting yet — exact file and module counts, code
+  reproduction commands, and a documented open scratch-file cleanup denial ("sandbox denied cleanup"
+  for smuggling_probes.json and variant_summary.json in the kernel-reduction results directory).
+registry_updates:
+  - "First document in this reconstruction to give the COMPLETE artifact map (all three lanes, all code modules, all results directories) of the adjacent docs/knowledgeos/research/ codebase — supersedes the partial pictures from M0106/M0111"
+  - "Names an unlocated successor document (170000_the-research-decision-and-optimized-model.md) carrying a new DECISION LAYER — flagged for the eventual reclassification pass"
+anchor_test:
+  anchor: true
+  supports_dimension: "Projection/induced-equivalence formalization, saturation law, R1 factivity, KR-CONTR completion, adjacent-codebase scope question"
+  refines_or_contradicts: refines
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Every projection declares what DISTINCTIONS IT IDENTIFIES.\" — not \"every projection declares its kernel.\" ... The code initially named this function kernel(); renamed to induced_relation(), results verified bit-identical."
+  - "\"K_t → A_t is NOT a rename... A symbol was retired and another introduced... KnowledgeOS no longer claims to represent knowledge.\""
+  - "\"Sat has 5 of 8 classes non-executable. Saturation is therefore the NORMAL regime, not an edge case. The system is, in practice, permanently blind.\""
+  - "\"Contr was first. It should now be third... a Contr defined today would be unobservable in the normal regime... Fix observability, then compose, then define.\""
+undefined_concepts:
+  - "The successor document's DECISION-01/DECISION-02 decision-layer content — unknown until located"
+  - "ChannelRelation(c1,c2) — named as unbuilt and not required by R1, but its eventual formal shape is left open"
+open_questions:
+  - "Where does '20260902-170000_the-research-decision-and-optimized-model.md' fall in this reconstruction's M-numbering, and does it further revise the build order or Contr/composition decisions already tracked through M0127?"
+  - "Should docs/knowledgeos/research/ eventually be brought into this reconstruction's unified scope, given this document's confirmation that it is a fully executed, reproducible, and substantially larger codebase than the mathematical_ideas_that_can_be_implemented/ corpus alone?"
+tier2_triggered: true
+tier2_reason: >
+  Independently arrives at the same induced-equivalence-relation correction this reconstruction
+  formalized at M0098, gives the fullest-yet artifact map of the adjacent out-of-scope research/
+  codebase, and names an unlocated successor document carrying a new decision layer — three
+  significant bridge/scope findings in one document.

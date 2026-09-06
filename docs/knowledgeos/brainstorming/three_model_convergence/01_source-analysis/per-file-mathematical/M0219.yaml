@@ -1,0 +1,103 @@
+sequence: M0219
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260903-100000_review-of-kr-rep-reduction-results.md
+title: "KR-REP-REDUCTION-2026-09 EXECUTED: the first empirically located representation-preservation boundary (R5→R4, caused by T4/rounding), a structural (not merely empirical) proof that adequacy cannot recover in a deterministic sequential chain via the data-processing inequality, a new sequential-vs-parallel representation-family distinction, a striking adequacy≠realization demonstration (54.37-point fixed-decoder performance gap under an information-equivalent recoding), and a negative result refuting Zero as the preservation-boundary predictor"
+date: "20260903-100000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0219
+importance: critical
+confidence: high
+about: >
+  Reports and carefully adjudicates the actual executed results of KR-REP-REDUCTION-2026-09 (the
+  protocol frozen at M0207-M0218) — the first genuinely new empirical data in the representation-
+  reduction sub-thread. Delivers the first empirically located preservation boundary in the entire
+  Zero-algebra/representation-reduction research programme, a structural (not merely empirical)
+  resolution of a design hypothesis via the data-processing inequality, a new theoretical
+  sequential-vs-parallel representation distinction, a striking empirical demonstration separating
+  representation adequacy from decoder realization, and a valuable negative result on Zero's
+  relationship to the preservation boundary — throughout applying careful epistemic discipline that
+  repeatedly downgrades overclaimed language in the reviewed draft.
+introduces:
+  - "THE FIRST EMPIRICALLY LOCATED PRESERVATION BOUNDARY in this entire research programme: R5 (drop timestamps) Ĥ(Q|R)=0.0000, N_viol=0, ADEQUATE; R4 (round to 3 s.f.) Ĥ(Q|R)=0.4299, N_viol=35,532, INADEQUATE; R3 (round to 2 s.f.) Ĥ(Q|R)=0.8546, N_viol=246,235, INADEQUATE; R2 (rank) Ĥ(Q|R)=3.3937, N_viol=5,530,777, INADEQUATE — boundary located at R5→R4, caused by T4 (rounding to 3 significant figures) — with the explicit epistemic caution that the correct scientific statement is scoped to 'this specified carrier, inquiry Q, contract Π, transformation chain, and value alphabet V=12,' NOT a general claim that 'three significant digits is the preservation limit'"
+  - "A STRUCTURAL (not merely empirical) result for hypothesis H-C: the original hypothesis asked whether adequacy could become NON-MONOTONE across the chain (R5 adequate, R4 inadequate, R3 adequate again, R2 inadequate) — but because R_{n-1}=T_n(R_n) makes each representation a deterministic function of the previous one, the data-processing inequality forces H(Q|R_{n-1})≥H(Q|R_n) for EVERY deterministic sequential chain, making non-monotone recovery structurally IMPOSSIBLE, not merely empirically absent — reclassified from 'H-C refuted a priori' to 'H-C was identified as structurally inapplicable to the specified deterministic sequential chain... the empirical monotonicity therefore serves as a chain-consistency check, not as an independent test of H-C' — an explicit correction distinguishing a priori impossibility from empirical falsification"
+  - "A new theoretical distinction elevated to permanent-theory status: SEQUENTIAL representation families (D→R5→R4→R3→R2, subject to the DPI monotonicity constraint H(Q|R5)≤H(Q|R4)≤H(Q|R3)≤H(Q|R2), no recovery possible) versus PARALLEL representation families (independently constructed R_A, R_B, R_C from D, where one can destroy a distinction another independently preserves, permitting genuine non-monotone comparative adequacy) — flagged as likely to matter for future alternative-knowledge-representation investigations"
+  - "A negative-but-valuable result for H-B (representation/contract/operator failure separation): the experiment never created a state where Q is recoverable (H(Q|R)=0) yet the fixed decoder O fails — A_n=1.000 at every level, F=1.000 at the one adequate level — so contract failure and operator-only failure were never observed, only representation failure; reclassified from 'H-B FALSIFIED' to '[NEG] the design failed to operationalize the intended separation of representation/contract/operator boundaries' — explicitly identifying the EXPERIMENTAL DESIGN, not the underlying theoretical distinction, as what failed"
+  - "A striking, independently strong demonstration (§5) that adequacy≠realization: reversing a rank-direction encoding convention (ascending vs. descending) changes fixed-decoder performance F_argmax from 0.8667 to 0.3230 (a 54.37-percentage-point swing) while H(Q|R2) is essentially unchanged (3.3937 vs. 3.3965) and N_viol is similar — precisely reworded from 'a change carrying no information about D' to 'the ascending and descending rank conventions are information-equivalent recodings of the same rank representation, yet they produce substantially different performance for the fixed decoder O' — explicitly tied to the corpus's own Q-equivalence concept"
+  - "H-D correction: 'the four dimensions move independently' downgraded to '[EXP] Reduction is multidimensional; the measured dimensions do not collapse into a single common reduction trajectory' — because four observations along one chain (bytes 37→37→37→25; fields 2→2→2→2; cardinality 26826→5696→3288→162; entropy 15.04→12.31→11.10→7.17) cannot establish statistical independence, only that no single scalar captures all four dimensions"
+  - "H-E confirmed as empirical consistency (not proof) with the theoretical lower bound: Ĥ(Q)=5.0098 while Ĥ(R_n)=15.042/12.307/11.097/7.170 at R5/R4/R3/R2 — Ĥ(R_n)>Ĥ(Q) at every level, consistent with H(R)≥H(Q), correctly not elevated beyond 'empirical consistency with the theoretical bound'"
+  - "H-RR2: a valuable NEGATIVE result directly answering M0216/M0218's open question — Zero rates at each transition (R5→R4: 3.77%; R4→R3: 4.26%; R3→R2: 0.00%) show NO association with the observed preservation boundary; explicit conclusion: 'we should not make Zero the fundamental preservation criterion' — Zero is 'one possible mechanism within the broader system, not the definition of preservation,' empirically confirming M0214's conceptual demotion of Zero"
+  - "A revised conceptual architecture reflecting the new evidence: SOURCE→{Transformation, Representation, Inquiry Q, Preservation contract Π, Decoder O}→Recoverability/Adequacy→Preservation boundary→{Eliminability(Zero), Reduction measures} — Zero now explicitly one branch alongside reduction measures, not the root cause"
+  - "A comprehensive three-part knowledge inventory: (A) Mathematical theory — H(Q|R)=0 sufficiency; H(R)=H(Q)+H(R|Q) decomposition; the NEW structural consequence R_{n-1}=T_n(R_n)⟹H(Q|R_{n-1})≥H(Q|R_n); (B) KR-ZERO empirical evidence — 9 established findings restated as a checklist; (C) KR-REP-REDUCTION empirical evidence — 10 NEW findings from this experiment, including the located boundary, multidimensional reduction, the adequacy≠realization demonstration, Zero's non-correlation with the boundary, and the structural impossibility of non-monotone adequacy in this chain type"
+  - "An explicit, disciplined limitation statement: 'we are NOT yet allowed to call this a knowledge-extraction theory' — only a deliberately small numerical carrier r=(value,source,timestamp) with Q=(argmax_source,decile(total)) has been tested; transfer to documents/claims/entities/relations/provenance/contradictions/temporal-states/evidence remains an explicitly open research question"
+  - "A final recommendation against premature theory-writing: 'the next thing I would not do is immediately write Theory v1.3. I would first perform a results audit of the actual KR-REP-REDUCTION corpus/metrics/implementation, especially checking the exact definitions of C, empirical entropy vs Miller-Madow entropy, rank ties, and the R5→R4 boundary counts'"
+defines: []
+refines:
+  - "M0207-M0218's frozen Representation Reduction Contract and Auditor Engine: confirmed as having produced genuine executed results, with the first concrete numeric application of every defined quantity (A_n, F_n, Ĥ(Q|R_n), Ĥ(R_n|Q), N_viol,n)"
+  - "M0212/M0214's Zero-demotion hypothesis: empirically corroborated by H-RR2's negative result (Zero rates uncorrelated with the boundary)"
+contradicts:
+  - "The reviewed draft's overclaimed phrasings 'H-C refuted a priori' and 'H-B FALSIFIED' and 'the four dimensions move independently' and 'a change carrying no information about D' — all four corrected to more epistemically precise formulations distinguishing structural impossibility from empirical falsification, design failure from theoretical refutation, and multidimensionality from statistical independence"
+repeats:
+  - "The established Reduction≠Preservation≠Adequacy≠Realization separation (M0198-M0218), now empirically illustrated for the first time via the rank-direction demonstration"
+bridge_candidates:
+  - "Whether the recommended results audit (checking C's definition, empirical-vs-Miller-Madow entropy, rank-tie handling, and the exact R5→R4 boundary counts) was ever performed"
+  - "Whether the sequential-vs-parallel representation-family distinction is ever formalized and tested experimentally"
+  - "Whether the transfer to a richer KnowledgeOS carrier (documents/claims/entities/relations/provenance/contradictions/temporal-states/evidence) is ever attempted"
+mathematical_content: >
+  Delivers the thread's first genuine empirical dataset with concrete numeric results at every
+  reduction level, a structural (data-processing-inequality-derived) proof that non-monotone
+  adequacy is impossible for deterministic sequential chains, and the first quantified empirical
+  separation of representation adequacy from decoder realization (a 54.37-percentage-point
+  performance swing under an information-equivalent recoding) — the most substantive single
+  empirical result in the entire Zero-algebra/representation-reduction thread.
+gita_content: null
+kernel_content: >
+  Marks the representation-reduction sub-thread's transition from pure theory/design into genuine
+  empirical results, delivering the first located preservation boundary, a structural resolution of
+  one hypothesis via information theory itself (not experimentation), and a negative result on
+  Zero's role that directly corroborates the conceptual reorganization begun at M0212/M0214 — while
+  maintaining careful epistemic discipline throughout by repeatedly downgrading overclaimed language
+  in the reviewed draft.
+registry_updates:
+  - "First empirically located preservation boundary: R5→R4, caused by T4 (rounding to 3 significant figures), under the specified carrier/Q/Π/chain"
+  - "Structural (DPI-derived) proof that non-monotone adequacy is impossible for deterministic sequential representation chains — H-C reclassified from 'refuted' to 'structurally inapplicable'"
+  - "New sequential-vs-parallel representation-family distinction elevated to permanent theory status"
+  - "H-B reclassified: design failed to operationalize the representation/contract/operator separation, not a theoretical refutation"
+  - "Striking empirical adequacy≠realization demonstration: 54.37-percentage-point fixed-decoder performance swing under an information-equivalent rank-direction recoding"
+  - "H-D corrected: 'multidimensional, non-collapsing' not 'independent'"
+  - "H-RR2 negative result: Zero rates uncorrelated with the observed preservation boundary, empirically corroborating Zero's conceptual demotion"
+  - "Explicit disciplined limitation: not yet a general knowledge-extraction theory; only a small numerical carrier tested"
+anchor_test:
+  anchor: true
+  supports_dimension: "First located preservation boundary; DPI-derived structural impossibility result for H-C; sequential-vs-parallel distinction; adequacy≠realization demonstration; Zero-uncorrelated-with-boundary negative result"
+  refines_or_contradicts: "refines (M0207-M0218's frozen protocol, now applied to genuine data); contradicts (the reviewed draft's four overclaimed phrasings, all corrected)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"R5 (drop timestamps): Ĥ(Q|R)=0.0000, N_viol=0, YES; R4 (round to 3 s.f.): Ĥ(Q|R)=0.4299, N_viol=35,532, NO\" — the located boundary"
+  - "\"H(Q|R_{n-1}) ≥ H(Q|R_n)\" — the data-processing-inequality-derived structural constraint"
+  - "\"F_argmax = 0.8667 (ascending) vs. 0.3230 (descending)... H(Q|R2) 3.3937 vs 3.3965\" — the adequacy≠realization demonstration"
+  - "\"Zero rate 3.77% / 4.26% / 0.00%... does not show a Zero/boundary relationship. That is a valuable negative result.\""
+  - "\"We are NOT yet allowed to call this a knowledge-extraction theory.\""
+undefined_concepts:
+  - "The exact definition of C (the contract/admissibility predicate) used in this specific execution — flagged by the reviewer as needing audit"
+open_questions:
+  - "Was the recommended results audit (C's definition, entropy estimator choice, rank-tie handling, exact boundary counts) ever performed?"
+  - "Is the sequential-vs-parallel representation-family distinction ever formalized and tested?"
+  - "Is the theory ever extended to a richer KnowledgeOS carrier beyond the tested (value,source,timestamp) tuple?"
+tier2_triggered: true
+tier2_reason: >
+  Reports the first genuine empirical execution results in the entire Zero-algebra/representation-
+  reduction thread: the first located preservation boundary, a structural (not merely empirical)
+  data-processing-inequality proof resolving one hypothesis, a new permanent sequential-vs-parallel
+  representation-family distinction, a striking quantified demonstration separating adequacy from
+  realization, and a negative result on Zero's relationship to the boundary that directly
+  corroborates the thread's own prior conceptual reorganization — while consistently correcting
+  overclaimed language toward more epistemically precise formulations throughout.

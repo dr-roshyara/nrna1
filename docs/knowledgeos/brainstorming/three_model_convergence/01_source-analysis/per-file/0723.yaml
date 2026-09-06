@@ -1,0 +1,177 @@
+sequence: 723
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-125802_step-136-bounded-context-boundary-tests.md
+title: "Step 136 -- Delivers All Ten Promised Worked Boundary-Test Scenarios With Decisive (Mostly Boxed-NO) Answers -- Delivers the Ten-Item Boundary Violation Catalog (V1-V10), AFR-32 Through AFR-36 (Catalog Now Thirty-Six Rules), and the Single Most Compact, General-Purpose Capstone Invariant in the Reconstruction: MaterialTransition⇒Owner+Authority+Evidence(+Verification) -- Delivers the Eleven-Row Action Authority Matrix, the Repeatable Eight-Step Scenario-Based Architecture Validation Method, and Reframes the Assurance Graph as an 'Engineering Accountability Graph' -- Opens Step 137, the First Consolidated KnowledgeOS Domain Model, Positioned to Finally Address the Three-Way Candidate-Fundamental-Unit Question"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 136 -- Bounded Context Boundary Tests', promised at 0722's close; delivers all ten promised scenarios with decisive target answers, converting the accumulated ownership/boundary discipline into a concrete, named violation catalog and five additional numbered fitness rules, culminating in the reconstruction's most compact general-purpose governance invariant -- among the most directly validating and consolidating files in the entire Steps 120-137 synthesis arc"
+source_role: PRIMARY_RESEARCH
+canonical_source: 723
+importance: critical
+confidence: high
+about: >
+  Delivers all ten scenarios promised at 0722's close, each traced through
+  `Actor→Command→OwningContext→StateChange→Evidence→Verification→Governance` and each closed with a
+  decisive (mostly boxed `NO`, precisely conditioned) target answer — a notably more decisive register than
+  most of the reconstruction's prior hedged/deferred conclusions: (1) a new architecture decision —
+  `Decision→Governance`; an agent may draft but never approve ("can Claude directly change a decision from
+  PROPOSED to APPROVED? NO, unless the agent is explicitly acting through an authorized governance
+  mechanism"); (2) an agent discovers a new fact — `Observation→Evidence→CandidateClaim`, never
+  automatically authoritative ("can an agent's observation automatically overwrite an authoritative
+  architecture statement? NO, because ObservedState≠ExpectedState"); (3) a deterministic check fails —
+  `Rule/Verification/Finding→Assurance`; a checker must never silently transform `FAIL` into `EXCEPTION`;
+  (4) a governance exception — `Exception→Governance`, `EffectiveState=BasePolicy+ApplicableException`, with
+  a sharp, concrete illustrative rejection: "can the agent create an exception by putting a comment in
+  `.claude/memory/`? Absolutely not... it is merely `AgentLocalContext`"; (5) an agent changes code —
+  `Commit⇏Decision`; an agent recommending an architecture change because "this is cleaner" produces only an
+  `AgentRecommendation`, which cannot silently become an `ArchitectureDecision`; (6) a production deployment
+  — `DeploymentSuccess≠ArchitectureConformance` (`exitCode=0`/HTTP 200 do not prove compliance;
+  `PostDeploymentVerification` is required); (7) conflicting evidence — the correct result is
+  `UNKNOWN`/`CONFLICTED`, never an LLM's plausibility guess ("Claude may recommend running further
+  inspection... but the final state should remain UNKNOWN until sufficient evidence exists"); (8) decision
+  supersession — `Supersede`, never `Delete` ("historical governance state is part of the assurance
+  record"), with temporal semantics `ValidFrom/ValidUntil` and `Applicable(D,t)`; (9) Claude and Codex
+  sharing knowledge — `Context_Claude≈Context_Codex` for equivalent tasks/authorization is required, though
+  "different reasoning is acceptable" (Claude may prefer approach A, Codex approach B — that disagreement
+  belongs to Recommendation, not to the underlying facts/authority); and (10) a Nexus migration — the
+  complete combined governed-engineering lifecycle worked through five sub-stages (pre-migration baseline,
+  governance decision/target state, implementation/action-evidence, post-migration verification, and a
+  concrete backup-requirement `FAIL`→`Finding`→governance-disposition example).
+
+  **Delivers a ten-item Boundary Violation Catalog (V1-V10), the most complete, precisely named violation
+  taxonomy in the reconstruction, directly synthesized from the ten scenarios above**: V1 Agent Authority
+  Violation (agent directly creates authoritative decisions); V2 Memory Authority Violation (agent memory
+  overrides governed knowledge); V3 Evidence Authority Violation (observation automatically treated as
+  policy); V4 Assurance Authority Violation (checker grants/removes governance exceptions); V5 External
+  Model Leakage (an external system's model becomes the KnowledgeOS domain model); V6 Cross-context mutation
+  (one context directly changes another's state); V7 Missing provenance; V8 Missing authorization; V9
+  Missing verification; V10 Historical destruction (superseded governance state deleted rather than
+  preserved).
+
+  **Delivers AFR-32 through AFR-36, five additional numbered fitness rules directly derived from the
+  violation catalog, extending the catalog to thirty-six rules total**: AFR-32 (agent cannot directly
+  create authoritative governance state); AFR-33 (agent local memory cannot override authoritative
+  knowledge); AFR-34 (observation cannot automatically become governance policy); AFR-35 (assurance cannot
+  silently grant governance exceptions); AFR-36 (cross-context state changes require explicit contract).
+
+  **Delivers the file's most significant, most general statement of the reconstruction's central AI/
+  automation-governance concern** (§136.39): "no technical execution mechanism may implicitly acquire
+  organizational authority" — explicitly scoped beyond agents alone to include scripts, hooks, CI pipelines,
+  runtime systems, and databases — the broadest formulation of this principle in the entire reconstruction.
+  Delivers the precise reframing of the central risk question as KnowledgeOS automation capability grows:
+  not "can AI understand the architecture?" but "**can AI act without accidentally changing the authority
+  model?**"
+
+  **Delivers the eleven-row Action authority matrix, the most complete, concrete, directly actionable
+  agent-permission table in the reconstruction**: Read knowledge/Inspect repository/Run tests (agent may
+  propose and execute, no approval needed); Create branch/Modify local code/Create PR (agent may propose and
+  conditionally execute, policy-dependent approval); Merge protected branch/Production deployment (agent may
+  propose, execution policy-dependent, usually requires approval); Change architecture rule/Grant
+  architecture exception (agent may only propose, never execute, requires governance approval); Approve
+  governance decision (agent may propose, may execute only if explicitly delegated, requires approval) —
+  explicitly caveated "the exact permissions must be established from actual governance, not invented
+  here." Delivers the corresponding chain `Capability→Policy→Authorization→Execution`, explicitly not
+  `Capability→Execution` directly — "the core safety architecture for autonomous engineering."
+
+  **Delivers "scenario-based architecture validation," a repeatable, genuinely reusable eight-step design-
+  review method for any new KnowledgeOS feature** (§136.43): identify the event, the actor, the concept
+  being changed, the owning context, the authorization, the evidence, the verification, and the governance
+  disposition — "if one of these cannot be identified, the feature requires architectural investigation."
+  Delivers the "boundary completeness" test: a workflow is boundary-complete only if, for every material
+  transition, `Owner≠Unknown ∧ Authority≠Implicit ∧ Evidence≠Missing` — "this can itself become a fitness
+  rule."
+
+  **Delivers the file's capstone — the single most compact, general-purpose governance invariant in the
+  entire reconstruction** (§136.45): "every material state transition must have: `Owner+Authority+
+  Evidence`," extended for production- or governance-affecting changes to also require `Verification`:
+  `MaterialTransition⇒Owner+Authority+Evidence+Verification` — a maximally condensed, directly checkable
+  synthesis of dozens of prior files' distributed governance discipline into a single four-term implication.
+
+  **Delivers "what this means for the Assurance Graph," reframing it precisely as an "engineering
+  accountability graph"** (§136.46-136.47) rather than merely a knowledge graph: the minimal required schema
+  is `Actor→Action→{authorizedBy→Authority, basedOn→Knowledge, changes→Artifact, produces→Evidence,
+  verifiedBy→Verification}`, and Accountability is introduced as an explicit new semantic dimension
+  answering six questions for any material change (Who? Under whose authority? Based on what knowledge?
+  What changed? What proves it? Was it verified?).
+
+  Delivers Step 136's verdict, reconfirming the same five-internal-context ownership model established at
+  0722 (Governance/Knowledge/Evidence/Assurance/AgentPlatform), now validated — at the hypothesis/scenario
+  level, not empirically — via ten worked scenarios.
+
+  **Closes by opening "Step 137 — The KnowledgeOS Domain Model,"** promising the "first consolidated domain
+  model" — semantic objects and relationships, not yet database tables or language-specific classes — an
+  eighteen-object candidate list (`Authority, Decision, Policy, Exception, Knowledge, Claim, Evidence,
+  Observation, FitnessRule, Verification, Finding, Recommendation, Authorization, Action, Agent, Session,
+  Artifact, RuntimeState`), explicitly promising to classify each as an aggregate, a value object, or a
+  cross-context reference — this is precisely the kind of consolidation exercise where the still-open
+  three-way candidate-fundamental-unit question (0703's `TraceableKnowledgeEpisode`, 0710's
+  `GovernedEngineeringFact`, 0711's `KnowledgeObject`/`Claim` pairing) might finally be addressed, since the
+  file explicitly frames itself as deriving "the first candidate KnowledgeOS canonical domain model." No
+  actual code execution, repository inspection, or verified filesystem/architecture claim reported anywhere
+  in this file — every scenario, matrix, and worked example remains a target-architecture hypothesis
+  application, not an empirical finding about the real KnowledgeOS/EKS ecosystem.
+introduces:
+  - concept: "The ten worked boundary-test scenarios with decisive target answers"
+  - concept: "The ten-item Boundary Violation Catalog (V1-V10)"
+  - concept: "AFR-32 through AFR-36, directly derived from the violation catalog"
+  - concept: "The broadest formulation yet: no technical execution mechanism (agent, script, hook, CI, runtime, database) may implicitly acquire organizational authority"
+  - concept: "The eleven-row Action authority matrix (propose/execute/approval columns)"
+  - concept: "Scenario-based architecture validation -- a repeatable eight-step design-review method"
+  - concept: "The capstone invariant: MaterialTransition⇒Owner+Authority+Evidence(+Verification)"
+  - concept: "The Assurance Graph reframed as an 'engineering accountability graph,' with Accountability as a new semantic dimension"
+  - concept: "Opens Step 137 -- the first consolidated KnowledgeOS Domain Model, positioned to address the three-way candidate-fundamental-unit question"
+defines:
+  - concept: "Boundary Violation Catalog (V1-V10)"
+    definition: "A named taxonomy of ten characteristic ways a bounded-context boundary can be violated: agent authority violation, memory authority violation, evidence authority violation, assurance authority violation, external model leakage, cross-context mutation, missing provenance, missing authorization, missing verification, and historical destruction"
+  - concept: "The capstone invariant (MaterialTransition⇒Owner+Authority+Evidence(+Verification))"
+    definition: "Every material state transition in KnowledgeOS must be traceable to an owning context (Owner), an explicit authorization basis (Authority), and supporting evidence (Evidence); transitions affecting production systems or governance additionally require post-transition Verification -- the single most compact general-purpose synthesis of the reconstruction's distributed governance discipline"
+  - concept: "Engineering accountability graph"
+    definition: "A reframing of the Assurance Graph specifically emphasizing its accountability function: for any material Action, the graph must represent who performed it (Actor), under what authority (authorizedBy), based on what knowledge (basedOn), what it changed (changes→Artifact), what evidence it produced (produces→Evidence), and whether it was verified (verifiedBy) -- more than a knowledge graph, an accountability record"
+  - concept: "Boundary completeness"
+    definition: "A workflow is boundary-complete only if, for every material transition, the owner is never Unknown, the authority is never merely implicit, and the evidence is never missing -- a property that can itself be checked as a fitness rule"
+refines:
+  - concept: "0722's semantic ownership matrix and 'no god context'"
+    refinement: "Validated (at the hypothesis/scenario level) via ten concrete worked applications, each producing a decisive target answer rather than a further open question"
+  - concept: "the corpus's pointer-layer principle and .claude/memory/ test case"
+    refinement: "Given a sharp, concrete rejection worked example directly analogous to 0714's/0717's/0721's prior versions: a governance exception cannot be created by a comment in .claude/memory/, which remains merely AgentLocalContext"
+  - concept: "0714's/0715's/0717's/0722's AFR-01..AFR-31 fitness-rule catalog"
+    refinement: "Extended with AFR-32 through AFR-36, each directly derived from one of the ten newly named boundary-violation types (V1-V5), bringing the catalog to thirty-six rules"
+  - concept: "the corpus's technical-capability≠organizational-authority family (0699/0709/0714/0717)"
+    refinement: "Given its broadest formulation to date: no technical execution mechanism whatsoever -- not only agents, but scripts, hooks, CI pipelines, runtime systems, and databases -- may implicitly acquire organizational authority"
+  - concept: "0716's Assurance Graph"
+    refinement: "Precisely reframed as an 'engineering accountability graph' with a minimal required schema (Actor→Action→{authorizedBy,basedOn,changes,produces,verifiedBy}) and Accountability introduced as an explicit new semantic dimension"
+  - concept: "the corpus's numerous distributed governance-discipline statements across Steps 120-136"
+    refinement: "Condensed into a single, maximally compact capstone invariant: MaterialTransition⇒Owner+Authority+Evidence(+Verification)"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0724 (Step 137 — The KnowledgeOS Domain Model) with continued high attention: this file explicitly promises the first consolidated canonical domain model and an aggregate/value-object/cross-context-reference classification for eighteen objects -- check specifically whether it finally reconciles the still-open three-way candidate-fundamental-unit question (0703's TraceableKnowledgeEpisode, 0710's GovernedEngineeringFact, 0711's KnowledgeObject/Claim pairing) or introduces yet another distinct, unreconciled model."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the ten worked boundary-test scenarios with decisive target answers, the ten-item Boundary Violation Catalog (V1-V10), and AFR-32..AFR-36 (catalog now thirty-six rules)."
+  - "dimension-registry.md: record the broadest formulation yet of the technical-mechanism≠authority principle, the eleven-row Action authority matrix, the repeatable eight-step scenario-validation method, and the capstone invariant MaterialTransition⇒Owner+Authority+Evidence(+Verification)."
+  - "dimension-registry.md: flag Step 137 (0724) as the file most likely, given its explicit domain-model-consolidation framing, to finally address the still-open three-way candidate-fundamental-unit question (0703/0710/0711)."
+anchor_test:
+  anchor: "0722's semantic ownership matrix; the corpus's pointer-layer principle and .claude/memory/ test case; 0714's/0715's/0717's/0722's AFR catalog; the corpus's technical-capability≠organizational-authority family; 0716's Assurance Graph; 0703's/0710's/0711's candidate fundamental-unit proposals"
+  supports_dimension: "Delivers all ten promised worked boundary-test scenarios with decisive, precisely conditioned target answers -- a notably more resolved register than most of the reconstruction's prior hedged conclusions. Synthesizes them into a genuinely valuable, precisely named ten-item Boundary Violation Catalog and five directly derived AFR rules (catalog now thirty-six). Delivers the broadest formulation yet of the technical-mechanism≠organizational-authority principle, the most complete concrete Action authority matrix in the reconstruction, a genuinely reusable eight-step scenario-validation method, and the single most compact general-purpose governance invariant in the entire reconstruction. Reframes the Assurance Graph precisely as an engineering accountability graph. Closes with a well-motivated continuation into Step 137's promised canonical domain model, positioned to finally address the still-open three-way candidate-fundamental-unit question"
+  refines_or_contradicts: "directly and substantially validates and extends 0722's semantic ownership matrix, the corpus's pointer-layer principle, 0714's/0715's/0717's/0722's AFR catalog, the corpus's technical-capability≠authority family, and 0716's Assurance Graph; no contradiction found; does not yet engage 0703's/0710's/0711's candidate fundamental-unit proposals, deferring that question explicitly to Step 137"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "§136.13's worked '.claude/memory/ governance exception' rejection ('Absolutely not... it is merely AgentLocalContext') is directly quotable evidence of a sharp, concrete, decisively-answered application of the long-tracked pointer-layer principle to a governance-exception scenario specifically."
+  - "§136.37-136.38's ten-item Boundary Violation Catalog paired one-to-one with AFR-32..AFR-36 is directly checkable evidence of a systematic, traceable derivation from named failure modes to numbered fitness rules, rather than an arbitrary rule list."
+  - "§136.45's boxed capstone statement 'MaterialTransition⇒Owner+Authority+Evidence(+Verification)' is directly quotable evidence of the reconstruction's most maximally compact general-purpose governance invariant, condensing the distributed discipline of dozens of prior files into a single four-term implication."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 137's actual content (0724), once read, finally reconciles the three-way candidate-fundamental-unit question (0703's TraceableKnowledgeEpisode, 0710's GovernedEngineeringFact, 0711's KnowledgeObject/Claim pairing) into one canonical domain model, or introduces yet another distinct, unreconciled proposal."
+  - "Whether the newly formulated 'engineering accountability graph' reframing of the Assurance Graph is retained as the reconstruction's preferred name going forward, or reverts to 'Assurance Graph' in subsequent files."
+tier2_triggered: true
+tier2_reason: "Delivers all ten promised worked boundary-test scenarios with decisive target answers -- a notably more resolved register than most prior hedged conclusions. Synthesizes them into a precisely named ten-item Boundary Violation Catalog and five directly derived AFR rules (catalog now thirty-six). Delivers the broadest formulation yet of the technical-mechanism≠organizational-authority principle, the most complete concrete Action authority matrix, a genuinely reusable eight-step scenario-validation method, and the single most compact general-purpose governance invariant in the entire reconstruction. Reframes the Assurance Graph as an engineering accountability graph. Opens Step 137's promised canonical domain model, positioned to finally address the three-way candidate-fundamental-unit question."

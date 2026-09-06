@@ -1,0 +1,173 @@
+sequence: 825
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260829-110056_step_198_composition-from-valid-transitions-to-valid-processes.md
+title: "Step 198 -- Composition: From Valid Transitions to Valid Processes (MAJOR SYNTHESIS MILESTONE, delivers 0824's promised composition/saga test, CONTINUES I-series to I63): Delivers LocalValidity⇏GlobalProcessValidity and the Composability Condition Post(τ_1)⊇Pre(τ_2) -- Delivers Compensation≠Erasure (I59) and ProcessState≠DomainState (I60) -- Delivers the Full Command≠Execution≠Outcome Chain Preventing AI-Hallucinated Completion (I61) -- Delivers StateEquality⇏TransitionAbsence (I62) and Idempotency≠NoDuplicateExecution (I63) -- Delivers Orchestration-vs-Choreography as a Domain-Governed Choice, Never Decided Abstractly -- Delivers the Complete Process Loop Diagram (Knowledge→Decision→Process→Reality→Evidence→Knowledge) -- Delivers Four Distinct Kinds of Correctness (Transition/Process/Epistemic/Governance) as a Four-Dimensional Assurance Vector, Never Collapsed Into One Boolean -- Opens Step 199's Uncertainty-Model Boundary (Unknown/False/Uncertain/Ambiguous/Probability/Confidence)"
+date: "2026-08-29"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "primarily DDD/distributed-systems formalization (process composition, sagas, orchestration vs. choreography); briefly re-invokes Chapters 2-4 once more for outcome/action/lineage distinctions, without new Gita textual content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 825
+importance: critical
+confidence: high
+about: >
+  Directly continues 0824, opening "if every individual transition is valid, is the complete process
+  necessarily valid?" boxed answer: **`Not necessarily`**.
+
+  **§198.1-198.8 delivers the file's central negative result**, boxed: **`LocalValidity⇏
+  GlobalProcessValidity`** unless composition rules are established. Delivers `Pre(τ)`/`Post(τ)` for each
+  transition and **the precise composability condition**, boxed: **`τ_1∘τ_2` is composable if
+  `Post(τ_1)⊇Pre(τ_2)`**, worked through an EvidenceCollected→ArchitectureReview→ArchitectureDecision
+  governance example ("otherwise the workflow contains a semantic gap"). Delivers a process as a contract
+  chain and the process-validity condition `∀i<n:Post(τ_i)⇒Pre(τ_{i+1})`, plus **global process invariants**
+  not attributable to any single transition, crystallized as **`I58`: a composed process must preserve
+  both local transition invariants and process-level invariants**.
+
+  **§198.9-198.17 delivers `ProcessAtomicity≠DatabaseAtomicity`** (a multi-system process cannot assume one
+  ACID transaction) and properly grounds the Saga pattern, explicitly disciplined: "we should not introduce
+  Saga merely because it is fashionable. The domain question is: what does it mean to compensate this
+  transition?" **Delivers the file's central conservation-consistent result**, boxed:
+  **`Compensation≠Erasure`** (a revoked decision does not mean the approval never happened), crystallized
+  as **`I59`: compensation must preserve the historical fact that the compensated transition occurred**,
+  explicitly connected back to Step 197's conservation principle. Delivers **`ProcessState≠DomainState`**
+  (a failed provisioning process does not automatically invalidate the underlying architecture decision),
+  crystallized as **`I60`: failure of a process transition must not automatically invalidate unrelated
+  domain facts**. Delivers the bounded-context protection this implies: a failing context should never
+  simply overwrite another context's state, only communicate via `event/contract`, boxed:
+  **`Process continuity does not require model identity`**.
+
+  **§198.18-198.21 delivers orchestration versus choreography as a domain-governed choice**, explicitly not
+  decided abstractly by KnowledgeOS itself -- governance-heavy processes favor explicit orchestration for
+  visibility of transition order and gate conditions, but the orchestrator "must not become a god object";
+  domain contexts own invariants while a process coordinator merely coordinates transitions. Delivers two
+  distinct invariant levels, `I_D` (domain invariant) and `I_P` (process invariant), worked through a
+  concrete approval-requires-authorization vs. approval-cannot-precede-review pair.
+
+  **§198.22-198.30 delivers process completeness as distinct from success**, boxed:
+  **`ProcessCompletion≠BusinessSuccess`**, with an outcome enumeration `{Success,Failure,Cancelled,
+  Compensated,Escalated}`. Re-invokes Chapters 2 and 3 briefly (failure as historical state, not deletion;
+  action must be observed independently of intention). **Delivers the file's central AI-safety result**:
+  command versus event (`"please perform X"` vs. `"X actually happened"`), boxed:
+  **`CommandIssued≠ActionCompleted`**, crystallized as **`I61`: a requested or authorized transition must
+  not be represented as an accomplished outcome until execution has been evidenced**, explicitly "extremely
+  important for AI-agent systems." Delivers the full six-stage execution chain
+  `Recommendation→Decision→Command→Execution→Observation→OutcomeAssessment` and the explicit
+  hallucinated-completion prevention: an AI must never convert "I requested deployment" into "deployment
+  succeeded" without evidence.
+
+  **§198.31-198.35 revisits Step 194's causal boundary at the process level**: `DeploymentCompleted` and
+  `IncidentObserved` together still require causal analysis before asserting
+  `DeploymentCausedIncident` -- "process history provides evidence, but not automatic causality." Delivers
+  `ProcessTrace(P)` as statistically analyzable (e.g. `FailureRate(P)`) while explicitly distinguishing
+  **`Metric≠Explanation`**, reinforcing the layered `Execution→Observation→Metric→Assessment→Decision`
+  model against collapse into one "status."
+
+  **§198.36-198.43 delivers a small composition algebra** (`τ_2∘τ_1` valid iff `Post(τ_1)⇒Pre(τ_2)`) and
+  **the identity-of-composition subtlety**: even a no-op transition (`id_S:S→S`) can produce a legitimate
+  audit event, boxed: **`StateUnchanged≠NothingHappened`** and **`State equality does not imply transition
+  absence`**, crystallized as **`I62`: a semantically meaningful transition may be valid even when the
+  resulting domain state is unchanged** -- "particularly useful for audits and reviews." Delivers
+  **idempotency versus duplication**: `SameOutcome≠SameExecution`, boxed: **`Idempotency does not imply
+  duplicate execution did not occur`**, crystallized as **`I63`: retry and idempotent execution must not
+  erase the distinction between execution attempts and effective state changes**.
+
+  **§198.44-198.48 delivers failure as a first-class knowledge source** (`FailureObservation→Evidence→
+  Pattern→StatisticalAssessment→ArchitectureKnowledge`) and re-walks Chapters 2-4 once more compactly
+  (action/consequence/observation; `DecisionValidity≠OutcomeFavorability`; historical knowledge
+  accumulating through `Experience→Evidence→Knowledge` with a new actor inheriting only a projection).
+  Delivers **the complete process loop diagram**: `Knowledge→[assessment]→Decision→[command]→Process→
+  [execute]→Reality→[observe]→Evidence→[assess]→Knowledge`, wrapped by
+  `Identity+Time+Authority+Lineage+Invariants`.
+
+  **§198.49-198.51 delivers the file's central architectural result: four distinct kinds of correctness**
+  (Transition/Process/Epistemic/Governance, `Correct_τ,Correct_P,Correct_E,Correct_G`), explicitly never
+  collapsed into a single Boolean `valid=true`. Delivers **four-dimensional assurance**, boxed:
+  **`Assurance=(A_τ,A_P,A_E,A_G)`**, worked through a concrete `(1,1,0,1)` example (technically valid,
+  process valid, epistemically weak, governance-compliant), crystallized: **"a system can be procedurally
+  compliant but epistemically uncertain. That is not necessarily a defect."**
+
+  **§198.52 delivers the Step 198 verdict**: five boxed results --
+  **`Local transition validity does not automatically guarantee process validity`**;
+  **`Process=Transitions+CompositionContracts+GlobalInvariants`**; **`Compensation≠Erasure`**;
+  **`Command≠Execution≠Outcome`**; **`DecisionValidity≠OutcomeFavorability`**; and
+  **`A meaningful transition may occur even when domain state remains unchanged`**.
+
+  **Closes opening "Step 199 — uncertainty,"** posing the need for a rigorous uncertainty model
+  distinguishing `Unknown` from `False`, and `Uncertain` from `Ambiguous`, boxed:
+  **`Uncertainty+Probability+Confidence+Ambiguity+Unknown`**, explicitly promising to determine "when
+  probability is appropriate, when deterministic states are appropriate, and when the architecture must
+  refuse to collapse uncertainty into a binary answer," across "mathematics, statistics, DDD, governance,
+  AI, and the four Gītā chapters." No actual repository implementation occurs within this file itself.
+introduces:
+  - concept: "LocalValidity⇏GlobalProcessValidity as the file's central negative result"
+  - concept: "The precise composability condition Post(τ_1)⊇Pre(τ_2), worked through a concrete architecture-governance example"
+  - concept: "Global process invariants I_global(P) distinct from any single transition's invariants -- Invariant I58"
+  - concept: "ProcessAtomicity≠DatabaseAtomicity, and the disciplined grounding of the Saga pattern in 'what does it mean to compensate this transition?'"
+  - concept: "Compensation≠Erasure, explicitly connected to Step 197's conservation principle -- Invariant I59"
+  - concept: "ProcessState≠DomainState, and 'process continuity does not require model identity' -- Invariant I60"
+  - concept: "Orchestration vs. choreography as a domain-governed, never abstractly decided, architectural choice, with the explicit warning against a 'god orchestrator'"
+  - concept: "Domain invariant I_D versus process invariant I_P as two distinct levels"
+  - concept: "ProcessCompletion≠BusinessSuccess"
+  - concept: "CommandIssued≠ActionCompleted, and the full Recommendation→Decision→Command→Execution→Observation→OutcomeAssessment chain preventing AI-hallucinated completion -- Invariant I61"
+  - concept: "Process-level causal reasoning revisiting Step 194: process history provides evidence, but not automatic causality"
+  - concept: "Metric≠Explanation, reinforcing the layered Execution→Observation→Metric→Assessment→Decision model"
+  - concept: "The identity-of-composition subtlety: StateUnchanged≠NothingHappened -- Invariant I62"
+  - concept: "Idempotency versus duplication: SameOutcome≠SameExecution -- Invariant I63"
+  - concept: "Failure as a first-class knowledge source (FailureObservation→Evidence→Pattern→StatisticalAssessment→ArchitectureKnowledge)"
+  - concept: "The complete process loop diagram (Knowledge→Decision→Process→Reality→Evidence→Knowledge), wrapped by Identity+Time+Authority+Lineage+Invariants"
+  - concept: "Four distinct kinds of correctness (Transition/Process/Epistemic/Governance), never collapsed into one Boolean"
+  - concept: "The four-dimensional assurance vector Assurance=(A_τ,A_P,A_E,A_G)"
+  - concept: "'Procedurally compliant but epistemically uncertain' as a legitimate, honestly-represented system state"
+  - concept: "The Step 198 verdict's five boxed results"
+  - concept: "Step 199's opening: the uncertainty-model boundary (Unknown/False/Uncertain/Ambiguous/Probability/Confidence)"
+defines:
+  - concept: "The composability condition"
+    definition: "Two transitions τ_1:S_0→S_1 and τ_2:S_1→S_2 may be safely composed into a valid process step only when the postcondition established by τ_1 entails (is a superset of, in the sense of implication) the precondition required by τ_2 -- Post(τ_1)⊇Pre(τ_2) -- so that individually-valid transitions do not silently produce an invalid overall process merely because the second transition's requirements were never guaranteed by the first"
+  - concept: "Four-dimensional assurance"
+    definition: "Rather than collapsing a workflow's validity into a single Boolean (approved=true), the architecture should track four distinct, independently assessable correctness dimensions -- transition correctness (was each individual step valid?), process correctness (was the sequence and its composition contracts valid?), epistemic correctness (was the resulting knowledge assessment justified?), and governance correctness (was the determination authorized and procedurally valid?) -- represented as a vector Assurance=(A_τ,A_P,A_E,A_G) so that a system can honestly represent being procedurally compliant while epistemically uncertain, rather than forcing a false binary verdict"
+  - concept: "Compensation (as distinct from erasure/rollback)"
+    definition: "When a workflow step must be undone due to a downstream failure or discovered problem, the correct architectural response is to record a new transition (e.g. Approved→[revoked]→Revoked) that changes the current/active status while leaving the historical fact that the original transition occurred fully intact and queryable -- never to edit the record as though the original approval, decision, or action never happened, directly extending Step 197's conservation-of-history principle into the process/saga domain"
+refines:
+  - concept: "0824's closing proposal of Step 198's composition/saga/workflow-orchestration boundary"
+    refinement: "DELIVERED IN FULL: the composability condition, the Saga/compensation model, orchestration-vs-choreography as a domain choice, the complete process loop diagram, and the four-dimensional assurance vector, closing with the Step 198 verdict directly confirming the architecture handles real multi-step workflows, not merely isolated state changes"
+  - concept: "0824's conservation principle (Q(S_t)⊆Q(S_{t+1}), history conserved while current status legitimately changes)"
+    refinement: "Directly extended into the process/saga domain: Compensation≠Erasure (I59) and ProcessState≠DomainState (I60) are concrete process-level instances of the same conservation discipline established one file earlier"
+  - concept: "0792's/0793's AI accountability discipline and 0821's/0823's authority-cannot-manufacture-truth family"
+    refinement: "Extended with a new member specific to execution: CommandIssued≠ActionCompleted (I61), explicitly named as preventing AI-hallucinated task completion -- a concrete, directly implementable safeguard against an AI agent claiming success without execution evidence"
+  - concept: "0821's causal boundary (Precedes(X,Y)⇏Causes(X,Y), the Pearl-style confounding example)"
+    refinement: "Directly re-applied at the process level: DeploymentCompleted followed by IncidentObserved still requires causal analysis before asserting DeploymentCausedIncident -- process history is evidence, not automatic causal proof"
+  - concept: "0808's I1-I14 through 0824's I55-I57 invariant series"
+    refinement: "DIRECTLY EXTENDED as I58-I63, a fourteenth consecutive instance of correct invariant-series continuity spanning 0808 through 0825, and the largest single-file invariant delivery yet (six new invariants in one file)"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read whichever primary-corpus files follow, expecting Step 199's actual uncertainty-model formalization (Unknown/False/Uncertain/Ambiguous/Probability/Confidence) across the six established lenses."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record CommandIssued≠ActionCompleted and the six-stage execution chain as a directly implementable, high-value AI-agent-safety pattern preventing hallucinated task completion."
+  - "dimension-registry.md: record the four-dimensional assurance vector Assurance=(A_τ,A_P,A_E,A_G) as the arc's most complete and directly applicable non-collapsing-verdict pattern to date, extending the Step 196 deterministic-assurance work."
+  - "dimension-registry.md: record Compensation≠Erasure as a directly applicable Saga-pattern governance principle, extending Step 197's conservation discipline into distributed-process design."
+  - "dimension-registry.md: record the explicit, disciplined grounding of Saga adoption ('not because it is fashionable... what does it mean to compensate this transition?') as a reusable anti-pattern-avoidance statement."
+anchor_test:
+  anchor: "0824's closing proposal of Step 198's composition/saga boundary; 0821's causal boundary; 0813's/0814's/0824's deterministic-assurance results; 0793's AI accountability discipline; the I1-I57 invariant series"
+  supports_dimension: "Delivers the full composition/saga formalization directly answering 0824's closing question, with LocalValidity⇏GlobalProcessValidity as the central negative result and a precise composability condition. Extends Step 197's conservation principle into the process/saga domain via Compensation≠Erasure and ProcessState≠DomainState. Delivers a directly implementable AI-agent-safety pattern (CommandIssued≠ActionCompleted, the six-stage execution chain) explicitly preventing hallucinated task completion. Re-applies 0821's causal boundary at the process level. Delivers the four-dimensional assurance vector, the arc's most complete non-collapsing-verdict pattern to date. Correctly extends the I-series to I63, delivering six new invariants in a single file -- the largest single-file invariant yield yet, and a fourteenth consecutive positive continuity instance. Opens Step 199's well-posed uncertainty-model boundary"
+  refines_or_contradicts: "directly delivers and extends 0824's closing proposal; extends 0824's conservation principle into the process domain; extends 0793's AI accountability discipline; re-applies 0821's causal boundary; extends the deterministic-assurance family; correctly extends the I-series; no contradiction found"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: true
+key_evidence:
+  - "§198.28-198.30's worked AI deployment example ('Deploy the approved architecture' → DeploymentAccepted, still not proof of DeploymentCompleted, requiring an execution observation), immediately generalized to 'an AI agent should never be able to convert I requested deployment into deployment succeeded without evidence,' is directly checkable evidence of a concrete, currently applicable AI-agent-safety mechanism."
+  - "§198.49-198.51's explicit four-dimensional assurance vector, worked through a concrete (1,1,0,1) example and crystallized as 'a system can be procedurally compliant but epistemically uncertain -- that is not necessarily a defect,' is directly quotable evidence of a mature, non-binary governance-representation principle."
+  - "§198.10-198.12's explicit discipline against fashionable Saga adoption ('the domain question is: what does it mean to compensate this transition?'), immediately followed by the worked ArchitectureApproved/ProvisioningFailed/ApprovalRevoked example preserving history rather than erasing it, is directly checkable evidence of Compensation≠Erasure applied concretely rather than merely stated abstractly."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 199's uncertainty-model formalization (Unknown/False/Uncertain/Ambiguous/Probability/Confidence) was ever actually delivered, and how it reconciles with the arc's earlier informal use of Candidate/Likely/Weak/Strong/Confirmed status vocabularies."
+  - "Whether the four-dimensional assurance vector Assurance=(A_τ,A_P,A_E,A_G) is ever explicitly reconciled with Step 196's Assurance(d)=AuthorityValid∧EvidencePresent∧RequiredReviewCompleted∧PolicySatisfied, given both are named 'Assurance' but structured differently (a four-valued vector versus a single conjunctive Boolean)."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the full composition/saga/workflow formalization directly answering 0824's closing question, with LocalValidity⇏GlobalProcessValidity as the central negative result and a precise, DDD-grounded composability condition. Extends Step 197's conservation principle into the process/saga domain (Compensation≠Erasure, ProcessState≠DomainState). Delivers a directly implementable, high-value AI-agent-safety pattern preventing hallucinated task completion (CommandIssued≠ActionCompleted, the six-stage execution chain). Re-applies 0821's causal boundary at the process level (process history is evidence, not automatic causal proof). Delivers orchestration-vs-choreography as a properly domain-governed choice with an explicit anti-god-object warning. Delivers the complete process loop diagram and four distinct kinds of correctness as a four-dimensional assurance vector, never collapsed into a single Boolean -- the arc's most complete non-collapsing-verdict pattern to date. Delivers the largest single-file invariant yield in the arc so far (I58-I63, six new invariants), a fourteenth consecutive positive I-series continuity instance. Opens Step 199's well-posed uncertainty-model boundary spanning all six established lenses."

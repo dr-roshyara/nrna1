@@ -1,0 +1,81 @@
+sequence: "0116"
+path: docs/knowledgeos/brainstorming/20260822-111626-leonardo-contextual-completeness-lens.md
+title: "Leonardo da Vinci contextual-completeness lens (fourth meta-principle instance; secular source)"
+date: "2026-08-22"
+bytes: 7068
+model:
+  primary: x
+  secondary: [c1]
+source_role: PRIMARY_RESEARCH
+canonical_source: null
+importance: medium
+confidence: high
+about: >
+  First genuinely secular (non-religious, non-Sanskrit) historical-figure lens: Leonardo da Vinci's
+  multi-disciplinary, single-bounded-context completeness method. Explicitly corrects an unlocated
+  prior request for "a universal theory of all human knowledge" toward a precise bounded-context-scoped
+  goal, proposing a "Contextual Completeness Principle" explicitly classified meta-principle, not
+  kernel -- the FOURTH such instance (Zero/0110, Mokṣa/0114, Shiva-Shakti/0115). Also refines 0115's
+  Shiva-Shakti reading, correcting a naive "all knowledge becomes one" misreading into a precise
+  bounded-context multi-perspective-integration model.
+
+introduces:
+  - "'Contextual Completeness Principle': 'for a bounded context, KnowledgeOS should enable convergence
+    of all relevant perspectives into a coherent epistemic model while preserving identity, evidence,
+    uncertainty, and historical evolution.' Explicit meta-principle, not kernel -- fourth instance"
+  - "Refines 0115: Shiva (stable identity of the thing) + Shakti (all manifestations/perspectives) ->
+    complete understanding, applied to ONE bounded context (e.g. a bridge: engineering/architectural/
+    economic/historical/maintenance/safety views), explicitly NOT 'all knowledge becomes one'"
+  - "Reframed mission: 'KnowledgeOS is... a system for achieving Leonardo-level contextual
+    understanding: preserving the identity of a thing while integrating all valid perspectives,
+    evidence, transformations, and meanings around it.'"
+  - "New open question posed (not answered): 'What is the minimum data model required to represent a
+    Leonardo-level complete understanding of one bounded context?' -- framed as the bridge from
+    Constitution -> Reference Architecture -> Logical Architecture"
+
+defines: []
+
+refines:
+  - "0115's Shiva-Shakti-Unity principle: corrected from a naive 'all knowledge becomes one' reading to
+    a precise per-bounded-context multi-perspective model"
+
+contradicts: []
+
+repeats:
+  - {concept: "DDD bounded-context scoping, applied via a new secular lens", canonical_source: "0086", novelty: low}
+
+bridge_candidates: []
+
+mathematical_content: false
+gita_content: false
+kernel_content: false
+
+registry_updates:
+  - "No new kernel entries -- fourth meta-principle status instance, now a firmly established pattern"
+
+anchor_test:
+  anchor: "0087"
+  supports_dimension: []
+  refines_or_contradicts: "No reshaping; fourth meta-principle instance; refines 0115's own claim."
+  alternative_minimal_kernel: null
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: unchanged
+  invariant_id_scheme_reconciled: false
+
+key_evidence:
+  - "First genuinely secular (non-religious) historical-figure lens, broadening the comparative base
+    further"
+  - "Fourth meta-principle status instance -- firmly established as a recurring category"
+  - "A same-corpus self-correction of the immediately preceding file's own claim (0115), evidence of
+    healthy iterative refinement"
+
+undefined_concepts: []
+open_questions:
+  - "Whether 'minimum data model for Leonardo-level bounded-context completeness' is pursued in a later file"
+
+tier2_triggered: true
+tier2_reason: >
+  Fourth meta-principle status instance (firmly established pattern); first secular historical-figure
+  lens; and a genuine same-corpus self-correction of 0115's claim.

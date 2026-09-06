@@ -1,0 +1,154 @@
+sequence: 591
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-094115_step-025m-epistemic-error-refutation-retraction-correction-and-revision.md
+title: "A Formal Six-Kind Taxonomy of 'Wrong' (Evolution/Correction/Retraction/Refutation/Reinterpretation/ModelRevision), Each With Its Own Falsification Test, All PASS; Revision=EventAddition+StateReDerivation (Never Destructive Mutation); Revision Propagation=Support Recomputation, Not Cascading Deletion; Zero Is Dynamic; Decision Status Given Its Own Six-Value Lifecycle, With Automatic Reversal Explicitly Governed, Not Assumed; Verdict '25M — PASS' Distinguishing Four Non-Identical Change Dimensions (World/Knowledge/Assessment/Model); Opens Step 25N (Evidence Aggregation Algebra) — a Naming Echo of 0578's Step 25C, Flagged for Reconciliation"
+date: "2026-08-28"
+bytes: 14042
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 25M -- Epistemic Error, Refutation, Retraction, Correction and Revision', explicitly opened at 0590's close"
+source_role: PRIMARY_RESEARCH
+canonical_source: 591
+importance: high
+confidence: high
+about: >
+  Opens Step 25M directly executing 0590's closing commitment, posing the central practical question:
+  what should happen when something previously accepted knowledge is later discovered to be wrong -- with
+  the explicit warning that "wrong" has several distinct meanings a single Boolean state would lose.
+  Delivers the revision model `K_{t+1}=Revise(K_t,E_{new})` alongside additive history `H_{t+1}⊇H_t`.
+
+  **Delivers the file's central formal deliverable -- a six-kind taxonomy of "wrong," each independently
+  motivated by a worked example and given its own formal signature**: (1) **Evolution** -- the system
+  genuinely changed (`A_1→A_2`), the first assertion was true when made, `Evolution≠Correction`, old
+  knowledge remains historically valid; (2) **Correction** -- the original record contained an error,
+  represented as `Correction(E_1,E_2)` with `Status(E_1)=Corrected`, a new event rather than a destructive
+  modification; (3) **Retraction** -- a source withdraws support (`Support(A)↓`) without establishing
+  `¬A`, formalized as **`Retraction≠Refutation`** -- "especially important for statistical reasoning...
+  losing support for a hypothesis is not automatically equivalent to proving the hypothesis false"; (4)
+  **Refutation** -- new authoritative evidence under domain semantics (`A⊥B`) establishes falsity, explicitly
+  a conclusion derived from evidence and domain semantics, "not merely the existence of a second
+  assertion"; (5) **Reinterpretation** -- worked wrong-target example (a command executed against the
+  development system misread as production), formalized as `ObservationValid∧AssertionInvalid`, explicitly
+  identified as "exactly why the layered model from 25I is necessary"; (6) **ModelRevision** -- worked via
+  the corpus's recurring multi-IP-address ontology example, `Ω_1→Ω_2` producing `K^{Ω_1}≠K^{Ω_2}` while the
+  underlying observations remain unchanged, with the historical interpretation under `Ω_1` required to
+  remain reproducible -- delivering **`Interpretation is versioned`**
+  (`K^{(1)}=Derive(H,Ω_1)`, `K^{(2)}=Derive(H,Ω_2)`).
+
+  **Delivers the file's second central formal deliverable -- Revision as event addition, never destructive
+  mutation**: `H'=H∪{E_{revision}}`, `K'=Derive(H',Ω,EC,M)`, formalized as
+  **`Revision=EventAddition+StateReDerivation`**, "considerably cleaner than destructive updates," worked
+  through an auditability example demonstrating the pre-correction state `K_{before correction}` remains
+  fully reconstructable after a correction is applied.
+
+  **Delivers Assertion≠Assessment as a distinct revision dimension**: the proposition can remain unchanged
+  while its support weakens (`Assessment(A):Strong→Weak`) due to newly discovered measurement unreliability
+  -- explicitly flagged as becoming "even more important when we introduce formal statistical evidence
+  aggregation in the next step." Delivers a worked Bayesian revision example
+  (`P(H|E_1)=0.95→P(H|E_1,E_2)=0.40`), formalizing **`Probability revision≠Logical refutation`**, with an
+  explicit caution against KnowledgeOS inventing priors or probability models implicitly, and a
+  reconfirmation that deterministic and probabilistic knowledge must coexist without reducing the entire
+  KnowledgeState to a probability distribution.
+
+  **Delivers a disciplined revision-propagation treatment via a worked six-node dependency chain**
+  (`E_1→A_1→K_1→R_1→Zero→Lord→D_1`): retracting `E_1` must not cascade-delete everything downstream,
+  particularly when `A_1` carries independent support (`E_2→A_1`), formalized as **`Revision propagation
+  =Support recomputation, not cascading deletion`**. Delivers an Affected Revision Frontier `RF(E)` enabling
+  incremental recomputation rather than full-graph rebuild, and the DDD-scoping principle that revision
+  propagation follows semantic dependencies -- cross-bounded-context effects travel through explicit
+  integration relationships, not an uncontrolled global dependency graph.
+
+  **Delivers a significant, concrete consequence for Zero, directly extending 0582's/0584's formal Zero
+  treatment**: `Zero` is explicitly dynamic -- a previously-satisfied requirement can become unresolved
+  again if its supporting evidence is later invalidated, formalized as **`Zero is dynamic`**, and reframed
+  as representing "the current epistemic gap, not a permanent characteristic of a requirement." **Delivers
+  an equally significant consequence for Sārathi's decisions, directly extending 0586's Decision-lifecycle
+  treatment**: an invalidated prerequisite marks `DecisionAffected(D_1)=True`, but KnowledgeOS explicitly
+  must NOT automatically reverse a decision unless governance policy explicitly permits it -- preserving
+  "the distinction between computation and authority," with five named possible governance responses
+  (review, pause, revocation, reassessment, no action). Delivers a six-value Decision status lifecycle
+  (`Valid,Superseded,Questioned,Invalidated,Executed,Reversed`), reconfirming **`Historical existence≠
+  Current validity`**.
+
+  **Delivers seven labeled revision falsification experiments (Test 1-7), ALL PASS**: genuine evolution
+  (not an error); wrong target (observation valid, assertion invalid); source withdrawal (retracted, not
+  automatically false); genuine refutation; model revision (same history, potentially different derived
+  knowledge); redundant support (an assertion with two independent supports survives retraction of one);
+  decision dependency (`DecisionAffected=True`, automatic reversal remains governed, not assumed).
+
+  Delivers a further normal-PC computational-feasibility reconfirmation for the revision machinery
+  (EventAppend, DependencyTraversal, SupportRecalculation, TemporalEvaluation, RuleEvaluation,
+  StateReconstruction), with large-scale performance concerns (incremental computation, dependency indexes,
+  caching, materialized views) explicitly framed as a scalability concern, not a theoretical obstacle.
+
+  **Delivers Step 25M's central formal invariant**: "KnowledgeOS must be able to revise its current
+  epistemic state without destroying the historical events that explain how the earlier state arose,"
+  formalized as `H_{t+1}=H_t∪{RevisionEvent}`, `K_{t+1}=Derive(H_{t+1},Ω,EC,M)`.
+
+  **Delivers Step 25M's verdict**: **"25M — PASS,"** with the file's headline conceptual distillation --
+  the model now distinguishes **four fundamentally different, non-identical dimensions of change**: World
+  Change, Knowledge Change, Assessment Change, Model Change -- "related, but not the same event," explicitly
+  called a substantial strengthening of the epistemic model.
+
+  **Closes by reconfirming 0588's rejection of naive `Confidence=Average(SourceConfidences)`** as
+  statistically unjustified, and posing a sharpened evidence-aggregation question: given heterogeneous
+  evidence (independent/duplicate/derived/correlated/contradictory/authoritative/stale/retracted), how
+  should KnowledgeOS calculate or represent aggregate support -- "counting them is not enough." **Opens
+  "Step 25N — Evidence Aggregation Algebra,"** explicitly separating six distinct concepts
+  (`Confidence≠Probability≠Reliability≠Authority≠Support≠Independence`), posing the central question
+  "can KnowledgeOS aggregate heterogeneous evidence without committing statistical double-counting or
+  epistemic errors?" -- "the next major mathematical test of the architecture." No actual code execution
+  reported.
+introduces:
+  - concept: "A formal six-kind taxonomy of epistemic revision (Evolution/Correction/Retraction/Refutation/Reinterpretation/ModelRevision), each with a distinct formal signature and worked counterexample motivating why it must not be collapsed into any of the others"
+  - concept: "Revision=EventAddition+StateReDerivation as the universal non-destructive revision mechanism, with an explicit auditability demonstration (pre-correction state remains reconstructable)"
+  - concept: "Revision propagation=Support recomputation, not cascading deletion, with an Affected Revision Frontier RF(E) enabling incremental recomputation scoped by semantic (DDD) dependency"
+  - concept: "'Zero is dynamic' — a previously satisfied requirement can become unresolved again if its supporting evidence is later invalidated"
+  - concept: "DecisionAffected as a distinct status from automatic reversal — decision reversal remains explicitly governed, never automatically triggered by an invalidated prerequisite"
+  - concept: "The four fundamentally distinct dimensions of change (World/Knowledge/Assessment/Model), the file's headline conceptual distillation"
+  - concept: "'Step 25N — Evidence Aggregation Algebra' — a title-level echo of 0578's Step 25C ('Evidence Aggregation Algebra'), flagged as a possible corpus naming collision or deliberate topic re-visitation requiring reconciliation"
+defines:
+  - concept: "RevisionType (enum)"
+    definition: "{Evolution, Correction, Retraction, Refutation, Reinterpretation, ModelRevision} — six mutually distinct, formally motivated kinds of 'wrong,' each requiring different downstream handling"
+  - concept: "Revision principle"
+    definition: "H_{t+1}=H_t∪{RevisionEvent}; K_{t+1}=Derive(H_{t+1},Ω,EC,M) — revision never mutates history destructively, only appends and re-derives"
+  - concept: "Revision propagation principle"
+    definition: "Recalculate(RF(E)) — an invalidation event triggers support recomputation over its Affected Revision Frontier only, following semantic/DDD dependency boundaries, never uncontrolled cascading deletion"
+refines:
+  - concept: "0582's/0584's formal Zero algebra (deterministic six-step algorithm, requiring no LLM)"
+    refinement: "Extended with an explicit dynamism property: Zero is not a static per-requirement characteristic but recomputed whenever supporting evidence is invalidated"
+  - concept: "0586's Sārathi decision formalization and 0586's Decision Provenance/time-indexing discipline"
+    refinement: "Extended with an explicit non-automatic-reversal governance boundary and a six-value Decision status lifecycle, directly paralleling the corpus's established never-let-computation-silently-become-authority discipline"
+  - concept: "0587's five-layer World→Observation→Representation→Assertion→Knowledge model"
+    refinement: "Directly invoked and reused to formally motivate the Reinterpretation revision category (ObservationValid∧AssertionInvalid), explicitly citing 25I (0587) as the necessary foundation"
+  - concept: "0588's rejection of naive confidence-averaging as a universal rule"
+    refinement: "Explicitly reconfirmed and used as the direct motivation for opening Step 25N's more precise evidence-aggregation question"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "PRIORITY: 'Step 25N — Evidence Aggregation Algebra' opened at this file's close carries the SAME TITLE as Step 25C ('Evidence Aggregation Algebra', opened and PASSed at 0578). Trace whether Step 25N is executed as its own file, and if so, whether it genuinely extends/supersedes 25C's requirements-first evidence-algebra derivation or is a redundant/duplicate treatment — flag for the eventual corpus-wide reconciliation gated by §29."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the six-kind RevisionType taxonomy (Evolution/Correction/Retraction/Refutation/Reinterpretation/ModelRevision), each with a distinct formal signature, and Revision=EventAddition+StateReDerivation as the universal non-destructive revision mechanism."
+  - "dimension-registry.md: record Revision propagation=Support recomputation not cascading deletion (with Affected Revision Frontier RF(E)), 'Zero is dynamic,' DecisionAffected with governed (never automatic) reversal, and the six-value Decision status lifecycle."
+  - "dimension-registry.md: record the seven-test revision falsification suite (ALL PASS), the four-dimension change distinction (World/Knowledge/Assessment/Model), verdict '25M — PASS,' and the naming echo between Step 25N ('Evidence Aggregation Algebra') and 0578's Step 25C of the same title, flagged for reconciliation."
+anchor_test:
+  anchor: "0590's closing commitment to Step 25M; 0582's/0584's formal Zero algebra; 0586's Sārathi decision-lifecycle and never-let-computation-become-authority discipline; 0587's five-layer World→Observation→Representation→Assertion→Knowledge model; 0578's Step 25C 'Evidence Aggregation Algebra'; 0588's rejection of naive confidence-averaging"
+  supports_dimension: "Delivers a disciplined, well-motivated six-kind taxonomy distinguishing genuinely different senses of epistemic 'wrongness' (Evolution/Correction/Retraction/Refutation/Reinterpretation/ModelRevision), each independently grounded in a worked counterexample and validated by its own falsification test, directly executing 0590's closing commitment. Delivers concrete, consequential extensions of two previously-formalized reasoning-engine components: Zero is shown to be dynamic rather than a static per-requirement property, and Sārathi's decisions are shown to require explicit governance for reversal rather than automatic invalidation-triggered reversal — both direct, checkable strengthenings of the corpus's established Zero/Lord/Sārathi formalization. Delivers a clean, reusable revision-propagation principle (support recomputation via an Affected Revision Frontier, scoped by semantic/DDD dependency, never cascading deletion) and a headline four-dimension change distinction (World/Knowledge/Assessment/Model) that meaningfully sharpens the corpus's conceptual vocabulary. Surfaces a corpus-integrity finding of genuine significance to the reconstruction's tracking obligation: Step 25N, opened at this file's close under the title 'Evidence Aggregation Algebra,' duplicates the exact title of Step 25C (0578), warranting explicit tracking for the eventual full-corpus reconciliation"
+  refines_or_contradicts: "directly executes 0590's closing commitment to Step 25M; extends 0582's/0584's formal Zero algebra with an explicit dynamism property; extends 0586's Sārathi/Decision-lifecycle formalization with a governed, non-automatic reversal boundary and a six-value status lifecycle; directly invokes and reuses 0587's five-layer model to motivate the Reinterpretation category; reconfirms 0588's rejection of naive confidence-averaging as the direct motivation for the next step; possible naming/topic overlap with 0578's Step 25C flagged, not yet resolved as contradiction or duplication"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The worked wrong-target Reinterpretation example (a command executed against the development system, initially misread as a production observation) is directly checkable, concrete evidence grounding the abstract ObservationValid∧AssertionInvalid distinction, and explicitly ties this file's argument back to 0587's five-layer model as its necessary theoretical foundation."
+  - "The Step 25N title 'Evidence Aggregation Algebra' is directly checkable against 0578's Step 25C, which carries the identical title — a concrete, verifiable naming collision (not an inference) that is directly relevant to the reconstruction's own obligation to track and eventually reconcile the corpus's proliferating, potentially redundant, step-numbering schemes."
+undefined_concepts: []
+open_questions:
+  - "Whether 'Step 25N — Evidence Aggregation Algebra' (opened at this file's close) is executed as its own dedicated corpus file, and if so, whether its content genuinely extends or supersedes Step 25C's (0578) evidence-algebra derivation of the identical title, or represents an unintentional duplicate/re-visitation of already-covered ground"
+tier2_triggered: false
+tier2_reason: "Solid, disciplined continuation of the established 25-series experimental sub-arc, delivering a well-motivated six-kind revision taxonomy and concrete extensions to Zero and Sārathi, but without a single new landmark-level architectural discovery on the order of 0587's/0588's/0589's/0590's; the notable Step-25N/Step-25C title collision is flagged as a bridge_candidate and open_question rather than elevating this file itself to tier2, since the collision concerns the NEXT file's identity rather than this file's own content."

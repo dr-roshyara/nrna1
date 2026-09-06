@@ -1,0 +1,62 @@
+sequence: 2344
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/11_negative-tests.md
+title: "Step-292/11 — Mandatory Negative Tests P1-P10: the Consolidated Table (Nine of Ten Refuted, None Because Reiter Is Wrong) -- New: P2 'Action=KnowledgeOS Event' REFUTED, Five Undecided Candidate Correspondents (Event/Operation/Command/Observation/Authority-Act)"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "the consolidated P1-P10 negative-test table whose individual findings this reconstruction has already tracked in detail across files 2336-2343; delivers one genuinely new item (P2, Action=Event refuted with five undecided candidate correspondents) and the closing meta-principle"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2344
+importance: high
+confidence: high
+about: >
+  Consolidates the ten mandatory negative tests P1-P10, most of whose individual findings this
+  reconstruction has already tracked in detail (P1 Situation=State, file 2336; P3 δ=SSA, file 2337; P4
+  Qualify=Poss, files 2335/2339/2340; P5 equality, file 2342; P6/P10 history-completeness/progression,
+  file 2341; P7 provenance, file 2338; P8 Knows=Knowledge, files 2332/2335/2340; P9 Golog, file 2343).
+
+  **DELIVERS THE ONE GENUINELY NEW ITEM -- P2**: "Action = KnowledgeOS event -- REFUTED as stated: the
+  mandate itself forbids assuming a=e. The corpus has event · operation · command · observation ·
+  authority act as candidate correspondents and decides none. OPEN." This is the first record in this
+  reconstruction's tracking of this specific five-way undecided correspondent set for "Action" in the
+  Reiter-crosswalk context.
+
+  **DELIVERS THE CLOSING META-PRINCIPLE**: "nine of ten are refuted, and none is refuted because Reiter
+  is wrong. Each fails because a Reiter construct is well-defined relative to assumptions KnowledgeOS
+  does not satisfy -- causal completeness, consistent effect axioms, factive knowledge, an existing
+  action theory. The correct reading is not 'Reiter does not transfer.' It is: Reiter's machinery is
+  available exactly to the extent that KnowledgeOS supplies the assumptions it requires -- and the
+  assumptions are precisely the programme's open items." (Matching this reconstruction's already-tracked
+  file 2332 closing statement verbatim.)
+introduces:
+  - concept: "P2's five candidate correspondents for Action (event/operation/command/observation/authority-act), none decided"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked files 2336-2343 (individual P1,P3-P10 findings)"
+    refinement: "CONSOLIDATED into one table; no new substantive content beyond P2's candidate-correspondent list"
+contradicts: []
+repeats:
+  - "P1, P3-P10 are already individually tracked in detail across files 2336-2343 (and 2332's synthesis); this record captures only the consolidation and P2's new content."
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record P2's five undecided candidate correspondents for Action (event/operation/command/observation/authority-act), the one genuinely new item in this consolidated P1-P10 table."
+anchor_test:
+  anchor: "This reconstruction's already-tracked files 2332, 2336-2343"
+  supports_dimension: "Consolidates already-tracked findings and adds P2's candidate-correspondent list for Action"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers one genuinely new item (P2's five undecided candidate correspondents for Action) beyond the already-comprehensively-tracked P1,P3-P10 findings. Classified importance high given the consolidation value, though most content repeats prior records."

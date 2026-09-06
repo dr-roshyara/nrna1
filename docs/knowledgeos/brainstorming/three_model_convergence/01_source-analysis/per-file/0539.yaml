@@ -1,0 +1,143 @@
+sequence: 539
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260827-135038_experimental-verdict.md
+title: "LANDMARK: Second Executed Experiment Confirms 'No Simple Scalar Operator Suffices'; a Clean KERNEL/POLICY Boundary for Evidence Theory Is Frozen (Evidence/Provenance/Dependency/Polarity/Context/TemporalValidity/QualityDimensions/Conflict/StructuredAssessment=Kernel; Aggregation/Inference/DecisionThreshold/RiskTolerance/EvidenceAdequacy=Policy); 'Unknown Dependency≠Independence' Established as a Precautionary Principle; Honest Admission That the Epistemic-Equivalence Relation ∼ Is Still Undefined"
+date: "2026-08-27"
+bytes: 8134
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "reports results of the second documented executed computational experiment in the corpus, testing the four candidate algorithms proposed at 0538 against the property suite, with a second downloadable CSV artifact"
+source_role: PRIMARY_RESEARCH
+canonical_source: 539
+importance: critical
+confidence: high
+about: >
+  Reports "the first adversarial property test" -- the corpus's second documented executed computational
+  experiment (a downloadable CSV artifact, `knowledgeos_evidence_calculus_property_tests.csv`), testing
+  MAX, Weighted Mean, Saturating combination, and Bayesian-like aggregation against seven properties
+  (Duplicate invariant, Independent corroboration, Dependency-aware, Irrelevance, Order invariant, Stale
+  evidence retained, Bounded). Results: MAX passes Duplicate/Dependency/Order/Stale/Bounded but fails
+  Corroboration and Irrelevance; Weighted Mean fails Duplicate/Corroboration/Dependency/Irrelevance;
+  Saturating and Bayesian-like both pass all seven (Irrelevance handling explicitly noted to require a
+  separate normalization/quality layer for all four candidates, not the raw operators themselves).
+  Confirms the corpus's converging direction: "No simple scalar operator is sufficient as the KnowledgeOS
+  epistemic foundation."
+
+  **Delivers the file's strongest confirmed result**: worked through an API-observation-plus-two-LLM-
+  outputs example, showing a naive system sees three pieces of evidence while the dependency-aware system
+  correctly sees one underlying observation plus two derived representations -- crystallized as
+  `EvidenceCount≠IndependentEvidenceCount`, explicitly proposed as a formal KnowledgeOS invariant.
+
+  **Reports a directly executed adversarial stress result**: the experiment deliberately generated
+  approximately 100 copies of the same evidence; the normalized model correctly produces essentially the
+  same evidential contribution as the single original observation --
+  `e∼e' ⇒ Contribution([e])=Contribution([e'])` and `100×same evidence ⇏ 100×knowledge` -- explicitly named
+  "one of the most important anti-hallucination/anti-amplification properties of the architecture."
+
+  **Reports that LLM outputs correctly fail to be treated as automatically independent**: a database
+  observation e_1 with two separately-generated LLM restatements e_2, e_3 both derived from e_1 are
+  correctly recognized as non-independent (`e_2⊥̸e_1`, `e_3⊥̸e_1`), giving KnowledgeOS "a very important
+  capability that ordinary RAG systems generally do not have: it can distinguish information propagation
+  from independent corroboration."
+
+  **Reports contradiction remains fully visible**, worked through a concrete Nexus-version example with
+  separately-listed supporting evidence (API/Monitoring/Approved-inventory) and contradicting evidence
+  (Inventory DB), retaining `Conflict:ACTIVE`/`Resolution:OPEN` rather than collapsing to one confidence
+  number -- "much closer to an epistemic system than a conventional AI confidence score."
+
+  **Delivers an important honest caution on the Bayesian result**: it passed several structural tests only
+  because the experiment "deliberately used a toy likelihood mapping" that must NOT enter the KnowledgeOS
+  constitution, since genuine Bayesian inference requires a real `P(H)`, `P(E|H)`, and a defensible
+  dependence model -- crystallized as `BayesianInference≠EvidenceScore`, with Bayesian reasoning explicitly
+  relegated to `KnowledgeOS Reasoning Policies` rather than the core.
+
+  **Delivers the file's central architectural result -- a frozen KERNEL/POLICY boundary for Evidence
+  theory**: the KERNEL defines Evidence, Provenance, Dependency, Polarity, Context, TemporalValidity,
+  QualityDimensions, Conflict, and StructuredAssessment; the POLICY LAYER may define Aggregation, Inference,
+  DecisionThreshold, RiskTolerance, and EvidenceAdequacy -- "different domains can have different reasoning
+  policies without corrupting the epistemic kernel." This is the corpus's cleanest concrete Kernel-content
+  determination for Evidence theory to date.
+
+  **Formalizes the full aggregation pipeline through the equivalence-class quotient space** already
+  introduced at 0537: `ℰ --N--> ℰ/∼ --Q--> Q --ρ--> EA --ℐ_ρ--> Conclusion` -- "a much more defensible
+  mathematical architecture."
+
+  **Delivers the file's most important honest self-limitation, an unresolved open problem explicitly not
+  claimed solved**: "what exactly constitutes epistemic equivalence?" -- the relation `∼` used throughout
+  the aggregation pipeline (e_1∼e_2) has never actually been formally defined. A worked example (two
+  differently-phrased documents both stating "Nexus is version 3.69") shows this genuinely matters: are
+  they duplicates, independent corroboration, two observations from the same underlying source, or
+  semantically equivalent but independently acquired? Names the needed next theory: an "Evidence Identity
+  and Dependency Calculus," explicitly required before complete mathematical closure can honestly be
+  claimed.
+
+  **Proposes the next concrete experiment**: attack the Evidence Graph itself directly by constructing two
+  concrete provenance chains (Source->Document->Extraction->LLM interpretation->Assertion->Human
+  review->Decision; and the shorter Database->Observation->Assertion) and mathematically determining, for
+  any pair of evidence objects, seven distinct relation categories (equivalent, dependent, independent,
+  corroborating, contradictory, mere transformation of one another, or provenance-insufficient-to-
+  determine). **Delivers the file's second most important new principle**, addressing the last case:
+  `Unknown Dependency≠Independence` -- "If KnowledgeOS cannot establish that two sources are independent,
+  it should NOT silently assume independence" -- explicitly flagged as potentially "one of the strongest
+  foundations of the entire evidence architecture," a precautionary/burden-of-proof principle not
+  previously stated this explicitly in the corpus.
+
+  **Closes with an honest five-item progress self-assessment**: Evidence representation=strong; Conflict
+  preservation=strong; Dependency awareness=strong; Aggregation theory=deliberately open; Evidence
+  identity/equivalence=still needs formalization -- "we are not stuck. We have identified the next precise
+  mathematical problem. And this is exactly how I would proceed as a mathematician: do not patch the gap
+  with another definition; isolate it, construct counterexamples, and formalize the missing relation."
+introduces:
+  - concept: "The corpus's second documented executed computational experiment (a property-test suite against four candidate aggregation algorithms), confirming 'no simple scalar operator is sufficient as the KnowledgeOS epistemic foundation'"
+  - concept: "EvidenceCount≠IndependentEvidenceCount, proposed as a formal KnowledgeOS invariant, empirically demonstrated via an API-plus-two-LLM-outputs example"
+  - concept: "100×same evidence⇏100×knowledge, an empirically-confirmed anti-hallucination/anti-amplification property directly tested via ~100 generated duplicate evidence copies"
+  - concept: "The frozen KERNEL/POLICY boundary for Evidence theory: Kernel={Evidence,Provenance,Dependency,Polarity,Context,TemporalValidity,QualityDimensions,Conflict,StructuredAssessment}; Policy={Aggregation,Inference,DecisionThreshold,RiskTolerance,EvidenceAdequacy}"
+  - concept: "The honest, explicit admission that the epistemic-equivalence relation ∼ (used throughout the aggregation pipeline) has never been formally defined, motivating a proposed 'Evidence Identity and Dependency Calculus' as the corpus's next required theory before mathematical closure can be claimed"
+  - concept: "Unknown Dependency≠Independence: if KnowledgeOS cannot establish that two evidence sources are independent, it must not silently assume independence — a precautionary/burden-of-proof principle"
+  - concept: "BayesianInference≠EvidenceScore: Bayesian reasoning belongs to the pluggable Reasoning Policy layer, never the constitutional core, since it requires a defensible likelihood/dependence model the experiment's own 'toy' version did not actually supply"
+defines:
+  - concept: "KnowledgeOS Evidence Kernel (frozen)"
+    definition: "Evidence, Provenance, Dependency, Polarity, Context, TemporalValidity, QualityDimensions, Conflict, StructuredAssessment — the invariant, non-pluggable core of Evidence theory"
+  - concept: "KnowledgeOS Evidence Policy Layer (frozen)"
+    definition: "Aggregation, Inference, DecisionThreshold, RiskTolerance, EvidenceAdequacy — pluggable, domain-specific decisions that may differ across policies without corrupting the epistemic kernel"
+  - concept: "Unknown Dependency≠Independence"
+    definition: "The absence of established dependence between two evidence objects is not itself evidence of independence; independence must be affirmatively demonstrated, never assumed by default"
+refines:
+  - concept: "0537/0538's proposed candidate-algorithm experiments and property checklists"
+    refinement: "Executed and reported with concrete pass/fail results across seven properties for four candidates, confirming the provisional theorem from 0537 (no universal scalar algebra) with direct experimental evidence rather than argument alone"
+  - concept: "0537's evidential dependency-class quotient space ℰ/∼"
+    refinement: "The equivalence relation ∼ underlying this quotient construction is explicitly admitted to be still formally undefined — a genuine, disclosed gap rather than a silently assumed resolution"
+  - concept: "0532/0534/0536/0537/0538's recurring independent-evidence findings"
+    refinement: "Given a frozen Kernel-vs-Policy boundary determination — Dependency is now explicitly placed IN the Kernel (a foundational, non-pluggable concept), while Aggregation (which consumes dependency information) is explicitly placed in the pluggable Policy layer"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Trace whether the proposed next experiment (attacking the Evidence Graph directly via two worked provenance chains, and formally classifying pairwise evidence relations including the Unknown-Dependency case) is executed in a subsequent corpus file"
+  - "Trace whether an 'Evidence Identity and Dependency Calculus' is ever formally developed to close the acknowledged epistemic-equivalence gap"
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the second executed experiment's results (no simple scalar operator suffices), EvidenceCount≠IndependentEvidenceCount, and the empirically-confirmed 100×duplicate-evidence⇏100×knowledge anti-amplification property."
+  - "dimension-registry.md: record the frozen KERNEL/POLICY boundary for Evidence theory (Evidence/Provenance/Dependency/Polarity/Context/TemporalValidity/QualityDimensions/Conflict/StructuredAssessment=Kernel; Aggregation/Inference/DecisionThreshold/RiskTolerance/EvidenceAdequacy=Policy) and BayesianInference≠EvidenceScore."
+  - "dimension-registry.md: record the honest admission that the epistemic-equivalence relation ∼ is undefined, the proposed 'Evidence Identity and Dependency Calculus' next theory, and the Unknown Dependency≠Independence precautionary principle."
+anchor_test:
+  anchor: "0537's provisional no-universal-scalar-algebra theorem and quotient-space construction; 0538's ten test criteria and ten proposed adversarial scenarios; 0532/0534/0536's independent-evidence findings"
+  supports_dimension: "LANDMARK experimental confirmation and architectural resolution: reports the corpus's second executed computational experiment, empirically confirming that no simple scalar aggregation operator suffices and delivering two concrete anti-amplification/anti-propagation results (100-duplicate test, LLM-restatement-dependency test); freezes a clean, concrete KERNEL/POLICY boundary for Evidence theory placing Dependency in the invariant kernel and Aggregation in the pluggable policy layer; and — most notably for epistemic discipline — explicitly discloses that the equivalence relation underlying the entire aggregation pipeline (ℰ/∼) remains formally undefined, refusing to overclaim closure, while introducing the important precautionary principle Unknown Dependency≠Independence"
+  refines_or_contradicts: "directly executes and confirms 0537's provisional theorem with concrete experimental data; discloses an honest gap in 0537's own quotient-space construction (the equivalence relation ∼ itself); extends 0532/0534/0536's independent-evidence findings into a frozen Kernel/Policy architectural boundary; no contradiction found"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The ~100-duplicate-evidence adversarial test and the referenced second downloadable CSV artifact (knowledgeos_evidence_calculus_property_tests.csv) constitute direct, checkable experimental confirmation of the corpus's anti-amplification claims, not merely theoretical assertion."
+  - "The explicit, undisguised admission that the equivalence relation ∼ remains undefined — precisely the relation the corpus's own quotient-space aggregation architecture (from 0537) depends on — is a rare and valuable instance of the corpus catching a gap in its own immediately preceding formalization rather than silently building further on an unexamined assumption."
+undefined_concepts:
+  - "The epistemic-equivalence relation ∼ (e_1∼e_2) remains explicitly and honestly undefined at this point in the corpus, despite being load-bearing for the entire aggregation-pipeline architecture established at 0537"
+open_questions:
+  - "Whether the proposed 'Evidence Identity and Dependency Calculus' (needed to formally define ∼) is developed in a subsequent corpus file"
+  - "Whether the proposed next experiment (two worked provenance chains, seven-way pairwise relation classification including the Unknown-Dependency case) is executed"
+tier2_triggered: true
+tier2_reason: "LANDMARK file reporting the corpus's second documented executed computational experiment, delivering concrete pass/fail confirmation that no simple scalar aggregation operator suffices, two directly checkable anti-amplification/anti-propagation empirical results (the 100-duplicate test and the LLM-restatement-dependency test), and — most significantly — a clean, frozen KERNEL/POLICY architectural boundary for the entirety of Evidence theory (placing Dependency inside the invariant kernel and Aggregation/Inference in the pluggable policy layer). Equally significant is the file's rare and valuable epistemic honesty: it explicitly discloses that the equivalence relation ∼ underlying its own immediately preceding aggregation architecture (0537) remains formally undefined, refusing to claim premature mathematical closure, and introduces the important new precautionary principle Unknown Dependency≠Independence as the corpus's next concrete research direction."

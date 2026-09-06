@@ -1,0 +1,67 @@
+sequence: 2343
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/10_composition-reactivity.md
+title: "Step-292/10 — Golog, RGolog, Composition: 'Not Not-Useful. UNREACHABLE From the Current State' With a Measurable Dependency Chain (δ→Contr→Evaluation-Representation→ℛ_req); KR-COMP's Frame-Qualifier Composition Answers a Different Question Entirely"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "refutes Golog as directly applicable with a precise, measurable dependency chain, and delivers an explicit comparison showing KnowledgeOS's own composition experiment (KR-COMP) answers a structurally different question than Golog composition, neither corroborated nor challenged by Reiter"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2343
+importance: high
+confidence: high
+about: >
+  Tests Golog (complex actions via the Do macro over a basic action theory) and RGolog (interrupts as
+  prioritized condition-action rules) against KnowledgeOS.
+
+  **DELIVERS THE PRECISE UNREACHABILITY VERDICT**: "[NEG] P9 REFUTED as stated. Golog's semantics is
+  defined relative to a basic action theory -- SSA+preconditions+unique-names+S_0. KnowledgeOS has none
+  of these, and 04 shows the SSA is blocked behind Contr and DECISION-02. Golog is not 'not useful'. It
+  is UNREACHABLE from the current state, and the distance is measurable: it needs δ, which needs Contr,
+  which needs the evaluation representation, which needs ℛ_req." This delivers a precise four-link
+  dependency chain (δ←Contr←evaluation-representation←ℛ_req) quantifying exactly how far Golog is from
+  being adoptable, distinct from simply saying it is inapplicable.
+
+  **DELIVERS THE EXPLICIT COMPARISON WITH KR-COMP (KNOWLEDGEOS'S OWN COMPOSITION EXPERIMENT)**: Reiter/
+  Golog composes actions within a history, load-bearing parameter the action theory, result "composition
+  is definable given a theory"; KR-COMP composes "evidence within and across frames," load-bearing
+  parameter "the frame qualifier φ⊇{time,context}," result "the criteria select a FRAME QUALIFIER, not a
+  rule." Explicitly: "these are not competing answers to one question. They are answers to different
+  questions, and conflating them would import a sequencing model where the corpus has an evidential one.
+  KnowledgeOS-DERIVED; Reiter neither corroborates nor challenges it."
+
+  **DELIVERS THE RGOLOG VERDICT**: "interrupts-with-priority is a recognizable shape for governance
+  triggers. No corpus evidence bears on it. RESEARCH ONLY."
+introduces:
+  - concept: "The precise four-link dependency chain quantifying Golog's unreachability: delta needs Contr, which needs the evaluation representation, which needs R_req"
+  - concept: "The explicit distinction between Reiter/Golog's action-sequencing composition and KR-COMP's evidential frame-qualifier composition as answers to structurally different questions, not competing answers to one question"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked file 2332/2337 Contr-dependency findings for delta"
+    refinement: "EXTENDED with a precise four-link dependency chain showing Golog is equally, and measurably, unreachable"
+  - concept: "This reconstruction's already-tracked KR-COMP frame-qualifier finding (files 2323-2324)"
+    refinement: "SHARPENED via an explicit comparison against Golog composition, confirming the two are answers to structurally different questions"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering a precise four-link dependency chain for Golog's unreachability and an explicit comparison showing KR-COMP's frame-qualifier composition answers a structurally different question than Golog's action-sequencing composition."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Contr-dependency findings for delta and the KR-COMP frame-qualifier finding"
+  supports_dimension: "Delivers a precise dependency chain and clarifies that KR-COMP and Golog answer different composition questions entirely"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: "Delivers a precise, measurable dependency chain for Golog's unreachability and an explicit clarification that KnowledgeOS's own composition experiment (KR-COMP) answers a structurally different question than Golog composition. Classified importance high given the incremental precision on already-tracked dependency and composition findings."

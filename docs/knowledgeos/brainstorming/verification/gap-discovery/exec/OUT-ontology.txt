@@ -1,0 +1,48 @@
+
+==========================================================================
+EXP-16  Is the definitional dependency graph ACYCLIC?
+==========================================================================
+  nodes=26  edges=42
+  strongly-connected components with >1 node: 1
+    CYCLE: ['Assertion', 'Assessment', 'Authority', 'EpistemicStatus', 'Evidence', 'Policy', 'Rule']
+      witness path: Assertion -> Evidence -> Rule -> Policy -> Authority -> Assertion
+
+==========================================================================
+EXP-17  Which nodes are TRANSITIVELY BLOCKED by a non-computable dependency?
+==========================================================================
+  Step 266 class-C (no decision procedure): ['Adequacy', 'Assessment', 'Authority', 'EpistemicStatus', 'Minimality', 'Policy', 'Relevance', 'Truth']
+
+  nodes whose definition transitively reaches a class-C object: 11/26
+    Assertion       via Assertion -> Evidence -> Rule -> Policy
+    Equivalence     via Equivalence -> T_algebra -> Operation -> K -> Assertion -> Evidence -> Rule -> Policy
+    Evidence        via Evidence -> Rule -> Policy
+    Governance      via Governance -> Policy
+    History         via History -> K -> Assertion -> Evidence -> Rule -> Policy
+    K               via K -> Assertion -> Evidence -> Rule -> Policy
+    KStar           via KStar -> Equivalence -> T_algebra -> Operation -> K -> Assertion -> Evidence -> Rule -> Policy
+    Operation       via Operation -> K -> Assertion -> Evidence -> Rule -> Policy
+    Relation        via Relation -> Assertion -> Evidence -> Rule -> Policy
+    Rule            via Rule -> Policy
+    T_algebra       via T_algebra -> Operation -> K -> Assertion -> Evidence -> Rule -> Policy
+
+  nodes NOT blocked (10): ['Context', 'Dimension', 'Entity', 'Observation', 'Proposition', 'Provenance', 'RelationType', 'Source', 'Time', 'Value']
+
+==========================================================================
+EXP-18  Removal test: what breaks if each candidate primitive is deleted?
+==========================================================================
+  removed        surviving  lost
+  Observation    9          ['Assertion', 'Assessment', 'Authority', 'EpistemicStatus', 'Equivalence', 'Evidence', 'Governance', 'History', 'K', 'KStar', 'Minimality', 'Observation', 'Operation', 'Policy', 'Relation', 'Rule', 'T_algebra']
+  Proposition    9          ['Assertion', 'Assessment', 'Authority', 'EpistemicStatus', 'Equivalence', 'Evidence', 'Governance', 'History', 'K', 'KStar', 'Minimality', 'Operation', 'Policy', 'Proposition', 'Relation', 'Rule', 'T_algebra']
+  Entity         6          ['Assertion', 'Assessment', 'Authority', 'Dimension', 'Entity', 'EpistemicStatus', 'Equivalence', 'Evidence', 'Governance', 'History', 'K', 'KStar', 'Minimality', 'Operation', 'Policy', 'Proposition', 'Relation', 'Rule', 'T_algebra', 'Value']
+  Dimension      7          ['Assertion', 'Assessment', 'Authority', 'Dimension', 'EpistemicStatus', 'Equivalence', 'Evidence', 'Governance', 'History', 'K', 'KStar', 'Minimality', 'Operation', 'Policy', 'Proposition', 'Relation', 'Rule', 'T_algebra', 'Value']
+  Value          8          ['Assertion', 'Assessment', 'Authority', 'EpistemicStatus', 'Equivalence', 'Evidence', 'Governance', 'History', 'K', 'KStar', 'Minimality', 'Operation', 'Policy', 'Proposition', 'Relation', 'Rule', 'T_algebra', 'Value']
+  Time           8          ['Assertion', 'Assessment', 'Authority', 'EpistemicStatus', 'Equivalence', 'Evidence', 'Governance', 'History', 'K', 'KStar', 'Minimality', 'Operation', 'Policy', 'Provenance', 'Relation', 'Rule', 'T_algebra', 'Time']
+  Source         8          ['Assertion', 'Assessment', 'Authority', 'EpistemicStatus', 'Equivalence', 'Evidence', 'Governance', 'History', 'K', 'KStar', 'Minimality', 'Operation', 'Policy', 'Provenance', 'Relation', 'Rule', 'Source', 'T_algebra']
+  Context        9          ['Assertion', 'Assessment', 'Authority', 'Context', 'EpistemicStatus', 'Equivalence', 'Evidence', 'Governance', 'History', 'K', 'KStar', 'Minimality', 'Operation', 'Policy', 'Relation', 'Rule', 'T_algebra']
+  RelationType   17         ['Equivalence', 'History', 'K', 'KStar', 'Minimality', 'Operation', 'Relation', 'RelationType', 'T_algebra']
+  Assertion      10         ['Assertion', 'Assessment', 'Authority', 'EpistemicStatus', 'Equivalence', 'Evidence', 'Governance', 'History', 'K', 'KStar', 'Minimality', 'Operation', 'Policy', 'Relation', 'Rule', 'T_algebra']
+  Relation       18         ['Equivalence', 'History', 'K', 'KStar', 'Minimality', 'Operation', 'Relation', 'T_algebra']
+
+  READING: a candidate whose removal destroys K is NECESSARY for K as defined.
+  A candidate whose removal leaves K standing is not load-bearing for K -- it may
+  still be load-bearing for something else, which the table shows explicitly.

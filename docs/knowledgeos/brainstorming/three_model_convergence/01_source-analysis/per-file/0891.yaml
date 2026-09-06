@@ -1,0 +1,166 @@
+sequence: 891
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260830-192707_step_262_proposition-assertion-type.md
+title: "Step 262 -- Proposition/Assertion Type: OPENS WITH A MAJOR UNEXPLAINED EPISTEMIC-STATUS DISCONTINUITY -- Abruptly Asserts That 'the Latest Executed Reconstruction' Has ALREADY PROVEN a Six-Field Assertion=(id,P,e,c,t,Pi) Tuple and K=(Set(Assertion),R) via 'Executed Removal Tests,' Directly Superseding (Without Derivation in This Visible File) 0888-0890's Careful CANDIDATE-Only, 'Final Kernel Selection Remains Blocked' Discipline -- Then Substantively Formalizes the Proposition Type P=(x,d,v) With Three Genuine Removal-Test Arguments, Corrects the Overloaded-E (Entity vs Evidence) Collision, Exposes Value-Domain V_d as an Unresolved Deeper Subproblem, and Explicitly Leaves the Relationship/N-ary-Proposition Question Open Between Two Named Models"
+date: "2026-08-30"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "presents itself as continuing rigorous applied mathematics, but opens by asserting an externally-sourced 'already-proven' result this reconstruction has not itself seen executed"
+source_role: PRIMARY_RESEARCH
+canonical_source: 891
+importance: critical
+confidence: medium
+about: >
+  **Opens with a MAJOR, UNEXPLAINED DISCONTINUITY relative to files 0888-0890**: "there is an important
+  correction to the previous Step 261 conclusion. The latest executed reconstruction has already closed
+  much of Step 261" -- asserting, without deriving it within this visible file, boxed **`K=(𝒜,ℛ)`** with
+  `𝒜=Set(Assertion)` and **`Assertion=(id,P,e,c,t,Π)`** (a six-field tuple: id / Proposition / evidence
+  reference / context / temporal validity / provenance), claiming "the six assertion fields each survived
+  an executed removal test, and ℛ survived a non-reconstructibility test," with the resulting minimality
+  claim reported as **`PROVEN by the executed programme`**, and further claiming equality was "also
+  executed: structural equality and semantic equality were distinguished, and the structural state
+  equality was shown reflexive, symmetric and transitive."
+
+  **This is directly and substantively in tension with files 0888-0890's own explicit, carefully
+  maintained epistemic discipline** -- which insisted `(K,C,T,E,A)`-style candidates "remain CANDIDATE
+  rather than THEORY," that "final kernel selection remains BLOCKED" (0890's own explicit verdict box, the
+  file this one directly claims to correct), that "no cell is marked PASS merely because a plausible
+  argument exists" (0889), and that reflexivity of the state-equivalence relation was only "provisionally
+  derived" pending qualification for nondeterministic observations (0888) rather than proven outright.
+  **The "executed removal tests" and "executed programme" this file invokes are NOT visible within the
+  files read so far in this reconstruction's sequential pass (0854-0890)** -- this is either (a) a
+  reference to work genuinely performed in a not-yet-encountered file (continuing the established pattern,
+  first confirmed at file 0861, of the corpus referencing source material not present in the immediately
+  visible context), or (b) a genuine loss of the hard-won conservative discipline that 0887-0890 had just
+  finished establishing -- directly analogous in KIND (though opposite in DIRECTION -- an unearned upgrade
+  rather than 0862's downgrade) to the "later steps sometimes lose earlier knowledge" / `Later≠Better`
+  finding first crystallized at file 0863. **This reconstruction records the discontinuity as an open
+  finding requiring resolution against subsequent files, rather than either accepting or rejecting the
+  claimed "PROVEN" status on its own authority.**
+
+  **Having asserted this external baseline, the file's own substantive content is a reasonably careful,
+  independently-checkable formalization of the Proposition type `P`** (treated as the file's own
+  "remaining load-bearing gap," `G-A`, rather than re-litigating the already-claimed `K`/`Assertion`
+  result):
+
+  **§262.2 reaffirms Proposition≠Assertion**: `P` is semantic content; `A=(id,P,e,c,t,Π)` is the full
+  assertion, quoting "every Assertion contains a Proposition, but not every Proposition is an Assertion."
+
+  **§262.3-262.8 delivers the candidate `P=(E,D,V)` with a genuine, self-contained three-way removal-test
+  argument** (Entity necessary -- `(D,V)` cannot recover subject identity, e.g. `(Version,3.69)` could
+  describe many entities; Dimension necessary -- `(E,V)` cannot recover the value's semantic role, e.g.
+  `(Nexus,3.69)` could mean version, risk score, capacity, etc.; Value necessary -- `(E,D)` states only
+  that "Nexus has a Version," not "version 3.69") -- explicitly flagged as "a structural argument, although
+  a full executed counterexample would make the claim stronger," a notably more honest hedge than the
+  file's own opening claim.
+
+  **§262.9-262.10 corrects an overloaded-symbol collision**: `E` has historically meant Entity, Evidence,
+  relationship endpoint, and generic semantic object interchangeably -- "precisely the kind of Ubiquitous
+  Language collision we must eliminate" -- proposing the cleaner, disambiguated typed definition boxed
+  **`P=(x,d,v)`** with `x∈ℰ, d∈𝒟, v∈V_d`, explicitly to avoid confusing the type `ℰ` with an individual
+  entity `E` (echoing the corpus's own earlier `ℰ` (Entity) / `ℰ_v` (Evidence) disambiguation).
+
+  **§262.12 applies Step 261's equality machinery**: structural equality (`P_1=_{str}P_2⟺x_1=x_2∧d_1=d_2
+  ∧v_1=v_2`) is distinguished from semantic equality via a worked example (`3.70m` and `370cm` denoting
+  the same value while being structurally unequal) -- concluding the proposition type "requires a value
+  semantics, not merely a syntactic tuple."
+
+  **§262.13-262.14 exposes value-domain typing (`V_d`) as an unresolved deeper subproblem**: `V_d` may be
+  finite (e.g. `Status={Unknown,Supported,Refuted}`), `ℝ`, version-strings, or itself structured --
+  boxed **`P=(E,D,V) is not the end of the formalisation. It is the beginning of the typed semantic
+  domain`** -- delivering a candidate well-formedness rule `WF(P)⟺x∈ℰ∧d∈𝒟∧v∈V_d`.
+
+  **§262.15-262.16 explicitly leaves the relationship/n-ary-proposition question open between two named,
+  non-preference-decidable models**: Model A (`Relationship⊆Proposition`, the simple triple suffices,
+  e.g. "Manager" as a dimension) vs. Model B (`Relationship⊄Proposition`, requiring `𝒫=𝒫_attribute∪
+  𝒫_relation`) -- "we must not choose between these merely by preference. It requires counterexamples" --
+  cross-referencing an earlier eight-field relationship tuple `r=(E_1,E_2,T,R,Q,E,Σ,τ)`.
+
+  **§262.17-262.19 delivers three "must-not-leak-into-P" boundary results**, each attributed to "the
+  executed removal test" (again the file's claimed external baseline rather than a derivation visible
+  here): context must remain at the assertion level, not inside `P` (else the Proposition/Assertion
+  distinction collapses); evidence `e` is outside `P` (boxed **`P≠(P,e)`** -- preserves "same proposition,
+  different evidence" from 0890/0861-era findings); temporal validity `t` belongs to Assertion, not
+  Proposition -- boxed **`Temporal multiplicity is an assertion phenomenon, not necessarily a proposition
+  identity phenomenon`** (one proposition may have two validity intervals, forcing assertion-level
+  wrapping).
+
+  **§262.20 delivers a candidate semantic proposition equality via value normalization**
+  (`P_1≡_PP_2⟺x_1≡_Ex_2∧d_1≡_Dd_2∧v_1≡_{V_d}v_2`, domain-specific, e.g. `Normalize_D(3.70m)=
+  Normalize_D(370cm)`), explicitly flagged "a candidate formulation until value semantics are formally
+  specified."
+
+  **§262.21 delivers a twelve-row derivation-status table** (five green -- Proposition≠Assertion, the
+  `P=(E,D,V)` candidate, and all three individual removal arguments; three yellow -- typed formalization,
+  proposition semantic equality; four red -- `V_D` formal definition, relationship representation,
+  n-ary propositions, full proof of `P=(E,D,V)`).
+
+  **§262.22 delivers the "crucial finding"**: Step 262 does not invalidate but strengthens the claimed
+  `K=(𝒜,ℛ)` decomposition, delivering a clean four-level hierarchy diagram (Knowledge State → Assertions
+  𝒜 → Assertion fields → Proposition's `(x,d,v)` sub-fields, alongside Asserted Relations ℛ).
+
+  **§262.23 and the Step-262 verdict** identify `G-A: P=(E,D,V) — what are E,D,V?` as "the first remaining
+  load-bearing gap" (again per the claimed external reconstruction), delivering the explicit boxed verdict
+  **`PARTIALLY RESOLVED — LOAD-BEARING GAP NARROWED`**, and the candidate→typing→removal-test→
+  counterexample→closure→computability methodology chain for attacking `ℰ,𝒟,V_D` next.
+
+  **Closes opening "Step 263 — Entity/Dimension/Value Type System,"** asking whether Entity, Dimension,
+  and Value are genuinely primitive typed domains or derivable from a deeper structure.
+introduces:
+  - concept: "A MAJOR, UNEXPLAINED EPISTEMIC-STATUS DISCONTINUITY: an abrupt, externally-sourced claim that a six-field Assertion=(id,P,e,c,t,Π) tuple and K=(Set(Assertion),ℛ) are already PROVEN via 'executed removal tests' and an 'executed programme' not visible in files 0854-0890"
+  - concept: "The candidate typed Proposition P=(x,d,v) with x∈ℰ, d∈𝒟, v∈V_d, replacing the ambiguous P=(E,D,V) notation"
+  - concept: "A genuine self-contained three-way removal-test argument for Entity/Dimension/Value necessity"
+  - concept: "The overloaded-E (Entity vs Evidence) Ubiquitous Language collision, and its proposed resolution via ℰ vs ℰ_v / x vs e"
+  - concept: "Proposition structural equality vs semantic equality, worked via the 3.70m/370cm value-normalization example"
+  - concept: "Value-domain typing V_d exposed as an unresolved deeper subproblem beneath the P=(E,D,V) formalization"
+  - concept: "The relationship/n-ary-proposition open question: Model A (Relationship⊆Proposition) vs Model B (separate primitive), explicitly undecided pending counterexamples"
+  - concept: "Three must-not-leak-into-P boundary results: context, evidence, and temporal validity all belong to Assertion, not Proposition"
+  - concept: "Temporal multiplicity is an assertion phenomenon, not necessarily a proposition identity phenomenon"
+  - concept: "The clean four-level Knowledge-State/Assertion/Proposition hierarchy diagram"
+  - concept: "G-A identified as the first remaining load-bearing gap: what are Entity, Dimension, Value?"
+  - concept: "Opens Step 263 — Entity/Dimension/Value Type System"
+defines:
+  - concept: "Proposition type P=(x,d,v)"
+    definition: "A proposed, disambiguated typed definition of the Proposition primitive: P=(x,d,v) where x∈ℰ (the entity/subject the proposition concerns, using ℰ for the Entity type to avoid collision with Evidence, previously also denoted E or e), d∈𝒟 (the dimension/semantic-property-type the value is measured on), and v∈V_d (a value drawn from the dimension-specific admissible value space). Superior to the ambiguous P=(E,D,V) notation because it separates the TYPE ℰ from an individual entity instance and from Evidence, which the corpus's own overloaded-symbol history had repeatedly collided. Supported by a three-way removal-test argument showing each of x, d, v is independently necessary: removing x loses subject identity (D,V alone cannot determine which entity is meant), removing d loses the value's semantic role (E,V alone cannot determine what kind of property the value represents), and removing v loses the proposition's actual asserted content (E,D alone states only that the entity 'has' the dimension, not what value it takes)"
+  - concept: "Must-not-leak-into-P boundary discipline"
+    definition: "A methodological constraint requiring that fields shown to be necessary at the Assertion level (context c, evidence e, temporal validity t) must NOT be pulled down into the Proposition type P, even though they are independently necessary somewhere in the overall Assertion tuple. The justification in each case is that doing so would destroy the very Proposition/Assertion distinction the theory depends on: if evidence were part of P's identity, two assertions of the same proposition with different evidence could no longer be recognized as sharing 'the same proposition'; if temporal validity were part of P's identity, a single proposition with two genuinely distinct validity intervals could not be represented without artificially duplicating the proposition itself"
+refines:
+  - concept: "0890's/0888's/0887's kernel-candidate and equality frameworks"
+    refinement: "Applies Step 261's equality machinery concretely to the Proposition sub-type via structural-vs-semantic-equality worked example (3.70m/370cm), and applies Step 260's removal-test methodology concretely to the E/D/V triple -- while simultaneously introducing the unresolved discontinuity of claiming these prior steps' broader K/equality questions are already externally PROVEN, in tension with 0890's own explicit 'final kernel selection remains blocked' verdict"
+  - concept: "The corpus's own historical Entity (ℰ) vs Evidence (ℰ_v) disambiguation"
+    refinement: "REAPPLIED and reinforced at the Proposition-tuple level specifically, correcting a fresh instance of the same Entity/Evidence symbol collision that had appeared in the P=(E,D,V) notation"
+contradicts:
+  - concept: "0888's/0889's/0890's careful CANDIDATE-only, 'final kernel selection remains blocked' epistemic discipline"
+    detail: "This file's opening claim that 'the latest executed reconstruction has already closed much of Step 261' and that a specific six-field Assertion tuple and K=(𝒜,ℛ) decomposition are PROVEN is not derived within this file and is not visible as executed work in any file read so far (0854-0890) -- directly in tension with those files' explicit, repeatedly-reaffirmed conservative status (CANDIDATE not THEORY; final kernel selection blocked; equality only provisionally, not fully, established). Flagged as requiring resolution against subsequent files rather than resolved here."
+repeats: []
+bridge_candidates:
+  - "Read Step 263 (Entity/Dimension/Value Type System) next, and specifically watch for whichever file (if any) contains the actual 'executed removal tests' and 'executed programme' this file claims already proved the six-field Assertion tuple and K=(𝒜,ℛ) -- this may require reading ahead or noting the claim as an unresolved external reference, analogous to the Step-1-182 missing-material finding at file 0861."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: flag the major unexplained epistemic-status discontinuity (an abrupt externally-sourced PROVEN claim contradicting 0888-0890's careful CANDIDATE-only discipline) as an open structural finding requiring resolution against subsequent files."
+  - "dimension-registry.md: record the P=(x,d,v) typed Proposition formalization, its three-way removal-test argument, and the three must-not-leak-into-P boundary results as directly reusable content for the gated (§29) canonical Kernel synthesis, independent of the unresolved discontinuity in the file's opening framing."
+  - "dimension-registry.md: record the still-open relationship/n-ary-proposition question (Model A vs Model B) as a genuine unresolved bridge candidate."
+anchor_test:
+  anchor: "0888's/0889's/0890's careful CANDIDATE-only kernel/congruence/equality discipline; 0890's six-notion equality formalization; 0863's Later≠Better/Chronology≠Supersession finding"
+  supports_dimension: "Introduces a significant tension with the immediately preceding files' epistemic discipline by asserting an unearned PROVEN status; substantively applies 0890's equality machinery and 0888's removal-test methodology at the Proposition-type level; structurally analogous (opposite-direction) to 0863's Later≠Better finding about historical knowledge loss"
+  refines_or_contradicts: "contradicts (in its opening framing) 0888-0890's conservative epistemic status; refines/applies (in its substantive body) 0890's equality and 0888's removal-test methodology to the Proposition sub-type"
+  alternative_minimal_kernel: true
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The file's own opening two paragraphs, explicitly claiming '[t]he six assertion fields each survived an executed removal test... reported as PROVEN by the executed programme,' are directly checkable evidence of the claimed external baseline, and their absence from files 0854-0890 is directly checkable evidence of the discontinuity."
+  - "§262.5-262.7's self-contained removal-test arguments for Entity/Dimension/Value, worked with concrete examples (Version 3.69 of which entity; 3.69 meaning version vs risk score vs capacity; 'has a Version' vs 'has version 3.69'), are directly checkable evidence supporting this file's own substantive (as opposed to claimed-external) contribution."
+  - "§262.17-262.19's three must-not-leak-into-P arguments, each with a concrete justification (context/interpretation-dependence, evidence non-derivability, two-validity-intervals-per-proposition), are directly checkable evidence for the boundary discipline separating Proposition from Assertion fields."
+undefined_concepts: []
+open_questions:
+  - "Whether the 'executed removal tests' and 'executed programme' claimed in this file's opening ever appear as visible content in a subsequent (or, less likely given file-path ordering, an unread prior) file, resolving the discontinuity."
+  - "Whether the relationship/n-ary-proposition question (Model A vs Model B) is ever resolved by an actual counterexample, as this file explicitly demands before choosing."
+  - "Whether Step 263 substantively resolves the Entity/Dimension/Value primitiveness question, or itself defers/discontinues as this file did relative to 0888-0890."
+tier2_triggered: true
+tier2_reason: "Introduces a major, unresolved epistemic-status discontinuity relative to the immediately preceding three files' carefully maintained conservative discipline, directly bearing on how much weight this reconstruction should give to any 'PROVEN' claim going forward. Also delivers a substantively genuine typed-Proposition formalization with its own removal-test argument, an Entity/Evidence disambiguation, and an explicitly left-open relationship/n-ary-proposition question. Classified importance critical (for the discontinuity finding) and tier2-triggered; confidence medium reflecting the unresolved external-reference tension."

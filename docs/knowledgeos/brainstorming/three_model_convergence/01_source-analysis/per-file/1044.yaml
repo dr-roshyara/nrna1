@@ -1,0 +1,97 @@
+sequence: 1044
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-288/04-CONGRUENCE-AND-OPERATION-MATRIX.md
+title: "04 -- Congruence and Per-Operation Equality Bindings (Step 288 SSSS10-14): Delivers the Corpus's Own 261.19 Matrix Concluding 'No Single Equality Relation Is Adequate for All KnowledgeOS Operations,' the Formal Congruence Criterion 'Proposition 258-A,' and a Comprehensive Eight-Shape Counterexample Catalog for the Deduplication Problem"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the fourth numbered Step-288 artifact, delivering the operation-binding and congruence completeness analysis"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1044
+importance: critical
+confidence: high
+about: >
+  "04 — Congruence and Per-Operation Equality Bindings (mandate §§10-14)."
+
+  **§10 delivers the formal congruence criterion, "Proposition 258-A" (`258.30`)**: `F∘T_H=T̄∘F` -- every
+  mandatory transformation must FACTOR THROUGH the quotient map `F`, with a commuting diagram at `258.23`.
+  Confirms global congruence "CANNOT YET BE PROVEN because the transformation family is not fully closed"
+  (`259`), and that `259.16` distinguishes LOCAL from GLOBAL congruence. Confirms the already-tracked
+  executed demonstration (file 1039) that `=` is NOT a congruence, reproducing corpus `258.10`/`258.15` on a
+  toy model, boxed: "Current structural equality is insufficient evidence of semantic equivalence."
+
+  **§11 DELIVERS THE CORPUS'S OWN "`261.19`" MATRIX, A GENUINELY MAJOR CONFIRMED FINDING**: "7 operations × 5
+  relations, EVERY CELL UNRESOLVED" -- concludes boxed: **"No single equality relation is adequate for all
+  KnowledgeOS operations."** Delivers the full per-operation binding table across THIRTEEN operations
+  (Deduplicate, Merge, Retract, Supersede, Validate, Replay, Authorize, Policy evaluation, Publish, Apply,
+  Verify, Remove, Revise), confirming **SIX OF THE MANDATE'S ELEVEN NAMED OPERATIONS HAVE NO CORPUS EQUALITY
+  ANALYSIS AT ALL** (`Retract`, `Authorize`, `Policy evaluation`, `Publish`, `Apply`, `Verify`) --
+  explicitly tied to the already-tracked unenumerated-`𝒪` gap: "the operation set itself is a dependency,
+  exactly as `261.23` condition 2 states." Delivers `261.28`'s reframing of the entire equality-decision
+  problem: KnowledgeOS "requires a TYPED FAMILY of equality, identity, equivalence, provenance and historical
+  relations. The decision is not 'pick one' -- it is 'bind each operation.'" Also confirms `Validate` is
+  reclassified as "an ASSESSMENT relation, not an equality" -- a genuinely useful category clarification.
+
+  **§12 delivers a comprehensive nine-sameness-kind table for Deduplication** (same reference/entity/
+  assertion/content/semantics/provenance/observation/state/history), with FOUR RIVAL CRITERIA (`261.17`) and
+  the choice classified NORMATIVE/DOMAIN-DEPENDENT. **Delivers a comprehensive eight-shape counterexample
+  catalog** required by the mandate: structurally different but semantically equal; semantically equal but
+  provenance-distinct; observationally equal but operationally different (EXECUTED); same-test-output but not
+  extensionally equal (EXECUTED); same content different identity; same identity different epistemic state;
+  equal properties different entities; and a non-contradiction (two IPs, `Functional(HasIPAddress)=False`).
+  "Does the corpus supply enough to choose the production criterion? NO."
+
+  **§13 delivers the quotient/canonicalization completeness check**: 0 of 8 required properties satisfied for
+  any candidate quotient (`K=[H]_∼_H` or `ℋ/≡_𝒯`) -- "Mathematical equivalence ≠ implementable
+  canonicalization," and confirms transitivity is a genuine prerequisite for any quotient to exist at all,
+  resolved only for `≅_I` within a context.
+
+  **§14 delivers the definitive hash/fold/structural-identity characterization**: `H(x)=H(y)` requires FOUR
+  things -- a specified serialization, canonicalization, collision model, and scope -- "THREE OF THE FOUR ARE
+  UNSPECIFIED," confirmed with the already-tracked executed demonstrations (key-order flip, locale-ambiguous
+  date).
+introduces:
+  - concept: "'Proposition 258-A' (258.30), the formal congruence criterion: every mandatory transformation must factor through the quotient map F"
+  - concept: "The corpus's own 261.19 matrix (7 operations x 5 relations, every cell unresolved), concluding no single equality relation is adequate for all KnowledgeOS operations"
+  - concept: "The confirmed finding that six of the mandate's eleven named operations have no corpus equality analysis at all, tied directly to the unenumerated operation-space gap"
+  - concept: "261.28's reframing: the equality-decision problem is not 'pick one relation' but 'bind each operation to its own typed relation family'"
+  - concept: "The comprehensive nine-sameness-kind table and eight-shape counterexample catalog for the Deduplication problem"
+  - concept: "The reclassification of Validate as an assessment relation, not an equality relation"
+  - concept: "The definitive four-requirement characterization of hash-based identity (serialization, canonicalization, collision model, scope), three of four unspecified"
+defines:
+  - term: "Proposition 258-A"
+    definition: "The formal congruence criterion: F(T_H(H,c))=T-bar(F(H),c) for every mandatory transformation T_H -- every admissible transformation must factor through the quotient map F"
+refines:
+  - concept: "This reconstruction's already-tracked congruence-failure finding for structural equality (files 1037, 1039, 1041)"
+    refinement: "GROUNDED in the formal congruence criterion (Proposition 258-A) and confirmed unproven at the global level due to the unenumerated transformation family"
+  - concept: "This reconstruction's already-tracked per-operation gaps for Qualify/Merge (files 1037-1038)"
+    refinement: "EXPANDED into the full 261.19 matrix covering thirteen operations, six of which have no corpus equality analysis at all"
+contradicts: []
+repeats:
+  - "Substantially consolidates already-tracked findings (files 1037-1039, 1041-1043); this file's distinctive contributions are Proposition 258-A, the 261.19 matrix's 'no single equality relation adequate' conclusion, and the comprehensive counterexample catalog."
+bridge_candidates:
+  - "'258.9', '258.23', '258.30', '259', '259.16', '261.14-28' -- extensive new corpus loci for congruence and per-operation bindings; not yet directly encountered."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the corpus's own 261.19 matrix and its conclusion that no single equality relation is adequate for all KnowledgeOS operations, plus the confirmation that six named operations have no corpus equality analysis at all."
+  - "dimension-registry.md: record Proposition 258-A as the formal congruence criterion, and the comprehensive eight-shape counterexample catalog for the Deduplication problem."
+anchor_test:
+  anchor: "This reconstruction's already-tracked congruence-failure and per-operation equality gaps (files 1037-1039, 1041-1043)"
+  supports_dimension: "Grounds the congruence-failure finding formally and expands the per-operation analysis into the corpus's own comprehensive, self-declared incomplete matrix"
+  refines_or_contradicts: "confirms and completes prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The 261.19 matrix and Proposition 258-A are directly checkable against a future direct encounter with those corpus loci."
+undefined_concepts: []
+open_questions:
+  - "The full content of corpus loci 258.9, 258.23, 258.30, 259, 259.16, and 261.14-28, not yet directly encountered."
+tier2_triggered: true
+tier2_reason: "Delivers the corpus's own major self-declared finding that no single equality relation is adequate for all KnowledgeOS operations (261.19), the formal congruence criterion Proposition 258-A, and a comprehensive counterexample catalog for the Deduplication problem. Classified importance critical and confidence high given the direct corpus grounding and structural significance of these findings."

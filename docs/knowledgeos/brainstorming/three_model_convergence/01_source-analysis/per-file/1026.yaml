@@ -1,0 +1,104 @@
+sequence: 1026
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-211415_step_287_reviewer-review-of-refined-step-287-keep-open-four-surgical-edits.md
+title: "Reviewer -- Review of Refined Step 287, Keep OPEN With Four Surgical Edits: Resolves the Long-Tracked 'REFINED-STEP-287' Bridge Candidate, Corrects the '=Under-Specified Corpus PRIMITIVE=' Overclaim to 'Corpus CONSTRUCT', and Crystallizes the Third Normative Component (Provenance Relevance) Alongside Decision 3 and the Observation-Subset Choice"
+date: "2026-08-31"
+bytes: 0
+model:
+  primary: m1
+  secondary: none
+  secondary_note: "the review resolving the long-tracked 'REFINED-STEP-287' bridge candidate (files 1020-1022), extensively quoting and correcting its content"
+source_role: PRIMARY_RESEARCH
+canonical_source: 1026
+importance: critical
+confidence: high
+about: >
+  "Review — Refined Step 287," resolving the long-tracked "REFINED-STEP-287" bridge candidate (named in
+  files 1020-1022) via extensive quotation and correction. Verdict: "Step 287 is strong and materially
+  better than the original mandate... I would KEEP Step 287 OPEN," with four surgical edits recommended.
+
+  **Confirms the already-tracked central conclusion in its canonical framing**: "the corpus contains four
+  distinct relations, but only structural equality currently has a decision procedure... Neither. The corpus
+  contains the RELATIONS and not their DECISION PROCEDURES" -- reframes the problem precisely: not
+  "KnowledgeOS has no equality concept" but "KnowledgeOS has named equality relations whose semantics/
+  decision procedures are incompletely specified."
+
+  **Edit 1 corrects an overclaim in the already-tracked `≈_X` derivation (file 1019's F4)**: "the axes ARE
+  the observations" is "slightly stronger than the evidence supports" -- what is ACTUALLY derived is only
+  that IF observational equality is defined over the five-axis `Σ`, the observation parameter can be
+  represented as an axis subset; it does NOT establish that "the permitted observations of KnowledgeOS are
+  exactly subsets of `{A,S,R,V,C}`" -- recommends "the five axes provide a bounded candidate space for
+  state-level observations... selecting `X` remains normative."
+
+  **Edit 2 corrects the already-tracked product-order finding (file 1019)**: distinguishes "A. Mathematical
+  construction" (if five component orders are supplied, their product IS a partial order) from "B.
+  KnowledgeOS's actual order" (the corpus has NOT yet supplied the five component orders) -- "a product
+  partial-order structure is available as a mathematical construction; the KnowledgeOS order itself remains
+  under-specified until the component orders are declared."
+
+  **DELIVERS A GENUINELY IMPORTANT TERMINOLOGY CORRECTION (Edit 3)**: "Equality is an UNDER-SPECIFIED corpus
+  PRIMITIVE" (the already-tracked closing phrase, files 0993-0994) is corrected to **"Equality relations are
+  UNDER-SPECIFIED corpus CONSTRUCTS"** -- "calling equality a PRIMITIVE could accidentally imply that
+  equality itself is already part of the ratified primitive ontology. That has not been established." This
+  is a precise, previously-unflagged category-error risk in this reconstruction's own already-tracked
+  phrasing.
+
+  **DELIVERS THE FILE'S OWN GENUINELY NEW CONTRIBUTION (§9): CRYSTALLIZES A THIRD NORMATIVE CHOICE**
+  alongside the already-tracked Decision 3 (`Π∈≡`?) and observation-subset choice (`X⊆{A,S,R,V,C}`): **the
+  PROVENANCE-RELEVANCE PREDICATE `Relevant_λ(Π)`** -- the corpus's Step 105 decision-relevance principle
+  ("decision-relevant provenance, not private chain-of-thought," already tracked via file 1005) supplies a
+  PRINCIPLE but "not a predicate," so `≅_λ` "remains genuinely under-specified" and "should stay explicitly
+  separate from `≈`." This is the first time this reconstruction has seen all three normative choices named
+  together as parallel, distinct governance items in Edit 4's explicit enumeration.
+
+  **Confirms the already-tracked repairs** (non-injectivity modulo a quotient only, not of `δ` itself;
+  state-identity vs authority-act-identity separation; the `INDEPENDENCE` result showing Gītā contribution
+  is exactly zero for the equality result -- "stronger than corroboration≠derivation: here Gītā
+  contribution=0").
+
+  **Delivers a comprehensive thirteen-row final status table**, and confirms the 285→286→287 sequence is
+  "now coherent," closing: "The remaining equality problem is no longer a broad discovery problem. It is a
+  bounded specification/governance problem, except for `Qualify`, which remains the irreducible engineering
+  blocker."
+introduces:
+  - concept: "The corrected observational-equality claim: the five axes provide a bounded candidate space, not the definitive set of permitted observations; selecting X remains normative"
+  - concept: "The corrected product-order claim: the product-order structure is a mathematical availability, not an established KnowledgeOS order, pending the five component orders"
+  - concept: "The precise terminology correction from 'under-specified corpus primitive' to 'under-specified corpus construct,' avoiding an implicit claim that equality is already a ratified primitive"
+  - concept: "The crystallization of the third normative choice, provenance-relevance Relevant_lambda(Pi), named alongside Decision 3 and the observation-subset choice as parallel governance items"
+defines: []
+refines:
+  - concept: "This reconstruction's long-tracked 'REFINED-STEP-287' bridge candidate (files 1020-1022)"
+    refinement: "RESOLVED via extensive quotation and correction, though the original document itself is still not directly encountered"
+  - concept: "This reconstruction's already-tracked observational-equality F4 finding (file 1019) and product-order finding (file 1019)"
+    refinement: "CORRECTED for overclaim: neither the axis-subset space nor the product order is yet an established KnowledgeOS structure, only a bounded candidate space / mathematical availability"
+  - concept: "This reconstruction's own already-used phrase 'under-specified corpus primitive' (files 0993-0994)"
+    refinement: "FLAGGED as a category-error risk and corrected to 'under-specified corpus construct'"
+  - concept: "This reconstruction's already-tracked three normative/governance items (Decision 3, observation-subset choice, and Step-105 provenance-relevance principle)"
+    refinement: "EXPLICITLY CRYSTALLIZED, for the first time, as three PARALLEL named governance dependencies in one enumerated list"
+contradicts: []
+repeats:
+  - "Substantially confirms already-tracked equality/identity findings (files 0993-0994, 1005, 1007, 1018-1019, 1021); this file's distinctive contributions are the four surgical edits and the third-normative-choice crystallization."
+bridge_candidates:
+  - "The full 'REFINED-STEP-287' document itself, extensively quoted and corrected here but not yet directly encountered in its original form."
+mathematical_content: true
+gita_content: true
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the terminology correction 'under-specified corpus construct' (not primitive) for equality, and the crystallized third normative choice (provenance-relevance predicate)."
+  - "dimension-registry.md: record the corrected, weaker claims for observational equality's axis-subset space and the product-order's mathematical-availability status."
+anchor_test:
+  anchor: "This reconstruction's already-tracked equality/identity findings and the F4/product-order findings (files 0993-0994, 1005, 1007, 1018-1019, 1021)"
+  supports_dimension: "Corrects two overclaims and crystallizes a third parallel normative choice, delivering the comprehensive thirteen-row final status table"
+  refines_or_contradicts: "refines (narrows) prior findings"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "The thirteen-row final status table is directly checkable against files 0993-0994, 1005, 1007, 1018-1019, 1021's own already-documented findings for consistency."
+undefined_concepts: []
+open_questions:
+  - "The full original text of the 'REFINED-STEP-287' document, not yet directly encountered."
+tier2_triggered: true
+tier2_reason: "Resolves the long-tracked 'REFINED-STEP-287' bridge candidate, corrects two genuine overclaims (the axis-subset observation space, the product-order status), delivers a precise terminology correction (construct not primitive), and crystallizes a third parallel normative governance choice (provenance-relevance predicate) alongside the already-tracked Decision 3 and observation-subset choice. Classified importance critical and confidence high given the direct, precise, and cross-checkable nature of these corrections."

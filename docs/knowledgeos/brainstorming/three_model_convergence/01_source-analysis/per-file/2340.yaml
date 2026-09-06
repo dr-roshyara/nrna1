@@ -1,0 +1,76 @@
+sequence: 2340
+path: docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/07_observation-sensing-qualify.md
+title: "Step-292/07 — Observation, Sensing, and Qualify: Boundary Preserved -- 'Reiter Gives a Rigorous Framework AROUND These Boundaries Rather Than Solving Them'; Qualify May Be an Epistemic Boundary Rather Than a Computable Function (the 'Reason' Precedent); Reiter's Knowledge Operator and A_t Differ by Governance Decision, Not Oversight"
+date: "2026-09-02"
+bytes: 0
+model:
+  primary: c1
+  secondary: b
+  secondary_note: "a five-question test of whether Reiter's machinery closes the already-tracked Observation/Qualify/O-T boundaries, concluding none are closed, with the deepened reasoning for why Poss≠Qualify and the raised possibility that Qualify is a boundary rather than a function at all"
+source_role: PRIMARY_RESEARCH
+canonical_source: 2340
+importance: high
+confidence: high
+about: >
+  Opens with the mandate's own anticipated outcome, confirmed: "the correct outcome may be that Reiter
+  gives a rigorous framework AROUND these boundaries rather than solving them. That is the outcome."
+
+  **DELIVERS A FIVE-QUESTION TEST TABLE**: is Observation an action? (Reiter's sensing-action shape
+  exists, but "the corpus reopened Observation as OPEN in v1.2 and has not closed it" -- OPEN); is
+  Observation a fluent? (not decidable from either source -- OPEN); is sensing an action whose effect is
+  on knowledge? (yes in Reiter [EXT], but whether KnowledgeOS's Observation is that kind of thing is not
+  settled by Reiter merely having a construct of that shape -- OPEN); is Qualify a precondition?
+  (REFUTED, P4, with the deepened reasoning: "Poss(a,s) gates whether an action may occur; Qualify
+  concerns whether a qualification holds of a knowledge item. Different type, different pipeline
+  position" -- directly sharpening this reconstruction's already-tracked Poss≠Qualify finding from
+  files 2335/2339 with the precise type-distinction argument); is Qualify an operation, or an epistemic
+  boundary rather than a computable function? (not decided, and KR-CONTR-EVAL "makes the third option
+  live: the programme has already found one case where an apparent function was really a boundary
+  [reason]" -- OPEN).
+
+  **DELIVERS THE GOVERNANCE-LEVEL EXPLANATION FOR WHY SENSING DOES NOT TRANSFER**: "Reiter's sensing
+  works because knowledge is modelled by an accessibility relation and is factive. R1 decided that
+  KnowledgeOS's object is A_t, an attribution, and that no component may assert Knows. [NEG] Reiter's
+  knowledge operator and KnowledgeOS's object are different predicates by governance decision, not by
+  oversight. Sensing's formal guarantees are guarantees about a factive operator and do not carry over
+  to attribution." This is an important methodological distinction: the gap between Reiter's Knows and
+  KnowledgeOS's A_t is not an unfinished-research gap but a deliberate, already-ratified governance
+  choice (R1), so no amount of further formal work on sensing will close it.
+
+  **CLOSES CONFIRMING**: "Observation OPEN, Qualify OPEN, O/T OPEN. Reiter changes none of them. Recorded
+  as required by the mandate."
+introduces:
+  - concept: "The precise type-distinction argument for why Poss≠Qualify: Poss gates action-occurrence, Qualify concerns whether a qualification holds of a knowledge item -- different types, different pipeline positions"
+  - concept: "The raised third option that Qualify may be an epistemic boundary rather than a computable function at all, citing the corpus's own precedent case ('reason' in KR-CONTR-EVAL) where an apparent function was really a boundary"
+  - concept: "The governance-level explanation that Reiter's Knows and KnowledgeOS's A_t differ by deliberate ratified governance decision (R1), not by an unfinished-research gap"
+defines: []
+refines:
+  - concept: "This reconstruction's already-tracked Poss≠Qualify refutation (files 2335, 2339)"
+    refinement: "GIVEN THE PRECISE UNDERLYING TYPE-DISTINCTION ARGUMENT (action-occurrence gate vs qualification-holds-of-item) for why the identification fails"
+  - concept: "This reconstruction's already-tracked open Qualify/G1 problem throughout the Gita thread (files 2292, 2298, 2306+)"
+    refinement: "GIVEN A THIRD LIVE OPTION not previously this explicit: Qualify may not be a function/operator at all, but an epistemic boundary, per the corpus's own 'reason' precedent in KR-CONTR-EVAL"
+contradicts: []
+repeats:
+  - "The OPEN status of Observation/Qualify/O-T is already tracked throughout the Gita thread and files 2335/2339; this record captures the incremental type-distinction argument, the boundary-not-function third option, and the governance-decision explanation for sensing's non-transfer."
+bridge_candidates: []
+mathematical_content: false
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record this document as delivering the precise type-distinction argument for Poss≠Qualify, raising the live possibility that Qualify is an epistemic boundary rather than a function, and explaining that Reiter's Knows and KnowledgeOS's A_t differ by deliberate governance decision (R1), not oversight."
+anchor_test:
+  anchor: "This reconstruction's already-tracked Poss≠Qualify finding and the open Qualify/G1 problem throughout the Gita thread"
+  supports_dimension: "Delivers the underlying type-distinction argument for the refutation and raises a third, boundary-not-function option for Qualify's ultimate nature"
+  refines_or_contradicts: "refines"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence: []
+undefined_concepts: []
+open_questions:
+  - "Whether Qualify is ultimately resolved as an operation or as an epistemic boundary (the third option raised here), and whether the 'reason' precedent in KR-CONTR-EVAL is directly encountered elsewhere in this reconstruction's remaining primary-corpus reading."
+tier2_triggered: true
+tier2_reason: "Delivers the precise type-distinction argument underlying the already-tracked Poss≠Qualify refutation, raises a live third option that Qualify may be a boundary rather than a function, and explains that Reiter's Knows and KnowledgeOS's A_t differ by deliberate governance decision rather than an unfinished research gap. Classified importance high given the incremental methodological precision."

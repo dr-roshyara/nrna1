@@ -1,0 +1,238 @@
+sequence: 740
+path: docs/knowledgeos/brainstorming/phase_measure_theory/20260828-131532_step-152-knowledgeos-implementation-architecture-constitution-v1-0.md
+title: "Step 152 -- MAJOR SYNTHESIS MILESTONE: Delivers a Comprehensive, Unified C-001 Through C-040 Constitutional Rule Set Implicitly Consolidating Nearly Every Invariant Scattered Across the AFR/RT/DATA/API/IC/DM/CM/IR/LA/PLP/H-Series (Steps 128-151) -- Delivers the Architecture Registry Concept, ArchitectureConformance=DeclaredArchitecture=?=ImplementedArchitecture as a Deterministic Verification Problem, Three Concrete Worked Conformance-Check Examples, RFC-2119 Normative Language (MUST/MUST NOT/SHOULD/MAY), a Twenty-Section Constitution Document Template, and the Genuinely Valuable 'Critical AI Engineering Pattern' Observe→Reason→Change→Verify→Correct -- Introduces a THIRD Notation Series Within This Single File (ARCH-DOM-NNN/ARCH-API-NNN/etc.) Alongside C-001..C-040, Neither Cross-Referencing 0705's Ratified C1-C7 Nor 0730's WP20 -- Opens Step 153, KnowledgeOS Architecture Registry"
+date: "2026-08-28"
+bytes: 0
+model:
+  primary: c1
+  secondary: g1
+  secondary_note: "directly executes 'Step 152 -- KnowledgeOS Implementation Architecture Constitution v1.0', the third constitution-naming attempt flagged with maximum priority at 0739's close; delivers a comprehensive, genuinely valuable consolidation of nearly the entire reconstruction's scattered invariant catalog into one unified C-001..C-040 numbering, plus the Architecture Registry concept and concrete deterministic-conformance-checking examples, while notably neither cross-referencing 0705's ratified C1-C7 Constitution nor 0730's WP20 seven-rule set, and introducing yet a further distinct 'ARCH-XXX-NNN' rule-naming convention within this same file"
+source_role: PRIMARY_RESEARCH
+canonical_source: 740
+importance: critical
+confidence: high
+about: >
+  Opens declaring the shift from "architecture description" to "architecture enforcement":
+  `Architecture→Constitution→Deterministic Checks→Evidence`, explicitly motivated because "an architecture
+  that exists only in documentation will eventually drift." Delivers a six-layer constitutional hierarchy
+  (`Architecture Principles→Architecture Constitution→Architecture Decision Records→Implementation
+  Standards→Code→Automated Assurance`, "a lower layer must not silently contradict a higher layer") and
+  three precise scope-clarifying distinctions: Constitution-vs-Coding-Standard ("what architectural
+  properties must be true?" vs. "how should developers write code?"), and Constitution-vs-`AGENTS.md`
+  (`AGENTS.md` may explain compliance; it never redefines the architecture).
+
+  **Delivers a comprehensive, unified `C-001` through `C-040` rule set, the reconstruction's most complete
+  single constitutional codification, implicitly consolidating nearly every invariant previously scattered
+  across the AFR-01..AFR-36, RT-001..RT-006, DATA-001..DATA-006, API-001..API-008, IC-001..IC-010,
+  DM-001..DM-007, CM-01..CM-04, and other series produced across Steps 128-151** — though this consolidation
+  is functional/implicit (the same substantive ground is comprehensively re-covered under one clean
+  numbering) rather than explicit (no statement anywhere in this file says "C-018 supersedes AFR-32" or
+  cross-references any prior series by name). Representative entries span every discipline area established
+  across the reconstruction's tactical-DDD arc: `C-001` (one bounded-context owner per authoritative
+  concept); `C-002` (domain isolation — no direct dependency on another context's internal model, prefer
+  `DecisionReference` over `GovernanceDecisionEntity`); `C-003` (Aggregate as consistency boundary, not a
+  universal container); `C-004` (explicit state transitions — `decision.activate()`, never
+  `entity.status=EFFECTIVE`); `C-005` (Command=Intent, Event=Fact, correctly named); `C-006` (queries never
+  mutate authoritative state); `C-007` (external DTOs terminate at adapters); `C-008`/`C-009` (infrastructure
+  dependency direction and domain purity — no HTTP/REST/DB-entity/broker/LLM-SDK/CLI dependencies in the
+  domain); `C-010` (API exposes capability, not arbitrary persistence operations); `C-011`/`C-012`
+  (projections — graph/search/cache — are never authoritative, and every projection must have a defined
+  rebuild strategy, reconfirming 0727's/0734's/0737's graph-rebuildability finding); `C-013`/`C-014`/`C-015`
+  (evidence integrity, exact rule-version referencing, verification immutability); `C-016` (deterministic
+  assurance — "the LLM may interpret or explain. It must not silently replace the deterministic checker,"
+  directly reconfirming 0739's "checker must not use the LLM"); `C-017`/`C-018` (`Recommendation≠
+  Authorization`, and the constitutionally forbidden self-authorization path — an agent saying "approved"
+  to itself before executing — explicitly diagrammed as forbidden versus the correct
+  `RequestAction→Authorization→Execute` path); `C-019`/`C-020` (server-enforced authorization, never
+  dependent on `AGENTS.md`/prompts/"agent goodwill"; authorization binds to `ActionID`/`ActionFingerprint`,
+  reconfirming 0735's cryptographic-binding mechanism); `C-021` (context freshness — a stale context must
+  not automatically authorize a high-risk action); `C-022`/`C-023` (trace identity and idempotency);
+  `C-024`/`C-025`/`C-026` (transactional outbox, idempotent event consumers, explicit event versioning);
+  `C-027` (no giant shared cross-context object graph); `C-028`/`C-029`/`C-030` (Context as
+  projection/composition, never a new authority; context provenance; context minimization); `C-031`
+  (agent memory non-authoritative unless promoted); `C-032` (engineering knowledge must not be hidden
+  exclusively in `.claude/`/`.codex/`/`AGENTS.md` — those mechanisms point to knowledge and enforce local
+  operating behavior, KnowledgeOS remains the governed semantic authority); `C-033` (Claude/Codex must
+  consume the identical semantic contract, only the harness adapter differs); `C-034` (no vendor-specific
+  domain semantics — explicitly naming `ClaudeDecision`, `CodexVerification`, `OpenAIClaim`,
+  `AnthropicPolicy` as forbidden unless such concepts genuinely exist in the business domain — the sharpest,
+  most concrete illustration of vendor-neutrality in the entire reconstruction); `C-035` (external
+  operational authority — Nexus remains authoritative for its own state; KnowledgeOS records only
+  `Observation+Evidence+Provenance`); **`C-036`** ("an agent must never be allowed to represent an assertion
+  as externally observed evidence without an actual source" — `AgentAssertion≠Observation`, the sharpest,
+  most concretely stated single-sentence formulation of the reconstruction's "anti-hallucination
+  architecture" principle to date, directly extending 0735's/0736's freshly-cross-validated finding);
+  `C-037` (no fabricated verification — a caller submitting `verdict=PASS` directly is explicitly rejected;
+  "the checker produces the verdict"); `C-038` (failure preserves semantic meaning — the named failure-code
+  taxonomy `AUTHORIZATION_DENIED, CONTEXT_EXPIRED, INSUFFICIENT_EVIDENCE, RULE_NOT_APPLICABLE,
+  INVALID_STATE_TRANSITION, EXECUTION_FAILED`, consolidating 0734's/0735's/0738's scattered failure-reason
+  work into one canonical list); `C-039` (high-risk actions fail closed when required governance/
+  authorization information is unavailable, "enforced independently of agent instructions"); and `C-040`
+  (read-only first — explicitly flagged "a temporary implementation constraint, not necessarily a permanent
+  platform rule").
+
+  **This `C-XXX` series uses the same letter prefix as, but is an entirely distinct and unreconciled
+  numbering scheme from, 0705's ratified "KnowledgeOS Architecture Constitution v0.1" (`C1` through `C7`:
+  Provenance, Authority, Epistemic Separation, Temporal Validity, Deterministic Assurance, Traceability,
+  Feedback)** — this file's `C-001`..`C-040` are granular, implementation-level rules (hyphenated,
+  three-digit) rather than 0705's seven highly abstract meta-principles (unhyphenated, single-digit), and
+  neither 0705's original Constitution nor 0730's WP20 seven-rule proposal is mentioned anywhere in this
+  file. This is a genuinely notable notation collision (same "C" letter, different meaning and scope)
+  flagged clearly for the eventual §29-gated canonical synthesis's invariant-reconciliation work.
+
+  Delivers the Architecture dependency rule (`Adapters→Ports→Application→Domain`, explicitly never
+  `Domain→NexusSDK` or `Domain→PostgreSQLDriver`) with a concrete, directly implementable enforcement
+  sketch: "`domain/ MUST NOT import: web/, persistence/, adapters/, vendor/`" — "this can be checked
+  automatically." **Delivers the Architecture Registry concept**: a machine-readable declaration
+  (`bounded-contexts, aggregates, dependencies, ports, adapters, contracts, rules, invariants`) explicitly
+  distinguished from code — "the registry defines what is allowed. The code provides what exists. The
+  assurance system compares them" — and **`ArchitectureConformance=DeclaredArchitecture=?=
+  ImplementedArchitecture`, formalized precisely as "a deterministic verification problem."**
+
+  **Delivers three concrete, fully worked conformance-check examples, the most directly implementable
+  architecture-checking illustrations in the reconstruction**: (1) a registry declaring
+  `domain.assurance may depend on: domain.assurance, ports, shared-kernel`, against code importing
+  `nexus.NexusClient` directly, checker verdict `FAIL`; (2) a registry requiring `Action requires:
+  Authorization`, against a runtime path `Action→Execute` with no authorization reference, checker verdict
+  `FAIL`; (3) a registry requiring `Verification requires: RuleVersion, EvidenceReference`, against an
+  implementation with only a bare `ruleId` and no version, checker verdict `FAIL` — "this is where
+  architecture becomes machine-checkable."
+
+  Delivers the `ArchitectureRule` object model (`ruleId, category, scope, predicate, severity, checker,
+  remediation`), a worked example (`ARCH-DOM-001{category=dependency, predicate=
+  domain_must_not_depend_on_adapter, severity=BLOCKING}`), and a four-level Rule-severity taxonomy
+  (`BLOCKING/ERROR/WARNING/ADVISORY`) — **note this introduces yet a THIRD distinct rule-naming convention
+  within this same single file** (`ARCH-DOM-NNN`/`ARCH-API-NNN`/etc., alongside the file's own `C-NNN`
+  series) — an internal, unreconciled naming inconsistency worth flagging precisely alongside the broader
+  cross-file notation-proliferation pattern. Delivers Architecture exception (connecting rule violations
+  back to the Governance model, with the precise caution "`Violation+ApprovedException` does not become
+  `NoViolationEverOccurred`" — the violation remains historical, the exception only modifies applicability)
+  and Conformance evidence (every architecture check itself produces a structured `Evidence` object
+  referenced by a `Verification`).
+
+  **Delivers "the architecture assurance loop," explicitly named "essentially KnowledgeOS applied to
+  itself"**: `Architecture Constitution→Architecture Registry→Implementation→Deterministic Checker→
+  Evidence→Verification→Finding→Governance/Exception`. **Delivers the Self-hosting principle**:
+  "KnowledgeOS should eventually be able to govern its own architecture" — verifying its own dependency
+  rules, API contracts, architecture registry, evidence integrity, and deterministic checks — "a valuable
+  feedback loop," crystallized into the boxed **Constitutional self-assurance principle**: "KnowledgeOS
+  must be capable of verifying conformance to its own architectural constitution," explicitly "not
+  necessarily from v0.1, but as the target" — directly extending 0709's/0728's self-verification/self-
+  assurance discipline into architecture-conformance terms specifically.
+
+  **Delivers eight named first machine-checkable rules** (`ARCH-DOM-001, ARCH-DOM-002, ARCH-API-001,
+  ARCH-AUTH-001, ARCH-ASSURE-001, ARCH-EVID-001, ARCH-TRACE-001, ARCH-AGENT-001`) intended as the initial
+  CI-enforceable subset, with a concrete CI-pipeline sketch (`Commit→Build→Architecture Checks→
+  Deterministic Assurance→Tests→Package`, "a blocking architecture violation prevents release"), local
+  developer pre-commit enforcement, and Agent enforcement — the agent harness itself invoking the same
+  checks after a code change, "the agent therefore receives deterministic feedback rather than relying
+  entirely on its own interpretation."
+
+  **Delivers "this is the critical AI engineering pattern," a genuinely valuable, precisely stated agentic-
+  coding-loop characterization directly and currently applicable well beyond KnowledgeOS's own theoretical
+  scope**: `Observe→Reason→Change→Verify→Correct`, with "KnowledgeOS supplies the `Verify` stage" —
+  precisely describing the operational loop any real AI coding agent (including, notably, the very session
+  producing this analysis) actually follows, and precisely locating where deterministic governance belongs
+  within it. Delivers the Agent-autonomy boundary restated crisply: autonomous in `Reasoning` and
+  `CodeGeneration`; never autonomous in `GovernanceAuthority`.
+
+  Delivers the Constitution's own precise self-definition: "the machine-checkable set of architectural
+  invariants that every KnowledgeOS implementation must satisfy unless an explicitly governed exception
+  applies." **Delivers a twenty-section Constitution document template, the most complete single governance-
+  document outline in the reconstruction** (`Purpose, Scope, Normative language, Architectural principles,
+  Bounded contexts, Dependency rules, Aggregate rules, API rules, Event rules, Persistence rules, Evidence
+  rules, Assurance rules, Authorization rules, Agent rules, Adapter rules, Projection rules, Traceability
+  rules, Exception process, Automated conformance, Definition of Done`). **Delivers RFC-2119-style
+  Normative language** (`MUST, MUST NOT, SHOULD, SHOULD NOT, MAY`), a standard, professional discipline not
+  previously invoked this explicitly anywhere in the reconstruction, worked through a full example clause
+  (`ARCH-AUTH-001`: "the Action domain MUST NOT transition an Action to an executable state unless a valid
+  Authorization for the same Action exists," `Severity: BLOCKING`, `Verification: ActionAuthorizationChecker`)
+  — "much stronger than prose such as 'actions should normally be authorized.'"
+
+  Delivers "the constitutional loop" (`ARCHITECTURE→CONSTITUTION→IMPLEMENTATION→OBSERVATION→EVIDENCE→
+  VERIFICATION→{PASS,FAIL→FINDING→GOVERNANCE}`), explicitly "the same Golden Trace pattern applied
+  recursively" — directly and precisely connecting this file's own architecture-governance mechanism back
+  to 0732's Golden Trace pattern. Delivers Step 152's verdict: "the architecture is now capable of governing
+  itself," with the central transformation `Architecture Documentation→Architecture Constitution→
+  Machine-Checkable Invariants` — explicitly named as "the bridge between the conceptual KnowledgeOS
+  architecture and the existing implementation philosophy around: deterministic assurance, registry, hooks,
+  session/change logging, Claude/Codex symmetry, governance," directly tying this file's synthesis back to
+  this reconstruction's own governing repository practices.
+
+  **Closes by opening "Step 153 — KnowledgeOS Architecture Registry,"** promising the machine-readable
+  Registry itself — "the missing link between Constitution and Implementation" — answering mechanically
+  "what contexts, modules, aggregates, dependencies, ports, adapters, contracts and rules does KnowledgeOS
+  actually declare?", enabling a genuine `DeclaredArchitecture` vs. `ActualRepository` comparison — "the
+  first real implementation of deterministic architecture assurance." No actual code execution, repository
+  inspection, or verified filesystem/architecture claim reported anywhere in this file; every rule, registry
+  concept, and conformance example remains an unimplemented specification, though this file's rule catalog
+  and worked conformance examples are among the most directly translatable into actual CI/static-analysis
+  tooling of any content produced in the reconstruction to date.
+introduces:
+  - concept: "The comprehensive, unified C-001..C-040 constitutional rule set, implicitly consolidating nearly the entire prior invariant catalog"
+  - concept: "A notable notation collision: this file's C-001..C-040 shares the 'C' prefix with, but is entirely distinct from, 0705's ratified C1-C7"
+  - concept: "The Architecture Registry concept and ArchitectureConformance=DeclaredArchitecture=?=ImplementedArchitecture as a deterministic verification problem"
+  - concept: "Three concrete, fully worked conformance-check examples"
+  - concept: "A THIRD internal rule-naming convention (ARCH-XXX-NNN) alongside C-NNN within this same file"
+  - concept: "The Self-hosting principle and Constitutional self-assurance: KnowledgeOS must verify conformance to its own constitution"
+  - concept: "'The critical AI engineering pattern': Observe→Reason→Change→Verify→Correct, with KnowledgeOS supplying Verify"
+  - concept: "RFC-2119-style normative language (MUST/MUST NOT/SHOULD/SHOULD NOT/MAY)"
+  - concept: "The twenty-section Constitution document template"
+  - concept: "Opens Step 153 -- KnowledgeOS Architecture Registry"
+defines:
+  - concept: "ArchitectureConformance"
+    definition: "ArchitectureConformance=DeclaredArchitecture=?=ImplementedArchitecture -- a deterministic verification problem comparing what a machine-readable Architecture Registry declares as permitted (dependencies, ownership, contracts) against what the actual codebase does, producing PASS/FAIL evidence per rule"
+  - concept: "'The critical AI engineering pattern'"
+    definition: "Observe→Reason→Change→Verify→Correct -- the operational loop an AI coding agent follows when modifying a system; KnowledgeOS's role is specifically to supply the deterministic Verify stage, so the agent receives objective feedback rather than relying entirely on its own interpretation of whether a change is correct"
+  - concept: "Constitutional self-assurance"
+    definition: "KnowledgeOS must eventually be able to verify its own conformance to its own architectural constitution -- checking its own dependency rules, API contracts, registry declarations, evidence integrity, and deterministic checks -- not necessarily achieved from the first version, but held as the target maturity state"
+  - concept: "C-036 (sharpest anti-hallucination formulation)"
+    definition: "An agent must never be allowed to represent an assertion as externally observed evidence without an actual source -- AgentAssertion≠Observation -- the most concretely and precisely stated single-sentence formulation of the reconstruction's anti-hallucination architecture principle"
+refines:
+  - concept: "0714's/0715's/0717's/0722's/0723's AFR-01..AFR-36 catalog, 0738's RT-001..RT-006, 0737's DATA-001..DATA-006, 0735's API-001..API-008, 0734's IC-001..IC-010, 0733's DM-001..DM-007, and 0726's CM-01..CM-04"
+    refinement: "Functionally, though not explicitly, consolidated into one unified C-001..C-040 numbering covering nearly the same ground -- an implicit reconciliation of content without an explicit cross-reference statement, itself flagged as an open item for the eventual canonical synthesis"
+  - concept: "0705's ratified C1-C7 Constitution and 0730's WP20 proposed seven-rule set"
+    refinement: "Neither is mentioned or reconciled by this file, which introduces its own, differently-scoped C-001..C-040 series sharing only the letter prefix -- extending, not resolving, the reconstruction's constitutional-artifact proliferation to a fourth distinct constitutional numbering when counting this file's own internal ARCH-XXX-NNN series as a fifth"
+  - concept: "0727's/0734's/0737's graph-rebuildability finding"
+    refinement: "Reconfirmed as C-012 within the unified constitutional numbering"
+  - concept: "0739's 'checker must not use the LLM'"
+    refinement: "Reconfirmed as C-016 (deterministic assurance) within the unified constitutional numbering"
+  - concept: "0735's/0736's 'anti-hallucination architecture' finding"
+    refinement: "Given its sharpest, most concretely stated single-sentence formulation to date as C-036: AgentAssertion≠Observation"
+  - concept: "0734's/0735's/0738's scattered named-failure-reason work"
+    refinement: "Consolidated into one canonical failure-code list under C-038"
+  - concept: "0709's/0728's self-verification/self-assurance discipline"
+    refinement: "Extended into architecture-conformance terms specifically via the Self-hosting principle and Constitutional self-assurance"
+  - concept: "0732's Golden Trace pattern"
+    refinement: "Explicitly and precisely recognized as recursively applicable to architecture governance itself via 'the constitutional loop'"
+contradicts: []
+repeats: []
+bridge_candidates:
+  - "Read 0741 (Step 153 — KnowledgeOS Architecture Registry) with high attention: check whether it delivers a genuinely concrete registry schema/format (e.g. actual YAML/JSON structure) for declaring bounded contexts, dependencies, and rules, and whether it reconciles the file's own internal C-NNN vs. ARCH-XXX-NNN naming inconsistency, or the broader unreconciled relationship to 0705's C1-C7 and 0730's WP20."
+mathematical_content: true
+gita_content: false
+kernel_content: true
+registry_updates:
+  - "dimension-registry.md: record the comprehensive, unified C-001..C-040 constitutional rule set as the reconstruction's most complete single consolidation of the prior scattered invariant catalog (AFR/RT/DATA/API/IC/DM/CM series), and flag the notable notation collision with 0705's unrelated ratified C1-C7 Constitution."
+  - "dimension-registry.md: record the Architecture Registry concept, ArchitectureConformance as a deterministic verification problem, three concrete worked conformance-check examples, RFC-2119 normative language, the twenty-section Constitution template, and 'the critical AI engineering pattern' (Observe→Reason→Change→Verify→Correct, with KnowledgeOS supplying Verify)."
+  - "dimension-registry.md: note this single file introduces a THIRD internal rule-naming convention (ARCH-XXX-NNN) alongside its own C-NNN series -- an unreconciled naming inconsistency even within one file, compounding the reconstruction's broader invariant-notation-proliferation pattern flagged for the eventual §29-gated canonical synthesis."
+anchor_test:
+  anchor: "0705's ratified C1-C7 Constitution; 0730's WP20 proposed seven-rule set; the reconstruction's scattered AFR/RT/DATA/API/IC/DM/CM invariant series; 0727's/0734's/0737's graph-rebuildability finding; 0735's/0736's anti-hallucination-architecture finding; 0709's/0728's self-verification/self-assurance discipline; 0732's Golden Trace pattern"
+  supports_dimension: "Delivers the reconstruction's most complete single constitutional codification (C-001 through C-040), functionally consolidating nearly the entire prior scattered invariant catalog into one unified numbering, though without explicit cross-reference to the individual series it re-derives. Delivers the genuinely valuable Architecture Registry concept, a precise deterministic-conformance formalization, three fully worked conformance-check examples, RFC-2119 normative language, and a comprehensive twenty-section constitution template -- collectively among the most directly translatable-to-tooling content in the reconstruction. Delivers 'the critical AI engineering pattern,' a precise and currently applicable agentic-coding-loop characterization. Notably introduces a third internal rule-naming convention (ARCH-XXX-NNN) alongside its own C-NNN series within the same file, and neither cross-references nor reconciles 0705's ratified C1-C7 or 0730's WP20 -- both significant open items for the eventual §29-gated canonical synthesis's invariant-reconciliation work. Closes with a well-motivated continuation into Step 153's promised Architecture Registry"
+  refines_or_contradicts: "directly and substantially extends (via functional consolidation) the AFR/RT/DATA/API/IC/DM/CM invariant series, 0727's/0734's/0737's graph-rebuildability finding, 0735's/0736's anti-hallucination-architecture finding, 0709's/0728's self-verification discipline, and 0732's Golden Trace pattern; no contradiction found; extends (without resolving) the reconstruction's constitutional-artifact and invariant-notation proliferation via both a fourth distinctly-scoped 'C-' series relative to 0705/0730 and a further internal ARCH-XXX-NNN series within this same file"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "This file's own C-001..C-040 numbering, compared directly against 0705's ratified C1-C7 (unhyphenated, single-digit, seven abstract meta-principles) and against this same file's own separate ARCH-DOM-001/ARCH-API-001/etc. naming, is directly checkable evidence of at least a triple notation inconsistency (0705's C-series, this file's C-series, and this file's own internal ARCH-series) within the reconstruction's constitutional-artifact family."
+  - "§152.50-152.52's three fully worked registry-vs-code-vs-checker-verdict examples (each ending FAIL) is directly checkable evidence of the most concretely implementable architecture-conformance-checking illustration produced anywhere in the reconstruction."
+  - "§152.40's C-036 statement 'an agent must never be allowed to represent an assertion as externally observed evidence without an actual source' is directly quotable evidence of the sharpest, most concisely stated single-sentence formulation of the reconstruction's anti-hallucination-architecture principle to date."
+undefined_concepts: []
+open_questions:
+  - "Whether Step 153's actual content (0741), once read, delivers a genuinely concrete registry schema (actual YAML/JSON/config-file structure) rather than another conceptual description, and whether it addresses this file's own internal C-NNN vs. ARCH-XXX-NNN naming inconsistency."
+  - "Whether this file's C-001..C-040 series is ever explicitly reconciled with, or distinguished from, 0705's ratified C1-C7 or 0730's WP20 proposed seven-rule set anywhere later in the corpus, or whether all three constitutional artifacts remain permanently unreconciled pending the eventual §29-gated canonical synthesis."
+tier2_triggered: true
+tier2_reason: "MAJOR SYNTHESIS MILESTONE: delivers the reconstruction's most complete single constitutional codification (C-001 through C-040), functionally consolidating nearly the entire prior scattered invariant catalog (AFR/RT/DATA/API/IC/DM/CM series) into one unified numbering. Delivers the genuinely valuable Architecture Registry concept, a precise deterministic-conformance formalization, three fully worked conformance-check examples, RFC-2119 normative language, a comprehensive twenty-section constitution template, and 'the critical AI engineering pattern' (Observe→Reason→Change→Verify→Correct). Notably introduces a third internal rule-naming convention within the same file and neither cross-references nor reconciles 0705's ratified C1-C7 or 0730's WP20 -- significant open items for the eventual canonical synthesis. Opens Step 153's well-motivated Architecture Registry continuation."
