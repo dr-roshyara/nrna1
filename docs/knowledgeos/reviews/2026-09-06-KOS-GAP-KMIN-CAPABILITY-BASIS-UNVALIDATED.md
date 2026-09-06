@@ -4,6 +4,15 @@
 **Blocks:** `D-1A` (the operation-necessity proof) — **`D-1A` must not run yet.**
 **Amends:** `2026-09-06-KOS-SURVIVING-BLOCKER-DEPENDENCY-ANALYSIS.md` · `…-GAP-OCORE-NECESSITY-PROOF.md` §3.
 
+
+> ### ⚠️ **AMENDED 2026-09-06** by [`…-CAPABILITY-BASIS-LEVEL-A-FALSIFICATION.md`](2026-09-06-KOS-CAPABILITY-BASIS-LEVEL-A-FALSIFICATION.md)
+> **Two corrections against this document.** ① Its claim that `GN-77` was *"independently re-verified
+> by `exec/verify_readiness_claims.py`"* is **FALSE** — that script checks C1–C4 (vocabulary
+> disjointness, 0 operation signatures, postcondition and precondition counts); **none is the nine.**
+> ② Its framing of `𝒦₄` and `𝒦₉` as **rivals** is withdrawn: they are **INCOMPARABLE, at different
+> levels** — `𝒦₄` machine-shaped, `𝒦₉` domain-shaped — with one **type contradiction** (`Replay` is a
+> capability in `𝒦₄` and a *property* in `𝒦₉`). **`𝒦₄`'s stipulated status stands.**
+
 ---
 
 ## 1. The challenge, and it is correct
