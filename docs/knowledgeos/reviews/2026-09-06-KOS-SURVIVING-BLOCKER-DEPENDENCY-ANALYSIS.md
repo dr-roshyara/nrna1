@@ -106,6 +106,26 @@ the wrong link.
 
 ## 4. Classification of the nine
 
+> ### ⚠️ AMENDED 2026-09-06 — `Closure(𝒦₉)` computed; this table is partly superseded
+> `2026-09-06-KOS-K9-CLOSURE-CONDITIONAL-DEPENDENCY-COMPUTATION.md` recomputed the closure over
+> the **derived** basis `𝒦₉ = {C-1…C-9}` instead of the stipulated `𝒦₄`, and the two closures are
+> **incomparable** (neither contains the other).
+>
+> - **#6 `Qualify` — RECLASSIFIED.** Its justification *"closure says Qualification NO"* is
+>   **WITHDRAWN**: that was an artifact of `𝒦₄`. Now **UNDECIDED (basis-dependent)**, not PARALLEL.
+> - **#3 `ℐ` — STRENGTHENED.** `InvariantReg` is the only substantive blocker present in all 14
+>   tested worlds, and it sits **upstream** of `𝒪_core`, not downstream of it.
+> - **#1 `𝒪_core` — robustness DOWNGRADED.** Its ROOT status is conditional on reading `C-1` as a
+>   transition; under the status-predicate reading the whole `𝒪_core` lane leaves the closure.
+> - **#5 `Rejection` — robustness DOWNGRADED.** **No `C`-row forces it**; its blocker status rests
+>   entirely on the stipulated basis.
+>
+> **Consequently the boxed summary below — "5 blocking · 3 parallel · 1 future scope" and "four of
+> five downstream of one root `𝒪_core`" — is NO LONGER SUPPORTED AS STATED.** The rows are left
+> intact as the record of what was concluded on the `𝒦₄` basis.
+
+
+
 | # | item | on the kernel's critical path? | classification | evidence |
 |---|---|---|---|---|
 | **1** | **`𝒪_core` not frozen** | **YES — the ROOT** | 🔴 **BLOCKING** | no in-edges. `𝒪 → 𝒯 → δ` · `𝒪 → 𝒪_K → ≈` · `𝒪 → Π` · `𝒪 → kernel`. `G-01`: *"then everything below it becomes derivable"* |

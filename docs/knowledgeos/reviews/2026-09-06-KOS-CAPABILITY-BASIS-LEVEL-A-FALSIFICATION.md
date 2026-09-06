@@ -261,6 +261,23 @@ $$\boxed{\text{Classification: INCOMPARABLE (with one contradictory TYPE assignm
 
 ## 17. `Qualify` closure robustness
 
+> ### ⚠️ AMENDED 2026-09-06 — this section's question is now ANSWERED, and the answer is NO
+> The authorized `𝒦₉` closure was computed:
+> `2026-09-06-KOS-K9-CLOSURE-CONDITIONAL-DEPENDENCY-COMPUTATION.md`.
+>
+> **`Qualify` is NOT robust to the choice of capability basis.**
+> `Qualification ∉ Closure(𝒦₄)` but `Qualification ∈ Closure(𝒦₉)` — and its membership in the
+> latter is **definitional**, since `C-7` *is* the qualification capability and seeds it directly.
+> It therefore carries **no evidential weight** on its own (a degenerate-estimand failure of the
+> kind `O-F*` exists to catch).
+>
+> The computation also found closure size ranging over **15…22 of 29** across 14 tested worlds, so
+> **the size of the kernel's requirement set is not determined by the corpus**; only five blocked
+> constructs — `Identity`, `InvariantReg`, `K`, `Proposition`, `Relation` — survive every axis.
+> **Still NOT a kernel, and still NOT a minimality proof.**
+> §18's `𝒪_core` root claim is likewise downgraded: it is basis-robust but **mapping-fragile**.
+
+
 | basis | `Qualify` inside? | evidence | status |
 |---|---|---|---|
 | `𝒦₄` | **NO** | `minimum_implementable.py` closure: *"Assessment/Qualification/Measurement — reachable only downstream of Evidence/Σ"* | computed, **model-relative** |
