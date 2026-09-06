@@ -1,0 +1,298 @@
+[
+ {
+  "case": 60,
+  "T": "T5_reference",
+  "Pi": "P1_result",
+  "subset": [
+   0,
+   1,
+   2
+  ],
+  "D": [
+   {
+    "token": "ref2",
+    "source": "S1",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.5
+   },
+   {
+    "token": "ref2",
+    "source": "S2",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.5
+   },
+   {
+    "token": "ref2",
+    "source": "S3",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.5
+   }
+  ],
+  "note": "same singleton+pair signature, different group Zero"
+ },
+ {
+  "case": 68,
+  "T": "T5_reference",
+  "Pi": "P2_len",
+  "subset": [
+   0,
+   1,
+   2
+  ],
+  "D": [
+   {
+    "token": "ref2",
+    "source": "S1",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.5
+   },
+   {
+    "token": "ref2",
+    "source": "S2",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.5
+   },
+   {
+    "token": "ref2",
+    "source": "S3",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.5
+   }
+  ],
+  "note": "same singleton+pair signature, different group Zero"
+ },
+ {
+  "case": 101,
+  "T": "T2_dedup",
+  "Pi": "P2_len",
+  "subset": [
+   0,
+   1,
+   2
+  ],
+  "D": [
+   {
+    "token": "b",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   },
+   {
+    "token": "b",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   },
+   {
+    "token": "b",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   }
+  ],
+  "note": "same singleton+pair signature, different group Zero"
+ },
+ {
+  "case": 142,
+  "T": "T4_context",
+  "Pi": "P6_scope",
+  "subset": [
+   0,
+   1,
+   2
+  ],
+  "D": [
+   {
+    "token": "key",
+    "source": "S1",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.5
+   },
+   {
+    "token": "key",
+    "source": "S2",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.5
+   },
+   {
+    "token": "key",
+    "source": "S3",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.5
+   }
+  ],
+  "note": "same singleton+pair signature, different group Zero"
+ },
+ {
+  "case": 150,
+  "T": "T8_interacting",
+  "Pi": "P1_result",
+  "subset": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "D": [
+   {
+    "token": "ref2",
+    "source": "S1",
+    "polarity": null,
+    "scope": "in",
+    "uncertainty": 0.41
+   },
+   {
+    "token": "ref2",
+    "source": "S3",
+    "polarity": true,
+    "scope": "in",
+    "uncertainty": 0.61
+   },
+   {
+    "token": "ref2",
+    "source": "S2",
+    "polarity": null,
+    "scope": "out",
+    "uncertainty": 0.19
+   },
+   {
+    "token": "ref2",
+    "source": null,
+    "polarity": null,
+    "scope": "in",
+    "uncertainty": 0.37
+   }
+  ],
+  "note": "same singleton+pair signature, different group Zero"
+ },
+ {
+  "case": 210,
+  "T": "T5_reference",
+  "Pi": "P9_balance",
+  "subset": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "D": [
+   {
+    "token": "ref2",
+    "source": null,
+    "polarity": true,
+    "scope": "in",
+    "uncertainty": 0.4
+   },
+   {
+    "token": "ref2",
+    "source": "S2",
+    "polarity": null,
+    "scope": "out",
+    "uncertainty": 0.65
+   },
+   {
+    "token": "ref2",
+    "source": "S2",
+    "polarity": false,
+    "scope": null,
+    "uncertainty": 0.82
+   },
+   {
+    "token": "ref2",
+    "source": "S1",
+    "polarity": null,
+    "scope": "out",
+    "uncertainty": 0.85
+   }
+  ],
+  "note": "same singleton+pair signature, different group Zero"
+ },
+ {
+  "case": 229,
+  "T": "T6_meta_preserving",
+  "Pi": "P9_balance",
+  "subset": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "D": [
+   {
+    "token": "the",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   }
+  ],
+  "note": "same singleton+pair signature, different group Zero"
+ },
+ {
+  "case": 263,
+  "T": "T1_stopword",
+  "Pi": "P7_contradiction",
+  "subset": [
+   0,
+   1,
+   2
+  ],
+  "D": [
+   {
+    "token": "and",
+    "source": null,
+    "polarity": false,
+    "scope": "out",
+    "uncertainty": 0.43
+   },
+   {
+    "token": "and",
+    "source": "S1",
+    "polarity": null,
+    "scope": "in",
+    "uncertainty": 0.34
+   },
+   {
+    "token": "and",
+    "source": "S1",
+    "polarity": null,
+    "scope": "out",
+    "uncertainty": 0.66
+   }
+  ],
+  "note": "same singleton+pair signature, different group Zero"
+ }
+]

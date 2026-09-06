@@ -1,0 +1,532 @@
+{
+ "design": "exhaustive over T x Pi for every generated context -- fully crossed",
+ "n_contexts": 617,
+ "seed": 20261457,
+ "cells": {
+  "elementwise_T x noncancelling_Pi": {
+   "tests": 33840,
+   "irre": 0,
+   "rate": 0.0
+  },
+  "elementwise_T x cancelling_Pi": {
+   "tests": 3384,
+   "irre": 141,
+   "rate": 0.04167
+  },
+  "relational_T x noncancelling_Pi": {
+   "tests": 20304,
+   "irre": 4503,
+   "rate": 0.22178
+  },
+  "relational_T x cancelling_Pi": {
+   "tests": 2538,
+   "irre": 196,
+   "rate": 0.07723
+  }
+ },
+ "witnesses_per_cell": {
+  "relational_T x noncancelling_Pi": [
+   {
+    "T": "T2_dedup",
+    "Pi": "P1_result",
+    "m": 2,
+    "n": 5,
+    "tokens": [
+     "ref2",
+     "must",
+     "ref2",
+     "must",
+     "ref2"
+    ],
+    "polarities": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "colliding": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ]
+    ]
+   },
+   {
+    "T": "T2_dedup",
+    "Pi": "P1_result",
+    "m": 3,
+    "n": 5,
+    "tokens": [
+     "ref2",
+     "must",
+     "ref2",
+     "must",
+     "ref2"
+    ],
+    "polarities": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "colliding": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      0,
+      1,
+      4
+     ]
+    ]
+   },
+   {
+    "T": "T2_dedup",
+    "Pi": "P2_len",
+    "m": 2,
+    "n": 5,
+    "tokens": [
+     "ref2",
+     "must",
+     "ref2",
+     "must",
+     "ref2"
+    ],
+    "polarities": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "colliding": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ]
+    ]
+   },
+   {
+    "T": "T2_dedup",
+    "Pi": "P2_len",
+    "m": 3,
+    "n": 5,
+    "tokens": [
+     "ref2",
+     "must",
+     "ref2",
+     "must",
+     "ref2"
+    ],
+    "polarities": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "colliding": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      0,
+      1,
+      4
+     ]
+    ]
+   },
+   {
+    "T": "T2_dedup",
+    "Pi": "P3_required",
+    "m": 2,
+    "n": 5,
+    "tokens": [
+     "ref2",
+     "must",
+     "ref2",
+     "must",
+     "ref2"
+    ],
+    "polarities": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "colliding": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ]
+    ]
+   }
+  ],
+  "relational_T x cancelling_Pi": [
+   {
+    "T": "T2_dedup",
+    "Pi": "P9_balance",
+    "m": 2,
+    "n": 3,
+    "tokens": [
+     "x",
+     "a",
+     "x"
+    ],
+    "polarities": [
+     true,
+     null,
+     true
+    ],
+    "colliding": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      2
+     ]
+    ]
+   },
+   {
+    "T": "T8_interacting",
+    "Pi": "P9_balance",
+    "m": 2,
+    "n": 3,
+    "tokens": [
+     "x",
+     "a",
+     "x"
+    ],
+    "polarities": [
+     true,
+     null,
+     true
+    ],
+    "colliding": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      2
+     ]
+    ]
+   },
+   {
+    "T": "T2_dedup",
+    "Pi": "P9_balance",
+    "m": 3,
+    "n": 4,
+    "tokens": [
+     "a",
+     "a",
+     "a",
+     "a"
+    ],
+    "polarities": [
+     null,
+     true,
+     false,
+     null
+    ],
+    "colliding": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      0,
+      1,
+      3
+     ],
+     [
+      0,
+      2,
+      3
+     ]
+    ]
+   },
+   {
+    "T": "T4_context",
+    "Pi": "P9_balance",
+    "m": 3,
+    "n": 4,
+    "tokens": [
+     "a",
+     "a",
+     "a",
+     "a"
+    ],
+    "polarities": [
+     null,
+     true,
+     false,
+     null
+    ],
+    "colliding": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      0,
+      1,
+      3
+     ],
+     [
+      0,
+      2,
+      3
+     ]
+    ]
+   },
+   {
+    "T": "T2_dedup",
+    "Pi": "P9_balance",
+    "m": 2,
+    "n": 5,
+    "tokens": [
+     "of",
+     "a",
+     "of",
+     "a",
+     "of"
+    ],
+    "polarities": [
+     false,
+     false,
+     null,
+     true,
+     false
+    ],
+    "colliding": [
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      0,
+      4
+     ]
+    ]
+   }
+  ],
+  "elementwise_T x cancelling_Pi": [
+   {
+    "T": "T3_normalize",
+    "Pi": "P9_balance",
+    "m": 2,
+    "n": 5,
+    "tokens": [
+     "of",
+     "a",
+     "of",
+     "a",
+     "of"
+    ],
+    "polarities": [
+     false,
+     false,
+     null,
+     true,
+     false
+    ],
+    "colliding": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      0,
+      4
+     ]
+    ]
+   },
+   {
+    "T": "T5_reference",
+    "Pi": "P9_balance",
+    "m": 2,
+    "n": 5,
+    "tokens": [
+     "of",
+     "a",
+     "of",
+     "a",
+     "of"
+    ],
+    "polarities": [
+     false,
+     false,
+     null,
+     true,
+     false
+    ],
+    "colliding": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      0,
+      4
+     ]
+    ]
+   },
+   {
+    "T": "T6_meta_preserving",
+    "Pi": "P9_balance",
+    "m": 2,
+    "n": 5,
+    "tokens": [
+     "of",
+     "a",
+     "of",
+     "a",
+     "of"
+    ],
+    "polarities": [
+     false,
+     false,
+     null,
+     true,
+     false
+    ],
+    "colliding": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      0,
+      4
+     ]
+    ]
+   },
+   {
+    "T": "T3_normalize",
+    "Pi": "P9_balance",
+    "m": 2,
+    "n": 4,
+    "tokens": [
+     "the",
+     "the",
+     "key",
+     "key"
+    ],
+    "polarities": [
+     false,
+     false,
+     false,
+     true
+    ],
+    "colliding": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ]
+    ]
+   },
+   {
+    "T": "T5_reference",
+    "Pi": "P9_balance",
+    "m": 2,
+    "n": 4,
+    "tokens": [
+     "the",
+     "the",
+     "key",
+     "key"
+    ],
+    "polarities": [
+     false,
+     false,
+     false,
+     true
+    ],
+    "colliding": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ]
+    ]
+   }
+  ]
+ },
+ "decisive_question": "is the elementwise_T x noncancelling_Pi cell EMPTY? if yes: irreducibility requires relational structure in T or in Pi. if no: the hypothesis is falsified."
+}

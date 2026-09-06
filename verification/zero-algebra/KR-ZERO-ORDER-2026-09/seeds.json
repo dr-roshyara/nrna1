@@ -1,0 +1,6 @@
+{
+ "base_seed": 20260902,
+ "cases": 1500,
+ "powerset_bound": 6,
+ "deterministic": true
+}

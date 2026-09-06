@@ -1,0 +1,641 @@
+{
+ "experiment": "KR-ZOOM-OUT-02",
+ "calibration_seed": 55520260905,
+ "n": 1200,
+ "gate": {
+  "quantity": "base Determine(Q_broad) under S",
+  "band": [
+   0.3,
+   0.8
+  ]
+ },
+ "grid_size": 27,
+ "attempts": 27,
+ "attempt_log": [
+  {
+   "params": {
+    "p_prior_wrong": 0.5,
+    "p_cover": 0.6,
+    "n_detail": [
+     2,
+     4
+    ]
+   },
+   "base_determine_Q_broad_S": 0.2875,
+   "base_determine_Q_broad_Sprime": 0.0125,
+   "determine_Q_focus": 0.38667,
+   "decoy_share_of_determined": 0.30819,
+   "class_reachability": {
+    "M0": 196,
+    "M1": 737,
+    "M2": 55,
+    "M3a": 3,
+    "M3b": 125,
+    "MX": 84
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.5,
+    "p_cover": 0.6,
+    "n_detail": [
+     1,
+     3
+    ]
+   },
+   "base_determine_Q_broad_S": 0.25667,
+   "base_determine_Q_broad_Sprime": 0.0025,
+   "determine_Q_focus": 0.36583,
+   "decoy_share_of_determined": 0.28246,
+   "class_reachability": {
+    "M0": 156,
+    "M1": 763,
+    "M2": 44,
+    "M3a": 3,
+    "M3b": 95,
+    "MX": 139
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.5,
+    "p_cover": 0.6,
+    "n_detail": [
+     1,
+     2
+    ]
+   },
+   "base_determine_Q_broad_S": 0.26,
+   "base_determine_Q_broad_Sprime": 0.00417,
+   "determine_Q_focus": 0.36583,
+   "decoy_share_of_determined": 0.28246,
+   "class_reachability": {
+    "M0": 122,
+    "M1": 765,
+    "M2": 37,
+    "M3a": 4,
+    "M3b": 83,
+    "MX": 189
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.5,
+    "p_cover": 0.75,
+    "n_detail": [
+     2,
+     4
+    ]
+   },
+   "base_determine_Q_broad_S": 0.2875,
+   "base_determine_Q_broad_Sprime": 0.0125,
+   "determine_Q_focus": 0.38667,
+   "decoy_share_of_determined": 0.30819,
+   "class_reachability": {
+    "M0": 126,
+    "M1": 737,
+    "M2": 47,
+    "M3a": 3,
+    "M3b": 130,
+    "MX": 157
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.5,
+    "p_cover": 0.75,
+    "n_detail": [
+     1,
+     3
+    ]
+   },
+   "base_determine_Q_broad_S": 0.25667,
+   "base_determine_Q_broad_Sprime": 0.0025,
+   "determine_Q_focus": 0.36583,
+   "decoy_share_of_determined": 0.28246,
+   "class_reachability": {
+    "M0": 97,
+    "M1": 762,
+    "M2": 32,
+    "M3a": 4,
+    "M3b": 103,
+    "MX": 202
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.5,
+    "p_cover": 0.75,
+    "n_detail": [
+     1,
+     2
+    ]
+   },
+   "base_determine_Q_broad_S": 0.26,
+   "base_determine_Q_broad_Sprime": 0.00417,
+   "determine_Q_focus": 0.36583,
+   "decoy_share_of_determined": 0.28246,
+   "class_reachability": {
+    "M0": 82,
+    "M1": 765,
+    "M2": 24,
+    "M3a": 4,
+    "M3b": 95,
+    "MX": 230
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.5,
+    "p_cover": 0.9,
+    "n_detail": [
+     2,
+     4
+    ]
+   },
+   "base_determine_Q_broad_S": 0.2875,
+   "base_determine_Q_broad_Sprime": 0.0125,
+   "determine_Q_focus": 0.38667,
+   "decoy_share_of_determined": 0.30819,
+   "class_reachability": {
+    "M0": 55,
+    "M1": 737,
+    "M2": 24,
+    "M3a": 3,
+    "M3b": 135,
+    "MX": 246
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.5,
+    "p_cover": 0.9,
+    "n_detail": [
+     1,
+     3
+    ]
+   },
+   "base_determine_Q_broad_S": 0.25667,
+   "base_determine_Q_broad_Sprime": 0.0025,
+   "determine_Q_focus": 0.36583,
+   "decoy_share_of_determined": 0.28246,
+   "class_reachability": {
+    "M0": 46,
+    "M1": 762,
+    "M2": 14,
+    "M3a": 4,
+    "M3b": 109,
+    "MX": 265
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.5,
+    "p_cover": 0.9,
+    "n_detail": [
+     1,
+     2
+    ]
+   },
+   "base_determine_Q_broad_S": 0.26,
+   "base_determine_Q_broad_Sprime": 0.00417,
+   "determine_Q_focus": 0.36583,
+   "decoy_share_of_determined": 0.28246,
+   "class_reachability": {
+    "M0": 28,
+    "M1": 765,
+    "M2": 10,
+    "M3a": 4,
+    "M3b": 109,
+    "MX": 284
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.35,
+    "p_cover": 0.6,
+    "n_detail": [
+     2,
+     4
+    ]
+   },
+   "base_determine_Q_broad_S": 0.265,
+   "base_determine_Q_broad_Sprime": 0.0075,
+   "determine_Q_focus": 0.3675,
+   "decoy_share_of_determined": 0.28798,
+   "class_reachability": {
+    "M0": 191,
+    "M1": 761,
+    "M2": 47,
+    "M3a": 2,
+    "M3b": 116,
+    "MX": 83
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.35,
+    "p_cover": 0.6,
+    "n_detail": [
+     1,
+     3
+    ]
+   },
+   "base_determine_Q_broad_S": 0.25417,
+   "base_determine_Q_broad_Sprime": 0.00333,
+   "determine_Q_focus": 0.34667,
+   "decoy_share_of_determined": 0.28365,
+   "class_reachability": {
+    "M0": 142,
+    "M1": 787,
+    "M2": 46,
+    "M3a": 1,
+    "M3b": 91,
+    "MX": 133
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.35,
+    "p_cover": 0.6,
+    "n_detail": [
+     1,
+     2
+    ]
+   },
+   "base_determine_Q_broad_S": 0.26,
+   "base_determine_Q_broad_Sprime": 0.00417,
+   "determine_Q_focus": 0.37667,
+   "decoy_share_of_determined": 0.28319,
+   "class_reachability": {
+    "M0": 132,
+    "M1": 752,
+    "M2": 38,
+    "M3a": 1,
+    "M3b": 93,
+    "MX": 184
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.35,
+    "p_cover": 0.75,
+    "n_detail": [
+     2,
+     4
+    ]
+   },
+   "base_determine_Q_broad_S": 0.265,
+   "base_determine_Q_broad_Sprime": 0.0075,
+   "determine_Q_focus": 0.3675,
+   "decoy_share_of_determined": 0.28798,
+   "class_reachability": {
+    "M0": 124,
+    "M1": 761,
+    "M2": 40,
+    "M3a": 2,
+    "M3b": 121,
+    "MX": 152
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.35,
+    "p_cover": 0.75,
+    "n_detail": [
+     1,
+     3
+    ]
+   },
+   "base_determine_Q_broad_S": 0.25417,
+   "base_determine_Q_broad_Sprime": 0.00333,
+   "determine_Q_focus": 0.34667,
+   "decoy_share_of_determined": 0.28365,
+   "class_reachability": {
+    "M0": 88,
+    "M1": 786,
+    "M2": 35,
+    "M3a": 2,
+    "M3b": 100,
+    "MX": 189
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.35,
+    "p_cover": 0.75,
+    "n_detail": [
+     1,
+     2
+    ]
+   },
+   "base_determine_Q_broad_S": 0.26,
+   "base_determine_Q_broad_Sprime": 0.00417,
+   "determine_Q_focus": 0.37667,
+   "decoy_share_of_determined": 0.28319,
+   "class_reachability": {
+    "M0": 89,
+    "M1": 752,
+    "M2": 26,
+    "M3a": 1,
+    "M3b": 105,
+    "MX": 227
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.35,
+    "p_cover": 0.9,
+    "n_detail": [
+     2,
+     4
+    ]
+   },
+   "base_determine_Q_broad_S": 0.265,
+   "base_determine_Q_broad_Sprime": 0.0075,
+   "determine_Q_focus": 0.3675,
+   "decoy_share_of_determined": 0.28798,
+   "class_reachability": {
+    "M0": 58,
+    "M1": 761,
+    "M2": 25,
+    "M3a": 2,
+    "M3b": 121,
+    "MX": 233
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.35,
+    "p_cover": 0.9,
+    "n_detail": [
+     1,
+     3
+    ]
+   },
+   "base_determine_Q_broad_S": 0.25417,
+   "base_determine_Q_broad_Sprime": 0.00333,
+   "determine_Q_focus": 0.34667,
+   "decoy_share_of_determined": 0.28365,
+   "class_reachability": {
+    "M0": 38,
+    "M1": 786,
+    "M2": 18,
+    "M3a": 2,
+    "M3b": 106,
+    "MX": 250
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.35,
+    "p_cover": 0.9,
+    "n_detail": [
+     1,
+     2
+    ]
+   },
+   "base_determine_Q_broad_S": 0.26,
+   "base_determine_Q_broad_Sprime": 0.00417,
+   "determine_Q_focus": 0.37667,
+   "decoy_share_of_determined": 0.28319,
+   "class_reachability": {
+    "M0": 25,
+    "M1": 751,
+    "M2": 8,
+    "M3a": 2,
+    "M3b": 113,
+    "MX": 301
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.2,
+    "p_cover": 0.6,
+    "n_detail": [
+     2,
+     4
+    ]
+   },
+   "base_determine_Q_broad_S": 0.255,
+   "base_determine_Q_broad_Sprime": 0.00417,
+   "determine_Q_focus": 0.365,
+   "decoy_share_of_determined": 0.27397,
+   "class_reachability": {
+    "M0": 211,
+    "M1": 763,
+    "M2": 48,
+    "M3a": 0,
+    "M3b": 106,
+    "MX": 72
+   },
+   "O_F_all_classes_reachable": false
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.2,
+    "p_cover": 0.6,
+    "n_detail": [
+     1,
+     3
+    ]
+   },
+   "base_determine_Q_broad_S": 0.24667,
+   "base_determine_Q_broad_Sprime": 0.00083,
+   "determine_Q_focus": 0.37417,
+   "decoy_share_of_determined": 0.28285,
+   "class_reachability": {
+    "M0": 158,
+    "M1": 754,
+    "M2": 55,
+    "M3a": 2,
+    "M3b": 99,
+    "MX": 132
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.2,
+    "p_cover": 0.6,
+    "n_detail": [
+     1,
+     2
+    ]
+   },
+   "base_determine_Q_broad_S": 0.2525,
+   "base_determine_Q_broad_Sprime": 0.0025,
+   "determine_Q_focus": 0.375,
+   "decoy_share_of_determined": 0.32222,
+   "class_reachability": {
+    "M0": 119,
+    "M1": 750,
+    "M2": 40,
+    "M3a": 1,
+    "M3b": 105,
+    "MX": 185
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.2,
+    "p_cover": 0.75,
+    "n_detail": [
+     2,
+     4
+    ]
+   },
+   "base_determine_Q_broad_S": 0.255,
+   "base_determine_Q_broad_Sprime": 0.00417,
+   "determine_Q_focus": 0.365,
+   "decoy_share_of_determined": 0.27397,
+   "class_reachability": {
+    "M0": 149,
+    "M1": 763,
+    "M2": 43,
+    "M3a": 0,
+    "M3b": 115,
+    "MX": 130
+   },
+   "O_F_all_classes_reachable": false
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.2,
+    "p_cover": 0.75,
+    "n_detail": [
+     1,
+     3
+    ]
+   },
+   "base_determine_Q_broad_S": 0.24667,
+   "base_determine_Q_broad_Sprime": 0.00083,
+   "determine_Q_focus": 0.37417,
+   "decoy_share_of_determined": 0.28285,
+   "class_reachability": {
+    "M0": 96,
+    "M1": 753,
+    "M2": 42,
+    "M3a": 3,
+    "M3b": 108,
+    "MX": 198
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.2,
+    "p_cover": 0.75,
+    "n_detail": [
+     1,
+     2
+    ]
+   },
+   "base_determine_Q_broad_S": 0.2525,
+   "base_determine_Q_broad_Sprime": 0.0025,
+   "determine_Q_focus": 0.375,
+   "decoy_share_of_determined": 0.32222,
+   "class_reachability": {
+    "M0": 81,
+    "M1": 750,
+    "M2": 30,
+    "M3a": 1,
+    "M3b": 131,
+    "MX": 207
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.2,
+    "p_cover": 0.9,
+    "n_detail": [
+     2,
+     4
+    ]
+   },
+   "base_determine_Q_broad_S": 0.255,
+   "base_determine_Q_broad_Sprime": 0.00417,
+   "determine_Q_focus": 0.365,
+   "decoy_share_of_determined": 0.27397,
+   "class_reachability": {
+    "M0": 78,
+    "M1": 763,
+    "M2": 25,
+    "M3a": 0,
+    "M3b": 116,
+    "MX": 218
+   },
+   "O_F_all_classes_reachable": false
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.2,
+    "p_cover": 0.9,
+    "n_detail": [
+     1,
+     3
+    ]
+   },
+   "base_determine_Q_broad_S": 0.24667,
+   "base_determine_Q_broad_Sprime": 0.00083,
+   "determine_Q_focus": 0.37417,
+   "decoy_share_of_determined": 0.28285,
+   "class_reachability": {
+    "M0": 40,
+    "M1": 752,
+    "M2": 21,
+    "M3a": 3,
+    "M3b": 115,
+    "MX": 269
+   },
+   "O_F_all_classes_reachable": true
+  },
+  {
+   "params": {
+    "p_prior_wrong": 0.2,
+    "p_cover": 0.9,
+    "n_detail": [
+     1,
+     2
+    ]
+   },
+   "base_determine_Q_broad_S": 0.2525,
+   "base_determine_Q_broad_Sprime": 0.0025,
+   "determine_Q_focus": 0.375,
+   "decoy_share_of_determined": 0.32222,
+   "class_reachability": {
+    "M0": 22,
+    "M1": 750,
+    "M2": 14,
+    "M3a": 1,
+    "M3b": 139,
+    "MX": 274
+   },
+   "O_F_all_classes_reachable": true
+  }
+ ],
+ "GATE_MET": false,
+ "chosen": null,
+ "authority": "generator parameters only; may STOP the experiment; may not modify the protocol",
+ "VERDICT": "GATE NOT MET WITHIN THE DECLARED GRID \u2014 THE EXPERIMENT STOPS. A new, separately frozen design round is required."
+}

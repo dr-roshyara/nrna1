@@ -1,0 +1,86 @@
+{
+ "note": "O1, O2 and O6 use DIFFERENT SEED OFFSETS and are therefore DIFFERENT SAMPLES, not different filters on one sample. This is the primary source of the differing denominators.",
+ "constants": {
+  "N_generated_per_sample": 1500,
+  "powerset_bound_MAXN": 6,
+  "base_seed": 20260902
+ },
+ "pipelines": [
+  {
+   "label": "O1 (all contracts, off=1)",
+   "seed": 20260903,
+   "generated": 1500,
+   "dropped_size_out_of_range": 449,
+   "size_ok": 1051,
+   "dropped_vacuous": 17,
+   "contexts": 1034,
+   "skipped_incomparable_fewer_than_2_subsets": 1034,
+   "size_tests": 1395,
+   "size_tests_by_m": {
+    "2": 685,
+    "3": 454,
+    "4": 217,
+    "5": 39
+   },
+   "irreducible_found": 115,
+   "irreducible_rate": 0.0824
+  },
+  {
+   "label": "O2-A (all contracts, off=2)",
+   "seed": 20260904,
+   "generated": 1500,
+   "dropped_size_out_of_range": 403,
+   "size_ok": 1097,
+   "dropped_vacuous": 12,
+   "contexts": 1085,
+   "skipped_incomparable_fewer_than_2_subsets": 1085,
+   "size_tests": 1475,
+   "size_tests_by_m": {
+    "2": 705,
+    "3": 477,
+    "4": 231,
+    "5": 62
+   },
+   "irreducible_found": 117,
+   "irreducible_rate": 0.0793
+  },
+  {
+   "label": "O2-B (non-cancelling, off=2)",
+   "seed": 20260904,
+   "generated": 1500,
+   "dropped_size_out_of_range": 403,
+   "size_ok": 1097,
+   "dropped_vacuous": 0,
+   "contexts": 1097,
+   "skipped_incomparable_fewer_than_2_subsets": 1097,
+   "size_tests": 1496,
+   "size_tests_by_m": {
+    "2": 715,
+    "3": 483,
+    "4": 235,
+    "5": 63
+   },
+   "irreducible_found": 127,
+   "irreducible_rate": 0.0849
+  },
+  {
+   "label": "O6 (non-cancelling, off=6)",
+   "seed": 20260908,
+   "generated": 1500,
+   "dropped_size_out_of_range": 404,
+   "size_ok": 1096,
+   "dropped_vacuous": 0,
+   "contexts": 1096,
+   "skipped_incomparable_fewer_than_2_subsets": 1096,
+   "size_tests": 1546,
+   "size_tests_by_m": {
+    "2": 741,
+    "3": 496,
+    "4": 260,
+    "5": 49
+   },
+   "irreducible_found": 122,
+   "irreducible_rate": 0.0789
+  }
+ ]
+}

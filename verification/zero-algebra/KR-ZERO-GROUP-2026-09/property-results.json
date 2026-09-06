@@ -1,0 +1,272 @@
+{
+ "_meta": {
+  "experiment_id": "KR-ZERO-GROUP-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "kernel": "NOT SELECTED",
+  "ratified": "nothing",
+  "algebra": "none introduced",
+  "base_seed": 20260902,
+  "cases_per_family": 1200,
+  "powerset_bound": 7,
+  "definition_status": "[PROP], not [DEF]",
+  "date": "2026-09-03",
+  "python": "3.13.2"
+ },
+ "G1_closure_properties": {
+  "question": "G1 -- which closure properties does Z satisfy?",
+  "n_cases": 826,
+  "tally": {
+   "downward_closed": {
+    "holds": 347,
+    "fails": 40
+   },
+   "upward_closed": {
+    "holds": 101,
+    "fails": 286
+   },
+   "union_closed": {
+    "holds": 237,
+    "fails": 150
+   },
+   "intersection_closed": {
+    "holds": 385,
+    "fails": 2
+   }
+  },
+  "verdict": {
+   "downward_closed": "REFUTED",
+   "upward_closed": "REFUTED",
+   "union_closed": "REFUTED",
+   "intersection_closed": "REFUTED"
+  }
+ },
+ "G2_minimal_structure": {
+  "question": "G2 -- what do MINIMAL Zero subsets look like?",
+  "n_cases": 862,
+  "total_minimal_subsets": 1036,
+  "minimal_size_distribution": {
+   "1": 1019,
+   "2": 17
+  },
+  "maximal_size_distribution": {
+   "1": 148,
+   "2": 320,
+   "3": 127,
+   "4": 58,
+   "5": 22,
+   "6": 3
+  },
+  "emergent_minimal_subsets_size_ge_2": 17,
+  "emergent_fraction": 0.0164,
+  "interpretation": "a minimal Zero subset of size >= 2 is EMERGENT eliminability: no proper part of it is eliminable"
+ },
+ "G3_generated_by_minimal": {
+  "question": "G3 -- is Z generated upward by its minimal elements?",
+  "n_cases": 407,
+  "generated": 94,
+  "not_generated": 313,
+  "verdict": "REFUTED",
+  "consequence": "if REFUTED, the hypergraph of minimal Zero subsets does NOT determine Z -- so Z has no compact generator-based encoding"
+ },
+ "G4_matroid_circuits": {
+  "question": "G4 -- do minimal Zero subsets satisfy the matroid circuit exchange axiom (C3)?",
+  "testable_cases": 312,
+  "skipped_fewer_than_2_circuits": 531,
+  "exchange_holds": 311,
+  "exchange_fails": 1,
+  "verdict": "REFUTED -- not a matroid circuit family"
+ },
+ "G5_pairwise_determination": {
+  "question": "G5 -- is group Zero determined by its singleton and pair Zeros?",
+  "subsets_examined": 4543,
+  "distinct_signatures": 456,
+  "ambiguous_signatures": 7,
+  "verdict": "REFUTED -- pairwise data does NOT determine group Zero",
+  "relation_to_FR_001": "FR-001 froze that PAIRWISE distinguishability cannot carry family-level complexity. This is an independent instance of the same shape, in a different domain."
+ },
+ "G6_subset_vs_sequential": {
+  "question": "G6 -- is removing S at once the same as removing its elements one at a time?",
+  "identical": 2236,
+  "divergent": 0,
+  "verdict": "CONFIRMED identical",
+  "note": "index-stable removal makes these agree by construction; a divergence would indicate an implementation defect, so this doubles as a self-check"
+ },
+ "G7_overlapping": {
+  "question": "G7 -- how do OVERLAPPING Zero subsets combine?",
+  "tally": {
+   "union": {
+    "in_Z": 15814,
+    "not_in_Z": 1666
+   },
+   "intersection": {
+    "in_Z": 17450,
+    "not_in_Z": 30
+   },
+   "difference": {
+    "in_Z": 14699,
+    "not_in_Z": 255
+   },
+   "sym": {
+    "in_Z": 16543,
+    "not_in_Z": 937
+   }
+  },
+  "closed_under": []
+ },
+ "G8_redundancy_vs_cancellation": {
+  "question": "G8 -- are minimal Zero subsets redundancy or cancellation?",
+  "classification": {
+   "redundancy (singleton eliminable)": 1065,
+   "cancellation (no part eliminable)": 15
+  },
+  "examples": {
+   "redundancy (singleton eliminable)": [
+    {
+     "case": 0,
+     "T": "T2_dedup",
+     "Pi": "P5_uncertainty",
+     "S": [
+      3
+     ],
+     "tokens": [
+      "c"
+     ],
+     "polarities": [
+      null
+     ]
+    },
+    {
+     "case": 0,
+     "T": "T2_dedup",
+     "Pi": "P5_uncertainty",
+     "S": [
+      2
+     ],
+     "tokens": [
+      "b"
+     ],
+     "polarities": [
+      null
+     ]
+    },
+    {
+     "case": 0,
+     "T": "T2_dedup",
+     "Pi": "P5_uncertainty",
+     "S": [
+      1
+     ],
+     "tokens": [
+      "c"
+     ],
+     "polarities": [
+      null
+     ]
+    }
+   ],
+   "cancellation (no part eliminable)": [
+    {
+     "case": 159,
+     "T": "T3_normalize",
+     "Pi": "P9_balance",
+     "S": [
+      0,
+      1
+     ],
+     "tokens": [
+      "x",
+      "x"
+     ],
+     "polarities": [
+      true,
+      false
+     ]
+    },
+    {
+     "case": 224,
+     "T": "T5_reference",
+     "Pi": "P9_balance",
+     "S": [
+      0,
+      1
+     ],
+     "tokens": [
+      "and",
+      "and"
+     ],
+     "polarities": [
+      true,
+      false
+     ]
+    },
+    {
+     "case": 299,
+     "T": "T6_meta_preserving",
+     "Pi": "P9_balance",
+     "S": [
+      0,
+      1
+     ],
+     "tokens": [
+      "of",
+      "of"
+     ],
+     "polarities": [
+      true,
+      false
+     ]
+    }
+   ]
+  }
+ },
+ "G9_regime_adjudication": {
+  "question": "G9 -- which candidate mathematical regime survives?",
+  "candidates": {
+   "simplicial complex / independence system (downward-closed)": "REFUTED",
+   "filter (upward-closed)": "REFUTED",
+   "union-closed family": "REFUTED",
+   "closure system / lattice (intersection-closed)": "REFUTED",
+   "matroid (circuit exchange)": "REFUTED -- not a matroid circuit family",
+   "hypergraph GENERATED by minimal edges": "REFUTED",
+   "pairwise-determined family": "REFUTED -- pairwise data does NOT determine group Zero"
+  },
+  "note": "REFUTED here means the tested corpus contains counterexamples. It does NOT mean the regime is unusable elsewhere, and NO regime is concluded to be *the* correct framework."
+ },
+ "G10_contract_class_robustness": {
+  "question": "G10 -- does the group structure survive removal of the CANCELLING contract the executor added?",
+  "comparison": {
+   "all_contracts": {
+    "n_cases": 826,
+    "minimal_size_distribution": {
+     "1": 1021,
+     "2": 19
+    },
+    "emergent_minimal_subsets": 19,
+    "downward_closure_failures": 40,
+    "intersection_closure_failures": 2,
+    "not_generated_by_minimal": 286,
+    "of_which_case_I_direction (superset of a Zero set is not Zero)": 286,
+    "of_which_case_J_direction (Zero set contains no Zero minimal)": 0,
+    "matroid_exchange_failures": 2
+   },
+   "excluding_P9_balance": {
+    "n_cases": 746,
+    "minimal_size_distribution": {
+     "1": 798
+    },
+    "emergent_minimal_subsets": 0,
+    "downward_closure_failures": 26,
+    "intersection_closure_failures": 0,
+    "not_generated_by_minimal": 267,
+    "of_which_case_I_direction (superset of a Zero set is not Zero)": 267,
+    "of_which_case_J_direction (Zero set contains no Zero minimal)": 0,
+    "matroid_exchange_failures": 0
+   }
+  },
+  "case_I_robust": true,
+  "case_J_contract_conditional": true,
+  "verdict": "Case I is GENERAL. Case J and the intersection/matroid failures are CONDITIONAL on a cancelling contract.",
+  "consequence": "the previous experiment's symmetric claim -- 'Zero is not element-wise in EITHER direction' -- must be split: the two directions do not have the same empirical status"
+ }
+}

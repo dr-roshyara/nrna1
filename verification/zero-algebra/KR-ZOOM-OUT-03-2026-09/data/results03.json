@@ -1,0 +1,646 @@
+{
+ "train": {
+  "A1_class_distribution_P_det": {
+   "M0": {
+    "n": 288,
+    "d": 580,
+    "rate": 0.49655
+   },
+   "M1": {
+    "n": 0,
+    "d": 580,
+    "rate": 0.0
+   },
+   "M2": {
+    "n": 19,
+    "d": 580,
+    "rate": 0.03276
+   },
+   "M3a": {
+    "n": 5,
+    "d": 580,
+    "rate": 0.00862
+   },
+   "M3b": {
+    "n": 141,
+    "d": 580,
+    "rate": 0.2431
+   },
+   "MX": {
+    "n": 127,
+    "d": 580,
+    "rate": 0.21897
+   }
+  },
+  "A2_class_distribution_P_notdet": {
+   "M0": {
+    "n": 0,
+    "d": 920,
+    "rate": 0.0
+   },
+   "M1": {
+    "n": 920,
+    "d": 920,
+    "rate": 1.0
+   },
+   "M2": {
+    "n": 0,
+    "d": 920,
+    "rate": 0.0
+   },
+   "M3a": {
+    "n": 0,
+    "d": 920,
+    "rate": 0.0
+   },
+   "M3b": {
+    "n": 0,
+    "d": 920,
+    "rate": 0.0
+   },
+   "MX": {
+    "n": 0,
+    "d": 920,
+    "rate": 0.0
+   }
+  },
+  "A3_population_composition": {
+   "P_det": {
+    "n": 580,
+    "d": 1500,
+    "rate": 0.38667
+   },
+   "P_notdet": {
+    "n": 920,
+    "d": 1500,
+    "rate": 0.61333
+   }
+  },
+  "A5_primary_descriptive": {
+   "n": 0,
+   "d": 783,
+   "rate": 0.0
+  },
+  "DELTA_LOSS_primary_adjudicated": {
+   "crude": 0.0,
+   "n_true_cause": 217,
+   "n_decoy": 87,
+   "stratified": {
+    "MH_delta": 0.0,
+    "n_informative_strata": 16,
+    "strata": [
+     {
+      "stratum": "(9, 2)",
+      "n_true": 11,
+      "n_decoy": 6,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(9, 3)",
+      "n_true": 3,
+      "n_decoy": 5,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(10, 1)",
+      "n_true": 24,
+      "n_decoy": 4,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(10, 2)",
+      "n_true": 17,
+      "n_decoy": 4,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(10, 3)",
+      "n_true": 6,
+      "n_decoy": 5,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(11, 1)",
+      "n_true": 30,
+      "n_decoy": 6,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(11, 2)",
+      "n_true": 12,
+      "n_decoy": 5,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(11, 3)",
+      "n_true": 8,
+      "n_decoy": 9,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(11, 4)",
+      "n_true": 1,
+      "n_decoy": 1,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(12, 1)",
+      "n_true": 28,
+      "n_decoy": 7,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(12, 2)",
+      "n_true": 13,
+      "n_decoy": 3,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(12, 3)",
+      "n_true": 4,
+      "n_decoy": 7,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(13, 1)",
+      "n_true": 10,
+      "n_decoy": 4,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(13, 2)",
+      "n_true": 8,
+      "n_decoy": 4,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(13, 3)",
+      "n_true": 1,
+      "n_decoy": 3,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(14, 1)",
+      "n_true": 8,
+      "n_decoy": 1,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     }
+    ],
+    "n_sparse_strata": 16
+   }
+  },
+  "A4_secondary": {
+   "gain": {
+    "n": 138,
+    "d": 717,
+    "rate": 0.19247
+   },
+   "null_roundtrip_gain": {
+    "n": 0,
+    "d": 717,
+    "rate": 0.0
+   }
+  },
+  "S_Sprime": {
+   "i_total_shift": {
+    "M0_in_P_det_S": 0.20051,
+    "M0_in_P_det_Sprime": 0.23158,
+    "shift": 0.03107,
+    "n_S": 783,
+    "n_Sprime": 95
+   },
+   "ii_intersection_UNDERPOWERED": {
+    "n_intersection": 95,
+    "M0": 0.23158,
+    "declared_limitation": "pre-registration \u00a77.1 \u2014 S' base 0.0683"
+   }
+  },
+  "controls": {
+   "OA_structural": {
+    "n": 1500,
+    "d": 1500,
+    "rate": 1.0
+   },
+   "OA_observable": {
+    "n": 1500,
+    "d": 1500,
+    "rate": 1.0
+   },
+   "OA_contract": {
+    "n": 1500,
+    "d": 1500,
+    "rate": 1.0
+   },
+   "OA_provenance": {
+    "n": 1500,
+    "d": 1500,
+    "rate": 1.0
+   }
+  },
+  "O_B_determined_nothing": {
+   "n": 920,
+   "d": 1500,
+   "rate": 0.61333
+  },
+  "O_C_decoy_share": {
+   "n": 165,
+   "d": 580,
+   "rate": 0.28448
+  },
+  "value_changed": {
+   "n": 572,
+   "d": 1500,
+   "rate": 0.38133
+  },
+  "O_G_stratum_artifacts": []
+ },
+ "test": {
+  "A1_class_distribution_P_det": {
+   "M0": {
+    "n": 307,
+    "d": 590,
+    "rate": 0.52034
+   },
+   "M1": {
+    "n": 0,
+    "d": 590,
+    "rate": 0.0
+   },
+   "M2": {
+    "n": 13,
+    "d": 590,
+    "rate": 0.02203
+   },
+   "M3a": {
+    "n": 1,
+    "d": 590,
+    "rate": 0.00169
+   },
+   "M3b": {
+    "n": 154,
+    "d": 590,
+    "rate": 0.26102
+   },
+   "MX": {
+    "n": 115,
+    "d": 590,
+    "rate": 0.19492
+   }
+  },
+  "A2_class_distribution_P_notdet": {
+   "M0": {
+    "n": 0,
+    "d": 910,
+    "rate": 0.0
+   },
+   "M1": {
+    "n": 910,
+    "d": 910,
+    "rate": 1.0
+   },
+   "M2": {
+    "n": 0,
+    "d": 910,
+    "rate": 0.0
+   },
+   "M3a": {
+    "n": 0,
+    "d": 910,
+    "rate": 0.0
+   },
+   "M3b": {
+    "n": 0,
+    "d": 910,
+    "rate": 0.0
+   },
+   "MX": {
+    "n": 0,
+    "d": 910,
+    "rate": 0.0
+   }
+  },
+  "A3_population_composition": {
+   "P_det": {
+    "n": 590,
+    "d": 1500,
+    "rate": 0.39333
+   },
+   "P_notdet": {
+    "n": 910,
+    "d": 1500,
+    "rate": 0.60667
+   }
+  },
+  "A5_primary_descriptive": {
+   "n": 0,
+   "d": 776,
+   "rate": 0.0
+  },
+  "DELTA_LOSS_primary_adjudicated": {
+   "crude": 0.0,
+   "n_true_cause": 216,
+   "n_decoy": 92,
+   "stratified": {
+    "MH_delta": 0.0,
+    "n_informative_strata": 19,
+    "strata": [
+     {
+      "stratum": "(8, 1)",
+      "n_true": 6,
+      "n_decoy": 1,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(9, 1)",
+      "n_true": 18,
+      "n_decoy": 3,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(9, 2)",
+      "n_true": 8,
+      "n_decoy": 3,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(9, 3)",
+      "n_true": 5,
+      "n_decoy": 1,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(9, 4)",
+      "n_true": 1,
+      "n_decoy": 3,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(10, 1)",
+      "n_true": 29,
+      "n_decoy": 5,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(10, 2)",
+      "n_true": 17,
+      "n_decoy": 4,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(10, 3)",
+      "n_true": 5,
+      "n_decoy": 6,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(10, 4)",
+      "n_true": 3,
+      "n_decoy": 1,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(11, 1)",
+      "n_true": 28,
+      "n_decoy": 9,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(11, 2)",
+      "n_true": 14,
+      "n_decoy": 7,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(11, 3)",
+      "n_true": 3,
+      "n_decoy": 6,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(12, 1)",
+      "n_true": 26,
+      "n_decoy": 9,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(12, 2)",
+      "n_true": 13,
+      "n_decoy": 7,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(12, 3)",
+      "n_true": 3,
+      "n_decoy": 6,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(13, 1)",
+      "n_true": 15,
+      "n_decoy": 3,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(13, 2)",
+      "n_true": 7,
+      "n_decoy": 3,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(13, 3)",
+      "n_true": 2,
+      "n_decoy": 4,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     },
+     {
+      "stratum": "(14, 1)",
+      "n_true": 5,
+      "n_decoy": 1,
+      "p_true": 0.0,
+      "p_decoy": 0.0,
+      "delta": 0.0,
+      "SPARSE": true
+     }
+    ],
+    "n_sparse_strata": 19
+   }
+  },
+  "A4_secondary": {
+   "gain": {
+    "n": 146,
+    "d": 724,
+    "rate": 0.20166
+   },
+   "null_roundtrip_gain": {
+    "n": 0,
+    "d": 724,
+    "rate": 0.0
+   }
+  },
+  "S_Sprime": {
+   "i_total_shift": {
+    "M0_in_P_det_S": 0.22036,
+    "M0_in_P_det_Sprime": 0.2766,
+    "shift": 0.05623,
+    "n_S": 776,
+    "n_Sprime": 94
+   },
+   "ii_intersection_UNDERPOWERED": {
+    "n_intersection": 94,
+    "M0": 0.2766,
+    "declared_limitation": "pre-registration \u00a77.1 \u2014 S' base 0.0683"
+   }
+  },
+  "controls": {
+   "OA_structural": {
+    "n": 1500,
+    "d": 1500,
+    "rate": 1.0
+   },
+   "OA_observable": {
+    "n": 1500,
+    "d": 1500,
+    "rate": 1.0
+   },
+   "OA_contract": {
+    "n": 1500,
+    "d": 1500,
+    "rate": 1.0
+   },
+   "OA_provenance": {
+    "n": 1500,
+    "d": 1500,
+    "rate": 1.0
+   }
+  },
+  "O_B_determined_nothing": {
+   "n": 910,
+   "d": 1500,
+   "rate": 0.60667
+  },
+  "O_C_decoy_share": {
+   "n": 178,
+   "d": 590,
+   "rate": 0.30169
+  },
+  "value_changed": {
+   "n": 588,
+   "d": 1500,
+   "rate": 0.392
+  },
+  "O_G_stratum_artifacts": []
+ },
+ "_verdict": {
+  "primary": "Delta_loss (stratified)",
+  "MH_delta": [
+   0.0,
+   0.0
+  ],
+  "floor": 0.1,
+  "VERDICT": "NEGLIGIBLE \u2014 below the frozen floor",
+  "single_winner": null,
+  "note": "GO does not mean the hypothesis is supported; it meant the experiment passed its pre-registered conditions for execution."
+ }
+}

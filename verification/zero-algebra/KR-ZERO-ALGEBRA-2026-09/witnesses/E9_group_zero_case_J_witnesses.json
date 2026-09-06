@@ -1,0 +1,355 @@
+[
+ {
+  "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+  "case": 37,
+  "T": "T1_stopword",
+  "Pi": "P9_balance",
+  "i": 0,
+  "j": 2,
+  "D": [
+   {
+    "token": "y",
+    "source": "S1",
+    "uncertainty": 0.55,
+    "scope": "in",
+    "polarity": false
+   },
+   {
+    "token": "ref2",
+    "source": "S3",
+    "uncertainty": 0.4,
+    "scope": null,
+    "polarity": false
+   },
+   {
+    "token": "y",
+    "source": "S2",
+    "uncertainty": 0.98,
+    "scope": "in",
+    "polarity": true
+   },
+   {
+    "token": "ref2",
+    "source": "S2",
+    "uncertainty": 0.56,
+    "scope": "out",
+    "polarity": false
+   }
+  ]
+ },
+ {
+  "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+  "case": 37,
+  "T": "T1_stopword",
+  "Pi": "P9_balance",
+  "i": 1,
+  "j": 2,
+  "D": [
+   {
+    "token": "y",
+    "source": "S1",
+    "uncertainty": 0.55,
+    "scope": "in",
+    "polarity": false
+   },
+   {
+    "token": "ref2",
+    "source": "S3",
+    "uncertainty": 0.4,
+    "scope": null,
+    "polarity": false
+   },
+   {
+    "token": "y",
+    "source": "S2",
+    "uncertainty": 0.98,
+    "scope": "in",
+    "polarity": true
+   },
+   {
+    "token": "ref2",
+    "source": "S2",
+    "uncertainty": 0.56,
+    "scope": "out",
+    "polarity": false
+   }
+  ]
+ },
+ {
+  "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+  "case": 37,
+  "T": "T1_stopword",
+  "Pi": "P9_balance",
+  "i": 2,
+  "j": 3,
+  "D": [
+   {
+    "token": "y",
+    "source": "S1",
+    "uncertainty": 0.55,
+    "scope": "in",
+    "polarity": false
+   },
+   {
+    "token": "ref2",
+    "source": "S3",
+    "uncertainty": 0.4,
+    "scope": null,
+    "polarity": false
+   },
+   {
+    "token": "y",
+    "source": "S2",
+    "uncertainty": 0.98,
+    "scope": "in",
+    "polarity": true
+   },
+   {
+    "token": "ref2",
+    "source": "S2",
+    "uncertainty": 0.56,
+    "scope": "out",
+    "polarity": false
+   }
+  ]
+ },
+ {
+  "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+  "case": 64,
+  "T": "T6_meta_preserving",
+  "Pi": "P9_balance",
+  "i": 1,
+  "j": 3,
+  "D": [
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.54,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": "S2",
+    "uncertainty": 0.41,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "a",
+    "source": "S2",
+    "uncertainty": 0.79,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": "S3",
+    "uncertainty": 0.64,
+    "scope": "out",
+    "polarity": false
+   },
+   {
+    "token": "a",
+    "source": "S2",
+    "uncertainty": 0.66,
+    "scope": "in",
+    "polarity": false
+   }
+  ]
+ },
+ {
+  "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+  "case": 64,
+  "T": "T6_meta_preserving",
+  "Pi": "P9_balance",
+  "i": 1,
+  "j": 4,
+  "D": [
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.54,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": "S2",
+    "uncertainty": 0.41,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "a",
+    "source": "S2",
+    "uncertainty": 0.79,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": "S3",
+    "uncertainty": 0.64,
+    "scope": "out",
+    "polarity": false
+   },
+   {
+    "token": "a",
+    "source": "S2",
+    "uncertainty": 0.66,
+    "scope": "in",
+    "polarity": false
+   }
+  ]
+ },
+ {
+  "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+  "case": 186,
+  "T": "T1_stopword",
+  "Pi": "P9_balance",
+  "i": 0,
+  "j": 1,
+  "D": [
+   {
+    "token": "c",
+    "source": "S1",
+    "uncertainty": null,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "c",
+    "source": "S2",
+    "uncertainty": null,
+    "scope": null,
+    "polarity": false
+   }
+  ]
+ },
+ {
+  "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+  "case": 228,
+  "T": "T6_meta_preserving",
+  "Pi": "P9_balance",
+  "i": 0,
+  "j": 1,
+  "D": [
+   {
+    "token": "key",
+    "source": "S1",
+    "uncertainty": null,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "key",
+    "source": "S2",
+    "uncertainty": null,
+    "scope": null,
+    "polarity": false
+   }
+  ]
+ },
+ {
+  "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+  "case": 277,
+  "T": "T3_normalize",
+  "Pi": "P9_balance",
+  "i": 1,
+  "j": 2,
+  "D": [
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": 0.02,
+    "scope": "in",
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": "S2",
+    "uncertainty": 0.0,
+    "scope": "in",
+    "polarity": false
+   },
+   {
+    "token": "ref2",
+    "source": "S1",
+    "uncertainty": 0.37,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "key",
+    "source": "S2",
+    "uncertainty": 0.86,
+    "scope": "out",
+    "polarity": false
+   },
+   {
+    "token": "a",
+    "source": "S3",
+    "uncertainty": 0.46,
+    "scope": "in",
+    "polarity": false
+   },
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": 0.39,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": "S1",
+    "uncertainty": 0.16,
+    "scope": null,
+    "polarity": false
+   },
+   {
+    "token": "ref1",
+    "source": "S1",
+    "uncertainty": 0.11,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "c",
+    "source": "S3",
+    "uncertainty": 0.09,
+    "scope": null,
+    "polarity": false
+   },
+   {
+    "token": "ref1",
+    "source": "S3",
+    "uncertainty": 0.93,
+    "scope": "out",
+    "polarity": true
+   },
+   {
+    "token": "c",
+    "source": "S2",
+    "uncertainty": 0.95,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S3",
+    "uncertainty": 0.46,
+    "scope": "out",
+    "polarity": null
+   },
+   {
+    "token": "of",
+    "source": null,
+    "uncertainty": 0.57,
+    "scope": "out",
+    "polarity": true
+   }
+  ]
+ }
+]

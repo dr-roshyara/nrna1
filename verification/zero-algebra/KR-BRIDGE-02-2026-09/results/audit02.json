@@ -1,0 +1,533 @@
+{
+ "A1_provenance_map_verified_empirically": {
+  "PASS": true,
+  "rule": "an observed dependency that is NOT declared makes the gate unsound; an over-declaration is merely conservative",
+  "rows": [
+   {
+    "T": "T_A_preserving",
+    "output_field": "v",
+    "declared": [
+     "v"
+    ],
+    "observed": [
+     "v"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_A_preserving",
+    "output_field": "src",
+    "declared": [
+     "src"
+    ],
+    "observed": [
+     "src"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_A_preserving",
+    "output_field": "tag",
+    "declared": [
+     "tag"
+    ],
+    "observed": [
+     "tag"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_A_preserving",
+    "output_field": "t",
+    "declared": [
+     "t"
+    ],
+    "observed": [
+     "t"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_B_lossy",
+    "output_field": "v",
+    "declared": [
+     "v"
+    ],
+    "observed": [
+     "v"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_B_lossy",
+    "output_field": "tag",
+    "declared": [
+     "tag"
+    ],
+    "observed": [
+     "tag"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_B_lossy",
+    "output_field": "t",
+    "declared": [
+     "t"
+    ],
+    "observed": [
+     "t"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_C_dedup",
+    "output_field": "v",
+    "declared": [
+     "v"
+    ],
+    "observed": [
+     "v"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_C_dedup",
+    "output_field": "src",
+    "declared": [
+     "src",
+     "v"
+    ],
+    "observed": [
+     "src",
+     "v"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_C_dedup",
+    "output_field": "tag",
+    "declared": [
+     "tag",
+     "v"
+    ],
+    "observed": [
+     "tag",
+     "v"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_C_dedup",
+    "output_field": "t",
+    "declared": [
+     "t",
+     "v"
+    ],
+    "observed": [
+     "t",
+     "v"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_C_dedup",
+    "output_field": "rank",
+    "declared": [
+     "v"
+    ],
+    "observed": [
+     "v"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_D_relational",
+    "output_field": "src",
+    "declared": [
+     "src"
+    ],
+    "observed": [
+     "src"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_D_relational",
+    "output_field": "tag",
+    "declared": [
+     "tag"
+    ],
+    "observed": [
+     "tag"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_D_relational",
+    "output_field": "rank",
+    "declared": [
+     "tag",
+     "v"
+    ],
+    "observed": [
+     "tag"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": [
+     "v"
+    ]
+   },
+   {
+    "T": "T_E_dedup_lossy",
+    "output_field": "v",
+    "declared": [
+     "v"
+    ],
+    "observed": [
+     "v"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_E_dedup_lossy",
+    "output_field": "src",
+    "declared": [
+     "v"
+    ],
+    "observed": [
+     "v"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_E_dedup_lossy",
+    "output_field": "tag",
+    "declared": [
+     "tag",
+     "v"
+    ],
+    "observed": [
+     "tag",
+     "v"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_E_dedup_lossy",
+    "output_field": "t",
+    "declared": [
+     "t",
+     "v"
+    ],
+    "observed": [
+     "t",
+     "v"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_E_dedup_lossy",
+    "output_field": "rank",
+    "declared": [
+     "v"
+    ],
+    "observed": [
+     "v"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_G_recoding",
+    "output_field": "v",
+    "declared": [
+     "v"
+    ],
+    "observed": [
+     "v"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_G_recoding",
+    "output_field": "src",
+    "declared": [
+     "src"
+    ],
+    "observed": [
+     "src"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_G_recoding",
+    "output_field": "tag",
+    "declared": [
+     "tag"
+    ],
+    "observed": [
+     "tag"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   },
+   {
+    "T": "T_G_recoding",
+    "output_field": "t",
+    "declared": [
+     "t"
+    ],
+    "observed": [
+     "t"
+    ],
+    "UNDECLARED_DEPENDENCY": [],
+    "over_declared_conservative": []
+   }
+  ]
+ },
+ "A2_A3_effect_homogeneity_and_CIs": {
+  "Pi_value_multiset|Q_argmax_ntags|T_C_dedup": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    -0.00207
+   ],
+   "spread": 0.00207,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    false
+   ],
+   "MH_RD_train": -0.0009,
+   "MH_RD_test": -0.00143
+  },
+  "Pi_value_multiset|Q_source_set|T_C_dedup": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    -0.00311
+   ],
+   "spread": 0.00311,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    false
+   ],
+   "MH_RD_train": -0.00134,
+   "MH_RD_test": -0.00032
+  },
+  "Pi_value_multiset|Q_tag_set|T_C_dedup": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    0.00294
+   ],
+   "spread": 0.00294,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    false
+   ],
+   "MH_RD_train": 0.00127,
+   "MH_RD_test": 0.00207
+  },
+  "Pi_value_multiset|Q_tag_set|T_E_dedup_lossy": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    0.00279
+   ],
+   "spread": 0.00279,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    false
+   ],
+   "MH_RD_train": 0.0012,
+   "MH_RD_test": 0.00298
+  },
+  "Pi_value_set|Q_argmax_ntags|T_B_lossy": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    -0.03685
+   ],
+   "spread": 0.03685,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    true
+   ],
+   "MH_RD_train": -0.0159,
+   "MH_RD_test": -0.00914
+  },
+  "Pi_value_set|Q_argmax_ntags|T_C_dedup": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    -0.00207
+   ],
+   "spread": 0.00207,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    false
+   ],
+   "MH_RD_train": -0.0009,
+   "MH_RD_test": -0.00143
+  },
+  "Pi_value_set|Q_source_set|T_B_lossy": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    -0.01382
+   ],
+   "spread": 0.01382,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    true
+   ],
+   "MH_RD_train": -0.00597,
+   "MH_RD_test": -0.00321
+  },
+  "Pi_value_set|Q_source_set|T_C_dedup": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    -0.00311
+   ],
+   "spread": 0.00311,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    false
+   ],
+   "MH_RD_train": -0.00134,
+   "MH_RD_test": -0.00032
+  },
+  "Pi_value_set|Q_tag_set|T_C_dedup": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    0.00294
+   ],
+   "spread": 0.00294,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    false
+   ],
+   "MH_RD_train": 0.00127,
+   "MH_RD_test": 0.00207
+  },
+  "Pi_value_set|Q_tag_set|T_E_dedup_lossy": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    0.00279
+   ],
+   "spread": 0.00279,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    false
+   ],
+   "MH_RD_train": 0.0012,
+   "MH_RD_test": 0.00298
+  },
+  "Pi_arity|Q_argmax_ntags|T_C_dedup": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    -0.00207
+   ],
+   "spread": 0.00207,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    false
+   ],
+   "MH_RD_train": -0.0009,
+   "MH_RD_test": -0.00143
+  },
+  "Pi_arity|Q_source_set|T_C_dedup": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    -0.00311
+   ],
+   "spread": 0.00311,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    false
+   ],
+   "MH_RD_train": -0.00134,
+   "MH_RD_test": -0.00032
+  },
+  "Pi_arity|Q_tag_set|T_C_dedup": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    0.00294
+   ],
+   "spread": 0.00294,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    false
+   ],
+   "MH_RD_train": 0.00127,
+   "MH_RD_test": 0.00207
+  },
+  "Pi_arity|Q_tag_set|T_E_dedup_lossy": {
+   "n_strata": 2,
+   "per_stratum_RD": [
+    0.0,
+    0.00279
+   ],
+   "spread": 0.00279,
+   "signs_agree": true,
+   "per_stratum_ci_excludes_zero": [
+    false,
+    false
+   ],
+   "MH_RD_train": 0.0012,
+   "MH_RD_test": 0.00298
+  }
+ },
+ "A2_summary": {
+  "n_surviving_cells_examined": 14,
+  "n_with_disagreeing_stratum_signs": 0,
+  "n_with_NO_stratum_CI_excluding_zero": 12,
+  "reading": "a surviving cell whose per-stratum RDs change sign, or whose every stratum CI covers zero, is NOT a conditional bridge -- it is noise that survived a sign-only replication rule"
+ },
+ "A4_grid_informativeness": {
+  "n_cells": 112,
+  "n_no_informative_stratum": 67,
+  "n_excluded_gate_leak": 14,
+  "n_actually_searched": 31
+ }
+}

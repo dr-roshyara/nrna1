@@ -1,0 +1,75 @@
+[
+ {
+  "case": 752,
+  "T": "T5_reference",
+  "Pi": "P9_balance",
+  "D": [
+   {
+    "token": "of",
+    "source": null,
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.4
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "polarity": false,
+    "scope": "out",
+    "uncertainty": 0.87
+   },
+   {
+    "token": "the",
+    "source": "S2",
+    "polarity": false,
+    "scope": "out",
+    "uncertainty": 0.14
+   },
+   {
+    "token": "ref3",
+    "source": null,
+    "polarity": false,
+    "scope": null,
+    "uncertainty": 0.07
+   },
+   {
+    "token": "a",
+    "source": "S2",
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.96
+   }
+  ],
+  "C1": [
+   0,
+   1
+  ],
+  "C2": [
+   0,
+   2
+  ],
+  "shared_element": 0,
+  "union_minus_e": [
+   1,
+   2
+  ],
+  "contains_no_circuit": true,
+  "all_minimal": [
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    4
+   ],
+   [
+    0,
+    3
+   ]
+  ]
+ }
+]

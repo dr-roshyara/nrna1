@@ -1,0 +1,150 @@
+[
+ {
+  "case": 79,
+  "T": "T2_dedup",
+  "Pi": "P5_uncertainty",
+  "profile": {
+   "2": "irreducible",
+   "3": 2,
+   "4": 1
+  },
+  "D": [
+   {
+    "token": "key",
+    "polarity": true,
+    "source": "S2"
+   },
+   {
+    "token": "must",
+    "polarity": true,
+    "source": "S2"
+   },
+   {
+    "token": "key",
+    "polarity": true,
+    "source": "S3"
+   },
+   {
+    "token": "must",
+    "polarity": false,
+    "source": "S2"
+   },
+   {
+    "token": "key",
+    "polarity": null,
+    "source": "S2"
+   }
+  ]
+ },
+ {
+  "case": 503,
+  "T": "T8_interacting",
+  "Pi": "P7_contradiction",
+  "profile": {
+   "2": "irreducible",
+   "3": 2,
+   "4": 1
+  },
+  "D": [
+   {
+    "token": "b",
+    "polarity": null,
+    "source": "S1"
+   },
+   {
+    "token": "x",
+    "polarity": false,
+    "source": "S3"
+   },
+   {
+    "token": "b",
+    "polarity": true,
+    "source": "S2"
+   },
+   {
+    "token": "x",
+    "polarity": false,
+    "source": null
+   },
+   {
+    "token": "b",
+    "polarity": true,
+    "source": "S3"
+   }
+  ]
+ },
+ {
+  "case": 614,
+  "T": "T2_dedup",
+  "Pi": "P7_contradiction",
+  "profile": {
+   "2": "irreducible",
+   "3": 2,
+   "4": 1
+  },
+  "D": [
+   {
+    "token": "ref1",
+    "polarity": true,
+    "source": "S1"
+   },
+   {
+    "token": "y",
+    "polarity": null,
+    "source": "S1"
+   },
+   {
+    "token": "ref1",
+    "polarity": false,
+    "source": "S3"
+   },
+   {
+    "token": "y",
+    "polarity": true,
+    "source": null
+   },
+   {
+    "token": "ref1",
+    "polarity": true,
+    "source": "S1"
+   }
+  ]
+ },
+ {
+  "case": 1203,
+  "T": "T8_interacting",
+  "Pi": "P5_uncertainty",
+  "profile": {
+   "2": "irreducible",
+   "3": 2,
+   "4": 1
+  },
+  "D": [
+   {
+    "token": "ref1",
+    "polarity": false,
+    "source": "S1"
+   },
+   {
+    "token": "y",
+    "polarity": false,
+    "source": null
+   },
+   {
+    "token": "ref1",
+    "polarity": null,
+    "source": "S2"
+   },
+   {
+    "token": "y",
+    "polarity": true,
+    "source": "S3"
+   },
+   {
+    "token": "ref1",
+    "polarity": true,
+    "source": "S3"
+   }
+  ]
+ }
+]

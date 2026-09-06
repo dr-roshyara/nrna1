@@ -1,0 +1,249 @@
+{
+ "opt3": {
+  "train": {
+   "base_determine_rate": 0.3395,
+   "calibration_gate_0.30_0.80": true,
+   "flip_root": {
+    "n": 649,
+    "d": 2000,
+    "rate": 0.3245
+   },
+   "flip_chain": {
+    "n": 1175,
+    "d": 4711,
+    "rate": 0.24942
+   },
+   "flip_decoy": {
+    "n": 1492,
+    "d": 5578,
+    "rate": 0.26748
+   },
+   "flip_untouched": {
+    "n": 0,
+    "d": 6000,
+    "rate": 0.0
+   },
+   "Z_F_null_intervention": {
+    "n": 0,
+    "d": 2000,
+    "rate": 0.0
+   },
+   "H3c_focus_induced": {
+    "n": 679,
+    "d": 2000,
+    "rate": 0.3395
+   },
+   "delta_marginal": 0.05702,
+   "delta_stratified": {
+    "strata": [
+     {
+      "chain_len": 3,
+      "n_root": 1008,
+      "n_decoy": 2921,
+      "p_root": 0.36607,
+      "p_decoy": 0.27559,
+      "delta": 0.09048
+     },
+     {
+      "chain_len": 4,
+      "n_root": 992,
+      "n_decoy": 2657,
+      "p_root": 0.28226,
+      "p_decoy": 0.25856,
+      "delta": 0.0237
+     }
+    ],
+    "MH_delta": 0.0577
+   }
+  },
+  "test": {
+   "base_determine_rate": 0.3585,
+   "calibration_gate_0.30_0.80": true,
+   "flip_root": {
+    "n": 679,
+    "d": 2000,
+    "rate": 0.3395
+   },
+   "flip_chain": {
+    "n": 1192,
+    "d": 4755,
+    "rate": 0.25068
+   },
+   "flip_decoy": {
+    "n": 1555,
+    "d": 5547,
+    "rate": 0.28033
+   },
+   "flip_untouched": {
+    "n": 0,
+    "d": 6000,
+    "rate": 0.0
+   },
+   "Z_F_null_intervention": {
+    "n": 0,
+    "d": 2000,
+    "rate": 0.0
+   },
+   "H3c_focus_induced": {
+    "n": 717,
+    "d": 2000,
+    "rate": 0.3585
+   },
+   "delta_marginal": 0.05917,
+   "delta_stratified": {
+    "strata": [
+     {
+      "chain_len": 3,
+      "n_root": 956,
+      "n_decoy": 2771,
+      "p_root": 0.38075,
+      "p_decoy": 0.28221,
+      "delta": 0.09854
+     },
+     {
+      "chain_len": 4,
+      "n_root": 1044,
+      "n_decoy": 2776,
+      "p_root": 0.30172,
+      "p_decoy": 0.27846,
+      "delta": 0.02327
+     }
+    ],
+    "MH_delta": 0.05968
+   }
+  }
+ },
+ "opt1": {
+  "train": {
+   "base_determine_rate": 1.0,
+   "calibration_gate_0.30_0.80": false,
+   "flip_root": {
+    "n": 407,
+    "d": 2000,
+    "rate": 0.2035
+   },
+   "flip_chain": {
+    "n": 1262,
+    "d": 4711,
+    "rate": 0.26788
+   },
+   "flip_decoy": {
+    "n": 1117,
+    "d": 5578,
+    "rate": 0.20025
+   },
+   "flip_untouched": {
+    "n": 0,
+    "d": 6000,
+    "rate": 0.0
+   },
+   "Z_F_null_intervention": {
+    "n": 0,
+    "d": 2000,
+    "rate": 0.0
+   },
+   "H3c_focus_induced": {
+    "n": 1996,
+    "d": 2000,
+    "rate": 0.998
+   },
+   "delta_marginal": 0.00325,
+   "delta_stratified": {
+    "strata": [
+     {
+      "chain_len": 3,
+      "n_root": 1008,
+      "n_decoy": 2921,
+      "p_root": 0.2123,
+      "p_decoy": 0.21328,
+      "delta": -0.00098
+     },
+     {
+      "chain_len": 4,
+      "n_root": 992,
+      "n_decoy": 2657,
+      "p_root": 0.19456,
+      "p_decoy": 0.18592,
+      "delta": 0.00863
+     }
+    ],
+    "MH_delta": 0.00374
+   }
+  },
+  "test": {
+   "base_determine_rate": 1.0,
+   "calibration_gate_0.30_0.80": false,
+   "flip_root": {
+    "n": 456,
+    "d": 2000,
+    "rate": 0.228
+   },
+   "flip_chain": {
+    "n": 1330,
+    "d": 4755,
+    "rate": 0.27971
+   },
+   "flip_decoy": {
+    "n": 1127,
+    "d": 5547,
+    "rate": 0.20317
+   },
+   "flip_untouched": {
+    "n": 0,
+    "d": 6000,
+    "rate": 0.0
+   },
+   "Z_F_null_intervention": {
+    "n": 0,
+    "d": 2000,
+    "rate": 0.0
+   },
+   "H3c_focus_induced": {
+    "n": 1983,
+    "d": 2000,
+    "rate": 0.9915
+   },
+   "delta_marginal": 0.02483,
+   "delta_stratified": {
+    "strata": [
+     {
+      "chain_len": 3,
+      "n_root": 956,
+      "n_decoy": 2771,
+      "p_root": 0.23954,
+      "p_decoy": 0.22411,
+      "delta": 0.01543
+     },
+     {
+      "chain_len": 4,
+      "n_root": 1044,
+      "n_decoy": 2776,
+      "p_root": 0.21743,
+      "p_decoy": 0.18228,
+      "delta": 0.03516
+     }
+    ],
+    "MH_delta": 0.02562
+   }
+  }
+ },
+ "_verdict": {
+  "primary_contract": "opt3",
+  "MH_delta_train": 0.0577,
+  "MH_delta_test": 0.05968,
+  "floor": 0.1,
+  "borderline": 0.05,
+  "VERDICT": "BORDERLINE \u2014 reported, not claimed"
+ },
+ "_P_Z3": {
+  "prediction": "under Option 1 base Determine > 0.95 and |Delta| < 0.05",
+  "base_determine_opt1": [
+   1.0,
+   1.0
+  ],
+  "delta_opt1": [
+   0.00374,
+   0.02562
+  ]
+ }
+}

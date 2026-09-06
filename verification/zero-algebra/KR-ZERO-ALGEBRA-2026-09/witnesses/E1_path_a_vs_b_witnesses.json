@@ -1,0 +1,1126 @@
+[
+ {
+  "witness_kind": "formal_zero_rule_false",
+  "case": 2,
+  "T": "T8_interacting",
+  "Pi": "P6_scope",
+  "idx": 2,
+  "D": [
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 3,
+  "T": "T4_context",
+  "Pi": "P8_composite",
+  "idx": 2,
+  "D": [
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 4,
+  "T": "T6_meta_preserving",
+  "Pi": "P3_required",
+  "idx": 1,
+  "D": [
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 4,
+  "T": "T6_meta_preserving",
+  "Pi": "P3_required",
+  "idx": 2,
+  "D": [
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 4,
+  "T": "T6_meta_preserving",
+  "Pi": "P3_required",
+  "idx": 3,
+  "D": [
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 5,
+  "T": "T2_dedup",
+  "Pi": "P4_provenance",
+  "idx": 0,
+  "D": [
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "formal_zero_rule_false",
+  "case": 6,
+  "T": "T4_context",
+  "Pi": "P7_contradiction",
+  "idx": 0,
+  "D": [
+   {
+    "token": "key",
+    "source": "S2",
+    "uncertainty": 0.53,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": "S2",
+    "uncertainty": 0.41,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": "S2",
+    "uncertainty": 0.7,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 7,
+  "T": "T1_stopword",
+  "Pi": "P5_uncertainty",
+  "idx": 3,
+  "D": [
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": 0.47,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": "S2",
+    "uncertainty": 0.82,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": "S2",
+    "uncertainty": 0.35,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": "S1",
+    "uncertainty": 0.82,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 8,
+  "T": "T7_meta_destroying",
+  "Pi": "P5_uncertainty",
+  "idx": 0,
+  "D": [
+   {
+    "token": "the",
+    "source": "S3",
+    "uncertainty": 0.84,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": "S2",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S2",
+    "uncertainty": 0.08,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S3",
+    "uncertainty": 0.87,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S2",
+    "uncertainty": 0.23,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.79,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": "S2",
+    "uncertainty": 0.35,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.19,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": "S1",
+    "uncertainty": 0.7,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S1",
+    "uncertainty": 0.74,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": 0.94,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": null,
+    "uncertainty": 0.06,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 8,
+  "T": "T7_meta_destroying",
+  "Pi": "P5_uncertainty",
+  "idx": 2,
+  "D": [
+   {
+    "token": "the",
+    "source": "S3",
+    "uncertainty": 0.84,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": "S2",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S2",
+    "uncertainty": 0.08,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S3",
+    "uncertainty": 0.87,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S2",
+    "uncertainty": 0.23,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.79,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": "S2",
+    "uncertainty": 0.35,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.19,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": "S1",
+    "uncertainty": 0.7,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S1",
+    "uncertainty": 0.74,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": 0.94,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": null,
+    "uncertainty": 0.06,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 8,
+  "T": "T7_meta_destroying",
+  "Pi": "P5_uncertainty",
+  "idx": 3,
+  "D": [
+   {
+    "token": "the",
+    "source": "S3",
+    "uncertainty": 0.84,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": "S2",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S2",
+    "uncertainty": 0.08,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S3",
+    "uncertainty": 0.87,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S2",
+    "uncertainty": 0.23,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.79,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": "S2",
+    "uncertainty": 0.35,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.19,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": "S1",
+    "uncertainty": 0.7,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S1",
+    "uncertainty": 0.74,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": 0.94,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": null,
+    "uncertainty": 0.06,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 8,
+  "T": "T7_meta_destroying",
+  "Pi": "P5_uncertainty",
+  "idx": 5,
+  "D": [
+   {
+    "token": "the",
+    "source": "S3",
+    "uncertainty": 0.84,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": "S2",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S2",
+    "uncertainty": 0.08,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S3",
+    "uncertainty": 0.87,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S2",
+    "uncertainty": 0.23,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.79,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": "S2",
+    "uncertainty": 0.35,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.19,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": "S1",
+    "uncertainty": 0.7,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S1",
+    "uncertainty": 0.74,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": 0.94,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": null,
+    "uncertainty": 0.06,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 8,
+  "T": "T7_meta_destroying",
+  "Pi": "P5_uncertainty",
+  "idx": 7,
+  "D": [
+   {
+    "token": "the",
+    "source": "S3",
+    "uncertainty": 0.84,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": "S2",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S2",
+    "uncertainty": 0.08,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S3",
+    "uncertainty": 0.87,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S2",
+    "uncertainty": 0.23,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.79,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": "S2",
+    "uncertainty": 0.35,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.19,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": "S1",
+    "uncertainty": 0.7,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S1",
+    "uncertainty": 0.74,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": 0.94,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": null,
+    "uncertainty": 0.06,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 8,
+  "T": "T7_meta_destroying",
+  "Pi": "P5_uncertainty",
+  "idx": 8,
+  "D": [
+   {
+    "token": "the",
+    "source": "S3",
+    "uncertainty": 0.84,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": "S2",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S2",
+    "uncertainty": 0.08,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S3",
+    "uncertainty": 0.87,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S2",
+    "uncertainty": 0.23,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.79,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": "S2",
+    "uncertainty": 0.35,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.19,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": "S1",
+    "uncertainty": 0.7,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S1",
+    "uncertainty": 0.74,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": 0.94,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": null,
+    "uncertainty": 0.06,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 8,
+  "T": "T7_meta_destroying",
+  "Pi": "P5_uncertainty",
+  "idx": 9,
+  "D": [
+   {
+    "token": "the",
+    "source": "S3",
+    "uncertainty": 0.84,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": "S2",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S2",
+    "uncertainty": 0.08,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S3",
+    "uncertainty": 0.87,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S2",
+    "uncertainty": 0.23,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.79,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": "S2",
+    "uncertainty": 0.35,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.19,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": "S1",
+    "uncertainty": 0.7,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S1",
+    "uncertainty": 0.74,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": 0.94,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": null,
+    "uncertainty": 0.06,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "rule_true_formal_nonzero",
+  "case": 8,
+  "T": "T7_meta_destroying",
+  "Pi": "P5_uncertainty",
+  "idx": 10,
+  "D": [
+   {
+    "token": "the",
+    "source": "S3",
+    "uncertainty": 0.84,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": "S2",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S2",
+    "uncertainty": 0.08,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": "S3",
+    "uncertainty": 0.87,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S2",
+    "uncertainty": 0.23,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.79,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": "S2",
+    "uncertainty": 0.35,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.19,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.34,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": "S1",
+    "uncertainty": 0.7,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "c",
+    "source": "S1",
+    "uncertainty": 0.74,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": 0.94,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": null,
+    "uncertainty": 0.06,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ }
+]

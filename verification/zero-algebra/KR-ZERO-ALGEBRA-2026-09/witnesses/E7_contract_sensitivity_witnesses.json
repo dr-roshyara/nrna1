@@ -1,0 +1,388 @@
+[
+ {
+  "witness_kind": "contract_relative",
+  "case": 11,
+  "T": "T4_context",
+  "Pi1": "P4_provenance",
+  "Pi2": "P7_contradiction",
+  "idx": 0,
+  "zero_under_Pi1": false,
+  "zero_under_Pi2": true,
+  "D": [
+   {
+    "token": "ref3",
+    "source": "S1",
+    "uncertainty": 0.12,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref3",
+    "source": "S2",
+    "uncertainty": 0.97,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "contract_relative",
+  "case": 12,
+  "T": "T4_context",
+  "Pi1": "P6_scope",
+  "Pi2": "P7_contradiction",
+  "idx": 0,
+  "zero_under_Pi1": true,
+  "zero_under_Pi2": false,
+  "D": [
+   {
+    "token": "ref2",
+    "source": "S1",
+    "uncertainty": null,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "ref2",
+    "source": "S2",
+    "uncertainty": null,
+    "scope": null,
+    "polarity": false
+   }
+  ]
+ },
+ {
+  "witness_kind": "contract_relative",
+  "case": 29,
+  "T": "T5_reference",
+  "Pi1": "P6_scope",
+  "Pi2": "P9_balance",
+  "idx": 1,
+  "zero_under_Pi1": false,
+  "zero_under_Pi2": true,
+  "D": [
+   {
+    "token": "a",
+    "source": "S1",
+    "uncertainty": 0.75,
+    "scope": "in",
+    "polarity": false
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": 0.89,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "contract_relative",
+  "case": 32,
+  "T": "T8_interacting",
+  "Pi1": "P2_len",
+  "Pi2": "P9_balance",
+  "idx": 0,
+  "zero_under_Pi1": true,
+  "zero_under_Pi2": false,
+  "D": [
+   {
+    "token": "y",
+    "source": "S1",
+    "uncertainty": 0.1,
+    "scope": "in",
+    "polarity": true
+   },
+   {
+    "token": "y",
+    "source": "S2",
+    "uncertainty": 0.9,
+    "scope": "out",
+    "polarity": false
+   }
+  ]
+ },
+ {
+  "witness_kind": "contract_relative",
+  "case": 37,
+  "T": "T8_interacting",
+  "Pi1": "P2_len",
+  "Pi2": "P5_uncertainty",
+  "idx": 1,
+  "zero_under_Pi1": true,
+  "zero_under_Pi2": false,
+  "D": [
+   {
+    "token": "y",
+    "source": "S3",
+    "uncertainty": 0.1,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref3",
+    "source": "S1",
+    "uncertainty": 0.95,
+    "scope": "out",
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": 0.03,
+    "scope": null,
+    "polarity": false
+   },
+   {
+    "token": "ref3",
+    "source": "S1",
+    "uncertainty": 0.65,
+    "scope": "out",
+    "polarity": true
+   },
+   {
+    "token": "y",
+    "source": "S2",
+    "uncertainty": 0.35,
+    "scope": "out",
+    "polarity": false
+   }
+  ]
+ },
+ {
+  "witness_kind": "contract_relative",
+  "case": 44,
+  "T": "T2_dedup",
+  "Pi1": "P2_len",
+  "Pi2": "P8_composite",
+  "idx": 0,
+  "zero_under_Pi1": true,
+  "zero_under_Pi2": false,
+  "D": [
+   {
+    "token": "ref1",
+    "source": "S1",
+    "uncertainty": 0.56,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": null,
+    "uncertainty": 0.97,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": "S3",
+    "uncertainty": 0.17,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "contract_relative",
+  "case": 55,
+  "T": "T8_interacting",
+  "Pi1": "P5_uncertainty",
+  "Pi2": "P9_balance",
+  "idx": 2,
+  "zero_under_Pi1": false,
+  "zero_under_Pi2": true,
+  "D": [
+   {
+    "token": "the",
+    "source": "S2",
+    "uncertainty": 0.36,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": 0.0,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": "S2",
+    "uncertainty": 0.57,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": 0.89,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "contract_relative",
+  "case": 64,
+  "T": "T4_context",
+  "Pi1": "P5_uncertainty",
+  "Pi2": "P9_balance",
+  "idx": 0,
+  "zero_under_Pi1": false,
+  "zero_under_Pi2": true,
+  "D": [
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": 0.94,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": "S2",
+    "uncertainty": 0.62,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": "S3",
+    "uncertainty": 0.51,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": "S3",
+    "uncertainty": 0.12,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": "S3",
+    "uncertainty": 0.22,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": "S2",
+    "uncertainty": 0.79,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "contract_relative",
+  "case": 64,
+  "T": "T4_context",
+  "Pi1": "P5_uncertainty",
+  "Pi2": "P9_balance",
+  "idx": 1,
+  "zero_under_Pi1": false,
+  "zero_under_Pi2": true,
+  "D": [
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": 0.94,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": "S2",
+    "uncertainty": 0.62,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": "S3",
+    "uncertainty": 0.51,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": "S3",
+    "uncertainty": 0.12,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": "S3",
+    "uncertainty": 0.22,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": "S2",
+    "uncertainty": 0.79,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "contract_relative",
+  "case": 64,
+  "T": "T4_context",
+  "Pi1": "P5_uncertainty",
+  "Pi2": "P9_balance",
+  "idx": 2,
+  "zero_under_Pi1": false,
+  "zero_under_Pi2": true,
+  "D": [
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": 0.94,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": "S2",
+    "uncertainty": 0.62,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": "S3",
+    "uncertainty": 0.51,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": "S3",
+    "uncertainty": 0.12,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": "S3",
+    "uncertainty": 0.22,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": "S2",
+    "uncertainty": 0.79,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ }
+]

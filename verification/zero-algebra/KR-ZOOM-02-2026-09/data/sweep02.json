@@ -1,0 +1,562 @@
+{
+ "train": {
+  "1": {
+   "restriction": {
+    "n": 143,
+    "d": 4000,
+    "rate": 0.03575
+   },
+   "inquiry": {
+    "n": 143,
+    "d": 4000,
+    "rate": 0.03575
+   },
+   "paired_inquiry_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   },
+   "paired_restriction_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   }
+  },
+  "2": {
+   "restriction": {
+    "n": 300,
+    "d": 4000,
+    "rate": 0.075
+   },
+   "inquiry": {
+    "n": 1017,
+    "d": 4000,
+    "rate": 0.25425
+   },
+   "paired_inquiry_only": {
+    "n": 726,
+    "d": 4000,
+    "rate": 0.1815
+   },
+   "paired_restriction_only": {
+    "n": 9,
+    "d": 4000,
+    "rate": 0.00225
+   }
+  },
+  "3": {
+   "restriction": {
+    "n": 317,
+    "d": 4000,
+    "rate": 0.07925
+   },
+   "inquiry": {
+    "n": 2042,
+    "d": 4000,
+    "rate": 0.5105
+   },
+   "paired_inquiry_only": {
+    "n": 1730,
+    "d": 4000,
+    "rate": 0.4325
+   },
+   "paired_restriction_only": {
+    "n": 5,
+    "d": 4000,
+    "rate": 0.00125
+   }
+  },
+  "5": {
+   "restriction": {
+    "n": 317,
+    "d": 4000,
+    "rate": 0.07925
+   },
+   "inquiry": {
+    "n": 3602,
+    "d": 4000,
+    "rate": 0.9005
+   },
+   "paired_inquiry_only": {
+    "n": 3285,
+    "d": 4000,
+    "rate": 0.82125
+   },
+   "paired_restriction_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   }
+  },
+  "8": {
+   "restriction": {
+    "n": 317,
+    "d": 4000,
+    "rate": 0.07925
+   },
+   "inquiry": {
+    "n": 3996,
+    "d": 4000,
+    "rate": 0.999
+   },
+   "paired_inquiry_only": {
+    "n": 3679,
+    "d": 4000,
+    "rate": 0.91975
+   },
+   "paired_restriction_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   }
+  },
+  "13": {
+   "restriction": {
+    "n": 317,
+    "d": 4000,
+    "rate": 0.07925
+   },
+   "inquiry": {
+    "n": 4000,
+    "d": 4000,
+    "rate": 1.0
+   },
+   "paired_inquiry_only": {
+    "n": 3683,
+    "d": 4000,
+    "rate": 0.92075
+   },
+   "paired_restriction_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   }
+  },
+  "21": {
+   "restriction": {
+    "n": 317,
+    "d": 4000,
+    "rate": 0.07925
+   },
+   "inquiry": {
+    "n": 4000,
+    "d": 4000,
+    "rate": 1.0
+   },
+   "paired_inquiry_only": {
+    "n": 3683,
+    "d": 4000,
+    "rate": 0.92075
+   },
+   "paired_restriction_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   }
+  },
+  "40": {
+   "restriction": {
+    "n": 317,
+    "d": 4000,
+    "rate": 0.07925
+   },
+   "inquiry": {
+    "n": 4000,
+    "d": 4000,
+    "rate": 1.0
+   },
+   "paired_inquiry_only": {
+    "n": 3683,
+    "d": 4000,
+    "rate": 0.92075
+   },
+   "paired_restriction_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   }
+  },
+  "NOVEL_DIM": {
+   "n": 933,
+   "inquiry_found": {
+    "n": 933,
+    "d": 933,
+    "rate": 1.0
+   },
+   "restriction_found": {
+    "n": 0,
+    "d": 933,
+    "rate": 0.0
+   },
+   "note": "ground-truth cause in a dimension ABSENT from the initial ontology (requirement 6)"
+  },
+  "RETURN_TO_WHOLE": {
+   "context_preserved": {
+    "n": 4000,
+    "d": 4000,
+    "rate": 1.0
+   },
+   "working_set_subset_of_state": {
+    "n": 4000,
+    "d": 4000,
+    "rate": 1.0
+   },
+   "determination_added": {
+    "n": 4000,
+    "d": 4000,
+    "rate": 1.0
+   },
+   "novel_dim_absorbed_into_state": {
+    "n": 933,
+    "d": 4000,
+    "rate": 0.23325
+   }
+  },
+  "ORDER_budget_2": {
+   "observable_equal": {
+    "n": 1917,
+    "d": 2000,
+    "rate": 0.9585
+   },
+   "internal_state_equal": {
+    "n": 1821,
+    "d": 2000,
+    "rate": 0.9105
+   },
+   "path_equal": {
+    "n": 1771,
+    "d": 2000,
+    "rate": 0.8855
+   },
+   "DIFFERENT_STATE_SAME_OBSERVABLE": {
+    "n": 159,
+    "d": 2000,
+    "rate": 0.0795
+   }
+  },
+  "ORDER_budget_3": {
+   "observable_equal": {
+    "n": 1843,
+    "d": 2000,
+    "rate": 0.9215
+   },
+   "internal_state_equal": {
+    "n": 1824,
+    "d": 2000,
+    "rate": 0.912
+   },
+   "path_equal": {
+    "n": 1661,
+    "d": 2000,
+    "rate": 0.8305
+   },
+   "DIFFERENT_STATE_SAME_OBSERVABLE": {
+    "n": 139,
+    "d": 2000,
+    "rate": 0.0695
+   }
+  },
+  "ORDER_budget_5": {
+   "observable_equal": {
+    "n": 1873,
+    "d": 2000,
+    "rate": 0.9365
+   },
+   "internal_state_equal": {
+    "n": 1898,
+    "d": 2000,
+    "rate": 0.949
+   },
+   "path_equal": {
+    "n": 1542,
+    "d": 2000,
+    "rate": 0.771
+   },
+   "DIFFERENT_STATE_SAME_OBSERVABLE": {
+    "n": 59,
+    "d": 2000,
+    "rate": 0.0295
+   }
+  }
+ },
+ "test": {
+  "1": {
+   "restriction": {
+    "n": 100,
+    "d": 4000,
+    "rate": 0.025
+   },
+   "inquiry": {
+    "n": 100,
+    "d": 4000,
+    "rate": 0.025
+   },
+   "paired_inquiry_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   },
+   "paired_restriction_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   }
+  },
+  "2": {
+   "restriction": {
+    "n": 272,
+    "d": 4000,
+    "rate": 0.068
+   },
+   "inquiry": {
+    "n": 958,
+    "d": 4000,
+    "rate": 0.2395
+   },
+   "paired_inquiry_only": {
+    "n": 700,
+    "d": 4000,
+    "rate": 0.175
+   },
+   "paired_restriction_only": {
+    "n": 14,
+    "d": 4000,
+    "rate": 0.0035
+   }
+  },
+  "3": {
+   "restriction": {
+    "n": 284,
+    "d": 4000,
+    "rate": 0.071
+   },
+   "inquiry": {
+    "n": 1988,
+    "d": 4000,
+    "rate": 0.497
+   },
+   "paired_inquiry_only": {
+    "n": 1708,
+    "d": 4000,
+    "rate": 0.427
+   },
+   "paired_restriction_only": {
+    "n": 4,
+    "d": 4000,
+    "rate": 0.001
+   }
+  },
+  "5": {
+   "restriction": {
+    "n": 284,
+    "d": 4000,
+    "rate": 0.071
+   },
+   "inquiry": {
+    "n": 3571,
+    "d": 4000,
+    "rate": 0.89275
+   },
+   "paired_inquiry_only": {
+    "n": 3287,
+    "d": 4000,
+    "rate": 0.82175
+   },
+   "paired_restriction_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   }
+  },
+  "8": {
+   "restriction": {
+    "n": 284,
+    "d": 4000,
+    "rate": 0.071
+   },
+   "inquiry": {
+    "n": 3991,
+    "d": 4000,
+    "rate": 0.99775
+   },
+   "paired_inquiry_only": {
+    "n": 3707,
+    "d": 4000,
+    "rate": 0.92675
+   },
+   "paired_restriction_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   }
+  },
+  "13": {
+   "restriction": {
+    "n": 284,
+    "d": 4000,
+    "rate": 0.071
+   },
+   "inquiry": {
+    "n": 4000,
+    "d": 4000,
+    "rate": 1.0
+   },
+   "paired_inquiry_only": {
+    "n": 3716,
+    "d": 4000,
+    "rate": 0.929
+   },
+   "paired_restriction_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   }
+  },
+  "21": {
+   "restriction": {
+    "n": 284,
+    "d": 4000,
+    "rate": 0.071
+   },
+   "inquiry": {
+    "n": 4000,
+    "d": 4000,
+    "rate": 1.0
+   },
+   "paired_inquiry_only": {
+    "n": 3716,
+    "d": 4000,
+    "rate": 0.929
+   },
+   "paired_restriction_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   }
+  },
+  "40": {
+   "restriction": {
+    "n": 284,
+    "d": 4000,
+    "rate": 0.071
+   },
+   "inquiry": {
+    "n": 4000,
+    "d": 4000,
+    "rate": 1.0
+   },
+   "paired_inquiry_only": {
+    "n": 3716,
+    "d": 4000,
+    "rate": 0.929
+   },
+   "paired_restriction_only": {
+    "n": 0,
+    "d": 4000,
+    "rate": 0.0
+   }
+  },
+  "NOVEL_DIM": {
+   "n": 1028,
+   "inquiry_found": {
+    "n": 1028,
+    "d": 1028,
+    "rate": 1.0
+   },
+   "restriction_found": {
+    "n": 0,
+    "d": 1028,
+    "rate": 0.0
+   },
+   "note": "ground-truth cause in a dimension ABSENT from the initial ontology (requirement 6)"
+  },
+  "RETURN_TO_WHOLE": {
+   "context_preserved": {
+    "n": 4000,
+    "d": 4000,
+    "rate": 1.0
+   },
+   "working_set_subset_of_state": {
+    "n": 4000,
+    "d": 4000,
+    "rate": 1.0
+   },
+   "determination_added": {
+    "n": 4000,
+    "d": 4000,
+    "rate": 1.0
+   },
+   "novel_dim_absorbed_into_state": {
+    "n": 1028,
+    "d": 4000,
+    "rate": 0.257
+   }
+  },
+  "ORDER_budget_2": {
+   "observable_equal": {
+    "n": 1921,
+    "d": 2000,
+    "rate": 0.9605
+   },
+   "internal_state_equal": {
+    "n": 1846,
+    "d": 2000,
+    "rate": 0.923
+   },
+   "path_equal": {
+    "n": 1803,
+    "d": 2000,
+    "rate": 0.9015
+   },
+   "DIFFERENT_STATE_SAME_OBSERVABLE": {
+    "n": 140,
+    "d": 2000,
+    "rate": 0.07
+   }
+  },
+  "ORDER_budget_3": {
+   "observable_equal": {
+    "n": 1850,
+    "d": 2000,
+    "rate": 0.925
+   },
+   "internal_state_equal": {
+    "n": 1804,
+    "d": 2000,
+    "rate": 0.902
+   },
+   "path_equal": {
+    "n": 1640,
+    "d": 2000,
+    "rate": 0.82
+   },
+   "DIFFERENT_STATE_SAME_OBSERVABLE": {
+    "n": 162,
+    "d": 2000,
+    "rate": 0.081
+   }
+  },
+  "ORDER_budget_5": {
+   "observable_equal": {
+    "n": 1877,
+    "d": 2000,
+    "rate": 0.9385
+   },
+   "internal_state_equal": {
+    "n": 1891,
+    "d": 2000,
+    "rate": 0.9455
+   },
+   "path_equal": {
+    "n": 1532,
+    "d": 2000,
+    "rate": 0.766
+   },
+   "DIFFERENT_STATE_SAME_OBSERVABLE": {
+    "n": 76,
+    "d": 2000,
+    "rate": 0.038
+   }
+  }
+ }
+}

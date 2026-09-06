@@ -1,0 +1,404 @@
+[
+ {
+  "witness_kind": "reference_relative",
+  "case": 0,
+  "Pi": "P1_result",
+  "idx": 6,
+  "zero_ref_A": false,
+  "zero_ref_B": true,
+  "D": [
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref2",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref2",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref3",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref2",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "reference_relative",
+  "case": 2,
+  "Pi": "P4_provenance",
+  "idx": 4,
+  "zero_ref_A": true,
+  "zero_ref_B": false,
+  "D": [
+   {
+    "token": "b",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "reference_relative",
+  "case": 2,
+  "Pi": "P4_provenance",
+  "idx": 9,
+  "zero_ref_A": true,
+  "zero_ref_B": false,
+  "D": [
+   {
+    "token": "b",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "x",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "a",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "reference_relative",
+  "case": 10,
+  "Pi": "P8_composite",
+  "idx": 0,
+  "zero_ref_A": true,
+  "zero_ref_B": false,
+  "D": [
+   {
+    "token": "ref1",
+    "source": "S1",
+    "uncertainty": null,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "ref1",
+    "source": "S2",
+    "uncertainty": null,
+    "scope": null,
+    "polarity": false
+   }
+  ]
+ },
+ {
+  "witness_kind": "reference_relative",
+  "case": 10,
+  "Pi": "P8_composite",
+  "idx": 1,
+  "zero_ref_A": true,
+  "zero_ref_B": false,
+  "D": [
+   {
+    "token": "ref1",
+    "source": "S1",
+    "uncertainty": null,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "ref1",
+    "source": "S2",
+    "uncertainty": null,
+    "scope": null,
+    "polarity": false
+   }
+  ]
+ },
+ {
+  "witness_kind": "reference_relative",
+  "case": 12,
+  "Pi": "P1_result",
+  "idx": 0,
+  "zero_ref_A": false,
+  "zero_ref_B": true,
+  "D": [
+   {
+    "token": "ref3",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "reference_relative",
+  "case": 12,
+  "Pi": "P1_result",
+  "idx": 1,
+  "zero_ref_A": true,
+  "zero_ref_B": false,
+  "D": [
+   {
+    "token": "ref3",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref1",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "reference_relative",
+  "case": 13,
+  "Pi": "P2_len",
+  "idx": 0,
+  "zero_ref_A": false,
+  "zero_ref_B": true,
+  "D": [
+   {
+    "token": "ref3",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref3",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "ref3",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ }
+]

@@ -1,0 +1,86 @@
+{
+ "T_C_dedup": {
+  "0": {
+   "cells": {
+    "NZ+A": 22370
+   },
+   "n": 22370,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null
+  },
+  "1": {
+   "cells": {
+    "Z+A": 11736,
+    "NZ+A": 46944,
+    "Z+I": 16674,
+    "NZ+I": 66696
+   },
+   "n": 142050,
+   "P_A_given_Z": 0.41309,
+   "P_A_given_NZ": 0.41309,
+   "risk_difference": 0.0
+  },
+  "2": {
+   "cells": {
+    "Z+I": 56032,
+    "NZ+I": 25888
+   },
+   "n": 81920,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": 0.0
+  },
+  "3": {
+   "cells": {
+    "Z+I": 3350,
+    "Z+A": 310
+   },
+   "n": 3660,
+   "P_A_given_Z": 0.0847,
+   "P_A_given_NZ": null,
+   "risk_difference": null
+  }
+ },
+ "T_E_dedup_lossy": {
+  "0": {
+   "cells": {
+    "NZ+I": 21730,
+    "NZ+A": 640
+   },
+   "n": 22370,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.02861,
+   "risk_difference": null
+  },
+  "1": {
+   "cells": {
+    "Z+I": 28410,
+    "NZ+I": 113640
+   },
+   "n": 142050,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": 0.0
+  },
+  "2": {
+   "cells": {
+    "Z+I": 56032,
+    "NZ+I": 25888
+   },
+   "n": 81920,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": 0.0
+  },
+  "3": {
+   "cells": {
+    "Z+I": 3660
+   },
+   "n": 3660,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null
+  }
+ }
+}

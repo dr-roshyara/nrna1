@@ -1,0 +1,405 @@
+[
+ {
+  "case": 4,
+  "T": "T2_dedup",
+  "Pi": "P4_provenance",
+  "D": [
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": null
+   },
+   {
+    "token": "ref3",
+    "source": "S2",
+    "polarity": false,
+    "scope": null,
+    "uncertainty": null
+   }
+  ],
+  "predicted_but_not_zero": [
+   [
+    0,
+    1
+   ]
+  ],
+  "zero_but_not_predicted": [],
+  "minimal": [
+   [
+    1
+   ]
+  ]
+ },
+ {
+  "case": 5,
+  "T": "T1_stopword",
+  "Pi": "P5_uncertainty",
+  "D": [
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.1
+   },
+   {
+    "token": "the",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.82
+   },
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.73
+   },
+   {
+    "token": "the",
+    "source": "S3",
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.12
+   },
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.57
+   }
+  ],
+  "predicted_but_not_zero": [
+   [
+    0,
+    3,
+    4
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    2,
+    3,
+    4
+   ],
+   [
+    2,
+    3
+   ]
+  ],
+  "zero_but_not_predicted": [],
+  "minimal": [
+   [
+    3
+   ],
+   [
+    1
+   ]
+  ]
+ },
+ {
+  "case": 6,
+  "T": "T4_context",
+  "Pi": "P3_required",
+  "D": [
+   {
+    "token": "of",
+    "source": "S1",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.5
+   },
+   {
+    "token": "of",
+    "source": "S2",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.5
+   },
+   {
+    "token": "of",
+    "source": "S3",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.5
+   }
+  ],
+  "predicted_but_not_zero": [
+   [
+    0,
+    1,
+    2
+   ]
+  ],
+  "zero_but_not_predicted": [],
+  "minimal": [
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ]
+  ]
+ },
+ {
+  "case": 9,
+  "T": "T1_stopword",
+  "Pi": "P1_result",
+  "D": [
+   {
+    "token": "of",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   },
+   {
+    "token": "ref1",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   },
+   {
+    "token": "of",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   }
+  ],
+  "predicted_but_not_zero": [
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  "zero_but_not_predicted": [],
+  "minimal": [
+   [
+    2
+   ],
+   [
+    0
+   ]
+  ]
+ },
+ {
+  "case": 11,
+  "T": "T4_context",
+  "Pi": "P3_required",
+  "D": [
+   {
+    "token": "the",
+    "source": "S3",
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.86
+   },
+   {
+    "token": "the",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.93
+   },
+   {
+    "token": "key",
+    "source": "S2",
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.09
+   },
+   {
+    "token": "key",
+    "source": "S2",
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.53
+   }
+  ],
+  "predicted_but_not_zero": [
+   [
+    0,
+    2,
+    3
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    0,
+    1
+   ]
+  ],
+  "zero_but_not_predicted": [],
+  "minimal": [
+   [
+    3
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ]
+  ]
+ },
+ {
+  "case": 12,
+  "T": "T4_context",
+  "Pi": "P6_scope",
+  "D": [
+   {
+    "token": "c",
+    "source": "S1",
+    "polarity": true,
+    "scope": "in",
+    "uncertainty": 0.1
+   },
+   {
+    "token": "c",
+    "source": "S2",
+    "polarity": false,
+    "scope": "out",
+    "uncertainty": 0.9
+   }
+  ],
+  "predicted_but_not_zero": [
+   [
+    0,
+    1
+   ]
+  ],
+  "zero_but_not_predicted": [],
+  "minimal": [
+   [
+    1
+   ]
+  ]
+ },
+ {
+  "case": 18,
+  "T": "T1_stopword",
+  "Pi": "P1_result",
+  "D": [
+   {
+    "token": "the",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": null
+   }
+  ],
+  "predicted_but_not_zero": [
+   [
+    0,
+    2,
+    3
+   ],
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    0,
+    3
+   ]
+  ],
+  "zero_but_not_predicted": [],
+  "minimal": [
+   [
+    1
+   ],
+   [
+    0
+   ]
+  ]
+ },
+ {
+  "case": 21,
+  "T": "T4_context",
+  "Pi": "P9_balance",
+  "D": [
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": true,
+    "scope": "in",
+    "uncertainty": 0.1
+   },
+   {
+    "token": "ref3",
+    "source": "S2",
+    "polarity": false,
+    "scope": "out",
+    "uncertainty": 0.9
+   }
+  ],
+  "predicted_but_not_zero": [
+   [
+    0,
+    1
+   ]
+  ],
+  "zero_but_not_predicted": [],
+  "minimal": [
+   [
+    1
+   ]
+  ]
+ }
+]

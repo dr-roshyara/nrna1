@@ -1,0 +1,107 @@
+{
+ "design": "PAIRED -- identical (D,T) contexts evaluated under every contract",
+ "n_contexts": 1061,
+ "seed": 20261001,
+ "by_contract": {
+  "P1_result": {
+   "tests": 1389,
+   "irre": 134,
+   "rate": 0.0965
+  },
+  "P2_len": {
+   "tests": 1389,
+   "irre": 134,
+   "rate": 0.0965
+  },
+  "P3_required": {
+   "tests": 1389,
+   "irre": 134,
+   "rate": 0.0965
+  },
+  "P4_provenance": {
+   "tests": 1389,
+   "irre": 94,
+   "rate": 0.0677
+  },
+  "P5_uncertainty": {
+   "tests": 1389,
+   "irre": 82,
+   "rate": 0.059
+  },
+  "P6_scope": {
+   "tests": 1389,
+   "irre": 121,
+   "rate": 0.0871
+  },
+  "P7_contradiction": {
+   "tests": 1389,
+   "irre": 117,
+   "rate": 0.0842
+  },
+  "P8_composite": {
+   "tests": 1389,
+   "irre": 69,
+   "rate": 0.0497
+  },
+  "P9_balance": {
+   "tests": 1252,
+   "irre": 73,
+   "rate": 0.0583
+  }
+ },
+ "by_transformation": {
+  "T1_stopword": {
+   "tests": 1638,
+   "irre": 3,
+   "rate": 0.0018
+  },
+  "T2_dedup": {
+   "tests": 1341,
+   "irre": 378,
+   "rate": 0.2819
+  },
+  "T3_normalize": {
+   "tests": 1773,
+   "irre": 9,
+   "rate": 0.0051
+  },
+  "T4_context": {
+   "tests": 1620,
+   "irre": 182,
+   "rate": 0.1123
+  },
+  "T5_reference": {
+   "tests": 1575,
+   "irre": 12,
+   "rate": 0.0076
+  },
+  "T6_meta_preserving": {
+   "tests": 1746,
+   "irre": 14,
+   "rate": 0.008
+  },
+  "T7_meta_destroying": {
+   "tests": 1096,
+   "irre": 0,
+   "rate": 0.0
+  },
+  "T8_interacting": {
+   "tests": 1575,
+   "irre": 360,
+   "rate": 0.2286
+  }
+ },
+ "paired_cancelling_vs_not": {
+  "P9": {
+   "tests": 1252,
+   "irre": 73,
+   "rate": 0.0583
+  },
+  "nonP9": {
+   "tests": 11112,
+   "irre": 885,
+   "rate": 0.0796
+  }
+ },
+ "interpretation": "if the P9 and non-P9 rates are close under the PAIRED design, the contract is not the driver -- the transformation is"
+}

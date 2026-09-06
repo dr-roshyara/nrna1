@@ -1,0 +1,200 @@
+{
+ "_meta": {
+  "protocol": "KR-REP-REDUCTION-AUDIT-2026-09",
+  "items": 16
+ },
+ "checks": {
+  "1.1_Hhat_Q_given_R_independent_recompute": {
+   "PASS": true,
+   "independent": 0.38492957,
+   "module": 0.38492957
+  },
+  "1.2_miller_madow_formula": {
+   "PASS": true,
+   "plugin": 1.5,
+   "corrected": 1.860674,
+   "expected": 1.860674,
+   "formula": "H_plug + (K-1)/(2N ln2)"
+  },
+  "1.3_bootstrap_ci_brackets_point": {
+   "PASS": false,
+   "point": 0.42985,
+   "ci": [
+    0.36203,
+    0.37621
+   ]
+  },
+  "1.4_never_promotes_Hhat_to_H": {
+   "PASS": true,
+   "offending_lines": [],
+   "note": "artifact must write \u0124, never bare H, for sample quantities"
+  },
+  "2.1_rank_mappings_present": {
+   "PASS": true,
+   "ascending": [
+    2,
+    3,
+    1
+   ],
+   "descending": [
+    2,
+    1,
+    3
+   ]
+  },
+  "2.2_tie_break_deterministic": {
+   "PASS": true,
+   "note": "20 repeats identical; ties broken by first occurrence"
+  },
+  "2.3_conventions_strictly_invertible": {
+   "PASS": false,
+   "proof": "desc_i = (n+1) - asc_i for all i  =>  involution, self-inverse, bijective",
+   "cases_checked": 20000,
+   "counterexample": [
+    [
+     23000,
+     46000,
+     46000
+    ],
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     3,
+     1,
+     2
+    ]
+   ]
+  },
+  "3.1_sample_size_per_step": {
+   "PASS": true,
+   "per_level": {
+    "R5": 40000,
+    "R4": 40000,
+    "R3": 40000,
+    "R2": 40000
+   }
+  },
+  "3.2_collision_counts": {
+   "PASS": true,
+   "per_level": {
+    "R5": 13174,
+    "R4": 34304,
+    "R3": 36712,
+    "R2": 39838
+   },
+   "note": "collisions = N - |image|; recomputed independently of the experiment output"
+  },
+  "3.3_N_viol_at_the_R5_R4_crossing": {
+   "PASS": true,
+   "N_viol_R5": 0,
+   "N_viol_R4": 35532,
+   "note": "the boundary requires exactly this: 0 before, >0 after"
+  },
+  "4.1_timestamp_removed_and_no_float_casts": {
+   "PASS": true,
+   "timestamp_leaks": 0,
+   "non_integer_values": 0,
+   "note": "v is int end-to-end; there is no float->int cast boundary to audit"
+  },
+  "4.2_precision_reduction_pipeline": {
+   "PASS": true,
+   "mapping_3sf": {
+    "11510": 11500,
+    "11520": 11500,
+    "11530": 11500,
+    "12310": 12300,
+    "12320": 12300,
+    "23410": 23400,
+    "23420": 23400,
+    "34510": 34500,
+    "34520": 34500,
+    "45610": 45600,
+    "45620": 45600,
+    "56710": 56700
+   },
+   "mapping_2sf": {
+    "11510": 12000,
+    "11520": 12000,
+    "11530": 12000,
+    "12310": 12000,
+    "12320": 12000,
+    "23410": 23000,
+    "23420": 23000,
+    "34510": 35000,
+    "34520": 35000,
+    "45610": 46000,
+    "45620": 46000,
+    "56710": 57000
+   },
+   "exact_halfway_values_in_V": [],
+   "bankers_rounding_hazard": "NONE \u2014 no value in V is an exact .5 halfway case at either precision, so Python's round-half-to-even never fires"
+  },
+  "4.3_canonical_serialization": {
+   "PASS": true,
+   "samples": {
+    "D": "[[34510,\"B\",2],[45620,\"A\",7],[23410,\"A\",7]]",
+    "R5": "[[34510,\"B\"],[45620,\"A\"],[23410,\"A\"]]",
+    "R4": "[[34500,\"B\"],[45600,\"A\"],[23400,\"A\"]]",
+    "R3": "[[34000,\"B\"],[46000,\"A\"],[23000,\"A\"]]",
+    "R2": "[[2,\"B\"],[3,\"A\"],[1,\"A\"]]"
+   },
+   "note": "plain JSON tuples; no struct packing, no padding, no implicit fields"
+  },
+  "5.1_C_evaluates_R_only": {
+   "PASS": true,
+   "params": [
+    "R",
+    "level",
+    "sources_in_D"
+   ],
+   "note": "C additionally receives sources_in_D \u2014 a DECLARED derived set (design S6 clause ii), not access to D's values. Source verified to contain no reference to record values."
+  },
+  "5.2_O_fixed_and_distinct_from_O_star": {
+   "PASS": true,
+   "params": [
+    "R"
+   ],
+   "note": "O never calls Q and never sees D. It is one committed operator; O* is the existential claim in adequacy and is never instantiated in code."
+  },
+  "5.3_no_leakage_into_Q": {
+   "PASS": true,
+   "seeds": {
+    "train": 20260903,
+    "test": 77020260903
+   },
+   "train_distinct": 39974,
+   "test_distinct": 39960,
+   "Q_reference": "TOTALS enumerated analytically from (V, N_REC) \u2014 combinations_with_replacement; no sample, no split, no fitted quantity",
+   "note": "value-space overlap between splits is expected and is NOT leakage: no case identity and no fitted quantity crosses."
+  }
+ },
+ "level_stats": {
+  "R5": {
+   "N_n": 40000,
+   "distinct": 26826,
+   "collisions": 13174,
+   "N_viol": 0
+  },
+  "R4": {
+   "N_n": 40000,
+   "distinct": 5696,
+   "collisions": 34304,
+   "N_viol": 35532
+  },
+  "R3": {
+   "N_n": 40000,
+   "distinct": 3288,
+   "collisions": 36712,
+   "N_viol": 246235
+  },
+  "R2": {
+   "N_n": 40000,
+   "distinct": 162,
+   "collisions": 39838,
+   "N_viol": 5530777
+  }
+ }
+}

@@ -1,0 +1,231 @@
+{
+ "_meta": {
+  "experiment_id": "KR-ZERO-ORDER-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "kernel": "NOT SELECTED",
+  "algebra": "none introduced",
+  "ratified": "nothing",
+  "base_seed": 20260902,
+  "cases": 1500,
+  "powerset_bound": 6,
+  "date": "2026-09-03",
+  "python": "3.13.2"
+ },
+ "O1_minimal_k": {
+  "question": "O1 -- smallest k such that Zero(S) IS determined by proper subsets of size <= k, within a fixed context",
+  "n_contexts": 1034,
+  "size_tests": 1395,
+  "minimal_k_distribution": {
+   "irreducible": 115,
+   "1": 1252,
+   "2": 25,
+   "3": 3
+  },
+  "by_subset_size": {
+   "2": {
+    "irreducible": 85,
+    "1": 600
+   },
+   "3": {
+    "irreducible": 28,
+    "1": 407,
+    "2": 19
+   },
+   "4": {
+    "irreducible": 2,
+    "1": 207,
+    "2": 5,
+    "3": 3
+   },
+   "5": {
+    "1": 38,
+    "2": 1
+   }
+  },
+  "irreducible": 115,
+  "irreducible_rate": 0.0824
+ },
+ "O2_robustness": {
+  "question": "O2 -- does the interaction-order result survive contract-provenance analysis?",
+  "all_contracts": {
+   "size_tests": 1475,
+   "minimal_k_distribution": {
+    "irreducible": 117,
+    "1": 1327,
+    "2": 25,
+    "3": 6
+   },
+   "irreducible": 117,
+   "irreducible_rate": 0.0793
+  },
+  "excluding_cancelling_contract": {
+   "size_tests": 1496,
+   "minimal_k_distribution": {
+    "irreducible": 127,
+    "1": 1337,
+    "2": 17,
+    "3": 15
+   },
+   "irreducible": 127,
+   "irreducible_rate": 0.0849
+  },
+  "robust": true,
+  "note": "required by the methodological invariant: a structural finding must be tested against the provenance of the contracts that make it observable"
+ },
+ "O3_drivers": {
+  "question": "O3 -- which factor drives interaction order?",
+  "by_contract": {
+   "P1_result": {
+    "n": 145,
+    "irreducible": 6,
+    "rate": 0.0414
+   },
+   "P2_len": {
+    "n": 204,
+    "irreducible": 18,
+    "rate": 0.0882
+   },
+   "P3_required": {
+    "n": 136,
+    "irreducible": 11,
+    "rate": 0.0809
+   },
+   "P4_provenance": {
+    "n": 171,
+    "irreducible": 16,
+    "rate": 0.0936
+   },
+   "P5_uncertainty": {
+    "n": 173,
+    "irreducible": 21,
+    "rate": 0.1214
+   },
+   "P6_scope": {
+    "n": 200,
+    "irreducible": 18,
+    "rate": 0.09
+   },
+   "P7_contradiction": {
+    "n": 176,
+    "irreducible": 17,
+    "rate": 0.0966
+   },
+   "P8_composite": {
+    "n": 168,
+    "irreducible": 9,
+    "rate": 0.0536
+   },
+   "P9_balance": {
+    "n": 143,
+    "irreducible": 7,
+    "rate": 0.049
+   }
+  },
+  "by_transformation": {
+   "T1_stopword": {
+    "n": 188,
+    "irreducible": 0,
+    "rate": 0.0
+   },
+   "T2_dedup": {
+    "n": 178,
+    "irreducible": 56,
+    "rate": 0.3146
+   },
+   "T3_normalize": {
+    "n": 225,
+    "irreducible": 1,
+    "rate": 0.0044
+   },
+   "T4_context": {
+    "n": 200,
+    "irreducible": 23,
+    "rate": 0.115
+   },
+   "T5_reference": {
+    "n": 144,
+    "irreducible": 0,
+    "rate": 0.0
+   },
+   "T6_meta_preserving": {
+    "n": 208,
+    "irreducible": 1,
+    "rate": 0.0048
+   },
+   "T7_meta_destroying": {
+    "n": 169,
+    "irreducible": 0,
+    "rate": 0.0
+   },
+   "T8_interacting": {
+    "n": 204,
+    "irreducible": 42,
+    "rate": 0.2059
+   }
+  },
+  "by_representation_class": {
+   "R1": {
+    "n": 394,
+    "irreducible": 33,
+    "rate": 0.0838
+   },
+   "R2": {
+    "n": 362,
+    "irreducible": 15,
+    "rate": 0.0414
+   },
+   "R3": {
+    "n": 416,
+    "irreducible": 43,
+    "rate": 0.1034
+   },
+   "R4": {
+    "n": 344,
+    "irreducible": 32,
+    "rate": 0.093
+   }
+  }
+ },
+ "O4_cross_context": {
+  "question": "O4 -- cross-context determination (strictly stronger)",
+  "results": {
+   "k=1": {
+    "signatures": 66,
+    "ambiguous": 17,
+    "determined": false
+   },
+   "k=2": {
+    "signatures": 120,
+    "ambiguous": 10,
+    "determined": false
+   },
+   "k=3": {
+    "signatures": 117,
+    "ambiguous": 2,
+    "determined": false
+   }
+  },
+  "expected": "failure is EXPECTED -- context-dependence is already established (KR-ZERO-GROUP case I, robust). Reported so the within-context result in O1 is not confused with this one"
+ },
+ "O5_k_monotone": {
+  "question": "O5 -- does required order k grow with subset size m?",
+  "monotone": 387,
+  "non_monotone": 4,
+  "verdict": "REFUTED -- k is not monotone in m"
+ },
+ "O6_ladder": {
+  "question": "O6 -- the interaction-order ladder, cancelling contract EXCLUDED",
+  "distribution": {
+   "irreducible": 122,
+   "1": 1392,
+   "2": 26,
+   "3": 6
+  },
+  "total": 1546,
+  "k_equals_1_share": 0.9004,
+  "k_ge_2_share": 0.0207,
+  "irreducible_share": 0.0789,
+  "reading": "k=1 means singleton data suffices; k>=2 means genuinely higher-order interaction; 'irreducible' means NO proper-subset information determines the group's eliminability"
+ }
+}

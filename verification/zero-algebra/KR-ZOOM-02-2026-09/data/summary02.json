@@ -1,0 +1,154 @@
+{
+ "train": {
+  "n": 4000,
+  "budget": 40,
+  "GENERATOR_cause_outside_anchor_dim": {
+   "n": 3501,
+   "d": 4000,
+   "rate": 0.87525
+  },
+  "Z3_restriction_found": {
+   "n": 396,
+   "d": 4000,
+   "rate": 0.099
+  },
+  "Z3_inquiry_found": {
+   "n": 4000,
+   "d": 4000,
+   "rate": 1.0
+  },
+  "Z3_paired_inquiry_wins": {
+   "n": 3604,
+   "d": 4000,
+   "rate": 0.901
+  },
+  "Z3_paired_restriction_wins": {
+   "n": 0,
+   "d": 4000,
+   "rate": 0.0
+  },
+  "Z1_restriction_on_CROSS_dimension_cases": {
+   "n": 0,
+   "d": 3501,
+   "rate": 0.0
+  },
+  "Z1_restriction_on_SAME_dimension_cases": {
+   "n": 396,
+   "d": 499,
+   "rate": 0.79359
+  },
+  "Z1_inquiry_on_CROSS_dimension_cases": {
+   "n": 3501,
+   "d": 3501,
+   "rate": 1.0
+  },
+  "Z2_expansions_needed_median": 2.0,
+  "Z2_determined_with_zero_expansions": {
+   "n": 362,
+   "d": 4000,
+   "rate": 0.0905
+  },
+  "Z2_working_set_size_median": 3.0,
+  "Z4_zero_before_evidence": {
+   "n": 3501,
+   "d": 4000,
+   "rate": 0.87525
+  },
+  "Z4_zero_after_evidence": {
+   "n": 0,
+   "d": 4000,
+   "rate": 0.0
+  },
+  "Z4_ZERO_FLIP_root_cause": {
+   "n": 3501,
+   "d": 4000,
+   "rate": 0.87525
+  },
+  "probes_median": {
+   "restriction": 1.0,
+   "inquiry": 2.0
+  },
+  "Z5_order_changes_outcome": {
+   "n": 0,
+   "d": 1500,
+   "rate": 0.0
+  },
+  "Z5_probe_spread_median": 0.0
+ },
+ "test": {
+  "n": 4000,
+  "budget": 40,
+  "GENERATOR_cause_outside_anchor_dim": {
+   "n": 3479,
+   "d": 4000,
+   "rate": 0.86975
+  },
+  "Z3_restriction_found": {
+   "n": 392,
+   "d": 4000,
+   "rate": 0.098
+  },
+  "Z3_inquiry_found": {
+   "n": 4000,
+   "d": 4000,
+   "rate": 1.0
+  },
+  "Z3_paired_inquiry_wins": {
+   "n": 3608,
+   "d": 4000,
+   "rate": 0.902
+  },
+  "Z3_paired_restriction_wins": {
+   "n": 0,
+   "d": 4000,
+   "rate": 0.0
+  },
+  "Z1_restriction_on_CROSS_dimension_cases": {
+   "n": 0,
+   "d": 3479,
+   "rate": 0.0
+  },
+  "Z1_restriction_on_SAME_dimension_cases": {
+   "n": 392,
+   "d": 521,
+   "rate": 0.7524
+  },
+  "Z1_inquiry_on_CROSS_dimension_cases": {
+   "n": 3479,
+   "d": 3479,
+   "rate": 1.0
+  },
+  "Z2_expansions_needed_median": 2.0,
+  "Z2_determined_with_zero_expansions": {
+   "n": 352,
+   "d": 4000,
+   "rate": 0.088
+  },
+  "Z2_working_set_size_median": 3.0,
+  "Z4_zero_before_evidence": {
+   "n": 3479,
+   "d": 4000,
+   "rate": 0.86975
+  },
+  "Z4_zero_after_evidence": {
+   "n": 0,
+   "d": 4000,
+   "rate": 0.0
+  },
+  "Z4_ZERO_FLIP_root_cause": {
+   "n": 3479,
+   "d": 4000,
+   "rate": 0.86975
+  },
+  "probes_median": {
+   "restriction": 1.0,
+   "inquiry": 2.0
+  },
+  "Z5_order_changes_outcome": {
+   "n": 0,
+   "d": 1500,
+   "rate": 0.0
+  },
+  "Z5_probe_spread_median": 0.0
+ }
+}

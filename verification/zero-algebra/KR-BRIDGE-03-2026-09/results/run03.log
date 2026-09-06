@@ -1,0 +1,8 @@
+running R1_wider_records…
+  cells=112 excl=14 dead=67 RD0=28 nonrepl=2 surviving=1 (subst 0, borderline 0)
+  TOTAL informative strata (train) = 388
+  VERDICT: H1 NOT REFUTED — no admissible (Pi,Q,T) shows a within-stratum RD above the substantive floor on both splits, at finer strata and higher power
+running R8_balanced_n6v4…
+  cells=112 excl=14 dead=67 RD0=28 nonrepl=2 surviving=1 (subst 0, borderline 0)
+  TOTAL informative strata (train) = 396
+  VERDICT: H1 NOT REFUTED — no admissible (Pi,Q,T) shows a within-stratum RD above the substantive floor on both splits, at finer strata and higher power

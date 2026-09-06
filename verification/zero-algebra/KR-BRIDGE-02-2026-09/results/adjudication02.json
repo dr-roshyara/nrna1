@@ -1,0 +1,3340 @@
+{
+ "summary": {
+  "adjudication_target": "WITHIN-STRATUM (Mantel-Haenszel) risk difference, NOT the marginal RD -- the marginal was already explained by KR-BRIDGE-01 as confounding by redundancy",
+  "min_stratum_n": 200,
+  "n_cells": 112,
+  "n_no_informative_stratum": 67,
+  "n_RD_within_zero": 15,
+  "n_non_replicating": 2,
+  "n_excluded_gate_leak": 14,
+  "excluded_cells": [
+   {
+    "cell": "Pi_value_multiset|Q_argmax_ntags|T_D_relational",
+    "shared_fields": [
+     "tag"
+    ]
+   },
+   {
+    "cell": "Pi_value_multiset|Q_tag_set|T_D_relational",
+    "shared_fields": [
+     "tag"
+    ]
+   },
+   {
+    "cell": "Pi_value_set|Q_argmax_ntags|T_D_relational",
+    "shared_fields": [
+     "tag"
+    ]
+   },
+   {
+    "cell": "Pi_value_set|Q_tag_set|T_D_relational",
+    "shared_fields": [
+     "tag"
+    ]
+   },
+   {
+    "cell": "Pi_tag_multiset|Q_max_value|T_C_dedup",
+    "shared_fields": [
+     "v"
+    ]
+   },
+   {
+    "cell": "Pi_tag_multiset|Q_max_value|T_E_dedup_lossy",
+    "shared_fields": [
+     "v"
+    ]
+   },
+   {
+    "cell": "Pi_source_multiset|Q_majtag_total|T_C_dedup",
+    "shared_fields": [
+     "v"
+    ]
+   },
+   {
+    "cell": "Pi_source_multiset|Q_majtag_total|T_E_dedup_lossy",
+    "shared_fields": [
+     "v"
+    ]
+   },
+   {
+    "cell": "Pi_source_multiset|Q_max_value|T_C_dedup",
+    "shared_fields": [
+     "v"
+    ]
+   },
+   {
+    "cell": "Pi_source_multiset|Q_max_value|T_E_dedup_lossy",
+    "shared_fields": [
+     "v"
+    ]
+   },
+   {
+    "cell": "Pi_arity|Q_majtag_total|T_C_dedup",
+    "shared_fields": [
+     "v"
+    ]
+   },
+   {
+    "cell": "Pi_arity|Q_majtag_total|T_E_dedup_lossy",
+    "shared_fields": [
+     "v"
+    ]
+   },
+   {
+    "cell": "Pi_arity|Q_max_value|T_C_dedup",
+    "shared_fields": [
+     "v"
+    ]
+   },
+   {
+    "cell": "Pi_arity|Q_max_value|T_E_dedup_lossy",
+    "shared_fields": [
+     "v"
+    ]
+   }
+  ],
+  "substantive_floor": 0.01,
+  "n_surviving_cells": 14,
+  "n_surviving_SUBSTANTIVE_both_splits": 0,
+  "n_BORDERLINE_one_split_only": 1,
+  "borderline_cells": [
+   {
+    "cell": "Pi_value_set|Q_argmax_ntags|T_B_lossy",
+    "MH_RD_train": -0.0159,
+    "MH_RD_test": -0.00914,
+    "n_informative_strata": 2
+   }
+  ],
+  "n_surviving_NEGLIGIBLE": 14,
+  "n_distinct_mechanisms_after_Pi_collapse": 3,
+  "pi_collapse_groups": {
+   "sig0|Q_argmax_ntags": [
+    "Pi_value_multiset|Q_argmax_ntags|T_C_dedup",
+    "Pi_value_set|Q_argmax_ntags|T_B_lossy",
+    "Pi_value_set|Q_argmax_ntags|T_C_dedup",
+    "Pi_arity|Q_argmax_ntags|T_C_dedup"
+   ],
+   "sig1|Q_source_set": [
+    "Pi_value_multiset|Q_source_set|T_C_dedup",
+    "Pi_value_set|Q_source_set|T_B_lossy",
+    "Pi_value_set|Q_source_set|T_C_dedup",
+    "Pi_arity|Q_source_set|T_C_dedup"
+   ],
+   "sig2|Q_tag_set": [
+    "Pi_value_multiset|Q_tag_set|T_C_dedup",
+    "Pi_value_multiset|Q_tag_set|T_E_dedup_lossy",
+    "Pi_value_set|Q_tag_set|T_C_dedup",
+    "Pi_value_set|Q_tag_set|T_E_dedup_lossy",
+    "Pi_arity|Q_tag_set|T_C_dedup",
+    "Pi_arity|Q_tag_set|T_E_dedup_lossy"
+   ]
+  },
+  "VERDICT": "H1 NOT REFUTED \u2014 no ADMISSIBLE (Pi,Q,T) shows a within-stratum RD above the substantive floor; every marginal association is accounted for by redundancy, and the one substantial candidate was excluded by the level-aware read-disjointness gate"
+ },
+ "cells": {
+  "Pi_value_multiset|Q_argmax_ntags|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_C_dedup": {
+   "train": {
+    "MH_odds_ratio": 0.99352,
+    "MH_risk_difference": -0.0009,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 6564,
+       "Z+I": 2586,
+       "NZ+A": 26256,
+       "NZ+I": 10344
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 954,
+       "Z+I": 16672,
+       "NZ+A": 456,
+       "NZ+I": 7658
+      },
+      "RD": -0.00207
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 0.98954,
+    "MH_risk_difference": -0.00143,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 6464,
+       "Z+I": 2674,
+       "NZ+A": 25856,
+       "NZ+I": 10696
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 768,
+       "Z+I": 16944,
+       "NZ+A": 382,
+       "NZ+I": 7806
+      },
+      "RD": -0.00329
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_D_relational": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "tag"
+   ]
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_E_dedup_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 9150,
+       "NZ+A": 0,
+       "NZ+I": 36600
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 17626,
+       "NZ+A": 0,
+       "NZ+I": 8114
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 9138,
+       "NZ+A": 0,
+       "NZ+I": 36552
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 17712,
+       "NZ+A": 0,
+       "NZ+I": 8188
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "RD_within = 0"
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_multiset|Q_source_set|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_multiset|Q_source_set|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_multiset|Q_source_set|T_C_dedup": {
+   "train": {
+    "MH_odds_ratio": 0.98944,
+    "MH_risk_difference": -0.00134,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 6626,
+       "Z+I": 2524,
+       "NZ+A": 26504,
+       "NZ+I": 10096
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 510,
+       "Z+I": 17116,
+       "NZ+A": 260,
+       "NZ+I": 7854
+      },
+      "RD": -0.00311
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 0.99756,
+    "MH_risk_difference": -0.00032,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 6666,
+       "Z+I": 2472,
+       "NZ+A": 26664,
+       "NZ+I": 9888
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 796,
+       "Z+I": 16916,
+       "NZ+A": 374,
+       "NZ+I": 7814
+      },
+      "RD": -0.00074
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_value_multiset|Q_source_set|T_D_relational": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_multiset|Q_source_set|T_E_dedup_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 9150,
+       "NZ+A": 0,
+       "NZ+I": 36600
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 17626,
+       "NZ+A": 0,
+       "NZ+I": 8114
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 9138,
+       "NZ+A": 0,
+       "NZ+I": 36552
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 17712,
+       "NZ+A": 0,
+       "NZ+I": 8188
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "RD_within = 0"
+  },
+  "Pi_value_multiset|Q_source_set|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_multiset|Q_source_set|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_multiset|Q_tag_set|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_multiset|Q_tag_set|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_multiset|Q_tag_set|T_C_dedup": {
+   "train": {
+    "MH_odds_ratio": 1.00869,
+    "MH_risk_difference": 0.00127,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 8410,
+       "Z+I": 740,
+       "NZ+A": 33640,
+       "NZ+I": 2960
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 10418,
+       "Z+I": 7208,
+       "NZ+A": 4772,
+       "NZ+I": 3342
+      },
+      "RD": 0.00294
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 1.01401,
+    "MH_risk_difference": 0.00207,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 8360,
+       "Z+I": 778,
+       "NZ+A": 33440,
+       "NZ+I": 3112
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 10524,
+       "Z+I": 7188,
+       "NZ+A": 4826,
+       "NZ+I": 3362
+      },
+      "RD": 0.00477
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_value_multiset|Q_tag_set|T_D_relational": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "tag"
+   ]
+  },
+  "Pi_value_multiset|Q_tag_set|T_E_dedup_lossy": {
+   "train": {
+    "MH_odds_ratio": 1.00568,
+    "MH_risk_difference": 0.0012,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 6922,
+       "Z+I": 2228,
+       "NZ+A": 27688,
+       "NZ+I": 8912
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 8986,
+       "Z+I": 8640,
+       "NZ+A": 4114,
+       "NZ+I": 4000
+      },
+      "RD": 0.00279
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 1.01414,
+    "MH_risk_difference": 0.00298,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 6920,
+       "Z+I": 2218,
+       "NZ+A": 27680,
+       "NZ+I": 8872
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 8874,
+       "Z+I": 8838,
+       "NZ+A": 4046,
+       "NZ+I": 4142
+      },
+      "RD": 0.00688
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_value_multiset|Q_tag_set|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_multiset|Q_tag_set|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_set|Q_argmax_ntags|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 9150,
+       "Z+I": 0,
+       "NZ+A": 36600,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 17626,
+       "Z+I": 0,
+       "NZ+A": 8114,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 9138,
+       "Z+I": 0,
+       "NZ+A": 36552,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 17712,
+       "Z+I": 0,
+       "NZ+A": 8188,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "RD_within = 0"
+  },
+  "Pi_value_set|Q_argmax_ntags|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": 0.93289,
+    "MH_risk_difference": -0.0159,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 2828,
+       "Z+I": 6322,
+       "NZ+A": 11312,
+       "NZ+I": 25288
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 7944,
+       "Z+I": 9682,
+       "NZ+A": 3956,
+       "NZ+I": 4158
+      },
+      "RD": -0.03685
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 0.96136,
+    "MH_risk_difference": -0.00914,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 2978,
+       "Z+I": 6160,
+       "NZ+A": 11912,
+       "NZ+I": 24640
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 7808,
+       "Z+I": 9904,
+       "NZ+A": 3782,
+       "NZ+I": 4406
+      },
+      "RD": -0.02106
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "SUBSTANTIVE"
+  },
+  "Pi_value_set|Q_argmax_ntags|T_C_dedup": {
+   "train": {
+    "MH_odds_ratio": 0.99352,
+    "MH_risk_difference": -0.0009,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 6564,
+       "Z+I": 2586,
+       "NZ+A": 26256,
+       "NZ+I": 10344
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 954,
+       "Z+I": 16672,
+       "NZ+A": 456,
+       "NZ+I": 7658
+      },
+      "RD": -0.00207
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 0.98954,
+    "MH_risk_difference": -0.00143,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 6464,
+       "Z+I": 2674,
+       "NZ+A": 25856,
+       "NZ+I": 10696
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 768,
+       "Z+I": 16944,
+       "NZ+A": 382,
+       "NZ+I": 7806
+      },
+      "RD": -0.00329
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_value_set|Q_argmax_ntags|T_D_relational": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "tag"
+   ]
+  },
+  "Pi_value_set|Q_argmax_ntags|T_E_dedup_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 9150,
+       "NZ+A": 0,
+       "NZ+I": 36600
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 17626,
+       "NZ+A": 0,
+       "NZ+I": 8114
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 9138,
+       "NZ+A": 0,
+       "NZ+I": 36552
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 17712,
+       "NZ+A": 0,
+       "NZ+I": 8188
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "RD_within = 0"
+  },
+  "Pi_value_set|Q_argmax_ntags|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": -6163220921731094514,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_set|Q_argmax_ntags|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 9150,
+       "Z+I": 0,
+       "NZ+A": 36600,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 17626,
+       "Z+I": 0,
+       "NZ+A": 8114,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 9138,
+       "Z+I": 0,
+       "NZ+A": 36552,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 17712,
+       "Z+I": 0,
+       "NZ+A": 8188,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "RD_within = 0"
+  },
+  "Pi_value_set|Q_source_set|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 9150,
+       "Z+I": 0,
+       "NZ+A": 36600,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 17626,
+       "Z+I": 0,
+       "NZ+A": 8114,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 9138,
+       "Z+I": 0,
+       "NZ+A": 36552,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 17712,
+       "Z+I": 0,
+       "NZ+A": 8188,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "RD_within = 0"
+  },
+  "Pi_value_set|Q_source_set|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": 0.96966,
+    "MH_risk_difference": -0.00597,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 2398,
+       "Z+I": 6752,
+       "NZ+A": 9592,
+       "NZ+I": 27008
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 4518,
+       "Z+I": 13108,
+       "NZ+A": 2192,
+       "NZ+I": 5922
+      },
+      "RD": -0.01382
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 0.98322,
+    "MH_risk_difference": -0.00321,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 2342,
+       "Z+I": 6796,
+       "NZ+A": 9368,
+       "NZ+I": 27184
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 4390,
+       "Z+I": 13322,
+       "NZ+A": 2090,
+       "NZ+I": 6098
+      },
+      "RD": -0.0074
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_value_set|Q_source_set|T_C_dedup": {
+   "train": {
+    "MH_odds_ratio": 0.98944,
+    "MH_risk_difference": -0.00134,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 6626,
+       "Z+I": 2524,
+       "NZ+A": 26504,
+       "NZ+I": 10096
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 510,
+       "Z+I": 17116,
+       "NZ+A": 260,
+       "NZ+I": 7854
+      },
+      "RD": -0.00311
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 0.99756,
+    "MH_risk_difference": -0.00032,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 6666,
+       "Z+I": 2472,
+       "NZ+A": 26664,
+       "NZ+I": 9888
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 796,
+       "Z+I": 16916,
+       "NZ+A": 374,
+       "NZ+I": 7814
+      },
+      "RD": -0.00074
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_value_set|Q_source_set|T_D_relational": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 0,
+      "n": 7220,
+      "cells": {
+       "Z+A": 1957,
+       "Z+I": 0,
+       "NZ+A": 5263,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 12944,
+       "Z+I": 0,
+       "NZ+A": 32806,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 7143,
+       "Z+I": 0,
+       "NZ+A": 18597,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 3,
+      "n": 1290,
+      "cells": {
+       "Z+A": 358,
+       "Z+I": 0,
+       "NZ+A": 932,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 4
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 0,
+      "n": 7320,
+      "cells": {
+       "Z+A": 2117,
+       "Z+I": 0,
+       "NZ+A": 5203,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 12600,
+       "Z+I": 0,
+       "NZ+A": 33090,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 7116,
+       "Z+I": 0,
+       "NZ+A": 18784,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 3,
+      "n": 1090,
+      "cells": {
+       "Z+A": 307,
+       "Z+I": 0,
+       "NZ+A": 783,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 4
+   },
+   "zero_signature": -7292102308782558940,
+   "status": "RD_within = 0"
+  },
+  "Pi_value_set|Q_source_set|T_E_dedup_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 9150,
+       "NZ+A": 0,
+       "NZ+I": 36600
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 17626,
+       "NZ+A": 0,
+       "NZ+I": 8114
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 9138,
+       "NZ+A": 0,
+       "NZ+I": 36552
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 17712,
+       "NZ+A": 0,
+       "NZ+I": 8188
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "RD_within = 0"
+  },
+  "Pi_value_set|Q_source_set|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": -6163220921731094514,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_set|Q_source_set|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 9150,
+       "Z+I": 0,
+       "NZ+A": 36600,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 17626,
+       "Z+I": 0,
+       "NZ+A": 8114,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 9138,
+       "Z+I": 0,
+       "NZ+A": 36552,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 17712,
+       "Z+I": 0,
+       "NZ+A": 8188,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "RD_within = 0"
+  },
+  "Pi_value_set|Q_tag_set|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 9150,
+       "Z+I": 0,
+       "NZ+A": 36600,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 17626,
+       "Z+I": 0,
+       "NZ+A": 8114,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 9138,
+       "Z+I": 0,
+       "NZ+A": 36552,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 17712,
+       "Z+I": 0,
+       "NZ+A": 8188,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "RD_within = 0"
+  },
+  "Pi_value_set|Q_tag_set|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 9150,
+       "Z+I": 0,
+       "NZ+A": 36600,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 17626,
+       "Z+I": 0,
+       "NZ+A": 8114,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 9138,
+       "Z+I": 0,
+       "NZ+A": 36552,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 17712,
+       "Z+I": 0,
+       "NZ+A": 8188,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "RD_within = 0"
+  },
+  "Pi_value_set|Q_tag_set|T_C_dedup": {
+   "train": {
+    "MH_odds_ratio": 1.00869,
+    "MH_risk_difference": 0.00127,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 8410,
+       "Z+I": 740,
+       "NZ+A": 33640,
+       "NZ+I": 2960
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 10418,
+       "Z+I": 7208,
+       "NZ+A": 4772,
+       "NZ+I": 3342
+      },
+      "RD": 0.00294
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 1.01401,
+    "MH_risk_difference": 0.00207,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 8360,
+       "Z+I": 778,
+       "NZ+A": 33440,
+       "NZ+I": 3112
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 10524,
+       "Z+I": 7188,
+       "NZ+A": 4826,
+       "NZ+I": 3362
+      },
+      "RD": 0.00477
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_value_set|Q_tag_set|T_D_relational": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "tag"
+   ]
+  },
+  "Pi_value_set|Q_tag_set|T_E_dedup_lossy": {
+   "train": {
+    "MH_odds_ratio": 1.00568,
+    "MH_risk_difference": 0.0012,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 6922,
+       "Z+I": 2228,
+       "NZ+A": 27688,
+       "NZ+I": 8912
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 8986,
+       "Z+I": 8640,
+       "NZ+A": 4114,
+       "NZ+I": 4000
+      },
+      "RD": 0.00279
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 1.01414,
+    "MH_risk_difference": 0.00298,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 6920,
+       "Z+I": 2218,
+       "NZ+A": 27680,
+       "NZ+I": 8872
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 8874,
+       "Z+I": 8838,
+       "NZ+A": 4046,
+       "NZ+I": 4142
+      },
+      "RD": 0.00688
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_value_set|Q_tag_set|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": -6163220921731094514,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_value_set|Q_tag_set|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 9150,
+       "Z+I": 0,
+       "NZ+A": 36600,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 17626,
+       "Z+I": 0,
+       "NZ+A": 8114,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 9138,
+       "Z+I": 0,
+       "NZ+A": 36552,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 17712,
+       "Z+I": 0,
+       "NZ+A": 8188,
+       "NZ+I": 0
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "RD_within = 0"
+  },
+  "Pi_tag_multiset|Q_source_set|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_tag_multiset|Q_source_set|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_tag_multiset|Q_source_set|T_C_dedup": {
+   "train": {
+    "MH_odds_ratio": 1.01084,
+    "MH_risk_difference": 0.00117,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 4969,
+       "Z+I": 1871,
+       "NZ+A": 28161,
+       "NZ+I": 10749
+      },
+      "RD": 0.00271
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 372,
+       "Z+I": 12145,
+       "NZ+A": 398,
+       "NZ+I": 12825
+      },
+      "RD": -0.00038
+     },
+     {
+      "redundancy": 3,
+      "n": 1290,
+      "cells": {
+       "Z+A": 25,
+       "Z+I": 998,
+       "NZ+A": 5,
+       "NZ+I": 262
+      },
+      "RD": 0.00571
+     }
+    ],
+    "n_informative_strata": 3
+   },
+   "test": {
+    "MH_odds_ratio": 0.99722,
+    "MH_risk_difference": -0.00032,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 4941,
+       "Z+I": 1872,
+       "NZ+A": 28389,
+       "NZ+I": 10488
+      },
+      "RD": -0.00499
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 599,
+       "Z+I": 12147,
+       "NZ+A": 571,
+       "NZ+I": 12583
+      },
+      "RD": 0.00359
+     },
+     {
+      "redundancy": 3,
+      "n": 1090,
+      "cells": {
+       "Z+A": 72,
+       "Z+I": 779,
+       "NZ+A": 18,
+       "NZ+I": 221
+      },
+      "RD": 0.00929
+     }
+    ],
+    "n_informative_strata": 3
+   },
+   "zero_signature": 7662199923430264977,
+   "status": "NON-REPLICATING",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_tag_multiset|Q_source_set|T_D_relational": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_tag_multiset|Q_source_set|T_E_dedup_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 6840,
+       "NZ+A": 0,
+       "NZ+I": 38910
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 12517,
+       "NZ+A": 0,
+       "NZ+I": 13223
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 3,
+      "n": 1290,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 1023,
+       "NZ+A": 0,
+       "NZ+I": 267
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 3
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 6813,
+       "NZ+A": 0,
+       "NZ+I": 38877
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 12746,
+       "NZ+A": 0,
+       "NZ+I": 13154
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 3,
+      "n": 1090,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 851,
+       "NZ+A": 0,
+       "NZ+I": 239
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 3
+   },
+   "zero_signature": 7662199923430264977,
+   "status": "RD_within = 0"
+  },
+  "Pi_tag_multiset|Q_source_set|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": -6163220921731094514,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_tag_multiset|Q_source_set|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_tag_multiset|Q_max_value|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_tag_multiset|Q_max_value|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_tag_multiset|Q_max_value|T_C_dedup": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  "Pi_tag_multiset|Q_max_value|T_D_relational": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_tag_multiset|Q_max_value|T_E_dedup_lossy": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  "Pi_tag_multiset|Q_max_value|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": -6163220921731094514,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_tag_multiset|Q_max_value|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_majtag_total|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_majtag_total|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": -6163220921731094514,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_majtag_total|T_C_dedup": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  "Pi_source_multiset|Q_majtag_total|T_D_relational": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_majtag_total|T_E_dedup_lossy": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  "Pi_source_multiset|Q_majtag_total|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": -6163220921731094514,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_majtag_total|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_max_value|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_max_value|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": -6163220921731094514,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_max_value|T_C_dedup": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  "Pi_source_multiset|Q_max_value|T_D_relational": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_max_value|T_E_dedup_lossy": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  "Pi_source_multiset|Q_max_value|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": -6163220921731094514,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_max_value|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_tag_set|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_tag_set|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": -6163220921731094514,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_tag_set|T_C_dedup": {
+   "train": {
+    "MH_odds_ratio": 1.00342,
+    "MH_risk_difference": 0.00057,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 5576,
+       "Z+I": 491,
+       "NZ+A": 36474,
+       "NZ+I": 3209
+      },
+      "RD": -6e-05
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 6499,
+       "Z+I": 4508,
+       "NZ+A": 8691,
+       "NZ+I": 6042
+      },
+      "RD": 0.00054
+     },
+     {
+      "redundancy": 3,
+      "n": 1290,
+      "cells": {
+       "Z+A": 530,
+       "Z+I": 413,
+       "NZ+A": 190,
+       "NZ+I": 157
+      },
+      "RD": 0.01449
+     }
+    ],
+    "n_informative_strata": 3
+   },
+   "test": {
+    "MH_odds_ratio": 0.99422,
+    "MH_risk_difference": -0.00098,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 5516,
+       "Z+I": 517,
+       "NZ+A": 36284,
+       "NZ+I": 3373
+      },
+      "RD": -0.00064
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 6463,
+       "Z+I": 4446,
+       "NZ+A": 8887,
+       "NZ+I": 6104
+      },
+      "RD": -0.00038
+     },
+     {
+      "redundancy": 3,
+      "n": 1090,
+      "cells": {
+       "Z+A": 526,
+       "Z+I": 279,
+       "NZ+A": 194,
+       "NZ+I": 91
+      },
+      "RD": -0.02729
+     }
+    ],
+    "n_informative_strata": 3
+   },
+   "zero_signature": 1000952301493833350,
+   "status": "NON-REPLICATING",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_source_multiset|Q_tag_set|T_D_relational": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_tag_set|T_E_dedup_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": -6163220921731094514,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_tag_set|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": -6163220921731094514,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_source_multiset|Q_tag_set|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_argmax_ntags|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_argmax_ntags|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_argmax_ntags|T_C_dedup": {
+   "train": {
+    "MH_odds_ratio": 0.99352,
+    "MH_risk_difference": -0.0009,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 6564,
+       "Z+I": 2586,
+       "NZ+A": 26256,
+       "NZ+I": 10344
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 954,
+       "Z+I": 16672,
+       "NZ+A": 456,
+       "NZ+I": 7658
+      },
+      "RD": -0.00207
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 0.98954,
+    "MH_risk_difference": -0.00143,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 6464,
+       "Z+I": 2674,
+       "NZ+A": 25856,
+       "NZ+I": 10696
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 768,
+       "Z+I": 16944,
+       "NZ+A": 382,
+       "NZ+I": 7806
+      },
+      "RD": -0.00329
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_arity|Q_argmax_ntags|T_D_relational": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_argmax_ntags|T_E_dedup_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 9150,
+       "NZ+A": 0,
+       "NZ+I": 36600
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 17626,
+       "NZ+A": 0,
+       "NZ+I": 8114
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 9138,
+       "NZ+A": 0,
+       "NZ+I": 36552
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 17712,
+       "NZ+A": 0,
+       "NZ+I": 8188
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "RD_within = 0"
+  },
+  "Pi_arity|Q_argmax_ntags|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_argmax_ntags|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_source_set|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_source_set|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_source_set|T_C_dedup": {
+   "train": {
+    "MH_odds_ratio": 0.98944,
+    "MH_risk_difference": -0.00134,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 6626,
+       "Z+I": 2524,
+       "NZ+A": 26504,
+       "NZ+I": 10096
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 510,
+       "Z+I": 17116,
+       "NZ+A": 260,
+       "NZ+I": 7854
+      },
+      "RD": -0.00311
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 0.99756,
+    "MH_risk_difference": -0.00032,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 6666,
+       "Z+I": 2472,
+       "NZ+A": 26664,
+       "NZ+I": 9888
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 796,
+       "Z+I": 16916,
+       "NZ+A": 374,
+       "NZ+I": 7814
+      },
+      "RD": -0.00074
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_arity|Q_source_set|T_D_relational": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_source_set|T_E_dedup_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 9150,
+       "NZ+A": 0,
+       "NZ+I": 36600
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 17626,
+       "NZ+A": 0,
+       "NZ+I": 8114
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": 0.0,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 9138,
+       "NZ+A": 0,
+       "NZ+I": 36552
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 0,
+       "Z+I": 17712,
+       "NZ+A": 0,
+       "NZ+I": 8188
+      },
+      "RD": 0.0
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "RD_within = 0"
+  },
+  "Pi_arity|Q_source_set|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_source_set|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_majtag_total|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_majtag_total|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_majtag_total|T_C_dedup": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  "Pi_arity|Q_majtag_total|T_D_relational": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_majtag_total|T_E_dedup_lossy": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  "Pi_arity|Q_majtag_total|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_majtag_total|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_max_value|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_max_value|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_max_value|T_C_dedup": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  "Pi_arity|Q_max_value|T_D_relational": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_max_value|T_E_dedup_lossy": {
+   "status": "EXCLUDED \u2014 level-aware gate leak",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  "Pi_arity|Q_max_value|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_max_value|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_tag_set|T_A_preserving": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_tag_set|T_B_lossy": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_tag_set|T_C_dedup": {
+   "train": {
+    "MH_odds_ratio": 1.00869,
+    "MH_risk_difference": 0.00127,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 8410,
+       "Z+I": 740,
+       "NZ+A": 33640,
+       "NZ+I": 2960
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 10418,
+       "Z+I": 7208,
+       "NZ+A": 4772,
+       "NZ+I": 3342
+      },
+      "RD": 0.00294
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 1.01401,
+    "MH_risk_difference": 0.00207,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 8360,
+       "Z+I": 778,
+       "NZ+A": 33440,
+       "NZ+I": 3112
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 10524,
+       "Z+I": 7188,
+       "NZ+A": 4826,
+       "NZ+I": 3362
+      },
+      "RD": 0.00477
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_arity|Q_tag_set|T_D_relational": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_tag_set|T_E_dedup_lossy": {
+   "train": {
+    "MH_odds_ratio": 1.00568,
+    "MH_risk_difference": 0.0012,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45750,
+      "cells": {
+       "Z+A": 6922,
+       "Z+I": 2228,
+       "NZ+A": 27688,
+       "NZ+I": 8912
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25740,
+      "cells": {
+       "Z+A": 8986,
+       "Z+I": 8640,
+       "NZ+A": 4114,
+       "NZ+I": 4000
+      },
+      "RD": 0.00279
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "test": {
+    "MH_odds_ratio": 1.01414,
+    "MH_risk_difference": 0.00298,
+    "informative_strata": [
+     {
+      "redundancy": 1,
+      "n": 45690,
+      "cells": {
+       "Z+A": 6920,
+       "Z+I": 2218,
+       "NZ+A": 27680,
+       "NZ+I": 8872
+      },
+      "RD": 0.0
+     },
+     {
+      "redundancy": 2,
+      "n": 25900,
+      "cells": {
+       "Z+A": 8874,
+       "Z+I": 8838,
+       "NZ+A": 4046,
+       "NZ+I": 4142
+      },
+      "RD": 0.00688
+     }
+    ],
+    "n_informative_strata": 2
+   },
+   "zero_signature": 8604495805171636698,
+   "status": "SURVIVES STRATIFICATION",
+   "magnitude_tier": "NEGLIGIBLE"
+  },
+  "Pi_arity|Q_tag_set|T_F_destroying": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  },
+  "Pi_arity|Q_tag_set|T_G_recoding": {
+   "train": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "test": {
+    "MH_odds_ratio": null,
+    "MH_risk_difference": null,
+    "informative_strata": [],
+    "n_informative_strata": 0
+   },
+   "zero_signature": 2923511311583129928,
+   "status": "NO INFORMATIVE STRATUM"
+  }
+ }
+}

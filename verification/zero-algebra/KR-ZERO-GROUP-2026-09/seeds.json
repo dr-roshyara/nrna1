@@ -1,0 +1,18 @@
+{
+ "base_seed": 20260902,
+ "per_family_offsets": {
+  "G1_closure_properties": 20260903,
+  "G2_minimal_structure": 20260904,
+  "G3_generated_by_minimal": 20260905,
+  "G4_matroid_circuits": 20260906,
+  "G5_pairwise_determination": 20260907,
+  "G6_subset_vs_sequential": 20260908,
+  "G7_overlapping": 20260909,
+  "G8_redundancy_vs_cancellation": 20260910,
+  "G9_regime_adjudication": 20260911,
+  "G10_contract_class_robustness": 20260912
+ },
+ "cases_per_family": 1200,
+ "powerset_bound": 7,
+ "deterministic": true
+}

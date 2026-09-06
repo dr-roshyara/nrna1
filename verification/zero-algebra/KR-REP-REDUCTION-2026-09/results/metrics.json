@@ -1,0 +1,473 @@
+{
+ "_meta": {
+  "experiment_id": "KR-REP-REDUCTION-2026-09",
+  "design": "KR-REP-REDUCTION-DESIGN-2026-09.md",
+  "theory": "v1.2 UNCHANGED",
+  "kernel": "NOT SELECTED",
+  "n_cases_per_split": 40000,
+  "seeds": {
+   "train": 20260903,
+   "test": 77020260903
+  },
+  "date": "2026-09-03",
+  "python": "3.13.2"
+ },
+ "fidelity": {
+  "FT-1_Q_function_of_D_alone": {
+   "violations": 0,
+   "pass": true
+  },
+  "FT-2_chain_by_recomputation": {
+   "violations": 0,
+   "pass": true
+  },
+  "FT-3_level_schema_exact": {
+   "records_checked": 75000,
+   "violations": 0,
+   "examples": [],
+   "pass": true
+  },
+  "FT-4_C_and_O_read_only_R": {
+   "C_params": [
+    "R",
+    "level",
+    "sources_in_D"
+   ],
+   "O_params": [
+    "R"
+   ],
+   "note": "C additionally takes the SOURCE SET of D -- declared in design S6 as part of admissibility, not a back-channel to D's values",
+   "pass": true
+  },
+  "FT-6_alphabets": {
+   "|V|": 12,
+   "|S|": 3,
+   "|T|": 8,
+   "n_records": 3,
+   "|TOTALS|": 124,
+   "pass": true
+  },
+  "FT-7_train_test_separation": {
+   "train_distinct_cases": 39974,
+   "test_distinct_cases": 39960,
+   "note": "generated from independent seeds; overlap in VALUE space is expected and is not leakage -- no case identity or fitted quantity crosses the split",
+   "pass": true
+  }
+ },
+ "train_ascending": {
+  "R5": {
+   "A_n": 1.0,
+   "F_n": 1.0,
+   "F_argmax_component": 1.0,
+   "F_decile_component": 1.0,
+   "H_hat_Q_given_R": 0.0,
+   "H_hat_Q_given_R_ci95": [
+    0.0,
+    0.0
+   ],
+   "H_hat_R_given_Q": 10.03191,
+   "H_hat_R": 15.04175,
+   "N_viol": 0,
+   "adequate": true,
+   "n_fibers": 26826,
+   "max_fiber": 7,
+   "mean_fiber": 1.491,
+   "singleton_fibers": 16939,
+   "conflicted_fibers": 0,
+   "mean_encoded_bytes": 37.0,
+   "cardinality": 26826,
+   "fields_per_record": 2
+  },
+  "R4": {
+   "A_n": 1.0,
+   "F_n": 0.76107,
+   "F_argmax_component": 0.92915,
+   "F_decile_component": 0.82035,
+   "H_hat_Q_given_R": 0.42985,
+   "H_hat_Q_given_R_ci95": [
+    0.36203,
+    0.37621
+   ],
+   "H_hat_R_given_Q": 7.72736,
+   "H_hat_R": 12.30735,
+   "N_viol": 35532,
+   "adequate": false,
+   "n_fibers": 5696,
+   "max_fiber": 29,
+   "mean_fiber": 7.022,
+   "singleton_fibers": 301,
+   "conflicted_fibers": 1787,
+   "mean_encoded_bytes": 37.0,
+   "cardinality": 5696,
+   "fields_per_record": 2
+  },
+  "R3": {
+   "A_n": 1.0,
+   "F_n": 0.58062,
+   "F_argmax_component": 0.89533,
+   "F_decile_component": 0.6295,
+   "H_hat_Q_given_R": 0.85464,
+   "H_hat_Q_given_R_ci95": [
+    0.79045,
+    0.80742
+   ],
+   "H_hat_R_given_Q": 6.94209,
+   "H_hat_R": 11.09729,
+   "N_viol": 246235,
+   "adequate": false,
+   "n_fibers": 3288,
+   "max_fiber": 130,
+   "mean_fiber": 12.165,
+   "singleton_fibers": 166,
+   "conflicted_fibers": 1717,
+   "mean_encoded_bytes": 37.0,
+   "cardinality": 3288,
+   "fields_per_record": 2
+  },
+  "R2": {
+   "A_n": 1.0,
+   "F_n": 0.02538,
+   "F_argmax_component": 0.86665,
+   "F_decile_component": 0.04915,
+   "H_hat_Q_given_R": 3.39367,
+   "H_hat_Q_given_R_ci95": [
+    3.3471,
+    3.36639
+   ],
+   "H_hat_R_given_Q": 5.55372,
+   "H_hat_R": 7.16989,
+   "N_viol": 5530777,
+   "adequate": false,
+   "n_fibers": 162,
+   "max_fiber": 524,
+   "mean_fiber": 246.914,
+   "singleton_fibers": 0,
+   "conflicted_fibers": 162,
+   "mean_encoded_bytes": 25.0,
+   "cardinality": 162,
+   "fields_per_record": 2
+  }
+ },
+ "test_ascending": {
+  "R5": {
+   "A_n": 1.0,
+   "F_n": 1.0,
+   "F_argmax_component": 1.0,
+   "F_decile_component": 1.0,
+   "H_hat_Q_given_R": 0.0,
+   "H_hat_Q_given_R_ci95": [
+    0.0,
+    0.0
+   ],
+   "H_hat_R_given_Q": 10.03438,
+   "H_hat_R": 15.04228,
+   "N_viol": 0,
+   "adequate": true,
+   "n_fibers": 26836,
+   "max_fiber": 7,
+   "mean_fiber": 1.491,
+   "singleton_fibers": 16967,
+   "conflicted_fibers": 0,
+   "mean_encoded_bytes": 37.0,
+   "cardinality": 26836,
+   "fields_per_record": 2
+  },
+  "R4": {
+   "A_n": 1.0,
+   "F_n": 0.76113,
+   "F_argmax_component": 0.92737,
+   "F_decile_component": 0.82288,
+   "H_hat_Q_given_R": 0.44084,
+   "H_hat_Q_given_R_ci95": [
+    0.36954,
+    0.38514
+   ],
+   "H_hat_R_given_Q": 7.7456,
+   "H_hat_R": 12.31266,
+   "N_viol": 36445,
+   "adequate": false,
+   "n_fibers": 5713,
+   "max_fiber": 31,
+   "mean_fiber": 7.002,
+   "singleton_fibers": 290,
+   "conflicted_fibers": 1832,
+   "mean_encoded_bytes": 37.0,
+   "cardinality": 5713,
+   "fields_per_record": 2
+  },
+  "R3": {
+   "A_n": 1.0,
+   "F_n": 0.58015,
+   "F_argmax_component": 0.89572,
+   "F_decile_component": 0.63008,
+   "H_hat_Q_given_R": 0.86775,
+   "H_hat_Q_given_R_ci95": [
+    0.80082,
+    0.82079
+   ],
+   "H_hat_R_given_Q": 6.95839,
+   "H_hat_R": 11.09854,
+   "N_viol": 243241,
+   "adequate": false,
+   "n_fibers": 3289,
+   "max_fiber": 123,
+   "mean_fiber": 12.162,
+   "singleton_fibers": 165,
+   "conflicted_fibers": 1750,
+   "mean_encoded_bytes": 37.0,
+   "cardinality": 3289,
+   "fields_per_record": 2
+  },
+  "R2": {
+   "A_n": 1.0,
+   "F_n": 0.02355,
+   "F_argmax_component": 0.8662,
+   "F_decile_component": 0.046,
+   "H_hat_Q_given_R": 3.3974,
+   "H_hat_Q_given_R_ci95": [
+    3.34988,
+    3.36808
+   ],
+   "H_hat_R_given_Q": 5.55547,
+   "H_hat_R": 7.16598,
+   "N_viol": 5553026,
+   "adequate": false,
+   "n_fibers": 162,
+   "max_fiber": 520,
+   "mean_fiber": 246.914,
+   "singleton_fibers": 0,
+   "conflicted_fibers": 162,
+   "mean_encoded_bytes": 25.0,
+   "cardinality": 162,
+   "fields_per_record": 2
+  }
+ },
+ "zero_probe_ascending": [
+  {
+   "level": "R5",
+   "next": "R4",
+   "elimination_tests": 12000,
+   "zero_rate": 0.03767
+  },
+  {
+   "level": "R4",
+   "next": "R3",
+   "elimination_tests": 12000,
+   "zero_rate": 0.04258
+  },
+  {
+   "level": "R3",
+   "next": "R2",
+   "elimination_tests": 12000,
+   "zero_rate": 0.0
+  }
+ ],
+ "train_descending": {
+  "R5": {
+   "A_n": 1.0,
+   "F_n": 1.0,
+   "F_argmax_component": 1.0,
+   "F_decile_component": 1.0,
+   "H_hat_Q_given_R": 0.0,
+   "H_hat_Q_given_R_ci95": [
+    0.0,
+    0.0
+   ],
+   "H_hat_R_given_Q": 10.03191,
+   "H_hat_R": 15.04175,
+   "N_viol": 0,
+   "adequate": true,
+   "n_fibers": 26826,
+   "max_fiber": 7,
+   "mean_fiber": 1.491,
+   "singleton_fibers": 16939,
+   "conflicted_fibers": 0,
+   "mean_encoded_bytes": 37.0,
+   "cardinality": 26826,
+   "fields_per_record": 2
+  },
+  "R4": {
+   "A_n": 1.0,
+   "F_n": 0.76107,
+   "F_argmax_component": 0.92915,
+   "F_decile_component": 0.82035,
+   "H_hat_Q_given_R": 0.42985,
+   "H_hat_Q_given_R_ci95": [
+    0.36203,
+    0.37621
+   ],
+   "H_hat_R_given_Q": 7.72736,
+   "H_hat_R": 12.30735,
+   "N_viol": 35532,
+   "adequate": false,
+   "n_fibers": 5696,
+   "max_fiber": 29,
+   "mean_fiber": 7.022,
+   "singleton_fibers": 301,
+   "conflicted_fibers": 1787,
+   "mean_encoded_bytes": 37.0,
+   "cardinality": 5696,
+   "fields_per_record": 2
+  },
+  "R3": {
+   "A_n": 1.0,
+   "F_n": 0.58062,
+   "F_argmax_component": 0.89533,
+   "F_decile_component": 0.6295,
+   "H_hat_Q_given_R": 0.85464,
+   "H_hat_Q_given_R_ci95": [
+    0.79045,
+    0.80742
+   ],
+   "H_hat_R_given_Q": 6.94209,
+   "H_hat_R": 11.09729,
+   "N_viol": 246235,
+   "adequate": false,
+   "n_fibers": 3288,
+   "max_fiber": 130,
+   "mean_fiber": 12.165,
+   "singleton_fibers": 166,
+   "conflicted_fibers": 1717,
+   "mean_encoded_bytes": 37.0,
+   "cardinality": 3288,
+   "fields_per_record": 2
+  },
+  "R2": {
+   "A_n": 1.0,
+   "F_n": 0.02538,
+   "F_argmax_component": 0.32303,
+   "F_decile_component": 0.04915,
+   "H_hat_Q_given_R": 3.39645,
+   "H_hat_Q_given_R_ci95": [
+    3.3473,
+    3.36756
+   ],
+   "H_hat_R_given_Q": 5.55024,
+   "H_hat_R": 7.16363,
+   "N_viol": 5577078,
+   "adequate": false,
+   "n_fibers": 162,
+   "max_fiber": 546,
+   "mean_fiber": 246.914,
+   "singleton_fibers": 0,
+   "conflicted_fibers": 162,
+   "mean_encoded_bytes": 25.0,
+   "cardinality": 162,
+   "fields_per_record": 2
+  }
+ },
+ "test_descending": {
+  "R5": {
+   "A_n": 1.0,
+   "F_n": 1.0,
+   "F_argmax_component": 1.0,
+   "F_decile_component": 1.0,
+   "H_hat_Q_given_R": 0.0,
+   "H_hat_Q_given_R_ci95": [
+    0.0,
+    0.0
+   ],
+   "H_hat_R_given_Q": 10.03438,
+   "H_hat_R": 15.04228,
+   "N_viol": 0,
+   "adequate": true,
+   "n_fibers": 26836,
+   "max_fiber": 7,
+   "mean_fiber": 1.491,
+   "singleton_fibers": 16967,
+   "conflicted_fibers": 0,
+   "mean_encoded_bytes": 37.0,
+   "cardinality": 26836,
+   "fields_per_record": 2
+  },
+  "R4": {
+   "A_n": 1.0,
+   "F_n": 0.76113,
+   "F_argmax_component": 0.92737,
+   "F_decile_component": 0.82288,
+   "H_hat_Q_given_R": 0.44084,
+   "H_hat_Q_given_R_ci95": [
+    0.36954,
+    0.38514
+   ],
+   "H_hat_R_given_Q": 7.7456,
+   "H_hat_R": 12.31266,
+   "N_viol": 36445,
+   "adequate": false,
+   "n_fibers": 5713,
+   "max_fiber": 31,
+   "mean_fiber": 7.002,
+   "singleton_fibers": 290,
+   "conflicted_fibers": 1832,
+   "mean_encoded_bytes": 37.0,
+   "cardinality": 5713,
+   "fields_per_record": 2
+  },
+  "R3": {
+   "A_n": 1.0,
+   "F_n": 0.58015,
+   "F_argmax_component": 0.89572,
+   "F_decile_component": 0.63008,
+   "H_hat_Q_given_R": 0.86775,
+   "H_hat_Q_given_R_ci95": [
+    0.80082,
+    0.82079
+   ],
+   "H_hat_R_given_Q": 6.95839,
+   "H_hat_R": 11.09854,
+   "N_viol": 243241,
+   "adequate": false,
+   "n_fibers": 3289,
+   "max_fiber": 123,
+   "mean_fiber": 12.162,
+   "singleton_fibers": 165,
+   "conflicted_fibers": 1750,
+   "mean_encoded_bytes": 37.0,
+   "cardinality": 3289,
+   "fields_per_record": 2
+  },
+  "R2": {
+   "A_n": 1.0,
+   "F_n": 0.02355,
+   "F_argmax_component": 0.3232,
+   "F_decile_component": 0.046,
+   "H_hat_Q_given_R": 3.39457,
+   "H_hat_Q_given_R_ci95": [
+    3.34714,
+    3.36813
+   ],
+   "H_hat_R_given_Q": 5.55647,
+   "H_hat_R": 7.16981,
+   "N_viol": 5524529,
+   "adequate": false,
+   "n_fibers": 162,
+   "max_fiber": 535,
+   "mean_fiber": 246.914,
+   "singleton_fibers": 0,
+   "conflicted_fibers": 162,
+   "mean_encoded_bytes": 25.0,
+   "cardinality": 162,
+   "fields_per_record": 2
+  }
+ },
+ "zero_probe_descending": [
+  {
+   "level": "R5",
+   "next": "R4",
+   "elimination_tests": 12000,
+   "zero_rate": 0.03767
+  },
+  {
+   "level": "R4",
+   "next": "R3",
+   "elimination_tests": 12000,
+   "zero_rate": 0.04258
+  },
+  {
+   "level": "R3",
+   "next": "R2",
+   "elimination_tests": 12000,
+   "zero_rate": 0.0
+  }
+ ]
+}

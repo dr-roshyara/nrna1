@@ -1,0 +1,574 @@
+[
+ {
+  "witness_kind": "order_matters",
+  "case": 6,
+  "T": "T4_context",
+  "Pi": "P7_contradiction",
+  "D": [
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ],
+  "simultaneous": [],
+  "forward": [
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ],
+  "reverse": [
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "order_matters",
+  "case": 8,
+  "T": "T4_context",
+  "Pi": "P7_contradiction",
+  "D": [
+   {
+    "token": "must",
+    "source": "S1",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "must",
+    "source": "S2",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "must",
+    "source": "S3",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   }
+  ],
+  "simultaneous": [],
+  "forward": [
+   {
+    "token": "must",
+    "source": "S3",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   }
+  ],
+  "reverse": [
+   {
+    "token": "must",
+    "source": "S1",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   }
+  ]
+ },
+ {
+  "witness_kind": "order_matters",
+  "case": 12,
+  "T": "T2_dedup",
+  "Pi": "P5_uncertainty",
+  "D": [
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ],
+  "simultaneous": [],
+  "forward": [
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ],
+  "reverse": [
+   {
+    "token": "and",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "order_matters",
+  "case": 13,
+  "T": "T8_interacting",
+  "Pi": "P3_required",
+  "D": [
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ],
+  "simultaneous": [],
+  "forward": [
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ],
+  "reverse": [
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "order_matters",
+  "case": 18,
+  "T": "T4_context",
+  "Pi": "P2_len",
+  "D": [
+   {
+    "token": "the",
+    "source": "S2",
+    "uncertainty": 0.23,
+    "scope": "in",
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": "S2",
+    "uncertainty": 0.65,
+    "scope": "in",
+    "polarity": true
+   },
+   {
+    "token": "key",
+    "source": "S3",
+    "uncertainty": 0.64,
+    "scope": "in",
+    "polarity": false
+   },
+   {
+    "token": "key",
+    "source": "S2",
+    "uncertainty": 0.38,
+    "scope": null,
+    "polarity": true
+   }
+  ],
+  "simultaneous": [],
+  "forward": [
+   {
+    "token": "the",
+    "source": "S2",
+    "uncertainty": 0.65,
+    "scope": "in",
+    "polarity": true
+   },
+   {
+    "token": "key",
+    "source": "S2",
+    "uncertainty": 0.38,
+    "scope": null,
+    "polarity": true
+   }
+  ],
+  "reverse": [
+   {
+    "token": "the",
+    "source": "S2",
+    "uncertainty": 0.23,
+    "scope": "in",
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": "S3",
+    "uncertainty": 0.64,
+    "scope": "in",
+    "polarity": false
+   }
+  ]
+ },
+ {
+  "witness_kind": "order_matters",
+  "case": 27,
+  "T": "T8_interacting",
+  "Pi": "P5_uncertainty",
+  "D": [
+   {
+    "token": "x",
+    "source": "S1",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "x",
+    "source": "S2",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "x",
+    "source": "S3",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   }
+  ],
+  "simultaneous": [],
+  "forward": [
+   {
+    "token": "x",
+    "source": "S3",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   }
+  ],
+  "reverse": [
+   {
+    "token": "x",
+    "source": "S1",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   }
+  ]
+ },
+ {
+  "witness_kind": "order_matters",
+  "case": 33,
+  "T": "T8_interacting",
+  "Pi": "P4_provenance",
+  "D": [
+   {
+    "token": "must",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "must",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ],
+  "simultaneous": [
+   {
+    "token": "must",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ],
+  "forward": [
+   {
+    "token": "must",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ],
+  "reverse": [
+   {
+    "token": "must",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "y",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "order_matters",
+  "case": 34,
+  "T": "T2_dedup",
+  "Pi": "P6_scope",
+  "D": [
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ],
+  "simultaneous": [],
+  "forward": [
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ],
+  "reverse": [
+   {
+    "token": "the",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "key",
+    "source": null,
+    "uncertainty": null,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ },
+ {
+  "witness_kind": "order_matters",
+  "case": 45,
+  "T": "T4_context",
+  "Pi": "P6_scope",
+  "D": [
+   {
+    "token": "c",
+    "source": "S1",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "c",
+    "source": "S2",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   },
+   {
+    "token": "c",
+    "source": "S3",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   }
+  ],
+  "simultaneous": [],
+  "forward": [
+   {
+    "token": "c",
+    "source": "S3",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   }
+  ],
+  "reverse": [
+   {
+    "token": "c",
+    "source": "S1",
+    "uncertainty": 0.5,
+    "scope": null,
+    "polarity": true
+   }
+  ]
+ },
+ {
+  "witness_kind": "order_matters",
+  "case": 50,
+  "T": "T8_interacting",
+  "Pi": "P7_contradiction",
+  "D": [
+   {
+    "token": "b",
+    "source": "S3",
+    "uncertainty": 0.54,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": "S3",
+    "uncertainty": 0.36,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": "S3",
+    "uncertainty": 0.72,
+    "scope": null,
+    "polarity": null
+   },
+   {
+    "token": "b",
+    "source": "S1",
+    "uncertainty": 0.19,
+    "scope": null,
+    "polarity": null
+   }
+  ],
+  "simultaneous": [],
+  "forward": [
+   {
+    "token": "b",
+    "source": "S1",
+    "uncertainty": 0.19,
+    "scope": null,
+    "polarity": null
+   }
+  ],
+  "reverse": [
+   {
+    "token": "b",
+    "source": "S3",
+    "uncertainty": 0.54,
+    "scope": null,
+    "polarity": null
+   }
+  ]
+ }
+]

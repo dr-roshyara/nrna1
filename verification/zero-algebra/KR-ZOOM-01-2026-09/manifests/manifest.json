@@ -1,0 +1,31 @@
+{
+ "experiment_id": "KR-ZOOM-01",
+ "seeds": {
+  "train": 20260904,
+  "test": 88020260904
+ },
+ "n_roots": 300,
+ "max_depth": 4,
+ "focus_primary": [
+  "INTERNAL",
+  "EVIDENCE",
+  "CONTEXT"
+ ],
+ "focus_contrast": [
+  "INTERNAL",
+  "EVIDENCE",
+  "HISTORY"
+ ],
+ "Q_reads": [
+  "INTERNAL",
+  "EVIDENCE"
+ ],
+ "directions": [
+  "INWARD",
+  "OUTWARD",
+  "RETROSPECTIVE",
+  "PROSPECTIVE"
+ ],
+ "python": "3.13.2",
+ "rows": 18042
+}

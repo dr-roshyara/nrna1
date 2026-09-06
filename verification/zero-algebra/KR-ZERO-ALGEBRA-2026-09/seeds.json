@@ -1,0 +1,21 @@
+{
+ "base_seed": 20260902,
+ "per_family_offsets": {
+  "E0_vacuity": 20260902,
+  "E1_path_a_vs_b": 20260903,
+  "E2_idempotence": 20260904,
+  "E3_order_independence": 20260905,
+  "E4_fixed_point": 20260906,
+  "E6_elimination_order": 20260907,
+  "E7_contract_sensitivity": 20260908,
+  "E8_boundary_preservation": 20260909,
+  "E9_group_zero": 20260910,
+  "E10_reference": 20260911,
+  "E11_invariant_vs_zero": 20260912,
+  "E12_remainder": 20260913,
+  "E13_regimes": 20260914
+ },
+ "cases_per_family": 1200,
+ "generator": "generators.corpus(n, seed)",
+ "deterministic": true
+}

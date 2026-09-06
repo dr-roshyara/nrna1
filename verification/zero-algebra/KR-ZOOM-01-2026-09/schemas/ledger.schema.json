@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KR-ZOOM-01 ledger row",
+  "type": "object",
+  "required": ["experiment_id", "case_id"],
+  "properties": {
+    "experiment_id": {"const": "KR-ZOOM-01"},
+    "split": {"enum": ["train", "test", "contrast"]},
+    "case_id": {"type": "string"},
+    "record": {"enum": ["PATH", "CF", "CONTRAST", "CONTROLS"]},
+    "resolution_level": {"type": "integer", "minimum": 0},
+    "state_id": {"type": "string"},
+    "parent_state_id": {"type": ["string", "null"]},
+    "query_id": {"type": "string"},
+    "contract_id": {"type": "string"},
+    "focus_set": {"type": "array", "items": {"type": "string"}},
+    "active_dimensions": {"type": "array", "items": {"type": "string"}},
+    "excluded_dimensions": {
+      "type": "array", "items": {"type": "string"},
+      "description": "EXCLUDED, not Zero. Exclusion never implies a Zero verdict (spec 2)."
+    },
+    "observed_value": {"type": "string"},
+    "anchor_dim": {"type": ["string", "null"]},
+    "traversal_direction": {"enum": ["INWARD", "OUTWARD", "RETROSPECTIVE", "PROSPECTIVE"]},
+    "next_state_id": {"type": ["string", "null"]},
+    "newly_exposed_dimensions": {
+      "type": "array", "items": {"type": "string"},
+      "description": "DESCRIPTIVE ONLY. Visibility is not relevance; relevance requires zero_tests."
+    },
+    "exposed_relation_kind": {"enum": ["STRUCTURAL", "CONTEXTUAL", "HISTORICAL", "CONSEQUENTIAL"]},
+    "zero_tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["dimension", "intervention_method", "observable_equal", "zero_at_current_resolution"],
+        "properties": {
+          "dimension": {"type": "string"},
+          "intervention_method": {"const": "typed_elimination_E_minus"},
+          "observable_before": {"type": "string"},
+          "observable_after": {"type": "string"},
+          "observable_equal": {"type": "boolean"},
+          "zero_at_current_resolution": {"type": "boolean"}
+        }
+      }
+    },
+    "atomicity_status": {"enum": ["ATOMIC", "NON_ATOMIC"]},
+    "q_reconstruction": {
+      "type": "object",
+      "properties": {"observed": {"type": "boolean"}, "value": {"type": "string"},
+                     "equal_to_x_r": {"type": "boolean"}}
+    },
+    "path_comparison": {
+      "type": ["object", "null"],
+      "properties": {
+        "final_state_equal": {"type": "boolean"},
+        "observable_equal": {"type": "boolean"},
+        "intermediate_state_equal": {"type": "boolean"},
+        "relation_set_equal": {"type": "boolean"}
+      },
+      "description": "FOUR separate equalities. Never collapsed into one commutativity metric."
+    },
+    "anchor_class": {"enum": ["ANCHOR", "NON_ANCHOR"]},
+    "rebasing_observed": {"type": "boolean"},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}}
+  },
+  "not": {"required": ["determination_score"]},
+  "additionalProperties": true
+}

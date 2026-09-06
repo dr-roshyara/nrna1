@@ -1,0 +1,194 @@
+{
+ "A1_M0": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 18,
+  "constant_value": null,
+  "HAS_VARIATION_WITNESS": true,
+  "witness": {
+   "theta": "{'n_dims': 8, 'subjects': (3, 4), 'value_alphabet': 4}",
+   "value": 0.3006993006993007,
+   "theta_prime": "{'n_dims': 6, 'subjects': (1, 2), 'value_alphabet': 3}",
+   "value_prime": 0.5928571428571429
+  },
+  "declared": "variable",
+  "OF_STAR": "PASS"
+ },
+ "A1_M1": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 7,
+  "constant_value": null,
+  "HAS_VARIATION_WITNESS": true,
+  "witness": {
+   "theta": "{'n_dims': 4, 'subjects': (1, 2), 'value_alphabet': 4}",
+   "value": 0.0,
+   "theta_prime": "{'n_dims': 8, 'subjects': (3, 4), 'value_alphabet': 4}",
+   "value_prime": 0.02097902097902098
+  },
+  "declared": "variable",
+  "OF_STAR": "PASS"
+ },
+ "A1_MX": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 18,
+  "constant_value": null,
+  "HAS_VARIATION_WITNESS": true,
+  "witness": {
+   "theta": "{'n_dims': 6, 'subjects': (3, 4), 'value_alphabet': 4}",
+   "value": 0.12352941176470589,
+   "theta_prime": "{'n_dims': 8, 'subjects': (3, 4), 'value_alphabet': 3}",
+   "value_prime": 0.2708333333333333
+  },
+  "declared": "variable",
+  "OF_STAR": "PASS"
+ },
+ "A3_P_det": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 12,
+  "constant_value": null,
+  "HAS_VARIATION_WITNESS": true,
+  "witness": {
+   "theta": "{'n_dims': 8, 'subjects': (2, 3), 'value_alphabet': 4}",
+   "value": 0.3375,
+   "theta_prime": "{'n_dims': 6, 'subjects': (3, 4), 'value_alphabet': 4}",
+   "value_prime": 0.425
+  },
+  "declared": "variable",
+  "OF_STAR": "PASS"
+ },
+ "A5_loss_given_det_pre": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 1,
+  "constant_value": 0.0,
+  "HAS_VARIATION_WITNESS": false,
+  "witness": null,
+  "declared": "variable",
+  "OF_STAR": "FAIL \u2014 declared variable, no witness"
+ },
+ "DELTA_loss": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 1,
+  "constant_value": 0.0,
+  "HAS_VARIATION_WITNESS": false,
+  "witness": null,
+  "declared": "variable",
+  "OF_STAR": "FAIL \u2014 declared variable, no witness"
+ },
+ "A4_gain": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 27,
+  "constant_value": null,
+  "HAS_VARIATION_WITNESS": true,
+  "witness": {
+   "theta": "{'n_dims': 8, 'subjects': (3, 4), 'value_alphabet': 3}",
+   "value": 0.035398230088495575,
+   "theta_prime": "{'n_dims': 8, 'subjects': (1, 2), 'value_alphabet': 6}",
+   "value_prime": 0.18461538461538463
+  },
+  "declared": "variable",
+  "OF_STAR": "PASS"
+ },
+ "A4_null_gain": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 1,
+  "constant_value": 0.0,
+  "HAS_VARIATION_WITNESS": false,
+  "witness": null,
+  "declared": "constant",
+  "OF_STAR": "PASS"
+ },
+ "S_Sprime_i_shift": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 27,
+  "constant_value": null,
+  "HAS_VARIATION_WITNESS": true,
+  "witness": {
+   "theta": "{'n_dims': 4, 'subjects': (3, 4), 'value_alphabet': 6}",
+   "value": 0.009297520661157022,
+   "theta_prime": "{'n_dims': 8, 'subjects': (2, 3), 'value_alphabet': 3}",
+   "value_prime": 0.20149253731343283
+  },
+  "declared": "variable",
+  "OF_STAR": "PASS"
+ },
+ "S_Sprime_ii_diff": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 1,
+  "constant_value": 0.0,
+  "HAS_VARIATION_WITNESS": false,
+  "witness": null,
+  "declared": "variable",
+  "OF_STAR": "FAIL \u2014 declared variable, no witness"
+ },
+ "OA_structural": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 1,
+  "constant_value": 1.0,
+  "HAS_VARIATION_WITNESS": false,
+  "witness": null,
+  "declared": "constant",
+  "OF_STAR": "PASS"
+ },
+ "OA_observable": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 1,
+  "constant_value": 1.0,
+  "HAS_VARIATION_WITNESS": false,
+  "witness": null,
+  "declared": "constant",
+  "OF_STAR": "PASS"
+ },
+ "OA_contract_semantic": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 1,
+  "constant_value": 1.0,
+  "HAS_VARIATION_WITNESS": false,
+  "witness": null,
+  "declared": "constant",
+  "OF_STAR": "PASS"
+ },
+ "OA_historical_provenance": {
+  "n_grid_points": 27,
+  "n_evaluable": 27,
+  "distinct_values": 1,
+  "constant_value": 1.0,
+  "HAS_VARIATION_WITNESS": false,
+  "witness": null,
+  "declared": "constant",
+  "OF_STAR": "PASS"
+ },
+ "_verdict": {
+  "rule": "O-F*: every reported/adjudicating quantity needs a pre-execution variation witness",
+  "grid": "KR-ZOOM-OUT-03 frozen 27-point grid",
+  "seed": 66620260905,
+  "n_per_point": 400,
+  "n_estimands": 14,
+  "n_OF_STAR_FAIL": 3,
+  "OF_STAR_FAILURES": [
+   "A5_loss_given_det_pre",
+   "DELTA_loss",
+   "S_Sprime_ii_diff"
+  ],
+  "declared_constant_exempt": [
+   "A4_null_gain",
+   "OA_structural",
+   "OA_observable",
+   "OA_contract_semantic",
+   "OA_historical_provenance"
+  ],
+  "OF_STAR_VERDICT": "FAIL \u2014 the experiment would NOT have been authorized",
+  "retrospective_validation": "would O-F* have caught what execution revealed?"
+ }
+}

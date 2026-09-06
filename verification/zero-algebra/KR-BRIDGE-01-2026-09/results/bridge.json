@@ -1,0 +1,564 @@
+{
+ "_meta": {
+  "experiment_id": "KR-BRIDGE-01-ZERO-PRESERVATION-2026-09",
+  "theory": "v1.2 FROZEN",
+  "kernel": "NOT SELECTED",
+  "algebra": "none",
+  "seeds": {
+   "train": 20260904,
+   "test": 88020260904
+  },
+  "n_cases": 25000,
+  "S_sizes": [
+   1,
+   2
+  ],
+  "date": "2026-09-04",
+  "python": "3.13.2"
+ },
+ "controls": {
+  "CONTROL_A_preserving_is_adequate": {
+   "rate": 1.0,
+   "PASS": true
+  },
+  "CONTROL_B_destroying_is_inadequate": {
+   "rate": 0.0,
+   "PASS": true
+  },
+  "CONTROL_C_invertible_recoding_matches_A": {
+   "A_rate": 1.0,
+   "G_rate": 1.0,
+   "PASS": true,
+   "note": "T_G shifts every value by +100 -- an invertible recoding; adequacy must be identical"
+  },
+  "CONTROL_E_preservation_test_detects_loss": {
+   "PASS": true,
+   "note": "the adequacy test must separate the preserving from the destroying control"
+  },
+  "CONTROL_F_zero_test_detects_differences": {
+   "zero_counts_by_T": {
+    "T_A_preserving": 0,
+    "T_B_lossy": 0,
+    "T_C_dedup": 6884,
+    "T_D_relational": 0,
+    "T_E_dedup_lossy": 6884,
+    "T_F_destroying": 0,
+    "T_G_recoding": 0
+   },
+   "PASS": true,
+   "note": "Zero must fire for some transformations and not others"
+  },
+  "CONTROL_D_zero_varies_independently": {
+   "note": "assessed from the four-way table: all four cells non-empty",
+   "PASS": true
+  }
+ },
+ "label_verification_train": {
+  "T_A_preserving": {
+   "observed_adequacy": 1.0,
+   "expected": "high",
+   "adequacy_label_holds": true,
+   "observed_zero_rate": 0.0,
+   "expected_zero": "rare",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": false
+  },
+  "T_B_lossy": {
+   "observed_adequacy": 0.09164,
+   "expected": "low",
+   "adequacy_label_holds": false,
+   "observed_zero_rate": 0.0,
+   "expected_zero": "rare",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": true
+  },
+  "T_C_dedup": {
+   "observed_adequacy": 0.32544,
+   "expected": "varies",
+   "adequacy_label_holds": true,
+   "observed_zero_rate": 0.35241,
+   "expected_zero": "common",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": false
+  },
+  "T_D_relational": {
+   "observed_adequacy": 0.34696,
+   "expected": "varies",
+   "adequacy_label_holds": true,
+   "observed_zero_rate": 0.0,
+   "expected_zero": "varies",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": false
+  },
+  "T_E_dedup_lossy": {
+   "observed_adequacy": 0.00256,
+   "expected": "low",
+   "adequacy_label_holds": true,
+   "observed_zero_rate": 0.35241,
+   "expected_zero": "common",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": false
+  },
+  "T_F_destroying": {
+   "observed_adequacy": 0.0,
+   "expected": "low",
+   "adequacy_label_holds": true,
+   "observed_zero_rate": 0.0,
+   "expected_zero": "varies",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": false
+  },
+  "T_G_recoding": {
+   "observed_adequacy": 1.0,
+   "expected": "high",
+   "adequacy_label_holds": true,
+   "observed_zero_rate": 0.0,
+   "expected_zero": "rare",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": false
+  }
+ },
+ "label_verification_test": {
+  "T_A_preserving": {
+   "observed_adequacy": 1.0,
+   "expected": "high",
+   "adequacy_label_holds": true,
+   "observed_zero_rate": 0.0,
+   "expected_zero": "rare",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": false
+  },
+  "T_B_lossy": {
+   "observed_adequacy": 0.10144,
+   "expected": "low",
+   "adequacy_label_holds": false,
+   "observed_zero_rate": 0.0,
+   "expected_zero": "rare",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": true
+  },
+  "T_C_dedup": {
+   "observed_adequacy": 0.31784,
+   "expected": "varies",
+   "adequacy_label_holds": true,
+   "observed_zero_rate": 0.35189,
+   "expected_zero": "common",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": false
+  },
+  "T_D_relational": {
+   "observed_adequacy": 0.33776,
+   "expected": "varies",
+   "adequacy_label_holds": true,
+   "observed_zero_rate": 0.0,
+   "expected_zero": "varies",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": false
+  },
+  "T_E_dedup_lossy": {
+   "observed_adequacy": 0.0018,
+   "expected": "low",
+   "adequacy_label_holds": true,
+   "observed_zero_rate": 0.35189,
+   "expected_zero": "common",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": false
+  },
+  "T_F_destroying": {
+   "observed_adequacy": 0.0,
+   "expected": "low",
+   "adequacy_label_holds": true,
+   "observed_zero_rate": 0.0,
+   "expected_zero": "varies",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": false
+  },
+  "T_G_recoding": {
+   "observed_adequacy": 1.0,
+   "expected": "high",
+   "adequacy_label_holds": true,
+   "observed_zero_rate": 0.0,
+   "expected_zero": "rare",
+   "zero_label_holds": true,
+   "LABEL_MISMATCH": false
+  }
+ },
+ "cell_imbalance": {
+  "achieved_cells_train": {
+   "NZ+A": 679604,
+   "NZ+I": 894192,
+   "Z+A": 12046,
+   "Z+I": 164158
+  },
+  "achieved_cells_test": {
+   "NZ+A": 678436,
+   "NZ+I": 895620,
+   "Z+I": 164670,
+   "Z+A": 11274
+  },
+  "empty_cells": [],
+  "rule": "the generator was NOT tuned to balance cells; imbalance is reported with its structural cause, not corrected"
+ },
+ "train": {
+  "T_A_preserving": {
+   "cells": {
+    "NZ+A": 250000
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "by_S_size": {
+    "1": {
+     "NZ+A": 100000
+    },
+    "2": {
+     "NZ+A": 150000
+    }
+   },
+   "n_distinct_representations": 12797
+  },
+  "T_B_lossy": {
+   "cells": {
+    "NZ+I": 227090,
+    "NZ+A": 22910
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 0.09164,
+   "zero_rate": 0.0,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.09164,
+   "risk_difference": null,
+   "by_S_size": {
+    "1": {
+     "NZ+I": 90836,
+     "NZ+A": 9164
+    },
+    "2": {
+     "NZ+I": 136254,
+     "NZ+A": 13746
+    }
+   },
+   "n_distinct_representations": 4082
+  },
+  "T_C_dedup": {
+   "cells": {
+    "Z+A": 12046,
+    "NZ+A": 69314,
+    "Z+I": 76056,
+    "NZ+I": 92584
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 0.32544,
+   "zero_rate": 0.35241,
+   "P_A_given_Z": 0.13673,
+   "P_A_given_NZ": 0.42813,
+   "risk_difference": -0.29141,
+   "by_S_size": {
+    "1": {
+     "Z+A": 11860,
+     "NZ+A": 20684,
+     "Z+I": 46030,
+     "NZ+I": 21426
+    },
+    "2": {
+     "NZ+A": 48630,
+     "NZ+I": 71158,
+     "Z+I": 30026,
+     "Z+A": 186
+    }
+   },
+   "n_distinct_representations": 7469
+  },
+  "T_D_relational": {
+   "cells": {
+    "NZ+I": 163260,
+    "NZ+A": 86740
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 0.34696,
+   "zero_rate": 0.0,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.34696,
+   "risk_difference": null,
+   "by_S_size": {
+    "1": {
+     "NZ+I": 65304,
+     "NZ+A": 34696
+    },
+    "2": {
+     "NZ+I": 97956,
+     "NZ+A": 52044
+    }
+   },
+   "n_distinct_representations": 7416
+  },
+  "T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 88102,
+    "NZ+I": 161258,
+    "NZ+A": 640
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 0.00256,
+   "zero_rate": 0.35241,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.00395,
+   "risk_difference": -0.00395,
+   "by_S_size": {
+    "1": {
+     "Z+I": 57890,
+     "NZ+I": 41854,
+     "NZ+A": 256
+    },
+    "2": {
+     "NZ+I": 119404,
+     "Z+I": 30212,
+     "NZ+A": 384
+    }
+   },
+   "n_distinct_representations": 632
+  },
+  "T_F_destroying": {
+   "cells": {
+    "NZ+I": 250000
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "by_S_size": {
+    "1": {
+     "NZ+I": 100000
+    },
+    "2": {
+     "NZ+I": 150000
+    }
+   },
+   "n_distinct_representations": 1
+  },
+  "T_G_recoding": {
+   "cells": {
+    "NZ+A": 250000
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "by_S_size": {
+    "1": {
+     "NZ+A": 100000
+    },
+    "2": {
+     "NZ+A": 150000
+    }
+   },
+   "n_distinct_representations": 24115
+  }
+ },
+ "test": {
+  "T_A_preserving": {
+   "cells": {
+    "NZ+A": 250000
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "by_S_size": {
+    "1": {
+     "NZ+A": 100000
+    },
+    "2": {
+     "NZ+A": 150000
+    }
+   },
+   "n_distinct_representations": 12685
+  },
+  "T_B_lossy": {
+   "cells": {
+    "NZ+I": 224640,
+    "NZ+A": 25360
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 0.10144,
+   "zero_rate": 0.0,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.10144,
+   "risk_difference": null,
+   "by_S_size": {
+    "1": {
+     "NZ+I": 89856,
+     "NZ+A": 10144
+    },
+    "2": {
+     "NZ+I": 134784,
+     "NZ+A": 15216
+    }
+   },
+   "n_distinct_representations": 4085
+  },
+  "T_C_dedup": {
+   "cells": {
+    "NZ+I": 93842,
+    "Z+I": 76698,
+    "Z+A": 11274,
+    "NZ+A": 68186
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 0.31784,
+   "zero_rate": 0.35189,
+   "P_A_given_Z": 0.12815,
+   "P_A_given_NZ": 0.42083,
+   "risk_difference": -0.29267,
+   "by_S_size": {
+    "1": {
+     "NZ+I": 21721,
+     "Z+I": 46495,
+     "Z+A": 11232,
+     "NZ+A": 20552
+    },
+    "2": {
+     "NZ+I": 72121,
+     "NZ+A": 47634,
+     "Z+I": 30203,
+     "Z+A": 42
+    }
+   },
+   "n_distinct_representations": 7582
+  },
+  "T_D_relational": {
+   "cells": {
+    "NZ+I": 165560,
+    "NZ+A": 84440
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 0.33776,
+   "zero_rate": 0.0,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.33776,
+   "risk_difference": null,
+   "by_S_size": {
+    "1": {
+     "NZ+I": 66224,
+     "NZ+A": 33776
+    },
+    "2": {
+     "NZ+I": 99336,
+     "NZ+A": 50664
+    }
+   },
+   "n_distinct_representations": 7397
+  },
+  "T_E_dedup_lossy": {
+   "cells": {
+    "NZ+I": 161578,
+    "Z+I": 87972,
+    "NZ+A": 450
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 0.0018,
+   "zero_rate": 0.35189,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.00278,
+   "risk_difference": -0.00278,
+   "by_S_size": {
+    "1": {
+     "NZ+I": 42093,
+     "Z+I": 57727,
+     "NZ+A": 180
+    },
+    "2": {
+     "NZ+I": 119485,
+     "Z+I": 30245,
+     "NZ+A": 270
+    }
+   },
+   "n_distinct_representations": 631
+  },
+  "T_F_destroying": {
+   "cells": {
+    "NZ+I": 250000
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "by_S_size": {
+    "1": {
+     "NZ+I": 100000
+    },
+    "2": {
+     "NZ+I": 150000
+    }
+   },
+   "n_distinct_representations": 1
+  },
+  "T_G_recoding": {
+   "cells": {
+    "NZ+A": 250000
+   },
+   "n_obs": 250000,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "by_S_size": {
+    "1": {
+     "NZ+A": 100000
+    },
+    "2": {
+     "NZ+A": 150000
+    }
+   },
+   "n_distinct_representations": 24103
+  }
+ },
+ "pooled_train": {
+  "cells": {
+   "NZ+A": 679604,
+   "NZ+I": 894192,
+   "Z+A": 12046,
+   "Z+I": 164158
+  },
+  "n": 1750000,
+  "P_A_given_Z": 0.06836,
+  "P_A_given_NZ": 0.43182,
+  "risk_difference": -0.36346,
+  "odds_ratio": 0.0966,
+  "log_or_ci95": [
+   0.0948,
+   0.0984
+  ],
+  "note": "Haldane +0.5 correction; CI is Woolf on log-OR"
+ },
+ "pooled_test": {
+  "cells": {
+   "NZ+A": 678436,
+   "NZ+I": 895620,
+   "Z+I": 164670,
+   "Z+A": 11274
+  },
+  "n": 1750000,
+  "P_A_given_Z": 0.06408,
+  "P_A_given_NZ": 0.43101,
+  "risk_difference": -0.36693,
+  "odds_ratio": 0.0904,
+  "log_or_ci95": [
+   0.0887,
+   0.0921
+  ],
+  "note": "Haldane +0.5 correction; CI is Woolf on log-OR"
+ }
+}

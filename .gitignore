@@ -30,3 +30,7 @@ storage/framework/
 /.deptrac.cache
 /build/
 .claude/runtime/
+
+# Python bytecode from research experiment code
+__pycache__/
+*.pyc

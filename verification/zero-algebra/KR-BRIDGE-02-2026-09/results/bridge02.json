@@ -1,0 +1,9232 @@
+{
+ "_meta": {
+  "experiment_id": "KR-BRIDGE-02-ZERO-PRESERVATION-PI-Q-2026-09",
+  "extends": "KR-BRIDGE-01-ZERO-PRESERVATION-2026-09 (OUTCOME A)",
+  "closes": "Q4 / Q5 / Q10 of KR-BRIDGE-01 \u00a7C",
+  "theory": "v1.2 FROZEN",
+  "kernel": "NOT SELECTED",
+  "algebra": "none",
+  "carrier": "EXPERIMENTAL ONLY \u2014 not declared",
+  "seeds": {
+   "train": 20260904,
+   "test": 88020260904
+  },
+  "n_cases": 8000,
+  "S_sizes": [
+   1,
+   2
+  ],
+  "n_Pi": 5,
+  "n_Q": 5,
+  "n_T": 7,
+  "date": "2026-09-04",
+  "python": "3.13.2"
+ },
+ "controls": {
+  "CONTROL_G_disjointness_gate_bites": {
+   "n_admissible": 16,
+   "n_blocked": 9,
+   "PASS": true,
+   "note": "if the gate blocked nothing it would not be a gate"
+  },
+  "CONTROL_H_Pi_varies_zero": {
+   "distinct_zero_rates_per_Pi": {
+    "Pi_value_multiset": 2,
+    "Pi_value_set": 3,
+    "Pi_tag_multiset": 3,
+    "Pi_source_multiset": 3,
+    "Pi_arity": 2
+   },
+   "PASS": true,
+   "note": "different Pi must produce different Zero behaviour, else Pi is inert"
+  },
+  "CONTROL_I_Q_varies_adequacy": {
+   "distinct_adequacy_rates_per_Q": {
+    "Q_argmax_ntags": 6,
+    "Q_source_set": 5,
+    "Q_majtag_total": 5,
+    "Q_max_value": 3,
+    "Q_tag_set": 4
+   },
+   "PASS": true,
+   "note": "different Q must produce different adequacy, else Q is inert"
+  },
+  "CONTROL_A_preserving_is_adequate": {
+   "rate": 1.0,
+   "PASS": true
+  },
+  "CONTROL_B_destroying_is_inadequate": {
+   "rate": 0.0,
+   "PASS": true
+  },
+  "CONTROL_C_invertible_recoding_matches_A": {
+   "A_rate": 1.0,
+   "G_rate": 1.0,
+   "PASS": true
+  },
+  "CONTROL_E_test_separates_A_from_F": {
+   "PASS": true
+  }
+ },
+ "adjudication": {
+  "n_admissible_cells": 112,
+  "n_degenerate_cells": 71,
+  "degenerate_cells": [
+   "Pi_value_multiset|Q_argmax_ntags|T_A_preserving",
+   "Pi_value_multiset|Q_argmax_ntags|T_B_lossy",
+   "Pi_value_multiset|Q_argmax_ntags|T_D_relational",
+   "Pi_value_multiset|Q_argmax_ntags|T_F_destroying",
+   "Pi_value_multiset|Q_argmax_ntags|T_G_recoding",
+   "Pi_value_multiset|Q_source_set|T_A_preserving",
+   "Pi_value_multiset|Q_source_set|T_B_lossy",
+   "Pi_value_multiset|Q_source_set|T_D_relational",
+   "Pi_value_multiset|Q_source_set|T_F_destroying",
+   "Pi_value_multiset|Q_source_set|T_G_recoding",
+   "Pi_value_multiset|Q_tag_set|T_A_preserving",
+   "Pi_value_multiset|Q_tag_set|T_B_lossy",
+   "Pi_value_multiset|Q_tag_set|T_D_relational",
+   "Pi_value_multiset|Q_tag_set|T_F_destroying",
+   "Pi_value_multiset|Q_tag_set|T_G_recoding",
+   "Pi_value_set|Q_argmax_ntags|T_F_destroying",
+   "Pi_value_set|Q_source_set|T_F_destroying",
+   "Pi_value_set|Q_tag_set|T_F_destroying",
+   "Pi_tag_multiset|Q_source_set|T_A_preserving",
+   "Pi_tag_multiset|Q_source_set|T_B_lossy",
+   "Pi_tag_multiset|Q_source_set|T_D_relational",
+   "Pi_tag_multiset|Q_source_set|T_F_destroying",
+   "Pi_tag_multiset|Q_source_set|T_G_recoding",
+   "Pi_tag_multiset|Q_max_value|T_A_preserving",
+   "Pi_tag_multiset|Q_max_value|T_B_lossy",
+   "Pi_tag_multiset|Q_max_value|T_D_relational",
+   "Pi_tag_multiset|Q_max_value|T_F_destroying",
+   "Pi_tag_multiset|Q_max_value|T_G_recoding",
+   "Pi_source_multiset|Q_majtag_total|T_A_preserving",
+   "Pi_source_multiset|Q_majtag_total|T_B_lossy",
+   "Pi_source_multiset|Q_majtag_total|T_D_relational",
+   "Pi_source_multiset|Q_majtag_total|T_E_dedup_lossy",
+   "Pi_source_multiset|Q_majtag_total|T_F_destroying",
+   "Pi_source_multiset|Q_majtag_total|T_G_recoding",
+   "Pi_source_multiset|Q_max_value|T_A_preserving",
+   "Pi_source_multiset|Q_max_value|T_B_lossy",
+   "Pi_source_multiset|Q_max_value|T_D_relational",
+   "Pi_source_multiset|Q_max_value|T_E_dedup_lossy",
+   "Pi_source_multiset|Q_max_value|T_F_destroying",
+   "Pi_source_multiset|Q_max_value|T_G_recoding",
+   "Pi_source_multiset|Q_tag_set|T_A_preserving",
+   "Pi_source_multiset|Q_tag_set|T_B_lossy",
+   "Pi_source_multiset|Q_tag_set|T_D_relational",
+   "Pi_source_multiset|Q_tag_set|T_E_dedup_lossy",
+   "Pi_source_multiset|Q_tag_set|T_F_destroying",
+   "Pi_source_multiset|Q_tag_set|T_G_recoding",
+   "Pi_arity|Q_argmax_ntags|T_A_preserving",
+   "Pi_arity|Q_argmax_ntags|T_B_lossy",
+   "Pi_arity|Q_argmax_ntags|T_D_relational",
+   "Pi_arity|Q_argmax_ntags|T_F_destroying",
+   "Pi_arity|Q_argmax_ntags|T_G_recoding",
+   "Pi_arity|Q_source_set|T_A_preserving",
+   "Pi_arity|Q_source_set|T_B_lossy",
+   "Pi_arity|Q_source_set|T_D_relational",
+   "Pi_arity|Q_source_set|T_F_destroying",
+   "Pi_arity|Q_source_set|T_G_recoding",
+   "Pi_arity|Q_majtag_total|T_A_preserving",
+   "Pi_arity|Q_majtag_total|T_B_lossy",
+   "Pi_arity|Q_majtag_total|T_D_relational",
+   "Pi_arity|Q_majtag_total|T_F_destroying",
+   "Pi_arity|Q_majtag_total|T_G_recoding",
+   "Pi_arity|Q_max_value|T_A_preserving",
+   "Pi_arity|Q_max_value|T_B_lossy",
+   "Pi_arity|Q_max_value|T_D_relational",
+   "Pi_arity|Q_max_value|T_F_destroying",
+   "Pi_arity|Q_max_value|T_G_recoding",
+   "Pi_arity|Q_tag_set|T_A_preserving",
+   "Pi_arity|Q_tag_set|T_B_lossy",
+   "Pi_arity|Q_tag_set|T_D_relational",
+   "Pi_arity|Q_tag_set|T_F_destroying",
+   "Pi_arity|Q_tag_set|T_G_recoding"
+  ],
+  "n_nonzero_RD_train": 27,
+  "replicating": [
+   {
+    "key": "Pi_value_multiset|Q_argmax_ntags|T_C_dedup",
+    "rd_train": -0.36733,
+    "rd_test": -0.36214,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_multiset|Q_argmax_ntags|T_E_dedup_lossy",
+    "rd_train": -0.04159,
+    "rd_test": -0.03643,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_multiset|Q_source_set|T_C_dedup",
+    "rd_train": -0.39904,
+    "rd_test": -0.38968,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_multiset|Q_source_set|T_E_dedup_lossy",
+    "rd_train": -0.03485,
+    "rd_test": -0.04091,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_multiset|Q_tag_set|T_C_dedup",
+    "rd_train": -0.18215,
+    "rd_test": -0.174,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_multiset|Q_tag_set|T_E_dedup_lossy",
+    "rd_train": -0.17958,
+    "rd_test": -0.1765,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_argmax_ntags|T_B_lossy",
+    "rd_train": 0.08992,
+    "rd_test": 0.07858,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_argmax_ntags|T_C_dedup",
+    "rd_train": -0.36733,
+    "rd_test": -0.36214,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_argmax_ntags|T_D_relational",
+    "rd_train": -0.15506,
+    "rd_test": -0.15178,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_argmax_ntags|T_E_dedup_lossy",
+    "rd_train": -0.04159,
+    "rd_test": -0.03643,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_source_set|T_B_lossy",
+    "rd_train": -0.00572,
+    "rd_test": -0.00682,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_source_set|T_C_dedup",
+    "rd_train": -0.39904,
+    "rd_test": -0.38968,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_source_set|T_E_dedup_lossy",
+    "rd_train": -0.03485,
+    "rd_test": -0.04091,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_tag_set|T_C_dedup",
+    "rd_train": -0.18215,
+    "rd_test": -0.174,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_tag_set|T_E_dedup_lossy",
+    "rd_train": -0.17958,
+    "rd_test": -0.1765,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_tag_multiset|Q_source_set|T_C_dedup",
+    "rd_train": -0.3369,
+    "rd_test": -0.33417,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_tag_multiset|Q_source_set|T_E_dedup_lossy",
+    "rd_train": -0.03036,
+    "rd_test": -0.03574,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_source_multiset|Q_majtag_total|T_C_dedup",
+    "rd_train": -0.26767,
+    "rd_test": -0.26374,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_source_multiset|Q_tag_set|T_C_dedup",
+    "rd_train": -0.1486,
+    "rd_test": -0.14168,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_argmax_ntags|T_C_dedup",
+    "rd_train": -0.36733,
+    "rd_test": -0.36214,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_argmax_ntags|T_E_dedup_lossy",
+    "rd_train": -0.04159,
+    "rd_test": -0.03643,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_source_set|T_C_dedup",
+    "rd_train": -0.39904,
+    "rd_test": -0.38968,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_source_set|T_E_dedup_lossy",
+    "rd_train": -0.03485,
+    "rd_test": -0.04091,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_majtag_total|T_C_dedup",
+    "rd_train": -0.32631,
+    "rd_test": -0.32594,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_majtag_total|T_E_dedup_lossy",
+    "rd_train": -0.13902,
+    "rd_test": -0.14061,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_tag_set|T_C_dedup",
+    "rd_train": -0.18215,
+    "rd_test": -0.174,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_tag_set|T_E_dedup_lossy",
+    "rd_train": -0.17958,
+    "rd_test": -0.1765,
+    "same_sign": true,
+    "within_0.05": true
+   }
+  ],
+  "non_replicating": [],
+  "VERDICT": "H2 SUPPORTED \u2014 a conditional bridge replicates",
+  "H3_directional": [
+   {
+    "key": "Pi_value_multiset|Q_argmax_ntags|T_C_dedup",
+    "rd_train": -0.36733,
+    "rd_test": -0.36214,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_multiset|Q_argmax_ntags|T_E_dedup_lossy",
+    "rd_train": -0.04159,
+    "rd_test": -0.03643,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_multiset|Q_source_set|T_C_dedup",
+    "rd_train": -0.39904,
+    "rd_test": -0.38968,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_multiset|Q_source_set|T_E_dedup_lossy",
+    "rd_train": -0.03485,
+    "rd_test": -0.04091,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_multiset|Q_tag_set|T_C_dedup",
+    "rd_train": -0.18215,
+    "rd_test": -0.174,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_multiset|Q_tag_set|T_E_dedup_lossy",
+    "rd_train": -0.17958,
+    "rd_test": -0.1765,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_argmax_ntags|T_C_dedup",
+    "rd_train": -0.36733,
+    "rd_test": -0.36214,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_argmax_ntags|T_E_dedup_lossy",
+    "rd_train": -0.04159,
+    "rd_test": -0.03643,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_source_set|T_C_dedup",
+    "rd_train": -0.39904,
+    "rd_test": -0.38968,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_source_set|T_E_dedup_lossy",
+    "rd_train": -0.03485,
+    "rd_test": -0.04091,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_tag_set|T_C_dedup",
+    "rd_train": -0.18215,
+    "rd_test": -0.174,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_value_set|Q_tag_set|T_E_dedup_lossy",
+    "rd_train": -0.17958,
+    "rd_test": -0.1765,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_tag_multiset|Q_source_set|T_C_dedup",
+    "rd_train": -0.3369,
+    "rd_test": -0.33417,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_tag_multiset|Q_source_set|T_E_dedup_lossy",
+    "rd_train": -0.03036,
+    "rd_test": -0.03574,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_source_multiset|Q_majtag_total|T_C_dedup",
+    "rd_train": -0.26767,
+    "rd_test": -0.26374,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_source_multiset|Q_tag_set|T_C_dedup",
+    "rd_train": -0.1486,
+    "rd_test": -0.14168,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_argmax_ntags|T_C_dedup",
+    "rd_train": -0.36733,
+    "rd_test": -0.36214,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_argmax_ntags|T_E_dedup_lossy",
+    "rd_train": -0.04159,
+    "rd_test": -0.03643,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_source_set|T_C_dedup",
+    "rd_train": -0.39904,
+    "rd_test": -0.38968,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_source_set|T_E_dedup_lossy",
+    "rd_train": -0.03485,
+    "rd_test": -0.04091,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_majtag_total|T_C_dedup",
+    "rd_train": -0.32631,
+    "rd_test": -0.32594,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_majtag_total|T_E_dedup_lossy",
+    "rd_train": -0.13902,
+    "rd_test": -0.14061,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_tag_set|T_C_dedup",
+    "rd_train": -0.18215,
+    "rd_test": -0.174,
+    "same_sign": true,
+    "within_0.05": true
+   },
+   {
+    "key": "Pi_arity|Q_tag_set|T_E_dedup_lossy",
+    "rd_train": -0.17958,
+    "rd_test": -0.1765,
+    "same_sign": true,
+    "within_0.05": true
+   }
+  ]
+ },
+ "admissible_pairs": [
+  {
+   "Pi": "Pi_value_multiset",
+   "Q": "Q_argmax_ntags",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_value_multiset",
+   "Q": "Q_source_set",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_value_multiset",
+   "Q": "Q_tag_set",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_value_set",
+   "Q": "Q_argmax_ntags",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_value_set",
+   "Q": "Q_source_set",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_value_set",
+   "Q": "Q_tag_set",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_tag_multiset",
+   "Q": "Q_source_set",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_tag_multiset",
+   "Q": "Q_max_value",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_source_multiset",
+   "Q": "Q_majtag_total",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_source_multiset",
+   "Q": "Q_max_value",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_source_multiset",
+   "Q": "Q_tag_set",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_arity",
+   "Q": "Q_argmax_ntags",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_arity",
+   "Q": "Q_source_set",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_arity",
+   "Q": "Q_majtag_total",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_arity",
+   "Q": "Q_max_value",
+   "shared_fields": []
+  },
+  {
+   "Pi": "Pi_arity",
+   "Q": "Q_tag_set",
+   "shared_fields": []
+  }
+ ],
+ "blocked_pairs": [
+  {
+   "Pi": "Pi_value_multiset",
+   "Q": "Q_majtag_total",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  {
+   "Pi": "Pi_value_multiset",
+   "Q": "Q_max_value",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  {
+   "Pi": "Pi_value_set",
+   "Q": "Q_majtag_total",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  {
+   "Pi": "Pi_value_set",
+   "Q": "Q_max_value",
+   "shared_fields": [
+    "v"
+   ]
+  },
+  {
+   "Pi": "Pi_tag_multiset",
+   "Q": "Q_argmax_ntags",
+   "shared_fields": [
+    "tag"
+   ]
+  },
+  {
+   "Pi": "Pi_tag_multiset",
+   "Q": "Q_majtag_total",
+   "shared_fields": [
+    "tag"
+   ]
+  },
+  {
+   "Pi": "Pi_tag_multiset",
+   "Q": "Q_tag_set",
+   "shared_fields": [
+    "tag"
+   ]
+  },
+  {
+   "Pi": "Pi_source_multiset",
+   "Q": "Q_argmax_ntags",
+   "shared_fields": [
+    "src"
+   ]
+  },
+  {
+   "Pi": "Pi_source_multiset",
+   "Q": "Q_source_set",
+   "shared_fields": [
+    "src"
+   ]
+  }
+ ],
+ "train": {
+  "Pi_value_multiset|Q_argmax_ntags|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_B_lossy": {
+   "cells": {
+    "NZ+I": 50630,
+    "NZ+A": 29370
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.36712,
+   "risk_difference": null,
+   "odds_ratio": 1.7239,
+   "or_ci95": [
+    0.0342,
+    86.8854
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.36712,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 2160,
+     "NZ+I": 5060,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 31610,
+     "NZ+A": 14140,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 11900,
+     "NZ+I": 13840,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1170,
+     "NZ+I": 120,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_C_dedup": {
+   "cells": {
+    "Z+A": 8028,
+    "NZ+A": 33932,
+    "Z+I": 20038,
+    "NZ+I": 18002
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.28604,
+   "P_A_given_NZ": 0.65337,
+   "risk_difference": -0.36733,
+   "odds_ratio": 0.2126,
+   "or_ci95": [
+    0.206,
+    0.2194
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.5245,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 6564,
+     "NZ+A": 26256,
+     "Z+I": 2586,
+     "NZ+I": 10344,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 16672,
+     "NZ+I": 7658,
+     "Z+A": 954,
+     "NZ+A": 456,
+     "risk_difference": -0.00207
+    },
+    "3": {
+     "Z+I": 780,
+     "Z+A": 510,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_D_relational": {
+   "cells": {
+    "NZ+A": 48410,
+    "NZ+I": 31590
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.60513,
+   "risk_difference": null,
+   "odds_ratio": 0.6526,
+   "or_ci95": [
+    0.0129,
+    32.8899
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.60513,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 4660,
+     "NZ+I": 2560,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 28330,
+     "NZ+I": 17420,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 10790,
+     "NZ+A": 14950,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 820,
+     "NZ+A": 470,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 28066,
+    "NZ+I": 49774,
+    "NZ+A": 2160
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.04159,
+   "risk_difference": -0.04159,
+   "odds_ratio": 0.0004,
+   "or_ci95": [
+    0.0,
+    0.0066
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.027,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 2160,
+     "NZ+I": 5060,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 9150,
+     "NZ+I": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17626,
+     "NZ+I": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_B_lossy": {
+   "cells": {
+    "NZ+I": 59220,
+    "NZ+A": 20780
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.25975,
+   "risk_difference": null,
+   "odds_ratio": 2.8498,
+   "or_ci95": [
+    0.0565,
+    143.6363
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.25975,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 1810,
+     "NZ+I": 5410,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 33760,
+     "NZ+A": 11990,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 6710,
+     "NZ+I": 19030,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1020,
+     "NZ+A": 270,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_C_dedup": {
+   "cells": {
+    "Z+A": 7166,
+    "NZ+A": 33984,
+    "Z+I": 20900,
+    "NZ+I": 17950
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.25533,
+   "P_A_given_NZ": 0.65437,
+   "risk_difference": -0.39904,
+   "odds_ratio": 0.1811,
+   "or_ci95": [
+    0.1753,
+    0.1871
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.51438,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 6626,
+     "NZ+A": 26504,
+     "Z+I": 2524,
+     "NZ+I": 10096,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17116,
+     "NZ+I": 7854,
+     "Z+A": 510,
+     "NZ+A": 260,
+     "risk_difference": -0.00311
+    },
+    "3": {
+     "Z+I": 1260,
+     "Z+A": 30,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 28066,
+    "NZ+I": 50124,
+    "NZ+A": 1810
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.03485,
+   "risk_difference": -0.03485,
+   "odds_ratio": 0.0005,
+   "or_ci95": [
+    0.0,
+    0.0079
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.02262,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 1810,
+     "NZ+I": 5410,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 9150,
+     "NZ+I": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17626,
+     "NZ+I": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_B_lossy": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_C_dedup": {
+   "cells": {
+    "Z+A": 19548,
+    "NZ+A": 45632,
+    "Z+I": 8518,
+    "NZ+I": 6302
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.6965,
+   "P_A_given_NZ": 0.87865,
+   "risk_difference": -0.18215,
+   "odds_ratio": 0.3169,
+   "or_ci95": [
+    0.3056,
+    0.3288
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.81475,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 8410,
+     "NZ+A": 33640,
+     "Z+I": 740,
+     "NZ+I": 2960,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 10418,
+     "NZ+A": 4772,
+     "Z+I": 7208,
+     "NZ+I": 3342,
+     "risk_difference": 0.00294
+    },
+    "3": {
+     "Z+A": 720,
+     "Z+I": 570,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 12018,
+    "NZ+I": 12912,
+    "Z+A": 16048,
+    "NZ+A": 39022
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.5718,
+   "P_A_given_NZ": 0.75138,
+   "risk_difference": -0.17958,
+   "odds_ratio": 0.4419,
+   "or_ci95": [
+    0.4284,
+    0.4557
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.68837,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 2228,
+     "NZ+I": 8912,
+     "Z+A": 6922,
+     "NZ+A": 27688,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 8986,
+     "NZ+A": 4114,
+     "Z+I": 8640,
+     "NZ+I": 4000,
+     "risk_difference": 0.00279
+    },
+    "3": {
+     "Z+I": 1150,
+     "Z+A": 140,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_A_preserving": {
+   "cells": {
+    "Z+A": 28066,
+    "NZ+A": 51934
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5404,
+   "or_ci95": [
+    0.0107,
+    27.2382
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 9150,
+     "NZ+A": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17626,
+     "NZ+A": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_B_lossy": {
+   "cells": {
+    "Z+I": 16124,
+    "NZ+I": 34506,
+    "Z+A": 11942,
+    "NZ+A": 17428
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.4255,
+   "P_A_given_NZ": 0.33558,
+   "risk_difference": 0.08992,
+   "odds_ratio": 1.4664,
+   "or_ci95": [
+    1.4233,
+    1.5108
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.36712,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 2160,
+     "NZ+I": 5060,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 6322,
+     "NZ+I": 25288,
+     "Z+A": 2828,
+     "NZ+A": 11312,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 7944,
+     "NZ+A": 3956,
+     "Z+I": 9682,
+     "NZ+I": 4158,
+     "risk_difference": -0.03685
+    },
+    "3": {
+     "Z+A": 1170,
+     "Z+I": 120,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_C_dedup": {
+   "cells": {
+    "Z+A": 8028,
+    "NZ+A": 33932,
+    "Z+I": 20038,
+    "NZ+I": 18002
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.28604,
+   "P_A_given_NZ": 0.65337,
+   "risk_difference": -0.36733,
+   "odds_ratio": 0.2126,
+   "or_ci95": [
+    0.206,
+    0.2194
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.5245,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 6564,
+     "NZ+A": 26256,
+     "Z+I": 2586,
+     "NZ+I": 10344,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 16672,
+     "NZ+I": 7658,
+     "Z+A": 954,
+     "NZ+A": 456,
+     "risk_difference": -0.00207
+    },
+    "3": {
+     "Z+I": 780,
+     "Z+A": 510,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_D_relational": {
+   "cells": {
+    "NZ+A": 37355,
+    "Z+I": 11347,
+    "NZ+I": 20243,
+    "Z+A": 11055
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.49348,
+   "P_A_given_NZ": 0.64855,
+   "risk_difference": -0.15506,
+   "odds_ratio": 0.528,
+   "or_ci95": [
+    0.5117,
+    0.5447
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.60513,
+   "zero_rate": 0.28003,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 1055,
+     "NZ+A": 3605,
+     "Z+I": 902,
+     "NZ+I": 1658,
+     "risk_difference": -0.14588
+    },
+    "1": {
+     "NZ+A": 21784,
+     "Z+I": 6398,
+     "NZ+I": 11022,
+     "Z+A": 6546,
+     "risk_difference": -0.15831
+    },
+    "2": {
+     "Z+I": 3787,
+     "NZ+I": 7003,
+     "Z+A": 3356,
+     "NZ+A": 11594,
+     "risk_difference": -0.1536
+    },
+    "3": {
+     "NZ+I": 560,
+     "Z+I": 260,
+     "NZ+A": 372,
+     "Z+A": 98,
+     "risk_difference": -0.1254
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 28066,
+    "NZ+I": 49774,
+    "NZ+A": 2160
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.04159,
+   "risk_difference": -0.04159,
+   "odds_ratio": 0.0004,
+   "or_ci95": [
+    0.0,
+    0.0066
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.027,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 2160,
+     "NZ+I": 5060,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 9150,
+     "NZ+I": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17626,
+     "NZ+I": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_G_recoding": {
+   "cells": {
+    "Z+A": 28066,
+    "NZ+A": 51934
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5404,
+   "or_ci95": [
+    0.0107,
+    27.2382
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 9150,
+     "NZ+A": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17626,
+     "NZ+A": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_A_preserving": {
+   "cells": {
+    "Z+A": 28066,
+    "NZ+A": 51934
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5404,
+   "or_ci95": [
+    0.0107,
+    27.2382
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 9150,
+     "NZ+A": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17626,
+     "NZ+A": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_B_lossy": {
+   "cells": {
+    "Z+I": 20880,
+    "NZ+I": 38340,
+    "Z+A": 7186,
+    "NZ+A": 13594
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.25604,
+   "P_A_given_NZ": 0.26176,
+   "risk_difference": -0.00572,
+   "odds_ratio": 0.9707,
+   "or_ci95": [
+    0.939,
+    1.0034
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.25975,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 1810,
+     "NZ+I": 5410,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 6752,
+     "NZ+I": 27008,
+     "Z+A": 2398,
+     "NZ+A": 9592,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 4518,
+     "NZ+A": 2192,
+     "Z+I": 13108,
+     "NZ+I": 5922,
+     "risk_difference": -0.01382
+    },
+    "3": {
+     "Z+I": 1020,
+     "Z+A": 270,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_C_dedup": {
+   "cells": {
+    "Z+A": 7166,
+    "NZ+A": 33984,
+    "Z+I": 20900,
+    "NZ+I": 17950
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.25533,
+   "P_A_given_NZ": 0.65437,
+   "risk_difference": -0.39904,
+   "odds_ratio": 0.1811,
+   "or_ci95": [
+    0.1753,
+    0.1871
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.51438,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 6626,
+     "NZ+A": 26504,
+     "Z+I": 2524,
+     "NZ+I": 10096,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17116,
+     "NZ+I": 7854,
+     "Z+A": 510,
+     "NZ+A": 260,
+     "risk_difference": -0.00311
+    },
+    "3": {
+     "Z+I": 1260,
+     "Z+A": 30,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 57598,
+    "Z+A": 22402
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.3889,
+   "or_ci95": [
+    0.0077,
+    19.6035
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.28003,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 1957,
+     "NZ+A": 5263,
+     "risk_difference": 0.0
+    },
+    "1": {
+     "NZ+A": 32806,
+     "Z+A": 12944,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 7143,
+     "NZ+A": 18597,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "NZ+A": 932,
+     "Z+A": 358,
+     "risk_difference": 0.0
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 28066,
+    "NZ+I": 50124,
+    "NZ+A": 1810
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.03485,
+   "risk_difference": -0.03485,
+   "odds_ratio": 0.0005,
+   "or_ci95": [
+    0.0,
+    0.0079
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.02262,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 1810,
+     "NZ+I": 5410,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 9150,
+     "NZ+I": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17626,
+     "NZ+I": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_G_recoding": {
+   "cells": {
+    "Z+A": 28066,
+    "NZ+A": 51934
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5404,
+   "or_ci95": [
+    0.0107,
+    27.2382
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 9150,
+     "NZ+A": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17626,
+     "NZ+A": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_A_preserving": {
+   "cells": {
+    "Z+A": 28066,
+    "NZ+A": 51934
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5404,
+   "or_ci95": [
+    0.0107,
+    27.2382
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 9150,
+     "NZ+A": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17626,
+     "NZ+A": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_B_lossy": {
+   "cells": {
+    "Z+A": 28066,
+    "NZ+A": 51934
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5404,
+   "or_ci95": [
+    0.0107,
+    27.2382
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 9150,
+     "NZ+A": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17626,
+     "NZ+A": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_C_dedup": {
+   "cells": {
+    "Z+A": 19548,
+    "NZ+A": 45632,
+    "Z+I": 8518,
+    "NZ+I": 6302
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.6965,
+   "P_A_given_NZ": 0.87865,
+   "risk_difference": -0.18215,
+   "odds_ratio": 0.3169,
+   "or_ci95": [
+    0.3056,
+    0.3288
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.81475,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 8410,
+     "NZ+A": 33640,
+     "Z+I": 740,
+     "NZ+I": 2960,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 10418,
+     "NZ+A": 4772,
+     "Z+I": 7208,
+     "NZ+I": 3342,
+     "risk_difference": 0.00294
+    },
+    "3": {
+     "Z+A": 720,
+     "Z+I": 570,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 57598,
+    "Z+A": 22402
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.3889,
+   "or_ci95": [
+    0.0077,
+    19.6035
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.28003,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 1957,
+     "NZ+A": 5263,
+     "risk_difference": 0.0
+    },
+    "1": {
+     "NZ+A": 32806,
+     "Z+A": 12944,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 7143,
+     "NZ+A": 18597,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "NZ+A": 932,
+     "Z+A": 358,
+     "risk_difference": 0.0
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 12018,
+    "NZ+I": 12912,
+    "Z+A": 16048,
+    "NZ+A": 39022
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.5718,
+   "P_A_given_NZ": 0.75138,
+   "risk_difference": -0.17958,
+   "odds_ratio": 0.4419,
+   "or_ci95": [
+    0.4284,
+    0.4557
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.68837,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 2228,
+     "NZ+I": 8912,
+     "Z+A": 6922,
+     "NZ+A": 27688,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 8986,
+     "NZ+A": 4114,
+     "Z+I": 8640,
+     "NZ+I": 4000,
+     "risk_difference": 0.00279
+    },
+    "3": {
+     "Z+I": 1150,
+     "Z+A": 140,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_G_recoding": {
+   "cells": {
+    "Z+A": 28066,
+    "NZ+A": 51934
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5404,
+   "or_ci95": [
+    0.0107,
+    27.2382
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 9150,
+     "NZ+A": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17626,
+     "NZ+A": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_B_lossy": {
+   "cells": {
+    "NZ+I": 59220,
+    "NZ+A": 20780
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.25975,
+   "risk_difference": null,
+   "odds_ratio": 2.8498,
+   "or_ci95": [
+    0.0565,
+    143.6363
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.25975,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 1810,
+     "NZ+I": 5410,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 33760,
+     "NZ+A": 11990,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 6710,
+     "NZ+I": 19030,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1020,
+     "NZ+A": 270,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_C_dedup": {
+   "cells": {
+    "Z+A": 5366,
+    "NZ+A": 35784,
+    "NZ+I": 23836,
+    "Z+I": 15014
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.2633,
+   "P_A_given_NZ": 0.6002,
+   "risk_difference": -0.3369,
+   "odds_ratio": 0.2381,
+   "or_ci95": [
+    0.2298,
+    0.2466
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.51438,
+   "zero_rate": 0.25475,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 4969,
+     "NZ+A": 28161,
+     "NZ+I": 10749,
+     "Z+I": 1871,
+     "risk_difference": 0.00271
+    },
+    "2": {
+     "NZ+I": 12825,
+     "Z+I": 12145,
+     "Z+A": 372,
+     "NZ+A": 398,
+     "risk_difference": -0.00038
+    },
+    "3": {
+     "Z+I": 998,
+     "NZ+I": 262,
+     "Z+A": 25,
+     "NZ+A": 5,
+     "risk_difference": 0.00571
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 20380,
+    "NZ+I": 57810,
+    "NZ+A": 1810
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.03036,
+   "risk_difference": -0.03036,
+   "odds_ratio": 0.0008,
+   "or_ci95": [
+    0.0,
+    0.0125
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.02262,
+   "zero_rate": 0.25475,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 1810,
+     "NZ+I": 5410,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 6840,
+     "NZ+I": 38910,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "NZ+I": 13223,
+     "Z+I": 12517,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 1023,
+     "NZ+I": 267,
+     "risk_difference": 0.0
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_B_lossy": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_C_dedup": {
+   "cells": {
+    "Z+A": 20380,
+    "NZ+A": 59620
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.3418,
+   "or_ci95": [
+    0.0068,
+    17.2293
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.25475,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 6840,
+     "NZ+A": 38910,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "NZ+A": 13223,
+     "Z+A": 12517,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1023,
+     "NZ+A": 267,
+     "risk_difference": 0.0
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_D_relational": {
+   "cells": {
+    "NZ+A": 46700,
+    "NZ+I": 33300
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.58375,
+   "risk_difference": null,
+   "odds_ratio": 0.7131,
+   "or_ci95": [
+    0.0141,
+    35.9397
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.58375,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 5360,
+     "NZ+I": 1860,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 28640,
+     "NZ+I": 17110,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 13350,
+     "NZ+A": 12390,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 980,
+     "NZ+A": 310,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_E_dedup_lossy": {
+   "cells": {
+    "Z+A": 20380,
+    "NZ+A": 59620
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.3418,
+   "or_ci95": [
+    0.0068,
+    17.2293
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.25475,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 6840,
+     "NZ+A": 38910,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "NZ+A": 13223,
+     "Z+A": 12517,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1023,
+     "NZ+A": 267,
+     "risk_difference": 0.0
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_B_lossy": {
+   "cells": {
+    "Z+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_C_dedup": {
+   "cells": {
+    "NZ+A": 27507,
+    "Z+A": 3173,
+    "NZ+I": 34476,
+    "Z+I": 14844
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.17611,
+   "P_A_given_NZ": 0.44378,
+   "risk_difference": -0.26767,
+   "odds_ratio": 0.2679,
+   "or_ci95": [
+    0.2571,
+    0.2793
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.3835,
+   "zero_rate": 0.22521,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 20146,
+     "Z+A": 3054,
+     "NZ+I": 19537,
+     "Z+I": 3013,
+     "risk_difference": -0.00429
+    },
+    "2": {
+     "NZ+I": 14599,
+     "Z+I": 10911,
+     "Z+A": 96,
+     "NZ+A": 134,
+     "risk_difference": -0.00037
+    },
+    "3": {
+     "NZ+I": 340,
+     "Z+I": 920,
+     "NZ+A": 7,
+     "Z+A": 23,
+     "risk_difference": 0.00422
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_D_relational": {
+   "cells": {
+    "NZ+A": 29060,
+    "NZ+I": 50940
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.36325,
+   "risk_difference": null,
+   "odds_ratio": 1.7529,
+   "or_ci95": [
+    0.0348,
+    88.3499
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.36325,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 3140,
+     "NZ+I": 4080,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 17350,
+     "NZ+I": 28400,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 17430,
+     "NZ+A": 8310,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1030,
+     "NZ+A": 260,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 72780,
+    "Z+A": 7220
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.09025,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0992,
+   "or_ci95": [
+    0.002,
+    5.0006
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.09025,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_B_lossy": {
+   "cells": {
+    "Z+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_C_dedup": {
+   "cells": {
+    "NZ+A": 61983,
+    "Z+A": 18017
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.2907,
+   "or_ci95": [
+    0.0058,
+    14.651
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.22521,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 39683,
+     "Z+A": 6067,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "NZ+A": 14733,
+     "Z+A": 11007,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "NZ+A": 347,
+     "Z+A": 943,
+     "risk_difference": 0.0
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_D_relational": {
+   "cells": {
+    "NZ+A": 46700,
+    "NZ+I": 33300
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.58375,
+   "risk_difference": null,
+   "odds_ratio": 0.7131,
+   "or_ci95": [
+    0.0141,
+    35.9397
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.58375,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 5360,
+     "NZ+I": 1860,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 28640,
+     "NZ+I": 17110,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 13350,
+     "NZ+A": 12390,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 980,
+     "NZ+A": 310,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_E_dedup_lossy": {
+   "cells": {
+    "Z+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_B_lossy": {
+   "cells": {
+    "Z+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_C_dedup": {
+   "cells": {
+    "NZ+A": 52575,
+    "Z+A": 12605,
+    "NZ+I": 9408,
+    "Z+I": 5412
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.69962,
+   "P_A_given_NZ": 0.84822,
+   "risk_difference": -0.1486,
+   "odds_ratio": 0.4168,
+   "or_ci95": [
+    0.401,
+    0.4332
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.81475,
+   "zero_rate": 0.22521,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 36474,
+     "Z+A": 5576,
+     "NZ+I": 3209,
+     "Z+I": 491,
+     "risk_difference": -6e-05
+    },
+    "2": {
+     "NZ+A": 8691,
+     "Z+A": 6499,
+     "NZ+I": 6042,
+     "Z+I": 4508,
+     "risk_difference": 0.00054
+    },
+    "3": {
+     "NZ+A": 190,
+     "Z+A": 530,
+     "Z+I": 413,
+     "NZ+I": 157,
+     "risk_difference": 0.01449
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 24930,
+    "Z+A": 55070
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.68837,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 2.209,
+   "or_ci95": [
+    0.0438,
+    111.3358
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.68837,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 11140,
+     "Z+A": 34610,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+A": 13100,
+     "Z+I": 12640,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1150,
+     "Z+A": 140,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_B_lossy": {
+   "cells": {
+    "NZ+I": 50630,
+    "NZ+A": 29370
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.36712,
+   "risk_difference": null,
+   "odds_ratio": 1.7239,
+   "or_ci95": [
+    0.0342,
+    86.8854
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.36712,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 2160,
+     "NZ+I": 5060,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 31610,
+     "NZ+A": 14140,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 11900,
+     "NZ+I": 13840,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1170,
+     "NZ+I": 120,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_C_dedup": {
+   "cells": {
+    "Z+A": 8028,
+    "NZ+A": 33932,
+    "Z+I": 20038,
+    "NZ+I": 18002
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.28604,
+   "P_A_given_NZ": 0.65337,
+   "risk_difference": -0.36733,
+   "odds_ratio": 0.2126,
+   "or_ci95": [
+    0.206,
+    0.2194
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.5245,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 6564,
+     "NZ+A": 26256,
+     "Z+I": 2586,
+     "NZ+I": 10344,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 16672,
+     "NZ+I": 7658,
+     "Z+A": 954,
+     "NZ+A": 456,
+     "risk_difference": -0.00207
+    },
+    "3": {
+     "Z+I": 780,
+     "Z+A": 510,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_D_relational": {
+   "cells": {
+    "NZ+A": 48410,
+    "NZ+I": 31590
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.60513,
+   "risk_difference": null,
+   "odds_ratio": 0.6526,
+   "or_ci95": [
+    0.0129,
+    32.8899
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.60513,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 4660,
+     "NZ+I": 2560,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 28330,
+     "NZ+I": 17420,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 10790,
+     "NZ+A": 14950,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 820,
+     "NZ+A": 470,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 28066,
+    "NZ+I": 49774,
+    "NZ+A": 2160
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.04159,
+   "risk_difference": -0.04159,
+   "odds_ratio": 0.0004,
+   "or_ci95": [
+    0.0,
+    0.0066
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.027,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 2160,
+     "NZ+I": 5060,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 9150,
+     "NZ+I": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17626,
+     "NZ+I": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_B_lossy": {
+   "cells": {
+    "NZ+I": 59220,
+    "NZ+A": 20780
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.25975,
+   "risk_difference": null,
+   "odds_ratio": 2.8498,
+   "or_ci95": [
+    0.0565,
+    143.6363
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.25975,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 1810,
+     "NZ+I": 5410,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 33760,
+     "NZ+A": 11990,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 6710,
+     "NZ+I": 19030,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1020,
+     "NZ+A": 270,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_C_dedup": {
+   "cells": {
+    "Z+A": 7166,
+    "NZ+A": 33984,
+    "Z+I": 20900,
+    "NZ+I": 17950
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.25533,
+   "P_A_given_NZ": 0.65437,
+   "risk_difference": -0.39904,
+   "odds_ratio": 0.1811,
+   "or_ci95": [
+    0.1753,
+    0.1871
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.51438,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 6626,
+     "NZ+A": 26504,
+     "Z+I": 2524,
+     "NZ+I": 10096,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17116,
+     "NZ+I": 7854,
+     "Z+A": 510,
+     "NZ+A": 260,
+     "risk_difference": -0.00311
+    },
+    "3": {
+     "Z+I": 1260,
+     "Z+A": 30,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 28066,
+    "NZ+I": 50124,
+    "NZ+A": 1810
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.03485,
+   "risk_difference": -0.03485,
+   "odds_ratio": 0.0005,
+   "or_ci95": [
+    0.0,
+    0.0079
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.02262,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 1810,
+     "NZ+I": 5410,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 9150,
+     "NZ+I": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17626,
+     "NZ+I": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_B_lossy": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_C_dedup": {
+   "cells": {
+    "Z+A": 4818,
+    "NZ+A": 25862,
+    "Z+I": 23248,
+    "NZ+I": 26072
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.17167,
+   "P_A_given_NZ": 0.49798,
+   "risk_difference": -0.32631,
+   "odds_ratio": 0.2089,
+   "or_ci95": [
+    0.2017,
+    0.2165
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.3835,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 4640,
+     "NZ+A": 18560,
+     "Z+I": 4510,
+     "NZ+I": 18040,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17478,
+     "NZ+I": 8032,
+     "Z+A": 148,
+     "NZ+A": 82,
+     "risk_difference": -0.00171
+    },
+    "3": {
+     "Z+I": 1260,
+     "Z+A": 30,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_D_relational": {
+   "cells": {
+    "NZ+A": 29060,
+    "NZ+I": 50940
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.36325,
+   "risk_difference": null,
+   "odds_ratio": 1.7529,
+   "or_ci95": [
+    0.0348,
+    88.3499
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.36325,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 3140,
+     "NZ+I": 4080,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 17350,
+     "NZ+I": 28400,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 17430,
+     "NZ+A": 8310,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1030,
+     "NZ+A": 260,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 28066,
+    "NZ+I": 44714,
+    "NZ+A": 7220
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.13902,
+   "risk_difference": -0.13902,
+   "odds_ratio": 0.0001,
+   "or_ci95": [
+    0.0,
+    0.0018
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.09025,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 9150,
+     "NZ+I": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17626,
+     "NZ+I": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_B_lossy": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_C_dedup": {
+   "cells": {
+    "Z+A": 28066,
+    "NZ+A": 51934
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5404,
+   "or_ci95": [
+    0.0107,
+    27.2382
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 9150,
+     "NZ+A": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17626,
+     "NZ+A": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_D_relational": {
+   "cells": {
+    "NZ+A": 46700,
+    "NZ+I": 33300
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.58375,
+   "risk_difference": null,
+   "odds_ratio": 0.7131,
+   "or_ci95": [
+    0.0141,
+    35.9397
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.58375,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 5360,
+     "NZ+I": 1860,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 28640,
+     "NZ+I": 17110,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 13350,
+     "NZ+A": 12390,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 980,
+     "NZ+A": 310,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_E_dedup_lossy": {
+   "cells": {
+    "Z+A": 28066,
+    "NZ+A": 51934
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5404,
+   "or_ci95": [
+    0.0107,
+    27.2382
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 9150,
+     "NZ+A": 36600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17626,
+     "NZ+A": 8114,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_B_lossy": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_C_dedup": {
+   "cells": {
+    "Z+A": 19548,
+    "NZ+A": 45632,
+    "Z+I": 8518,
+    "NZ+I": 6302
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.6965,
+   "P_A_given_NZ": 0.87865,
+   "risk_difference": -0.18215,
+   "odds_ratio": 0.3169,
+   "or_ci95": [
+    0.3056,
+    0.3288
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.81475,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 8410,
+     "NZ+A": 33640,
+     "Z+I": 740,
+     "NZ+I": 2960,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 10418,
+     "NZ+A": 4772,
+     "Z+I": 7208,
+     "NZ+I": 3342,
+     "risk_difference": 0.00294
+    },
+    "3": {
+     "Z+A": 720,
+     "Z+I": 570,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 12018,
+    "NZ+I": 12912,
+    "Z+A": 16048,
+    "NZ+A": 39022
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.5718,
+   "P_A_given_NZ": 0.75138,
+   "risk_difference": -0.17958,
+   "odds_ratio": 0.4419,
+   "or_ci95": [
+    0.4284,
+    0.4557
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.68837,
+   "zero_rate": 0.35082,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 2228,
+     "NZ+I": 8912,
+     "Z+A": 6922,
+     "NZ+A": 27688,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 8986,
+     "NZ+A": 4114,
+     "Z+I": 8640,
+     "NZ+I": 4000,
+     "risk_difference": 0.00279
+    },
+    "3": {
+     "Z+I": 1150,
+     "Z+A": 140,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1290,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7220,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25740,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1290,
+     "risk_difference": null
+    }
+   }
+  }
+ },
+ "test": {
+  "Pi_value_multiset|Q_argmax_ntags|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_B_lossy": {
+   "cells": {
+    "NZ+I": 50430,
+    "NZ+A": 29570
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.36962,
+   "risk_difference": null,
+   "odds_ratio": 1.7054,
+   "or_ci95": [
+    0.0338,
+    85.9568
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.36962,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5200,
+     "NZ+A": 2120,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 30800,
+     "NZ+A": 14890,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 11590,
+     "NZ+I": 14310,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 970,
+     "NZ+I": 120,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_C_dedup": {
+   "cells": {
+    "NZ+I": 18502,
+    "Z+I": 20048,
+    "Z+A": 7892,
+    "NZ+A": 33558
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.28246,
+   "P_A_given_NZ": 0.6446,
+   "risk_difference": -0.36214,
+   "odds_ratio": 0.2171,
+   "or_ci95": [
+    0.2103,
+    0.224
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.51812,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 10696,
+     "Z+I": 2674,
+     "Z+A": 6464,
+     "NZ+A": 25856,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 16944,
+     "NZ+I": 7806,
+     "Z+A": 768,
+     "NZ+A": 382,
+     "risk_difference": -0.00329
+    },
+    "3": {
+     "Z+I": 430,
+     "Z+A": 660,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_D_relational": {
+   "cells": {
+    "NZ+A": 48800,
+    "NZ+I": 31200
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.61,
+   "risk_difference": null,
+   "odds_ratio": 0.6393,
+   "or_ci95": [
+    0.0127,
+    32.2243
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.61,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 4670,
+     "NZ+I": 2650,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 28940,
+     "NZ+I": 16750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 11080,
+     "NZ+A": 14820,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 720,
+     "NZ+A": 370,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_E_dedup_lossy": {
+   "cells": {
+    "NZ+I": 49940,
+    "Z+I": 27820,
+    "NZ+A": 2120,
+    "Z+A": 120
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.00429,
+   "P_A_given_NZ": 0.04072,
+   "risk_difference": -0.03643,
+   "odds_ratio": 0.102,
+   "or_ci95": [
+    0.0849,
+    0.1226
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.028,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5200,
+     "NZ+A": 2120,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 36552,
+     "Z+I": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17712,
+     "NZ+I": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 970,
+     "Z+A": 120,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_argmax_ntags|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_B_lossy": {
+   "cells": {
+    "NZ+I": 59310,
+    "NZ+A": 20690
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.25862,
+   "risk_difference": null,
+   "odds_ratio": 2.8666,
+   "or_ci95": [
+    0.0569,
+    144.4804
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.25862,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5190,
+     "NZ+A": 2130,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 33980,
+     "NZ+A": 11710,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 6480,
+     "NZ+I": 19420,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 720,
+     "NZ+A": 370,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_C_dedup": {
+   "cells": {
+    "NZ+A": 34358,
+    "Z+A": 7552,
+    "Z+I": 20388,
+    "NZ+I": 17702
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.27029,
+   "P_A_given_NZ": 0.65997,
+   "risk_difference": -0.38968,
+   "odds_ratio": 0.1909,
+   "or_ci95": [
+    0.1848,
+    0.1971
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.52387,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 26664,
+     "Z+A": 6666,
+     "Z+I": 2472,
+     "NZ+I": 9888,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 16916,
+     "NZ+I": 7814,
+     "Z+A": 796,
+     "NZ+A": 374,
+     "risk_difference": -0.00074
+    },
+    "3": {
+     "Z+I": 1000,
+     "Z+A": 90,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_E_dedup_lossy": {
+   "cells": {
+    "NZ+I": 49930,
+    "Z+I": 27940,
+    "NZ+A": 2130
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.04091,
+   "risk_difference": -0.04091,
+   "odds_ratio": 0.0004,
+   "or_ci95": [
+    0.0,
+    0.0067
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.02662,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5190,
+     "NZ+A": 2130,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 36552,
+     "Z+I": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17712,
+     "NZ+I": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_source_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_B_lossy": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_C_dedup": {
+   "cells": {
+    "NZ+A": 45586,
+    "Z+A": 19604,
+    "Z+I": 8336,
+    "NZ+I": 6474
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.70165,
+   "P_A_given_NZ": 0.87564,
+   "risk_difference": -0.174,
+   "odds_ratio": 0.334,
+   "or_ci95": [
+    0.322,
+    0.3464
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.81488,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 33440,
+     "Z+A": 8360,
+     "NZ+I": 3112,
+     "Z+I": 778,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 10524,
+     "NZ+A": 4826,
+     "Z+I": 7188,
+     "NZ+I": 3362,
+     "risk_difference": 0.00477
+    },
+    "3": {
+     "Z+I": 370,
+     "Z+A": 720,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_E_dedup_lossy": {
+   "cells": {
+    "NZ+A": 39046,
+    "Z+A": 16024,
+    "Z+I": 11916,
+    "NZ+I": 13014
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.57351,
+   "P_A_given_NZ": 0.75002,
+   "risk_difference": -0.1765,
+   "odds_ratio": 0.4482,
+   "or_ci95": [
+    0.4346,
+    0.4623
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.68837,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 27680,
+     "Z+A": 6920,
+     "Z+I": 2218,
+     "NZ+I": 8872,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 8874,
+     "NZ+A": 4046,
+     "Z+I": 8838,
+     "NZ+I": 4142,
+     "risk_difference": 0.00688
+    },
+    "3": {
+     "Z+I": 860,
+     "Z+A": 230,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_multiset|Q_tag_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_A_preserving": {
+   "cells": {
+    "NZ+A": 52060,
+    "Z+A": 27940
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5367,
+   "or_ci95": [
+    0.0106,
+    27.0503
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 36552,
+     "Z+A": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17712,
+     "NZ+A": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_B_lossy": {
+   "cells": {
+    "NZ+I": 34246,
+    "Z+I": 16184,
+    "Z+A": 11756,
+    "NZ+A": 17814
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.42076,
+   "P_A_given_NZ": 0.34218,
+   "risk_difference": 0.07858,
+   "odds_ratio": 1.3964,
+   "or_ci95": [
+    1.3553,
+    1.4388
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.36962,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5200,
+     "NZ+A": 2120,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 24640,
+     "Z+I": 6160,
+     "Z+A": 2978,
+     "NZ+A": 11912,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 7808,
+     "NZ+A": 3782,
+     "Z+I": 9904,
+     "NZ+I": 4406,
+     "risk_difference": -0.02106
+    },
+    "3": {
+     "Z+A": 970,
+     "Z+I": 120,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_C_dedup": {
+   "cells": {
+    "NZ+I": 18502,
+    "Z+I": 20048,
+    "Z+A": 7892,
+    "NZ+A": 33558
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.28246,
+   "P_A_given_NZ": 0.6446,
+   "risk_difference": -0.36214,
+   "odds_ratio": 0.2171,
+   "or_ci95": [
+    0.2103,
+    0.224
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.51812,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 10696,
+     "Z+I": 2674,
+     "Z+A": 6464,
+     "NZ+A": 25856,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 16944,
+     "NZ+I": 7806,
+     "Z+A": 768,
+     "NZ+A": 382,
+     "risk_difference": -0.00329
+    },
+    "3": {
+     "Z+I": 430,
+     "Z+A": 660,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_D_relational": {
+   "cells": {
+    "NZ+A": 37725,
+    "Z+A": 11075,
+    "Z+I": 11065,
+    "NZ+I": 20135
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.50023,
+   "P_A_given_NZ": 0.652,
+   "risk_difference": -0.15178,
+   "odds_ratio": 0.5342,
+   "or_ci95": [
+    0.5177,
+    0.5513
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.61,
+   "zero_rate": 0.27675,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 1120,
+     "NZ+A": 3550,
+     "NZ+I": 1653,
+     "Z+I": 997,
+     "risk_difference": -0.15325
+    },
+    "1": {
+     "NZ+A": 22284,
+     "Z+A": 6656,
+     "Z+I": 5944,
+     "NZ+I": 10806,
+     "risk_difference": -0.14518
+    },
+    "2": {
+     "Z+I": 3903,
+     "NZ+I": 7177,
+     "Z+A": 3213,
+     "NZ+A": 11607,
+     "risk_difference": -0.1664
+    },
+    "3": {
+     "Z+I": 221,
+     "NZ+I": 499,
+     "NZ+A": 284,
+     "Z+A": 86,
+     "risk_difference": -0.08258
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_E_dedup_lossy": {
+   "cells": {
+    "NZ+I": 49940,
+    "Z+I": 27820,
+    "NZ+A": 2120,
+    "Z+A": 120
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.00429,
+   "P_A_given_NZ": 0.04072,
+   "risk_difference": -0.03643,
+   "odds_ratio": 0.102,
+   "or_ci95": [
+    0.0849,
+    0.1226
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.028,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5200,
+     "NZ+A": 2120,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 36552,
+     "Z+I": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17712,
+     "NZ+I": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 970,
+     "Z+A": 120,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_argmax_ntags|T_G_recoding": {
+   "cells": {
+    "NZ+A": 52060,
+    "Z+A": 27940
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5367,
+   "or_ci95": [
+    0.0106,
+    27.0503
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 36552,
+     "Z+A": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17712,
+     "NZ+A": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 52060,
+    "Z+A": 27940
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5367,
+   "or_ci95": [
+    0.0106,
+    27.0503
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 36552,
+     "Z+A": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17712,
+     "NZ+A": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_B_lossy": {
+   "cells": {
+    "NZ+I": 38472,
+    "Z+I": 20838,
+    "Z+A": 7102,
+    "NZ+A": 13588
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.25419,
+   "P_A_given_NZ": 0.26101,
+   "risk_difference": -0.00682,
+   "odds_ratio": 0.965,
+   "or_ci95": [
+    0.9334,
+    0.9977
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.25862,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5190,
+     "NZ+A": 2130,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 27184,
+     "Z+I": 6796,
+     "Z+A": 2342,
+     "NZ+A": 9368,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 4390,
+     "NZ+A": 2090,
+     "Z+I": 13322,
+     "NZ+I": 6098,
+     "risk_difference": -0.0074
+    },
+    "3": {
+     "Z+I": 720,
+     "Z+A": 370,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_C_dedup": {
+   "cells": {
+    "NZ+A": 34358,
+    "Z+A": 7552,
+    "Z+I": 20388,
+    "NZ+I": 17702
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.27029,
+   "P_A_given_NZ": 0.65997,
+   "risk_difference": -0.38968,
+   "odds_ratio": 0.1909,
+   "or_ci95": [
+    0.1848,
+    0.1971
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.52387,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 26664,
+     "Z+A": 6666,
+     "Z+I": 2472,
+     "NZ+I": 9888,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 16916,
+     "NZ+I": 7814,
+     "Z+A": 796,
+     "NZ+A": 374,
+     "risk_difference": -0.00074
+    },
+    "3": {
+     "Z+I": 1000,
+     "Z+A": 90,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 57860,
+    "Z+A": 22140
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.3827,
+   "or_ci95": [
+    0.0076,
+    19.2865
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.27675,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 2117,
+     "NZ+A": 5203,
+     "risk_difference": 0.0
+    },
+    "1": {
+     "NZ+A": 33090,
+     "Z+A": 12600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 7116,
+     "NZ+A": 18784,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 307,
+     "NZ+A": 783,
+     "risk_difference": 0.0
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_E_dedup_lossy": {
+   "cells": {
+    "NZ+I": 49930,
+    "Z+I": 27940,
+    "NZ+A": 2130
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.04091,
+   "risk_difference": -0.04091,
+   "odds_ratio": 0.0004,
+   "or_ci95": [
+    0.0,
+    0.0067
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.02662,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5190,
+     "NZ+A": 2130,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 36552,
+     "Z+I": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17712,
+     "NZ+I": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_source_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 52060,
+    "Z+A": 27940
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5367,
+   "or_ci95": [
+    0.0106,
+    27.0503
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 36552,
+     "Z+A": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17712,
+     "NZ+A": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 52060,
+    "Z+A": 27940
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5367,
+   "or_ci95": [
+    0.0106,
+    27.0503
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 36552,
+     "Z+A": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17712,
+     "NZ+A": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_B_lossy": {
+   "cells": {
+    "NZ+A": 52060,
+    "Z+A": 27940
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5367,
+   "or_ci95": [
+    0.0106,
+    27.0503
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 36552,
+     "Z+A": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17712,
+     "NZ+A": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_C_dedup": {
+   "cells": {
+    "NZ+A": 45586,
+    "Z+A": 19604,
+    "Z+I": 8336,
+    "NZ+I": 6474
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.70165,
+   "P_A_given_NZ": 0.87564,
+   "risk_difference": -0.174,
+   "odds_ratio": 0.334,
+   "or_ci95": [
+    0.322,
+    0.3464
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.81488,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 33440,
+     "Z+A": 8360,
+     "NZ+I": 3112,
+     "Z+I": 778,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 10524,
+     "NZ+A": 4826,
+     "Z+I": 7188,
+     "NZ+I": 3362,
+     "risk_difference": 0.00477
+    },
+    "3": {
+     "Z+I": 370,
+     "Z+A": 720,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 57860,
+    "Z+A": 22140
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.3827,
+   "or_ci95": [
+    0.0076,
+    19.2865
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.27675,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 2117,
+     "NZ+A": 5203,
+     "risk_difference": 0.0
+    },
+    "1": {
+     "NZ+A": 33090,
+     "Z+A": 12600,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 7116,
+     "NZ+A": 18784,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 307,
+     "NZ+A": 783,
+     "risk_difference": 0.0
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_E_dedup_lossy": {
+   "cells": {
+    "NZ+A": 39046,
+    "Z+A": 16024,
+    "Z+I": 11916,
+    "NZ+I": 13014
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.57351,
+   "P_A_given_NZ": 0.75002,
+   "risk_difference": -0.1765,
+   "odds_ratio": 0.4482,
+   "or_ci95": [
+    0.4346,
+    0.4623
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.68837,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 27680,
+     "Z+A": 6920,
+     "Z+I": 2218,
+     "NZ+I": 8872,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 8874,
+     "NZ+A": 4046,
+     "Z+I": 8838,
+     "NZ+I": 4142,
+     "risk_difference": 0.00688
+    },
+    "3": {
+     "Z+I": 860,
+     "Z+A": 230,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_value_set|Q_tag_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 52060,
+    "Z+A": 27940
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5367,
+   "or_ci95": [
+    0.0106,
+    27.0503
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 36552,
+     "Z+A": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17712,
+     "NZ+A": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_B_lossy": {
+   "cells": {
+    "NZ+I": 59310,
+    "NZ+A": 20690
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.25862,
+   "risk_difference": null,
+   "odds_ratio": 2.8666,
+   "or_ci95": [
+    0.0569,
+    144.4804
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.25862,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5190,
+     "NZ+A": 2130,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 33980,
+     "NZ+A": 11710,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 6480,
+     "NZ+I": 19420,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 720,
+     "NZ+A": 370,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_C_dedup": {
+   "cells": {
+    "NZ+A": 36298,
+    "Z+A": 5612,
+    "NZ+I": 23292,
+    "Z+I": 14798
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.27496,
+   "P_A_given_NZ": 0.60913,
+   "risk_difference": -0.33417,
+   "odds_ratio": 0.2434,
+   "or_ci95": [
+    0.235,
+    0.252
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.52387,
+   "zero_rate": 0.25512,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 28389,
+     "Z+A": 4941,
+     "NZ+I": 10488,
+     "Z+I": 1872,
+     "risk_difference": -0.00499
+    },
+    "2": {
+     "NZ+I": 12583,
+     "Z+I": 12147,
+     "NZ+A": 571,
+     "Z+A": 599,
+     "risk_difference": 0.00359
+    },
+    "3": {
+     "NZ+I": 221,
+     "Z+I": 779,
+     "Z+A": 72,
+     "NZ+A": 18,
+     "risk_difference": 0.00929
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_E_dedup_lossy": {
+   "cells": {
+    "NZ+I": 57460,
+    "Z+I": 20410,
+    "NZ+A": 2130
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.03574,
+   "risk_difference": -0.03574,
+   "odds_ratio": 0.0007,
+   "or_ci95": [
+    0.0,
+    0.0106
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.02662,
+   "zero_rate": 0.25512,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5190,
+     "NZ+A": 2130,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 38877,
+     "Z+I": 6813,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "NZ+I": 13154,
+     "Z+I": 12746,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "NZ+I": 239,
+     "Z+I": 851,
+     "risk_difference": 0.0
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_source_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_B_lossy": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_C_dedup": {
+   "cells": {
+    "NZ+A": 59590,
+    "Z+A": 20410
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.3425,
+   "or_ci95": [
+    0.0068,
+    17.2633
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.25512,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 38877,
+     "Z+A": 6813,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "NZ+A": 13154,
+     "Z+A": 12746,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "NZ+A": 239,
+     "Z+A": 851,
+     "risk_difference": 0.0
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_D_relational": {
+   "cells": {
+    "NZ+I": 32210,
+    "NZ+A": 47790
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.59737,
+   "risk_difference": null,
+   "odds_ratio": 0.674,
+   "or_ci95": [
+    0.0134,
+    33.9705
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.59737,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 2050,
+     "NZ+A": 5270,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 16620,
+     "NZ+A": 29070,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 12790,
+     "NZ+A": 13110,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 340,
+     "NZ+I": 750,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_E_dedup_lossy": {
+   "cells": {
+    "NZ+A": 59590,
+    "Z+A": 20410
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.3425,
+   "or_ci95": [
+    0.0068,
+    17.2633
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.25512,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 38877,
+     "Z+A": 6813,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "NZ+A": 13154,
+     "Z+A": 12746,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "NZ+A": 239,
+     "Z+A": 851,
+     "risk_difference": 0.0
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_tag_multiset|Q_max_value|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_B_lossy": {
+   "cells": {
+    "Z+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_C_dedup": {
+   "cells": {
+    "NZ+I": 34511,
+    "Z+I": 14519,
+    "NZ+A": 27742,
+    "Z+A": 3228
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.18189,
+   "P_A_given_NZ": 0.44563,
+   "risk_difference": -0.26374,
+   "odds_ratio": 0.2766,
+   "or_ci95": [
+    0.2654,
+    0.2883
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.38712,
+   "zero_rate": 0.22184,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 19388,
+     "Z+I": 2962,
+     "NZ+A": 20269,
+     "Z+A": 3071,
+     "risk_difference": -0.00207
+    },
+    "2": {
+     "NZ+I": 14843,
+     "Z+I": 10797,
+     "NZ+A": 148,
+     "Z+A": 112,
+     "risk_difference": 0.00039
+    },
+    "3": {
+     "Z+I": 760,
+     "NZ+I": 280,
+     "Z+A": 45,
+     "NZ+A": 5,
+     "risk_difference": 0.03836
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_D_relational": {
+   "cells": {
+    "NZ+I": 50500,
+    "NZ+A": 29500
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.36875,
+   "risk_difference": null,
+   "odds_ratio": 1.7119,
+   "or_ci95": [
+    0.034,
+    86.2804
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.36875,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 4110,
+     "NZ+A": 3210,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 27770,
+     "NZ+A": 17920,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 17740,
+     "NZ+A": 8160,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 880,
+     "NZ+A": 210,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_E_dedup_lossy": {
+   "cells": {
+    "Z+I": 72680,
+    "Z+A": 7320
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0915,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.1007,
+   "or_ci95": [
+    0.002,
+    5.0768
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0915,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_majtag_total|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_B_lossy": {
+   "cells": {
+    "Z+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_C_dedup": {
+   "cells": {
+    "NZ+A": 62253,
+    "Z+A": 17747
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.2851,
+   "or_ci95": [
+    0.0057,
+    14.3689
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.22184,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 39657,
+     "Z+A": 6033,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "NZ+A": 14991,
+     "Z+A": 10909,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 805,
+     "NZ+A": 285,
+     "risk_difference": 0.0
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_D_relational": {
+   "cells": {
+    "NZ+I": 32210,
+    "NZ+A": 47790
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.59737,
+   "risk_difference": null,
+   "odds_ratio": 0.674,
+   "or_ci95": [
+    0.0134,
+    33.9705
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.59737,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 2050,
+     "NZ+A": 5270,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 16620,
+     "NZ+A": 29070,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 12790,
+     "NZ+A": 13110,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 340,
+     "NZ+I": 750,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_E_dedup_lossy": {
+   "cells": {
+    "Z+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_max_value|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_B_lossy": {
+   "cells": {
+    "Z+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_C_dedup": {
+   "cells": {
+    "NZ+A": 52685,
+    "Z+A": 12505,
+    "NZ+I": 9568,
+    "Z+I": 5242
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.70463,
+   "P_A_given_NZ": 0.8463,
+   "risk_difference": -0.14168,
+   "odds_ratio": 0.4332,
+   "or_ci95": [
+    0.4167,
+    0.4504
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.81488,
+   "zero_rate": 0.22184,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 36284,
+     "Z+A": 5516,
+     "NZ+I": 3373,
+     "Z+I": 517,
+     "risk_difference": -0.00064
+    },
+    "2": {
+     "NZ+A": 8887,
+     "Z+A": 6463,
+     "NZ+I": 6104,
+     "Z+I": 4446,
+     "risk_difference": -0.00038
+    },
+    "3": {
+     "Z+I": 279,
+     "NZ+I": 91,
+     "NZ+A": 194,
+     "Z+A": 526,
+     "risk_difference": -0.02729
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_E_dedup_lossy": {
+   "cells": {
+    "Z+A": 55070,
+    "Z+I": 24930
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.68837,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 2.209,
+   "or_ci95": [
+    0.0438,
+    111.3358
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.68837,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+A": 34600,
+     "Z+I": 11090,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+A": 12920,
+     "Z+I": 12980,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 860,
+     "Z+A": 230,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_F_destroying": {
+   "cells": {
+    "Z+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": null,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 1.0,
+   "by_redundancy": {
+    "0": {
+     "Z+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "Z+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "Z+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "Z+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_source_multiset|Q_tag_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_B_lossy": {
+   "cells": {
+    "NZ+I": 50430,
+    "NZ+A": 29570
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.36962,
+   "risk_difference": null,
+   "odds_ratio": 1.7054,
+   "or_ci95": [
+    0.0338,
+    85.9568
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.36962,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5200,
+     "NZ+A": 2120,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 30800,
+     "NZ+A": 14890,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 11590,
+     "NZ+I": 14310,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 970,
+     "NZ+I": 120,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_C_dedup": {
+   "cells": {
+    "NZ+I": 18502,
+    "Z+I": 20048,
+    "Z+A": 7892,
+    "NZ+A": 33558
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.28246,
+   "P_A_given_NZ": 0.6446,
+   "risk_difference": -0.36214,
+   "odds_ratio": 0.2171,
+   "or_ci95": [
+    0.2103,
+    0.224
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.51812,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 10696,
+     "Z+I": 2674,
+     "Z+A": 6464,
+     "NZ+A": 25856,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 16944,
+     "NZ+I": 7806,
+     "Z+A": 768,
+     "NZ+A": 382,
+     "risk_difference": -0.00329
+    },
+    "3": {
+     "Z+I": 430,
+     "Z+A": 660,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_D_relational": {
+   "cells": {
+    "NZ+A": 48800,
+    "NZ+I": 31200
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.61,
+   "risk_difference": null,
+   "odds_ratio": 0.6393,
+   "or_ci95": [
+    0.0127,
+    32.2243
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.61,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 4670,
+     "NZ+I": 2650,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 28940,
+     "NZ+I": 16750,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 11080,
+     "NZ+A": 14820,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 720,
+     "NZ+A": 370,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_E_dedup_lossy": {
+   "cells": {
+    "NZ+I": 49940,
+    "Z+I": 27820,
+    "NZ+A": 2120,
+    "Z+A": 120
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.00429,
+   "P_A_given_NZ": 0.04072,
+   "risk_difference": -0.03643,
+   "odds_ratio": 0.102,
+   "or_ci95": [
+    0.0849,
+    0.1226
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.028,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5200,
+     "NZ+A": 2120,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 36552,
+     "Z+I": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17712,
+     "NZ+I": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 970,
+     "Z+A": 120,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_argmax_ntags|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_B_lossy": {
+   "cells": {
+    "NZ+I": 59310,
+    "NZ+A": 20690
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.25862,
+   "risk_difference": null,
+   "odds_ratio": 2.8666,
+   "or_ci95": [
+    0.0569,
+    144.4804
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.25862,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5190,
+     "NZ+A": 2130,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 33980,
+     "NZ+A": 11710,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 6480,
+     "NZ+I": 19420,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 720,
+     "NZ+A": 370,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_C_dedup": {
+   "cells": {
+    "NZ+A": 34358,
+    "Z+A": 7552,
+    "Z+I": 20388,
+    "NZ+I": 17702
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.27029,
+   "P_A_given_NZ": 0.65997,
+   "risk_difference": -0.38968,
+   "odds_ratio": 0.1909,
+   "or_ci95": [
+    0.1848,
+    0.1971
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.52387,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 26664,
+     "Z+A": 6666,
+     "Z+I": 2472,
+     "NZ+I": 9888,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 16916,
+     "NZ+I": 7814,
+     "Z+A": 796,
+     "NZ+A": 374,
+     "risk_difference": -0.00074
+    },
+    "3": {
+     "Z+I": 1000,
+     "Z+A": 90,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_E_dedup_lossy": {
+   "cells": {
+    "NZ+I": 49930,
+    "Z+I": 27940,
+    "NZ+A": 2130
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.04091,
+   "risk_difference": -0.04091,
+   "odds_ratio": 0.0004,
+   "or_ci95": [
+    0.0,
+    0.0067
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.02662,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 5190,
+     "NZ+A": 2130,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 36552,
+     "Z+I": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17712,
+     "NZ+I": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_source_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_B_lossy": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_C_dedup": {
+   "cells": {
+    "NZ+I": 25980,
+    "Z+I": 23050,
+    "Z+A": 4890,
+    "NZ+A": 26080
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.17502,
+   "P_A_given_NZ": 0.50096,
+   "risk_difference": -0.32594,
+   "odds_ratio": 0.2114,
+   "or_ci95": [
+    0.204,
+    0.2189
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.38712,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 17880,
+     "Z+I": 4470,
+     "Z+A": 4668,
+     "NZ+A": 18672,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17540,
+     "NZ+I": 8100,
+     "Z+A": 172,
+     "NZ+A": 88,
+     "risk_difference": -0.00104
+    },
+    "3": {
+     "Z+I": 1040,
+     "Z+A": 50,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_D_relational": {
+   "cells": {
+    "NZ+I": 50500,
+    "NZ+A": 29500
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.36875,
+   "risk_difference": null,
+   "odds_ratio": 1.7119,
+   "or_ci95": [
+    0.034,
+    86.2804
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.36875,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 4110,
+     "NZ+A": 3210,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 27770,
+     "NZ+A": 17920,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 17740,
+     "NZ+A": 8160,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 880,
+     "NZ+A": 210,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_E_dedup_lossy": {
+   "cells": {
+    "NZ+I": 44740,
+    "Z+I": 27940,
+    "NZ+A": 7320
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.0,
+   "P_A_given_NZ": 0.14061,
+   "risk_difference": -0.14061,
+   "odds_ratio": 0.0001,
+   "or_ci95": [
+    0.0,
+    0.0017
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.0915,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 36552,
+     "Z+I": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+I": 17712,
+     "NZ+I": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_majtag_total|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_B_lossy": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_C_dedup": {
+   "cells": {
+    "NZ+A": 52060,
+    "Z+A": 27940
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5367,
+   "or_ci95": [
+    0.0106,
+    27.0503
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 36552,
+     "Z+A": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17712,
+     "NZ+A": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_D_relational": {
+   "cells": {
+    "NZ+I": 32210,
+    "NZ+A": 47790
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.59737,
+   "risk_difference": null,
+   "odds_ratio": 0.674,
+   "or_ci95": [
+    0.0134,
+    33.9705
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.59737,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 2050,
+     "NZ+A": 5270,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 16620,
+     "NZ+A": 29070,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 12790,
+     "NZ+A": 13110,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 340,
+     "NZ+I": 750,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_E_dedup_lossy": {
+   "cells": {
+    "NZ+A": 52060,
+    "Z+A": 27940
+   },
+   "n": 80000,
+   "P_A_given_Z": 1.0,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": 0.0,
+   "odds_ratio": 0.5367,
+   "or_ci95": [
+    0.0106,
+    27.0503
+   ],
+   "degenerate": false,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 36552,
+     "Z+A": 9138,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 17712,
+     "NZ+A": 8188,
+     "risk_difference": 0.0
+    },
+    "3": {
+     "Z+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_max_value|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_A_preserving": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_B_lossy": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_C_dedup": {
+   "cells": {
+    "NZ+A": 45586,
+    "Z+A": 19604,
+    "Z+I": 8336,
+    "NZ+I": 6474
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.70165,
+   "P_A_given_NZ": 0.87564,
+   "risk_difference": -0.174,
+   "odds_ratio": 0.334,
+   "or_ci95": [
+    0.322,
+    0.3464
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.81488,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 33440,
+     "Z+A": 8360,
+     "NZ+I": 3112,
+     "Z+I": 778,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 10524,
+     "NZ+A": 4826,
+     "Z+I": 7188,
+     "NZ+I": 3362,
+     "risk_difference": 0.00477
+    },
+    "3": {
+     "Z+I": 370,
+     "Z+A": 720,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_D_relational": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_E_dedup_lossy": {
+   "cells": {
+    "NZ+A": 39046,
+    "Z+A": 16024,
+    "Z+I": 11916,
+    "NZ+I": 13014
+   },
+   "n": 80000,
+   "P_A_given_Z": 0.57351,
+   "P_A_given_NZ": 0.75002,
+   "risk_difference": -0.1765,
+   "odds_ratio": 0.4482,
+   "or_ci95": [
+    0.4346,
+    0.4623
+   ],
+   "degenerate": false,
+   "adequacy_rate": 0.68837,
+   "zero_rate": 0.34925,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 27680,
+     "Z+A": 6920,
+     "Z+I": 2218,
+     "NZ+I": 8872,
+     "risk_difference": 0.0
+    },
+    "2": {
+     "Z+A": 8874,
+     "NZ+A": 4046,
+     "Z+I": 8838,
+     "NZ+I": 4142,
+     "risk_difference": 0.00688
+    },
+    "3": {
+     "Z+I": 860,
+     "Z+A": 230,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_F_destroying": {
+   "cells": {
+    "NZ+I": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 0.0,
+   "risk_difference": null,
+   "odds_ratio": 160001.0,
+   "or_ci95": [
+    1315.4452,
+    19461335.1251
+   ],
+   "degenerate": true,
+   "adequacy_rate": 0.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+I": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+I": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+I": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+I": 1090,
+     "risk_difference": null
+    }
+   }
+  },
+  "Pi_arity|Q_tag_set|T_G_recoding": {
+   "cells": {
+    "NZ+A": 80000
+   },
+   "n": 80000,
+   "P_A_given_Z": null,
+   "P_A_given_NZ": 1.0,
+   "risk_difference": null,
+   "odds_ratio": 0.0,
+   "or_ci95": [
+    0.0,
+    0.0008
+   ],
+   "degenerate": true,
+   "adequacy_rate": 1.0,
+   "zero_rate": 0.0,
+   "by_redundancy": {
+    "0": {
+     "NZ+A": 7320,
+     "risk_difference": null
+    },
+    "1": {
+     "NZ+A": 45690,
+     "risk_difference": null
+    },
+    "2": {
+     "NZ+A": 25900,
+     "risk_difference": null
+    },
+    "3": {
+     "NZ+A": 1090,
+     "risk_difference": null
+    }
+   }
+  }
+ },
+ "n_distinct_representations": {
+  "T_A_preserving": 6333,
+  "T_B_lossy": 3486,
+  "T_C_dedup": 4189,
+  "T_D_relational": 4663,
+  "T_E_dedup_lossy": 575,
+  "T_F_destroying": 1,
+  "T_G_recoding": 7913
+ }
+}

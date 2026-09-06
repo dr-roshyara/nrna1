@@ -1,0 +1,114 @@
+{
+ "gates": [
+  {
+   "gate": "A_schema",
+   "status": "PASS",
+   "note": "every ledger row carries experiment_id / split / case_id"
+  },
+  {
+   "gate": "B_C_deterministic_replay",
+   "status": "PASS",
+   "note": "re-execution reproduces the ledger byte-for-byte (4b93d8f22e8a)"
+  },
+  {
+   "gate": "D_E_traceability",
+   "status": "PASS",
+   "note": "every zoom row cites the generating root; zoom is lookup into generated structure only"
+  },
+  {
+   "gate": "F_resolution",
+   "status": "PASS",
+   "note": "primary rows are r=0 anchored"
+  },
+  {
+   "gate": "G_traversal",
+   "status": "PASS",
+   "note": "all traversals typed"
+  },
+  {
+   "gate": "H_projection_not_zero",
+   "status": "PASS",
+   "note": "exclusion is recorded as excluded_dimensions; every Zero verdict comes from zero_test()"
+  },
+  {
+   "gate": "I_visibility_not_influence",
+   "status": "PASS",
+   "note": "newly_exposed_dimensions is descriptive only; relevance requires an intervention"
+  },
+  {
+   "gate": "J_typed_elimination",
+   "status": "PASS",
+   "note": "every Zero verdict used E^- and compared the contract observable"
+  },
+  {
+   "gate": "K_no_determination_score",
+   "status": "PASS",
+   "note": "no numeric determination score is used anywhere"
+  },
+  {
+   "gate": "L_Q_fixed_primary",
+   "status": "PASS",
+   "note": "primary arm holds Q AND the focus set fixed across resolution (decision D1)"
+  },
+  {
+   "gate": "N_controls_A_B",
+   "status": "PASS",
+   "note": "CONTROL A terminal=356, CONTROL B structured=844"
+  },
+  {
+   "gate": "N_control_C",
+   "status": "PASS",
+   "note": "CONTROL C outward-succeeds-while-inward-terminates = 67"
+  },
+  {
+   "gate": "O_metrics_reproduce",
+   "status": "PASS",
+   "note": "H1 numerator recomputed directly from the ledger matches analysis.json"
+  },
+  {
+   "gate": "P_no_historical_modification",
+   "status": "PASS",
+   "note": "no prior experiment directory shows modification or deletion (untracked dirs are not modifications; 3 untracked entries ignored)"
+  }
+ ],
+ "adversarial_findings": [
+  {
+   "finding": "AUDIT-1_H1_criterion_non_discriminating",
+   "degenerate": true,
+   "note": "zoom_admissible == zoom_nontrivial in BOTH splits. The generator never emits a child state with <2 dimensions or <2 dtypes, so H1's non-triviality threshold is never binding. H1 is SUPPORTED but the criterion did not discriminate: it could not have failed."
+  },
+  {
+   "finding": "AUDIT-2_CF_non_anchor_structure_is_DEFINITIONAL",
+   "degenerate": true,
+   "note": "zoom() resolves the host NODE containing the anchor dimension and returns that node's generated children. Eliminating a NON-anchor dimension changes K.dims but not the host, so the exposed children are necessarily identical. exposed_structure_differs = 0/4368 (train) and 0/4428 (test) is FORCED, not observed. The structural half of \u00a713 is AUDIT INVALIDATED. The OBSERVABLE half (obs_differs 4.3% / 3.4%) remains informative."
+  },
+  {
+   "finding": "AUDIT-3_intermediate_state_equal_degenerate",
+   "degenerate": true,
+   "note": "for i != j the intermediate state IS the first zoom, which differs between the two orders by construction. 0/247 and 0/271 are forced. The metric carries no information."
+  },
+  {
+   "finding": "AUDIT-4_H6_equals_H4_same_observable",
+   "degenerate": true,
+   "note": "H6 (Q-reconstruction) and H4's same_observable class are the SAME comparison x1 == x0 and return identical counts in both splits. H6 adds no independent measurement as implemented."
+  },
+  {
+   "finding": "AUDIT-5_H3_not_testable_as_posed",
+   "degenerate": true,
+   "note": "H3 asks whether the SAME dimension d_i that is Zero at r becomes non-Zero at r+1. Zoom replaces the dimension set wholesale: no d_i survives into K_{r+1}. The experiment measures Zero rates of DIFFERENT dimensions at r+1 and therefore cannot test H3. INCONCLUSIVE."
+  },
+  {
+   "finding": "AUDIT-6_control_E_degenerate",
+   "degenerate": true,
+   "note": "excluded dtypes are, by construction, a subset of the dtypes Q does not read, so removing them cannot change the observable and they are always Zero (780 / 800, zero exceptions). The design cannot exhibit an excluded-but-non-Zero dimension. Note this is the SAFE direction -- it does not violate Projection != Zero -- but the control is uninformative."
+  },
+  {
+   "finding": "AUDIT-7_H2_representable_not_discovered",
+   "degenerate": true,
+   "note": "per-direction termination is drawn independently by the generator, so atomicity transitions are a property the generator can produce. H2 demonstrates that the FRAMEWORK can represent and detect resolution-relative atomicity. It is not evidence that the phenomenon occurs outside the synthetic domain."
+  }
+ ],
+ "n_pass": 14,
+ "n_fail": 0,
+ "n_degenerate_metrics": 7
+}

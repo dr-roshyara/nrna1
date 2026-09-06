@@ -1,0 +1,341 @@
+[
+ {
+  "case": 3,
+  "T": "T3_normalize",
+  "Pi": "P9_balance",
+  "A": [
+   0,
+   2
+  ],
+  "B": [
+   0,
+   3
+  ],
+  "union_not_zero": [
+   0,
+   2,
+   3
+  ],
+  "D": [
+   {
+    "token": "x",
+    "source": "S2",
+    "polarity": false,
+    "scope": "in",
+    "uncertainty": 0.06
+   },
+   {
+    "token": "ref3",
+    "source": "S3",
+    "polarity": false,
+    "scope": null,
+    "uncertainty": 0.6
+   },
+   {
+    "token": "x",
+    "source": "S1",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.04
+   },
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": true,
+    "scope": "in",
+    "uncertainty": 0.78
+   },
+   {
+    "token": "x",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.11
+   }
+  ]
+ },
+ {
+  "case": 3,
+  "T": "T3_normalize",
+  "Pi": "P9_balance",
+  "A": [
+   0,
+   2
+  ],
+  "B": [
+   0,
+   3,
+   4
+  ],
+  "union_not_zero": [
+   0,
+   2,
+   3,
+   4
+  ],
+  "D": [
+   {
+    "token": "x",
+    "source": "S2",
+    "polarity": false,
+    "scope": "in",
+    "uncertainty": 0.06
+   },
+   {
+    "token": "ref3",
+    "source": "S3",
+    "polarity": false,
+    "scope": null,
+    "uncertainty": 0.6
+   },
+   {
+    "token": "x",
+    "source": "S1",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.04
+   },
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": true,
+    "scope": "in",
+    "uncertainty": 0.78
+   },
+   {
+    "token": "x",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.11
+   }
+  ]
+ },
+ {
+  "case": 3,
+  "T": "T3_normalize",
+  "Pi": "P9_balance",
+  "A": [
+   0,
+   2
+  ],
+  "B": [
+   1,
+   2
+  ],
+  "union_not_zero": [
+   0,
+   1,
+   2
+  ],
+  "D": [
+   {
+    "token": "x",
+    "source": "S2",
+    "polarity": false,
+    "scope": "in",
+    "uncertainty": 0.06
+   },
+   {
+    "token": "ref3",
+    "source": "S3",
+    "polarity": false,
+    "scope": null,
+    "uncertainty": 0.6
+   },
+   {
+    "token": "x",
+    "source": "S1",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.04
+   },
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": true,
+    "scope": "in",
+    "uncertainty": 0.78
+   },
+   {
+    "token": "x",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.11
+   }
+  ]
+ },
+ {
+  "case": 3,
+  "T": "T3_normalize",
+  "Pi": "P9_balance",
+  "A": [
+   0,
+   2
+  ],
+  "B": [
+   1,
+   2,
+   4
+  ],
+  "union_not_zero": [
+   0,
+   1,
+   2,
+   4
+  ],
+  "D": [
+   {
+    "token": "x",
+    "source": "S2",
+    "polarity": false,
+    "scope": "in",
+    "uncertainty": 0.06
+   },
+   {
+    "token": "ref3",
+    "source": "S3",
+    "polarity": false,
+    "scope": null,
+    "uncertainty": 0.6
+   },
+   {
+    "token": "x",
+    "source": "S1",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.04
+   },
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": true,
+    "scope": "in",
+    "uncertainty": 0.78
+   },
+   {
+    "token": "x",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.11
+   }
+  ]
+ },
+ {
+  "case": 3,
+  "T": "T3_normalize",
+  "Pi": "P9_balance",
+  "A": [
+   0,
+   2,
+   4
+  ],
+  "B": [
+   0,
+   3
+  ],
+  "union_not_zero": [
+   0,
+   2,
+   3,
+   4
+  ],
+  "D": [
+   {
+    "token": "x",
+    "source": "S2",
+    "polarity": false,
+    "scope": "in",
+    "uncertainty": 0.06
+   },
+   {
+    "token": "ref3",
+    "source": "S3",
+    "polarity": false,
+    "scope": null,
+    "uncertainty": 0.6
+   },
+   {
+    "token": "x",
+    "source": "S1",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.04
+   },
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": true,
+    "scope": "in",
+    "uncertainty": 0.78
+   },
+   {
+    "token": "x",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.11
+   }
+  ]
+ },
+ {
+  "case": 3,
+  "T": "T3_normalize",
+  "Pi": "P9_balance",
+  "A": [
+   0,
+   2,
+   4
+  ],
+  "B": [
+   0,
+   3,
+   4
+  ],
+  "union_not_zero": [
+   0,
+   2,
+   3,
+   4
+  ],
+  "D": [
+   {
+    "token": "x",
+    "source": "S2",
+    "polarity": false,
+    "scope": "in",
+    "uncertainty": 0.06
+   },
+   {
+    "token": "ref3",
+    "source": "S3",
+    "polarity": false,
+    "scope": null,
+    "uncertainty": 0.6
+   },
+   {
+    "token": "x",
+    "source": "S1",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.04
+   },
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": true,
+    "scope": "in",
+    "uncertainty": 0.78
+   },
+   {
+    "token": "x",
+    "source": null,
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.11
+   }
+  ]
+ }
+]

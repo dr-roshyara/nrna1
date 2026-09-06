@@ -1,0 +1,928 @@
+{
+ "_meta": {
+  "experiment_id": "KR-ZERO-ALGEBRA-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "kernel": "NOT SELECTED",
+  "ratified": "nothing",
+  "base_seed": 20260902,
+  "cases_per_family": 1200,
+  "date": "2026-09-03",
+  "python": "3.13.2"
+ },
+ "E0_vacuity": {
+  "question": "are any (T,Pi) pairings VACUOUS -- every element Zero because the transformation destroyed what the contract reads?",
+  "n_cases": 1200,
+  "n_vacuous": 10,
+  "examples": [
+   {
+    "case": 129,
+    "T": "T7_meta_destroying",
+    "Pi": "P9_balance",
+    "n": 1
+   },
+   {
+    "case": 192,
+    "T": "T7_meta_destroying",
+    "Pi": "P9_balance",
+    "n": 4
+   },
+   {
+    "case": 509,
+    "T": "T7_meta_destroying",
+    "Pi": "P9_balance",
+    "n": 4
+   },
+   {
+    "case": 539,
+    "T": "T7_meta_destroying",
+    "Pi": "P9_balance",
+    "n": 3
+   },
+   {
+    "case": 547,
+    "T": "T7_meta_destroying",
+    "Pi": "P9_balance",
+    "n": 4
+   }
+  ],
+  "rule": "a vacuous pairing must be EXCLUDED from algebraic conclusions: 'everything is Zero' there is an artefact, not a finding",
+  "excluded_pairs": [
+   [
+    "T7_meta_destroying",
+    "P9_balance"
+   ]
+  ]
+ },
+ "E1_path_a_vs_b": {
+  "question": "RQ1/H11 -- does the declared rule coincide with counterfactual Zero?",
+  "n_element_tests": 4203,
+  "agree": 2343,
+  "formal_zero_but_rule_false": 301,
+  "rule_true_but_formal_nonzero": 1559,
+  "agreement_rate": 0.5575,
+  "H11": "REFUTED"
+ },
+ "E2_idempotence": {
+  "question": "RQ2/H1 -- is L idempotent?",
+  "by_operator": {
+   "L_simultaneous": {
+    "idempotent": 1182,
+    "non_idempotent": 4
+   },
+   "L_sequential": {
+    "idempotent": 1186,
+    "non_idempotent": 0
+   },
+   "L_rule": {
+    "idempotent": 1186,
+    "non_idempotent": 0
+   }
+  },
+  "H1_by_operator": {
+   "L_simultaneous": "REFUTED",
+   "L_sequential": "CONFIRMED",
+   "L_rule": "CONFIRMED"
+  }
+ },
+ "E3_order_independence": {
+  "question": "RQ3/H2 -- do elimination operators commute?",
+  "commuting": 1151,
+  "non_commuting": 11,
+  "H2": "REFUTED",
+  "non_commuting_pairs_ranked": [
+   [
+    "T4_context|T5_reference",
+    4
+   ],
+   [
+    "T1_stopword|T4_context",
+    3
+   ],
+   [
+    "T4_context|T8_interacting",
+    2
+   ],
+   [
+    "T2_dedup|T8_interacting",
+    1
+   ],
+   [
+    "T2_dedup|T5_reference",
+    1
+   ]
+  ]
+ },
+ "E4_fixed_point": {
+  "question": "RQ4/H3,H4 -- does iterated elimination reach a fixed point?",
+  "immediately_stable": 743,
+  "converged": 444,
+  "cycles": 0,
+  "non_converged": 0,
+  "max_iterations_to_converge": 2,
+  "H3": "CONFIRMED",
+  "H4_monotone_decreasing": "CONFIRMED",
+  "monotone_violations": 0
+ },
+ "E6_elimination_order": {
+  "question": "RQ6 -- simultaneous vs sequential vs reverse elimination",
+  "identical": 1020,
+  "divergent": 169,
+  "verdict": "REFUTED -- order matters"
+ },
+ "E7_contract_sensitivity": {
+  "question": "RQ7/H8 -- is Zero independent of contract detail?",
+  "same": 3554,
+  "different": 495,
+  "H8": "REFUTED -- Zero IS contract-relative",
+  "most_divergent_contract_pairs": [
+   [
+    "P5_uncertainty|P9_balance",
+    64
+   ],
+   [
+    "P2_len|P9_balance",
+    60
+   ],
+   [
+    "P6_scope|P9_balance",
+    59
+   ],
+   [
+    "P1_result|P9_balance",
+    58
+   ],
+   [
+    "P8_composite|P9_balance",
+    55
+   ],
+   [
+    "P7_contradiction|P9_balance",
+    46
+   ],
+   [
+    "P4_provenance|P9_balance",
+    41
+   ],
+   [
+    "P3_required|P9_balance",
+    31
+   ]
+  ]
+ },
+ "E8_boundary_preservation": {
+  "question": "RQ8 -- does boundary information prevent otherwise-tempting eliminations?",
+  "cases_where_result_unchanged": 1223,
+  "blocked_by_boundary": 196,
+  "still_zero_under_full_contract": 1027,
+  "rate_blocked": 0.1603
+ },
+ "E9_group_zero": {
+  "question": "H5/H6 -- is Zero element-wise?",
+  "H5_individual_implies_group": {
+   "holds": 1908,
+   "violated": 131,
+   "verdict": "REFUTED"
+  },
+  "H6_group_decomposes_to_individual": {
+   "holds": 6054,
+   "violated": 63,
+   "verdict": "REFUTED"
+  },
+  "case_I_witnesses": [
+   {
+    "witness_kind": "CASE_I_individually_zero_jointly_not",
+    "case": 20,
+    "T": "T8_interacting",
+    "Pi": "P3_required",
+    "i": 1,
+    "j": 2,
+    "D": [
+     {
+      "token": "must",
+      "source": "S3",
+      "uncertainty": 0.16,
+      "scope": "in",
+      "polarity": false
+     },
+     {
+      "token": "b",
+      "source": "S3",
+      "uncertainty": 0.53,
+      "scope": "out",
+      "polarity": false
+     },
+     {
+      "token": "b",
+      "source": "S3",
+      "uncertainty": 0.92,
+      "scope": "out",
+      "polarity": false
+     },
+     {
+      "token": "ref1",
+      "source": "S1",
+      "uncertainty": 0.69,
+      "scope": "in",
+      "polarity": null
+     },
+     {
+      "token": "ref3",
+      "source": null,
+      "uncertainty": 0.55,
+      "scope": "out",
+      "polarity": null
+     },
+     {
+      "token": "a",
+      "source": "S1",
+      "uncertainty": 0.07,
+      "scope": "in",
+      "polarity": null
+     },
+     {
+      "token": "must",
+      "source": "S2",
+      "uncertainty": 0.65,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "the",
+      "source": "S1",
+      "uncertainty": 0.08,
+      "scope": null,
+      "polarity": false
+     },
+     {
+      "token": "ref3",
+      "source": "S3",
+      "uncertainty": 0.18,
+      "scope": null,
+      "polarity": true
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_I_individually_zero_jointly_not",
+    "case": 20,
+    "T": "T8_interacting",
+    "Pi": "P3_required",
+    "i": 4,
+    "j": 8,
+    "D": [
+     {
+      "token": "must",
+      "source": "S3",
+      "uncertainty": 0.16,
+      "scope": "in",
+      "polarity": false
+     },
+     {
+      "token": "b",
+      "source": "S3",
+      "uncertainty": 0.53,
+      "scope": "out",
+      "polarity": false
+     },
+     {
+      "token": "b",
+      "source": "S3",
+      "uncertainty": 0.92,
+      "scope": "out",
+      "polarity": false
+     },
+     {
+      "token": "ref1",
+      "source": "S1",
+      "uncertainty": 0.69,
+      "scope": "in",
+      "polarity": null
+     },
+     {
+      "token": "ref3",
+      "source": null,
+      "uncertainty": 0.55,
+      "scope": "out",
+      "polarity": null
+     },
+     {
+      "token": "a",
+      "source": "S1",
+      "uncertainty": 0.07,
+      "scope": "in",
+      "polarity": null
+     },
+     {
+      "token": "must",
+      "source": "S2",
+      "uncertainty": 0.65,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "the",
+      "source": "S1",
+      "uncertainty": 0.08,
+      "scope": null,
+      "polarity": false
+     },
+     {
+      "token": "ref3",
+      "source": "S3",
+      "uncertainty": 0.18,
+      "scope": null,
+      "polarity": true
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_I_individually_zero_jointly_not",
+    "case": 21,
+    "T": "T2_dedup",
+    "Pi": "P6_scope",
+    "i": 0,
+    "j": 1,
+    "D": [
+     {
+      "token": "x",
+      "source": "S1",
+      "uncertainty": null,
+      "scope": null,
+      "polarity": true
+     },
+     {
+      "token": "x",
+      "source": "S2",
+      "uncertainty": null,
+      "scope": null,
+      "polarity": false
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_I_individually_zero_jointly_not",
+    "case": 40,
+    "T": "T4_context",
+    "Pi": "P5_uncertainty",
+    "i": 0,
+    "j": 1,
+    "D": [
+     {
+      "token": "the",
+      "source": null,
+      "uncertainty": null,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "the",
+      "source": null,
+      "uncertainty": null,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "key",
+      "source": null,
+      "uncertainty": null,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "key",
+      "source": null,
+      "uncertainty": null,
+      "scope": null,
+      "polarity": null
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_I_individually_zero_jointly_not",
+    "case": 40,
+    "T": "T4_context",
+    "Pi": "P5_uncertainty",
+    "i": 2,
+    "j": 3,
+    "D": [
+     {
+      "token": "the",
+      "source": null,
+      "uncertainty": null,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "the",
+      "source": null,
+      "uncertainty": null,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "key",
+      "source": null,
+      "uncertainty": null,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "key",
+      "source": null,
+      "uncertainty": null,
+      "scope": null,
+      "polarity": null
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_I_individually_zero_jointly_not",
+    "case": 53,
+    "T": "T8_interacting",
+    "Pi": "P8_composite",
+    "i": 2,
+    "j": 3,
+    "D": [
+     {
+      "token": "the",
+      "source": null,
+      "uncertainty": null,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "the",
+      "source": null,
+      "uncertainty": null,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "key",
+      "source": null,
+      "uncertainty": null,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "key",
+      "source": null,
+      "uncertainty": null,
+      "scope": null,
+      "polarity": null
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_I_individually_zero_jointly_not",
+    "case": 57,
+    "T": "T2_dedup",
+    "Pi": "P5_uncertainty",
+    "i": 1,
+    "j": 2,
+    "D": [
+     {
+      "token": "ref2",
+      "source": "S3",
+      "uncertainty": 0.25,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "and",
+      "source": null,
+      "uncertainty": 0.23,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "and",
+      "source": "S1",
+      "uncertainty": 0.09,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "and",
+      "source": "S2",
+      "uncertainty": 0.32,
+      "scope": null,
+      "polarity": null
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_I_individually_zero_jointly_not",
+    "case": 73,
+    "T": "T2_dedup",
+    "Pi": "P5_uncertainty",
+    "i": 0,
+    "j": 1,
+    "D": [
+     {
+      "token": "ref3",
+      "source": "S1",
+      "uncertainty": null,
+      "scope": null,
+      "polarity": true
+     },
+     {
+      "token": "ref3",
+      "source": "S2",
+      "uncertainty": null,
+      "scope": null,
+      "polarity": false
+     }
+    ]
+   }
+  ],
+  "case_J_witnesses": [
+   {
+    "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+    "case": 37,
+    "T": "T1_stopword",
+    "Pi": "P9_balance",
+    "i": 0,
+    "j": 2,
+    "D": [
+     {
+      "token": "y",
+      "source": "S1",
+      "uncertainty": 0.55,
+      "scope": "in",
+      "polarity": false
+     },
+     {
+      "token": "ref2",
+      "source": "S3",
+      "uncertainty": 0.4,
+      "scope": null,
+      "polarity": false
+     },
+     {
+      "token": "y",
+      "source": "S2",
+      "uncertainty": 0.98,
+      "scope": "in",
+      "polarity": true
+     },
+     {
+      "token": "ref2",
+      "source": "S2",
+      "uncertainty": 0.56,
+      "scope": "out",
+      "polarity": false
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+    "case": 37,
+    "T": "T1_stopword",
+    "Pi": "P9_balance",
+    "i": 1,
+    "j": 2,
+    "D": [
+     {
+      "token": "y",
+      "source": "S1",
+      "uncertainty": 0.55,
+      "scope": "in",
+      "polarity": false
+     },
+     {
+      "token": "ref2",
+      "source": "S3",
+      "uncertainty": 0.4,
+      "scope": null,
+      "polarity": false
+     },
+     {
+      "token": "y",
+      "source": "S2",
+      "uncertainty": 0.98,
+      "scope": "in",
+      "polarity": true
+     },
+     {
+      "token": "ref2",
+      "source": "S2",
+      "uncertainty": 0.56,
+      "scope": "out",
+      "polarity": false
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+    "case": 37,
+    "T": "T1_stopword",
+    "Pi": "P9_balance",
+    "i": 2,
+    "j": 3,
+    "D": [
+     {
+      "token": "y",
+      "source": "S1",
+      "uncertainty": 0.55,
+      "scope": "in",
+      "polarity": false
+     },
+     {
+      "token": "ref2",
+      "source": "S3",
+      "uncertainty": 0.4,
+      "scope": null,
+      "polarity": false
+     },
+     {
+      "token": "y",
+      "source": "S2",
+      "uncertainty": 0.98,
+      "scope": "in",
+      "polarity": true
+     },
+     {
+      "token": "ref2",
+      "source": "S2",
+      "uncertainty": 0.56,
+      "scope": "out",
+      "polarity": false
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+    "case": 64,
+    "T": "T6_meta_preserving",
+    "Pi": "P9_balance",
+    "i": 1,
+    "j": 3,
+    "D": [
+     {
+      "token": "a",
+      "source": null,
+      "uncertainty": 0.54,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "y",
+      "source": "S2",
+      "uncertainty": 0.41,
+      "scope": null,
+      "polarity": true
+     },
+     {
+      "token": "a",
+      "source": "S2",
+      "uncertainty": 0.79,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "y",
+      "source": "S3",
+      "uncertainty": 0.64,
+      "scope": "out",
+      "polarity": false
+     },
+     {
+      "token": "a",
+      "source": "S2",
+      "uncertainty": 0.66,
+      "scope": "in",
+      "polarity": false
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+    "case": 64,
+    "T": "T6_meta_preserving",
+    "Pi": "P9_balance",
+    "i": 1,
+    "j": 4,
+    "D": [
+     {
+      "token": "a",
+      "source": null,
+      "uncertainty": 0.54,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "y",
+      "source": "S2",
+      "uncertainty": 0.41,
+      "scope": null,
+      "polarity": true
+     },
+     {
+      "token": "a",
+      "source": "S2",
+      "uncertainty": 0.79,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "y",
+      "source": "S3",
+      "uncertainty": 0.64,
+      "scope": "out",
+      "polarity": false
+     },
+     {
+      "token": "a",
+      "source": "S2",
+      "uncertainty": 0.66,
+      "scope": "in",
+      "polarity": false
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+    "case": 186,
+    "T": "T1_stopword",
+    "Pi": "P9_balance",
+    "i": 0,
+    "j": 1,
+    "D": [
+     {
+      "token": "c",
+      "source": "S1",
+      "uncertainty": null,
+      "scope": null,
+      "polarity": true
+     },
+     {
+      "token": "c",
+      "source": "S2",
+      "uncertainty": null,
+      "scope": null,
+      "polarity": false
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+    "case": 228,
+    "T": "T6_meta_preserving",
+    "Pi": "P9_balance",
+    "i": 0,
+    "j": 1,
+    "D": [
+     {
+      "token": "key",
+      "source": "S1",
+      "uncertainty": null,
+      "scope": null,
+      "polarity": true
+     },
+     {
+      "token": "key",
+      "source": "S2",
+      "uncertainty": null,
+      "scope": null,
+      "polarity": false
+     }
+    ]
+   },
+   {
+    "witness_kind": "CASE_J_individually_nonzero_jointly_zero",
+    "case": 277,
+    "T": "T3_normalize",
+    "Pi": "P9_balance",
+    "i": 1,
+    "j": 2,
+    "D": [
+     {
+      "token": "key",
+      "source": null,
+      "uncertainty": 0.02,
+      "scope": "in",
+      "polarity": null
+     },
+     {
+      "token": "b",
+      "source": "S2",
+      "uncertainty": 0.0,
+      "scope": "in",
+      "polarity": false
+     },
+     {
+      "token": "ref2",
+      "source": "S1",
+      "uncertainty": 0.37,
+      "scope": null,
+      "polarity": true
+     },
+     {
+      "token": "key",
+      "source": "S2",
+      "uncertainty": 0.86,
+      "scope": "out",
+      "polarity": false
+     },
+     {
+      "token": "a",
+      "source": "S3",
+      "uncertainty": 0.46,
+      "scope": "in",
+      "polarity": false
+     },
+     {
+      "token": "y",
+      "source": null,
+      "uncertainty": 0.39,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "b",
+      "source": "S1",
+      "uncertainty": 0.16,
+      "scope": null,
+      "polarity": false
+     },
+     {
+      "token": "ref1",
+      "source": "S1",
+      "uncertainty": 0.11,
+      "scope": null,
+      "polarity": true
+     },
+     {
+      "token": "c",
+      "source": "S3",
+      "uncertainty": 0.09,
+      "scope": null,
+      "polarity": false
+     },
+     {
+      "token": "ref1",
+      "source": "S3",
+      "uncertainty": 0.93,
+      "scope": "out",
+      "polarity": true
+     },
+     {
+      "token": "c",
+      "source": "S2",
+      "uncertainty": 0.95,
+      "scope": null,
+      "polarity": null
+     },
+     {
+      "token": "and",
+      "source": "S3",
+      "uncertainty": 0.46,
+      "scope": "out",
+      "polarity": null
+     },
+     {
+      "token": "of",
+      "source": null,
+      "uncertainty": 0.57,
+      "scope": "out",
+      "polarity": true
+     }
+    ]
+   }
+  ]
+ },
+ "E10_reference": {
+  "question": "H7 -- is Zero invariant under change of reference frame?",
+  "same": 3719,
+  "different": 541,
+  "H7": "REFUTED -- Zero IS reference-relative"
+ },
+ "E11_invariant_vs_zero": {
+  "question": "H9 -- do 'invariant under T' and 'Zero under Pi' coincide?",
+  "cross_tabulation": {
+   "inv_and_zero": 519,
+   "inv_not_zero": 1865,
+   "zero_not_inv": 858,
+   "neither": 915
+  },
+  "H9": "REFUTED -- they are independent classifications"
+ },
+ "E12_remainder": {
+  "question": "H10 -- do the three Remainder constructions coincide?",
+  "n": 1182,
+  "A_equals_B": 816,
+  "A_equals_C": 1182,
+  "B_equals_C": 816,
+  "all_three_coincide": false,
+  "H10": "REFUTED -- Remainder != D - Eliminated"
+ },
+ "E13_regimes": {
+  "question": "SECONDARY -- can Zero differ between reasoning regimes?",
+  "same": 3891,
+  "different": 310,
+  "verdict": "regime-relative [EXP]",
+  "caveat": "a difference here is only a legitimate REGIME difference if it survives checks on applicability, representation, contract, composition and semantics -- see results.md"
+ }
+}

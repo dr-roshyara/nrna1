@@ -1,0 +1,395 @@
+[
+ {
+  "case": 174,
+  "T": "T3_normalize",
+  "Pi": "P9_balance",
+  "minimal_zero_subset": [
+   0,
+   1
+  ],
+  "size": 2,
+  "D": [
+   {
+    "token": "ref1",
+    "source": "S1",
+    "polarity": true,
+    "scope": "in",
+    "uncertainty": 0.1
+   },
+   {
+    "token": "ref1",
+    "source": "S2",
+    "polarity": false,
+    "scope": "out",
+    "uncertainty": 0.9
+   }
+  ]
+ },
+ {
+  "case": 245,
+  "T": "T1_stopword",
+  "Pi": "P9_balance",
+  "minimal_zero_subset": [
+   3,
+   4
+  ],
+  "size": 2,
+  "D": [
+   {
+    "token": "ref3",
+    "source": null,
+    "polarity": null,
+    "scope": "out",
+    "uncertainty": 0.97
+   },
+   {
+    "token": "key",
+    "source": "S3",
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.84
+   },
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": false,
+    "scope": "out",
+    "uncertainty": 0.47
+   },
+   {
+    "token": "key",
+    "source": null,
+    "polarity": false,
+    "scope": "out",
+    "uncertainty": 0.33
+   },
+   {
+    "token": "ref3",
+    "source": "S2",
+    "polarity": true,
+    "scope": "out",
+    "uncertainty": 0.77
+   }
+  ]
+ },
+ {
+  "case": 245,
+  "T": "T1_stopword",
+  "Pi": "P9_balance",
+  "minimal_zero_subset": [
+   2,
+   4
+  ],
+  "size": 2,
+  "D": [
+   {
+    "token": "ref3",
+    "source": null,
+    "polarity": null,
+    "scope": "out",
+    "uncertainty": 0.97
+   },
+   {
+    "token": "key",
+    "source": "S3",
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.84
+   },
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": false,
+    "scope": "out",
+    "uncertainty": 0.47
+   },
+   {
+    "token": "key",
+    "source": null,
+    "polarity": false,
+    "scope": "out",
+    "uncertainty": 0.33
+   },
+   {
+    "token": "ref3",
+    "source": "S2",
+    "polarity": true,
+    "scope": "out",
+    "uncertainty": 0.77
+   }
+  ]
+ },
+ {
+  "case": 355,
+  "T": "T1_stopword",
+  "Pi": "P9_balance",
+  "minimal_zero_subset": [
+   0,
+   1
+  ],
+  "size": 2,
+  "D": [
+   {
+    "token": "ref3",
+    "source": "S1",
+    "polarity": true,
+    "scope": "in",
+    "uncertainty": 0.1
+   },
+   {
+    "token": "ref3",
+    "source": "S2",
+    "polarity": false,
+    "scope": "out",
+    "uncertainty": 0.9
+   }
+  ]
+ },
+ {
+  "case": 426,
+  "T": "T1_stopword",
+  "Pi": "P9_balance",
+  "minimal_zero_subset": [
+   0,
+   1
+  ],
+  "size": 2,
+  "D": [
+   {
+    "token": "c",
+    "source": "S1",
+    "polarity": true,
+    "scope": "in",
+    "uncertainty": 0.1
+   },
+   {
+    "token": "c",
+    "source": "S2",
+    "polarity": false,
+    "scope": "out",
+    "uncertainty": 0.9
+   }
+  ]
+ },
+ {
+  "case": 460,
+  "T": "T6_meta_preserving",
+  "Pi": "P9_balance",
+  "minimal_zero_subset": [
+   0,
+   1
+  ],
+  "size": 2,
+  "D": [
+   {
+    "token": "x",
+    "source": "S1",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": null
+   },
+   {
+    "token": "x",
+    "source": "S2",
+    "polarity": false,
+    "scope": null,
+    "uncertainty": null
+   }
+  ]
+ },
+ {
+  "case": 534,
+  "T": "T5_reference",
+  "Pi": "P9_balance",
+  "minimal_zero_subset": [
+   1,
+   2
+  ],
+  "size": 2,
+  "D": [
+   {
+    "token": "y",
+    "source": "S3",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.53
+   },
+   {
+    "token": "ref3",
+    "source": null,
+    "polarity": true,
+    "scope": "out",
+    "uncertainty": 0.1
+   },
+   {
+    "token": "y",
+    "source": "S1",
+    "polarity": false,
+    "scope": "in",
+    "uncertainty": 0.51
+   },
+   {
+    "token": "ref3",
+    "source": "S3",
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.18
+   },
+   {
+    "token": "y",
+    "source": "S3",
+    "polarity": null,
+    "scope": "in",
+    "uncertainty": 0.14
+   },
+   {
+    "token": "ref3",
+    "source": "S2",
+    "polarity": true,
+    "scope": "out",
+    "uncertainty": 0.61
+   }
+  ]
+ },
+ {
+  "case": 534,
+  "T": "T5_reference",
+  "Pi": "P9_balance",
+  "minimal_zero_subset": [
+   0,
+   2
+  ],
+  "size": 2,
+  "D": [
+   {
+    "token": "y",
+    "source": "S3",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.53
+   },
+   {
+    "token": "ref3",
+    "source": null,
+    "polarity": true,
+    "scope": "out",
+    "uncertainty": 0.1
+   },
+   {
+    "token": "y",
+    "source": "S1",
+    "polarity": false,
+    "scope": "in",
+    "uncertainty": 0.51
+   },
+   {
+    "token": "ref3",
+    "source": "S3",
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.18
+   },
+   {
+    "token": "y",
+    "source": "S3",
+    "polarity": null,
+    "scope": "in",
+    "uncertainty": 0.14
+   },
+   {
+    "token": "ref3",
+    "source": "S2",
+    "polarity": true,
+    "scope": "out",
+    "uncertainty": 0.61
+   }
+  ]
+ },
+ {
+  "case": 534,
+  "T": "T5_reference",
+  "Pi": "P9_balance",
+  "minimal_zero_subset": [
+   2,
+   5
+  ],
+  "size": 2,
+  "D": [
+   {
+    "token": "y",
+    "source": "S3",
+    "polarity": true,
+    "scope": null,
+    "uncertainty": 0.53
+   },
+   {
+    "token": "ref3",
+    "source": null,
+    "polarity": true,
+    "scope": "out",
+    "uncertainty": 0.1
+   },
+   {
+    "token": "y",
+    "source": "S1",
+    "polarity": false,
+    "scope": "in",
+    "uncertainty": 0.51
+   },
+   {
+    "token": "ref3",
+    "source": "S3",
+    "polarity": null,
+    "scope": null,
+    "uncertainty": 0.18
+   },
+   {
+    "token": "y",
+    "source": "S3",
+    "polarity": null,
+    "scope": "in",
+    "uncertainty": 0.14
+   },
+   {
+    "token": "ref3",
+    "source": "S2",
+    "polarity": true,
+    "scope": "out",
+    "uncertainty": 0.61
+   }
+  ]
+ },
+ {
+  "case": 564,
+  "T": "T6_meta_preserving",
+  "Pi": "P9_balance",
+  "minimal_zero_subset": [
+   0,
+   2
+  ],
+  "size": 2,
+  "D": [
+   {
+    "token": "ref1",
+    "source": "S3",
+    "polarity": true,
+    "scope": "out",
+    "uncertainty": 0.56
+   },
+   {
+    "token": "of",
+    "source": null,
+    "polarity": null,
+    "scope": "out",
+    "uncertainty": 0.07
+   },
+   {
+    "token": "ref1",
+    "source": "S1",
+    "polarity": false,
+    "scope": null,
+    "uncertainty": 0.99
+   }
+  ]
+ }
+]

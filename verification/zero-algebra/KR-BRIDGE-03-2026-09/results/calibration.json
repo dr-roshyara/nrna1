@@ -1,0 +1,199 @@
+[
+ {
+  "regime": "R0_baseline",
+  "n_rec": 4,
+  "n_admissible_cells": 98,
+  "n_excluded": 14,
+  "n_informative_cell_stratum_pairs": 73,
+  "cells_with_0_strata": 75,
+  "cells_with_ge3_strata": 16,
+  "mean_informative_strata_per_cell": 0.745,
+  "adequacy_min": 0.0,
+  "adequacy_max": 1.0,
+  "adequacy_saturated": 22,
+  "n_adequacy_cells": 35,
+  "redundancy_dist": {
+   "0": 0.0833,
+   "1": 0.5773,
+   "2": 0.3173,
+   "3": 0.022
+  },
+  "secs": 3.3
+ },
+ {
+  "regime": "R1_wider_records",
+  "n_rec": 6,
+  "n_admissible_cells": 98,
+  "n_excluded": 14,
+  "n_informative_cell_stratum_pairs": 233,
+  "cells_with_0_strata": 75,
+  "cells_with_ge3_strata": 22,
+  "mean_informative_strata_per_cell": 2.378,
+  "adequacy_min": 0.0,
+  "adequacy_max": 1.0,
+  "adequacy_saturated": 27,
+  "n_adequacy_cells": 35,
+  "redundancy_dist": {
+   "2": 0.3667,
+   "3": 0.544,
+   "4": 0.0887,
+   "5": 0.0007
+  },
+  "secs": 7.5
+ },
+ {
+  "regime": "R2_6x6",
+  "n_rec": 6,
+  "n_admissible_cells": 98,
+  "n_excluded": 14,
+  "n_informative_cell_stratum_pairs": 108,
+  "cells_with_0_strata": 81,
+  "cells_with_ge3_strata": 10,
+  "mean_informative_strata_per_cell": 1.102,
+  "adequacy_min": 0.0,
+  "adequacy_max": 1.0,
+  "adequacy_saturated": 31,
+  "n_adequacy_cells": 35,
+  "redundancy_dist": {
+   "0": 0.0193,
+   "1": 0.222,
+   "2": 0.4813,
+   "3": 0.256,
+   "4": 0.0213
+  },
+  "secs": 7.5
+ },
+ {
+  "regime": "R3_zipf",
+  "n_rec": 6,
+  "n_admissible_cells": 98,
+  "n_excluded": 14,
+  "n_informative_cell_stratum_pairs": 235,
+  "cells_with_0_strata": 76,
+  "cells_with_ge3_strata": 21,
+  "mean_informative_strata_per_cell": 2.398,
+  "adequacy_min": 0.0,
+  "adequacy_max": 1.0,
+  "adequacy_saturated": 28,
+  "n_adequacy_cells": 35,
+  "redundancy_dist": {
+   "0": 0.0053,
+   "1": 0.112,
+   "2": 0.3813,
+   "3": 0.3947,
+   "4": 0.102,
+   "5": 0.0047
+  },
+  "secs": 7.5
+ },
+ {
+  "regime": "R4_zipf_wide",
+  "n_rec": 6,
+  "n_admissible_cells": 98,
+  "n_excluded": 14,
+  "n_informative_cell_stratum_pairs": 185,
+  "cells_with_0_strata": 75,
+  "cells_with_ge3_strata": 22,
+  "mean_informative_strata_per_cell": 1.888,
+  "adequacy_min": 0.0,
+  "adequacy_max": 1.0,
+  "adequacy_saturated": 28,
+  "n_adequacy_cells": 35,
+  "redundancy_dist": {
+   "0": 0.0153,
+   "1": 0.1473,
+   "2": 0.3587,
+   "3": 0.3733,
+   "4": 0.0987,
+   "5": 0.0067
+  },
+  "secs": 7.6
+ },
+ {
+  "regime": "R5_balanced_n4",
+  "n_rec": 4,
+  "n_admissible_cells": 98,
+  "n_excluded": 14,
+  "n_informative_cell_stratum_pairs": 75,
+  "cells_with_0_strata": 75,
+  "cells_with_ge3_strata": 16,
+  "mean_informative_strata_per_cell": 0.765,
+  "adequacy_min": 0.0,
+  "adequacy_max": 1.0,
+  "adequacy_saturated": 22,
+  "n_adequacy_cells": 35,
+  "redundancy_dist": {
+   "0": 0.2413,
+   "1": 0.2493,
+   "2": 0.2633,
+   "3": 0.246
+  },
+  "secs": 3.7
+ },
+ {
+  "regime": "R6_balanced_n5",
+  "n_rec": 5,
+  "n_admissible_cells": 98,
+  "n_excluded": 14,
+  "n_informative_cell_stratum_pairs": 155,
+  "cells_with_0_strata": 75,
+  "cells_with_ge3_strata": 23,
+  "mean_informative_strata_per_cell": 1.582,
+  "adequacy_min": 0.0,
+  "adequacy_max": 1.0,
+  "adequacy_saturated": 22,
+  "n_adequacy_cells": 35,
+  "redundancy_dist": {
+   "0": 0.202,
+   "1": 0.2107,
+   "2": 0.2047,
+   "3": 0.1913,
+   "4": 0.1913
+  },
+  "secs": 6.3
+ },
+ {
+  "regime": "R7_balanced_n6",
+  "n_rec": 6,
+  "n_admissible_cells": 98,
+  "n_excluded": 14,
+  "n_informative_cell_stratum_pairs": 184,
+  "cells_with_0_strata": 75,
+  "cells_with_ge3_strata": 21,
+  "mean_informative_strata_per_cell": 1.878,
+  "adequacy_min": 0.0,
+  "adequacy_max": 1.0,
+  "adequacy_saturated": 26,
+  "n_adequacy_cells": 35,
+  "redundancy_dist": {
+   "0": 0.164,
+   "1": 0.1653,
+   "2": 0.1707,
+   "3": 0.184,
+   "4": 0.156,
+   "5": 0.16
+  },
+  "secs": 15.1
+ },
+ {
+  "regime": "R8_balanced_n6v4",
+  "n_rec": 6,
+  "n_admissible_cells": 98,
+  "n_excluded": 14,
+  "n_informative_cell_stratum_pairs": 204,
+  "cells_with_0_strata": 76,
+  "cells_with_ge3_strata": 21,
+  "mean_informative_strata_per_cell": 2.082,
+  "adequacy_min": 0.0,
+  "adequacy_max": 1.0,
+  "adequacy_saturated": 26,
+  "n_adequacy_cells": 35,
+  "redundancy_dist": {
+   "2": 0.2413,
+   "3": 0.2553,
+   "4": 0.2393,
+   "5": 0.264
+  },
+  "secs": 8.9
+ }
+]

@@ -1,0 +1,468 @@
+[
+ {
+  "case": 7,
+  "T": "T4_context",
+  "Pi": "P7_contradiction",
+  "n": 4,
+  "D": [
+   {
+    "token": "the",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "the",
+    "polarity": null,
+    "source": "S2"
+   },
+   {
+    "token": "key",
+    "polarity": null,
+    "source": "S2"
+   },
+   {
+    "token": "key",
+    "polarity": null,
+    "source": "S1"
+   }
+  ],
+  "size_m": 2,
+  "k_exhausted": 1,
+  "colliding_subsets": [
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    3
+   ]
+  ]
+ },
+ {
+  "case": 11,
+  "T": "T2_dedup",
+  "Pi": "P2_len",
+  "n": 5,
+  "D": [
+   {
+    "token": "x",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "c",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "x",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "c",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "x",
+    "polarity": null,
+    "source": null
+   }
+  ],
+  "size_m": 2,
+  "k_exhausted": 1,
+  "colliding_subsets": [
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    3
+   ]
+  ]
+ },
+ {
+  "case": 11,
+  "T": "T2_dedup",
+  "Pi": "P2_len",
+  "n": 5,
+  "D": [
+   {
+    "token": "x",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "c",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "x",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "c",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "x",
+    "polarity": null,
+    "source": null
+   }
+  ],
+  "size_m": 3,
+  "k_exhausted": 2,
+  "colliding_subsets": [
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    0,
+    1,
+    4
+   ]
+  ]
+ },
+ {
+  "case": 33,
+  "T": "T6_meta_preserving",
+  "Pi": "P9_balance",
+  "n": 6,
+  "D": [
+   {
+    "token": "b",
+    "polarity": true,
+    "source": "S2"
+   },
+   {
+    "token": "ref1",
+    "polarity": null,
+    "source": "S3"
+   },
+   {
+    "token": "b",
+    "polarity": false,
+    "source": null
+   },
+   {
+    "token": "must",
+    "polarity": true,
+    "source": null
+   },
+   {
+    "token": "key",
+    "polarity": true,
+    "source": "S3"
+   },
+   {
+    "token": "ref3",
+    "polarity": false,
+    "source": null
+   }
+  ],
+  "size_m": 2,
+  "k_exhausted": 1,
+  "colliding_subsets": [
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    3
+   ],
+   [
+    0,
+    4
+   ]
+  ]
+ },
+ {
+  "case": 35,
+  "T": "T4_context",
+  "Pi": "P6_scope",
+  "n": 4,
+  "D": [
+   {
+    "token": "the",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "the",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "key",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "key",
+    "polarity": null,
+    "source": null
+   }
+  ],
+  "size_m": 2,
+  "k_exhausted": 1,
+  "colliding_subsets": [
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    3
+   ]
+  ]
+ },
+ {
+  "case": 36,
+  "T": "T4_context",
+  "Pi": "P8_composite",
+  "n": 4,
+  "D": [
+   {
+    "token": "the",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "the",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "key",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "key",
+    "polarity": null,
+    "source": null
+   }
+  ],
+  "size_m": 2,
+  "k_exhausted": 1,
+  "colliding_subsets": [
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    3
+   ]
+  ]
+ },
+ {
+  "case": 60,
+  "T": "T2_dedup",
+  "Pi": "P3_required",
+  "n": 4,
+  "D": [
+   {
+    "token": "the",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "the",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "key",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "key",
+    "polarity": null,
+    "source": null
+   }
+  ],
+  "size_m": 2,
+  "k_exhausted": 1,
+  "colliding_subsets": [
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    3
+   ]
+  ]
+ },
+ {
+  "case": 160,
+  "T": "T2_dedup",
+  "Pi": "P8_composite",
+  "n": 5,
+  "D": [
+   {
+    "token": "of",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "b",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "of",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "b",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "of",
+    "polarity": null,
+    "source": null
+   }
+  ],
+  "size_m": 2,
+  "k_exhausted": 1,
+  "colliding_subsets": [
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    3
+   ]
+  ]
+ },
+ {
+  "case": 160,
+  "T": "T2_dedup",
+  "Pi": "P8_composite",
+  "n": 5,
+  "D": [
+   {
+    "token": "of",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "b",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "of",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "b",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "of",
+    "polarity": null,
+    "source": null
+   }
+  ],
+  "size_m": 3,
+  "k_exhausted": 2,
+  "colliding_subsets": [
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    0,
+    1,
+    4
+   ]
+  ]
+ },
+ {
+  "case": 162,
+  "T": "T8_interacting",
+  "Pi": "P1_result",
+  "n": 4,
+  "D": [
+   {
+    "token": "the",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "the",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "key",
+    "polarity": null,
+    "source": null
+   },
+   {
+    "token": "key",
+    "polarity": null,
+    "source": null
+   }
+  ],
+  "size_m": 2,
+  "k_exhausted": 1,
+  "colliding_subsets": [
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    3
+   ]
+  ]
+ }
+]

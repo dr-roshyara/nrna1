@@ -1,0 +1,169 @@
+{
+ "n_dims": {
+  "points": [
+   {
+    "value": "3",
+    "base": 0.41333
+   },
+   {
+    "value": "4",
+    "base": 0.35833
+   },
+   {
+    "value": "6",
+    "base": 0.28
+   },
+   {
+    "value": "8",
+    "base": 0.2675
+   },
+   {
+    "value": "10",
+    "base": 0.29167
+   },
+   {
+    "value": "14",
+    "base": 0.32083
+   }
+  ],
+  "span": 0.14583,
+  "in_band_at": [
+   "3",
+   "4",
+   "14"
+  ],
+  "SENSITIVE": false
+ },
+ "subjects": {
+  "points": [
+   {
+    "value": "(1, 1)",
+    "base": 0.545
+   },
+   {
+    "value": "(1, 2)",
+    "base": 0.41417
+   },
+   {
+    "value": "(2, 3)",
+    "base": 0.2675
+   },
+   {
+    "value": "(3, 4)",
+    "base": 0.40917
+   },
+   {
+    "value": "(4, 5)",
+    "base": 0.39
+   }
+  ],
+  "span": 0.2775,
+  "in_band_at": [
+   "(1, 1)",
+   "(1, 2)",
+   "(3, 4)",
+   "(4, 5)"
+  ],
+  "SENSITIVE": true
+ },
+ "value_alphabet": {
+  "points": [
+   {
+    "value": "2",
+    "base": 0.38583
+   },
+   {
+    "value": "3",
+    "base": 0.35667
+   },
+   {
+    "value": "4",
+    "base": 0.2675
+   },
+   {
+    "value": "6",
+    "base": 0.27833
+   },
+   {
+    "value": "8",
+    "base": 0.29833
+   }
+  ],
+  "span": 0.11833,
+  "in_band_at": [
+   "2",
+   "3"
+  ],
+  "SENSITIVE": false
+ },
+ "p_prior_wrong": {
+  "points": [
+   {
+    "value": "0.2",
+    "base": 0.26833
+   },
+   {
+    "value": "0.35",
+    "base": 0.26333
+   },
+   {
+    "value": "0.5",
+    "base": 0.2675
+   }
+  ],
+  "span": 0.005,
+  "in_band_at": [],
+  "SENSITIVE": false
+ },
+ "p_cover": {
+  "points": [
+   {
+    "value": "0.6",
+    "base": 0.2675
+   },
+   {
+    "value": "0.75",
+    "base": 0.2675
+   },
+   {
+    "value": "0.9",
+    "base": 0.2675
+   }
+  ],
+  "span": 0.0,
+  "in_band_at": [],
+  "SENSITIVE": false
+ },
+ "n_detail": {
+  "points": [
+   {
+    "value": "(1, 2)",
+    "base": 0.23083
+   },
+   {
+    "value": "(1, 3)",
+    "base": 0.2625
+   },
+   {
+    "value": "(2, 4)",
+    "base": 0.2675
+   }
+  ],
+  "span": 0.03667,
+  "in_band_at": [],
+  "SENSITIVE": false
+ },
+ "_verdict": {
+  "gate": [
+   0.3,
+   0.8
+  ],
+  "gate_width": 0.5,
+  "criterion": "span >= half the gate width",
+  "SENSITIVE_PARAMETERS": [
+   "subjects"
+  ],
+  "RULE_SATISFIED": true,
+  "note": "a grid built ONLY from insensitive parameters is what stopped KR-ZOOM-OUT-02"
+ }
+}
