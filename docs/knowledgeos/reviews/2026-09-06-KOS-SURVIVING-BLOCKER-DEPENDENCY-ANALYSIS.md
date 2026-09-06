@@ -5,6 +5,13 @@
 
 > **Instruction honoured:** *"do not search for more definitions now; prove the dependency structure
 
+> ### ⚠️ **§4 ORDERING CORRECTED 2026-09-06** — `ℐ` is UPSTREAM of `𝒪_core`, not downstream
+> Step 277's operation-necessity criterion is stated over `R_mandatory` = `ℐ`, and *"cannot be run
+> yet"* because `ℐ` is unestablished — *"a dependency **neither lane has recorded**"*.
+> Composing that with `𝒪 → 𝒯 → δ` yields a **cycle on the critical path**.
+> See [`…-FIVE-BLOCKER-TRIAGE.md`](2026-09-06-KOS-FIVE-BLOCKER-TRIAGE.md).
+
+
 > ### ⚠️ **FURTHER AMENDED 2026-09-06** — the closure this rests on is MODEL-RELATIVE
 > The `K_min` = {Hold, Transition, Reject, Replay} basis is **stipulated**, not derived
 > (`07-MINIMUM-IMPLEMENTABLE` Method paragraph: *"A reference kernel **must be able to**…"*, no
