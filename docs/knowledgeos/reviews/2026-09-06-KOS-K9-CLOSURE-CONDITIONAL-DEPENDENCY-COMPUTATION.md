@@ -157,6 +157,8 @@ Axis 3 is **the source program's own §F sensitivity**: does the mandated invari
 - present in **no** world (3): `Lineage`, `Measurement`, `Orphan`
 
 > ### `[NEG]` Closure size ranges over **15 … 22** of 29 across the 14 worlds.
+> ⚠️ **AMENDED — see §12:** independent verification over the full 66-world product widens
+> this to **15 … 23**. The conclusion is unchanged in direction and stronger in magnitude.
 > **The size of the kernel's requirement set is not determined by the corpus.** Any single number
 > — including the source program's 18, and including this document's 20 — is a number *about a
 > chosen world*, not a number about KnowledgeOS.
@@ -273,3 +275,57 @@ computation can settle it. ⚠️ **It is a recommendation and is NOT performed 
 | graph source (unmodified) | `docs/knowledgeos/brainstorming/verification/gap-discovery/readiness/exec/minimum_implementable.py` |
 | `C-1…C-9` source | `docs/knowledgeos/reviews/synthesis/analysis/OPERATION-CONTRACT-GAP.md` |
 | amended by this report | `docs/knowledgeos/reviews/2026-09-06-KOS-SURVIVING-BLOCKER-DEPENDENCY-ANALYSIS.md` §4 · `…-CAPABILITY-BASIS-LEVEL-A-FALSIFICATION.md` §17 |
+
+---
+
+## 12. ✅ INDEPENDENT VERIFICATION — reproduced, and **extended**, by a separate lane
+
+`docs/knowledgeos/brainstorming/verification/gap-discovery/gap-update-2026-09-02/11-INDEPENDENT-VERIFICATION-K9-CLOSURE.md`
+(+ `exec/verify_k9_closure.py`, `exec/extend_k9_worlds.py`) — produced independently of this
+document, not by its author.
+
+| | |
+|---|---|
+| graph transcription | **byte-identical across all 29 nodes — CONFIRMED** |
+| published numbers re-executed | **15 of 15 reproduce.** Control, both closures, non-nesting, all three set differences, all five mapping perturbations, the §E 4-of-8 failure, the triply-robust set, and the 15…22 range |
+| the §4 degeneracy warning | **tested the hard way** — removing `C-7` makes `Qualification` unreachable by *any* path, so its membership is definitional exactly as warned |
+
+### `[EXP]` Three things the verification ADDS, and one correction to §6 of this document
+
+1. **The world set was too small, and my negative claim UNDERSTATED itself.** This document crossed
+   2 edge-variants × (`𝒦₄` + 6 one-at-a-time mappings) = **14 worlds**. The verification takes the
+   **full product** over the 5 perturbable rows = **66 worlds**, everything else identical:
+
+   $$\text{range } \mathbf{15 \ldots 22}\ (14\text{ worlds}) \;\longrightarrow\; \mathbf{15 \ldots 23}\ (66\text{ worlds})$$
+
+   **⚠️ §6's "15…22" is superseded by 15…23** — a spread of **9 of 29 constructs** from modelling
+   choices alone. The conclusion is unchanged in direction and **stronger** in magnitude.
+
+2. **The triply-robust core is unchanged at 4.7× the world count.** `{Identity, InvariantReg, K,
+   Proposition, Relation}` is **identical over 66 worlds**. `InvariantReg` is blocked in **66/66**.
+   `[EXP]` This is the package's strongest positive result and it survived the harder test.
+
+3. **`[EXP]` New number — `𝒪_core` is in the closure in 34 of 66 worlds (51 %).** This document
+   established `𝒪_core` as mapping-fragile; the verification *quantifies* it.
+   ⚠️ **Read precisely:** this is **not** "`𝒪_core` is 51 % likely to be in the kernel" — there is
+   no distribution over worlds and none is claimed. It is: **half the admissible readings put it in,
+   half leave it out, and the corpus does not choose.**
+
+### `[INF]` The one apparent discrepancy was a scope difference, not a contradiction
+
+The verification's first pass reported **16…23 over 32 worlds** against this document's 15…22, and
+**correctly declined to call it a mismatch**: the designs differ — this document crosses the mapping
+perturbations with the source program's own *structural-only* `InvariantReg` variant, and that
+variant is what reaches 15. Both are right for their own design; the union is the 15…23 above.
+
+> **The rule that produced the right outcome, worth keeping:** *a number that disagrees is a
+> difference of design or scope until proven otherwise — the first move on a mismatch is to read
+> the other design, not to report a contradiction.*
+
+### What verification does **not** change
+
+Every `🔴 untouched` item stands: which reading is right (**a governance act**), the sufficiency of
+either basis (88 of 99 contract cells still empty), the `Reject ↔ I-12 ↔ Article 8` contradiction,
+`Replay`'s type-level contradiction (capability in `𝒦₄`, property in GN-77), and **anything about
+minimality**. Reproduction confirms the computation was performed correctly; it does not convert a
+conditional dependency computation into a kernel.
