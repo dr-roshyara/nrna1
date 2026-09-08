@@ -3521,3 +3521,65 @@ and all four admitted files confirmed unmodified; only the new
 **MD-036 status: COMPLETE — HARD STOP. V6 not selected, not rejected. Smallest next step (if any):
 a targeted search of the document series for a formal definition of "surviving a defeater" —
 named, not authorized. Awaiting separate authorization for any further step.**
+
+---
+
+## MD-037 — Targeted "Surviving a Defeater" Semantic and Formal Study (EXECUTED, 2026-09-08)
+
+**Authorization**: separate, explicit. One scope note flagged, not a blocking disagreement: the
+authorization's own §§2–6 read as "search unadmitted files, then adjudicate" — this study executed
+the full search but reports findings as characterization with an admissibility recommendation
+(mirroring MD-030/034), keeping MD-036's own verdict (resting only on the four admitted files)
+untouched. Read all 17 remaining files in the same numbered document series in full, cold — genuinely
+new to this reconstruction, none read in any prior study, satisfying the user's own tightened
+cold-read requirement.
+
+**Central finding: no formal definition, operational characterization, invariant, or derivation rule
+for "surviving a defeater" was found anywhere in the 2,043 lines inspected.** The term is used
+consistently across four documents (`12`, `15`, `17`, `18`) without ever being cashed out
+operationally — no distinction is given between defeating, rebutting, answering, neutralizing, or
+merely processing a challenge; no statement of necessity vs. sufficiency for `Verdict`; no failure or
+termination condition. `18` §5.3's own named invariant `I9` ("`Verdict ⇒ Defeater` consideration") is
+explicitly a *weaker*, *different* condition (mere consideration, not survival) — the two are never
+equated by the source.
+
+**Direct, independent corroboration of MD-036's own separation of the reachability fact from the
+interpretive safeguard claim**: `18` §3.3 states outright — *"V6 was never the evidence. The evidence
+is V0... V6 is the contrast case."* — and `18` §1 item A-7 concedes *"V6 is close to definitional."*
+The corpus's own later self-audit process independently reached the same A/B distinction MD-036
+constructed without access to this material. `17`'s own open-questions register (Q-6/Q-7) and `15`'s
+own falsification register (F-9/F-10) both catalogue this exact question as **open, untested,
+non-blocking** — the gap MD-036 found is not an oversight; it is a gap the original research
+programme itself knowingly left unresolved.
+
+**A separate, valuable finding**: `18`'s own provenance ledger (§0) **directly states**, not merely
+permits inferring, that the narrative and executable directories share a single author-layer
+("Execution... Claude Code CLI... `docs/knowledgeos/research/kernel-reduction/`,
+`research/kernel-reduction/`") — the first source-internal confirmation of MD-031's own
+`CONVERGENCE WITH COMMON-CAUSE PROVENANCE` finding, previously only inferred from mtime proximity
+and citation absence.
+
+**Final verdict: C — source-grounded motivation found, but no formal definition** (not A/B — no
+definition exists at any depth; not D — this undersells the substantial motivational content found;
+not E — the search was comprehensive, full reads, not sampled). **The V0/V6 relationship remains
+`STRUCTURAL CORRESPONDENCE`, unchanged from MD-036** — nothing found strengthens it to formal
+equivalence or weakens it to incompatibility.
+
+**No backlog ticket filed** — considered and declined; nothing new and clearly-scoped surfaced beyond
+what `EKS-14` (out-of-root admission mechanism) already covers, and acting on the "hard-coded
+exclusion list" observation found inside the unadmitted narrative material would itself cross the
+evidentiary boundary this study was built to respect.
+
+**No classification changed. No frozen artifact (MD-024–036) modified. No source file modified —
+including all 17 newly-read files. `classification-register.tsv` untouched. No executable artifact
+inspected or executed. No composition test. No model selected. No Stage 07. No canonicalization.
+K-1/K-2 untouched.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; MD-024–036
+and the entire `docs/knowledgeos/research/kernel-reduction/` directory (21 files) confirmed
+unmodified; only the new `14_decision-log/MD-037-defeater-semantics/` directory (12 files) written.
+
+**MD-037 status: COMPLETE. Verdict C — no formal definition found, source-grounded motivation
+present, gap preserved as unresolved. Smallest next step (if the material is ever admitted): apply
+the series' own proposed "Semantic Kernel Equivalence" framework to formalize the concept — named,
+not executed. Awaiting separate authorization for any further step.**

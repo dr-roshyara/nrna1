@@ -1,5 +1,40 @@
-**Updated:** 2026-09-08 (latest) — **MD-036 COMPLETE — CONTROLLED V0/V6 SEMANTIC AND FORMAL
-ADJUDICATION.** Reused already-completed cold reads of all four admitted files; excluded the
+**Updated:** 2026-09-08 (latest) — **MD-037 COMPLETE — TARGETED "SURVIVING A DEFEATER" SEMANTIC AND
+FORMAL STUDY.** Read all 17 remaining files in the same numbered document series in full, cold
+(2,043 lines, none read previously) — satisfying the user's own tightened cold-read requirement.
+Scope note flagged first (not blocking): the target files are unadmitted, so findings are reported
+as characterization with an admissibility recommendation, not folded into MD-036's own verdict.
+**Central finding: no formal definition, invariant, or derivation rule for "surviving a defeater"
+was found anywhere.** The term is used consistently across `12`/`15`/`17`/`18` without ever being
+cashed out operationally — no distinction between defeating/rebutting/answering/neutralizing, no
+necessity-vs-sufficiency statement, no failure or termination condition. **Direct corroboration**:
+`18` §3.3 states, in its own voice, the same A/B distinction MD-036 constructed independently —
+*"V6 was never the evidence... V6 is the contrast case"* — and concedes *"V6 is close to
+definitional."* `17`'s open-questions register (Q-6/Q-7) and `15`'s falsification register (F-9/
+F-10) both catalogue this exact question as open and non-blocking — the gap is one the original
+research programme itself knowingly left unresolved, not an oversight of this reconstruction's own
+reading. A distinct, named invariant (`18` §5.3's `I9`, "Defeater consideration") was found and
+correctly distinguished from "surviving a defeater" — the two are never equated by any source.
+**Separate valuable finding**: `18`'s own provenance ledger directly states (not merely permits
+inferring) that the narrative and executable directories share one author — upgrading MD-031's own
+inferred `CONVERGENCE WITH COMMON-CAUSE PROVENANCE` finding to a source-confirmed one. **Final
+verdict: C — source-grounded motivation found, but no formal definition.** V0/V6 relationship
+remains `STRUCTURAL CORRESPONDENCE`, unchanged from MD-036. **No backlog ticket filed** — nothing new
+and clearly-scoped surfaced beyond `EKS-14`'s existing coverage; declined to act on a finding
+embedded in unadmitted material for a different governance track. No classification changed; no
+frozen artifact (MD-024–036) modified; no source file modified (including all 17 newly-read files);
+`classification-register.tsv` untouched; no executable artifact inspected/executed; no composition
+test; no model selected; no Stage 07; no canonicalization; K-1/K-2 untouched. Verified: both
+consistency scripts `CONSISTENT`; MD-024–036 and the entire 21-file kernel-reduction directory
+confirmed unmodified; only the new `14_decision-log/MD-037-defeater-semantics/` directory (12
+files) written. Full record: `14_decision-log/model-boundary-decisions.md` → MD-037 execution
+record. **MD-037 COMPLETE.** Smallest next step, if the material is ever admitted: apply the
+series' own proposed "Semantic Kernel Equivalence" framework to formalize the concept — named, not
+executed. Awaiting separate authorization for any further step. This session's work is being
+committed now, per explicit instruction.
+
+**Superseded-update-marker-58 (2026-09-08, earlier) — MD-036 COMPLETE — CONTROLLED V0/V6 SEMANTIC
+AND FORMAL ADJUDICATION.** Reused already-completed cold reads of all four admitted files; excluded
+the
 executable lane entirely. **Central finding**: `V6` is `V0`'s own stated derivation rule plus exactly
 one additional required carrier (`Defeater`) — a precise, source-grounded structural transformation,
 not a notational variant. The reachability consequence (`12`'s own table: `V0` reaches `Verdict`

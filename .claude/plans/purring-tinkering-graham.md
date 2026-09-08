@@ -1185,7 +1185,20 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-08 (latest): MD-036 — Controlled V0/V6 Semantic and Formal Adjudication —
+**Status update, 2026-09-08 (latest): MD-037 — Targeted "Surviving a Defeater" Semantic and Formal
+Study — EXECUTED.** Read all 17 remaining files in the same numbered document series in full, cold
+(2,043 lines, genuinely new to this reconstruction). **Central finding: no formal definition,
+invariant, or derivation rule for "surviving a defeater" was found anywhere.** The term is used
+consistently but never cashed out operationally across `12`/`15`/`17`/`18`. **Direct corroboration**
+of MD-036's own A/B distinction: `18` §3.3 states "V6 was never the evidence... V6 is the contrast
+case"; `17`/`15` catalogue this exact question as open, non-blocking. **Separate finding**: `18`'s
+own provenance ledger directly confirms (not just permits inferring) the narrative/executable
+common-authorship MD-031 already found — strengthening that classification with source-internal
+proof. **Verdict: C — source-grounded motivation found, no formal definition.** V0/V6 relationship
+remains `STRUCTURAL CORRESPONDENCE`, unchanged. No backlog ticket filed — nothing new surfaced
+beyond `EKS-14`'s existing scope. No admission, no composition test, no model selection.
+
+**Status update, 2026-09-08 (earlier): MD-036 — Controlled V0/V6 Semantic and Formal Adjudication —
 EXECUTED.** Reused already-completed cold reads of all four admitted files; excluded the executable
 lane entirely. **Central finding**: `V6` = `V0`'s own rule + one additional required carrier
 (`Defeater`) — a precise structural transformation, classified `STRUCTURAL CORRESPONDENCE` on the
