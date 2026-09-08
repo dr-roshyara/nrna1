@@ -3903,3 +3903,83 @@ Lane-T session were found in the shared working tree during verification and exp
 from this phase's commit.
 
 **MD-042 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-043 opened.**
+
+---
+
+## MD-043 — Provenance Boundary and Evidence-Landscape Adjudication (EXECUTED, 2026-09-09)
+
+**Authorization**: user reviewed MD-042 in detail, agreed with its scientific negative result, and
+identified a fair methodological gap — MD-042 converted filename/structure signals into directory-
+level firewalls without separately marking how strong the underlying provenance claim actually was.
+Authorized a provenance-only adjudication (no kernel/Warrant research) using a four-level scale
+(ESTABLISHED / STRONGLY INDICATED / PLAUSIBLE / UNRESOLVED), git archaeology, and minimal targeted
+metadata checks.
+
+**Method**: `git log`/`git show` full commit-message reading for every disputed landscape, cross-
+referenced against this decision log's own prior citations. No new scientific content read beyond
+what MD-042 already read (a README, some filenames, one already-known corpus-cutoff marker file's own
+listing).
+
+**Central result — three of MD-042's own hypotheses corrected, not merely re-confirmed:**
+- **`reviews/kernel/`**: MD-042's "theory-extraction-adjacent by naming style" hypothesis is
+  **withdrawn** — unsupported by the two commits' own messages, and directly contradicted by
+  `session1/`'s own corpus-cutoff marker file matching `brainstorming/kernel/`'s own date range and
+  vocabulary, and by commit `57d93b0ee`'s explicit self-description ("Session 1 discovers; Session 2
+  challenges..."). New classification: **STRONGLY INDICATED** to be a review/synthesis layer over the
+  already-admissible `brainstorming/kernel/` corpus, not theory-extraction.
+- **`reviews/exec/`**: MD-042's "K_9 naming matches Lane-T style" hypothesis is **withdrawn** — commit
+  `590043f42`'s own rich, first-party message (`GN-77`, `K_9={C-1..C-9}`, `K_4`, `O_core`) is
+  **ESTABLISHED** first-party evidence of the same K-1/K2/GN-governance-ruling research family already
+  known to this reconstruction (though `GN-77` itself does not appear in this decision log — a later
+  or parallel ruling, not yet incorporated into Phase 5A–5N).
+- **`brainstorming/verification/`**: the whole-482-file-tree firewall is **narrowed** to a specific,
+  well-evidenced subtree — `gap-discovery/step-272/` plus `step-280/281/282/handoff/witnesses/
+  canonical-construction/consolidation/`, all sharing the **identical** first-commit hash `70fee73c8`
+  (the single largest commit in this repository's history, 4,000 files, whose own message separates
+  `verification/`, `phase_measure_theory/`, and **`three_model_convergence/` itself** as distinct
+  bullets — ESTABLISHED that `verification/` is not this reconstruction's own product). The remaining
+  ~445 files are explicitly left **PLAUSIBLE/UNRESOLVED**, not implicitly bundled into the firewall on
+  the strength of the smaller cluster's evidence. **`step-272`'s own filename match to the frozen
+  Phase 5J citation is narrowed from "confirmed identical" to "strongly indicated"** — the frozen
+  citation itself does not carry an explicit file path, so document-identity (vs. subject-matter
+  identity) remains formally unresolved, though the underlying Phase 5J adjudication is not reopened.
+
+**Two findings sharpened rather than corrected**: `reviews/synthesis/`'s lineage-overlap claim is
+upgraded from "potential" to **ESTABLISHED subject-matter overlap** (commit `10bda5d7a`'s own message
+states the K_t/8-primitive/`pi_K(K_t)`-projection constructs directly) — document-identity remains
+separately unresolved, and the user's own prior admissibility ruling is unchanged. `brainstorming/
+synthesis/`'s "EXTRACTION"-naming hypothesis is **weakened** in favor of a generic-methodology-term
+reading (same early-effort commit as `reviews/kernel/session1/`; MD-042's own F7 finding already
+traced this ledger's pointers into admissible corpus).
+
+**One finding strengthened**: `research/knowledgeos-sim/` has **zero git history at all** (entirely
+untracked) — a stronger reason for the existing exclusion than MD-042's own "not explicitly
+re-included" note.
+
+**Scope bookkeeping corrected**: the "eight nominally-authorized directories"/"five of eight" figures
+are retired — two of the eight items were directory *families*, not single directories. A precise
+10-distinct-path table replaces them (`02_scope-reconciliation-table.md`).
+
+**No firewall lifted. No admission made.** K-1/K2/GA-001/GA-038 unchanged (explicit answers: all NO).
+Warrant unchanged (threshold not found, survival not defined, no new legitimate evidence source, V0/V6
+unchanged — all explicit NO). **Classification: next-step B — a human provenance/admissibility
+decision is required**, for two bounded sub-questions only (whether to admit `reviews/kernel/`'s own
+review findings; whether to bring the `GN-77`/`reviews/exec/` material forward to a future extension
+of the K-1/K2 track) — not a blanket reopening.
+
+**Git integrity audit**: commit `196aa607e` (this reconstruction's own MD-042 commit) and the
+parallel session's `c821abece` (5m40s earlier) were reconciled at the exact file/timestamp level.
+Confirmed: `docs/knowledgeos/backlog/00_index.md`'s `EKS-19` addition was absorbed into `c821abece`
+because it was sitting uncommitted in the shared working tree at the moment Lane T committed — content
+correct and intact, attribution on the wrong commit message. No rewrite performed; the fact is
+recorded, not repaired. This is a new *flavor* of `EKS-07`'s own recurring pattern — recorded there as
+a sixth incident, not a new ticket.
+
+**No backlog ticket filed** — checked against EKS-07/15–20 first; the one candidate finding (commit
+misattribution) is corroborating evidence for the existing `EKS-07`, not a new problem.
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; MD-024–042 confirmed unmodified; only the new `14_decision-
+log/MD-043-provenance-boundary-adjudication/` directory (6 files) plus the `EKS-07` edit written.
+
+**MD-043 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-044 opened.**

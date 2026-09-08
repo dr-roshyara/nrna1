@@ -250,3 +250,33 @@ here; nothing about this ticket's own scope or recommendation changes.
 **Traceability:** `EKS-19-no-registry-of-already-spoken-for-directories.md` (filed at 19 after the
 collision) · `EKS-18-open-questions-register-with-no-route-to-the-work.md` (the number it collided
 with, Lane T's own ticket).
+
+### A related but distinct failure mode, found 2026-09-09 during MD-043's own git-integrity audit —
+content correctly preserved, attributed to the wrong commit
+
+**What happened, precisely reconstructed from git history (not guessed):** at `00:18:04`, the
+`three_model_convergence` session had an uncommitted edit sitting in the shared working tree — a new
+row and note added to `docs/knowledgeos/backlog/00_index.md` for its own `EKS-19` ticket. At that
+exact moment, the parallel Lane-T session committed its own unrelated work (a commit about its `P-56`
+finding). Whatever staging method Lane T used picked up the shared file's current working-tree
+state — which already included the other session's uncommitted edit — and committed it under Lane
+T's own commit message. Five minutes forty seconds later, when the `three_model_convergence` session
+went to commit its own remaining work, `00_index.md` had no diff left to commit — its content was
+already safely in history, just under someone else's commit message.
+
+**Why this is worth recording separately from the numbering-collision pattern above:** nothing was
+lost, duplicated, or corrupted — the content is intact and correct. But **the record now
+misattributes authorship of one file's changes**: a reader of `c821abece`'s commit message would have
+no way to know it also carries an addition made by the other session. This is a different failure
+shape than a numbering collision (which produces an ambiguous or duplicate identifier); this one
+produces a **correct but silently mis-attributed record** — arguably harder to notice, since nothing
+about the file looks wrong on inspection, only the commit history around it.
+
+**Detection was, again, by manual git archaeology after the fact**, not by any control — the same
+"attentiveness, not a guarantee" caveat already on record above applies equally here. No mechanism is
+proposed; this ticket's own question remains open. Recorded as a sixth first-hand incident for the
+same underlying gap, in a new shape.
+
+**Traceability:** `docs/knowledgeos/brainstorming/three_model_convergence/14_decision-log/MD-043-
+provenance-boundary-adjudication/04_git-integrity-audit.md` (the full reconstruction) · commits
+`196aa607e` and `c821abece`.

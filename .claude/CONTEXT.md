@@ -1,5 +1,41 @@
-**Updated:** 2026-09-09 (latest) — **MD-042 COMPLETE — CROSS-LANDSCAPE SEMANTIC KERNEL AND WARRANT
-CLOSURE AUDIT. HARD STOP per explicit user instruction — no MD-043 opened.** Re-issued the full
+**Updated:** 2026-09-09 (latest) — **MD-043 COMPLETE — PROVENANCE BOUNDARY AND EVIDENCE-LANDSCAPE
+ADJUDICATION. HARD STOP per explicit user instruction — no MD-044 opened.** User reviewed MD-042,
+agreed with its scientific result, and correctly identified that its firewalls were derived from
+filename/structure signals without separately marking provenance strength. Authorized a provenance-
+only phase (four-level scale: ESTABLISHED/STRONGLY INDICATED/PLAUSIBLE/UNRESOLVED; no kernel/Warrant
+research). **Three of MD-042's own hypotheses corrected via git archaeology (commit-message reading,
+not vocabulary/naming guesses)**: `reviews/kernel/`'s "theory-extraction-adjacent" hypothesis
+WITHDRAWN (commit `57d93b0ee`'s own message: "Session 1 discovers; Session 2 challenges"; `session1/`'s
+corpus-cutoff marker matches `brainstorming/kernel/`'s own date range — now STRONGLY INDICATED to be a
+review layer over already-admissible corpus, not theory-extraction); `reviews/exec/`'s "Lane-T style"
+hypothesis WITHDRAWN (commit `590043f42`'s own message is first-party K-1/K2/GN-governance-ruling
+research, `GN-77`, not yet in the frozen record — ESTABLISHED same-family, different/later ruling);
+`brainstorming/verification/`'s whole-482-file-tree firewall NARROWED to the specific `step-272`/
+`280`/`281`/`282`/`handoff`/`witnesses`/`canonical-construction`/`consolidation` cluster (shared
+first-commit `70fee73c8`, the largest commit in this repo's history, whose own message separates
+`verification/`, `phase_measure_theory/`, and `three_model_convergence/` itself as distinct bullets —
+ESTABLISHED not this reconstruction's own product); the remaining ~445 files left explicitly
+PLAUSIBLE/UNRESOLVED, not bundled in. **Two findings sharpened**: `reviews/synthesis/`'s lineage-
+overlap claim upgraded "potential" → ESTABLISHED subject-matter overlap (document-identity still
+unresolved; user's own prior ruling unchanged); `brainstorming/synthesis/`'s "EXTRACTION" naming
+hypothesis weakened toward a generic-methodology-term reading. **One strengthened**:
+`research/knowledgeos-sim/` has zero git history at all (new finding). "Eight directories"/"five of
+eight" retired — replaced with a precise 10-distinct-path scope table. **No firewall lifted, no
+admission made.** K-1/K2/GA-001/GA-038: all unchanged (NO). Warrant: all unchanged (NO). **Git
+integrity audit**: `196aa607e` and the parallel session's `c821abece` (5m40s earlier) reconciled
+exactly — `backlog/00_index.md`'s `EKS-19` addition was absorbed into `c821abece` because it sat
+uncommitted when Lane T committed; content correct, attribution on the wrong commit; not rewritten,
+recorded as a new incident on the existing `EKS-07` (no new ticket — checked against EKS-07/15–20
+first). **Classification: next-step B** — a human provenance/admissibility decision is needed for two
+bounded questions (admit `reviews/kernel/`'s own review findings? bring `GN-77`/`reviews/exec/`
+forward to a future K-1/K2 extension?) — not a blanket reopening. Full record: `14_decision-log/
+model-boundary-decisions.md` → MD-043 execution record; `14_decision-log/MD-043-provenance-boundary-
+adjudication/` (6 files). Verified: both consistency scripts `CONSISTENT`; MD-024–042 unmodified;
+`classification-register.tsv` unchanged. This session's work is being committed now, per explicit
+instruction, then HARD STOP.
+
+**Superseded-update-marker-64 (2026-09-09, earlier) — MD-042 COMPLETE — CROSS-LANDSCAPE SEMANTIC
+KERNEL AND WARRANT CLOSURE AUDIT. HARD STOP per explicit user instruction — no MD-043 opened.** Re-issued the full
 eight-directory scope after the user's own resolution of a mid-recon discovery. **Central
 methodological event**: filename/structure triage (never content-reading) found that **five of the
 eight nominally-authorized directories are not independently searchable** — `reviews/synthesis/`

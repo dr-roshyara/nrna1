@@ -1185,7 +1185,36 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-042 — Cross-Landscape Semantic Kernel and Warrant Closure
+**Status update, 2026-09-09 (latest): MD-043 — Provenance Boundary and Evidence-Landscape
+Adjudication — EXECUTED. HARD STOP per explicit user instruction — no MD-044 opened.** User reviewed
+MD-042, agreed with its scientific result, and correctly flagged that its firewalls came from
+filename/structure signals without separately marking provenance strength. Ran a provenance-only
+phase (no kernel/Warrant research), using git archaeology instead of naming/vocabulary inference.
+**Three of MD-042's own hypotheses corrected**: `reviews/kernel/`'s "theory-extraction-adjacent"
+guess WITHDRAWN (commit `57d93b0ee`'s own message: "Session 1 discovers; Session 2 challenges";
+`session1/`'s corpus-cutoff matches `brainstorming/kernel/`'s own date range — now STRONGLY INDICATED
+to be a review layer over already-admissible corpus); `reviews/exec/`'s "Lane-T style" guess
+WITHDRAWN (commit `590043f42` is first-party K-1/K2/GN-governance-ruling research, `GN-77`, a
+ruling not yet in the frozen record); `brainstorming/verification/`'s whole-482-file-tree firewall
+NARROWED to the specific `step-272`/`280`/`281`/`282`/`handoff`/`witnesses`/`canonical-construction`/
+`consolidation` cluster (shared first-commit `70fee73c8`, the largest commit in this repo's history,
+whose own message separates `verification/`, `phase_measure_theory/`, and `three_model_convergence/`
+itself as distinct bullets), the remaining ~445 files left explicitly PLAUSIBLE/UNRESOLVED. **Two
+sharpened**: `reviews/synthesis/` (K_t/8-primitive/`pi_K(K_t)` now ESTABLISHED subject-matter overlap,
+document-identity still unresolved, user's prior ruling unchanged); `brainstorming/synthesis/`'s
+"EXTRACTION" naming weakened toward a generic-methodology-term reading. **One strengthened**:
+`research/knowledgeos-sim/` has zero git history at all. "Eight directories"/"five of eight" figures
+retired — replaced with a precise 10-distinct-path scope table. **No firewall lifted, no admission
+made.** K-1/K2/GA-001/GA-038: all unchanged (NO). Warrant: all unchanged (NO). **Git integrity audit**:
+commit `196aa607e` and the parallel session's `c821abece` (5m40s earlier) reconciled exactly —
+`backlog/00_index.md`'s `EKS-19` content is intact, attributed to the wrong commit message; recorded,
+not rewritten; added as a new incident to the existing `EKS-07` (no new ticket — checked against
+EKS-07/15–20 first). **Classification: next-step B** — a human decision is needed on two bounded
+questions (admit `reviews/kernel/`'s own review findings? bring `GN-77`/`reviews/exec/` forward to a
+future K-1/K2 extension?) — not a blanket reopening. Verified both consistency scripts `CONSISTENT`;
+MD-024–042 unmodified; `classification-register.tsv` unchanged.
+
+**Status update, 2026-09-09 (earlier): MD-042 — Cross-Landscape Semantic Kernel and Warrant Closure
 Audit — EXECUTED. HARD STOP per explicit user instruction — no MD-043 opened.** Re-issued the full
 eight-directory scope after the user's own resolution of a mid-recon discovery about `reviews/
 synthesis/`. **Central methodological event**: filename/structure triage (never content-reading)
