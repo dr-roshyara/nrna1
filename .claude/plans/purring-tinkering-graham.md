@@ -1185,7 +1185,24 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-08 (latest): MD-037 — Targeted "Surviving a Defeater" Semantic and Formal
+**Status update, 2026-09-08 (latest): MD-038 — Defeater-Semantics Evidence Admission Preparation —
+EXECUTED.** Applied a correction to MD-037's own "independent corroboration" language throughout
+(recorded forward, not retroactively edited): same-author-layer documents are corroboration within a
+common provenance lineage, never independent replication. Built a per-file admission matrix for all
+17 MD-037-characterized files, kept roles A–E (V6 itself / meaning of "surviving" / epistemic
+motivation / provenance / proposed method) strictly separate — category B (the meaning of
+"surviving") stayed empty across every candidate. Characterized (not executed) the series' own
+proposed "Semantic Kernel Equivalence" framework — under-specified by its own authors' admission,
+would need the missing definition as an input, cannot supply it. **Decision: SESSION-LEVEL HUMAN
+RESEARCH-GOVERNANCE DECISION — Option C** — admits `15-falsification.md`, `17-open-questions.md`,
+`18-audit-response-and-protocol-audit.md`, `19-directive-adoption-and-research-restructure.md`,
+narrow scope; thirteen other characterized files remain outside. No definition admitted (none
+exists); no V6 selection; no framework validation; MD-036's `STRUCTURAL CORRESPONDENCE` verdict
+unchanged. **Housekeeping**: a third same-day backlog collision (`EKS-14`) fixed by renumbering to
+`EKS-15`; updated `EKS-07`'s own corroboration note to reflect the recurrence count. No admission of
+any executable artifact, no composition test, no model selection.
+
+**Status update, 2026-09-08 (earlier): MD-037 — Targeted "Surviving a Defeater" Semantic and Formal
 Study — EXECUTED.** Read all 17 remaining files in the same numbered document series in full, cold
 (2,043 lines, genuinely new to this reconstruction). **Central finding: no formal definition,
 invariant, or derivation rule for "surviving a defeater" was found anywhere.** The term is used

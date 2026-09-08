@@ -177,33 +177,38 @@ One read-only resolver (`.claude/scripts/session-bootstrap.php`, **AST-017**) pr
 
 **Follow-up #4 added:** PO/ARB boundary ruling 2026-08-22 (authority transitions remain governed + manual; handoff-automation is a separate design decision, not AST-017 scope) · `KOS-SESSION-BOOTSTRAP-001` workflow record creation (V-8 ruling sequence step 2) · V-8 determination registration `2026-08-22-KOS-SESSION-BOOTSTRAP-001-V8-DETERMINATION-registration.md`
 
-## Corroborating evidence added 2026-09-08 — a business-language account of a live incident
+## Corroborating evidence added 2026-09-08 — a business-language account of a live, recurring incident
 
 **The problem, in plain terms:** two separate work sessions were both adding new backlog tickets to
-this same list on the same day, at close to the same time. Each session looked at the list, found
-the highest number already used, and picked the next one — the obvious, reasonable thing to do.
-Because neither session could see what the other was doing at that exact moment, they picked the
-*same* next number twice, for two completely unrelated problems. This happened not once but **twice
-in a row, within a few hours of each other**, between the same two sessions (`three_model_convergence`
-and Lane T / theory extraction).
+this same list on the same day, repeatedly, at close to the same time. Each session looked at the
+list, found the highest number already used, and picked the next one — the obvious, reasonable thing
+to do. Because neither session could see what the other was doing at that exact moment, they picked
+the *same* next number three separate times, for six completely unrelated problems. This happened
+not once, not twice, but **three times in a row over the course of one session**, between the same
+two sessions (`three_model_convergence` and Lane T / theory extraction) — `EKS-12`, then `EKS-13`,
+then `EKS-14` all collided in turn.
 
 **Why this matters for the business, not just for tidiness:** a backlog is only trustworthy if a
 reader can rely on an ID pointing to exactly one thing. When two different problems briefly shared
 the same ID, anyone reading the list, a report, or a cross-reference in that window would have seen
-an ambiguous or misleading entry. In this case the mistake was caught quickly by the sessions
-themselves and fixed by hand (`EKS-12` → `EKS-13` → `EKS-14`, see that ticket's own note) before
-anyone outside relied on the wrong number — but that was good luck and attentiveness, not a
-guarantee the process provides. If a third session, or a human reader, had acted on one of the
-colliding numbers in that window, the record would have been wrong and no one would have been
-warned.
+an ambiguous or misleading entry. In every case the mistake was caught quickly by the sessions
+themselves and fixed by hand (`EKS-12` → `EKS-13` → `EKS-14` → `EKS-15`, see that ticket's own note)
+before anyone outside relied on the wrong number — but that was good luck and attentiveness,
+repeated three times, not a guarantee the process provides. Attentiveness that has to fire correctly
+three times in one session is not a control; it is a streak. If a third party — another session, or
+a human reader — had acted on any of the colliding numbers in any of those three windows, the record
+would have been wrong and no one would have been warned.
 
 **What this confirms, not proposes:** this is not a new problem — it is the *exact* problem `EKS-07`
 already names (independent AI work sessions sharing state with no way to see each other's concurrent
-changes). This entry records a second, real, same-day occurrence of it, in a different shared
-artifact (a document list, not code) than the incidents already on file. It changes nothing about
-this ticket's own status, scope, or recommendations — it is evidence, filed the same way `EKS-09`
-already established for a different concurrency incident. No mechanism is proposed here; that
-remains this ticket's own, still-open question.
+changes). This entry now records a **third**, real, same-day, same-session-pair occurrence of it, in
+a different shared artifact (a document list, not code) than the incidents already on file, and the
+repetition rate itself (three times in one session, between the same two parties) is new evidence
+about how *frequently* this class of problem actually manifests, not only that it can. It changes
+nothing about this ticket's own status, scope, or recommendations — it is evidence, filed the same
+way `EKS-09` already established for a different concurrency incident. No mechanism is proposed here;
+that remains this ticket's own, still-open question — though the recurrence count is itself a fact a
+future disposition decision should weigh.
 
 **Traceability:** `EKS-14-out-of-root-evidence-admission-mechanism.md` (the ticket that collided
 twice) · `EKS-13-cross-lane-dependency-without-change-notification.md` and

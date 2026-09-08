@@ -3583,3 +3583,59 @@ unmodified; only the new `14_decision-log/MD-037-defeater-semantics/` directory 
 present, gap preserved as unresolved. Smallest next step (if the material is ever admitted): apply
 the series' own proposed "Semantic Kernel Equivalence" framework to formalize the concept — named,
 not executed. Awaiting separate authorization for any further step.**
+
+---
+
+## Housekeeping — backlog `EKS-14` renumbered to `EKS-15` (2026-09-08)
+
+A third, independent same-day collision with the same concurrent session (Lane T): its own
+unrelated `EKS-14` filed while this session's own MD-034 ticket still held that number. Renumbered
+to `EKS-15` (content unchanged); updated `EKS-07`'s own corroboration note to reflect three
+occurrences in one session, now itself a fact about *frequency*, not merely possibility. No new
+ticket filed.
+
+---
+
+## MD-038 — Defeater-Semantics Evidence Admission Preparation (EXECUTED, 2026-09-08)
+
+**Authorization**: separate, explicit. One methodological correction accepted in full, applied
+throughout rather than retroactively edited into MD-037's frozen text: MD-037's language ("direct,
+independent corroboration") should have read **corroboration within a common provenance lineage, not
+independent replication** — `18`'s own documents share one author-layer with `12` (MD-031's finding,
+source-confirmed by `18` §0), so their agreement is one lineage's internal consistency, not
+independent convergence.
+
+**Admission matrix built for all 17 MD-037-characterized files**, no directory-level recommendation.
+`18-audit-response-and-protocol-audit.md` found the single richest candidate (V6's own evidentiary
+role clarified, the `I9` invariant, the provenance ledger); `17`/`15` corroborate (within-lineage)
+that the gap is officially open; `19` supplies the one candidate future formal instrument (Semantic
+Kernel Equivalence — characterized, not executed, and found itself under-specified by its own
+authors' admission, requiring the missing definition as an input it cannot supply). Thirteen files
+found unnecessary or redundant for this specific question; no directory-wide admission proposed.
+
+**Roles A–E (V6 itself / meaning of "surviving" / epistemic motivation / provenance / proposed
+method) kept explicitly separate throughout** — category B (the meaning of "surviving") remains
+empty across every candidate; nothing in categories C/D/E was permitted to masquerade as A/B
+evidence.
+
+**Decision recorded: SESSION-LEVEL HUMAN RESEARCH-GOVERNANCE DECISION — Option C.** Admitted, narrow
+scope: `15-falsification.md`, `17-open-questions.md`, `18-audit-response-and-protocol-audit.md`,
+`19-directive-adoption-and-research-restructure.md`. Explicitly does NOT define "surviving a
+defeater" (none exists to admit), does NOT select V6, does NOT validate the Semantic Kernel
+Equivalence framework, does NOT change MD-036's `STRUCTURAL CORRESPONDENCE` verdict.
+
+**`classification-register.tsv` not touched** — same precedent as every prior admission in this
+lineage. Thirteen characterized files remain outside the admissible population, named explicitly to
+prevent later ambiguity.
+
+**No classification changed. No frozen artifact (MD-024–037) modified. No source file modified. No
+code inspected or executed. No composition test. No model selected. No Stage 07. No
+canonicalization. K-1/K-2 untouched.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; MD-024–037
+and the entire kernel-reduction directory confirmed unmodified; only the new
+`14_decision-log/MD-038-defeater-evidence-admission/` directory (9 files) written.
+
+**MD-038 status: COMPLETE — HARD STOP. Four files admitted, narrow scope; thirteen remain outside.
+No formal definition exists to admit. No downstream scientific work authorized by this decision.
+Awaiting separate authorization for any further step.**

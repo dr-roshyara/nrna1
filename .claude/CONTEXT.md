@@ -1,5 +1,38 @@
-**Updated:** 2026-09-08 (latest) — **MD-037 COMPLETE — TARGETED "SURVIVING A DEFEATER" SEMANTIC AND
-FORMAL STUDY.** Read all 17 remaining files in the same numbered document series in full, cold
+**Updated:** 2026-09-08 (latest) — **MD-038 COMPLETE — DEFEATER-SEMANTICS EVIDENCE ADMISSION
+PREPARATION.** Applied a methodological correction to MD-037's own "independent corroboration"
+language throughout (recorded forward, not retroactively edited): documents sharing an author-layer
+are corroboration within a common provenance lineage, never independent replication. **Built a
+per-file admission matrix for all 17 MD-037-characterized files**, no directory-level
+recommendation. `18-audit-response-and-protocol-audit.md` found richest (V6's own evidentiary role
+clarified — "the contrast case, not the evidence"; the `I9` invariant, explicitly distinct from
+"surviving a defeater"; the provenance ledger); `17`/`15` corroborate, within-lineage, that the gap
+is officially open; `19` supplies the one candidate future formal instrument (Semantic Kernel
+Equivalence — characterized, not executed; under-specified by its own authors' admission; would
+need the missing definition as an input, cannot supply one). **Evidence roles A (V6 itself) / B
+(meaning of "surviving") / C (epistemic motivation) / D (provenance) / E (proposed method) kept
+strictly separate — category B stayed empty across every single candidate.** Thirteen files found
+unnecessary or redundant; no directory-wide admission proposed at any point. **Decision recorded:
+SESSION-LEVEL HUMAN RESEARCH-GOVERNANCE DECISION — Option C.** Admitted, narrow scope:
+`15-falsification.md`, `17-open-questions.md`, `18-audit-response-and-protocol-audit.md`,
+`19-directive-adoption-and-research-restructure.md`; thirteen other characterized files remain
+outside, named explicitly. Explicitly does NOT define "surviving a defeater" (none exists to
+admit), does NOT select V6, does NOT validate the Semantic Kernel Equivalence framework, does NOT
+change MD-036's `STRUCTURAL CORRESPONDENCE` verdict. `classification-register.tsv` not touched, per
+the established precedent. **Housekeeping**: a third same-day backlog collision (`EKS-14`, same
+concurrent session) fixed by renumbering to `EKS-15`; `EKS-07`'s own corroboration note updated to
+record the recurrence itself as new evidence about frequency, not merely possibility. No
+classification changed; no frozen artifact (MD-024–037) modified; no source file modified; no code
+inspected/executed; no composition test; no model selected; no Stage 07; no canonicalization; K-1/
+K-2 untouched. Verified: both consistency scripts `CONSISTENT`; MD-024–037 and the entire
+kernel-reduction directory confirmed unmodified; only the new
+`14_decision-log/MD-038-defeater-evidence-admission/` directory (9 files) written. Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-038 execution record. **MD-038 COMPLETE — HARD
+STOP.** No downstream scientific work authorized by this decision. Awaiting separate authorization
+for any further step. This session's work is being committed now, per explicit instruction.
+
+**Superseded-update-marker-59 (2026-09-08, earlier) — MD-037 COMPLETE — TARGETED "SURVIVING A
+DEFEATER" SEMANTIC AND FORMAL STUDY.** Read all 17 remaining files in the same numbered document
+series in full, cold
 (2,043 lines, none read previously) — satisfying the user's own tightened cold-read requirement.
 Scope note flagged first (not blocking): the target files are unadmitted, so findings are reported
 as characterization with an admissibility recommendation, not folded into MD-036's own verdict.
