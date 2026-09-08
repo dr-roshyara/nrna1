@@ -1185,7 +1185,36 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-043 — Provenance Boundary and Evidence-Landscape
+**Status update, 2026-09-09 (latest): MD-043-DQ-1/DQ-2 recorded, then MD-044 — Kernel Minimality /
+MinKer Semantic Adjudication — EXECUTED. HARD STOP per explicit user instruction — no MD-045
+opened.** Two governance decisions recorded first via `AskUserQuestion` (`reviews/kernel/`'s derived
+findings ADMITTED narrow scope; `GN-77`/`reviews/exec/` material NOT brought forward — neither used
+by MD-044). Scientific study of the admissible math lane's `MinKer` semantic-minimality material.
+**Source base corrected mid-turn**: the user pointed to the two files beginning the 5-file
+`KR-KERNEL-MINIMALITY-2026-09` chain, not shown to MD-043's own 3-file read — revealing a real
+witness-based Lemma-1/Theorem-1 proof apparatus, a toy-scale **executed** Python test, and a
+**self-caught governance-fabrication event** (a fake "RATIFIED" block under a fictitious authority,
+caught within the same session). All five files: `KR-SIM`-tagged boundary material, one continuous
+~17-minute same-session dialogue (2026-09-04), git-tracked 2026-09-06. **Dependency finding**:
+`MinKer(𝔠_KOS)=Min_⪯sem{K∈𝔎_adm\|K⊨𝔠_KOS}` is well-typed, but its three load-bearing inputs (`𝔎_adm`,
+`𝔠_KOS`/`⊨`, `⪯_cap`'s `Trace` semantics) are each `NECESSARY BUT UNSPECIFIED`, per the source's own
+final ledger (existence/uniqueness both "NOT YET PROVED," governance "OPEN"). The source's own
+uniqueness claim was self-corrected within the same session (claimed, then caught as a category
+error, then settled as unproved). **No comparison against F1/F3/F4/F5/F6 attempted anywhere in the
+source** — every ladder position UNRESOLVED, with one flagged, non-established resonance with F3
+(kernel-reduction's `DetectGap`/`Qualify` finding) — classified STRUCTURAL CORRESPONDENCE CANDIDATE,
+not confirmed. **Δ_t precedent comparison**: MinKer is the same shape — a formal place still
+requiring a governance choice, not a mathematical uniqueness derivation. **GA-001: UNCHANGED**
+(criterion available, not executable). **GA-038: UNCHANGED, more conservatively** (`K_t` never
+engaged). **Final classification: C — minimality framework only, required semantics missing.** No
+backlog ticket (already represented by the source's own TODO ledger). No classification changed; no
+frozen artifact modified; no MinKer source file modified; `classification-register.tsv` untouched; no
+code executed; no composition test; no model selected; no Stage 07; K-1/K2/GA-001/GA-038 untouched.
+Verified both consistency scripts `CONSISTENT`. **Smallest next action, named, not authorized**:
+instantiate `𝔎_adm`/`𝔠_KOS`/`Trace`-based `⪯_cap` for the real 13-capability universe and construct
+genuine irreducibility witnesses (`KR-KERNEL-EQUIVALENCE-2026-09`, the corpus's own next deliverable).
+
+**Status update, 2026-09-09 (earlier): MD-043 — Provenance Boundary and Evidence-Landscape
 Adjudication — EXECUTED. HARD STOP per explicit user instruction — no MD-044 opened.** User reviewed
 MD-042, agreed with its scientific result, and correctly flagged that its firewalls came from
 filename/structure signals without separately marking provenance strength. Ran a provenance-only

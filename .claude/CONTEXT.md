@@ -1,5 +1,43 @@
-**Updated:** 2026-09-09 (latest) — **MD-043 COMPLETE — PROVENANCE BOUNDARY AND EVIDENCE-LANDSCAPE
-ADJUDICATION. HARD STOP per explicit user instruction — no MD-044 opened.** User reviewed MD-042,
+**Updated:** 2026-09-09 (latest) — **MD-044 COMPLETE — KERNEL MINIMALITY / MINKER SEMANTIC
+ADJUDICATION. HARD STOP per explicit user instruction — no MD-045 opened.** Two governance decisions
+recorded first via `AskUserQuestion` (MD-043-DQ-1: `reviews/kernel/`'s derived findings ADMITTED,
+narrow scope; MD-043-DQ-2: `GN-77`/`reviews/exec/` material NOT brought forward — neither used by
+this phase). Scientific study of the admissible math-lane's `MinKer` semantic-minimality formulation.
+**Central correction to the source base**: the user pointed mid-turn to the two files beginning the
+5-file `KR-KERNEL-MINIMALITY-2026-09` chain (not shown to MD-043's own 3-file read), revealing a real
+formal proof apparatus (witness-based Lemma 1/Theorem 1), a toy-scale **executed** Python test, and a
+**self-caught governance-fabrication event** (a fake "RATIFIED... KnowledgeOS Core Epistemic
+Framework Committee" block, caught and corrected within the same session). All five files: `KR-SIM`-
+tagged boundary material, one continuous ~17-minute same-session editorial dialogue (2026-09-04),
+git-tracked 2026-09-06. **Dependency finding**: `MinKer(𝔠_KOS)=Min_⪯sem{K∈𝔎_adm\|K⊨𝔠_KOS}` is
+well-typed, but its three load-bearing inputs (`𝔎_adm`, `𝔠_KOS`/`⊨`, `⪯_cap`'s `Trace`-based
+semantics) are each `NECESSARY BUT UNSPECIFIED`, per the source's own final self-assessment (M0239's
+own ledger: existence/uniqueness both "NOT YET PROVED," governance ratification "OPEN"). The source's
+own uniqueness claim was self-corrected within the same session (M0237 claimed uniqueness; M0238
+caught it as a category error 10 minutes later; M0239 settles "not yet proved, plural not a failure").
+**No comparison against F1/F3/F4/F5/F6 was attempted anywhere in the source** — every ladder position
+UNRESOLVED, with one flagged, non-established resonance (MinKer's 13-capability universe and its
+`DetectGap`-derivable/`Qualify`-needed finding closely matches F3's own kernel-reduction result —
+classified STRUCTURAL CORRESPONDENCE CANDIDATE, not confirmed, no citation links the two). **Δ_t
+precedent comparison**: MinKer is the same shape as the `Δ_t` precedent — a formal place requiring a
+governance choice, not a mathematical uniqueness derivation, confirmed by the source's own explicit
+"engineering and governance choice" / "Pending Formal Governance Review" language. **GA-001:
+UNCHANGED** (criterion available, not executable). **GA-038: UNCHANGED, more conservatively** (`K_t`
+never engaged by this material at all). **Final classification: C — minimality framework only,
+required semantics missing.** No backlog ticket (findings already represented by the source's own
+M0239 TODO ledger). No classification changed; no frozen artifact modified; no MinKer source file
+modified; `classification-register.tsv` untouched; no code executed by this phase; no composition
+test; no model selected; no Stage 07; K-1/K2/GA-001/GA-038 untouched. Verified both consistency
+scripts `CONSISTENT`. Full record: `14_decision-log/model-boundary-decisions.md` → MD-043-DQ-1/DQ-2
+and MD-044 execution records; `14_decision-log/MD-044-kernel-minimality-minker-adjudication/`
+(6 files). **Smallest next action, named, not authorized**: instantiate `𝔎_adm`/`𝔠_KOS`/`Trace`-based
+`⪯_cap` for the real 13-capability universe and construct genuine irreducibility witnesses — the
+corpus's own next deliverable (`KR-KERNEL-EQUIVALENCE-2026-09`), not something this reconstruction
+would perform without separate authorization. This session's work is being committed now, per
+explicit instruction, then HARD STOP.
+
+**Superseded-update-marker-65 (2026-09-09, earlier) — MD-043 COMPLETE — PROVENANCE BOUNDARY AND
+EVIDENCE-LANDSCAPE ADJUDICATION. HARD STOP per explicit user instruction — no MD-044 opened.** User reviewed MD-042,
 agreed with its scientific result, and correctly identified that its firewalls were derived from
 filename/structure signals without separately marking provenance strength. Authorized a provenance-
 only phase (four-level scale: ESTABLISHED/STRONGLY INDICATED/PLAUSIBLE/UNRESOLVED; no kernel/Warrant

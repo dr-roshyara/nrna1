@@ -3983,3 +3983,98 @@ misattribution) is corroborating evidence for the existing `EKS-07`, not a new p
 log/MD-043-provenance-boundary-adjudication/` directory (6 files) plus the `EKS-07` edit written.
 
 **MD-043 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-044 opened.**
+
+---
+
+## MD-043-DQ-1 / MD-043-DQ-2 — Human Research-Governance Decisions on MD-043's Two Admissibility Questions (RECORDED, 2026-09-09)
+
+Presented formally via `AskUserQuestion`, per this reconstruction's own established discipline
+(MD-028-DQ-1, MD-032, MD-035, MD-038) — a decision by the directing principal, not derived by this
+reconstruction.
+
+**DQ-1 — `reviews/kernel/`'s own derived review findings (Session-1's 19 findings, Session-2's 8
+adversarial reviews of them — distinct from `brainstorming/kernel/` itself, which needed no decision
+and remains available without restriction): SESSION-LEVEL HUMAN RESEARCH-GOVERNANCE DECISION —
+ADMIT, narrow scope.** Admitted solely for kernel-candidate research purposes — explicitly **not**
+adoption, not canonical, not ratified, not proof of any Kernel selection. `classification-register.tsv`
+not touched. Provenance stays as MD-043 found it (STRONGLY INDICATED review layer over already-
+admissible corpus, not theory-extraction). No content from this admitted material was read or used in
+MD-044 (MD-044's own scope is the math-lane `MinKer` material only, unaffected by this admission).
+
+**DQ-2 — the `GN-77`/`reviews/exec/` material (a later ruling within the same K-1/K2/GN-governance
+family, not yet incorporated into the frozen Phase 5A–5N record): SESSION-LEVEL HUMAN RESEARCH-
+GOVERNANCE DECISION — DO NOT bring forward.** Phase 5A–5N stays exactly as closed; no future extension
+phase is authorized. `reviews/exec/` remains firewalled (still executable code; still subject to the
+standing no-code-execution rule).
+
+Neither decision reopens K-1/K2, GA-001, or GA-038. Neither decision authorizes any further step
+beyond what it states.
+
+---
+
+## MD-044 — Kernel Minimality / MinKer Semantic Adjudication (EXECUTED, 2026-09-09)
+
+**Authorization**: user authorized a scientific (not provenance) study of the admissible math-lane's
+`MinKer` semantic-minimality formulation, with an explicit clarification (no disagreement): this
+material sits in the already-admissible math lane and needs no new admission decision, independent of
+the two `reviews/kernel/`/`GN-77` admissibility questions (recorded separately, MD-043-DQ-1/DQ-2,
+unused by this phase).
+
+**Central correction to the source base**: mid-turn, the user pointed to the two files that begin the
+5-file `KR-KERNEL-MINIMALITY-2026-09` chain (`014317`/M0235, `014642`/M0236), which the 3 files read
+during MD-043 alone had not shown — revealing a real formal proof apparatus (an explicit witness-based
+Lemma 1/Theorem 1 pair), a toy-scale **executed** Python verification test (3-capability universe:
+`Interpret`/`Qualify`/`Hypothesize`, `test_irreducibility_witness` producing a concrete result), and a
+**self-caught governance-fabrication event** — an early draft declaring `(RATIFIED)` under a
+fictitious "KnowledgeOS Core Epistemic Framework Committee," caught and corrected within the same
+session. All five files: `KR-SIM`-tagged boundary material (not one of Model B's own 151 independent
+`b`-tagged primary evidence rows), git-tracked 2026-09-06 (the same bulk-import commit as everything
+else), content-dated 2026-09-04, one continuous ~17-minute same-session editorial dialogue.
+
+**Dependency finding**: `MinKer(𝔠_KOS)=Min_⪯sem{K∈𝔎_adm\|K⊨𝔠_KOS}` is a well-typed formula, but its
+three load-bearing inputs — `𝔎_adm` (admissible implementations), `𝔠_KOS`/`⊨` (the fixed contract and
+its satisfaction predicate), and `⪯_cap`'s own `Trace`-based simulation semantics — are each
+`NECESSARY BUT UNSPECIFIED`, per the source's own final self-assessment (M0239's own 20-item TODO
+ledger: "Minimal Kernel Existence: NOT YET PROVED," "Minimal Kernel Uniqueness: NOT YET PROVED,"
+"Governance Ratification: OPEN"). **The source's own uniqueness claim was self-corrected within the
+same session** (M0237 claimed "exactly one class exists"; M0238, ten minutes later, caught this as a
+category error; M0239's own final ledger settles on "not yet proved, and a plural result would not be
+a failure").
+
+**Comparison against F1/F3/F4/F5/F6**: no comparison was attempted anywhere in the source — none of
+K-1, `K_t`, C0/C0_plus, or any F1–F8 identifier is named. Every ladder position: **UNRESOLVED**, with
+one flagged, non-established resonance: MinKer's own 13-capability candidate universe and its own
+finding that `DetectGap` is derivable while `Qualify` is needed closely matches F3's own already-
+characterized kernel-reduction result — classified **STRUCTURAL CORRESPONDENCE CANDIDATE, not
+confirmed** (no explicit citation links the two; at most within-lane corroboration, never independent
+confirmation).
+
+**Δ_t precedent comparison**: MinKer does not mathematically derive a unique candidate — it is the
+same shape as the `Δ_t` precedent (MD-023), a formal place within which a governance choice would
+still have to occur, confirmed directly by the source's own explicit "engineering and governance
+choice, distinct from semantic minimality" and "Pending Formal Governance Review" language.
+
+**GA-001: UNCHANGED** — a more principled criterion exists conceptually but is not executable against
+any real candidate. **GA-038: UNCHANGED, more conservatively** — `K_t` is never engaged by this
+material at all, so even its conceptual applicability to that specific gap is unasserted.
+
+**Final classification: C — minimality framework only, required semantics missing.** Not A (inputs
+missing, not merely uncomputed); not B (existence/uniqueness of a well-defined object would be
+required; the object's own defining inputs are unspecified); not D (a genuine conceptual advance over
+what was previously on record); not E (the internal uniqueness correction is normal peer review, not
+an unresolved contradiction).
+
+**No backlog ticket** — findings are entirely mathematical, already represented by the source's own
+M0239 TODO ledger.
+
+**No classification changed. No frozen artifact (MD-024–043) modified. No MinKer source file
+modified. `classification-register.tsv` untouched. No code executed by this phase (the toy Python test
+already existed and was already described, not re-run). No composition test. No model selected. No
+Stage 07. K-1/K2/GA-001/GA-038 untouched.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; all five
+MinKer source files confirmed unmodified; only the new `14_decision-log/MD-044-kernel-minimality-
+minker-adjudication/` directory (6 files) plus this decision-log entry (and the earlier same-turn
+MD-043-DQ-1/DQ-2 addendum) written.
+
+**MD-044 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-045 opened.**
