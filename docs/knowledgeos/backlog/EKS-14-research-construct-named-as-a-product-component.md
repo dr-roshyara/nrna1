@@ -51,6 +51,22 @@ $$\boxed{\textbf{The eleven obligations are drawn from real evidence. The } \mat
 
 ⭐ **Low today, rising.** Nothing downstream has been built on it yet — no specification, architecture or schema exists, and all of those remain deliberately gated. ⚠️ **The right moment to settle the naming is *before* the first downstream artifact cites it, not after.**
 
+## 6a · ⚠️ CORRECTION to §1's premise *(additive, `ES-004.3` — 2026-09-08, from `P-52`)*
+
+⭐⭐ **The ticket SURVIVES an adversarial re-examination, but its premise was too strong and is corrected here rather than rewritten above.**
+
+§1 said the phrase *"persistence kernel"* has **no corpus counterpart**. ⭐ **That is true of the NAME and false of the SUBSTANCE.** `P-52` found a corpus framework dated **2026-09-04** — three days before this lane's own derivation — defining a Kernel as:
+
+> *"the smallest domain-independent bounded context responsible for **identity, lifecycle, provenance, and invariant-preserving evolution of epistemic states**"*
+
+⚠️ **That overlaps this lane's subject matter substantially.**
+
+$$\boxed{\textbf{⭐⭐ The exposure is not weakened — it is } \mathbf{SHARPER.}}$$
+
+⭐ Previously the risk was that a reader would think a component exists when none does. ⭐⭐⭐ **Now the risk is that a reader conflates two different things that both exist**: the corpus's *epistemic Kernel* (a governed-theory object, itself unratified) and this lane's *persistence kernel* (a research assembly of eleven obligations). **A conflation is harder to detect than an invention.**
+
+⛔ **Still no rename proposed.** ⭐ The candidate requirement in §5 is unchanged and now covers both cases: a research construct should be nameable apart from any corpus object it resembles.
+
 ## 7 · Traceability
 
 `P-50` `docs/knowledgeos/theory-extraction/68-P50-PERSISTENCE-KERNEL-OBJECT-TYPE-AND-ADEQUACY-AUDIT.md` §3, §14
