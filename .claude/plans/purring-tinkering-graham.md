@@ -1185,7 +1185,19 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-08 (latest): MD-033 — Controlled Validate Specification-Sufficiency and V6
+**Status update, 2026-09-08 (latest): MD-034 — Targeted Characterization of
+`12-randomized-results.md` — EXECUTED.** **Major finding**: this file — cited by `03`/`04` as "§12"
+— contains an explicit, dedicated treatment of `V6` (unlike the three admitted files, which
+genuinely lack it, per MD-031/033). It defines V6, and gives a real methodological argument that the
+admitted baseline rule has a limitation V6 corrects ("fit ⇒ validation"), without adopting V6 as the
+design actually used elsewhere in the file. MD-031/033 are not contradicted — extended to a
+population they weren't authorized to read. Validate's baseline precondition/postcondition/failure
+gap remains open. Same provenance tier as the admitted files. **Recommendation: A — admission
+candidate** (not a decision). Filed `EKS-12` in the KnowledgeOS backlog — a recurring gap: no
+reusable protocol.md mechanism for admitting out-of-root evidence, reinvented three times now.
+No admission, no composition test, no code executed, no model selected.
+
+**Status update, 2026-09-08 (earlier): MD-033 — Controlled Validate Specification-Sufficiency and V6
 Adjudication — EXECUTED.** Read `03-capability-model.md`/`04-operator-contracts.md` cold and in full
 for the first time (previously known only via citation); reused `06`'s own MD-031 cold read.
 **Central finding**: `Validate`'s happy-path contract (atom, input, output, responsibility, no state

@@ -3340,3 +3340,60 @@ K-1/K-2 untouched.**
 
 **MD-033 status: COMPLETE — VERDICT B. HARD STOP. Awaiting separate authorization for any further
 step.**
+
+---
+
+## MD-034 — Targeted Characterization of `12-randomized-results.md` (EXECUTED, 2026-09-08)
+
+**Authorization**: separate, explicit, no blocking disagreement. Directly executes MD-033's own
+named smallest next action.
+
+**Central, load-bearing finding**: `12-randomized-results.md` — the file `03`/`04` themselves cite
+as "§12" — **contains an extensive, explicit treatment of `V6`**, unlike the three currently-
+admissible files (`03`/`04`/`06`), which MD-031/MD-033 correctly found never mention it. `12`'s own
+table (line 144): `V6` = "a `Verdict` requires a surviving-defeater step" — an exact match to the
+executable lane's own `variants.py` description (MD-030). More consequentially, `12`'s "Causal /
+model-criticism check" section gives a real, source-stated argument that the currently-admitted
+baseline rule (`V0`) has a known limitation `V6` alone corrects: *"The baseline model permits the
+failure mode `fit ⇒ validation`. Only V6 blocks it structurally."* `12` does **not** adopt `V6` as
+the design actually used elsewhere in its own experiments (every other result in the file uses the
+baseline rule) — this is a documented, unresolved critique, not a silent replacement.
+
+**MD-031's and MD-033's own findings are not contradicted, only extended**: both were correctly
+scoped to the population they examined, and within that population, `V6` genuinely is absent. This
+study characterizes a file neither prior study was authorized to read.
+
+**Validate specification gap (MD-033's own)**: **not closed** by this file for the baseline rule —
+no new precondition/postcondition/failure semantics for `V0`. A precondition-shaped fact does emerge
+for `V6` specifically (a surviving `Defeater` is required), but `V6` is not the baseline design in
+use.
+
+**Provenance**: same tier as the three already-admitted files (identical 2026-09-06 bulk commit).
+No cross-citation to the executable lane found either direction.
+
+**Admissibility recommendation (not a decision): A — scientifically relevant, admission candidate.**
+
+**Named tension, not resolved here**: MD-033's own reasoning against decision-state D ("V6 is not a
+live blocker") rested on V6's absence from admissible evidence — that reasoning would need
+re-examination if `12-randomized-results.md` is ever admitted, since V6 would then be present in the
+admissible population. Flagged explicitly; not adjudicated by this study.
+
+**Backlog item filed**: `EKS-12` (`docs/knowledgeos/backlog/`) — a recurring operating-model gap:
+no formal `protocol.md` mechanism exists for admitting out-of-corpus-root evidence; three separate
+instances (`03`/`04`, `06`, and now this recommended file) have each reinvented the same governance
+machinery from scratch. Checked against `EKS-06` first (`ES-005.4`) — confirmed not a duplicate,
+different subsystem.
+
+**No classification changed. No frozen artifact (MD-024–033) modified. No source file modified,
+including `12-randomized-results.md` itself, which is characterized, not admitted.
+`classification-register.tsv` untouched. No code executed. `theory-extraction/` untouched. No model
+selected. No Stage 07. No canonicalization. K-1/K-2 untouched.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; MD-024–033
+and all `docs/knowledgeos/research/kernel-reduction/` source files confirmed unmodified; only the
+new `14_decision-log/MD-034-characterization-12-randomized-results/` directory (11 files) and
+`docs/knowledgeos/backlog/EKS-12-...md` + its index entry written.
+
+**MD-034 status: COMPLETE — HARD STOP. `12-randomized-results.md` NOT admitted. Smallest next
+action: a human admissibility decision for it, mirroring MD-032's own precedent. Awaiting separate
+authorization for any further step.**

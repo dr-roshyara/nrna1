@@ -1,5 +1,38 @@
-**Updated:** 2026-09-08 (latest) — **MD-033 COMPLETE — CONTROLLED VALIDATE SPECIFICATION-SUFFICIENCY
-AND V6 ADJUDICATION.** Read `03-capability-model.md`/`04-operator-contracts.md` cold, in full, for
+**Updated:** 2026-09-08 (latest) — **MD-034 COMPLETE — TARGETED CHARACTERIZATION OF
+`12-RANDOMIZED-RESULTS.MD`.** Executed MD-033's own named next step. **Major finding**: this file —
+cited by `03`/`04` as "§12" — contains an extensive, explicit treatment of `V6`, unlike the three
+currently-admissible files (`03`/`04`/`06`), which MD-031/MD-033 correctly found silent on it. `12`
+defines V6 precisely ("a `Verdict` requires a surviving-defeater step," matching the executable
+lane's own `variants.py`) and gives a real, source-stated methodological argument that the
+currently-admitted baseline rule permits a known failure mode ("fit ⇒ validation") that only V6
+blocks structurally — without adopting V6 as the design actually used elsewhere in the file (every
+other result there uses the baseline rule). **MD-031/MD-033 are not contradicted** — both were
+correctly scoped to the population they examined; this study extends the picture to a file neither
+was authorized to read. **The baseline `Validate` precondition/postcondition/failure-semantics gap
+(MD-033's own) remains open** — not closed by this file for the design actually admitted; a
+precondition-shaped fact does emerge, but only for `V6`. **Provenance**: same tier as the three
+already-admitted files (identical 2026-09-06 commit); no cross-citation to the executable lane found
+either direction. **Recommendation (not a decision): A — scientifically relevant, admission
+candidate.** A tension in MD-033's own reasoning is flagged, not resolved: its "V6 is not a live
+blocker" conclusion rested on V6's absence from admissible evidence, which would need
+re-examination if this file is ever admitted. **Filed `EKS-12`** in the KnowledgeOS backlog
+(`docs/knowledgeos/backlog/`) — a recurring operating-model gap: no reusable `protocol.md`
+mechanism for admitting out-of-corpus-root evidence, reinvented from scratch three separate times
+now (`03`/`04`, `06`, and this recommended file); checked against `EKS-06` first (`ES-005.4`),
+confirmed not a duplicate. No classification changed; no frozen artifact (MD-024–033) modified; no
+source file modified, including `12-randomized-results.md` itself; `classification-register.tsv`
+untouched; no code executed; `theory-extraction/` untouched; no model selected; no Stage 07; no
+canonicalization; K-1/K-2 untouched. Verified: both consistency scripts `CONSISTENT`; MD-024–033 and
+all kernel-reduction source files confirmed unmodified; only the new
+`14_decision-log/MD-034-characterization-12-randomized-results/` directory (11 files) plus
+`docs/knowledgeos/backlog/EKS-12-...md` written. Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-034 execution record. **MD-034 COMPLETE — HARD
+STOP.** `12-randomized-results.md` NOT admitted. Awaiting separate authorization for any further
+step. This session's work is being committed now, per explicit instruction.
+
+**Superseded-update-marker-55 (2026-09-08, earlier) — MD-033 COMPLETE — CONTROLLED VALIDATE
+SPECIFICATION-SUFFICIENCY AND V6 ADJUDICATION.** Read `03-capability-model.md`/`04-operator-
+contracts.md` cold, in full, for
 the first time in this reconstruction (previously known only via other studies' citations); reused
 `06`'s own already-completed MD-031 cold read. **Central finding**: `Validate`'s happy-path contract
 is fully closed by admissible evidence — atom `warrant-assessment`, input
