@@ -3378,7 +3378,9 @@ live blocker") rested on V6's absence from admissible evidence — that reasonin
 re-examination if `12-randomized-results.md` is ever admitted, since V6 would then be present in the
 admissible population. Flagged explicitly; not adjudicated by this study.
 
-**Backlog item filed**: `EKS-12` (`docs/knowledgeos/backlog/`) — a recurring operating-model gap:
+**Backlog item filed**: `EKS-13` (`docs/knowledgeos/backlog/`; filed as `EKS-12`, renumbered same
+day after a concurrent session independently filed its own, unrelated `EKS-12`) — a recurring
+operating-model gap:
 no formal `protocol.md` mechanism exists for admitting out-of-corpus-root evidence; three separate
 instances (`03`/`04`, `06`, and now this recommended file) have each reinvented the same governance
 machinery from scratch. Checked against `EKS-06` first (`ES-005.4`) — confirmed not a duplicate,
@@ -3392,8 +3394,66 @@ selected. No Stage 07. No canonicalization. K-1/K-2 untouched.**
 **Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; MD-024–033
 and all `docs/knowledgeos/research/kernel-reduction/` source files confirmed unmodified; only the
 new `14_decision-log/MD-034-characterization-12-randomized-results/` directory (11 files) and
-`docs/knowledgeos/backlog/EKS-12-...md` + its index entry written.
+`docs/knowledgeos/backlog/EKS-13-...md` + its index entry written.
 
 **MD-034 status: COMPLETE — HARD STOP. `12-randomized-results.md` NOT admitted. Smallest next
 action: a human admissibility decision for it, mirroring MD-032's own precedent. Awaiting separate
 authorization for any further step.**
+
+---
+
+## Housekeeping — backlog `EKS-12` renumbered to `EKS-13` (2026-09-08)
+
+A concurrent session independently filed its own, unrelated `EKS-12` (theory-governance-scope-gap,
+already closed) using the same next-available-number convention at the same time as MD-034's own
+backlog filing. Renumbered this session's ticket to `EKS-13` (content unchanged; no external
+reference to the old number existed yet) and fixed the four self-authored cross-references in this
+session's own governance records. Lane-T's own `EKS-12` and its own session-log entries were not
+read as evidence and not modified.
+
+---
+
+## MD-035 — Human Admissibility Decision: `12-randomized-results.md` (EXECUTED, 2026-09-08)
+
+**Not a research phase — a formal human research-governance decision gate**, directly mirroring
+MD-032's own precedent, following MD-034's own characterization and recommendation (A — admission
+candidate). Presented formally via a direct question (four options, matching the authorization's
+own text exactly), even though the user had also stated a preference in prose in the same
+authorizing message — per that authorization's own explicit instruction not to infer the decision
+from previous preferences.
+
+**Decision recorded: SESSION-LEVEL HUMAN RESEARCH-GOVERNANCE DECISION — Option A, ADMIT (narrow
+scope).** `docs/knowledgeos/research/kernel-reduction/12-randomized-results.md` is admitted **solely
+for controlled research into Model-B `Validate` specification, the V1/V4/V5/V6 variants, the stated
+baseline limitation, and precondition/postcondition/failure semantics.** Explicitly, per the
+decision's own text: **admission ≠ adoption** — `V6` remains a candidate variant, `V0` remains the
+baseline candidate, the "`fit ⇒ validation`" critique remains source evidence not a validated
+theorem, no variant is selected, no canonical `Validate` contract is created, no executable
+implementation is admitted, no composition test is authorized, no Stage 07 is opened.
+
+**Provenance**: unchanged — `12` remains at the same `RECONSTRUCTED PROVENANCE` ceiling as the three
+files already admitted (same 2026-09-06 commit). The relationship to the executable lane's own `V6`
+remains `CONVERGENCE WITH COMMON-CAUSE PROVENANCE`, explicitly **not** upgraded to independent
+confirmation by this decision.
+
+**The admissible evidence set is now four files: `03` + `04` + `06` + `12`.** `V6` is, for the first
+time, part of the admissible population — MD-033's own "V6 is not a live blocker" reasoning (which
+rested on V6's absence from admissible evidence) no longer applies unmodified and would need
+revisiting by any future study drawing on this newly-admitted evidence.
+
+**`classification-register.tsv` not touched** — exactly MD-028-DQ-1's and MD-032's own precedent.
+**The executable lane explicitly unaffected — remains not admitted.**
+
+**No classification changed. No frozen artifact (MD-024–034) modified. No V6 adjudication
+performed. No composition test. No code executed. No model selected. No Stage 07. No
+canonicalization. `theory-extraction/`, `knowledgeos-sim/`, `verification/` untouched.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; MD-024–034
+and all four admitted files confirmed unmodified; the backlog collision confirmed resolved (each
+`EKS` number now unique); only the new
+`14_decision-log/MD-035-human-admissibility-decision-12-randomized-results/` directory (8 files)
+written.
+
+**MD-035 status: COMPLETE — HARD STOP. `12-randomized-results.md` ADMITTED, NARROW SCOPE. Awaiting
+separate authorization for any further step — including any V6 adjudication, any composition test,
+or any executable-lane admission.**

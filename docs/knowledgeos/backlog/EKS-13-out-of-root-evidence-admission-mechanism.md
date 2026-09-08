@@ -1,4 +1,9 @@
-# `EKS-12` — No formal mechanism exists for admitting out-of-corpus-root evidence into a research programme
+# `EKS-13` — No formal mechanism exists for admitting out-of-corpus-root evidence into a research programme
+
+> **Renumbered from `EKS-12` to `EKS-13` on 2026-09-08, same day, before any external reference was
+> made to it.** A concurrent session independently filed its own, unrelated `EKS-12`
+> (`EKS-12-theory-governance-scope-gap.md`, already closed) using the same next-available-number
+> convention at the same time. Content unchanged; only the identifier and this note were added.
 
 **Status:** BACKLOG · **Class:** operating-model problem · **Raised:** 2026-09-08
 **Owner for disposition:** Governance / ARB

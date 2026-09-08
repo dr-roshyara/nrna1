@@ -1185,7 +1185,23 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-08 (latest): MD-034 — Targeted Characterization of
+**Status update, 2026-09-08 (latest): MD-035 — Human Admissibility Decision:
+`12-randomized-results.md` — EXECUTED.** Mirrors MD-032's own precedent exactly. Presented formally
+via a direct question despite the user's own stated preference in prose, per that prompt's own "do
+not infer" instruction. **Decision: SESSION-LEVEL HUMAN RESEARCH-GOVERNANCE DECISION — Option A,
+ADMIT (narrow scope)**: `12-randomized-results.md` admitted solely for controlled research into
+`Validate` specification, the V1/V4/V5/V6 variants, the stated baseline limitation, and
+precondition/postcondition/failure semantics — explicitly **admission ≠ adoption** (V6 not selected,
+no composition test authorized, no Stage 07). Provenance unchanged (same tier as `03`/`04`/`06`);
+relationship to the executable lane's own V6 stays `CONVERGENCE WITH COMMON-CAUSE PROVENANCE`.
+**Admissible evidence is now four files: `03`+`04`+`06`+`12` — `V6` is, for the first time, part of
+the admissible population**, meaning MD-033's own "V6 not a live blocker" reasoning no longer
+applies unmodified. `classification-register.tsv` not touched; executable lane still not admitted.
+**Housekeeping**: fixed a same-day backlog `EKS-12` numbering collision with a concurrent session's
+own unrelated ticket — renumbered mine to `EKS-13`; no new ticket filed (the collision itself is
+already covered by the existing `EKS-07` coordination-boundary item).
+
+**Status update, 2026-09-08 (earlier): MD-034 — Targeted Characterization of
 `12-randomized-results.md` — EXECUTED.** **Major finding**: this file — cited by `03`/`04` as "§12"
 — contains an explicit, dedicated treatment of `V6` (unlike the three admitted files, which
 genuinely lack it, per MD-031/033). It defines V6, and gives a real methodological argument that the
@@ -1193,7 +1209,8 @@ admitted baseline rule has a limitation V6 corrects ("fit ⇒ validation"), with
 design actually used elsewhere in the file. MD-031/033 are not contradicted — extended to a
 population they weren't authorized to read. Validate's baseline precondition/postcondition/failure
 gap remains open. Same provenance tier as the admitted files. **Recommendation: A — admission
-candidate** (not a decision). Filed `EKS-12` in the KnowledgeOS backlog — a recurring gap: no
+candidate** (not a decision). Filed `EKS-13` (initially `EKS-12`, renumbered same day after a
+concurrent session's own unrelated `EKS-12`) in the KnowledgeOS backlog — a recurring gap: no
 reusable protocol.md mechanism for admitting out-of-root evidence, reinvented three times now.
 No admission, no composition test, no code executed, no model selected.
 

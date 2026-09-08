@@ -1,4 +1,34 @@
-**Updated:** 2026-09-08 (latest) — **MD-034 COMPLETE — TARGETED CHARACTERIZATION OF
+**Updated:** 2026-09-08 (latest) — **MD-035 COMPLETE — HUMAN ADMISSIBILITY DECISION:
+`12-RANDOMIZED-RESULTS.MD`.** Formal governance gate, mirroring MD-032's own precedent, following
+MD-034's own recommendation. Put to the user formally via a direct question despite a stated
+preference in prose in the same message, per that authorization's own "do not infer" instruction.
+**Decision: SESSION-LEVEL HUMAN RESEARCH-GOVERNANCE DECISION — Option A, ADMIT (narrow scope).**
+`docs/knowledgeos/research/kernel-reduction/12-randomized-results.md` is admitted **solely for
+controlled research into Model-B `Validate` specification, the V1/V4/V5/V6 variants, the stated
+baseline limitation, and precondition/postcondition/failure semantics** — explicitly **admission ≠
+adoption**: `V6` remains a candidate variant, `V0` remains the baseline candidate, the
+"`fit ⇒ validation`" critique remains source evidence not a validated theorem, no variant selected,
+no canonical contract created, no executable lane admitted, no composition test authorized, no
+Stage 07 opened. **Provenance unchanged** — same `RECONSTRUCTED PROVENANCE` tier as `03`/`04`/`06`
+(same 2026-09-06 commit); relationship to the executable lane's own V6 stays `CONVERGENCE WITH
+COMMON-CAUSE PROVENANCE`, not upgraded. **The admissible evidence set is now four files:
+`03`+`04`+`06`+`12` — `V6` is, for the first time, part of the admissible population**, so MD-033's
+own "V6 is not a live blocker" reasoning no longer applies unmodified and would need revisiting by
+any future study drawing on this evidence. `classification-register.tsv` not touched, per the
+MD-028-DQ-1/MD-032 precedent. **Housekeeping**: fixed a same-day backlog `EKS-12` numbering
+collision with a concurrent session's own unrelated, already-closed ticket — renumbered this
+session's own to `EKS-13` (content unchanged); no new ticket filed for the collision itself, since
+`EKS-07` already covers exactly this class of problem (`ES-005.4`, never a copy). No classification
+changed; no frozen artifact (MD-024–034) modified; no V6 adjudication; no composition test; no code
+executed; `theory-extraction/`/`knowledgeos-sim/`/`verification/` untouched; no model selected; no
+Stage 07; no canonicalization. Verified: both consistency scripts `CONSISTENT`; MD-024–034 and all
+four admitted files confirmed unmodified; backlog collision confirmed resolved; only the new
+`14_decision-log/MD-035-human-admissibility-decision-12-randomized-results/` directory (8 files)
+written. Full record: `14_decision-log/model-boundary-decisions.md` → MD-035 execution record.
+**MD-035 COMPLETE — HARD STOP.** Awaiting separate authorization for any further step. This
+session's work is being committed now, per explicit instruction.
+
+**Superseded-update-marker-56 (2026-09-08, earlier) — MD-034 COMPLETE — TARGETED CHARACTERIZATION OF
 `12-RANDOMIZED-RESULTS.MD`.** Executed MD-033's own named next step. **Major finding**: this file —
 cited by `03`/`04` as "§12" — contains an extensive, explicit treatment of `V6`, unlike the three
 currently-admissible files (`03`/`04`/`06`), which MD-031/MD-033 correctly found silent on it. `12`
@@ -15,7 +45,8 @@ already-admitted files (identical 2026-09-06 commit); no cross-citation to the e
 either direction. **Recommendation (not a decision): A — scientifically relevant, admission
 candidate.** A tension in MD-033's own reasoning is flagged, not resolved: its "V6 is not a live
 blocker" conclusion rested on V6's absence from admissible evidence, which would need
-re-examination if this file is ever admitted. **Filed `EKS-12`** in the KnowledgeOS backlog
+re-examination if this file is ever admitted. **Filed `EKS-13`** (initially `EKS-12`, renumbered
+same day after a concurrent session's own unrelated `EKS-12`) in the KnowledgeOS backlog
 (`docs/knowledgeos/backlog/`) — a recurring operating-model gap: no reusable `protocol.md`
 mechanism for admitting out-of-corpus-root evidence, reinvented from scratch three separate times
 now (`03`/`04`, `06`, and this recommended file); checked against `EKS-06` first (`ES-005.4`),
@@ -25,7 +56,7 @@ untouched; no code executed; `theory-extraction/` untouched; no model selected; 
 canonicalization; K-1/K-2 untouched. Verified: both consistency scripts `CONSISTENT`; MD-024–033 and
 all kernel-reduction source files confirmed unmodified; only the new
 `14_decision-log/MD-034-characterization-12-randomized-results/` directory (11 files) plus
-`docs/knowledgeos/backlog/EKS-12-...md` written. Full record:
+`docs/knowledgeos/backlog/EKS-13-...md` written. Full record:
 `14_decision-log/model-boundary-decisions.md` → MD-034 execution record. **MD-034 COMPLETE — HARD
 STOP.** `12-randomized-results.md` NOT admitted. Awaiting separate authorization for any further
 step. This session's work is being committed now, per explicit instruction.
