@@ -3697,3 +3697,67 @@ the entire kernel-reduction directory confirmed unmodified; only the new
 input test apparatus. Smallest next step, if pursued: a study of whether any admissible or
 characterized source supplies a computable account of `Warrant` — named, not authorized. Awaiting
 separate authorization for any further step.**
+
+---
+
+## MD-040 — Warrant Semantic Evidence Census and Formalization-Readiness Audit (EXECUTED, 2026-09-08)
+
+**Authorization**: separate, explicit, no blocking disagreement. One scope clarification stated up
+front: "other previously characterized material" was interpreted narrowly — consulting this
+reconstruction's own already-completed Phase-2 Model-B concept register (frozen prior work, not a
+new admission) — not as license for an open-ended corpus-wide search.
+
+**Unanticipated central discovery**: that scope check surfaced a **second, independent research
+thread within Model B's own already-established math-lane evidence** (`03_model-b_mathematical/02_
+concept-register.md` §C, citing primary-evidence files **M0032, M0033, M0036** — no new admission
+required, these are already Model-B primary evidence from Phase 2). Read directly (`M0036` in full,
+1,504 lines), this Titelbaum-epistemology-derived thread **independently proposes a formal tuple
+`A_t = ⟨attitude, strength, warrant, status⟩`** and a broader model
+`𝔈_t=(E_t,S_t,A_t,K_t,Q_t,C_t,H_t)` — and, like the kernel-reduction thread, **introduces `Warrant`/
+`W_t` repeatedly without ever supplying a computation rule for it.** Critically, `M0036` **directly
+names and engages the kernel experiment by its own ID** (`"KR-2026-09-01"`) and devotes an entire
+section to reinterpreting it — direct, source-stated proof the two threads are in conversation, not
+independently-arrived-at agreement (classified per this session's own corrected discipline:
+corroboration within a connected research context, not independent replication).
+
+**Exhaustive lexical census, both threads**: every occurrence of `Warrant` either merely names it or
+constrains it lightly (atom/input-output typing in Thread 1; a proposed tuple slot in Thread 2) — no
+occurrence in either thread computes or derives it.
+
+**A genuine cross-thread inconsistency surfaced**: the two threads propose **non-identical,
+unreconciled formal signatures** — Thread 1's `{Claim/Hypothesis,Evidence}→(warrant-assessment)→
+Verdict` (`06`, admitted) vs. Thread 2's `Validate(A,E,S)` (Assessment × Evidence × Standard) — no
+source in either thread cross-references or reconciles the other's specific formalization.
+
+**A significant qualitative finding**: `13-ddd-analysis.md` and `FINAL-kernel-reduction-report.md`
+(both characterized, unadmitted) state directly that `Validate`'s own *operation* is a domain
+primitive, while its *standard/threshold* is explicitly classified as **policy/governance,
+deliberately kept outside the kernel** — suggesting the missing `Warrant` definition may not be an
+oversight but a boundary the kernel-reduction lane's own architecture draws on purpose. `19`'s own
+directive-response table independently states the same deferral ("level-2/level-4 work," not
+level-7 kernel work).
+
+**Final classification: B — PARTIALLY SPECIFIED** (not A: no computation exists; not C: genuine
+domain/codomain/kind-typology content goes beyond bare naming; not D: the one candidate derivation
+route is an explicitly open, untested falsifier; not E: the search was comprehensive across both
+identified threads).
+
+**V0/V6 discipline preserved**: no finding in this study is used to upgrade or downgrade either
+variant; the policy-boundary finding applies equally to both, and neither is stated to resolve it.
+
+**No backlog ticket filed** — the cross-thread signature inconsistency is a scientific finding, fully
+recorded here, not a process/operational gap of the kind the KnowledgeOS backlog tracks.
+
+**No classification changed. No frozen artifact (MD-024–039) modified. No source file modified
+(kernel-reduction or math-lane). `classification-register.tsv` untouched. No executable artifact
+inspected or executed. No composition test. No model selected. No Stage 07. No canonicalization.
+K-1/K-2 untouched.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; MD-024–039,
+`03_model-b_mathematical/`, all kernel-reduction files, and M0032/33/36 confirmed unmodified; only
+the new `14_decision-log/MD-040-warrant-semantic-evidence-census/` directory (13 files) written.
+
+**MD-040 status: COMPLETE — HARD STOP. `Warrant` partially specified across two connected research
+threads; no computable definition found in either. Smallest next step, if pursued: search for a
+governance-layer specification of the warrant threshold, separate from the kernel's own operator
+specification — named, not authorized. Awaiting separate authorization for any further step.**

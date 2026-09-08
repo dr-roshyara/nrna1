@@ -1,5 +1,44 @@
-**Updated:** 2026-09-08 (latest) — **MD-039 COMPLETE — SEMANTIC KERNEL EQUIVALENCE FEASIBILITY
-AUDIT.** Re-read `19` §7 directly and cold (not reused from MD-038's own reconstruction), per the
+**Updated:** 2026-09-08 (latest) — **MD-040 COMPLETE — WARRANT SEMANTIC EVIDENCE CENSUS AND
+FORMALIZATION-READINESS AUDIT.** Interpreted "other characterized material" narrowly — checked this
+reconstruction's own already-completed Phase-2 Model-B concept register first (frozen prior work, no
+new admission needed). **Unanticipated discovery**: that check surfaced a **second, connected
+research thread within already-legitimate Model-B evidence** — `03_model-b_mathematical/02_concept-
+register.md` §C cites math-lane primary files **M0032/M0033/M0036** (Titelbaum-epistemology-derived),
+proposing a formal tuple `A_t=⟨attitude,strength,warrant,status⟩` and model
+`𝔈_t=(E_t,S_t,A_t,K_t,Q_t,C_t,H_t)`. Read `M0036` in full (1,504 lines): **it directly names and
+engages the kernel experiment by its own ID (`KR-2026-09-01`)** and devotes an entire section to
+reinterpreting it — direct proof the two threads are connected, not independently converging
+(classified as corroboration within a connected research context, not independent replication).
+**Exhaustive lexical census, both threads**: every occurrence of `Warrant` merely names or lightly
+constrains it — none computes or derives it. **A genuine, previously-unsurfaced cross-thread
+inconsistency**: the two threads propose non-identical, unreconciled formal signatures for
+`Validate`/`Warrant` — Thread 1's `{Claim/Hypothesis,Evidence}→(warrant-assessment)→Verdict` (`06`,
+admitted) vs. Thread 2's `Validate(A,E,S)` — neither cross-references the other's specific
+formalization. **A significant qualitative finding**: `13-ddd-analysis.md` and `FINAL-kernel-
+reduction-report.md` (kernel-reduction, characterized) both state directly that `Validate`'s own
+*operation* is a domain primitive while its *standard/threshold* is explicitly classified as
+**policy/governance, deliberately kept outside the kernel** — suggesting the missing definition may
+be architectural, not accidental; `19`'s own directive-response table independently defers the same
+question to "level-2/level-4 work." **Final classification: B — PARTIALLY SPECIFIED** (not A: no
+computation exists anywhere; not C: genuine domain/codomain/kind-typology content goes beyond bare
+naming; not D: the one candidate derivation route is an explicitly open, untested falsifier; not E:
+the search was comprehensive across both identified threads). **V0/V6 discipline preserved** — no
+finding here upgrades or downgrades either variant; the policy-boundary finding applies equally to
+both. **No backlog ticket filed** — the cross-thread inconsistency is a scientific finding, fully
+recorded, not a process/operational gap. No classification changed; no frozen artifact (MD-024–039)
+modified; no source file modified (either lane); `classification-register.tsv` untouched; no
+executable artifact inspected/executed; no composition test; no model selected; no Stage 07; no
+canonicalization; K-1/K-2 untouched. Verified: both consistency scripts `CONSISTENT`; MD-024–039,
+`03_model-b_mathematical/`, all kernel-reduction files, and M0032/33/36 confirmed unmodified; only
+the new `14_decision-log/MD-040-warrant-semantic-evidence-census/` directory (13 files) written.
+Full record: `14_decision-log/model-boundary-decisions.md` → MD-040 execution record. **MD-040
+COMPLETE — HARD STOP.** Smallest next step, if pursued: search for a governance-layer specification
+of the warrant threshold — named, not authorized. Awaiting separate authorization for any further
+step. This session's work is being committed now, per explicit instruction.
+
+**Superseded-update-marker-61 (2026-09-08, earlier) — MD-039 COMPLETE — SEMANTIC KERNEL EQUIVALENCE
+FEASIBILITY AUDIT.** Re-read `19` §7 directly and cold (not reused from MD-038's own reconstruction),
+per the
 authorization's explicit instruction. Applied a language correction to MD-038's own backlog text
 (three same-cause collisions called "independent" — corrected to "repeated symptoms of one
 mechanism"). **Central finding**: the admitted "Semantic Kernel Equivalence" framework is **not

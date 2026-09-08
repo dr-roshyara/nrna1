@@ -1185,7 +1185,21 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-08 (latest): MD-039 — Semantic Kernel Equivalence Feasibility Audit —
+**Status update, 2026-09-08 (latest): MD-040 — Warrant Semantic Evidence Census and Formalization-
+Readiness Audit — EXECUTED.** A scope check into this reconstruction's own already-completed Phase-2
+Model-B concept register (no new admission required) surfaced a **second, independent-but-connected
+research thread** (M0032/33/36, a Titelbaum-epistemology-derived cluster) that also proposes `Warrant`
+as a named-but-undefined tuple component — and directly names/engages the kernel experiment by its
+own ID, confirming the two threads are in conversation, not independent confirmation. **The two
+threads propose non-identical, unreconciled formal signatures for `Validate`/`Warrant`** — a genuine
+corpus-internal inconsistency, surfaced here for the first time. `13`/`FINAL` (kernel-reduction) both
+state directly that the warrant *threshold* is classified as policy/governance, deliberately outside
+the kernel — suggesting the gap may be architectural, not accidental. **Verdict: B — partially
+specified** (real domain/codomain/kind-typology content exists; no computation rule anywhere). No
+backlog ticket — this is a scientific finding, not a process gap. No V6 selection, no new admission,
+no composition test.
+
+**Status update, 2026-09-08 (earlier): MD-039 — Semantic Kernel Equivalence Feasibility Audit —
 EXECUTED.** Re-read `19` §7 fresh, cold. **Central finding**: the admitted framework (behavioural
 tuple `B`, epistemic-preservation vector `P`) names 16 component slots with no computation rule for
 any of them — including `Warrant`, the dimension closest to "surviving a defeater" — and its own text
