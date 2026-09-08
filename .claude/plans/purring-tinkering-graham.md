@@ -1185,7 +1185,31 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-043-DQ-1/DQ-2 recorded, then MD-044 — Kernel Minimality /
+**Status update, 2026-09-09 (latest): MD-045 — Real 13-Capability Kernel Equivalence / Minimality
+Construction — EXECUTED. HARD STOP per explicit user instruction — no MD-046 opened.** Continued
+directly from MD-044 toward the corpus's own named next deliverable. **Disagreement resolved before
+execution**: the prompt's "propose/test a research construction" clause vs. its "stop and report
+rather than invent" clause, resolved toward the conservative reading — which turned out to match the
+source's own final rule exactly. **Central correction (again)**: the `KR-KERNEL-MINIMALITY-2026-09`
+chain MD-044 characterized as 5 files is actually **10 files** (1 duplicate), continuing through
+`021125` before diverging into an unrelated research thread (literature search, Vedic mathematics, a
+later "theory-00–13" rewrite — none read here; MD-044's own text unmodified). **Central finding**:
+the chain's own final position identifies capability identity/granularity as its deepest unresolved
+issue and states an explicit rule — *"If any definition depends on the arbitrary naming or
+decomposition of the candidate capabilities, stop and expose the circularity rather than
+proceeding"* — honored by this phase; Phase C (real 13-capability instantiation) was not attempted.
+The named next deliverable (`KR-KERNEL-EQUIVALENCE-CAPABILITY-PROOF-2026-09`) was confirmed, by
+direct search, never produced anywhere in the corpus. **Real partial progress recorded**: the
+`𝔎_adm`/`𝔎_sat` split, counterfactual capability removal `𝔎_adm^{-c}`, and a DDD "no capability
+laundering" conservation principle. **No comparison against F1/F3/F4/F5/F6 possible** — NOT FORMALLY
+SPECIFIED ENOUGH TO TEST throughout. Ten hypotheses: five supported (H2/H3/H4/H8/H10), two not
+(H7/H9), three unresolved (H1/H5/H6). **GA-001: UNCHANGED. GA-038: UNCHANGED. Final classification:
+B — partial formal result; remaining inputs explicitly bounded.** No backlog ticket. Verified both
+consistency scripts `CONSISTENT`; all ten MinKer-chain source files unmodified; MD-024–044
+unmodified. **Smallest next action, named, not authorized**: establish a corpus-grounded,
+granularity-independent criterion for capability identity (`c_1≡_𝔠 c_2`).
+
+**Status update, 2026-09-09 (earlier): MD-043-DQ-1/DQ-2 recorded, then MD-044 — Kernel Minimality /
 MinKer Semantic Adjudication — EXECUTED. HARD STOP per explicit user instruction — no MD-045
 opened.** Two governance decisions recorded first via `AskUserQuestion` (`reviews/kernel/`'s derived
 findings ADMITTED narrow scope; `GN-77`/`reviews/exec/` material NOT brought forward — neither used

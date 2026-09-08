@@ -4078,3 +4078,68 @@ minker-adjudication/` directory (6 files) plus this decision-log entry (and the 
 MD-043-DQ-1/DQ-2 addendum) written.
 
 **MD-044 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-045 opened.**
+
+---
+
+## MD-045 — Real 13-Capability Kernel Equivalence / Minimality Construction (EXECUTED, 2026-09-09)
+
+**Authorization**: user authorized a construction/verification phase continuing directly from
+MD-044, targeting the corpus's own named next deliverable (`KR-KERNEL-EQUIVALENCE-2026-09`), with an
+explicit Hard Stop clause: if the construction cannot be completed without introducing new semantics,
+stop at that boundary and report the smallest missing definition rather than inventing it.
+
+**Disagreement recorded and resolved before execution**: the prompt contained one internal tension
+(Critical Constraint 5 permitted proposing/testing a "research construction"; the Hard Stop clause
+required stopping and reporting instead). Resolved as: derive only what is logically forced by
+existing material; where a genuine new modelling choice would be required, stop and name it. This
+resolution determined the outcome — the source material's own final position independently reaches
+and states the identical rule.
+
+**Central correction (again)**: MD-044 characterized the `KR-KERNEL-MINIMALITY-2026-09` chain as five
+files. This phase's own cold read establishes it is **ten files** (one byte-identical duplicate),
+continuing through `021125` before diverging into an unrelated research thread (a literature search,
+an extended Vedic-mathematics exploration, and a separate "theory-00 through theory-13" rewrite later
+the same day — none read as part of this phase). MD-044's own text is not modified.
+
+**Central finding**: the chain's own final position (file 10, `021125`) identifies **capability
+identity/granularity** as its deepest unresolved issue — the same capability can appear irreducible
+under one decomposition and derivable under another — and states an explicit, binding rule: *"If any
+definition depends on the arbitrary naming or decomposition of the candidate capabilities, stop and
+expose the circularity rather than proceeding."* The corpus's own named next deliverable
+(`KR-KERNEL-EQUIVALENCE-CAPABILITY-PROOF-2026-09`) was confirmed, by direct search, **never
+produced**. This phase honored the source's own rule: Phase C (instantiating the real 13-capability
+universe) was not attempted, since doing so would require exactly the arbitrary-decomposition choice
+the source forbids.
+
+**Real, source-grounded partial progress recorded**: the chain cleanly separates `𝔎_adm` (admissible
+implementations) from `𝔎_sat={K∈𝔎_adm:K⊨𝔠}` (fixing an earlier circular overload); introduces
+counterfactual capability removal `𝔎_adm^{-c}` (fixing "operator removal ≠ capability removal"); and
+a DDD responsibility-conservation principle (`Cap_KOS` before/after a relocation stays fixed even as
+`Cap_Kernel` shrinks — "no capability laundering"). This directly clarifies the four-way distinction
+this reconstruction has needed since MD-044 (capability / Kernel candidate / `MinKer` operator /
+governance-selected implementation).
+
+**No comparison against F1/F3/F4/F5/F6 was possible** — every row: NOT FORMALLY SPECIFIED ENOUGH TO
+TEST, the same finding as MD-044, now with a source-endorsed reason rather than only an absence of
+attempted comparison. **Ten adversarial hypotheses tested**: H2/H3/H4/H8/H10 SUPPORTED (directly by
+the source's own later self-critique or evidence-ladder discipline); H7/H9 NOT SUPPORTED (the source
+explicitly guards against both failure modes); H1/H5/H6 UNRESOLVED.
+
+**GA-001: UNCHANGED. GA-038: UNCHANGED.** **Final classification: B — partial formal result;
+remaining inputs explicitly bounded.** Not A (no result established); not C (no hypothetical
+construction was proposed and tested — the boundary was honored); not D (genuine, usable advances
+were recorded); not E (no contradiction, only normal same-session peer review).
+
+**No backlog ticket** — the chain-completeness correction was caught and handled through this
+reconstruction's own standing self-correction discipline, which is the process working as intended.
+
+**No classification changed. No frozen artifact (MD-024–044) modified. No MinKer-chain source file
+modified. `classification-register.tsv` untouched. No code executed. No composition test. No model
+selected. No canonical Kernel selected. No ratification. No Stage 07. K-1/K2/GA-001/GA-038
+untouched.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; all ten
+MinKer-chain source files confirmed unmodified; only the new `14_decision-log/MD-045-kernel-
+equivalence-capability-construction/` directory (6 files) plus this decision-log entry written.
+
+**MD-045 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-046 opened.**

@@ -1,5 +1,39 @@
-**Updated:** 2026-09-09 (latest) — **MD-044 COMPLETE — KERNEL MINIMALITY / MINKER SEMANTIC
-ADJUDICATION. HARD STOP per explicit user instruction — no MD-045 opened.** Two governance decisions
+**Updated:** 2026-09-09 (latest) — **MD-045 COMPLETE — REAL 13-CAPABILITY KERNEL EQUIVALENCE /
+MINIMALITY CONSTRUCTION. HARD STOP per explicit user instruction — no MD-046 opened.** Continued
+directly from MD-044 toward the corpus's own named next deliverable. **Disagreement resolved before
+execution**: the prompt's "propose/test a research construction" clause vs. its "stop and report
+rather than invent" clause — resolved in favor of deriving only what is logically forced, stopping
+where a genuine new modelling choice would be needed; this resolution turned out to match the source
+material's own final rule exactly. **Central correction (again)**: the `KR-KERNEL-MINIMALITY-2026-09`
+chain MD-044 characterized as 5 files is actually **10 files** (1 duplicate), continuing through
+`021125` before diverging into an unrelated research thread (literature search, Vedic mathematics,
+a later "theory-00–13" rewrite — none read here). MD-044's own text unmodified. **Central finding**:
+the chain's own final position identifies **capability identity/granularity** as its deepest
+unresolved issue — the same capability can be irreducible under one decomposition, derivable under
+another — and states an explicit rule: *"If any definition depends on the arbitrary naming or
+decomposition of the candidate capabilities, stop and expose the circularity rather than
+proceeding."* The named next deliverable (`KR-KERNEL-EQUIVALENCE-CAPABILITY-PROOF-2026-09`) was
+confirmed, by direct search, **never produced** anywhere in the corpus. This phase honored the
+source's own rule — Phase C (real 13-capability instantiation) was not attempted. **Real partial
+progress recorded**: the `𝔎_adm`/`𝔎_sat` split (fixes a circularity), counterfactual capability
+removal `𝔎_adm^{-c}` (fixes "operator removal ≠ capability removal"), and a DDD responsibility-
+conservation principle ("no capability laundering" — `Cap_KOS` stays fixed even as `Cap_Kernel`
+shrinks). **No comparison against F1/F3/F4/F5/F6 possible** — NOT FORMALLY SPECIFIED ENOUGH TO TEST
+throughout. Ten hypotheses tested: H2/H3/H4/H8/H10 SUPPORTED; H7/H9 NOT SUPPORTED; H1/H5/H6
+UNRESOLVED. **GA-001: UNCHANGED. GA-038: UNCHANGED. Final classification: B — partial formal result;
+remaining inputs explicitly bounded.** No backlog ticket (self-correction discipline already
+functioning as intended). No classification changed; no frozen artifact modified; no MinKer-chain
+source file modified; `classification-register.tsv` untouched; no code executed; no composition
+test; no model selected; no canonical Kernel selected; no ratification; no Stage 07; K-1/K2/GA-001/
+GA-038 untouched. Verified both consistency scripts `CONSISTENT`. Full record: `14_decision-log/
+model-boundary-decisions.md` → MD-045 execution record; `14_decision-log/MD-045-kernel-equivalence-
+capability-construction/` (6 files). **Smallest next action, named, not authorized**: establish a
+corpus-grounded, granularity-independent criterion for capability identity (`c_1≡_𝔠 c_2`) — the
+precise missing prerequisite, not invented here. This session's work is being committed now, per
+explicit instruction, then HARD STOP.
+
+**Superseded-update-marker-66 (2026-09-09, earlier) — MD-044 COMPLETE — KERNEL MINIMALITY / MINKER
+SEMANTIC ADJUDICATION. HARD STOP per explicit user instruction — no MD-045 opened.** Two governance decisions
 recorded first via `AskUserQuestion` (MD-043-DQ-1: `reviews/kernel/`'s derived findings ADMITTED,
 narrow scope; MD-043-DQ-2: `GN-77`/`reviews/exec/` material NOT brought forward — neither used by
 this phase). Scientific study of the admissible math-lane's `MinKer` semantic-minimality formulation.
