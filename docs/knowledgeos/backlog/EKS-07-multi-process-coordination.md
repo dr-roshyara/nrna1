@@ -214,3 +214,24 @@ future disposition decision should weigh.
 twice) · `EKS-13-cross-lane-dependency-without-change-notification.md` and
 `EKS-12-theory-governance-scope-gap.md` (the two tickets it collided with) · `docs/knowledgeos/
 backlog/00_index.md` (the shared list both sessions were editing).
+
+### Fourth occurrence, 2026-09-08 — the same race, this time caught *before* it happened
+
+⭐ **A fourth instance of the identical race occurred later the same day, between the same two
+sessions.** Lane T prepared a new ticket intending to file it as `EKS-15`; the number had already
+been taken by the concurrent `three_model_convergence` session in the interval. **The difference is
+the outcome, not the cause:** Lane T listed the folder immediately before writing, saw the number was
+gone, and filed at `EKS-16` instead — so **no ambiguous entry ever existed** and nothing had to be
+renamed afterwards.
+
+⚠️ **This is evidence in two directions, and both should be weighed.** It confirms the race is
+**routine rather than exceptional** — four occurrences, one day, one session pair. It also shows the
+failure is **cheaply avoidable by a read immediately before the write**, which narrows the remedy
+space considerably: the exposure window is the gap between choosing an identifier and committing it,
+and it shrinks toward zero as that gap shrinks. ⛔ **That observation is not a proposed mechanism** —
+a check that must be remembered is still attentiveness, not a control, exactly as the note above
+says. This ticket's own question remains open.
+
+**Traceability:** `EKS-16-derivation-without-consulting-existing-theory.md` (filed at 16 after the
+near-miss) · `EKS-15-out-of-root-evidence-admission-mechanism.md` (the number it would have taken) ·
+`docs/knowledgeos/theory-extraction/72-P54-CAPABILITY-GRANULARITY-RESOLUTION-ARCHAEOLOGY-AUDIT.md` §10.
