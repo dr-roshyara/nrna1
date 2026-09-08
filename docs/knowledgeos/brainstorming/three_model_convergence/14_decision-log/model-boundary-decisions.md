@@ -3811,3 +3811,95 @@ all kernel-reduction files, `M0032`/`M0033`/`M0036`, and seq 0583 confirmed unmo
 Smallest next step, if pursued: search for a "Governance Conflict Algebra" or later corpus material
 resolving the Validation-vs-Governance question — named, not authorized. Awaiting separate
 authorization for any further step.**
+
+---
+
+## MD-042 — Cross-Landscape Semantic Kernel and Warrant Closure Audit (EXECUTED, 2026-09-09)
+
+**Authorization**: user re-issued the full eight-directory scope with a detailed minimal-kernel
+candidate-family inventory requirement, a Warrant/epistemic-closure cross-landscape census (8-level
+classification), a required five-way final synthesis plus nine yes/no questions, extensive hard
+prohibitions, and verification/commit instructions — following the user's own explicit resolution of
+a mid-recon discovery (see below) about how to record it.
+
+**Central methodological event**: before any term census could begin, direct filename/structure
+inspection — never content-reading — established that **five of the eight nominally-authorized
+directories are not independently searchable evidence**: `docs/knowledgeos/reviews/synthesis/`
+(prior finding, restated per the user's own prescribed wording: *"Potential lineage overlap
+identified between the searched synthesis/review material and the previously frozen K-1/K-2 research
+track. The material is not treated as independent evidence and is not admitted for governance
+revision. Identity/provenance relationship remains unadjudicated."*); `docs/knowledgeos/reviews/
+kernel/` (naming pattern — "restatement is not independent arrival," a cross-track observation
+register — reads as theory-extraction-adjacent; treated under the same absolute firewall by
+extension, not read); `docs/knowledgeos/brainstorming/verification/` (482 files — its own
+`gap-discovery/step-272/` subdirectory **confirmed, by literal filename match**
+(`05-ADDENDUM-STEP-272A.md`, `06-STEP-272B-REVIEW.md`), to be the identical "Step 272A/272B" material
+already read and adjudicated in the frozen Phase 5J; the numbering continues into `step-280/281/282/`
+and the tree also contains a `handoff/` directory matching the already-produced Research-to-
+Governance Handover — the entire tree treated as K-1/K-2-lineage source material, characterization-
+only); `docs/knowledgeos/brainstorming/synthesis/` (3 of its 4 real files carry "EXTRACTION" in their
+names, matching the theory-extraction track's own core term — treated as extraction-adjacent, not
+read; only its structural README was read); `docs/knowledgeos/reviews/exec/` (3 `.py` files,
+"K_9"/"Closure(K_9)" naming matching this repository's own recent commit-message style, characteristic
+of the parallel Lane-T session; filenames noted only). `nrna1/research/knowledgeos-sim/` was also
+excluded (ambiguous provenance, previously excluded from MD-030's own scope, not explicitly
+re-included by name this time).
+
+**What was actually searched**: `brainstorming/kernel/` (189 files incl. 17 nested), a light pass of
+`mathematical_ideas_that_can_be_implemented/`, and `nrna1/verification/zero-algebra/` (12 `KR-*`
+experiment directories) — via a background mechanical-census fork, corrected mid-run once the
+`verification/` tree's lineage became apparent.
+
+**Minimal-kernel inventory (8 families, F1–F8, all kept distinct)**: F1 (frozen governance K-1,
+8-primitive tuple) and F2 (frozen governance K-2, Assertion) untouched. F3 (kernel-reduction
+C0/C0_plus) unchanged. F4 (Model B's own `K_t`/`Δ_t` family) gained one new, explicitly self-labeled
+non-canonical data point (`nrna1/verification/zero-algebra/KR-STATE-01-DESIGN-2026-09.md`:
+`[DEF] K_t = a finite set of claims`, `"kernel NOT SELECTED · no algebra declared"`) — reinforces
+rather than resolves GA-038. F5 (C1's own DDD-aggregate "K-1," `KnowledgeAggregate`+`ConflictRecord`)
+re-confirmed, already flagged in Phase 6 as a naming collision. F6 (Model C2's sole file, seq 2330)
+re-confirmed. **F7 — newly censused this phase**: a self-unresolved family of 7–11 competing candidate
+definitions of *Knowledge itself* (not of the Kernel), labeled K-1 through K-11 by their own source
+(`brainstorming/synthesis/KNOWLEDGE-CONCEPT-EXTRACTION-001.md`'s ledger plus `brainstorming/kernel/
+refinement_phase/`'s own extension), explicitly never merged by that source's own author — **a
+fourth K-1/K-2 label collision**, answering a different (semantic/epistemological) question than
+F1/F2/F5, not compared or merged with them. F8: further already-rejected kernel-candidate proposals
+(Fagin regime, a "complete mathematical framework" claim, Knowledge-Space-as-measure), cited for
+completeness only.
+
+**Warrant census result**: **zero occurrences** of `Warrant`, `Defeater`, "surviving a defeater,"
+`Epistemic Contract`, `EC=(`, `Validated(r)`, or `Authorized(r)` found anywhere in the three searched
+landscapes — extending, not merely repeating, MD-040/041's own negative finding: the three
+already-known threads (kernel-reduction's `warrant-assessment` atom, the math-lane `A_t` tuple,
+`phase_measure_theory/`'s `EC=(R,Γ,A,V)`) remain the entire set of corpus locations where "Warrant" is
+even named, after a materially broader search.
+
+**Nine required questions, all No** except where noted: new kernel candidate found — no live one
+(F7 answers a different question); GA-001 changed — no; GA-038 changed — no (reinforced); Warrant
+threshold found — no; "surviving a defeater" defined — no; EC supplies the threshold — no; independent
+convergence established — no (more connected-lineage material found, not less); governance authority
+established — no (untouched); V0/V6 status changed — no (untouched).
+
+**Compound final classification: D+** — provenance triage dominates the phase; the completed residual
+search found nothing new on Warrant and confirmed rather than extended the standing kernel-candidate
+landscape. **Main-goal test**: does not advance a kernel candidate or close the Warrant gap directly,
+but materially narrows what "cross-landscape search" can still mean (most of the nominal scope is
+provenance-blocked, not merely unexamined) and hardens the Warrant negative finding from "not in the
+threads we knew about" to "not anywhere currently searchable."
+
+**Backlog**: `EKS-19` filed — no registry of already-spoken-for directories exists, so the same
+provenance boundary (theory-extraction adjacency, K-1/K-2 lineage) had to be manually rediscovered
+four separate times in one day; originally filed as `EKS-18`, renumbered once after a same-day
+collision with Lane T's own unrelated ticket at that number (the fifth such collision, recorded in
+`EKS-07`).
+
+**No classification changed. No frozen artifact (MD-024–041) modified. No source file modified in any
+searched or firewalled directory. `classification-register.tsv` untouched. No executable artifact run.
+No composition test. No model selected. No Stage 07. K-1/K-2, GA-001, GA-038 untouched.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; only the new
+`14_decision-log/MD-042-cross-landscape-semantic-kernel-and-warrant-audit/` directory (6 files) plus
+the named backlog files written; pre-existing, unrelated uncommitted changes from the parallel
+Lane-T session were found in the shared working tree during verification and explicitly excluded
+from this phase's commit.
+
+**MD-042 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-043 opened.**

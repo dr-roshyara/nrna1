@@ -1,4 +1,48 @@
-**Updated:** 2026-09-08 (latest) — **MD-041 COMPLETE — GOVERNANCE-LAYER WARRANT-THRESHOLD SEARCH.**
+**Updated:** 2026-09-09 (latest) — **MD-042 COMPLETE — CROSS-LANDSCAPE SEMANTIC KERNEL AND WARRANT
+CLOSURE AUDIT. HARD STOP per explicit user instruction — no MD-043 opened.** Re-issued the full
+eight-directory scope after the user's own resolution of a mid-recon discovery. **Central
+methodological event**: filename/structure triage (never content-reading) found that **five of the
+eight nominally-authorized directories are not independently searchable** — `reviews/synthesis/`
+(prior finding, K-1/K-2 lineage overlap, restated per the user's own prescribed wording), `reviews/
+kernel/` (naming pattern reads as theory-extraction-adjacent, treated under that absolute firewall by
+extension), `brainstorming/verification/` (482 files — its own `gap-discovery/step-272/` **confirmed
+by literal filename match** — `05-ADDENDUM-STEP-272A.md`/`06-STEP-272B-REVIEW.md` — to be the
+identical material already read in the frozen Phase 5J; numbering continues into `step-280/281/282/`;
+a `handoff/` directory matches the already-produced Research-to-Governance Handover), `brainstorming/
+synthesis/` (3 of 4 real files carry "EXTRACTION" in their names, matching the theory-extraction
+track's own core term), `reviews/exec/` (3 `.py` files, "K_9"/"Closure(K_9)" naming matching this
+repo's own recent commit style). Only `brainstorming/kernel/`, a light pass of `mathematical_ideas_
+that_can_be_implemented/`, and `nrna1/verification/zero-algebra/` were genuinely searched.
+**Minimal-kernel inventory**: 8 families (F1–F8) kept distinct; F1/F2 (frozen governance K-1/K-2)
+untouched; F3 (kernel-reduction) unchanged; F4 (Model B's `K_t`/`Δ_t`) gained one new, self-labeled
+non-canonical data point (`KR-STATE-01-DESIGN-2026-09.md`), reinforcing rather than resolving GA-038;
+F5 (C1 DDD-aggregate "K-1") and F6 (Model C2 seq 2330) re-confirmed, not new; **F7, newly censused**:
+a self-unresolved 7–11-way family of competing definitions of *Knowledge itself* (not Kernel),
+labeled K-1 through K-11 by its own source — a fourth K-1/K-2 label collision, answering a different
+question, never merged with F1/F2/F5. **Warrant census**: zero occurrences of `Warrant`/`Defeater`/
+"surviving a defeater"/`Epistemic Contract`/`EC=(`/`Validated(r)`/`Authorized(r)` found anywhere in
+the three searched landscapes — extends MD-040/041's own negative finding to a materially broader
+search; the three already-known threads remain the entire known set. **Nine required questions: all
+No** (no new kernel candidate; GA-001/GA-038 unchanged, GA-038 reinforced; no Warrant threshold; no
+survival definition; EC does not supply the threshold; no independent convergence — if anything more
+connected-lineage material found; governance authority untouched; V0/V6 status unchanged).
+**Compound classification: D+** — provenance triage dominates; the completed residual search
+confirmed rather than extended the standing landscape. **Backlog**: `EKS-19` filed (no registry of
+already-spoken-for directories; four instances in one day required manual rediscovery; originally
+`EKS-18`, renumbered once after a same-day collision with Lane T's own unrelated ticket — the fifth
+such collision, recorded in `EKS-07`). No classification changed; no frozen artifact modified; no
+source file modified anywhere; `classification-register.tsv` untouched; no code executed; no
+composition test; no model selected; no Stage 07; K-1/K-2/GA-001/GA-038 untouched. Verified: both
+consistency scripts `CONSISTENT`; pre-existing, unrelated uncommitted changes from the parallel
+Lane-T session found in the shared working tree during verification and explicitly excluded from
+this phase's commit. Full record: `14_decision-log/model-boundary-decisions.md` → MD-042 execution
+record; `14_decision-log/MD-042-cross-landscape-semantic-kernel-and-warrant-audit/` (6 files).
+**Smallest next action, named, not authorized**: a governance-level provenance decision on whether
+`reviews/kernel/`/`brainstorming/verification/`/`brainstorming/synthesis/`'s extraction-named files
+are theory-extraction material, K-1/K-2 lineage, both, or neither — not resolvable by further
+searching. This session's work is being committed now, per explicit instruction, then HARD STOP.
+
+**Superseded-update-marker-63 (2026-09-08) — MD-041 COMPLETE — GOVERNANCE-LAYER WARRANT-THRESHOLD SEARCH.**
 Direct user instruction, matching MD-040's own named next step exactly; executed with the same
 rigor and governance-closeout discipline as MD-030–040 for consistency. **Central finding**: a
 **third corpus thread** — `docs/knowledgeos/brainstorming/phase_measure_theory/` (Model C1's own

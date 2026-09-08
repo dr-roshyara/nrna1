@@ -235,3 +235,18 @@ says. This ticket's own question remains open.
 **Traceability:** `EKS-16-derivation-without-consulting-existing-theory.md` (filed at 16 after the
 near-miss) · `EKS-15-out-of-root-evidence-admission-mechanism.md` (the number it would have taken) ·
 `docs/knowledgeos/theory-extraction/72-P54-CAPABILITY-GRANULARITY-RESOLUTION-ARCHAEOLOGY-AUDIT.md` §10.
+
+### Fifth occurrence, 2026-09-09 — same race, one day later, same two sessions
+
+**A fifth instance occurred the following day.** The `three_model_convergence` session's own MD-042
+study prepared a new ticket intending to file it as `EKS-18`; by the time it wrote the file, Lane T
+had already taken that number for its own, unrelated ticket (`EKS-18-open-questions-register-with-no-
+route-to-the-work.md`). Caught the same way the fourth occurrence recommended — a read of the index
+immediately before committing the new file — and renumbered to `EKS-19` before anyone else could have
+relied on the colliding number. **Five occurrences now, across two consecutive days, between the same
+two sessions**, strengthening (not newly establishing) the recurrence-rate evidence already on file
+here; nothing about this ticket's own scope or recommendation changes.
+
+**Traceability:** `EKS-19-no-registry-of-already-spoken-for-directories.md` (filed at 19 after the
+collision) · `EKS-18-open-questions-register-with-no-route-to-the-work.md` (the number it collided
+with, Lane T's own ticket).
